@@ -31,6 +31,7 @@
             <outputDirectory>.</outputDirectory>
             <excludes>
                 <exclude>bin/ballerina.bat</exclude>
+                <exclude>bin/composer.bat</exclude>
             </excludes>
         </fileSet>
         <fileSet>
@@ -43,6 +44,12 @@
     <files>
         <file>
             <source>bin/composer</source>
+            <outputDirectory>bin/</outputDirectory>
+            <filtered>true</filtered>
+            <fileMode>755</fileMode>
+        </file>
+        <file>
+            <source>bin/ballerina</source>
             <outputDirectory>bin/</outputDirectory>
             <filtered>true</filtered>
             <fileMode>755</fileMode>
