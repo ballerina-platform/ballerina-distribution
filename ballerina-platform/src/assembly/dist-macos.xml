@@ -42,7 +42,7 @@
     </fileSets>
     <files>
         <file>
-            <source>../resources/executables/linux/composer</source>
+            <source>../resources/executables/macos/composer</source>
             <outputDirectory>bin/</outputDirectory>
             <filtered>true</filtered>
             <fileMode>755</fileMode>
