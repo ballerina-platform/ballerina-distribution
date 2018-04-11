@@ -21,7 +21,7 @@
     <parent>
         <groupId>org.ballerinalang</groupId>
         <artifactId>ballerina-distribution</artifactId>
-        <version>0.970.0-alpha4</version>
+        <version>0.970.0-alpha5-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -139,8 +139,8 @@
                             <!--<appendAssemblyId>false</appendAssemblyId>-->
                         <!--</configuration>-->
                     <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
+                </executions>
+            </plugin>
             <!--<plugin>-->
                 <!--<groupId>org.apache.maven.plugins</groupId>-->
                 <!--<artifactId>maven-antrun-plugin</artifactId>-->
@@ -174,8 +174,8 @@
                             <!--</target>-->
                         <!--</configuration>-->
                     <!--</execution>-->
-                </executions>
-            </plugin>
+                <!--</executions>-->
+            <!--</plugin>-->
         </plugins>
 
         <resources>
