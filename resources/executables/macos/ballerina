@@ -198,7 +198,7 @@ $JAVACMD \
 	$JAVA_OPTS \
 	-classpath "$BALLERINA_CLASSPATH" \
 	-Dballerina.home=$BALLERINA_HOME \
-	-Dballerina.version=0.970.0-alpha1-SNAPSHOT \
+	-Dballerina.version=0.970.0-alpha4 \
 	-Djava.util.logging.config.file="$BALLERINA_HOME/bre/conf/logging.properties" \
 	-Djava.util.logging.manager="org.ballerinalang.logging.BLogManager" \
 	-Dtransports.netty.conf="$BALLERINA_HOME/bre/conf/netty-transports.yml" \

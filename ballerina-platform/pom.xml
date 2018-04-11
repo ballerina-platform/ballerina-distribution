@@ -21,12 +21,12 @@
     <parent>
         <groupId>org.ballerinalang</groupId>
         <artifactId>ballerina-distribution</artifactId>
-        <version>0.970.0-alpha1-SNAPSHOT</version>
+        <version>0.970.0-alpha4</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>ballerina-tools</artifactId>
+    <artifactId>ballerina-platform</artifactId>
     <packaging>pom</packaging>
 
     <name>Ballerina - Tools Distribution</name>
@@ -72,6 +72,23 @@
                 <version>2.5.2</version>
                 <executions>
                     <execution>
+                        <id>dist</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>attached</goal>
+                        </goals>
+                        <configuration>
+                            <filters>
+                                <filter>${basedir}/src/assembly/filter.properties</filter>
+                            </filters>
+                            <descriptors>
+                                <descriptor>${basedir}/src/assembly/dist.xml</descriptor>
+                            </descriptors>
+                            <finalName>${project.artifactId}-${project.version}</finalName>
+                            <appendAssemblyId>false</appendAssemblyId>
+                        </configuration>
+                    </execution>
+                    <execution>
                         <id>dist-linux</id>
                         <phase>package</phase>
                         <goals>
@@ -89,7 +106,7 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>dist-mac</id>
+                        <id>dist-macos</id>
                         <phase>package</phase>
                         <goals>
                             <goal>attached</goal>
@@ -99,9 +116,9 @@
                                 <filter>${basedir}/src/assembly/filter.properties</filter>
                             </filters>
                             <descriptors>
-                                <descriptor>${basedir}/src/assembly/dist-mac.xml</descriptor>
+                                <descriptor>src/assembly/dist-macos.xml</descriptor>
                             </descriptors>
-                            <finalName>${project.artifactId}-mac-${project.version}</finalName>
+                            <finalName>${project.artifactId}-macos-${project.version}</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                     </execution>
@@ -135,7 +152,7 @@
                         <configuration>
                             <tasks>
                                 <unzip src="../resources/jre/jre-1.8-linux.zip" dest="${project.build.directory}/extracted-jre-linux" />
-                                <unzip src="../resources/jre/jre-1.8-mac.zip" dest="${project.build.directory}/extracted-jre-mac" />
+                                <unzip src="../resources/jre/jre-1.8-macos.zip" dest="${project.build.directory}/extracted-jre-macos" />
                                 <unzip src="../resources/jre/jre-1.8-windows.zip" dest="${project.build.directory}/extracted-jre-windows" />
                             </tasks>
                         </configuration>
@@ -152,7 +169,7 @@
                             <target>
                                 <delete dir="${project.build.directory}/extracted-distributions" includeemptydirs="true" deleteonexit="true" />
                                 <delete dir="${project.build.directory}/extracted-jre-linux" includeemptydirs="true" deleteonexit="true" />
-                                <delete dir="${project.build.directory}/extracted-jre-mac" includeemptydirs="true" deleteonexit="true" />
+                                <delete dir="${project.build.directory}/extracted-jre-macos" includeemptydirs="true" deleteonexit="true" />
                                 <delete dir="${project.build.directory}/extracted-jre-windows" includeemptydirs="true" deleteonexit="true" />
                             </target>
                         </configuration>

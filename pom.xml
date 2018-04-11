@@ -23,7 +23,7 @@
 
     <groupId>org.ballerinalang</groupId>
     <artifactId>ballerina-distribution</artifactId>
-    <version>0.970.0-alpha1-SNAPSHOT</version>
+    <version>0.970.0-alpha4</version>
     <packaging>pom</packaging>
     <description>
         Ballerina is a general purpose, concurrent and strongly typed programming language
@@ -149,8 +149,8 @@
 
 
     <modules>
-        <module>ballerina</module>
-        <module>ballerina-tools</module>
+        <module>ballerina-runtime</module>
+        <module>ballerina-platform</module>
     </modules>
 
     <dependencyManagement>
@@ -171,7 +171,7 @@
     </dependencyManagement>
 
     <properties>
-        <ballerina.version>0.970.0-alpha1-SNAPSHOT</ballerina.version>
+        <ballerina.version>0.970.0-alpha4</ballerina.version>
     </properties>
 
 </project>

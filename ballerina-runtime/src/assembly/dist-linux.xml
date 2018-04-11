@@ -17,7 +17,7 @@
   -->
 <assembly>
     <includeBaseDirectory>true</includeBaseDirectory>
-    <baseDirectory>ballerina-tools-linux-${project.version}</baseDirectory>
+    <baseDirectory>ballerina-runtime-linux-${project.version}</baseDirectory>
     <id>Ballerina Linux Distribution</id>
     <formats>
         <format>zip</format>
@@ -26,12 +26,11 @@
     <fileSets>
         <fileSet>
             <directory>
-                ${project.build.directory}/extracted-distributions/ballerina-tools-zip/ballerina-tools-${project.version}
+                ${project.build.directory}/extracted-distributions/ballerina-zip/ballerina-${project.version}
             </directory>
             <outputDirectory>.</outputDirectory>
             <excludes>
                 <exclude>bin/ballerina.bat</exclude>
-                <exclude>bin/composer.bat</exclude>
             </excludes>
         </fileSet>
         <fileSet>
@@ -43,16 +42,10 @@
     </fileSets>
     <files>
         <file>
-            <source>bin/composer</source>
+            <source>../resources/executables/linux/ballerina</source>
             <outputDirectory>bin/</outputDirectory>
             <filtered>true</filtered>
-            <fileMode>755</fileMode>
-        </file>
-        <file>
-            <source>bin/ballerina</source>
-            <outputDirectory>bin/</outputDirectory>
-            <filtered>true</filtered>
-            <fileMode>755</fileMode>
-        </file>
+            <fileMode>755</fileMode></file>
+
     </files>
 </assembly>
