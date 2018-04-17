@@ -176,7 +176,7 @@
     </dependencyManagement>
     <properties>
         <ballerina.version>${project.version}</ballerina.version>
-        <ballerina.jre.artifacts.version>0.970.0-SNAPSHOT</ballerina.jre.artifacts.version>
+        <ballerina.jre.artifacts.version>0.970.0</ballerina.jre.artifacts.version>
     </properties>
 
 </project>
