@@ -56,4 +56,14 @@
             <fileMode>644</fileMode>
         </file>
     </files>
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>bre/lib</outputDirectory>
+            <includes>
+                <include>org.ballerainax.docker:docker-extension</include>
+                <include>org.ballerainax.kubernetes:kubernetes-extension</include>
+            </includes>
+            <unpack>false</unpack>
+        </dependencySet>
+    </dependencySets>
 </assembly>
