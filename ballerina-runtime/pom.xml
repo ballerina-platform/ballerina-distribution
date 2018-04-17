@@ -38,7 +38,7 @@
             <type>zip</type>
         </dependency>
         <dependency>
-            <groupId>org.wso2</groupId>
+            <groupId>org.wso2.ballerina.jre.artifacts</groupId>
             <artifactId>ballerina-jre-artifacts</artifactId>
             <type>zip</type>
         </dependency>
