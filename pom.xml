@@ -23,7 +23,7 @@
 
     <groupId>org.ballerinalang</groupId>
     <artifactId>ballerina-distribution</artifactId>
-    <version>0.970.0-alpha5-SNAPSHOT</version>
+    <version>0.970.0-beta1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <description>
         Ballerina distribution repository.
@@ -166,11 +166,17 @@
                 <version>${ballerina.version}</version>
                 <type>zip</type>
             </dependency>
+            <dependency>
+                <groupId>org.wso2</groupId>
+                <artifactId>ballerina-jre-artifacts</artifactId>
+                <version>${ballerina.jre.artifacts.version}</version>
+                <type>zip</type>
+            </dependency>
         </dependencies>
     </dependencyManagement>
-
     <properties>
         <ballerina.version>${project.version}</ballerina.version>
+        <ballerina.jre.artifacts.version>0.970.0-SNAPSHOT</ballerina.jre.artifacts.version>
     </properties>
 
 </project>
