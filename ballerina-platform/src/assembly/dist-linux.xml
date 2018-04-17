@@ -44,18 +44,6 @@
     </fileSets>
     <files>
         <file>
-            <source>../resources/lib/docker-extension-0.970.0-beta0.jar</source>
-            <outputDirectory>bre/lib/</outputDirectory>
-            <filtered>true</filtered>
-            <fileMode>755</fileMode>
-        </file>
-        <file>
-            <source>../resources/lib/kubernetes-extension-0.970.0-beta0.jar</source>
-            <outputDirectory>bre/lib/</outputDirectory>
-            <filtered>true</filtered>
-            <fileMode>755</fileMode>
-        </file>
-        <file>
             <source>../resources/executables/linux/composer</source>
             <outputDirectory>bin/</outputDirectory>
             <filtered>true</filtered>
