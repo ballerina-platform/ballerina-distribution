@@ -77,6 +77,31 @@
                 <version>3.0.0</version>
                 <executions>
                     <execution>
+                        <id>unpack-jre</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeArtifactIds>
+                                ballerina-jre-artifacts
+                            </includeArtifactIds>
+                            <outputDirectory>${project.build.directory}
+                            </outputDirectory>
+                            <overWriteReleases>false</overWriteReleases>
+                            <overWriteSnapshots>true</overWriteSnapshots>
+                            <useSubDirectoryPerArtifact>true</useSubDirectoryPerArtifact>
+                            <stripVersion>true</stripVersion>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
                         <id>unpack-dependencies</id>
                         <phase>package</phase>
                         <goals>
@@ -181,9 +206,9 @@
                         <phase>generate-resources</phase>
                         <configuration>
                             <tasks>
-                                <unzip src="../resources/jre/jre-1.8-linux.zip" dest="${project.build.directory}/extracted-jre-linux" />
-                                <unzip src="../resources/jre/jre-1.8-macos.zip" dest="${project.build.directory}/extracted-jre-macos" />
-                                <unzip src="../resources/jre/jre-1.8-windows.zip" dest="${project.build.directory}/extracted-jre-windows" />
+                                <unzip src="${jre.location}/jre-1.8-linux.zip" dest="${project.build.directory}/extracted-jre-linux" />
+                                <unzip src="${jre.location}/jre-1.8-macos.zip" dest="${project.build.directory}/extracted-jre-macos" />
+                                <unzip src="${jre.location}/jre-1.8-windows.zip" dest="${project.build.directory}/extracted-jre-windows" />
                             </tasks>
                         </configuration>
                         <goals>
@@ -201,6 +226,7 @@
                                 <delete dir="${project.build.directory}/extracted-jre-linux" includeemptydirs="true" deleteonexit="true" />
                                 <delete dir="${project.build.directory}/extracted-jre-macos" includeemptydirs="true" deleteonexit="true" />
                                 <delete dir="${project.build.directory}/extracted-jre-windows" includeemptydirs="true" deleteonexit="true" />
+                                <delete dir="${project.build.directory}/ballerina-jre-artifacts-zip" includeemptydirs="true" />
                             </target>
                         </configuration>
                     </execution>
