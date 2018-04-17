@@ -21,7 +21,7 @@
     <parent>
         <groupId>org.ballerinalang</groupId>
         <artifactId>ballerina-distribution</artifactId>
-        <version>0.970.0-alpha5-SNAPSHOT</version>
+        <version>0.970.0-beta1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -37,10 +37,65 @@
             <artifactId>ballerina-tools</artifactId>
             <type>zip</type>
         </dependency>
+        <dependency>
+            <groupId>org.wso2</groupId>
+            <artifactId>ballerina-jre-artifacts</artifactId>
+            <type>zip</type>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>unpack-jre</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeArtifactIds>
+                                ballerina-jre-artifacts
+                            </includeArtifactIds>
+                            <outputDirectory>${project.build.directory}
+                            </outputDirectory>
+                            <overWriteReleases>false</overWriteReleases>
+                            <overWriteSnapshots>true</overWriteSnapshots>
+                            <useSubDirectoryPerArtifact>true</useSubDirectoryPerArtifact>
+                            <stripVersion>true</stripVersion>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>unpack-jre</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeArtifactIds>
+                                ballerina-jre-artifacts
+                            </includeArtifactIds>
+                            <outputDirectory>${project.build.directory}
+                            </outputDirectory>
+                            <overWriteReleases>false</overWriteReleases>
+                            <overWriteSnapshots>true</overWriteSnapshots>
+                            <useSubDirectoryPerArtifact>true</useSubDirectoryPerArtifact>
+                            <stripVersion>true</stripVersion>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -88,94 +143,95 @@
                             <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                     </execution>
-                    <!--<execution>-->
-                        <!--<id>dist-linux</id>-->
-                        <!--<phase>package</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>attached</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<filters>-->
-                                <!--<filter>${basedir}/src/assembly/filter.properties</filter>-->
-                            <!--</filters>-->
-                            <!--<descriptors>-->
-                                <!--<descriptor>${basedir}/src/assembly/dist-linux.xml</descriptor>-->
-                            <!--</descriptors>-->
-                            <!--<finalName>${project.artifactId}-linux-${project.version}</finalName>-->
-                            <!--<appendAssemblyId>false</appendAssemblyId>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
-                    <!--<execution>-->
-                        <!--<id>dist-macos</id>-->
-                        <!--<phase>package</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>attached</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<filters>-->
-                                <!--<filter>${basedir}/src/assembly/filter.properties</filter>-->
-                            <!--</filters>-->
-                            <!--<descriptors>-->
-                                <!--<descriptor>src/assembly/dist-macos.xml</descriptor>-->
-                            <!--</descriptors>-->
-                            <!--<finalName>${project.artifactId}-macos-${project.version}</finalName>-->
-                            <!--<appendAssemblyId>false</appendAssemblyId>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
-                    <!--<execution>-->
-                        <!--<id>dist-windows</id>-->
-                        <!--<phase>package</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>attached</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<filters>-->
-                                <!--<filter>${basedir}/src/assembly/filter.properties</filter>-->
-                            <!--</filters>-->
-                            <!--<descriptors>-->
-                                <!--<descriptor>${basedir}/src/assembly/dist-windows.xml</descriptor>-->
-                            <!--</descriptors>-->
-                            <!--<finalName>${project.artifactId}-windows-${project.version}</finalName>-->
-                            <!--<appendAssemblyId>false</appendAssemblyId>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
+                    <execution>
+                        <id>dist-linux</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>attached</goal>
+                        </goals>
+                        <configuration>
+                            <filters>
+                                <filter>${basedir}/src/assembly/filter.properties</filter>
+                            </filters>
+                            <descriptors>
+                                <descriptor>${basedir}/src/assembly/dist-linux.xml</descriptor>
+                            </descriptors>
+                            <finalName>${project.artifactId}-linux-${project.version}</finalName>
+                            <appendAssemblyId>false</appendAssemblyId>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>dist-macos</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>attached</goal>
+                        </goals>
+                        <configuration>
+                            <filters>
+                                <filter>${basedir}/src/assembly/filter.properties</filter>
+                            </filters>
+                            <descriptors>
+                                <descriptor>src/assembly/dist-macos.xml</descriptor>
+                            </descriptors>
+                            <finalName>${project.artifactId}-macos-${project.version}</finalName>
+                            <appendAssemblyId>false</appendAssemblyId>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>dist-windows</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>attached</goal>
+                        </goals>
+                        <configuration>
+                            <filters>
+                                <filter>${basedir}/src/assembly/filter.properties</filter>
+                            </filters>
+                            <descriptors>
+                                <descriptor>${basedir}/src/assembly/dist-windows.xml</descriptor>
+                            </descriptors>
+                            <finalName>${project.artifactId}-windows-${project.version}</finalName>
+                            <appendAssemblyId>false</appendAssemblyId>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-antrun-plugin</artifactId>-->
-                <!--<version>1.8</version>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>extract-jre</id>-->
-                        <!--<phase>generate-resources</phase>-->
-                        <!--<configuration>-->
-                            <!--<tasks>-->
-                                <!--<unzip src="../resources/jre/jre-1.8-linux.zip" dest="${project.build.directory}/extracted-jre-linux" />-->
-                                <!--<unzip src="../resources/jre/jre-1.8-macos.zip" dest="${project.build.directory}/extracted-jre-macos" />-->
-                                <!--<unzip src="../resources/jre/jre-1.8-windows.zip" dest="${project.build.directory}/extracted-jre-windows" />-->
-                            <!--</tasks>-->
-                        <!--</configuration>-->
-                        <!--<goals>-->
-                            <!--<goal>run</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                    <!--<execution>-->
-                        <!--<phase>verify</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>run</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<target>-->
-                                <!--<delete dir="${project.build.directory}/extracted-distributions" includeemptydirs="true" deleteonexit="true" />-->
-                                <!--<delete dir="${project.build.directory}/extracted-jre-linux" includeemptydirs="true" deleteonexit="true" />-->
-                                <!--<delete dir="${project.build.directory}/extracted-jre-macos" includeemptydirs="true" deleteonexit="true" />-->
-                                <!--<delete dir="${project.build.directory}/extracted-jre-windows" includeemptydirs="true" deleteonexit="true" />-->
-                            <!--</target>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version>
+                <executions>
+                    <execution>
+                        <id>extract-jre</id>
+                        <phase>generate-resources</phase>
+                        <configuration>
+                            <tasks>
+                                <unzip src="${jre.location}/jre-1.8-linux.zip" dest="${project.build.directory}/extracted-jre-linux" />
+                                <unzip src="${jre.location}/jre-1.8-macos.zip" dest="${project.build.directory}/extracted-jre-macos" />
+                                <unzip src="${jre.location}/jre-1.8-windows.zip" dest="${project.build.directory}/extracted-jre-windows" />
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <delete dir="${project.build.directory}/extracted-distributions" includeemptydirs="true" deleteonexit="true" />
+                                <delete dir="${project.build.directory}/extracted-jre-linux" includeemptydirs="true" deleteonexit="true" />
+                                <delete dir="${project.build.directory}/extracted-jre-macos" includeemptydirs="true" deleteonexit="true" />
+                                <delete dir="${project.build.directory}/extracted-jre-windows" includeemptydirs="true" deleteonexit="true" />
+                                <delete dir="${project.build.directory}/ballerina-jre-artifacts-zip" includeemptydirs="true" />
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
 
         <resources>
@@ -188,5 +244,7 @@
             </resource>
         </resources>
     </build>
-
+    <properties>
+        <jre.location>target/ballerina-jre-artifacts-zip/ballerina-jre-artifacts-${ballerina.jre.artifacts.version}</jre.location>
+    </properties>
 </project>
