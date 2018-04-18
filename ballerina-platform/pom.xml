@@ -240,6 +240,7 @@
                                 <delete dir="${project.build.directory}/extracted-jre-macos" includeemptydirs="true" deleteonexit="true" />
                                 <delete dir="${project.build.directory}/extracted-jre-windows" includeemptydirs="true" deleteonexit="true" />
                                 <delete dir="${project.build.directory}/ballerina-jre-artifacts-zip" includeemptydirs="true" />
+                                <delete dir="${project.build.directory}/broker-launcher-zip" includeemptydirs="true" />
                             </target>
                         </configuration>
                     </execution>
