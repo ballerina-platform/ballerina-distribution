@@ -18,4 +18,5 @@
 # ---------------------------------------------------------------------------
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
+JAVA_HOME=$DIR/../bre/lib/jre1.8.0_172
 sh $DIR/../bre/lib/message-broker/bin/broker.sh
