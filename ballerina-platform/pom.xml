@@ -50,6 +50,11 @@
             <groupId>org.ballerainax.kubernetes</groupId>
             <artifactId>kubernetes-extension</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.ballerina.messaging</groupId>
+            <artifactId>broker-launcher</artifactId>
+            <type>zip</type>
+        </dependency>
     </dependencies>
 
     <build>
@@ -60,14 +65,14 @@
                 <version>3.0.0</version>
                 <executions>
                     <execution>
-                        <id>unpack-jre</id>
+                        <id>unpack-mb</id>
                         <phase>generate-resources</phase>
                         <goals>
                             <goal>unpack-dependencies</goal>
                         </goals>
                         <configuration>
                             <includeArtifactIds>
-                                ballerina-jre-artifacts
+                                broker-launcher
                             </includeArtifactIds>
                             <outputDirectory>${project.build.directory}
                             </outputDirectory>

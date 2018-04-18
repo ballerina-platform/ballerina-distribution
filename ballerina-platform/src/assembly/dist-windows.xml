@@ -41,6 +41,12 @@
             <outputDirectory>bre/lib/</outputDirectory>
             <fileMode>0755</fileMode>
         </fileSet>
+        <fileSet>
+            <directory>
+                ${project.build.directory}/broker-launcher-zip/message-broker-${ballerina.mb.version}
+            </directory>
+            <outputDirectory>bre/lib/message-broker</outputDirectory>
+        </fileSet>
     </fileSets>
     <files>
         <file>
@@ -51,6 +57,12 @@
         </file>
         <file>
             <source>../resources/executables/windows/ballerina.bat</source>
+            <outputDirectory>bin/</outputDirectory>
+            <filtered>true</filtered>
+            <fileMode>644</fileMode>
+        </file>
+        <file>
+            <source>../resources/executables/windows/broker.bat</source>
             <outputDirectory>bin/</outputDirectory>
             <filtered>true</filtered>
             <fileMode>644</fileMode>
