@@ -30,7 +30,27 @@
             </directory>
             <outputDirectory>.</outputDirectory>
         </fileSet>
+        <fileSet>
+            <directory>
+                ${project.build.directory}/broker-launcher-zip/message-broker-${ballerina.mb.version}
+            </directory>
+            <outputDirectory>bre/lib/message-broker</outputDirectory>
+        </fileSet>
     </fileSets>
+    <files>
+        <file>
+            <source>../resources/executables/common/broker.bat</source>
+            <outputDirectory>bin/</outputDirectory>
+            <filtered>true</filtered>
+            <fileMode>755</fileMode>
+        </file>
+        <file>
+            <source>../resources/executables/common/broker</source>
+            <outputDirectory>bin/</outputDirectory>
+            <filtered>true</filtered>
+            <fileMode>755</fileMode>
+        </file>
+    </files>
     <dependencySets>
         <dependencySet>
             <outputDirectory>bre/lib</outputDirectory>
