@@ -198,7 +198,7 @@
         <ballerina.jre.artifacts.version>0.970.0</ballerina.jre.artifacts.version>
         <ballerina.mb.version>0.1.59</ballerina.mb.version>
         <project.scm.id>ballerina-scm-server</project.scm.id>
-        <docker.version>${project.version}</docker.version>
+        <docker.version>0.970.0-beta3</docker.version>
         <kubernetes.version>${project.version}</kubernetes.version>
     </properties>
 
