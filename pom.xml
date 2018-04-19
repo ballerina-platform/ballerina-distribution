@@ -194,7 +194,7 @@
         </dependencies>
     </dependencyManagement>
     <properties>
-        <ballerina.version>${project.version}</ballerina.version>
+        <ballerina.version>0.970.0-beta3</ballerina.version>
         <ballerina.jre.artifacts.version>0.970.0</ballerina.jre.artifacts.version>
         <ballerina.mb.version>0.1.59</ballerina.mb.version>
         <project.scm.id>ballerina-scm-server</project.scm.id>
