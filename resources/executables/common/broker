@@ -18,4 +18,4 @@
 # ---------------------------------------------------------------------------
 
 DIR=$(dirname "$0")
-sh $DIR/../bre/lib/message-broker/bin/broker.sh
+sh $DIR/../bre/lib/message-broker/bin/broker.sh $@

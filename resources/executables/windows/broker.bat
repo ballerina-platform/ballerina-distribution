@@ -20,4 +20,4 @@ REM ---------------------------------------------------------------------------
 
 set BALLERINA_HOME=%~sdp0..
 set BVM_HOME=%BALLERINA_HOME%\bre\lib\jre1.8.0_172
-%BALLERINA_HOME%..\bre\lib\message-broker\bin\broker.bat
+%BALLERINA_HOME%..\bre\lib\message-broker\bin\broker.bat %*
