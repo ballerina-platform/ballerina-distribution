@@ -19,4 +19,4 @@
 
 [ -f /etc/profile.d/wso2.sh ] && source /etc/profile.d/wso2.sh
 JAVA_HOME=$BALLERINA_HOME/bre/lib/jre1.8.0_172
-sh $BALLERINA_HOME/bre/lib/message-broker/bin/broker.sh
+sh $BALLERINA_HOME/bre/lib/message-broker/bin/broker.sh $@
