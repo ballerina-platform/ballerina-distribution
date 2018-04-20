@@ -71,8 +71,8 @@
         <dependencySet>
             <outputDirectory>bre/lib</outputDirectory>
             <includes>
-                <include>org.ballerainax.docker:docker-extension</include>
-                <include>org.ballerainax.kubernetes:kubernetes-extension</include>
+                <include>org.ballerinax.docker:docker-extension</include>
+                <include>org.ballerinax.kubernetes:kubernetes-extension</include>
             </includes>
             <unpack>false</unpack>
         </dependencySet>
