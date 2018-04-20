@@ -23,7 +23,7 @@
         <version>0.970.0-beta0</version>
     </parent>
     <artifactId>ballerina-distribution</artifactId>
-    <version>0.970.0-beta4-SNAPSHOT</version>
+    <version>0.970.0-beta4</version>
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <description>
@@ -54,7 +54,7 @@
         <url>https://github.com/ballerina-platform/ballerina-distribution.git</url>
         <developerConnection>scm:git:https://github.com/ballerina-platform/ballerina-distribution.git</developerConnection>
         <connection>scm:git:https://github.com/ballerina-platform/ballerina-distribution.git</connection>
-        <tag>HEAD</tag>
+        <tag>v0.970.0-beta4</tag>
     </scm>
 
     <repositories>
