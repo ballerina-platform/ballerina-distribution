@@ -204,7 +204,7 @@
         <ballerina.mb.version>0.1.59</ballerina.mb.version>
         <project.scm.id>ballerina-scm-server</project.scm.id>
         <docker.version>0.970.0-beta5</docker.version>
-        <kubernetes.version>0.970.0-beta4</kubernetes.version>
+        <kubernetes.version>0.970.0-beta5</kubernetes.version>
     </properties>
 
 </project>
