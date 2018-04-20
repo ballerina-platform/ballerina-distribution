@@ -38,6 +38,11 @@
             <type>zip</type>
         </dependency>
         <dependency>
+            <groupId>org.ballerinalang</groupId>
+            <artifactId>ballerina-examples</artifactId>
+            <type>zip</type>
+        </dependency>
+        <dependency>
             <groupId>org.wso2.ballerina.jre.artifacts</groupId>
             <artifactId>ballerina-jre-artifacts</artifactId>
             <type>zip</type>
@@ -73,6 +78,31 @@
                         <configuration>
                             <includeArtifactIds>
                                 broker-launcher
+                            </includeArtifactIds>
+                            <outputDirectory>${project.build.directory}
+                            </outputDirectory>
+                            <overWriteReleases>false</overWriteReleases>
+                            <overWriteSnapshots>true</overWriteSnapshots>
+                            <useSubDirectoryPerArtifact>true</useSubDirectoryPerArtifact>
+                            <stripVersion>true</stripVersion>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>unpack-examples</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeArtifactIds>
+                                ballerina-examples
                             </includeArtifactIds>
                             <outputDirectory>${project.build.directory}
                             </outputDirectory>
@@ -241,6 +271,7 @@
                                 <delete dir="${project.build.directory}/extracted-jre-windows" includeemptydirs="true" deleteonexit="true" />
                                 <delete dir="${project.build.directory}/ballerina-jre-artifacts-zip" includeemptydirs="true" />
                                 <delete dir="${project.build.directory}/broker-launcher-zip" includeemptydirs="true" />
+                                <delete dir="${project.build.directory}/ballerina-examples-zip" includeemptydirs="true" />
                             </target>
                         </configuration>
                     </execution>

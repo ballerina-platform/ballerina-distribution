@@ -22,6 +22,7 @@
         <artifactId>ballerina</artifactId>
         <version>0.970.0-beta4</version>
     </parent>
+    <groupId>org.ballerinalang</groupId>
     <artifactId>ballerina-distribution</artifactId>
     <version>0.970.0-beta5-SNAPSHOT</version>
     <modelVersion>4.0.0</modelVersion>
@@ -164,6 +165,12 @@
             <dependency>
                 <groupId>org.ballerinalang</groupId>
                 <artifactId>ballerina-tools</artifactId>
+                <version>${ballerina.version}</version>
+                <type>zip</type>
+            </dependency>
+            <dependency>
+                <groupId>org.ballerinalang</groupId>
+                <artifactId>ballerina-examples</artifactId>
                 <version>${ballerina.version}</version>
                 <type>zip</type>
             </dependency>
