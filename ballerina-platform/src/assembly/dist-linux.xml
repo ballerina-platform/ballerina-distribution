@@ -47,6 +47,12 @@
             </directory>
             <outputDirectory>bre/lib/message-broker</outputDirectory>
         </fileSet>
+        <fileSet>
+            <directory>
+                ${project.build.directory}/ballerina-examples-zip/ballerina-examples-${ballerina.version}/examples
+            </directory>
+            <outputDirectory>samples</outputDirectory>
+        </fileSet>
     </fileSets>
     <files>
         <file>
