@@ -50,7 +50,7 @@
             <directory>
                 ${project.build.directory}/ballerina-examples-zip/ballerina-examples-${ballerina.version}/examples
             </directory>
-            <outputDirectory>samples</outputDirectory>
+            <outputDirectory>docs/examples</outputDirectory>
         </fileSet>
     </fileSets>
     <files>
