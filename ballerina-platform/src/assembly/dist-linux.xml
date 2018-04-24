@@ -73,6 +73,12 @@
             <filtered>true</filtered>
             <fileMode>755</fileMode>
         </file>
+        <file>
+            <source>lib/version.txt</source>
+            <outputDirectory>lib/</outputDirectory>
+            <filtered>true</filtered>
+            <fileMode>644</fileMode>
+        </file>
     </files>
     <dependencySets>
         <dependencySet>
