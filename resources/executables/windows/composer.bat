@@ -34,7 +34,7 @@ set BASE_DIR=%CD%
 rem ----- Only set BALLERINA_HOME if not already set ----------------------------
 :checkServer
 rem %~sdp0 is expanded pathname of the current script under NT with spaces in the path removed
-if "%BALLERINA_HOME%"=="" set BALLERINA_HOME=%~sdp0..
+set BALLERINA_HOME=%~sdp0..
 set BVM_HOME=%BALLERINA_HOME%\bre\lib\jre1.8.0_172
 SET curDrive=%cd:~0,1%
 SET wsasDrive=%BALLERINA_HOME:~0,1%
