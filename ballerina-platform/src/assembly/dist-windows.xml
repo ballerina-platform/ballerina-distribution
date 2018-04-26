@@ -53,6 +53,12 @@
             </directory>
             <outputDirectory>docs/examples</outputDirectory>
         </fileSet>
+        <fileSet>
+            <directory>
+                ${project.build.directory}/api-docs-ballerinax
+            </directory>
+            <outputDirectory>docs/api/ballerinax</outputDirectory>
+        </fileSet>
     </fileSets>
     <files>
         <file>
