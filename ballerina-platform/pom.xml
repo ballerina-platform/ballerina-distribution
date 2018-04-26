@@ -146,13 +146,15 @@
                 <executions>
                     <execution>
                         <id>unpack-dependencies</id>
-                        <phase>package</phase>
+                        <phase>generate-resources</phase>
                         <goals>
                             <goal>unpack-dependencies</goal>
                         </goals>
                         <configuration>
                             <includeArtifactIds>
-                                ballerina-tools
+                                ballerina-tools,
+                                docker-extension,
+                                kubernetes-extension
                             </includeArtifactIds>
                             <outputDirectory>${project.build.directory}/extracted-distributions
                             </outputDirectory>
@@ -239,6 +241,54 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!-- Docerina -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven.resources.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/extracted-distributions/ballerinax</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.build.directory}/extracted-distributions/docker-extension-jar/META-INF/ballerinax/</directory>
+                                </resource>
+                                <resource>
+                                    <directory>${project.build.directory}/extracted-distributions/kubernetes-extension-jar/META-INF/ballerinax/</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.ballerinalang</groupId>
+                <artifactId>docerina-maven-plugin</artifactId>
+                <version>${ballerina.version}</version>
+                <executions>
+                    <execution>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>docerina</goal>
+                        </goals>
+                        <configuration>
+                            <outputZip>${project.build.directory}/ballerina-api-docs-ballerinax-${project.version}.zip</outputZip>
+                            <outputDir>${project.build.directory}/api-docs-ballerinax</outputDir>
+                            <sourceRoot>${project.build.directory}/extracted-distributions/ballerinax</sourceRoot>
+                            <nativeCode>true</nativeCode>
+                            <packageFilter>compression</packageFilter>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
@@ -272,6 +322,7 @@
                                 <delete dir="${project.build.directory}/ballerina-jre-artifacts-zip" includeemptydirs="true" />
                                 <delete dir="${project.build.directory}/broker-launcher-zip" includeemptydirs="true" />
                                 <delete dir="${project.build.directory}/ballerina-examples-zip" includeemptydirs="true" />
+                                <delete dir="${project.build.directory}/api-docs-ballerinax" includeemptydirs="true" />
                             </target>
                         </configuration>
                     </execution>
