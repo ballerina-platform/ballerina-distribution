@@ -201,7 +201,7 @@
     <properties>
         <ballerina.version>0.970.0-rc1</ballerina.version>
         <ballerina.jre.artifacts.version>0.970.0</ballerina.jre.artifacts.version>
-        <ballerina.mb.version>0.970.0.rc1</ballerina.mb.version>
+        <ballerina.mb.version>0.970.0</ballerina.mb.version>
         <project.scm.id>ballerina-scm-server</project.scm.id>
         <docker.version>0.970.0-rc1</docker.version>
         <kubernetes.version>0.970.0-rc1</kubernetes.version>
