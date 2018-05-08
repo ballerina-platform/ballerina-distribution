@@ -1,0 +1,6 @@
+sudo rm /usr/bin/ballerina
+if [ -f /usr/bin/composer ]; then
+    sudo rm /usr/bin/composer
+fi
+sed -i.bak '/BALLERINA_HOME/d' /etc/profile.d/wso2.sh
+
