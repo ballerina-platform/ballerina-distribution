@@ -34,9 +34,6 @@ rem ----- set BALLERINA_HOME ----------------------------
 rem %~sdp0 is expanded pathname of the current script under NT with spaces in the path removed
 set BALLERINA_HOME=%~sdp0..
 set BVM_HOME=%BALLERINA_HOME%\bre\lib\jre1.8.0_172
-SET curDrive=%cd:~0,1%
-SET ballerinaDrive=%BALLERINA_HOME:~0,1%
-if not "%curDrive%" == "%ballerinaDrive%" %ballerinaDrive%:
 
 goto updateClasspath
 
