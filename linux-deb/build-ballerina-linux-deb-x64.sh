@@ -102,6 +102,8 @@ function copyDebianDirectory() {
     sed -i -e 's/__BALLERINA_VERSION__/'${BALLERINA_VERSION}'/g' target/${BALLERINA_INSTALL_DIRECTORY}/DEBIAN/postrm
     sed -i -e 's/__BALLERINA_VERSION__/'${BALLERINA_VERSION}'/g' target/${BALLERINA_INSTALL_DIRECTORY}/DEBIAN/control
     cp target/${BALLERINA_INSTALL_DIRECTORY}/usr/lib/ballerina/${BALLERINA_INSTALL_DIRECTORY}/COPYRIGHT target/${BALLERINA_INSTALL_DIRECTORY}/DEBIAN/copyright
+    chmod 755 target/${BALLERINA_INSTALL_DIRECTORY}/DEBIAN/postrm
+    chmod 755 target/${BALLERINA_INSTALL_DIRECTORY}/DEBIAN/postinst
 }
 
 function createBallerinaPlatform() {
@@ -111,7 +113,7 @@ function createBallerinaPlatform() {
     createPackInstallationDirectory
     copyDebianDirectory
     mv target/${BALLERINA_INSTALL_DIRECTORY} target/ballerina-platform-linux-installer-x64-${BALLERINA_VERSION}
-    dpkg-deb --build target/ballerina-platform-linux-installer-x64-${BALLERINA_VERSION}
+    fakeroot dpkg-deb --build target/ballerina-platform-linux-installer-x64-${BALLERINA_VERSION}
 }
 
 function createBallerinaRuntime() {
@@ -121,7 +123,7 @@ function createBallerinaRuntime() {
     createPackInstallationDirectory
     copyDebianDirectory
     mv target/${BALLERINA_INSTALL_DIRECTORY} target/ballerina-runtime-linux-installer-x64-${BALLERINA_VERSION}
-    dpkg-deb --build target/ballerina-runtime-linux-installer-x64-${BALLERINA_VERSION}
+    fakeroot dpkg-deb --build target/ballerina-runtime-linux-installer-x64-${BALLERINA_VERSION}
 }
 
 deleteTargetDirectory
