@@ -52,8 +52,21 @@
             <artifactId>docker-extension</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.ballerinax.docker</groupId>
+            <artifactId>docker-extension</artifactId>
+            <type>zip</type>
+            <classifier>ballerina-binary-repo</classifier>
+            <version>${docker.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.ballerinax.kubernetes</groupId>
             <artifactId>kubernetes-extension</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinax.kubernetes</groupId>
+            <artifactId>kubernetes-extension</artifactId>
+            <type>zip</type>
+            <classifier>ballerina-binary-repo</classifier>
         </dependency>
         <dependency>
             <groupId>io.ballerina.messaging</groupId>
@@ -64,6 +77,23 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>unpack-balo</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeClassifiers>ballerina-binary-repo</includeClassifiers>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
