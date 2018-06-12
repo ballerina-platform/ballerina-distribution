@@ -26,6 +26,12 @@
     <fileSets>
         <fileSet>
             <directory>
+                ${project.build.directory}/lib/repo/ballerinax
+            </directory>
+            <outputDirectory>lib/repo/ballerinax</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>
                 ${project.build.directory}/extracted-distributions/ballerina-zip/ballerina-${project.version}
             </directory>
             <outputDirectory>.</outputDirectory>
@@ -56,6 +62,10 @@
                 <include>org.ballerinax.docker:docker-extension</include>
                 <include>org.ballerinax.kubernetes:kubernetes-extension</include>
             </includes>
+            <excludes>
+                <exclude>org.ballerinax.docker:docker-extension:zip</exclude>
+                <exclude>org.ballerinax.kubernetes:kubernetes-extension:zip</exclude>
+            </excludes>
             <unpack>false</unpack>
         </dependencySet>
     </dependencySets>

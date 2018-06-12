@@ -186,8 +186,22 @@
                 <version>${docker.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.ballerinax.docker</groupId>
+                <artifactId>docker-extension</artifactId>
+                <type>zip</type>
+                <classifier>ballerina-binary-repo</classifier>
+                <version>${docker.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.ballerinax.kubernetes</groupId>
                 <artifactId>kubernetes-extension</artifactId>
+                <version>${kubernetes.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ballerinax.kubernetes</groupId>
+                <artifactId>kubernetes-extension</artifactId>
+                <type>zip</type>
+                <classifier>ballerina-binary-repo</classifier>
                 <version>${kubernetes.version}</version>
             </dependency>
             <dependency>
