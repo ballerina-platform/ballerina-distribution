@@ -2,6 +2,8 @@
 
 The Ballerina distribution includes both platform and runtime components.
 
+## About Ballerina
+
 Ballerina makes it easy to write microservices that integrate APIs.
 
 #### Integration Syntax
