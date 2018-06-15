@@ -318,7 +318,54 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <executions>
+                    <execution>
+                        <id>set-sys-prop</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>set-system-properties</goal>
+                        </goals>
+                        <configuration>
+                            <properties>
+                                <property>
+                                    <name>BALLERINA_DEV_COMPILE_BALLERINA_ORG</name>
+                                    <value>true</value>
+                                </property>
 
+                                <property>
+                                    <name>BALLERINA_DEV_LOAD_BUILTIN_FROM_SOURCE</name>
+                                    <value>false</value>
+                                </property>
+
+                                <property>
+                                    <name>ballerina.home</name>
+                                    <value>${project.build.directory}</value>
+                                </property>
+                            </properties>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>unset-sys-prop</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>set-system-properties</goal>
+                        </goals>
+                        <configuration>
+                            <properties>
+                                <property>
+                                    <name>BALLERINA_DEV_COMPILE_BALLERINA_ORG</name>
+                                    <value>false</value>
+                                </property>
+                            </properties>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
