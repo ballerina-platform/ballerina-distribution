@@ -35,7 +35,7 @@ cp -r bin bre lib docs src %{buildroot}%{_libdir}/ballerina/%{_ballerina_name}-p
 
 %post
 ln -sf %{_libdir}/ballerina/%{_ballerina_name}-platform-%{_ballerina_version}/bin/ballerina /usr/bin/%{_ballerina_name}
-ln -sf %{_libdir}/ballerina/%{_ballerina_name}-platform-%{_ballerina_version}/bin/composer /usr/bin/composer
+ln -sf %{_libdir}/ballerina/%{_ballerina_name}-platform-%{_ballerina_version}/lib/resources/composer/app/ballerina-composer /usr/bin/composer
 echo 'export BALLERINA_HOME=' >> /etc/profile.d/wso2.sh
 chmod 0755 /etc/profile.d/wso2.sh
 
@@ -47,7 +47,7 @@ then
   rm -f /usr/bin/ballerina
 fi
 
-if [ "$(readlink /usr/bin/composer)" = "%{_libdir}/ballerina/ballerina-platform-%{_ballerina_version}/bin/composer" ]
+if [ "$(readlink /usr/bin/composer)" = "%{_libdir}/ballerina/ballerina-platform-%{_ballerina_version}/lib/resources/composer/app/ballerina-composer" ]
 then
   rm -f /usr/bin/composer
 fi
