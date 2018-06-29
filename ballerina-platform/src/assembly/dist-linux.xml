@@ -56,12 +56,6 @@
         </fileSet>
         <fileSet>
             <directory>
-                ${project.build.directory}/ballerina-examples-zip/ballerina-examples-${ballerina.version}/examples
-            </directory>
-            <outputDirectory>docs/examples</outputDirectory>
-        </fileSet>
-        <fileSet>
-            <directory>
                 ${project.build.directory}/api-docs-ballerinax
             </directory>
             <outputDirectory>docs/api/ballerinax</outputDirectory>
