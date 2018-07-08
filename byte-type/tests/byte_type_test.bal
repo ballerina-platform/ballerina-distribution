@@ -18,12 +18,13 @@ public function mockPrint(any... s) {
 function testFunc() {
     // Invoking the main function
     main();
-    test:assertEquals(0, outputs[0]);
-    test:assertEquals(1, outputs[1]);
-    test:assertEquals(8, outputs[2]);
-    test:assertEquals(23, outputs[3]);
-    test:assertEquals(1000, outputs[4]);
-    test:assertEquals(3, outputs[5]);
-    test:assertEquals(3, outputs[6]);
-    test:assertEquals(9, outputs[7]);
+    test:assertEquals(outputs[0], 12);
+    test:assertEquals(outputs[1], 4);
+    test:assertEquals(outputs[2], 24);
+    test:assertEquals(outputs[3], 13);
+    test:assertEquals(outputs[4], 205);
+    test:assertEquals(outputs[5], 19);
+    test:assertEquals(outputs[6], 108);
+    test:assertEquals(outputs[7], 3);
+    test:assertEquals(outputs[8], 6);
 }
