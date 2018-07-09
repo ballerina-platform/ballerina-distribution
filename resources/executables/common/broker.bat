@@ -18,5 +18,5 @@ REM  specific language governing permissions and limitations
 REM  under the License.
 REM ---------------------------------------------------------------------------
 
-set BALLERINA_HOME=%~sdp0..
-%BALLERINA_HOME%..\bre\lib\message-broker\bin\broker.bat
+set BALLERINA_BROKER_HOME=%~dp0
+%BALLERINA_BROKER_HOME%..\bre\lib\message-broker\bin\broker.bat
