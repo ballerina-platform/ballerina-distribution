@@ -68,27 +68,39 @@
             <artifactId>broker-launcher</artifactId>
             <type>zip</type>
         </dependency>
+        <dependency>
+            <groupId>org.ballerinax.kubernetes</groupId>
+            <artifactId>kubernetes-extension</artifactId>
+            <type>zip</type>
+            <classifier>ballerina-sources</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinax.docker</groupId>
+            <artifactId>docker-extension</artifactId>
+            <type>zip</type>
+            <classifier>ballerina-sources</classifier>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>unpack-balo</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>unpack-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <includeClassifiers>ballerina-binary-repo</includeClassifiers>
-                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <executions>
+                <execution>
+                    <id>unpack-balo</id>
+                    <phase>generate-resources</phase>
+                    <goals>
+                        <goal>unpack-dependencies</goal>
+                    </goals>
+                    <configuration>
+                        <includeClassifiers>ballerina-binary-repo</includeClassifiers>
+                        <outputDirectory>${project.build.directory}/extracted-lib</outputDirectory>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -249,21 +261,66 @@
                 <version>${maven.resources.plugin.version}</version>
                 <executions>
                     <execution>
+                    <id>copy-lib</id>
+                    <phase>process-resources</phase>
+                    <goals>
+                        <goal>copy-resources</goal>
+                    </goals>
+                    <configuration>
+                        <outputDirectory>${project.build.directory}/lib/repo/ballerina</outputDirectory>
+                        <resources>
+                            <resource>
+                                <directory>${project.build.directory}/extracted-lib/repo/ballerina</directory>
+                            </resource>
+                        </resources>
+                    </configuration>
+                </execution>
+                    <execution>
                         <id>copy-resources</id>
                         <phase>process-resources</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/extracted-distributions/ballerinax</outputDirectory>
+                            <outputDirectory>${project.build.directory}/extracted-distributions</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>${project.build.directory}/extracted-distributions/docker-extension-jar/META-INF/ballerinax/</directory>
+                                    <directory>${project.build.directory}/extracted-distributions/docker-extension-ballerina-sources-zip/ballerina</directory>
                                 </resource>
                                 <resource>
-                                    <directory>${project.build.directory}/extracted-distributions/kubernetes-extension-jar/META-INF/ballerinax/</directory>
+                                    <directory>${project.build.directory}/extracted-distributions/kubernetes-extension-ballerina-sources-zip/ballerina</directory>
                                 </resource>
                             </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <executions>
+                    <execution>
+                        <id>set-sys-prop</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>set-system-properties</goal>
+                        </goals>
+                        <configuration>
+                            <properties>
+                                <property>
+                                    <name>java.util.logging.manager</name>
+                                    <value>org.ballerinalang.logging.BLogManager</value>
+                                </property>
+                                <property>
+                                    <name>BALLERINA_DEV_COMPILE_BALLERINA_ORG</name>
+                                    <value>true</value>
+                                </property>
+                                <property>
+                                    <name>ballerina.home</name>
+                                    <value>${project.build.directory}</value>
+                                </property>
+                            </properties>
                         </configuration>
                     </execution>
                 </executions>
@@ -284,54 +341,6 @@
                             <sourceRoot>${project.build.directory}/extracted-distributions/ballerinax</sourceRoot>
                             <nativeCode>true</nativeCode>
                             <packageFilter>compression</packageFilter>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>properties-maven-plugin</artifactId>
-                <version>1.0.0</version>
-                <executions>
-                    <execution>
-                        <id>set-sys-prop</id>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>set-system-properties</goal>
-                        </goals>
-                        <configuration>
-                            <properties>
-                                <property>
-                                    <name>BALLERINA_DEV_COMPILE_BALLERINA_ORG</name>
-                                    <value>true</value>
-                                </property>
-
-                                <property>
-                                    <name>BALLERINA_DEV_LOAD_BUILTIN_FROM_SOURCE</name>
-                                    <value>false</value>
-                                </property>
-
-                                <property>
-                                    <name>ballerina.home</name>
-                                    <value>${project.build.directory}</value>
-                                </property>
-                            </properties>
-                        </configuration>
-                    </execution>
-
-                    <execution>
-                        <id>unset-sys-prop</id>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>set-system-properties</goal>
-                        </goals>
-                        <configuration>
-                            <properties>
-                                <property>
-                                    <name>BALLERINA_DEV_COMPILE_BALLERINA_ORG</name>
-                                    <value>false</value>
-                                </property>
-                            </properties>
                         </configuration>
                     </execution>
                 </executions>

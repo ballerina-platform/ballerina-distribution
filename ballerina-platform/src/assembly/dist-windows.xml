@@ -26,7 +26,7 @@
     <fileSets>
         <fileSet>
             <directory>
-                ${project.build.directory}/lib/repo/ballerinax
+                ${project.build.directory}/extracted-lib/repo/ballerinax
             </directory>
             <outputDirectory>lib/repo/ballerinax</outputDirectory>
             <fileMode>0444</fileMode>
