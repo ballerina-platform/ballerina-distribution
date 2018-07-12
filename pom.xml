@@ -204,6 +204,20 @@
                 <version>${ballerina.mb.version}</version>
                 <type>zip</type>
             </dependency>
+            <dependency>
+                <groupId>org.ballerinax.kubernetes</groupId>
+                <artifactId>kubernetes-extension</artifactId>
+                <type>zip</type>
+                <classifier>ballerina-sources</classifier>
+                <version>${kubernetes.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ballerinax.docker</groupId>
+                <artifactId>docker-extension</artifactId>
+                <type>zip</type>
+                <classifier>ballerina-sources</classifier>
+                <version>${docker.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <properties>
