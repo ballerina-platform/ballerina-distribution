@@ -341,6 +341,7 @@
                             <sourceRoot>${project.build.directory}/extracted-distributions/ballerinax</sourceRoot>
                             <nativeCode>true</nativeCode>
                             <packageFilter>compression</packageFilter>
+                            <offline>true</offline>
                         </configuration>
                     </execution>
                 </executions>
