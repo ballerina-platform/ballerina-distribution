@@ -92,7 +92,7 @@ set CMD=RUN %*
 
 :checkJdk8AndHigher
 set JVER=
-for /f tokens^=2-5^ delims^=.-_^" %%j in ('"%JAVA_HOME%\bin\java" -fullversion 2^>^&1') do set "JVER=%%j%%k"
+for /f tokens^=2-5^ delims^=.-_^" %%j in ('"%BVM_HOME%\bin\java" -fullversion 2^>^&1') do set "JVER=%%j%%k"
 set JAVA_MODULES=
 rem In, JDK9 or above need to import 'java.corba' module
 if %JVER% GEQ 90 set JAVA_MODULES="--add-modules java.corba"
