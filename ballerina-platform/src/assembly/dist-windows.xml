@@ -69,12 +69,6 @@
             <fileMode>644</fileMode>
         </file>
         <file>
-            <source>../resources/executables/windows/broker.bat</source>
-            <outputDirectory>bin/</outputDirectory>
-            <filtered>true</filtered>
-            <fileMode>644</fileMode>
-        </file>
-        <file>
             <source>lib/version.txt</source>
             <outputDirectory>lib/</outputDirectory>
             <filtered>true</filtered>
