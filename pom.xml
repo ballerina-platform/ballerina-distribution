@@ -199,12 +199,6 @@
                 <version>${kubernetes.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.ballerina.messaging</groupId>
-                <artifactId>broker-launcher</artifactId>
-                <version>${ballerina.mb.version}</version>
-                <type>zip</type>
-            </dependency>
-            <dependency>
                 <groupId>org.ballerinax.kubernetes</groupId>
                 <artifactId>kubernetes-extension</artifactId>
                 <type>zip</type>
@@ -223,7 +217,6 @@
     <properties>
         <ballerina.version>0.981.2-SNAPSHOT</ballerina.version>
         <ballerina.jre.artifacts.version>1.0.0</ballerina.jre.artifacts.version>
-        <ballerina.mb.version>0.970.0</ballerina.mb.version>
         <project.scm.id>ballerina-scm-server</project.scm.id>
         <docker.version>0.981.2-SNAPSHOT</docker.version>
         <kubernetes.version>0.981.2-SNAPSHOT</kubernetes.version>

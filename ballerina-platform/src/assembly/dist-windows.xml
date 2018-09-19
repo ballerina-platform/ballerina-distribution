@@ -50,12 +50,6 @@
         </fileSet>
         <fileSet>
             <directory>
-                ${project.build.directory}/broker-launcher-zip/message-broker-${ballerina.mb.version}
-            </directory>
-            <outputDirectory>bre/lib/message-broker</outputDirectory>
-        </fileSet>
-        <fileSet>
-            <directory>
                 ${project.build.directory}/api-docs-ballerinax
             </directory>
             <outputDirectory>docs/api/ballerinax</outputDirectory>
