@@ -49,12 +49,6 @@
         </fileSet>
         <fileSet>
             <directory>
-                ${project.build.directory}/broker-launcher-zip/message-broker-${ballerina.mb.version}
-            </directory>
-            <outputDirectory>bre/lib/message-broker</outputDirectory>
-        </fileSet>
-        <fileSet>
-            <directory>
                 ${project.build.directory}/api-docs-ballerinax
             </directory>
             <outputDirectory>docs/api/ballerinax</outputDirectory>
@@ -69,12 +63,6 @@
         </file>
         <file>
             <source>../resources/executables/macos/ballerina</source>
-            <outputDirectory>bin/</outputDirectory>
-            <filtered>true</filtered>
-            <fileMode>755</fileMode>
-        </file>
-        <file>
-            <source>../resources/executables/macos/broker</source>
             <outputDirectory>bin/</outputDirectory>
             <filtered>true</filtered>
             <fileMode>755</fileMode>

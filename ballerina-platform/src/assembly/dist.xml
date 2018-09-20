@@ -39,30 +39,12 @@
         </fileSet>
         <fileSet>
             <directory>
-                ${project.build.directory}/broker-launcher-zip/message-broker-${ballerina.mb.version}
-            </directory>
-            <outputDirectory>bre/lib/message-broker</outputDirectory>
-        </fileSet>
-        <fileSet>
-            <directory>
                 ${project.build.directory}/api-docs-ballerinax
             </directory>
             <outputDirectory>docs/api/ballerinax</outputDirectory>
         </fileSet>
     </fileSets>
     <files>
-        <file>
-            <source>../resources/executables/common/broker.bat</source>
-            <outputDirectory>bin/</outputDirectory>
-            <filtered>true</filtered>
-            <fileMode>755</fileMode>
-        </file>
-        <file>
-            <source>../resources/executables/common/broker</source>
-            <outputDirectory>bin/</outputDirectory>
-            <filtered>true</filtered>
-            <fileMode>755</fileMode>
-        </file>
         <file>
             <source>lib/version.txt</source>
             <outputDirectory>lib/</outputDirectory>
