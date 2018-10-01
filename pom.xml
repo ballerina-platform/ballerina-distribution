@@ -24,7 +24,7 @@
     </parent>
     <groupId>org.ballerinalang</groupId>
     <artifactId>ballerina-distribution</artifactId>
-    <version>0.981.2-SNAPSHOT</version>
+    <version>0.982.1-SNAPSHOT</version>
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <description>
@@ -215,11 +215,11 @@
         </dependencies>
     </dependencyManagement>
     <properties>
-        <ballerina.version>0.981.2-SNAPSHOT</ballerina.version>
+        <ballerina.version>0.982.0</ballerina.version>
         <ballerina.jre.artifacts.version>1.0.0</ballerina.jre.artifacts.version>
         <project.scm.id>ballerina-scm-server</project.scm.id>
-        <docker.version>0.981.2-SNAPSHOT</docker.version>
-        <kubernetes.version>0.981.2-SNAPSHOT</kubernetes.version>
+        <docker.version>0.982.0</docker.version>
+        <kubernetes.version>0.982.0</kubernetes.version>
     </properties>
 
 </project>
