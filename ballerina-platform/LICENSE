@@ -31,7 +31,6 @@ ballerina-packerina-0.964.0.jar                                                 
 commons-lang3-3.5.jar                                                           bundle         apache2   2105
 commons-logging-1.2.jar                                                         bundle         apache2   1702
 commons-pool-1.5.6.wso2v1.jar                                                   bundle         apache2   5589
-composer-server-distribution-0.964.0.jar                                        jar            apache2   2936
 docerina-0.964.0.jar                                                            jar            apache2   2933
 geronimo-activation_1.1_spec-1.1.jar                                            bundle         apache2   2103
 geronimo-stax-api_1.0_spec-1.0.1.jar                                            bundle         apache2   635
