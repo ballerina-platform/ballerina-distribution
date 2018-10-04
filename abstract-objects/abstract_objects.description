@@ -1,3 +1,0 @@
-// In Ballerina, objects can be abstract. Abstract objects only describe the type of
-// each field and method. An abstract object cannot be initialized, and does not have 
-// a default value.
