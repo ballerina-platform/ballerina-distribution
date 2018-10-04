@@ -1,6 +1,3 @@
 ln -sf /usr/lib/ballerina/ballerina-__BALLERINA_VERSION__/bin/ballerina /usr/bin/ballerina
-if [ -f /usr/lib/ballerina/ballerina-__BALLERINA_VERSION__/lib/resources/composer/app/ballerina-composer ]; then
-    ln -sf /usr/lib/ballerina/ballerina-__BALLERINA_VERSION__/lib/resources/composer/app/ballerina-composer /usr/bin/composer
-fi
 echo "export BALLERINA_HOME=/usr/lib/ballerina/ballerina-__BALLERINA_VERSION__" >> /etc/profile.d/wso2.sh
 

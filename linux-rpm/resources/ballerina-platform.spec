@@ -21,7 +21,6 @@ Ballerina allows you to code with a statically-typed, interaction-centric progra
 
 %pre
 rm -f /usr/bin/ballerina > /dev/null 2>&1
-rm -f /usr/bin/composer > /dev/null 2>&1
 
 %prep
 rm -rf %{_topdir}/BUILD/*
@@ -35,7 +34,6 @@ cp -r bin bre lib docs src %{buildroot}%{_libdir}/ballerina/%{_ballerina_name}-p
 
 %post
 ln -sf %{_libdir}/ballerina/%{_ballerina_name}-platform-%{_ballerina_version}/bin/ballerina /usr/bin/%{_ballerina_name}
-ln -sf %{_libdir}/ballerina/%{_ballerina_name}-platform-%{_ballerina_version}/lib/resources/composer/app/ballerina-composer /usr/bin/composer
 echo 'export BALLERINA_HOME=' >> /etc/profile.d/wso2.sh
 chmod 0755 /etc/profile.d/wso2.sh
 
@@ -45,11 +43,6 @@ sed -i.bak '\:SED_BALLERINA_HOME:d' /etc/profile.d/wso2.sh
 if [ "$(readlink /usr/bin/ballerina)" = "%{_libdir}/ballerina/ballerina-platform-%{_ballerina_version}/bin/ballerina" ]
 then
   rm -f /usr/bin/ballerina
-fi
-
-if [ "$(readlink /usr/bin/composer)" = "%{_libdir}/ballerina/ballerina-platform-%{_ballerina_version}/lib/resources/composer/app/ballerina-composer" ]
-then
-  rm -f /usr/bin/composer
 fi
 
 %clean
