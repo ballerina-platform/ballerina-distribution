@@ -11,10 +11,10 @@ function printUsage() {
     echo "    -d (--dist)"
     echo "        ballerina distribution type either of the followings"
     echo "        If not specified both distributions will be built"
-    echo "        1. ballerina-platform"
+    echo "        1. ballerina"
     echo "        2. ballerina-runtime"
     echo "eg: $0 -v 1.0.0 -p /home/username/Packs"
-    echo "eg: $0 -v 1.0.0 -p /home/username/Packs -d ballerina-platform"
+    echo "eg: $0 -v 1.0.0 -p /home/username/Packs -d ballerina"
 }
 
 BUILD_ALL_DISTRIBUTIONS=false
@@ -66,11 +66,11 @@ fi
 
 
 BALLERINA_DISTRIBUTION_LOCATION=${DIST_PATH}
-BALLERINA_PLATFORM=ballerina-platform-linux-${BALLERINA_VERSION}
+BALLERINA_PLATFORM=ballerina-linux-${BALLERINA_VERSION}
 BALLERINA_RUNTIME=ballerina-runtime-linux-${BALLERINA_VERSION}
 BALLERINA_INSTALL_DIRECTORY=ballerina-${BALLERINA_VERSION}
 RUNTIME_SPEC_FILE="ballerina-runtime.spec"
-PLATFORM_SPEC_FILE="ballerina-platform.spec"
+PLATFORM_SPEC_FILE="ballerina.spec"
 SPEC_FILES_LOCATION="rpmbuild/SPECS/"
 PLATFORM_SPEC_FILE_LOC=${SPEC_FILES_LOCATION}/${PLATFORM_SPEC_FILE}
 RUNTIME_SPEC_FILE_LOC=${SPEC_FILES_LOCATION}/${RUNTIME_SPEC_FILE}
@@ -113,8 +113,8 @@ function setupVersion_platform() {
     sed -i "/Version:/c\Version:        ${RPM_BALLERINA_VERSION}" ${PLATFORM_SPEC_FILE_LOC}
     sed -i "/%define _ballerina_version/c\%define _ballerina_version ${BALLERINA_VERSION}" ${PLATFORM_SPEC_FILE_LOC}
     sed -i "/%define _ballerina_tools_dir/c\%define _ballerina_tools_dir ${BALLERINA_PLATFORM}" ${PLATFORM_SPEC_FILE_LOC}
-    sed -i "s/export BALLERINA_HOME=/export BALLERINA_HOME=\/usr\/lib64\/ballerina\/ballerina-platform-${BALLERINA_VERSION}/" ${PLATFORM_SPEC_FILE_LOC}
-    sed -i "s?SED_BALLERINA_HOME?/usr/lib64/ballerina/ballerina-platform-${BALLERINA_VERSION}?" ${PLATFORM_SPEC_FILE_LOC}
+    sed -i "s/export BALLERINA_HOME=/export BALLERINA_HOME=\/usr\/lib64\/ballerina\/ballerina-${BALLERINA_VERSION}/" ${PLATFORM_SPEC_FILE_LOC}
+    sed -i "s?SED_BALLERINA_HOME?/usr/lib64/ballerina/ballerina-${BALLERINA_VERSION}?" ${PLATFORM_SPEC_FILE_LOC}
 }
 
 # Create Ballerina Platform RPM
@@ -158,7 +158,7 @@ if [ "$BUILD_ALL_DISTRIBUTIONS" == "true" ]; then
     createBallerinaPlatform
     createBallerinaRuntime 
 else
-    if [ "$DISTRIBUTION" == "ballerina-platform" ]; then
+    if [ "$DISTRIBUTION" == "ballerina" ]; then
         echo "Creating Ballerina Platform"
         createBallerinaPlatform
     elif [ "$DISTRIBUTION" == "ballerina-runtime" ]; then

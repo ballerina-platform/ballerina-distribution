@@ -2,7 +2,7 @@
 %define _ballerina_version
 %define _ballerina_tools_dir
 
-Name:           ballerina-platform
+Name:           ballerina
 Version:
 Release:        1
 Summary:        Ballerina is a general purpose, concurrent and strongly typed programming language with both textual and graphical syntaxes, optimized for integration.
@@ -12,7 +12,7 @@ URL:            https://ballerina.io/
 # Disable Automatic Dependencies
 AutoReqProv: no
 # Override RPM file name
-%define _rpmfilename %%{ARCH}/ballerina-platform-linux-installer-x64-%{_ballerina_version}.rpm
+%define _rpmfilename %%{ARCH}/ballerina-linux-installer-x64-%{_ballerina_version}.rpm
 # Disable Jar repacking
 %define __jar_repack %{nil}
 
@@ -40,7 +40,7 @@ chmod 0755 /etc/profile.d/wso2.sh
 %postun
 sed -i.bak '\:SED_BALLERINA_HOME:d' /etc/profile.d/wso2.sh
 
-if [ "$(readlink /usr/bin/ballerina)" = "%{_libdir}/ballerina/ballerina-platform-%{_ballerina_version}/bin/ballerina" ]
+if [ "$(readlink /usr/bin/ballerina)" = "%{_libdir}/ballerina/ballerina-%{_ballerina_version}/bin/ballerina" ]
 then
   rm -f /usr/bin/ballerina
 fi

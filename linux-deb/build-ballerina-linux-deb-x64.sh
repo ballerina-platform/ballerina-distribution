@@ -11,10 +11,10 @@ function printUsage() {
     echo "    -d (--dist)"
     echo "        ballerina distribution type either of the followings"
     echo "        If not specified both distributions will be built"
-    echo "        1. ballerina-platform"
+    echo "        1. ballerina"
     echo "        2. ballerina-runtime"
     echo "eg: $0 -v 1.0.0 -p /home/username/Packs"
-    echo "eg: $0 -v 1.0.0 -p /home/username/Packs -d ballerina-platform"
+    echo "eg: $0 -v 1.0.0 -p /home/username/Packs -d ballerina"
 }
 
 BUILD_ALL_DISTRIBUTIONS=false
@@ -63,7 +63,7 @@ if [ -z "$DISTRIBUTION" ]; then
 fi
 
 BALLERINA_DISTRIBUTION_LOCATION=${DIST_PATH}
-BALLERINA_PLATFORM=ballerina-platform-linux-${BALLERINA_VERSION}
+BALLERINA_PLATFORM=ballerina-linux-${BALLERINA_VERSION}
 BALLERINA_RUNTIME=ballerina-runtime-linux-${BALLERINA_VERSION}
 BALLERINA_INSTALL_DIRECTORY=ballerina-${BALLERINA_VERSION}
 
@@ -112,8 +112,8 @@ function createBallerinaPlatform() {
     extractPack "$BALLERINA_DISTRIBUTION_LOCATION/$BALLERINA_PLATFORM.zip" ${BALLERINA_PLATFORM}
     createPackInstallationDirectory
     copyDebianDirectory
-    mv target/${BALLERINA_INSTALL_DIRECTORY} target/ballerina-platform-linux-installer-x64-${BALLERINA_VERSION}
-    fakeroot dpkg-deb --build target/ballerina-platform-linux-installer-x64-${BALLERINA_VERSION}
+    mv target/${BALLERINA_INSTALL_DIRECTORY} target/ballerina-linux-installer-x64-${BALLERINA_VERSION}
+    fakeroot dpkg-deb --build target/ballerina-linux-installer-x64-${BALLERINA_VERSION}
 }
 
 function createBallerinaRuntime() {
@@ -133,7 +133,7 @@ if [ "$BUILD_ALL_DISTRIBUTIONS" == "true" ]; then
     createBallerinaPlatform
     createBallerinaRuntime 
 else
-    if [ "$DISTRIBUTION" == "ballerina-platform" ]; then
+    if [ "$DISTRIBUTION" == "ballerina" ]; then
         echo "Creating Ballerina Platform"
         createBallerinaPlatform
     elif [ "$DISTRIBUTION" == "ballerina-runtime" ]; then
