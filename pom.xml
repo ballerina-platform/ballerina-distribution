@@ -187,6 +187,18 @@
                 <version>${docker.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.ballerinax.jdbc</groupId>
+                <artifactId>jdbc-extension</artifactId>
+                <version>${jdbc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ballerinax.jdbc</groupId>
+                <artifactId>jdbc-extension</artifactId>
+                <type>zip</type>
+                <classifier>ballerina-binary-repo</classifier>
+                <version>${jdbc.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.ballerinax.kubernetes</groupId>
                 <artifactId>kubernetes-extension</artifactId>
                 <version>${kubernetes.version}</version>
@@ -212,6 +224,13 @@
                 <classifier>ballerina-sources</classifier>
                 <version>${docker.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.ballerinax.jdbc</groupId>
+                <artifactId>jdbc-extension</artifactId>
+                <type>zip</type>
+                <classifier>ballerina-sources</classifier>
+                <version>${jdbc.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <properties>
@@ -220,6 +239,7 @@
         <project.scm.id>ballerina-scm-server</project.scm.id>
         <docker.version>0.982.1-SNAPSHOT</docker.version>
         <kubernetes.version>0.982.1-SNAPSHOT</kubernetes.version>
+        <jdbc.version>0.982.1-SNAPSHOT</jdbc.version>
     </properties>
 
 </project>

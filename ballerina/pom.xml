@@ -54,6 +54,16 @@
             <version>${docker.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.ballerinax.jdbc</groupId>
+            <artifactId>jdbc-extension</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinax.jdbc</groupId>
+            <artifactId>jdbc-extension</artifactId>
+            <type>zip</type>
+            <classifier>ballerina-binary-repo</classifier>
+        </dependency>
+        <dependency>
             <groupId>org.ballerinax.kubernetes</groupId>
             <artifactId>kubernetes-extension</artifactId>
         </dependency>
@@ -72,6 +82,12 @@
         <dependency>
             <groupId>org.ballerinax.docker</groupId>
             <artifactId>docker-extension</artifactId>
+            <type>zip</type>
+            <classifier>ballerina-sources</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinax.jdbc</groupId>
+            <artifactId>jdbc-extension</artifactId>
             <type>zip</type>
             <classifier>ballerina-sources</classifier>
         </dependency>
@@ -136,7 +152,8 @@
                             <includeArtifactIds>
                                 ballerina-tools,
                                 docker-extension,
-                                kubernetes-extension
+                                kubernetes-extension,
+                                jdbc-extension
                             </includeArtifactIds>
                             <outputDirectory>${project.build.directory}/extracted-distributions
                             </outputDirectory>
@@ -259,6 +276,9 @@
                                 </resource>
                                 <resource>
                                     <directory>${project.build.directory}/extracted-distributions/kubernetes-extension-ballerina-sources-zip/ballerina</directory>
+                                </resource>
+                                <resource>
+                                    <directory>${project.build.directory}/extracted-distributions/jdbc-extension-ballerina-sources-zip/ballerina</directory>
                                 </resource>
                             </resources>
                         </configuration>

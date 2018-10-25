@@ -62,6 +62,16 @@
             <type>zip</type>
             <classifier>ballerina-binary-repo</classifier>
         </dependency>
+        <dependency>
+            <groupId>org.ballerinax.jdbc</groupId>
+            <artifactId>jdbc-extension</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinax.jdbc</groupId>
+            <artifactId>jdbc-extension</artifactId>
+            <type>zip</type>
+            <classifier>ballerina-binary-repo</classifier>
+        </dependency>
     </dependencies>
 
     <build>
