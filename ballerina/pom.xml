@@ -26,10 +26,10 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>ballerina</artifactId>
+    <artifactId>ballerina-platform</artifactId>
     <packaging>pom</packaging>
 
-    <name>Ballerina - Tools Distribution</name>
+    <name>Ballerina - Distribution</name>
 
     <dependencies>
         <dependency>
