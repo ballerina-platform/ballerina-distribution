@@ -166,7 +166,7 @@
                             <descriptors>
                                 <descriptor>${basedir}/src/assembly/dist.xml</descriptor>
                             </descriptors>
-                            <finalName>${project.artifactId}-${project.version}</finalName>
+                            <finalName>${distribution.name}-${project.version}</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                     </execution>
@@ -183,7 +183,7 @@
                             <descriptors>
                                 <descriptor>${basedir}/src/assembly/dist-linux.xml</descriptor>
                             </descriptors>
-                            <finalName>${project.artifactId}-linux-${project.version}</finalName>
+                            <finalName>${distribution.name}-linux-${project.version}</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                     </execution>
@@ -200,7 +200,7 @@
                             <descriptors>
                                 <descriptor>src/assembly/dist-macos.xml</descriptor>
                             </descriptors>
-                            <finalName>${project.artifactId}-macos-${project.version}</finalName>
+                            <finalName>${distribution.name}-macos-${project.version}</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                     </execution>
@@ -217,7 +217,7 @@
                             <descriptors>
                                 <descriptor>${basedir}/src/assembly/dist-windows.xml</descriptor>
                             </descriptors>
-                            <finalName>${project.artifactId}-windows-${project.version}</finalName>
+                            <finalName>${distribution.name}-windows-${project.version}</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                     </execution>
@@ -368,5 +368,6 @@
     </build>
     <properties>
         <jre.location>target/ballerina-jre-artifacts-zip/ballerina-jre-artifacts-${ballerina.jre.artifacts.version}</jre.location>
+        <distribution.name>ballerina</distribution.name>
     </properties>
 </project>
