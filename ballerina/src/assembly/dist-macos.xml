@@ -74,10 +74,12 @@
             <includes>
                 <include>org.ballerinax.docker:docker-extension</include>
                 <include>org.ballerinax.kubernetes:kubernetes-extension</include>
+                <include>org.ballerinax.jdbc:jdbc-extension</include>
             </includes>
             <excludes>
                 <exclude>org.ballerinax.docker:docker-extension:zip</exclude>
                 <exclude>org.ballerinax.kubernetes:kubernetes-extension:zip</exclude>
+                <exclude>org.ballerinax.jdbc:jdbc-extension:zip</exclude>
             </excludes>
             <unpack>false</unpack>
         </dependencySet>
