@@ -21,7 +21,7 @@
     <parent>
         <groupId>org.ballerinalang</groupId>
         <artifactId>ballerina-distribution</artifactId>
-        <version>0.981.2-SNAPSHOT</version>
+        <version>0.982.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -29,7 +29,7 @@
     <artifactId>ballerina-platform</artifactId>
     <packaging>pom</packaging>
 
-    <name>Ballerina - Tools Distribution</name>
+    <name>Ballerina - Distribution</name>
 
     <dependencies>
         <dependency>
@@ -54,6 +54,16 @@
             <version>${docker.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.ballerinax.jdbc</groupId>
+            <artifactId>jdbc-extension</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinax.jdbc</groupId>
+            <artifactId>jdbc-extension</artifactId>
+            <type>zip</type>
+            <classifier>ballerina-binary-repo</classifier>
+        </dependency>
+        <dependency>
             <groupId>org.ballerinax.kubernetes</groupId>
             <artifactId>kubernetes-extension</artifactId>
         </dependency>
@@ -72,6 +82,12 @@
         <dependency>
             <groupId>org.ballerinax.docker</groupId>
             <artifactId>docker-extension</artifactId>
+            <type>zip</type>
+            <classifier>ballerina-sources</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinax.jdbc</groupId>
+            <artifactId>jdbc-extension</artifactId>
             <type>zip</type>
             <classifier>ballerina-sources</classifier>
         </dependency>
@@ -136,7 +152,8 @@
                             <includeArtifactIds>
                                 ballerina-tools,
                                 docker-extension,
-                                kubernetes-extension
+                                kubernetes-extension,
+                                jdbc-extension
                             </includeArtifactIds>
                             <outputDirectory>${project.build.directory}/extracted-distributions
                             </outputDirectory>
@@ -166,7 +183,7 @@
                             <descriptors>
                                 <descriptor>${basedir}/src/assembly/dist.xml</descriptor>
                             </descriptors>
-                            <finalName>${project.artifactId}-${project.version}</finalName>
+                            <finalName>${distribution.name}-${project.version}</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                     </execution>
@@ -183,7 +200,7 @@
                             <descriptors>
                                 <descriptor>${basedir}/src/assembly/dist-linux.xml</descriptor>
                             </descriptors>
-                            <finalName>${project.artifactId}-linux-${project.version}</finalName>
+                            <finalName>${distribution.name}-linux-${project.version}</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                     </execution>
@@ -200,7 +217,7 @@
                             <descriptors>
                                 <descriptor>src/assembly/dist-macos.xml</descriptor>
                             </descriptors>
-                            <finalName>${project.artifactId}-macos-${project.version}</finalName>
+                            <finalName>${distribution.name}-macos-${project.version}</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                     </execution>
@@ -217,7 +234,7 @@
                             <descriptors>
                                 <descriptor>${basedir}/src/assembly/dist-windows.xml</descriptor>
                             </descriptors>
-                            <finalName>${project.artifactId}-windows-${project.version}</finalName>
+                            <finalName>${distribution.name}-windows-${project.version}</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                     </execution>
@@ -259,6 +276,9 @@
                                 </resource>
                                 <resource>
                                     <directory>${project.build.directory}/extracted-distributions/kubernetes-extension-ballerina-sources-zip/ballerina</directory>
+                                </resource>
+                                <resource>
+                                    <directory>${project.build.directory}/extracted-distributions/jdbc-extension-ballerina-sources-zip/ballerina</directory>
                                 </resource>
                             </resources>
                         </configuration>
@@ -368,5 +388,6 @@
     </build>
     <properties>
         <jre.location>target/ballerina-jre-artifacts-zip/ballerina-jre-artifacts-${ballerina.jre.artifacts.version}</jre.location>
+        <distribution.name>ballerina</distribution.name>
     </properties>
 </project>

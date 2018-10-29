@@ -17,7 +17,7 @@
   -->
 <assembly>
     <includeBaseDirectory>true</includeBaseDirectory>
-    <baseDirectory>ballerina-platform-windows-${project.version}</baseDirectory>
+    <baseDirectory>ballerina-windows-${project.version}</baseDirectory>
     <id>Ballerina Windows Distribution</id>
     <formats>
         <format>zip</format>
@@ -38,7 +38,6 @@
             <outputDirectory>.</outputDirectory>
             <excludes>
                 <exclude>bin/ballerina</exclude>
-                <exclude>bin/composer</exclude>
             </excludes>
         </fileSet>
         <fileSet>
@@ -52,16 +51,10 @@
             <directory>
                 ${project.build.directory}/api-docs-ballerinax
             </directory>
-            <outputDirectory>docs/api/ballerinax</outputDirectory>
+            <outputDirectory>docs/ballerinax</outputDirectory>
         </fileSet>
     </fileSets>
     <files>
-        <file>
-            <source>../resources/executables/windows/composer.bat</source>
-            <outputDirectory>bin/</outputDirectory>
-            <filtered>true</filtered>
-            <fileMode>644</fileMode>
-        </file>
         <file>
             <source>../resources/executables/windows/ballerina.bat</source>
             <outputDirectory>bin/</outputDirectory>
@@ -81,10 +74,12 @@
             <includes>
                 <include>org.ballerinax.docker:docker-extension</include>
                 <include>org.ballerinax.kubernetes:kubernetes-extension</include>
+                <include>org.ballerinax.jdbc:jdbc-extension</include>
             </includes>
             <excludes>
                 <exclude>org.ballerinax.docker:docker-extension:zip</exclude>
                 <exclude>org.ballerinax.kubernetes:kubernetes-extension:zip</exclude>
+                <exclude>org.ballerinax.jdbc:jdbc-extension:zip</exclude>
             </excludes>
             <unpack>false</unpack>
         </dependencySet>

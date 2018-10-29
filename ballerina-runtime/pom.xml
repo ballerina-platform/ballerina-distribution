@@ -21,7 +21,7 @@
     <parent>
         <groupId>org.ballerinalang</groupId>
         <artifactId>ballerina-distribution</artifactId>
-        <version>0.981.2-SNAPSHOT</version>
+        <version>0.982.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -59,6 +59,16 @@
         <dependency>
             <groupId>org.ballerinax.kubernetes</groupId>
             <artifactId>kubernetes-extension</artifactId>
+            <type>zip</type>
+            <classifier>ballerina-binary-repo</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinax.jdbc</groupId>
+            <artifactId>jdbc-extension</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinax.jdbc</groupId>
+            <artifactId>jdbc-extension</artifactId>
             <type>zip</type>
             <classifier>ballerina-binary-repo</classifier>
         </dependency>
