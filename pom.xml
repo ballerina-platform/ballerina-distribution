@@ -239,7 +239,7 @@
         <project.scm.id>ballerina-scm-server</project.scm.id>
         <docker.version>0.983.0</docker.version>
         <kubernetes.version>0.983.0</kubernetes.version>
-        <jdbc.version>0.982.1-SNAPSHOT</jdbc.version>
+        <jdbc.version>0.983.0</jdbc.version>
     </properties>
 
 </project>
