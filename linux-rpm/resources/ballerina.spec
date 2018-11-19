@@ -28,12 +28,12 @@ cp -r %{_topdir}/SOURCES/%{_ballerina_tools_dir}/* %{_topdir}/BUILD/
 %build
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d %{buildroot}%{_libdir}/ballerina/%{_ballerina_name}-platform-%{_ballerina_version}
-cp -r bin bre lib docs src %{buildroot}%{_libdir}/ballerina/%{_ballerina_name}-platform-%{_ballerina_version}/
+install -d %{buildroot}%{_libdir}/ballerina/%{_ballerina_name}-%{_ballerina_version}
+cp -r bin bre lib docs src %{buildroot}%{_libdir}/ballerina/%{_ballerina_name}-%{_ballerina_version}/
 
 
 %post
-ln -sf %{_libdir}/ballerina/%{_ballerina_name}-platform-%{_ballerina_version}/bin/ballerina /usr/bin/%{_ballerina_name}
+ln -sf %{_libdir}/ballerina/%{_ballerina_name}-%{_ballerina_version}/bin/ballerina /usr/bin/%{_ballerina_name}
 echo 'export BALLERINA_HOME=' >> /etc/profile.d/wso2.sh
 chmod 0755 /etc/profile.d/wso2.sh
 
@@ -50,6 +50,6 @@ rm -rf %{_topdir}/BUILD/*
 rm -rf %{buildroot}
 
 %files
-%{_libdir}/ballerina/%{_ballerina_name}-platform-%{_ballerina_version}
+%{_libdir}/ballerina/%{_ballerina_name}-%{_ballerina_version}
 %doc COPYRIGHT LICENSE README.md
 
