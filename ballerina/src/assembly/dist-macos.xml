@@ -53,6 +53,24 @@
             </directory>
             <outputDirectory>docs/ballerinax</outputDirectory>
         </fileSet>
+        <fileSet>
+            <directory>
+                ${project.build.directory}/extracted-distributions/docker-extension-examples-zip/docker-extension-examples-${project.version}
+            </directory>
+            <outputDirectory>examples</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>
+                ${project.build.directory}/extracted-distributions/jdbc-extension-examples-zip/jdbc-extension-examples-${project.version}
+            </directory>
+            <outputDirectory>examples</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>
+                ${project.build.directory}/extracted-distributions/kubernetes-extension-examples-zip/kubernetes-extension-examples-${project.version}
+            </directory>
+            <outputDirectory>examples</outputDirectory>
+        </fileSet>
     </fileSets>
     <files>
         <file>
