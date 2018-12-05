@@ -21,7 +21,7 @@
     <parent>
         <groupId>org.ballerinalang</groupId>
         <artifactId>ballerina-distribution</artifactId>
-        <version>0.982.1-SNAPSHOT</version>
+        <version>0.983.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -42,6 +42,8 @@
             <artifactId>ballerina-jre-artifacts</artifactId>
             <type>zip</type>
         </dependency>
+
+        <!-- Docker extension -->
         <dependency>
             <groupId>org.ballerinax.docker</groupId>
             <artifactId>docker-extension</artifactId>
@@ -54,64 +56,84 @@
             <version>${docker.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.ballerinax.jdbc</groupId>
-            <artifactId>jdbc-extension</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.ballerinax.jdbc</groupId>
-            <artifactId>jdbc-extension</artifactId>
-            <type>zip</type>
-            <classifier>ballerina-binary-repo</classifier>
-        </dependency>
-        <dependency>
-            <groupId>org.ballerinax.kubernetes</groupId>
-            <artifactId>kubernetes-extension</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.ballerinax.kubernetes</groupId>
-            <artifactId>kubernetes-extension</artifactId>
-            <type>zip</type>
-            <classifier>ballerina-binary-repo</classifier>
-        </dependency>
-        <dependency>
-            <groupId>org.ballerinax.kubernetes</groupId>
-            <artifactId>kubernetes-extension</artifactId>
-            <type>zip</type>
-            <classifier>ballerina-sources</classifier>
-        </dependency>
-        <dependency>
             <groupId>org.ballerinax.docker</groupId>
             <artifactId>docker-extension</artifactId>
             <type>zip</type>
             <classifier>ballerina-sources</classifier>
         </dependency>
         <dependency>
+            <groupId>org.ballerinax.docker</groupId>
+            <artifactId>docker-extension-examples</artifactId>
+            <type>zip</type>
+        </dependency>
+
+        <!-- JDBC extension -->
+        <dependency>
+            <groupId>org.ballerinax.jdbc</groupId>
+            <artifactId>jdbc-extension</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinax.jdbc</groupId>
+            <artifactId>jdbc-extension</artifactId>
+            <type>zip</type>
+            <classifier>ballerina-binary-repo</classifier>
+        </dependency>
+        <dependency>
             <groupId>org.ballerinax.jdbc</groupId>
             <artifactId>jdbc-extension</artifactId>
             <type>zip</type>
             <classifier>ballerina-sources</classifier>
         </dependency>
+        <dependency>
+            <groupId>org.ballerinax.jdbc</groupId>
+            <artifactId>jdbc-extension-examples</artifactId>
+            <type>zip</type>
+        </dependency>
+
+        <!-- Kubernetes extension -->
+        <dependency>
+            <groupId>org.ballerinax.kubernetes</groupId>
+            <artifactId>kubernetes-extension</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinax.kubernetes</groupId>
+            <artifactId>kubernetes-extension</artifactId>
+            <type>zip</type>
+            <classifier>ballerina-binary-repo</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinax.kubernetes</groupId>
+            <artifactId>kubernetes-extension</artifactId>
+            <type>zip</type>
+            <classifier>ballerina-sources</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinax.kubernetes</groupId>
+            <artifactId>kubernetes-extension-examples</artifactId>
+            <type>zip</type>
+        </dependency>
+
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-dependency-plugin</artifactId>
-            <executions>
-                <execution>
-                    <id>unpack-balo</id>
-                    <phase>generate-resources</phase>
-                    <goals>
-                        <goal>unpack-dependencies</goal>
-                    </goals>
-                    <configuration>
-                        <includeClassifiers>ballerina-binary-repo</includeClassifiers>
-                        <outputDirectory>${project.build.directory}/extracted-lib</outputDirectory>
-                    </configuration>
-                </execution>
-            </executions>
-        </plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>unpack-balo</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeClassifiers>ballerina-binary-repo</includeClassifiers>
+                            <outputDirectory>${project.build.directory}/extracted-lib</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -152,8 +174,11 @@
                             <includeArtifactIds>
                                 ballerina-tools,
                                 docker-extension,
+                                docker-extension-examples,
                                 kubernetes-extension,
-                                jdbc-extension
+                                kubernetes-extension-examples,
+                                jdbc-extension,
+                                jdbc-extension-examples
                             </includeArtifactIds>
                             <outputDirectory>${project.build.directory}/extracted-distributions
                             </outputDirectory>
