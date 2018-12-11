@@ -30,6 +30,11 @@
 # -----------------------------------------------------------------------------
 
 [ -f /etc/profile.d/wso2.sh ] && source /etc/profile.d/wso2.sh
+
+if [[ ( -z "${BALLERINA_HOME}" || ! -d "${BALLERINA_HOME}" ) && -d "/usr/lib64/ballerina" ]]; then
+    export BALLERINA_HOME="/usr/lib64/ballerina/"$(ls -1t /usr/lib64/ballerina/ | grep 'ballerina[0-9\.a-zA-Z]*' | head -1)
+fi
+
 JAVA_HOME=$BALLERINA_HOME/bre/lib/jre1.8.0_172
 
 # OS specific support.  $var _must_ be set to either true or false.
