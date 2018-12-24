@@ -259,12 +259,12 @@
         </dependencies>
     </dependencyManagement>
     <properties>
-        <ballerina.version>0.990.1</ballerina.version>
+        <ballerina.version>0.990.2-SNAPSHOT</ballerina.version>
         <ballerina.jre.artifacts.version>1.0.0</ballerina.jre.artifacts.version>
         <project.scm.id>ballerina-scm-server</project.scm.id>
-        <docker.version>0.990.1</docker.version>
-        <kubernetes.version>0.990.1</kubernetes.version>
-        <jdbc.version>0.990.1</jdbc.version>
+        <docker.version>0.990.2-SNAPSHOT</docker.version>
+        <kubernetes.version>0.990.2-SNAPSHOT</kubernetes.version>
+        <jdbc.version>0.990.2-SNAPSHOT</jdbc.version>
     </properties>
 
 </project>
