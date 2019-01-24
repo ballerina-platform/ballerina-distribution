@@ -73,7 +73,7 @@
         </fileSet>
         <fileSet>
             <directory>
-                ${project.build.directory}/extracted-distributions/awslambda-extension-examples-zip/awslambda-examples-${project.version}
+                ${project.build.directory}/extracted-distributions/awslambda-extension-examples-zip/awslambda-extension-examples-${project.version}
             </directory>
             <outputDirectory>examples</outputDirectory>
         </fileSet>

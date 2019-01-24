@@ -201,7 +201,9 @@
                                 kubernetes-extension,
                                 kubernetes-extension-examples,
                                 jdbc-extension,
-                                jdbc-extension-examples
+                                jdbc-extension-examples,
+                                awslambda-extension,
+                                awslambda-extension-examples
                             </includeArtifactIds>
                             <outputDirectory>${project.build.directory}/extracted-distributions
                             </outputDirectory>
