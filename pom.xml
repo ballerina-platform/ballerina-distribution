@@ -256,6 +256,33 @@
                 <version>${kubernetes.version}</version>
             </dependency>
 
+            <!-- AWSLambda extension -->
+            <dependency>
+                <groupId>org.ballerinax.awslambda</groupId>
+                <artifactId>awslambda-extension</artifactId>
+                <version>${awslambda.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ballerinax.awslambda</groupId>
+                <artifactId>awslambda-extension</artifactId>
+                <type>zip</type>
+                <classifier>ballerina-binary-repo</classifier>
+                <version>${awslambda.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ballerinax.awslambda</groupId>
+                <artifactId>awslambda-extension</artifactId>
+                <type>zip</type>
+                <classifier>ballerina-sources</classifier>
+                <version>${awslambda.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ballerinax.awslambda</groupId>
+                <artifactId>awslambda-extension-examples</artifactId>
+                <type>zip</type>
+                <version>${awslambda.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
     <properties>
@@ -265,6 +292,7 @@
         <docker.version>0.990.3-SNAPSHOT</docker.version>
         <kubernetes.version>0.990.3-SNAPSHOT</kubernetes.version>
         <jdbc.version>0.990.3-SNAPSHOT</jdbc.version>
+        <awslambda.version>0.990.3-SNAPSHOT</awslambda.version>
     </properties>
 
 </project>
