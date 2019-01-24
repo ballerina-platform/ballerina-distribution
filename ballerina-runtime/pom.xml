@@ -72,6 +72,16 @@
             <type>zip</type>
             <classifier>ballerina-binary-repo</classifier>
         </dependency>
+        <dependency>
+            <groupId>org.ballerinax.awslambda</groupId>
+            <artifactId>awslambda-extension</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinax.awslambda</groupId>
+            <artifactId>awslambda-extension</artifactId>
+            <type>zip</type>
+            <classifier>ballerina-binary-repo</classifier>
+        </dependency>
     </dependencies>
 
     <build>

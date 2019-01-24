@@ -113,6 +113,29 @@
             <type>zip</type>
         </dependency>
 
+        <!-- AWSLambda extension -->
+        <dependency>
+            <groupId>org.ballerinax.awslambda</groupId>
+            <artifactId>awslambda-extension</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinax.awslambda</groupId>
+            <artifactId>awslambda-extension</artifactId>
+            <type>zip</type>
+            <classifier>ballerina-binary-repo</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinax.awslambda</groupId>
+            <artifactId>awslambda-extension</artifactId>
+            <type>zip</type>
+            <classifier>ballerina-sources</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinax.awslambda</groupId>
+            <artifactId>awslambda-extension-examples</artifactId>
+            <type>zip</type>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -178,7 +201,9 @@
                                 kubernetes-extension,
                                 kubernetes-extension-examples,
                                 jdbc-extension,
-                                jdbc-extension-examples
+                                jdbc-extension-examples,
+                                awslambda-extension,
+                                awslambda-extension-examples
                             </includeArtifactIds>
                             <outputDirectory>${project.build.directory}/extracted-distributions
                             </outputDirectory>
