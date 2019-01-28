@@ -2,22 +2,22 @@ import ballerina/test;
 import ballerina/io;
 
 any[] outputs = [];
-int counter = 0;
-
+int count = 0;
 // This is the mock function which will replace the real function
 @test:Mock {
     moduleName: "ballerina/io",
     functionName: "println"
 }
 public function mockPrint(any... s) {
-    outputs[counter] = s[0];
-    counter += 1;
+    outputs[count] = s[0];
+    count += 1;
 }
 
 @test:Config
 function testFunc() {
-    // Invoking the main function
+    // Calling the main fuction with ampty args array
     main();
-    string out1 = "Event received; status: single, total occurrences: 2";
-    test:assertEquals(outputs[0], out1);
+    test:assertEquals(outputs[0], "GET action");
+    test:assertEquals(outputs[1], "POST action");
+    test:assertEquals(outputs[2], 135);
 }
