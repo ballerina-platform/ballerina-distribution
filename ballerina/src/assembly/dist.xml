@@ -61,6 +61,12 @@
             </directory>
             <outputDirectory>examples</outputDirectory>
         </fileSet>
+        <fileSet>
+            <directory>
+                ${project.build.directory}/extracted-distributions/awslambda-extension-examples-zip/awslambda-extension-examples-${project.version}
+            </directory>
+            <outputDirectory>examples</outputDirectory>
+        </fileSet>
     </fileSets>
     <files>
         <file>
@@ -77,11 +83,13 @@
                 <include>org.ballerinax.docker:docker-extension</include>
                 <include>org.ballerinax.kubernetes:kubernetes-extension</include>
                 <include>org.ballerinax.jdbc:jdbc-extension</include>
+                <include>org.ballerinax.awslambda:awslambda-extension</include>
             </includes>
             <excludes>
                 <exclude>org.ballerinax.docker:docker-extension:zip</exclude>
                 <exclude>org.ballerinax.kubernetes:kubernetes-extension:zip</exclude>
                 <exclude>org.ballerinax.jdbc:jdbc-extension:zip</exclude>
+                <exclude>org.ballerinax.awslambda:awslambda-extension:zip</exclude>
             </excludes>
             <unpack>false</unpack>
         </dependencySet>
