@@ -286,13 +286,13 @@
         </dependencies>
     </dependencyManagement>
     <properties>
-        <ballerina.version>0.990.3</ballerina.version>
+        <ballerina.version>0.990.4-SNAPSHOT</ballerina.version>
         <ballerina.jre.artifacts.version>1.0.0</ballerina.jre.artifacts.version>
         <project.scm.id>ballerina-scm-server</project.scm.id>
-        <docker.version>0.990.3</docker.version>
-        <kubernetes.version>0.990.3</kubernetes.version>
-        <jdbc.version>0.990.3</jdbc.version>
-        <awslambda.version>0.990.3</awslambda.version>
+        <docker.version>0.990.4-SNAPSHOT</docker.version>
+        <kubernetes.version>0.990.4-SNAPSHOT</kubernetes.version>
+        <jdbc.version>0.990.4-SNAPSHOT</jdbc.version>
+        <awslambda.version>0.990.4-SNAPSHOT</awslambda.version>
     </properties>
 
 </project>
