@@ -330,6 +330,9 @@
                                 <resource>
                                     <directory>${project.build.directory}/extracted-distributions/jdbc-extension-ballerina-sources-zip/ballerina</directory>
                                 </resource>
+                                <resource>
+                                    <directory>${project.build.directory}/extracted-distributions/awslambda-extension-ballerina-sources-zip/ballerina</directory>
+                                </resource>
                             </resources>
                         </configuration>
                     </execution>
