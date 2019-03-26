@@ -1,4 +1,4 @@
-// If you already have a swagger or Open-Api-Specification(OAS)-3 document for your service(s),
+// If you already have an Open-Api-Specification(OAS)-3 document for your service(s),
 // you can use that to autogenerate Ballerina source code.
 // Currently, Ballerina supports two types of code generation.
 // 'mock' generation generates a mock version of the Ballerina service for an input OAS definition.
