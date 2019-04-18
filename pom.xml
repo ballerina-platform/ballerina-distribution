@@ -291,7 +291,7 @@
         <project.scm.id>ballerina-scm-server</project.scm.id>
         <docker.version>0.991.0</docker.version>
         <kubernetes.version>0.991.0</kubernetes.version>
-        <jdbc.version>0.990.4-SNAPSHOT</jdbc.version>
+        <jdbc.version>0.991.0</jdbc.version>
         <awslambda.version>0.990.4-SNAPSHOT</awslambda.version>
     </properties>
 
