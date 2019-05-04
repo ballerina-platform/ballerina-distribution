@@ -289,7 +289,7 @@
         <ballerina.version>0.991.1-SNAPSHOT</ballerina.version>
         <ballerina.jre.artifacts.version>2.0.0</ballerina.jre.artifacts.version>
         <project.scm.id>ballerina-scm-server</project.scm.id>
-        <docker.version>0.991.1-SNAPSHOT</docker.version>
+        <docker.version>0.992.0-m1</docker.version>
         <kubernetes.version>0.991.1-SNAPSHOT</kubernetes.version>
         <jdbc.version>0.991.1-SNAPSHOT</jdbc.version>
         <awslambda.version>0.991.1-SNAPSHOT</awslambda.version>
