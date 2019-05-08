@@ -38,6 +38,7 @@
             <outputDirectory>.</outputDirectory>
             <excludes>
                 <exclude>bin/ballerina.bat</exclude>
+                <exclude>lib/tools/lang-server/launcher/language-server-launcher.bat</exclude>
             </excludes>
         </fileSet>
         <fileSet>
@@ -82,6 +83,12 @@
         <file>
             <source>../resources/executables/macos/ballerina</source>
             <outputDirectory>bin/</outputDirectory>
+            <filtered>true</filtered>
+            <fileMode>755</fileMode>
+        </file>
+        <file>
+            <source>../resources/executables/macos/language-server-launcher.sh</source>
+            <outputDirectory>lib/tools/lang-server/launcher/</outputDirectory>
             <filtered>true</filtered>
             <fileMode>755</fileMode>
         </file>
