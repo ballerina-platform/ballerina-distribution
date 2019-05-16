@@ -38,6 +38,7 @@
             <outputDirectory>.</outputDirectory>
             <excludes>
                 <exclude>bin/ballerina</exclude>
+                <exclude>lib/tools/lang-server/launcher/language-server-launcher.bat</exclude>
             </excludes>
         </fileSet>
         <fileSet>
@@ -52,6 +53,12 @@
         <file>
             <source>../resources/executables/windows/ballerina.bat</source>
             <outputDirectory>bin/</outputDirectory>
+            <filtered>true</filtered>
+            <fileMode>644</fileMode>
+        </file>
+        <file>
+            <source>../resources/executables/windows/language-server-launcher.bat</source>
+            <outputDirectory>lib/tools/lang-server/launcher/</outputDirectory>
             <filtered>true</filtered>
             <fileMode>644</fileMode>
         </file>
