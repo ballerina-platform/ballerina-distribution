@@ -292,7 +292,7 @@
         <docker.version>0.990.5</docker.version>
         <kubernetes.version>0.990.5</kubernetes.version>
         <jdbc.version>0.990.5</jdbc.version>
-        <awslambda.version>0.990.4</awslambda.version>
+        <awslambda.version>0.990.5</awslambda.version>
     </properties>
 
 </project>
