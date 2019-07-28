@@ -150,21 +150,20 @@
 
 
     <modules>
-        <module>ballerina-runtime</module>
-        <module>ballerina</module>
+        <module>ballerina-tools</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.ballerinalang</groupId>
-                <artifactId>ballerina</artifactId>
+                <artifactId>jballerina</artifactId>
                 <version>${ballerina.version}</version>
                 <type>zip</type>
             </dependency>
             <dependency>
                 <groupId>org.ballerinalang</groupId>
-                <artifactId>ballerina-tools</artifactId>
+                <artifactId>jballerina-tools</artifactId>
                 <version>${ballerina.version}</version>
                 <type>zip</type>
             </dependency>
@@ -175,87 +174,6 @@
                 <type>zip</type>
             </dependency>
 
-            <!-- Docker extension -->
-            <dependency>
-                <groupId>org.ballerinax.docker</groupId>
-                <artifactId>docker-extension</artifactId>
-                <version>${docker.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.ballerinax.docker</groupId>
-                <artifactId>docker-extension</artifactId>
-                <type>zip</type>
-                <classifier>ballerina-binary-repo</classifier>
-                <version>${docker.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.ballerinax.docker</groupId>
-                <artifactId>docker-extension</artifactId>
-                <type>zip</type>
-                <classifier>ballerina-sources</classifier>
-                <version>${docker.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.ballerinax.docker</groupId>
-                <artifactId>docker-extension-examples</artifactId>
-                <type>zip</type>
-                <version>${docker.version}</version>
-            </dependency>
-
-            <!-- JDBC extension -->
-            <dependency>
-                <groupId>org.ballerinax.jdbc</groupId>
-                <artifactId>jdbc-extension</artifactId>
-                <version>${jdbc.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.ballerinax.jdbc</groupId>
-                <artifactId>jdbc-extension</artifactId>
-                <type>zip</type>
-                <classifier>ballerina-binary-repo</classifier>
-                <version>${jdbc.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.ballerinax.jdbc</groupId>
-                <artifactId>jdbc-extension</artifactId>
-                <type>zip</type>
-                <classifier>ballerina-sources</classifier>
-                <version>${jdbc.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.ballerinax.jdbc</groupId>
-                <artifactId>jdbc-extension-examples</artifactId>
-                <type>zip</type>
-                <version>${jdbc.version}</version>
-            </dependency>
-
-            <!-- Kubernetes extension -->
-            <dependency>
-                <groupId>org.ballerinax.kubernetes</groupId>
-                <artifactId>kubernetes-extension</artifactId>
-                <version>${kubernetes.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.ballerinax.kubernetes</groupId>
-                <artifactId>kubernetes-extension</artifactId>
-                <type>zip</type>
-                <classifier>ballerina-binary-repo</classifier>
-                <version>${kubernetes.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.ballerinax.kubernetes</groupId>
-                <artifactId>kubernetes-extension</artifactId>
-                <type>zip</type>
-                <classifier>ballerina-sources</classifier>
-                <version>${kubernetes.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.ballerinax.kubernetes</groupId>
-                <artifactId>kubernetes-extension-examples</artifactId>
-                <type>zip</type>
-                <version>${kubernetes.version}</version>
-            </dependency>
-
             <!-- AWSLambda extension -->
             <dependency>
                 <groupId>org.ballerinax.awslambda</groupId>
@@ -264,16 +182,8 @@
             </dependency>
             <dependency>
                 <groupId>org.ballerinax.awslambda</groupId>
-                <artifactId>awslambda-extension</artifactId>
+                <artifactId>awslambda-extension-balo</artifactId>
                 <type>zip</type>
-                <classifier>ballerina-binary-repo</classifier>
-                <version>${awslambda.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.ballerinax.awslambda</groupId>
-                <artifactId>awslambda-extension</artifactId>
-                <type>zip</type>
-                <classifier>ballerina-sources</classifier>
                 <version>${awslambda.version}</version>
             </dependency>
             <dependency>

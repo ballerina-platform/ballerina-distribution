@@ -93,7 +93,7 @@ set CMD_LINE_ARGS=-Xbootclasspath/a:%BALLERINA_XBOOTCLASSPATH% -Xms256m -Xmx1024
 
 
 :runJava
-"%BVM_HOME%\bin\java" %CMD_LINE_ARGS% org.ballerinalang.launcher.Main %CMD%
+"%BVM_HOME%\bin\java" %CMD_LINE_ARGS% org.ballerinalang.tool.Main %CMD%
 :end
 goto endlocal
 
