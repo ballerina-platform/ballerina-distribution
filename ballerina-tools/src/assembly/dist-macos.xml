@@ -17,7 +17,7 @@
   -->
 <assembly>
     <includeBaseDirectory>true</includeBaseDirectory>
-    <baseDirectory>ballerina-macos-${project.version}</baseDirectory>
+    <baseDirectory>ballerina-tools-macos-${project.version}</baseDirectory>
     <id>Ballerina MacOS Distribution</id>
     <formats>
         <format>zip</format>

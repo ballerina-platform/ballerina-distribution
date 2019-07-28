@@ -240,7 +240,7 @@
     </build>
     <properties>
         <jre.location>target/ballerina-jre-artifacts-zip/ballerina-jre-artifacts-${ballerina.jre.artifacts.version}</jre.location>
-        <distribution.name>jballerina</distribution.name>
-        <tool.name>ballerina</tool.name>
+        <distribution.name>jballerina-tools</distribution.name>
+        <tool.name>ballerina-tools</tool.name>
     </properties>
 </project>

@@ -17,7 +17,7 @@
   -->
 <assembly>
     <includeBaseDirectory>true</includeBaseDirectory>
-    <baseDirectory>ballerina-linux-${project.version}</baseDirectory>
+    <baseDirectory>ballerina-tools-linux-${project.version}</baseDirectory>
     <id>Ballerina Linux Distribution</id>
     <formats>
         <format>zip</format>
