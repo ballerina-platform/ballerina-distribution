@@ -29,7 +29,7 @@
     <artifactId>ballerina-tools</artifactId>
     <packaging>pom</packaging>
 
-    <name>Ballerina - Distribution</name>
+    <name>Ballerina - Tools</name>
 
     <dependencies>
         <dependency>

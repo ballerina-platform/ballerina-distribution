@@ -22,10 +22,14 @@
         <artifactId>ballerina</artifactId>
         <version>1</version>
     </parent>
+
     <groupId>org.ballerinalang</groupId>
     <artifactId>ballerina-distribution</artifactId>
     <version>0.992.0-m2-SNAPSHOT</version>
     <modelVersion>4.0.0</modelVersion>
+
+    <name>Ballerina - Tools - Parent</name>
+
     <packaging>pom</packaging>
     <description>
         Ballerina distribution repository.
