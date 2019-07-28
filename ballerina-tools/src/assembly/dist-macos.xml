@@ -17,23 +17,23 @@
   -->
 <assembly>
     <includeBaseDirectory>true</includeBaseDirectory>
-    <baseDirectory>ballerina-linux-${project.version}</baseDirectory>
-    <id>Ballerina Linux Distribution</id>
+    <baseDirectory>ballerina-macos-${project.version}</baseDirectory>
+    <id>Ballerina MacOS Distribution</id>
     <formats>
         <format>zip</format>
     </formats>
 
     <fileSets>
+<!--        <fileSet>-->
+<!--            <directory>-->
+<!--                ${project.build.directory}/extracted-lib/repo/ballerinax-->
+<!--            </directory>-->
+<!--            <outputDirectory>lib/repo/ballerinax</outputDirectory>-->
+<!--            <fileMode>0444</fileMode>-->
+<!--        </fileSet>-->
         <fileSet>
             <directory>
-                ${project.build.directory}/extracted-lib/repo/ballerinax
-            </directory>
-            <outputDirectory>lib/repo/ballerinax</outputDirectory>
-            <fileMode>0444</fileMode>
-        </fileSet>
-        <fileSet>
-            <directory>
-                ${project.build.directory}/extracted-distributions/ballerina-tools-zip/ballerina-tools-${project.version}
+                ${project.build.directory}/extracted-distributions/jballerina-tools-zip/jballerina-tools-${project.version}
             </directory>
             <outputDirectory>.</outputDirectory>
             <excludes>
@@ -43,34 +43,16 @@
         </fileSet>
         <fileSet>
             <directory>
-                ${project.build.directory}/extracted-jre-linux
+                ${project.build.directory}/extracted-jre-macos
             </directory>
             <outputDirectory>bre/lib/</outputDirectory>
             <fileMode>0755</fileMode>
         </fileSet>
         <fileSet>
             <directory>
-                ${project.build.directory}/api-docs-ballerinax
+                ${project.build.directory}/extracted-distributions/jballerina-tools-zip/jballerina-tools-${project.version}
             </directory>
-            <outputDirectory>docs/ballerinax</outputDirectory>
-        </fileSet>
-        <fileSet>
-            <directory>
-                ${project.build.directory}/extracted-distributions/docker-extension-examples-zip/docker-extension-examples-${project.version}
-            </directory>
-            <outputDirectory>examples</outputDirectory>
-        </fileSet>
-        <fileSet>
-            <directory>
-                ${project.build.directory}/extracted-distributions/jdbc-extension-examples-zip/jdbc-extension-examples-${project.version}
-            </directory>
-            <outputDirectory>examples</outputDirectory>
-        </fileSet>
-        <fileSet>
-            <directory>
-                ${project.build.directory}/extracted-distributions/kubernetes-extension-examples-zip/kubernetes-extension-examples-${project.version}
-            </directory>
-            <outputDirectory>examples</outputDirectory>
+            <outputDirectory>.</outputDirectory>
         </fileSet>
         <fileSet>
             <directory>
@@ -78,16 +60,22 @@
             </directory>
             <outputDirectory>examples</outputDirectory>
         </fileSet>
+        <fileSet>
+            <directory>
+                ${project.build.directory}/extracted-distributions/awslambda-extension-balo-zip/jballerina-tools-${project.version}/awslambda
+            </directory>
+            <outputDirectory>bir-cache/ballerinax/awslambda</outputDirectory>
+        </fileSet>
     </fileSets>
     <files>
         <file>
-            <source>../resources/executables/linux/ballerina</source>
+            <source>../resources/executables/macos/ballerina</source>
             <outputDirectory>bin/</outputDirectory>
             <filtered>true</filtered>
             <fileMode>755</fileMode>
         </file>
         <file>
-            <source>../resources/executables/linux/language-server-launcher.sh</source>
+            <source>../resources/executables/macos/language-server-launcher.sh</source>
             <outputDirectory>lib/tools/lang-server/launcher/</outputDirectory>
             <filtered>true</filtered>
             <fileMode>755</fileMode>
@@ -103,16 +91,14 @@
         <dependencySet>
             <outputDirectory>bre/lib</outputDirectory>
             <includes>
-                <include>org.ballerinax.docker:docker-extension</include>
-                <include>org.ballerinax.kubernetes:kubernetes-extension</include>
-                <include>org.ballerinax.jdbc:jdbc-extension</include>
+<!--                <include>org.ballerinax.docker:docker-extension</include>-->
+<!--                <include>org.ballerinax.kubernetes:kubernetes-extension</include>-->
                 <include>org.ballerinax.awslambda:awslambda-extension</include>
             </includes>
             <excludes>
-                <exclude>org.ballerinax.docker:docker-extension:zip</exclude>
-                <exclude>org.ballerinax.kubernetes:kubernetes-extension:zip</exclude>
-                <exclude>org.ballerinax.jdbc:jdbc-extension:zip</exclude>
-                <exclude>org.ballerinax.awslambda:awslambda-extension:zip</exclude>
+<!--                <exclude>org.ballerinax.docker:docker-extension:zip</exclude>-->
+<!--                <exclude>org.ballerinax.kubernetes:kubernetes-extension:zip</exclude>-->
+<!--                <exclude>org.ballerinax.awslambda:awslambda-extension:zip</exclude>-->
             </excludes>
             <unpack>false</unpack>
         </dependencySet>
