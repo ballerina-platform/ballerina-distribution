@@ -63,9 +63,9 @@ if [ -z "$DISTRIBUTION" ]; then
 fi
 
 BALLERINA_DISTRIBUTION_LOCATION=${DIST_PATH}
-BALLERINA_PLATFORM=ballerina-linux-${BALLERINA_VERSION}
-BALLERINA_RUNTIME=ballerina-runtime-linux-${BALLERINA_VERSION}
-BALLERINA_INSTALL_DIRECTORY=ballerina-${BALLERINA_VERSION}
+BALLERINA_PLATFORM=ballerina-tools-linux-${BALLERINA_VERSION}
+# BALLERINA_RUNTIME=ballerina-runtime-linux-${BALLERINA_VERSION}
+BALLERINA_INSTALL_DIRECTORY=ballerina-tools-${BALLERINA_VERSION}
 
 echo "Build started at" $(date +"%Y-%m-%d %H:%M:%S")
 
@@ -113,32 +113,32 @@ function createBallerinaPlatform() {
     createPackInstallationDirectory
     copyDebianDirectory
     mv target/${BALLERINA_INSTALL_DIRECTORY} target/ballerina-linux-installer-x64-${BALLERINA_VERSION}
-    fakeroot dpkg-deb --build target/ballerina-linux-installer-x64-${BALLERINA_VERSION}
+    fakeroot dpkg-deb --build target/ballerina-tools-linux-installer-x64-${BALLERINA_VERSION}
 }
 
-function createBallerinaRuntime() {
-    echo "Creating ballerina runtime installer"
+# function createBallerinaRuntime() {
+#     echo "Creating ballerina runtime installer"
 
-    extractPack "$BALLERINA_DISTRIBUTION_LOCATION/$BALLERINA_RUNTIME.zip" ${BALLERINA_RUNTIME}
-    createPackInstallationDirectory
-    copyDebianDirectory
-    mv target/${BALLERINA_INSTALL_DIRECTORY} target/ballerina-runtime-linux-installer-x64-${BALLERINA_VERSION}
-    fakeroot dpkg-deb --build target/ballerina-runtime-linux-installer-x64-${BALLERINA_VERSION}
-}
+#     extractPack "$BALLERINA_DISTRIBUTION_LOCATION/$BALLERINA_RUNTIME.zip" ${BALLERINA_RUNTIME}
+#     createPackInstallationDirectory
+#     copyDebianDirectory
+#     mv target/${BALLERINA_INSTALL_DIRECTORY} target/ballerina-runtime-linux-installer-x64-${BALLERINA_VERSION}
+#     fakeroot dpkg-deb --build target/ballerina-runtime-linux-installer-x64-${BALLERINA_VERSION}
+# }
 
 deleteTargetDirectory
 
 if [ "$BUILD_ALL_DISTRIBUTIONS" == "true" ]; then
     echo "Creating all distributions"
     createBallerinaPlatform
-    createBallerinaRuntime 
+    # createBallerinaRuntime 
 else
     if [ "$DISTRIBUTION" == "ballerina" ]; then
         echo "Creating Ballerina Platform"
         createBallerinaPlatform
-    elif [ "$DISTRIBUTION" == "ballerina-runtime" ]; then
-        echo "Creating Ballerina Runtime"
-        createBallerinaRuntime
+    # elif [ "$DISTRIBUTION" == "ballerina-runtime" ]; then
+    #     echo "Creating Ballerina Runtime"
+    #     createBallerinaRuntime
     else
         echo "Error"
     fi
