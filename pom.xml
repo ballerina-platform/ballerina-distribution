@@ -200,6 +200,7 @@
         </dependencies>
     </dependencyManagement>
     <properties>
+        <tools.version>1.0.0</tools.version>
         <ballerina.version>0.992.0-m2-SNAPSHOT</ballerina.version>
         <ballerina.jre.artifacts.version>2.0.0</ballerina.jre.artifacts.version>
         <project.scm.id>ballerina-scm-server</project.scm.id>
