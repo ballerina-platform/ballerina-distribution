@@ -23,17 +23,29 @@ rem
 rem   BALLERINA_HOME  Home of BALLERINA installation. If not set I will  try
 rem                   to figure it out.
 rem
-rem   BVM_HOME       Must point at your Java Development Kit installation.
+rem   JAVA_HOME       Must point at your Java Development Kit installation.
 rem
 rem   JAVA_OPTS       (Optional) Java runtime options used when the commands
 rem                   is executed.
 rem ---------------------------------------------------------------------------
 
+rem ----- if JAVA_HOME is not set we're not happy ------------------------------
+
+:checkJava
+
+if "%JAVA_HOME%" == "" goto noJavaHome
+if not exist "%JAVA_HOME%\bin\java.exe" goto noJavaHome
+goto checkServer
+
+:noJavaHome
+echo "You must set the JAVA_HOME variable before running Ballerina."
+goto end
+
 rem ----- set BALLERINA_HOME ----------------------------
 :checkServer
 rem %~sdp0 is expanded pathname of the current script under NT with spaces in the path removed
 set BALLERINA_HOME=%~sdp0..
-set BVM_HOME=%BALLERINA_HOME%\bre\lib\jdk8u202-b08-jre
+set JAVA_HOME=%BALLERINA_HOME%\bre\lib\jdk8u202-b08-jre
 
 goto updateClasspath
 
@@ -48,9 +60,19 @@ setlocal EnableDelayedExpansion
 set BALLERINA_CLASSPATH=
 FOR %%C in ("%BALLERINA_HOME%\bre\lib\bootstrap\*.jar") DO set BALLERINA_CLASSPATH=!BALLERINA_CLASSPATH!;"%BALLERINA_HOME%\bre\lib\bootstrap\%%~nC%%~xC"
 
-set BALLERINA_CLASSPATH="%BVM_HOME%\lib\tools.jar";%BALLERINA_CLASSPATH%;
+set BALLERINA_CLASSPATH="%JAVA_HOME%\lib\tools.jar";%BALLERINA_CLASSPATH%;
 
 set BALLERINA_CLASSPATH=!BALLERINA_CLASSPATH!;"%BALLERINA_HOME%\bre\lib\*"
+
+set BALLERINA_CLI_HEIGHT=
+set BALLERINA_CLI_WIDTH=
+for /F "tokens=2 delims=:" %%a in ('mode con') do for %%b in (%%a) do (
+  if not defined BALLERINA_CLI_HEIGHT (
+     set "BALLERINA_CLI_HEIGHT=%%b"
+  ) else if not defined BALLERINA_CLI_WIDTH (
+     set "BALLERINA_CLI_WIDTH=%%b"
+  )
+)
 
 if defined BAL_JAVA_DEBUG goto commandDebug
 
@@ -72,8 +94,15 @@ goto end
 :doneStart
 if "%OS%"=="Windows_NT" @setlocal
 if "%OS%"=="WINNT" @setlocal
-goto runServer
+rem find the version of the jdk
+:findJdk
 
+set CMD=RUN %*
+
+
+
+:jdk8
+goto runServer
 
 rem ----------------- Execute The Requested Command ----------------------------
 
@@ -89,11 +118,11 @@ rem BALLERINA_CLASSPATH_EXT is for outsiders to additionally add
 rem classpath locations, e.g. AWS Lambda function libraries.
 set BALLERINA_CLASSPATH=%BALLERINA_CLASSPATH%;%BALLERINA_CLASSPATH_EXT%
 
-set CMD_LINE_ARGS=-Xbootclasspath/a:%BALLERINA_XBOOTCLASSPATH% -Xms256m -Xmx1024m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="%BALLERINA_HOME%\heap-dump.hprof" -Dcom.sun.management.jmxremote -classpath %BALLERINA_CLASSPATH% %JAVA_OPTS% -Dballerina.home="%BALLERINA_HOME%" -Djava.command="%JAVA_HOME%\bin\java" -Djava.opts="%JAVA_OPTS%" -Denable.nonblocking=false -Dfile.encoding=UTF8 -Dballerina.version=${project.version} -Djava.util.logging.config.class="org.ballerinalang.logging.util.LogConfigReader" -Djava.util.logging.manager="org.ballerinalang.logging.BLogManager"
+set CMD_LINE_ARGS=-Xbootclasspath/a:%BALLERINA_XBOOTCLASSPATH% -Xms256m -Xmx1024m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="%BALLERINA_HOME%\heap-dump.hprof"  -Dcom.sun.management.jmxremote -classpath %BALLERINA_CLASSPATH% %JAVA_OPTS% -Dballerina.home="%BALLERINA_HOME%" -Dballerina.target="jvm" -Djava.command="%JAVA_HOME%\bin\java" -Djava.opts="%JAVA_OPTS%" -Denable.nonblocking=false -Dfile.encoding=UTF8 -Dballerina.version=${project.version} -Djava.util.logging.config.class="org.ballerinalang.logging.util.LogConfigReader" -Djava.util.logging.manager="org.ballerinalang.logging.BLogManager"
 
 
 :runJava
-"%BVM_HOME%\bin\java" %CMD_LINE_ARGS% org.ballerinalang.tool.Main %CMD%
+"%JAVA_HOME%\bin\java" %CMD_LINE_ARGS% org.ballerinalang.tool.Main %CMD%
 :end
 goto endlocal
 
