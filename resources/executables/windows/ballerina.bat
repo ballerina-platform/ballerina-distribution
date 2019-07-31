@@ -29,18 +29,6 @@ rem   JAVA_OPTS       (Optional) Java runtime options used when the commands
 rem                   is executed.
 rem ---------------------------------------------------------------------------
 
-rem ----- if JAVA_HOME is not set we're not happy ------------------------------
-
-:checkJava
-
-if "%JAVA_HOME%" == "" goto noJavaHome
-if not exist "%JAVA_HOME%\bin\java.exe" goto noJavaHome
-goto checkServer
-
-:noJavaHome
-echo "You must set the JAVA_HOME variable before running Ballerina."
-goto end
-
 rem ----- set BALLERINA_HOME ----------------------------
 :checkServer
 rem %~sdp0 is expanded pathname of the current script under NT with spaces in the path removed
