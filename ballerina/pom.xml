@@ -215,7 +215,7 @@
                         </goals>
                         <configuration>
                             <target>
-<!--                                <delete dir="${project.build.directory}/extracted-distributions" includeemptydirs="true" deleteonexit="true" />-->
+                                <delete dir="${project.build.directory}/extracted-distributions" includeemptydirs="true" deleteonexit="true" />
                                 <delete dir="${project.build.directory}/extracted-jre-linux" includeemptydirs="true" deleteonexit="true" />
                                 <delete dir="${project.build.directory}/extracted-jre-macos" includeemptydirs="true" deleteonexit="true" />
                                 <delete dir="${project.build.directory}/extracted-jre-windows" includeemptydirs="true" deleteonexit="true" />
