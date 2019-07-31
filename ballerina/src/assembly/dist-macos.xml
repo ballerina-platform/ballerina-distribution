@@ -43,7 +43,7 @@
         </fileSet>
         <fileSet>
             <directory>
-                ${project.build.directory}/extracted-jre-linux
+                ${project.build.directory}/extracted-jre-macos
             </directory>
             <outputDirectory>bre/lib/</outputDirectory>
             <fileMode>0755</fileMode>
