@@ -26,7 +26,7 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>ballerina-tools</artifactId>
+    <artifactId>ballerina</artifactId>
     <packaging>pom</packaging>
 
     <name>Ballerina - Tools</name>
@@ -132,7 +132,7 @@
                             <descriptors>
                                 <descriptor>${basedir}/src/assembly/dist.xml</descriptor>
                             </descriptors>
-                            <finalName>${distribution.name}-${project.version}</finalName>
+                            <finalName>j${distribution.name}-${project.version}</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                     </execution>
@@ -149,7 +149,7 @@
                             <descriptors>
                                 <descriptor>${basedir}/src/assembly/dist-linux.xml</descriptor>
                             </descriptors>
-                            <finalName>${tool.name}-linux-${project.version}</finalName>
+                            <finalName>${distribution.name}-linux-${project.version}</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                     </execution>
@@ -166,7 +166,7 @@
                             <descriptors>
                                 <descriptor>src/assembly/dist-macos.xml</descriptor>
                             </descriptors>
-                            <finalName>${tool.name}-macos-${project.version}</finalName>
+                            <finalName>${distribution.name}-macos-${project.version}</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                     </execution>
@@ -183,7 +183,7 @@
                             <descriptors>
                                 <descriptor>${basedir}/src/assembly/dist-windows.xml</descriptor>
                             </descriptors>
-                            <finalName>${tool.name}-windows-${project.version}</finalName>
+                            <finalName>${distribution.name}-windows-${project.version}</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                     </execution>
@@ -240,7 +240,6 @@
     </build>
     <properties>
         <jre.location>target/ballerina-jre-artifacts-zip/ballerina-jre-artifacts-${ballerina.jre.artifacts.version}</jre.location>
-        <distribution.name>jballerina-tools</distribution.name>
-        <tool.name>ballerina-tools</tool.name>
+        <distribution.name>ballerina</distribution.name>
     </properties>
 </project>

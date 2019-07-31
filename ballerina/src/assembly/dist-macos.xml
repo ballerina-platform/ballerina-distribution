@@ -17,7 +17,7 @@
   -->
 <assembly>
     <includeBaseDirectory>true</includeBaseDirectory>
-    <baseDirectory>ballerina-tools-macos-${project.version}</baseDirectory>
+    <baseDirectory>ballerina-macos-${project.version}</baseDirectory>
     <id>Ballerina MacOS Distribution</id>
     <formats>
         <format>zip</format>
@@ -35,7 +35,7 @@
             <directory>
                 ${project.build.directory}/extracted-distributions/jballerina-tools-zip/jballerina-tools-${project.version}
             </directory>
-            <outputDirectory>jballerina-tools-${project.version}</outputDirectory>
+            <outputDirectory>.</outputDirectory>
             <excludes>
                 <exclude>bin/ballerina.bat</exclude>
                 <exclude>lib/tools/lang-server/launcher/language-server-launcher.bat</exclude>
@@ -45,51 +45,51 @@
             <directory>
                 ${project.build.directory}/extracted-jre-linux
             </directory>
-            <outputDirectory>jballerina-tools-${project.version}/bre/lib/</outputDirectory>
+            <outputDirectory>bre/lib/</outputDirectory>
             <fileMode>0755</fileMode>
         </fileSet>
         <fileSet>
             <directory>
                 ${project.build.directory}/extracted-distributions/jballerina-tools-zip/jballerina-tools-${project.version}
             </directory>
-            <outputDirectory>jballerina-tools-${project.version}</outputDirectory>
+            <outputDirectory>.</outputDirectory>
         </fileSet>
         <fileSet>
             <directory>
                 ${project.build.directory}/extracted-distributions/awslambda-extension-examples-zip/awslambda-extension-examples-${project.version}
             </directory>
-            <outputDirectory>jballerina-tools-${project.version}/examples</outputDirectory>
+            <outputDirectory>examples</outputDirectory>
         </fileSet>
         <fileSet>
             <directory>
                 ${project.build.directory}/extracted-distributions/awslambda-extension-balo-zip/jballerina-tools-${project.version}/awslambda
             </directory>
-            <outputDirectory>jballerina-tools-${project.version}/bir-cache/ballerinax/awslambda</outputDirectory>
+            <outputDirectory>bir-cache/ballerinax/awslambda</outputDirectory>
         </fileSet>
     </fileSets>
     <files>
         <file>
             <source>../resources/executables/macos/ballerina</source>
-            <outputDirectory>ballerina-tools-${tools.version}/bin/</outputDirectory>
+            <outputDirectory>bin/</outputDirectory>
             <filtered>true</filtered>
             <fileMode>755</fileMode>
         </file>
         <file>
             <source>../resources/executables/macos/language-server-launcher.sh</source>
-            <outputDirectory>jballerina-tools-${project.version}/lib/tools/lang-server/launcher/</outputDirectory>
+            <outputDirectory>lib/tools/lang-server/launcher/</outputDirectory>
             <filtered>true</filtered>
             <fileMode>755</fileMode>
         </file>
         <file>
             <source>lib/version.txt</source>
-            <outputDirectory>ballerina-tools-${tools.version}/bin/</outputDirectory>
+            <outputDirectory>bin/</outputDirectory>
             <filtered>true</filtered>
             <fileMode>644</fileMode>
         </file>
     </files>
     <dependencySets>
         <dependencySet>
-            <outputDirectory>jballerina-tools-${project.version}/bre/lib</outputDirectory>
+            <outputDirectory>bre/lib</outputDirectory>
             <includes>
 <!--                <include>org.ballerinax.docker:docker-extension</include>-->
 <!--                <include>org.ballerinax.kubernetes:kubernetes-extension</include>-->
