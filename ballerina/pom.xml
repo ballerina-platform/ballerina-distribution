@@ -21,95 +21,25 @@
     <parent>
         <groupId>org.ballerinalang</groupId>
         <artifactId>ballerina-distribution</artifactId>
-        <version>0.990.4-SNAPSHOT</version>
+        <version>0.992.0-m2-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>ballerina-platform</artifactId>
+    <artifactId>ballerina</artifactId>
     <packaging>pom</packaging>
 
-    <name>Ballerina - Distribution</name>
+    <name>Ballerina - Tools</name>
 
     <dependencies>
         <dependency>
             <groupId>org.ballerinalang</groupId>
-            <artifactId>ballerina-tools</artifactId>
+            <artifactId>jballerina-tools</artifactId>
             <type>zip</type>
         </dependency>
         <dependency>
             <groupId>org.wso2.ballerina.jre.artifacts</groupId>
             <artifactId>ballerina-jre-artifacts</artifactId>
-            <type>zip</type>
-        </dependency>
-
-        <!-- Docker extension -->
-        <dependency>
-            <groupId>org.ballerinax.docker</groupId>
-            <artifactId>docker-extension</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.ballerinax.docker</groupId>
-            <artifactId>docker-extension</artifactId>
-            <type>zip</type>
-            <classifier>ballerina-binary-repo</classifier>
-            <version>${docker.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.ballerinax.docker</groupId>
-            <artifactId>docker-extension</artifactId>
-            <type>zip</type>
-            <classifier>ballerina-sources</classifier>
-        </dependency>
-        <dependency>
-            <groupId>org.ballerinax.docker</groupId>
-            <artifactId>docker-extension-examples</artifactId>
-            <type>zip</type>
-        </dependency>
-
-        <!-- JDBC extension -->
-        <dependency>
-            <groupId>org.ballerinax.jdbc</groupId>
-            <artifactId>jdbc-extension</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.ballerinax.jdbc</groupId>
-            <artifactId>jdbc-extension</artifactId>
-            <type>zip</type>
-            <classifier>ballerina-binary-repo</classifier>
-        </dependency>
-        <dependency>
-            <groupId>org.ballerinax.jdbc</groupId>
-            <artifactId>jdbc-extension</artifactId>
-            <type>zip</type>
-            <classifier>ballerina-sources</classifier>
-        </dependency>
-        <dependency>
-            <groupId>org.ballerinax.jdbc</groupId>
-            <artifactId>jdbc-extension-examples</artifactId>
-            <type>zip</type>
-        </dependency>
-
-        <!-- Kubernetes extension -->
-        <dependency>
-            <groupId>org.ballerinax.kubernetes</groupId>
-            <artifactId>kubernetes-extension</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.ballerinax.kubernetes</groupId>
-            <artifactId>kubernetes-extension</artifactId>
-            <type>zip</type>
-            <classifier>ballerina-binary-repo</classifier>
-        </dependency>
-        <dependency>
-            <groupId>org.ballerinax.kubernetes</groupId>
-            <artifactId>kubernetes-extension</artifactId>
-            <type>zip</type>
-            <classifier>ballerina-sources</classifier>
-        </dependency>
-        <dependency>
-            <groupId>org.ballerinax.kubernetes</groupId>
-            <artifactId>kubernetes-extension-examples</artifactId>
             <type>zip</type>
         </dependency>
 
@@ -120,15 +50,8 @@
         </dependency>
         <dependency>
             <groupId>org.ballerinax.awslambda</groupId>
-            <artifactId>awslambda-extension</artifactId>
+            <artifactId>awslambda-extension-balo</artifactId>
             <type>zip</type>
-            <classifier>ballerina-binary-repo</classifier>
-        </dependency>
-        <dependency>
-            <groupId>org.ballerinax.awslambda</groupId>
-            <artifactId>awslambda-extension</artifactId>
-            <type>zip</type>
-            <classifier>ballerina-sources</classifier>
         </dependency>
         <dependency>
             <groupId>org.ballerinax.awslambda</groupId>
@@ -136,27 +59,41 @@
             <type>zip</type>
         </dependency>
 
+        <!-- Docker extension -->
+        <dependency>
+            <groupId>org.ballerinax.docker</groupId>
+            <artifactId>docker-extension</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinax.docker</groupId>
+            <artifactId>docker-extension-balo</artifactId>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinax.docker</groupId>
+            <artifactId>docker-extension-examples</artifactId>
+            <type>zip</type>
+        </dependency>
+
+        <!-- Kubernetes extension -->
+        <dependency>
+            <groupId>org.ballerinax.kubernetes</groupId>
+            <artifactId>kubernetes-extension</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinax.kubernetes</groupId>
+            <artifactId>kubernetes-extension-balo</artifactId>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinax.kubernetes</groupId>
+            <artifactId>kubernetes-extension-examples</artifactId>
+            <type>zip</type>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>unpack-balo</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>unpack-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <includeClassifiers>ballerina-binary-repo</includeClassifiers>
-                            <outputDirectory>${project.build.directory}/extracted-lib</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -195,15 +132,13 @@
                         </goals>
                         <configuration>
                             <includeArtifactIds>
-                                ballerina-tools,
-                                docker-extension,
+                                jballerina-tools,
+                                awslambda-extension-balo,
+                                awslambda-extension-examples,
+                                docker-extension-balo,
                                 docker-extension-examples,
-                                kubernetes-extension,
-                                kubernetes-extension-examples,
-                                jdbc-extension,
-                                jdbc-extension-examples,
-                                awslambda-extension,
-                                awslambda-extension-examples
+                                kubernetes-extension-balo,
+                                kubernetes-extension-examples
                             </includeArtifactIds>
                             <outputDirectory>${project.build.directory}/extracted-distributions
                             </outputDirectory>
@@ -233,7 +168,7 @@
                             <descriptors>
                                 <descriptor>${basedir}/src/assembly/dist.xml</descriptor>
                             </descriptors>
-                            <finalName>${distribution.name}-${project.version}</finalName>
+                            <finalName>j${distribution.name}-${project.version}</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                     </execution>
@@ -290,105 +225,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-            <!-- Docerina -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>${maven.resources.plugin.version}</version>
-                <executions>
-                    <execution>
-                    <id>copy-lib</id>
-                    <phase>process-resources</phase>
-                    <goals>
-                        <goal>copy-resources</goal>
-                    </goals>
-                    <configuration>
-                        <outputDirectory>${project.build.directory}/lib/repo/ballerina</outputDirectory>
-                        <resources>
-                            <resource>
-                                <directory>${project.build.directory}/extracted-lib/repo/ballerina</directory>
-                            </resource>
-                        </resources>
-                    </configuration>
-                </execution>
-                    <execution>
-                        <id>copy-resources</id>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/extracted-distributions</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>${project.build.directory}/extracted-distributions/docker-extension-ballerina-sources-zip/ballerina</directory>
-                                </resource>
-                                <resource>
-                                    <directory>${project.build.directory}/extracted-distributions/kubernetes-extension-ballerina-sources-zip/ballerina</directory>
-                                </resource>
-                                <resource>
-                                    <directory>${project.build.directory}/extracted-distributions/jdbc-extension-ballerina-sources-zip/ballerina</directory>
-                                </resource>
-                                <resource>
-                                    <directory>${project.build.directory}/extracted-distributions/awslambda-extension-ballerina-sources-zip/ballerina</directory>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>properties-maven-plugin</artifactId>
-                <version>1.0.0</version>
-                <executions>
-                    <execution>
-                        <id>set-sys-prop</id>
-                        <phase>clean</phase>
-                        <goals>
-                            <goal>set-system-properties</goal>
-                        </goals>
-                        <configuration>
-                            <properties>
-                                <property>
-                                    <name>java.util.logging.manager</name>
-                                    <value>org.ballerinalang.logging.BLogManager</value>
-                                </property>
-                                <property>
-                                    <name>BALLERINA_DEV_COMPILE_BALLERINA_ORG</name>
-                                    <value>true</value>
-                                </property>
-                                <property>
-                                    <name>ballerina.home</name>
-                                    <value>${project.build.directory}</value>
-                                </property>
-                            </properties>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.ballerinalang</groupId>
-                <artifactId>docerina-maven-plugin</artifactId>
-                <version>${ballerina.version}</version>
-                <executions>
-                    <execution>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>docerina</goal>
-                        </goals>
-                        <configuration>
-                            <outputZip>${project.build.directory}/ballerina-api-docs-ballerinax-${project.version}.zip</outputZip>
-                            <outputDir>${project.build.directory}/api-docs-ballerinax</outputDir>
-                            <sourceRoot>${project.build.directory}/extracted-distributions/ballerinax</sourceRoot>
-                            <nativeCode>true</nativeCode>
-                            <packageFilter>compression</packageFilter>
-                            <offline>true</offline>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
@@ -421,7 +257,6 @@
                                 <delete dir="${project.build.directory}/extracted-jre-windows" includeemptydirs="true" deleteonexit="true" />
                                 <delete dir="${project.build.directory}/ballerina-jre-artifacts-zip" includeemptydirs="true" />
                                 <delete dir="${project.build.directory}/ballerina-examples-zip" includeemptydirs="true" />
-                                <delete dir="${project.build.directory}/api-docs-ballerinax" includeemptydirs="true" />
                             </target>
                         </configuration>
                     </execution>

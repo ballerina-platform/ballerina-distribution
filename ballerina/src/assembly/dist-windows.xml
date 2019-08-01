@@ -24,20 +24,21 @@
     </formats>
 
     <fileSets>
+<!--        <fileSet>-->
+<!--            <directory>-->
+<!--                ${project.build.directory}/extracted-lib/repo/ballerinax-->
+<!--            </directory>-->
+<!--            <outputDirectory>lib/repo/ballerinax</outputDirectory>-->
+<!--            <fileMode>0444</fileMode>-->
+<!--        </fileSet>-->
         <fileSet>
             <directory>
-                ${project.build.directory}/extracted-lib/repo/ballerinax
-            </directory>
-            <outputDirectory>lib/repo/ballerinax</outputDirectory>
-            <fileMode>0444</fileMode>
-        </fileSet>
-        <fileSet>
-            <directory>
-                ${project.build.directory}/extracted-distributions/ballerina-tools-zip/ballerina-tools-${project.version}
+                ${project.build.directory}/extracted-distributions/jballerina-tools-zip/jballerina-tools-${project.version}
             </directory>
             <outputDirectory>.</outputDirectory>
             <excludes>
                 <exclude>bin/ballerina</exclude>
+                <exclude>lib/tools/lang-server/launcher/language-server-launcher</exclude>
             </excludes>
         </fileSet>
         <fileSet>
@@ -49,9 +50,15 @@
         </fileSet>
         <fileSet>
             <directory>
-                ${project.build.directory}/api-docs-ballerinax
+                ${project.build.directory}/extracted-distributions/jballerina-tools-zip/jballerina-tools--${project.version}
             </directory>
-            <outputDirectory>docs/ballerinax</outputDirectory>
+            <outputDirectory>.</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>
+                ${project.build.directory}/extracted-distributions/awslambda-extension-examples-zip/awslambda-extension-examples-${project.version}
+            </directory>
+            <outputDirectory>examples</outputDirectory>
         </fileSet>
         <fileSet>
             <directory>
@@ -61,21 +68,28 @@
         </fileSet>
         <fileSet>
             <directory>
-                ${project.build.directory}/extracted-distributions/jdbc-extension-examples-zip/jdbc-extension-examples-${project.version}
-            </directory>
-            <outputDirectory>examples</outputDirectory>
-        </fileSet>
-        <fileSet>
-            <directory>
                 ${project.build.directory}/extracted-distributions/kubernetes-extension-examples-zip/kubernetes-extension-examples-${project.version}
             </directory>
             <outputDirectory>examples</outputDirectory>
         </fileSet>
+
         <fileSet>
             <directory>
-                ${project.build.directory}/extracted-distributions/awslambda-extension-examples-zip/awslambda-extension-examples-${project.version}
+                ${project.build.directory}/extracted-distributions/awslambda-extension-balo-zip/jballerina-tools-${project.version}/awslambda
             </directory>
-            <outputDirectory>examples</outputDirectory>
+            <outputDirectory>bir-cache/ballerinax/awslambda</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>
+                ${project.build.directory}/extracted-distributions/docker-extension-balo-zip/docker-artifacts/docker
+            </directory>
+            <outputDirectory>bir-cache/ballerinax/docker</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>
+                ${project.build.directory}/extracted-distributions/kubernetes-extension-balo-zip/kubernetes-artifacts/kubernetes
+            </directory>
+            <outputDirectory>bir-cache/ballerinax/kubernetes</outputDirectory>
         </fileSet>
     </fileSets>
     <files>
@@ -86,8 +100,32 @@
             <fileMode>644</fileMode>
         </file>
         <file>
+            <source>../resources/executables/windows/language-server-launcher.bat</source>
+            <outputDirectory>lib/tools/lang-server/launcher/</outputDirectory>
+            <filtered>true</filtered>
+            <fileMode>644</fileMode>
+        </file>
+        <file>
             <source>lib/version.txt</source>
-            <outputDirectory>lib/</outputDirectory>
+            <outputDirectory>bin/</outputDirectory>
+            <filtered>true</filtered>
+            <fileMode>644</fileMode>
+        </file>
+        <file>
+            <source>${project.build.directory}/extracted-distributions/awslambda-extension-balo-zip/jballerina-tools-${project.version}/awslambda.jar</source>
+            <outputDirectory>/bre/lib/</outputDirectory>
+            <filtered>true</filtered>
+            <fileMode>644</fileMode>
+        </file>
+        <file>
+            <source>${project.build.directory}/extracted-distributions/docker-extension-balo-zip/docker-artifacts/docker.jar</source>
+            <outputDirectory>/bre/lib/</outputDirectory>
+            <filtered>true</filtered>
+            <fileMode>644</fileMode>
+        </file>
+        <file>
+            <source>${project.build.directory}/extracted-distributions/kubernetes-extension-balo-zip/kubernetes-artifacts/kubernetes.jar</source>
+            <outputDirectory>/bre/lib/</outputDirectory>
             <filtered>true</filtered>
             <fileMode>644</fileMode>
         </file>
@@ -98,14 +136,12 @@
             <includes>
                 <include>org.ballerinax.docker:docker-extension</include>
                 <include>org.ballerinax.kubernetes:kubernetes-extension</include>
-                <include>org.ballerinax.jdbc:jdbc-extension</include>
                 <include>org.ballerinax.awslambda:awslambda-extension</include>
             </includes>
             <excludes>
-                <exclude>org.ballerinax.docker:docker-extension:zip</exclude>
-                <exclude>org.ballerinax.kubernetes:kubernetes-extension:zip</exclude>
-                <exclude>org.ballerinax.jdbc:jdbc-extension:zip</exclude>
-                <exclude>org.ballerinax.awslambda:awslambda-extension:zip</exclude>
+<!--                <exclude>org.ballerinax.docker:docker-extension:zip</exclude>-->
+<!--                <exclude>org.ballerinax.kubernetes:kubernetes-extension:zip</exclude>-->
+<!--                <exclude>org.ballerinax.awslambda:awslambda-extension:zip</exclude>-->
             </excludes>
             <unpack>false</unpack>
         </dependencySet>
