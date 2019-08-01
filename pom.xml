@@ -191,6 +191,44 @@
                 <version>${awslambda.version}</version>
             </dependency>
 
+            <!-- Docker extension -->
+            <dependency>
+                <groupId>org.ballerinax.docker</groupId>
+                <artifactId>docker-extension</artifactId>
+                <version>${docker.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ballerinax.docker</groupId>
+                <artifactId>docker-extension-balo</artifactId>
+                <type>zip</type>
+                <version>${docker.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ballerinax.docker</groupId>
+                <artifactId>docker-extension-examples</artifactId>
+                <type>zip</type>
+                <version>${docker.version}</version>
+            </dependency>
+
+            <!-- Kubernetes extension -->
+            <dependency>
+                <groupId>org.ballerinax.kubernetes</groupId>
+                <artifactId>kubernetes-extension</artifactId>
+                <version>${kubernetes.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ballerinax.kubernetes</groupId>
+                <artifactId>kubernetes-extension-balo</artifactId>
+                <type>zip</type>
+                <version>${kubernetes.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ballerinax.kubernetes</groupId>
+                <artifactId>kubernetes-extension-examples</artifactId>
+                <type>zip</type>
+                <version>${kubernetes.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
     <properties>
