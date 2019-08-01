@@ -58,6 +58,38 @@
             <artifactId>awslambda-extension-examples</artifactId>
             <type>zip</type>
         </dependency>
+
+        <!-- Docker extension -->
+        <dependency>
+            <groupId>org.ballerinax.docker</groupId>
+            <artifactId>docker-extension</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinax.docker</groupId>
+            <artifactId>docker-extension-balo</artifactId>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinax.docker</groupId>
+            <artifactId>docker-extension-examples</artifactId>
+            <type>zip</type>
+        </dependency>
+
+        <!-- Kubernetes extension -->
+        <dependency>
+            <groupId>org.ballerinax.kubernetes</groupId>
+            <artifactId>kubernetes-extension</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinax.kubernetes</groupId>
+            <artifactId>kubernetes-extension-balo</artifactId>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinax.kubernetes</groupId>
+            <artifactId>kubernetes-extension-examples</artifactId>
+            <type>zip</type>
+        </dependency>
     </dependencies>
 
     <build>
@@ -102,7 +134,11 @@
                             <includeArtifactIds>
                                 jballerina-tools,
                                 awslambda-extension-balo,
-                                awslambda-extension-examples
+                                awslambda-extension-examples,
+                                docker-extension-balo,
+                                docker-extension-examples,
+                                kubernetes-extension-balo,
+                                kubernetes-extension-examples
                             </includeArtifactIds>
                             <outputDirectory>${project.build.directory}/extracted-distributions
                             </outputDirectory>
