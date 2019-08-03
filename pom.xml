@@ -25,7 +25,7 @@
 
     <groupId>org.ballerinalang</groupId>
     <artifactId>ballerina-distribution</artifactId>
-    <version>0.992.0-m2-SNAPSHOT</version>
+    <version>1.0.0-alpha</version>
     <modelVersion>4.0.0</modelVersion>
 
     <name>Ballerina - Tools - Parent</name>
@@ -59,7 +59,7 @@
         <url>https://github.com/ballerina-platform/ballerina-distribution.git</url>
         <developerConnection>scm:git:https://github.com/ballerina-platform/ballerina-distribution.git</developerConnection>
         <connection>scm:git:https://github.com/ballerina-platform/ballerina-distribution.git</connection>
-        <tag>HEAD</tag>
+        <tag>v1.0.0-alpha</tag>
     </scm>
 
     <repositories>
