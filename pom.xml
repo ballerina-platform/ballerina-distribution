@@ -248,7 +248,7 @@
         <docker.version>1.0.0-alpha</docker.version>
         <kubernetes.version>1.0.0-alpha</kubernetes.version>
         <jdbc.version>0.992.0-m2-SNAPSHOT</jdbc.version>
-        <awslambda.version>0.992.0-m2-SNAPSHOT</awslambda.version>
+        <awslambda.version>1.0.0-alpha</awslambda.version>
     </properties>
 
 </project>
