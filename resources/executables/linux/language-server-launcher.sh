@@ -26,7 +26,8 @@
 #
 # NOTE: Borrowed generously from Apache Tomcat startup scripts.
 # ----------------------------------------------------------------------------
-JAVA_HOME="$BALLERINA_HOME/bre/lib/jdk8u202-b08-jre"
+DIR="$(cd "$(dirname "$0")" && pwd)"
+JAVA_HOME="$DIR/../../../../bre/lib/jdk8u202-b08-jre"
 
 # ---------------------- Developer Configurations ---------------------------
 BALLERINA_DEBUG_LOG=false;
