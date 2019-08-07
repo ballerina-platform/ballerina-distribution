@@ -85,19 +85,16 @@
         <file>
             <source>${project.build.directory}/extracted-distributions/awslambda-extension-balo-zip/jballerina-tools-${project.version}/awslambda.jar</source>
             <outputDirectory>/bre/lib/</outputDirectory>
-            <filtered>true</filtered>
             <fileMode>644</fileMode>
         </file>
         <file>
             <source>${project.build.directory}/extracted-distributions/docker-extension-balo-zip/docker-artifacts/docker.jar</source>
             <outputDirectory>/bre/lib/</outputDirectory>
-            <filtered>true</filtered>
             <fileMode>644</fileMode>
         </file>
         <file>
             <source>${project.build.directory}/extracted-distributions/kubernetes-extension-balo-zip/kubernetes-artifacts/kubernetes.jar</source>
             <outputDirectory>/bre/lib/</outputDirectory>
-            <filtered>true</filtered>
             <fileMode>644</fileMode>
         </file>
     </files>
