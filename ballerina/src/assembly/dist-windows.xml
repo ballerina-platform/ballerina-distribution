@@ -33,7 +33,7 @@
 <!--        </fileSet>-->
         <fileSet>
             <directory>
-                ${project.build.directory}/extracted-distributions/jballerina-tools-zip/jballerina-tools-${project.version}
+                ${project.build.directory}/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerina.version}
             </directory>
             <outputDirectory>.</outputDirectory>
             <excludes>
@@ -75,7 +75,7 @@
 
         <fileSet>
             <directory>
-                ${project.build.directory}/extracted-distributions/awslambda-extension-balo-zip/jballerina-tools-${project.version}/awslambda
+                ${project.build.directory}/extracted-distributions/awslambda-extension-balo-zip/awslambda-artifacts/awslambda
             </directory>
             <outputDirectory>bir-cache/ballerinax/awslambda</outputDirectory>
         </fileSet>

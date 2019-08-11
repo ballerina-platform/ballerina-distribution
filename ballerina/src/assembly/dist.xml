@@ -33,7 +33,7 @@
 <!--        </fileSet>-->
         <fileSet>
             <directory>
-                ${project.build.directory}/extracted-distributions/jballerina-tools-zip/jballerina-tools-${project.version}
+                ${project.build.directory}/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerina.version}
             </directory>
             <outputDirectory>.</outputDirectory>
         </fileSet>
