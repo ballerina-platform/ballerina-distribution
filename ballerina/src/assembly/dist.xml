@@ -83,7 +83,7 @@
             <fileMode>644</fileMode>
         </file>
         <file>
-            <source>${project.build.directory}/extracted-distributions/awslambda-extension-balo-zip/jballerina-tools-${project.version}/awslambda.jar</source>
+            <source>${project.build.directory}/extracted-distributions/awslambda-extension-balo-zip/awslambda-artifacts/awslambda.jar</source>
             <outputDirectory>/bre/lib/</outputDirectory>
             <fileMode>644</fileMode>
         </file>
