@@ -135,17 +135,17 @@
             <fileMode>644</fileMode>
         </file>
         <file>
-            <source>${project.build.directory}/extracted-distributions/awslambda-extension-balo-zip/awslambda-artifacts/awslambda.jar</source>
+            <source>${project.build.directory}/extracted-distributions/awslambda-extension-balo-zip/awslambda-artifacts/ballerinax-awslambda-0.0.0.jar </source>
             <outputDirectory>/bre/lib/</outputDirectory>
             <fileMode>644</fileMode>
         </file>
         <file>
-            <source>${project.build.directory}/extracted-distributions/docker-extension-balo-zip/docker-artifacts/docker.jar</source>
+            <source>${project.build.directory}/extracted-distributions/docker-extension-balo-zip/docker-artifacts/ballerinax-docker-0.0.0.jar </source>
             <outputDirectory>/bre/lib/</outputDirectory>
             <fileMode>644</fileMode>
         </file>
         <file>
-            <source>${project.build.directory}/extracted-distributions/kubernetes-extension-balo-zip/kubernetes-artifacts/kubernetes.jar</source>
+            <source>${project.build.directory}/extracted-distributions/kubernetes-extension-balo-zip/kubernetes-artifacts/ballerinax-kubernetes-0.0.0.jar </source>
             <outputDirectory>/bre/lib/</outputDirectory>
             <fileMode>644</fileMode>
         </file>
