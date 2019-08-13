@@ -47,6 +47,7 @@ fi
 mkdir -p ~/.ballerina
 chmod -R 777 ~/.ballerina
 cp -r %{_libdir}/ballerina/ballerina-%{_ballerina_version}/tools ~/.ballerina/
+chmod -R 777 ~/.ballerina/tools
 
 %clean
 rm -rf %{_topdir}/BUILD/*

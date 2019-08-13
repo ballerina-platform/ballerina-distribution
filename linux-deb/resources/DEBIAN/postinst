@@ -4,3 +4,4 @@ echo "export BALLERINA_HOME=/usr/lib/ballerina/ballerina-__BALLERINA_VERSION__" 
 mkdir -p ~/.ballerina
 chmod -R 777 ~/.ballerina
 cp -r /usr/lib/ballerina/ballerina-__BALLERINA_VERSION__/tools ~/.ballerina/
+chmod -R 777 ~/.ballerina/tools
