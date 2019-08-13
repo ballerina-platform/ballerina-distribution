@@ -44,8 +44,8 @@ if [ "$(readlink /usr/bin/ballerina)" = "%{_libdir}/ballerina/ballerina-%{_balle
 then
   rm -f /usr/bin/ballerina
 fi
-mkdir ~/.ballerina
-cp %{_libdir}/ballerina/ballerina-%{_ballerina_version}/tools ~/.ballerina/
+mkdir -p ~/.ballerina
+cp -r %{_libdir}/ballerina/ballerina-%{_ballerina_version}/tools ~/.ballerina/
 
 %clean
 rm -rf %{_topdir}/BUILD/*
