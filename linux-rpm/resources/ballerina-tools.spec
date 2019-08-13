@@ -45,7 +45,7 @@ then
   rm -f /usr/bin/ballerina
 fi
 mkdir -p ~/.ballerina
-chmod -R 755 %{_libdir}/ballerina/ballerina-%{_ballerina_version}/tools
+chmod -R 777 ~/.ballerina
 cp -r %{_libdir}/ballerina/ballerina-%{_ballerina_version}/tools ~/.ballerina/
 
 %clean
