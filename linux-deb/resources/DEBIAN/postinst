@@ -2,4 +2,5 @@ ln -sf /usr/lib/ballerina/ballerina-__BALLERINA_VERSION__/bin/ballerina /usr/bin
 echo "export BALLERINA_HOME=/usr/lib/ballerina/ballerina-__BALLERINA_VERSION__" >> /etc/profile.d/wso2.sh
 
 mkdir -p ~/.ballerina
+chmod -R 755 usr/lib/ballerina/ballerina-__BALLERINA_VERSION__/tools
 cp -r /usr/lib/ballerina/ballerina-__BALLERINA_VERSION__/tools ~/.ballerina/
