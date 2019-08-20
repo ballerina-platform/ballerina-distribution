@@ -30,7 +30,7 @@
 # -----------------------------------------------------------------------------
 
 [ -f /etc/profile.d/wso2.sh ] && source /etc/profile.d/wso2.sh
-JAVA_HOME=$BALLERINA_HOME/bre/lib/jdk8u202-b08-jre
+JAVA_HOME=$BALLERINA_HOME/../../dependencies/jdk8u202-b08-jre
 
 # OS specific support.  $var _must_ be set to either true or false.
 #ulimit -n 100000
