@@ -63,9 +63,9 @@ if [ -z "$DISTRIBUTION" ]; then
 fi
 
 BALLERINA_DISTRIBUTION_LOCATION=${DIST_PATH}
-BALLERINA_PLATFORM=ballerina-tools-linux-${BALLERINA_VERSION}
+BALLERINA_PLATFORM=ballerina-linux-${BALLERINA_VERSION}
 # BALLERINA_RUNTIME=ballerina-runtime-linux-${BALLERINA_VERSION}
-BALLERINA_INSTALL_DIRECTORY=ballerina-tools-${BALLERINA_VERSION}
+BALLERINA_INSTALL_DIRECTORY=ballerina-${BALLERINA_VERSION}
 
 echo "Build started at" $(date +"%Y-%m-%d %H:%M:%S")
 
@@ -113,7 +113,7 @@ function createBallerinaPlatform() {
     createPackInstallationDirectory
     copyDebianDirectory
     mv target/${BALLERINA_INSTALL_DIRECTORY} target/ballerina-linux-installer-x64-${BALLERINA_VERSION}
-    fakeroot dpkg-deb --build target/ballerina-tools-linux-installer-x64-${BALLERINA_VERSION}
+    fakeroot dpkg-deb --build target/ballerina-linux-installer-x64-${BALLERINA_VERSION}
 }
 
 # function createBallerinaRuntime() {
