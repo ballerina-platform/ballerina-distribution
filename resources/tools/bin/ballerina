@@ -15,4 +15,10 @@
 #  limitations under the License.
 
 value=`cat ../distributions/ballerina-version`
+
+FILE=~/.ballerina/ballerina-version
+if test -f "$FILE"; then
+   value=`cat $FILE`
+fi
+
 sh "../distributions/$value/bin/ballerina" $@
