@@ -78,6 +78,7 @@
             <excludes>
                 <exclude>distributions/jballerina-${ballerina.version}/bin/ballerina</exclude>
                 <exclude>distributions/jballerina-${ballerina.version}/bin/language-server-launcher</exclude>
+                <exclude>distributions/ballerina-version</exclude>
             </excludes>
         </fileSet>
         <fileSet>
@@ -123,6 +124,12 @@
         <file>
             <source>${project.build.directory}/extracted-distributions/kubernetes-extension-balo-zip/kubernetes-artifacts/ballerinax-kubernetes-0.0.0.jar </source>
             <outputDirectory>distributions/jballerina-${ballerina.version}/bre/lib/</outputDirectory>
+            <fileMode>644</fileMode>
+        </file>
+        <file>
+            <source>../resources/tools/distributions/ballerina-version</source>
+            <outputDirectory>tools/distributions</outputDirectory>
+            <filtered>true</filtered>
             <fileMode>644</fileMode>
         </file>
     </files>

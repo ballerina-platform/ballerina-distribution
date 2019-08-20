@@ -18,16 +18,15 @@ REM  specific language governing permissions and limitations
 REM  under the License.
 REM ---------------------------------------------------------------------------
 
-set BALLERINA_HOME=jballerina-1.0.0
-set FILE_PATH=..\distributions\ballerina-version
+set BALLERINA_HOME=
+set FILE_PATH=%~sdp0..\distributions\ballerina-version
 
 if exist ~\.ballerina\ballerina-version (
-   FILE_PATH=~\.ballerina\ballerina-version
+   set "FILE_PATH=~\.ballerina\ballerina-version"
 )
 
 for /f %%a in (%FILE_PATH%) do (
-  BALLERINA_HOME=%%a
-  exit /b
+  set "BALLERINA_HOME=%%a"
 )
 
-..\distributions\%BALLERINA_HOME%\bin\ballerina.bat %*
+%~sdp0..\distributions\%BALLERINA_HOME%\bin\ballerina.bat %*
