@@ -81,16 +81,6 @@
                 <exclude>distributions/ballerina-version</exclude>
             </excludes>
         </fileSet>
-        <fileSet>
-            <directory>
-                ../resources/tools
-            </directory>
-            <outputDirectory>.</outputDirectory>
-            <excludes>
-                <exclude>bin/ballerina</exclude>
-            </excludes>
-        </fileSet>
-
     </fileSets>
     <files>
         <file>
@@ -128,9 +118,15 @@
         </file>
         <file>
             <source>../resources/tools/distributions/ballerina-version</source>
-            <outputDirectory>tools/distributions</outputDirectory>
+            <outputDirectory>distributions</outputDirectory>
             <filtered>true</filtered>
             <fileMode>644</fileMode>
+        </file>
+        <file>
+            <source>../resources/tools/bin/ballerina.bat</source>
+            <outputDirectory>bin</outputDirectory>
+            <filtered>true</filtered>
+            <fileMode>775</fileMode>
         </file>
     </files>
     <dependencySets>

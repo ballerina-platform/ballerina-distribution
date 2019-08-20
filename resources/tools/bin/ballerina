@@ -14,11 +14,12 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
-value=`cat ../distributions/ballerina-version`
+CURRENT_PATH=$(dirname "$0")
+value=`cat $CURRENT_PATH/../distributions/ballerina-version`
 
 FILE=~/.ballerina/ballerina-version
 if test -f "$FILE"; then
    value=`cat $FILE`
 fi
 
-sh "../distributions/$value/bin/ballerina" $@
+sh "$CURRENT_PATH/../distributions/$value/bin/ballerina" $@
