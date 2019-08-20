@@ -118,7 +118,7 @@
         </file>
         <file>
             <source>../resources/tools/distributions/ballerina-version</source>
-            <outputDirectory>tools/distributions</outputDirectory>
+            <outputDirectory>distributions</outputDirectory>
             <filtered>true</filtered>
             <fileMode>644</fileMode>
         </file>
