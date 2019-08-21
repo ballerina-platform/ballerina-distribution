@@ -14,12 +14,21 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
-CURRENT_PATH=$(dirname "$0")
-value=`cat $CURRENT_PATH/../distributions/ballerina-version`
+
+CURRENT_PATH=$(pwd)
+
+if [ "$(uname)" == "Darwin" ]; then
+    CURRENT_PATH=$(dirname "$0")
+fi
+
+BALLERINA_VERSION=`cat $CURRENT_PATH/../distributions/ballerina-version`
+JRE_VERSION=`cat $CURRENT_PATH/../distributions/jre-version`
 
 FILE=~/.ballerina/ballerina-version
 if test -f "$FILE"; then
-   value=`cat $FILE`
+   BALLERINA_VERSION=`cat $FILE`
 fi
+BALLERINA_HOME="$CURRENT_PATH/../distributions/$BALLERINA_VERSION"
+JAVA_HOME="$CURRENT_PATH/../dependencies/$JRE_VERSION"
 
-sh "$CURRENT_PATH/../distributions/$value/bin/ballerina" $@
+sh "$BALLERINA_HOME/bin/ballerina" $@
