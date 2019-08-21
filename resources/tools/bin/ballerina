@@ -15,7 +15,7 @@
 #  limitations under the License.
 
 
-CURRENT_PATH=$(dirname $(realpath ballerina) )
+CURRENT_PATH="$(dirname "$(readlink -f "$0")")"
 
 if [ "$(uname)" == "Darwin" ]; then
     CURRENT_PATH=$(dirname "$0")
