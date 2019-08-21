@@ -15,7 +15,7 @@
 #  limitations under the License.
 
 
-CURRENT_PATH=$(pwd)
+CURRENT_PATH=$(dirname $(realpath ballerina) )
 
 if [ "$(uname)" == "Darwin" ]; then
     CURRENT_PATH=$(dirname "$0")
@@ -31,4 +31,6 @@ fi
 BALLERINA_HOME="$CURRENT_PATH/../distributions/$BALLERINA_VERSION"
 JAVA_HOME="$CURRENT_PATH/../dependencies/$JRE_VERSION"
 
+export BALLERINA_HOME
+export JAVA_HOME
 sh "$BALLERINA_HOME/bin/ballerina" $@
