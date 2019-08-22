@@ -24,114 +24,125 @@
     </formats>
 
     <fileSets>
-<!--        <fileSet>-->
-<!--            <directory>-->
-<!--                ${project.build.directory}/extracted-lib/repo/ballerinax-->
-<!--            </directory>-->
-<!--            <outputDirectory>lib/repo/ballerinax</outputDirectory>-->
-<!--            <fileMode>0444</fileMode>-->
-<!--        </fileSet>-->
-        <fileSet>
-            <directory>
-                ${project.build.directory}/extracted-distributions/jballerina-tools-zip/jballerina-tools-${project.version}
-            </directory>
-            <outputDirectory>.</outputDirectory>
-            <excludes>
-                <exclude>bin/ballerina.bat</exclude>
-                <exclude>lib/tools/lang-server/launcher/language-server-launcher.bat</exclude>
-            </excludes>
-        </fileSet>
         <fileSet>
             <directory>
                 ${project.build.directory}/extracted-jre-linux
             </directory>
-            <outputDirectory>bre/lib/</outputDirectory>
+            <outputDirectory>dependencies/</outputDirectory>
             <fileMode>0755</fileMode>
-        </fileSet>
-        <fileSet>
-            <directory>
-                ${project.build.directory}/extracted-distributions/jballerina-tools-zip/jballerina-tools-${project.version}
-            </directory>
-            <outputDirectory>.</outputDirectory>
         </fileSet>
         <fileSet>
             <directory>
                 ${project.build.directory}/extracted-distributions/awslambda-extension-examples-zip/awslambda-extension-examples-${project.version}
             </directory>
-            <outputDirectory>examples</outputDirectory>
+            <outputDirectory>distributions/jballerina-${ballerina.version}/examples</outputDirectory>
         </fileSet>
         <fileSet>
             <directory>
                 ${project.build.directory}/extracted-distributions/docker-extension-examples-zip/docker-extension-examples-${project.version}
             </directory>
-            <outputDirectory>examples</outputDirectory>
+            <outputDirectory>distributions/jballerina-${ballerina.version}/examples</outputDirectory>
         </fileSet>
         <fileSet>
             <directory>
                 ${project.build.directory}/extracted-distributions/kubernetes-extension-examples-zip/kubernetes-extension-examples-${project.version}
             </directory>
-            <outputDirectory>examples</outputDirectory>
+            <outputDirectory>distributions/jballerina-${ballerina.version}/examples</outputDirectory>
         </fileSet>
         <fileSet>
             <directory>
-                ${project.build.directory}/extracted-distributions/awslambda-extension-balo-zip/jballerina-tools-${project.version}/awslambda
+                ${project.build.directory}/extracted-distributions/awslambda-extension-balo-zip/awslambda-artifacts/awslambda
             </directory>
-            <outputDirectory>bir-cache/ballerinax/awslambda</outputDirectory>
+            <outputDirectory>distributions/jballerina-${ballerina.version}/bir-cache/ballerinax/awslambda</outputDirectory>
         </fileSet>
         <fileSet>
             <directory>
                 ${project.build.directory}/extracted-distributions/docker-extension-balo-zip/docker-artifacts/docker
             </directory>
-            <outputDirectory>bir-cache/ballerinax/docker</outputDirectory>
+            <outputDirectory>distributions/jballerina-${ballerina.version}/bir-cache/ballerinax/docker</outputDirectory>
         </fileSet>
         <fileSet>
             <directory>
                 ${project.build.directory}/extracted-distributions/kubernetes-extension-balo-zip/kubernetes-artifacts/kubernetes
             </directory>
-            <outputDirectory>bir-cache/ballerinax/kubernetes</outputDirectory>
+            <outputDirectory>distributions/jballerina-${ballerina.version}/bir-cache/ballerinax/kubernetes</outputDirectory>
         </fileSet>
+
+
+        <!-- Tools artifacts -->
+        <fileSet>
+            <directory>
+                ${project.build.directory}/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerina.version}
+            </directory>
+            <outputDirectory>distributions/jballerina-${ballerina.version}</outputDirectory>
+            <excludes>
+                <exclude>distributions/jballerina-${ballerina.version}/bin/ballerina.bat</exclude>
+                <exclude>distributions/jballerina-${ballerina.version}/bin/language-server-launcher.bat</exclude>
+                <exclude>distributions/ballerina-version</exclude>
+                <exclude>distributions/jre-version</exclude>
+            </excludes>
+        </fileSet>
+        <fileSet>
+            <directory>
+                ../resources/tools
+            </directory>
+            <outputDirectory>.</outputDirectory>
+            <excludes>
+                <exclude>bin/ballerina.bat</exclude>
+            </excludes>
+        </fileSet>
+
     </fileSets>
     <files>
         <file>
-            <source>../resources/executables/linux/ballerina</source>
-            <outputDirectory>bin/</outputDirectory>
-            <filtered>true</filtered>
-            <fileMode>755</fileMode>
-        </file>
-        <file>
             <source>../resources/executables/linux/language-server-launcher.sh</source>
-            <outputDirectory>lib/tools/lang-server/launcher/</outputDirectory>
+            <outputDirectory>distributions/jballerina-${ballerina.version}/lib/tools/lang-server/launcher/</outputDirectory>
             <filtered>true</filtered>
             <fileMode>755</fileMode>
         </file>
         <file>
             <source>lib/version.txt</source>
-            <outputDirectory>bin/</outputDirectory>
+            <outputDirectory>distributions/jballerina-${ballerina.version}/bin/</outputDirectory>
             <filtered>true</filtered>
             <fileMode>644</fileMode>
         </file>
         <file>
-            <source>${project.build.directory}/extracted-distributions/awslambda-extension-balo-zip/jballerina-tools-${project.version}/awslambda.jar</source>
-            <outputDirectory>/bre/lib/</outputDirectory>
+            <source>${project.build.directory}/extracted-distributions/awslambda-extension-balo-zip/awslambda-artifacts/ballerinax-awslambda-0.0.0.jar </source>
+            <outputDirectory>distributions/jballerina-${ballerina.version}/bre/lib/</outputDirectory>
+            <fileMode>644</fileMode>
+        </file>
+        <file>
+            <source>${project.build.directory}/extracted-distributions/docker-extension-balo-zip/docker-artifacts/ballerinax-docker-0.0.0.jar </source>
+            <outputDirectory>distributions/jballerina-${ballerina.version}/bre/lib/</outputDirectory>
+            <fileMode>644</fileMode>
+        </file>
+        <file>
+            <source>${project.build.directory}/extracted-distributions/kubernetes-extension-balo-zip/kubernetes-artifacts/ballerinax-kubernetes-0.0.0.jar </source>
+            <outputDirectory>distributions/jballerina-${ballerina.version}/bre/lib/</outputDirectory>
+            <fileMode>644</fileMode>
+        </file>
+        <file>
+            <source>../resources/tools/distributions/ballerina-version</source>
+            <outputDirectory>distributions</outputDirectory>
             <filtered>true</filtered>
             <fileMode>644</fileMode>
         </file>
         <file>
-            <source>${project.build.directory}/extracted-distributions/docker-extension-balo-zip/docker-artifacts/docker.jar</source>
-            <outputDirectory>/bre/lib/</outputDirectory>
+            <source>../resources/tools/distributions/jre-version</source>
+            <outputDirectory>distributions</outputDirectory>
             <filtered>true</filtered>
             <fileMode>644</fileMode>
         </file>
         <file>
-            <source>${project.build.directory}/extracted-distributions/kubernetes-extension-balo-zip/kubernetes-artifacts/kubernetes.jar</source>
-            <outputDirectory>/bre/lib/</outputDirectory>
+            <source>../resources/tools/bin/ballerina</source>
+            <outputDirectory>bin</outputDirectory>
             <filtered>true</filtered>
-            <fileMode>644</fileMode>
+            <fileMode>775</fileMode>
         </file>
     </files>
     <dependencySets>
         <dependencySet>
-            <outputDirectory>bre/lib</outputDirectory>
+            <outputDirectory>distributions/jballerina-${ballerina.version}/bre/lib</outputDirectory>
             <includes>
                 <include>org.ballerinax.docker:docker-extension</include>
                 <include>org.ballerinax.kubernetes:kubernetes-extension</include>

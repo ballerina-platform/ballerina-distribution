@@ -26,7 +26,8 @@
 #
 # NOTE: Borrowed generously from Apache Tomcat startup scripts.
 # ----------------------------------------------------------------------------
-JAVA_HOME="$BALLERINA_HOME/bre/lib/jdk8u202-b08-jre"
+DIR="$(cd "$(dirname "$0")" && pwd)"
+JAVA_HOME="$DIR/../../../../../../dependencies/jdk8u202-b08-jre"
 
 # ---------------------- Developer Configurations ---------------------------
 BALLERINA_DEBUG_LOG=false;
@@ -160,6 +161,7 @@ $JAVACMD \
 	$JAVA_DEBUG \
 	-Dballerina.home=$BALLERINA_HOME \
 	-Dballerina.debugLog=$DEBUG_LOG \
+	-Dballerina.traceLog=$TRACE_LOG \
 	-Dexperimental=$ALLOW_EXPERIMETAL \
 	-cp "$CLASSPATHS" \
 	 org.ballerinalang.langserver.launchers.stdio.Main

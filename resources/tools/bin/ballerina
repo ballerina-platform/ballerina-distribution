@@ -1,0 +1,37 @@
+#!/bin/bash
+# ---------------------------------------------------------------------------
+#  Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+#
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#  http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+
+if [ "$(uname)" == "Darwin" ]
+then
+    CURRENT_PATH=$(dirname "$0")
+else
+    CURRENT_PATH="$(dirname "$(readlink -f "$0")")"
+fi
+
+BALLERINA_VERSION=`cat $CURRENT_PATH/../distributions/ballerina-version`
+JRE_VERSION=`cat $CURRENT_PATH/../distributions/jre-version`
+
+FILE=~/.ballerina/ballerina-version
+if test -f "$FILE"; then
+   BALLERINA_VERSION=`cat $FILE`
+fi
+BALLERINA_HOME="$CURRENT_PATH/../distributions/$BALLERINA_VERSION"
+JAVA_HOME="$CURRENT_PATH/../dependencies/$JRE_VERSION"
+
+export BALLERINA_HOME
+export JAVA_HOME
+cd $BALLERINA_HOME/bin/
+./ballerina $@
