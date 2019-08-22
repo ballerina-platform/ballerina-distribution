@@ -33,5 +33,4 @@ JAVA_HOME="$CURRENT_PATH/../dependencies/$JRE_VERSION"
 
 export BALLERINA_HOME
 export JAVA_HOME
-cd $BALLERINA_HOME/bin/
-./ballerina $@
+$BALLERINA_HOME/bin/./ballerina $@
