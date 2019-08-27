@@ -242,12 +242,12 @@
         </dependencies>
     </dependencyManagement>
     <properties>
-        <ballerina.version>1.0.0-alpha3</ballerina.version>
+        <ballerina.version>1.0.0-beta-SNAPSHOT</ballerina.version>
         <ballerina.jre.artifacts.version>2.0.0</ballerina.jre.artifacts.version>
         <project.scm.id>ballerina-scm-server</project.scm.id>
-        <docker.version>1.0.0-alpha3</docker.version>
-        <kubernetes.version>1.0.0-alpha3</kubernetes.version>
-        <awslambda.version>1.0.0-alpha3</awslambda.version>
+        <docker.version>1.0.0-beta-SNAPSHOT</docker.version>
+        <kubernetes.version>1.0.0-beta-SNAPSHOT</kubernetes.version>
+        <awslambda.version>1.0.0-beta-SNAPSHOT</awslambda.version>
     </properties>
 
 </project>
