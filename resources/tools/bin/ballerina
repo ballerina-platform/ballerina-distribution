@@ -25,7 +25,10 @@ BALLERINA_VERSION=`cat $CURRENT_PATH/../distributions/ballerina-version`
 
 FILE=~/.ballerina/ballerina-version
 if test -f "$FILE"; then
-   BALLERINA_VERSION=`cat $FILE`
+   BALLERINA_USER_VERSION=`cat $FILE`
+   if test -d "$BALLERINA_USER_VERSION"; then
+        BALLERINA_VERSION=$BALLERINA_USER_VERSION
+   fi
 fi
 BALLERINA_HOME="$CURRENT_PATH/../distributions/$BALLERINA_VERSION"
 
