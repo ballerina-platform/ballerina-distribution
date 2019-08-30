@@ -77,18 +77,11 @@
             <outputDirectory>distributions/jballerina-${ballerina.version}</outputDirectory>
             <excludes>
                 <exclude>distributions/jballerina-${ballerina.version}/bin/ballerina.bat</exclude>
-                <exclude>distributions/jballerina-${ballerina.version}/bin/language-server-launcher.bat</exclude>
                 <exclude>distributions/ballerina-version</exclude>
             </excludes>
         </fileSet>
     </fileSets>
     <files>
-        <file>
-            <source>../resources/executables/macos/language-server-launcher.sh</source>
-            <outputDirectory>distributions/jballerina-${ballerina.version}/lib/tools/lang-server/launcher/</outputDirectory>
-            <filtered>true</filtered>
-            <fileMode>755</fileMode>
-        </file>
         <file>
             <source>lib/version.txt</source>
             <outputDirectory>distributions/jballerina-${ballerina.version}/bin/</outputDirectory>

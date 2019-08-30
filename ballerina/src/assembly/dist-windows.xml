@@ -77,7 +77,6 @@
             <outputDirectory>distributions/jballerina-${ballerina.version}</outputDirectory>
             <excludes>
                 <exclude>distributions/jballerina-${ballerina.version}/bin/ballerina</exclude>
-                <exclude>distributions/jballerina-${ballerina.version}/bin/language-server-launcher</exclude>
                 <exclude>distributions/ballerina-version</exclude>
             </excludes>
         </fileSet>
@@ -86,12 +85,6 @@
         <file>
             <source>../resources/executables/windows/ballerina.bat</source>
             <outputDirectory>distributions/jballerina-${ballerina.version}/bin/</outputDirectory>
-            <filtered>true</filtered>
-            <fileMode>755</fileMode>
-        </file>
-        <file>
-            <source>../resources/executables/windows/language-server-launcher.bat</source>
-            <outputDirectory>distributions/jballerina-${ballerina.version}/lib/tools/lang-server/launcher/</outputDirectory>
             <filtered>true</filtered>
             <fileMode>755</fileMode>
         </file>
