@@ -22,15 +22,15 @@ else
 fi
 
 BALLERINA_VERSION=`cat $CURRENT_PATH/../distributions/ballerina-version`
-JRE_VERSION=`cat $CURRENT_PATH/../distributions/jre-version`
 
 FILE=~/.ballerina/ballerina-version
 if test -f "$FILE"; then
-   BALLERINA_VERSION=`cat $FILE`
+   BALLERINA_USER_VERSION=`cat $FILE`
+   if test -d "$CURRENT_PATH/../distributions/$BALLERINA_USER_VERSION"; then
+        BALLERINA_VERSION=$BALLERINA_USER_VERSION
+   fi
 fi
 BALLERINA_HOME="$CURRENT_PATH/../distributions/$BALLERINA_VERSION"
-JAVA_HOME="$CURRENT_PATH/../dependencies/$JRE_VERSION"
 
 export BALLERINA_HOME
-export JAVA_HOME
 $BALLERINA_HOME/bin/./ballerina $@

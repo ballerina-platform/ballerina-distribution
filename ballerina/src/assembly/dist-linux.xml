@@ -77,9 +77,7 @@
             <outputDirectory>distributions/jballerina-${ballerina.version}</outputDirectory>
             <excludes>
                 <exclude>distributions/jballerina-${ballerina.version}/bin/ballerina.bat</exclude>
-                <exclude>distributions/jballerina-${ballerina.version}/bin/language-server-launcher.bat</exclude>
                 <exclude>distributions/ballerina-version</exclude>
-                <exclude>distributions/jre-version</exclude>
             </excludes>
         </fileSet>
         <fileSet>
@@ -94,12 +92,6 @@
 
     </fileSets>
     <files>
-        <file>
-            <source>../resources/executables/linux/language-server-launcher.sh</source>
-            <outputDirectory>distributions/jballerina-${ballerina.version}/lib/tools/lang-server/launcher/</outputDirectory>
-            <filtered>true</filtered>
-            <fileMode>755</fileMode>
-        </file>
         <file>
             <source>lib/version.txt</source>
             <outputDirectory>distributions/jballerina-${ballerina.version}/bin/</outputDirectory>
@@ -123,12 +115,6 @@
         </file>
         <file>
             <source>../resources/tools/distributions/ballerina-version</source>
-            <outputDirectory>distributions</outputDirectory>
-            <filtered>true</filtered>
-            <fileMode>644</fileMode>
-        </file>
-        <file>
-            <source>../resources/tools/distributions/jre-version</source>
             <outputDirectory>distributions</outputDirectory>
             <filtered>true</filtered>
             <fileMode>644</fileMode>
