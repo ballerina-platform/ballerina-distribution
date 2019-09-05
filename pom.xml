@@ -25,7 +25,7 @@
 
     <groupId>org.ballerinalang</groupId>
     <artifactId>ballerina-distribution</artifactId>
-    <version>1.0.0-beta-SNAPSHOT</version>
+    <version>1.0.0-rc1-SNAPSHOT</version>
     <modelVersion>4.0.0</modelVersion>
 
     <name>Ballerina - Tools - Parent</name>
@@ -98,7 +98,7 @@
         <repository>
             <id>wso2.stage</id>
             <name>WSO2 Stage Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1396/</url>
+            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1406/</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -242,12 +242,12 @@
         </dependencies>
     </dependencyManagement>
     <properties>
-        <ballerina.version>1.0.0-beta-SNAPSHOT</ballerina.version>
+        <ballerina.version>1.0.0-beta</ballerina.version>
         <ballerina.jre.artifacts.version>2.0.0</ballerina.jre.artifacts.version>
         <project.scm.id>ballerina-scm-server</project.scm.id>
-        <docker.version>1.0.0-beta-SNAPSHOT</docker.version>
-        <kubernetes.version>1.0.0-beta-SNAPSHOT</kubernetes.version>
-        <awslambda.version>1.0.0-beta-SNAPSHOT</awslambda.version>
+        <docker.version>1.0.0-beta</docker.version>
+        <kubernetes.version>1.0.0-beta</kubernetes.version>
+        <awslambda.version>1.0.0-beta</awslambda.version>
     </properties>
 
 </project>
