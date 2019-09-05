@@ -247,7 +247,7 @@
         <project.scm.id>ballerina-scm-server</project.scm.id>
         <docker.version>1.0.0-beta</docker.version>
         <kubernetes.version>1.0.0-beta</kubernetes.version>
-        <awslambda.version>1.0.0-beta-SNAPSHOT</awslambda.version>
+        <awslambda.version>1.0.0-beta</awslambda.version>
     </properties>
 
 </project>
