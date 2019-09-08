@@ -21,7 +21,7 @@
     <parent>
         <groupId>org.ballerinalang</groupId>
         <artifactId>ballerina-distribution</artifactId>
-        <version>1.0.0-beta-SNAPSHOT</version>
+        <version>1.0.0-rc1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -66,11 +66,6 @@
         </dependency>
         <dependency>
             <groupId>org.ballerinax.docker</groupId>
-            <artifactId>docker-extension-balo</artifactId>
-            <type>zip</type>
-        </dependency>
-        <dependency>
-            <groupId>org.ballerinax.docker</groupId>
             <artifactId>docker-extension-examples</artifactId>
             <type>zip</type>
         </dependency>
@@ -79,11 +74,6 @@
         <dependency>
             <groupId>org.ballerinax.kubernetes</groupId>
             <artifactId>kubernetes-extension</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.ballerinax.kubernetes</groupId>
-            <artifactId>kubernetes-extension-balo</artifactId>
-            <type>zip</type>
         </dependency>
         <dependency>
             <groupId>org.ballerinax.kubernetes</groupId>
@@ -135,9 +125,7 @@
                                 jballerina-tools,
                                 awslambda-extension-balo,
                                 awslambda-extension-examples,
-                                docker-extension-balo,
                                 docker-extension-examples,
-                                kubernetes-extension-balo,
                                 kubernetes-extension-examples
                             </includeArtifactIds>
                             <outputDirectory>${project.build.directory}/extracted-distributions
