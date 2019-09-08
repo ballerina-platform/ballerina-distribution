@@ -51,5 +51,5 @@ rm -rf %{buildroot}
 
 %files
 %{_libdir}/ballerina/%{_ballerina_name}-%{_ballerina_version}
-%doc COPYRIGHT LICENSE README.md
+# %doc COPYRIGHT LICENSE README.md
 
