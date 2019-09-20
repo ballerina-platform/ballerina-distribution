@@ -25,6 +25,10 @@
 
     <fileSets>
         <fileSet>
+            <outputDirectory>dependencies/</outputDirectory>
+            <excludes><exclude>**/*</exclude></excludes>
+        </fileSet>
+        <fileSet>
             <directory>
                 ${project.build.directory}/extracted-distributions/awslambda-extension-examples-zip/awslambda-extension-examples-${project.version}
             </directory>
@@ -56,7 +60,6 @@
             </directory>
             <outputDirectory>distributions/jballerina-${ballerina.version}</outputDirectory>
             <excludes>
-                <exclude>distributions/jballerina-${ballerina.version}/bin/ballerina.bat</exclude>
                 <exclude>distributions/ballerina-version</exclude>
             </excludes>
         </fileSet>
@@ -65,9 +68,6 @@
                 ../resources/tools
             </directory>
             <outputDirectory>.</outputDirectory>
-            <excludes>
-                <exclude>bin/ballerina.bat</exclude>
-            </excludes>
         </fileSet>
 
     </fileSets>
