@@ -25,12 +25,11 @@ rm -f /usr/bin/ballerina > /dev/null 2>&1
 %prep
 rm -rf %{_topdir}/BUILD/*
 cp -r %{_topdir}/SOURCES/%{_ballerina_tools_dir}/* %{_topdir}/BUILD/
-%build
+
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d %{buildroot}%{_libdir}/ballerina/%{_ballerina_name}-%{_ballerina_version}
-cp -r bin bre lib %{buildroot}%{_libdir}/ballerina/%{_ballerina_name}-%{_ballerina_version}/
-
+cp -r ./* %{buildroot}%{_libdir}/ballerina/%{_ballerina_name}-%{_ballerina_version}/
 
 %post
 ln -sf %{_libdir}/ballerina/%{_ballerina_name}-%{_ballerina_version}/bin/ballerina /usr/bin/%{_ballerina_name}
@@ -44,10 +43,6 @@ if [ "$(readlink /usr/bin/ballerina)" = "%{_libdir}/ballerina/ballerina-%{_balle
 then
   rm -f /usr/bin/ballerina
 fi
-mkdir -p ~/.ballerina
-chmod -R 777 ~/.ballerina
-cp -r %{_libdir}/ballerina/ballerina-%{_ballerina_version}/tools ~/.ballerina/
-chmod -R 777 ~/.ballerina/tools
 
 %clean
 rm -rf %{_topdir}/BUILD/*
@@ -55,5 +50,4 @@ rm -rf %{buildroot}
 
 %files
 %{_libdir}/ballerina/%{_ballerina_name}-%{_ballerina_version}
-%doc COPYRIGHT LICENSE README.md
-
+%doc ./distributions/jballerina-1.0.0/COPYRIGHT ./distributions/jballerina-1.0.0/LICENSE ./distributions/jballerina-1.0.0/README.md
