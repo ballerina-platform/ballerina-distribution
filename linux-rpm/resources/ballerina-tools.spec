@@ -50,4 +50,4 @@ rm -rf %{buildroot}
 
 %files
 %{_libdir}/ballerina/%{_ballerina_name}-%{_ballerina_version}
-%doc ./distributions/jballerina-1.0.0/COPYRIGHT ./distributions/jballerina-1.0.0/LICENSE ./distributions/jballerina-1.0.0/README.md
+%doc ./distributions/jballerina-%{_ballerina_version}/COPYRIGHT ./distributions/jballerina-%{_ballerina_version}/LICENSE ./distributions/jballerina-%{_ballerina_version}/README.md
