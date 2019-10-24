@@ -245,7 +245,7 @@
         <ballerina.version>1.0.2-SNAPSHOT</ballerina.version>
         <ballerina.jre.artifacts.version>2.0.0</ballerina.jre.artifacts.version>
         <project.scm.id>ballerina-scm-server</project.scm.id>
-        <docker.version>1.0.2-SNAPSHOT</docker.version>
+        <docker.version>1.0.2</docker.version>
         <kubernetes.version>1.0.2-SNAPSHOT</kubernetes.version>
         <awslambda.version>1.0.2-SNAPSHOT</awslambda.version>
     </properties>
