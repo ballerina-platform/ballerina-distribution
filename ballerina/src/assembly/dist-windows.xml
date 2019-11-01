@@ -70,12 +70,6 @@
     </fileSets>
     <files>
         <file>
-            <source>../resources/executables/windows/ballerina.bat</source>
-            <outputDirectory>distributions/jballerina-${ballerina.version}/bin/</outputDirectory>
-            <filtered>true</filtered>
-            <fileMode>755</fileMode>
-        </file>
-        <file>
             <source>lib/version.txt</source>
             <outputDirectory>distributions/jballerina-${ballerina.version}/bin/</outputDirectory>
             <filtered>true</filtered>
