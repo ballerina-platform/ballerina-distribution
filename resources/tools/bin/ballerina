@@ -33,4 +33,4 @@ fi
 BALLERINA_HOME="$CURRENT_PATH/../distributions/$BALLERINA_VERSION"
 
 export BALLERINA_HOME
-$BALLERINA_HOME/bin/./ballerina $@
+$BALLERINA_HOME/bin/./ballerina "$@"
