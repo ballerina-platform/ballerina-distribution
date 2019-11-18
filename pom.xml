@@ -165,6 +165,7 @@
 
     <modules>
         <module>ballerina</module>
+        <module>ballerina-update-tool</module>
     </modules>
 
     <dependencyManagement>
