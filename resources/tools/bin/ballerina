@@ -21,16 +21,21 @@ else
     CURRENT_PATH="$(dirname "$(readlink -f "$0")")"
 fi
 
-BALLERINA_VERSION=`cat $CURRENT_PATH/../distributions/ballerina-version`
+if [ "$1" == "dist" ]
+then
+    java -jar $CURRENT_PATH/../dependencies/ballerina-command-1.0-SNAPSHOT.jar "$@"
+else
+    BALLERINA_VERSION=`cat $CURRENT_PATH/../distributions/ballerina-version`
 
-FILE=~/.ballerina/ballerina-version
-if test -f "$FILE"; then
-   BALLERINA_USER_VERSION=`cat $FILE`
-   if test -d "$CURRENT_PATH/../distributions/$BALLERINA_USER_VERSION"; then
-        BALLERINA_VERSION=$BALLERINA_USER_VERSION
-   fi
+    FILE=~/.ballerina/ballerina-version
+    if test -f "$FILE"; then
+       BALLERINA_USER_VERSION=`cat $FILE`
+       if test -d "$CURRENT_PATH/../distributions/$BALLERINA_USER_VERSION"; then
+            BALLERINA_VERSION=$BALLERINA_USER_VERSION
+       fi
+    fi
+    BALLERINA_HOME="$CURRENT_PATH/../distributions/$BALLERINA_VERSION"
+
+    export BALLERINA_HOME
+    $BALLERINA_HOME/bin/./ballerina "$@"
 fi
-BALLERINA_HOME="$CURRENT_PATH/../distributions/$BALLERINA_VERSION"
-
-export BALLERINA_HOME
-$BALLERINA_HOME/bin/./ballerina "$@"
