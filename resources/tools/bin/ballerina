@@ -23,7 +23,7 @@ fi
 
 if [ "$1" == "dist" ]
 then
-    java -jar $CURRENT_PATH/../dependencies/ballerina-command-1.0-SNAPSHOT.jar "$@"
+    java -jar $CURRENT_PATH/../dependencies/ballerina-update-tool-${ballerina.update.tool.version}.jar "$@"
 else
     BALLERINA_VERSION=`cat $CURRENT_PATH/../distributions/ballerina-version`
 

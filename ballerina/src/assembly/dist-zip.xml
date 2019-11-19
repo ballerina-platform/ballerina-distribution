@@ -106,5 +106,12 @@
             </includes>
             <unpack>false</unpack>
         </dependencySet>
+        <dependencySet>
+            <outputDirectory>dependencies</outputDirectory>
+            <includes>
+                <include>org.ballerinalang:ballerina-update-tool</include>
+            </includes>
+            <unpack>false</unpack>
+        </dependencySet>
     </dependencySets>
 </assembly>

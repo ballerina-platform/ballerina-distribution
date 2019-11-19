@@ -76,10 +76,14 @@
             <artifactId>kubernetes-extension</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.ballerinax.kubernetes</groupId>
-            <artifactId>kubernetes-extension-examples</artifactId>
-            <type>zip</type>
-        </dependency>
+        <groupId>org.ballerinax.kubernetes</groupId>
+        <artifactId>kubernetes-extension-examples</artifactId>
+        <type>zip</type>
+    </dependency>
+    <dependency>
+        <groupId>org.ballerinalang</groupId>
+        <artifactId>ballerina-update-tool</artifactId>
+    </dependency>
     </dependencies>
 
     <build>
