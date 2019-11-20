@@ -25,6 +25,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
@@ -39,6 +40,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -52,9 +55,9 @@ import javax.net.ssl.X509TrustManager;
  * Ballerina tool utilities.
  */
 public class ToolUtil {
-    public static final String PRODUCTION_URL = "https://api.central.ballerina.io/1.0/update-tool";
+   // public static final String PRODUCTION_URL = "https://api.central.ballerina.io/1.0/update-tool";
+    public static final String PRODUCTION_URL = "https://api.staging-central.ballerina.io/update-tool";
     public static final String BALLERINA_TYPE = "jballerina";
-    private static final String BALLERINA_TOOL_NAME = "ballerina";
 
     private static TrustManager[] trustAllCerts = new TrustManager[]{
             new X509TrustManager() {
@@ -215,12 +218,37 @@ public class ToolUtil {
             throw new RuntimeException("Failed : HTTP error code : "
                     + conn.getResponseCode());
         } else {
-//            JSONParser parser = new JSONParser();
-//
-//            distributions = (MapValue) parser.parse(new InputStreamReader((conn.getInputStream())));
+            String json = convertStreamToString(conn.getInputStream());
+            Pattern p = Pattern.compile("\"version\":\"(.*?)\"");
+            Matcher matcher = p.matcher(json);
+            while (matcher.find()) {
+                distributions.add(new Distribution(BALLERINA_TYPE, matcher.group(1)));
+            }
         }
         conn.disconnect();
         return distributions;
+    }
+
+    private static String convertStreamToString(InputStream is) {
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        StringBuilder sb = new StringBuilder();
+
+        String line = null;
+        try {
+            while ((line = reader.readLine()) != null) {
+                sb.append(line + "\n");
+            }
+        } catch (IOException e) {
+            //TODO : do nothing
+        } finally {
+            try {
+                is.close();
+            } catch (IOException e) {
+                //TODO : do nothing
+            }
+        }
+        return sb.toString();
     }
 
     public static void unzip(String zipFilePath, String destDirectory, String distribution) throws IOException {

@@ -41,9 +41,6 @@ public class ListCommand extends Command implements BLauncherCommand {
     @CommandLine.Option(names = {"--help", "-h", "?"}, hidden = true)
     private boolean helpFlag;
 
-    @CommandLine.Option(names = {"--local"}, hidden = true)
-    private boolean localFlag;
-
     private CommandLine parentCmdParser;
 
     public ListCommand(PrintStream printStream) {
@@ -57,7 +54,7 @@ public class ListCommand extends Command implements BLauncherCommand {
         }
 
         if (listCommands == null) {
-            listDistributions(getPrintStream(), localFlag);
+            listDistributions(getPrintStream());
             return;
         } else if (listCommands.size() > 1) {
             //  throw LauncherUtils.createUsageExceptionWithHelp("too many arguments given");
@@ -92,9 +89,8 @@ public class ListCommand extends Command implements BLauncherCommand {
     /**
      * List distributions in the local and remote.
      * @param outStream stream outputs need to be printed
-     * @param isLocal option to list distributions only in the local
      */
-    public static void listDistributions(PrintStream outStream, boolean isLocal) {
+    public static void listDistributions(PrintStream outStream) {
         try {
             outStream.println("Distributions available locally: \n");
             String currentBallerinaVersion = ToolUtil.getCurrentBallerinaVersion();
@@ -109,14 +105,12 @@ public class ListCommand extends Command implements BLauncherCommand {
             }
             outStream.println();
 
-            if (!isLocal) {
-                outStream.println("Distributions available remotely: \n");
-                for (Distribution distribution : ToolUtil.getDistributions()) {
-                    outStream.println(markVersion(ToolUtil.BALLERINA_TYPE + "-" + currentBallerinaVersion,
-                            distribution.getVersion() + "-" + distribution.getVersion()));
-                }
-                outStream.println();
+            outStream.println("Distributions available remotely: \n");
+            for (Distribution distribution : ToolUtil.getDistributions()) {
+                outStream.println(markVersion(ToolUtil.BALLERINA_TYPE + "-" + currentBallerinaVersion,
+                        distribution.getName() + "-" + distribution.getVersion()));
             }
+            outStream.println();
         } catch (IOException | KeyManagementException | NoSuchAlgorithmException e) {
             outStream.println("Ballerina Update service is not available");
         }
