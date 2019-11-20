@@ -31,13 +31,11 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Properties;
 import java.util.regex.Matcher;
@@ -175,29 +173,6 @@ public class ToolUtil {
         }
     }
 
-    /**
-     * Delete files inside directories.
-     *
-     * @param dirPath directory path
-     * @param outStream output stream
-*      @param version deleting version
-     * @throws IOException throw an exception if an issue occurs
-     */
-    public static void deleteFiles(Path dirPath, PrintStream outStream, String version) throws IOException {
-        if (dirPath == null) {
-            return;
-        }
-        Files.walk(dirPath)
-                .sorted(Comparator.reverseOrder())
-                .forEach(path -> {
-                    try {
-                        Files.delete(path);
-                    } catch (IOException e) {
-                        outStream.println(version + " cannot remove");
-                    }
-                });
-    }
-
     public static List<Distribution> getDistributions() throws IOException, KeyManagementException,
             NoSuchAlgorithmException {
 
@@ -331,7 +306,7 @@ public class ToolUtil {
         }
     }
 
-    public static void pull(PrintStream printStream, String distribution, boolean manualUpdate) {
+    public static void downloadDistribution(PrintStream printStream, String distribution, boolean manualUpdate) {
         try {
             if (!ToolUtil.use(printStream, distribution)) {
                 SSLContext sc = SSLContext.getInstance("SSL");

@@ -18,9 +18,15 @@ package org.ballerinalang.update.cmd;
 
 import org.ballerinalang.update.BLauncherCommand;
 import org.ballerinalang.update.BallerinaCliCommands;
+import org.ballerinalang.update.util.ToolUtil;
 import picocli.CommandLine;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.PrintStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -82,34 +88,57 @@ public class RemoveCommand extends Command implements BLauncherCommand {
         this.parentCmdParser = parentCmdParser;
     }
 
-    public static void remove(PrintStream printStream, String version) {
-        printStream.println("Removing" + version);
-//        boolean isCurrentVersion = false;
-//        try {
-//            isCurrentVersion = version.equals(getCurrentBallerinaVersion());
-//        } catch (IOException e) {
-//            outStream.println("There is no default version for current user");
-//        }
-//
-//        try {
-//            if (isCurrentVersion) {
-//                outStream.println("You cannot remove default Ballerina version");
-//            } else {
-//                File directory = new File(getDistributionsPath() + File.separator + version);
-//                if (directory.exists()) {
-//                    if (directory.canWrite()) {
-//                        deleteFiles(directory.toPath(), outStream, version);
-//                        outStream.println(version + " deleted successfully");
-//                    } else {
-//                        outStream.println("Current user does not have write permissions to "
-//                                + directory.toPath() + " directory");
-//                    }
-//                } else {
-//                    outStream.println(version + " does not exist");
-//                }
-//            }
-//        } catch (IOException e) {
-//            outStream.println("Error occurred while removing");
-//        }
+    public void remove(PrintStream printStream, String version) {
+        printStream.println("Removing " + version);
+        boolean isCurrentVersion = false;
+        try {
+            isCurrentVersion = version.equals(ToolUtil.getCurrentBallerinaVersion());
+        } catch (IOException e) {
+            getPrintStream().println("There is no default version for current user");
+        }
+
+        try {
+            if (isCurrentVersion) {
+                getPrintStream().println("You cannot remove default Ballerina version");
+            } else {
+                File directory = new File(ToolUtil.getDistributionsPath() + File.separator + version);
+                if (directory.exists()) {
+                    if (directory.canWrite()) {
+                        deleteFiles(directory.toPath(), getPrintStream(), version);
+                        getPrintStream().println(version + " deleted successfully");
+                    } else {
+                        getPrintStream().println("Current user does not have write permissions to "
+                                + directory.toPath() + " directory");
+                    }
+                } else {
+                    getPrintStream().println(version + " does not exist");
+                }
+            }
+        } catch (IOException e) {
+            getPrintStream().println("Error occurred while removing");
+        }
+    }
+
+    /**
+     * Delete files inside directories.
+     *
+     * @param dirPath directory path
+     * @param outStream output stream
+     *      @param version deleting version
+     * @throws IOException throw an exception if an issue occurs
+     */
+    public static void deleteFiles(Path dirPath, PrintStream outStream, String version) throws IOException {
+        if (dirPath == null) {
+            return;
+        }
+        Files.walk(dirPath)
+                .sorted(Comparator.reverseOrder())
+                .forEach(path -> {
+                    try {
+                        Files.delete(path);
+                    } catch (IOException e) {
+                        outStream.println(version + " cannot remove");
+                    }
+                });
     }
 }

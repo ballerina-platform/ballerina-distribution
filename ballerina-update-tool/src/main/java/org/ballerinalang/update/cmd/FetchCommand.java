@@ -25,41 +25,40 @@ import java.io.PrintStream;
 import java.util.List;
 
 /**
- * This class represents the "Pull" command and it holds arguments and flags specified by the user.
+ * This class represents the "Fetch" command and it holds arguments and flags specified by the user.
  */
-@CommandLine.Command(name = "pull", description = "Pull Ballerina distribution")
-public class PullCommand extends Command implements BLauncherCommand {
+@CommandLine.Command(name = "fetch", description = "Fetch Ballerina distribution")
+public class FetchCommand extends Command implements BLauncherCommand {
 
     @CommandLine.Parameters(description = "Command name")
-    private List<String> pullCommands;
+    private List<String> fetchCommands;
 
     @CommandLine.Option(names = {"--help", "-h", "?"}, hidden = true)
     private boolean helpFlag;
 
     private CommandLine parentCmdParser;
 
-    public PullCommand(PrintStream printStream) {
+    public FetchCommand(PrintStream printStream) {
         super(printStream);
     }
 
 
     public void execute() {
         if (helpFlag) {
-            printUsageInfo("dist-" + BallerinaCliCommands.PULL);
+            printUsageInfo("dist-" + BallerinaCliCommands.FETCH);
             return;
         }
 
-        if (pullCommands == null) {
+        if (fetchCommands == null) {
             //    throw LauncherUtils.createUsageExceptionWithHelp("distribution is not provided");
-        } else if (pullCommands.size() == 1) {
-            ToolUtil.downloadDistribution(getPrintStream(), pullCommands.get(0), false);
-            ToolUtil.use(getPrintStream(), pullCommands.get(0));
+        } else if (fetchCommands.size() == 1) {
+            ToolUtil.downloadDistribution(getPrintStream(), fetchCommands.get(0), true);
             return;
-        } else if (pullCommands.size() > 1) {
+        } else if (fetchCommands.size() > 1) {
             //    throw LauncherUtils.createUsageExceptionWithHelp("too many arguments given");
         }
 
-        String userCommand = pullCommands.get(0);
+        String userCommand = fetchCommands.get(0);
         if (parentCmdParser.getSubcommands().get(userCommand) == null) {
             //    throw LauncherUtils.createUsageExceptionWithHelp("unknown command " + userCommand);
         }
@@ -77,7 +76,7 @@ public class PullCommand extends Command implements BLauncherCommand {
 
     @Override
     public void printUsage(StringBuilder out) {
-        out.append("  ballerina dist pull\n");
+        out.append("  ballerina dist fetch\n");
     }
 
     @Override

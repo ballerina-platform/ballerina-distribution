@@ -1,0 +1,20 @@
+NAME
+       ballerina-dist-fetch - Fetch and use a given distribution version
+
+SYNOPSIS
+       ballerina dist fetch <distribution-version>
+
+
+DESCRIPTION
+       Dist-fetch fetch and uses a given Ballerina version from project repository.
+
+
+OPTIONS
+       Ballerina dist fetch command takes no options.
+
+
+EXAMPLES
+       Install Ballerina 1.0.0 version.
+          → ballerina dist fetch jballerina-1.0.0
+
+       This will download and keep jballerina-1.0.0 distribution

@@ -18,9 +18,16 @@ package org.ballerinalang.update.cmd;
 
 import org.ballerinalang.update.BLauncherCommand;
 import org.ballerinalang.update.BallerinaCliCommands;
+import org.ballerinalang.update.util.Distribution;
+import org.ballerinalang.update.util.ToolUtil;
+import org.ballerinalang.update.util.Version;
 import picocli.CommandLine;
 
+import java.io.IOException;
 import java.io.PrintStream;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -82,23 +89,23 @@ public class UpdateCommand extends Command implements BLauncherCommand {
 
     public static void update(PrintStream printStream) {
         printStream.println("Updating...");
-//        try {
-//            String version = getCurrentBallerinaVersion();
-//            List<String> versions = new ArrayList<>();
-//            for (Distribution distribution : getDistributions()) {
-//                versions.add(distribution.getVersion());
-//            }
-//            Version currentVersion = new Version(version);
-//            String latestVersion = currentVersion.getLatest(versions.stream().toArray(String[]::new));
-//            if (!latestVersion.equals(version)) {
-//                String distribution = BALLERINA_TYPE + "-" + latestVersion;
-//                install(printStream, distribution, false);
-//                use(printStream, distribution);
-//            } else {
-//                printStream.println("No update found");
-//            }
-//        } catch (IOException | KeyManagementException | NoSuchAlgorithmException e) {
-//            printStream.println("Cannot connect to the central server");
-//        }
+        try {
+            String version = ToolUtil.getCurrentBallerinaVersion();
+            List<String> versions = new ArrayList<>();
+            for (Distribution distribution : ToolUtil.getDistributions()) {
+                versions.add(distribution.getVersion());
+            }
+            Version currentVersion = new Version(version);
+            String latestVersion = currentVersion.getLatest(versions.stream().toArray(String[]::new));
+            if (!latestVersion.equals(version)) {
+                String distribution = ToolUtil.BALLERINA_TYPE + "-" + latestVersion;
+                ToolUtil.downloadDistribution(printStream, distribution, false);
+                ToolUtil.use(printStream, distribution);
+            } else {
+                printStream.println("No update found");
+            }
+        } catch (IOException | KeyManagementException | NoSuchAlgorithmException e) {
+            printStream.println("Cannot connect to the central server");
+        }
     }
 }
