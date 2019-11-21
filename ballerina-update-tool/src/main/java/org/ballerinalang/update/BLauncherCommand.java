@@ -57,22 +57,4 @@ public interface BLauncherCommand {
      * @param parentCmdParser the parent {@link CommandLine} object
      */
     void setParentCmdParser(CommandLine parentCmdParser);
-
-    /**
-     * Retrieve command usage info.
-     *
-     * @param  commandName the name of the command
-     * @return usage info for the specified command
-     */
-    static String getCommandUsageInfo(String commandName) {
-      //  String fileName = "cli-help/ballerina-" + commandName + ".help";
-        return "help not implemented";
-//        try {
-////            return BCompileUtil.readFileAsString(fileName);
-//            //TODO: fix later
-//
-//        } catch (IOException e) {
-//            throw LauncherUtils.createUsageExceptionWithHelp("usage info not available for command: " + commandName);
-//        }
-    }
 }

@@ -88,7 +88,6 @@ public class UpdateCommand extends Command implements BLauncherCommand {
     }
 
     public static void update(PrintStream printStream) {
-        printStream.println("Updating...");
         try {
             String version = ToolUtil.getCurrentBallerinaVersion();
             List<String> versions = new ArrayList<>();

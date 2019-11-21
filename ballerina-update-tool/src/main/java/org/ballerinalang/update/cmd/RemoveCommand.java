@@ -56,7 +56,7 @@ public class RemoveCommand extends Command implements BLauncherCommand {
         if (removeCommands == null) {
             //    throw LauncherUtils.createUsageExceptionWithHelp("distribution is not provided");
         } else if (removeCommands.size() == 1) {
-            remove(getPrintStream(), removeCommands.get(0));
+            remove(removeCommands.get(0));
             return;
         } else if (removeCommands.size() > 1) {
             //    throw LauncherUtils.createUsageExceptionWithHelp("too many arguments given");
@@ -88,11 +88,10 @@ public class RemoveCommand extends Command implements BLauncherCommand {
         this.parentCmdParser = parentCmdParser;
     }
 
-    public void remove(PrintStream printStream, String version) {
-        printStream.println("Removing " + version);
+    public void remove(String version) {
         boolean isCurrentVersion = false;
         try {
-            isCurrentVersion = version.equals(ToolUtil.getCurrentBallerinaVersion());
+            isCurrentVersion = version.equals(ToolUtil.BALLERINA_TYPE + "-" + ToolUtil.getCurrentBallerinaVersion());
         } catch (IOException e) {
             getPrintStream().println("There is no default version for current user");
         }

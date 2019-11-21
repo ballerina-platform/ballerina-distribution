@@ -30,6 +30,7 @@ import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.security.KeyManagementException;
@@ -120,6 +121,7 @@ public class ToolUtil {
     public static boolean use(PrintStream printStream, String distribution) {
         try {
             File installFile = new File(getDistributionsPath() + File.separator + distribution);
+            printStream.println(installFile.getPath());
             if (installFile.exists()) {
                 if (distribution.equals(getCurrentBallerinaVersion())) {
                     printStream.println(distribution + " is already in use ");
@@ -335,6 +337,41 @@ public class ToolUtil {
         } catch (IOException | KeyManagementException | NoSuchAlgorithmException e) {
             printStream.println("Cannot connect to the central server");
         }
+    }
+
+    public static String readFileAsString(String path) throws IOException {
+        InputStream is = ClassLoader.getSystemResourceAsStream(path);
+        InputStreamReader inputStreamREader = null;
+        BufferedReader br = null;
+        StringBuilder sb = new StringBuilder();
+        try {
+            inputStreamREader = new InputStreamReader(is, StandardCharsets.UTF_8);
+            br = new BufferedReader(inputStreamREader);
+            String content = br.readLine();
+            if (content == null) {
+                return sb.toString();
+            }
+
+            sb.append(content);
+
+            while ((content = br.readLine()) != null) {
+                sb.append('\n').append(content);
+            }
+        } finally {
+            if (inputStreamREader != null) {
+                try {
+                    inputStreamREader.close();
+                } catch (IOException ignore) {
+                }
+            }
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException ignore) {
+                }
+            }
+        }
+        return sb.toString();
     }
 }
 

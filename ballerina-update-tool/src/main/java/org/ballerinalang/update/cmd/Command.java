@@ -16,9 +16,9 @@
 
 package org.ballerinalang.update.cmd;
 
+import org.ballerinalang.update.util.ToolUtil;
 
-import org.ballerinalang.update.BLauncherCommand;
-
+import java.io.IOException;
 import java.io.PrintStream;
 
 /**
@@ -44,7 +44,23 @@ public abstract class Command {
     }
 
     public void printUsageInfo(String commandName) {
-        String usageInfo = BLauncherCommand.getCommandUsageInfo(commandName);
+        String usageInfo = getCommandUsageInfo(commandName);
         getPrintStream().println(usageInfo);
+    }
+
+    /**
+     * Retrieve command usage info.
+     *
+     * @param  commandName the name of the command
+     * @return usage info for the specified command
+     */
+     String getCommandUsageInfo(String commandName) {
+        String fileName = "cli-help/ballerina-" + commandName + ".help";
+        try {
+            return ToolUtil.readFileAsString(fileName);
+        } catch (IOException e) {
+            //TODO: Fix properly
+            return "";
+        }
     }
 }
