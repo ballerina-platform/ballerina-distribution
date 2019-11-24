@@ -19,6 +19,7 @@ package org.ballerinalang.update;
 import org.ballerinalang.update.cmd.DefaultCommand;
 import org.ballerinalang.update.cmd.DistributionCommand;
 import org.ballerinalang.update.cmd.FetchCommand;
+import org.ballerinalang.update.cmd.HelpCommand;
 import org.ballerinalang.update.cmd.ListCommand;
 import org.ballerinalang.update.cmd.PullCommand;
 import org.ballerinalang.update.cmd.RemoveCommand;
@@ -55,6 +56,10 @@ public class Main {
             DefaultCommand defaultCmd = new DefaultCommand(outStream);
             CommandLine cmdParser = new CommandLine(defaultCmd);
             defaultCmd.setParentCmdParser(cmdParser);
+
+            HelpCommand helpCommand = new HelpCommand();
+            cmdParser.addSubcommand(BallerinaCliCommands.HELP, helpCommand);
+            helpCommand.setParentCmdParser(cmdParser);
 
             //DistCommand Command
             DistributionCommand distCmd = new DistributionCommand(outStream);

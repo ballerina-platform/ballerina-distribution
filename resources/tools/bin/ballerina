@@ -21,7 +21,7 @@ else
     CURRENT_PATH="$(dirname "$(readlink -f "$0")")"
 fi
 
-if [ "$1" == "dist" ]
+if [ "$1" == "dist" ] || [ "$2" == "dist" ]
 then
     java -jar $CURRENT_PATH/../dependencies/ballerina-update-tool-${ballerina.update.tool.version}.jar "$@"
 else
