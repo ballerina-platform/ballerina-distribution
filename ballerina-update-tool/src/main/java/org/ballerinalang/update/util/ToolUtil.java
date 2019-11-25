@@ -121,7 +121,6 @@ public class ToolUtil {
     public static boolean use(PrintStream printStream, String distribution) {
         try {
             File installFile = new File(getDistributionsPath() + File.separator + distribution);
-            printStream.println(installFile.getPath());
             if (installFile.exists()) {
                 if (distribution.equals(getCurrentBallerinaVersion())) {
                     printStream.println(distribution + " is already in use ");

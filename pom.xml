@@ -239,16 +239,27 @@
                 <type>zip</type>
                 <version>${kubernetes.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>info.picocli</groupId>
+                <artifactId>picocli</artifactId>
+                <version>${picocli.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ballerinalang</groupId>
+                <artifactId>ballerina-update-tool</artifactId>
+                <version>${ballerina.update.tool.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <properties>
-        <ballerina.version>1.0.4</ballerina.version>
+        <ballerina.version>1.0.5-SNAPSHOT</ballerina.version>
         <ballerina.jre.artifacts.version>2.0.0</ballerina.jre.artifacts.version>
         <project.scm.id>ballerina-scm-server</project.scm.id>
-        <docker.version>1.0.2</docker.version>
-        <kubernetes.version>1.0.2</kubernetes.version>
+        <docker.version>1.0.4</docker.version>
+        <kubernetes.version>1.0.4</kubernetes.version>
         <awslambda.version>1.0.4</awslambda.version>
+        <picocli.version>4.0.1</picocli.version>
+        <ballerina.update.tool.version>0.8.0</ballerina.update.tool.version>
     </properties>
 
 </project>

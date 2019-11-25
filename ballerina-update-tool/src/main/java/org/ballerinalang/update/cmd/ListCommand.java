@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -97,18 +98,23 @@ public class ListCommand extends Command implements BLauncherCommand {
             File folder = new File(ToolUtil.getDistributionsPath());
             File[] listOfFiles;
             listOfFiles = folder.listFiles();
+            List<String> installedVersions = new ArrayList<>();
             for (int i = 0; i < listOfFiles.length; i++) {
                 if (listOfFiles[i].isDirectory()) {
+                    String version = listOfFiles[i].getName();
                     outStream.println(markVersion(ToolUtil.BALLERINA_TYPE + "-" + currentBallerinaVersion,
-                            listOfFiles[i].getName()));
+                            version));
+                    installedVersions.add(version);
                 }
             }
             outStream.println();
 
             outStream.println("Distributions available remotely: \n");
             for (Distribution distribution : ToolUtil.getDistributions()) {
-                outStream.println(markVersion(ToolUtil.BALLERINA_TYPE + "-" + currentBallerinaVersion,
-                        distribution.getName() + "-" + distribution.getVersion()));
+                String version = distribution.getName() + "-" + distribution.getVersion();
+                if (!installedVersions.stream().anyMatch(s -> version.contains(s))) {
+                    outStream.println("  " + version);
+                }
             }
             outStream.println();
         } catch (IOException | KeyManagementException | NoSuchAlgorithmException e) {
