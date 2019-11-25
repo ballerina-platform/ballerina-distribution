@@ -39,3 +39,8 @@ else
     export BALLERINA_HOME
     $BALLERINA_HOME/bin/./ballerina "$@"
 fi
+
+if [ "$1" == "help" ] && [ "$2" == "" ]  || [ "$1" == "" ]
+then
+    java -jar $CURRENT_PATH/../dependencies/ballerina-update-tool-${ballerina.update.tool.version}.jar "$@"
+fi
