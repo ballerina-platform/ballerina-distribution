@@ -21,12 +21,35 @@ REM ---------------------------------------------------------------------------
 set BALLERINA_HOME=
 set FILE_PATH=%~sdp0..\distributions\ballerina-version
 
-if exist ~\.ballerina\ballerina-version (
-   set "FILE_PATH=~\.ballerina\ballerina-version"
+if ("%1"=="dist")
+
+set dist=false
+if "$1" == "dist" set dist=true
+if "$2" == "dist" set dist=true
+if "%dist%" == "true" (
+   java -jar %~sdp0..\dependencies\ballerina-update-tool-${ballerina.update.tool.version}.jar %*
+) else (
+
+    if exist ~\.ballerina\ballerina-version (
+       set "FILE_PATH=~\.ballerina\ballerina-version"
+    )
+
+    for /f %%a in (%FILE_PATH%) do (
+      set "BALLERINA_HOME=%%a"
+    )
+
+    %~sdp0..\distributions\%BALLERINA_HOME%\bin\ballerina.bat %*
 )
 
-for /f %%a in (%FILE_PATH%) do (
-  set "BALLERINA_HOME=%%a"
+set help=false
+if "$1" == "" set help=true
+
+if "$1" == "help" (
+    if "$2" == "" (
+        set help=true
+    )
 )
 
-%~sdp0..\distributions\%BALLERINA_HOME%\bin\ballerina.bat %*
+if "%dist%" == "true" (
+    java -jar %~sdp0..\dependencies\ballerina-update-tool-${ballerina.update.tool.version}.jar %*
+)
