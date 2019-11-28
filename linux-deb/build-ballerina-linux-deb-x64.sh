@@ -112,7 +112,7 @@ function createBallerinaPlatform() {
     extractPack "$BALLERINA_DISTRIBUTION_LOCATION/$BALLERINA_PLATFORM.zip" ${BALLERINA_PLATFORM}
     createPackInstallationDirectory
     copyDebianDirectory
-    mv target/${BALLERINA_INSTALL_DIRECTORY} target/ballerina-linux-installer-x64-${BALLERINA_VERSION}
+    mv target/${BALLERINA_INSTALL_DIRECTORY}/* target/ballerina-linux-installer-x64-${BALLERINA_VERSION}
     fakeroot dpkg-deb --build target/ballerina-linux-installer-x64-${BALLERINA_VERSION}
 }
 
