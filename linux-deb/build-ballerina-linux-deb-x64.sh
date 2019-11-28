@@ -86,7 +86,7 @@ function createPackInstallationDirectory() {
     rm -rf target/${BALLERINA_INSTALL_DIRECTORY}/usr/lib/ballerina
     mkdir -p target/${BALLERINA_INSTALL_DIRECTORY}/usr/lib/ballerina
     chmod -R 755 target/${BALLERINA_INSTALL_DIRECTORY}/usr/lib/ballerina
-    mv target/original/${BALLERINA_INSTALL_DIRECTORY} target/${BALLERINA_INSTALL_DIRECTORY}/usr/lib/ballerina
+    mv target/original/${BALLERINA_INSTALL_DIRECTORY}/* target/${BALLERINA_INSTALL_DIRECTORY}/usr/lib/ballerina
 
     rm -rf target/${BALLERINA_INSTALL_DIRECTORY}/usr/share/doc/${BALLERINA_INSTALL_DIRECTORY}
     mkdir -p target/${BALLERINA_INSTALL_DIRECTORY}/usr/share/doc/${BALLERINA_INSTALL_DIRECTORY}
@@ -112,7 +112,7 @@ function createBallerinaPlatform() {
     extractPack "$BALLERINA_DISTRIBUTION_LOCATION/$BALLERINA_PLATFORM.zip" ${BALLERINA_PLATFORM}
     createPackInstallationDirectory
     copyDebianDirectory
-    mv target/${BALLERINA_INSTALL_DIRECTORY}/* target/ballerina-linux-installer-x64-${BALLERINA_VERSION}
+    mv target/${BALLERINA_INSTALL_DIRECTORY} target/ballerina-linux-installer-x64-${BALLERINA_VERSION}
     fakeroot dpkg-deb --build target/ballerina-linux-installer-x64-${BALLERINA_VERSION}
 }
 
