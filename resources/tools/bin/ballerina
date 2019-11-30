@@ -23,7 +23,11 @@ fi
 
 if [ "$1" == "dist" ] || [ "$2" == "dist" ]
 then
-    java -jar $CURRENT_PATH/../dependencies/ballerina-update-tool-${ballerina.update.tool.version}.jar "$@"
+    JAVA_COMMAND="java"
+    if test -d "$CURRENT_PATH/../dependencies/jdk8u202-b08-jre"; then
+      JAVA_COMMAND=$CURRENT_PATH/../dependencies/jdk8u202-b08-jre/bin/java
+    fi
+    $JAVA_COMMAND -jar $CURRENT_PATH/../dependencies/ballerina-update-tool-${ballerina.update.tool.version}.jar "$@"
 else
     BALLERINA_VERSION=`cat $CURRENT_PATH/../distributions/ballerina-version`
 
