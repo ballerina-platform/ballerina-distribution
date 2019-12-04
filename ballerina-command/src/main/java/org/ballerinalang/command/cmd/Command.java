@@ -19,7 +19,9 @@ package org.ballerinalang.command.cmd;
 import org.ballerinalang.command.util.ToolUtil;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.Properties;
 
 /**
  * Command class with generic methods.
@@ -61,6 +63,18 @@ public abstract class Command {
         } catch (IOException e) {
             //TODO: Fix properly
             return "";
+        }
+    }
+
+    public void printVersionInfo() {
+        try (InputStream inputStream = Command.class.getResourceAsStream("/META-INF/tool.properties")) {
+            Properties properties = new Properties();
+            properties.load(inputStream);
+
+            String output = "Command " + properties.getProperty("ballerina.command.version") + "\n";
+            getPrintStream().print(output);
+        } catch (Throwable ignore) {
+            //TODO: Handle exception
         }
     }
 }

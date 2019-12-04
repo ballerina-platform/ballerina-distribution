@@ -21,40 +21,49 @@ import org.ballerinalang.command.BallerinaCliCommands;
 import picocli.CommandLine;
 
 import java.io.PrintStream;
+import java.util.List;
 
 /**
- * This class represents the "default" command required by picocli.
+ * This class represents the "version" command and it holds arguments and flags specified by the user.
  */
-@CommandLine.Command(description = "Default Command.", name = "default")
-public class DefaultCommand extends Command implements BLauncherCommand {
+@CommandLine.Command(name = "version", description = "Prints Ballerina version")
+public class VersionCommand extends Command implements BLauncherCommand {
+    @CommandLine.Parameters(description = "Command name")
+    private List<String> versionCommands;
 
-    @CommandLine.Option(names = { "--help", "-h", "?" }, hidden = true, description = "for more information")
+    @CommandLine.Option(names = {"--help", "-h", "?"}, hidden = true)
     private boolean helpFlag;
 
-    // --debug flag is handled by ballerina.sh/ballerina.bat. It will launch ballerina with java debug options.
-    @CommandLine.Option(names = "--debug", description = "start Ballerina in remote debugging mode")
-    private String debugPort;
+    private CommandLine parentCmdParser;
 
-    @CommandLine.Option(names = { "--version", "-v" }, hidden = true)
-    private boolean versionFlag;
-
-    public DefaultCommand(PrintStream printStream) {
+    public VersionCommand(PrintStream printStream) {
         super(printStream);
     }
 
-    @Override
     public void execute() {
-        if (versionFlag) {
-            printVersionInfo();
+        if (helpFlag) {
+            printUsageInfo(BallerinaCliCommands.VERSION);
             return;
         }
 
-        printUsageInfo(BallerinaCliCommands.HELP);
+        if (versionCommands == null) {
+            printVersionInfo();
+            return;
+        } else if (versionCommands.size() > 1) {
+            //throw LauncherUtils.createUsageExceptionWithHelp("too many arguments given");
+            //TODO: Handle
+        }
+
+        String userCommand = versionCommands.get(0);
+        if (parentCmdParser.getSubcommands().get(userCommand) == null) {
+            //throw LauncherUtils.createUsageExceptionWithHelp("unknown command " + userCommand);
+            //TODO: Handle
+        }
     }
 
     @Override
     public String getName() {
-        return BallerinaCliCommands.DEFAULT;
+        return BallerinaCliCommands.VERSION;
     }
 
     @Override
@@ -64,9 +73,11 @@ public class DefaultCommand extends Command implements BLauncherCommand {
 
     @Override
     public void printUsage(StringBuilder out) {
+        out.append("  ballerina version \n");
     }
 
     @Override
     public void setParentCmdParser(CommandLine parentCmdParser) {
+        this.parentCmdParser = parentCmdParser;
     }
 }

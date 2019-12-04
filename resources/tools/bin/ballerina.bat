@@ -47,18 +47,10 @@ set merge=false
 if "%1" == "help" (
 	if "%2" == "" set merge=true
 )
-
-if "%1" == "" (
- 	set merge=true
-)
-
-if "%1" == "version" (
- 	set merge=true
-)
-
-if "%1" == "-v" (
- 	set merge=true
-)
+if "%1" == "" set merge=true
+if "%1" == "version" set merge=true
+if "%1" == "-v" set merge=true
+if "%1" == "--version" set merge=true
 
 if "%merge%" == "true" (
    if exist %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre (
