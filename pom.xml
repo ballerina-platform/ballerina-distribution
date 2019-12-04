@@ -165,7 +165,7 @@
 
     <modules>
         <module>ballerina</module>
-        <module>ballerina-update-tool</module>
+        <module>ballerina-command</module>
     </modules>
 
     <dependencyManagement>
@@ -246,8 +246,8 @@
             </dependency>
             <dependency>
                 <groupId>org.ballerinalang</groupId>
-                <artifactId>ballerina-update-tool</artifactId>
-                <version>${ballerina.update.tool.version}</version>
+                <artifactId>ballerina-command</artifactId>
+                <version>${ballerina.command.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -259,7 +259,7 @@
         <kubernetes.version>1.0.4</kubernetes.version>
         <awslambda.version>1.0.4</awslambda.version>
         <picocli.version>4.0.1</picocli.version>
-        <ballerina.update.tool.version>0.8.0</ballerina.update.tool.version>
+        <ballerina.command.version>0.8.0</ballerina.command.version>
     </properties>
 
 </project>

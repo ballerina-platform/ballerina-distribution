@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.ballerinalang.update.cmd;
+package org.ballerinalang.command.cmd;
 
-import org.ballerinalang.update.util.ToolUtil;
+import org.ballerinalang.command.util.ToolUtil;
 
 import java.io.IOException;
 import java.io.PrintStream;

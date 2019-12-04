@@ -82,7 +82,7 @@
     </dependency>
     <dependency>
         <groupId>org.ballerinalang</groupId>
-        <artifactId>ballerina-update-tool</artifactId>
+        <artifactId>ballerina-command</artifactId>
     </dependency>
     </dependencies>
 

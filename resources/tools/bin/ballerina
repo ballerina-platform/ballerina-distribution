@@ -27,7 +27,7 @@ then
     if test -d "$CURRENT_PATH/../dependencies/jdk8u202-b08-jre"; then
       JAVA_COMMAND="$CURRENT_PATH/../dependencies/jdk8u202-b08-jre/bin/java"
     fi
-    $JAVA_COMMAND -jar $CURRENT_PATH/../dependencies/ballerina-update-tool-${ballerina.update.tool.version}.jar "$@"
+    $JAVA_COMMAND -jar $CURRENT_PATH/../lib/ballerina-command-${ballerina.command.version}.jar "$@"
 else
     BALLERINA_VERSION=`cat $CURRENT_PATH/../distributions/ballerina-version`
 
@@ -44,11 +44,11 @@ else
     $BALLERINA_HOME/bin/./ballerina "$@"
 fi
 
-if [ "$1" == "help" ] && [ "$2" == "" ]  || [ "$1" == "" ]
+if [ "$1" == "help" ] && [ "$2" == "" ]  || [ "$1" == "" ] || ["$1" == "version"]|| ["$1" == "-v"]
 then
     JAVA_COMMAND=java
     if test -d "$CURRENT_PATH/../dependencies/jdk8u202-b08-jre"; then
       JAVA_COMMAND="$CURRENT_PATH/../dependencies/jdk8u202-b08-jre/bin/java"
     fi
-    $JAVA_COMMAND -jar $CURRENT_PATH/../dependencies/ballerina-update-tool-${ballerina.update.tool.version}.jar "$@"
+    $JAVA_COMMAND -jar $CURRENT_PATH/../lib/ballerina-command-${ballerina.command.version}.jar "$@"
 fi

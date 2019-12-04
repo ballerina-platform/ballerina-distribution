@@ -17,13 +17,13 @@
   -->
 <FindBugsFilter>
     <Match>
-        <Package name="org.ballerinalang.update.util" />
+        <Package name="org.ballerinalang.command.util" />
     </Match>
     <Match>
-        <Package name="org.ballerinalang.update.cmd" />
+        <Package name="org.ballerinalang.command.cmd" />
     </Match>
     <Match>
-        <Class name="org.ballerinalang.update.Main"/>
+        <Class name="org.ballerinalang.command.Main"/>
         <Bug pattern="NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE"/>
     </Match>
 </FindBugsFilter>

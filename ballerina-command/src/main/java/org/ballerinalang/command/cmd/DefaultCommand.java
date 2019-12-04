@@ -14,40 +14,39 @@
  * limitations under the License.
  */
 
-package org.ballerinalang.update.cmd;
+package org.ballerinalang.command.cmd;
 
-import org.ballerinalang.update.BLauncherCommand;
-import org.ballerinalang.update.BallerinaCliCommands;
+import org.ballerinalang.command.BLauncherCommand;
+import org.ballerinalang.command.BallerinaCliCommands;
 import picocli.CommandLine;
 
 import java.io.PrintStream;
 
 /**
- * This class represents the "Update" command and it holds arguments and flags specified by the user.
+ * This class represents the "default" command required by picocli.
  */
-@CommandLine.Command(name = "dist", description = "Ballerina distribution commands")
-public class DistributionCommand extends Command implements BLauncherCommand {
+@CommandLine.Command(description = "Default Command.", name = "default")
+public class DefaultCommand extends Command implements BLauncherCommand {
 
     @CommandLine.Option(names = { "--help", "-h", "?" }, hidden = true, description = "for more information")
     private boolean helpFlag;
 
-    public DistributionCommand(PrintStream printStream) {
+    // --debug flag is handled by ballerina.sh/ballerina.bat. It will launch ballerina with java debug options.
+    @CommandLine.Option(names = "--debug", description = "start Ballerina in remote debugging mode")
+    private String debugPort;
+
+    public DefaultCommand(PrintStream printStream) {
         super(printStream);
     }
 
     @Override
     public void execute() {
-        if (helpFlag) {
-            printUsageInfo(BallerinaCliCommands.HELP);
-            return;
-        }
-
-        printUsageInfo(BallerinaCliCommands.DIST);
+        printUsageInfo(BallerinaCliCommands.HELP);
     }
 
     @Override
     public String getName() {
-        return BallerinaCliCommands.DIST;
+        return BallerinaCliCommands.DEFAULT;
     }
 
     @Override

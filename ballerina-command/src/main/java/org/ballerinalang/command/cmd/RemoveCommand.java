@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.ballerinalang.update.cmd;
+package org.ballerinalang.command.cmd;
 
-import org.ballerinalang.update.BLauncherCommand;
-import org.ballerinalang.update.BallerinaCliCommands;
-import org.ballerinalang.update.util.ToolUtil;
+import org.ballerinalang.command.BLauncherCommand;
+import org.ballerinalang.command.BallerinaCliCommands;
+import org.ballerinalang.command.util.ToolUtil;
 import picocli.CommandLine;
 
 import java.io.File;

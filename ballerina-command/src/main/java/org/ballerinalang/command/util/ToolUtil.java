@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.ballerinalang.update.util;
+package org.ballerinalang.command.util;
 
-import org.ballerinalang.update.Main;
+import org.ballerinalang.command.Main;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -274,7 +274,7 @@ public class ToolUtil {
     }
 
     /**
-     * Checks for update avaiable for current version.
+     * Checks for command avaiable for current version.
      * @param printStream stream which messages should be printed
      * @param args current commands arguments
      */
@@ -303,7 +303,7 @@ public class ToolUtil {
                 }
             }
         } catch (Exception e) {
-            // If any exception occurs we are not letting users know as check for update is optional
+            // If any exception occurs we are not letting users know as check for command is optional
         }
     }
 

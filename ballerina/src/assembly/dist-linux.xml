@@ -119,9 +119,9 @@
             <unpack>false</unpack>
         </dependencySet>
         <dependencySet>
-            <outputDirectory>dependencies</outputDirectory>
+            <outputDirectory>lib</outputDirectory>
             <includes>
-                <include>org.ballerinalang:ballerina-update-tool</include>
+                <include>org.ballerinalang:ballerina-command</include>
             </includes>
             <unpack>false</unpack>
         </dependencySet>

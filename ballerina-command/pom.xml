@@ -26,9 +26,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
-    <version>${ballerina.update.tool.version}</version>
+    <version>${ballerina.command.version}</version>
 
-    <artifactId>ballerina-update-tool</artifactId>
+    <artifactId>ballerina-command</artifactId>
 
     <dependencies>
         <dependency>
@@ -44,10 +44,10 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.2.0</version>
                 <configuration>
-                    <finalName>ballerina-update-tool-${ballerina.update.tool.version}</finalName>
+                    <finalName>ballerina-command-${ballerina.command.version}</finalName>
                     <archive>
                         <manifest>
-                            <mainClass>org.ballerinalang.update.Main</mainClass>
+                            <mainClass>org.ballerinalang.command.Main</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

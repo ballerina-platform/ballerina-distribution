@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.ballerinalang.update.util;
+package org.ballerinalang.command.util;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -38,7 +38,7 @@ public class OSUtils {
     private static final String OS = System.getProperty("os.name").toLowerCase(Locale.getDefault());
     private static final String BALLERINA_HOME_DIR = ".ballerina";
     private static final String BALLERINA_CONFIG = "ballerina-version";
-    private static final String UPDATE_NOTICE = "update-notice";
+    private static final String UPDATE_NOTICE = "command-notice";
     private static final String BIR_CACHE = "bir_cache";
     private static final String JAR_CACHE = "jar_cache";
 

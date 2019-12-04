@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package org.ballerinalang.update.cmd;
+package org.ballerinalang.command.cmd;
 
-import org.ballerinalang.update.BLauncherCommand;
-import org.ballerinalang.update.BallerinaCliCommands;
-import org.ballerinalang.update.util.Distribution;
-import org.ballerinalang.update.util.ToolUtil;
-import org.ballerinalang.update.util.Version;
+import org.ballerinalang.command.BLauncherCommand;
+import org.ballerinalang.command.BallerinaCliCommands;
+import org.ballerinalang.command.util.Distribution;
+import org.ballerinalang.command.util.ToolUtil;
+import org.ballerinalang.command.util.Version;
 import picocli.CommandLine;
 
 import java.io.IOException;
@@ -33,7 +33,7 @@ import java.util.List;
 /**
  * This class represents the "Update" command and it holds arguments and flags specified by the user.
  */
-@CommandLine.Command(name = "update", description = "Update Ballerina current distribution")
+@CommandLine.Command(name = "command", description = "Update Ballerina current distribution")
 public class UpdateCommand extends Command implements BLauncherCommand {
 
     @CommandLine.Parameters(description = "Command name")
@@ -79,7 +79,7 @@ public class UpdateCommand extends Command implements BLauncherCommand {
 
     @Override
     public void printUsage(StringBuilder out) {
-        out.append("  ballerina dist update\n");
+        out.append("  ballerina dist command\n");
     }
 
     @Override
@@ -101,7 +101,7 @@ public class UpdateCommand extends Command implements BLauncherCommand {
                 ToolUtil.downloadDistribution(printStream, distribution, false);
                 ToolUtil.use(printStream, distribution);
             } else {
-                printStream.println("No update found");
+                printStream.println("No command found");
             }
         } catch (IOException | KeyManagementException | NoSuchAlgorithmException e) {
             printStream.println("Cannot connect to the central server");

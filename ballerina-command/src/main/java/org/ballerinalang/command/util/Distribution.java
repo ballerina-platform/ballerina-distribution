@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.ballerinalang.update.util;
+package org.ballerinalang.command.util;
 
 /**
  * Consist of information.

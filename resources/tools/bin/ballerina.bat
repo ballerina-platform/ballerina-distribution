@@ -27,9 +27,9 @@ if "%2" == "dist" set dist=true
 SetLocal EnableDelayedExpansion
 if "%dist%" == "true" (
    if exist %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre (
-       %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre\bin\java -jar %CURRENT_PATH%..\dependencies\ballerina-update-tool-0.8.0.jar %*
+       %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre\bin\java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
    ) else (
-		java -jar %CURRENT_PATH%..\dependencies\ballerina-update-tool-0.8.0.jar %*
+		java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
    )
 ) else (
 	set BALLERINA_HOME=
@@ -43,20 +43,28 @@ if "%dist%" == "true" (
 	)
 	call %CURRENT_PATH%..\distributions\!BALLERINA_HOME!\bin\ballerina.bat %*
 )
-set help=false
+set merge=false
 if "%1" == "help" (
-	if "%2" == "" set help=true
+	if "%2" == "" set merge=true
 )
 
 if "%1" == "" (
- 	set help=true
+ 	set merge=true
 )
 
-if "%help%" == "true" (
+if "%1" == "version" (
+ 	set merge=true
+)
+
+if "%1" == "-v" (
+ 	set merge=true
+)
+
+if "%merge%" == "true" (
    if exist %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre (
-       %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre\bin\java -jar %CURRENT_PATH%..\dependencies\ballerina-update-tool-0.8.0.jar %*
+       %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre\bin\java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
    ) else (
-		java -jar %CURRENT_PATH%..\dependencies\ballerina-update-tool-0.8.0.jar %*
+		java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
    )
 )
 
