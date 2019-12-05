@@ -24,6 +24,6 @@
     </Match>
     <Match>
         <Class name="org.ballerinalang.command.Main"/>
-        <Bug pattern="NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE"/>
+        <Bug pattern="NP_OPTIONAL_RETURN_NULL"/>
     </Match>
 </FindBugsFilter>

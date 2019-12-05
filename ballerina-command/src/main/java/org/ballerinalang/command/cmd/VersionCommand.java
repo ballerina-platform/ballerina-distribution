@@ -16,7 +16,6 @@
 
 package org.ballerinalang.command.cmd;
 
-import org.ballerinalang.command.BLauncherCommand;
 import org.ballerinalang.command.BallerinaCliCommands;
 import picocli.CommandLine;
 
@@ -27,7 +26,7 @@ import java.util.List;
  * This class represents the "version" command and it holds arguments and flags specified by the user.
  */
 @CommandLine.Command(name = "version", description = "Prints Ballerina version")
-public class VersionCommand extends Command implements BLauncherCommand {
+public class VersionCommand extends Command implements BCommand {
     @CommandLine.Parameters(description = "Command name")
     private List<String> versionCommands;
 
@@ -50,14 +49,12 @@ public class VersionCommand extends Command implements BLauncherCommand {
             printVersionInfo();
             return;
         } else if (versionCommands.size() > 1) {
-            //throw LauncherUtils.createUsageExceptionWithHelp("too many arguments given");
-            //TODO: Handle
+            createUsageExceptionWithHelp("too many arguments given");
         }
 
         String userCommand = versionCommands.get(0);
         if (parentCmdParser.getSubcommands().get(userCommand) == null) {
-            //throw LauncherUtils.createUsageExceptionWithHelp("unknown command " + userCommand);
-            //TODO: Handle
+            throw createUsageExceptionWithHelp("unknown command " + userCommand);
         }
     }
 

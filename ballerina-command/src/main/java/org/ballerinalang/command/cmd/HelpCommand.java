@@ -16,7 +16,6 @@
 
 package org.ballerinalang.command.cmd;
 
-import org.ballerinalang.command.BLauncherCommand;
 import org.ballerinalang.command.BallerinaCliCommands;
 
 import picocli.CommandLine;
@@ -27,7 +26,7 @@ import java.util.List;
  * This class represents the "help" command and it holds arguments and flags specified by the user.
  */
 @CommandLine.Command(name = "help", description = "print usage information")
-public class HelpCommand extends Command implements BLauncherCommand {
+public class HelpCommand extends Command implements BCommand {
 
     @CommandLine.Parameters(description = "Command name")
     private List<String> helpCommands;
@@ -40,17 +39,13 @@ public class HelpCommand extends Command implements BLauncherCommand {
             return;
 
         } else if (helpCommands.size() > 2) {
-            //TODO: fix later
-//            throw createUsageExceptionWithHelp("too many arguments given");
-              return;
+             throw createUsageExceptionWithHelp("too many arguments given");
         }
 
         int index = helpCommands.size() == 2 ? 1 : 0;
         String userCommand = helpCommands.get(index);
         if (helpCommands.get(index) == null) {
-            //TODO: fix later
-//            throw createUsageExceptionWithHelp("unknown help topic `" + userCommand + "`");
-                return;
+            throw createUsageExceptionWithHelp("unknown help topic `" + userCommand + "`");
         }
 
         String commandUsageInfo = getCommandUsageInfo(userCommand);

@@ -14,16 +14,14 @@
  * limitations under the License.
  */
 
-package org.ballerinalang.command;
+package org.ballerinalang.command.cmd;
 
 import picocli.CommandLine;
 
 /**
  * {@code BLauncherCommand} represents a Ballerina launcher command.
- *
- * @since 0.8.0
  */
-public interface BLauncherCommand {
+public interface BCommand {
 
     /**
      * Execute the command.

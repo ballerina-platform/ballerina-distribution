@@ -16,7 +16,6 @@
 
 package org.ballerinalang.command.cmd;
 
-import org.ballerinalang.command.BLauncherCommand;
 import org.ballerinalang.command.BallerinaCliCommands;
 import picocli.CommandLine;
 
@@ -26,7 +25,7 @@ import java.io.PrintStream;
  * This class represents the "default" command required by picocli.
  */
 @CommandLine.Command(description = "Default Command.", name = "default")
-public class DefaultCommand extends Command implements BLauncherCommand {
+public class DefaultCommand extends Command implements BCommand {
 
     @CommandLine.Option(names = { "--help", "-h", "?" }, hidden = true, description = "for more information")
     private boolean helpFlag;

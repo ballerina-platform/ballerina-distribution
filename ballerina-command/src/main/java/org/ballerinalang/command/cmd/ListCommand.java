@@ -16,7 +16,6 @@
 
 package org.ballerinalang.command.cmd;
 
-import org.ballerinalang.command.BLauncherCommand;
 import org.ballerinalang.command.BallerinaCliCommands;
 import org.ballerinalang.command.util.Distribution;
 import org.ballerinalang.command.util.ToolUtil;
@@ -34,7 +33,7 @@ import java.util.List;
  * This class represents the "Update" command and it holds arguments and flags specified by the user.
  */
 @CommandLine.Command(name = "list", description = "List Ballerina Distributions")
-public class ListCommand extends Command implements BLauncherCommand {
+public class ListCommand extends Command implements BCommand {
 
     @CommandLine.Parameters(description = "Command name")
     private List<String> listCommands;
@@ -58,12 +57,12 @@ public class ListCommand extends Command implements BLauncherCommand {
             listDistributions(getPrintStream());
             return;
         } else if (listCommands.size() > 1) {
-            //  throw LauncherUtils.createUsageExceptionWithHelp("too many arguments given");
+            throw createUsageExceptionWithHelp("too many arguments given");
         }
 
         String userCommand = listCommands.get(0);
         if (parentCmdParser.getSubcommands().get(userCommand) == null) {
-            // throw LauncherUtils.createUsageExceptionWithHelp("unknown command " + userCommand);
+            throw createUsageExceptionWithHelp("unknown command " + userCommand);
         }
     }
 

@@ -16,7 +16,6 @@
 
 package org.ballerinalang.command.cmd;
 
-import org.ballerinalang.command.BLauncherCommand;
 import org.ballerinalang.command.BallerinaCliCommands;
 import org.ballerinalang.command.util.Distribution;
 import org.ballerinalang.command.util.ToolUtil;
@@ -34,7 +33,7 @@ import java.util.List;
  * This class represents the "Update" command and it holds arguments and flags specified by the user.
  */
 @CommandLine.Command(name = "command", description = "Update Ballerina current distribution")
-public class UpdateCommand extends Command implements BLauncherCommand {
+public class UpdateCommand extends Command implements BCommand {
 
     @CommandLine.Parameters(description = "Command name")
     private List<String> updateCommands;

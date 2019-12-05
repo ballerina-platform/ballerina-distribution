@@ -16,7 +16,6 @@
 
 package org.ballerinalang.command.cmd;
 
-import org.ballerinalang.command.BLauncherCommand;
 import org.ballerinalang.command.BallerinaCliCommands;
 import org.ballerinalang.command.util.ToolUtil;
 import picocli.CommandLine;
@@ -28,7 +27,7 @@ import java.util.List;
  * This class represents the "Fetch" command and it holds arguments and flags specified by the user.
  */
 @CommandLine.Command(name = "fetch", description = "Fetch Ballerina distribution")
-public class FetchCommand extends Command implements BLauncherCommand {
+public class FetchCommand extends Command implements BCommand {
 
     @CommandLine.Parameters(description = "Command name")
     private List<String> fetchCommands;
@@ -50,17 +49,17 @@ public class FetchCommand extends Command implements BLauncherCommand {
         }
 
         if (fetchCommands == null) {
-            //    throw LauncherUtils.createUsageExceptionWithHelp("distribution is not provided");
+            throw createUsageExceptionWithHelp("distribution is not provided");
         } else if (fetchCommands.size() == 1) {
             ToolUtil.downloadDistribution(getPrintStream(), fetchCommands.get(0), true);
             return;
         } else if (fetchCommands.size() > 1) {
-            //    throw LauncherUtils.createUsageExceptionWithHelp("too many arguments given");
+            throw createUsageExceptionWithHelp("too many arguments given");
         }
 
         String userCommand = fetchCommands.get(0);
         if (parentCmdParser.getSubcommands().get(userCommand) == null) {
-            //    throw LauncherUtils.createUsageExceptionWithHelp("unknown command " + userCommand);
+            throw createUsageExceptionWithHelp("unknown command " + userCommand);
         }
     }
 

@@ -16,7 +16,6 @@
 
 package org.ballerinalang.command.cmd;
 
-import org.ballerinalang.command.BLauncherCommand;
 import org.ballerinalang.command.BallerinaCliCommands;
 import org.ballerinalang.command.util.ToolUtil;
 import picocli.CommandLine;
@@ -28,7 +27,7 @@ import java.util.List;
  * This class represents the "Pull" command and it holds arguments and flags specified by the user.
  */
 @CommandLine.Command(name = "pull", description = "Pull Ballerina distribution")
-public class PullCommand extends Command implements BLauncherCommand {
+public class PullCommand extends Command implements BCommand {
 
     @CommandLine.Parameters(description = "Command name")
     private List<String> pullCommands;
@@ -50,18 +49,18 @@ public class PullCommand extends Command implements BLauncherCommand {
         }
 
         if (pullCommands == null) {
-            //    throw LauncherUtils.createUsageExceptionWithHelp("distribution is not provided");
+            throw createUsageExceptionWithHelp("distribution is not provided");
         } else if (pullCommands.size() == 1) {
             ToolUtil.downloadDistribution(getPrintStream(), pullCommands.get(0), false);
             ToolUtil.use(getPrintStream(), pullCommands.get(0));
             return;
         } else if (pullCommands.size() > 1) {
-            //    throw LauncherUtils.createUsageExceptionWithHelp("too many arguments given");
+            throw createUsageExceptionWithHelp("too many arguments given");
         }
 
         String userCommand = pullCommands.get(0);
         if (parentCmdParser.getSubcommands().get(userCommand) == null) {
-            //    throw LauncherUtils.createUsageExceptionWithHelp("unknown command " + userCommand);
+            throw createUsageExceptionWithHelp("unknown command " + userCommand);
         }
     }
 

@@ -16,7 +16,6 @@
 
 package org.ballerinalang.command.cmd;
 
-import org.ballerinalang.command.BLauncherCommand;
 import org.ballerinalang.command.BallerinaCliCommands;
 import org.ballerinalang.command.util.ToolUtil;
 import picocli.CommandLine;
@@ -33,7 +32,7 @@ import java.util.List;
  * This class represents the "Remove" command and it holds arguments and flags specified by the user.
  */
 @CommandLine.Command(name = "remove", description = "Remove Ballerina distribution")
-public class RemoveCommand extends Command implements BLauncherCommand {
+public class RemoveCommand extends Command implements BCommand {
 
     @CommandLine.Parameters(description = "Command name")
     private List<String> removeCommands;
@@ -54,17 +53,17 @@ public class RemoveCommand extends Command implements BLauncherCommand {
         }
 
         if (removeCommands == null) {
-            //    throw LauncherUtils.createUsageExceptionWithHelp("distribution is not provided");
+            throw createUsageExceptionWithHelp("distribution is not provided");
         } else if (removeCommands.size() == 1) {
             remove(removeCommands.get(0));
             return;
         } else if (removeCommands.size() > 1) {
-            //    throw LauncherUtils.createUsageExceptionWithHelp("too many arguments given");
+            throw createUsageExceptionWithHelp("too many arguments given");
         }
 
         String userCommand = removeCommands.get(0);
         if (parentCmdParser.getSubcommands().get(userCommand) == null) {
-            //   throw LauncherUtils.createUsageExceptionWithHelp("unknown command " + userCommand);
+            throw createUsageExceptionWithHelp("unknown command " + userCommand);
         }
     }
 

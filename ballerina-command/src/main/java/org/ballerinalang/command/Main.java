@@ -16,6 +16,8 @@
 
 package org.ballerinalang.command;
 
+import org.ballerinalang.command.cmd.BCommand;
+import org.ballerinalang.command.cmd.CommandException;
 import org.ballerinalang.command.cmd.DefaultCommand;
 import org.ballerinalang.command.cmd.DistributionCommand;
 import org.ballerinalang.command.cmd.FetchCommand;
@@ -36,24 +38,24 @@ import java.util.Optional;
  * This class executes a Ballerina program.
  */
 public class Main {
-
-    private static PrintStream errStream = System.err;
     private static PrintStream outStream = System.out;
-
+    private static PrintStream errStream = System.err;
 
     public static void main(String... args) {
         try {
-            Optional<BLauncherCommand> optionalInvokedCmd = getInvokedCmd(args);
-            optionalInvokedCmd.ifPresent(BLauncherCommand::execute);
-        } catch (Exception e) {
+            Optional<BCommand> optionalInvokedCmd = getInvokedCmd(args);
+            optionalInvokedCmd.ifPresent(BCommand::execute);
+        } catch (CommandException e) {
+            printLauncherException(e, errStream);
             Runtime.getRuntime().exit(1);
         } catch (Throwable e) {
+            errStream.println(e.getMessage());
             Runtime.getRuntime().exit(1);
         }
     }
 
-    private static Optional<BLauncherCommand> getInvokedCmd(String... args) {
-//        try {
+    private static Optional<BCommand> getInvokedCmd(String... args) {
+        try {
             DefaultCommand defaultCmd = new DefaultCommand(outStream);
             CommandLine cmdParser = new CommandLine(defaultCmd);
             defaultCmd.setParentCmdParser(cmdParser);
@@ -111,15 +113,15 @@ public class Main {
             }
 
             return Optional.of(parsedCommands.get(parsedCommands.size() - 1).getCommand());
-//        } catch (CommandLine.UnmatchedArgumentException e) {
-//            return  null;
-//        } catch (CommandLine.ParameterException e) {
-//            return null;
-//        }
+        } catch (CommandException e) {
+            printLauncherException(e, errStream);
+            Runtime.getRuntime().exit(1);
+            return null;
+        }
     }
 
-//    private static void printUsageInfo(String commandName) {
-//        String usageInfo = BLauncherCommand.getCommandUsageInfo(commandName);
-//        errStream.println(usageInfo);
-//    }
+    static void printLauncherException(CommandException e, PrintStream outStream) {
+        List<String> errorMessages = e.getMessages();
+        errorMessages.forEach(outStream::println);
+    }
 }

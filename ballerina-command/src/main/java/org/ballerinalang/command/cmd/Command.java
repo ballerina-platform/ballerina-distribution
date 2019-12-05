@@ -77,4 +77,17 @@ public abstract class Command {
             //TODO: Handle exception
         }
     }
+
+    public CommandException createUsageExceptionWithHelp(String errorMsg) {
+        CommandException launcherException = new CommandException();
+        launcherException.addMessage("ballerina: " + errorMsg);
+        launcherException.addMessage("Run 'ballerina help' for usage.");
+        return launcherException;
+    }
+
+    public CommandException createLauncherException(String errorMsg) {
+        CommandException launcherException = new CommandException();
+        launcherException.addMessage("error: " + errorMsg);
+        return launcherException;
+    }
 }

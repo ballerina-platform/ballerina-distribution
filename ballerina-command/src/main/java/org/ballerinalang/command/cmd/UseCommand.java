@@ -16,7 +16,6 @@
 
 package org.ballerinalang.command.cmd;
 
-import org.ballerinalang.command.BLauncherCommand;
 import org.ballerinalang.command.BallerinaCliCommands;
 import org.ballerinalang.command.util.ToolUtil;
 import picocli.CommandLine;
@@ -28,7 +27,7 @@ import java.util.List;
  * This class represents the "Update" command and it holds arguments and flags specified by the user.
  */
 @CommandLine.Command(name = "use", description = "Use Ballerina distribution")
-public class UseCommand extends Command implements BLauncherCommand {
+public class UseCommand extends Command implements BCommand {
 
     @CommandLine.Parameters(description = "Command name")
     private List<String> useCommands;
@@ -49,17 +48,17 @@ public class UseCommand extends Command implements BLauncherCommand {
         }
 
         if (useCommands == null) {
-            //    throw LauncherUtils.createUsageExceptionWithHelp("distribution is not provided");
+            throw createUsageExceptionWithHelp("distribution is not provided");
         } else if (useCommands.size() == 1) {
             ToolUtil.use(getPrintStream(), useCommands.get(0));
             return;
         } else if (useCommands.size() > 1) {
-            //     throw LauncherUtils.createUsageExceptionWithHelp("too many arguments given");
+            throw createUsageExceptionWithHelp("too many arguments given");
         }
 
         String userCommand = useCommands.get(0);
         if (parentCmdParser.getSubcommands().get(userCommand) == null) {
-            //    throw LauncherUtils.createUsageExceptionWithHelp("unknown command " + userCommand);
+            throw createUsageExceptionWithHelp("unknown command " + userCommand);
         }
     }
 
