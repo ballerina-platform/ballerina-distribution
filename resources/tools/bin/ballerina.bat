@@ -18,15 +18,46 @@ REM  specific language governing permissions and limitations
 REM  under the License.
 REM ---------------------------------------------------------------------------
 
-set BALLERINA_HOME=
-set FILE_PATH=%~sdp0..\distributions\ballerina-version
+SetLocal EnableDelayedExpansion
+set CURRENT_PATH=%~sdp0
+set dist=false
+set FILE_PATH=%CURRENT_PATH%..\distributions\ballerina-version
+if "%1" == "dist" set dist=true
+if "%2" == "dist" set dist=true
+SetLocal EnableDelayedExpansion
+if "%dist%" == "true" (
+   if exist %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre (
+       %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre\bin\java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
+   ) else (
+		java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
+   )
+) else (
+	set BALLERINA_HOME=
+	if exist ~\.ballerina\ballerina-version (
+	   set "FILE_PATH=~\.ballerina\ballerina-version"
+	)
 
-if exist ~\.ballerina\ballerina-version (
-   set "FILE_PATH=~\.ballerina\ballerina-version"
+	SetLocal EnableDelayedExpansion
+	for /f %%a in (%FILE_PATH%) do (
+	  set BALLERINA_HOME=%%a
+	)
+	call %CURRENT_PATH%..\distributions\!BALLERINA_HOME!\bin\ballerina.bat %*
+)
+set merge=false
+if "%1" == "help" (
+	if "%2" == "" set merge=true
+)
+if "%1" == "" set merge=true
+if "%1" == "version" set merge=true
+if "%1" == "-v" set merge=true
+if "%1" == "--version" set merge=true
+
+if "%merge%" == "true" (
+   if exist %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre (
+       %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre\bin\java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
+   ) else (
+		java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
+   )
 )
 
-for /f %%a in (%FILE_PATH%) do (
-  set "BALLERINA_HOME=%%a"
-)
-
-%~sdp0..\distributions\%BALLERINA_HOME%\bin\ballerina.bat %*
+exit /b

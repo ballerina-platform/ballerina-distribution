@@ -108,5 +108,12 @@
             </excludes>
             <unpack>false</unpack>
         </dependencySet>
+        <dependencySet>
+            <outputDirectory>lib</outputDirectory>
+            <includes>
+                <include>org.ballerinalang:ballerina-command</include>
+            </includes>
+            <unpack>false</unpack>
+        </dependencySet>
     </dependencySets>
 </assembly>

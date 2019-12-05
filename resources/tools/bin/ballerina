@@ -21,16 +21,34 @@ else
     CURRENT_PATH="$(dirname "$(readlink -f "$0")")"
 fi
 
-BALLERINA_VERSION=`cat $CURRENT_PATH/../distributions/ballerina-version`
+if [ "$1" == "dist" ] || [ "$2" == "dist" ]
+then
+    JAVA_COMMAND=java
+    if test -d "$CURRENT_PATH/../dependencies/jdk8u202-b08-jre"; then
+      JAVA_COMMAND="$CURRENT_PATH/../dependencies/jdk8u202-b08-jre/bin/java"
+    fi
+    $JAVA_COMMAND -jar $CURRENT_PATH/../lib/ballerina-command-0.8.0.jar "$@"
+else
+    BALLERINA_VERSION=`cat $CURRENT_PATH/../distributions/ballerina-version`
 
-FILE=~/.ballerina/ballerina-version
-if test -f "$FILE"; then
-   BALLERINA_USER_VERSION=`cat $FILE`
-   if test -d "$CURRENT_PATH/../distributions/$BALLERINA_USER_VERSION"; then
-        BALLERINA_VERSION=$BALLERINA_USER_VERSION
-   fi
+    FILE=~/.ballerina/ballerina-version
+    if test -f "$FILE"; then
+       BALLERINA_USER_VERSION=`cat $FILE`
+       if test -d "$CURRENT_PATH/../distributions/$BALLERINA_USER_VERSION"; then
+            BALLERINA_VERSION=$BALLERINA_USER_VERSION
+       fi
+    fi
+    BALLERINA_HOME="$CURRENT_PATH/../distributions/$BALLERINA_VERSION"
+
+    export BALLERINA_HOME
+    $BALLERINA_HOME/bin/./ballerina "$@"
 fi
-BALLERINA_HOME="$CURRENT_PATH/../distributions/$BALLERINA_VERSION"
 
-export BALLERINA_HOME
-$BALLERINA_HOME/bin/./ballerina "$@"
+if [ "$1" == "help" ] && [ "$2" == "" ]  || [ "$1" == "" ] || [ "$1" == "version" ] || [ "$1" == "-v" ] || [ "$1" == "--version" ]
+then
+    JAVA_COMMAND=java
+    if test -d "$CURRENT_PATH/../dependencies/jdk8u202-b08-jre"; then
+      JAVA_COMMAND="$CURRENT_PATH/../dependencies/jdk8u202-b08-jre/bin/java"
+    fi
+    $JAVA_COMMAND -jar $CURRENT_PATH/../lib/ballerina-command-0.8.0.jar "$@"
+fi
