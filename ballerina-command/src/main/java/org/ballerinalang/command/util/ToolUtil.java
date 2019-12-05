@@ -44,7 +44,6 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
-
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
@@ -139,41 +138,6 @@ public class ToolUtil {
         return false;
     }
 
-    public static void download(PrintStream printStream, HttpURLConnection conn,
-                                String distribution, boolean manual) throws IOException {
-        String distPath = getDistributionsPath();
-        if (new File(distPath).canWrite()) {
-            printStream.print("Downloading " + distribution);
-            InputStream in = conn.getInputStream();
-            String zipFileLocation = getDistributionsPath() + File.separator + distribution + ".zip";
-            FileOutputStream out = new FileOutputStream(zipFileLocation);
-            byte[] b = new byte[1024];
-            int count;
-            int progress = 0;
-            while ((count = in.read(b)) > 0) {
-                out.write(b, 0, count);
-                progress++;
-                if (progress % 1024 == 0) {
-                    printStream.print(".");
-                }
-            }
-            printStream.println();
-            unzip(zipFileLocation, getDistributionsPath(), distribution);
-
-            if (conn.getResponseCode() != 200) {
-                throw new RuntimeException("Failed : HTTP error code : "
-                        + conn.getResponseCode());
-            }
-            conn.disconnect();
-            if (manual) {
-                printStream.println(distribution + " is installed. Please execute \"ballerina dist use " +
-                        "" + distribution + "\" to use as the default");
-            }
-        } else {
-            printStream.println("Current user does not have write permissions to " + distPath + " directory");
-        }
-    }
-
     public static List<Distribution> getDistributions() throws IOException, KeyManagementException,
             NoSuchAlgorithmException {
 
@@ -225,43 +189,6 @@ public class ToolUtil {
             }
         }
         return sb.toString();
-    }
-
-    public static void unzip(String zipFilePath, String destDirectory, String distribution) throws IOException {
-        File destDir = new File(destDirectory);
-        if (!destDir.exists()) {
-            destDir.mkdir();
-        }
-        ZipInputStream zipIn = new ZipInputStream(new FileInputStream(zipFilePath));
-        ZipEntry entry = zipIn.getNextEntry();
-        while (entry != null) {
-            String filePath = destDirectory + File.separator + entry.getName();
-            if (!entry.isDirectory()) {
-                BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(filePath));
-                byte[] bytesIn = new byte[1024];
-                int read = 0;
-                while ((read = zipIn.read(bytesIn)) != -1) {
-                    bos.write(bytesIn, 0, read);
-                }
-                bos.close();
-            } else {
-                File dir = new File(filePath);
-                dir.mkdir();
-            }
-            zipIn.closeEntry();
-            entry = zipIn.getNextEntry();
-        }
-
-        final File file = new File(destDirectory
-                + File.separator + distribution
-                + File.separator + "bin"
-                + File.separator + OSUtils.getExecutableFileName());
-        file.setReadable(true, false);
-        file.setExecutable(true, false);
-        file.setWritable(true, false);
-
-        zipIn.close();
-        new File(zipFilePath).delete();
     }
 
     /**
@@ -326,9 +253,9 @@ public class ToolUtil {
                     String newUrl = conn.getHeaderField("Location");
                     conn = (HttpURLConnection) new URL(newUrl).openConnection();
                     conn.setRequestProperty("content-type", "binary/data");
-                    ToolUtil.download(printStream, conn, distribution, manualUpdate);
+                    ToolUtil.downloadAndSetupDist(printStream, conn, distribution, manualUpdate);
                 } else if (conn.getResponseCode() == 200) {
-                    ToolUtil.download(printStream, conn, distribution, manualUpdate);
+                    ToolUtil.downloadAndSetupDist(printStream, conn, distribution, manualUpdate);
                 } else {
                     printStream.println(distribution + " is not found ");
                 }
@@ -336,6 +263,82 @@ public class ToolUtil {
         } catch (IOException | KeyManagementException | NoSuchAlgorithmException e) {
             printStream.println("Cannot connect to the central server");
         }
+    }
+
+    private static void downloadAndSetupDist(PrintStream printStream, HttpURLConnection conn,
+                                             String distribution, boolean manual) throws IOException {
+        String distPath = getDistributionsPath();
+        if (new File(distPath).canWrite()) {
+            printStream.print("Downloading " + distribution);
+            String zipFileLocation = getDistributionsPath() + File.separator + distribution + ".zip";
+            downloadFile(printStream, conn, zipFileLocation);
+            printStream.println();
+            unzip(zipFileLocation, distPath);
+            addExecutablePermissionToFile(new File(distPath + File.separator + distribution
+                                                           + File.separator + "bin"
+                                                           + File.separator + OSUtils.getExecutableFileName()));
+            new File(zipFileLocation).delete();
+            if (conn.getResponseCode() != 200) {
+                throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
+            }
+            conn.disconnect();
+            if (manual) {
+                printStream.println(distribution + " is installed. Please execute \"ballerina dist use " +
+                                            "" + distribution + "\" to use as the default");
+            }
+        } else {
+            printStream.println("Current user does not have write permissions to " + distPath + " directory");
+        }
+    }
+
+    private static void downloadFile(PrintStream printStream, HttpURLConnection conn, String zipFileLocation)
+            throws IOException {
+        try (InputStream in = conn.getInputStream();
+             FileOutputStream out = new FileOutputStream(zipFileLocation)) {
+            byte[] b = new byte[1024];
+            int count;
+            int progress = 0;
+            while ((count = in.read(b)) > 0) {
+                out.write(b, 0, count);
+                progress++;
+                if (progress % 1024 == 0) {
+                    printStream.print(".");
+                }
+            }
+        }
+    }
+
+    private static void unzip(String zipFilePath, String destDirectory) throws IOException {
+        File destDir = new File(destDirectory);
+        if (!destDir.exists()) {
+            destDir.mkdir();
+        }
+        try (ZipInputStream zipIn = new ZipInputStream(new FileInputStream(zipFilePath))) {
+            ZipEntry entry = zipIn.getNextEntry();
+            while (entry != null) {
+                String filePath = destDirectory + File.separator + entry.getName();
+                if (!entry.isDirectory()) {
+                    BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(filePath));
+                    byte[] bytesIn = new byte[1024];
+                    int read = 0;
+                    while ((read = zipIn.read(bytesIn)) != -1) {
+                        bos.write(bytesIn, 0, read);
+                    }
+                    bos.close();
+                } else {
+                    File dir = new File(filePath);
+                    dir.mkdir();
+                }
+                zipIn.closeEntry();
+                entry = zipIn.getNextEntry();
+            }
+        }
+    }
+
+    private static void addExecutablePermissionToFile(File file) throws IOException {
+        file.setReadable(true, false);
+        file.setExecutable(true, false);
+        file.setWritable(true, false);
     }
 
     public static String readFileAsString(String path) throws IOException {
