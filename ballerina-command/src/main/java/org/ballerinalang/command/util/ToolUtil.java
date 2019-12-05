@@ -191,43 +191,6 @@ public class ToolUtil {
         return sb.toString();
     }
 
-    public static void unzip(String zipFilePath, String destDirectory, String distribution) throws IOException {
-        File destDir = new File(destDirectory);
-        if (!destDir.exists()) {
-            destDir.mkdir();
-        }
-        ZipInputStream zipIn = new ZipInputStream(new FileInputStream(zipFilePath));
-        ZipEntry entry = zipIn.getNextEntry();
-        while (entry != null) {
-            String filePath = destDirectory + File.separator + entry.getName();
-            if (!entry.isDirectory()) {
-                BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(filePath));
-                byte[] bytesIn = new byte[1024];
-                int read = 0;
-                while ((read = zipIn.read(bytesIn)) != -1) {
-                    bos.write(bytesIn, 0, read);
-                }
-                bos.close();
-            } else {
-                File dir = new File(filePath);
-                dir.mkdir();
-            }
-            zipIn.closeEntry();
-            entry = zipIn.getNextEntry();
-        }
-
-        final File file = new File(destDirectory
-                + File.separator + distribution
-                + File.separator + "bin"
-                + File.separator + OSUtils.getExecutableFileName());
-        file.setReadable(true, false);
-        file.setExecutable(true, false);
-        file.setWritable(true, false);
-
-        zipIn.close();
-        new File(zipFilePath).delete();
-    }
-
     /**
      * Provides path of the installed distributions.
      * @return installed distributions path
@@ -314,7 +277,7 @@ public class ToolUtil {
             addExecutablePermissionToFile(new File(distPath + File.separator + distribution
                                                            + File.separator + "bin"
                                                            + File.separator + OSUtils.getExecutableFileName()));
-
+            new File(zipFileLocation).delete();
             if (conn.getResponseCode() != 200) {
                 throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
             }
