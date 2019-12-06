@@ -272,7 +272,7 @@ public class ToolUtil {
         String distPath = getDistributionsPath();
         if (new File(distPath).canWrite()) {
             String zipFileLocation = getDistributionsPath() + File.separator + distribution + ".zip";
-            downloadFile(printStream, conn, zipFileLocation, distribution);
+            downloadFile(conn, zipFileLocation, distribution);
             printStream.println();
             unzip(zipFileLocation, distPath);
             addExecutablePermissionToFile(new File(distPath + File.separator + distribution
@@ -292,8 +292,8 @@ public class ToolUtil {
         }
     }
 
-    private static void downloadFile(PrintStream printStream, HttpURLConnection conn, String zipFileLocation,
-                                     String distribution) throws IOException {
+    private static void downloadFile(HttpURLConnection conn, String zipFileLocation, String fileName)
+            throws IOException {
         try (InputStream in = conn.getInputStream();
              FileOutputStream out = new FileOutputStream(zipFileLocation)) {
             byte[] b = new byte[1024];
@@ -301,7 +301,7 @@ public class ToolUtil {
             int progress = 0;
             long totalSizeInMB = conn.getContentLengthLong() / (1024 * 1024);
 
-            try (ProgressBar progressBar = new ProgressBar("Downloading " + distribution,
+            try (ProgressBar progressBar = new ProgressBar("Downloading " + fileName,
                     totalSizeInMB, ProgressBarStyle.ASCII)) {
                 while ((count = in.read(b)) > 0) {
                     out.write(b, 0, count);
