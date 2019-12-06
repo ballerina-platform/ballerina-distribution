@@ -31,6 +31,7 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -133,7 +134,7 @@ public class ToolUtil {
                     return true;
                 }
             }
-        } catch (IOException e) {
+        } catch (IOException | URISyntaxException e) {
             printStream.println("Cannot use " + distribution);
         }
 
@@ -198,7 +199,7 @@ public class ToolUtil {
      * @return installed distributions path
      * @throws IOException happens version file cannot be read
      */
-    public static String getDistributionsPath() throws IOException {
+    public static String getDistributionsPath() throws URISyntaxException {
         return OSUtils.getInstalltionPath() + File.separator + "distributions";
     }
 
@@ -264,11 +265,14 @@ public class ToolUtil {
             }
         } catch (IOException | KeyManagementException | NoSuchAlgorithmException e) {
             printStream.println("Cannot connect to the central server");
+        } catch (URISyntaxException e) {
+            printStream.println("Ballerina installation directory is not available");
         }
     }
 
     private static void downloadAndSetupDist(PrintStream printStream, HttpURLConnection conn,
-                                             String distribution, boolean manual) throws IOException {
+                                             String distribution, boolean manual)
+                                                throws IOException, URISyntaxException {
         String distPath = getDistributionsPath();
         if (new File(distPath).canWrite()) {
             String zipFileLocation = getDistributionsPath() + File.separator + distribution + ".zip";
