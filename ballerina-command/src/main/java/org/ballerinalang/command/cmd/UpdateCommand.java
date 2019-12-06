@@ -17,16 +17,13 @@
 package org.ballerinalang.command.cmd;
 
 import org.ballerinalang.command.BallerinaCliCommands;
-import org.ballerinalang.command.util.Distribution;
 import org.ballerinalang.command.util.ToolUtil;
-import org.ballerinalang.command.util.Version;
 import picocli.CommandLine;
 
 import java.io.IOException;
 import java.io.PrintStream;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -89,12 +86,7 @@ public class UpdateCommand extends Command implements BCommand {
     public static void update(PrintStream printStream) {
         try {
             String version = ToolUtil.getCurrentBallerinaVersion();
-            List<String> versions = new ArrayList<>();
-            for (Distribution distribution : ToolUtil.getDistributions()) {
-                versions.add(distribution.getVersion());
-            }
-            Version currentVersion = new Version(version);
-            String latestVersion = currentVersion.getLatest(versions.stream().toArray(String[]::new));
+            String latestVersion = ToolUtil.getLatest(version, "patch");
             if (!latestVersion.equals(version)) {
                 String distribution = ToolUtil.BALLERINA_TYPE + "-" + latestVersion;
                 ToolUtil.downloadDistribution(printStream, distribution, false);

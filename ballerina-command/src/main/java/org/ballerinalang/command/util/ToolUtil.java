@@ -172,6 +172,41 @@ public class ToolUtil {
         return distributions;
     }
 
+    public static String getLatest(String currentVersion, String type)
+            throws IOException, KeyManagementException, NoSuchAlgorithmException {
+        String version = currentVersion;
+        SSLContext sc = SSLContext.getInstance("SSL");
+        sc.init(null, trustAllCerts, new java.security.SecureRandom());
+        HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+
+        URL url = new URL(PRODUCTION_URL
+                + "/distributions/latest?version=" + currentVersion + "&type=" + type);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        conn.setRequestProperty("user-agent",
+                OSUtils.getUserAgent(getCurrentBallerinaVersion(),
+                        getCurrentToolsVersion(), "jballerina"));
+        conn.setRequestProperty("Accept", "application/json");
+        if (conn.getResponseCode() != 200) {
+            conn.disconnect();
+            throw new RuntimeException("Failed : HTTP error code : "
+                    + conn.getResponseCode());
+        } else {
+            version = getValue(type, convertStreamToString(conn.getInputStream()));
+        }
+        conn.disconnect();
+        return version;
+    }
+
+    public static String getValue(String key, String json) {
+        Pattern pattern = Pattern.compile(String.format("\"%s\":\"(.*?)\"", key));
+        Matcher matcher = pattern.matcher(json);
+        if (matcher.find()) {
+            return matcher.group(1);
+        }
+        return null;
+    }
+
     private static String convertStreamToString(InputStream is) {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -217,12 +252,7 @@ public class ToolUtil {
             if (isBuildCommand && !isHelpFlag) {
                 String version = getCurrentBallerinaVersion();
                 if (OSUtils.updateNotice(version)) {
-                    Version currentVersion = new Version(version);
-                    List<String> versions = new ArrayList<>();
-                    for (Distribution distribution : getDistributions()) {
-                        versions.add(distribution.getVersion());
-                    }
-                    String latestVersion = currentVersion.getLatest(versions.stream().toArray(String[]::new));
+                    String latestVersion = ToolUtil.getLatest(version, "patch");
                     if (!latestVersion.equals(version)) {
                         printStream.println();
                         printStream.println("A new Ballerina version is available : " + latestVersion);
