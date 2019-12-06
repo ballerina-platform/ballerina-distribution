@@ -16,6 +16,8 @@
 
 package org.ballerinalang.command.util;
 
+import me.tongfei.progressbar.ProgressBar;
+import me.tongfei.progressbar.ProgressBarStyle;
 import org.ballerinalang.command.Main;
 
 import java.io.BufferedOutputStream;
@@ -269,9 +271,8 @@ public class ToolUtil {
                                              String distribution, boolean manual) throws IOException {
         String distPath = getDistributionsPath();
         if (new File(distPath).canWrite()) {
-            printStream.print("Downloading " + distribution);
             String zipFileLocation = getDistributionsPath() + File.separator + distribution + ".zip";
-            downloadFile(printStream, conn, zipFileLocation);
+            downloadFile(printStream, conn, zipFileLocation, distribution);
             printStream.println();
             unzip(zipFileLocation, distPath);
             addExecutablePermissionToFile(new File(distPath + File.separator + distribution
@@ -291,18 +292,23 @@ public class ToolUtil {
         }
     }
 
-    private static void downloadFile(PrintStream printStream, HttpURLConnection conn, String zipFileLocation)
-            throws IOException {
+    private static void downloadFile(PrintStream printStream, HttpURLConnection conn, String zipFileLocation,
+                                     String distribution) throws IOException {
         try (InputStream in = conn.getInputStream();
              FileOutputStream out = new FileOutputStream(zipFileLocation)) {
             byte[] b = new byte[1024];
             int count;
             int progress = 0;
-            while ((count = in.read(b)) > 0) {
-                out.write(b, 0, count);
-                progress++;
-                if (progress % 1024 == 0) {
-                    printStream.print(".");
+            long totalSizeInMB = conn.getContentLengthLong() / (1024 * 1024);
+
+            try (ProgressBar progressBar = new ProgressBar("Downloading " + distribution,
+                    totalSizeInMB, ProgressBarStyle.ASCII)) {
+                while ((count = in.read(b)) > 0) {
+                    out.write(b, 0, count);
+                    progress++;
+                    if (progress % 1024 == 0) {
+                        progressBar.step();
+                    }
                 }
             }
         }
