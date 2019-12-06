@@ -23,6 +23,7 @@ import picocli.CommandLine;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Comparator;
@@ -112,7 +113,7 @@ public class RemoveCommand extends Command implements BCommand {
                     getPrintStream().println(version + " does not exist");
                 }
             }
-        } catch (IOException e) {
+        } catch (IOException | URISyntaxException e) {
             getPrintStream().println("Error occurred while removing");
         }
     }
