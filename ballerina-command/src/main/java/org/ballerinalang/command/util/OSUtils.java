@@ -66,6 +66,21 @@ public class OSUtils {
         return null;
     }
 
+    /**
+     * Provide file name of tool update install script for current operating system.
+     * @return name of the file
+     */
+    public static String getInstallScriptFileName() {
+        if (OSUtils.isWindows()) {
+            return "install.bat";
+        } else if (OSUtils.isUnix() || OSUtils.isSolaris()) {
+            return "install";
+        } else if (OSUtils.isMac()) {
+            return "install";
+        }
+        return null;
+    }
+
     public static String getBallerinaVersionFilePath() throws IOException {
         String userHome = getUserHome();
         File file = new File(userHome + File.separator

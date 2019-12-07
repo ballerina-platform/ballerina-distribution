@@ -17,53 +17,37 @@
 package org.ballerinalang.command.cmd;
 
 import org.ballerinalang.command.BallerinaCliCommands;
-import org.ballerinalang.command.util.Distribution;
 import org.ballerinalang.command.util.ToolUtil;
-import org.ballerinalang.command.util.Version;
 import picocli.CommandLine;
 
 import java.io.IOException;
 import java.io.PrintStream;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This class represents the "Update" command and it holds arguments and flags specified by the user.
  */
-@CommandLine.Command(name = "command", description = "Update Ballerina current distribution")
-public class UpdateCommand extends Command implements BCommand {
-
-    @CommandLine.Parameters(description = "Command name")
-    private List<String> updateCommands;
+@CommandLine.Command(name = "command", description = "Update Ballerina current cli tool commands")
+public class UpdateToolCommand extends Command implements BCommand {
 
     @CommandLine.Option(names = {"--help", "-h", "?"}, hidden = true)
     private boolean helpFlag;
 
     private CommandLine parentCmdParser;
 
-    public UpdateCommand(PrintStream printStream) {
+    public UpdateToolCommand(PrintStream printStream) {
+
         super(printStream);
     }
 
     public void execute() {
+
         if (helpFlag) {
-            printUsageInfo("dist-" + BallerinaCliCommands.UPDATE);
+            printUsageInfo(BallerinaCliCommands.UPDATE);
             return;
         }
-
-        if (updateCommands == null) {
-            update(getPrintStream());
-            return;
-        } else if (updateCommands.size() > 1) {
-            //     throw LauncherUtils.createUsageExceptionWithHelp("too many arguments given");
-        }
-
-        String userCommand = updateCommands.get(0);
-        if (parentCmdParser.getSubcommands().get(userCommand) == null) {
-            //     throw LauncherUtils.createUsageExceptionWithHelp("unknown command " + userCommand);
-        }
+        updateCommands(getPrintStream());
     }
 
     @Override
@@ -78,7 +62,8 @@ public class UpdateCommand extends Command implements BCommand {
 
     @Override
     public void printUsage(StringBuilder out) {
-        out.append("  ballerina dist command\n");
+
+        out.append("  ballerina command\n");
     }
 
     @Override
@@ -86,21 +71,15 @@ public class UpdateCommand extends Command implements BCommand {
         this.parentCmdParser = parentCmdParser;
     }
 
-    public static void update(PrintStream printStream) {
+    private static void updateCommands(PrintStream printStream) {
+
         try {
-            String version = ToolUtil.getCurrentBallerinaVersion();
-            List<String> versions = new ArrayList<>();
-            for (Distribution distribution : ToolUtil.getDistributions()) {
-                versions.add(distribution.getVersion());
-            }
-            Version currentVersion = new Version(version);
-            String latestVersion = currentVersion.getLatest(versions.stream().toArray(String[]::new));
+            String version = ToolUtil.getCurrentToolsVersion();
+            String latestVersion = ToolUtil.getLatestToolVersion();
             if (!latestVersion.equals(version)) {
-                String distribution = ToolUtil.BALLERINA_TYPE + "-" + latestVersion;
-                ToolUtil.downloadDistribution(printStream, distribution, false);
-                ToolUtil.use(printStream, distribution);
+                ToolUtil.downloadTool(printStream, latestVersion);
             } else {
-                printStream.println("No command found");
+                printStream.println("No update found");
             }
         } catch (IOException | KeyManagementException | NoSuchAlgorithmException e) {
             printStream.println("Cannot connect to the central server");
