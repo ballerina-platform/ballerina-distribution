@@ -16,6 +16,8 @@
 
 package org.ballerinalang.command.util;
 
+import me.tongfei.progressbar.ProgressBar;
+import me.tongfei.progressbar.ProgressBarStyle;
 import org.ballerinalang.command.Main;
 
 import java.io.BufferedOutputStream;
@@ -29,6 +31,7 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -132,7 +135,7 @@ public class ToolUtil {
                     return true;
                 }
             }
-        } catch (IOException e) {
+        } catch (IOException | URISyntaxException e) {
             printStream.println("Cannot use " + distribution);
         }
 
@@ -168,6 +171,43 @@ public class ToolUtil {
         }
         conn.disconnect();
         return distributions;
+    }
+
+    public static String getLatest(String currentVersion, String type)
+            throws IOException, KeyManagementException, NoSuchAlgorithmException {
+        String version = currentVersion;
+        SSLContext sc = SSLContext.getInstance("SSL");
+        sc.init(null, trustAllCerts, new java.security.SecureRandom());
+        HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+
+
+        URL url = new URL(PRODUCTION_URL
+                + "/distributions/latest?version=" + currentVersion + "&type=" + type);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        conn.setRequestProperty("user-agent",
+                OSUtils.getUserAgent(getCurrentBallerinaVersion(),
+                        getCurrentToolsVersion(), "jballerina"));
+        conn.setRequestProperty("Accept", "application/json");
+        if (conn.getResponseCode() != 200) {
+            conn.disconnect();
+            throw new RuntimeException("Failed : HTTP error code : "
+
+                    + conn.getResponseCode());
+        } else {
+            version = getValue(type, convertStreamToString(conn.getInputStream()));
+        }
+        conn.disconnect();
+        return version;
+    }
+
+    private static String getValue(String key, String json) {
+        Pattern pattern = Pattern.compile(String.format("\"%s\":\"(.*?)\"", key));
+        Matcher matcher = pattern.matcher(json);
+        if (matcher.find()) {
+            return matcher.group(1);
+        }
+        return null;
     }
 
     public static String getLatestToolVersion() throws IOException, KeyManagementException,
@@ -228,7 +268,7 @@ public class ToolUtil {
      * Provides path of the installed distributions.
      * @return installed distributions path
      */
-    public static String getDistributionsPath() {
+    public static String getDistributionsPath() throws URISyntaxException {
         return OSUtils.getInstalltionPath() + File.separator + "distributions";
     }
 
@@ -237,7 +277,7 @@ public class ToolUtil {
      *
      * @return installed dependencies path
      */
-    private static String getLibPath() {
+    private static String getLibPath() throws URISyntaxException {
         return OSUtils.getInstalltionPath() + File.separator + "lib";
     }
 
@@ -246,7 +286,7 @@ public class ToolUtil {
      *
      * @return temporary directory to unzip update tool zip
      */
-    private static String getToolUnzipLocation() {
+    private static String getToolUnzipLocation() throws URISyntaxException {
         return OSUtils.getInstalltionPath() + File.separator + "ballerina-command-tmp";
     }
 
@@ -264,12 +304,7 @@ public class ToolUtil {
             if (isBuildCommand && !isHelpFlag) {
                 String version = getCurrentBallerinaVersion();
                 if (OSUtils.updateNotice(version)) {
-                    Version currentVersion = new Version(version);
-                    List<String> versions = new ArrayList<>();
-                    for (Distribution distribution : getDistributions()) {
-                        versions.add(distribution.getVersion());
-                    }
-                    String latestVersion = currentVersion.getLatest(versions.stream().toArray(String[]::new));
+                    String latestVersion = ToolUtil.getLatest(version, "patch");
                     if (!latestVersion.equals(version)) {
                         printStream.println();
                         printStream.println("A new Ballerina version is available : " + latestVersion);
@@ -312,16 +347,18 @@ public class ToolUtil {
             }
         } catch (IOException | KeyManagementException | NoSuchAlgorithmException e) {
             printStream.println("Cannot connect to the central server");
+        } catch (URISyntaxException e) {
+            printStream.println("Ballerina installation directory is not available");
         }
     }
 
     private static void downloadAndSetupDist(PrintStream printStream, HttpURLConnection conn,
-                                             String distribution, boolean manual) throws IOException {
+                                             String distribution, boolean manual)
+                                                throws IOException, URISyntaxException {
         String distPath = getDistributionsPath();
         if (new File(distPath).canWrite()) {
-            printStream.print("Downloading " + distribution);
             String zipFileLocation = getDistributionsPath() + File.separator + distribution + ".zip";
-            downloadFile(printStream, conn, zipFileLocation);
+            downloadFile(conn, zipFileLocation, distribution);
             printStream.println();
             unzip(zipFileLocation, distPath);
             addExecutablePermissionToFile(new File(distPath + File.separator + distribution
@@ -365,13 +402,13 @@ public class ToolUtil {
                 printStream.println(toolVersion + " is not found ");
             }
 
-        } catch (IOException | KeyManagementException | NoSuchAlgorithmException e) {
+        } catch (IOException | KeyManagementException | NoSuchAlgorithmException | URISyntaxException e) {
             printStream.println("Cannot connect to the central server due to" + e.getMessage());
         }
     }
 
     private static void downloadAndSetupTool(PrintStream printStream, HttpURLConnection conn,
-                                             String toolFileName) throws IOException {
+                                             String toolFileName) throws IOException, URISyntaxException {
 
         String libsPath = getLibPath();
         printStream.println(libsPath);
@@ -384,7 +421,7 @@ public class ToolUtil {
             }
             tempUnzipDirectory.mkdir();
             String zipFileLocation = toolUnzipLocation + File.separator + toolFileName + ".zip";
-            downloadFile(printStream, conn, zipFileLocation);
+            downloadFile(conn, zipFileLocation, toolFileName);
             printStream.println();
             unzip(zipFileLocation, toolUnzipLocation);
             copyScripts(toolUnzipLocation, toolFileName);
@@ -400,18 +437,24 @@ public class ToolUtil {
     }
 
 
-    private static void downloadFile(PrintStream printStream, HttpURLConnection conn, String zipFileLocation)
+
+    private static void downloadFile(HttpURLConnection conn, String zipFileLocation, String fileName)
             throws IOException {
         try (InputStream in = conn.getInputStream();
              FileOutputStream out = new FileOutputStream(zipFileLocation)) {
             byte[] b = new byte[1024];
             int count;
             int progress = 0;
-            while ((count = in.read(b)) > 0) {
-                out.write(b, 0, count);
-                progress++;
-                if (progress % 1024 == 0) {
-                    printStream.print(".");
+            long totalSizeInMB = conn.getContentLengthLong() / (1024 * 1024);
+
+            try (ProgressBar progressBar = new ProgressBar("Downloading " + fileName,
+                    totalSizeInMB, ProgressBarStyle.ASCII)) {
+                while ((count = in.read(b)) > 0) {
+                    out.write(b, 0, count);
+                    progress++;
+                    if (progress % 1024 == 0) {
+                        progressBar.step();
+                    }
                 }
             }
         }

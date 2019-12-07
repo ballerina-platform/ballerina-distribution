@@ -21,7 +21,7 @@
     <parent>
         <groupId>org.ballerinalang</groupId>
         <artifactId>ballerina-distribution</artifactId>
-        <version>1.0.5-SNAPSHOT</version>
+        <version>1.1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -79,11 +79,15 @@
         <groupId>org.ballerinax.kubernetes</groupId>
         <artifactId>kubernetes-extension-examples</artifactId>
         <type>zip</type>
-    </dependency>
-    <dependency>
-        <groupId>org.ballerinalang</groupId>
-        <artifactId>ballerina-command</artifactId>
-    </dependency>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinalang</groupId>
+            <artifactId>ballerina-command</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>me.tongfei</groupId>
+            <artifactId>progressbar</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

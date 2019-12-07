@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.io.PrintWriter;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
@@ -46,8 +47,8 @@ public class OSUtils {
      * Provide the path of configuration file.
      * @return File path
      */
-    public static String getInstalltionPath() {
-        File file = new File(OSUtils.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+    public static String getInstalltionPath() throws URISyntaxException {
+        File file = new File(OSUtils.class.getProtectionDomain().getCodeSource().getLocation().toURI());
         return file.getParentFile().getParentFile().getPath();
     }
 
@@ -92,7 +93,7 @@ public class OSUtils {
             InputStream inputStream = OSUtils.class.getResourceAsStream("/META-INF/tool.properties");
             Properties properties = new Properties();
             properties.load(inputStream);
-            ToolUtil.setVersion(file.getPath(), properties.getProperty("ballerina.version"));
+            ToolUtil.setVersion(file.getPath(), properties.getProperty("ballerina.command.version"));
         }
         return getUserHome() + File.separator
                 + BALLERINA_HOME_DIR + File.separator + BALLERINA_CONFIG;

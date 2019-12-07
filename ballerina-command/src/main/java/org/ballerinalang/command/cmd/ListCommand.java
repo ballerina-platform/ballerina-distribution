@@ -24,6 +24,7 @@ import picocli.CommandLine;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.net.URISyntaxException;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -92,11 +93,11 @@ public class ListCommand extends Command implements BCommand {
      */
     public static void listDistributions(PrintStream outStream) {
         try {
-            outStream.println("Distributions available locally: \n");
             String currentBallerinaVersion = ToolUtil.getCurrentBallerinaVersion();
             File folder = new File(ToolUtil.getDistributionsPath());
             File[] listOfFiles;
             listOfFiles = folder.listFiles();
+            outStream.println("Distributions available locally: \n");
             List<String> installedVersions = new ArrayList<>();
             for (int i = 0; i < listOfFiles.length; i++) {
                 if (listOfFiles[i].isDirectory()) {
@@ -106,10 +107,9 @@ public class ListCommand extends Command implements BCommand {
                     installedVersions.add(version);
                 }
             }
-            outStream.println();
-
-            outStream.println("Distributions available remotely: \n");
-            for (Distribution distribution : ToolUtil.getDistributions()) {
+            List<Distribution> remoteDistributions = ToolUtil.getDistributions();
+            outStream.println("\nDistributions available remotely: \n");
+            for (Distribution distribution : remoteDistributions) {
                 String version = distribution.getName() + "-" + distribution.getVersion();
                 if (!installedVersions.stream().anyMatch(s -> version.contains(s))) {
                     outStream.println("  " + version);
@@ -118,6 +118,8 @@ public class ListCommand extends Command implements BCommand {
             outStream.println();
         } catch (IOException | KeyManagementException | NoSuchAlgorithmException e) {
             outStream.println("Ballerina Update service is not available");
+        } catch (URISyntaxException e) {
+            outStream.println("Ballerina installation directory is not available");
         }
     }
 
