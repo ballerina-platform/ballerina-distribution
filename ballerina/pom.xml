@@ -236,6 +236,23 @@
                             <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>ballerina-command</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>attached</goal>
+                        </goals>
+                        <configuration>
+                            <filters>
+                                <filter>${basedir}/src/assembly/filter.properties</filter>
+                            </filters>
+                            <descriptors>
+                                <descriptor>${basedir}/src/assembly/ballerina-command.xml</descriptor>
+                            </descriptors>
+                            <finalName>ballerina-command-${ballerina.command.version}</finalName>
+                            <appendAssemblyId>false</appendAssemblyId>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
             <plugin>

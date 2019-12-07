@@ -74,6 +74,7 @@
             <outputDirectory>.</outputDirectory>
             <excludes>
                 <exclude>bin/ballerina.bat</exclude>
+                <exclude>**/scripts/**</exclude>
             </excludes>
         </fileSet>
 

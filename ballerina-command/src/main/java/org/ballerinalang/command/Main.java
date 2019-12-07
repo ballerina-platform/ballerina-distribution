@@ -26,6 +26,7 @@ import org.ballerinalang.command.cmd.ListCommand;
 import org.ballerinalang.command.cmd.PullCommand;
 import org.ballerinalang.command.cmd.RemoveCommand;
 import org.ballerinalang.command.cmd.UpdateCommand;
+import org.ballerinalang.command.cmd.UpdateToolCommand;
 import org.ballerinalang.command.cmd.UseCommand;
 import org.ballerinalang.command.cmd.VersionCommand;
 import picocli.CommandLine;
@@ -97,6 +98,10 @@ public class Main {
             distCmdParser.setPosixClusteredShortOptionsAllowed(false);
 
             cmdParser.addSubcommand(BallerinaCliCommands.DIST, distCmdParser);
+
+            UpdateToolCommand updateToolCommand = new UpdateToolCommand(outStream);
+            cmdParser.addSubcommand(BallerinaCliCommands.UPDATE, updateToolCommand);
+            updateToolCommand.setParentCmdParser(cmdParser);
 
             VersionCommand versionCmd = new VersionCommand(outStream);
             cmdParser.addSubcommand(BallerinaCliCommands.VERSION, versionCmd);

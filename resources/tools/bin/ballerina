@@ -21,13 +21,18 @@ else
     CURRENT_PATH="$(dirname "$(readlink -f "$0")")"
 fi
 
-if [ "$1" == "dist" ] || [ "$2" == "dist" ]
+if [ "$1" == "dist" ] || [ "$2" == "dist" ] || [ "$1" == "update" ]
 then
     JAVA_COMMAND=java
     if test -d "$CURRENT_PATH/../dependencies/jdk8u202-b08-jre"; then
       JAVA_COMMAND="$CURRENT_PATH/../dependencies/jdk8u202-b08-jre/bin/java"
     fi
-    $JAVA_COMMAND -jar $CURRENT_PATH/../lib/ballerina-command-0.8.0.jar "$@"
+    $JAVA_COMMAND -jar $CURRENT_PATH/../lib/ballerina-command-${ballerina.command.version}.jar "$@"
+
+    if [ -d "$CURRENT_PATH/../ballerina-command-tmp" ]; then
+        $CURRENT_PATH/../ballerina-command-tmp/install
+        rm -rf $CURRENT_PATH/../ballerina-command-tmp
+    fi
 else
     BALLERINA_VERSION=`cat $CURRENT_PATH/../distributions/ballerina-version`
 
@@ -50,5 +55,5 @@ then
     if test -d "$CURRENT_PATH/../dependencies/jdk8u202-b08-jre"; then
       JAVA_COMMAND="$CURRENT_PATH/../dependencies/jdk8u202-b08-jre/bin/java"
     fi
-    $JAVA_COMMAND -jar $CURRENT_PATH/../lib/ballerina-command-0.8.0.jar "$@"
+    $JAVA_COMMAND -jar $CURRENT_PATH/../lib/ballerina-command-${ballerina.command.version}.jar "$@"
 fi
