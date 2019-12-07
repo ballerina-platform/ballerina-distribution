@@ -381,7 +381,6 @@ public class ToolUtil {
     public static void downloadTool(PrintStream printStream, String toolVersion) {
 
         try {
-            printStream.println(toolVersion);
             SSLContext sc = SSLContext.getInstance("SSL");
             sc.init(null, trustAllCerts, new java.security.SecureRandom());
             HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
@@ -397,7 +396,9 @@ public class ToolUtil {
                 String newUrl = conn.getHeaderField("Location");
                 conn = (HttpURLConnection) new URL(newUrl).openConnection();
                 conn.setRequestProperty("content-type", "binary/data");
-                ToolUtil.downloadAndSetupTool(printStream, conn, "ballerina-command-" + toolVersion);
+                downloadAndSetupTool(printStream, conn, "ballerina-command-" + toolVersion);
+            } else if (conn.getResponseCode() == 200) {
+                downloadAndSetupTool(printStream, conn, "ballerina-command-" + toolVersion);
             } else {
                 printStream.println(toolVersion + " is not found ");
             }
@@ -411,7 +412,6 @@ public class ToolUtil {
                                              String toolFileName) throws IOException, URISyntaxException {
 
         String libsPath = getLibPath();
-        printStream.println(libsPath);
         if (new File(libsPath).canWrite()) {
             printStream.println("Downloading " + toolFileName);
             String toolUnzipLocation = getToolUnzipLocation();

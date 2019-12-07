@@ -21,8 +21,8 @@ else
     CURRENT_PATH="$(dirname "$(readlink -f "$0")")"
 fi
 
-cp -n $CURRENT_PATH/ballerina-command-${ballerina.command.version}/lib/ballerina-command-${ballerina.command.version}.jar $CURRENT_PATH/../lib
-cp -n $CURRENT_PATH/ballerina-command-${ballerina.command.version}/bin/ballerina $CURRENT_PATH/../bin
+\cp $CURRENT_PATH/ballerina-command-${ballerina.command.version}/lib/ballerina-command-${ballerina.command.version}.jar $CURRENT_PATH/../lib
+\cp $CURRENT_PATH/ballerina-command-${ballerina.command.version}/bin/ballerina $CURRENT_PATH/../bin
 for file in $CURRENT_PATH/../lib/*; do
     if [ -f "$file" ] && [[ "$file" == *ballerina-command*.jar ]] && [[ "$file" != *ballerina-command-${ballerina.command.version}.jar ]]; then
 	rm -rf $file
