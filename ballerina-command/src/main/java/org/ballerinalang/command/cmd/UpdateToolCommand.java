@@ -37,12 +37,10 @@ public class UpdateToolCommand extends Command implements BCommand {
     private CommandLine parentCmdParser;
 
     public UpdateToolCommand(PrintStream printStream) {
-
         super(printStream);
     }
 
     public void execute() {
-
         if (helpFlag) {
             printUsageInfo(BallerinaCliCommands.UPDATE);
             return;
@@ -71,12 +69,12 @@ public class UpdateToolCommand extends Command implements BCommand {
     }
 
     private static void updateCommands(PrintStream printStream) {
-
         try {
             String version = ToolUtil.getCurrentToolsVersion();
             String latestVersion = ToolUtil.getLatestToolVersion();
             if (!latestVersion.equals(version)) {
                 ToolUtil.downloadTool(printStream, latestVersion);
+                printStream.println("Using tool version: " + latestVersion);
             } else {
                 printStream.println("No update found");
             }

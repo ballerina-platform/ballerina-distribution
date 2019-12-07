@@ -212,7 +212,6 @@ public class ToolUtil {
 
     public static String getLatestToolVersion() throws IOException, KeyManagementException,
             NoSuchAlgorithmException {
-
         SSLContext sc = SSLContext.getInstance("SSL");
         sc.init(null, trustAllCerts, new java.security.SecureRandom());
         HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
@@ -378,7 +377,6 @@ public class ToolUtil {
     }
 
     public static void downloadTool(PrintStream printStream, String toolVersion) {
-
         try {
             SSLContext sc = SSLContext.getInstance("SSL");
             sc.init(null, trustAllCerts, new java.security.SecureRandom());
@@ -387,9 +385,8 @@ public class ToolUtil {
             URL url = new URL(ToolUtil.PRODUCTION_URL + "/versions/" + toolVersion);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
-            conn.setRequestProperty("user-agent",
-                                    OSUtils.getUserAgent(getCurrentBallerinaVersion(),
-                                                         getCurrentToolsVersion(), "jballerina"));
+            conn.setRequestProperty("user-agent", OSUtils.getUserAgent(getCurrentBallerinaVersion(),
+                                                                       getCurrentToolsVersion(), "jballerina"));
             conn.setRequestProperty("Accept", "application/json");
             if (conn.getResponseCode() == 302) {
                 String newUrl = conn.getHeaderField("Location");
@@ -409,7 +406,6 @@ public class ToolUtil {
 
     private static void downloadAndSetupTool(PrintStream printStream, HttpURLConnection conn,
                                              String toolFileName) throws IOException, URISyntaxException {
-
         String libsPath = getLibPath();
         if (new File(libsPath).canWrite()) {
             printStream.println("Downloading " + toolFileName);
