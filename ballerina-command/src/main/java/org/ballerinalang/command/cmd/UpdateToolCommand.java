@@ -57,12 +57,11 @@ public class UpdateToolCommand extends Command implements BCommand {
 
     @Override
     public void printLongDesc(StringBuilder out) {
-
+        out.append("Updates the ballerina cli commands to latest version. \n");
     }
 
     @Override
     public void printUsage(StringBuilder out) {
-
         out.append("  ballerina command\n");
     }
 

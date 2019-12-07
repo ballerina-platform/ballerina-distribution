@@ -221,9 +221,8 @@ public class ToolUtil {
 
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
-        conn.setRequestProperty("user-agent",
-                                OSUtils.getUserAgent(getCurrentBallerinaVersion(),
-                                                     getCurrentToolsVersion(), "jballerina"));
+        conn.setRequestProperty("user-agent", OSUtils.getUserAgent(getCurrentBallerinaVersion(),
+                                                                   getCurrentToolsVersion(), "jballerina"));
         conn.setRequestProperty("Accept", "application/json");
         if (conn.getResponseCode() != 200) {
             conn.disconnect();
