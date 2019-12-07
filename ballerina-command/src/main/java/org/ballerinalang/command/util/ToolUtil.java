@@ -431,8 +431,6 @@ public class ToolUtil {
         }
     }
 
-
-
     private static void downloadFile(HttpURLConnection conn, String zipFileLocation, String fileName)
             throws IOException {
         try (InputStream in = conn.getInputStream();
