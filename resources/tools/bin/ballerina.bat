@@ -21,15 +21,21 @@ REM ---------------------------------------------------------------------------
 SetLocal EnableDelayedExpansion
 set CURRENT_PATH=%~sdp0
 set dist=false
+set update=false
 set FILE_PATH=%CURRENT_PATH%..\distributions\ballerina-version
 if "%1" == "dist" set dist=true
 if "%2" == "dist" set dist=true
+if "%1" == "update" set update=true
 SetLocal EnableDelayedExpansion
-if "%dist%" == "true" (
+if "%dist%" == "true" ||  "%update%" == "true" (
    if exist %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre (
        %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre\bin\java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
    ) else (
 		java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
+   )
+   if "%update%" == "true" && exist  %CURRENT_PATH%..\..\ballerina-command-tmp (
+        call %CURRENT_PATH%\..\ballerina-command-tmp\install.bat
+        rd /s /q %CURRENT_PATH%\..\ballerina-command-tmp
    )
 ) else (
 	set BALLERINA_HOME=
