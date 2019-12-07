@@ -27,6 +27,8 @@ import java.security.NoSuchAlgorithmException;
 
 /**
  * This class represents the "Update" command and it holds arguments and flags specified by the user.
+ *
+ * @since 0.8.0
  */
 @CommandLine.Command(name = "command", description = "Update Ballerina current cli tool commands")
 public class UpdateToolCommand extends Command implements BCommand {
