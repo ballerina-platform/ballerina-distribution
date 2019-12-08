@@ -20,13 +20,12 @@ REM ---------------------------------------------------------------------------
 
 setlocal
 set CURRENT_PATH=%~sdp0
-xcopy /s %CURRENT_PATH%\ballerina-command-${ballerina.command.version}\lib\ballerina-command-${ballerina.command.version}.jar  %CURRENT_PATH%\..\lib /Y
-xcopy /s %CURRENT_PATH%\ballerina-command-${ballerina.command.version}\bin\ballerina.bat  %CURRENT_PATH%\..\bin /Y
+xcopy /q %CURRENT_PATH%\ballerina-command-${ballerina.command.version}\lib\ballerina-command-${ballerina.command.version}.jar  %CURRENT_PATH%\..\lib /Y
+xcopy /q %CURRENT_PATH%\ballerina-command-${ballerina.command.version}\bin\ballerina.bat  %CURRENT_PATH%\..\bin /Y
 
 for %%f in (%CURRENT_PATH%\..\lib\*ballerina-command*.jar) do (
 	echo %%f|find /i "ballerina-command-${ballerina.command.version}.jar">nul
     if errorlevel 1 (
-	   echo "deleting old" %%~nxf
 	   del /F/Q "%%f"
 	)
 )

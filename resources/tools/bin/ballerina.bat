@@ -34,7 +34,7 @@ if "%dist%" == "true" (
    ) else (
 		java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
    )
-   if "%update%" == "true" if exist  %CURRENT_PATH%..\..\ballerina-command-tmp (
+   if "%update%" == "true" if exist  %CURRENT_PATH%..\ballerina-command-tmp (
         call %CURRENT_PATH%\..\ballerina-command-tmp\install.bat
         rd /s /q %CURRENT_PATH%\..\ballerina-command-tmp
    )
