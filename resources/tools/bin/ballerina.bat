@@ -40,12 +40,12 @@ if "%dist%" == "true" (
    )
 ) else (
 	set BALLERINA_HOME=
-	if exist ~\.ballerina\ballerina-version (
-	   set "FILE_PATH=~\.ballerina\ballerina-version"
+	if exist %userprofile%\.ballerina\ballerina-version (
+	   set "FILE_PATH=%userprofile%\.ballerina\ballerina-version"
 	)
 
 	SetLocal EnableDelayedExpansion
-	for /f %%a in (%FILE_PATH%) do (
+	for /f %%a in (!FILE_PATH!) do (
 	  set BALLERINA_HOME=%%a
 	)
 	call %CURRENT_PATH%..\distributions\!BALLERINA_HOME!\bin\ballerina.bat %*
