@@ -134,6 +134,8 @@ public class ToolUtil {
                     printStream.println("Using " + distribution);
                     return true;
                 }
+            } else {
+                printStream.println(distribution + " does not exist");
             }
         } catch (IOException | URISyntaxException e) {
             printStream.println("Cannot use " + distribution);
