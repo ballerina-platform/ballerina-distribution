@@ -18,13 +18,13 @@ package org.ballerinalang.command.cmd;
 
 import org.ballerinalang.command.BallerinaCliCommands;
 import org.ballerinalang.command.util.Distribution;
+import org.ballerinalang.command.util.ErrorUtil;
 import org.ballerinalang.command.util.ToolUtil;
 import picocli.CommandLine;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.net.URISyntaxException;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -58,12 +58,12 @@ public class ListCommand extends Command implements BCommand {
             listDistributions(getPrintStream());
             return;
         } else if (listCommands.size() > 1) {
-            throw createUsageExceptionWithHelp("too many arguments given");
+            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
         }
 
         String userCommand = listCommands.get(0);
         if (parentCmdParser.getSubcommands().get(userCommand) == null) {
-            throw createUsageExceptionWithHelp("unknown command " + userCommand);
+            throw ErrorUtil.createUsageExceptionWithHelp("unknown command " + userCommand);
         }
     }
 
@@ -118,8 +118,6 @@ public class ListCommand extends Command implements BCommand {
             outStream.println();
         } catch (IOException | KeyManagementException | NoSuchAlgorithmException e) {
             outStream.println("Ballerina Update service is not available");
-        } catch (URISyntaxException e) {
-            outStream.println("Ballerina installation directory is not available");
         }
     }
 

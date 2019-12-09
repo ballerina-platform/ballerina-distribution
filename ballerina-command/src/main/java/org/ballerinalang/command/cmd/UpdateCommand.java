@@ -20,10 +20,7 @@ import org.ballerinalang.command.BallerinaCliCommands;
 import org.ballerinalang.command.util.ToolUtil;
 import picocli.CommandLine;
 
-import java.io.IOException;
 import java.io.PrintStream;
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 /**
@@ -49,7 +46,7 @@ public class UpdateCommand extends Command implements BCommand {
             printUsageInfo("dist-" + BallerinaCliCommands.UPDATE);
             return;
         }
-
+        ToolUtil.handleInstallDirPermission();
         if (updateCommands == null) {
             update(getPrintStream());
             return;
@@ -84,18 +81,14 @@ public class UpdateCommand extends Command implements BCommand {
     }
 
     public static void update(PrintStream printStream) {
-        try {
-            String version = ToolUtil.getCurrentBallerinaVersion();
-            String latestVersion = ToolUtil.getLatest(version, "patch");
-            if (!latestVersion.equals(version)) {
-                String distribution = ToolUtil.BALLERINA_TYPE + "-" + latestVersion;
-                ToolUtil.downloadDistribution(printStream, distribution, false);
-                ToolUtil.use(printStream, distribution);
-            } else {
-                printStream.println("No command found");
-            }
-        } catch (IOException | KeyManagementException | NoSuchAlgorithmException e) {
-            printStream.println("Cannot connect to the central server");
+        String version = ToolUtil.getCurrentBallerinaVersion();
+        String latestVersion = ToolUtil.getLatest(version, "patch");
+        if (!latestVersion.equals(version)) {
+            String distribution = ToolUtil.BALLERINA_TYPE + "-" + latestVersion;
+            ToolUtil.downloadDistribution(printStream, distribution, false);
+            ToolUtil.use(printStream, distribution);
+        } else {
+            printStream.println("No update found");
         }
     }
 }

@@ -17,7 +17,6 @@
 package org.ballerinalang.command;
 
 import org.ballerinalang.command.cmd.BCommand;
-import org.ballerinalang.command.cmd.CommandException;
 import org.ballerinalang.command.cmd.DefaultCommand;
 import org.ballerinalang.command.cmd.DistributionCommand;
 import org.ballerinalang.command.cmd.FetchCommand;
@@ -29,6 +28,7 @@ import org.ballerinalang.command.cmd.UpdateCommand;
 import org.ballerinalang.command.cmd.UpdateToolCommand;
 import org.ballerinalang.command.cmd.UseCommand;
 import org.ballerinalang.command.cmd.VersionCommand;
+import org.ballerinalang.command.exceptions.CommandException;
 import picocli.CommandLine;
 
 import java.io.PrintStream;
