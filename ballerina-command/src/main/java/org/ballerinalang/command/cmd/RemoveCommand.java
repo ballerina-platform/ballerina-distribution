@@ -52,10 +52,11 @@ public class RemoveCommand extends Command implements BCommand {
             printUsageInfo(BallerinaCliCommands.REMOVE);
             return;
         }
-        ToolUtil.handleInstallDirPermission();
+
         if (removeCommands == null) {
             throw ErrorUtil.createUsageExceptionWithHelp("distribution is not provided");
         } else if (removeCommands.size() == 1) {
+            ToolUtil.handleInstallDirPermission();
             remove(removeCommands.get(0));
         } else if (removeCommands.size() > 1) {
             throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");

@@ -49,10 +49,10 @@ public class PullCommand extends Command implements BCommand {
             return;
         }
 
-        ToolUtil.handleInstallDirPermission();
         if (pullCommands == null) {
             throw ErrorUtil.createUsageExceptionWithHelp("distribution is not provided");
         } else if (pullCommands.size() == 1) {
+            ToolUtil.handleInstallDirPermission();
             ToolUtil.downloadDistribution(getPrintStream(), pullCommands.get(0), false);
             ToolUtil.use(getPrintStream(), pullCommands.get(0));
         } else if (pullCommands.size() > 1) {

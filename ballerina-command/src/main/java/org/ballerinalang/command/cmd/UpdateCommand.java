@@ -46,8 +46,9 @@ public class UpdateCommand extends Command implements BCommand {
             printUsageInfo("dist-" + BallerinaCliCommands.UPDATE);
             return;
         }
-        ToolUtil.handleInstallDirPermission();
+
         if (updateCommands == null) {
+            ToolUtil.handleInstallDirPermission();
             update(getPrintStream());
             return;
         } else if (updateCommands.size() > 1) {
