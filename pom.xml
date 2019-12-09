@@ -286,7 +286,7 @@
         </dependencies>
     </dependencyManagement>
     <properties>
-        <ballerina.version>0.990.6</ballerina.version>
+        <ballerina.version>0.990.7</ballerina.version>
         <ballerina.jre.artifacts.version>1.0.0</ballerina.jre.artifacts.version>
         <project.scm.id>ballerina-scm-server</project.scm.id>
         <docker.version>0.990.7</docker.version>
