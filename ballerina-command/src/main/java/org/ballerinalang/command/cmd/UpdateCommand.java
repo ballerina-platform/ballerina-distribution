@@ -54,12 +54,12 @@ public class UpdateCommand extends Command implements BCommand {
             update(getPrintStream());
             return;
         } else if (updateCommands.size() > 1) {
-            //     throw LauncherUtils.createUsageExceptionWithHelp("too many arguments given");
+            throw createUsageExceptionWithHelp("too many arguments given");
         }
 
         String userCommand = updateCommands.get(0);
         if (parentCmdParser.getSubcommands().get(userCommand) == null) {
-            //     throw LauncherUtils.createUsageExceptionWithHelp("unknown command " + userCommand);
+            throw createUsageExceptionWithHelp("unknown command " + userCommand);
         }
     }
 
