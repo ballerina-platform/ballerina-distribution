@@ -45,7 +45,7 @@ public class FetchCommand extends Command implements BCommand {
 
     public void execute() {
         if (helpFlag) {
-            printUsageInfo("dist-" + BallerinaCliCommands.FETCH);
+            printUsageInfo(BallerinaCliCommands.FETCH);
             return;
         }
 
@@ -60,7 +60,7 @@ public class FetchCommand extends Command implements BCommand {
 
     @Override
     public String getName() {
-        return BallerinaCliCommands.PULL;
+        return BallerinaCliCommands.FETCH;
     }
 
     @Override
