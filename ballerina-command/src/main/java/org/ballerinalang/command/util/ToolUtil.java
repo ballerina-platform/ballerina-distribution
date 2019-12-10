@@ -148,8 +148,6 @@ public class ToolUtil {
                 printStream.println("Using " + distribution);
                 return true;
             }
-        } else {
-            printStream.println(distribution + " does not exist");
         }
         return false;
     }
@@ -346,7 +344,7 @@ public class ToolUtil {
                 sc.init(null, trustAllCerts, new java.security.SecureRandom());
                 HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
 
-                String distributionType = distribution.split("-")[0];
+
                 String distributionVersion = distribution.replace(distributionType + "-", "");
                 URL url = new URL(ToolUtil.PRODUCTION_URL + "/distributions/" + distributionVersion);
                 conn = (HttpURLConnection) url.openConnection();
@@ -566,11 +564,11 @@ public class ToolUtil {
         try {
             String installationPath = OSUtils.getInstallationPath();
             if (!new File(installationPath).canWrite()) {
-                throw ErrorUtil.createCommandException("current user does not have write permissions to ballerina " +
-                                                            "installation path : " + installationPath + ". Please " +
-                                                            "grant permission to the file path or run the command " +
-                                                               "with user has write permission.");
-
+                throw ErrorUtil.createCommandException("current user does not have write permissions.\n\n" +
+                                                               "Current user does not have write permissions to " +
+                                                               "ballerina installation path : " + installationPath +
+                                                               ". Grant permission to the file path or run the " +
+                                                               "command with user has write permission.");
             }
         } catch (URISyntaxException e) {
             throw ErrorUtil.createCommandException("failed to get ballerina installation file path.");

@@ -70,12 +70,13 @@ public class UpdateToolCommand extends Command implements BCommand {
 
     private static void updateCommands(PrintStream printStream) {
         String version = ToolUtil.getCurrentToolsVersion();
+        printStream.println("Fetching latest version from remote server...");
         String latestVersion = ToolUtil.getLatestToolVersion();
         if (!latestVersion.equals(version)) {
             ToolUtil.downloadTool(printStream, latestVersion);
             printStream.println("Using tool version: " + latestVersion);
         } else {
-            printStream.println("No update found");
+            printStream.println("You are already in latest command version: " + latestVersion);
         }
     }
 

@@ -83,13 +83,14 @@ public class UpdateCommand extends Command implements BCommand {
 
     public static void update(PrintStream printStream) {
         String version = ToolUtil.getCurrentBallerinaVersion();
+        printStream.println("Fetching latest distribution version from remote server...");
         String latestVersion = ToolUtil.getLatest(version, "patch");
         if (!latestVersion.equals(version)) {
             String distribution = ToolUtil.BALLERINA_TYPE + "-" + latestVersion;
             ToolUtil.downloadDistribution(printStream, distribution, false);
             ToolUtil.use(printStream, distribution);
         } else {
-            printStream.println("No update found");
+            printStream.println("You are already in latest distribution version: " + latestVersion);
         }
     }
 }

@@ -51,15 +51,14 @@ public class UseCommand extends Command implements BCommand {
         if (useCommands == null) {
             throw ErrorUtil.createUsageExceptionWithHelp("distribution is not provided");
         } else if (useCommands.size() == 1) {
-            ToolUtil.use(getPrintStream(), useCommands.get(0));
-            return;
+            PrintStream printStream = getPrintStream();
+            String distribution = useCommands.get(0);
+            boolean use = ToolUtil.use(printStream, distribution);
+            if (!use) {
+                printStream.println(distribution + " does not exist");
+            }
         } else if (useCommands.size() > 1) {
             throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
-        }
-
-        String userCommand = useCommands.get(0);
-        if (parentCmdParser.getSubcommands().get(userCommand) == null) {
-            throw ErrorUtil.createUsageExceptionWithHelp("unknown command " + userCommand);
         }
     }
 
