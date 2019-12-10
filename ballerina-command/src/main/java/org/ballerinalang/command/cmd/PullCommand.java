@@ -44,7 +44,7 @@ public class PullCommand extends Command implements BCommand {
 
     public void execute() {
         if (helpFlag) {
-            printUsageInfo("dist-" + BallerinaCliCommands.PULL);
+            printUsageInfo(BallerinaCliCommands.PULL);
             return;
         }
 
