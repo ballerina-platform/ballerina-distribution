@@ -47,7 +47,7 @@ public class OSUtils {
      * Provide the path of configuration file.
      * @return File path
      */
-    public static String getInstalltionPath() throws URISyntaxException {
+    public static String getInstallationPath() throws URISyntaxException {
         File file = new File(OSUtils.class.getProtectionDomain().getCodeSource().getLocation().toURI());
         return file.getParentFile().getParentFile().getPath();
     }

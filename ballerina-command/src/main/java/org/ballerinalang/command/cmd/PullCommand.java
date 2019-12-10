@@ -17,6 +17,7 @@
 package org.ballerinalang.command.cmd;
 
 import org.ballerinalang.command.BallerinaCliCommands;
+import org.ballerinalang.command.util.ErrorUtil;
 import org.ballerinalang.command.util.ToolUtil;
 import picocli.CommandLine;
 
@@ -49,18 +50,13 @@ public class PullCommand extends Command implements BCommand {
         }
 
         if (pullCommands == null) {
-            throw createUsageExceptionWithHelp("distribution is not provided");
+            throw ErrorUtil.createUsageExceptionWithHelp("distribution is not provided");
         } else if (pullCommands.size() == 1) {
+            ToolUtil.handleInstallDirPermission();
             ToolUtil.downloadDistribution(getPrintStream(), pullCommands.get(0), false);
             ToolUtil.use(getPrintStream(), pullCommands.get(0));
-            return;
         } else if (pullCommands.size() > 1) {
-            throw createUsageExceptionWithHelp("too many arguments given");
-        }
-
-        String userCommand = pullCommands.get(0);
-        if (parentCmdParser.getSubcommands().get(userCommand) == null) {
-            throw createUsageExceptionWithHelp("unknown command " + userCommand);
+            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
         }
     }
 
