@@ -344,7 +344,7 @@ public class ToolUtil {
                 sc.init(null, trustAllCerts, new java.security.SecureRandom());
                 HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
 
-
+                String distributionType = distribution.split("-")[0];
                 String distributionVersion = distribution.replace(distributionType + "-", "");
                 URL url = new URL(ToolUtil.PRODUCTION_URL + "/distributions/" + distributionVersion);
                 conn = (HttpURLConnection) url.openConnection();
