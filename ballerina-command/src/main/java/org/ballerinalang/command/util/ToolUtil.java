@@ -378,7 +378,7 @@ public class ToolUtil {
         try {
             String distPath = getDistributionsPath();
             String zipFileLocation = getDistributionsPath() + File.separator + distribution + ".zip";
-            downloadFile(conn, zipFileLocation, distribution);
+            downloadFile(conn, zipFileLocation, distribution, printStream);
             printStream.println();
             unzip(zipFileLocation, distPath);
             addExecutablePermissionToFile(new File(distPath + File.separator + distribution
@@ -437,7 +437,7 @@ public class ToolUtil {
         }
         tempUnzipDirectory.mkdir();
         String zipFileLocation = toolUnzipLocation + File.separator + toolFileName + ".zip";
-        downloadFile(conn, zipFileLocation, toolFileName);
+        downloadFile(conn, zipFileLocation, toolFileName, printStream);
         printStream.println();
         unzip(zipFileLocation, toolUnzipLocation);
         copyScripts(toolUnzipLocation, toolFileName);
@@ -445,7 +445,8 @@ public class ToolUtil {
         Paths.get(zipFileLocation).toFile().delete();
     }
 
-    private static void downloadFile(HttpURLConnection conn, String zipFileLocation, String fileName) {
+    private static void downloadFile(HttpURLConnection conn, String zipFileLocation,
+                                     String fileName, PrintStream printStream) {
         try (InputStream in = conn.getInputStream();
              FileOutputStream out = new FileOutputStream(zipFileLocation)) {
             byte[] b = new byte[1024];
@@ -453,8 +454,8 @@ public class ToolUtil {
             int progress = 0;
             long totalSizeInMB = conn.getContentLengthLong() / (1024 * 1024);
 
-            try (ProgressBar progressBar = new ProgressBar("Downloading " + fileName,
-                    totalSizeInMB, ProgressBarStyle.ASCII)) {
+            try (ProgressBar progressBar = new ProgressBar("Downloading " + fileName, totalSizeInMB,
+                    1000, printStream , ProgressBarStyle.ASCII, " MB", 1)) {
                 while ((count = in.read(b)) > 0) {
                     out.write(b, 0, count);
                     progress++;
