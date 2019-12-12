@@ -27,5 +27,5 @@ BALLERINA COMMANDS
 
 EXAMPLES
 
-       Get help on how to use the Ballerina dist command.
+       Get help on how to use the 'ballerina dist' command.
           → ballerina dist --help
