@@ -48,14 +48,10 @@ public class VersionCommand extends Command implements BCommand {
 
         if (versionCommands == null) {
             printVersionInfo();
-            return;
-        } else if (versionCommands.size() > 1) {
-            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
         }
 
-        String userCommand = versionCommands.get(0);
-        if (parentCmdParser.getSubcommands().get(userCommand) == null) {
-            throw ErrorUtil.createUsageExceptionWithHelp("unknown command " + userCommand);
+        if (versionCommands != null && versionCommands.size() > 1) {
+            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
         }
     }
 

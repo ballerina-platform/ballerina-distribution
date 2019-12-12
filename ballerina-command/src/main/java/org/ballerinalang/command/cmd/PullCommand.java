@@ -49,15 +49,30 @@ public class PullCommand extends Command implements BCommand {
             return;
         }
 
-        if (pullCommands == null) {
+        if (pullCommands == null || pullCommands.size() == 0) {
             throw ErrorUtil.createUsageExceptionWithHelp("distribution is not provided");
-        } else if (pullCommands.size() == 1) {
-            ToolUtil.handleInstallDirPermission();
-            ToolUtil.downloadDistribution(getPrintStream(), pullCommands.get(0), false);
-            ToolUtil.use(getPrintStream(), pullCommands.get(0));
-        } else if (pullCommands.size() > 1) {
+        }
+
+        if (pullCommands.size() > 1) {
             throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
         }
+        ToolUtil.handleInstallDirPermission();
+        PrintStream printStream = getPrintStream();
+        String distribution = pullCommands.get(0);
+        String distributionType = distribution.split("-")[0];
+        if (!distributionType.equals("ballerina") && !distributionType.equals("jballerina")) {
+            throw ErrorUtil.createCommandException(distribution + " is not found");
+        }
+        String distributionVersion = distribution.replace(distributionType + "-", "");
+        if (distributionVersion.equals(ToolUtil.getCurrentBallerinaVersion())) {
+            printStream.println(distribution + " already in use");
+            return;
+        }
+        ToolUtil.downloadDistribution(printStream, distribution, distributionType, distributionVersion);
+        ToolUtil.useBallerinaVersion(printStream, distribution);
+        printStream.println("Using distribution version: " + distribution);
+
+
     }
 
     @Override

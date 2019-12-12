@@ -25,7 +25,7 @@ import org.ballerinalang.command.exceptions.CommandException;
  */
 public class ErrorUtil {
 
-    static CommandException createCommandException(String errorMsg) {
+    public static CommandException createCommandException(String errorMsg) {
         CommandException launcherException = new CommandException();
         launcherException.addMessage("ballerina: " + errorMsg);
         return launcherException;

@@ -17,15 +17,20 @@
 package org.ballerinalang.command.cmd;
 
 import org.ballerinalang.command.BallerinaCliCommands;
+import org.ballerinalang.command.util.ErrorUtil;
 import picocli.CommandLine;
 
 import java.io.PrintStream;
+import java.util.List;
 
 /**
  * This class represents the "Update" command and it holds arguments and flags specified by the user.
  */
 @CommandLine.Command(name = "dist", description = "Ballerina distribution commands")
 public class DistributionCommand extends Command implements BCommand {
+
+    @CommandLine.Parameters(description = "Command name")
+    private List<String> distCommands;
 
     @CommandLine.Option(names = { "--help", "-h", "?" }, hidden = true, description = "for more information")
     private boolean helpFlag;
@@ -41,7 +46,13 @@ public class DistributionCommand extends Command implements BCommand {
             return;
         }
 
-        printUsageInfo(BallerinaCliCommands.DIST);
+        if (distCommands == null) {
+            printUsageInfo(BallerinaCliCommands.DIST);
+        }
+
+        if (distCommands != null && distCommands.size() > 0) {
+            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
+        }
     }
 
     @Override

@@ -129,27 +129,21 @@ public class ToolUtil {
         PrintWriter writer = new PrintWriter(path, "UTF-8");
 
         if (!version.contains(BALLERINA_TYPE)) {
-            version = BALLERINA_TYPE  + "-" + version;
+            version = BALLERINA_TYPE + "-" + version;
         }
 
         writer.println(version);
         writer.close();
     }
 
-    public static boolean use(PrintStream printStream, String distribution) {
+    public static void useBallerinaVersion(PrintStream printStream, String distribution) {
+        setCurrentBallerinaVersion(distribution);
+        clearCache(printStream);
+    }
+
+    public static boolean checkDistributionAvailable(String distribution) {
         File installFile = new File(getDistributionsPath() + File.separator + distribution);
-        if (installFile.exists()) {
-            if (distribution.equals(getCurrentBallerinaVersion())) {
-                printStream.println(distribution + " is already in use ");
-                return true;
-            } else {
-                setCurrentBallerinaVersion(distribution);
-                clearCache(printStream);
-                printStream.println("Using " + distribution);
-                return true;
-            }
-        }
-        return false;
+        return installFile.exists();
     }
 
     public static List<Distribution> getDistributions() throws IOException, KeyManagementException,
@@ -169,7 +163,7 @@ public class ToolUtil {
         conn.setRequestProperty("Accept", "application/json");
         if (conn.getResponseCode() != 200) {
             conn.disconnect();
-            throw ErrorUtil.createCommandException("server request failed. HTTP error code  : " +
+            throw ErrorUtil.createCommandException("server request failed. HTTP error code " +
                                                            conn.getResponseCode());
         } else {
             String json = convertStreamToString(conn.getInputStream());
@@ -200,7 +194,7 @@ public class ToolUtil {
             conn.setRequestProperty("Accept", "application/json");
             if (conn.getResponseCode() != 200) {
                 conn.disconnect();
-                throw ErrorUtil.createCommandException("server request failed. HTTP error code  : " +
+                throw ErrorUtil.createCommandException("server request failed. HTTP error code " +
                                                                conn.getResponseCode());
             } else {
                 return getValue(type, convertStreamToString(conn.getInputStream()));
@@ -238,7 +232,7 @@ public class ToolUtil {
                                                                        getCurrentToolsVersion(), "jballerina"));
             conn.setRequestProperty("Accept", "application/json");
             if (conn.getResponseCode() != 200) {
-                throw ErrorUtil.createCommandException("server request failed. HTTP error code  : " +
+                throw ErrorUtil.createCommandException("server request failed. HTTP error code " +
                                                                conn.getResponseCode());
             } else {
                 String json = convertStreamToString(conn.getInputStream());
@@ -248,7 +242,7 @@ public class ToolUtil {
                     conn.disconnect();
                     return matcher.group(1);
                 } else {
-                    throw ErrorUtil.createCommandException("cannot find the version from json response: " + json);
+                    throw ErrorUtil.createCommandException("cannot find the version from json response " + json);
                 }
             }
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
@@ -336,16 +330,16 @@ public class ToolUtil {
         }
     }
 
-    public static void downloadDistribution(PrintStream printStream, String distribution, boolean manualUpdate) {
+    public static boolean downloadDistribution(PrintStream printStream, String distribution, String distributionType,
+                                               String distributionVersion) {
         HttpURLConnection conn = null;
-        try {
-            if (!ToolUtil.use(printStream, distribution)) {
+       try {
+            if (!ToolUtil.checkDistributionAvailable(distribution)) {
+                printStream.println("Fetching distribution from remote server...");
                 SSLContext sc = SSLContext.getInstance("SSL");
                 sc.init(null, trustAllCerts, new java.security.SecureRandom());
                 HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
 
-                String distributionType = distribution.split("-")[0];
-                String distributionVersion = distribution.replace(distributionType + "-", "");
                 URL url = new URL(ToolUtil.PRODUCTION_URL + "/distributions/" + distributionVersion);
                 conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("GET");
@@ -357,12 +351,16 @@ public class ToolUtil {
                     String newUrl = conn.getHeaderField("Location");
                     conn = (HttpURLConnection) new URL(newUrl).openConnection();
                     conn.setRequestProperty("content-type", "binary/data");
-                    ToolUtil.downloadAndSetupDist(printStream, conn, distribution, manualUpdate);
+                    ToolUtil.downloadAndSetupDist(printStream, conn, distribution);
+                    return false;
                 } else if (conn.getResponseCode() == 200) {
-                    ToolUtil.downloadAndSetupDist(printStream, conn, distribution, manualUpdate);
+                    ToolUtil.downloadAndSetupDist(printStream, conn, distribution);
+                    return false;
                 } else {
-                    printStream.println(distribution + " is not found ");
+                    throw ErrorUtil.createCommandException(distribution + " is not found");
                 }
+            } else {
+                return true;
             }
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
             throw ErrorUtil.createCommandException("Cannot connect to the central server");
@@ -374,12 +372,11 @@ public class ToolUtil {
     }
 
     private static void downloadAndSetupDist(PrintStream printStream, HttpURLConnection conn,
-                                             String distribution, boolean manual) {
+                                             String distribution) {
         try {
             String distPath = getDistributionsPath();
             String zipFileLocation = getDistributionsPath() + File.separator + distribution + ".zip";
             downloadFile(conn, zipFileLocation, distribution);
-            printStream.println();
             unzip(zipFileLocation, distPath);
             addExecutablePermissionToFile(new File(distPath + File.separator + distribution
                                                            + File.separator + "bin"
@@ -387,10 +384,6 @@ public class ToolUtil {
             new File(zipFileLocation).delete();
         } finally {
             conn.disconnect();
-        }
-        if (manual) {
-            printStream.println(distribution + " is installed. Please execute \"ballerina dist use " +
-                                        "" + distribution + "\" to use as the default");
         }
     }
 
@@ -464,7 +457,7 @@ public class ToolUtil {
                 }
             }
         } catch (IOException e) {
-            throw ErrorUtil.createCommandException("failed to download file: " + fileName + " to " +
+            throw ErrorUtil.createCommandException("failed to download file " + fileName + " to " +
                                                            zipFileLocation + ".");
         }
     }
@@ -494,7 +487,7 @@ public class ToolUtil {
                 entry = zipIn.getNextEntry();
             }
         } catch (IOException e) {
-            throw ErrorUtil.createCommandException("failed to unzip zip the file in: " + zipFilePath + " to " +
+            throw ErrorUtil.createCommandException("failed to unzip zip the file in " + zipFilePath + " to " +
                                                            destDirectory + ".");
         }
     }
@@ -521,7 +514,7 @@ public class ToolUtil {
     public static String readFileAsString(String path) throws IOException {
         InputStream is = ClassLoader.getSystemResourceAsStream(path);
         if (is == null) {
-            throw new IOException("path cannot be found in :" + path);
+            throw new IOException("path cannot be found in " + path);
         }
         InputStreamReader inputStreamREader = null;
         BufferedReader br = null;
@@ -564,9 +557,9 @@ public class ToolUtil {
         try {
             String installationPath = OSUtils.getInstallationPath();
             if (!new File(installationPath).canWrite()) {
-                throw ErrorUtil.createCommandException("current user does not have write permissions.\n\n" +
+                throw ErrorUtil.createCommandException("current user does not have permissions to run the command\n\n" +
                                                                "Current user does not have write permissions to " +
-                                                               "ballerina installation path : " + installationPath +
+                                                               "ballerina installation path " + installationPath +
                                                                ". Grant permission to the file path or run the " +
                                                                "command with user has write permission.");
             }

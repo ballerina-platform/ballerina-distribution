@@ -57,7 +57,9 @@ public class ListCommand extends Command implements BCommand {
         if (listCommands == null) {
             listDistributions(getPrintStream());
             return;
-        } else if (listCommands.size() > 1) {
+        }
+
+        if (listCommands.size() > 1) {
             throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
         }
 
@@ -91,7 +93,7 @@ public class ListCommand extends Command implements BCommand {
      * List distributions in the local and remote.
      * @param outStream stream outputs need to be printed
      */
-    public static void listDistributions(PrintStream outStream) {
+    private static void listDistributions(PrintStream outStream) {
         try {
             String currentBallerinaVersion = ToolUtil.getCurrentBallerinaVersion();
             File folder = new File(ToolUtil.getDistributionsPath());
@@ -111,11 +113,13 @@ public class ListCommand extends Command implements BCommand {
             outStream.println("\nDistributions available remotely: \n");
             for (Distribution distribution : remoteDistributions) {
                 String version = distribution.getName() + "-" + distribution.getVersion();
-                if (!installedVersions.stream().anyMatch(s -> version.contains(s))) {
+                if (!installedVersions.stream().anyMatch(version::contains)) {
                     outStream.println("  " + version);
                 }
             }
             outStream.println();
+            outStream.println("Run 'ballerina dist pull <version>' to pull distributions available remotely");
+            outStream.println("Run 'ballerina dist use <version>' to use distributions available locally");
         } catch (IOException | KeyManagementException | NoSuchAlgorithmException e) {
             outStream.println("Ballerina Update service is not available");
         }

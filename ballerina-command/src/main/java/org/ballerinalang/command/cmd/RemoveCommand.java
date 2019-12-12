@@ -53,14 +53,16 @@ public class RemoveCommand extends Command implements BCommand {
             return;
         }
 
-        if (removeCommands == null) {
+        if (removeCommands == null || removeCommands.size() == 0) {
             throw ErrorUtil.createUsageExceptionWithHelp("distribution is not provided");
-        } else if (removeCommands.size() == 1) {
-            ToolUtil.handleInstallDirPermission();
-            remove(removeCommands.get(0));
-        } else if (removeCommands.size() > 1) {
+        }
+
+        if (removeCommands.size() > 1) {
             throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
         }
+
+        ToolUtil.handleInstallDirPermission();
+        remove(removeCommands.get(0));
     }
 
     @Override

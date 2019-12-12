@@ -17,6 +17,7 @@
 package org.ballerinalang.command.cmd;
 
 import org.ballerinalang.command.BallerinaCliCommands;
+import org.ballerinalang.command.util.ErrorUtil;
 import org.ballerinalang.command.util.ToolUtil;
 import picocli.CommandLine;
 
@@ -51,13 +52,15 @@ public class UpdateCommand extends Command implements BCommand {
             ToolUtil.handleInstallDirPermission();
             update(getPrintStream());
             return;
-        } else if (updateCommands.size() > 1) {
-            //     throw LauncherUtils.createUsageExceptionWithHelp("too many arguments given");
+        }
+
+        if (updateCommands.size() > 1) {
+            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
         }
 
         String userCommand = updateCommands.get(0);
         if (parentCmdParser.getSubcommands().get(userCommand) == null) {
-            //     throw LauncherUtils.createUsageExceptionWithHelp("unknown command " + userCommand);
+            throw ErrorUtil.createUsageExceptionWithHelp("unknown command " + userCommand);
         }
     }
 
@@ -87,10 +90,11 @@ public class UpdateCommand extends Command implements BCommand {
         String latestVersion = ToolUtil.getLatest(version, "patch");
         if (!latestVersion.equals(version)) {
             String distribution = ToolUtil.BALLERINA_TYPE + "-" + latestVersion;
-            ToolUtil.downloadDistribution(printStream, distribution, false);
-            ToolUtil.use(printStream, distribution);
-        } else {
-            printStream.println("You are already in latest distribution version: " + latestVersion);
+            ToolUtil.downloadDistribution(printStream, distribution, ToolUtil.BALLERINA_TYPE, latestVersion);
+            ToolUtil.useBallerinaVersion(printStream, distribution);
+            printStream.println("Updated to latest distribution version: " + latestVersion);
+            return;
         }
+        printStream.println("Already in latest distribution version: " + latestVersion);
     }
 }
