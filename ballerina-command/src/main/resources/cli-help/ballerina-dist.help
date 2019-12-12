@@ -1,5 +1,5 @@
 NAME
-       DIST - Commands for ballerina distribution version management
+       DIST - Commands for Ballerina distribution version management
 
 SYNOPSIS
        ballerina [-h | --help]
@@ -7,7 +7,7 @@ SYNOPSIS
 
 
 DESCRIPTION
-
+        This consists of the the sub commands to manage Ballerina distributions.
 
 OPTIONS
 
@@ -17,7 +17,7 @@ OPTIONS
 
 BALLERINA COMMANDS
     Available commands are:
-        list       List available ballerina distributions
+        list       List available Ballerina distributions
         fetch      Pull a given distribution version
         pull       Pull and use a given distribution version
         use        Switch to a specific distribution version
@@ -27,5 +27,5 @@ BALLERINA COMMANDS
 
 EXAMPLES
 
-       Get help on how to use the ballerina command.
+       Get help on how to use the 'ballerina dist' command.
           → ballerina dist --help

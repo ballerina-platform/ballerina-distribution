@@ -117,7 +117,7 @@ public class ListCommand extends Command implements BCommand {
             }
             outStream.println();
         } catch (IOException | KeyManagementException | NoSuchAlgorithmException e) {
-            outStream.println("Ballerina Update service is not available");
+            outStream.println("Update service is not available");
         }
     }
 

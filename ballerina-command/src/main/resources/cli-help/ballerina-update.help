@@ -1,15 +1,15 @@
 NAME
-    ballerina-update - Update to latest ballerina cli tool commands version
+    ballerina-update - Update to latest Ballerina command version
 
 SYNOPSIS
     ballerina update
 
 DESCRIPTION
-     Ballerina update updates to ballerina cli tool commands to latest version.
+     Ballerina update updates to Ballerina command to latest version.
 
 OPTIONS
      Ballerina update command takes no options.
 
 EXAMPLES
-     Update current ballerina cli tool commands to latest.
+     Update current Ballerina command to latest.
         → ballerina update

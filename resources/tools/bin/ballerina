@@ -21,7 +21,7 @@ else
     CURRENT_PATH="$(dirname "$(readlink -f "$0")")"
 fi
 
-if [ "$1" == "dist" ] || [ "$2" == "dist" ] || [ "$1" == "update" ]
+if [ "$1" == "dist" ] || [ "$2" == "dist" ] || [ "$1" == "update" ] || [ "$2" == "update" ]
 then
     JAVA_COMMAND=java
     if test -d "$CURRENT_PATH/../dependencies/jdk8u202-b08-jre"; then

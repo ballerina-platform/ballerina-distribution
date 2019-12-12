@@ -17,6 +17,7 @@
 package org.ballerinalang.command.cmd;
 
 import org.ballerinalang.command.BallerinaCliCommands;
+import org.ballerinalang.command.util.ErrorUtil;
 import org.ballerinalang.command.util.ToolUtil;
 import picocli.CommandLine;
 
@@ -52,12 +53,12 @@ public class UpdateCommand extends Command implements BCommand {
             update(getPrintStream());
             return;
         } else if (updateCommands.size() > 1) {
-            throw createUsageExceptionWithHelp("too many arguments given");
+            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
         }
 
         String userCommand = updateCommands.get(0);
         if (parentCmdParser.getSubcommands().get(userCommand) == null) {
-            throw createUsageExceptionWithHelp("unknown command " + userCommand);
+            throw ErrorUtil.createUsageExceptionWithHelp("unknown command " + userCommand);
         }
     }
 
