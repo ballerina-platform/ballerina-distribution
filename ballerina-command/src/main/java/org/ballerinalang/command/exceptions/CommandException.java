@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.ballerinalang.command.cmd;
+package org.ballerinalang.command.exceptions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class CommandException extends RuntimeException {
         return detailedMessages;
     }
 
-    void addMessage(String message) {
+    public void addMessage(String message) {
         detailedMessages.add(message);
     }
 

@@ -26,6 +26,7 @@ set FILE_PATH=%CURRENT_PATH%..\distributions\ballerina-version
 if "%1" == "dist" set dist=true
 if "%2" == "dist" set dist=true
 if "%1" == "update" set dist=true
+if "%2" == "update" set dist=true
 if "%1" == "update" set update=true
 SetLocal EnableDelayedExpansion
 if "%dist%" == "true" (

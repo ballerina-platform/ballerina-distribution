@@ -20,10 +20,7 @@ import org.ballerinalang.command.BallerinaCliCommands;
 import org.ballerinalang.command.util.ToolUtil;
 import picocli.CommandLine;
 
-import java.io.IOException;
 import java.io.PrintStream;
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
 
 /**
  * This class represents the "Update" command and it holds arguments and flags specified by the user.
@@ -47,6 +44,7 @@ public class UpdateToolCommand extends Command implements BCommand {
             printUsageInfo(BallerinaCliCommands.UPDATE);
             return;
         }
+        ToolUtil.handleInstallDirPermission();
         updateCommands(getPrintStream());
     }
 
@@ -71,17 +69,15 @@ public class UpdateToolCommand extends Command implements BCommand {
     }
 
     private static void updateCommands(PrintStream printStream) {
-        try {
-            String version = ToolUtil.getCurrentToolsVersion();
-            String latestVersion = ToolUtil.getLatestToolVersion();
-            if (!latestVersion.equals(version)) {
-                ToolUtil.downloadTool(printStream, latestVersion);
-                printStream.println("Using tool version: " + latestVersion);
-            } else {
-                printStream.println("No update found");
-            }
-        } catch (IOException | KeyManagementException | NoSuchAlgorithmException e) {
-            printStream.println("Cannot connect to the central server");
+        String version = ToolUtil.getCurrentToolsVersion();
+        printStream.println("Fetching latest version from remote server...");
+        String latestVersion = ToolUtil.getLatestToolVersion();
+        if (!latestVersion.equals(version)) {
+            ToolUtil.downloadTool(printStream, latestVersion);
+            printStream.println("Using tool version: " + latestVersion);
+        } else {
+            printStream.println("You are already in latest command version: " + latestVersion);
         }
     }
+
 }

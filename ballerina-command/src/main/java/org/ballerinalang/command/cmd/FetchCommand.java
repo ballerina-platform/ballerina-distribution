@@ -17,6 +17,7 @@
 package org.ballerinalang.command.cmd;
 
 import org.ballerinalang.command.BallerinaCliCommands;
+import org.ballerinalang.command.util.ErrorUtil;
 import org.ballerinalang.command.util.ToolUtil;
 import picocli.CommandLine;
 
@@ -44,28 +45,22 @@ public class FetchCommand extends Command implements BCommand {
 
     public void execute() {
         if (helpFlag) {
-            printUsageInfo("dist-" + BallerinaCliCommands.FETCH);
+            printUsageInfo(BallerinaCliCommands.FETCH);
             return;
         }
 
         if (fetchCommands == null) {
-            throw createUsageExceptionWithHelp("distribution is not provided");
+            throw ErrorUtil.createUsageExceptionWithHelp("distribution is not provided");
         } else if (fetchCommands.size() == 1) {
             ToolUtil.downloadDistribution(getPrintStream(), fetchCommands.get(0), true);
-            return;
         } else if (fetchCommands.size() > 1) {
-            throw createUsageExceptionWithHelp("too many arguments given");
-        }
-
-        String userCommand = fetchCommands.get(0);
-        if (parentCmdParser.getSubcommands().get(userCommand) == null) {
-            throw createUsageExceptionWithHelp("unknown command " + userCommand);
+            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
         }
     }
 
     @Override
     public String getName() {
-        return BallerinaCliCommands.PULL;
+        return BallerinaCliCommands.FETCH;
     }
 
     @Override
