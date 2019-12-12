@@ -200,7 +200,7 @@ public class ToolUtil {
                 return getValue(type, convertStreamToString(conn.getInputStream()));
             }
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
-            throw ErrorUtil.createCommandException("Cannot connect to the central server");
+            throw ErrorUtil.createCommandException("Cannot connect to the update server");
         } finally {
             if (conn != null) {
                 conn.disconnect();
@@ -246,7 +246,7 @@ public class ToolUtil {
                 }
             }
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
-            throw ErrorUtil.createCommandException("Cannot connect to the central server");
+            throw ErrorUtil.createCommandException("Cannot connect to the update server");
         } finally {
             if (conn != null) {
                 conn.disconnect();
@@ -363,7 +363,7 @@ public class ToolUtil {
                 return true;
             }
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
-            throw ErrorUtil.createCommandException("Cannot connect to the central server");
+            throw ErrorUtil.createCommandException("Cannot connect to the update server");
         } finally {
             if (conn != null) {
                 conn.disconnect();
@@ -376,7 +376,7 @@ public class ToolUtil {
         try {
             String distPath = getDistributionsPath();
             String zipFileLocation = getDistributionsPath() + File.separator + distribution + ".zip";
-            downloadFile(conn, zipFileLocation, distribution);
+            downloadFile(conn, zipFileLocation, distribution, printStream);
             unzip(zipFileLocation, distPath);
             addExecutablePermissionToFile(new File(distPath + File.separator + distribution
                                                            + File.separator + "bin"
@@ -411,7 +411,7 @@ public class ToolUtil {
                 throw ErrorUtil.createCommandException(toolVersion + " is not found ");
             }
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
-            throw ErrorUtil.createCommandException("Cannot connect to the central server");
+            throw ErrorUtil.createCommandException("Cannot connect to the update server");
         }  finally {
             if (conn != null) {
                 conn.disconnect();
@@ -430,7 +430,7 @@ public class ToolUtil {
         }
         tempUnzipDirectory.mkdir();
         String zipFileLocation = toolUnzipLocation + File.separator + toolFileName + ".zip";
-        downloadFile(conn, zipFileLocation, toolFileName);
+        downloadFile(conn, zipFileLocation, toolFileName, printStream);
         printStream.println();
         unzip(zipFileLocation, toolUnzipLocation);
         copyScripts(toolUnzipLocation, toolFileName);
@@ -438,7 +438,8 @@ public class ToolUtil {
         Paths.get(zipFileLocation).toFile().delete();
     }
 
-    private static void downloadFile(HttpURLConnection conn, String zipFileLocation, String fileName) {
+    private static void downloadFile(HttpURLConnection conn, String zipFileLocation,
+                                     String fileName, PrintStream printStream) {
         try (InputStream in = conn.getInputStream();
              FileOutputStream out = new FileOutputStream(zipFileLocation)) {
             byte[] b = new byte[1024];
@@ -446,8 +447,8 @@ public class ToolUtil {
             int progress = 0;
             long totalSizeInMB = conn.getContentLengthLong() / (1024 * 1024);
 
-            try (ProgressBar progressBar = new ProgressBar("Downloading " + fileName,
-                    totalSizeInMB, ProgressBarStyle.ASCII)) {
+            try (ProgressBar progressBar = new ProgressBar("Downloading " + fileName, totalSizeInMB,
+                    1000, printStream , ProgressBarStyle.ASCII, " MB", 1)) {
                 while ((count = in.read(b)) > 0) {
                     out.write(b, 0, count);
                     progress++;
