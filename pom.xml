@@ -247,7 +247,7 @@
             <dependency>
                 <groupId>org.ballerinalang</groupId>
                 <artifactId>ballerina-command</artifactId>
-                <version>0.8.0</version>
+                <version>${ballerina.command.version}</version>
             </dependency>
             <dependency>
                 <groupId>me.tongfei</groupId>
