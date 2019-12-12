@@ -206,7 +206,7 @@ public class ToolUtil {
                 return getValue(type, convertStreamToString(conn.getInputStream()));
             }
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
-            throw ErrorUtil.createCommandException("Cannot connect to the central server");
+            throw ErrorUtil.createCommandException("Cannot connect to the update server");
         } finally {
             if (conn != null) {
                 conn.disconnect();
@@ -252,7 +252,7 @@ public class ToolUtil {
                 }
             }
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
-            throw ErrorUtil.createCommandException("Cannot connect to the central server");
+            throw ErrorUtil.createCommandException("Cannot connect to the update server");
         } finally {
             if (conn != null) {
                 conn.disconnect();
@@ -365,7 +365,7 @@ public class ToolUtil {
                 }
             }
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
-            throw ErrorUtil.createCommandException("Cannot connect to the central server");
+            throw ErrorUtil.createCommandException("Cannot connect to the update server");
         } finally {
             if (conn != null) {
                 conn.disconnect();
@@ -418,7 +418,7 @@ public class ToolUtil {
                 throw ErrorUtil.createCommandException(toolVersion + " is not found ");
             }
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
-            throw ErrorUtil.createCommandException("Cannot connect to the central server");
+            throw ErrorUtil.createCommandException("Cannot connect to the update server");
         }  finally {
             if (conn != null) {
                 conn.disconnect();
