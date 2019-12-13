@@ -61,7 +61,7 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.2.0</version>
                 <configuration>
-                    <finalName>ballerina-command-${ballerina.command.version}</finalName>
+                    <finalName>ballerina-command-0.8.0</finalName>
                     <archive>
                         <manifest>
                             <mainClass>org.ballerinalang.command.Main</mainClass>
