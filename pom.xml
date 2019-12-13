@@ -98,7 +98,7 @@
         <repository>
             <id>wso2.stage</id>
             <name>WSO2 Stage Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1480/</url>
+            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1496/</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -256,7 +256,7 @@
         </dependencies>
     </dependencyManagement>
     <properties>
-        <ballerina.version>1.1.0-alpha</ballerina.version>
+        <ballerina.version>1.1.0-beta</ballerina.version>
         <ballerina.jre.artifacts.version>2.0.0</ballerina.jre.artifacts.version>
         <project.scm.id>ballerina-scm-server</project.scm.id>
         <docker.version>1.1.0-beta</docker.version>
