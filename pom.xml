@@ -164,8 +164,8 @@
 
 
     <modules>
-        <module>ballerina</module>
         <module>ballerina-command</module>
+        <module>ballerina</module>
     </modules>
 
     <dependencyManagement>
