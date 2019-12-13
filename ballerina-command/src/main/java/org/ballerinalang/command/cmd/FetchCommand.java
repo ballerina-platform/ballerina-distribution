@@ -49,13 +49,32 @@ public class FetchCommand extends Command implements BCommand {
             return;
         }
 
-        if (fetchCommands == null) {
+        if (fetchCommands == null || fetchCommands.size() == 0) {
             throw ErrorUtil.createUsageExceptionWithHelp("distribution is not provided");
-        } else if (fetchCommands.size() == 1) {
-            ToolUtil.downloadDistribution(getPrintStream(), fetchCommands.get(0), true);
-        } else if (fetchCommands.size() > 1) {
+        }
+
+        if (fetchCommands.size() > 1) {
             throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
         }
+
+        PrintStream printStream = getPrintStream();
+        String distribution = fetchCommands.get(0);
+        ToolUtil.handleInstallDirPermission();
+        String distributionType = distribution.split("-")[0];
+        if (!distributionType.equals("ballerina") && !distributionType.equals("jballerina")) {
+            throw ErrorUtil.createCommandException(distribution + " is not found");
+        }
+        String distributionVersion = distribution.replace(distributionType + "-", "");
+        if (distributionVersion.equals(ToolUtil.getCurrentBallerinaVersion())) {
+            printStream.println(distribution + " already in use");
+            return;
+        }
+        if (ToolUtil.downloadDistribution(printStream, distribution, distributionType, distributionVersion)) {
+            printStream.println(distribution + " is already fetched");
+        } else {
+            printStream.println(distribution + " is fetched");
+        }
+        printStream.println("Run 'ballerina dist use " + distribution + "' to use distribution");
     }
 
     @Override

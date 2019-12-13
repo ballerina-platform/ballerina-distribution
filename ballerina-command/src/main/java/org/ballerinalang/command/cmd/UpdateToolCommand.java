@@ -17,10 +17,12 @@
 package org.ballerinalang.command.cmd;
 
 import org.ballerinalang.command.BallerinaCliCommands;
+import org.ballerinalang.command.util.ErrorUtil;
 import org.ballerinalang.command.util.ToolUtil;
 import picocli.CommandLine;
 
 import java.io.PrintStream;
+import java.util.List;
 
 /**
  * This class represents the "Update" command and it holds arguments and flags specified by the user.
@@ -29,6 +31,9 @@ import java.io.PrintStream;
  */
 @CommandLine.Command(name = "command", description = "Update Ballerina current cli tool commands")
 public class UpdateToolCommand extends Command implements BCommand {
+
+    @CommandLine.Parameters(description = "args")
+    private List<String> updateCommands;
 
     @CommandLine.Option(names = {"--help", "-h", "?"}, hidden = true)
     private boolean helpFlag;
@@ -44,8 +49,21 @@ public class UpdateToolCommand extends Command implements BCommand {
             printUsageInfo(BallerinaCliCommands.UPDATE);
             return;
         }
-        ToolUtil.handleInstallDirPermission();
-        updateCommands(getPrintStream());
+
+        if (updateCommands == null) {
+            ToolUtil.handleInstallDirPermission();
+            updateCommands(getPrintStream());
+            return;
+        }
+
+        if (updateCommands.size() > 1) {
+            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
+        }
+
+        String userCommand = updateCommands.get(0);
+        if (parentCmdParser.getSubcommands().get(userCommand) == null) {
+            throw ErrorUtil.createUsageExceptionWithHelp("unknown command " + userCommand);
+        }
     }
 
     @Override
@@ -72,12 +90,11 @@ public class UpdateToolCommand extends Command implements BCommand {
         String version = ToolUtil.getCurrentToolsVersion();
         printStream.println("Fetching latest version from remote server...");
         String latestVersion = ToolUtil.getLatestToolVersion();
-        if (!latestVersion.equals(version)) {
-            ToolUtil.downloadTool(printStream, latestVersion);
-            printStream.println("Using tool version: " + latestVersion);
-        } else {
+        if (latestVersion.equals(version)) {
             printStream.println("You are already in latest command version: " + latestVersion);
+            return;
         }
+        ToolUtil.downloadTool(printStream, latestVersion);
+        printStream.println("Using tool version: " + latestVersion);
     }
-
 }
