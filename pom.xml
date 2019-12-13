@@ -164,7 +164,6 @@
 
 
     <modules>
-        <module>ballerina-command</module>
         <module>ballerina</module>
     </modules>
 
