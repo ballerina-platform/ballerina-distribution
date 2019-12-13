@@ -37,7 +37,14 @@ if "%dist%" == "true" (
    )
    if "%update%" == "true" if exist  %CURRENT_PATH%..\ballerina-command-tmp (
         call %CURRENT_PATH%\..\ballerina-command-tmp\install.bat
+        if %errorlevel% neq 0 (
+            echo "Command update failed"
+            rd /s /q %CURRENT_PATH%\..\ballerina-command-tmp
+            exit /b
+        )
         rd /s /q %CURRENT_PATH%\..\ballerina-command-tmp
+        echo "Command updated successfully"
+        exit /b
    )
 ) else (
     set BALLERINA_HOME=

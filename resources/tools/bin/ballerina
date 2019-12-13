@@ -31,7 +31,14 @@ then
 
     if [ -d "$CURRENT_PATH/../ballerina-command-tmp" ]; then
         $CURRENT_PATH/../ballerina-command-tmp/install
+        if [ $? -ne '0' ]; then
+          echo "Command updated successfully failed"
+          rm -rf $CURRENT_PATH/../ballerina-command-tmp
+          exit 1
+        fi
         rm -rf $CURRENT_PATH/../ballerina-command-tmp
+        echo "Command updated successfully"
+        exit 0
     fi
 else
     BALLERINA_VERSION=`cat $CURRENT_PATH/../distributions/ballerina-version`

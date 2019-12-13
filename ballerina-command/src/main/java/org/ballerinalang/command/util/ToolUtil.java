@@ -83,7 +83,7 @@ public class ToolUtil {
         try {
             return getVersion(OSUtils.getBallerinaVersionFilePath());
         } catch (IOException e) {
-            throw ErrorUtil.createCommandException("current ballerina version not found.");
+            throw ErrorUtil.createCommandException("current Ballerina version not found.");
         }
     }
 
@@ -91,7 +91,7 @@ public class ToolUtil {
         try {
             setVersion(OSUtils.getBallerinaVersionFilePath(), version);
         } catch (IOException e) {
-            throw ErrorUtil.createCommandException("failed to set ballerina version.");
+            throw ErrorUtil.createCommandException("failed to set Ballerina version.");
         }
     }
 
@@ -560,12 +560,12 @@ public class ToolUtil {
             if (!new File(installationPath).canWrite()) {
                 throw ErrorUtil.createCommandException("current user does not have permissions to run the command\n\n" +
                                                                "Current user does not have write permissions to " +
-                                                               "ballerina installation path " + installationPath +
+                                                               "Ballerina installation path " + installationPath +
                                                                ". Grant permission to the file path or run the " +
                                                                "command with user has write permission.");
             }
         } catch (URISyntaxException e) {
-            throw ErrorUtil.createCommandException("failed to get ballerina installation file path.");
+            throw ErrorUtil.createCommandException("failed to get Ballerina installation file path.");
         }
     }
 }
