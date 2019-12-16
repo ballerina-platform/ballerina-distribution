@@ -1,12 +1,14 @@
 NAME
-    ballerina-dist-list - List available Ballerina distributions
+       ballerina-dist-list - List available Ballerina distributions
 
 SYNOPSIS
-    ballerina dist list
+       ballerina dist list
+
 
 DESCRIPTION
-     Ballerina dist list lists available Ballerina distributions.
+       Dist-list lists the Ballerina distributions available both locally and remotely.
+
 
 EXAMPLES
-     List available Ballerina versions.
-        → ballerina dist list
+       List available Ballerina versions.
+          → ballerina dist list
