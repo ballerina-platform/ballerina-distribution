@@ -67,6 +67,8 @@ set merge=false
 if "%1" == "help" (
 	if "%2" == "" set merge=true
 )
+if "%1" == "-h" set merge=true
+if "%1" == "--help" set merge=true
 if "%1" == "" set merge=true
 if "%1" == "version" set merge=true
 if "%1" == "-v" set merge=true
