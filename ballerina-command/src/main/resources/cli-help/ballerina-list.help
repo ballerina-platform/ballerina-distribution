@@ -6,7 +6,7 @@ SYNOPSIS
 
 
 DESCRIPTION
-       Dist-list lists the available Ballerina distributions.
+       Dist-list lists the Ballerina distributions available both locally and remotely.
 
 
 EXAMPLES
