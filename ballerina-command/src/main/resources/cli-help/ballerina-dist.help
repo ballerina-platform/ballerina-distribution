@@ -18,7 +18,6 @@ OPTIONS
 BALLERINA COMMANDS
        Here is a list of available sub-commands:
            list       List available Ballerina distributions
-           fetch      Pull a given distribution version
            pull       Pull and use a given distribution version
            use        Switch to a specific distribution version
            update     Update to the latest distribution version

@@ -21,7 +21,7 @@ REM ---------------------------------------------------------------------------
 setlocal
 set CURRENT_PATH=%~sdp0
 
-xcopy /q %CURRENT_PATH%\ballerina-command-${ballerina.command.version}\lib\ballerina-command-${ballerina.command.version}.jar  %CURRENT_PATH%\..\lib /Y || echo "copy tool jar failed." && exit /b
+xcopy /q %CURRENT_PATH%\ballerina-command-${ballerina.command.version}\lib\ballerina-command-${ballerina.command.version}.jar  %CURRENT_PATH%\..\lib /Y
 
 if %errorlevel% neq 0 (
     echo "error occurred while copying ballerina jar"
