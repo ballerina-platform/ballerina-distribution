@@ -9,6 +9,7 @@ SYNOPSIS
 DESCRIPTION
        Sub-commands to manage Ballerina distributions.
 
+
 OPTIONS
        -h, --help
            Print usage details of a command.

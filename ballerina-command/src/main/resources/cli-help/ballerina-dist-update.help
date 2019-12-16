@@ -4,8 +4,10 @@ NAME
 SYNOPSIS
        ballerina dist update
 
+
 DESCRIPTION
        Dist-update updates Ballerina to the latest distribution version.
+
 
 EXAMPLES
        Update Ballerina to the latest distribution version.
