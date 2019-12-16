@@ -90,18 +90,18 @@ public class RemoveCommand extends Command implements BCommand {
                 version.equals(ToolUtil.BALLERINA_TYPE + "-" + ToolUtil.getCurrentBallerinaVersion());
         try {
             if (isCurrentVersion) {
-                getPrintStream().println("You cannot remove default Ballerina version");
+                throw ErrorUtil.createCommandException("cannot remove default Ballerina version");
             } else {
                 File directory = new File(ToolUtil.getDistributionsPath() + File.separator + version);
                 if (directory.exists()) {
                         deleteFiles(directory.toPath(), getPrintStream(), version);
                         getPrintStream().println(version + " deleted successfully");
                 } else {
-                    getPrintStream().println(version + " does not exist");
+                    throw ErrorUtil.createCommandException("'" + version + "' does not exist");
                 }
             }
         } catch (IOException e) {
-            getPrintStream().println("Error occurred while removing");
+            throw ErrorUtil.createCommandException("error occurred while removing '" + version + "'");
         }
     }
 
