@@ -52,10 +52,7 @@ public class DistributionCommand extends Command implements BCommand {
             throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
         }
 
-        String userCommand = distCommands.get(0);
-        if (parentCmdParser.getSubcommands().get(userCommand) == null) {
-            throw ErrorUtil.createUsageExceptionWithHelp("unknown command " + userCommand);
-        }
+        throw ErrorUtil.createUsageExceptionWithHelp("unknown command '" + distCommands.get(0) + "'");
     }
 
     @Override
