@@ -37,5 +37,13 @@ public class ErrorUtil {
         launcherException.addMessage("Run 'ballerina help' for usage.");
         return launcherException;
     }
+
+    public static CommandException createDistributionNotFoundException(String distribution) {
+        return createCommandException("distribution '" + distribution + "' not found");
+    }
+
+    public static CommandException createDistributionRequiredException(String operation) {
+        return createCommandException("a distribution must be specified to " + operation);
+    }
 }
 

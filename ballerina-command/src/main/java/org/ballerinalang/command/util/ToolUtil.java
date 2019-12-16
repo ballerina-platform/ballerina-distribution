@@ -48,6 +48,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
+
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
@@ -91,7 +92,7 @@ public class ToolUtil {
         try {
             setVersion(OSUtils.getBallerinaVersionFilePath(), version);
         } catch (IOException e) {
-            throw ErrorUtil.createCommandException("failed to set Ballerina version.");
+            throw ErrorUtil.createCommandException("failed to set the Ballerina version.");
         }
     }
 
@@ -200,7 +201,7 @@ public class ToolUtil {
                 return getValue(type, convertStreamToString(conn.getInputStream()));
             }
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
-            throw ErrorUtil.createCommandException("Cannot connect to the update server");
+            throw ErrorUtil.createCommandException("failed to connect to the update server");
         } finally {
             if (conn != null) {
                 conn.disconnect();
@@ -246,7 +247,7 @@ public class ToolUtil {
                 }
             }
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
-            throw ErrorUtil.createCommandException("Cannot connect to the update server");
+            throw ErrorUtil.createCommandException("failed to connect to the update server");
         } finally {
             if (conn != null) {
                 conn.disconnect();
@@ -284,7 +285,7 @@ public class ToolUtil {
         try {
             return OSUtils.getInstallationPath() + File.separator + "distributions";
         } catch (URISyntaxException e) {
-            throw ErrorUtil.createCommandException("failed to get the distributions path");
+            throw ErrorUtil.createCommandException("failed to get the path of the distributions");
         }
     }
 
@@ -297,7 +298,8 @@ public class ToolUtil {
         try {
             return OSUtils.getInstallationPath() + File.separator + "ballerina-command-tmp";
         } catch (URISyntaxException e) {
-            throw ErrorUtil.createCommandException("failed to get temporary directory to unzip update tool zip");
+            throw ErrorUtil.createCommandException(
+                    "failed to get a temporary directory to unzip the update tool zip to");
         }
     }
 
@@ -318,8 +320,8 @@ public class ToolUtil {
                     String latestVersion = ToolUtil.getLatest(version, "patch");
                     if (!latestVersion.equals(version)) {
                         printStream.println();
-                        printStream.println("A new Ballerina version is available : " + latestVersion);
-                        printStream.println("You can download the installer of it from " +
+                        printStream.println("A new Ballerina version is available: " + latestVersion);
+                        printStream.println("The installer for it can be downloaded from " +
                                             "https://ballerina.io/downloads/.");
                         printStream.println();
                     }
@@ -357,13 +359,13 @@ public class ToolUtil {
                     ToolUtil.downloadAndSetupDist(printStream, conn, distribution);
                     return false;
                 } else {
-                    throw ErrorUtil.createCommandException(distribution + " is not found");
+                    throw ErrorUtil.createDistributionNotFoundException(distribution);
                 }
             } else {
                 return true;
             }
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
-            throw ErrorUtil.createCommandException("Cannot connect to the update server");
+           throw ErrorUtil.createCommandException("failed to connect to the update server");
         } finally {
             if (conn != null) {
                 conn.disconnect();
@@ -408,10 +410,10 @@ public class ToolUtil {
             } else if (conn.getResponseCode() == 200) {
                 downloadAndSetupTool(printStream, conn, "ballerina-command-" + toolVersion);
             } else {
-                throw ErrorUtil.createCommandException(toolVersion + " is not found ");
+                throw ErrorUtil.createCommandException("command version '" + toolVersion + "' not found ");
             }
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
-            throw ErrorUtil.createCommandException("Cannot connect to the update server");
+            throw ErrorUtil.createCommandException("failed to connect to the update server");
         }  finally {
             if (conn != null) {
                 conn.disconnect();
@@ -488,8 +490,8 @@ public class ToolUtil {
                 entry = zipIn.getNextEntry();
             }
         } catch (IOException e) {
-            throw ErrorUtil.createCommandException("failed to unzip zip the file in " + zipFilePath + " to " +
-                                                           destDirectory + ".");
+            throw ErrorUtil.createCommandException("failed to unzip zip the file in '" + zipFilePath + "' to '" +
+                                                           destDirectory + "'");
         }
     }
 
@@ -500,8 +502,8 @@ public class ToolUtil {
             Files.copy(Paths.get(unzippedUpdateToolPath, ballerinaCommandDir, "scripts", installScriptFileName),
                        installScript);
         } catch (IOException e) {
-            throw ErrorUtil.createCommandException("failed to copy update scripts to temp directory " +
-                                                           unzippedUpdateToolPath);
+            throw ErrorUtil.createCommandException("failed to copy the update scripts to temporary directory '" +
+                                                           unzippedUpdateToolPath + "'");
         }
         addExecutablePermissionToFile(installScript.toFile());
     }
@@ -558,14 +560,12 @@ public class ToolUtil {
         try {
             String installationPath = OSUtils.getInstallationPath();
             if (!new File(installationPath).canWrite()) {
-                throw ErrorUtil.createCommandException("current user does not have permissions to run the command\n\n" +
-                                                               "Current user does not have write permissions to " +
-                                                               "Ballerina installation path " + installationPath +
-                                                               ". Grant permission to the file path or run the " +
-                                                               "command with user has write permission.");
+                throw ErrorUtil.createCommandException(
+                        "permission denied: current user does not have write access to the Ballerina installation " +
+                                "directory '" + installationPath + "'");
             }
         } catch (URISyntaxException e) {
-            throw ErrorUtil.createCommandException("failed to get Ballerina installation file path.");
+            throw ErrorUtil.createCommandException("failed to get the path to the Ballerina installation directory");
         }
     }
 }

@@ -49,7 +49,7 @@ public class UseCommand extends Command implements BCommand {
         }
 
         if (useCommands == null || useCommands.size() == 0) {
-            throw ErrorUtil.createUsageExceptionWithHelp("distribution is not provided");
+            throw ErrorUtil.createDistributionRequiredException("use");
         }
 
         if (useCommands.size() > 1) {
@@ -60,11 +60,11 @@ public class UseCommand extends Command implements BCommand {
         String distribution = useCommands.get(0);
         String distributionType = distribution.split("-")[0];
         if (!distributionType.equals("ballerina") && !distributionType.equals("jballerina")) {
-            throw ErrorUtil.createCommandException(distribution + " is not found");
+            throw ErrorUtil.createDistributionNotFoundException(distribution);
         }
         String distributionVersion = distribution.replace(distributionType + "-", "");
         if (distributionVersion.equals(ToolUtil.getCurrentBallerinaVersion())) {
-            printStream.println(distribution + " already in use");
+            printStream.println("'" + distribution + "' is the current distribution in use");
             return;
         }
         if (ToolUtil.checkDistributionAvailable(distribution)) {
@@ -72,8 +72,8 @@ public class UseCommand extends Command implements BCommand {
             printStream.println("Using distribution version: " + distribution);
             return;
         }
-        printStream.println(distribution + " does not exist. Please use 'ballerina " +
-                                    "dist fetch " + distribution + "' to download the distribution");
+        printStream.println("Distribution '" + distribution + "' does not exist. Run 'ballerina " +
+                                    "dist fetch " + distribution + "' to download the distribution.");
     }
 
     @Override
