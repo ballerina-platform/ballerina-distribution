@@ -97,7 +97,7 @@ public class RemoveCommand extends Command implements BCommand {
                         deleteFiles(directory.toPath(), getPrintStream(), version);
                     getPrintStream().println("Distribution '" + version + "' successfully removed");
                 } else {
-                    getPrintStream().println("Distribution '" + version + "' does not exist");
+                    getPrintStream().println("Distribution '" + version + "' not found");
                 }
             }
         } catch (IOException e) {

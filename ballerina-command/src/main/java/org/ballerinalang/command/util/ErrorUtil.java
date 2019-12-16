@@ -43,7 +43,7 @@ public class ErrorUtil {
     }
 
     public static CommandException createDistributionRequiredException(String operation) {
-        return createCommandException("a distribution must be specified to " + operation);
+        return createUsageExceptionWithHelp("a distribution must be specified to " + operation);
     }
 }
 

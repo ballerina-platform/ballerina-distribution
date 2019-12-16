@@ -72,8 +72,8 @@ public class UseCommand extends Command implements BCommand {
             printStream.println("Using distribution version: " + distribution);
             return;
         }
-        printStream.println("Distribution '" + distribution + "' does not exist. Run 'ballerina " +
-                                    "dist fetch " + distribution + "' to download the distribution.");
+        printStream.println("Distribution '" + distribution + "' not found");
+        printStream.println("Run 'ballerina dist fetch " + distribution + "' to download the distribution");
     }
 
     @Override
