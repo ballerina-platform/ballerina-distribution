@@ -73,7 +73,7 @@ public class UseCommand extends Command implements BCommand {
             return;
         }
         printStream.println(distribution + " does not exist. Please use 'ballerina " +
-                                    "dist fetch " + distribution + "' to download the distribution");
+                                    "dist pull " + distribution + "' to download and use the distribution");
     }
 
     @Override

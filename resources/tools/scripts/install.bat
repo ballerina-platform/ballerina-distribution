@@ -21,17 +21,25 @@ REM ---------------------------------------------------------------------------
 setlocal
 set CURRENT_PATH=%~sdp0
 
-if exist %CURRENT_PATH%\..\lib\ballerina-command-${ballerina.command.version}.jar (
-    echo "ballerina-command-${ballerina.command.version}.jar is already exists hence update failed."
-    exit /b
-)
-
 xcopy /q %CURRENT_PATH%\ballerina-command-${ballerina.command.version}\lib\ballerina-command-${ballerina.command.version}.jar  %CURRENT_PATH%\..\lib /Y || echo "copy tool jar failed." && exit /b
+
+if %errorlevel% neq 0 (
+    echo "error occurred while copying ballerina jar"
+    REM remove if copied with an error.
+    if exist %CURRENT_PATH%\..\lib\ballerina-command-${ballerina.command.version}.jar (
+        del /F/Q %CURRENT_PATH%\..\lib\ballerina-command-${ballerina.command.version}.jar
+    )
+    exit /b %errorlevel%
+fi
+
 xcopy /q %CURRENT_PATH%\ballerina-command-${ballerina.command.version}\bin\ballerina.bat  %CURRENT_PATH%\..\bin /Y
 
 if %errorlevel% neq 0 (
-    echo "copy ballerina.bat failed."
-    del /F/Q %CURRENT_PATH%\..\lib\ballerina-command-${ballerina.command.version}.jar
+    echo "error occurred while copying ballerina.bat"
+    REM remove if copied with an error.
+    if exist %CURRENT_PATH%\..\lib\ballerina-command-${ballerina.command.version}.jar (
+        del /F/Q %CURRENT_PATH%\..\lib\ballerina-command-${ballerina.command.version}.jar
+    )
     exit /b %errorlevel%
 )
 
