@@ -56,7 +56,8 @@ else
     $BALLERINA_HOME/bin/./ballerina "$@"
 fi
 
-if [ "$1" == "help" ] && [ "$2" == "" ]  || [ "$1" == "" ] || [ "$1" == "version" ] || [ "$1" == "-v" ] || [ "$1" == "--version" ]
+if [ "$1" == "help" ] && [ "$2" == "" ]  || [ "$1" == "" ] || [ "$1" == "-h" ] || [ "$1" == "--help" ] || \
+   [ "$1" == "version" ] || [ "$1" == "-v" ] || [ "$1" == "--version" ]
 then
     JAVA_COMMAND=java
     if test -d "$CURRENT_PATH/../dependencies/jdk8u202-b08-jre"; then
