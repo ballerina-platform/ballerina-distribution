@@ -32,12 +32,12 @@ then
     if [ -d "$CURRENT_PATH/../ballerina-command-tmp" ]; then
         $CURRENT_PATH/../ballerina-command-tmp/install
         if [ $? -ne '0' ]; then
-          echo "Command updated successfully failed"
+          echo "Update failed due to errors"
           rm -rf $CURRENT_PATH/../ballerina-command-tmp
-          exit 1
+          exit $?
         fi
         rm -rf $CURRENT_PATH/../ballerina-command-tmp
-        echo "Command updated successfully"
+        echo "Update successfully completed"
         exit 0
     fi
 else

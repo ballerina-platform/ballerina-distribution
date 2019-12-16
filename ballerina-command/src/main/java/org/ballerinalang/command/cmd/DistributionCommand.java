@@ -39,13 +39,16 @@ public class DistributionCommand extends Command implements BCommand {
         super(printStream);
     }
 
+    private CommandLine parentCmdParser;
+
     @Override
     public void execute() {
         if (helpFlag || distCommands == null) {
             printUsageInfo(BallerinaCliCommands.DIST);
+            return;
         }
 
-        if (distCommands != null && distCommands.size() > 1) {
+        if (distCommands.size() > 1) {
             throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
         }
 
@@ -68,5 +71,7 @@ public class DistributionCommand extends Command implements BCommand {
 
     @Override
     public void setParentCmdParser(CommandLine parentCmdParser) {
+        this.parentCmdParser = parentCmdParser;
     }
+
 }

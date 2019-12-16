@@ -54,13 +54,8 @@ public class UpdateCommand extends Command implements BCommand {
             return;
         }
 
-        if (updateCommands.size() > 1) {
+        if (updateCommands.size() > 0) {
             throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
-        }
-
-        String userCommand = updateCommands.get(0);
-        if (parentCmdParser.getSubcommands().get(userCommand) == null) {
-            throw ErrorUtil.createUsageExceptionWithHelp("unknown command " + userCommand);
         }
     }
 
@@ -88,6 +83,10 @@ public class UpdateCommand extends Command implements BCommand {
         String version = ToolUtil.getCurrentBallerinaVersion();
         printStream.println("Fetching latest distribution version from remote server...");
         String latestVersion = ToolUtil.getLatest(version, "patch");
+        if (latestVersion == null) {
+            printStream.println("Cannot find the latest patch version for distribution version: " + version);
+            return;
+        }
         if (!latestVersion.equals(version)) {
             String distribution = ToolUtil.BALLERINA_TYPE + "-" + latestVersion;
             ToolUtil.downloadDistribution(printStream, distribution, ToolUtil.BALLERINA_TYPE, latestVersion);
