@@ -45,9 +45,11 @@ public class DistributionCommand extends Command implements BCommand {
             printUsageInfo(BallerinaCliCommands.DIST);
         }
 
-        if (distCommands != null && distCommands.size() > 0) {
+        if (distCommands != null && distCommands.size() > 1) {
             throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
         }
+
+        throw ErrorUtil.createUsageExceptionWithHelp("unknown command '" + distCommands.get(0) + "'");
     }
 
     @Override
