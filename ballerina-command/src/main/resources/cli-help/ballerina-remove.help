@@ -11,4 +11,4 @@ DESCRIPTION
 
 EXAMPLES
        Remove Ballerina 1.0.0.
-          → ballerina remove jballerina-1.0.0
+          → ballerina dist remove jballerina-1.0.0
