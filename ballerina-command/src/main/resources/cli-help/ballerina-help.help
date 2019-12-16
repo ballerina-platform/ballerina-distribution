@@ -1,8 +1,7 @@
 
-   Update Tool Commands:
+   Update Commands:
         dist            Commands for Ballerina distribution version management
         update          Update the Ballerina command
 
 
 See 'ballerina help <command>' for more information on a specific command.
-

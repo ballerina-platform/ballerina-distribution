@@ -1,31 +1,25 @@
 NAME
-       DIST - Commands for Ballerina distribution version management
+       Commands for Ballerina distribution version management
 
 SYNOPSIS
-       ballerina [-h | --help]
-                 <command> [<args>]
+       ballerina dist <command> <-h | --help>
+       ballerina dist <command> [<args>]
 
 
 DESCRIPTION
-        This consists of the the sub commands to manage Ballerina distributions.
+       Sub-commands to manage Ballerina distributions.
+
 
 OPTIONS
-
        -h, --help
            Print usage details of a command.
 
 
 BALLERINA COMMANDS
-    Available commands are:
-        list       List available Ballerina distributions
-        fetch      Pull a given distribution version
-        pull       Pull and use a given distribution version
-        use        Switch to a specific distribution version
-        update     Update to latest distribution version
-        remove     Delete locally installed distribution version
-
-
-EXAMPLES
-
-       Get help on how to use the 'ballerina dist' command.
-          → ballerina dist --help
+       Here is a list of available sub-commands:
+           list       List available Ballerina distributions
+           fetch      Pull a given distribution version
+           pull       Pull and use a given distribution version
+           use        Switch to a specific distribution version
+           update     Update to the latest distribution version
+           remove     Delete a locally installed distribution version
