@@ -23,6 +23,7 @@ package org.ballerinalang.command;
 public class BallerinaCliCommands {
 
     public static final String DEFAULT = "default";
+    public static final String BUILD = "build";
     public static final String HELP = "help";
     public static final String UPDATE = "update";
     public static final String DIST = "dist";

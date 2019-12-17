@@ -30,7 +30,7 @@ if %errorlevel% neq 0 (
         del /F/Q %CURRENT_PATH%\..\lib\ballerina-command-${ballerina.command.version}.jar
     )
     exit /b %errorlevel%
-fi
+)
 
 xcopy /q %CURRENT_PATH%\ballerina-command-${ballerina.command.version}\bin\ballerina.bat  %CURRENT_PATH%\..\bin /Y
 
