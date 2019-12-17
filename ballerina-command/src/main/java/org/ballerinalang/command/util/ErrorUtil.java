@@ -16,6 +16,7 @@
 
 package org.ballerinalang.command.util;
 
+import org.ballerinalang.command.BallerinaCliCommands;
 import org.ballerinalang.command.exceptions.CommandException;
 
 /**
@@ -38,12 +39,24 @@ public class ErrorUtil {
         return launcherException;
     }
 
+    public static CommandException createUsageExceptionWithHelp(String errorMsg, String subCommand) {
+        CommandException launcherException = new CommandException();
+        launcherException.addMessage("ballerina: " + errorMsg);
+        launcherException.addMessage("Run 'ballerina help " + subCommand + "' for usage.");
+        return launcherException;
+    }
+
+    public static CommandException createDistSubCommandUsageExceptionWithHelp(String errorMsg, String subCommand) {
+        return createUsageExceptionWithHelp(errorMsg, BallerinaCliCommands.DIST + " " + subCommand);
+    }
+
     public static CommandException createDistributionNotFoundException(String distribution) {
         return createCommandException("distribution '" + distribution + "' not found");
     }
 
     public static CommandException createDistributionRequiredException(String operation) {
-        return createUsageExceptionWithHelp("a distribution must be specified to " + operation);
+        return createDistSubCommandUsageExceptionWithHelp("a distribution must be specified to " + operation,
+                                                          operation);
     }
 }
 
