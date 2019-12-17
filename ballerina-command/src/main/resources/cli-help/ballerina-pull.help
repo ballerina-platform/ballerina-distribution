@@ -12,5 +12,5 @@ DESCRIPTION
 
 
 EXAMPLES
-       Fetch and use Ballerina 1.0.0.
+       Fetch and set Ballerina 1.0.0 as the active version.
           → ballerina dist pull jballerina-1.0.0
