@@ -58,7 +58,7 @@ public class RemoveCommand extends Command implements BCommand {
         }
 
         if (removeCommands.size() > 1) {
-            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
+            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments");
         }
 
         ToolUtil.handleInstallDirPermission();

@@ -53,7 +53,7 @@ public class UseCommand extends Command implements BCommand {
         }
 
         if (useCommands.size() > 1) {
-            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
+            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments");
         }
 
         PrintStream printStream = getPrintStream();

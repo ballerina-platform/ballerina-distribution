@@ -39,7 +39,7 @@ public class HelpCommand extends Command implements BCommand {
             return;
 
         } else if (helpCommands.size() > 2) {
-             throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
+             throw ErrorUtil.createUsageExceptionWithHelp("too many arguments");
         }
 
         int index = helpCommands.size() == 2 ? 1 : 0;

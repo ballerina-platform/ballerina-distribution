@@ -55,7 +55,7 @@ public class UpdateCommand extends Command implements BCommand {
         }
 
         if (updateCommands.size() > 0) {
-            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
+            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments");
         }
     }
 

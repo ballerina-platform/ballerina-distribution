@@ -60,7 +60,7 @@ public class ListCommand extends Command implements BCommand {
         }
 
         if (listCommands.size() > 0) {
-            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
+            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments");
         }
     }
 

@@ -54,7 +54,7 @@ public class FetchCommand extends Command implements BCommand {
         }
 
         if (fetchCommands.size() > 1) {
-            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
+            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments");
         }
 
         PrintStream printStream = getPrintStream();
@@ -72,7 +72,7 @@ public class FetchCommand extends Command implements BCommand {
         if (ToolUtil.downloadDistribution(printStream, distribution, distributionType, distributionVersion)) {
             printStream.println("Distribution '" + distribution + "' is available locally");
         } else {
-            printStream.println("Fetched distribution '" + distribution + "'");
+            printStream.println("Fetched distribution: '" + distribution + "'");
         }
         printStream.println("Run 'ballerina dist use " + distribution + "' to set it as the current distribution");
     }

@@ -54,7 +54,7 @@ public class PullCommand extends Command implements BCommand {
         }
 
         if (pullCommands.size() > 1) {
-            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
+            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments");
         }
         ToolUtil.handleInstallDirPermission();
         PrintStream printStream = getPrintStream();
