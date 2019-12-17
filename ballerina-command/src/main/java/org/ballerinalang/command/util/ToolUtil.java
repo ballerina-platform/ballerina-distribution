@@ -168,7 +168,7 @@ public class ToolUtil {
         conn.setRequestProperty("Accept", "application/json");
         if (conn.getResponseCode() != 200) {
             conn.disconnect();
-            throw ErrorUtil.createCommandException("server request failed: " + conn.getResponseMessage());
+            throw ErrorUtil.createCommandException(getServerRequestFailedErrorMessage(conn));
         } else {
             String json = convertStreamToString(conn.getInputStream());
             Pattern p = Pattern.compile("\"version\":\"(.*?)\"");
@@ -202,7 +202,7 @@ public class ToolUtil {
             if (conn.getResponseCode() == 404) {
                 return null;
             }
-            throw ErrorUtil.createCommandException("server request failed: " + conn.getResponseMessage());
+            throw ErrorUtil.createCommandException(getServerRequestFailedErrorMessage(conn));
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
             throw ErrorUtil.createCommandException("failed to connect to the update server");
         } finally {
@@ -249,7 +249,7 @@ public class ToolUtil {
             if (conn.getResponseCode() == 404) {
                 return null;
             }
-            throw ErrorUtil.createCommandException("server request failed: " + conn.getResponseMessage());
+            throw ErrorUtil.createCommandException(getServerRequestFailedErrorMessage(conn));
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
             throw ErrorUtil.createCommandException("failed to connect to the update server");
         } finally {
@@ -573,5 +573,10 @@ public class ToolUtil {
         } catch (URISyntaxException e) {
             throw ErrorUtil.createCommandException("failed to get the path to the Ballerina installation directory");
         }
+    }
+
+    private static String getServerRequestFailedErrorMessage(HttpURLConnection conn) throws IOException {
+        String responseMessage = conn.getResponseMessage();
+        return "server request failed: " + (responseMessage == null ? conn.getResponseCode() : responseMessage);
     }
 }
