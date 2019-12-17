@@ -70,9 +70,9 @@ public class FetchCommand extends Command implements BCommand {
             return;
         }
         if (ToolUtil.downloadDistribution(printStream, distribution, distributionType, distributionVersion)) {
-            printStream.println("Distribution '" + distribution + "' is locally available");
+            printStream.println("Distribution '" + distribution + "' is available locally");
         } else {
-            printStream.println("Distribution '" + distribution + "' fetched");
+            printStream.println("Fetched distribution '" + distribution + "'");
         }
         printStream.println("Run 'ballerina dist use " + distribution + "' to set it as the current distribution");
     }

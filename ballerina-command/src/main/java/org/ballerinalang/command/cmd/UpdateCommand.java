@@ -91,7 +91,7 @@ public class UpdateCommand extends Command implements BCommand {
             String distribution = ToolUtil.BALLERINA_TYPE + "-" + latestVersion;
             ToolUtil.downloadDistribution(printStream, distribution, ToolUtil.BALLERINA_TYPE, latestVersion);
             ToolUtil.useBallerinaVersion(printStream, distribution);
-            printStream.println("Updated to the latest Ballerina version: " + latestVersion);
+            printStream.println("Updated to the latest Ballerina version: '" + latestVersion + "'");
             return;
         }
         printStream.println("The distribution is already in the latest version: " + latestVersion);

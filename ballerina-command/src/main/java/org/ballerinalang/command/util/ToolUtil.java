@@ -323,7 +323,7 @@ public class ToolUtil {
                     String latestVersion = ToolUtil.getLatest(version, "patch");
                     if (!latestVersion.equals(version)) {
                         printStream.println();
-                        printStream.println("A new Ballerina version is available: " + latestVersion);
+                        printStream.println("A new version of Ballerina is available: '" + latestVersion + "'");
                         printStream.println("The installer for it can be downloaded from " +
                                             "https://ballerina.io/downloads/.");
                         printStream.println();
@@ -571,4 +571,3 @@ public class ToolUtil {
         }
     }
 }
-
