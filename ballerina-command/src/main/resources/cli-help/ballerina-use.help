@@ -1,5 +1,5 @@
 NAME
-       ballerina-dist-use - Use a given distribution version as the active version
+       ballerina-dist-use - Make the specified distribution the active version
 
 SYNOPSIS
        ballerina dist use <distribution-version>
