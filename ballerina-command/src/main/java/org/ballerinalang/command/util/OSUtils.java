@@ -101,12 +101,11 @@ public class OSUtils {
 
     /**
      * Check file and specify notice needs to be shown.
-     * @param version current version
      * @return needs to be shown
      * @throws IOException occurs when reading files
      */
-    public static boolean updateNotice(String version) throws IOException {
-        boolean showNotice = false;
+    static boolean updateNotice() throws IOException {
+        boolean showNotice;
         String userHome = getUserHome();
         LocalDate today = LocalDate.now();
         File file = new File(userHome + File.separator
@@ -116,10 +115,10 @@ public class OSUtils {
             file.createNewFile();
             showNotice = true;
         } else {
-            BufferedReader br = Files.newBufferedReader(Paths.get(file.getPath()));
-            showNotice = today.minusDays(1)
-                    .isAfter(LocalDate.parse(br.lines().collect(Collectors.toList()).get(0)));
-
+            try (BufferedReader br = Files.newBufferedReader(Paths.get(file.getPath()))) {
+                LocalDate lastUpdatedDate = LocalDate.parse(br.lines().collect(Collectors.toList()).get(0));
+                showNotice = today.minusDays(1).isAfter(lastUpdatedDate);
+            }
         }
         if (showNotice) {
             PrintWriter writer = new PrintWriter(file.getPath(), "UTF-8");

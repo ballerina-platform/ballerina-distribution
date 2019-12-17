@@ -17,6 +17,7 @@
 package org.ballerinalang.command;
 
 import org.ballerinalang.command.cmd.BCommand;
+import org.ballerinalang.command.cmd.BuildCommand;
 import org.ballerinalang.command.cmd.DefaultCommand;
 import org.ballerinalang.command.cmd.DistributionCommand;
 import org.ballerinalang.command.cmd.HelpCommand;
@@ -101,6 +102,10 @@ public class Main {
             UpdateToolCommand updateToolCommand = new UpdateToolCommand(outStream);
             cmdParser.addSubcommand(BallerinaCliCommands.UPDATE, updateToolCommand);
             updateToolCommand.setParentCmdParser(cmdParser);
+
+            BuildCommand buildCommand = new BuildCommand(outStream);
+            cmdParser.addSubcommand(BallerinaCliCommands.BUILD, buildCommand);
+            buildCommand.setParentCmdParser(cmdParser);
 
             VersionCommand versionCmd = new VersionCommand(outStream);
             cmdParser.addSubcommand(BallerinaCliCommands.VERSION, versionCmd);
