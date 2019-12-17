@@ -1,14 +1,14 @@
 NAME
-       Manage Ballerina distributions
+       ballerina-dist - Manage Ballerina distributions
 
 SYNOPSIS
-       ballerina dist <command> <-h | --help>
-       ballerina dist <command> [<args>]
+       ballerina dist [-h | --help]
+                      <command> [<args>]
 
 
 DESCRIPTION
-       Dist enables you to install, update, and switch among Ballerina distributions
-       from patch and minor release channels.
+       Dist enables you to install, update and switch among Ballerina distributions
+       From patch and minor release channels.
 
 
 OPTIONS
@@ -17,11 +17,13 @@ OPTIONS
 
 
 BALLERINA COMMANDS
-       Here is a list of available sub-commands:
-           list       List installed and available distributions
-           update     Update to the latest patch version of the active distribution
-           pull       Fetch a given distribution and set it as the active version
-           use        Make the specified distribution the active version
-           remove     Delete an installed distribution
+        Here is a list of available subcommands:
 
-       See 'ballerina dist <command> -h' for more information on a specific command.
+        update     Update to the latest patch version of the active distribution
+        pull       Fetch a given distribution and set it as the active version
+        use        Make the specified distribution the active version
+        list       List installed and available distributions
+        remove     Delete an installed distribution
+
+
+See 'ballerina dist <command> -h' for more information on a specific command.
