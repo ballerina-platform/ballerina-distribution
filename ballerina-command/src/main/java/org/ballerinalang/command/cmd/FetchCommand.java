@@ -50,11 +50,12 @@ public class FetchCommand extends Command implements BCommand {
         }
 
         if (fetchCommands == null || fetchCommands.size() == 0) {
-            throw ErrorUtil.createUsageExceptionWithHelp("distribution is not provided");
+            throw ErrorUtil.createDistributionRequiredException("fetch");
         }
 
         if (fetchCommands.size() > 1) {
-            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
+            throw ErrorUtil.createDistSubCommandUsageExceptionWithHelp("too many arguments",
+                                                                       BallerinaCliCommands.FETCH);
         }
 
         PrintStream printStream = getPrintStream();
@@ -62,19 +63,19 @@ public class FetchCommand extends Command implements BCommand {
         ToolUtil.handleInstallDirPermission();
         String distributionType = distribution.split("-")[0];
         if (!distributionType.equals("ballerina") && !distributionType.equals("jballerina")) {
-            throw ErrorUtil.createCommandException(distribution + " is not found");
+            throw ErrorUtil.createDistributionNotFoundException(distribution);
         }
         String distributionVersion = distribution.replace(distributionType + "-", "");
         if (distributionVersion.equals(ToolUtil.getCurrentBallerinaVersion())) {
-            printStream.println(distribution + " already in use");
+            printStream.println("'" + distribution + "' is the current distribution in use");
             return;
         }
         if (ToolUtil.downloadDistribution(printStream, distribution, distributionType, distributionVersion)) {
-            printStream.println(distribution + " is already fetched");
+            printStream.println("Distribution '" + distribution + "' is available locally");
         } else {
-            printStream.println(distribution + " is fetched");
+            printStream.println("Fetched distribution: '" + distribution + "'");
         }
-        printStream.println("Run 'ballerina dist use " + distribution + "' to use distribution");
+        printStream.println("Run 'ballerina dist use " + distribution + "' to set it as the current distribution");
     }
 
     @Override

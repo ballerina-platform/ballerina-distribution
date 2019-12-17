@@ -57,7 +57,7 @@ public class UpdateToolCommand extends Command implements BCommand {
         }
 
         if (updateCommands.size() > 0) {
-            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
+            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments", BallerinaCliCommands.UPDATE);
         }
     }
 
@@ -68,7 +68,7 @@ public class UpdateToolCommand extends Command implements BCommand {
 
     @Override
     public void printLongDesc(StringBuilder out) {
-        out.append("Updates the Ballerina cli commands to latest version. \n");
+        out.append("Updates the Ballerina command to the latest version.\n");
     }
 
     @Override
@@ -83,14 +83,14 @@ public class UpdateToolCommand extends Command implements BCommand {
 
     private static void updateCommands(PrintStream printStream) {
         String version = ToolUtil.getCurrentToolsVersion();
-        printStream.println("Fetching latest version from remote server...");
+        printStream.println("Fetching the latest version from the remote server...");
         String latestVersion = ToolUtil.getLatestToolVersion();
         if (latestVersion == null) {
-            printStream.println("Cannot find the latest command version");
+            printStream.println("Failed to find the latest command version");
             return;
         }
         if (latestVersion.equals(version)) {
-            printStream.println("You are already in latest command version: " + latestVersion);
+            printStream.println("The command is already in the latest version: " + latestVersion);
             return;
         }
         ToolUtil.downloadTool(printStream, latestVersion);

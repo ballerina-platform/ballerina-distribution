@@ -1,12 +1,13 @@
 NAME
-       ballerina-remove - Remove a given distribution version
+       ballerina-dist-remove - Delete an installed distribution
 
 SYNOPSIS
        ballerina dist remove <distribution-version>
 
 
 DESCRIPTION
-       Dist-remove removes the given Ballerina version from the project repository.
+       Dist-remove removes the given Ballerina version from the project
+       repository.
 
 
 EXAMPLES

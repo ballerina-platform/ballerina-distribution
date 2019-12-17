@@ -49,22 +49,22 @@ public class UseCommand extends Command implements BCommand {
         }
 
         if (useCommands == null || useCommands.size() == 0) {
-            throw ErrorUtil.createUsageExceptionWithHelp("distribution is not provided");
+            throw ErrorUtil.createDistributionRequiredException("use");
         }
 
         if (useCommands.size() > 1) {
-            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
+            throw ErrorUtil.createDistSubCommandUsageExceptionWithHelp("too many arguments", BallerinaCliCommands.USE);
         }
 
         PrintStream printStream = getPrintStream();
         String distribution = useCommands.get(0);
         String distributionType = distribution.split("-")[0];
         if (!distributionType.equals("ballerina") && !distributionType.equals("jballerina")) {
-            throw ErrorUtil.createCommandException(distribution + " is not found");
+            throw ErrorUtil.createDistributionNotFoundException(distribution);
         }
         String distributionVersion = distribution.replace(distributionType + "-", "");
         if (distributionVersion.equals(ToolUtil.getCurrentBallerinaVersion())) {
-            printStream.println(distribution + " already in use");
+            printStream.println("'" + distribution + "' is the current active distribution version");
             return;
         }
         if (ToolUtil.checkDistributionAvailable(distribution)) {
@@ -72,8 +72,8 @@ public class UseCommand extends Command implements BCommand {
             printStream.println("Using distribution version: " + distribution);
             return;
         }
-        printStream.println(distribution + " does not exist. Please use 'ballerina " +
-                                    "dist pull " + distribution + "' to download and use the distribution");
+        printStream.println("Distribution '" + distribution + "' not found");
+        printStream.println("Run 'ballerina dist pull " + distribution + "' to fetch and use the distribution");
     }
 
     @Override
