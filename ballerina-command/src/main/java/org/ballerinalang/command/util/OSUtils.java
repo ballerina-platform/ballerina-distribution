@@ -100,6 +100,14 @@ public class OSUtils {
     }
 
     /**
+     * Provide configuration file path of the installation.
+     * @return path to the file
+     */
+    public static String getInstalledConfigPath() {
+        return ToolUtil.getDistributionsPath() + File.separator + OSUtils.BALLERINA_CONFIG;
+    }
+
+    /**
      * Check file and specify notice needs to be shown.
      * @param version current version
      * @return needs to be shown
