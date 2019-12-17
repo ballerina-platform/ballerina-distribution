@@ -28,6 +28,8 @@ import java.io.PrintStream;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -96,6 +98,7 @@ public class ListCommand extends Command implements BCommand {
             listOfFiles = folder.listFiles();
             outStream.println("Distributions available locally: \n");
             List<String> installedVersions = new ArrayList<>();
+            Arrays.sort(listOfFiles, Collections.reverseOrder());
             for (int i = 0; i < listOfFiles.length; i++) {
                 if (listOfFiles[i].isDirectory()) {
                     String version = listOfFiles[i].getName();
