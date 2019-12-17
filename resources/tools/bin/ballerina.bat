@@ -38,12 +38,12 @@ if "%dist%" == "true" (
    if "%update%" == "true" if exist  %CURRENT_PATH%..\ballerina-command-tmp (
         call %CURRENT_PATH%\..\ballerina-command-tmp\install.bat
         if %errorlevel% neq 0 (
-            echo "Command update failed"
+            echo "Update failed due to errors"
             rd /s /q %CURRENT_PATH%\..\ballerina-command-tmp
-            exit /b
+            exit /b %errorlevel%
         )
         rd /s /q %CURRENT_PATH%\..\ballerina-command-tmp
-        echo "Command updated successfully"
+        echo "Update successfully completed"
         exit /b
    )
 ) else (
@@ -67,6 +67,8 @@ set merge=false
 if "%1" == "help" (
 	if "%2" == "" set merge=true
 )
+if "%1" == "-h" set merge=true
+if "%1" == "--help" set merge=true
 if "%1" == "" set merge=true
 if "%1" == "version" set merge=true
 if "%1" == "-v" set merge=true

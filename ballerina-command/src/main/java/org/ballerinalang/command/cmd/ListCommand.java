@@ -59,12 +59,7 @@ public class ListCommand extends Command implements BCommand {
             return;
         }
 
-        String userCommand = listCommands.get(0);
-        if (parentCmdParser.getSubcommands().get(userCommand) == null) {
-            throw ErrorUtil.createUsageExceptionWithHelp("unknown command " + userCommand);
-        }
-
-        if (listCommands.size() > 1) {
+        if (listCommands.size() > 0) {
             throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
         }
     }

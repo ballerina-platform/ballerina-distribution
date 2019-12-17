@@ -16,6 +16,7 @@
 
 package org.ballerinalang.command.cmd;
 
+import org.ballerinalang.command.util.ErrorUtil;
 import org.ballerinalang.command.util.ToolUtil;
 
 import java.io.IOException;
@@ -61,8 +62,7 @@ public abstract class Command {
         try {
             return ToolUtil.readFileAsString(fileName);
         } catch (IOException e) {
-            //TODO: Fix properly
-            return "";
+            throw ErrorUtil.createUsageExceptionWithHelp("unknown help topic `" + commandName + "`");
         }
     }
 

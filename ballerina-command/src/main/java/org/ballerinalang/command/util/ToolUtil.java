@@ -193,13 +193,14 @@ public class ToolUtil {
                                     OSUtils.getUserAgent(getCurrentBallerinaVersion(),
                                                          getCurrentToolsVersion(), "jballerina"));
             conn.setRequestProperty("Accept", "application/json");
-            if (conn.getResponseCode() != 200) {
-                conn.disconnect();
-                throw ErrorUtil.createCommandException("server request failed. HTTP error code " +
-                                                               conn.getResponseCode());
-            } else {
+            if (conn.getResponseCode() == 200) {
                 return getValue(type, convertStreamToString(conn.getInputStream()));
             }
+            if (conn.getResponseCode() == 404) {
+                return null;
+            }
+            throw ErrorUtil.createCommandException("server request failed with HTTP error code " +
+                                                           conn.getResponseCode());
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
             throw ErrorUtil.createCommandException("failed to connect to the update server");
         } finally {
@@ -232,10 +233,7 @@ public class ToolUtil {
             conn.setRequestProperty("user-agent", OSUtils.getUserAgent(getCurrentBallerinaVersion(),
                                                                        getCurrentToolsVersion(), "jballerina"));
             conn.setRequestProperty("Accept", "application/json");
-            if (conn.getResponseCode() != 200) {
-                throw ErrorUtil.createCommandException("server request failed. HTTP error code " +
-                                                               conn.getResponseCode());
-            } else {
+            if (conn.getResponseCode() == 200) {
                 String json = convertStreamToString(conn.getInputStream());
                 Pattern p = Pattern.compile("\"version\":\"(.*?)\"");
                 Matcher matcher = p.matcher(json);
@@ -243,9 +241,14 @@ public class ToolUtil {
                     conn.disconnect();
                     return matcher.group(1);
                 } else {
-                    throw ErrorUtil.createCommandException("cannot find the version from json response " + json);
+                    return null;
                 }
             }
+            if (conn.getResponseCode() == 404) {
+                return null;
+            }
+            throw ErrorUtil.createCommandException("server request failed with HTTP error code " +
+                                                           conn.getResponseCode());
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
             throw ErrorUtil.createCommandException("failed to connect to the update server");
         } finally {
@@ -433,7 +436,6 @@ public class ToolUtil {
         tempUnzipDirectory.mkdir();
         String zipFileLocation = toolUnzipLocation + File.separator + toolFileName + ".zip";
         downloadFile(conn, zipFileLocation, toolFileName, printStream);
-        printStream.println();
         unzip(zipFileLocation, toolUnzipLocation);
         copyScripts(toolUnzipLocation, toolFileName);
         Paths.get(toolUnzipLocation).toFile().delete();

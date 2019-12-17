@@ -32,12 +32,12 @@ then
     if [ -d "$CURRENT_PATH/../ballerina-command-tmp" ]; then
         $CURRENT_PATH/../ballerina-command-tmp/install
         if [ $? -ne '0' ]; then
-          echo "Command updated successfully failed"
+          echo "Update failed due to errors"
           rm -rf $CURRENT_PATH/../ballerina-command-tmp
-          exit 1
+          exit $?
         fi
         rm -rf $CURRENT_PATH/../ballerina-command-tmp
-        echo "Command updated successfully"
+        echo "Update successfully completed"
         exit 0
     fi
 else
@@ -56,7 +56,8 @@ else
     $BALLERINA_HOME/bin/./ballerina "$@"
 fi
 
-if [ "$1" == "help" ] && [ "$2" == "" ]  || [ "$1" == "" ] || [ "$1" == "version" ] || [ "$1" == "-v" ] || [ "$1" == "--version" ]
+if [ "$1" == "help" ] && [ "$2" == "" ]  || [ "$1" == "" ] || [ "$1" == "-h" ] || [ "$1" == "--help" ] || \
+   [ "$1" == "version" ] || [ "$1" == "-v" ] || [ "$1" == "--version" ]
 then
     JAVA_COMMAND=java
     if test -d "$CURRENT_PATH/../dependencies/jdk8u202-b08-jre"; then

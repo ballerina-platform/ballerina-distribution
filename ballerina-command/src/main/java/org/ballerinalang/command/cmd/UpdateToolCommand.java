@@ -56,12 +56,7 @@ public class UpdateToolCommand extends Command implements BCommand {
             return;
         }
 
-        String userCommand = updateCommands.get(0);
-        if (parentCmdParser.getSubcommands().get(userCommand) == null) {
-            throw ErrorUtil.createUsageExceptionWithHelp("unknown command " + userCommand);
-        }
-
-        if (updateCommands.size() > 1) {
+        if (updateCommands.size() > 0) {
             throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
         }
     }
@@ -90,6 +85,10 @@ public class UpdateToolCommand extends Command implements BCommand {
         String version = ToolUtil.getCurrentToolsVersion();
         printStream.println("Fetching the latest version from the remote server...");
         String latestVersion = ToolUtil.getLatestToolVersion();
+        if (latestVersion == null) {
+            printStream.println("Cannot find the latest command version");
+            return;
+        }
         if (latestVersion.equals(version)) {
             printStream.println("The command is already in the latest version: " + latestVersion);
             return;

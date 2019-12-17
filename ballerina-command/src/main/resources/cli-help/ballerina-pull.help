@@ -6,15 +6,9 @@ SYNOPSIS
 
 
 DESCRIPTION
-       Dist-pull pulls and uses a given Ballerina version from project repository.
-
-
-OPTIONS
-       Ballerina dist pull command takes no options.
+       Dist-pull pulls and uses a given Ballerina version from the remote repository.
 
 
 EXAMPLES
-       Install Ballerina 1.0.0 version.
+       Pull and use Ballerina 1.0.0.
           → ballerina dist pull jballerina-1.0.0
-
-       This will download and keep jballerina-1.0.0 distribution and set ballerina command.

@@ -19,7 +19,6 @@ package org.ballerinalang.command;
 import org.ballerinalang.command.cmd.BCommand;
 import org.ballerinalang.command.cmd.DefaultCommand;
 import org.ballerinalang.command.cmd.DistributionCommand;
-import org.ballerinalang.command.cmd.FetchCommand;
 import org.ballerinalang.command.cmd.HelpCommand;
 import org.ballerinalang.command.cmd.ListCommand;
 import org.ballerinalang.command.cmd.PullCommand;
@@ -78,9 +77,9 @@ public class Main {
             distCmdParser.addSubcommand(BallerinaCliCommands.PULL, pullCmd);
             pullCmd.setParentCmdParser(distCmdParser);
 
-            FetchCommand fetchCmd = new FetchCommand(outStream);
-            distCmdParser.addSubcommand(BallerinaCliCommands.FETCH, fetchCmd);
-            fetchCmd.setParentCmdParser(distCmdParser);
+//          FetchCommand fetchCmd = new FetchCommand(outStream);
+//          distCmdParser.addSubcommand(BallerinaCliCommands.FETCH, fetchCmd);
+//          fetchCmd.setParentCmdParser(distCmdParser);
 
             RemoveCommand removeCmd = new RemoveCommand(outStream);
             distCmdParser.addSubcommand(BallerinaCliCommands.REMOVE, removeCmd);
