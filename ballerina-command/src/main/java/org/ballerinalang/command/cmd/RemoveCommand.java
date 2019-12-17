@@ -54,11 +54,11 @@ public class RemoveCommand extends Command implements BCommand {
         }
 
         if (removeCommands == null || removeCommands.size() == 0) {
-            throw ErrorUtil.createUsageExceptionWithHelp("distribution is not provided");
+            throw ErrorUtil.createDistributionRequiredException("remove");
         }
 
         if (removeCommands.size() > 1) {
-            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments given");
+            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments");
         }
 
         ToolUtil.handleInstallDirPermission();
@@ -90,14 +90,14 @@ public class RemoveCommand extends Command implements BCommand {
                 version.equals(ToolUtil.BALLERINA_TYPE + "-" + ToolUtil.getCurrentBallerinaVersion());
         try {
             if (isCurrentVersion) {
-                throw ErrorUtil.createCommandException("cannot remove default Ballerina version");
+                throw ErrorUtil.createCommandException("The default Ballerina distribution cannot be removed");
             } else {
                 File directory = new File(ToolUtil.getDistributionsPath() + File.separator + version);
                 if (directory.exists()) {
                         deleteFiles(directory.toPath(), getPrintStream(), version);
-                        getPrintStream().println(version + " deleted successfully");
+                    getPrintStream().println("Distribution '" + version + "' successfully removed");
                 } else {
-                    throw ErrorUtil.createCommandException("'" + version + "' does not exist");
+                    throw ErrorUtil.createCommandException("distribution '" + version + "' not found");
                 }
             }
         } catch (IOException e) {
