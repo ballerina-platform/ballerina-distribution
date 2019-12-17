@@ -1,5 +1,5 @@
 NAME
-       ballerina-remove - Remove a given distribution version
+       ballerina-dist-remove - Remove a given distribution version
 
 SYNOPSIS
        ballerina dist remove <distribution-version>
