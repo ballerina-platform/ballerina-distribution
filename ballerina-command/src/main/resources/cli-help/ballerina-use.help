@@ -1,5 +1,5 @@
 NAME
-       ballerina-dist-use - Use a given distribution version as the default version
+       ballerina-dist-use - Use a given distribution version as the active version
 
 SYNOPSIS
        ballerina dist use <distribution-version>
@@ -7,7 +7,7 @@ SYNOPSIS
 
 DESCRIPTION
        Use switches to a given Ballerina version from the project repository
-       as the default version.
+       as the active version.
 
 
 EXAMPLES
