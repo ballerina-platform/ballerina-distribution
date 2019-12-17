@@ -73,7 +73,7 @@ public class OSUtils {
      * @return name of the file
      */
     public static String getDebugAdapterName() {
-        return OSUtils.isWindows() ? "debug-adapter-launcher.bat" : "debug-adapter-launcher";
+        return OSUtils.isWindows() ? "debug-adapter-launcher.bat" : "debug-adapter-launcher.sh";
     }
 
     /**
@@ -81,7 +81,7 @@ public class OSUtils {
      * @return name of the file
      */
     public static String getLangServerLauncherName() {
-        return OSUtils.isWindows() ? "language-server-launcher.bat" : "language-server-launcher";
+        return OSUtils.isWindows() ? "language-server-launcher.bat" : "language-server-launcher.sh";
     }
 
     public static String getBallerinaVersionFilePath() throws IOException {
