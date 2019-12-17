@@ -57,14 +57,7 @@ public class OSUtils {
      * @return name of the file
      */
     public static String getExecutableFileName() {
-        if (OSUtils.isWindows()) {
-            return "ballerina.bat";
-        } else if (OSUtils.isUnix() || OSUtils.isSolaris()) {
-            return "ballerina";
-        } else if (OSUtils.isMac()) {
-            return "ballerina";
-        }
-        return null;
+        return OSUtils.isWindows() ? "ballerina.bat" : "ballerina";
     }
 
     /**
@@ -72,14 +65,23 @@ public class OSUtils {
      * @return name of the file
      */
     public static String getInstallScriptFileName() {
-        if (OSUtils.isWindows()) {
-            return "install.bat";
-        } else if (OSUtils.isUnix() || OSUtils.isSolaris()) {
-            return "install";
-        } else if (OSUtils.isMac()) {
-            return "install";
-        }
-        return null;
+        return OSUtils.isWindows() ? "install.bat" : "install";
+    }
+
+    /**
+     * Provide file name of debug adapter script for current operating system.
+     * @return name of the file
+     */
+    public static String getDebugAdapterName() {
+        return OSUtils.isWindows() ? "debug-adapter-launcher.bat" : "debug-adapter-launcher.sh";
+    }
+
+    /**
+     * Provide file name of language server launcher script for current operating system.
+     * @return name of the file
+     */
+    public static String getLangServerLauncherName() {
+        return OSUtils.isWindows() ? "language-server-launcher.bat" : "language-server-launcher.sh";
     }
 
     public static String getBallerinaVersionFilePath() throws IOException {

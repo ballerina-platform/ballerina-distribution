@@ -390,6 +390,23 @@ public class ToolUtil {
             addExecutablePermissionToFile(new File(distPath + File.separator + distribution
                                                            + File.separator + "bin"
                                                            + File.separator + OSUtils.getExecutableFileName()));
+
+
+            String langServerPath = distPath + File.separator + distribution + File.separator + "lib"
+                                    + File.separator + "tools";
+            File launcherServer = new File(langServerPath + File.separator + "lang-server"
+                    + File.separator + "launcher" + File.separator + OSUtils.getLangServerLauncherName());
+            File debugAdpater = new File(langServerPath + File.separator + "debug-adapter"
+                    + File.separator + "launcher" + File.separator + OSUtils.getDebugAdapterName());
+
+            if (debugAdpater.exists()) {
+                addExecutablePermissionToFile(debugAdpater);
+            }
+
+            if (launcherServer.exists()) {
+                addExecutablePermissionToFile(launcherServer);
+            }
+
             new File(zipFileLocation).delete();
         } finally {
             conn.disconnect();
