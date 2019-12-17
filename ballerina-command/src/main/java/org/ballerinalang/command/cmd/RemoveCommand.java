@@ -58,7 +58,8 @@ public class RemoveCommand extends Command implements BCommand {
         }
 
         if (removeCommands.size() > 1) {
-            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments");
+            throw ErrorUtil.createDistSubCommandUsageExceptionWithHelp("too many arguments",
+                                                                       BallerinaCliCommands.REMOVE);
         }
 
         ToolUtil.handleInstallDirPermission();

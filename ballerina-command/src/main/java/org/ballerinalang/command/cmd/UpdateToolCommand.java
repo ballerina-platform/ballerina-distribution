@@ -57,7 +57,7 @@ public class UpdateToolCommand extends Command implements BCommand {
         }
 
         if (updateCommands.size() > 0) {
-            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments");
+            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments", BallerinaCliCommands.UPDATE);
         }
     }
 

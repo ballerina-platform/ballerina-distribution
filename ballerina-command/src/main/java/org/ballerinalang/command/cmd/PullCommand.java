@@ -54,7 +54,7 @@ public class PullCommand extends Command implements BCommand {
         }
 
         if (pullCommands.size() > 1) {
-            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments");
+            throw ErrorUtil.createDistSubCommandUsageExceptionWithHelp("too many arguments", BallerinaCliCommands.PULL);
         }
         ToolUtil.handleInstallDirPermission();
         PrintStream printStream = getPrintStream();
