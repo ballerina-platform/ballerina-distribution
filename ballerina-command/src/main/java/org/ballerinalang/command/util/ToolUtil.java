@@ -564,7 +564,10 @@ public class ToolUtil {
             if (!new File(installationPath).canWrite()) {
                 throw ErrorUtil.createCommandException(
                         "permission denied: current user does not have write access to the Ballerina installation " +
-                                "directory '" + installationPath + "'");
+                                "directory '" + installationPath +
+                                "'\n\nRun the command as a user with write access to the installation directory or " +
+                                "grant write access to the installation directory to the current user and re-run the " +
+                                "command.");
             }
         } catch (URISyntaxException e) {
             throw ErrorUtil.createCommandException("failed to get the path to the Ballerina installation directory");
