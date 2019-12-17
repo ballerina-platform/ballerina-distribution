@@ -82,7 +82,11 @@ public class ToolUtil {
      */
     public static String getCurrentBallerinaVersion() {
         try {
-            return getVersion(OSUtils.getBallerinaVersionFilePath());
+            String userVersion = getVersion(OSUtils.getBallerinaVersionFilePath());
+            if (checkDistributionAvailable(BALLERINA_TYPE + "-" + userVersion)) {
+                return userVersion;
+            }
+            return getVersion(OSUtils.getInstalledConfigPath());
         } catch (IOException e) {
             throw ErrorUtil.createCommandException("current Ballerina version not found.");
         }
