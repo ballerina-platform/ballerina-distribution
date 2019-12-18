@@ -13,7 +13,7 @@ DESCRIPTION
        you the flexibility to fetch and use any distribution version.
 
        Here "distribution" has two parts: name and version. Following are some sample
-       distributions: jballerina-1.1.0, jballerina 1.4.0, nballerina-0.5.0.
+       distributions: jballerina-1.1.0, jballerina-1.4.0, nballerina-0.5.0.
 
 
 EXAMPLES
