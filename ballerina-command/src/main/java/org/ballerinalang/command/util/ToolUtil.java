@@ -426,7 +426,7 @@ public class ToolUtil {
             } else if (conn.getResponseCode() == 200) {
                 downloadAndSetupTool(printStream, conn, "ballerina-command-" + toolVersion);
             } else {
-                throw ErrorUtil.createCommandException("command version '" + toolVersion + "' not found ");
+                throw ErrorUtil.createCommandException("tool version '" + toolVersion + "' not found ");
             }
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
             throw ErrorUtil.createCommandException("failed to connect to the update server");

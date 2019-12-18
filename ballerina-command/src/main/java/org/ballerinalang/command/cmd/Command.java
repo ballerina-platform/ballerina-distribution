@@ -71,7 +71,7 @@ public abstract class Command {
             Properties properties = new Properties();
             properties.load(inputStream);
 
-            String output = "Command " + properties.getProperty("ballerina.command.version") + "\n";
+            String output = "Ballerina tool " + properties.getProperty("ballerina.command.version") + "\n";
             getPrintStream().print(output);
         } catch (Throwable ignore) {
             //TODO: Handle exception
