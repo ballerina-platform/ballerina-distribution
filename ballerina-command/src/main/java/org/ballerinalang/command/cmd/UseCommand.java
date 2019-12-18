@@ -69,11 +69,12 @@ public class UseCommand extends Command implements BCommand {
         }
         if (ToolUtil.checkDistributionAvailable(distribution)) {
             ToolUtil.useBallerinaVersion(printStream, distribution);
-            printStream.println("Using distribution version: " + distribution);
+            printStream.println("'" + distribution + "' successfully set as the active distribution");
             return;
         }
         printStream.println("Distribution '" + distribution + "' not found");
-        printStream.println("Run 'ballerina dist pull " + distribution + "' to fetch and use the distribution");
+        printStream.println("Run 'ballerina dist pull " + distribution + "' to fetch and set the distribution as the " +
+                                    "active distribute");
     }
 
     @Override

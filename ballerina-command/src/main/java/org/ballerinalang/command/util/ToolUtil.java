@@ -336,7 +336,7 @@ public class ToolUtil {
         HttpURLConnection conn = null;
        try {
             if (!ToolUtil.checkDistributionAvailable(distribution)) {
-                printStream.println("Fetching distribution from remote server...");
+                printStream.println("Fetching the '" + distribution + "' distribution from the remote server...");
                 SSLContext sc = SSLContext.getInstance("SSL");
                 sc.init(null, trustAllCerts, new java.security.SecureRandom());
                 HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());

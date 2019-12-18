@@ -65,12 +65,12 @@ public class PullCommand extends Command implements BCommand {
         }
         String distributionVersion = distribution.replace(distributionType + "-", "");
         if (distributionVersion.equals(ToolUtil.getCurrentBallerinaVersion())) {
-            printStream.println("'" + distribution + "' is the current distribution in use");
+            printStream.println("'" + distribution + "' is already the active distribution");
             return;
         }
         ToolUtil.downloadDistribution(printStream, distribution, distributionType, distributionVersion);
         ToolUtil.useBallerinaVersion(printStream, distribution);
-        printStream.println("Using distribution version: " + distribution);
+        printStream.println("'" + distribution + "' successfully set as the active distribution");
 
 
     }

@@ -90,7 +90,7 @@ public class UpdateToolCommand extends Command implements BCommand {
             return;
         }
         if (latestVersion.equals(version)) {
-            printStream.println("The command is already in the latest version: " + latestVersion);
+            printStream.println("The active command version is already the latest version: '" + latestVersion + "'");
             return;
         }
         ToolUtil.downloadTool(printStream, latestVersion);
