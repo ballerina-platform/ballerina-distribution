@@ -52,7 +52,7 @@ public class ListCommand extends Command implements BCommand {
 
     public void execute() {
         if (helpFlag) {
-            printUsageInfo(BallerinaCliCommands.LIST);
+            printUsageInfo("dist-" + BallerinaCliCommands.LIST);
             return;
         }
 
