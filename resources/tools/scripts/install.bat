@@ -24,7 +24,7 @@ set CURRENT_PATH=%~sdp0
 xcopy /q %CURRENT_PATH%\ballerina-command-${ballerina.command.version}\lib\ballerina-command-${ballerina.command.version}.jar  %CURRENT_PATH%\..\lib /Y
 
 if %errorlevel% neq 0 (
-    echo "error occurred while copying ballerina jar"
+    echo error occurred while copying ballerina jar
     REM remove if copied with an error.
     if exist %CURRENT_PATH%\..\lib\ballerina-command-${ballerina.command.version}.jar (
         del /F/Q %CURRENT_PATH%\..\lib\ballerina-command-${ballerina.command.version}.jar
@@ -35,7 +35,7 @@ if %errorlevel% neq 0 (
 xcopy /q %CURRENT_PATH%\ballerina-command-${ballerina.command.version}\bin\ballerina.bat  %CURRENT_PATH%\..\bin /Y
 
 if %errorlevel% neq 0 (
-    echo "error occurred while copying ballerina.bat"
+    echo error occurred while copying ballerina.bat
     REM remove if copied with an error.
     if exist %CURRENT_PATH%\..\lib\ballerina-command-${ballerina.command.version}.jar (
         del /F/Q %CURRENT_PATH%\..\lib\ballerina-command-${ballerina.command.version}.jar
@@ -43,8 +43,8 @@ if %errorlevel% neq 0 (
     exit /b %errorlevel%
 )
 
-echo "Command version updated to the latest version: ${ballerina.command.version}"
-echo "Cleaning old files..."
+echo Command version updated to the latest version: ${ballerina.command.version}
+echo Cleaning old files...
 
 for %%f in (%CURRENT_PATH%\..\lib\*ballerina-command*.jar) do (
 	echo %%f|find /i "ballerina-command-${ballerina.command.version}.jar">nul

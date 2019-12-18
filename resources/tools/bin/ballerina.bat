@@ -23,41 +23,21 @@ set CURRENT_PATH=%~sdp0
 set dist=false
 set update=false
 set build=false
+set RUN_BALLERINA=true
 set FILE_PATH=%CURRENT_PATH%..\distributions\ballerina-version
 if "%1" == "dist" set dist=true
 if "%2" == "dist" set dist=true
 if "%1" == "update" set dist=true
 if "%2" == "update" set dist=true
+if "%1" == "build" set dist=true
 if "%1" == "update" set update=true
-if "%2" == "update" set update=true
 if "%1" == "build" set build=true
-if "%2" == "build" set build=true
 SetLocal EnableDelayedExpansion
 
-if "%build%" == "true" (
-   if exist %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre (
-       %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre\bin\java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
-   ) else (
-		java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
-   )
-    set BALLERINA_HOME=
-    for /f %%a in (%CURRENT_PATH%\..\distributions\ballerina-version) do (
-        set BALLERINA_HOME=%%a
-    )
-    if exist %userprofile%\.ballerina\ballerina-version (
-        set "FILE_PATH=%userprofile%\.ballerina\ballerina-version"
-    )
-
-    SetLocal EnableDelayedExpansion
-    for /f %%a in (!FILE_PATH!) do (
-        if exist %%a (
-            set BALLERINA_HOME=%%a
-        )
-    )
-    call %CURRENT_PATH%..\distributions\!BALLERINA_HOME!\bin\ballerina.bat %*
-)
-
 if "%dist%" == "true" (
+   if not "%build%" == "true" (
+       set RUN_BALLERINA=false;
+   )
    if exist %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre (
        %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre\bin\java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
    ) else (
@@ -66,17 +46,17 @@ if "%dist%" == "true" (
    if "%update%" == "true" if exist  %CURRENT_PATH%..\ballerina-command-tmp (
         call %CURRENT_PATH%\..\ballerina-command-tmp\install.bat
         if %errorlevel% neq 0 (
-            echo "Update failed due to errors"
+            echo Update failed due to errors
             rd /s /q %CURRENT_PATH%\..\ballerina-command-tmp
             exit /b %errorlevel%
         )
         rd /s /q %CURRENT_PATH%\..\ballerina-command-tmp
-        echo "Update successfully completed"
+        echo Update successfully completed
         exit /b
    )
 )
 
-if "%dist%" == "false" if "%build%" == "false" (
+if "%RUN_BALLERINA%" == "true" (
     set BALLERINA_HOME=
     for /f %%a in (%CURRENT_PATH%\..\distributions\ballerina-version) do (
         set BALLERINA_HOME=%%a
@@ -87,7 +67,7 @@ if "%dist%" == "false" if "%build%" == "false" (
 
     SetLocal EnableDelayedExpansion
     for /f %%a in (!FILE_PATH!) do (
-        if exist %%a (
+        if exist %CURRENT_PATH%..\distributions\%%a (
             set BALLERINA_HOME=%%a
         )
     )
