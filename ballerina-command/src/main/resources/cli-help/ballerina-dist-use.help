@@ -9,7 +9,7 @@ DESCRIPTION
        Use marks the given Ballerina distribution as the active distribution.
 
        Here "distribution" has two parts: name and version. Here are some sample
-       distributions: jballerina-1.1.0, jballerina 1.4.0, nballerina-0.5.0.
+       distributions: jballerina-1.1.0, jballerina-1.4.0, nballerina-0.5.0.
 
 
 EXAMPLES
