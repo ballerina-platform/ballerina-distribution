@@ -1,0 +1,64 @@
+                                                    ~ BALLERINA ~
+                                                    =============
+
+
+PREREQUISITES
+-------------
+
+Ballerina requires JRE 8 update 202.
+Check https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/tag/jdk8u202-b08 to download the JRE relevant to your system.
+This is the Java version we have used when testing Ballerina.
+
+
+INSTALLING BALLERINA
+--------------------
+
+- Unzip the Ballerina archive in the desired directory. This will be the Ballerina installation directory.
+
+- Set the path of the installation directory to the BALLERINA_HOME environment variable.
+
+- Add the <BALLERINA_HOME>/bin path to your system's path variable.
+
+- If you have installed Java 8 already, you are all set! Just make sure that the JAVA_HOME environment variable is set correctly.
+
+- If you do not have Java 8, or if you have a different version of Java, download a compatible JRE 8 version as specified in the prerequisites.
+    - To set the obtained JRE as the one used by Ballerina, extract the downloaded JRE zip/tar.gz to the <BALLERINA_HOME>/dependencies/jdk8u202-b08-jre directory.
+    - Once you are done, the directory structure should look exactly like the following:
+        <BALLERINA_HOME>/dependencies/
+        └── jdk8u202-b08-jre
+            ├── ASSEMBLY_EXCEPTION
+            ├── bin
+            ├── lib
+            ├── LICENSE
+            ├── man
+            ├── release
+            └── THIRD_PARTY_README
+    - Ensure that the directory which contains the JRE is named "jdk8u202-b08-jre"
+
+- Finally, to verify whether Ballerina is installed properly, you can run the `ballerina version` command. If Ballerina was installed correctly, you should see an output similar to the following:
+    $ ballerina version
+    jBallerina 1.1.0
+    Language specification 2019R3
+    Ballerina tool 0.8.0
+
+
+INSTALLING THE VS CODE PLUGIN
+-----------------------------
+
+- The VS Code plugin for Ballerina can be installed through the VS Code Marketplace. Look up "Ballerina" in the Marketplace and you should get the download page for the Ballerina plugin.
+
+** Note **: For the VS Code plugin to work, the BALLERINA_HOME environment variable should be set and the <BALLERINA_HOME>/bin added to the path variable of the system.
+
+
+DOCUMENTATION
+-------------
+
+The following resources should help you get up and running with Ballerina:
+
+- Ballerina by Example: https://ballerina.io/learn/by-example
+
+- Ballerina How-To guides: https://ballerina.io/learn/
+
+- Ballerina standard library API docs: https://ballerina.io/learn/api-docs/ballerina
+
+- Ballerina language specification: https://ballerina.io/spec

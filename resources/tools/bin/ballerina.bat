@@ -41,7 +41,14 @@ if "%dist%" == "true" (
    if exist %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre (
        %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre\bin\java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
    ) else (
-		java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
+        set JVER=
+        for /f tokens^=2-5^ delims^=.-_^" %%j in ('"%JAVA_HOME%\bin\java" -fullversion 2^>^&1') do set "JVER=%%j%%k"
+        if "%JVER%" EQU 18 (
+            java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
+        ) else (
+            echo Compatible JRE 8 not found. Please follow the instructions in ^<BALLERINA_HOME^>\INSTALL.txt to install and setup Ballerina.
+            exit /b
+        )
    )
    if "%update%" == "true" if exist  %CURRENT_PATH%..\ballerina-command-tmp (
         call %CURRENT_PATH%\..\ballerina-command-tmp\install.bat
@@ -88,7 +95,14 @@ if "%merge%" == "true" (
    if exist %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre (
        %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre\bin\java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
    ) else (
-		java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
+        set JVER=
+        for /f tokens^=2-5^ delims^=.-_^" %%j in ('"%JAVA_HOME%\bin\java" -fullversion 2^>^&1') do set "JVER=%%j%%k"
+        if "%JVER%" EQU 18 (
+            java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
+        ) else (
+            echo Compatible JRE 8 not found. Please follow the instructions in ^<BALLERINA_HOME^>\INSTALL.txt to install and setup Ballerina.
+            exit /b
+        )
    )
 )
 
