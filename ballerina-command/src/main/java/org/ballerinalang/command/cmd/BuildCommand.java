@@ -17,47 +17,38 @@
 package org.ballerinalang.command.cmd;
 
 import org.ballerinalang.command.BallerinaCliCommands;
-import org.ballerinalang.command.util.ErrorUtil;
+import org.ballerinalang.command.util.ToolUtil;
 import picocli.CommandLine;
 
 import java.io.PrintStream;
 import java.util.List;
 
 /**
- * This class represents the "version" command and it holds arguments and flags specified by the user.
+ * This class represents the "build" command and used to notify latest distribution information.
  */
 @CommandLine.Command(name = "version", description = "Prints Ballerina version")
-public class VersionCommand extends Command implements BCommand {
+public class BuildCommand extends Command implements BCommand {
+
+    public BuildCommand(PrintStream printStream) {
+        super(printStream);
+    }
+
     @CommandLine.Parameters(description = "Command name")
-    private List<String> versionCommands;
+    private List<String> buildCommands;
 
     @CommandLine.Option(names = {"--help", "-h", "?"}, hidden = true)
     private boolean helpFlag;
 
-    private CommandLine parentCmdParser;
-
-    public VersionCommand(PrintStream printStream) {
-        super(printStream);
-    }
-
     public void execute() {
         if (helpFlag) {
-            // Ignore since we have nothing to print here.
             return;
         }
-
-        if (versionCommands == null) {
-            printVersionInfo();
-        }
-
-        if (versionCommands != null && versionCommands.size() > 1) {
-            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments", BallerinaCliCommands.VERSION);
-        }
+        ToolUtil.checkForUpdate(getPrintStream());
     }
 
     @Override
     public String getName() {
-        return BallerinaCliCommands.VERSION;
+        return BallerinaCliCommands.BUILD;
     }
 
     @Override
@@ -67,11 +58,9 @@ public class VersionCommand extends Command implements BCommand {
 
     @Override
     public void printUsage(StringBuilder out) {
-        out.append("  ballerina version \n");
     }
 
     @Override
     public void setParentCmdParser(CommandLine parentCmdParser) {
-        this.parentCmdParser = parentCmdParser;
     }
 }

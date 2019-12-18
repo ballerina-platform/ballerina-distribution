@@ -18,6 +18,7 @@ package org.ballerinalang.command.cmd;
 
 import org.ballerinalang.command.BallerinaCliCommands;
 import org.ballerinalang.command.util.ErrorUtil;
+import org.ballerinalang.command.util.ToolUtil;
 import picocli.CommandLine;
 
 import java.util.List;
@@ -38,19 +39,18 @@ public class HelpCommand extends Command implements BCommand {
             printUsageInfo(BallerinaCliCommands.HELP);
             return;
 
-        } else if (helpCommands.size() > 2) {
+        }
+
+        int cmdCount = helpCommands.size();
+
+        if (cmdCount > 2) {
              throw ErrorUtil.createUsageExceptionWithHelp("too many arguments");
         }
 
-        int index = helpCommands.size() == 2 ? 1 : 0;
-        String userCommand = helpCommands.get(index);
+        String userCommand = helpCommands.get(0);
 
-        if (index == 1 && userCommand.equals("update")) {
-            userCommand = "dist-" + userCommand;
-        }
-
-        if (helpCommands.get(index) == null) {
-            throw ErrorUtil.createUsageExceptionWithHelp("unknown help topic `" + userCommand + "`");
+        if (cmdCount == 2) {
+            userCommand += "-" + helpCommands.get(1);
         }
 
         String commandUsageInfo = getCommandUsageInfo(userCommand);

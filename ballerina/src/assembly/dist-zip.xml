@@ -95,6 +95,12 @@
             <filtered>true</filtered>
             <fileMode>775</fileMode>
         </file>
+        <file>
+            <source>../resources/tools/bin/ballerina.bat</source>
+            <outputDirectory>bin</outputDirectory>
+            <filtered>true</filtered>
+            <fileMode>775</fileMode>
+        </file>
     </files>
     <dependencySets>
         <dependencySet>

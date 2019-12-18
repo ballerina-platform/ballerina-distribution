@@ -52,7 +52,7 @@ public class ListCommand extends Command implements BCommand {
 
     public void execute() {
         if (helpFlag) {
-            printUsageInfo(BallerinaCliCommands.LIST);
+            printUsageInfo(ToolUtil.CLI_HELP_FILE_PREFIX + BallerinaCliCommands.LIST);
             return;
         }
 
@@ -62,7 +62,7 @@ public class ListCommand extends Command implements BCommand {
         }
 
         if (listCommands.size() > 0) {
-            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments");
+            throw ErrorUtil.createDistSubCommandUsageExceptionWithHelp("too many arguments", BallerinaCliCommands.LIST);
         }
     }
 
@@ -116,8 +116,7 @@ public class ListCommand extends Command implements BCommand {
                 }
             }
             outStream.println();
-            outStream.println("Run 'ballerina dist pull <version>' to pull distributions available remotely");
-            outStream.println("Run 'ballerina dist use <version>' to use distributions available locally");
+            outStream.println("Use 'ballerina help dist' for more information on specific commands.");
         } catch (IOException | KeyManagementException | NoSuchAlgorithmException e) {
             outStream.println("Update service is not available");
         }

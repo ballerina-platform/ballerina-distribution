@@ -57,14 +57,7 @@ public class OSUtils {
      * @return name of the file
      */
     public static String getExecutableFileName() {
-        if (OSUtils.isWindows()) {
-            return "ballerina.bat";
-        } else if (OSUtils.isUnix() || OSUtils.isSolaris()) {
-            return "ballerina";
-        } else if (OSUtils.isMac()) {
-            return "ballerina";
-        }
-        return null;
+        return OSUtils.isWindows() ? "ballerina.bat" : "ballerina";
     }
 
     /**
@@ -72,14 +65,23 @@ public class OSUtils {
      * @return name of the file
      */
     public static String getInstallScriptFileName() {
-        if (OSUtils.isWindows()) {
-            return "install.bat";
-        } else if (OSUtils.isUnix() || OSUtils.isSolaris()) {
-            return "install";
-        } else if (OSUtils.isMac()) {
-            return "install";
-        }
-        return null;
+        return OSUtils.isWindows() ? "install.bat" : "install";
+    }
+
+    /**
+     * Provide file name of debug adapter script for current operating system.
+     * @return name of the file
+     */
+    public static String getDebugAdapterName() {
+        return OSUtils.isWindows() ? "debug-adapter-launcher.bat" : "debug-adapter-launcher.sh";
+    }
+
+    /**
+     * Provide file name of language server launcher script for current operating system.
+     * @return name of the file
+     */
+    public static String getLangServerLauncherName() {
+        return OSUtils.isWindows() ? "language-server-launcher.bat" : "language-server-launcher.sh";
     }
 
     public static String getBallerinaVersionFilePath() throws IOException {
@@ -100,13 +102,20 @@ public class OSUtils {
     }
 
     /**
+     * Provide configuration file path of the installation.
+     * @return path to the file
+     */
+    public static String getInstalledConfigPath() {
+        return ToolUtil.getDistributionsPath() + File.separator + OSUtils.BALLERINA_CONFIG;
+    }
+
+    /**
      * Check file and specify notice needs to be shown.
-     * @param version current version
      * @return needs to be shown
      * @throws IOException occurs when reading files
      */
-    public static boolean updateNotice(String version) throws IOException {
-        boolean showNotice = false;
+    static boolean updateNotice() throws IOException {
+        boolean showNotice;
         String userHome = getUserHome();
         LocalDate today = LocalDate.now();
         File file = new File(userHome + File.separator
@@ -116,10 +125,10 @@ public class OSUtils {
             file.createNewFile();
             showNotice = true;
         } else {
-            BufferedReader br = Files.newBufferedReader(Paths.get(file.getPath()));
-            showNotice = today.minusDays(1)
-                    .isAfter(LocalDate.parse(br.lines().collect(Collectors.toList()).get(0)));
-
+            try (BufferedReader br = Files.newBufferedReader(Paths.get(file.getPath()))) {
+                LocalDate lastUpdatedDate = LocalDate.parse(br.lines().collect(Collectors.toList()).get(0));
+                showNotice = today.minusDays(1).isAfter(lastUpdatedDate);
+            }
         }
         if (showNotice) {
             PrintWriter writer = new PrintWriter(file.getPath(), "UTF-8");

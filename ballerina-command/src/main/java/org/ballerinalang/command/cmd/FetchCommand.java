@@ -54,7 +54,8 @@ public class FetchCommand extends Command implements BCommand {
         }
 
         if (fetchCommands.size() > 1) {
-            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments");
+            throw ErrorUtil.createDistSubCommandUsageExceptionWithHelp("too many arguments",
+                                                                       BallerinaCliCommands.FETCH);
         }
 
         PrintStream printStream = getPrintStream();

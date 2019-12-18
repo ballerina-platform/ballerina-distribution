@@ -44,7 +44,7 @@ public class UseCommand extends Command implements BCommand {
 
     public void execute() {
         if (helpFlag) {
-            printUsageInfo(BallerinaCliCommands.USE);
+            printUsageInfo(ToolUtil.CLI_HELP_FILE_PREFIX + BallerinaCliCommands.USE);
             return;
         }
 
@@ -53,7 +53,7 @@ public class UseCommand extends Command implements BCommand {
         }
 
         if (useCommands.size() > 1) {
-            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments");
+            throw ErrorUtil.createDistSubCommandUsageExceptionWithHelp("too many arguments", BallerinaCliCommands.USE);
         }
 
         PrintStream printStream = getPrintStream();
@@ -64,16 +64,17 @@ public class UseCommand extends Command implements BCommand {
         }
         String distributionVersion = distribution.replace(distributionType + "-", "");
         if (distributionVersion.equals(ToolUtil.getCurrentBallerinaVersion())) {
-            printStream.println("'" + distribution + "' is the current distribution in use");
+            printStream.println("'" + distribution + "' is the current active distribution version");
             return;
         }
         if (ToolUtil.checkDistributionAvailable(distribution)) {
             ToolUtil.useBallerinaVersion(printStream, distribution);
-            printStream.println("Using distribution version: " + distribution);
+            printStream.println("'" + distribution + "' successfully set as the active distribution");
             return;
         }
         printStream.println("Distribution '" + distribution + "' not found");
-        printStream.println("Run 'ballerina dist fetch " + distribution + "' to download the distribution");
+        printStream.println("Run 'ballerina dist pull " + distribution + "' to fetch and set the distribution as the " +
+                                    "active distribute");
     }
 
     @Override

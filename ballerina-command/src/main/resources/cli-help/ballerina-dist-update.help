@@ -1,14 +1,19 @@
 NAME
-       ballerina-dist-update - Update to the latest distribution version
+       ballerina-dist-update - Update to the latest patch version of the active distribution
 
 SYNOPSIS
        ballerina dist update
 
 
 DESCRIPTION
-       Dist-update updates Ballerina to the latest distribution version.
+       Update fetches the latest patch version of your active distribution and marks it
+       as the active version.
+
+       This command does not fetch the latest minor version if any.
 
 
 EXAMPLES
-       Update Ballerina to the latest distribution version.
-          → ballerina dist update
+       Assume that your active distribution is jballerina-1.1.3 and there exists a
+       new patch version jballerina-1.1.7. Then, the following command will fetch
+       it and mark it as the active distribution.
+          $ ballerina dist update
