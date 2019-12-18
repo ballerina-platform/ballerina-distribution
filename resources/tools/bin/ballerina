@@ -27,7 +27,7 @@ then
     if test -d "$CURRENT_PATH/../dependencies/jdk8u202-b08-jre"; then
       JAVA_COMMAND="$CURRENT_PATH/../dependencies/jdk8u202-b08-jre/bin/java"
     elif [[ `$JAVA_COMMAND -version 2>&1 | grep -e "1.8."` = "" ]]; then
-      echo "Compatible JRE 8 not found. Please follow the instructions in $(cd $CURRENT_PATH/../; pwd)/INSTALL.txt to install and setup Ballerina."
+      echo "Compatible JRE 8 not found. Please follow the instructions in <BALLERINA_HOME>/INSTALL.txt to install and setup Ballerina."
       exit 1;
     fi
 
@@ -67,7 +67,7 @@ then
     if test -d "$CURRENT_PATH/../dependencies/jdk8u202-b08-jre"; then
       JAVA_COMMAND="$CURRENT_PATH/../dependencies/jdk8u202-b08-jre/bin/java"
     elif [[ `$JAVA_COMMAND -version 2>&1 | grep -e "1.8."` = "" ]]; then
-      echo "Compatible JRE 8 not found. Please follow the instructions in $(cd $CURRENT_PATH/../; pwd)/INSTALL.txt to install and setup Ballerina."
+      echo "Compatible JRE 8 not found. Please follow the instructions in <BALLERINA_HOME>/INSTALL.txt to install and setup Ballerina."
       exit 1;
     fi
     $JAVA_COMMAND -jar $CURRENT_PATH/../lib/ballerina-command-${ballerina.command.version}.jar "$@"
