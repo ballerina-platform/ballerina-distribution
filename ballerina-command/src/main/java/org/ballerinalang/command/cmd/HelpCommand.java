@@ -18,7 +18,6 @@ package org.ballerinalang.command.cmd;
 
 import org.ballerinalang.command.BallerinaCliCommands;
 import org.ballerinalang.command.util.ErrorUtil;
-import org.ballerinalang.command.util.ToolUtil;
 import picocli.CommandLine;
 
 import java.util.List;

@@ -60,7 +60,8 @@ public class ToolUtil {
     private static final String PRODUCTION_URL = "https://api.staging-central.ballerina.io/update-tool";
     public static final String BALLERINA_TYPE = "jballerina";
     public static final String CLI_HELP_FILE_PREFIX = "dist-";
-    public static final String BALLERINA_1_X_VERSIONS = "1.0.";
+    private static final String BALLERINA_1_X_VERSIONS = "1.0.";
+    private static final String CONNECTION_ERROR_MESSAGE = "connection to the remote server failed";
 
     private static TrustManager[] trustAllCerts = new TrustManager[]{
             new X509TrustManager() {
@@ -178,7 +179,7 @@ public class ToolUtil {
                 }
             }
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
-            throw ErrorUtil.createCommandException(getRemoteConnectionIssueMessage());
+            throw ErrorUtil.createCommandException(CONNECTION_ERROR_MESSAGE);
         } finally {
             if (conn != null) {
                 conn.disconnect();
@@ -210,7 +211,7 @@ public class ToolUtil {
             }
             throw ErrorUtil.createCommandException(getServerRequestFailedErrorMessage(conn));
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
-            throw ErrorUtil.createCommandException(getRemoteConnectionIssueMessage());
+            throw ErrorUtil.createCommandException(CONNECTION_ERROR_MESSAGE);
         } finally {
             if (conn != null) {
                 conn.disconnect();
@@ -257,7 +258,7 @@ public class ToolUtil {
             }
             throw ErrorUtil.createCommandException(getServerRequestFailedErrorMessage(conn));
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
-            throw ErrorUtil.createCommandException(getRemoteConnectionIssueMessage());
+            throw ErrorUtil.createCommandException(CONNECTION_ERROR_MESSAGE);
         } finally {
             if (conn != null) {
                 conn.disconnect();
@@ -374,7 +375,7 @@ public class ToolUtil {
                 return true;
             }
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
-            throw ErrorUtil.createCommandException(getRemoteConnectionIssueMessage());
+            throw ErrorUtil.createCommandException(CONNECTION_ERROR_MESSAGE);
         } finally {
             if (conn != null) {
                 conn.disconnect();
@@ -439,7 +440,7 @@ public class ToolUtil {
                 throw ErrorUtil.createCommandException("tool version '" + toolVersion + "' not found ");
             }
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
-            throw ErrorUtil.createCommandException(getRemoteConnectionIssueMessage());
+            throw ErrorUtil.createCommandException(CONNECTION_ERROR_MESSAGE);
         }  finally {
             if (conn != null) {
                 conn.disconnect();
@@ -607,9 +608,5 @@ public class ToolUtil {
     private static String getServerRequestFailedErrorMessage(HttpURLConnection conn) throws IOException {
         String responseMessage = conn.getResponseMessage();
         return "server request failed: " + (responseMessage == null ? conn.getResponseCode() : responseMessage);
-    }
-
-    private static String getRemoteConnectionIssueMessage() {
-        return "connection to the remote server failed";
     }
 }
