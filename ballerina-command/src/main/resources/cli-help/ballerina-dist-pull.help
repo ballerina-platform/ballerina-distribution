@@ -9,7 +9,7 @@ DESCRIPTION
        Pull fetches the specified distribution to your local environment and marks it
        as the active version.
 
-       The update command always fetches the latest patch version, but pull command gives
+       The update command always fetches the latest patch version whereas the pull command gives
        you the flexibility to fetch and use any distribution version.
 
        Here "distribution" has two parts: name and version. Following are some sample
