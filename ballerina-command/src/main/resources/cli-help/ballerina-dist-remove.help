@@ -9,7 +9,7 @@ DESCRIPTION
 
        However, you are not allowed to remove the active distribution.
 
-       Here "distribution" has two parts: name and version. Here are some sample
+       Here, the "distribution" has two parts: name and version. Following are some sample
        distributions: jballerina-1.1.0, jballerina-1.4.0, nballerina-0.5.0.
 
 
