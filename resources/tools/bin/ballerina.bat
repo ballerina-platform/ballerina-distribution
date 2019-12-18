@@ -46,7 +46,7 @@ if "%dist%" == "true" (
         if "%JVER%" EQU 18 (
             java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
         ) else (
-            echo Compatible JRE 8 not found. Please follow the instructions in ^<BALLERINA_HOME^>/INSTALL.txt to install and setup Ballerina.
+            echo Compatible JRE 8 not found. Please follow the instructions in ^<BALLERINA_HOME^>\INSTALL.txt to install and setup Ballerina.
             exit /b
         )
    )
@@ -100,7 +100,7 @@ if "%merge%" == "true" (
         if "%JVER%" EQU 18 (
             java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
         ) else (
-            echo Compatible JRE 8 not found. Please follow the instructions in ^<BALLERINA_HOME^>/INSTALL.txt to install and setup Ballerina.
+            echo Compatible JRE 8 not found. Please follow the instructions in ^<BALLERINA_HOME^>\INSTALL.txt to install and setup Ballerina.
             exit /b
         )
    )
