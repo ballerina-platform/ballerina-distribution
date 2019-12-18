@@ -29,6 +29,7 @@ import org.ballerinalang.command.cmd.UpdateToolCommand;
 import org.ballerinalang.command.cmd.UseCommand;
 import org.ballerinalang.command.cmd.VersionCommand;
 import org.ballerinalang.command.exceptions.CommandException;
+import org.ballerinalang.command.util.ErrorUtil;
 import picocli.CommandLine;
 
 import java.io.PrintStream;
@@ -47,7 +48,7 @@ public class Main {
             Optional<BCommand> optionalInvokedCmd = getInvokedCmd(args);
             optionalInvokedCmd.ifPresent(BCommand::execute);
         } catch (CommandException e) {
-            printLauncherException(e, errStream);
+            ErrorUtil.printLauncherException(e, errStream);
             Runtime.getRuntime().exit(1);
         } catch (Throwable e) {
             errStream.println(e.getMessage());
@@ -123,14 +124,11 @@ public class Main {
 
             return Optional.of(parsedCommands.get(parsedCommands.size() - 1).getCommand());
         } catch (CommandException e) {
-            printLauncherException(e, errStream);
+            ErrorUtil.printLauncherException(e, errStream);
             Runtime.getRuntime().exit(1);
             return null;
         }
     }
 
-    static void printLauncherException(CommandException e, PrintStream outStream) {
-        List<String> errorMessages = e.getMessages();
-        errorMessages.forEach(outStream::println);
-    }
+
 }

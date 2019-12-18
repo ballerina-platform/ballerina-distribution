@@ -19,6 +19,9 @@ package org.ballerinalang.command.util;
 import org.ballerinalang.command.BallerinaCliCommands;
 import org.ballerinalang.command.exceptions.CommandException;
 
+import java.io.PrintStream;
+import java.util.List;
+
 /**
  * Class contains utility methods for ballerina commands error handling.
  *
@@ -57,6 +60,11 @@ public class ErrorUtil {
     public static CommandException createDistributionRequiredException(String operation) {
         return createDistSubCommandUsageExceptionWithHelp("a distribution must be specified to " + operation,
                                                           operation);
+    }
+
+    public static void printLauncherException(CommandException e, PrintStream outStream) {
+        List<String> errorMessages = e.getMessages();
+        errorMessages.forEach(outStream::println);
     }
 }
 
