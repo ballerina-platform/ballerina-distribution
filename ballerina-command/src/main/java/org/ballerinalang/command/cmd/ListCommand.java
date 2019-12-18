@@ -116,9 +116,10 @@ public class ListCommand extends Command implements BCommand {
                 }
             }
             outStream.println();
-            outStream.println("Run 'ballerina dist pull <distribution-version>' to pull distributions available " +
-                                      "remotely");
-            outStream.println("Run 'ballerina dist use <distribution-version>' to use distributions available locally");
+            outStream.println("Run 'ballerina dist pull <distribution>' to fetch a distribution and set is as the " +
+                                      "active distribution");
+            outStream.println("Run 'ballerina dist use <distribution>' to set a locally available distribution as the" +
+                                      " active distribution");
         } catch (IOException | KeyManagementException | NoSuchAlgorithmException e) {
             outStream.println("Update service is not available");
         }
