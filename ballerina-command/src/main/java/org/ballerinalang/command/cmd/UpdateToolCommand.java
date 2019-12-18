@@ -68,12 +68,12 @@ public class UpdateToolCommand extends Command implements BCommand {
 
     @Override
     public void printLongDesc(StringBuilder out) {
-        out.append("Updates the Ballerina command to the latest version.\n");
+        out.append("Updates the Ballerina tool to the latest version.\n");
     }
 
     @Override
     public void printUsage(StringBuilder out) {
-        out.append("  ballerina command\n");
+        out.append("  ballerina tool\n");
     }
 
     @Override
@@ -86,11 +86,11 @@ public class UpdateToolCommand extends Command implements BCommand {
         printStream.println("Fetching the latest version from the remote server...");
         String latestVersion = ToolUtil.getLatestToolVersion();
         if (latestVersion == null) {
-            printStream.println("Failed to find the latest command version");
+            printStream.println("Failed to find the latest tool version");
             return;
         }
         if (latestVersion.equals(version)) {
-            printStream.println("The active command version is already the latest version: '" + latestVersion + "'");
+            printStream.println("The latest tool version '" + latestVersion + "' is already in use");
             return;
         }
         ToolUtil.downloadTool(printStream, latestVersion);

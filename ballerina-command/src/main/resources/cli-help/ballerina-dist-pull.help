@@ -18,4 +18,4 @@ DESCRIPTION
 
 EXAMPLES
        This command fetches "jballerina-1.0.5" and marks it as the active distribution.
-          → ballerina dist pull jballerina-1.0.5
+          $ ballerina dist pull jballerina-1.0.5

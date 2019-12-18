@@ -426,7 +426,7 @@ public class ToolUtil {
             } else if (conn.getResponseCode() == 200) {
                 downloadAndSetupTool(printStream, conn, "ballerina-command-" + toolVersion);
             } else {
-                throw ErrorUtil.createCommandException("command version '" + toolVersion + "' not found ");
+                throw ErrorUtil.createCommandException("tool version '" + toolVersion + "' not found ");
             }
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
             throw ErrorUtil.createCommandException("failed to connect to the update server");
@@ -586,12 +586,8 @@ public class ToolUtil {
             String installationPath = OSUtils.getInstallationPath();
             boolean isWritable = Files.isWritable(Paths.get(installationPath));
             if (!isWritable) {
-                throw ErrorUtil.createCommandException(
-                        "permission denied: current user does not have write access to the Ballerina installation " +
-                                "directory '" + installationPath +
-                                "'\n\nRun the command as a user with write access to the installation directory or " +
-                                "grant write access to the installation directory to the current user and re-run the " +
-                                "command.");
+                throw ErrorUtil.createCommandException("permission denied: you do not have write access to '" +
+                                                               installationPath + "'");
             }
         } catch (URISyntaxException e) {
             throw ErrorUtil.createCommandException("failed to get the path to the Ballerina installation directory");

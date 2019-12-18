@@ -1,0 +1,9 @@
+NAME
+       ballerina-update - Update the Ballerina tool
+
+SYNOPSIS
+       ballerina update
+
+
+DESCRIPTION
+       Update updates the Ballerina tool to the latest version.
