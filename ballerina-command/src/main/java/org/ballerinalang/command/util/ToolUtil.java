@@ -454,7 +454,6 @@ public class ToolUtil {
         File tempUnzipDirectory = null;
         File zipFile = null;
         try {
-            printStream.println("Downloading " + toolFileName);
             String toolUnzipLocation = getToolUnzipLocation();
             tempUnzipDirectory = Paths.get(toolUnzipLocation).toFile();
             if (tempUnzipDirectory.exists()) {
