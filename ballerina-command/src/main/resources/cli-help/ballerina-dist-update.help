@@ -15,5 +15,5 @@ DESCRIPTION
 EXAMPLES
        Assume that your active distribution is jballerina-1.1.3 and there exists a
        new patch version jballerina-1.1.7. Then, the following command will fetch
-       it and mark it as the active distribution
+       it and mark it as the active distribution.
           → ballerina dist update
