@@ -39,19 +39,23 @@ public class HelpCommand extends Command implements BCommand {
             printUsageInfo(BallerinaCliCommands.HELP);
             return;
 
-        } else if (helpCommands.size() > 2) {
+        }
+
+        int cmdCount = helpCommands.size();
+
+        if (cmdCount > 2) {
              throw ErrorUtil.createUsageExceptionWithHelp("too many arguments");
         }
 
-        int index = helpCommands.size() == 2 ? 1 : 0;
-        String userCommand = helpCommands.get(index);
+        String userCommand;
 
-        if (index == 1 && userCommand.equals("update")) {
-            userCommand = ToolUtil.CLI_HELP_FILE_PREFIX + userCommand;
-        }
-
-        if (helpCommands.get(index) == null) {
-            throw ErrorUtil.createUsageExceptionWithHelp("unknown help topic `" + userCommand + "`");
+        if (cmdCount == 1) {
+            userCommand = BallerinaCliCommands.DIST;
+        } else {
+            if (helpCommands.get(1) == null) {
+                throw ErrorUtil.createUsageExceptionWithHelp("unknown help topic `" + helpCommands.get(0) + "`");
+            }
+            userCommand = ToolUtil.CLI_HELP_FILE_PREFIX + helpCommands.get(1);
         }
 
         String commandUsageInfo = getCommandUsageInfo(userCommand);
