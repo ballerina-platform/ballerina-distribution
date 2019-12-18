@@ -17,50 +17,38 @@
 package org.ballerinalang.command.cmd;
 
 import org.ballerinalang.command.BallerinaCliCommands;
-import org.ballerinalang.command.util.ErrorUtil;
 import org.ballerinalang.command.util.ToolUtil;
 import picocli.CommandLine;
 
+import java.io.PrintStream;
 import java.util.List;
 
 /**
- * This class represents the "help" command and it holds arguments and flags specified by the user.
+ * This class represents the "build" command and used to notify latest distribution information.
  */
-@CommandLine.Command(name = "help", description = "print usage information")
-public class HelpCommand extends Command implements BCommand {
+@CommandLine.Command(name = "version", description = "Prints Ballerina version")
+public class BuildCommand extends Command implements BCommand {
+
+    public BuildCommand(PrintStream printStream) {
+        super(printStream);
+    }
 
     @CommandLine.Parameters(description = "Command name")
-    private List<String> helpCommands;
+    private List<String> buildCommands;
 
-    private CommandLine parentCmdParser;
+    @CommandLine.Option(names = {"--help", "-h", "?"}, hidden = true)
+    private boolean helpFlag;
 
     public void execute() {
-        if (helpCommands == null) {
-            printUsageInfo(BallerinaCliCommands.HELP);
+        if (helpFlag) {
             return;
-
-        } else if (helpCommands.size() > 2) {
-             throw ErrorUtil.createUsageExceptionWithHelp("too many arguments");
         }
-
-        int index = helpCommands.size() == 2 ? 1 : 0;
-        String userCommand = helpCommands.get(index);
-
-        if (index == 1 && userCommand.equals("update")) {
-            userCommand = ToolUtil.CLI_HELP_FILE_PREFIX + userCommand;
-        }
-
-        if (helpCommands.get(index) == null) {
-            throw ErrorUtil.createUsageExceptionWithHelp("unknown help topic `" + userCommand + "`");
-        }
-
-        String commandUsageInfo = getCommandUsageInfo(userCommand);
-        getPrintStream().println(commandUsageInfo);
+        ToolUtil.checkForUpdate(getPrintStream());
     }
 
     @Override
     public String getName() {
-        return BallerinaCliCommands.HELP;
+        return BallerinaCliCommands.VERSION;
     }
 
     @Override
@@ -74,6 +62,5 @@ public class HelpCommand extends Command implements BCommand {
 
     @Override
     public void setParentCmdParser(CommandLine parentCmdParser) {
-        this.parentCmdParser = parentCmdParser;
     }
 }

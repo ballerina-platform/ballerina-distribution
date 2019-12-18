@@ -40,7 +40,6 @@ import java.nio.file.Paths;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 import java.util.regex.Matcher;
@@ -61,6 +60,7 @@ public class ToolUtil {
    // public static final String PRODUCTION_URL = "https://api.central.ballerina.io/1.0/update-tool";
     private static final String PRODUCTION_URL = "https://api.staging-central.ballerina.io/update-tool";
     public static final String BALLERINA_TYPE = "jballerina";
+    public static final String CLI_HELP_FILE_PREFIX = "dist-";
 
     private static TrustManager[] trustAllCerts = new TrustManager[]{
             new X509TrustManager() {
@@ -309,30 +309,25 @@ public class ToolUtil {
 
     /**
      * Checks for command avaiable for current version.
+     *
      * @param printStream stream which messages should be printed
-     * @param args current commands arguments
      */
-    public static void checkForUpdate(PrintStream printStream, String[] args) {
+    public static void checkForUpdate(PrintStream printStream) {
         try {
-            //Update check will be done only for build command
-            boolean isBuildCommand = Arrays.asList(args).contains("build");
-            boolean isHelpFlag = Arrays.stream(args).anyMatch(val -> val.equals("--help") || val.equals("-h"));
-
-            if (isBuildCommand && !isHelpFlag) {
-                String version = getCurrentBallerinaVersion();
-                if (OSUtils.updateNotice(version)) {
-                    String latestVersion = ToolUtil.getLatest(version, "patch");
-                    if (!latestVersion.equals(version)) {
-                        printStream.println();
-                        printStream.println("A new version of Ballerina is available: '" + latestVersion + "'");
-                        printStream.println("The installer for it can be downloaded from " +
-                                            "https://ballerina.io/downloads/.");
-                        printStream.println();
-                    }
+            String version = getCurrentBallerinaVersion();
+            if (OSUtils.updateNotice()) {
+                String latestVersion = ToolUtil.getLatest(version, "patch");
+                if (latestVersion != null && !latestVersion.equals(version)) {
+                    String newBalDistName = BALLERINA_TYPE + "-" + latestVersion;
+                    printStream.println("A new version of Ballerina is available: " + newBalDistName);
+                    printStream.println("Run 'ballerina dist pull " + newBalDistName + "' to " +
+                                                "download and use the distribution");
+                    printStream.println();
                 }
             }
         } catch (Exception e) {
             // If any exception occurs we are not letting users know as check for command is optional
+            // TODO Add debug log here.
         }
     }
 
@@ -387,6 +382,23 @@ public class ToolUtil {
             addExecutablePermissionToFile(new File(distPath + File.separator + distribution
                                                            + File.separator + "bin"
                                                            + File.separator + OSUtils.getExecutableFileName()));
+
+
+            String langServerPath = distPath + File.separator + distribution + File.separator + "lib"
+                                    + File.separator + "tools";
+            File launcherServer = new File(langServerPath + File.separator + "lang-server"
+                    + File.separator + "launcher" + File.separator + OSUtils.getLangServerLauncherName());
+            File debugAdpater = new File(langServerPath + File.separator + "debug-adapter"
+                    + File.separator + "launcher" + File.separator + OSUtils.getDebugAdapterName());
+
+            if (debugAdpater.exists()) {
+                addExecutablePermissionToFile(debugAdpater);
+            }
+
+            if (launcherServer.exists()) {
+                addExecutablePermissionToFile(launcherServer);
+            }
+
             new File(zipFileLocation).delete();
         } finally {
             conn.disconnect();
@@ -428,19 +440,29 @@ public class ToolUtil {
 
     private static void downloadAndSetupTool(PrintStream printStream, HttpURLConnection conn,
                                              String toolFileName) {
-        printStream.println("Downloading " + toolFileName);
-        String toolUnzipLocation = getToolUnzipLocation();
-        File tempUnzipDirectory = Paths.get(toolUnzipLocation).toFile();
-        if (tempUnzipDirectory.exists()) {
-            tempUnzipDirectory.delete();
+        File tempUnzipDirectory = null;
+        File zipFile = null;
+        try {
+            printStream.println("Downloading " + toolFileName);
+            String toolUnzipLocation = getToolUnzipLocation();
+            tempUnzipDirectory = Paths.get(toolUnzipLocation).toFile();
+            if (tempUnzipDirectory.exists()) {
+                tempUnzipDirectory.delete();
+            }
+            tempUnzipDirectory.mkdir();
+            String zipFileLocation = toolUnzipLocation + File.separator + toolFileName + ".zip";
+            zipFile = Paths.get(zipFileLocation).toFile();
+            downloadFile(conn, zipFileLocation, toolFileName, printStream);
+            unzip(zipFileLocation, toolUnzipLocation);
+            copyScripts(toolUnzipLocation, toolFileName);
+        } finally {
+            if (tempUnzipDirectory != null && tempUnzipDirectory.exists()) {
+                tempUnzipDirectory.delete();
+            }
+            if (zipFile != null && zipFile.exists()) {
+                zipFile.delete();
+            }
         }
-        tempUnzipDirectory.mkdir();
-        String zipFileLocation = toolUnzipLocation + File.separator + toolFileName + ".zip";
-        downloadFile(conn, zipFileLocation, toolFileName, printStream);
-        unzip(zipFileLocation, toolUnzipLocation);
-        copyScripts(toolUnzipLocation, toolFileName);
-        Paths.get(toolUnzipLocation).toFile().delete();
-        Paths.get(zipFileLocation).toFile().delete();
     }
 
     private static void downloadFile(HttpURLConnection conn, String zipFileLocation,
@@ -562,7 +584,8 @@ public class ToolUtil {
     public static void handleInstallDirPermission() {
         try {
             String installationPath = OSUtils.getInstallationPath();
-            if (!new File(installationPath).canWrite()) {
+            boolean isWritable = Files.isWritable(Paths.get(installationPath));
+            if (!isWritable) {
                 throw ErrorUtil.createCommandException(
                         "permission denied: current user does not have write access to the Ballerina installation " +
                                 "directory '" + installationPath +

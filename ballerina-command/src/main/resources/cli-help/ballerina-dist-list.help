@@ -1,0 +1,10 @@
+NAME
+       ballerina-dist-list - List locally and remotely available distributions
+
+SYNOPSIS
+       ballerina dist list
+
+
+DESCRIPTION
+       List shows the list of installed distributions in your local environment
+       as well as distributions that are available for you to download.
