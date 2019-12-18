@@ -7,7 +7,7 @@ SYNOPSIS
 
 
 DESCRIPTION
-       Dist enables you to install, update and switch among Ballerina distributions
+       Dist enables you to install, update, and switch among Ballerina distributions
        from patch and minor release channels.
 
 
@@ -17,13 +17,13 @@ OPTIONS
 
 
 BALLERINA COMMANDS
-        Here is a list of available subcommands:
+       Here is a list of available subcommands:
 
-        update     Update to the latest patch version of the active distribution
-        pull       Fetch a distribution and set it as the active version
-        use        Mark a distribution as the active distribution
-        list       List local and available to download distributions
-        remove     Remove distributions in your local environment
+       update     Update to the latest patch version of the active distribution
+       pull       Fetch a distribution and set it as the active version
+       use        Mark a distribution as the active distribution
+       list       List locally and remotely available distributions
+       remove     Remove distributions in your local environment
 
 
-See 'ballerina dist <command> -h' for more information on a specific command.
+Use 'ballerina dist <command> -h' for more information on a specific command.

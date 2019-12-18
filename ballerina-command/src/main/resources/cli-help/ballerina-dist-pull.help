@@ -10,9 +10,9 @@ DESCRIPTION
        as the active version.
 
        The update command always fetches the latest patch version whereas the pull command gives
-       you the flexibility to fetch and use any distribution version.
+       you the flexibility to fetch and use any distribution.
 
-       Here "distribution" has two parts: name and version. Following are some sample
+       Here, "distribution" has two parts: name and version. Following are some sample
        distributions: jballerina-1.1.0, jballerina-1.4.0, nballerina-0.5.0.
 
 

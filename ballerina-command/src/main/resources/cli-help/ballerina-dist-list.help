@@ -1,5 +1,5 @@
 NAME
-       ballerina-dist-list - List local and available to download distributions
+       ballerina-dist-list - List locally and remotely available distributions
 
 SYNOPSIS
        ballerina dist list
