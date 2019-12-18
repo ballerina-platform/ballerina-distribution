@@ -42,7 +42,7 @@ public class VersionCommand extends Command implements BCommand {
 
     public void execute() {
         if (helpFlag) {
-            printUsageInfo(BallerinaCliCommands.VERSION);
+            // Ignore since we have nothing to print here.
             return;
         }
 
