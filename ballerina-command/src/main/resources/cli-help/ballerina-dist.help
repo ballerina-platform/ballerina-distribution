@@ -20,10 +20,10 @@ BALLERINA COMMANDS
         Here is a list of available subcommands:
 
         update     Update to the latest patch version of the active distribution
-        pull       Fetch a given distribution and set it as the active version
-        use        Make the specified distribution the active version
-        list       List installed and available distributions
-        remove     Delete an installed distribution
+        pull       Fetch a distribution and set it as the active version
+        use        Mark a distribution as the active distribution
+        list       List local and available to download distributions
+        remove     Remove distributions in your local environment
 
 
 See 'ballerina dist <command> -h' for more information on a specific command.
