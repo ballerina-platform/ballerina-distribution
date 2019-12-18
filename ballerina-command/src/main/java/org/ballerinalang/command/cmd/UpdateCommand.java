@@ -87,7 +87,7 @@ public class UpdateCommand extends Command implements BCommand {
                                     "the remote server...");
         String latestVersion = ToolUtil.getLatest(version, "patch");
         if (latestVersion == null) {
-            printStream.println("Failed to find the latest patch distribution for distribution '" + distVersion + "'");
+            printStream.println("Failed to find the latest patch distribution for '" + distVersion + "'");
             return;
         }
         String distribution = ToolUtil.BALLERINA_TYPE + "-" + latestVersion;

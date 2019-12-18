@@ -151,33 +151,39 @@ public class ToolUtil {
         return installFile.exists();
     }
 
-    public static List<Distribution> getDistributions() throws IOException, KeyManagementException,
-            NoSuchAlgorithmException {
-
-        SSLContext sc = SSLContext.getInstance("SSL");
-        sc.init(null, trustAllCerts, new java.security.SecureRandom());
-        HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
-
+    public static List<Distribution> getDistributions() {
+        HttpURLConnection conn = null;
         List<Distribution> distributions = new ArrayList<>();
-        URL url = new URL(PRODUCTION_URL + "/distributions");
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("GET");
-        conn.setRequestProperty("user-agent",
-                OSUtils.getUserAgent(getCurrentBallerinaVersion(),
-                        getCurrentToolsVersion(), "jballerina"));
-        conn.setRequestProperty("Accept", "application/json");
-        if (conn.getResponseCode() != 200) {
-            conn.disconnect();
-            throw ErrorUtil.createCommandException(getServerRequestFailedErrorMessage(conn));
-        } else {
-            String json = convertStreamToString(conn.getInputStream());
-            Pattern p = Pattern.compile("\"version\":\"(.*?)\"");
-            Matcher matcher = p.matcher(json);
-            while (matcher.find()) {
-                distributions.add(new Distribution(BALLERINA_TYPE, matcher.group(1)));
+        try {
+            SSLContext sc = SSLContext.getInstance("SSL");
+            sc.init(null, trustAllCerts, new java.security.SecureRandom());
+            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+
+            URL url = new URL(PRODUCTION_URL + "/distributions");
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("user-agent",
+                                    OSUtils.getUserAgent(getCurrentBallerinaVersion(),
+                                                         getCurrentToolsVersion(), "jballerina"));
+            conn.setRequestProperty("Accept", "application/json");
+            if (conn.getResponseCode() != 200) {
+                conn.disconnect();
+                throw ErrorUtil.createCommandException(getServerRequestFailedErrorMessage(conn));
+            } else {
+                String json = convertStreamToString(conn.getInputStream());
+                Pattern p = Pattern.compile("\"version\":\"(.*?)\"");
+                Matcher matcher = p.matcher(json);
+                while (matcher.find()) {
+                    distributions.add(new Distribution(BALLERINA_TYPE, matcher.group(1)));
+                }
+            }
+        } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
+            throw ErrorUtil.createCommandException(getRemoteConnectionIssueMessage());
+        } finally {
+            if (conn != null) {
+                conn.disconnect();
             }
         }
-        conn.disconnect();
         return distributions;
     }
 
@@ -204,7 +210,7 @@ public class ToolUtil {
             }
             throw ErrorUtil.createCommandException(getServerRequestFailedErrorMessage(conn));
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
-            throw ErrorUtil.createCommandException("failed to connect to the update server");
+            throw ErrorUtil.createCommandException(getRemoteConnectionIssueMessage());
         } finally {
             if (conn != null) {
                 conn.disconnect();
@@ -251,7 +257,7 @@ public class ToolUtil {
             }
             throw ErrorUtil.createCommandException(getServerRequestFailedErrorMessage(conn));
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
-            throw ErrorUtil.createCommandException("failed to connect to the update server");
+            throw ErrorUtil.createCommandException(getRemoteConnectionIssueMessage());
         } finally {
             if (conn != null) {
                 conn.disconnect();
@@ -338,7 +344,7 @@ public class ToolUtil {
     public static boolean downloadDistribution(PrintStream printStream, String distribution, String distributionType,
                                                String distributionVersion) {
         HttpURLConnection conn = null;
-       try {
+        try {
             if (!ToolUtil.checkDistributionAvailable(distribution)) {
                 printStream.println("Fetching the '" + distribution + "' distribution from the remote server...");
                 SSLContext sc = SSLContext.getInstance("SSL");
@@ -368,7 +374,7 @@ public class ToolUtil {
                 return true;
             }
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
-           throw ErrorUtil.createCommandException("failed to connect to the update server");
+            throw ErrorUtil.createCommandException(getRemoteConnectionIssueMessage());
         } finally {
             if (conn != null) {
                 conn.disconnect();
@@ -433,7 +439,7 @@ public class ToolUtil {
                 throw ErrorUtil.createCommandException("command version '" + toolVersion + "' not found ");
             }
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
-            throw ErrorUtil.createCommandException("failed to connect to the update server");
+            throw ErrorUtil.createCommandException(getRemoteConnectionIssueMessage());
         }  finally {
             if (conn != null) {
                 conn.disconnect();
@@ -605,5 +611,9 @@ public class ToolUtil {
     private static String getServerRequestFailedErrorMessage(HttpURLConnection conn) throws IOException {
         String responseMessage = conn.getResponseMessage();
         return "server request failed: " + (responseMessage == null ? conn.getResponseCode() : responseMessage);
+    }
+
+    private static String getRemoteConnectionIssueMessage() {
+        return "connection to the remote server failed";
     }
 }

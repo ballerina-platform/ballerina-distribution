@@ -17,16 +17,14 @@
 package org.ballerinalang.command.cmd;
 
 import org.ballerinalang.command.BallerinaCliCommands;
+import org.ballerinalang.command.exceptions.CommandException;
 import org.ballerinalang.command.util.Distribution;
 import org.ballerinalang.command.util.ErrorUtil;
 import org.ballerinalang.command.util.ToolUtil;
 import picocli.CommandLine;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.PrintStream;
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -107,18 +105,19 @@ public class ListCommand extends Command implements BCommand {
                     installedVersions.add(version);
                 }
             }
-            List<Distribution> remoteDistributions = ToolUtil.getDistributions();
             outStream.println("\nDistributions available remotely: \n");
+            List<Distribution> remoteDistributions = ToolUtil.getDistributions();
             for (Distribution distribution : remoteDistributions) {
                 String version = distribution.getName() + "-" + distribution.getVersion();
                 if (!installedVersions.stream().anyMatch(version::contains)) {
                     outStream.println("  " + version);
                 }
             }
+        } catch (CommandException e) {
+            ErrorUtil.printLauncherException(e, outStream);
+        } finally {
             outStream.println();
             outStream.println("Use 'ballerina help dist' for more information on specific commands.");
-        } catch (IOException | KeyManagementException | NoSuchAlgorithmException e) {
-            outStream.println("Update service is not available");
         }
     }
 
