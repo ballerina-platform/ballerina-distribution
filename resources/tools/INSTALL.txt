@@ -1,0 +1,46 @@
+                                                    ~ BALLERINA ~
+                                                    =============
+
+
+PREREQUISITES
+-------------
+
+Ballerina requires JRE 8 Update 172+.
+It is recommended to use AdoptOpenJDK. Check https://adoptopenjdk.net/releases.html to download the JRE.
+
+
+INSTALLING BALLERINA
+--------------------
+
+- Unzip the Ballerina archive in the desired directory.
+
+- Set the path of the installation directory to the BALLERINA_HOME environment variable.
+
+- Add the BALLERINA_HOME environment variable to your system's path variable.
+
+- If you have installed Java 8 already, you are all set! Just make sure that the JAVA_HOME environment variable is set correctly.
+
+- If you do not have Java 8, or if you have a different version of Java, download a compatible JRE 8 version as specified in the prerequisites.
+	- To set the obtained JRE as the one used by Ballerina, extract the downloaded JRE to the <BALLERINA_HOME>/dependencies/jdk8u202-b08-jre/ directory.
+
+
+INSTALLING THE VS CODE PLUGIN
+-----------------------------
+
+- The VS Code plugin for Ballerina can be installed through the VS Code Marketplace. Look up "Ballerina" in the Marketplace and you should get the download page for the Ballerina plugin.
+
+** Note **: For the VS Code plugin to work, the BALLERINA_HOME environment variable should be set and added to the path variable of the system.
+
+
+DOCUMENTATION
+-------------
+
+The following resources should help you get up and running with Ballerina:
+
+- Ballerina by Example: https://ballerina.io/learn/by-example
+
+- Ballerina How-To guides: https://ballerina.io/learn/
+
+- Ballerina standard library API docs: https://ballerina.io/learn/api-docs/ballerina
+
+- Ballerina language specification: https://ballerina.io/spec
