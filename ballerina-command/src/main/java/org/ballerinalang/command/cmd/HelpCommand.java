@@ -18,6 +18,7 @@ package org.ballerinalang.command.cmd;
 
 import org.ballerinalang.command.BallerinaCliCommands;
 import org.ballerinalang.command.util.ErrorUtil;
+import org.ballerinalang.command.util.ToolUtil;
 import picocli.CommandLine;
 
 import java.util.List;
@@ -46,7 +47,7 @@ public class HelpCommand extends Command implements BCommand {
         String userCommand = helpCommands.get(index);
 
         if (index == 1 && userCommand.equals("update")) {
-            userCommand = "dist-" + userCommand;
+            userCommand = ToolUtil.CLI_HELP_FILE_PREFIX + userCommand;
         }
 
         if (helpCommands.get(index) == null) {

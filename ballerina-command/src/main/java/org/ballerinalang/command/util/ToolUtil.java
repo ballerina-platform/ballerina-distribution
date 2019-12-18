@@ -60,6 +60,7 @@ public class ToolUtil {
    // public static final String PRODUCTION_URL = "https://api.central.ballerina.io/1.0/update-tool";
     private static final String PRODUCTION_URL = "https://api.staging-central.ballerina.io/update-tool";
     public static final String BALLERINA_TYPE = "jballerina";
+    public static final String CLI_HELP_FILE_PREFIX = "dist-";
 
     private static TrustManager[] trustAllCerts = new TrustManager[]{
             new X509TrustManager() {
