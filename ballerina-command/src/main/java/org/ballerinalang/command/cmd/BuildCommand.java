@@ -48,7 +48,7 @@ public class BuildCommand extends Command implements BCommand {
 
     @Override
     public String getName() {
-        return BallerinaCliCommands.VERSION;
+        return BallerinaCliCommands.BUILD;
     }
 
     @Override

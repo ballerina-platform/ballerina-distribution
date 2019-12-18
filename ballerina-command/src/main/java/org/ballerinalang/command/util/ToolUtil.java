@@ -47,7 +47,6 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
-
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
@@ -61,6 +60,7 @@ public class ToolUtil {
     private static final String PRODUCTION_URL = "https://api.staging-central.ballerina.io/update-tool";
     public static final String BALLERINA_TYPE = "jballerina";
     public static final String CLI_HELP_FILE_PREFIX = "dist-";
+    public static final String BALLERINA_1_X_VERSIONS = "1.0.";
 
     private static TrustManager[] trustAllCerts = new TrustManager[]{
             new X509TrustManager() {
@@ -317,15 +317,19 @@ public class ToolUtil {
             String version = getCurrentBallerinaVersion();
             if (OSUtils.updateNotice()) {
                 String latestVersion = ToolUtil.getLatest(version, "patch");
-                if (latestVersion != null && !latestVersion.equals(version)) {
+                // For 1.0.x releases we support through jballerina distribution
+                if (latestVersion == null || latestVersion.startsWith(BALLERINA_1_X_VERSIONS)) {
+                    return;
+                }
+                if (!latestVersion.equals(version)) {
                     String newBalDistName = BALLERINA_TYPE + "-" + latestVersion;
                     printStream.println("A new version of Ballerina is available: " + newBalDistName);
-                    printStream.println("Run 'ballerina dist pull " + newBalDistName + "' to " +
+                    printStream.println("Use 'ballerina dist pull " + newBalDistName + "' to " +
                                                 "download and use the distribution");
                     printStream.println();
                 }
             }
-        } catch (Exception e) {
+        } catch (Throwable e) {
             // If any exception occurs we are not letting users know as check for command is optional
             // TODO Add debug log here.
         }
