@@ -49,7 +49,7 @@ public class RemoveCommand extends Command implements BCommand {
 
     public void execute() {
         if (helpFlag) {
-            printUsageInfo(BallerinaCliCommands.REMOVE);
+            printUsageInfo("dist-" + BallerinaCliCommands.REMOVE);
             return;
         }
 
