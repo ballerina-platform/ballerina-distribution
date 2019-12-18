@@ -118,13 +118,23 @@ public class RemoveCommand extends Command implements BCommand {
         if (dirPath == null) {
             return;
         }
+
+        Files.walk(dirPath)
+                .sorted(Comparator.reverseOrder())
+                .forEach(path -> {
+                    if (!Files.isWritable(path)) {
+                        throw ErrorUtil.createCommandException("permission denied: you do not have write access to '" +
+                                dirPath + "'");
+                    }
+                });
+
         Files.walk(dirPath)
                 .sorted(Comparator.reverseOrder())
                 .forEach(path -> {
                     try {
                         Files.delete(path);
                     } catch (IOException e) {
-                        outStream.println(version + " cannot remove");
+                        throw ErrorUtil.createCommandException("cannot remove '" + path + "'");
                     }
                 });
     }
