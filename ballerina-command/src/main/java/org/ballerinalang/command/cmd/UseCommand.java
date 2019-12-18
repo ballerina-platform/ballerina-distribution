@@ -43,7 +43,7 @@ public class UseCommand extends Command implements BCommand {
 
     public void execute() {
         if (helpFlag) {
-            printUsageInfo(BallerinaCliCommands.USE);
+            printUsageInfo("dist-" + BallerinaCliCommands.USE);
             return;
         }
 
