@@ -43,7 +43,7 @@ if %errorlevel% neq 0 (
     exit /b %errorlevel%
 )
 
-echo Command version updated to the latest version: ${ballerina.command.version}
+echo Tool version updated to the latest version: ${ballerina.command.version}
 echo Cleaning old files...
 
 for %%f in (%CURRENT_PATH%\..\lib\*ballerina-command*.jar) do (

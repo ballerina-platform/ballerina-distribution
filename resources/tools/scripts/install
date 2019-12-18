@@ -43,7 +43,7 @@ if [ $? -ne '0' ]; then
   exit $?
 fi
 
-echo "Command version updated to the latest version: ${ballerina.command.version}"
+echo "Tool version updated to the latest version: ${ballerina.command.version}"
 echo "Cleaning old files..."
 
 for file in $CURRENT_PATH/../lib/*; do
