@@ -36,11 +36,6 @@ public class DistributionCommand extends Command implements BCommand {
 
     @Override
     public void execute() {
-        if (helpFlag) {
-            printUsageInfo(BallerinaCliCommands.HELP);
-            return;
-        }
-
         printUsageInfo(BallerinaCliCommands.DIST);
     }
 
