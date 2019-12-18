@@ -8,7 +8,7 @@ SYNOPSIS
 
 DESCRIPTION
        Dist enables you to install, update and switch among Ballerina distributions
-       From patch and minor release channels.
+       from patch and minor release channels.
 
 
 OPTIONS
