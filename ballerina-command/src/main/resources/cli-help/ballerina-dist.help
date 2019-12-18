@@ -2,8 +2,8 @@ NAME
        ballerina-dist - Manage Ballerina distributions
 
 SYNOPSIS
-       ballerina dist [-h | --help]
-                      <command> [<args>]
+       ballerina dist <command> <-h | --help>
+       ballerina dist <command> [<args>]
 
 
 DESCRIPTION
@@ -21,9 +21,9 @@ BALLERINA COMMANDS
 
        update     Update to the latest patch version of the active distribution
        pull       Fetch a distribution and set it as the active version
-       use        Mark a distribution as the active distribution
+       use        Set a distribution as the active distribution
        list       List locally and remotely available distributions
        remove     Remove distributions in your local environment
 
 
-Use 'ballerina dist <command> -h' for more information on a specific command.
+Use 'ballerina help dist <command>' for more information on a specific command.
