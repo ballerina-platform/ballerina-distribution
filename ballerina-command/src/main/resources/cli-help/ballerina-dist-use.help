@@ -14,4 +14,4 @@ DESCRIPTION
 
 EXAMPLES
        This command marks jballerina-1.0.5 as the active distribution.
-          → ballerina dist use jballerina-1.0.5
+          $ ballerina dist use jballerina-1.0.5

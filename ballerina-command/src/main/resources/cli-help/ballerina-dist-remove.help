@@ -15,4 +15,4 @@ DESCRIPTION
 
 EXAMPLES
        This command deletes jballerina-1.0.5 version in your local machine.
-          → ballerina dist remove jballerina-1.0.5
+          $ ballerina dist remove jballerina-1.0.5
