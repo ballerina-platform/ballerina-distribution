@@ -52,7 +52,7 @@ if "%dist%" == "true" (
             exit /b
         )
 
-        java -jar %CURRENT_PATH%..\lib\ballerina-command-0.8.0.jar %*
+        java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
    )
    if "%update%" == "true" if exist  %CURRENT_PATH%..\ballerina-command-tmp (
         call %CURRENT_PATH%\..\ballerina-command-tmp\install.bat
@@ -110,7 +110,7 @@ if "%merge%" == "true" (
             exit /b
         )
 
-        java -jar %CURRENT_PATH%..\lib\ballerina-command-0.8.0.jar %*
+        java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
    )
 )
 
