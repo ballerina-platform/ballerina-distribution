@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * This class represents the "build" command and used to notify latest distribution information.
  */
-@CommandLine.Command(name = "version", description = "Prints Ballerina version")
+@CommandLine.Command(name = "build", description = "Prints Ballerina build")
 public class BuildCommand extends Command implements BCommand {
 
     public BuildCommand(PrintStream printStream) {
