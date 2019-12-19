@@ -39,9 +39,17 @@ if "%dist%" == "true" (
        set RUN_BALLERINA=false;
    )
    if exist %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre (
-       %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre\bin\java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
+        if "%build%" == "true" (
+            %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre\bin\java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar build
+        ) else (
+            %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre\bin\java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
+        )
    ) else (
-        java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
+        if "%build%" == "true" (
+            java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar build
+        ) else (
+            java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
+        )
    )
    if "%update%" == "true" if exist  %CURRENT_PATH%..\ballerina-command-tmp (
         call %CURRENT_PATH%\..\ballerina-command-tmp\install.bat

@@ -45,8 +45,12 @@ then
       echo "Compatible JRE 8 not found. Please follow the instructions in <BALLERINA_HOME>/INSTALL.txt to install and setup Ballerina."
       exit 1;
     fi
-
-    $JAVA_COMMAND -jar $CURRENT_PATH/../lib/ballerina-command-${ballerina.command.version}.jar "$@"
+    if [ "$1" == "build" ]
+    then
+        $JAVA_COMMAND -jar $CURRENT_PATH/../lib/ballerina-command-${ballerina.command.version}.jar build
+    else
+        $JAVA_COMMAND -jar $CURRENT_PATH/../lib/ballerina-command-${ballerina.command.version}.jar "$@"
+    fi
 
     if [ "$1" == "update" ] && [ -d "$CURRENT_PATH/../ballerina-command-tmp" ]; then
         $CURRENT_PATH/../ballerina-command-tmp/install
