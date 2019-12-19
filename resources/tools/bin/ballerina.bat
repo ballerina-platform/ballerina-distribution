@@ -25,6 +25,7 @@ set update=false
 set build=false
 set RUN_BALLERINA=true
 set FILE_PATH=%CURRENT_PATH%..\distributions\ballerina-version
+set JAVA_CMD=java
 if "%1" == "dist" set dist=true
 if "%2" == "dist" set dist=true
 if "%1" == "update" set dist=true
@@ -34,22 +35,29 @@ if "%1" == "update" set update=true
 if "%1" == "build" set build=true
 SetLocal EnableDelayedExpansion
 
+if exist %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre (
+   set JAVA_CMD=%CURRENT_PATH%..\dependencies\jdk8u202-b08-jre\bin\java
+) else (
+    if not exist "%JAVA_HOME%" (
+        echo Compatible JRE 8 not found. Please follow the instructions in ^<BALLERINA_HOME^>\INSTALL.txt to install and setup Ballerina.
+        exit /b
+    )
+
+    "%JAVA_HOME%\bin\java" -version 2>&1 | findstr /r "1.8">NUL
+    if errorlevel 1 (
+        echo Compatible JRE 8 not found. Please follow the instructions in ^<BALLERINA_HOME^>\INSTALL.txt to install and setup Ballerina.
+        exit /b
+    )
+)
+
 if "%dist%" == "true" (
    if not "%build%" == "true" (
        set RUN_BALLERINA=false;
    )
-   if exist %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre (
-        if "%build%" == "true" (
-            %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre\bin\java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar build
-        ) else (
-            %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre\bin\java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
-        )
+   if "%build%" == "true" (
+        %JAVA_CMD% -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar build
    ) else (
-        if "%build%" == "true" (
-            java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar build
-        ) else (
-            java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
-        )
+        %JAVA_CMD% -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
    )
    if "%update%" == "true" if exist  %CURRENT_PATH%..\ballerina-command-tmp (
         call %CURRENT_PATH%\..\ballerina-command-tmp\install.bat
@@ -93,11 +101,7 @@ if "%1" == "-v" set merge=true
 if "%1" == "--version" set merge=true
 
 if "%merge%" == "true" (
-   if exist %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre (
-       %CURRENT_PATH%..\dependencies\jdk8u202-b08-jre\bin\java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
-   ) else (
-        java -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
-   )
+    %JAVA_CMD% -jar %CURRENT_PATH%..\lib\ballerina-command-${ballerina.command.version}.jar %*
 )
 
 exit /b

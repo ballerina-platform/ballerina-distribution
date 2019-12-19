@@ -58,7 +58,7 @@
 
         <fileSet>
             <directory>
-                ${project.build.directory}/extracted-distributions/awslambda-extension-balo-zip/jballerina-tools-${project.version}/awslambda
+                ${project.build.directory}/extracted-distributions/awslambda-extension-balo-zip/awslambda-artifacts/awslambda
             </directory>
             <outputDirectory>bir-cache/ballerinax/awslambda</outputDirectory>
         </fileSet>

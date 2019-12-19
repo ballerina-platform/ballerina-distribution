@@ -56,8 +56,7 @@ import javax.net.ssl.X509TrustManager;
  * Ballerina tool utilities.
  */
 public class ToolUtil {
-   // public static final String PRODUCTION_URL = "https://api.central.ballerina.io/1.0/update-tool";
-    private static final String PRODUCTION_URL = "https://api.staging-central.ballerina.io/update-tool";
+    private static final String PRODUCTION_URL = "https://api.central.ballerina.io/1.0/update-tool";
     public static final String BALLERINA_TYPE = "jballerina";
     public static final String CLI_HELP_FILE_PREFIX = "dist-";
     private static final String BALLERINA_1_X_VERSIONS = "1.0.";
@@ -372,6 +371,7 @@ public class ToolUtil {
                     throw ErrorUtil.createDistributionNotFoundException(distribution);
                 }
             } else {
+                printStream.println("'" + distribution + "' is already available locally");
                 return true;
             }
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
