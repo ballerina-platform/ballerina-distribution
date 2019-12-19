@@ -372,6 +372,7 @@ public class ToolUtil {
                     throw ErrorUtil.createDistributionNotFoundException(distribution);
                 }
             } else {
+                printStream.println("'" + distribution + "' is already available locally");
                 return true;
             }
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
