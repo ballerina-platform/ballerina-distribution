@@ -46,7 +46,7 @@ public class UpdateToolCommand extends Command implements BCommand {
 
     public void execute() {
         if (helpFlag) {
-            printUsageInfo(ToolUtil.CLI_HELP_FILE_PREFIX + BallerinaCliCommands.UPDATE);
+            printUsageInfo(BallerinaCliCommands.UPDATE);
             return;
         }
 
