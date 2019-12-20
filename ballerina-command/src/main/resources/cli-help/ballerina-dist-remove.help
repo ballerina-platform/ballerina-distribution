@@ -1,5 +1,5 @@
 NAME
-       ballerina-remove - Remove distributions in your local environment
+       ballerina-dist-remove - Remove distributions in your local environment
 
 SYNOPSIS
        ballerina dist remove <distribution>
