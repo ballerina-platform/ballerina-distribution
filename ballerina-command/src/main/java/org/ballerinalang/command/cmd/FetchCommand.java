@@ -17,6 +17,7 @@
 package org.ballerinalang.command.cmd;
 
 import org.ballerinalang.command.BallerinaCliCommands;
+import org.ballerinalang.command.util.ErrorUtil;
 import org.ballerinalang.command.util.ToolUtil;
 import picocli.CommandLine;
 
@@ -44,28 +45,42 @@ public class FetchCommand extends Command implements BCommand {
 
     public void execute() {
         if (helpFlag) {
-            printUsageInfo("dist-" + BallerinaCliCommands.FETCH);
+            printUsageInfo(BallerinaCliCommands.FETCH);
             return;
         }
 
-        if (fetchCommands == null) {
-            throw createUsageExceptionWithHelp("distribution is not provided");
-        } else if (fetchCommands.size() == 1) {
-            ToolUtil.downloadDistribution(getPrintStream(), fetchCommands.get(0), true);
-            return;
-        } else if (fetchCommands.size() > 1) {
-            throw createUsageExceptionWithHelp("too many arguments given");
+        if (fetchCommands == null || fetchCommands.size() == 0) {
+            throw ErrorUtil.createDistributionRequiredException("fetch");
         }
 
-        String userCommand = fetchCommands.get(0);
-        if (parentCmdParser.getSubcommands().get(userCommand) == null) {
-            throw createUsageExceptionWithHelp("unknown command " + userCommand);
+        if (fetchCommands.size() > 1) {
+            throw ErrorUtil.createDistSubCommandUsageExceptionWithHelp("too many arguments",
+                                                                       BallerinaCliCommands.FETCH);
         }
+
+        PrintStream printStream = getPrintStream();
+        String distribution = fetchCommands.get(0);
+        ToolUtil.handleInstallDirPermission();
+        String distributionType = distribution.split("-")[0];
+        if (!distributionType.equals("ballerina") && !distributionType.equals("jballerina")) {
+            throw ErrorUtil.createDistributionNotFoundException(distribution);
+        }
+        String distributionVersion = distribution.replace(distributionType + "-", "");
+        if (distributionVersion.equals(ToolUtil.getCurrentBallerinaVersion())) {
+            printStream.println("'" + distribution + "' is the current distribution in use");
+            return;
+        }
+        if (ToolUtil.downloadDistribution(printStream, distribution, distributionType, distributionVersion)) {
+            printStream.println("Distribution '" + distribution + "' is available locally");
+        } else {
+            printStream.println("Fetched distribution: '" + distribution + "'");
+        }
+        printStream.println("Run 'ballerina dist use " + distribution + "' to set it as the current distribution");
     }
 
     @Override
     public String getName() {
-        return BallerinaCliCommands.PULL;
+        return BallerinaCliCommands.FETCH;
     }
 
     @Override

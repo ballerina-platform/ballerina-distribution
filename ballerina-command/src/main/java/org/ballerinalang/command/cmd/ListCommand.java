@@ -17,17 +17,17 @@
 package org.ballerinalang.command.cmd;
 
 import org.ballerinalang.command.BallerinaCliCommands;
+import org.ballerinalang.command.exceptions.CommandException;
 import org.ballerinalang.command.util.Distribution;
+import org.ballerinalang.command.util.ErrorUtil;
 import org.ballerinalang.command.util.ToolUtil;
 import picocli.CommandLine;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.PrintStream;
-import java.net.URISyntaxException;
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -50,20 +50,17 @@ public class ListCommand extends Command implements BCommand {
 
     public void execute() {
         if (helpFlag) {
-            printUsageInfo(BallerinaCliCommands.LIST);
+            printUsageInfo(ToolUtil.CLI_HELP_FILE_PREFIX + BallerinaCliCommands.LIST);
             return;
         }
 
         if (listCommands == null) {
             listDistributions(getPrintStream());
             return;
-        } else if (listCommands.size() > 1) {
-            throw createUsageExceptionWithHelp("too many arguments given");
         }
 
-        String userCommand = listCommands.get(0);
-        if (parentCmdParser.getSubcommands().get(userCommand) == null) {
-            throw createUsageExceptionWithHelp("unknown command " + userCommand);
+        if (listCommands.size() > 0) {
+            throw ErrorUtil.createDistSubCommandUsageExceptionWithHelp("too many arguments", BallerinaCliCommands.LIST);
         }
     }
 
@@ -91,7 +88,7 @@ public class ListCommand extends Command implements BCommand {
      * List distributions in the local and remote.
      * @param outStream stream outputs need to be printed
      */
-    public static void listDistributions(PrintStream outStream) {
+    private static void listDistributions(PrintStream outStream) {
         try {
             String currentBallerinaVersion = ToolUtil.getCurrentBallerinaVersion();
             File folder = new File(ToolUtil.getDistributionsPath());
@@ -99,6 +96,7 @@ public class ListCommand extends Command implements BCommand {
             listOfFiles = folder.listFiles();
             outStream.println("Distributions available locally: \n");
             List<String> installedVersions = new ArrayList<>();
+            Arrays.sort(listOfFiles, Collections.reverseOrder());
             for (int i = 0; i < listOfFiles.length; i++) {
                 if (listOfFiles[i].isDirectory()) {
                     String version = listOfFiles[i].getName();
@@ -107,19 +105,19 @@ public class ListCommand extends Command implements BCommand {
                     installedVersions.add(version);
                 }
             }
-            List<Distribution> remoteDistributions = ToolUtil.getDistributions();
             outStream.println("\nDistributions available remotely: \n");
+            List<Distribution> remoteDistributions = ToolUtil.getDistributions();
             for (Distribution distribution : remoteDistributions) {
                 String version = distribution.getName() + "-" + distribution.getVersion();
-                if (!installedVersions.stream().anyMatch(s -> version.contains(s))) {
+                if (!installedVersions.stream().anyMatch(version::contains)) {
                     outStream.println("  " + version);
                 }
             }
+        } catch (CommandException e) {
+            ErrorUtil.printLauncherException(e, outStream);
+        } finally {
             outStream.println();
-        } catch (IOException | KeyManagementException | NoSuchAlgorithmException e) {
-            outStream.println("Ballerina Update service is not available");
-        } catch (URISyntaxException e) {
-            outStream.println("Ballerina installation directory is not available");
+            outStream.println("Use 'ballerina help dist' for more information on specific commands.");
         }
     }
 

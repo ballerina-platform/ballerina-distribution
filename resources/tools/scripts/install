@@ -22,7 +22,30 @@ else
 fi
 
 \cp $CURRENT_PATH/ballerina-command-${ballerina.command.version}/lib/ballerina-command-${ballerina.command.version}.jar $CURRENT_PATH/../lib
+
+if [ $? -ne '0' ]; then
+  echo "error occurred while copying ballerina jar"
+  # remove if copied with an error.
+  if [ -f "$CURRENT_PATH/../lib/ballerina-command-${ballerina.command.version}.jar" ]; then
+        rm -rf $CURRENT_PATH/../lib/ballerina-command-${ballerina.command.version}.jar
+  fi
+  exit $?
+fi
+
 \cp $CURRENT_PATH/ballerina-command-${ballerina.command.version}/bin/ballerina $CURRENT_PATH/../bin
+
+if [ $? -ne '0' ]; then
+  echo "error occurred while copying ballerina file."
+  # remove already copied jar.
+  if [ -f "$CURRENT_PATH/../lib/ballerina-command-${ballerina.command.version}.jar" ]; then
+        rm -rf $CURRENT_PATH/../lib/ballerina-command-${ballerina.command.version}.jar
+  fi
+  exit $?
+fi
+
+echo "Tool version updated to the latest version: ${ballerina.command.version}"
+echo "Cleaning old files..."
+
 for file in $CURRENT_PATH/../lib/*; do
     if [ -f "$file" ] && [[ "$file" == *ballerina-command*.jar ]] && [[ "$file" != *ballerina-command-${ballerina.command.version}.jar ]]; then
 	rm -rf $file

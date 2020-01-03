@@ -16,6 +16,7 @@
 
 package org.ballerinalang.command.cmd;
 
+import org.ballerinalang.command.util.ErrorUtil;
 import org.ballerinalang.command.util.ToolUtil;
 
 import java.io.IOException;
@@ -61,8 +62,7 @@ public abstract class Command {
         try {
             return ToolUtil.readFileAsString(fileName);
         } catch (IOException e) {
-            //TODO: Fix properly
-            return "";
+            throw ErrorUtil.createUsageExceptionWithHelp("unknown help topic `" + commandName + "`");
         }
     }
 
@@ -71,23 +71,10 @@ public abstract class Command {
             Properties properties = new Properties();
             properties.load(inputStream);
 
-            String output = "Command " + properties.getProperty("ballerina.command.version") + "\n";
+            String output = "Ballerina tool " + properties.getProperty("ballerina.command.version") + "\n";
             getPrintStream().print(output);
         } catch (Throwable ignore) {
             //TODO: Handle exception
         }
-    }
-
-    public CommandException createUsageExceptionWithHelp(String errorMsg) {
-        CommandException launcherException = new CommandException();
-        launcherException.addMessage("ballerina: " + errorMsg);
-        launcherException.addMessage("Run 'ballerina help' for usage.");
-        return launcherException;
-    }
-
-    public CommandException createLauncherException(String errorMsg) {
-        CommandException launcherException = new CommandException();
-        launcherException.addMessage("error: " + errorMsg);
-        return launcherException;
     }
 }

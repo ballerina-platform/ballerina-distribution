@@ -17,13 +17,13 @@
 package org.ballerinalang.command.cmd;
 
 import org.ballerinalang.command.BallerinaCliCommands;
+import org.ballerinalang.command.util.ErrorUtil;
 import org.ballerinalang.command.util.ToolUtil;
 import picocli.CommandLine;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Comparator;
@@ -49,23 +49,21 @@ public class RemoveCommand extends Command implements BCommand {
 
     public void execute() {
         if (helpFlag) {
-            printUsageInfo(BallerinaCliCommands.REMOVE);
+            printUsageInfo(ToolUtil.CLI_HELP_FILE_PREFIX + BallerinaCliCommands.REMOVE);
             return;
         }
 
-        if (removeCommands == null) {
-            throw createUsageExceptionWithHelp("distribution is not provided");
-        } else if (removeCommands.size() == 1) {
-            remove(removeCommands.get(0));
-            return;
-        } else if (removeCommands.size() > 1) {
-            throw createUsageExceptionWithHelp("too many arguments given");
+        if (removeCommands == null || removeCommands.size() == 0) {
+            throw ErrorUtil.createDistributionRequiredException("remove");
         }
 
-        String userCommand = removeCommands.get(0);
-        if (parentCmdParser.getSubcommands().get(userCommand) == null) {
-            throw createUsageExceptionWithHelp("unknown command " + userCommand);
+        if (removeCommands.size() > 1) {
+            throw ErrorUtil.createDistSubCommandUsageExceptionWithHelp("too many arguments",
+                                                                       BallerinaCliCommands.REMOVE);
         }
+
+        ToolUtil.handleInstallDirPermission();
+        remove(removeCommands.get(0));
     }
 
     @Override
@@ -88,33 +86,23 @@ public class RemoveCommand extends Command implements BCommand {
         this.parentCmdParser = parentCmdParser;
     }
 
-    public void remove(String version) {
-        boolean isCurrentVersion = false;
-        try {
-            isCurrentVersion = version.equals(ToolUtil.BALLERINA_TYPE + "-" + ToolUtil.getCurrentBallerinaVersion());
-        } catch (IOException e) {
-            getPrintStream().println("There is no default version for current user");
-        }
-
+    private void remove(String version) {
+        boolean isCurrentVersion =
+                version.equals(ToolUtil.BALLERINA_TYPE + "-" + ToolUtil.getCurrentBallerinaVersion());
         try {
             if (isCurrentVersion) {
-                getPrintStream().println("You cannot remove default Ballerina version");
+                throw ErrorUtil.createCommandException("The active Ballerina distribution cannot be removed");
             } else {
                 File directory = new File(ToolUtil.getDistributionsPath() + File.separator + version);
                 if (directory.exists()) {
-                    if (directory.canWrite()) {
                         deleteFiles(directory.toPath(), getPrintStream(), version);
-                        getPrintStream().println(version + " deleted successfully");
-                    } else {
-                        getPrintStream().println("Current user does not have write permissions to "
-                                + directory.toPath() + " directory");
-                    }
+                    getPrintStream().println("Distribution '" + version + "' successfully removed");
                 } else {
-                    getPrintStream().println(version + " does not exist");
+                    throw ErrorUtil.createCommandException("distribution '" + version + "' not found");
                 }
             }
-        } catch (IOException | URISyntaxException e) {
-            getPrintStream().println("Error occurred while removing");
+        } catch (IOException e) {
+            throw ErrorUtil.createCommandException("error occurred while removing '" + version + "'");
         }
     }
 
@@ -130,13 +118,23 @@ public class RemoveCommand extends Command implements BCommand {
         if (dirPath == null) {
             return;
         }
+
+        Files.walk(dirPath)
+                .sorted(Comparator.reverseOrder())
+                .forEach(path -> {
+                    if (!Files.isWritable(path)) {
+                        throw ErrorUtil.createCommandException("permission denied: you do not have write access to '" +
+                                dirPath + "'");
+                    }
+                });
+
         Files.walk(dirPath)
                 .sorted(Comparator.reverseOrder())
                 .forEach(path -> {
                     try {
                         Files.delete(path);
                     } catch (IOException e) {
-                        outStream.println(version + " cannot remove");
+                        throw ErrorUtil.createCommandException("cannot remove '" + path + "'");
                     }
                 });
     }

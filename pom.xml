@@ -25,7 +25,7 @@
 
     <groupId>org.ballerinalang</groupId>
     <artifactId>ballerina-distribution</artifactId>
-    <version>1.1.0-SNAPSHOT</version>
+    <version>1.1.1-SNAPSHOT</version>
     <modelVersion>4.0.0</modelVersion>
 
     <name>Ballerina - Tools - Parent</name>
@@ -98,7 +98,7 @@
         <repository>
             <id>wso2.stage</id>
             <name>WSO2 Stage Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1469/</url>
+            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1509/</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -165,7 +165,6 @@
 
     <modules>
         <module>ballerina</module>
-        <module>ballerina-command</module>
     </modules>
 
     <dependencyManagement>
@@ -257,12 +256,12 @@
         </dependencies>
     </dependencyManagement>
     <properties>
-        <ballerina.version>1.1.0-SNAPSHOT</ballerina.version>
+        <ballerina.version>1.1.0</ballerina.version>
         <ballerina.jre.artifacts.version>2.0.0</ballerina.jre.artifacts.version>
         <project.scm.id>ballerina-scm-server</project.scm.id>
-        <docker.version>1.1.0-SNAPSHOT</docker.version>
-        <kubernetes.version>1.1.0-SNAPSHOT</kubernetes.version>
-        <awslambda.version>1.1.0-SNAPSHOT</awslambda.version>
+        <docker.version>1.1.0</docker.version>
+        <kubernetes.version>1.1.0</kubernetes.version>
+        <awslambda.version>1.1.0</awslambda.version>
         <picocli.version>4.0.1</picocli.version>
         <ballerina.command.version>0.8.0</ballerina.command.version>
     </properties>

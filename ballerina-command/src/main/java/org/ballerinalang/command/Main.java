@@ -17,10 +17,9 @@
 package org.ballerinalang.command;
 
 import org.ballerinalang.command.cmd.BCommand;
-import org.ballerinalang.command.cmd.CommandException;
+import org.ballerinalang.command.cmd.BuildCommand;
 import org.ballerinalang.command.cmd.DefaultCommand;
 import org.ballerinalang.command.cmd.DistributionCommand;
-import org.ballerinalang.command.cmd.FetchCommand;
 import org.ballerinalang.command.cmd.HelpCommand;
 import org.ballerinalang.command.cmd.ListCommand;
 import org.ballerinalang.command.cmd.PullCommand;
@@ -29,6 +28,8 @@ import org.ballerinalang.command.cmd.UpdateCommand;
 import org.ballerinalang.command.cmd.UpdateToolCommand;
 import org.ballerinalang.command.cmd.UseCommand;
 import org.ballerinalang.command.cmd.VersionCommand;
+import org.ballerinalang.command.exceptions.CommandException;
+import org.ballerinalang.command.util.ErrorUtil;
 import picocli.CommandLine;
 
 import java.io.PrintStream;
@@ -47,7 +48,7 @@ public class Main {
             Optional<BCommand> optionalInvokedCmd = getInvokedCmd(args);
             optionalInvokedCmd.ifPresent(BCommand::execute);
         } catch (CommandException e) {
-            printLauncherException(e, errStream);
+            ErrorUtil.printLauncherException(e, errStream);
             Runtime.getRuntime().exit(1);
         } catch (Throwable e) {
             errStream.println(e.getMessage());
@@ -78,9 +79,9 @@ public class Main {
             distCmdParser.addSubcommand(BallerinaCliCommands.PULL, pullCmd);
             pullCmd.setParentCmdParser(distCmdParser);
 
-            FetchCommand fetchCmd = new FetchCommand(outStream);
-            distCmdParser.addSubcommand(BallerinaCliCommands.FETCH, fetchCmd);
-            fetchCmd.setParentCmdParser(distCmdParser);
+//          FetchCommand fetchCmd = new FetchCommand(outStream);
+//          distCmdParser.addSubcommand(BallerinaCliCommands.FETCH, fetchCmd);
+//          fetchCmd.setParentCmdParser(distCmdParser);
 
             RemoveCommand removeCmd = new RemoveCommand(outStream);
             distCmdParser.addSubcommand(BallerinaCliCommands.REMOVE, removeCmd);
@@ -103,6 +104,10 @@ public class Main {
             cmdParser.addSubcommand(BallerinaCliCommands.UPDATE, updateToolCommand);
             updateToolCommand.setParentCmdParser(cmdParser);
 
+            BuildCommand buildCommand = new BuildCommand(outStream);
+            cmdParser.addSubcommand(BallerinaCliCommands.BUILD, buildCommand);
+            buildCommand.setParentCmdParser(cmdParser);
+
             VersionCommand versionCmd = new VersionCommand(outStream);
             cmdParser.addSubcommand(BallerinaCliCommands.VERSION, versionCmd);
             versionCmd.setParentCmdParser(cmdParser);
@@ -119,14 +124,11 @@ public class Main {
 
             return Optional.of(parsedCommands.get(parsedCommands.size() - 1).getCommand());
         } catch (CommandException e) {
-            printLauncherException(e, errStream);
+            ErrorUtil.printLauncherException(e, errStream);
             Runtime.getRuntime().exit(1);
             return null;
         }
     }
 
-    static void printLauncherException(CommandException e, PrintStream outStream) {
-        List<String> errorMessages = e.getMessages();
-        errorMessages.forEach(outStream::println);
-    }
+
 }

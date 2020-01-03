@@ -21,19 +21,52 @@ else
     CURRENT_PATH="$(dirname "$(readlink -f "$0")")"
 fi
 
-if [ "$1" == "dist" ] || [ "$2" == "dist" ] || [ "$1" == "update" ]
+RUN_COMMAND=false
+RUN_BALLERINA=true
+
+if [ "$1" == "dist" ] || [ "$2" == "dist" ] || [ "$1" == "update" ]|| [ "$2" == "update" ]
+then
+    RUN_COMMAND=true
+    RUN_BALLERINA=false
+
+fi
+if [ "$1" == "build" ]
+then
+    RUN_COMMAND=true
+fi
+
+
+if [ "$RUN_COMMAND" == "true" ]
 then
     JAVA_COMMAND=java
     if test -d "$CURRENT_PATH/../dependencies/jdk8u202-b08-jre"; then
       JAVA_COMMAND="$CURRENT_PATH/../dependencies/jdk8u202-b08-jre/bin/java"
+    elif [[ `$JAVA_COMMAND -version 2>&1 | grep "1.8."` = "" ]]; then
+      echo "Compatible JRE 8 not found. Please follow the instructions in <BALLERINA_HOME>/INSTALL.txt to install and setup Ballerina."
+      exit 1;
     fi
-    $JAVA_COMMAND -jar $CURRENT_PATH/../lib/ballerina-command-${ballerina.command.version}.jar "$@"
+    if [ "$1" == "build" ]
+    then
+        $JAVA_COMMAND -jar $CURRENT_PATH/../lib/ballerina-command-${ballerina.command.version}.jar build
+    else
+        $JAVA_COMMAND -jar $CURRENT_PATH/../lib/ballerina-command-${ballerina.command.version}.jar "$@"
+    fi
 
-    if [ -d "$CURRENT_PATH/../ballerina-command-tmp" ]; then
+    if [ "$1" == "update" ] && [ -d "$CURRENT_PATH/../ballerina-command-tmp" ]; then
         $CURRENT_PATH/../ballerina-command-tmp/install
+        if [ $? -ne '0' ]; then
+          echo "Update failed due to errors"
+          rm -rf $CURRENT_PATH/../ballerina-command-tmp
+          exit $?
+        fi
         rm -rf $CURRENT_PATH/../ballerina-command-tmp
+        echo "Update successfully completed"
+        exit 0
     fi
-else
+fi
+
+if [ "$RUN_BALLERINA" == "true" ]
+then
     BALLERINA_VERSION=`cat $CURRENT_PATH/../distributions/ballerina-version`
 
     FILE=~/.ballerina/ballerina-version
@@ -49,11 +82,15 @@ else
     $BALLERINA_HOME/bin/./ballerina "$@"
 fi
 
-if [ "$1" == "help" ] && [ "$2" == "" ]  || [ "$1" == "" ] || [ "$1" == "version" ] || [ "$1" == "-v" ] || [ "$1" == "--version" ]
+if [ "$1" == "help" ] && [ "$2" == "" ]  || [ "$1" == "" ] || [ "$1" == "-h" ] || [ "$1" == "--help" ] || \
+   [ "$1" == "version" ] || [ "$1" == "-v" ] || [ "$1" == "--version" ]
 then
     JAVA_COMMAND=java
     if test -d "$CURRENT_PATH/../dependencies/jdk8u202-b08-jre"; then
       JAVA_COMMAND="$CURRENT_PATH/../dependencies/jdk8u202-b08-jre/bin/java"
+    elif [[ `$JAVA_COMMAND -version 2>&1 | grep "1.8."` = "" ]]; then
+      echo "Compatible JRE 8 not found. Please follow the instructions in <BALLERINA_HOME>/INSTALL.txt to install and setup Ballerina."
+      exit 1;
     fi
     $JAVA_COMMAND -jar $CURRENT_PATH/../lib/ballerina-command-${ballerina.command.version}.jar "$@"
 fi

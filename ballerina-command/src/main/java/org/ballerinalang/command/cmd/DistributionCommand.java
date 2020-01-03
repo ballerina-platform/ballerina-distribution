@@ -17,15 +17,20 @@
 package org.ballerinalang.command.cmd;
 
 import org.ballerinalang.command.BallerinaCliCommands;
+import org.ballerinalang.command.util.ErrorUtil;
 import picocli.CommandLine;
 
 import java.io.PrintStream;
+import java.util.List;
 
 /**
  * This class represents the "Update" command and it holds arguments and flags specified by the user.
  */
 @CommandLine.Command(name = "dist", description = "Ballerina distribution commands")
 public class DistributionCommand extends Command implements BCommand {
+
+    @CommandLine.Parameters(description = "Command name")
+    private List<String> distCommands;
 
     @CommandLine.Option(names = { "--help", "-h", "?" }, hidden = true, description = "for more information")
     private boolean helpFlag;
@@ -34,14 +39,21 @@ public class DistributionCommand extends Command implements BCommand {
         super(printStream);
     }
 
+    private CommandLine parentCmdParser;
+
     @Override
     public void execute() {
-        if (helpFlag) {
-            printUsageInfo(BallerinaCliCommands.HELP);
+        if (helpFlag || distCommands == null) {
+            printUsageInfo(BallerinaCliCommands.DIST);
             return;
         }
 
-        printUsageInfo(BallerinaCliCommands.DIST);
+        if (distCommands.size() > 1) {
+            throw ErrorUtil.createUsageExceptionWithHelp("too many arguments", BallerinaCliCommands.DIST);
+        }
+
+        throw ErrorUtil.createUsageExceptionWithHelp("unknown command '" + distCommands.get(0) + "'",
+                                                     BallerinaCliCommands.DIST);
     }
 
     @Override
@@ -60,5 +72,7 @@ public class DistributionCommand extends Command implements BCommand {
 
     @Override
     public void setParentCmdParser(CommandLine parentCmdParser) {
+        this.parentCmdParser = parentCmdParser;
     }
+
 }
