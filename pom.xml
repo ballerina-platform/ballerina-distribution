@@ -209,7 +209,7 @@
             </dependency>
             <dependency>
                 <groupId>org.ballerinax.docker</groupId>
-                <artifactId>docker-extension-balo</artifactId>
+                <artifactId>docker-extension-annotations</artifactId>
                 <type>zip</type>
                 <version>${docker.version}</version>
             </dependency>
@@ -228,7 +228,7 @@
             </dependency>
             <dependency>
                 <groupId>org.ballerinax.kubernetes</groupId>
-                <artifactId>kubernetes-extension-balo</artifactId>
+                <artifactId>kubernetes-extension-annotations</artifactId>
                 <type>zip</type>
                 <version>${kubernetes.version}</version>
             </dependency>
@@ -259,7 +259,7 @@
         <ballerina.version>1.2.0-SNAPSHOT</ballerina.version>
         <ballerina.jre.artifacts.version>2.0.0</ballerina.jre.artifacts.version>
         <project.scm.id>ballerina-scm-server</project.scm.id>
-        <docker.version>1.1.0</docker.version>
+        <docker.version>1.2.0-SNAPSHOT</docker.version>
         <kubernetes.version>1.2.0-SNAPSHOT</kubernetes.version>
         <awslambda.version>1.2.0-SNAPSHOT</awslambda.version>
         <picocli.version>4.0.1</picocli.version>
