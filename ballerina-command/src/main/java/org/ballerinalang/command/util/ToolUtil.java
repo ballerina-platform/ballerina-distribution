@@ -57,10 +57,13 @@ import javax.net.ssl.X509TrustManager;
  */
 public class ToolUtil {
     private static final String PRODUCTION_URL = "https://api.central.ballerina.io/1.0/update-tool";
+    private static final String STAGING_URL = "https://api.staging-central.ballerina.io/1.0/update-tool";
     public static final String BALLERINA_TYPE = "jballerina";
     public static final String CLI_HELP_FILE_PREFIX = "dist-";
     private static final String BALLERINA_1_X_VERSIONS = "1.0.";
     private static final String CONNECTION_ERROR_MESSAGE = "connection to the remote server failed";
+    public static final boolean BALLERINA_DEV_STAGE_CENTRAL = Boolean.parseBoolean(
+            System.getenv("BALLERINA_TOOL_DEV_STAGE"));
 
     private static TrustManager[] trustAllCerts = new TrustManager[]{
             new X509TrustManager() {
@@ -159,7 +162,7 @@ public class ToolUtil {
             sc.init(null, trustAllCerts, new java.security.SecureRandom());
             HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
 
-            URL url = new URL(PRODUCTION_URL + "/distributions");
+            URL url = new URL(getServerURL() + "/distributions");
             conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("user-agent",
@@ -194,7 +197,7 @@ public class ToolUtil {
             sc.init(null, trustAllCerts, new java.security.SecureRandom());
             HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
 
-            URL url = new URL(PRODUCTION_URL
+            URL url = new URL(getServerURL()
                                       + "/distributions/latest?version=" + currentVersion + "&type=" + type);
             conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
@@ -234,7 +237,7 @@ public class ToolUtil {
             sc.init(null, trustAllCerts, new java.security.SecureRandom());
             HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
 
-            URL url = new URL(PRODUCTION_URL + "/versions/latest");
+            URL url = new URL(getServerURL() + "/versions/latest");
 
             conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
@@ -351,7 +354,7 @@ public class ToolUtil {
                 sc.init(null, trustAllCerts, new java.security.SecureRandom());
                 HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
 
-                URL url = new URL(ToolUtil.PRODUCTION_URL + "/distributions/" + distributionVersion);
+                URL url = new URL(ToolUtil.getServerURL() + "/distributions/" + distributionVersion);
                 conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("GET");
                 conn.setRequestProperty("user-agent",
@@ -423,7 +426,7 @@ public class ToolUtil {
             sc.init(null, trustAllCerts, new java.security.SecureRandom());
             HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
 
-            URL url = new URL(ToolUtil.PRODUCTION_URL + "/versions/" + toolVersion);
+            URL url = new URL(ToolUtil.getServerURL() + "/versions/" + toolVersion);
             conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("user-agent", OSUtils.getUserAgent(getCurrentBallerinaVersion(),
@@ -607,5 +610,13 @@ public class ToolUtil {
     private static String getServerRequestFailedErrorMessage(HttpURLConnection conn) throws IOException {
         String responseMessage = conn.getResponseMessage();
         return "server request failed: " + (responseMessage == null ? conn.getResponseCode() : responseMessage);
+    }
+
+    /**
+     * Provide server url based on the envorinment variable setting.
+     * @return
+     */
+    private static String getServerURL() {
+        return BALLERINA_DEV_STAGE_CENTRAL ? STAGING_URL : PRODUCTION_URL;
     }
 }
