@@ -62,7 +62,7 @@ public class ToolUtil {
     public static final String CLI_HELP_FILE_PREFIX = "dist-";
     private static final String BALLERINA_1_X_VERSIONS = "1.0.";
     private static final String CONNECTION_ERROR_MESSAGE = "connection to the remote server failed";
-    public static final boolean BALLERINA_DEV_STAGE_CENTRAL = Boolean.parseBoolean(
+    public static final boolean BALLERINA_DEV_STAGE_UPDATE = Boolean.parseBoolean(
             System.getenv("BALLERINA_DEV_STAGE_UPDATE"));
 
     private static TrustManager[] trustAllCerts = new TrustManager[]{
@@ -617,6 +617,6 @@ public class ToolUtil {
      * @return
      */
     private static String getServerURL() {
-        return BALLERINA_DEV_STAGE_CENTRAL ? STAGING_URL : PRODUCTION_URL;
+        return BALLERINA_DEV_STAGE_UPDATE ? STAGING_URL : PRODUCTION_URL;
     }
 }
