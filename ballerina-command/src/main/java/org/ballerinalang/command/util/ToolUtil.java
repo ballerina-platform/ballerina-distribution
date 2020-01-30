@@ -63,7 +63,7 @@ public class ToolUtil {
     private static final String BALLERINA_1_X_VERSIONS = "1.0.";
     private static final String CONNECTION_ERROR_MESSAGE = "connection to the remote server failed";
     public static final boolean BALLERINA_DEV_STAGE_CENTRAL = Boolean.parseBoolean(
-            System.getenv("BALLERINA_TOOL_DEV_STAGE"));
+            System.getenv("BALLERINA_DEV_STAGE_UPDATE"));
 
     private static TrustManager[] trustAllCerts = new TrustManager[]{
             new X509TrustManager() {
