@@ -57,7 +57,7 @@ import javax.net.ssl.X509TrustManager;
  */
 public class ToolUtil {
     private static final String PRODUCTION_URL = "https://api.central.ballerina.io/1.0/update-tool";
-    private static final String STAGING_URL = "https://api.staging-central.ballerina.io/1.0/update-tool";
+    private static final String STAGING_URL = "https://api.staging-central.ballerina.io/update-tool";
     public static final String BALLERINA_TYPE = "jballerina";
     public static final String CLI_HELP_FILE_PREFIX = "dist-";
     private static final String BALLERINA_1_X_VERSIONS = "1.0.";
