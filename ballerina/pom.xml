@@ -66,6 +66,11 @@
         </dependency>
         <dependency>
             <groupId>org.ballerinax.docker</groupId>
+            <artifactId>docker-extension-annotations</artifactId>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinax.docker</groupId>
             <artifactId>docker-extension-examples</artifactId>
             <type>zip</type>
         </dependency>
@@ -76,9 +81,14 @@
             <artifactId>kubernetes-extension</artifactId>
         </dependency>
         <dependency>
-        <groupId>org.ballerinax.kubernetes</groupId>
-        <artifactId>kubernetes-extension-examples</artifactId>
-        <type>zip</type>
+            <groupId>org.ballerinax.kubernetes</groupId>
+            <artifactId>kubernetes-extension-annotations</artifactId>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinax.kubernetes</groupId>
+            <artifactId>kubernetes-extension-examples</artifactId>
+            <type>zip</type>
         </dependency>
         <dependency>
             <groupId>org.ballerinalang</groupId>
@@ -134,7 +144,9 @@
                                 awslambda-extension-balo,
                                 awslambda-extension-examples,
                                 docker-extension-examples,
-                                kubernetes-extension-examples
+                                docker-extension-annotations,
+                                kubernetes-extension-examples,
+                                kubernetes-extension-annotations
                             </includeArtifactIds>
                             <outputDirectory>${project.build.directory}/extracted-distributions
                             </outputDirectory>
