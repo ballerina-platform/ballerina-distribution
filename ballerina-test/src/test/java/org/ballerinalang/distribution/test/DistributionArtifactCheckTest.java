@@ -27,8 +27,6 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Arrays;
-import java.util.Objects;
 
 import static org.ballerinalang.distribution.utils.TestUtils.DISTRIBUTIONS_DIR;
 import static org.ballerinalang.distribution.utils.TestUtils.MAVEN_VERSION;
@@ -72,8 +70,7 @@ public class DistributionArtifactCheckTest {
         Assert.assertTrue(Files.exists(birPath));
         Assert.assertTrue(Files.exists(tomlPath));
         Assert.assertTrue(Files.exists(breLibPath.resolve("docker.jar")));
-        Assert.assertTrue(Arrays.stream(Objects.requireNonNull(breLibPath.toFile().listFiles()))
-                .anyMatch(lib -> lib.getName().startsWith("docker-extension-")));
+        Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "docker-extension-"));
     }
     
     @Test
@@ -102,8 +99,7 @@ public class DistributionArtifactCheckTest {
         Assert.assertTrue(Files.exists(birPath));
         Assert.assertTrue(Files.exists(tomlPath));
         Assert.assertTrue(Files.exists(breLibPath.resolve("kubernetes.jar")));
-        Assert.assertTrue(Arrays.stream(Objects.requireNonNull(breLibPath.toFile().listFiles()))
-                .anyMatch(lib -> lib.getName().startsWith("kubernetes-extension-")));
+        Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "kubernetes-extension-"));
     }
     
     @Test
@@ -132,8 +128,7 @@ public class DistributionArtifactCheckTest {
         Assert.assertTrue(Files.exists(birPath));
         Assert.assertTrue(Files.exists(tomlPath));
         Assert.assertTrue(Files.exists(breLibPath.resolve("istio.jar")));
-        Assert.assertTrue(Arrays.stream(Objects.requireNonNull(breLibPath.toFile().listFiles()))
-                .anyMatch(lib -> lib.getName().startsWith("kubernetes-extension-")));
+        Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "kubernetes-extension-"));
     }
     
     @Test
@@ -162,8 +157,7 @@ public class DistributionArtifactCheckTest {
         Assert.assertTrue(Files.exists(birPath));
         Assert.assertTrue(Files.exists(tomlPath));
         Assert.assertTrue(Files.exists(breLibPath.resolve("openshift.jar")));
-        Assert.assertTrue(Arrays.stream(Objects.requireNonNull(breLibPath.toFile().listFiles()))
-                .anyMatch(lib -> lib.getName().startsWith("kubernetes-extension-")));
+        Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "kubernetes-extension-"));
     }
     
     @Test
@@ -192,8 +186,7 @@ public class DistributionArtifactCheckTest {
         Assert.assertTrue(Files.exists(birPath));
         Assert.assertTrue(Files.exists(tomlPath));
         Assert.assertTrue(Files.exists(breLibPath.resolve("knative.jar")));
-        Assert.assertTrue(Arrays.stream(Objects.requireNonNull(breLibPath.toFile().listFiles()))
-                .anyMatch(lib -> lib.getName().startsWith("kubernetes-extension-")));
+        Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "kubernetes-extension-"));
     }
     
     @Test
@@ -212,8 +205,7 @@ public class DistributionArtifactCheckTest {
                 .resolve("lib");
     
         Assert.assertTrue(Files.exists(birPath));
-        Assert.assertTrue(Arrays.stream(Objects.requireNonNull(breLibPath.toFile().listFiles()))
-                .anyMatch(lib -> lib.getName().startsWith("awslambda-extension-")));
+        Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "awslambda-extension-"));
     }
     
     @AfterClass
