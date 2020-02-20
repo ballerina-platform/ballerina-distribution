@@ -22,32 +22,34 @@ import org.ballerinalang.distribution.utils.TestUtils;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Arrays;
+import java.util.Objects;
 
 import static org.ballerinalang.distribution.utils.TestUtils.DISTRIBUTIONS_DIR;
 import static org.ballerinalang.distribution.utils.TestUtils.MAVEN_VERSION;
 import static org.ballerinalang.distribution.utils.TestUtils.TEST_DISTRIBUTION_PATH;
 
 /**
- * Check if necessary files exists to build in distribution.
+ * Check if necessary files exists to build in the distribution.
  */
 public class DistributionArtifactCheckTest {
+    private static final String DIST_NAME = "jballerina-" + MAVEN_VERSION;
     
     @BeforeClass
     public void setupDistributions() throws IOException {
         TestUtils.cleanDistribution();
-        String distName = "jballerina-" + MAVEN_VERSION;
-        TestUtils.prepareDistribution(DISTRIBUTIONS_DIR.resolve(distName + ".zip"));
+        TestUtils.prepareDistribution(DISTRIBUTIONS_DIR.resolve(DIST_NAME + ".zip"));
     }
     
     @Test
     public void dockerAnnotationExistsTest() {
         Path birPath = TEST_DISTRIBUTION_PATH
+                .resolve(DIST_NAME)
                 .resolve("bir-cache")
                 .resolve("ballerina")
                 .resolve("docker")
@@ -55,31 +57,29 @@ public class DistributionArtifactCheckTest {
                 .resolve("docker.bir");
     
         Path tomlPath = TEST_DISTRIBUTION_PATH
+                .resolve(DIST_NAME)
                 .resolve("bir-cache")
                 .resolve("ballerina")
                 .resolve("docker")
                 .resolve("0.0.0")
                 .resolve("Ballerina.toml");
         
-        Path jarPath = TEST_DISTRIBUTION_PATH
+        Path breLibPath = TEST_DISTRIBUTION_PATH
+                .resolve(DIST_NAME)
                 .resolve("bre")
-                .resolve("lib")
-                .resolve("docker.jar");
-        
-        Path pluginPath = TEST_DISTRIBUTION_PATH
-                .resolve("bre")
-                .resolve("lib")
-                .resolve("docker-extension-" + MAVEN_VERSION + ".jar");
+                .resolve("lib");
         
         Assert.assertTrue(Files.exists(birPath));
         Assert.assertTrue(Files.exists(tomlPath));
-        Assert.assertTrue(Files.exists(jarPath));
-        Assert.assertTrue(Files.exists(pluginPath));
+        Assert.assertTrue(Files.exists(breLibPath.resolve("docker.jar")));
+        Assert.assertTrue(Arrays.stream(Objects.requireNonNull(breLibPath.toFile().listFiles()))
+                .anyMatch(lib -> lib.getName().startsWith("docker-extension-")));
     }
     
     @Test
     public void kubernetesAnnotationExistsTest() {
         Path birPath = TEST_DISTRIBUTION_PATH
+                .resolve(DIST_NAME)
                 .resolve("bir-cache")
                 .resolve("ballerina")
                 .resolve("kubernetes")
@@ -87,31 +87,29 @@ public class DistributionArtifactCheckTest {
                 .resolve("kubernetes.bir");
         
         Path tomlPath = TEST_DISTRIBUTION_PATH
+                .resolve(DIST_NAME)
                 .resolve("bir-cache")
                 .resolve("ballerina")
                 .resolve("kubernetes")
                 .resolve("0.0.0")
                 .resolve("Ballerina.toml");
-        
-        Path jarPath = TEST_DISTRIBUTION_PATH
+    
+        Path breLibPath = TEST_DISTRIBUTION_PATH
+                .resolve(DIST_NAME)
                 .resolve("bre")
-                .resolve("lib")
-                .resolve("kubernetes.jar");
-        
-        Path pluginPath = TEST_DISTRIBUTION_PATH
-                .resolve("bre")
-                .resolve("lib")
-                .resolve("kubernetes-extension-" + MAVEN_VERSION + ".jar");
+                .resolve("lib");
         
         Assert.assertTrue(Files.exists(birPath));
         Assert.assertTrue(Files.exists(tomlPath));
-        Assert.assertTrue(Files.exists(jarPath));
-        Assert.assertTrue(Files.exists(pluginPath));
+        Assert.assertTrue(Files.exists(breLibPath.resolve("kubernetes.jar")));
+        Assert.assertTrue(Arrays.stream(Objects.requireNonNull(breLibPath.toFile().listFiles()))
+                .anyMatch(lib -> lib.getName().startsWith("kubernetes-extension-")));
     }
     
     @Test
     public void istioAnnotationExistsTest() {
         Path birPath = TEST_DISTRIBUTION_PATH
+                .resolve(DIST_NAME)
                 .resolve("bir-cache")
                 .resolve("ballerina")
                 .resolve("istio")
@@ -119,31 +117,29 @@ public class DistributionArtifactCheckTest {
                 .resolve("istio.bir");
         
         Path tomlPath = TEST_DISTRIBUTION_PATH
+                .resolve(DIST_NAME)
                 .resolve("bir-cache")
                 .resolve("ballerina")
                 .resolve("istio")
                 .resolve("0.0.0")
                 .resolve("Ballerina.toml");
-        
-        Path jarPath = TEST_DISTRIBUTION_PATH
+    
+        Path breLibPath = TEST_DISTRIBUTION_PATH
+                .resolve(DIST_NAME)
                 .resolve("bre")
-                .resolve("lib")
-                .resolve("istio.jar");
-        
-        Path pluginPath = TEST_DISTRIBUTION_PATH
-                .resolve("bre")
-                .resolve("lib")
-                .resolve("kubernetes-extension-" + MAVEN_VERSION + ".jar");
-        
+                .resolve("lib");
+    
         Assert.assertTrue(Files.exists(birPath));
         Assert.assertTrue(Files.exists(tomlPath));
-        Assert.assertTrue(Files.exists(jarPath));
-        Assert.assertTrue(Files.exists(pluginPath));
+        Assert.assertTrue(Files.exists(breLibPath.resolve("istio.jar")));
+        Assert.assertTrue(Arrays.stream(Objects.requireNonNull(breLibPath.toFile().listFiles()))
+                .anyMatch(lib -> lib.getName().startsWith("kubernetes-extension-")));
     }
     
     @Test
     public void openshiftAnnotationExistsTest() {
         Path birPath = TEST_DISTRIBUTION_PATH
+                .resolve(DIST_NAME)
                 .resolve("bir-cache")
                 .resolve("ballerina")
                 .resolve("openshift")
@@ -151,31 +147,29 @@ public class DistributionArtifactCheckTest {
                 .resolve("openshift.bir");
         
         Path tomlPath = TEST_DISTRIBUTION_PATH
+                .resolve(DIST_NAME)
                 .resolve("bir-cache")
                 .resolve("ballerina")
                 .resolve("openshift")
                 .resolve("0.0.0")
                 .resolve("Ballerina.toml");
-        
-        Path jarPath = TEST_DISTRIBUTION_PATH
+    
+        Path breLibPath = TEST_DISTRIBUTION_PATH
+                .resolve(DIST_NAME)
                 .resolve("bre")
-                .resolve("lib")
-                .resolve("openshift.jar");
-        
-        Path pluginPath = TEST_DISTRIBUTION_PATH
-                .resolve("bre")
-                .resolve("lib")
-                .resolve("kubernetes-extension-" + MAVEN_VERSION + ".jar");
-        
+                .resolve("lib");
+    
         Assert.assertTrue(Files.exists(birPath));
         Assert.assertTrue(Files.exists(tomlPath));
-        Assert.assertTrue(Files.exists(jarPath));
-        Assert.assertTrue(Files.exists(pluginPath));
+        Assert.assertTrue(Files.exists(breLibPath.resolve("openshift.jar")));
+        Assert.assertTrue(Arrays.stream(Objects.requireNonNull(breLibPath.toFile().listFiles()))
+                .anyMatch(lib -> lib.getName().startsWith("kubernetes-extension-")));
     }
     
     @Test
     public void knativeAnnotationExistsTest() {
         Path birPath = TEST_DISTRIBUTION_PATH
+                .resolve(DIST_NAME)
                 .resolve("bir-cache")
                 .resolve("ballerina")
                 .resolve("knative")
@@ -183,58 +177,43 @@ public class DistributionArtifactCheckTest {
                 .resolve("knative.bir");
         
         Path tomlPath = TEST_DISTRIBUTION_PATH
+                .resolve(DIST_NAME)
                 .resolve("bir-cache")
                 .resolve("ballerina")
                 .resolve("knative")
                 .resolve("0.0.0")
                 .resolve("Ballerina.toml");
-        
-        Path jarPath = TEST_DISTRIBUTION_PATH
+    
+        Path breLibPath = TEST_DISTRIBUTION_PATH
+                .resolve(DIST_NAME)
                 .resolve("bre")
-                .resolve("lib")
-                .resolve("knative.jar");
-        
-        Path pluginPath = TEST_DISTRIBUTION_PATH
-                .resolve("bre")
-                .resolve("lib")
-                .resolve("kubernetes-extension-" + MAVEN_VERSION + ".jar");
-        
+                .resolve("lib");
+    
         Assert.assertTrue(Files.exists(birPath));
         Assert.assertTrue(Files.exists(tomlPath));
-        Assert.assertTrue(Files.exists(jarPath));
-        Assert.assertTrue(Files.exists(pluginPath));
+        Assert.assertTrue(Files.exists(breLibPath.resolve("knative.jar")));
+        Assert.assertTrue(Arrays.stream(Objects.requireNonNull(breLibPath.toFile().listFiles()))
+                .anyMatch(lib -> lib.getName().startsWith("kubernetes-extension-")));
     }
     
     @Test
     public void awsLambdaAnnotationExistsTest() {
         Path birPath = TEST_DISTRIBUTION_PATH
+                .resolve(DIST_NAME)
                 .resolve("bir-cache")
                 .resolve("ballerinax")
                 .resolve("awslambda")
                 .resolve("0.0.0")
                 .resolve("awslambda.bir");
-        
-        Path tomlPath = TEST_DISTRIBUTION_PATH
-                .resolve("bir-cache")
-                .resolve("ballerinax")
-                .resolve("awslambda")
-                .resolve("0.0.0")
-                .resolve("Ballerina.toml");
-        
-        Path jarPath = TEST_DISTRIBUTION_PATH
+    
+        Path breLibPath = TEST_DISTRIBUTION_PATH
+                .resolve(DIST_NAME)
                 .resolve("bre")
-                .resolve("lib")
-                .resolve("awslambda.jar");
-        
-        Path pluginPath = TEST_DISTRIBUTION_PATH
-                .resolve("bre")
-                .resolve("lib")
-                .resolve("awslambda-extension-" + MAVEN_VERSION + ".jar");
-        
+                .resolve("lib");
+    
         Assert.assertTrue(Files.exists(birPath));
-        Assert.assertTrue(Files.exists(tomlPath));
-        Assert.assertTrue(Files.exists(jarPath));
-        Assert.assertTrue(Files.exists(pluginPath));
+        Assert.assertTrue(Arrays.stream(Objects.requireNonNull(breLibPath.toFile().listFiles()))
+                .anyMatch(lib -> lib.getName().startsWith("awslambda-extension-")));
     }
     
     @AfterClass

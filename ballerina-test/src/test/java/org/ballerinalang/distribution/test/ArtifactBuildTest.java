@@ -45,7 +45,6 @@ public class ArtifactBuildTest {
     public Object[][] distributionNameProvider() {
         return new Object[][]{
                 {"ballerina-" + MAVEN_VERSION},
-                {"jballerina-" + MAVEN_VERSION},
                 {"ballerina-linux-" + MAVEN_VERSION},
                 {"ballerina-macos-" + MAVEN_VERSION}
         };
@@ -67,8 +66,8 @@ public class ArtifactBuildTest {
         buildArgs.add("hello_world_docker.bal");
         boolean successful = TestUtils.executeBuild(distributionFileName, TestUtils.getResource(testResource),
                 buildArgs);
-        Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("docker")));
         Assert.assertTrue(successful);
+        Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("docker")));
         FileUtils.deleteDirectory(TestUtils.getResource(testResource).resolve("kubernetes").toFile());
     }
     
@@ -80,8 +79,8 @@ public class ArtifactBuildTest {
         buildArgs.add("hello_world_k8s.bal");
         boolean successful = TestUtils.executeBuild(distributionFileName, TestUtils.getResource(testResource),
                 buildArgs);
-        Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("kubernetes")));
         Assert.assertTrue(successful);
+        Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("kubernetes")));
         FileUtils.deleteDirectory(TestUtils.getResource(testResource).resolve("kubernetes").toFile());
     }
     
@@ -92,8 +91,8 @@ public class ArtifactBuildTest {
         buildArgs.add("travel_agency_service.bal");
         boolean successful = TestUtils.executeBuild(distributionFileName, TestUtils.getResource(testResource),
                 buildArgs);
-        Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("kubernetes")));
         Assert.assertTrue(successful);
+        Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("kubernetes")));
         FileUtils.deleteDirectory(TestUtils.getResource(testResource).resolve("kubernetes").toFile());
     }
     
@@ -104,8 +103,8 @@ public class ArtifactBuildTest {
         buildArgs.add("hello_world_oc.bal");
         boolean successful = TestUtils.executeBuild(distributionFileName, TestUtils.getResource(testResource),
                 buildArgs);
-        Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("kubernetes").resolve("openshift")));
         Assert.assertTrue(successful);
+        Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("kubernetes").resolve("openshift")));
         FileUtils.deleteDirectory(TestUtils.getResource(testResource).resolve("kubernetes").toFile());
     }
     
@@ -116,8 +115,8 @@ public class ArtifactBuildTest {
         buildArgs.add("hello_world_knative.bal");
         boolean successful = TestUtils.executeBuild(distributionFileName, TestUtils.getResource(testResource),
                 buildArgs);
-        Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("kubernetes")));
         Assert.assertTrue(successful);
+        Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("kubernetes")));
         FileUtils.deleteDirectory(TestUtils.getResource(testResource).resolve("kubernetes").toFile());
     }
     
