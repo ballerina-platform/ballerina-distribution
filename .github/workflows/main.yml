@@ -21,4 +21,3 @@ jobs:
       run: mvn clean install -B -V
     - name: Build Ballerina Distribution
       run: mvn clean install -B -V
-
