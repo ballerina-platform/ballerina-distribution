@@ -1,0 +1,24 @@
+name: Ballerina Distribution Build
+
+on:
+  push:
+    branches:
+      - master
+      - ballerina-1.1.x
+  pull_request:
+    branches:
+      - master
+      - ballerina-1.1.x
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout 
+      uses: actions/checkout@v2
+    - name: Build Ballerina Tool
+      working-directory: ./ballerina-command
+      run: mvn clean install -B -V
+    - name: Build Ballerina Distribution
+      run: mvn clean install -B -V
+
