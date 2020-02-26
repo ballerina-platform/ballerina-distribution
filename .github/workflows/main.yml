@@ -16,8 +16,5 @@ jobs:
     steps:
     - name: Checkout 
       uses: actions/checkout@v2
-    - name: Build Ballerina Tool
-      working-directory: ./ballerina-command
-      run: mvn clean install -B -V
     - name: Build Ballerina Distribution
       run: mvn clean install -B -V
