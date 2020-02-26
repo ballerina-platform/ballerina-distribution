@@ -145,14 +145,20 @@
             <fileMode>644</fileMode>
         </file>
         <file>
-            <source>../resources/tools/bin/ballerina</source>
+            <source>${project.build.directory}/extracted-distributions/ballerina-command-distribution-zip/bin/ballerina</source>
             <outputDirectory>bin</outputDirectory>
             <filtered>true</filtered>
             <fileMode>775</fileMode>
         </file>
         <file>
-            <source>../resources/tools/bin/ballerina.bat</source>
+            <source>${project.build.directory}/extracted-distributions/ballerina-command-distribution-zip/bin/ballerina.bat</source>
             <outputDirectory>bin</outputDirectory>
+            <filtered>true</filtered>
+            <fileMode>775</fileMode>
+        </file>
+        <file>
+            <source>${project.build.directory}/extracted-distributions/ballerina-command-distribution-zip/lib/ballerina-command-${ballerina.command.version}.jar</source>
+            <outputDirectory>lib</outputDirectory>
             <filtered>true</filtered>
             <fileMode>775</fileMode>
         </file>
@@ -164,13 +170,6 @@
                 <include>org.ballerinax.docker:docker-extension</include>
                 <include>org.ballerinax.kubernetes:kubernetes-extension</include>
                 <include>org.ballerinax.awslambda:awslambda-extension</include>
-            </includes>
-            <unpack>false</unpack>
-        </dependencySet>
-        <dependencySet>
-            <outputDirectory>lib</outputDirectory>
-            <includes>
-                <include>org.ballerinalang:ballerina-command</include>
             </includes>
             <unpack>false</unpack>
         </dependencySet>
