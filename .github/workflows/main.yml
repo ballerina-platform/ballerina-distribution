@@ -16,7 +16,10 @@ jobs:
     steps:
     - name: Checkout 
       uses: actions/checkout@v2
-    - name: Build Ballerina Distribution
+    - name: maven-settings-xml-action
+      uses: whelk-io/maven-settings-xml-action@v4
       with:
-        repo-token: ${{ secrets.PUBLISH_PAT }}
+        repositories: '[{ "id": "github", "url": "https://maven.pkg.github.com/ballerina-platform/ballerina-update-tool" }]'
+        servers: '[{ "id": "github", "username": "${{ secrets.PUBLISH_USER }}", "password": "{{ secrets.PUBLISH_PAT }}" }]'
+    - name: Build Ballerina Distribution
       run: mvn clean install -B -V
