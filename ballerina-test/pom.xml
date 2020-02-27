@@ -22,14 +22,14 @@
     <parent>
         <groupId>org.ballerinalang</groupId>
         <artifactId>ballerina-distribution</artifactId>
-        <version>1.1.3-SNAPSHOT</version>
+        <version>1.1.4-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>ballerina-distribution-test</artifactId>
     <packaging>jar</packaging>
-    <name>Ballerina - Tools Test</name>
+    <name>Ballerina - Tools - Test</name>
 
     <dependencies>
         <dependency>
