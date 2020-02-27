@@ -17,6 +17,6 @@ jobs:
     - name: Checkout 
       uses: actions/checkout@v2
     - name: Build Ballerina Distribution
-      env:
-        GITHUB_TOKEN: ${{ secrets.PUBLISH_PAT }}
+      with:
+        repo-token: ${{ secrets.PUBLISH_PAT }}
       run: mvn clean install -B -V
