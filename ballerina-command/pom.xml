@@ -88,6 +88,15 @@
 
     <repositories>
         <repository>
+            <id>central</id>
+            <name>Central Repository</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+            <layout>default</layout>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
             <id>wso2.releases</id>
             <name>WSO2 Releases Repository</name>
             <url>http://maven.wso2.org/nexus/content/repositories/releases/</url>
