@@ -22,6 +22,7 @@ jobs:
         repositories: '[{ "id": "github", "url": "https://maven.pkg.github.com/ballerina-platform/ballerina-update-tool" }]'
         servers: '[{ "id": "github", "username": "${{ secrets.PUBLISH_USER }}" , "password": "${{ secrets.PUBLISH_PAT }}" }]'
     - name: Build Ballerina Distribution
-      run: mvn -s /home/runner/.m2/settings.xml clean install -B -V
+      run: mvn -s settings.xml clean install -B -V
       env:
-        PackagePAT: ${{secrets.PUBLISH_PAT}}
+        packagePAT: ${{secrets.PUBLISH_PAT}}
+        packageUser: ${{ secrets.PUBLISH_USER }}
