@@ -23,3 +23,5 @@ jobs:
         servers: '[{ "id": "github", "username": "${{ secrets.PUBLISH_USER }}" , "password": "${{ secrets.PUBLISH_PAT }}" }]'
     - name: Build Ballerina Distribution
       run: mvn -s /home/runner/.m2/settings.xml clean install -B -V
+      env:
+        PackagePAT: ${{secrets.PUBLISH_PAT}}
