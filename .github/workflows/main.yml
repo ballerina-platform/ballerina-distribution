@@ -20,6 +20,6 @@ jobs:
       uses: whelk-io/maven-settings-xml-action@v4
       with:
         repositories: '[{ "id": "github", "url": "https://maven.pkg.github.com/ballerina-platform/ballerina-update-tool" }]'
-        servers: '[{ "id": "github", "username": "${{ secrets.PUBLISH_USER }}", "password": "{{ secrets.PUBLISH_PAT }}" }]'
+        servers: '[{ "id": "github", "username": "${{ secrets.PUBLISH_USER }}" , "password": "${{ secrets.PUBLISH_PAT }}" }]'
     - name: Build Ballerina Distribution
       run: mvn clean install -B -V
