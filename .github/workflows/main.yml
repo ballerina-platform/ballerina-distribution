@@ -24,5 +24,5 @@ jobs:
     - name: Build Ballerina Distribution
       run: mvn -s settings.xml clean install -B -V
       env:
-        packagePAT: ${{secrets.PUBLISH_PAT}}
+        packagePAT: ${{ secrets.PUBLISH_PAT }}
         packageUser: ${{ secrets.PUBLISH_USER }}
