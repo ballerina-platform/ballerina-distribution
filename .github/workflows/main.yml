@@ -22,6 +22,7 @@ jobs:
         repositories: '[{ "id": "github", "url": "https://maven.pkg.github.com/ballerina-platform/ballerina-update-tool" }]'
         servers: '[{ "id": "github", "username": "${{ secrets.PUBLISH_USER }}" , "password": "${{ secrets.PUBLISH_PAT }}" }]'
     - name: Set credentials
+      run: echo "Set enviroments"
       env:
         packagePAT: ${{ secrets.PUBLISH_PAT }}
         packageUser: ${{ secrets.PUBLISH_USER }}
