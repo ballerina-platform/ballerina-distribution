@@ -161,7 +161,6 @@
         <file>
             <source>${project.build.directory}/extracted-distributions/ballerina-command-distribution-zip/lib/ballerina-command-${ballerina.command.version}.jar</source>
             <outputDirectory>lib</outputDirectory>
-            <filtered>true</filtered>
             <fileMode>775</fileMode>
         </file>
     </files>
