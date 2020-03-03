@@ -20,12 +20,9 @@ jobs:
         maven-version: 3.5.4
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Set credentials
-      run: echo "Set enviroments"
-      env:
-        packagePAT: ${{ secrets.READ_PACKAGE_PAT }}
-        packageUser: ${{ secrets.PUBLISH_USER }}
     - name: Build Ballerina Distribution
       env:
         GITHUB_TOKEN: ${{ secrets.READ_PACKAGE_PAT }}
+        packagePAT: ${{ secrets.READ_PACKAGE_PAT }}
+        packageUser: ${{ secrets.PUBLISH_USER }}
       run: mvn -s settings.xml -Dmaven.wagon.http.pool=false clean install -B -V
