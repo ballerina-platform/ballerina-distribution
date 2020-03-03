@@ -106,7 +106,7 @@
             </releases>
         </repository>
         <repository>
-            <id>github.package</id>
+            <id>github</id>
             <name>Github Package Repository</name>
             <url>https://maven.pkg.github.com/ballerina-platform/ballerina-update-tool</url>
         </repository>
