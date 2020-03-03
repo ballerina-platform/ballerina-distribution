@@ -14,7 +14,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout 
+    - name: Set up Maven
+      uses: stCarolas/setup-maven@v3
+      with:
+        maven-version: 3.5.4
+    - name: Checkout
       uses: actions/checkout@v2
     - name: Set credentials
       run: echo "Set enviroments"
