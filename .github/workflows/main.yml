@@ -24,7 +24,7 @@ jobs:
     - name: Set credentials
       run: echo "Set enviroments"
       env:
-        packagePAT: ${{ secrets.PUBLISH_PAT }}
+        packagePAT: ${{ secrets.READ_PACKAGE_PAT }}
         packageUser: ${{ secrets.PUBLISH_USER }}
     - name: Build Ballerina Distribution
       run: mvn -s settings.xml clean install -B -V
