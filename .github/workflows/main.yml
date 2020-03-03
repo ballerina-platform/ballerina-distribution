@@ -24,4 +24,4 @@ jobs:
     - name: Build Ballerina Distribution
       env:
         GITHUB_TOKEN: ${{ secrets.READ_PACKAGE_PAT }}
-      run: mvn -s settings.xml clean install -B -V
+      run: mvn -s settings.xml -Dmaven.wagon.http.pool=false clean install -B -V
