@@ -54,7 +54,7 @@ public class InstallerTest {
         executor.executeCommand("ballerina dist use jballerina-1.1.0", true);
         executor.executeCommand("ballerina dist remove jballerina-1.1.1", true);
         executor.executeCommand("ballerina dist update", true);
-        Assert.assertEquals(executor.executeCommand("ballerina -v", false), TestUtils.getVersionOutput("1.1.1"));
+        Assert.assertEquals(executor.executeCommand("ballerina -v", false), TestUtils.getVersionOutput("1.1.4"));
 
         //Try `ballerina dist remove`
         executor.executeCommand("ballerina dist remove jballerina-1.1.0", true);
