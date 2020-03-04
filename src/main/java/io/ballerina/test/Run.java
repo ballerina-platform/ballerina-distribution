@@ -23,6 +23,6 @@ public class Run {
     private static final Logger log = LoggerFactory.getLogger(Run.class);
 
     public static void main(String [] args) {
-        Utils.downloadFile("ballerina-macos-installer-x64-1.1.1.pkg");
+        Utils.downloadFile("1.1.1","ballerina-macos-installer-x64-1.1.1.pkg");
     }
 }

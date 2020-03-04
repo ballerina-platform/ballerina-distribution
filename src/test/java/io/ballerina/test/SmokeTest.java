@@ -25,19 +25,9 @@ public class SmokeTest {
 
     @DataProvider(name = "getExecutors")
     public Object[][] dataProviderMethod() {
-        String version = "1.1.1";
+        String version = "1.1.2";
         Executor[][] result = new Executor[1][1];
-        String provider = System.getenv("OS_TYPE");
-
-        if (provider.equalsIgnoreCase("ubuntu")) {
-            result[0][0] = new Ubuntu(version);
-        } else if (provider.equalsIgnoreCase("windows")) {
-            result[0][0] = new Windows(version);
-        } else if (provider.equalsIgnoreCase("centos")) {
-            result[0][0] = new CentOS(version);
-        } else {
-            throw new RuntimeException("OS_TYPE environment is not set");
-        }
+        result[0][0] = TestUtils.getExecutor(version);
         return result;
     }
 
