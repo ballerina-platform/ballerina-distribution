@@ -69,3 +69,8 @@ repositories {
         url = 'http://repo.maven.apache.org/maven2'
     }
 }
+
+buildScan {
+    termsOfServiceUrl = 'https://gradle.com/terms-of-service'
+    termsOfServiceAgree = 'yes'
+}
