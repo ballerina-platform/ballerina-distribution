@@ -49,6 +49,7 @@ tasks.withType(JavaCompile) {
 
 test {
     useTestNG()
+    options.suites("src/test/resources/testng.xml")
 }
 
 repositories {

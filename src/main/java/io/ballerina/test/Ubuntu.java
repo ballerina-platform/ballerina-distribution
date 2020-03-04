@@ -57,7 +57,7 @@ public class Ubuntu implements Executor {
 
     @Override
     public String cleanArtifacts() {
-        String command = "rm ~/" + installerName +" && rm -rf ~/.ballerina";
+        String command = "rm ~/" + installerName +" && sudo rm -rf ~/.ballerina";
         return Utils.executeCommand(command);
     }
 }
