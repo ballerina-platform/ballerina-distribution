@@ -31,7 +31,7 @@
       <repositories>
         <repository>
           <id>github</id>
-          <name>GitHub OWNER Apache Maven Packages</name>
+          <name>GitHub Update Tool Packages</name>
           <url>https://maven.pkg.github.com/ballerina-platform/ballerina-update-tool</url>
         </repository>
       </repositories>

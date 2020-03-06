@@ -21,4 +21,3 @@ jobs:
           packagePAT: ${{ secrets.READ_PACKAGE_PAT }}
           packageUser: ${{ secrets.PUBLISH_USER }}
         run: mvn -s settings.xml -Dmaven.wagon.http.pool=false clean install -B -V
-
