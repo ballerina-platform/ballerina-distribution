@@ -16,8 +16,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Ballerina distribution build
+      - name: Build Ballerina Distribution
         env:
           packagePAT: ${{ secrets.READ_PACKAGE_PAT }}
           packageUser: ${{ secrets.PUBLISH_USER }}
-        run: mvn -s settings.xml -Dmaven.wagon.http.pool=false clean install -B -V
+        run: mvn -s settings.xml clean install -B -V
