@@ -30,13 +30,13 @@ public class Windows implements Executor {
     public String transferArtifacts() {
         Utils.downloadFile(version, installerName);
         String command= "cp " + installerName + "Desktop";
-        return Utils.executeCommand(command);
+        return Utils.executeWindowsCommand(command);
     }
 
     @Override
     public String install() {
         String command = "cd Desktop && msiexec /i "  + installerName + " /qn /L*V \\\"install-log.log\\\"";
-        return Utils.executeCommand(command);
+        return Utils.executeWindowsCommand(command);
     }
 
     @Override
@@ -47,12 +47,12 @@ public class Windows implements Executor {
     @Override
     public String uninstall() {
         String command = "cd Desktop && msiexec /x " + installerName + " /qn /L*V \\\"uninstall-log.log\\\"";
-        return Utils.executeCommand(command);
+        return Utils.executeWindowsCommand(command);
     }
 
     @Override
     public String cleanArtifacts() {
         String command = "del C:\\Program Files\\Ballerina && del .ballerina && del Desktop\\" + installerName;
-        return Utils.executeCommand(command);
+        return Utils.executeWindowsCommand(command);
     }
 }

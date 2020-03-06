@@ -50,6 +50,23 @@ public class Utils {
         }
     }
 
+    public static String executeWindowsCommand(String command) {
+        String output = "";
+        try {
+            ProcessBuilder pb = new ProcessBuilder("cmd.exe", "/c", command);
+            Process p = pb.start();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                output += line + "\n";
+            }
+        } catch (Exception e) {
+            System.out.print("Error occurred");
+        }
+        return output;
+    }
+
+
     public static String executeCommand(String command) {
         String output = "";
         try {
