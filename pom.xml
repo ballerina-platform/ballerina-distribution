@@ -105,6 +105,11 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
         </repository>
+        <repository>
+            <id>github</id>
+            <name>Github Package Repository</name>
+            <url>https://maven.pkg.github.com/ballerina-platform/ballerina-update-tool</url>
+        </repository>
     </repositories>
 
     <pluginRepositories>
@@ -239,19 +244,10 @@
                 <version>${kubernetes.version}</version>
             </dependency>
             <dependency>
-                <groupId>info.picocli</groupId>
-                <artifactId>picocli</artifactId>
-                <version>${picocli.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.ballerinalang</groupId>
-                <artifactId>ballerina-command</artifactId>
-                <version>0.8.0</version>
-            </dependency>
-            <dependency>
-                <groupId>me.tongfei</groupId>
-                <artifactId>progressbar</artifactId>
-                <version>0.7.4</version>
+                <artifactId>ballerina-command-distribution</artifactId>
+                <type>zip</type>
+                <version>${ballerina.command.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -259,11 +255,11 @@
         <ballerina.version>1.2.0-SNAPSHOT</ballerina.version>
         <ballerina.jre.artifacts.version>2.0.0</ballerina.jre.artifacts.version>
         <project.scm.id>ballerina-scm-server</project.scm.id>
-        <docker.version>1.2.0-SNAPSHOT</docker.version>
-        <kubernetes.version>1.2.0-SNAPSHOT</kubernetes.version>
-        <awslambda.version>1.2.0-SNAPSHOT</awslambda.version>
+        <docker.version>1.1.3</docker.version>
+        <kubernetes.version>1.1.3</kubernetes.version>
+        <awslambda.version>1.1.3</awslambda.version>
         <picocli.version>4.0.1</picocli.version>
-        <ballerina.command.version>0.8.0</ballerina.command.version>
+        <ballerina.command.version>0.8.1</ballerina.command.version>
     </properties>
 
 </project>

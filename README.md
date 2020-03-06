@@ -55,14 +55,13 @@ Alternatively, you can install Ballerina from the source using the following ins
     ```bash
     git clone --recursive https://github.com/ballerina-platform/ballerina-lang
     ```
-
-    If you download the sources, you need to update the git submodules using the following command.
-    
+2. This repository is depending on Github packages. You need to have a personnel access token with read package permissions. Then you need to set following environment variables.
     ```bash
-    git submodule update --init 
+    export packageUser=<Your github username>
+    export packagePAT=<Your personnel access token>
     ```
-2. Run the Maven command ``mvn clean install`` from the repository root directory.
-3. Extract the Ballerina distribution created at `distribution/zip/ballerina/target/ballerina-<version>-SNAPSHOT.zip`.
+3. Run the Maven command ``mvn -s settings.xml clean install`` from the repository root directory.
+4. Extract the Ballerina distribution created at `ballerina/target/ballerina-<version>-SNAPSHOT.zip`.
 
 ## Contributing to Ballerina
 

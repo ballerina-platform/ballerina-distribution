@@ -92,11 +92,8 @@
         </dependency>
         <dependency>
             <groupId>org.ballerinalang</groupId>
-            <artifactId>ballerina-command</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>me.tongfei</groupId>
-            <artifactId>progressbar</artifactId>
+            <artifactId>ballerina-command-distribution</artifactId>
+            <type>zip</type>
         </dependency>
     </dependencies>
 
@@ -146,7 +143,8 @@
                                 docker-extension-examples,
                                 docker-extension-annotations,
                                 kubernetes-extension-examples,
-                                kubernetes-extension-annotations
+                                kubernetes-extension-annotations,
+                                ballerina-command-distribution
                             </includeArtifactIds>
                             <outputDirectory>${project.build.directory}/extracted-distributions
                             </outputDirectory>
@@ -245,23 +243,6 @@
                                 <descriptor>${basedir}/src/assembly/dist-windows.xml</descriptor>
                             </descriptors>
                             <finalName>${distribution.name}-windows-${project.version}</finalName>
-                            <appendAssemblyId>false</appendAssemblyId>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>ballerina-command</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>attached</goal>
-                        </goals>
-                        <configuration>
-                            <filters>
-                                <filter>${basedir}/src/assembly/filter.properties</filter>
-                            </filters>
-                            <descriptors>
-                                <descriptor>${basedir}/src/assembly/ballerina-command.xml</descriptor>
-                            </descriptors>
-                            <finalName>ballerina-command-${ballerina.command.version}</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                     </execution>
