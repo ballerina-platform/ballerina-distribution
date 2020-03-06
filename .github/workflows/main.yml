@@ -1,5 +1,15 @@
-name: Ballerina distribution build
-on: [push, pull_request]
+name: Ballerina Distribution Build
+
+on:
+  push:
+    branches:
+      - master
+      - ballerina-1.1.x
+  pull_request:
+    branches:
+      - master
+      - ballerina-1.1.x
+
 jobs:
   build:
     runs-on: ubuntu-latest
