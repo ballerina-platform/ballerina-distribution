@@ -30,32 +30,27 @@ public class CentOS implements Executor {
     @Override
     public String transferArtifacts() {
         Utils.downloadFile(version, installerName);
-        String command = "cp " + installerName + " ~";
-        return Utils.executeCommand(command);
+        return Utils.executeCommand("cp " + installerName + " ~");
     }
 
     @Override
     public String install() {
-        String command = "sudo rpm -i ~/" + installerName;
-        return Utils.executeCommand(command);
+        return Utils.executeCommand("sudo rpm -i ~/" + installerName);
     }
 
     @Override
     public String executeCommand(String command, boolean isAdminMode) {
         String sudoCommand = isAdminMode ? "sudo " : "";
-        String shellCommand = sudoCommand + command;
-        return Utils.executeCommand(shellCommand);
+        return Utils.executeCommand(sudoCommand + command);
     }
 
     @Override
     public String uninstall() {
-        String command = "sudo rpm -e " + packageName;
-        return Utils.executeCommand(command);
+        return Utils.executeCommand("sudo rpm -e " + packageName);
     }
 
     @Override
     public String cleanArtifacts() {
-        String command = "rm ~/" + installerName + " && rm -rf ~/.ballerina";
-        return Utils.executeCommand(command);
+        return Utils.executeCommand("rm ~/" + installerName + " && rm -rf ~/.ballerina");
     }
 }

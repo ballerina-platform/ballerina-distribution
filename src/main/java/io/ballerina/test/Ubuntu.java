@@ -28,6 +28,7 @@ public class Ubuntu implements Executor {
         this.packageName = "ballerina-" + version;
     }
 
+
     @Override
     public String transferArtifacts() {
         Utils.downloadFile(version, installerName);
@@ -41,7 +42,8 @@ public class Ubuntu implements Executor {
 
     @Override
     public String executeCommand(String command, boolean isAdminMode) {
-        return Utils.executeCommand(isAdminMode ? "sudo " : "" + command);
+        String sudoCommand = isAdminMode ? "sudo " : "";
+        return Utils.executeCommand(sudoCommand + command);
     }
 
     @Override
