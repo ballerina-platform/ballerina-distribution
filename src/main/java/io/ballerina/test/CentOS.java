@@ -24,14 +24,13 @@ public class CentOS implements Executor {
     public CentOS(String version) {
         this.version = version;
         installerName = "ballerina-linux-installer-x64-" + version + ".rpm";
-        packageName= "ballerina-" + version;
+        packageName = "ballerina-" + version;
     }
-
 
     @Override
     public String transferArtifacts() {
         Utils.downloadFile(version, installerName);
-        String command= "cp " + installerName + " ~";
+        String command = "cp " + installerName + " ~";
         return Utils.executeCommand(command);
     }
 
@@ -56,7 +55,7 @@ public class CentOS implements Executor {
 
     @Override
     public String cleanArtifacts() {
-        String command = "rm ~/" + installerName +" && rm -rf ~/.ballerina";
+        String command = "rm ~/" + installerName + " && rm -rf ~/.ballerina";
         return Utils.executeCommand(command);
     }
 }

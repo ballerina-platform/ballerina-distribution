@@ -25,6 +25,7 @@ public class Utils {
 
     public static final String DISTRIBUTION_LOCATION =
             "https://product-dist.ballerina.io/downloads/";
+
     public static void downloadFile(String version, String installerName) {
         try {
             String destination = getUserHome();
@@ -94,6 +95,7 @@ public class Utils {
 
     /**
      * Provide user home directory based on command.
+     *
      * @return user home directory
      */
     private static String getUserHome() {

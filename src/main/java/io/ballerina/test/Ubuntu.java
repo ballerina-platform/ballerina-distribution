@@ -25,39 +25,32 @@ public class Ubuntu implements Executor {
     public Ubuntu(String version) {
         this.version = version;
         this.installerName = "ballerina-linux-installer-x64-" + version + ".deb";
-        this.packageName= "ballerina-" + version;
+        this.packageName = "ballerina-" + version;
     }
-
 
     @Override
     public String transferArtifacts() {
         Utils.downloadFile(version, installerName);
-        String command= "cp " + installerName + " ~";
-        return Utils.executeCommand(command);
+        return Utils.executeCommand("cp " + installerName + " ~");
     }
 
     @Override
     public String install() {
-        String command = "sudo dpkg -i ~/" + installerName;
-        return Utils.executeCommand(command);
+        return Utils.executeCommand("sudo dpkg -i ~/" + installerName);
     }
 
     @Override
     public String executeCommand(String command, boolean isAdminMode) {
-        String sudoCommand = isAdminMode ? "sudo " : "";
-        String shellCommand = sudoCommand + command;
-        return Utils.executeCommand(shellCommand);
+        return Utils.executeCommand(isAdminMode ? "sudo " : "" + command);
     }
 
     @Override
     public String uninstall() {
-        String command = "sudo apt-get --yes --force-yes remove " + packageName;
-        return Utils.executeCommand(command);
+        return Utils.executeCommand("sudo apt-get --yes --force-yes remove " + packageName);
     }
 
     @Override
     public String cleanArtifacts() {
-        String command = "rm ~/" + installerName +" && sudo rm -rf ~/.ballerina";
-        return Utils.executeCommand(command);
+        return Utils.executeCommand("rm ~/" + installerName + " && sudo rm -rf ~/.ballerina");
     }
 }

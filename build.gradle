@@ -17,17 +17,10 @@
 apply plugin: 'java'
 
 jar {
-    manifest {
-        attributes(
-                'Main-Class': 'io.ballerina.test.Run'
-        )
-    }
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
-
-
 
 group 'io.ballerina'
 version '1.0-SNAPSHOT'

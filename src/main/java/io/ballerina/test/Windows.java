@@ -25,18 +25,16 @@ public class Windows implements Executor {
         installerName = "ballerina-windows-installer-x64-" + version + ".msi";
     }
 
-
     @Override
     public String transferArtifacts() {
         Utils.downloadFile(version, installerName);
-        String command= "cp " + installerName + "Desktop";
-        return Utils.executeWindowsCommand(command);
+        return Utils.executeWindowsCommand("cp " + installerName + "Desktop");
     }
 
     @Override
     public String install() {
-        String command = "cd Desktop && msiexec /i "  + installerName + " /qn /L*V \\\"install-log.log\\\"";
-        return Utils.executeWindowsCommand(command);
+        return Utils.executeWindowsCommand("cd Desktop && msiexec /i " + installerName
+                + " /qn /L*V \\\"install-log.log\\\"");
     }
 
     @Override
@@ -46,13 +44,13 @@ public class Windows implements Executor {
 
     @Override
     public String uninstall() {
-        String command = "cd Desktop && msiexec /x " + installerName + " /qn /L*V \\\"uninstall-log.log\\\"";
-        return Utils.executeWindowsCommand(command);
+        return Utils.executeWindowsCommand("cd Desktop && msiexec /x " + installerName
+                + " /qn /L*V \\\"uninstall-log.log\\\"");
     }
 
     @Override
     public String cleanArtifacts() {
-        String command = "del C:\\Program Files\\Ballerina && del .ballerina && del Desktop\\" + installerName;
-        return Utils.executeWindowsCommand(command);
+        return Utils.executeWindowsCommand("del C:\\Program Files\\Ballerina && del .ballerina && del Desktop\\"
+                + installerName);
     }
 }
