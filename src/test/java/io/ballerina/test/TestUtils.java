@@ -20,7 +20,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class TestUtils {
-    private static final Logger log = LoggerFactory.getLogger(Run.class);
+    private static final Logger log = LoggerFactory.getLogger(TestUtils.class);
 
     public static String getVersionOutput(String version) {
         return "jBallerina " + version + "\n" +
