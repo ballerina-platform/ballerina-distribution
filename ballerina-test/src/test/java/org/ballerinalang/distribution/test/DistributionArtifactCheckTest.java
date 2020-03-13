@@ -69,7 +69,7 @@ public class DistributionArtifactCheckTest {
         
         Assert.assertTrue(Files.exists(birPath));
         Assert.assertTrue(Files.exists(tomlPath));
-        Assert.assertTrue(Files.exists(breLibPath.resolve("docker.jar")));
+        Assert.assertTrue(Files.exists(breLibPath.resolve("ballerina.docker.jar")));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "docker-extension-"));
     }
     
@@ -98,7 +98,7 @@ public class DistributionArtifactCheckTest {
         
         Assert.assertTrue(Files.exists(birPath));
         Assert.assertTrue(Files.exists(tomlPath));
-        Assert.assertTrue(Files.exists(breLibPath.resolve("kubernetes.jar")));
+        Assert.assertTrue(Files.exists(breLibPath.resolve("ballerina.kubernetes.jar")));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "kubernetes-extension-"));
     }
     
@@ -127,7 +127,7 @@ public class DistributionArtifactCheckTest {
     
         Assert.assertTrue(Files.exists(birPath));
         Assert.assertTrue(Files.exists(tomlPath));
-        Assert.assertTrue(Files.exists(breLibPath.resolve("istio.jar")));
+        Assert.assertTrue(Files.exists(breLibPath.resolve("ballerina.istio.jar")));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "kubernetes-extension-"));
     }
     
@@ -156,7 +156,7 @@ public class DistributionArtifactCheckTest {
     
         Assert.assertTrue(Files.exists(birPath));
         Assert.assertTrue(Files.exists(tomlPath));
-        Assert.assertTrue(Files.exists(breLibPath.resolve("openshift.jar")));
+        Assert.assertTrue(Files.exists(breLibPath.resolve("ballerina.openshift.jar")));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "kubernetes-extension-"));
     }
     
@@ -185,7 +185,7 @@ public class DistributionArtifactCheckTest {
     
         Assert.assertTrue(Files.exists(birPath));
         Assert.assertTrue(Files.exists(tomlPath));
-        Assert.assertTrue(Files.exists(breLibPath.resolve("knative.jar")));
+        Assert.assertTrue(Files.exists(breLibPath.resolve("ballerina.knative.jar")));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "kubernetes-extension-"));
     }
     
