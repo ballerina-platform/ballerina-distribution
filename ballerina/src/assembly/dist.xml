@@ -59,31 +59,31 @@
             <directory>
                 ${project.build.directory}/extracted-distributions/docker-extension-annotations-zip/docker-artifacts/docker
             </directory>
-            <outputDirectory>distributions/jballerina-${ballerina.version}/bir-cache/ballerina/docker</outputDirectory>
+            <outputDirectory>bir-cache/ballerina/docker</outputDirectory>
         </fileSet>
         <fileSet>
             <directory>
                 ${project.build.directory}/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/kubernetes
             </directory>
-            <outputDirectory>distributions/jballerina-${ballerina.version}/bir-cache/ballerina/kubernetes</outputDirectory>
+            <outputDirectory>bir-cache/ballerina/kubernetes</outputDirectory>
         </fileSet>
         <fileSet>
             <directory>
                 ${project.build.directory}/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/istio
             </directory>
-            <outputDirectory>distributions/jballerina-${ballerina.version}/bir-cache/ballerina/istio</outputDirectory>
+            <outputDirectory>bir-cache/ballerina/istio</outputDirectory>
         </fileSet>
         <fileSet>
             <directory>
                 ${project.build.directory}/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/openshift
             </directory>
-            <outputDirectory>distributions/jballerina-${ballerina.version}/bir-cache/ballerina/openshift</outputDirectory>
+            <outputDirectory>bir-cache/ballerina/openshift</outputDirectory>
         </fileSet>
         <fileSet>
             <directory>
                 ${project.build.directory}/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/knative
             </directory>
-            <outputDirectory>distributions/jballerina-${ballerina.version}/bir-cache/ballerina/knative</outputDirectory>
+            <outputDirectory>bir-cache/ballerina/knative</outputDirectory>
         </fileSet>
         <fileSet>
             <directory>
@@ -100,33 +100,33 @@
             <fileMode>644</fileMode>
         </file>
         <file>
-            <source>${project.build.directory}/extracted-distributions/awslambda-extension-balo-zip/awslambda-artifacts/ballerinax-awslambda-0.0.0.jar </source>
+            <source>${project.build.directory}/extracted-distributions/awslambda-extension-balo-zip/awslambda-artifacts/ballerinax.awslambda.jar</source>
             <outputDirectory>/bre/lib/</outputDirectory>
             <fileMode>644</fileMode>
         </file>
         <file>
-            <source>${project.build.directory}/extracted-distributions/docker-extension-annotations-zip/docker-artifacts/docker.jar </source>
-            <outputDirectory>distributions/jballerina-${ballerina.version}/bre/lib/</outputDirectory>
+            <source>${project.build.directory}/extracted-distributions/docker-extension-annotations-zip/docker-artifacts/ballerina.docker.jar </source>
+            <outputDirectory>bre/lib/</outputDirectory>
             <fileMode>644</fileMode>
         </file>
         <file>
-            <source>${project.build.directory}/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/kubernetes.jar </source>
-            <outputDirectory>distributions/jballerina-${ballerina.version}/bre/lib/</outputDirectory>
+            <source>${project.build.directory}/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/ballerina.kubernetes.jar </source>
+            <outputDirectory>bre/lib/</outputDirectory>
             <fileMode>644</fileMode>
         </file>
         <file>
-            <source>${project.build.directory}/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/istio.jar </source>
-            <outputDirectory>distributions/jballerina-${ballerina.version}/bre/lib/</outputDirectory>
+            <source>${project.build.directory}/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/ballerina.istio.jar </source>
+            <outputDirectory>bre/lib/</outputDirectory>
             <fileMode>644</fileMode>
         </file>
         <file>
-            <source>${project.build.directory}/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/openshift.jar </source>
-            <outputDirectory>distributions/jballerina-${ballerina.version}/bre/lib/</outputDirectory>
+            <source>${project.build.directory}/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/ballerina.openshift.jar </source>
+            <outputDirectory>bre/lib/</outputDirectory>
             <fileMode>644</fileMode>
         </file>
         <file>
-            <source>${project.build.directory}/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/knative.jar </source>
-            <outputDirectory>distributions/jballerina-${ballerina.version}/bre/lib/</outputDirectory>
+            <source>${project.build.directory}/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/ballerina.knative.jar </source>
+            <outputDirectory>bre/lib/</outputDirectory>
             <fileMode>644</fileMode>
         </file>
     </files>
