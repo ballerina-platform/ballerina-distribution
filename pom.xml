@@ -106,6 +106,36 @@
             </releases>
         </repository>
         <repository>
+            <id>wso2.docker.stage</id>
+            <name>WSO2 Stage Repository</name>
+            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1189</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+        </repository>
+        <repository>
+            <id>wso2.kubernetes.stage</id>
+            <name>WSO2 Stage Repository</name>
+            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxkubernetes-1184</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+        </repository>
+        <repository>
+            <id>wso2.awslambda.stage</id>
+            <name>WSO2 Stage Repository</name>
+            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1085/</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+        </repository>
+        <repository>
             <id>github</id>
             <name>Github Package Repository</name>
             <url>https://maven.pkg.github.com/ballerina-platform/ballerina-update-tool</url>
