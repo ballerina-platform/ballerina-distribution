@@ -107,7 +107,7 @@
         <repository>
             <id>wso2.stage</id>
             <name>WSO2 Stage Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1538/</url>
+            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1540/</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -117,7 +117,7 @@
         <repository>
             <id>wso2.docker.stage</id>
             <name>WSO2 Stage Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1189</url>
+            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1190</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -127,7 +127,7 @@
         <repository>
             <id>wso2.kubernetes.stage</id>
             <name>WSO2 Stage Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxkubernetes-1184</url>
+            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxkubernetes-1185</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -137,7 +137,7 @@
         <repository>
             <id>wso2.awslambda.stage</id>
             <name>WSO2 Stage Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1085/</url>
+            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1086/</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -335,7 +335,7 @@
         <kubernetes.version>1.2.0</kubernetes.version>
         <awslambda.version>1.2.0</awslambda.version>
         <picocli.version>4.0.1</picocli.version>
-        <ballerina.command.version>0.8.2</ballerina.command.version>
+        <ballerina.command.version>0.8.3</ballerina.command.version>
         <testng.version>6.14.3</testng.version>
         <net.lingala.zip4j.version>2.3.2</net.lingala.zip4j.version>
         <commons.io.version>2.6</commons.io.version>
