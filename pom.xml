@@ -335,7 +335,7 @@
         <kubernetes.version>1.2.0</kubernetes.version>
         <awslambda.version>1.2.0</awslambda.version>
         <picocli.version>4.0.1</picocli.version>
-        <ballerina.command.version>0.8.3</ballerina.command.version>
+        <ballerina.command.version>0.8.4</ballerina.command.version>
         <testng.version>6.14.3</testng.version>
         <net.lingala.zip4j.version>2.3.2</net.lingala.zip4j.version>
         <commons.io.version>2.6</commons.io.version>
