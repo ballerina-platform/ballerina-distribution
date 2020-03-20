@@ -1,0 +1,34 @@
+allprojects  {
+  apply plugin: 'maven'
+
+  group = 'org.ballerinalang'
+  version = '1.2.0-SNAPSHOT'
+}
+
+subprojects {
+  apply plugin: 'java'
+  sourceCompatibility = 1.8
+  targetCompatibility = 1.8
+  tasks.withType(JavaCompile) {
+  	options.encoding = 'UTF-8'
+  }
+
+  
+  repositories {
+    mavenLocal()
+    
+    maven { url "https://repo.maven.apache.org/maven2" }
+    maven { url "http://maven.wso2.org/nexus/content/repositories/releases/" }
+    maven { url "http://maven.wso2.org/nexus/content/repositories/snapshots/" }
+    maven { url "http://maven.wso2.org/nexus/content/groups/wso2-public/" }
+    maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1544/" }
+    maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1191" }
+    maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxkubernetes-1186" }
+    maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1087/" }
+    maven { url "https://maven.pkg.github.com/ballerina-platform/ballerina-update-tool" }
+  }
+
+  
+  
+  
+}
