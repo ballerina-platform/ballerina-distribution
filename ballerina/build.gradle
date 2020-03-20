@@ -30,9 +30,6 @@ task unpackBallerinaJre(type: Copy) {
             into new File("$buildDir/target", artifact.name+"-zip")
         }
     }
-    doLast{
-        println 'ballerina-jre unpacked'
-    }
 }
 
 task unpackDependencies(type: Copy) {
@@ -42,34 +39,25 @@ task unpackDependencies(type: Copy) {
             into new File("$buildDir/target/extracted-distributions", artifact.name+"-zip")
         }
     }
-    // configurations.unpackDependencies.asFileTree.each{from (zipTree(it))}
-    // into "$buildDir/target/extracted-distributions"
-    doLast{
-        println 'dependencies unpacked'
-    }
 }
 
 task extractJreForLinux(type: Copy) {
-    // dependsOn unpackBallerinaJre
     from zipTree{"$jreLocation/jre-1.8-linux.zip"}
     into("$buildDir/target/extracted-jre-linux") 
 }
 
 task extractJreForMac(type: Copy) {
-    // dependsOn unpackBallerinaJre
     from zipTree{"$jreLocation/jre-1.8-macos.zip"}
     into("$buildDir/target/extracted-jre-macos") 
 }
 
 task extractJreForWindows(type: Copy) {
-    // dependsOn unpackBallerinaJre
     from zipTree{"$jreLocation/jre-1.8-windows.zip"}
     into("$buildDir/target/extracted-jre-windows") 
 }
 
 task packageDist(type: Zip) {
     description = 'Ballerina Tools Distribution Assembly'
-    // dependsOn unpackDependencies
     baseName = "j$distributionName"
     ext{parentDir="$baseName-$version"}
     entryCompression=ZipEntryCompression.STORED
@@ -116,23 +104,23 @@ task packageDist(type: Zip) {
         fileMode = 0644
     }
     into("$parentDir/bre/lib") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/docker-artifacts/docker.jar"
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/docker-artifacts/ballerina.docker.jar"
         fileMode = 0644
     }
     into("$parentDir/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/kubernetes.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/ballerina.kubernetes.jar"
         fileMode = 0644
     }
     into("$parentDir/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/istio.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/ballerina.istio.jar"
         fileMode = 0644
     }
     into("$parentDir/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/openshift.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/ballerina.openshift.jar"
         fileMode = 0644
     }
     into("$parentDir/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/knative.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/ballerina.knative.jar"
         fileMode = 0644
     }
 
@@ -148,7 +136,6 @@ task packageDist(type: Zip) {
 
 task packageDistZip(type: Zip) {
     description = 'Ballerina Distribution Assembly'
-    // dependsOn unpackDependencies
     baseName = "$distributionName"
     ext{parentDir="$baseName-$version"}
     entryCompression=ZipEntryCompression.STORED
@@ -201,23 +188,23 @@ task packageDistZip(type: Zip) {
         fileMode = 0644
     }
     into("$parentDir/distributions/jballerina-$ballerinaVersion/bre/lib") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/docker-artifacts/docker.jar"
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/docker-artifacts/ballerina.docker.jar"
         fileMode = 0644
     }
     into("$parentDir/distributions/jballerina-$ballerinaVersion/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/kubernetes.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/ballerina.kubernetes.jar"
         fileMode = 0644
     }
     into("$parentDir/distributions/jballerina-$ballerinaVersion/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/istio.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/ballerina.istio.jar"
         fileMode = 0644
     }
     into("$parentDir/distributions/jballerina-$ballerinaVersion/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/openshift.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/ballerina.openshift.jar"
         fileMode = 0644
     }
     into("$parentDir/distributions/jballerina-$ballerinaVersion/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/knative.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/ballerina.knative.jar"
         fileMode = 0644
     }
     into("$parentDir/distributions") {
@@ -252,8 +239,6 @@ task packageDistZip(type: Zip) {
 
 task packageDistLinux(type: Zip) {
     description = 'Ballerina Linux Distribution Assembly'
-    // dependsOn unpackDependencies
-    // dependsOn extractJreForLinux
     baseName = "$distributionName-linux"
     ext{parentDir="$baseName-$version"}
     entryCompression=ZipEntryCompression.STORED
@@ -314,23 +299,23 @@ task packageDistLinux(type: Zip) {
         fileMode = 0644
     }
     into("$parentDir/distributions/jballerina-$ballerinaVersion/bre/lib") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/docker-artifacts/docker.jar"
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/docker-artifacts/ballerina.docker.jar"
         fileMode = 0644
     }
     into("$parentDir/distributions/jballerina-$ballerinaVersion/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/kubernetes.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/ballerina.kubernetes.jar"
         fileMode = 0644
     }
     into("$parentDir/distributions/jballerina-$ballerinaVersion/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/istio.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/ballerina.istio.jar"
         fileMode = 0644
     }
     into("$parentDir/distributions/jballerina-$ballerinaVersion/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/openshift.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/ballerina.openshift.jar"
         fileMode = 0644
     }
     into("$parentDir/distributions/jballerina-$ballerinaVersion/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/knative.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/ballerina.knative.jar"
         fileMode = 0644
     }
     into("$parentDir/distributions") {
@@ -360,8 +345,6 @@ task packageDistLinux(type: Zip) {
 
 task packageDistMac(type: Zip) {
     description = 'Ballerina MacOS Distribution Assembly'
-    // dependsOn unpackDependencies
-    // dependsOn extractJreForMac
     baseName = "$distributionName-macos"
     ext{parentDir="$baseName-$version"}
     entryCompression=ZipEntryCompression.STORED
@@ -416,23 +399,23 @@ task packageDistMac(type: Zip) {
         fileMode = 0644
     }
     into("$parentDir/distributions/jballerina-$ballerinaVersion/bre/lib") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/docker-artifacts/docker.jar"
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/docker-artifacts/ballerina.docker.jar"
         fileMode = 0644
     }
     into("$parentDir/distributions/jballerina-$ballerinaVersion/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/kubernetes.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/ballerina.kubernetes.jar"
         fileMode = 0644
     }
     into("$parentDir/distributions/jballerina-$ballerinaVersion/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/istio.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/ballerina.istio.jar"
         fileMode = 0644
     }
     into("$parentDir/distributions/jballerina-$ballerinaVersion/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/openshift.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/ballerina.openshift.jar"
         fileMode = 0644
     }
     into("$parentDir/distributions/jballerina-$ballerinaVersion/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/knative.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/ballerina.knative.jar"
         fileMode = 0644
     }
     into("$parentDir/distributions") {
@@ -462,8 +445,6 @@ task packageDistMac(type: Zip) {
 
 task packageDistWindows(type: Zip) {
     description = 'Ballerina Windows Distribution Assembly'
-    // dependsOn unpackDependencies
-    // dependsOn extractJreForWindows
     baseName = "$distributionName-windows"
     ext{parentDir="$baseName-$version"}
     entryCompression=ZipEntryCompression.STORED
@@ -518,23 +499,23 @@ task packageDistWindows(type: Zip) {
         fileMode = 0644
     }
     into("$parentDir/distributions/jballerina-$ballerinaVersion/bre/lib") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/docker-artifacts/docker.jar"
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/docker-artifacts/ballerina.docker.jar"
         fileMode = 0644
     }
     into("$parentDir/distributions/jballerina-$ballerinaVersion/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/kubernetes.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/ballerina.kubernetes.jar"
         fileMode = 0644
     }
     into("$parentDir/distributions/jballerina-$ballerinaVersion/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/istio.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/ballerina.istio.jar"
         fileMode = 0644
     }
     into("$parentDir/distributions/jballerina-$ballerinaVersion/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/openshift.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/ballerina.openshift.jar"
         fileMode = 0644
     }
     into("$parentDir/distributions/jballerina-$ballerinaVersion/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/knative.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes-artifacts/ballerina.knative.jar"
         fileMode = 0644
     }
     into("$parentDir/distributions") {
@@ -562,6 +543,10 @@ task packageDistWindows(type: Zip) {
     }
 }
 
+task deleteTemporaryFiles(type: Delete) {
+    delete 'build/target'
+}
+
 extractJreForLinux.dependsOn unpackBallerinaJre
 extractJreForMac.dependsOn unpackBallerinaJre
 extractJreForWindows.dependsOn unpackBallerinaJre
@@ -579,8 +564,15 @@ packageDistMac.dependsOn extractJreForMac
 packageDistWindows.dependsOn unpackDependencies
 packageDistWindows.dependsOn extractJreForWindows
 
+deleteTemporaryFiles.dependsOn packageDist
+deleteTemporaryFiles.dependsOn packageDistZip
+deleteTemporaryFiles.dependsOn packageDistLinux
+deleteTemporaryFiles.dependsOn packageDistMac
+deleteTemporaryFiles.dependsOn packageDistWindows
+
 build.dependsOn packageDist
 build.dependsOn packageDistZip
 build.dependsOn packageDistLinux
 build.dependsOn packageDistMac
 build.dependsOn packageDistWindows
+build.dependsOn deleteTemporaryFiles
