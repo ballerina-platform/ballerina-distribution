@@ -15,10 +15,23 @@
   ~ */
   
 description = 'Ballerina - Tools Test'
+
 dependencies {
     testImplementation "org.testng:testng:${testngVersion}"
     testImplementation "net.lingala.zip4j:zip4j:${netLingalaZip4jVersion}"
     testImplementation "commons-io:commons-io:${commonsIoVersion}"
     testImplementation "org.apache.commons:commons-lang3:${commonsLang3Version}"
 }
-//test.useTestNG()
+
+test {
+    systemProperty "distributions.dir", "$buildDir/../../ballerina/build/distributions"
+    systemProperty "target.dir", "$buildDir"
+    systemProperty "maven.version", "$version"
+
+    useTestNG() {
+        suites 'src/test/resources/testng.xml'
+    }
+    testLogging {
+        showStandardStreams = true
+    }
+}

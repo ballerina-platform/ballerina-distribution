@@ -14,6 +14,9 @@
   ~ * limitations under the License.
   ~ */
 
+plugins {
+    id 'maven-publish'
+}
 description = 'Ballerina - Tools - Parent'
 
 ext {
@@ -37,6 +40,8 @@ allprojects  {
   version = '1.2.0-SNAPSHOT'
 
   repositories {
+    //TODO:remove mavenLocal
+    mavenLocal()
     mavenCentral()
   }
 }
@@ -48,7 +53,7 @@ subprojects {
   tasks.withType(JavaCompile) {
   	options.encoding = 'UTF-8'
   }
-
+  
   buildscript {
         repositories {
           /* Central Repository */
@@ -64,6 +69,13 @@ subprojects {
   }
 
   repositories {
+    maven {
+        url "https://maven.pkg.github.com/ballerina-platform/ballerina-update-tool"
+        credentials {
+          username System.getenv("packageUser")
+          password System.getenv("packagePAT")
+        }
+    }
     /* Central Repository */
     maven { url "https://repo.maven.apache.org/maven2" }
     /* WSO2 Releases Repository */
@@ -86,7 +98,7 @@ subprojects {
 
   configurations {
     ballerinaJre
-    unpackDependencies
+    unpackDep
     exten{
       transitive = false
     }
@@ -96,25 +108,25 @@ subprojects {
   }
 
   dependencies{
-    unpackDependencies "org.ballerinalang:jballerina-tools:${ballerinaVersion}@zip"
+    unpackDep "org.ballerinalang:jballerina-tools:${ballerinaVersion}@zip"
     ballerinaJre "org.wso2.ballerina.jre.artifacts:ballerina-jre-artifacts:${ballerinaJreArtifactsVersion}@zip"
     
     /* AWSLambda extension */ 
     exten "org.ballerinax.awslambda:awslambda-extension:${awslambdaVersion}"
-    unpackDependencies "org.ballerinax.awslambda:awslambda-extension-balo:${awslambdaVersion}@zip"
-    unpackDependencies "org.ballerinax.awslambda:awslambda-extension-examples:${awslambdaVersion}@zip"
+    unpackDep "org.ballerinax.awslambda:awslambda-extension-balo:${awslambdaVersion}@zip"
+    unpackDep "org.ballerinax.awslambda:awslambda-extension-examples:${awslambdaVersion}@zip"
 
     /* Docker extension */ 
     exten "org.ballerinax.docker:docker-extension:${dockerVersion}"
-    unpackDependencies "org.ballerinax.docker:docker-extension-annotations:${dockerVersion}@zip"
-    unpackDependencies "org.ballerinax.docker:docker-extension-examples:${dockerVersion}@zip"
+    unpackDep "org.ballerinax.docker:docker-extension-annotations:${dockerVersion}@zip"
+    unpackDep "org.ballerinax.docker:docker-extension-examples:${dockerVersion}@zip"
 
     /* Kubernetes extension */
     exten "org.ballerinax.kubernetes:kubernetes-extension:${kubernetesVersion}"
-    unpackDependencies "org.ballerinax.kubernetes:kubernetes-extension-annotations:${kubernetesVersion}@zip"
-    unpackDependencies "org.ballerinax.kubernetes:kubernetes-extension-examples:${kubernetesVersion}@zip"
+    unpackDep "org.ballerinax.kubernetes:kubernetes-extension-annotations:${kubernetesVersion}@zip"
+    unpackDep "org.ballerinax.kubernetes:kubernetes-extension-examples:${kubernetesVersion}@zip"
 
-    balCommand "org.ballerinalang:ballerina-command:${ballerinaCommandVersion}@zip"
+    unpackDep "org.ballerinalang:ballerina-command-distribution:${ballerinaCommandVersion}@zip"
   }
   
 }

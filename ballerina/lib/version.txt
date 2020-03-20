@@ -1,1 +1,1 @@
-Ballerina Platform version: ${project.version}
+Ballerina Platform version: @version@
