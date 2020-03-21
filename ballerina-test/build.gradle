@@ -35,3 +35,5 @@ test {
         showStandardStreams = true
     }
 }
+
+build.dependsOn test
