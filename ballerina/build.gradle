@@ -182,10 +182,13 @@ task packageDistZip(type: Zip) {
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}") {
         from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
         exclude "distributions/ballerina-version"
+        exclude "/bin/version.txt"
+
     }
     into("${parentDir}") {
         from "../resources/tools"
         exclude "distributions/ballerina-version"
+        filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
 
     /* Files */
@@ -292,12 +295,12 @@ task packageDistLinux(type: Zip) {
     /* Tools artifacts */
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}") {
         from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
+        exclude "distributions/ballerina-version"
         exclude "/bin/ballerina.bat"
         exclude "/bin/version.txt"
     }
     into("${parentDir}") {
         from "../resources/tools"
-        filter(ReplaceTokens, tokens: [version: version])
         exclude "distributions/ballerina-version"
         exclude "**/scripts/**"
     }
@@ -401,6 +404,7 @@ task packageDistMac(type: Zip) {
     /* Tools artifacts */
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}") {
         from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
+        exclude "distributions/ballerina-version"
         exclude "/bin/ballerina.bat"
         exclude "/bin/version.txt"
     }
@@ -504,6 +508,7 @@ task packageDistWindows(type: Zip) {
     /* Tools artifacts */
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}") {
         from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
+        exclude "distributions/ballerina-version"
         exclude "/bin/ballerina"
         exclude "/bin/version.txt"
     }
@@ -591,4 +596,4 @@ build.dependsOn packageDistZip
 build.dependsOn packageDistLinux
 build.dependsOn packageDistMac
 build.dependsOn packageDistWindows
-//build.dependsOn deleteTemporaryFiles
+build.dependsOn deleteTemporaryFiles
