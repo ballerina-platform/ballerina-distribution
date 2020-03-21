@@ -1,4 +1,5 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command.
-$ ballerina run documentation.bal
-Documentation attachments are non executable constructs.
+$ ballerina run send_email.bal
+
+# Check the inbox to view the email.
