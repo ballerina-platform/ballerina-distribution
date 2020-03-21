@@ -70,13 +70,16 @@ task packageDist(type: Zip) {
         from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
     }
     into("${parentDir}/examples") {
-        from "build/target/extracted-distributions/awslambda-extension-examples-zip/awslambda-extension-examples-${version}"
+        from "build/target/extracted-distributions/awslambda-extension-examples-zip/awslambda-extension-examples-${awslambdaVersion}"
+        exclude "index.js"
     }
     into("${parentDir}/examples") {
-        from "build/target/extracted-distributions/docker-extension-examples-zip/docker-extension-examples-${version}"
+        from "build/target/extracted-distributions/docker-extension-examples-zip/docker-extension-examples-${dockerVersion}"
+        exclude "index.js"
     }
     into("${parentDir}/examples") {
-        from "build/target/extracted-distributions/kubernetes-extension-examples-zip/kubernetes-extension-examples-${version}"
+        from "build/target/extracted-distributions/kubernetes-extension-examples-zip/kubernetes-extension-examples-${kubernetesVersion}"
+        exclude "index.js"
     }
     into("${parentDir}/bir-cache/ballerina/docker") {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/docker-artifacts/docker"
@@ -145,13 +148,16 @@ task packageDistZip(type: Zip) {
     entryCompression=ZipEntryCompression.STORED
 
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples") {
-        from "build/target/extracted-distributions/awslambda-extension-examples-zip/awslambda-extension-examples-${version}"
+        from "build/target/extracted-distributions/awslambda-extension-examples-zip/awslambda-extension-examples-${awslambdaVersion}"
+        exclude "index.js"
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples") {
-        from "build/target/extracted-distributions/docker-extension-examples-zip/docker-extension-examples-${version}"
+        from "build/target/extracted-distributions/docker-extension-examples-zip/docker-extension-examples-${dockerVersion}"
+        exclude "index.js"
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples") {
-        from "build/target/extracted-distributions/kubernetes-extension-examples-zip/kubernetes-extension-examples-${version}"
+        from "build/target/extracted-distributions/kubernetes-extension-examples-zip/kubernetes-extension-examples-${kubernetesVersion}"
+        exclude "index.js"
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bir-cache/ballerina/docker") {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/docker-artifacts/docker"
@@ -179,6 +185,7 @@ task packageDistZip(type: Zip) {
     }
     into("${parentDir}") {
         from "../resources/tools"
+        exclude "distributions/ballerina-version"
     }
 
     /* Files */
@@ -252,13 +259,16 @@ task packageDistLinux(type: Zip) {
         fileMode = 0755
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples") {
-        from "build/target/extracted-distributions/awslambda-extension-examples-zip/awslambda-extension-examples-${version}"
+        from "build/target/extracted-distributions/awslambda-extension-examples-zip/awslambda-extension-examples-${awslambdaVersion}"
+        exclude "index.js"
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples") {
-        from "build/target/extracted-distributions/docker-extension-examples-zip/docker-extension-examples-${version}"
+        from "build/target/extracted-distributions/docker-extension-examples-zip/docker-extension-examples-${dockerVersion}"
+        exclude "index.js"
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples") {
-        from "build/target/extracted-distributions/kubernetes-extension-examples-zip/kubernetes-extension-examples-${version}"
+        from "build/target/extracted-distributions/kubernetes-extension-examples-zip/kubernetes-extension-examples-${kubernetesVersion}"
+        exclude "index.js"
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bir-cache/ballerina/docker") {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/docker-artifacts/docker"
@@ -358,13 +368,16 @@ task packageDistMac(type: Zip) {
         fileMode = 0755
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples") {
-        from "build/target/extracted-distributions/awslambda-extension-examples-zip/awslambda-extension-examples-${version}"
+        from "build/target/extracted-distributions/awslambda-extension-examples-zip/awslambda-extension-examples-${awslambdaVersion}"
+        exclude "index.js"
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples") {
-        from "build/target/extracted-distributions/docker-extension-examples-zip/docker-extension-examples-${version}"
+        from "build/target/extracted-distributions/docker-extension-examples-zip/docker-extension-examples-${dockerVersion}"
+        exclude "index.js"
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples") {
-        from "build/target/extracted-distributions/kubernetes-extension-examples-zip/kubernetes-extension-examples-${version}"
+        from "build/target/extracted-distributions/kubernetes-extension-examples-zip/kubernetes-extension-examples-${kubernetesVersion}"
+        exclude "index.js"
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bir-cache/ballerina/docker") {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/docker-artifacts/docker"
@@ -458,13 +471,16 @@ task packageDistWindows(type: Zip) {
         fileMode = 0755
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples") {
-        from "build/target/extracted-distributions/awslambda-extension-examples-zip/awslambda-extension-examples-${version}"
+        from "build/target/extracted-distributions/awslambda-extension-examples-zip/awslambda-extension-examples-${awslambdaVersion}"
+        exclude "index.js"
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples") {
-        from "build/target/extracted-distributions/docker-extension-examples-zip/docker-extension-examples-${version}"
+        from "build/target/extracted-distributions/docker-extension-examples-zip/docker-extension-examples-${dockerVersion}"
+        exclude "index.js"
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples") {
-        from "build/target/extracted-distributions/kubernetes-extension-examples-zip/kubernetes-extension-examples-${version}"
+        from "build/target/extracted-distributions/kubernetes-extension-examples-zip/kubernetes-extension-examples-${kubernetesVersion}"
+        exclude "index.js"
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bir-cache/ballerina/docker") {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/docker-artifacts/docker"
@@ -575,4 +591,4 @@ build.dependsOn packageDistZip
 build.dependsOn packageDistLinux
 build.dependsOn packageDistMac
 build.dependsOn packageDistWindows
-build.dependsOn deleteTemporaryFiles
+//build.dependsOn deleteTemporaryFiles

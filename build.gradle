@@ -37,8 +37,6 @@ allprojects  {
   version = '1.2.0-SNAPSHOT'
 
   repositories {
-    //TODO:remove mavenLocal
-    mavenLocal()
     mavenCentral()
   }
 }
@@ -66,13 +64,6 @@ subprojects {
   }
 
   repositories {
-    maven {
-        url "https://maven.pkg.github.com/ballerina-platform/ballerina-update-tool"
-        credentials {
-          username System.getenv("packageUser")
-          password System.getenv("packagePAT")
-        }
-    }
     /* Central Repository */
     maven { url "https://repo.maven.apache.org/maven2" }
     /* WSO2 Releases Repository */
@@ -90,7 +81,13 @@ subprojects {
     /* WSO2 Stage Repository*/
     maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1087/" }
     /* Github Package Repository */
-    maven { url "https://maven.pkg.github.com/ballerina-platform/ballerina-update-tool" }
+    maven {
+        url "https://maven.pkg.github.com/ballerina-platform/ballerina-update-tool"
+        credentials {
+          username System.getenv("packageUser")
+          password System.getenv("packagePAT")
+        }
+    }
   }
 
   configurations {
