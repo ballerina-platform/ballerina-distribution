@@ -92,7 +92,14 @@ subprojects {
 
   configurations {
     ballerinaJre
-    unpackDep
+    jbalTools
+    awsLambdaBalo
+    awsLambdaExamples
+    dockerAnnotations
+    dockerExamples
+    kubernetesAnnotations
+    kubernetesExamples
+    balCommand
     exten{
       transitive = false
     }
@@ -102,25 +109,25 @@ subprojects {
   }
 
   dependencies{
-    unpackDep "org.ballerinalang:jballerina-tools:${ballerinaVersion}@zip"
+    jbalTools "org.ballerinalang:jballerina-tools:${ballerinaVersion}@zip"
     ballerinaJre "org.wso2.ballerina.jre.artifacts:ballerina-jre-artifacts:${ballerinaJreArtifactsVersion}@zip"
     
     /* AWSLambda extension */ 
     exten "org.ballerinax.awslambda:awslambda-extension:${awslambdaVersion}"
-    unpackDep "org.ballerinax.awslambda:awslambda-extension-balo:${awslambdaVersion}@zip"
-    unpackDep "org.ballerinax.awslambda:awslambda-extension-examples:${awslambdaVersion}@zip"
+    awsLambdaBalo "org.ballerinax.awslambda:awslambda-extension-balo:${awslambdaVersion}@zip"
+    awsLambdaExamples "org.ballerinax.awslambda:awslambda-extension-examples:${awslambdaVersion}@zip"
 
     /* Docker extension */ 
     exten "org.ballerinax.docker:docker-extension:${dockerVersion}"
-    unpackDep "org.ballerinax.docker:docker-extension-annotations:${dockerVersion}@zip"
-    unpackDep "org.ballerinax.docker:docker-extension-examples:${dockerVersion}@zip"
+    dockerAnnotations "org.ballerinax.docker:docker-extension-annotations:${dockerVersion}@zip"
+    dockerExamples "org.ballerinax.docker:docker-extension-examples:${dockerVersion}@zip"
 
     /* Kubernetes extension */
     exten "org.ballerinax.kubernetes:kubernetes-extension:${kubernetesVersion}"
-    unpackDep "org.ballerinax.kubernetes:kubernetes-extension-annotations:${kubernetesVersion}@zip"
-    unpackDep "org.ballerinax.kubernetes:kubernetes-extension-examples:${kubernetesVersion}@zip"
+    kubernetesAnnotations "org.ballerinax.kubernetes:kubernetes-extension-annotations:${kubernetesVersion}@zip"
+    kubernetesExamples "org.ballerinax.kubernetes:kubernetes-extension-examples:${kubernetesVersion}@zip"
 
-    unpackDep "org.ballerinalang:ballerina-command-distribution:${ballerinaCommandVersion}@zip"
+    balCommand "org.ballerinalang:ballerina-command-distribution:${ballerinaCommandVersion}@zip"
   }
   
 }

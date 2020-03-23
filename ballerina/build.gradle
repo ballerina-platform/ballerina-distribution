@@ -24,34 +24,90 @@ ext{
 }
 
 task unpackBallerinaJre(type: Copy) {
+    group = "unpack_dependencies"
     configurations.ballerinaJre.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        copy {
             from zipTree(artifact.getFile())
             into new File("${buildDir}/target", artifact.name+"-zip")
-        }
     }
 }
 
-task unpackDependencies(type: Copy) {
-    configurations.unpackDep.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        copy {
+task unpackJballerinaTools(type: Copy) {
+    group = "unpack_dependencies"
+    configurations.jbalTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
             from zipTree(artifact.getFile())
             into new File("${buildDir}/target/extracted-distributions", artifact.name+"-zip")
-        }
+    }
+}
+
+task unpackAwsLambdaBalo(type: Copy) {
+    group = "unpack_dependencies"
+    configurations.awsLambdaBalo.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+            from zipTree(artifact.getFile())
+            into new File("${buildDir}/target/extracted-distributions", artifact.name+"-zip")
+    }
+}
+
+task unpackAwsLambdaExamples(type: Copy) {
+    group = "unpack_dependencies"
+    configurations.awsLambdaExamples.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+            from zipTree(artifact.getFile())
+            into new File("${buildDir}/target/extracted-distributions", artifact.name+"-zip")
+    }
+}
+task unpackDockerAnnotations(type: Copy) {
+    group = "unpack_dependencies"
+    configurations.dockerAnnotations.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+            from zipTree(artifact.getFile())
+            into new File("${buildDir}/target/extracted-distributions", artifact.name+"-zip")
+    }
+}
+
+task unpackDockerExamples(type: Copy) {
+    group = "unpack_dependencies"
+    configurations.dockerExamples.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+            from zipTree(artifact.getFile())
+            into new File("${buildDir}/target/extracted-distributions", artifact.name+"-zip")
+    }
+}
+
+task unpackKubernetesAnnotations(type: Copy) {
+    group = "unpack_dependencies"
+    configurations.kubernetesAnnotations.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+            from zipTree(artifact.getFile())
+            into new File("${buildDir}/target/extracted-distributions", artifact.name+"-zip")
+    }
+}
+
+task unpackKubernetesExamples(type: Copy) {
+    group = "unpack_dependencies"
+    configurations.kubernetesExamples.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+            from zipTree(artifact.getFile())
+            into new File("${buildDir}/target/extracted-distributions", artifact.name+"-zip")
+    }
+}
+
+task unpackBalCommand(type: Copy) {
+    group = "unpack_dependencies"
+    configurations.balCommand.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+            from zipTree(artifact.getFile())
+            into new File("${buildDir}/target/extracted-distributions", artifact.name+"-zip")
     }
 }
 
 task extractJreForLinux(type: Copy) {
+    group = "extract_jre"
     from zipTree{"${jreLocation}/jre-1.8-linux.zip"}
     into("${buildDir}/target/extracted-jre-linux") 
 }
 
 task extractJreForMac(type: Copy) {
+    group = "extract_jre"
     from zipTree{"${jreLocation}/jre-1.8-macos.zip"}
     into("${buildDir}/target/extracted-jre-macos") 
 }
 
 task extractJreForWindows(type: Copy) {
+    group = "extract_jre"
     from zipTree{"${jreLocation}/jre-1.8-windows.zip"}
     into("${buildDir}/target/extracted-jre-windows") 
 }
@@ -61,6 +117,7 @@ task deleteTemporaryFiles(type: Delete) {
 }
 
 task packageDist(type: Zip) {
+    group = "package_distribution"
     description = 'Ballerina Tools Distribution Assembly'
     baseName = "j${distributionName}"
     ext{parentDir="${baseName}-${version}"}
@@ -142,6 +199,7 @@ task packageDist(type: Zip) {
 }
 
 task packageDistZip(type: Zip) {
+    group = "package_distribution"
     description = 'Ballerina Distribution Assembly'
     baseName = "${distributionName}"
     ext{parentDir="${baseName}-${version}"}
@@ -252,6 +310,7 @@ task packageDistZip(type: Zip) {
 }
 
 task packageDistLinux(type: Zip) {
+    group = "package_distribution"
     description = 'Ballerina Linux Distribution Assembly'
     baseName = "${distributionName}-linux"
     ext{parentDir="${baseName}-${version}"}
@@ -361,6 +420,7 @@ task packageDistLinux(type: Zip) {
 }
 
 task packageDistMac(type: Zip) {
+    group = "package_distribution"
     description = 'Ballerina MacOS Distribution Assembly'
     baseName = "${distributionName}-macos"
     ext{parentDir="${baseName}-${version}"}
@@ -465,6 +525,7 @@ task packageDistMac(type: Zip) {
 }
 
 task packageDistWindows(type: Zip) {
+    group = "package_distribution"
     description = 'Ballerina Windows Distribution Assembly'
     baseName = "${distributionName}-windows"
     ext{parentDir="${baseName}-${version}"}
@@ -568,32 +629,29 @@ task packageDistWindows(type: Zip) {
     }
 }
 
-extractJreForLinux.dependsOn unpackBallerinaJre
-extractJreForMac.dependsOn unpackBallerinaJre
-extractJreForWindows.dependsOn unpackBallerinaJre
+/* Unpack Dependencies */
+unpackJballerinaTools.dependsOn unpackBallerinaJre
+unpackAwsLambdaBalo.dependsOn unpackJballerinaTools
+unpackAwsLambdaExamples.dependsOn unpackAwsLambdaBalo
+unpackDockerAnnotations.dependsOn unpackAwsLambdaExamples
+unpackDockerExamples.dependsOn unpackDockerAnnotations
+unpackKubernetesAnnotations.dependsOn unpackDockerExamples
+unpackKubernetesExamples.dependsOn unpackKubernetesAnnotations
+unpackBalCommand.dependsOn unpackKubernetesExamples
 
-packageDist.dependsOn unpackDependencies
+/* Extract JRE */
+extractJreForLinux.dependsOn unpackBalCommand
+extractJreForMac.dependsOn extractJreForLinux
+extractJreForWindows.dependsOn extractJreForMac
 
-packageDistZip.dependsOn unpackDependencies
+/* Package Distributions */
+packageDist.dependsOn extractJreForWindows
+packageDistZip.dependsOn packageDist
+packageDistLinux.dependsOn packageDistZip
+packageDistMac.dependsOn packageDistLinux
+packageDistWindows.dependsOn packageDistMac
 
-packageDistLinux.dependsOn unpackDependencies
-packageDistLinux.dependsOn extractJreForLinux
-
-packageDistMac.dependsOn unpackDependencies
-packageDistMac.dependsOn extractJreForMac
-
-packageDistWindows.dependsOn unpackDependencies
-packageDistWindows.dependsOn extractJreForWindows
-
-deleteTemporaryFiles.dependsOn packageDist
-deleteTemporaryFiles.dependsOn packageDistZip
-deleteTemporaryFiles.dependsOn packageDistLinux
-deleteTemporaryFiles.dependsOn packageDistMac
+/* Delete Temporary Files */
 deleteTemporaryFiles.dependsOn packageDistWindows
 
-build.dependsOn packageDist
-build.dependsOn packageDistZip
-build.dependsOn packageDistLinux
-build.dependsOn packageDistMac
-build.dependsOn packageDistWindows
 build.dependsOn deleteTemporaryFiles

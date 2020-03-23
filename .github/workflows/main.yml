@@ -1,16 +1,16 @@
-name: ballerina-distribution
+name: Ballerina Distribution Build 
 
 on:
   push:
     branches:
       - master
-      - ballerina-1.1.x #TODO: Change to ballerina-1.2?
-      - feature/gradle-migration #TODO: Remove after testing
+      - stage
+      - ballerina-1.1.x
   pull_request:
     branches:
       - master
       - stage
-      - ballerina-1.1.x #TODO: Change to ballerina-1.2?
+      - ballerina-1.1.x
 
 jobs:
   build:
@@ -22,4 +22,4 @@ jobs:
         env:
           packagePAT: ${{ secrets.READ_PACKAGE_PAT }}
           packageUser: ${{ secrets.PUBLISH_USER }}
-        run: ./gradlew build
+        run: ./gradlew clean build
