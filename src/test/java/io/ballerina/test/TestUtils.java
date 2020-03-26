@@ -43,6 +43,8 @@ public class TestUtils {
             executor = new Windows(version);
         } else if (provider.equalsIgnoreCase("centos")) {
             executor = new CentOS(version);
+        } else if (provider.equalsIgnoreCase("macos")) {
+            executor = new MacOS(version);
         } else {
             log.error(provider + " is not a valid value for OS_TYPE environment variable ");
             return null;
