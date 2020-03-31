@@ -16,11 +16,11 @@
 
 package io.ballerina.test;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import java.util.Locale;
 
 public class TestUtils {
-    private static final Logger log = LoggerFactory.getLogger(TestUtils.class);
+    private static final String OS = System.getProperty("os.name").toLowerCase(Locale.getDefault());
 
     public static String getVersionOutput(String version) {
         return "jBallerina " + version + "\n" +
@@ -30,26 +30,18 @@ public class TestUtils {
 
     public static Executor getExecutor(String version) {
         Executor executor;
-        String provider = System.getenv("OS_TYPE");
-
-        if (provider == null) {
-            log.error("OS_TYPE environment variable is not set");
-            return null;
-        }
-
-        if (provider.equalsIgnoreCase("ubuntu")) {
-            executor = new Ubuntu(version);
-        } else if (provider.equalsIgnoreCase("windows")) {
+        if (OS.contains("win")) {
             executor = new Windows(version);
-        } else if (provider.equalsIgnoreCase("centos")) {
-            executor = new CentOS(version);
-        } else if (provider.equalsIgnoreCase("macos")) {
+        } else if (OS.contains("mac")) {
             executor = new MacOS(version);
         } else {
-            log.error(provider + " is not a valid value for OS_TYPE environment variable ");
-            return null;
+            String provider = System.getenv("OS_TYPE");
+            if (provider != null && provider.equalsIgnoreCase("centos")) {
+                executor = new CentOS(version);
+            } else {
+                executor = new Ubuntu(version);
+            }
         }
-
         return executor;
     }
 }
