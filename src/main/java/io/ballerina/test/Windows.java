@@ -28,29 +28,29 @@ public class Windows implements Executor {
     @Override
     public String transferArtifacts() {
         Utils.downloadFile(version, installerName);
-        return Utils.executeWindowsCommand("cp " + installerName + "Desktop");
+        return "";
     }
 
     @Override
     public String install() {
-        return Utils.executeWindowsCommand("cd Desktop && msiexec /i " + installerName
-                + " /qn /L*V \\\"install-log.log\\\"");
+        return Utils.executeWindowsCommand("msiexec /i " + Utils.getUserHome() + "\\" + installerName
+                + " /qn /L*V \"install-log.log\"");
     }
 
     @Override
     public String executeCommand(String command, boolean isAdminMode) {
-        return Utils.executeCommand(command);
+        return Utils.executeWindowsCommand(command);
     }
 
     @Override
     public String uninstall() {
-        return Utils.executeWindowsCommand("cd Desktop && msiexec /x " + installerName
-                + " /qn /L*V \\\"uninstall-log.log\\\"");
+        return Utils.executeWindowsCommand("msiexec /x " +  Utils.getUserHome() + "\\" + installerName
+                + " /qn /L*V \"uninstall-log.log\"");
     }
 
     @Override
     public String cleanArtifacts() {
-        return Utils.executeWindowsCommand("del C:\\Program Files\\Ballerina && del .ballerina && del Desktop\\"
+        return Utils.executeWindowsCommand("del C:\\Program Files\\Ballerina && del .ballerina && del "
                 + installerName);
     }
 }

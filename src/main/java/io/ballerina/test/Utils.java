@@ -98,7 +98,7 @@ public class Utils {
      *
      * @return user home directory
      */
-    private static String getUserHome() {
+    public static String getUserHome() {
         String userHome = System.getenv("HOME");
         if (userHome == null) {
             userHome = System.getProperty("user.home");
