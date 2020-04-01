@@ -34,7 +34,7 @@ public class Windows implements Executor {
     @Override
     public String install() {
         return Utils.executeWindowsCommand("msiexec /i " + Utils.getUserHome() + "\\" + installerName
-                + " /qn /L*V \"install-log.log\"");
+                + " /qn /l \"install-log.log\"");
     }
 
     @Override
@@ -45,12 +45,12 @@ public class Windows implements Executor {
     @Override
     public String uninstall() {
         return Utils.executeWindowsCommand("msiexec /x " +  Utils.getUserHome() + "\\" + installerName
-                + " /qn /L*V \"uninstall-log.log\"");
+                + " /qn /l \"uninstall-log.log\"");
     }
 
     @Override
     public String cleanArtifacts() {
-        return Utils.executeWindowsCommand("del C:\\Program Files\\Ballerina && del .ballerina && del "
-                + installerName);
+        Utils.executeWindowsCommand("del C:\\Program Files\\Ballerina");
+        return Utils.executeWindowsCommand("del " + Utils.getUserHome() + "\\.ballerina");
     }
 }
