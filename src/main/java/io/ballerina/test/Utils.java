@@ -55,7 +55,7 @@ public class Utils {
         String output = "";
         try {
             Runtime runtime = Runtime.getRuntime();
-            Process p = runtime.exec("cmd /C cmd.exe runAs /user:Administrator " + command);
+            Process p = runtime.exec("runas /profile /user:Administrator \"" + command + "\"");
             BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
             String line;
             while ((line = reader.readLine()) != null) {
