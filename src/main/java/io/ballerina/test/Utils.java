@@ -54,8 +54,8 @@ public class Utils {
     public static String executeWindowsCommand(String command) {
         String output = "";
         try {
-            ProcessBuilder pb = new ProcessBuilder("cmd.exe", "/c", command);
-            Process p = pb.start();
+            Runtime runtime = Runtime.getRuntime();
+            Process p = runtime.exec("cmd /C cmd.exe runAs /user:Administrator " + command);
             BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
             String line;
             while ((line = reader.readLine()) != null) {
