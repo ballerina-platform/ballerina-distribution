@@ -332,7 +332,7 @@
         <ballerina.jre.artifacts.version>2.0.0</ballerina.jre.artifacts.version>
         <project.scm.id>ballerina-scm-server</project.scm.id>
         <docker.version>1.2.1</docker.version>
-        <kubernetes.version>1.2.0</kubernetes.version>
+        <kubernetes.version>1.2.1</kubernetes.version>
         <awslambda.version>1.2.0</awslambda.version>
         <picocli.version>4.0.1</picocli.version>
         <ballerina.command.version>0.8.5</ballerina.command.version>
