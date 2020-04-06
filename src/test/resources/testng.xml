@@ -23,8 +23,8 @@
 <suite name="Suite1" verbose="1" >
     <test name="io.ballerina.test" >
         <classes>
-            <class name="io.ballerina.test.SmokeTest" />
             <class name="io.ballerina.test.InstallerTest" />
+            <class name="io.ballerina.test.UpdateToolTest" />
         </classes>
     </test>
 </suite>

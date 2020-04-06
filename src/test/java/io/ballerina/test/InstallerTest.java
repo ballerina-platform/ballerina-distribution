@@ -25,40 +25,17 @@ public class InstallerTest {
 
     @DataProvider(name = "getExecutors")
     public Object[][] dataProviderMethod() {
-        String version = "1.1.1";
+        String version = "1.1.2";
         Executor[][] result = new Executor[1][1];
         result[0][0] = TestUtils.getExecutor(version);
         return result;
     }
 
     @Test(dataProvider = "getExecutors")
-    public void testUpdateTool(Executor executor) {
+    public void testSmoke(Executor executor) {
         executor.transferArtifacts();
         executor.install();
-
-        //Test installation
-        Assert.assertEquals(executor.executeCommand("ballerina -v", false), TestUtils.getVersionOutput("1.1.1"));
-
-        //Test `ballerina dist pull`
-        executor.executeCommand("ballerina dist pull jballerina-1.1.0", true);
-
-        Assert.assertEquals(executor.executeCommand("ballerina -v", false), TestUtils.getVersionOutput("1.1.0"));
-
-
-        //Test `ballerina dist use`
-        executor.executeCommand("ballerina dist use jballerina-1.1.1", true);
-
-        Assert.assertEquals(executor.executeCommand("ballerina -v", false), TestUtils.getVersionOutput("1.1.1"));
-
-        //Test `ballerina dist update`
-        executor.executeCommand("ballerina dist use jballerina-1.1.0", true);
-        executor.executeCommand("ballerina dist remove jballerina-1.1.1", true);
-        executor.executeCommand("ballerina dist update", true);
-        Assert.assertEquals(executor.executeCommand("ballerina -v", false), TestUtils.getVersionOutput("1.1.4"));
-
-        //Try `ballerina dist remove`
-        executor.executeCommand("ballerina dist remove jballerina-1.1.0", true);
-
+        Assert.assertEquals(executor.executeCommand("ballerina -v", false), TestUtils.getVersionOutput("1.1.2"));
         executor.uninstall();
         executor.cleanArtifacts();
     }
