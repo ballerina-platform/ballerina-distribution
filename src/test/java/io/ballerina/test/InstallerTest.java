@@ -36,7 +36,25 @@ public class InstallerTest {
         executor.transferArtifacts();
         executor.install();
         Assert.assertEquals(executor.executeCommand("ballerina -v", false), TestUtils.getVersionOutput("1.1.2"));
+        testProject(executor);
         executor.uninstall();
         executor.cleanArtifacts();
+    }
+
+    /**
+     * Test project and module creation.
+     * @param executor Executor for relevant operating system
+     */
+    public void testProject(Executor executor) {
+        String expectedOutput = "Created new Ballerina project at project1\n" +
+                "\n" +
+                "Next:\n" +
+                "    Move into the project directory and use `ballerina add <module-name>` to\n" +
+                "    add a new Ballerina module.\n";
+        Assert.assertEquals(executor.executeCommand("ballerina new project1", false), expectedOutput);
+
+        executor.executeCommand("cd project1", false);
+        expectedOutput = "Added new ballerina module at 'src/module1'\n";
+        Assert.assertEquals(executor.executeCommand("ballerina add module1'", false), expectedOutput);
     }
 }
