@@ -23,9 +23,11 @@ import org.testng.annotations.Test;
 
 public class UpdateToolTest {
     String version = "1.2.0";
+    String specVersion = "2020R1";
     String toolVersion = "0.8.5";
 
     String previousVersion = "1.1.0";
+    String previousSpecVersion = "2019R3";
     String previousVersionsLatestPatch = "1.1.4";
 
     @DataProvider(name = "getExecutors")
@@ -42,27 +44,27 @@ public class UpdateToolTest {
 
         //Test installation
         Assert.assertEquals(executor.executeCommand("ballerina -v", false),
-                TestUtils.getVersionOutput(version, toolVersion));
+                TestUtils.getVersionOutput(version, specVersion, toolVersion));
 
         //Test `ballerina dist pull`
         executor.executeCommand("ballerina dist pull jballerina-" + previousVersion, true);
 
         Assert.assertEquals(executor.executeCommand("ballerina -v", false),
-                TestUtils.getVersionOutput(previousVersion, toolVersion));
+                TestUtils.getVersionOutput(previousVersion, previousSpecVersion, toolVersion));
 
 
         //Test `ballerina dist use`
         executor.executeCommand("ballerina dist use jballerina-" + version, true);
 
         Assert.assertEquals(executor.executeCommand("ballerina -v", false),
-                TestUtils.getVersionOutput(version, toolVersion));
+                TestUtils.getVersionOutput(version, specVersion, toolVersion));
 
         //Test `ballerina dist update`
         executor.executeCommand("ballerina dist use jballerina-" + previousVersion, true);
         executor.executeCommand("ballerina dist remove jballerina-" + version, true);
         executor.executeCommand("ballerina dist update", true);
         Assert.assertEquals(executor.executeCommand("ballerina -v", false),
-                TestUtils.getVersionOutput(previousVersionsLatestPatch, toolVersion));
+                TestUtils.getVersionOutput(previousVersionsLatestPatch, previousSpecVersion, toolVersion));
 
         //Try `ballerina dist remove`
         executor.executeCommand("ballerina dist remove jballerina-" + previousVersion, true);

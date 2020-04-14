@@ -22,9 +22,9 @@ import java.util.Locale;
 public class TestUtils {
     private static final String OS = System.getProperty("os.name").toLowerCase(Locale.getDefault());
 
-    public static String getVersionOutput(String jBallerinaVersion, String toolVersion) {
+    public static String getVersionOutput(String jBallerinaVersion, String specVersion, String toolVersion) {
         return "jBallerina " + jBallerinaVersion + "\n" +
-                "Language specification 2019R3\n" +
+                "Language specification " + specVersion + "\n" +
                 "Ballerina tool " + toolVersion + "\n";
     }
 
