@@ -23,6 +23,7 @@ import org.testng.annotations.Test;
 
 public class InstallerTest {
     String version = "1.1.2";
+    String toolVersion = "0.8.0";
 
     @DataProvider(name = "getExecutors")
     public Object[][] dataProviderMethod() {
@@ -35,7 +36,8 @@ public class InstallerTest {
     public void testSmoke(Executor executor) {
         executor.transferArtifacts();
         executor.install();
-        Assert.assertEquals(executor.executeCommand("ballerina -v", false), TestUtils.getVersionOutput(version));
+        Assert.assertEquals(executor.executeCommand("ballerina -v", false),
+                TestUtils.getVersionOutput(version, toolVersion));
         executor.uninstall();
         executor.cleanArtifacts();
     }

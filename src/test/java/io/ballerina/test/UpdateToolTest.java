@@ -23,6 +23,8 @@ import org.testng.annotations.Test;
 
 public class UpdateToolTest {
     String version = "1.2.0";
+    String toolVersion = "0.8.5";
+
     String previousVersion = "1.1.0";
     String previousVersionsLatestPatch = "1.1.4";
 
@@ -39,26 +41,28 @@ public class UpdateToolTest {
         executor.install();
 
         //Test installation
-        Assert.assertEquals(executor.executeCommand("ballerina -v", false), TestUtils.getVersionOutput(version));
+        Assert.assertEquals(executor.executeCommand("ballerina -v", false),
+                TestUtils.getVersionOutput(version, toolVersion));
 
         //Test `ballerina dist pull`
         executor.executeCommand("ballerina dist pull jballerina-" + previousVersion, true);
 
         Assert.assertEquals(executor.executeCommand("ballerina -v", false),
-                TestUtils.getVersionOutput(previousVersion));
+                TestUtils.getVersionOutput(previousVersion, toolVersion));
 
 
         //Test `ballerina dist use`
         executor.executeCommand("ballerina dist use jballerina-" + version, true);
 
-        Assert.assertEquals(executor.executeCommand("ballerina -v", false), TestUtils.getVersionOutput(version));
+        Assert.assertEquals(executor.executeCommand("ballerina -v", false),
+                TestUtils.getVersionOutput(version, toolVersion));
 
         //Test `ballerina dist update`
         executor.executeCommand("ballerina dist use jballerina-" + previousVersion, true);
         executor.executeCommand("ballerina dist remove jballerina-" + version, true);
         executor.executeCommand("ballerina dist update", true);
         Assert.assertEquals(executor.executeCommand("ballerina -v", false),
-                TestUtils.getVersionOutput(previousVersionsLatestPatch));
+                TestUtils.getVersionOutput(previousVersionsLatestPatch, toolVersion));
 
         //Try `ballerina dist remove`
         executor.executeCommand("ballerina dist remove jballerina-" + previousVersion, true);

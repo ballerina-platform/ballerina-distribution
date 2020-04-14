@@ -22,10 +22,10 @@ import java.util.Locale;
 public class TestUtils {
     private static final String OS = System.getProperty("os.name").toLowerCase(Locale.getDefault());
 
-    public static String getVersionOutput(String version) {
-        return "jBallerina " + version + "\n" +
+    public static String getVersionOutput(String jBallerinaVersion, String toolVersion) {
+        return "jBallerina " + jBallerinaVersion + "\n" +
                 "Language specification 2019R3\n" +
-                "Ballerina tool 0.8.0\n";
+                "Ballerina tool " + toolVersion + "\n";
     }
 
     public static Executor getExecutor(String version) {
