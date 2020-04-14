@@ -25,6 +25,7 @@
         <classes>
             <class name="io.ballerina.test.InstallerTest" />
             <class name="io.ballerina.test.UpdateDistTest" />
+            <class name="io.ballerina.test.UpdateToolTest" />
         </classes>
     </test>
 </suite>
