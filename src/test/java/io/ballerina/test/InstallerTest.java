@@ -23,6 +23,7 @@ import org.testng.annotations.Test;
 
 public class InstallerTest {
     String version = "1.1.2";
+    String specVersion = "2019R3";
     String toolVersion = "0.8.0";
 
     @DataProvider(name = "getExecutors")
@@ -37,7 +38,7 @@ public class InstallerTest {
         executor.transferArtifacts();
         executor.install();
         Assert.assertEquals(executor.executeCommand("ballerina -v", false),
-                TestUtils.getVersionOutput(version, toolVersion));
+                TestUtils.getVersionOutput(version, specVersion, toolVersion));
         executor.uninstall();
         executor.cleanArtifacts();
     }
