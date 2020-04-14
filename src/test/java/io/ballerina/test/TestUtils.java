@@ -17,6 +17,8 @@
 package io.ballerina.test;
 
 
+import org.testng.Assert;
+
 import java.util.Locale;
 
 public class TestUtils {
@@ -43,5 +45,36 @@ public class TestUtils {
             }
         }
         return executor;
+    }
+
+    public static void distTests(Executor executor, String version, String  specVersion, String toolVersion,
+                                 String previousVersion, String previousSpecVersion,
+                                 String previousVersionsLatestPatch) {
+        //Test installation
+        Assert.assertEquals(executor.executeCommand("ballerina -v", false),
+                TestUtils.getVersionOutput(version, specVersion, toolVersion));
+
+        //Test `ballerina dist pull`
+        executor.executeCommand("ballerina dist pull jballerina-" + previousVersion, true);
+
+        Assert.assertEquals(executor.executeCommand("ballerina -v", false),
+                TestUtils.getVersionOutput(previousVersion, previousSpecVersion, toolVersion));
+
+
+        //Test `ballerina dist use`
+        executor.executeCommand("ballerina dist use jballerina-" + version, true);
+
+        Assert.assertEquals(executor.executeCommand("ballerina -v", false),
+                TestUtils.getVersionOutput(version, specVersion, toolVersion));
+
+        //Test `ballerina dist update`
+        executor.executeCommand("ballerina dist use jballerina-" + previousVersion, true);
+        executor.executeCommand("ballerina dist remove jballerina-" + version, true);
+        executor.executeCommand("ballerina dist update", true);
+        Assert.assertEquals(executor.executeCommand("ballerina -v", false),
+                TestUtils.getVersionOutput(previousVersionsLatestPatch, previousSpecVersion, toolVersion));
+
+        //Try `ballerina dist remove`
+        executor.executeCommand("ballerina dist remove jballerina-" + previousVersion, true);
     }
 }

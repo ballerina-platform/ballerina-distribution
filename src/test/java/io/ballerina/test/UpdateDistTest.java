@@ -21,16 +21,14 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 
-public class UpdateToolTest {
-    String version = "1.1.0";
-    String specVersion = "2019R3";
-    String toolVersion = "0.8.0";
+public class UpdateDistTest {
+    String version = "1.2.0";
+    String specVersion = "2020R1";
+    String toolVersion = "0.8.5";
 
-    String latestToolVersion = "0.8.5";
-
-    String previousVersion = "1.0.0";
+    String previousVersion = "1.1.0";
     String previousSpecVersion = "2019R3";
-    String previousVersionsLatestPatch = "1.0.5";
+    String previousVersionsLatestPatch = "1.1.4";
 
     @DataProvider(name = "getExecutors")
     public Object[][] dataProviderMethod() {
@@ -43,19 +41,8 @@ public class UpdateToolTest {
     public void testUpdateTool(Executor executor) {
         executor.transferArtifacts();
         executor.install();
-
-        //Test installation
-        Assert.assertEquals(executor.executeCommand("ballerina -v", false),
-                TestUtils.getVersionOutput(version, specVersion, toolVersion));
-
-        //Test `ballerina update`
-        executor.executeCommand("ballerina update", true);
-        Assert.assertEquals(executor.executeCommand("ballerina -v", false),
-                TestUtils.getVersionOutput(version, specVersion, latestToolVersion));
-
         TestUtils.distTests(executor, version,  specVersion, toolVersion, previousVersion, previousSpecVersion,
-                previousVersionsLatestPatch);
-
+                 previousVersionsLatestPatch);
         executor.uninstall();
         executor.cleanArtifacts();
     }
