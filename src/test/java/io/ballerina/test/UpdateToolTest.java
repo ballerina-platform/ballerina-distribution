@@ -53,7 +53,7 @@ public class UpdateToolTest {
         Assert.assertEquals(executor.executeCommand("ballerina -v", false),
                 TestUtils.getVersionOutput(version, specVersion, latestToolVersion));
 
-        TestUtils.distTests(executor, version,  specVersion, toolVersion, previousVersion, previousSpecVersion,
+        TestUtils.distTests(executor, version,  specVersion, latestToolVersion, previousVersion, previousSpecVersion,
                 previousVersionsLatestPatch);
 
         executor.uninstall();
