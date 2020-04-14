@@ -25,7 +25,8 @@ public class TestUtils {
     private static final String OS = System.getProperty("os.name").toLowerCase(Locale.getDefault());
 
     public static String getVersionOutput(String jBallerinaVersion, String specVersion, String toolVersion) {
-        String ballerinaReference = jBallerinaVersion.contains("1.0") ? "Ballerina" : "jBallerina";
+        String [] versions = jBallerinaVersion.split(".");
+        String ballerinaReference = versions[0].equals("1") && versions[0].equals("0")? "Ballerina" : "jBallerina";
         return ballerinaReference + " " + jBallerinaVersion + "\n" +
                 "Language specification " + specVersion + "\n" +
                 "Ballerina tool " + toolVersion + "\n";
