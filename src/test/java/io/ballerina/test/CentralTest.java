@@ -36,7 +36,7 @@ public class CentralTest {
         executor.transferArtifacts();
         executor.install();
         Assert.assertEquals(executor.executeCommand("ballerina pull wso2/twitter", false),
-                "wso2/twitter:0.9.26 pulled from central successfully\n");
+                "\nwso2/twitter:0.9.26 pulled from central successfully\n");
         executor.uninstall();
         executor.cleanArtifacts();
     }
