@@ -32,11 +32,12 @@ public class CentralTest {
     }
 
     @Test(dataProvider = "getExecutors")
-    public void testSmoke(Executor executor) {
+    public void testPull(Executor executor) {
         executor.transferArtifacts();
         executor.install();
-        Assert.assertEquals(executor.executeCommand("ballerina pull wso2/twitter", false),
-                "\nwso2/twitter:0.9.26 pulled from central successfully\n");
+        //Checks part as output varies depending on the network speed
+        Assert.assertTrue(executor.executeCommand("ballerina pull wso2/twitter", false)
+                .contains("wso2/twitter:0.9.26 pulled from central successfully"));
         executor.uninstall();
         executor.cleanArtifacts();
     }
