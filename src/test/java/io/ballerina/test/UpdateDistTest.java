@@ -41,7 +41,7 @@ public class UpdateDistTest {
     public void testUpdateTool(Executor executor) {
         executor.transferArtifacts();
         executor.install();
-        TestUtils.distTests(executor, version,  specVersion, toolVersion, previousVersion, previousSpecVersion,
+        TestUtils.testDistCommands(executor, version,  specVersion, toolVersion, previousVersion, previousSpecVersion,
                  previousVersionsLatestPatch);
         executor.uninstall();
         executor.cleanArtifacts();

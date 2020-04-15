@@ -21,10 +21,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 
-public class InstallerTest {
-    String version = "1.1.2";
-    String specVersion = "2019R3";
-    String toolVersion = "0.8.0";
+public class CentralTest {
+    String version = "1.2.0";
 
     @DataProvider(name = "getExecutors")
     public Object[][] dataProviderMethod() {
@@ -35,10 +33,17 @@ public class InstallerTest {
 
     @Test(dataProvider = "getExecutors")
     public void testSmoke(Executor executor) {
+
+        String expectedOutput = "wso2/twitter:0.9.26 [central.ballerina.io -> home repo]  100% " +
+                "[================================================" +
+                "=====================================================]" +
+                " 13/13 KB (0:00:00 / 0:00:00) \n" +
+                "wso2/twitter:0.9.26 pulled from central successfully\n";
+
         executor.transferArtifacts();
         executor.install();
-        Assert.assertEquals(executor.executeCommand("ballerina -v", false),
-                TestUtils.getVersionOutput(version, specVersion, toolVersion));
+        Assert.assertEquals(executor.executeCommand("ballerina pull wso2/twitter", false),
+                expectedOutput);
         executor.uninstall();
         executor.cleanArtifacts();
     }
