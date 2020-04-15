@@ -33,17 +33,10 @@ public class CentralTest {
 
     @Test(dataProvider = "getExecutors")
     public void testSmoke(Executor executor) {
-
-        String expectedOutput = "wso2/twitter:0.9.26 [central.ballerina.io -> home repo]  100% " +
-                "[================================================" +
-                "=====================================================]" +
-                " 13/13 KB (0:00:00 / 0:00:00) \n" +
-                "wso2/twitter:0.9.26 pulled from central successfully\n";
-
         executor.transferArtifacts();
         executor.install();
         Assert.assertEquals(executor.executeCommand("ballerina pull wso2/twitter", false),
-                expectedOutput);
+                "wso2/twitter:0.9.26 pulled from central successfully\n");
         executor.uninstall();
         executor.cleanArtifacts();
     }
