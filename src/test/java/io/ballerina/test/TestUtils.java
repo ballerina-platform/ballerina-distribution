@@ -69,9 +69,7 @@ public class TestUtils {
         //Test Update notification message
         String expectedOutput = "A new version of Ballerina is available: jballerina-" + previousVersionsLatestPatch
                 + "\nUse 'ballerina dist pull jballerina-" + previousVersionsLatestPatch
-                + "' to download and use the distribution";
-//        Assert.assertTrue(executor.executeCommand("ballerina build", false)
-//                .contains(expectedOutput));
+                + "' to download and use the distribution\n\n";
         Assert.assertEquals(executor.executeCommand("ballerina build", false), expectedOutput);
 
         //Test `ballerina dist use`
