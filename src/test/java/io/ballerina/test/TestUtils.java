@@ -72,8 +72,7 @@ public class TestUtils {
                 + "' to download and use the distribution";
 //        Assert.assertTrue(executor.executeCommand("ballerina build", false)
 //                .contains(expectedOutput));
-        Assert.assertEquals(executor.executeCommand("ballerina build", false)
-                .contains(expectedOutput), expectedOutput);
+        Assert.assertEquals(executor.executeCommand("ballerina build", false), expectedOutput);
 
         //Test `ballerina dist use`
         executor.executeCommand("ballerina dist use jballerina-" + version, true);
