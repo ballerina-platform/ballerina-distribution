@@ -25,8 +25,8 @@ public class TestUtils {
     private static final String OS = System.getProperty("os.name").toLowerCase(Locale.getDefault());
 
     public static String getVersionOutput(String jBallerinaVersion, String specVersion, String toolVersion) {
-        String[] versions = jBallerinaVersion.split("\\.");
-        String ballerinaReference = versions[0].equals("1") && versions[1].equals("0") ? "Ballerina" : "jBallerina";
+
+        String ballerinaReference = isSupportedRelease(jBallerinaVersion) ? "jBallerina" : "Ballerina";
         return ballerinaReference + " " + jBallerinaVersion + "\n" +
                 "Language specification " + specVersion + "\n" +
                 "Ballerina tool " + toolVersion + "\n";
@@ -67,10 +67,12 @@ public class TestUtils {
         TestUtils.testInstallation(executor, previousVersion, previousSpecVersion, toolVersion);
 
         //Test Update notification message
-        String expectedOutput = "A new version of Ballerina is available: jballerina-" + previousVersionsLatestPatch
-                + "\nUse 'ballerina dist pull jballerina-" + previousVersionsLatestPatch
-                + "' to download and use the distribution\n\n";
-        Assert.assertEquals(executor.executeCommand("ballerina build", false), expectedOutput);
+        if (isSupportedRelease(previousVersion)) {
+            String expectedOutput = "A new version of Ballerina is available: jballerina-" + previousVersionsLatestPatch
+                    + "\nUse 'ballerina dist pull jballerina-" + previousVersionsLatestPatch
+                    + "' to download and use the distribution\n\n";
+            Assert.assertEquals(executor.executeCommand("ballerina build", false), expectedOutput);
+        }
 
         //Test `ballerina dist use`
         executor.executeCommand("ballerina dist use jballerina-" + version, true);
@@ -99,6 +101,16 @@ public class TestUtils {
     public static void testInstallation(Executor executor, String version, String specVersion, String toolVersion) {
         Assert.assertEquals(executor.executeCommand("ballerina -v", false),
                 TestUtils.getVersionOutput(version, specVersion, toolVersion));
+    }
+
+    /**
+     * To check whether installation is a 1.0.x release.
+     *
+     * @return returns is a 1.0.x release
+     */
+    public static boolean isSupportedRelease(String version) {
+        String[] versions = version.split("\\.");
+        return versions[0].equals("1") && versions[1].equals("0");
     }
 
 
