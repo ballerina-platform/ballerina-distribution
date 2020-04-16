@@ -110,7 +110,7 @@ public class TestUtils {
      */
     public static boolean isSupportedRelease(String version) {
         String[] versions = version.split("\\.");
-        return versions[0].equals("1") && versions[1].equals("0");
+        return !(versions[0].equals("1") && versions[1].equals("0"));
     }
 
 
