@@ -45,7 +45,7 @@ test {
     options.suites('src/test/resources/testng.xml')
     systemProperty 'jballerina-version', project.properties['jballerinaVersion']
     systemProperty 'spec-version', project.properties['specVersion']
-    systemProperty 'tool-version', project.properties['projectVersion']
+    systemProperty 'tool-version', project.properties['toolVersion']
 }
 
 repositories {
