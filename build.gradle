@@ -43,6 +43,9 @@ tasks.withType(JavaCompile) {
 test {
     useTestNG()
     options.suites("src/test/resources/testng.xml")
+    systemProperty 'jballerina-version', '1.2.1'
+    systemProperty 'spec-version', '2020R1'
+    systemProperty 'tool-version', '0.8.5'
 }
 
 repositories {

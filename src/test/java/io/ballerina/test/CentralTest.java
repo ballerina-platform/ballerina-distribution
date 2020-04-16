@@ -22,7 +22,7 @@ import org.testng.annotations.Test;
 
 
 public class CentralTest {
-    String version = "1.2.0";
+    String version = System.getProperty("jballerina-version");
 
     @DataProvider(name = "getExecutors")
     public Object[][] dataProviderMethod() {

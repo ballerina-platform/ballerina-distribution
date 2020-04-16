@@ -26,7 +26,7 @@ public class UpdateToolTest {
     String specVersion = "2019R3";
     String toolVersion = "0.8.0";
 
-    String latestToolVersion = "0.8.5";
+    String latestToolVersion = System.getProperty("tool-version");
 
     String previousVersion = "1.0.0";
     String previousSpecVersion = "2019R3";

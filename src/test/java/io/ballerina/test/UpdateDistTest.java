@@ -21,9 +21,9 @@ import org.testng.annotations.Test;
 
 
 public class UpdateDistTest {
-    String version = "1.2.0";
-    String specVersion = "2020R1";
-    String toolVersion = "0.8.5";
+    String version = System.getProperty("jballerina-version");
+    String specVersion = System.getProperty("spec-version");
+    String toolVersion = System.getProperty("tool-version");
 
     String previousVersion = "1.1.0";
     String previousSpecVersion = "2019R3";

@@ -21,9 +21,9 @@ import org.testng.annotations.Test;
 
 
 public class InstallerTest {
-    String version = "1.1.2";
-    String specVersion = "2019R3";
-    String toolVersion = "0.8.0";
+    String version = System.getProperty("jballerina-version");
+    String specVersion = System.getProperty("spec-version");
+    String toolVersion = System.getProperty("tool-version");
 
     @DataProvider(name = "getExecutors")
     public Object[][] dataProviderMethod() {
