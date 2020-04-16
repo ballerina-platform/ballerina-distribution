@@ -70,8 +70,10 @@ public class TestUtils {
         String expectedOutput = "A new version of Ballerina is available: jballerina-" + previousVersionsLatestPatch
                 + "\nUse 'ballerina dist pull jballerina-" + previousVersionsLatestPatch
                 + "' to download and use the distribution";
-        Assert.assertTrue(executor.executeCommand("ballerina build", false)
-                .contains(expectedOutput));
+//        Assert.assertTrue(executor.executeCommand("ballerina build", false)
+//                .contains(expectedOutput));
+        Assert.assertEquals(executor.executeCommand("ballerina build", false)
+                .contains(expectedOutput), expectedOutput);
 
         //Test `ballerina dist use`
         executor.executeCommand("ballerina dist use jballerina-" + version, true);
