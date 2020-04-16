@@ -1,23 +1,25 @@
-name: Ballerina Distribution Build
+name: Ballerina Distribution Build 
 
 on:
   push:
     branches:
       - master
+      - stage
       - ballerina-1.1.x
   pull_request:
     branches:
       - master
+      - stage
       - ballerina-1.1.x
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout 
-      uses: actions/checkout@v2
-    - name: Build Ballerina Tool
-      working-directory: ./ballerina-command
-      run: mvn clean install -B -V
-    - name: Build Ballerina Distribution
-      run: mvn clean install -B -V
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build Ballerina Distribution
+        env:
+          packagePAT: ${{ secrets.READ_PACKAGE_PAT }}
+          packageUser: ${{ secrets.PUBLISH_USER }}
+        run: ./gradlew clean build

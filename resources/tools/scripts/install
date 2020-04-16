@@ -21,33 +21,33 @@ else
     CURRENT_PATH="$(dirname "$(readlink -f "$0")")"
 fi
 
-\cp $CURRENT_PATH/ballerina-command-${ballerina.command.version}/lib/ballerina-command-${ballerina.command.version}.jar $CURRENT_PATH/../lib
+\cp $CURRENT_PATH/ballerina-command-@ballerinaCommandVersion@/lib/ballerina-command-@ballerinaCommandVersion@.jar $CURRENT_PATH/../lib
 
 if [ $? -ne '0' ]; then
   echo "error occurred while copying ballerina jar"
   # remove if copied with an error.
-  if [ -f "$CURRENT_PATH/../lib/ballerina-command-${ballerina.command.version}.jar" ]; then
-        rm -rf $CURRENT_PATH/../lib/ballerina-command-${ballerina.command.version}.jar
+  if [ -f "$CURRENT_PATH/../lib/ballerina-command-@ballerinaCommandVersion@.jar" ]; then
+        rm -rf $CURRENT_PATH/../lib/ballerina-command-@ballerinaCommandVersion@.jar
   fi
   exit $?
 fi
 
-\cp $CURRENT_PATH/ballerina-command-${ballerina.command.version}/bin/ballerina $CURRENT_PATH/../bin
+\cp $CURRENT_PATH/ballerina-command-@ballerinaCommandVersion@/bin/ballerina $CURRENT_PATH/../bin
 
 if [ $? -ne '0' ]; then
   echo "error occurred while copying ballerina file."
   # remove already copied jar.
-  if [ -f "$CURRENT_PATH/../lib/ballerina-command-${ballerina.command.version}.jar" ]; then
-        rm -rf $CURRENT_PATH/../lib/ballerina-command-${ballerina.command.version}.jar
+  if [ -f "$CURRENT_PATH/../lib/ballerina-command-@ballerinaCommandVersion@.jar" ]; then
+        rm -rf $CURRENT_PATH/../lib/ballerina-command-@ballerinaCommandVersion@.jar
   fi
   exit $?
 fi
 
-echo "Tool version updated to the latest version: ${ballerina.command.version}"
+echo "Tool version updated to the latest version: @ballerinaCommandVersion@"
 echo "Cleaning old files..."
 
 for file in $CURRENT_PATH/../lib/*; do
-    if [ -f "$file" ] && [[ "$file" == *ballerina-command*.jar ]] && [[ "$file" != *ballerina-command-${ballerina.command.version}.jar ]]; then
+    if [ -f "$file" ] && [[ "$file" == *ballerina-command*.jar ]] && [[ "$file" != *ballerina-command-@ballerinaCommandVersion@.jar ]]; then
 	rm -rf $file
     fi
 done
