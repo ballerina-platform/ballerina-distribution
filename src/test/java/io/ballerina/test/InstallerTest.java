@@ -37,8 +37,7 @@ public class InstallerTest {
     public void testSmoke(Executor executor) {
         executor.transferArtifacts();
         executor.install();
-        Assert.assertEquals(executor.executeCommand("ballerina -v", false),
-                TestUtils.getVersionOutput(version, specVersion, toolVersion));
+        TestUtils.testInstallation(executor, version, specVersion, toolVersion);
         executor.uninstall();
         executor.cleanArtifacts();
     }

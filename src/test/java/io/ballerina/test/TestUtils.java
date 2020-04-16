@@ -53,31 +53,46 @@ public class TestUtils {
                                  String previousVersion, String previousSpecVersion,
                                  String previousVersionsLatestPatch) {
         //Test installation
-        Assert.assertEquals(executor.executeCommand("ballerina -v", false),
-                TestUtils.getVersionOutput(version, specVersion, toolVersion));
+        TestUtils.testInstallation(executor, version, specVersion, toolVersion);
+
+        //Test `ballerina dist list`
+        String actualOutput = executor.executeCommand("ballerina dist list", false);
+        Assert.assertTrue(actualOutput.contains("jballerina-1.0.0"));
+        Assert.assertTrue(actualOutput.contains("jballerina-1.1.0"));
+        Assert.assertTrue(actualOutput.contains("jballerina-1.2.0"));
 
         //Test `ballerina dist pull`
         executor.executeCommand("ballerina dist pull jballerina-" + previousVersion, true);
 
-        Assert.assertEquals(executor.executeCommand("ballerina -v", false),
-                TestUtils.getVersionOutput(previousVersion, previousSpecVersion, toolVersion));
+        TestUtils.testInstallation(executor, previousVersion, previousSpecVersion, toolVersion);
 
 
         //Test `ballerina dist use`
         executor.executeCommand("ballerina dist use jballerina-" + version, true);
 
-        Assert.assertEquals(executor.executeCommand("ballerina -v", false),
-                TestUtils.getVersionOutput(version, specVersion, toolVersion));
+        //Verify the the installation
+        TestUtils.testInstallation(executor, version, specVersion, toolVersion);
 
         //Test `ballerina dist update`
         executor.executeCommand("ballerina dist use jballerina-" + previousVersion, true);
         executor.executeCommand("ballerina dist remove jballerina-" + version, true);
         executor.executeCommand("ballerina dist update", true);
-        Assert.assertEquals(executor.executeCommand("ballerina -v", false),
-                TestUtils.getVersionOutput(previousVersionsLatestPatch, previousSpecVersion, toolVersion));
+        TestUtils.testInstallation(executor, previousVersionsLatestPatch, previousSpecVersion, toolVersion);
 
         //Try `ballerina dist remove`
         executor.executeCommand("ballerina dist remove jballerina-" + previousVersion, true);
+    }
+
+    /**
+     * Execute smoke testing to verify installation.
+     * @param executor Executor for relevant operating system
+     * @param version Installed jBallerina version
+     * @param specVersion Installed language specification
+     * @param toolVersion Installed tool version
+     */
+    public static void testInstallation(Executor executor, String version, String specVersion, String toolVersion) {
+        Assert.assertEquals(executor.executeCommand("ballerina -v", false),
+                TestUtils.getVersionOutput(version, specVersion, toolVersion));
     }
 
 
