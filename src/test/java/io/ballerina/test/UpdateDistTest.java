@@ -16,7 +16,6 @@
 
 package io.ballerina.test;
 
-import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -38,11 +37,13 @@ public class UpdateDistTest {
     }
 
     @Test(dataProvider = "getExecutors")
-    public void testUpdateTool(Executor executor) {
+    public void testDistCommands(Executor executor) {
         executor.transferArtifacts();
         executor.install();
-        TestUtils.testDistCommands(executor, version,  specVersion, toolVersion, previousVersion, previousSpecVersion,
-                 previousVersionsLatestPatch);
+
+        TestUtils.testDistCommands(executor, version, specVersion, toolVersion, previousVersion, previousSpecVersion,
+                previousVersionsLatestPatch);
+
         executor.uninstall();
         executor.cleanArtifacts();
     }

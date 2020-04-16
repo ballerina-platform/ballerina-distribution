@@ -25,8 +25,8 @@ public class TestUtils {
     private static final String OS = System.getProperty("os.name").toLowerCase(Locale.getDefault());
 
     public static String getVersionOutput(String jBallerinaVersion, String specVersion, String toolVersion) {
-        String [] versions = jBallerinaVersion.split("\\.");
-        String ballerinaReference = versions[0].equals("1") && versions[1].equals("0")? "Ballerina" : "jBallerina";
+        String[] versions = jBallerinaVersion.split("\\.");
+        String ballerinaReference = versions[0].equals("1") && versions[1].equals("0") ? "Ballerina" : "jBallerina";
         return ballerinaReference + " " + jBallerinaVersion + "\n" +
                 "Language specification " + specVersion + "\n" +
                 "Ballerina tool " + toolVersion + "\n";
@@ -49,9 +49,9 @@ public class TestUtils {
         return executor;
     }
 
-    public static void testDistCommands(Executor executor, String version, String  specVersion, String toolVersion,
-                                 String previousVersion, String previousSpecVersion,
-                                 String previousVersionsLatestPatch) {
+    public static void testDistCommands(Executor executor, String version, String specVersion, String toolVersion,
+                                        String previousVersion, String previousSpecVersion,
+                                        String previousVersionsLatestPatch) {
         //Test installation
         TestUtils.testInstallation(executor, version, specVersion, toolVersion);
 
@@ -65,7 +65,6 @@ public class TestUtils {
         executor.executeCommand("ballerina dist pull jballerina-" + previousVersion, true);
 
         TestUtils.testInstallation(executor, previousVersion, previousSpecVersion, toolVersion);
-
 
         //Test `ballerina dist use`
         executor.executeCommand("ballerina dist use jballerina-" + version, true);
@@ -85,8 +84,9 @@ public class TestUtils {
 
     /**
      * Execute smoke testing to verify installation.
-     * @param executor Executor for relevant operating system
-     * @param version Installed jBallerina version
+     *
+     * @param executor    Executor for relevant operating system
+     * @param version     Installed jBallerina version
      * @param specVersion Installed language specification
      * @param toolVersion Installed tool version
      */
@@ -98,6 +98,7 @@ public class TestUtils {
 
     /**
      * Test project and module creation.
+     *
      * @param executor Executor for relevant operating system
      */
     public void testProject(Executor executor) {

@@ -16,7 +16,6 @@
 
 package io.ballerina.test;
 
-import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -37,7 +36,9 @@ public class InstallerTest {
     public void testSmoke(Executor executor) {
         executor.transferArtifacts();
         executor.install();
+
         TestUtils.testInstallation(executor, version, specVersion, toolVersion);
+
         executor.uninstall();
         executor.cleanArtifacts();
     }
