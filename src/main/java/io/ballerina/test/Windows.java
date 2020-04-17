@@ -33,12 +33,15 @@ public class Windows implements Executor {
 
     @Override
     public String install() {
-        return "";
+        return Utils.executeWindowsCommand("msiexec /i " + Utils.getUserHome() + "\\" + installerName
+                + " /qn /l \"install-log.log\"");
     }
 
     @Override
     public String executeCommand(String command, boolean isAdminMode) {
-        return Utils.executeWindowsCommand(command);
+        //TODO: Temporary call bat file directly
+        String batLocation = "call \"C:\\Program Files\\Ballerina\\bin\\ballerina.bat\"";
+        return Utils.executeWindowsCommand(command.replace("ballerina", batLocation));
     }
 
     @Override
