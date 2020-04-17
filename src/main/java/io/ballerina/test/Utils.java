@@ -55,8 +55,7 @@ public class Utils {
                     HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
                 } catch (Exception e) {
                 }
-
-                HttpsURLConnection conn = (HttpsURLConnection) new URL(
+                HttpURLConnection conn = (HttpURLConnection) new URL(
                         DISTRIBUTION_LOCATION + version + "/" + installerName).openConnection();
                 conn.setRequestProperty("content-type", "binary/data");
 
