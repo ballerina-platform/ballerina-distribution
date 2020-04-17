@@ -1,13 +1,15 @@
-name: Ballerina Distribution Build
+name: Ballerina Distribution Build 
 
 on:
   push:
     branches:
       - master
+      - stage
       - ballerina-1.1.x
   pull_request:
     branches:
       - master
+      - stage
       - ballerina-1.1.x
 
 jobs:
@@ -20,4 +22,4 @@ jobs:
         env:
           packagePAT: ${{ secrets.READ_PACKAGE_PAT }}
           packageUser: ${{ secrets.PUBLISH_USER }}
-        run: mvn -s settings.xml clean install -B -V
+        run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon
