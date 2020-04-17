@@ -16,10 +16,6 @@
 
 package io.ballerina.test;
 
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -28,33 +24,13 @@ import java.sql.Timestamp;
 public class Utils {
 
     public static final String DISTRIBUTION_LOCATION =
-            "https://preprod-updatetool.ballerina.io/releases/1.2.2/";
+            "https://product-dist.ballerina.io/downloads/";
 
     public static void downloadFile(String version, String installerName) {
         try {
             String destination = getUserHome();
             File output = new File(destination + File.separator + installerName);
             if (!output.exists()) {
-                TrustManager[] trustAllCerts = new TrustManager[]{
-                        new X509TrustManager() {
-                            public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-                                return null;
-                            }
-                            public void checkClientTrusted(
-                                    java.security.cert.X509Certificate[] certs, String authType) {
-                            }
-                            public void checkServerTrusted(
-                                    java.security.cert.X509Certificate[] certs, String authType) {
-                            }
-                        }
-                };
-
-                try {
-                    SSLContext sc = SSLContext.getInstance("SSL");
-                    sc.init(null, trustAllCerts, new java.security.SecureRandom());
-                    HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
-                } catch (Exception e) {
-                }
                 HttpURLConnection conn = (HttpURLConnection) new URL(
                         DISTRIBUTION_LOCATION + version + "/" + installerName).openConnection();
                 conn.setRequestProperty("content-type", "binary/data");
