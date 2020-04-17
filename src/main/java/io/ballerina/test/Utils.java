@@ -24,7 +24,7 @@ import java.sql.Timestamp;
 public class Utils {
 
     public static final String DISTRIBUTION_LOCATION =
-            "https://product-dist.ballerina.io/downloads/";
+            "https://preprod-updatetool.ballerina.io/releases/";
 
     public static void downloadFile(String version, String installerName) {
         try {
