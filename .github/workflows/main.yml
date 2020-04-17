@@ -22,4 +22,4 @@ jobs:
         env:
           packagePAT: ${{ secrets.READ_PACKAGE_PAT }}
           packageUser: ${{ secrets.PUBLISH_USER }}
-        run: ./gradlew clean build
+        run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon
