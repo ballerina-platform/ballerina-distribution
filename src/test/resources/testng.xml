@@ -23,10 +23,14 @@
 <suite name="Suite1" verbose="1" >
     <test name="io.ballerina.test" >
         <classes>
-<!--            <class name="io.ballerina.test.InstallerTest" />-->
-<!--            <class name="io.ballerina.test.UpdateDistTest" />-->
-<!--            <class name="io.ballerina.test.UpdateToolTest" />-->
+           <class name="io.ballerina.test.InstallerTest" />
+           <class name="io.ballerina.test.UpdateDistTest" />
+           <class name="io.ballerina.test.UpdateToolTest" />
             <class name="io.ballerina.test.CentralTest" />
+            <class name="io.ballerina.test.InstallerTest" />
+           <class name="io.ballerina.test.UpdateDistTest" />
+           <class name="io.ballerina.test.UpdateToolTest" />
+           <class name="io.ballerina.test.CentralTest" />
         </classes>
     </test>
 </suite>
