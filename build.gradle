@@ -142,9 +142,6 @@ subprojects {
         dockerAnnotations "org.ballerinax.docker:docker-extension-annotations:${dockerVersion}@zip"
         dockerExamples "org.ballerinax.docker:docker-extension-examples:${dockerVersion}@zip"
 
-        exten "org.ballerina.socket:socket-utils:${socketVersion}"
-        socketGenerator "org.ballerina.socket:socket-generator:${socketVersion}"
-
         /* Kubernetes extension */
         exten "org.ballerinax.kubernetes:kubernetes-extension:${kubernetesVersion}@jar"
         kubernetesAnnotations "org.ballerinax.kubernetes:kubernetes-extension-annotations:${kubernetesVersion}@zip"
