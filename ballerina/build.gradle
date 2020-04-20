@@ -103,6 +103,14 @@ task unpackKubernetesExamples(type: Copy) {
     }
 }
 
+task unpackSocketGenerator(type: Copy) {
+    group = "unpack_dependencies"
+    configurations.socketGenerator.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+        from zipTree(artifact.getFile())
+        into new File("${buildDir}/target/extracted-distributions", artifact.name+"-zip")
+    }
+}
+
 task unpackBalCommand(type: Copy) {
     group = "unpack_dependencies"
     configurations.balCommand.resolvedConfiguration.resolvedArtifacts.each { artifact ->
@@ -179,6 +187,11 @@ task packageDist(type: Zip) {
         from "build/target/extracted-distributions/awslambda-extension-balo-zip/awslambda"
     }
 
+    /* Standard Libraries */
+    into("${parentDir}/bir-cache/ballerina/socket") {
+        from "build/target/extracted-distributions/socket-generator-zip/ballerina/socket"
+    }
+
     /* Files */
     into("${parentDir}/lib/") {
         from "lib/version.txt"
@@ -207,6 +220,12 @@ task packageDist(type: Zip) {
     }
     into("${parentDir}/bre/lib") {
         from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina.knative.jar"
+        fileMode = 0644
+    }
+
+    /* Standard Libraries */
+    into("${parentDir}/bre/lib") {
+        from "build/target/extracted-distributions/socket-generator-zip/ballerina.socket.jar"
         fileMode = 0644
     }
 
@@ -265,6 +284,11 @@ task packageDistZip(type: Zip) {
         from "build/target/extracted-distributions/awslambda-extension-balo-zip/awslambda"
     }
 
+    /* Standard Libraries */
+    into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bir-cache/ballerina/socket") {
+        from "build/target/extracted-distributions/socket-generator-zip/ballerina/socket"
+    }
+
     /* Tools artifacts */
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}") {
         from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
@@ -308,6 +332,13 @@ task packageDistZip(type: Zip) {
         from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina.knative.jar"
         fileMode = 0644
     }
+
+    /* Standard Libraries */
+    into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
+        from "build/target/extracted-distributions/socket-generator-zip/ballerina.socket.jar"
+        fileMode = 0644
+    }
+
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/ballerina-version"
         fileMode = 0644
@@ -387,6 +418,11 @@ task packageDistLinux(type: Zip) {
         from "build/target/extracted-distributions/awslambda-extension-balo-zip/awslambda"
     }
 
+    /* Standard Libraries */
+    into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bir-cache/ballerina/socket") {
+        from "build/target/extracted-distributions/socket-generator-zip/ballerina/socket"
+    }
+
     /* Tools artifacts */
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}") {
         from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
@@ -430,6 +466,14 @@ task packageDistLinux(type: Zip) {
         from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina.knative.jar"
         fileMode = 0644
     }
+
+    /* Standard Libraries */
+    into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
+        from "build/target/extracted-distributions/socket-generator-zip/ballerina.socket.jar"
+        fileMode = 0644
+    }
+
+
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/ballerina-version"
         fileMode = 0644
@@ -504,6 +548,11 @@ task packageDistMac(type: Zip) {
         from "build/target/extracted-distributions/awslambda-extension-balo-zip/awslambda"
     }
 
+    /* Standard Libraries */
+    into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bir-cache/ballerina/socket") {
+        from "build/target/extracted-distributions/socket-generator-zip/ballerina/socket"
+    }
+
     /* Tools artifacts */
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}") {
         from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
@@ -542,6 +591,14 @@ task packageDistMac(type: Zip) {
         from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina.knative.jar"
         fileMode = 0644
     }
+
+    /* Standard Libraries */
+    into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
+        from "build/target/extracted-distributions/socket-generator-zip/ballerina.socket.jar"
+        fileMode = 0644
+    }
+
+
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/ballerina-version"
         fileMode = 0644
@@ -616,6 +673,11 @@ task packageDistWindows(type: Zip) {
         from "build/target/extracted-distributions/awslambda-extension-balo-zip/awslambda"
     }
 
+    /* Standard Libraries */
+    into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bir-cache/ballerina/socket") {
+        from "build/target/extracted-distributions/socket-generator-zip/ballerina/socket"
+    }
+
     /* Tools artifacts */
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}") {
         from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
@@ -654,6 +716,13 @@ task packageDistWindows(type: Zip) {
         from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina.knative.jar"
         fileMode = 0644
     }
+
+    /* Standard Libraries */
+    into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
+        from "build/target/extracted-distributions/socket-generator-zip/ballerina.socket.jar"
+        fileMode = 0644
+    }
+
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/ballerina-version"
         fileMode = 0644
@@ -859,7 +928,8 @@ unpackDockerAnnotations.dependsOn unpackAwsLambdaExamples
 unpackDockerExamples.dependsOn unpackDockerAnnotations
 unpackKubernetesAnnotations.dependsOn unpackDockerExamples
 unpackKubernetesExamples.dependsOn unpackKubernetesAnnotations
-unpackBalCommand.dependsOn unpackKubernetesExamples
+unpackSocketGenerator.dependsOn unpackKubernetesExamples
+unpackBalCommand.dependsOn unpackSocketGenerator
 
 /* Extract JRE */
 extractJreForLinux.dependsOn unpackBalCommand
