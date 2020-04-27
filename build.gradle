@@ -1,133 +1,156 @@
- /*
-  ~ * Copyright (c) 2020, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
-  ~ *
-  ~ * Licensed under the Apache License, Version 2.0 (the "License");
-  ~ * you may not use this file except in compliance with the License.
-  ~ * You may obtain a copy of the License at
-  ~ *
-  ~ * http://www.apache.org/licenses/LICENSE-2.0
-  ~ *
-  ~ * Unless required by applicable law or agreed to in writing, software
-  ~ * distributed under the License is distributed on an "AS IS" BASIS,
-  ~ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ * See the License for the specific language governing permissions and
-  ~ * limitations under the License.
-  ~ */
+/*
+ * Copyright (c) 2020, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+*/
+
+plugins {
+    id 'base'
+    id 'maven-publish'
+    id 'net.researchgate.release' version '2.6.0'
+}
 
 description = 'Ballerina - Tools - Parent'
 
 ext {
-    ballerinaVersion = "1.2.0"
+    ballerinaVersion = project.version
     ballerinaJreArtifactsVersion = "2.0.0"
-    dockerVersion="1.2.0"
-    kubernetesVersion="1.2.0"
-    awslambdaVersion="1.2.0"
-    picocliVersion="4.0.1"
-    ballerinaCommandVersion="0.8.5"
-    testngVersion="6.14.3"
-    netLingalaZip4jVersion="2.3.2"
-    commonsIoVersion="2.6"
-    commonsLang3Version="3.9"
-} 
+    dockerVersion = project.dockerVersion
+    kubernetesVersion = project.kubernetesVersion
+    awslambdaVersion = project.awslambdaVersion
+    picocliVersion = "4.0.1"
+    ballerinaCommandVersion = "0.8.5"
+    testngVersion = "6.14.3"
+    netLingalaZip4jVersion = "2.3.2"
+    commonsIoVersion = "2.6"
+    commonsLang3Version = "3.9"
+}
 
-allprojects  {
-  apply plugin: 'maven'
+allprojects {
+    apply plugin: 'maven'
+    apply plugin: 'maven-publish'
 
-  group = 'org.ballerinalang'
-  version = '1.2.0-SNAPSHOT'
+    group = project.group
+    version = project.version
 
-  repositories {
-    mavenCentral()
-  }
+    repositories {
+        mavenCentral()
+    }
+
+    release {
+        // Workaround to fix build task not found issue in release plugin
+        buildTasks = []
+        failOnSnapshotDependencies = false
+        failOnCommitNeeded = false
+        versionPropertyFile = 'gradle.properties'
+        tagTemplate = 'v${version}'
+        git {
+            // To release from any branch
+            requireBranch = ''
+        }
+    }
+
+    afterReleaseBuild.dependsOn publishToMavenLocal
+    afterReleaseBuild.dependsOn publish
 }
 
 subprojects {
-  apply plugin: 'java'
-  sourceCompatibility = 1.8
-  targetCompatibility = 1.8
-  tasks.withType(JavaCompile) {
-  	options.encoding = 'UTF-8'
-  }
-  
-  buildscript {
+    apply plugin: 'java'
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+
+    buildscript {
         repositories {
-          /* Central Repository */
-          maven { url "https://repo.maven.apache.org/maven2" }
-          /* CWSO2 Releases Repository */
-          maven { url "http://maven.wso2.org/nexus/content/repositories/releases/" }
-          /* WSO2 Snapshot Repository */
-          maven { url "http://maven.wso2.org/nexus/content/repositories/snapshots/" }
-          /* WSO2 internal Repository */
-          maven { url "http://maven.wso2.org/nexus/content/groups/wso2-public/" }
+            /* Central Repository */
+            maven { url "https://repo.maven.apache.org/maven2" }
+            /* CWSO2 Releases Repository */
+            maven { url "http://maven.wso2.org/nexus/content/repositories/releases/" }
+            /* WSO2 Snapshot Repository */
+            maven { url "http://maven.wso2.org/nexus/content/repositories/snapshots/" }
+            /* WSO2 internal Repository */
+            maven { url "http://maven.wso2.org/nexus/content/groups/wso2-public/" }
 
         }
-  }
+    }
 
-  repositories {
-    /* Central Repository */
-    maven { url "https://repo.maven.apache.org/maven2" }
-    /* WSO2 Releases Repository */
-    maven { url "http://maven.wso2.org/nexus/content/repositories/releases/" }
-    /* WSO2 Snapshot Repository */
-    maven { url "http://maven.wso2.org/nexus/content/repositories/snapshots/" }
-    /* WSO2 internal Repository */
-    maven { url "http://maven.wso2.org/nexus/content/groups/wso2-public/" }
-    /* WSO2 Stage Repository */
-    maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1544/" }
-    /* WSO2 Stage Repository*/
-    maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1191" }
-    /* WSO2 Stage Repository */
-    maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxkubernetes-1186" }
-    /* WSO2 Stage Repository*/
-    maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1087/" }
-    /* Github Package Repository */
-    maven {
-        url "https://maven.pkg.github.com/ballerina-platform/ballerina-update-tool"
-        credentials {
-          username System.getenv("packageUser")
-          password System.getenv("packagePAT")
+    repositories {
+        /* Central Repository */
+        maven { url "https://repo.maven.apache.org/maven2" }
+        /* WSO2 Releases Repository */
+        maven { url "http://maven.wso2.org/nexus/content/repositories/releases/" }
+        /* WSO2 Snapshot Repository */
+        maven { url "http://maven.wso2.org/nexus/content/repositories/snapshots/" }
+        /* WSO2 internal Repository */
+        maven { url "http://maven.wso2.org/nexus/content/groups/wso2-public/" }
+        /* WSO2 Stage Repository */
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1544/" }
+        /* WSO2 Stage Repository*/
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1191" }
+        /* WSO2 Stage Repository */
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxkubernetes-1186" }
+        /* WSO2 Stage Repository*/
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1087/" }
+        /* Github Package Repository */
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/ballerina-update-tool"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
         }
     }
-  }
 
-  configurations {
-    ballerinaJre
-    jbalTools
-    awsLambdaBalo
-    awsLambdaExamples
-    dockerAnnotations
-    dockerExamples
-    kubernetesAnnotations
-    kubernetesExamples
-    balCommand
-    exten{
-      transitive = false
+    configurations {
+        ballerinaJre
+        jbalTools
+        awsLambdaBalo
+        awsLambdaExamples
+        dockerAnnotations
+        dockerExamples
+        kubernetesAnnotations
+        kubernetesExamples
+        balCommand
+        exten {
+            transitive = false
+        }
+        balCommand {
+            transitive = false
+        }
     }
-    balCommand{
-      transitive = false
+
+    dependencies {
+        jbalTools "org.ballerinalang:jballerina-tools:${ballerinaVersion}@zip"
+        ballerinaJre "org.wso2.ballerina.jre.artifacts:ballerina-jre-artifacts:${ballerinaJreArtifactsVersion}@zip"
+
+        /* AWSLambda extension */
+        exten "org.ballerinax.awslambda:awslambda-extension:${awslambdaVersion}"
+        awsLambdaBalo "org.ballerinax.awslambda:awslambda-extension-balo:${awslambdaVersion}@zip"
+        awsLambdaExamples "org.ballerinax.awslambda:awslambda-extension-examples:${awslambdaVersion}@zip"
+
+        /* Docker extension */
+        exten "org.ballerinax.docker:docker-extension:${dockerVersion}"
+        dockerAnnotations "org.ballerinax.docker:docker-extension-annotations:${dockerVersion}@zip"
+        dockerExamples "org.ballerinax.docker:docker-extension-examples:${dockerVersion}@zip"
+
+        /* Kubernetes extension */
+        exten "org.ballerinax.kubernetes:kubernetes-extension:${kubernetesVersion}"
+        kubernetesAnnotations "org.ballerinax.kubernetes:kubernetes-extension-annotations:${kubernetesVersion}@zip"
+        kubernetesExamples "org.ballerinax.kubernetes:kubernetes-extension-examples:${kubernetesVersion}@zip"
+
+        balCommand "org.ballerinalang:ballerina-command-distribution:${ballerinaCommandVersion}@zip"
     }
-  }
 
-  dependencies{
-    jbalTools "org.ballerinalang:jballerina-tools:${ballerinaVersion}@zip"
-    ballerinaJre "org.wso2.ballerina.jre.artifacts:ballerina-jre-artifacts:${ballerinaJreArtifactsVersion}@zip"
-    
-    /* AWSLambda extension */ 
-    exten "org.ballerinax.awslambda:awslambda-extension:${awslambdaVersion}"
-    awsLambdaBalo "org.ballerinax.awslambda:awslambda-extension-balo:${awslambdaVersion}@zip"
-    awsLambdaExamples "org.ballerinax.awslambda:awslambda-extension-examples:${awslambdaVersion}@zip"
-
-    /* Docker extension */ 
-    exten "org.ballerinax.docker:docker-extension:${dockerVersion}"
-    dockerAnnotations "org.ballerinax.docker:docker-extension-annotations:${dockerVersion}@zip"
-    dockerExamples "org.ballerinax.docker:docker-extension-examples:${dockerVersion}@zip"
-
-    /* Kubernetes extension */
-    exten "org.ballerinax.kubernetes:kubernetes-extension:${kubernetesVersion}"
-    kubernetesAnnotations "org.ballerinax.kubernetes:kubernetes-extension-annotations:${kubernetesVersion}@zip"
-    kubernetesExamples "org.ballerinax.kubernetes:kubernetes-extension-examples:${kubernetesVersion}@zip"
-
-    balCommand "org.ballerinalang:ballerina-command-distribution:${ballerinaCommandVersion}@zip"
-  }
-  
 }
