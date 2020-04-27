@@ -87,22 +87,16 @@ subprojects {
     }
 
     repositories {
+        /* local maven repository */
+        mavenLocal()
         /* Central Repository */
         maven { url "https://repo.maven.apache.org/maven2" }
         /* WSO2 Releases Repository */
-        maven { url "http://maven.wso2.org/nexus/content/repositories/releases/" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/releases/" }
         /* WSO2 Snapshot Repository */
-        maven { url "http://maven.wso2.org/nexus/content/repositories/snapshots/" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/snapshots/" }
         /* WSO2 internal Repository */
-        maven { url "http://maven.wso2.org/nexus/content/groups/wso2-public/" }
-        /* WSO2 Stage Repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1544/" }
-        /* WSO2 Stage Repository*/
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1191" }
-        /* WSO2 Stage Repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxkubernetes-1186" }
-        /* WSO2 Stage Repository*/
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1087/" }
+        maven { url "https://maven.wso2.org/nexus/content/groups/wso2-public/" }
         /* Github Package Repository */
         maven {
             url "https://maven.pkg.github.com/ballerina-platform/ballerina-update-tool"
