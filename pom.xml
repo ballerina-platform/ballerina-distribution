@@ -107,7 +107,7 @@
         <repository>
             <id>wso2.stage</id>
             <name>WSO2 Stage Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1559/</url>
+            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1571/</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -117,7 +117,7 @@
         <repository>
             <id>wso2.docker.stage</id>
             <name>WSO2 Stage Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1197/</url>
+            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1222/</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -127,7 +127,7 @@
         <repository>
             <id>wso2.kubernetes.stage</id>
             <name>WSO2 Stage Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxkubernetes-1192/</url>
+            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxkubernetes-1207/</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -137,7 +137,7 @@
         <repository>
             <id>wso2.awslambda.stage</id>
             <name>WSO2 Stage Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1093/</url>
+            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1112/</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -328,12 +328,12 @@
         </dependencies>
     </dependencyManagement>
     <properties>
-        <ballerina.version>1.2.2</ballerina.version>
+        <ballerina.version>1.2.3</ballerina.version>
         <ballerina.jre.artifacts.version>2.0.0</ballerina.jre.artifacts.version>
         <project.scm.id>ballerina-scm-server</project.scm.id>
-        <docker.version>1.2.2</docker.version>
-        <kubernetes.version>1.2.2</kubernetes.version>
-        <awslambda.version>1.2.2</awslambda.version>
+        <docker.version>1.2.3</docker.version>
+        <kubernetes.version>1.2.3</kubernetes.version>
+        <awslambda.version>1.2.3</awslambda.version>
         <picocli.version>4.0.1</picocli.version>
         <ballerina.command.version>0.8.5</ballerina.command.version>
         <testng.version>6.14.3</testng.version>
