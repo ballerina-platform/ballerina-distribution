@@ -103,9 +103,9 @@ task unpackKubernetesExamples(type: Copy) {
     }
 }
 
-task unpackSocketGenerator(type: Copy) {
+task unpackSocketBallerina(type: Copy) {
     group = "unpack_dependencies"
-    configurations.socketGenerator.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+    configurations.socketBallerina.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         from zipTree(artifact.getFile())
         into new File("${buildDir}/target/extracted-distributions", artifact.name+"-zip")
     }
@@ -189,7 +189,7 @@ task packageDist(type: Zip) {
 
     /* Standard Libraries */
     into("${parentDir}/bir-cache/ballerina/socket") {
-        from "build/target/extracted-distributions/socket-generator-zip/ballerina/socket"
+        from "build/target/extracted-distributions/socket-ballerina-zip/ballerina/socket"
     }
 
     /* Files */
@@ -225,7 +225,7 @@ task packageDist(type: Zip) {
 
     /* Standard Libraries */
     into("${parentDir}/bre/lib") {
-        from "build/target/extracted-distributions/socket-generator-zip/ballerina.socket.jar"
+        from "build/target/extracted-distributions/socket-ballerina-zip/ballerina.socket.jar"
         fileMode = 0644
     }
 
@@ -286,7 +286,7 @@ task packageDistZip(type: Zip) {
 
     /* Standard Libraries */
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bir-cache/ballerina/socket") {
-        from "build/target/extracted-distributions/socket-generator-zip/ballerina/socket"
+        from "build/target/extracted-distributions/socket-ballerina-zip/ballerina/socket"
     }
 
     /* Tools artifacts */
@@ -335,7 +335,7 @@ task packageDistZip(type: Zip) {
 
     /* Standard Libraries */
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
-        from "build/target/extracted-distributions/socket-generator-zip/ballerina.socket.jar"
+        from "build/target/extracted-distributions/socket-ballerina-zip/ballerina.socket.jar"
         fileMode = 0644
     }
 
@@ -420,7 +420,7 @@ task packageDistLinux(type: Zip) {
 
     /* Standard Libraries */
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bir-cache/ballerina/socket") {
-        from "build/target/extracted-distributions/socket-generator-zip/ballerina/socket"
+        from "build/target/extracted-distributions/socket-ballerina-zip/ballerina/socket"
     }
 
     /* Tools artifacts */
@@ -469,7 +469,7 @@ task packageDistLinux(type: Zip) {
 
     /* Standard Libraries */
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
-        from "build/target/extracted-distributions/socket-generator-zip/ballerina.socket.jar"
+        from "build/target/extracted-distributions/socket-ballerina-zip/ballerina.socket.jar"
         fileMode = 0644
     }
 
@@ -550,7 +550,7 @@ task packageDistMac(type: Zip) {
 
     /* Standard Libraries */
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bir-cache/ballerina/socket") {
-        from "build/target/extracted-distributions/socket-generator-zip/ballerina/socket"
+        from "build/target/extracted-distributions/socket-ballerina-zip/ballerina/socket"
     }
 
     /* Tools artifacts */
@@ -594,7 +594,7 @@ task packageDistMac(type: Zip) {
 
     /* Standard Libraries */
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
-        from "build/target/extracted-distributions/socket-generator-zip/ballerina.socket.jar"
+        from "build/target/extracted-distributions/socket-ballerina-zip/ballerina.socket.jar"
         fileMode = 0644
     }
 
@@ -675,7 +675,7 @@ task packageDistWindows(type: Zip) {
 
     /* Standard Libraries */
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bir-cache/ballerina/socket") {
-        from "build/target/extracted-distributions/socket-generator-zip/ballerina/socket"
+        from "build/target/extracted-distributions/socket-ballerina-zip/ballerina/socket"
     }
 
     /* Tools artifacts */
@@ -719,7 +719,7 @@ task packageDistWindows(type: Zip) {
 
     /* Standard Libraries */
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
-        from "build/target/extracted-distributions/socket-generator-zip/ballerina.socket.jar"
+        from "build/target/extracted-distributions/socket-ballerina-zip/ballerina.socket.jar"
         fileMode = 0644
     }
 
@@ -928,8 +928,8 @@ unpackDockerAnnotations.dependsOn unpackAwsLambdaExamples
 unpackDockerExamples.dependsOn unpackDockerAnnotations
 unpackKubernetesAnnotations.dependsOn unpackDockerExamples
 unpackKubernetesExamples.dependsOn unpackKubernetesAnnotations
-unpackSocketGenerator.dependsOn unpackKubernetesExamples
-unpackBalCommand.dependsOn unpackSocketGenerator
+unpackSocketBallerina.dependsOn unpackKubernetesExamples
+unpackBalCommand.dependsOn unpackSocketBallerina
 
 /* Extract JRE */
 extractJreForLinux.dependsOn unpackBalCommand

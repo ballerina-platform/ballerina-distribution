@@ -117,8 +117,7 @@ subprojects {
         dockerExamples
         kubernetesAnnotations
         kubernetesExamples
-        socketUtils
-        socketGenerator
+        socketBallerina
         balCommand
         exten {
             transitive = false
@@ -148,8 +147,9 @@ subprojects {
         kubernetesExamples "org.ballerinax.kubernetes:kubernetes-extension-examples:${kubernetesVersion}@zip"
 
         /* Standard libraries */
-        exten "org.ballerina.socket:socket-utils:${socketVersion}"
-        socketGenerator "org.ballerina.socket:socket-generator:${socketVersion}"
+        exten "org.ballerinalang:socket-native:${socketVersion}"
+        exten "org.ballerinalang:socket-test-utils:${socketVersion}"
+        socketBallerina "org.ballerinalang:socket-ballerina:${socketVersion}"
 
         balCommand "org.ballerinalang:ballerina-command-distribution:${ballerinaCommandVersion}@zip"
     }
