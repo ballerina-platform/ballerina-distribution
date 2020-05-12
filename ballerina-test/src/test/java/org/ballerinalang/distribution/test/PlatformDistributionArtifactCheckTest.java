@@ -249,6 +249,6 @@ public class PlatformDistributionArtifactCheckTest {
     
     @AfterClass
     public void cleanUp() throws IOException {
-//        TestUtils.cleanDistribution();
+        TestUtils.cleanDistribution();
     }
 }

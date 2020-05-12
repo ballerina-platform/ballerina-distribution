@@ -122,6 +122,6 @@ public class ArtifactBuildTest {
     
     @AfterClass
     public void cleanUp() throws IOException {
-//        TestUtils.cleanDistribution();
+        TestUtils.cleanDistribution();
     }
 }
