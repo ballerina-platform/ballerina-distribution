@@ -18,9 +18,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Ballerina-External-Annotation-Test-Suite">
-    <listeners>
-        <listener class-name = "org.ballerinalang.distribution.utils.TestListener" />
-    </listeners>
+<!--    <listeners>-->
+<!--        <listener class-name = "org.ballerinalang.distribution.utils.TestListener" />-->
+<!--    </listeners>-->
 
     <test name="ballerina-external-annotations-tests" parallel="false">
         <classes>

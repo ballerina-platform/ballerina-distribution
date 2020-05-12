@@ -16,14 +16,21 @@
   
 description = 'Ballerina - Tools Test'
 
+configurations {
+    jballerinaDistribution
+}
+
 dependencies {
     testImplementation "org.testng:testng:${testngVersion}"
     testImplementation "net.lingala.zip4j:zip4j:${netLingalaZip4jVersion}"
     testImplementation "commons-io:commons-io:${commonsIoVersion}"
     testImplementation "org.apache.commons:commons-lang3:${commonsLang3Version}"
+
+    jballerinaDistribution project(path: ":ballerina", configuration: "jballerinaDistribution")
 }
 
 test {
+    dependsOn configurations.jballerinaDistribution
     systemProperty "distributions.dir", "$buildDir/../../ballerina/build/distributions"
     systemProperty "target.dir", "$buildDir"
     systemProperty "maven.version", "$version"

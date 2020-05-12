@@ -210,6 +210,6 @@ public class DistributionArtifactCheckTest {
     
     @AfterClass
     public void cleanUp() throws IOException {
-        TestUtils.cleanDistribution();
+//        TestUtils.cleanDistribution();
     }
 }

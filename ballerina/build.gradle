@@ -18,9 +18,13 @@ import org.apache.tools.ant.filters.*
 
 description = 'Ballerina - Tools'
 
-ext{
+ext {
     jreLocation="build/target/ballerina-jre-artifacts-zip/ballerina-jre-artifacts-${ballerinaJreArtifactsVersion}"
     distributionName="ballerina"
+}
+
+configurations {
+    jballerinaDistribution
 }
 
 task unpackBallerinaJre(type: Copy) {
@@ -198,6 +202,8 @@ task packageDist(type: Zip) {
     }
 }
 
+def jballerinaDistributionZip = file("$project.buildDir/distributions/jballerina-${ballerinaVersion}.zip")
+
 task packageDistZip(type: Zip) {
     group = "package_distribution"
     description = 'Ballerina Distribution Assembly'
@@ -307,6 +313,12 @@ task packageDistZip(type: Zip) {
     doLast{
         println 'Ballerina Distribution Packaged'
     }
+
+    outputs.file jballerinaDistributionZip
+}
+
+artifacts {
+    jballerinaDistribution file: jballerinaDistributionZip, builtBy: packageDistZip
 }
 
 task packageDistLinux(type: Zip) {
@@ -652,6 +664,6 @@ packageDistMac.dependsOn packageDistLinux
 packageDistWindows.dependsOn packageDistMac
 
 /* Delete Temporary Files */
-deleteTemporaryFiles.dependsOn packageDistWindows
+//deleteTemporaryFiles.dependsOn packageDistWindows
 
-build.dependsOn deleteTemporaryFiles
+build.dependsOn packageDistWindows
