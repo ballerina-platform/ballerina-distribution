@@ -135,12 +135,12 @@ subprojects {
         awsLambdaExamples "org.ballerinax.awslambda:awslambda-extension-examples:${awslambdaVersion}@zip"
 
         /* Docker extension */
-        exten "org.ballerinax.docker:docker-extension:${dockerVersion}"
+        exten "org.ballerinax.docker:docker-extension:${dockerVersion}@jar"
         dockerAnnotations "org.ballerinax.docker:docker-extension-annotations:${dockerVersion}@zip"
         dockerExamples "org.ballerinax.docker:docker-extension-examples:${dockerVersion}@zip"
 
         /* Kubernetes extension */
-        exten "org.ballerinax.kubernetes:kubernetes-extension:${kubernetesVersion}"
+        exten "org.ballerinax.kubernetes:kubernetes-extension:${kubernetesVersion}@jar"
         kubernetesAnnotations "org.ballerinax.kubernetes:kubernetes-extension-annotations:${kubernetesVersion}@zip"
         kubernetesExamples "org.ballerinax.kubernetes:kubernetes-extension-examples:${kubernetesVersion}@zip"
 

@@ -17,7 +17,11 @@
 description = 'Ballerina - Tools Test'
 
 configurations {
-    jballerinaDistribution
+    jBallerinaDistribution
+    ballerinaDistribution
+    ballerinaLinuxDistribution
+    ballerinaMacDistribution
+    ballerinaWindowsDistribution
 }
 
 dependencies {
@@ -26,11 +30,19 @@ dependencies {
     testImplementation "commons-io:commons-io:${commonsIoVersion}"
     testImplementation "org.apache.commons:commons-lang3:${commonsLang3Version}"
 
-    jballerinaDistribution project(path: ":ballerina", configuration: "jballerinaDistribution")
+    jBallerinaDistribution project(path: ":ballerina", configuration: "jBallerinaDistribution")
+    ballerinaDistribution project(path: ":ballerina", configuration: "ballerinaDistribution")
+    ballerinaLinuxDistribution project(path: ":ballerina", configuration: "ballerinaLinuxDistribution")
+    ballerinaMacDistribution project(path: ":ballerina", configuration: "ballerinaMacDistribution")
+    ballerinaWindowsDistribution project(path: ":ballerina", configuration: "ballerinaWindowsDistribution")
 }
 
 test {
-    dependsOn configurations.jballerinaDistribution
+    dependsOn configurations.jBallerinaDistribution
+    dependsOn configurations.ballerinaDistribution
+    dependsOn configurations.ballerinaLinuxDistribution
+    dependsOn configurations.ballerinaLinuxDistribution
+    dependsOn configurations.ballerinaWindowsDistribution
     systemProperty "distributions.dir", "$buildDir/../../ballerina/build/distributions"
     systemProperty "target.dir", "$buildDir"
     systemProperty "maven.version", "$version"
