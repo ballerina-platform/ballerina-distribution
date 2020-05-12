@@ -20,6 +20,6 @@ jobs:
         uses: actions/checkout@v2
       - name: Build Ballerina Distribution
         env:
-          packagePAT: ${{ secrets.READ_PACKAGE_PAT }}
-          packageUser: ${{ secrets.PUBLISH_USER }}
+          packageUser: ${{ github.actor }}
+          packagePAT: ${{ secrets.GITHUB_TOKEN }}
         run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon
