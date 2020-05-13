@@ -1163,6 +1163,14 @@
             {
                 "name": "Consumer Groups",
                 "url": "kafka-consumer-group-service"
+            },
+            {
+                "name": "SASL Authentication - Consumer",
+                "url": "kafka-authentication-sasl-plain-consumer"
+            },
+            {
+                "name": "SASL Authentication - Producer",
+                "url": "kafka-authentication-sasl-plain-producer"
             }
         ]
     },
