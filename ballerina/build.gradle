@@ -15,6 +15,8 @@
   ~ */
 
 import org.apache.tools.ant.filters.*
+import org.apache.tools.ant.taskdefs.condition.Os
+import groovy.json.JsonSlurper
 
 description = 'Ballerina - Tools'
 
@@ -68,6 +70,7 @@ task unpackAwsLambdaExamples(type: Copy) {
             into new File("${buildDir}/target/extracted-distributions", artifact.name+"-zip")
     }
 }
+
 task unpackDockerAnnotations(type: Copy) {
     group = "unpack_dependencies"
     configurations.dockerAnnotations.resolvedConfiguration.resolvedArtifacts.each { artifact ->
@@ -139,6 +142,11 @@ task packageDist(type: Zip) {
 
     into("${parentDir}") {
         from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
+    }
+    into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples/") {
+        from "${project.rootDir}/examples/"
+        exclude "index.json"
+        fileMode = 0755
     }
     into("${parentDir}/examples") {
         from "build/target/extracted-distributions/awslambda-extension-examples-zip/awslambda-extension-examples-${awslambdaVersion}"
@@ -224,6 +232,11 @@ task packageDistZip(type: Zip) {
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples") {
         from "build/target/extracted-distributions/awslambda-extension-examples-zip/awslambda-extension-examples-${awslambdaVersion}"
         exclude "index.js"
+    }
+    into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples/") {
+        from "${project.rootDir}/examples/"
+        exclude "index.json"
+        fileMode = 0755
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples") {
         from "build/target/extracted-distributions/docker-extension-examples-zip/docker-extension-examples-${dockerVersion}"
@@ -338,6 +351,11 @@ task packageDistLinux(type: Zip) {
         from "build/target/extracted-jre-linux"
         fileMode = 0755
     }
+    into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples/") {
+        from "${project.rootDir}/examples/"
+        exclude "index.json"
+        fileMode = 0755
+    }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples") {
         from "build/target/extracted-distributions/awslambda-extension-examples-zip/awslambda-extension-examples-${awslambdaVersion}"
         exclude "index.js"
@@ -446,8 +464,13 @@ task packageDistMac(type: Zip) {
     ext{parentDir="${baseName}-${version}"}
     entryCompression=ZipEntryCompression.STORED
 
-        into("${parentDir}/dependencies") {
+    into("${parentDir}/dependencies") {
         from "build/target/extracted-jre-macos"
+        fileMode = 0755
+    }
+    into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples/") {
+        from "${project.rootDir}/examples/"
+        exclude "index.json"
         fileMode = 0755
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples") {
@@ -557,6 +580,11 @@ task packageDistWindows(type: Zip) {
         from "build/target/extracted-jre-windows"
         fileMode = 0755
     }
+    into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples/") {
+        from "${project.rootDir}/examples/"
+        exclude "index.json"
+        fileMode = 0755
+    }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples") {
         from "build/target/extracted-distributions/awslambda-extension-examples-zip/awslambda-extension-examples-${awslambdaVersion}"
         exclude "index.js"
@@ -661,6 +689,168 @@ artifacts {
     ballerinaWindowsDistribution file: ballerinaWindowsDistributionZip, builtBy: packageDistWindows
 }
 
+task testExamples {
+
+     def baseBuildPath = "${project.rootDir}/ballerina/build/target/extracted-distributions/jballerina-tools-zip"
+     def distPath = "${baseBuildPath}/jballerina-tools-${ballerinaVersion}"
+     def bbeList = []
+
+     outputs.dir("${distPath}/examples/target")
+     outputs.dir("${distPath}/examples/.ballerina/repo/")
+     outputs.cacheIf { true }
+
+     PatternSet patternSet = new PatternSet();
+     patternSet.exclude("**/.ballerina/**");
+     patternSet.exclude("**/Ballerina.toml");
+     patternSet.exclude("**/Ballerina.lock");
+     patternSet.exclude("**/ballerina-internal.log")
+     inputs.files(files("${distPath}/examples").asFileTree.matching(patternSet))
+     def ignoreList = [
+             'proto-to-ballerina',
+             'swagger-to-ballerina',
+             'taint-checking',
+             'websub-hub-client-sample',
+             'websub-remote-hub-sample',
+             'config-api',
+             'testerina-function-mocks',
+             'jdbc-client-crud-operations',
+             'jdbc-client-batch-update',
+             'jdbc-client-call-procedures',
+             'streaming-big-dataset',
+             'docker-deployment',
+             'kubernetes-deployment',
+             'knative-deployment',
+             'awslambda-deployment',
+             'openshift-deployment',
+             'grpc-server-streaming',
+             'transactions-distributed',
+             'local-transactions',
+             'local-transactions-with-participants',
+             'xa-transactions',
+             'secured-client-with-oauth2',
+             'gauge-metrics',
+             'counter-metrics',
+             'openapi-to-ballerina',
+             'kafka_message_consumer_group_service',
+             'kafka_message_consumer_simple',
+             'kafka_message_consumer_service',
+             'kafka_message_producer',
+             'kafka_message_producer_transactional',
+             'grpc-secured-unary',
+             'grpc-bidirectional-streaming',
+             'grpc-client-streaming',
+             'grpc-unary-non-blocking',
+             'grpc-unary-blocking',
+             'testerina-guarantee-test-execution-order',
+             'testerina-data-driven-tests',
+             'testerina-before-and-after-suite',
+             'testerina-before-each-test',
+             'testerina-before-and-after-test',
+             'testerina-assertions',
+             'taint-checking',
+             'secured-service-with-basic-auth',
+             'secured-service-with-jwt-auth',
+             'secured-client-with-basic-auth',
+             'secured-client-with-jwt-auth',
+             'http-caching-client',
+             'http-data-binding',
+             'http-1.1-to-2.0-protocol-switch',
+             'http-to-websocket-upgrade',
+             'basic-https-listener-client',
+             'https-listener',
+             'http-client-endpoint',
+             'http-redirects',
+             'http-2.0-server-push',
+             'websocket-basic-sample',
+             'websocket-proxy-server',
+             'websocket-failover',
+             'websocket-chat-application',
+             'response-with-multiparts',
+             'tracing',
+             'log-api',
+             'the-main-function',
+             'task-scheduler-appointment',
+             'task-scheduler-timer',
+             'time',
+             'crypto',
+             'xml-functions',
+             'xml-access',
+             'header-based-routing',
+             'mutual-ssl',
+             'tuple-match-statement',
+             'type-conversion',
+             'filepath',
+             'record-io',
+             'csv-io',
+             'type-cast',
+             'async',
+             'json-csv',
+             'worker-interaction',
+             'fork-variable-access',
+             'functional-iteration',
+             'table',
+             'maps',
+             'cache',
+             'send-and-receive-emails',
+             'xml-attributes',
+             'xml-literal',
+             'xml',
+             'json-to-xml-conversion',
+             'length',
+             'foreach',
+             'testerina-group-tests'
+     ]
+     doFirst {
+         exec {
+             //Initialize Ballerina project
+             if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+                 //TODO: Need to verify with windows
+                 workingDir "${baseBuildPath}"
+                 commandLine 'cmd', '/c', "jballerina-tools-${ballerinaVersion}/bin/ballerina.bat", 'new', 'TestProject'
+             } else {
+                 workingDir "${baseBuildPath}"
+                 commandLine "jballerina-tools-${ballerinaVersion}/bin/./ballerina", 'new', 'TestProject'
+             }
+         }
+         def src = "${project.rootDir}/examples/"
+         def dis = "${baseBuildPath}/TestProject/src/"
+         copy {
+             from(src)
+             into dis
+         }
+         def inputFile = new File("${baseBuildPath}/TestProject/src/index.json")
+         def categories = new JsonSlurper().parseText(inputFile.text)
+         categories.each { category ->
+             def examples = category.samples
+             examples.each { example ->
+                 def folder = new File("${baseBuildPath}/TestProject/src/${example.url}")
+                 if (folder.exists()) {
+                     bbeList.push("$example.url")
+                 }
+             }
+         }
+     }
+     doLast {
+         ignoreList.each { String elements ->
+             bbeList.remove("$elements")
+         }
+         bbeList.each { String bbe ->
+             if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+                 //TODO: Need to verify with windows
+                 exec {
+                     workingDir "${buildDir}/TestProject"
+                     commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'build', '--experimental', "${bbe}"
+                 }
+             } else {
+                 exec {
+                     workingDir "${baseBuildPath}/TestProject"
+                     commandLine "../jballerina-tools-${ballerinaVersion}/bin/./ballerina", 'build', '--experimental', "${bbe}"
+                 }
+             }
+         }
+     }
+ }
+
 /* Unpack Dependencies */
 unpackJballerinaTools.dependsOn unpackBallerinaJre
 unpackAwsLambdaBalo.dependsOn unpackJballerinaTools
@@ -682,8 +872,9 @@ packageDistZip.dependsOn packageDist
 packageDistLinux.dependsOn packageDistZip
 packageDistMac.dependsOn packageDistLinux
 packageDistWindows.dependsOn packageDistMac
+testExamples.dependsOn packageDistWindows
 
 /* Delete Temporary Files */
-deleteTemporaryFiles.dependsOn packageDistWindows
+deleteTemporaryFiles.dependsOn testExamples
 
 build.dependsOn deleteTemporaryFiles

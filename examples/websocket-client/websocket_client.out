@@ -1,0 +1,5 @@
+# To start the service, navigate to the directory that contains the
+# `.bal` file and execute the `ballerina run` command.
+$ ballerina run websocket_client.bal
+
+Hello World!
