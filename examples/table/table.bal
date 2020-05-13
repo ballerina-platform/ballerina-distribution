@@ -1,91 +1,98 @@
 import ballerina/io;
-import ballerina/jsonutils;
-import ballerina/xmlutils;
+
+type Person record {|
+    readonly int id;
+    string name;
+    int age;
+|};
 
 // This is the `type` created to represent a data row.
+// The type of the value of the id field is `readonly` and the field itself cannot be mutated.
+// id is the unique identifier of Employee.
 type Employee record {
-    int id;
+    readonly int id;
     string name;
     float salary;
 };
 
+// This is a `table` type.
+// EmployeeTable type has members that are employees, and within a EmployeeTable each member is
+// uniquely identified within the table by its id field.
+type EmployeeTable table<Employee> key(id);
+
+// You can define a `table` value where its members are of type `map` constrained by `any` type
+type CustomerTable table<map<any>>;
+
 public function main() {
-    // This creates an in-memory `table` constrained by the `Employee` type with the `id` marked as the
-    // primary key in the column descriptor. Three data records are inserted into the `table`. The order of
-    // the data values should match the order of the column descriptor.
-    table<Employee> tbEmployee = table {
-        {key id, name, salary},
-        [
-            {1, "Mary", 300.5},
-            {2, "John", 200.5},
-            {3, "Jim", 330.5}
-        ]
-    };
-    // Print the `table` data.
-    io:print("Table Information: ");
-    io:println(tbEmployee);
 
-    // Create `Employee` records.
-    Employee e1 = {id: 1, name: "Jane", salary: 300.50};
-    Employee e2 = {id: 2, name: "Anne", salary: 100.50};
-    Employee e3 = {id: 3, name: "John", salary: 400.50};
-    Employee e4 = {id: 4, name: "Peter", salary: 150.0};
-
-    // Create an in-memory `table` constrained by the `Employee` type with
-    // the `id` as the primary key. Two records are inserted into the `table`.
-    table<Employee> tb = table {
-        {key id, name, salary},
-        [
-            e1,
-            e2
-        ]
-    };
-
-    Employee[] employees = [e3, e4];
-    // Add the created records to the `table`.
-    foreach var emp in employees {
-        var ret = tb.add(emp);
-        if (ret is ()) {
-            io:println("Adding record to table successful");
-        } else {
-            io:println("Adding to table failed: ", ret.reason());
-        }
-    }
+    // A `table` constructor works like a list constructor.
+    // The table preserves the order of its members. Iterating over the table gives the
+    // members of the table in order.
+    EmployeeTable employeeTab = table [
+      { id: 1, name: "John", salary: 300.50 },
+      { id: 2, name: "Bella", salary: 500.50 },
+      { id: 3, name: "Peter", salary: 750.0 }
+    ];
 
     // Print the `table` data.
-    io:println("Table Information: ", tb);
+    io:println("Employee Table Information: ", employeeTab);
 
-    // Access the rows using the `foreach` loop.
-    io:println("Using foreach:");
-    foreach var x in tb {
-        io:println("Name: ", x.name);
-    }
+    // Returns the number of members of a `table`.
+    io:println("Total number of Employees: ", employeeTab.length());
 
-    // Access rows using the `while` loop.
-    io:println("Using while loop:");
-    while (tb.hasNext()) {
-        var ret = tb.getNext();
-        io:println("Name: ", ret.name);
-    }
+    // Adds a new member to Employee table
+    Employee emp = { id: 4, name: "Max", salary: 900.0 };
+    employeeTab.add(emp);
 
-    // Convert the `table` to JSON format.
-    json retValJson = jsonutils:fromTable(tb);
-    io:println("JSON: ", retValJson.toJsonString());
+    // Member access using id field of an Employee
+    io:println("New Employee: ", employeeTab[4]);
 
-    // Convert the `table` to XML format.
-    xml retValXml = xmlutils:fromTable(tb);
-    io:println("XML: ", retValXml);
+    // Returns the member of a `table` with a given key.
+    io:println("Employee 1: ", employeeTab.get(1));
 
-    // Remove employees with salaries higher than 300.0
-    // from the table.
-    int|error count = tb.remove(isHigherSalary);
-    io:println("Deleted Count: ", count);
+    // Removes the member of `table` with a given key and returns it.
+    io:println("Information of the removed Employee: ", employeeTab.remove(2));
 
-    // Now the table contains the employees with salaries less than 300.0.
-    io:println(tb);
-}
+    // Gives a list of all keys of a `table`.
+    var personTblKeys = employeeTab.keys();
+    io:println("Employee table keys: ", personTblKeys);
 
-// Check whether a given employee's salary is higher than 300.0.
-function isHigherSalary(Employee emp) returns boolean {
-    return emp.salary > 300.0;
+    // The members of a `table` can be returned as an `array`.
+    Employee[] tableToList = employeeTab.toArray();
+    io:println("Employee table to list: ", tableToList);
+
+    // Tables are an iterable type and tables support functional iteration operations such as `.forEach()`,
+    // `.map()`, `.filter()`, `.reduce()`.
+    string filtered = "";
+    employeeTab.forEach(function (Employee employee) {
+           if (employee.salary < 400.0) {
+              filtered += employee.name;
+              filtered += " ";
+           }
+    });
+    io:println("Employees with salary < 400.0: ", filtered);
+
+    // `.map()` applies a function to each member of a table and returns a table of the result.
+    // The resulting table will have the same keys as the argument table.
+    table<Person> personTab = employeeTab.'map(function (Employee employee)
+    returns Person {
+        return { id: employee.id, name:employee.name, age:23 };
+    });
+    io:println("Person Table Information: ", personTab);
+
+    // Create `table` values with map constrained members.
+    CustomerTable customerTab = table [
+        { id: 13 , fname: "Dan", lname: "Bing" },
+        { id: 23 , fname: "Hay" , lname: "Kelsey" }
+    ];
+    io:println("Customer Table Information: ", customerTab);
+
+    // The table constructor can be used without a contextually expected type. Member access is not
+    // allowed here.
+    var studentTab = table [
+        { id: 44, fname: "Meena", lname: "Kaur" },
+        { id: 55, fname: "Jay", address: "Palm Grove, NY"}
+    ];
+   io:println("Student Table Information: ", studentTab);
+
 }

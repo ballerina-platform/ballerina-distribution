@@ -1,4 +1,6 @@
-// The type `table` is a data structure that organizes information in rows and columns. This example demonstrates how to
-// create an in-memory table using a type constraint, insert data to it, and then access/delete the data.<br/><br/>
-// For more information on the underlying module, 
+// A `table` is a structural value, whose members are mapping values that represent rows of the table. A `table`
+// provides access to its members using a key that comes from the read-only fields of the member. It keeps its
+// members in order, but does not provide random access to a member using its position in this order. The built-in
+// functions enable inserting, accessing, deleting data and applying functions on members of a `table`.
+// For more information on the underlying module,
 // see the [lang.table module](https://ballerina.io/learn/api-docs/ballerina/lang.table/index.html).
