@@ -7,8 +7,8 @@ type Person record {|
 |};
 
 // This is the `type` created to represent a data row.
-// The type of the value of the id field is `readonly` and the field itself cannot be mutated.
-// id is the unique identifier of Employee.
+// The type of the value of the ID field is `readonly` and the field itself cannot be mutated.
+// The ID is the unique identifier of an Employee.
 type Employee record {
     readonly int id;
     string name;
@@ -16,41 +16,41 @@ type Employee record {
 };
 
 // This is a `table` type.
-// EmployeeTable type has members that are employees, and within a EmployeeTable each member is
-// uniquely identified within the table by its id field.
+// The `EmployeeTable` type has members that are employees, and within the `EmployeeTable`, each member is
+// uniquely identified by its ID field.
 type EmployeeTable table<Employee> key(id);
 
-// You can define a `table` value where its members are of type `map` constrained by `any` type
+// You can define a `table` value whose members are of type `map` constrained by `any` type.
 type CustomerTable table<map<any>>;
 
 public function main() {
 
-    // A `table` constructor works like a list constructor.
+    // A `table` constructor works like a `list` constructor.
     // The table preserves the order of its members. Iterating over the table gives the
-    // members of the table in order.
+    // members of the table sequentially.
     EmployeeTable employeeTab = table [
       { id: 1, name: "John", salary: 300.50 },
       { id: 2, name: "Bella", salary: 500.50 },
       { id: 3, name: "Peter", salary: 750.0 }
     ];
 
-    // Print the `table` data.
+    // Prints the `table` data.
     io:println("Employee Table Information: ", employeeTab);
 
     // Returns the number of members of a `table`.
     io:println("Total number of Employees: ", employeeTab.length());
 
-    // Adds a new member to Employee table
+    // Adds a new member to the `Employee` table.
     Employee emp = { id: 4, name: "Max", salary: 900.0 };
     employeeTab.add(emp);
 
-    // Member access using id field of an Employee
+    // Retrieves a member using the ID field of an Employee.
     io:println("New Employee: ", employeeTab[4]);
 
     // Returns the member of a `table` with a given key.
     io:println("Employee 1: ", employeeTab.get(1));
 
-    // Removes the member of `table` with a given key and returns it.
+    // Removes the member of a `table` with a given key and returns it.
     io:println("Information of the removed Employee: ", employeeTab.remove(2));
 
     // Gives a list of all keys of a `table`.
@@ -62,7 +62,7 @@ public function main() {
     io:println("Employee table to list: ", tableToList);
 
     // Tables are an iterable type and tables support functional iteration operations such as `.forEach()`,
-    // `.map()`, `.filter()`, `.reduce()`.
+    // `.map()`, `.filter()`, and `.reduce()`.
     string filtered = "";
     employeeTab.forEach(function (Employee employee) {
            if (employee.salary < 400.0) {
@@ -80,14 +80,14 @@ public function main() {
     });
     io:println("Person Table Information: ", personTab);
 
-    // Create `table` values with map constrained members.
+    // Create `table` values with map-constrained members.
     CustomerTable customerTab = table [
         { id: 13 , fname: "Dan", lname: "Bing" },
         { id: 23 , fname: "Hay" , lname: "Kelsey" }
     ];
     io:println("Customer Table Information: ", customerTab);
 
-    // The table constructor can be used without a contextually expected type. Member access is not
+    // The table constructor can be used without a contextually-expected type. Member access is not
     // allowed here.
     var studentTab = table [
         { id: 44, fname: "Meena", lname: "Kaur" },
