@@ -184,6 +184,10 @@
                 "url": "maps"
             },
             {
+                "name": "Table",
+                "url": "table"
+            },
+            {
                 "name": "Union Types",
                 "url": "union-type"
             },
