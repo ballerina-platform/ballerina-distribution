@@ -1,5 +1,4 @@
 import ballerina/test;
-import ballerina/http;
 
 any[] outputs = [];
 int counter = 0;
@@ -16,7 +15,7 @@ public function mockPrintInfo(string|(function () returns (string)) msg) {
     }
 }
 
-@test:Config
+@test:Config {}
 function testFunc() {
     main();
     test:assertEquals(outputs[0], "Received a promise for /resource1");
