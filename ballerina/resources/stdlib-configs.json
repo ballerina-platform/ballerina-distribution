@@ -1,0 +1,13 @@
+[
+  {
+    "organization": "ballerina",
+    "moduleName": "socket",
+    "cache": {
+      "bre": {
+        "sourceDir": "socket-ballerina-zip/ballerina/socket",
+        "targetDir": "ballerina/socket"
+      }
+    },
+    "breLibSourcePath": "socket-ballerina-zip/ballerina.socket.jar"
+  }
+]
