@@ -106,6 +106,14 @@ subprojects {
                 password System.getenv("packagePAT")
             }
         }
+        /* Ballerina standard library package links */
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-socket"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
     }
 
     configurations {
@@ -117,7 +125,7 @@ subprojects {
         dockerExamples
         kubernetesAnnotations
         kubernetesExamples
-        socketBallerina
+        ballerinaStdLibs
         balCommand
         exten {
             transitive = false
@@ -149,7 +157,7 @@ subprojects {
         /* Standard libraries */
         exten "org.ballerinalang:socket-native:${socketVersion}"
         exten "org.ballerinalang:socket-test-utils:${socketVersion}"
-        socketBallerina "org.ballerinalang:socket-ballerina:${socketVersion}"
+        ballerinaStdLibs "org.ballerinalang:socket-ballerina:${socketVersion}"
 
         balCommand "org.ballerinalang:ballerina-command-distribution:${ballerinaCommandVersion}@zip"
     }
