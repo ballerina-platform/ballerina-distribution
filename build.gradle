@@ -34,7 +34,7 @@ ext {
     netLingalaZip4jVersion = "2.3.2"
     commonsIoVersion = "2.6"
     commonsLang3Version = "3.9"
-    socketVersion="1.3.0-SNAPSHOT"
+    socketVersion=project.version
 }
 
 allprojects {

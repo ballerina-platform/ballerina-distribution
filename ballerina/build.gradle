@@ -43,7 +43,6 @@ def ballerinaWindowsDistributionZip = file("$project.buildDir/distributions/ball
 def stdLibInputFile = new File("${project.rootDir}/ballerina/resources/stdlib-configs.json")
 def stdLibConfigs = new JsonSlurper().parseText(stdLibInputFile.text)
 
-
 task unpackBallerinaJre(type: Copy) {
     group = "unpack_dependencies"
     configurations.ballerinaJre.resolvedConfiguration.resolvedArtifacts.each { artifact ->
