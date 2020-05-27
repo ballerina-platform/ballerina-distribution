@@ -34,6 +34,7 @@ ext {
     netLingalaZip4jVersion = "2.3.2"
     commonsIoVersion = "2.6"
     commonsLang3Version = "3.9"
+    socketVersion=project.version
 }
 
 allprojects {
@@ -105,6 +106,14 @@ subprojects {
                 password System.getenv("packagePAT")
             }
         }
+        /* Ballerina standard library package links */
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-socket"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
     }
 
     configurations {
@@ -116,6 +125,7 @@ subprojects {
         dockerExamples
         kubernetesAnnotations
         kubernetesExamples
+        ballerinaStdLibs
         balCommand
         exten {
             transitive = false
@@ -143,6 +153,11 @@ subprojects {
         exten "org.ballerinax.kubernetes:kubernetes-extension:${kubernetesVersion}@jar"
         kubernetesAnnotations "org.ballerinax.kubernetes:kubernetes-extension-annotations:${kubernetesVersion}@zip"
         kubernetesExamples "org.ballerinax.kubernetes:kubernetes-extension-examples:${kubernetesVersion}@zip"
+
+        /* Standard libraries */
+        exten "org.ballerinalang:socket-native:${socketVersion}"
+        exten "org.ballerinalang:socket-test-utils:${socketVersion}"
+        ballerinaStdLibs "org.ballerinalang:socket-ballerina:${socketVersion}"
 
         balCommand "org.ballerinalang:ballerina-command-distribution:${ballerinaCommandVersion}@zip"
     }
