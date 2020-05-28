@@ -114,6 +114,14 @@ subprojects {
                 password System.getenv("packagePAT")
             }
         }
+        /* Ballerina lang staging repository */
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1577/" }
+        /* Docker staging repository */
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1240/" }
+        /* Kubernetes staging repository */
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxkubernetes-1225/" }
+        /* AwsLambda staging repository */
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1126/" }
     }
 
     configurations {
