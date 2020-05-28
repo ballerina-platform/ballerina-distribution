@@ -8,6 +8,7 @@
         "targetDir": "ballerina/socket"
       }
     },
-    "breLibSourcePath": "socket-ballerina-zip/ballerina.socket.jar"
+    "breLibSourcePath": "socket-ballerina-zip/ballerina-socket-0.6.0.jar",
+    "apiDocsPath": "socket-ballerina-zip/docs"
   }
 ]

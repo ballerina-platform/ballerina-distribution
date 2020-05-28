@@ -196,11 +196,16 @@ task packageDist(type: Zip) {
         def birCacheSourceDir = stdLibConfig.cache.bre.sourceDir
         def birCacheTargetDir = stdLibConfig.cache.bre.targetDir
         def breLibSourcePath = stdLibConfig.breLibSourcePath
+        def apiDocsPath = stdLibConfig.apiDocsPath
         into("${parentDir}/bir-cache/${birCacheTargetDir}") {
             from "build/target/extracted-distributions/${birCacheSourceDir}"
         }
         into("${parentDir}/bre/lib") {
             from "build/target/extracted-distributions/${breLibSourcePath}"
+            fileMode = 0644
+        }
+        into("${parentDir}/docs") {
+            from "build/target/extracted-distributions/${apiDocsPath}"
             fileMode = 0644
         }
     }
@@ -296,11 +301,16 @@ task packageDistZip(type: Zip) {
         def birCacheSourceDir = stdLibConfig.cache.bre.sourceDir
         def birCacheTargetDir = stdLibConfig.cache.bre.targetDir
         def breLibSourcePath = stdLibConfig.breLibSourcePath
+        def apiDocsPath = stdLibConfig.apiDocsPath
         into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bir-cache/${birCacheTargetDir}") {
             from "build/target/extracted-distributions/${birCacheSourceDir}"
         }
         into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
             from "build/target/extracted-distributions/${breLibSourcePath}"
+            fileMode = 0644
+        }
+        into("${parentDir}/distributions/jballerina-${ballerinaVersion}/docs") {
+            from "build/target/extracted-distributions/${apiDocsPath}"
             fileMode = 0644
         }
     }
@@ -433,11 +443,16 @@ task packageDistLinux(type: Zip) {
         def birCacheSourceDir = stdLibConfig.cache.bre.sourceDir
         def birCacheTargetDir = stdLibConfig.cache.bre.targetDir
         def breLibSourcePath = stdLibConfig.breLibSourcePath
+        def apiDocsPath = stdLibConfig.apiDocsPath
         into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bir-cache/${birCacheTargetDir}") {
             from "build/target/extracted-distributions/${birCacheSourceDir}"
         }
         into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
             from "build/target/extracted-distributions/${breLibSourcePath}"
+            fileMode = 0644
+        }
+        into("${parentDir}/distributions/jballerina-${ballerinaVersion}/docs") {
+            from "build/target/extracted-distributions/${apiDocsPath}"
             fileMode = 0644
         }
     }
@@ -565,11 +580,16 @@ task packageDistMac(type: Zip) {
         def birCacheSourceDir = stdLibConfig.cache.bre.sourceDir
         def birCacheTargetDir = stdLibConfig.cache.bre.targetDir
         def breLibSourcePath = stdLibConfig.breLibSourcePath
+        def apiDocsPath = stdLibConfig.apiDocsPath
         into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bir-cache/${birCacheTargetDir}") {
             from "build/target/extracted-distributions/${birCacheSourceDir}"
         }
         into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
             from "build/target/extracted-distributions/${breLibSourcePath}"
+            fileMode = 0644
+        }
+        into("${parentDir}/distributions/jballerina-${ballerinaVersion}/docs") {
+            from "build/target/extracted-distributions/${apiDocsPath}"
             fileMode = 0644
         }
     }
@@ -692,11 +712,16 @@ task packageDistWindows(type: Zip) {
         def birCacheSourceDir = stdLibConfig.cache.bre.sourceDir
         def birCacheTargetDir = stdLibConfig.cache.bre.targetDir
         def breLibSourcePath = stdLibConfig.breLibSourcePath
+        def apiDocsPath = stdLibConfig.apiDocsPath
         into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bir-cache/${birCacheTargetDir}") {
             from "build/target/extracted-distributions/${birCacheSourceDir}"
         }
         into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
             from "build/target/extracted-distributions/${breLibSourcePath}"
+            fileMode = 0644
+        }
+        into("${parentDir}/distributions/jballerina-${ballerinaVersion}/docs") {
+            from "build/target/extracted-distributions/${apiDocsPath}"
             fileMode = 0644
         }
     }
