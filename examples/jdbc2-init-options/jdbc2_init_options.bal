@@ -1,5 +1,5 @@
 import ballerina/io;
-import ballerina/java.jdbc;
+import ballerina/jdbc;
 import ballerina/sql;
 
 function initializeClients() returns sql:Error? {
