@@ -34,7 +34,7 @@ ext {
     netLingalaZip4jVersion = "2.3.2"
     commonsIoVersion = "2.6"
     commonsLang3Version = "3.9"
-    socketVersion="2.0.0-Preview1-M4"
+    socketVersion= project.stdlibSocketVersion
 }
 
 allprojects {
@@ -163,8 +163,6 @@ subprojects {
         kubernetesExamples "org.ballerinax.kubernetes:kubernetes-extension-examples:${kubernetesVersion}@zip"
 
         /* Standard libraries */
-        exten "org.ballerinalang:socket-native:${socketVersion}"
-        exten "org.ballerinalang:socket-test-utils:${socketVersion}"
         ballerinaStdLibs "org.ballerinalang:socket-ballerina:${socketVersion}"
 
         balCommand "org.ballerinalang:ballerina-command-distribution:${ballerinaCommandVersion}@zip"
