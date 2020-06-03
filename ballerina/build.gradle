@@ -194,11 +194,14 @@ task packageDist(type: Zip) {
     /* Standard Libraries */
     def birCache = new File("${parentDir}/cache/bir/")
     def baloCache = new File("${parentDir}/cache/balo/")
+    def jarCache = new File("${parentDir}/cache/balo/")
     stdLibConfigs.each { stdLibConfig ->
         def birCacheSourceDir = stdLibConfig.cache.bir.sourceDir
         def birCacheTargetDir = stdLibConfig.cache.bir.targetDir
         def baloCacheSourceDir = stdLibConfig.cache.balo.sourceDir
         def baloCacheTargetDir = stdLibConfig.cache.balo.targetDir
+        def jarCacheSourceDir = stdLibConfig.cache.jar.sourceDir
+        def jarCacheTargetDir = stdLibConfig.cache.jar.targetDir
         def breLibSourcePath = stdLibConfig.breLibSourcePath
         def apiDocsPath = stdLibConfig.apiDocsPath
         into("${parentDir}/bir-cache/${birCacheTargetDir}") {
@@ -219,6 +222,9 @@ task packageDist(type: Zip) {
         }
         into("${baloCache}/${baloCacheTargetDir}") {
             from "build/target/extracted-distributions/${baloCacheSourceDir}"
+        }
+        into("${jarCache}/${jarCacheTargetDir}") {
+            from "build/target/extracted-distributions/${jarCacheSourceDir}"
         }
     }
 
@@ -311,11 +317,14 @@ task packageDistZip(type: Zip) {
     /* Standard Libraries */
     def birCache = new File("${parentDir}/distributions/jballerina-${ballerinaVersion}/cache/bir/")
     def baloCache = new File("${parentDir}/distributions/jballerina-${ballerinaVersion}/cache/balo/")
+    def jarCache = new File("${parentDir}/distributions/jballerina-${ballerinaVersion}/cache/jar/")
     stdLibConfigs.each { stdLibConfig ->
         def birCacheSourceDir = stdLibConfig.cache.bir.sourceDir
         def birCacheTargetDir = stdLibConfig.cache.bir.targetDir
         def baloCacheSourceDir = stdLibConfig.cache.balo.sourceDir
         def baloCacheTargetDir = stdLibConfig.cache.balo.targetDir
+        def jarCacheSourceDir = stdLibConfig.cache.jar.sourceDir
+        def jarCacheTargetDir = stdLibConfig.cache.jar.targetDir
         def breLibSourcePath = stdLibConfig.breLibSourcePath
         def apiDocsPath = stdLibConfig.apiDocsPath
         into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bir-cache/${birCacheTargetDir}") {
@@ -336,6 +345,9 @@ task packageDistZip(type: Zip) {
         }
         into("${baloCache}/${baloCacheTargetDir}") {
             from "build/target/extracted-distributions/${baloCacheSourceDir}"
+        }
+        into("${jarCache}/${jarCacheTargetDir}") {
+            from "build/target/extracted-distributions/${jarCacheSourceDir}"
         }
     }
 
@@ -465,11 +477,14 @@ task packageDistLinux(type: Zip) {
     /* Standard Libraries */
     def birCache = new File("${parentDir}/distributions/jballerina-${ballerinaVersion}/cache/bir/")
     def baloCache = new File("${parentDir}/distributions/jballerina-${ballerinaVersion}/cache/balo/")
+    def jarCache = new File("${parentDir}/distributions/jballerina-${ballerinaVersion}/cache/jar/")
     stdLibConfigs.each { stdLibConfig ->
         def birCacheSourceDir = stdLibConfig.cache.bir.sourceDir
         def birCacheTargetDir = stdLibConfig.cache.bir.targetDir
         def baloCacheSourceDir = stdLibConfig.cache.balo.sourceDir
         def baloCacheTargetDir = stdLibConfig.cache.balo.targetDir
+        def jarCacheSourceDir = stdLibConfig.cache.jar.sourceDir
+        def jarCacheTargetDir = stdLibConfig.cache.jar.targetDir
         def breLibSourcePath = stdLibConfig.breLibSourcePath
         def apiDocsPath = stdLibConfig.apiDocsPath
         into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bir-cache/${birCacheTargetDir}") {
@@ -490,6 +505,9 @@ task packageDistLinux(type: Zip) {
         }
         into("${baloCache}/${baloCacheTargetDir}") {
             from "build/target/extracted-distributions/${baloCacheSourceDir}"
+        }
+        into("${jarCache}/${jarCacheTargetDir}") {
+            from "build/target/extracted-distributions/${jarCacheSourceDir}"
         }
     }
 
@@ -614,11 +632,14 @@ task packageDistMac(type: Zip) {
     /* Standard Libraries */
     def birCache = new File("${parentDir}/distributions/jballerina-${ballerinaVersion}/cache/bir/")
     def baloCache = new File("${parentDir}/distributions/jballerina-${ballerinaVersion}/cache/balo/")
+    def jarCache = new File("${parentDir}/distributions/jballerina-${ballerinaVersion}/cache/jar/")
     stdLibConfigs.each { stdLibConfig ->
         def birCacheSourceDir = stdLibConfig.cache.bir.sourceDir
         def birCacheTargetDir = stdLibConfig.cache.bir.targetDir
         def baloCacheSourceDir = stdLibConfig.cache.balo.sourceDir
         def baloCacheTargetDir = stdLibConfig.cache.balo.targetDir
+        def jarCacheSourceDir = stdLibConfig.cache.jar.sourceDir
+        def jarCacheTargetDir = stdLibConfig.cache.jar.targetDir
         def breLibSourcePath = stdLibConfig.breLibSourcePath
         def apiDocsPath = stdLibConfig.apiDocsPath
         into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bir-cache/${birCacheTargetDir}") {
@@ -639,6 +660,9 @@ task packageDistMac(type: Zip) {
         }
         into("${baloCache}/${baloCacheTargetDir}") {
             from "build/target/extracted-distributions/${baloCacheSourceDir}"
+        }
+        into("${jarCache}/${jarCacheTargetDir}") {
+            from "build/target/extracted-distributions/${jarCacheSourceDir}"
         }
     }
 
@@ -758,11 +782,14 @@ task packageDistWindows(type: Zip) {
     /* Standard Libraries */
     def birCache = new File("${parentDir}/distributions/jballerina-${ballerinaVersion}/cache/bir/")
     def baloCache = new File("${parentDir}/distributions/jballerina-${ballerinaVersion}/cache/balo/")
+    def jarCache = new File("${parentDir}/distributions/jballerina-${ballerinaVersion}/cache/jar/")
     stdLibConfigs.each { stdLibConfig ->
         def birCacheSourceDir = stdLibConfig.cache.bir.sourceDir
         def birCacheTargetDir = stdLibConfig.cache.bir.targetDir
         def baloCacheSourceDir = stdLibConfig.cache.balo.sourceDir
         def baloCacheTargetDir = stdLibConfig.cache.balo.targetDir
+        def jarCacheSourceDir = stdLibConfig.cache.jar.sourceDir
+        def jarCacheTargetDir = stdLibConfig.cache.jar.targetDir
         def breLibSourcePath = stdLibConfig.breLibSourcePath
         def apiDocsPath = stdLibConfig.apiDocsPath
         into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bir-cache/${birCacheTargetDir}") {
@@ -783,6 +810,9 @@ task packageDistWindows(type: Zip) {
         }
         into("${baloCache}/${baloCacheTargetDir}") {
             from "build/target/extracted-distributions/${baloCacheSourceDir}"
+        }
+        into("${jarCache}/${jarCacheTargetDir}") {
+            from "build/target/extracted-distributions/${jarCacheSourceDir}"
         }
     }
 

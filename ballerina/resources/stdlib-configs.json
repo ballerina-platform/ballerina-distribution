@@ -10,6 +10,10 @@
       "balo": {
         "sourceDir": "socket-ballerina-zip/caches/balo/ballerina/socket",
         "targetDir": "ballerina/socket"
+      },
+      "jar": {
+        "sourceDir": "socket-ballerina-zip/caches/jar/ballerina/socket",
+        "targetDir": "ballerina/socket"
       }
     },
     "breLibSourcePath": "socket-ballerina-zip/libs",
