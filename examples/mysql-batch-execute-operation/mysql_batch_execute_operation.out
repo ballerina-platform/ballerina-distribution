@@ -1,0 +1,18 @@
+# To run this sample, navigate to the directory that contains the
+# `.bal` file and execute the `ballerina run` command.
+$ ballerina run mysql_batch_execute_operation.bal
+
+Database created.
+Drop table executed: affectedRowCount=0 lastInsertId=
+Create table executed: affectedRowCount=0 lastInsertId=
+
+Generated IDs are: 1 2 3
+
+Updated Rows summary: affectedRowCount=1 lastInsertId= affectedRowCount=1 lastInsertId= affectedRowCount=1 lastInsertId=
+
+Data in Customers table:
+customerId=1 firstName=Peter lastName=Stuart registrationID=1 creditLimit=6000.75 country=USA
+customerId=2 firstName=Stephanie lastName=Mike registrationID=2 creditLimit=9000.0 country=USA
+customerId=3 firstName=Bill lastName=John registrationID=3 creditLimit=4000.25 country=USA
+
+Sample executed successfully!

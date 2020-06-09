@@ -1186,6 +1186,10 @@
             {
                 "name": "MySQL DDL and DML Operations",
                 "url": "mysql-execute-operation"
+            },
+            {
+                "name": "MySQL Batch Execute Operations",
+                "url": "mysql-batch-execute-operation"
             }
         ]
     },
