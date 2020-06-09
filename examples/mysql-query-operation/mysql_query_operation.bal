@@ -103,7 +103,7 @@ function typedQuery(mysql:Client mysqlClient) {
 //Initialize the database table with sample data.
 function initializeTable() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = dbUser, password = dbPassword);
-    sql:ExecuteResult? result =
+    sql:ExecutionResult? result =
         check mysqlClient->execute("CREATE DATABASE IF NOT EXISTS MYSQL_BBE");
     result = check mysqlClient->execute("DROP TABLE IF EXISTS "+
         "MYSQL_BBE.Customers");

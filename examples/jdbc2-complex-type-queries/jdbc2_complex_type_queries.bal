@@ -142,7 +142,7 @@ function queryDateTimeType(jdbc:Client jdbcClient) {
 
 //Initialize the database table with sample data.
 function initializeTable(jdbc:Client jdbcClient) returns sql:Error? {
-    sql:ExecuteResult? result =
+    sql:ExecutionResult? result =
         check jdbcClient->execute("DROP TABLE IF EXISTS BINARY_TYPES");
     result = check jdbcClient->execute("CREATE TABLE BINARY_TYPES (row_id " +
         "INTEGER NOT NULL, blob_type BLOB(1024), clob_type CLOB(1024)," +

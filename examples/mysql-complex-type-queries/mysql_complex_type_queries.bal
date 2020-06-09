@@ -102,7 +102,7 @@ function queryDateTimeType(mysql:Client mysqlClient) {
 // Initialize the database table with sample data.
 function initializeTable() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = dbUser, password = dbPassword);
-    sql:ExecuteResult? result = check
+    sql:ExecutionResult? result = check
         mysqlClient->execute("CREATE DATABASE IF NOT EXISTS MYSQL_BBE");
 
     result = check mysqlClient->execute("DROP TABLE IF EXISTS " +
