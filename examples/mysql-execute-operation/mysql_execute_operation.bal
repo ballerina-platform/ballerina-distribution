@@ -14,7 +14,7 @@ function initializeDatabase() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = dbUser, password = dbPassword);
     // Create database if it does not exist. If any error occurred,
     // the error will be returned.
-    sql:ExecuteResult? result =
+    sql:ExecutionResult? result =
         check mysqlClient->execute("CREATE DATABASE IF NOT EXISTS " + dbName);
     io:println("Database created. ");
     // Close the MySQL client.
@@ -23,11 +23,11 @@ function initializeDatabase() returns sql:Error? {
 
 function initializeTable(mysql:Client mysqlClient)
     returns int|string|sql:Error? {
-    // Execute dropping the table. The `sql:ExecuteResult` is returned upon
+    // Execute dropping the table. The `sql:ExecutionResult` is returned upon
     // successful execution. An error will be returned in case of a failure.
-    sql:ExecuteResult? result =
+    sql:ExecutionResult? result =
         check mysqlClient->execute("DROP TABLE IF EXISTS Customers");
-    if (result is sql:ExecuteResult) {
+    if (result is sql:ExecutionResult) {
         io:println("Drop table executed. ", result);
     }
     // Similarly, to drop a table, the `create` table query is executed.
@@ -45,7 +45,7 @@ function initializeTable(mysql:Client mysqlClient)
         "'Stuart', 1, 5000.75, 'USA')");
     int|string? generatedId = ();
 
-    if (result is sql:ExecuteResult) {
+    if (result is sql:ExecutionResult) {
         io:println("Rows affected: ", result.affectedRowCount);
         io:println("Generated Customer ID: ", result.lastInsertId);
         generatedId = result.lastInsertId;
@@ -56,10 +56,10 @@ function initializeTable(mysql:Client mysqlClient)
 function updateRecord(mysql:Client mysqlClient, int generatedId) {
     // Update the record with the auto-generated ID.
     string query = string ` ${generatedId}`;
-    sql:ExecuteResult|sql:Error? result =
+    sql:ExecutionResult|sql:Error? result =
         mysqlClient->execute("Update Customers set creditLimit = 15000.5 "+
         "where customerId =" + generatedId.toString());
-    if (result is sql:ExecuteResult) {
+    if (result is sql:ExecutionResult) {
         io:println("Updated Row count: ", result?.affectedRowCount);
     } else if (result is sql:Error) {
         io:println("Error occured: ", result);
@@ -70,10 +70,10 @@ function updateRecord(mysql:Client mysqlClient, int generatedId) {
 
 function deleteRecord(mysql:Client mysqlClient, int generatedId) {
     // Delete the record with the auto-generated ID.
-    sql:ExecuteResult|sql:Error? result =
+    sql:ExecutionResult|sql:Error? result =
         mysqlClient->execute("Delete from Customers where customerId = "+
         generatedId.toString());
-    if (result is sql:ExecuteResult) {
+    if (result is sql:ExecutionResult) {
         io:println("Deleted Row count: ", result.affectedRowCount);
     } else if (result is sql:Error) {
         io:println("Error occured: ", result);

@@ -4,11 +4,11 @@ import ballerina/sql;
 
 function initializeTable(jdbc:Client jdbcClient)
 returns int|string|sql:Error? {
-    // Execute dropping the table. The `sql:ExecuteResult` is returned upon
+    // Execute dropping the table. The `sql:ExecutionResult` is returned upon
     // successful execution. An error will be returned in case of a failure.
-    sql:ExecuteResult? result =
+    sql:ExecutionResult? result =
         check jdbcClient->execute("DROP TABLE IF EXISTS Customers");
-    if (result is sql:ExecuteResult) {
+    if (result is sql:ExecutionResult) {
         io:println("Drop table executed. ", result);
     }
     // Similarly, to drop a table, the `create` table query is executed.
@@ -25,7 +25,7 @@ returns int|string|sql:Error? {
         "lastName,registrationID,creditLimit,country)" +
         "VALUES ('Peter', 'Stuart', 1, 5000.75, 'USA')");
 
-    if (result is sql:ExecuteResult) {
+    if (result is sql:ExecutionResult) {
         io:println("Rows affected: ", result.affectedRowCount);
         io:println("Generated Customer ID: ", result.lastInsertId);
         return result.lastInsertId;
@@ -34,10 +34,10 @@ returns int|string|sql:Error? {
 
 function updateRecord(jdbc:Client jdbcClient, int generatedId) {
     // Update the record with the auto-generated ID.
-    sql:ExecuteResult|sql:Error? result =
+    sql:ExecutionResult|sql:Error? result =
         jdbcClient->execute("Update Customers set creditLimit = 15000.5 " +
         "where customerId = " + generatedId.toString());
-    if (result is sql:ExecuteResult) {
+    if (result is sql:ExecutionResult) {
         io:println("Updated Row count: ", result?.affectedRowCount);
     } else if (result is sql:Error) {
         io:println("Error occurred: ", result);
@@ -48,10 +48,10 @@ function updateRecord(jdbc:Client jdbcClient, int generatedId) {
 
 function deleteRecord(jdbc:Client jdbcClient, int generatedId) {
     // Delete the record with the auto-generated ID.
-    sql:ExecuteResult|sql:Error? result =
+    sql:ExecutionResult|sql:Error? result =
         jdbcClient->execute("Delete from Customers where customerId = " +
         generatedId.toString());
-    if (result is sql:ExecuteResult) {
+    if (result is sql:ExecutionResult) {
         io:println("Deleted Row count: ", result.affectedRowCount);
     } else if (result is sql:Error) {
         io:println("Error occured: ", result);
