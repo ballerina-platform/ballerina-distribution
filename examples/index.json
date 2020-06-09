@@ -1159,6 +1159,10 @@
             {
                 "name": "JDBC DDL and DML Operations",
                 "url": "jdbc2-execute-operation"
+            },
+            {
+                "name": "JDBC Batch Execute Operations",
+                "url": "jdbc2-batch-execute-operation"
             }
         ]
     },

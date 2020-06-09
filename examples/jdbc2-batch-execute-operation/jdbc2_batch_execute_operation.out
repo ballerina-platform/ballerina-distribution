@@ -1,0 +1,18 @@
+# To run this sample, navigate to the directory that contains the
+# `.bal` file and execute the `ballerina run` command.
+$ ballerina run jdbc2_batch_execute_operation.bal
+
+Drop table executed: affectedRowCount=0 lastInsertId=
+Create table executed: affectedRowCount=0 lastInsertId=
+
+Generated IDs are: 1 2 3
+
+Updated Rows summary: affectedRowCount=1 lastInsertId= affectedRowCount=1 lastInsertId= affectedRowCount=1 lastInsertId=
+
+Data in Customers table:
+CUSTOMERID=1 FIRSTNAME=Peter LASTNAME=Stuart REGISTRATIONID=1 CREDITLIMIT=6000.75 COUNTRY=USA
+CUSTOMERID=2 FIRSTNAME=Stephanie LASTNAME=Mike REGISTRATIONID=2 CREDITLIMIT=9000.0 COUNTRY=USA
+CUSTOMERID=3 FIRSTNAME=Bill LASTNAME=John REGISTRATIONID=3 CREDITLIMIT=4000.25 COUNTRY=USA
+
+Sample executed successfully!
+
