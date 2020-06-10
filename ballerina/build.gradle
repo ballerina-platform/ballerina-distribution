@@ -1002,7 +1002,12 @@ task testExamples() {
          'length',
          'foreach',
          'testerina-group-tests',
-         'json-record-map-conversion'
+         'json-record-map-conversion',
+         'http-timeout',
+         'http-retry',
+         'http-failover',
+         'http-load-balancer',
+         'http-circuit-breaker'
     ]
     doFirst {
         copy {
