@@ -58,6 +58,16 @@
             <artifactId>awslambda-extension-examples</artifactId>
             <type>zip</type>
         </dependency>
+        <!-- Azure Functions extension -->
+        <dependency>
+            <groupId>org.ballerinax.azurefunctions</groupId>
+            <artifactId>azurefunctions-extension</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinax.azurefunctions</groupId>
+            <artifactId>azurefunctions-extension-balo</artifactId>
+            <type>zip</type>
+        </dependency>
 
         <!-- Docker extension -->
         <dependency>
@@ -140,6 +150,7 @@
                                 jballerina-tools,
                                 awslambda-extension-balo,
                                 awslambda-extension-examples,
+                                azurefunctions-extension-balo,
                                 docker-extension-examples,
                                 docker-extension-annotations,
                                 kubernetes-extension-examples,

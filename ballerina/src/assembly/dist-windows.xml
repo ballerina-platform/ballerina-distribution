@@ -85,6 +85,12 @@
             </directory>
             <outputDirectory>distributions/jballerina-${ballerina.version}/bir-cache/ballerinax/awslambda</outputDirectory>
         </fileSet>
+        <fileSet>
+            <directory>
+                ${project.build.directory}/extracted-distributions/azurefunctions-extension-balo-zip/azure.functions
+            </directory>
+            <outputDirectory>distributions/jballerina-${ballerina.version}/bir-cache/ballerinax/azure.functions</outputDirectory>
+        </fileSet>
 
         <!-- Tools artifacts -->
         <fileSet>
@@ -107,6 +113,11 @@
         </file>
         <file>
             <source>${project.build.directory}/extracted-distributions/awslambda-extension-balo-zip/awslambda-artifacts/ballerinax.awslambda.jar</source>
+            <outputDirectory>distributions/jballerina-${ballerina.version}/bre/lib/</outputDirectory>
+            <fileMode>644</fileMode>
+        </file>
+        <file>
+            <source>${project.build.directory}/extracted-distributions/azurefunctions-extension-balo-zip/ballerinax-azure.functions-0.0.0.jar</source>
             <outputDirectory>distributions/jballerina-${ballerina.version}/bre/lib/</outputDirectory>
             <fileMode>644</fileMode>
         </file>
@@ -160,6 +171,7 @@
                 <include>org.ballerinax.docker:docker-extension</include>
                 <include>org.ballerinax.kubernetes:kubernetes-extension</include>
                 <include>org.ballerinax.awslambda:awslambda-extension</include>
+                <include>org.ballerinax.azurefunctions:azurefunctions-extension</include>
             </includes>
             <excludes>
                 <!--                <exclude>org.ballerinax.docker:docker-extension:zip</exclude>-->
