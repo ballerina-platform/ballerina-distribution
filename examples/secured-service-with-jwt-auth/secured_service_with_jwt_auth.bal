@@ -19,7 +19,7 @@ jwt:InboundJwtAuthProvider jwtAuthProvider = new ({
 });
 
 // Alternatively, you can create an inbound JWT authentication provider
-// with JWKs endpoint configurations.
+// with the JWKs endpoint configurations.
 jwt:InboundJwtAuthProvider jwkAuthProvider = new ({
     issuer: "ballerina",
     audience: "ballerina.io",
