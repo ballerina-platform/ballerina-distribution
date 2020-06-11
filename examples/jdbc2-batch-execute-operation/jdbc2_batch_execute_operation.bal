@@ -26,7 +26,7 @@ returns sql:Error? {
 
 function insertRecords(jdbc:Client jdbcClient) returns int[] {
 
-    // Records to be inserted
+    // Records to be inserted.
     var insertRecords = [
         {firstName: "Peter", lastName: "Stuart", registrationID: 1,
                                     creditLimit: 5000.75, country: "USA"},
@@ -67,7 +67,7 @@ function insertRecords(jdbc:Client jdbcClient) returns int[] {
 
 function updateRecords(jdbc:Client jdbcClient, int[] generatedIds) {
 
-    // Update Queries
+    // The update queries.
     sql:ParameterizedString[] updateQueries = [];
     foreach var id in generatedIds {
         updateQueries.push({
@@ -103,7 +103,7 @@ public function main() {
             // Update records.
             updateRecords(jdbcClient, generatedIds);
 
-            // Check data.
+            // Check the data.
             checkData(jdbcClient);
             io:println("\nSample executed successfully!");
         } else {
@@ -130,4 +130,3 @@ function checkData(jdbc:Client jdbcClient) {
         io:println(e);
      }
 }
-

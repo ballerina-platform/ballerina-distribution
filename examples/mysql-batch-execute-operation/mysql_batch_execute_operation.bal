@@ -2,7 +2,7 @@ import ballerina/io;
 import ballerina/mysql;
 import ballerina/sql;
 
-// Username and password of the MySQL database. This is used in the below
+// The username and password of the MySQL database. This is used in the below
 // examples when initializing the MySQL connector. You need to change these
 // based on your setup if you try locally.
 string dbUser = "root";
@@ -12,7 +12,7 @@ string dbName = "MYSQL_BBE_EXEC";
 function initializeDatabase() returns sql:Error? {
     // Initialize the client without any database to create the database.
     mysql:Client mysqlClient = check new (user = dbUser, password = dbPassword);
-    // Create database if it does not exist. If any error occurred,
+    // Create the database if it does not exist. If any error occurred,
     // the error will be returned.
     sql:ExecutionResult? result =
         check mysqlClient->execute("CREATE DATABASE IF NOT EXISTS " + dbName);
@@ -45,7 +45,7 @@ returns sql:Error? {
 
 function insertRecords(mysql:Client mysqlClient) returns int[] {
 
-    // Records to be inserted
+    // Records to be inserted.
     var insertRecords = [
         {firstName: "Peter", lastName: "Stuart", registrationID: 1,
                                     creditLimit: 5000.75, country: "USA"},
@@ -86,7 +86,7 @@ function insertRecords(mysql:Client mysqlClient) returns int[] {
 
 function updateRecords(mysql:Client mysqlClient, int[] generatedIds) {
 
-    // Update Queries
+    // The update queries.
     sql:ParameterizedString[] updateQueries = [];
     foreach var id in generatedIds {
         updateQueries.push({
@@ -126,7 +126,7 @@ public function main() {
                 // Update records.
                 updateRecords(mysqlClient, generatedIds);
 
-                // Check data.
+                // Check the data.
                 checkData(mysqlClient);
                 io:println("\nSample executed successfully!");
             } else {
@@ -155,4 +155,3 @@ function checkData(mysql:Client mysqlClient) {
         io:println(e);
      }
 }
-
