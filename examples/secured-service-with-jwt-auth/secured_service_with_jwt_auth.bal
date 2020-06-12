@@ -18,6 +18,25 @@ jwt:InboundJwtAuthProvider jwtAuthProvider = new ({
     }
 });
 
+// Alternatively, you can create an inbound JWT authentication provider
+// with the JWKs endpoint configurations.
+jwt:InboundJwtAuthProvider jwkAuthProvider = new ({
+    issuer: "ballerina",
+    audience: "ballerina.io",
+    signatureConfig: {
+        url: "https://example.com/jwks",
+        clientConfig: {
+            secureSocket: {
+                trustStore: {
+                    path: config:getAsString("b7a.home") +
+                          "/bre/security/ballerinaTruststore.p12",
+                    password: "ballerina"
+                }
+            }
+        }
+    }
+});
+
 // Creates a Bearer Auth handler with the created JWT Auth provider.
 http:BearerAuthHandler jwtAuthHandler = new (jwtAuthProvider);
 
