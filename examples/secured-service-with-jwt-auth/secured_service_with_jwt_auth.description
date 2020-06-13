@@ -1,9 +1,9 @@
-// A service can be secured using JWT and optionally, by enforcing
+// A service can be secured using JWT and optionally by enforcing
 // authorization. The JWT auth provider verifies the signature of the JWT
 // sent in the Authorization header. For this, Ballerina should trust the
 // JWT issuer (the certificate of the JWT issuer must be present in the Ballerina
 // certificate truststore). Alternatively, the signature of the JWT can be verified
-// using the JWKs endpoint configured.
+// using the configured JWKs endpoint.
 // Ballerina uses the concept of scopes for authorization. A resource declared
 // in a service can be bound to one/more scope(s). The scope can be included
 // in the JWT using the `scope` attribute.
@@ -11,4 +11,3 @@
 // the scopes mapped to the user for at least one match between the two sets.<br/><br/>
 // For more information on the underlying module, 
 // see the [JWT module](https://ballerina.io/learn/api-docs/ballerina/jwt/index.html).
-
