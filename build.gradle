@@ -27,6 +27,7 @@ ext {
     ballerinaJreArtifactsVersion = "2.0.0"
     dockerVersion = project.version
     kubernetesVersion = project.version
+    dataMapperVersion = project.version
     awslambdaVersion = project.version
     picocliVersion = "4.0.1"
     ballerinaCommandVersion = "0.8.6-SNAPSHOT"
@@ -161,6 +162,9 @@ subprojects {
         exten "org.ballerinax.kubernetes:kubernetes-extension:${kubernetesVersion}@jar"
         kubernetesAnnotations "org.ballerinax.kubernetes:kubernetes-extension-annotations:${kubernetesVersion}@zip"
         kubernetesExamples "org.ballerinax.kubernetes:kubernetes-extension-examples:${kubernetesVersion}@zip"
+
+        /* Data Mapper extension */
+        exten "org.ballerinax.datamapper:datamapper-extension-parent:${dataMapperVersion}@jar"
 
         /* Standard libraries */
         ballerinaStdLibs "org.ballerinalang:socket-ballerina:${socketVersion}"
