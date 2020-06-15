@@ -37,7 +37,7 @@ public function main() {
             if (str is string) {
                 io:println("Received: ", <@untainted>str);
             } else {
-                io:println("Error: ", str.detail()?.message);
+                io:println("Error: ", str.message());
             }
         }
     } else {
