@@ -14,7 +14,7 @@ public function main() {
     int intervalInMillis = 1000;
 
     // Initializes the timer scheduler using the interval value.
-    // The delay will be equal to the interval as an initial delay is not provided.
+    // The delay will be equal to the interval if an initial delay is not provided.
     task:Scheduler timer = new ({
         intervalInMillis: intervalInMillis,
         initialDelayInMillis: 0
