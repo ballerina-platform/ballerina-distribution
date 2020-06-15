@@ -33,7 +33,7 @@ configurations {
     ballerinaWindowsDistribution
 }
 
-def jBallerinaDistributionZip = file("$project.buildDir/distributions/jballerina-${ballerinaVersion}.zip")
+def jBallerinaDistributionZip = file("$project.buildDir/distributions/ballerina-${shortVersion}.zip")
 def ballerinaDistributionZip = file("$project.buildDir/distributions/ballerina-${ballerinaVersion}.zip")
 def ballerinaLinuxDistributionZip = file("$project.buildDir/distributions/ballerina-linux-${ballerinaVersion}.zip")
 def ballerinaMacDistributionZip = file("$project.buildDir/distributions/ballerina-macos-${ballerinaVersion}.zip")
@@ -148,8 +148,9 @@ task deleteTemporaryFiles(type: Delete) {
 task packageDist(type: Zip) {
     group = "package_distribution"
     description = 'Ballerina Tools Distribution Assembly'
-    baseName = "j${distributionName}"
-    ext{parentDir="${baseName}-${version}"}
+    baseName = "${distributionName}"
+    ext{parentDir="${baseName}-${shortVersion}"}
+    archiveFileName="${baseName}-${shortVersion}.zip"
     entryCompression=ZipEntryCompression.STORED
 
     into("${parentDir}") {
@@ -223,6 +224,7 @@ task packageDist(type: Zip) {
         }
         into("${baloCache}/${baloCacheTargetDir}") {
             from "build/target/extracted-distributions/${baloCacheSourceDir}"
+
         }
         into("${jarCache}/${jarCacheTargetDir}") {
             from "build/target/extracted-distributions/${jarCacheSourceDir}"
@@ -370,7 +372,7 @@ task packageDistZip(type: Zip) {
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bin") {
         from "lib/version.txt"
         fileMode = 0644
-        filter(ReplaceTokens, tokens: [version: version])
+        filter(ReplaceTokens, tokens: [version: ballerinaVersion])
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
         from "build/target/extracted-distributions/awslambda-extension-balo-zip/ballerinax.awslambda.jar"
@@ -400,7 +402,7 @@ task packageDistZip(type: Zip) {
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/ballerina-version"
         fileMode = 0644
-        filter(ReplaceTokens, tokens: [version: version])
+        filter(ReplaceTokens, tokens: [version: ballerinaVersion])
     }
     into("${parentDir}/bin") {
         from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/ballerina"
@@ -561,7 +563,7 @@ task packageDistLinux(type: Zip) {
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/ballerina-version"
         fileMode = 0644
-        filter(ReplaceTokens, tokens: [version: version])
+        filter(ReplaceTokens, tokens: [version: ballerinaVersion])
     }
     into("${parentDir}/bin") {
         from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/ballerina"
@@ -712,7 +714,7 @@ task packageDistMac(type: Zip) {
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/ballerina-version"
         fileMode = 0644
-        filter(ReplaceTokens, tokens: [version: version])
+        filter(ReplaceTokens, tokens: [version: ballerinaVersion])
     }
     into("${parentDir}/bin") {
         from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/ballerina"
@@ -863,7 +865,7 @@ task packageDistWindows(type: Zip) {
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/ballerina-version"
         fileMode = 0644
-        filter(ReplaceTokens, tokens: [version: version])
+        filter(ReplaceTokens, tokens: [version: ballerinaVersion])
     }
     into("${parentDir}/bin") {
         from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/ballerina.bat"
