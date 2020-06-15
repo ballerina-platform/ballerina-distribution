@@ -59,7 +59,7 @@ service basic on new http:Listener(9090) {
     }
 
     // This `resource` is triggered when a ping message is received from the client. If this resource is not implemented,
-    // a pong message is automatically sent to the connected `http:WebSocketCaller` when a ping is received.
+    // a pong message is automatically sent to the connected [http:WebSocketCaller](https://ballerina.io/learn/api-docs/ballerina/http/clients/WebSocketCaller.html) when a ping is received.
     resource function onPing(http:WebSocketCaller caller, byte[] data) {
         var err = caller->pong(data);
         if (err is http:WebSocketError) {
@@ -73,7 +73,7 @@ service basic on new http:Listener(9090) {
     }
 
     // This resource is triggered when a particular client reaches the idle timeout that is defined in the
-    // `http:WebSocketServiceConfig` annotation.
+    // [http:WebSocketServiceConfig](https://ballerina.io/learn/api-docs/ballerina/http/annotations.html#WebSocketServiceConfig) annotation.
     resource function onIdleTimeout(http:WebSocketCaller caller) {
         io:println("\nReached idle timeout");
         io:println("Closing connection " + caller.getConnectionId());

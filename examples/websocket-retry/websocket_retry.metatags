@@ -1,0 +1,2 @@
+description: This sample demonstrates how WebSocket client reconnects to the same backend when the client looses the connection.
+keywords: ballerina, ballerina by example, bbe, websocket, retry
