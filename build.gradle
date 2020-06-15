@@ -164,7 +164,7 @@ subprojects {
         kubernetesExamples "org.ballerinax.kubernetes:kubernetes-extension-examples:${kubernetesVersion}@zip"
 
         /* Data Mapper extension */
-        exten "org.ballerinax.datamapper:datamapper-extension-parent:${dataMapperVersion}@jar"
+        exten "org.ballerinax.datamapper:datamapper-extension:${dataMapperVersion}@jar"
 
         /* Standard libraries */
         ballerinaStdLibs "org.ballerinalang:socket-ballerina:${socketVersion}"
