@@ -1,0 +1,2 @@
+description: This BBE shows how Java interoperability in Ballerina allows you to call existing Java code from Ballerina.
+keywords: ballerina, ballerina by example, bbe, java object, jvm
