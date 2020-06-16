@@ -1,2 +1,2 @@
-description: This example demonstrates how Ballerina acts as a proxy to another remote service via WebSocket.
+description: This BBE demonstrates how Ballerina acts as a proxy to another remote service via WebSocket.
 keywords: ballerina, ballerina by example, bbe, websocket, proxy
