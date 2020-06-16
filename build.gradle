@@ -23,7 +23,7 @@ plugins {
 description = 'Ballerina - Tools - Parent'
 
 ext {
-    ballerinaVersion = "2.0.0-SNAPSHOT"
+    ballerinaVersion = project.ballerinaVersion
     shortVersion = project.shortVersion
     ballerinaJreArtifactsVersion = "2.0.0"
     dockerVersion = project.ballerinaVersion
