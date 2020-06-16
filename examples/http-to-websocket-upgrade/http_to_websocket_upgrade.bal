@@ -31,7 +31,7 @@ service httpService on new http:Listener(9090) {
     }
 
     // This is an HTTP to WebSocket upgrade resource. This is defined using the WebSocket upgrade resource config.
-    // Here you have access to the [http:Request](https://ballerina.io/learn/api-docs/ballerina/http/objects/Request.html) and to the query and path params where applicable.
+    // Here you have access to the [http:Request](https://ballerina.io/learn/api-docs/ballerina/http/objects/Request.html), query, and path params where applicable.
     @http:ResourceConfig {
         webSocketUpgrade: {
             upgradePath: "/ws",
@@ -44,7 +44,7 @@ service httpService on new http:Listener(9090) {
 }
 
 
-// Note: When a WebSocket upgrade path is defined in HTTP resource configuration. <br>
+// Note: When a WebSocket upgrade path is defined in the HTTP resource configuration. <br>
 // - Without service configuration for WebSocketService default values are taken for sub protocols, idle timeout etc.<br>
 // - If [WebSocketServiceConfig](https://ballerina.io/learn/api-docs/ballerina/http/annotations.html#WebSocketServiceConfig) is defined without the path, sub protocols, idle timeout etc. can be configured.<br>
 // - If path is defined in the `WebSocketServiceConfig` it shall be ignored.<br>
