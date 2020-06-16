@@ -1,0 +1,2 @@
+description: This is a BBE on arrays in Ballerina, which are mutable lists of values of dynamic length in which each member in the list is of the same type.
+keywords: ballerina, ballerina by example, bbe, arrays, mutable list
