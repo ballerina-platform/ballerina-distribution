@@ -5,3 +5,4 @@
 // the acknowledgement will commit or rollback in the case of any error.
 // Messages will not be re-queued in the case of a rollback
 // automatically unless negatively acknowledged by the user.
+// see the [RabbitMQ module](https://ballerina.io/learn/api-docs/ballerina/rabbitmq/index.html).
