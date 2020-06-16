@@ -18,8 +18,9 @@ public function main() {
     Student s1 = {firstName: "Alex", lastName: "George", intakeYear: 2020, score: 1.5};
     Student s2 = {firstName: "Ranjan", lastName: "Fonseka", intakeYear: 2020, score: 0.9};
     Student s3 = {firstName: "John", lastName: "David", intakeYear: 2022, score: 1.2};
+    Student s4 = {firstName: "Gorge", lastName: "Fernando", intakeYear: 2021, score: 1.1};
 
-    Student[] studentList = [s1, s2, s3];
+    Student[] studentList = [s1, s2, s3, s4];
 
     //The `from` clause works similarly to a `foreach` statement.
     //It can be used to iterate any iterable value.
@@ -38,7 +39,9 @@ public function main() {
               name: student.firstName,
               degree: degreeName,
               expectedGradYear: graduationYear
-       };
+       }
+       //The `limit` clause limits the output items.
+       limit 2;
 
     foreach var report in reportList {
         io:println(report);
