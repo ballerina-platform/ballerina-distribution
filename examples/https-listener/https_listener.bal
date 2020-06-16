@@ -4,8 +4,8 @@ import ballerina/log;
 
 // An HTTP endpoint can be configured to communicate through HTTPS as well.
 // To secure an endpoint using HTTPS, the endpoint needs to be configured with
-// a keyStore, and its `password` for the endpoint.
-// [secureSocket](https://ballerina.io/learn/api-docs/ballerina/http/records/ListenerSecureSocket.html) record provides the SSL related listener configurations.
+// a keystore and its `password` for the endpoint.
+// The [secureSocket](https://ballerina.io/learn/api-docs/ballerina/http/records/ListenerSecureSocket.html) record provides the SSL-related listener configurations.
 http:ListenerConfiguration helloWorldEPConfig = {
     secureSocket: {
         keyStore: {
