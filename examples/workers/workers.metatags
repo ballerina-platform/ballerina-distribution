@@ -1,0 +1,2 @@
+description: Workers in Ballerina let you delegate your tasks to independently running executions. Workers can be declared within functions, remote functions, or resources.
+keywords: ballerina, ballerina by example, bbe, workers
