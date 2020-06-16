@@ -1,0 +1,2 @@
+description: JSON array literals are written in the same way as Ballerina arrays. JSON array values must be of the JSON types: string, number, object, array, boolean or null
+keywords: ballerina, ballerina by example, bbe, json arrays
