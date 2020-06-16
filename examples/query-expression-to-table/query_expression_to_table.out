@@ -2,5 +2,6 @@
 # `.bal` file and execute the `ballerina run` command.
 $ ballerina run query_expression_to_table.bal
 
-name=Alex degree=Bachelor of Medicine expectedGradYear=2025
-name=John degree=Bachelor of Medicine expectedGradYear=2027
+Student Table Information: id=2 firstName=Ranjan lastName=Fonseka intakeYear=2021 score=1.5
+id=3 firstName=John lastName=David intakeYear=2022 score=1.5
+error Key Conflict message=cannot insert student
