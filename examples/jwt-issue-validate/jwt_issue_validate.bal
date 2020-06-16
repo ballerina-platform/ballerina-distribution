@@ -39,7 +39,7 @@ public function main() {
         io:println("Issued JWT: ", jwt);
     } else {
         io:println("An error occurred while issuing the JWT: ",
-                    jwt.detail()?.message);
+                    jwt.message());
     }
 
     // Defines the truststore.
@@ -66,6 +66,6 @@ public function main() {
         io:println("Validated JWT Payload: ", result);
     } else {
         io:println("An error occurred while validating the JWT: ",
-                    result.detail()?.message);
+                    result.message());
     }
 }
