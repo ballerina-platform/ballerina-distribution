@@ -116,13 +116,15 @@ subprojects {
             }
         }
         /* Ballerina lang staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1586/" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1590/" }
         /* Docker staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1264/" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1268/" }
         /* Kubernetes staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxkubernetes-1240/" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxkubernetes-1244/" }
         /* AwsLambda staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1137/" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1142/" }
+        /* Datamapper staging repository */
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdatamapper-1000/" }
     }
 
     configurations {
