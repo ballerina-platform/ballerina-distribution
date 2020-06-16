@@ -2,4 +2,3 @@
 // It consists of following clauses: `from`, `join`, `let`, `on`, `where`, `select`, and `limit`.
 // The first clause must be a `from` clause and must have a `select` clause as well.
 // The result of the query expression is a list.
-// This is a preview feature.
