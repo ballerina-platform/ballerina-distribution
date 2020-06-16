@@ -1,2 +1,2 @@
-description: This example demonstrates how WebSub publisher publishes updates to the internal hub and subscriber subscribes to the publisher's hub to receive notifications.
+description: This BBE demonstrates how a WebSub publisher publishes updates to the internal hub and a subscriber subscribes to the publisher's hub to receive notifications.
 keywords: ballerina, ballerina by example, bbe, websub, hub, subscriber, client
