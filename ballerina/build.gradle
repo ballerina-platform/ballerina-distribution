@@ -158,7 +158,7 @@ task packageDist(type: Zip) {
     }
     into("${parentDir}/examples") {
         from "${project.rootDir}/examples/"
-        exclude "index.json"
+        exclude "all-bbes.json"
         fileMode = 0755
     }
     into("${parentDir}/examples") {
@@ -283,7 +283,7 @@ task packageDistZip(type: Zip) {
 
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples/") {
         from "${project.rootDir}/examples/"
-        exclude "index.json"
+        exclude "all-bbes.json"
         fileMode = 0755
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples") {
@@ -444,7 +444,7 @@ task packageDistLinux(type: Zip) {
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples/") {
         from "${project.rootDir}/examples/"
-        exclude "index.json"
+        exclude "all-bbes.json"
         fileMode = 0755
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples") {
@@ -600,7 +600,7 @@ task packageDistMac(type: Zip) {
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples/") {
         from "${project.rootDir}/examples/"
-        exclude "index.json"
+        exclude "all-bbes.json"
         fileMode = 0755
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples") {
@@ -751,7 +751,7 @@ task packageDistWindows(type: Zip) {
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples/") {
         from "${project.rootDir}/examples/"
-        exclude "index.json"
+        exclude "all-bbes.json"
         fileMode = 0755
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples") {
@@ -1035,7 +1035,7 @@ task testExamples() {
             from(src)
             into dis
         }
-        def inputFile = new File("${baseBuildPath}/TestProject/src/index.json")
+        def inputFile = new File("${baseBuildPath}/TestProject/src/all-bbes.json")
         def categories = new JsonSlurper().parseText(inputFile.text)
         categories.each { category ->
             def examples = category.samples
