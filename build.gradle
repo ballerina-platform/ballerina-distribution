@@ -125,7 +125,7 @@ subprojects {
         /* AwsLambda staging repository */
         maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1142/" }
         /* Datamapper staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdatamapper-1000/" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdatamapper-1001/" }
     }
 
     configurations {
