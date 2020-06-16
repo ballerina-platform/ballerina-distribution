@@ -1,7 +1,7 @@
 import ballerina/log;
 import ballerina/task;
 
-// The Task Timer configuration record to configure the Task Listener.
+// The [`task:TimerConfiguration`](https://ballerina.io/learn/api-docs/ballerina/task/records/TimerConfiguration.html) record to configure the Task Listener.
 task:TimerConfiguration timerConfiguration = {
     intervalInMillis: 1000,
     initialDelayInMillis: 3000,
