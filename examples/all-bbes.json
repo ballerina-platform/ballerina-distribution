@@ -553,7 +553,7 @@
             },
             {
                 "name": "Java Arrays",
-                "url": "java-arrays"
+                "url": "java.arrays"
             },
             {
                 "name": "Java Varargs",
@@ -800,6 +800,10 @@
             {
                 "name": "HTTP Interceptors/Filters",
                 "url": "http-filters"
+            },
+            {
+                "name": "HTTP Cookies",
+                "url": "http-cookies"
             }
         ]
     },

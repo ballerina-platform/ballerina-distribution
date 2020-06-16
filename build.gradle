@@ -23,18 +23,19 @@ plugins {
 description = 'Ballerina - Tools - Parent'
 
 ext {
-    ballerinaVersion = project.version
+    ballerinaVersion = project.ballerinaVersion
+    shortVersion = project.shortVersion
     ballerinaJreArtifactsVersion = "2.0.0"
-    dockerVersion = project.version
-    kubernetesVersion = project.version
-    awslambdaVersion = project.version
+    dockerVersion = project.ballerinaVersion
+    kubernetesVersion = project.ballerinaVersion
+    awslambdaVersion = project.ballerinaVersion
     picocliVersion = "4.0.1"
     ballerinaCommandVersion = "0.8.6-SNAPSHOT"
     testngVersion = "6.14.3"
     netLingalaZip4jVersion = "2.3.2"
     commonsIoVersion = "2.6"
     commonsLang3Version = "3.9"
-    socketVersion="2.0.0-Preview1-M4"
+    socketVersion= project.stdlibSocketVersion
 }
 
 allprojects {
@@ -115,13 +116,13 @@ subprojects {
             }
         }
         /* Ballerina lang staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1584/" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1586/" }
         /* Docker staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1262/" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1264/" }
         /* Kubernetes staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxkubernetes-1238/" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxkubernetes-1240/" }
         /* AwsLambda staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1136/" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1137/" }
     }
 
     configurations {
@@ -163,8 +164,6 @@ subprojects {
         kubernetesExamples "org.ballerinax.kubernetes:kubernetes-extension-examples:${kubernetesVersion}@zip"
 
         /* Standard libraries */
-        exten "org.ballerinalang:socket-native:${socketVersion}"
-        exten "org.ballerinalang:socket-test-utils:${socketVersion}"
         ballerinaStdLibs "org.ballerinalang:socket-ballerina:${socketVersion}"
 
         balCommand "org.ballerinalang:ballerina-command-distribution:${ballerinaCommandVersion}@zip"

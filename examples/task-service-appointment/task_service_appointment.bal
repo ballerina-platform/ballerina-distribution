@@ -1,7 +1,7 @@
 import ballerina/log;
 import ballerina/task;
 
-// Task Appointment configuration record of the Task Listener.
+// The [`task:AppointmentConfiguration`](https://ballerina.io/learn/api-docs/ballerina/task/records/AppointmentConfiguration.html) record of the Task Listener.
 // Task Appointment can either have a CRON expression (`string`) or an
 // `AppointmentData` record for the `appointmentData` field. Optionally, a
 // `noOfRecurrences` can be provided to limit the number of executions.

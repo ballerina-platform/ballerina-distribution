@@ -3,12 +3,20 @@
     "organization": "ballerina",
     "moduleName": "socket",
     "cache": {
-      "bre": {
-        "sourceDir": "socket-ballerina-zip/ballerina/socket",
+      "bir": {
+        "sourceDir": "socket-ballerina-zip/caches/bir/ballerina/socket",
+        "targetDir": "ballerina/socket"
+      },
+      "balo": {
+        "sourceDir": "socket-ballerina-zip/caches/balo/ballerina/socket",
+        "targetDir": "ballerina/socket"
+      },
+      "jar": {
+        "sourceDir": "socket-ballerina-zip/caches/jar/ballerina/socket",
         "targetDir": "ballerina/socket"
       }
     },
-    "breLibSourcePath": "socket-ballerina-zip/ballerina-socket-0.6.0.jar",
+    "breLibSourcePath": "socket-ballerina-zip/libs",
     "apiDocsPath": "socket-ballerina-zip/docs"
   }
 ]
