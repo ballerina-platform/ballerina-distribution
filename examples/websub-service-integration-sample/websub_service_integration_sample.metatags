@@ -1,0 +1,2 @@
+description: This example demonstrates any of the Ballerina's WebSub components (Publisher, Hub, or Subscriber) could be used with non-Ballerina components.
+keywords: ballerina, ballerina by example, bbe, websub, hub, subscriber, publisher

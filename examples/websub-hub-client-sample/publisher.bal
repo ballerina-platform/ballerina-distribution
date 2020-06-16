@@ -7,7 +7,7 @@ import ballerina/websub;
 
 public function main() {
 
-    // Starts the internal Ballerina Hub.
+    // [ \Starts the internal Ballerina Hub](https://ballerina.io/learn/api-docs/ballerina/websub/functions.html#startHub).
     io:println("Starting up the Ballerina Hub Service");
     websub:Hub webSubHub;
     var result = websub:startHub(new http:Listener(9191), "/websub", "/hub");
@@ -16,15 +16,14 @@ public function main() {
     } else if (result is websub:HubStartedUpError) {
         webSubHub = result.startedUpHub;
     } else {
-        io:println("Hub start error:" + <string>result.detail()?.message);
+        io:println("Hub start error:" + result.message());
         return;
     }
-    // Registers a topic at the hub.
+    // Registers a topic at the hub using [registerTopic](https://ballerina.io/learn/api-docs/ballerina/websub/objects/Hub.html#registerTopic).
     var registrationResponse = webSubHub.registerTopic(
                                             "http://websubpubtopic.com");
     if (registrationResponse is error) {
-        io:println("Error occurred registering topic: " +
-                                <string>registrationResponse.detail()?.message);
+        io:println("Error occurred registering topic: " + registrationResponse.message());
     } else {
         io:println("Topic registration successful!");
     }
@@ -32,12 +31,11 @@ public function main() {
     // Makes the publisher wait until the subscriber subscribes at the hub.
     runtime:sleep(5000);
 
-    // Publishes directly to the internal Ballerina Hub.
+    // Publishes directly to the internal Ballerina Hub using [publishUpdate][publishUpdate](https://ballerina.io/learn/api-docs/ballerina/websub/clients/PublisherClient.html#publishUpdate)..
     var publishResponse = webSubHub.publishUpdate("http://websubpubtopic.com",
                             {"action": "publish", "mode": "internal-hub"});
     if (publishResponse is error) {
-        io:println("Error notifying hub: " +
-                                    <string>publishResponse.detail()?.message);
+        io:println("Error notifying hub: " + publishResponse.message());
     } else {
         io:println("Update notification successful!");
     }
@@ -49,8 +47,7 @@ public function main() {
     publishResponse = webSubHub.publishUpdate("http://websubpubtopic.com",
                             {"action": "publish", "mode": "internal-hub"});
     if (publishResponse is error) {
-        io:println("Error notifying hub: " +
-                                    <string>publishResponse.detail()?.message);
+        io:println("Error notifying hub: " + publishResponse.message());
     } else {
         io:println("Update notification successful!");
     }
