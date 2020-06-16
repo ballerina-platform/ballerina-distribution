@@ -1,0 +1,8 @@
+# To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina run` command.
+$ ballerina run local_transactions_with_handlers.bal
+
+Invoke local participant function.
+Local participant panicked.
+Rollback handler #2 executed.
+Rollback handler #1 executed.

@@ -18,11 +18,6 @@ function testFunc() {
     main();
     test:assertEquals(outputs[0], "Invoke local participant function.");
     test:assertEquals(outputs[1], "Local participant panicked.");
-    test:assertEquals(outputs[2], "Retrying transaction");
-    test:assertEquals(outputs[3], "Invoke local participant function.");
-    test:assertEquals(outputs[4], "Local participant panicked.");
-    test:assertEquals(outputs[5], "Retrying transaction");
-    test:assertEquals(outputs[6], "Invoke local participant function.");
-    test:assertEquals(outputs[7], "Local participant panicked.");
-    test:assertEquals(outputs[8], "Transaction aborted");
+    test:assertEquals(outputs[2], "Rollback handler #2 executed.");
+    test:assertEquals(outputs[3], "Rollback handler #1 executed.");
 }

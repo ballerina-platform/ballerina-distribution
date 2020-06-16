@@ -714,6 +714,20 @@
         ]
     },
     {
+        "title": "Transactions",
+        "column": 0,
+        "category": "Language concepts",
+        "samples": [{
+                "name": "Local Transactions",
+                "url": "local-transactions"
+            },
+            {
+                "name": "Local Transactions with handlers",
+                "url": "local-transactions-with-handlers"
+            }
+        ]
+    },
+    {
         "title": "HTTP/HTTPS",
         "column": 0,
         "category": "Working over the network",
@@ -1186,28 +1200,6 @@
             {
                 "name": "MySQL DDL and DML Operations",
                 "url": "mysql-execute-operation"
-            }
-        ]
-    },
-    {
-        "title": "Transactions",
-        "column": 0,
-        "category": "Experimental features",
-        "samples": [{
-                "name": "Local Transactions",
-                "url": "local-transactions"
-            },
-            {
-                "name": "Local Transactions with participants",
-                "url": "local-transactions-with-participants"
-            },
-            {
-                "name": "XA Transactions",
-                "url": "xa-transactions"
-            },
-            {
-                "name": "Distributed Transactions",
-                "url": "transactions-distributed"
             }
         ]
     }
