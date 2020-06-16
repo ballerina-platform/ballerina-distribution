@@ -1,2 +1,2 @@
-description: This BBE demonstrates how errors can be created, returned, and how returned errors can be handled.
+description: This BBE demonstrates how errors can be created and returned, and how returned errors can be handled.
 keywords: ballerina, ballerina by example, bbe, error handling
