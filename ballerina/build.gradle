@@ -963,7 +963,6 @@ task testExamples() {
          'https-listener',
          'http-client-endpoint',
          'http-redirects',
-         'http-2-0-server-push',
          'websocket-basic-sample',
          'websocket-proxy-server',
          'websocket-failover',
