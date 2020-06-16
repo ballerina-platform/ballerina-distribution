@@ -34,7 +34,7 @@ service timeoutService on new http:Listener(9090) {
         } else {
             http:Response response = new;
             response.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
-            string errorMessage = <string>backendResponse.detail()?.message;
+            string errorMessage = <string>backendResponse.message();
             string expectedMessage = "Idle timeout triggered before " +
                 "initiating inbound response";
             if (errorMessage == expectedMessage) {
