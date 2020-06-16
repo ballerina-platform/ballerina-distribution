@@ -44,7 +44,7 @@ service cookieServer on serverEP {
                     response.setTextPayload("Login succeeded");
                     var result = caller->respond(response);
                     if (result is error) {
-                        log:printError("Failed to respond", result.message());
+                        log:printError("Failed to respond", result);
                     }
                 }
             }
