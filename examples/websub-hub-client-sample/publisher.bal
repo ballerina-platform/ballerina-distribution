@@ -7,7 +7,7 @@ import ballerina/websub;
 
 public function main() {
 
-    // [ \Starts the internal Ballerina Hub](https://ballerina.io/learn/api-docs/ballerina/websub/functions.html#startHub).
+    // Starts the internal Ballerina Hub using [startHub](https://ballerina.io/learn/api-docs/ballerina/websub/functions.html#startHub).
     io:println("Starting up the Ballerina Hub Service");
     websub:Hub webSubHub;
     var result = websub:startHub(new http:Listener(9191), "/websub", "/hub");

@@ -1,2 +1,2 @@
-description: This example demonstrates the usage of the WebSub Hub Client Endpoint to subscribe and unsubscribe to updates for a particular topic at the hub.
+description: This example demonstrates the usage of the WebSub Hub Client subscribe and unsubscribe to updates for a particular topic at the hub.
 keywords: ballerina, ballerina by example, bbe, websub, hub, subscriber, client
