@@ -1,0 +1,2 @@
+description: BBE on how Ballerina supports mutual SSL, which is a certificate-based authentication process where two parties (client and server) authenticate each other by verifying the digital certificates.
+keywords: ballerina, ballerina by example, bbe, mutual ssl, ssl protocols, ciphers

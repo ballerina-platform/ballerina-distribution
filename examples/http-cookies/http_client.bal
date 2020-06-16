@@ -1,7 +1,7 @@
 import ballerina/http;
 import ballerina/log;
 
-// HTTP client configurations associated with enabling cookies.
+// HTTP client configurations associated with [enabling cookies](https://ballerina.io/learn/api-docs/ballerina/http/records/CookieConfig.html).
 http:ClientConfiguration clientEPConfig = {
     cookieConfig: {
         enabled: true
