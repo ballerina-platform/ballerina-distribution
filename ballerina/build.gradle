@@ -974,8 +974,6 @@ task testExamples() {
          'tracing',
          'log-api',
          'the-main-function',
-         'task-scheduler-appointment',
-         'task-scheduler-timer',
          'time',
          'crypto',
          'xml-functions',
