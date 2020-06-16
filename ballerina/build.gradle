@@ -380,7 +380,7 @@ task packageDistZip(type: Zip) {
     }
     into("${parentDir}/bin") {
         from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/ballerina"
-        fileMode = 775
+        fileMode = 0775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
     into("${parentDir}/bin") {
