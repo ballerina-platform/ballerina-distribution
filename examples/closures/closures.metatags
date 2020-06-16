@@ -1,0 +1,2 @@
+description: A closure in Ballerina is an inner anonymous function that has visibility to the scope of its enclosing environment.
+keywords: ballerina, ballerina by example, bbe, closures
