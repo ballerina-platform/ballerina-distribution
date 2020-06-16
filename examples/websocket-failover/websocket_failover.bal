@@ -33,7 +33,8 @@ service failoverProxyService on new http:Listener(9090) {
         wsClientEp.setAttribute(ASSOCIATED_CONNECTION, caller);
         caller.setAttribute(ASSOCIATED_CONNECTION, wsClientEp);
 
-        // Once the client is ready to receive frames, the remote [ready](https://ballerina.io/learn/api-docs/ballerina/http/clients/WebSocketFailoverClient.html#ready) function        // of the client needs to be called separately.
+        // Once the client is ready to receive frames, the remote [ready](https://ballerina.io/learn/api-docs/ballerina/http/clients/WebSocketFailoverClient.html#ready) function
+        // of the client needs to be called separately.
         var err = wsClientEp->ready();
         if (err is http:WebSocketError) {
             log:printError("Error calling ready on client", err);
