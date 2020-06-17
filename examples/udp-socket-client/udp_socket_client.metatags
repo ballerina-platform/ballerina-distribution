@@ -1,0 +1,2 @@
+description: This sample demonstrates how to send data to a remote UDP server.
+keywords: ballerina, ballerina-lang, socket, udp
