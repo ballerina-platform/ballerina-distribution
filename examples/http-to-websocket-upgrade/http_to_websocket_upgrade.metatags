@@ -1,2 +1,2 @@
 description: This BBE demonstrates how an HTTP endpoint is updated to a WebSocket endpoint using an upgrade resource.
-keywords: ballerina, ballerina by example, bbe, http, websocket upgrade
+keywords: ballerina, ballerina by example, bbe, http, websocket, websocket upgrade
