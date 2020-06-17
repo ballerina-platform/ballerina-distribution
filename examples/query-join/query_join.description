@@ -1,4 +1,5 @@
-// Both `query expression` is a list comprehension, which can be used with a value that is iterable with any error type.
-// It consists of following clauses: `from`, `join`, `let`, `on`, `where`, `select`, and `limit`.
-// The first clause must be a `from` clause and must have a `select` clause as well.
-// The result of the query expression is a list.
+// `join` clause can be used to perform an inner equijoin on iterables using `query expression`.
+// It starts with `join` which behaves similarly to `from` clause, iterating any iterable value.
+// Then, an `on` condition is defined with `equals` keyword to compare the values and identify
+// the matching items based on the given condition. The iteration skips following the clauses
+// for the non-matching items which dissatisfy the `on` condition.
