@@ -14,7 +14,7 @@ public function main() {
     int intervalInMillis = 1000;
 
     // Initializes the timer scheduler using the interval value.
-    // The delay will be equal to the interval as an initial delay is not provided.
+    // The delay will be equal to the interval if an initial delay is not provided.
     task:Scheduler timer = new ({
         intervalInMillis: intervalInMillis,
         initialDelayInMillis: 0
@@ -51,7 +51,7 @@ public function main() {
         runtime:sleep(2000);
     }
 
-    runtime:sleep(1000);
+    runtime:sleep(2000);
 
     // Cancels the timer. This will stop the timer and all the services
     // attached to it.
