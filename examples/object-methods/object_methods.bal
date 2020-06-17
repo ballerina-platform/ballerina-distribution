@@ -7,7 +7,7 @@ type Person object {
     public string lastName;
 
     // The object initializer.
-    function __init(int age, string firstName, string lastName) {
+    function init(int age, string firstName, string lastName) {
         self.age = age;
         self.firstName = firstName;
         self.lastName = lastName;

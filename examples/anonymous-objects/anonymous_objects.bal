@@ -12,7 +12,7 @@ public type Person record {
         public string city;
         public string country;
 
-        public function __init(string city, string country) {
+        public function init(string city, string country) {
             self.city = city;
             self.country = country;
         }
@@ -39,7 +39,7 @@ public function main() {
         public string city;
         public string country;
 
-        public function __init(string city, string country) {
+        public function init(string city, string country) {
             self.city = city;
             self.country = country;
         }
