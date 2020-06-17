@@ -36,16 +36,12 @@ function insertRecords(jdbc:Client jdbcClient) returns int[] {
                                     creditLimit: 3000.25, country: "USA"}
     ];
 
-    sql:ParameterizedString[] insertQueries = [];
-    foreach var data in insertRecords {
-        insertQueries.push({
-            parts: ["INSERT INTO Customers " +
-                "(firstName, lastName,registrationID,creditLimit,country) " +
-                "VALUES (",",",",",",",",",")"],
-            insertions: [data.firstName, data.lastName,
-                data.registrationID, data.creditLimit, data.country]
-        });
-    }
+    sql:ParameterizedQuery[] insertQueries =
+        from var data in insertRecords
+            select  `INSERT INTO Customers
+                (firstName, lastName, registrationID, creditLimit, country)
+                VALUES (${data.firstName}, ${data.lastName},
+                ${data.registrationID}, ${data.creditLimit}, ${data.country})`;
     
     // Insert the records with the auto-generated ID.
     sql:ExecutionResult[]|sql:Error? result =
@@ -68,14 +64,11 @@ function insertRecords(jdbc:Client jdbcClient) returns int[] {
 function updateRecords(jdbc:Client jdbcClient, int[] generatedIds) {
 
     // The update queries.
-    sql:ParameterizedString[] updateQueries = [];
-    foreach var id in generatedIds {
-        updateQueries.push({
-            parts: ["Update Customers " +
-            "set creditLimit = creditLimit + 1000.0 where customerId =", ""],
-            insertions: [id]
-        });
-    }
+    sql:ParameterizedQuery[] updateQueries =
+        from var id in generatedIds
+            select `Update Customers
+                    set creditLimit = creditLimit + 1000.0
+                    where customerId =${id}`;
 
     // Update the record with the auto-generated ID.
     sql:ExecutionResult[]|sql:Error? result =
