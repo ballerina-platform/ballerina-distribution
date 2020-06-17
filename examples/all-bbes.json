@@ -176,6 +176,10 @@
             {
                 "name": "Query Action",
                 "url": "query-action"
+            },
+            {
+                "name": "Join Iterables",
+                "url": "query-join"
             }
         ]
     },

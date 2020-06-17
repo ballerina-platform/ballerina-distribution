@@ -1,0 +1,2 @@
+description: Example on joining two iterables using Ballerina query expression.
+keywords: ballerina by examples, bbe, query, query expression, query action, join, list, from, on, where, let, select, iterable, iterate

@@ -1,0 +1,4 @@
+// Both `query expression` is a list comprehension, which can be used with a value that is iterable with any error type.
+// It consists of following clauses: `from`, `join`, `let`, `on`, `where`, `select`, and `limit`.
+// The first clause must be a `from` clause and must have a `select` clause as well.
+// The result of the query expression is a list.
