@@ -14,7 +14,7 @@ function initializeDatabase() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = dbUser, password = dbPassword);
     // Create the database if it does not exist. If any error occurred,
     // the error will be returned.
-    sql:ExecutionResult? result =
+    sql:ExecutionResult result =
         check mysqlClient->execute("CREATE DATABASE IF NOT EXISTS " + dbName);
     io:println("Database created. ");
     // Close the MySQL client.
@@ -25,25 +25,21 @@ function initializeTable(mysql:Client mysqlClient)
 returns sql:Error? {
     // Execute dropping the table. The `sql:ExecutionResult` is returned upon
     // successful execution. An error will be returned in case of a failure.
-    sql:ExecutionResult? result =
+    sql:ExecutionResult result =
         check mysqlClient->execute("DROP TABLE IF EXISTS Customers");
-    if (result is sql:ExecutionResult) {
-        io:println("Drop table executed: ", result);
-    }
+    io:println("Drop table executed: ", result);
 
     // Similarly, to drop a table, the `create` table query is executed.
     // Here, the `customerId` is an auto-generated column.
     result = check mysqlClient->execute("CREATE TABLE IF NOT EXISTS Customers" +
         "(customerId INTEGER NOT NULL AUTO_INCREMENT, firstName VARCHAR(300), " +
-        "lastName VARCHAR(300), registrationID INTEGER, creditLimit DOUBLE, " +
-        "country VARCHAR(300), PRIMARY KEY (customerId))");
-    if (result is sql:ExecutionResult) {
-        io:println("Create table executed: ", result);
-    }
+        "lastName VARCHAR(300), registrationID INTEGER UNIQUE, " + 
+        "creditLimit DOUBLE, country VARCHAR(300), PRIMARY KEY (customerId))");
+    io:println("Create table executed: ", result);
 
 }
 
-function insertRecords(mysql:Client mysqlClient) returns int[] {
+function insertRecords(mysql:Client mysqlClient) {
 
     // Records to be inserted.
     var insertRecords = [
@@ -55,6 +51,7 @@ function insertRecords(mysql:Client mysqlClient) returns int[] {
                                     creditLimit: 3000.25, country: "USA"}
     ];
 
+    // Create a batch Parameterized Query.
     sql:ParameterizedQuery[] insertQueries =
             from var data in insertRecords
                 select  `INSERT INTO Customers
@@ -63,43 +60,53 @@ function insertRecords(mysql:Client mysqlClient) returns int[] {
                     ${data.registrationID}, ${data.creditLimit}, ${data.country})`;
     
     // Insert the records with the auto-generated ID.
-    sql:ExecutionResult[]|sql:Error? result =
+    sql:ExecutionResult[]|sql:Error result =
         mysqlClient->batchExecute(insertQueries);
 
-    int[] generatedIds = [];
     if (result is sql:ExecutionResult[]) {
+        int[] generatedIds = [];
         foreach var summary in result {
             generatedIds.push(<int> summary.lastInsertId);
         }
-        io:println("\nGenerated IDs are: ", generatedIds);
-    } else if (result is sql:Error) {
-        io:println("Error occured: ", result);
+        io:println("\nInsert success, generated IDs are: ", generatedIds, "\n");
     } else {
-        io:println("Empty result");
+        io:println("Error occured: ", result);
     }
-    return generatedIds;
 }
 
-function updateRecords(mysql:Client mysqlClient, int[] generatedIds) {
+function simulateBatchExecuteFailure(mysql:Client mysqlClient) {
 
-    // The update queries.
-    sql:ParameterizedQuery[] updateQueries =
-            from var id in generatedIds
-                select `Update Customers
-                        set creditLimit = creditLimit + 1000.0
-                        where customerId =${id}`;
+    // Records with duplicate `registrationID` entry (registrationID = 1).
+    var insertRecords = [
+        {firstName: "Linda", lastName: "Jones", registrationID: 4,
+                                    creditLimit: 10000.75, country: "USA"},
+        {firstName: "Peter", lastName: "Stuart", registrationID: 1,
+                                    creditLimit: 5000.75, country: "USA"},
+        {firstName: "Camelia", lastName: "Potter", registrationID: 5,
+                                    creditLimit: 2000.25, country: "USA"}
+    ];
 
-    // Update the record with the auto-generated ID.
-    sql:ExecutionResult[]|sql:Error? result =
-        mysqlClient->batchExecute(updateQueries);
-    if (result is sql:ExecutionResult[]) {
-        io:println("\nUpdated Rows summary: ", result);
-    } else if (result is sql:Error) {
-        io:println("Error occurred: ", result);
-    } else {
-        io:println("Empty result");
+    // Create a batch Parameterized Query.
+    sql:ParameterizedQuery[] insertQueries =
+            from var data in insertRecords
+                select  `INSERT INTO Customers
+                    (firstName, lastName, registrationID, creditLimit, country)
+                    VALUES (${data.firstName}, ${data.lastName},
+                    ${data.registrationID}, ${data.creditLimit}, ${data.country})`;
+
+    // Transaction block can be used to rollback if any error occured.
+    transaction {
+        var result = mysqlClient->batchExecute(insertQueries);
+        if (result is sql:BatchExecuteError) {
+            io:println(result.message());
+            io:println(result.detail()?.executionResults);
+            io:println("Rollback transaction.");
+            rollback;
+        } else {
+            error? err = commit;
+            io:println("Error occured while committing: ", err);  
+        }
     }
-
 }
 
 public function main() {
@@ -115,10 +122,9 @@ public function main() {
             sql:Error? initResult = initializeTable(mysqlClient);
             if (initResult is ()) {
                 // Insert a batch of records.
-                int[] generatedIds = insertRecords(mysqlClient);
-                // Update records.
-                updateRecords(mysqlClient, generatedIds);
-
+                insertRecords(mysqlClient);
+                // Simulate Failure Rollback.
+                simulateBatchExecuteFailure(mysqlClient);
                 // Check the data.
                 checkData(mysqlClient);
                 io:println("\nSample executed successfully!");
