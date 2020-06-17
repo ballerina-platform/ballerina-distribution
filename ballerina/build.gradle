@@ -824,7 +824,6 @@ task testExamples() {
          'basic-https-listener-client',
          'https-listener',
          'http-client-endpoint',
-         'http-2-0-server-push',
          'websocket-basic-sample',
          'websocket-proxy-server',
          'websocket-failover',
