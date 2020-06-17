@@ -6,7 +6,7 @@ import ballerina/sql;
 // examples when initializing the MySQL connector. You need to change these
 // based on your setup if you try locally.
 string dbUser = "root";
-string dbPassword = "Test@123";
+string dbPassword = "root";
 string dbName = "MYSQL_BBE_EXEC";
 
 function initializeDatabase() returns sql:Error? {
@@ -56,29 +56,25 @@ function initializeTable(mysql:Client mysqlClient)
 function updateRecord(mysql:Client mysqlClient, int generatedId) {
     // Update the record with the auto-generated ID.
     string query = string ` ${generatedId}`;
-    sql:ExecutionResult|sql:Error? result =
+    sql:ExecutionResult|sql:Error result =
         mysqlClient->execute("Update Customers set creditLimit = 15000.5 "+
         "where customerId =" + generatedId.toString());
     if (result is sql:ExecutionResult) {
         io:println("Updated Row count: ", result?.affectedRowCount);
-    } else if (result is sql:Error) {
-        io:println("Error occured: ", result);
     } else {
-        io:println("Empty result");
+        io:println("Error occured: ", result);
     }
 }
 
 function deleteRecord(mysql:Client mysqlClient, int generatedId) {
     // Delete the record with the auto-generated ID.
-    sql:ExecutionResult|sql:Error? result =
+    sql:ExecutionResult|sql:Error result =
         mysqlClient->execute("Delete from Customers where customerId = "+
         generatedId.toString());
     if (result is sql:ExecutionResult) {
         io:println("Deleted Row count: ", result.affectedRowCount);
-    } else if (result is sql:Error) {
-        io:println("Error occured: ", result);
     } else {
-        io:println("Empty result");
+        io:println("Error occured: ", result);
     }
 }
 
