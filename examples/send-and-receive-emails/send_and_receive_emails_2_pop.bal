@@ -20,10 +20,10 @@ public function main() {
             io:println("There are no emails in the INBOX.");
         } else {
             io:println("Error while getting getting response: "
-                + <string> emailResponse.detail()["message"]);
+                + <string> emailResponse.message());
         }
     } else {
         io:println("Error while creating client: "
-            + <string> popClient.detail()["message"]);
+            + <string> popClient.message());
     }
 }
