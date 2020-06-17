@@ -30,6 +30,7 @@ function simpleQuery(jdbc:Client jdbcClient) {
     // However, in case if the stream is not fully consumed, the stream
     // should be closed specifically.
     e = resultStream.close();
+
     io:println("------ End Simple Query -------");
 }
 
@@ -53,6 +54,7 @@ function countRows(jdbc:Client jdbcClient) {
     }
     // Close the stream.
     error? e = resultStream.close();
+
     io:println("------ End Count Total Rows -------");
 }
 
@@ -91,6 +93,7 @@ function typedQuery(jdbc:Client jdbcClient) {
 
     // Close the stream.
     e = resultStream.close();
+
     io:println("------ End Query With Type Description -------");
 }
 
@@ -114,6 +117,7 @@ public function main() {
     // Initialize the JDBC client.
     jdbc:Client|sql:Error jdbcClient = new ("jdbc:h2:file:./target/customers",
         "rootUser", "rootPass");
+
     if (jdbcClient is jdbc:Client) {
         sql:Error? err = initializeTable(jdbcClient);
         if (err is sql:Error) {
@@ -123,10 +127,12 @@ public function main() {
             simpleQuery(jdbcClient);
             countRows(jdbcClient);
             typedQuery(jdbcClient);
+
             io:println("Queried the database successfully!");
         }
         // Close the JDBC client.
         sql:Error? e = jdbcClient.close();
+
     } else {
         io:println("Initialization failed!!");
         io:println(jdbcClient);
