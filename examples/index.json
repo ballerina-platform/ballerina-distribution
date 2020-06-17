@@ -703,7 +703,7 @@
                 "name": "OpenShift Deployment",
                 "url": "openshift-deployment"
             },
-            {
+            {l
                 "name": "AWS Lambda Deployment",
                 "url": "awslambda-deployment"
             },
@@ -724,6 +724,10 @@
             {
                 "name": "Local Transactions with handlers",
                 "url": "local-transactions-with-handlers"
+            },
+            {
+                "name": "Non Transaction Retry",
+                "url": "non-transaction-retry"
             }
         ]
     },
