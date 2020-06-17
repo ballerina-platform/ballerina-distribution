@@ -19,6 +19,7 @@ function initializeDatabase() returns sql:Error? {
     io:println("Database created. ");
     // Close the MySQL client.
     check mysqlClient.close();
+
 }
 
 function initializeTable(mysql:Client mysqlClient)
@@ -42,7 +43,7 @@ returns sql:Error? {
 function insertSingleRecord(mysql:Client mysqlClient) {
 
     // Create a Parameterized Query.
-    string firstName = "Camelia";
+    string firstName = "Camellia";
     string lastName = "Johns";
     int registrationId = 1;
     float creditLimit = 5000.75;
@@ -59,7 +60,7 @@ function insertSingleRecord(mysql:Client mysqlClient) {
     if (result is sql:ExecutionResult) {
         io:println("\nInsert success, generated Id: ", result.lastInsertId);
     } else {
-        io:println("Error occured: ", result);
+        io:println("Error occurred: ", result);
     }
 }
 
@@ -94,34 +95,39 @@ function insertMultipleRecords(mysql:Client mysqlClient) {
         }
         io:println("\nBatch Insert success, generated IDs are: ", generatedIds);
     } else {
-        io:println("Error occured: ", result);
+        io:println("Error occurred: ", result);
     }
 }
 
 public function main() {
     // Initialize the database.
     sql:Error? err = initializeDatabase();
+
     if (err is ()) {
         // Initialize the MySQL client to be used for the rest of the DDL
         // and DML operations.
         mysql:Client|sql:Error mysqlClient = new (user = dbUser,
             password = dbPassword, database = dbName);
+
         if (mysqlClient is mysql:Client) {
             // Initialize a table and insert sample data.
             sql:Error? initResult = initializeTable(mysqlClient);
+
             if (initResult is ()) {
-                // Insert a batch of records.
+            // Insert a batch of records.
             insertSingleRecord(mysqlClient);
             // Simulate Failure Rollback.
             insertMultipleRecords(mysqlClient);
-                // Check the data.
-                checkData(mysqlClient);
-                io:println("\nSample executed successfully!");
+            // Check the data.
+            checkData(mysqlClient);
+
+            io:println("\nSample executed successfully!");
             } else {
                 io:println("Customer table initialization failed: ", initResult);
             }
             // Close the MySQL client.
             sql:Error? e = mysqlClient.close();
+
         } else {
             io:println("Table initialization failed!!", mysqlClient);
         }

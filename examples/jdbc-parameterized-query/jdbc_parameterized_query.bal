@@ -23,7 +23,7 @@ returns sql:Error? {
 function insertSingleRecord(jdbc:Client jdbcClient) {
 
     // Create a Parameterized Query.
-    string firstName = "Camelia";
+    string firstName = "Camellia";
     string lastName = "Johns";
     int registrationId = 1;
     float creditLimit = 5000.75;
@@ -40,7 +40,7 @@ function insertSingleRecord(jdbc:Client jdbcClient) {
     if (result is sql:ExecutionResult) {
         io:println("\nInsert success, generated Id: ", result.lastInsertId);
     } else {
-        io:println("Error occured: ", result);
+        io:println("Error occurred: ", result);
     }
 }
 
@@ -75,7 +75,7 @@ function insertMultipleRecords(jdbc:Client jdbcClient) {
         }
         io:println("\nBatch Insert success, generated IDs are: ", generatedIds);
     } else {
-        io:println("Error occured: ", result);
+        io:println("Error occurred: ", result);
     }
 }
 
@@ -83,9 +83,11 @@ public function main() {
     // Initialize the JDBC client.
     jdbc:Client|sql:Error jdbcClient = new ("jdbc:h2:file:./target/customers",
         "rootUser", "rootPass");
+
     if (jdbcClient is jdbc:Client) {
         // Initialize a table and insert sample data.
         sql:Error? initResult = initializeTable(jdbcClient);
+
         if (initResult is ()) {
             // Insert a batch of records.
             insertSingleRecord(jdbcClient);
@@ -93,12 +95,14 @@ public function main() {
             insertMultipleRecords(jdbcClient);
             // Check the data.
             checkData(jdbcClient);
+
             io:println("\nSample executed successfully!");
         } else {
             io:println("Customer table initialization failed: ", initResult);
         }
         // Close the JDBC client.
         sql:Error? e = jdbcClient.close();
+
     } else {
         io:println("Initialization failed!!");
         io:println(jdbcClient);

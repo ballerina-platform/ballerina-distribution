@@ -51,7 +51,7 @@ function insertRecords(jdbc:Client jdbcClient) {
         }
         io:println("\nInsert success, generated IDs are: ", generatedIds, "\n");
     } else {
-        io:println("Error occured: ", result);
+        io:println("Error occurred: ", result);
     }
 }
 
@@ -63,7 +63,7 @@ function simulateBatchExecuteFailure(jdbc:Client jdbcClient) {
                                     creditLimit: 10000.75, country: "USA"},
         {firstName: "Peter", lastName: "Stuart", registrationID: 1,
                                     creditLimit: 5000.75, country: "USA"},
-        {firstName: "Camelia", lastName: "Potter", registrationID: 5,
+        {firstName: "Camellia", lastName: "Potter", registrationID: 5,
                                     creditLimit: 2000.25, country: "USA"}
     ];
 
@@ -75,7 +75,7 @@ function simulateBatchExecuteFailure(jdbc:Client jdbcClient) {
                 VALUES (${data.firstName}, ${data.lastName},
                 ${data.registrationID}, ${data.creditLimit}, ${data.country})`;
 
-    // Transaction block can be used to rollback if any error occured.
+    // Transaction block can be used to rollback if any error occurred.
     transaction {
         var result = jdbcClient->batchExecute(insertQueries);
         if (result is sql:BatchExecuteError) {
@@ -85,18 +85,21 @@ function simulateBatchExecuteFailure(jdbc:Client jdbcClient) {
             rollback;
         } else {
             error? err = commit;
-            io:println("Error occured while committing: ", err);  
+            io:println("Error occurred while committing: ", err);
         }
     }
+
 }
 
 public function main() {
     // Initialize the JDBC client.
     jdbc:Client|sql:Error jdbcClient = new ("jdbc:h2:file:./target/customers",
         "rootUser", "rootPass");
+
     if (jdbcClient is jdbc:Client) {
         // Initialize a table and insert sample data.
         sql:Error? initResult = initializeTable(jdbcClient);
+
         if (initResult is ()) {
             // Insert a batch of records.
             insertRecords(jdbcClient);
@@ -104,12 +107,14 @@ public function main() {
             simulateBatchExecuteFailure(jdbcClient);
             // Check the data.
             checkData(jdbcClient);
+
             io:println("\nSample executed successfully!");
         } else {
             io:println("Customer table initialization failed: ", initResult);
         }
         // Close the JDBC client.
         sql:Error? e = jdbcClient.close();
+
     } else {
         io:println("Initialization failed!!");
         io:println(jdbcClient);

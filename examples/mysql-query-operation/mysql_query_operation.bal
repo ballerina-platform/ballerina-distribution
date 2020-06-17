@@ -36,6 +36,7 @@ function simpleQuery(mysql:Client mysqlClient) {
     // However, in case if the stream is not fully consumed, the stream should be
     // closed specifically.
     e = resultStream.close();
+
     io:println("------ End Simple Query -------");
 }
 
@@ -57,8 +58,10 @@ function countRows(mysql:Client mysqlClient) {
     } else {
         io:println("Customer table is empty");
     }
+
     // Close the stream.
     error? e = resultStream.close();
+
     io:println("------ End Count Total Rows -------");
 }
 
@@ -91,7 +94,7 @@ function typedQuery(mysql:Client mysqlClient) {
         io:println(customer);
     });
     if (e is error) {
-            io:println(e);
+       io:println(e);
     }
 
     // Close the stream.
@@ -124,6 +127,7 @@ function initializeTable() returns sql:Error? {
 public function main() {
     // Initialize the MySQL client.
     sql:Error? err = initializeTable();
+
     if (err is sql:Error) {
         io:println("Sample data initialization failed!");
         io:println(err);
@@ -139,6 +143,7 @@ public function main() {
 
             // Close the MySQL client.
             sql:Error? e = mysqlClient.close();
+
         } else {
             io:println("MySQL Client initialization for " +
                 "querying data failed!", mysqlClient);

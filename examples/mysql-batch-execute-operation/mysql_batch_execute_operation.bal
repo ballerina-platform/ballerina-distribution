@@ -19,6 +19,7 @@ function initializeDatabase() returns sql:Error? {
     io:println("Database created. ");
     // Close the MySQL client.
     check mysqlClient.close();
+
 }
 
 function initializeTable(mysql:Client mysqlClient)
@@ -70,8 +71,9 @@ function insertRecords(mysql:Client mysqlClient) {
         }
         io:println("\nInsert success, generated IDs are: ", generatedIds, "\n");
     } else {
-        io:println("Error occured: ", result);
+        io:println("Error occurred: ", result);
     }
+
 }
 
 function simulateBatchExecuteFailure(mysql:Client mysqlClient) {
@@ -82,7 +84,7 @@ function simulateBatchExecuteFailure(mysql:Client mysqlClient) {
                                     creditLimit: 10000.75, country: "USA"},
         {firstName: "Peter", lastName: "Stuart", registrationID: 1,
                                     creditLimit: 5000.75, country: "USA"},
-        {firstName: "Camelia", lastName: "Potter", registrationID: 5,
+        {firstName: "Camellia", lastName: "Potter", registrationID: 5,
                                     creditLimit: 2000.25, country: "USA"}
     ];
 
@@ -94,7 +96,7 @@ function simulateBatchExecuteFailure(mysql:Client mysqlClient) {
                     VALUES (${data.firstName}, ${data.lastName},
                     ${data.registrationID}, ${data.creditLimit}, ${data.country})`;
 
-    // Transaction block can be used to rollback if any error occured.
+    // Transaction block can be used to rollback if any error occurred.
     transaction {
         var result = mysqlClient->batchExecute(insertQueries);
         if (result is sql:BatchExecuteError) {
@@ -104,22 +106,26 @@ function simulateBatchExecuteFailure(mysql:Client mysqlClient) {
             rollback;
         } else {
             error? err = commit;
-            io:println("Error occured while committing: ", err);  
+            io:println("Error occurred while committing: ", err);
         }
     }
+
 }
 
 public function main() {
     // Initialize the database.
     sql:Error? err = initializeDatabase();
+
     if (err is ()) {
         // Initialize the MySQL client to be used for the rest of the DDL
         // and DML operations.
         mysql:Client|sql:Error mysqlClient = new (user = dbUser,
             password = dbPassword, database = dbName);
+
         if (mysqlClient is mysql:Client) {
             // Initialize a table and insert sample data.
             sql:Error? initResult = initializeTable(mysqlClient);
+
             if (initResult is ()) {
                 // Insert a batch of records.
                 insertRecords(mysqlClient);
@@ -127,12 +133,14 @@ public function main() {
                 simulateBatchExecuteFailure(mysqlClient);
                 // Check the data.
                 checkData(mysqlClient);
+
                 io:println("\nSample executed successfully!");
             } else {
                 io:println("Customer table initialization failed: ", initResult);
             }
             // Close the MySQL client.
             sql:Error? e = mysqlClient.close();
+
         } else {
             io:println("Table initialization failed!!", mysqlClient);
         }

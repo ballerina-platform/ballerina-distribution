@@ -33,10 +33,15 @@ returns int|string|sql:Error? {
 }
 
 function updateRecord(jdbc:Client jdbcClient, int generatedId) {
+    // Create a parameterized query.
+    sql:ParameterizedQuery updateQuery =
+        `Update Customers set creditLimit = 15000.5
+         where customerId = ${generatedId}`;
+
     // Update the record with the auto-generated ID.
     sql:ExecutionResult|sql:Error result =
-        jdbcClient->execute("Update Customers set creditLimit = 15000.5 " +
-        "where customerId = " + generatedId.toString());
+        jdbcClient->execute(updateQuery);
+
     if (result is sql:ExecutionResult) {
         io:println("Updated Row count: ", result?.affectedRowCount);
     } else {
@@ -47,8 +52,9 @@ function updateRecord(jdbc:Client jdbcClient, int generatedId) {
 function deleteRecord(jdbc:Client jdbcClient, int generatedId) {
     // Delete the record with the auto-generated ID.
     sql:ExecutionResult|sql:Error result =
-        jdbcClient->execute("Delete from Customers where customerId = " +
-        generatedId.toString());
+        jdbcClient->execute(
+        `Delete from Customers where customerId = ${generatedId}`);
+
     if (result is sql:ExecutionResult) {
         io:println("Deleted Row count: ", result.affectedRowCount);
     } else {
@@ -60,20 +66,24 @@ public function main() {
     // Initialize the JDBC client.
     jdbc:Client|sql:Error jdbcClient = new ("jdbc:h2:file:./target/customers",
         "rootUser", "rootPass");
+
     if (jdbcClient is jdbc:Client) {
         // Initialize a table and insert sample data.
         int|string|sql:Error? initResult = initializeTable(jdbcClient);
+
         if (initResult is int) {
             // Update a record.
             updateRecord(jdbcClient, initResult);
             // Delete a record.
             deleteRecord(jdbcClient, initResult);
+
             io:println("Sample executed successfully!");
         } else if (initResult is sql:Error) {
             io:println("Customer table initialization failed: ", initResult);
         }
         // Close the JDBC client.
         sql:Error? e = jdbcClient.close();
+
     } else {
         io:println("Initialization failed!!");
         io:println(jdbcClient);
