@@ -51,9 +51,10 @@ function updateRecord(jdbc:Client jdbcClient, int generatedId) {
 
 function deleteRecord(jdbc:Client jdbcClient, int generatedId) {
     // Delete the record with the auto-generated ID.
+    sql:ParameterizedQuery deleteQuery =
+        `Delete from Customers where customerId = ${generatedId}`;
     sql:ExecutionResult|sql:Error result =
-        jdbcClient->execute(
-        `Delete from Customers where customerId = ${generatedId}`);
+            jdbcClient->execute(deleteQuery);
 
     if (result is sql:ExecutionResult) {
         io:println("Deleted Row count: ", result.affectedRowCount);
