@@ -1,6 +1,6 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file and execute the `ballerina run` command.
-$ ballerina run jdbc2_parameterized_query.bal
+$ ballerina run jdbc_parameterized_query.bal
 
 Drop table executed: affectedRowCount=0 lastInsertId=
 Create table executed: affectedRowCount=0 lastInsertId=

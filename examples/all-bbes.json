@@ -937,27 +937,27 @@
         "samples": [
             {
                 "name": "Client Initialization",
-                "url": "jdbc2-init-options"
+                "url": "jdbc-init-options"
             },
             {
                 "name": "Select Query Operations",
-                "url": "jdbc2-query-operation"
+                "url": "jdbc-query-operation"
             },
             {
                 "name": "Query with Complex Types",
-                "url": "jdbc2-complex-type-queries"
+                "url": "jdbc-complex-type-queries"
             },
             {
                 "name": "DDL and DML Operations",
-                "url": "jdbc2-execute-operation"
+                "url": "jdbc-execute-operation"
             },
             {
                 "name": "Batch Execute Operations",
-                "url": "jdbc2-batch-execute-operation"
+                "url": "jdbc-batch-execute-operation"
             },
             {
                 "name": "Parameterized Query",
-                "url": "jdbc2-parameterized-query"
+                "url": "jdbc-parameterized-query"
             }
         ]
     },
