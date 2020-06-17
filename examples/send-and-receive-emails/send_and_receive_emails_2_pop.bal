@@ -24,6 +24,6 @@ public function main() {
         }
     } else {
         io:println("Error while creating client: "
-            + <string> popClient.message());
+            + popClient.message());
     }
 }
