@@ -9,8 +9,9 @@ function newArrayDeque() returns handle = @java:Constructor {
 
 // This ballerina function is linked with the `java.util.ArrayDeque` constructor that takes the initial capacity.
 // There are other overloaded constructors that take a single parameter in this class.
-// To link with the exact constructor, you can specify the `paramTypes` field. Refer to the `Overloaded
-// Methods/Constructors` section for more details on dealing with overloaded methods and constructors.
+// To link with the exact constructor, you can specify the `paramTypes` field. Refer 
+// the [OverloadedMethods/Constructors](https://ballerina.io/learn/by-example/overloaded-methods-constructors.html)  
+// section for more details on dealing with overloaded methods and constructors.
 // This function returns a `handle` value, which refers to an object of `java.util.ArrayDeque` class.
 function newArrayDequeWithInitialCapacity(int numElements) returns handle = @java:Constructor {
     class: "java.util.ArrayDeque",
