@@ -34,29 +34,25 @@ returns int|string|sql:Error? {
 
 function updateRecord(jdbc:Client jdbcClient, int generatedId) {
     // Update the record with the auto-generated ID.
-    sql:ExecutionResult|sql:Error? result =
+    sql:ExecutionResult|sql:Error result =
         jdbcClient->execute("Update Customers set creditLimit = 15000.5 " +
         "where customerId = " + generatedId.toString());
     if (result is sql:ExecutionResult) {
         io:println("Updated Row count: ", result?.affectedRowCount);
-    } else if (result is sql:Error) {
-        io:println("Error occurred: ", result);
     } else {
-        io:println("Empty result");
+        io:println("Error occurred: ", result);
     }
 }
 
 function deleteRecord(jdbc:Client jdbcClient, int generatedId) {
     // Delete the record with the auto-generated ID.
-    sql:ExecutionResult|sql:Error? result =
+    sql:ExecutionResult|sql:Error result =
         jdbcClient->execute("Delete from Customers where customerId = " +
         generatedId.toString());
     if (result is sql:ExecutionResult) {
         io:println("Deleted Row count: ", result.affectedRowCount);
-    } else if (result is sql:Error) {
-        io:println("Error occured: ", result);
     } else {
-        io:println("Empty result");
+        io:println("Error occurred: ", result);
     }
 }
 
