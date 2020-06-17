@@ -1,0 +1,2 @@
+description: BBE on the use the JDBC client to execute a batch of DDL/DML operations.
+keywords: ballerina, ballerina by example, bbe, jdbc, insert, update, delete, batch update

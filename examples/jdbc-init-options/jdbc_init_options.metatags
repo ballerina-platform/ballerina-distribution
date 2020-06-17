@@ -1,0 +1,2 @@
+description: BBE demonstrates how to initialize the JDBC client with different initialization options.
+keywords: ballerina, ballerina by example, bbe, jdbc, initialize, configure, connection pool

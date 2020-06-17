@@ -1,0 +1,2 @@
+description: BBE demonstrates how to initialize the MySQL client with different initialization options.
+keywords: ballerina, ballerina by example, bbe, mysql, initialize, configure, connection pool

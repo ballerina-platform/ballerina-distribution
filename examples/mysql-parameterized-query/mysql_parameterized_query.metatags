@@ -1,0 +1,2 @@
+description: BBE demonstrates how to use `sql:ParameterizedQuery` to easily create pre compiled SQL statements which can be reused.
+keywords: ballerina, ballerina by example, bbe, mysql, parameterized query, parameters, update, insert, delete

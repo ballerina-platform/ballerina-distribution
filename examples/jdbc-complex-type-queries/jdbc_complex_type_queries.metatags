@@ -1,0 +1,2 @@
+description: BBE on the use of JDBC client with complex data types such as arrays, binary, blobs, clob, and date/time fields.
+keywords: ballerina, ballerina by example, bbe, jdbc, datatype, blobs, date, time

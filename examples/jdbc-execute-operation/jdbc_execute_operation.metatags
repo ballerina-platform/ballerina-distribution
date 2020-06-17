@@ -1,0 +1,2 @@
+description: BBE on the use of JDBC client with DDL and DML operations.
+keywords: ballerina, ballerina by example, bbe, jdbc, insert, update, delete
