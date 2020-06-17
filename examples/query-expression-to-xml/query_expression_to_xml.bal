@@ -1,50 +1,36 @@
 import ballerina/io;
 
-type Student record {
-    string firstName;
-    string lastName;
-    int intakeYear;
-    float score;
-};
-
-type Report record {
-    string name;
-    string degree;
-    int expectedGradYear;
-};
-
 public function main() {
+    // The `xml` element with nested children.
+    xml school = xml `<school>
+                        <student>
+                           <firstName>Alex</firstName>
+                           <lastName>George</lastName>
+                           <intakeYear>2020</intakeYear>
+                           <score>1.5</score>
+                        </student>
+                        <student>
+                           <firstName>Ranjan</firstName>
+                           <lastName>Fonseka</lastName>
+                           <intakeYear>2020</intakeYear>
+                           <score>0.9</score>
+                        </student>
+                        <student>
+                           <firstName>John</firstName>
+                           <lastName>David</lastName>
+                           <intakeYear>2022</intakeYear>
+                           <score>1.5</score>
+                        </student>
+                      </school>`;
 
-    Student s1 = {firstName: "Alex", lastName: "George", intakeYear: 2020, score: 1.5};
-    Student s2 = {firstName: "Ranjan", lastName: "Fonseka", intakeYear: 2020, score: 0.9};
-    Student s3 = {firstName: "John", lastName: "David", intakeYear: 2022, score: 1.2};
+    // The `from` clause works similarly to a `foreach` statement.
+    // `authors` is the concatenated `xml` of `query expression` results.
+    xml authors = from var x in school/<student>/<firstName>
+        // The `select` clause is evaluated for each iteration.
+        // The emitted values values are concatenated to form the `xml` result.
+        select <xml> x
+        // The `limit` clause limits the number of output items.
+        limit 2;
 
-    Student[] studentList = [s1, s2, s3];
-
-    //The `from` clause works similarly to a `foreach` statement.
-    //It can be used to iterate any iterable value.
-    //The `outputStudentList` is the result of the `query` expression.
-    Report[] reportList = from var student in studentList
-       //The `where` clause provides a way to perform conditional execution and works similarly to an `if` condition.
-       //It can refer to variables bound by the from clause.
-       //When the `where` condition evaluates to false, the iteration skips following the clauses.
-       where student.score >= 1
-       //The `let` clause binds the variables.
-       let string degreeName = "Bachelor of Medicine",
-       int graduationYear = calGraduationYear(student.intakeYear)
-       //The `select` clause is evaluated for each iteration.
-       //The result of the query expression is a list(`reportList`) whose members are the result of the `select` clause.
-       select {
-              name: student.firstName,
-              degree: degreeName,
-              expectedGradYear: graduationYear
-       };
-
-    foreach var report in reportList {
-        io:println(report);
-    }
-}
-
-function calGraduationYear(int year) returns int {
-    return year + 5;
+    io:println(authors);
 }
