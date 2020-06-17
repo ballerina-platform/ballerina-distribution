@@ -954,6 +954,10 @@
             {
                 "name": "Batch Execute Operations",
                 "url": "jdbc2-batch-execute-operation"
+            },
+            {
+                "name": "Parameterized Query",
+                "url": "jdbc2-parameterized-query"
             }
         ]
     },
@@ -981,6 +985,10 @@
             {
                 "name": "Batch Execute Operations",
                 "url": "mysql-batch-execute-operation"
+            },
+            {
+                "name": "Parameterized Query",
+                "url": "mysql-parameterized-query"
             }
         ]
     },
