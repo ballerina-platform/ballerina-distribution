@@ -9,11 +9,12 @@ public function main() returns error? {
                                         user = "test", password = "test");
 
     // Create the tables that are required for the transaction.
-    var ret = dbClient->execute("CREATE TABLE CUSTOMER (ID INTEGER, NAME " +
-                              "VARCHAR(30))");
+    var ret = dbClient->execute("CREATE TABLE IF NOT EXISTS CUSTOMER " +
+                                "(ID INTEGER, NAME VARCHAR(30))");
     handleExecute(ret, "Create CUSTOMER table");
 
-    ret = dbClient->execute("CREATE TABLE SALARY (ID INTEGER, MON_SALARY FLOAT)");
+    ret = dbClient->execute("CREATE TABLE IF NOT EXISTS SALARY " +
+                                "(ID INTEGER, MON_SALARY FLOAT)");
     handleExecute(ret, "Create SALARY table");
 
     // This is a `transaction` statement block. It is a must to have either
@@ -30,6 +31,7 @@ public function main() returns error? {
 
         // Returns information about the current transaction
         transactions:Info transInfo = transactions:info();
+        io:println(transInfo);
 
         // `commit` action performs the commit operation of the current transaction.
         // The result of the commit-action is an error; otherwise, the result is nil.

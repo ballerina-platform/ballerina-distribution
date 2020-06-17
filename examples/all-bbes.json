@@ -703,7 +703,7 @@
                 "name": "OpenShift Deployment",
                 "url": "openshift-deployment"
             },
-            {l
+            {
                 "name": "AWS Lambda Deployment",
                 "url": "awslambda-deployment"
             },

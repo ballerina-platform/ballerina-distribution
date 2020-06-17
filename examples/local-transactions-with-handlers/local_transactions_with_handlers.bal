@@ -9,19 +9,19 @@ public function main() {
 
         // Defines the rollback handler which triggered once
         // rollback statement is executed.
-        var onRollbackFunc = function(transactions:Info? info,
+        var onRollbackFunc = function(transactions:Info info,
                                 error? cause, boolean willRetry) {
             io:println("Rollback handler #1 executed.");
         };
 
-        var onRollbackFunc2 = function(transactions:Info? info,
+        var onRollbackFunc2 = function(transactions:Info info,
                                         error? cause, boolean willRetry) {
             io:println("Rollback handler #2 executed.");
         };
 
         // Defines the commit handler which triggered once commit
         // action is executed.
-        var onCommitFunc = function(transactions:Info? info) {
+        var onCommitFunc = function(transactions:Info info) {
             io:println("Commit handler executed.");
         };
 
@@ -38,6 +38,7 @@ public function main() {
 
         // Returns information about the current transaction
         transactions:Info transInfo = transactions:info();
+        io:println(transInfo);
 
         // Invokes the local participant.
         var res = trap throwError();

@@ -6,6 +6,7 @@
 $ ballerina run local_transactions.bal
 Create CUSTOMER table status: 0
 Create SALARY table status: 0
+xid=a87ced8b-a2b6-4f2e-9afc-befbbc6b78bd retryNumber=0 startTime=1592403803161 prevAttempt=
 Transaction committed
 Insert data into CUSTOMER table status: 1
 Insert data into SALARY table status: 1
