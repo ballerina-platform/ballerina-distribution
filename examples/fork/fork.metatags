@@ -1,2 +1,2 @@
-description: This sample demonstrates how to start any number of workers simultaneously using the fork block.
+description: This Ballerina sample demonstrates how to start any number of workers simultaneously using the fork block.
 keywords: ballerina, ballerina-lang, ballerina by example, bbe, fork, workers, threads

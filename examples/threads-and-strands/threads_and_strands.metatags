@@ -1,2 +1,2 @@
-description: This sample demonstrates the usage of the strand in Ballerina, a lightweight thread construct.
+description: This Ballerina sample demonstrates the usage of the strand in Ballerina, a lightweight thread construct.
 keywords: ballerina, ballerina-lang, ballerina by example, bbe, strand, lightweight thread, thread

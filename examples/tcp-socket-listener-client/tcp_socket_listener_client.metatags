@@ -1,2 +1,2 @@
-description: This sample demonstrates how the TCP socket listener service interacts with the TCP client.
+description: This Ballerina sample demonstrates how the TCP socket listener service interacts with the TCP client.
 keywords: ballerina, ballerina-lang, ballerina by example, bbe, socket, tcp
