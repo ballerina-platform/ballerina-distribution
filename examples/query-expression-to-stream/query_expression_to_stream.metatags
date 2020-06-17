@@ -1,2 +1,2 @@
 description: Example on creating a stream using Ballerina query expression.
-keywords: ballerina by examples, bbe, query, query expression, stream, from, join, on, where, let, select, iterable, iterate
+keywords: ballerina examples, query, query expression, stream from query expression, iterable, iterate
