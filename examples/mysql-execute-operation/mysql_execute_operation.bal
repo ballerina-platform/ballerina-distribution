@@ -73,9 +73,10 @@ function updateRecord(mysql:Client mysqlClient, int generatedId) {
 
 function deleteRecord(mysql:Client mysqlClient, int generatedId) {
     // Delete the record with the auto-generated ID.
+    sql:ParameterizedQuery deleteQuery =
+            `Delete from Customers where customerId = ${generatedId}`;
     sql:ExecutionResult|sql:Error result =
-        mysqlClient->execute(
-        `Delete from Customers where customerId = ${generatedId}`);
+                mysqlClient->execute(deleteQuery);
 
     if (result is sql:ExecutionResult) {
         io:println("Deleted Row count: ", result.affectedRowCount);
