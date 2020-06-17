@@ -33,8 +33,7 @@ service emailObserver on emailListener {
     // When an error occurs during the email poll operations `onError` is called
     resource function onError(email:Error emailError) {
         io:println("Error while polling for the emails: "
-            + <string> emailError.message());
+            + emailError.message());
     }
 
 }
-
