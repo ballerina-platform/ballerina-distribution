@@ -936,23 +936,23 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "JDBC Client Initialization",
+                "name": "Client Initialization",
                 "url": "jdbc2-init-options"
             },
             {
-                "name": "JDBC Select Query Operations",
+                "name": "Select Query Operations",
                 "url": "jdbc2-query-operation"
             },
             {
-                "name": "JDBC Query with Complex Types",
+                "name": "Query with Complex Types",
                 "url": "jdbc2-complex-type-queries"
             },
             {
-                "name": "JDBC DDL and DML Operations",
+                "name": "DDL and DML Operations",
                 "url": "jdbc2-execute-operation"
             },
             {
-                "name": "JDBC Batch Execute Operations",
+                "name": "Batch Execute Operations",
                 "url": "jdbc2-batch-execute-operation"
             }
         ]
@@ -963,23 +963,23 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "MySQL Client Initialization",
+                "name": "Client Initialization",
                 "url": "mysql-init-options"
             },
             {
-                "name": "MySQL Select Query Operations",
+                "name": "Select Query Operations",
                 "url": "mysql-query-operation"
             },
             {
-                "name": "MySQL Query with Complex Types",
+                "name": "Query with Complex Types",
                 "url": "mysql-complex-type-queries"
             },
             {
-                "name": "MySQL DDL and DML Operations",
+                "name": "DDL and DML Operations",
                 "url": "mysql-execute-operation"
             },
             {
-                "name": "MySQL Batch Execute Operations",
+                "name": "Batch Execute Operations",
                 "url": "mysql-batch-execute-operation"
             }
         ]
