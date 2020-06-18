@@ -1,0 +1,2 @@
+description: Unlike in string templates, raw templates have the flexibility of separately accessing the string and value portions of the expression. This example demonstrates how you can make use of that added flexibility.
+keywords: ballerina, ballerina by example, bbe, templates, raw template
