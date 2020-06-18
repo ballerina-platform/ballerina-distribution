@@ -856,7 +856,11 @@ task testExamples() {
          'length',
          'foreach',
          'testerina-group-tests',
-         'json-record-map-conversion'
+         'json-record-map-conversion',
+         'mysql-complex-type-queries',
+         'mysql-execute-operation',
+         'mysql-init-options',
+         'mysql-query-operation'
     ]
     doFirst {
         copy {
