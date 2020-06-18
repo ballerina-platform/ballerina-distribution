@@ -39,6 +39,7 @@ function initializeClients() returns sql:Error? {
         maxConnectionLifeTimeInSeconds: 2000.0,
         // Default minimum number of idle connections is 15.
         minIdleConnections: 5
+
     };
 
     // Initialize the JDBC client with the specific connection pool.
@@ -66,13 +67,15 @@ function initializeClients() returns sql:Error? {
     check jdbcClient4.close();
     check jdbcClient5.close();
     check jdbcClient6.close();
+
 }
 
-//Initialize JDBC clients with different options.
 public function main() {
+    //Initialize JDBC clients with different options.
     sql:Error? err = initializeClients();
+
     if (err is sql:Error) {
-        io:println("Error occured, initialization failed!", err);
+        io:println("Error occurred, initialization failed!", err);
     } else {
         io:println("Sample executed successfully!");
     }
