@@ -1,2 +1,2 @@
-description: This BBE demonstrates the process of an HTTP client connector.
+description: This BBE demonstrates the process of an HTTP client connector in Ballerina.
 keywords: ballerina, ballerina by example, bbe, http, passthrough, client
