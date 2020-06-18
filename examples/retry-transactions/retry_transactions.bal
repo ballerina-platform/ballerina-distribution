@@ -41,7 +41,7 @@ public function main() returns error? {
     // Each transaction is part of a sequence of retries.
     retry<MyRetryManager> (3) transaction {
 
-        // Defines the rollback handler which triggered once
+        // Defines the rollback handler, which gets triggered once
         // rollback statement is executed.
         var onRollbackFunc = function(transactions:Info info,
                                 error? cause, boolean willRetry) {
