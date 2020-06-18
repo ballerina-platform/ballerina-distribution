@@ -28,7 +28,7 @@ public function main() returns error?{
     }
 }
 
-// Method which throws error
+// The method, which throws the error.
 function trxError()  returns error {
     return error("RetryError");
 }
