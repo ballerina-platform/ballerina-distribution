@@ -33,7 +33,7 @@ public function main() {
         }
     };
 
-    // `student` and all the field in `student` will be immutable.
+    // `student` and all the fields in `student` will be immutable.
     io:println("student is immutable: ", student.isReadOnly());
     io:println("student.details is immutable: ", student.details.isReadOnly());
     io:println("student.marks is immutable: ", student.marks.isReadOnly());
