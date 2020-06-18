@@ -1,0 +1,2 @@
+description: This BBE demonstrates how a WebSocket failover client connects with the remaining backends when the client loses the connection.
+keywords: ballerina, ballerina by example, bbe, websocket, failover
