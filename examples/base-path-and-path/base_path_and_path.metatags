@@ -1,2 +1,2 @@
-description: BBE on how to use basePath, path`, and HTTP verb to constrain the service in a RESTful manner.
+description: BBE on how to use the basePath, path, and HTTP verb in Ballerina to constrain the service in a RESTful manner.
 keywords: ballerina, ballerina by example, bbe, http service, basePath, path, verb

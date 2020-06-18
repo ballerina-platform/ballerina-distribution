@@ -1,2 +1,2 @@
-description: BBE on how to extract values using the `PathParam`, `QueryParam` and `MatrixParam` parameters.
+description: BBE on how to extract values using the `PathParam`, `QueryParam`, and `MatrixParam` parameters in Ballerina.
 keywords: ballerina, ballerina by example, bbe, http, pathparam, queryparam, matrixparam

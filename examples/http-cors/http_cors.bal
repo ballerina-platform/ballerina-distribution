@@ -1,7 +1,7 @@
 import ballerina/http;
 import ballerina/log;
 
-// Service-level [CORS configs](https://ballerina.io/learn/api-docs/ballerina/http/records/CorsConfig.html) apply
+// Service-level [CORS config](https://ballerina.io/learn/api-docs/ballerina/http/records/CorsConfig.html) applies
 // globally to each `resource`.
 @http:ServiceConfig {
     cors: {
@@ -14,8 +14,8 @@ import ballerina/log;
 }
 service crossOriginService on new http:Listener(9092) {
 
-    // Resource-level [CORS configs](https://ballerina.io/learn/api-docs/ballerina/http/records/CorsConfig.html)
-    // override the service-level CORS headers.
+    // Resource-level [CORS config](https://ballerina.io/learn/api-docs/ballerina/http/records/CorsConfig.html)
+    // overrides the service-level CORS headers.
     @http:ResourceConfig {
         methods: ["GET"],
         path: "/company",

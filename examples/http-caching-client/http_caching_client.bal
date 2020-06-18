@@ -7,7 +7,7 @@ import ballerina/log;
 // to true, as the cache will be a public cache in this particular scenario.
 //
 // The default caching policy is to cache a response only if it contains a
-// `cache-control` header and either an `etag` header, or a `last-modified`
+// `cache-control` header and either an `etag` header or a `last-modified`
 // header. The user can control this behaviour by setting the [policy](https://ballerina.io/learn/api-docs/ballerina/http/types.html#CachingPolicy)
 // field of the `cacheConfig`. Currently, there are only 2 policies:
 // [CACHE_CONTROL_AND_VALIDATORS](https://ballerina.io/learn/api-docs/ballerina/http/constants.html#CACHE_CONTROL_AND_VALIDATORS)
@@ -65,7 +65,7 @@ service helloWorld on new http:Listener(8080) {
         // The [ResponseCacheControl](https://ballerina.io/learn/api-docs/ballerina/http/objects/ResponseCacheControl.html)
         // object in the [Response](https://ballerina.io/learn/api-docs/ballerina/http/objects/Response.html) object can be
         // used for setting the cache control directives associated with the
-        // response. In this example, `max-age` directive is set to 15 seconds
+        // response. In this example, the `max-age` directive is set to 15 seconds
         // indicating that the response will be fresh for 15 seconds. The
         // `must-revalidate` directive instructs that the cache should not
         // serve a stale response without validating it with the origin server

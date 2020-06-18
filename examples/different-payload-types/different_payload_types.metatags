@@ -1,2 +1,2 @@
-description: BBE on how to use different payload types directly with HTTP client actions.
+description: BBE on how to use different payload types directly with HTTP client actions in Ballerina.
 keywords: ballerina, ballerina by example, bbe, http, payload types, client

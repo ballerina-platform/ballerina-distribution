@@ -19,7 +19,7 @@ service HTTPStreamingService on new http:Listener(9090) {
                                          http:Request clientRequest) {
         http:Request request = new;
 
-        //[Sets the file](https://ballerina.io/learn/api-docs/ballerina/http/objects/Request.html#setFileAsPayload) as request payload.
+        //[Sets the file](https://ballerina.io/learn/api-docs/ballerina/http/objects/Request.html#setFileAsPayload) as the request payload.
         request.setFileAsPayload("./files/BallerinaLang.pdf",
             contentType = mime:APPLICATION_PDF);
 
@@ -55,8 +55,8 @@ service HTTPStreamingService on new http:Listener(9090) {
         http:Response res = new;
         var payload = clientRequest.getByteChannel();
         if (payload is io:ReadableByteChannel) {
-            //Writes the incoming stream to a file. First [get the destination channel](https://ballerina.io/learn/api-docs/ballerina/io/functions.html#openWritableFile)
-            //by providing the file name, the content should be written to.
+            //Writes the incoming stream to a file. First, [get the destination channel](https://ballerina.io/learn/api-docs/ballerina/io/functions.html#openWritableFile)
+            //by providing the file name to which the content should be written to.
             var destinationChannel =
                 io:openWritableFile("./files/ReceivedFile.pdf");
 

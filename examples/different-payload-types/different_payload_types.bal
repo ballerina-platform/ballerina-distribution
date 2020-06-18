@@ -15,7 +15,8 @@ service actionService on new http:Listener(9090) {
         var response = clientEP->get("/greeting");
         handleResponse(response);
 
-        //[GET](https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#get) remote function with request as message.
+        //[GET](https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#get) remote function with
+        //the request given as a message.
         http:Request request = new;
         response = clientEP->get("/greeting", message = request);
         handleResponse(response);
@@ -24,19 +25,22 @@ service actionService on new http:Listener(9090) {
         response = clientEP->post("/echo", ());
         handleResponse(response);
 
-        //[POST](https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#post) remote function with text as payload.
+        //[POST](https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#post) remote function with
+        //text as the payload.
         response = clientEP->post("/echo", "Sample Text");
         handleResponse(response);
 
-        //[POST](https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#post) remote function with `xml` as payload.
+        //[POST](https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#post) remote function with
+        //`xml` as the payload.
         response = clientEP->post("/echo", xml `<yy>Sample Xml</yy>`);
         handleResponse(response);
 
-        //POST remote function with `json` as payload.
+        //POST remote function with `json` as the payload.
         response = clientEP->post("/echo", {name: "apple", color: "red"});
         handleResponse(response);
 
-        //[POST](https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#post) remote function with `byte[]` as payload.
+        //[POST](https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#post) remote function with
+        //`byte[]` as the payload.
         string textVal = "Sample Text";
         byte[] binaryValue = textVal.toBytes();
         response = clientEP->post("/echo", binaryValue);
@@ -46,8 +50,9 @@ service actionService on new http:Listener(9090) {
         var bChannel = io:openReadableFile("./files/logo.png");
 
         if (bChannel is io:ReadableByteChannel) {
-            //[POST](https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#post) remote function with byte channel as payload. Since the file path is static
-            //`untaint` is used to denote that the byte channel is trusted .
+            //[POST](https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#post) remote function
+            //with a byte channel as the payload. Since the file path is static,
+            //`untaint` is used to denote that the byte channel is trusted.
             response = clientEP->post("/image", <@untainted>bChannel);
             handleResponse(response);
 
@@ -59,7 +64,8 @@ service actionService on new http:Listener(9090) {
             mime:Entity part2 = new;
             part2.setText("Hello");
 
-            //[POST](https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#post) remote function with body parts as payload.
+            //[POST](https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#post) remote function
+            //with a body parts as the payload.
             mime:Entity[] bodyParts = [part1, part2];
             response = clientEP->post("/echo", bodyParts);
             handleResponse(response);
