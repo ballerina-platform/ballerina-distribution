@@ -7,28 +7,26 @@ listener http:Listener backendEP = new (8080);
 
 // Define the failover client endpoint to call the backend services.
 http:FailoverClient foBackendEP = new ({
+
     timeoutInMillis: 5000,
     failoverCodes: [501, 502, 503],
     intervalInMillis: 5000,
     // Define a set of HTTP Clients that are targeted for failover.
     targets: [
-        {url: "http://nonexistentEP/mock1"},
-        {url: "http://localhost:8080/echo"},
-        {url: "http://localhost:8080/mock"}
-    ]
+            {url: "http://nonexistentEP/mock1"},
+            {url: "http://localhost:8080/echo"},
+            {url: "http://localhost:8080/mock"}
+        ]
 });
 
 @http:ServiceConfig {
     basePath: "/fo"
 }
 service failoverDemoService on new http:Listener(9090) {
-    // Create a REST resource within the API.
     @http:ResourceConfig {
         methods: ["GET", "POST"],
         path: "/"
     }
-    // Parameters include a reference to the caller and an object with the
-    // request data.
     resource function invokeEndpoint(http:Caller caller, http:Request request) {
         var backendResponse = foBackendEP->get("/", <@untainted>request);
 
@@ -49,14 +47,16 @@ service failoverDemoService on new http:Listener(9090) {
                 log:printError("Error sending response", responseToCaller);
             }
         }
+
     }
 }
 
-// Define the sample service to mock connection timeouts and service outages.
 @http:ServiceConfig {
     basePath: "/echo"
 }
+// Define the sample service to mock connection timeouts and service outages.
 service echo on backendEP {
+
     @http:ResourceConfig {
         methods: ["POST", "PUT", "GET"],
         path: "/"
@@ -73,11 +73,12 @@ service echo on backendEP {
     }
 }
 
-// Define the sample service to mock a healthy service.
 @http:ServiceConfig {
     basePath: "/mock"
 }
+// Define the sample service to mock a healthy service.
 service mock on backendEP {
+
     @http:ResourceConfig {
         methods: ["POST", "PUT", "GET"],
         path: "/"

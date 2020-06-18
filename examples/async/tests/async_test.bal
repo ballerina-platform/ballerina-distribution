@@ -1,5 +1,4 @@
 import ballerina/test;
-import ballerina/io;
 
 (any|error)[] outputs = [];
 int counter = 0;
@@ -16,7 +15,7 @@ public function mockPrint(any|error... s) {
     }
 }
 
-@test:Config
+@test:Config{}
 function testFunc() {
     // Invoke the main function.
     main();
@@ -45,8 +44,9 @@ function testExist(string text) returns boolean {
         if (i == 4) {
             continue;
         }
-        string out = string.convert(outputs[i]);
-        if (out.contains(text)) {
+        string out = outputs[i].toString();
+        int? index = out.indexOf(text);
+        if (index is int) {
             return true;
         }
     }

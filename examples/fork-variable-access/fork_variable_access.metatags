@@ -1,0 +1,2 @@
+This Ballerina sample demonstrates how the workers within a fork can access the variables that are declared in the scope of that block.
+keywords: ballerina, ballerina by example, bbe, fork, workers, variable access

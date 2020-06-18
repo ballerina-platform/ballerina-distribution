@@ -678,12 +678,16 @@
                 "url": "testerina-guarantee-test-execution-order"
             },
             {
-                "name": "Function Mocks",
-                "url": "testerina-function-mocks"
-            },
-            {
                 "name": "Group Tests",
                 "url": "testerina-group-tests"
+            },
+            {
+                "name": "Function Mocking",
+                "url": "testerina-mocking-functions"
+            },
+            {
+                "name": "Object Mocking",
+                "url": "testerina-mocking-objects"
             }
         ]
     },
@@ -710,6 +714,28 @@
             {
                 "name": "Knative Deployment",
                 "url": "knative-deployment"
+            }
+        ]
+    },
+    {
+        "title": "Transactions",
+        "column": 0,
+        "category": "Language concepts",
+        "samples": [{
+                "name": "Local Transactions",
+                "url": "local-transactions"
+            },
+            {
+                "name": "Local Transactions with handlers",
+                "url": "local-transactions-with-handlers"
+            },
+            {
+                "name": "Non Transaction Retry",
+                "url": "non-transaction-retry"
+            },
+            {
+                "name": "Retry Transactions",
+                "url": "retry-transactions"
             }
         ]
     },
@@ -1210,28 +1236,6 @@
         "samples": [{
                 "name": "Send and Receive Emails",
                 "url": "send-and-receive-emails"
-            }
-        ]
-    },
-    {
-        "title": "Transactions",
-        "column": 0,
-        "category": "Experimental features",
-        "samples": [{
-                "name": "Local Transactions",
-                "url": "local-transactions"
-            },
-            {
-                "name": "Local Transactions with participants",
-                "url": "local-transactions-with-participants"
-            },
-            {
-                "name": "XA Transactions",
-                "url": "xa-transactions"
-            },
-            {
-                "name": "Distributed Transactions",
-                "url": "transactions-distributed"
             }
         ]
     }

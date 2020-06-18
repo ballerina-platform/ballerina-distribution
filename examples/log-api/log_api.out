@@ -1,6 +1,7 @@
 # As shown in the output, only the `INFO` and higher level logs are logged by default.
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command.
+# Note that in this sample, the org name is `ballerina` and the module name is `log`.
 $ ballerina run log_api.bal
 2019-08-09 11:47:07,334 ERROR [ballerina/log] - error log
 2019-08-09 11:47:07,340 ERROR [ballerina/log] - error log with cause : error error occurred
