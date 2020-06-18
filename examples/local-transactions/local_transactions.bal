@@ -33,7 +33,7 @@ public function main() returns error? {
         transactions:Info transInfo = transactions:info();
         io:println(transInfo);
 
-        // `commit` action performs the commit operation of the current transaction.
+        // The `commit` action performs the commit operation of the current transaction.
         // The result of the commit-action is an error; otherwise, the result is nil.
         var commitResult = commit;
 
