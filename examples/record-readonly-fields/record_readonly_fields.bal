@@ -49,10 +49,10 @@ public function main() {
     io:println("empTwo is immutable: ", empTwo.isReadOnly());
 
     Details details = empTwo.details;
-    // But, `details` field of `empTwo` is immutable.
+    // But, the `details` field of `empTwo` is immutable.
     io:println("details is immutable: ", details.isReadOnly());
 
-    // Defined an `Identifier` value.
+    // Define an `Identifier` value.
     Identifier identifier = {
         id: 1234,
         codes: ["AS", "KL"]

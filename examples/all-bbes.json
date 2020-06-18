@@ -280,6 +280,10 @@
                 "url": "anonymous-objects"
             },
             {
+                "name": "Read-only Objects and Fields",
+                "url": "readonly-objects-and-fields"
+            },
+            {
                 "name": "Object Type Reference",
                 "url": "object-type-reference"
             },
