@@ -38,9 +38,9 @@ public function main() {
     // The `reportList` is the result of the `query expression`.
     Report[] reportList = from var student in studentList
        // An inner equijoin is performed here.
-       // `join` iterates any iterable value similarly to `from` clause.
+       // The `join` clause iterates any iterable value similarly to the `from` clause.
        join var department in departmentList
-       // `on` condition is used to match `student` with `department` based on `deptId`.
+       // The `on` condition is used to match the `student` with `department` based on `deptId`.
        // The iteration skips the following clauses when the condition is not satisfied.
        on student.deptId equals department.deptId
        // The `select` clause is evaluated for each iteration where the `on` condition is satisfied.

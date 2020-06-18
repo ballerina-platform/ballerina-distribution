@@ -1,5 +1,6 @@
-// Adding `table` keyword with a key specifier as a prefix to a `query expression` allows users
-// to create a `table` from query expression.
+// Adding the `table` keyword with a key specifier as a prefix to a `query expression` allows users
+// to create a `table` from the query expression.
 // The first clause must be the `table key([key/s]) from` clause and must consist of a `select` clause as well.
 // Each emitted value from the `select` clause is added as a new member to construct the resultant `table`.
-// With a keyed `table`, `on conflict` clause can be used to handle key conflicts when `select` clause emits rows.
+// With a keyed `table`, the `on conflict` clause can be used to handle key conflicts when the `select` clause
+// emits the rows.
