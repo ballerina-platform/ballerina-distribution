@@ -48,7 +48,7 @@ public function main() returns error? {
             io:println("Rollback handler executed.");
         };
 
-        // Defines the commit handler which triggered once commit
+        // Defines the commit handler, which gets triggered once the commit
         // action is executed.
         var onCommitFunc = function(transactions:Info info) {
             io:println("Commit handler executed.");
