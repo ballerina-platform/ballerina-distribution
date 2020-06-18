@@ -22,7 +22,7 @@ public function main() {
     // and the type of each of those must be a subtype of `anydata|readonly`.
     error simpleError = error("Simple error occurred");
 
-    // Print the error reason and the `message` field from the error detail.
+    // Print the error message.
     // The `.message()`, `.cause()`, and `.detail()` methods can be invoked on error values
     // to retrieve the error message, error cause, and details of the error.
     io:println("Error: ", simpleError.message());
@@ -31,15 +31,15 @@ public function main() {
     // If the `result` is an `int`, then print the value.
     if (result is int) {
         io:println("Account Balance: ", result);
-    // If an error is returned, print the reason and the account ID from the detail record.
+    // If an error is returned, print the error message and the account ID from the detail record.
     // Each additional error detail field provided to the error constructor is available as a field in the error detail record.
     } else {
         io:println("Error: ", result.message(),
                     ", Account ID: ", result.detail()["accountID"]);
-        // Provide error cause second positional argument to error constructor
+        // Provide an error as the cause by specifying the second positional argument to the error constructor.
         error displayError = error("Failed to get account balance", result);
 
-        // Get error cause using `.cause()` method.
+        // Get the cause error, if it exists, using the `.cause()` method.
         error? cause = displayError.cause();
         if (cause is error) {
             io:println("Caused by: ", cause.message());

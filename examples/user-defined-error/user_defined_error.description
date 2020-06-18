@@ -1,8 +1,8 @@
 // Ballerina allows defining custom error types to match
-// the errors being modeled. User defined error types in Ballerina could have optional
-// type parameter specifying error detail type,
-// which should be subtype of `map<anydata|readonly>`.
+// the errors being modeled. User defined error types in Ballerina could have an optional
+// type parameter specifying the error detail type,
+// which should be a subtype of `map<anydata|readonly>`.
 //
-// When detail type is absent from error type definition error type
+// When the detail type is absent from an error type definition the detail type
 // defaults to `map<anydata|readonly>`.
 

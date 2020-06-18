@@ -1,8 +1,8 @@
 import ballerina/io;
 
 // Define a record to represent the error details.
-// This record can have fields of `anydata|reaonly` types
-// and should be a subtype of `map<anydata|readonly>`.
+// This record can have fields of `anydata|reaonly` types.
+// i.e., it should be a subtype of `map<anydata|readonly>`.
 type InvalidAccountTypeErrorData record {
     string accountType;
 };
@@ -16,11 +16,11 @@ function getTypeId(string accountType) returns int|InvalidAccountTypeError {
         "savings" => { return 2; }
     }
 
-    // To construct an error value of user defined error type
+    // To construct an error value of the user-defined error type
     // `InvalidAccountTypeError`, the type name is used as the error constructor.
-    // First argument to the error constructor is the error message,
-    // error constructor take second optional argument as the error cause,
-    // and the error details can be provided as named arguments.
+    // The first argument to the error constructor is the error message,
+    // and the error constructor takes a second optional argument as the error cause.
+    // The error details can be provided as named arguments.
     return InvalidAccountTypeError("Invalid account type", accountType = accountType);
 }
 
@@ -76,8 +76,8 @@ public function main() {
     // If the `result` is an `int`, then print the value.
     if (result2 is int) {
         io:println("Account Balance: ", result2);
-    // Type guard expressions can be used to identify `distinct` errors.
-    } else if (result2 is InvalidAccountIdError){
+    // Type test expressions can be used to identify `distinct` errors.
+    } else if (result2 is InvalidAccountIdError) {
         io:println("Invalid account number: Please try again!");
     } else {
         io:println("Error: ", result2.message(),

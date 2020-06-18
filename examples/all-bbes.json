@@ -124,18 +124,6 @@
                 "url": "match"
             },
             {
-                "name": "Tuple Match",
-                "url": "tuple-match-statement"
-            },
-            {
-                "name": "Record Match",
-                "url": "record-match-statement"
-            },
-            {
-                "name": "Error Match",
-                "url": "error-match-statement"
-            },
-            {
                 "name": "Type Test Expression",
                 "url": "type-test-expression"
             },
@@ -445,20 +433,12 @@
                 "url": "record-typed-binding-pattern"
             },
             {
-                "name": "Error-Typed Binding Pattern",
-                "url": "error-typed-binding-pattern"
-            },
-            {
                 "name": "Tuple Destructure Binding Pattern",
                 "url": "tuple-destructure-binding-pattern"
             },
             {
                 "name": "Record Destructure Binding Pattern",
                 "url": "record-destructure-binding-pattern"
-            },
-            {
-                "name": "Error Destructure Binding Pattern",
-                "url": "error-destructure-binding-pattern"
             }
         ]
     },
