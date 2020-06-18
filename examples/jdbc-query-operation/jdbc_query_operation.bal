@@ -99,7 +99,7 @@ function typedQuery(jdbc:Client jdbcClient) {
 
 //Initialize the database table with sample data.
 function initializeTable(jdbc:Client jdbcClient) returns sql:Error? {
-    sql:ExecutionResult? result =
+    sql:ExecutionResult result =
         check jdbcClient->execute("DROP TABLE IF EXISTS Customers");
     result = check jdbcClient->execute("CREATE TABLE IF NOT EXISTS Customers(" +
         "customerId INTEGER NOT NULL IDENTITY, firstName  VARCHAR(300)," +
