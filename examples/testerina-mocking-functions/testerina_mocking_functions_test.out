@@ -1,6 +1,6 @@
 # To run this sample, create a Ballerina project and a module inside it.
-# Replace the content of the `main_test.bal` file residing inside the tests/ directory
-under the created module, and execute the `ballerina test` command from the project root directory.
+# Replace the content of the `main.bal` and ``main_test.bal` files with the above code
+# and execute the `ballerina test` command from the project root directory.
 # Function mocking is not supported for testing single BAL files.
 $ ballerina test bbe_mocking
 Compiling source
@@ -11,10 +11,10 @@ Creating balos
 
 Running Tests
         ballerinatest/bbe_mocking:0.1.0
-Mock client url value: http://foo
 
-        [pass] testGetClientUrl
+        [pass] testAssertIntEquals
+        [pass] testMathConsts
 
-        1 passing
+        2 passing
         0 failing
         0 skipped
