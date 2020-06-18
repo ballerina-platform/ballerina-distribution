@@ -15,16 +15,16 @@ type Person abstract object {
 
 // Defines another abstract object called `Employee`, which references the `Person` object.
 type Employee abstract object {
-    // Add a reference to the `Person` object type. Only abstract objects can be referred.
+    // Add a reference to the `Person` object type. 
     // All the member fields and member methods will be copied from the `Person` object.
     *Person;
-    public float salary;
+    public float|string salary;
 
-    function getSalary() returns float;
+    function getSalary() returns float|string;
 };
 
-type Owner abstract object {
-    public string status;
+type Owner object {
+    public string status = "";
 };
 
 type Manager object {
@@ -38,13 +38,17 @@ type Manager object {
 
     public string dpt;
 
+    // Referenced fields can be overridden in a type-descriptor if the type of the field  
+    // in the overriding descriptor is a sub-type of the original type of the field.
+    public float salary;
+
     // All the fields referenced through the type reference can be accessed within this object.
     function init(int age, string firstName, string lastName, string status) {
         self.age = age;
         self.firstName = firstName;
         self.lastName = lastName;
         self.status = status;
-        self.salary = 2000;
+        self.salary = 2000.0;
         self.dpt = "HR";
     }
 
@@ -53,6 +57,8 @@ type Manager object {
         return self.firstName + " " + self.lastName;
     }
 
+    // Referenced methods can also be overridden as long as the method in the overriding 
+    // descriptor is a sub-type of the method in the referenced type.
     function getSalary() returns float {
         return self.salary;
     }

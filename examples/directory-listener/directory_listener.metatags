@@ -1,0 +1,2 @@
+description: This Ballerina by Example has a directory listener. It monitors any modifications done to files inside a specific directoy. 
+keywords: ballerina, ballerina by example, bbe, file, directory, directory listener
