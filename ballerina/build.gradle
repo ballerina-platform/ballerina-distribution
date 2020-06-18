@@ -851,11 +851,10 @@ task testExamples() {
          'foreach',
          'testerina-group-tests',
          'json-record-map-conversion',
-         'mysql-complex-type-queries',
-         'mysql-execute-operation',
-         'mysql-init-options',
-         'mysql-query-operation',
+         // Temperoriality disable following due to https://github.com/ballerina-platform/ballerina-lang/issues/24306
+         'jdbc-batch-execute-operation',
          'mysql-batch-execute-operation',
+         'jdbc-parameterized-query',
          'mysql-parameterized-query'
     ]
     doFirst {
