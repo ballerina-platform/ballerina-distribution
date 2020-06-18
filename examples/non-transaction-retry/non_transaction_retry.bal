@@ -16,7 +16,7 @@ public function main() returns error?{
         if (count < 3) {
             str += (" attempt " + count.toString() + ":error,");
 
-            // Calls a method which throws error to simulate the
+            // Calls a method, which throws an error to simulate the
             // retry operation.
             return trxError();
         }
