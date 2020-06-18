@@ -1,4 +1,4 @@
-# To invoke the Failover Service, use following curl command.
+c
 $ curl -v http://localhost:9090/fo
 # The `FailoverClient` endpoint is configured with three target services.The first two targets are configured to mimic
 # failure backends. If one target service goes down, the failover client automatically calls the other targets.

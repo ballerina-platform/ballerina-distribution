@@ -1,0 +1,2 @@
+description: This BBE demonstrates how router service reads a particular Header of a request and routes it to a specific recipient based on the Header value.
+keywords: ballerina, ballerina by example, bbe, http, routing, header based routing

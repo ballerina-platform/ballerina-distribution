@@ -1,3 +1,4 @@
+# To invoke the Routing Service, use following curl commands.
 $ curl http://localhost:9090/hbr/route -H "x-type:location"
 {
     "name": "Colombo,Sri Lanka",

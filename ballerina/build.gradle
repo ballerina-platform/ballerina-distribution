@@ -832,7 +832,6 @@ task testExamples() {
          'crypto',
          'xml-functions',
          'xml-access',
-         'header-based-routing',
          'mutual-ssl',
          'tuple-match-statement',
          'type-conversion',
