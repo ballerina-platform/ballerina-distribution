@@ -12,7 +12,7 @@ public function mockPrint(any|error... s) {
 
     foreach any|error a in s {
         if (a is error) {
-            outputs[counter] = a.detail()?.message;
+            outputs[counter] = a.detail()["message"];
         } else {
             outputs[counter] = a;
         }

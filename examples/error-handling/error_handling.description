@@ -14,6 +14,6 @@
 // returned, and how returned errors can be handled.
 //
 // Ballerina error values are immutable structured values composed of
-// an error reason string, a stack trace representing the execution stack
+// an error message, optional error cause, a stack trace representing the execution stack
 // at the point at which the error value was created,
 // and an error detail record.

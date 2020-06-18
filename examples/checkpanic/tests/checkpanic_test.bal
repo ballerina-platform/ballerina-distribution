@@ -23,6 +23,6 @@ function testFunc() {
     test:assertEquals(outputs[0], 120);
     test:assertTrue(e is error, msg = "expected main to panic");
     if (e is error) {
-        test:assertEquals("{ballerina/lang.int}NumberParsingError", io:sprintf("%s", e.reason()));
+        test:assertEquals("{ballerina/lang.int}NumberParsingError", io:sprintf("%s", e.message()));
     }
 }

@@ -1,17 +1,14 @@
 import ballerina/io;
 
-const INVALID_ACC_TYPE = "InvalidAccountType";
-
 // Define a record to represent the error details.
-// This record can have fields of `anydata|error` types and should be a subtype of the built-in error's detail type.
+// This record can have fields of `anydata|reaonly` types
+// and should be a subtype of `map<anydata|readonly>`.
 type InvalidAccountTypeErrorData record {
-    string message?;
-    error cause?;
     string accountType;
 };
 
-// User-defined `error` with a `constant` reason.
-type InvalidAccountTypeError error<INVALID_ACC_TYPE, InvalidAccountTypeErrorData>;
+// User-defined `error` type.
+type InvalidAccountTypeError error<InvalidAccountTypeErrorData>;
 
 function getTypeId(string accountType) returns int|InvalidAccountTypeError {
     match accountType {
@@ -19,56 +16,46 @@ function getTypeId(string accountType) returns int|InvalidAccountTypeError {
         "savings" => { return 2; }
     }
 
-    // When a constant reason is used in the error definition the error type name can be used as the error constructor,
-    // and the error details can be provided as named arguments, without specifying the reason.
-    InvalidAccountTypeError e = InvalidAccountTypeError(accountType = accountType);
-    return e;
+    // To construct an error value of user defined error type
+    // `InvalidAccountTypeError`, the type name is used as the error constructor.
+    // First argument to the error constructor is the error message,
+    // error constructor take second optional argument as the error cause,
+    // and the error details can be provided as named arguments.
+    return InvalidAccountTypeError("Invalid account type", accountType = accountType);
 }
 
-type AccountNotFoundErrorData record {
-    string message?;
-    error cause?;
+type AccountErrorData record {|
     int accountID;
-};
+|};
 
-const INVALID_ACCOUNT_ID = "InvalidAccountID";
-const ACCOUNT_NOT_FOUND = "AccountNotFound";
+// To distinctly identify different errors and handle them appropriately,
+// distinct errors can be used.
+// Distinct types are similar to nominal types, and can be used to create
+// distinct type hierarchies.
+// `InvalidAccountIdError` and `AccountNotFoundError` are subtypes of AccountError.
+type AccountError distinct error<AccountErrorData>;
+type InvalidAccountIdError distinct AccountError;
+type AccountNotFoundError distinct AccountError;
 
-// Define an `error` type where error reason must be either `ACCOUNT_NOT_FOUND` or `INVALID_ACCOUNT_ID`.
-type AccountNotFoundError error<ACCOUNT_NOT_FOUND|INVALID_ACCOUNT_ID, AccountNotFoundErrorData>;
-
-function getAccountBalance(int accountID) returns int|AccountNotFoundError {
+function getAccountBalance(int accountID) returns int|AccountError {
     if (accountID < 0) {
-        // Return an error with "InvalidAccountID" as the reason if the `accountID` is less than zero.
-        // The default error constructor can be used to construct the error value.
-        AccountNotFoundError accountNotFoundError =
-                                            error(INVALID_ACCOUNT_ID, accountID = accountID);
-        return accountNotFoundError;
+        // Return an `InvalidAccountIdError` if the `accountID` is less than zero.
+        return InvalidAccountIdError("Invalid account Id", accountID = accountID);
     } else if (accountID > 100) {
-        // Return an error with "AccountNotFound" as the reason if the `accountID` is greater than hundred.
-        AccountNotFoundError accountNotFoundError =
-                                            error(ACCOUNT_NOT_FOUND, accountID = accountID);
-        return accountNotFoundError;
+        // Return an `AccountNotFoundError` if the `accountID` is greater than hundred.
+        return AccountNotFoundError("Account not found", accountID = accountID);
     }
     // Return a value if the `accountID` is in between zero and hundred inclusive.
     return 600;
 }
 
-// Error detail type where `message` and `cause` are mandatory.
-type InquiryFailedErrorData record {|
-    string message;
-    error cause;
-    int accountID;
-|};
-
-type AccountInquiryFailed error<string, InquiryFailedErrorData>;
+type AccountInquiryFailed error<AccountErrorData>;
 
 function transferToAccount(int fromAccountId, int toAccountId, int amount) returns int|AccountInquiryFailed {
     var balance = getAccountBalance(fromAccountId);
     if (balance is error) {
         // Create a new error, with the error returned from `getAccountBalance()` as the cause.
-        AccountInquiryFailed e = error("AccountInquiryFailed", message = balance.reason(), cause = balance, accountID = fromAccountId);
-        return e;
+        return AccountInquiryFailed("Account inquiry failed", balance, accountID = fromAccountId);
     } else {
         // Perform transfer
     }
@@ -81,7 +68,7 @@ public function main() {
     if (result is int) {
         io:println("Account type ID: ", result);
     } else {
-        io:println("Error: ", result.reason(),
+        io:println("Error: ", result.message(),
                    ", Account type: ", result.detail().accountType);
     }
 
@@ -89,9 +76,11 @@ public function main() {
     // If the `result` is an `int`, then print the value.
     if (result2 is int) {
         io:println("Account Balance: ", result2);
-    // If an error is returned, print the reason and the account ID from the detail record.
+    // Type guard expressions can be used to identify `distinct` errors.
+    } else if (result2 is InvalidAccountIdError){
+        io:println("Invalid account number: Please try again!");
     } else {
-        io:println("Error: ", result2.reason(),
+        io:println("Error: ", result2.message(),
                     ", Account ID: ", result2.detail().accountID);
     }
 
@@ -100,8 +89,7 @@ public function main() {
         io:println("Transfer success: ", result3);
     } else {
         // Print the mandatory error detail fields message and cause.
-        io:println("Error: ", result3.reason(),
-                    ", Message: ", result3.detail().message,
-                    ", Cause: ", result3.detail().cause);
+        io:println("Error: ", result3.message(),
+                    ", Cause: ", result3.cause());
     }
 }
