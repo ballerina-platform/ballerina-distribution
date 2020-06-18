@@ -57,7 +57,7 @@ type Manager object {
         return self.firstName + " " + self.lastName;
     }
 
-    // Referenced methods can also be overridden as long the method in the overriding 
+    // Referenced methods can also be overridden as long as the method in the overriding 
     // descriptor is a sub-type of the method in the referenced type.
     function getSalary() returns float {
         return self.salary;
