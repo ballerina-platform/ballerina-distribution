@@ -5,7 +5,8 @@ import ballerina/java.jdbc;
 
 public function main() returns error? {
     // The JDBC Client for the H2 database.
-    jdbc:Client dbClient = check new (url = "jdbc:h2:file:./local-transactions/testdb",
+    jdbc:Client dbClient =
+                check new (url = "jdbc:h2:file:./local-transactions/testdb",
                                         user = "test", password = "test");
 
     // Create the tables that are required for the transaction.
@@ -22,12 +23,14 @@ public function main() returns error? {
     // the commit action or rollback statement.
     transaction {
         // This is the first remote function participant of the transaction.
-        var customerResult = dbClient->execute("INSERT INTO CUSTOMER(ID,NAME) " +
+        var customerResult =
+                        dbClient->execute("INSERT INTO CUSTOMER(ID,NAME) " +
                                         "VALUES (1, 'Anne')");
 
         // This is the second remote function participant of the transaction.
-        var salaryResult = dbClient->execute("INSERT INTO SALARY (ID, MON_SALARY) " +
-                                        "VALUES (1, 2500)");
+        var salaryResult =
+                        dbClient->execute("INSERT INTO SALARY(ID, MON_SALARY)" +
+                                        " VALUES (1, 2500)");
 
         // Returns information about the current transaction.
         transactions:Info transInfo = transactions:info();

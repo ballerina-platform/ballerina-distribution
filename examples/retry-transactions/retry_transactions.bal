@@ -23,7 +23,8 @@ public type MyRetryManager object {
 
 public function main() returns error? {
     // The JDBC client for the H2 database.
-    jdbc:Client dbClient = check new (url = "jdbc:h2:file:./local-transactions/testdb",
+    jdbc:Client dbClient =
+                check new (url = "jdbc:h2:file:./local-transactions/testdb",
                                         user = "test", password = "test");
 
     // Create the tables that are required for the transaction.
@@ -65,11 +66,13 @@ public function main() returns error? {
         transactions:onCommit(onCommitFunc);
 
         // This is the first remote function participant of the transaction.
-        var withdrawalResult = dbClient->execute("INSERT INTO WITHDRAWALS(ID,AMOUNT) " +
+        var withdrawalResult =
+                    dbClient->execute("INSERT INTO WITHDRAWALS(ID,AMOUNT) " +
                                         "VALUES (1234553, 10500)");
 
         // This is the second remote function participant of the transaction.
-        var depositResult = dbClient->execute("INSERT INTO DEPOSITS (ID, AMOUNT) " +
+        var depositResult =
+                    dbClient->execute("INSERT INTO DEPOSITS (ID, AMOUNT) " +
                                         "VALUES (1234554, 10500)");
 
         // Returns information about the current transaction.
@@ -89,8 +92,10 @@ public function main() returns error? {
             // Any action that needs to be performed after the transaction, which is
             // committed should be added here.
             io:println("Transaction committed.");
-            handleExecute(withdrawalResult, "Insert data into WITHDRAWALS table");
-            handleExecute(depositResult, "Insert data into DEPOSITS table");
+            handleExecute(withdrawalResult,
+                                    "Insert data into WITHDRAWALS table");
+            handleExecute(depositResult,
+                                    "Insert data into DEPOSITS table");
         } else {
             // If the transaction is failed, any action that needs to perform
             // after the commit failure should be added here.
