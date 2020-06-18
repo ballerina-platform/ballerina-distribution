@@ -46,10 +46,10 @@ type Query abstract object {
     // fields. For example,<br>
     // - Using a fixed-length array type to limit the number of
     // strings/interpolations in the raw template.<br>
-    // - Using a tuple type to ensure the strings/interpolations at a given
+    // - Using a tuple type to ensure the string/interpolation at a given
     // position in the raw template expression is of the correct, expected
     // type.
-    public string[] strings;
+    public string[3] strings;
     public [string, int] insertions;
 };
 
