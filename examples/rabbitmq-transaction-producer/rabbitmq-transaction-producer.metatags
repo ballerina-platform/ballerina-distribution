@@ -1,2 +1,2 @@
 description: BBE on transactionally producing messages to a RabbitMQ queue using Ballerina.
-keywords: ballerina, ballerina by example, rabbitmq, producer, bbe, sender, client, transaction
+keywords: ballerina, ballerina by example, rabbitmq, producer, bbe, transaction

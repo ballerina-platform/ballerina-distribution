@@ -1,2 +1,2 @@
 description: BBE on manually acknowledging the messages consumed from a RabbitMQ queue using Ballerina.
-keywords: ballerina, ballerina by example, rabbitmq, consumer, bbe, listener, service, client, ack, acknowledgment
+keywords: ballerina, ballerina by example, rabbitmq, consumer, bbe, acknowledgment
