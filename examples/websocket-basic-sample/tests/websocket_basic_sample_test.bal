@@ -1,13 +1,12 @@
 import ballerina/test;
 import ballerina/http;
 import ballerina/log;
+import ballerina/runtime;
 
-channel<string> serviceReply = new;
+string serviceReply = "";
 string msg = "hey";
 
-@test:Config {
-    enable: false
-}
+@test:Config {}
 function testText() {
     http:WebSocketClient wsClient = new("ws://localhost:9090/basic/ws", {callbackService:callback,
     subProtocols:["xml", "my-protocol"]});
@@ -15,12 +14,12 @@ function testText() {
     if (result is http:WebSocketError) {
         log:printError("Error occurred when pushing text", <error> result);
     }
-    string wsReply = <- serviceReply;
-    test:assertEquals(wsReply, "You said: " + msg, "Received message should be equal to the expected message");
+     runtime:sleep(2000);
+    test:assertEquals(serviceReply, "You said: " + msg, "Received message should be equal to the expected message");
 }
 
 service callback = @http:WebSocketServiceConfig {} service {
     resource function onText(http:WebSocketClient conn, string text, boolean finalFrame) {
-        text -> serviceReply;
+        serviceReply = <@untainted>text;
     }
 };
