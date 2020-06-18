@@ -4,7 +4,6 @@ import ballerina/io;
 public function main() {
 
     // The `transaction` block initiates the transaction.
-    // Thus, it is called the initiator.
     transaction {
 
         // Defines the rollback handler which triggered once
