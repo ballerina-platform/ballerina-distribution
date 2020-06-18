@@ -22,7 +22,7 @@ public type MyRetryManager object {
 };
 
 public function main() returns error? {
-    // JDBC Client for H2 database.
+    // The JDBC client for the H2 database.
     jdbc:Client dbClient = check new (url = "jdbc:h2:file:./local-transactions/testdb",
                                         user = "test", password = "test");
 
