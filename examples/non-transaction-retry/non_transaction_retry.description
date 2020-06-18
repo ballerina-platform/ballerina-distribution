@@ -1,4 +1,4 @@
-// The retry statement provides a general-purpose retry facility
+// The retry statement provides a general-purpose retry facility,
 // independent of transactions. This example demonstrates how to
 // use retry capabilities of Ballerina<br/><br/>
 // For more information on the underlying module, 
