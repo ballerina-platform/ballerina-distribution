@@ -44,6 +44,8 @@ type DefaultController object {
 };
 
 // A non-abstract `readonly object`.
+// If the object type-descriptor includes `readonly` all the fields in the
+// object are considered to be `readonly` fields.
 type MainController readonly object {
     int id;
     string[] codes;
@@ -78,11 +80,11 @@ public function main() {
     // A non-abstract object can be `readonly` either if all of its fields are `readonly` fields, or if the object
     // is defined as a `readonly` object.
     // In either case the fields cannot be updated once the value is created.
-    // Define a value of the non-abstract object type `DefaultController` with all `readonly` fields.
+    // Define a value of the non-abstract object type `DefaultController`.
     DefaultController dc = new (1122, ["LC", "AB"]);
 
-    // Since all the fields are `readonly` fields, the object value itself is considered immutable.
-    // Thus, it can be used where a `readonly` value is expected.
+    // Since all the fields of `DefaultController` are `readonly` fields, the object value itself is considered
+    // to be immutable. Thus, it can be used where a `readonly` value is expected.
     Controller & readonly controllerOne = dc;
     io:println(controllerOne.getId());
 
