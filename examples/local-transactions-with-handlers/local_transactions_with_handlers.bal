@@ -35,7 +35,7 @@ public function main() {
         // are executed in reverse order.
         transactions:onCommit(onCommitFunc);
 
-        // Returns information about the current transaction
+        // Returns information about the current transaction.
         transactions:Info transInfo = transactions:info();
         io:println(transInfo);
 
