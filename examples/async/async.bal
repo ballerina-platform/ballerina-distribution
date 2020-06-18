@@ -36,7 +36,7 @@ public function main() {
     if (response is http:Response) {
         io:println(response.getJsonPayload());
     } else {
-        io:println(response.detail()?.message);
+        io:println(response.message());
     }
 
     // Asynchronously invokes the functions named `square()` and `greet()`.

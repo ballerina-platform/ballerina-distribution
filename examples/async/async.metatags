@@ -1,0 +1,2 @@
+description: This Ballerina sample demonstrates the usage of async functionality in Ballerina - a way to execute operations in an asynchronous manner by returning a future.
+keywords: ballerina, ballerina by example, bbe, async, asynchronous, future, wait

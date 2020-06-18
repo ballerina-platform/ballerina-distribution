@@ -1,0 +1,2 @@
+description: BBE on consuming messages from a RabbitMQ queue with data binding using Ballerina.
+keywords: ballerina, ballerina by example, rabbitmq, consumer, bbe, listener

@@ -820,7 +820,6 @@ task testExamples() {
          'http-caching-client',
          'http-data-binding',
          'http-1.1-to-2.0-protocol-switch',
-         'http-to-websocket-upgrade',
          'basic-https-listener-client',
          'https-listener',
          'http-client-endpoint',
@@ -829,10 +828,8 @@ task testExamples() {
          'log-api',
          'the-main-function',
          'time',
-         'crypto',
          'xml-functions',
          'xml-access',
-         'header-based-routing',
          'mutual-ssl',
          'tuple-match-statement',
          'type-conversion',
@@ -840,10 +837,7 @@ task testExamples() {
          'record-io',
          'csv-io',
          'type-cast',
-         'async',
          'json-csv',
-         'worker-interaction',
-         'fork-variable-access',
          'functional-iteration',
          'table',
          'maps',
@@ -856,7 +850,13 @@ task testExamples() {
          'length',
          'foreach',
          'testerina-group-tests',
-         'json-record-map-conversion'
+         'json-record-map-conversion',
+         'mysql-complex-type-queries',
+         'mysql-execute-operation',
+         'mysql-init-options',
+         'mysql-query-operation',
+         'mysql-batch-execute-operation',
+         'mysql-parameterized-query'
     ]
     doFirst {
         copy {
@@ -943,12 +943,12 @@ task testExamples() {
                 //TODO: Need to verify with windows
                 exec {
                     workingDir "${buildDir}/TestProject"
-                    commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'build', '--experimental', "${bbe}"
+                    commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'build', '--experimental', "${bbe} --b7a.home=${distPath}"
                 }
             } else {
                 exec {
                     workingDir "${baseBuildPath}/TestProject"
-                    commandLine 'sh', '-c', "../jballerina-tools-${ballerinaVersion}/bin/ballerina build --experimental ${bbe}"
+                    commandLine 'sh', '-c', "${distPath}/bin/ballerina build --experimental ${bbe} --b7a.home=${distPath}"
                 }
             }
         }

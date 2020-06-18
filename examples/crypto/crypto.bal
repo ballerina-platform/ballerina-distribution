@@ -9,7 +9,7 @@ public function main() returns error? {
     string input = "Hello Ballerina!";
     byte[] inputArr = input.toBytes();
 
-    // Hashing input value using MD5 hashing algorithm, and printing hash value using Hex encoding.
+    // Hashing input value using [MD5 hashing algorithm](https://ballerina.io/learn/api-docs/ballerina/crypto/functions.html#hashMd5), and printing hash value using Hex encoding.
     byte[] output = crypto:hashMd5(inputArr);
     io:println("Hex encoded hash with MD5: " + output.toBase16());
 
@@ -64,7 +64,7 @@ public function main() returns error? {
 
 
     // Obtaining reference to a RSA private key stored within a PKCS#12 or PFX format archive file.
-    crypto:KeyStore keyStore = {path: "./sampleKeystore.p12", password: "ballerina"};
+    crypto:KeyStore keyStore = {path: "src/crypto/sampleKeystore.p12", password: "ballerina"};
     var privateKey = crypto:decodePrivateKey(keyStore, "ballerina", "ballerina");
 
     if (privateKey is crypto:PrivateKey) {

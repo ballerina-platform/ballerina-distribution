@@ -1,0 +1,5 @@
+// The retry statement provides a general-purpose retry facility,
+// which is independent of the transactions. This example demonstrates how to
+// use the retry capabilities of Ballerina.<br/><br/>
+// For more information on the underlying module, 
+// see the [Transactions module](https://ballerina.io/learn/api-docs/ballerina/lang.transaction/index.html).
