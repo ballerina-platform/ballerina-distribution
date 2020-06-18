@@ -1,0 +1,2 @@
+description: BBE on how to create a simple Hello World HTTP service using Ballerina. Services in Ballerina represent collections of network-accessible entry points.
+keywords: ballerina, ballerina by example, bbe, http service, hello world
