@@ -58,7 +58,7 @@ public function main() returns error? {
     ret = dbClient->execute("DROP TABLE SALARY");
     handleExecute(ret, "Drop table SALARY");
 
-    // Close the jdbc client
+    // Close the JDBC client.
     check dbClient.close();
 }
 
