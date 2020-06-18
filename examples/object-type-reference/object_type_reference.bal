@@ -47,7 +47,7 @@ type Manager object {
         self.firstName = firstName;
         self.lastName = lastName;
         self.status = status;
-        self.salary = 2000;
+        self.salary = 2000.0;
         self.dpt = "HR";
     }
 
