@@ -1,7 +1,7 @@
 import ballerina/http;
 import ballerina/log;
 
-// HTTP client configurations associated with enabling cookies.
+// HTTP client configurations associated with [enabling cookies](https://ballerina.io/learn/api-docs/ballerina/http/records/CookieConfig.html).
 http:ClientConfiguration clientEPConfig = {
     cookieConfig: {
         enabled: true
@@ -32,7 +32,7 @@ public function main() {
         string|error loginMessage = loginResp.getTextPayload();
 
         if (loginMessage is error) {
-            log:printError("Login failed", loginMessage.message());
+            log:printError("Login failed", loginMessage);
         } else {
             // When the login is successful, make another request to the
             // `/welcome` resource of the backend service.

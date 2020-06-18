@@ -2,10 +2,10 @@ import ballerina/http;
 import ballerina/io;
 
 public function main() {
-    // Creates a new WebSocket client with the backend URL and assigns a callback service.
+    // Creates a new [WebSocket client](https://ballerina.io/learn/api-docs/ballerina/http/clients/WebSocketClient.html) with the backend URL and assigns a callback service.
     http:WebSocketClient wsClientEp = new ("ws://echo.websocket.org",
                             config = {callbackService: ClientService});
-    // Pushes a text message to the server.
+    // Pushes a text message to the server using [pushText](https://ballerina.io/learn/api-docs/ballerina/http/clients/WebSocketClient.html#pushText).
     var err = wsClientEp->pushText("Hello World!");
     if (err is error) {
         // Prints the error.
