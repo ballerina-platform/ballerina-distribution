@@ -9,7 +9,7 @@ public function main() returns error?{
     // facility, which is independent of the transactions.
     // Here, retrying happens according to the default retry manager
     // since there is no custom retry manager being passed to 
-    // retry operation.
+    // the retry operation.
     // As defined, retry happens for 3 times.
     retry (3) {
         count = count + 1;
