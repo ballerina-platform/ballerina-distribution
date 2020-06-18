@@ -1,0 +1,10 @@
+// A Ballerina transaction is a series of data manipulation statements 
+// that must either fully complete or fully fail, thereby, leaving the
+// system in a consistent state. A retry transaction statement combines
+// the retry statement and the transaction statement, but with the
+// additional semantics that each transaction is part of a sequence of
+// retries.This sample uses an H2 database, which is
+// created when running the sample. Prior to running this sample, 
+// the DB connection properties need to be changed as required.<br/><br/>
+// For more information on the underlying module, 
+// see the [Transactions module](https://ballerina.io/learn/api-docs/ballerina/lang.transaction/index.html).

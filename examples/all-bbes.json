@@ -728,6 +728,10 @@
             {
                 "name": "Non Transaction Retry",
                 "url": "non-transaction-retry"
+            },
+            {
+                "name": "Retry Transactions",
+                "url": "retry-transactions"
             }
         ]
     },
