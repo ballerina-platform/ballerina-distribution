@@ -4,7 +4,8 @@ import ballerina/log;
 
 service HelloWorld on new grpc:Listener(9090) {
 
-    resource function lotsOfGreetings(grpc:Caller caller, stream<string,error> clientStream) {
+    resource function lotsOfGreetings(grpc:Caller caller,
+                            stream<string,error> clientStream) {
         log:printInfo("Client connected sucessfully.");
         //Read and process each message in the client stream
         error? e = clientStream.forEach(function(string name) {
@@ -15,16 +16,14 @@ service HelloWorld on new grpc:Listener(9090) {
         if (e is grpc:EOS) {
             grpc:Error? err = caller->send("Ack");
             if (err is grpc:Error) {
-                log:printError("Error from Connector: " + err.reason() + " - "
-                                                + <string>err.detail()["message"]);
+                log:printError("Error from Connector: " + err.message());
             } else {
                 log:printInfo("Server send response : Ack");
             }
 
         //If the client sends an error to the server, the stream closes and returns the error
         } else if (e is error) {
-            log:printError("Error from Connector: " + e.reason() + " - "
-                                                       + <string>e.detail()["message"]);
+            log:printError("Error from Connector: " + e.message());
         }
     }
 }
