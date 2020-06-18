@@ -1082,6 +1082,14 @@
             {
                 "name": "QoS Settings",
                 "url": "rabbitmq-consumer-with-qos-settings"
+            },
+            {
+                "name": "Transactional Producer",
+                "url": "rabbitmq-transaction-producer"
+            },
+            {
+                "name": "Transactional Consumer",
+                "url": "rabbitmq-transaction-consumer"
             }
         ]
     },
