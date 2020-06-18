@@ -18,7 +18,7 @@ public function main() {
             io:println("Rollback handler #2 executed.");
         };
 
-        // Defines the commit handler which triggered once commit
+        // Defines the commit handler, which gets triggered once the commit
         // action is executed.
         var onCommitFunc = function(transactions:Info info) {
             io:println("Commit handler executed.");
