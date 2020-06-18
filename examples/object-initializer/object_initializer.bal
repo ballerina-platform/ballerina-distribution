@@ -30,7 +30,7 @@ public function main() {
     if (p1 is Person) {
         io:println(p1.name);
     } else {
-        io:println(p1.reason());
+        io:println(p1.message());
     }
 
     // `p2` will be an error since the name does not conform to the expected format.
@@ -38,6 +38,6 @@ public function main() {
     if (p2 is Person) {
         io:println(p2.name);
     } else {
-        io:println(p2.reason());
+        io:println(p2.message());
     }
 }

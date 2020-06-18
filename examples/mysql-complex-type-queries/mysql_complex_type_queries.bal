@@ -57,6 +57,7 @@ function queryBinaryType(mysql:Client mysqlClient) {
     if (e is error) {
         io:println(e);
     }
+
     io:println("------ ********* -------");
 }
 
@@ -96,13 +97,15 @@ function queryDateTimeType(mysql:Client mysqlClient) {
     if (e is error) {
         io:println(e);
     }
+
     io:println("------ ********* -------");
 }
 
 // Initialize the database table with sample data.
 function initializeTable() returns sql:Error? {
+
     mysql:Client mysqlClient = check new (user = dbUser, password = dbPassword);
-    sql:ExecuteResult? result = check
+    sql:ExecutionResult result = check
         mysqlClient->execute("CREATE DATABASE IF NOT EXISTS MYSQL_BBE");
 
     result = check mysqlClient->execute("DROP TABLE IF EXISTS " +
@@ -132,6 +135,7 @@ function initializeTable() returns sql:Error? {
 public function main() {
     // Initialize the MySQL client.
     sql:Error? err = initializeTable();
+
     if (err is sql:Error) {
         io:println("Sample data initialization failed!", err);
     } else {
@@ -141,10 +145,12 @@ public function main() {
             // Execute the complex data type queries.
             queryBinaryType(mysqlClient);
             queryDateTimeType(mysqlClient);
+
             io:println("Sample executed successfully!");
 
             // Close the MySQL client.
             sql:Error? e = mysqlClient.close();
+
         } else {
             io:println("MySQL Client initialization for querying data" +
             "failed!!", mysqlClient);

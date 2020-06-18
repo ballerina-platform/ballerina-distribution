@@ -28,7 +28,8 @@ public function main() {
     // which will be a request or a payload.
     response = clientEndpoint->get("/get", req);
     if (response is http:Response) {
-        string contentType = response.getHeader("Content-Type");
+        // [Get the content type](https://ballerina.io/learn/api-docs/ballerina/http/objects/Response.html#getContentType) from the response.
+        string contentType = response.getContentType();
         io:println("Content-Type: " + contentType);
 
         int statusCode = response.statusCode;
@@ -36,22 +37,23 @@ public function main() {
 
     } else {
         io:println("Error when calling the backend: ",
-                                    response.detail()?.message);
+                                    response.message());
     }
 }
 
 //The below function handles the response received from the remote HTTP endpoint.
 function handleResponse(http:Response|error response) {
     if (response is http:Response) {
+        // [Get the JSON payload](https://ballerina.io/learn/api-docs/ballerina/http/objects/Response.html#getJsonPayload) from the response.
         var msg = response.getJsonPayload();
         if (msg is json) {
-            // Prints the received `json` response.
+            // Prints the received `JSON` response.
             io:println(msg.toJsonString());
         } else {
-            io:println("Invalid payload received:", msg.reason());
+            io:println("Invalid payload received:", msg.message());
         }
     } else {
         io:println("Error when calling the backend: ",
-                                    response.detail()?.message);
+                                    response.message());
     }
 }

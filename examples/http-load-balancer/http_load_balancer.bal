@@ -12,16 +12,16 @@ http:LoadBalanceClient lbBackendEP = new ({
             {url: "http://localhost:8080/mock2"},
             {url: "http://localhost:8080/mock3"}
         ],
+
         timeoutInMillis: 5000
 });
 
-
-// Create an HTTP service bound to the endpoint (`loadBalancerEP`).
 @http:ServiceConfig {
     basePath: "/lb"
 }
+// Create an HTTP service bound to the endpoint (`loadBalancerEP`).
 service loadBalancerDemoService on new http:Listener(9090) {
-    // Create a REST resource within the API.
+
     @http:ResourceConfig {
         path: "/"
     }
@@ -39,12 +39,13 @@ service loadBalancerDemoService on new http:Listener(9090) {
         } else {
             http:Response outResponse = new;
             outResponse.statusCode = 500;
-            outResponse.setPayload(<string>response.detail()?.message);
+            outResponse.setPayload(<string>response.message());
             var responseToCaller = caller->respond(outResponse);
             if (responseToCaller is http:ListenerError) {
                 log:printError("Error sending response", responseToCaller);
             }
         }
+
     }
 }
 
