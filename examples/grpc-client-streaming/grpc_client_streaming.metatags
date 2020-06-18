@@ -1,0 +1,2 @@
+description: This BBE has a gRPC service and a non-blocking streaming client. The client sends stream of request messages and gets a response message.
+keywords: ballerina, ballerina by example, bbe, grpc, client streaming
