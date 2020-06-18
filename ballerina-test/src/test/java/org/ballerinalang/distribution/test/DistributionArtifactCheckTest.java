@@ -208,6 +208,25 @@ public class DistributionArtifactCheckTest {
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "awslambda-extension-"));
     }
     
+    @Test
+    public void azureFunctionsAnnotationExistsTest() {
+        Path birPath = TEST_DISTRIBUTION_PATH
+                .resolve(DIST_NAME)
+                .resolve("bir-cache")
+                .resolve("ballerinax")
+                .resolve("azure.functions")
+                .resolve("0.0.0")
+                .resolve("azure.functions.bir");
+        
+        Path breLibPath = TEST_DISTRIBUTION_PATH
+                .resolve(DIST_NAME)
+                .resolve("bre")
+                .resolve("lib");
+        
+        Assert.assertTrue(Files.exists(birPath));
+        Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "azurefunctions-extension-"));
+    }
+    
     @AfterClass
     public void cleanUp() throws IOException {
         TestUtils.cleanDistribution();
