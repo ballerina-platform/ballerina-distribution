@@ -10,6 +10,7 @@ task:AppointmentConfiguration appointmentConfiguration = {
     appointmentDetails: "* * * * * ?",
     // Number of recurrences will limit the number of times the timer runs.
     noOfRecurrences: 10
+
 };
 
 // Initialize the listener using pre defined configurations.
@@ -25,4 +26,5 @@ service appointmentService on appointment {
         log:printInfo(count.toString());
         count = count + 1;
     }
+
 }

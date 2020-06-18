@@ -1,2 +1,2 @@
 description: BBE on how to transactionally produce messages using `kafka:Producer`.
-keywords: ballerina, ballerina by example, bbe, kafka, producer
+keywords: ballerina, ballerina by example, bbe, kafka, producer, transaction

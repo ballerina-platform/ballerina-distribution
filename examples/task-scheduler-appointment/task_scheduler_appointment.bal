@@ -37,6 +37,7 @@ public function main() {
 
     // Cancel the appointment.
     var result = appointment.stop();
+
     if (result is error) {
         io:println("Error occurred while cancelling the task");
         return;
@@ -53,4 +54,5 @@ service appointmentService = service {
             io:println("Schedule is due - Reminder: " + reminderCount.toString());
         }
     }
+
 };

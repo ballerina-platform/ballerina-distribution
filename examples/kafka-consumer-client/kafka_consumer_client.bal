@@ -7,10 +7,12 @@ kafka:ConsumerConfiguration consumerConfiguration = {
     // The `bootstrapServers` is the list of remote server endpoints of the
     // Kafka brokers.
     bootstrapServers: "localhost:9092",
+
     groupId: "group-id",
     offsetReset: "earliest",
     // Subscribes to the topic `test-kafka-topic`.
     topics: ["test-kafka-topic"]
+
 };
 
 kafka:Consumer consumer = new (consumerConfiguration);
@@ -18,6 +20,7 @@ kafka:Consumer consumer = new (consumerConfiguration);
 public function main() {
     // Poll the consumer for messages.
     var results = consumer->poll(1000);
+
     if (results is error) {
         log:printError("Error occurred while polling ", results);
     }
@@ -27,10 +30,12 @@ public function main() {
         if (serializedMessage is byte[]) {
             // Converts byte[] to string.
             string|error message = 'string:fromBytes(serializedMessage);
+
             if (message is string) {
                 // Prints the retrieved Kafka record.
                 io:println("Topic: ", kafkaRecord.topic, " Received Message: ",
                     message);
+
             } else {
                 log:printError("Error occurred while converting message data",
                     message);
