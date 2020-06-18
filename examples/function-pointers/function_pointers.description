@@ -1,5 +1,5 @@
 // Ballerina allows the user to define variables of function types. This allows you to use
-// functions in similar contexts as other values. For example, as variables, arguments to
-// functions, and return values of functions. The name of a function serves as a reference
-// to that function when it is used in an expression context. The type of a function
-// is given by the signature of the function.
+// functions in similar contexts as other values. e.g., as variables, arguments to
+// functions, and return values of functions. The name of a function or a function variable
+// serves as a reference to that function when it is used in an expression context.
+// The type of a function is given by the signature of the function.
