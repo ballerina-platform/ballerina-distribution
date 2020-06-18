@@ -15,8 +15,7 @@ public function main() {
 
     // Reads message and headers from response.
     if (unionResp is grpc:Error) {
-        io:println("Error from Connector: " + unionResp.reason() + " - "
-                + <string>unionResp.detail()["message"]);
+        io:println("Error from Connector: " + unionResp.message());
     } else {
         string result;
         grpc:Headers resHeaders;
