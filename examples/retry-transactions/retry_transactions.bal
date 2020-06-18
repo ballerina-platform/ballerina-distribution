@@ -42,7 +42,7 @@ public function main() returns error? {
     retry<MyRetryManager> (3) transaction {
 
         // Defines the rollback handler, which gets triggered once
-        // rollback statement is executed.
+        // the rollback statement is executed.
         var onRollbackFunc = function(transactions:Info info,
                                 error? cause, boolean willRetry) {
             io:println("Rollback handler executed.");
