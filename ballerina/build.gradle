@@ -295,7 +295,6 @@ task packageDistZip(type: Zip) {
 
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples/") {
         from "${project.rootDir}/examples/"
-        exclude "all-bbes.json"
         fileMode = 0755
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples") {
