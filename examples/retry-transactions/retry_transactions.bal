@@ -54,7 +54,7 @@ public function main() returns error? {
             io:println("Commit handler executed.");
         };
 
-        // Register rollback handler to the transaction context.
+        // Register the rollback handler to the transaction context.
         // Multiple rollback handlers can be registered and they
         // are executed in reverse order.
         transactions:onRollback(onRollbackFunc);
