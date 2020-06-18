@@ -1,2 +1,2 @@
-description: This BBE has a simple gRPC service and a blocking client. The client sends a request and listening to response in a secured connection.
+description: This BBE has a gRPC unary service and a blocking client. The client sends and receives messages in a secured connection.
 keywords: ballerina, ballerina by example, bbe, grpc, unary, simple, blocking, secure connection, tls
