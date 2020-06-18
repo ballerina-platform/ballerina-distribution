@@ -1,0 +1,2 @@
+description: This Ballerina sample demonstrates how workers interact with each other by sending and receiving messages, both synchronous and asynchronous ways.
+keywords: ballerina, ballerina by example, bbe, workers, worker interactions, threads, asynchronous, synchronous
