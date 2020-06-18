@@ -10,7 +10,7 @@ public function main() returns error?{
     // Here, retrying happens according to the default retry manager
     // since there is no custom retry manager being passed to 
     // the retry operation.
-    // As defined, retry happens for 3 times.
+    // As defined, retrying happens for 3 times.
     retry (3) {
         count = count + 1;
         if (count < 3) {
