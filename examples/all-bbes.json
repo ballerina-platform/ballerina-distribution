@@ -228,6 +228,10 @@
                 "url": "any-type"
             },
             {
+                "name": "Readonly Type",
+                "url": "readonly-type"
+            },
+            {
                 "name": "Constants",
                 "url": "constants"
             },
