@@ -29,7 +29,7 @@ public function main() returns error? {
         var salaryResult = dbClient->execute("INSERT INTO SALARY (ID, MON_SALARY) " +
                                         "VALUES (1, 2500)");
 
-        // Returns information about the current transaction
+        // Returns information about the current transaction.
         transactions:Info transInfo = transactions:info();
         io:println(transInfo);
 
