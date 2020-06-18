@@ -5,7 +5,7 @@ public function main() {
     // The function name `test` serves as a function pointer argument in the
     // call to `foo()`. Function names can be thought of as final variables
     // since although you can use it like a regular variable, you cannot
-    // modify the value it's associated with.
+    // modify the value it is associated with.
     io:println("Answer: ", foo(10, test));
     io:println("Answer: ", foo(10, getFunctionPointer()));
 
