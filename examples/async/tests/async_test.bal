@@ -1,4 +1,3 @@
-import ballerina/stringutils;
 import ballerina/test;
 
 (any|error)[] outputs = [];
@@ -46,7 +45,8 @@ function testExist(string text) returns boolean {
             continue;
         }
         string out = outputs[i].toString();
-        if (stringutils:contains(out, text)) {
+        int? index = out.indexOf(text);
+        if (index is int) {
             return true;
         }
     }

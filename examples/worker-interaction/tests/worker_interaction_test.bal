@@ -1,4 +1,3 @@
-import ballerina/stringutils;
 import ballerina/test;
 
 (string|error)[] outputs = [];
@@ -27,27 +26,27 @@ function testFunc() {
     // The output is in random so we iterate and check if the expected is present
     foreach var x in outputs {
         string value = x.toString();
-        if (stringutils:equalsIgnoreCase(value, "[w1 -> w2] i: 100 k: 2.34")) {
+        if (value.equalsIgnoreCaseAscii("[w1 -> w2] i: 100 k: 2.34")) {
             // continue;
-        } else if (stringutils:equalsIgnoreCase(value, "[w2 <- w1] iw: 100 kw: 2.34")) {
+        } else if (value.equalsIgnoreCaseAscii("[w2 <- w1] iw: 100 kw: 2.34")) {
             // continue;
-        } else if (stringutils:equalsIgnoreCase(value, "[w2 -> w1] jw: name=Ballerina")) {
+        } else if (value.equalsIgnoreCaseAscii("[w2 -> w1] jw: name=Ballerina")) {
             // continue;
-        } else if (stringutils:equalsIgnoreCase(value, "[w1 <- w2] j: name=Ballerina")) {
+        } else if (value.equalsIgnoreCaseAscii("[w1 <- w2] j: name=Ballerina")) {
             // continue;
-        } else if (stringutils:equalsIgnoreCase(value, "[w1 ->> w2] i: 100")) {
+        } else if (value.equalsIgnoreCaseAscii("[w1 ->> w2] i: 100")) {
             // continue;
-        } else if (stringutils:equalsIgnoreCase(value, "[w2 <- w1] lw: 100")) {
+        } else if (value.equalsIgnoreCaseAscii("[w2 <- w1] lw: 100")) {
             // continue;
-        } else if (stringutils:equalsIgnoreCase(value, "[w1 ->> w2] successful!!")) {
+        } else if (value.equalsIgnoreCaseAscii("[w1 ->> w2] successful!!")) {
             // continue;
-        } else if (stringutils:equalsIgnoreCase(value, "[w1 -> w3] k: 2.34")) {
+        } else if (value.equalsIgnoreCaseAscii("[w1 -> w3] k: 2.34")) {
             // continue;
-        } else if (stringutils:equalsIgnoreCase(value, "Waiting for worker w3 to fetch messages..")) {
+        } else if (value.equalsIgnoreCaseAscii("Waiting for worker w3 to fetch messages..")) {
             // continue;
-        } else if (stringutils:equalsIgnoreCase(value, "[w3 <- w1] mw: 2.34")) {
+        } else if (value.equalsIgnoreCaseAscii("[w3 <- w1] mw: 2.34")) {
             // continue;
-        } else if (stringutils:equalsIgnoreCase(value, "[w1 -> w3] Flushed!!")) {
+        } else if (value.equalsIgnoreCaseAscii("[w1 -> w3] Flushed!!")) {
             // continue;
         }  else {
             test:assertFail(msg = "The output doesn't contain the expected." + value);

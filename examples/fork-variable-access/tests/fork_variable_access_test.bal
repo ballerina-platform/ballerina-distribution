@@ -1,6 +1,5 @@
 import ballerina/io;
 import ballerina/runtime;
-import ballerina/stringutils;
 import ballerina/test;
 
 (string|error)[] outputs = [];
@@ -46,13 +45,13 @@ function testFunc() {
         // The output is in random order
         foreach var x in outputs {
             string value = x.toString();
-            if (stringutils:equalsIgnoreCase(value, "[value type variables] before fork: value of integer variable is [100] value of string variable is [WSO2]")) {
+            if (value.equalsIgnoreCaseAscii("[value type variables] before fork: value of integer variable is [100] value of string variable is [WSO2]")) {
                 // continue;
-            } else if (stringutils:equalsIgnoreCase(value, "[reference type variables] before fork: value of name is [Bert] value of city is [New York] value of postcode is [10001]")) {
+            } else if (value.equalsIgnoreCaseAscii("[reference type variables] before fork: value of name is [Bert] value of city is [New York] value of postcode is [10001]")) {
                 // continue;
-            } else if (stringutils:equalsIgnoreCase(value, "[value type variables] after fork: value of integer variable is [123] value of string variable is [Ballerina]")) {
+            } else if (value.equalsIgnoreCaseAscii("[value type variables] after fork: value of integer variable is [123] value of string variable is [Ballerina]")) {
                 // continue;
-            } else if (stringutils:equalsIgnoreCase(value, "[reference type variables] after fork: value of name is [Moose] value of city is [Manhattan] value of street is [Wall Street] value of postcode is [10001]")) {
+            } else if (value.equalsIgnoreCaseAscii("[reference type variables] after fork: value of name is [Moose] value of city is [Manhattan] value of street is [Wall Street] value of postcode is [10001]")) {
                 // continue;
             } else {
                 io:println(x);
