@@ -37,7 +37,7 @@ public function main() returns error? {
         // The result of the commit action is an error. Otherwise, the result is `()`.
         var commitResult = commit;
 
-        // Based on the result of `commit` action, followup tasks could be performed.
+        // Based on the result of the `commit` action, the followup tasks could be performed.
         if(commitResult is ()){
             // Any action that needs to be performed after the transaction is
             // committed should be added here.
