@@ -1095,12 +1095,12 @@ task testExamples() {
                 //TODO: Need to verify with windows
                 exec {
                     workingDir "${buildDir}/TestProject"
-                    commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'build', '--experimental', "${bbe} --b7a.home=${distPath}/jballerina-tools-${ballerinaVersion}"
+                    commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'build', '--experimental', "${bbe} --b7a.home=${distPath}"
                 }
             } else {
                 exec {
                     workingDir "${baseBuildPath}/TestProject"
-                    commandLine 'sh', '-c', "${baseBuildPath}/jballerina-tools-${ballerinaVersion}/bin/ballerina build --experimental ${bbe} --b7a.home=${baseBuildPath}/jballerina-tools-${ballerinaVersion}"
+                    commandLine 'sh', '-c', "${distPath}/bin/ballerina build --experimental ${bbe} --b7a.home=${distPath}"
                 }
             }
         }
