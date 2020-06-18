@@ -7,6 +7,7 @@ task:TimerConfiguration timerConfiguration = {
     initialDelayInMillis: 3000,
     // Number of recurrences will limit the number of times the timer runs.
     noOfRecurrences: 10
+
 };
 
 // Initialize the listener using the above defined configurations.
@@ -22,4 +23,5 @@ service timerService on timer {
         log:printInfo(count.toString());
         count = count + 1;
     }
+
 }
