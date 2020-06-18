@@ -216,6 +216,10 @@
                 "url": "any-type"
             },
             {
+                "name": "Never Type",
+                "url": "never-type"
+            },
+            {
                 "name": "Readonly Type",
                 "url": "readonly-type"
             },
