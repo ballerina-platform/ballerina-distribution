@@ -17,7 +17,7 @@ service multipartDemoService on new http:Listener(9090) {
     resource function multipartReceiver(http:Caller caller, http:Request
                                         request) {
         http:Response response = new;
-        // Extracts bodyparts from the request.
+        // [Extracts bodyparts](https://ballerina.io/learn/api-docs/ballerina/http/objects/Request.html#getBodyParts) from the request.
         var bodyParts = request.getBodyParts();
         if (bodyParts is mime:Entity[]) {
             foreach var part in bodyParts {
@@ -25,7 +25,7 @@ service multipartDemoService on new http:Listener(9090) {
             }
             response.setPayload(<@untainted>bodyParts);
         } else {
-            log:printError(<string>bodyParts.reason());
+            log:printError(bodyParts.message());
             response.setPayload("Error in decoding multiparts!");
             response.statusCode = 500;
         }
@@ -57,7 +57,7 @@ service multipartDemoService on new http:Listener(9090) {
         // Create an array to hold all the body parts.
         mime:Entity[] bodyParts = [jsonBodyPart, xmlFilePart];
         http:Request request = new;
-        // Set the body parts to the request.
+        // [Set the body parts](https://ballerina.io/learn/api-docs/ballerina/http/objects/Request.html#setBodyParts) to the request.
         // Here the content-type is set as multipart form data.
         // This also works with any other multipart media type.
         // eg:- `multipart/mixed`, `multipart/related` etc.
@@ -84,32 +84,33 @@ service multipartDemoService on new http:Listener(9090) {
 
 // The content logic that handles the body parts vary based on your requirement.
 function handleContent(mime:Entity bodyPart) {
+    // [Get the media type](https://ballerina.io/learn/api-docs/ballerina/mime/functions.html#getMediaType) from the body part retrieved from the request.
     var mediaType = mime:getMediaType(bodyPart.getContentType());
     if (mediaType is mime:MediaType) {
         string baseType = mediaType.getBaseType();
         if (mime:APPLICATION_XML == baseType || mime:TEXT_XML == baseType) {
-            //Extracts `xml` data from the body part.
+            //[Extracts `xml` data](https://ballerina.io/learn/api-docs/ballerina/mime/objects/Entity.html#getXml) from the body part.
             var payload = bodyPart.getXml();
             if (payload is xml) {
                 log:printInfo(payload.toString());
             } else {
-                log:printError(<string>payload.detail().message);
+                log:printError(payload.message());
             }
         } else if (mime:APPLICATION_JSON == baseType) {
-            //Extracts `json` data from the body part.
+            //[Extracts `json` data](https://ballerina.io/learn/api-docs/ballerina/mime/objects/Entity.html#getJson) from the body part.
             var payload = bodyPart.getJson();
             if (payload is json) {
                 log:printInfo(payload.toJsonString());
             } else {
-                log:printError(<string>payload.detail().message);
+                log:printError(payload.message());
             }
         } else if (mime:TEXT_PLAIN == baseType) {
-            //Extracts text data from the body part.
+            //[Extracts text data](https://ballerina.io/learn/api-docs/ballerina/mime/objects/Entity.html#getText) from the body part.
             var payload = bodyPart.getText();
             if (payload is string) {
                 log:printInfo(payload);
             } else {
-                log:printError(<string>payload.detail().message);
+                log:printError(payload.message());
             }
         }
     }
