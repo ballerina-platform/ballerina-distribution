@@ -53,7 +53,7 @@ service retryDemoService on new http:Listener(9090) {
         } else {
             http:Response response = new;
             response.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
-            string errCause = <string>backendResponse.detail()?.message;
+            string errCause = <string>backendResponse.message();
             response.setPayload(errCause);
             var responseToCaller = caller->respond(response);
             if (responseToCaller is error) {

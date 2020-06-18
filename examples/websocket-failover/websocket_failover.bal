@@ -15,7 +15,7 @@ service failoverProxyService on new http:Listener(9090) {
     // in the `onOpen` resource.
     resource function onOpen(http:WebSocketCaller caller) {
 
-        // Defines the webSocket failover client.
+        // Defines the [webSocket failover client](https://ballerina.io/learn/api-docs/ballerina/http/clients/WebSocketFailoverClient.html).
         http:WebSocketFailoverClient wsClientEp = new (
         {
             callbackService: failoverClientService,
@@ -33,7 +33,7 @@ service failoverProxyService on new http:Listener(9090) {
         wsClientEp.setAttribute(ASSOCIATED_CONNECTION, caller);
         caller.setAttribute(ASSOCIATED_CONNECTION, wsClientEp);
 
-        // Once the client is ready to receive frames the remote `ready` function
+        // Once the client is ready to receive frames, the remote [ready](https://ballerina.io/learn/api-docs/ballerina/http/clients/WebSocketFailoverClient.html#ready) function
         // of the client needs to be called separately.
         var err = wsClientEp->ready();
         if (err is http:WebSocketError) {

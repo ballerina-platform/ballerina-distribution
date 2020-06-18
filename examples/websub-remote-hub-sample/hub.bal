@@ -24,7 +24,7 @@ public function main() {
     } else if (result is websub:HubStartedUpError) {
         webSubHub = result.startedUpHub;
     } else {
-        io:println("Hub start error:" + <string>result.detail()?.message);
+        io:println("Hub start error:" + result.message());
         return;
     }
 

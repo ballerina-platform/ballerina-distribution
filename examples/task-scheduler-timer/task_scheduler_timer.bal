@@ -51,7 +51,7 @@ public function main() {
         runtime:sleep(2000);
     }
 
-    runtime:sleep(1000);
+    runtime:sleep(2000);
 
     // Cancels the timer. This will stop the timer and all the services
     // attached to it.
