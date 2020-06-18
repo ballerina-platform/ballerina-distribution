@@ -1,2 +1,2 @@
-description: Ballerina By Example on general-purpose retry facility independent of transactions.
+description: Ballerina By Example on the general-purpose retry facility, which is independent of the transactions.
 keywords: ballerina by example, retry, transaction, retry spec, retry manager
