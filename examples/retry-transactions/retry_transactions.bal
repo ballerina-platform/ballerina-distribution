@@ -37,7 +37,7 @@ public function main() returns error? {
 
     // This is a `retry transaction` statement block. A retry
     // transaction statement combines the retry statement and
-    // the transaction statement, but with the additional semantics
+    // the transaction statement with the additional semantics.
     // that each transaction is part of a sequence of retries.
     retry<MyRetryManager> (3) transaction {
 
