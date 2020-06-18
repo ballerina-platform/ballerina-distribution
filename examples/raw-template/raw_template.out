@@ -1,6 +1,6 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command.
-$ ballerina run string_template.bal
+$ ballerina run raw_template.bal
 Hello  !!!
 Ballerina
 INSERT INTO Details VALUES (John Doe, 25)

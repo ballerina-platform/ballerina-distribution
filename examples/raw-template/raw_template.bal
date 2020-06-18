@@ -1,5 +1,5 @@
-import ballerina/lang.'object;
 import ballerina/io;
+import ballerina/lang.'object;
 
 public function main() {
     string name = "Ballerina";
