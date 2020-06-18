@@ -154,12 +154,32 @@
         "column": 0,
         "category": "Language concepts",
         "samples": [{
-            "name": "Query Expression",
-            "url": "query-expression"
-        },
+                "name": "Query Expression",
+                "url": "query-expression"
+            },
+            {
+                "name": "Stream From Query Expression",
+                "url": "query-expression-to-stream"
+            },
+            {
+                "name": "String From Query Expression",
+                "url": "query-expression-to-string"
+            },
+            {
+                "name": "Table From Query Expression",
+                "url": "query-expression-to-table"
+            },
+            {
+                "name": "XML From Query Expression",
+                "url": "query-expression-to-xml"
+            },
             {
                 "name": "Query Action",
                 "url": "query-action"
+            },
+            {
+                "name": "Join Iterables",
+                "url": "query-join"
             }
         ]
     },
