@@ -15,7 +15,7 @@ type Person abstract object {
 
 // Defines another abstract object called `Employee`, which references the `Person` object.
 type Employee abstract object {
-    // Add a reference to the `Person` object type. Only abstract objects can be referred.
+    // Add a reference to the `Person` object type. 
     // All the member fields and member methods will be copied from the `Person` object.
     *Person;
     public float salary;
