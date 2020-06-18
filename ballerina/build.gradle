@@ -250,27 +250,27 @@ task packageDist(type: Zip) {
         filter(ReplaceTokens, tokens: [version: version])
     }
     into("${parentDir}/bre/lib") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/ballerinax.awslambda.jar"
+        from "build/target/extracted-distributions/awslambda-extension-balo-zip/ballerinax-awslambda-0.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/bre/lib") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/ballerina.docker.jar"
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/ballerina-docker-1.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina.kubernetes.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-kubernetes-1.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina.istio.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-istio-1.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina.openshift.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-openshift-1.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina.knative.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-knative-1.0.0.jar"
         fileMode = 0644
     }
 
@@ -295,7 +295,6 @@ task packageDistZip(type: Zip) {
 
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples/") {
         from "${project.rootDir}/examples/"
-        exclude "all-bbes.json"
         fileMode = 0755
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/examples") {
@@ -349,27 +348,27 @@ task packageDistZip(type: Zip) {
         filter(ReplaceTokens, tokens: [version: ballerinaVersion])
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/ballerinax.awslambda.jar"
+        from "build/target/extracted-distributions/awslambda-extension-balo-zip/ballerinax-awslambda-0.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/ballerina.docker.jar"
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/ballerina-docker-1.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina.kubernetes.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-kubernetes-1.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina.istio.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-istio-1.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina.openshift.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-openshift-1.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina.knative.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-knative-1.0.0.jar"
         fileMode = 0644
     }
 
@@ -472,27 +471,27 @@ task packageDistLinux(type: Zip) {
         filter(ReplaceTokens, tokens: [version: version])
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/ballerinax.awslambda.jar"
+        from "build/target/extracted-distributions/awslambda-extension-balo-zip/ballerinax-awslambda-0.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/ballerina.docker.jar"
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/ballerina-docker-1.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina.kubernetes.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-kubernetes-1.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina.istio.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-istio-1.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina.openshift.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-openshift-1.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina.knative.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-knative-1.0.0.jar"
         fileMode = 0644
     }
 
@@ -585,27 +584,27 @@ task packageDistMac(type: Zip) {
         filter(ReplaceTokens, tokens: [version: version])
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/ballerinax.awslambda.jar"
+        from "build/target/extracted-distributions/awslambda-extension-balo-zip/ballerinax-awslambda-0.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/ballerina.docker.jar"
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/ballerina-docker-1.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina.kubernetes.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-kubernetes-1.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina.istio.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-istio-1.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina.openshift.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-openshift-1.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina.knative.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-knative-1.0.0.jar"
         fileMode = 0644
     }
 
@@ -698,27 +697,27 @@ task packageDistWindows(type: Zip) {
         filter(ReplaceTokens, tokens: [version: version])
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/ballerinax.awslambda.jar"
+        from "build/target/extracted-distributions/awslambda-extension-balo-zip/ballerinax-awslambda-0.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/ballerina.docker.jar"
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/ballerina-docker-1.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina.kubernetes.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-kubernetes-1.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina.istio.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-istio-1.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina.openshift.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-openshift-1.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/distributions/jballerina-${ballerinaVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina.knative.jar"
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-knative-1.0.0.jar"
         fileMode = 0644
     }
 
@@ -792,7 +791,6 @@ task testExamples() {
          'local-transactions',
          'local-transactions-with-participants',
          'xa-transactions',
-         'secured-client-with-oauth2',
          'gauge-metrics',
          'counter-metrics',
          'openapi-to-ballerina',
@@ -814,9 +812,8 @@ task testExamples() {
          'testerina-assertions',
          'taint-checking',
          'secured-service-with-basic-auth',
-         'secured-service-with-jwt-auth',
          'secured-client-with-basic-auth',
-         'secured-client-with-jwt-auth',
+         'secured-client-with-oauth2',
          'http-caching-client',
          'http-data-binding',
          'http-1.1-to-2.0-protocol-switch',

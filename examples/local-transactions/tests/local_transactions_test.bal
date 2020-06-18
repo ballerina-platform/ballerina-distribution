@@ -1,26 +1,32 @@
 import ballerina/test;
-import ballerina/io;
 
 (any|error)[] outputs = [];
-int count = 0;
 
 @test:Mock {
     moduleName: "ballerina/io",
     functionName: "println"
 }
 public function mockPrint(any|error... s) {
-    outputs[count] = string.convert(s[0]);
-    count += 1;
+    foreach var entry in s {
+        outputs.push(entry);
+    }
 }
 
-@test:Config
+@test:Config {}
 function testFunc() {
-    main();
-    test:assertEquals(outputs[0], "Create CUSTOMER table status: 0");
-    test:assertEquals(outputs[1], "Create SALARY table status: 0");
-    test:assertEquals(outputs[3], "Transaction committed");
-    test:assertEquals(outputs[4], "Insert data into CUSTOMER table status: 1");
-    test:assertEquals(outputs[5], "Insert data into SALARY table status: 1");
-    test:assertEquals(outputs[6], "Drop table CUSTOMER status: 0");
-    test:assertEquals(outputs[7], "Drop table SALARY status: 0");
+    // Invoking the main function
+    error? output = main();
+    test:assertEquals(outputs[0], "Create CUSTOMER table status: ");
+    test:assertEquals(outputs[1], 0);
+    test:assertEquals(outputs[2], "Create SALARY table status: ");
+    test:assertEquals(outputs[3], 0);
+    test:assertEquals(outputs[5], "Transaction committed.");
+    test:assertEquals(outputs[7], "Insert data into CUSTOMER table status: ");
+    test:assertEquals(outputs[8], 1);
+    test:assertEquals(outputs[9], "Insert data into SALARY table status: ");
+    test:assertEquals(outputs[10], 1);
+    test:assertEquals(outputs[11], "Drop table CUSTOMER status: ");
+    test:assertEquals(outputs[12], 0);
+    test:assertEquals(outputs[13], "Drop table SALARY status: ");
+    test:sertEquals(outputs[14], 0);
 }
