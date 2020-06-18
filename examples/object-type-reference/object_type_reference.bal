@@ -18,9 +18,9 @@ type Employee abstract object {
     // Add a reference to the `Person` object type. 
     // All the member fields and member methods will be copied from the `Person` object.
     *Person;
-    public float|int salary;
+    public float|string salary;
 
-    function getSalary() returns float|int;
+    function getSalary() returns float|string;
 };
 
 type Owner object {
