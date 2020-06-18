@@ -1,4 +1,5 @@
-// A function pointer is a Ballerina type that allows you to use functions as variables, 
-// arguments to functions, and function return values. The name of a function serves as 
-// a pointer to that function when called from other functions or operations. The definition 
-// of the function name provides the type of the pointer in terms of a function signature.
+// Ballerina allows the user to define variables of function types. This allows you to use
+// functions in similar contexts as other values. For example, as variables, arguments to
+// functions, and return values of functions. The name of a function serves as a reference
+// to that function when it is used in an expression context. The type of a function
+// is given by the signature of the function.
