@@ -14,6 +14,10 @@ type Movie record {
     Person writer;
 };
 
+type j1 json;
+
+type map1 map<anydata>;
+
 public function main() {
     Movie theRevenant = {
         title: "The Revenant",
@@ -28,16 +32,16 @@ public function main() {
     // This example shows how you can convert a record to a JSON object.
     // This conversion could return an error because it may not be possible
     // to convert some data types that are defined in the record to JSON.
-    json|error j = json.constructFrom(theRevenant);
+    json|error j = theRevenant.cloneWithType(j1);
     if (j is json) {
         io:println(j.toJsonString());
         io:println(j.writer.lname);
     }
 
     // Similarly, you can convert a record to a map.
-    map<anydata>|error movieMap = map<anydata>.constructFrom(theRevenant);
+    map<anydata>|error movieMap = theRevenant.cloneWithType(map1);
     if (movieMap is map<anydata>) {
-        Person|error writer = Person.constructFrom(movieMap["writer"]);
+        Person|error writer = movieMap["writer"].cloneWithType(Person);
         if (writer is Person) {
             io:println(writer.age);
         }
@@ -56,7 +60,7 @@ public function main() {
             age: 30
         }
     };
-    Movie|error inception = Movie.constructFrom(inceptionJ);
+    Movie|error inception = inceptionJ.cloneWithType(Movie);
     if (inception is Movie) {
         io:println(inception);
     }
