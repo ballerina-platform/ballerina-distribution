@@ -3,7 +3,7 @@ import ballerina/io;
 import ballerina/log;
 import ballerina/mime;
 
-//Client endpoint.
+//[Client](https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html) endpoint.
 http:Client clientEP = new ("http://localhost:9091/backEndService");
 
 //Service to test HTTP client remote functions with different payload types.
@@ -11,24 +11,24 @@ service actionService on new http:Listener(9090) {
 
     resource function messageUsage(http:Caller caller, http:Request req) {
 
-        //GET remote function without any payload.
+        //[GET](https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#get) remote function without any payload.
         var response = clientEP->get("/greeting");
         handleResponse(response);
 
-        //GET remote function with request as message.
+        //[GET](https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#get) remote function with request as message.
         http:Request request = new;
         response = clientEP->get("/greeting", message = request);
         handleResponse(response);
 
-        //POST remote function without any payload.
+        //[POST](https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#post) remote function without any payload.
         response = clientEP->post("/echo", ());
         handleResponse(response);
 
-        //POST remote function with text as payload.
+        //[POST](https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#post) remote function with text as payload.
         response = clientEP->post("/echo", "Sample Text");
         handleResponse(response);
 
-        //POST remote function with `xml` as payload.
+        //[POST](https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#post) remote function with `xml` as payload.
         response = clientEP->post("/echo", xml `<yy>Sample Xml</yy>`);
         handleResponse(response);
 
@@ -36,30 +36,30 @@ service actionService on new http:Listener(9090) {
         response = clientEP->post("/echo", {name: "apple", color: "red"});
         handleResponse(response);
 
-        //POST remote function with `byte[]` as payload.
+        //[POST](https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#post) remote function with `byte[]` as payload.
         string textVal = "Sample Text";
         byte[] binaryValue = textVal.toBytes();
         response = clientEP->post("/echo", binaryValue);
         handleResponse(response);
 
-        //Get a byte channel to a given file.
+        //[Get a byte channel](https://ballerina.io/learn/api-docs/ballerina/io/functions.html#openReadableFile) to a given file.
         var bChannel = io:openReadableFile("./files/logo.png");
 
         if (bChannel is io:ReadableByteChannel) {
-            //POST remote function with byte channel as payload. Since the file path is static
+            //[POST](https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#post) remote function with byte channel as payload. Since the file path is static
             //`untaint` is used to denote that the byte channel is trusted .
             response = clientEP->post("/image", <@untainted>bChannel);
             handleResponse(response);
 
-            //Create a JSON body part.
+            //[Create a JSON body part](https://ballerina.io/learn/api-docs/ballerina/mime/objects/Entity.html#setJson).
             mime:Entity part1 = new;
             part1.setJson({"name": "Jane"});
 
-            //Create a text body part.
+            //[Create a text body part](https://ballerina.io/learn/api-docs/ballerina/mime/objects/Entity.html#setText).
             mime:Entity part2 = new;
             part2.setText("Hello");
 
-            //POST remote function with body parts as payload.
+            //[POST](https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#post) remote function with body parts as payload.
             mime:Entity[] bodyParts = [part1, part2];
             response = clientEP->post("/echo", bodyParts);
             handleResponse(response);
@@ -69,7 +69,7 @@ service actionService on new http:Listener(9090) {
         } else {
             http:Response res = new;
             res.statusCode = 500;
-            res.setPayload(<@untainted string>bChannel.detail()?.message);
+            res.setPayload(<@untainted>bChannel.message());
             var result = caller->respond(res);
             handleError(result);
         }
@@ -103,7 +103,7 @@ service backEndService on new http:Listener(9091) {
                 if (returnValue is string) {
                     textValue = returnValue;
                 } else {
-                    textValue = <string>returnValue.detail()?.message;
+                    textValue = returnValue.message();
                 }
                 var result = caller->respond(<@untainted>textValue);
                 handleError(result);
@@ -214,21 +214,21 @@ function handleResponse(http:Response|error response) {
             log:printInfo("Entity body is not available");
         }
     } else {
-        log:printError(response.reason(), response);
+        log:printError(response.message(), response);
     }
 }
 
 function sendErrorMsg(http:Caller caller, error err) {
     http:Response res = new;
     res.statusCode = 500;
-    res.setPayload(<@untainted string>err.detail()?.message);
+    res.setPayload(<@untainted>err.message());
     var result = caller->respond(res);
     handleError(result);
 }
 
 function handleError(error? result) {
     if (result is error) {
-        log:printError(result.reason(), result);
+        log:printError(result.message(), result);
     }
 }
 
@@ -251,7 +251,7 @@ function handleBodyParts(mime:Entity[] bodyParts) {
             if (payload is json) {
                 log:printInfo("Json Part: " + payload.toJsonString());
             } else {
-                log:printError(payload.reason(), payload);
+                log:printError(payload.message(), payload);
             }
         }
         if (mime:TEXT_PLAIN == baseType) {
@@ -259,7 +259,7 @@ function handleBodyParts(mime:Entity[] bodyParts) {
             if (payload is string) {
                 log:printInfo("Text Part: " + payload);
             } else {
-                log:printError(payload.reason(), payload);
+                log:printError(payload.message(), payload);
             }
         }
     }

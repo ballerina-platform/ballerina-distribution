@@ -1,0 +1,2 @@
+description: BBE demonstrates how the Ballerina HTTP service is configured to change the compression behaviour.
+keywords: ballerina, ballerina by example, bbe, http, compression, accept-encoding

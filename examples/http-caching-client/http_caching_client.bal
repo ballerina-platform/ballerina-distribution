@@ -2,15 +2,16 @@ import ballerina/http;
 import ballerina/log;
 
 // HTTP caching is enabled by default for client endpoints. Caching can be
-// disabled by setting `enabled=false` in the `cache` config of the client
-// endpoint. In this example, the `isShared` field of the `cacheConfig` is set
+// disabled by setting `enabled=false` in the [cache config](https://ballerina.io/learn/api-docs/ballerina/http/records/CacheConfig.html)
+// of the client endpoint. In this example, the `isShared` field of the `cacheConfig` is set
 // to true, as the cache will be a public cache in this particular scenario.
 //
 // The default caching policy is to cache a response only if it contains a
 // `cache-control` header and either an `etag` header, or a `last-modified`
-// header. The user can control this behaviour by setting the `policy` field of
-// the `cacheConfig`. Currently, there are only 2 policies:
-// `CACHE_CONTROL_AND_VALIDATORS` (the default policy) and `RFC_7234`.
+// header. The user can control this behaviour by setting the [policy](https://ballerina.io/learn/api-docs/ballerina/http/types.html#CachingPolicy)
+// field of the `cacheConfig`. Currently, there are only 2 policies:
+// [CACHE_CONTROL_AND_VALIDATORS](https://ballerina.io/learn/api-docs/ballerina/http/constants.html#CACHE_CONTROL_AND_VALIDATORS)
+// (the default policy) and [RFC_7234](https://ballerina.io/learn/api-docs/ballerina/http/constants.html#RFC_7234).
 
 http:Client cachingEP = new ("http://localhost:8080",
                              {cache: {isShared: true}});
@@ -40,7 +41,7 @@ service cachingProxy on new http:Listener(9090) {
             // caller.
             http:Response res = new;
             res.statusCode = 500;
-            res.setPayload(<string>response.detail()?.message);
+            res.setPayload(<@untainted>response.message());
             var result = caller->respond(res);
             if (result is error) {
                 log:printError("Failed to respond to the caller", result);
@@ -61,7 +62,8 @@ service helloWorld on new http:Listener(8080) {
     resource function sayHello(http:Caller caller, http:Request req) {
         http:Response res = new;
 
-        // The `ResponseCacheControl` object in the `Response` object can be
+        // The [ResponseCacheControl](https://ballerina.io/learn/api-docs/ballerina/http/objects/ResponseCacheControl.html)
+        // object in the [Response](https://ballerina.io/learn/api-docs/ballerina/http/objects/Response.html) object can be
         // used for setting the cache control directives associated with the
         // response. In this example, `max-age` directive is set to 15 seconds
         // indicating that the response will be fresh for 15 seconds. The
@@ -77,20 +79,20 @@ service helloWorld on new http:Listener(8080) {
 
         res.cacheControl = resCC;
 
-        // The `setETag()` function can be used for generating ETags for
-        // `string`, `json`, and `xml` types. This uses the `getCRC32()`
+        // The [setETag()](https://ballerina.io/learn/api-docs/ballerina/http/objects/Response.html#setETag)
+        // function can be used for generating ETags for `string`, `json`, and `xml` types. This uses the `getCRC32()`
         // function from the `ballerina/crypto` module for generating the ETag.
         res.setETag(payload);
 
-        // The `setLastModified()` function sets the current time as the
-        // `last-modified` header.
+        // The [setLastModified()](https://ballerina.io/learn/api-docs/ballerina/http/objects/Response.html#setLastModified)
+        // function sets the current time as the `last-modified` header.
         res.setLastModified();
 
         res.setPayload(payload);
         // When sending the response, if the `cacheControl` field of the
         // response is set, and the user has not already set a `cache-control`
         // header, a `cache-control` header will be set using the directives set
-        // in the `cacheControl` object.
+        // in the [cacheControl](https://ballerina.io/learn/api-docs/ballerina/http/objects/ResponseCacheControl.html) object.
 
         var result = caller->respond(res);
         if (result is error) {
