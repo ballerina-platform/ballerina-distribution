@@ -38,7 +38,8 @@ type Manager object {
 
     public string dpt;
 
-    // referenced fields can be overridden by subtypes
+    // Referenced fields can be overridden in a type-descriptor if the type of the field  
+    // in the overriding descriptor is a sub-type of the original type of the field.
     public float salary;
 
     // All the fields referenced through the type reference can be accessed within this object.
