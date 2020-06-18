@@ -23,7 +23,7 @@ public function main() returns error?{
 
         str += (" attempt "+ count.toString() + ":result returned end.");
 
-        // Prints the execution flow as string for clarification.
+        // Prints the execution flow as a string for clarification.
         io:println(str);
     }
 }
