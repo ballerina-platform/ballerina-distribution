@@ -1,5 +1,5 @@
 // This example demonstrates how to use `sql:ParameterizedQuery` to easily
-// create pre compiled SQL statements which can be reused. Note that the 
+// create pre-compiled SQL statements that can be reused. Note that the 
 // MySQL database driver JAR should be placed in the`BALLERINA_HOME/bre/lib` 
 // directory. The MySQL connector uses database properties from MySQL 
 // version 8.0.x onwards. Therefore, it is recommended to use a MySQL driver 

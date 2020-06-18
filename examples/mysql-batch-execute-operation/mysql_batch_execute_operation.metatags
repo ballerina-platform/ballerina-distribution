@@ -1,2 +1,2 @@
-description: BBE on the use the MySQL client to execute a batch of DDL/DML operations.
+description: BBE on how to use the MySQL client to execute a batch of DDL/DML operations in Ballerina.
 keywords: ballerina, ballerina by example, bbe, mysql, insert, update, delete, batch update
