@@ -38,7 +38,6 @@ service dataBindingConsumer on channelListener {
 
     // Gets triggered when an error is encountered.
     resource function onError(rabbitmq:Message message, error err) {
-        log:printError("Error from connector: " + err.reason() + " - "
-                                                  + <string>err.detail()?.message);
+        log:printError("Error from connector: " + err.message(), err);
     }
 }

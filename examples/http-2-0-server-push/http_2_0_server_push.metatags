@@ -1,0 +1,2 @@
+description: This BBE demonstrates sending and receiving HTTP/2 Server Push messages in Ballerina HTTP Library.
+keywords: ballerina, ballerina by examples, bbe, http, http/2.0, http/2

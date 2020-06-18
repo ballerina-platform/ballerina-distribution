@@ -15,7 +15,7 @@ http:ListenerConfiguration helloWorldEPConfig = {
     }
 };
 
-listener http:Listener helloWorldEP = new (9095, config = helloWorldEPConfig);
+listener http:Listener helloWorldEP = new (9095, helloWorldEPConfig);
 
 @http:ServiceConfig {
     basePath: "/hello"

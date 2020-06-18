@@ -18,7 +18,7 @@ service chatAppUpgrader on new http:Listener(9090) {
     }
     resource function upgrader(http:Caller caller, http:Request req,
     string name) {
-        // Retrieve query parameters from the `http:Request`.
+        // Retrieve query parameters from the [http:Request](https://ballerina.io/learn/api-docs/ballerina/http/objects/Request.html).
         map<string[]> queryParams = req.getQueryParams();
         // Cancel the handshake by sending a 400 status code if the age parameter is missing in the request.
         if (!queryParams.hasKey("age")) {

@@ -34,9 +34,6 @@ function kafkaAdvancedTransactionalProduce(byte[] message) {
             io:println("Kafka producer failed to send first message",
                 sendResult.toString());
         }
-    } committed {
-        io:println("Transaction committed");
-    } aborted {
-        io:println("Transaction aborted");
+        var commitResult = commit;
     }
 }

@@ -953,6 +953,52 @@
         }]
     },
     {
+        "title": "JDBC Database Connector",
+        "column": 2,
+        "category": "Working over the network",
+        "samples": [
+            {
+                "name": "Client Initialization",
+                "url": "jdbc-init-options"
+            },
+            {
+                "name": "Select Query Operations",
+                "url": "jdbc-query-operation"
+            },
+            {
+                "name": "Query with Complex Types",
+                "url": "jdbc-complex-type-queries"
+            },
+            {
+                "name": "DDL and DML Operations",
+                "url": "jdbc-execute-operation"
+            }
+        ]
+    },
+    {
+        "title": "MySQL Database Connector",
+        "column": 2,
+        "category": "Working over the network",
+        "samples": [
+            {
+                "name": "Client Initialization",
+                "url": "mysql-init-options"
+            },
+            {
+                "name": "Select Query Operations",
+                "url": "mysql-query-operation"
+            },
+            {
+                "name": "Query with Complex Types",
+                "url": "mysql-complex-type-queries"
+            },
+            {
+                "name": "DDL and DML Operations",
+                "url": "mysql-execute-operation"
+            }
+        ]
+    },
+    {
         "title": "gRPC",
         "column": 2,
         "category": "Working over the network",
@@ -1104,6 +1150,14 @@
             {
                 "name": "QoS Settings",
                 "url": "rabbitmq-consumer-with-qos-settings"
+            },
+            {
+                "name": "Transactional Producer",
+                "url": "rabbitmq-transaction-producer"
+            },
+            {
+                "name": "Transactional Consumer",
+                "url": "rabbitmq-transaction-consumer"
             }
         ]
     },

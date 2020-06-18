@@ -8,7 +8,7 @@ int counter = 0;
     moduleName: "ballerina/log",
     functionName: "printInfo"
 }
-public function mockPrintInfo(string|(function () returns (string)) msg) {
+public function mockPrintInfo(anydata|(function () returns (anydata)) msg) {
     if (msg is string) {
         outputs[counter] = msg;
         counter += 1;

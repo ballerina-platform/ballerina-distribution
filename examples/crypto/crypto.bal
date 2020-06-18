@@ -64,7 +64,7 @@ public function main() returns error? {
 
 
     // Obtaining reference to a RSA private key stored within a PKCS#12 or PFX format archive file.
-    crypto:KeyStore keyStore = {path: "./sampleKeystore.p12", password: "ballerina"};
+    crypto:KeyStore keyStore = {path: "src/crypto/sampleKeystore.p12", password: "ballerina"};
     var privateKey = crypto:decodePrivateKey(keyStore, "ballerina", "ballerina");
 
     if (privateKey is crypto:PrivateKey) {
