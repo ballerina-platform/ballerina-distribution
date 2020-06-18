@@ -7,7 +7,7 @@ public function main() returns error?{
 
     // The retry statement provides a general-purpose retry
     // facility, which is independent of the transactions.
-    // Here, retry happens according to default retry manager
+    // Here, retrying happens according to the default retry manager
     // since there is no any custom retry manager is passed to
     // retry operation.
     // As defined, retry happens for 3 times.
