@@ -59,7 +59,7 @@ public function main() returns error? {
         // are executed in reverse order.
         transactions:onRollback(onRollbackFunc);
 
-        // Register commit handler to the transaction context.
+        // Register the commit handler to the transaction context.
         // Multiple commit handlers can be registered and they
         // are executed in reverse order.
         transactions:onCommit(onCommitFunc);
