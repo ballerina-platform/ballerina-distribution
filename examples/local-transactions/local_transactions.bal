@@ -39,7 +39,7 @@ public function main() returns error? {
 
         // Based on the result of the `commit` action, the followup tasks could be performed.
         if(commitResult is ()){
-            // Any action that needs to be performed after the transaction is
+            // Any action that needs to be performed after the transaction, which is
             // committed should be added here.
             io:println("Transaction committed");
             handleExecute(customerResult, "Insert data into CUSTOMER table");
