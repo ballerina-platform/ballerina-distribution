@@ -678,12 +678,16 @@
                 "url": "testerina-guarantee-test-execution-order"
             },
             {
-                "name": "Function Mocks",
-                "url": "testerina-function-mocks"
-            },
-            {
                 "name": "Group Tests",
                 "url": "testerina-group-tests"
+            },
+            {
+                "name": "Function Mocking",
+                "url": "testerina-mocking-functions"
+            },
+            {
+                "name": "Object Mocking",
+                "url": "testerina-mocking-objects"
             }
         ]
     },
