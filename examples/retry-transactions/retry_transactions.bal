@@ -72,7 +72,7 @@ public function main() returns error? {
         var depositResult = dbClient->execute("INSERT INTO DEPOSITS (ID, AMOUNT) " +
                                         "VALUES (1234554, 10500)");
 
-        // Returns information about the current transaction
+        // Returns information about the current transaction.
         transactions:Info transInfo = transactions:info();
         io:println(transInfo.xid);
 
