@@ -25,8 +25,8 @@ function testFunc() {
     test:assertEquals(outputs[8], 1);
     test:assertEquals(outputs[9], "Insert data into SALARY table status: ");
     test:assertEquals(outputs[10], 1);
-    test:assertEquals(outputs[11], "Drop table WITHDRAWALS status: ");
+    test:assertEquals(outputs[11], "Drop table CUSTOMER status: ");
     test:assertEquals(outputs[12], 0);
-    test:assertEquals(outputs[13], "Drop table DEPOSITS status: ");
+    test:assertEquals(outputs[13], "Drop table SALARY status: ");
     test:sertEquals(outputs[14], 0);
 }
