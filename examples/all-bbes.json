@@ -954,6 +954,14 @@
             {
                 "name": "DDL and DML Operations",
                 "url": "jdbc-execute-operation"
+            },
+            {
+                "name": "Batch Execute Operations",
+                "url": "jdbc-batch-execute-operation"
+            },
+            {
+                "name": "Parameterized Query",
+                "url": "jdbc-parameterized-query"
             }
         ]
     },
@@ -977,6 +985,14 @@
             {
                 "name": "DDL and DML Operations",
                 "url": "mysql-execute-operation"
+            },
+            {
+                "name": "Batch Execute Operations",
+                "url": "mysql-batch-execute-operation"
+            },
+            {
+                "name": "Parameterized Query",
+                "url": "mysql-parameterized-query"
             }
         ]
     },

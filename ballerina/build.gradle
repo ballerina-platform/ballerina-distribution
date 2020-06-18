@@ -857,7 +857,9 @@ task testExamples() {
          'mysql-complex-type-queries',
          'mysql-execute-operation',
          'mysql-init-options',
-         'mysql-query-operation'
+         'mysql-query-operation',
+         'mysql-batch-execute-operation',
+         'mysql-parameterized-query'
     ]
     doFirst {
         copy {
