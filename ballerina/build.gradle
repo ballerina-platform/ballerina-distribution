@@ -977,7 +977,6 @@ task testExamples() {
          'task-scheduler-appointment',
          'task-scheduler-timer',
          'time',
-         'crypto',
          'xml-functions',
          'xml-access',
          'header-based-routing',
