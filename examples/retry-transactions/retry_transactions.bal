@@ -105,7 +105,7 @@ public function main() returns error? {
     ret = dbClient->execute("DROP TABLE DEPOSITS");
     handleExecute(ret, "Drop table DEPOSITS");
 
-    // Close the jdbc client
+    // Close the JDBC client.
     check dbClient.close();
 }
 
