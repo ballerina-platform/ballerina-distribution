@@ -81,7 +81,7 @@ public function main() returns error? {
         }
 
         // The `commit` action performs the commit operation of the current transaction.
-        // The result of the commit-action is an error; otherwise, the result is nil.
+        // The result of the commit action is an error. Otherwise, the result is `()`.
         var commitResult = commit;
 
         // Based on the result of `commit` action, followup tasks could be performed.
