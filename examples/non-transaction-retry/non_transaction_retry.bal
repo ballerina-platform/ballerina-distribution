@@ -6,7 +6,7 @@ public function main() returns error?{
     int count = 0;
 
     // The retry statement provides a general-purpose retry
-    // facility independent of transactions.
+    // facility, which is independent of the transactions.
     // Here, retry happens according to default retry manager
     // since there is no any custom retry manager is passed to
     // retry operation.
