@@ -1,2 +1,2 @@
-description: BBE demonstrates how to use `sql:ParameterizedQuery` in Ballerina to easily create pre-compiled SQL statements that can be reused.
+description: BBE demonstrates how to use the `sql:ParameterizedQuery` in Ballerina to easily create pre-compiled SQL statements that can be reused.
 keywords: ballerina, ballerina by example, bbe, mysql, parameterized query, parameters
