@@ -52,7 +52,7 @@ public function main() {
     }
 }
 
-// Method which throws error
+// The method, which throws the error.
 function throwError() {
     io:println("Invoke local participant function.");
     error er = error("Simulated Failure");
