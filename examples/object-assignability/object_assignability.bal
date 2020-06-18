@@ -16,7 +16,7 @@ public type Employee object {
     public string name;
     public string address;
 
-    public function __init(int age, string name, string address) {
+    public function init(int age, string name, string address) {
         self.age = age;
         self.name = name;
         self.address = address;

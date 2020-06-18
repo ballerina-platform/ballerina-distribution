@@ -3,19 +3,10 @@ import ballerina/http;
 
 boolean serviceStarted = false;
 
-function startService() {
-    //serviceStarted = test:startServices("http-disable-chunking");
-}
-
-@test:Config {
-    before: "startService",
-    after: "stopService"
-}
+@test:Config {}
 function testFunc() {
     // Invoking the main function.
     http:Client httpEndpoint = new("http://localhost:9092");
-    // Checking whether the server is started.
-    //test:assertTrue(serviceStarted, msg = "Unable to start the service");
 
     json response1 = { "Outbound request content": "Length-20" };
 
@@ -26,8 +17,4 @@ function testFunc() {
     } else {
         test:assertFail(msg = "Failed to call the endpoint:");
     }
-}
-
-function stopService() {
-    //test:stopServices("http_disable_chunking");
 }

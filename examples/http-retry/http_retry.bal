@@ -4,35 +4,35 @@ import ballerina/runtime;
 
 // Define the endpoint to the call the `mockHelloService`.
 http:Client backendClientEP = new ("http://localhost:8080", {
-        // Retry configuration options.
-        retryConfig: {
+            // Retry configuration options.
+            retryConfig: {
 
-            // Initial retry interval in milliseconds.
-            intervalInMillis: 3000,
+                // Initial retry interval in milliseconds.
+                intervalInMillis: 3000,
 
-            // Number of retry attempts before giving up.
-            count: 3,
+                // Number of retry attempts before giving up.
+                count: 3,
 
-            // Multiplier of the retry interval to exponentially increase the
-            // retry interval.
-            backOffFactor: 2.0,
+                // Multiplier of the retry interval to exponentially increase
+                // the retry interval.
+                backOffFactor: 2.0,
 
-            // Upper limit of the retry interval in milliseconds. If
-            // `intervalInMillis` into `backOffFactor` value exceeded
-            // `maxWaitIntervalInMillis` interval value.
-            // `maxWaitIntervalInMillis` will be considered as the retry
-            // interval.
-            maxWaitIntervalInMillis: 20000
-        },
-        timeoutInMillis: 2000
-    }
-);
+                // Upper limit of the retry interval in milliseconds. If
+                // `intervalInMillis` into `backOffFactor` value exceeded
+                // `maxWaitIntervalInMillis` interval value,
+                // `maxWaitIntervalInMillis` will be considered as the retry
+                // interval.
+                maxWaitIntervalInMillis: 20000
+
+            },
+            timeoutInMillis: 2000
+        }
+    );
 
 @http:ServiceConfig {
     basePath: "/retry"
 }
 service retryDemoService on new http:Listener(9090) {
-    // Create a REST resource within the API.
     @http:ResourceConfig {
         methods: ["GET"],
         path: "/"
@@ -40,6 +40,7 @@ service retryDemoService on new http:Listener(9090) {
     // Parameters include a reference to the caller and an object of the
     // request data.
     resource function invokeEndpoint(http:Caller caller, http:Request request) {
+
         var backendResponse = backendClientEP->forward("/hello", request);
 
         // If `backendResponse` is an `http:Response`, it is sent back to the
@@ -60,6 +61,7 @@ service retryDemoService on new http:Listener(9090) {
                 log:printError("Error sending response", responseToCaller);
             }
         }
+
     }
 }
 
@@ -82,9 +84,9 @@ service mockHelloService on new http:Listener(8080) {
         if (counter % 4 != 0) {
             log:printInfo(
                 "Request received from the client to delayed service.");
-            // Delay the response by 5000 milliseconds to
-            // mimic network level delays.
+            // Delay the response by 5000 milliseconds to mimic network level delays.
             runtime:sleep(5000);
+
             var responseToCaller = caller->respond("Hello World!!!");
             handleRespondResult(responseToCaller);
         } else {

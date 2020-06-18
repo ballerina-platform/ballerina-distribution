@@ -1,2 +1,2 @@
-description: This BBE has a gRPC unary service and a non-blocking client. The client sends and receives messages in non-blocking manner.
+description: This Ballerina by Example has a gRPC unary service and a non-blocking client. The client sends and receives messages in a non-blocking manner.
 keywords: ballerina, ballerina by example, bbe, grpc, unary, simple, non blocking

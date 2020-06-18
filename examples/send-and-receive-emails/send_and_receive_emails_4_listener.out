@@ -1,0 +1,6 @@
+# To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina run` command.
+$ ballerina run listen_email.bal
+
+# Subject and the content body of the email will be printed for each of the
+# emails polled.

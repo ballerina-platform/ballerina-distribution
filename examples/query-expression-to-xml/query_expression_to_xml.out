@@ -1,0 +1,5 @@
+# To run this sample, navigate to the directory that contains the
+# `.bal` file and execute the `ballerina run` command.
+$ ballerina run query_expression_to_xml.bal
+
+<firstName>Alex</firstName><firstName>Ranjan</firstName>
