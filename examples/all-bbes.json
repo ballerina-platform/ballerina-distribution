@@ -270,6 +270,10 @@
                 "url": "record-optional-fields"
             },
             {
+                "name": "Read-only Fields",
+                "url": "record-readonly-fields"
+            },
+            {
                 "name": "Record Type Reference",
                 "url": "record-type-reference"
             }
@@ -302,6 +306,10 @@
             {
                 "name": "Anonymous Objects",
                 "url": "anonymous-objects"
+            },
+            {
+                "name": "Read-only Objects and Fields",
+                "url": "readonly-objects-and-fields"
             },
             {
                 "name": "Object Type Reference",
