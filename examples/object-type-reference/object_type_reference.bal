@@ -23,8 +23,8 @@ type Employee abstract object {
     function getSalary() returns float;
 };
 
-type Owner abstract object {
-    public string status;
+type Owner object {
+    public string status = "";
 };
 
 type Manager object {
