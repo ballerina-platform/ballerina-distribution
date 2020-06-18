@@ -6,7 +6,7 @@ public function main() {
     // The `transaction` block initiates the transaction.
     transaction {
 
-        // Defines the rollback handler which triggered once
+        // Defines the rollback handler, which is triggered once the
         // rollback statement is executed.
         var onRollbackFunc = function(transactions:Info info,
                                 error? cause, boolean willRetry) {
