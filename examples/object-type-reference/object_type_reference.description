@@ -3,4 +3,4 @@
 // within the new object, thus, eliminating redundancy. An object can have
 // zero or more type references and may have chained references as well.
 // Fields and method definitions can override referenced fields and methods
-// provided that they are subtypes of referenced types.
+// provided that they are sub-types of referenced field/method types.
