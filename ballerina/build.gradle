@@ -847,12 +847,7 @@ task testExamples() {
          'length',
          'foreach',
          'testerina-group-tests',
-         'json-record-map-conversion',
-         // Temperoriality disable following due to https://github.com/ballerina-platform/ballerina-lang/issues/24306
-         'jdbc-batch-execute-operation',
-         'mysql-batch-execute-operation',
-         'jdbc-parameterized-query',
-         'mysql-parameterized-query'
+         'json-record-map-conversion'
     ]
     doFirst {
         copy {
