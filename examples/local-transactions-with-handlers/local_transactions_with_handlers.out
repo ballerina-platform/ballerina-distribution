@@ -1,0 +1,9 @@
+# To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina run` command.
+$ ballerina run local_transactions_with_handlers.bal
+
+xid=3ba5e301-3cfd-40f9-bd6f-1faf8d61b0ac retryNumber=0 startTime=1592404040052 prevAttempt=
+Invoke local participant function.
+Local participant panicked.
+Rollback handler #2 executed.
+Rollback handler #1 executed.
