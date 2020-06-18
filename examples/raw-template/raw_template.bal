@@ -27,7 +27,7 @@ public function main() {
     int i = 0;
 
     foreach var p in people {
-        queries[i] = (`INSERT INTO Details VALUES (${p.name}, ${p.age})`);
+        queries[i] = `INSERT INTO Details VALUES (${p.name}, ${p.age})`;
         i += 1;
     }
 
@@ -41,11 +41,15 @@ public function main() {
 // 2) It should only have the two fields `strings` and `insertions`<br>
 // 3) It should not have method declarations
 type Query abstract object {
+    // The value space of the raw template type can be constrained to a certain
+    // extent by selecting suitable types for the `strings` and `insertions`
+    // fields. For example,<br>
+    // - Using a fixed-length array type to limit the number of
+    // strings/interpolations in the raw template.<br>
+    // - Using a tuple type to ensure the strings/interpolations at a given
+    // position in the raw template expression is of the correct, expected
+    // type.
     public string[] strings;
-    // The type of the fields can be used to constrain the raw template
-    // in ways such as limiting the number of interpolations/strings
-    // that can be specified, ensuring that the interpolations are of
-    // correct types etc.
     public [string, int] insertions;
 };
 
