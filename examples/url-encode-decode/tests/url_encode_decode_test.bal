@@ -17,9 +17,9 @@ public function mockPrint(any|error... s) {
 function testFunc() {
     // Invoking the main function
     var ret = main();
-    test:assertEquals(outputs.length(), 25);
+    test:assertEquals(outputs.length(), 4);
     test:assertEquals(outputs[0], "Base64 URL encoded value: YWJjMTIzIT8kKiYoKSctPUB-");
     test:assertEquals(outputs[1], "Base64 URL decoded value: abc123!?$*&()'-=@~");
-    test:assertEquals(outputs[1], "URI encoded value: data%3Dvalue");
-    test:assertEquals(outputs[1], "data=value");
+    test:assertEquals(outputs[2], "URI encoded value: data%3Dvalue");
+    test:assertEquals(outputs[3], "URI decoded value: data=value");
 }

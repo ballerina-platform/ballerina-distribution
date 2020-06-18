@@ -17,7 +17,7 @@ public function mockPrint(any|error... s) {
 function testFunc() {
     // Invoking the main function
     var ret = main();
-    test:assertEquals(outputs.length(), 2);
+    test:assertEquals(outputs.length(), 3);
     test:assertEquals(outputs[0], "Issued JWT: eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QifQ.eyJzdWIiOiJKb2huIiwgImlzcyI6In" +
                                   "dzbzIiLCAiZXhwIjoxNTg2NDM3MzgwLCAianRpIjoiMTAwMDc4MjM0YmEyMyIsICJhdWQiOlsiYmFsbGV" +
                                   "yaW5hIiwgImJhbGxlcmluYVNhbXBsZXMiXX0.H67rsDKLmZJacI1NKMlYl6cCROS-rsLfW3Z2INvvDyHr" +
@@ -27,6 +27,6 @@ function testFunc() {
                                   "PWWsd9GAeCnnvmFE_Xy6Xenq5lfL2RWWO4H3yF8x_8hcLS9XidERGWQ");
     test:assertEquals(outputs[1], "Validated JWT Payload: iss=wso2 sub=John aud=ballerina ballerinaSamples jti=10007" +
                                   "8234ba23 exp=1592456075 customClaims=");
-    test:assertEquals(outputs[1], "Validated JWT Payload: iss=wso2 sub=John aud=ballerina ballerinaSamples jti=10007" +
+    test:assertEquals(outputs[2], "Validated JWT Payload: iss=wso2 sub=John aud=ballerina ballerinaSamples jti=10007" +
                                   "8234ba23 exp=1592456075 customClaims=");
 }
