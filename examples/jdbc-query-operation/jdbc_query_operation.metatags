@@ -1,2 +1,2 @@
-description: BBE demonstrates how to use the JDBC client select query operations with the stream return type.
+description: BBE demonstrates how to use the JDBC client select query operations with the stream return type in Ballerina.
 keywords: ballerina, ballerina by example, bbe, jdbc, query, select, data

@@ -1,2 +1,2 @@
-description: BBE on the use of MySQL client with DDL and DML operations.
+description: BBE on the use of MySQL client with DDL and DML operations in Ballerina.
 keywords: ballerina, ballerina by example, bbe, mysql, insert, update, delete
