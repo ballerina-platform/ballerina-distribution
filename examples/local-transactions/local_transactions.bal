@@ -18,7 +18,7 @@ public function main() returns error? {
     handleExecute(ret, "Create SALARY table");
 
     // This is a `transaction` statement block. It is a must to have either
-    // commit action or rollback statement in it. Transaction scope ends after
+    // a commit action or a rollback statement in it. The transaction scope ends after
     // the commit action or rollback statement.
     transaction {
         // This is the first remote function participant of the transaction.
