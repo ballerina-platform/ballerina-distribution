@@ -18,11 +18,11 @@ public function main() {
 
     //The `from` clause works similarly to a `foreach` statement.
     //It can be used to iterate any iterable value.
-    //The `students` is the concatenated string of query expression results.
+    //The `students` is the concatenated string of the query expression results.
     string students = from var student in studentList
        //The `where` clause provides a way to perform conditional execution and works similarly to an `if` condition.
        //It can refer to variables bound by the from clause.
-       //When the `where` condition evaluates to false, the iteration skips following the clauses.
+       //When the `where` condition evaluates to false, the iteration skips the following clauses.
        where student.score >= 1
        //The concatenation of the `select` clause is evaluated for each iteration.
        select student.firstName + " " + student.lastName + ", ";

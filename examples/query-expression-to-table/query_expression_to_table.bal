@@ -25,7 +25,7 @@ public function main() {
     StudentTable|error studentTable = table key(id) from var student in studentList
        // The `where` clause provides a way to perform conditional execution and works similarly to an `if` condition.
        // It can refer to variables bound by the from clause.
-       // When the `where` condition evaluates to false, the iteration skips following the clauses.
+       // When the `where` condition evaluates to false, the iteration skips the following clauses.
         where student.intakeYear > 2020
         //The `let` clause binds the variables.
         let float newScore = 1.5
@@ -45,14 +45,14 @@ public function main() {
 
     Student[] duplicateStdList = [s1, s2, s1];
 
-    // Defines an `error` to handle key conflict.
+    // Defines an `error` to handle a key conflict.
     error onConflictError = error("Key Conflict", message = "cannot insert student");
 
     StudentTable|error duplicateStdTable = table key(id) from var student in duplicateStdList
             select student
-            // `on conflict` clause gets executed when `select` emits a row
+            // The `on conflict` clause gets executed when `select` emits a row
             // that has the same key as a row that it emitted earlier.
-            // It gives `onConflictError` error if there is a key conflict.
+            // It gives an `onConflictError` error if there is a key conflict.
             on conflict onConflictError;
 
     io:println(duplicateStdTable);

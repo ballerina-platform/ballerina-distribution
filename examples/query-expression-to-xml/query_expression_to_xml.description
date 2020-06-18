@@ -1,3 +1,3 @@
-// Having `xml` type as the target type for a `query expression` allows users to create a xml from that query expression.
-// The resulted `xml` is the concatenation of the emitted values from the select clause.
-// Therefore, every emitted value from the select clause must be of type `xml`.
+// Having the `xml` type as the target type for a `query expression` allows users to create an XML from
+// that query expression. The resulted `xml` is the concatenation of the emitted values from the `select` clause.
+// Therefore, every emitted value from the select clause must be of the type `xml`.

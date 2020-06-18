@@ -24,10 +24,10 @@ public function main() {
                       </school>`;
 
     // The `from` clause works similarly to a `foreach` statement.
-    // `authors` is the concatenated `xml` of `query expression` results.
+    // The `authors` is the concatenated `xml` of the `query expression` results.
     xml authors = from var x in school/<student>/<firstName>
         // The `select` clause is evaluated for each iteration.
-        // The emitted values values are concatenated to form the `xml` result.
+        // The emitted values are concatenated to form the `xml` result.
         select <xml> x
         // The `limit` clause limits the number of output items.
         limit 2;
