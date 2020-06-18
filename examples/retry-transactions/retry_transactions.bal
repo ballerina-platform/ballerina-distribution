@@ -3,7 +3,7 @@ import ballerina/io;
 import ballerina/sql;
 import ballerina/java.jdbc;
 
-// User defined retry manager object
+// The user-defined retry manager object.
 public type MyRetryManager object {
    private int count;
    public function init(int count = 2) {
