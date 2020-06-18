@@ -2,3 +2,5 @@
 // into another object. It is equivalent to specifying the members explicitly
 // within the new object, thus, eliminating redundancy. An object can have
 // zero or more type references and may have chained references as well.
+// Fields and method definitions can override referenced fields and methods
+// provided that they are subtypes of referenced types.

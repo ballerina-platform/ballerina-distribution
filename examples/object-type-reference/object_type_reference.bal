@@ -18,9 +18,9 @@ type Employee abstract object {
     // Add a reference to the `Person` object type. 
     // All the member fields and member methods will be copied from the `Person` object.
     *Person;
-    public float salary;
+    public float|int salary;
 
-    function getSalary() returns float;
+    function getSalary() returns float|int;
 };
 
 type Owner object {
@@ -38,8 +38,11 @@ type Manager object {
 
     public string dpt;
 
+    // referenced fields can be overridden by subtypes
+    public float salary;
+
     // All the fields referenced through the type reference can be accessed within this object.
-    function __init(int age, string firstName, string lastName, string status) {
+    function init(int age, string firstName, string lastName, string status) {
         self.age = age;
         self.firstName = firstName;
         self.lastName = lastName;
@@ -53,6 +56,7 @@ type Manager object {
         return self.firstName + " " + self.lastName;
     }
 
+    // refered methods can be overridden with a subtype method
     function getSalary() returns float {
         return self.salary;
     }
