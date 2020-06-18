@@ -142,7 +142,8 @@ function queryDateTimeType(jdbc:Client jdbcClient) {
 
 //Initialize the database table with sample data.
 function initializeTable(jdbc:Client jdbcClient) returns sql:Error? {
-    sql:ExecuteResult? result =
+
+    sql:ExecutionResult? result =
         check jdbcClient->execute("DROP TABLE IF EXISTS BINARY_TYPES");
     result = check jdbcClient->execute("CREATE TABLE BINARY_TYPES (row_id " +
         "INTEGER NOT NULL, blob_type BLOB(1024), clob_type CLOB(1024)," +
@@ -177,6 +178,7 @@ public function main() {
     // Initialize the JDBC client.
     jdbc:Client|sql:Error jdbcClient = new ("jdbc:h2:file:./target/DATA_TYPES",
         "rootUser", "rootPass");
+
     if (jdbcClient is jdbc:Client) {
         sql:Error? err = initializeTable(jdbcClient);
         if (err is sql:Error) {
@@ -186,10 +188,12 @@ public function main() {
             queryBinaryType(jdbcClient);
             queryArrayType(jdbcClient);
             queryDateTimeType(jdbcClient);
+
             io:println("Sample executed successfully!");
         }
         // Close the JDBC client.
         sql:Error? e = jdbcClient.close();
+
     } else {
         io:println("Initialization failed: ", jdbcClient);
     }
