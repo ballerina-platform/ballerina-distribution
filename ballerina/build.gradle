@@ -820,7 +820,6 @@ task testExamples() {
          'http-caching-client',
          'http-data-binding',
          'http-1.1-to-2.0-protocol-switch',
-         'http-to-websocket-upgrade',
          'basic-https-listener-client',
          'https-listener',
          'http-client-endpoint',
@@ -831,7 +830,6 @@ task testExamples() {
          'time',
          'xml-functions',
          'xml-access',
-         'header-based-routing',
          'mutual-ssl',
          'tuple-match-statement',
          'type-conversion',
@@ -839,10 +837,7 @@ task testExamples() {
          'record-io',
          'csv-io',
          'type-cast',
-         'async',
          'json-csv',
-         'worker-interaction',
-         'fork-variable-access',
          'functional-iteration',
          'table',
          'maps',
@@ -856,10 +851,11 @@ task testExamples() {
          'foreach',
          'testerina-group-tests',
          'json-record-map-conversion',
-         'mysql-complex-type-queries',
-         'mysql-execute-operation',
-         'mysql-init-options',
-         'mysql-query-operation'
+         // Temperoriality disable following due to https://github.com/ballerina-platform/ballerina-lang/issues/24306
+         'jdbc-batch-execute-operation',
+         'mysql-batch-execute-operation',
+         'jdbc-parameterized-query',
+         'mysql-parameterized-query'
     ]
     doFirst {
         copy {

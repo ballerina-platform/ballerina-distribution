@@ -1,3 +1,4 @@
+# To invoke the service, use following curl commands.
 $ curl http://localhost:9090/cbr/route -d '{"name" : "sanFrancisco"}' -H "Content-Type:application/json"
 {
     "name": "San Francisco Test Station,USA",

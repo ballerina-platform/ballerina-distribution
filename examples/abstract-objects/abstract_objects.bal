@@ -24,7 +24,7 @@ type Employee object {
     public string lastName;
 
     // Non-abstract objects can have initializers.
-    function __init(int age, string firstName, string lastName) {
+    function init(int age, string firstName, string lastName) {
         self.age = age;
         self.firstName = firstName;
         self.lastName = lastName;

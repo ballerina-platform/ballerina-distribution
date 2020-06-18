@@ -26,8 +26,8 @@ function process(io:ReadableCSVChannel csvChannel)
 //Specifies the location of the `.CSV` file.
 public function main() returns @tainted error? {
     string srcFileName = "./files/sample.csv";
-    // Opens a CSV channel in the `write` mode and writes some data to
-    // the `./files/sample.csv` file for later use.
+    // Opens a [CSV channel in the `write` mode](https://ballerina.io/learn/api-docs/ballerina/io/objects/WritableCSVChannel.html)
+    // and writes some data to the `./files/sample.csv` file for later use.
     // The record separator of the `.CSV` file is a
     // new line and the field separator is a comma (,).
     io:WritableCSVChannel wCsvChannel =
@@ -37,7 +37,8 @@ public function main() returns @tainted error? {
     ["5", "Oliver", "1100000"]];
     writeDataToCSVChannel(wCsvChannel, ...data);
     closeWritableCSVChannel(wCsvChannel);
-    // Opens a CSV channel in the `read` mode, which is the default mode.
+    // Opens a [CSV channel in the `read` mode](https://ballerina.io/learn/api-docs/ballerina/io/objects/ReadableCSVChannel.html),
+    // which is the default mode.
     io:ReadableCSVChannel rCsvChannel =
                         check io:openReadableCsvFile(srcFileName);
     io:println("Start processing the CSV file from ", srcFileName);
@@ -52,12 +53,11 @@ public function main() returns @tainted error? {
     // Opens a CSV channel in the `read` mode, which is the default mode.
     io:ReadableCSVChannel rCsvChannel2 =
                             check io:openReadableCsvFile(srcFileName);
-    // Reads the `.CSV` file as a `table`.
+    // Reads the `.CSV` file as a `table` using [getTable](https://ballerina.io/learn/api-docs/ballerina/io/objects/ReadableCSVChannel.html#getTable) function.
     io:println("Reading  " + srcFileName + " as a table");
     var tblResult = rCsvChannel2.getTable(Employee);
     if (tblResult is table<record {}>) {
-        table<Employee> empTable = <table<Employee>> tblResult;
-        foreach var rec in empTable {
+        foreach var rec in tblResult {
             io:println(rec);
         }
     } else {
@@ -81,17 +81,13 @@ public function main() returns @tainted error? {
 
 // Creates a `table` and adds some data.
 function createTableAndAddData() returns table<Employee> {
-    table<Employee> employeeTable = table {};
+    table<Employee> employeeTable = table [];
     Employee[] employees = [];
     employees[0] = {id: "1", name: "Allen", salary: 300000.0};
     employees[1] = {id: "2", name: "Wallace", salary: 200000.0};
     employees[2] = {id: "3", name: "Sheldon", salary: 1000000.0};
     foreach var employee in employees {
-        var result = employeeTable.add(employee);
-        if (result is error) {
-            log:printError("Error occurred while adding data to table: ",
-                            err = result);
-        }
+        employeeTable.add(employee);
     }
     return employeeTable;
 }

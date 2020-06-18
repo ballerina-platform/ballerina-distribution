@@ -9,11 +9,11 @@ string msg = "hey";
 }
 function testText() {
     http:WebSocketClient wsClient = new("ws://localhost:9090/chat/bruce?age=30", {callbackService:callback});
-    runtime:sleep(2000);
+    runtime:sleep(4000);
     test:assertEquals(serviceReply, "Hi bruce! You have successfully connected to the chat",
     "Received message should be equal to the expected message");
     checkpanic wsClient->pushText(msg);
-    runtime:sleep(2000);
+    runtime:sleep(4000);
     test:assertEquals(serviceReply, "bruce: " + msg, "Received message should be equal to the expected message");
 }
 
