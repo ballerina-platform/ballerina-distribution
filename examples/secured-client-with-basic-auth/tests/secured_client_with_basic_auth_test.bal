@@ -14,7 +14,7 @@ public function mockPrintInfo(string|(function () returns (string)) msg) {
     }
 }
 
-@test:Config
+@test:Config {}
 function testFunc() {
     // Invoking the main function
     main();

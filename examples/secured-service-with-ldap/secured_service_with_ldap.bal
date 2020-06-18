@@ -6,7 +6,7 @@ import ballerina/ldap;
 // Defines the LDAP connection configurations.
 ldap:LdapConnectionConfig ldapConfig = {
     domainName: "ballerina.io",
-    connectionURL: "ldap://localhost:9095",
+    connectionURL: "ldap://localhost:20000",
     connectionName: "uid=admin,ou=system",
     connectionPassword: "secret",
     userSearchBase: "ou=Users,dc=ballerina,dc=io",
