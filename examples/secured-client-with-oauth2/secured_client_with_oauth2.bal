@@ -35,6 +35,7 @@ http:Client clientEP1 = new ("<URL of the secured endpoint>", {
     }
 });
 
+
 // Defines the OAuth2 client endpoint to call the backend services.
 // The OAuth2 authentication with the password grant type is enabled by
 // creating an `oauth2:OutboundOAuth2Provider` with the relevant
@@ -83,6 +84,7 @@ http:Client clientEP2 = new ("<URL of the secured endpoint>", {
         }
     }
 });
+
 
 // Defines the OAuth2 client endpoint to call the backend services.
 // The OAuth2 authentication with direct token mode is enabled by creating
