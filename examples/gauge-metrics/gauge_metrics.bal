@@ -8,7 +8,6 @@ import ballerina/observe;
 // percentiles: [0.33, 0.5, 0.66, 0.99] }.
 observe:Gauge globalGauge = new ("global_gauge", "Global gauge defined");
 
-// Make sure you start the service with the '--b7a.observability.enabled=true' property or with metrics enabled.
 @http:ServiceConfig {
     basePath: "/online-store-service"
 }
@@ -109,7 +108,7 @@ function printGauge(observe:Gauge gauge) {
     //Get the statistics snapshot of the gauge.
     io:print("Gauge - " + gauge.name + " Snapshot: ");
     observe:Snapshot[]? snapshots = gauge.getSnapshot();
-    json|error snapshotAsAJson = json.constructFrom(snapshots);
+    json|error snapshotAsAJson = snapshots.cloneWithType(json);
     if snapshotAsAJson is json {
         io:println(snapshotAsAJson.toJsonString());
     }
