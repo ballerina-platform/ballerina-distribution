@@ -36,7 +36,7 @@ public function main() {
     // Issues a JWT based on the provided header, payload and keystore config.
     string|jwt:Error jwt = jwt:issueJwt(header, payload, keyStoreConfig);
     if (jwt is string) {
-        io:println("Issued JWT: ", jwt);
+        io:println("Issued JWT: " + jwt);
     } else {
         io:println("An error occurred while issuing the JWT: ",
                     jwt.message());
@@ -63,7 +63,7 @@ public function main() {
     // Validates the created JWT. Signature is validated using the truststore.
     jwt:JwtPayload|jwt:Error result = jwt:validateJwt(<string>jwt, validatorConfig1);
     if (result is jwt:JwtPayload) {
-        io:println("Validated JWT Payload: ", result);
+        io:println("Validated JWT Payload: " + result.toString());
     } else {
         io:println("An error occurred while validating the JWT: ",
                     result.message());
@@ -87,7 +87,7 @@ public function main() {
     // Validates the created JWT. Signature is validated using the truststore.
     result = jwt:validateJwt(<string>jwt, validatorConfig2);
     if (result is jwt:JwtPayload) {
-        io:println("Validated JWT Payload: ", result);
+        io:println("Validated JWT Payload: " + result.toString());
     } else {
         io:println("An error occurred while validating the JWT: ",
                     result.message());

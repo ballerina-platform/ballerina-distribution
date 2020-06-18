@@ -1,3 +1,4 @@
+import ballerina/stringutils;
 import ballerina/test;
 
 (any|error)[] outputs = [];
@@ -18,15 +19,11 @@ function testFunc() {
     // Invoking the main function
     var ret = main();
     test:assertEquals(outputs.length(), 3);
-    test:assertEquals(outputs[0], "Issued JWT: eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QifQ.eyJzdWIiOiJKb2huIiwgImlzcyI6In" +
-                                  "dzbzIiLCAiZXhwIjoxNTg2NDM3MzgwLCAianRpIjoiMTAwMDc4MjM0YmEyMyIsICJhdWQiOlsiYmFsbGV" +
-                                  "yaW5hIiwgImJhbGxlcmluYVNhbXBsZXMiXX0.H67rsDKLmZJacI1NKMlYl6cCROS-rsLfW3Z2INvvDyHr" +
-                                  "ntNau0P8FFoIc98D_c7UPe_L1_uV3no0nWweoWvzqQB8wfvduB6wKNxb1KGprIUF0ilxveQN1Vzab2Mvd" +
-                                  "7SJCJ19tf6OcKort38C7ES0am5vsm0495OyaNVDAq3ixFP8WRacQW53b0ELc25QCYJJBLhjFBdXLpnx1b" +
-                                  "oSjgS2vhTrg8bY8zlkoV3pJULfHmjS3JX0a_FBqqeB1yQqbIp1RxGrWzGg4nA6kPjGC1GwYvxjcCVQjY5" +
-                                  "PWWsd9GAeCnnvmFE_Xy6Xenq5lfL2RWWO4H3yF8x_8hcLS9XidERGWQ");
-    test:assertEquals(outputs[1], "Validated JWT Payload: iss=wso2 sub=John aud=ballerina ballerinaSamples jti=10007" +
-                                  "8234ba23 exp=1592456075 customClaims=");
-    test:assertEquals(outputs[2], "Validated JWT Payload: iss=wso2 sub=John aud=ballerina ballerinaSamples jti=10007" +
-                                  "8234ba23 exp=1592456075 customClaims=");
+    test:assertTrue(stringutils:contains(<string>outputs[0], "Issued JWT: eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QiLCAia2" +
+                                         "lkIjoiTlRBeFptTXhORE15WkRnM01UVTFaR00wTXpFek9ESmhaV0k0TkRObFpEVTFPR0ZrTmpG" +
+                                         "aU1RIn0."));
+    test:assertTrue(stringutils:contains(<string>outputs[1], "Validated JWT Payload: iss=ballerina sub=admin aud=vEw" +
+                                         "zbcasJVQm1jVYHUHCjhxZ4tYa jti=100078234ba23"));
+    test:assertTrue(stringutils:contains(<string>outputs[2], "Validated JWT Payload: iss=ballerina sub=admin aud=vEw" +
+                                         "zbcasJVQm1jVYHUHCjhxZ4tYa jti=100078234ba23"));
 }
