@@ -10,12 +10,13 @@ public function main() {
 
     // Defines an anonymous function with `var`.
     var anonFunction2 = function (string x, string y, string... z) returns string {
-                            string value = x + y;
-                            foreach var item in z {
-                                value += item;
-                            }
-                            return value;
-                        };
+        string value = x + y;
+        foreach var item in z {
+            value += item;
+        }
+        return value;
+    };
+    
     io:println("Output: ", anonFunction2("Ballerina ", "is ", "an ", "open ",
      "source ", "programming ", "language."));
 

@@ -11,8 +11,7 @@ public function main() {
     grpc:Error? result = helloWorldEp->hello("WSO2", HelloWorldMessageListener);
 
     if (result is grpc:Error) {
-        io:println("Error from Connector: " + result.reason() + " - "
-                + <string>result.detail()["message"]);
+        io:println("Error from Connector: " + result.message());
     } else {
         io:println("Connected successfully");
     }
@@ -31,8 +30,7 @@ service HelloWorldMessageListener = service {
 
     // The `resource` registered to receive server error messages.
     resource function onError(error err) {
-        io:println("Error reported from server: " + err.reason() + " - "
-                + <string>err.detail()["message"]);
+        io:println("Error reported from server: " + err.message());
     }
 
     // The `resource` registered to receive server completed messages.
