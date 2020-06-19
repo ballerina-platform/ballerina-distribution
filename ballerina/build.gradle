@@ -851,6 +851,8 @@ task testExamples() {
          'length',
          'foreach',
          'testerina-group-tests',
+         'testerina-mocking-objects',
+         'testerina-mocking-functions',
          'json-record-map-conversion',
          // Temperoriality disable following due to https://github.com/ballerina-platform/ballerina-lang/issues/24306
          'jdbc-batch-execute-operation',
