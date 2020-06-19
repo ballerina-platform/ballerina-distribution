@@ -74,7 +74,8 @@ public function main() {
 
     // `.map()` applies a function to each member of a table and returns a table of the result.
     // The resulting table will have the same keys as the argument table.
-    table<Person> personTab = employeeTab.'map(function (Employee employee) returns Person {
+    table<Person> personTab = employeeTab.'map(function (Employee employee)
+                                                            returns Person {
         return {id: employee.id, name:employee.name, age:23};
     });
     io:println("Person Table Information: ", personTab);
