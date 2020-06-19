@@ -205,10 +205,6 @@ task packageDist(type: Zip) {
     entryCompression=ZipEntryCompression.STORED
 
     into("${parentDir}") {
-        from({ new File(temporaryDir, 'dependencies').mkdirs(); temporaryDir })
-    }
-
-    into("${parentDir}") {
         from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
     }
     into("${parentDir}/examples") {
@@ -296,6 +292,10 @@ task packageDistZip(type: Zip) {
     baseName = "${distributionName}"
     ext{parentDir="${baseName}-${version}"}
     entryCompression=ZipEntryCompression.STORED
+
+    into("${parentDir}") {
+        from({ new File(temporaryDir, 'dependencies').mkdirs(); temporaryDir })
+    }
 
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples/") {
         from "${project.rootDir}/examples/"
