@@ -36,10 +36,6 @@ public function main() {
               } = getPerson()
               in personAge;
     io:println("age: ", age);
-
-    var fatal = let var error(reason, ...params) = getSampleError()
-                    in params["fatal"];
-    io:println("fatal: ", fatal);
 }
 
 public function getInt() returns int => 1;

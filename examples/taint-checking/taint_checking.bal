@@ -1,5 +1,6 @@
 import ballerina/lang.'int;
-import ballerinax/java.jdbc;
+import ballerina/mysql;
+import ballerina/sql;
 
 // The `@untainted` annotation can be used with the parameters of user-defined functions. This allow users to restrict
 // passing untrusted (tainted) data into a security sensitive parameter.
@@ -11,37 +12,28 @@ type Student record {
     string firstname;
 };
 
-public function main(string... args) {
-    jdbc:Client customerDBEP = new ({
-        url: "jdbc:mysql://localhost:3306/testdb",
-        username: "root",
-        password: "root",
-        poolOptions: {maximumPoolSize: 5},
-        dbOptions: {useSSL: false}
-    });
+public function main(string... args) returns error? {
+    mysql:Client dbClient = check new ("localhost", "root", "root", "testdb", 3306);
 
-    // Sensitive parameters of functions that are built-in to Ballerina are decorated with the `@untainted` annotation.
-    // This ensures that tainted data cannot pass into the security sensitive parameter.
+    // Security sensitive parameters of Ballerina standard library functions
+    // are decorated with the `@untainted` annotation. This ensures that
+    // tainted data cannot pass into the security sensitive parameter.
     //
-    // For example, the taint checking mechanism of Ballerina completely prevents SQL injection vulnerabilities by
-    // disallowing tainted data in the SQL query.
+    // For example, the taint checking mechanism of Ballerina completely
+    // prevents SQL injection vulnerabilities by disallowing tainted data
+    // in the SQL query.
     //
-    // This line results in a compile error because the query is appended with a user-provided argument.
-    var result = customerDBEP->
-                               select("SELECT firstname FROM student WHERE" +
-                                      " registration_id = " + args[0], ());
-
-    if (result is error) {
-        panic result;
-    }
-
-    table<Student> dataTable = <table<Student>>result;
+    // Call to `query` action result in a compile time error because untainted
+    // data from `args[0]` is passed to it via `sqlQuery` value.
+    sql:ParameterizedQuery sqlQuery = `SELECT firstName from student WHERE registration_id = ${args[0]}`;
+    var result = dbClient->query(sqlQuery, ());
 
     // This line results in a compiler error because a user-provided argument is passed to a sensitive parameter.
     userDefinedSecureOperation(args[0]);
 
     if (isInteger(args[0])) {
-        // After performing necessary validations and/or escaping, we can use type cast expression with @untainted annotation
+        // After performing necessary validations and/or escaping,
+        // we can use type cast expression with @untainted annotation
         // to mark the proceeding value as `trusted` and pass it to a sensitive parameter.
         userDefinedSecureOperation(<@untainted>args[0]);
     } else {
@@ -49,8 +41,10 @@ public function main(string... args) {
         panic err;
     }
 
-    while (dataTable.hasNext()) {
-        Student jsonData = dataTable.getNext();
+    while (true) {
+        var data = check result.next();
+
+        Student jsonData = <Student> data?.value;
         // The return values of certain functions built-in to Ballerina are decorated with the `@tainted` annotation to
         // denote that the return value should be untrusted (tainted). One such example is the data read from a
         // database.
@@ -70,7 +64,7 @@ public function main(string... args) {
         // trusted.
         userDefinedSecureOperation(sanitizedData2);
     }
-    checkpanic customerDBEP.stop();
+    checkpanic dbClient.close();
     return;
 }
 

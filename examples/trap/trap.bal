@@ -7,7 +7,7 @@ public function main() {
     if (result is int) {
         io:println("int result: ", result);
     } else {
-        io:println("Error occurred: ", result.reason());
+        io:println("Error occurred: ", result.message());
     }
 }
 

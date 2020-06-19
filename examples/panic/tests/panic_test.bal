@@ -25,6 +25,6 @@ function testFunc() {
     test:assertEquals(outputs[3], "record1");
     test:assertTrue(e is error, msg = "expected main to panic");
     if (e is error) {
-        test:assertEquals(e.reason(), "Record is nil");
+        test:assertEquals(e.message(), "Record is nil");
     }
 }

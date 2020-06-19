@@ -6,7 +6,8 @@ map<grpc:Caller> consMap = {};
 
 service Chat on new grpc:Listener(9090) {
 
-    resource function  chat(grpc:Caller caller, stream<ChatMessage, error> clientStream) {
+    resource function  chat(grpc:Caller caller,
+                                stream<ChatMessage, error> clientStream) {
         log:printInfo(string `${caller.getId()} connected to chat`);
         consMap[caller.getId().toString()] = <@untainted>caller;
         //Read and process each message in the client stream
@@ -18,8 +19,7 @@ service Chat on new grpc:Listener(9090) {
                 ep = connection;
                 grpc:Error? err = ep->send(msg);
                 if (err is grpc:Error) {
-                    log:printError("Error from Connector: " + err.reason() + " - "
-                                + <string>err.detail()["message"]);
+                    log:printError("Error from Connector: " + err.message());
                 } else {
                     log:printInfo("Server message to caller " + callerId
                                                         + " sent successfully.");
@@ -28,16 +28,14 @@ service Chat on new grpc:Listener(9090) {
         });
         //Once the client sends a notification to indicate the end of the stream, 'grpc:EOS' is returned by the stream
         if (e is grpc:EOS) {
-            grpc:Caller ep;
             string msg = string `${caller.getId()} left the chat`;
             log:printInfo(msg);
             var v = consMap.remove(caller.getId().toString());
             foreach var [callerId, connection] in consMap.entries() {
-                ep = connection;
+                grpc:Caller ep = connection;
                 grpc:Error? err = ep->send(msg);
                 if (err is grpc:Error) {
-                    log:printError("Error from Connector: " + err.reason() + " - "
-                            + <string>err.detail()["message"]);
+                    log:printError("Error from Connector: " + err.message());
                 } else {
                     log:printInfo("Server message to caller " + callerId
                                                         + " sent successfully.");
@@ -45,8 +43,7 @@ service Chat on new grpc:Listener(9090) {
             }
         //If the client sends an error to the server, the stream closes and returns the error
         } else if (e is error) {
-            log:printError("Error from Connector: " + e.reason() + " - "
-                        + <string>e.detail()["message"]);
+            log:printError("Error from Connector: " + e.message());
         }
 
     }

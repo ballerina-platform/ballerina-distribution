@@ -1,6 +1,43 @@
 import ballerina/io;
 
+type Student record {|
+    int class;
+    Details details;
+    map<int> marks;
+|};
+
+type Details record {|
+    string name;
+    int id;
+|};
+
 public function main() {
+
+    // Create an immutable `Details` value, using an intersection type with `readonly`.
+    Details & readonly immutableDetails = {
+        name: "May",
+        id: 112233
+    };
+
+    // Now create an immutable `Student` value similarly.
+    Student & readonly student = {
+        class: 12,
+        // Since `immutableDetails` was created as an immutable value it can be used as a member here.
+        details: immutableDetails,
+        // The applicable contextually expected type for `marks` is now `map<int> & readonly`.
+        // Thus the value for `marks` will be constructed as an immutable map.
+        marks: {
+            math: 80,
+            physics: 85,
+            chemistry: 75
+        }
+    };
+
+    // `student` and all the fields in `student` will be immutable.
+    io:println("student is immutable: ", student.isReadOnly());
+    io:println("student.details is immutable: ", student.details.isReadOnly());
+    io:println("student.marks is immutable: ", student.marks.isReadOnly());
+
     // Create an `anydata`-typed `map` with two entries.
     map<string|int> m1 = {stringVal: "str", intVal: 1};
 
@@ -24,7 +61,7 @@ public function main() {
     if (updateResult is error) {
         // An error should occur since `m2` is frozen.
         io:println("Error occurred on update: ",
-                   <string>updateResult.detail()?.message);
+                   <string>updateResult.detail()["message"]);
     }
 
     // Now call `.cloneReadOnly()` on the immutable value `m2`.
