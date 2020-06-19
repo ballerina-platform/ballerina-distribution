@@ -209,7 +209,6 @@ task packageDist(type: Zip) {
     }
     into("${parentDir}/examples") {
         from "${project.rootDir}/examples/"
-        exclude "index.json"
         fileMode = 0755
     }
     into("${parentDir}/examples") {
@@ -421,7 +420,6 @@ task packageDistLinux(type: Zip) {
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples/") {
         from "${project.rootDir}/examples/"
-        exclude "index.json"
         fileMode = 0755
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
@@ -539,7 +537,6 @@ task packageDistMac(type: Zip) {
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples/") {
         from "${project.rootDir}/examples/"
-        exclude "index.json"
         fileMode = 0755
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
@@ -652,7 +649,6 @@ task packageDistWindows(type: Zip) {
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples/") {
         from "${project.rootDir}/examples/"
-        exclude "index.json"
         fileMode = 0755
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
