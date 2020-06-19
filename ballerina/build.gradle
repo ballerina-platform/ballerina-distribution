@@ -209,7 +209,7 @@ task packageDist(type: Zip) {
     }
     into("${parentDir}/examples") {
         from "${project.rootDir}/examples/"
-        exclude "all-bbes.json"
+        exclude "index.json"
         fileMode = 0755
     }
     into("${parentDir}/examples") {
@@ -421,7 +421,7 @@ task packageDistLinux(type: Zip) {
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples/") {
         from "${project.rootDir}/examples/"
-        exclude "all-bbes.json"
+        exclude "index.json"
         fileMode = 0755
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
@@ -539,7 +539,7 @@ task packageDistMac(type: Zip) {
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples/") {
         from "${project.rootDir}/examples/"
-        exclude "all-bbes.json"
+        exclude "index.json"
         fileMode = 0755
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
@@ -652,7 +652,7 @@ task packageDistWindows(type: Zip) {
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples/") {
         from "${project.rootDir}/examples/"
-        exclude "all-bbes.json"
+        exclude "index.json"
         fileMode = 0755
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
@@ -884,7 +884,7 @@ task testExamples() {
             from(src)
             into dis
         }
-        def inputFile = new File("${baseBuildPath}/TestProject/src/all-bbes.json")
+        def inputFile = new File("${baseBuildPath}/TestProject/src/index.json")
         def categories = new JsonSlurper().parseText(inputFile.text)
         categories.each { category ->
             def examples = category.samples
