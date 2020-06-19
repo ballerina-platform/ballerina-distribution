@@ -1,5 +1,5 @@
 Package: ballerina-__BALLERINA_VERSION__
-Version: __BALLERINA_VERSION__
+Version: 2-__BALLERINA_VERSION__
 Maintainer: Ballerina <admin@ballerinalang.org>
 Architecture: amd64
 Description: Ballerina
