@@ -9,7 +9,7 @@ string msg = "hey";
 function testText() {
     http:WebSocketClient wsClient = new("ws://localhost:9090/proxy/ws", {callbackService:callback});
     checkpanic wsClient->pushText(msg);
-    runtime:sleep(2000);
+    runtime:sleep(4000);
     test:assertEquals(serviceReply, msg, "Received message should be equal to the expected message");
 }
 

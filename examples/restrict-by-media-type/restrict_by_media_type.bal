@@ -2,8 +2,8 @@ import ballerina/http;
 import ballerina/log;
 
 service infoService on new http:Listener(9092) {
-    // The `consumes` and `produces` annotations contain MIME types as an
-    // array of strings. The resource can only consume/accept `text/json` and
+    // The `consumes` and `produces` annotations of the [resource configuration](https://ballerina.io/learn/api-docs/ballerina/http/records/HttpResourceConfig.html)
+    // contain MIME types as an array of strings. The resource can only consume/accept `text/json` and
     // `application/json` media types. Therefore, the `Content-Type` header
     // of the request must be in one of these two types. The resource can produce
     // `application/xml` payloads. Therefore, you need to set the `Accept` header accordingly.
@@ -22,10 +22,10 @@ service infoService on new http:Listener(9092) {
             string nameString = <string>msg.name;
             // Create the XML payload and send back a response.
             xml name = xml `<name>${nameString}</name>`;
-            res.setXmlPayload(<@untained>name);
+            res.setXmlPayload(<@untainted>name);
         } else {
             res.statusCode = 500;
-            res.setPayload(<@untainted string>msg.detail()?.message);
+            res.setPayload(<@untainted>msg.message());
         }
 
         var result = caller->respond(res);

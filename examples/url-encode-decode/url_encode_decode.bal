@@ -15,7 +15,8 @@ public function main() returns error? {
 
     string encodingUriComp = "data=value";
     // Encoding a URI component into a string.
-    string encodedUriComponent = check encoding:encodeUriComponent(encodingUriComp, "UTF-8");
+    string encodedUriComponent =
+            check encoding:encodeUriComponent(encodingUriComp, "UTF-8");
     io:println("URI encoded value: " + encodedUriComponent);
 
     string data = "data%3Dvalue";

@@ -37,7 +37,7 @@ public function main() {
     email:Error? response = smtpClient->send(email);
     if (response is email:Error) {
         io:println("Error while sending the email: "
-            + <string> response.detail()["message"]);
+            + response.message());
     }
 
 }

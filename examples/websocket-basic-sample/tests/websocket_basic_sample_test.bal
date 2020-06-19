@@ -14,7 +14,7 @@ function testText() {
     if (result is http:WebSocketError) {
         log:printError("Error occurred when pushing text", <error> result);
     }
-     runtime:sleep(2000);
+     runtime:sleep(4000);
     test:assertEquals(serviceReply, "You said: " + msg, "Received message should be equal to the expected message");
 }
 

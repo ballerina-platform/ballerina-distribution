@@ -13,8 +13,8 @@ public function main() {
     // The interval in which the timer should trigger.
     int intervalInMillis = 1000;
 
-    // Initializes the timer scheduler using the interval value.
-    // The delay will be equal to the interval if an initial delay is not provided.
+    // Initializes the timer scheduler using the interval value. The delay will
+    // be equal to the interval if an initial delay is not provided.
     task:Scheduler timer = new ({
         intervalInMillis: intervalInMillis,
         initialDelayInMillis: 0
@@ -72,7 +72,8 @@ service service1 = service {
     resource function onTrigger(Person person) {
         if (person.age < person.maxAge) {
             person.age = person.age + 1;
-            io:println("Hi " + person.name + " you are " + person.age.toString() + " years old now.");
+            io:println("Hi " + person.name +
+                " you are " + person.age.toString() + " years old now.");
         }
     }
 };

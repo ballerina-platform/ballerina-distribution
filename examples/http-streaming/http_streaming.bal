@@ -3,7 +3,7 @@ import ballerina/io;
 import ballerina/log;
 import ballerina/mime;
 
-// Creates an endpoint for the client.
+// Creates an endpoint for the [client](https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html).
 http:Client clientEndpoint = new ("http://localhost:9090");
 
 @http:ServiceConfig {
@@ -19,7 +19,7 @@ service HTTPStreamingService on new http:Listener(9090) {
                                          http:Request clientRequest) {
         http:Request request = new;
 
-        //Sets the file as request payload.
+        //[Sets the file](https://ballerina.io/learn/api-docs/ballerina/http/objects/Request.html#setFileAsPayload) as the request payload.
         request.setFileAsPayload("./files/BallerinaLang.pdf",
             contentType = mime:APPLICATION_PDF);
 
@@ -55,11 +55,11 @@ service HTTPStreamingService on new http:Listener(9090) {
         http:Response res = new;
         var payload = clientRequest.getByteChannel();
         if (payload is io:ReadableByteChannel) {
-            //Writes the incoming stream to a file. First get the destination
-            //channel by providing the file name, the content should be
-            //written to.
+            //Writes the incoming stream to a file. First, [get the destination channel](https://ballerina.io/learn/api-docs/ballerina/io/functions.html#openWritableFile)
+            //by providing the file name to which the content should be written to.
             var destinationChannel =
                 io:openWritableFile("./files/ReceivedFile.pdf");
+
             if (destinationChannel is io:WritableByteChannel) {
                 var result = copy(payload, destinationChannel);
                 if (result is error) {
@@ -84,7 +84,7 @@ service HTTPStreamingService on new http:Listener(9090) {
 //Sets the error to the response.
 function setError(http:Response res, error err) {
     res.statusCode = 500;
-    res.setPayload(<@untainted string>err.detail()?.message);
+    res.setPayload(<@untainted>err.message());
 }
 
 // Copies the content from the source channel to a destination channel.
@@ -93,15 +93,15 @@ function copy(io:ReadableByteChannel src,
     // The below example shows how to read all the content from
     // the source and copy it to the destination.
     while (true) {
-        // The operation attempts to read a maximum of 1000 bytes and returns
+        // The operation attempts to [read](https://ballerina.io/learn/api-docs/ballerina/io/objects/ReadableByteChannel.html#read) a maximum of 1000 bytes and returns
         // with the available content, which could be < 1000.
         byte[]|io:Error result = src.read(1000);
         if (result is io:EofError) {
             break;
         } else if (result is error) {
-            return <@untained>result;
+            return <@untainted>result;
         } else {
-            // The operation writes the given content into the channel.
+            // The operation [writes](https://ballerina.io/learn/api-docs/ballerina/io/objects/WritableByteChannel.html#write) the given content into the channel.
             int i = 0;
             while (i < result.length()) {
                 var result2 = dst.write(result, i);

@@ -1,0 +1,2 @@
+description: BBE on how to use a `kafka:Consumer` as a simple record consumer.
+keywords: ballerina, ballerina by example, bbe, kafka, consumer, client

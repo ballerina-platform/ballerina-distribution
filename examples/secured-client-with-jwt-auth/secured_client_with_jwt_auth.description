@@ -14,5 +14,3 @@
 // of it being the reference of the created `http:BearerAuthHandler`.<br/><br/>
 // For more information on the underlying module, 
 // see the [JWT module](https://ballerina.io/learn/api-docs/ballerina/jwt/index.html).
-
-

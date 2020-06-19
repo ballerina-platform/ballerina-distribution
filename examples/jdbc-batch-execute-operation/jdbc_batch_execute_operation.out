@@ -1,0 +1,26 @@
+# To run this sample, navigate to the directory that contains the
+# `.bal` file and execute the `ballerina run` command.
+$ ballerina run jdbc_batch_execute_operation.bal
+
+Drop table executed: affectedRowCount=0 lastInsertId=
+Create table executed: affectedRowCount=0 lastInsertId=
+
+Insert success, generated IDs are: 1 2 3
+
+Error while executing batch command starting with: 'INSERT INTO Customers
+                (firstName, lastName, registrationID, creditLimit, country)
+                VALUES ( ? ,  ? ,
+                 ? ,  ? ,  ? )'.Unique index or primary key violation: "PUBLIC.CONSTRAINT_INDEX_6 ON PUBLIC.CUSTOMERS(REGISTRATIONID) VALUES 1"; SQL statement:
+INSERT INTO Customers
+                (firstName, lastName, registrationID, creditLimit, country)
+                VALUES ( ? ,  ? ,
+                 ? ,  ? ,  ? ) [23505-199].
+affectedRowCount=1 lastInsertId= affectedRowCount=-3 lastInsertId= affectedRowCount=1 lastInsertId=
+Rollback transaction.
+
+Data in Customers table:
+CUSTOMERID=1 FIRSTNAME=Peter LASTNAME=Stuart REGISTRATIONID=1 CREDITLIMIT=5000.75 COUNTRY=USA
+CUSTOMERID=2 FIRSTNAME=Stephanie LASTNAME=Mike REGISTRATIONID=2 CREDITLIMIT=8000.0 COUNTRY=USA
+CUSTOMERID=3 FIRSTNAME=Bill LASTNAME=John REGISTRATIONID=3 CREDITLIMIT=3000.25 COUNTRY=USA
+
+Sample executed successfully!

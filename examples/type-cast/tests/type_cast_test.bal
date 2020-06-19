@@ -1,8 +1,6 @@
-import ballerina/io;
 import ballerina/test;
 
 (any|error)[] outputs = [];
-int counter = 0;
 
 // This is the mock function that replaces the real function.
 @test:Mock {
@@ -10,13 +8,10 @@ int counter = 0;
     functionName: "println"
 }
 public function mockPrint(any|error... s) {
-    foreach var elem in s {
-        outputs[counter] = elem;
-        counter += 1;
-    }
+    outputs.push(...s);
 }
 
-@test:Config
+@test:Config {}
 function testFunc() {
     // Invoking the main function
     error? result = trap main();
@@ -35,9 +30,9 @@ function testFunc() {
     test:assertEquals(outputs[12], "Converted Float Value: ");
     test:assertEquals(outputs[13], 100.0);
     if (result is error) {
-        test:assertEquals(result.reason(), "{ballerina}TypeCastError");
-        string errorMessage = <string> result.detail().message;
-        test:assertTrue(errorMessage.hasPrefix("incompatible types:"));
+        test:assertEquals(result.message(), "{ballerina}TypeCastError");
+        string errorMessage = <string> result.detail()["message"];
+        test:assertTrue(errorMessage.startsWith("incompatible types:"));
     } else {
         test:assertFail(msg = "expected cast to fail");
     }
