@@ -30,7 +30,7 @@ ext {
     kubernetesVersion = project.ballerinaVersion
     awslambdaVersion = project.ballerinaVersion
     picocliVersion = "4.0.1"
-    ballerinaCommandVersion = "0.8.6"
+    ballerinaCommandVersion = "0.8.7"
     testngVersion = "6.14.3"
     netLingalaZip4jVersion = "2.3.2"
     commonsIoVersion = "2.6"
@@ -116,13 +116,13 @@ subprojects {
             }
         }
         /* Ballerina lang staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1592/" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1593/" }
         /* Docker staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1270/" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1271/" }
         /* Kubernetes staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxkubernetes-1246/" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxkubernetes-1248/" }
         /* AwsLambda staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1144/" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1145/" }
     }
 
     configurations {
