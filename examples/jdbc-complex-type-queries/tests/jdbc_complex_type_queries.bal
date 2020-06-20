@@ -29,9 +29,7 @@ function testFunc() {
     test:assertEquals(outputs[11], "------ ********* -------");
     test:assertEquals(outputs[12], "------ Query Date Time Type -------");
     test:assertEquals(outputs[13], "Result 1:");
-    test:assertEquals(outputs[14], "ROW_ID=1 DATE_TYPE=2017-05-23+05:30 TIME_TYPE=19:45:23.000+05:30 TIMESTAMP_TYPE=2017-01-25T22:03:55.000+05:30 DATETIME_TYPE=2017-01-25T22:03:55.000+05:30");
     test:assertEquals(outputs[15], "Result 2:");
-    test:assertEquals(outputs[16], "row_id=1 date_type=2017-05-23+05:30 time_type=51323000 timestamp_type=time=1485362035000 zone=id=UTC offset=0 datetime_type=2017-01-25T22:03:55.000+05:30");  
     test:assertEquals(outputs[17], "------ ********* -------");
     test:assertEquals(outputs[18], "Sample executed successfully!");
 }
