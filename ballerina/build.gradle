@@ -39,10 +39,6 @@ def ballerinaLinuxDistributionZip = file("$project.buildDir/distributions/baller
 def ballerinaMacDistributionZip = file("$project.buildDir/distributions/ballerina-macos-${ballerinaVersion}.zip")
 def ballerinaWindowsDistributionZip = file("$project.buildDir/distributions/ballerina-windows-${ballerinaVersion}.zip")
 
-// Read StdLib config JSON
-def stdLibInputFile = new File("${project.rootDir}/ballerina/resources/stdlib-configs.json")
-def stdLibConfigs = new JsonSlurper().parseText(stdLibInputFile.text)
-
 task unpackBallerinaJre(type: Copy) {
     group = "unpack_dependencies"
     configurations.ballerinaJre.resolvedConfiguration.resolvedArtifacts.each { artifact ->
@@ -107,11 +103,14 @@ task unpackKubernetesExamples(type: Copy) {
     }
 }
 
-task unpackStdLibs(type: Copy) {
-    group = "unpack_dependencies"
-    configurations.ballerinaStdLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        from zipTree(artifact.getFile())
-        into new File("${buildDir}/target/extracted-distributions", artifact.name+"-zip")
+task unpackStdLibs() {
+    doLast {
+        configurations.ballerinaStdLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+            copy {
+                from project.zipTree(artifact.getFile())
+                into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
+            }
+        }
     }
 }
 
@@ -153,34 +152,26 @@ task copyOtherRepos(type: Copy) {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/docs/docker"
     }
     /* Standard Libraries */
-    stdLibConfigs.each { stdLibConfig ->
-        def birCacheSourceDir = stdLibConfig.cache.bir.sourceDir
-        def birCacheTargetDir = stdLibConfig.cache.bir.targetDir
-        def baloCacheSourceDir = stdLibConfig.cache.balo.sourceDir
-        def baloCacheTargetDir = stdLibConfig.cache.balo.targetDir
-        def jarCacheSourceDir = stdLibConfig.cache.jar.sourceDir
-        def jarCacheTargetDir = stdLibConfig.cache.jar.targetDir
-        def breLibSourcePath = stdLibConfig.breLibSourcePath
-        def apiDocsPath = stdLibConfig.apiDocsPath
-
-        into("bir-cache/${birCacheTargetDir}") {
-            from "build/target/extracted-distributions/${birCacheSourceDir}"
+    configurations.ballerinaStdLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+        def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
+        into("bir-cache/") {
+            from "${artifactExtractedPath}/caches/bir"
         }
-        into("bre/lib") {
-            from "build/target/extracted-distributions/${breLibSourcePath}"
+        into("bre/lib/") {
+            from "${artifactExtractedPath}/libs"
         }
-        into("docs") {
-            from "build/target/extracted-distributions/${apiDocsPath}"
+        into("docs/") {
+            from "${artifactExtractedPath}/docs"
         }
         // pack to new cache
-        into("cache/bir/${birCacheTargetDir}") {
-            from "build/target/extracted-distributions/${birCacheSourceDir}"
+        into("cache/bir/") {
+            from "${artifactExtractedPath}/caches/bir"
         }
-        into("cache/balo/${baloCacheTargetDir}") {
-            from "build/target/extracted-distributions/${baloCacheSourceDir}"
+        into("cache/balo/") {
+            from "${artifactExtractedPath}/caches/balo"
         }
-        into("cache/jar/${jarCacheTargetDir}") {
-            from "build/target/extracted-distributions/${jarCacheSourceDir}"
+        into("cache/jar/") {
+            from "${artifactExtractedPath}/caches/jar"
         }
     }
 }
@@ -888,46 +879,6 @@ task testExamples() {
         }
     }
     doLast {
-        def birCache = new File("${distPath}/cache/bir/")
-        def baloCache = new File("${distPath}/cache/balo/")
-        def jarCache = new File("${distPath}/cache/jar/")
-        stdLibConfigs.each { stdLibConfig ->
-            def birCacheSourceDir = stdLibConfig.cache.bir.sourceDir
-            def birCacheTargetDir = stdLibConfig.cache.bir.targetDir
-            def baloCacheSourceDir = stdLibConfig.cache.balo.sourceDir
-            def baloCacheTargetDir = stdLibConfig.cache.balo.targetDir
-            def jarCacheSourceDir = stdLibConfig.cache.jar.sourceDir
-            def jarCacheTargetDir = stdLibConfig.cache.jar.targetDir
-            def breLibSourcePath = stdLibConfig.breLibSourcePath
-            def apiDocsPath = stdLibConfig.apiDocsPath
-            copy {
-                from "build/target/extracted-distributions/${birCacheSourceDir}"
-                into "${distPath}/bir-cache/${birCacheTargetDir}"
-            }
-            copy {
-                from "build/target/extracted-distributions/${breLibSourcePath}"
-                into "${distPath}/bre/lib"
-                fileMode = 0644
-            }
-            copy {
-                from "build/target/extracted-distributions/${apiDocsPath}"
-                into "${distPath}/docs"
-            }
-
-            // pack to new cache
-            copy {
-                from "build/target/extracted-distributions/${birCacheSourceDir}"
-                into "${birCache}/${birCacheTargetDir}"
-            }
-            copy {
-                from "build/target/extracted-distributions/${baloCacheSourceDir}"
-                into "${baloCache}/${baloCacheTargetDir}"
-            }
-            copy {
-                from "build/target/extracted-distributions/${jarCacheSourceDir}"
-                into "${jarCache}/${jarCacheTargetDir}"
-            }
-        }
         ignoreList.each { String elements ->
             bbeList.remove("$elements")
         }
