@@ -840,7 +840,16 @@ task testExamples() {
          'testerina-group-tests',
          'testerina-mocking-objects',
          'testerina-mocking-functions',
-         'json-record-map-conversion'
+         'json-record-map-conversion',
+         'http-timeout',
+         'http-retry',
+         'http-failover',
+         'http-load-balancer',
+         'http-circuit-breaker',
+         'record-destructure-binding-pattern',
+         'json-access',
+         'union-type',
+         'hello-world-client'
     ]
     doFirst {
         copy {
