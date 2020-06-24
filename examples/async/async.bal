@@ -14,7 +14,7 @@ public function main() {
     int result = squarePlusCube(f1);
     // Waits for the future `f1` to finish.
     _ = wait f1;
-    io:println("SQ + CB = ", result);
+    io:println("SQ + CB = " + result.toString());
 
     // Calls the `countInfinity()` function, which runs forever
     // in asynchronous mode.
@@ -22,7 +22,7 @@ public function main() {
 
     // Cancels the asynchronous execution.
     f2.cancel();
-    io:println("Counting done in one second: ", count);
+    io:println("Counting done in one second: " + count.toString());
 
     // Asynchronously invokes the action call `get()`.
     // By default this async call runs on the same physical thread of the caller.
@@ -71,9 +71,9 @@ public function main() {
     // not provided).
     record {int first_field; int second_field; string third_field;} rec =
                     wait {first_field: f6, second_field: f7, third_field: f8};
-    io:println("first field of record --> ", rec.first_field);
-    io:println("second field of record --> ", rec.second_field);
-    io:println("third field of record --> ", rec.third_field);
+    io:println("first field of record --> " + rec.first_field.toString());
+    io:println("second field of record --> " + rec.second_field.toString());
+    io:println("third field of record --> " + rec.third_field.toString());
 }
 
 function sum(int a, int b) returns int {
