@@ -840,7 +840,6 @@ task testExamples() {
          'json-record-map-conversion',
          'record-destructure-binding-pattern',
          'json-access',
-         'union-type',
          'hello-world-client'
     ]
     doFirst {
