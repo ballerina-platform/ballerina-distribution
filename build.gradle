@@ -28,10 +28,9 @@ ext {
     ballerinaJreArtifactsVersion = "2.0.0"
     dockerVersion = project.ballerinaVersion
     kubernetesVersion = project.ballerinaVersion
-    dataMapperVersion = project.ballerinaVersion
     awslambdaVersion = project.ballerinaVersion
     picocliVersion = "4.0.1"
-    ballerinaCommandVersion = "0.8.6-SNAPSHOT"
+    ballerinaCommandVersion = "0.8.7"
     testngVersion = "6.14.3"
     netLingalaZip4jVersion = "2.3.2"
     commonsIoVersion = "2.6"
@@ -125,15 +124,13 @@ subprojects {
             }
         }
         /* Ballerina lang staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1591/" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1593/" }
         /* Docker staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1269/" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1271/" }
         /* Kubernetes staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxkubernetes-1245/" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxkubernetes-1248/" }
         /* AwsLambda staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1143/" }
-        /* Datamapper staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdatamapper-1002/" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1145/" }
     }
 
     configurations {
@@ -173,9 +170,6 @@ subprojects {
         exten "org.ballerinax.kubernetes:kubernetes-extension:${kubernetesVersion}@jar"
         kubernetesAnnotations "org.ballerinax.kubernetes:kubernetes-extension-annotations:${kubernetesVersion}@zip"
         kubernetesExamples "org.ballerinax.kubernetes:kubernetes-extension-examples:${kubernetesVersion}@zip"
-
-        /* Data Mapper extension */
-        exten "org.ballerinax.datamapper:datamapper-extension:${dataMapperVersion}@jar"
 
         /* Standard libraries */
         ballerinaStdLibs "org.ballerinalang:jwt-ballerina:${stdlibJwtVersion}"
