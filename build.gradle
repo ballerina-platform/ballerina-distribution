@@ -35,7 +35,8 @@ ext {
     netLingalaZip4jVersion = "2.3.2"
     commonsIoVersion = "2.6"
     commonsLang3Version = "3.9"
-    socketVersion= project.stdlibSocketVersion
+    stdlibSocketVersion= project.stdlibSocketVersion
+    stdlibJwtVersion= project.stdlibJwtVersion
 }
 
 allprojects {
@@ -115,6 +116,13 @@ subprojects {
                 password System.getenv("packagePAT")
             }
         }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-jwt"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
         /* Ballerina lang staging repository */
         maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1593/" }
         /* Docker staging repository */
@@ -164,7 +172,8 @@ subprojects {
         kubernetesExamples "org.ballerinax.kubernetes:kubernetes-extension-examples:${kubernetesVersion}@zip"
 
         /* Standard libraries */
-        ballerinaStdLibs "org.ballerinalang:socket-ballerina:${socketVersion}"
+        ballerinaStdLibs "org.ballerinalang:jwt-ballerina:${stdlibJwtVersion}"
+        ballerinaStdLibs "org.ballerinalang:socket-ballerina:${stdlibSocketVersion}"
 
         balCommand "org.ballerinalang:ballerina-command-distribution:${ballerinaCommandVersion}@zip"
     }
