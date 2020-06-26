@@ -18,7 +18,7 @@ public function main() {
     // The function name `add` serves as a function pointer argument in the
     // call to the `process()` function. Function names can be thought of as final variables
     // since although you can use them like a regular variable, you cannot
-    // modify the value it is associated with.
+    // modify the values they are associated with.
     io:println("Process Add 1, 2: ", process(add, 1, 2));
     io:println("Process Multiply 3, 4: ", process(multiply, 3, 4)); 
 }
