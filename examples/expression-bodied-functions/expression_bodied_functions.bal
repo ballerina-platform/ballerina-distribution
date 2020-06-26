@@ -23,7 +23,7 @@ public function main() {
     // An expression-bodied function can be written in this manner as well. 
     // The types of the input parameters are inferred from the left hand side.
     // The return of the arrow function expression is determined by the
-    // evaluation of the expression on the right-hand side of the `=>` symbol.
+    // evaluation of the expression on the right hand side of the `=>` symbol.
     function (Person) returns boolean canVote = (p) => p.age >= 18;
 
     Person john = { fname: "John", lname: "Doe", age: 25 };
