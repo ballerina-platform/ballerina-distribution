@@ -1,10 +1,10 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 $ ballerina run type_test_expression.bal
-Is 'a' a string? true
-'a' is a string with value: Hello, world!
-Alex is a student
-Alex is a person
-Alex is not a vehicle
-Does foo return a student? true
-Does foo return a student? false
+Is 'message' a string? true
+'message' is a string with value: Hello, world!
+entity is a student
+entity is a person
+entity is not a vehicle
+Did createEntity("student") return a student? true
+Did createEntity("vehicle") return a student? false
