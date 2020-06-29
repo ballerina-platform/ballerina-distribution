@@ -4,8 +4,8 @@
 
 # Add new Ballerina file `grpc_secured_unary.bal` inside the `service` module and add service implementation.
 
-# Execute the following command to build the 'service' module.
-$ ballerina build service
+# Execute the command below to build the 'service' module.
+ballerina build service
 
-# To run the service, execute the below command by passing Ballerina home path as a system property.
-$ ballerina run target/bin/service.jar --b7a.home=<ballerina_home_path>
+# To run the service, execute the command below by passing Ballerina home path as a system property.
+ballerina run target/bin/service.jar --b7a.home=<ballerina_home_path>
