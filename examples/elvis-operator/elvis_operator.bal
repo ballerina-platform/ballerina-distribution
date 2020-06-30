@@ -8,7 +8,7 @@ public function main() {
     string name = input is () ? "John Doe" : input;
     io:println("Name: ", name);
 
-    // You can achieve the same using the elvis operator as follows.
+    // You can achieve the same using the Elvis operator as follows.
     // Here, it implicitely returns the value `input` if it's not nil.
     name = input ?: "John Doe";
     io:println("Name: " + name);
