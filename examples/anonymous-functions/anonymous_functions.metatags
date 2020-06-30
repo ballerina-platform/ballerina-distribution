@@ -1,2 +1,2 @@
 description: Anonymous functions in Ballerina are a syntactic shortcut for defining inline functions. It only differs from a normal function because it does not have a name.
-keywords: ballerina, ballerina by example, bbe, anonymous functions
+keywords: ballerina, ballerina by example, bbe, anonymous functions, lambda functions
