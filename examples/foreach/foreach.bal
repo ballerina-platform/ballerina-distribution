@@ -17,7 +17,7 @@ public function main() {
     }
 
     // Calling the `entries()` method on a `map` generates a new map in which its value contains a tuple
-    // [key, value], where `key` and `value` are key/value pairs of the original map. In this manner, a `foreach` on 
+    // [key, value]. In the tuple, the `key` and `value` are key/value pairs of the original map. In this manner, a `foreach` on 
     // the new map will iterate through each key/value pair as tuple values.
     foreach var [country, capital] in countryCapitals.entries() {
         io:println("Country: ", country, ", Capital: ", capital);
