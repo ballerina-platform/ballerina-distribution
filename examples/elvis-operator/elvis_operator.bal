@@ -9,7 +9,7 @@ public function main() {
     io:println("Name: ", name);
 
     // You can achieve the same using the Elvis operator as follows.
-    // Here, it implicitely returns the value `input` if it's not nil.
+    // Here, it implicitly returns the value `input` if it's not nil.
     name = input ?: "John Doe";
     io:println("Name: " + name);
 
