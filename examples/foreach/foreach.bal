@@ -74,7 +74,7 @@ public function main() {
     io:println("\nIterating a half open integer range: ");
     sum = 0;
     // A half-open integer range in the `foreach` statement represents an incremental integer value range from the start
-    // expression (`1`) inclusively, to the end expression (`endValue`) exclusively.
+    // expression (`1`) inclusively to the end expression (`endValue`) exclusively.
     foreach var i in 1..< endValue {
         sum = sum + i;
     }
