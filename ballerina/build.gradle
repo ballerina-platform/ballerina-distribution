@@ -768,9 +768,6 @@ task testExamples() {
          'websub-remote-hub-sample',
          'config-api',
          'testerina-function-mocks',
-         'jdbc-client-crud-operations',
-         'jdbc-client-batch-update',
-         'jdbc-client-call-procedures',
          'streaming-big-dataset',
          'docker-deployment',
          'kubernetes-deployment',
@@ -843,7 +840,6 @@ task testExamples() {
          'json-record-map-conversion',
          'record-destructure-binding-pattern',
          'json-access',
-         'union-type',
          'hello-world-client'
     ]
     doFirst {
