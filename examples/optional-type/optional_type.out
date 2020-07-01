@@ -1,5 +1,9 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run optional_type.bal
-Length of the string: 11
-s is ()
+Enter continent: Africa
+The largest country in Africa is Algeria
+
+ballerina run optional_type.bal
+Enter continent: Antarctica
+The continent Antarctica does not have any countries
