@@ -188,8 +188,8 @@ subprojects {
         kubernetesExamples "org.ballerinax.kubernetes:kubernetes-extension-examples:${kubernetesVersion}@zip"
 
         /* Standard libraries */
-        ballerinaStdLibs "org.ballerinalang:encoding-ballerina:${stdlibJwtVersion}"
-        ballerinaStdLibs "org.ballerinalang:websub-ballerina:${stdlibJwtVersion}"
+        ballerinaStdLibs "org.ballerinalang:encoding-ballerina:${stdlibEncodingVersion}"
+        ballerinaStdLibs "org.ballerinalang:websub-ballerina:${stdlibWebsubVersion}"
         ballerinaStdLibs "org.ballerinalang:jwt-ballerina:${stdlibJwtVersion}"
         ballerinaStdLibs "org.ballerinalang:socket-ballerina:${stdlibSocketVersion}"
 
