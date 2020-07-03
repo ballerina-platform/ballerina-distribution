@@ -27,18 +27,20 @@ public class TestUtils {
 
 
     public static String getVersionOutput(String jBallerinaVersion, String specVersion, String toolVersion) {
+        String toolText = toolVersion.equals("0.8.5") || toolVersion.equals("0.8.0") ?
+                "Ballerina tool" : "Update Tool";
         if (jBallerinaVersion.contains(TestUtils.SWAN_LAKE_KEYWORD)) {
             //TODO : Need to revisit and improve
             return "Ballerina Swan Lake Preview "
                     + jBallerinaVersion.split(" ")[jBallerinaVersion.length() - 1] + "\n" +
                     "Language specification " + specVersion + "\n" +
-                    "Update Tool " + toolVersion + "\n";
+                    toolText + " " + toolVersion + "\n";
         }
 
         String ballerinaReference = isSupportedRelease(jBallerinaVersion) ? "jBallerina" : "Ballerina";
         return ballerinaReference + " " + jBallerinaVersion + "\n" +
                 "Language specification " + specVersion + "\n" +
-                "Ballerina tool " + toolVersion + "\n";
+                toolText + " " + toolVersion + "\n";
     }
 
     public static Executor getExecutor(String version) {
