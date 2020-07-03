@@ -23,8 +23,17 @@ import java.util.Locale;
 
 public class TestUtils {
     private static final String OS = System.getProperty("os.name").toLowerCase(Locale.getDefault());
+    private static final String SWAN_LAKE_KEYWORD = "swan-lake";
+
 
     public static String getVersionOutput(String jBallerinaVersion, String specVersion, String toolVersion) {
+        if (jBallerinaVersion.contains(TestUtils.SWAN_LAKE_KEYWORD)) {
+            //TODO : Need to revisit and improve
+            return "Ballerina Swan Lake Preview "
+                    + jBallerinaVersion.split(" ")[jBallerinaVersion.length() - 1] + "\n" +
+                    "Language specification " + specVersion + "\n" +
+                    "Update Tool " + toolVersion + "\n";
+        }
 
         String ballerinaReference = isSupportedRelease(jBallerinaVersion) ? "jBallerina" : "Ballerina";
         return ballerinaReference + " " + jBallerinaVersion + "\n" +
@@ -109,6 +118,10 @@ public class TestUtils {
      * @return returns is a 1.0.x release
      */
     public static boolean isSupportedRelease(String version) {
+        if (version.contains(TestUtils.SWAN_LAKE_KEYWORD)) {
+            return true;
+        }
+
         String[] versions = version.split("\\.");
         return !(versions[0].equals("1") && versions[1].equals("0"));
     }
