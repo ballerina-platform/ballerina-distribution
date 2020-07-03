@@ -31,9 +31,7 @@ public class TestUtils {
                 "Ballerina tool" : "Update Tool";
         if (jBallerinaVersion.contains(TestUtils.SWAN_LAKE_KEYWORD)) {
             //TODO : Need to revisit and improve
-            return "Ballerina Swan Lake Preview "
-                    + jBallerinaVersion.split(" ")[jBallerinaVersion.length() - 1] + "\n" +
-                    "Language specification " + specVersion + "\n" +
+            return "Ballerina Swan Lake Preview 1\n" + "Language specification " + specVersion + "\n" +
                     toolText + " " + toolVersion + "\n";
         }
 
