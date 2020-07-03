@@ -27,8 +27,7 @@ public class TestUtils {
 
 
     public static String getVersionOutput(String jBallerinaVersion, String specVersion, String toolVersion) {
-        String toolText = toolVersion.equals("0.8.5") || toolVersion.equals("0.8.0") ?
-                "Ballerina tool" : "Update Tool";
+        String toolText = TestUtils.isOldToolVersion(toolVersion) ? "Ballerina tool" : "Update Tool";
         if (jBallerinaVersion.contains(TestUtils.SWAN_LAKE_KEYWORD)) {
             //TODO : Need to revisit and improve
             return "Ballerina Swan Lake Preview 1\n" + "Language specification " + specVersion + "\n" +
@@ -61,14 +60,18 @@ public class TestUtils {
     public static void testDistCommands(Executor executor, String version, String specVersion, String toolVersion,
                                         String previousVersion, String previousSpecVersion,
                                         String previousVersionsLatestPatch) {
+
+        String jBallerinaPart = TestUtils.isOldToolVersion(toolVersion) ? "jballerina-" : "";
+
         //Test installation
         TestUtils.testInstallation(executor, version, specVersion, toolVersion);
 
         //Test `ballerina dist list`
         String actualOutput = executor.executeCommand("ballerina dist list", false);
-        Assert.assertTrue(actualOutput.contains("jballerina-1.0.0"));
-        Assert.assertTrue(actualOutput.contains("jballerina-1.1.0"));
-        Assert.assertTrue(actualOutput.contains("jballerina-1.2.0"));
+        Assert.assertTrue(actualOutput.contains("1.0.0"));
+        Assert.assertTrue(actualOutput.contains("1.1.0"));
+        Assert.assertTrue(actualOutput.contains("1.2.0"));
+        Assert.assertTrue(actualOutput.contains("slp1"));
 
         //Test `ballerina dist pull`
         executor.executeCommand("ballerina dist pull jballerina-" + previousVersion, true);
@@ -77,26 +80,27 @@ public class TestUtils {
 
         //Test Update notification message
         if (isSupportedRelease(previousVersion)) {
-            String expectedOutput = "A new version of Ballerina is available: jballerina-" + previousVersionsLatestPatch
+            String expectedOutput = "A new version of Ballerina is available: "
+                    + jBallerinaPart + previousVersionsLatestPatch
                     + "\nUse 'ballerina dist pull jballerina-" + previousVersionsLatestPatch
                     + "' to download and use the distribution\n\n";
             Assert.assertEquals(executor.executeCommand("ballerina build", false), expectedOutput);
         }
 
         //Test `ballerina dist use`
-        executor.executeCommand("ballerina dist use jballerina-" + version, true);
+        executor.executeCommand("ballerina dist use " + jBallerinaPart + version, true);
 
         //Verify the the installation
         TestUtils.testInstallation(executor, version, specVersion, toolVersion);
 
         //Test `ballerina dist update`
-        executor.executeCommand("ballerina dist use jballerina-" + previousVersion, true);
-        executor.executeCommand("ballerina dist remove jballerina-" + version, true);
+        executor.executeCommand("ballerina dist use " + jBallerinaPart + previousVersion, true);
+        executor.executeCommand("ballerina dist remove " + jBallerinaPart + version, true);
         executor.executeCommand("ballerina dist update", true);
         TestUtils.testInstallation(executor, previousVersionsLatestPatch, previousSpecVersion, toolVersion);
 
         //Try `ballerina dist remove`
-        executor.executeCommand("ballerina dist remove jballerina-" + previousVersion, true);
+        executor.executeCommand("ballerina dist remove " + jBallerinaPart + previousVersion, true);
     }
 
     /**
@@ -126,6 +130,15 @@ public class TestUtils {
         return !(versions[0].equals("1") && versions[1].equals("0"));
     }
 
+    /**
+     * To check whether older tool version before swan lake support
+     *
+     * @param toolVersion
+     * @return returns is a older version
+     */
+    public static boolean isOldToolVersion(String toolVersion) {
+        return toolVersion.equals("0.8.5") || toolVersion.equals("0.8.0");
+    }
 
     /**
      * Test project and module creation.
