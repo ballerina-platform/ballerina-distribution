@@ -60,9 +60,6 @@ public class TestUtils {
     public static void testDistCommands(Executor executor, String version, String specVersion, String toolVersion,
                                         String previousVersion, String previousSpecVersion,
                                         String previousVersionsLatestPatch) {
-
-        String jBallerinaPart = TestUtils.isOldToolVersion(toolVersion) ? "jballerina-" : "";
-
         //Test installation
         TestUtils.testInstallation(executor, version, specVersion, toolVersion);
 
@@ -74,7 +71,8 @@ public class TestUtils {
         Assert.assertTrue(actualOutput.contains("slp1"));
 
         //Test `ballerina dist pull`
-        executor.executeCommand("ballerina dist pull " + jBallerinaPart + previousVersion, true);
+        executor.executeCommand("ballerina dist pull "
+                + TestUtils.getSupportedVersion(toolVersion, previousVersion), true);
 
         TestUtils.testInstallation(executor, previousVersion, previousSpecVersion, toolVersion);
 
@@ -88,19 +86,21 @@ public class TestUtils {
         }
 
         //Test `ballerina dist use`
-        executor.executeCommand("ballerina dist use " + jBallerinaPart + version, true);
+        executor.executeCommand("ballerina dist use " + TestUtils.getSupportedVersion(toolVersion, version), true);
 
         //Verify the the installation
         TestUtils.testInstallation(executor, version, specVersion, toolVersion);
 
         //Test `ballerina dist update`
-        executor.executeCommand("ballerina dist use " + jBallerinaPart + previousVersion, true);
-        executor.executeCommand("ballerina dist remove " + jBallerinaPart + version, true);
+        executor.executeCommand("ballerina dist use " + TestUtils.getSupportedVersion(toolVersion, previousVersion),
+                true);
+        executor.executeCommand("ballerina dist remove " + TestUtils.getSupportedVersion(toolVersion, version), true);
         executor.executeCommand("ballerina dist update", true);
         TestUtils.testInstallation(executor, previousVersionsLatestPatch, previousSpecVersion, toolVersion);
 
         //Try `ballerina dist remove`
-        executor.executeCommand("ballerina dist remove " + jBallerinaPart + previousVersion, true);
+        executor.executeCommand("ballerina dist remove " + TestUtils.getSupportedVersion(toolVersion, previousVersion),
+                true);
     }
 
     /**
@@ -156,5 +156,16 @@ public class TestUtils {
         executor.executeCommand("cd project1", false);
         expectedOutput = "Added new ballerina module at 'src/module1'\n";
         Assert.assertEquals(executor.executeCommand("ballerina add module1'", false), expectedOutput);
+    }
+
+    private static String getSupportedVersion(String toolVersion, String version) {
+        if (TestUtils.isOldToolVersion(toolVersion)) {
+            return "jballerina-" + version;
+        }
+        if (version.contains(TestUtils.SWAN_LAKE_KEYWORD)) {
+            String[] versionParts = version.split("-");
+            return "slp" + versionParts[versionParts.length - 1];
+        }
+        return version;
     }
 }
