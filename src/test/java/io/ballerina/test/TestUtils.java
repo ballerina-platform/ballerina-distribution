@@ -74,7 +74,7 @@ public class TestUtils {
         Assert.assertTrue(actualOutput.contains("slp1"));
 
         //Test `ballerina dist pull`
-        executor.executeCommand("ballerina dist pull jballerina-" + previousVersion, true);
+        executor.executeCommand("ballerina dist pull " + jBallerinaPart + previousVersion, true);
 
         TestUtils.testInstallation(executor, previousVersion, previousSpecVersion, toolVersion);
 
