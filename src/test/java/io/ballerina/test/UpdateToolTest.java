@@ -44,13 +44,11 @@ public class UpdateToolTest {
         executor.install();
 
         //Test installation
-        Assert.assertEquals(executor.executeCommand("ballerina -v", false),
-                TestUtils.getVersionOutput(previousVersion, previousSpecVersion, previousToolVersion));
+        TestUtils.testInstallation(executor, previousVersion, previousSpecVersion, previousToolVersion);
 
         //Test `ballerina update`
         executor.executeCommand("ballerina update", true);
-        Assert.assertEquals(executor.executeCommand("ballerina -v", false),
-                TestUtils.getVersionOutput(version, specVersion, toolVersion));
+        TestUtils.testInstallation(executor, version, specVersion, toolVersion);
 
         //Execute all ballerina dist commands once updated
         TestUtils.testDistCommands(executor, version, specVersion, toolVersion, previousVersion, previousSpecVersion,
