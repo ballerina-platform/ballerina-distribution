@@ -163,8 +163,7 @@ public class TestUtils {
             return "jballerina-" + version;
         }
         if (version.contains(TestUtils.SWAN_LAKE_KEYWORD)) {
-            String[] versionParts = version.split("-");
-            return "slp" + versionParts[versionParts.length - 1];
+            return "slp1";
         }
         return version;
     }
