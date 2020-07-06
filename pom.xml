@@ -25,7 +25,7 @@
 
     <groupId>org.ballerinalang</groupId>
     <artifactId>ballerina-distribution</artifactId>
-    <version>1.2.4-SNAPSHOT</version>
+    <version>1.2.5</version>
     <modelVersion>4.0.0</modelVersion>
 
     <name>Ballerina - Tools - Parent</name>
@@ -59,7 +59,7 @@
         <url>https://github.com/ballerina-platform/ballerina-distribution.git</url>
         <developerConnection>scm:git:https://github.com/ballerina-platform/ballerina-distribution.git</developerConnection>
         <connection>scm:git:https://github.com/ballerina-platform/ballerina-distribution.git</connection>
-        <tag>HEAD</tag>
+        <tag>v1.2.5</tag>
     </scm>
 
     <repositories>
@@ -147,7 +147,7 @@
         <repository>
             <id>wso2.azurefunctions.stage</id>
             <name>WSO2 Stage Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxazurefunctions-1002/</url>
+            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxazurefunctions-1002</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
