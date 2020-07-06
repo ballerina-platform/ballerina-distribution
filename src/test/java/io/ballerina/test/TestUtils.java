@@ -95,6 +95,12 @@ public class TestUtils {
         executor.executeCommand("ballerina dist use " + TestUtils.getSupportedVersion(toolVersion, previousVersion),
                 true);
         executor.executeCommand("ballerina dist remove " + TestUtils.getSupportedVersion(toolVersion, version), true);
+
+
+        //TODO: Temporary attempt
+        executor.executeCommand("ballerina update", true);
+        toolVersion = "0.8.8";
+
         executor.executeCommand("ballerina dist update", true);
         TestUtils.testInstallation(executor, previousVersionsLatestPatch, previousSpecVersion, toolVersion);
 
