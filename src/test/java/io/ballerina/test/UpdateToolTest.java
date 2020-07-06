@@ -22,20 +22,19 @@ import org.testng.annotations.Test;
 
 
 public class UpdateToolTest {
-    String version = "1.1.0";
-    String specVersion = "2019R3";
-    String toolVersion = "0.8.0";
+    String version = System.getProperty("jballerina-version");
+    String specVersion = System.getProperty("spec-version");
+    String toolVersion = System.getProperty("tool-version");
 
-    String latestToolVersion = System.getProperty("tool-version");
-
-    String previousVersion = "1.0.0";
-    String previousSpecVersion = "2019R3";
-    String previousVersionsLatestPatch = "1.0.5";
+    String previousVersion = "1.2.0";
+    String previousSpecVersion = "2020R1";
+    String previousVersionsLatestPatch = "1.2.5";
+    String previousToolVersion = "0.8.5";
 
     @DataProvider(name = "getExecutors")
     public Object[][] dataProviderMethod() {
         Executor[][] result = new Executor[1][1];
-        result[0][0] = TestUtils.getExecutor(version);
+        result[0][0] = TestUtils.getExecutor(previousVersion);
         return result;
     }
 
@@ -46,15 +45,15 @@ public class UpdateToolTest {
 
         //Test installation
         Assert.assertEquals(executor.executeCommand("ballerina -v", false),
-                TestUtils.getVersionOutput(version, specVersion, toolVersion));
+                TestUtils.getVersionOutput(previousVersion, previousSpecVersion, previousToolVersion));
 
         //Test `ballerina update`
         executor.executeCommand("ballerina update", true);
         Assert.assertEquals(executor.executeCommand("ballerina -v", false),
-                TestUtils.getVersionOutput(version, specVersion, latestToolVersion));
+                TestUtils.getVersionOutput(version, specVersion, toolVersion));
 
         //Execute all ballerina dist commands once updated
-        TestUtils.testDistCommands(executor, version, specVersion, latestToolVersion, previousVersion, previousSpecVersion,
+        TestUtils.testDistCommands(executor, version, specVersion, toolVersion, previousVersion, previousSpecVersion,
                 previousVersionsLatestPatch);
 
         executor.uninstall();
