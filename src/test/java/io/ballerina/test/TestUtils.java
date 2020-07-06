@@ -80,9 +80,8 @@ public class TestUtils {
 
         //Test Update notification message
         if (isSupportedRelease(previousVersion)) {
-            String expectedOutput = "A new version of Ballerina is available: "
-                    + jBallerinaPart + previousVersionsLatestPatch
-                    + "\nUse 'ballerina dist pull " + jBallerinaPart + previousVersionsLatestPatch
+            String expectedOutput = "A new version of Ballerina is available: " + previousVersionsLatestPatch
+                    + "\nUse 'ballerina dist pull " + previousVersionsLatestPatch
                     + "' to download and use the distribution\n\n";
             Assert.assertEquals(executor.executeCommand("ballerina build", false), expectedOutput);
         }
