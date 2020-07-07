@@ -24,11 +24,11 @@ import org.testng.annotations.Test;
 public class UpdateToolTest {
     String version = System.getProperty("jballerina-version");
     String specVersion = System.getProperty("spec-version");
-    String toolVersion = System.getProperty("tool-version");
+    String toolVersion = System.getProperty("latest-tool-version");
 
     String previousVersion = "1.2.0";
     String previousSpecVersion = "2020R1";
-    String previousVersionsLatestPatch = "1.2.5";
+    String previousVersionsLatestPatch = "1.2.4";
     String previousToolVersion = "0.8.5";
 
     @DataProvider(name = "getExecutors")
@@ -48,7 +48,7 @@ public class UpdateToolTest {
 
         //Test `ballerina update`
         executor.executeCommand("ballerina update", true);
-        TestUtils.testInstallation(executor, version, specVersion, toolVersion);
+        TestUtils.testInstallation(executor, previousVersion, previousSpecVersion, toolVersion);
 
         //Execute all ballerina dist commands once updated
         TestUtils.testDistCommands(executor, version, specVersion, toolVersion, previousVersion, previousSpecVersion,
