@@ -5,7 +5,7 @@ public function main() {
     anydata data1 = 5;
     io:println(data1);
 
-    // Before using the value of `data1` in arithmetic operations, we need to ascertain 
+    // Before using the value of `data1` in arithmetic operations, it is required to ascertain 
     // that it is indeed an `int`. A type cast or a type guard can be used for this.
     int intVal = <int> data1;
     io:println(intVal + 10);
@@ -19,4 +19,3 @@ public function main() {
     anydata dataArray = intArray;
     io:println(dataArray);
 }
-
