@@ -1,4 +1,4 @@
-// The `anydata` consists of plain data (a simple value, sequence value or structured value that does not contain behavioral members at any depth). 
+// The `anydata` consists of plain data (a simple value, sequence value, or structured value that does not contain behavioral members at any depth). 
 // Thus, the `anydata` type is equivalent to `()|boolean|int|float|decimal|string|xml|anydata[]|map<anydata>|table<map<anydata>>`.
 // Although `json` and `byte` are not explicitly mentioned, they are subsets of the aforementioned union.
 // The same is true for a record of which the type of each individual field is a subtype of `anydata`(including the rest field in open records).
