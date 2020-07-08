@@ -30,7 +30,7 @@ public class TestUtils {
         String toolText = TestUtils.isOldToolVersion(toolVersion) ? "Ballerina tool" : "Update Tool";
         if (jBallerinaVersion.contains(TestUtils.SWAN_LAKE_KEYWORD)) {
             String[] versionParts = jBallerinaVersion.split("-");
-            return "Ballerina Swan Lake Preview " + versionParts[versionParts.length - 1] + "\n"
+            return "Ballerina Swan Lake Preview " + versionParts[versionParts.length - 1].replace("preview", "") + "\n"
                     + "Language specification " + specVersion + "\n" + toolText + " " + toolVersion + "\n";
         }
 
