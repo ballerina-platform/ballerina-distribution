@@ -29,9 +29,9 @@ public class TestUtils {
     public static String getVersionOutput(String jBallerinaVersion, String specVersion, String toolVersion) {
         String toolText = TestUtils.isOldToolVersion(toolVersion) ? "Ballerina tool" : "Update Tool";
         if (jBallerinaVersion.contains(TestUtils.SWAN_LAKE_KEYWORD)) {
-            //TODO : Need to revisit and improve
-            return "Ballerina Swan Lake Preview 1\n" + "Language specification " + specVersion + "\n" +
-                    toolText + " " + toolVersion + "\n";
+            String[] versionParts = jBallerinaVersion.split("-");
+            return "Ballerina Swan Lake Preview " + versionParts[versionParts.length - 1] + "\n"
+                    + "Language specification " + specVersion + "\n" + toolText + " " + toolVersion + "\n";
         }
 
         String ballerinaReference = isSupportedRelease(jBallerinaVersion) ? "jBallerina" : "Ballerina";
@@ -82,8 +82,7 @@ public class TestUtils {
             String expectedOutput = "A new version of Ballerina is available: jballerina-" + previousVersionsLatestPatch
                     + "\nUse 'ballerina dist pull jballerina-" + previousVersionsLatestPatch
                     + "' to download and use the distribution\n\n";
-            executor.executeCommand("rm -rf ~/.ballerina/command-notice ", false);
-          //  Assert.assertEquals(executor.executeCommand("ballerina build help", false), expectedOutput);
+            //  Assert.assertEquals(executor.executeCommand("ballerina build help", false), expectedOutput);
         }
 
         //Test `ballerina dist use`
