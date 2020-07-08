@@ -26,10 +26,10 @@ public class UpdateToolTest {
     String specVersion = System.getProperty("spec-version");
     String toolVersion = System.getProperty("latest-tool-version");
 
-    String previousVersion = "1.2.0";
-    String previousSpecVersion = "2020R1";
-    String previousVersionsLatestPatch = "1.2.4";
-    String previousToolVersion = "0.8.5";
+    String previousVersion = "1.1.0";
+    String previousSpecVersion = "2019R3";
+    String previousVersionsLatestPatch = "1.1.4";
+    String previousToolVersion = "0.8.0";
 
     @DataProvider(name = "getExecutors")
     public Object[][] dataProviderMethod() {
@@ -51,8 +51,8 @@ public class UpdateToolTest {
         TestUtils.testInstallation(executor, previousVersion, previousSpecVersion, toolVersion);
 
         //Execute all ballerina dist commands once updated
-        TestUtils.testDistCommands(executor, version, specVersion, toolVersion, previousVersion, previousSpecVersion,
-                previousVersionsLatestPatch);
+        TestUtils.testDistCommands(executor, previousVersion, previousSpecVersion, toolVersion, previousVersion,
+                previousSpecVersion, previousVersionsLatestPatch);
 
         executor.uninstall();
         executor.cleanArtifacts();
