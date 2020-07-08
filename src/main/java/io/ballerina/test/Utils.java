@@ -16,12 +16,32 @@
 
 package io.ballerina.test;
 
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.sql.Timestamp;
 
 public class Utils {
+
+    private static TrustManager[] trustAllCerts = new TrustManager[]{
+            new X509TrustManager() {
+                public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                    return null;
+                }
+
+                public void checkClientTrusted(java.security.cert.X509Certificate[] certs, String authType) {
+                    //No need to implement.
+                }
+
+                public void checkServerTrusted(java.security.cert.X509Certificate[] certs, String authType) {
+                    //No need to implement.
+                }
+            }
+    };
 
     public static final String DISTRIBUTION_LOCATION =
             "http://dist-dev.ballerina.io/downloads/";
@@ -31,6 +51,10 @@ public class Utils {
             String destination = getUserHome();
             File output = new File(destination + File.separator + installerName);
             if (!output.exists()) {
+                SSLContext sc = SSLContext.getInstance("SSL");
+                sc.init(null, trustAllCerts, new java.security.SecureRandom());
+                HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+
                 HttpURLConnection conn = (HttpURLConnection) new URL(
                         DISTRIBUTION_LOCATION + version + "/" + installerName).openConnection();
                 conn.setRequestProperty("content-type", "binary/data");
