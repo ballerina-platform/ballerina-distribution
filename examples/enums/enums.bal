@@ -8,10 +8,9 @@ enum Color {
 }
 
 enum Language {
-    // An enum member can explicitly specify an associated
-    // expression.
-    ENG = "English",
-    TL = "Tamil",
+    // An enum member can explicitly specify an associated expression.
+    EN = "English",
+    TA = "Tamil",
     SI = "Sinhala"
 }
 
@@ -25,10 +24,10 @@ enum Bands {
 public function main() {
     // An enum member can be used in the same way as a string constant.
     string skyColor = BLUE;
-    io:println("skyColor: ", skyColor);
+    io:println("Color of the sky: ", skyColor);
 
-    string joined = takeStrings(QUEEN, PF);
-    io:println("joined: ", joined);
+    string concatenated = concat(QUEEN, PF);
+    io:println("concatenated: ", concatenated);
 
     // An enum can also be used as a type.
     Language language = getLanguage("e");
@@ -37,19 +36,22 @@ public function main() {
     Language sinhala = "Sinhala";
     io:println("sinhala: ", sinhala);
 
-    ENG english = "English";
+    EN english = "English";
     io:println("english: ", english);
 }
 
-function takeStrings(string str1, string str2) returns string {
+function concat(string str1, string str2) returns string {
     return str1 + " and " + str2;
 }
 
 function getLanguage(string symbol) returns Language {
-    if (symbol == "e") {
-        return ENG;
-    } else if (symbol == "t") {
-        return TL;
+    match symbol {
+        "e" => {
+            return EN;
+        }
+        "t" => {
+            return TA;
+        }
     }
     return SI;
 }
