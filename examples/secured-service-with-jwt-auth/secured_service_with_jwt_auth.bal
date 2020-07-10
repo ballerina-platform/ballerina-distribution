@@ -7,8 +7,8 @@ import ballerina/log;
 // configurations.
 jwt:InboundJwtAuthProvider jwtAuthProvider = new ({
     issuer: "ballerina",
-    audience: "ballerina.io",
-    signatureConfig: {
+    audience: "vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
+    trustStoreConfig: {
         certificateAlias: "ballerina",
         trustStore: {
             path: config:getAsString("b7a.home") +
@@ -18,12 +18,15 @@ jwt:InboundJwtAuthProvider jwtAuthProvider = new ({
     }
 });
 
+// Creates a Bearer Auth handler with the created JWT Auth provider.
+http:BearerAuthHandler jwtAuthHandler = new (jwtAuthProvider);
+
 // Alternatively, you can create an inbound JWT authentication provider
 // with the JWKs endpoint configurations.
 jwt:InboundJwtAuthProvider jwkAuthProvider = new ({
     issuer: "ballerina",
-    audience: "ballerina.io",
-    signatureConfig: {
+    audience: "vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
+    jwksConfig: {
         url: "https://example.com/jwks",
         clientConfig: {
             secureSocket: {
@@ -37,8 +40,9 @@ jwt:InboundJwtAuthProvider jwkAuthProvider = new ({
     }
 });
 
-// Creates a Bearer Auth handler with the created JWT Auth provider.
-http:BearerAuthHandler jwtAuthHandler = new (jwtAuthProvider);
+// Creates a Bearer Auth handler with the created JWT Auth provider
+// created using JWKs endpoint configurations.
+http:BearerAuthHandler jwkAuthHandler = new (jwkAuthProvider);
 
 // The endpoint used here is the `http:Listener`. The JWT authentication
 // handler is set to this endpoint using the `authHandlers` attribute.
@@ -46,7 +50,7 @@ http:BearerAuthHandler jwtAuthHandler = new (jwtAuthProvider);
 // service and resource levels.
 listener http:Listener ep = new (9090, config = {
     auth: {
-        authHandlers: [jwtAuthHandler]
+        authHandlers: [jwtAuthHandler, jwkAuthHandler]
     },
     // The secure hello world sample uses HTTPS.
     secureSocket: {

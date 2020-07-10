@@ -13,7 +13,7 @@ int counter = 0;
 public function mockPrint(any|error... s) {
     string outStr = "";
     foreach var str in s {
-        outStr = outStr + string.convert(str);
+        outStr = outStr + str.toString();
     }
     lock {
         outputs[counter] = outStr;
@@ -21,7 +21,7 @@ public function mockPrint(any|error... s) {
     }
 }
 
-@test:Config
+@test:Config{}
 function testFunc() {
     // Invoking the main function
     main();
@@ -44,14 +44,14 @@ function testFunc() {
     } else {
         // The output is in random order
         foreach var x in outputs {
-            string value = string.convert(x);
-            if (value.equalsIgnoreCase("[value type variables] before fork: value of integer variable is [100] value of string variable is [WSO2]")) {
+            string value = x.toString();
+            if (value.equalsIgnoreCaseAscii("[value type variables] before fork: value of integer variable is [100] value of string variable is [WSO2]")) {
                 // continue;
-            } else if (value.equalsIgnoreCase("[reference type variables] before fork: value of name is [Bert] value of city is [New York] value of postcode is [10001]")) {
+            } else if (value.equalsIgnoreCaseAscii("[reference type variables] before fork: value of name is [Bert] value of city is [New York] value of postcode is [10001]")) {
                 // continue;
-            } else if (value.equalsIgnoreCase("[value type variables] after fork: value of integer variable is [123] value of string variable is [Ballerina]")) {
+            } else if (value.equalsIgnoreCaseAscii("[value type variables] after fork: value of integer variable is [123] value of string variable is [Ballerina]")) {
                 // continue;
-            } else if (value.equalsIgnoreCase("[reference type variables] after fork: value of name is [Moose] value of city is [Manhattan] value of street is [Wall Street] value of postcode is [10001]")) {
+            } else if (value.equalsIgnoreCaseAscii("[reference type variables] after fork: value of name is [Moose] value of city is [Manhattan] value of street is [Wall Street] value of postcode is [10001]")) {
                 // continue;
             } else {
                 io:println(x);

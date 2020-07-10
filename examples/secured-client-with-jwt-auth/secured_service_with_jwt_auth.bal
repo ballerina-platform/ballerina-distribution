@@ -8,7 +8,7 @@ import ballerina/log;
 jwt:InboundJwtAuthProvider inboundJwtAuthProvider = new ({
     issuer: "ballerina",
     audience: "ballerina.io",
-    signatureConfig: {
+    trustStoreConfig: {
         certificateAlias: "ballerina",
         trustStore: {
             path: config:getAsString("b7a.home") +
@@ -18,6 +18,7 @@ jwt:InboundJwtAuthProvider inboundJwtAuthProvider = new ({
     }
 });
 http:BearerAuthHandler inboundJwtAuthHandler = new (inboundJwtAuthProvider);
+
 listener http:Listener ep = new (9090, config = {
     auth: {
         authHandlers: [inboundJwtAuthHandler],

@@ -1,0 +1,5 @@
+# To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run non_transaction_retry.bal
+
+start attempt 1:error, attempt 2:error, attempt 3:result returned end.

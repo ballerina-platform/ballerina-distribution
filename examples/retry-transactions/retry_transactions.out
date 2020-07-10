@@ -1,0 +1,13 @@
+# To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run retry_transactions.bal
+Create DEPOSITS table status: 0
+Create WITHDRAWALS table status: 0
+101 52 97 50 49 55 102 97 45 55 57 57 102 45 52 56 52 55 45 57 53 49 52 45 55 98 98 49 49 54 101 49 55 54 49 49
+Commit handler executed.
+Transaction committed.
+Insert data into WITHDRAWALS table status: 1
+Insert data into DEPOSITS table status: 1
+Retry count: 3
+Drop table WITHDRAWALS status: 0
+Drop table DEPOSITS status: 0

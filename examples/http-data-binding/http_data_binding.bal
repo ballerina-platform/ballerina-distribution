@@ -10,7 +10,8 @@ type Student record {
 @http:ServiceConfig {}
 service hello on new http:Listener(9090) {
 
-    //The `body` annotation represents the entity body of the inbound request.
+    // The `body` annotation in the [ResourceConfig](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/HttpResourceConfig.html)
+    // represents the entity body of the inbound request.
     @http:ResourceConfig {
         methods: ["POST"],
         body: "orderDetails"
@@ -28,7 +29,7 @@ service hello on new http:Listener(9090) {
         }
         var result = caller->respond(res);
         if (result is error) {
-            log:printError(result.reason(), result);
+            log:printError(result.message(), result);
         }
     }
 
@@ -46,7 +47,7 @@ service hello on new http:Listener(9090) {
 
         var result = caller->respond(res);
         if (result is error) {
-            log:printError(result.reason(), result);
+            log:printError(result.message(), result);
         }
     }
 
@@ -62,13 +63,13 @@ service hello on new http:Listener(9090) {
         //Accesses the fields of the `Student` record.
         string name = <@untainted>student.Name;
         int grade = <@untainted>student.Grade;
-        string english = <@untained string>student.Marks["English"];
+        string english = <@untainted string>student.Marks["English"];
         http:Response res = new;
         res.setPayload({Name: name, Grade: grade, English: english});
 
         var result = caller->respond(res);
         if (result is error) {
-            log:printError(result.reason(), result);
+            log:printError(result.message(), result);
         }
     }
 }

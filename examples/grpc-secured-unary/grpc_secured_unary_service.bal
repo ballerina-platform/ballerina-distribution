@@ -24,8 +24,7 @@ service HelloWorld on ep {
         grpc:Error? err = caller->send(message);
 
         if (err is grpc:Error) {
-            log:printError("Error from Connector: " + err.reason() + " - "
-                                           + <string>err.detail()["message"]);
+            log:printError("Error from Connector: " + err.message());
         } else {
             log:printInfo("Server send response : " + message);
         }

@@ -23,7 +23,7 @@ function testFunc() {
 
     var output3 = outputs[3];
     if (output3 is error) {
-        test:assertEquals(output3.reason(), "key '' not found");
+        test:assertEquals(output3.message(), "key '' not found");
     } else {
         test:assertFail();
     }

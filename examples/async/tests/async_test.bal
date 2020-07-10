@@ -1,5 +1,4 @@
 import ballerina/test;
-import ballerina/io;
 
 (any|error)[] outputs = [];
 int counter = 0;
@@ -16,24 +15,20 @@ public function mockPrint(any|error... s) {
     }
 }
 
-@test:Config
+@test:Config{}
 function testFunc() {
     // Invoke the main function.
     main();
     string[] expected = [];
-    expected[1] = "false";
-    expected[2] = "false";
-    expected[3] = "true";
-    expected[5] = "false";
-    expected[6] = "123";
-    expected[7] = "true";
-    expected[8] = "400";
-    expected[9] = "{\"first_field\":100, \"second_field\":27, \"third_field\":\"Hello Moose!!\"}";
-    expected[10] = "first field of record --> 100";
-    expected[11] = "second field of record --> 27";
-    expected[12] = "third field of record --> Hello Moose!!";
-    foreach var k in 1...12 {
-        if (k == 4) {
+    expected[0] = "SQ + CB = 737100";
+    expected[1] = "Counting done in one second: 0";
+    expected[3] = "400";
+    expected[4] = "first_field=100 second_field=27 third_field=Hello Moose!!";
+    expected[5] = "first field of record --> 100";
+    expected[6] = "second field of record --> 27";
+    expected[7] = "third field of record --> Hello Moose!!";
+    foreach var k in 0...7 {
+        if (k == 2) {
             continue;
         }
         test:assertTrue(testExist(expected[k]), msg = expected[k]);
@@ -41,12 +36,13 @@ function testFunc() {
 }
 
 function testExist(string text) returns boolean {
-    foreach var i in 1...12 {
-        if (i == 4) {
+    foreach var i in 0...7 {
+        if (i == 2) {
             continue;
         }
-        string out = string.convert(outputs[i]);
-        if (out.contains(text)) {
+        string out = outputs[i].toString();
+        int? index = out.indexOf(text);
+        if (index is int) {
             return true;
         }
     }

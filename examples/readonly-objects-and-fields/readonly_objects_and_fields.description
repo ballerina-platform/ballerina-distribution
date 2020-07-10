@@ -1,0 +1,6 @@
+// Fields of an object can be marked as `readonly`. These fields cannot be updated once the object is created and can
+// only hold immutable values.
+// If all the fields of an object are `readonly`, the object itself is considered to have its read-only bit set and
+// can thus be used where a `readonly` (immutable) value is expected.
+// An object itself can also be defined as a `readonly object`. This is equivalent to all the fields of the object being
+// `readonly`. A `readonly object` value can also be used where an immutable value is expected.

@@ -51,6 +51,7 @@ function initializeClients() returns sql:Error? {
             // `sql:SSL_VERIFY_IDENTITY`. For details on each mode, go to
             // the MySQL reference (https://dev.mysql.com/doc/refman/8.0/en/using-encrypted-connections.html).
             mode: mysql:SSL_PREFERRED
+
         },
         connectTimeoutInSeconds: 10
     };
@@ -71,6 +72,7 @@ function initializeClients() returns sql:Error? {
         maxConnectionLifeTimeInSeconds: 2000.0,
         // Default minimum number of idle connections is 15.
         minIdleConnections: 5
+
     };
 
     // Initialize the MySQL client with the specific connection pool.
@@ -99,13 +101,15 @@ function initializeClients() returns sql:Error? {
     check mysqlClient6.close();
     check mysqlClient7.close();
     check mysqlClient8.close();
+
 }
 
-//Initialize MySQL clients with different options.
 public function main() {
+    //Initialize MySQL clients with different options.
     sql:Error? err = initializeClients();
+
     if (err is sql:Error) {
-        io:println("Error occured, initialization failed! ", err);
+        io:println("Error occurred, initialization failed! ", err);
     } else {
         io:println("Sample executed successfully!");
     }
