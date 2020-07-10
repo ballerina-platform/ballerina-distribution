@@ -1,0 +1,8 @@
+# To start the service, navigate to the directory that contains the
+# `.bal` file, and run the `ballerina run` command.
+$ ballerina run upgrade_service.bal
+
+[ballerina/http] started HTTP/WS listener 0.0.0.0:9095
+2020-07-10 15:14:09,104 INFO  [] - WebSocket connection made successfully
+New WebSocket connection: f01898fffeab1639-00005a4d-00000002-dc2f8cfe34f45a6c-86cd891b
+Hello World!

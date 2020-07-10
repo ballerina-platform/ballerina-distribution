@@ -852,6 +852,10 @@
             {
                 "name": "Retry",
                 "url": "websocket-retry"
+            },
+            {
+                "name": "Client Cookie",
+                "url": "websocket-client-cookie"
             }
         ]
     },
