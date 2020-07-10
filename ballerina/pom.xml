@@ -68,6 +68,11 @@
             <artifactId>azurefunctions-extension-balo</artifactId>
             <type>zip</type>
         </dependency>
+        <dependency>
+            <groupId>org.ballerinax.azurefunctions</groupId>
+            <artifactId>azurefunctions-extension-examples</artifactId>
+            <type>zip</type>
+        </dependency>
 
         <!-- Docker extension -->
         <dependency>
@@ -151,6 +156,7 @@
                                 awslambda-extension-balo,
                                 awslambda-extension-examples,
                                 azurefunctions-extension-balo,
+                                azurefunctions-extension-examples,
                                 docker-extension-examples,
                                 docker-extension-annotations,
                                 kubernetes-extension-examples,

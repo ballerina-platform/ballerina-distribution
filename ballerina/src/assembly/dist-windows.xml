@@ -91,6 +91,12 @@
             </directory>
             <outputDirectory>distributions/jballerina-${ballerina.version}/bir-cache/ballerinax/azure.functions</outputDirectory>
         </fileSet>
+        <fileSet>
+            <directory>
+                ${project.build.directory}/extracted-distributions/azurefunctions-extension-examples-zip/azurefunctions-extension-examples-${project.version}
+            </directory>
+            <outputDirectory>distributions/jballerina-${ballerina.version}/examples</outputDirectory>
+        </fileSet>
 
         <!-- Tools artifacts -->
         <fileSet>

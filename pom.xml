@@ -280,6 +280,12 @@
                 <type>zip</type>
                 <version>${azurefunctions.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.ballerinax.azurefunctions</groupId>
+                <artifactId>azurefunctions-extension-examples</artifactId>
+                <type>zip</type>
+                <version>${azurefunctions.version}</version>
+            </dependency>
 
             <!-- Docker extension -->
             <dependency>
