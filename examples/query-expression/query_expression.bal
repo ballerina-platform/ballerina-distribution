@@ -31,7 +31,7 @@ public function main() {
     Report[] reportList = from var student in studentList
        //The `where` clause provides a way to perform conditional execution and works similarly to an `if` condition.
        //It can refer to variables bound by the `from` clause.
-       //When the `where` condition evaluates to false, the iteration skips following clauses.
+       //When the `where` condition evaluates to false, the current iteration is skipped.
        where student.gpa >= 2.0
        //The `let` clause binds the variables.
        let string degreeName = "Bachelor of Medicine",
