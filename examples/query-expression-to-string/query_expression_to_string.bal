@@ -4,15 +4,18 @@ type Student record {
     string firstName;
     string lastName;
     int intakeYear;
-    float score;
+    float gpa;
 };
 
 public function main() {
-
-    Student s1 = {firstName: "Alex", lastName: "George", intakeYear: 2020, score: 1.5};
-    Student s2 = {firstName: "Ranjan", lastName: "Fonseka", intakeYear: 2020, score: 0.9};
-    Student s3 = {firstName: "John", lastName: "David", intakeYear: 2022, score: 1.2};
-    Student s4 = {firstName: "Gorge", lastName: "Fernando", intakeYear: 2021, score: 1.1};
+    Student s1 = { firstName: "Michelle", lastName: "Sadler", intakeYear: 1990, 
+                   gpa: 3.5 };
+    Student s2 = { firstName: "Ranjan", lastName: "Fonseka", intakeYear: 2001, 
+                   gpa: 1.9 };
+    Student s3 = { firstName: "Martin", lastName: "Guthrie", intakeYear: 2002, 
+                   gpa: 3.7 };
+    Student s4 = { firstName: "George", lastName: "Fernando", intakeYear: 2005, 
+                   gpa: 4.0 };
 
     Student[] studentList = [s1, s2, s3, s4];
 
@@ -22,10 +25,10 @@ public function main() {
     string students = from var student in studentList
        //The `where` clause provides a way to perform conditional execution and works similarly to an `if` condition.
        //It can refer to variables bound by the from clause.
-       //When the `where` condition evaluates to false, the iteration skips the following clauses.
-       where student.score >= 1
-       //The concatenation of the `select` clause is evaluated for each iteration.
-       select student.firstName + " " + student.lastName + ", ";
+       //When the `where` condition evaluates to false, the current iteration is skipped.
+       where student.gpa >= 2.0
+       //The values emitted from `select` clause is concatenated to get the string result of the query statement.
+       select student.firstName + " " + student.lastName + "\n";
 
     io:println(students);
 }
