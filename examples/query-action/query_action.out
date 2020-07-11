@@ -2,6 +2,6 @@
 # `.bal` file and execute the `ballerina run` command below.
 ballerina run query_action.bal
 
-firstName=Alex lastName=George
+firstName=Michelle lastName=Sadler
 firstName=Ranjan lastName=Fonseka
-firstName=John lastName=David
+firstName=Martin lastName=Guthrie
