@@ -40,7 +40,7 @@ public function main() {
        //The result of the query expression is a list(`reportList`) whose members are the result of
        //the `select` clause.
        select {
-              name: student.firstName,
+              name: student.firstName + " " + student.lastName,
               degree: degreeName,
               graduationYear: graduationYear
        }
@@ -55,3 +55,4 @@ public function main() {
 function calGraduationYear(int year) returns int {
     return year + 5;
 }
+
