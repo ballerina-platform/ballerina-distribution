@@ -1,2 +1,2 @@
 description: This BBE demonstrates how taint checking ensures that programs written in Ballerina are inherently secure.
-keywords: ballerina, ballerina by example, taint checking, security
+keywords: ballerina, ballerina by example, taint checking, security, secure programming
