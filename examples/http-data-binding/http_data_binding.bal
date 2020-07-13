@@ -10,7 +10,7 @@ type Student record {
 @http:ServiceConfig {}
 service hello on new http:Listener(9090) {
 
-    // The `body` annotation in the [ResourceConfig](https://ballerina.io/learn/api-docs/ballerina/http/records/HttpResourceConfig.html)
+    // The `body` annotation in the [ResourceConfig](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/HttpResourceConfig.html)
     // represents the entity body of the inbound request.
     @http:ResourceConfig {
         methods: ["POST"],

@@ -16,7 +16,7 @@ service http2Service on http2ServiceEP {
     }
     resource function http2Resource(http:Caller caller, http:Request req) {
 
-        // [Send a Push Promise](https://ballerina.io/learn/api-docs/ballerina/http/clients/Caller.html#promise).
+        // [Send a Push Promise](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Caller.html#promise).
         http:PushPromise promise1 = new (path = "/resource1", method = "GET");
         var promiseResponse1 = caller->promise(promise1);
         if (promiseResponse1 is error) {
@@ -57,7 +57,7 @@ service http2Service on http2ServiceEP {
         msg = {"push": {"name": "resource1"}};
         push1.setPayload(msg);
 
-        // [Push promised resource1](https://ballerina.io/learn/api-docs/ballerina/http/clients/Caller.html#pushPromisedResponse).
+        // [Push promised resource1](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Caller.html#pushPromisedResponse).
         var pushResponse1 = caller->pushPromisedResponse(promise1, push1);
         if (pushResponse1 is error) {
             log:printError("Error occurred while sending the promised response1",

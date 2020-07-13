@@ -10,11 +10,11 @@ service sample on new http:Listener(9090) {
     // The `PathParam` and `QueryParam` parameters extract values from the request URI.
     resource function params(http:Caller caller, http:Request req,
                                 string foo) {
-        // Get the [QueryParam](https://ballerina.io/learn/api-docs/ballerina/http/objects/Request.html#getQueryParamValue)
+        // Get the [QueryParam](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/Request.html#getQueryParamValue)
         // value for a given parameter key.
         var bar = req.getQueryParamValue("bar");
 
-        // Get the [MatrixParams](https://ballerina.io/learn/api-docs/ballerina/http/objects/Request.html#getMatrixParams).
+        // Get the [MatrixParams](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/Request.html#getMatrixParams).
         map<any> pathMParams = req.getMatrixParams("/sample/path");
         var a = <string>pathMParams["a"];
         var b = <string>pathMParams["b"];

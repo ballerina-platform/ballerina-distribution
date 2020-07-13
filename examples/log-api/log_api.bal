@@ -5,11 +5,11 @@ public function main() {
     error e = error("error occurred");
 
     // The Ballerina log API provides functions to log at five levels, which are
-    // [`DEBUG`](https://ballerina.io/learn/api-docs/ballerina/log/functions.html#printDebug),
-    // [`ERROR`](https://ballerina.io/learn/api-docs/ballerina/log/functions.html#printError),
-    // [`INFO`](https://ballerina.io/learn/api-docs/ballerina/log/functions.html#printInfo),
-    // [`TRACE`](https://ballerina.io/learn/api-docs/ballerina/log/functions.html#printTrace), and
-    // [`WARN`](https://ballerina.io/learn/api-docs/ballerina/log/functions.html#printWarn). By default, all log
+    // [`DEBUG`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/log/functions.html#printDebug),
+    // [`ERROR`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/log/functions.html#printError),
+    // [`INFO`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/log/functions.html#printInfo),
+    // [`TRACE`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/log/functions.html#printTrace), and
+    // [`WARN`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/log/functions.html#printWarn). By default, all log
     // messages are logged to the console at the `INFO` level. In addition to
     // these log levels, there are 2 additional levels named `OFF` and `ALL`.
     // `OFF` turns off logging and `ALL` enables all the log levels. The log

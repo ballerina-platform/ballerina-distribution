@@ -11,7 +11,7 @@ service passthrough on new http:Listener(9090) {
         path: "/"
     }
     resource function passthrough(http:Caller caller, http:Request req) {
-        // When [forward()](https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#forward) is called on the backend client endpoint, it forwards the request that the passthrough
+        // When [forward()](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html#forward) is called on the backend client endpoint, it forwards the request that the passthrough
         // resource received to the backend. When forwarding, the request is made using the same HTTP method that was
         // used to invoke the passthrough resource. The `forward()` function returns the response from the backend if
         // there are no errors.
@@ -47,7 +47,7 @@ service hello on new http:Listener(9092) {
         path: "/"
     }
     resource function helloResource(http:Caller caller, http:Request req) {
-        // [Send the response](https://ballerina.io/learn/api-docs/ballerina/http/clients/Caller.html#respond) back to the caller.
+        // [Send the response](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Caller.html#respond) back to the caller.
         var result = caller->respond("Hello World!");
         if (result is error) {
             log:printError("Error sending response", result);
