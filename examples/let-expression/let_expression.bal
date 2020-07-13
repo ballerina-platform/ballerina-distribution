@@ -52,7 +52,3 @@ function getPerson() returns Person => {
     country: "USA",
     "occupation": "Lawyer"
 };
-
-function getSampleError() returns error {
-    return error("SampleError", message = "Detail message", fatal = true);
-}

@@ -5,4 +5,4 @@
 // It is not limited to the test file where it is being mocked. Mocking a function from the module under test
 // can be scoped to have different behaviors for different test cases.<br/><br/>
 // For more information on the underlying module,
-// see [The Test Module](https://ballerina.io/learn/api-docs/ballerina/test/index.html).
+// see [The Test Module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/test/index.html).

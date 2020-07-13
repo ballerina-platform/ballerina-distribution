@@ -5,7 +5,7 @@ import ballerina/task;
 int reminderCount = 0;
 
 public function main() {
-    // The [`task:Appointment`](https://ballerina.io/learn/api-docs/ballerina/task/records/AppointmentData.html) data record provides the appointment configurations.
+    // The [`task:Appointment`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/task/records/AppointmentData.html) data record provides the appointment configurations.
     task:AppointmentData appointmentData = {
         seconds: "0/2",
         minutes: "*",

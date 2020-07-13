@@ -5,4 +5,4 @@
 // `string`, `json`, `xml`, `byte[]`, `record`, `float` and `int` are
 // supported as parameter types.<br/><br/>
 // For more information on the underlying module, 
-// see the [RabbitMQ module](https://ballerina.io/learn/api-docs/ballerina/rabbitmq/index.html).
+// see the [RabbitMQ module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/rabbitmq/index.html).

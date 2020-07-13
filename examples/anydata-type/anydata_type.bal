@@ -1,30 +1,21 @@
 import ballerina/io;
 
-// This function returns a value of the `anydata` type.
-function getValue() returns anydata {
-    string name = "cat";
-    return name;
-}
-
 public function main() {
-    // In this example, the variable named `a` of the `anydata` type holds an `int` value.
-    anydata a = 5;
-    io:println(a);
+    // In this example, the variable named `data1` of the `anydata` type holds an `int` value.
+    anydata data1 = 5;
+    io:println(data1);
 
-    // Before using the value of `a` in arithmetic operations, we need to
-    // ascertain that it is indeed an `int`. A type cast or
-    // a type guard can be used for this.
-    int intVal = <int>a;
+    // Before using the value of `data1` in arithmetic operations, it is required to ascertain 
+    // that is actually an `int`. A type cast or a type guard can be used for this.
+    int intVal = <int> data1;
     io:println(intVal + 10);
 
-    if (a is int) {
-        io:println(a + 20);
+    if data1 is int {
+        io:println(data1 + 20);
     }
 
     // A variable of type `anydata` can hold any value of an `anydata` compatible type.
-    int[] ia = [1, 3, 5, 6];
-    anydata ar = ia;
-    io:println(ar);
-
-    io:println(getValue());
+    int[] intArray = [1, 3, 5, 6];
+    anydata dataArray = intArray;
+    io:println(dataArray);
 }

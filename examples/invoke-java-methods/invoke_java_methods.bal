@@ -36,7 +36,7 @@ public function main() {
     var arrayDeque = newArrayDeque();
 
     // Ballerina strings are different from Java strings. 
-    // The [fromString](https://ballerina.io/learn/api-docs/ballerina/java/functions.html#fromString) function in 
+    // The [fromString](https://ballerina.io/swan-lake/learn/api-docs/ballerina/java/functions.html#fromString) function in 
     // `ballerina/java` module converts a Ballerina string value to a Java String representation.
     // Java String is a reference type; hence,
     // this method returns a handle value referring to the created to Java string.
@@ -45,7 +45,7 @@ public function main() {
     _ = offer(arrayDeque, java:fromString("Peter"));
 
     var nextInLineHandle = poll(arrayDeque);
-    // The [toString](https://ballerina.io/learn/api-docs/ballerina/java/functions.html#toString) function in 
+    // The [toString](https://ballerina.io/swan-lake/learn/api-docs/ballerina/java/functions.html#toString) function in 
     // `ballerina/java` module creates a Ballerina string
     // representation of the Java reference value.
     string? nextInLine = java:toString(nextInLineHandle);

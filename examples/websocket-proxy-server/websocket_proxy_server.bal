@@ -28,7 +28,7 @@ service SimpleProxyService on new http:Listener(9090) {
         wsClientEp.setAttribute(ASSOCIATED_CONNECTION, caller);
         caller.setAttribute(ASSOCIATED_CONNECTION, wsClientEp);
 
-        // Once the client is ready to receive frames, the remote function [ready](https://ballerina.io/learn/api-docs/ballerina/http/clients/WebSocketClient.html#ready)
+        // Once the client is ready to receive frames, the remote function [ready](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/WebSocketClient.html#ready)
         // of the client need to be called separately.
         var err = wsClientEp->ready();
         if (err is http:WebSocketError) {

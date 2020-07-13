@@ -7,4 +7,4 @@
 // throughout all tests whereas stubbing is ideal when defining different behaviors for
 // different test cases is required.<br/><br/>
 // For more information on the underlying module,
-// see [The Test Module](https://ballerina.io/learn/api-docs/ballerina/test/index.html).
+// see [The Test Module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/test/index.html).
