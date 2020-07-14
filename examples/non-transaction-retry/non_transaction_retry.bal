@@ -17,7 +17,7 @@ public function main() returns error? {
 
 int count = 0;
 
-// The function which may return an error.
+// The function, which may return an error.
 function doWork() returns error? {
     if count < 1 {
         count += 1;
