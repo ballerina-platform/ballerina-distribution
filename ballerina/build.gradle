@@ -899,6 +899,74 @@ task testExamples() {
     }
 }
 
+task testStdlibs() {
+
+     def jballerinaPack = "${project.rootDir}/ballerina/build/target/extracted-distributions/jballerina-tools-zip"
+     def baseBuildPath = "${project.rootDir}/ballerina/build/bbe-pack"
+     def distPath = "${baseBuildPath}/jballerina-tools-${ballerinaVersion}"
+     def stdlibTestsList = []
+
+     PatternSet patternSet = new PatternSet();
+     patternSet.exclude("**/.ballerina/**");
+     patternSet.exclude("**/Ballerina.toml");
+     patternSet.exclude("**/Ballerina.lock");
+     patternSet.exclude("**/ballerina-internal.log")
+     inputs.files(files("${distPath}/stdlib-integration-tests").asFileTree.matching(patternSet))
+     def ignoreList = [
+     ]
+     doFirst {
+         copy {
+             from jballerinaPack
+             into baseBuildPath
+         }
+         exec {
+             //Initialize Ballerina project
+             if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+                 workingDir "${baseBuildPath}"
+                 commandLine 'cmd', '/c', "jballerina-tools-${ballerinaVersion}/bin/ballerina.bat", 'new', 'StdlibTestProject'
+             } else {
+                 workingDir "${baseBuildPath}"
+                 commandLine 'sh', '-c', "jballerina-tools-${ballerinaVersion}/bin/ballerina new StdlibTestProject"
+             }
+         }
+
+         def src = "${project.rootDir}/stdlib-integration-tests/"
+         def dis = "${baseBuildPath}/StdlibTestProject/src/"
+         copy {
+             from(src)
+             into dis
+         }
+         def inputFile = new File("${baseBuildPath}/StdlibTestProject/src/index.json")
+         def stdlibTests = new JsonSlurper().parseText(inputFile.text)
+         stdlibTests.each { stdlibTest ->
+             def folder = new File("${baseBuildPath}/StdlibTestProject/src/${stdlibTest.path}")
+             if (folder.exists()) {
+                 stdlibTestsList.push("$stdlibTest.path")
+             }
+
+         }
+     }
+     doLast {
+         ignoreList.each { String elements ->
+             stdlibTestsList.remove("$elements")
+         }
+         stdlibTestsList.each { String stdlibTest ->
+             if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+                 //TODO: Need to verify with windows
+                 exec {
+                     workingDir "${buildDir}/StdlibTestProject"
+                     commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat build -c --experimental ${stdlibTest} --b7a.home=${distPath}"
+                 }
+             } else {
+                 exec {
+                     workingDir "${baseBuildPath}/StdlibTestProject"
+                     commandLine 'sh', '-c', "${distPath}/bin/ballerina build -c --experimental ${stdlibTest} --b7a.home=${distPath}"
+                 }
+             }
+         }
+     }
+ }
+
 /* Unpack Dependencies */
 unpackJballerinaTools.dependsOn unpackBallerinaJre
 unpackAwsLambdaBalo.dependsOn unpackJballerinaTools
@@ -924,8 +992,9 @@ packageDistLinux.dependsOn packageDistZip
 packageDistMac.dependsOn packageDistLinux
 packageDistWindows.dependsOn packageDistMac
 testExamples.dependsOn packageDistWindows
+testStdlibs.dependsOn testExamples
 
 /* Delete Temporary Files */
-deleteTemporaryFiles.dependsOn testExamples
+deleteTemporaryFiles.dependsOn testStdlibs
 
 build.dependsOn deleteTemporaryFiles
