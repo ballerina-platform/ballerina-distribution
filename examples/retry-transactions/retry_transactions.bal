@@ -43,7 +43,7 @@ public function main() returns error? {
         io:println("Transaction Info: ", transactions:info());
 
         check commit;
-        io:println("Transaction committed");
+        io:println("Transaction committed.");
         io:println("Account Credit: ", creditResult);
         io:println("Account Debit: ", debitResult);
     }
