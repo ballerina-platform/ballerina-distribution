@@ -31,7 +31,7 @@ public function main() returns error? {
     _ = check dbClient->execute("INSERT INTO ACCOUNT VALUES (2, 1000.0)");
 
     // In a retry scenario, if the the transaction block returns an error e.g., with a `check` expression, 
-    // the transaction is automatically rollbacked, and the retry manager it checked to retry the transaction.
+    // the transaction is automatically rollbacked and the retry manager is checked to retry the transaction.
     retry<MyRetryManager> (3) transaction {
         transactions:onRollback(onRollbackFunc);
         transactions:onCommit(onCommitFunc);
