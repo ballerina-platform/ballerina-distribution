@@ -1,0 +1,2 @@
+description: This BBE shows how Ballerina allows you to declare variables using the var keyword instead of specifying a type.
+keywords: ballerina, ballerina by example, bbe, var, variable

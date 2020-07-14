@@ -1,0 +1,2 @@
+description: This BBE shows how to group Ballerina source files into modules. The code within a module can refer to any module-level symbol declared in the same module.
+keywords: ballerina, ballerina by example, bbe, modules

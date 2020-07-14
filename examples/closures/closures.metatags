@@ -1,0 +1,2 @@
+description: In Ballerina, a closure is created to capture the variables of the enclosing environment when a locally defined construct (e.g., a local anonymous function) refers to them.
+keywords: ballerina, ballerina by example, bbe, closures

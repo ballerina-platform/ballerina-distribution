@@ -1,0 +1,2 @@
+description: Ballerina programs operate on a universe of values and each value belongs to only one basic type such as int, boolean, map, record, function, etc.
+keywords: ballerina, ballerina by example, bbe, values

@@ -1,0 +1,2 @@
+description: The foreach statement in Ballerina is a looping construct that traverses through the items of a collection of data such as arrays, maps, JSON, XML, and tables.
+keywords: ballerina, ballerina by example, bbe, foreach, loops
