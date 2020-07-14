@@ -29,7 +29,7 @@ public function main() returns error? {
         // The result of the commit action will be either `error` or `()`.
         var commitResult = commit;
         if commitResult is () {
-            // Operations to be executed after the transaction is committed successfully.
+            // Operations to be executed after the transaction are committed successfully.
             io:println("Transaction committed");
             io:println("Account Credit: ", creditResult);
             io:println("Account Debit: ", debitResult);
