@@ -9,7 +9,7 @@ public function main() returns error? {
     // As defined, retrying happens for maximum 3 times.
     retry (3) {
         io:println("Attempting execution...");
-        // Calls a function which simuates an error scenario to 
+        // Calls a function, which simulates an error scenario to 
         // trigger the retry operation.
         return doWork();
     }
