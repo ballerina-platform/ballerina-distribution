@@ -26,11 +26,11 @@ service cookieServer on new http:Listener(9095) {
                 // Check the password value.
                 if (password == "p@ssw0rd") {
 
-                    // [Create a new cookie](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/Cookie.html) by setting `name` as the `username`
+                    // [Create a new cookie](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/Cookie.html) by setting the `name` as the `username`
                     // and `value` as the logged-in user's name.
                     http:Cookie cookie = new("username", name.toString());
 
-                    // Set the cookies path as `/` to apply it to all the
+                    // Set the cookie's path as `/` to apply it to all the
                     // resources in the service.
                     cookie.path = "/";
 
@@ -92,7 +92,7 @@ service cookieServer on new http:Listener(9095) {
     }
 }
 
-//Callback service to receive frames from the client.
+// The callback service to receive frames from the client.
 service cookieService = @http:WebSocketServiceConfig {subProtocols: ["xml", "json"]} service {
 
     // This resource gets invoked when a new client connects.

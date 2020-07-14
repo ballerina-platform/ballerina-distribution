@@ -2,7 +2,7 @@ import ballerina/http;
 import ballerina/io;
 import ballerina/log;
 
-// HTTP client configurations associated with [enabling cookies](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/CookieConfig.html).
+// The HTTP client configurations associated with [enabling cookies](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/CookieConfig.html).
 http:ClientConfiguration clientEPConfig = {
     cookieConfig: {
         enabled: true
@@ -35,7 +35,7 @@ public function main() {
                 io:println("Login failed", loginMessage);
             } else {
                 // When the login is successful, extract the name and value
-                // from the response
+                // from the response.
                 http:Cookie[] cookies = loginResp.getCookies();
                 map<string> wsCookies = {};
                 foreach var cookie in cookies {
@@ -46,11 +46,11 @@ public function main() {
                     }
                 }
 
-                // Initialize the WebSocket client with cookies' name and value
+                // Initialize the WebSocket client with the cookie's name and value
                 http:WebSocketClient wsClientEp = new ("ws://localhost:9095/cookie-demo/ws",
                                 config = {callbackService: ClientService, cookies: wsCookies});
 
-                // Pushes text to the connection
+                // Pushes text to the connection.
                 var err = wsClientEp->pushText("Hello World!");
                 if (err is error) {
                     io:println(err);
@@ -61,7 +61,7 @@ public function main() {
         }
 }
 
-// Client service to receive frames from the remote server.
+// The client service to receive frames from the remote server.
 service ClientService = @http:WebSocketServiceConfig {} service {
 
     // This resource gets invoked upon receiving a new text frame from the remote backend.
