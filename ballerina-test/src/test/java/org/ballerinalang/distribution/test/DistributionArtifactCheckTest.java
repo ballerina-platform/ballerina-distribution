@@ -30,13 +30,14 @@ import java.nio.file.Path;
 
 import static org.ballerinalang.distribution.utils.TestUtils.DISTRIBUTIONS_DIR;
 import static org.ballerinalang.distribution.utils.TestUtils.MAVEN_VERSION;
+import static org.ballerinalang.distribution.utils.TestUtils.SHORT_VERSION;
 import static org.ballerinalang.distribution.utils.TestUtils.TEST_DISTRIBUTION_PATH;
 
 /**
  * Check if necessary files exists to build in the distribution.
  */
 public class DistributionArtifactCheckTest {
-    private static final String DIST_NAME = "ballerina-slp1";
+    private static final String DIST_NAME = "ballerina-" + SHORT_VERSION;
     
     @BeforeClass
     public void setupDistributions() throws IOException {

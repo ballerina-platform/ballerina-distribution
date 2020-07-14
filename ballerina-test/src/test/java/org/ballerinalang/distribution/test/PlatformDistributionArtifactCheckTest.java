@@ -32,12 +32,15 @@ import java.util.Objects;
 
 import static org.ballerinalang.distribution.utils.TestUtils.DISTRIBUTIONS_DIR;
 import static org.ballerinalang.distribution.utils.TestUtils.MAVEN_VERSION;
+import static org.ballerinalang.distribution.utils.TestUtils.SHORT_VERSION;
 import static org.ballerinalang.distribution.utils.TestUtils.TEST_DISTRIBUTION_PATH;
 
 /**
  * Check if necessary files exists to build in the platform specific distributions.
  */
 public class PlatformDistributionArtifactCheckTest {
+    
+    private static final String DIST_NAME = "ballerina-" + SHORT_VERSION;
     
     @DataProvider(name = "distribution-provider")
     public Object[][] distributionNameProvider() {
@@ -61,7 +64,7 @@ public class PlatformDistributionArtifactCheckTest {
     @Test(dataProvider = "distribution-provider")
     public void dockerAnnotationExistsTest(String distributionFileName) {
         Path distributionsPath = TEST_DISTRIBUTION_PATH.resolve(distributionFileName).resolve("distributions");
-        String jballerinaFileName = TestUtils.findFileOrDirectory(distributionsPath, "jballerina-");
+        String jballerinaFileName = TestUtils.findFileOrDirectory(distributionsPath, DIST_NAME);
         Objects.requireNonNull(jballerinaFileName);
     
         Path birPath = distributionsPath
@@ -94,7 +97,7 @@ public class PlatformDistributionArtifactCheckTest {
     @Test(dataProvider = "distribution-provider")
     public void kubernetesAnnotationExistsTest(String distributionFileName) {
         Path distributionsPath = TEST_DISTRIBUTION_PATH.resolve(distributionFileName).resolve("distributions");
-        String jballerinaFileName = TestUtils.findFileOrDirectory(distributionsPath, "jballerina-");
+        String jballerinaFileName = TestUtils.findFileOrDirectory(distributionsPath, DIST_NAME);
         Objects.requireNonNull(jballerinaFileName);
     
         Path birPath = distributionsPath
@@ -127,7 +130,7 @@ public class PlatformDistributionArtifactCheckTest {
     @Test(dataProvider = "distribution-provider")
     public void istioAnnotationExistsTest(String distributionFileName) {
         Path distributionsPath = TEST_DISTRIBUTION_PATH.resolve(distributionFileName).resolve("distributions");
-        String jballerinaFileName = TestUtils.findFileOrDirectory(distributionsPath, "jballerina-");
+        String jballerinaFileName = TestUtils.findFileOrDirectory(distributionsPath, DIST_NAME);
         Objects.requireNonNull(jballerinaFileName);
     
         Path birPath = distributionsPath
@@ -160,7 +163,7 @@ public class PlatformDistributionArtifactCheckTest {
     @Test(dataProvider = "distribution-provider")
     public void openshiftAnnotationExistsTest(String distributionFileName) {
         Path distributionsPath = TEST_DISTRIBUTION_PATH.resolve(distributionFileName).resolve("distributions");
-        String jballerinaFileName = TestUtils.findFileOrDirectory(distributionsPath, "jballerina-");
+        String jballerinaFileName = TestUtils.findFileOrDirectory(distributionsPath, DIST_NAME);
         Objects.requireNonNull(jballerinaFileName);
     
         Path birPath = distributionsPath
@@ -193,7 +196,7 @@ public class PlatformDistributionArtifactCheckTest {
     @Test(dataProvider = "distribution-provider")
     public void knativeAnnotationExistsTest(String distributionFileName) {
         Path distributionsPath = TEST_DISTRIBUTION_PATH.resolve(distributionFileName).resolve("distributions");
-        String jballerinaFileName = TestUtils.findFileOrDirectory(distributionsPath, "jballerina-");
+        String jballerinaFileName = TestUtils.findFileOrDirectory(distributionsPath, DIST_NAME);
         Objects.requireNonNull(jballerinaFileName);
     
         Path birPath = distributionsPath
@@ -227,7 +230,7 @@ public class PlatformDistributionArtifactCheckTest {
     @Test(dataProvider = "distribution-provider")
     public void awsLambdaAnnotationExistsTest(String distributionFileName) {
         Path distributionsPath = TEST_DISTRIBUTION_PATH.resolve(distributionFileName).resolve("distributions");
-        String jballerinaFileName = TestUtils.findFileOrDirectory(distributionsPath, "jballerina-");
+        String jballerinaFileName = TestUtils.findFileOrDirectory(distributionsPath, DIST_NAME);
         Objects.requireNonNull(jballerinaFileName);
         
         Path birPath = distributionsPath

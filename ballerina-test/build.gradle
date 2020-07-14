@@ -46,6 +46,7 @@ test {
     systemProperty "distributions.dir", "$buildDir/../../ballerina/build/distributions"
     systemProperty "target.dir", "$buildDir"
     systemProperty "maven.version", "$version"
+    systemProperty "short.version", "$shortVersion"
 
     useTestNG() {
         suites 'src/test/resources/testng.xml'
