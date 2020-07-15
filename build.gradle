@@ -141,7 +141,7 @@ subprojects {
             }
         }
         maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-rabbitmq"
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-rabbitmq"
             credentials {
                 username System.getenv("packageUser")
                 password System.getenv("packagePAT")
