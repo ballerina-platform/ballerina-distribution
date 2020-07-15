@@ -849,7 +849,10 @@ task testExamples() {
          'json-record-map-conversion',
          'record-destructure-binding-pattern',
          'json-access',
-         'hello-world-client'
+         'hello-world-client',
+         'secured-client-with-jwt-auth',
+         'secured-service-with-oauth2',
+         'secured-service-with-jwt-auth'
     ]
     doFirst {
         copy {
