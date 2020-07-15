@@ -43,7 +43,7 @@ public function main() {
        // An inner equijoin is performed here.
        // The `join` clause iterates any iterable value similarly to the `from` clause.
        join var department in departmentList
-       // The `on` condition is used to match the `student` with `department` based on `deptId`.
+       // The `on` condition is used to match the `student` with the `department` based on the `deptId`.
        // The iteration is skipped when the condition is not satisfied.
        on student.deptId equals department.deptId
        // The `select` clause is evaluated for each iteration where the `on` condition is satisfied.
@@ -60,4 +60,3 @@ public function main() {
         io:println(report);
     }
 }
-
