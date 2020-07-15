@@ -46,7 +46,7 @@ public function main() {
        // The `on` condition is used to match the `student` with the `department` based on the `deptId`.
        // The iteration is skipped when the condition is not satisfied.
        on student.deptId equals department.deptId
-       // The `select` clause is evaluated for each iteration where the `on` condition is satisfied.
+       // The `select` clause is evaluated in each iteration when the `on` condition is satisfied.
        select {
               name: student.firstName + " " + student.lastName,
               deptName: department.deptName,
