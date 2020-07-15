@@ -21,7 +21,7 @@ public function main() {
     FullName[] nameList = [];
     // The `query-action` works similar to a `foreach` statement.
     // It can be used to iterate through any iterable value.
-    // The result of the query-action is the termination value of the iterable value.
+    // The result of the `query-action` is the termination value of the iterable value.
     // It can be either an error or ().
     var result = from var student in studentList
         // The block inside the `do` clause is executed for each iteration.
