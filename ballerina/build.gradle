@@ -148,9 +148,18 @@ task copyOtherRepos(type: Copy) {
     def ballerinaDist = "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
     into ballerinaDist
 
-    into("docs/docker") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/docs/docker"
+    into("docs") {
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/docs"
     }
+
+    into("docs") {
+        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/docs"
+    }
+
+    into("docs") {
+        from "build/target/extracted-distributions/awslambda-extension-balo-zip/docs"
+    }
+
     /* Standard Libraries */
     configurations.ballerinaStdLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
