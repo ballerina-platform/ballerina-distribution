@@ -23,7 +23,7 @@ public function main() {
                           </student>
                       </school>`;
 
-    // The `from` clause works similarly to a `foreach` statement.
+    // The `from` clause works similar to a `foreach` statement.
     // The `students` is the concatenated `xml` of the `query expression` results.
     xml students = from var studentName in school/<student>/<firstName>
         // The `select` clause is evaluated for each iteration.
