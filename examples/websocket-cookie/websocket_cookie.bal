@@ -27,38 +27,38 @@ public function main() {
     var loginResp = httpClient->post("/login", request);
 
     if (loginResp is http:Response) {
-            // This response contains the cookies added by the backend server.
-            // Get the login response message.
-            string|error loginMessage = loginResp.getTextPayload();
+        // This response contains the cookies added by the backend server.
+        // Get the login response message.
+        string|error loginMessage = loginResp.getTextPayload();
 
-            if (loginMessage is error) {
-                io:println("Login failed", loginMessage);
-            } else {
-                // When the login is successful, extract the name and value
-                // from the response.
-                http:Cookie[] cookies = loginResp.getCookies();
-                map<string> wsCookies = {};
-                foreach var cookie in cookies {
-                    var cookieName = cookie.name;
-                    var cookieValue = cookie.value;
-                    if (cookieName is string && cookieValue is string) {
-                        wsCookies[cookieName] = cookieValue;
-                    }
-                }
-
-                // Initialize the WebSocket client with the cookie's name and value
-                http:WebSocketClient wsClientEp = new ("ws://localhost:9095/cookie-demo/ws",
-                                config = {callbackService: ClientService, cookies: wsCookies});
-
-                // Pushes text to the connection.
-                var err = wsClientEp->pushText("Hello World!");
-                if (err is error) {
-                    io:println(err);
+        if (loginMessage is error) {
+            io:println("Login failed", loginMessage);
+        } else {
+            // When the login is successful, extract the name and value
+            // from the response.
+            http:Cookie[] cookies = loginResp.getCookies();
+            map<string> wsCookies = {};
+            foreach var cookie in cookies {
+                var cookieName = cookie.name;
+                var cookieValue = cookie.value;
+                if (cookieName is string && cookieValue is string) {
+                    wsCookies[cookieName] = cookieValue;
                 }
             }
-        } else {
-            log:printError(loginResp.message());
+
+            // Initialize the WebSocket client with the cookie's name and value
+            http:WebSocketClient wsClientEp = new ("ws://localhost:9095/cookie-demo/ws",
+                            config = {callbackService: ClientService, cookies: wsCookies});
+
+            // Pushes text to the connection.
+            var err = wsClientEp->pushText("Hello World!");
+            if (err is error) {
+                io:println(err);
+            }
         }
+    } else {
+        log:printError(loginResp.message());
+    }
 }
 
 // The client service to receive frames from the remote server.
