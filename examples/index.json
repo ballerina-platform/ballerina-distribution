@@ -900,8 +900,8 @@
                 "url": "websocket-retry"
             },
             {
-                "name": "Client Cookie",
-                "url": "websocket-client-cookie"
+                "name": "Cookie",
+                "url": "websocket-cookie"
             }
         ]
     },
