@@ -1,7 +1,7 @@
 // Invoke the service using "cURL".
 // Note that it is required to provide the correct bearer authentication header
-// with the cURL command.
-$ curl -k -H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QifQ.\
+// with the cURL command below.
+curl -k -H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QifQ.\
 eyJzdWIiOiJhZG1pbiIsICJpc3MiOiJiYWxsZXJpbmEiLCAiZXhwIjoxOTA3ODQ0MTI5LCAiaWF\
 0IjoxNTkyNDg0MTI5LCAianRpIjoiMjE2ZDM2MjktMjc3OC00OTllLTlmMjctM2IzZTkxOGU3Y2\
 ExIiwgImF1ZCI6WyJ2RXd6YmNhc0pWUW0xalZZSFVIQ2poeFo0dFlhIl0sICJuYmYiOjE1OTI0O\

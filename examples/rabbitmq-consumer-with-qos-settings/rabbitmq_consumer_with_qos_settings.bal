@@ -1,5 +1,5 @@
 import ballerina/log;
-import ballerina/rabbitmq;
+import ballerinax/rabbitmq;
 
 // Creates a ballerina RabbitMQ connection that allows reusability if necessary.
 rabbitmq:Connection connection = new ({host: "localhost", port: 5672});

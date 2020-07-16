@@ -1,5 +1,5 @@
 import ballerina/log;
-import ballerina/rabbitmq;
+import ballerinax/rabbitmq;
 
 // The consumer service listens to the "MyQueue" queue.
 @rabbitmq:ServiceConfig {

@@ -7,4 +7,4 @@
 // created when running the sample. Prior to running this sample, 
 // the DB connection properties need to be changed as required.<br/><br/>
 // For more information on the underlying module, 
-// see the [Transactions module](https://ballerina.io/learn/api-docs/ballerina/lang.transaction/index.html).
+// see the [Transactions module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/lang.transaction/index.html).

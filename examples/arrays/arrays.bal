@@ -52,7 +52,7 @@ public function main() {
     io:println(e.length());
 
     // To infer the size of the array from the array literal, use the following syntax.
-    // The length of the array is set to four here.
+    // The fixed length of the array is set to four here.
     int[*] g = [1, 2, 3, 4];
     io:println(g.length());
 }
