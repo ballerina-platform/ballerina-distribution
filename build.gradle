@@ -30,7 +30,7 @@ ext {
     kubernetesVersion = project.ballerinaVersion
     awslambdaVersion = project.ballerinaVersion
     picocliVersion = "4.0.1"
-    ballerinaCommandVersion = "0.8.7"
+    ballerinaCommandVersion = "0.8.8"
     testngVersion = "6.14.3"
     netLingalaZip4jVersion = "2.3.2"
     commonsIoVersion = "2.6"
