@@ -34,21 +34,11 @@ public function main() {
         if (loginMessage is error) {
             io:println("Login failed", loginMessage);
         } else {
-            // When the login is successful, extract the name and value
-            // from the response.
+            // [Gets cookies from the the `http:Response`](https://ballerina.io/learn/api-docs/ballerina/http/objects/Response.html#getCookies)
             http:Cookie[] cookies = loginResp.getCookies();
-            map<string> wsCookies = {};
-            foreach var cookie in cookies {
-                var cookieName = cookie.name;
-                var cookieValue = cookie.value;
-                if (cookieName is string && cookieValue is string) {
-                    wsCookies[cookieName] = cookieValue;
-                }
-            }
-
-            // Initialize the WebSocket client with the cookie's name and value
+            // Initialize the WebSocket client with the cookies
             http:WebSocketClient wsClientEp = new ("ws://localhost:9095/cookie-demo/ws",
-                            config = {callbackService: ClientService, cookies: wsCookies});
+                           config = {callbackService: ClientService, cookies: cookies});
 
             // Pushes text to the connection.
             var err = wsClientEp->pushText("Hello World!");
