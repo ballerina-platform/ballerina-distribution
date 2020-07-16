@@ -1,5 +1,5 @@
 import ballerina/io;
-import ballerina/rabbitmq;
+import ballerinax/rabbitmq;
 
 public function main() {
     // Creates a ballerina RabbitMQ connection that allows re-usability if necessary.
