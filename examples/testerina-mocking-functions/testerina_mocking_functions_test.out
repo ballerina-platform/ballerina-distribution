@@ -12,8 +12,8 @@ Creating balos
 Running Tests
         ballerinatest/bbe_mocking:0.1.0
 
-        [pass] testAssertIntEquals
-        [pass] testMathConsts
+        [pass] testReturn
+        [pass] testCall
 
         2 passing
         0 failing
