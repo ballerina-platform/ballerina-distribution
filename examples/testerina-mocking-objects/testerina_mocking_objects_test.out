@@ -25,10 +25,13 @@ Status code: 403
 Executing the 1st GET request
 Status code: 404
 
-        [pass] testGetClientUrl
+        [pass] testMemberVariable
         [pass] testSendNotification
-        [pass] testPerformGet
+        [pass] testReturnSequence
+        [pass] testReturnWithArgs
+        [pass] testReturn
+        [pass] testTestDouble
 
-        3 passing
+        6 passing
         0 failing
         0 skipped
