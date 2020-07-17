@@ -17,53 +17,60 @@ public type MockHttpClient client object {
 };
 
 @test:Config {}
-function testPerformGet() {
-    http:Response mockResponse = new;
-
+function testTestDouble() {
     // This creates and assigns the defined test-double.
-    clientEndpoint = <http:Client>test:mock(http:Client, new MockHttpClient());
+    clientEndpoint = test:mock(http:Client, new MockHttpClient());
     http:Response res = performGet();
     test:assertEquals(res.statusCode, 500);
+}
 
+@test:Config {}
+function testReturn() {
     // This creates and assigns a default mock object which subsequently needs to stubbed.
-    clientEndpoint = <http:Client>test:mock(http:Client);
+    clientEndpoint = test:mock(http:Client);
     // This stubs the `get` function to return the specified HTTP response.
     test:prepare(clientEndpoint).when("get").thenReturn(new http:Response());
-    res = performGet();
+    http:Response res = performGet();
     test:assertEquals(res.statusCode, 200);
+}
 
-    mockResponse.statusCode = 401;
-    // This stubs the `get` function to return the specified HTTP response
-    // for each call. The first call will return the `200` status code and
-    // the second call will return the status code `403`.
-    test:prepare(clientEndpoint).when("get")
-        .thenReturnSequence(new http:Response(), mockResponse);
-    res = performGet();
-    test:assertEquals(res.statusCode, 401);
+@test:Config {}
+function testReturnWithArgs() {
+    http:Response mockResponse = new;
+    mockResponse.statusCode = 404;
 
-    mockResponse.statusCode = 403;
+    clientEndpoint = test:mock(http:Client);
     // This stubs the `get` function to return the specified HTTP response
-    // when a specific argument is passed.
+    // when the specified argument is passed.
     test:prepare(clientEndpoint).when("get").withArguments("/headers")
         .thenReturn(mockResponse);
-    res = performGet();
-    test:assertEquals(res.statusCode, 403);
-
-    mockResponse.statusCode = 404;
     // The object and record types should be denoted by the `test:ANY` constant
     test:prepare(clientEndpoint).when("get")
         .withArguments("/get?test=123", test:ANY).thenReturn(mockResponse);
-    res = performGet();
+    http:Response res = performGet();
+    test:assertEquals(res.statusCode, 404);
+}
+
+@test:Config {}
+function testReturnSequence() {
+    http:Response mockResponse = new;
+    mockResponse.statusCode = 404;
+
+    clientEndpoint = test:mock(http:Client);
+    // This stubs the `get` function to return the specified HTTP response
+    // for each call. i.e., The first call will return the status code `200`
+    // and the second call will return the status code `404`.
+    test:prepare(clientEndpoint).when("get")
+        .thenReturnSequence(new http:Response(), mockResponse);
+    http:Response res = performGet();
     test:assertEquals(res.statusCode, 404);
 }
 
 @test:Config {}
 function testSendNotification() {
-
-    smtpClient = <email:SmtpClient>test:mock(email:SmtpClient);
+    smtpClient = test:mock(email:SmtpClient);
     // This stubs the `send` method of the `mockSmtpClient` to do nothing.
-    // This is used for functions with optional or no
-    // return types
+    // This is used for functions with an optional or no return type
     test:prepare(smtpClient).when("send").doNothing();
     string[] emailIds = ["user1@test.com", "user2@test.com"];
     error? err = sendNotification(emailIds);
@@ -72,9 +79,9 @@ function testSendNotification() {
 }
 
 @test:Config {}
-function testGetClientUrl() {
+function testMemberVariable() {
     string mockClientUrl = "http://foo";
-    clientEndpoint = <http:Client>test:mock(http:Client);
+    clientEndpoint = test:mock(http:Client);
     // This stubs the value of `url` to return the specified string.
     test:prepare(clientEndpoint).getMember("url").thenReturn(mockClientUrl);
     test:assertEquals(clientEndpoint.url, mockClientUrl);
