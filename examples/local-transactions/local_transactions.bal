@@ -1,75 +1,46 @@
 import ballerina/lang.'transaction as transactions;
 import ballerina/io;
-import ballerina/sql;
 import ballerina/java.jdbc;
 
 public function main() returns error? {
     // The JDBC Client for the H2 database.
-    jdbc:Client dbClient =
-                check new (url = "jdbc:h2:file:./local-transactions/testdb",
-                                        user = "test", password = "test");
+    jdbc:Client dbClient = check new (url = "jdbc:h2:file:./local-transactions/accountdb", 
+                                      user = "test", password = "test");
 
-    // Create the tables that are required for the transaction.
-    var ret = dbClient->execute("CREATE TABLE IF NOT EXISTS CUSTOMER " +
-                                "(ID INTEGER, NAME VARCHAR(30))");
-    handleExecute(ret, "Create CUSTOMER table");
-
-    ret = dbClient->execute("CREATE TABLE IF NOT EXISTS SALARY " +
-                                "(ID INTEGER, MON_SALARY FLOAT)");
-    handleExecute(ret, "Create SALARY table");
+    // Create the database table and populate some records.
+    _ = check dbClient->execute("CREATE TABLE IF NOT EXISTS ACCOUNT " +
+                                "(ID INTEGER, BALANCE DECIMAL, PRIMARY KEY(id))"); 
+    _ = check dbClient->execute("INSERT INTO ACCOUNT VALUES (1, 2500.0)");
+    _ = check dbClient->execute("INSERT INTO ACCOUNT VALUES (2, 1000.0)");
 
     // This is a `transaction` statement block. It is a must to have either
     // a commit action or a rollback statement in it. The transaction scope ends after
     // the commit action or rollback statement.
     transaction {
-        // This is the first remote function participant of the transaction.
-        var customerResult =
-                        dbClient->execute("INSERT INTO CUSTOMER(ID,NAME) " +
-                                        "VALUES (1, 'Anne')");
+        // Execute database operations within the transaction
+        var creditResult = dbClient->execute("UPDATE ACCOUNT SET BALANCE=BALANCE+500.0 WHERE ID=1");
+        var debitResult = dbClient->execute("UPDATE ACCOUNT SET BALANCE=BALANCE-500.0 WHERE ID=2");
 
-        // This is the second remote function participant of the transaction.
-        var salaryResult =
-                        dbClient->execute("INSERT INTO SALARY(ID, MON_SALARY)" +
-                                        " VALUES (1, 2500)");
-
-        // Returns information about the current transaction.
+        // Returns information about the current transactions.
         transactions:Info transInfo = transactions:info();
-        io:println(transInfo);
+        io:println("Transaction Info: ", transInfo);
 
         // The `commit` action performs the commit operation of the current transaction.
-        // The result of the commit action is an error. Otherwise, the result is `()`.
+        // The result of the commit action will be either `error` or `()`.
         var commitResult = commit;
-
-        // Based on the result of the `commit` action, the followup tasks could be performed.
-        if(commitResult is ()){
-            // Any action that needs to be performed after the transaction, which is
-            // committed should be added here.
+        if commitResult is () {
+            // Operations to be executed after the transaction are committed successfully.
             io:println("Transaction committed");
-            handleExecute(customerResult, "Insert data into CUSTOMER table");
-            handleExecute(salaryResult, "Insert data into SALARY table");
+            io:println("Account Credit: ", creditResult);
+            io:println("Account Debit: ", debitResult);
         } else {
-            // If the transaction is failed, any action that needs to perform
-            // after the commit failure should be added here.
+            // Operations to be executed if the transaction commit failed.
             io:println("Transaction failed");
         }
     }
 
-    //Drop the tables.
-    ret = dbClient->execute("DROP TABLE CUSTOMER");
-    handleExecute(ret, "Drop table CUSTOMER");
-
-    ret = dbClient->execute("DROP TABLE SALARY");
-    handleExecute(ret, "Drop table SALARY");
-
+    _ = check dbClient->execute("DROP TABLE ACCOUNT");
+    
     // Close the JDBC client.
     check dbClient.close();
-}
-
- //Function to handle the return value of the `execute` remote function.
-function handleExecute(sql:ExecutionResult|sql:Error returned, string message) {
-    if (returned is sql:ExecutionResult) {
-        io:println(message + " status: ", returned.affectedRowCount);
-    } else {
-        io:println(message + " failed: ", returned.message());
-    }
 }
