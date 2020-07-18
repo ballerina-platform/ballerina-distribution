@@ -169,7 +169,7 @@ public class TestUtils {
             return "jballerina-" + version;
         }
         if (version.contains(TestUtils.SWAN_LAKE_KEYWORD)) {
-            return "slp";
+            return "slp" + version.replace("swan-lake-preview", "");
         }
         return version;
     }
