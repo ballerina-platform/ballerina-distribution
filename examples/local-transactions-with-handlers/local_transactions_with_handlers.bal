@@ -1,29 +1,25 @@
 import ballerina/lang.'transaction as transactions;
 import ballerina/io;
 
-public function main() {
+// Defines the rollback handlers, which are triggered once the
+// rollback statement is executed.
+function onRollbackFunc(transactions:Info info, error? cause, boolean willRetry) {
+    io:println("Rollback handler #1 executed.");
+}
 
+function onRollbackFunc2(transactions:Info info, error? cause, boolean willRetry) {
+    io:println("Rollback handler #2 executed.");
+}
+
+// Defines the commit handler, which gets triggered once the
+// commit action is executed.
+function onCommitFunc(transactions:Info info) {
+    io:println("Commit handler executed.");
+}
+
+public function main() {
     // The `transaction` block initiates the transaction.
     transaction {
-
-        // Defines the rollback handler, which is triggered once the
-        // rollback statement is executed.
-        var onRollbackFunc = function(transactions:Info info,
-                                error? cause, boolean willRetry) {
-            io:println("Rollback handler #1 executed.");
-        };
-
-        var onRollbackFunc2 = function(transactions:Info info,
-                                        error? cause, boolean willRetry) {
-            io:println("Rollback handler #2 executed.");
-        };
-
-        // Defines the commit handler, which gets triggered once the commit
-        // action is executed.
-        var onCommitFunc = function(transactions:Info info) {
-            io:println("Commit handler executed.");
-        };
-
         // Register the rollback handler to the transaction context.
         // Multiple rollback handlers can be registered and they
         // are executed in reverse order.
@@ -37,13 +33,13 @@ public function main() {
 
         // Returns information about the current transaction.
         transactions:Info transInfo = transactions:info();
-        io:println(transInfo);
+        io:println("Transaction Info: ", transInfo);
 
         // Invokes the local participant.
-        var res = trap throwError();
-        if (res is error) {
-            // The local participant gets panicked.
-            io:println("Local participant panicked.");
+        var res = erroneousOperation();
+        if res is error {
+            // The local participant execution fails.
+            io:println("Local participant error.");
             rollback;
         } else {
             io:println("Local participant successfully executed.");
@@ -52,9 +48,7 @@ public function main() {
     }
 }
 
-// The method, which throws the error.
-function throwError() {
+function erroneousOperation() returns error? {
     io:println("Invoke local participant function.");
-    error er = error("Simulated Failure");
-    panic er;
+    return error("Simulated Failure");
 }
