@@ -73,7 +73,7 @@ public function main() {
 
     // An `is` check for an immutable value becomes an `is like` check.
     // In other words, storage type is not considered.
-    // Define a `map` of the constraint type `string` or `int`, but with
+    // Define a `map` of the constraint type `string` or `int` but only with
     // values of the type `string` only.
     map<string|int> m5 = {valueType: "map", constraint: "string"};
     // Make the map immutable. The resultant value would only
