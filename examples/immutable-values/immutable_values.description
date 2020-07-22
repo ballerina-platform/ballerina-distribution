@@ -1,4 +1,4 @@
-// Ballerina allows creating immutable or read-only values, by providing a `readonly` intersection type as the
+// Ballerina allows creating immutable or read-only values by providing a `readonly` intersection type as the
 // contextually expected type for a constructor expression. Immutable values in Ballerina are deeply immutable, and thus
 // even the members specified when creating an immutable structural value have to be immutable.<br/>
 //
