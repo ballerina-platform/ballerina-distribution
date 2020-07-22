@@ -63,11 +63,27 @@ task unpackAwsLambdaBalo(type: Copy) {
     }
 }
 
+task unpackAzFunctionsBalo(type: Copy) {
+    group = "unpack_dependencies"
+    configurations.azFunctionsBalo.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+        from zipTree(artifact.getFile())
+        into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
+    }
+}
+
 task unpackAwsLambdaExamples(type: Copy) {
     group = "unpack_dependencies"
     configurations.awsLambdaExamples.resolvedConfiguration.resolvedArtifacts.each { artifact ->
             from zipTree(artifact.getFile())
             into new File("${buildDir}/target/extracted-distributions", artifact.name+"-zip")
+    }
+}
+
+task unpackAzFunctionsExamples(type: Copy) {
+    group = "unpack_dependencies"
+    configurations.azFunctionsExamples.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+        from zipTree(artifact.getFile())
+        into new File("${buildDir}/target/extracted-distributions", artifact.name+"-zip")
     }
 }
 
@@ -160,6 +176,10 @@ task copyOtherRepos(type: Copy) {
         from "build/target/extracted-distributions/awslambda-extension-balo-zip/docs"
     }
 
+    into("docs") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/docs"
+    }
+
     /* Standard Libraries */
     configurations.ballerinaStdLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
@@ -216,6 +236,10 @@ task packageDist(type: Zip) {
         exclude "index.js"
     }
     into("${parentDir}/examples") {
+        from "build/target/extracted-distributions/azurefunctions-extension-examples-zip"
+        exclude "index.js"
+    }
+    into("${parentDir}/examples") {
         from "build/target/extracted-distributions/docker-extension-examples-zip"
         exclude "index.js"
     }
@@ -241,6 +265,9 @@ task packageDist(type: Zip) {
     into("${parentDir}/bir-cache/ballerinax/awslambda") {
         from "build/target/extracted-distributions/awslambda-extension-balo-zip/awslambda"
     }
+    into("${parentDir}/bir-cache/ballerinax/azure.functions") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/azure.functions"
+    }
 
     /* Files */
     into("${parentDir}/lib/") {
@@ -250,6 +277,10 @@ task packageDist(type: Zip) {
     }
     into("${parentDir}/bre/lib") {
         from "build/target/extracted-distributions/awslambda-extension-balo-zip/ballerinax-awslambda-0.0.0.jar"
+        fileMode = 0644
+    }
+    into("${parentDir}/bre/lib") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/ballerinax-azure.functions-0.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/bre/lib") {
@@ -305,6 +336,10 @@ task packageDistZip(type: Zip) {
         exclude "index.js"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
+        from "build/target/extracted-distributions/azurefunctions-extension-examples-zip"
+        exclude "index.js"
+    }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
         from "build/target/extracted-distributions/docker-extension-examples-zip"
         exclude "index.js"
     }
@@ -330,6 +365,9 @@ task packageDistZip(type: Zip) {
     into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerinax/awslambda") {
         from "build/target/extracted-distributions/awslambda-extension-balo-zip/awslambda"
     }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerinax/azure.functions") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/azure.functions"
+    }
 
     /* Tools artifacts */
     into("${parentDir}/distributions/ballerina-${shortVersion}") {
@@ -352,6 +390,10 @@ task packageDistZip(type: Zip) {
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
         from "build/target/extracted-distributions/awslambda-extension-balo-zip/ballerinax-awslambda-0.0.0.jar"
+        fileMode = 0644
+    }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/ballerinax-azure.functions-0.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
@@ -427,6 +469,10 @@ task packageDistLinux(type: Zip) {
         exclude "index.js"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
+        from "build/target/extracted-distributions/azurefunctions-extension-examples-zip"
+        exclude "index.js"
+    }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
         from "build/target/extracted-distributions/docker-extension-examples-zip"
         exclude "index.js"
     }
@@ -452,6 +498,9 @@ task packageDistLinux(type: Zip) {
     into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerinax/awslambda") {
         from "build/target/extracted-distributions/awslambda-extension-balo-zip/awslambda"
     }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerinax/azure.functions") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/azure.functions"
+    }
 
     /* Tools artifacts */
     into("${parentDir}/distributions/ballerina-${shortVersion}") {
@@ -474,6 +523,10 @@ task packageDistLinux(type: Zip) {
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
         from "build/target/extracted-distributions/awslambda-extension-balo-zip/ballerinax-awslambda-0.0.0.jar"
+        fileMode = 0644
+    }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/ballerinax-azure.functions-0.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
@@ -544,6 +597,10 @@ task packageDistMac(type: Zip) {
         exclude "index.js"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
+        from "build/target/extracted-distributions/azurefunctions-extension-examples-zip"
+        exclude "index.js"
+    }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
         from "build/target/extracted-distributions/docker-extension-examples-zip"
         exclude "index.js"
     }
@@ -569,6 +626,9 @@ task packageDistMac(type: Zip) {
     into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerinax/awslambda") {
         from "build/target/extracted-distributions/awslambda-extension-balo-zip/awslambda"
     }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerinax/azure.functions") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/azure.functions"
+    }
 
     /* Tools artifacts */
     into("${parentDir}/distributions/ballerina-${shortVersion}") {
@@ -586,6 +646,10 @@ task packageDistMac(type: Zip) {
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
         from "build/target/extracted-distributions/awslambda-extension-balo-zip/ballerinax-awslambda-0.0.0.jar"
+        fileMode = 0644
+    }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/ballerinax-azure.functions-0.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
@@ -656,6 +720,10 @@ task packageDistWindows(type: Zip) {
         exclude "index.js"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
+        from "build/target/extracted-distributions/azurefunctions-extension-examples-zip"
+        exclude "index.js"
+    }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
         from "build/target/extracted-distributions/docker-extension-examples-zip"
         exclude "index.js"
     }
@@ -681,6 +749,9 @@ task packageDistWindows(type: Zip) {
     into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerinax/awslambda") {
         from "build/target/extracted-distributions/awslambda-extension-balo-zip/awslambda"
     }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerinax/azure.functions") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/azure.functions"
+    }
 
     /* Tools artifacts */
     into("${parentDir}/distributions/ballerina-${shortVersion}") {
@@ -698,6 +769,10 @@ task packageDistWindows(type: Zip) {
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
         from "build/target/extracted-distributions/awslambda-extension-balo-zip/ballerinax-awslambda-0.0.0.jar"
+        fileMode = 0644
+    }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/ballerinax-azure.functions-0.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
@@ -781,7 +856,8 @@ task testExamples() {
          'docker-deployment',
          'kubernetes-deployment',
          'knative-deployment',
-         'awslambda-deployment',
+         'aws-lambda-deployment',
+         'azure-functions-deployment',
          'openshift-deployment',
          'grpc-server-streaming',
          'transactions-distributed',
@@ -981,7 +1057,9 @@ task testStdlibs() {
 
 /* Unpack Dependencies */
 unpackJballerinaTools.dependsOn unpackBallerinaJre
-unpackAwsLambdaBalo.dependsOn unpackJballerinaTools
+unpackAzFunctionsBalo.dependsOn unpackJballerinaTools
+unpackAzFunctionsExamples.dependsOn unpackAzFunctionsBalo
+unpackAwsLambdaBalo.dependsOn unpackAzFunctionsExamples
 unpackAwsLambdaExamples.dependsOn unpackAwsLambdaBalo
 unpackDockerAnnotations.dependsOn unpackAwsLambdaExamples
 unpackDockerExamples.dependsOn unpackDockerAnnotations

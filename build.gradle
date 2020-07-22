@@ -26,10 +26,11 @@ ext {
     ballerinaVersion = project.ballerinaVersion
     shortVersion = project.shortVersion
     ballerinaJreArtifactsVersion = "2.0.0"
+    awslambdaVersion = project.ballerinaVersion
+    azFunctionsVersion = project.ballerinaVersion
     dockerVersion = project.ballerinaVersion
     kubernetesVersion = project.ballerinaVersion
     dataMapperVersion = project.ballerinaVersion
-    awslambdaVersion = project.ballerinaVersion
     picocliVersion = "4.0.1"
     ballerinaCommandVersion = "0.8.8"
     testngVersion = "6.14.3"
@@ -165,6 +166,8 @@ subprojects {
         jbalTools
         awsLambdaBalo
         awsLambdaExamples
+        azFunctionsBalo
+        azFunctionsExamples
         dockerAnnotations
         dockerExamples
         kubernetesAnnotations
@@ -187,6 +190,11 @@ subprojects {
         exten "org.ballerinax.awslambda:awslambda-extension:${awslambdaVersion}"
         awsLambdaBalo "org.ballerinax.awslambda:awslambda-extension-balo:${awslambdaVersion}@zip"
         awsLambdaExamples "org.ballerinax.awslambda:awslambda-extension-examples:${awslambdaVersion}@zip"
+
+        /* Azure Functions extension */
+        exten "org.ballerinax.azurefunctions:azurefunctions-extension:${azFunctionsVersion}"
+        azFunctionsBalo "org.ballerinax.azurefunctions:azurefunctions-extension-balo:${azFunctionsVersion}@zip"
+        azFunctionsExamples "org.ballerinax.azurefunctions:azurefunctions-extension-examples:${azFunctionsVersion}@zip"
 
         /* Docker extension */
         exten "org.ballerinax.docker:docker-extension:${dockerVersion}@jar"
