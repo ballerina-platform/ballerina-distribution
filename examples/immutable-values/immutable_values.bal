@@ -59,7 +59,7 @@ public function main() {
     // Attempt to add an entry to the `map` and trap the panic if it results in a panic.
     error? updateResult = trap addEntryToMap(m2, "intValTwo", 10);
     if (updateResult is error) {
-        // An error should occur since `m2` is frozen.
+        // An error should occur since `m2` is immutable.
         io:println("Error occurred on update: ",
                    <string>updateResult.detail()["message"]);
     }
@@ -71,7 +71,7 @@ public function main() {
     // since `m2` is already an immutable value.
     io:println("m2 === m3: ", m2 === m3);
 
-    // An `is` check for a frozen value becomes an `is like` check.
+    // An `is` check for a immutable value becomes an `is like` check.
     // In other words, storage type is not considered.
     // Define a `map` of the constraint type `string` or `int`, but with
     // values of the type `string` only.
@@ -79,11 +79,11 @@ public function main() {
     // Make the map immutable. The resultant value would only
     // contain values of the type `string` and no values can now be
     // added to the map.
-    var frozenVal = m5.cloneReadOnly();
-    // Checking if the frozen value is of the type `map<string>` thus
+    var immutableClonedVal = m5.cloneReadOnly();
+    // Checking if the immutable value is of the type `map<string>` thus
     // evaluates to `true`.
-    if (frozenVal is map<string>) {
-        io:println("frozenVal is map<string>");
+    if (immutableClonedVal is map<string>) {
+        io:println("immutableClonedVal is map<string>");
     }
 }
 
