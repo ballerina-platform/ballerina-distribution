@@ -81,7 +81,7 @@ public function main() {
     // added to the map.
     var immutableClonedVal = m5.cloneReadOnly();
     // Checking if the immutable value is of the type `map<string>`. Thus,
-    // evaluates to `true`.
+    // it evaluates to `true`.
     if (immutableClonedVal is map<string>) {
         io:println("immutableClonedVal is map<string>");
     }
