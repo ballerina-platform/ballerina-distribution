@@ -16,7 +16,7 @@ type Person record {
 };
 
 public function main() {
-    // The required fields `fname` and `gender` are not given default values in the record type descriptor.
+    // Default values are not given for the required fields `fname` and `gender` in the record type descriptor.
     // Therefore, values must be specified for `fname` and `gender` when creating the record.
     Person john = {fname: "John", gender: "male"};
 
