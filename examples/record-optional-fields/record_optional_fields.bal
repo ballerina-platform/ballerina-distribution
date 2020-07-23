@@ -39,6 +39,6 @@ public function main() {
     // Create a `Person`-typed value specifying a value for the defaultable field `lname`.
     Person jane = {fname: "Jane", lname: "Doe", gender: "female"};
 
-    // Field values provided when creating a record takes highest precedence.
+    // Field values provided when creating a record takes the highest precedence.
     io:println("Person with values assigned to required fields: ", jane);
 }
