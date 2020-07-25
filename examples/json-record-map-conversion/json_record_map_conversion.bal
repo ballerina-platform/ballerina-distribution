@@ -30,10 +30,10 @@ public function main() {
     // This example shows how you can convert a record to a JSON object.
     // This conversion could return an error because it may not be possible
     // to convert some data types that are defined in the record to JSON.
-    json|error j = theRevenant.cloneWithType(json);
-    if (j is json) {
-        io:println(j.toJsonString());
-        io:println(j.writer.lname);
+    json|error theRevenantJson = theRevenant.cloneWithType(json);
+    if (theRevenantJson is json) {
+        io:println(theRevenantJson.toJsonString());
+        io:println(theRevenantJson.writer.lname);
     }
 
     // Similarly, you can convert a record to a map.
@@ -48,7 +48,7 @@ public function main() {
     // This example shows how you can convert a JSON object to a record.
     // This conversion could return an error because the field names and 
     // types are unknown until they are evaluated at runtime.
-    json inceptionJ = {
+    json inceptionJson = {
         title: "Inception",
         year: "2010",
         released: "16 Jul 2010",
@@ -58,7 +58,7 @@ public function main() {
             age: 30
         }
     };
-    Movie|error inception = inceptionJ.cloneWithType(Movie);
+    Movie|error inception = inceptionJson.cloneWithType(Movie);
     if (inception is Movie) {
         io:println(inception);
     }
