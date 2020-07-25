@@ -15,29 +15,29 @@ public function main() {
                 </book>`;
     
     // You can access child XML items using XML step expressions.
-    io:println(bookXML/<author>/<fname>);
+    io:println("First name: ", bookXML/<author>/<fname>);
 
     // Accessing a non-existing child will return an empty `xml` sequence.
-    io:println(bookXML/<ISBN>/<code>);
+    io:println("ISBN Code: ", bookXML/<ISBN>/<code>);
 
     // You can also retrieve attributes of the resulting child XML.
-    io:println(bookXML/<author>/<fname>.title);
+    io:println("Name title: ", bookXML/<author>/<fname>.title);
 
-    // You can match descendant elements using the following stepping access syntax.
-    io:println(bookXML/**/<fname>);
+    // You can match descendant elements using the stepping access syntax.
+    io:println("First name (match descendants): ", bookXML/**/<fname>);
 
-    // Select all the children elements using the below syntax.
-    io:println(bookXML/*);
+    // Select all the child items using the this syntax.
+    io:println("Book child items: ", bookXML/*);
 
-    // Select all children elements using the bellow syntax.
-    io:println(bookXML/<*>);
+    // Select all the child elements using this syntax.
+    io:println("Book child elements: ", bookXML/<*>);
 
-    // Select all the children belonging to a specific namespace.
+    // Select all the child elements belonging to a specific namespace, and then select all its child items.
     xmlns "http://ballerina.com/a" as bar;
-    io:println(bookXML/<bar:*>/*);
+    io:println("Book children in ns: ", bookXML/<bar:*>/*);
 
     xml seq = bookXML/*;
     // XML sequences can be filtered using XML filter expressions.
-    io:println(seq.<name>);
-    io:println(seq.<bar:year>);
+    io:println("XML sequence filter name: ", seq.<name>);
+    io:println("XML sequence filter year: ", seq.<bar:year>);
 }
