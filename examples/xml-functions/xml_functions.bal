@@ -11,30 +11,30 @@ public function main() {
 
     // Get the name of an XML element.
     xmllib:Element bookNameElem = <xmllib:Element> bookName;
-    io:println(bookNameElem.getName());
+    io:println("Element name: ", bookNameElem.getName());
 
     // Concatenate XML and string values.
     xml concat = xmllib:concat(someText, bookName, bookComment);
-    io:println(concat);
-    io:println(content == concat);
+    io:println("Concat: ", concat);
+    io:println("Equals: ", content == concat);
 
     // Get the number of XML items in a sequence.
-    io:println(concat.length());
+    io:println("Length: ", concat.length());
 
     // Get a subsequence of an XML sequence.
     xml x = content.slice(2, 3);
-    io:println(x);
+    io:println("Subsequence: ", x);
 
     // Get all the element-type items in an XML sequence.
     x = content.elements();
-    io:println(x);
+    io:println("All XML elements: ", x);
 
-    // Set the children elements of an XML element.
+    // Set the child elements of an XML element.
     book.setChildren(content);
-    io:println(book);
+    io:println("Child elements set: ", book);
 
     // Strip the insignificant parts of an XML value.
     // Comment items, processing instruction items are considered insignificant.
     x = content.strip();
-    io:println(x);
+    io:println("Stripped: ", x);
 }
