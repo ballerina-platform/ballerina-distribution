@@ -1,11 +1,11 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run xml-access.bal
-<fname title="Sir">Arthur</fname>
-
-Sir
-<fname title="Sir">Arthur</fname>
-
+First name: <fname title="Sir">Arthur</fname>
+ISBN Code: 
+Name title: Sir
+First name (match descendants): <fname title="Sir">Arthur</fname>
+Book child items: 
                 <name>Sherlock Holmes</name>
                 <author>
                     <fname title="Sir">Arthur</fname>
@@ -14,12 +14,12 @@ Sir
                 </author>
                 <bar:year xmlns:bar="http://ballerina.com/a">2019</bar:year>
                 <!--Price: $10-->
-
-<name>Sherlock Holmes</name><author>
+                
+Book child elements: <name>Sherlock Holmes</name><author>
                     <fname title="Sir">Arthur</fname>
                     <mname>Conan</mname>
                     <lname>Doyle</lname>
                 </author><bar:year xmlns:bar="http://ballerina.com/a">2019</bar:year>
-2019
-<name>Sherlock Holmes</name>
-<bar:year xmlns:bar="http://ballerina.com/a">2019</bar:year>
+Book children in ns: 2019
+XML sequence filter name: <name>Sherlock Holmes</name>
+XML sequence filter year: <bar:year xmlns:bar="http://ballerina.com/a">2019</bar:year>
