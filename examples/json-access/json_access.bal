@@ -44,7 +44,7 @@ public function main() {
     io:println("r4: ", r4);
 
     // Moreover, when optional field access occurs on `null` (`()`), the result would
-    // also be `()`, whereas for field access it would have been an `error`.
+    // also be `()` whereas for field access, it would have been an `error`.
     json j2 = null;
     json|error r5 = j2?.name;
     // `r5` is `()` since `j2` is `()`.
