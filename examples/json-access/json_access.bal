@@ -21,7 +21,7 @@ public function main() {
     io:println("r1: ", r1);
 
     // Similarly, chained field access is also allowed for `json`. If an `error`
-    // is encountered at any point during the evaluation, evaluation stops at
+    // is encountered at any point during the evaluation, it stops at
     // that point and the result would be an error.
     json|error r2 = j1.address.city;
     // `r2` is of type `json` since `j1` is a mapping with the field `address`, which in
