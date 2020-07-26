@@ -25,7 +25,7 @@ public function main() {
     io:println(x2);
 
     // XML can be interpolated with expressions using the `${}` notation.
-    // The expression can be a previously-defined variable, arithmetic expressions, or even a function call. 
+    // The expression can be a previously-defined variable, an arithmetic expressions, or even a function call. 
     // These expressions are evaluated at runtime.
     string title = "(Sir)";
     xml x3 = xml `<ns0:newBook>
