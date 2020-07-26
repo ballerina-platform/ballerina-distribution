@@ -15,7 +15,7 @@ public function main() {
     // Field access is allowed on the `json`-typed variable. However, the return
     // type would be a union of `json` and `error`. An error will be returned
     // either if the value on which the access is done is not a mapping or if
-    // it is a mapping, but it does not contain the particular key.
+    // it is a mapping but it does not contain the particular key.
     json|error r1 = j1.fname;
     // `r1` is of type `json` since `j1` is a mapping and contains the field `fname`.
     io:println("r1: ", r1);
