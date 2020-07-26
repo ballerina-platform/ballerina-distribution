@@ -34,7 +34,7 @@ public function main() {
     io:println("Child elements set: ", book);
 
     // Strip the insignificant parts of an XML value.
-    // Comment items, processing instruction items are considered insignificant.
+    // Comments and processing instruction items are considered as insignificant.
     x = content.strip();
     io:println("Stripped: ", x);
 }
