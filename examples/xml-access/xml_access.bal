@@ -32,7 +32,7 @@ public function main() {
     // Select all the child elements using this syntax.
     io:println("Book child elements: ", bookXML/<*>);
 
-    // Select all the child elements belonging to a specific namespace, and then select all its child items.
+    // Select all the child elements belonging to a specific namespace and then select all of their child items.
     xmlns "http://ballerina.com/a" as bar;
     io:println("Book children in ns: ", bookXML/<bar:*>/*);
 
