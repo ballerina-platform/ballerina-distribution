@@ -18,7 +18,6 @@ import org.apache.tools.ant.filters.*
 import org.apache.tools.ant.taskdefs.condition.Os
 import groovy.json.JsonSlurper
 
-
 description = 'Ballerina - Tools'
 
 ext {
