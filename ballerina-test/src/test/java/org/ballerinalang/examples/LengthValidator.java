@@ -49,7 +49,6 @@ public class LengthValidator {
 
     public static void validateFileExtension(File fileEntry, String[] extensions) throws LineLengthExceededException {
         for(String extension: extensions) {
-//            System.out.println(extension);
             if(fileEntry.getName().endsWith(extension)) {
                 LengthValidator.validateLineLength(fileEntry.getPath(), fileEntry.getName());
             }
