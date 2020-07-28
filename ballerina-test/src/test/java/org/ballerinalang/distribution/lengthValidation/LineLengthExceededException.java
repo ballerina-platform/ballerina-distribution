@@ -22,3 +22,4 @@ public class LineLengthExceededException extends Exception{
         super(message);
     }
 }
+
