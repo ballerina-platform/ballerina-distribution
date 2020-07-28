@@ -44,7 +44,9 @@ public class TestUtils {
     public static final Path MAVEN_VERSION = Paths.get(System.getProperty("maven.version"));
     public static final Path DISTRIBUTIONS_DIR = Paths.get(System.getProperty("distributions.dir"));
     public static final Path TEST_DISTRIBUTION_PATH = TARGET_DIR.resolve("test-distribution");
-    
+    public static final Path EXAMPLES_DIR = Paths.get(System.getProperty("examples.dir"));
+    public static final String EXTENSTIONS_TO_BE_FILTERED_FOR_LINE_CHECKS = System.getProperty("line.check.extensions");
+
     /**
      * Log the output of an input stream.
      *

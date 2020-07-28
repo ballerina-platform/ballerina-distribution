@@ -46,49 +46,16 @@ test {
     systemProperty "distributions.dir", "$buildDir/../../ballerina/build/distributions"
     systemProperty "target.dir", "$buildDir"
     systemProperty "maven.version", "$version"
+    systemProperty "examples.dir", "$buildDir/../../examples"
+    systemProperty "line.check.extensions", ".java, .bal"
 
     useTestNG() {
         suites 'src/test/resources/testng.xml'
+        suites 'src/test/resources/testing-line-length.xml'
     }
     testLogging {
         showStandardStreams = true
     }
 }
-
-
- plugins {
-     id 'java'
-     id 'application'
- }
-
- group 'FileLengthValidator'
- version '1.0-SNAPSHOT'
-
- sourceCompatibility = 1.8
-
- repositories {
-     mavenCentral()
- }
-
- dependencies {
-     testCompile group: 'junit', name: 'junit', version: '4.12'
- }
-
- apply plugin: 'application'
- mainClassName = 'LengthValidation.LengthValidator'
-
-
- run {
-     args "$buildDir" + findProperty('filePath'), findProperty('debug') || false, findProperty('fileExtensions') ? findProperty('fileExtensions') : ""
- }
-
- task finalize(type: JavaExec) {
-     group = "Execution"
-     classpath = sourceSets.main.runtimeClasspath
-     main = 'org.ballerinalang.examples.LengthValidator'
-     args "$buildDir" + findProperty('filePath'), findProperty('debug') || false, findProperty('fileExtensions') ? findProperty('fileExtensions') : ""
- }
-
- build.dependsOn(finalize)
 
 build.dependsOn test
