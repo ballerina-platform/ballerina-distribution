@@ -26,7 +26,7 @@ public function main() {
     io:println("Person Age: ", personAge);
     io:println("Other Details: ", otherDetails);
 
-    // If a field name is not given, the name of the variable will be considered the field name as well.
+    // If a field name is not given, the name of the variable will be considered as the field name as well.
     // i.e, `Person {name, age}` is same as Person `{name: name, age: age}`.
     // Since a rest parameter is not given, all remaining fields are ignored.
     Person {name, age} = getPerson();
