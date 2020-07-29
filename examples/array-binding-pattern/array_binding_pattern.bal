@@ -1,7 +1,7 @@
 import ballerina/io;
 
 public function main() {
-    // An array-typed binding pattern which declares the variables `score1`, `score2`, and
+    // An array-typed binding pattern, which declares the variables `score1`, `score2`, and
     // `score3` of type `float`. The members of the array value given by the assignment
     // expression provides the values for the variables.
     float[3] scores = [9.8, 9.6, 9.5];
