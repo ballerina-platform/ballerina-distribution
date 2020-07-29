@@ -439,6 +439,10 @@
             {
                 "name": "Record Binding Pattern",
                 "url": "record-binding-pattern"
+            },
+            {
+                "name": "Array Binding Pattern",
+                "url": "array-binding-pattern"
             }
         ]
     },
