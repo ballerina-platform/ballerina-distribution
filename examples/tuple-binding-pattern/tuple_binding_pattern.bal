@@ -1,7 +1,7 @@
 import ballerina/io;
 
 public function main() {
-    // A tuple-typed binding pattern which declares the variables `name`, `age`, and
+    // A tuple-typed binding pattern, which declares the variables `name`, `age`, and
     // `address` of type `string`, `int`, and `string` respectively. The members of the tuple value
     // given by the assignment expression provides the values for the variables.
     [string, int, string] [name, age, address] = ["Jack Smith", 23, "380 Lakewood Dr. Desoto, TX 75115"];
