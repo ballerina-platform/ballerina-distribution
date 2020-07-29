@@ -23,12 +23,13 @@ function testFunc() {
     // Invoking the main function
     main();
 
-    string out1 = "Simple variable : true 0.4";
-    string out2 = "Tuple variable : true 0.4";
-    string out3 = "Tuple variable : Ballerina 4 6.7";
-    string out4 = "Tuple variable : Ballerina 34 true 6.7";
-    string out5 = "Tuple variable : Ballerina 3 true 34 5.6 45";
-    string out6 = "Tuple variable : Ballerina 3.4 456";
+    string out1 = "a1: true 0.4";
+    string out2 = "b1: true b2: 0.4";
+    string out3 = "c1: Ballerina c2: 4 c3: 6.7";
+    string out4 = "d1: Ballerina d2: 34 d3: true d4: 6.7";
+    string out5 = "e1: Ballerina 3 true 34 5.6 45";
+    string out6 = "f1: Ballerina f2: 3 f3: true f4: 34 f5: 5.6 f6: 45";
+    string out7 = "g1: Ballerina g2: 3.4 g3: 456";
 
     test:assertEquals(outputs[0], out1);
     test:assertEquals(outputs[1], out2);
@@ -36,4 +37,5 @@ function testFunc() {
     test:assertEquals(outputs[3], out4);
     test:assertEquals(outputs[4], out5);
     test:assertEquals(outputs[5], out6);
+    test:assertEquals(outputs[6], out7);
 }

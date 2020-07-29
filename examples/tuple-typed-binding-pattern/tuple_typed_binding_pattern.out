@@ -1,9 +1,10 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run tuple_type_binding_pattern.bal
-Simple variable : true 0.4
-Tuple variable : true 0.4
-Tuple variable : Ballerina 4 6.7
-Tuple variable : Ballerina 34 true 6.7
-Tuple variable : Ballerina 3 true 34 5.6 45
-Tuple variable : Ballerina 3.4 456
+a1: true 0.4
+b1: true b2: 0.4
+c1: Ballerina c2: 4 c3: 6.7
+d1: Ballerina d2: 34 d3: true d4: 6.7
+e1: Ballerina 3 true 34 5.6 45
+f1: Ballerina f2: 3 f3: true f4: 34 f5: 5.6 f6: 45
+g1: Ballerina g2: 3.4 g3: 456
