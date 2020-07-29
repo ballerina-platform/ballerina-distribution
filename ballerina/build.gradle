@@ -141,19 +141,19 @@ task unpackBalCommand(type: Copy) {
 task extractJreForLinux(type: Copy) {
     group = "extract_jre"
     from zipTree{"${jreLocation}/jre-1.8-linux.zip"}
-    into("${buildDir}/target/extracted-jre-linux") 
+    into("${buildDir}/target/extracted-jre-linux")
 }
 
 task extractJreForMac(type: Copy) {
     group = "extract_jre"
     from zipTree{"${jreLocation}/jre-1.8-macos.zip"}
-    into("${buildDir}/target/extracted-jre-macos") 
+    into("${buildDir}/target/extracted-jre-macos")
 }
 
 task extractJreForWindows(type: Copy) {
     group = "extract_jre"
     from zipTree{"${jreLocation}/jre-1.8-windows.zip"}
-    into("${buildDir}/target/extracted-jre-windows") 
+    into("${buildDir}/target/extracted-jre-windows")
 }
 
 task deleteTemporaryFiles(type: Delete) {
@@ -455,7 +455,7 @@ task packageDistLinux(type: Zip) {
     baseName = "${distributionName}-linux"
     ext{parentDir="${baseName}-${version}"}
     entryCompression=ZipEntryCompression.STORED
-    
+
     into("${parentDir}/dependencies") {
         from "build/target/extracted-jre-linux"
         fileMode = 0755
@@ -970,19 +970,35 @@ task testExamples() {
         ignoreList.each { String elements ->
             bbeList.remove("$elements")
         }
+        boolean failFlag = false
+        def failedExamples = []
         bbeList.each { String bbe ->
+            def exitVal
             if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                 //TODO: Need to verify with windows
-                exec {
+                exitVal = exec {
+                    ignoreExitValue true
                     workingDir "${buildDir}/TestProject"
                     commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'build', '--experimental', "${bbe} --b7a.home=${distPath}"
                 }
             } else {
-                exec {
+                exitVal = exec {
+                    ignoreExitValue true
                     workingDir "${baseBuildPath}/TestProject"
                     commandLine 'sh', '-c', "${distPath}/bin/ballerina build --experimental ${bbe} --b7a.home=${distPath}"
                 }
             }
+            if (exitVal.getExitValue() == 1) {
+                failFlag = true;
+                failedExamples.add(bbe)
+            }
+        }
+        if (failFlag) {
+            println "\n\t failed examples\n"
+            failedExamples.each {
+                println "\t ${it}"
+            }
+            throw new GradleException('there are test failures')
         }
     }
 }
