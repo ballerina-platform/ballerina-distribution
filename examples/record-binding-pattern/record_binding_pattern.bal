@@ -14,7 +14,7 @@ type Person record {
 };
 
 public function main() {    
-    // A record-typed binding pattern which declares the variables `name`, `age`, and
+    // A record-typed binding pattern, which declares the variables `name`, `age`, and
     // `address` of type `string`, `int`, and `Address` respectively. The fields of the record value
     // given by the assignment expression provides the values for the variables. 
     // Since `Person` is an open record, the `...otherFields` variable represents a rest parameter of 
