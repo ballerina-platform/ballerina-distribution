@@ -928,7 +928,15 @@ task testExamples() {
          'hello-world-client',
          'secured-client-with-jwt-auth',
          'secured-service-with-oauth2',
-         'secured-service-with-jwt-auth'
+         'secured-service-with-jwt-auth',
+         'retry-transactions',
+         'non-transaction-retry',
+         'local-transactions-with-handlers',
+         'task-scheduler-timer',
+         'task-scheduler-appointment',
+         'raw-template',
+         'optional-type',
+         'while'
     ]
     doFirst {
         copy {
