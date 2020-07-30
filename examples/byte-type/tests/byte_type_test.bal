@@ -18,12 +18,10 @@ function testFunc() {
     // Invoking the main function
     main();
     test:assertEquals(outputs[0], 12);
-    test:assertEquals(outputs[1], 4);
-    test:assertEquals(outputs[2], 24);
-    test:assertEquals(outputs[3], 13);
-    test:assertEquals(outputs[4], 205);
-    test:assertEquals(outputs[5], 19);
-    test:assertEquals(outputs[6], 108);
-    test:assertEquals(outputs[7], 3);
-    test:assertEquals(outputs[8], 6);
+    byte[] byteArray1 = [5, 24, 56, 243];
+    test:assertEquals(outputs[1], byteArray1);
+    byte[] byteArray2 = [174, 238, 205, 239, 171, 205, 18, 52, 85, 103, 136, 136, 34];
+    test:assertEquals(outputs[2], byteArray2);
+    byte[] byteArray3 = [104, 101, 108, 108, 111, 32, 98, 97, 108, 108, 101, 114, 105, 110, 97, 32, 33, 33, 33];
+    test:assertEquals(outputs[3], byteArray3);
 }
