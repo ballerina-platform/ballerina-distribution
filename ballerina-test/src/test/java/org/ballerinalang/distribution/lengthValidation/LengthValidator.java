@@ -29,6 +29,10 @@ import static org.ballerinalang.distribution.utils.TestUtils.EXAMPLES_DIR;
 import static org.ballerinalang.distribution.utils.TestUtils.EXTENSTIONS_TO_BE_FILTERED_FOR_LINE_CHECKS;
 import static org.ballerinalang.distribution.utils.TestUtils.OUT;
 
+/**
+  Used to validate the filtered 
+  file inside a example directory
+*/
 public class LengthValidator {
 
     private static int LINE_MAX_LIMIT = 80;
@@ -41,7 +45,10 @@ public class LengthValidator {
             OUT.println(message);
         }
     }
-
+    
+    /**
+      Check the length count of each lines in a file
+    */
     public static void validateLineLength(String path, String fileName) throws LineLengthExceededException, NoSuchElementException {
         BufferedReader reader;
         String relativePath = String.format("/examples/%s", EXAMPLES_DIR.relativize(Paths.get(path)).toString());
@@ -73,7 +80,10 @@ public class LengthValidator {
         }
 
     }
-
+    
+    /**
+      Check the extension of the files
+    */
     public static void validateFileExtension(File fileEntry, String[] extensions) throws LineLengthExceededException {
         for(String extension: extensions) {
             if(fileEntry.getName().endsWith(extension)) {
@@ -82,6 +92,9 @@ public class LengthValidator {
         }
     }
 
+    /**
+      Check the files in folder
+    */
     public static  void listFilesForFolder(final File folder) throws LineLengthExceededException {
         for (final File fileEntry : folder.listFiles()) {
             if (fileEntry.isDirectory()) {
