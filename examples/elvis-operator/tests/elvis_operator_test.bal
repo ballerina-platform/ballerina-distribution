@@ -1,7 +1,6 @@
 import ballerina/test;
 
 (any|error)[] outputs = [];
-int counter = 0;
 
 // This is the mock function which will replace the real function
 @test:Mock {
@@ -9,14 +8,17 @@ int counter = 0;
     functionName: "println"
 }
 public function mockPrint(any|error... s) {
-    outputs[counter] = s[0];
-    counter += 1;
+    foreach var entry in s {
+        outputs.push(entry);
+    }
 }
 
 @test:Config {}
 function testFunc() {
     // Invoking the main function
     main();
-    test:assertEquals(outputs[0], "The output from the type-guard: value is nil");
-    test:assertEquals(outputs[1], "The output from the elvis operator: value is nil");
+    test:assertEquals(outputs[0], "Name: ");
+    test:assertEquals(outputs[1], "John Doe");
+    test:assertEquals(outputs[2], "Name: John Doe");
+    test:assertEquals(outputs[3], "Name: Bill Lambert");
 }
