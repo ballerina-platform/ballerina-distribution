@@ -1,44 +1,24 @@
 import ballerina/io;
-import ballerina/lang.'int;
+
+function add(int v1, int v2) returns int {
+    return v1 + v2;
+}
+
+function multiply(int v1, int v2) returns int {
+    return v1 * v2;
+}
+
+// Here, the function pointer is used as a parameter. A function pointer can be invoked similar
+// to how a normal function is invoked.
+function process(function (int, int) returns int func, int v1, int v2) returns int {
+    return func(v1, v2);
+}
 
 public function main() {
-    // The function name `test` serves as a function pointer argument in the
-    // call to `foo()`. Function names can be thought of as final variables
-    // since although you can use it like a regular variable, you cannot
-    // modify the value it is associated with.
-    io:println("Answer: ", foo(10, test));
-    io:println("Answer: ", foo(10, getFunctionPointer()));
-
-    // A function pointer as a variable.
-    function (string, int...) returns float f = getFunctionPointer();
-
-    io:println("Answer: ", foo(10, f));
-}
-
-// A function pointer as a parameter. A function pointer can be invoked similar
-// to how a normal function is invoked.
-function foo(int x, function (string, int...) returns float bar)
-             returns float {
-    return x * bar("2", 2, 3, 4, 5);
-}
-
-// A function type as the return type.
-function getFunctionPointer() returns
-                    (function (string, int...) returns float) {
-    // Returning a function pointer.
-    return test;
-}
-
-function test(string s, int... x) returns float {
-    int|error y = 'int:fromString(s);
-    float f = 0.0;
-
-    if (y is int) {
-        foreach var item in x {
-            f += item * 1.0 * y;
-        }
-    } else {
-        panic y;
-    }
-    return f;
+    // The function name `add` serves as a function pointer argument in the
+    // call to the `process()` function. Function names can be thought of as final variables
+    // since although you can use them like a regular variable, you cannot
+    // modify the values they are associated with.
+    io:println("Process Add 1, 2: ", process(add, 1, 2));
+    io:println("Process Multiply 3, 4: ", process(multiply, 3, 4)); 
 }

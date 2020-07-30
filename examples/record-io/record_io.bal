@@ -8,7 +8,7 @@ import ballerina/log;
 // (e.g., a comma).
 function getReadableRecordChannel(string filePath, string encoding,
                         string rs, string fs)
-                        returns @tainted io:ReadableTextRecordChannel|error {
+                        returns io:ReadableTextRecordChannel|error {
     io:ReadableByteChannel byteChannel = check io:openReadableFile(filePath);
     // Creates a readable character channel
     // from the readable byte channel to read the content as text.
@@ -28,7 +28,7 @@ function getReadableRecordChannel(string filePath, string encoding,
 // (e.g., a comma).
 function getWritableRecordChannel(string filePath, string encoding, string rs,
                     string fs)
-                    returns @tainted io:WritableTextRecordChannel|error {
+                    returns io:WritableTextRecordChannel|error {
     io:WritableByteChannel byteChannel = check io:openWritableFile(filePath);
     // Creates a writable character channel
     // from the writable byte channel to read the content as text.

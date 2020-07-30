@@ -24,7 +24,7 @@ function process(io:ReadableCSVChannel csvChannel)
 }
 
 //Specifies the location of the `.CSV` file.
-public function main() returns @tainted error? {
+public function main() returns error? {
     string srcFileName = "./files/sample.csv";
     // Opens a [CSV channel in the `write` mode](https://ballerina.io/swan-lake/learn/api-docs/ballerina/io/objects/WritableCSVChannel.html)
     // and writes some data to the `./files/sample.csv` file for later use.
