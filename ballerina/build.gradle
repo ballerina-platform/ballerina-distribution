@@ -141,19 +141,19 @@ task unpackBalCommand(type: Copy) {
 task extractJreForLinux(type: Copy) {
     group = "extract_jre"
     from zipTree{"${jreLocation}/jre-1.8-linux.zip"}
-    into("${buildDir}/target/extracted-jre-linux") 
+    into("${buildDir}/target/extracted-jre-linux")
 }
 
 task extractJreForMac(type: Copy) {
     group = "extract_jre"
     from zipTree{"${jreLocation}/jre-1.8-macos.zip"}
-    into("${buildDir}/target/extracted-jre-macos") 
+    into("${buildDir}/target/extracted-jre-macos")
 }
 
 task extractJreForWindows(type: Copy) {
     group = "extract_jre"
     from zipTree{"${jreLocation}/jre-1.8-windows.zip"}
-    into("${buildDir}/target/extracted-jre-windows") 
+    into("${buildDir}/target/extracted-jre-windows")
 }
 
 task deleteTemporaryFiles(type: Delete) {
@@ -455,7 +455,7 @@ task packageDistLinux(type: Zip) {
     baseName = "${distributionName}-linux"
     ext{parentDir="${baseName}-${version}"}
     entryCompression=ZipEntryCompression.STORED
-    
+
     into("${parentDir}/dependencies") {
         from "build/target/extracted-jre-linux"
         fileMode = 0755
