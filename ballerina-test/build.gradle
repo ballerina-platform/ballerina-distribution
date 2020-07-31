@@ -48,6 +48,7 @@ test {
     systemProperty "maven.version", "$version"
     systemProperty "examples.dir", "$buildDir/../../examples"
     systemProperty "line.check.extensions", ".java, .bal"
+    systemProperty "short.version", "$shortVersion"
 
     useTestNG() {
         suites 'src/test/resources/testng.xml'

@@ -1,0 +1,2 @@
+description: A Ballerina function can have only one REST parameter and the rest parameter can take zero or more values.
+keywords: ballerina, ballerina by example, bbe, rest parameter, function

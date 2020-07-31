@@ -16,16 +16,16 @@ public function main() {
     } else if (result is websub:HubStartedUpError) {
         webSubHub = result.startedUpHub;
     } else {
-        io:println("Hub start error:" + <string>result.detail()?.message);
+        io:println("Hub start error:" + result.message());
         return;
     }
 
-    // Registers a topic at the hub.
+    // Registers a topic at the hub using [registerTopic](https://ballerina.io/swan-lake/learn/api-docs/ballerina/websub/objects/Hub.html#registerTopic).
     var registrationResponse = webSubHub.registerTopic(
                                             "http://websubpubtopic.com");
     if (registrationResponse is error) {
         io:println("Error occurred registering topic: " +
-                                <string>registrationResponse.detail()?.message);
+                                registrationResponse.message());
     } else {
         io:println("Topic registration successful!");
     }
@@ -33,14 +33,14 @@ public function main() {
     // Makes the publisher wait until the subscriber subscribes at the hub.
     runtime:sleep(5000);
 
-    // Publishes directly to the internal Ballerina hub.
+    // Publishes directly to the internal Ballerina hub using [publishUpdate](https://ballerina.io/swan-lake/learn/api-docs/ballerina/websub/objects/Hub.html#publishUpdate).
     io:println("Publishing update to internal Hub");
     var publishResponse = webSubHub.publishUpdate("http://websubpubtopic.com",
         {"action": "publish", "mode": "internal-hub"});
 
     if (publishResponse is error) {
         io:println("Error notifying hub: " +
-                                <string>publishResponse.detail()?.message);
+                                publishResponse.message());
     } else {
         io:println("Update notification successful!");
     }

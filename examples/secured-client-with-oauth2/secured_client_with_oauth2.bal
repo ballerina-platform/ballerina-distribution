@@ -1,6 +1,5 @@
 import ballerina/http;
 import ballerina/config;
-import ballerina/log;
 import ballerina/oauth2;
 
 // Define the OAuth2 client endpoint to call the backend services.
@@ -35,6 +34,7 @@ http:Client clientEP1 = new ("<URL of the secured endpoint>", {
         }
     }
 });
+
 
 // Defines the OAuth2 client endpoint to call the backend services.
 // The OAuth2 authentication with the password grant type is enabled by
@@ -85,6 +85,7 @@ http:Client clientEP2 = new ("<URL of the secured endpoint>", {
     }
 });
 
+
 // Defines the OAuth2 client endpoint to call the backend services.
 // The OAuth2 authentication with direct token mode is enabled by creating
 // an `oauth2:OutboundOAuth2Provider` with the relevant configurations passed
@@ -122,44 +123,3 @@ http:Client clientEP3 = new ("<URL of the secured endpoint>", {
         }
     }
 });
-
-public function main() {
-    // Sends a `GET` request to the specified endpoint.
-    var response1 = clientEP1->get("/");
-    if (response1 is http:Response) {
-        var result = response1.getJsonPayload();
-        if (result is json) {
-            log:printInfo(result.toJsonString());
-        } else {
-            log:printError("Failed to retrieve payload for clientEP1.");
-        }
-    } else {
-        log:printError("Failed to call the endpoint from clientEP1.", response1);
-    }
-
-    // Send a `GET` request to the specified endpoint.
-    var response2 = clientEP2->get("/");
-    if (response2 is http:Response) {
-        var result = response2.getJsonPayload();
-        if (result is json) {
-            log:printInfo(result.toJsonString());
-        } else {
-            log:printError("Failed to retrieve payload for clientEP2.");
-        }
-    } else {
-        log:printError("Failed to call the endpoint from clientEP2.", response2);
-    }
-
-    // Send a `GET` request to the specified endpoint.
-    var response3 = clientEP3->get("/");
-    if (response3 is http:Response) {
-        var result = response3.getJsonPayload();
-        if (result is json) {
-            log:printInfo(result.toJsonString());
-        } else {
-            log:printError("Failed to retrieve payload for clientEP2.");
-        }
-    } else {
-        log:printError("Failed to call the endpoint from clientEP3.", response3);
-    }
-}

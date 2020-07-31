@@ -20,11 +20,11 @@ function testFunc() {
     // Invoke the main function.
     main();
     test:assertEquals(outputs[0], "Error: ");
-    test:assertEquals(outputs[1], "SimpleErrorType");
-    test:assertEquals(outputs[2], ", Message: ");
-    test:assertEquals(outputs[3], "Simple error occurred");
-    test:assertEquals(outputs[4], "Error: ");
-    test:assertEquals(outputs[5], "InvalidAccountID");
-    test:assertEquals(outputs[6], ", Account ID: ");
-    test:assertEquals(outputs[7], -1);
+    test:assertEquals(outputs[1], "Simple error occurred");
+    test:assertEquals(outputs[2], "Error: ");
+    test:assertEquals(outputs[3], "Invalid account ID");
+    test:assertEquals(outputs[4], ", Account ID: ");
+    test:assertEquals(outputs[5], -1);
+    test:assertEquals(outputs[6], "Caused by: ");
+    test:assertEquals(outputs[7], "Invalid account ID");
 }

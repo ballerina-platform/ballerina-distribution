@@ -5,7 +5,7 @@ import ballerina/task;
 int reminderCount = 0;
 
 public function main() {
-    // The Appointment data record provides the appointment configurations.
+    // The [`task:Appointment`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/task/records/AppointmentData.html) data record provides the appointment configurations.
     task:AppointmentData appointmentData = {
         seconds: "0/2",
         minutes: "*",
@@ -37,6 +37,7 @@ public function main() {
 
     // Cancel the appointment.
     var result = appointment.stop();
+
     if (result is error) {
         io:println("Error occurred while cancelling the task");
         return;
@@ -53,4 +54,5 @@ service appointmentService = service {
             io:println("Schedule is due - Reminder: " + reminderCount.toString());
         }
     }
+
 };

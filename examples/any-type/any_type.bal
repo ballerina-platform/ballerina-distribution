@@ -1,10 +1,12 @@
 import ballerina/io;
+import ballerina/math;
+import ballerina/time;
 
 type Person object {
     string fname;
     string lname;
 
-    function __init(string fname, string lname) {
+    function init(string fname, string lname) {
         self.fname = fname;
         self.lname = lname;
     }
@@ -15,29 +17,37 @@ type Person object {
 };
 
 // This function returns a value of the `any` type.
-function getValue() returns any {
-    string name = "cat";
-    return name;
+function lookupInfo(string id) returns any {
+    if id == "pi" {
+        return math:PI;
+    } else if id == "date" {
+        return time:currentTime().toString();
+    } else if id == "bio" {
+        return new Person("Jane", "Doe");
+    }
 }
 
 public function main() {
-    // In this example, the variable named `a` of the `any` type holds
+    // In this example, the variable named `any1` of the `any` type holds
     // a `Person` object.
-    any a = new Person("John", "Doe");
+    any any1 = new Person("John", "Doe");
 
-    // Before anything useful can be done with `a`, it is required to ascertain
+    // Before anything useful can be done with `any1`, it is required to ascertain
     // its type. A type cast or a type guard can be used for this.
-    Person john = <Person>a;
+    Person john = <Person> any1;
     io:println("Full name: ", john.getFullName());
 
-    if (a is Person) {
-        io:println("First name: ", john.fname);
+    if any1 is Person {
+        io:println("First name: ", any1.fname);
     }
 
     // Variables of type `any` can hold values of any type except for `error`.
-    int[] ia = [1, 3, 5, 6];
-    any ar = ia;
-    io:println(ar);
+    int[] intArray = [1, 3, 5, 6];
+    any anyArray = intArray;
+    io:println(anyArray);
 
-    io:println(getValue());
+    io:println(lookupInfo("pi"));
+    io:println(lookupInfo("date"));
+    Person person = <Person> lookupInfo("bio");
+    io:println(person.getFullName());
 }

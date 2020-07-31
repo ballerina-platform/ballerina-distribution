@@ -1,5 +1,5 @@
 import ballerina/log;
-import ballerina/rabbitmq;
+import ballerinax/rabbitmq;
 
 // Creates a ballerina RabbitMQ connection that allows re-usability if necessary.
 rabbitmq:Connection connection = new ({host: "localhost", port: 5672});
@@ -38,7 +38,6 @@ service dataBindingConsumer on channelListener {
 
     // Gets triggered when an error is encountered.
     resource function onError(rabbitmq:Message message, error err) {
-        log:printError("Error from connector: " + err.reason() + " - "
-                                                  + <string>err.detail()?.message);
+        log:printError("Error from connector: " + err.message(), err);
     }
 }

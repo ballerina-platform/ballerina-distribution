@@ -10,9 +10,9 @@ service helloWorld on new http:Listener(9090) {
         path: "/"
     }
     resource function hello(http:Caller caller, http:Request request) {
-        // Check if the client expects a 100-continue response.
+        // [Check if the client expects a 100-continue response](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/Request.html#expects100Continue).
         if (request.expects100Continue()) {
-            string mediaType = request.getHeader("Content-Type");
+            string mediaType = request.getContentType();
             if (mediaType.toLowerAscii() == "text/plain") {
                 // Send a 100-continue response to the client.
                 var result = caller->continue();
@@ -47,7 +47,7 @@ service helloWorld on new http:Listener(9090) {
             }
         } else {
             res.statusCode = 500;
-            res.setPayload(<@untainted string>payload.detail()?.message);
+            res.setPayload(<@untainted>payload.message());
             var result = caller->respond(res);
             if (result is error) {
                 log:printError("Error sending response", result);

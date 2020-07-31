@@ -1,7 +1,7 @@
 import ballerina/log;
 import ballerina/task;
 
-// Task Appointment configuration record of the Task Listener.
+// The [`task:AppointmentConfiguration`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/task/records/AppointmentConfiguration.html) record of the Task Listener.
 // Task Appointment can either have a CRON expression (`string`) or an
 // `AppointmentData` record for the `appointmentData` field. Optionally, a
 // `noOfRecurrences` can be provided to limit the number of executions.
@@ -10,6 +10,7 @@ task:AppointmentConfiguration appointmentConfiguration = {
     appointmentDetails: "* * * * * ?",
     // Number of recurrences will limit the number of times the timer runs.
     noOfRecurrences: 10
+
 };
 
 // Initialize the listener using pre defined configurations.
@@ -25,4 +26,5 @@ service appointmentService on appointment {
         log:printInfo(count.toString());
         count = count + 1;
     }
+
 }

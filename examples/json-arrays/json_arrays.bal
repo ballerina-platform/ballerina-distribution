@@ -3,7 +3,7 @@ import ballerina/io;
 public function main() {
     // JSON Arrays are arrays with JSON values as members.
     // The same could be written as
-    // `json[] j1 = [1, false, null, "foo", { first: "John", last: "Pala" }];`
+    // `json[] j1 = [1, false, null, "foo", {first: "John", last: "Pala"}];`
     json j1 = [1, false, null, "foo", {first: "John", last: "Pala"}];
     io:println(j1.toJsonString());
 
@@ -37,12 +37,12 @@ public function main() {
     io:println(p.toJsonString());
 
     // Get the length of the JSON array.
-    int l = family.length();
-    io:println("length of the array: ", l);
+    int len = family.length();
+    io:println("length of the array: ", len);
 
     // Loop through the array.
     int i = 0;
-    while (i < l) {
+    while (i < len) {
         io:println(family[i].toJsonString());
         i = i + 1;
     }

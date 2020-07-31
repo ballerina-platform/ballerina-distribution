@@ -1,11 +1,16 @@
 # To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run while.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run while.bal
 0
 1
 2
-0
-1
-2
-3
-4
+Enter age: (q to exit): 10b 
+Invalid value, try again.
+Enter age: (q to exit): 15
+Enter name: Jack
+Jack cannot vote!
+Enter age: (q to exit): 19
+Enter name: Jane
+Jane can vote!
+Enter age: (q to exit): q
+

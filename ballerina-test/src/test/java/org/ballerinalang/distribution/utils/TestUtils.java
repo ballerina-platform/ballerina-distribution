@@ -42,6 +42,7 @@ public class TestUtils {
     public static final PrintStream OUT = System.out;
     public static final Path TARGET_DIR = Paths.get(System.getProperty("target.dir"));
     public static final Path MAVEN_VERSION = Paths.get(System.getProperty("maven.version"));
+    public static final Path SHORT_VERSION = Paths.get(System.getProperty("short.version"));
     public static final Path DISTRIBUTIONS_DIR = Paths.get(System.getProperty("distributions.dir"));
     public static final Path TEST_DISTRIBUTION_PATH = TARGET_DIR.resolve("test-distribution");
     public static final Path EXAMPLES_DIR = Paths.get(System.getProperty("examples.dir"));

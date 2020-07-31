@@ -1,0 +1,9 @@
+# To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run retry_transactions.bal
+Transaction Info: xid=57 55 52 102 53 52 100 53 45 48 100 99 54 45 52 100 100 99 45 98 56 55 97 45 99 54 102 55 97 55 57 102 54 57 48 100 retryNumber=0 startTime=1594734072607 prevAttempt=
+Commit handler executed.
+Transaction committed.
+Account Credit: affectedRowCount=1 lastInsertId=
+Account Debit: affectedRowCount=1 lastInsertId=
+

@@ -3,8 +3,9 @@ import ballerina/http;
 import ballerina/log;
 
 // Create a client configuration to be passed to the client endpoint.
-// Configure the `keyStoreFile`, `keyStorePassword`, `trustStoreFile`, and
-// the`trustStorePassword`, which are required to enable mutual SSL.
+// Configure the `keyStore` file `path` and `password`, `truststore`
+// file `path` and `password`, which are required to enable mutual SSL.
+// [secureSocket](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/ClientSecureSocket.html) record provides the SSL related configurations.
 http:ClientConfiguration clientEPConfig = {
     secureSocket: {
         keyStore: {
@@ -39,10 +40,10 @@ public function main() {
         } else {
             // If an error occurs while retrieving the text payload, log
             // the error.
-            log:printError(<string>payload.detail()["message"]);
+            log:printError(payload.message());
         }
     } else {
         // If an error occurs while getting the response, log the error.
-        log:printError(<string>resp.detail()["message"]);
+        log:printError(resp.message());
     }
 }

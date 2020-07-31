@@ -2,6 +2,7 @@ import ballerina/http;
 import ballerina/log;
 
 // Creates an HTTP client to interact with a remote endpoint.
+// [followRedirects](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/FollowRedirects.html) record provides configurations associated with HTTP redirects.
 http:Client clientEndpoint = new ("http://localhost:9092", {
         followRedirects: {enabled: true, maxCount: 5}
     }
@@ -21,20 +22,20 @@ service hello on new http:Listener(9090) {
             var payload = returnResult.getTextPayload();
             if (payload is string) {
                 var result = caller->respond("Response received : " 
-                                                + <@untained>payload);
+                                                + <@untainted>payload);
                 if (result is error) {
                     log:printError("Error in responding", result);
                 }
             } else {
                 var result = caller->respond("Error in payload : " 
-                        + <@untained>payload.detail()?.message.toString());
+                        + <@untainted>payload.message());
                 if (result is error) {
                     log:printError("Error in responding", result);
                 }
             }
         } else {
             var result = caller->respond("Error in connection : " 
-                                + returnResult.detail()?.message.toString());
+                                + returnResult.message());
             if (result is error) {
                 log:printError("Error in responding", result);
             }
@@ -59,7 +60,7 @@ service redirect1 on new http:Listener(9092) {
             ["http://localhost:9093/redirect2"]);
         if (result is error) {
             log:printError("Error in sending redirect response to caller",
-                err = result);
+                result);
         }
     }
 }

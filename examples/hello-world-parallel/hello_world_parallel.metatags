@@ -1,0 +1,2 @@
+description: BBE on how to use workers to do tasks in parallel. A worker is a sequence of statements that is executed concurrently with all other workers in the function.
+keywords: ballerina, ballerina by example, bbe, hello world parallel

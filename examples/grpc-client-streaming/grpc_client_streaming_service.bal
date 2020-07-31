@@ -2,36 +2,28 @@
 import ballerina/grpc;
 import ballerina/log;
 
-@grpc:ServiceConfig {
-    name: "HelloWorld",
-    clientStreaming: true
-}
 service HelloWorld on new grpc:Listener(9090) {
 
-    //This `resource` is triggered when a new caller connection is initialized.
-    resource function onOpen(grpc:Caller caller) {
+    resource function lotsOfGreetings(grpc:Caller caller,
+                            stream<string,error> clientStream) {
         log:printInfo("Client connected sucessfully.");
-    }
+        //Read and process each message in the client stream
+        error? e = clientStream.forEach(function(string name) {
+            log:printInfo("Server received greet: " + name);
+        });
 
-    //This `resource` is triggered when the caller sends a request message to the service.
-    resource function onMessage(grpc:Caller caller, string name) {
-        log:printInfo("Server received greet: " + name);
-    }
+        //Once the client sends a notification to indicate the end of the stream, 'grpc:EOS' is returned by the stream
+        if (e is grpc:EOS) {
+            grpc:Error? err = caller->send("Ack");
+            if (err is grpc:Error) {
+                log:printError("Error from Connector: " + err.message());
+            } else {
+                log:printInfo("Server send response : Ack");
+            }
 
-    //This `resource` is triggered when the server receives an error message from the caller.
-    resource function onError(grpc:Caller caller, error err) {
-        log:printError("Error from Connector: " + err.reason() + " - "
-                                           + <string>err.detail()["message"]);
-    }
-
-    //This `resource` is triggered when the caller sends a notification to the server to indicate that it has finished sending messages.
-    resource function onComplete(grpc:Caller caller) {
-        grpc:Error? err = caller->send("Ack");
-        if (err is grpc:Error) {
-            log:printError("Error from Connector: " + err.reason() + " - "
-                                           + <string>err.detail()["message"]);
-        } else {
-            log:printInfo("Server send response : Ack");
+        //If the client sends an error to the server, the stream closes and returns the error
+        } else if (e is error) {
+            log:printError("Error from Connector: " + e.message());
         }
     }
 }

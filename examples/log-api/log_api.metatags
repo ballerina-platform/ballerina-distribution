@@ -1,0 +1,3 @@
+description: BBE on how to log messages in Ballerina at different log levels including 'DEBUG', 'ERROR', 'INFO',
+'TRACE', 'WARN', 'OFF', and 'ALL'.
+keywords: ballerina, ballerina by examples, bbe, log, level

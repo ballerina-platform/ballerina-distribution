@@ -87,7 +87,7 @@ function startHubAndRegisterTopic() returns websub:Hub {
         panic hubStartUpResult;
     } else {
         hubVar = hubStartUpResult is websub:HubStartedUpError
-                            ? hubStartUpResult.startedUpHub : hubStartUpResult;
+                            ? hubStartUpResult["startedUpHub"] : hubStartUpResult;
     }
 
     websub:Hub internalHub = <websub:Hub>hubVar;

@@ -1,4 +1,4 @@
-// The Ballerina main program, which demonstrates the usage of the Hub client endpoint to subscribe/unsubscribe to notifications.
+// The Ballerina main program, which demonstrates the usage of the [Hub client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/websub/clients/SubscriptionClient.html) to subscribe/unsubscribe to notifications.
 import ballerina/io;
 import ballerina/runtime;
 import ballerina/websub;
@@ -21,9 +21,7 @@ public function main() {
         io:println("Subscription Request successful at Hub [" + response.hub +
                     "] for Topic [" + response.topic + "]");
     } else {
-        error err = response;
-        string errCause = <string>err.detail()?.message;
-        io:println("Error occurred with Subscription Request: " + errCause);
+        io:println("Error occurred with Subscription Request: " + response.message());
     }
 
     // Waits for the initial notification before unsubscribing.
@@ -41,8 +39,6 @@ public function main() {
         io:println("Unsubscription Request successful at Hub [" + response.hub +
                     "] for Topic [" + response.topic + "]");
     } else {
-        error err = response;
-        string errCause = <string>err.detail()?.message;
-        io:println("Error occurred with Unsubscription Request: " + errCause);
+        io:println("Error occurred with Unsubscription Request: " + response.message());
     }
 }

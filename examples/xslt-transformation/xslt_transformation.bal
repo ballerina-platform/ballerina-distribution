@@ -7,7 +7,7 @@ public function main() {
     // Gets an `XSL` style sheet represented in an XML object.
     xml xsl = getXsl();
 
-    // Transforms the `XML` to another formats.
+    // [Transforms](https://ballerina.io/swan-lake/learn/api-docs/ballerina/xslt/functions.html#transform) the `XML` to another formats.
     xml|error target = xslt:transform(sourceXml, xsl);
     if (target is xml) {
         io:println("Transformed xml : ", target);

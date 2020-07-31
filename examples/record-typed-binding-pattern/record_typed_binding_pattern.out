@@ -1,13 +1,13 @@
 # To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run record_type_binding_pattern.bal
-Name: Peter
-Age: 28
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run record_type_binding_pattern.bal
+First Name: Peter
+Person Age: 28
 Other Details: country=Sri Lanka occupation=Software Engineer
 Name: Peter
 Age: 28
-Name: Peter
-Age: 28
-Other Details: country=Sri Lanka occupation=Software Engineer
+First Name 2: Peter
+Person Age 2: 28
+Other Details 2: country=Sri Lanka occupation=Software Engineer
 Country Name: Sri Lanka
 Capital Name: Colombo

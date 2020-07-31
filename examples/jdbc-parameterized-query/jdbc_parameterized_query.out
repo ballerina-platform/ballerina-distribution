@@ -1,0 +1,18 @@
+# To run this sample, navigate to the directory that contains the
+# `.bal` file and execute the `ballerina run` command below.
+ballerina run jdbc_parameterized_query.bal
+
+Drop table executed: affectedRowCount=0 lastInsertId=
+Create table executed: affectedRowCount=0 lastInsertId=
+
+Insert success, generated Id: 1
+
+Batch Insert success, generated IDs are: 2 3 4
+
+Data in Customers table:
+CUSTOMERID=1 FIRSTNAME=Camellia LASTNAME=Johns REGISTRATIONID=1 CREDITLIMIT=5000.75 COUNTRY=USA
+CUSTOMERID=2 FIRSTNAME=Peter LASTNAME=Stuart REGISTRATIONID=2 CREDITLIMIT=5000.75 COUNTRY=USA
+CUSTOMERID=3 FIRSTNAME=Stephanie LASTNAME=Mike REGISTRATIONID=3 CREDITLIMIT=8000.0 COUNTRY=USA
+CUSTOMERID=4 FIRSTNAME=Bill LASTNAME=John REGISTRATIONID=4 CREDITLIMIT=3000.25 COUNTRY=USA
+
+Sample executed successfully!

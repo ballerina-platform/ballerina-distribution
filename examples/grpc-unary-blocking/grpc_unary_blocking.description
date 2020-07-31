@@ -2,4 +2,4 @@
 // This sample demonstrates how the gRPC unary service interacts with the gRPC blocking client, and how
 // header values are handled.<br/><br/>
 // For more information on the underlying module, 
-// see the [GRPC module](https://ballerina.io/learn/api-docs/ballerina/grpc/index.html).
+// see the [GRPC module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/grpc/index.html).
