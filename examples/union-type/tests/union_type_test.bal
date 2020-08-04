@@ -17,14 +17,10 @@ public function mockPrint(any|error... s) {
 function testFunc() {
     // Invoking the main function
     main();
-    test:assertEquals(<string> outputs[0], "This is a string");
-    test:assertEquals(<int> outputs[1], 101);
-    test:assertEquals(<string> outputs[2], "this is a value");
-
-    var output3 = outputs[3];
-    if (output3 is error) {
-        test:assertEquals(output3.message(), "key '' not found");
-    } else {
-        test:assertFail();
-    }
+    Person p1 = {name: "Peter", address: "50 Bridgeton Lane Tuckerton, NJ 08087"};
+    Person p2 = {name: "Bella", address: "43 Kirkland Ave. North Attleboro, MA 02760"};
+    test:assertEquals(outputs[0], p1);
+    error e = error("id 'Jack' not found");
+    test:assertEquals(outputs[1], e);
+    test:assertEquals(outputs[2], p2);
 }

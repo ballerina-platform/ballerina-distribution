@@ -20,5 +20,5 @@ function testFunc() {
     test:assertEquals(outputs[1], "First name: John");
     int[] ia = [1, 3, 5, 6];
     test:assertEquals(outputs[2], ia);
-    test:assertEquals(outputs[3], "cat");
+    test:assertEquals(outputs[3], 3.141592653589793);
 }
