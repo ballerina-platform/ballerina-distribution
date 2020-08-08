@@ -23,7 +23,7 @@ public function main() {
         io:println("Country: ", country, ", Capital: ", capital);
     }
 
-    io:println("\nIterating a JSON object: ");
+    io:println("\nIterating a JSON object:- ");
     json apple = { name: "apple", colors: ["red", "green"], price: 5 };
     // Iterating a JSON is only supported with `map<json>` or `json[]`.
     // To iterate a JSON, first cast it to the relevant iterable type.
@@ -32,14 +32,14 @@ public function main() {
         io:println("Key: ", key, " Value: ", value);
     }
 
-    io:println("\nIterating a JSON array: ");
+    io:println("\nIterating a JSON array:- ");
     // To iterate a JSON array, you need to first cast it into a JSON array (`json[]`).
     json[] colors = <json[]> apple.colors;
     foreach var color in colors {
         io:println("Color: ", color);
     }
 
-    io:println("\nIterating an XML: ");
+    io:println("\nIterating an XML:- ");
     xml books = xml `<books>
                        <book><name>Sherlock Holmes</name><author>Sir Arthur Conan Doyle</author></book>
                        <book><name>Harry Potter</name><author>J.K. Rowling</author></book>                       
@@ -49,7 +49,7 @@ public function main() {
         io:println("Book: ", book);
     }
 
-    io:println("\nIterating a table: ");
+    io:println("\nIterating a table:- ");
     // Iterating a table will return an individual row in each iteration.
     EmployeeTable employeeTab = table [
         {id: 1, name: "John", salary: 300.50},
@@ -61,7 +61,7 @@ public function main() {
         io:println("Employee: ", employee);
     }
 
-    io:println("\nIterating a closed integer range: ");
+    io:println("\nIterating a closed integer range:- ");
     int endValue = 10;
     int sum = 0;
     // A closed integer range in the `foreach` statement represents an incremental integer value range from the start
@@ -71,7 +71,7 @@ public function main() {
     }
     io:println("Summation from 1 to ", endValue, " is ", sum);
 
-    io:println("\nIterating a half open integer range: ");
+    io:println("\nIterating a half open integer range:- ");
     sum = 0;
     // A half-open integer range in the `foreach` statement represents an incremental integer value range from the start
     // expression (`1`) inclusively to the end expression (`endValue`) exclusively.
