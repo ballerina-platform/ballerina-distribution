@@ -1,36 +1,27 @@
 import ballerina/test;
 
-(any|error)[] outputs = [];
-int counter = 0;
+string[] outputs = [];
 
+// This is the mock function which will replace the real function
 @test:Mock {
     moduleName: "ballerina/io",
     functionName: "println"
 }
-public function mockPrint(any|error... s) {
-    outputs[counter] = s[0];
-    counter += 1;
+public function mockPrint(any|error... val) {
+    outputs.push(val.reduce(function (any|error a, any|error b) returns string => a.toString() + b.toString(), "").toString());
 }
 
-@test:Config
+@test:Config {}
 function testFunc() {
     // Invoking the main function.
     main();
 
-    string nameOfElem = "name";
-    string txtVal = "Hello, World!<name>Book1</name><!--some comment-->";
-    string trueVal = "true"
-    string commentVal = "<!--some comment-->";
-    string nameElemVal = "<name>Book1</name>";
-    string afterSetChildren = "<book>Hello, World!<name>Book1</name><!--some comment--></book>";
-    string striped = "Hello, World!<name>Book1</name>";
-
-    test:assertEquals(outputs[0], nameOfElem);
-    test:assertEquals(outputs[2], txtVal);
-    test:assertEquals(outputs[3], trueVal);
-    test:assertEquals(outputs[4], "3");
-    test:assertEquals(outputs[5], commentVal);
-    test:assertEquals(outputs[6], nameElemVal);
-    test:assertEquals(outputs[7], afterSetChildren);
-    test:assertEquals(outputs[8], striped);
+    test:assertEquals(outputs[0], "Element name: name");
+    test:assertEquals(outputs[1], "Concat: Hello, World!<name>Book1</name><!--some comment-->");
+    test:assertEquals(outputs[2], "Equals: true");
+    test:assertEquals(outputs[3], "Length: 3");
+    test:assertEquals(outputs[4], "Subsequence: <!--some comment-->");
+    test:assertEquals(outputs[5], "All XML elements: <name>Book1</name>");
+    test:assertEquals(outputs[6], "Child elements set: <book>Hello, World!<name>Book1</name><!--some comment--></book>");
+    test:assertEquals(outputs[7], "Stripped: Hello, World!<name>Book1</name>");
 }
