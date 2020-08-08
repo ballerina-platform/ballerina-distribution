@@ -8,7 +8,7 @@ import ballerina/test;
 }
 public function mockPrint(any|error... s) {
     foreach var entry in s {
-        outputs.push(entry);
+        outputs.push(entry.toString());
     }
 }
 
@@ -16,17 +16,10 @@ public function mockPrint(any|error... s) {
 function testFunc() {
     // Invoking the main function
     error? output = main();
-    test:assertEquals(outputs[0], "Create CUSTOMER table status: ");
-    test:assertEquals(outputs[1], 0);
-    test:assertEquals(outputs[2], "Create SALARY table status: ");
-    test:assertEquals(outputs[3], 0);
-    test:assertEquals(outputs[5], "Transaction committed.");
-    test:assertEquals(outputs[7], "Insert data into CUSTOMER table status: ");
-    test:assertEquals(outputs[8], 1);
-    test:assertEquals(outputs[9], "Insert data into SALARY table status: ");
-    test:assertEquals(outputs[10], 1);
-    test:assertEquals(outputs[11], "Drop table CUSTOMER status: ");
-    test:assertEquals(outputs[12], 0);
-    test:assertEquals(outputs[13], "Drop table SALARY status: ");
-    test:sertEquals(outputs[14], 0);
+    test:assertEquals(outputs[0], "Transaction Info: ");
+    test:assertEquals(outputs[2], "Transaction committed");
+    test:assertEquals(outputs[3], "Account Credit: ");
+    test:assertEquals(outputs[4], "affectedRowCount=1 lastInsertId=");
+    test:assertEquals(outputs[5], "Account Debit: ");
+    test:assertEquals(outputs[6], "affectedRowCount=1 lastInsertId=");
 }
