@@ -19,7 +19,7 @@ public function mockPrint(any|error... s) {
 function testFunc() {
     // Invoking the main function
     main();
-    test:assertEquals(outputs[0], "Person with the non-defaultable required field set: fname=John lname= gender=male");
+    test:assertEquals(outputs[0], "Person with the required fields: fname=John lname= gender=male");
     test:assertEquals(outputs[1], "Age before setting: ");
     test:assertEquals(outputs[2], "Age after setting: 25");
     test:assertEquals(outputs[3], "Person with values assigned to required fields: fname=Jane lname=Doe gender=female");

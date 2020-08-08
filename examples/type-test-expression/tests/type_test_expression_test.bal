@@ -19,15 +19,15 @@ public function mockPrint(any|error... s) {
 function testFunc() {
     // Invoking the main function.
     main();
-    test:assertEquals(outputs[0], "Is 'a' a string? ");
+    test:assertEquals(outputs[0], "Is 'message' a string? ");
     test:assertEquals(outputs[1], true);
-    test:assertEquals(outputs[2], "'a' is a string with value: ");
+    test:assertEquals(outputs[2], "'message' is a string with value: ");
     test:assertEquals(outputs[3], "Hello, world!");
-    test:assertEquals(outputs[4], "Alex is a student");
-    test:assertEquals(outputs[5], "Alex is a person");
-    test:assertEquals(outputs[6], "Alex is not a vehicle");
-    test:assertEquals(outputs[7], "Does foo return a student? ");
+    test:assertEquals(outputs[4], "entity is a student");
+    test:assertEquals(outputs[5], "entity is a person");
+    test:assertEquals(outputs[6], "entity is not a vehicle");
+    test:assertEquals(outputs[7], "Did createEntity(\"student\") return a student? ");
     test:assertEquals(outputs[8], true);
-    test:assertEquals(outputs[9], "Does foo return a student? ");
+    test:assertEquals(outputs[9], "Did createEntity(\"vehicle\") return a student? ");
     test:assertEquals(outputs[10], false);
 }

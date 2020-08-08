@@ -31,5 +31,5 @@ function testFunc() {
     test:assertEquals(outputs[13], "Invalid map insertion: modification not allowed on readonly value");
     test:assertEquals(outputs[14], "m2 === m3: ");
     test:assertEquals(outputs[15], true);
-    test:assertEquals(outputs[16], "frozenVal is map<string>");
+    test:assertEquals(outputs[16], "immutableClonedVal is map<string>");
 }
