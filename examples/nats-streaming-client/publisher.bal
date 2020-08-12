@@ -1,6 +1,6 @@
 import ballerina/io;
 import ballerina/log;
-import ballerina/nats;
+import ballerinax/nats;
 
 // Represents the escape character.
 const string ESCAPE = "!q";
