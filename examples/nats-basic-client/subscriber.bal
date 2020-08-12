@@ -1,5 +1,5 @@
 import ballerina/log;
-import ballerina/nats;
+import ballerinax/nats;
 
 // Initializes a connection.
 nats:Connection connection = new;
