@@ -43,7 +43,7 @@ returns sql:Error? {
             " PRIMARY KEY (id))");
     io:println("Create Student table executed.");
 
-    // Necessary stored procedures are created using execute command
+    // Necessary stored procedures are created using the execute command.
     result = check sqlClient->execute("CREATE PROCEDURE InsertStudent" + 
         "(IN pName VARCHAR(255), IN pAge INT) " +
         "BEGIN " +
@@ -64,18 +64,18 @@ returns sql:Error? {
     io:println("Stored procedure with result set returned created.");
 }
 
-// Stored procedure `InsertStudent` with IN parameters is invoked. 
+// The stored procedure `InsertStudent` with the IN parameters is invoked. 
 function insertRecord(mysql:Client sqlClient) {
 
     io:println("\nInvoke `InsertStudent` procedure with IN params");
 
-    // Create parameterized query to invoke procedure.
+    // Create a parameterized query to invoke the procedure.
     string name = "George";
     int age = 24;
     sql:ParameterizedCallQuery sqlQuery = 
                                 `CALL InsertStudent(${name}, ${age})`;
 
-    // Execute stored procedure.
+    // Execute the stored procedure.
     sql:ProcedureCallResult|sql:Error retCall = sqlClient->call(sqlQuery);
     
     if (retCall is sql:ProcedureCallResult) {
@@ -86,18 +86,18 @@ function insertRecord(mysql:Client sqlClient) {
     }
 }
 
-// Here stored procedure with OUT and INOUT parameters is invoked.
+// Here, the stored procedure with the OUT and INOUT parameters is invoked.
 function getCount(mysql:Client sqlClient) {
 
     io:println("\nInvoke `GetCount` procedure with INOUT & OUT params");
 
-    // Initialize the INOUT & OUT Parameters
+    // Initialize the INOUT & OUT parameters.
     sql:InOutParameter id = new (1);
     sql:OutParameter totalCount = new;
     sql:ParameterizedCallQuery sqlQuery = 
                         `{CALL GetCount(${id}, ${totalCount})}`;
 
-    // Execute stored procedure.
+    // Execute the stored procedure.
     sql:ProcedureCallResult|sql:Error retCall = sqlClient->call(sqlQuery);
     
     if (retCall is sql:ProcedureCallResult) {
@@ -117,18 +117,18 @@ type Student record {
     string name;
 };
 
-// Invoke the stored procedure which returns data.
+// Invoke the stored procedure, which returns data.
 function checkData(mysql:Client sqlClient) {
 
     io:println("\nInvoke `GetStudents` procedure with returned data");
 
-    // Execute stored procedure.
+    // Execute the stored procedure.
     sql:ProcedureCallResult|sql:Error retCall = 
                             sqlClient->call("{CALL GetStudents()}", [Student]);
 
     if (retCall is sql:ProcedureCallResult) {
         io:println("Call stored procedure `InsertStudent` is successful.");
-        // Process the returned result stream
+        // Process the returned result stream.
         stream<record{}, sql:Error>? result = retCall.queryResult;
         if (!(result is ())) {
             stream<Student, sql:Error> studentStream = 
@@ -161,11 +161,11 @@ public function main() {
             sql:Error? initResult = initializeTable(sqlClient);
 
             if (initResult is ()) {
-                // Insert a records by calling a procedure.
+                // Insert a record by calling a procedure.
                 insertRecord(sqlClient);
                 // Get the total count by calling a procedure.
                 getCount(sqlClient);
-                // Get all the result by invoking a procedure.
+                // Get all the results by invoking a procedure.
                 checkData(sqlClient);
 
                 io:println("\nSample executed successfully!");
