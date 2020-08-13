@@ -31,7 +31,7 @@ function testFunc() {
     test:assertEquals(outputs[3], "Joined");
     test:assertEquals(outputs[4], "Invalid account number: Please try again!");
     test:assertEquals(outputs[5], "Error: ");
-    test:assertEquals(outputs[6], "Account inquiry failed");
+    test:assertEquals(outputs[6], "Account transfer failed");
     test:assertEquals(outputs[7], ", Cause: ");
     test:assertEquals(outputs[8].toString(), "error Invalid account Id accountID=-1");
 }

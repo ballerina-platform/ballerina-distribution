@@ -3,4 +3,4 @@
 ballerina run user_defined_error.bal
 Error: Invalid account type, Account type: Joined
 Invalid account number: Please try again!
-Error: AccountInquiryFailed, Cause: error Invalid account Id accountID=-1
+Error: Account transfer failed, Cause: error Invalid account Id accountID=-1
