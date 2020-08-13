@@ -28,6 +28,11 @@ type AccountErrorData record {|
     int accountID;
 |};
 
+type AccountTransferErrorData record {|
+    int fromAccountId;
+    int toAccountId;
+|};
+
 // To distinctly identify different errors and handle them appropriately,
 // distinct errors can be used.
 // Distinct types are similar to nominal types, and can be used to create
@@ -49,18 +54,17 @@ function getAccountBalance(int accountID) returns int|AccountError {
     return 600;
 }
 
-type AccountInquiryFailed error<AccountErrorData>;
+type AccountTransferError error<AccountTransferErrorData>;
 
-function transferToAccount(int fromAccountId, int toAccountId, int amount) returns int|AccountInquiryFailed {
-    var balance = getAccountBalance(fromAccountId);
-    if (balance is error) {
+function transferToAccount(int fromAccountId, int toAccountId, int amount) returns AccountTransferError? {
+    var result = getAccountBalance(fromAccountId);
+    if (result is error) {
         // Create a new error, with the error returned from `getAccountBalance()` as the cause.
-        return AccountInquiryFailed("Account inquiry failed", balance, accountID = fromAccountId);
+        return AccountTransferError("Account transfer failed", result, 
+                                    fromAccountId = fromAccountId, toAccountId = toAccountId);
     } else {
         // Perform transfer
     }
-
-    return 0;
 }
 
 public function main() {
@@ -85,11 +89,10 @@ public function main() {
     }
 
     var result3 = transferToAccount(-1, 90, 1000);
-    if (result3 is int) {
-        io:println("Transfer success: ", result3);
-    } else {
+    if (result3 is error) {
         // Print the mandatory error detail fields message and cause.
-        io:println("Error: ", result3.message(),
-                    ", Cause: ", result3.cause());
+        io:println("Error: ", result3.message(), ", Cause: ", result3.cause());        
+    } else {
+        io:println("Transfer success");
     }
 }
