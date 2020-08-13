@@ -1041,6 +1041,10 @@
                 "url": "mysql-batch-execute-operation"
             },
             {
+                "name": "Call Stored Procedures",
+                "url": "mysql-call-stored-procedures"
+            },
+            {
                 "name": "Parameterized Query",
                 "url": "mysql-parameterized-query"
             }

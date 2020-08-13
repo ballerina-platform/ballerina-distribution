@@ -1107,6 +1107,7 @@ task outputVerification() {
             'mysql-execute-operation',
             'mysql-batch-execute-operation',
             'mysql-parameterized-query',
+            'mysql-call-stored-procedures'
             'tracing',
             'log-api',
             'the-main-function',
