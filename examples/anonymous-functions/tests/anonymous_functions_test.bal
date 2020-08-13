@@ -21,9 +21,8 @@ public function mockPrint(any|error... s) {
 function testFunc() {
     // Invoking the main function
     main();
-    string out1 = "Output: Hello World.!!!";
-    string out2 = "Output: Ballerina is an open source programming language.";
+    string out1 = "Concat Result: Hello World!";
+    string out2 = "Add Result: 15";
     test:assertEquals(outputs[0], out1);
     test:assertEquals(outputs[1], out2);
-    test:assertEquals(outputs[2], out1);
 }

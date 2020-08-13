@@ -1,6 +1,15 @@
 import ballerina/test;
 
-// The `assertEquals()` function allows you to compare primitive types (e.g., int) against composite objects.
+type Person object {
+    public string name = "";
+    public int age = 0;
+    public Person? parent = ();
+    private string email = "default@abc.com";
+    string address = "No 20, Palm grove";
+};
+
+// The `assertEquals()` function allows you to compare anydata type values for value equality.
+// The `assertExactEquals()` function allows you to compare any type entries for exact equality.
 // Compares values of the type `int`.
 @test:Config {}
 function testAssertIntEquals() {
@@ -35,6 +44,18 @@ function testAssertJsonEquals() {
     json a = {"name": "Ballerina"};
     json b = {"name": "Ballerina"};
     test:assertEquals(a, b, msg = "JSON values not equal");
+}
+
+// Compares values of the type `xml`.
+@test:Config {}
+function testAssertXmlEquals() {
+    xml x1 = xml `<book>The Lost World</book>`;
+    xml x2 = xml `Hello, world!`;
+    xml x3 = xml `<!--I am a comment-->`;
+    xml x4 = xml `<?target data?>`;
+    xml x5 = x1 + x2 + x3 + x4;
+    xml x6 = xml `<book>The Lost World</book>` + xml `Hello, world!` + xml `<!--I am a comment-->` + xml `<?target data?>`;
+    test:assertEquals(x5, x6, msg = "XML values not equal");
 }
 
 // Compares values of the type `boolean`.
@@ -83,6 +104,34 @@ function testAssertNotEqualsJson() {
     json s1 = {"a": "b"};
     json s2 = {"a": "c"};
     test:assertNotEquals(s1, s2, msg = "JSON values are equal");
+}
+
+// Compares values of the type `xml`.
+@test:Config {}
+function testAssertNotEqualsXml() {
+    xml x1 = xml `<book>The Lost World</book>`;
+    xml x2 = xml `Hello, world!`;
+    xml x3 = xml `<!--I am a comment-->`;
+    xml x4 = xml `<?target data?>`;
+    xml x5 = x1 + x2 + x3 + x4;
+    xml x6 = xml `<book>The Lost World -2</book>` + xml `Hello, world!` + xml `<!--I am a comment-->` + xml `<?target data?>`;
+    test:assertNotEquals(x5, x6, msg = "XML values are equal");
+}
+
+//Asserts exact equality.
+@test:Config {}
+function testAssertExactEqualsObject() {
+    Person p1 = new;
+    Person p2 = p1;
+    test:assertExactEquals(p1, p2, msg = "Objects are not exactly equal");
+}
+
+//Asserts exact equality.
+@test:Config {}
+function testAssertNotExactEqualsObject() {
+    Person p1 = new;
+    Person p2 = new ();
+    test:assertNotExactEquals(p1, p2, msg = "Objects are exactly equal");
 }
 
 // Asserts `true`.

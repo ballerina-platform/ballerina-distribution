@@ -1,14 +1,7 @@
-
-# Before running this sample, change the H2 DB connection properties as required.
-
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run local_transactions.bal
-Create CUSTOMER table status: 0
-Create SALARY table status: 0
-xid=a87ced8b-a2b6-4f2e-9afc-befbbc6b78bd retryNumber=0 startTime=1592403803161 prevAttempt=
+Transaction Info: xid=54 56 54 55 97 101 57 54 45 50 99 99 54 45 52 52 51 54 45 56 54 51 97 45 100 55 51 99 57 50 56 97 54 48 56 56 retryNumber=0 startTime=1594722243740 prevAttempt=
 Transaction committed
-Insert data into CUSTOMER table status: 1
-Insert data into SALARY table status: 1
-Drop table CUSTOMER status: 0
-Drop table SALARY status: 0
+Account Credit: affectedRowCount=1 lastInsertId=
+Account Debit: affectedRowCount=1 lastInsertId=

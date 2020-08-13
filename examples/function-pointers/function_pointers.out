@@ -1,6 +1,5 @@
 # To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
+# `.bal` file, and execute the `ballerina run` command.
 ballerina run function_pointers.bal
-Answer: 280.0
-Answer: 280.0
-Answer: 280.0
+Process Add 1, 2: 3
+Process Multiply 3, 4: 12

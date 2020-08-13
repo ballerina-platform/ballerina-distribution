@@ -26,10 +26,11 @@ ext {
     ballerinaVersion = project.ballerinaVersion
     shortVersion = project.shortVersion
     ballerinaJreArtifactsVersion = "2.0.0"
+    awslambdaVersion = project.ballerinaVersion
+    azFunctionsVersion = project.ballerinaVersion
     dockerVersion = project.ballerinaVersion
     kubernetesVersion = project.ballerinaVersion
     dataMapperVersion = project.ballerinaVersion
-    awslambdaVersion = project.ballerinaVersion
     picocliVersion = "4.0.1"
     ballerinaCommandVersion = "0.8.8"
     testngVersion = "6.14.3"
@@ -41,6 +42,8 @@ ext {
     stdlibJwtVersion = project.stdlibJwtVersion
     stdlibWebsubVersion = project.stdlibWebsubVersion
     stdlibRabbitmqVersion = project.stdlibRabbitmqVersion
+    stdlibXsltVersion = project.stdlibXsltVersion
+    stdlibNatsVersion = project.stdlibNatsVersion
 }
 
 allprojects {
@@ -148,6 +151,20 @@ subprojects {
                 password System.getenv("packagePAT")
             }
         }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-xslt"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-nats"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
         /* Ballerina lang staging repository */
         maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1609/" }
         /* Docker staging repository */
@@ -165,6 +182,8 @@ subprojects {
         jbalTools
         awsLambdaBalo
         awsLambdaExamples
+        azFunctionsBalo
+        azFunctionsExamples
         dockerAnnotations
         dockerExamples
         kubernetesAnnotations
@@ -188,6 +207,11 @@ subprojects {
         awsLambdaBalo "org.ballerinax.awslambda:awslambda-extension-balo:${awslambdaVersion}@zip"
         awsLambdaExamples "org.ballerinax.awslambda:awslambda-extension-examples:${awslambdaVersion}@zip"
 
+        /* Azure Functions extension */
+        exten "org.ballerinax.azurefunctions:azurefunctions-extension:${azFunctionsVersion}"
+        azFunctionsBalo "org.ballerinax.azurefunctions:azurefunctions-extension-balo:${azFunctionsVersion}@zip"
+        azFunctionsExamples "org.ballerinax.azurefunctions:azurefunctions-extension-examples:${azFunctionsVersion}@zip"
+
         /* Docker extension */
         exten "org.ballerinax.docker:docker-extension:${dockerVersion}@jar"
         dockerAnnotations "org.ballerinax.docker:docker-extension-annotations:${dockerVersion}@zip"
@@ -207,6 +231,8 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:jwt-ballerina:${stdlibJwtVersion}"
         ballerinaStdLibs "org.ballerinalang:socket-ballerina:${stdlibSocketVersion}"
         ballerinaStdLibs "org.ballerinalang:rabbitmq-ballerina:${stdlibRabbitmqVersion}"
+        ballerinaStdLibs "org.ballerinalang:xslt-ballerina:${stdlibXsltVersion}"
+        ballerinaStdLibs "org.ballerinalang:nats-ballerina:${stdlibNatsVersion}"
 
         balCommand "org.ballerinalang:ballerina-command-distribution:${ballerinaCommandVersion}@zip"
     }

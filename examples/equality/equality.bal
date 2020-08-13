@@ -9,7 +9,7 @@ type Person record {
     string name;
 };
 
-final Employee globalEmployee = {name: "John", id: 2102};
+final Employee moduleEmployee = {name: "John", id: 2102};
 
 public function main() {
     // The `==` and `!=` operators are used with values of compatible `anydata|error` types and serve as deep
@@ -42,8 +42,8 @@ public function main() {
     io:println(e1, " == ", e3, " is ", isEqual);
 
     // The `===` and `!==` operators are used with values of compatible types and serves as reference equality checks.
-    Employee e4 = getGlobalEmployee();
-    Person e5 = getGlobalEmployee();
+    Employee e4 = getModuleEmployee();
+    Person e5 = getModuleEmployee();
     boolean isRefEqual = e4 === e5;
     io:println("e4 === e5 is ", isRefEqual);
 
@@ -62,6 +62,6 @@ public function main() {
     io:println("f1 !== f2 is ", isNotRefEqual);
 }
 
-function getGlobalEmployee() returns Employee {
-    return globalEmployee;
+function getModuleEmployee() returns Employee {
+    return moduleEmployee;
 }

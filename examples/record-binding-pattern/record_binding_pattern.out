@@ -1,0 +1,6 @@
+# To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run record_binding_pattern.bal
+My Name: Jack Smith My Age: 23 My Address: street=380 Lakewood Dr. city=Desoto state=TX zipcode=75115 Other Fields: occupation=Software Engineer
+Name: Jack Smith Age: 23 Address: street=380 Lakewood Dr. city=Desoto state=TX zipcode=75115
+City: Desoto State: TX State: TX Zip Code: 75115
