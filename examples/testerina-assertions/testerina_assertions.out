@@ -12,17 +12,21 @@ Running tests
         [pass] testAssertFail
         [pass] testAssertFalse
         [pass] testAssertTrue
+        [pass] testAssertNotExactEqualsObject
+        [pass] testAssertExactEqualsObject
+        [pass] testAssertNotEqualsXml
         [pass] testAssertNotEqualsJson
         [pass] testAssertNotEqualsString
         [pass] testAssertFloatArrayEquals
         [pass] testAssertIntArrayEquals
         [pass] testAssertStringArrayEquals
         [pass] testAssertBooleanEquals
+        [pass] testAssertXmlEquals
         [pass] testAssertJsonEquals
         [pass] testAssertStringEquals
         [pass] testAssertFloatEquals
         [pass] testAssertIntEquals
 
-        13 passing
+        17 passing
         0 failing
         0 skipped
