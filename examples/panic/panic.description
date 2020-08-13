@@ -3,6 +3,6 @@
 // the call stack to unwind until it is trapped, or if not trapped, results in the termination of the program. <br/>
 //
 // Ballerina discourages the use of `panic` to handle program-related
-// errors such as "header not found", "data mismatch", etc.). However,
+// errors (such as "header not found", "data mismatch", etc.). However,
 // `panic` can be used in scenarios such as "Connection Closed/Timeout" and "OutOfMemory"
 // where the program cannot handle the error by itself.
