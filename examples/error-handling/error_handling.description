@@ -3,7 +3,7 @@
 // in the code such as type cast errors.
 // Error handling in Ballerina incorporates two different strategies
 // depending on the type of the error. For ordinary errors, the error value is returned.
-// When the Ballerina runtime encounters exceptional conditions the runtime
+// When the Ballerina runtime encounters exceptional conditions, the runtime
 // panics resulting in abrupt completion of execution,
 // unless the error is explicitly handled.<br/>
 //
