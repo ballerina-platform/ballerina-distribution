@@ -1,0 +1,4 @@
+// The function specified with the `BeforeGroups` annotation is executed once before all the tests belonging to the
+// specified group is executed and the function specified with the `AfterGroups` annotation is executed once after all
+// the tests belonging to the specified group is executed.<br/><br/>
+// For more information, see [How to Test Ballerina Code](https://ballerina.io/swan-lake/learn/how-to-test-ballerina-code/).
