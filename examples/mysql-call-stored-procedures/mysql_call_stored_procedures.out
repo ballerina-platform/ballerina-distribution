@@ -1,0 +1,25 @@
+# To run this sample, navigate to the directory that contains the
+# `.bal` file and execute the `ballerina run` command below.
+ballerina run mysql_call_stored_procedures.bal
+
+Database created. 
+Creating necessary table and procedures...
+Successfully dropped tables and procedures.
+Create Student table executed.
+Stored procedure with IN param created.
+Stored procedure with INOUT/OUT param created.
+Stored procedure with result set returned created.
+
+Invoke `InsertStudent` procedure with IN params
+Call stored procedure `InsertStudent` is successful : affectedRowCount=1 lastInsertId=
+
+Invoke `GetCount` procedure with INOUT & OUT params
+Call stored procedure `GetCount` is successful.
+Age of the student with id '1' : 24
+Total student count: 1
+
+Invoke `GetStudents` procedure with returned data
+Call stored procedure `InsertStudent` is successful.
+Student details: id=1 age=24 name=George
+
+Sample executed successfully!
