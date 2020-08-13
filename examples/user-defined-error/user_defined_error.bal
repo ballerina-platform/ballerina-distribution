@@ -59,7 +59,7 @@ type AccountTransferError error<AccountTransferErrorData>;
 function transferToAccount(int fromAccountId, int toAccountId, int amount) returns AccountTransferError? {
     var result = getAccountBalance(fromAccountId);
     if (result is error) {
-        // Create a new error, with the error returned from `getAccountBalance()` as the cause.
+        // Create a new error with the error returned from `getAccountBalance()` as the cause.
         return AccountTransferError("Account transfer failed", result, 
                                     fromAccountId = fromAccountId, toAccountId = toAccountId);
     } else {
