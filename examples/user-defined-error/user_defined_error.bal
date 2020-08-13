@@ -90,7 +90,7 @@ public function main() {
 
     var result3 = transferToAccount(-1, 90, 1000);
     if (result3 is error) {
-        // Print the mandatory error detail fields message and cause.
+        // Print the mandatory error detail fields (i.e., message and cause).
         io:println("Error: ", result3.message(), ", Cause: ", result3.cause());        
     } else {
         io:println("Transfer success");
