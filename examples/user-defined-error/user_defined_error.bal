@@ -35,7 +35,7 @@ type AccountTransferErrorData record {|
 
 // To distinctly identify different errors and handle them appropriately,
 // distinct errors can be used.
-// Distinct types are similar to nominal types, and can be used to create
+// Distinct types are similar to nominal types and can be used to create
 // distinct type hierarchies.
 // `InvalidAccountIdError` and `AccountNotFoundError` are subtypes of AccountError.
 type AccountError distinct error<AccountErrorData>;
