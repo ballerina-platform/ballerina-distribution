@@ -874,6 +874,8 @@ task testExamples() {
         'testerina-before-each-test',
         'testerina-before-and-after-test',
         'testerina-assertions',
+        'testerina-before-and-after-each',
+        'testerina-before-and-after-groups',
         'secured-service-with-basic-auth',
         'secured-client-with-basic-auth',
         'secured-client-with-oauth2',
