@@ -1,6 +1,6 @@
 // Ballerina's concurrency model is based on strands. An execution thread is divided into multiple strands. 
 // In this manner, multiple strands belonging to a single thread are cooperatively multitasked. 
-// This behavior is especially useful in non-blocking I/O communication, where a single thread can cooperatively 
+// This behavior is especially useful in non-blocking I/O communication in which a single thread can cooperatively 
 // execute I/O operations simultaneously, without a single strand blocking the thread. <br/>
 
 // A realization of a strand in Ballerina code is done using a worker. A worker represents a single strand 
