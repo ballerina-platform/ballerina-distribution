@@ -5,19 +5,13 @@ import ballerina/io;
 // Workers interact with each other by sending and receiving messages.
 // Ballerina validates every worker interaction (send and receive)
 // to avoid deadlocks.
-public function main() returns error? {
-    worker w1 returns error? {
-        int|error result = calculate("2*3");
-        int w1val;
-        if result is error { return result; }
-        else { w1val = result; }
+public function main() {
+    worker w1 {
+        int w1val = checkpanic calculate("2*3");
         // Sends a message asynchronously to the worker `w2`.
         w1val -> w2;
-        int w2val;
         // Receives a message from the worker `w2`.
-        int|error recv = <- w2;
-        if recv is error { return recv; }
-        else { w2val = recv; }
+        int w2val = <- w2;
         io:println("[w1] Message from w2: ", w2val);
         // Sends messages synchronously to the worker `w3`. The worker `w1` will wait
         // until the worker `w3` receives the message.
@@ -26,20 +20,14 @@ public function main() returns error? {
         // Flushes all messages sent asynchronously to the worker `w3`. The worker
         // will halt at this point until all messages are sent or until the worker `w3`
         // fails.
-        check flush w3;
+        checkpanic flush w3;
     }
     // A worker can have an explicit return type, or else, if a return type is not mentioned,
     // it is equivalent to returning ().
-    worker w2 returns error? {
-        int|error result = calculate("17*5");
-        int w2val;
-        if result is error { return result; }
-        else { w2val = result; }
-        int w1val;
+    worker w2 {
+        int w2val = checkpanic calculate("17*5");
         // Receives a message from the worker `w1`.
-        int|error recv = <- w1;
-        if recv is error { return recv; }
-        else { w1val = recv; }
+        int w1val = <- w1;
         io:println("[w2] Message from w1: ", w1val);
         // Sends a message asynchronously to the worker `w1`.
         w1val + w2val -> w1;
@@ -50,7 +38,7 @@ public function main() returns error? {
         io:println("[w3] Messages from w1: ", w1val, ", ", w2val);
     }
     // Waits for the worker `w1`to finish.
-    check wait w1;
+    wait w1;
 }
 
 function calculate(string expr) returns int|error {
