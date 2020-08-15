@@ -7,7 +7,7 @@ import ballerina/http;
 public function main() {
     io:println("Worker execution started");
 
-    // This block belongs to the worker `w1`.
+    // This block belongs to the `w1` worker.
     worker w1 {
         http:Client httpClient = new ("https://api.mathjs.org");
         var response = httpClient->get("/v4/?expr=2*3");
