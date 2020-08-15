@@ -10,11 +10,13 @@ public function main() {
     fork {
         worker w1 returns int {
             var response = checkpanic httpClient->get("/v4/?expr=2*3");
-            return checkpanic 'int:fromString(checkpanic response.getTextPayload());
+            return checkpanic 'int:fromString(
+                checkpanic response.getTextPayload());
         }
         worker w2 returns int {
             var response = checkpanic httpClient->get("/v4/?expr=9*4");
-            return checkpanic 'int:fromString(checkpanic response.getTextPayload());
+            return checkpanic 'int:fromString(
+                checkpanic response.getTextPayload());
         }
     }
 
