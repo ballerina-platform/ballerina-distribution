@@ -3,7 +3,7 @@ import ballerina/io;
 import ballerina/lang.'int;
 
 public function main() {
-    // Asynchronously call the function 'calculate'
+    // Call the 'calculate' function asynchronously.
     future<int> f1 = start calculate("365*24");
     // Do some other processing
     int secondsInHour = 60 * 60;
