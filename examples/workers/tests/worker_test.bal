@@ -1,22 +1,14 @@
 import ballerina/test;
 
-(string|error)[] outputs = [];
-int counter = 0;
+string[] outputs = [];
 
-// This is the mock function that replaces the real function.
+// This is the mock function which will replace the real function
 @test:Mock {
     moduleName: "ballerina/io",
     functionName: "println"
 }
-public function mockPrint(any|error... s) {
-    string outStr = "";
-    foreach var str in s {
-        outStr = outStr + str.toString();
-    }
-    lock {
-        outputs[counter] = outStr;
-        counter += 1;
-    }
+public function mockPrint(any|error... val) {
+    outputs.push(val.reduce(function (any|error a, any|error b) returns string => a.toString() + b.toString(), "").toString());
 }
 
 @test:Config {}
@@ -24,11 +16,9 @@ function testFunc() {
     // Invoke the main function.
     main();
     boolean assert = false;
-    if ((outputs[1] == "sum of first 10000000 positive numbers = 50000005000000") &&
-                   (outputs[2] == "sum of squares of first 10000000 positive numbers = 1291990006563070912")) {
+    if ((outputs[1] == "Worker 2 response: 35") && (outputs[2] == "Worker 1 response: 6")) {
        assert = true;
-    } else if ((outputs[2] == "sum of first 10000000 positive numbers = 50000005000000") &&
-                   (outputs[1] == "sum of squares of first 10000000 positive numbers = 1291990006563070912")) {
+    } else if ((outputs[1] == "Worker 1 response: 6") && (outputs[2] == "Worker 2 response: 35")) {
         assert = true;
     }
     test:assertTrue(assert);
