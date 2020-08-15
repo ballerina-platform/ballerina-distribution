@@ -13,12 +13,23 @@ public function main() returns error? {
         else { w1val = result; }
         // Sends a message asynchronously to the worker `w2`.
         w1val -> w2;
+        int w2val;
         // Receives a message from the worker `w2`.
-        int w2val = check <- w2;
-        io:println("Result from w2: ", w2val);
+        int|error recv = <- w2;
+        if recv is error { return recv; }
+        else { w2val = recv; }
+        io:println("[w1] Message from w2: ", w2val);
+        // Sends messages synchronously to the worker `w3`. The worker `w1` will wait
+        // until the worker `w3` receives the message.
+        w1val ->> w3;
+        w2val -> w3;
+        // Flushes all messages sent asynchronously to the worker `w3`. The worker
+        // will halt at this point until all messages are sent or until the worker `w3`
+        // fails.
+        check flush w3;
     }
-    // A worker can return a specific value of a type or return () if 
-    // a return type is not mentioned. 
+    // A worker can have an explicit return type, or else, if a return type is not mentioned,
+    // it is equivalent to returning ().
     worker w2 returns error? {
         int|error result = calculate("17*5");
         int w2val;
@@ -29,9 +40,14 @@ public function main() returns error? {
         int|error recv = <- w1;
         if recv is error { return recv; }
         else { w1val = recv; }
-        io:println("Result from w1: ", w1val);
+        io:println("[w2] Message from w1: ", w1val);
         // Sends a message asynchronously to the worker `w1`.
         w1val + w2val -> w1;
+    }
+    worker w3 {
+        int|error w1val = <- w1;
+        int|error w2val = <- w1;
+        io:println("[w3] Messages from w1: ", w1val, ", ", w2val);
     }
     // Waits for the worker `w1`to finish.
     check wait w1;
