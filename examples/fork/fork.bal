@@ -21,7 +21,7 @@ public function main() {
     }
 
     // Workers are visible outside the `fork` as futures.
-    // The `wait` action will wait for both workers `w1` and `w2` to finish.
+    // The `wait` action will wait for both `w1` and `w2` workers to finish.
     record {int w1; int w2;} result = wait {w1, w2};
 
     // The resulting record contains returned values from each worker with
