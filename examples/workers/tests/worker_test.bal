@@ -2,7 +2,7 @@ import ballerina/test;
 
 string[] outputs = [];
 
-// This is the mock function which will replace the real function
+// This is the mock function, which will replace the real function.
 @test:Mock {
     moduleName: "ballerina/io",
     functionName: "println"
