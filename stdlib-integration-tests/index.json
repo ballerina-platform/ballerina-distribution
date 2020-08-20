@@ -2,5 +2,9 @@
   {
     "name": "Socket standard library ",
     "path": "socket"
+  },
+  {
+    "name": "Socket standard library ",
+    "path": "task"
   }
 ]
