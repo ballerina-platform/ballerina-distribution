@@ -35,12 +35,12 @@ public type Person record {
     int age;
 };
 
-listener http:Listener taskAttachmentListener = new(15004);
+listener http:Listener taskAttachmentListener = new (15004);
 
 service timerService1 = service {
     resource function onTrigger(Person person) {
         person.age = person.age + 1;
-        result = <@untainted string> (person.name + " is " + person.age.toString() + " years old");
+        result = <@untainted string>(person.name + " is " + person.age.toString() + " years old");
     }
 };
 
@@ -63,29 +63,29 @@ service service2 = service {
 };
 
 @http:ServiceConfig {
-	basePath: "/"
+    basePath: "/"
 }
 service TimerAttachmentHttpService on taskAttachmentListener {
     @http:ResourceConfig {
         methods: ["GET"]
     }
     resource function getTaskAttachmentResult(http:Caller caller, http:Request request) {
-		var sendResult = caller->respond(result);
-	}
+        var sendResult = caller->respond(result);
+    }
 
-	@http:ResourceConfig {
-	    methods: ["GET"]
-	}
-	resource function getMultipleServicesResult(http:Caller caller, http:Request request) {
-	    if (firstTriggered && secondTriggered) {
+    @http:ResourceConfig {
+        methods: ["GET"]
+    }
+    resource function getMultipleServicesResult(http:Caller caller, http:Request request) {
+        if (firstTriggered && secondTriggered) {
             var result = caller->respond(MULTI_SERVICE_SUCCESS_RESPONSE);
         } else {
             var result = caller->respond(MULTI_SERVICE_FAILURE_RESPONSE);
         }
-	}
+    }
 }
 
-@test:Config{}
+@test:Config {}
 function testTaskTimerWithAttachment() {
     Person person = {
         name: "Sam",
@@ -93,7 +93,7 @@ function testTaskTimerWithAttachment() {
     };
 
     http:Client taskTimerClientEndpoint1 = new ("http://localhost:15004");
-    task:Scheduler taskTimer = new({ intervalInMillis: 1000, initialDelayInMillis: 1000, noOfRecurrences: 5 });
+    task:Scheduler taskTimer = new ({intervalInMillis: 1000, initialDelayInMillis: 1000, noOfRecurrences: 5});
     var attachResult = taskTimer.attach(timerService1, person);
     if (attachResult is task:SchedulerError) {
         panic attachResult;
@@ -105,26 +105,26 @@ function testTaskTimerWithAttachment() {
     // Sleep for 8 seconds to check whether the task is running for more than 5 times.
     runtime:sleep(8000);
     var response = taskTimerClientEndpoint1->get("/getTaskAttachmentResult");
-    checkpanic  taskTimer.stop();
+    checkpanic taskTimer.stop();
     if (response is http:Response) {
-        test:assertEquals(response.getTextPayload(), "Sam is 5 years old", msg = "Response code mismatched");
+        test:assertEquals(response.getTextPayload(), "Sam is 5 years old", msg = "Response payload mismatched");
     } else {
         test:assertFail(msg = response.message());
     }
 }
 
-@test:Config{}
+@test:Config {}
 function testTaskTimerWithMultipleServices() {
     http:Client taskTimerClientEndpoint2 = new ("http://localhost:15004");
-    task:Scheduler timerWithMultipleServices = new({ intervalInMillis: 1000 });
+    task:Scheduler timerWithMultipleServices = new ({intervalInMillis: 1000});
     checkpanic timerWithMultipleServices.attach(service1);
     checkpanic timerWithMultipleServices.attach(service2);
     checkpanic timerWithMultipleServices.start();
     runtime:sleep(4000);
     var response = taskTimerClientEndpoint2->get("/getMultipleServicesResult");
-    checkpanic  timerWithMultipleServices.stop();
+    checkpanic timerWithMultipleServices.stop();
     if (response is http:Response) {
-        test:assertEquals(response.getTextPayload(), MULTI_SERVICE_SUCCESS_RESPONSE, msg = "Response code mismatched");
+        test:assertEquals(response.getTextPayload(), MULTI_SERVICE_SUCCESS_RESPONSE, msg = "Response payload mismatched");
     } else {
         test:assertFail(msg = response.message());
     }

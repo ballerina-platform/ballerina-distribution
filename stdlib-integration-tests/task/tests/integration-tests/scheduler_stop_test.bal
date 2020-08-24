@@ -22,13 +22,13 @@ import ballerina/test;
 const SUCCESS_RESPONSE = "Task successfully stopped";
 const FAILURE_RESPONSE = "Stopping the task failed";
 
-listener http:Listener timerStopListener = new(15006);
+listener http:Listener timerStopListener = new (15006);
 
 int count = 0;
 
 service timerService = service {
     resource function onTrigger() {
-         count = count + 1;
+        count = count + 1;
     }
 };
 
@@ -50,21 +50,21 @@ service TimerStopResultService on timerStopListener {
     }
 }
 
-@test:Config{}
+@test:Config {}
 function testSchedulerStop() {
     http:Client clientEndpoint = new ("http://localhost:15006");
     task:TimerConfiguration configuration = {
         intervalInMillis: 500,
         initialDelayInMillis: 1000
     };
-    task:Scheduler timer = new(configuration);
+    task:Scheduler timer = new (configuration);
     checkpanic timer.attach(timerService);
     checkpanic timer.start();
     runtime:sleep(4000);
     var response = clientEndpoint->get("/getTimerStopResult");
-    checkpanic  timer.stop();
+    checkpanic timer.stop();
     if (response is http:Response) {
-        test:assertEquals(response.getTextPayload(), SUCCESS_RESPONSE, msg = "Response code mismatched");
+        test:assertEquals(response.getTextPayload(), SUCCESS_RESPONSE, msg = "Response payload mismatched");
     } else {
         test:assertFail(msg = response.message());
     }

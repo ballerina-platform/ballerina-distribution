@@ -19,7 +19,7 @@ import ballerina/runtime;
 import ballerina/task;
 import ballerina/test;
 
-listener http:Listener multipleServicesListener = new(15003);
+listener http:Listener multipleServicesListener = new (15003);
 
 const APPOINTMENT_MULTI_SERVICE_SUCCESS_RESPONSE = "Multiple services invoked";
 const LIMITED_RUNS_SUCCESS_RESPONSE = "Scheduler triggered limited times";
@@ -33,8 +33,8 @@ int appoinmentTriggerCount3 = 0;
 
 service appointmentService1 = service {
     resource function onTrigger() {
-         appoinmentTriggerCount1 += 1;
-        if ( appoinmentTriggerCount1 > 3) {
+        appoinmentTriggerCount1 += 1;
+        if (appoinmentTriggerCount1 > 3) {
             appoinmentFirstTriggered = true;
         }
     }
@@ -42,7 +42,7 @@ service appointmentService1 = service {
 
 service appointmentService2 = service {
     resource function onTrigger() {
-         appoinmentTriggerCount2 += 1;
+        appoinmentTriggerCount2 += 1;
         if (appoinmentTriggerCount2 > 3) {
             appoinmentSecondTriggered = true;
         }
@@ -51,7 +51,7 @@ service appointmentService2 = service {
 
 service appointmentService3 = service {
     resource function onTrigger() {
-         appoinmentTriggerCount3 += 1;
+        appoinmentTriggerCount3 += 1;
     }
 };
 
@@ -60,7 +60,7 @@ service appointmentService3 = service {
 }
 service MultipleServiceListener on multipleServicesListener {
     @http:ResourceConfig {
-        methods:["GET"]
+        methods: ["GET"]
     }
     resource function getMultipleServiceResult(http:Caller caller, http:Request request) {
         if (appoinmentFirstTriggered && appoinmentSecondTriggered) {
@@ -71,7 +71,7 @@ service MultipleServiceListener on multipleServicesListener {
     }
 
     @http:ResourceConfig {
-        methods:["GET"]
+        methods: ["GET"]
     }
     resource function getLimitedNumberOfRunsResult(http:Caller caller, http:Request request) {
         // Sleep for 5 seconds, as the scheduler is scheduled to run every second, for only three times.
@@ -86,26 +86,26 @@ service MultipleServiceListener on multipleServicesListener {
     }
 }
 
-@test:Config{}
+@test:Config {}
 function testSchedulerWithMultipleServices() {
     http:Client multipleAttachmentClientEndpoint = new ("http://localhost:15003");
     string cronExpression = "* * * * * ? *";
-    task:Scheduler appointment = new({ appointmentDetails: cronExpression });
+    task:Scheduler appointment = new ({appointmentDetails: cronExpression});
 
     checkpanic appointment.attach(appointmentService1);
     checkpanic appointment.attach(appointmentService2);
     checkpanic appointment.start();
     runtime:sleep(4000);
     var response = multipleAttachmentClientEndpoint->get("/getMultipleServiceResult");
-    checkpanic  appointment.stop();
+    checkpanic appointment.stop();
     if (response is http:Response) {
-        test:assertEquals(response.getTextPayload(), MULTI_SERVICE_SUCCESS_RESPONSE, msg = "Response code mismatched");
+        test:assertEquals(response.getTextPayload(), MULTI_SERVICE_SUCCESS_RESPONSE, msg = "Response payload mismatched");
     } else {
         test:assertFail(msg = response.message());
     }
 }
 
-@test:Config{}
+@test:Config {}
 function testLimitedNumberOfRuns() {
     http:Client multipleAttachmentClientEndpoint = new ("http://localhost:15003");
     string cronExpression = "* * * * * ? *";
@@ -114,13 +114,13 @@ function testLimitedNumberOfRuns() {
         noOfRecurrences: 3
     };
 
-    task:Scheduler appointmentWithLimitedRuns = new(configuration);
+    task:Scheduler appointmentWithLimitedRuns = new (configuration);
     var result = appointmentWithLimitedRuns.attach(appointmentService3);
     checkpanic appointmentWithLimitedRuns.start();
     var response = multipleAttachmentClientEndpoint->get("/getLimitedNumberOfRunsResult");
-    checkpanic  appointmentWithLimitedRuns.stop();
+    checkpanic appointmentWithLimitedRuns.stop();
     if (response is http:Response) {
-        test:assertEquals(response.getTextPayload(), LIMITED_RUNS_SUCCESS_RESPONSE, msg = "Response code mismatched");
+        test:assertEquals(response.getTextPayload(), LIMITED_RUNS_SUCCESS_RESPONSE, msg = "Response payload mismatched");
     } else {
         test:assertFail(msg = response.message());
     }

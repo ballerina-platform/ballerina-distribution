@@ -27,7 +27,7 @@ task:TimerConfiguration configuration = {
 const PAUSE_RESUME_SUCCESS_RESPONSE = "Successfully paused and resumed";
 const PAUSE_RESUME_FAILURE_RESPONSE = "Pause and resume failed";
 
-listener http:Listener timerPauseResumeListener = new(15005);
+listener http:Listener timerPauseResumeListener = new (15005);
 
 int counter1 = 0;
 int counter2 = 0;
@@ -45,26 +45,26 @@ service pauseResumetimerService2 = service {
 };
 
 @http:ServiceConfig {
-	basePath: "/"
+    basePath: "/"
 }
 service TimerHttpService on timerPauseResumeListener {
     @http:ResourceConfig {
-        methods:["GET"]
+        methods: ["GET"]
     }
     resource function getTaskPauseResumeResult(http:Caller caller, http:Request request) {
-		if (counter1 > 3 && (counter2 - counter1) > 4) {
-		    var result = caller->respond(PAUSE_RESUME_SUCCESS_RESPONSE);
-		} else {
-		    var result = caller->respond(PAUSE_RESUME_FAILURE_RESPONSE);
-		}
-	}
+        if (counter1 > 3 && (counter2 - counter1) > 4) {
+            var result = caller->respond(PAUSE_RESUME_SUCCESS_RESPONSE);
+        } else {
+            var result = caller->respond(PAUSE_RESUME_FAILURE_RESPONSE);
+        }
+    }
 }
 
-@test:Config{}
+@test:Config {}
 function testTaskPauseAndResume() {
     http:Client clientEndpoint = new ("http://localhost:15005");
-    task:Scheduler timer1 = new(configuration);
-    task:Scheduler timer2 = new(configuration);
+    task:Scheduler timer1 = new (configuration);
+    task:Scheduler timer2 = new (configuration);
     checkpanic timer1.attach(pauseResumetimerService1);
     checkpanic timer2.attach(pauseResumetimerService2);
     checkpanic timer1.start();
@@ -80,10 +80,10 @@ function testTaskPauseAndResume() {
     }
     runtime:sleep(4000);
     var response = clientEndpoint->get("/getTaskPauseResumeResult");
-    checkpanic  timer1.stop();
-    checkpanic  timer2.stop();
+    checkpanic timer1.stop();
+    checkpanic timer2.stop();
     if (response is http:Response) {
-        test:assertEquals(response.getTextPayload(), PAUSE_RESUME_SUCCESS_RESPONSE, msg = "Response code mismatched");
+        test:assertEquals(response.getTextPayload(), PAUSE_RESUME_SUCCESS_RESPONSE, msg = "Response payload mismatched");
     } else {
         test:assertFail(msg = response.message());
     }

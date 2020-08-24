@@ -4,7 +4,7 @@
     "path": "socket"
   },
   {
-    "name": "Socket standard library ",
+    "name": "Task standard library ",
     "path": "task"
   }
 ]

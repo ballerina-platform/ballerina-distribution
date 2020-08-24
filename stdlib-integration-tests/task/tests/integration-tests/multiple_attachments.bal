@@ -40,7 +40,7 @@ service TimerService = service {
 
 function getResult() returns string {
     return "Name: " + name + " Age: " + age.toString() + " A/C: " + acNumber.toString() + " Balance: " + balance
-        .toString();
+        . toString();
 }
 
 listener http:Listener multipleAttachmentsListener = new (15007);
@@ -57,7 +57,7 @@ service MultipleAttachmentsService on multipleAttachmentsListener {
     }
 }
 
-@test:Config{}
+@test:Config {}
 function multipleAttachmentTest() {
     http:Client multipleAttachmentClientEndpoint = new ("http://localhost:15007");
     Person sam = {name: "Sam", age: 29};
@@ -68,10 +68,10 @@ function multipleAttachmentTest() {
     var startResult = multipleAttachmentTimer.start();
     runtime:sleep(4000);
     var response = multipleAttachmentClientEndpoint->get("/getMultipleAttachmentResult");
-    checkpanic  multipleAttachmentTimer.stop();
+    checkpanic multipleAttachmentTimer.stop();
     if (response is http:Response) {
         test:assertEquals(response.getTextPayload(), "Name: Sam Age: 29 A/C: 150590 Balance: 11.35",
-                            msg = "Response code mismatched");
+            msg = "Response payload mismatched");
     } else {
         test:assertFail(msg = response.message());
     }

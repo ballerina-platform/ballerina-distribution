@@ -22,28 +22,26 @@ import ballerina/test;
 const HTTP_MESSAGE = "Hello from http service";
 const TASK_MESSAGE = "Hello from task service";
 
-http:Client httpClient = new("http://localhost:15001/HttpService");
-listener http:Listener backEndListener = new(15001);
-listener http:Listener clientListener = new(15002);
+http:Client httpClient = new ("http://localhost:15001/HttpService");
+listener http:Listener backEndListener = new (15001);
+listener http:Listener clientListener = new (15002);
 
 string http_payload = "";
 
 service PostToHttpService = service {
     resource function onTrigger(string message) {
         http:Request request = new;
-        request.setTextPayload(<@untainted string> message);
+        request.setTextPayload(<@untainted string>message);
         var result = httpClient->post("/", request);
         if (result is http:ClientError) {
-            error err = result;
-            panic err;
+            panic result;
         } else {
             if (result.statusCode == 200) {
                 var payload = result.getTextPayload();
                 if (payload is http:ClientError) {
-                    error err = payload;
-                    panic err;
+                    panic payload;
                 } else {
-                    http_payload = <@untainted string> payload;
+                    http_payload = <@untainted string>payload;
                 }
             }
         }
@@ -55,18 +53,18 @@ service PostToHttpService = service {
 }
 service GetResultService on clientListener {
     @http:ResourceConfig {
-        methods:["GET"],
-        path:"/"
+        methods: ["GET"],
+        path: "/"
     }
     resource function getResult(http:Caller caller, http:Request request) {
-	    var result = caller->respond(http_payload);
+        var result = caller->respond(http_payload);
     }
 }
 
 service HttpService on backEndListener {
     @http:ResourceConfig {
-        methods:["POST"],
-        path:"/"
+        methods: ["POST"],
+        path: "/"
     }
     resource function handlePost(http:Caller caller, http:Request request) {
         http:Response response = new;
@@ -85,16 +83,15 @@ service HttpService on backEndListener {
         }
         var result = caller->respond(response);
         if (result is http:ListenerError) {
-            error err = result;
-            panic err;
+            panic result;
         }
     }
 }
 
-@test:Config{}
+@test:Config {}
 function testTaskWithHttpClient() {
     http:Client multipleAttachmentClientEndpoint = new ("http://localhost:15002");
-    task:Scheduler timerForHttpClient = new({ intervalInMillis: 1000, initialDelayInMillis: 1000 });
+    task:Scheduler timerForHttpClient = new ({intervalInMillis: 1000, initialDelayInMillis: 1000});
     var attachResult = timerForHttpClient.attach(PostToHttpService, TASK_MESSAGE);
     if (attachResult is task:SchedulerError) {
         panic attachResult;
@@ -106,9 +103,9 @@ function testTaskWithHttpClient() {
     }
     runtime:sleep(4000);
     var response = multipleAttachmentClientEndpoint->get("/");
-    checkpanic  timerForHttpClient.stop();
+    checkpanic timerForHttpClient.stop();
     if (response is http:Response) {
-        test:assertEquals(response.getTextPayload(), HTTP_MESSAGE, msg = "Response code mismatched");
+        test:assertEquals(response.getTextPayload(), HTTP_MESSAGE, msg = "Response payload mismatched");
     } else {
         test:assertFail(msg = response.message());
     }
