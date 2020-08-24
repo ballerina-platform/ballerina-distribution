@@ -16,7 +16,7 @@ type StockKeeper object {
 StockKeeper stockKeeper = new;
 
 public function main() {
-    // Two workers executing the `add` method in `StockKeeper` concurrently, 
+    // Two workers executing the `add` method in `StockKeeper` concurrently
     // where their strands are executed in their own threads.
     @strand {
         thread:"any"
