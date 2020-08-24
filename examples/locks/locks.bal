@@ -37,7 +37,7 @@ public function main() {
     _ = wait { w1, w2 };
     // The amount would have a consistent result always since it was locked before incrementing.
     io:println("Amount: ", stockKeeper.amount);
-    // The request count will be inconsistent between runs, since its field access was not 
+    // The request count will be inconsistent between runs since its field access was not 
     // secured with locking to provide correct concurrent access behavior.
     io:println("Request Count: ", stockKeeper.requestCount);
 }
