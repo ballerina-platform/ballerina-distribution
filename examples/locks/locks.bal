@@ -4,7 +4,7 @@ type StockKeeper object {
     int requestCount = 0;
     int amount = 0;
     public function add(int n) {
-        // Locks the `amount` field and increment it by `n`.
+        // Locks the `amount` field and increments it by `n`.
         lock {
             self.amount += n;
         }
