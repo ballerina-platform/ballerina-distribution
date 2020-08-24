@@ -8,7 +8,7 @@ type StockKeeper object {
         lock {
             self.amount += n;
         }
-        // Increments the `requentCount` field, this does not lock the field.
+        // Increments the `requentCount` field. This does not lock the field.
         self.requestCount += 1;
     }
 };
