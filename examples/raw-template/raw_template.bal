@@ -49,7 +49,7 @@ type Query abstract object {
     // - Using a tuple type to ensure the string/interpolation at a given
     // position in the raw template expression is of the correct, expected
     // type.
-    public string[3] strings;
+    public string[3] & readonly strings;
     public [string, int] insertions;
 };
 
