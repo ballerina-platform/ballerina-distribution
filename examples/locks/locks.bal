@@ -1,68 +1,43 @@
 import ballerina/io;
 
-// The `counter` variable will be shared among multiple workers.
-int counter = 0;
-
-public function main() {
-    process();
-    io:println("final counter value - ", counter);
-    io:println("final count field value - ", counterObj.count);
-}
-
-type Counter object {
-    int count = 0;
-
-    public function update() {
-        foreach var i in 1 ... 1000 {
-            lock {
-                // Locks the `count` field variable and increments the `count`.
-                // The `count` field of the same object instance will be locked.
-                self.count = self.count + 1;
-            }
+type StockKeeper object {
+    int requestCount = 0;
+    int amount = 0;
+    public function add(int n) {
+        // Locks the `amount` field and increments it by `n`.
+        lock {
+            self.amount += n;
         }
+        // Increments the `requentCount` field. This does not lock the field.
+        self.requestCount += 1;
     }
 };
-// The `counterObj` object instance will be shared among multiple workers.
-Counter counterObj = new;
 
-function process() {
+StockKeeper stockKeeper = new;
+
+public function main() {
+    // Two workers executing the `add` method in `StockKeeper` concurrently
+    // in which their strands are executed in their own threads.
+    @strand {
+        thread:"any"
+    }
     worker w1 {
-        counterObj.update();
-        // Locks the shared `counter` variable and increments the `counter`.
         foreach var i in 1 ... 1000 {
-            lock {
-                // Locks the shared `counter` variable and increments the `counter`.
-                counter = counter + 1;
-            }
+            stockKeeper.add(25);
         }
+    }
+    @strand {
+        thread:"any"
     }
     worker w2 {
-        counterObj.update();
         foreach var i in 1 ... 1000 {
-            lock {
-                // Locks the shared `counter` variable and increments the `counter`.
-                counter = counter + 1;
-            }
+            stockKeeper.add(25);
         }
     }
-    worker w3 {
-        counterObj.update();
-        foreach var i in 1 ... 1000 {
-            lock {
-                // Locks the shared `counter` variable and increments the `counter`.
-                counter = counter + 1;
-            }
-        }
-    }
-    worker w4 {
-        counterObj.update();
-        foreach var i in 1 ... 1000 {
-            lock {
-                // Locks the shared `counter` variable and increments the `counter`.
-                counter = counter + 1;
-            }
-        }
-    }
-    // Waits for all workers to complete.
-    var result = wait {w1, w2, w3, w4};
+    _ = wait { w1, w2 };
+    // The amount would have a consistent result always since it was locked before incrementing.
+    io:println("Amount: ", stockKeeper.amount);
+    // The request count will be inconsistent between runs since its field access was not 
+    // secured with locking to provide correct concurrent access behavior.
+    io:println("Request Count: ", stockKeeper.requestCount);
 }
