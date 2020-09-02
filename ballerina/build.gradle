@@ -994,7 +994,8 @@ task testExamples() {
         'http-circuit-breaker',
         'request-with-multiparts',
         'file',
-        'base-path-and-path'
+        'base-path-and-path',
+        'locks'                     // Output is inconsistent between runs
     ]
 
     doFirst {
