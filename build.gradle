@@ -249,8 +249,8 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:rabbitmq-ballerina:${stdlibRabbitmqVersion}"
         ballerinaStdLibs "org.ballerinalang:xslt-ballerina:${stdlibXsltVersion}"
         ballerinaStdLibs "org.ballerinalang:nats-ballerina:${stdlibNatsVersion}"
-        ballerinaStdLibs "org.ballerinalang:nats-ballerina:${stdlibTaskVersion}"
-        ballerinaStdLibs "org.ballerinalang:nats-ballerina:${stdlibCacheVersion}"
+        ballerinaStdLibs "org.ballerinalang:task-ballerina:${stdlibTaskVersion}"
+        ballerinaStdLibs "org.ballerinalang:cache-ballerina:${stdlibCacheVersion}"
 
         balCommand "org.ballerinalang:ballerina-command-distribution:${ballerinaCommandVersion}@zip"
     }
