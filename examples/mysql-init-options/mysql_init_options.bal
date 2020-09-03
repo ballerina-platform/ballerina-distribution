@@ -15,7 +15,7 @@ function initializeClients() returns sql:Error? {
     mysql:Client|sql:Error mysqlClient1 = new ();
     if (mysqlClient1 is sql:Error) {
         io:println("Error when initializing the MySQL client without any " +
-            "params. ", mysqlClient1);
+            "params. ", mysqlClient1.message());
     } else {
         io:println("Simple MySQL client created successfully");
         check mysqlClient1.close();
