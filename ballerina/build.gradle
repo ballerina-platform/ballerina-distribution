@@ -1217,12 +1217,10 @@ task testExamples() {
         }
         
         boolean buildFailure = false
-        File reportDetails = new File("${baseBuildPath}/result.txt")
         if (!failedBuildExamples.isEmpty()) {
             println "\n\tThe following BBEs failed when building\n"
             failedBuildExamples.each {
                 println "\t ${it}"
-                reportDetails << "Build failed: ${it} \n"
             }
             sleep(10 * 1000)
             buildFailure = true
@@ -1232,7 +1230,6 @@ task testExamples() {
             println "\n\tThe following BBEs failed when verifying output\n"
             failOutputVerificationExamples.each {
                 println "\t ${it}"
-                reportDetails << "Output verification failed: ${it} \n"
             }
             sleep(10 * 1000)
             buildFailure = true
