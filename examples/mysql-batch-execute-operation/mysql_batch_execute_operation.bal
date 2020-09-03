@@ -1,6 +1,6 @@
 import ballerina/io;
-import ballerina/mysql;
 import ballerina/sql;
+import ballerinax/mysql;
 
 // The username and password of the MySQL database. This is used in the below
 // examples when initializing the MySQL connector. You need to change these
