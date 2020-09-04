@@ -46,6 +46,8 @@ ext {
     stdlibNatsVersion = project.stdlibNatsVersion
     stdlibTaskVersion = project.stdlibTaskVersion
     stdlibCacheVersion = project.stdlibCacheVersion
+    stdlibRuntimeVersion = project.stdlibRuntimeVersion
+    stdlibSystemVersion = project.stdlibSystemVersion
 }
 
 allprojects {
@@ -174,8 +176,22 @@ subprojects {
                 password System.getenv("packagePAT")
             }
         }
+         maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-system"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
         maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-cache"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+         maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-runtime"
             credentials {
                 username System.getenv("packageUser")
                 password System.getenv("packagePAT")
@@ -253,6 +269,8 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:nats-ballerina:${stdlibNatsVersion}"
         ballerinaStdLibs "org.ballerinalang:task-ballerina:${stdlibTaskVersion}"
         ballerinaStdLibs "org.ballerinalang:cache-ballerina:${stdlibCacheVersion}"
+        ballerinaStdLibs "org.ballerinalang:system-ballerina:${stdlibSystemVersion}"
+        ballerinaStdLibs "org.ballerinalang:runtime-ballerina:${stdlibRuntimeVersion}"
 
         balCommand "org.ballerinalang:ballerina-command-distribution:${ballerinaCommandVersion}@zip"
     }
