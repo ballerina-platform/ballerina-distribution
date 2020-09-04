@@ -44,6 +44,8 @@ ext {
     stdlibRabbitmqVersion = project.stdlibRabbitmqVersion
     stdlibXsltVersion = project.stdlibXsltVersion
     stdlibNatsVersion = project.stdlibNatsVersion
+    stdlibRuntimeVersion = project.stdlibRuntimeVersion
+    stdlibSystemVersion = project.stdlibSystemVersion
 }
 
 allprojects {
@@ -165,6 +167,20 @@ subprojects {
                 password System.getenv("packagePAT")
             }
         }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-system"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-runtime"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
 
         maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-sql"
@@ -260,6 +276,8 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:rabbitmq-ballerina:${stdlibRabbitmqVersion}"
         ballerinaStdLibs "org.ballerinalang:xslt-ballerina:${stdlibXsltVersion}"
         ballerinaStdLibs "org.ballerinalang:nats-ballerina:${stdlibNatsVersion}"
+        ballerinaStdLibs "org.ballerinalang:system-ballerina:${stdlibSystemVersion}"
+        ballerinaStdLibs "org.ballerinalang:runtime-ballerina:${stdlibRuntimeVersion}"
         ballerinaStdLibs "org.ballerinalang:sql-ballerina:${stdlibSqlVersion}"
         ballerinaStdLibs "org.ballerinalang:java.jdbc-ballerina:${stdlibJdbcVersion}"
         ballerinaStdLibs "org.ballerinalang:mysql-ballerina:${stdlibMySqlVersion}"
