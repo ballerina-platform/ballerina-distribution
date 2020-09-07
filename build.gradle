@@ -238,6 +238,14 @@ subprojects {
             }
         }
 
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-io"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+
         /* Ballerina lang staging repository */
         maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1614/" }
         /* Docker staging repository */
@@ -317,6 +325,7 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:mysql-ballerina:${stdlibMySqlVersion}"
         ballerinaStdLibs "org.ballerinalang:config-ballerina:${stdlibConfigVersion}"
         ballerinaStdLibs "org.ballerinalang:reflect-ballerina:${stdlibReflectVersion}"
+        ballerinaStdLibs "org.ballerinalang:io-ballerina:${stdlibIoVersion}"
 
         balCommand "org.ballerinalang:ballerina-command-distribution:${ballerinaCommandVersion}@zip"
     }
