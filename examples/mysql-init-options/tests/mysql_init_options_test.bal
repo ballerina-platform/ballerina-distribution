@@ -40,7 +40,7 @@ public function mockPrint(any|error... s) {
 }
 function testFunc() {
     main();
-    test:assertEquals(outputs[0], "Error when initializing the MySQL client without any params. error error in sql connector configuration: Failed to initialize pool: Access denied for user ''@'localhost' (using password: NO) Caused by :Access denied for user ''@'localhost' (using password: NO)");
+    test:assertEquals(outputs[0], "Error when initializing the MySQL client without any params. Error in SQL connector configuration: Failed to initialize pool: Access denied for user ''@'localhost' (using password: NO) Caused by :Access denied for user ''@'localhost' (using password: NO)");
     test:assertEquals(outputs[1], "MySQL client with user and password created.");
     test:assertEquals(outputs[2], "MySQL client with user and password created with default host.");
     test:assertEquals(outputs[3], "MySQL client with host, user, password, database and port created.");
