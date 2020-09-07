@@ -48,6 +48,7 @@ ext {
     stdlibCacheVersion = project.stdlibCacheVersion
     stdlibRuntimeVersion = project.stdlibRuntimeVersion
     stdlibSystemVersion = project.stdlibSystemVersion
+    stdlibConfigVersion = project.stdlibConfigVersion
 }
 
 allprojects {
@@ -170,7 +171,7 @@ subprojects {
             }
         }
         maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-task"
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-task"
             credentials {
                 username System.getenv("packageUser")
                 password System.getenv("packagePAT")
@@ -184,7 +185,7 @@ subprojects {
             }
         }
         maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-cache"
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-cache"
             credentials {
                 username System.getenv("packageUser")
                 password System.getenv("packagePAT")
@@ -192,6 +193,13 @@ subprojects {
         }
          maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-runtime"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-config"
             credentials {
                 username System.getenv("packageUser")
                 password System.getenv("packagePAT")
@@ -299,6 +307,7 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:sql-ballerina:${stdlibSqlVersion}"
         ballerinaStdLibs "org.ballerinalang:java.jdbc-ballerina:${stdlibJdbcVersion}"
         ballerinaStdLibs "org.ballerinalang:mysql-ballerina:${stdlibMySqlVersion}"
+        ballerinaStdLibs "org.ballerinalang:config-ballerina:${stdlibConfigVersion}"
 
         balCommand "org.ballerinalang:ballerina-command-distribution:${ballerinaCommandVersion}@zip"
     }
