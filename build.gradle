@@ -47,6 +47,11 @@ ext {
     stdlibFileVersion = project.stdlibFileVersion
     stdlibTimeVersion = project.stdlibTimeVersion
     stdlibFilepathVersion = project.stdlibFilepathVersion
+    stdlibTaskVersion = project.stdlibTaskVersion
+    stdlibCacheVersion = project.stdlibCacheVersion
+    stdlibRuntimeVersion = project.stdlibRuntimeVersion
+    stdlibSystemVersion = project.stdlibSystemVersion
+    stdlibConfigVersion = project.stdlibConfigVersion
 }
 
 allprojects {
@@ -169,12 +174,73 @@ subprojects {
             }
         }
         maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-task"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-system"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-cache"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+         maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-runtime"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-config"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-sql"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-java.jdbc"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-mysql"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+
+        maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-file"
             credentials {
                 username System.getenv("packageUser")
                 password System.getenv("packagePAT")
             }
         }
+        
         maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-time"
             credentials {
@@ -182,6 +248,7 @@ subprojects {
                 password System.getenv("packagePAT")
             }
         }
+        
         maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-filepath"
             credentials {
@@ -189,6 +256,7 @@ subprojects {
                 password System.getenv("packagePAT")
             }
         }
+        
         /* Ballerina lang staging repository */
         maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1614/" }
         /* Docker staging repository */
@@ -262,6 +330,14 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:file-ballerina:${stdlibFileVersion}"
         ballerinaStdLibs "org.ballerinalang:time-ballerina:${stdlibTimeVersion}"
         ballerinaStdLibs "org.ballerinalang:filepath-ballerina:${stdlibFilepathVersion}"
+        ballerinaStdLibs "org.ballerinalang:task-ballerina:${stdlibTaskVersion}"
+        ballerinaStdLibs "org.ballerinalang:cache-ballerina:${stdlibCacheVersion}"
+        ballerinaStdLibs "org.ballerinalang:system-ballerina:${stdlibSystemVersion}"
+        ballerinaStdLibs "org.ballerinalang:runtime-ballerina:${stdlibRuntimeVersion}"
+        ballerinaStdLibs "org.ballerinalang:sql-ballerina:${stdlibSqlVersion}"
+        ballerinaStdLibs "org.ballerinalang:java.jdbc-ballerina:${stdlibJdbcVersion}"
+        ballerinaStdLibs "org.ballerinalang:mysql-ballerina:${stdlibMySqlVersion}"
+        ballerinaStdLibs "org.ballerinalang:config-ballerina:${stdlibConfigVersion}"
 
         balCommand "org.ballerinalang:ballerina-command-distribution:${ballerinaCommandVersion}@zip"
     }

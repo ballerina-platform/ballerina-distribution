@@ -1,6 +1,6 @@
 import ballerina/io;
-import ballerina/mysql;
 import ballerina/sql;
+import ballerinax/mysql;
 
 // The username and password of the MySQL database. This is used in the below
 // examples when initializing the MySQL connector. You need to change these
@@ -77,7 +77,7 @@ function insertRecord(mysql:Client sqlClient) {
 
     // Execute the stored procedure.
     sql:ProcedureCallResult|sql:Error retCall = sqlClient->call(sqlQuery);
-    
+
     if (retCall is sql:ProcedureCallResult) {
         io:println("Call stored procedure `InsertStudent` is successful : ", 
                 retCall.executionResult);
@@ -99,7 +99,7 @@ function getCount(mysql:Client sqlClient) {
 
     // Execute the stored procedure.
     sql:ProcedureCallResult|sql:Error retCall = sqlClient->call(sqlQuery);
-    
+
     if (retCall is sql:ProcedureCallResult) {
         io:println("Call stored procedure `GetCount` is successful.");
         io:println("Age of the student with id '1' : ", id.get(int));
