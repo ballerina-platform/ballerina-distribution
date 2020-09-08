@@ -4,5 +4,5 @@ ballerina run kafka_consumer_client.bal
 
 # Then it will print the following lines in the Console, and the
 # received messages if there's any.
-[ballerina/kafka] kafka servers: localhost:9092
-[ballerina/kafka] subscribed topics: test-kafka-topic
+[ballerinax/kafka] kafka servers: localhost:9092
+[ballerinax/kafka] subscribed topics: test-kafka-topic

@@ -1,4 +1,4 @@
-import ballerina/kafka;
+import ballerinax/kafka;
 import ballerina/log;
 
 // The `kafka:AuthenticationConfiguration` is used to provide authentication-related details.
