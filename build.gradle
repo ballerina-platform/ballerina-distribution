@@ -57,6 +57,10 @@ ext {
     stdlibSystemVersion = project.stdlibSystemVersion
     stdlibConfigVersion = project.stdlibConfigVersion
     stdlibKafkaVersion = project.stdlibKafkaVersion
+    stdlibAuthVersion = project.stdlibAuthVersion
+    stdlibOAuth2Version = project.stdlibOAuth2Version
+    stdlibLdapVersion = project.stdlibLdapVersion
+    stdlibCryptoVersion = project.stdlibCryptoVersion
 }
 
 allprojects {
@@ -234,7 +238,7 @@ subprojects {
                 password System.getenv("packagePAT")
             }
         }
-         maven {
+        maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-runtime"
             credentials {
                 username System.getenv("packageUser")
@@ -248,7 +252,6 @@ subprojects {
                 password System.getenv("packagePAT")
             }
         }
-
         maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-sql"
             credentials {
@@ -256,7 +259,6 @@ subprojects {
                 password System.getenv("packagePAT")
             }
         }
-
         maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-java.jdbc"
             credentials {
@@ -264,7 +266,6 @@ subprojects {
                 password System.getenv("packagePAT")
             }
         }
-
         maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-mysql"
             credentials {
@@ -272,7 +273,6 @@ subprojects {
                 password System.getenv("packagePAT")
             }
         }
-
         maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-file"
             credentials {
@@ -280,7 +280,6 @@ subprojects {
                 password System.getenv("packagePAT")
             }
         }
-        
         maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-time"
             credentials {
@@ -288,7 +287,6 @@ subprojects {
                 password System.getenv("packagePAT")
             }
         }
-        
         maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-filepath"
             credentials {
@@ -312,7 +310,6 @@ subprojects {
                 password System.getenv("packagePAT")
             }
         }
-
         maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-stringutils"
             credentials {
@@ -320,7 +317,27 @@ subprojects {
                 password System.getenv("packagePAT")
             }
         }
-
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-auth"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-oauth2"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-ldap"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
         maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-crypto"
             credentials {
@@ -418,9 +435,11 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:reflect-ballerina:${stdlibReflectVersion}"
         ballerinaStdLibs "org.ballerinalang:io-ballerina:${stdlibIoVersion}"
         ballerinaStdLibs "org.ballerinalang:stringutils-ballerina:${stdlibStringutilsVersion}"
+        ballerinaStdLibs "org.ballerinalang:auth-ballerina:${stdlibAuthVersion}"
+        ballerinaStdLibs "org.ballerinalang:oauth2-ballerina:${stdlibOAuth2Version}"
+        ballerinaStdLibs "org.ballerinalang:ldap-ballerina:${stdlibLdapVersion}"
         ballerinaStdLibs "org.ballerinalang:crypto-ballerina:${stdlibCryptoVersion}"
 
         balCommand "org.ballerinalang:ballerina-command-distribution:${ballerinaCommandVersion}@zip"
     }
-
 }
