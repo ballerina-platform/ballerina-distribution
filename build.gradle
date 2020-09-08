@@ -272,6 +272,29 @@ subprojects {
                 password System.getenv("packagePAT")
             }
         }
+
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-reflect"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-io"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-stringutils"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
         maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-auth"
             credentials {
@@ -398,6 +421,9 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:jsonutils-ballerina:${stdlibJsonUtilsVersion}"
         ballerinaStdLibs "org.ballerinalang:xmlutils-ballerina:${stdlibXmlUtilsVersion}"
         ballerinaStdLibs "org.ballerinalang:log-ballerina:${stdlibLogVersion}"
+        ballerinaStdLibs "org.ballerinalang:reflect-ballerina:${stdlibReflectVersion}"
+        ballerinaStdLibs "org.ballerinalang:io-ballerina:${stdlibIoVersion}"
+        ballerinaStdLibs "org.ballerinalang:stringutils-ballerina:${stdlibStringutilsVersion}"
         ballerinaStdLibs "org.ballerinalang:auth-ballerina:${stdlibVersion}"
         ballerinaStdLibs "org.ballerinalang:jwt-ballerina:${stdlibJwtVersion}"
         ballerinaStdLibs "org.ballerinalang:oauth2-ballerina:${stdlibOAuth2Version}"
