@@ -37,30 +37,6 @@ ext {
     netLingalaZip4jVersion = "2.3.2"
     commonsIoVersion = "2.6"
     commonsLang3Version = "3.9"
-    stdlibSocketVersion = project.stdlibSocketVersion
-    stdlibEncodingVersion = project.stdlibEncodingVersion
-    stdlibJwtVersion = project.stdlibJwtVersion
-    stdlibWebsubVersion = project.stdlibWebsubVersion
-    stdlibMathVersion = project.stdlibMathVersion
-    stdlibJsonUtilsVersion = project.stdlibJsonUtilsVersion
-    stdlibXmlUtilsVersion = project.stdlibXmlUtilsVersion
-    stdlibLogVersion = project.stdlibLogVersion
-    stdlibRabbitmqVersion = project.stdlibRabbitmqVersion
-    stdlibXsltVersion = project.stdlibXsltVersion
-    stdlibNatsVersion = project.stdlibNatsVersion
-    stdlibFileVersion = project.stdlibFileVersion
-    stdlibTimeVersion = project.stdlibTimeVersion
-    stdlibFilepathVersion = project.stdlibFilepathVersion
-    stdlibTaskVersion = project.stdlibTaskVersion
-    stdlibCacheVersion = project.stdlibCacheVersion
-    stdlibRuntimeVersion = project.stdlibRuntimeVersion
-    stdlibSystemVersion = project.stdlibSystemVersion
-    stdlibConfigVersion = project.stdlibConfigVersion
-    stdlibKafkaVersion = project.stdlibKafkaVersion
-    stdlibAuthVersion = project.stdlibAuthVersion
-    stdlibOAuth2Version = project.stdlibOAuth2Version
-    stdlibLdapVersion = project.stdlibLdapVersion
-    stdlibCryptoVersion = project.stdlibCryptoVersion
 }
 
 allprojects {
@@ -346,6 +322,42 @@ subprojects {
             }
         }
 
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-java.arrays"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-mime"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-email"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-http"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-grpc"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+
         /* Ballerina lang staging repository */
         maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1614/" }
         /* Docker staging repository */
@@ -439,6 +451,11 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:oauth2-ballerina:${stdlibOAuth2Version}"
         ballerinaStdLibs "org.ballerinalang:ldap-ballerina:${stdlibLdapVersion}"
         ballerinaStdLibs "org.ballerinalang:crypto-ballerina:${stdlibCryptoVersion}"
+        ballerinaStdLibs "org.ballerinalang:java.arrays-ballerina:${stdlibJavaarraysVersion}"
+        ballerinaStdLibs "org.ballerinalang:mime-ballerina:${stdlibMimeVersion}"
+        ballerinaStdLibs "org.ballerinalang:email-ballerina:${stdlibEmailVersion}"
+        ballerinaStdLibs "org.ballerinalang:http-ballerina:${stdlibHttpVersion}"
+        ballerinaStdLibs "org.ballerinalang:grpc-ballerina:${stdlibGrpcVersion}"
 
         balCommand "org.ballerinalang:ballerina-command-distribution:${ballerinaCommandVersion}@zip"
     }
