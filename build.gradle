@@ -38,6 +38,8 @@ ext {
     commonsIoVersion = "2.6"
     commonsLang3Version = "3.9"
     stdlibSocketVersion = project.stdlibSocketVersion
+    stdlibEncodingVersion = project.stdlibEncodingVersion
+    stdlibJwtVersion = project.stdlibJwtVersion
     stdlibWebsubVersion = project.stdlibWebsubVersion
     stdlibMathVersion = project.stdlibMathVersion
     stdlibJsonUtilsVersion = project.stdlibJsonUtilsVersion
@@ -54,12 +56,11 @@ ext {
     stdlibRuntimeVersion = project.stdlibRuntimeVersion
     stdlibSystemVersion = project.stdlibSystemVersion
     stdlibConfigVersion = project.stdlibConfigVersion
+    stdlibKafkaVersion = project.stdlibKafkaVersion
     stdlibAuthVersion = project.stdlibAuthVersion
-    stdlibJwtVersion = project.stdlibJwtVersion
     stdlibOAuth2Version = project.stdlibOAuth2Version
     stdlibLdapVersion = project.stdlibLdapVersion
     stdlibCryptoVersion = project.stdlibCryptoVersion
-    stdlibEncodingVersion = project.stdlibEncodingVersion
 }
 
 allprojects {
@@ -140,6 +141,20 @@ subprojects {
             }
         }
         maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-encoding"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-jwt"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-websub"
             credentials {
                 username System.getenv("packageUser")
@@ -162,6 +177,13 @@ subprojects {
         }
         maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-nats"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-kafka"
             credentials {
                 username System.getenv("packageUser")
                 password System.getenv("packagePAT")
@@ -303,13 +325,6 @@ subprojects {
             }
         }
         maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-jwt"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-oauth2"
             credentials {
                 username System.getenv("packageUser")
@@ -325,13 +340,6 @@ subprojects {
         }
         maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-crypto"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-encoding"
             credentials {
                 username System.getenv("packageUser")
                 password System.getenv("packagePAT")
@@ -401,11 +409,14 @@ subprojects {
         exten "org.ballerinax.datamapper:datamapper-extension:${dataMapperVersion}@jar"
 
         /* Standard libraries */
+        ballerinaStdLibs "org.ballerinalang:encoding-ballerina:${stdlibEncodingVersion}"
         ballerinaStdLibs "org.ballerinalang:websub-ballerina:${stdlibWebsubVersion}"
+        ballerinaStdLibs "org.ballerinalang:jwt-ballerina:${stdlibJwtVersion}"
         ballerinaStdLibs "org.ballerinalang:socket-ballerina:${stdlibSocketVersion}"
         ballerinaStdLibs "org.ballerinalang:rabbitmq-ballerina:${stdlibRabbitmqVersion}"
         ballerinaStdLibs "org.ballerinalang:xslt-ballerina:${stdlibXsltVersion}"
         ballerinaStdLibs "org.ballerinalang:nats-ballerina:${stdlibNatsVersion}"
+        ballerinaStdLibs "org.ballerinalang:kafka-ballerina:${stdlibKafkaVersion}"
         ballerinaStdLibs "org.ballerinalang:file-ballerina:${stdlibFileVersion}"
         ballerinaStdLibs "org.ballerinalang:time-ballerina:${stdlibTimeVersion}"
         ballerinaStdLibs "org.ballerinalang:filepath-ballerina:${stdlibFilepathVersion}"
@@ -425,11 +436,9 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:io-ballerina:${stdlibIoVersion}"
         ballerinaStdLibs "org.ballerinalang:stringutils-ballerina:${stdlibStringutilsVersion}"
         ballerinaStdLibs "org.ballerinalang:auth-ballerina:${stdlibVersion}"
-        ballerinaStdLibs "org.ballerinalang:jwt-ballerina:${stdlibJwtVersion}"
         ballerinaStdLibs "org.ballerinalang:oauth2-ballerina:${stdlibOAuth2Version}"
         ballerinaStdLibs "org.ballerinalang:ldap-ballerina:${stdlibLdapVersion}"
         ballerinaStdLibs "org.ballerinalang:crypto-ballerina:${stdlibCryptoVersion}"
-        ballerinaStdLibs "org.ballerinalang:encoding-ballerina:${stdlibEncodingVersion}"
 
         balCommand "org.ballerinalang:ballerina-command-distribution:${ballerinaCommandVersion}@zip"
     }
