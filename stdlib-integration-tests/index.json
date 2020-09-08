@@ -10,5 +10,9 @@
   {
     "name": "JWT standard library ",
     "path": "jwt"
+  },
+  {
+    "name": "Task standard library ",
+    "path": "task"
   }
 ]

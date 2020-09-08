@@ -844,100 +844,160 @@ task testExamples() {
     patternSet.exclude("**/Ballerina.lock");
     patternSet.exclude("**/ballerina-internal.log")
     inputs.files(files("${distPath}/examples").asFileTree.matching(patternSet))
-    def ignoreList = [
-         'proto-to-ballerina',
-         'swagger-to-ballerina',
-         'taint-checking',
-         'websub-hub-client-sample',
-         'websub-remote-hub-sample',
-         'config-api',
-         'testerina-function-mocks',
-         'streaming-big-dataset',
-         'docker-deployment',
-         'kubernetes-deployment',
-         'knative-deployment',
-         'aws-lambda-deployment',
-         'azure-functions-deployment',
-         'openshift-deployment',
-         'grpc-server-streaming',
-         'transactions-distributed',
-         'local-transactions',
-         'local-transactions-with-participants',
-         'xa-transactions',
-         'gauge-metrics',
-         'counter-metrics',
-         'openapi-to-ballerina',
-         'kafka_message_consumer_group_service',
-         'kafka_message_consumer_simple',
-         'kafka_message_consumer_service',
-         'kafka_message_producer',
-         'kafka_message_producer_transactional',
-         'grpc-secured-unary',
-         'grpc-bidirectional-streaming',
-         'grpc-client-streaming',
-         'grpc-unary-non-blocking',
-         'grpc-unary-blocking',
-         'testerina-guarantee-test-execution-order',
-         'testerina-data-driven-tests',
-         'testerina-before-and-after-suite',
-         'testerina-before-each-test',
-         'testerina-before-and-after-test',
-         'testerina-assertions',
-         'taint-checking',
-         'secured-service-with-basic-auth',
-         'secured-client-with-basic-auth',
-         'secured-client-with-oauth2',
-         'http-caching-client',
-         'http-data-binding',
-         'http-1.1-to-2.0-protocol-switch',
-         'basic-https-listener-client',
-         'https-listener',
-         'http-client-endpoint',
-         'response-with-multiparts',
-         'tracing',
-         'log-api',
-         'the-main-function',
-         'time',
-         'xml-functions',
-         'xml-access',
-         'mutual-ssl',
-         'tuple-match-statement',
-         'type-conversion',
-         'filepath',
-         'record-io',
-         'csv-io',
-         'type-cast',
-         'json-csv',
-         'functional-iteration',
-         'table',
-         'maps',
-         'cache',
-         'send-and-receive-emails',
-         'xml-attributes',
-         'xml-literal',
-         'xml',
-         'json-to-xml-conversion',
-         'length',
-         'foreach',
-         'testerina-group-tests',
-         'testerina-mocking-objects',
-         'testerina-mocking-functions',
-         'json-record-map-conversion',
-         'record-destructure-binding-pattern',
-         'json-access',
-         'hello-world-client',
-         'secured-client-with-jwt-auth',
-         'secured-service-with-oauth2',
-         'secured-service-with-jwt-auth',
-         'retry-transactions',
-         'non-transaction-retry',
-         'local-transactions-with-handlers',
-         'task-scheduler-timer',
-         'task-scheduler-appointment',
-         'raw-template',
-         'optional-type',
-         'while'
+
+    // The following BEEs will not be verified wither by running/compiling
+    def buildIgnoreList = [
+        'proto-to-ballerina',
+        'taint-checking',
+        'websub-hub-client-sample',
+        'websub-remote-hub-sample',
+        'kafka-producer',
+        'kafka-consumer-service',
+        'kafka-consumer-client',
+        'kafka-producer-transactional',
+        'kafka-consumer-group-service',
+        'kafka-authentication-sasl-plain-consumer',
+        'kafka-authentication-sasl-plain-producer',     // Kafka bbes are ignored coz it needs avro dependency
+        'config-api',
+        'docker-deployment',
+        'kubernetes-deployment',
+        'knative-deployment',
+        'aws-lambda-deployment',
+        'azure-functions-deployment',
+        'openshift-deployment',
+        'grpc-server-streaming',
+        'local-transactions',
+        'gauge-metrics',
+        'counter-metrics',
+        'openapi-to-ballerina',
+        'grpc-secured-unary',
+        'grpc-bidirectional-streaming',
+        'grpc-client-streaming',
+        'grpc-unary-non-blocking',
+        'grpc-unary-blocking',
+        'testerina-guarantee-test-execution-order',
+        'testerina-data-driven-tests',
+        'testerina-before-and-after-suite',
+        'testerina-before-each-test',
+        'testerina-before-and-after-test',
+        'testerina-assertions',
+        'testerina-before-and-after-each',
+        'testerina-before-and-after-groups',
+        'secured-service-with-basic-auth',
+        'secured-client-with-basic-auth',
+        'secured-client-with-oauth2',
+        'http-caching-client',
+        'http-data-binding',
+        'http-1.1-to-2.0-protocol-switch',
+        'basic-https-listener-client',
+        'https-listener',
+        'http-client-endpoint',
+        'response-with-multiparts',
+        'tracing',
+        'log-api',
+        'the-main-function',
+        'time',
+        'xml-functions',
+        'xml-access',
+        'mutual-ssl',
+        'type-conversion',
+        'filepath',
+        'record-io',
+        'csv-io',
+        'type-cast',
+        'json-csv',
+        'functional-iteration',
+        'table',
+        'maps',
+        'cache',
+        'send-and-receive-emails',
+        'xml-attributes',
+        'xml-literal',
+        'xml',
+        'json-to-xml-conversion',
+        'length',
+        'foreach',
+        'testerina-group-tests',
+        'testerina-mocking-objects',
+        'testerina-mocking-functions',
+        'json-record-map-conversion',
+        'json-access',
+        'hello-world-client',
+        'secured-client-with-jwt-auth',
+        'secured-service-with-oauth2',
+        'secured-service-with-jwt-auth',
+        'retry-transactions',
+        'non-transaction-retry',
+        'local-transactions-with-handlers',
+        'task-scheduler-timer',
+        'task-scheduler-appointment',
+        'raw-template',
+        'optional-type',
+        'while'
     ]
+
+    // The following BBE will only be verified by compiling
+    def runIgnoreList = [
+        'websub-service-integration-sample',
+        'websub-internal-hub-sample',
+        'grpc-server-streaming',
+        'secured-service-with-ldap',
+        'nats-basic-client',
+        'nats-streaming-client',
+        'nats-streaming-consumer-with-data-binding',
+        'nats-streaming-durable-subscriptions',
+        'nats-streaming-queue-group',
+        'nats-streaming-start-position',
+        'http-to-websocket-upgrade',
+        'http-compression',
+        'http-redirects',
+        'http-2-0-server-push',
+        'websocket-basic-sample',
+        'websocket-chat-application',
+        'websocket-client',
+        'websocket-cookie',
+        'websocket-failover',
+        'websocket-proxy-server',
+        'websocket-retry',
+        'rabbitmq-producer',
+        'rabbitmq-consumer',
+        'rabbitmq-consumer-with-client-acknowledgement',
+        'rabbitmq-consumer-with-data-binding',
+        'rabbitmq-consumer-with-qos-settings',
+        'rabbitmq-transaction-producer',
+        'rabbitmq-transaction-consumer',
+        'jdbc-complex-type-queries', // Consists date time in output
+        'mysql-init-options',
+        'mysql-query-operation',
+        'mysql-complex-type-queries',
+        'mysql-execute-operation',
+        'mysql-batch-execute-operation',
+        'mysql-parameterized-query',
+        'mysql-call-stored-procedures',
+        'udp-socket-client',
+        'tcp-socket-listener-client',
+        'ballerina-to-openapi',
+        'client-generation',
+        'directory-listener',
+        'different-payload-types',
+        'task-service-timer',
+        'task-service-appointment',
+        'crypto',
+        'byte-io',
+        'http-cookies',
+        'any-type',
+        'record-readonly-fields',
+        'checkpanic',
+        'async',
+        'jwt-issue-validate',
+        'header-based-routing',
+        'http-circuit-breaker',
+        'request-with-multiparts',
+        'file',
+        'base-path-and-path',
+        'locks'                     // Output is inconsistent between runs
+    ]
+
     doFirst {
         copy {
             from jballerinaPack
@@ -955,7 +1015,6 @@ task testExamples() {
             }
         }
 
-        def tomlFile = new File("${baseBuildPath}/TestProject/Ballerina.toml")
         def src = "${project.rootDir}/examples/"
         def dis = "${baseBuildPath}/TestProject/src/"
         copy {
@@ -974,353 +1033,211 @@ task testExamples() {
             }
         }
     }
-    doLast {
-        ignoreList.each { String elements ->
-            bbeList.remove("$elements")
+
+    ext.buildBBE = { bbe ->
+        def exitVal
+        if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+            //TODO: Need to verify with windows
+            exitVal = exec {
+                ignoreExitValue true
+                workingDir "${buildDir}/TestProject"
+                commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'build', '--experimental', "${bbe} --b7a.home=${distPath}"
+            }
+        } else {
+            exitVal = exec {
+                ignoreExitValue true
+                workingDir "${baseBuildPath}/TestProject"
+                commandLine 'sh', '-c', "${distPath}/bin/ballerina build --experimental ${bbe} --b7a.home=${distPath}"
+            }
         }
-        boolean failFlag = false
-        def failedExamples = []
-        bbeList.each { String bbe ->
+        if (exitVal.getExitValue() == 1) {
+            return true;
+        }
+        return false;
+    }
+
+    ext.outputVerification = { bbe ->
+        println bbe
+        def directoryPath = "${baseBuildPath}/TestProject/src/${bbe}"
+        File fileReference
+        def curlCommands = []
+        def ports = []
+        def fileOut = []
+        def balName = bbe.replace('-', '_') + ".bal"
+        FileTree tree = fileTree(directoryPath)
+        def curlCommandsFilePath = "${directoryPath}/curlcommandout.txt"
+        def portFilePath = "${directoryPath}/ports.txt"
+        def outputFilePath = "${directoryPath}/output.txt"
+        tree.each { content ->
+            if (content.name.contains("client.out")) {
+                fileReference = file(content)
+                fileReference.readLines().each { lines ->
+                    fileOut.add(lines.trim())
+                    if (lines.startsWith("curl")) {
+                        lines = lines.trim() + " >> output.txt"
+                        curlCommands.add(lines)
+                        if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+                            curlCommands.add("echo. >> output.txt")
+                        } else {
+                            curlCommands.add("echo >> output.txt")
+                        }
+                    }
+                }
+            } else if (content.name.contains("server.out") || content.name.contains("service.out")) {
+                fileReference = file(content)
+                String portPrefix = "[ballerina/http] started HTTP/WS listener 0.0.0.0:"
+                fileReference.readLines().each { lines ->
+                    if (lines.contains(portPrefix)) {
+                        lines = (lines - portPrefix).trim()
+                        ports.add(lines)
+                    }
+                }
+            }
+        }
+        def failFlag = false
+        if (!ports.isEmpty() && !curlCommands.isEmpty()) {
+            fileReference = new File(portFilePath)
+            ports.each {
+                fileReference << "${it}\n"
+            }
+            fileReference = new File(curlCommandsFilePath)
+            curlCommands.each {
+                fileReference << "${it}\n"
+            }
+            def scriptPath = "${project.rootDir}/ballerina/lib"
             def exitVal
             if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                //TODO: Need to verify with windows
                 exitVal = exec {
+                    def windowsPath = scriptPath.replace('/', '\\')
+                    workingDir "$windowsPath"
+                    commandLine "$windowsPath\\run.bat", "${directoryPath}", "${distPath}/bin/ballerina.bat", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath}"
                     ignoreExitValue true
-                    workingDir "${buildDir}/TestProject"
-                    commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'build', '--experimental', "${bbe} --b7a.home=${distPath}"
                 }
             } else {
                 exitVal = exec {
+                    workingDir "$scriptPath"
+                    commandLine "bash", "run.sh", "${directoryPath}", "${distPath}/bin/./ballerina", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath}"
                     ignoreExitValue true
-                    workingDir "${baseBuildPath}/TestProject"
-                    commandLine 'sh', '-c', "${distPath}/bin/ballerina build --experimental ${bbe} --b7a.home=${distPath}"
                 }
             }
+            // Return immediately if command failed
             if (exitVal.getExitValue() == 1) {
-                failFlag = true;
-                failedExamples.add(bbe)
+                println "Failed due to build failure."
+                return true;
             }
-        }
-        if (failFlag) {
-            println "\n\t failed examples\n"
-            failedExamples.each {
-                println "\t ${it}"
-            }
-            throw new GradleException('there are test failures')
-        }
-    }
-}
-
-task outputVerification() {
-    def jballerinaPack = "${project.rootDir}/ballerina/build/target/extracted-distributions/jballerina-tools-zip"
-    def baseBuildPath = "${project.rootDir}/ballerina/build/bbe-pack"
-    def distPath = "${baseBuildPath}/jballerina-tools-${ballerinaVersion}"
-    def bbeList = []
-
-    PatternSet patternSet = new PatternSet();
-    patternSet.exclude("**/.ballerina/**");
-    patternSet.exclude("**/Ballerina.toml");
-    patternSet.exclude("**/Ballerina.lock");
-    patternSet.exclude("**/ballerina-internal.log")
-    inputs.files(files("${distPath}/examples").asFileTree.matching(patternSet))
-    def ignoreList = [
-            'proto-to-ballerina',
-            'swagger-to-ballerina',
-            'websub-hub-client-sample',
-            'websub-remote-hub-sample',
-            'websub-internal-hub-sample',
-            'websub-service-integration-sample',
-            'config-api',
-            'testerina-function-mocks',
-            'streaming-big-dataset',
-            'docker-deployment',
-            'kubernetes-deployment',
-            'knative-deployment',
-            'awslambda-deployment',
-            'openshift-deployment',
-            'transactions-distributed',
-            'local-transactions',
-            'local-transactions-with-participants',
-            'xa-transactions',
-            'openapi-to-ballerina',
-            'kafka-producer',
-            'kafka-consumer-service',
-            'kafka-consumer-client',
-            'kafka-producer-transactional',
-            'kafka-consumer-group-service',
-            'kafka-authentication-sasl-plain-consumer',
-            'kafka-authentication-sasl-plain-producer',
-            'grpc-secured-unary',
-            'grpc-bidirectional-streaming',
-            'grpc-client-streaming',
-            'grpc-unary-non-blocking',
-            'grpc-unary-blocking',
-            'grpc-server-streaming',
-            'testerina-guarantee-test-execution-order',
-            'testerina-data-driven-tests',
-            'testerina-before-and-after-suite',
-            'testerina-before-each-test',
-            'testerina-before-and-after-test',
-            'testerina-assertions',
-            'testerina-mocking-objects',
-            'testerina-mocking-functions',
-            'testerina-group-tests',
-            'secured-client-with-basic-auth',
-            'secured-client-with-jwt-auth',
-            'secured-client-with-oauth2',
-            'secured-service-with-basic-auth',
-            'secured-service-with-jwt-auth',
-            'secured-service-with-ldap',
-            'secured-service-with-oauth2',
-            'nats-basic-client',
-            'nats-streaming-client',
-            'nats-streaming-consumer-with-data-binding',
-            'nats-streaming-durable-subscriptions',
-            'nats-streaming-queue-group',
-            'nats-streaming-start-position',
-            'http-to-websocket-upgrade',
-            'http-compression',
-            'basic-https-listener-client',
-            'https-listener',
-            'http-client-endpoint',
-            'http-redirects',
-            'http-2.0-server-push',
-            'http-caching-client',
-            'websocket-basic-sample',
-            'websocket-chat-application',
-            'websocket-client',
-            'websocket-cookie',
-            'websocket-failover',
-            'websocket-proxy-server',
-            'websocket-retry',
-            'rabbitmq-producer',
-            'rabbitmq-consumer',
-            'rabbitmq-consumer-with-client-acknowledgement',
-            'rabbitmq-consumer-with-data-binding',
-            'rabbitmq-consumer-with-qos-settings',
-            'rabbitmq-transaction-producer',
-            'rabbitmq-transaction-consumer',
-            'response-with-multiparts',
-            'mysql-init-options',
-            'mysql-query-operation',
-            'mysql-complex-type-queries',
-            'mysql-execute-operation',
-            'mysql-batch-execute-operation',
-            'mysql-parameterized-query',
-            'mysql-call-stored-procedures',
-            'tracing',
-            'log-api',
-            'the-main-function',
-            'task-scheduler-appointment',
-            'task-scheduler-timer',
-            'send-and-receive-emails',
-            'temporal-aggregations-and-windows',
-            'projection',
-            'simple-filtering',
-            'udp-socket-client',
-            'tcp-socket-listener-client',
-            'ballerina-to-openapi',
-            'client-generation',
-            'directory-listener',
-            'different-payload-types',
-            'task-service-timer',
-            'task-service-appointment',
-            'time',
-            'crypto',
-            'byte-io',
-            'join-multiple-streams',
-            'mutual-ssl',
-            'http-2-0-server-push',
-            'http-cookies',
-            'while',
-            'optional-type',
-            'any-type',
-            'raw-template',
-            'record-readonly-fields',
-            'xml-literal',
-            'checkpanic',
-            'async',
-            'jwt-issue-validate',
-            'local-transactions-with-handlers',
-            'retry-transactions',
-            'header-based-routing',
-            'http-circuit-breaker',
-            'request-with-multiparts',
-            'file'
-    ]
-    doFirst {
-        copy {
-            from jballerinaPack
-            into baseBuildPath
-        }
-        exec {
-            //Initialize Ballerina project
-            if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                //TODO: Need to verify with windows
-                workingDir "${baseBuildPath}"
-                commandLine 'cmd', '/c', "jballerina-tools-${ballerinaVersion}/bin/ballerina.bat", 'new', 'outputVerificationProject'
-            } else {
-                workingDir "${baseBuildPath}"
-                commandLine 'sh', '-c', "jballerina-tools-${ballerinaVersion}/bin/ballerina new outputVerificationProject"
-            }
-        }
-
-        def src = "${project.rootDir}/examples/"
-        def dis = "${baseBuildPath}/outputVerificationProject/src/"
-        copy {
-            from(src)
-            into dis
-        }
-        def inputFile = new File("${baseBuildPath}/outputVerificationProject/src/index.json")
-        def categories = new JsonSlurper().parseText(inputFile.text)
-        categories.each { category ->
-            def examples = category.samples
-            examples.each { example ->
-                def folder = new File("${baseBuildPath}/outputVerificationProject/src/${example.url}")
-                if (folder.exists()) {
-                    bbeList.push("$example.url")
-                }
-            }
-        }
-    }
-    doLast {
-        File reportDetails = new File("${baseBuildPath}/result.txt")
-        ignoreList.each { String elements ->
-            bbeList.remove("$elements")
-        }
-        bbeList.each { String bbe ->
-            println bbe
-            def directoryPath = "${baseBuildPath}/outputVerificationProject/src/${bbe}"
-            File fileReference
-            def curlCommands = []
-            def ports = []
-            def fileOut = []
-            def balName = bbe.replace('-', '_') + ".bal"
-            FileTree tree = fileTree(directoryPath)
-            def curlCommandsFilePath = "${directoryPath}/curlcommandout.txt"
-            def portFilePath = "${directoryPath}/ports.txt"
-            def outputFilePath = "${directoryPath}/output.txt"
-            tree.each { content ->
-                if (content.name.contains("client.out")) {
-                    fileReference = file(content)
-                    fileReference.readLines().each { lines ->
-                        fileOut.add(lines.trim())
-                        if (lines.startsWith("curl")) {
-                            lines = lines.trim() + " >> output.txt"
-                            curlCommands.add(lines)
-                            if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                                curlCommands.add("echo. >> output.txt")
-                            } else {
-                                curlCommands.add("echo >> output.txt")
-                            }
-                        }
-                    }
-                } else if (content.name.contains("server.out") || content.name.contains("service.out")) {
-                    fileReference = file(content)
-                    String portPrefix = "[ballerina/http] started HTTP/WS listener 0.0.0.0:"
-                    fileReference.readLines().each { lines ->
-                        if (lines.contains(portPrefix)) {
-                            lines = (lines - portPrefix).trim()
-                            ports.add(lines)
-                        }
+            File bbeOutput = new File(outputFilePath)
+            if (bbeOutput.exists()) {
+                bbeOutput.readLines().each {
+                    if (!fileOut.contains(it.trim()) && it) {
+                        println "Failed due to output did not match. Line ${it}"
+                        failFlag = true
                     }
                 }
             }
-            if (!ports.isEmpty() && !curlCommands.isEmpty()) {
-                fileReference = new File(portFilePath)
-                ports.each {
-                    fileReference << "${it}\n"
-                }
-                fileReference = new File(curlCommandsFilePath)
-                curlCommands.each {
-                    fileReference << "${it}\n"
-                }
-                def scriptPath = "${project.rootDir}/ballerina/lib"
+            delete portFilePath
+            delete curlCommandsFilePath
+            delete outputFilePath
+        } else if (ports.isEmpty() && curlCommands.isEmpty()) {
+            balName = bbe.replace('-', '_')
+            def str = ""
+            fileOut = []
+            def bbeOutput = []
+            def cmdOutAry = []
+            def errOut = new ByteArrayOutputStream()
+            new ByteArrayOutputStream().withStream { os ->
                 if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                     exec {
-                        def windowsPath = scriptPath.replace('/', '\\')
-                        workingDir "$windowsPath"
-                        commandLine "$windowsPath\\run.bat", "${directoryPath}", "${distPath}/bin/ballerina.bat", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath}"
+                        workingDir "${directoryPath}"
+                        commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'run', '--experimental', "${balName}.bal", "--b7a.home=${distPath}"
+                        ignoreExitValue true
+                        standardOutput = os
+                        errorOutput = errOut
                     }
                 } else {
                     exec {
-                        workingDir "$scriptPath"
-                        commandLine "bash", "run.sh", "${directoryPath}", "${distPath}/bin/./ballerina", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath}"
+                        workingDir "${directoryPath}"
+                        commandLine 'sh', '-c', "${distPath}/bin/ballerina run --experimental ${balName}.bal --b7a.home=${distPath}"
+                        ignoreExitValue true
+                        standardOutput = os
+                        errorOutput = errOut
                     }
                 }
-                File bbeOutput = new File(outputFilePath)
-                def failFlag = false
-                if (bbeOutput.exists()) {
-                    bbeOutput.readLines().each {
-                        if (!fileOut.contains(it.trim()) && it) {
-                            failFlag = true
-                        }
+                cmdOutAry.add(os.toString())
+                cmdOutAry.add(errOut.toString())
+            }
+            
+            File file = file("${directoryPath}/${balName}.out")
+            file.readLines().each {
+                str = it.trim()
+                if (str?.trim()) {
+                    if (str[0] != '#') {
+                        fileOut.add(str)
                     }
-                } else {
-                    failFlag = false
-                }
-                if (failFlag) {
-                    reportDetails << "output verification failed: ${balName} \n"
-                }
-                delete portFilePath
-                delete curlCommandsFilePath
-                delete outputFilePath
-            } else if (ports.isEmpty() && curlCommands.isEmpty()) {
-                balName = bbe.replace('-', '_')
-                def str = ""
-                fileOut = []
-                def bbeOutput = []
-                def cmdOutAry = []
-                def errOut = new ByteArrayOutputStream()
-                new ByteArrayOutputStream().withStream { os ->
-                    if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                        exec {
-                            workingDir "${directoryPath}"
-                            commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'run', '--experimental', "${balName}.bal", "--b7a.home=${distPath}"
-                            ignoreExitValue true
-                            standardOutput = os
-                            errorOutput = errOut
-                        }
-                    } else {
-                        exec {
-                            workingDir "${directoryPath}"
-                            commandLine 'sh', '-c', "${distPath}/bin/./ballerina run --experimental ${balName}.bal --b7a.home=${distPath}"
-                            ignoreExitValue true
-                            standardOutput = os
-                            errorOutput = errOut
-                        }
-                    }
-                    cmdOutAry.add(os.toString())
-                    cmdOutAry.add(errOut.toString())
-                }
-                File file = file("${directoryPath}/${balName}.out")
-                file.readLines().each {
-                    str = it.trim()
-                    if (str?.trim()) {
-                        if (str[0] != '#') {
-                            fileOut.add(str)
-                        }
-                    }
-                }
-                def lines = "${cmdOutAry[0]}".split('\n')
-                lines = lines + "${cmdOutAry[1]}".split('\n')
-                lines.each {
-                    str = it.trim()
-                    if (str != "Compiling source" && str != "${balName}.bal" && str != "Running executables" && str != "") {
-                        bbeOutput.add(str)
-                    }
-                }
-                def failFlag = false
-                for (int i = 0; i < bbeOutput.size(); i++) {
-                    def index = fileOut.findIndexOf { it == bbeOutput[i] }
-                    if (index == -1) {
-                        failFlag = true;
-                    }
-                }
-                if (failFlag) {
-                    reportDetails << "output verification failed: ${balName} \n"
                 }
             }
+
+            def lines = "${cmdOutAry[0]}".split('\n')
+            lines = lines + "${cmdOutAry[1]}".split('\n')
+            lines.each {
+                str = it.trim()
+                if (str != "Compiling source" && str != "${balName}.bal" && str != "Running executables" && str != ""
+                        && str != "Picked up JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF8") {
+                    bbeOutput.add(str)
+                }
+            }
+
+            for (int i = 0; i < bbeOutput.size(); i++) {
+                def index = fileOut.findIndexOf { it == bbeOutput[i] }
+                if (index == -1) {
+                    println "Failed due to output did not match. Line ${i}: ${bbeOutput[i]}"
+                    failFlag = true;
+                }
+            }
+        }
+        return failFlag
+    }
+
+    doLast {
+        buildIgnoreList.each { String elements ->
+            bbeList.remove("$elements")
+        }
+        def failedBuildExamples = []
+        def failOutputVerificationExamples = []
+        bbeList.each { String bbe ->
+            if(runIgnoreList.contains(bbe)) {
+                boolean buildFailFlag = buildBBE(bbe)
+                if (buildFailFlag) {
+                    failedBuildExamples.add(bbe)
+                }
+            } else {
+                boolean outputVerificationFailFlag = outputVerification(bbe)
+                if (outputVerificationFailFlag) {
+                    failOutputVerificationExamples.add(bbe)
+                }
+            }
+        }
+        
+        boolean buildFailure = false
+        if (!failedBuildExamples.isEmpty()) {
+            println "\n\tThe following BBEs failed when building\n"
+            failedBuildExamples.each {
+                println "\t ${it}"
+            }
+            sleep(10 * 1000)
+            buildFailure = true
+        }
+
+        if (!failOutputVerificationExamples.isEmpty()) {
+            println "\n\tThe following BBEs failed when verifying output\n"
+            failOutputVerificationExamples.each {
+                println "\t ${it}"
+            }
+            sleep(10 * 1000)
+            buildFailure = true
+        }
+        if (buildFailure) {
+            sleep(10 * 1000)
+            throw new GradleException('There are test failures')
         }
     }
 }
@@ -1420,8 +1337,7 @@ packageDistLinux.dependsOn packageDistZip
 packageDistMac.dependsOn packageDistLinux
 packageDistWindows.dependsOn packageDistMac
 testExamples.dependsOn packageDistWindows
-outputVerification.dependsOn testExamples
-testStdlibs.dependsOn outputVerification
+testStdlibs.dependsOn testExamples
 /* Delete Temporary Files */
 deleteTemporaryFiles.dependsOn testStdlibs
 
