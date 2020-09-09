@@ -6,5 +6,5 @@
 // Creating a test double is suitable when a single mock function/object can be used
 // throughout all tests whereas stubbing is ideal when defining different behaviors for
 // different test cases is required.<br/><br/>
-// For more information on the underlying module,
-// see [The Test Module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/test/index.html).
+// For more information, see [Testing Ballerina Code](https://ballerina.io/swan-lake/learn/testing-ballerina-code/testing-quick-start/)
+// and the [Test Module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/test/index.html).
