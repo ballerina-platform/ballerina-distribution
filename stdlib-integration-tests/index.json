@@ -12,6 +12,10 @@
     "path": "jwt"
   },
   {
+    "name": "OAuth2 standard library ",
+    "path": "oauth2"
+  },
+  {
     "name": "Task standard library ",
     "path": "task"
   }
