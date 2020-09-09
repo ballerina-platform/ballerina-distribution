@@ -988,7 +988,12 @@ task testExamples() {
         'request-with-multiparts',
         'file',
         'base-path-and-path',
-        'locks'                     // Output is inconsistent between runs
+        'locks',                     // Output is inconsistent between runs
+        'crypto',
+        'jwt-issue-validate',
+        'secured-client-with-basic-auth',
+        'secured-client-with-jwt-auth',
+        'secured-client-with-oauth2'
     ]
 
     doFirst {
