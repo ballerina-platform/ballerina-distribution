@@ -856,7 +856,7 @@ task testExamples() {
         'kafka-producer-transactional',
         'kafka-consumer-group-service',
         'kafka-authentication-sasl-plain-consumer',
-        'kafka-authentication-sasl-plain-producer',     // Kafka BBEs are ignored coz it needs avro dependency
+        'kafka-authentication-sasl-plain-producer', // Kafka BBEs are ignored since a KafkaCluster is not present
         'config-api',
         'docker-deployment',
         'kubernetes-deployment',
