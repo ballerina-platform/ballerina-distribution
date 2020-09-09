@@ -832,8 +832,7 @@ artifacts {
 }
 
 task testExamples() {
-
-    def jballerinaPack = "${project.rootDir}/ballerina/build/target/extracted-distributions/jballerina-tools-zip"
+    def jBallerinaPack = "${project.rootDir}/ballerina/build/target/extracted-distributions/jballerina-tools-zip"
     def baseBuildPath = "${project.rootDir}/ballerina/build/bbe-pack"
     def distPath = "${baseBuildPath}/jballerina-tools-${ballerinaVersion}"
     def bbeList = []
@@ -845,7 +844,7 @@ task testExamples() {
     patternSet.exclude("**/ballerina-internal.log")
     inputs.files(files("${distPath}/examples").asFileTree.matching(patternSet))
 
-    // The following BEEs will not be verified wither by running/compiling
+    // The following BBEs will not be verified by running/compiling
     def buildIgnoreList = [
         'proto-to-ballerina',
         'taint-checking',
@@ -857,7 +856,7 @@ task testExamples() {
         'kafka-producer-transactional',
         'kafka-consumer-group-service',
         'kafka-authentication-sasl-plain-consumer',
-        'kafka-authentication-sasl-plain-producer',     // Kafka bbes are ignored coz it needs avro dependency
+        'kafka-authentication-sasl-plain-producer',     // Kafka BBEs are ignored coz it needs avro dependency
         'config-api',
         'docker-deployment',
         'kubernetes-deployment',
@@ -932,7 +931,7 @@ task testExamples() {
         'while'
     ]
 
-    // The following BBE will only be verified by compiling
+    // The following BBEs will only be verified by compiling
     def runIgnoreList = [
         'websub-service-integration-sample',
         'websub-internal-hub-sample',
@@ -998,7 +997,7 @@ task testExamples() {
 
     doFirst {
         copy {
-            from jballerinaPack
+            from jBallerinaPack
             into baseBuildPath
         }
         exec {
@@ -1055,7 +1054,6 @@ task testExamples() {
     }
 
     ext.outputVerification = { bbe ->
-        println bbe
         def directoryPath = "${baseBuildPath}/TestProject/src/${bbe}"
         File fileReference
         def curlCommands = []
@@ -1202,7 +1200,7 @@ task testExamples() {
         def failedBuildExamples = []
         def failOutputVerificationExamples = []
         bbeList.each { String bbe ->
-            if(runIgnoreList.contains(bbe)) {
+            if (runIgnoreList.contains(bbe)) {
                 boolean buildFailFlag = buildBBE(bbe)
                 if (buildFailFlag) {
                     failedBuildExamples.add(bbe)
@@ -1217,7 +1215,7 @@ task testExamples() {
         
         boolean buildFailure = false
         if (!failedBuildExamples.isEmpty()) {
-            println "\n\tThe following BBEs failed when building\n"
+            println "\n\tThe following BBEs failed while building:\n"
             failedBuildExamples.each {
                 println "\t ${it}"
             }
@@ -1226,7 +1224,7 @@ task testExamples() {
         }
 
         if (!failOutputVerificationExamples.isEmpty()) {
-            println "\n\tThe following BBEs failed when verifying output\n"
+            println "\n\tThe following BBEs failed while verifying the output:\n"
             failOutputVerificationExamples.each {
                 println "\t ${it}"
             }
@@ -1241,8 +1239,7 @@ task testExamples() {
 }
 
 task testStdlibs() {
-
-     def jballerinaPack = "${project.rootDir}/ballerina/build/target/extracted-distributions/jballerina-tools-zip"
+     def jBallerinaPack = "${project.rootDir}/ballerina/build/target/extracted-distributions/jballerina-tools-zip"
      def baseBuildPath = "${project.rootDir}/ballerina/build/bbe-pack"
      def distPath = "${baseBuildPath}/jballerina-tools-${ballerinaVersion}"
      def stdlibTestsList = []
@@ -1257,7 +1254,7 @@ task testStdlibs() {
      ]
      doFirst {
          copy {
-             from jballerinaPack
+             from jBallerinaPack
              into baseBuildPath
          }
          exec {
@@ -1306,7 +1303,7 @@ task testStdlibs() {
              }
          }
      }
- }
+}
 
 /* Unpack Dependencies */
 unpackJballerinaTools.dependsOn unpackBallerinaJre
