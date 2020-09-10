@@ -1250,8 +1250,8 @@ task testStdlibs() {
      patternSet.exclude("**/Ballerina.lock");
      patternSet.exclude("**/ballerina-internal.log")
      inputs.files(files("${distPath}/stdlib-integration-tests").asFileTree.matching(patternSet))
-     def ignoreList = [
-     ]
+     def ignoreList = []
+
      doFirst {
          copy {
              from jBallerinaPack
@@ -1284,25 +1284,83 @@ task testStdlibs() {
 
          }
      }
-     doLast {
+
+    doLast {
          ignoreList.each { String elements ->
              stdlibTestsList.remove("$elements")
          }
          stdlibTestsList.each { String stdlibTest ->
+             def additionalBuildParams = ""
+             if (stdlibTest == "auth" || stdlibTest == "jwt") {
+                 additionalBuildParams = "--b7a.config.file=${baseBuildPath}/StdlibTestProject/src/${stdlibTest}/tests/resources/datafiles/users.toml"
+             }
+
              if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                  //TODO: Need to verify with windows
                  exec {
                      workingDir "${buildDir}/StdlibTestProject"
-                     commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat build -c --experimental ${stdlibTest} --b7a.home=${distPath}"
+                     commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat build -c --experimental ${stdlibTest} --b7a.home=${distPath} ${additionalBuildParams}"
                  }
              } else {
                  exec {
                      workingDir "${baseBuildPath}/StdlibTestProject"
-                     commandLine 'sh', '-c', "${distPath}/bin/ballerina build -c --experimental ${stdlibTest} --b7a.home=${distPath}"
+                     commandLine 'sh', '-c', "${distPath}/bin/ballerina build --offline -c --experimental ${stdlibTest} --b7a.home=${distPath} ${additionalBuildParams}"
                  }
              }
          }
      }
+}
+
+task startLdapServer() {
+    def ldapTestResources = "${project.rootDir}/ballerina/build/bbe-pack/StdlibTestProject/src/ldap/tests/resources/"
+    if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+        def stdOut = new ByteArrayOutputStream()
+        exec {
+            commandLine 'sh', '-c', "docker ps --filter name=openldap-server"
+            standardOutput = stdOut
+        }
+        if (!stdOut.toString().contains("openldap-server")) {
+            println "Starting LDAP server."
+            copy {
+                from file("${ldapTestResources}/openldap")
+                into file("/tmp/openldap")
+            }
+            exec {
+                commandLine 'sh', '-c', "docker run -d -p 389:389 --name openldap-server --env LDAP_ORGANISATION=\"AVIX\" --env LDAP_DOMAIN=\"avix.lk\" --env LDAP_ADMIN_PASSWORD=\"avix123\" --env LDAP_BASE_DN=\"dc=avix,dc=lk\" --volume /tmp/openldap/bootstrap.ldif:/container/service/slapd/assets/config/bootstrap/ldif/custom/bootstrap.ldif osixia/openldap:1.3.0 --copy-service"
+                standardOutput = stdOut
+            }
+            println stdOut.toString()
+            println "Waiting 15s until the LDAP server get initiated."
+            sleep(15 * 1000)
+        } else {
+            println "LDAP server is already started."
+        }
+    }
+}
+
+task stopLdapServer() {
+    doLast {
+        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+            def stdOut = new ByteArrayOutputStream()
+            exec {
+                commandLine 'sh', '-c', "docker ps --filter name=openldap-server"
+                standardOutput = stdOut
+            }
+            if (stdOut.toString().contains("openldap-server")) {
+                println "Stopping LDAP server."
+                exec {
+                    commandLine 'sh', '-c', "docker stop openldap-server"
+                    commandLine 'sh', '-c', "docker container rm -f openldap-server"
+                    standardOutput = stdOut
+                }
+                println stdOut.toString()
+                println "Waiting 5s until the LDAP server get stopped."
+                sleep(20 * 1000)
+            } else {
+                println "LDAP server is not started."
+            }
+        }
+    }
 }
 
 /* Unpack Dependencies */
@@ -1332,6 +1390,8 @@ packageDistLinux.dependsOn packageDistZip
 packageDistMac.dependsOn packageDistLinux
 packageDistWindows.dependsOn packageDistMac
 testExamples.dependsOn packageDistWindows
+testStdlibs.finalizedBy stopLdapServer
+testStdlibs.dependsOn startLdapServer
 testStdlibs.dependsOn testExamples
 /* Delete Temporary Files */
 deleteTemporaryFiles.dependsOn testStdlibs
