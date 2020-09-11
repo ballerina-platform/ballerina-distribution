@@ -32,7 +32,7 @@ function copy(io:ReadableByteChannel src,
 
 // Closes a given readable or writable byte channel.
 function close(io:ReadableByteChannel|io:WritableByteChannel ch) {
-    abstract object {
+    object {
         public function close() returns error?;
     } channelResult = ch;
     var cr = channelResult.close();
