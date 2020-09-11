@@ -40,7 +40,9 @@ public function testAuthenticationFailure() {
     }
 }
 
-@test:Config {}
+@test:Config {
+    enable: false
+}
 public function testAuthenticationSuccessAndAuthorizationFailure() {
     http:Request req = new;
     req.setHeader("Authorization", "Basic amFuZWRvZTpqYW5lZG9lMTIz");
@@ -52,7 +54,9 @@ public function testAuthenticationSuccessAndAuthorizationFailure() {
     }
 }
 
-@test:Config {}
+@test:Config {
+    enable: false
+}
 public function testAuthenticationSuccessAndAuthorizationSuccess() {
     http:Request req = new;
     req.setHeader("Authorization", "Basic amFuZWRvZTpqYW5lZG9lMTIz");
