@@ -19,5 +19,5 @@ public function mockPrint(any|error... s) {
 function testFunc() {
     // Invoke the main function.
     main();
-    test:assertEquals(outputs[0], "Appointment cancelled.");
+    test:assertEquals(outputs[0].toString(), "Appointment cancelled.");
 }

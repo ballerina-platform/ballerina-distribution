@@ -20,7 +20,7 @@ public function mockPrint(any|error... s) {
 @test:Config {}
 function testFunc() {
     // Invoking the main function
-    main();
-    test:assertEquals(outputs[0], "key1: value1");
-    test:assertEquals(outputs[1], "keys: [key2]");
+    error? output = main();
+    test:assertEquals(outputs[0].toString(), "key1: value1");
+    test:assertEquals(outputs[1].toString(), "keys: [key2]");
 }
