@@ -35,9 +35,9 @@ function testFunc() {
     main();
     test:assertEquals(outputs[0], "------ Query Binary Type -------");
     test:assertEquals(outputs[1], "Result 1:");
-    test:assertEquals(outputs[2], "row_id=1 blob_type=119 115 111 50 32 98 97 108 108 101 114 105 110 97 32 98 108 111 98 32 116 101 115 116 46 binary_type=119 115 111 50 32 98 97 108 108 101 114 105 110 97 32 98 105 110 97 114 121 32 116 101 115 116 46");
+    test:assertEquals(outputs[2], "{\"row_id\":1,\"blob_type\":[119,115,111,50,32,98,97,108,108,101,114,105,110,97,32,98,108,111,98,32,116,101,115,116,46],\"binary_type\":[119,115,111,50,32,98,97,108,108,101,114,105,110,97,32,98,105,110,97,114,121,32,116,101,115,116,46]}");
     test:assertEquals(outputs[3], "Result 2:");
-    test:assertEquals(outputs[4], "row_id=1 blob_type=119 115 111 50 32 98 97 108 108 101 114 105 110 97 32 98 108 111 98 32 116 101 115 116 46 binary_type=119 115 111 50 32 98 97 108 108 101 114 105 110 97 32 98 105 110 97 114 121 32 116 101 115 116 46");
+    test:assertEquals(outputs[4], "{\"row_id\":1,\"blob_type\":[119,115,111,50,32,98,97,108,108,101,114,105,110,97,32,98,108,111,98,32,116,101,115,116,46],\"binary_type\":[119,115,111,50,32,98,97,108,108,101,114,105,110,97,32,98,105,110,97,114,121,32,116,101,115,116,46]}");
     test:assertEquals(outputs[5], "------ ********* -------");
     test:assertEquals(outputs[6], "------ Query Date Time Type -------");
     test:assertEquals(outputs[7], "Result 1:");

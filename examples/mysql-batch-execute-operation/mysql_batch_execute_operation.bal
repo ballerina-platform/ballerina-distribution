@@ -7,7 +7,7 @@ import ballerinax/mysql;
 // based on your setup if you try locally.
 string dbUser = "root";
 string dbPassword = "Test@123";
-string dbName = "MYSQL_BBE_EXEC";
+string dbName = "MYSQL_BBE";
 
 function initializeDatabase() returns sql:Error? {
     // Initialize the client without any database to create the database.
