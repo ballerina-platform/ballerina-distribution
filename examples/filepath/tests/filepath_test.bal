@@ -1,4 +1,3 @@
-import ballerina/io;
 import ballerina/test;
 import ballerina/system;
 
@@ -17,7 +16,7 @@ public function mockPrint(any|error... s) {
 
 boolean isWindows = system:getEnv("OS") != "";
 
-@test:Config
+@test:Config {}
 function testFunc() {
     // Invoking the main function
     main();
@@ -36,7 +35,7 @@ function testFunc() {
         filename ="Filename of /A/B/C: C";
         parent ="Parent of /A/B/C: \\A\\B";
         normalized ="Normalized path of foo/../bar: bar";
-        elements ="Path elements of /A/B/C: [\"A\", \"B\", \"C\"]";
+        elements ="Path elements of /A/B/C: [\"A\",\"B\",\"C\"]";
         buildPath ="Built path of '/', 'foo', 'bar': \\foo\\bar";
         extension ="Extension of path.bal: bal";
         relative ="Relative path between 'a/b/c' and 'a/c/d': ..\\..\\c\\d";
@@ -45,17 +44,17 @@ function testFunc() {
         filename ="Filename of /A/B/C: C";
         parent ="Parent of /A/B/C: /A/B";
         normalized ="Normalized path of foo/../bar: bar";
-        elements ="Path elements of /A/B/C: [\"A\", \"B\", \"C\"]";
+        elements ="Path elements of /A/B/C: [\"A\",\"B\",\"C\"]";
         buildPath ="Built path of '/', 'foo', 'bar': /foo/bar";
         extension ="Extension of path.bal: bal";
         relative ="Relative path between 'a/b/c' and 'a/c/d': ../../c/d";
     }
-    test:assertEquals(outputs[0], absolutePath);
-    test:assertEquals(outputs[1], filename);
-    test:assertEquals(outputs[2], parent);
-    test:assertEquals(outputs[3], normalized);
-    test:assertEquals(outputs[4], elements);
-    test:assertEquals(outputs[5], buildPath);
-    test:assertEquals(outputs[6], extension);
-    test:assertEquals(outputs[7], relative);
+    test:assertEquals(outputs[0].toString(), absolutePath);
+    test:assertEquals(outputs[1].toString(), filename);
+    test:assertEquals(outputs[2].toString(), parent);
+    test:assertEquals(outputs[3].toString(), normalized);
+    test:assertEquals(outputs[4].toString(), elements);
+    test:assertEquals(outputs[5].toString(), buildPath);
+    test:assertEquals(outputs[6].toString(), extension);
+    test:assertEquals(outputs[7].toString(), relative);
 }
