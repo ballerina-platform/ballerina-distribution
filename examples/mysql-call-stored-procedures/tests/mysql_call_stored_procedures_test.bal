@@ -38,13 +38,13 @@ public function mockPrint(any|error... s) {
 function testFunc() {
     main();
     test:assertEquals(outputs[7], "\nInvoke `InsertStudent` procedure with IN params");
-    test:assertEquals(outputs[8], "Call stored procedure `InsertStudent` is successful : affectedRowCount=1 lastInsertId=");
+    test:assertEquals(outputs[8], "Call stored procedure `InsertStudent` is successful : {\"affectedRowCount\":1,\"lastInsertId\":null}");
     test:assertEquals(outputs[9], "\nInvoke `GetCount` procedure with INOUT & OUT params");
     test:assertEquals(outputs[10], "Call stored procedure `GetCount` is successful.");
     test:assertEquals(outputs[11], "Age of the student with id '1' : 24");
     test:assertEquals(outputs[12], "Total student count: 1");
     test:assertEquals(outputs[13], "\nInvoke `GetStudents` procedure with returned data");
     test:assertEquals(outputs[14], "Call stored procedure `InsertStudent` is successful.");
-    test:assertEquals(outputs[15], "Student details: id=1 age=24 name=George");
+    test:assertEquals(outputs[15], "Student details: {\"id\":1,\"age\":24,\"name\":\"George\"}");
     test:assertEquals(outputs[16], "\nSample executed successfully!");
 }

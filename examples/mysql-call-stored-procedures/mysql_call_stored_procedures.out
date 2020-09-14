@@ -11,7 +11,7 @@ Stored procedure with INOUT/OUT param created.
 Stored procedure with result set returned created.
 
 Invoke `InsertStudent` procedure with IN params
-Call stored procedure `InsertStudent` is successful : affectedRowCount=1 lastInsertId=
+Call stored procedure `InsertStudent` is successful : {"affectedRowCount":1,"lastInsertId":null}
 
 Invoke `GetCount` procedure with INOUT & OUT params
 Call stored procedure `GetCount` is successful.
@@ -20,6 +20,6 @@ Total student count: 1
 
 Invoke `GetStudents` procedure with returned data
 Call stored procedure `InsertStudent` is successful.
-Student details: id=1 age=24 name=George
+Student details: {"id":1,"age":24,"name":"George"}
 
 Sample executed successfully!

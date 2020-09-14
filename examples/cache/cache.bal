@@ -16,9 +16,9 @@ public function main() returns error? {
     });
 
     // Adds a new entry to the cache.
-    _ = check cache.put("key1", "value1");
+    check cache.put("key1", "value1");
     // Adds a new entry to the cache by overriding the default max age.
-    _ = check cache.put("key2", "value2", 3600);
+    check cache.put("key2", "value2", 3600);
 
     // Checks for the cached key availability.
     if (cache.hasKey("key1")) {
@@ -29,24 +29,23 @@ public function main() returns error? {
 
     // This sends the current worker to the sleep mode for 4 seconds.
     // No execution takes place during this period.
-    runtime:sleep(4000);
-
-    // During this period, the cache entry with the key 'key1' should be removed
+    // During this time, the cache entry with the key 'key1' should be removed
     // since the max of it is set to 2 seconds by default. However, the cache
     // entry with the key 'key2' should exist in the cache.
+    runtime:sleep(4000);
 
     // Get the keys of the cache entries.
     string[] keys = cache.keys();
-    io:println("keys: [" + keys.toString() + "]");
+    io:println("keys: [", keys.toString(), "]");
 
     // Get the size of the cache.
     int size = cache.size();
-
-    // Get the capacity of the cache.
-    int capacity = cache.capacity();
+    io:println("size: ", size);
 
     // Discard the given cache entry.
     _ = check cache.invalidate("key2");
+
+    io:println("keys: [", cache.keys(), "]");
 
     // Discard all the cache entries of the cache.
     _ = check cache.invalidateAll();
