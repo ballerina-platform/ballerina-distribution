@@ -989,7 +989,9 @@ task testExamples() {
         'jwt-issue-validate',
         'secured-client-with-basic-auth',
         'secured-client-with-jwt-auth',
-        'secured-client-with-oauth2'
+        'secured-client-with-oauth2',
+        'task-scheduler-timer',
+        'task-scheduler-appointment',
     ]
 
     doFirst {
