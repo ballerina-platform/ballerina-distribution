@@ -2,7 +2,7 @@ import ballerina/io;
 import ballerina/math;
 import ballerina/time;
 
-type Person object {
+class Person object {
     string fname;
     string lname;
 
@@ -14,7 +14,7 @@ type Person object {
     function getFullName() returns string {
         return self.fname + " " + self.lname;
     }
-};
+}
 
 // This function returns a value of the `any` type.
 function lookupInfo(string id) returns any {
