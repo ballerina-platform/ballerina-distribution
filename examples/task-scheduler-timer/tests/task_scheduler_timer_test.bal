@@ -13,7 +13,7 @@ public function mockPrint(any|error... s) {
     counter += 1;
 }
 
-@test:Config
+//@test:Config
 function testFunc() {
     // Invoke the main function.
     main();
