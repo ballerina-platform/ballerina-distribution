@@ -11,7 +11,7 @@ public function mockPrint(any|error... val) {
     outputs.push(val.reduce(function (any|error a, any|error b) returns string => a.toString() + b.toString(), "").toString());
 }
 
-@test:Config {}
+@test:Config
 function testFunc() returns error? {
     // Invoking the main function
     error? output = main();
