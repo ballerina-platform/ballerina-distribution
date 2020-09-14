@@ -3,7 +3,7 @@ import ballerina/io;
 // Defines an abstract object called `Person`. It should only contain 
 // fields and method declarations. An abstract object cannot have
 // an initializer or method definitions.
-type Person abstract object {
+type Person object {
     public int age;
     public string firstName;
     public string lastName;
@@ -18,7 +18,7 @@ type Person abstract object {
 // Defines a non-abstract object called `Employee`, which is structurally equivalent
 // to `Person`. A non-abstract object cannot have any methods
 // without a body.
-type Employee object {
+class Employee {
     public int age;
     public string firstName;
     public string lastName;
@@ -40,7 +40,7 @@ type Employee object {
             self.age = a;
         }
     }
-};
+}
 
 public function main() {
     // An abstract object type cannot be initialized. It does not have 
