@@ -14,7 +14,7 @@ function newArrayDeque() returns handle = @java:Constructor {
 // the [Overloaded Methods/Constructors](https://ballerina.io/swan-lake/learn/by-example/overloaded-methods-constructors.html)  
 // section for more details on dealing with overloaded methods and constructors.
 // This function returns a `handle` value, which refers to an object of `java.util.ArrayDeque` class.
-function newArrayDequeWithInitialCapacity(int numElements) 
+function newArrayDequeWithInitialCapacity(int numElements)
                                           returns handle = @java:Constructor {
     'class: "java.util.ArrayDeque",
     paramTypes: ["int"]
