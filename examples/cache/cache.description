@@ -1,5 +1,5 @@
-// The `ballerina/cache` module is provides capability to extend custom cache
-// storage and eviction policies while providing a in-memory storage and LRU
-// eviction policy by default.<br/><br/>
+// The `ballerina/cache` module by-default provides an in-memory cache implementation with an
+// LRU algorithm based eviction policy. The caching implementation can be customized by providing different
+// storage mechanisms and eviction policies. <br/><br/>
 // For more information on the underlying module, 
 // see the [Cache module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/cache/index.html).
