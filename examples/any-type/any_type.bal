@@ -2,7 +2,7 @@ import ballerina/io;
 import ballerina/math;
 import ballerina/time;
 
-class Person object {
+class Person {
     string fname;
     string lname;
 

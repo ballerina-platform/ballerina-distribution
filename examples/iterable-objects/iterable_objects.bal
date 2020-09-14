@@ -20,7 +20,7 @@ class ArrayIterator {
 class IteratorGenerator {
 
     // The `__iterator()` method should return a new `Iterator<T>`.
-    public function __iterator() returns abstract object {
+    public function __iterator() returns object {
             public function next() returns record {|int value;|}?;} {
         return new ArrayIterator();
     }

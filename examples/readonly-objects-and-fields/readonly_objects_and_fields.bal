@@ -20,7 +20,7 @@ class Employee {
 }
 
 // An abstract object with non-readonly fields.
-type Controller abstract object {
+type Controller object {
    int id;
    string[] codes;
 
@@ -46,7 +46,7 @@ class DefaultController {
 // A non-abstract `readonly object`.
 // If the object type-descriptor includes `readonly` all the fields in the
 // object are considered to be `readonly` fields.
-type MainController readonly object {
+readonly class MainController {
     int id;
     string[] codes;
 
@@ -59,7 +59,7 @@ type MainController readonly object {
     function getId() returns string {
         return string `Main: ${self.id}`;
     }
-};
+}
 
 public function main() {
 

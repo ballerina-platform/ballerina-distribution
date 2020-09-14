@@ -919,20 +919,7 @@ task testExamples() {
         'task-scheduler-appointment',
         'raw-template',
         'optional-type',
-        'while',
-        'iterable-objects',
-        'object-type-reference',
-        'readonly-objects-and-fields',
-        'anonymous-objects',
-        'abstract-objects',
-        'object-assignability',
-        'object-methods',
-        'object-initializer',
-        'objects',
-        'range-expressions',
-        'any-type',
-        'anydata-type',
-        'basic-documentation'
+        'while'
     ]
 
     // The following BBEs will be excluded from output verification. But will be verified by compiling and running
