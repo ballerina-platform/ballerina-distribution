@@ -36,6 +36,8 @@ public function main() {
        //The `let` clause binds the variables.
        let string degreeName = "Bachelor of Medicine",
        int graduationYear = calGraduationYear(student.intakeYear)
+       //The `limit` clause limits the output items.
+       limit 2
        //The `select` clause is evaluated for each iteration.
        //The result of the query expression is a stream (`reportStream`) whose members are the result of the
        //`select` clause.
@@ -43,9 +45,7 @@ public function main() {
               name: student.firstName + " " + student.lastName,
               degree: degreeName,
               graduationYear: graduationYear
-       }
-       //The `limit` clause limits the output items.
-       limit 2;
+       };
 
     foreach var report in reportStream {
         io:println(report);

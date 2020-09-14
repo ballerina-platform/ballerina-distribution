@@ -1,6 +1,6 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run union_type.bal
-name=Peter address=50 Bridgeton Lane Tuckerton, NJ 08087
-error id 'Jack' not found
-name=Bella address=43 Kirkland Ave. North Attleboro, MA 02760
+{"name":"Peter","address":"50 Bridgeton Lane Tuckerton, NJ 08087"}
+error("id 'Jack' not found")
+{"name":"Bella","address":"43 Kirkland Ave. North Attleboro, MA 02760"}

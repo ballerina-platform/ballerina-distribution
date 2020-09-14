@@ -1,6 +1,6 @@
 import ballerina/io;
 
-type StockKeeper object {
+class StockKeeper {
     int requestCount = 0;
     int amount = 0;
     public function add(int n) {
@@ -11,7 +11,7 @@ type StockKeeper object {
         // Increments the `requentCount` field. This does not lock the field.
         self.requestCount += 1;
     }
-};
+}
 
 StockKeeper stockKeeper = new;
 

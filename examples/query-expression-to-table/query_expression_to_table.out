@@ -2,7 +2,5 @@
 # `.bal` file and execute the `ballerina run` command below.
 ballerina run query_expression_to_table.bal
 
-id=1 name=Michelle Sadler degree=Bachelor of Medicine graduationYear=1995
-id=3 name=Martin Guthrie degree=Bachelor of Medicine graduationYear=2007
-error Key Conflict message=cannot insert report
-
+[{"id":1,"name":"Michelle Sadler","degree":"Bachelor of Medicine","graduationYear":1995},{"id":3,"name":"Martin Guthrie","degree":"Bachelor of Medicine","graduationYear":2007}]
+error("Key Conflict",message="cannot insert report")
