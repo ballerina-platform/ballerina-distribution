@@ -2,5 +2,5 @@
 # `.bal` file and execute the `ballerina run` command below.
 ballerina run expression_bodied_functions.bal
 30
-name=John Doe designation=Software Engineer
+{"name":"John Doe","designation":"Software Engineer"}
 true
