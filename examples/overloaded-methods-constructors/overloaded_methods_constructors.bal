@@ -20,7 +20,8 @@ function appendString(handle receiver, handle str) returns handle = @java:Method
 
 // This `appendStringBuffer` function is linked with the Java `append` method that takes a
 // `java.lang.StringBuffer` as an argument.
-function appendStringBuffer(handle receiver, handle strBuffer) returns handle = @java:Method {
+function appendStringBuffer(handle receiver, handle strBuffer) 
+                            returns handle = @java:Method {
     name: "append",
     class: "java.lang.StringBuffer",
     paramTypes: ["java.lang.StringBuffer"]
