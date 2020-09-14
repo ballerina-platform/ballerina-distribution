@@ -2,7 +2,7 @@ import ballerina/io;
 
 // Defines an object called `Person`. It contains `public`, `private`, and module-level visible fields along with their types.
 // For fields, the default value must be specified if an explicit object initializer method is not defined.
-type Person object {
+class Person {
     public string name = "";
     public int age = 0;
     // If you need to have a field with its own type, you need to make that field defaultable
@@ -13,7 +13,7 @@ type Person object {
     private string email = "default@abc.com";
     // Protected fields (i.e., no access modifiers) are visible only within the same module.
     string address = "No 20, Palm grove";
-};
+}
 
 public function main() {
     // There are three ways to initialize a `Person` object.

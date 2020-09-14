@@ -3,7 +3,7 @@ import ballerina/io;
 import ballerina/java.jdbc;
 
 // The user-defined retry manager object.
-public type MyRetryManager object {
+public class MyRetryManager {
     private int count;
     public function init(int count = 2) {
         self.count = count;
@@ -17,7 +17,7 @@ public type MyRetryManager object {
             return false;
         }
     }
-};
+}
 
 public function main() returns error? {
     // The JDBC Client for the H2 database.
