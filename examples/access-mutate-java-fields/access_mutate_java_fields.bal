@@ -4,7 +4,7 @@ import ballerina/java;
 // Define a Ballerina function which will act as a Java field getter.
 public function pi() returns float = @java:FieldGet {
     name: "PI",
-    class: "java/lang/Math"
+    'class: "java/lang/Math"
 } external;
 
 public function main() {

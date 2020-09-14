@@ -1,4 +1,4 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file and execute the `ballerina run` command below.
 ballerina run fork.bal
-Result: w1=6 w2=36
+Result: {"w1":6,"w2":36}
