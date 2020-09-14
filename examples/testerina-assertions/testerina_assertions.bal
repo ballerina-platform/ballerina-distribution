@@ -1,12 +1,12 @@
 import ballerina/test;
 
-type Person object {
+class Person {
     public string name = "";
     public int age = 0;
     public Person? parent = ();
     private string email = "default@abc.com";
     string address = "No 20, Palm grove";
-};
+}
 
 // The `assertEquals()` function allows you to compare anydata type values for value equality.
 // The `assertExactEquals()` function allows you to compare any type entries for exact equality.

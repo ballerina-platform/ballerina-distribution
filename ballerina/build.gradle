@@ -844,19 +844,12 @@ task testExamples() {
     patternSet.exclude("**/ballerina-internal.log")
     inputs.files(files("${distPath}/examples").asFileTree.matching(patternSet))
 
-    // The following BBEs will not be verified by running/compiling
+    // The following BBEs will not be verified by compiling/running.
     def buildIgnoreList = [
         'proto-to-ballerina',
         'taint-checking',
         'websub-hub-client-sample',
         'websub-remote-hub-sample',
-        'kafka-producer',
-        'kafka-consumer-service',
-        'kafka-consumer-client',
-        'kafka-producer-transactional',
-        'kafka-consumer-group-service',
-        'kafka-authentication-sasl-plain-consumer',
-        'kafka-authentication-sasl-plain-producer', // Kafka BBEs are ignored since a KafkaCluster is not present
         'config-api',
         'docker-deployment',
         'kubernetes-deployment',
@@ -900,8 +893,6 @@ task testExamples() {
         'mutual-ssl',
         'type-conversion',
         'filepath',
-        'record-io',
-        'csv-io',
         'type-cast',
         'json-csv',
         'functional-iteration',
@@ -928,11 +919,32 @@ task testExamples() {
         'task-scheduler-appointment',
         'raw-template',
         'optional-type',
-        'while'
+        'while',
+        'iterable-objects',
+        'object-type-reference',
+        'readonly-objects-and-fields',
+        'anonymous-objects',
+        'abstract-objects',
+        'object-assignability',
+        'object-methods',
+        'object-initializer',
+        'objects',
+        'range-expressions',
+        'any-type',
+        'anydata-type',
+        'basic-documentation'
     ]
 
-    // The following BBEs will only be verified by compiling
-    def runIgnoreList = [
+    // The following BBEs will be excluded from output verification. But will be verified by compiling and running
+    // tests if it is not added to the above buildIgnoreList.
+    def outputVerificationIgnoreList = [
+        'kafka-consumer-client',
+        'kafka-producer',
+        'kafka-consumer-service',
+        'kafka-producer-transactional',
+        'kafka-consumer-group-service',
+        'kafka-authentication-sasl-plain-consumer',
+        'kafka-authentication-sasl-plain-producer', // Kafka BBEs are ignored since a KafkaCluster is not present
         'websub-service-integration-sample',
         'websub-internal-hub-sample',
         'grpc-server-streaming',
@@ -976,7 +988,6 @@ task testExamples() {
         'different-payload-types',
         'task-service-timer',
         'task-service-appointment',
-        'byte-io',
         'http-cookies',
         'any-type',
         'record-readonly-fields',
@@ -1200,12 +1211,11 @@ task testExamples() {
         def failedBuildExamples = []
         def failOutputVerificationExamples = []
         bbeList.each { String bbe ->
-            if (runIgnoreList.contains(bbe)) {
-                boolean buildFailFlag = buildBBE(bbe)
-                if (buildFailFlag) {
-                    failedBuildExamples.add(bbe)
-                }
-            } else {
+            boolean buildFailFlag = buildBBE(bbe)
+            if (buildFailFlag) {
+                failedBuildExamples.add(bbe)
+            }
+            if (!outputVerificationIgnoreList.contains(bbe)) {
                 boolean outputVerificationFailFlag = outputVerification(bbe)
                 if (outputVerificationFailFlag) {
                     failOutputVerificationExamples.add(bbe)

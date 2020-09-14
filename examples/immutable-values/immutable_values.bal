@@ -1,7 +1,7 @@
 import ballerina/io;
 
 type Student record {|
-    int class;
+    int 'class;
     Details details;
     map<int> marks;
 |};
@@ -21,7 +21,7 @@ public function main() {
 
     // Now create an immutable `Student` value similarly.
     Student & readonly student = {
-        class: 12,
+        'class: 12,
         // Since `immutableDetails` was created as an immutable value it can be used as a member here.
         details: immutableDetails,
         // The applicable contextually expected type for `marks` is now `map<int> & readonly`.

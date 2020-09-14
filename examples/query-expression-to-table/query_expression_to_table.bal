@@ -41,6 +41,8 @@ public function main() {
         // The `let` clause binds the variables.
         let string degreeName = "Bachelor of Medicine",
         int graduationYear = calGraduationYear(student.intakeYear)
+        // The `limit` clause limits the number of output items.
+        limit 2
         // The `select` clause is evaluated for each iteration.
         // During the construction of a `table`, each emitted value from the `select` clause is added as a new member.
         select {
@@ -48,9 +50,7 @@ public function main() {
             name: student.firstName + " " + student.lastName,
             degree: degreeName,
             graduationYear: graduationYear
-        }
-        // The `limit` clause limits the number of output items.
-        limit 2;
+        };
 
     io:println(reportTable);
 
