@@ -116,7 +116,7 @@ service echo06 on listener06_2 {
 
 // ---------- inbound_custom_auth_handler ----------
 
-public type InboundCustomAuthHandler object {
+public class InboundCustomAuthHandler {
 
     *http:InboundAuthHandler;
 
@@ -143,11 +143,11 @@ public type InboundCustomAuthHandler object {
         var customAuthHeader = req.getHeader(http:AUTH_HEADER);
         return customAuthHeader.startsWith("Custom");
     }
-};
+}
 
 // ---------- inbound_custom_auth_provider ----------
 
-public type InboundCustomAuthProvider object {
+public class InboundCustomAuthProvider {
 
     *auth:InboundAuthProvider;
 
@@ -159,11 +159,11 @@ public type InboundCustomAuthProvider object {
         }
         return authenticated;
     }
-};
+}
 
 // ---------- outbound_custom_auth_handler ----------
 
-public type OutboundCustomAuthHandler object {
+public class OutboundCustomAuthHandler {
 
     *http:OutboundAuthHandler;
 
@@ -198,11 +198,11 @@ public type OutboundCustomAuthHandler object {
             return http:AuthenticationError(token.message(), token);
         }
     }
-};
+}
 
 // ---------- outbound_custom_auth_provider ----------
 
-public type OutboundCustomAuthProvider object {
+public class OutboundCustomAuthProvider {
 
     *auth:OutboundAuthProvider;
 
@@ -217,4 +217,4 @@ public type OutboundCustomAuthProvider object {
             return token;
         }
     }
-};
+}
