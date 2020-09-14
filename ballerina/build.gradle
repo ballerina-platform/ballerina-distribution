@@ -990,6 +990,7 @@ task testExamples() {
         'secured-client-with-oauth2',
         'task-scheduler-timer',
         'task-scheduler-appointment',
+        'cache'
     ]
 
     doFirst {
