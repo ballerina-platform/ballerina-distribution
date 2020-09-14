@@ -6,5 +6,29 @@
   {
     "name": "Task standard library ",
     "path": "task"
+  },
+  {
+    "name": "gRPC Unary Blocking RPC",
+    "path": "grpc-unary-blocking"
+  },
+  {
+    "name": "gRPC Unary non-Blocking RPC",
+    "path": "grpc-unary-non-blocking"
+  },
+  {
+    "name": "gRPC Server Streaming RPC",
+    "path": "grpc-server-streaming"
+  },
+  {
+    "name": "gRPC Unary Secured RPC",
+    "path": "grpc-secured-unary"
+  },
+  {
+    "name": "gRPC Client Streaming RPC",
+    "path": "grpc-client-streaming"
+  },
+  {
+    "name": "gRPC Bidirectional Streaming RPC",
+    "path": "grpc-bidirectional-streaming"
   }
 ]
