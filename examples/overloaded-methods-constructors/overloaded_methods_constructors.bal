@@ -5,7 +5,7 @@ import ballerina/java;
 // `java.lang.String` as an argument. The `java.lang.StringBuffer` class has other overloaded
 // constructors that take a single parameter. Therefore you need to specify the parameter types here.
 function newStringBuffer(handle str) returns handle = @java:Constructor {
-    class: "java.lang.StringBuffer",
+    'class: "java.lang.StringBuffer",
     paramTypes: ["java.lang.String"]
 } external;
 
@@ -14,7 +14,7 @@ function newStringBuffer(handle str) returns handle = @java:Constructor {
 // method that takes a `java.lang.String` as an argument.
 function appendString(handle receiver, handle str) returns handle = @java:Method {
     name: "append",
-    class: "java.lang.StringBuffer",
+    'class: "java.lang.StringBuffer",
     paramTypes: ["java.lang.String"]
 } external;
 
@@ -23,7 +23,7 @@ function appendString(handle receiver, handle str) returns handle = @java:Method
 function appendStringBuffer(handle receiver, handle strBuffer) 
                             returns handle = @java:Method {
     name: "append",
-    class: "java.lang.StringBuffer",
+    'class: "java.lang.StringBuffer",
     paramTypes: ["java.lang.StringBuffer"]
 } external;
 
