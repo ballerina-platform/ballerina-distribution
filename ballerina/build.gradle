@@ -850,13 +850,6 @@ task testExamples() {
         'taint-checking',
         'websub-hub-client-sample',
         'websub-remote-hub-sample',
-        'kafka-producer',
-        'kafka-consumer-service',
-        'kafka-consumer-client',
-        'kafka-producer-transactional',
-        'kafka-consumer-group-service',
-        'kafka-authentication-sasl-plain-consumer',
-        'kafka-authentication-sasl-plain-producer', // Kafka BBEs are ignored since a KafkaCluster is not present
         'config-api',
         'docker-deployment',
         'kubernetes-deployment',
@@ -900,8 +893,6 @@ task testExamples() {
         'mutual-ssl',
         'type-conversion',
         'filepath',
-        'record-io',
-        'csv-io',
         'type-cast',
         'json-csv',
         'functional-iteration',
@@ -931,8 +922,16 @@ task testExamples() {
         'while'
     ]
 
-    // The following BBEs will be excluded from output verification. But will be verified by compiling and running.
+    // The following BBEs will be excluded from output verification. But will be verified by compiling and running
+    // tests if it is not added to the above buildIgnoreList.
     def outputVerificationIgnoreList = [
+        'kafka-consumer-client',
+        'kafka-producer',
+        'kafka-consumer-service',
+        'kafka-producer-transactional',
+        'kafka-consumer-group-service',
+        'kafka-authentication-sasl-plain-consumer',
+        'kafka-authentication-sasl-plain-producer', // Kafka BBEs are ignored since a KafkaCluster is not present
         'websub-service-integration-sample',
         'websub-internal-hub-sample',
         'grpc-server-streaming',
@@ -976,7 +975,6 @@ task testExamples() {
         'different-payload-types',
         'task-service-timer',
         'task-service-appointment',
-        'byte-io',
         'http-cookies',
         'any-type',
         'record-readonly-fields',

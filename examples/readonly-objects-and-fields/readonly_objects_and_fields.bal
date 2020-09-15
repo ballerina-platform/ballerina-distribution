@@ -6,7 +6,7 @@ type Details record {|
 |};
 
 // An object with both read-only and non-read-only fields.
-type Employee object {
+class Employee {
     string department;
     // `details` is a `readonly` field which cannot be updated once the value is created.
     // `details` also expects an immutable value, and thus the effective contextually expected type for
@@ -17,10 +17,10 @@ type Employee object {
         self.department = department;
         self.details = details;
     }
-};
+}
 
 // An abstract object with non-readonly fields.
-type Controller abstract object {
+type Controller object {
    int id;
    string[] codes;
 
@@ -28,7 +28,7 @@ type Controller abstract object {
 };
 
 // A non-abstract object with all read-only fields.
-type DefaultController object {
+class DefaultController {
     readonly int id;
     readonly string[] codes;
 
@@ -41,12 +41,12 @@ type DefaultController object {
     function getId() returns string {
         return string `Default: ${self.id}`;
     }
-};
+}
 
 // A non-abstract `readonly object`.
 // If the object type-descriptor includes `readonly` all the fields in the
 // object are considered to be `readonly` fields.
-type MainController readonly object {
+readonly class MainController {
     int id;
     string[] codes;
 
@@ -59,7 +59,7 @@ type MainController readonly object {
     function getId() returns string {
         return string `Main: ${self.id}`;
     }
-};
+}
 
 public function main() {
 

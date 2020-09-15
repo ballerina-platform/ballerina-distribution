@@ -3,7 +3,7 @@ import ballerina/io;
 // Defines an object called `Person`. Each object has its own `init()` method, which gets
 // invoked when creating the objects. You can place the logic for initializing the fields of the
 // object within the body of the `init()` method.
-type Person object {
+class Person {
 
     public string name;
     private int age;
@@ -12,7 +12,7 @@ type Person object {
         self.name = name;
         self.age = check validateAge(age);
     }
-};
+}
 
 function validateAge(int age) returns int|error {
     if (age > 0 && age < 100) {

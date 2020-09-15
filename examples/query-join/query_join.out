@@ -2,6 +2,6 @@
 # `.bal` file and execute the `ballerina run` command below.
 ballerina run query_join.bal
 
-name=Michelle Sadler deptName=Physics degree=Bachelor of Science intakeYear=1990
-name=Ranjan Fonseka deptName=Chemistry degree=Bachelor of Science intakeYear=2001
-name=Martin Guthrie deptName=Physics degree=Bachelor of Science intakeYear=2002
+{"name":"Michelle Sadler","deptName":"Physics","degree":"Bachelor of Science","intakeYear":1990}
+{"name":"Ranjan Fonseka","deptName":"Chemistry","degree":"Bachelor of Science","intakeYear":2001}
+{"name":"Martin Guthrie","deptName":"Physics","degree":"Bachelor of Science","intakeYear":2002}

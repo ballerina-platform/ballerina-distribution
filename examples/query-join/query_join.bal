@@ -46,15 +46,15 @@ public function main() {
        // The `on` condition is used to match the `student` with the `department` based on the `deptId`.
        // The iteration is skipped when the condition is not satisfied.
        on student.deptId equals department.deptId
+       // The `limit` clause limits the number of output items.
+       limit 3
        // The `select` clause is evaluated in each iteration when the `on` condition is satisfied.
        select {
               name: student.firstName + " " + student.lastName,
               deptName: department.deptName,
               degree: "Bachelor of Science",
               intakeYear: student.intakeYear
-       }
-       // The `limit` clause limits the number of output items.
-       limit 3;
+       };
 
     foreach var report in reportList {
         io:println(report);
