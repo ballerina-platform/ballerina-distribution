@@ -1310,27 +1310,29 @@ task testStdlibs() {
 }
 
 task startLdapServer() {
-    if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
-        def stdOut = new ByteArrayOutputStream()
-        exec {
-            commandLine 'sh', '-c', "docker ps --filter name=openldap-server"
-            standardOutput = stdOut
-        }
-        if (!stdOut.toString().contains("openldap-server")) {
-            println "Starting LDAP server."
-            copy {
-                from file("$project.rootDir/stdlib-integration-tests/ldap/tests/resources/openldap")
-                into file("/tmp")
-            }
+    doLast {
+        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+            def stdOut = new ByteArrayOutputStream()
             exec {
-                commandLine 'sh', '-c', "docker run -d -p 389:389 --name openldap-server --env LDAP_ORGANISATION=\"AVIX\" --env LDAP_DOMAIN=\"avix.lk\" --env LDAP_ADMIN_PASSWORD=\"avix123\" --env LDAP_BASE_DN=\"dc=avix,dc=lk\" --volume /tmp/bootstrap.ldif:/container/service/slapd/assets/config/bootstrap/ldif/custom/bootstrap.ldif osixia/openldap:1.3.0 --copy-service"
+                commandLine 'sh', '-c', "docker ps --filter name=openldap-server"
                 standardOutput = stdOut
             }
-            println stdOut.toString()
-            println "Waiting 15s until the LDAP server get initiated."
-            sleep(15 * 1000)
-        } else {
-            println "LDAP server is already started."
+            if (!stdOut.toString().contains("openldap-server")) {
+                println "Starting LDAP server."
+                copy {
+                    from file("$project.rootDir/stdlib-integration-tests/ldap/tests/resources/openldap")
+                    into file("/tmp")
+                }
+                exec {
+                    commandLine 'sh', '-c', "docker run -d -p 389:389 --name openldap-server --env LDAP_ORGANISATION=\"AVIX\" --env LDAP_DOMAIN=\"avix.lk\" --env LDAP_ADMIN_PASSWORD=\"avix123\" --env LDAP_BASE_DN=\"dc=avix,dc=lk\" --volume /tmp/bootstrap.ldif:/container/service/slapd/assets/config/bootstrap/ldif/custom/bootstrap.ldif osixia/openldap:1.3.0 --copy-service"
+                    standardOutput = stdOut
+                }
+                println stdOut.toString()
+                println "Waiting 15s until the LDAP server get initiated."
+                sleep(15 * 1000)
+            } else {
+                println "LDAP server is already started."
+            }
         }
     }
 }
