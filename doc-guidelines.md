@@ -85,7 +85,7 @@ For example,
     
 9. Unless it is really required, it is not encouraged to have multiple BAL files in the same sample. In that case, each BAL file can have its own name and the `.out` file should match with the name of the `.bal` file. For example,
 
-<img src="/images/mulitple-bal-files.png" alt="A service example" width="300" height="150">
+<img src="/images/mulitple-bal-files.png" alt="A service example" width="350" height="150">
 
 10. Use language features to make the examples look elegant (and small). For example, string templates, functional iteration, anonymous functions, etc.
 
@@ -113,7 +113,7 @@ For example,
 
 18. Keep the length of the code lines in BBEs to a maximum character count of 80 per line in BAL files. Else, they get wrapped and you get horizontal scroll bars in the code view in the website reducing the readibility.
 
-    <img src="/images/max-char-count.png" alt="Max character count" width="550" height="80">
+    <img src="/images/max-char-count.png" alt="Max character count" width="500" height="70">
 
 19. Add comments to the code blocks as much as possible with “//” as they are used as a mechanism to describe the code. They will be displayed in the RHS section in the Ballerina website. 
 
