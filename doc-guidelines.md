@@ -53,9 +53,9 @@ The below is a list of guidelines that must be followed when updating and adding
     - `.out` - output of the sample displayed at the bottom inside a black colour box in in the Ballerina website. The output file for a particular `.bal` file should have the same name as the `.bal` file but with the `.out` extension.
     - `_test.bal` - Contains the test to validate the output of the BBE during the build time. 
 
-    For example,
+        For example,
 
-    <img src="/images/bbe-folder-structure.png" alt="BBE folder structure" width="250" height="150">
+        <img src="/images/bbe-folder-structure.png" alt="BBE folder structure" width="250" height="150">
 
 6. Break the `.description` file content into paragraphs when necessary and use `<br/>` tags to separate them. New lines in the content do not get translated into new lines in the final rendering.
 
