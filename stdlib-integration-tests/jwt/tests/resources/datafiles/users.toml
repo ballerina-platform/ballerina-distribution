@@ -1,0 +1,5 @@
+[b7a.users]
+
+[b7a.users.chanaka]
+password="123"
+scopes="scope1,scope3"
