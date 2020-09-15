@@ -1309,7 +1309,6 @@ task testStdlibs() {
 }
 
 task startLdapServer() {
-    def ldapTestResources = "${project.rootDir}/ballerina/build/bbe-pack/StdlibTestProject/src/ldap/tests/resources/"
     if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
         def stdOut = new ByteArrayOutputStream()
         exec {
@@ -1319,7 +1318,7 @@ task startLdapServer() {
         if (!stdOut.toString().contains("openldap-server")) {
             println "Starting LDAP server."
             copy {
-                from file("${ldapTestResources}/openldap/bootstrap.ldif")
+                from file("$project.rootDir/stdlib-integration-tests/ldap/tests/resources/openldap")
                 into file("/tmp")
             }
             exec {
