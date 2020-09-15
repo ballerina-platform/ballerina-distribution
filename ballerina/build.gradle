@@ -898,7 +898,6 @@ task testExamples() {
         'functional-iteration',
         'table',
         'maps',
-        'cache',
         'send-and-receive-emails',
         'xml-attributes',
         'xml-literal',
@@ -915,12 +914,10 @@ task testExamples() {
         'retry-transactions',
         'non-transaction-retry',
         'local-transactions-with-handlers',
-        'task-scheduler-timer',
-        'task-scheduler-appointment',
         'raw-template',
         'optional-type',
         'while',
-        'anonymous-objects'
+        'anonymous-objects' // As this is obsolete after latest class, object change
     ]
 
     // The following BBEs will be excluded from output verification. But will be verified by compiling and running
@@ -991,7 +988,10 @@ task testExamples() {
         'jwt-issue-validate',
         'secured-client-with-basic-auth',
         'secured-client-with-jwt-auth',
-        'secured-client-with-oauth2'
+        'secured-client-with-oauth2',
+        'task-scheduler-timer',
+        'task-scheduler-appointment',
+        'cache'
     ]
 
     doFirst {
