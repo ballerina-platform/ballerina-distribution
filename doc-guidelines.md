@@ -55,7 +55,7 @@ For example,
 
     For example,
 
-    <img src="/images/bbe-folder-structure.png" alt="BBE folder structure" width="100" height="200">
+    <img src="/images/bbe-folder-structure.png" alt="BBE folder structure" width="300" height="200">
 
 6. Break the `.description` file content into paragraphs when necessary and use `<br/>` tags to separate them. New lines in the content do not get translated into new lines in the final rendering.
 
