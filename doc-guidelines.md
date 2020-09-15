@@ -61,21 +61,21 @@ The below is a list of guidelines that must be followed when updating and adding
 
 7. As a best practice, use the following format as a common pattern in the `.out` files and customize only when necessary (e.g., when it is needed to add more command line args etc).
 
-    For an example with main:
+        For an example with main:
 
-    ```ballerina
-    # To run this sample, navigate to the directory that contains the
-    # `.bal` file and issue the `ballerina run` command.
-    $ ballerina run <sample_file_name>.bal
-    ```
+        ```ballerina
+        # To run this sample, navigate to the directory that contains the
+        # `.bal` file and issue the `ballerina run` command.
+        $ ballerina run <sample_file_name>.bal
+        ```
 
-    For an example with a service:
+        For an example with a service:
 
-    ```ballerina
-    # To start the service, navigate to the directory that contains the
-    # `.bal` file and issue the `ballerina run` command.
-    $ ballerina run hello_world_service.bal
-    ```
+        ```ballerina
+        # To start the service, navigate to the directory that contains the
+        # `.bal` file and issue the `ballerina run` command.
+        $ ballerina run hello_world_service.bal
+        ```
 
 8. Service examples demonstrating client-server scenarios have a `.bal` file only for the server and two different output files. That is, one to display the server output (`.server.out` file) and the other (`.client.out` file) to display the cURL command and the output. These two separate output files can be introduced with `.server` and `.client` suffixed to the file names. 
 
@@ -85,7 +85,7 @@ The below is a list of guidelines that must be followed when updating and adding
     
 9. Unless it is really required, it is not encouraged to have multiple BAL files in the same sample. In that case, each BAL file can have its own name and the `.out` file should match with the name of the `.bal` file. For example,
 
-<img src="/images/mulitple-bal-files.png" alt="A service example" width="350" height="150">
+    <img src="/images/mulitple-bal-files.png" alt="A service example" width="350" height="150">
 
 10. Use language features to make the examples look elegant (and small). For example, string templates, functional iteration, anonymous functions, etc.
 
@@ -151,16 +151,16 @@ After writing a Ballerina By Example, you can also run it to test and verify if 
 
 3. Execute the command below to build the BBEs.
 
->**Info:** You need to change the properties of the above command accordingly. Also, the `<GEN_PLAYGROUND_LINKS>` property can be set to `false` while testing BBEs locally since with `true` it takes a longer time to run the tool. In the final run, you can set this to `true`.
+    >**Info:** You need to change the properties of the above command accordingly. Also, the `<GEN_PLAYGROUND_LINKS>` property can be set to `false` while testing BBEs locally since with `true` it takes a longer time to run the tool. In the final run, you can set this to `true`.
 
-```
-go run ballerinaByExample/tools/generate.go “<SOURCE-OF-THE-BBES>” “<RELEASE-VERSION>” “<OUTPUT-FOLDER>” “<WITH-OR-WITHOUT-FRONT-MATTER>” “<IF-LATEST-VERSION>” “<GEN_PLAYGROUND_LINKS>”
-```
-For example,
+    ```
+    go run ballerinaByExample/tools/generate.go “<SOURCE-OF-THE-BBES>” “<RELEASE-VERSION>” “<OUTPUT-FOLDER>” “<WITH-OR-WITHOUT-FRONT-MATTER>” “<IF-LATEST-VERSION>” “<GEN_PLAYGROUND_LINKS>”
+    ```
+    For example,
 
-```
-go run ballerinaByExample/tools/generate.go "/Documents/examples" "1.2" "by-example" "true" "true" "true"
-```
+    ```
+    go run ballerinaByExample/tools/generate.go "/Documents/examples" "1.2"     "by-example" "true" "true" "true"
+    ```
 
 4. Copy the generated `<BALLERINA_RELEASE_REPO_HOME>/by-example` directory.
 
@@ -170,11 +170,11 @@ go run ballerinaByExample/tools/generate.go "/Documents/examples" "1.2" "by-exam
 
 7. Execute the `bundle exec jekyll serve` command to build the website locally.
 
->**Note:** Alternatively, execute the command below if you do not have Jekyll configured locally.
+    >**Note:** Alternatively, execute the command below if you do not have Jekyll configured locally.
 
- ```
- docker run -p 4000:4000 --volume="/home/shaf/Documents/source/public/ballerina-dev-website:/srv/jekyll" jekyll/builder:3.8 jekyll serve
- ```
+    ```
+    docker run -p 4000:4000 --volume="/home/shaf/Documents/source/public/ballerina-dev-website:/srv/jekyll" jekyll/builder:3.8 jekyll serve
+    ```
 
  8. Navigate to the Ballerina By Examples in the dev website built locally and test the BBE updates you did.
 
@@ -186,7 +186,7 @@ go run ballerinaByExample/tools/generate.go "/Documents/examples" "1.2" "by-exam
 
 3. Module-level documentation page needs to introduce the general concept of the API and the main APIs that are used. In the I/O API scenario, this would be the aspects such as the channels concept, how we have different types of channels etc., and their common behavior. 
 
-For example, [Rust’s I/O API documentation](https://doc.rust-lang.org/std/io/index.html) is a good example for this. After the module overview, for each object, record, function, a separate documentation page is added, which will contain their individual details and also their specific examples. For example, see [Struct std::io::Cursor](https://doc.rust-lang.org/std/io/struct.Cursor.html) and [Struct std::io::BufReader](https://doc.rust-lang.org/std/io/struct.BufReader.html). Some APIs that were featured in the main module page will need to again have their own examples in their respective page. Therefore, there will be some overlap of information in that area. 
+    For example, [Rust’s I/O API documentation](https://doc.rust-lang.org/std/io/index.html) is a good example for this. After the module overview, for each object, record, function, a separate documentation page is added, which will contain their individual details and also their specific examples. For example, see [Struct std::io::Cursor](https://doc.rust-lang.org/std/io/struct.Cursor.html) and [Struct std::io::BufReader](https://doc.rust-lang.org/std/io/struct.BufReader.html). Some APIs that were featured in the main module page will need to again have their own examples in their respective page. Therefore, there will be some overlap of information in that area. 
 
 4. The examples in the API Docs need to be short. Mostly, shorter than BBEs. They usually explain a quick API operation and not a complete, end to end scenario. The same guidelines for BBEs as above should be used for API Docs to keep the examples small and clear. 
 
@@ -196,18 +196,16 @@ For example, [Rust’s I/O API documentation](https://doc.rust-lang.org/std/io/i
 
 7. As a best practice, do not add a full stop at the end of the first sentence of the parameter and return type descriptions. Instead, add a full stop only at the end of a function description. For example,
 
-```
-
-# Description for the function.
-#
-# + i - One sentence only
-# + s - Sentence one. Sentence two.
-# + return - Return description
-public function foo(int i, string s) returns boolean {
-return true;
-}
-
-```
+    ```
+    # Description for the function.
+    #
+    # + i - One sentence only
+    # + s - Sentence one. Sentence two.
+    # + return - Return description
+    public function foo(int i, string s) returns boolean {
+    return true;
+    }
+    ```
 
 For information on generating API Docs and testing them locally, see [How To Do the Bio Prod Sync and Doc Generations](https://docs.google.com/document/d/1XrYC4aOnyUg8ge-A_o0dLITJSiJsZw_x428mTUDjpKA/edit?ts=5f52f23b#heading=h.dwgoecewvrjj).
 
