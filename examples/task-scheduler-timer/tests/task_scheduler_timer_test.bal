@@ -1,3 +1,4 @@
+import ballerina/runtime;
 import ballerina/test;
 
 (any|error)[] outputs = [];
@@ -13,9 +14,10 @@ public function mockPrint(any|error... s) {
     counter += 1;
 }
 
-//@test:Config
+@test:Config{}
 function testFunc() {
     // Invoke the main function.
     main();
-    test:assertEquals(outputs[0].toString(), "End.");
+    runtime:sleep(10000);
+    test:assertEquals(outputs[11].toString(), "End.");
 }
