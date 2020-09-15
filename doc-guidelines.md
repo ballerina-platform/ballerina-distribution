@@ -113,7 +113,7 @@ For example,
 
 18. Keep the length of the code lines in BBEs to a maximum character count of 80 per line in BAL files. Else, they get wrapped and you get horizontal scroll bars in the code view in the website reducing the readibility.
 
-<img src="/images/max-char-count.png" alt="Max character count" width="200" height="100">
+<img src="/images/max-char-count.png" alt="Max character count" width="100%" height="100">
 
 19. Add comments to the code blocks as much as possible with “//” as they are used as a mechanism to describe the code. They will be displayed in the RHS section in the Ballerina website. 
 
