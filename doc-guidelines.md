@@ -54,8 +54,8 @@ For example,
     - `_test.bal` - Contains the test to validate the output of the BBE during the build time. 
 
     For example,
-
-    ![BBE folder structure](/images/bbe-folder-structure.png)
+    
+    <img src="/images/bbe-folder-structure.png" alt="BBE folder structure" width="500" height="600">
 
 6. Break the `.description` file content into paragraphs when necessary and use `<br/>` tags to separate them. New lines in the content do not get translated into new lines in the final rendering.
 
