@@ -81,7 +81,7 @@ For example,
 
     For example, see the  `hello_world_service.server.out` and `hello_world_service.client.out` files below of the [Hello World Service BBE](https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/hello-world-service).
 
-    <img src="/images/service-example.png" alt="A service example" width="250" height="150">
+    <img src="/images/service-examples.png" alt="A service example" width="250" height="150">
     
 9. Unless it is really required, it is not encouraged to have multiple BAL files in the same sample. In that case, each BAL file can have its own name and the `.out` file should match with the name of the `.bal` file. For example,
 
