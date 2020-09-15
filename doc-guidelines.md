@@ -61,7 +61,7 @@ The below is a list of guidelines that must be followed when updating and adding
 
 7. As a best practice, use the following format as a common pattern in the `.out` files and customize only when necessary (e.g., when it is needed to add more command line args etc).
 
-        For an example with main:
+    For an example with main:
 
         ```ballerina
         # To run this sample, navigate to the directory that contains the
@@ -69,7 +69,7 @@ The below is a list of guidelines that must be followed when updating and adding
         $ ballerina run <sample_file_name>.bal
         ```
 
-        For an example with a service:
+    For an example with a service:
 
         ```ballerina
         # To start the service, navigate to the directory that contains the
