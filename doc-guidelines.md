@@ -41,13 +41,13 @@ The below is a list of guidelines that must be followed when updating and adding
 
 13. All keywords and any other word, which needs to be highlighted should be used with backquotes (e.g.,  `xml`).  Don’t use a single quote as it will not get highlighted in the Ballerina website. 
 
-For example,if the code comment is added as follows in the BAL file of the BBE,
+    For example, if the code comment is added as follows in the BAL file of the BBE,
 
-![Code comment in BAL file](/images/bal-file-comment.png)
+    ![Code comment in BAL file](/images/bal-file-comment.png)
 
-it will be rendered as follows in the Ballerina website.
+    it will be rendered as follows in the Ballerina website.
 
-![Comment in the BBE](/images/bbe-comment.png)
+    ![Comment in the BBE](/images/bbe-comment.png)
 
 14. Format the Ballerina source using an IDE Plugin. 
 
