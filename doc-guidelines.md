@@ -26,25 +26,25 @@ The below is a list of guidelines that must be followed when updating and adding
 
 4. If a new example is added/deleted, update the `index.json` file as well.
 
->**Info:** Individual BBEs can be configured to disable the playground link generation and to override the default GitHub edit URL by setting the `disablePlayground` and `githubLink` properties accordignly in the `index.json` file. 
+    >**Info:** Individual BBEs can be configured to disable the playground link generation and to override the default GitHub edit URL by setting the `disablePlayground` and `githubLink` properties accordignly in the `index.json` file. 
 
-For example,
+    For example,
 
-```
-{
-    	"title": "Ballerina Basics",
-    	"column": 0,
-    	"category": "Language concepts",
-    	"samples": [
-        	{
-            	"name": "Functions",
-            	"url": "functions",
-            	"githubLink": "https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/functions/",
-            	"disablePlayground": true
-        	}
-    	]
-}
-```
+        ```
+        {
+    	    "title": "Ballerina Basics",
+    	    "column": 0,
+    	    "category": "Language concepts",
+    	    "samples": [
+        	    {
+            	    "name": "Functions",
+            	    "url": "functions",
+            	    "githubLink": "https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/functions/",
+            	    "disablePlayground": true
+        	    }
+    	    ]
+        }
+        ```
 
 5. Each new example should contain at least the following files.
 
