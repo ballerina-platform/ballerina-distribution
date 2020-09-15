@@ -4,6 +4,22 @@
     "path": "socket"
   },
   {
+    "name": "Auth standard library ",
+    "path": "auth"
+  },
+  {
+    "name": "JWT standard library ",
+    "path": "jwt"
+  },
+  {
+    "name": "OAuth2 standard library ",
+    "path": "oauth2"
+  },
+  {
+    "name": "LDAP standard library ",
+    "path": "ldap"
+  },
+  {
     "name": "Task standard library ",
     "path": "task"
   }
