@@ -22,7 +22,7 @@ The below is a list of guidelines that must be followed when updating and adding
 
 2. Create realistic examples whenever possible. Make sure the example, which explains some feature shows a practical scenario when it can be used. However, sometimes, it may not be possible to create a small-enough practical scenario. It will be required to use your judgement to decide that. 
 
-3. Each new BBE should have its own directory named after it. The directory name should be in all lowercase letters. Use hyphens (`-`) in the directory names (e.g., hello-world) and underscores (`_`) in the file names (e.g., hello_world.bal).
+3. Each new BBE should have its own directory named after it. The directory name should be in all lowercase letters. Use hyphens (`-`) in the directory names (e.g., `hello-world`) and underscores (`_`) in the file names (e.g., `hello_world.bal`).
 
 4. If a new example is added/deleted, update the `index.json` file as well.
 
@@ -55,9 +55,9 @@ For example,
 
     For example,
 
-    [BBE folder structure](/images/bbe-folder-structure.png)
+    ![BBE folder structure](/images/bbe-folder-structure.png)
 
-6. Break the `.description` file content into paragraphs when necessary and use “<br/>” tags to separate them. New lines in the content do not get translated into new lines in the final rendering.
+6. Break the `.description` file content into paragraphs when necessary and use `<br/>` tags to separate them. New lines in the content do not get translated into new lines in the final rendering.
 
 7. As a best practice, use the following format as a common pattern in the `.out` files and customize only when necessary (e.g., when it is needed to add more command line args etc).
 
@@ -81,11 +81,11 @@ For example,
 
     For example, see the  `hello_world_service.server.out` and `hello_world_service.client.out` files below of the [Hello World Service BBE](https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/hello-world-service).
 
-    [A service example](/images/service-example.png)
+    ![A service example](/images/service-example.png)
     
 9. Unless it is really required, it is not encouraged to have multiple BAL files in the same sample. In that case, each BAL file can have its own name and the `.out` file should match with the name of the `.bal` file. For example,
 
-[A service example](/images/mulitple-bal-files.png)
+![A service example](/images/mulitple-bal-files.png)
 
 10. Use language features to make the examples look elegant (and small). For example, string templates, functional iteration, anonymous functions, etc.
 
