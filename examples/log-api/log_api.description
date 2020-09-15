@@ -11,7 +11,7 @@
 // level="[LOG_LEVEL]"
 // ``` <br><br>
 // Each module can also be assigned its own log level. To assign a
-// log level to a module, provide the following configuration
+// log level to a module, provide the following configuration:
 // `<MODULE_NAME>.loglevel`.
 //
 // E.g., `--foo.loglevel=DEBUG` <br><br>
