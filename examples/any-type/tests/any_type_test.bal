@@ -26,8 +26,8 @@ function testFunc() {
     main();
     test:assertEquals(outputs[0], "Full name: John Doe");
     test:assertEquals(outputs[1], "First name: John");
-    test:assertEquals(outputs[2], "1 3 5 6");
+    test:assertEquals(outputs[2], "[1,3,5,6]");
     test:assertEquals(outputs[3], "3.141592653589793");
-    test:assertEquals(outputs[4], "time=1577854800000 zone=id=America/Panama offset=-18000");
+    test:assertEquals(outputs[4], "{\"time\":1577854800000,\"zone\":{\"id\":\"America/Panama\",\"offset\":-18000}}");
     test:assertEquals(outputs[5], "Jane Doe");
 }

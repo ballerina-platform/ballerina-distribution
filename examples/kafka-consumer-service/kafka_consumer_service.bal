@@ -1,4 +1,4 @@
-import ballerina/kafka;
+import ballerinax/kafka;
 import ballerina/log;
 
 kafka:ConsumerConfiguration consumerConfigs = {

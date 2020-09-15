@@ -2,5 +2,5 @@
 # `.bal` file and execute the `ballerina run` command below.
 ballerina run query_expression.bal
 
-name=Michelle Sadler degree=Bachelor of Medicine graduationYear=1995
-name=Martin Guthrie degree=Bachelor of Medicine graduationYear=2007
+{"name":"Michelle Sadler","degree":"Bachelor of Medicine","graduationYear":1995}
+{"name":"Martin Guthrie","degree":"Bachelor of Medicine","graduationYear":2007}

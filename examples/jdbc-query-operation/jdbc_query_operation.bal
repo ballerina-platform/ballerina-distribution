@@ -25,12 +25,6 @@ function simpleQuery(jdbc:Client jdbcClient) {
         io:println(e);
     }
 
-    // In general cases, the stream will be closed automatically
-    // when the stream is fully consumed or any error is encountered.
-    // However, in case if the stream is not fully consumed, the stream
-    // should be closed specifically.
-    e = resultStream.close();
-
     io:println("------ End Simple Query -------");
 }
 
@@ -52,7 +46,11 @@ function countRows(jdbc:Client jdbcClient) {
     } else {
         io:println("Customer table is empty");
     }
-    // Close the stream.
+
+    // In general cases, the stream will be closed automatically
+    // when the stream is fully consumed or any error is encountered.
+    // However, in case if the stream is not fully consumed, the stream
+    // should be closed specifically.
     error? e = resultStream.close();
 
     io:println("------ End Count Total Rows -------");
@@ -90,9 +88,6 @@ function typedQuery(jdbc:Client jdbcClient) {
     if (e is error) {
         io:println(e);
     }
-
-    // Close the stream.
-    e = resultStream.close();
 
     io:println("------ End Query With Type Description -------");
 }

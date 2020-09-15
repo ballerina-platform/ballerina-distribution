@@ -1,5 +1,5 @@
 import ballerina/io;
-import ballerina/kafka;
+import ballerinax/kafka;
 
 kafka:ProducerConfiguration producerConfiguration = {
     // The `bootstrapServers` is the list of remote server endpoints of the

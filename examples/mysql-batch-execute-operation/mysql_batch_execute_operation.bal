@@ -1,13 +1,13 @@
 import ballerina/io;
-import ballerina/mysql;
 import ballerina/sql;
+import ballerinax/mysql;
 
 // The username and password of the MySQL database. This is used in the below
 // examples when initializing the MySQL connector. You need to change these
 // based on your setup if you try locally.
 string dbUser = "root";
 string dbPassword = "Test@123";
-string dbName = "MYSQL_BBE_EXEC";
+string dbName = "MYSQL_BBE";
 
 function initializeDatabase() returns sql:Error? {
     // Initialize the client without any database to create the database.

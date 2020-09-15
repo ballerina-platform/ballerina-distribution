@@ -6,25 +6,25 @@ import ballerina/java;
 // This method returns a handle value referring to a `java.util.UUID` instance.
 function createRandomUUID() returns handle = @java:Method {
     name: "randomUUID",
-    class: "java.util.UUID"
+    'class: "java.util.UUID"
 } external;
 
 // The class `java.util.ArrayDeque` is a resizable array that allows you to add or remove an element from both sides.
 // Here `newArrayDeque` function is linked with the default constructor of the `java.util.ArrayDeque` class.
 function newArrayDeque() returns handle = @java:Constructor {
-    class: "java.util.ArrayDeque"
+    'class: "java.util.ArrayDeque"
 } external;
 
 // The `offer` Ballerina function is linked with the instance method `offer` in `java.util.ArrayDeque` class.
 // This function inserts the element `e` at the end of the queue referred by the parameter `receiver`.
 function offer(handle receiver, handle e) returns boolean = @java:Method {
-    class: "java.util.ArrayDeque"
+    'class: "java.util.ArrayDeque"
 } external;
 
 // The `poll` Ballerina function is linked with the instance method `poll` in `java.util.ArrayDeque` class.
 // This function removes the head element of the queue referred by the parameter `receiver`.
 function poll(handle receiver) returns handle = @java:Method {
-    class: "java.util.ArrayDeque"
+    'class: "java.util.ArrayDeque"
 } external;
 
 public function main() {

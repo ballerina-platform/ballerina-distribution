@@ -1,5 +1,5 @@
 import ballerina/io;
-import ballerina/kafka;
+import ballerinax/kafka;
 import ballerina/lang.'string;
 import ballerina/log;
 
