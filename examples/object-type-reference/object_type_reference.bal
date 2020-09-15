@@ -14,7 +14,7 @@ type Person object {
 };
 
 // Defines another abstract object called `Employee`, which references the `Person` object.
-type Employee abstract object {
+type Employee object {
     // Add a reference to the `Person` object type. 
     // All the member fields and member methods will be copied from the `Person` object.
     *Person;
