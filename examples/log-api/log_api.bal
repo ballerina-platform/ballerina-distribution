@@ -2,7 +2,7 @@ import ballerina/log;
 import ballerina/runtime;
 
 public function main() {
-    error e = error("something went wrong!");
+    error err = error("something went wrong!");
 
     // Shows the main log levels that are available. By default, all log messages are logged 
     // to the console at the `INFO` level. In addition to these log levels, 
@@ -12,7 +12,7 @@ public function main() {
     // parameters.
     log:printDebug("debug log");
     log:printError("error log");
-    log:printError("error log with cause", e);
+    log:printError("error log with cause", err);
     log:printInfo("info log");
     log:printTrace("trace log");
     log:printWarn("warn log");
