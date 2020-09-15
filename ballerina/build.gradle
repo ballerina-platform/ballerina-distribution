@@ -1314,7 +1314,7 @@ task testStdlibs() {
              } else {
                  exec {
                      workingDir "${baseBuildPath}/StdlibTestProject"
-                     commandLine 'sh', '-c', "${distPath}/bin/ballerina build --offline -c --experimental ${stdlibTest} --b7a.home=${distPath} ${additionalBuildParams}"
+                     commandLine 'sh', '-c', "${distPath}/bin/ballerina build -c --experimental ${stdlibTest} --b7a.home=${distPath} ${additionalBuildParams}"
                  }
              }
          }
@@ -1332,7 +1332,7 @@ task startLdapServer() {
         if (!stdOut.toString().contains("openldap-server")) {
             println "Starting LDAP server."
             copy {
-                from file("${ldapTestResources}/openldap")
+                from file("${ldapTestResources}/openldap/bootstrap.ldif")
                 into file("/tmp")
             }
             exec {
