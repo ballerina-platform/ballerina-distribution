@@ -1,5 +1,4 @@
 import ballerina/test;
-import ballerina/io;
 
 string printDebug = "";
 string printError = "";
@@ -12,7 +11,7 @@ string printWarn = "";
     moduleName: "ballerina/log",
     functionName: "printDebug"
 }
-public function mockPrintDebug(string | (function() returns (string)) msg) {
+public function mockPrintDebug(anydata | (function() returns (string)) msg) {
     if (msg is string) {
         printDebug = msg;
     }
@@ -22,7 +21,7 @@ public function mockPrintDebug(string | (function() returns (string)) msg) {
     moduleName: "ballerina/log",
     functionName: "printError"
 }
-public function mockPrintError(string | (function() returns (string)) msg, error? err = ()) {
+public function mockPrintError(anydata | (function() returns (string)) msg, error? err = ()) {
     if (msg is string) {
         printError = msg;
     }
@@ -32,7 +31,7 @@ public function mockPrintError(string | (function() returns (string)) msg, error
     moduleName: "ballerina/log",
     functionName: "printInfo"
 }
-public function mockPrintInfo(string | (function() returns (string)) msg) {
+public function mockPrintInfo(anydata | (function() returns (string)) msg) {
     if (msg is string) {
         printInfo = msg;
     }
@@ -42,7 +41,7 @@ public function mockPrintInfo(string | (function() returns (string)) msg) {
     moduleName: "ballerina/log",
     functionName: "printTrace"
 }
-public function mockPrintTrace(string | (function() returns (string)) msg) {
+public function mockPrintTrace(anydata | (function() returns (string)) msg) {
     if (msg is string) {
         printTrace = msg;
     }
@@ -52,13 +51,13 @@ public function mockPrintTrace(string | (function() returns (string)) msg) {
     moduleName: "ballerina/log",
     functionName: "printWarn"
 }
-public function mockPrintWarn(string | (function() returns (string)) msg) {
+public function mockPrintWarn(anydata | (function() returns (string)) msg) {
     if (msg is string) {
         printWarn = msg;
     }
 }
 
-@test:Config
+@test:Config {}
 function testFunc() {
     // Invoking the main function
     main();
