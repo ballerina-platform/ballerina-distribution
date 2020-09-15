@@ -916,7 +916,8 @@ task testExamples() {
         'local-transactions-with-handlers',
         'raw-template',
         'optional-type',
-        'while'
+        'while',
+        'anonymous-objects' // As this is obsolete after latest class, object change
     ]
 
     // The following BBEs will be excluded from output verification. But will be verified by compiling and running
