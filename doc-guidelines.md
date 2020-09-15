@@ -85,7 +85,6 @@ For example,
     
 9. Unless it is really required, it is not encouraged to have multiple BAL files in the same sample. In that case, each BAL file can have its own name and the `.out` file should match with the name of the `.bal` file. For example,
 
-![Mulitple BAL files](/images/mulitple-bal-files.png)
 <img src="/images/mulitple-bal-files.png" alt="A service example" width="250" height="150">
 
 10. Use language features to make the examples look elegant (and small). For example, string templates, functional iteration, anonymous functions, etc.
