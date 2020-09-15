@@ -1,4 +1,4 @@
-// The Ballerina Config API (`ballerina/config`) allows you to look up values from configuration
+// The Ballerina Config API allows you to look up values from configuration
 // files, CLI parameters and environment variables. The precedence order for
 // configuration resolution is as follows: <br/>
 //
