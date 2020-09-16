@@ -885,7 +885,6 @@ task testExamples() {
         'http-client-endpoint',
         'response-with-multiparts',
         'tracing',
-        'log-api',
         'the-main-function',
         'mutual-ssl',
         'type-conversion',
@@ -948,6 +947,7 @@ task testExamples() {
         'rabbitmq-transaction-producer',
         'rabbitmq-transaction-consumer',
         'jdbc-complex-type-queries', // Consists date time in output
+        'log-api',
         'mysql-init-options',
         'mysql-query-operation',
         'mysql-complex-type-queries',
