@@ -981,12 +981,11 @@ task testExamples() {
         'file',
         'time',
         'base-path-and-path',
-        'locks',                     // Output is inconsistent between runs
-        'crypto',
-        'jwt-issue-validate',
-        'secured-client-with-basic-auth',
-        'secured-client-with-jwt-auth',
-        'secured-client-with-oauth2',
+        'locks', // Output is inconsistent between runs
+        'jwt-issue-validate', // Output depends on time
+        'secured-client-with-basic-auth', // Need to run the service first
+        'secured-client-with-jwt-auth', // Need to run the service first
+        'secured-client-with-oauth2', // Need to run the service first
         'task-scheduler-timer',
         'task-scheduler-appointment',
         'cache'
@@ -1065,6 +1064,10 @@ task testExamples() {
         def curlCommandsFilePath = "${directoryPath}/curlcommandout.txt"
         def portFilePath = "${directoryPath}/ports.txt"
         def outputFilePath = "${directoryPath}/output.txt"
+        def additionalBuildParams = ""
+        if (bbe == "secured-service-with-basic-auth" || bbe == "secured-client-with-basic-auth") {
+            additionalBuildParams = "--b7a.config.file=${baseBuildPath}/TestProject/src/${bbe}/sample-users.toml"
+        }
         tree.each { content ->
             if (content.name.contains("client.out")) {
                 fileReference = file(content)
@@ -1107,13 +1110,13 @@ task testExamples() {
                 exitVal = exec {
                     def windowsPath = scriptPath.replace('/', '\\')
                     workingDir "$windowsPath"
-                    commandLine "$windowsPath\\run.bat", "${directoryPath}", "${distPath}/bin/ballerina.bat", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath}"
+                    commandLine "$windowsPath\\run.bat", "${directoryPath}", "${distPath}/bin/ballerina.bat", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath} ${additionalBuildParams}"
                     ignoreExitValue true
                 }
             } else {
                 exitVal = exec {
                     workingDir "$scriptPath"
-                    commandLine "bash", "run.sh", "${directoryPath}", "${distPath}/bin/./ballerina", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath}"
+                    commandLine "bash", "run.sh", "${directoryPath}", "${distPath}/bin/./ballerina", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath} ${additionalBuildParams}"
                     ignoreExitValue true
                 }
             }
@@ -1145,7 +1148,7 @@ task testExamples() {
                 if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                     exec {
                         workingDir "${directoryPath}"
-                        commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'run', '--experimental', "${balName}.bal", "--b7a.home=${distPath}"
+                        commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'run', '--experimental', "${balName}.bal", "--b7a.home=${distPath} ${additionalBuildParams}"
                         ignoreExitValue true
                         standardOutput = os
                         errorOutput = errOut
@@ -1153,7 +1156,7 @@ task testExamples() {
                 } else {
                     exec {
                         workingDir "${directoryPath}"
-                        commandLine 'sh', '-c', "${distPath}/bin/ballerina run --experimental ${balName}.bal --b7a.home=${distPath}"
+                        commandLine 'sh', '-c', "${distPath}/bin/ballerina run --experimental ${balName}.bal --b7a.home=${distPath} ${additionalBuildParams}"
                         ignoreExitValue true
                         standardOutput = os
                         errorOutput = errOut
