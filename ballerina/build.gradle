@@ -874,8 +874,6 @@ task testExamples() {
         'testerina-assertions',
         'testerina-before-and-after-each',
         'testerina-before-and-after-groups',
-        'secured-service-with-basic-auth',
-        'secured-client-with-basic-auth',
         'http-caching-client',
         'http-data-binding',
         'http-1.1-to-2.0-protocol-switch',
@@ -908,8 +906,9 @@ task testExamples() {
         'anonymous-objects' // As this is obsolete after latest class, object change
     ]
 
-    // The following BBEs will be excluded from output verification. But will be verified by compiling and running
-    // tests if it is not added to the above buildIgnoreList.
+    // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
+    // against the output given at `.out` file. But will be verified by compiling and running tests if it is not added
+    // to the above buildIgnoreList.
     def outputVerificationIgnoreList = [
         'config-api',
         'kafka-consumer-client',
@@ -974,12 +973,11 @@ task testExamples() {
         'file',
         'time',
         'base-path-and-path',
-        'locks',                     // Output is inconsistent between runs
-        'crypto',
-        'jwt-issue-validate',
-        'secured-client-with-basic-auth',
-        'secured-client-with-jwt-auth',
-        'secured-client-with-oauth2',
+        'locks', // Output is inconsistent between runs
+        'jwt-issue-validate', // Output depends on time
+        'secured-client-with-basic-auth', // Need to run the service first
+        'secured-client-with-jwt-auth', // Need to run the service first
+        'secured-client-with-oauth2', // Need to run the service first
         'task-scheduler-timer',
         'task-scheduler-appointment',
         'cache'
@@ -1023,18 +1021,22 @@ task testExamples() {
 
     ext.buildBBE = { bbe ->
         def exitVal
+        def additionalBuildParams = ""
+        if (bbe == "secured-service-with-basic-auth" || bbe == "secured-client-with-basic-auth") {
+            additionalBuildParams = "--b7a.config.file=${baseBuildPath}/TestProject/src/${bbe}/sample-users.toml"
+        }
         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
             //TODO: Need to verify with windows
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${buildDir}/TestProject"
-                commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'build', '--experimental', "${bbe} --b7a.home=${distPath}"
+                commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'build', '--experimental', "${bbe} --b7a.home=${distPath} ${additionalBuildParams}"
             }
         } else {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${baseBuildPath}/TestProject"
-                commandLine 'sh', '-c', "${distPath}/bin/ballerina build --experimental ${bbe} --b7a.home=${distPath}"
+                commandLine 'sh', '-c', "${distPath}/bin/ballerina build --experimental ${bbe} --b7a.home=${distPath} ${additionalBuildParams}"
             }
         }
         if (exitVal.getExitValue() == 1) {
@@ -1054,6 +1056,10 @@ task testExamples() {
         def curlCommandsFilePath = "${directoryPath}/curlcommandout.txt"
         def portFilePath = "${directoryPath}/ports.txt"
         def outputFilePath = "${directoryPath}/output.txt"
+        def additionalBuildParams = ""
+        if (bbe == "secured-service-with-basic-auth" || bbe == "secured-client-with-basic-auth") {
+            additionalBuildParams = "--b7a.config.file=${baseBuildPath}/TestProject/src/${bbe}/sample-users.toml"
+        }
         tree.each { content ->
             if (content.name.contains("client.out")) {
                 fileReference = file(content)
@@ -1096,13 +1102,13 @@ task testExamples() {
                 exitVal = exec {
                     def windowsPath = scriptPath.replace('/', '\\')
                     workingDir "$windowsPath"
-                    commandLine "$windowsPath\\run.bat", "${directoryPath}", "${distPath}/bin/ballerina.bat", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath}"
+                    commandLine "$windowsPath\\run.bat", "${directoryPath}", "${distPath}/bin/ballerina.bat", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath} ${additionalBuildParams}"
                     ignoreExitValue true
                 }
             } else {
                 exitVal = exec {
                     workingDir "$scriptPath"
-                    commandLine "bash", "run.sh", "${directoryPath}", "${distPath}/bin/./ballerina", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath}"
+                    commandLine "bash", "run.sh", "${directoryPath}", "${distPath}/bin/./ballerina", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath} ${additionalBuildParams}"
                     ignoreExitValue true
                 }
             }
@@ -1134,7 +1140,7 @@ task testExamples() {
                 if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                     exec {
                         workingDir "${directoryPath}"
-                        commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'run', '--experimental', "${balName}.bal", "--b7a.home=${distPath}"
+                        commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'run', '--experimental', "${balName}.bal", "--b7a.home=${distPath} ${additionalBuildParams}"
                         ignoreExitValue true
                         standardOutput = os
                         errorOutput = errOut
@@ -1142,7 +1148,7 @@ task testExamples() {
                 } else {
                     exec {
                         workingDir "${directoryPath}"
-                        commandLine 'sh', '-c', "${distPath}/bin/ballerina run --experimental ${balName}.bal --b7a.home=${distPath}"
+                        commandLine 'sh', '-c', "${distPath}/bin/ballerina run --experimental ${balName}.bal --b7a.home=${distPath} ${additionalBuildParams}"
                         ignoreExitValue true
                         standardOutput = os
                         errorOutput = errOut
