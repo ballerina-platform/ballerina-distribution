@@ -1,4 +1,4 @@
-// The `ballerina/cache` module by-default provides an in-memory cache implementation with an
+// The Ballerina Cache API by-default provides an in-memory cache implementation with an
 // LRU algorithm based eviction policy. The caching implementation can be customized by providing different
 // storage mechanisms and eviction policies. <br/><br/>
 // For more information on the underlying module, 

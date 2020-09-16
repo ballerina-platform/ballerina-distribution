@@ -47,7 +47,7 @@ public function main() {
         io:println("From bytes: ", s6);
     }
 
-    // Remove leading and trailing white spaces.
+    // Remove leading and trailing whitespace.
     string toTrim = "  Ballerina Programming Language  ";
     string s7 = toTrim.trim();
     io:println("Trim: ", s7);

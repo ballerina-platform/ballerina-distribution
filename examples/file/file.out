@@ -13,5 +13,5 @@ bar.txt file exists: true
 bar.txt file is copied to new path foo/bar/bar.txt
 bar.txt file is moved to new path foo/bar1.txt
 Temporary directory: /var/folders/4z/xvlnvsp54ks9793d6k5_6bw40000gn/T/
-Remove file at foo/bar1.txt
-Remove foo directory with all child elements.
+Removed file at foo/bar1.txt
+Removed 'foo' directory with all the children.
