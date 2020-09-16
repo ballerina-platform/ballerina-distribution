@@ -916,8 +916,9 @@ task testExamples() {
         'anonymous-objects' // As this is obsolete after latest class, object change
     ]
 
-    // The following BBEs will be excluded from output verification. But will be verified by compiling and running
-    // tests if it is not added to the above buildIgnoreList.
+    // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
+    // against the output given at `.out` file. But will be verified by compiling and running tests if it is not added
+    // to the above buildIgnoreList.
     def outputVerificationIgnoreList = [
         'kafka-consumer-client',
         'kafka-producer',
