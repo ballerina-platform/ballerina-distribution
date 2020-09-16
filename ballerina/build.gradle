@@ -875,8 +875,6 @@ task testExamples() {
         'testerina-assertions',
         'testerina-before-and-after-each',
         'testerina-before-and-after-groups',
-        'secured-service-with-basic-auth',
-        'secured-client-with-basic-auth',
         'http-caching-client',
         'http-data-binding',
         'http-1.1-to-2.0-protocol-switch',
@@ -1031,18 +1029,22 @@ task testExamples() {
 
     ext.buildBBE = { bbe ->
         def exitVal
+        def additionalBuildParams = ""
+        if (bbe == "secured-service-with-basic-auth" || bbe == "secured-client-with-basic-auth") {
+            additionalBuildParams = "--b7a.config.file=${baseBuildPath}/TestProject/src/${bbe}/sample-users.toml"
+        }
         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
             //TODO: Need to verify with windows
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${buildDir}/TestProject"
-                commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'build', '--experimental', "${bbe} --b7a.home=${distPath}"
+                commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'build', '--experimental', "${bbe} --b7a.home=${distPath} ${additionalBuildParams}"
             }
         } else {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${baseBuildPath}/TestProject"
-                commandLine 'sh', '-c', "${distPath}/bin/ballerina build --experimental ${bbe} --b7a.home=${distPath}"
+                commandLine 'sh', '-c', "${distPath}/bin/ballerina build --experimental ${bbe} --b7a.home=${distPath} ${additionalBuildParams}"
             }
         }
         if (exitVal.getExitValue() == 1) {
