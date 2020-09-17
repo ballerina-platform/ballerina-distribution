@@ -30,21 +30,21 @@ The below is a list of guidelines that must be followed when updating and adding
 
     For example,
 
-        ```
-        {
-    	    "title": "Ballerina Basics",
-    	    "column": 0,
-    	    "category": "Language concepts",
-    	    "samples": [
-        	    {
-            	    "name": "Functions",
-            	    "url": "functions",
-            	    "githubLink": "https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/functions/",
-            	    "disablePlayground": true
-        	    }
-    	    ]
-        }
-        ```
+    ```
+    {
+    	"title": "Ballerina Basics",
+    	"column": 0,
+    	"category": "Language concepts",
+    	"samples": [
+        	{
+            	"name": "Functions",
+            	"url": "functions",
+            	"githubLink": "https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/functions/",
+            	"disablePlayground": true
+        	}
+    	]
+    }
+    ```
 
 5. Each new example should contain at least the following files.
 
@@ -63,7 +63,7 @@ The below is a list of guidelines that must be followed when updating and adding
 
     For an example with main:
 
-        ```ballerina
+        ```
         # To run this sample, navigate to the directory that contains the
         # `.bal` file and issue the `ballerina run` command.
         $ ballerina run <sample_file_name>.bal
@@ -71,7 +71,7 @@ The below is a list of guidelines that must be followed when updating and adding
 
     For an example with a service:
 
-        ```ballerina
+        ```
         # To start the service, navigate to the directory that contains the
         # `.bal` file and issue the `ballerina run` command.
         $ ballerina run hello_world_service.bal
@@ -196,16 +196,16 @@ After writing a Ballerina By Example, you can also run it to test and verify if 
 
 7. Always, add a full stop at the end of a function description. However, as a best practice, omit the full stop if you have only one sentence in the parameter and return type descriptions. If there are multiple sentences for a parameter or return type description, add the full stop at the end of the first sentence and in the succeding ones. For example,
 
-```
-# Description for the function.
-#
-# + i - One sentence only
-# + s - Sentence one. Sentence two.
-# + return - Return description
-public function foo(int i, string s) returns boolean {
-    return true;
-}
-```
+    ```
+    # Description for the function.
+    #
+    # + i - One sentence only
+    # + s - Sentence one. Sentence two.
+    # + return - Return description
+    public function foo(int i, string s) returns boolean {
+        return true;
+    }
+    ```
 
 For information on generating API Docs and testing them locally, see [How To Do the Bio Prod Sync and Doc Generations](https://docs.google.com/document/d/1XrYC4aOnyUg8ge-A_o0dLITJSiJsZw_x428mTUDjpKA/edit?ts=5f52f23b#heading=h.dwgoecewvrjj).
 
