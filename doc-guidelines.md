@@ -63,7 +63,7 @@ The below is a list of guidelines that must be followed when updating and adding
 
     For an example with main:
 
-    ```ballerina
+    ```
     # To run this sample, navigate to the directory that contains the
     # `.bal` file and issue the `ballerina run` command.
     $ ballerina run <sample_file_name>.bal
@@ -71,7 +71,7 @@ The below is a list of guidelines that must be followed when updating and adding
 
     For an example with a service:
 
-    ```ballerina
+    ```
     # To start the service, navigate to the directory that contains the
     # `.bal` file and issue the `ballerina run` command.
     $ ballerina run hello_world_service.bal
