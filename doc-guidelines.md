@@ -139,8 +139,6 @@ The below is a list of guidelines that must be followed when updating and adding
 
 24. After any update to a BBE is done or a new BBE is added, please add Anjana Fernando (lafernando) and Praneesha as reviewers.
 
-For information on generating BBEs and testing them locally, see [How To Do the Bio Prod Sync and Doc Generations](https://docs.google.com/document/d/1XrYC4aOnyUg8ge-A_o0dLITJSiJsZw_x428mTUDjpKA/edit?ts=5f52f23b#heading=h.dwgoecewvrjj).
-
 ## Running Ballerina By Examples
 
 After writing a Ballerina By Example, you can also run it to test and verify if the output is accurate. Follow the instuctions below to do this.
@@ -206,7 +204,5 @@ After writing a Ballerina By Example, you can also run it to test and verify if 
         return true;
     }
     ```
-
-For information on generating API Docs and testing them locally, see [How To Do the Bio Prod Sync and Doc Generations](https://docs.google.com/document/d/1XrYC4aOnyUg8ge-A_o0dLITJSiJsZw_x428mTUDjpKA/edit?ts=5f52f23b#heading=h.dwgoecewvrjj).
 
 
