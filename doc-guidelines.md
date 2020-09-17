@@ -30,7 +30,7 @@ The below is a list of guidelines that must be followed when updating and adding
 
     For example,
 
-    ```
+    ```json
     {
     	"title": "Ballerina Basics",
     	"column": 0,
@@ -71,7 +71,7 @@ The below is a list of guidelines that must be followed when updating and adding
 
     For an example with a service:
 
-    ```
+    ```bash
     # To start the service, navigate to the directory that contains the
     # `.bal` file and issue the `ballerina run` command.
     $ ballerina run hello_world_service.bal
@@ -153,12 +153,12 @@ After writing a Ballerina By Example, you can also run it to test and verify if 
 
     >**Info:** You need to change the properties of the above command accordingly. Also, the `<GEN_PLAYGROUND_LINKS>` property can be set to `false` while testing BBEs locally since with `true` it takes a longer time to run the tool. In the final run, you can set this to `true`.
 
-    ```
+    ```bash
     go run ballerinaByExample/tools/generate.go “<SOURCE-OF-THE-BBES>” “<RELEASE-VERSION>” “<OUTPUT-FOLDER>” “<WITH-OR-WITHOUT-FRONT-MATTER>” “<IF-LATEST-VERSION>” “<GEN_PLAYGROUND_LINKS>”
     ```
     For example,
 
-    ```
+    ```bash
     go run ballerinaByExample/tools/generate.go "/Documents/examples" "1.2"     "by-example" "true" "true" "true"
     ```
 
@@ -172,7 +172,7 @@ After writing a Ballerina By Example, you can also run it to test and verify if 
 
     >**Note:** Alternatively, execute the command below if you do not have Jekyll configured locally.
 
-    ```
+    ```bash
     docker run -p 4000:4000 --volume="/home/shaf/Documents/source/public/ballerina-dev-website:/srv/jekyll" jekyll/builder:3.8 jekyll serve
     ```
 
