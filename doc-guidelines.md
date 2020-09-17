@@ -194,17 +194,17 @@ After writing a Ballerina By Example, you can also run it to test and verify if 
 
 6. In scenarios such as error value returns, all possible error types and their scenarios should be mentioned clearly. There should not be statements such as “returns error when something goes wrong”. 
 
-7. As a best practice, do not add a full stop at the end of the first sentence of the parameter and return type descriptions. Instead, add a full stop only at the end of a function description. For example,
+7. Always, add a full stop at the end of a function description. However, as a best practice, omit the full stop if you have only one sentence in the parameter and return type descriptions. For example,
 
     ```
     # Description for the function.
-    #
-    # + i - One sentence only
-    # + s - Sentence one. Sentence two.
-    # + return - Return description
-    public function foo(int i, string s) returns boolean {
+#
+# + i - One sentence only
+# + s - Sentence one. Sentence two.
+# + return - Return description
+public function foo(int i, string s) returns boolean {
     return true;
-    }
+}
     ```
 
 For information on generating API Docs and testing them locally, see [How To Do the Bio Prod Sync and Doc Generations](https://docs.google.com/document/d/1XrYC4aOnyUg8ge-A_o0dLITJSiJsZw_x428mTUDjpKA/edit?ts=5f52f23b#heading=h.dwgoecewvrjj).
