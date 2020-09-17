@@ -63,7 +63,7 @@ The below is a list of guidelines that must be followed when updating and adding
 
     For an example with main:
 
-    ```
+    ```bash
     # To run this sample, navigate to the directory that contains the
     # `.bal` file and issue the `ballerina run` command.
     $ ballerina run <sample_file_name>.bal
