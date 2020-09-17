@@ -159,7 +159,7 @@ After writing a Ballerina By Example, you can also run it to test and verify if 
     For example,
 
     ```bash
-    go run ballerinaByExample/tools/generate.go "/Documents/examples" "1.2"     "by-example" "true" "true" "true"
+    go run ballerinaByExample/tools/generate.go "/Documents/examples" "1.2" "by-example" "true" "true" "true"
     ```
 
 4. Copy the generated `<BALLERINA_RELEASE_REPO_HOME>/by-example` directory.
