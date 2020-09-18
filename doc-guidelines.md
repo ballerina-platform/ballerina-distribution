@@ -30,21 +30,21 @@ The below is a list of guidelines that must be followed when updating and adding
 
     For example,
 
-        ```
-        {
-    	    "title": "Ballerina Basics",
-    	    "column": 0,
-    	    "category": "Language concepts",
-    	    "samples": [
-        	    {
-            	    "name": "Functions",
-            	    "url": "functions",
-            	    "githubLink": "https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/functions/",
-            	    "disablePlayground": true
-        	    }
-    	    ]
-        }
-        ```
+    ```json
+    {
+    	"title": "Ballerina Basics",
+    	"column": 0,
+    	"category": "Language concepts",
+    	"samples": [
+        	{
+            	"name": "Functions",
+            	"url": "functions",
+            	"githubLink": "https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/functions/",
+            	"disablePlayground": true
+        	}
+    	]
+    }
+    ```
 
 5. Each new example should contain at least the following files.
 
@@ -63,19 +63,19 @@ The below is a list of guidelines that must be followed when updating and adding
 
     For an example with main:
 
-        ```ballerina
-        # To run this sample, navigate to the directory that contains the
-        # `.bal` file and issue the `ballerina run` command.
-        $ ballerina run <sample_file_name>.bal
-        ```
+    ```bash
+    # To run this sample, navigate to the directory that contains the
+    # `.bal` file and issue the `ballerina run` command.
+    ballerina run <sample_file_name>.bal
+    ```
 
     For an example with a service:
 
-        ```ballerina
-        # To start the service, navigate to the directory that contains the
-        # `.bal` file and issue the `ballerina run` command.
-        $ ballerina run hello_world_service.bal
-        ```
+    ```bash
+    # To start the service, navigate to the directory that contains the
+    # `.bal` file and issue the `ballerina run` command.
+    ballerina run hello_world_service.bal
+    ```
 
 8. Service examples demonstrating client-server scenarios have a `.bal` file only for the server and two different output files. That is, one to display the server output (`.server.out` file) and the other (`.client.out` file) to display the cURL command and the output. These two separate output files can be introduced with `.server` and `.client` suffixed to the file names. 
 
@@ -139,8 +139,6 @@ The below is a list of guidelines that must be followed when updating and adding
 
 24. After any update to a BBE is done or a new BBE is added, please add Anjana Fernando (lafernando) and Praneesha as reviewers.
 
-For information on generating BBEs and testing them locally, see [How To Do the Bio Prod Sync and Doc Generations](https://docs.google.com/document/d/1XrYC4aOnyUg8ge-A_o0dLITJSiJsZw_x428mTUDjpKA/edit?ts=5f52f23b#heading=h.dwgoecewvrjj).
-
 ## Running Ballerina By Examples
 
 After writing a Ballerina By Example, you can also run it to test and verify if the output is accurate. Follow the instuctions below to do this.
@@ -153,13 +151,13 @@ After writing a Ballerina By Example, you can also run it to test and verify if 
 
     >**Info:** You need to change the properties of the above command accordingly. Also, the `<GEN_PLAYGROUND_LINKS>` property can be set to `false` while testing BBEs locally since with `true` it takes a longer time to run the tool. In the final run, you can set this to `true`.
 
-    ```
+    ```bash
     go run ballerinaByExample/tools/generate.go “<SOURCE-OF-THE-BBES>” “<RELEASE-VERSION>” “<OUTPUT-FOLDER>” “<WITH-OR-WITHOUT-FRONT-MATTER>” “<IF-LATEST-VERSION>” “<GEN_PLAYGROUND_LINKS>”
     ```
     For example,
 
-    ```
-    go run ballerinaByExample/tools/generate.go "/Documents/examples" "1.2"     "by-example" "true" "true" "true"
+    ```bash
+    go run ballerinaByExample/tools/generate.go "/Documents/examples" "1.2" "by-example" "true" "true" "true"
     ```
 
 4. Copy the generated `<BALLERINA_RELEASE_REPO_HOME>/by-example` directory.
@@ -172,7 +170,7 @@ After writing a Ballerina By Example, you can also run it to test and verify if 
 
     >**Note:** Alternatively, execute the command below if you do not have Jekyll configured locally.
 
-    ```
+    ```bash
     docker run -p 4000:4000 --volume="/home/shaf/Documents/source/public/ballerina-dev-website:/srv/jekyll" jekyll/builder:3.8 jekyll serve
     ```
 
@@ -194,19 +192,17 @@ After writing a Ballerina By Example, you can also run it to test and verify if 
 
 6. In scenarios such as error value returns, all possible error types and their scenarios should be mentioned clearly. There should not be statements such as “returns error when something goes wrong”. 
 
-7. As a best practice, do not add a full stop at the end of the first sentence of the parameter and return type descriptions. Instead, add a full stop only at the end of a function description. For example,
+7. Always, add a full stop at the end of a function description. However, as a best practice, omit the full stop if you have only one sentence in the parameter and return type descriptions. If there are multiple sentences for a parameter or return type description, add the full stop at the end of the first sentence and in the succeding ones. For example,
 
-    ```
+    ```ballerina
     # Description for the function.
     #
     # + i - One sentence only
     # + s - Sentence one. Sentence two.
     # + return - Return description
     public function foo(int i, string s) returns boolean {
-    return true;
+        return true;
     }
     ```
-
-For information on generating API Docs and testing them locally, see [How To Do the Bio Prod Sync and Doc Generations](https://docs.google.com/document/d/1XrYC4aOnyUg8ge-A_o0dLITJSiJsZw_x428mTUDjpKA/edit?ts=5f52f23b#heading=h.dwgoecewvrjj).
 
 
