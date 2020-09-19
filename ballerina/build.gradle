@@ -928,6 +928,7 @@ task testExamples() {
         'http-circuit-breaker',
         'request-with-multiparts',
         'different-payload-types',
+        'base-path-and-path',
         'websocket-basic-sample',
         'websocket-chat-application',
         'websocket-client',
@@ -959,7 +960,6 @@ task testExamples() {
         'file', // Absolute path varies
         'filepath', // Depends on OS
         'time',
-        'base-path-and-path', // Absolut path varies
         'locks', // Output is inconsistent between runs
         'jwt-issue-validate', // Output depends on time
         'secured-client-with-basic-auth', // Need to run the service first
