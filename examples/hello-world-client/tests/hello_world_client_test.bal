@@ -16,6 +16,6 @@ public isolated function mockPrint(any|error... msg) {
 @test:Config {}
 function testFunc() {
     // Invoking the main function
-    main();
-    test:assertEquals(outputs[0], "Hello World");
+    error? err = main();
+    test:assertExactEquals(outputs[0], "Hello World");
 }
