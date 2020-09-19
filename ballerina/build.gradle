@@ -884,7 +884,8 @@ task testExamples() {
         'gauge-metrics',
         'counter-metrics',
         'tracing',
-        'openapi-to-ballerina'
+        'openapi-to-ballerina',
+        'taint-checking' // Should not compile
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
@@ -900,7 +901,6 @@ task testExamples() {
         'any-type', // Has time component
         'record-readonly-fields', // Has user name in output
         'checkpanic', // Has user name in output
-        'taint-checking', // Has user in output
         'deprecation', // Contains user input
         'config-api',
         'kafka-consumer-client',
