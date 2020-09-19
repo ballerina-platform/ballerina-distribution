@@ -8,5 +8,5 @@ Employee Age: 25
 Integer Value: 100
 Converted Float Value: 100.0
 Converted Float Value: 100.0
-error: {ballerina}TypeCastError message=incompatible types: 'Employee' cannot be cast to 'Department'
+error: {ballerina}TypeCastError {"message":"incompatible types: 'Employee' cannot be cast to 'Department'"}
         at type_cast:main(type_cast.bal:56)
