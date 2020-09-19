@@ -8,7 +8,7 @@ int counter = 0;
     moduleName: "ballerina/io",
     functionName: "println"
 }
-public function mockPrint(any|error... msg) {
+public isolated function mockPrint(any|error... msg) {
     outputs[counter] = msg[0];
     counter += 1;
 }

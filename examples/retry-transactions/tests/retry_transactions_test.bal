@@ -7,7 +7,7 @@ import ballerina/test;
     moduleName: "ballerina/io",
     functionName: "println"
 }
-public function mockPrint(any|error... s) {
+public isolated function mockPrint(any|error... s) {
     foreach var entry in s {
         outputs.push(entry.toString());
     }
@@ -17,11 +17,11 @@ public function mockPrint(any|error... s) {
 function testFunc() {
     // Invoking the main function
     error? output = main();
-    test:assertEquals(outputs[0], "Transaction Info: ");
-    test:assertEquals(outputs[2], "Commit handler executed.");
-    test:assertEquals(outputs[3], "Transaction committed.");
-    test:assertEquals(outputs[4], "Account Credit: ");
-    test:assertEquals(outputs[5], "affectedRowCount=1 lastInsertId=");
-    test:assertEquals(outputs[6], "Account Debit: ");
-    test:assertEquals(outputs[7], "affectedRowCount=1 lastInsertId=");
+    test:assertExactEquals(outputs[0], "Transaction Info: ");
+    test:assertExactEquals(outputs[2], "Commit handler executed.");
+    test:assertExactEquals(outputs[3], "Transaction committed.");
+    test:assertExactEquals(outputs[4], "Account Credit: ");
+    test:assertExactEquals(outputs[5], "affectedRowCount=1 lastInsertId=");
+    test:assertExactEquals(outputs[6], "Account Debit: ");
+    test:assertExactEquals(outputs[7], "affectedRowCount=1 lastInsertId=");
 }
