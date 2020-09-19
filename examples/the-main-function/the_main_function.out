@@ -23,9 +23,9 @@ Name: Alice, Age: 18, Year: Sophomore
 # all parameters, including the rest parameter. All arguments are specified as
 # positional arguments.
 ballerina run the_main_function.bal Alice 20 Sophomore math physics
-Name: Alice, Age: 20, Year: Sophomore, Module(s): math physics
+Name: Alice, Age: 20, Year: Sophomore, Module(s): ["math","physics"]
 
 # Use the ballerina `run` command to invoke the `main` function specifying an invalid 
 # string as the argument for `name`. The `error` returned would be printed.
 ballerina run the_main_function.bal Ali
-error: InvalidName message=invalid length
+error: InvalidName {"message":"invalid length"}

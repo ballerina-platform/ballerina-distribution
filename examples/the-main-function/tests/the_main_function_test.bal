@@ -1,4 +1,3 @@
-import ballerina/io;
 import ballerina/test;
 
 (any|error)[] outputs = [];
@@ -19,24 +18,34 @@ public isolated function mockPrint(any|error... s) {
 @test:Config{}
 function testFunc() {
     // Invoking the main function.
-    error? e = main("add", 10, 20);
+    error? e = main("Alice");
     test:assertTrue(e is ());
-    test:assertEquals(outputs[0], "Result: ");
-    test:assertEquals(outputs[1], 30);
+    test:assertExactEquals(outputs[0], "Name: Alice, Age: 18, Year: Freshman");
 
     // Invoking the main function.
     counter = 0;
-    e = main("subtract", initialValue = 40, 10, 20);
+    e = main("Alice", 20);
     test:assertTrue(e is ());
-    test:assertEquals(outputs[0], "Result: ");
-    test:assertEquals(outputs[1], 10);
+    test:assertExactEquals(outputs[0], "Name: Alice, Age: 20, Year: Freshman");
 
     // Invoking the main function.
     counter = 0;
-    e = main("unknown op");
+    e = main("Alice", year="Sophomore");
+    test:assertTrue(e is ());
+    test:assertExactEquals(outputs[0], "Name: Alice, Age: 18, Year: Sophomore");
+
+    // Invoking the main function.
+    counter = 0;
+    e = main("Alice", 20, "Sophomore", "math", "physics");
+    test:assertTrue(e is ());
+    test:assertExactEquals(outputs[0], "Name: Alice, Age: 20, Year: Sophomore, Module(s): [\"math\",\"physics\"]");
+
+    // Invoking the main function.
+    counter = 0;
+    e = main("Ali");
     if (e is error) {
-        test:assertEquals(e.reason(), "unknown operation");
-        test:assertEquals(outputs[0], "Error: Unknown Operation");
+        test:assertExactEquals(e.message(), "InvalidName");
+        test:assertExactEquals(e.toString(), "error(\"InvalidName\",message=\"invalid length\")");
     } else {
         test:assertFail(msg = "expected an error");
     }
