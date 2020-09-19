@@ -21,7 +21,7 @@ function testFunc() {
     test:assertExactEquals(outputs[2], "Commit handler executed.");
     test:assertExactEquals(outputs[3], "Transaction committed.");
     test:assertExactEquals(outputs[4], "Account Credit: ");
-    test:assertExactEquals(outputs[5], "affectedRowCount=1 lastInsertId=");
+    test:assertExactEquals(outputs[5], "{\"affectedRowCount\":1,\"lastInsertId\":null}");
     test:assertExactEquals(outputs[6], "Account Debit: ");
-    test:assertExactEquals(outputs[7], "affectedRowCount=1 lastInsertId=");
+    test:assertExactEquals(outputs[7], "{\"affectedRowCount\":1,\"lastInsertId\":null}");
 }

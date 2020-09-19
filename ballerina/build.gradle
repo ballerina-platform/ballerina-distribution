@@ -923,6 +923,11 @@ task testExamples() {
         'http-compression',
         'http-redirects',
         'http-2-0-server-push',
+        'http-cookies',
+        'header-based-routing',
+        'http-circuit-breaker',
+        'request-with-multiparts',
+        'different-payload-types',
         'websocket-basic-sample',
         'websocket-chat-application',
         'websocket-client',
@@ -951,13 +956,6 @@ task testExamples() {
         'ballerina-to-openapi',
         'client-generation',
         'directory-listener',
-        'different-payload-types',
-        'task-service-timer',
-        'task-service-appointment',
-        'http-cookies',
-        'header-based-routing',
-        'http-circuit-breaker',
-        'request-with-multiparts',
         'file', // Absolute path varies
         'filepath', // Depends on OS
         'time',
@@ -967,6 +965,8 @@ task testExamples() {
         'secured-client-with-basic-auth', // Need to run the service first
         'secured-client-with-jwt-auth', // Need to run the service first
         'secured-client-with-oauth2', // Need to run the service first
+        'task-service-timer',
+        'task-service-appointment',
         'task-scheduler-timer',
         'task-scheduler-appointment',
         'cache'
