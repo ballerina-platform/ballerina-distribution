@@ -1367,9 +1367,9 @@ extractJreForMac.dependsOn extractJreForLinux
 extractJreForWindows.dependsOn extractJreForMac
 
 copyOtherRepos.dependsOn extractJreForWindows
-//combineDocs.dependsOn copyOtherRepos
+combineDocs.dependsOn copyOtherRepos
 /* Package Distributions */
-packageDist.dependsOn copyOtherRepos
+packageDist.dependsOn combineDocs
 packageDistZip.dependsOn packageDist
 packageDistLinux.dependsOn packageDistZip
 packageDistMac.dependsOn packageDistLinux
