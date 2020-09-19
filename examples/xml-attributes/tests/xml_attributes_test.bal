@@ -26,7 +26,7 @@ function testFunc() {
     string op1 = "available";
     string op2 = "5";
     string op3 = "true";
-    string op4 = "{\"{http://www.w3.org/2000/xmlns/}ns0\":\"http://ballerina.com/aa",\"{http://ballerina.com/aa}status\":\"available\",\"count\":\"5\"}";
+    string op4 = "{\"{http://www.w3.org/2000/xmlns/}ns0\":\"http://ballerina.com/aa\",\"{http://ballerina.com/aa}status\":\"available\",\"count\":\"5\"}";
     string op5 = "Not Available";
     test:assertEquals(outputs[0], op0);
     test:assertEquals(outputs[1], op1);
