@@ -4,6 +4,10 @@
     "path": "socket"
   },
   {
+    "name": "Email standard library ",
+    "path": "email"
+  },
+  {
     "name": "Auth standard library ",
     "path": "auth"
   },
