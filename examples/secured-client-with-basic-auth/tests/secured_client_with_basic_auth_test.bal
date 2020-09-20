@@ -1,5 +1,4 @@
 import ballerina/test;
-import ballerina/log;
 
 string log = "";
 
@@ -8,7 +7,7 @@ string log = "";
     moduleName: "ballerina/log",
     functionName: "printInfo"
 }
-public isolated function mockPrintInfo(string|(function () returns (string)) msg) {
+public isolated function mockPrintInfo(anydata|(function () returns (anydata)) msg) {
     if (msg is string) {
         log = msg;
     }
