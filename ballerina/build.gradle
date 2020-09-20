@@ -887,7 +887,13 @@ task testExamples() {
         'openapi-to-ballerina',
         'taint-checking', // Should not compile
         'readonly-objects-and-fields', //Disable object BBE temporarily
-        'anonymous-objects'
+        'anonymous-objects',
+        // Disable following bbe build temporarily
+        'secured-service-with-basic-auth',
+        'crypto',
+        'http-filters',
+        'content-based-routing',
+        'header-based-routing'
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
