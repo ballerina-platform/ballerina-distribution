@@ -1312,7 +1312,7 @@ task startLdapServer() {
                     into file("/tmp")
                 }
                 exec {
-                    commandLine 'sh', '-c', "docker run -d -p 389:389 --name openldap-server --env LDAP_ORGANISATION=\"AVIX\" --env LDAP_DOMAIN=\"avix.lk\" --env LDAP_ADMIN_PASSWORD=\"avix123\" --env LDAP_BASE_DN=\"dc=avix,dc=lk\" --volume /tmp/bootstrap.ldif:/container/service/slapd/assets/config/bootstrap/ldif/custom/bootstrap.ldif osixia/openldap:1.3.0 --copy-service"
+                    commandLine 'sh', '-c', "docker run --rm -d -p 389:389 --name openldap-server --env LDAP_ORGANISATION=\"AVIX\" --env LDAP_DOMAIN=\"avix.lk\" --env LDAP_ADMIN_PASSWORD=\"avix123\" --env LDAP_BASE_DN=\"dc=avix,dc=lk\" --volume /tmp/bootstrap.ldif:/container/service/slapd/assets/config/bootstrap/ldif/custom/bootstrap.ldif osixia/openldap:1.3.0 --copy-service"
                     standardOutput = stdOut
                 }
                 println stdOut.toString()
@@ -1337,7 +1337,6 @@ task stopLdapServer() {
                 println "Stopping LDAP server."
                 exec {
                     commandLine 'sh', '-c', "docker stop openldap-server"
-                    commandLine 'sh', '-c', "docker container rm -f openldap-server"
                     standardOutput = stdOut
                 }
                 println stdOut.toString()
