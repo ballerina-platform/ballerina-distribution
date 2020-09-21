@@ -100,6 +100,10 @@
             {
                 "name": "The Main Function",
                 "url": "the-main-function"
+            },
+            {
+                "name": "Isolated Functions",
+                "url": "isolated-functions"
             }
         ]
     },
