@@ -1,7 +1,7 @@
 import ballerina/io;
 import ballerina/test;
 
-// The `dataProvider` attribute allows you to add a data provider function to the test-case.
+// The `dataProvider` attribute allows you to add a data-provider function to the test-case.
 @test:Config {
     // The `stringDataProvider` function provides the data set to this function.
     dataProvider: "stringDataProvider"
@@ -9,11 +9,11 @@ import ballerina/test;
 // Data is passed to the function as function parameters.
 function testAddingValues(string fValue, string sValue, string result) {
 
-    int|error val1 = int.constructFrom(fValue);
+    int|error val1 = 'int:fromString(fValue);
     int value1 = val1 is int ? val1 : 0;
-    int|error val2 = int.constructFrom(sValue);
+    int|error val2 = 'int:fromString(sValue);
     int value2 = val2 is int ? val2 : 0;
-    int|error res1 = int.constructFrom(result);
+    int|error res1 = 'int:fromString(result);
     int result1 = res1 is int ? res1 : 0;
 
     io:println("Input : [" + fValue + "," + sValue + "," + result + "]");

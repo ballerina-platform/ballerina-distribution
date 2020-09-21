@@ -6,11 +6,10 @@ function initializeTable(jdbc:Client jdbcClient)
 returns int|string|sql:Error? {
     // Execute dropping the table. The `sql:ExecutionResult` is returned upon
     // successful execution. An error will be returned in case of a failure.
-    sql:ExecutionResult? result =
+    sql:ExecutionResult result =
         check jdbcClient->execute("DROP TABLE IF EXISTS Customers");
-    if (result is sql:ExecutionResult) {
-        io:println("Drop table executed. ", result);
-    }
+    io:println("Drop table executed. ", result);
+
     // Similarly, to drop a table, the `create` table query is executed.
     // Here, the `customerId` is an auto-generated column.
     result = check jdbcClient->execute("CREATE TABLE IF NOT EXISTS Customers" +
@@ -24,12 +23,10 @@ returns int|string|sql:Error? {
     result = check jdbcClient->execute("INSERT INTO Customers (firstName, " +
         "lastName,registrationID,creditLimit,country)" +
         "VALUES ('Peter', 'Stuart', 1, 5000.75, 'USA')");
-
-    if (result is sql:ExecutionResult) {
-        io:println("Rows affected: ", result.affectedRowCount);
-        io:println("Generated Customer ID: ", result.lastInsertId);
-        return result.lastInsertId;
-    }
+    io:println("Rows affected: ", result.affectedRowCount);
+    io:println("Generated Customer ID: ", result.lastInsertId);
+    
+    return result.lastInsertId;
 }
 
 function updateRecord(jdbc:Client jdbcClient, int generatedId) {

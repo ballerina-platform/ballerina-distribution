@@ -1,0 +1,2 @@
+description: This BBE demonstrates the input and the output streaming capability in Ballerina through an `io:ReadableByteChannel`.
+keywords: ballerina, ballerina by example, bbe, http, streaming

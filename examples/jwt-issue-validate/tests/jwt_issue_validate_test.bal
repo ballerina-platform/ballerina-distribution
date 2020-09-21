@@ -9,7 +9,7 @@ int counter = 0;
     moduleName: "ballerina/io",
     functionName: "println"
 }
-public function mockPrint(any|error... s) {
+public isolated function mockPrint(any|error... s) {
     outputs[counter] = s[0];
     counter += 1;
 }
@@ -22,8 +22,8 @@ function testFunc() {
     test:assertTrue(stringutils:contains(<string>outputs[0], "Issued JWT: eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QiLCAia2" +
                                          "lkIjoiTlRBeFptTXhORE15WkRnM01UVTFaR00wTXpFek9ESmhaV0k0TkRObFpEVTFPR0ZrTmpG" +
                                          "aU1RIn0."));
-    test:assertTrue(stringutils:contains(<string>outputs[1], "Validated JWT Payload: iss=ballerina sub=admin aud=vEw" +
-                                         "zbcasJVQm1jVYHUHCjhxZ4tYa jti=100078234ba23"));
-    test:assertTrue(stringutils:contains(<string>outputs[2], "Validated JWT Payload: iss=ballerina sub=admin aud=vEw" +
-                                         "zbcasJVQm1jVYHUHCjhxZ4tYa jti=100078234ba23"));
+    test:assertTrue(stringutils:contains(<string>outputs[1], "Validated JWT Payload: {\"iss\":\"ballerina\",\"sub\":" +
+                                    "\"admin\",\"aud\":[\"vEwzbcasJVQm1jVYHUHCjhxZ4tYa\"],\"jti\":\"100078234ba23\""));
+    test:assertTrue(stringutils:contains(<string>outputs[2], "Validated JWT Payload: {\"iss\":\"ballerina\",\"sub\":" +
+                                    "\"admin\",\"aud\":[\"vEwzbcasJVQm1jVYHUHCjhxZ4tYa\"],\"jti\":\"100078234ba23\""));
 }

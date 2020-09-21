@@ -3,10 +3,8 @@ import ballerina/grpc;
 import ballerina/log;
 
 service HelloWorld on new grpc:Listener(9090) {
-    // The annotation indicates how the service resource operates as server streaming.
-    @grpc:ResourceConfig {streaming: true}
-    resource function lotsOfReplies(grpc:Caller caller, string name) {
 
+    resource function lotsOfReplies(grpc:Caller caller, string name) {
         log:printInfo("Server received hello from " + name);
         string[] greets = ["Hi", "Hey", "GM"];
 
@@ -15,8 +13,7 @@ service HelloWorld on new grpc:Listener(9090) {
             string msg = greet + " " + name;
             grpc:Error? err = caller->send(msg);
             if (err is grpc:Error) {
-                log:printError("Error from Connector: " + err.reason() + " - "
-                                           + <string>err.detail()["message"]);
+                log:printError("Error from Connector: " + err.message());
             } else {
                 log:printInfo("Send reply: " + msg);
             }

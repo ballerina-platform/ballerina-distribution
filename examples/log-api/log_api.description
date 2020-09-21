@@ -1,10 +1,19 @@
-// The `ballerina/log` module contains the Ballerina-log-handling
-// [functions](https://ballerina.io/learn/api-docs/ballerina/log/index.html#functions) including
-// ['DEBUG'](https://ballerina.io/learn/api-docs/ballerina/log/functions.html#printDebug),
-// ['ERROR'](https://ballerina.io/learn/api-docs/ballerina/log/functions.html#printError),
-// ['INFO'](https://ballerina.io/learn/api-docs/ballerina/log/functions.html#printInfo),
-// ['TRACE'](https://ballerina.io/learn/api-docs/ballerina/log/functions.html#printTrace),
-// ['WARN'](https://ballerina.io/learn/api-docs/ballerina/log/functions.html#printWarn),
-// 'OFF', and 'ALL'.<br/><br/>
+// The Ballerina Log API contains the application log handling
+// [functions](https://ballerina.io/swan-lake/learn/api-docs/ballerina/log/index.html#functions).<br/><br/>
+// To set the log level of the API, use the following CLI parameter: <br>
+// `--b7a.log.level=[LOG_LEVEL]`
+//
+// To configure using a configuration file, place the entry given below in
+// the file:
+//
+// ```
+// [b7a.log]
+// level="[LOG_LEVEL]"
+// ``` <br><br>
+// Each module can also be assigned its own log level. To assign a
+// log level to a module, provide the following configuration:
+// `<MODULE_NAME>.loglevel`.
+//
+// E.g., `--foo.loglevel=DEBUG` <br><br>
 // For more information on the underlying module, 
-// see the [Log module](https://ballerina.io/learn/api-docs/ballerina/log/index.html).
+// see the [Log module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/log/index.html).

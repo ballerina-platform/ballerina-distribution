@@ -1,20 +1,20 @@
 import ballerina/io;
-import ballerina/mysql;
 import ballerina/sql;
+import ballerinax/mysql;
 
 // Username and password of the MySQL database. This is used in the below
 // examples when initializing the MySQL connector. You need to change these
 // based on your setup if you try locally.
 string dbUser = "root";
 string dbPassword = "Test@123";
-string dbName = "MYSQL_BBE_EXEC";
+string dbName = "MYSQL_BBE";
 
 function initializeDatabase() returns sql:Error? {
     // Initialize the client without any database to create the database.
     mysql:Client mysqlClient = check new (user = dbUser, password = dbPassword);
     // Create database if it does not exist. If any error occurred,
     // the error will be returned.
-    sql:ExecutionResult? result =
+    sql:ExecutionResult result =
         check mysqlClient->execute("CREATE DATABASE IF NOT EXISTS " + dbName);
     io:println("Database created. ");
     // Close the MySQL client.
@@ -26,11 +26,10 @@ function initializeTable(mysql:Client mysqlClient)
     returns int|string|sql:Error? {
     // Execute dropping the table. The `sql:ExecutionResult` is returned upon
     // successful execution. An error will be returned in case of a failure.
-    sql:ExecutionResult? result =
+    sql:ExecutionResult result =
         check mysqlClient->execute("DROP TABLE IF EXISTS Customers");
-    if (result is sql:ExecutionResult) {
-        io:println("Drop table executed. ", result);
-    }
+    io:println("Drop table executed. ", result);
+
     // Similarly, to drop a table, the `create` table query is executed.
     // Here, the `customerId` is an auto-generated column.
     result = check mysqlClient->execute("CREATE TABLE IF NOT EXISTS Customers" +
@@ -45,13 +44,9 @@ function initializeTable(mysql:Client mysqlClient)
         "lastName,registrationID,creditLimit, country) VALUES ('Peter', " +
         "'Stuart', 1, 5000.75, 'USA')");
 
-    int|string? generatedId = ();
-    if (result is sql:ExecutionResult) {
-        io:println("Rows affected: ", result.affectedRowCount);
-        io:println("Generated Customer ID: ", result.lastInsertId);
-        generatedId = result.lastInsertId;
-    }
-    return generatedId;
+    io:println("Rows affected: ", result.affectedRowCount);
+    io:println("Generated Customer ID: ", result.lastInsertId);
+    return result.lastInsertId;
 }
 
 function updateRecord(mysql:Client mysqlClient, int generatedId) {

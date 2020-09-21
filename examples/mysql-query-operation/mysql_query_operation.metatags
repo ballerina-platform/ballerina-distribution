@@ -1,0 +1,2 @@
+description: BBE demonstrates how to use the MySQL client select query operations with the stream return type in Ballerina.
+keywords: ballerina, ballerina by example, bbe, mysql, query, select, data

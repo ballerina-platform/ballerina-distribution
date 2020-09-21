@@ -1,0 +1,2 @@
+description: BBE on how invoking a Ballerina function with required parameters requires arguments to be specified for each and every required parameter.
+keywords: ballerina, ballerina by example, bbe, required parameters, function

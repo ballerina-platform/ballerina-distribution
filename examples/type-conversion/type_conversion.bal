@@ -18,7 +18,7 @@ type Employee record {
 function convertEmployeeToPerson(Employee emp) {
     // Attempts to create a new value of the type `Person` from the `Employee`-typed `emp` value without changing
     // the inherent type of `emp`.
-    Person|error res = Person.constructFrom(emp);
+    Person|error res = emp.cloneWithType(Person);
     if (res is Person) {
         // If the conversion is successful, this prints the `name` field.
         io:println("Employee to Person, name: ", res["name"]);
@@ -32,7 +32,7 @@ function convertEmployeeToPerson(Employee emp) {
 function convertAnydataMapToPerson(map<anydata> m) {
     // Attempts to create a new value of the type `Person` from the `map<anydata>` typed `m` value without changing
     // the inherent type of `m`.
-    Person|error res = Person.constructFrom(m);
+    Person|error res = m.cloneWithType(Person);
     if (res is Person) {
         // If the conversion is successful, this prints the `name` field.
         io:println("map<anydata> to Person, name: ", res["name"]);

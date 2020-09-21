@@ -3,4 +3,6 @@
 // driver JAR should be placed in the `BALLERINA_HOME/bre/lib` directory. The
 // MySQL connector uses some database properties from MySQL version 8.0.x
 // onwards. Therefore, it is recommended to use a MySQL driver version greater
-// than 8.0.x.
+// than 8.0.x.<br><br>
+// For more information on the underlying module,
+// see the [MySQL module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/mysql/index.html).

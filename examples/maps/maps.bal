@@ -77,8 +77,8 @@ public function main() {
 
     map<int> marks = {sam: 50, jon: 60};
 
-    // Calling the `.entries()` method on a map will return the key-value pairs as
-    // an array of tuples.
+    // Calling the `.entries()` method on a map will return a new map with values
+    // containing the key-value pairs as an array of tuples.
     map<int> modifiedMarks = marks.entries().map(function ([string, int] pair)
         returns int {
             var [name, score] = pair;

@@ -28,7 +28,7 @@ public function main() {
     // which will be a request or a payload.
     response = clientEndpoint->get("/get", req);
     if (response is http:Response) {
-        // [Get the content type](https://ballerina.io/learn/api-docs/ballerina/http/objects/Response.html#getContentType) from the response.
+        // [Get the content type](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/Response.html#getContentType) from the response.
         string contentType = response.getContentType();
         io:println("Content-Type: " + contentType);
 
@@ -44,7 +44,7 @@ public function main() {
 //The below function handles the response received from the remote HTTP endpoint.
 function handleResponse(http:Response|error response) {
     if (response is http:Response) {
-        // [Get the JSON payload](https://ballerina.io/learn/api-docs/ballerina/http/objects/Response.html#getJsonPayload) from the response.
+        // [Get the JSON payload](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/Response.html#getJsonPayload) from the response.
         var msg = response.getJsonPayload();
         if (msg is json) {
             // Prints the received `JSON` response.

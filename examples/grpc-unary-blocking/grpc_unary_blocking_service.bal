@@ -19,8 +19,7 @@ service HelloWorld on new grpc:Listener(9090) {
         // Sends response message with headers.
         grpc:Error? err = caller->send(message, resHeader);
         if (err is grpc:Error) {
-            log:printError("Error from Connector: " + err.reason() + " - "
-                                             + <string>err.detail()["message"]);
+            log:printError("Error from Connector: " + err.message());
         }
 
         // Sends `completed` notification to caller.

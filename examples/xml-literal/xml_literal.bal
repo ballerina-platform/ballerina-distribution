@@ -10,7 +10,8 @@ public function main() {
                   </book>`;
     io:println(x1);
 
-    // Defines namespaces. These are visible to all the XML literals defined from this point onwards.  
+    // Defines namespaces. These are visible to all the XML literals defined from this point onwards.
+    // The XML namespace defined without a prefix is used as the default namespace. 
     xmlns "http://ballerina.com/";
     xmlns "http://ballerina.com/aa" as ns0;
 
@@ -24,10 +25,9 @@ public function main() {
     io:println(x2);
 
     // XML can be interpolated with expressions using the `${}` notation.
-    // The expression can be a previously-defined variable, arithmetic expressions, or even a function call. 
+    // The expression can be a previously-defined variable, an arithmetic expressions, or even a function call. 
     // These expressions are evaluated at runtime.
     string title = "(Sir)";
-
     xml x3 = xml `<ns0:newBook>
                     <name>Sherlock Holmes</name>
                     <author>${title} Arthur Conan Doyle</author>

@@ -1,7 +1,7 @@
 import ballerina/io;
-import ballerina/mysql;
 import ballerina/sql;
 import ballerina/time;
+import ballerinax/mysql;
 
 // Username and password of the MySQL database. This is used in below examples
 // when initializing the MySQL connector. You need to change these based on
@@ -105,7 +105,7 @@ function queryDateTimeType(mysql:Client mysqlClient) {
 function initializeTable() returns sql:Error? {
 
     mysql:Client mysqlClient = check new (user = dbUser, password = dbPassword);
-    sql:ExecutionResult? result = check
+    sql:ExecutionResult result = check
         mysqlClient->execute("CREATE DATABASE IF NOT EXISTS MYSQL_BBE");
 
     result = check mysqlClient->execute("DROP TABLE IF EXISTS " +

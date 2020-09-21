@@ -1,34 +1,39 @@
 # To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run foreach.bal
-Iterating a string array :
-fruit: apple
-fruit: banana
-fruit: cherry
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run foreach.bal
+Iterating a string array:-
+Fruit: apple
+Fruit: banana
+Fruit: cherry
 
-Iterating a map :
-apple
-banana
-cherry
-letter: a, word: apple
-letter: b, word: banana
-letter: c, word: cherry
+Iterating a map:-
+Capital: Washington, D.C.
+Capital: Colombo
+Capital: London
+Country: USA, Capital: Washington, D.C.
+Country: Sri Lanka, Capital: Colombo
+Country: England, Capital: London
 
-Iterating a JSON object :
-string value: apple
-json array value: red green
-int value: 5
+Iterating a JSON object:-
+Key: name Value: apple
+Key: colors Value: ["red","green"]
+Key: price Value: 5
 
-Iterating a JSON array :
-color 0: red
-color 1: green
+Iterating a JSON array:-
+Color: red
+Color: green
 
-Iterating XML :
-xml at 0: <name>Sherlock Holmes</name>
-xml at 1: <author>Sir Arthur Conan Doyle</author>
+Iterating an XML:-
+Book: <book><name>Sherlock Holmes</name><author>Sir Arthur Conan Doyle</author></book>
+Book: <book><name>Harry Potter</name><author>J.K. Rowling</author></book>
 
-Iterating a closed integer range :
-summation from 1 to 10 is 55
+Iterating a table:-
+Employee: {"id":1,"name":"John","salary":300.5}
+Employee: {"id":2,"name":"Bella","salary":500.5}
+Employee: {"id":3,"name":"Peter","salary":750.0}
 
-Iterating a half open integer range :
-summation from 1 to 10 excluding 10 is 45
+Iterating a closed integer range:-
+Summation from 1 to 10 is 55
+
+Iterating a half open integer range:-
+Summation from 1 to 10 (exclusive) is 45

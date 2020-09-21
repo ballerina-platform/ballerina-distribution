@@ -1,6 +1,6 @@
 import ballerina/io;
-import ballerina/mysql;
 import ballerina/sql;
+import ballerinax/mysql;
 
 // Username and password of the MySQL database. This is used in the below
 // examples when initializing the MySQL connector. You need to change these
@@ -31,12 +31,6 @@ function simpleQuery(mysql:Client mysqlClient) {
         io:println("ForEach operation on the stream failed!", e);
     }
 
-    // In general cases, the stream will be closed automatically
-    // when the stream is fully consumed or any error is encountered.
-    // However, in case if the stream is not fully consumed, the stream should be
-    // closed specifically.
-    e = resultStream.close();
-
     io:println("------ End Simple Query -------");
 }
 
@@ -59,7 +53,10 @@ function countRows(mysql:Client mysqlClient) {
         io:println("Customer table is empty");
     }
 
-    // Close the stream.
+    // In general cases, the stream will be closed automatically
+    // when the stream is fully consumed or any error is encountered.
+    // However, in case if the stream is not fully consumed, the stream should be
+    // closed specifically.
     error? e = resultStream.close();
 
     io:println("------ End Count Total Rows -------");
@@ -97,16 +94,13 @@ function typedQuery(mysql:Client mysqlClient) {
        io:println(e);
     }
 
-    // Close the stream.
-    e = resultStream.close();
-
     io:println("------ End Query With Type Description -------");
 }
 
 //Initialize the database table with sample data.
 function initializeTable() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = dbUser, password = dbPassword);
-    sql:ExecutionResult? result =
+    sql:ExecutionResult result =
         check mysqlClient->execute("CREATE DATABASE IF NOT EXISTS MYSQL_BBE");
     result = check mysqlClient->execute("DROP TABLE IF EXISTS "+
         "MYSQL_BBE.Customers");

@@ -2,7 +2,7 @@ import ballerina/io;
 
 // Defines an abstract object called `Person`. It should only contain fields and the
 // method declarations.
-type Person abstract object {
+type Person object {
     public int age;
     public string firstName;
     public string lastName;
@@ -14,20 +14,20 @@ type Person abstract object {
 };
 
 // Defines another abstract object called `Employee`, which references the `Person` object.
-type Employee abstract object {
-    // Add a reference to the `Person` object type. Only abstract objects can be referred.
+type Employee object {
+    // Add a reference to the `Person` object type. 
     // All the member fields and member methods will be copied from the `Person` object.
     *Person;
-    public float salary;
+    public float|string salary;
 
-    function getSalary() returns float;
+    function getSalary() returns float|string;
 };
 
-type Owner abstract object {
-    public string status;
-};
+class Owner {
+    public string status = "";
+}
 
-type Manager object {
+class Manager {
     // Type references can be chained by adding a reference to the `Employee` object, which
     // again has a reference to the `Employee` object. This will copy all the members from
     // the `Employee` object. It will be same as defining each of those members within this object.
@@ -38,13 +38,17 @@ type Manager object {
 
     public string dpt;
 
+    // Referenced fields can be overridden in a type-descriptor if the type of the field  
+    // in the overriding descriptor is a sub-type of the original type of the field.
+    public float salary;
+
     // All the fields referenced through the type reference can be accessed within this object.
-    function __init(int age, string firstName, string lastName, string status) {
+    function init(int age, string firstName, string lastName, string status) {
         self.age = age;
         self.firstName = firstName;
         self.lastName = lastName;
         self.status = status;
-        self.salary = 2000;
+        self.salary = 2000.0;
         self.dpt = "HR";
     }
 
@@ -53,10 +57,12 @@ type Manager object {
         return self.firstName + " " + self.lastName;
     }
 
+    // Referenced methods can also be overridden as long as the method in the overriding 
+    // descriptor is a sub-type of the method in the referenced type.
     function getSalary() returns float {
         return self.salary;
     }
-};
+}
 
 public function main() {
     Manager p = new Manager(5, "John", "Doe", "Senior");

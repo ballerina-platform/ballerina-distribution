@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Socket standard library ",
+    "path": "socket"
+  },
+  {
+    "name": "Email standard library ",
+    "path": "email"
+  },
+  {
+    "name": "Auth standard library ",
+    "path": "auth"
+  },
+  {
+    "name": "JWT standard library ",
+    "path": "jwt"
+  },
+  {
+    "name": "OAuth2 standard library ",
+    "path": "oauth2"
+  },
+  {
+    "name": "Task standard library ",
+    "path": "task"
+  },
+  {
+    "name": "gRPC Unary Blocking RPC",
+    "path": "grpc-unary-blocking"
+  },
+  {
+    "name": "gRPC Unary non-Blocking RPC",
+    "path": "grpc-unary-non-blocking"
+  },
+  {
+    "name": "gRPC Server Streaming RPC",
+    "path": "grpc-server-streaming"
+  },
+  {
+    "name": "gRPC Unary Secured RPC",
+    "path": "grpc-secured-unary"
+  },
+  {
+    "name": "gRPC Client Streaming RPC",
+    "path": "grpc-client-streaming"
+  },
+  {
+    "name": "gRPC Bidirectional Streaming RPC",
+    "path": "grpc-bidirectional-streaming"
+  },
+  {
+    "name": "gRPC service with HTTP gateway",
+    "path": "grpc-service-with-http-proxy-gateway"
+  },
+  {
+    "name": "HTTP standard library",
+    "path": "http"
+  },
+  {
+    "name": "MIME standard library",
+    "path": "mime"
+  }
+]

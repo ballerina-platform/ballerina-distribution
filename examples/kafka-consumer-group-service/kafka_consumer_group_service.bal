@@ -1,4 +1,4 @@
-import ballerina/kafka;
+import ballerinax/kafka;
 import ballerina/log;
 
 kafka:ConsumerConfiguration consumerConfigs = {
@@ -7,12 +7,15 @@ kafka:ConsumerConfiguration consumerConfigs = {
     bootstrapServers: "localhost:9092",
     // Using two concurrent consumers to work as a group.
     concurrentConsumers: 2,
+
     groupId: "group-id",
     // Subscribes to the topic `test-kafka-topic`.
     topics: ["test-kafka-topic"],
+
     pollingIntervalInMillis: 1000,
     // Uses the default string deserializer to deserialize the Kafka value.
     valueDeserializerType: kafka:DES_STRING
+
 };
 
 listener kafka:Consumer consumer = new (consumerConfigs);
@@ -27,6 +30,7 @@ service kafkaService on consumer {
         foreach var kafkaRecord in records {
             processKafkaRecord(kafkaRecord);
         }
+
     }
 }
 
@@ -36,6 +40,7 @@ function processKafkaRecord(kafka:ConsumerRecord kafkaRecord) {
         // Prints the retrieved Kafka record.
         log:printInfo("Topic: " + kafkaRecord.topic + " Partition: " +
             kafkaRecord.partition.toString() + " Received Message: " + message);
+
     } else {
         log:printError("Error occurred while retrieving message data;" +
             "Unexpected type");
