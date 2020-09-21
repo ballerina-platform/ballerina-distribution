@@ -889,8 +889,6 @@ task testExamples() {
         'readonly-objects-and-fields', //Disable object BBE temporarily
         'anonymous-objects',
         // Disable following bbe build temporarily
-        'secured-service-with-basic-auth',
-        'crypto',
         'http-filters',
         'content-based-routing',
         'header-based-routing'
@@ -969,6 +967,7 @@ task testExamples() {
         'filepath', // Depends on OS
         'time',
         'locks', // Output is inconsistent between runs
+        'crypto', // Output with line breaks cannot be compared
         'jwt-issue-validate', // Output depends on time
         'secured-client-with-basic-auth', // Need to run the service first
         'secured-client-with-jwt-auth', // Need to run the service first
