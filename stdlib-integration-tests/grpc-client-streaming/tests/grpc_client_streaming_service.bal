@@ -19,7 +19,7 @@ import ballerina/log;
 
 service HelloWorld on new grpc:Listener(20005) {
 
-    resource function lotsOfGreetings(grpc:Caller caller,
+    isolated resource function lotsOfGreetings(grpc:Caller caller,
                             stream<string,error> clientStream) {
         log:printInfo("Client connected sucessfully.");
         //Read and process each message in the client stream

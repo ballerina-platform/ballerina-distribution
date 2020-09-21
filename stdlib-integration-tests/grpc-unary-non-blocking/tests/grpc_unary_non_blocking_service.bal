@@ -20,7 +20,7 @@ import ballerina/log;
 // Bind the `service` to the port.
 service HelloWorld on new grpc:Listener(20002) {
 
-    resource function hello(grpc:Caller caller, string name) {
+    isolated resource function hello(grpc:Caller caller, string name) {
         log:printInfo("Server received hello from " + name);
         string message = "Hello " + name;
 
