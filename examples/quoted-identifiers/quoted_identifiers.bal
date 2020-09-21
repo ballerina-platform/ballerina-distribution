@@ -28,7 +28,7 @@ public function main() {
     int i = 'function('int);
     io:println(i);
 
-    // Define a variable where the variable name starts with a digit.
+    // Define a variable of which the variable name starts with a digit.
     int '1PlusI = 1 + i;
     io:println('1PlusI);
 
@@ -49,10 +49,10 @@ public function main() {
 
     'Person_\{name\&Ȧɢέ\} person = {'first\ name: "Tom", 'Ȧɢέ:25};
 
-    // Member access can be used to access the members of type `'Person_{name&Ȧɢέ}` by referring the field name
-    // without escaping the special characters using a `\`
+    // Member access can be used to access the members of type `'Person_{name&Ȧɢέ}` by referring the to field name
+    // without escaping the special characters using a `\`.
     io:println(person["first name"]);
 
-    // The required field `'Ȧɢέ` can be accessed using field based access
+    // The required field `'Ȧɢέ` can be accessed using field based access.
     io:println(person.'Ȧɢέ);
 }
