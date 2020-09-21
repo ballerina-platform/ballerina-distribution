@@ -16,9 +16,10 @@
 
 import ballerina/filepath;
 
-
-final string KEYSTORE_PATH = checkpanic filepath:build("src", "grpc-secured-unary", "tests",
+final string KEYSTORE_PATH = checkpanic filepath:build("src", "grpc-service-with-http-proxy-gateway", "tests",
 "resources", "ballerinaKeystore.p12");
-final string TRUSTSTORE_PATH = checkpanic filepath:build("src", "grpc-secured-unary", "tests",
+final string TRUSTSTORE_PATH = checkpanic filepath:build("src", "grpc-service-with-http-proxy-gateway", "tests",
                                "resources", "ballerinaTruststore.p12");
 const string ERROR_MSG_FORMAT = "Error from Connector: %s";
+const string RESP_MSG_FORMAT = "Failed: Invalid Response, expected %s, but received %s";
+
