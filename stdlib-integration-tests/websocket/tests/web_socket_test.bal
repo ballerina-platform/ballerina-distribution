@@ -16,7 +16,7 @@
 
 import ballerina/runtime;
 import ballerina/test;
-import http;
+import ballerina/http;
 
 string data = "";
 
