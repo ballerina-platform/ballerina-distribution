@@ -7,7 +7,7 @@ string[] outputs = [];
     moduleName: "ballerina/io",
     functionName: "println"
 }
-public function mockPrint(any|error... val) {
+public isolated function mockPrint(any|error... val) {
     outputs.push(val.reduce(function (any|error a, any|error b) returns string => a.toString() + b.toString(), "").toString());
 }
 

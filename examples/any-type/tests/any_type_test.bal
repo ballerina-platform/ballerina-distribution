@@ -8,7 +8,7 @@ string[] outputs = [];
     moduleName: "ballerina/io",
     functionName: "println"
 }
-public function mockPrint(any|error... val) {
+public isolated function mockPrint(any|error... val) {
     outputs.push(val.reduce(function (any|error a, any|error b) returns string => a.toString() + b.toString(), "").toString());
 }
 
@@ -16,7 +16,7 @@ public function mockPrint(any|error... val) {
     moduleName: "ballerina/time",
     functionName: "currentTime"
 }
-public function mockCurrentTime() returns time:Time {
+public isolated function mockCurrentTime() returns time:Time {
     return checkpanic time:createTime(2020, 1, 1, 0, 0, 0, 0, "America/Panama");
 }
 
