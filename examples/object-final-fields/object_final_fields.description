@@ -1,0 +1,6 @@
+// Fields of a class or an object constructor expression can be marked as `final`. Values can be set for such fields
+// either using initializer expressions (default values) or in the `init` function. A value cannot be set for such a
+// field once the object is created.<br/>
+// If all the fields are `final` fields and the type of each field is a subtype of `readonly`, the object value is
+// constructed as an immutable value, which will belong to `readonly`.<br/>
+// Whether or not a field is `final` is not part of the type and does not affect subtyping.

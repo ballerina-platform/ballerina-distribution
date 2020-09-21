@@ -308,6 +308,10 @@
                 "url": "readonly-objects-and-fields"
             },
             {
+                "name": "Final Fields",
+                "url": "object-final-fields"
+            },
+            {
                 "name": "Object Type Reference",
                 "url": "object-type-reference"
             },
