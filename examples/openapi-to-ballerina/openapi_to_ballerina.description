@@ -5,6 +5,6 @@
 // `ballerina openapi -i <openapi-contract> --mode service -o <output path>`
 // To generate a Ballerina client endpoint for a provided OAS definition.
 // `ballerina openapi -i <openapi-contract> --mode client -o <output path>`
-// To generate both mock version of the Ballerina service and a Ballerina client endpoint for a provided OAS definition.
+// To generate both the mock version of the Ballerina service and a Ballerina client endpoint for a provided OAS definition.
 // `ballerina openapi -i <openapi-contract> -o <output path>`<br/><br/>
 // For more information, see [Ballerina OpenAPI Tools](https://ballerina.io/swan-lake/learn/how-to-use-openapi-tools/).
