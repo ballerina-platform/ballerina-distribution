@@ -22,7 +22,7 @@ function testFunction2() {
 }
 
 // The function annotated with `AfterSuite` will be executed after all the test functions in the module have executed.
-@test:AfterSuite
+@test:AfterSuite {}
 function afterSuite() {
     io:println("I'm the after suite function!");
 }
