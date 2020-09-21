@@ -280,8 +280,8 @@
         "column": 1,
         "category": "Language concepts",
         "samples": [{
-                "name": "Object",
-                "url": "objects"
+                "name": "Class Definitions",
+                "url": "class-definition"
             },
             {
                 "name": "Object Initializer",
@@ -296,12 +296,12 @@
                 "url": "object-assignability"
             },
             {
-                "name": "Abstract Objects",
-                "url": "abstract-objects"
+                "name": "Object type",
+                "url": "objects"
             },
             {
-                "name": "Anonymous Objects",
-                "url": "anonymous-objects"
+                "name": "Object Constructor Expressions",
+                "url": "object-constructor-expression"
             },
             {
                 "name": "Read-only Objects",

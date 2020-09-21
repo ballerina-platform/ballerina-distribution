@@ -8,7 +8,7 @@ string[] outputs = [];
     moduleName: "ballerina/io",
     functionName: "println"
 }
-public function mockPrint(any|error... val) {
+public isolated function mockPrint(any|error... val) {
     outputs.push(val.reduce(function (any|error a, any|error b) returns string => a.toString() + b.toString(), "").toString());
 }
 
@@ -33,7 +33,7 @@ function testFunc() returns error? {
         filename ="Filename of /A/B/C: C";
         parent ="Parent of /A/B/C: \\A\\B";
         normalized ="Normalized path of foo/../bar: bar";
-        elements ="Path elements of /A/B/C: A B C";
+        elements ="Path elements of /A/B/C: [\"A\",\"B\",\"C\"]";
         buildPath ="Built path of '/', 'foo', 'bar': \\foo\\bar";
         extension ="Extension of path.bal: bal";
         relative ="Relative path between 'a/b/c' and 'a/c/d': ..\\..\\c\\d";
@@ -42,7 +42,7 @@ function testFunc() returns error? {
         filename ="Filename of /A/B/C: C";
         parent ="Parent of /A/B/C: /A/B";
         normalized ="Normalized path of foo/../bar: bar";
-        elements ="Path elements of /A/B/C: A B C";
+        elements ="Path elements of /A/B/C: [\"A\",\"B\",\"C\"]";
         buildPath ="Built path of '/', 'foo', 'bar': /foo/bar";
         extension ="Extension of path.bal: bal";
         relative ="Relative path between 'a/b/c' and 'a/c/d': ../../c/d";

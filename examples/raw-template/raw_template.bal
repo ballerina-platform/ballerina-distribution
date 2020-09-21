@@ -40,7 +40,7 @@ public function main() {
 // 1) The type should be an abstract subtype of `object:RawTemplate` type<br>
 // 2) It should only have the two fields `strings` and `insertions`<br>
 // 3) It should not have method declarations
-type Query abstract object {
+type Query object {
     // The value space of the raw template type can be constrained to a certain
     // extent by selecting suitable types for the `strings` and `insertions`
     // fields. For example,<br>

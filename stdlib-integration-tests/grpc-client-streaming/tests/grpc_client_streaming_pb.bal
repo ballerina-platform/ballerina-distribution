@@ -22,13 +22,13 @@ public client class HelloWorldClient {
 
     private grpc:Client grpcClient;
 
-    public function init(string url, grpc:ClientConfiguration? config = ()) {
+    public isolated function init(string url, grpc:ClientConfiguration? config = ()) {
         // initialize client endpoint.
         self.grpcClient = new(url, config);
         checkpanic self.grpcClient.initStub(self, "non-blocking", ROOT_DESCRIPTOR, getDescriptorMap());
     }
 
-    public remote function lotsOfGreetings(service msgListener, grpc:Headers? headers = ()) returns (grpc:StreamingClient|grpc:Error) {
+    public isolated remote function lotsOfGreetings(service msgListener, grpc:Headers? headers = ()) returns (grpc:StreamingClient|grpc:Error) {
         return self.grpcClient->streamingExecute("HelloWorld/lotsOfGreetings", msgListener, headers);
     }
 }

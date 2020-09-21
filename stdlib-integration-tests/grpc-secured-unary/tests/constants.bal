@@ -14,6 +14,11 @@
 // specific language governing permissions and limitations
 // under the License.
 
-const string KEYSTORE_PATH = "src/grpc/tests/resources/ballerinaKeystore.p12";
-const string TRUSTSTORE_PATH = "src/grpc/tests/resources/ballerinaTruststore.p12";
+import ballerina/filepath;
+
+
+final string KEYSTORE_PATH = checkpanic filepath:build("src", "grpc-secured-unary", "tests",
+"resources", "ballerinaKeystore.p12");
+final string TRUSTSTORE_PATH = checkpanic filepath:build("src", "grpc-secured-unary", "tests",
+                               "resources", "ballerinaTruststore.p12");
 const string ERROR_MSG_FORMAT = "Error from Connector: %s";

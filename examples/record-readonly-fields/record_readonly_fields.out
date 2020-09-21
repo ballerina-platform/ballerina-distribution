@@ -4,5 +4,5 @@ ballerina run record_readonly_fields.bal
 empTwo is immutable: false
 details is immutable: true
 identifier is immutable: true
-error: {ballerina/lang.map}InherentTypeViolation message=cannot update 'readonly' field 'details' in record of type 'Employee'
-        at record_readonly_fields:main(record_readonly_fields.bal:70)
+error: {ballerina/lang.map}InherentTypeViolation {"message":"cannot update 'readonly' field 'details' in record of type 'Employee'"}
+        at record_readonly_fields:main(record_readonly_fields.bal:73)
