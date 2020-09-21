@@ -1,7 +1,7 @@
 # Run the command below in a Ballerina project to generate the service and client from OpenAPI contract.
 ballerina openapi -i petstore.yaml
 Note: This is an Experimental tool ship under ballerina hence this will only support limited set of functionality.
-Following files were created.
+The following files were created.
     -- petstore-service.bal
     -- petstore-client.bal
     -- schema.bal
