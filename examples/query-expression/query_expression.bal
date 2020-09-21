@@ -37,7 +37,7 @@ public function main() {
        let string degreeName = "Bachelor of Medicine",
        int graduationYear = calGraduationYear(student.intakeYear)
        //The `order by` clause sorts the output items based on the given `order-key` and `order-direction`.
-       //The `order-key` must be an ordered type. The `order-direction` is `ascending` if not explicitly specified.
+       //The `order-key` must be an ordered type. The `order-direction` is `ascending` if not specified explicitly.
        order by student.firstName descending
        //The `limit` clause limits the output items.
        limit 2

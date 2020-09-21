@@ -27,11 +27,11 @@ public function main() {
         });
     io:println("Doubled: ", doubled);
 
-    // An array can be sorted using `.sort()`. `array:DESCENDING` is the `direction` in which to sort.
+    // An array can be sorted using `.sort()`. The `array:DESCENDING` is the `direction` in which sort should be done.
     // The default sort direction is `ASCENDING`. The `isolated function` returns a `string[]` for each
-    // member which is used as a `key` to sort the members. If the member type of the array
+    // member, which is used as a `key` to sort the members. If the member type of the array
     // is not sorted, then the `key` function must be specified.
-    // It returns an `array` consisting of the members of `b` in sorted order.
+    // It returns an `array` consisting of the members of `b` in the sorted order.
     int[] sortedArray = b.sort(array:DESCENDING, isolated function (int value) returns string[] {
             if (value < 5) {
                 return ["A",value.toString()];
