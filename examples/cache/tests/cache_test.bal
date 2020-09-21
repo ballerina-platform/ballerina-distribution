@@ -16,7 +16,7 @@ function testFunc() returns error? {
     // Invoking the main function
     error? output = main();
     test:assertEquals(outputs[0].toString(), "key1: value1");
-    test:assertEquals(outputs[1].toString(), "keys: [[\"key2\"]]");
+    test:assertEquals(outputs[1].toString(), "keys: [\"key2\"]");
     test:assertEquals(outputs[2].toString(), "size: 1");
-    test:assertEquals(outputs[3].toString(), "keys: [[]]");
+    test:assertEquals(outputs[3].toString(), "keys: []");
 }
