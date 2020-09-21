@@ -1,12 +1,12 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run foreach.bal
-Iterating a string array:- 
+Iterating a string array:-
 Fruit: apple
 Fruit: banana
 Fruit: cherry
 
-Iterating a map:- 
+Iterating a map:-
 Capital: Washington, D.C.
 Capital: Colombo
 Capital: London
@@ -14,26 +14,26 @@ Country: USA, Capital: Washington, D.C.
 Country: Sri Lanka, Capital: Colombo
 Country: England, Capital: London
 
-Iterating a JSON object:- 
+Iterating a JSON object:-
 Key: name Value: apple
-Key: colors Value: red green
+Key: colors Value: ["red","green"]
 Key: price Value: 5
 
-Iterating a JSON array:- 
+Iterating a JSON array:-
 Color: red
 Color: green
 
-Iterating an XML:- 
+Iterating an XML:-
 Book: <book><name>Sherlock Holmes</name><author>Sir Arthur Conan Doyle</author></book>
 Book: <book><name>Harry Potter</name><author>J.K. Rowling</author></book>
 
-Iterating a table:- 
-Employee: id=1 name=John salary=300.5
-Employee: id=2 name=Bella salary=500.5
-Employee: id=3 name=Peter salary=750.0
+Iterating a table:-
+Employee: {"id":1,"name":"John","salary":300.5}
+Employee: {"id":2,"name":"Bella","salary":500.5}
+Employee: {"id":3,"name":"Peter","salary":750.0}
 
-Iterating a closed integer range:- 
+Iterating a closed integer range:-
 Summation from 1 to 10 is 55
 
-Iterating a half open integer range:- 
+Iterating a half open integer range:-
 Summation from 1 to 10 (exclusive) is 45

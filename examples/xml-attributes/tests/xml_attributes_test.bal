@@ -1,6 +1,6 @@
 import ballerina/test;
 
-string|error[] outputs = [];
+(string|error)[] outputs = [];
 int counter = 0;
 
 // This is the mock function which will replace the real function
@@ -8,7 +8,7 @@ int counter = 0;
     moduleName: "ballerina/io",
     functionName: "println"
 }
-public function mockPrint(any|error... s) {
+public isolated function mockPrint(any|error... s) {
     if (s[0] is ()) {
         // Cannot convert () to string.
         outputs[counter] = "()";
@@ -18,7 +18,7 @@ public function mockPrint(any|error... s) {
     counter += 1;
 }
 
-@test:Config
+@test:Config{}
 function testFunc() {
     // Invoking the main function
     main();
@@ -26,7 +26,7 @@ function testFunc() {
     string op1 = "available";
     string op2 = "5";
     string op3 = "true";
-    string op4 = "{http://www.w3.org/2000/xmlns/}ns0=http://ballerina.com/aa {http://ballerina.com/aa}status=available count=5";
+    string op4 = "{\"{http://www.w3.org/2000/xmlns/}ns0\":\"http://ballerina.com/aa\",\"{http://ballerina.com/aa}status\":\"available\",\"count\":\"5\"}";
     string op5 = "Not Available";
     test:assertEquals(outputs[0], op0);
     test:assertEquals(outputs[1], op1);

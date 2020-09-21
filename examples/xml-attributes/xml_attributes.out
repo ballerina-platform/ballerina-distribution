@@ -5,6 +5,6 @@ ballerina run xml_attributes.bal
 available
 5
 true
-{http://www.w3.org/2000/xmlns/}ns0=http://ballerina.com/aa {http://ballerina.com/aa}status=available count=5
+{"{http://www.w3.org/2000/xmlns/}ns0":"http://ballerina.com/aa","{http://ballerina.com/aa}status":"available","count":"5"}
 available
 Not Available
