@@ -1,8 +1,7 @@
 import ballerina/io;
 import ballerina/test;
-import ballerina/lang.'int;
 
-// The `dataProvider` attribute allows you to add a data provider function to the test-case.
+// The `dataProvider` attribute allows you to add a data-provider function to the test-case.
 @test:Config {
     // The `stringDataProvider` function provides the data set to this function.
     dataProvider: "stringDataProvider"
