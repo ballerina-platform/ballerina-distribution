@@ -64,9 +64,8 @@ public function main() {
     string s = j6.toJsonString();
     json j13 = checkpanic s.fromJsonString();
     io:println(j13.toJsonString());
-    // The values of the fields of the JSON would be equal to the values from which the string
-    // was created.
-    io:println(j6.name == j13.name);
-    io:println(j6.color == j13.color);
-    io:println(j6.price == <float>j13.price);
+
+    // The result of using `.fromJsonString()` with `s` would be a JSON object (`map<json>`),
+    // given that the string `s` was the result of calling `.toJsonString()` on a JSON object.
+    io:println(j13 is map<json>);
 }
