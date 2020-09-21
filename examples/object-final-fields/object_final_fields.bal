@@ -21,8 +21,8 @@ class Employee {
 
 // A class definition for a `readonly` object.
 // If the class definition includes `readonly`, all the fields in the
-// object are considered to be `readonly` fields.
-// The effective types of all the fields are the intersection of the
+// object are considered to be `final` fields.
+// The effective type of each field is the intersection of the
 // specified type and `readonly`.
 readonly class MainController {
     int id;
