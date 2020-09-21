@@ -6,3 +6,6 @@ ballerina run quoted_identifiers.bal
 7
 John doe
 Jane doe
+1 is a numeric value
+Tom
+25
