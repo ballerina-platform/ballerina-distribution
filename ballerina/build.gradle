@@ -887,10 +887,7 @@ task testExamples() {
         'openapi-to-ballerina',
         'taint-checking', // Should not compile
         'readonly-objects-and-fields', //Disable object BBE temporarily
-        'anonymous-objects',
-        // Disable following bbe build temporarily
-        'secured-service-with-basic-auth',
-        'crypto'
+        'anonymous-objects'
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
@@ -966,6 +963,7 @@ task testExamples() {
         'filepath', // Depends on OS
         'time',
         'locks', // Output is inconsistent between runs
+        'crypto', // Output with line breaks cannot be compared
         'jwt-issue-validate', // Output depends on time
         'secured-client-with-basic-auth', // Need to run the service first
         'secured-client-with-jwt-auth', // Need to run the service first
