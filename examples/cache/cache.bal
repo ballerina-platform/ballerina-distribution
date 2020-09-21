@@ -36,7 +36,7 @@ public function main() returns error? {
 
     // Get the keys of the cache entries.
     string[] keys = cache.keys();
-    io:println("keys: [", keys.toString(), "]");
+    io:println("keys: " + keys.toString());
 
     // Get the size of the cache.
     int size = cache.size();
@@ -45,7 +45,7 @@ public function main() returns error? {
     // Discard the given cache entry.
     _ = check cache.invalidate("key2");
 
-    io:println("keys: [", cache.keys(), "]");
+    io:println("keys: ", cache.keys());
 
     // Discard all the cache entries of the cache.
     _ = check cache.invalidateAll();
