@@ -14,11 +14,11 @@ type Report record {
 };
 
 public function main() {
-    Student s1 = { firstName: "Michelle", lastName: "Sadler", intakeYear: 1990, 
+    Student s1 = { firstName: "Martin", lastName: "Sadler", intakeYear: 1990,
                    gpa: 3.5 };
     Student s2 = { firstName: "Ranjan", lastName: "Fonseka", intakeYear: 2001, 
                    gpa: 1.9 };
-    Student s3 = { firstName: "Martin", lastName: "Guthrie", intakeYear: 2002, 
+    Student s3 = { firstName: "Michelle", lastName: "Guthrie", intakeYear: 2002,
                    gpa: 3.7 };
     Student s4 = { firstName: "George", lastName: "Fernando", intakeYear: 2005, 
                    gpa: 4.0 };
@@ -36,6 +36,9 @@ public function main() {
        //The `let` clause binds the variables.
        let string degreeName = "Bachelor of Medicine",
        int graduationYear = calGraduationYear(student.intakeYear)
+       //The `order by` clause sorts the output items based on the given `order-key` and `order-direction`.
+       //The `order-key` must be an ordered type. The `order-direction` is `ascending` if not specified explicitly.
+       order by student.firstName descending
        //The `limit` clause limits the output items.
        limit 2
        //The `select` clause is evaluated for each iteration.
