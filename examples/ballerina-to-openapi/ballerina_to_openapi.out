@@ -1,4 +1,4 @@
-# To export the OpenAPI definition of ballerina service `hello`, navigate to the directory that contains the
+# To export the OpenAPI definition of the `hello` Ballerina service, navigate to the directory that contains the
 # `ballerina_to_openapi.bal` file, and execute `ballerina openapi` command below.
 ballerina openapi -i ballerina_to_openapi.bal --service hello
 Note: This is an Experimental tool shipped under ballerina. Hence, this will only support a limited set of functionalities.
