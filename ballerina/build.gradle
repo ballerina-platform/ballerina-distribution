@@ -1306,7 +1306,7 @@ task testStdlibs() {
      }
 }
 
-task startLdapServer() {
+task startLdapServer(type: Test) {
     doLast {
         if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
             def stdOut = new ByteArrayOutputStream()
@@ -1334,7 +1334,7 @@ task startLdapServer() {
     }
 }
 
-task stopLdapServer() {
+task stopLdapServer(type: Test) {
     doLast {
         if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
             def stdOut = new ByteArrayOutputStream()
