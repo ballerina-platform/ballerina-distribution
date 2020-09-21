@@ -3,3 +3,6 @@
 ballerina run quoted_identifiers.bal
 2
 3
+7
+John doe
+Jane doe

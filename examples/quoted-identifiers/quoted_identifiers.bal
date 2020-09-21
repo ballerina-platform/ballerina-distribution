@@ -19,4 +19,17 @@ public function main() {
     // Define a variable where the variable name starts with a digit.
     int '1PlusI = 1 + i;
     io:println('1PlusI);
+
+    // Define a variable where the variable name contains special characters with a preceding `\`.
+    int '\{add\#5\} = 5 + i;
+    io:println('\{add\#5\});
+
+    // Define a variable where the variable name contains unicode characters.
+    string 'üňĩćőđę_ňāɱȇ = "John doe";
+    io:println('üňĩćőđę_ňāɱȇ);
+
+    // Define a variable where the variable name contains unicode character specified by hexadecimal code points.
+    string 'unicode_\u{2324} = "Jane doe";
+    io:println('unicode_\u{2324});
+
 }
