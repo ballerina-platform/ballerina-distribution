@@ -890,10 +890,7 @@ task testExamples() {
         'anonymous-objects',
         // Disable following bbe build temporarily
         'secured-service-with-basic-auth',
-        'crypto',
-        'http-filters',
-        'content-based-routing',
-        'header-based-routing'
+        'crypto'
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
