@@ -9,7 +9,7 @@ int counter = 0;
     moduleName: "ballerina/io",
     functionName: "println"
 }
-public function mockPrint(any|error... s) {
+public isolated function mockPrint(any|error... s) {
     string outstr = "";
     foreach var str in s {
         outstr = outstr + io:sprintf("%s", str);

@@ -50,5 +50,9 @@
   {
     "name": "gRPC Bidirectional Streaming RPC",
     "path": "grpc-bidirectional-streaming"
+  },
+  {
+    "name": "gRPC service with HTTP gateway",
+    "path": "grpc-service-with-http-proxy-gateway"
   }
 ]

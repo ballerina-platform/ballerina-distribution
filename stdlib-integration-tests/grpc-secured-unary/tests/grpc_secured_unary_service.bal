@@ -29,7 +29,7 @@ listener grpc:Listener ep = new (20004, {
 });
 
 service HelloWorld on ep {
-    resource function hello(grpc:Caller caller, string name) {
+    isolated resource function hello(grpc:Caller caller, string name) {
         log:printInfo("Server received hello from " + name);
         string message = "Hello " + name;
 
