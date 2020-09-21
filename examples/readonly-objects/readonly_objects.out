@@ -1,6 +1,5 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
-ballerina run readonly_objects_and_fields.bal
-details is immutable: true
-Default: 1122
-Main: 4246
+ballerina run readonly_objects.bal
+controller ID: 123
+controller is immutable: true

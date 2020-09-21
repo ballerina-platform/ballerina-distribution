@@ -304,8 +304,8 @@
                 "url": "anonymous-objects"
             },
             {
-                "name": "Read-only Objects and Fields",
-                "url": "readonly-objects-and-fields"
+                "name": "Read-only Objects",
+                "url": "readonly-objects"
             },
             {
                 "name": "Final Fields",
