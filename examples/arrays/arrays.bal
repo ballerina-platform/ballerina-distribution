@@ -32,7 +32,8 @@ public function main() {
     // member, which is used as a `key` to sort the members. If the member type of the array
     // is not sorted, then the `key` function must be specified.
     // It returns an `array` consisting of the members of `b` in the sorted order.
-    int[] sortedArray = b.sort(array:DESCENDING, isolated function (int value) returns string[] {
+    int[] sortedArray = b.sort(array:DESCENDING, isolated function (int value)
+    returns string[] {
             if (value < 5) {
                 return ["A",value.toString()];
             } else {
