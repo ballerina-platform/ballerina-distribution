@@ -1,7 +1,7 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run local_transactions_with_handlers.bal
-Transaction Info: xid=49 56 50 98 100 51 48 97 45 98 56 49 102 45 52 48 54 52 45 97 56 54 98 45 56 102 56 54 51 49 55 97 53 97 57 51 retryNumber=0 startTime=1594723961027 prevAttempt=
+Transaction Info: {"xid":[50,50,98,100,101,48,54,53,45,49,50,98,97,45,52,52,97,99,45,98,48,50,100,45,57,97,99,49,50,51,100,53,49,57,56,53],"retryNumber":0,"startTime":1600688819823,"prevAttempt":null}
 Invoke local participant function.
 Local participant error.
 Rollback handler #2 executed.

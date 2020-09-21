@@ -885,15 +885,7 @@ task testExamples() {
         'counter-metrics',
         'tracing',
         'openapi-to-ballerina',
-        'taint-checking', // Should not compile
-        'readonly-objects-and-fields', //Disable object BBE temporarily
-        'anonymous-objects',
-        // Disable following bbe build temporarily
-        'secured-service-with-basic-auth',
-        'crypto',
-        'http-filters',
-        'content-based-routing',
-        'header-based-routing'
+        'taint-checking' // Should not compile
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
@@ -937,6 +929,7 @@ task testExamples() {
         'request-with-multiparts',
         'different-payload-types',
         'base-path-and-path',
+        'http-trace-logs',
         'websocket-basic-sample',
         'websocket-chat-application',
         'websocket-client',
@@ -969,6 +962,7 @@ task testExamples() {
         'filepath', // Depends on OS
         'time',
         'locks', // Output is inconsistent between runs
+        'crypto', // Output with line breaks cannot be compared
         'jwt-issue-validate', // Output depends on time
         'secured-client-with-basic-auth', // Need to run the service first
         'secured-client-with-jwt-auth', // Need to run the service first

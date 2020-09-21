@@ -3,18 +3,18 @@ import ballerina/test;
 import ballerina/http;
 import ballerina/email;
 
-// This is the test double of `http:Client` object with the
-// implementation of required functions.
-public type MockHttpClient client object {
+// This is the test double of the `http:Client` object with the
+// implementation of the required functions.
+public client class MockHttpClient {
     public remote function get(@untainted string path,
-        public http:RequestMessage message = ()) returns
+        http:RequestMessage message = ()) returns
             http:Response|http:ClientError {
 
         http:Response res = new;
         res.statusCode = 500;
         return res;
     }
-};
+}
 
 @test:Config {}
 function testTestDouble() {

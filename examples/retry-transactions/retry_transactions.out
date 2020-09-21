@@ -1,9 +1,8 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run retry_transactions.bal
-Transaction Info: xid=57 55 52 102 53 52 100 53 45 48 100 99 54 45 52 100 100 99 45 98 56 55 97 45 99 54 102 55 97 55 57 102 54 57 48 100 retryNumber=0 startTime=1594734072607 prevAttempt=
+Transaction Info: {"xid":[56,54,56,53,48,51,57,52,45,53,52,56,55,45,52,55,53,49,45,98,50,56,48,45,55,102,56,97,99,52,53,49,51,97,100,102],"retryNumber":0,"startTime":1600688502047,"prevAttempt":null}
 Commit handler executed.
 Transaction committed.
 Account Credit: {"affectedRowCount":1,"lastInsertId":null}
 Account Debit: {"affectedRowCount":1,"lastInsertId":null}
-
