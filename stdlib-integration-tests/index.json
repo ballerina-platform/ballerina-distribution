@@ -20,10 +20,6 @@
     "path": "oauth2"
   },
   {
-    "name": "LDAP standard library ",
-    "path": "ldap"
-  },
-  {
     "name": "Task standard library ",
     "path": "task"
   },
