@@ -69,7 +69,7 @@ public function main() {
         final int id;
         // A value is set for the `final` field `codes` using an initializer
         // expression.
-        // A value cannot be set for this field via the `init` function or
+        // A value cannot be set for this field via the `init` method or
         // once the value is created.
         final string[] & readonly codes = ["AB", "CD"];
 
