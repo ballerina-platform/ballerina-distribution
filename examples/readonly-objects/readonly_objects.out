@@ -1,5 +1,5 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run readonly_objects.bal
-controller ID: 123
+immutableController ID: Main: 123
 controller is immutable: true

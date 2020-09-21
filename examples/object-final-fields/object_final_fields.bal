@@ -61,9 +61,9 @@ public function main() {
     empDetails.id = 223344;
     io:println("new ID: ", emp.details.id);
 
-    // Since all the fields in the object constructor expression are `final`,
+    // Since all the fields in the object constructor expression are `final`
     // and the types are subtypes of `readonly`, it constructs an immutable
-    // value which can be assigned to a variable of type `MainController`
+    // value, which can be assigned to a variable of type `MainController`
     // which expects immutable values.
     MainController controller = object {
         final int id;
@@ -81,13 +81,13 @@ public function main() {
         function getId() returns string => string `Default: ${self.id}`;
     };
 
-    // Since whether or not a field is `final` does not affect the type,
-    // an object value belongs to a type even if the target type
+    // Whether a field is `final` does not affect the type.
+    // Thus, an object value belongs to a type even if the type
     // specifies `final` for a field for which the source object value
     // does not.
     Employee emp2 = object {
         string department = "finance";
-        // The `details` field is not `final` here, even though it is
+        // The `details` field is not `final` here even though it is
         // a `final` field in `Employee`.
         Details details = {
             id: 1001,

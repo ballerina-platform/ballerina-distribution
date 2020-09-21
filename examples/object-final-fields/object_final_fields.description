@@ -3,4 +3,4 @@
 // field once the object is created.<br/>
 // If all the fields are `final` fields and the type of each field is a subtype of `readonly`, the object value is
 // constructed as an immutable value, which will belong to `readonly`.<br/>
-// Whether or not a field is `final` is not part of the type and does not affect subtyping.
+// Whether a field is `final` is not part of the type and it does not affect subtyping.

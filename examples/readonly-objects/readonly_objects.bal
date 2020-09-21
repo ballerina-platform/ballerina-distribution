@@ -9,8 +9,9 @@ type Controller object {
 };
 
 // A `readonly` class definition.
-// If the class definition includes `readonly` all the fields in the
-// object are effectively `final` and expect immutable values.
+// If the class definition includes `readonly`, all the fields in the
+// object are effectively `final` and the values assigned to the fields
+// have to be immutable.
 readonly class MainController {
     int id;
     string[] codes;
@@ -32,15 +33,17 @@ public function main() {
     // An object constructor expression or a new expression also constructs immutable values if
     // all of its fields are `final` fields and the types of each individual field is a subtype
     // of `readonly`.
-    // In either case the fields cannot be updated once the value is created.
+    // In either case, the fields cannot be updated once the value is created.
     MainController mc = new MainController(123, ["AB"]);
 
     // A `readonly` intersection (`T & readonly`) can be used with an object type descriptor.
     // Only immutable values belong to such an intersection.
     // Since `MainController` is defined as a `readonly class`, the object value `mc` is considered
     // to be immutable. Thus, it can be used where a `readonly` value is expected.
-    Controller & readonly controller = mc;
+    Controller & readonly immutableController = mc;
 
-    io:println("controller ID: ", controller.getId());
-    io:println("controller is immutable: ", controllerOne.isReadOnly());
+    io:println("immutableController ID: ", immutableController.getId());
+
+    Controller controller = immutableController;
+    io:println("controller is immutable: ", controller is readonly & Controller);
 }
