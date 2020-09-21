@@ -1,6 +1,6 @@
 import ballerina/io;
 
-// Defines an class called `Person`. Each class has its own `init()` method, which gets
+// Defines a class called `Person`. Each class has its own `init()` method, which gets
 // invoked when creating the objects. You can place the logic for initializing the fields of the
 // class within the body of the `init()` method.
 class Person {

@@ -16,7 +16,7 @@ type Person object {
 };
 
 // Defines a `class` called `Employee`, which is structurally equivalent
-// to `Person` type.
+// to the `Person` type.
 class Employee {
     public int age;
     public string firstName;
@@ -42,11 +42,11 @@ class Employee {
 }
 
 public function main() {
-    // An object type it self cannot be initialized. It does not have
+    // An object type itself cannot be initialized. It does not have
     // an implicit initial value.
 
-    // Initializes a value using the class `Employee`,
-    // and then assigns the value to the object type variable.
+    // Initializes a value using the `Employee` class
+    // and then assigns the value to the object-type variable.
     Person p = new Employee(5, "John", "Doe");
     io:println(p.getFullName());
     

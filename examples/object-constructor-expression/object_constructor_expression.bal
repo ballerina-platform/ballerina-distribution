@@ -18,10 +18,10 @@ public function main() {
     Person john = {
         name: "John Doe",
         age: 25,
-        // This object constructor expression indicate that this creates an subtype of object of type `Address`.
-        // This is similar to type reference in class definitions and object type definitions.
+        // This object constructor expression indicates that this creates an subtype of the object of type `Address`.
+        // This is similar to the type reference in class definitions and object-type definitions.
         address: object Address {
-                     // In object constructor expressions, `init` method does not take any parameters.
+                     // In object constructor expressions, the `init` method does not take any parameters.
                      public function init() {
                          self.city = "Colombo";
                          self.country = "Sri Lanka";
@@ -34,7 +34,7 @@ public function main() {
     };
     io:println("City: ", john.address.city);
 
-    // The type reference in object constructor expression is optional.
+    // The type reference in an object constructor expression is optional.
     Address adr = object {
                       public string city;
                       public string country;

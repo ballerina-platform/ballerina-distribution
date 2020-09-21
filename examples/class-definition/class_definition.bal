@@ -1,6 +1,6 @@
 import ballerina/io;
 
-// Defines an class called `Person`. It contains `public`, `private`, and module-level visible fields along with their types.
+// Defines a class called `Person`. It contains `public`, `private`, and module-level visible fields along with their types.
 // For fields, the default value must be specified if an explicit object initializer method is not defined.
 class Person {
     public string name = "";
