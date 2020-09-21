@@ -886,8 +886,6 @@ task testExamples() {
         'tracing',
         'openapi-to-ballerina',
         'taint-checking', // Should not compile
-        'readonly-objects-and-fields', //Disable object BBE temporarily
-        'anonymous-objects',
         // Disable following bbe build temporarily
         'http-filters',
         'content-based-routing',
