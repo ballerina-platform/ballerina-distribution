@@ -64,8 +64,9 @@ public function main() {
     string s = j6.toJsonString();
     json j13 = checkpanic s.fromJsonString();
     io:println(j13.toJsonString());
-
-    // The value would be equal to the original value from which the string
+    // The values of the fields of the json would be equal to the values from which the string
     // was created.
-    io:println(j6 == j13);
+    io:println(j6.name == j13.name);
+    io:println(j6.color == j13.color);
+    io:println(j6.price == <float>j13.price);
 }
