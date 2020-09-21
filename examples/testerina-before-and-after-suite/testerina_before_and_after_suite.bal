@@ -21,7 +21,7 @@ function testFunction2() {
     test:assertTrue(true, msg = "Failed");
 }
 
-// The function annotated with `AfterSuite` will be executed after all the test functions in the module have executed.
+// The function annotated with `AfterSuite` will be executed after all the test functions in the module have been executed.
 @test:AfterSuite {}
 function afterSuite() {
     io:println("I'm the after suite function!");
