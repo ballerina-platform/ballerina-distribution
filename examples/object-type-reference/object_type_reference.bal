@@ -1,6 +1,6 @@
 import ballerina/io;
 
-// Defines an abstract object called `Person`. It should only contain fields and the
+// Defines an object type called `Person`. It should only contain fields and the
 // method declarations.
 type Person object {
     public int age;
@@ -13,10 +13,10 @@ type Person object {
 
 };
 
-// Defines another abstract object called `Employee`, which references the `Person` object.
+// Defines another object type called `Employee`, which references the `Person` object.
 type Employee object {
     // Add a reference to the `Person` object type. 
-    // All the member fields and member methods will be copied from the `Person` object.
+    // All the member fields and member method declarations will be copied from the `Person` object.
     *Person;
     public float|string salary;
 
@@ -30,7 +30,7 @@ class Owner {
 class Manager {
     // Type references can be chained by adding a reference to the `Employee` object, which
     // again has a reference to the `Employee` object. This will copy all the members from
-    // the `Employee` object. It will be same as defining each of those members within this object.
+    // the `Employee` object. It will be same as declaring each of those members within this object.
     *Employee;
 
     // It is possible to have more than one type reference as well.
