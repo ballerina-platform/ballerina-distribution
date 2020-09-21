@@ -304,8 +304,12 @@
                 "url": "object-constructor-expression"
             },
             {
-                "name": "Read-only Objects and Fields",
-                "url": "readonly-objects-and-fields"
+                "name": "Read-only Objects",
+                "url": "readonly-objects"
+            },
+            {
+                "name": "Final Fields",
+                "url": "object-final-fields"
             },
             {
                 "name": "Object Type Reference",
