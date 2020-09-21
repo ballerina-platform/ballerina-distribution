@@ -185,13 +185,13 @@ public function testPassthroughWithMultiparts() {
             if (textPart is string) {
                 test:assertEquals(textPart, "Part1");
             } else {
-                test:assertFail(msg = errorMessage + textPart.message());
+                test:assertFail(msg = "Found an unexpected output: " + textPart.message());
             }
             string|error txtPart2 = respBodyParts[1].getText();
             if (txtPart2 is string) {
                 test:assertEquals(txtPart2, "Part2");
             } else {
-                test:assertFail(msg = errorMessage + txtPart2.message());
+                test:assertFail(msg = "Found an unexpected output: " + txtPart2.message());
             }
         }         
     } else {
