@@ -14,7 +14,8 @@ public function main() {
     }
     transaction {
         // Publishes the message using the routing key named "MyQueue".
-        var sendResult = newChannel->basicPublish("Hello from Ballerina", "MyQueue");
+        var sendResult = newChannel->basicPublish("Hello from Ballerina",
+                                                  "MyQueue");
         if (sendResult is error) {
             io:println("An error occurred while sending the message");
         } else {

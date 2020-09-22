@@ -13,12 +13,13 @@ service secondserver on new http:Listener(9095) {
     // resource finishes, operations, which should happen before reading messages should be done in
     // the `onOpen` resource.
     resource function onOpen(http:WebSocketCaller caller) {
-        log:printInfo("WebSocket client connects wih the server 9095. The Connection ID: "
-        + caller.getConnectionId());
+        log:printInfo("WebSocket client connects wih the server 9095. " +
+                            "The Connection ID: " + caller.getConnectionId());
     }
 
     // This resource gets invoked when a server is receiving a text message from the client.
-    resource function onText(http:WebSocketCaller caller, string text, boolean finalFrame) {
+    resource function onText(http:WebSocketCaller caller,
+                                        string text, boolean finalFrame) {
         var err = caller->pushText(text, finalFrame);
         if (err is http:WebSocketError) {
             log:printError("Error occurred when sending text message", err);

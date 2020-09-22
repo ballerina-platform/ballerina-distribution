@@ -48,6 +48,7 @@ type Foo record {|
 |};
 
 function getRecordConstrainedError() returns error<string, Foo> {
-    error<string, Foo> e = error("Some Error", detailMsg = "Failed Message", isFatal = true);
+    error<string, Foo> e = error("Some Error", detailMsg = "Failed Message",
+                                 isFatal = true);
     return e;
 }

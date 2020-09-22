@@ -10,7 +10,8 @@ function multiply(int v1, int v2) returns int {
 
 // Here, the function pointer is used as a parameter. A function pointer can be invoked similar
 // to how a normal function is invoked.
-function process(function (int, int) returns int func, int v1, int v2) returns int {
+function process(function (int, int) returns int func, int v1, int v2)
+                                                            returns int {
     return func(v1, v2);
 }
 

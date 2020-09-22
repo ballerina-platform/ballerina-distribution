@@ -19,13 +19,14 @@ service receiveNewOnly on lis {
         string|error messageData = strings:fromBytes(message.getData());
         if (messageData is string) {
             log:printInfo("Message Received to service receiveNewOnly: "
-                                                                  + messageData);
+                                                              + messageData);
         } else {
             log:printError("Error occurred while obtaining message data");
         }
     }
 
-    resource function onError(nats:StreamingMessage message, nats:Error errorVal) {
+    resource function onError(nats:StreamingMessage message,
+                              nats:Error errorVal) {
         error e = errorVal;
         log:printError("Error occurred: ", e);
     }
@@ -43,13 +44,14 @@ service receiveFromBegining on lis {
         string|error messageData = strings:fromBytes(message.getData());
         if (messageData is string) {
             log:printInfo("Message Received to service receiveFromBegining: "
-                                                                  + messageData);
+                                                               + messageData);
         } else {
             log:printError("Error occurred while obtaining message data");
         }
     }
 
-    resource function onError(nats:StreamingMessage message, nats:Error errorVal) {
+    resource function onError(nats:StreamingMessage message,
+                              nats:Error errorVal) {
         error e = errorVal;
         log:printError("Error occurred: ", e);
     }
@@ -66,14 +68,15 @@ service receiveFromLastReceived on lis {
         // Prints the incoming message in the console.
         string|error messageData = strings:fromBytes(message.getData());
         if (messageData is string) {
-            log:printInfo("Message Received to service receiveFromLastReceived: "
-                                                                  + messageData);
+            log:printInfo("Message Received to service " +
+                          "receiveFromLastReceived: " + messageData);
         } else {
             log:printError("Error occurred while obtaining message data");
         }
     }
 
-    resource function onError(nats:StreamingMessage message, nats:Error errorVal) {
+    resource function onError(nats:StreamingMessage message,
+                              nats:Error errorVal) {
         error e = errorVal;
         log:printError("Error occurred: ", e);
     }
@@ -92,13 +95,14 @@ service receiveFromGivenIndex on lis {
         string|error messageData = strings:fromBytes(message.getData());
         if (messageData is string) {
             log:printInfo("Message Received to service receiveFromGivenIndex: "
-                                                                  + messageData);
+                                                                + messageData);
         } else {
             log:printError("Error occurred while obtaining message data");
         }
     }
 
-    resource function onError(nats:StreamingMessage message, nats:Error errorVal) {
+    resource function onError(nats:StreamingMessage message,
+                              nats:Error errorVal) {
         error e = errorVal;
         log:printError("Error occurred: ", e);
     }
@@ -117,13 +121,14 @@ service receiveSinceTimeDelta on lis {
         string|error messageData = strings:fromBytes(message.getData());
         if (messageData is string) {
             log:printInfo("Message Received to service receiveSinceTimeDelta: "
-                                                                  + messageData);
+                                                                + messageData);
         } else {
             log:printError("Error occurred while obtaining message data");
         }
     }
 
-    resource function onError(nats:StreamingMessage message, nats:Error errorVal) {
+    resource function onError(nats:StreamingMessage message,
+                              nats:Error errorVal) {
         error e = errorVal;
         log:printError("Error occurred: ", e);
     }

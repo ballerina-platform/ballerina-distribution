@@ -21,7 +21,8 @@ service failoverProxyService on new http:Listener(9090) {
             callbackService: failoverClientService,
             // Defines a set of targets.
             targetUrls: [ "ws://localhost:9095/failover/ws",
-            "ws://localhost:9096/failover/ws", "ws://localhost:9094/failover/ws"],
+                          "ws://localhost:9096/failover/ws",
+                          "ws://localhost:9094/failover/ws"],
             // Failover interval in milliseconds.
             failoverIntervalInMillis: 2000,
             // When creating the client endpoint, if the `readyOnConnect` flag is set to
@@ -45,7 +46,8 @@ service failoverProxyService on new http:Listener(9090) {
     resource function onText(http:WebSocketCaller caller, string text,
                              boolean finalFrame) {
 
-        http:WebSocketFailoverClient clientEp = getAssociatedClientEndpoint(caller);
+        http:WebSocketFailoverClient clientEp =
+                                          getAssociatedClientEndpoint(caller);
         var err = clientEp->pushText(text, finalFrame);
         if (err is http:WebSocketError) {
             log:printError("Error occurred when sending text message", err);
@@ -55,8 +57,10 @@ service failoverProxyService on new http:Listener(9090) {
     // This resource gets invoked when an error occurs in the connection.
     resource function onError(http:WebSocketCaller caller, error err) {
 
-        http:WebSocketFailoverClient clientEp = getAssociatedClientEndpoint(caller);
-        var e = clientEp->close(statusCode = 1011, reason = "Unexpected condition");
+        http:WebSocketFailoverClient clientEp =
+                                         getAssociatedClientEndpoint(caller);
+        var e = clientEp->close(statusCode = 1011,
+                                            reason = "Unexpected condition");
         if (e is http:WebSocketError) {
             log:printError("Error occurred when closing the connection", e);
         }
@@ -67,7 +71,8 @@ service failoverProxyService on new http:Listener(9090) {
     resource function onClose(http:WebSocketCaller caller, int statusCode,
                                  string reason) {
 
-        http:WebSocketFailoverClient clientEp = getAssociatedClientEndpoint(caller);
+        http:WebSocketFailoverClient clientEp =
+                                          getAssociatedClientEndpoint(caller);
         var err = clientEp->close(statusCode = statusCode, reason = reason);
         if (err is http:WebSocketError) {
             log:printError("Error occurred when closing the connection", err);
@@ -104,8 +109,8 @@ service failoverClientService = @http:WebSocketServiceConfig {} service {
 
     // This resource gets invoked when a client connection is closed by
     // the remote backend.
-    resource function onClose(http:WebSocketFailoverClient caller, int statusCode,
-                                 string reason) {
+    resource function onClose(http:WebSocketFailoverClient caller,
+                                int statusCode, string reason) {
 
         http:WebSocketCaller serverEp = getAssociatedServerEndpoint(caller);
         var err = serverEp->close(statusCode = statusCode, reason = reason);
