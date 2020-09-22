@@ -19,8 +19,8 @@ public function mockPrint(any|error... s) {
 function testFunc() {
     // Invoke the main function.
     main();
-    test:assertEquals(outputs[0], "Error returned:");
-    test:assertEquals(outputs[1], "InvalidAccountID,");
-    test:assertEquals(outputs[2], "Error returned:");
-    test:assertEquals(outputs[3], "AccountNotFound,");
+    test:assertExactEquals(outputs[0], "Error returned:");
+    test:assertExactEquals(outputs[1], "InvalidAccountID,");
+    test:assertExactEquals(outputs[2], "Error returned:");
+    test:assertExactEquals(outputs[3], "AccountNotFound,");
 }
