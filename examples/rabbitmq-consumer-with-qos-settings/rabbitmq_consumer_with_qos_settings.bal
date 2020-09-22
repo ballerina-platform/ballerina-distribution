@@ -28,7 +28,8 @@ service QosConsumer on channelListener {
         if (messageContent is string) {
             log:printInfo("The message received: " + messageContent);
         } else {
-            log:printError("Error occurred while retrieving the message content.");
+            log:printError(
+                        "Error occurred while retrieving the message content.");
         }
         // The consumer will continue to receive messages from the server
         // once a total of 10(prefetchCount) messages are being acknowledged.

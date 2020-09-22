@@ -24,7 +24,7 @@ public function main() {
                 log:printError("Error occurred while sending the message", e);
             } else {
                 log:printInfo("GUID " + result
-                                        + " received for the produced message.");
+                                    + " received for the produced message.");
             }
         }
     }

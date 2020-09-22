@@ -16,7 +16,8 @@ service basic on new http:Listener(9090) {
     resource function onOpen(http:WebSocketCaller caller) {
         io:println("\nNew client connected");
         io:println("Connection ID: " + caller.getConnectionId());
-        io:println("Negotiated Sub protocol: " + caller.getNegotiatedSubProtocol().toString());
+        io:println("Negotiated Sub protocol: " +
+                    caller.getNegotiatedSubProtocol().toString());
         io:println("Is connection open: " + caller.isOpen().toString());
         io:println("Is connection secured: " + caller.isSecure().toString());
     }
@@ -25,7 +26,7 @@ service basic on new http:Listener(9090) {
     resource function onText(http:WebSocketCaller caller, string text,
                                 boolean finalFrame) {
         io:println("\ntext message: " + text + " & final fragment: "
-                                                        + finalFrame.toString());
+                                                    + finalFrame.toString());
         if (text == "ping") {
             io:println("Pinging...");
             var err = caller->ping(pingData);
@@ -37,7 +38,8 @@ service basic on new http:Listener(9090) {
                             reason = "You asked me to close the connection",
                             timeoutInSeconds = 0);
             if (result is http:WebSocketError) {
-                log:printError("Error occurred when closing connection", result);
+                log:printError("Error occurred when closing connection",
+                                result);
             }
         } else {
             var err = caller->pushText("You said: " + text);

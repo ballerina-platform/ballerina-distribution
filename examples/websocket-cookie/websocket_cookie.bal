@@ -37,8 +37,13 @@ public function main() {
             // [Gets cookies from the `http:Response`](https://ballerina.io/learn/api-docs/ballerina/http/objects/Response.html#getCookies)
             http:Cookie[] cookies = loginResp.getCookies();
             // Initialize the WebSocket client with the cookies
-            http:WebSocketClient wsClientEp = new ("ws://localhost:9095/cookie-demo/ws",
-                           config = {callbackService: ClientService, cookies: cookies});
+            http:WebSocketClient wsClientEp =
+                            new ("ws://localhost:9095/cookie-demo/ws",
+                                    config = {
+                                        callbackService: ClientService,
+                                        cookies: cookies
+                                    }
+                                );
 
             // Pushes text to the connection.
             var err = wsClientEp->pushText("Hello World!");
@@ -55,7 +60,8 @@ public function main() {
 service ClientService = @http:WebSocketServiceConfig {} service {
 
     // This resource gets invoked upon receiving a new text frame from the remote backend.
-    resource function onText(http:WebSocketClient conn, string text, boolean finalFrame) {
+    resource function onText(http:WebSocketClient conn, string text,
+                             boolean finalFrame) {
         io:println(text);
     }
 
