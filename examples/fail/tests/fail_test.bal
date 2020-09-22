@@ -1,26 +1,20 @@
 import ballerina/test;
 
-(any|error)[] outputs = [];
-int counter = 0;
+string[] outputs = [];
 
 // This is the mock function that replaces the real function.
 @test:Mock {
     moduleName: "ballerina/io",
     functionName: "println"
 }
-public function mockPrint(any|error... s) {
-    foreach var entry in s {
-        outputs[counter] = entry;
-        counter += 1;
-    }
+public isolated function mockPrint(any|error... val) {
+    outputs.push(val.reduce(function (any|error a, any|error b) returns string => a.toString() + b.toString(), "").toString());
 }
 
 @test:Config {}
 function testFunc() {
     // Invoke the main function.
     main();
-    test:assertExactEquals(outputs[0], "Error returned:");
-    test:assertExactEquals(outputs[1], "InvalidAccountID,");
-    test:assertExactEquals(outputs[2], "Error returned:");
-    test:assertExactEquals(outputs[3], "AccountNotFound,");
+    test:assertEquals(outputs[0], "Error returned:InvalidAccountID");
+    test:assertEquals(outputs[1], "Error returned:AccountNotFound");
 }
