@@ -5,5 +5,5 @@ Reason String: Sample Error
 Info: Detail Info
 Fatal: true
 Reason String: Sample Error
-Detail Map: info=Detail Info fatal=true
+Detail Map: {"info":"Detail Info","fatal":true}
 Detail Message: Failed Message
