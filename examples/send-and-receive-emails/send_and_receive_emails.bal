@@ -3,14 +3,14 @@ import ballerina/io;
 
 public function main() {
     // Creates an SMTP client with the connection parameters, host, username,
-    // and password. Default port number `465` is used over SSL with these
+    // and password. The default port number `465` is used over SSL with these
     // configurations.
     email:SmtpClient smtpClient = new ("smtp.email.com", "sender@email.com"
         , "pass123");
 
     // Define the email that is required to be sent.
     email:Email email = {
-        // "TO", "CC" and "BCC" address lists are added as follows.
+        // "TO", "CC", and "BCC" address lists are added as follows.
         // Only "TO" address list is mandatory out of these three.
         to: ["receiver1@email.com", "receiver2@email.com"],
         cc: ["receiver3@email.com", "receiver4@email.com"],
@@ -42,21 +42,21 @@ public function main() {
     }
 
     // Create the client with the connection parameters, host, username, and
-    // password. An error is received in failure. Default port number `995` is
+    // password. An error is received in a failure. The default port number `995` is
     // used over SSL with these configurations.
     email:PopClient|email:Error popClient = new ("pop.email.com",
         "reader@email.com", "pass456");
 
     if (popClient is email:PopClient) {
-        // Read the first unseen email received by the POP3 server. Nil is
-        // returned when there are no new unseen emails. In error cases an
+        // Read the first unseen email received by the POP3 server. `()` is
+        // returned when there are no new unseen emails. In error cases, an
         // error is returned.
         email:Email|email:Error? emailResponse = popClient->read();
 
         if (emailResponse is email:Email) {
             io:println("Email Subject: ", emailResponse.subject);
             io:println("Email Body: ", emailResponse.body);
-        // When no emails are available in the server, nil is returned.
+        // When no emails are available in the server, `()` is returned.
         } else if (emailResponse is ()) {
 
             io:println("There are no emails in the INBOX.");
@@ -70,21 +70,21 @@ public function main() {
     }
 
     // Create the client with the connection parameters, host, username, and
-    // password. An error is received in failure. Default port number `993` is
+    // password. An error is received in a failure. The default port number `993` is
     // used over SSL with these configurations.
     email:ImapClient|email:Error imapClient = new ("imap.email.com",
         "reader@email.com", "pass456");
 
     if (imapClient is email:ImapClient) {
-        // Read the first unseen email received by the IMAP4 server. Nil is
-        // returned when there are no new unseen emails. In error cases an
+        // Read the first unseen email received by the IMAP4 server. `()` is
+        // returned when there are no new unseen emails. In error cases, an
         // error is returned.
         email:Email|email:Error? emailResponse = imapClient->read();
 
         if (emailResponse is email:Email) {
             io:println("Email Subject: ", emailResponse.subject);
             io:println("Email Body: ", emailResponse.body);
-        // When no emails are available in the server, nil is returned.
+        // When no emails are available in the server, `()` is returned.
         } else if (emailResponse is ()) {
 
             io:println("There are no emails in the INBOX.");
@@ -99,15 +99,15 @@ public function main() {
 
 }
 
-// Defines the protocol specific configuration for the email listener. It can
+// Defines the protocol-specific configuration for the email listener. It can
 // either be `email:PopConfig` for POP or `email:ImapConfig` for IMAP.
 email:PopConfig popConfig = {
      port: 995,
      enableSsl: true
 };
 
-// Create the listener with the connection parameters and protocol related 
-// configuration. Polling interval specifies the time duration between each poll
+// Create the listener with the connection parameters and protocol-related 
+// configuration. The polling interval specifies the time duration between each poll
 // performed by the listener.
 listener email:Listener emailListener = new ({
     host: "pop.email.com",
@@ -118,17 +118,17 @@ listener email:Listener emailListener = new ({
     pollingInterval: 2000
 });
 
-// One or many services can listen to the email listener for the periodically
-// polled emails.
+// One or many services can listen to the email listener for the periodically-polled
+// emails.
 service emailObserver on emailListener {
 
-    // When an email is successfully received `onMessage` method is called
+    // When an email is successfully received, the `onMessage` method is called.
     resource function onMessage(email:Email emailMessage) {
         io:println("Email Subject: ", emailMessage.subject);
         io:println("Email Body: ", emailMessage.body);
     }
 
-    // When an error occurs during the email poll operations `onError` is called
+    // When an error occurs during the email poll operations, the `onError` method is called.
     resource function onError(email:Error emailError) {
         io:println("Error while polling for the emails: "
             + emailError.message());
