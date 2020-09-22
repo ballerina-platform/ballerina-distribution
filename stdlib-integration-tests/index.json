@@ -12,6 +12,10 @@
     "path": "encoding"
   },
   {
+    "name": "Crypto standard library ",
+    "path": "crypto"
+  },
+  {
     "name": "Auth standard library ",
     "path": "auth"
   },
