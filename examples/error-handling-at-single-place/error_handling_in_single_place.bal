@@ -39,7 +39,7 @@ function getAccountBalance(int accountID) returns int {
              fail invalidAccoundIdError;
          } else if (accountID > 100) {
              // Throw an error with the `AccountNotFound` as the reason if
-             //`accountID` is greater than hundred.
+             //the `accountID` is greater than hundred.
              AccountNotFoundError accountNotFoundError
              = AccountNotFoundError(ACCOUNT_NOT_FOUND, accountID = accountID);
              fail accountNotFoundError;
