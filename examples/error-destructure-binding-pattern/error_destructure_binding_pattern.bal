@@ -7,7 +7,7 @@ type SampleErrorData record {
     boolean fatal;
 };
 
-type SampleError error<string, SampleErrorData>;
+type SampleError error<SampleErrorData>;
 
 public function main() {
     string reason;
@@ -28,7 +28,7 @@ public function main() {
     error(reasonTwo, ...params) = getSampleError();
     io:println("Reason String: ", reasonTwo);
     io:println("Detail Map: ", params);
-    
+
     // The underscore '_' sign can be used to ignore either the reason string or the detail mapping.
     string? detailMsg;
     error(_, detailMsg = detailMsg) = getRecordConstrainedError();
@@ -36,7 +36,7 @@ public function main() {
 }
 
 function getSampleError() returns SampleError {
-    SampleError e = error("Sample Error", info = "Detail Info", fatal = true);
+    SampleError e = SampleError("Sample Error", info = "Detail Info", fatal = true);
     return e;
 }
 
@@ -47,7 +47,7 @@ type Foo record {|
     boolean isFatal;
 |};
 
-function getRecordConstrainedError() returns error<string, Foo> {
-    error<string, Foo> e = error("Some Error", detailMsg = "Failed Message", isFatal = true);
+function getRecordConstrainedError() returns error<Foo> {
+    error<Foo> e = <error<Foo>> error("Some Error", detailMsg = "Failed Message", isFatal = true);
     return e;
 }
