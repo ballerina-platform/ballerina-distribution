@@ -19,14 +19,14 @@ public function mockPrint(any|error... s) {
 function testFunc() {
     // Invoke the main function.
     main();
-    test:assertEquals(outputs[0], "Error caught: ");
-    test:assertEquals(outputs[1], "InvalidAccountID,");
-    test:assertEquals(outputs[2], ", Account ID: ");
-    test:assertEquals(outputs[3], ", -1");
-    test:assertEquals(outputs[4], "Error caught: ");
-    test:assertEquals(outputs[5], "AccountNotFound,");
-    test:assertEquals(outputs[6], ", Account ID: ");
-    test:assertEquals(outputs[7], ", 200");
-    test:assertEquals(outputs[8], "Error caught during parsing: ");
-    test:assertEquals(outputs[9], "{ballerina/lang.int}NumberParsingError");
+    test:assertExactEquals(outputs[0], "Error caught: ");
+    test:assertExactEquals(outputs[1], "InvalidAccountID,");
+    test:assertExactEquals(outputs[2], ", Account ID: ");
+    test:assertExactEquals(outputs[3], ", -1");
+    test:assertExactEquals(outputs[4], "Error caught: ");
+    test:assertExactEquals(outputs[5], "AccountNotFound,");
+    test:assertExactEquals(outputs[6], ", Account ID: ");
+    test:assertExactEquals(outputs[7], ", 200");
+    test:assertExactEquals(outputs[8], "Error caught during parsing: ");
+    test:assertExactEquals(outputs[9], "{ballerina/lang.int}NumberParsingError");
 }
