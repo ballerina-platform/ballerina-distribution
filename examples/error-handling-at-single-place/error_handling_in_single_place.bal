@@ -16,7 +16,7 @@ public function main() {
         int parsedNum = check parse("12");
 
         //Parsing a random string will return an error.
-        //This error will be caught within on fail clause
+        //This error will be caught within the `on-fail` clause.
         int parsedStr = check parse("invalid");
 
         var res = commit;
