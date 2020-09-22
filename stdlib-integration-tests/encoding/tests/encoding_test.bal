@@ -21,14 +21,13 @@ import ballerina/test;
 public function testEncodingAndDecodingBase64Url() {
     string input = "Ballerina Base64 URL encoding test";
     string output = "QmFsbGVyaW5hIEJhc2U2NCBVUkwgZW5jb2RpbmcgdGVzdA";
-    string result = encoding:encodeBase64Url(input.toBytes());
-    test:assertEquals(result, output, msg = "Unexpected base64 encoding.");
+    string encodedResult = encoding:encodeBase64Url(input.toBytes());
+    test:assertEquals(encodedResult, output, msg = "Unexpected base64 encoding.");
 
-    byte[]|Error result = encoding:decodeBase64Url(output);
-    if (result is byte[]) {
-        byte[] expectedBytes = encodedString.toBytes();
-        test:assertEquals(result, input, msg = "Unexpected base64 decoding.");
+    byte[]|encoding:Error decodedResult = encoding:decodeBase64Url(output);
+    if (decodedResult is byte[]) {
+        test:assertEquals(decodedResult, input.toBytes(), msg = "Unexpected base64 decoding.");
     } else {
-        test:assertFail(msg = "Unexpected results from decodeBase64Url. " + result.message());
+        test:assertFail(msg = "Unexpected results from decodeBase64Url. " + decodedResult.message());
     }
 }
