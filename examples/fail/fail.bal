@@ -21,7 +21,7 @@ function getAccountBalance(int accountID) returns int|error {
          // Creates an error with the `InvalidAccountID` as the reason if
          //the `accountID` is less than zero.
          error invalidAccoundIdError = error(INVALID_ACCOUNT_ID, accountID = accountID);
-         // Returns the error. The error returned by the fail statement should match with the enclosing function's return type.
+         // Returns the error. The error returned by the `fail` statement should match with the enclosing function's return type.
          fail invalidAccoundIdError;
      } else if (accountID > 100) {
          // Returns an error with the `AccountNotFound` as the reason if
