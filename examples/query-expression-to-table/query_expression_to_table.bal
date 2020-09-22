@@ -33,7 +33,8 @@ public function main() {
     // The `query expression` starts with `table`.
     // The key specifier `key(id)` specifies the key sequence of the constructed `table`.
     // The result of the `query expression` is a `table`.
-    ReportTable|error reportTable = table key(id) from var student in studentList
+    ReportTable|error reportTable =
+        table key(id) from var student in studentList
         // The `where` clause provides a way to perform conditional execution and works similarly to an `if` condition.
         // It can refer to variables bound by the from clause.
         // When the `where` condition evaluates to false, the current iteration is skipped.
@@ -57,9 +58,11 @@ public function main() {
     Student[] duplicateStdList = [s1, s2, s1];
 
     // Defines an `error` to handle a key conflict.
-    error onConflictError = error("Key Conflict", message = "cannot insert report");
+    error onConflictError = error("Key Conflict",
+                                  message = "cannot insert report");
 
-    ReportTable|error result = table key(id) from var student in duplicateStdList
+    ReportTable|error result =
+        table key(id) from var student in duplicateStdList
         select {
             id: student.id,
             name: student.firstName + " " + student.lastName,

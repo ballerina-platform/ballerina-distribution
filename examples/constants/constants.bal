@@ -12,7 +12,8 @@ const SPEED_OF_LIGHT = 299792000;
 const map<string> data = { "user": "Ballerina", "ID": "1234" };
 
 // Constant with nested map literals.
-const map<map<string>> complexData = { "data": data, "data2": { "user": "WSO2" } };
+const map<map<string>> complexData = { "data": data,
+                                       "data2": { "user": "WSO2" } };
 
 public function main() {
     io:println("PI: ", PI);

@@ -10,7 +10,9 @@ public function main() {
     }
 
     io:println("\nIterating a map:- ");
-    map<string> countryCapitals = { "USA": "Washington, D.C.", "Sri Lanka": "Colombo", "England": "London" };
+    map<string> countryCapitals = { "USA": "Washington, D.C.",
+                                    "Sri Lanka": "Colombo",
+                                    "England": "London" };
     // Iterating a map will return the values in the map.
     foreach var capital in countryCapitals {
         io:println("Capital: ", capital);
@@ -41,8 +43,14 @@ public function main() {
 
     io:println("\nIterating an XML:- ");
     xml books = xml `<books>
-                       <book><name>Sherlock Holmes</name><author>Sir Arthur Conan Doyle</author></book>
-                       <book><name>Harry Potter</name><author>J.K. Rowling</author></book>                       
+                       <book>
+                            <name>Sherlock Holmes</name>
+                            <author>Sir Arthur Conan Doyle</author>
+                       </book>
+                       <book>
+                            <name>Harry Potter</name>
+                            <author>J.K. Rowling</author>
+                       </book>
                      </books>`;
     // Iterating an XML will return an individual element in each iteration.
     foreach var book in books/<*> {

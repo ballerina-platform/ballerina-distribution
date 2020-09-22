@@ -62,7 +62,8 @@ public class Person {
 # This function is deprecated since the `Person` type is deprecated.
 @deprecated
 public function createPerson(string fname, string lname, string street,
-                             string city, CountryCode countryCode) returns Person {
+                             string city, CountryCode countryCode)
+                             returns Person {
 
     // Usage of the deprecated class `Person`.
     Person p = new;
@@ -75,7 +76,8 @@ public function createPerson(string fname, string lname, string street,
 
 public function main() {
     // Usage of the deprecated object `Person` and function `createPerson`.
-    Person p = createPerson("Jane", "Doe", "Castro Street", "Mountain View", USA);
+    Person p = createPerson("Jane", "Doe", "Castro Street",
+                            "Mountain View", USA);
 
     // Usage of the deprecated object method `getFullName`
     io:println(p.getFullName());

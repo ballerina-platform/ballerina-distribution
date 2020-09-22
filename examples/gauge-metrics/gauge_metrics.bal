@@ -39,9 +39,9 @@ service onlineStoreService on new http:Listener(9090) {
 
 
         //Create a gauge with optional fields description, and tags defined.
-        observe:Gauge registeredGaugeWithTags = new ("registered_gauge_with_tags",
-            "RegisteredGauge",
-            {property: "gaugeProperty", gaugeType: "RegisterType"});
+        observe:Gauge registeredGaugeWithTags =
+                  new ("registered_gauge_with_tags", "RegisteredGauge",
+                       {property: "gaugeProperty", gaugeType: "RegisterType"});
 
         //Register the gauge instance, therefore it is stored in the global registry and can be reported to the
         //metrics server such as Prometheus. Additionally, this operation will register to the global registry for the
