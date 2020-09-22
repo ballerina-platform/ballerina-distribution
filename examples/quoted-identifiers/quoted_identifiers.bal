@@ -1,17 +1,17 @@
 import ballerina/io;
 
-// Use the reserved keyword `function` as the function identifier.
+// Use the reserved keyword `function` as the name of the function.
 function 'function(int val) returns int {
     return val + 1;
 }
 
-// Use different types of characters in the function identifier.
+// Use different kinds of characters in the name of the function.
 function 'get_ɱȇşşağę_for_\#(int val) returns string {
     return val.toString() + " is a numeric value" ;
 }
 
-// Use different types of characters in the type definition.
-// The quoted identifier syntax is used to refer to both the type name and the field names.
+// Use different kinds of characters in the type definition.
+// The quoted identifier syntax is used in both the type name and the field names.
 type 'Person_\{name\&Ȧɢέ\} record {|
     string 'first\ name;
     int 'Ȧɢέ;
@@ -23,7 +23,7 @@ public function main() {
     int 'int = 1;
 
     // Invoke the function named `function` with the variable named `int`.
-    // The quoted identifier syntax is used to refer to both the function and
+    // The quoted identifier syntax is used in both the function and
     // the variable.
     int i = 'function('int);
     io:println(i);
