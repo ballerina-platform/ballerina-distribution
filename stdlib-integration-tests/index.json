@@ -8,6 +8,10 @@
     "path": "email"
   },
   {
+    "name": "Encoding standard library ",
+    "path": "encoding"
+  },
+  {
     "name": "Auth standard library ",
     "path": "auth"
   },
