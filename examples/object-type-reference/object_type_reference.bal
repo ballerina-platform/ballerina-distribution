@@ -1,8 +1,8 @@
 import ballerina/io;
 
-// Defines an abstract object called `Person`. It should only contain fields and the
+// Defines an object type called `Person`. It should only contain fields and the
 // method declarations.
-type Person abstract object {
+type Person object {
     public int age;
     public string firstName;
     public string lastName;
@@ -13,24 +13,24 @@ type Person abstract object {
 
 };
 
-// Defines another abstract object called `Employee`, which references the `Person` object.
-type Employee abstract object {
+// Defines another object type called `Employee`, which references the `Person` object.
+type Employee object {
     // Add a reference to the `Person` object type. 
-    // All the member fields and member methods will be copied from the `Person` object.
+    // All the member fields and member-method declarations will be copied from the `Person` object.
     *Person;
     public float|string salary;
 
     function getSalary() returns float|string;
 };
 
-type Owner object {
+class Owner {
     public string status = "";
-};
+}
 
-type Manager object {
+class Manager {
     // Type references can be chained by adding a reference to the `Employee` object, which
     // again has a reference to the `Employee` object. This will copy all the members from
-    // the `Employee` object. It will be same as defining each of those members within this object.
+    // the `Employee` object. It will be the same as declaring each of those members within this object.
     *Employee;
 
     // It is possible to have more than one type reference as well.
@@ -62,7 +62,7 @@ type Manager object {
     function getSalary() returns float {
         return self.salary;
     }
-};
+}
 
 public function main() {
     Manager p = new Manager(5, "John", "Doe", "Senior");

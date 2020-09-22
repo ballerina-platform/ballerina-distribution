@@ -3,5 +3,5 @@
 ballerina run readonly_type.bal
 5
 ballerina
-math=80 physics=85 chemistry=75
+{"math":80,"physics":85,"chemistry":75}
 true

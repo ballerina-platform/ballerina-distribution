@@ -8,7 +8,7 @@ int counter = 0;
     moduleName: "ballerina/io",
     functionName: "println"
 }
-public function mockPrint(any|error... msg) {
+public isolated function mockPrint(any|error... msg) {
     outputs[counter] = msg[0];
     counter += 1;
 }
@@ -16,6 +16,6 @@ public function mockPrint(any|error... msg) {
 @test:Config {}
 function testFunc() {
     // Invoking the main function
-    main();
-    test:assertEquals(outputs[0], "Hello World");
+    error? err = main();
+    test:assertExactEquals(outputs[0], "Hello World");
 }

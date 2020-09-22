@@ -1,15 +1,15 @@
 import ballerina/io;
 
-//Defines an object called `OddNumberGenerator`. Each object has its own next() method,
+//Defines a class called `OddNumberGenerator`. Each class has its own next() method,
 //which gets invoked when the stream's `next()` function gets called.
-type OddNumberGenerator object {
+class OddNumberGenerator {
     int i = 1;
     
-    public function next() returns record {|int value;|}|error? {
+    public isolated function next() returns record {|int value;|}|error? {
         self.i += 2;
         return {value: self.i};
     }
-};
+}
 
 type ResultValue record {|
     int value;
@@ -40,7 +40,7 @@ type Subscription record {|
 public function main() {
     OddNumberGenerator oddGen = new;
 
-    //Creating a stream passing an OddNumberGenerator object to the stream constructor
+    //Creating a stream passing an OddNumberGenerator class to the stream constructor
     var oddNumberStream = new stream<int, error>(oddGen);
 
     record {|int value;|}|error? oddNumber = oddNumberStream.next();

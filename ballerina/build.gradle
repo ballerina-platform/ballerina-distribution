@@ -844,20 +844,11 @@ task testExamples() {
     patternSet.exclude("**/ballerina-internal.log")
     inputs.files(files("${distPath}/examples").asFileTree.matching(patternSet))
 
-    // The following BBEs will not be verified by running/compiling
+    // The following BBEs will not be verified by compiling/running.
     def buildIgnoreList = [
         'proto-to-ballerina',
-        'taint-checking',
         'websub-hub-client-sample',
         'websub-remote-hub-sample',
-        'kafka-producer',
-        'kafka-consumer-service',
-        'kafka-consumer-client',
-        'kafka-producer-transactional',
-        'kafka-consumer-group-service',
-        'kafka-authentication-sasl-plain-consumer',
-        'kafka-authentication-sasl-plain-producer', // Kafka BBEs are ignored since a KafkaCluster is not present
-        'config-api',
         'docker-deployment',
         'kubernetes-deployment',
         'knative-deployment',
@@ -865,10 +856,6 @@ task testExamples() {
         'azure-functions-deployment',
         'openshift-deployment',
         'grpc-server-streaming',
-        'local-transactions',
-        'gauge-metrics',
-        'counter-metrics',
-        'openapi-to-ballerina',
         'grpc-secured-unary',
         'grpc-bidirectional-streaming',
         'grpc-client-streaming',
@@ -882,8 +869,9 @@ task testExamples() {
         'testerina-assertions',
         'testerina-before-and-after-each',
         'testerina-before-and-after-groups',
-        'secured-service-with-basic-auth',
-        'secured-client-with-basic-auth',
+        'testerina-group-tests',
+        'testerina-mocking-objects',
+        'testerina-mocking-functions',
         'http-caching-client',
         'http-data-binding',
         'http-1.1-to-2.0-protocol-switch',
@@ -891,48 +879,37 @@ task testExamples() {
         'https-listener',
         'http-client-endpoint',
         'response-with-multiparts',
-        'tracing',
-        'log-api',
-        'the-main-function',
-        'time',
-        'xml-functions',
-        'xml-access',
         'mutual-ssl',
-        'type-conversion',
-        'filepath',
-        'record-io',
-        'csv-io',
-        'type-cast',
-        'json-csv',
-        'functional-iteration',
-        'table',
-        'maps',
-        'cache',
         'send-and-receive-emails',
-        'xml-attributes',
-        'xml-literal',
-        'xml',
-        'json-to-xml-conversion',
-        'length',
-        'foreach',
-        'testerina-group-tests',
-        'testerina-mocking-objects',
-        'testerina-mocking-functions',
-        'json-record-map-conversion',
-        'json-access',
-        'hello-world-client',
-        'retry-transactions',
-        'non-transaction-retry',
-        'local-transactions-with-handlers',
-        'task-scheduler-timer',
-        'task-scheduler-appointment',
-        'raw-template',
-        'optional-type',
-        'while'
+        'gauge-metrics',
+        'counter-metrics',
+        'tracing',
+        'openapi-to-ballerina',
+        'taint-checking' // Should not compile
     ]
 
-    // The following BBEs will only be verified by compiling
-    def runIgnoreList = [
+    // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
+    // against the output given at `.out` file. But will be verified by compiling and running tests if it is not added
+    // to the above buildIgnoreList.
+    def outputVerificationIgnoreList = [
+        'the-main-function', //Needs user input
+        'local-transactions',  // Xid varies
+        'local-transactions-with-handlers', // Xid varies
+        'retry-transactions', // Xid varies
+        'optional-type',  // Needs inputs at runtime
+        'while',        // Needs inputs at runtime
+        'any-type', // Has time component
+        'record-readonly-fields', // Has user name in output
+        'checkpanic', // Has user name in output
+        'deprecation', // Contains user input
+        'config-api',
+        'kafka-consumer-client',
+        'kafka-producer',
+        'kafka-consumer-service',
+        'kafka-producer-transactional',
+        'kafka-consumer-group-service',
+        'kafka-authentication-sasl-plain-consumer',
+        'kafka-authentication-sasl-plain-producer', // Kafka BBEs are ignored since a KafkaCluster is not present
         'websub-service-integration-sample',
         'websub-internal-hub-sample',
         'grpc-server-streaming',
@@ -946,6 +923,13 @@ task testExamples() {
         'http-compression',
         'http-redirects',
         'http-2-0-server-push',
+        'http-cookies',
+        'header-based-routing',
+        'http-circuit-breaker',
+        'request-with-multiparts',
+        'different-payload-types',
+        'base-path-and-path',
+        'http-trace-logs',
         'websocket-basic-sample',
         'websocket-chat-application',
         'websocket-client',
@@ -961,6 +945,7 @@ task testExamples() {
         'rabbitmq-transaction-producer',
         'rabbitmq-transaction-consumer',
         'jdbc-complex-type-queries', // Consists date time in output
+        'log-api',
         'mysql-init-options',
         'mysql-query-operation',
         'mysql-complex-type-queries',
@@ -973,26 +958,20 @@ task testExamples() {
         'ballerina-to-openapi',
         'client-generation',
         'directory-listener',
-        'different-payload-types',
+        'file', // Absolute path varies
+        'filepath', // Depends on OS
+        'time',
+        'locks', // Output is inconsistent between runs
+        'crypto', // Output with line breaks cannot be compared
+        'jwt-issue-validate', // Output depends on time
+        'secured-client-with-basic-auth', // Need to run the service first
+        'secured-client-with-jwt-auth', // Need to run the service first
+        'secured-client-with-oauth2', // Need to run the service first
         'task-service-timer',
         'task-service-appointment',
-        'byte-io',
-        'http-cookies',
-        'any-type',
-        'record-readonly-fields',
-        'checkpanic',
-        'async',
-        'header-based-routing',
-        'http-circuit-breaker',
-        'request-with-multiparts',
-        'file',
-        'base-path-and-path',
-        'locks',                     // Output is inconsistent between runs
-        'crypto',
-        'jwt-issue-validate',
-        'secured-client-with-basic-auth',
-        'secured-client-with-jwt-auth',
-        'secured-client-with-oauth2'
+        'task-scheduler-timer',
+        'task-scheduler-appointment',
+        'cache'
     ]
 
     doFirst {
@@ -1033,18 +1012,22 @@ task testExamples() {
 
     ext.buildBBE = { bbe ->
         def exitVal
+        def additionalBuildParams = ""
+        if (bbe == "secured-service-with-basic-auth" || bbe == "secured-client-with-basic-auth") {
+            additionalBuildParams = "--b7a.config.file=${baseBuildPath}/TestProject/src/${bbe}/sample-users.toml"
+        }
         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
             //TODO: Need to verify with windows
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${buildDir}/TestProject"
-                commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'build', '--experimental', "${bbe} --b7a.home=${distPath}"
+                commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'build', '--experimental', "${bbe} --b7a.home=${distPath} ${additionalBuildParams}"
             }
         } else {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${baseBuildPath}/TestProject"
-                commandLine 'sh', '-c', "${distPath}/bin/ballerina build --experimental ${bbe} --b7a.home=${distPath}"
+                commandLine 'sh', '-c', "${distPath}/bin/ballerina build --experimental ${bbe} --b7a.home=${distPath} ${additionalBuildParams}"
             }
         }
         if (exitVal.getExitValue() == 1) {
@@ -1064,6 +1047,10 @@ task testExamples() {
         def curlCommandsFilePath = "${directoryPath}/curlcommandout.txt"
         def portFilePath = "${directoryPath}/ports.txt"
         def outputFilePath = "${directoryPath}/output.txt"
+        def additionalBuildParams = ""
+        if (bbe == "secured-service-with-basic-auth" || bbe == "secured-client-with-basic-auth") {
+            additionalBuildParams = "--b7a.config.file=${baseBuildPath}/TestProject/src/${bbe}/sample-users.toml"
+        }
         tree.each { content ->
             if (content.name.contains("client.out")) {
                 fileReference = file(content)
@@ -1106,13 +1093,13 @@ task testExamples() {
                 exitVal = exec {
                     def windowsPath = scriptPath.replace('/', '\\')
                     workingDir "$windowsPath"
-                    commandLine "$windowsPath\\run.bat", "${directoryPath}", "${distPath}/bin/ballerina.bat", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath}"
+                    commandLine "$windowsPath\\run.bat", "${directoryPath}", "${distPath}/bin/ballerina.bat", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath} ${additionalBuildParams}"
                     ignoreExitValue true
                 }
             } else {
                 exitVal = exec {
                     workingDir "$scriptPath"
-                    commandLine "bash", "run.sh", "${directoryPath}", "${distPath}/bin/./ballerina", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath}"
+                    commandLine "bash", "run.sh", "${directoryPath}", "${distPath}/bin/./ballerina", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath} ${additionalBuildParams}"
                     ignoreExitValue true
                 }
             }
@@ -1144,7 +1131,7 @@ task testExamples() {
                 if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                     exec {
                         workingDir "${directoryPath}"
-                        commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'run', '--experimental', "${balName}.bal", "--b7a.home=${distPath}"
+                        commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'run', '--experimental', "${balName}.bal", "--b7a.home=${distPath} ${additionalBuildParams}"
                         ignoreExitValue true
                         standardOutput = os
                         errorOutput = errOut
@@ -1152,7 +1139,7 @@ task testExamples() {
                 } else {
                     exec {
                         workingDir "${directoryPath}"
-                        commandLine 'sh', '-c', "${distPath}/bin/ballerina run --experimental ${balName}.bal --b7a.home=${distPath}"
+                        commandLine 'sh', '-c', "${distPath}/bin/ballerina run --experimental ${balName}.bal --b7a.home=${distPath} ${additionalBuildParams}"
                         ignoreExitValue true
                         standardOutput = os
                         errorOutput = errOut
@@ -1200,12 +1187,11 @@ task testExamples() {
         def failedBuildExamples = []
         def failOutputVerificationExamples = []
         bbeList.each { String bbe ->
-            if (runIgnoreList.contains(bbe)) {
-                boolean buildFailFlag = buildBBE(bbe)
-                if (buildFailFlag) {
-                    failedBuildExamples.add(bbe)
-                }
-            } else {
+            boolean buildFailFlag = buildBBE(bbe)
+            if (buildFailFlag) {
+                failedBuildExamples.add(bbe)
+            }
+            if (!outputVerificationIgnoreList.contains(bbe)) {
                 boolean outputVerificationFailFlag = outputVerification(bbe)
                 if (outputVerificationFailFlag) {
                     failOutputVerificationExamples.add(bbe)
@@ -1250,8 +1236,8 @@ task testStdlibs() {
      patternSet.exclude("**/Ballerina.lock");
      patternSet.exclude("**/ballerina-internal.log")
      inputs.files(files("${distPath}/stdlib-integration-tests").asFileTree.matching(patternSet))
-     def ignoreList = [
-     ]
+     def ignoreList = []
+
      doFirst {
          copy {
              from jBallerinaPack
@@ -1284,25 +1270,83 @@ task testStdlibs() {
 
          }
      }
-     doLast {
+
+    doLast {
          ignoreList.each { String elements ->
              stdlibTestsList.remove("$elements")
          }
          stdlibTestsList.each { String stdlibTest ->
+             def additionalBuildParams = ""
+             if (stdlibTest == "auth" || stdlibTest == "jwt") {
+                 additionalBuildParams = "--b7a.config.file=${baseBuildPath}/StdlibTestProject/src/${stdlibTest}/tests/resources/datafiles/users.toml"
+             }
+
              if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                  //TODO: Need to verify with windows
                  exec {
                      workingDir "${buildDir}/StdlibTestProject"
-                     commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat build -c --experimental ${stdlibTest} --b7a.home=${distPath}"
+                     commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat build -c --experimental ${stdlibTest} --b7a.home=${distPath} ${additionalBuildParams}"
                  }
              } else {
                  exec {
                      workingDir "${baseBuildPath}/StdlibTestProject"
-                     commandLine 'sh', '-c', "${distPath}/bin/ballerina build -c --experimental ${stdlibTest} --b7a.home=${distPath}"
+                     commandLine 'sh', '-c', "${distPath}/bin/ballerina build -c --experimental ${stdlibTest} --b7a.home=${distPath} ${additionalBuildParams}"
                  }
              }
          }
      }
+}
+
+task startLdapServer(type: Test) {
+    doLast {
+        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+            def stdOut = new ByteArrayOutputStream()
+            exec {
+                commandLine 'sh', '-c', "docker ps --filter name=openldap-server"
+                standardOutput = stdOut
+            }
+            if (!stdOut.toString().contains("openldap-server")) {
+                println "Starting LDAP server."
+                copy {
+                    from file("$project.rootDir/stdlib-integration-tests/ldap/tests/resources/openldap")
+                    into file("/tmp")
+                }
+                exec {
+                    commandLine 'sh', '-c', "docker run --rm -d -p 389:389 --name openldap-server --env LDAP_ORGANISATION=\"AVIX\" --env LDAP_DOMAIN=\"avix.lk\" --env LDAP_ADMIN_PASSWORD=\"avix123\" --env LDAP_BASE_DN=\"dc=avix,dc=lk\" --volume /tmp/bootstrap.ldif:/container/service/slapd/assets/config/bootstrap/ldif/custom/bootstrap.ldif osixia/openldap:1.3.0 --copy-service"
+                    standardOutput = stdOut
+                }
+                println stdOut.toString()
+                println "Waiting 15s until the LDAP server get initiated."
+                sleep(15 * 1000)
+            } else {
+                println "LDAP server is already started."
+            }
+        }
+    }
+}
+
+task stopLdapServer(type: Test) {
+    doLast {
+        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+            def stdOut = new ByteArrayOutputStream()
+            exec {
+                commandLine 'sh', '-c', "docker ps --filter name=openldap-server"
+                standardOutput = stdOut
+            }
+            if (stdOut.toString().contains("openldap-server")) {
+                println "Stopping LDAP server."
+                exec {
+                    commandLine 'sh', '-c', "docker stop openldap-server"
+                    standardOutput = stdOut
+                }
+                println stdOut.toString()
+                println "Waiting 5s until the LDAP server get stopped."
+                sleep(5 * 1000)
+            } else {
+                println "LDAP server is not started."
+            }
+        }
+    }
 }
 
 /* Unpack Dependencies */
@@ -1332,6 +1376,8 @@ packageDistLinux.dependsOn packageDistZip
 packageDistMac.dependsOn packageDistLinux
 packageDistWindows.dependsOn packageDistMac
 testExamples.dependsOn packageDistWindows
+testStdlibs.finalizedBy stopLdapServer
+testStdlibs.dependsOn startLdapServer
 testStdlibs.dependsOn testExamples
 /* Delete Temporary Files */
 deleteTemporaryFiles.dependsOn testStdlibs

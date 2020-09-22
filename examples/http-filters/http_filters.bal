@@ -8,34 +8,34 @@ final string filter_name_header_value = "RequestFilter";
 
 // The [Request filter](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/RequestFilter.html) implementation.
 // It intercepts the request and adds a new header to the request before it is dispatched to the HTTP resource.
-public type RequestFilter object {
+public class RequestFilter {
     *http:RequestFilter;
     // [Intercepts the request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/RequestFilter.html#filterRequest).
-    public function filterRequest(http:Caller caller, http:Request request,
+    public isolated function filterRequest(http:Caller caller, http:Request request,
                         http:FilterContext context) returns boolean {
         // Set a header to the request inside the filter.
         request.setHeader(filter_name_header, filter_name_header_value);
         // Return true on success.
         return true;
     }
-};
+}
 
 // Creates a new RequestFilter.
 RequestFilter requestFilter = new;
 
 // The [response filter](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/ResponseFilter.html) implementation.
 // It intercepts the response in the response path and adds a new header to the response.
-public type ResponseFilter object {
+public class ResponseFilter {
     *http:ResponseFilter;
     // [Intercepts the response](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/ResponseFilter.html#filterResponse).
-    public function filterResponse(http:Response response, 
+    public isolated function filterResponse(http:Response response, 
                         http:FilterContext context) returns boolean {
         // Sets a header to the response inside the filter.
         response.setHeader("X-responseHeader", "ResponseFilter");
         // Return true on success.
         return true;
     }
-};
+}
 
 // Creates a new [ResponseFilter](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/ResponseFilter.html).
 ResponseFilter responseFilter = new;

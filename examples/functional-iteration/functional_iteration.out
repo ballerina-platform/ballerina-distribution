@@ -2,15 +2,14 @@
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run functional_iteration.bal
 Number of elements in 'words': 5
-a=ANT b=BEAR c=CAT d=DEAR e=ELEPHANT
+{"a":"ANT","b":"BEAR","c":"CAT","d":"DEAR","e":"ELEPHANT"}
 -5
 -3
 2
 7
 12
-Positive numbers: 2 7 12
+Positive numbers: [2,7,12]
 Total: 13
 Student: Jack Grade: B
 Student: Tom Grade: D
 Student: Anne Grade: A
-

@@ -1,7 +1,7 @@
 import ballerina/io;
 
 // Defines an object called `Person`.
-type Person object {
+class Person {
     public int age;
     public string firstName;
     public string lastName;
@@ -18,7 +18,7 @@ type Person object {
         return self.firstName + " " + self.lastName;
     }
 
-};
+}
 
 public function main() {
     // Initializes a `Person` object.

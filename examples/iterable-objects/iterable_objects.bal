@@ -1,7 +1,7 @@
 import ballerina/io;
 
 // An object that is a subtype of `Iterator<int>`.
-type ArrayIterator object {
+class ArrayIterator {
     private int[] integers = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34];
     private int cursor = -1;
 
@@ -14,17 +14,17 @@ type ArrayIterator object {
         }
         return ();
     }
-};
+}
 
 //  An object that is a subtype of `Iterable<int>`.
-type IteratorGenerator object {
+class IteratorGenerator {
 
     // The `__iterator()` method should return a new `Iterator<T>`.
-    public function __iterator() returns abstract object {
+    public function __iterator() returns object {
             public function next() returns record {|int value;|}?;} {
         return new ArrayIterator();
     }
-};
+}
 
 public function main() {
     IteratorGenerator itrGen = new;
