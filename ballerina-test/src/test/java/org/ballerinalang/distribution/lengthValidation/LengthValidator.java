@@ -124,7 +124,7 @@ public class LengthValidator {
 
         LengthValidator.listFilesForFolder(new File(filePath));
 
-        Assert.assertFalse(isValidationFailure, "Bal files should only");
+        Assert.assertFalse(isValidationFailure, "bal files should only contain lines of 80 character length");
     }
 }
 
