@@ -36,7 +36,8 @@ public function main() {
 }
 
 function getSampleError() returns SampleError {
-    SampleError e = SampleError("Sample Error", info = "Detail Info", fatal = true);
+    SampleError e = SampleError("Sample Error", info = "Detail Info",
+                                fatal = true);
     return e;
 }
 
