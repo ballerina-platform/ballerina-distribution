@@ -36,7 +36,8 @@ public function main() {
 }
 
 function getSampleError() returns SampleError {
-    SampleError e = SampleError("Sample Error", info = "Detail Info", fatal = true);
+    SampleError e = SampleError("Sample Error", info = "Detail Info",
+                                fatal = true);
     return e;
 }
 
@@ -48,6 +49,8 @@ type Foo record {|
 |};
 
 function getRecordConstrainedError() returns error<Foo> {
-    error<Foo> e = <error<Foo>> error("Some Error", detailMsg = "Failed Message", isFatal = true);
+    error<Foo> e =
+              <error<Foo>> error("Some Error", detailMsg = "Failed Message",
+                                  isFatal = true);
     return e;
 }

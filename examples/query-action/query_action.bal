@@ -26,7 +26,8 @@ public function main() {
     var result = from var student in studentList
         // The block inside the `do` clause is executed in each iteration.
         do {
-            FullName fullName = { firstName: student.firstName, lastName: student.lastName };
+            FullName fullName = { firstName: student.firstName,
+                                  lastName: student.lastName };
             nameList.push(fullName);
         };
 

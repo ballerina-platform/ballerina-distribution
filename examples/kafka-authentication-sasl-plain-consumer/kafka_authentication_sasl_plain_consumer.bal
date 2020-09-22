@@ -27,7 +27,8 @@ kafka:ConsumerConfiguration consumerConfig = {
 listener kafka:Consumer consumer = new(consumerConfig);
 
 service KafkaService on consumer {
-    resource function onMessage(kafka:Consumer consumer, kafka:ConsumerRecord[] records) {
+    resource function onMessage(kafka:Consumer consumer,
+                                kafka:ConsumerRecord[] records) {
         foreach var consumerRecord in records {
             string value = <string> consumerRecord.value;
             log:printInfo(value);

@@ -47,7 +47,8 @@ function getAccountBalance(int accountID) returns int {
        //The type of `e` should be the union of the error types that are
        //thrown by the `do` statement.
        } on fail InvalidAccountIDError|AccountNotFoundError e {
-          io:println("Error caught: ", e.message(),", Account ID: ", e.detail()["accountID"]);
+          io:println("Error caught: ", e.message(),", Account ID: ",
+                     e.detail()["accountID"]);
        }
        return 600;
 }

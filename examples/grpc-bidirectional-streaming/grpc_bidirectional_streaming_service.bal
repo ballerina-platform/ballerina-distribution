@@ -22,7 +22,7 @@ service Chat on new grpc:Listener(9090) {
                     log:printError("Error from Connector: " + err.message());
                 } else {
                     log:printInfo("Server message to caller " + callerId
-                                                        + " sent successfully.");
+                                                     + " sent successfully.");
                 }
             }
         });
@@ -38,7 +38,7 @@ service Chat on new grpc:Listener(9090) {
                     log:printError("Error from Connector: " + err.message());
                 } else {
                     log:printInfo("Server message to caller " + callerId
-                                                        + " sent successfully.");
+                                                      + " sent successfully.");
                 }
             }
         //If the client sends an error to the server, the stream closes and returns the error

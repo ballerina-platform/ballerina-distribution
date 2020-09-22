@@ -20,11 +20,12 @@ service demoService on lis {
             log:printInfo("Message Received: " + val);
         } else {
             log:printError("Error occurred during json to string conversion",
-                                                                      err = val);
+                                                                   err = val);
         }
     }
 
-    resource function onError(nats:StreamingMessage message, nats:Error errorVal) {
+    resource function onError(nats:StreamingMessage message,
+                              nats:Error errorVal) {
         error e = errorVal;
         log:printError("Error occurred: ", e);
     }

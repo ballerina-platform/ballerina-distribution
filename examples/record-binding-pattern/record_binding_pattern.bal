@@ -19,8 +19,11 @@ public function main() {
     // given by the assignment expression provides the values for the variables. 
     // Since `Person` is an open record, the `...otherFields` variable represents a rest parameter of 
     // type `map<anydata|error>`, which holds remaining fields of the record that had not been matched.
-    Person {name: myName, age: myAge, address: myAddress, ...otherFields} = getPerson();
-    io:println("My Name: ", myName, " My Age: ", myAge, " My Address: ", myAddress, " Other Fields: ", otherFields);
+    Person {
+        name: myName, age: myAge, address: myAddress, ...otherFields
+        } = getPerson();
+    io:println("My Name: ", myName, " My Age: ", myAge,
+                " My Address: ", myAddress, " Other Fields: ", otherFields);
 
     // If a field name is not given, the name of the variable will be considered as the field name as well
     // i.e., `Person {name, age, address}` is same as Person `{name: name, age: age, address: address}`.
@@ -31,16 +34,19 @@ public function main() {
     // Record-typed binding patterns can be used with `var` to infer the type from the context. In the current situation,
     // the type is resolved by the value presented from the assignment expression.    
     var {street, city, state, zipcode} = getAddress();
-    io:println("City: ", city, " State: ", state, " State: ", state, " Zip Code: ", zipcode);
+    io:println("City: ", city, " State: ", state, " State: ", state,
+                                                    " Zip Code: ", zipcode);
 }
 
 function getAddress() returns Address {
-    Address address = {street: "380 Lakewood Dr.", city: "Desoto", state: "TX", zipcode: "75115"};
+    Address address = {street: "380 Lakewood Dr.", city: "Desoto",
+                                                state: "TX", zipcode: "75115"};
     return address;
 }
 
 function getPerson() returns Person {
     Address address = getAddress();
-    Person person = {name: "Jack Smith", age: 23, address, "occupation": "Software Engineer"};
+    Person person = {name: "Jack Smith", age: 23, address,
+                                            "occupation": "Software Engineer"};
     return person;
 }

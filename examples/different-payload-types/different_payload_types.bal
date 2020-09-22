@@ -70,7 +70,8 @@ service actionService on new http:Listener(9090) {
             response = clientEP->post("/echo", bodyParts);
             handleResponse(response);
 
-            var result = caller->respond("Client actions successfully executed!");
+            var result = caller->respond(
+                                "Client actions successfully executed!");
             handleError(result);
         } else {
             http:Response res = new;

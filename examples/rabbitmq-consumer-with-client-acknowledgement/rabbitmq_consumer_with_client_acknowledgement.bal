@@ -26,7 +26,8 @@ service rabbitmqConsumerAck on channelListener {
         if (messageContent is string) {
             log:printInfo("The message received: " + messageContent);
         } else {
-            log:printError("Error occurred while retrieving the message content.");
+            log:printError(
+                        "Error occurred while retrieving the message content.");
         }
 
         // Positively acknowledges a single message.

@@ -16,7 +16,8 @@ public function main() {
 service ClientService = @http:WebSocketServiceConfig {} service {
 
     // This resource is triggered when a new text frame is received from the remote backend.
-    resource function onText(http:WebSocketClient conn, string text, boolean finalFrame) {
+    resource function onText(http:WebSocketClient conn, string text,
+                             boolean finalFrame) {
         io:println(text);
     }
     // This is triggered if an error occurs.

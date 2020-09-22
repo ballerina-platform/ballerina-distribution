@@ -86,14 +86,16 @@ service cookieServer on new http:Listener(9095) {
             var result = caller->cancelWebSocketUpgrade(401,
                                  "Unauthorized request. Please login");
             if (result is error) {
-                log:printError("Failed to cancel the WebSocket upgrade", result);
+                log:printError("Failed to cancel the WebSocket upgrade",
+                                result);
             }
         }
     }
 }
 
 // The callback service to receive frames from the client.
-service cookieService = @http:WebSocketServiceConfig {subProtocols: ["xml", "json"]} service {
+service cookieService =
+        @http:WebSocketServiceConfig {subProtocols: ["xml", "json"]} service {
 
     // This resource gets invoked when a new client connects.
     resource function onOpen(http:WebSocketCaller caller) {

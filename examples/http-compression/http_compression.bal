@@ -98,7 +98,8 @@ service backend on listenerEndpoint {
         http:Response res = new;
         if (req.hasHeader("accept-encoding")) {
             string value = req.getHeader("accept-encoding");
-            res.setPayload("Backend response was encoded : " + <@untainted>value);
+            res.setPayload("Backend response was encoded : " +
+                            <@untainted> value);
         } else {
             res.setPayload("Accept-Encoding header is not present");
         }

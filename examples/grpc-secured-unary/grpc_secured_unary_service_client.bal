@@ -5,10 +5,12 @@ import ballerina/io;
 
 public function main() {
     // Client endpoint configuration with SSL configurations.
-    HelloWorldBlockingClient helloWorldBlockingEp = new ("https://localhost:9090", {
+    HelloWorldBlockingClient helloWorldBlockingEp =
+        new ("https://localhost:9090", {
             secureSocket: {
                 trustStore: {
-                    path: config:getAsString("b7a.home") + "/bre/security/ballerinaTruststore.p12",
+                    path: config:getAsString("b7a.home") +
+                            "/bre/security/ballerinaTruststore.p12",
                     password: "ballerina"
                 }
             }

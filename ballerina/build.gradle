@@ -902,6 +902,7 @@ task testExamples() {
         'record-readonly-fields', // Has user name in output
         'checkpanic', // Has user name in output
         'deprecation', // Contains user input
+        'foreach', // Has tabs for formatting in input
         'config-api',
         'kafka-consumer-client',
         'kafka-producer',
