@@ -136,7 +136,8 @@ function handleContent(mime:Entity bodyPart) {
         var payload = bodyPart.getByteChannel();
         if (payload is io:ReadableByteChannel) {
             io:WritableByteChannel destinationChannel =
-            <@untainted io:WritableByteChannel>io:openWritableFile("ReceivedFile.pdf");
+                                <@untainted io:WritableByteChannel>
+                                        io:openWritableFile("ReceivedFile.pdf");
             var result = copy(payload, destinationChannel);
             if (result is error) {
                 log:printError("Error occurred while performing copy ", result);

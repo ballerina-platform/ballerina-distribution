@@ -24,7 +24,7 @@ service websubSubscriber on websubEP {
         // Builds the response to the intent verification request that was received for subscription.
         http:Response response =
                 request.buildSubscriptionVerificationResponse(
-                                                    "http://websubpubtopic.com");
+                                                "http://websubpubtopic.com");
         if (response.statusCode == 202) {
             log:printInfo("Intent verified for subscription request");
         } else {

@@ -11,7 +11,8 @@ http:ClientConfiguration clientEPConfig = {
 
 public function main() {
     // Create a new HTTP client by giving the URL and the client configuration.
-    http:Client httpClient = new("http://localhost:9095/cookie-demo", clientEPConfig);
+    http:Client httpClient =
+                    new("http://localhost:9095/cookie-demo", clientEPConfig);
 
     // Initialize an HTTP request.
     http:Request request = new;
