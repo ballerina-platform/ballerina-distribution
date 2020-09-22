@@ -33,7 +33,7 @@ function getAccountBalance(int accountID) returns int {
        do {
          if (accountID < 0) {
              // Throw an error with the `InvalidAccountID` as the reason if
-             //`accountID` is less than zero.
+             //the `accountID` is less than zero.
              InvalidAccountIDError invalidAccoundIdError
              = InvalidAccountIDError(INVALID_ACCOUNT_ID, accountID = accountID);
              fail invalidAccoundIdError;
