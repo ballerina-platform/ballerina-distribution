@@ -463,6 +463,10 @@
                 "url": "error-handling"
             },
             {
+                "name": "Fail",
+                "url": "fail"
+            },
+            {
                 "name": "Check",
                 "url": "check"
             },
