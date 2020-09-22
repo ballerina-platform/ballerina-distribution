@@ -10,8 +10,8 @@ import ballerina/oauth2;
 oauth2:OutboundOAuth2Provider oauth2Provider1 = new ({
     tokenUrl: "<Token URL for the authorization endpoint>",
     clientId: "<Client ID for the client credentials grant authentication>",
-    clientSecret: "<Client secret for the client credentials grant
-                                    authentication>",
+    clientSecret:
+            "<Client secret for the client credentials grant authentication>",
     clientConfig: {
         secureSocket: {
             trustStore: {
@@ -96,10 +96,9 @@ http:Client clientEP2 = new ("<URL of the secured endpoint>", {
 oauth2:OutboundOAuth2Provider oauth2Provider3 = new ({
     accessToken: "<Access token for the authorization endpoint>",
     refreshConfig: {
-        clientId: "<Client ID for authentication with the
-                        authorization endpoint>",
-        clientSecret: "<Client secret for authentication with the
-                                authorization endpoint>",
+        clientId: "<Client ID for the authorization endpoint authentication>",
+        clientSecret:
+                "<Client secret for the authorization endpoint authentication>",
         refreshToken: "<Refresh token for the refresh token server>",
         refreshUrl: "<Refresh token URL for the refresh token server>",
         clientConfig: {
