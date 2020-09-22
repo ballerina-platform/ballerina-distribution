@@ -50,5 +50,13 @@
   {
     "name": "gRPC service with HTTP gateway",
     "path": "grpc-service-with-http-proxy-gateway"
+  },
+  {
+    "name": "HTTP standard library",
+    "path": "http"
+  },
+  {
+    "name": "MIME standard library",
+    "path": "mime"
   }
 ]
