@@ -477,6 +477,10 @@
             {
                 "name": "User-defined Error Types",
                 "url": "user-defined-error"
+            },
+            {
+                "name": "Error Handling In Single Place",
+                "url": "error-handling-in-single-place"
             }
         ]
     },
