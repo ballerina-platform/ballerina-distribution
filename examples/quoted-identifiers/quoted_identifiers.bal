@@ -11,7 +11,7 @@ function 'get_ɱȇşşağę_for_\#(int val) returns string {
 }
 
 // Use different kinds of characters in the type definition.
-// The quoted identifier syntax is used to refer to both the type name and the field names.
+// The quoted identifier syntax is used in both the type name and the field names.
 type 'Person_\{name\&Ȧɢέ\} record {|
     string 'first\ name;
     int 'Ȧɢέ;
