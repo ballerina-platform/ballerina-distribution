@@ -1,2 +1,2 @@
-// `fail` statement is used to return an error when it's known to be an error.
-// Unless the `fail` statement is caught from a `on-fail` clause, it will be returned.
+// The `fail` statement is used to return an error when it's known to be an error.
+// Unless the `fail` statement is caught from an `on-fail` clause, it will be returned.
