@@ -11,7 +11,7 @@ function 'get_ɱȇşşağę_for_\#(int val) returns string {
 }
 
 // Use different kinds of characters in the type definition.
-// The quoted identifier syntax is used in both the type name and the field names.
+// The quoted identifier syntax is to refer to both the type name and the field names.
 type 'Person_\{name\&Ȧɢέ\} record {|
     string 'first\ name;
     int 'Ȧɢέ;
@@ -23,7 +23,7 @@ public function main() {
     int 'int = 1;
 
     // Invoke the function named `function` with the variable named `int`.
-    // The quoted identifier syntax is used in both the function and
+    // The quoted identifier syntax is used to refer to both the function and
     // the variable.
     int i = 'function('int);
     io:println(i);
