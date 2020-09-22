@@ -1,0 +1,2 @@
+description: JSON is a built-in union type in Ballerina that can contain values of the types nil, boolean, int, float, decimal, string, json[], and map<json>.
+keywords: ballerina, ballerina by example, bbe, json

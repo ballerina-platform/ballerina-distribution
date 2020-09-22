@@ -10,4 +10,4 @@
 //    (e.g., the last 30 seconds).
 // 4. A specific message sequence number<br/><br/>
 // For more information on the underlying module, 
-// see the [NATS module](https://ballerina.io/learn/api-docs/ballerina/nats/index.html).
+// see the [NATS module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/nats/index.html).

@@ -1,20 +1,20 @@
 import ballerina/test;
-import ballerina/io;
 
-(any|error)[] outputs = [];
-int count = 0;
+string[] outputs = [];
 
+// This is the mock function which will replace the real function
 @test:Mock {
     moduleName: "ballerina/io",
     functionName: "println"
 }
-public function mockPrint(any|error... s) {
-    outputs[count] = string.convert(s[0]);
-    count += 1;
+public isolated function mockPrint(any|error... val) {
+    outputs.push(val.reduce(function (any|error a, any|error b) returns string => a.toString() + b.toString(), "").toString());
 }
 
-@test:Config
+@test:Config {}
 function testFunc() {
-    main();
-    test:assertEquals(outputs[0], "start attempt 1:error, attempt 2:error, attempt 3:result returned end.");
+    error? output = main();
+    test:assertEquals(outputs[0], "Attempting execution...");
+    test:assertEquals(outputs[1], "Attempting execution...");
+    test:assertEquals(outputs[2], "Work done.");
 }

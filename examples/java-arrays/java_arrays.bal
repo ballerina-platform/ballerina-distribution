@@ -4,7 +4,7 @@ import ballerina/java.arrays as jarrays;
 
 public function splitString(handle receiver, handle regex) returns handle = @java:Method {
     name: "split",
-    class: "java/lang/String"
+    'class: "java/lang/String"
 } external;
 
 public function main() {

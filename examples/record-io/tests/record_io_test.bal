@@ -1,5 +1,6 @@
 import ballerina/test;
 import ballerina/io;
+import ballerina/stringutils;
 
 (any|error)[] outputs = [];
 int counter = 0;
@@ -9,21 +10,20 @@ int counter = 0;
     moduleName: "ballerina/io",
     functionName: "println"
 }
-public function mockPrint(any|error... s) {
+public isolated function mockPrint(any|error... s) {
     outputs[counter] = s[0];
     counter += 1;
 }
 
 // This is the mock function that replaces the real function.
 @test:Mock {
-    moduleName: "ballerina-examples/record-io:0.0.1",
     functionName: "getReadableRecordChannel"
 }
-public function mockGetReadableRecordChannel(string filePath, string encoding,
+public isolated function mockGetReadableRecordChannel(string filePath, string encoding,
                                              string rs, string fs)
-                    returns io:ReadableTextRecordChannel {
-    string path = "./record-io/" + filePath;
-    io:ReadableByteChannel byteChannel = io:openReadableFile(path);
+                    returns io:ReadableTextRecordChannel|error {
+    string path = "./src/record-io/" + filePath;
+    io:ReadableByteChannel byteChannel = check io:openReadableFile(path);
     io:ReadableCharacterChannel characterChannel = new(byteChannel, encoding);
     io:ReadableTextRecordChannel delimitedRecordChannel = new(characterChannel,
         rs = rs,
@@ -33,14 +33,13 @@ public function mockGetReadableRecordChannel(string filePath, string encoding,
 
 // This is the mock function that replaces the real function.
 @test:Mock {
-    moduleName: "ballerina-examples/record-io:0.0.1",
     functionName: "getWritableRecordChannel"
 }
-public function mockGetWritableRecordChannel(string filePath, string encoding,
+public isolated function mockGetWritableRecordChannel(string filePath, string encoding,
                                              string rs, string fs)
-                    returns io:WritableTextRecordChannel {
-    string path = "./record-io/" + filePath;
-    io:WritableByteChannel byteChannel = io:openWritableFile(path);
+                    returns io:WritableTextRecordChannel|error {
+    string path = "./src/record-io/" + filePath;
+    io:WritableByteChannel byteChannel = check io:openWritableFile(path);
     io:WritableCharacterChannel characterChannel = new(byteChannel, encoding);
     io:WritableTextRecordChannel delimitedRecordChannel = new(characterChannel,
         rs = rs,
@@ -48,7 +47,7 @@ public function mockGetWritableRecordChannel(string filePath, string encoding,
     return delimitedRecordChannel;
 }
 
-@test:Config
+@test:Config{}
 function testFunc() {
     // Invoke the main function.
     main();
@@ -57,6 +56,6 @@ function testFunc() {
     string actual1 = <string>outputs[0];
     string actual2 = <string>outputs[1];
     test:assertEquals(outputs.length(), 2);
-    test:assertTrue(actual1.contains(out1));
-    test:assertTrue(actual2.contains(out2));
+    test:assertTrue(stringutils:contains(actual1, out1));
+    test:assertTrue(stringutils:contains(actual2, out2));
 }

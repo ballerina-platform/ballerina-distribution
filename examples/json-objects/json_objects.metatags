@@ -1,0 +1,2 @@
+description: JSON objects are represented as maps of JSON in Ballerina. JSON object members could be of any JSON type: string, number, object, array, boolean, or null.
+keywords: ballerina, ballerina by example, bbe, json objects

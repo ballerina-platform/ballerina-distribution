@@ -8,4 +8,4 @@
 // The `authHandler` field is defined inside the `auth` field with the
 // value of it being the reference of the created `http:BearerAuthHandler`.<br/><br/>
 // For more information on the underlying module, 
-// see the [OAuth2 module](https://ballerina.io/learn/api-docs/ballerina/oauth2/index.html).
+// see the [OAuth2 module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/oauth2/index.html).

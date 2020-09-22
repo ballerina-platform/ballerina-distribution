@@ -1,6 +1,43 @@
 import ballerina/io;
 
+type Student record {|
+    int 'class;
+    Details details;
+    map<int> marks;
+|};
+
+type Details record {|
+    string name;
+    int id;
+|};
+
 public function main() {
+
+    // Create an immutable `Details` value, using an intersection type with `readonly`.
+    Details & readonly immutableDetails = {
+        name: "May",
+        id: 112233
+    };
+
+    // Now create an immutable `Student` value similarly.
+    Student & readonly student = {
+        'class: 12,
+        // Since `immutableDetails` was created as an immutable value it can be used as a member here.
+        details: immutableDetails,
+        // The applicable contextually expected type for `marks` is now `map<int> & readonly`.
+        // Thus the value for `marks` will be constructed as an immutable map.
+        marks: {
+            math: 80,
+            physics: 85,
+            chemistry: 75
+        }
+    };
+
+    // `student` and all the fields in `student` will be immutable.
+    io:println("student is immutable: ", student.isReadOnly());
+    io:println("student.details is immutable: ", student.details.isReadOnly());
+    io:println("student.marks is immutable: ", student.marks.isReadOnly());
+
     // Create an `anydata`-typed `map` with two entries.
     map<string|int> m1 = {stringVal: "str", intVal: 1};
 
@@ -22,9 +59,9 @@ public function main() {
     // Attempt to add an entry to the `map` and trap the panic if it results in a panic.
     error? updateResult = trap addEntryToMap(m2, "intValTwo", 10);
     if (updateResult is error) {
-        // An error should occur since `m2` is frozen.
+        // An error should occur since `m2` is immutable.
         io:println("Error occurred on update: ",
-                   <string>updateResult.detail()?.message);
+                   <string>updateResult.detail()["message"]);
     }
 
     // Now call `.cloneReadOnly()` on the immutable value `m2`.
@@ -34,19 +71,19 @@ public function main() {
     // since `m2` is already an immutable value.
     io:println("m2 === m3: ", m2 === m3);
 
-    // An `is` check for a frozen value becomes an `is like` check.
+    // An `is` check for an immutable value becomes an `is like` check.
     // In other words, storage type is not considered.
-    // Define a `map` of the constraint type `string` or `int`, but with
-    // values of the type `string` only.
+    // Define a `map` of the constraint type `string` or `int` but only with
+    // values of the type `string`.
     map<string|int> m5 = {valueType: "map", constraint: "string"};
     // Make the map immutable. The resultant value would only
     // contain values of the type `string` and no values can now be
     // added to the map.
-    var frozenVal = m5.cloneReadOnly();
-    // Checking if the frozen value is of the type `map<string>` thus
-    // evaluates to `true`.
-    if (frozenVal is map<string>) {
-        io:println("frozenVal is map<string>");
+    var immutableClonedVal = m5.cloneReadOnly();
+    // Checking if the immutable value is of the type `map<string>`. Thus,
+    // it evaluates to `true`.
+    if (immutableClonedVal is map<string>) {
+        io:println("immutableClonedVal is map<string>");
     }
 }
 

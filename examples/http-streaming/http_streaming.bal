@@ -3,7 +3,7 @@ import ballerina/io;
 import ballerina/log;
 import ballerina/mime;
 
-// Creates an endpoint for the [client](https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html).
+// Creates an endpoint for the [client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html).
 http:Client clientEndpoint = new ("http://localhost:9090");
 
 @http:ServiceConfig {
@@ -19,7 +19,7 @@ service HTTPStreamingService on new http:Listener(9090) {
                                          http:Request clientRequest) {
         http:Request request = new;
 
-        //[Sets the file](https://ballerina.io/learn/api-docs/ballerina/http/objects/Request.html#setFileAsPayload) as the request payload.
+        //[Sets the file](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/Request.html#setFileAsPayload) as the request payload.
         request.setFileAsPayload("./files/BallerinaLang.pdf",
             contentType = mime:APPLICATION_PDF);
 
@@ -55,7 +55,7 @@ service HTTPStreamingService on new http:Listener(9090) {
         http:Response res = new;
         var payload = clientRequest.getByteChannel();
         if (payload is io:ReadableByteChannel) {
-            //Writes the incoming stream to a file. First, [get the destination channel](https://ballerina.io/learn/api-docs/ballerina/io/functions.html#openWritableFile)
+            //Writes the incoming stream to a file. First, [get the destination channel](https://ballerina.io/swan-lake/learn/api-docs/ballerina/io/functions.html#openWritableFile)
             //by providing the file name to which the content should be written to.
             var destinationChannel =
                 io:openWritableFile("./files/ReceivedFile.pdf");
@@ -93,7 +93,7 @@ function copy(io:ReadableByteChannel src,
     // The below example shows how to read all the content from
     // the source and copy it to the destination.
     while (true) {
-        // The operation attempts to [read](https://ballerina.io/learn/api-docs/ballerina/io/objects/ReadableByteChannel.html#read) a maximum of 1000 bytes and returns
+        // The operation attempts to [read](https://ballerina.io/swan-lake/learn/api-docs/ballerina/io/objects/ReadableByteChannel.html#read) a maximum of 1000 bytes and returns
         // with the available content, which could be < 1000.
         byte[]|io:Error result = src.read(1000);
         if (result is io:EofError) {
@@ -101,7 +101,7 @@ function copy(io:ReadableByteChannel src,
         } else if (result is error) {
             return <@untainted>result;
         } else {
-            // The operation [writes](https://ballerina.io/learn/api-docs/ballerina/io/objects/WritableByteChannel.html#write) the given content into the channel.
+            // The operation [writes](https://ballerina.io/swan-lake/learn/api-docs/ballerina/io/objects/WritableByteChannel.html#write) the given content into the channel.
             int i = 0;
             while (i < result.length()) {
                 var result2 = dst.write(result, i);
@@ -118,7 +118,7 @@ function copy(io:ReadableByteChannel src,
 
 //Closes the byte channel.
 function close(io:ReadableByteChannel|io:WritableByteChannel ch) {
-    abstract object {
+    object {
         public function close() returns error?;
     } channelResult = ch;
     var cr = channelResult.close();

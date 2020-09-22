@@ -10,7 +10,7 @@ service helloWorld on new http:Listener(9090) {
         path: "/"
     }
     resource function hello(http:Caller caller, http:Request request) {
-        // [Check if the client expects a 100-continue response](https://ballerina.io/learn/api-docs/ballerina/http/objects/Request.html#expects100Continue).
+        // [Check if the client expects a 100-continue response](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/Request.html#expects100Continue).
         if (request.expects100Continue()) {
             string mediaType = request.getContentType();
             if (mediaType.toLowerAscii() == "text/plain") {

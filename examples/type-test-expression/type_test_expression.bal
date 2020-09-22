@@ -1,52 +1,52 @@
 import ballerina/io;
 
 public function main() {
-    any a = "Hello, world!";
+    any message = "Hello, world!";
 
     // Checks whether the actual value of the `any` type variable is a `string`.
-    boolean b = a is string;
-    io:println("Is 'a' a string? ", b);
+    boolean isString = message is string;
+    io:println("Is 'message' a string? ", isString);
 
     // The type test can be used as a condition of an `if` statement.
-    if (a is int) {
-        io:println("'a' is an int with value: ", a);
-    } else if (a is string) {
-        io:println("'a' is a string with value: ", a);
+    if (message is int) {
+        io:println("'message' is an int with value: ", message);
+    } else if (message is string) {
+        io:println("'message' is a string with value: ", message);
     } else {
-        io:println("'a' is not an int or string, with value: ", a);
+        io:println("'message' is not an int or string, and has the value: ", message);
     }
 
     // The type test can be used to find the runtime type of union type variables.
-    Student alex = {name : "Alex"};
-    Student|Person|Vehicle x = alex;
+    Student alex = { name: "Alex" };
+    Student|Person|Vehicle entity = alex;
 
-    // Type of `x` is `Student`. Therefore, the `if` check will pass.
-    if (x is Student) {
-        io:println("Alex is a student");
+    // Type of `entity` is `Student`. Therefore, the `if` check will pass.
+    if (entity is Student) {
+        io:println("entity is a student");
     } else {
-        io:println("Alex is not a student");
+        io:println("entity is not a student");
     }
 
-    // Type of `x` is `Student`. However, it is structurally equivalent to `Person`.
+    // Type of `entity` is `Student`. However, it is structurally equivalent to `Person`.
     // Therefore, the `if` check will pass.
-    if (x is Person) {
-        io:println("Alex is a person");
+    if (entity is Person) {
+        io:println("entity is a person");
     } else {
-        io:println("Alex is not a person");
+        io:println("entity is not a person");
     }
 
-    // Type of `x` is Student. However, it is not structurally equivalent to `Vehicle`.
-    if (x is Vehicle) {
-        io:println("Alex is a vehicle");
+    // Type of `entity` is Student. However, it is not structurally equivalent to `Vehicle`.
+    if (entity is Vehicle) {
+        io:println("entity is a vehicle");
     } else {
-        io:println("Alex is not a vehicle");
+        io:println("entity is not a vehicle");
     }
 
     // The type test expression can be used with any expression.
-    boolean isStudent = foo("student") is Student;
-    io:println("Does foo return a student? ", isStudent);
-    isStudent = foo("vehicle") is Student;
-    io:println("Does foo return a student? ", isStudent);
+    boolean isStudent = createEntity("student") is Student;
+    io:println("Did createEntity(\"student\") return a student? ", isStudent);
+    isStudent = createEntity("vehicle") is Student;
+    io:println("Did createEntity(\"vehicle\") return a student? ", isStudent);
 }
 
 type Person record {
@@ -62,11 +62,11 @@ type Vehicle record {
     string brand;
 };
 
-function foo(string t) returns any {
-    if (t == "student") {
-        return <Student>{name: "Alex"};
-    } else if (t == "vehicle") {
-        return <Vehicle>{brand: "Honda"};
+function createEntity(string entityType) returns any {
+    if (entityType == "student") {
+        return <Student> { name: "Alex" };
+    } else if (entityType == "vehicle") {
+        return <Vehicle> { brand: "Honda" };
     }
     return "invalid type";
 }

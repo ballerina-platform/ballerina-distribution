@@ -1,84 +1,90 @@
 import ballerina/io;
 
 public function main() {
-    io:println("Iterating a string array :");
+    io:println("Iterating a string array:- ");
     string[] fruits = ["apple", "banana", "cherry"];
 
     // The `foreach` statement can be used to iterate an array. Each iteration returns an element in the array.
-    // The index of the corresponding element is not returned.
-    foreach var v in fruits {
-        io:println("fruit: ", v);
+    foreach var fruit in fruits {
+        io:println("Fruit: ", fruit);
     }
 
-    io:println("\nIterating a map :");
-    map<string> words = {a: "apple", b: "banana", c: "cherry"};
+    io:println("\nIterating a map:- ");
+    map<string> countryCapitals = { "USA": "Washington, D.C.", "Sri Lanka": "Colombo", "England": "London" };
     // Iterating a map will return the values in the map.
-    foreach var fruit in words {
-        io:println(fruit);
-    }
-    // Calling the `.entries()' method on a `map` and iterating it will return the key (`string`) and the value as a
-    // `tuple` variable. Tuple destructuring can be used to split the tuple variable into two variables.
-    foreach var [k, v] in words.entries() {
-        io:println("letter: ", k, ", word: ", v);
+    foreach var capital in countryCapitals {
+        io:println("Capital: ", capital);
     }
 
-    io:println("\nIterating a JSON object :");
-    json apple = {name: "apple", colors: ["red", "green"], price: 5};
+    // Calling the `entries()` method on a `map` generates a new map in which its value contains a tuple
+    // [key, value]. In the tuple, the `key` and `value` are key/value pairs of the original map. In this manner, a `foreach` on 
+    // the new map will iterate through each key/value pair as tuple values.
+    foreach var [country, capital] in countryCapitals.entries() {
+        io:println("Country: ", country, ", Capital: ", capital);
+    }
+
+    io:println("\nIterating a JSON object:- ");
+    json apple = { name: "apple", colors: ["red", "green"], price: 5 };
     // Iterating a JSON is only supported with `map<json>` or `json[]`.
     // To iterate a JSON, first cast it to the relevant iterable type.
-    map<json> mapValue = <map<json>>apple;
-    foreach var value in mapValue {
-        if (value is string) {
-            io:println("string value: ", value);
-        } else if (value is int) {
-            io:println("int value: ", value);
-        } else if (value is json[]) {
-            io:println("json array value: ", value);
-        } else {
-            // JSON is a union type for `()` or `null`|`int`|`float`|`decimal`|`string`|`json[]`|`map<json>`.
-            // The else block will be reached if `j` is neither `string`, `int`, or `json[]`.
-            io:println("non-string value: ", value);
-        }
+    map<json> mapValue = <map<json>> apple;
+    foreach var [key, value] in mapValue.entries() {
+        io:println("Key: ", key, " Value: ", value);
     }
 
-    io:println("\nIterating a JSON array :");
+    io:println("\nIterating a JSON array:- ");
     // To iterate a JSON array, you need to first cast it into a JSON array (`json[]`).
-    json[] colors = <json[]>apple.colors;
-    int counter = 0;
-    foreach var j in colors {
-        io:println("color ", counter, ": ", j);
-        counter += 1;
+    json[] colors = <json[]> apple.colors;
+    foreach var color in colors {
+        io:println("Color: ", color);
     }
 
-    io:println("\nIterating XML :");
-    xml book = xml `<book>
-                        <name>Sherlock Holmes</name>
-                        <author>Sir Arthur Conan Doyle</author>
-                    </book>`;
-    // Iterating an XML will return each element in each iteration.
-    counter = 0;
-    foreach var x in book/<*> {
-        io:println("xml at ", counter, ": ", x);
-        counter += 1;
+    io:println("\nIterating an XML:- ");
+    xml books = xml `<books>
+                       <book><name>Sherlock Holmes</name><author>Sir Arthur Conan Doyle</author></book>
+                       <book><name>Harry Potter</name><author>J.K. Rowling</author></book>                       
+                     </books>`;
+    // Iterating an XML will return an individual element in each iteration.
+    foreach var book in books/<*> {
+        io:println("Book: ", book);
     }
 
-    io:println("\nIterating a closed integer range :");
+    io:println("\nIterating a table:- ");
+    // Iterating a table will return an individual row in each iteration.
+    EmployeeTable employeeTab = table [
+        {id: 1, name: "John", salary: 300.50},
+        {id: 2, name: "Bella", salary: 500.50},
+        {id: 3, name: "Peter", salary: 750.0}
+    ];
+
+    foreach var employee in employeeTab {
+        io:println("Employee: ", employee);
+    }
+
+    io:println("\nIterating a closed integer range:- ");
     int endValue = 10;
     int sum = 0;
     // A closed integer range in the `foreach` statement represents an incremental integer value range from the start
     // expression (`1`) to the end expression (`endValue`) inclusively.
-    foreach var i in 1 ... endValue {
+    foreach var i in 1...endValue {
         sum = sum + i;
     }
-    io:println("summation from 1 to ", endValue, " is ", sum);
+    io:println("Summation from 1 to ", endValue, " is ", sum);
 
-    io:println("\nIterating a half open integer range :");
+    io:println("\nIterating a half open integer range:- ");
     sum = 0;
     // A half-open integer range in the `foreach` statement represents an incremental integer value range from the start
-    // expression (`1`) inclusively, to the end expression (`endValue`) exclusively.
-    foreach var i in 1 ..< endValue {
+    // expression (`1`) inclusively to the end expression (`endValue`) exclusively.
+    foreach var i in 1..< endValue {
         sum = sum + i;
     }
-    io:println("summation from 1 to ", endValue,
-                        " excluding ", endValue, " is ", sum);
+    io:println("Summation from 1 to ", endValue," (exclusive) is ", sum);
 }
+
+type Employee record {
+    readonly int id;
+    string name;
+    float salary;
+};
+
+type EmployeeTable table<Employee> key(id);

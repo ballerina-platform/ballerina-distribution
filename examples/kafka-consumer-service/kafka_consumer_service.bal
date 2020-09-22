@@ -1,13 +1,15 @@
-import ballerina/kafka;
+import ballerinax/kafka;
 import ballerina/log;
 
 kafka:ConsumerConfiguration consumerConfigs = {
     // The `bootstrapServers` is the list of remote server endpoints of the
     // Kafka brokers.
     bootstrapServers: "localhost:9092",
+
     groupId: "group-id",
     // Subscribes to the topic `test-kafka-topic`.
     topics: ["test-kafka-topic"],
+
     pollingIntervalInMillis: 1000,
     // Uses the default int deserializer for the keys.
     keyDeserializerType: kafka:DES_INT,
@@ -16,6 +18,7 @@ kafka:ConsumerConfiguration consumerConfigs = {
     // Set `autoCommit` to false, so that the records should be committed
     // manually.
     autoCommit: false
+
 };
 
 listener kafka:Consumer consumer = new (consumerConfigs);
@@ -32,6 +35,7 @@ service kafkaService on consumer {
         }
         // Commit offsets for returned records by marking them as consumed.
         var commitResult = kafkaConsumer->commit();
+
         if (commitResult is error) {
             log:printError("Error occurred while committing the " +
                 "offsets for the consumer ", commitResult);
@@ -53,6 +57,7 @@ function processKafkaRecord(kafka:ConsumerRecord kafkaRecord) {
             log:printInfo("Partition: " + kafkaRecord.partition.toString());
             log:printInfo("Key: " + key.toString());
             log:printInfo("Value: " + value);
+
         } else {
             log:printError("Invalid key type received");
         }

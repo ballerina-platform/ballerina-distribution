@@ -6,7 +6,7 @@ import ballerina/log;
 }
 service contentBasedRouting on new http:Listener(9090) {
 
-    // Use [resourceConfig](https://ballerina.io/learn/api-docs/ballerina/http/records/HttpResourceConfig.html) annotation to declare the HTTP method.
+    // Use [resourceConfig](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/HttpResourceConfig.html) annotation to declare the HTTP method.
     @http:ResourceConfig {
         methods: ["POST"],
         path: "/route"
@@ -24,7 +24,7 @@ service contentBasedRouting on new http:Listener(9090) {
             http:Response|error clientResponse;
             if (nameString is json) {
                 if (nameString.toString() == "sanFrancisco") {
-                    // Here, [post](https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#post) remote function represents the POST operation of
+                    // Here, [post](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html#post) remote function represents the POST operation of
                     // the HTTP client.
                     // This routes the payload to the relevant service when the server
                     // accepts the enclosed entity.
@@ -36,7 +36,7 @@ service contentBasedRouting on new http:Listener(9090) {
                             locationEP->post("/v2/594e026c1100004011d6d39c", ());
                 }
 
-                // Use the remote function [respond](https://ballerina.io/learn/api-docs/ballerina/http/clients/Caller.html#respond) to send the client response
+                // Use the remote function [respond](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Caller.html#respond) to send the client response
                 // back to the caller.
                 if (clientResponse is http:Response) {
                     var result = outboundEP->respond(clientResponse);

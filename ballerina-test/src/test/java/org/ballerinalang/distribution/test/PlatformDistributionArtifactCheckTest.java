@@ -32,12 +32,15 @@ import java.util.Objects;
 
 import static org.ballerinalang.distribution.utils.TestUtils.DISTRIBUTIONS_DIR;
 import static org.ballerinalang.distribution.utils.TestUtils.MAVEN_VERSION;
+import static org.ballerinalang.distribution.utils.TestUtils.SHORT_VERSION;
 import static org.ballerinalang.distribution.utils.TestUtils.TEST_DISTRIBUTION_PATH;
 
 /**
  * Check if necessary files exists to build in the platform specific distributions.
  */
 public class PlatformDistributionArtifactCheckTest {
+    
+    private static final String DIST_NAME = "ballerina-" + SHORT_VERSION;
     
     @DataProvider(name = "distribution-provider")
     public Object[][] distributionNameProvider() {
@@ -61,7 +64,7 @@ public class PlatformDistributionArtifactCheckTest {
     @Test(dataProvider = "distribution-provider")
     public void dockerAnnotationExistsTest(String distributionFileName) {
         Path distributionsPath = TEST_DISTRIBUTION_PATH.resolve(distributionFileName).resolve("distributions");
-        String jballerinaFileName = TestUtils.findFileOrDirectory(distributionsPath, "jballerina-");
+        String jballerinaFileName = TestUtils.findFileOrDirectory(distributionsPath, DIST_NAME);
         Objects.requireNonNull(jballerinaFileName);
     
         Path birPath = distributionsPath
@@ -69,7 +72,7 @@ public class PlatformDistributionArtifactCheckTest {
                 .resolve("bir-cache")
                 .resolve("ballerina")
                 .resolve("docker")
-                .resolve("0.0.0")
+                .resolve("1.0.0")
                 .resolve("docker.bir");
     
         Path tomlPath = distributionsPath
@@ -77,7 +80,7 @@ public class PlatformDistributionArtifactCheckTest {
                 .resolve("bir-cache")
                 .resolve("ballerina")
                 .resolve("docker")
-                .resolve("0.0.0")
+                .resolve("1.0.0")
                 .resolve("Ballerina.toml");
     
         Path breLibPath = distributionsPath
@@ -85,16 +88,28 @@ public class PlatformDistributionArtifactCheckTest {
                 .resolve("bre")
                 .resolve("lib");
     
+        Path bbePath = distributionsPath
+                .resolve(jballerinaFileName)
+                .resolve("examples")
+                .resolve("docker-deployment");
+    
+        Path docsPath = distributionsPath
+                .resolve(jballerinaFileName)
+                .resolve("docs")
+                .resolve("docker");
+    
         Assert.assertTrue(Files.exists(birPath));
         Assert.assertTrue(Files.exists(tomlPath));
-        Assert.assertTrue(Files.exists(breLibPath.resolve("ballerina.docker.jar")));
+        Assert.assertTrue(Files.exists(breLibPath.resolve("ballerina-docker-1.0.0.jar")));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "docker-extension-"));
+        Assert.assertTrue(Files.exists(bbePath));
+        Assert.assertTrue(Files.exists(docsPath));
     }
     
     @Test(dataProvider = "distribution-provider")
     public void kubernetesAnnotationExistsTest(String distributionFileName) {
         Path distributionsPath = TEST_DISTRIBUTION_PATH.resolve(distributionFileName).resolve("distributions");
-        String jballerinaFileName = TestUtils.findFileOrDirectory(distributionsPath, "jballerina-");
+        String jballerinaFileName = TestUtils.findFileOrDirectory(distributionsPath, DIST_NAME);
         Objects.requireNonNull(jballerinaFileName);
     
         Path birPath = distributionsPath
@@ -102,7 +117,7 @@ public class PlatformDistributionArtifactCheckTest {
                 .resolve("bir-cache")
                 .resolve("ballerina")
                 .resolve("kubernetes")
-                .resolve("0.0.0")
+                .resolve("1.0.0")
                 .resolve("kubernetes.bir");
         
         Path tomlPath = distributionsPath
@@ -110,7 +125,7 @@ public class PlatformDistributionArtifactCheckTest {
                 .resolve("bir-cache")
                 .resolve("ballerina")
                 .resolve("kubernetes")
-                .resolve("0.0.0")
+                .resolve("1.0.0")
                 .resolve("Ballerina.toml");
     
         Path breLibPath = distributionsPath
@@ -118,16 +133,28 @@ public class PlatformDistributionArtifactCheckTest {
                 .resolve("bre")
                 .resolve("lib");
     
+        Path bbePath = distributionsPath
+                .resolve(jballerinaFileName)
+                .resolve("examples")
+                .resolve("kubernetes-deployment");
+    
+        Path docsPath = distributionsPath
+                .resolve(jballerinaFileName)
+                .resolve("docs")
+                .resolve("kubernetes");
+    
         Assert.assertTrue(Files.exists(birPath));
         Assert.assertTrue(Files.exists(tomlPath));
-        Assert.assertTrue(Files.exists(breLibPath.resolve("ballerina.kubernetes.jar")));
+        Assert.assertTrue(Files.exists(breLibPath.resolve("ballerina-kubernetes-1.0.0.jar")));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "kubernetes-extension-"));
+        Assert.assertTrue(Files.exists(bbePath));
+        Assert.assertTrue(Files.exists(docsPath));
     }
     
     @Test(dataProvider = "distribution-provider")
     public void istioAnnotationExistsTest(String distributionFileName) {
         Path distributionsPath = TEST_DISTRIBUTION_PATH.resolve(distributionFileName).resolve("distributions");
-        String jballerinaFileName = TestUtils.findFileOrDirectory(distributionsPath, "jballerina-");
+        String jballerinaFileName = TestUtils.findFileOrDirectory(distributionsPath, DIST_NAME);
         Objects.requireNonNull(jballerinaFileName);
     
         Path birPath = distributionsPath
@@ -135,7 +162,7 @@ public class PlatformDistributionArtifactCheckTest {
                 .resolve("bir-cache")
                 .resolve("ballerina")
                 .resolve("istio")
-                .resolve("0.0.0")
+                .resolve("1.0.0")
                 .resolve("istio.bir");
         
         Path tomlPath = distributionsPath
@@ -143,7 +170,7 @@ public class PlatformDistributionArtifactCheckTest {
                 .resolve("bir-cache")
                 .resolve("ballerina")
                 .resolve("istio")
-                .resolve("0.0.0")
+                .resolve("1.0.0")
                 .resolve("Ballerina.toml");
     
         Path breLibPath = distributionsPath
@@ -151,16 +178,22 @@ public class PlatformDistributionArtifactCheckTest {
                 .resolve("bre")
                 .resolve("lib");
     
+        Path docsPath = distributionsPath
+                .resolve(jballerinaFileName)
+                .resolve("docs")
+                .resolve("istio");
+    
         Assert.assertTrue(Files.exists(birPath));
         Assert.assertTrue(Files.exists(tomlPath));
-        Assert.assertTrue(Files.exists(breLibPath.resolve("ballerina.istio.jar")));
+        Assert.assertTrue(Files.exists(breLibPath.resolve("ballerina-istio-1.0.0.jar")));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "kubernetes-extension-"));
+        Assert.assertTrue(Files.exists(docsPath));
     }
     
     @Test(dataProvider = "distribution-provider")
     public void openshiftAnnotationExistsTest(String distributionFileName) {
         Path distributionsPath = TEST_DISTRIBUTION_PATH.resolve(distributionFileName).resolve("distributions");
-        String jballerinaFileName = TestUtils.findFileOrDirectory(distributionsPath, "jballerina-");
+        String jballerinaFileName = TestUtils.findFileOrDirectory(distributionsPath, DIST_NAME);
         Objects.requireNonNull(jballerinaFileName);
     
         Path birPath = distributionsPath
@@ -168,7 +201,7 @@ public class PlatformDistributionArtifactCheckTest {
                 .resolve("bir-cache")
                 .resolve("ballerina")
                 .resolve("openshift")
-                .resolve("0.0.0")
+                .resolve("1.0.0")
                 .resolve("openshift.bir");
         
         Path tomlPath = distributionsPath
@@ -176,7 +209,7 @@ public class PlatformDistributionArtifactCheckTest {
                 .resolve("bir-cache")
                 .resolve("ballerina")
                 .resolve("openshift")
-                .resolve("0.0.0")
+                .resolve("1.0.0")
                 .resolve("Ballerina.toml");
     
         Path breLibPath = distributionsPath
@@ -184,16 +217,28 @@ public class PlatformDistributionArtifactCheckTest {
                 .resolve("bre")
                 .resolve("lib");
     
+        Path bbePath = distributionsPath
+                .resolve(jballerinaFileName)
+                .resolve("examples")
+                .resolve("openshift-deployment");
+    
+        Path docsPath = distributionsPath
+                .resolve(jballerinaFileName)
+                .resolve("docs")
+                .resolve("openshift");
+    
         Assert.assertTrue(Files.exists(birPath));
         Assert.assertTrue(Files.exists(tomlPath));
-        Assert.assertTrue(Files.exists(breLibPath.resolve("ballerina.openshift.jar")));
+        Assert.assertTrue(Files.exists(breLibPath.resolve("ballerina-openshift-1.0.0.jar")));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "kubernetes-extension-"));
+        Assert.assertTrue(Files.exists(bbePath));
+        Assert.assertTrue(Files.exists(docsPath));
     }
     
     @Test(dataProvider = "distribution-provider")
     public void knativeAnnotationExistsTest(String distributionFileName) {
         Path distributionsPath = TEST_DISTRIBUTION_PATH.resolve(distributionFileName).resolve("distributions");
-        String jballerinaFileName = TestUtils.findFileOrDirectory(distributionsPath, "jballerina-");
+        String jballerinaFileName = TestUtils.findFileOrDirectory(distributionsPath, DIST_NAME);
         Objects.requireNonNull(jballerinaFileName);
     
         Path birPath = distributionsPath
@@ -201,7 +246,7 @@ public class PlatformDistributionArtifactCheckTest {
                 .resolve("bir-cache")
                 .resolve("ballerina")
                 .resolve("knative")
-                .resolve("0.0.0")
+                .resolve("1.0.0")
                 .resolve("knative.bir");
         
         Path tomlPath = distributionsPath
@@ -209,7 +254,7 @@ public class PlatformDistributionArtifactCheckTest {
                 .resolve("bir-cache")
                 .resolve("ballerina")
                 .resolve("knative")
-                .resolve("0.0.0")
+                .resolve("1.0.0")
                 .resolve("Ballerina.toml");
     
         Path breLibPath = distributionsPath
@@ -217,17 +262,29 @@ public class PlatformDistributionArtifactCheckTest {
                 .resolve("bre")
                 .resolve("lib");
     
+        Path bbePath = distributionsPath
+                .resolve(jballerinaFileName)
+                .resolve("examples")
+                .resolve("knative-deployment");
+    
+        Path docsPath = distributionsPath
+                .resolve(jballerinaFileName)
+                .resolve("docs")
+                .resolve("knative");
+    
         Assert.assertTrue(Files.exists(birPath));
         Assert.assertTrue(Files.exists(tomlPath));
-        Assert.assertTrue(Files.exists(breLibPath.resolve("ballerina.knative.jar")));
+        Assert.assertTrue(Files.exists(breLibPath.resolve("ballerina-knative-1.0.0.jar")));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "kubernetes-extension-"));
+        Assert.assertTrue(Files.exists(bbePath));
+        Assert.assertTrue(Files.exists(docsPath));
     }
     
     
     @Test(dataProvider = "distribution-provider")
     public void awsLambdaAnnotationExistsTest(String distributionFileName) {
         Path distributionsPath = TEST_DISTRIBUTION_PATH.resolve(distributionFileName).resolve("distributions");
-        String jballerinaFileName = TestUtils.findFileOrDirectory(distributionsPath, "jballerina-");
+        String jballerinaFileName = TestUtils.findFileOrDirectory(distributionsPath, DIST_NAME);
         Objects.requireNonNull(jballerinaFileName);
         
         Path birPath = distributionsPath
@@ -243,8 +300,57 @@ public class PlatformDistributionArtifactCheckTest {
                 .resolve("bre")
                 .resolve("lib");
     
+        Path bbePath = distributionsPath
+                .resolve(jballerinaFileName)
+                .resolve("examples")
+                .resolve("aws-lambda-deployment");
+    
+        Path docsPath = distributionsPath
+                .resolve(jballerinaFileName)
+                .resolve("docs")
+                .resolve("awslambda");
+    
         Assert.assertTrue(Files.exists(birPath));
+        Assert.assertTrue(Files.exists(breLibPath.resolve("ballerinax-awslambda-0.0.0.jar")));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "awslambda-extension-"));
+        Assert.assertTrue(Files.exists(bbePath));
+        Assert.assertTrue(Files.exists(docsPath));
+    }
+    
+    @Test(dataProvider = "distribution-provider")
+    public void azFunctionsAnnotationExistsTest(String distributionFileName) {
+        Path distributionsPath = TEST_DISTRIBUTION_PATH.resolve(distributionFileName).resolve("distributions");
+        String jballerinaFileName = TestUtils.findFileOrDirectory(distributionsPath, DIST_NAME);
+        Objects.requireNonNull(jballerinaFileName);
+        
+        Path birPath = distributionsPath
+                .resolve(jballerinaFileName)
+                .resolve("bir-cache")
+                .resolve("ballerinax")
+                .resolve("azure.functions")
+                .resolve("0.0.0")
+                .resolve("azure.functions.bir");
+        
+        Path breLibPath = distributionsPath
+                .resolve(jballerinaFileName)
+                .resolve("bre")
+                .resolve("lib");
+        
+        Path bbePath = distributionsPath
+                .resolve(jballerinaFileName)
+                .resolve("examples")
+                .resolve("azure-functions-deployment");
+        
+        Path docsPath = distributionsPath
+                .resolve(jballerinaFileName)
+                .resolve("docs")
+                .resolve("azure.functions");
+        
+        Assert.assertTrue(Files.exists(birPath));
+        Assert.assertTrue(Files.exists(breLibPath.resolve("ballerinax-azure.functions-0.0.0.jar")));
+        Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "azurefunctions-extension-"));
+        Assert.assertTrue(Files.exists(bbePath));
+        Assert.assertTrue(Files.exists(docsPath));
     }
     
     @AfterClass

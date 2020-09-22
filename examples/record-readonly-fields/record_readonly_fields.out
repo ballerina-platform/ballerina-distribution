@@ -1,0 +1,8 @@
+# To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run record_readonly_fields.bal
+empTwo is immutable: false
+details is immutable: true
+identifier is immutable: true
+error: {ballerina/lang.map}InherentTypeViolation {"message":"cannot update 'readonly' field 'details' in record of type 'Employee'"}
+        at record_readonly_fields:main(record_readonly_fields.bal:73)

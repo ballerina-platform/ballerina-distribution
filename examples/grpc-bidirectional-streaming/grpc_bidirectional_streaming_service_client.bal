@@ -14,8 +14,7 @@ public function main() {
     var res = chatEp->chat(ChatMessageListener);
 
     if (res is grpc:Error) {
-        io:println("Error from Connector: " + res.reason() + " - "
-                                  + <string>res.detail()["message"]);
+        io:println("Error from Connector: " + res.message());
         return;
     } else {
         io:println("Initialized connection sucessfully.");
@@ -27,8 +26,7 @@ public function main() {
     grpc:Error? connErr = ep->send(mes);
 
     if (connErr is grpc:Error) {
-        io:println("Error from Connector: " + connErr.reason() + " - "
-                               + <string>connErr.detail()["message"]);
+        io:println("Error from Connector: " + connErr.message());
     }
     runtime:sleep(6000);
 
@@ -49,8 +47,7 @@ service ChatMessageListener = service {
 
     // Resource registered to receive server error messages.
     resource function onError(error err) {
-        io:println("Error reported from server: " + err.reason() + " - "
-                                  + <string>err.detail()["message"]);
+        io:println("Error reported from server: " + err.message());
     }
 
     // Resource registered to receive server completed message.

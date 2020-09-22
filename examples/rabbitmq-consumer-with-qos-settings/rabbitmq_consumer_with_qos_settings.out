@@ -1,9 +1,9 @@
 # Make sure to have the RabbitMQ broker running.
 #
 # Navigate to the directory that contains the
-# 'rabbitmq_consumer_with_qos_settings.bal' file and issue the 'ballerina run' command as follows..
+# 'rabbitmq_consumer_with_qos_settings.bal' file and run the 'ballerina run' command below.
 
-$ ballerina run rabbitmq_consumer_with_qos_settings.bal
+ballerina run rabbitmq_consumer_with_qos_settings.bal
 
 # The RabbitMQ consumer runs as a Ballerina service and listens to the subscribed queue.
 
