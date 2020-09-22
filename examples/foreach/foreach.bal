@@ -44,17 +44,17 @@ public function main() {
     io:println("\nIterating an XML:- ");
     xml books = xml `<books>
                        <book>
-                            <name>Sherlock Holmes</name>
-                            <author>Sir Arthur Conan Doyle</author>
+                           <name>Sherlock Holmes</name>
+                           <author>Sir Arthur Conan Doyle</author>
                        </book>
                        <book>
-                            <name>Harry Potter</name>
-                            <author>J.K. Rowling</author>
+                           <name>Harry Potter</name>
+                           <author>J.K. Rowling</author>
                        </book>
                      </books>`;
     // Iterating an XML will return an individual element in each iteration.
     foreach var book in books/<*> {
-        io:println("Book: ", book);
+        io:println("Book: \t\t\t", book);
     }
 
     io:println("\nIterating a table:- ");

@@ -24,8 +24,14 @@ Color: red
 Color: green
 
 Iterating an XML:-
-Book: <book><name>Sherlock Holmes</name><author>Sir Arthur Conan Doyle</author></book>
-Book: <book><name>Harry Potter</name><author>J.K. Rowling</author></book>
+Book:                   <book>
+                           <name>Sherlock Holmes</name>
+                           <author>Sir Arthur Conan Doyle</author>
+                       </book>
+Book:                   <book>
+                           <name>Harry Potter</name>
+                           <author>J.K. Rowling</author>
+                       </book>
 
 Iterating a table:-
 Employee: {"id":1,"name":"John","salary":300.5}

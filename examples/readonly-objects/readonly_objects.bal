@@ -45,6 +45,6 @@ public function main() {
     io:println("immutableController ID: ", immutableController.getId());
 
     Controller controller = immutableController;
-    io:println("Controller is immutable: ",
+    io:println("controller is immutable: ",
                                         controller is readonly & Controller);
 }
