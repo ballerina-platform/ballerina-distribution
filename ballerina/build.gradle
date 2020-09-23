@@ -880,7 +880,6 @@ task testExamples() {
         'http-client-endpoint',
         'response-with-multiparts',
         'mutual-ssl',
-        'send-and-receive-emails',
         'gauge-metrics',
         'counter-metrics',
         'tracing',
@@ -968,6 +967,7 @@ task testExamples() {
         'secured-client-with-basic-auth', // Need to run the service first
         'secured-client-with-jwt-auth', // Need to run the service first
         'secured-client-with-oauth2', // Need to run the service first
+        'send-and-receive-emails',
         'task-service-timer',
         'task-service-appointment',
         'task-scheduler-timer',
