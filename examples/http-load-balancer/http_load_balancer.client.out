@@ -10,8 +10,8 @@ curl -v http://localhost:9090/lb
 >
 < HTTP/1.1 200 OK
 < content-type: text/plain
-< date: Wed, 4 Sep 2019 15:36:57 +0530
-< server: ballerina/1.0.0-beta
+< date: Wed, 23 Sep 2020 09:59:31 +0530
+< server: ballerina
 < content-length: 27
 <
 * Connection #0 to host localhost left intact
@@ -30,8 +30,8 @@ curl -v http://localhost:9090/lb
 >
 < HTTP/1.1 200 OK
 < content-type: text/plain
-< date: Wed, 4 Sep 2019 15:36:58 +0530
-< server: ballerina/1.0.0-beta
+< date: Wed, 23 Sep 2020 10:00:20 +0530
+< server: ballerina
 < content-length: 27
 <
 * Connection #0 to host localhost left intact
@@ -50,8 +50,8 @@ curl -v http://localhost:9090/lb
 >
 < HTTP/1.1 200 OK
 < content-type: text/plain
-< date: Wed, 4 Sep 2019 15:36:59 +0530
-< server: ballerina/1.0.0-beta
+< date: Wed, 23 Sep 2020 10:00:22 +0530
+< server: ballerina
 < content-length: 27
 <
 * Connection #0 to host localhost left intact
@@ -70,8 +70,8 @@ curl -v http://localhost:9090/lb
 >
 < HTTP/1.1 200 OK
 < content-type: text/plain
-< date: Wed, 4 Sep 2019 15:37:00 +0530
-< server: ballerina/1.0.0-beta
+< date: Wed, 23 Sep 2020 10:00:25 +0530
+< server: ballerina
 < content-length: 27
 <
 * Connection #0 to host localhost left intact

@@ -1,18 +1,36 @@
 # Run the cURL command below to send a CORS simple request. 
 curl -v "http://localhost:9092/crossOriginService/company" -H "Origin:http://www.bbc.com"
-
+> GET /crossOriginService/company HTTP/1.1
+> Host: localhost:9092
+> User-Agent: curl/7.64.1
+> Accept: */*
+> Origin:http://www.bbc.com
+>
 < HTTP/1.1 200 OK
-< Content-Type: application/json
-< Access-Control-Allow-Origin: http://www.bbc.com
-< Access-Control-Allow-Credentials: true
-< Content-Length: 21
-{"type":"middleware"}
+< content-type: application/json
+< access-control-allow-origin: http://www.bbc.com
+< access-control-allow-credentials: true
+< content-length: 21
+< server: ballerina
+<
+* Connection #0 to host localhost left intact
+{"type":"middleware"}* Closing connection 0
 
 # Run the cURL command below to send a CORS preflight request. 
 curl -v "http://localhost:9092/crossOriginService/lang" -X OPTIONS -H "Origin:http://www.m3.com" -H "Access-Control-Request-Method:POST"
-
+> OPTIONS /crossOriginService/lang HTTP/1.1
+> Host: localhost:9092
+> User-Agent: curl/7.64.1
+> Accept: */*
+> Origin:http://www.m3.com
+> Access-Control-Request-Method:POST
+>
 < HTTP/1.1 200 OK
-< Access-Control-Allow-Origin: http://www.m3.com
-< Access-Control-Allow-Methods: POST
-< Access-Control-Max-Age: 84900
-< Content-Length: 0
+< access-control-allow-origin: http://www.m3.com
+< access-control-max-age: 84900
+< access-control-allow-methods: POST
+< content-length: 0
+< server: ballerina
+<
+* Connection #0 to host localhost left intact
+* Closing connection 0

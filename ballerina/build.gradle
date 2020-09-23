@@ -930,6 +930,8 @@ task testExamples() {
         'different-payload-types',
         'base-path-and-path',
         'http-trace-logs',
+        'restrict-by-media-type',
+        'http-cors',
         'websocket-basic-sample',
         'websocket-chat-application',
         'websocket-client',

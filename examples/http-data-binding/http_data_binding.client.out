@@ -1,14 +1,53 @@
 # To invoke the `bindJson` resource, execute the below HTTP request.
 curl -v http://localhost:9090/hello/bindJson -d '{ "Details": { "ID": "77999", "Name": "XYZ"} , "Location": { "No": "01", "City": "Colombo"}}' -H "Content-Type:application/json"
-# Server response:
-{"ID":"77999", "Name":"XYZ"}
+> POST /hello/bindJson HTTP/1.1
+> Host: localhost:9090
+> User-Agent: curl/7.64.1
+> Accept: */*
+> Content-Type:application/json
+> Content-Length: 92
+>
+* upload completely sent off: 92 out of 92 bytes
+< HTTP/1.1 200 OK
+< content-type: application/json
+< content-length: 28
+< server: ballerina
+<
+* Connection #0 to host localhost left intact
+{"ID":"77999", "Name":"XYZ"}* Closing connection 0
 
 # To invoke the `bindXML` resource, execute the below HTTP request.
 curl -v http://localhost:9090/hello/bindXML -d "<h:Store id = \"AST\" xmlns:h=\"http://www.test.com\"><h:street>Main</h:street><h:city>94</h:city></h:Store>" -H "Content-Type:application/xml"
-# Server response:
-<h:city xmlns:h="http://www.test.com">94</h:city>
+> POST /hello/bindXML HTTP/1.1
+> Host: localhost:9090
+> User-Agent: curl/7.64.1
+> Accept: */*
+> Content-Type:application/xml
+> Content-Length: 104
+>
+* upload completely sent off: 104 out of 104 bytes
+< HTTP/1.1 200 OK
+< content-type: application/xml
+< content-length: 49
+< server: ballerina
+<
+* Connection #0 to host localhost left intact
+<h:city xmlns:h="http://www.test.com">94</h:city>* Closing connection 0
 
 # To invoke the `bindStruct` resource, execute the below HTTP request.
 curl -v http://localhost:9090/hello/bindStruct -d '{ "Name": "John", "Grade": 12, "Marks": {"English" : "85", "IT" : "100"}}' -H "Content-Type:application/json"
-# Server response:
-{"Name":"John", "Grade":12, "English":"85"}
+> POST /hello/bindStruct HTTP/1.1
+> Host: localhost:9090
+> User-Agent: curl/7.64.1
+> Accept: */*
+> Content-Type:application/json
+> Content-Length: 73
+>
+* upload completely sent off: 73 out of 73 bytes
+< HTTP/1.1 200 OK
+< content-type: application/json
+< content-length: 43
+< server: ballerina
+<
+* Connection #0 to host localhost left intact
+{"Name":"John", "Grade":12, "English":"85"}* Closing connection 0

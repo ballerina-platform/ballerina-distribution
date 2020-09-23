@@ -9,6 +9,7 @@ curl -v --output - http://localhost:9090/autoCompress -H "Accept-Encoding:deflat
 >
 < HTTP/1.1 200 OK
 < content-type: application/json
+< server: ballerina
 < content-encoding: deflate
 < content-length: 41
 <
@@ -26,6 +27,7 @@ curl -v --output - http://localhost:9090/alwaysCompress/getJson
 >
 < HTTP/1.1 200 OK
 < content-type: application/json
+< server: ballerina
 < content-length: 49
 <
 * Connection #0 to host localhost left intact
@@ -41,6 +43,7 @@ curl -v --output - http://localhost:9090/alwaysCompress/getString
 >
 < HTTP/1.1 200 OK
 < content-type: text/plain
+< server: ballerina
 < content-encoding: gzip
 < content-length: 48
 <
@@ -57,6 +60,7 @@ curl -v --output - http://localhost:9092/passthrough/
 >
 < HTTP/1.1 200 OK
 < content-type: text/plain
+< server: ballerina
 < transfer-encoding: chunked
 <
 * Connection #0 to host localhost left intact
