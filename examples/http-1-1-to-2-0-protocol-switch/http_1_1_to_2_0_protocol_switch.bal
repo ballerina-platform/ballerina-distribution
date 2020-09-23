@@ -2,7 +2,8 @@ import ballerina/http;
 import ballerina/log;
 
 // HTTP version is set to 2.0.
-http:Client http2serviceClientEP = new ("http://localhost:7090", {httpVersion: "2.0"});
+http:Client http2serviceClientEP =
+                        new ("http://localhost:7090", {httpVersion: "2.0"});
 
 @http:ServiceConfig {
     basePath: "/http11Service"

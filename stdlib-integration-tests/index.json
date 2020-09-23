@@ -8,6 +8,14 @@
     "path": "email"
   },
   {
+    "name": "Encoding standard library ",
+    "path": "encoding"
+  },
+  {
+    "name": "Crypto standard library ",
+    "path": "crypto"
+  },
+  {
     "name": "Auth standard library ",
     "path": "auth"
   },
@@ -58,5 +66,9 @@
   {
     "name": "MIME standard library",
     "path": "mime"
+  },
+  {
+    "name": "Websocket pushText and onText",
+    "path": "websocket"
   }
 ]

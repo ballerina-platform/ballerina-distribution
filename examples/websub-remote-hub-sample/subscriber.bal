@@ -28,7 +28,8 @@ service websubSubscriber on websubEP {
         if (response.statusCode == 202) {
             log:printInfo("Intent verified for subscription request");
         } else {
-            log:printWarn("Intent verification denied for subscription request");
+            log:printWarn(
+                        "Intent verification denied for subscription request");
         }
         var result = caller->respond(<@untainted>response);
 

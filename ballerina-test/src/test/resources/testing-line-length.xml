@@ -20,8 +20,7 @@
 <suite name="Ballerina-External-Line-Length-Test-Suite">
     <test name="ballerina-external-length-validation-tests" parallel="false">
         <classes>
-<!--            TODO: Test cases need to improve to provide a list of failing BBEs not fail immediately -->
-<!--            <class name="org.ballerinalang.distribution.lengthValidation.LengthValidator"/>-->
+            <class name="org.ballerinalang.distribution.lengthValidation.LengthValidator"/>
         </classes>
     </test>
 </suite>

@@ -51,7 +51,8 @@ service appointmentService = service {
     resource function onTrigger() {
         if (reminderCount < 5) {
             reminderCount = reminderCount + 1;
-            io:println("Schedule is due - Reminder: " + reminderCount.toString());
+            io:println("Schedule is due - Reminder: " +
+                                            reminderCount.toString());
         }
     }
 

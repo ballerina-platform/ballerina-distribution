@@ -70,7 +70,8 @@ service retryProxyService on new http:Listener(9090) {
     resource function onError(http:WebSocketCaller caller, error err) {
 
         http:WebSocketClient clientEp = getAssociatedClientEndpoint(caller);
-        var e = clientEp->close(statusCode = 1011, reason = "Unexpected condition");
+        var e = clientEp->close(statusCode = 1011,
+                                reason = "Unexpected condition");
         if (e is http:WebSocketError) {
             log:printError("Error occurred when closing the connection", e);
         }
@@ -108,7 +109,8 @@ service retryClientService = @http:WebSocketServiceConfig {} service {
     resource function onError(http:WebSocketClient caller, error err) {
 
         http:WebSocketCaller serverEp = getAssociatedServerEndpoint(caller);
-        var e = serverEp->close(statusCode = 1011, reason = "Unexpected condition");
+        var e = serverEp->close(statusCode = 1011,
+                                reason = "Unexpected condition");
         if (e is http:WebSocketError) {
             log:printError("Error occurred when closing the connection",
             err = e);

@@ -61,11 +61,13 @@ public function main() {
     };
 
     // Validates the created JWT. Signature is validated using the truststore.
-    jwt:JwtPayload|jwt:Error result = jwt:validateJwt(<string>jwt, validatorConfig1);
+    jwt:JwtPayload|jwt:Error result =
+                                jwt:validateJwt(<string>jwt, validatorConfig1);
     if (result is jwt:JwtPayload) {
         io:println("Validated JWT Payload: " + result.toString());
     } else {
-        io:println("An error occurred while validating the JWT: ", result.message());
+        io:println("An error occurred while validating the JWT: ",
+                                                            result.message());
     }
 
     // Defines the JWT validator configurations with JWKs configurations.
@@ -88,6 +90,7 @@ public function main() {
     if (result is jwt:JwtPayload) {
         io:println("Validated JWT Payload: " + result.toString());
     } else {
-        io:println("An error occurred while validating the JWT: ", result.message());
+        io:println("An error occurred while validating the JWT: ",
+                                                        result.message());
     }
 }

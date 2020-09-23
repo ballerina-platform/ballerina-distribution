@@ -5,7 +5,8 @@ xmlns "http://ballerina.com/aa" as ns0;
 
 public function main() {
     // Creates an XML element, which has attributes that are bound to a namespace as well as ones that are not.
-    xmllib:Element x1 = <xmllib:Element> xml `<ns0:book ns0:status="available" count="5"/>`;
+    xmllib:Element x1 =
+            <xmllib:Element> xml `<ns0:book ns0:status="available" count="5"/>`;
     io:println(x1);
 
     // A single attribute that is bound to a namespace can be accessed using its qualified name.

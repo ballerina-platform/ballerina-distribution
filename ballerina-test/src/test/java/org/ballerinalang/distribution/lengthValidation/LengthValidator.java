@@ -25,6 +25,8 @@ import org.testng.annotations.Test;
 import org.testng.Assert;
 
 import java.nio.file.Paths;
+import java.util.regex.Pattern;
+
 import static org.ballerinalang.distribution.utils.TestUtils.EXAMPLES_DIR;
 import static org.ballerinalang.distribution.utils.TestUtils.EXTENSTIONS_TO_BE_FILTERED_FOR_LINE_CHECKS;
 import static org.ballerinalang.distribution.utils.TestUtils.OUT;
@@ -36,14 +38,13 @@ import static org.ballerinalang.distribution.utils.TestUtils.OUT;
 public class LengthValidator {
 
     private static int LINE_MAX_LIMIT = 80;
-    private static  boolean isDebugEnabled = true;
     private static String[] fileFilterExtensions;
     private static String defaultFilerExtension = ".bal";
+    private static boolean isValidationFailure = false;
+    private static Pattern descriptionLine = Pattern.compile("^\\s*//");
 
     public static void logger(String message) {
-        if (isDebugEnabled) {
-            OUT.println(message);
-        }
+        OUT.println(message);
     }
     
     /**
@@ -59,17 +60,18 @@ public class LengthValidator {
             int lineCount = 1;
             do {
                 line = reader.readLine();
-                if (line != null) {
+                // Ignore comments line length
+                if (line != null && !descriptionLine.matcher(line).find()) {
                     int count = line.length();
                     if(count > LINE_MAX_LIMIT){
-                        throw new LineLengthExceededException(String.format("[%s] Line length is exceeded at line number %d. Maximum length is %s for a single line.", relativePath, lineCount, LINE_MAX_LIMIT));
+                        logger(String.format("[%s] Line number %d.", relativePath, lineCount));
+                        isValidationFailure = true;
                     }
                 }
                 lineCount += 1;
             } while (line != null);
 
             reader.close();
-            logger(String.format("[%s] All lines in this file contain less than %s characters", fileName, LINE_MAX_LIMIT));
 
         } catch (IOException e) {
             logger(String.format("[%s] An IOException occurred for file name : %s", fileName, path));
@@ -97,7 +99,7 @@ public class LengthValidator {
     */
     public static  void listFilesForFolder(final File folder) throws LineLengthExceededException {
         for (final File fileEntry : folder.listFiles()) {
-            if (fileEntry.isDirectory()) {
+            if (fileEntry.isDirectory() && !fileEntry.getName().endsWith("tests")) {
                 listFilesForFolder(fileEntry);
             } else {
                 validateFileExtension(fileEntry, fileFilterExtensions);
@@ -108,26 +110,21 @@ public class LengthValidator {
     @Test
     public void validateLength() throws LineLengthExceededException, IOException, InterruptedException {
         String filePath = EXAMPLES_DIR.toString();
-        try {
-            if (!EXTENSTIONS_TO_BE_FILTERED_FOR_LINE_CHECKS.isEmpty()) {
-                String[] splittedArg = EXTENSTIONS_TO_BE_FILTERED_FOR_LINE_CHECKS.split(",");
-                fileFilterExtensions = new String[splittedArg.length];
-                int counter = 0;
-                for (String extension : splittedArg) {
-                    fileFilterExtensions[counter] = extension.trim();
-                    counter += 1;
-                }
-            } else {
-                fileFilterExtensions = new String[] { defaultFilerExtension };
+        if (!EXTENSTIONS_TO_BE_FILTERED_FOR_LINE_CHECKS.isEmpty()) {
+            String[] splittedArg = EXTENSTIONS_TO_BE_FILTERED_FOR_LINE_CHECKS.split(",");
+            fileFilterExtensions = new String[splittedArg.length];
+            int counter = 0;
+            for (String extension : splittedArg) {
+                fileFilterExtensions[counter] = extension.trim();
+                counter += 1;
             }
-
-            LengthValidator.listFilesForFolder(new File(filePath));
-
-            Assert.assertTrue(true);
-        } catch(LineLengthExceededException e){
-            logger(e.getMessage());
-            throw e;
+        } else {
+            fileFilterExtensions = new String[] { defaultFilerExtension };
         }
+
+        LengthValidator.listFilesForFolder(new File(filePath));
+
+        Assert.assertFalse(isValidationFailure, "bal files should only contain lines of 80 character length");
     }
 }
 

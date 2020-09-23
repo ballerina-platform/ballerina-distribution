@@ -880,14 +880,11 @@ task testExamples() {
         'http-client-endpoint',
         'response-with-multiparts',
         'mutual-ssl',
-        'send-and-receive-emails',
         'gauge-metrics',
         'counter-metrics',
         'tracing',
         'openapi-to-ballerina',
-        'taint-checking', // Should not compile
-        'readonly-objects-and-fields', //Disable object BBE temporarily
-        'anonymous-objects'
+        'taint-checking' // Should not compile
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
@@ -904,6 +901,7 @@ task testExamples() {
         'record-readonly-fields', // Has user name in output
         'checkpanic', // Has user name in output
         'deprecation', // Contains user input
+        'foreach', // Has tabs for formatting in input
         'config-api',
         'kafka-consumer-client',
         'kafka-producer',
@@ -931,6 +929,7 @@ task testExamples() {
         'request-with-multiparts',
         'different-payload-types',
         'base-path-and-path',
+        'http-trace-logs',
         'websocket-basic-sample',
         'websocket-chat-application',
         'websocket-client',
@@ -968,6 +967,7 @@ task testExamples() {
         'secured-client-with-basic-auth', // Need to run the service first
         'secured-client-with-jwt-auth', // Need to run the service first
         'secured-client-with-oauth2', // Need to run the service first
+        'send-and-receive-emails',
         'task-service-timer',
         'task-service-appointment',
         'task-scheduler-timer',

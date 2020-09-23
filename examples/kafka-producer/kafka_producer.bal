@@ -24,7 +24,8 @@ public function main() {
     var sendResult = kafkaProducer->send(message, "test-kafka-topic", key = 1);
 
     if (sendResult is error) {
-        io:println("Error occurred while sending data: " + sendResult.toString());
+        io:println("Error occurred while sending data: " +
+                    sendResult.toString());
     } else {
         io:println("Message sent successfully.");
     }
@@ -32,7 +33,8 @@ public function main() {
     var flushResult = kafkaProducer->flushRecords();
 
     if (flushResult is error) {
-        io:println("Error occurred while flishing the data: " + flushResult.toString());
+        io:println("Error occurred while flushing the data: " +
+                    flushResult.toString());
     } else {
         io:println("Records were flushed successfully.");
     }

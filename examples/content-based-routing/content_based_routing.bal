@@ -29,11 +29,11 @@ service contentBasedRouting on new http:Listener(9090) {
                     // This routes the payload to the relevant service when the server
                     // accepts the enclosed entity.
                     clientResponse =
-                            locationEP->post("/v2/594e018c1100002811d6d39a", ());
+                           locationEP->post("/v2/594e018c1100002811d6d39a", ());
 
                 } else {
                     clientResponse =
-                            locationEP->post("/v2/594e026c1100004011d6d39c", ());
+                           locationEP->post("/v2/594e026c1100004011d6d39c", ());
                 }
 
                 // Use the remote function [respond](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Caller.html#respond) to send the client response

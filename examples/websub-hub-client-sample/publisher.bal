@@ -23,7 +23,8 @@ public function main() {
     var registrationResponse = webSubHub.registerTopic(
                                             "http://websubpubtopic.com");
     if (registrationResponse is error) {
-        io:println("Error occurred registering topic: " + registrationResponse.message());
+        io:println("Error occurred registering topic: " +
+                    registrationResponse.message());
     } else {
         io:println("Topic registration successful!");
     }

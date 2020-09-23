@@ -21,12 +21,14 @@ public class MyRetryManager {
 
 public function main() returns error? {
     // The JDBC Client for the H2 database.
-    jdbc:Client dbClient = check new (url = "jdbc:h2:file:./local-transactions/accountdb", 
-                                      user = "test", password = "test");
+    jdbc:Client dbClient =
+                check new (url = "jdbc:h2:file:./local-transactions/accountdb",
+                           user = "test", password = "test");
 
     // Create the database table and populate some records.
     _ = check dbClient->execute("CREATE TABLE IF NOT EXISTS ACCOUNT " +
-                                "(ID INTEGER, BALANCE DECIMAL, PRIMARY KEY(id))"); 
+                                "(ID INTEGER, BALANCE DECIMAL, " +
+                                "PRIMARY KEY(id))");
     _ = check dbClient->execute("INSERT INTO ACCOUNT VALUES (1, 2500.0)");
     _ = check dbClient->execute("INSERT INTO ACCOUNT VALUES (2, 1000.0)");
 
@@ -37,8 +39,12 @@ public function main() returns error? {
         transactions:onCommit(onCommitFunc);
 
         // Execute database operations within the transaction.
-        var creditResult = check dbClient->execute("UPDATE ACCOUNT SET BALANCE=BALANCE+500.0 WHERE ID=1");
-        var debitResult = check dbClient->execute("UPDATE ACCOUNT SET BALANCE=BALANCE-500.0 WHERE ID=2");
+        var creditResult = check dbClient->execute(
+                                       "UPDATE ACCOUNT " +
+                                       "SET BALANCE=BALANCE+500.0 WHERE ID=1");
+        var debitResult = check dbClient->execute(
+                                       "UPDATE ACCOUNT " +
+                                       "SET BALANCE=BALANCE-500.0 WHERE ID=2");
 
         io:println("Transaction Info: ", transactions:info());
 
@@ -54,7 +60,8 @@ public function main() returns error? {
     check dbClient.close();
 }
 
-function onRollbackFunc(transactions:Info info, error? cause, boolean willRetry) {
+function onRollbackFunc(transactions:Info info,
+                        error? cause, boolean willRetry) {
     io:println("Rollback handler executed.");
 }
 

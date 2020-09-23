@@ -13,7 +13,8 @@ type Student record {
 };
 
 public function main(string... args) returns error? {
-    mysql:Client dbClient = check new ("localhost", "root", "root", "testdb", 3306);
+    mysql:Client dbClient = check new ("localhost", "root", "root",
+                                       "testdb", 3306);
 
     // Security sensitive parameters of Ballerina standard library functions
     // are decorated with the `@untainted` annotation. This ensures that
@@ -25,7 +26,8 @@ public function main(string... args) returns error? {
     //
     // Call to `query` action result in a compile time error because untainted
     // data from `args[0]` is passed to it via `sqlQuery` value.
-    sql:ParameterizedQuery sqlQuery = `SELECT firstName from student WHERE registration_id = ${args[0]}`;
+    sql:ParameterizedQuery sqlQuery =
+            `SELECT firstName from student WHERE registration_id = ${args[0]}`;
     var result = dbClient->query(sqlQuery, ());
 
     // This line results in a compiler error because a user-provided argument is passed to a sensitive parameter.

@@ -11,8 +11,9 @@ final string filter_name_header_value = "RequestFilter";
 public class RequestFilter {
     *http:RequestFilter;
     // [Intercepts the request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/RequestFilter.html#filterRequest).
-    public isolated function filterRequest(http:Caller caller, http:Request request,
-                        http:FilterContext context) returns boolean {
+    public isolated function filterRequest(http:Caller caller,
+                        http:Request request, http:FilterContext context)
+                        returns boolean {
         // Set a header to the request inside the filter.
         request.setHeader(filter_name_header, filter_name_header_value);
         // Return true on success.

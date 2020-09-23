@@ -3,11 +3,13 @@ import ballerina/io;
 
 // Defines the rollback handlers, which are triggered once the
 // rollback statement is executed.
-function onRollbackFunc(transactions:Info info, error? cause, boolean willRetry) {
+function onRollbackFunc(transactions:Info info, error? cause,
+                        boolean willRetry) {
     io:println("Rollback handler #1 executed.");
 }
 
-function onRollbackFunc2(transactions:Info info, error? cause, boolean willRetry) {
+function onRollbackFunc2(transactions:Info info, error? cause,
+                         boolean willRetry) {
     io:println("Rollback handler #2 executed.");
 }
 

@@ -12,7 +12,8 @@ function newStringBuffer(handle str) returns handle = @java:Constructor {
 // The `append` method in `java.lang.StringBuffer` is overloaded many methods that take a single parameter.
 // In this example, let's use two of those methods. The `appendString` function is linked with the Java `append`
 // method that takes a `java.lang.String` as an argument.
-function appendString(handle receiver, handle str) returns handle = @java:Method {
+function appendString(handle receiver, handle str)
+                      returns handle = @java:Method {
     name: "append",
     'class: "java.lang.StringBuffer",
     paramTypes: ["java.lang.String"]

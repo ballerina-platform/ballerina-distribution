@@ -36,15 +36,16 @@ service echoServer on new socket:Listener(61598) {
                                 log:printInfo("Number of bytes written: "
                                     + writeResult.toString());
                                 i = i + writeResult;
-                                payloadByte = payloadByte.slice(writeResult, arrayLength);
+                                payloadByte = payloadByte.slice(writeResult,
+                                                                arrayLength);
                             } else {
                                 log:printError("Unable to write the content",
                                     writeResult);
                             }
                         }
                     } else {
-                        log:printError("Error while writing content to the caller",
-                            str);
+                        log:printError("Error while writing content to " +
+                                        "the caller", str);
                     }
                 }
             } else {
