@@ -1,9 +1,9 @@
 #Run the `http_client.bal` that contains ballerina client.
 ballerina run http_client.bal
-INFO  [ballerina/log] - Received a promise for /resource1
-INFO  [ballerina/log] - Received a promise for /resource2
-INFO  [ballerina/log] - Push promise for resource2 rejected
-INFO  [ballerina/log] - Received a promise for /resource3
-INFO  [ballerina/log] - Response : {"response":{"name":"main resource"}}
-INFO  [ballerina/log] - Promised resource : {"push":{"name":"resource1"}}
-INFO  [ballerina/log] - Promised resource : {"push":{"name":"resource3"}}
+2020-09-22 09:13:10,516 INFO  [] - Received a promise for /resource1
+2020-09-22 09:13:10,522 INFO  [] - Received a promise for /resource2
+2020-09-22 09:13:10,525 INFO  [] - Push promise for resource2 rejected
+2020-09-22 09:13:10,526 INFO  [] - Received a promise for /resource3
+2020-09-22 09:13:10,603 INFO  [] - Response : {"response":{"name":"main resource"}}
+2020-09-22 09:13:10,609 INFO  [] - Promised resource : {"push":{"name":"resource1"}}
+2020-09-22 09:13:10,611 INFO  [] - Promised resource : {"push":{"name":"resource3"}}
