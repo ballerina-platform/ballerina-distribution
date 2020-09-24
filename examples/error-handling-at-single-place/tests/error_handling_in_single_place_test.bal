@@ -16,6 +16,6 @@ function testFunc() {
     // Invoke the main function.
     main();
     test:assertEquals(outputs[0], "Error caught: InvalidAccountID, Account ID: -1");
-    test:assertEquals(outputs[4], "Error caught: AccountNotFound, Account ID: 200");
-    test:assertEquals(outputs[8], "Error caught during parsing: {ballerina/lang.int}NumberParsingError");
+    test:assertEquals(outputs[1], "Error caught: AccountNotFound, Account ID: 200");
+    test:assertEquals(outputs[2], "Error caught during parsing: {ballerina/lang.int}NumberParsingError");
 }
