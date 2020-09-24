@@ -74,5 +74,9 @@
   {
     "name": "Websocket pushText and onText",
     "path": "websocket"
+  },
+  {
+    "name": "Websub",
+    "path": "websub"
   }
 ]
