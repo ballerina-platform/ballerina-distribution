@@ -43,7 +43,7 @@ public function main() returns error? {
         "pass456");
 
     // Read the first unseen email received by the POP3 server. `()` is
-    // returned when there are no new unseen emails. In error cases an
+    // returned when there are no new unseen emails. In error cases, an
     // error is returned.
     email:Email? emailResponse = check popClient->read();
 
@@ -63,7 +63,7 @@ public function main() returns error? {
         "pass456");
 
     // Read the first unseen email received by the IMAP4 server. `()` is
-    // returned when there are no new unseen emails. In error cases an
+    // returned when there are no new unseen emails. In error cases, an
     // error is returned.
     emailResponse = check imapClient->read();
 
