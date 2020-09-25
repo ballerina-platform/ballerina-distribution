@@ -74,5 +74,9 @@
   {
     "name": "Websocket pushText and onText",
     "path": "websocket"
+  },
+  {
+    "name": "RabbitMQ standard library",
+    "path": "rabbitmq"
   }
 ]
