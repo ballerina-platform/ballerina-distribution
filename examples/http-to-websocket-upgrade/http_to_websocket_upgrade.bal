@@ -31,7 +31,7 @@ service httpService on new http:Listener(9090) {
     }
 
     // This is an HTTP to WebSocket upgrade resource. This is defined using the WebSocket upgrade resource config.
-    // Here you have access to the [http:Request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/Request.html), query, and path params where applicable.
+    // Here you have access to the [http:Request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html), query, and path params where applicable.
     @http:ResourceConfig {
         webSocketUpgrade: {
             upgradePath: "/ws",

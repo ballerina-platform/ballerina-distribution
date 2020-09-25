@@ -6,11 +6,11 @@ final string filter_name_header = "X-requestHeader";
 // Header value to be set to the request in the filter.
 final string filter_name_header_value = "RequestFilter";
 
-// The [Request filter](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/RequestFilter.html) implementation.
+// The [Request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html) implementation.
 // It intercepts the request and adds a new header to the request before it is dispatched to the HTTP resource.
 public class RequestFilter {
     *http:RequestFilter;
-    // [Intercepts the request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/RequestFilter.html#filterRequest).
+    // [Intercepts the request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html#filterRequest).
     public isolated function filterRequest(http:Caller caller,
                         http:Request request, http:FilterContext context)
                         returns boolean {
@@ -24,11 +24,11 @@ public class RequestFilter {
 // Creates a new RequestFilter.
 RequestFilter requestFilter = new;
 
-// The [response filter](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/ResponseFilter.html) implementation.
+// The [response(https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Response.html) implementation.
 // It intercepts the response in the response path and adds a new header to the response.
 public class ResponseFilter {
     *http:ResponseFilter;
-    // [Intercepts the response](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/ResponseFilter.html#filterResponse).
+    // [Intercepts the response](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Response.html#filterResponse).
     public isolated function filterResponse(http:Response response, 
                         http:FilterContext context) returns boolean {
         // Sets a header to the response inside the filter.
@@ -38,7 +38,7 @@ public class ResponseFilter {
     }
 }
 
-// Creates a new [ResponseFilter](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/ResponseFilter.html).
+// Creates a new [Response](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Response.html).
 ResponseFilter responseFilter = new;
 
 // Creates an HTTP listener and assigns the [filters as a config parameter](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/ListenerConfiguration.html).
