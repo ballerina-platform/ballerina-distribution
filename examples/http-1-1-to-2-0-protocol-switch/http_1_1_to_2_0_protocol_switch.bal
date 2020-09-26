@@ -15,7 +15,7 @@ service http11Service on new http:Listener(9090) {
     }
     resource function http11Resource(http:Caller caller,
                                      http:Request clientRequest) {
-        // Forward the [clientRequest](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/Request.html) to the `http2` service.
+        // Forward the [clientRequest](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html) to the `http2` service.
         var clientResponse = http2serviceClientEP->forward("/http2service",
                                                         clientRequest);
 
