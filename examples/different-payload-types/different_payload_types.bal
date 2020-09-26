@@ -56,11 +56,11 @@ service actionService on new http:Listener(9090) {
             response = clientEP->post("/image", <@untainted>bChannel);
             handleResponse(response);
 
-            //[Create a JSON body part](https://ballerina.io/swan-lake/learn/api-docs/ballerina/mime/objects/Entity.html#setJson).
+            //[Create a JSON body part](https://ballerina.io/swan-lake/learn/api-docs/ballerina/mime/classes/Entity.html#setJson).
             mime:Entity part1 = new;
             part1.setJson({"name": "Jane"});
 
-            //[Create a text body part](https://ballerina.io/swan-lake/learn/api-docs/ballerina/mime/objects/Entity.html#setText).
+            //[Create a text body part](https://ballerina.io/swan-lake/learn/api-docs/ballerina/mime/classes/Entity.html#setText).
             mime:Entity part2 = new;
             part2.setText("Hello");
 
