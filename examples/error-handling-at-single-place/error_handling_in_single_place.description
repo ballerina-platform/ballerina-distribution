@@ -1,5 +1,0 @@
-// `On-fail` catches failures (from the fail statement or failure of a check expression) but not panics.
-// The `on-fail` clause is supported for `do`, `transactions`, `retry`, `lock`, `match`, `foreach`, and `while` statements.
-// `On-fail` will be executed if the block statement following the supported statement fails.
-// The type of error caught from the `on-fail` clause will be the union of the error types that can be
-// returned by the block statement.
