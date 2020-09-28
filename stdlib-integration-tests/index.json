@@ -78,5 +78,9 @@
   {
     "name": "RabbitMQ standard library",
     "path": "rabbitmq"
+  },
+  {
+    "name": "SQL Connectors",
+    "path": "sql"
   }
 ]
