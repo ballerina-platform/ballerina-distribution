@@ -80,6 +80,10 @@
     "path": "rabbitmq"
   },
   {
+    "name": "NATS standard library",
+    "path": "nats"
+  },
+  {
     "name": "SQL Connectors",
     "path": "sql"
   }
