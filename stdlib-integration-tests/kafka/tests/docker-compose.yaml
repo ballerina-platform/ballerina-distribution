@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+    zookeeper-consumer:
+        image: 'bitnami/zookeeper:latest'
+        ports:
+            - '2181:2181'
+        environment:
+            - ALLOW_ANONYMOUS_LOGIN=yes
+    kafka:
+        image: 'bitnami/kafka:latest'
+        ports:
+            - '9092:9092'
+        environment:
+            - KAFKA_BROKER_ID=1
+            - KAFKA_CFG_ZOOKEEPER_PROTOCOL=PLAINTEXT
+            - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper-consumer:2181
+            - KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE=true
+            - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
+            - ALLOW_PLAINTEXT_LISTENER=yes
+
+        depends_on:
+            - zookeeper-consumer

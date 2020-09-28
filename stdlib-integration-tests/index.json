@@ -84,6 +84,10 @@
     "path": "nats"
   },
   {
+    "name": "Kafka standard library",
+    "path": "kafka"
+  },
+  {
     "name": "SQL Connectors",
     "path": "sql"
   }
