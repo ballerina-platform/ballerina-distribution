@@ -26,10 +26,7 @@ string asyncConsumerMessage = "";
 
 @test:Config {}
 public function testSyncConsumer() {
-    log:printInfo("Starting RabbitMQ Docker Container.");
-    var dockerStartResult = system:exec("docker", {}, "/", "run", "-d", "--name", "rabbit-tests", "-p", "15672:15672",
-        "-p", "5672:5672", "rabbitmq:3-management");
-    runtime:sleep(20000);
+    startRabbitmqDockerContainer();
     rabbitmq:Connection newConnection = new ({host: "0.0.0.0", port: 5672});
     rabbitmq:Channel newChannel = new (newConnection);
     string? queue = checkpanic newChannel->queueDeclare({queueName: QUEUE_SYNC});
@@ -57,8 +54,6 @@ public function testAsyncConsumer() {
     checkpanic channelListener.__start();
     runtime:sleep(2000);
     test:assertEquals(asyncConsumerMessage, message, msg = "Message received does not match.");
-    var dockerStopResult = system:exec("docker", {}, "/", "stop", "rabbit-tests");
-    var dockerRmResult = system:exec("docker", {}, "/", "rm", "rabbit-tests");
 }
 
 service asyncTestService =
@@ -78,3 +73,10 @@ service {
         }
     }
 };
+
+function startRabbitmqDockerContainer() {
+    log:printInfo("Starting RabbitMQ Docker Container.");
+    var dockerStartResult = system:exec("docker", {}, "/", "run", "-d", "--name", "rabbit-tests", "-p", "15672:15672",
+            "-p", "5672:5672", "rabbitmq:3-management");
+    runtime:sleep(20000);
+}
