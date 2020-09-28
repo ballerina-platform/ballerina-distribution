@@ -1378,11 +1378,15 @@ packageDistZip.dependsOn packageDist
 packageDistLinux.dependsOn packageDistZip
 packageDistMac.dependsOn packageDistLinux
 packageDistWindows.dependsOn packageDistMac
-testExamples.dependsOn packageDistWindows
-testStdlibs.finalizedBy stopLdapServer
-testStdlibs.dependsOn startLdapServer
-testStdlibs.dependsOn testExamples
-/* Delete Temporary Files */
-deleteTemporaryFiles.dependsOn testStdlibs
 
+testExamples.dependsOn packageDist
+
+testStdlibs.dependsOn startLdapServer
+testStdlibs.dependsOn packageDist
+testStdlibs.finalizedBy stopLdapServer
+
+/* Delete Temporary Files */
+deleteTemporaryFiles.dependsOn packageDistWindows
+deleteTemporaryFiles.dependsOn testExamples
+deleteTemporaryFiles.dependsOn testStdlibs
 build.dependsOn deleteTemporaryFiles
