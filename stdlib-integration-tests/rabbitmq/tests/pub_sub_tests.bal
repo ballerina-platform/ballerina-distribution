@@ -21,6 +21,8 @@ import ballerina/test;
 import ballerinax/rabbitmq;
 
 const QUEUE_SYNC = "MyQueueSync";
+const QUEUE_ASYNC = "MyQueueAsync";
+string asyncConsumerMessage = "";
 
 @test:Config {}
 public function testSyncConsumer() {
@@ -40,3 +42,39 @@ public function testSyncConsumer() {
         test:assertEquals(messageReceived, "Testing Sync Consumer", msg = "Message received does not match.");
     }
 }
+
+@test:Config {
+    dependsOn: ["testSyncConsumer"]
+}
+public function testAsyncConsumer() {
+    string message = ;
+    rabbitmq:Connection newConnection = new ({host: "0.0.0.0", port: 5672});
+    rabbitmq:Channel newChannel = new (newConnection);
+    string? queue = checkpanic newChannel->queueDeclare({queueName: QUEUE_ASYNC});
+    rabbitmq:Error? producerResult = newChannel->basicPublish("Testing Async Consumer", QUEUE_ASYNC);
+    rabbitmq:Listener channelListener = new (newConnection);
+    checkpanic channelListener.__attach(asyncTestService);
+    checkpanic channelListener.__start();
+    runtime:sleep(2000);
+    test:assertEquals(asyncConsumerMessage, message, msg = "Message received does not match.");
+    var dockerStopResult = system:exec("docker", {}, "/", "stop", "rabbit-tests");
+    var dockerRmResult = system:exec("docker", {}, "/", "rm", "rabbit-tests");
+}
+
+service asyncTestService =
+@rabbitmq:ServiceConfig {
+    queueConfig: {
+        queueName: QUEUE_ASYNC
+    }
+}
+service {
+    resource function onMessage(rabbitmq:Message message) {
+        var messageContent = message.getTextContent();
+        if (messageContent is string) {
+            asyncConsumerMessage = <@untainted> messageContent;
+            log:printInfo("The message received: " + messageContent);
+        } else {
+            log:printError("Error occurred while retrieving the message content.");
+        }
+    }
+};
