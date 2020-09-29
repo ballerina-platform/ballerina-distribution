@@ -1,7 +1,7 @@
 import ballerina/email;
 import ballerina/io;
 
-public function main() {
+public function main() returns error? {
     // Creates an SMTP client with the connection parameters, host, username,
     // and password. The default port number `465` is used over SSL with these
     // configurations.
@@ -34,67 +34,46 @@ public function main() {
     };
 
     // Send the email with the client.
-    email:Error? response = smtpClient->send(email);
+    check smtpClient->send(email);
 
-    if (response is email:Error) {
-        io:println("Error while sending the email: "
-            + response.message());
+    // Create the client with the connection parameters, host, username, and
+    // password. An error is received in a failure. The default port number
+    // `995` is used over SSL with these configurations.
+    email:PopClient popClient = new ("pop.email.com", "reader@email.com",
+        "pass456");
+
+    // Read the first unseen email received by the POP3 server. `()` is
+    // returned when there are no new unseen emails. In error cases, an
+    // error is returned.
+    email:Email? emailResponse = check popClient->read();
+
+    if (emailResponse is email:Email) {
+        io:println("Email Subject: ", emailResponse.subject);
+        io:println("Email Body: ", emailResponse.body);
+    // When no emails are available in the server, `()` is returned.
+    } else {
+
+        io:println("There are no emails in the INBOX.");
     }
 
     // Create the client with the connection parameters, host, username, and
-    // password. An error is received in a failure. The default port number `995` is
-    // used over SSL with these configurations.
-    email:PopClient|email:Error popClient = new ("pop.email.com",
-        "reader@email.com", "pass456");
+    // password. An error is received in a failure. The default port number
+    // `993` is used over SSL with these configurations.
+    email:ImapClient imapClient = new ("imap.email.com", "reader@email.com",
+        "pass456");
 
-    if (popClient is email:PopClient) {
-        // Read the first unseen email received by the POP3 server. `()` is
-        // returned when there are no new unseen emails. In error cases, an
-        // error is returned.
-        email:Email|email:Error? emailResponse = popClient->read();
+    // Read the first unseen email received by the IMAP4 server. `()` is
+    // returned when there are no new unseen emails. In error cases, an
+    // error is returned.
+    emailResponse = check imapClient->read();
 
-        if (emailResponse is email:Email) {
-            io:println("Email Subject: ", emailResponse.subject);
-            io:println("Email Body: ", emailResponse.body);
-        // When no emails are available in the server, `()` is returned.
-        } else if (emailResponse is ()) {
-
-            io:println("There are no emails in the INBOX.");
-        } else {
-            io:println("Error while getting getting response: "
-                + emailResponse.message());
-        }
+    if (emailResponse is email:Email) {
+        io:println("Email Subject: ", emailResponse.subject);
+        io:println("Email Body: ", emailResponse.body);
+    // When no emails are available in the server, `()` is returned.
     } else {
-        io:println("Error while creating client: "
-            + popClient.message());
-    }
 
-    // Create the client with the connection parameters, host, username, and
-    // password. An error is received in a failure. The default port number `993` is
-    // used over SSL with these configurations.
-    email:ImapClient|email:Error imapClient = new ("imap.email.com",
-        "reader@email.com", "pass456");
-
-    if (imapClient is email:ImapClient) {
-        // Read the first unseen email received by the IMAP4 server. `()` is
-        // returned when there are no new unseen emails. In error cases, an
-        // error is returned.
-        email:Email|email:Error? emailResponse = imapClient->read();
-
-        if (emailResponse is email:Email) {
-            io:println("Email Subject: ", emailResponse.subject);
-            io:println("Email Body: ", emailResponse.body);
-        // When no emails are available in the server, `()` is returned.
-        } else if (emailResponse is ()) {
-
-            io:println("There are no emails in the INBOX.");
-        } else {
-            io:println("Error while getting getting response: "
-                + emailResponse.message());
-        }
-    } else {
-        io:println("Error while creating client: "
-            + imapClient.message());
+        io:println("There are no emails in the INBOX.");
     }
 
 }

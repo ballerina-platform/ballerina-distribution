@@ -46,7 +46,7 @@ service headerBasedRouting on new http:Listener(9090) {
             }
             return;
         }
-        //[getHeader()](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/Request.html#getHeader) returns header value of the specified header name.
+        //[getHeader()](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html#getHeader) returns header value of the specified header name.
         string nameString = req.getHeader("x-type");
 
         http:Response|error response;

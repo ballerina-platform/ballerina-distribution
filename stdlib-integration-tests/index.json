@@ -76,6 +76,10 @@
     "path": "websocket"
   },
   {
+    "name": "SQL Connectors",
+    "path": "sql"
+  },
+  {
     "name": "Websub start hub and register topic",
     "path": "websub"
   }

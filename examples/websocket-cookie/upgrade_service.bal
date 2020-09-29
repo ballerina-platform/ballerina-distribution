@@ -26,7 +26,7 @@ service cookieServer on new http:Listener(9095) {
                 // Check the password value.
                 if (password == "p@ssw0rd") {
 
-                    // [Create a new cookie](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/Cookie.html) by setting the `name` as the `username`
+                    // [Create a new cookie](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Cookie.html) by setting the `name` as the `username`
                     // and `value` as the logged-in user's name.
                     http:Cookie cookie = new("username", name.toString());
 
@@ -34,7 +34,7 @@ service cookieServer on new http:Listener(9095) {
                     // resources in the service.
                     cookie.path = "/";
 
-                    // [Add the created cookie to the response](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/Response.html#addCookie).
+                    // [Add the created cookie to the response](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Response.html#addCookie).
                     http:Response response = new;
                     response.addCookie(cookie);
 
@@ -59,7 +59,7 @@ service cookieServer on new http:Listener(9095) {
     }
     resource function upgrader(http:Caller caller, http:Request req) {
 
-        // [Retrieve cookies from the request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/Request.html#getCookies).
+        // [Retrieve cookies from the request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html#getCookies).
         http:Cookie[] cookies = req.getCookies();
 
         // Get the cookie value of the `username`.
