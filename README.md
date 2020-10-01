@@ -1,4 +1,6 @@
 # Ballerina Distribution
+[![Ballerina Distribution Build](https://github.com/ballerina-platform/ballerina-distribution/workflows/Ballerina%20Distribution%20Build/badge.svg)](https://github.com/ballerina-platform/ballerina-distribution/actions?query=workflow%3A%22Ballerina+Distribution+Build%22)
+[![Daily build](https://github.com/ballerina-platform/ballerina-distribution/workflows/Daily%20build/badge.svg)](https://github.com/ballerina-platform/ballerina-distribution/actions?query=workflow%3A%22Daily+build%22)
 
 The Ballerina distribution includes both platform and runtime components.
 
