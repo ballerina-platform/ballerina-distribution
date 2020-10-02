@@ -36,7 +36,7 @@ string receivedMessage = "";
 kafka:ProducerConfiguration producerConfiguration = {
     bootstrapServers: "localhost:9092",
     clientId: "basic-producer",
-    acks: ACKS_ALL,
+    acks: kafka:ACKS_ALL,
     maxBlockInMillis: 6000,
     requestTimeoutInMillis: 2000,
     valueSerializerType: kafka:SER_STRING,
@@ -46,7 +46,7 @@ kafka:Producer producer = new (producerConfiguration);
 
 @test:Config {}
 function consumerServiceTest() returns error? {
-    var startResult = startKafkaServerForConsumerTests();
+    var startServerResult = startKafkaServerForConsumerTests();
     check sendMessage(TEST_MESSAGE, topic1);
     kafka:ConsumerConfiguration consumerConfiguration = {
         bootstrapServers: "localhost:9092",
