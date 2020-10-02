@@ -25,7 +25,7 @@ jobs:
         if: ${{ failure() }}
         run: |
           curl \
-          -X POST 'https://chat.googleapis.com/v1/spaces/${{secrets.BAL_CHAT_ID}}/messages?key=${{secrets.BAL_CHAT_KEY}}&token=${{secrets.BAL_CHAT_TOKEN}}' \
+          -X POST 'https://chat.googleapis.com/v1/spaces/${{secrets.BALLERINA_CHAT_ID}}/messages?key=${{secrets.BALLERINA_CHAT_KEY}}&token=${{secrets.BALLERINA_CHAT_TOKEN}}' \
           --header 'Content-Type: application/json' \
           -d '{"text": "*ballerina-distribution daily build failure* \nPlease \n visit <https://github.com/ballerina-platform/ballerina-distribution/actions?query=workflow%3A%22Daily+build%22|the daily build page> for more information"}'
 
