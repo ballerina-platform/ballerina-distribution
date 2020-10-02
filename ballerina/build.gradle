@@ -1352,6 +1352,52 @@ task stopLdapServer() {
     }
 }
 
+task startRabbitMQServer() {
+    doLast {
+        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+            def stdOut = new ByteArrayOutputStream()
+            exec {
+                commandLine 'sh', '-c', "docker ps --filter name=my-rabbit"
+                standardOutput = stdOut
+            }
+            if (!stdOut.toString().contains("my-rabbit")) {
+                println "Starting RabbitMQ server."
+                exec {
+                commandLine 'sh', '-c', "docker run --rm -d --name my-rabbit -p 15672:15672 -p  5672:5672 rabbitmq:3-management"
+                standardOutput = stdOut
+            }
+            println stdOut.toString()
+            sleep(5 * 1000)
+            } else {
+                println "RabbitMQ server is already started."
+            }
+        }
+    }
+}
+
+task stopRabbitMQServer() {
+    doLast {
+        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+            def stdOut = new ByteArrayOutputStream()
+            exec {
+                commandLine 'sh', '-c', "docker ps --filter name=my-rabbit"
+                standardOutput = stdOut
+            }
+            if (stdOut.toString().contains("my-rabbit")) {
+                println "Stopping RabbitMQ server."
+                exec {
+                    commandLine 'sh', '-c', "docker stop my-rabbit"
+                    standardOutput = stdOut
+                }
+                println stdOut.toString()
+                sleep(5 * 1000)
+            } else {
+                println "RabbitMQ server is not started."
+            }
+        }
+    }
+}
+
 /* Unpack Dependencies */
 unpackJballerinaTools.dependsOn unpackBallerinaJre
 unpackAzFunctionsBalo.dependsOn unpackJballerinaTools
@@ -1382,8 +1428,10 @@ packageDistWindows.dependsOn packageDistMac
 testExamples.dependsOn packageDist
 
 testStdlibs.dependsOn startLdapServer
+testStdlibs.dependsOn startRabbitMQServer
 testStdlibs.dependsOn packageDist
 testStdlibs.finalizedBy stopLdapServer
+testStdlibs.finalizedBy stopRabbitMQServer
 
 /* Delete Temporary Files */
 deleteTemporaryFiles.dependsOn packageDistWindows
