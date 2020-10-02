@@ -1352,7 +1352,7 @@ task stopLdapServer() {
     }
 }
 
-task startRabbitMQServer() {
+task startRabbitmqServer() {
     doLast {
         if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
             def stdOut = new ByteArrayOutputStream()
@@ -1375,7 +1375,7 @@ task startRabbitMQServer() {
     }
 }
 
-task stopRabbitMQServer() {
+task stopRabbitmqServer() {
     doLast {
         if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
             def stdOut = new ByteArrayOutputStream()
@@ -1393,6 +1393,52 @@ task stopRabbitMQServer() {
                 sleep(5 * 1000)
             } else {
                 println "RabbitMQ server is not started."
+            }
+        }
+    }
+}
+
+task startNatsServer() {
+    doLast {
+        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+            def stdOut = new ByteArrayOutputStream()
+            exec {
+                commandLine 'sh', '-c', "docker ps --filter name=my-nats"
+                standardOutput = stdOut
+            }
+            if (!stdOut.toString().contains("my-nats")) {
+                println "Starting NATS Basic server."
+                exec {
+                    commandLine 'sh', '-c', "docker run --rm -d --name my-nats -p 4222:4222 nats:latest"
+                    standardOutput = stdOut
+                }
+                println stdOut.toString()
+                sleep(5 * 1000)
+            } else {
+                println "NATS Basic server is already started."
+            }
+        }
+    }
+}
+
+task stopNatsServer() {
+    doLast {
+        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+            def stdOut = new ByteArrayOutputStream()
+            exec {
+                commandLine 'sh', '-c', "docker ps --filter name=my-nats"
+                standardOutput = stdOut
+            }
+            if (stdOut.toString().contains("my-nats")) {
+                println "Stopping NATS server."
+                exec {
+                    commandLine 'sh', '-c', "docker stop my-nats"
+                    standardOutput = stdOut
+                }
+                println stdOut.toString()
+                sleep(5 * 1000)
+            } else {
+                println "NATS server is not started."
             }
         }
     }
@@ -1428,10 +1474,12 @@ packageDistWindows.dependsOn packageDistMac
 testExamples.dependsOn packageDist
 
 testStdlibs.dependsOn startLdapServer
-testStdlibs.dependsOn startRabbitMQServer
+testStdlibs.dependsOn startRabbitmqServer
+testStdlibs.dependsOn startNatsServer
 testStdlibs.dependsOn packageDist
 testStdlibs.finalizedBy stopLdapServer
-testStdlibs.finalizedBy stopRabbitMQServer
+testStdlibs.finalizedBy stopRabbitmqServer
+testStdlibs.finalizedBy stopNatsServer
 
 /* Delete Temporary Files */
 deleteTemporaryFiles.dependsOn packageDistWindows

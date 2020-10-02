@@ -25,7 +25,6 @@ string receivedConsumerMessage = "";
 
 @test:Config {}
 public function testConsumerService() {
-    startDockerContainer();
     nats:Connection con = new(["nats://localhost:4222"]);
     string message = "Testing Consumer Service";
     nats:Listener sub = new(con);
@@ -47,13 +46,6 @@ service {
         log:printInfo("Message Received: " + receivedConsumerMessage);
     }
 
-    resource function onError(nats:Message msg, Error err) {
+    resource function onError(nats:Message msg, nats:Error err) {
     }
 };
-
-function startDockerContainer() {
-    log:printInfo("Starting NATS Docker Container.");
-    var dockerStartResult = system:exec("docker", {}, "/", "run", "-d", "--name", "nats-tests", "-p", "4222:4222",
-        "nats:latest");
-    runtime:sleep(10000);
-}
