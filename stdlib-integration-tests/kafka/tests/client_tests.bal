@@ -25,12 +25,7 @@ const DOCKER_COMPOSE_FILE = "docker-compose.yaml";
 const TEST_MESSAGE = "Hello, Ballerina";
 const TEST_DIRECTORY = "";
 
-string topic1 = "test-topic-1";
-string topic2 = "test-topic-2";
-string topic3 = "test-topic-3";
-string nonExistingTopic = "non-existing-topic";
-string manualCommitTopic = "manual-commit-test-topic";
-
+string topic = "test-topic";
 string receivedMessage = "";
 
 kafka:ProducerConfiguration producerConfiguration = {
@@ -46,11 +41,11 @@ kafka:Producer producer = new (producerConfiguration);
 
 @test:Config {}
 function consumerServiceTest() returns error? {
-    var startServerResult = startKafkaServerForConsumerTests();
-    check sendMessage(TEST_MESSAGE, topic1);
+    check startKafkaServerForConsumerTests();
+    check sendMessage(TEST_MESSAGE, topic);
     kafka:ConsumerConfiguration consumerConfiguration = {
         bootstrapServers: "localhost:9092",
-        topics: [topic1],
+        topics: [topic],
         offsetReset: kafka:OFFSET_RESET_EARLIEST,
         groupId: "consumer-service-test-group",
         valueDeserializerType: kafka:DES_STRING,
@@ -62,6 +57,7 @@ function consumerServiceTest() returns error? {
 
     runtime:sleep(5000);
     test:assertEquals(receivedMessage, TEST_MESSAGE);
+    check stopKafkaServerForConsumerTests();
 }
 
 function sendMessage(string message, string topic) returns error? {
@@ -83,6 +79,15 @@ service {
 function startKafkaServerForConsumerTests() returns error? {
     string parentDirectory = check getAbsoluteTestPath(TEST_DIRECTORY);
     var result = createKafkaCluster(parentDirectory, DOCKER_COMPOSE_FILE);
+    if (result is error) {
+        io:println(result);
+        return result;
+    }
+}
+
+function stopKafkaServerForConsumerTests() returns error? {
+    string parentDirectory = check getAbsoluteTestPath(TEST_DIRECTORY);
+    var result = stopKafkaCluster(parentDirectory, DOCKER_COMPOSE_FILE);
     if (result is error) {
         io:println(result);
         return result;

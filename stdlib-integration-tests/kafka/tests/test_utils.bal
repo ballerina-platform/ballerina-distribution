@@ -31,3 +31,19 @@ function createKafkaCluster(string directory, string yamlFilePath) returns error
         }
     }
 }
+
+function stopKafkaCluster(string directory, string yamlFilePath) returns error? {
+    var result = system:exec("docker-compose", {}, directory, "-f", yamlFilePath, "rm", "-svf");
+    if (result is error) {
+        return result;
+    }
+    system:Process dockerProcess = <system:Process>result;
+    var processResult = dockerProcess.waitForExit();
+    if (processResult is error) {
+        return processResult;
+    } else {
+        if (processResult != 0) {
+            return error("Process exited with non-zero value: " + processResult.toString());
+        }
+    }
+}
