@@ -21,3 +21,4 @@ services:
 
         depends_on:
             - zookeeper-consumer
+            
