@@ -358,6 +358,14 @@ subprojects {
             }
         }
 
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/ballerina-openapi"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+
         /* Ballerina lang staging repository */
         maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1614/" }
         /* Docker staging repository */
@@ -456,6 +464,7 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:email-ballerina:${stdlibEmailVersion}"
         ballerinaStdLibs "org.ballerinalang:http-ballerina:${stdlibHttpVersion}"
         ballerinaStdLibs "org.ballerinalang:grpc-ballerina:${stdlibGrpcVersion}"
+        ballerinaStdLibs "org.ballerinalang:module-ballerina-openapi:${stdlibOpenapiVersion}"
 
         balCommand "org.ballerinalang:ballerina-command-distribution:${ballerinaCommandVersion}@zip"
     }
