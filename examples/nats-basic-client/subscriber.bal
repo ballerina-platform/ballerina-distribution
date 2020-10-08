@@ -1,4 +1,4 @@
-import ballerina/log;
+import ballerina/io;
 import ballerinax/nats;
 
 // Initializes a connection.
@@ -15,10 +15,10 @@ service demo on subscription {
 
     resource function onMessage(nats:Message msg, string data) {
         // Prints the incoming message in the console.
-        log:printInfo("Received message : " + data);
+        io:println("Received message: " + data);
     }
 
     resource function onError(nats:Message msg, nats:Error err) {
-        log:printError("Error occurred in data binding", err);
+        io:println("Error occurred while consuming the message.");
     }
 }
