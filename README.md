@@ -57,7 +57,7 @@ Alternatively, you can install Ballerina from the source using the following ins
     ```bash
     git clone --recursive https://github.com/ballerina-platform/ballerina-lang
     ```
-2. This repository is depending on Github packages. You need to have a personnel access token with read package permissions. Then you need to set following environment variables.
+2. This repository is depending on Github packages. You need to have a personal access token with read package permissions. Then you need to set following environment variables.
     ```bash
     export packageUser=<Your github username>
     export packagePAT=<Your personal access token>
