@@ -60,7 +60,7 @@ Alternatively, you can install Ballerina from the source using the following ins
 2. This repository is depending on Github packages. You need to have a personnel access token with read package permissions. Then you need to set following environment variables.
     ```bash
     export packageUser=<Your github username>
-    export packagePAT=<Your personnel access token>
+    export packagePAT=<Your personal access token>
     ```
 3. Run the Maven command ``mvn -s settings.xml clean install`` from the repository root directory.
 4. Extract the Ballerina distribution created at `ballerina/target/ballerina-<version>-SNAPSHOT.zip`.
