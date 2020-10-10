@@ -33,7 +33,8 @@ function getXml() returns xml {
 // Returns an `XSL` style sheet represented in an XML element.
 function getXsl() returns xml {
     return xml
-        `<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+        `<xsl:stylesheet version="1.0" 
+                         xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
             <xsl:template match="/">
                 <html>
                     <body>
