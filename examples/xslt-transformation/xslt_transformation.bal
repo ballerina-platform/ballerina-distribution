@@ -30,7 +30,7 @@ function getXml() returns xml {
                 </samples>`;
 }
 
-// Returns an `XSL` style sheet represented in an XML element.
+// Returns an `XSL` style sheet represented by an XML element.
 function getXsl() returns xml {
     return xml
         `<xsl:stylesheet version="1.0" 
