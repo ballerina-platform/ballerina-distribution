@@ -22,7 +22,7 @@ public function main() returns error? {
     // Attaches the service to the scheduler.
     check appointment.attach(appointmentService);
 
-    // Start the scheduler.
+    // Starts the scheduler.
     check appointment.start();
 
     runtime:sleep(9000);
