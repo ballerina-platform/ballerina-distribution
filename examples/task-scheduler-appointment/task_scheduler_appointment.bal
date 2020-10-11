@@ -27,7 +27,7 @@ public function main() returns error? {
 
     runtime:sleep(9000);
 
-    // Cancel the appointment.
+    // Cancels the appointment.
     check appointment.stop();
 
     io:println("Appointment cancelled.");
