@@ -3,7 +3,7 @@ import ballerina/task;
 
 // The [`task:AppointmentConfiguration`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/task/records/AppointmentConfiguration.html) record of the task listener.
 task:AppointmentConfiguration appointmentConfiguration = {
-    // This cron expression will schedule the appointment every second.
+    // This CRON expression will schedule the appointment every second.
     appointmentDetails: "* * * * * ?",
     // Number of recurrences will limit the number of times the timer runs.
     noOfRecurrences: 5
