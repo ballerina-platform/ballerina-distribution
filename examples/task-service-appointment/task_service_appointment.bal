@@ -9,7 +9,7 @@ task:AppointmentConfiguration appointmentConfiguration = {
     noOfRecurrences: 5
 };
 
-// Initialize the listener using pre defined configurations.
+// Initialize the listener using the pre-defined configurations.
 listener task:Listener appointment = new (appointmentConfiguration);
 
 int reminderCount = 0;
