@@ -19,7 +19,7 @@ public function main() returns error? {
     // Creates an appointment using the given configuration.
     task:Scheduler appointment = new ({appointmentDetails});
 
-    // Attach the service to the scheduler.
+    // Attaches the service to the scheduler.
     check appointment.attach(appointmentService);
 
     // Start the scheduler.
