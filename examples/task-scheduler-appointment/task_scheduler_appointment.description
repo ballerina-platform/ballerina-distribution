@@ -4,7 +4,7 @@
 // `noOfRecurrences` field that can be used to provide the maximum number of times
 // the appointment should run before shutting down.<br/><br/>
 // A service can be attached to the scheduler using the `attach()` method.
-// Then the scheduler can be started using `start()` method. When the scheduler
+// Then, the scheduler can be started using the `start()` method. When the scheduler
 // needs to be cancelled, the `stop()` method can be called.<br/><br/>
 // For more information on the underlying module, 
 // see the [Task module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/task/index.html).
