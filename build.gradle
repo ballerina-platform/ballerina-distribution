@@ -18,7 +18,7 @@ plugins {
     id 'base'
     id 'maven-publish'
     id 'net.researchgate.release' version '2.6.0'
-    id 'com.gradle.build-scan' version '2.1'
+    id "com.gradle.build-scan" version "3.4.1"
 }
 
 description = 'Ballerina - Tools - Parent'
