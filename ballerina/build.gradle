@@ -140,19 +140,19 @@ task unpackBalCommand(type: Copy) {
 
 task extractJreForLinux(type: Copy) {
     group = "extract_jre"
-    from zipTree{"${jreLocation}/jre-1.8-linux.zip"}
+    from zipTree{"${jreLocation}/jre-11-linux.zip"}
     into("${buildDir}/target/extracted-jre-linux")
 }
 
 task extractJreForMac(type: Copy) {
     group = "extract_jre"
-    from zipTree{"${jreLocation}/jre-1.8-macos.zip"}
+    from zipTree{"${jreLocation}/jre-11-macos.zip"}
     into("${buildDir}/target/extracted-jre-macos")
 }
 
 task extractJreForWindows(type: Copy) {
     group = "extract_jre"
-    from zipTree{"${jreLocation}/jre-1.8-windows.zip"}
+    from zipTree{"${jreLocation}/jre-11-windows.zip"}
     into("${buildDir}/target/extracted-jre-windows")
 }
 
