@@ -25,14 +25,14 @@ description = 'Ballerina - Tools - Parent'
 ext {
     ballerinaVersion = project.ballerinaVersion
     shortVersion = project.shortVersion
-    ballerinaJreArtifactsVersion = "2.0.0"
+    ballerinaJreArtifactsVersion = "2.0.1-SNAPSHOT"
     awslambdaVersion = project.ballerinaVersion
     azFunctionsVersion = project.ballerinaVersion
     dockerVersion = project.ballerinaVersion
     kubernetesVersion = project.ballerinaVersion
     dataMapperVersion = project.ballerinaVersion
     picocliVersion = "4.0.1"
-    ballerinaCommandVersion = "0.8.8"
+    ballerinaCommandVersion = "0.8.9-SNAPSHOT"
     testngVersion = "6.14.3"
     netLingalaZip4jVersion = "2.3.2"
     commonsIoVersion = "2.6"
@@ -69,8 +69,8 @@ allprojects {
 
 subprojects {
     apply plugin: 'java'
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
+    sourceCompatibility = 11
+    targetCompatibility = 11
     tasks.withType(JavaCompile) {
         options.encoding = 'UTF-8'
     }
