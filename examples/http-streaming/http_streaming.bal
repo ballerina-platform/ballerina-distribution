@@ -34,7 +34,7 @@ service HTTPStreamingService on new http:Listener(9090) {
             } else {
                 setError(res, payload);
             }
-        } else {
+        } else if (clientResponse is error) {
             log:printError("Error occurred while sending data to the client ",
                             err = clientResponse);
             setError(res, clientResponse);

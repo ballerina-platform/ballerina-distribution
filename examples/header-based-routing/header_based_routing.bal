@@ -75,7 +75,7 @@ service headerBasedRouting on new http:Listener(9090) {
                 log:printError("Error sending response", result);
             }
 
-        } else {
+        } else if (response is error) {
             http:Response errorResponse = new;
             errorResponse.statusCode = 500;
             errorResponse.setPayload(response.message());

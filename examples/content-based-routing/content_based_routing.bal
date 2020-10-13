@@ -43,7 +43,7 @@ service contentBasedRouting on new http:Listener(9090) {
                     if (result is error) {
                         log:printError("Error sending response", result);
                     }
-                } else {
+                } else if (clientResponse is error) {
                     http:Response res = new;
                     res.statusCode = 500;
                     res.setPayload(clientResponse.message());

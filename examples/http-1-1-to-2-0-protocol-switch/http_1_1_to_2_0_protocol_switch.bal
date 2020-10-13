@@ -22,7 +22,7 @@ service http11Service on new http:Listener(9090) {
         http:Response response = new;
         if (clientResponse is http:Response) {
             response = clientResponse;
-        } else {
+        } else if (clientResponse is error) {
             // Handle the errors that are returned when invoking the
             // [forward](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/HttpClient.html#forward) function.
             response.statusCode = 500;

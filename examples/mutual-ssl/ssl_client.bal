@@ -42,7 +42,7 @@ public function main() {
             // the error.
             log:printError(payload.message());
         }
-    } else {
+    } else if (resp is error) {
         // If an error occurs while getting the response, log the error.
         log:printError(resp.message());
     }

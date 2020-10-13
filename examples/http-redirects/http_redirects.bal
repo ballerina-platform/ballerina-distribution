@@ -33,7 +33,7 @@ service hello on new http:Listener(9090) {
                     log:printError("Error in responding", result);
                 }
             }
-        } else {
+        } else if (returnResult is error) {
             var result = caller->respond("Error in connection : " 
                                 + returnResult.message());
             if (result is error) {

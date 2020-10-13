@@ -52,7 +52,7 @@ public function main() {
                 io:println(err);
             }
         }
-    } else {
+    } else if (loginResp is error) {
         log:printError(loginResp.message());
     }
 }

@@ -11,7 +11,7 @@ email:SmtpClient smtpClient = new ("localhost", "admin","admin");
 // endpoint and returns the response.
 function performGet() returns http:Response {
     io:println("Executing the 1st GET request");
-    http:Response|error result = clientEndpoint->get("/headers");
+    var result = clientEndpoint->get("/headers");
     http:Response response = <http:Response>result;
     io:println("Status code: " + response.statusCode.toString());
 

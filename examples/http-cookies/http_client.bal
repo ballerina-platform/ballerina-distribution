@@ -50,7 +50,7 @@ public function main() {
                 }
             }
         }
-    } else {
+    } else if (loginResp is error) {
         log:printError(loginResp.message());
     }
 }

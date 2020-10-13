@@ -25,7 +25,7 @@ service passthrough on new http:Listener(9090) {
             if (result is error) {
                 log:printError("Error sending response", result);
             }
-        } else {
+        } else if (clientResponse is error) {
             // If there was an error, the 500 error response is constructed and sent back to the client.
             http:Response res = new;
             res.statusCode = 500;

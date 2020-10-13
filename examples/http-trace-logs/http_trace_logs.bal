@@ -21,7 +21,7 @@ service helloWorld on new http:Listener(9090) {
             if (result is error) {
                 log:printError("Failed to respond to caller", result);
             }
-        } else {
+        } else if (resp is error) {
             log:printError("Failed to fulfill request", resp);
         }
     }

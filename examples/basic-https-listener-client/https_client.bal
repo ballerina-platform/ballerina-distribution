@@ -32,7 +32,7 @@ public function main() {
             // If an error occurs when retrieving the text payload, log the error.
             log:printError(payload.message());
         }
-    } else {
+    } else if (resp is error) {
         // If an error occurs when getting the response, log the error.
         log:printError(resp.message());
     }

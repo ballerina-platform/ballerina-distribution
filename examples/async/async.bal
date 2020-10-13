@@ -27,9 +27,9 @@ public function main() {
 
 function calculate(string expr) returns int {
     http:Client httpClient = new ("https://api.mathjs.org");
-    var response = checkpanic httpClient->get(string `/v4/?expr=${expr}`);
-    return checkpanic 'int:fromString(
-        checkpanic <@untainted> response.getTextPayload());
+    string response = <string> checkpanic
+        httpClient->get(string `/v4/?expr=${expr}`, targetType = string);
+    return checkpanic 'int:fromString(response);
 }
 
 function multiply(int a, int b) returns int {

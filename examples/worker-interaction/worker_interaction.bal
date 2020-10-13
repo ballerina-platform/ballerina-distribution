@@ -43,6 +43,7 @@ public function main() {
 
 function calculate(string expr) returns int|error {
     http:Client httpClient = new ("https://api.mathjs.org");
-    var response = check httpClient->get(string `/v4/?expr=${expr}`);
-    return check 'int:fromString(check <@untainted> response.getTextPayload());
+    string response = <string> check
+        httpClient->get(string `/v4/?expr=${expr}`, targetType = string);
+    return check 'int:fromString(response);
 }
