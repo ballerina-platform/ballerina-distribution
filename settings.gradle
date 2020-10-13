@@ -14,9 +14,21 @@
  * limitations under the License.
  *
  */
+
+plugins {
+    id "com.gradle.enterprise" version "3.2"
+}
+
 rootProject.name = 'ballerina-distribution'
 include ':ballerina'
 include ':ballerina-distribution-test'
 
 project(':ballerina').projectDir = "$rootDir/ballerina" as File
 project(':ballerina-distribution-test').projectDir = "$rootDir/ballerina-test" as File
+
+gradleEnterprise {
+    buildScan {
+        termsOfServiceUrl = 'https://gradle.com/terms-of-service'
+        termsOfServiceAgree = 'yes'
+    }
+}
