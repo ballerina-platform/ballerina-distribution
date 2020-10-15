@@ -1,4 +1,4 @@
-# This example reads two properties (i.e., `username` and `password`) from a configuration file and prints them. 
+# This example reads two properties (i.e., `username` and `password`) from a configuration file and prints the username in the output. 
 
 # Sensitive data you have in configuration files such as passwords should be encrypted and accessed securely in code. 
 # Therefore, first, execute the command below to encrypt the `password` property.
