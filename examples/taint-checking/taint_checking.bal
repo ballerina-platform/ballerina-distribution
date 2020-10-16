@@ -38,7 +38,7 @@ public function main(string... args) returns error? {
 
     if !stringlib:startsWith(args[1], EXEC_MAGIC_NUMBER) {
         // After performing the necessary validations and/or escaping,
-        // we can use type cast expression with @untainted annotation
+        // use the type-cast expression with the @untainted annotation
         // to mark the proceeding value as `trusted` and pass it to a sensitive parameter.
         userDefinedSecureOperation(<@untainted> args[1]);
     } else {
