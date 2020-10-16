@@ -47,7 +47,7 @@ public function main(string... args) returns error? {
 
     var entry = check result.next();
     Student student = <Student> entry?.value;
-    // The return values of certain functions built-in to Ballerina are decorated with the `@tainted` annotation to
+    // The return values of certain functions in the Ballerina standard library are decorated with the `@tainted` annotation to
     // denote that the return value should be untrusted (tainted). One such example is the data read from a
     // database.
     //
