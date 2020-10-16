@@ -22,7 +22,7 @@ public function main(string... args) returns error? {
     // are decorated with the `@untainted` annotation. This ensures that
     // tainted data cannot pass into the security sensitive parameter.
     //
-    // For example, the taint checking mechanism of Ballerina warns the user to prevent
+    // For example, the taint-checking mechanism of Ballerina warns the user to prevent
     // SQL injection vulnerabilities by disallowing tainted data in the SQL query.
     //
     // Call to `query` action result in a compile time error because untainted
