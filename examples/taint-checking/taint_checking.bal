@@ -25,7 +25,7 @@ public function main(string... args) returns error? {
     // For example, the taint-checking mechanism of Ballerina warns the user to prevent
     // SQL injection vulnerabilities by disallowing tainted data in the SQL query.
     //
-    // Call to `query` action result in a compile time error because untainted
+    // The call to `query` action results in a compile time error because untainted
     // data from `args[0]` is directly used in the SQL query string.
     // Users should rather use raw templates when providing SQL query parameters
     // to make sure SQL injection attacks are not be possible. See [Parameterized Query](https://ballerina.io/swan-lake/learn/by-example/jdbc-parameterized-query.html)
