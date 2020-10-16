@@ -33,7 +33,7 @@ public function main() {
     payload.aud = ["vEwzbcasJVQm1jVYHUHCjhxZ4tYa"];
     payload.exp = time:currentTime().time/1000 + 600;
 
-    // Issues a JWT based on the provided header, payload and keystore config.
+    // Issues a JWT based on the provided header, payload, and keystore config.
     string|jwt:Error jwt = jwt:issueJwt(header, payload, keyStoreConfig);
     if (jwt is string) {
         io:println("Issued JWT: ", jwt);
