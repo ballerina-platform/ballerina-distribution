@@ -57,7 +57,7 @@ public function main(string... args) returns error? {
 
     string sanitizedData1 = sanitizeAndReturnTainted(student.favQuote);
     // This line results in a compile error because the `sanitize` function returns a value derived from the tainted
-    // data. Therefore, the return of the `sanitize` function is also tainted.
+    // data. Therefore, the return value of the `sanitize` function is also tainted.
     userDefinedSecureOperation(sanitizedData1);
 
     string sanitizedData2 = sanitizeAndReturnUntainted(student.favQuote);
