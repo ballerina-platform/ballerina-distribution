@@ -61,7 +61,7 @@ public function main(string... args) returns error? {
     userDefinedSecureOperation(sanitizedData1);
 
     string sanitizedData2 = sanitizeAndReturnUntainted(student.favQuote);
-    // This line successfully compiles. Although the `sanitize` function returns a value derived from tainted data,
+    // This line compiles successfully. Although the `sanitize` function returns a value derived from tainted data,
     // the return value is annotated with the `@untainted` annotation. This means that the return value is safe and can be
     // trusted.
     userDefinedSecureOperation(sanitizedData2);
