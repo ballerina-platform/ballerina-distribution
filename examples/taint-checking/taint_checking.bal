@@ -28,7 +28,7 @@ public function main(string... args) returns error? {
     // The call to `query` action results in a compile time error because untainted
     // data from `args[0]` is directly used in the SQL query string.
     // Users should rather use raw templates when providing SQL query parameters
-    // to make sure SQL injection attacks are not be possible. See [Parameterized Query](https://ballerina.io/swan-lake/learn/by-example/jdbc-parameterized-query.html)
+    // to make sure SQL injection attacks are not possible. For more information, see [Parameterized Query](https://ballerina.io/swan-lake/learn/by-example/jdbc-parameterized-query.html)
     // support for more information. 
     var result = dbClient->query("SELECT name, favQuote from Student " +
                                  "WHERE registrationId = " + args[0], ());
