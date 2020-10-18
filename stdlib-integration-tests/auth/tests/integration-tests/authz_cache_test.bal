@@ -37,7 +37,7 @@ public function testAuthzCacheSuccess() {
     var response = clientEP11->get("/echo/test", req);
     if (response is http:Response) {
         assertOK(response);
-    } else {
+    } else if (response is error) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 
@@ -47,7 +47,7 @@ public function testAuthzCacheSuccess() {
     response = clientEP11->get("/echo/test", req);
     if (response is http:Response) {
         assertOK(response);
-    } else {
+    } else if (response is error) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -60,7 +60,7 @@ public function testAuthzCacheForbidden() {
     var response = clientEP11->get("/echo/test", req);
     if (response is http:Response) {
         assertForbidden(response);
-    } else {
+    } else if (response is error) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 
@@ -70,7 +70,7 @@ public function testAuthzCacheForbidden() {
     response = clientEP11->get("/echo/test", req);
     if (response is http:Response) {
         assertForbidden(response);
-    } else {
+    } else if (response is error) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -83,7 +83,7 @@ public function testAuthzCacheUnauthorized() {
     var response = clientEP11->get("/echo/test", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else {
+    } else if (response is error) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 
@@ -93,7 +93,7 @@ public function testAuthzCacheUnauthorized() {
     response = clientEP11->get("/echo/test", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else {
+    } else if (response is error) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }

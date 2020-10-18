@@ -70,7 +70,7 @@ service passthroughService on passthroughEP1 {
             } else {
                 checkpanic caller->internalServerError(<@untainted> entity.toString());
             }
-        } else {
+        } else if (response is error) {
             checkpanic caller->internalServerError(<@untainted> response.toString());
         }
     }
@@ -137,7 +137,7 @@ public function testPassthroughServiceByBasePath() {
         } else {
             test:assertFail(msg = "Found unexpected output: " + body.message());
         } 
-    } else {
+    } else if (resp is error) {
         test:assertFail(msg = "Found unexpected output: " +  resp.message());
     }
 }
@@ -155,7 +155,7 @@ public function testPassthroughServiceWithMimeEntity() {
         } else {
             test:assertFail(msg = "Found unexpected output: " + body.message());
         } 
-    } else {
+    } else if (resp is error) {
         test:assertFail(msg = "Found unexpected output: " +  resp.message());
     }
 }
@@ -194,7 +194,7 @@ public function testPassthroughWithMultiparts() {
                 test:assertFail(msg = "Found an unexpected output: " + txtPart2.message());
             }
         }         
-    } else {
+    } else if (resp is error) {
         test:assertFail(msg = "Found unexpected output: " +  resp.message());
     }
 }

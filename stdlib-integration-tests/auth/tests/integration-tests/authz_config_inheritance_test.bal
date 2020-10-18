@@ -55,7 +55,7 @@ public function testValidScopesAtListener1() {
     var response = clientEP1->get("/echo1/test1", req);
     if (response is http:Response) {
         assertOK(response);
-    } else {
+    } else if (response is error) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }

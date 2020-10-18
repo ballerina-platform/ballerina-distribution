@@ -36,7 +36,7 @@ service loadBalancerDemoService on new http:Listener(9090) {
             if (responseToCaller is http:ListenerError) {
                 log:printError("Error sending response", responseToCaller);
             }
-        } else {
+        } else if (response is error) {
             http:Response outResponse = new;
             outResponse.statusCode = 500;
             outResponse.setPayload(<string>response.message());

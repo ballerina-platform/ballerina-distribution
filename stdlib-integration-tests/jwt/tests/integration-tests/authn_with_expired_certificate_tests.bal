@@ -54,7 +54,7 @@ public function testAuthnWithJWTSignedWithExpiredTrustedCertificate() {
     var response = clientEndpoint->get("/echo/test", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else {
+    } else if (response is error) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -94,7 +94,7 @@ public function testAuthnWithJWTSignedWithExpiredTrustedCertificateWithNoExpiryV
     var response = clientEndpoint->get("/echo/test", req);
     if (response is http:Response) {
         assertOK(response);
-    } else {
+    } else if (response is error) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }

@@ -36,7 +36,7 @@ public function testInboundOAuth2SuccessTest() {
     var response = clientEP->get("/echo/test", req);
     if (response is http:Response) {
         assertOK(response);
-    } else {
+    } else if (response is error) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -49,7 +49,7 @@ public function testInboundOAuth2FailureTest() {
     var response = clientEP->get("/echo/test", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else {
+    } else if (response is error) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }

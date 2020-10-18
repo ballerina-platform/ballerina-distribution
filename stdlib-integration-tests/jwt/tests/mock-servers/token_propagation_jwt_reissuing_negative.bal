@@ -79,7 +79,7 @@ service passthroughService09 on listener09_1 {
         var response = nyseEP09->get("/nyseStock/stocks", <@untainted> clientRequest);
         if (response is http:Response) {
             checkpanic caller->respond(response);
-        } else {
+        } else if (response is error) {
             http:Response resp = new;
             json errMsg = { "error": "error occurred while invoking the service: " + response.message() };
             resp.statusCode = 500;

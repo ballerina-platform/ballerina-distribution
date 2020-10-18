@@ -106,7 +106,7 @@ function testTaskWithHttpClient() {
     checkpanic timerForHttpClient.stop();
     if (response is http:Response) {
         test:assertEquals(response.getTextPayload(), HTTP_MESSAGE, msg = "Response payload mismatched");
-    } else {
+    } else if (response is error) {
         test:assertFail(msg = response.message());
     }
 }

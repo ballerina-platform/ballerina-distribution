@@ -54,7 +54,7 @@ public function testScopeClaim() {
     var response = clientEP->get("/echo/test", req);
     if (response is http:Response) {
         assertOK(response);
-    } else {
+    } else if (response is error) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -94,7 +94,7 @@ public function testScpClaim() {
     var response = clientEP->get("/echo/test", req);
     if (response is http:Response) {
         assertOK(response);
-    } else {
+    } else if (response is error) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -135,7 +135,7 @@ public function testScopeAndScpClaim() {
     var response = clientEP->get("/echo/test", req);
     if (response is http:Response) {
         assertOK(response);
-    } else {
+    } else if (response is error) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -174,7 +174,7 @@ public function testNoCustomClaim() {
     var response = clientEP->get("/echo/test", req);
     if (response is http:Response) {
         assertForbidden(response);
-    } else {
+    } else if (response is error) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -215,7 +215,7 @@ public function testAuthzCache() {
     var response = clientEP->get("/echo/test", req);
     if (response is http:Response) {
         assertOK(response);
-    } else {
+    } else if (response is error) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 
@@ -244,7 +244,7 @@ public function testAuthzCache() {
     response = clientEP->get("/echo/test", req);
     if (response is http:Response) {
         assertForbidden(response);
-    } else {
+    } else if (response is error) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 
@@ -273,7 +273,7 @@ public function testAuthzCache() {
     response = clientEP->get("/echo/test", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else {
+    } else if (response is error) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }

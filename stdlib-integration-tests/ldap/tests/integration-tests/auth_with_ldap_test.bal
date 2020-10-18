@@ -35,7 +35,7 @@ public function testAuthenticationFailure() {
     var response = clientEndpoint->get("/orders/view", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else {
+    } else if (response is error) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -47,7 +47,7 @@ public function testAuthenticationSuccessAndAuthorizationFailure() {
     var response = clientEndpoint->get("/orders/add", req);
     if (response is http:Response) {
         assertForbidden(response);
-    } else {
+    } else if (response is error) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -59,7 +59,7 @@ public function testAuthenticationSuccessAndAuthorizationSuccess() {
     var response = clientEndpoint->get("/orders/view", req);
     if (response is http:Response) {
         assertOK(response);
-    } else {
+    } else if (response is error) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
