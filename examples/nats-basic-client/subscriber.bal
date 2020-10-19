@@ -9,7 +9,7 @@ listener nats:Listener subscription = new (connection);
 
 // Binds the consumer to listen to the messages published to the 'demo' subject.
 @nats:SubscriptionConfig {
-    subject: "demo"
+    subject: "demo.bbe.*"
 }
 service demo on subscription {
 

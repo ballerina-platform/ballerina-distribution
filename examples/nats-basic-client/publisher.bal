@@ -8,7 +8,7 @@ public function main() returns error? {
     nats:Connection connection = new ();
     nats:Producer producer = new (connection);
     // Produces a message to the specified subject.
-    nats:Error? result = producer->publish("demo", <@untainted>message);
+    nats:Error? result = producer->publish("demo.bbe.subject", <@untainted>message);
     if (result is nats:Error) {
         io:println("Error occurred while producing the message.");
     } else {
