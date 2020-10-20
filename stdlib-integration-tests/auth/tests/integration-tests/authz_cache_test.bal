@@ -47,8 +47,8 @@ public function testAuthzCacheSuccess() {
     response = clientEP11->get("/echo/test", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -60,8 +60,8 @@ public function testAuthzCacheForbidden() {
     var response = clientEP11->get("/echo/test", req);
     if (response is http:Response) {
         assertForbidden(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 
     // The 2nd request is treated from the negative authz cache.
@@ -70,8 +70,8 @@ public function testAuthzCacheForbidden() {
     response = clientEP11->get("/echo/test", req);
     if (response is http:Response) {
         assertForbidden(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -83,8 +83,8 @@ public function testAuthzCacheUnauthorized() {
     var response = clientEP11->get("/echo/test", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 
     // The 2nd request is treated from the negative authz cache.
@@ -93,7 +93,7 @@ public function testAuthzCacheUnauthorized() {
     response = clientEP11->get("/echo/test", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
