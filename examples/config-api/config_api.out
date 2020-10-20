@@ -4,13 +4,11 @@
 # Therefore, first, execute the command below to encrypt the `password` property.
 ballerina encrypt
 
-# This prompts to enter the value (i.e., the password) and a secret (i.e., the key).
-# Enter `ballerina` as the value and `12345` as the secret. 
+# Enter `ballerina` as the value and `12345` as the secret when prompted. 
 
 # Note the key you get in the output. 
 
-# Next, create a new  `.conf` or `.txt` (e.g., `ballerina.conf`) file in a preferred location 
-# and place the configurations below to define the two `username` and `password` properties.
+# Next, create a new  `.conf` or `.txt` (e.g., `ballerina.conf`) file in a preferred location and place the configurations below to define the two `username` and `password` properties.
 #
 # ```
 # [app.auth]
@@ -19,11 +17,9 @@ ballerina encrypt
 #
 # ```
 
-# Set the key as the value of the `password` property in the configuration above. This is to decrypt and read the ‘password` value you encrypted above.
-
 # To run this sample, navigate to the directory, which contains the `config_api.bal` file, and execute the `ballerina run` command as follows.
 # The path to the configuration file can be either an absolute or a relative path. Also, enter the secret as `12345` when prompted.
-ballerina run config_api.bal --b7a.config.file=<PATH_TO_THE_`ballerina.conf`_FILE> 
+ballerina run config_api.bal --b7a.config.file=<PATH_TO_THE_CONFIG_FILE> 
 
 # The output will be as follows:
 ballerina: enter secret for config value decryption:
