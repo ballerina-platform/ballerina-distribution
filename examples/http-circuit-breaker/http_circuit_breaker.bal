@@ -66,10 +66,10 @@ service circuitbreaker on new http:Listener(9090) {
             if (responseToCaller is http:ListenerError) {
                 log:printError("Error sending response", responseToCaller);
             }
-        } else if (backendResponse is error) {
+        } else {
             http:Response response = new;
             response.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
-            response.setPayload(<string>backendResponse.message());
+            response.setPayload((<error>backendResponse).message());
             var responseToCaller = caller->respond(response);
             if (responseToCaller is http:ListenerError) {
                 log:printError("Error sending response", responseToCaller);

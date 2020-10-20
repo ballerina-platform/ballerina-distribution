@@ -54,8 +54,8 @@ public function testScopeClaim() {
     var response = clientEP->get("/echo/test", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -94,8 +94,8 @@ public function testScpClaim() {
     var response = clientEP->get("/echo/test", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -135,8 +135,8 @@ public function testScopeAndScpClaim() {
     var response = clientEP->get("/echo/test", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -174,8 +174,8 @@ public function testNoCustomClaim() {
     var response = clientEP->get("/echo/test", req);
     if (response is http:Response) {
         assertForbidden(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -215,8 +215,8 @@ public function testAuthzCache() {
     var response = clientEP->get("/echo/test", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 
     // JWT used in the second request:
@@ -244,8 +244,8 @@ public function testAuthzCache() {
     response = clientEP->get("/echo/test", req);
     if (response is http:Response) {
         assertForbidden(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 
     // JWT used in the third request:
@@ -273,7 +273,7 @@ public function testAuthzCache() {
     response = clientEP->get("/echo/test", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }

@@ -36,12 +36,12 @@ service cachingProxy on new http:Listener(9090) {
             if (result is error) {
                 log:printError("Failed to respond to the caller", result);
             }
-        } else if (response is error) {
+        } else {
             // For failed requests, a `500` response is sent back to the
             // caller.
             http:Response res = new;
             res.statusCode = 500;
-            res.setPayload(<@untainted>response.message());
+            res.setPayload(<@untainted>(<error>response).message());
             var result = caller->respond(res);
             if (result is error) {
                 log:printError("Failed to respond to the caller", result);

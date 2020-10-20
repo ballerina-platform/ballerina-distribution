@@ -220,8 +220,9 @@ function handleResponse(http:Response|http:PayloadType|error response) {
         } else {
             log:printInfo("Entity body is not available");
         }
-    } else if (response is error) {
-        log:printError(response.message(), response);
+    } else {
+        error err = <error>response;
+        log:printError(err.message(), err);
     }
 }
 

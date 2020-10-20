@@ -37,8 +37,8 @@ public function testAuthzCacheSuccess() {
     var response = clientEP11->get("/echo/test", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 
     // The 2nd request is treated from the positive authz cache.

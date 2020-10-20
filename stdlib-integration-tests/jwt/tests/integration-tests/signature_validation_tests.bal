@@ -80,8 +80,8 @@ public function testScenario1() {
     var response = clientEP->get("/echo/test", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -123,8 +123,8 @@ public function testScenario2() {
     var response = clientEP->get("/echo/test", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -166,8 +166,8 @@ public function testScenario3() {
     var response = clientEP->get("/echo/test", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -209,8 +209,8 @@ public function testScenario4() {
     var response = clientEP->get("/echo/test", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -250,8 +250,8 @@ public function testScenario5() {
     var response = clientEP->get("/echo/test", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -291,8 +291,8 @@ public function testScenario6() {
     var response = clientEP->get("/echo/test", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -332,8 +332,8 @@ public function testScenario7() {
     var response = clientEP->get("/echo/test", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -373,8 +373,8 @@ public function testScenario8() {
     var response = clientEP->get("/echo/test", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -416,8 +416,8 @@ public function testScenario9() {
     var response = clientEP->get("/echo/test", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -459,8 +459,8 @@ public function testScenario10() {
     var response = clientEP->get("/echo/test", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -502,8 +502,8 @@ public function testScenario11() {
     var response = clientEP->get("/echo/test", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -545,7 +545,7 @@ public function testScenario12() {
     var response = clientEP->get("/echo/test", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }

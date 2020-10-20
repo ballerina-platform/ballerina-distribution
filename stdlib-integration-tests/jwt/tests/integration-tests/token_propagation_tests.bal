@@ -34,8 +34,8 @@ public function testWithoutTokenPropagation() {
     var response = clientEP->get("/passthrough", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -54,8 +54,8 @@ public function testTokenPropagationWithBasicAuthInbound() {
     var response = clientEP->get("/passthrough", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -80,8 +80,8 @@ public function testTokenPropagationWithJwtAuthInbound() {
     var response = clientEP->get("/passthrough", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -106,8 +106,8 @@ public function testTokenPropagationWithJwtAuthInboundAndTokenReissuing() {
     var response = clientEP->get("/passthrough", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -131,7 +131,7 @@ public function testTokenPropagationWithJwtAuthInboundAndTokenReissuingNegative(
     var response = clientEP->get("/passthrough", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }

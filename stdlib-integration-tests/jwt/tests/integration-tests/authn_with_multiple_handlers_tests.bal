@@ -55,8 +55,8 @@ public function testAuthSuccessWithExample1Issuer() {
     var response = clientEndpoint->get("/echo/test", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -87,8 +87,8 @@ public function testAuthSuccessWithExample2Issuer() {
     var response = clientEndpoint->get("/echo/test", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -119,8 +119,8 @@ public function testAuthFailWithExample3Issuer() {
     var response = clientEndpoint->get("/echo/test", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -151,7 +151,7 @@ public function testAuthFailWithExample1IssuerAndInvalidAudience() {
     var response = clientEndpoint->get("/echo/test", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }

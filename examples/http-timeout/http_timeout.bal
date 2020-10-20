@@ -30,10 +30,10 @@ service timeoutService on new http:Listener(9090) {
             if (responseToCaller is error) {
                 log:printError("Error sending response", responseToCaller);
             }
-        } else if (backendResponse is error) {
+        } else {
             http:Response response = new;
             response.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
-            string errorMessage = <string>backendResponse.message();
+            string errorMessage = (<error>backendResponse).message();
             string expectedMessage = "Idle timeout triggered before " +
                 "initiating inbound response";
             if (errorMessage == expectedMessage) {

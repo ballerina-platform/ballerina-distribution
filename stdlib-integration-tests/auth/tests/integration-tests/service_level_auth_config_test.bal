@@ -37,8 +37,8 @@ public function testAuthSuccessWithServiceLevelConfigs() {
     var response = clientEP5->get("/echo/test", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -50,8 +50,8 @@ public function testAuthzFailureWithServiceLevelConfigs() {
     var response = clientEP4->get("/echo/test", req);
     if (response is http:Response) {
         assertForbidden(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -63,7 +63,7 @@ public function testAuthFailureWithServiceLevelConfigs() {
     var response = clientEP4->get("/echo/test", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }

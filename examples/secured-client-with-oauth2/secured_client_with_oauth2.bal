@@ -133,8 +133,8 @@ public function main() {
         var result = response.getTextPayload();
         log:printInfo(
                     (result is error) ? "Failed to retrieve payload." : result);
-    } else if (response is error) {
-        log:printError("Failed to call the endpoint.", response);
+    } else {
+        log:printError("Failed to call the endpoint.", <error>response);
     }
 
     response = clientEP2->get("/hello/sayHello");
@@ -142,8 +142,8 @@ public function main() {
         var result = response.getTextPayload();
         log:printInfo(
                     (result is error) ? "Failed to retrieve payload." : result);
-    } else if (response is error) {
-        log:printError("Failed to call the endpoint.", response);
+    } else {
+        log:printError("Failed to call the endpoint.", <error>response);
     }
 
     response = clientEP3->get("/hello/sayHello");
@@ -151,7 +151,7 @@ public function main() {
         var result = response.getTextPayload();
         log:printInfo(
                     (result is error) ? "Failed to retrieve payload." : result);
-    } else if (response is error) {
-        log:printError("Failed to call the endpoint.", response);
+    } else {
+        log:printError("Failed to call the endpoint.", <error>response);
     }
 }

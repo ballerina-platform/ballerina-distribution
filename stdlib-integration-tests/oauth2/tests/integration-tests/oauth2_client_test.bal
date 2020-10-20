@@ -54,8 +54,8 @@ public function testClientCredentialsGrantType1() {
     var response = clientEP1->get("/foo/bar", req);
     if (response is http:Response) {
         assertContains(response, "access_granted");
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -133,8 +133,8 @@ public function testClientCredentialsGrantType3() {
     var response = clientEP3->get("/foo/bar", req);
     if (response is http:Response) {
         assertContains(response, "access_granted");
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -214,8 +214,8 @@ public function testPasswordGrantType1() {
     var response = clientEP5->get("/foo/bar", req);
     if (response is http:Response) {
         assertContains(response, "access_granted");
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -267,8 +267,8 @@ public function testPasswordGrantType2() {
     var response = clientEP6->get("/foo/bar", req);
     if (response is http:Response) {
         assertContains(response, "access_granted");
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -360,8 +360,8 @@ public function testPasswordGrantType4() {
     var response = clientEP8->get("/foo/bar", req);
     if (response is http:Response) {
         assertContains(response, "access_granted");
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -388,8 +388,8 @@ public function testDirectToken1() {
     var response = clientEP9->get("/foo/bar", req);
     if (response is http:Response) {
         assertContains(response, "access_granted");
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -459,8 +459,8 @@ public function testDirectToken3() {
     var response = clientEP11->get("/foo/bar", req);
     if (response is http:Response) {
         assertContains(response, "access_granted");
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -604,7 +604,7 @@ public function testDirectToken7() {
     var response = clientEP15->get("/foo/bar", req);
     if (response is http:Response) {
         assertContains(response, "access_granted");
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }

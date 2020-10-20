@@ -55,9 +55,9 @@ service passthroughService05 on listener05_1 {
         var response = nyseEP->get("/nyseStock/stocks", <@untainted> clientRequest);
         if (response is http:Response) {
             checkpanic caller->respond(response);
-        } else if (response is error) {
+        } else {
             http:Response resp = new;
-            json errMsg = { "error": "error occurred while invoking the service: " + response.message() };
+            json errMsg = { "error": "error occurred while invoking the service: " + (<error>response).message() };
             resp.statusCode = 500;
             resp.setPayload(errMsg);
             checkpanic caller->respond(resp);

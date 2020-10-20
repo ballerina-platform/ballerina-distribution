@@ -28,7 +28,7 @@ function testHttpClientEcho() {
 
     if (response is http:Response) {
         test:assertEquals(response.statusCode, http:STATUS_ACCEPTED, "Unexpected response code");
-    } else if (response is error) {
-        test:assertFail(msg = response.message());
+    } else {
+        test:assertFail(msg = (<error>response).message());
     }
 }

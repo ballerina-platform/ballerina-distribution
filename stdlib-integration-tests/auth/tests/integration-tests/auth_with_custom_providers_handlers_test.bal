@@ -36,8 +36,8 @@ public function testAuthSuccess1() {
     var response = clientEP7->get("/echo/test1", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -48,8 +48,8 @@ public function testAuthSuccess2() {
     var response = clientEP7->get("/echo/test1", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -60,7 +60,7 @@ public function testAuthFailure() {
     var response = clientEP7->get("/echo/test3", req);
     if (response is http:Response) {
         assertForbidden(response);
-    } else if (response is error) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }

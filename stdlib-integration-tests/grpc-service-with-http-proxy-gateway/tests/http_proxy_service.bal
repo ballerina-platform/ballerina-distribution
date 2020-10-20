@@ -66,11 +66,12 @@ service passthrough on helloWorldEP {
                res.setPayload(<@untainted string> result.detail()["message"]);
                result = caller->respond(res);
             }
-        } else if (clientResponse is error) {
-            log:printError("[http2-passthrough] Error forwarding the message", err = clientResponse);
+        } else {
+            error err = <error>clientResponse;
+            log:printError("[http2-passthrough] Error forwarding the message", err = err);
             http:Response res = new;
             res.statusCode = 500;
-            res.setPayload(<string> clientResponse.detail()["message"]);
+            res.setPayload(<string> err.detail()["message"]);
             var result = caller->respond(res);
             if (result is error) {
                log:printError("[http2-passthrough] Error sending response", err = result);

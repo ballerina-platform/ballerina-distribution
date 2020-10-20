@@ -60,9 +60,9 @@ public function main() {
 
     if (result is http:Response) {
         response = result;
-    } else if (result is error) {
+    } else {
         log:printError("Error occurred while fetching response",
-            err = result);
+                <error>result);
         return;
     }
 

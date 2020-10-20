@@ -52,8 +52,8 @@ public function main() {
                 io:println(err);
             }
         }
-    } else if (loginResp is error) {
-        log:printError(loginResp.message());
+    } else {
+        log:printError((<error>loginResp).message());
     }
 }
 
