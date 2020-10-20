@@ -358,7 +358,7 @@
     </dependencyManagement>
     <properties>
         <ballerina.version>1.2.8</ballerina.version>
-        <ballerina.jre.artifacts.version>2.0.0</ballerina.jre.artifacts.version>
+        <ballerina.jre.artifacts.version>2.0.1</ballerina.jre.artifacts.version>
         <project.scm.id>ballerina-scm-server</project.scm.id>
         <docker.version>1.2.8</docker.version>
         <kubernetes.version>1.2.8</kubernetes.version>
