@@ -85,5 +85,4 @@ function testMemberVariable() {
     // This stubs the value of `url` to return the specified string.
     test:prepare(clientEndpoint).getMember("url").thenReturn(mockClientUrl);
     test:assertEquals(clientEndpoint.url, mockClientUrl);
-
 }

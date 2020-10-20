@@ -11,17 +11,17 @@ email:SmtpClient smtpClient = new ("localhost", "admin","admin");
 // endpoint and returns the response.
 function performGet() returns http:Response {
     io:println("Executing the 1st GET request");
-    var result = clientEndpoint->get("/headers");
-    http:Response response = <http:Response>result;
-    io:println("Status code: " + response.statusCode.toString());
+    http:Response response = <http:Response> checkpanic
+                                clientEndpoint->get("/headers");
+    io:println("Status code: ", response.statusCode.toString());
 
-    if(response.statusCode == 200) {
+
+    if (response.statusCode == 200) {
         io:println("Executing the 2nd GET request");
         http:Request req = new;
         req.addHeader("Sample-Name", "http-client-connector");
-        result = clientEndpoint->get("/get?test=123", req);
-        response = <http:Response>result;
-        io:println("Status code: " + response.statusCode.toString());
+        response = checkpanic clientEndpoint->get("/get?test=123", req);
+        io:println("Status code: ", response.statusCode.toString());
     }
     return response;
 }
@@ -37,7 +37,7 @@ function sendNotification(string[] emailIds) returns error? {
     };
     email:Error? response = smtpClient->send(msg);
     if (response is error) {
-        io:println("error while sending the email: " + response.message());
+        io:println("error while sending the email: ", response.message());
         return response;
     }
 }

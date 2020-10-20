@@ -15,9 +15,9 @@ public isolated function mockPrint(any|error... s) {
 }
 
 @test:Config{}
-function testFunc() {
+function testFunc() returns error? {
     // Invoke the main function.
-    main();
+    check main();
     runtime:sleep(12000);
     test:assertEquals(outputs[5].toString(), "Appointment cancelled.");
 }
