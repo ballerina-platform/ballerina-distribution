@@ -15,9 +15,9 @@ public isolated function mockPrint(any|error... s) {
 }
 
 @test:Config{}
-function testFunc() {
+function testFunc() returns error? {
     // Invoke the main function.
-    main();
-    runtime:sleep(10000);
-    test:assertEquals(outputs[11].toString(), "End.");
+    check main();
+    runtime:sleep(6000);
+    test:assertEquals(outputs[5].toString(), "End.");
 }
