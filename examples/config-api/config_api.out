@@ -9,7 +9,7 @@ ballerina encrypt
 
 # Note the encrypted value you get in the output. 
 
-# Next, create a new  `.conf` or `.txt` (e.g., `ballerina.conf`) file in a preferred location 
+# Next, create a new file (e.g., `ballerina.conf`) in a preferred location 
 # and place the configurations below to define the two `username` and `password` properties.
 #
 # ```
