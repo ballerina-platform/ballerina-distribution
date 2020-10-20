@@ -7,7 +7,7 @@ ballerina encrypt
 # This prompts to enter the value (i.e., the password) and a secret (i.e., the key).
 # Enter `ballerina` as the value and `12345` as the secret. 
 
-# Note the key you get in the output. 
+# Note the encrypted value you get in the output. 
 
 # Next, create a new  `.conf` or `.txt` (e.g., `ballerina.conf`) file in a preferred location 
 # and place the configurations below to define the two `username` and `password` properties.
