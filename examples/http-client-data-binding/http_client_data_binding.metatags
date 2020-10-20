@@ -1,2 +1,2 @@
-description: BBE demonstrates the HTTP service-level and the resource-level CORS configuration.
-keywords: ballerina, ballerina by example, bbe, http, cors
+description: BBE demonstrates the HTTP client data-binding capability.
+keywords: ballerina, ballerina by example, bbe, http, client, data binding

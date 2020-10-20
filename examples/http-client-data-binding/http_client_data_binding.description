@@ -1,5 +1,9 @@
-//This sample demonstrates the Ballerina server connector CORS configuration. 
-//CORS headers can be applied in both the service-level and the resource-level. Service-level CORS headers apply to all the resources
-//unless there are headers configured at the resource-level. Ballerina CORS supports both simple and pre-flight requests.<br/><br/>
-// For more information on the underlying module, 
+// The Client data binding helps to access the response payload directly as a return value. The `targetType` dafaultable
+// parameter in the client remote function signature expects a `typedesc` of a possible payload type out of
+// `string`|`xml`|`json`|`map<json>`|`byte[]`|`record`|`record[]`, and `http:Response`.
+// The successful data binding process will return the payload in the given `targetType`. When user expects client
+// data binding, the HTTP error response(4XX, 5XX)  will be categorized as an `http:ClientError` of the client remote
+// operation. The default `targetType` being `http:Response`, user still has the option to access complete response to
+// explore more.<br/><br/>
+// For more information on the underlying module,
 // see the [HTTP module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/index.html).

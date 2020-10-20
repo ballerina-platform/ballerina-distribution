@@ -2,32 +2,33 @@ import ballerina/test;
 import ballerina/http;
 
 @test:Config {}
-function testFunc() returns @tainted  error? {
-    http:Client httpEndpoint = new("http://localhost:9092");
-    json expectedJson = { "type": "middleware" };
+function testFunc() returns @tainted error? {
+    http:Client httpEndpoint = new("http://localhost:909o");
+    json expectedJson = {id: "data-binding-done"};
 
-    http:Request companyReq = new;
-    companyReq.setHeader("Origin", "http://www.bbc.com");
-    // Send a `GET` request to the specified endpoint.
-    var companyResponse = httpEndpoint->get("/crossOriginService/company", message = companyReq);
-    if (companyResponse is http:Response) {
-        var res = check companyResponse.getJsonPayload();
-        test:assertEquals(res, expectedJson);
+    var resp = httpEndpoint->get("/call/all");
+    if (resp is http:Response) {
+        var jsonPayload = check resp.getJsonPayload();
+        test:assertEquals(jsonPayload, expectedJson);
     } else {
         test:assertFail(msg = "Failed to call the endpoint:");
     }
 
-    http:Request langReq = new;
-    langReq.setHeader("Origin", "http://www.m3.com");
-    langReq.setHeader("Access-Control-Request-Method", "POST");
-    // Send a `GET` request to the specified endpoint.
-    var langResponse = httpEndpoint->options("/crossOriginService/lang", message = langReq);
-    if (langResponse is http:Response) {
-        // Asserting the header values.
-        test:assertEquals(langResponse.getHeader("Access-Control-Allow-Methods"), "POST");
-        test:assertEquals(langResponse.getHeader("Access-Control-Allow-Origin"), "http://www.m3.com");
+    resp = httpEndpoint->get("/call/5xx");
+    if (resp is http:Response) {
+        var textPayload = check resp.getTextPayload();
+        test:assertEquals(textPayload, "data-binding-failed-with-501");
+        test:assertEquals(resp.statusCode, 501);
     } else {
         test:assertFail(msg = "Failed to call the endpoint:");
     }
-    return;
+
+    resp = httpEndpoint->get("/call/4xx");
+    if (resp is http:Response) {
+        var textPayload = check resp.getTextPayload();
+        test:assertEquals(textPayload, "resource not found");
+        test:assertEquals(resp.statusCode, 404);
+    } else {
+        test:assertFail(msg = "Failed to call the endpoint:");
+    }
 }

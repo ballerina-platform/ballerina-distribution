@@ -1,5 +1,5 @@
-# Run the cURL command below to send a CORS simple request. 
-curl -v "http://localhost:9092/crossOriginService/company" -H "Origin:http://www.bbc.com"
+# To invoke the `bindCheck` resource, use the cURL command below.
+curl -v "http://localhost:9090/call/all"
 > GET /crossOriginService/company HTTP/1.1
 > Host: localhost:9092
 > User-Agent: curl/7.64.1
@@ -16,11 +16,30 @@ curl -v "http://localhost:9092/crossOriginService/company" -H "Origin:http://www
 * Connection #0 to host localhost left intact
 {"type":"middleware"}* Closing connection 0
 
-# Run the cURL command below to send a CORS preflight request. 
-curl -v "http://localhost:9092/crossOriginService/lang" -X OPTIONS -H "Origin:http://www.m3.com" -H "Access-Control-Request-Method:POST"
+# To invoke the `handle500` resource, use the cURL command below.
+curl -v "http://localhost:9090/call/500"
 > OPTIONS /crossOriginService/lang HTTP/1.1
 > Host: localhost:9092
 > User-Agent: curl/7.64.1
+> Accept: */*
+> Origin:http://www.m3.com
+> Access-Control-Request-Method:POST
+>
+< HTTP/1.1 200 OK
+< access-control-allow-origin: http://www.m3.com
+< access-control-max-age: 84900
+< access-control-allow-methods: POST
+< content-length: 0
+< server: ballerina
+<
+* Connection #0 to host localhost left intact
+* Closing connection 0
+
+# To invoke the `handle404` resource, use the cURL command below.
+curl -v "http://localhost:9090/call/404"
+> OPTIONS /crossOriginService/lang HTTP/1.1
+> Host: localhost:9092
+> User-Agent: curl/7.64.1`
 > Accept: */*
 > Origin:http://www.m3.com
 > Access-Control-Request-Method:POST
