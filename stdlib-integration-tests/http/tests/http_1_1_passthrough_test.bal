@@ -31,7 +31,7 @@ service passthroughService on passthroughEP1 {
         http:Client nyseEP1 = new("http://localhost:9113");
         var response = nyseEP1->get("/nyseStock/stocks", <@untainted> clientRequest);
         if (response is http:Response) {
-            checkpanic caller->respond(response);
+            checkpanic caller->respond(<@untainted> response);
         } else {
             checkpanic caller->respond({ "error": "error occurred while invoking the service" });
         }
@@ -45,7 +45,7 @@ service passthroughService on passthroughEP1 {
         http:Client nyseEP1 = new("http://localhost:9113");
         var response = nyseEP1->forward("/nyseStock/stocksAsMultiparts", clientRequest);
         if (response is http:Response) {
-            checkpanic caller->respond(response);
+            checkpanic caller->respond(<@untainted> response);
         } else {
             checkpanic caller->respond({ "error": "error occurred while invoking the service" });
         }
