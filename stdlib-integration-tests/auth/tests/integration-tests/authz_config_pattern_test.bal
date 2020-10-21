@@ -43,7 +43,7 @@ public function testValidUserForPattern1() {
     var response = clientEP10->get("/echo/test1", req);
     if (response is http:Response) {
         assertOK(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -55,7 +55,7 @@ public function testValidUserForPattern2() {
     var response = clientEP10->get("/echo/test2", req);
     if (response is http:Response) {
         assertOK(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -67,7 +67,7 @@ public function testValidUserForPattern3() {
     var response = clientEP10->get("/echo/test3", req);
     if (response is http:Response) {
         assertOK(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -79,7 +79,7 @@ public function testValidUserForPattern4() {
     var response = clientEP10->get("/echo/test4", req);
     if (response is http:Response) {
         assertOK(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -91,7 +91,7 @@ public function testValidUserForPattern5() {
     var response = clientEP10->get("/echo/test5", req);
     if (response is http:Response) {
         assertOK(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -103,7 +103,7 @@ public function testInvalidUserForPattern1() {
     var response = clientEP10->get("/echo/test1", req);
     if (response is http:Response) {
         assertForbidden(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -115,7 +115,7 @@ public function testInvalidUserForPattern2() {
     var response = clientEP10->get("/echo/test2", req);
     if (response is http:Response) {
         assertForbidden(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -127,7 +127,7 @@ public function testInvalidUserForPattern3() {
     var response = clientEP10->get("/echo/test3", req);
     if (response is http:Response) {
         assertForbidden(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -139,7 +139,7 @@ public function testInvalidUserForPattern4() {
     var response = clientEP10->get("/echo/test4", req);
     if (response is http:Response) {
         assertForbidden(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -151,7 +151,7 @@ public function testInvalidUserForPattern5() {
     var response = clientEP10->get("/echo/test5", req);
     if (response is http:Response) {
         assertForbidden(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }

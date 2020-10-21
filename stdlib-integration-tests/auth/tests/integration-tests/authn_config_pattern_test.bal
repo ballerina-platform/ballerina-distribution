@@ -44,7 +44,7 @@ public function testUserGroup1ForPattern1() {
     var response = clientEP9->get("/echo/test1", req);
     if (response is http:Response) {
         assertOK(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -57,7 +57,7 @@ public function testUserGroup1ForPattern2() {
     var response = clientEP9->get("/echo/test2", req);
     if (response is http:Response) {
         assertOK(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -70,7 +70,7 @@ public function testUserGroup1ForPattern3() {
     var response = clientEP9->get("/echo/test3", req);
     if (response is http:Response) {
         assertOK(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -83,7 +83,7 @@ public function testUserGroup1ForPattern4() {
     var response = clientEP9->get("/echo/test4", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -96,7 +96,7 @@ public function testUserGroup1ForPattern5() {
     var response = clientEP9->get("/echo/test5", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -109,7 +109,7 @@ public function testUserGroup2ForPattern1() {
     var response = clientEP9->get("/echo/test1", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -122,7 +122,7 @@ public function testUserGroup2ForPattern2() {
     var response = clientEP9->get("/echo/test2", req);
     if (response is http:Response) {
         assertOK(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -135,7 +135,7 @@ public function testUserGroup2ForPattern3() {
     var response = clientEP9->get("/echo/test3", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -148,7 +148,7 @@ public function testUserGroup2ForPattern4() {
     var response = clientEP9->get("/echo/test4", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -161,7 +161,7 @@ public function testUserGroup2ForPattern5() {
     var response = clientEP9->get("/echo/test5", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -174,7 +174,7 @@ public function testUserGroup3ForPattern1() {
     var response = clientEP9->get("/echo/test1", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -187,7 +187,7 @@ public function testUserGroup3ForPattern2() {
     var response = clientEP9->get("/echo/test2", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -200,7 +200,7 @@ public function testUserGroup3ForPattern3() {
     var response = clientEP9->get("/echo/test3", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -213,7 +213,7 @@ public function testUserGroup3ForPattern4() {
     var response = clientEP9->get("/echo/test4", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -226,7 +226,7 @@ public function testUserGroup3ForPattern5() {
     var response = clientEP9->get("/echo/test5", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -239,7 +239,7 @@ public function testUserGroup4ForPattern1() {
     var response = clientEP9->get("/echo/test1", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -252,7 +252,7 @@ public function testUserGroup4ForPattern2() {
     var response = clientEP9->get("/echo/test2", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -265,7 +265,7 @@ public function testUserGroup4ForPattern3() {
     var response = clientEP9->get("/echo/test3", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -278,7 +278,7 @@ public function testUserGroup4ForPattern4() {
     var response = clientEP9->get("/echo/test4", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -291,7 +291,7 @@ public function testUserGroup4ForPattern5() {
     var response = clientEP9->get("/echo/test5", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }

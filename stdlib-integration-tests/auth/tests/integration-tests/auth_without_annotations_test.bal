@@ -36,7 +36,7 @@ public function testAuthSuccess() {
     var response = clientEP6->get("/echo/test", req);
     if (response is http:Response) {
         assertOK(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -48,7 +48,7 @@ public function testAuthnFailure() {
     var response = clientEP6->get("/echo/test", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }

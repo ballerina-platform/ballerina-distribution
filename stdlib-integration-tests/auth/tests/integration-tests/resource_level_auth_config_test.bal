@@ -37,7 +37,7 @@ public function testAuthSuccessWithResourceLevelConfigs() {
     var response = clientEP4->get("/echo/test", req);
     if (response is http:Response) {
         assertOK(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -50,7 +50,7 @@ public function testAuthzFailureWithResourceLevelConfigs() {
     var response = clientEP4->get("/echo/test", req);
     if (response is http:Response) {
         assertForbidden(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
@@ -63,7 +63,7 @@ public function testAuthFailureWithResourceLevelConfigs() {
     var response = clientEP4->get("/echo/test", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else {
+    } else if (response is http:ClientError) {
         test:assertFail(msg = "Test Failed! " + <string>response.message());
     }
 }
