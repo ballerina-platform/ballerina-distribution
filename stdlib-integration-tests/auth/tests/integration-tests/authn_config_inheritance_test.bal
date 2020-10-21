@@ -36,7 +36,7 @@ public function testNoAuthHeaders1() {
     var response = clientEP0->get("/echo1/test1", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -48,7 +48,7 @@ public function testNoAuthHeaders2() {
     var response = clientEP0->get("/echo1/test2", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -60,7 +60,7 @@ public function testNoAuthHeaders3() {
     var response = clientEP0->get("/echo1/test3", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -72,7 +72,7 @@ public function testNoAuthHeaders4() {
     var response = clientEP0->get("/echo2/test1", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -84,7 +84,7 @@ public function testNoAuthHeaders5() {
     var response = clientEP0->get("/echo2/test2", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -96,7 +96,7 @@ public function testNoAuthHeaders6() {
     var response = clientEP0->get("/echo2/test3", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -108,7 +108,7 @@ public function testNoAuthHeaders7() {
     var response = clientEP0->get("/echo3/test1", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -120,7 +120,7 @@ public function testNoAuthHeaders8() {
     var response = clientEP0->get("/echo3/test2", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -132,7 +132,7 @@ public function testNoAuthHeaders9() {
     var response = clientEP0->get("/echo3/test3", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -145,7 +145,7 @@ public function testValidAuthHeaders1() {
     var response = clientEP0->get("/echo1/test1", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -158,7 +158,7 @@ public function testValidAuthHeaders2() {
     var response = clientEP0->get("/echo1/test2", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -171,7 +171,7 @@ public function testValidAuthHeaders3() {
     var response = clientEP0->get("/echo1/test3", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -184,7 +184,7 @@ public function testValidAuthHeaders4() {
     var response = clientEP0->get("/echo2/test1", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -197,7 +197,7 @@ public function testValidAuthHeaders5() {
     var response = clientEP0->get("/echo2/test2", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -210,7 +210,7 @@ public function testValidAuthHeaders6() {
     var response = clientEP0->get("/echo2/test3", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -223,7 +223,7 @@ public function testValidAuthHeaders7() {
     var response = clientEP0->get("/echo3/test1", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -236,7 +236,7 @@ public function testValidAuthHeaders8() {
     var response = clientEP0->get("/echo3/test2", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -249,7 +249,7 @@ public function testValidAuthHeaders9() {
     var response = clientEP0->get("/echo3/test3", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -262,7 +262,7 @@ public function testInvalidAuthHeaders1() {
     var response = clientEP0->get("/echo1/test1", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -275,7 +275,7 @@ public function testInvalidAuthHeaders2() {
     var response = clientEP0->get("/echo1/test2", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -288,7 +288,7 @@ public function testInvalidAuthHeaders3() {
     var response = clientEP0->get("/echo1/test3", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -301,7 +301,7 @@ public function testInvalidAuthHeaders4() {
     var response = clientEP0->get("/echo2/test1", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -314,7 +314,7 @@ public function testInvalidAuthHeaders5() {
     var response = clientEP0->get("/echo2/test2", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -327,7 +327,7 @@ public function testInvalidAuthHeaders6() {
     var response = clientEP0->get("/echo2/test3", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -340,7 +340,7 @@ public function testInvalidAuthHeaders7() {
     var response = clientEP0->get("/echo3/test1", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -353,7 +353,7 @@ public function testInvalidAuthHeaders8() {
     var response = clientEP0->get("/echo3/test2", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -366,7 +366,7 @@ public function testInvalidAuthHeaders9() {
     var response = clientEP0->get("/echo3/test3", req);
     if (response is http:Response) {
         assertUnauthorized(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }

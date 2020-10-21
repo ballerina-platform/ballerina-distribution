@@ -55,7 +55,7 @@ public function testValidScopesAtListener1() {
     var response = clientEP1->get("/echo1/test1", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -68,7 +68,7 @@ public function testValidScopesAtListener2() {
     var response = clientEP1->get("/echo1/test2", req);
     if (response is http:Response) {
         assertForbidden(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -81,7 +81,7 @@ public function testValidScopesAtListener3() {
     var response = clientEP1->get("/echo1/test3", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -94,7 +94,7 @@ public function testValidScopesAtListener4() {
     var response = clientEP1->get("/echo2/test1", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -107,7 +107,7 @@ public function testValidScopesAtListener5() {
     var response = clientEP1->get("/echo2/test2", req);
     if (response is http:Response) {
         assertForbidden(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -120,7 +120,7 @@ public function testValidScopesAtListener6() {
     var response = clientEP1->get("/echo2/test3", req);
     if (response is http:Response) {
         assertForbidden(response);
-    } else if (response is http:ClientError) {
+    } else {
         test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
@@ -133,8 +133,8 @@ public function testValidScopesAtListener7() {
     var response = clientEP1->get("/echo3/test1", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -146,8 +146,8 @@ public function testValidScopesAtListener8() {
     var response = clientEP1->get("/echo3/test2", req);
     if (response is http:Response) {
         assertForbidden(response);
-    } else if (response is http:ClientError) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -159,8 +159,8 @@ public function testValidScopesAtListener9() {
     var response = clientEP1->get("/echo3/test3", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -172,8 +172,8 @@ public function testInvalidScopesAtListener1() {
     var response = clientEP2->get("/echo1/test1", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -185,8 +185,8 @@ public function testInvalidScopesAtListener2() {
     var response = clientEP2->get("/echo1/test2", req);
     if (response is http:Response) {
         assertForbidden(response);
-    } else if (response is http:ClientError) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -198,8 +198,8 @@ public function testInvalidScopesAtListener3() {
     var response = clientEP2->get("/echo1/test3", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -211,8 +211,8 @@ public function testInvalidScopesAtListener4() {
     var response = clientEP2->get("/echo2/test1", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -224,8 +224,8 @@ public function testInvalidScopesAtListener5() {
     var response = clientEP2->get("/echo2/test2", req);
     if (response is http:Response) {
         assertForbidden(response);
-    } else if (response is http:ClientError) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -237,8 +237,8 @@ public function testInvalidScopesAtListener6() {
     var response = clientEP2->get("/echo2/test3", req);
     if (response is http:Response) {
         assertForbidden(response);
-    } else if (response is http:ClientError) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -250,8 +250,8 @@ public function testInvalidScopesAtListener7() {
     var response = clientEP2->get("/echo3/test1", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -263,8 +263,8 @@ public function testInvalidScopesAtListener8() {
     var response = clientEP2->get("/echo3/test2", req);
     if (response is http:Response) {
         assertForbidden(response);
-    } else if (response is http:ClientError) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -276,8 +276,8 @@ public function testInvalidScopesAtListener9() {
     var response = clientEP2->get("/echo3/test3", req);
     if (response is http:Response) {
         assertForbidden(response);
-    } else if (response is http:ClientError) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -289,8 +289,8 @@ public function testNotGivenScopesAtListener1() {
     var response = clientEP3->get("/echo1/test1", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -302,8 +302,8 @@ public function testNotGivenScopesAtListener2() {
     var response = clientEP3->get("/echo1/test2", req);
     if (response is http:Response) {
         assertForbidden(response);
-    } else if (response is http:ClientError) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -315,8 +315,8 @@ public function testNotGivenScopesAtListener3() {
     var response = clientEP3->get("/echo1/test3", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -328,8 +328,8 @@ public function testNotGivenScopesAtListener4() {
     var response = clientEP3->get("/echo2/test1", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -341,8 +341,8 @@ public function testNotGivenScopesAtListener5() {
     var response = clientEP3->get("/echo2/test2", req);
     if (response is http:Response) {
         assertForbidden(response);
-    } else if (response is http:ClientError) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -354,8 +354,8 @@ public function testNotGivenScopesAtListener6() {
     var response = clientEP3->get("/echo2/test3", req);
     if (response is http:Response) {
         assertForbidden(response);
-    } else if (response is http:ClientError) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -367,8 +367,8 @@ public function testNotGivenScopesAtListener7() {
     var response = clientEP3->get("/echo3/test1", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -380,8 +380,8 @@ public function testNotGivenScopesAtListener8() {
     var response = clientEP3->get("/echo3/test2", req);
     if (response is http:Response) {
         assertForbidden(response);
-    } else if (response is http:ClientError) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -393,7 +393,7 @@ public function testNotGivenScopesAtListener9() {
     var response = clientEP3->get("/echo3/test3", req);
     if (response is http:Response) {
         assertOK(response);
-    } else if (response is http:ClientError) {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+    } else {
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
