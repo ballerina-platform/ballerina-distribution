@@ -1115,10 +1115,6 @@
         "column": 2,
         "category": "Working over the network",
         "samples": [{
-                "name": "Client Generation",
-                "url": "client-generation"
-            },
-            {
                 "name": "Ballerina To OpenAPI",
                 "url": "ballerina-to-openapi"
             },
