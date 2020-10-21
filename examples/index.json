@@ -1107,24 +1107,6 @@
         ]
     },
  	{
-        "title": "Observability",
-        "column": 2,
-        "category": "Working over the network",
-        "samples": [{
-                "name": "Distributed Tracing",
-                "url": "tracing"
-            },
-            {
-                "name": "Counter-Based Metrics",
-                "url": "counter-metrics"
-            },
-            {
-                "name": "Gauge-Based Metrics",
-                "url": "gauge-metrics"
-            }
-        ]
-    },
- 	{
         "title": "OpenAPI",
         "column": 2,
         "category": "Working over the network",
