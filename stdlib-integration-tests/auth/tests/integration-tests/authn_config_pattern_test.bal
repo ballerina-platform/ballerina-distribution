@@ -45,7 +45,7 @@ public function testUserGroup1ForPattern1() {
     if (response is http:Response) {
         assertOK(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -58,7 +58,7 @@ public function testUserGroup1ForPattern2() {
     if (response is http:Response) {
         assertOK(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -71,7 +71,7 @@ public function testUserGroup1ForPattern3() {
     if (response is http:Response) {
         assertOK(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -84,7 +84,7 @@ public function testUserGroup1ForPattern4() {
     if (response is http:Response) {
         assertUnauthorized(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -97,7 +97,7 @@ public function testUserGroup1ForPattern5() {
     if (response is http:Response) {
         assertUnauthorized(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -110,7 +110,7 @@ public function testUserGroup2ForPattern1() {
     if (response is http:Response) {
         assertUnauthorized(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -123,7 +123,7 @@ public function testUserGroup2ForPattern2() {
     if (response is http:Response) {
         assertOK(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -136,7 +136,7 @@ public function testUserGroup2ForPattern3() {
     if (response is http:Response) {
         assertUnauthorized(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -149,7 +149,7 @@ public function testUserGroup2ForPattern4() {
     if (response is http:Response) {
         assertUnauthorized(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -162,7 +162,7 @@ public function testUserGroup2ForPattern5() {
     if (response is http:Response) {
         assertUnauthorized(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -175,7 +175,7 @@ public function testUserGroup3ForPattern1() {
     if (response is http:Response) {
         assertUnauthorized(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -188,7 +188,7 @@ public function testUserGroup3ForPattern2() {
     if (response is http:Response) {
         assertUnauthorized(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -201,7 +201,7 @@ public function testUserGroup3ForPattern3() {
     if (response is http:Response) {
         assertUnauthorized(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -214,7 +214,7 @@ public function testUserGroup3ForPattern4() {
     if (response is http:Response) {
         assertUnauthorized(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -227,7 +227,7 @@ public function testUserGroup3ForPattern5() {
     if (response is http:Response) {
         assertUnauthorized(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -240,7 +240,7 @@ public function testUserGroup4ForPattern1() {
     if (response is http:Response) {
         assertUnauthorized(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -253,7 +253,7 @@ public function testUserGroup4ForPattern2() {
     if (response is http:Response) {
         assertUnauthorized(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -266,7 +266,7 @@ public function testUserGroup4ForPattern3() {
     if (response is http:Response) {
         assertUnauthorized(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -279,7 +279,7 @@ public function testUserGroup4ForPattern4() {
     if (response is http:Response) {
         assertUnauthorized(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }
 
@@ -292,6 +292,6 @@ public function testUserGroup4ForPattern5() {
     if (response is http:Response) {
         assertUnauthorized(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
     }
 }

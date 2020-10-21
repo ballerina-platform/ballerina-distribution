@@ -35,7 +35,7 @@ service PostToHttpService = service {
         var result = httpClient->post("/", request);
         if (result is http:ClientError) {
             panic result;
-        } else {
+        } else if (result is http:Response) {
             if (result.statusCode == 200) {
                 var payload = result.getTextPayload();
                 if (payload is http:ClientError) {
