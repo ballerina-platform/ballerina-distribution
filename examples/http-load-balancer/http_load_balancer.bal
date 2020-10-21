@@ -32,14 +32,14 @@ service loadBalancerDemoService on new http:Listener(9090) {
         // does not get the expected response, the error-handling logic is
         // executed.
         if (response is http:Response) {
-            var responseToCaller = caller->respond(response);
+            var responseToCaller = caller->respond(<@untainted>response);
             if (responseToCaller is http:ListenerError) {
                 log:printError("Error sending response", responseToCaller);
             }
         } else {
             http:Response outResponse = new;
             outResponse.statusCode = 500;
-            outResponse.setPayload(<string>response.message());
+            outResponse.setPayload(<@untainted>(<error>response).message());
             var responseToCaller = caller->respond(outResponse);
             if (responseToCaller is http:ListenerError) {
                 log:printError("Error sending response", responseToCaller);

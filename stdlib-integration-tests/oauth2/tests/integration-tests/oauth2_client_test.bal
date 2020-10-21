@@ -55,7 +55,7 @@ public function testClientCredentialsGrantType1() {
     if (response is http:Response) {
         assertContains(response, "access_granted");
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -134,7 +134,7 @@ public function testClientCredentialsGrantType3() {
     if (response is http:Response) {
         assertContains(response, "access_granted");
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -215,7 +215,7 @@ public function testPasswordGrantType1() {
     if (response is http:Response) {
         assertContains(response, "access_granted");
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -268,7 +268,7 @@ public function testPasswordGrantType2() {
     if (response is http:Response) {
         assertContains(response, "access_granted");
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -361,7 +361,7 @@ public function testPasswordGrantType4() {
     if (response is http:Response) {
         assertContains(response, "access_granted");
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -389,7 +389,7 @@ public function testDirectToken1() {
     if (response is http:Response) {
         assertContains(response, "access_granted");
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -460,7 +460,7 @@ public function testDirectToken3() {
     if (response is http:Response) {
         assertContains(response, "access_granted");
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -605,6 +605,6 @@ public function testDirectToken7() {
     if (response is http:Response) {
         assertContains(response, "access_granted");
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }

@@ -107,6 +107,6 @@ function testTaskWithHttpClient() {
     if (response is http:Response) {
         test:assertEquals(response.getTextPayload(), HTTP_MESSAGE, msg = "Response payload mismatched");
     } else {
-        test:assertFail(msg = response.message());
+        test:assertFail(msg = (<error>response).message());
     }
 }

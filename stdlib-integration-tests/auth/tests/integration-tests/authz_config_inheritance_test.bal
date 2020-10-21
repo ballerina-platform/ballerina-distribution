@@ -56,7 +56,7 @@ public function testValidScopesAtListener1() {
     if (response is http:Response) {
         assertOK(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -69,7 +69,7 @@ public function testValidScopesAtListener2() {
     if (response is http:Response) {
         assertForbidden(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -82,7 +82,7 @@ public function testValidScopesAtListener3() {
     if (response is http:Response) {
         assertOK(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -95,7 +95,7 @@ public function testValidScopesAtListener4() {
     if (response is http:Response) {
         assertOK(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -108,7 +108,7 @@ public function testValidScopesAtListener5() {
     if (response is http:Response) {
         assertForbidden(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -121,7 +121,7 @@ public function testValidScopesAtListener6() {
     if (response is http:Response) {
         assertForbidden(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
