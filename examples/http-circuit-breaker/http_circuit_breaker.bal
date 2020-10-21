@@ -62,14 +62,14 @@ service circuitbreaker on new http:Listener(9090) {
         // the client. If `backendResponse` is an `http:ClientError`, an
         // internal server error is returned to the client.
         if (backendResponse is http:Response) {
-            var responseToCaller = caller->respond(backendResponse);
+            var responseToCaller = caller->respond(<@untainted>backendResponse);
             if (responseToCaller is http:ListenerError) {
                 log:printError("Error sending response", responseToCaller);
             }
         } else {
             http:Response response = new;
             response.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
-            response.setPayload((<error>backendResponse).message());
+            response.setPayload(<@untainted>(<error>backendResponse).message());
             var responseToCaller = caller->respond(response);
             if (responseToCaller is http:ListenerError) {
                 log:printError("Error sending response", responseToCaller);

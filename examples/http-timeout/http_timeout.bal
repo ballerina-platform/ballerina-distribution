@@ -26,7 +26,7 @@ service timeoutService on new http:Listener(9090) {
         // client. If `backendResponse` is an `http:ClientError`, an internal
         // server error is returned to the client.
         if (backendResponse is http:Response) {
-            var responseToCaller = caller->respond(backendResponse);
+            var responseToCaller = caller->respond(<@untainted>backendResponse);
             if (responseToCaller is error) {
                 log:printError("Error sending response", responseToCaller);
             }
@@ -41,7 +41,7 @@ service timeoutService on new http:Listener(9090) {
                     "Request timed out. Please try again in sometime."
                 );
             } else {
-                response.setPayload(errorMessage);
+                response.setPayload(<@untainted>errorMessage);
             }
             var responseToCaller = caller->respond(response);
             if (responseToCaller is error) {

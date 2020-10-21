@@ -16,7 +16,7 @@ service helloWorld on new http:Listener(9090) {
         var resp = clientEP->forward("/200", req);
         if (resp is http:Response) {
             // Respond to the caller.
-            var result = caller->respond(resp);
+            var result = caller->respond(<@untainted>resp);
             // Log the error in case of a failure.
             if (result is error) {
                 log:printError("Failed to respond to caller", result);

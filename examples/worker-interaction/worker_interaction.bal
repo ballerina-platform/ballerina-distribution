@@ -41,7 +41,7 @@ public function main() {
     wait w1;
 }
 
-function calculate(string expr) returns int|error {
+function calculate(string expr) returns @tainted int|error {
     http:Client httpClient = new ("https://api.mathjs.org");
     string response = <string> check
         httpClient->get(string `/v4/?expr=${expr}`, targetType = string);
