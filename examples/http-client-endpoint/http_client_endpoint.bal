@@ -37,12 +37,12 @@ public function main() {
 
     } else {
         io:println("Error when calling the backend: ",
-                                    response.message());
+                            (<error>response).message());
     }
 }
 
 //The below function handles the response received from the remote HTTP endpoint.
-function handleResponse(http:Response|error response) {
+function handleResponse(http:Response|http:Payload|error response) {
     if (response is http:Response) {
         // [Get the JSON payload](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Response.html#getJsonPayload) from the response.
         var msg = response.getJsonPayload();
@@ -54,6 +54,6 @@ function handleResponse(http:Response|error response) {
         }
     } else {
         io:println("Error when calling the backend: ",
-                                    response.message());
+                            (<error>response).message());
     }
 }

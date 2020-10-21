@@ -77,7 +77,7 @@ service passthrough on new http:Listener(9092) {
     resource function getCompressed(http:Caller caller, http:Request req) {
         var response = clientEndpoint->post("/backend/echo", <@untainted>req);
         if (response is http:Response) {
-            var result = caller->respond(response);
+            var result = caller->respond(<@untainted>response);
             if (result is error) {
                 log:printError("Error sending response", result);
             }

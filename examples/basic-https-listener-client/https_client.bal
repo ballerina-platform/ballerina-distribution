@@ -34,6 +34,6 @@ public function main() {
         }
     } else {
         // If an error occurs when getting the response, log the error.
-        log:printError(resp.message());
+        log:printError((<error>resp).message());
     }
 }

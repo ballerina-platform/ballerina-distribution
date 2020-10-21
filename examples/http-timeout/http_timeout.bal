@@ -26,14 +26,14 @@ service timeoutService on new http:Listener(9090) {
         // client. If `backendResponse` is an `http:ClientError`, an internal
         // server error is returned to the client.
         if (backendResponse is http:Response) {
-            var responseToCaller = caller->respond(backendResponse);
+            var responseToCaller = caller->respond(<@untainted>backendResponse);
             if (responseToCaller is error) {
                 log:printError("Error sending response", responseToCaller);
             }
         } else {
             http:Response response = new;
             response.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
-            string errorMessage = <string>backendResponse.message();
+            string errorMessage = (<error>backendResponse).message();
             string expectedMessage = "Idle timeout triggered before " +
                 "initiating inbound response";
             if (errorMessage == expectedMessage) {
@@ -41,7 +41,7 @@ service timeoutService on new http:Listener(9090) {
                     "Request timed out. Please try again in sometime."
                 );
             } else {
-                response.setPayload(errorMessage);
+                response.setPayload(<@untainted>errorMessage);
             }
             var responseToCaller = caller->respond(response);
             if (responseToCaller is error) {

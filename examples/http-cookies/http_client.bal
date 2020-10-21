@@ -51,6 +51,6 @@ public function main() {
             }
         }
     } else {
-        log:printError(loginResp.message());
+        log:printError((<error>loginResp).message());
     }
 }

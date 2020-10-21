@@ -9,14 +9,14 @@ public function main() {
     // within any execution flow of a Ballerina program.
     fork {
         worker w1 returns int {
-            var response = checkpanic httpClient->get("/v4/?expr=2*3");
-            return checkpanic 'int:fromString(
-                checkpanic response.getTextPayload());
+            string response = <string> checkpanic
+                httpClient->get("/v4/?expr=2*3", targetType = string);
+            return checkpanic 'int:fromString(response);
         }
         worker w2 returns int {
-            var response = checkpanic httpClient->get("/v4/?expr=9*4");
-            return checkpanic 'int:fromString(
-                checkpanic response.getTextPayload());
+            string response = <string> checkpanic
+                httpClient->get("/v4/?expr=9*4", targetType = string);
+            return checkpanic 'int:fromString(response);
         }
     }
 

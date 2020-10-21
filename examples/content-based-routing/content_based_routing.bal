@@ -21,7 +21,7 @@ service contentBasedRouting on new http:Listener(9090) {
         if (jsonMsg is json) {
             // Get the `string` value relevant to the key `name`.
             json|error nameString = jsonMsg.name;
-            http:Response|error clientResponse;
+            http:Response|http:Payload|error clientResponse;
             if (nameString is json) {
                 if (nameString.toString() == "sanFrancisco") {
                     // Here, [post](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html#post) remote function represents the POST operation of
@@ -46,7 +46,7 @@ service contentBasedRouting on new http:Listener(9090) {
                 } else {
                     http:Response res = new;
                     res.statusCode = 500;
-                    res.setPayload(clientResponse.message());
+                    res.setPayload((<error>clientResponse).message());
                     var result = outboundEP->respond(res);
                     if (result is error) {
                         log:printError("Error sending response", result);
