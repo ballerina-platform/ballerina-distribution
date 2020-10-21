@@ -25,7 +25,7 @@ description = 'Ballerina - Tools - Parent'
 ext {
     ballerinaVersion = project.ballerinaVersion
     shortVersion = project.shortVersion
-    ballerinaJreArtifactsVersion = "2.0.1-SNAPSHOT"
+    ballerinaJreArtifactsVersion = "3.0.0"
     awslambdaVersion = project.ballerinaVersion
     azFunctionsVersion = project.ballerinaVersion
     dockerVersion = project.ballerinaVersion

@@ -8,15 +8,14 @@ class Person {
     string address = "No 20, Palm grove";
 }
 
-// The `assertEquals()` function allows you to compare anydata type values for value equality.
-// The `assertExactEquals()` function allows you to compare any type entries for exact equality.
-// Compares values of the type `int`.
+// The `assertEquals()` function allows you to compare `anydata` type values for value equality.
+// The `assertExactEquals()` function allows you to compare `any` type entries for exact equality.
+// This example compares the values of the type `int`.
 @test:Config {}
 function testAssertIntEquals() {
-    int answer = 0;
     int a = 5;
     int b = 3;
-    answer = intAdd(a, b);
+    int answer = intAdd(a, b);
     test:assertEquals(answer, 8, msg = "int values not equal");
 }
 
@@ -93,7 +92,7 @@ function testAssertFloatArrayEquals() {
     test:assertEquals(x, y, msg = "float array values not equal");
 }
 
-// Compares distinct values of the type `string`.
+// Compares values of the type `string`.
 @test:Config {}
 function testAssertNotEqualsString() {
     string s1 = "abc";
@@ -101,7 +100,7 @@ function testAssertNotEqualsString() {
     test:assertNotEquals(s1, s2, msg = "string values are equal");
 }
 
-// Compares distinct values of the type `json`.
+// Compares values of the type `json`.
 @test:Config {}
 function testAssertNotEqualsJson() {
     json s1 = {"a": "b"};
@@ -136,7 +135,7 @@ function testAssertExactEqualsObject() {
 @test:Config {}
 function testAssertNotExactEqualsObject() {
     Person p1 = new;
-    Person p2 = new ();
+    Person p2 = new;
     test:assertNotExactEquals(p1, p2, msg = "Objects are exactly equal");
 }
 

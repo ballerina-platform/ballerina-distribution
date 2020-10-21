@@ -1,22 +1,18 @@
 import ballerina/io;
 import ballerina/xslt;
 
-public function main() {
-    // Gets an `XML` object, which needs to be transformed.
+public function main() returns error? {
+    // Gets an `XML` value, which needs to be transformed.
     xml sourceXml = getXml();
-    // Gets an `XSL` style sheet represented in an XML object.
+    // Gets an `XSL` style sheet represented in an XML value.
     xml xsl = getXsl();
-
-    // [Transforms](https://ballerina.io/swan-lake/learn/api-docs/ballerina/xslt/functions.html#transform) the `XML` to another formats.
-    xml|error target = xslt:transform(sourceXml, xsl);
-    if (target is xml) {
-        io:println("Transformed xml : ", target);
-    } else {
-        io:print("Error : ", target);
-    }
+    // [Transforms](https://ballerina.io/swan-lake/learn/api-docs/ballerina/xslt/functions.html#transform) the `XML` content to another format.
+    xml target = check xslt:transform(sourceXml, xsl);
+    
+    io:println("Transformed XML: ", target);
 }
 
-// Returns an `XML` object, which needs to be transformed.
+// Returns an `XML` element, which needs to be transformed.
 function getXml() returns xml {
     return xml `<samples>
                     <song>
@@ -34,11 +30,11 @@ function getXml() returns xml {
                 </samples>`;
 }
 
-// Returns an `XSL` style sheet represented in an XML object.
+// Returns an `XSL` style sheet represented by an XML element.
 function getXsl() returns xml {
     return xml
-        `<xsl:stylesheet version="1.0"
-                        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+        `<xsl:stylesheet version="1.0" 
+                         xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
             <xsl:template match="/">
                 <html>
                     <body>
