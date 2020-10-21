@@ -24,8 +24,8 @@ service call on new http:Listener(9090) {
         // The return type of the client remote action is the union of `string`|`xml`|`json`|`map<json>`|`byte[]`|
         // `record`|`record[]`|`http:Response` or `http:ClientError`.
         if (result is error) {
-            log:printError("Error: " + result.message);
-            check result;
+            log:printError("Error: " + result.message());
+            return result;
         }
 
         // If the type test of the error becomes false, it implies that the payload type is string.
@@ -33,7 +33,7 @@ service call on new http:Listener(9090) {
 
         // Binding the payload to a JSON type. If an error returned, it will be responded back to the caller.
         json jsonPayload = <json> check backendClient->
-                                    get("/backend/getJson", json);
+                                    post("/backend/getJson", "foo", json);
 
         log:printInfo("Json payload: " + jsonPayload.toJsonString());
 
@@ -41,18 +41,18 @@ service call on new http:Listener(9090) {
         // types have to be defined beforehand. Here, the type `MapJson` is passed instead of `map<json>`.
         // Same can be done for `byte[]` or `Person[]` as well.
         map<json> value = <map<json>> check backendClient->
-                                        get("/backend/getJson", MapJson);
+                                post("/backend/getJson", "foo", MapJson);
         log:printInfo(check value.id);
 
         // A `record` and `record[]` are also possible types for data binding.
         Person person = <Person> check backendClient->
-                                    get("/backend/getPerson", Person);
+                            get("/backend/getPerson", targetType = Person);
         log:printInfo("Person name: " + person.name);
 
         // When the complete response is expected, the default value of the `targetType` will be applied.
         http:Response res =  <http:Response> check backendClient->
-                                                get("/backend/getResponse");
-        var result = caller->respond(res);
+                                            get("/backend/getResponse");
+        check caller->respond(<@untainted>res);
     }
 
     @http:ResourceConfig {

@@ -1,55 +1,48 @@
 # To invoke the `bindCheck` resource, use the cURL command below.
 curl -v "http://localhost:9090/call/all"
-> GET /crossOriginService/company HTTP/1.1
-> Host: localhost:9092
+> GET /call/all HTTP/1.1
+> Host: localhost:9090
 > User-Agent: curl/7.64.1
 > Accept: */*
-> Origin:http://www.bbc.com
 >
 < HTTP/1.1 200 OK
 < content-type: application/json
-< access-control-allow-origin: http://www.bbc.com
-< access-control-allow-credentials: true
-< content-length: 21
+< x-fact: backend-payload
+< date: Wed, 21 Oct 2020 19:45:28 +0530
 < server: ballerina
+< content-length: 26
 <
 * Connection #0 to host localhost left intact
-{"type":"middleware"}* Closing connection 0
+{"id":"data-binding-done"}* Closing connection 0
 
 # To invoke the `handle500` resource, use the cURL command below.
-curl -v "http://localhost:9090/call/500"
-> OPTIONS /crossOriginService/lang HTTP/1.1
-> Host: localhost:9092
+curl -v "http://localhost:9090/call/5xx"
+> GET /call/5xx HTTP/1.1
+> Host: localhost:9090
 > User-Agent: curl/7.64.1
 > Accept: */*
-> Origin:http://www.m3.com
-> Access-Control-Request-Method:POST
 >
-< HTTP/1.1 200 OK
-< access-control-allow-origin: http://www.m3.com
-< access-control-max-age: 84900
-< access-control-allow-methods: POST
-< content-length: 0
+< HTTP/1.1 501 Not Implemented
+< content-type: text/plain
+< content-length: 28
 < server: ballerina
+< date: Wed, 21 Oct 2020 19:46:42 +0530
 <
 * Connection #0 to host localhost left intact
-* Closing connection 0
+data-binding-failed-with-501* Closing connection 0
 
 # To invoke the `handle404` resource, use the cURL command below.
-curl -v "http://localhost:9090/call/404"
-> OPTIONS /crossOriginService/lang HTTP/1.1
-> Host: localhost:9092
-> User-Agent: curl/7.64.1`
+curl -v "http://localhost:9090/call/4xx"
+> GET /call/4xx HTTP/1.1
+> Host: localhost:9090
+> User-Agent: curl/7.64.1
 > Accept: */*
-> Origin:http://www.m3.com
-> Access-Control-Request-Method:POST
 >
-< HTTP/1.1 200 OK
-< access-control-allow-origin: http://www.m3.com
-< access-control-max-age: 84900
-< access-control-allow-methods: POST
-< content-length: 0
+< HTTP/1.1 404 Not Found
+< content-type: text/plain
+< content-length: 66
 < server: ballerina
+< date: Wed, 21 Oct 2020 19:48:37 +0530
 <
 * Connection #0 to host localhost left intact
-* Closing connection 0
+no matching resource found for path : /backend/err , method : POST* Closing connection 0

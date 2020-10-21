@@ -3,7 +3,7 @@ import ballerina/http;
 
 @test:Config {}
 function testFunc() returns @tainted error? {
-    http:Client httpEndpoint = new("http://localhost:909o");
+    http:Client httpEndpoint = new("http://localhost:9090");
     json expectedJson = {id: "data-binding-done"};
 
     var resp = httpEndpoint->get("/call/all");
@@ -26,7 +26,7 @@ function testFunc() returns @tainted error? {
     resp = httpEndpoint->get("/call/4xx");
     if (resp is http:Response) {
         var textPayload = check resp.getTextPayload();
-        test:assertEquals(textPayload, "resource not found");
+        test:assertEquals(textPayload, "no matching resource found for path : /backend/err , method : POST");
         test:assertEquals(resp.statusCode, 404);
     } else {
         test:assertFail(msg = "Failed to call the endpoint:");
