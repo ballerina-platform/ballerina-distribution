@@ -39,7 +39,7 @@ service loadBalancerDemoService on new http:Listener(9090) {
         } else {
             http:Response outResponse = new;
             outResponse.statusCode = 500;
-            outResponse.setPayload(<@untainted>(<error>response).message());
+            outResponse.setPayload((<@untainted error>response).message());
             var responseToCaller = caller->respond(outResponse);
             if (responseToCaller is http:ListenerError) {
                 log:printError("Error sending response", responseToCaller);

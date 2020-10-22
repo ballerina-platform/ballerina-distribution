@@ -41,7 +41,7 @@ service failoverDemoService on new http:Listener(9090) {
         } else {
             http:Response response = new;
             response.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
-            response.setPayload(<@untainted>(<error>backendResponse).message());
+            response.setPayload((<@untainted error>backendResponse).message());
             var responseToCaller = caller->respond(response);
             if (responseToCaller is error) {
                 log:printError("Error sending response", responseToCaller);
