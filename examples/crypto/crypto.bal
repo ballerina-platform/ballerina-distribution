@@ -85,7 +85,8 @@ public function main() returns error? {
     output = check crypto:signRsaMd5(inputArr, privateKey);
     io:println("Hex encoded RSA-MD5 signature: " + output.toBase16());
 
-    boolean verified = check crypto:verifyRsaMd5Signature(inputArr, output, publicKey);
+    boolean verified = check crypto:verifyRsaMd5Signature(inputArr, output,
+                                                          publicKey);
     io:println("RSA-MD5 signature verified: " + verified.toString());
 
     // Signing input value using RSA-MD5 signature algorithms, and printing the signature value using Base64 encoding.
@@ -99,21 +100,24 @@ public function main() returns error? {
     output = check crypto:signRsaSha256(inputArr, privateKey);
     io:println("Hex encoded RSA-SHA256 signature: " + output.toBase16());
 
-    verified = check crypto:verifyRsaSha256Signature(inputArr, output, publicKey);
+    verified = check crypto:verifyRsaSha256Signature(inputArr, output,
+                                                     publicKey);
     io:println("RSA-SHA256 signature verified: " + verified.toString());
 
     // Signing input value using RSA-MD5 signature algorithms, and printing the signature value using Base64 encoding.
     output = check crypto:signRsaSha384(inputArr, privateKey);
     io:println("Base64 encoded RSA-SHA384 signature: " + output.toBase64());
 
-    verified = check crypto:verifyRsaSha384Signature(inputArr, output, publicKey);
+    verified = check crypto:verifyRsaSha384Signature(inputArr, output,
+                                                     publicKey);
     io:println("RSA-SHA384 signature verified: " + verified.toString());
 
     // Signing input value using RSA-MD5 signature algorithms, and printing the signature value using Hex encoding.
     output = check crypto:signRsaSha512(inputArr, privateKey);
     io:println("Hex encoded RSA-SHA512 signature: " + output.toBase16());
 
-    verified = check crypto:verifyRsaSha512Signature(inputArr, output, publicKey);
+    verified = check crypto:verifyRsaSha512Signature(inputArr, output,
+                                                     publicKey);
     io:println("RSA-SHA512 signature verified: " + verified.toString());
 
 
