@@ -37,6 +37,6 @@ public function main() {
         log:printInfo(
                    (result is error) ? "Failed to retrieve payload." : result);
     } else {
-        log:printError("Failed to call the endpoint.", response);
+        log:printError("Failed to call the endpoint.", <error>response);
     }
 }

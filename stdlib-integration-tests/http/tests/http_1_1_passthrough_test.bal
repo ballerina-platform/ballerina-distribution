@@ -31,7 +31,7 @@ service passthroughService on passthroughEP1 {
         http:Client nyseEP1 = new("http://localhost:9113");
         var response = nyseEP1->get("/nyseStock/stocks", <@untainted> clientRequest);
         if (response is http:Response) {
-            checkpanic caller->respond(response);
+            checkpanic caller->respond(<@untainted> response);
         } else {
             checkpanic caller->respond({ "error": "error occurred while invoking the service" });
         }
@@ -45,7 +45,7 @@ service passthroughService on passthroughEP1 {
         http:Client nyseEP1 = new("http://localhost:9113");
         var response = nyseEP1->forward("/nyseStock/stocksAsMultiparts", clientRequest);
         if (response is http:Response) {
-            checkpanic caller->respond(response);
+            checkpanic caller->respond(<@untainted> response);
         } else {
             checkpanic caller->respond({ "error": "error occurred while invoking the service" });
         }
@@ -71,7 +71,7 @@ service passthroughService on passthroughEP1 {
                 checkpanic caller->internalServerError(<@untainted> entity.toString());
             }
         } else {
-            checkpanic caller->internalServerError(<@untainted> response.toString());
+            checkpanic caller->internalServerError(<@untainted> (<error>response).toString());
         }
     }
 }
@@ -138,7 +138,7 @@ public function testPassthroughServiceByBasePath() {
             test:assertFail(msg = "Found unexpected output: " + body.message());
         } 
     } else {
-        test:assertFail(msg = "Found unexpected output: " +  resp.message());
+        test:assertFail(msg = "Found unexpected output: " +  (<error>resp).message());
     }
 }
 
@@ -156,7 +156,7 @@ public function testPassthroughServiceWithMimeEntity() {
             test:assertFail(msg = "Found unexpected output: " + body.message());
         } 
     } else {
-        test:assertFail(msg = "Found unexpected output: " +  resp.message());
+        test:assertFail(msg = "Found unexpected output: " +  (<error>resp).message());
     }
 }
 
@@ -195,6 +195,6 @@ public function testPassthroughWithMultiparts() {
             }
         }         
     } else {
-        test:assertFail(msg = "Found unexpected output: " +  resp.message());
+        test:assertFail(msg = "Found unexpected output: " +  (<error>resp).message());
     }
 }

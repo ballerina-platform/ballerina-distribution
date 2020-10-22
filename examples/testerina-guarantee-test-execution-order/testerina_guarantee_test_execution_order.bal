@@ -20,8 +20,8 @@ function testFunction2() {
     test:assertTrue(true, msg = "Failed!");
 }
 
-// This is a random test function. This will randomly execute without depending on other functions.
-// However,the other function does depend on this.
+// This will be executed without depending on other functions.
+// However, since other functions depend on this function, it will be executed first.
 @test:Config {}
 function testFunction3() {
     io:println("I'm in test function 3!");

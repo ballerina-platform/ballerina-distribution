@@ -65,7 +65,7 @@ service multipartDemoService on new http:Listener(9090) {
         request.setBodyParts(bodyParts, contentType = mime:MULTIPART_FORM_DATA);
         var returnResponse = clientEP->post("/multiparts/decode", request);
         if (returnResponse is http:Response) {
-            var result = caller->respond(returnResponse);
+            var result = caller->respond(<@untainted>returnResponse);
             if (result is error) {
                 log:printError("Error sending response", result);
             }

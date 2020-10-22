@@ -317,7 +317,7 @@ public class PlatformDistributionArtifactCheckTest {
         Assert.assertTrue(Files.exists(docsPath));
     }
     
-    @Test(dataProvider = "distribution-provider")
+    @Test(dataProvider = "distribution-provider", enabled = false)
     public void azFunctionsAnnotationExistsTest(String distributionFileName) {
         Path distributionsPath = TEST_DISTRIBUTION_PATH.resolve(distributionFileName).resolve("distributions");
         String jballerinaFileName = TestUtils.findFileOrDirectory(distributionsPath, DIST_NAME);

@@ -24,7 +24,7 @@ service chunkingSample on new http:Listener(9092) {
         newReq.setPayload({"name": "Ballerina"});
         var clientResponse = clientEndpoint->post("/echo/", newReq);
         if (clientResponse is http:Response) {
-            var result = caller->respond(clientResponse);
+            var result = caller->respond(<@untainted>clientResponse);
             if (result is error) {
                 log:printError("Error sending response", result);
             }

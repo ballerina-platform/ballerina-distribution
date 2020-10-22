@@ -38,7 +38,7 @@ public function testAuthSuccessWithServiceLevelConfigs() {
     if (response is http:Response) {
         assertOK(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -51,7 +51,7 @@ public function testAuthzFailureWithServiceLevelConfigs() {
     if (response is http:Response) {
         assertForbidden(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -64,6 +64,6 @@ public function testAuthFailureWithServiceLevelConfigs() {
     if (response is http:Response) {
         assertUnauthorized(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
