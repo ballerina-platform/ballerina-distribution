@@ -1,5 +1,10 @@
 import ballerina/io;
 
+type ClassMarks record {|
+    int sam;
+    int jon;
+|};
+
 public function main() {
     // Declare a `map` constrained by the type `string`.
     map<string> m;
@@ -88,12 +93,15 @@ public function main() {
     );
     io:println(modifiedMarks);
 
+    // Create a new value of the type `ClassMark` from `mofifiedMarks` using `cloneWithType`.  
+    ClassMarks newMarks = <ClassMarks> marks.cloneWithType(ClassMarks);
+
     // A mapping constructor expression can also include a spread field
     // referring to another mapping value. When a spread field is specified,
     // all the fields of the relevant mapping value are added to the new
     // mapping value being created.
-    // A spread field is used with `modifiedMarks` to include all the entries
-    // in `modifiedMarks` when creating `newMarks`.
-    map<int> newMarks = { ...modifiedMarks};
-    io:println(newMarks);
+    // A spread field is used with `newMarks` to include all the entries
+    // in `newMarks` when creating `allMarks`.
+    map<int> allMarks = {jane: 100, ...newMarks, amy: 75};
+    io:println(allMarks);
 }
