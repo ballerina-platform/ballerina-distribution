@@ -11,7 +11,7 @@ string printWarn = "";
     moduleName: "ballerina/log",
     functionName: "printDebug"
 }
-public isolated function mockPrintDebug(anydata | (function() returns (string)) msg) {
+public function mockPrintDebug(anydata | (function() returns (string)) msg) {
     if (msg is string) {
         printDebug = msg;
     }
@@ -21,7 +21,7 @@ public isolated function mockPrintDebug(anydata | (function() returns (string)) 
     moduleName: "ballerina/log",
     functionName: "printError"
 }
-public isolated function mockPrintError(anydata | (function() returns (string)) msg, error? err = ()) {
+public function mockPrintError(anydata | (function() returns (string)) msg, error? err = ()) {
     if (msg is string) {
         printError = msg;
     }
@@ -31,7 +31,7 @@ public isolated function mockPrintError(anydata | (function() returns (string)) 
     moduleName: "ballerina/log",
     functionName: "printInfo"
 }
-public isolated function mockPrintInfo(anydata | (function() returns (string)) msg) {
+public function mockPrintInfo(anydata | (function() returns (string)) msg) {
     if (msg is string) {
         printInfo = msg;
     }
@@ -41,7 +41,7 @@ public isolated function mockPrintInfo(anydata | (function() returns (string)) m
     moduleName: "ballerina/log",
     functionName: "printTrace"
 }
-public isolated function mockPrintTrace(anydata | (function() returns (string)) msg) {
+public function mockPrintTrace(anydata | (function() returns (string)) msg) {
     if (msg is string) {
         printTrace = msg;
     }
@@ -51,7 +51,7 @@ public isolated function mockPrintTrace(anydata | (function() returns (string)) 
     moduleName: "ballerina/log",
     functionName: "printWarn"
 }
-public isolated function mockPrintWarn(anydata | (function() returns (string)) msg) {
+public function mockPrintWarn(anydata | (function() returns (string)) msg) {
     if (msg is string) {
         printWarn = msg;
     }

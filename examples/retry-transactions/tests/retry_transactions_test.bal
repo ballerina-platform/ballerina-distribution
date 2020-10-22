@@ -7,7 +7,7 @@ import ballerina/test;
     moduleName: "ballerina/io",
     functionName: "println"
 }
-public isolated function mockPrint(any|error... s) {
+public function mockPrint(any|error... s) {
     foreach var entry in s {
         outputs.push(entry.toString());
     }
