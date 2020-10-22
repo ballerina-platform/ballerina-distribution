@@ -22,7 +22,7 @@ public function case2() {
     // This new strand does not belong to the thread executing the current strand.
     // The Ballerina runtime assigns this new strand to a separate thread in the runtime thread pool.
     io:println("--- case 2 ---");
-    future<int> f1 = @strand {thread: "any"} start multiply(1, 2);
+    future<int> f1 = @strand { thread: "any" } start multiply(1, 2);
 
     io:println("Before the wait action");
     int result = wait f1;
@@ -32,11 +32,11 @@ public function case2() {
 // Create two new strands and assign them to separate threads from the thread executing the current strand.
 public function case3() {
     io:println("--- case 3 ---");
-    future<int> f1 = @strand {thread: "any"} start multiply(1, 2);
-    future<int> f2 = @strand {thread: "any"} start multiply(4, 5);
+    future<int> f1 = @strand { thread: "any" } start multiply(1, 2);
+    future<int> f2 = @strand { thread: "any" } start multiply(4, 5);
 
     io:println("Before the wait action");
-    map<int> results = wait {f1, f2};
+    map<int> results = wait { f1, f2 };
     io:println("After the wait action\n");
 }
 
@@ -44,11 +44,11 @@ public function case3() {
 // the second one to the same thread executing the current strand.
 public function case4() {
     io:println("--- case 4 ---");
-    future<int> f1 = @strand {thread: "any"} start multiply(1, 2);
+    future<int> f1 = @strand { thread: "any" } start multiply(1, 2);
     future<int> f2 = start multiply(4, 5);
 
     io:println("Before the wait action");
-    map<int> results = wait {f1, f2};
+    map<int> results = wait { f1, f2 };
     io:println("After the wait action\n");
 }
 
@@ -59,7 +59,7 @@ public function case5() {
     future<int> f2 = start multiply(4, 5);
 
     io:println("Before the wait action");
-    map<int> results = wait {f1, f2};
+    map<int> results = wait { f1, f2 };
     io:println("After the wait action\n");
 }
 
@@ -75,3 +75,4 @@ function multiply(int x, int y) returns int {
     io:println(string `Multiplying ${x} * ${y}`);
     return x * y;
 }
+
