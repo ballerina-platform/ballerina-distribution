@@ -30,6 +30,13 @@ public function main() returns error? {
     output = crypto:hashSha512(inputArr);
     io:println("Hex encoded hash with SHA512: " + output.toBase16());
 
+    // Hex encoded CRC32B checksum generation for input value.
+    io:println("CRC32B for text: " + crypto:crc32b(inputArr));
+
+    // Hex encoded CRC32B checksum generation for XML data.
+    xml xmlContent = xml `<foo>Hello Ballerina</foo>`;
+    io:println("CRC32 for xml content: " +
+        crypto:crc32b(xmlContent.toString().toBytes()));
 
     // The key used for HMAC generation.
     string key = "somesecret";
@@ -56,117 +63,121 @@ public function main() returns error? {
     io:println("Hex encoded HMAC with SHA512: " + output.toBase16());
 
 
-    // Hex encoded CRC32B checksum generation for input value.
-    io:println("CRC32B for text: " + crypto:crc32b(inputArr));
-
-    // Hex encoded CRC32B checksum generation for XML data.
-    xml xmlContent = xml `<foo>Hello Ballerina</foo>`;
-    io:println("CRC32 for xml content: " +
-                crypto:crc32b(xmlContent.toString().toBytes()));
-
-
     // Obtaining reference to a RSA private key stored within a PKCS#12 or PFX format archive file.
     crypto:KeyStore keyStore = {
         path: config:getAsString("b7a.home") +
-              "/bre/security/ballerinaKeystore.p12",
+            "/bre/security/ballerinaKeystore.p12",
         password: "ballerina"
     };
-    var privateKey = crypto:decodePrivateKey(keyStore, "ballerina",
-                                             "ballerina");
+    crypto:PrivateKey privateKey =
+        check crypto:decodePrivateKey(keyStore, "ballerina", "ballerina");
 
-    if (privateKey is crypto:PrivateKey) {
-        // Signing input value using RSA-MD5 signature algorithms, and printing the signature value using Hex encoding.
-        output = check crypto:signRsaMd5(inputArr, privateKey);
-        io:println("Hex encoded RSA-MD5 signature: " + output.toBase16());
+    // Obtaining reference to a RSA public key stored within a PKCS#12 or PFX format archive file.
+    crypto:TrustStore trustStore = {
+        path: config:getAsString("b7a.home") +
+            "/bre/security/ballerinaTruststore.p12",
+        password: "ballerina"
+    };
+    crypto:PublicKey publicKey =
+        check crypto:decodePublicKey(trustStore, "ballerina");
 
-        // Signing input value using RSA-MD5 signature algorithms, and printing the signature value using Base64 encoding.
-        output = check crypto:signRsaSha1(inputArr, privateKey);
-        io:println("Base64 encoded RSA-SHA1 signature: " + output.toBase64());
+    // Signing input value using RSA-MD5 signature algorithms, and printing the signature value using Hex encoding.
+    output = check crypto:signRsaMd5(inputArr, privateKey);
+    io:println("Hex encoded RSA-MD5 signature: " + output.toBase16());
 
-        // Signing input value using RSA-MD5 signature algorithms, and printing the signature value using Hex encoding.
-        output = check crypto:signRsaSha256(inputArr, privateKey);
-        io:println("Hex encoded RSA-SHA256 signature: " + output.toBase16());
+    boolean verified = check crypto:verifyRsaMd5Signature(inputArr, output, publicKey);
+    io:println("RSA-MD5 signature verified: " + verified.toString());
 
-        // Signing input value using RSA-MD5 signature algorithms, and printing the signature value using Base64 encoding.
-        output = check crypto:signRsaSha384(inputArr, privateKey);
-        io:println("Base64 encoded RSA-SHA384 signature: " + output.toBase64());
+    // Signing input value using RSA-MD5 signature algorithms, and printing the signature value using Base64 encoding.
+    output = check crypto:signRsaSha1(inputArr, privateKey);
+    io:println("Base64 encoded RSA-SHA1 signature: " + output.toBase64());
 
-        // Signing input value using RSA-MD5 signature algorithms, and printing the signature value using Hex encoding.
-        output = check crypto:signRsaSha512(inputArr, privateKey);
-        io:println("Hex encoded RSA-SHA512 signature: " + output.toBase16());
-    } else {
-        io:println("Invalid private key");
+    verified = check crypto:verifyRsaSha1Signature(inputArr, output, publicKey);
+    io:println("RSA-SHA1 signature verified: " + verified.toString());
+
+    // Signing input value using RSA-MD5 signature algorithms, and printing the signature value using Hex encoding.
+    output = check crypto:signRsaSha256(inputArr, privateKey);
+    io:println("Hex encoded RSA-SHA256 signature: " + output.toBase16());
+
+    verified = check crypto:verifyRsaSha256Signature(inputArr, output, publicKey);
+    io:println("RSA-SHA256 signature verified: " + verified.toString());
+
+    // Signing input value using RSA-MD5 signature algorithms, and printing the signature value using Base64 encoding.
+    output = check crypto:signRsaSha384(inputArr, privateKey);
+    io:println("Base64 encoded RSA-SHA384 signature: " + output.toBase64());
+
+    verified = check crypto:verifyRsaSha384Signature(inputArr, output, publicKey);
+    io:println("RSA-SHA384 signature verified: " + verified.toString());
+
+    // Signing input value using RSA-MD5 signature algorithms, and printing the signature value using Hex encoding.
+    output = check crypto:signRsaSha512(inputArr, privateKey);
+    io:println("Hex encoded RSA-SHA512 signature: " + output.toBase16());
+
+    verified = check crypto:verifyRsaSha512Signature(inputArr, output, publicKey);
+    io:println("RSA-SHA512 signature verified: " + verified.toString());
+
+
+    // Encrypt and decrypt an input value using RSA ECB PKCS1 padding.
+    output = check crypto:encryptRsaEcb(inputArr, publicKey);
+    output = check crypto:decryptRsaEcb(output, privateKey);
+    io:println("RSA ECB PKCS1 decrypted value: " +
+        check 'string:fromBytes(output));
+
+    // Encrypt and decrypt an input value using RSA ECB OAEPwithSHA512andMGF1 padding.
+    output = check crypto:encryptRsaEcb(inputArr, publicKey,
+                                        crypto:OAEPwithSHA512andMGF1);
+    output = check crypto:decryptRsaEcb(output, privateKey,
+                                        crypto:OAEPwithSHA512andMGF1);
+    io:println("RSA ECB OAEPwithSHA512andMGF1 decrypted value: " +
+        check 'string:fromBytes(output));
+
+    // Randomly generate a 128 bit key for AES encryption.
+    byte[16] rsaKeyArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    foreach var i in 0 ... 15 {
+        rsaKeyArr[i] = <byte>(math:randomInRange(0, 255));
     }
 
-     // Randomly generate a 128 bit key for AES encryption.
-     byte[16] rsaKeyArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-     foreach var i in 0 ... 15 {
-        rsaKeyArr[i] = <byte>(math:randomInRange(0, 255));
-     }
-
-     // Randomly generate a 128 bit IV for AES encryption.
-     byte[16] ivArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-     foreach var i in 0 ... 15 {
+    // Randomly generate a 128 bit IV for AES encryption.
+    byte[16] ivArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    foreach var i in 0 ... 15 {
         ivArr[i] = <byte>(math:randomInRange(0, 255));
-     }
+    }
 
-     // Encrypt and decrypt an input value using AES CBC PKCS5 padding.
-     output = check crypto:encryptAesCbc(inputArr, rsaKeyArr, ivArr);
-     output = check crypto:decryptAesCbc(output, rsaKeyArr, ivArr);
-     io:println("AES CBC PKCS5 decrypted value: " +
-                check 'string:fromBytes(output));
+    // Encrypt and decrypt an input value using AES CBC PKCS5 padding.
+    output = check crypto:encryptAesCbc(inputArr, rsaKeyArr, ivArr);
+    output = check crypto:decryptAesCbc(output, rsaKeyArr, ivArr);
+    io:println("AES CBC PKCS5 decrypted value: " +
+        check 'string:fromBytes(output));
 
-     // Encrypt and decrypt an input value using AES CBC without padding.
-     output = check crypto:encryptAesCbc(inputArr, rsaKeyArr, ivArr,
-                                          crypto:NONE);
-     output = check crypto:decryptAesCbc(output, rsaKeyArr, ivArr, crypto:NONE);
-     io:println("AES CBC no padding decrypted value: " +
-                check 'string:fromBytes(output));
+    // Encrypt and decrypt an input value using AES CBC without padding.
+    output = check crypto:encryptAesCbc(inputArr, rsaKeyArr, ivArr,
+                                        crypto:NONE);
+    output = check crypto:decryptAesCbc(output, rsaKeyArr, ivArr, crypto:NONE);
+    io:println("AES CBC no padding decrypted value: " +
+        check 'string:fromBytes(output));
 
-     // Encrypt and decrypt an input value using AES GCM PKCS5 padding.
-     output = check crypto:encryptAesGcm(inputArr, rsaKeyArr, ivArr);
-     output = check crypto:decryptAesGcm(output, rsaKeyArr, ivArr);
-     io:println("AES GCM PKCS5 decrypted value: " +
-                check 'string:fromBytes(output));
+    // Encrypt and decrypt an input value using AES GCM PKCS5 padding.
+    output = check crypto:encryptAesGcm(inputArr, rsaKeyArr, ivArr);
+    output = check crypto:decryptAesGcm(output, rsaKeyArr, ivArr);
+    io:println("AES GCM PKCS5 decrypted value: " +
+        check 'string:fromBytes(output));
 
-     // Encrypt and decrypt an input value using AES GCM without padding.
-     output = check crypto:encryptAesGcm(inputArr, rsaKeyArr, ivArr,
-                                         crypto:NONE);
-     output = check crypto:decryptAesGcm(output, rsaKeyArr, ivArr, crypto:NONE);
-     io:println("AES GCM no padding decrypted value: " +
-                check 'string:fromBytes(output));
+    // Encrypt and decrypt an input value using AES GCM without padding.
+    output = check crypto:encryptAesGcm(inputArr, rsaKeyArr, ivArr,
+                                        crypto:NONE);
+    output = check crypto:decryptAesGcm(output, rsaKeyArr, ivArr, crypto:NONE);
+    io:println("AES GCM no padding decrypted value: " +
+        check 'string:fromBytes(output));
 
-     // Encrypt and decrypt an input value using AES ECB PKCS5 padding.
-     output = check crypto:encryptAesEcb(inputArr, rsaKeyArr);
-     output = check crypto:decryptAesEcb(output, rsaKeyArr);
-     io:println("AES ECB PKCS5 decrypted value: " +
-                check 'string:fromBytes(output));
+    // Encrypt and decrypt an input value using AES ECB PKCS5 padding.
+    output = check crypto:encryptAesEcb(inputArr, rsaKeyArr);
+    output = check crypto:decryptAesEcb(output, rsaKeyArr);
+    io:println("AES ECB PKCS5 decrypted value: " +
+        check 'string:fromBytes(output));
 
-     // Encrypt and decrypt input value using AES ECB without padding.
-     output = check crypto:encryptAesEcb(inputArr, rsaKeyArr, crypto:NONE);
-     output = check crypto:decryptAesEcb(output, rsaKeyArr, crypto:NONE);
-     io:println("AES ECB no padding decrypted value: " +
-                check 'string:fromBytes(output));
-
-     // Public key used for RSA encryption.
-     crypto:PublicKey rsaPublicKey =
-            check crypto:decodePublicKey(keyStore, "ballerina");
-
-     // Private key used for RSA decryption.
-     crypto:PrivateKey rsaPrivateKey =
-            check crypto:decodePrivateKey(keyStore, "ballerina", "ballerina");
-
-     // Encrypt and decrypt an input value using RSA ECB PKCS1 padding.
-     output = check crypto:encryptRsaEcb(inputArr, rsaPublicKey);
-     output = check crypto:decryptRsaEcb(output, rsaPrivateKey);
-     io:println("RSA ECB PKCS1 decrypted value: " +
-                check 'string:fromBytes(output));
-
-     // Encrypt and decrypt an input value using RSA ECB OAEPwithSHA512andMGF1 padding.
-     output = check crypto:encryptRsaEcb(inputArr, rsaPublicKey,
-                                         crypto:OAEPwithSHA512andMGF1);
-     output = check crypto:decryptRsaEcb(output, rsaPrivateKey,
-                                         crypto:OAEPwithSHA512andMGF1);
-     io:println("RSA ECB OAEPwithSHA512andMGF1 decrypted value: " +
-                check 'string:fromBytes(output));
+    // Encrypt and decrypt input value using AES ECB without padding.
+    output = check crypto:encryptAesEcb(inputArr, rsaKeyArr, crypto:NONE);
+    output = check crypto:decryptAesEcb(output, rsaKeyArr, crypto:NONE);
+    io:println("AES ECB no padding decrypted value: " +
+        check 'string:fromBytes(output));
 }
