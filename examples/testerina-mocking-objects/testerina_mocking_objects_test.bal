@@ -45,7 +45,8 @@ function testReturnWithArgs() {
     test:prepare(clientEndpoint).when("get").
     withArguments("/headers").thenReturn(mockResponse);
     // The object and record types should be denoted by the `test:ANY` constant
-    test:prepare(clientEndpoint).when("get").withArguments("/get?test=123", test:ANY).thenReturn(mockResponse);
+    test:prepare(clientEndpoint).when("get").withArguments("/get?test=123", 
+    test:ANY).thenReturn(mockResponse);
     http:Response res = performGet();
     test:assertEquals(res.statusCode, 404);
 }
