@@ -305,7 +305,7 @@ task packageDist(type: Zip) {
         fileMode = 0644
     }
     into("${parentDir}/bre/lib") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/ballerinax-azure.functions-0.0.0.jar"
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/ballerinax-azure.functions-1.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/bre/lib") {
@@ -418,7 +418,7 @@ task packageDistZip(type: Zip) {
         fileMode = 0644
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/ballerinax-azure.functions-0.0.0.jar"
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/ballerinax-azure.functions-1.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
@@ -551,7 +551,7 @@ task packageDistLinux(type: Zip) {
         fileMode = 0644
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/ballerinax-azure.functions-0.0.0.jar"
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/ballerinax-azure.functions-1.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
@@ -674,7 +674,7 @@ task packageDistMac(type: Zip) {
         fileMode = 0644
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/ballerinax-azure.functions-0.0.0.jar"
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/ballerinax-azure.functions-1.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
@@ -797,7 +797,7 @@ task packageDistWindows(type: Zip) {
         fileMode = 0644
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/ballerinax-azure.functions-0.0.0.jar"
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/ballerinax-azure.functions-1.0.0.jar"
         fileMode = 0644
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
