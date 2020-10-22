@@ -36,7 +36,7 @@ public function testAuthenticationFailure() {
     if (response is http:Response) {
         assertUnauthorized(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + (<error>response).message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 }
 
@@ -48,7 +48,7 @@ public function testAuthenticationSuccessAndAuthorizationFailure() {
     if (response is http:Response) {
         assertForbidden(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + (<error>response).message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 }
 
@@ -60,6 +60,6 @@ public function testAuthenticationSuccessAndAuthorizationSuccess() {
     if (response is http:Response) {
         assertOK(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + (<error>response).message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 }
