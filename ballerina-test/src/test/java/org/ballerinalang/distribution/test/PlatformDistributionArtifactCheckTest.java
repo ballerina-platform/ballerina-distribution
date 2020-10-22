@@ -317,7 +317,7 @@ public class PlatformDistributionArtifactCheckTest {
         Assert.assertTrue(Files.exists(docsPath));
     }
     
-    @Test(dataProvider = "distribution-provider", enabled = false)
+    @Test(dataProvider = "distribution-provider")
     public void azFunctionsAnnotationExistsTest(String distributionFileName) {
         Path distributionsPath = TEST_DISTRIBUTION_PATH.resolve(distributionFileName).resolve("distributions");
         String jballerinaFileName = TestUtils.findFileOrDirectory(distributionsPath, DIST_NAME);
@@ -328,7 +328,7 @@ public class PlatformDistributionArtifactCheckTest {
                 .resolve("bir-cache")
                 .resolve("ballerinax")
                 .resolve("azure.functions")
-                .resolve("0.0.0")
+                .resolve("1.0.0")
                 .resolve("azure.functions.bir");
         
         Path breLibPath = distributionsPath
@@ -347,7 +347,7 @@ public class PlatformDistributionArtifactCheckTest {
                 .resolve("azure.functions");
         
         Assert.assertTrue(Files.exists(birPath));
-        Assert.assertTrue(Files.exists(breLibPath.resolve("ballerinax-azure.functions-0.0.0.jar")));
+        Assert.assertTrue(Files.exists(breLibPath.resolve("ballerinax-azure.functions-1.0.0.jar")));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "azurefunctions-extension-"));
         Assert.assertTrue(Files.exists(bbePath));
         Assert.assertTrue(Files.exists(docsPath));

@@ -10,7 +10,6 @@ type Person object {
     // Method declarations can be within the object. However, the method cannot
     // have a body.
     function getFullName() returns string;
-
 };
 
 // Defines another object type called `Employee`, which references the `Person` object.

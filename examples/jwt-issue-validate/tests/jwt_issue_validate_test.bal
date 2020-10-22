@@ -8,8 +8,8 @@ string[] outputs = [];
     moduleName: "ballerina/io",
     functionName: "println"
 }
-public isolatedfunction mockPrint (any|error ... val) {
-    outputs. push ( val.reduce(function (any|error a, any|error b) returns string => a.toString() + b.toString(), "").toString());
+public function mockPrint(any|error... val) {
+    outputs.push(val.reduce(function (any|error a, any|error b) returns string => a.toString() + b.toString(), "").toString());
 }
 
 @test:Config {}
