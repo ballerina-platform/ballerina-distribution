@@ -529,7 +529,7 @@ public function testDirectToken5() {
     });
 
     http:Request req = new;
-    var response = clientEP13->get("/foo/bar", req);
+    var response = clientEP13->get("/foo/bar", req, string);
     if (response is http:ClientError) {
         assertContains(response, "Failed to get the access token since retry request is set as false.");
     } else {
@@ -572,7 +572,7 @@ public function testDirectToken6() {
     });
 
     http:Request req = new;
-    var response = clientEP14->get("/foo/bar", req);
+    var response = clientEP14->get("/foo/bar", req, string);
     if (response is http:ClientError) {
         assertContains(response, "invalid_grant");
     } else {
