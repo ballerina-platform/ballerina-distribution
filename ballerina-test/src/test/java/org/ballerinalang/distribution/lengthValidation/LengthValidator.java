@@ -37,7 +37,7 @@ import static org.ballerinalang.distribution.utils.TestUtils.OUT;
 */
 public class LengthValidator {
 
-    private static int LINE_MAX_LIMIT = 80;
+    private static int LINE_MAX_LIMIT = 85;
     private static String[] fileFilterExtensions;
     private static String defaultFilerExtension = ".bal";
     private static boolean isValidationFailure = false;
