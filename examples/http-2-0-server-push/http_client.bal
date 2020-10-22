@@ -62,7 +62,7 @@ public function main() {
         response = result;
     } else {
         log:printError("Error occurred while fetching response",
-            err = result);
+                <error>result);
         return;
     }
 

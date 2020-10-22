@@ -19,7 +19,7 @@ function testWebSocket() {
 @test:Config {}
 function testHttp() returns @tainted error? {
     http:Client httpClient = new("http://localhost:9090");
-    http:Response resp = check httpClient->post("/hello/world", msg);
+    http:Response resp = <http:Response> check httpClient->post("/hello/world", msg);
     test:assertEquals(check resp.getTextPayload(), "HTTP POST received: " + msg, msg = "Received message should be equal to the expected message");
 }
 service callback = @http:WebSocketServiceConfig {} service {

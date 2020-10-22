@@ -1,0 +1,9 @@
+// Client data binding helps to access the response payload directly as a return value. The `targetType` dafaultable
+// parameter in the client remote function signature expects a `typedesc` of a possible payload type out of
+// `string`|`xml`|`json`|`map<json>`|`byte[]`|`record`|`record[]` and `http:Response`.
+// A successful data binding process will return the payload in the given `targetType`. When the user expects client
+// data binding to happen, the HTTP error responses (4XX, 5XX)  will be categorized as an `http:ClientError` of the
+// client remote operation. Since the default `targetType` is `http:Response`, the user still has the option to access
+// the complete response to explore more.<br/><br/>
+// For more information on the underlying module,
+// see the [HTTP module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/index.html).

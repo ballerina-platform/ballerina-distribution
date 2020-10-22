@@ -172,7 +172,7 @@ service backEndService on new http:Listener(9091) {
 }
 
 //Handle response data received from HTTP client remote functions.
-function handleResponse(http:Response|error response) {
+function handleResponse(http:Response|http:Payload|error response) {
     if (response is http:Response) {
         //Print the content type of the received data.
         if (response.hasHeader("content-type")) {
@@ -221,7 +221,8 @@ function handleResponse(http:Response|error response) {
             log:printInfo("Entity body is not available");
         }
     } else {
-        log:printError(response.message(), response);
+        error err = <error>response;
+        log:printError(err.message(), err);
     }
 }
 

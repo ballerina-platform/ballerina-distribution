@@ -21,7 +21,7 @@ map<grpc:Caller> consMap = {};
 
 service Chat on new grpc:Listener(20006) {
 
-    isolated resource function  chat(grpc:Caller caller,
+    resource function chat(grpc:Caller caller,
                                 stream<ChatMessage, error> clientStream) {
         log:printInfo(string `${caller.getId()} connected to chat`);
         consMap[caller.getId().toString()] = <@untainted>caller;

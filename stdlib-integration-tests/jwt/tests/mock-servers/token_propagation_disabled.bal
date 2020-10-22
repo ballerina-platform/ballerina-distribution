@@ -54,12 +54,12 @@ service passthroughService05 on listener05_1 {
     resource function passthrough(http:Caller caller, http:Request clientRequest) {
         var response = nyseEP->get("/nyseStock/stocks", <@untainted> clientRequest);
         if (response is http:Response) {
-            checkpanic caller->respond(response);
+            checkpanic caller->respond(<@untainted> response);
         } else {
             http:Response resp = new;
-            json errMsg = { "error": "error occurred while invoking the service: " + response.message() };
+            json errMsg = { "error": "error occurred while invoking the service: " + (<error>response).message() };
             resp.statusCode = 500;
-            resp.setPayload(errMsg);
+            resp.setPayload(<@untainted> errMsg);
             checkpanic caller->respond(resp);
         }
     }

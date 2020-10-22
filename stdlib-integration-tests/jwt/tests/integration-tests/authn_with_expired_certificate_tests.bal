@@ -55,7 +55,7 @@ public function testAuthnWithJWTSignedWithExpiredTrustedCertificate() {
     if (response is http:Response) {
         assertUnauthorized(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
 
@@ -95,6 +95,6 @@ public function testAuthnWithJWTSignedWithExpiredTrustedCertificateWithNoExpiryV
     if (response is http:Response) {
         assertOK(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<error>response).message());
     }
 }
