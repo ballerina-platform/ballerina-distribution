@@ -56,11 +56,11 @@ service actionService on new http:Listener(9090) {
             response = clientEP->post("/image", <@untainted>bChannel);
             handleResponse(response);
 
-            //[Create a JSON body part](https://ballerina.io/swan-lake/learn/api-docs/ballerina/mime/objects/Entity.html#setJson).
+            //[Create a JSON body part](https://ballerina.io/swan-lake/learn/api-docs/ballerina/mime/classes/Entity.html#setJson).
             mime:Entity part1 = new;
             part1.setJson({"name": "Jane"});
 
-            //[Create a text body part](https://ballerina.io/swan-lake/learn/api-docs/ballerina/mime/objects/Entity.html#setText).
+            //[Create a text body part](https://ballerina.io/swan-lake/learn/api-docs/ballerina/mime/classes/Entity.html#setText).
             mime:Entity part2 = new;
             part2.setText("Hello");
 
@@ -70,7 +70,8 @@ service actionService on new http:Listener(9090) {
             response = clientEP->post("/echo", bodyParts);
             handleResponse(response);
 
-            var result = caller->respond("Client actions successfully executed!");
+            var result = caller->respond(
+                                "Client actions successfully executed!");
             handleError(result);
         } else {
             http:Response res = new;
@@ -171,7 +172,7 @@ service backEndService on new http:Listener(9091) {
 }
 
 //Handle response data received from HTTP client remote functions.
-function handleResponse(http:Response|error response) {
+function handleResponse(http:Response|http:Payload|error response) {
     if (response is http:Response) {
         //Print the content type of the received data.
         if (response.hasHeader("content-type")) {
@@ -220,7 +221,8 @@ function handleResponse(http:Response|error response) {
             log:printInfo("Entity body is not available");
         }
     } else {
-        log:printError(response.message(), response);
+        error err = <error>response;
+        log:printError(err.message(), err);
     }
 }
 

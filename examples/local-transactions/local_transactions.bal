@@ -4,12 +4,14 @@ import ballerina/java.jdbc;
 
 public function main() returns error? {
     // The JDBC Client for the H2 database.
-    jdbc:Client dbClient = check new (url = "jdbc:h2:file:./local-transactions/accountdb", 
-                                      user = "test", password = "test");
+    jdbc:Client dbClient =
+                check new (url = "jdbc:h2:file:./local-transactions/accountdb",
+                           user = "test", password = "test");
 
     // Create the database table and populate some records.
     _ = check dbClient->execute("CREATE TABLE IF NOT EXISTS ACCOUNT " +
-                                "(ID INTEGER, BALANCE DECIMAL, PRIMARY KEY(id))"); 
+                                "(ID INTEGER, BALANCE DECIMAL, " +
+                                "PRIMARY KEY(id))");
     _ = check dbClient->execute("INSERT INTO ACCOUNT VALUES (1, 2500.0)");
     _ = check dbClient->execute("INSERT INTO ACCOUNT VALUES (2, 1000.0)");
 
@@ -18,8 +20,12 @@ public function main() returns error? {
     // the commit action or rollback statement.
     transaction {
         // Execute database operations within the transaction
-        var creditResult = dbClient->execute("UPDATE ACCOUNT SET BALANCE=BALANCE+500.0 WHERE ID=1");
-        var debitResult = dbClient->execute("UPDATE ACCOUNT SET BALANCE=BALANCE-500.0 WHERE ID=2");
+        var creditResult = dbClient->execute(
+                                       "UPDATE ACCOUNT " +
+                                       "SET BALANCE=BALANCE+500.0 WHERE ID=1");
+        var debitResult = dbClient->execute(
+                                       "UPDATE ACCOUNT " +
+                                       "SET BALANCE=BALANCE-500.0 WHERE ID=2");
 
         // Returns information about the current transactions.
         transactions:Info transInfo = transactions:info();

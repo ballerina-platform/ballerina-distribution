@@ -4,9 +4,9 @@ import ballerina/task;
 
 int reminderCount = 0;
 
-public function main() {
-    // The [`task:Appointment`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/task/records/AppointmentData.html) data record provides the appointment configurations.
-    task:AppointmentData appointmentData = {
+public function main() returns error? {
+    // The [`task:AppointmentData`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/task/records/AppointmentData.html) record provides the appointment configuration.
+    task:AppointmentData appointmentDetails = {
         seconds: "0/2",
         minutes: "*",
         hours: "*",
@@ -16,43 +16,29 @@ public function main() {
         year: "*"
     };
 
-    // Create an Appointment using the configurations.
-    task:Scheduler appointment = new ({appointmentDetails: appointmentData});
+    // Creates an appointment using the given configuration.
+    task:Scheduler appointment = new ({appointmentDetails});
 
-    // Attach the service to the scheduler and exit if there is an error.
-    var attachResult = appointment.attach(appointmentService);
-    if (attachResult is error) {
-        io:println("Error attaching the service.");
-        return;
-    }
+    // Attaches the service to the scheduler.
+    check appointment.attach(appointmentService);
 
-    // Start the scheduler and exit if there is an error.
-    var startResult = appointment.start();
-    if (startResult is error) {
-        io:println("Starting the task is failed.");
-        return;
-    }
+    // Starts the scheduler.
+    check appointment.start();
 
-    runtime:sleep(10000);
+    runtime:sleep(9000);
 
-    // Cancel the appointment.
-    var result = appointment.stop();
+    // Cancels the appointment.
+    check appointment.stop();
 
-    if (result is error) {
-        io:println("Error occurred while cancelling the task");
-        return;
-    }
     io:println("Appointment cancelled.");
 }
 
-// Creating a service on the task Listener.
+// Creating a service on the task listener.
 service appointmentService = service {
-    // This resource triggers when the appointment is due.
+    // This resource is triggered when the appointment is due.
     resource function onTrigger() {
-        if (reminderCount < 5) {
-            reminderCount = reminderCount + 1;
-            io:println("Schedule is due - Reminder: " + reminderCount.toString());
-        }
+        reminderCount += 1;
+        io:println("Schedule is due - Reminder: ", reminderCount);
     }
 
 };

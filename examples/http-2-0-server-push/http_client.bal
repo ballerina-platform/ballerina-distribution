@@ -62,7 +62,7 @@ public function main() {
         response = result;
     } else {
         log:printError("Error occurred while fetching response",
-            err = result);
+                <error>result);
         return;
     }
 
@@ -88,7 +88,8 @@ public function main() {
         }
         var promisedPayload = promisedResponse.getJsonPayload();
         if (promisedPayload is json) {
-            log:printInfo("Promised resource : " + promisedPayload.toJsonString());
+            log:printInfo("Promised resource : " +
+                           promisedPayload.toJsonString());
         } else {
             log:printError("Expected promised response payload not received",
                 err = promisedPayload);

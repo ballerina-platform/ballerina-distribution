@@ -1,0 +1,2 @@
+description: This BBE demonstrates how errors can be handled in a single place.
+keywords: ballerina, ballerina by example, bbe, error handling, error handling single place, on fail

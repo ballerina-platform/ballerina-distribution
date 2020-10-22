@@ -9,7 +9,9 @@ import ballerina/log;
 // [http1Settings](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/ClientHttp1Settings.html) annotation
 // provides the chunking-related configurations.
 http:Client clientEndpoint = new ("http://localhost:9090",
-                                  {http1Settings: {chunking: http:CHUNKING_NEVER}});
+                                    {http1Settings:
+                                        {chunking: http:CHUNKING_NEVER}}
+                                  );
 
 service chunkingSample on new http:Listener(9092) {
 
@@ -22,13 +24,14 @@ service chunkingSample on new http:Listener(9092) {
         newReq.setPayload({"name": "Ballerina"});
         var clientResponse = clientEndpoint->post("/echo/", newReq);
         if (clientResponse is http:Response) {
-            var result = caller->respond(clientResponse);
+            var result = caller->respond(<@untainted>clientResponse);
             if (result is error) {
                 log:printError("Error sending response", result);
             }
         } else {
             http:Response errorResponse = new;
-            json msg = {"error": "An error occurred while invoking the service."};
+            json msg =
+                {"error": "An error occurred while invoking the service."};
             errorResponse.setPayload(msg);
             var response = caller->respond(errorResponse);
             if (response is error) {

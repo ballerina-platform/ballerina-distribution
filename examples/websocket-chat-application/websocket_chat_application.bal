@@ -18,7 +18,7 @@ service chatAppUpgrader on new http:Listener(9090) {
     }
     resource function upgrader(http:Caller caller, http:Request req,
     string name) {
-        // Retrieve query parameters from the [http:Request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/Request.html).
+        // Retrieve query parameters from the [http:Request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html).
         map<string[]> queryParams = req.getQueryParams();
         // Cancel the handshake by sending a 400 status code if the age parameter is missing in the request.
         if (!queryParams.hasKey("age")) {
@@ -29,7 +29,8 @@ service chatAppUpgrader on new http:Listener(9090) {
             return;
         }
         map<string> headers = {};
-        http:WebSocketCaller|http:WebSocketError wsEp = caller->acceptWebSocketUpgrade(headers);
+        http:WebSocketCaller|http:WebSocketError wsEp =
+                                       caller->acceptWebSocketUpgrade(headers);
         if (wsEp is http:WebSocketCaller) {
             // The attributes of the caller is useful for storing connection-specific data.
             // In this case, the `NAME`and `AGE` are unique to each connection.

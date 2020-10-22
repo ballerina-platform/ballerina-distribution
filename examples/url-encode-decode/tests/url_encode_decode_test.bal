@@ -1,25 +1,24 @@
+import ballerina/stringutils;
 import ballerina/test;
 
-(any|error)[] outputs = [];
-int counter = 0;
+string[] outputs = [];
 
-// This is the mock function which will replace the real function
+// This is the mock function, which will replace the real function.
 @test:Mock {
     moduleName: "ballerina/io",
     functionName: "println"
 }
-public function mockPrint(any|error... s) {
-    outputs[counter] = s[0];
-    counter += 1;
+public isolated function mockPrint(any|error... val) {
+    outputs.push(val.reduce(function (any|error a, any|error b) returns string => a.toString() + b.toString(), "").toString());
 }
 
 @test:Config { }
-function testFunc() {
+function testFunc() returns error? {
     // Invoking the main function
-    var ret = main();
+    check main();
     test:assertEquals(outputs.length(), 4);
-    test:assertEquals(outputs[0], "Base64 URL encoded value: YWJjMTIzIT8kKiYoKSctPUB-");
-    test:assertEquals(outputs[1], "Base64 URL decoded value: abc123!?$*&()'-=@~");
-    test:assertEquals(outputs[2], "URI encoded value: data%3Dvalue");
-    test:assertEquals(outputs[3], "URI decoded value: data=value");
+    test:assertTrue(stringutils:contains(<string>outputs[0], "Base64 URL encoded value: YWJjMTIzIT8kKiYoKSctPUB-"));
+    test:assertTrue(stringutils:contains(<string>outputs[1], "Base64 URL decoded value: abc123!?$*&()'-=@~"));
+    test:assertTrue(stringutils:contains(<string>outputs[2], "URI encoded value: data%3Dvalue"));
+    test:assertTrue(stringutils:contains(<string>outputs[3], "URI decoded value: data=value"));
 }

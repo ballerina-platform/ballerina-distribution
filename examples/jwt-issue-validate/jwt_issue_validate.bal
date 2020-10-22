@@ -33,10 +33,10 @@ public function main() {
     payload.aud = ["vEwzbcasJVQm1jVYHUHCjhxZ4tYa"];
     payload.exp = time:currentTime().time/1000 + 600;
 
-    // Issues a JWT based on the provided header, payload and keystore config.
+    // Issues a JWT based on the provided header, payload, and keystore config.
     string|jwt:Error jwt = jwt:issueJwt(header, payload, keyStoreConfig);
     if (jwt is string) {
-        io:println("Issued JWT: " + jwt);
+        io:println("Issued JWT: ", jwt);
     } else {
         io:println("An error occurred while issuing the JWT: ",
                     jwt.message());
@@ -61,11 +61,13 @@ public function main() {
     };
 
     // Validates the created JWT. Signature is validated using the truststore.
-    jwt:JwtPayload|jwt:Error result = jwt:validateJwt(<string>jwt, validatorConfig1);
+    jwt:JwtPayload|jwt:Error result = jwt:validateJwt(<string>jwt, 
+                                                      validatorConfig1);
     if (result is jwt:JwtPayload) {
-        io:println("Validated JWT Payload: " + result.toString());
+        io:println("Validated JWT Payload: ", result.toString());
     } else {
-        io:println("An error occurred while validating the JWT: ", result.message());
+        io:println("An error occurred while validating the JWT: ",
+                                                            result.message());
     }
 
     // Defines the JWT validator configurations with JWKs configurations.
@@ -83,11 +85,12 @@ public function main() {
         }
     };
 
-    // Validates the created JWT. Signature is validated using the truststore.
+    // Validates the created JWT. Signature is validated using the JWKS endpoint.
     result = jwt:validateJwt(<string>jwt, validatorConfig2);
     if (result is jwt:JwtPayload) {
-        io:println("Validated JWT Payload: " + result.toString());
+        io:println("Validated JWT Payload: ", result.toString());
     } else {
-        io:println("An error occurred while validating the JWT: ", result.message());
+        io:println("An error occurred while validating the JWT: ",
+                                                        result.message());
     }
 }

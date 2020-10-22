@@ -1,13 +1,13 @@
 import ballerina/io;
-import ballerina/mysql;
 import ballerina/sql;
+import ballerinax/mysql;
 
 // The username and password of the MySQL database. This is used in the below
 // examples when initializing the MySQL connector. You need to change these
 // based on your setup if you try locally.
 string dbUser = "root";
 string dbPassword = "Test@123";
-string dbName = "MYSQL_BBE_EXEC";
+string dbName = "MYSQL_BBE";
 
 function initializeDatabase() returns sql:Error? {
     // Initialize the client without any database to create the database.
@@ -32,10 +32,12 @@ returns sql:Error? {
 
     // Similarly, to drop a table, the `create` table query is executed.
     // Here, the `customerId` is an auto-generated column.
-    result = check mysqlClient->execute("CREATE TABLE IF NOT EXISTS Customers" +
-        "(customerId INTEGER NOT NULL AUTO_INCREMENT, firstName VARCHAR(300), " +
-        "lastName VARCHAR(300), registrationID INTEGER UNIQUE, " + 
-        "creditLimit DOUBLE, country VARCHAR(300), PRIMARY KEY (customerId))");
+    result = check mysqlClient->execute(
+                        "CREATE TABLE IF NOT EXISTS Customers ( " +
+                        "customerId INTEGER NOT NULL AUTO_INCREMENT, " +
+                        "firstName VARCHAR(300), lastName VARCHAR(300), " +
+                        "registrationID INTEGER UNIQUE, creditLimit DOUBLE, " +
+                        "country VARCHAR(300), PRIMARY KEY (customerId))");
     io:println("Create table executed: ", result);
 
 }
@@ -123,7 +125,8 @@ public function main() {
 
             io:println("\nSample executed successfully!");
             } else {
-                io:println("Customer table initialization failed: ", initResult);
+                io:println("Customer table initialization failed: ",
+                                                            initResult);
             }
             // Close the MySQL client.
             sql:Error? e = mysqlClient.close();

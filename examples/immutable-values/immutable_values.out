@@ -9,4 +9,4 @@ m1 is immutable: false
 m2 is immutable: true
 Error occurred on update: Invalid map insertion: modification not allowed on readonly value
 m2 === m3: true
-frozenVal is map<string>
+immutableClonedVal is map<string>

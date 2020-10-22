@@ -18,7 +18,7 @@ function testFunc() returns @tainted error? {
     var response = httpEndpoint->get("/hbr/route", message = req);
     if (response is http:Response) {
         var realResponse = check response.getJsonPayload();
-        test:assertEquals(realResponse, expectedJson);
+        test:assertEquals(realResponse.toJsonString(), expectedJson.toJsonString());
     } else {
         test:assertFail(msg = "Failed to call the endpoint:");
     }

@@ -1,0 +1,47 @@
+name: Daily build
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '0 0 * * *'
+
+jobs:
+  ubuntu-build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Build with Gradle
+        env:
+          packageUser: ${{ github.actor }}
+          packagePAT: ${{ secrets.GITHUB_TOKEN }}
+        run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon -x :ballerina:testExamples
+      - name: Notify failure
+        if: ${{ failure() }}
+        run: |
+          curl \
+          -X POST 'https://chat.googleapis.com/v1/spaces/${{secrets.BALLERINA_CHAT_ID}}/messages?key=${{secrets.BALLERINA_CHAT_KEY}}&token=${{secrets.BALLERINA_CHAT_TOKEN}}' \
+          --header 'Content-Type: application/json' \
+          -d '{"text": "*ballerina-distribution daily build failure* \nPlease \n visit <https://github.com/ballerina-platform/ballerina-distribution/actions?query=workflow%3A%22Daily+build%22|the daily build page> for more information"}'
+
+
+  windows-build:
+
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Build with Gradle
+        env:
+          packageUser: ${{ github.actor }}
+          packagePAT: ${{ secrets.GITHUB_TOKEN }}
+        run: ./gradlew.bat clean build -x :ballerina:testExamples -x :ballerina:testStdlibs --stacktrace --scan --console=plain --no-daemon -x :ballerina:testExamples

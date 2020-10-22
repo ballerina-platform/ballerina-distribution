@@ -13,7 +13,8 @@ public function main() {
     } else if (message is string) {
         io:println("'message' is a string with value: ", message);
     } else {
-        io:println("'message' is not an int or string, and has the value: ", message);
+        io:println("'message' is not an int or string, and has the value: ",
+                    message);
     }
 
     // The type test can be used to find the runtime type of union type variables.

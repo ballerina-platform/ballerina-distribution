@@ -77,7 +77,7 @@ service passthrough on new http:Listener(9092) {
     resource function getCompressed(http:Caller caller, http:Request req) {
         var response = clientEndpoint->post("/backend/echo", <@untainted>req);
         if (response is http:Response) {
-            var result = caller->respond(response);
+            var result = caller->respond(<@untainted>response);
             if (result is error) {
                 log:printError("Error sending response", result);
             }
@@ -98,7 +98,8 @@ service backend on listenerEndpoint {
         http:Response res = new;
         if (req.hasHeader("accept-encoding")) {
             string value = req.getHeader("accept-encoding");
-            res.setPayload("Backend response was encoded : " + <@untainted>value);
+            res.setPayload("Backend response was encoded : " +
+                            <@untainted> value);
         } else {
             res.setPayload("Accept-Encoding header is not present");
         }

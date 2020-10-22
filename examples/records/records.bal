@@ -82,7 +82,7 @@ public function main() {
 
     // Member access can be used to assign to fields that are not defined in the record type descriptor.
     // An attempt to add additional fields to a closed record results in compile errors.
-    Address address = { city: "Colombo", country: "Sri Lanka" };
+    Address address = {city: "Colombo", country: "Sri Lanka"};
     peter["address"] = address;
     io:println(peter);
 
@@ -91,7 +91,7 @@ public function main() {
     // open record with an `int`-typed rest field.
     // Keys for such field should either be `string` literals or expressions (i.e., they
     // cannot be identifiers).
-    Grades grades = { maths: 80, physics: 75, chemistry: 65, "english": 90 };
+    Grades grades = {maths: 80, physics: 75, chemistry: 65, "english": 90};
     io:println(grades);
 
     // Similarly, only member access can be used to access the fields that are possibly
@@ -121,7 +121,7 @@ public function main() {
     // Using a mapping constructor expression with `var` (i.e., no contextually-expected
     // type) results in a mapping value where the inferred type is a record type based
     // on the fields specified in the mapping constructor expression.
-    var rec = { name: "Amy", age: 18, ...address };
+    var rec = {name: "Amy", age: 18, ...address};
     io:println(rec);
 
     // The record type inferred for `rec` is

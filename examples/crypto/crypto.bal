@@ -1,3 +1,4 @@
+import ballerina/config;
 import ballerina/crypto;
 import ballerina/io;
 import ballerina/lang.'string;
@@ -66,10 +67,12 @@ public function main() returns error? {
 
     // Obtaining reference to a RSA private key stored within a PKCS#12 or PFX format archive file.
     crypto:KeyStore keyStore = {
-        path: "src/crypto/sampleKeystore.p12",
+        path: config:getAsString("b7a.home") +
+              "/bre/security/ballerinaKeystore.p12",
         password: "ballerina"
     };
-    var privateKey = crypto:decodePrivateKey(keyStore, "ballerina", "ballerina");
+    var privateKey = crypto:decodePrivateKey(keyStore, "ballerina",
+                                             "ballerina");
 
     if (privateKey is crypto:PrivateKey) {
         // Signing input value using RSA-MD5 signature algorithms, and printing the signature value using Hex encoding.
@@ -114,7 +117,8 @@ public function main() returns error? {
                 check 'string:fromBytes(output));
 
      // Encrypt and decrypt an input value using AES CBC without padding.
-     output = check crypto:encryptAesCbc(inputArr, rsaKeyArr, ivArr, crypto:NONE);
+     output = check crypto:encryptAesCbc(inputArr, rsaKeyArr, ivArr,
+                                          crypto:NONE);
      output = check crypto:decryptAesCbc(output, rsaKeyArr, ivArr, crypto:NONE);
      io:println("AES CBC no padding decrypted value: " +
                 check 'string:fromBytes(output));
@@ -126,7 +130,8 @@ public function main() returns error? {
                 check 'string:fromBytes(output));
 
      // Encrypt and decrypt an input value using AES GCM without padding.
-     output = check crypto:encryptAesGcm(inputArr, rsaKeyArr, ivArr, crypto:NONE);
+     output = check crypto:encryptAesGcm(inputArr, rsaKeyArr, ivArr,
+                                         crypto:NONE);
      output = check crypto:decryptAesGcm(output, rsaKeyArr, ivArr, crypto:NONE);
      io:println("AES GCM no padding decrypted value: " +
                 check 'string:fromBytes(output));

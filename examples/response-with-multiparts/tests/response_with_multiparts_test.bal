@@ -19,7 +19,7 @@ function testFunc() {
     //    } else {
     //        test:assertFail(msg = "Invalid response body");
     //    }
-    //} else if (response1 is error) {
+    //} else {
     //    test:assertFail(msg = "Error in calling multipart decoder");
     //}
     //
@@ -50,7 +50,7 @@ function testFunc() {
     //    } else if (parentParts is error){
     //        test:assertFail(msg = "Invalid parent parts");
     //    }
-    //} else if (response2 is error) {
+    //} else {
     //    test:assertFail(msg = "Error in calling multipart encoder");
     //}
 }

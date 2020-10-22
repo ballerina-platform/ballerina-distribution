@@ -275,6 +275,38 @@ public class DistributionArtifactCheckTest {
         Assert.assertTrue(Files.exists(docsPath));
     }
     
+    @Test (enabled = false)
+    public void azFunctionsAnnotationExistsTest() {
+        Path birPath = TEST_DISTRIBUTION_PATH
+                .resolve(DIST_NAME)
+                .resolve("bir-cache")
+                .resolve("ballerinax")
+                .resolve("azure.functions")
+                .resolve("0.0.0")
+                .resolve("azure.functions.bir");
+        
+        Path breLibPath = TEST_DISTRIBUTION_PATH
+                .resolve(DIST_NAME)
+                .resolve("bre")
+                .resolve("lib");
+        
+        Path bbePath = TEST_DISTRIBUTION_PATH
+                .resolve(DIST_NAME)
+                .resolve("examples")
+                .resolve("azure-functions-deployment");
+        
+        Path docsPath = TEST_DISTRIBUTION_PATH
+                .resolve(DIST_NAME)
+                .resolve("docs")
+                .resolve("azure.functions");
+        
+        Assert.assertTrue(Files.exists(birPath));
+        Assert.assertTrue(Files.exists(breLibPath.resolve("ballerinax-azure.functions-0.0.0.jar")));
+        Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "azurefunctions-extension-"));
+        Assert.assertTrue(Files.exists(bbePath));
+        Assert.assertTrue(Files.exists(docsPath));
+    }
+    
     @AfterClass
     public void cleanUp() throws IOException {
         TestUtils.cleanDistribution();

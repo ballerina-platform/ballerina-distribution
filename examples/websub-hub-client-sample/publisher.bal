@@ -19,11 +19,12 @@ public function main() {
         io:println("Hub start error:" + result.message());
         return;
     }
-    // Registers a topic at the hub using [registerTopic](https://ballerina.io/swan-lake/learn/api-docs/ballerina/websub/objects/Hub.html#registerTopic).
+    // Registers a topic at the hub using [registerTopic](https://ballerina.io/swan-lake/learn/api-docs/ballerina/websub/classes/Hub.html#registerTopic).
     var registrationResponse = webSubHub.registerTopic(
                                             "http://websubpubtopic.com");
     if (registrationResponse is error) {
-        io:println("Error occurred registering topic: " + registrationResponse.message());
+        io:println("Error occurred registering topic: " +
+                    registrationResponse.message());
     } else {
         io:println("Topic registration successful!");
     }

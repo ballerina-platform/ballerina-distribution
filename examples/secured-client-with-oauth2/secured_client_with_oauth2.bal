@@ -1,5 +1,6 @@
-import ballerina/http;
 import ballerina/config;
+import ballerina/http;
+import ballerina/log;
 import ballerina/oauth2;
 
 // Define the OAuth2 client endpoint to call the backend services.
@@ -9,7 +10,8 @@ import ballerina/oauth2;
 oauth2:OutboundOAuth2Provider oauth2Provider1 = new ({
     tokenUrl: "<Token URL for the authorization endpoint>",
     clientId: "<Client ID for the client credentials grant authentication>",
-    clientSecret: "<Client secret for the client credentials grant authentication>",
+    clientSecret:
+            "<Client secret for the client credentials grant authentication>",
     clientConfig: {
         secureSocket: {
             trustStore: {
@@ -94,8 +96,9 @@ http:Client clientEP2 = new ("<URL of the secured endpoint>", {
 oauth2:OutboundOAuth2Provider oauth2Provider3 = new ({
     accessToken: "<Access token for the authorization endpoint>",
     refreshConfig: {
-        clientId: "<Client ID for authentication with the authorization endpoint>",
-        clientSecret: "<Client secret for authentication with the authorization endpoint>",
+        clientId: "<Client ID for the authorization endpoint authentication>",
+        clientSecret:
+                "<Client secret for the authorization endpoint authentication>",
         refreshToken: "<Refresh token for the refresh token server>",
         refreshUrl: "<Refresh token URL for the refresh token server>",
         clientConfig: {
@@ -123,3 +126,32 @@ http:Client clientEP3 = new ("<URL of the secured endpoint>", {
         }
     }
 });
+
+public function main() {
+    var response = clientEP1->get("/hello/sayHello");
+    if (response is http:Response) {
+        var result = response.getTextPayload();
+        log:printInfo(
+                    (result is error) ? "Failed to retrieve payload." : result);
+    } else {
+        log:printError("Failed to call the endpoint.", <error>response);
+    }
+
+    response = clientEP2->get("/hello/sayHello");
+    if (response is http:Response) {
+        var result = response.getTextPayload();
+        log:printInfo(
+                    (result is error) ? "Failed to retrieve payload." : result);
+    } else {
+        log:printError("Failed to call the endpoint.", <error>response);
+    }
+
+    response = clientEP3->get("/hello/sayHello");
+    if (response is http:Response) {
+        var result = response.getTextPayload();
+        log:printInfo(
+                    (result is error) ? "Failed to retrieve payload." : result);
+    } else {
+        log:printError("Failed to call the endpoint.", <error>response);
+    }
+}

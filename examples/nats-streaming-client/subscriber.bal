@@ -1,6 +1,6 @@
 import ballerina/lang.'string as strings;
 import ballerina/log;
-import ballerina/nats;
+import ballerinax/nats;
 
 // Creates a NATS connection.
 nats:Connection conn = new;
@@ -23,7 +23,8 @@ service demoService on lis {
        }
     }
 
-    resource function onError(nats:StreamingMessage message, nats:Error errorVal) {
+    resource function onError(nats:StreamingMessage message,
+                                                nats:Error errorVal) {
         error e = errorVal;
         log:printError("Error occurred: ", e);
     }

@@ -1,7 +1,7 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run taint_checking.bal
-error: .::taint_checking.bal:54:36: tainted value passed to untainted parameter 'secureParameter'
-error: .::taint_checking.bal:59:36: tainted value passed to untainted parameter 'secureParameter'
-error: .::taint_checking.bal:29:34: tainted value passed to untainted parameter 'sqlQuery'
-error: .::taint_checking.bal:32:32: tainted value passed to untainted parameter 'secureParameter'
+error: .::taint_checking.bal:33:34: tainted value passed to untainted parameter 'sqlQuery'
+error: .::taint_checking.bal:37:32: tainted value passed to untainted parameter 'secureParameter'
+error: .::taint_checking.bal:56:32: tainted value passed to untainted parameter 'secureParameter'
+error: .::taint_checking.bal:61:32: tainted value passed to untainted parameter 'secureParameter'

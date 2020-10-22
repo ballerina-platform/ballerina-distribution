@@ -1,3 +1,4 @@
+import ballerina/runtime;
 import ballerina/test;
 
 (any|error)[] outputs = [];
@@ -8,15 +9,15 @@ int counter = 0;
     moduleName: "ballerina/io",
     functionName: "println"
 }
-public function mockPrint(any|error... s) {
+public isolated function mockPrint(any|error... s) {
     outputs[counter] = s[0];
     counter += 1;
 }
 
-@test:Config{
-}
-function testFunc() {
+@test:Config{}
+function testFunc() returns error? {
     // Invoke the main function.
-    main();
-    test:assertEquals(outputs[0], "End.");
+    check main();
+    runtime:sleep(6000);
+    test:assertEquals(outputs[5].toString(), "End.");
 }

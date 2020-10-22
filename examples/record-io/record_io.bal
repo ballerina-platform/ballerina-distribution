@@ -8,7 +8,7 @@ import ballerina/log;
 // (e.g., a comma).
 function getReadableRecordChannel(string filePath, string encoding,
                         string rs, string fs)
-                        returns @tainted io:ReadableTextRecordChannel|error {
+                        returns io:ReadableTextRecordChannel|error {
     io:ReadableByteChannel byteChannel = check io:openReadableFile(filePath);
     // Creates a readable character channel
     // from the readable byte channel to read the content as text.
@@ -28,7 +28,7 @@ function getReadableRecordChannel(string filePath, string encoding,
 // (e.g., a comma).
 function getWritableRecordChannel(string filePath, string encoding, string rs,
                     string fs)
-                    returns @tainted io:WritableTextRecordChannel|error {
+                    returns io:WritableTextRecordChannel|error {
     io:WritableByteChannel byteChannel = check io:openWritableFile(filePath);
     // Creates a writable character channel
     // from the writable byte channel to read the content as text.
@@ -61,7 +61,8 @@ function process(io:ReadableTextRecordChannel srcRecordChannel,
 function closeRc(io:ReadableTextRecordChannel rc) {
     var closeResult = rc.close();
     if (closeResult is error) {
-        log:printError("Error occurred while closing the channel: ", closeResult);
+        log:printError("Error occurred while closing the channel: ",
+                        closeResult);
     }
 }
 
@@ -69,7 +70,8 @@ function closeRc(io:ReadableTextRecordChannel rc) {
 function closeWc(io:WritableTextRecordChannel wc) {
     var closeResult = wc.close();
     if (closeResult is error) {
-        log:printError("Error occurred while closing the channel: ", closeResult);
+        log:printError("Error occurred while closing the channel: ",
+                        closeResult);
     }
 }
 
@@ -82,10 +84,10 @@ public function main() {
     // new line and the field separator is a comma (,).
     io:ReadableTextRecordChannel srcRecordChannel;
     var readableChannel = getReadableRecordChannel(srcFileName,
-                                                        "UTF-8", "\\r?\\n", ",");
+                                                     "UTF-8", "\\r?\\n", ",");
     if (readableChannel is error) {
-        log:printError("An error occurred while creating readable record channel. ",
-                        readableChannel);
+        log:printError("An error occurred while creating readable record " +
+                        "channel. ", readableChannel);
         return;
     } else {
         srcRecordChannel = readableChannel;
@@ -97,8 +99,8 @@ public function main() {
     var writableChannel = getWritableRecordChannel(dstFileName,
                                                         "UTF-8", "\r\n", "|");
     if (writableChannel is error) {
-        log:printError("An error occurred while creating writable record channel. ",
-                        writableChannel);
+        log:printError("An error occurred while creating writable record " +
+                        "channel. ", writableChannel);
         return;
     } else {
         dstRecordChannel = writableChannel;
@@ -108,7 +110,8 @@ public function main() {
                " to the text file in " + dstFileName);
     var result = process(srcRecordChannel, dstRecordChannel);
     if (result is error) {
-        log:printError("An error occurred while processing the records: ", result);
+        log:printError("An error occurred while processing the records: ",
+                        result);
     } else {
         io:println("Processing completed. The processed file is located in ",
                     dstFileName);

@@ -2,7 +2,8 @@ import ballerina/http;
 import ballerina/log;
 
 // HTTP version is set to 2.0.
-http:Client http2serviceClientEP = new ("http://localhost:7090", {httpVersion: "2.0"});
+http:Client http2serviceClientEP =
+                        new ("http://localhost:7090", {httpVersion: "2.0"});
 
 @http:ServiceConfig {
     basePath: "/http11Service"
@@ -14,7 +15,7 @@ service http11Service on new http:Listener(9090) {
     }
     resource function http11Resource(http:Caller caller,
                                      http:Request clientRequest) {
-        // Forward the [clientRequest](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/Request.html) to the `http2` service.
+        // Forward the [clientRequest](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html) to the `http2` service.
         var clientResponse = http2serviceClientEP->forward("/http2service",
                                                         clientRequest);
 
@@ -25,10 +26,10 @@ service http11Service on new http:Listener(9090) {
             // Handle the errors that are returned when invoking the
             // [forward](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/HttpClient.html#forward) function.
             response.statusCode = 500;
-            response.setPayload(clientResponse.message());
+            response.setPayload(<@untainted>(<error>clientResponse).message());
         }
         // Send the response back to the caller.
-        var result = caller->respond(response);
+        var result = caller->respond(<@untainted>response);
         if (result is error) {
            log:printError("Error occurred while sending the response",
                err = result);

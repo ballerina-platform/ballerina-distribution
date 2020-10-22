@@ -33,7 +33,8 @@ public function main() {
     // The `query expression` starts with `table`.
     // The key specifier `key(id)` specifies the key sequence of the constructed `table`.
     // The result of the `query expression` is a `table`.
-    ReportTable|error reportTable = table key(id) from var student in studentList
+    ReportTable|error reportTable =
+        table key(id) from var student in studentList
         // The `where` clause provides a way to perform conditional execution and works similarly to an `if` condition.
         // It can refer to variables bound by the from clause.
         // When the `where` condition evaluates to false, the current iteration is skipped.
@@ -41,6 +42,8 @@ public function main() {
         // The `let` clause binds the variables.
         let string degreeName = "Bachelor of Medicine",
         int graduationYear = calGraduationYear(student.intakeYear)
+        // The `limit` clause limits the number of output items.
+        limit 2
         // The `select` clause is evaluated for each iteration.
         // During the construction of a `table`, each emitted value from the `select` clause is added as a new member.
         select {
@@ -48,18 +51,18 @@ public function main() {
             name: student.firstName + " " + student.lastName,
             degree: degreeName,
             graduationYear: graduationYear
-        }
-        // The `limit` clause limits the number of output items.
-        limit 2;
+        };
 
     io:println(reportTable);
 
     Student[] duplicateStdList = [s1, s2, s1];
 
     // Defines an `error` to handle a key conflict.
-    error onConflictError = error("Key Conflict", message = "cannot insert report");
+    error onConflictError = error("Key Conflict",
+                                  message = "cannot insert report");
 
-    ReportTable|error result = table key(id) from var student in duplicateStdList
+    ReportTable|error result =
+        table key(id) from var student in duplicateStdList
         select {
             id: student.id,
             name: student.firstName + " " + student.lastName,

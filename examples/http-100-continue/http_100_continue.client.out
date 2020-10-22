@@ -11,10 +11,14 @@ curl -v -d "TEST 100 CONTINUE" http://localhost:9090/hello -H 'Expect:100-contin
 > Content-Type: text/plain
 >
 < HTTP/1.1 100 Continue
+< server: ballerina
+< date: Tue, 22 Sep 2020 09:16:18 +0530
 * We are completely uploaded and fine
 < HTTP/1.1 200 OK
 < content-type: text/plain
 < content-length: 13
+< server: ballerina
+< date: Tue, 22 Sep 2020 09:16:18 +0530
 <
 Hello World!
 * Connection #0 to host localhost left intact
@@ -34,6 +38,8 @@ curl -v -d '{"TEST":"100 CONTINUE"}' http://localhost:9090/hello -H 'Expect:100-
 < HTTP/1.1 417 Expectation Failed
 < content-type: text/plain
 < content-length: 20
+< server: ballerina
+< date: Tue, 22 Sep 2020 09:19:53 +0530
 * HTTP error before end of send, stop sending
 <
 * Closing connection 0

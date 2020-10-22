@@ -1,35 +1,42 @@
 # Start multipartDemoService
 # The cURL command, which you need to execute to decode a multipart request
 curl -F "part1={\"name\":\"ballerina\"};type=application/json" http://localhost:9090/multiparts/decode -H "Content-Type: multipart/mixed" -H 'Expect:'
---ac4875939cf6b158
+--f710b4a02896b88a
+content-disposition: attachment;name="part1"
 content-type: application/json
-content-disposition: form-data;name="part1"
 content-id: 0
 
 {"name":"ballerina"}
---ac4875939cf6b158--
+--f710b4a02896b88a--
 
 # The cURL command, which you need to execute to encode the parts of the body and send a multipart request via the Ballerina service
 curl -v http://localhost:9090/multiparts/encode
+> GET /multiparts/encode HTTP/1.1
+> Host: localhost:9090
+> User-Agent: curl/7.64.1
+> Accept: */*
+>
 < HTTP/1.1 200 OK
-< content-type: multipart/form-data; boundary=3bbfa10811dcdee6
-< date: Thu, 14 Jun 2018 15:22:21 +0530
-< server: ballerina/0.982.1-SNAPSHOT
+< content-type: multipart/form-data; boundary=bd7547c98465dae2
+< date: Wed, 23 Sep 2020 10:20:17 +0530
+< server: ballerina
 < content-length: 398
 <
---3bbfa10811dcdee6
-content-type: application/json
+--bd7547c98465dae2
 content-disposition: form-data;name="json part"
+content-type: application/json
 content-id: 0
 
 {"name":"wso2"}
---3bbfa10811dcdee6
-content-type: application/xml
+--bd7547c98465dae2
 content-disposition: form-data;name="xml file part"
+content-type: application/xml
 content-id: 1
 
 <ballerinalang>
     <version>0.963</version>
     <test>test xml file to be used as a file part</test>
 </ballerinalang>
---3bbfa10811dcdee6--
+--bd7547c98465dae2--
+* Connection #0 to host localhost left intact
+* Closing connection 0

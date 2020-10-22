@@ -2,4 +2,6 @@
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run cache.bal
 key1: value1
-keys: [key2]
+keys: ["key2"]
+size: 1
+keys: []

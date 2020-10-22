@@ -1,26 +1,23 @@
-import ballerina/io;
 import ballerina/test;
 import ballerina/system;
 
-(any|error)[] outputs = [];
-int counter = 0;
+string[] outputs = [];
 
 // This is the mock function which will replace the real function
 @test:Mock {
     moduleName: "ballerina/io",
     functionName: "println"
 }
-public function mockPrint(any|error... s) {
-    outputs[counter] = s[0];
-    counter += 1;
+public isolated function mockPrint(any|error... val) {
+    outputs.push(val.reduce(function (any|error a, any|error b) returns string => a.toString() + b.toString(), "").toString());
 }
 
 boolean isWindows = system:getEnv("OS") != "";
 
-@test:Config
-function testFunc() {
+@test:Config {}
+function testFunc() returns error? {
     // Invoking the main function
-    main();
+    check main();
 
     string absolutePath;
     string filename;
@@ -36,7 +33,7 @@ function testFunc() {
         filename ="Filename of /A/B/C: C";
         parent ="Parent of /A/B/C: \\A\\B";
         normalized ="Normalized path of foo/../bar: bar";
-        elements ="Path elements of /A/B/C: [\"A\", \"B\", \"C\"]";
+        elements ="Path elements of /A/B/C: [\"A\",\"B\",\"C\"]";
         buildPath ="Built path of '/', 'foo', 'bar': \\foo\\bar";
         extension ="Extension of path.bal: bal";
         relative ="Relative path between 'a/b/c' and 'a/c/d': ..\\..\\c\\d";
@@ -45,7 +42,7 @@ function testFunc() {
         filename ="Filename of /A/B/C: C";
         parent ="Parent of /A/B/C: /A/B";
         normalized ="Normalized path of foo/../bar: bar";
-        elements ="Path elements of /A/B/C: [\"A\", \"B\", \"C\"]";
+        elements ="Path elements of /A/B/C: [\"A\",\"B\",\"C\"]";
         buildPath ="Built path of '/', 'foo', 'bar': /foo/bar";
         extension ="Extension of path.bal: bal";
         relative ="Relative path between 'a/b/c' and 'a/c/d': ../../c/d";
