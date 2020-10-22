@@ -1,4 +1,4 @@
-// Objects are a behaviourial type. An object type is a combination of public and module-level visible fields along with a
+// Objects are a behavioral type. An object type is a combination of public and module-level visible fields along with a
 // set of associated function signatures (called methods declarations) that can be used to manipulate the fields.
 // This allows you to define custom-behavioural data types.
 // To create values that belong to an object type, you can use class definitions or object-constructor expressions.
