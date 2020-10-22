@@ -72,7 +72,7 @@ service passthroughService06 on listener06_1 {
             checkpanic caller->respond(<@untainted> response);
         } else {
             http:Response resp = new;
-            json errMsg = { "error": "error occurred while invoking the service: " + (<error>response).message() };
+            json errMsg = { "error": "error occurred while invoking the service: " + (<http:ClientError>response).message() };
             resp.statusCode = 500;
             resp.setPayload(<@untainted> errMsg);
             checkpanic caller->respond(resp);
