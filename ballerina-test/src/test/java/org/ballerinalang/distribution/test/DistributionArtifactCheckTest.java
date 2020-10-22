@@ -275,7 +275,7 @@ public class DistributionArtifactCheckTest {
         Assert.assertTrue(Files.exists(docsPath));
     }
     
-    @Test (enabled = false)
+    @Test
     public void azFunctionsAnnotationExistsTest() {
         Path birPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
