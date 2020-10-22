@@ -6,9 +6,10 @@ import ballerina/email;
 // This is the test double of the `http:Client` object with the
 // implementation of the required functions.
 public client class MockHttpClient {
-    public remote function get(@untainted string path, http:RequestMessage message = (), http:TargetType targetType = 
-                               http:Response) returns @tainted http:Response|http:Payload|http:ClientError {
-
+    public remote function get(@untainted string path, 
+    http:RequestMessage message = (), 
+    http:TargetType targetType = http:Response) returns 
+    @tainted http:Response|http:Payload|http:ClientError {
         http:Response res = new;
         res.statusCode = 500;
         return res;
@@ -41,7 +42,8 @@ function testReturnWithArgs() {
     clientEndpoint = test:mock(http:Client);
     // This stubs the `get` function to return the specified HTTP response
     // when the specified argument is passed.
-    test:prepare(clientEndpoint).when("get").withArguments("/headers").thenReturn(mockResponse);
+    test:prepare(clientEndpoint).when("get").
+    withArguments("/headers").thenReturn(mockResponse);
     // The object and record types should be denoted by the `test:ANY` constant
     test:prepare(clientEndpoint).when("get").withArguments("/get?test=123", test:ANY).thenReturn(mockResponse);
     http:Response res = performGet();
@@ -57,7 +59,8 @@ function testReturnSequence() {
     // This stubs the `get` function to return the specified HTTP response
     // for each call. i.e., The first call will return the status code `200`
     // and the second call will return the status code `404`.
-    test:prepare(clientEndpoint).when("get").thenReturnSequence(new http:Response(), mockResponse);
+    test:prepare(clientEndpoint).when("get").thenReturnSequence(
+        new http:Response(), mockResponse);
     http:Response res = performGet();
     test:assertEquals(res.statusCode, 404);
 }

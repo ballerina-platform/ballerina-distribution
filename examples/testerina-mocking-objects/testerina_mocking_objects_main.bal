@@ -11,14 +11,16 @@ email:SmtpClient smtpClient = new("localhost", "admin", "admin");
 // endpoint and returns the response.
 function performGet() returns @tainted http:Response {
     io:println("Executing the 1st GET request");
-    http:Response response = <http:Response>checkpanic clientEndpoint -> get("/headers");
+    http:Response response = <http:Response> 
+    checkpanic clientEndpoint -> get("/headers");
     io:println("Status code: ", response.statusCode.toString());
 
     if (response.statusCode == 200) {
         io:println("Executing the 2nd GET request");
         http:Request req = new;
         req.addHeader("Sample-Name", "http-client-connector");
-        response = <http:Response>checkpanic clientEndpoint -> get("/get?test=123", req);
+        response = <http:Response> checkpanic 
+        clientEndpoint -> get("/get?test=123", req);
         io:println("Status code: ", response.statusCode.toString());
     }
     return response;

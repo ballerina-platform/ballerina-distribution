@@ -53,8 +53,10 @@ function testAssertXmlEquals() {
     xml x3 = xml `<!--I am a comment-->`;
     xml x4 = xml `<?target data?>`;
     xml x5 = x1 + x2 + x3 + x4;
-    xml x6 = 
-    xml `<book>The Lost World</book>` + xml `Hello, world!` + xml `<!--I am a comment-->` + xml `<?target data?>`;
+    xml x6 = xml `<book>The Lost World</book>` + 
+    xml `Hello, world!` + 
+    xml `<!--I am a comment-->` + 
+    xml `<?target data?>`;
     test:assertEquals(x5, x6, msg = "XML values not equal");
 }
 
@@ -114,8 +116,10 @@ function testAssertNotEqualsXml() {
     xml x3 = xml `<!--I am a comment-->`;
     xml x4 = xml `<?target data?>`;
     xml x5 = x1 + x2 + x3 + x4;
-    xml x6 = 
-    xml `<book>The Lost World -2</book>` + xml `Hello, world!` + xml `<!--I am a comment-->` + xml `<?target data?>`;
+    xml x6 = xml `<book>The Lost World -2</book>` + 
+    xml `Hello, world!` + 
+    xml `<!--I am a comment-->` + 
+    xml `<?target data?>`;
     test:assertNotEquals(x5, x6, msg = "XML values are equal");
 }
 
