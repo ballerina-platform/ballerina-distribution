@@ -93,7 +93,7 @@ public function main() {
     // all the fields of the relevant mapping value are added to the new
     // mapping value being created.
     // A spread field is used with `modifiedMarks` to include all the entries
-    // in `modifiedMarks` when creating `allMarks`.
-    map<int> allMarks = {jane: 100, ...modifiedMarks, amy: 75};
-    io:println(allMarks);
+    // in `modifiedMarks` when creating `newMarks`.
+    map<int> newMarks = { ...modifiedMarks};
+    io:println(newMarks);
 }
