@@ -22,6 +22,7 @@ public function main() returns error? {
 
     string data = "data%3Dvalue";
     // Decoding an encoded URI component into a string.
-    string decodedUriComponent = check encoding:decodeUriComponent(data, "UTF-8");
+    string decodedUriComponent = check encoding:decodeUriComponent(data,
+                                            "UTF-8");
     io:println("URI decoded value: ", decodedUriComponent);
 }
