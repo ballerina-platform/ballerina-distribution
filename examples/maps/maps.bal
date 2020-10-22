@@ -94,7 +94,7 @@ public function main() {
     io:println(modifiedMarks);
 
     // Create a new value of the type `ClassMark` from `mofifiedMarks` using `cloneWithType`.  
-    ClassMarks newMarks = <ClassMarks> marks.cloneWithType(ClassMarks);
+    ClassMarks newMarks = <ClassMarks> modifiedMarks.cloneWithType(ClassMarks);
 
     // A mapping constructor expression can also include a spread field
     // referring to another mapping value. When a spread field is specified,
