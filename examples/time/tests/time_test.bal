@@ -8,7 +8,7 @@ int counter = 0;
     moduleName: "ballerina/io",
     functionName: "println"
 }
-public isolated function mockPrint(any|error... s) {
+public function mockPrint(any|error... s) {
     string outstr = "";
         foreach var str in s {
             outstr = outstr + str.toString();

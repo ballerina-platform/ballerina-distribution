@@ -7,7 +7,7 @@ string log = "";
     moduleName: "ballerina/log",
     functionName: "printInfo"
 }
-public isolated function mockPrintInfo((anydata|function () returns (anydata)) msg) {
+public function mockPrintInfo((anydata|function () returns (anydata)) msg) {
     if (msg is string) {
         log = msg;
     }

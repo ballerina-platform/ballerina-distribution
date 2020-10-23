@@ -17,7 +17,6 @@ class Person {
     function getFullName() returns string {
         return self.firstName + " " + self.lastName;
     }
-
 }
 
 public function main() {
