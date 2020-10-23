@@ -94,7 +94,7 @@ public function main() {
     );
     io:println(modifiedMarks);
 
-    // Create humanitiesMarks record with history and geography marks.  
+    // Create a record value of type `Humanities`.  
     Humanities humanitiesMarks = {history: 80, geography: 75};
 
     // A mapping constructor expression can also include a spread field
