@@ -1,5 +1,11 @@
 import ballerina/io;
 
+// A record representing marks received for humanities subjects.
+type Humanities record {|
+    int history;
+    int geography;
+|};
+
 public function main() {
     // Declare a `map` constrained by the type `string`.
     map<string> m;
@@ -88,12 +94,15 @@ public function main() {
     );
     io:println(modifiedMarks);
 
+    // Create a record value of type `Humanities`.  
+    Humanities humanitiesMarks = {history: 80, geography: 75};
+
     // A mapping constructor expression can also include a spread field
     // referring to another mapping value. When a spread field is specified,
     // all the fields of the relevant mapping value are added to the new
     // mapping value being created.
-    // A spread field is used with `modifiedMarks` to include all the entries
-    // in `modifiedMarks` when creating `allMarks`.
-    map<int> allMarks = {jane: 100, ...modifiedMarks, amy: 75};
+    // A spread field is used with `humanitiesMarks` to include all the entries
+    // in `humanitiesMarks` when creating `allMarks`.
+    map<int> allMarks = {physics: 100, ...humanitiesMarks, chemistry: 75};
     io:println(allMarks);
 }
