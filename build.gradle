@@ -37,6 +37,7 @@ ext {
     netLingalaZip4jVersion = "2.3.2"
     commonsIoVersion = "2.6"
     commonsLang3Version = "3.9"
+    c2cVersion = "2.0.0"
 }
 
 allprojects {
@@ -475,7 +476,7 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:grpc-ballerina:${stdlibGrpcVersion}"
         ballerinaStdLibs "org.ballerinalang:module-ballerina-openapi:${project.ballerinaVersion}"
 
-        ballerinaC2cLibs "io.ballerina:c2c-ballerina:${ballerinaVersion}"
+        ballerinaC2cLibs "io.ballerina:c2c-ballerina:${c2cVersion}"
 
         balCommand "org.ballerinalang:ballerina-command-distribution:${ballerinaCommandVersion}@zip"
     }
