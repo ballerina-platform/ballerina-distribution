@@ -35,7 +35,7 @@ public function main() {
         if (loginMessage is error) {
             io:println("Login failed", loginMessage);
         } else {
-            // [Gets cookies from the `http:Response`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/Response.html#getCookies)
+            // [Gets cookies from the `http:Response`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Response.html#getCookies)
             http:Cookie[] cookies = loginResp.getCookies();
             // Initialize the WebSocket client with the cookies
             http:WebSocketClient wsClientEp =
