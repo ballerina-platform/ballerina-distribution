@@ -9,15 +9,15 @@ int counter = 0;
     moduleName: "ballerina/io",
     functionName: "println"
 }
-public isolated function mockPrint(any|error... s) {
+public function mockPrint(any|error... s) {
     outputs[counter] = s[0];
     counter += 1;
 }
 
 @test:Config{}
-function testFunc() {
+function testFunc() returns error? {
     // Invoke the main function.
-    main();
+    check main();
     runtime:sleep(12000);
     test:assertEquals(outputs[5].toString(), "Appointment cancelled.");
 }

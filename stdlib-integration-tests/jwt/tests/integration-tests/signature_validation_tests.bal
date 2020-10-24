@@ -81,7 +81,7 @@ public function testScenario1() {
     if (response is http:Response) {
         assertOK(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 }
 
@@ -124,7 +124,7 @@ public function testScenario2() {
     if (response is http:Response) {
         assertOK(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 }
 
@@ -167,7 +167,7 @@ public function testScenario3() {
     if (response is http:Response) {
         assertOK(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 }
 
@@ -210,7 +210,7 @@ public function testScenario4() {
     if (response is http:Response) {
         assertOK(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 }
 
@@ -251,7 +251,7 @@ public function testScenario5() {
     if (response is http:Response) {
         assertOK(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 }
 
@@ -292,7 +292,7 @@ public function testScenario6() {
     if (response is http:Response) {
         assertUnauthorized(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 }
 
@@ -333,7 +333,7 @@ public function testScenario7() {
     if (response is http:Response) {
         assertOK(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 }
 
@@ -374,7 +374,7 @@ public function testScenario8() {
     if (response is http:Response) {
         assertOK(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 }
 
@@ -417,7 +417,7 @@ public function testScenario9() {
     if (response is http:Response) {
         assertUnauthorized(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 }
 
@@ -460,7 +460,7 @@ public function testScenario10() {
     if (response is http:Response) {
         assertUnauthorized(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 }
 
@@ -503,7 +503,7 @@ public function testScenario11() {
     if (response is http:Response) {
         assertOK(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 }
 
@@ -546,6 +546,6 @@ public function testScenario12() {
     if (response is http:Response) {
         assertOK(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 }

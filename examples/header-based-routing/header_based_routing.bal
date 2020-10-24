@@ -49,7 +49,7 @@ service headerBasedRouting on new http:Listener(9090) {
         //[getHeader()](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html#getHeader) returns header value of the specified header name.
         string nameString = req.getHeader("x-type");
 
-        http:Response|error response;
+        http:Response|http:Payload|error response;
         if (nameString == "location") {
             //[post()](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html#post) remote function represents the 'POST' operation
             // of the HTTP client.
@@ -69,7 +69,7 @@ service headerBasedRouting on new http:Listener(9090) {
             // [respond()](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Caller.html#respond) sends back the inbound clientResponse to the caller
             // if no error occurs.
 
-            var result = caller->respond(response);
+            var result = caller->respond(<@untainted>response);
 
             if (result is error) {
                 log:printError("Error sending response", result);
@@ -78,7 +78,7 @@ service headerBasedRouting on new http:Listener(9090) {
         } else {
             http:Response errorResponse = new;
             errorResponse.statusCode = 500;
-            errorResponse.setPayload(response.message());
+            errorResponse.setPayload((<@untainted error>response).message());
             var result = caller->respond(errorResponse);
 
             if (result is error) {

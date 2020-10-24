@@ -35,7 +35,7 @@ service PostToHttpService = service {
         var result = httpClient->post("/", request);
         if (result is http:ClientError) {
             panic result;
-        } else {
+        } else if (result is http:Response) {
             if (result.statusCode == 200) {
                 var payload = result.getTextPayload();
                 if (payload is http:ClientError) {
@@ -107,6 +107,6 @@ function testTaskWithHttpClient() {
     if (response is http:Response) {
         test:assertEquals(response.getTextPayload(), HTTP_MESSAGE, msg = "Response payload mismatched");
     } else {
-        test:assertFail(msg = response.message());
+        test:assertFail(msg = (<error>response).message());
     }
 }

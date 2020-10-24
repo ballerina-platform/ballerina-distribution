@@ -1,3 +1,3 @@
-// This example demonstrates how the XML content can be transformed to HTML using a given XSL transformation.
+// This example demonstrates how XML content can be transformed to HTML using a given XSL transformation.
 // For more information on the underlying module,
-// see the [xslt module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/xslt/index.html).
+// see the [XSLT module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/xslt/index.html).

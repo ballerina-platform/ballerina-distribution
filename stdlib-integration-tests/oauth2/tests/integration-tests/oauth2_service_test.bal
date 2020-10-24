@@ -37,7 +37,7 @@ public function testInboundOAuth2SuccessTest() {
     if (response is http:Response) {
         assertOK(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 }
 
@@ -50,6 +50,6 @@ public function testInboundOAuth2FailureTest() {
     if (response is http:Response) {
         assertUnauthorized(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 }

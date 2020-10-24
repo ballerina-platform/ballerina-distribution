@@ -93,7 +93,7 @@ function getCount(mysql:Client sqlClient) {
 
     // Initialize the INOUT & OUT parameters.
     sql:InOutParameter id = new (1);
-    sql:OutParameter totalCount = new;
+    sql:IntegerOutParameter totalCount = new;
     sql:ParameterizedCallQuery sqlQuery = 
                         `{CALL GetCount(${id}, ${totalCount})}`;
 

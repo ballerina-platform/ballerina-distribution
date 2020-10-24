@@ -54,12 +54,12 @@ service passthrough on listener06_1 {
     resource function test(http:Caller caller, http:Request req, string testCase) {
         var response = client06->get("/echo/" + <@untainted> testCase);
         if (response is http:Response) {
-            checkpanic caller->respond(response);
+            checkpanic caller->respond(<@untainted> response);
         } else {
             http:Response resp = new;
-            json errMsg = { "error": "error occurred while invoking the service: " + response.message() };
+            json errMsg = { "error": "error occurred while invoking the service: " + (<http:ClientError>response).message() };
             resp.statusCode = 500;
-            resp.setPayload(errMsg);
+            resp.setPayload(<@untainted> errMsg);
             checkpanic caller->respond(resp);
         }
     }

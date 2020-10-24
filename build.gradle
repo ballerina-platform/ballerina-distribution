@@ -25,14 +25,14 @@ description = 'Ballerina - Tools - Parent'
 ext {
     ballerinaVersion = project.ballerinaVersion
     shortVersion = project.shortVersion
-    ballerinaJreArtifactsVersion = "2.0.0"
+    ballerinaJreArtifactsVersion = "3.0.0"
     awslambdaVersion = project.ballerinaVersion
     azFunctionsVersion = project.ballerinaVersion
     dockerVersion = project.ballerinaVersion
     kubernetesVersion = project.ballerinaVersion
     dataMapperVersion = project.ballerinaVersion
     picocliVersion = "4.0.1"
-    ballerinaCommandVersion = "0.8.8"
+    ballerinaCommandVersion = "0.8.9-SNAPSHOT"
     testngVersion = "6.14.3"
     netLingalaZip4jVersion = "2.3.2"
     commonsIoVersion = "2.6"
@@ -69,8 +69,8 @@ allprojects {
 
 subprojects {
     apply plugin: 'java'
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
+    sourceCompatibility = 11
+    targetCompatibility = 11
     tasks.withType(JavaCompile) {
         options.encoding = 'UTF-8'
     }
@@ -344,6 +344,13 @@ subprojects {
             }
         }
         maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-ftp"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-http"
             credentials {
                 username System.getenv("packageUser")
@@ -352,6 +359,14 @@ subprojects {
         }
         maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-grpc"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/ballerina-openapi"
             credentials {
                 username System.getenv("packageUser")
                 password System.getenv("packagePAT")
@@ -384,6 +399,7 @@ subprojects {
         kubernetesAnnotations
         kubernetesExamples
         ballerinaStdLibs
+        ballerinaC2cLibs
         balCommand
         exten {
             transitive = false
@@ -454,8 +470,12 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:java.arrays-ballerina:${stdlibJavaArraysVersion}"
         ballerinaStdLibs "org.ballerinalang:mime-ballerina:${stdlibMimeVersion}"
         ballerinaStdLibs "org.ballerinalang:email-ballerina:${stdlibEmailVersion}"
+        ballerinaStdLibs "org.ballerinalang:ftp-ballerina:${stdlibFtpVersion}"
         ballerinaStdLibs "org.ballerinalang:http-ballerina:${stdlibHttpVersion}"
         ballerinaStdLibs "org.ballerinalang:grpc-ballerina:${stdlibGrpcVersion}"
+        ballerinaStdLibs "org.ballerinalang:module-ballerina-openapi:${project.ballerinaVersion}"
+
+        ballerinaC2cLibs "io.ballerina:c2c-ballerina:${ballerinaVersion}"
 
         balCommand "org.ballerinalang:ballerina-command-distribution:${ballerinaCommandVersion}@zip"
     }

@@ -26,31 +26,20 @@ public function main() {
     // Send an outbound request to the `login` backend resource.
     var loginResp = httpClient->post("/login", request);
 
-    if (loginResp is http:Response) {
-        // This response contains the cookies added by the backend server.
-        // Get the login response message.
-        string|error loginMessage = loginResp.getTextPayload();
-
-        if (loginMessage is error) {
-            log:printError("Login failed", loginMessage);
-        } else {
-            // When the login is successful, make another request to the
-            // `/welcome` resource of the backend service.
-            // As cookies are enabled in the HTTP client, it automatically handles cookies
-            // received with the login response and sends the relevant cookies
-            // to the `welcome` service resource.
-            var welcomeResp = httpClient->get("/welcome");
-
-            if (welcomeResp is http:Response) {
-                string|error textPayload = welcomeResp.getTextPayload();
-                if (textPayload is string) {
-                    // A welcome message with the sent username
-                    // will get printed.
-                    log:printInfo(textPayload);
-                }
-            }
-        }
+    if (loginResp is error) {
+        log:printError("Login failed", loginResp);
     } else {
-        log:printError(loginResp.message());
+        // When the login is successful, make another request to the
+        // `/welcome` resource of the backend service.
+        // As cookies are enabled in the HTTP client, it automatically handles cookies
+        // received with the login response and sends the relevant cookies
+        // to the `welcome` service resource.
+        var welcomeResp = httpClient->get("/welcome", targetType = string);
+
+        if (welcomeResp is string) {
+            // A welcome message with the sent username
+            // will get printed.
+            log:printInfo(welcomeResp);
+        }
     }
 }

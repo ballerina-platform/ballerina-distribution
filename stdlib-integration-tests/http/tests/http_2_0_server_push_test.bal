@@ -224,6 +224,6 @@ function testPushPromise() {
         }
 
     } else {
-        test:assertFail(msg = "Found unexpected output type: " + response.message());
+        test:assertFail(msg = "Found unexpected output type: " + (<error>response).message());
     }
 }
