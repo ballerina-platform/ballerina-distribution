@@ -957,6 +957,7 @@ task testExamples() {
         'http-trace-logs',
         'restrict-by-media-type',
         'http-cors',
+        'http-client-data-binding',
         'websocket-basic-sample',
         'websocket-chat-application',
         'websocket-client',
