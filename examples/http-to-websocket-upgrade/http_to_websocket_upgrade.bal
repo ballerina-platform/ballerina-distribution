@@ -6,30 +6,6 @@ import ballerina/log;
     basePath: "/hello"
 }
 service httpService on new http:Listener(9090) {
-
-    // This is an HTTP resource.
-    @http:ResourceConfig {
-        path: "/world",
-        methods: ["POST"]
-    }
-    resource function httpResource(http:Caller caller, http:Request req) {
-        http:Response resp = new;
-        var payload = req.getTextPayload();
-        if (payload is error) {
-            log:printError("Error sending message", payload);
-            resp.setPayload("Error in payload");
-            resp.statusCode = 500;
-        } else {
-            io:println(payload);
-            resp.setPayload("HTTP POST received: " + <@untainted> payload);
-        }
-
-        var err = caller->respond(resp);
-        if (err is error) {
-            log:printError("Error in responding", err);
-        }
-    }
-
     // This is an HTTP to WebSocket upgrade resource. This is defined using the WebSocket upgrade resource config.
     // Here you have access to the [http:Request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html), query, and path params where applicable.
     @http:ResourceConfig {

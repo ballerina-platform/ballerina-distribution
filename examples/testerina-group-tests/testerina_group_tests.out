@@ -8,10 +8,11 @@ Compiling tests
 
 Running tests
     testerina_group_tests.bal
-I'm in test belonging to groups g1 and g2!
 I'm in test belonging to group g1!
-        [pass] testFunction2
+I'm in test belonging to groups g1 and g2!
+
         [pass] testFunction1
+        [pass] testFunction2
 
         2 passing
         0 failing
@@ -23,10 +24,11 @@ Compiling tests
 
 Running tests
     testerina_group_tests.bal
-I'm in test belonging to groups g1 and g2!
 I'm in test belonging to group g1!
-        [pass] testFunction2
+I'm in test belonging to groups g1 and g2!
+
         [pass] testFunction1
+        [pass] testFunction2
 
         2 passing
         0 failing
@@ -38,10 +40,11 @@ Compiling tests
 
 Running tests
     testerina_group_tests.bal
-I'm the ungrouped test
 I'm in test belonging to group g1!
-        [pass] testFunction3
+I'm the ungrouped test
+
         [pass] testFunction1
+        [pass] testFunction3
 
         2 passing
         0 failing

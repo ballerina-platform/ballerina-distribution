@@ -17,9 +17,9 @@ I'm the before each function!
 I'm in test function 3!
 I'm the after each function!
 
-        [pass] testFunction3
-        [pass] testFunction2
         [pass] testFunction1
+        [pass] testFunction2
+        [pass] testFunction3
 
         3 passing
         0 failing

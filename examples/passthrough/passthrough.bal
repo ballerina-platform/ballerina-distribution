@@ -29,7 +29,7 @@ service passthrough on new http:Listener(9090) {
             // If there was an error, the 500 error response is constructed and sent back to the client.
             http:Response res = new;
             res.statusCode = 500;
-            res.setPayload(<@untainted>(<error>clientResponse).message());
+            res.setPayload((<@untainted error>clientResponse).message());
             var result = caller->respond(res);
             if (result is error) {
                 log:printError("Error sending response", result);

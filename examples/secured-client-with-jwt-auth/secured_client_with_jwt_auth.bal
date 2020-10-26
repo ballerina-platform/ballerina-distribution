@@ -1,5 +1,5 @@
-import ballerina/http;
 import ballerina/config;
+import ballerina/http;
 import ballerina/jwt;
 import ballerina/log;
 
@@ -9,7 +9,7 @@ import ballerina/log;
 // If the JWT issuer configurations are not passed, a JWT will be searched
 // in `runtime:AuthenticationContext` and it will be used for the outbound
 // authentication.
-jwt:OutboundJwtAuthProvider outboundJwtAuthProvider = new ({
+jwt:OutboundJwtAuthProvider outboundJwtAuthProvider = new({
     username: "ballerina",
     issuer: "ballerina",
     audience: ["ballerina", "ballerina.org", "ballerina.io"],
@@ -19,35 +19,35 @@ jwt:OutboundJwtAuthProvider outboundJwtAuthProvider = new ({
         keyPassword: "ballerina",
         keyStore: {
             path: config:getAsString("b7a.home") +
-                  "/bre/security/ballerinaKeystore.p12",
+                "/bre/security/ballerinaKeystore.p12",
             password: "ballerina"
         }
     }
 });
 
 // Create a Bearer Auth handler with the created JWT Auth provider.
-http:BearerAuthHandler outboundJwtAuthHandler = new (outboundJwtAuthProvider);
+http:BearerAuthHandler outboundJwtAuthHandler = new(outboundJwtAuthProvider);
 
-http:Client httpEndpoint = new ("https://localhost:9090", {
-    auth: {
-        authHandler: outboundJwtAuthHandler
-    },
-    secureSocket: {
-        trustStore: {
-            path: config:getAsString("b7a.home") +
-                  "/bre/security/ballerinaTruststore.p12",
-            password: "ballerina"
+http:Client httpEndpoint = new("https://localhost:9090", {
+        auth: {
+            authHandler: outboundJwtAuthHandler
+        },
+        secureSocket: {
+            trustStore: {
+                path: config:getAsString("b7a.home") +
+                    "/bre/security/ballerinaTruststore.p12",
+                password: "ballerina"
+            }
         }
-    }
-});
+    });
 
 public function main() {
     // Sends a `GET` request to the specified endpoint.
     var response = httpEndpoint->get("/hello/sayHello");
     if (response is http:Response) {
         var result = response.getTextPayload();
-        log:printInfo(
-                (result is error) ? "Failed to retrieve payload." : result);
+        log:printInfo((result is error) ?
+            "Failed to retrieve payload." : result);
     } else {
         log:printError("Failed to call the endpoint.", <error>response);
     }

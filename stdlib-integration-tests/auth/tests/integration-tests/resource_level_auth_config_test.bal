@@ -38,7 +38,7 @@ public function testAuthSuccessWithResourceLevelConfigs() {
     if (response is http:Response) {
         assertOK(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 }
 
@@ -51,7 +51,7 @@ public function testAuthzFailureWithResourceLevelConfigs() {
     if (response is http:Response) {
         assertForbidden(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 }
 
@@ -64,6 +64,6 @@ public function testAuthFailureWithResourceLevelConfigs() {
     if (response is http:Response) {
         assertUnauthorized(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>(<error>response).message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 }

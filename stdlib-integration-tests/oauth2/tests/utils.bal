@@ -39,7 +39,7 @@ function assertContains(http:Response|http:ClientError res, string text) {
         test:assertFalse(trap <string>payload is error);
         test:assertTrue(stringutils:contains(<string>payload, text));
     } else {
-        error err = <error>res;
+        http:ClientError err = <http:ClientError>res;
         string message = err.message();
         var cause = err.cause();
         if (cause is error) {

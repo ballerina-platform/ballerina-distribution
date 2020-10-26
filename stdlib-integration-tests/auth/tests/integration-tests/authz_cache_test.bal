@@ -38,7 +38,7 @@ public function testAuthzCacheSuccess() {
     if (response is http:Response) {
         assertOK(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + (<error>response).message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 
     // The 2nd request is treated from the positive authz cache.
@@ -48,7 +48,7 @@ public function testAuthzCacheSuccess() {
     if (response is http:Response) {
         assertOK(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + (<error>response).message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 }
 
@@ -61,7 +61,7 @@ public function testAuthzCacheForbidden() {
     if (response is http:Response) {
         assertForbidden(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + (<error>response).message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 
     // The 2nd request is treated from the negative authz cache.
@@ -71,7 +71,7 @@ public function testAuthzCacheForbidden() {
     if (response is http:Response) {
         assertForbidden(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + (<error>response).message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 }
 
@@ -84,7 +84,7 @@ public function testAuthzCacheUnauthorized() {
     if (response is http:Response) {
         assertUnauthorized(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + (<error>response).message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 
     // The 2nd request is treated from the negative authz cache.
@@ -94,6 +94,6 @@ public function testAuthzCacheUnauthorized() {
     if (response is http:Response) {
         assertUnauthorized(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + (<error>response).message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 }

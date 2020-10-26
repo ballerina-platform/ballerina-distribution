@@ -41,5 +41,5 @@ public function testString() {
     checkpanic wsClient->pushText("Hi");
     runtime:sleep(500);
     test:assertEquals(data, "Hi", msg = "Failed pushtext");
-    checkpanic wsClient->close(statusCode = 1000, reason = "Close the connection");
+    var closeResp = wsClient->close(statusCode = 1000, reason = "Close the connection", timeoutInSeconds = 180);
 }
