@@ -1,5 +1,5 @@
 import ballerina/lang.'string as strings;
-import ballerina/log;
+import ballerina/io;
 import ballerinax/nats;
 
 // Creates a NATS connection.
@@ -18,15 +18,14 @@ service demoService on lis {
        // Prints the incoming message in the console.
        string|error messageData = strings:fromBytes(message.getData());
        if (messageData is string) {
-            log:printInfo("Message Received: " + messageData);
+            io:println("Received message: " + messageData);
        } else {
-            log:printError("Error occurred while obtaining message data");
+            io:println("Error occurred while obtaining message data.");
        }
     }
 
     resource function onError(nats:StreamingMessage message,
                               nats:Error errorVal) {
-        error e = errorVal;
-        log:printError("Error occurred: ", e);
+        io:println("Error occurred while consuming the message.");
     }
 }

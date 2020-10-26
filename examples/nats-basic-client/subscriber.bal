@@ -1,4 +1,4 @@
-import ballerina/log;
+import ballerina/io;
 import ballerinax/nats;
 
 // Initializes a connection.
@@ -9,16 +9,16 @@ listener nats:Listener subscription = new (connection);
 
 // Binds the consumer to listen to the messages published to the 'demo' subject.
 @nats:SubscriptionConfig {
-    subject: "demo"
+    subject: "demo.bbe.*"
 }
 service demo on subscription {
 
     resource function onMessage(nats:Message msg, string data) {
         // Prints the incoming message in the console.
-        log:printInfo("Received message : " + data);
+        io:println("Received message: " + data);
     }
 
     resource function onError(nats:Message msg, nats:Error err) {
-        log:printError("Error occurred in data binding", err);
+        io:println("Error occurred while consuming the message.");
     }
 }

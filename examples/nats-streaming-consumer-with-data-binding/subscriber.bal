@@ -1,4 +1,4 @@
-import ballerina/log;
+import ballerina/io;
 import ballerinax/nats;
 
 // Creates a NATS connection.
@@ -17,16 +17,14 @@ service demoService on lis {
         string|error val = data.toJsonString();
         if (val is string) {
             // Prints the incoming message in the console.
-            log:printInfo("Message Received: " + val);
+            io:println("Received message: " + val);
         } else {
-            log:printError("Error occurred during json to string conversion",
-                                                                   err = val);
+            io:println("Error occurred during json to string conversion.");
         }
     }
 
     resource function onError(nats:StreamingMessage message,
                               nats:Error errorVal) {
-        error e = errorVal;
-        log:printError("Error occurred: ", e);
+        io:println("Error occurred while consuming the message.");
     }
 }
