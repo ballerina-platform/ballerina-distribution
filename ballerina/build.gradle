@@ -1378,6 +1378,98 @@ task stopLdapServer() {
     }
 }
 
+task startRabbitmqServer() {
+    doLast {
+        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+            def stdOut = new ByteArrayOutputStream()
+            exec {
+                commandLine 'sh', '-c', "docker ps --filter name=my-rabbit"
+                standardOutput = stdOut
+            }
+            if (!stdOut.toString().contains("my-rabbit")) {
+                println "Starting RabbitMQ server."
+                exec {
+                    commandLine 'sh', '-c', "docker run --rm -d --name my-rabbit -p 15672:15672 -p  5672:5672 rabbitmq:3-management"
+                    standardOutput = stdOut
+                }
+                println stdOut.toString()
+                sleep(5 * 1000)
+            } else {
+                println "RabbitMQ server is already started."
+            }
+        }
+    }
+}
+
+task stopRabbitmqServer() {
+    doLast {
+        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+            def stdOut = new ByteArrayOutputStream()
+            exec {
+                commandLine 'sh', '-c', "docker ps --filter name=my-rabbit"
+                standardOutput = stdOut
+            }
+            if (stdOut.toString().contains("my-rabbit")) {
+                println "Stopping RabbitMQ server."
+                exec {
+                    commandLine 'sh', '-c', "docker stop my-rabbit"
+                    standardOutput = stdOut
+                }
+                println stdOut.toString()
+                sleep(5 * 1000)
+            } else {
+                println "RabbitMQ server is not started."
+            }
+        }
+    }
+}
+
+task startNatsServer() {
+    doLast {
+        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+            def stdOut = new ByteArrayOutputStream()
+            exec {
+                commandLine 'sh', '-c', "docker ps --filter name=my-nats"
+                standardOutput = stdOut
+            }
+            if (!stdOut.toString().contains("my-nats")) {
+                println "Starting NATS Basic server."
+                exec {
+                    commandLine 'sh', '-c', "docker run --rm -d --name my-nats -p 4222:4222 nats:latest"
+                    standardOutput = stdOut
+                }
+                println stdOut.toString()
+                sleep(5 * 1000)
+            } else {
+                println "NATS Basic server is already started."
+            }
+        }
+    }
+}
+
+task stopNatsServer() {
+    doLast {
+        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+            def stdOut = new ByteArrayOutputStream()
+            exec {
+                commandLine 'sh', '-c', "docker ps --filter name=my-nats"
+                standardOutput = stdOut
+            }
+            if (stdOut.toString().contains("my-nats")) {
+                println "Stopping NATS server."
+                exec {
+                    commandLine 'sh', '-c', "docker stop my-nats"
+                    standardOutput = stdOut
+                }
+                println stdOut.toString()
+                sleep(5 * 1000)
+            } else {
+                println "NATS server is not started."
+            }
+        }
+    }
+}
+
 /* Unpack Dependencies */
 unpackJballerinaTools.dependsOn unpackBallerinaJre
 unpackAzFunctionsBalo.dependsOn unpackJballerinaTools
@@ -1409,8 +1501,12 @@ packageDistWindows.dependsOn packageDistMac
 testExamples.dependsOn packageDist
 
 testStdlibs.dependsOn startLdapServer
+testStdlibs.dependsOn startRabbitmqServer
+testStdlibs.dependsOn startNatsServer
 testStdlibs.dependsOn packageDist
 testStdlibs.finalizedBy stopLdapServer
+testStdlibs.finalizedBy stopRabbitmqServer
+testStdlibs.finalizedBy stopNatsServer
 
 /* Delete Temporary Files */
 deleteTemporaryFiles.dependsOn packageDistWindows
