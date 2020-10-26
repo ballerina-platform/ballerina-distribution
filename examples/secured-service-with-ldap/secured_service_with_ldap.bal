@@ -1,7 +1,7 @@
-import ballerina/http;
 import ballerina/config;
-import ballerina/log;
+import ballerina/http;
 import ballerina/ldap;
+import ballerina/log;
 
 // Defines the LDAP connection configurations.
 ldap:LdapConnectionConfig ldapConfig = {
@@ -38,19 +38,19 @@ http:BasicAuthHandler ldapAuthHandler = new(ldapAuthProvider);
 // set to this endpoint using the `authHandlers` attribute.
 // It is optional to override the authentication and authorization at the
 // service and resource levels.
-listener http:Listener ep = new (9090, {
-    auth: {
-        authHandlers: [ldapAuthHandler]
-    },
-    // The secure hello world sample uses HTTPS.
-    secureSocket: {
-        keyStore: {
-            path: config:getAsString("b7a.home") +
-                  "/bre/security/ballerinaKeystore.p12",
-            password: "ballerina"
+listener http:Listener ep = new(9090, {
+        auth: {
+            authHandlers: [ldapAuthHandler]
+        },
+        // The secure hello world sample uses HTTPS.
+        secureSocket: {
+            keyStore: {
+                path: config:getAsString("b7a.home") +
+                    "/bre/security/ballerinaKeystore.p12",
+                password: "ballerina"
+            }
         }
-    }
-});
+    });
 
 service hello on ep {
     resource function sayHello(http:Caller caller, http:Request req) {

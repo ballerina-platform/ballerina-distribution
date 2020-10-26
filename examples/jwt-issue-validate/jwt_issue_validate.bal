@@ -8,7 +8,7 @@ public function main() {
     // Defines the keystore.
     crypto:KeyStore keyStore = {
         path: config:getAsString("b7a.home") +
-              "/bre/security/ballerinaKeystore.p12",
+            "/bre/security/ballerinaKeystore.p12",
         password: "ballerina"
     };
 
@@ -31,7 +31,7 @@ public function main() {
     payload.iss = "ballerina";
     payload.jti = "100078234ba23";
     payload.aud = ["vEwzbcasJVQm1jVYHUHCjhxZ4tYa"];
-    payload.exp = time:currentTime().time/1000 + 600;
+    payload.exp = time:currentTime().time / 1000 + 600;
 
     // Issues a JWT based on the provided header, payload, and keystore config.
     string|jwt:Error jwt = jwt:issueJwt(header, payload, keyStoreConfig);
@@ -39,13 +39,13 @@ public function main() {
         io:println("Issued JWT: ", jwt);
     } else {
         io:println("An error occurred while issuing the JWT: ",
-                    jwt.message());
+            jwt.message());
     }
 
     // Defines the truststore.
     crypto:TrustStore trustStore = {
         path: config:getAsString("b7a.home") +
-              "/bre/security/ballerinaTruststore.p12",
+            "/bre/security/ballerinaTruststore.p12",
         password: "ballerina"
     };
 
@@ -61,13 +61,13 @@ public function main() {
     };
 
     // Validates the created JWT. Signature is validated using the truststore.
-    jwt:JwtPayload|jwt:Error result = jwt:validateJwt(<string>jwt, 
-                                                      validatorConfig1);
+    jwt:JwtPayload|jwt:Error result = jwt:validateJwt(<string>jwt,
+        validatorConfig1);
     if (result is jwt:JwtPayload) {
         io:println("Validated JWT Payload: ", result.toString());
     } else {
         io:println("An error occurred while validating the JWT: ",
-                                                            result.message());
+            result.message());
     }
 
     // Defines the JWT validator configurations with JWKs configurations.
@@ -91,6 +91,6 @@ public function main() {
         io:println("Validated JWT Payload: ", result.toString());
     } else {
         io:println("An error occurred while validating the JWT: ",
-                                                        result.message());
+            result.message());
     }
 }

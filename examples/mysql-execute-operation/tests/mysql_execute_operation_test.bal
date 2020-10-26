@@ -23,7 +23,7 @@ int counter = 0;
     moduleName: "ballerina/io",
     functionName: "println"
 }
-public isolated function mockPrint(any|error... s) {
+public function mockPrint(any|error... s) {
     match counter {
         0|1|6 => {
             outputs[counter] = s[0].toString();

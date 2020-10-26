@@ -16,8 +16,8 @@ service call on new http:Listener(9090) {
     }
     resource function bindCheck(http:Caller caller, http:Request request)
                                                     returns @tainted error? {
-        // The `string` typedesc is being passed to the `get` client remote function as the `targetType`
-        // expecting the payload to be bound to a string value.
+        // The `string` typedesc is being passed to the `get` [client remote function](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Client.html#get)
+        // as the `targetType` expecting the payload to be bound to a string value.
         var result = backendClient->
                         get("/backend/getString", targetType = string);
 
@@ -28,7 +28,8 @@ service call on new http:Listener(9090) {
             return result;
         }
 
-        // If the type test of the error becomes false, it implies that the payload type is string.
+        // If the type test of the error becomes false, it implies that the [payload type](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/types.html#Payload)
+        // is string.
         log:printInfo("String payload: " + <string>result);
 
         // Binding the payload to a JSON type. If an error returned, it will be responded back to the caller.
@@ -61,8 +62,8 @@ service call on new http:Listener(9090) {
     resource function handle500(http:Caller caller, http:Request request) {
         var res = backendClient->post("/backend/get5XX", "want 500", json);
         // When the data binding is expected to happen and if the `post` remote function gets a 5XX response from the
-        // backend, the response will be returned as an `http:RemoteServerError` including the error message and
-        // status code.
+        // backend, the response will be returned as an [http:RemoteServerError](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/errors.html#RemoteServerError)
+        // including the error message and status code.
         if (res is http:RemoteServerError) {
             http:Response resp = new;
             resp.statusCode = res.detail()?.statusCode ?: 500;
@@ -78,8 +79,8 @@ service call on new http:Listener(9090) {
     }
     resource function handle404(http:Caller caller, http:Request request) {
         // When the data binding is expected to happen and if the client remote function gets a 4XX response from the
-        // backend, the response will be returned as an `http:ClientRequestError` including the error message and
-        // status code.
+        // backend, the response will be returned as an [http:ClientRequestError](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/errors.html#ClientRequestError)
+        // including the error message and status code.
         var res = backendClient->post("/backend/err", "want 400", json);
         if (res is http:ClientRequestError) {
             http:Response resp = new;

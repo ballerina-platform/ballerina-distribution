@@ -8,7 +8,7 @@ int counter = 0;
     moduleName: "ballerina/io",
     functionName: "println"
 }
-public isolated function mockPrint(any|error... s) {
+public function mockPrint(any|error... s) {
     if (s[0] is ()) {
         // Cannot convert () to string.
         outputs[counter] = "()";
