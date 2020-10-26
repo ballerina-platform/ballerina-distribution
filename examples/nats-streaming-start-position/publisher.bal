@@ -14,11 +14,13 @@ public function main() returns error? {
         message = io:readln("Message: ");
         if (message != ESCAPE) {
             // Produces a message to the specified subject.
-            string|nats:Error result = publisher->publish("demo", <@untainted>message);
+            string|nats:Error result = publisher->publish("demo",
+                                                        <@untainted>message);
             if (result is nats:Error) {
                 io:println("Error occurred while producing the message.");
             } else {
-                io:println("GUID " + result + " received for the produced message.");
+                io:println("GUID " + result +
+                            " received for the produced message.");
             }
         }
     }
