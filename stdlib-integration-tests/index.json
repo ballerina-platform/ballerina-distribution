@@ -76,6 +76,18 @@
     "path": "websocket"
   },
   {
+    "name": "RabbitMQ standard library",
+    "path": "rabbitmq"
+  },
+  {
+    "name": "NATS standard library",
+    "path": "nats"
+  },
+  {
+    "name": "Kafka standard library",
+    "path": "kafka"
+  },
+  {
     "name": "SQL Connectors",
     "path": "sql"
   },
