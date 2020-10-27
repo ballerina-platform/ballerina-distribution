@@ -32,11 +32,12 @@ ext {
     kubernetesVersion = project.ballerinaVersion
     dataMapperVersion = project.ballerinaVersion
     picocliVersion = "4.0.1"
-    ballerinaCommandVersion = "0.8.9-SNAPSHOT"
+    ballerinaCommandVersion = "0.8.9"
     testngVersion = "6.14.3"
     netLingalaZip4jVersion = "2.3.2"
     commonsIoVersion = "2.6"
     commonsLang3Version = "3.9"
+    c2cVersion = "2.0.0"
 }
 
 allprojects {
@@ -376,15 +377,15 @@ subprojects {
         /* Ballerina lang staging repository */
         maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1614/" }
         /* Docker staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1286/" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1290/" }
         /* Kubernetes staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxkubernetes-1262/" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxkubernetes-1266/" }
         /* AwsLambda staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1159/" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1163/" }
         /* Datamapper staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdatamapper-1008/" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdatamapper-1009/" }
         /* AzureFunctions staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxazurefunctions-1010" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxazurefunctions-1014" }
     }
 
     configurations {
@@ -475,7 +476,7 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:grpc-ballerina:${stdlibGrpcVersion}"
         ballerinaStdLibs "org.ballerinalang:module-ballerina-openapi:${project.ballerinaVersion}"
 
-        ballerinaC2cLibs "io.ballerina:c2c-ballerina:${ballerinaVersion}"
+        ballerinaC2cLibs "io.ballerina:c2c-ballerina:${c2cVersion}"
 
         balCommand "org.ballerinalang:ballerina-command-distribution:${ballerinaCommandVersion}@zip"
     }
