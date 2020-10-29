@@ -2,20 +2,7 @@
 [![Ballerina Distribution Build](https://github.com/ballerina-platform/ballerina-distribution/workflows/Ballerina%20Distribution%20Build/badge.svg)](https://github.com/ballerina-platform/ballerina-distribution/actions?query=workflow%3A%22Ballerina+Distribution+Build%22)
 [![Daily build](https://github.com/ballerina-platform/ballerina-distribution/workflows/Daily%20build/badge.svg)](https://github.com/ballerina-platform/ballerina-distribution/actions?query=workflow%3A%22Daily+build%22)
 
-The Ballerina distribution includes both platform and runtime components.
-
-## About Ballerina
-
-Ballerina makes it easy to write microservices that integrate APIs.
-
-#### Integration Syntax
-A compiled, transactional, statically and strongly typed programming language with textual and graphical syntaxes. Ballerina incorporates fundamental concepts of distributed system integration and offers a type safe, concurrent environment to implement microservices.
-
-#### Networked Type System
-A type system that embraces network payload variability with primitive, object, union, and tuple types.
-
-#### Concurrency
-An execution model composed of lightweight parallel worker units that are non-blocking where no function can lock an executing thread manifesting sequence concurrency.
+The Ballerina distribution repository builds the final Ballerina distributions. It combines the Ballerina runtime with standard libraries and language extensions.
 
 ## Table of contents
 
@@ -31,14 +18,13 @@ You can use one of the following options to try out Ballerina.
 
 * [Getting Started](https://ballerina.io/learn/getting-started/)
 * [Quick Tour](https://ballerina.io/learn/quick-tour/)
-* [Ballerina by Example](https://ballerina.io/learn/by-example/) 
-* [Ballerina by Guide](https://ballerina.io/learn/by-guide/)
+* [Ballerina by Example](https://ballerina.io/learn/by-example/)
 
 ## Download and install
 
 ### Download the binary
 
-You can download the Ballerina distribution at http://ballerina.io.
+You can download the Ballerina distribution at http://ballerina.io/downloads.
 
 ### Install from source
 
@@ -46,23 +32,21 @@ Alternatively, you can install Ballerina from the source using the following ins
 
 #### Prerequisites
 
-* [Maven 3.5.0 or later](https://maven.apache.org/download.cgi)
-* [Node (v8.9.x or latest LTS release) + npm (v5.6.0 or later)](https://nodejs.org/en/download/)
-* [Docker](https://www.docker.com/get-docker)
+* JDK11 ([Adopt OpenJDK11](https://adoptopenjdk.net/) or any other OpenJDK distribution)
 
 #### Building the source
 
 1. Clone this repository using the following command.
 
     ```bash
-    git clone --recursive https://github.com/ballerina-platform/ballerina-lang
+    git clone https://github.com/ballerina-platform/ballerina-distribution
     ```
 2. This repository is depending on Github packages. You need to have a personal access token with read package permissions. Then you need to set following environment variables.
     ```bash
     export packageUser=<Your github username>
     export packagePAT=<Your personal access token>
     ```
-3. Run the Maven command ``mvn -s settings.xml clean install`` from the repository root directory.
+3. Run the Gradle build command ``./gradlew build`` from the repository root directory.
 4. Extract the Ballerina distribution created at `ballerina/target/ballerina-<version>-SNAPSHOT.zip`.
 
 ## Contributing to Ballerina
