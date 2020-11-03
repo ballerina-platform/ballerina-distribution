@@ -1309,6 +1309,10 @@ task testStdlibs() {
              if (stdlibTest == "auth" || stdlibTest == "jwt") {
                  additionalBuildParams = "--b7a.config.file=${baseBuildPath}/StdlibTestProject/src/${stdlibTest}/tests/resources/datafiles/users.toml"
              }
+             
+             if (stdlibTest == "config-api-test") {
+                additionalBuildParams = "--user.name=waruna"
+             }
 
              if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                  //TODO: Need to verify with windows
