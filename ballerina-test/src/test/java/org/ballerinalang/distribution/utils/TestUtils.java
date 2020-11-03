@@ -34,7 +34,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
@@ -89,6 +88,23 @@ public class TestUtils {
     }
 
     /**
+     * Execute ballerina build command with openAPI annotation.
+     *
+     * @param distributionName The name of the distribution.
+     * @param sourceDirectory  The directory where the sources files are location.
+     * @param args             The arguments to be passed to the build command.
+     * @return inputream with log outputs
+     * @throws IOException          Error executing build command.
+     * @throws InterruptedException Interrupted error executing build command.
+     */
+    public static InputStream executeOpenapiBuild(String distributionName, Path sourceDirectory, List<String> args) throws
+            IOException, InterruptedException {
+        args.add(0, "build");
+        Process process = getProcessBuilderResults(distributionName, sourceDirectory, args);
+        return process.getErrorStream();
+    }
+
+    /**
      * Execute ballerina openapi command.
      *
      * @param distributionName The name of the distribution.
@@ -101,16 +117,32 @@ public class TestUtils {
     public static boolean executeOpenAPI(String distributionName, Path sourceDirectory, List<String> args) throws
             IOException, InterruptedException {
         args.add(0, "openapi");
-        System.out.println(distributionName);
+        Process process = getProcessBuilderResults(distributionName, sourceDirectory, args);
+        int exitCode = process.waitFor();
+        logOutput(process.getInputStream());
+        logOutput(process.getErrorStream());
+        return exitCode == 0;
+    }
+
+    /**
+     *  Get Process from given arguments.
+     * @param distributionName The name of the distribution.
+     * @param sourceDirectory  The directory where the sources files are location.
+     * @param args             The arguments to be passed to the build command.
+     * @return process
+     * @throws IOException          Error executing build command.
+     * @throws InterruptedException Interrupted error executing build command.
+     */
+    public static Process getProcessBuilderResults(String distributionName, Path sourceDirectory, List<String> args)
+            throws IOException, InterruptedException {
+
         args.add(0, TEST_DISTRIBUTION_PATH.resolve(distributionName).resolve("bin").resolve("ballerina").toString());
         OUT.println("Executing: " + StringUtils.join(args, ' '));
         ProcessBuilder pb = new ProcessBuilder(args);
         pb.directory(sourceDirectory.toFile());
         Process process = pb.start();
         int exitCode = process.waitFor();
-        logOutput(process.getInputStream());
-        logOutput(process.getErrorStream());
-        return exitCode == 0;
+        return process;
     }
     
     /**
@@ -166,14 +198,13 @@ public class TestUtils {
     public static void deleteGeneratedFiles(String generatedFileName) {
         Path resourcesPath = RESOURCES_PATH.resolve("openapi");
         if (Files.exists(resourcesPath)) {
-            List<File> listFiles = Arrays.asList(new File(String.valueOf(resourcesPath)).listFiles());
-            if (listFiles != null) {
-                for (File existsFile: listFiles) {
-                    String fileName = existsFile.getName();
-                    if (fileName.equals(generatedFileName) || fileName.equals(generatedFileName+"-service.bal") ||
-                            fileName.equals(generatedFileName+"-client.bal") || fileName.equals("schema.bal")) {
-                        existsFile.delete();
-                    }
+            List<File> listFiles = Arrays.asList(
+                    Objects.requireNonNull(new File(String.valueOf(resourcesPath)).listFiles()));
+            for (File existsFile: listFiles) {
+                String fileName = existsFile.getName();
+                if (fileName.equals(generatedFileName) || fileName.equals(generatedFileName+"-service.bal") ||
+                        fileName.equals(generatedFileName+"-client.bal") || fileName.equals("schema.bal")) {
+                    existsFile.delete();
                 }
             }
         }
