@@ -18,7 +18,6 @@
 
 package org.ballerinalang.distribution.test;
 
-import org.apache.commons.io.FileUtils;
 import org.ballerinalang.distribution.utils.TestUtils;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -57,7 +56,7 @@ public class OpenAPIArtifactBuildTest {
         }
     }
 
-    @Test(dataProvider = "distribution-provider")
+    @Test(dataProvider = "distribution-provider", description = "check openapi to ballerina generator command")
     public void buildOpenAPIToBallerinaTest(String distributionFileName) throws IOException, InterruptedException {
         Path testResource = Paths.get("/openapi");
         List<String> buildArgs = new LinkedList<>();
@@ -71,7 +70,24 @@ public class OpenAPIArtifactBuildTest {
         TestUtils.deleteGeneratedFiles("petstore");
     }
 
-    @Test(dataProvider = "distribution-provider")
+    @Test(dataProvider = "distribution-provider", description = "check openapi to ballerina generator command with " +
+            "service file only.")
+    public void buildOpenAPIToBallerinaServiceFileGenerationTest(String distributionFileName) throws IOException,
+            InterruptedException {
+        Path testResource = Paths.get("/openapi");
+        List<String> buildArgs = new LinkedList<>();
+        buildArgs.add("-i");
+        buildArgs.add("petstore.yaml");
+        buildArgs.add("--mode");
+        buildArgs.add("service");
+        boolean successful = TestUtils.executeOpenAPI(distributionFileName, TestUtils.getResource(testResource),
+                buildArgs);
+        Assert.assertTrue(successful);
+        Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("petstore-service.bal")));
+        TestUtils.deleteGeneratedFiles("petstore");
+    }
+
+    @Test(dataProvider = "distribution-provider", description = "check ballerina to openapi generator command")
     public void buildBallerinaToOpenAPITest(String distributionFileName) throws IOException, InterruptedException {
         Path testResource = Paths.get("/openapi");
         List<String> buildArgs = new LinkedList<>();
