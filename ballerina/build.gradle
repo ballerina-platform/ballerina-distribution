@@ -1326,6 +1326,85 @@ task testStdlibs() {
      }
 }
 
+task testDevTools() {
+    def jBallerinaPack = "${project.rootDir}/ballerina/build/target/extracted-distributions/jballerina-tools-zip"
+    def baseBuildPath = "${project.rootDir}/ballerina/build/bbe-pack"
+    def distPath = "${baseBuildPath}/jballerina-tools-${ballerinaVersion}"
+    def devtoolsTestList = []
+
+    PatternSet patternSet = new PatternSet();
+    patternSet.exclude("**/.ballerina/**");
+    patternSet.exclude("**/Ballerina.toml");
+    patternSet.exclude("**/Ballerina.lock");
+    patternSet.exclude("**/ballerina-internal.log")
+    def ignoreList = []
+
+    inputs.files(files("${distPath}/devtools-integration-tests/testerina-tests").asFileTree.matching(patternSet))
+
+    doFirst {
+        // Copy compiled pack to baseBuild temp directory
+        copy {
+            from jBallerinaPack
+            into baseBuildPath
+        }
+
+        //Initialize Ballerina project
+        exec {
+             if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+                 workingDir "${baseBuildPath}"
+                 commandLine 'cmd', '/c', "jballerina-tools-${ballerinaVersion}/bin/ballerina.bat", 'new', 'DevToolsTestProject'
+             } else {
+                 workingDir "${baseBuildPath}"
+                 commandLine 'sh', '-c', "jballerina-tools-${ballerinaVersion}/bin/ballerina new DevToolsTestProject"
+             }
+        }
+        
+        // Copy modules 
+        // TODO : This includes testerina modules only. If other ones need to be included a separate path will ahve to be given. Discuss this. 
+        def src = "${project.rootDir}/devtools-integration-tests/testerina-tests/"
+        def dis = "${baseBuildPath}/DevToolsTestProject/src/"
+        copy {
+            from(src)
+            into dis
+        }
+
+        def inputFile = new File("${baseBuildPath}/DevToolsTestProject/src/index.json")
+        def devtoolsTests = new JsonSlurper().parseText(inputFile.text)
+        
+        devtoolsTests.each { devtoolsTest ->
+            def folder = new File("${baseBuildPath}/DevToolsTestProject/src/${devtoolsTest.path}")
+            if (folder.exists()) {
+                devtoolsTestList.push("$devtoolsTest.path")
+            }
+        }
+    }
+
+    doLast {
+        ignoreList.each { String elements ->
+            devtoolsTestList.remove("$elements")
+        }
+
+        devtoolsTestList.each { String devtoolsTest ->
+            def additionalBuildParams = ""
+            if (devtoolsTest == "config-api-test") {
+                additionalBuildParams = "--user.name=waruna"
+            }
+
+            if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+                 exec {
+                     workingDir "${buildDir}/DevToolsTestProject"
+                     commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat build -c --experimental ${devtoolsTest} --b7a.home=${distPath} ${additionalBuildParams}"
+                 }
+             } else {
+                 exec {
+                     workingDir "${baseBuildPath}/DevToolsTestProject"
+                     commandLine 'sh', '-c', "${distPath}/bin/ballerina build -c --experimental ${devtoolsTest} --b7a.home=${distPath} ${additionalBuildParams}"
+                 }
+             }
+        }
+    }
+}
+
 task startLdapServer() {
     doLast {
         if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
@@ -1508,8 +1587,11 @@ testStdlibs.finalizedBy stopLdapServer
 testStdlibs.finalizedBy stopRabbitmqServer
 testStdlibs.finalizedBy stopNatsServer
 
+testDevTools.dependsOn packageDist
+
 /* Delete Temporary Files */
 deleteTemporaryFiles.dependsOn packageDistWindows
 deleteTemporaryFiles.dependsOn testExamples
 deleteTemporaryFiles.dependsOn testStdlibs
+deleteTemporaryFiles.dependsOn testDevTools
 build.dependsOn deleteTemporaryFiles

@@ -1,0 +1,11 @@
+[
+    {
+        "name": "Config API test",
+        "path": "config-api-test"
+    },
+    {
+        "name": "Testerina Services test",
+        "path": "services-test"
+    } 
+]
+  
