@@ -33,7 +33,7 @@ import static org.ballerinalang.distribution.utils.TestUtils.SHORT_VERSION;
 import static org.ballerinalang.distribution.utils.TestUtils.TEST_DISTRIBUTION_PATH;
 
 /**
- * Check if necessary files exists to build in the distribution.
+ * Check if necessary openAPI files exists to build in the distribution.
  */
 public class OpenAPIDistributionArtifactCheck {
     private static final String DIST_NAME = "ballerina-" + SHORT_VERSION;

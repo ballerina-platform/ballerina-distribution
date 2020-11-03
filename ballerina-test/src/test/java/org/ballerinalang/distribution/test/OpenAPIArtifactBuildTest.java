@@ -44,7 +44,7 @@ import static org.ballerinalang.distribution.utils.TestUtils.MAVEN_VERSION;
 import static org.ballerinalang.distribution.utils.TestUtils.RESOURCES_PATH;
 
 /**
- * Tests related to artifact generation.
+ * OpenAPI Tests related to artifact generation.
  */
 public class OpenAPIArtifactBuildTest {
     public static final String WHITESPACE_PATTERN = "\\s+";
