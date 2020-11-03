@@ -146,7 +146,7 @@ public class OpenAPIArtifactBuildTest {
         TestUtils.deleteGeneratedFiles("hello-openapi.yaml");
     }
 
-    //OpenAPI integrations tests
+    //OpenAPI integration tests
     @Test(dataProvider = "distribution-provider", description = "Test for openapi validator off")
     public void buildOpenAPIValidatorTest(String distributionFileName) throws IOException, InterruptedException {
 
