@@ -1311,7 +1311,7 @@ task testStdlibs() {
              }
              
              if (stdlibTest == "config") {
-                additionalBuildParams = "--user.name=waruna"
+                additionalBuildParams = "--user.name=ballerina-user"
              }
 
              if (Os.isFamily(Os.FAMILY_WINDOWS)) {
@@ -1389,19 +1389,16 @@ task testDevTools() {
 
         devtoolsTestList.each { String devtoolsTest ->
             def additionalBuildParams = ""
-            if (devtoolsTest == "config-api-test") {
-                additionalBuildParams = "--user.name=waruna"
-            }
 
             if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                  exec {
                      workingDir "${buildDir}/DevToolsTestProject"
-                     commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat build -c --experimental ${devtoolsTest} --b7a.home=${distPath} ${additionalBuildParams}"
+                     commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat build -c ${devtoolsTest} --b7a.home=${distPath} ${additionalBuildParams}"
                  }
              } else {
                  exec {
                      workingDir "${baseBuildPath}/DevToolsTestProject"
-                     commandLine 'sh', '-c', "${distPath}/bin/ballerina build -c --experimental ${devtoolsTest} --b7a.home=${distPath} ${additionalBuildParams}"
+                     commandLine 'sh', '-c', "${distPath}/bin/ballerina build -c ${devtoolsTest} --b7a.home=${distPath} ${additionalBuildParams}"
                  }
              }
         }

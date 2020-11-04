@@ -22,6 +22,6 @@ import ballerina/config;
 }
 function test1 () {
      string userName = config:getAsString("user.name");
-     test:assertEquals(userName, "waruna");
+     test:assertEquals(userName, "ballerina-user");
 }
 
