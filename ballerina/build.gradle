@@ -1310,7 +1310,7 @@ task testStdlibs() {
                  additionalBuildParams = "--b7a.config.file=${baseBuildPath}/StdlibTestProject/src/${stdlibTest}/tests/resources/datafiles/users.toml"
              }
              
-             if (stdlibTest == "config-api-test") {
+             if (stdlibTest == "config") {
                 additionalBuildParams = "--user.name=waruna"
              }
 
@@ -1343,7 +1343,7 @@ task testDevTools() {
     patternSet.exclude("**/ballerina-internal.log")
     def ignoreList = []
 
-    inputs.files(files("${distPath}/devtools-integration-tests/testerina-tests").asFileTree.matching(patternSet))
+    inputs.files(files("${distPath}/devtools-integration-tests").asFileTree.matching(patternSet))
 
     doFirst {
         // Copy compiled pack to baseBuild temp directory
@@ -1363,9 +1363,8 @@ task testDevTools() {
              }
         }
         
-        // Copy modules 
-        // TODO : This includes testerina modules only. If other ones need to be included a separate path will ahve to be given. Discuss this. 
-        def src = "${project.rootDir}/devtools-integration-tests/testerina-tests/"
+        // Copy modules
+        def src = "${project.rootDir}/devtools-integration-tests/"
         def dis = "${baseBuildPath}/DevToolsTestProject/src/"
         copy {
             from(src)
