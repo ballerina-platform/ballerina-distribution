@@ -909,7 +909,10 @@ task testExamples() {
         'counter-metrics',
         'tracing',
         'openapi-to-ballerina',
-        'taint-checking' // Should not compile
+        'taint-checking', // Should not compile
+        'task-service-appointment',
+        'task-scheduler-appointment',
+        'user-defined-error'
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
