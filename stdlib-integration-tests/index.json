@@ -94,5 +94,9 @@
   {
     "name": "Websub start hub and register topic",
     "path": "websub"
+  },
+  {
+    "name": "Config standard library",
+    "path": "config"
   }
 ]
