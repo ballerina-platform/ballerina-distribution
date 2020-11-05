@@ -910,8 +910,6 @@ task testExamples() {
         'tracing',
         'openapi-to-ballerina',
         'taint-checking', // Should not compile
-        'websub-service-integration-sample',
-        'websub-internal-hub-sample',
         'task-service-appointment',
         'task-scheduler-appointment',
         'user-defined-error'
