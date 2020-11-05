@@ -1,6 +1,6 @@
 [
     {
-        "name": "Testerina Object mocking test",
-        "path": "testerina-objectmocking-test"
-    } 
+        "name": "Testerina Integration Tests",
+        "path": "testerina-integration-tests"
+    }
 ]

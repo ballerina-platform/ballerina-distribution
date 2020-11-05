@@ -20,7 +20,7 @@ import ballerina/config;
 
 @test:Config{
 }
-function test1 () {
+function readConfigTest () {
      string userName = config:getAsString("user.name");
      test:assertEquals(userName, "ballerina-user");
 }
