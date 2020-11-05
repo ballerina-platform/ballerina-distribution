@@ -22,7 +22,6 @@ import org.ballerinalang.distribution.utils.TestUtils;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.BufferedReader;
@@ -56,7 +55,7 @@ public class OpenAPIArtifactBuildTest {
         TestUtils.prepareDistribution(DISTRIBUTIONS_DIR.resolve(distributionFileName + ".zip"));
     }
 
-    @Test( description = "Check openapi to ballerina generator command")
+    @Test( description = "Check openapi to ballerina generator command", enabled = false)
     public void buildOpenAPIToBallerinaTest() throws IOException, InterruptedException {
         Path testResource = Paths.get("/openapi");
         List<String> buildArgs = new LinkedList<>();
@@ -70,7 +69,7 @@ public class OpenAPIArtifactBuildTest {
         TestUtils.deleteGeneratedFiles("petstore");
     }
 
-    @Test(description = "Check openapi to ballerina generator command with service file only.")
+    @Test(description = "Check openapi to ballerina generator command with service file only.", enabled = false)
     public void buildOpenAPIToBallerinaServiceFileGenerationTest() throws IOException,
             InterruptedException {
         Path testResource = Paths.get("/openapi");
@@ -86,7 +85,7 @@ public class OpenAPIArtifactBuildTest {
         TestUtils.deleteGeneratedFiles("petstore");
     }
 
-    @Test(description = "Check openapi to ballerina generator command for given tags")
+    @Test(description = "Check openapi to ballerina generator command for given tags" , enabled = false)
     public void buildOpenAPIToBallerinaWithFilterTagsTest() throws IOException,
             InterruptedException {
         Path testResource = Paths.get("/openapi");
@@ -123,7 +122,7 @@ public class OpenAPIArtifactBuildTest {
         }
     }
 
-    @Test(description = "Check ballerina to openapi generator command")
+    @Test(description = "Check ballerina to openapi generator command",enabled = false)
     public void buildBallerinaToOpenAPITest() throws IOException, InterruptedException {
         Path testResource = Paths.get("/openapi");
         List<String> buildArgs = new LinkedList<>();
@@ -137,7 +136,7 @@ public class OpenAPIArtifactBuildTest {
     }
 
     //OpenAPI integration tests
-    @Test(description = "Test for openapi validator off")
+    @Test(description = "Test for openapi validator off", enabled = false)
     public void buildOpenAPIValidatorTest() throws IOException, InterruptedException {
 
         Path testResource = Paths.get("/openapi/integration-tests");
@@ -163,7 +162,7 @@ public class OpenAPIArtifactBuildTest {
         }
     }
 
-    @Test(description = "Tests for openapi validator on")
+    @Test(description = "Tests for openapi validator on",enabled = false)
     public void buildOpenAPIValidatorONTest() throws IOException, InterruptedException {
 
         Path testResource = Paths.get("/openapi/integration-tests");
