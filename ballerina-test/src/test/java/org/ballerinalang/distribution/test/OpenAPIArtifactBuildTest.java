@@ -158,8 +158,7 @@ public class OpenAPIArtifactBuildTest {
             if (generatedLog.contains(msg)) {
                 Assert.assertTrue(true);
             } else {
-                System.out.println(generatedLog);
-//                Assert.fail("OpenAPIValidator Off execution fail.");
+                Assert.fail("OpenAPIValidator Off execution fail.");
             }
         }
     }
