@@ -1419,7 +1419,7 @@ task testDevTools() {
 
                 if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                     exec {
-                        workingDir "${buildDir}/${devtoolsProject}"
+                        workingDir "${baseBuildPath}/${devtoolsProject}"
                         commandLine 'cmd', '/c', 
                         "${distPath}/bin/ballerina.bat test ${projectModule} --b7a.home=${distPath} ${additionalBuildParams}"
                     }
