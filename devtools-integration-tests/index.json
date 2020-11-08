@@ -4,5 +4,41 @@
         "path": "testerina-integration-tests",
         "module": "testerina-object-mocking-test",
         "cmd": "test"
+    },
+    {
+        "name": "Packerina Command Tests",
+        "path": "packerina-cmd-test",
+        "module": "module_push",
+        "cmd": "build"
+    },
+    {
+        "name": "Packerina Command Tests",
+        "path": "packerina-cmd-test",
+        "module": "module_pull",
+        "cmd": "run"
+    },
+    {
+        "name": "Packerina Command Tests",
+        "path": "packerina-cmd-test",
+        "module": "utils",
+        "cmd": "build"
+    },
+    {
+        "name": "Packerina Command Tests",
+        "path": "packerina-balo-path-test",
+        "module": "foo",
+        "cmd": "build"
+    },
+    {
+        "name": "Packerina Path Tests",
+        "path": "packerina-balo-path-test",
+        "module": "module_using_dependency",
+        "cmd": "run"
+    },
+    {
+        "name": "Packerina Path Tests",
+        "path": "packerina-balo-path-test",
+        "module": "module_with_dependency",
+        "cmd": "run"
     }
 ]
