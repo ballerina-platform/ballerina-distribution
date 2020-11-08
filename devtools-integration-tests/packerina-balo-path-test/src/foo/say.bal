@@ -4,4 +4,3 @@ public function say() returns string {
 
 public function main() {
 }
-
