@@ -81,6 +81,7 @@ function insertRecord(mysql:Client sqlClient) {
     if (retCall is sql:ProcedureCallResult) {
         io:println("Call stored procedure `InsertStudent` is successful : ", 
                 retCall.executionResult);
+        _ = retCall.close();
     } else {
         io:println("Error occurred while invoking `InsertStudent`.");
     }
@@ -104,6 +105,7 @@ function getCount(mysql:Client sqlClient) {
         io:println("Call stored procedure `GetCount` is successful.");
         io:println("Age of the student with id '1' : ", id.get(int));
         io:println("Total student count: ", totalCount.get(int));
+        _ = retCall.close();
     } else {
         io:println("Error occurred while invoking `GetCount`.");
     }
@@ -139,7 +141,7 @@ function checkData(mysql:Client sqlClient) {
         } else {
             io:println("Empty result is returned from the `GetStudents`.");
         }
-
+        _ = retCall.close();
     } else {
         io:println("Error occurred while invoking `GetStudents`.");
     }
