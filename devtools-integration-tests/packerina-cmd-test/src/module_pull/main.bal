@@ -1,11 +1,11 @@
 import ballerina/io;
-import suganya/calc;
+import suganya/calculator;
 
 # Prints `Hello World`.
 
 public function main() {
-    io:println(calc:add(5, 4));
-    io:println(calc:substract(10, 5));
-    io:println(calc:multiply(15, 4));
-    io:println(calc:divide(15, 5));
+    io:println(calculator:add(5, 4));
+    io:println(calculator:substract(10, 5));
+    io:println(calculator:multiply(15, 4));
+    io:println(calculator:divide(15, 5));
 }

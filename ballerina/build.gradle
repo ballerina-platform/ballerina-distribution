@@ -1358,6 +1358,13 @@ task testDevTools() {
             from(devToolsProjectSrc)
             into baseBuildPath
         }
+
+        def connectorPath = "${project.rootDir}/devtools-integration-tests/resources/libs"
+        def distLibDir = "${distPath}/bre/lib"
+        copy {
+            from(connectorPath)
+            into distLibDir
+        }
     }
 
     doLast {
@@ -1366,7 +1373,13 @@ task testDevTools() {
         def devtoolsProjects = new JsonSlurper().parseText(inputFile.text)
 
         devtoolsProjects.each { devtoolsProject ->
-            def folder = new File("${baseBuildPath}/${devtoolsProject.path}/src/${devtoolsProject.module}")
+            def folder
+            if ("${devtoolsProject.path}" == "packerina-single-file-test") {
+                folder = new File("${baseBuildPath}/${devtoolsProject.path}/${devtoolsProject.module}")
+            } else {
+                folder = new File("${baseBuildPath}/${devtoolsProject.path}/src/${devtoolsProject.module}")
+            }
+
             if (folder.exists()) {
 
                 def additionalBuildParams = ""
@@ -1543,6 +1556,52 @@ task stopNatsServer() {
     }
 }
 
+ task startMySqlServer() {
+     doLast {
+         if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+             def stdOut = new ByteArrayOutputStream()
+             exec {
+                 commandLine 'sh', '-c', "docker ps --filter name=my-sql-test"
+                 standardOutput = stdOut
+             }
+             if (!stdOut.toString().contains("my-sql-test")) {
+                 println "Starting MySQL server."
+                 exec {
+                     commandLine 'sh', '-c', "docker run --rm -d --name my-sql-test3 --env MYSQL_ROOT_PASSWORD=test123 -p 3309:3309 mysql/mysql-server"
+                     standardOutput = stdOut
+                 }
+                 println stdOut.toString()
+                 sleep(5 * 1000)
+             } else {
+                 println "MySQL server is already started."
+             }
+         }
+     }
+ }
+
+ task stopMySqlServer() {
+     doLast {
+         if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+             def stdOut = new ByteArrayOutputStream()
+             exec {
+                 commandLine 'sh', '-c', "docker ps --filter name=my-sql-test"
+                 standardOutput = stdOut
+             }
+             if (stdOut.toString().contains("my-sql-test")) {
+                 println "Stopping MySQL server."
+                 exec {
+                     commandLine 'sh', '-c', "docker stop my-sql-test"
+                     standardOutput = stdOut
+                 }
+                 println stdOut.toString()
+                 sleep(5 * 1000)
+             } else {
+                 println "MySQL server is not started."
+             }
+         }
+     }
+ }
+
 /* Unpack Dependencies */
 unpackJballerinaTools.dependsOn unpackBallerinaJre
 unpackAzFunctionsBalo.dependsOn unpackJballerinaTools
@@ -1582,6 +1641,8 @@ testStdlibs.finalizedBy stopRabbitmqServer
 testStdlibs.finalizedBy stopNatsServer
 
 testDevTools.dependsOn packageDist
+testDevTools.dependsOn startMySqlServer
+testStdlibs.finalizedBy stopMySqlServer
 
 /* Delete Temporary Files */
 deleteTemporaryFiles.dependsOn packageDistWindows
