@@ -44,4 +44,4 @@ jobs:
         env:
           packageUser: ${{ github.actor }}
           packagePAT: ${{ secrets.GITHUB_TOKEN }}
-        run: ./gradlew.bat clean build -x :ballerina:testStdlibs --stacktrace --scan --console=plain --no-daemon -x :ballerina:testExamples
+        run: ./gradlew.bat clean build --stacktrace --scan --console=plain --no-daemon
