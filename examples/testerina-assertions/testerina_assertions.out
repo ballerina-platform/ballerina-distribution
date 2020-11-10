@@ -12,12 +12,16 @@ Running tests
         [pass] testAssertFloatEquals
         [pass] testAssertStringEquals
         [pass] testAssertJsonEquals
+        [pass] testAssertXmlEquals
         [pass] testAssertBooleanEquals
         [pass] testAssertStringArrayEquals
         [pass] testAssertIntArrayEquals
         [pass] testAssertFloatArrayEquals
         [pass] testAssertNotEqualsString
         [pass] testAssertNotEqualsJson
+        [pass] testAssertNotEqualsXml
+        [pass] testAssertExactEqualsObject
+        [pass] testAssertNotExactEqualsObject
         [pass] testAssertTrue
         [pass] testAssertFalse
         [pass] testAssertFail
