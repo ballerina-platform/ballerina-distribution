@@ -11,6 +11,11 @@
     },
     {
         "path": "packerina-cmd-test",
+        "module": "module_push",
+        "cmd": "push"
+    },
+    {
+        "path": "packerina-cmd-test",
         "module": "module_pull",
         "cmd": "run"
     },

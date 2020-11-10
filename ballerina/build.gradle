@@ -1365,20 +1365,43 @@ task testDevTools() {
             from(connectorPath)
             into distLibDir
         }
+
+        def stdOut = new ByteArrayOutputStream()
+        if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+            exec {
+                workingDir "${baseBuildPath}/resources"
+                commandLine 'cmd', "createSettingsToml.bat"
+                standardOutput = stdOut
+            }
+        } else {
+            exec {
+                workingDir "${baseBuildPath}/resources"
+                commandLine 'sh', "createSettingsToml.sh"
+                standardOutput = stdOut
+            }
+        }
     }
 
     doLast {
         // Read the projects from the index.json
         def inputFile = new File("${baseBuildPath}/index.json")
         def devtoolsProjects = new JsonSlurper().parseText(inputFile.text)
+        Random random = new Random()
+        def randomNumber = random.nextInt(10 ** 10)
 
         devtoolsProjects.each { devtoolsProject ->
             def folder
+            def  moduleName = "${devtoolsProject.module}"
             if ("${devtoolsProject.path}" == "packerina-single-file-test") {
                 folder = new File("${baseBuildPath}/${devtoolsProject.path}/${devtoolsProject.module}")
+            } else if ("${devtoolsProject.path}" == "packerina-cmd-test" && "${devtoolsProject.module}" == "module_push") {
+                file("${baseBuildPath}/${devtoolsProject.path}/src/${devtoolsProject.module}").renameTo(file("${baseBuildPath}/${devtoolsProject.path}/src/${devtoolsProject.module}${randomNumber}"))
+                folder = new File("${baseBuildPath}/${devtoolsProject.path}/src/${devtoolsProject.module}${randomNumber}")
+                moduleName = "${devtoolsProject.module}${randomNumber}"
             } else {
                 folder = new File("${baseBuildPath}/${devtoolsProject.path}/src/${devtoolsProject.module}")
             }
+            println "${moduleName}"
 
             if (folder.exists()) {
 
@@ -1386,11 +1409,11 @@ task testDevTools() {
                 def windowsBalCmd = ""
                 def otherBalCmd = ""
                 if ("${devtoolsProject.cmd}" == "push") {
-                    windowsBalCmd = "${distPath}/bin/ballerina.bat ${devtoolsProject.cmd} ${devtoolsProject.module}"
-                    otherBalCmd = "${distPath}/bin/ballerina ${devtoolsProject.cmd} ${devtoolsProject.module}"
+                    windowsBalCmd = "${distPath}/bin/ballerina.bat ${devtoolsProject.cmd} ${moduleName}"
+                    otherBalCmd = "${distPath}/bin/ballerina ${devtoolsProject.cmd} ${moduleName}"
                 } else {
-                    windowsBalCmd = "${distPath}/bin/ballerina.bat ${devtoolsProject.cmd} ${devtoolsProject.module} --b7a.home=${distPath} ${additionalBuildParams}"
-                    otherBalCmd =  "${distPath}/bin/ballerina ${devtoolsProject.cmd} ${devtoolsProject.module} --b7a.home=${distPath} ${additionalBuildParams}"
+                    windowsBalCmd = "${distPath}/bin/ballerina.bat ${devtoolsProject.cmd} ${moduleName} --b7a.home=${distPath} ${additionalBuildParams}"
+                    otherBalCmd =  "${distPath}/bin/ballerina ${devtoolsProject.cmd} ${moduleName} --b7a.home=${distPath} ${additionalBuildParams}"
 
                 }
 
