@@ -27,7 +27,7 @@ type Customer record {|
 |};
 
 function initializeTable() returns sql:Error? {
-    mysql:Client mysqlClient = check new (user = dbUser, password = dbPassword);
+    mysql:Client mysqlClient = check new (host ="0.0.0.0", user = dbUser, password = dbPassword);
     sql:ExecutionResult result = check mysqlClient->execute("CREATE DATABASE IF NOT EXISTS MYSQL_TEST_DB");
     result = check mysqlClient->execute("DROP TABLE IF EXISTS MYSQL_TEST_DB.Customers");
     result = check mysqlClient->execute("CREATE TABLE IF NOT EXISTS MYSQL_TEST_DB.Customers(customerId INTEGER " +
@@ -46,8 +46,7 @@ public function main() {
         io:println("Sample data initialization failed!");
         io:println(err);
     } else {
-        mysql:Client|sql:Error mysqlClient = new (user = dbUser,
-            password = dbPassword, database = "MYSQL_TEST_DB");
+        mysql:Client|sql:Error mysqlClient = new (host ="0.0.0.0", user = dbUser, password = dbPassword, database = "MYSQL_TEST_DB");
         if (mysqlClient is mysql:Client) {
             simpleQuery(mysqlClient);
             io:println("Queried the database successfully!");

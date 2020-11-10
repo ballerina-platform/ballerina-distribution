@@ -1561,13 +1561,13 @@ task stopNatsServer() {
          if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
              def stdOut = new ByteArrayOutputStream()
              exec {
-                 commandLine 'sh', '-c', "docker ps --filter name=my-sql-test"
+                 commandLine 'sh', '-c', "docker ps --filter name=mysql-test"
                  standardOutput = stdOut
              }
-             if (!stdOut.toString().contains("my-sql-test")) {
+             if (!stdOut.toString().contains("mysql-test")) {
                  println "Starting MySQL server."
                  exec {
-                     commandLine 'sh', '-c', "docker run --rm -d --name my-sql-test3 --env MYSQL_ROOT_PASSWORD=test123 -p 3309:3309 mysql/mysql-server"
+                     commandLine 'sh', '-c', "docker run --rm -d -p 3306:3306 --name mysql-test -e MYSQL_ROOT_PASSWORD=test123 -e MYSQL_ROOT_HOST=% -d mysql/mysql-server"
                      standardOutput = stdOut
                  }
                  println stdOut.toString()
@@ -1584,13 +1584,13 @@ task stopNatsServer() {
          if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
              def stdOut = new ByteArrayOutputStream()
              exec {
-                 commandLine 'sh', '-c', "docker ps --filter name=my-sql-test"
+                 commandLine 'sh', '-c', "docker ps --filter name=mysql-test"
                  standardOutput = stdOut
              }
-             if (stdOut.toString().contains("my-sql-test")) {
+             if (stdOut.toString().contains("mysql-test")) {
                  println "Stopping MySQL server."
                  exec {
-                     commandLine 'sh', '-c', "docker stop my-sql-test"
+                     commandLine 'sh', '-c', "docker stop mysql-test"
                      standardOutput = stdOut
                  }
                  println stdOut.toString()
