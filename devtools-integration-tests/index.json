@@ -35,13 +35,13 @@
         "cmd": "run"
     },
     {
-        "path": "testerina-integration-tests",
-        "module": "testerina-object-mocking-test",
-        "cmd": "test"
-    },
-    {
         "path": "packerina-single-file-test",
         "module": "jdbc_query_operations.bal",
         "cmd": "run"
+    },
+    {
+        "path": "testerina-integration-tests",
+        "module": "testerina-object-mocking-test",
+        "cmd": "test"
     }
-]w
+]

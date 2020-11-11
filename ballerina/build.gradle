@@ -1369,7 +1369,7 @@ task testDevTools() {
         def stdOut = new ByteArrayOutputStream()
         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
             exec {
-                workingDir "${baseBuildPath}/resources"
+                workingDir "${buildDir}/resources"
                 commandLine 'cmd', "createSettingsToml.bat"
                 standardOutput = stdOut
             }
@@ -1404,15 +1404,14 @@ task testDevTools() {
 
             if (folder.exists()) {
 
-                def additionalBuildParams = ""
                 def windowsBalCmd = ""
                 def otherBalCmd = ""
                 if ("${devtoolsProject.cmd}" == "push") {
-                    windowsBalCmd = "${distPath}/bin/ballerina.bat ${devtoolsProject.cmd} ${moduleName}"
-                    otherBalCmd = "${distPath}/bin/ballerina ${devtoolsProject.cmd} ${moduleName}"
+                    windowsBalCmd = "set BALLERINA_HOME_DIR=${buildDir}/resources/bal-integration-packaging-home && set BALLERINA_STAGE_CENTRAL=true && ${distPath}/bin/ballerina.bat ${devtoolsProject.cmd} ${moduleName}"
+                    otherBalCmd = "export BALLERINA_HOME_DIR=${baseBuildPath}/resources/bal-integration-packaging-home && export BALLERINA_STAGE_CENTRAL=true && ${distPath}/bin/ballerina ${devtoolsProject.cmd} ${moduleName}"
                 } else {
-                    windowsBalCmd = "${distPath}/bin/ballerina.bat ${devtoolsProject.cmd} ${moduleName} --b7a.home=${distPath} ${additionalBuildParams}"
-                    otherBalCmd =  "${distPath}/bin/ballerina ${devtoolsProject.cmd} ${moduleName} --b7a.home=${distPath} ${additionalBuildParams}"
+                    windowsBalCmd = "${distPath}/bin/ballerina.bat ${devtoolsProject.cmd} ${moduleName} --b7a.home=${distPath}"
+                    otherBalCmd =  "${distPath}/bin/ballerina ${devtoolsProject.cmd} ${moduleName} --b7a.home=${distPath}"
 
                 }
 
@@ -1420,13 +1419,13 @@ task testDevTools() {
                     exec {
                         workingDir "${buildDir}/${devtoolsProject.path}"
                         commandLine 'cmd', '/c',
-                        "set BALLERINA_HOME_DIR=${buildDir}/resources/bal-integration-packaging-home && set BALLERINA_STAGE_CENTRAL=true && ${windowsBalCmd}"
+                        "${windowsBalCmd}"
                     }
                 } else {
                     exec {
                         workingDir "${baseBuildPath}/${devtoolsProject.path}"
                         commandLine 'sh', '-c',
-                        "export BALLERINA_HOME_DIR=${baseBuildPath}/resources/bal-integration-packaging-home && export BALLERINA_STAGE_CENTRAL=true && ${otherBalCmd}"
+                        "${otherBalCmd}"
                     }
                 }
             }
