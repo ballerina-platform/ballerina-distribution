@@ -1,7 +1,7 @@
-mkdir "bal-integration-packaging-home"
 @echo off
-echo [central]>"bal-integration-packaging-home\Settings.toml"
-echo accesstoken="YWYwMjkyODgtNjhkZC0zOTVmLTk5MzQtYTgyYWRjM2NlYzZi">>"bal-integration-packaging-home\Settings.toml"
+certutil -decode token.txt token-decode.txt
+set /p accesstoken=<token-decode.txt
 
-SET BALLERINA_HOME_DIR="bal-integration-packaging-home"
-SET BALLERINA_STAGE_CENTRAL="true"
+mkdir "bal-integration-packaging-home"
+echo [central]>"bal-integration-packaging-home\Settings.toml"
+echo accesstoken="%accesstoken%">>"bal-integration-packaging-home\Settings.toml"

@@ -1401,7 +1401,6 @@ task testDevTools() {
             } else {
                 folder = new File("${baseBuildPath}/${devtoolsProject.path}/src/${devtoolsProject.module}")
             }
-            println "${moduleName}"
 
             if (folder.exists()) {
 
@@ -1421,13 +1420,13 @@ task testDevTools() {
                     exec {
                         workingDir "${buildDir}/${devtoolsProject.path}"
                         commandLine 'cmd', '/c',
-                        "${windowsBalCmd}"
+                        "set BALLERINA_HOME_DIR=${buildDir}/resources/bal-integration-packaging-home && set BALLERINA_STAGE_CENTRAL=true && ${windowsBalCmd}"
                     }
                 } else {
                     exec {
                         workingDir "${baseBuildPath}/${devtoolsProject.path}"
                         commandLine 'sh', '-c',
-                        "${otherBalCmd}"
+                        "export BALLERINA_HOME_DIR=${baseBuildPath}/resources/bal-integration-packaging-home && export BALLERINA_STAGE_CENTRAL=true && ${otherBalCmd}"
                     }
                 }
             }
