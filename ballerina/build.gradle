@@ -1412,7 +1412,6 @@ task testDevTools() {
                 } else {
                     windowsBalCmd = "${distPath}/bin/ballerina.bat ${devtoolsProject.cmd} ${moduleName} --b7a.home=${distPath}"
                     otherBalCmd =  "${distPath}/bin/ballerina ${devtoolsProject.cmd} ${moduleName} --b7a.home=${distPath}"
-
                 }
 
                 if (Os.isFamily(Os.FAMILY_WINDOWS)) {
@@ -1577,7 +1576,7 @@ task stopNatsServer() {
     }
 }
 
- task startMySqlServer() {
+task startMySqlServer() {
      doLast {
          if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
              def stdOut = new ByteArrayOutputStream()
@@ -1598,9 +1597,9 @@ task stopNatsServer() {
              }
          }
      }
- }
+}
 
- task stopMySqlServer() {
+task stopMySqlServer() {
      doLast {
          if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
              def stdOut = new ByteArrayOutputStream()
@@ -1621,7 +1620,7 @@ task stopNatsServer() {
              }
          }
      }
- }
+}
 
 /* Unpack Dependencies */
 unpackJballerinaTools.dependsOn unpackBallerinaJre
@@ -1663,7 +1662,7 @@ testStdlibs.finalizedBy stopNatsServer
 
 testDevTools.dependsOn packageDist
 testDevTools.dependsOn startMySqlServer
-testStdlibs.finalizedBy stopMySqlServer
+testDevTools.finalizedBy stopMySqlServer
 
 /* Delete Temporary Files */
 deleteTemporaryFiles.dependsOn packageDistWindows

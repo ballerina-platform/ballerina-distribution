@@ -1,6 +1,3 @@
-public function say() returns string {
-    return "Hello World";
-}
-
-public function main() {
+public function say(string name) returns string {
+    return "Hello " + name + "!";
 }

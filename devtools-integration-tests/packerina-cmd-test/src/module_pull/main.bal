@@ -1,8 +1,6 @@
 import ballerina/io;
 import suganya/calculator;
 
-# Prints `Hello World`.
-
 public function main() {
     io:println(calculator:add(5, 4));
     io:println(calculator:substract(10, 5));

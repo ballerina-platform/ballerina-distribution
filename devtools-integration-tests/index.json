@@ -21,18 +21,8 @@
     },
     {
         "path": "packerina-balo-path-test",
-        "module": "foo",
-        "cmd": "build"
-    },
-    {
-        "path": "packerina-balo-path-test",
-        "module": "module_using_dependency",
-        "cmd": "run"
-    },
-    {
-        "path": "packerina-balo-path-test",
         "module": "module_with_dependency",
-        "cmd": "run"
+        "cmd": "test"
     },
     {
         "path": "packerina-single-file-test",
