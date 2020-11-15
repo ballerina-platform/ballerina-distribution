@@ -264,13 +264,6 @@ subprojects {
                 password System.getenv("packagePAT")
             }
         }
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-filepath"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
 
         maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-reflect"
@@ -456,7 +449,6 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:kafka-ballerina:${stdlibKafkaVersion}"
         ballerinaStdLibs "org.ballerinalang:file-ballerina:${stdlibFileVersion}"
         ballerinaStdLibs "org.ballerinalang:time-ballerina:${stdlibTimeVersion}"
-        ballerinaStdLibs "org.ballerinalang:filepath-ballerina:${stdlibFilepathVersion}"
         ballerinaStdLibs "org.ballerinalang:task-ballerina:${stdlibTaskVersion}"
         ballerinaStdLibs "org.ballerinalang:cache-ballerina:${stdlibCacheVersion}"
         ballerinaStdLibs "org.ballerinalang:system-ballerina:${stdlibSystemVersion}"
