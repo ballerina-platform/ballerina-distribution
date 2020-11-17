@@ -19,7 +19,7 @@ public function main() {
     
     // Logic constructing log messages with expensive operations can alternatively be passed as a function
     // pointer implementation. The function will be executed if and only if that particular log level is enabled.
-    log:printDebug(function() returns string {
+    log:printDebug(isolated function() returns string {
         return string `Execution Context: ${runtime:getCallStack().toString()}`;
     });
 }
