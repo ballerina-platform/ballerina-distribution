@@ -86,10 +86,8 @@ public function testSocketChannelReadBytesAsStream() {
                     } else {
                         test:assertFail(msg = returnedString.message());
                     }
-                } else if (content is io:Error) {
-                    test:assertFail(msg = content.message());
                 } else {
-                    test:assertFail("Unknown error occured");
+                    test:assertFail(msg = content.message());
                 }
             } else {
                 test:assertFail(msg = byteChannel.message());
@@ -206,10 +204,8 @@ public function testSocketChannelReadLinesAsStream() {
                                            test:assertEquals(langstring:trim(s), expected[i]);
                                            i += 1;
                                        });
-                } else if (content is io:Error) {
-                    test:assertFail(msg = content.message());
                 } else {
-                    test:assertFail("Unknown error occured");
+                    test:assertFail(msg = content.message());
                 }
             } else {
                 test:assertFail(msg = byteChannel.message());
@@ -390,10 +386,8 @@ public function testSocketChannelReadCsvAsStream() {
                                            test:assertEquals(langstring:trim(rec[4]), expectedContent[i][4]);
                                            i += 1;
                                        });
-                } else if (content is io:Error) {
-                    test:assertFail(msg = content.message());
                 } else {
-                    test:assertFail("Unknown error occured");
+                    test:assertFail(msg = content.message());
                 }
             } else {
                 test:assertFail(msg = byteChannel.message());
