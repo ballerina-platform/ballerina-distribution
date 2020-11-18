@@ -6,3 +6,5 @@ Commit handler executed.
 Transaction committed.
 Account Credit: {"affectedRowCount":1,"lastInsertId":null}
 Account Debit: {"affectedRowCount":1,"lastInsertId":null}
+[ballerina/http] started HTTP/WS listener 192.168.1.18:41699
+[ballerina/http] stopped HTTP/WS listener 192.168.1.18:41699
