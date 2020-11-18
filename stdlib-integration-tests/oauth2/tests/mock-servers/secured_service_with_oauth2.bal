@@ -24,14 +24,11 @@ auth:OutboundBasicAuthProvider basicAuthProvider = new({
     username: "3MVG9YDQS5WtC11paU2WcQjBB3L5w4gz52uriT8ksZ3nUVjKvrfQMrU4uvZohTftxStwNEW4cfStBEGRxRL68",
     password: "9205371918321623741"
 });
-http:BasicAuthHandler basicAuthHandler = new(basicAuthProvider);
 
 oauth2:IntrospectionServerConfig introspectionServerConfig = {
     url: "https://localhost:20299/oauth2/token/introspect",
     clientConfig: {
-        auth: {
-            authHandler: basicAuthHandler
-        },
+        customHeaders: {"Authorization": "Basic " + check basicAuthProvider.generateToken()},
         secureSocket: {
            trustStore: {
                path: TRUSTSTORE_PATH,

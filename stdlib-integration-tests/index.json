@@ -24,6 +24,10 @@
     "path": "jwt"
   },
   {
+    "name": "OAuth2 standard library ",
+    "path": "oauth2"
+  },
+  {
     "name": "LDAP standard library ",
     "path": "ldap"
   },
