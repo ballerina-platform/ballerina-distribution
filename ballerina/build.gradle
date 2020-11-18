@@ -910,11 +910,8 @@ task testExamples() {
         'tracing',
         'openapi-to-ballerina',
         'taint-checking', // Should not compile
-        'task-service-appointment',
-        'task-scheduler-appointment',
         'user-defined-error',
-
-            //TODO failing due to transaction changes probably. Need to fix
+        //TODO failing due to transaction changes probably. Need to fix
         'rabbitmq-transaction-consumer',
         'rabbitmq-transaction-producer',
         'kafka-producer-transactional',
