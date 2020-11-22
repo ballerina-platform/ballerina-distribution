@@ -91,3 +91,12 @@ const string JSON_REMOTE_HUB_NOTIFICATION_SUBSCRIBER_ONE_LOG = "JSON WebSub Noti
 const string XML_REMOTE_HUB_NOTIFICATION_SUBSCRIBER_TWO_LOG = "XML WebSub Notification Received by websubSubscriberTwo: <websub><request>Notification</request><type>Remote</type></websub>";
 const string TEXT_REMOTE_HUB_NOTIFICATION_SUBSCRIBER_TWO_LOG = "Text WebSub Notification Received by websubSubscriberTwo: Text update for remote Hub";
 const string JSON_REMOTE_HUB_NOTIFICATION_SUBSCRIBER_TWO_LOG = "JSON WebSub Notification Received by websubSubscriberTwo: {\"action\":\"publish\", \"mode\":\"remote-hub\"}";
+
+const string WEBSUB_PERSISTENCE_TOPIC_ONE = "http://one.persistence.topic.com";
+const string WEBSUB_PERSISTENCE_TOPIC_TWO = "http://two.persistence.topic.com";
+
+const string ID_NOTIFICATION_ONE = "NotificationOne";
+const string ID_NOTIFICATION_FOUR = "NotificationFour";
+
+const string NOTIFICATION_ONE = "WebSub Notification Received by One: {\"mode\":\"internal\", \"content_type\":\"json\"}";
+const string NOTIFICATION_FOUR = "WebSub Notification Received by Four: {\"mode\":\"remote\", \"content_type\":\"xml\"}";
