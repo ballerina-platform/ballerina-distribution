@@ -59,7 +59,8 @@ service multipleSubTestWebsubSubscriberTwo on multipleSubTestWebsubEP {
 }
 
 @test:Config {
-    dependsOn: ["testJsonContentReceiptForRemoteHub"]
+    dependsOn: ["testJsonContentReceiptForRemoteHub"],
+    enable: false
 }
 function testContentReceipt() {
     http:Client clientEndpoint = new ("http://localhost:23080");
