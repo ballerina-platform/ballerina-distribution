@@ -194,25 +194,19 @@ task copyOtherRepos(type: Copy) {
     /* Standard Libraries */
     configurations.ballerinaStdLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
-        into("bir-cache/") {
-            from "${artifactExtractedPath}/caches/bir"
-        }
         into("bre/lib/") {
             from "${artifactExtractedPath}/libs"
         }
         into("docs/") {
             from "${artifactExtractedPath}/docs"
         }
-        // pack to new cache
-        into("cache/bir/") {
-            from "${artifactExtractedPath}/caches/bir"
+        into("repo/balo") {
+            from "${artifactExtractedPath}/balo"
         }
-        into("cache/balo/") {
-            from "${artifactExtractedPath}/caches/balo"
+        into("repo/cache") {
+            from "${artifactExtractedPath}/cache"
         }
-        into("cache/jar/") {
-            from "${artifactExtractedPath}/caches/jar"
-        }
+
     }
 
     /* C2C Libraries */
@@ -224,8 +218,11 @@ task copyOtherRepos(type: Copy) {
         into("docs/") {
             from "${artifactExtractedPath}/docs"
         }
-        into("bir-cache/") {
-            from "${artifactExtractedPath}/caches/bir"
+        into("repo/balo") {
+            from "${artifactExtractedPath}/balo"
+        }
+        into("repo/cache") {
+            from "${artifactExtractedPath}/cache"
         }
     }
 }
