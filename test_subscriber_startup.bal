@@ -113,7 +113,7 @@ service startupHub on testHub {
 }
 
 @test:Config {
-    dependsOn: ["testTopicRedirectFoundAndHubPermanentRedirect"]
+    dependsOn: ["testJsonContentReceiptForRemoteHub"]
 }
 function testMultipleSubscribersStartUpInSamePort() {
     http:Client clientEndpoint = new ("http://0.0.0.0:23386");

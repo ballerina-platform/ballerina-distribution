@@ -80,7 +80,8 @@ function testTopicMovedPermanentlyAndHubTemporaryRedirect() {
 }
 
 @test:Config {
-    dependsOn: ["testJsonContentReceiptForRemoteHub"]
+    dependsOn: ["testJsonContentReceiptForRemoteHub"],
+    enable: false
 }
 function testTopicRedirectFoundAndHubPermanentRedirect() {
     test:assertEquals(fetchOutput(ID_REDIRECT_SUBSCRIBER_TWO_LOG), REDIRECT_SUBSCRIBER_TWO_LOG);
