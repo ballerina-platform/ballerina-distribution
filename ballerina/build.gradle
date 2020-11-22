@@ -1029,30 +1029,19 @@ task testExamples() {
             from jBallerinaPack
             into baseBuildPath
         }
-        exec {
-            //Initialize Ballerina project
-            if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                //TODO: Need to verify with windows
-                workingDir "${baseBuildPath}"
-                commandLine 'cmd', '/c', "jballerina-tools-${ballerinaVersion}/bin/ballerina.bat", 'new', 'TestProject'
-            } else {
-                workingDir "${baseBuildPath}"
-                commandLine 'sh', '-c', "jballerina-tools-${ballerinaVersion}/bin/ballerina new TestProject"
-            }
-        }
 
         def src = "${project.rootDir}/examples/"
-        def dis = "${baseBuildPath}/TestProject/src/"
+        def dis = "${baseBuildPath}"
         copy {
             from(src)
             into dis
         }
-        def inputFile = new File("${baseBuildPath}/TestProject/src/index.json")
+        def inputFile = new File("${baseBuildPath}/index.json")
         def categories = new JsonSlurper().parseText(inputFile.text)
         categories.each { category ->
             def examples = category.samples
             examples.each { example ->
-                def folder = new File("${baseBuildPath}/TestProject/src/${example.url}")
+                def folder = new File("${baseBuildPath}/${example.url}")
                 if (folder.exists()) {
                     bbeList.push("$example.url")
                 }
@@ -1064,20 +1053,30 @@ task testExamples() {
         def exitVal
         def additionalBuildParams = ""
         if (bbe == "secured-service-with-basic-auth" || bbe == "secured-client-with-basic-auth") {
-            additionalBuildParams = "--b7a.config.file=${baseBuildPath}/TestProject/src/${bbe}/sample-users.toml"
+            additionalBuildParams = "--b7a.config.file=${baseBuildPath}/${bbe}/sample-users.toml"
         }
         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
             //TODO: Need to verify with windows
+            exec {
+                workingDir "${baseBuildPath}/${bbe}"
+                commandLine 'cmd', '/c', "${distPath}/bin/ballerina/ballerina.bat", 'init'
+            }
+
             exitVal = exec {
                 ignoreExitValue true
-                workingDir "${buildDir}/TestProject"
-                commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'build', '--experimental', "${bbe} --b7a.home=${distPath} ${additionalBuildParams}"
+                workingDir "${baseBuildPath}/${bbe}"
+                commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'build', '--experimental', " --b7a.home=${distPath} ${additionalBuildParams}"
             }
         } else {
+            exec {
+                workingDir "${baseBuildPath}/${bbe}"
+                commandLine 'sh', '-c', "${distPath}/bin/ballerina",'init'
+            }
+
             exitVal = exec {
                 ignoreExitValue true
-                workingDir "${baseBuildPath}/TestProject"
-                commandLine 'sh', '-c', "${distPath}/bin/ballerina build --experimental ${bbe} --b7a.home=${distPath} ${additionalBuildParams}"
+                workingDir "${baseBuildPath}/${bbe}"
+                commandLine ' sh', '-c', "${distPath}/bin/ballerina build --experimental --b7a.home=${distPath} ${additionalBuildParams}"
             }
         }
         if (exitVal.getExitValue() == 1) {
@@ -1087,7 +1086,7 @@ task testExamples() {
     }
 
     ext.outputVerification = { bbe ->
-        def directoryPath = "${baseBuildPath}/TestProject/src/${bbe}"
+        def directoryPath = "${baseBuildPath}/${bbe}"
         File fileReference
         def curlCommands = []
         def ports = []
@@ -1099,7 +1098,7 @@ task testExamples() {
         def outputFilePath = "${directoryPath}/output.txt"
         def additionalBuildParams = ""
         if (bbe == "secured-service-with-basic-auth" || bbe == "secured-client-with-basic-auth") {
-            additionalBuildParams = "--b7a.config.file=${baseBuildPath}/TestProject/src/${bbe}/sample-users.toml"
+            additionalBuildParams = "--b7a.config.file=${baseBuildPath}/${bbe}/sample-users.toml"
         }
         tree.each { content ->
             if (content.name.contains("client.out")) {
@@ -1293,27 +1292,17 @@ task testStdlibs() {
              from jBallerinaPack
              into baseBuildPath
          }
-         exec {
-             //Initialize Ballerina project
-             if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                 workingDir "${baseBuildPath}"
-                 commandLine 'cmd', '/c', "jballerina-tools-${ballerinaVersion}/bin/ballerina.bat", 'new', 'StdlibTestProject'
-             } else {
-                 workingDir "${baseBuildPath}"
-                 commandLine 'sh', '-c', "jballerina-tools-${ballerinaVersion}/bin/ballerina new StdlibTestProject"
-             }
-         }
 
          def src = "${project.rootDir}/stdlib-integration-tests/"
-         def dis = "${baseBuildPath}/StdlibTestProject/src/"
+         def dis = "${baseBuildPath}"
          copy {
              from(src)
              into dis
          }
-         def inputFile = new File("${baseBuildPath}/StdlibTestProject/src/index.json")
+         def inputFile = new File("${baseBuildPath}/index.json")
          def stdlibTests = new JsonSlurper().parseText(inputFile.text)
          stdlibTests.each { stdlibTest ->
-             def folder = new File("${baseBuildPath}/StdlibTestProject/src/${stdlibTest.path}")
+             def folder = new File("${baseBuildPath}/${stdlibTest.path}")
              if (folder.exists()) {
                  stdlibTestsList.push("$stdlibTest.path")
              }
@@ -1328,7 +1317,7 @@ task testStdlibs() {
          stdlibTestsList.each { String stdlibTest ->
              def additionalBuildParams = ""
              if (stdlibTest == "auth" || stdlibTest == "jwt") {
-                 additionalBuildParams = "--b7a.config.file=${baseBuildPath}/StdlibTestProject/src/${stdlibTest}/tests/resources/datafiles/users.toml"
+                 additionalBuildParams = "--b7a.config.file=${baseBuildPath}/${stdlibTest}/tests/resources/datafiles/users.toml"
              }
              
              if (stdlibTest == "config") {
@@ -1338,13 +1327,21 @@ task testStdlibs() {
              if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                  //TODO: Need to verify with windows
                  exec {
-                     workingDir "${buildDir}/StdlibTestProject"
-                     commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat build -c --experimental ${stdlibTest} --b7a.home=${distPath} ${additionalBuildParams}"
+                     workingDir "${baseBuildPath}/${stdlibTest}"
+                     commandLine 'cmd', '/c', "${distPath}/bin/ballerina/ballerina.bat", 'init'
+                 }
+                 exec {
+                     workingDir "${buildDir}/${stdlibTest}"
+                     commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat build -c --experimental --b7a.home=${distPath} ${additionalBuildParams}"
                  }
              } else {
                  exec {
-                     workingDir "${baseBuildPath}/StdlibTestProject"
-                     commandLine 'sh', '-c', "${distPath}/bin/ballerina build -c --experimental ${stdlibTest} --b7a.home=${distPath} ${additionalBuildParams}"
+                     workingDir "${baseBuildPath}/${stdlibTest}"
+                     commandLine 'sh', '-c', "${distPath}/bin/ballerina", 'init'
+                 }
+                 exec {
+                     workingDir "${baseBuildPath}/${stdlibTest}"
+                     commandLine 'sh', '-c', "${distPath}/bin/ballerina build -c --experimental --b7a.home=${distPath} ${additionalBuildParams}"
                  }
              }
          }
