@@ -909,7 +909,7 @@ task testExamples() {
             //TODO: Need to verify with windows
             exec {
                 workingDir "${baseBuildPath}/${bbe}"
-                commandLine 'cmd', '/c', "${distPath}/bin/ballerina/ballerina.bat", 'init'
+                commandLine 'cmd', '/c', "${distPath}/bin/ballerina/ballerina.bat init"
             }
 
             exitVal = exec {
@@ -920,7 +920,7 @@ task testExamples() {
         } else {
             exec {
                 workingDir "${baseBuildPath}/${bbe}"
-                commandLine 'sh', '-c', "${distPath}/bin/ballerina",'init'
+                commandLine 'sh', '-c', "${distPath}/bin/ballerina init"
             }
 
             exitVal = exec {
@@ -930,9 +930,9 @@ task testExamples() {
             }
         }
         if (exitVal.getExitValue() == 1) {
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
     ext.outputVerification = { bbe ->
@@ -1178,7 +1178,7 @@ task testStdlibs() {
                  //TODO: Need to verify with windows
                  exec {
                      workingDir "${baseBuildPath}/${stdlibTest}"
-                     commandLine 'cmd', '/c', "${distPath}/bin/ballerina/ballerina.bat", 'init'
+                     commandLine 'cmd', '/c', "${distPath}/bin/ballerina/ballerina.bat init"
                  }
                  exec {
                      workingDir "${buildDir}/${stdlibTest}"
@@ -1187,7 +1187,7 @@ task testStdlibs() {
              } else {
                  exec {
                      workingDir "${baseBuildPath}/${stdlibTest}"
-                     commandLine 'sh', '-c', "${distPath}/bin/ballerina", 'init'
+                     commandLine 'sh', '-c', "${distPath}/bin/ballerina init"
                  }
                  exec {
                      workingDir "${baseBuildPath}/${stdlibTest}"
