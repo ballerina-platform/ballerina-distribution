@@ -14,7 +14,7 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import ballerina/filepath;
+import ballerina/file;
 import ballerina/io;
 import ballerina/runtime;
 import ballerina/test;
@@ -95,10 +95,10 @@ function stopKafkaServerForConsumerTests() returns error? {
 }
 
 function getAbsoluteTestPath(string subdirectoryPath) returns string|error {
-    var relativePathResult = filepath:build(TEST_PATH, subdirectoryPath);
+    var relativePathResult = file:joinPath(TEST_PATH, subdirectoryPath);
     if (relativePathResult is error) {
         return relativePathResult;
     }
     string relativePath = <string>relativePathResult;
-    return filepath:absolute(relativePath);
+    return file:getAbsolutePath(relativePath);
 }

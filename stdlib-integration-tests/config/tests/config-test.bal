@@ -14,12 +14,13 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import ballerina/file;
+import ballerina/test;
+import ballerina/config;
+// This tests the functionality of reading config
 
-final string KEYSTORE_PATH = checkpanic file:joinPath("src", "grpc-service-with-http-proxy-gateway", "tests",
-"resources", "ballerinaKeystore.p12");
-final string TRUSTSTORE_PATH = checkpanic file:joinPath("src", "grpc-service-with-http-proxy-gateway", "tests",
-                               "resources", "ballerinaTruststore.p12");
-const string ERROR_MSG_FORMAT = "Error from Connector: %s";
-const string RESP_MSG_FORMAT = "Failed: Invalid Response, expected %s, but received %s";
-
+@test:Config{
+}
+function readConfigTest () {
+     string userName = config:getAsString("user.name");
+     test:assertEquals(userName, "ballerina-user");
+}

@@ -5,19 +5,15 @@ import ballerina/task;
 int reminderCount = 0;
 
 public function main() returns error? {
-    // The [`task:AppointmentData`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/task/records/AppointmentData.html) record provides the appointment configuration.
-    task:AppointmentData appointmentDetails = {
-        seconds: "0/2",
-        minutes: "*",
-        hours: "*",
-        daysOfMonth: "?",
-        months: "*",
-        daysOfWeek: "*",
-        year: "*"
+
+    // The [`task:AppointmentConfiguration`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/task/records/AppointmentConfiguration.html) record of the task scheduler.
+    task:AppointmentConfiguration appointmentConfiguration = {
+        // This CRON expression will schedule the appointment every two second.
+        cronExpression: "0/2 * * ? * * *"
     };
 
     // Creates an appointment using the given configuration.
-    task:Scheduler appointment = new ({appointmentDetails});
+    task:Scheduler appointment = new (appointmentConfiguration);
 
     // Attaches the service to the scheduler.
     check appointment.attach(appointmentService);

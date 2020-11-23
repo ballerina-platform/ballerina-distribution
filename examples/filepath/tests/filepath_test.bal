@@ -25,7 +25,6 @@ function testFunc() returns error? {
     string normalized;
     string elements;
     string buildPath;
-    string extension;
     string relative;
 
     if (isWindows) {
@@ -35,7 +34,6 @@ function testFunc() returns error? {
         normalized ="Normalized path of foo/../bar: bar";
         elements ="Path elements of /A/B/C: [\"A\",\"B\",\"C\"]";
         buildPath ="Built path of '/', 'foo', 'bar': \\foo\\bar";
-        extension ="Extension of path.bal: bal";
         relative ="Relative path between 'a/b/c' and 'a/c/d': ..\\..\\c\\d";
     } else {
         absolutePath ="/A/B/C is absolute: true";
@@ -44,7 +42,6 @@ function testFunc() returns error? {
         normalized ="Normalized path of foo/../bar: bar";
         elements ="Path elements of /A/B/C: [\"A\",\"B\",\"C\"]";
         buildPath ="Built path of '/', 'foo', 'bar': /foo/bar";
-        extension ="Extension of path.bal: bal";
         relative ="Relative path between 'a/b/c' and 'a/c/d': ../../c/d";
     }
     test:assertEquals(outputs[0], absolutePath);
@@ -53,6 +50,5 @@ function testFunc() returns error? {
     test:assertEquals(outputs[3], normalized);
     test:assertEquals(outputs[4], elements);
     test:assertEquals(outputs[5], buildPath);
-    test:assertEquals(outputs[6], extension);
-    test:assertEquals(outputs[7], relative);
+    test:assertEquals(outputs[6], relative);
 }

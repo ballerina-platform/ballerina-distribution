@@ -1,4 +1,4 @@
-// The Ballerina File Path API contains utility functions to manipulate file paths in a way that is compatible with the
+// The Ballerina File API also contains utility functions to manipulate file paths in a way that is compatible with the
 // target operating system.<br/><br/>
 // For more information on the underlying module, 
-// see the [File Path module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/filepath/index.html).
+// see the [File module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/file/index.html).

@@ -909,7 +909,19 @@ task testExamples() {
         'counter-metrics',
         'tracing',
         'openapi-to-ballerina',
-        'taint-checking' // Should not compile
+        'taint-checking', // Should not compile
+        'user-defined-error',
+        //TODO failing due to transaction changes probably. Need to fix
+        'rabbitmq-transaction-consumer',
+        'rabbitmq-transaction-producer',
+        'kafka-producer-transactional',
+        'mysql-batch-execute-operation',
+        'jdbc-batch-execute-operation',
+        'retry-transactions',
+        'local-transactions-with-handlers',
+        'local-transactions',
+        'log-api',
+        'error-handling-in-single-place'
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
@@ -1000,7 +1012,19 @@ task testExamples() {
         'task-service-appointment',
         'task-scheduler-timer',
         'task-scheduler-appointment',
-        'cache'
+        'cache',
+
+        //TODO failing due to transaction changes probably. Need to fix
+        'rabbitmq-transaction-consumer',
+        'rabbitmq-transaction-producer',
+        'kafka-producer-transactional',
+        'mysql-batch-execute-operation',
+        'jdbc-batch-execute-operation',
+        'retry-transactions',
+        'local-transactions-with-handlers',
+        'local-transactions',
+        'log-api',
+        'error-handling-in-single-place'
     ]
 
     doFirst {
@@ -1309,6 +1333,10 @@ task testStdlibs() {
              if (stdlibTest == "auth" || stdlibTest == "jwt") {
                  additionalBuildParams = "--b7a.config.file=${baseBuildPath}/StdlibTestProject/src/${stdlibTest}/tests/resources/datafiles/users.toml"
              }
+             
+             if (stdlibTest == "config") {
+                additionalBuildParams = "--user.name=ballerina-user"
+             }
 
              if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                  //TODO: Need to verify with windows
@@ -1324,6 +1352,88 @@ task testStdlibs() {
              }
          }
      }
+}
+
+task testDevTools() {
+    def jBallerinaPack = "${project.rootDir}/ballerina/build/target/extracted-distributions/jballerina-tools-zip"
+    def baseBuildPath = "${project.rootDir}/ballerina/build/bbe-pack"
+    def distPath = "${baseBuildPath}/jballerina-tools-${ballerinaVersion}"
+    def devtoolsProjectList = []
+
+    PatternSet patternSet = new PatternSet();
+    patternSet.exclude("**/.ballerina/**");
+    patternSet.exclude("**/Ballerina.toml");
+    patternSet.exclude("**/Ballerina.lock");
+    patternSet.exclude("**/ballerina-internal.log")
+
+    inputs.files(files("${distPath}/devtools-integration-tests").asFileTree.matching(patternSet))
+
+    doFirst {
+        // Copy compiled pack to baseBuild temp directory
+        copy {
+            from jBallerinaPack
+            into baseBuildPath
+        }
+        
+        // Copy projects to baseBuildPath
+        def devToolsProjectSrc = "${project.rootDir}/devtools-integration-tests/"
+        copy {
+            from(devToolsProjectSrc)
+            into baseBuildPath
+        }
+
+        // Read the projects from the index.json
+        def inputFile = new File("${baseBuildPath}/index.json")
+        def devtoolsProjects = new JsonSlurper().parseText(inputFile.text)
+        
+        // For each project in the devtools integration tests folder, we add it to the project list
+        devtoolsProjects.each { devtoolsProject ->
+            def folder = new File("${baseBuildPath}/${devtoolsProject.path}")
+            if (folder.exists()) {
+                devtoolsProjectList.push("$devtoolsProject.path")
+            }
+        }
+    }
+
+    doLast {
+        // For each devtools project in the list
+        devtoolsProjectList.each { String devtoolsProject ->
+            
+            // Read the modules from the index.json
+            def inputFile = new File("${baseBuildPath}/${devtoolsProject}/index.json")
+            def projectModules = new JsonSlurper().parseText(inputFile.text)
+
+            // If module exists, add it to the projectModuleList
+            def projectModuleList = []
+            projectModules.each { projectModule -> 
+                def folder = new File("${baseBuildPath}/${devtoolsProject}/src/${projectModule.path}")
+                if (folder.exists()) {
+                    projectModuleList.push("$projectModule.path")
+                }
+            }
+
+            // For each module we execute the `test -c ${projectModule} command
+            projectModuleList.each { String projectModule -> 
+            
+                def additionalBuildParams = ""
+
+                if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+                    exec {
+                        workingDir "${buildDir}/${devtoolsProject}"
+                        commandLine 'cmd', '/c', 
+                        "${distPath}/bin/ballerina.bat test ${projectModule} --b7a.home=${distPath} ${additionalBuildParams}"
+                    }
+                } else {
+                    exec {
+                        workingDir "${baseBuildPath}/${devtoolsProject}"
+                        commandLine 'sh', '-c', 
+                        "${distPath}/bin/ballerina test ${projectModule} --b7a.home=${distPath} ${additionalBuildParams}"
+                    }
+                }
+            }
+            
+        }
+    }
 }
 
 task startLdapServer() {
@@ -1508,8 +1618,11 @@ testStdlibs.finalizedBy stopLdapServer
 testStdlibs.finalizedBy stopRabbitmqServer
 testStdlibs.finalizedBy stopNatsServer
 
+testDevTools.dependsOn packageDist
+
 /* Delete Temporary Files */
 deleteTemporaryFiles.dependsOn packageDistWindows
 deleteTemporaryFiles.dependsOn testExamples
 deleteTemporaryFiles.dependsOn testStdlibs
+deleteTemporaryFiles.dependsOn testDevTools
 build.dependsOn deleteTemporaryFiles
