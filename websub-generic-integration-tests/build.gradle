@@ -77,9 +77,9 @@ task copyStdlibs(type: Copy) {
         into("repo/balo") {
             from "${artifactExtractedPath}/balo/"
         }
-//        into("repo/cache") {
-//            from "${artifactExtractedPath}/cache"
-//        }
+        into("repo/cache") {
+            from "${artifactExtractedPath}/cache"
+        }
     }
     /* Copy WebSub module */
     into("repo/balo/${packageOrg}/websub/${tomlVersion}") {
