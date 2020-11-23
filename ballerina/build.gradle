@@ -1245,32 +1245,32 @@ task testDevTools() {
     doLast {
         // For each devtools project in the list
         devtoolsProjectList.each { String devtoolsProject ->
-            
             // Read the modules from the index.json
             def inputFile = new File("${baseBuildPath}/${devtoolsProject}/index.json")
             def projectModules = new JsonSlurper().parseText(inputFile.text)
 
-            // If module exists, add it to the projectModuleList
-            def projectModuleList = []
-            projectModules.each { projectModule -> 
-                def folder = new File("${baseBuildPath}/${devtoolsProject}/src/${projectModule.path}")
-                if (folder.exists()) {
-                    projectModuleList.push("$projectModule.path")
-                }
-            }
-
             // For each module we execute the `test -c ${projectModule} command
-            projectModuleList.each { String projectModule -> 
+            projectModules.each { String projectModule ->
             
                 def additionalBuildParams = ""
 
                 if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                     exec {
                         workingDir "${buildDir}/${devtoolsProject}"
+                        commandLine 'cmd', '/c',
+                                "${distPath}/bin/ballerina.bat init"
+                    }
+                    exec {
+                        workingDir "${buildDir}/${devtoolsProject}"
                         commandLine 'cmd', '/c', 
                         "${distPath}/bin/ballerina.bat test ${projectModule} --b7a.home=${distPath} ${additionalBuildParams}"
                     }
                 } else {
+                    exec {
+                        workingDir "${buildDir}/${devtoolsProject}"
+                        commandLine 'cmd', '/c',
+                                "${distPath}/bin/ballerina.bat init"
+                    }
                     exec {
                         workingDir "${baseBuildPath}/${devtoolsProject}"
                         commandLine 'sh', '-c', 
