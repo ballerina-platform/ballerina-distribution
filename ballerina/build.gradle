@@ -1449,6 +1449,9 @@ packageDistLinux.dependsOn packageDistZip
 packageDistMac.dependsOn packageDistLinux
 packageDistWindows.dependsOn packageDistMac
 
+unpackStdLibs.dependsOn unpackBallerinaJre
+unpackStdLibs.dependsOn unpackJballerinaTools
+
 testExamples.dependsOn packageDist
 
 testStdlibs.dependsOn startLdapServer
@@ -1467,6 +1470,3 @@ deleteTemporaryFiles.dependsOn testExamples
 deleteTemporaryFiles.dependsOn testStdlibs
 deleteTemporaryFiles.dependsOn testDevTools
 build.dependsOn deleteTemporaryFiles
-
-unpackStdLibs.dependsOn unpackBallerinaJre
-unpackStdLibs.dependsOn unpackJballerinaTools
