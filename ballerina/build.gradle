@@ -720,6 +720,8 @@ task testExamples() {
 
     // The following BBEs will not be verified by compiling/running.
     def buildIgnoreList = [
+        'secured_client_with_oauth2',
+        'send_and_receive_emails',
         'proto-to-ballerina',
         'websub-hub-client-sample',
         'websub-remote-hub-sample',
@@ -897,6 +899,10 @@ task testExamples() {
                 }
             }
         }
+
+        buildIgnoreList.each { String elements ->
+            bbeList.remove("$elements")
+        }
     }
 
     ext.buildBBE = { bbe ->
@@ -918,7 +924,7 @@ task testExamples() {
                 commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'build', '--experimental', " --b7a.home=${distPath} ${additionalBuildParams}"
             }
         } else {
-            exec {
+             exec {
                 workingDir "${baseBuildPath}/${bbe}"
                 commandLine 'sh', '-c', "${distPath}/bin/ballerina init"
             }
@@ -926,13 +932,13 @@ task testExamples() {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${baseBuildPath}/${bbe}"
-                commandLine ' sh', '-c', "${distPath}/bin/ballerina build --experimental --b7a.home=${distPath} ${additionalBuildParams}"
+                commandLine 'sh', '-c', "${distPath}/bin/ballerina build --experimental --b7a.home=${distPath} ${additionalBuildParams}"
             }
         }
         if (exitVal.getExitValue() == 1) {
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     ext.outputVerification = { bbe ->
@@ -1080,9 +1086,6 @@ task testExamples() {
     }
 
     doLast {
-        buildIgnoreList.each { String elements ->
-            bbeList.remove("$elements")
-        }
         def failedBuildExamples = []
         def failOutputVerificationExamples = []
         bbeList.each { String bbe ->
