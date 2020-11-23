@@ -379,8 +379,6 @@ subprojects {
         maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1614/" }
         /* Docker staging repository */
         maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1290/" }
-        /* Kubernetes staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxkubernetes-1266/" }
         /* AwsLambda staging repository */
         maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1163/" }
         /* Datamapper staging repository */
@@ -429,11 +427,6 @@ subprojects {
         exten "org.ballerinax.docker:docker-extension:${dockerVersion}@jar"
         dockerAnnotations "org.ballerinax.docker:docker-extension-annotations:${dockerVersion}@zip"
         dockerExamples "org.ballerinax.docker:docker-extension-examples:${dockerVersion}@zip"
-
-        /* Kubernetes extension */
-        exten "org.ballerinax.kubernetes:kubernetes-extension:${kubernetesVersion}@jar"
-        kubernetesAnnotations "org.ballerinax.kubernetes:kubernetes-extension-annotations:${kubernetesVersion}@zip"
-        kubernetesExamples "org.ballerinax.kubernetes:kubernetes-extension-examples:${kubernetesVersion}@zip"
 
         /* Data Mapper extension */
         exten "org.ballerinax.datamapper:datamapper-extension:${dataMapperVersion}@jar"

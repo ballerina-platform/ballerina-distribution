@@ -103,22 +103,6 @@ task unpackDockerExamples(type: Copy) {
     }
 }
 
-task unpackKubernetesAnnotations(type: Copy) {
-    group = "unpack_dependencies"
-    configurations.kubernetesAnnotations.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-            from zipTree(artifact.getFile())
-            into new File("${buildDir}/target/extracted-distributions", artifact.name+"-zip")
-    }
-}
-
-task unpackKubernetesExamples(type: Copy) {
-    group = "unpack_dependencies"
-    configurations.kubernetesExamples.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-            from zipTree(artifact.getFile())
-            into new File("${buildDir}/target/extracted-distributions", artifact.name+"-zip")
-    }
-}
-
 task unpackStdLibs() {
     doLast {
         configurations.ballerinaStdLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
@@ -177,10 +161,6 @@ task copyOtherRepos(type: Copy) {
 
     into("docs") {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/docs"
-    }
-
-    into("docs") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/docs"
     }
 
     into("docs") {
@@ -265,10 +245,6 @@ task packageDist(type: Zip) {
         from "build/target/extracted-distributions/docker-extension-examples-zip"
         exclude "index.js"
     }
-    into("${parentDir}/examples") {
-        from "build/target/extracted-distributions/kubernetes-extension-examples-zip"
-        exclude "index.js"
-    }
     into("${parentDir}/repo/cache/ballerina/docker") {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/docker/cache"
     }
@@ -334,10 +310,6 @@ task packageDistZip(type: Zip) {
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
         from "build/target/extracted-distributions/docker-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/kubernetes-extension-examples-zip"
         exclude "index.js"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerina/docker") {
@@ -449,10 +421,6 @@ task packageDistLinux(type: Zip) {
         from "build/target/extracted-distributions/docker-extension-examples-zip"
         exclude "index.js"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/kubernetes-extension-examples-zip"
-        exclude "index.js"
-    }
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerina/docker") {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/docker/cache"
     }
@@ -557,10 +525,6 @@ task packageDistMac(type: Zip) {
         from "build/target/extracted-distributions/docker-extension-examples-zip"
         exclude "index.js"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/kubernetes-extension-examples-zip"
-        exclude "index.js"
-    }
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerina/docker") {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/docker/cache"
     }
@@ -658,10 +622,6 @@ task packageDistWindows(type: Zip) {
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
         from "build/target/extracted-distributions/docker-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/kubernetes-extension-examples-zip"
         exclude "index.js"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerina/docker") {
@@ -1471,9 +1431,6 @@ unpackAwsLambdaBalo.dependsOn unpackAzFunctionsExamples
 unpackAwsLambdaExamples.dependsOn unpackAwsLambdaBalo
 unpackDockerAnnotations.dependsOn unpackAwsLambdaExamples
 unpackDockerExamples.dependsOn unpackDockerAnnotations
-unpackKubernetesAnnotations.dependsOn unpackDockerExamples
-unpackKubernetesExamples.dependsOn unpackKubernetesAnnotations
-unpackStdLibs.dependsOn unpackKubernetesExamples
 unpackC2cLibs.dependsOn unpackStdLibs
 unpackBalCommand.dependsOn unpackC2cLibs
 
@@ -1509,3 +1466,6 @@ deleteTemporaryFiles.dependsOn testExamples
 deleteTemporaryFiles.dependsOn testStdlibs
 deleteTemporaryFiles.dependsOn testDevTools
 build.dependsOn deleteTemporaryFiles
+
+unpackStdLibs.dependsOn unpackBallerinaJre
+unpackStdLibs.dependsOn unpackJballerinaTools
