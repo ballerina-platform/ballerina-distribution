@@ -1,0 +1,8 @@
+hostName = "192.0.1.2"
+port = 9090
+enableRemote = false
+maxPayload = 0.321
+
+# The below toml table specification must be provided for module execution
+# [organizationName.packageName.submoduleName]
+# variable-name = value

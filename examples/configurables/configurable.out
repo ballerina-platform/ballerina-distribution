@@ -1,0 +1,11 @@
+# To run this sample, navigate to the directory that contains the
+# `.bal` file and the `configuration.toml`, and execute the `ballerina run` command below.
+ballerina run configurable.bal
+
+# The output will be as follows:
+Service created successfully with configuration,
+     host : 192.0.1.2
+     port : 9090
+     protocol : http
+     maximum payload (in MB) : 0.321
+     Remote enabled : false

@@ -1,0 +1,10 @@
+// The configurable variables feature allows configuration of module level
+// basic variables at the program execution. This enables user to initialize
+// variables with externally provided values. These variables can be
+// initialized using the `configurable` keyword.
+
+// The values of configurable variables can be provided in a file named
+// `configuration.toml` located in the running directory.
+// The configuration file must be in the TOML(v0.4) format.
+// Currently, Ballerina supports this feature for basic types `int`, `float`,
+// `boolean` and `string`.
