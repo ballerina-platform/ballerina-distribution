@@ -48,19 +48,11 @@ public class DistributionArtifactCheckTest {
     public void dockerAnnotationExistsTest() {
         Path birPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
-                .resolve("bir-cache")
+                .resolve("repo")
+                .resolve("cache")
                 .resolve("ballerina")
                 .resolve("docker")
-                .resolve("1.0.0")
-                .resolve("docker.bir");
-    
-        Path tomlPath = TEST_DISTRIBUTION_PATH
-                .resolve(DIST_NAME)
-                .resolve("bir-cache")
-                .resolve("ballerina")
-                .resolve("docker")
-                .resolve("1.0.0")
-                .resolve("Ballerina.toml");
+                .resolve("1.0.0");
         
         Path breLibPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
@@ -78,8 +70,6 @@ public class DistributionArtifactCheckTest {
                 .resolve("docker");
         
         Assert.assertTrue(Files.exists(birPath));
-        Assert.assertTrue(Files.exists(tomlPath));
-        Assert.assertTrue(Files.exists(breLibPath.resolve("ballerina-docker-1.0.0.jar")));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "docker-extension-"));
         Assert.assertTrue(Files.exists(bbePath));
         Assert.assertTrue(Files.exists(docsPath));
@@ -89,11 +79,11 @@ public class DistributionArtifactCheckTest {
     public void awsLambdaAnnotationExistsTest() {
         Path birPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
-                .resolve("bir-cache")
+                .resolve("repo")
+                .resolve("cache")
                 .resolve("ballerinax")
                 .resolve("awslambda")
-                .resolve("0.0.0")
-                .resolve("awslambda.bir");
+                .resolve("0.0.0");
     
         Path breLibPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
@@ -111,7 +101,6 @@ public class DistributionArtifactCheckTest {
                 .resolve("awslambda");
     
         Assert.assertTrue(Files.exists(birPath));
-        Assert.assertTrue(Files.exists(breLibPath.resolve("ballerinax-awslambda-0.0.0.jar")));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "awslambda-extension-"));
         Assert.assertTrue(Files.exists(bbePath));
         Assert.assertTrue(Files.exists(docsPath));
@@ -121,11 +110,11 @@ public class DistributionArtifactCheckTest {
     public void azFunctionsAnnotationExistsTest() {
         Path birPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
-                .resolve("bir-cache")
+                .resolve("repo")
+                .resolve("cache")
                 .resolve("ballerinax")
-                .resolve("azure.functions")
-                .resolve("1.0.0")
-                .resolve("azure.functions.bir");
+                .resolve("azure_functions")
+                .resolve("1.0.0");
         
         Path breLibPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
@@ -143,7 +132,6 @@ public class DistributionArtifactCheckTest {
                 .resolve("azure.functions");
         
         Assert.assertTrue(Files.exists(birPath));
-        Assert.assertTrue(Files.exists(breLibPath.resolve("ballerinax-azure.functions-1.0.0.jar")));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "azurefunctions-extension-"));
         Assert.assertTrue(Files.exists(bbePath));
         Assert.assertTrue(Files.exists(docsPath));

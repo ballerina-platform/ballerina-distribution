@@ -37,7 +37,7 @@ ext {
     netLingalaZip4jVersion = "2.3.2"
     commonsIoVersion = "2.6"
     commonsLang3Version = "3.9"
-    c2cVersion = "2.0.0"
+    c2cVersion = project.ballerinaVersion
 }
 
 allprojects {
@@ -415,17 +415,17 @@ subprojects {
 
         /* AWSLambda extension */
         exten "org.ballerinax.awslambda:awslambda-extension:${awslambdaVersion}"
-        awsLambdaBalo "org.ballerinax.awslambda:awslambda-extension-balo:${awslambdaVersion}@zip"
+        awsLambdaBalo "org.ballerinax.awslambda:awslambda-extension-balo:${awslambdaVersion}"
         awsLambdaExamples "org.ballerinax.awslambda:awslambda-extension-examples:${awslambdaVersion}@zip"
 
         /* Azure Functions extension */
         exten "org.ballerinax.azurefunctions:azurefunctions-extension:${azFunctionsVersion}"
-        azFunctionsBalo "org.ballerinax.azurefunctions:azurefunctions-extension-balo:${azFunctionsVersion}@zip"
+        azFunctionsBalo "org.ballerinax.azurefunctions:azurefunctions-extension-balo:${azFunctionsVersion}"
         azFunctionsExamples "org.ballerinax.azurefunctions:azurefunctions-extension-examples:${azFunctionsVersion}@zip"
 
         /* Docker extension */
         exten "org.ballerinax.docker:docker-extension:${dockerVersion}@jar"
-        dockerAnnotations "org.ballerinax.docker:docker-extension-annotations:${dockerVersion}@zip"
+        dockerAnnotations "org.ballerinax.docker:docker-extension-annotations:${dockerVersion}"
         dockerExamples "org.ballerinax.docker:docker-extension-examples:${dockerVersion}@zip"
 
         /* Data Mapper extension */
