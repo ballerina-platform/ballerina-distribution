@@ -206,6 +206,19 @@ task copyOtherRepos(type: Copy) {
             from "${artifactExtractedPath}/cache"
         }
     }
+
+    // Here we extract the platform dependencies in to the cache
+    fileTree("${ballerinaDist}/repo/balo").matching {
+        include "**/*.balo"
+    }.each {
+        def baloPath = it.path.toString()
+        def targetPath = it.parent.toString()
+        copy {
+            from zipTree(baloPath).matching { include "**/*.jar"}
+            into "${targetPath}"
+        }
+    }
+
 }
 
 task combineDocs(type: Exec) {
