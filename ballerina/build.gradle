@@ -736,6 +736,13 @@ task testExamples() {
 
     // The following BBEs will not be verified by compiling/running.
     def buildIgnoreList = [
+            'websocket-proxy-server',
+            'crypto',
+            'math-functions',
+            'java-arrays',
+            'record-io',
+            'modules',
+            'any-type',
             'secured_client_with_oauth2',
             'send_and_receive_emails',
             'proto-to-ballerina',
@@ -931,7 +938,7 @@ task testExamples() {
             //TODO: Need to verify with windows
             exec {
                 workingDir "${baseBuildPath}/${bbe}"
-                commandLine 'cmd', '/c', "${distPath}/bin/ballerina/ballerina.bat init"
+                commandLine 'cmd', '/c', "${distPath}/bin/ballerina/ballerina.bat init test"
             }
 
             exitVal = exec {
@@ -942,7 +949,7 @@ task testExamples() {
         } else {
             exec {
                 workingDir "${baseBuildPath}/${bbe}"
-                commandLine 'sh', '-c', "${distPath}/bin/ballerina init"
+                commandLine 'sh', '-c', "${distPath}/bin/ballerina init test"
             }
 
             exitVal = exec {
@@ -957,149 +964,149 @@ task testExamples() {
         return false;
     }
 
-    ext.outputVerification = { bbe ->
-        def directoryPath = "${baseBuildPath}/${bbe}"
-        File fileReference
-        def curlCommands = []
-        def ports = []
-        def fileOut = []
-        def balName = bbe.replace('-', '_') + ".bal"
-        FileTree tree = fileTree(directoryPath)
-        def curlCommandsFilePath = "${directoryPath}/curlcommandout.txt"
-        def portFilePath = "${directoryPath}/ports.txt"
-        def outputFilePath = "${directoryPath}/output.txt"
-        def additionalBuildParams = ""
-        if (bbe == "secured-service-with-basic-auth" || bbe == "secured-client-with-basic-auth") {
-            additionalBuildParams = "--b7a.config.file=${baseBuildPath}/${bbe}/sample-users.toml"
-        }
-        tree.each { content ->
-            if (content.name.contains("client.out")) {
-                fileReference = file(content)
-                fileReference.readLines().each { lines ->
-                    fileOut.add(lines.trim())
-                    if (lines.startsWith("curl")) {
-                        lines = lines.trim() + " >> output.txt"
-                        curlCommands.add(lines)
-                        if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                            curlCommands.add("echo. >> output.txt")
-                        } else {
-                            curlCommands.add("echo >> output.txt")
-                        }
-                    }
-                }
-            } else if (content.name.contains("server.out") || content.name.contains("service.out")) {
-                fileReference = file(content)
-                String portPrefix = "[ballerina/http] started HTTP/WS listener 0.0.0.0:"
-                fileReference.readLines().each { lines ->
-                    if (lines.contains(portPrefix)) {
-                        lines = (lines - portPrefix).trim()
-                        ports.add(lines)
-                    }
-                }
-            }
-        }
-        def failFlag = false
-        if (!ports.isEmpty() && !curlCommands.isEmpty()) {
-            fileReference = new File(portFilePath)
-            ports.each {
-                fileReference << "${it}\n"
-            }
-            fileReference = new File(curlCommandsFilePath)
-            curlCommands.each {
-                fileReference << "${it}\n"
-            }
-            def scriptPath = "${project.rootDir}/ballerina/lib"
-            def exitVal
-            if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                exitVal = exec {
-                    def windowsPath = scriptPath.replace('/', '\\')
-                    workingDir "$windowsPath"
-                    commandLine "$windowsPath\\run.bat", "${directoryPath}", "${distPath}/bin/ballerina.bat", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath} ${additionalBuildParams}"
-                    ignoreExitValue true
-                }
-            } else {
-                exitVal = exec {
-                    workingDir "$scriptPath"
-                    commandLine "bash", "run.sh", "${directoryPath}", "${distPath}/bin/./ballerina", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath} ${additionalBuildParams}"
-                    ignoreExitValue true
-                }
-            }
-            // Return immediately if command failed
-            if (exitVal.getExitValue() == 1) {
-                println "Failed due to build failure."
-                return true;
-            }
-            File bbeOutput = new File(outputFilePath)
-            if (bbeOutput.exists()) {
-                bbeOutput.readLines().each {
-                    if (!fileOut.contains(it.trim()) && it) {
-                        println "Failed due to output did not match. Line ${it}"
-                        failFlag = true
-                    }
-                }
-            }
-            delete portFilePath
-            delete curlCommandsFilePath
-            delete outputFilePath
-        } else if (ports.isEmpty() && curlCommands.isEmpty()) {
-            balName = bbe.replace('-', '_')
-            def str = ""
-            fileOut = []
-            def bbeOutput = []
-            def cmdOutAry = []
-            def errOut = new ByteArrayOutputStream()
-            new ByteArrayOutputStream().withStream { os ->
-                if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                    exec {
-                        workingDir "${directoryPath}"
-                        commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'run', '--experimental', "${balName}.bal", "--b7a.home=${distPath} ${additionalBuildParams}"
-                        ignoreExitValue true
-                        standardOutput = os
-                        errorOutput = errOut
-                    }
-                } else {
-                    exec {
-                        workingDir "${directoryPath}"
-                        commandLine 'sh', '-c', "${distPath}/bin/ballerina run --experimental ${balName}.bal --b7a.home=${distPath} ${additionalBuildParams}"
-                        ignoreExitValue true
-                        standardOutput = os
-                        errorOutput = errOut
-                    }
-                }
-                cmdOutAry.add(os.toString())
-                cmdOutAry.add(errOut.toString())
-            }
-
-            File file = file("${directoryPath}/${balName}.out")
-            file.readLines().each {
-                str = it.trim()
-                if (str?.trim()) {
-                    if (str[0] != '#') {
-                        fileOut.add(str)
-                    }
-                }
-            }
-
-            def lines = "${cmdOutAry[0]}".split('\n')
-            lines = lines + "${cmdOutAry[1]}".split('\n')
-            lines.each {
-                str = it.trim()
-                if (str != "Compiling source" && str != "${balName}.bal" && str != "Running executables" && str != ""
-                        && str != "Picked up JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF8") {
-                    bbeOutput.add(str)
-                }
-            }
-
-            for (int i = 0; i < bbeOutput.size(); i++) {
-                def index = fileOut.findIndexOf { it == bbeOutput[i] }
-                if (index == -1) {
-                    println "Failed due to output did not match. Line ${i}: ${bbeOutput[i]}"
-                    failFlag = true;
-                }
-            }
-        }
-        return failFlag
-    }
+//    ext.outputVerification = { bbe ->
+//        def directoryPath = "${baseBuildPath}/${bbe}"
+//        File fileReference
+//        def curlCommands = []
+//        def ports = []
+//        def fileOut = []
+//        def balName = bbe.replace('-', '_') + ".bal"
+//        FileTree tree = fileTree(directoryPath)
+//        def curlCommandsFilePath = "${directoryPath}/curlcommandout.txt"
+//        def portFilePath = "${directoryPath}/ports.txt"
+//        def outputFilePath = "${directoryPath}/output.txt"
+//        def additionalBuildParams = ""
+//        if (bbe == "secured-service-with-basic-auth" || bbe == "secured-client-with-basic-auth") {
+//            additionalBuildParams = "--b7a.config.file=${baseBuildPath}/${bbe}/sample-users.toml"
+//        }
+//        tree.each { content ->
+//            if (content.name.contains("client.out")) {
+//                fileReference = file(content)
+//                fileReference.readLines().each { lines ->
+//                    fileOut.add(lines.trim())
+//                    if (lines.startsWith("curl")) {
+//                        lines = lines.trim() + " >> output.txt"
+//                        curlCommands.add(lines)
+//                        if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+//                            curlCommands.add("echo. >> output.txt")
+//                        } else {
+//                            curlCommands.add("echo >> output.txt")
+//                        }
+//                    }
+//                }
+//            } else if (content.name.contains("server.out") || content.name.contains("service.out")) {
+//                fileReference = file(content)
+//                String portPrefix = "[ballerina/http] started HTTP/WS listener 0.0.0.0:"
+//                fileReference.readLines().each { lines ->
+//                    if (lines.contains(portPrefix)) {
+//                        lines = (lines - portPrefix).trim()
+//                        ports.add(lines)
+//                    }
+//                }
+//            }
+//        }
+//        def failFlag = false
+//        if (!ports.isEmpty() && !curlCommands.isEmpty()) {
+//            fileReference = new File(portFilePath)
+//            ports.each {
+//                fileReference << "${it}\n"
+//            }
+//            fileReference = new File(curlCommandsFilePath)
+//            curlCommands.each {
+//                fileReference << "${it}\n"
+//            }
+//            def scriptPath = "${project.rootDir}/ballerina/lib"
+//            def exitVal
+//            if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+//                exitVal = exec {
+//                    def windowsPath = scriptPath.replace('/', '\\')
+//                    workingDir "$windowsPath"
+//                    commandLine "$windowsPath\\run.bat", "${directoryPath}", "${distPath}/bin/ballerina.bat", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath} ${additionalBuildParams}"
+//                    ignoreExitValue true
+//                }
+//            } else {
+//                exitVal = exec {
+//                    workingDir "$scriptPath"
+//                    commandLine "bash", "run.sh", "${directoryPath}", "${distPath}/bin/./ballerina", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath} ${additionalBuildParams}"
+//                    ignoreExitValue true
+//                }
+//            }
+//            // Return immediately if command failed
+//            if (exitVal.getExitValue() == 1) {
+//                println "Failed due to build failure."
+//                return true;
+//            }
+//            File bbeOutput = new File(outputFilePath)
+//            if (bbeOutput.exists()) {
+//                bbeOutput.readLines().each {
+//                    if (!fileOut.contains(it.trim()) && it) {
+//                        println "Failed due to output did not match. Line ${it}"
+//                        failFlag = true
+//                    }
+//                }
+//            }
+//            delete portFilePath
+//            delete curlCommandsFilePath
+//            delete outputFilePath
+//        } else if (ports.isEmpty() && curlCommands.isEmpty()) {
+//            balName = bbe.replace('-', '_')
+//            def str = ""
+//            fileOut = []
+//            def bbeOutput = []
+//            def cmdOutAry = []
+//            def errOut = new ByteArrayOutputStream()
+//            new ByteArrayOutputStream().withStream { os ->
+//                if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+//                    exec {
+//                        workingDir "${directoryPath}"
+//                        commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'run', '--experimental', "${balName}.bal", "--b7a.home=${distPath} ${additionalBuildParams}"
+//                        ignoreExitValue true
+//                        standardOutput = os
+//                        errorOutput = errOut
+//                    }
+//                } else {
+//                    exec {
+//                        workingDir "${directoryPath}"
+//                        commandLine 'sh', '-c', "${distPath}/bin/ballerina run --experimental ${balName}.bal --b7a.home=${distPath} ${additionalBuildParams}"
+//                        ignoreExitValue true
+//                        standardOutput = os
+//                        errorOutput = errOut
+//                    }
+//                }
+//                cmdOutAry.add(os.toString())
+//                cmdOutAry.add(errOut.toString())
+//            }
+//
+//            File file = file("${directoryPath}/${balName}.out")
+//            file.readLines().each {
+//                str = it.trim()
+//                if (str?.trim()) {
+//                    if (str[0] != '#') {
+//                        fileOut.add(str)
+//                    }
+//                }
+//            }
+//
+//            def lines = "${cmdOutAry[0]}".split('\n')
+//            lines = lines + "${cmdOutAry[1]}".split('\n')
+//            lines.each {
+//                str = it.trim()
+//                if (str != "Compiling source" && str != "${balName}.bal" && str != "Running executables" && str != ""
+//                        && str != "Picked up JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF8") {
+//                    bbeOutput.add(str)
+//                }
+//            }
+//
+//            for (int i = 0; i < bbeOutput.size(); i++) {
+//                def index = fileOut.findIndexOf { it == bbeOutput[i] }
+//                if (index == -1) {
+//                    println "Failed due to output did not match. Line ${i}: ${bbeOutput[i]}"
+//                    failFlag = true;
+//                }
+//            }
+//        }
+//        return failFlag
+//    }
 
     doLast {
         def failedBuildExamples = []
@@ -1109,12 +1116,12 @@ task testExamples() {
             if (buildFailFlag) {
                 failedBuildExamples.add(bbe)
             }
-            if (!outputVerificationIgnoreList.contains(bbe)) {
-                boolean outputVerificationFailFlag = outputVerification(bbe)
-                if (outputVerificationFailFlag) {
-                    failOutputVerificationExamples.add(bbe)
-                }
-            }
+//            if (!outputVerificationIgnoreList.contains(bbe)) {
+//                boolean outputVerificationFailFlag = outputVerification(bbe)
+//                if (outputVerificationFailFlag) {
+//                    failOutputVerificationExamples.add(bbe)
+//                }
+//            }
         }
 
         boolean buildFailure = false
@@ -1197,7 +1204,7 @@ task testStdlibs() {
                 //TODO: Need to verify with windows
                 exec {
                     workingDir "${baseBuildPath}/${stdlibTest}"
-                    commandLine 'cmd', '/c', "${distPath}/bin/ballerina/ballerina.bat init"
+                    commandLine 'cmd', '/c', "${distPath}/bin/ballerina/ballerina.bat init test"
                 }
                 exec {
                     workingDir "${buildDir}/${stdlibTest}"
@@ -1206,7 +1213,7 @@ task testStdlibs() {
             } else {
                 exec {
                     workingDir "${baseBuildPath}/${stdlibTest}"
-                    commandLine 'sh', '-c', "${distPath}/bin/ballerina init"
+                    commandLine 'sh', '-c', "${distPath}/bin/ballerina init test"
                 }
                 exec {
                     workingDir "${baseBuildPath}/${stdlibTest}"
@@ -1273,7 +1280,7 @@ task testDevTools() {
                 if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                     exec {
                         workingDir "${buildDir}/${devtoolsProject}"
-                        commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat init"
+                        commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat init test"
                     }
                     exec {
                         workingDir "${buildDir}/${devtoolsProject}"
@@ -1284,7 +1291,7 @@ task testDevTools() {
                     exec {
                         workingDir "${baseBuildPath}/${devtoolsProject}"
                         commandLine 'sh', '-c',
-                                "${distPath}/bin/ballerina init"
+                                "${distPath}/bin/ballerina init test"
                     }
                     exec {
                         workingDir "${baseBuildPath}/${devtoolsProject}"
