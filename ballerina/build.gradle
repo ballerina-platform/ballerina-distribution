@@ -736,6 +736,12 @@ task testExamples() {
 
     // The following BBEs will not be verified by compiling/running.
     def buildIgnoreList = [
+            'http-retry',
+            'http-failover',
+            'http-load-balancer',
+            'http-circuit-breaker',
+            'http-redirects',
+            'cache',
             'websocket-proxy-server',
             'crypto',
             'math-functions',
