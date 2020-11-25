@@ -68,10 +68,6 @@
     "path": "websub"
   },
   {
-    "name": "IO standard library",
-    "path": "io"
-  },
-  {
     "name": "Config standard library",
     "path": "config"
   }
