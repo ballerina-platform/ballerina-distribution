@@ -528,9 +528,14 @@
         "title": "Isolation",
         "column": 2,
         "category": "Language concepts",
-        "samples": [{
+        "samples": [
+            {
                 "name": "Isolated Objects",
                 "url": "isolated-objects"
+            },
+            {
+                "name": "Isolated Variables",
+                "url": "isolated-variables"
             },
             {
                 "name": "Isolated Functions",

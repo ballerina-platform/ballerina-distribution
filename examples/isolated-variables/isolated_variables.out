@@ -1,0 +1,6 @@
+# To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run isolated_variables.bal
+Added coordinates for Colombo
+Added coordinates for Kandy
+["Colombo - 6.9271° N, 79.8612° E","Kandy - 7.2906° N, 80.6337° E"]

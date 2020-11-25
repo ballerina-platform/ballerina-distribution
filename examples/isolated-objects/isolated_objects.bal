@@ -48,9 +48,9 @@ isolated class Cities {
         lock {
             // Similarly, transferring values out of the `lock` statement (and
             // thereby the object), either using a `return` statement or by
-            // assigning to a variable defined outside the object, is also
-            // constrained. The expressions transferring values out need to be
-            // isolated expressions.
+            // assigning to a variable defined outside the `lock` statement,
+            // is also constrained. The expressions transferring values out
+            // need to be isolated expressions.
             return self.cities[city].clone();
         }
     }

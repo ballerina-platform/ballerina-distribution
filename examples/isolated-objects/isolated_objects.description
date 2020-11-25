@@ -4,8 +4,9 @@
 // `isolated object {}` has to be a `private` field. Such a field can only be accessed within a
 // `lock` statement, ensuring that there will be no data race when accessing the mutable state of
 // an `isolated` object.
-// If a method accesses such a field, additional rules apply to how values are transferred in and out
-// in order to ensure that there are no references into the object’s mutable storage except via
-// `isolated` objects. The initial value expressions of the fields also need to ensure the same.
+// If a `lock` statement in a method accesses such a field, additional rules apply to how values are
+// transferred in and out of the `lock` statement in order to ensure that there are no references
+// into the object’s mutable storage except via `isolated` objects.
+// The initial value expressions of the fields also need to ensure the same.
 // A method accessing such a field can call another function/method only if that function/method
 // is `isolated`.
