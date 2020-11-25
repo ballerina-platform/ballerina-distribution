@@ -8,5 +8,5 @@
 // transferred in and out of the `lock` statement in order to ensure that there are no references
 // into the object’s mutable storage except via `isolated` objects.
 // The initial value expressions of the fields also need to ensure the same.
-// A method accessing such a field can call another function/method only if that function/method
-// is `isolated`.
+// A function/method call within a `lock` statement that accesses such a field should call a
+// function/method that is `isolated`.

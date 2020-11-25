@@ -6,5 +6,5 @@
 // If a `lock` statement in a function accesses such a field, additional rules apply to how values are
 // transferred in and out of the `lock` statement, similar to `isolated` objects.
 // The initial value expression of the variable also needs to be an isolated expression.
-// A method accessing such a variable can call another function/method only if that function/method
-// is `isolated`.
+// A function/method call within a `lock` statement that accesses an `isolated` variable should call a
+// function/method that is `isolated`.
