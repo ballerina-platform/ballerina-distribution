@@ -1,4 +1,6 @@
-// An `isolated` function is a function that accesses mutable state only via its parameters.
-// Such a function can only access module level state if it is final and the type is a subtype of
-// `readonly` or `isolated object {}`. Any function or method call in an `isolated` function should
-// also be calling an `isolated` function or method.
+// An `isolated` function is a function within which specific rules apply when accessing mutable state.
+// An `isolated` function can access mutable state that is passed as a parameter.
+// Such a function can access non-`isolated` module-level state only if the variable is `final` and
+// the type is a subtype of `readonly` or `isolated object {}`.
+// An `isolated` function can access `isolated` module-level variables given that they do so within a `lock` statement.
+// Any function or method call in an `isolated` function should also be calling an `isolated` function or method.
