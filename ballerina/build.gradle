@@ -134,6 +134,14 @@ task unpackC2cLibs() {
     }
 }
 
+task unpackC2cExamples(type: Copy) {
+    group = "unpack_dependencies"
+    configurations.ballerinaC2cExamples.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+        from zipTree(artifact.getFile())
+        into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
+    }
+}
+
 task unpackBalCommand(type: Copy) {
     group = "unpack_dependencies"
     configurations.balCommand.resolvedConfiguration.resolvedArtifacts.each { artifact ->
@@ -275,6 +283,10 @@ task packageDist(type: Zip) {
         from "build/target/extracted-distributions/docker-extension-examples-zip"
         exclude "index.js"
     }
+    into("${parentDir}/examples") {
+        from "build/target/extracted-distributions/c2c-extension-examples-zip"
+        exclude "index.js"
+    }
     into("${parentDir}/repo/cache/") {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/cache"
     }
@@ -348,6 +360,10 @@ task packageDistZip(type: Zip) {
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
         from "build/target/extracted-distributions/docker-extension-examples-zip"
+        exclude "index.js"
+    }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
+        from "build/target/extracted-distributions/c2c-extension-examples-zip"
         exclude "index.js"
     }
     into("${parentDir}/distributionsx/ballerina-${shortVersion}/repo/balo/") {
@@ -436,6 +452,10 @@ task packageDistLinux(type: Zip) {
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
         from "build/target/extracted-distributions/docker-extension-examples-zip"
+        exclude "index.js"
+    }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
+        from "build/target/extracted-distributions/c2c-extension-examples-zip"
         exclude "index.js"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerina/docker") {
@@ -542,6 +562,10 @@ task packageDistMac(type: Zip) {
         from "build/target/extracted-distributions/docker-extension-examples-zip"
         exclude "index.js"
     }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
+        from "build/target/extracted-distributions/c2c-extension-examples-zip"
+        exclude "index.js"
+    }
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerina/docker") {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/docker/cache"
     }
@@ -639,6 +663,10 @@ task packageDistWindows(type: Zip) {
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
         from "build/target/extracted-distributions/docker-extension-examples-zip"
+        exclude "index.js"
+    }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
+        from "build/target/extracted-distributions/c2c-extension-examples-zip"
         exclude "index.js"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerina/docker") {
@@ -755,6 +783,7 @@ task testExamples() {
             'websub-hub-client-sample',
             'websub-remote-hub-sample',
             'docker-deployment',
+            'c2c-deployment',
             'aws-lambda-deployment',
             'azure-functions-deployment',
             'openshift-deployment',
@@ -1466,7 +1495,8 @@ unpackDockerAnnotations.dependsOn unpackAwsLambdaExamples
 unpackDockerExamples.dependsOn unpackDockerAnnotations
 unpackStdLibs.dependsOn unpackDockerExamples
 unpackC2cLibs.dependsOn unpackStdLibs
-unpackBalCommand.dependsOn unpackC2cLibs
+unpackC2cExamples.dependsOn unpackC2cLibs
+unpackBalCommand.dependsOn unpackC2cExamples
 
 /* Extract JRE */
 extractJreForLinux.dependsOn unpackBalCommand
