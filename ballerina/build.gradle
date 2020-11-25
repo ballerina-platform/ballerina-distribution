@@ -193,9 +193,9 @@ task copyOtherRepos(type: Copy) {
     /* C2C Libraries */
     configurations.ballerinaC2cLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
-        into("bre/lib/") {
-            from "${artifactExtractedPath}/libs"
-        }
+//        into("bre/lib/") {
+//            from "${artifactExtractedPath}/libs"
+//        }
         into("docs/") {
             from "${artifactExtractedPath}/docs"
         }
