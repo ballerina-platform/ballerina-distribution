@@ -577,7 +577,8 @@
         "title": "I/O",
         "column": 3,
         "category": "Language concepts",
-        "samples": [{
+        "samples": [
+            {
                 "name": "Byte I/O",
                 "url": "byte-io"
             },
@@ -602,12 +603,8 @@
                 "url": "xml-io"
             },
             {
-                "name": "Read/Write Files",
-                "url": "character-io"
-            },
-            {
-                "name": "JSON to CSV Transform",
-                "url": "json-csv"
+                "name": "File I/O",
+                "url": "file-io"
             }
         ]
     },
