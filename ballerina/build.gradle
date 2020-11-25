@@ -1217,8 +1217,6 @@ task testDevTools() {
 
     doFirst {
         // Copy compiled pack to baseBuild temp directory
-        println jBallerinaPack
-        println baseBuildPath
         copy {
             from jBallerinaPack
             into baseBuildPath
