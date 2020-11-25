@@ -1138,7 +1138,7 @@ task testStdlibs() {
     patternSet.exclude("**/Ballerina.lock");
     patternSet.exclude("**/ballerina-internal.log")
     inputs.files(files("${distPath}/stdlib-integration-tests").asFileTree.matching(patternSet))
-    def ignoreList = []
+    def ignoreList = ["io", "sql", "kafka"]
 
     doFirst {
         copy {
@@ -1217,6 +1217,8 @@ task testDevTools() {
 
     doFirst {
         // Copy compiled pack to baseBuild temp directory
+        println jBallerinaPack
+        println baseBuildPath
         copy {
             from jBallerinaPack
             into baseBuildPath
