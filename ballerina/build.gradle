@@ -1,28 +1,29 @@
- /*
-  ~ * Copyright (c) 2020, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
-  ~ *
-  ~ * Licensed under the Apache License, Version 2.0 (the "License");
-  ~ * you may not use this file except in compliance with the License.
-  ~ * You may obtain a copy of the License at
-  ~ *
-  ~ * http://www.apache.org/licenses/LICENSE-2.0
-  ~ *
-  ~ * Unless required by applicable law or agreed to in writing, software
-  ~ * distributed under the License is distributed on an "AS IS" BASIS,
-  ~ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ * See the License for the specific language governing permissions and
-  ~ * limitations under the License.
-  ~ */
+/*
+ ~ * Copyright (c) 2020, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ ~ *
+ ~ * Licensed under the Apache License, Version 2.0 (the "License");
+ ~ * you may not use this file except in compliance with the License.
+ ~ * You may obtain a copy of the License at
+ ~ *
+ ~ * http://www.apache.org/licenses/LICENSE-2.0
+ ~ *
+ ~ * Unless required by applicable law or agreed to in writing, software
+ ~ * distributed under the License is distributed on an "AS IS" BASIS,
+ ~ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ ~ * See the License for the specific language governing permissions and
+ ~ * limitations under the License.
+ ~ */
 
+
+import groovy.json.JsonSlurper
 import org.apache.tools.ant.filters.*
 import org.apache.tools.ant.taskdefs.condition.Os
-import groovy.json.JsonSlurper
 
 description = 'Ballerina - Tools'
 
 ext {
-    jreLocation="build/target/ballerina-jre-artifacts-zip/ballerina-jre-artifacts-${ballerinaJreArtifactsVersion}"
-    distributionName="ballerina"
+    jreLocation = "build/target/ballerina-jre-artifacts-zip/ballerina-jre-artifacts-${ballerinaJreArtifactsVersion}"
+    distributionName = "ballerina"
 }
 
 configurations {
@@ -50,16 +51,24 @@ task unpackBallerinaJre(type: Copy) {
 task unpackJballerinaTools(type: Copy) {
     group = "unpack_dependencies"
     configurations.jbalTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-            from zipTree(artifact.getFile())
-            into new File("${buildDir}/target/extracted-distributions", artifact.name+"-zip")
+        from zipTree(artifact.getFile())
+        into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
     }
+}
+
+task unpackDevTools(type: Copy) {
+     group = "unpack_dependencies"
+     configurations.devTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+         from zipTree(artifact.getFile())
+         into new File("${buildDir}/target/extracted-distributions", artifact.name+"-zip")
+     }
 }
 
 task unpackAwsLambdaBalo(type: Copy) {
     group = "unpack_dependencies"
     configurations.awsLambdaBalo.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-            from zipTree(artifact.getFile())
-            into new File("${buildDir}/target/extracted-distributions", artifact.name+"-zip")
+        from zipTree(artifact.getFile())
+        into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
     }
 }
 
@@ -74,8 +83,8 @@ task unpackAzFunctionsBalo(type: Copy) {
 task unpackAwsLambdaExamples(type: Copy) {
     group = "unpack_dependencies"
     configurations.awsLambdaExamples.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-            from zipTree(artifact.getFile())
-            into new File("${buildDir}/target/extracted-distributions", artifact.name+"-zip")
+        from zipTree(artifact.getFile())
+        into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
     }
 }
 
@@ -83,39 +92,23 @@ task unpackAzFunctionsExamples(type: Copy) {
     group = "unpack_dependencies"
     configurations.azFunctionsExamples.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         from zipTree(artifact.getFile())
-        into new File("${buildDir}/target/extracted-distributions", artifact.name+"-zip")
+        into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
     }
 }
 
 task unpackDockerAnnotations(type: Copy) {
     group = "unpack_dependencies"
     configurations.dockerAnnotations.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-            from zipTree(artifact.getFile())
-            into new File("${buildDir}/target/extracted-distributions", artifact.name+"-zip")
+        from zipTree(artifact.getFile())
+        into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
     }
 }
 
 task unpackDockerExamples(type: Copy) {
     group = "unpack_dependencies"
     configurations.dockerExamples.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-            from zipTree(artifact.getFile())
-            into new File("${buildDir}/target/extracted-distributions", artifact.name+"-zip")
-    }
-}
-
-task unpackKubernetesAnnotations(type: Copy) {
-    group = "unpack_dependencies"
-    configurations.kubernetesAnnotations.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-            from zipTree(artifact.getFile())
-            into new File("${buildDir}/target/extracted-distributions", artifact.name+"-zip")
-    }
-}
-
-task unpackKubernetesExamples(type: Copy) {
-    group = "unpack_dependencies"
-    configurations.kubernetesExamples.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-            from zipTree(artifact.getFile())
-            into new File("${buildDir}/target/extracted-distributions", artifact.name+"-zip")
+        from zipTree(artifact.getFile())
+        into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
     }
 }
 
@@ -144,31 +137,31 @@ task unpackC2cLibs() {
 task unpackBalCommand(type: Copy) {
     group = "unpack_dependencies"
     configurations.balCommand.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-            from zipTree(artifact.getFile())
-            into new File("${buildDir}/target/extracted-distributions", artifact.name+"-zip")
+        from zipTree(artifact.getFile())
+        into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
     }
 }
 
 task extractJreForLinux(type: Copy) {
     group = "extract_jre"
-    from zipTree{"${jreLocation}/jre-11-linux.zip"}
+    from zipTree { "${jreLocation}/jre-11-linux.zip" }
     into("${buildDir}/target/extracted-jre-linux")
 }
 
 task extractJreForMac(type: Copy) {
     group = "extract_jre"
-    from zipTree{"${jreLocation}/jre-11-macos.zip"}
+    from zipTree { "${jreLocation}/jre-11-macos.zip" }
     into("${buildDir}/target/extracted-jre-macos")
 }
 
 task extractJreForWindows(type: Copy) {
     group = "extract_jre"
-    from zipTree{"${jreLocation}/jre-11-windows.zip"}
+    from zipTree { "${jreLocation}/jre-11-windows.zip" }
     into("${buildDir}/target/extracted-jre-windows")
 }
 
 task deleteTemporaryFiles(type: Delete) {
-    delete 'build/target'
+//    delete 'build/target'
 }
 
 task copyOtherRepos(type: Copy) {
@@ -177,10 +170,6 @@ task copyOtherRepos(type: Copy) {
 
     into("docs") {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/docs"
-    }
-
-    into("docs") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/docs"
     }
 
     into("docs") {
@@ -194,42 +183,60 @@ task copyOtherRepos(type: Copy) {
     /* Standard Libraries */
     configurations.ballerinaStdLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
-        into("bir-cache/") {
-            from "${artifactExtractedPath}/caches/bir"
-        }
         into("bre/lib/") {
             from "${artifactExtractedPath}/libs"
         }
         into("docs/") {
             from "${artifactExtractedPath}/docs"
         }
-        // pack to new cache
-        into("cache/bir/") {
-            from "${artifactExtractedPath}/caches/bir"
+        into("repo/balo") {
+            from "${artifactExtractedPath}/balo"
         }
-        into("cache/balo/") {
-            from "${artifactExtractedPath}/caches/balo"
+        into("repo/cache") {
+            from "${artifactExtractedPath}/cache"
         }
-        into("cache/jar/") {
-            from "${artifactExtractedPath}/caches/jar"
-        }
+
     }
 
     /* C2C Libraries */
     configurations.ballerinaC2cLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
-        into("bre/lib/") {
-            from "${artifactExtractedPath}/libs"
-        }
+//        into("bre/lib/") {
+//            from "${artifactExtractedPath}/libs"
+//        }
         into("docs/") {
             from "${artifactExtractedPath}/docs"
         }
-        into("bir-cache/") {
-            from "${artifactExtractedPath}/caches/bir"
+        into("repo/balo") {
+            from "${artifactExtractedPath}/balo"
+        }
+        into("repo/cache") {
+            from "${artifactExtractedPath}/cache"
         }
     }
-}
 
+    // Here we extract the platform dependencies in to the cache
+    fileTree("${ballerinaDist}/repo/balo").matching {
+        include "**/*.balo"
+    }.each {
+        def baloPath = it.path.toString()
+        def targetPath = it.parent.toString()
+        copy {
+            from zipTree(baloPath).matching { include "**/*.jar" }
+            into "${targetPath}"
+        }
+    }
+
+}
+task copyDevToolsCoverageReport(type: Copy) {
+     from "$project.buildDir/target/extracted-distributions/ballerina-dev-tools-zip/testerina-report-tools-${ballerinaVersion}.zip"
+     into "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/lib/tools/coverage"
+     rename ("testerina-report-tools-${ballerinaVersion}.zip", "report.zip")
+}
+task copyDevToolsDocUi(type: Copy) {
+    from zipTree("$project.buildDir/target/extracted-distributions/ballerina-dev-tools-zip/docerina-ui-${ballerinaVersion}.zip")
+    into "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/lib/tools/doc-ui"
+}
 task combineDocs(type: Exec) {
     workingDir "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs"
     if (Os.isFamily(Os.FAMILY_WINDOWS)) {
@@ -245,9 +252,9 @@ task packageDist(type: Zip) {
     group = "package_distribution"
     description = 'Ballerina Tools Distribution Assembly'
     baseName = "${distributionName}"
-    ext{parentDir="${baseName}-${shortVersion}"}
-    archiveFileName="${baseName}-${shortVersion}.zip"
-    entryCompression=ZipEntryCompression.STORED
+    ext { parentDir = "${baseName}-${shortVersion}" }
+    archiveFileName = "${baseName}-${shortVersion}.zip"
+    entryCompression = ZipEntryCompression.STORED
 
     into("${parentDir}") {
         from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
@@ -268,32 +275,24 @@ task packageDist(type: Zip) {
         from "build/target/extracted-distributions/docker-extension-examples-zip"
         exclude "index.js"
     }
-    into("${parentDir}/examples") {
-        from "build/target/extracted-distributions/kubernetes-extension-examples-zip"
-        exclude "index.js"
+    into("${parentDir}/repo/cache/") {
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/cache"
     }
-    into("${parentDir}/bir-cache/ballerina/docker") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/docker"
+    into("${parentDir}/repo/cache") {
+        from "build/target/extracted-distributions/awslambda-extension-balo-zip/cache"
     }
-    into("${parentDir}/bir-cache/ballerina/kubernetes") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes"
+    into("${parentDir}/repo/cache") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/cache"
     }
-    into("${parentDir}/bir-cache/ballerina/istio") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/istio"
+    into("${parentDir}/repo/balo/") {
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/balo/"
     }
-    into("${parentDir}/bir-cache/ballerina/openshift") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/openshift"
+    into("${parentDir}/repo/balo/") {
+        from "build/target/extracted-distributions/awslambda-extension-balo-zip/balo/"
     }
-    into("${parentDir}/bir-cache/ballerina/knative") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/knative"
+    into("${parentDir}/repo/balo/") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/balo/"
     }
-    into("${parentDir}/bir-cache/ballerinax/awslambda") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/awslambda"
-    }
-    into("${parentDir}/bir-cache/ballerinax/azure.functions") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/azure.functions"
-    }
-
     /* Files */
     into("${parentDir}/lib/") {
         from "lib/version.txt"
@@ -301,34 +300,17 @@ task packageDist(type: Zip) {
         filter(ReplaceTokens, tokens: [version: version])
     }
     into("${parentDir}/bre/lib") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/ballerinax-awslambda-0.0.0.jar"
+        from "build/target/extracted-distributions/awslambda-extension-balo-zip/libs"
         fileMode = 0644
     }
     into("${parentDir}/bre/lib") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/ballerinax-azure.functions-1.0.0.jar"
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/libs"
         fileMode = 0644
     }
     into("${parentDir}/bre/lib") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/ballerina-docker-1.0.0.jar"
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/libs"
         fileMode = 0644
     }
-    into("${parentDir}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-kubernetes-1.0.0.jar"
-        fileMode = 0644
-    }
-    into("${parentDir}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-istio-1.0.0.jar"
-        fileMode = 0644
-    }
-    into("${parentDir}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-openshift-1.0.0.jar"
-        fileMode = 0644
-    }
-    into("${parentDir}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-knative-1.0.0.jar"
-        fileMode = 0644
-    }
-
     /* Dependencies */
     into("${parentDir}/bre/lib") {
         from configurations.exten
@@ -345,8 +327,8 @@ task packageDistZip(type: Zip) {
     group = "package_distribution"
     description = 'Ballerina Distribution Assembly'
     baseName = "${distributionName}"
-    ext{parentDir="${baseName}-${version}"}
-    entryCompression=ZipEntryCompression.STORED
+    ext { parentDir = "${baseName}-${version}" }
+    entryCompression = ZipEntryCompression.STORED
 
     into("${parentDir}") {
         from({ new File(temporaryDir, 'dependencies').mkdirs(); temporaryDir })
@@ -368,30 +350,14 @@ task packageDistZip(type: Zip) {
         from "build/target/extracted-distributions/docker-extension-examples-zip"
         exclude "index.js"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/kubernetes-extension-examples-zip"
-        exclude "index.js"
+    into("${parentDir}/distributionsx/ballerina-${shortVersion}/repo/balo/") {
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/balo/"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerina/docker") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/docker"
+    into("${parentDir}/distributionsx/ballerina-${shortVersion}/repo/balo/") {
+        from "build/target/extracted-distributions/awslambda-extension-balo-zip/balo/"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerina/kubernetes") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerina/istio") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/istio"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerina/openshift") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/openshift"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerina/knative") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/knative"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerinax/awslambda") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/awslambda"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerinax/azure.functions") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/azure.functions"
+    into("${parentDir}/distributionsx/ballerina-${shortVersion}/repo/balo/") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/balo/"
     }
 
     /* Tools artifacts */
@@ -413,35 +379,6 @@ task packageDistZip(type: Zip) {
         fileMode = 0644
         filter(ReplaceTokens, tokens: [version: shortVersion])
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/ballerinax-awslambda-0.0.0.jar"
-        fileMode = 0644
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/ballerinax-azure.functions-1.0.0.jar"
-        fileMode = 0644
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/ballerina-docker-1.0.0.jar"
-        fileMode = 0644
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-kubernetes-1.0.0.jar"
-        fileMode = 0644
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-istio-1.0.0.jar"
-        fileMode = 0644
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-openshift-1.0.0.jar"
-        fileMode = 0644
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-knative-1.0.0.jar"
-        fileMode = 0644
-    }
-
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/ballerina-version"
         fileMode = 0644
@@ -478,8 +415,8 @@ task packageDistLinux(type: Zip) {
     group = "package_distribution"
     description = 'Ballerina Linux Distribution Assembly'
     baseName = "${distributionName}-linux"
-    ext{parentDir="${baseName}-${version}"}
-    entryCompression=ZipEntryCompression.STORED
+    ext { parentDir = "${baseName}-${version}" }
+    entryCompression = ZipEntryCompression.STORED
 
     into("${parentDir}/dependencies") {
         from "build/target/extracted-jre-linux"
@@ -501,30 +438,23 @@ task packageDistLinux(type: Zip) {
         from "build/target/extracted-distributions/docker-extension-examples-zip"
         exclude "index.js"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/kubernetes-extension-examples-zip"
-        exclude "index.js"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerina/docker") {
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/docker/cache"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerina/docker") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/docker"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerinax/awslambda") {
+        from "build/target/extracted-distributions/awslambda-extension-balo-zip/awslambda/cache"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerina/kubernetes") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerinax/azure.functions") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/azure.functions/cache"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerina/istio") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/istio"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerina/docker") {
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/docker/balo"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerina/openshift") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/openshift"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerinax/awslambda") {
+        from "build/target/extracted-distributions/awslambda-extension-balo-zip/awslambda/balo"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerina/knative") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/knative"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerinax/awslambda") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/awslambda"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerinax/azure.functions") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/azure.functions"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerinax/azure.functions") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/azure.functions/balo"
     }
 
     /* Tools artifacts */
@@ -558,23 +488,6 @@ task packageDistLinux(type: Zip) {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/ballerina-docker-1.0.0.jar"
         fileMode = 0644
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-kubernetes-1.0.0.jar"
-        fileMode = 0644
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-istio-1.0.0.jar"
-        fileMode = 0644
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-openshift-1.0.0.jar"
-        fileMode = 0644
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-knative-1.0.0.jar"
-        fileMode = 0644
-    }
-
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/ballerina-version"
         fileMode = 0644
@@ -591,11 +504,11 @@ task packageDistLinux(type: Zip) {
     }
 
     /* Dependencies */
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib"){
+    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
         from configurations.exten
     }
 
-    doLast{
+    doLast {
         println 'Ballerina Linux Distribution Packaged'
     }
 
@@ -606,8 +519,8 @@ task packageDistMac(type: Zip) {
     group = "package_distribution"
     description = 'Ballerina MacOS Distribution Assembly'
     baseName = "${distributionName}-macos"
-    ext{parentDir="${baseName}-${version}"}
-    entryCompression=ZipEntryCompression.STORED
+    ext { parentDir = "${baseName}-${version}" }
+    entryCompression = ZipEntryCompression.STORED
 
     into("${parentDir}/dependencies") {
         from "build/target/extracted-jre-macos"
@@ -629,30 +542,23 @@ task packageDistMac(type: Zip) {
         from "build/target/extracted-distributions/docker-extension-examples-zip"
         exclude "index.js"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/kubernetes-extension-examples-zip"
-        exclude "index.js"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerina/docker") {
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/docker/cache"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerina/docker") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/docker"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerinax/awslambda") {
+        from "build/target/extracted-distributions/awslambda-extension-balo-zip/awslambda/cache"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerina/kubernetes") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerinax/azure.functions") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/azure.functions/cache"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerina/istio") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/istio"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerina/docker") {
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/docker/balo"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerina/openshift") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/openshift"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerinax/awslambda") {
+        from "build/target/extracted-distributions/awslambda-extension-balo-zip/awslambda/balo"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerina/knative") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/knative"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerinax/awslambda") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/awslambda"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerinax/azure.functions") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/azure.functions"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerinax/azure.functions") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/azure.functions/balo"
     }
 
     /* Tools artifacts */
@@ -681,23 +587,6 @@ task packageDistMac(type: Zip) {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/ballerina-docker-1.0.0.jar"
         fileMode = 0644
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-kubernetes-1.0.0.jar"
-        fileMode = 0644
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-istio-1.0.0.jar"
-        fileMode = 0644
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-openshift-1.0.0.jar"
-        fileMode = 0644
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-knative-1.0.0.jar"
-        fileMode = 0644
-    }
-
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/ballerina-version"
         fileMode = 0644
@@ -714,11 +603,11 @@ task packageDistMac(type: Zip) {
     }
 
     /* Dependencies */
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib"){
+    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
         from configurations.exten
     }
 
-    doLast{
+    doLast {
         println 'Ballerina MacOS Distribution Packaged'
     }
 
@@ -729,8 +618,8 @@ task packageDistWindows(type: Zip) {
     group = "package_distribution"
     description = 'Ballerina Windows Distribution Assembly'
     baseName = "${distributionName}-windows"
-    ext{parentDir="${baseName}-${version}"}
-    entryCompression=ZipEntryCompression.STORED
+    ext { parentDir = "${baseName}-${version}" }
+    entryCompression = ZipEntryCompression.STORED
 
     into("${parentDir}/dependencies") {
         from "build/target/extracted-jre-windows"
@@ -752,30 +641,23 @@ task packageDistWindows(type: Zip) {
         from "build/target/extracted-distributions/docker-extension-examples-zip"
         exclude "index.js"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/kubernetes-extension-examples-zip"
-        exclude "index.js"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerina/docker") {
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/docker/cache"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerina/docker") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/docker"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerinax/awslambda") {
+        from "build/target/extracted-distributions/awslambda-extension-balo-zip/awslambda/cache"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerina/kubernetes") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/kubernetes"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerinax/azure.functions") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/azure.functions/cache"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerina/istio") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/istio"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerina/docker") {
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/docker/balo"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerina/openshift") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/openshift"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerinax/awslambda") {
+        from "build/target/extracted-distributions/awslambda-extension-balo-zip/awslambda/balo"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerina/knative") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/knative"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerinax/awslambda") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/awslambda"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bir-cache/ballerinax/azure.functions") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/azure.functions"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerinax/azure.functions") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/azure.functions/balo"
     }
 
     /* Tools artifacts */
@@ -804,23 +686,6 @@ task packageDistWindows(type: Zip) {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/ballerina-docker-1.0.0.jar"
         fileMode = 0644
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-kubernetes-1.0.0.jar"
-        fileMode = 0644
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-istio-1.0.0.jar"
-        fileMode = 0644
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-openshift-1.0.0.jar"
-        fileMode = 0644
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/kubernetes-extension-annotations-zip/ballerina-knative-1.0.0.jar"
-        fileMode = 0644
-    }
-
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/ballerina-version"
         fileMode = 0644
@@ -837,11 +702,11 @@ task packageDistWindows(type: Zip) {
     }
 
     /* Dependencies */
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib"){
+    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
         from configurations.exten
     }
 
-    doLast{
+    doLast {
         println 'Ballerina Windows Distribution Packaged'
     }
 
@@ -871,160 +736,173 @@ task testExamples() {
 
     // The following BBEs will not be verified by compiling/running.
     def buildIgnoreList = [
-        'proto-to-ballerina',
-        'websub-hub-client-sample',
-        'websub-remote-hub-sample',
-        'docker-deployment',
-        'kubernetes-deployment',
-        'knative-deployment',
-        'aws-lambda-deployment',
-        'azure-functions-deployment',
-        'openshift-deployment',
-        'grpc-server-streaming',
-        'grpc-secured-unary',
-        'grpc-bidirectional-streaming',
-        'grpc-client-streaming',
-        'grpc-unary-non-blocking',
-        'grpc-unary-blocking',
-        'testerina-guarantee-test-execution-order',
-        'testerina-data-driven-tests',
-        'testerina-before-and-after-suite',
-        'testerina-before-each-test',
-        'testerina-before-and-after-test',
-        'testerina-assertions',
-        'testerina-before-and-after-each',
-        'testerina-before-and-after-groups',
-        'testerina-group-tests',
-        'testerina-mocking-objects',
-        'testerina-mocking-functions',
-        'http-caching-client',
-        'http-data-binding',
-        'http-1.1-to-2.0-protocol-switch',
-        'basic-https-listener-client',
-        'https-listener',
-        'http-client-endpoint',
-        'response-with-multiparts',
-        'mutual-ssl',
-        'gauge-metrics',
-        'counter-metrics',
-        'tracing',
-        'openapi-to-ballerina',
-        'taint-checking', // Should not compile
-        'user-defined-error',
-        //TODO failing due to transaction changes probably. Need to fix
-        'rabbitmq-transaction-consumer',
-        'rabbitmq-transaction-producer',
-        'kafka-producer-transactional',
-        'mysql-batch-execute-operation',
-        'jdbc-batch-execute-operation',
-        'retry-transactions',
-        'local-transactions-with-handlers',
-        'local-transactions',
-        'log-api',
-        'error-handling-in-single-place'
+            'http-retry',
+            'http-failover',
+            'http-load-balancer',
+            'http-circuit-breaker',
+            'http-redirects',
+            'cache',
+            'websocket-proxy-server',
+            'crypto',
+            'math-functions',
+            'java-arrays',
+            'record-io',
+            'modules',
+            'any-type',
+            'secured_client_with_oauth2',
+            'send_and_receive_emails',
+            'proto-to-ballerina',
+            'websub-hub-client-sample',
+            'websub-remote-hub-sample',
+            'docker-deployment',
+            'aws-lambda-deployment',
+            'azure-functions-deployment',
+            'openshift-deployment',
+            'grpc-server-streaming',
+            'grpc-secured-unary',
+            'grpc-bidirectional-streaming',
+            'grpc-client-streaming',
+            'grpc-unary-non-blocking',
+            'grpc-unary-blocking',
+            'testerina-guarantee-test-execution-order',
+            'testerina-data-driven-tests',
+            'testerina-before-and-after-suite',
+            'testerina-before-each-test',
+            'testerina-before-and-after-test',
+            'testerina-assertions',
+            'testerina-before-and-after-each',
+            'testerina-before-and-after-groups',
+            'testerina-group-tests',
+            'testerina-mocking-objects',
+            'testerina-mocking-functions',
+            'http-caching-client',
+            'http-data-binding',
+            'http-1.1-to-2.0-protocol-switch',
+            'basic-https-listener-client',
+            'https-listener',
+            'http-client-endpoint',
+            'response-with-multiparts',
+            'mutual-ssl',
+            'gauge-metrics',
+            'counter-metrics',
+            'tracing',
+            'openapi-to-ballerina',
+            'taint-checking', // Should not compile
+            'user-defined-error',
+            //TODO failing due to transaction changes probably. Need to fix
+            'rabbitmq-transaction-consumer',
+            'rabbitmq-transaction-producer',
+            'kafka-producer-transactional',
+            'mysql-batch-execute-operation',
+            'jdbc-batch-execute-operation',
+            'retry-transactions',
+            'local-transactions-with-handlers',
+            'local-transactions',
+            'log-api',
+            'error-handling-in-single-place'
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
     // against the output given at `.out` file. But will be verified by compiling and running tests if it is not added
     // to the above buildIgnoreList.
     def outputVerificationIgnoreList = [
-        'the-main-function', //Needs user input
-        'local-transactions',  // Xid varies
-        'local-transactions-with-handlers', // Xid varies
-        'retry-transactions', // Xid varies
-        'optional-type',  // Needs inputs at runtime
-        'while',        // Needs inputs at runtime
-        'any-type', // Has time component
-        'record-readonly-fields', // Has user name in output
-        'checkpanic', // Has user name in output
-        'deprecation', // Contains user input
-        'foreach', // Has tabs for formatting in input
-        'config-api',
-        'kafka-consumer-client',
-        'kafka-producer',
-        'kafka-consumer-service',
-        'kafka-producer-transactional',
-        'kafka-consumer-group-service',
-        'kafka-authentication-sasl-plain-consumer',
-        'kafka-authentication-sasl-plain-producer', // Kafka BBEs are ignored since a KafkaCluster is not present
-        'websub-service-integration-sample',
-        'websub-internal-hub-sample',
-        'grpc-server-streaming',
-        'nats-basic-client',
-        'nats-streaming-client',
-        'nats-streaming-consumer-with-data-binding',
-        'nats-streaming-durable-subscriptions',
-        'nats-streaming-queue-group',
-        'nats-streaming-start-position',
-        'http-to-websocket-upgrade',
-        'http-compression',
-        'http-redirects',
-        'http-2-0-server-push',
-        'http-cookies',
-        'header-based-routing',
-        'http-circuit-breaker',
-        'request-with-multiparts',
-        'different-payload-types',
-        'base-path-and-path',
-        'http-trace-logs',
-        'restrict-by-media-type',
-        'http-cors',
-        'http-client-data-binding',
-        'websocket-basic-sample',
-        'websocket-chat-application',
-        'websocket-client',
-        'websocket-cookie',
-        'websocket-failover',
-        'websocket-proxy-server',
-        'websocket-retry',
-        'rabbitmq-producer',
-        'rabbitmq-consumer',
-        'rabbitmq-consumer-with-client-acknowledgement',
-        'rabbitmq-consumer-with-data-binding',
-        'rabbitmq-consumer-with-qos-settings',
-        'rabbitmq-transaction-producer',
-        'rabbitmq-transaction-consumer',
-        'jdbc-complex-type-queries', // Consists date time in output
-        'log-api',
-        'mysql-init-options',
-        'mysql-query-operation',
-        'mysql-complex-type-queries',
-        'mysql-execute-operation',
-        'mysql-batch-execute-operation',
-        'mysql-parameterized-query',
-        'mysql-call-stored-procedures',
-        'udp-socket-client',
-        'tcp-socket-listener-client',
-        'ballerina-to-openapi',
-        'client-generation',
-        'directory-listener',
-        'file', // Absolute path varies
-        'filepath', // Depends on OS
-        'time',
-        'locks', // Output is inconsistent between runs
-        'crypto', // Output with line breaks cannot be compared
-        'jwt-issue-validate', // Output depends on time
-        'secured-client-with-basic-auth', // Need to run the service first
-        'secured-client-with-jwt-auth', // Need to run the service first
-        'secured-client-with-oauth2', // Need to run the service first
-        'send-and-receive-emails',
-        'task-service-timer',
-        'task-service-appointment',
-        'task-scheduler-timer',
-        'task-scheduler-appointment',
-        'cache',
+            'the-main-function', //Needs user input
+            'local-transactions',  // Xid varies
+            'local-transactions-with-handlers', // Xid varies
+            'retry-transactions', // Xid varies
+            'optional-type',  // Needs inputs at runtime
+            'while',        // Needs inputs at runtime
+            'any-type', // Has time component
+            'record-readonly-fields', // Has user name in output
+            'checkpanic', // Has user name in output
+            'deprecation', // Contains user input
+            'foreach', // Has tabs for formatting in input
+            'config-api',
+            'kafka-consumer-client',
+            'kafka-producer',
+            'kafka-consumer-service',
+            'kafka-producer-transactional',
+            'kafka-consumer-group-service',
+            'kafka-authentication-sasl-plain-consumer',
+            'kafka-authentication-sasl-plain-producer', // Kafka BBEs are ignored since a KafkaCluster is not present
+            'websub-service-integration-sample',
+            'websub-internal-hub-sample',
+            'grpc-server-streaming',
+            'nats-basic-client',
+            'nats-streaming-client',
+            'nats-streaming-consumer-with-data-binding',
+            'nats-streaming-durable-subscriptions',
+            'nats-streaming-queue-group',
+            'nats-streaming-start-position',
+            'http-to-websocket-upgrade',
+            'http-compression',
+            'http-redirects',
+            'http-2-0-server-push',
+            'http-cookies',
+            'header-based-routing',
+            'http-circuit-breaker',
+            'request-with-multiparts',
+            'different-payload-types',
+            'base-path-and-path',
+            'http-trace-logs',
+            'restrict-by-media-type',
+            'http-cors',
+            'http-client-data-binding',
+            'websocket-basic-sample',
+            'websocket-chat-application',
+            'websocket-client',
+            'websocket-cookie',
+            'websocket-failover',
+            'websocket-proxy-server',
+            'websocket-retry',
+            'rabbitmq-producer',
+            'rabbitmq-consumer',
+            'rabbitmq-consumer-with-client-acknowledgement',
+            'rabbitmq-consumer-with-data-binding',
+            'rabbitmq-consumer-with-qos-settings',
+            'rabbitmq-transaction-producer',
+            'rabbitmq-transaction-consumer',
+            'jdbc-complex-type-queries', // Consists date time in output
+            'log-api',
+            'mysql-init-options',
+            'mysql-query-operation',
+            'mysql-complex-type-queries',
+            'mysql-execute-operation',
+            'mysql-batch-execute-operation',
+            'mysql-parameterized-query',
+            'mysql-call-stored-procedures',
+            'udp-socket-client',
+            'tcp-socket-listener-client',
+            'ballerina-to-openapi',
+            'client-generation',
+            'directory-listener',
+            'file', // Absolute path varies
+            'filepath', // Depends on OS
+            'time',
+            'locks', // Output is inconsistent between runs
+            'crypto', // Output with line breaks cannot be compared
+            'jwt-issue-validate', // Output depends on time
+            'secured-client-with-basic-auth', // Need to run the service first
+            'secured-client-with-jwt-auth', // Need to run the service first
+            'secured-client-with-oauth2', // Need to run the service first
+            'send-and-receive-emails',
+            'task-service-timer',
+            'task-service-appointment',
+            'task-scheduler-timer',
+            'task-scheduler-appointment',
+            'cache',
 
-        //TODO failing due to transaction changes probably. Need to fix
-        'rabbitmq-transaction-consumer',
-        'rabbitmq-transaction-producer',
-        'kafka-producer-transactional',
-        'mysql-batch-execute-operation',
-        'jdbc-batch-execute-operation',
-        'retry-transactions',
-        'local-transactions-with-handlers',
-        'local-transactions',
-        'log-api',
-        'error-handling-in-single-place'
+            //TODO failing due to transaction changes probably. Need to fix
+            'rabbitmq-transaction-consumer',
+            'rabbitmq-transaction-producer',
+            'kafka-producer-transactional',
+            'mysql-batch-execute-operation',
+            'jdbc-batch-execute-operation',
+            'retry-transactions',
+            'local-transactions-with-handlers',
+            'local-transactions',
+            'log-api',
+            'error-handling-in-single-place'
     ]
 
     doFirst {
@@ -1032,34 +910,27 @@ task testExamples() {
             from jBallerinaPack
             into baseBuildPath
         }
-        exec {
-            //Initialize Ballerina project
-            if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                //TODO: Need to verify with windows
-                workingDir "${baseBuildPath}"
-                commandLine 'cmd', '/c', "jballerina-tools-${ballerinaVersion}/bin/ballerina.bat", 'new', 'TestProject'
-            } else {
-                workingDir "${baseBuildPath}"
-                commandLine 'sh', '-c', "jballerina-tools-${ballerinaVersion}/bin/ballerina new TestProject"
-            }
-        }
 
         def src = "${project.rootDir}/examples/"
-        def dis = "${baseBuildPath}/TestProject/src/"
+        def dis = "${baseBuildPath}"
         copy {
             from(src)
             into dis
         }
-        def inputFile = new File("${baseBuildPath}/TestProject/src/index.json")
+        def inputFile = new File("${baseBuildPath}/index.json")
         def categories = new JsonSlurper().parseText(inputFile.text)
         categories.each { category ->
             def examples = category.samples
             examples.each { example ->
-                def folder = new File("${baseBuildPath}/TestProject/src/${example.url}")
+                def folder = new File("${baseBuildPath}/${example.url}")
                 if (folder.exists()) {
                     bbeList.push("$example.url")
                 }
             }
+        }
+
+        buildIgnoreList.each { String elements ->
+            bbeList.remove("$elements")
         }
     }
 
@@ -1067,20 +938,30 @@ task testExamples() {
         def exitVal
         def additionalBuildParams = ""
         if (bbe == "secured-service-with-basic-auth" || bbe == "secured-client-with-basic-auth") {
-            additionalBuildParams = "--b7a.config.file=${baseBuildPath}/TestProject/src/${bbe}/sample-users.toml"
+            additionalBuildParams = "--b7a.config.file=${baseBuildPath}/${bbe}/sample-users.toml"
         }
         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
             //TODO: Need to verify with windows
+            exec {
+                workingDir "${baseBuildPath}/${bbe}"
+                commandLine 'cmd', '/c', "${distPath}/bin/ballerina/ballerina.bat init test"
+            }
+
             exitVal = exec {
                 ignoreExitValue true
-                workingDir "${buildDir}/TestProject"
-                commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'build', '--experimental', "${bbe} --b7a.home=${distPath} ${additionalBuildParams}"
+                workingDir "${baseBuildPath}/${bbe}"
+                commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'build', '--experimental', " --b7a.home=${distPath} ${additionalBuildParams}"
             }
         } else {
+            exec {
+                workingDir "${baseBuildPath}/${bbe}"
+                commandLine 'sh', '-c', "${distPath}/bin/ballerina init test"
+            }
+
             exitVal = exec {
                 ignoreExitValue true
-                workingDir "${baseBuildPath}/TestProject"
-                commandLine 'sh', '-c', "${distPath}/bin/ballerina build --experimental ${bbe} --b7a.home=${distPath} ${additionalBuildParams}"
+                workingDir "${baseBuildPath}/${bbe}"
+                commandLine 'sh', '-c', "${distPath}/bin/ballerina build --experimental --b7a.home=${distPath} ${additionalBuildParams}"
             }
         }
         if (exitVal.getExitValue() == 1) {
@@ -1089,154 +970,151 @@ task testExamples() {
         return false;
     }
 
-    ext.outputVerification = { bbe ->
-        def directoryPath = "${baseBuildPath}/TestProject/src/${bbe}"
-        File fileReference
-        def curlCommands = []
-        def ports = []
-        def fileOut = []
-        def balName = bbe.replace('-', '_') + ".bal"
-        FileTree tree = fileTree(directoryPath)
-        def curlCommandsFilePath = "${directoryPath}/curlcommandout.txt"
-        def portFilePath = "${directoryPath}/ports.txt"
-        def outputFilePath = "${directoryPath}/output.txt"
-        def additionalBuildParams = ""
-        if (bbe == "secured-service-with-basic-auth" || bbe == "secured-client-with-basic-auth") {
-            additionalBuildParams = "--b7a.config.file=${baseBuildPath}/TestProject/src/${bbe}/sample-users.toml"
-        }
-        tree.each { content ->
-            if (content.name.contains("client.out")) {
-                fileReference = file(content)
-                fileReference.readLines().each { lines ->
-                    fileOut.add(lines.trim())
-                    if (lines.startsWith("curl")) {
-                        lines = lines.trim() + " >> output.txt"
-                        curlCommands.add(lines)
-                        if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                            curlCommands.add("echo. >> output.txt")
-                        } else {
-                            curlCommands.add("echo >> output.txt")
-                        }
-                    }
-                }
-            } else if (content.name.contains("server.out") || content.name.contains("service.out")) {
-                fileReference = file(content)
-                String portPrefix = "[ballerina/http] started HTTP/WS listener 0.0.0.0:"
-                fileReference.readLines().each { lines ->
-                    if (lines.contains(portPrefix)) {
-                        lines = (lines - portPrefix).trim()
-                        ports.add(lines)
-                    }
-                }
-            }
-        }
-        def failFlag = false
-        if (!ports.isEmpty() && !curlCommands.isEmpty()) {
-            fileReference = new File(portFilePath)
-            ports.each {
-                fileReference << "${it}\n"
-            }
-            fileReference = new File(curlCommandsFilePath)
-            curlCommands.each {
-                fileReference << "${it}\n"
-            }
-            def scriptPath = "${project.rootDir}/ballerina/lib"
-            def exitVal
-            if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                exitVal = exec {
-                    def windowsPath = scriptPath.replace('/', '\\')
-                    workingDir "$windowsPath"
-                    commandLine "$windowsPath\\run.bat", "${directoryPath}", "${distPath}/bin/ballerina.bat", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath} ${additionalBuildParams}"
-                    ignoreExitValue true
-                }
-            } else {
-                exitVal = exec {
-                    workingDir "$scriptPath"
-                    commandLine "bash", "run.sh", "${directoryPath}", "${distPath}/bin/./ballerina", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath} ${additionalBuildParams}"
-                    ignoreExitValue true
-                }
-            }
-            // Return immediately if command failed
-            if (exitVal.getExitValue() == 1) {
-                println "Failed due to build failure."
-                return true;
-            }
-            File bbeOutput = new File(outputFilePath)
-            if (bbeOutput.exists()) {
-                bbeOutput.readLines().each {
-                    if (!fileOut.contains(it.trim()) && it) {
-                        println "Failed due to output did not match. Line ${it}"
-                        failFlag = true
-                    }
-                }
-            }
-            delete portFilePath
-            delete curlCommandsFilePath
-            delete outputFilePath
-        } else if (ports.isEmpty() && curlCommands.isEmpty()) {
-            balName = bbe.replace('-', '_')
-            def str = ""
-            fileOut = []
-            def bbeOutput = []
-            def cmdOutAry = []
-            def errOut = new ByteArrayOutputStream()
-            new ByteArrayOutputStream().withStream { os ->
-                if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                    exec {
-                        workingDir "${directoryPath}"
-                        commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'run', '--experimental', "${balName}.bal", "--b7a.home=${distPath} ${additionalBuildParams}"
-                        ignoreExitValue true
-                        standardOutput = os
-                        errorOutput = errOut
-                    }
-                } else {
-                    exec {
-                        workingDir "${directoryPath}"
-                        commandLine 'sh', '-c', "${distPath}/bin/ballerina run --experimental ${balName}.bal --b7a.home=${distPath} ${additionalBuildParams}"
-                        ignoreExitValue true
-                        standardOutput = os
-                        errorOutput = errOut
-                    }
-                }
-                cmdOutAry.add(os.toString())
-                cmdOutAry.add(errOut.toString())
-            }
-            
-            File file = file("${directoryPath}/${balName}.out")
-            file.readLines().each {
-                str = it.trim()
-                if (str?.trim()) {
-                    if (str[0] != '#') {
-                        fileOut.add(str)
-                    }
-                }
-            }
-
-            def lines = "${cmdOutAry[0]}".split('\n')
-            lines = lines + "${cmdOutAry[1]}".split('\n')
-            lines.each {
-                str = it.trim()
-                if (str != "Compiling source" && str != "${balName}.bal" && str != "Running executables" && str != ""
-                        && str != "Picked up JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF8") {
-                    bbeOutput.add(str)
-                }
-            }
-
-            for (int i = 0; i < bbeOutput.size(); i++) {
-                def index = fileOut.findIndexOf { it == bbeOutput[i] }
-                if (index == -1) {
-                    println "Failed due to output did not match. Line ${i}: ${bbeOutput[i]}"
-                    failFlag = true;
-                }
-            }
-        }
-        return failFlag
-    }
+//    ext.outputVerification = { bbe ->
+//        def directoryPath = "${baseBuildPath}/${bbe}"
+//        File fileReference
+//        def curlCommands = []
+//        def ports = []
+//        def fileOut = []
+//        def balName = bbe.replace('-', '_') + ".bal"
+//        FileTree tree = fileTree(directoryPath)
+//        def curlCommandsFilePath = "${directoryPath}/curlcommandout.txt"
+//        def portFilePath = "${directoryPath}/ports.txt"
+//        def outputFilePath = "${directoryPath}/output.txt"
+//        def additionalBuildParams = ""
+//        if (bbe == "secured-service-with-basic-auth" || bbe == "secured-client-with-basic-auth") {
+//            additionalBuildParams = "--b7a.config.file=${baseBuildPath}/${bbe}/sample-users.toml"
+//        }
+//        tree.each { content ->
+//            if (content.name.contains("client.out")) {
+//                fileReference = file(content)
+//                fileReference.readLines().each { lines ->
+//                    fileOut.add(lines.trim())
+//                    if (lines.startsWith("curl")) {
+//                        lines = lines.trim() + " >> output.txt"
+//                        curlCommands.add(lines)
+//                        if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+//                            curlCommands.add("echo. >> output.txt")
+//                        } else {
+//                            curlCommands.add("echo >> output.txt")
+//                        }
+//                    }
+//                }
+//            } else if (content.name.contains("server.out") || content.name.contains("service.out")) {
+//                fileReference = file(content)
+//                String portPrefix = "[ballerina/http] started HTTP/WS listener 0.0.0.0:"
+//                fileReference.readLines().each { lines ->
+//                    if (lines.contains(portPrefix)) {
+//                        lines = (lines - portPrefix).trim()
+//                        ports.add(lines)
+//                    }
+//                }
+//            }
+//        }
+//        def failFlag = false
+//        if (!ports.isEmpty() && !curlCommands.isEmpty()) {
+//            fileReference = new File(portFilePath)
+//            ports.each {
+//                fileReference << "${it}\n"
+//            }
+//            fileReference = new File(curlCommandsFilePath)
+//            curlCommands.each {
+//                fileReference << "${it}\n"
+//            }
+//            def scriptPath = "${project.rootDir}/ballerina/lib"
+//            def exitVal
+//            if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+//                exitVal = exec {
+//                    def windowsPath = scriptPath.replace('/', '\\')
+//                    workingDir "$windowsPath"
+//                    commandLine "$windowsPath\\run.bat", "${directoryPath}", "${distPath}/bin/ballerina.bat", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath} ${additionalBuildParams}"
+//                    ignoreExitValue true
+//                }
+//            } else {
+//                exitVal = exec {
+//                    workingDir "$scriptPath"
+//                    commandLine "bash", "run.sh", "${directoryPath}", "${distPath}/bin/./ballerina", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath} ${additionalBuildParams}"
+//                    ignoreExitValue true
+//                }
+//            }
+//            // Return immediately if command failed
+//            if (exitVal.getExitValue() == 1) {
+//                println "Failed due to build failure."
+//                return true;
+//            }
+//            File bbeOutput = new File(outputFilePath)
+//            if (bbeOutput.exists()) {
+//                bbeOutput.readLines().each {
+//                    if (!fileOut.contains(it.trim()) && it) {
+//                        println "Failed due to output did not match. Line ${it}"
+//                        failFlag = true
+//                    }
+//                }
+//            }
+//            delete portFilePath
+//            delete curlCommandsFilePath
+//            delete outputFilePath
+//        } else if (ports.isEmpty() && curlCommands.isEmpty()) {
+//            balName = bbe.replace('-', '_')
+//            def str = ""
+//            fileOut = []
+//            def bbeOutput = []
+//            def cmdOutAry = []
+//            def errOut = new ByteArrayOutputStream()
+//            new ByteArrayOutputStream().withStream { os ->
+//                if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+//                    exec {
+//                        workingDir "${directoryPath}"
+//                        commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'run', '--experimental', "${balName}.bal", "--b7a.home=${distPath} ${additionalBuildParams}"
+//                        ignoreExitValue true
+//                        standardOutput = os
+//                        errorOutput = errOut
+//                    }
+//                } else {
+//                    exec {
+//                        workingDir "${directoryPath}"
+//                        commandLine 'sh', '-c', "${distPath}/bin/ballerina run --experimental ${balName}.bal --b7a.home=${distPath} ${additionalBuildParams}"
+//                        ignoreExitValue true
+//                        standardOutput = os
+//                        errorOutput = errOut
+//                    }
+//                }
+//                cmdOutAry.add(os.toString())
+//                cmdOutAry.add(errOut.toString())
+//            }
+//
+//            File file = file("${directoryPath}/${balName}.out")
+//            file.readLines().each {
+//                str = it.trim()
+//                if (str?.trim()) {
+//                    if (str[0] != '#') {
+//                        fileOut.add(str)
+//                    }
+//                }
+//            }
+//
+//            def lines = "${cmdOutAry[0]}".split('\n')
+//            lines = lines + "${cmdOutAry[1]}".split('\n')
+//            lines.each {
+//                str = it.trim()
+//                if (str != "Compiling source" && str != "${balName}.bal" && str != "Running executables" && str != ""
+//                        && str != "Picked up JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF8") {
+//                    bbeOutput.add(str)
+//                }
+//            }
+//
+//            for (int i = 0; i < bbeOutput.size(); i++) {
+//                def index = fileOut.findIndexOf { it == bbeOutput[i] }
+//                if (index == -1) {
+//                    println "Failed due to output did not match. Line ${i}: ${bbeOutput[i]}"
+//                    failFlag = true;
+//                }
+//            }
+//        }
+//        return failFlag
+//    }
 
     doLast {
-        buildIgnoreList.each { String elements ->
-            bbeList.remove("$elements")
-        }
         def failedBuildExamples = []
         def failOutputVerificationExamples = []
         bbeList.each { String bbe ->
@@ -1244,14 +1122,14 @@ task testExamples() {
             if (buildFailFlag) {
                 failedBuildExamples.add(bbe)
             }
-            if (!outputVerificationIgnoreList.contains(bbe)) {
-                boolean outputVerificationFailFlag = outputVerification(bbe)
-                if (outputVerificationFailFlag) {
-                    failOutputVerificationExamples.add(bbe)
-                }
-            }
+//            if (!outputVerificationIgnoreList.contains(bbe)) {
+//                boolean outputVerificationFailFlag = outputVerification(bbe)
+//                if (outputVerificationFailFlag) {
+//                    failOutputVerificationExamples.add(bbe)
+//                }
+//            }
         }
-        
+
         boolean buildFailure = false
         if (!failedBuildExamples.isEmpty()) {
             println "\n\tThe following BBEs failed while building:\n"
@@ -1278,80 +1156,78 @@ task testExamples() {
 }
 
 task testStdlibs() {
-     def jBallerinaPack = "${project.rootDir}/ballerina/build/target/extracted-distributions/jballerina-tools-zip"
-     def baseBuildPath = "${project.rootDir}/ballerina/build/bbe-pack"
-     def distPath = "${baseBuildPath}/jballerina-tools-${ballerinaVersion}"
-     def stdlibTestsList = []
+    def jBallerinaPack = "${project.rootDir}/ballerina/build/target/extracted-distributions/jballerina-tools-zip"
+    def baseBuildPath = "${project.rootDir}/ballerina/build/bbe-pack"
+    def distPath = "${baseBuildPath}/jballerina-tools-${ballerinaVersion}"
+    def stdlibTestsList = []
 
-     PatternSet patternSet = new PatternSet();
-     patternSet.exclude("**/.ballerina/**");
-     patternSet.exclude("**/Ballerina.toml");
-     patternSet.exclude("**/Ballerina.lock");
-     patternSet.exclude("**/ballerina-internal.log")
-     inputs.files(files("${distPath}/stdlib-integration-tests").asFileTree.matching(patternSet))
-     def ignoreList = []
+    PatternSet patternSet = new PatternSet();
+    patternSet.exclude("**/.ballerina/**");
+    patternSet.exclude("**/Ballerina.toml");
+    patternSet.exclude("**/Ballerina.lock");
+    patternSet.exclude("**/ballerina-internal.log")
+    inputs.files(files("${distPath}/stdlib-integration-tests").asFileTree.matching(patternSet))
+    def ignoreList = ["sql", "kafka", "crypto"]
 
-     doFirst {
-         copy {
-             from jBallerinaPack
-             into baseBuildPath
-         }
-         exec {
-             //Initialize Ballerina project
-             if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                 workingDir "${baseBuildPath}"
-                 commandLine 'cmd', '/c', "jballerina-tools-${ballerinaVersion}/bin/ballerina.bat", 'new', 'StdlibTestProject'
-             } else {
-                 workingDir "${baseBuildPath}"
-                 commandLine 'sh', '-c', "jballerina-tools-${ballerinaVersion}/bin/ballerina new StdlibTestProject"
-             }
-         }
+    doFirst {
+        copy {
+            from jBallerinaPack
+            into baseBuildPath
+        }
 
-         def src = "${project.rootDir}/stdlib-integration-tests/"
-         def dis = "${baseBuildPath}/StdlibTestProject/src/"
-         copy {
-             from(src)
-             into dis
-         }
-         def inputFile = new File("${baseBuildPath}/StdlibTestProject/src/index.json")
-         def stdlibTests = new JsonSlurper().parseText(inputFile.text)
-         stdlibTests.each { stdlibTest ->
-             def folder = new File("${baseBuildPath}/StdlibTestProject/src/${stdlibTest.path}")
-             if (folder.exists()) {
-                 stdlibTestsList.push("$stdlibTest.path")
-             }
+        def src = "${project.rootDir}/stdlib-integration-tests/"
+        def dis = "${baseBuildPath}"
+        copy {
+            from(src)
+            into dis
+        }
+        def inputFile = new File("${baseBuildPath}/index.json")
+        def stdlibTests = new JsonSlurper().parseText(inputFile.text)
+        stdlibTests.each { stdlibTest ->
+            def folder = new File("${baseBuildPath}/${stdlibTest.path}")
+            if (folder.exists()) {
+                stdlibTestsList.push("$stdlibTest.path")
+            }
 
-         }
-     }
+        }
+    }
 
     doLast {
-         ignoreList.each { String elements ->
-             stdlibTestsList.remove("$elements")
-         }
-         stdlibTestsList.each { String stdlibTest ->
-             def additionalBuildParams = ""
-             if (stdlibTest == "auth" || stdlibTest == "jwt") {
-                 additionalBuildParams = "--b7a.config.file=${baseBuildPath}/StdlibTestProject/src/${stdlibTest}/tests/resources/datafiles/users.toml"
-             }
-             
-             if (stdlibTest == "config") {
-                additionalBuildParams = "--user.name=ballerina-user"
-             }
+        ignoreList.each { String elements ->
+            stdlibTestsList.remove("$elements")
+        }
+        stdlibTestsList.each { String stdlibTest ->
+            def additionalBuildParams = ""
+            if (stdlibTest == "auth" || stdlibTest == "jwt") {
+                additionalBuildParams = "--b7a.config.file=${baseBuildPath}/${stdlibTest}/tests/resources/datafiles/users.toml"
+            }
 
-             if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                 //TODO: Need to verify with windows
-                 exec {
-                     workingDir "${buildDir}/StdlibTestProject"
-                     commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat build -c --experimental ${stdlibTest} --b7a.home=${distPath} ${additionalBuildParams}"
-                 }
-             } else {
-                 exec {
-                     workingDir "${baseBuildPath}/StdlibTestProject"
-                     commandLine 'sh', '-c', "${distPath}/bin/ballerina build -c --experimental ${stdlibTest} --b7a.home=${distPath} ${additionalBuildParams}"
-                 }
-             }
-         }
-     }
+            if (stdlibTest == "config") {
+                additionalBuildParams = "--user.name=ballerina-user"
+            }
+
+            if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+                //TODO: Need to verify with windows
+                exec {
+                    workingDir "${baseBuildPath}/${stdlibTest}"
+                    commandLine 'cmd', '/c', "${distPath}/bin/ballerina/ballerina.bat init test"
+                }
+                exec {
+                    workingDir "${buildDir}/${stdlibTest}"
+                    commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat build -c --experimental --b7a.home=${distPath} ${additionalBuildParams}"
+                }
+            } else {
+                exec {
+                    workingDir "${baseBuildPath}/${stdlibTest}"
+                    commandLine 'sh', '-c', "${distPath}/bin/ballerina init test"
+                }
+                exec {
+                    workingDir "${baseBuildPath}/${stdlibTest}"
+                    commandLine 'sh', '-c', "${distPath}/bin/ballerina build -c --experimental --b7a.home=${distPath} ${additionalBuildParams}"
+                }
+            }
+        }
+    }
 }
 
 task testDevTools() {
@@ -1374,7 +1250,7 @@ task testDevTools() {
             from jBallerinaPack
             into baseBuildPath
         }
-        
+
         // Copy projects to baseBuildPath
         def devToolsProjectSrc = "${project.rootDir}/devtools-integration-tests/"
         copy {
@@ -1385,7 +1261,7 @@ task testDevTools() {
         // Read the projects from the index.json
         def inputFile = new File("${baseBuildPath}/index.json")
         def devtoolsProjects = new JsonSlurper().parseText(inputFile.text)
-        
+
         // For each project in the devtools integration tests folder, we add it to the project list
         devtoolsProjects.each { devtoolsProject ->
             def folder = new File("${baseBuildPath}/${devtoolsProject.path}")
@@ -1398,40 +1274,39 @@ task testDevTools() {
     doLast {
         // For each devtools project in the list
         devtoolsProjectList.each { String devtoolsProject ->
-            
             // Read the modules from the index.json
-            def inputFile = new File("${baseBuildPath}/${devtoolsProject}/index.json")
+            def inputFile = new File("${baseBuildPath}/index.json")
             def projectModules = new JsonSlurper().parseText(inputFile.text)
 
-            // If module exists, add it to the projectModuleList
-            def projectModuleList = []
-            projectModules.each { projectModule -> 
-                def folder = new File("${baseBuildPath}/${devtoolsProject}/src/${projectModule.path}")
-                if (folder.exists()) {
-                    projectModuleList.push("$projectModule.path")
-                }
-            }
-
             // For each module we execute the `test -c ${projectModule} command
-            projectModuleList.each { String projectModule -> 
-            
+            projectModules.each { projectModuleVal ->
+                def projectModule = projectModuleVal.path
                 def additionalBuildParams = ""
 
                 if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                     exec {
                         workingDir "${buildDir}/${devtoolsProject}"
-                        commandLine 'cmd', '/c', 
-                        "${distPath}/bin/ballerina.bat test ${projectModule} --b7a.home=${distPath} ${additionalBuildParams}"
+                        commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat init test"
+                    }
+                    exec {
+                        workingDir "${buildDir}/${devtoolsProject}"
+                        commandLine 'cmd', '/c',
+                                "${distPath}/bin/ballerina.bat test --b7a.home=${distPath} ${additionalBuildParams}"
                     }
                 } else {
                     exec {
                         workingDir "${baseBuildPath}/${devtoolsProject}"
-                        commandLine 'sh', '-c', 
-                        "${distPath}/bin/ballerina test ${projectModule} --b7a.home=${distPath} ${additionalBuildParams}"
+                        commandLine 'sh', '-c',
+                                "${distPath}/bin/ballerina init test"
+                    }
+                    exec {
+                        workingDir "${baseBuildPath}/${devtoolsProject}"
+                        commandLine 'sh', '-c',
+                                "${distPath}/bin/ballerina test --b7a.home=${distPath} ${additionalBuildParams}"
                     }
                 }
             }
-            
+
         }
     }
 }
@@ -1582,15 +1457,14 @@ task stopNatsServer() {
 
 /* Unpack Dependencies */
 unpackJballerinaTools.dependsOn unpackBallerinaJre
-unpackAzFunctionsBalo.dependsOn unpackJballerinaTools
+unpackDevTools.dependsOn unpackJballerinaTools
+unpackAzFunctionsBalo.dependsOn unpackDevTools
 unpackAzFunctionsExamples.dependsOn unpackAzFunctionsBalo
 unpackAwsLambdaBalo.dependsOn unpackAzFunctionsExamples
 unpackAwsLambdaExamples.dependsOn unpackAwsLambdaBalo
 unpackDockerAnnotations.dependsOn unpackAwsLambdaExamples
 unpackDockerExamples.dependsOn unpackDockerAnnotations
-unpackKubernetesAnnotations.dependsOn unpackDockerExamples
-unpackKubernetesExamples.dependsOn unpackKubernetesAnnotations
-unpackStdLibs.dependsOn unpackKubernetesExamples
+unpackStdLibs.dependsOn unpackDockerExamples
 unpackC2cLibs.dependsOn unpackStdLibs
 unpackBalCommand.dependsOn unpackC2cLibs
 
@@ -1600,13 +1474,18 @@ extractJreForMac.dependsOn extractJreForLinux
 extractJreForWindows.dependsOn extractJreForMac
 
 copyOtherRepos.dependsOn extractJreForWindows
-combineDocs.dependsOn copyOtherRepos
+copyDevToolsCoverageReport.dependsOn copyOtherRepos
+copyDevToolsDocUi.dependsOn copyDevToolsCoverageReport
+combineDocs.dependsOn copyDevToolsDocUi
 /* Package Distributions */
 packageDist.dependsOn combineDocs
 packageDistZip.dependsOn packageDist
 packageDistLinux.dependsOn packageDistZip
 packageDistMac.dependsOn packageDistLinux
 packageDistWindows.dependsOn packageDistMac
+
+unpackStdLibs.dependsOn unpackBallerinaJre
+unpackStdLibs.dependsOn unpackJballerinaTools
 
 testExamples.dependsOn packageDist
 
