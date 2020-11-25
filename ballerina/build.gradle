@@ -56,6 +56,14 @@ task unpackJballerinaTools(type: Copy) {
     }
 }
 
+task unpackDevTools(type: Copy) {
+     group = "unpack_dependencies"
+     configurations.devTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+         from zipTree(artifact.getFile())
+         into new File("${buildDir}/target/extracted-distributions", artifact.name+"-zip")
+     }
+}
+
 task unpackAwsLambdaBalo(type: Copy) {
     group = "unpack_dependencies"
     configurations.awsLambdaBalo.resolvedConfiguration.resolvedArtifacts.each { artifact ->
@@ -220,7 +228,15 @@ task copyOtherRepos(type: Copy) {
     }
 
 }
-
+task copyDevToolsCoverageReport(type: Copy) {
+     from "$project.buildDir/target/extracted-distributions/ballerina-dev-tools-zip/testerina-report-tools-${ballerinaVersion}.zip"
+     into "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/lib/tools/coverage"
+     rename ("testerina-report-tools-${ballerinaVersion}.zip", "report.zip")
+}
+task copyDevToolsDocUi(type: Copy) {
+    from zipTree("$project.buildDir/target/extracted-distributions/ballerina-dev-tools-zip/docerina-ui-${ballerinaVersion}.zip")
+    into "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/lib/tools/doc-ui"
+}
 task combineDocs(type: Exec) {
     workingDir "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs"
     if (Os.isFamily(Os.FAMILY_WINDOWS)) {
@@ -1428,7 +1444,8 @@ task stopNatsServer() {
 
 /* Unpack Dependencies */
 unpackJballerinaTools.dependsOn unpackBallerinaJre
-unpackAzFunctionsBalo.dependsOn unpackJballerinaTools
+unpackDevTools.dependsOn unpackJballerinaTools
+unpackAzFunctionsBalo.dependsOn unpackDevTools
 unpackAzFunctionsExamples.dependsOn unpackAzFunctionsBalo
 unpackAwsLambdaBalo.dependsOn unpackAzFunctionsExamples
 unpackAwsLambdaExamples.dependsOn unpackAwsLambdaBalo
@@ -1444,7 +1461,9 @@ extractJreForMac.dependsOn extractJreForLinux
 extractJreForWindows.dependsOn extractJreForMac
 
 copyOtherRepos.dependsOn extractJreForWindows
-combineDocs.dependsOn copyOtherRepos
+copyDevToolsCoverageReport.dependsOn copyOtherRepos
+copyDevToolsDocUi.dependsOn copyDevToolsCoverageReport
+combineDocs.dependsOn copyDevToolsDocUi
 /* Package Distributions */
 packageDist.dependsOn combineDocs
 packageDistZip.dependsOn packageDist

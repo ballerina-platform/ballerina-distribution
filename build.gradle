@@ -375,6 +375,14 @@ subprojects {
             }
         }
 
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/ballerina-dev-tools"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+
         /* Ballerina lang staging repository */
         maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1614/" }
         /* Docker staging repository */
@@ -407,11 +415,15 @@ subprojects {
         balCommand {
             transitive = false
         }
+        devTools
     }
 
     dependencies {
         jbalTools "org.ballerinalang:jballerina-tools:${ballerinaVersion}@zip"
         ballerinaJre "org.wso2.ballerina.jre.artifacts:ballerina-jre-artifacts:${ballerinaJreArtifactsVersion}@zip"
+
+        /* Ballerina Dev Tools */
+        devTools "org.ballerinalang:ballerina-dev-tools:${project.ballerinaVersion}"
 
         /* AWSLambda extension */
         exten "org.ballerinax.awslambda:awslambda-extension:${awslambdaVersion}"
