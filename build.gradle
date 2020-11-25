@@ -37,7 +37,7 @@ ext {
     netLingalaZip4jVersion = "2.3.2"
     commonsIoVersion = "2.6"
     commonsLang3Version = "3.9"
-    c2cVersion = "2.0.0"
+    c2cVersion = project.ballerinaVersion
 }
 
 allprojects {
@@ -375,12 +375,18 @@ subprojects {
             }
         }
 
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/ballerina-dev-tools"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+
         /* Ballerina lang staging repository */
         maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1614/" }
         /* Docker staging repository */
         maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1290/" }
-        /* Kubernetes staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxkubernetes-1266/" }
         /* AwsLambda staging repository */
         maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1163/" }
         /* Datamapper staging repository */
@@ -409,31 +415,30 @@ subprojects {
         balCommand {
             transitive = false
         }
+        devTools
     }
 
     dependencies {
         jbalTools "org.ballerinalang:jballerina-tools:${ballerinaVersion}@zip"
         ballerinaJre "org.wso2.ballerina.jre.artifacts:ballerina-jre-artifacts:${ballerinaJreArtifactsVersion}@zip"
 
+        /* Ballerina Dev Tools */
+        devTools "org.ballerinalang:ballerina-dev-tools:${project.ballerinaVersion}"
+
         /* AWSLambda extension */
         exten "org.ballerinax.awslambda:awslambda-extension:${awslambdaVersion}"
-        awsLambdaBalo "org.ballerinax.awslambda:awslambda-extension-balo:${awslambdaVersion}@zip"
+        awsLambdaBalo "org.ballerinax.awslambda:awslambda-extension-balo:${awslambdaVersion}"
         awsLambdaExamples "org.ballerinax.awslambda:awslambda-extension-examples:${awslambdaVersion}@zip"
 
         /* Azure Functions extension */
         exten "org.ballerinax.azurefunctions:azurefunctions-extension:${azFunctionsVersion}"
-        azFunctionsBalo "org.ballerinax.azurefunctions:azurefunctions-extension-balo:${azFunctionsVersion}@zip"
+        azFunctionsBalo "org.ballerinax.azurefunctions:azurefunctions-extension-balo:${azFunctionsVersion}"
         azFunctionsExamples "org.ballerinax.azurefunctions:azurefunctions-extension-examples:${azFunctionsVersion}@zip"
 
         /* Docker extension */
         exten "org.ballerinax.docker:docker-extension:${dockerVersion}@jar"
-        dockerAnnotations "org.ballerinax.docker:docker-extension-annotations:${dockerVersion}@zip"
+        dockerAnnotations "org.ballerinax.docker:docker-extension-annotations:${dockerVersion}"
         dockerExamples "org.ballerinax.docker:docker-extension-examples:${dockerVersion}@zip"
-
-        /* Kubernetes extension */
-        exten "org.ballerinax.kubernetes:kubernetes-extension:${kubernetesVersion}@jar"
-        kubernetesAnnotations "org.ballerinax.kubernetes:kubernetes-extension-annotations:${kubernetesVersion}@zip"
-        kubernetesExamples "org.ballerinax.kubernetes:kubernetes-extension-examples:${kubernetesVersion}@zip"
 
         /* Data Mapper extension */
         exten "org.ballerinax.datamapper:datamapper-extension:${dataMapperVersion}@jar"
