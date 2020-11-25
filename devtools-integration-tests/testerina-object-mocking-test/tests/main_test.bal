@@ -1,13 +1,18 @@
-import ballerina/email;
-import ballerina/http;
 import ballerina/test;
+import ballerina/http;
 
-// Mock object definition
 public client class MockHttpClient {
     public string url = "http://mockUrl";
 
-    public remote function get(@untainted string path, http:RequestMessage message = (), 
+    public remote function get(@untainted string path, http:RequestMessage message = (),
         http:TargetType targetType = http:Response) returns http:Response|http:ClientError {
+            http:Response res = new;
+            res.statusCode = 500;
+            return res;
+    }
+
+    public remote function post(@untainted string path, http:RequestMessage message = (),
+        http:TargetType targetType = http:Response) returns http:Response|http:Payload|http:ClientError {
             http:Response res = new;
             res.statusCode = 500;
             return res;
@@ -15,83 +20,98 @@ public client class MockHttpClient {
 }
 
 @test:Config {}
-function testUserDefinedMockObject() {
+function test_addOrderWithoutMock() {
+    json orderPayload = {
+        "Order": {
+            "ID": "100500",
+            "Name": "XYZ",
+            "Description": "Sample order."
+        }
+    };
 
-    clientEndpoint = <http:Client>test:mock(http:Client, new MockHttpClient());
-    http:Response res = doGet();
-    test:assertEquals(res.statusCode, 500);
-    test:assertEquals(getClientUrl(), "http://mockUrl");
+    json actual = addOrder(orderPayload);
+    json expected = {"status":"Order Created.","orderId":"100500"};
+
+    test:assertEquals(actual, expected, "Add order test failed");
+
 }
 
 @test:Config {}
-function testProvideAReturnValue() {
+function test_addOrderAgain() {
+     json orderPayload = {
+        "Order": {
+            "ID": "100500",
+            "Name": "XYZ",
+            "Description": "Sample order."
+        }
+    };
 
-    http:Client mockHttpClient = <http:Client>test:mock(http:Client);
-    http:Response mockResponse = new;
-    mockResponse.statusCode = 500;
+    json actual = addOrder(orderPayload);
+    json expected = "Order with same ID already exists";
 
-    test:prepare(mockHttpClient).when("get").thenReturn(mockResponse);
-    clientEndpoint = mockHttpClient;
-    http:Response res = doGet();
-    test:assertEquals(res.statusCode, 500);
+    test:assertEquals(actual, expected, "Add order test failed");
 }
 
-@test:Config {}
-function testProvideAReturnValueBasedOnInput() {
+// Create mock http client
+http:Client mockHttpClient = <http:Client> test:mock(http:Client);
 
-    http:Client mockHttpClient = <http:Client>test:mock(http:Client);
-    test:prepare(mockHttpClient).when("get").withArguments("/get?test=123", test:ANY).thenReturn(new http:Response());
-    clientEndpoint = mockHttpClient;
-    http:Response res = doGet();
-    test:assertEquals(res.statusCode, 200);
+json getResponse1 = {
+    "Order": {
+        "ID": "100",
+        "Name": "MOCK",
+        "Description": "Mock Order."
+    }
+};
+
+json getResponse2 = { "Error" : "Order : 200 cannot be found." };
+
+@test:Config { }
+function test_findOrder() {
+
+    // Create a Specific response for get
+    http:Response mockGetResponse = new;
+    mockGetResponse.setJsonPayload(<@untainted> getResponse1);
+    test:prepare(mockHttpClient).when("get").thenReturn(mockGetResponse);
+
+    mockGetResponse = new;
+    mockGetResponse.setJsonPayload(<@untainted> getResponse2);
+    test:prepare(mockHttpClient).when("get").withArguments("/order/200").thenReturn(mockGetResponse);
+
+    orderManagementClient = mockHttpClient;
+
+    // Try to find a non existing order
+    json actual = findOrder("100");
+    json expected = getResponse1;
+    test:assertEquals(actual, expected, "Correct mocked response not recieved");
+
+    actual = findOrder("200");
+    expected = getResponse2;
+    test:assertEquals(actual, expected, "Correct mocked response not recieved");
+
 }
 
-@test:Config {}
-function testProvideErrorAsReturnValue() {
 
-    email:SmtpClient mockSmtpClient = <email:SmtpClient>test:mock(email:SmtpClient);
-    smtpClient = mockSmtpClient;
+json postPayload = {
+    "Order": {
+        "ID": "200",
+        "Name": "MOCK",
+        "Description": "Mock Order."
+    }
+};
 
-    string[] emailIds = ["user1@test.com", "user2@test.com"];
-    error? errMock = error("Email sending error", message = "email sending failed");
-    test:prepare(mockSmtpClient).when("send").thenReturn(errMock);
-    error? err = sendNotification(emailIds);
-    test:assertTrue(err is error);
-}
+json postResponse1 = {
+    status : "Order Created.",
+    orderId : "200"
+};
 
-@test:Config {}
-function testDoNothing() {
 
-    email:SmtpClient mockSmtpClient = <email:SmtpClient>test:mock(email:SmtpClient);
-    http:Response mockResponse = new;
-    mockResponse.statusCode = 500;
+@test:Config { dependsOn : ["test_findOrder"]}
+function test_addOrder() {
+    http:Response mockPostResponse = new;
+    mockPostResponse.setJsonPayload(<@untainted> postResponse1);
+    test:prepare(mockHttpClient).when("post").withArguments("/order", postPayload).thenReturn(mockPostResponse);
 
-    test:prepare(mockSmtpClient).when("send").doNothing();
-    smtpClient = mockSmtpClient;
-
-    string[] emailIds = ["user1@test.com", "user2@test.com"];
-    error? err = sendNotification(emailIds);
-    test:assertEquals(err, ());
-}
-
-@test:Config {}
-function testMockMemberVarible() {
-    string mockClientUrl = "http://foo";
-    http:Client mockHttpClient = <http:Client>test:mock(http:Client);
-    test:prepare(mockHttpClient).getMember("url").thenReturn(mockClientUrl);
-
-    clientEndpoint = mockHttpClient;
-    test:assertEquals(getClientUrl(), mockClientUrl);
-}
-
-@test:Config {}
-function testProvideAReturnSequence() {
-    http:Client mockHttpClient = <http:Client>test:mock(http:Client);
-    http:Response mockResponse = new;
-    mockResponse.statusCode = 500;
-
-    test:prepare(mockHttpClient).when("get").thenReturnSequence(new http:Response(), mockResponse);
-    clientEndpoint = mockHttpClient;
-    http:Response res = doGetRepeat();
-    test:assertEquals(res.statusCode, 500);
+    json actual = addOrder(postPayload);
+    json expected = postResponse1;
+    test:assertEquals(actual, expected, "Correct mocked response not recieved");
 }
