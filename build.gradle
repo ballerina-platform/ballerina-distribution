@@ -473,7 +473,7 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:oauth2-ballerina:${stdlibOAuth2Version}"
         ballerinaStdLibs "org.ballerinalang:ldap-ballerina:${stdlibLdapVersion}"
         ballerinaStdLibs "org.ballerinalang:crypto-ballerina:${stdlibCryptoVersion}"
-        ballerinaStdLibs "org.ballerinalang:java.arrays-ballerina:${stdlibJavaArraysVersion}"
+        ballerinaStdLibs "org.ballerinalang:jarrays-ballerina:${stdlibJavaArraysVersion}"
         ballerinaStdLibs "org.ballerinalang:mime-ballerina:${stdlibMimeVersion}"
         ballerinaStdLibs "org.ballerinalang:email-ballerina:${stdlibEmailVersion}"
         ballerinaStdLibs "org.ballerinalang:ftp-ballerina:${stdlibFtpVersion}"

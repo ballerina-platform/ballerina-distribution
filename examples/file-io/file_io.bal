@@ -12,9 +12,12 @@ public function main() returns @tainted error? {
     check io:fileWriteBytes(imageCopyPath1, bytes);
     io:println("Successfully copied the image as a byte array.");
 
-    // Read the file as a stream of blocks. The default block size is 4KB. Here, the default size is overridden by the value 2KB.
-    stream<io:Block> blockStream = check io:fileReadBlocksAsStream(imagePath, 2048);
-    // If the file reading was successful, then, the content will be written to the given destination file using the given stream.
+    // Read the file as a stream of blocks. The default block size is 4KB.
+    // Here, the default size is overridden by the value 2KB.
+    stream<io:Block> blockStream = check
+    io:fileReadBlocksAsStream(imagePath, 2048);
+    // If the file reading was successful, then,
+    // the content will be written to the given destination file using the given stream.
     check io:fileWriteBlocksFromStream(imageCopyPath2, blockStream);
     io:println("Successfully copied the image as a stream.");
 
@@ -23,7 +26,8 @@ public function main() returns @tainted error? {
     string textFilePath2 = "./files/textfile2.txt";
     string textFilePath3 = "./files/textfile3.txt";
     string textContent = "Ballerina is an open source programming language.";
-    string[] lines = ["The Big Bang Theory", "F.R.I.E.N.D.S", "Game of Thrones", "LOST"];
+    string[] lines = ["The Big Bang Theory", "F.R.I.E.N.D.S",
+    "Game of Thrones", "LOST"];
 
     // Write the given string to a file.
     check io:fileWriteString(textFilePath1, textContent);
@@ -77,8 +81,8 @@ public function main() returns @tainted error? {
     // Initialize the CSV file path and content.
     string csvFilePath1 = "./files/csvFile1.csv";
     string csvFilePath2 = "./files/csvFile2.csv";
-    string[][] csvContent = [["1", "James", "10000"], ["2", "Nathan", "150000"], ["3", "Ronald", "120000"], ["4", "Roy",
-    "6000"], ["5", "Oliver", "1100000"]];
+    string[][] csvContent = [["1", "James", "10000"], ["2", "Nathan", "150000"],
+    ["3", "Ronald", "120000"], ["4", "Roy", "6000"], ["5", "Oliver", "1100000"]];
 
     // Write the given content string[][] to a CSV file.
     check io:fileWriteCsv(csvFilePath1, csvContent);
