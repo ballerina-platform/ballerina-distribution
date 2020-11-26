@@ -1,0 +1,28 @@
+# To run this sample, create a new TOML file with name `configuration.toml` in the
+# same directory of the `.bal` file.
+
+# The TOML must contain the following,
+#
+# hostName = "192.0.1.2"
+# port = 9090
+# enableRemote = false
+# maxPayload = 0.321
+
+# The TOML file must include the module information in the following TOML table
+# format, for running the sample in a ballerina project.
+
+# [organizationName.packageName.submoduleName]
+# variable-name = value
+
+# Then, navigate to the directory that contains the `.bal` and
+# `configuration.toml` files, and execute the `ballerina run` command below.
+
+ballerina run configurable.bal
+
+# The output will be as follows:
+Service created successfully with the configuration,
+host : 192.0.1.2
+port : 9090
+protocol : http
+maximum payload (in MB) : 0.321
+Remote enabled : false
