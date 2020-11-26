@@ -21,6 +21,6 @@ public function main() {
     io:println("host : " + hostName);
     io:println("port : " + port.toString());
     io:println("protocol : " + protocol);
-    io:println("maximum payload (in MB) : " + maxPayLoad.toString());
+    io:println("maximum payload (in MB) : " + maxPayload.toString());
     io:println("Remote enabled : " + enableRemote.toString());
 }
