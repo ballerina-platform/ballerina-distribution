@@ -739,24 +739,9 @@
                 "githubLink": "https://github.com/ballerina-platform/module-ballerina-c2c/tree/master/c2c-extension-examples/examples/c2c-deployment"
             },
             {
-                "name": "Kubernetes Deployment",
-                "url": "kubernetes-deployment",
-                "githubLink": "https://github.com/ballerina-platform/module-ballerina-kubernetes/tree/master/kubernetes-extension-examples/examples/kubernetes-deployment"
-            },
-            {
-                "name": "OpenShift Deployment",
-                "url": "openshift-deployment",
-                "githubLink": "https://github.com/ballerina-platform/module-ballerina-kubernetes/tree/master/kubernetes-extension-examples/examples/openshift-deployment"
-            },
-            {
                 "name": "AWS Lambda Deployment",
                 "url": "aws-lambda-deployment",
                 "githubLink": "https://github.com/ballerina-platform/module-ballerinax-aws.lambda/tree/master/awslambda-extension-examples/examples/aws-lambda-deployment"
-            },
-            {
-                "name": "Knative Deployment",
-                "url": "knative-deployment",
-                "githubLink": "https://github.com/ballerina-platform/module-ballerina-kubernetes/tree/master/kubernetes-extension-examples/examples/knative-deployment"
             },
             {
                 "name": "Azure Functions",
