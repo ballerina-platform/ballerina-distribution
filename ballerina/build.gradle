@@ -764,11 +764,6 @@ task testExamples() {
     // The following BBEs will not be verified by compiling/running.
     def buildIgnoreList = [
             'task-scheduler-appointment',
-            'secured-client-with-jwt-auth',
-            'secured-client-with-basic-auth',
-            'secured-service-with-jwt-auth',
-            'secured-service-with-basic-auth',
-            'jwt-issue-validate',
             'http-retry',
             'http-failover',
             'http-load-balancer',
@@ -777,10 +772,7 @@ task testExamples() {
             'cache',
             'websocket-proxy-server',
             'crypto',
-            'math-functions',
             'record-io',
-            'modules',
-            'any-type',
             'secured_client_with_oauth2',
             'send_and_receive_emails',
             'proto-to-ballerina',
@@ -821,7 +813,6 @@ task testExamples() {
             'tracing',
             'openapi-to-ballerina',
             'taint-checking', // Should not compile
-            'user-defined-error',
             //TODO failing due to transaction changes probably. Need to fix
             'rabbitmq-transaction-consumer',
             'rabbitmq-transaction-producer',
