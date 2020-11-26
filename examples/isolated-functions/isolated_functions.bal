@@ -27,7 +27,7 @@ isolated class UniqueGreetingsStore {
     }
 }
 
-// A `final` variable of type `UniqueGreetingsStore` which
+// A `final` variable of the type `UniqueGreetingsStore`, which
 // is a subtype of `isolated object {}`.
 // This variable can be accessed in an `isolated` function.
 final UniqueGreetingsStore uniqueGreetings = new;
@@ -50,13 +50,13 @@ isolated function addGreetings(string[] greetings, int count) {
     // the mutable array passed as an argument.
     greetings.push(...builtGreetings);
 
-    // Access the `final` `isolated object {}` variable `uniqueGreetings`,
+    // Access the `final` `isolated object {}` variable `uniqueGreetings`
     // and call a method to store the greetings if they are unique.
     foreach string greeting in builtGreetings {
         uniqueGreetings.add(greeting);
     }
 
-    // Access the `isolated` variable within a `lock` statement,
+    // Access the `isolated` variable within a `lock` statement.
     lock {
         updateCount += 1;
     }
@@ -88,7 +88,7 @@ public function main() {
 
     io:println(mutableGreetingArray);
 
-    // Access the `isolated` variable within a `lock` statement,
+    // Access the `isolated` variable within a `lock` statement.
     lock {
         io:println(updateCount);
     }

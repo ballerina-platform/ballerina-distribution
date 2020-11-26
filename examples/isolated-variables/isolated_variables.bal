@@ -6,11 +6,11 @@ type Coordinates record {|
 |};
 
 // The initialization expression of an `isolated` variable
-// has to be an `isolated` expression, which itself will be
+// has to be an isolated expression, which itself will be
 // an isolated root.
-// e.g., expressions with an immutable static type,
+// E.g., expressions with an immutable static type,
 // simple literals, constructor expressions
-// where all the subexpressions are isolated expressions, etc.
+// in which all the subexpressions are isolated expressions, etc.
 isolated map<Coordinates> cities = {};
 
 
@@ -24,7 +24,7 @@ function add(string city, Coordinates coordinates) {
 
         map<Coordinates> updatedCities = cities.clone();
         // Any values transferred into the `lock` statement also need to be
-        // isolated expressions, ensuring that the variable will continue
+        // isolated expressions ensuring that the variable will continue
         // to be an isolated root.
         updatedCities[city] = coordinates.clone();
         cities = updatedCities.clone();
@@ -35,10 +35,10 @@ function add(string city, Coordinates coordinates) {
 
 function getCoordinates(string city) returns Coordinates? {
     lock {
-        // Similarly, transferring values out of the `lock` statement,
+        // Similarly, transferring values out of the `lock` statement
         // either using a `return` statement or by assigning to a variable
-        // defined outside the `lock` statement, is also
-        // constrained. The expressions transferring values out need to be
+        // defined outside the `lock` statement is also
+        // constrained. The expressions that transfer values out need to be
         // isolated expressions.
         return cities[city].clone();
     }

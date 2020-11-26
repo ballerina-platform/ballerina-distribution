@@ -10,11 +10,11 @@ isolated class Cities {
     final string country;
 
     // The initialization expression of a field of an
-    // `isolated` object has to be an `isolated` expression,
+    // `isolated` object has to be an isolated expression,
     // which itself will be an isolated root.
-    // e.g., expressions with an immutable static type,
+    // E.g., expressions with an immutable static type,
     // simple literals, constructor expressions
-    // where all the subexpressions are isolated expressions, etc.
+    // in which all the subexpressions are isolated expressions, etc.
     private map<Coordinates> cities = {};
 
     function init(string country) {
@@ -30,8 +30,8 @@ isolated class Cities {
                 return;
             }
 
-            // Any values transferred into the `lock` statement (and thereby
-            // the object) also need to be isolated expressions, ensuring that
+            // Any values transferred into the `lock` statement (and thereby,
+            // the object) also need to be isolated expressions ensuring that
             // the object will continue to be an isolated root.
             // A `.clone()` or `.cloneReadOnly()` call is an isolated
             // expression.
@@ -47,19 +47,20 @@ isolated class Cities {
     function getCoordinates(string city) returns Coordinates? {
         lock {
             // Similarly, transferring values out of the `lock` statement (and
-            // thereby the object), either using a `return` statement or by
-            // assigning to a variable defined outside the `lock` statement,
-            // is also constrained. The expressions transferring values out
-            // need to be isolated expressions.
+            // thereby, the object) either using a `return` statement or by
+            // assigning to a variable defined outside the `lock` statement
+            // is also constrained. The expressions that are transferring values
+            // out need to be isolated expressions.
             return self.cities[city].clone();
         }
     }
 
     function getAllCoordinates() returns string[] {
         lock {
-            // A method accessing `self` to access a mutable field can
-            // call another function/method if that function/method is
-            // `isolated`.
+            // A method which accesses `self`, other than to access a `final`
+            // field of a type that is a subtype of `readonly` or
+            // `isolated object {}`, can call another function/method only
+            // if that function/method is `isolated`.
             return formatCoordinates(self.cities);
         }
     }
