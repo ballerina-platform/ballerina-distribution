@@ -32,6 +32,11 @@ configurations {
     ballerinaLinuxDistribution
     ballerinaMacDistribution
     ballerinaWindowsDistribution
+    repoBuilder
+}
+
+dependencies {
+    repoBuilder project(':dist-repo-builder')
 }
 
 def jBallerinaDistributionZip = file("$project.buildDir/distributions/ballerina-${shortVersion}.zip")
@@ -214,20 +219,14 @@ task copyOtherRepos(type: Copy) {
             from "${artifactExtractedPath}/cache"
         }
     }
-
-    // Here we extract the platform dependencies in to the cache
-    fileTree("${ballerinaDist}/repo/balo").matching {
-        include "**/*.balo"
-    }.each {
-        def baloPath = it.path.toString()
-        def targetPath = it.parent.toString()
-        copy {
-            from zipTree(baloPath).matching { include "**/*.jar" }
-            into "${targetPath}"
-        }
-    }
-
 }
+
+task buildDistRepo(type: JavaExec) {
+    classpath = project.configurations.repoBuilder
+    main = 'io.ballerina.dist.DistRepoBuilder'
+    args "$buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/repo/balo"
+}
+
 task copyDevToolsCoverageReport(type: Copy) {
      from "$project.buildDir/target/extracted-distributions/ballerina-dev-tools-zip/testerina-report-tools-${ballerinaVersion}.zip"
      into "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/lib/tools/coverage"
@@ -1477,7 +1476,9 @@ copyOtherRepos.dependsOn extractJreForWindows
 copyDevToolsCoverageReport.dependsOn copyOtherRepos
 copyDevToolsDocUi.dependsOn copyDevToolsCoverageReport
 combineDocs.dependsOn copyDevToolsDocUi
+buildDistRepo.dependsOn combineDocs
 /* Package Distributions */
+packageDist.dependsOn buildDistRepo
 packageDist.dependsOn combineDocs
 packageDistZip.dependsOn packageDist
 packageDistLinux.dependsOn packageDistZip
