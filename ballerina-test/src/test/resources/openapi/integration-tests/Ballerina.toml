@@ -1,3 +1,4 @@
-[project]
-org-name = "ballerina"
-version = "0.0.0"
+[package]
+org= "ballerina"
+name= "openAPI"
+version= "0.1.0"

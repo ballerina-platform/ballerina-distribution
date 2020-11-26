@@ -122,7 +122,7 @@ public class OpenAPIArtifactBuildTest {
         }
     }
 
-    @Test(description = "Check ballerina to openapi generator command")
+    @Test(description = "Check ballerina to openapi generator command", enabled = false)
     public void buildBallerinaToOpenAPITest() throws IOException, InterruptedException {
         Path testResource = Paths.get("/openapi");
         List<String> buildArgs = new LinkedList<>();
@@ -136,16 +136,16 @@ public class OpenAPIArtifactBuildTest {
     }
 
     //OpenAPI integration tests
-    @Test(description = "Test for openapi validator off", enabled = false)
+    @Test(description = "Test for openapi validator off")
     public void buildOpenAPIValidatorOffTest() throws IOException, InterruptedException {
 
-        Path testResource = Paths.get("/openapi/integration-tests");
+        Path testResource = Paths.get("/openapi/integration-tests/testFiles");
         List<String> buildArgs = new LinkedList<>();
-        buildArgs.add("src/openapi-validator-off/openapi-validator-off.bal");
+        buildArgs.add("openapi-validator-off.bal");
         InputStream outputs = TestUtils.executeOpenapiBuild(distributionFileName, TestUtils.getResource(testResource),
                 buildArgs);
-        String msg = "warning: .::openapi-validator-off.bal:14:1: Couldn't find a Ballerina service resource for the " +
-                "path";
+        String msg = "WARNING [openapi-validator-off.bal:(14:1,26:2)] Couldn't find a Ballerina service resource for the" +
+                " path";
         try (BufferedReader br = new BufferedReader(new InputStreamReader(outputs))) {
 
             Stream<String> logLines = br.lines();
@@ -162,16 +162,16 @@ public class OpenAPIArtifactBuildTest {
         }
     }
 
-    @Test(description = "Tests for openapi validator on", enabled = false)
+    @Test(description = "Tests for openapi validator on")
     public void buildOpenAPIValidatorONTest() throws IOException, InterruptedException {
 
-        Path testResource = Paths.get("/openapi/integration-tests");
+        Path testResource = Paths.get("/openapi/integration-tests/testFiles");
         List<String> buildArgs = new LinkedList<>();
-        buildArgs.add("src/openapi-validator-on/openapi-validator-on.bal");
+        buildArgs.add("openapi-validator-on.bal");
         InputStream outputs = TestUtils.executeOpenapiBuild(distributionFileName, TestUtils.getResource(testResource),
                 buildArgs);
-        String msg = "error: .::openapi-validator-on.bal:13:9: Couldn't find a Ballerina service resource for the " +
-                "path";
+        String msg = "ERROR [openapi-validator-on.bal:(13:9,25:10)] Couldn't find a Ballerina service resource for " +
+                "the path";
         try (BufferedReader br = new BufferedReader(new InputStreamReader(outputs))) {
 
             Stream<String> logLines = br.lines();
