@@ -794,9 +794,6 @@ task testExamples() {
             'kafka-producer-transactional',
             'mysql-batch-execute-operation',
             'jdbc-batch-execute-operation',
-            'retry-transactions',
-            'local-transactions-with-handlers',
-            'local-transactions',
             'log-api',
             'error-handling-in-single-place'
     ]
