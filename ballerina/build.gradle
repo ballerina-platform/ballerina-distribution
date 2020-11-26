@@ -901,7 +901,7 @@ task testExamples() {
             'local-transactions',
             'log-api',
             'error-handling-in-single-place',
-            'file'
+            'file-io'
     ]
 
     doFirst {
