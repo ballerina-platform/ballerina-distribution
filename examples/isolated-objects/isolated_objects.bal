@@ -57,10 +57,10 @@ isolated class Cities {
 
     function getAllCoordinates() returns string[] {
         lock {
-            // A method which accesses `self`, other than to access a `final`
-            // field of a type that is a subtype of `readonly` or
-            // `isolated object {}`, can call another function/method only
-            // if that function/method is `isolated`.
+            // A method which accesses the `self` variable, other than to
+            // access a `final` field of a type that is a subtype of
+            // `readonly` or `isolated object {}`, can call another
+            // function/method only if that function/method is `isolated`.
             return formatCoordinates(self.cities);
         }
     }
