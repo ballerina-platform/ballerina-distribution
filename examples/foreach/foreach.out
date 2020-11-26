@@ -24,11 +24,11 @@ Color: red
 Color: green
 
 Iterating an XML:-
-Book:                  <book>
+Book:                   <book>
                            <name>Sherlock Holmes</name>
                            <author>Sir Arthur Conan Doyle</author>
                        </book>
-Book:                  <book>
+Book:                   <book>
                            <name>Harry Potter</name>
                            <author>J.K. Rowling</author>
                        </book>
@@ -38,8 +38,8 @@ Employee: {"id":1,"name":"John","salary":300.5}
 Employee: {"id":2,"name":"Bella","salary":500.5}
 Employee: {"id":3,"name":"Peter","salary":750.0}
 
-Iterating a closed integer range:-
+Iterating an integer range (1 ... endValue):-
 Summation from 1 to 10 is 55
 
-Iterating a half open integer range:-
+Iterating an integer range (1 ..< endValue):-
 Summation from 1 to 10 (exclusive) is 45

@@ -69,21 +69,23 @@ public function main() {
         io:println("Employee: ", employee);
     }
 
-    io:println("\nIterating a closed integer range:- ");
+    io:println("\nIterating an integer range (1 ... endValue):- ");
     int endValue = 10;
     int sum = 0;
-    // A closed integer range in the `foreach` statement represents an incremental integer value range from the start
+    // An integer range `1 ... endValue` in the `foreach` statement represents
+    // an incremental integer value range from the start
     // expression (`1`) to the end expression (`endValue`) inclusively.
-    foreach var i in 1...endValue {
+    foreach var i in 1 ... endValue {
         sum = sum + i;
     }
     io:println("Summation from 1 to ", endValue, " is ", sum);
 
-    io:println("\nIterating a half open integer range:- ");
+    io:println("\nIterating an integer range (1 ..< endValue):- ");
     sum = 0;
-    // A half-open integer range in the `foreach` statement represents an incremental integer value range from the start
-    // expression (`1`) inclusively to the end expression (`endValue`) exclusively.
-    foreach var i in 1..< endValue {
+    // An integer range `1 ..< endValue` in the `foreach` statement represents an
+    // incremental integer value range from the start expression (`1`) inclusively
+    // to the end expression (`endValue`) exclusively.
+    foreach var i in 1 ..< endValue {
         sum = sum + i;
     }
     io:println("Summation from 1 to ", endValue," (exclusive) is ", sum);
