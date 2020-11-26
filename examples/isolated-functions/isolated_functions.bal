@@ -32,8 +32,8 @@ isolated class UniqueGreetingsStore {
 // This variable can be accessed in an `isolated` function.
 final UniqueGreetingsStore uniqueGreetings = new;
 
-// An `isolated` variable that can be accessed within an
-// `isolated` function if it does so within a `lock` statement.
+// An `isolated` variable that can be accessed within
+// a `lock` statement in an `isolated` function.
 isolated int updateCount = 0;
 
 // An `isolated` function, which adds a specific number of
