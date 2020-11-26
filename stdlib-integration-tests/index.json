@@ -86,9 +86,5 @@
   {
     "name": "gRPC Client Streaming RPC",
     "path": "grpc-client-streaming"
-  },
-  {
-    "name": "gRPC Bidirectional Streaming RPC",
-    "path": "grpc-bidirectional-streaming"
   }
 ]
