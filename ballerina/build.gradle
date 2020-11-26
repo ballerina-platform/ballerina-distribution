@@ -1095,7 +1095,7 @@ task testExamples() {
             lines = lines + "${cmdOutAry[1]}".split('\n')
             lines.each {
                 str = it.trim()
-                if (str != "Compiling source" && str != "${balName}.bal" && str != "Running executables" && str != ""
+                if (str != "Compiling source" && str != "${balName}.bal" && str != "Running executable" && str != ""
                         && str != "Picked up JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF8") {
                     bbeOutput.add(str)
                 }
