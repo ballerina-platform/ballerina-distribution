@@ -1,6 +1,6 @@
 import ballerina/io;
 import ballerina/java;
-import ballerina/java.arrays as jarrays;
+import ballerina/jarrays;
 
 public function splitString(handle receiver, handle regex)
                                     returns handle = @java:Method {
