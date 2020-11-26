@@ -408,6 +408,7 @@ subprojects {
         kubernetesExamples
         ballerinaStdLibs
         ballerinaC2cLibs
+        ballerinaC2cExamples
         balCommand
         exten {
             transitive = false
@@ -483,6 +484,7 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:transaction-ballerina:${stdlibTransactionVersion}"
 
         ballerinaC2cLibs "io.ballerina:c2c-ballerina:${c2cVersion}"
+        ballerinaC2cExamples "io.ballerina:c2c-extension-examples:${c2cVersion}@zip"
 
         balCommand "org.ballerinalang:ballerina-command-distribution:${ballerinaCommandVersion}@zip"
     }

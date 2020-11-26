@@ -1,6 +1,6 @@
 import ballerina/io;
 
-// Define a record to represent the error details.
+// Define an open record to represent the error details.
 // This record can have fields of `anydata|reaonly` types.
 // i.e., it should be a subtype of `map<anydata|readonly>`.
 type InvalidAccountTypeErrorData record {
@@ -25,14 +25,14 @@ function getTypeId(string accountType) returns int|InvalidAccountTypeError {
                                     accountType = accountType);
 }
 
-type AccountErrorData record {|
+type AccountErrorData record {
     int accountID;
-|};
+};
 
-type AccountTransferErrorData record {|
+type AccountTransferErrorData record {
     int fromAccountId;
     int toAccountId;
-|};
+};
 
 // To distinctly identify different errors and handle them appropriately,
 // distinct errors can be used.
