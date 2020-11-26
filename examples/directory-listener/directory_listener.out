@@ -1,4 +1,4 @@
-# After running the sample, create a new file called `test1.txt` in the directory called `observed-dir` and modify and delete it.
+# After running the sample, create a new file called `test1.txt` in the directory called `observed-dir`, modify it, and delete it.
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run directory_listener.bal
