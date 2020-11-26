@@ -100,10 +100,6 @@
             {
                 "name": "The Main Function",
                 "url": "the-main-function"
-            },
-            {
-                "name": "Isolated Functions",
-                "url": "isolated-functions"
             }
         ]
     },
@@ -529,37 +525,21 @@
         ]
     },
     {
-        "title": "I/O",
-        "column": 3,
+        "title": "Isolation",
+        "column": 2,
         "category": "Language concepts",
         "samples": [
             {
-                "name": "Byte I/O",
-                "url": "byte-io"
+                "name": "Isolated Objects",
+                "url": "isolated-objects"
             },
             {
-                "name": "Data I/O",
-                "url": "data-io"
+                "name": "Isolated Variables",
+                "url": "isolated-variables"
             },
             {
-                "name": "Record I/O",
-                "url": "record-io"
-            },
-            {
-                "name": "CSV I/O",
-                "url": "csv-io"
-            },
-            {
-                "name": "JSON I/O",
-                "url": "json-io"
-            },
-            {
-                "name": "XML I/O",
-                "url": "xml-io"
-            },
-            {
-                "name": "File I/O",
-                "url": "file-io"
+                "name": "Isolated Functions",
+                "url": "isolated-functions"
             }
         ]
     },
@@ -595,6 +575,41 @@
             {
                 "name": "Java Exceptions",
                 "url": "java-exceptions"
+            }
+        ]
+    },
+    {
+        "title": "I/O",
+        "column": 3,
+        "category": "Language concepts",
+        "samples": [
+            {
+                "name": "Byte I/O",
+                "url": "byte-io"
+            },
+            {
+                "name": "Data I/O",
+                "url": "data-io"
+            },
+            {
+                "name": "Record I/O",
+                "url": "record-io"
+            },
+            {
+                "name": "CSV I/O",
+                "url": "csv-io"
+            },
+            {
+                "name": "JSON I/O",
+                "url": "json-io"
+            },
+            {
+                "name": "XML I/O",
+                "url": "xml-io"
+            },
+            {
+                "name": "File I/O",
+                "url": "file-io"
             }
         ]
     },
