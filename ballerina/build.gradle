@@ -236,12 +236,12 @@ task buildDistRepo(type: JavaExec) {
 }
 
 task copyDevToolsCoverageReport(type: Copy) {
-     from "$project.buildDir/target/extracted-distributions/ballerina-dev-tools-zip/testerina-report-tools-${ballerinaVersion}.zip"
+     from "$project.buildDir/target/extracted-distributions/ballerina-dev-tools-zip/testerina-report-tools-${devToolsVersion}.zip"
      into "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/lib/tools/coverage"
-     rename ("testerina-report-tools-${ballerinaVersion}.zip", "report.zip")
+     rename ("testerina-report-tools-${devToolsVersion}.zip", "report.zip")
 }
 task copyDevToolsDocUi(type: Copy) {
-    from zipTree("$project.buildDir/target/extracted-distributions/ballerina-dev-tools-zip/docerina-ui-${ballerinaVersion}.zip")
+    from zipTree("$project.buildDir/target/extracted-distributions/ballerina-dev-tools-zip/docerina-ui-${devToolsVersion}.zip")
     into "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/lib/tools/doc-ui"
 }
 task combineDocs(type: Exec) {
