@@ -82,7 +82,8 @@ public function main() returns @tainted error? {
     string csvFilePath1 = "./files/csvFile1.csv";
     string csvFilePath2 = "./files/csvFile2.csv";
     string[][] csvContent = [["1", "James", "10000"], ["2", "Nathan", "150000"],
-    ["3", "Ronald", "120000"], ["4", "Roy", "6000"], ["5", "Oliver", "1100000"]];
+    ["3", "Ronald", "120000"], ["4", "Roy", "6000"],
+    ["5", "Oliver", "1100000"]];
 
     // Write the given content string[][] to a CSV file.
     check io:fileWriteCsv(csvFilePath1, csvContent);
