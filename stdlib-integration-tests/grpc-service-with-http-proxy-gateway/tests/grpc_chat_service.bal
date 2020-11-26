@@ -39,6 +39,10 @@ listener grpc:Listener ep3 = new (20007, {
 boolean initialized = false;
 
 @grpc:ServiceConfig {name:"Chat"}
+@grpc:ServiceDescriptor {
+    descriptor: ROOT_DESCRIPTOR,
+    descMap: getDescriptorMap()
+}
 service Chat on ep3 {
 
     resource function chat(grpc:Caller caller, stream<ChatMessage, error> clientStream) {

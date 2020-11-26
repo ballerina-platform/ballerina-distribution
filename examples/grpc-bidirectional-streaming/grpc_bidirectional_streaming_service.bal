@@ -4,6 +4,10 @@ import ballerina/log;
 
 map<grpc:Caller> consMap = {};
 
+@grpc:ServiceDescriptor {
+    descriptor: ROOT_DESCRIPTOR,
+    descMap: getDescriptorMap()
+}
 service Chat on new grpc:Listener(9090) {
 
     resource function  chat(grpc:Caller caller,
