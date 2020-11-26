@@ -900,7 +900,8 @@ task testExamples() {
             'local-transactions-with-handlers',
             'local-transactions',
             'log-api',
-            'error-handling-in-single-place'
+            'error-handling-in-single-place',
+            'file'
     ]
 
     doFirst {
