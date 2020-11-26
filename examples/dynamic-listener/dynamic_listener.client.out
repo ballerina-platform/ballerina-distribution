@@ -1,0 +1,7 @@
+# Invoke the service using "cURL".
+curl http://localhost:9090/sayHello
+Hello, World!
+
+# Invoke the shutdown resource to deregister the listener.
+curl http://localhost:9090/shutDownServer
+Shutting down the server
