@@ -1,23 +1,24 @@
 import ballerina/io;
 
-// Initialize the required `configurable` variables with the `?`.
-// A value must be supplied for these variables in a `configuration.toml` file.
+// `configurable` variables can be initialized with the `?` expression.
+// A value must be supplied for such variables in a `configuration.toml` file.
 configurable string hostName = ?;
 configurable int port = ?;
 
-// Initialize the optional `configurable` variables with their default values.
-// The value provided here will be overridden by the value specified in a `configuration.toml` file.
-// The values of the `enableRemote` and `maxPayload` variables are overridden.
+// A `configurable` variable can be initialized with an expression that is not `?`.
+// The `configuration.toml` file does not have to specify a value for such a variable.
+// But if specified, the value in the `configuration.toml` file overrides the value
+// specified as the initializer.
+// The values of the `enableRemote` and `maxPayload` variables here are
+// overridden by the values specified in the `configuration.toml` file.
 configurable boolean enableRemote = true;
 configurable float maxPayload = 1.0;
 
-// The value `http` is used to initialize the `protocol` variable as it is not provided in the
-// `configuration.toml` file.
+// The value `http` is used to initialize the `protocol` variable since a value is not
+// provided for it in the `configuration.toml` file.
 configurable string protocol = "http";
 
 public function main() {
-    string serviceMsg = "Service created successfully with the configuration,";
-    io:println(serviceMsg);
     io:println("host : " + hostName);
     io:println("port : " + port.toString());
     io:println("protocol : " + protocol);
