@@ -735,6 +735,7 @@ task testExamples() {
 
     // The following BBEs will not be verified by compiling/running.
     def buildIgnoreList = [
+            'task-scheduler-appointment',
             'secured-client-with-jwt-auth',
             'secured-client-with-basic-auth',
             'secured-service-with-jwt-auth',
