@@ -744,7 +744,6 @@ task testExamples() {
             'websocket-proxy-server',
             'crypto',
             'math-functions',
-            'java-arrays',
             'record-io',
             'modules',
             'any-type',
