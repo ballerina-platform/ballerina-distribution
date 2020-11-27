@@ -18,6 +18,10 @@ import ballerina/grpc;
 import ballerina/log;
 
 // Bind the `service` to the port.
+@grpc:ServiceDescriptor {
+    descriptor: ROOT_DESCRIPTOR,
+    descMap: getDescriptorMap()
+}
 service HelloWorld on new grpc:Listener(20002) {
 
     isolated resource function hello(grpc:Caller caller, string name) {
