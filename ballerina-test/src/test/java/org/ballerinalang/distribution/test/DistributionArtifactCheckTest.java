@@ -44,7 +44,7 @@ public class DistributionArtifactCheckTest {
         TestUtils.prepareDistribution(DISTRIBUTIONS_DIR.resolve(DIST_NAME + ".zip"));
     }
 
-    @Test(enabled = false)
+    @Test()
     public void dockerAnnotationExistsTest() {
         Path cachePath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
@@ -75,7 +75,7 @@ public class DistributionArtifactCheckTest {
         Assert.assertTrue(Files.exists(docsPath));
     }
 
-    @Test(enabled = false)
+    @Test()
     public void awsLambdaAnnotationExistsTest() {
         Path cachePath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
@@ -106,7 +106,7 @@ public class DistributionArtifactCheckTest {
         Assert.assertTrue(Files.exists(docsPath));
     }
 
-    @Test(enabled = false)
+    @Test()
     public void azFunctionsAnnotationExistsTest() {
         Path cachePath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)

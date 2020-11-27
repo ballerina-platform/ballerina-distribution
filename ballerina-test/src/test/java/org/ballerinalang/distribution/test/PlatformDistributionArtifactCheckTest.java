@@ -165,7 +165,7 @@ public class PlatformDistributionArtifactCheckTest {
         Assert.assertTrue(Files.exists(bbePath));
         Assert.assertTrue(Files.exists(docsPath));
     }
-    
+
     @AfterClass
     public void cleanUp() throws IOException {
         TestUtils.cleanDistribution();
