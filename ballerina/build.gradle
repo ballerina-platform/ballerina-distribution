@@ -16,7 +16,7 @@
 
 
 import groovy.json.JsonSlurper
-import org.apache.tools.ant.filters.*
+import org.apache.tools.ant.filters.ReplaceTokens
 import org.apache.tools.ant.taskdefs.condition.Os
 
 description = 'Ballerina - Tools'
@@ -174,7 +174,7 @@ task extractJreForWindows(type: Copy) {
 }
 
 task deleteTemporaryFiles(type: Delete) {
-    delete 'build/target'
+//    delete 'build/target'
 }
 
 task copyOtherRepos(type: Copy) {
@@ -270,6 +270,7 @@ task packageDist(type: Zip) {
         from "${project.rootDir}/examples/"
         fileMode = 0755
     }
+    // Code2Cloud Extensions
     into("${parentDir}/examples") {
         from "build/target/extracted-distributions/awslambda-extension-examples-zip"
         exclude "index.js"
@@ -304,12 +305,6 @@ task packageDist(type: Zip) {
     into("${parentDir}/repo/balo/") {
         from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/balo/"
     }
-    /* Files */
-    into("${parentDir}/lib/") {
-        from "lib/version.txt"
-        fileMode = 0644
-        filter(ReplaceTokens, tokens: [version: version])
-    }
     into("${parentDir}/bre/lib") {
         from "build/target/extracted-distributions/awslambda-extension-balo-zip/libs"
         fileMode = 0644
@@ -321,6 +316,13 @@ task packageDist(type: Zip) {
     into("${parentDir}/bre/lib") {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/libs"
         fileMode = 0644
+    }
+
+    /* Files */
+    into("${parentDir}/lib/") {
+        from "lib/version.txt"
+        fileMode = 0644
+        filter(ReplaceTokens, tokens: [version: version])
     }
     /* Dependencies */
     into("${parentDir}/bre/lib") {
@@ -349,6 +351,7 @@ task packageDistZip(type: Zip) {
         from "${project.rootDir}/examples/"
         fileMode = 0755
     }
+    // Code2Cloud Extensions
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
         from "build/target/extracted-distributions/awslambda-extension-examples-zip"
         exclude "index.js"
@@ -365,14 +368,35 @@ task packageDistZip(type: Zip) {
         from "build/target/extracted-distributions/c2c-extension-examples-zip"
         exclude "index.js"
     }
-    into("${parentDir}/distributionsx/ballerina-${shortVersion}/repo/balo/") {
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/") {
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/cache"
+    }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
+        from "build/target/extracted-distributions/awslambda-extension-balo-zip/cache"
+    }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/cache"
+    }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/balo/"
     }
-    into("${parentDir}/distributionsx/ballerina-${shortVersion}/repo/balo/") {
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
         from "build/target/extracted-distributions/awslambda-extension-balo-zip/balo/"
     }
-    into("${parentDir}/distributionsx/ballerina-${shortVersion}/repo/balo/") {
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
         from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/balo/"
+    }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
+        from "build/target/extracted-distributions/awslambda-extension-balo-zip/libs"
+        fileMode = 0644
+    }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/libs"
+        fileMode = 0644
+    }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/libs"
+        fileMode = 0644
     }
 
     /* Tools artifacts */
@@ -441,6 +465,7 @@ task packageDistLinux(type: Zip) {
         from "${project.rootDir}/examples/"
         fileMode = 0755
     }
+    // Code2Cloud Extensions
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
         from "build/target/extracted-distributions/awslambda-extension-examples-zip"
         exclude "index.js"
@@ -457,23 +482,35 @@ task packageDistLinux(type: Zip) {
         from "build/target/extracted-distributions/c2c-extension-examples-zip"
         exclude "index.js"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerina/docker") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/docker/cache"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/") {
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/cache"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerinax/awslambda") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/awslambda/cache"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
+        from "build/target/extracted-distributions/awslambda-extension-balo-zip/cache"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerinax/azure.functions") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/azure.functions/cache"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/cache"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerina/docker") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/docker/balo"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/balo/"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerinax/awslambda") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/awslambda/balo"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
+        from "build/target/extracted-distributions/awslambda-extension-balo-zip/balo/"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerinax/azure.functions") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/azure.functions/balo"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/balo/"
+    }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
+        from "build/target/extracted-distributions/awslambda-extension-balo-zip/libs"
+        fileMode = 0644
+    }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/libs"
+        fileMode = 0644
+    }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/libs"
+        fileMode = 0644
     }
 
     /* Tools artifacts */
@@ -494,18 +531,6 @@ task packageDistLinux(type: Zip) {
         from "lib/version.txt"
         fileMode = 0644
         filter(ReplaceTokens, tokens: [version: version])
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/ballerinax-awslambda-0.0.0.jar"
-        fileMode = 0644
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/ballerinax-azure.functions-1.0.0.jar"
-        fileMode = 0644
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/ballerina-docker-1.0.0.jar"
-        fileMode = 0644
     }
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/ballerina-version"
@@ -549,6 +574,8 @@ task packageDistMac(type: Zip) {
         from "${project.rootDir}/examples/"
         fileMode = 0755
     }
+
+    // Code2Cloud Extensions
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
         from "build/target/extracted-distributions/awslambda-extension-examples-zip"
         exclude "index.js"
@@ -565,23 +592,35 @@ task packageDistMac(type: Zip) {
         from "build/target/extracted-distributions/c2c-extension-examples-zip"
         exclude "index.js"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerina/docker") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/docker/cache"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/") {
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/cache"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerinax/awslambda") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/awslambda/cache"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
+        from "build/target/extracted-distributions/awslambda-extension-balo-zip/cache"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerinax/azure.functions") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/azure.functions/cache"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/cache"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerina/docker") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/docker/balo"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/balo/"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerinax/awslambda") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/awslambda/balo"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
+        from "build/target/extracted-distributions/awslambda-extension-balo-zip/balo/"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerinax/azure.functions") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/azure.functions/balo"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/balo/"
+    }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
+        from "build/target/extracted-distributions/awslambda-extension-balo-zip/libs"
+        fileMode = 0644
+    }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/libs"
+        fileMode = 0644
+    }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/libs"
+        fileMode = 0644
     }
 
     /* Tools artifacts */
@@ -597,18 +636,6 @@ task packageDistMac(type: Zip) {
         from "lib/version.txt"
         fileMode = 0644
         filter(ReplaceTokens, tokens: [version: version])
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/ballerinax-awslambda-0.0.0.jar"
-        fileMode = 0644
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/ballerinax-azure.functions-1.0.0.jar"
-        fileMode = 0644
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/ballerina-docker-1.0.0.jar"
-        fileMode = 0644
     }
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/ballerina-version"
@@ -652,6 +679,8 @@ task packageDistWindows(type: Zip) {
         from "${project.rootDir}/examples/"
         fileMode = 0755
     }
+
+    // Code2Cloud Extensions
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
         from "build/target/extracted-distributions/awslambda-extension-examples-zip"
         exclude "index.js"
@@ -668,23 +697,35 @@ task packageDistWindows(type: Zip) {
         from "build/target/extracted-distributions/c2c-extension-examples-zip"
         exclude "index.js"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerina/docker") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/docker/cache"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/") {
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/cache"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerinax/awslambda") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/awslambda/cache"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
+        from "build/target/extracted-distributions/awslambda-extension-balo-zip/cache"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerinax/azure.functions") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/azure.functions/cache"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/cache"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerina/docker") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/docker/balo"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/balo/"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerinax/awslambda") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/awslambda/balo"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
+        from "build/target/extracted-distributions/awslambda-extension-balo-zip/balo/"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/ballerinax/azure.functions") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/azure.functions/balo"
+    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/balo/"
+    }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
+        from "build/target/extracted-distributions/awslambda-extension-balo-zip/libs"
+        fileMode = 0644
+    }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
+        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/libs"
+        fileMode = 0644
+    }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
+        from "build/target/extracted-distributions/docker-extension-annotations-zip/libs"
+        fileMode = 0644
     }
 
     /* Tools artifacts */
@@ -700,18 +741,6 @@ task packageDistWindows(type: Zip) {
         from "lib/version.txt"
         fileMode = 0644
         filter(ReplaceTokens, tokens: [version: version])
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/ballerinax-awslambda-0.0.0.jar"
-        fileMode = 0644
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/ballerinax-azure.functions-1.0.0.jar"
-        fileMode = 0644
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/ballerina-docker-1.0.0.jar"
-        fileMode = 0644
     }
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/ballerina-version"
@@ -754,10 +783,10 @@ task testExamples() {
     def distPath = "${baseBuildPath}/jballerina-tools-${ballerinaVersion}"
     def bbeList = []
 
-    PatternSet patternSet = new PatternSet();
-    patternSet.exclude("**/.ballerina/**");
-    patternSet.exclude("**/Ballerina.toml");
-    patternSet.exclude("**/Ballerina.lock");
+    PatternSet patternSet = new PatternSet()
+    patternSet.exclude("**/.ballerina/**")
+    patternSet.exclude("**/Ballerina.toml")
+    patternSet.exclude("**/Ballerina.lock")
     patternSet.exclude("**/ballerina-internal.log")
     inputs.files(files("${distPath}/examples").asFileTree.matching(patternSet))
 
@@ -992,9 +1021,9 @@ task testExamples() {
             }
         }
         if (exitVal.getExitValue() == 1) {
-            return true;
+            return true
         }
-        return false;
+        return false
     }
 
     ext.outputVerification = { bbe ->
@@ -1067,7 +1096,7 @@ task testExamples() {
             // Return immediately if command failed
             if (exitVal.getExitValue() == 1) {
                 println "Failed due to build failure."
-                return true;
+                return true
             }
             File bbeOutput = new File(outputFilePath)
             if (bbeOutput.exists()) {
@@ -1134,7 +1163,7 @@ task testExamples() {
                 def index = fileOut.findIndexOf { it == bbeOutput[i] }
                 if (index == -1) {
                     println "Failed due to output did not match. Line ${i}: ${bbeOutput[i]}"
-                    failFlag = true;
+                    failFlag = true
                 }
             }
         }
@@ -1188,10 +1217,10 @@ task testStdlibs() {
     def distPath = "${baseBuildPath}/jballerina-tools-${ballerinaVersion}"
     def stdlibTestsList = []
 
-    PatternSet patternSet = new PatternSet();
-    patternSet.exclude("**/.ballerina/**");
-    patternSet.exclude("**/Ballerina.toml");
-    patternSet.exclude("**/Ballerina.lock");
+    PatternSet patternSet = new PatternSet()
+    patternSet.exclude("**/.ballerina/**")
+    patternSet.exclude("**/Ballerina.toml")
+    patternSet.exclude("**/Ballerina.lock")
     patternSet.exclude("**/ballerina-internal.log")
     inputs.files(files("${distPath}/stdlib-integration-tests").asFileTree.matching(patternSet))
     def ignoreList = ["sql", "kafka", "crypto", "mime", "http"]
@@ -1263,10 +1292,10 @@ task testDevTools() {
     def distPath = "${baseBuildPath}/jballerina-tools-${ballerinaVersion}"
     def devtoolsProjectList = []
 
-    PatternSet patternSet = new PatternSet();
-    patternSet.exclude("**/.ballerina/**");
-    patternSet.exclude("**/Ballerina.toml");
-    patternSet.exclude("**/Ballerina.lock");
+    PatternSet patternSet = new PatternSet()
+    patternSet.exclude("**/.ballerina/**")
+    patternSet.exclude("**/Ballerina.toml")
+    patternSet.exclude("**/Ballerina.lock")
     patternSet.exclude("**/ballerina-internal.log")
 
     inputs.files(files("${distPath}/devtools-integration-tests").asFileTree.matching(patternSet))
