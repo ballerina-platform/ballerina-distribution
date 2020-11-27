@@ -17,7 +17,8 @@ INSTALLING BALLERINA
 
 - Set the path of the installation directory to the BALLERINA_HOME environment variable.
 
-- Add the <BALLERINA_HOME>/bin path to your system's path variable.
+- Add the `<BALLERINA_HOME>/bin` path to your system's path variable.
+
 
 - If you have installed Java 11 already, you are all set! Just make sure that the JAVA_HOME environment variable is set correctly.
 
