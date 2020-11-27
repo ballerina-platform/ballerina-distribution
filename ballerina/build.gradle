@@ -763,6 +763,11 @@ task testExamples() {
 
     // The following BBEs will not be verified by compiling/running.
     def buildIgnoreList = [
+            'secured-client-with-jwt-auth',
+            'secured-client-with-basic-auth',
+            'secured-service-with-jwt-auth',
+            'secured-service-with-basic-auth',
+            'jwt-issue-validate',
             'task-scheduler-appointment',
             'http-retry',
             'http-failover',
@@ -1189,7 +1194,7 @@ task testStdlibs() {
     patternSet.exclude("**/Ballerina.lock");
     patternSet.exclude("**/ballerina-internal.log")
     inputs.files(files("${distPath}/stdlib-integration-tests").asFileTree.matching(patternSet))
-    def ignoreList = ["sql", "kafka", "crypto", "mime"]
+    def ignoreList = ["sql", "kafka", "crypto", "mime", "http"]
 
     doFirst {
         copy {
