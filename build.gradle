@@ -424,7 +424,7 @@ subprojects {
         ballerinaJre "org.wso2.ballerina.jre.artifacts:ballerina-jre-artifacts:${ballerinaJreArtifactsVersion}@zip"
 
         /* Ballerina Dev Tools */
-        devTools "org.ballerinalang:ballerina-dev-tools:${project.ballerinaVersion}"
+        devTools "org.ballerinalang:ballerina-dev-tools:${devToolsVersion}"
 
         /* AWSLambda extension */
         exten "org.ballerinax.awslambda:awslambda-extension:${awslambdaVersion}"
