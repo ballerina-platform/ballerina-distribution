@@ -174,7 +174,7 @@ task extractJreForWindows(type: Copy) {
 }
 
 task deleteTemporaryFiles(type: Delete) {
-//    delete 'build/target'
+    delete 'build/target'
 }
 
 task copyOtherRepos(type: Copy) {
