@@ -37,106 +37,106 @@ import static org.ballerinalang.distribution.utils.TestUtils.TEST_DISTRIBUTION_P
  */
 public class DistributionArtifactCheckTest {
     private static final String DIST_NAME = "ballerina-" + SHORT_VERSION;
-    
+
     @BeforeClass
     public void setupDistributions() throws IOException {
         TestUtils.cleanDistribution();
         TestUtils.prepareDistribution(DISTRIBUTIONS_DIR.resolve(DIST_NAME + ".zip"));
     }
-    
+
     @Test(enabled = false)
     public void dockerAnnotationExistsTest() {
-        Path birPath = TEST_DISTRIBUTION_PATH
+        Path cachePath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
                 .resolve("repo")
                 .resolve("cache")
                 .resolve("ballerina")
                 .resolve("docker")
                 .resolve("1.0.0");
-        
+
         Path breLibPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
                 .resolve("bre")
                 .resolve("lib");
-        
+
         Path bbePath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
                 .resolve("examples")
                 .resolve("docker-deployment");
-    
+
         Path docsPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
                 .resolve("docs")
                 .resolve("docker");
-        
-        Assert.assertTrue(Files.exists(birPath));
+
+        Assert.assertTrue(Files.exists(cachePath));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "docker-extension-"));
         Assert.assertTrue(Files.exists(bbePath));
         Assert.assertTrue(Files.exists(docsPath));
     }
-    
+
     @Test(enabled = false)
     public void awsLambdaAnnotationExistsTest() {
-        Path birPath = TEST_DISTRIBUTION_PATH
+        Path cachePath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
                 .resolve("repo")
                 .resolve("cache")
                 .resolve("ballerinax")
                 .resolve("awslambda")
                 .resolve("0.0.0");
-    
+
         Path breLibPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
                 .resolve("bre")
                 .resolve("lib");
-    
+
         Path bbePath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
                 .resolve("examples")
                 .resolve("aws-lambda-deployment");
-    
+
         Path docsPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
                 .resolve("docs")
                 .resolve("awslambda");
-    
-        Assert.assertTrue(Files.exists(birPath));
+
+        Assert.assertTrue(Files.exists(cachePath));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "awslambda-extension-"));
         Assert.assertTrue(Files.exists(bbePath));
         Assert.assertTrue(Files.exists(docsPath));
     }
-    
+
     @Test(enabled = false)
     public void azFunctionsAnnotationExistsTest() {
-        Path birPath = TEST_DISTRIBUTION_PATH
+        Path cachePath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
                 .resolve("repo")
                 .resolve("cache")
                 .resolve("ballerinax")
                 .resolve("azure_functions")
                 .resolve("1.0.0");
-        
+
         Path breLibPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
                 .resolve("bre")
                 .resolve("lib");
-        
+
         Path bbePath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
                 .resolve("examples")
                 .resolve("azure-functions-deployment");
-        
+
         Path docsPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
                 .resolve("docs")
                 .resolve("azure.functions");
-        
-        Assert.assertTrue(Files.exists(birPath));
+
+        Assert.assertTrue(Files.exists(cachePath));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "azurefunctions-extension-"));
         Assert.assertTrue(Files.exists(bbePath));
         Assert.assertTrue(Files.exists(docsPath));
     }
-    
+
     @AfterClass
     public void cleanUp() throws IOException {
         TestUtils.cleanDistribution();
