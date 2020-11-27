@@ -129,7 +129,7 @@ public class DistributionArtifactCheckTest {
         Path docsPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
                 .resolve("docs")
-                .resolve("azure.functions");
+                .resolve("azure_functions");
 
         Assert.assertTrue(Files.exists(cachePath));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "azurefunctions-extension-"));

@@ -142,7 +142,7 @@ public class PlatformDistributionArtifactCheckTest {
                 .resolve("repo")
                 .resolve("cache")
                 .resolve("ballerinax")
-                .resolve("azure.functions")
+                .resolve("azure_functions")
                 .resolve("1.0.0");
 
         Path breLibPath = distributionsPath
@@ -158,7 +158,7 @@ public class PlatformDistributionArtifactCheckTest {
         Path docsPath = distributionsPath
                 .resolve(jballerinaFileName)
                 .resolve("docs")
-                .resolve("azure.functions");
+                .resolve("azure_functions");
 
         Assert.assertTrue(Files.exists(birPath));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "azurefunctions-extension-"));
