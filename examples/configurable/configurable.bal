@@ -19,9 +19,9 @@ configurable float maxPayload = 1.0;
 configurable string protocol = "http";
 
 public function main() {
-    io:println("host : " + hostName);
-    io:println("port : " + port.toString());
-    io:println("protocol : " + protocol);
-    io:println("maximum payload (in MB) : " + maxPayload.toString());
-    io:println("Remote enabled : " + enableRemote.toString());
+    io:println("host: ", hostName);
+    io:println("port: ", port);
+    io:println("protocol: ", protocol);
+    io:println("maximum payload (in MB): ", maxPayload);
+    io:println("Remote enabled: ", enableRemote);
 }
