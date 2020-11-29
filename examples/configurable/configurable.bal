@@ -23,5 +23,5 @@ public function main() {
     io:println("port: ", port);
     io:println("protocol: ", protocol);
     io:println("maximum payload (in MB): ", maxPayload);
-    io:println("Remote enabled: ", enableRemote);
+    io:println("remote enabled: ", enableRemote);
 }

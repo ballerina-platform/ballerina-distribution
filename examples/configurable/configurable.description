@@ -1,4 +1,4 @@
-// `configurable` variables allow configuration of the module-level
+// `configurable` variables allow configuration of module-level
 // variables at the program execution. This enables initializing
 // variables with values provided externally. The `configurable` keyword can
 // be applied to a module-level variable declaration that contains an initializer.<br/>
