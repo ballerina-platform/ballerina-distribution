@@ -12,8 +12,8 @@
 # `configuration.toml` files, and execute the `ballerina run` command below.
 
 ballerina run configurable.bal
-host : 192.0.1.2
-port : 9090
-protocol : http
-maximum payload (in MB) : 0.321
-remote enabled : false
+host: 192.0.1.2
+port: 9090
+protocol: http
+maximum payload (in MB): 0.321
+remote enabled: false
