@@ -3,4 +3,3 @@
 ballerina run anonymous_functions.bal
 Concat Result: Hello World!
 Add Result: 15
-

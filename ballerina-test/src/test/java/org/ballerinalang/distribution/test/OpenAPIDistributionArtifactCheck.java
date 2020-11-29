@@ -48,19 +48,31 @@ public class OpenAPIDistributionArtifactCheck {
     public void openapiAnnotationExistsTest() {
         Path birPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
-                .resolve("bir-cache")
+                .resolve("repo")
+                .resolve("cache")
                 .resolve("ballerina")
                 .resolve("openapi")
                 .resolve("2.0.0")
-                .resolve("openapi.bir");
+                .resolve("bir");
 
-        Path tomlPath = TEST_DISTRIBUTION_PATH
+        Path jarPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
-                .resolve("bir-cache")
+                .resolve("repo")
+                .resolve("cache")
                 .resolve("ballerina")
                 .resolve("openapi")
                 .resolve("2.0.0")
-                .resolve("Ballerina.toml");
+                .resolve("java11");
+
+        Path baloPath = TEST_DISTRIBUTION_PATH
+                .resolve(DIST_NAME)
+                .resolve("repo")
+                .resolve("balo")
+                .resolve("ballerina")
+                .resolve("openapi")
+                .resolve("2.0.0")
+                .resolve("platform")
+                .resolve("java11");
 
         Path breLibPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
@@ -83,8 +95,8 @@ public class OpenAPIDistributionArtifactCheck {
                 .resolve("openapi");
 
         Assert.assertTrue(Files.exists(birPath));
-        Assert.assertTrue(Files.exists(tomlPath));
-        Assert.assertTrue(Files.exists(breLibPath.resolve("ballerina-openapi-2.0.0.jar")));
+        Assert.assertTrue(Files.exists(baloPath));
+        Assert.assertTrue(Files.exists(jarPath.resolve("openapi.jar")));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "openapi-cli-"));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "openapi-validator-"));
         Assert.assertTrue(Files.exists(bbePath01));

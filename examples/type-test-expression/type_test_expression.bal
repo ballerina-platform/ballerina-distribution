@@ -17,7 +17,8 @@ public function main() {
                     message);
     }
 
-    // The type test can be used to find the runtime type of union type variables.
+    // The type test can be used to find the type of a value held by a
+    // union-typed variable.
     Student alex = { name: "Alex" };
     Student|Person|Vehicle entity = alex;
 
@@ -36,7 +37,7 @@ public function main() {
         io:println("entity is not a person");
     }
 
-    // Type of `entity` is Student. However, it is not structurally equivalent to `Vehicle`.
+    // Type of `entity` is Student. It is not structurally equivalent to `Vehicle`.
     if (entity is Vehicle) {
         io:println("entity is a vehicle");
     } else {

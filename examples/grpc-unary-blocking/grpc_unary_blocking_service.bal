@@ -2,6 +2,10 @@
 import ballerina/grpc;
 import ballerina/log;
 
+@grpc:ServiceDescriptor {
+    descriptor: ROOT_DESCRIPTOR,
+    descMap: getDescriptorMap()
+}
 service HelloWorld on new grpc:Listener(9090) {
 
     resource function hello(grpc:Caller caller, string name,
