@@ -23,7 +23,7 @@ jobs:
           packagePAT: ${{ secrets.GITHUB_TOKEN }}
         run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon
       - name: Archive distribtuions
-          uses: actions/upload-artifact@v2
-          with:
-            name: distribtuions
-            path: ballerina/build/distributions/*.zip
+        uses: actions/upload-artifact@v2
+        with:
+          name: distribtuions
+          path: ballerina/build/distributions/*.zip
