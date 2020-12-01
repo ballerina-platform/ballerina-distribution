@@ -76,6 +76,16 @@ public class TestUtils {
         int exitCode = process.waitFor();
         return process;
     }
+
+    public static Process executeBuildCommand(String distributionName, Path sourceDirectory,
+            List<String> args, Map<String, String> envProperties) throws IOException, InterruptedException {
+        return executeCommand("build", distributionName, sourceDirectory, args, envProperties);
+    }
+
+    public static Process executePushCommand(String distributionName, Path sourceDirectory,
+            List<String> args, Map<String, String> envProperties) throws IOException, InterruptedException {
+        return executeCommand("push", distributionName, sourceDirectory, args, envProperties);
+    }
     
     /**
      * Extracts a distribution to a temporary directory.
