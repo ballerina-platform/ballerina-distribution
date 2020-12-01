@@ -408,6 +408,7 @@ subprojects {
         kubernetesExamples
         ballerinaStdLibs
         ballerinaC2cLibs
+        ballerinaC2cExamples
         balCommand
         exten {
             transitive = false
@@ -423,7 +424,7 @@ subprojects {
         ballerinaJre "org.wso2.ballerina.jre.artifacts:ballerina-jre-artifacts:${ballerinaJreArtifactsVersion}@zip"
 
         /* Ballerina Dev Tools */
-        devTools "org.ballerinalang:ballerina-dev-tools:${project.ballerinaVersion}"
+        devTools "org.ballerinalang:ballerina-dev-tools:${devToolsVersion}"
 
         /* AWSLambda extension */
         exten "org.ballerinax.awslambda:awslambda-extension:${awslambdaVersion}"
@@ -473,7 +474,7 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:oauth2-ballerina:${stdlibOAuth2Version}"
         ballerinaStdLibs "org.ballerinalang:ldap-ballerina:${stdlibLdapVersion}"
         ballerinaStdLibs "org.ballerinalang:crypto-ballerina:${stdlibCryptoVersion}"
-        ballerinaStdLibs "org.ballerinalang:java.arrays-ballerina:${stdlibJavaArraysVersion}"
+        ballerinaStdLibs "org.ballerinalang:jarrays-ballerina:${stdlibJavaArraysVersion}"
         ballerinaStdLibs "org.ballerinalang:mime-ballerina:${stdlibMimeVersion}"
         ballerinaStdLibs "org.ballerinalang:email-ballerina:${stdlibEmailVersion}"
         ballerinaStdLibs "org.ballerinalang:ftp-ballerina:${stdlibFtpVersion}"
@@ -483,6 +484,7 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:transaction-ballerina:${stdlibTransactionVersion}"
 
         ballerinaC2cLibs "io.ballerina:c2c-ballerina:${c2cVersion}"
+        ballerinaC2cExamples "io.ballerina:c2c-extension-examples:${c2cVersion}@zip"
 
         balCommand "org.ballerinalang:ballerina-command-distribution:${ballerinaCommandVersion}@zip"
     }

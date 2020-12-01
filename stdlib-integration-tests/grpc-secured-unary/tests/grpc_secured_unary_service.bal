@@ -28,6 +28,10 @@ listener grpc:Listener ep = new (20004, {
     }
 });
 
+@grpc:ServiceDescriptor {
+    descriptor: ROOT_DESCRIPTOR,
+    descMap: getDescriptorMap()
+}
 service HelloWorld on ep {
     isolated resource function hello(grpc:Caller caller, string name) {
         log:printInfo("Server received hello from " + name);

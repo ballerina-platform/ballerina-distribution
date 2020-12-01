@@ -26,4 +26,4 @@ jobs:
         env:
           packageUser: ${{ github.actor }}
           packagePAT: ${{ secrets.GITHUB_TOKEN }}
-        run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon -x test
+        run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon
