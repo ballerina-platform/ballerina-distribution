@@ -305,18 +305,6 @@ task packageDist(type: Zip) {
     into("${parentDir}/repo/balo/") {
         from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/balo/"
     }
-    into("${parentDir}/bre/lib") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/libs"
-        fileMode = 0644
-    }
-    into("${parentDir}/bre/lib") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/libs"
-        fileMode = 0644
-    }
-    into("${parentDir}/bre/lib") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/libs"
-        fileMode = 0644
-    }
 
     /* Files */
     into("${parentDir}/lib/") {
@@ -385,18 +373,6 @@ task packageDistZip(type: Zip) {
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
         from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/balo/"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/libs"
-        fileMode = 0644
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/libs"
-        fileMode = 0644
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/libs"
-        fileMode = 0644
     }
 
     /* Tools artifacts */
@@ -500,18 +476,6 @@ task packageDistLinux(type: Zip) {
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
         from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/balo/"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/libs"
-        fileMode = 0644
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/libs"
-        fileMode = 0644
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/libs"
-        fileMode = 0644
-    }
 
     /* Tools artifacts */
     into("${parentDir}/distributions/ballerina-${shortVersion}") {
@@ -610,18 +574,6 @@ task packageDistMac(type: Zip) {
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
         from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/balo/"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/libs"
-        fileMode = 0644
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/libs"
-        fileMode = 0644
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/libs"
-        fileMode = 0644
-    }
 
     /* Tools artifacts */
     into("${parentDir}/distributions/ballerina-${shortVersion}") {
@@ -714,18 +666,6 @@ task packageDistWindows(type: Zip) {
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
         from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/balo/"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/libs"
-        fileMode = 0644
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/libs"
-        fileMode = 0644
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/libs"
-        fileMode = 0644
     }
 
     /* Tools artifacts */
@@ -854,7 +794,9 @@ task testExamples() {
             'mysql-batch-execute-operation',
             'jdbc-batch-execute-operation',
             'log-api',
-            'error-handling-in-single-place'
+            'error-handling-in-single-place',
+            'retry-transactions',
+            'local-transactions'
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
