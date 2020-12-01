@@ -196,35 +196,36 @@ task copyOtherRepos(type: Copy) {
     /* Standard Libraries */
     configurations.ballerinaStdLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
-        into("bre/lib/") {
-            from "${artifactExtractedPath}/libs"
+        from("${artifactExtractedPath}/libs") {
+            into "bre/lib/"
         }
-        into("docs/") {
-            from "${artifactExtractedPath}/docs"
+        from("${artifactExtractedPath}/docs") {
+            into"docs/"
         }
-        into("repo/balo") {
-            from "${artifactExtractedPath}/balo"
+        from("${artifactExtractedPath}/balo") {
+            into "repo/balo"
+            fileMode 0755
         }
-        into("repo/cache") {
-            from "${artifactExtractedPath}/cache"
+        from("${artifactExtractedPath}/cache") {
+            into "repo/cache"
         }
-
     }
 
     /* C2C Libraries */
     configurations.ballerinaC2cLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
-        into("bre/lib/") {
-            from "${artifactExtractedPath}/libs"
+        from("${artifactExtractedPath}/libs") {
+            into "bre/lib/"
         }
-        into("docs/") {
-            from "${artifactExtractedPath}/docs"
+        from("${artifactExtractedPath}/docs") {
+            into"docs/"
         }
-        into("repo/balo") {
-            from "${artifactExtractedPath}/balo"
+        from("${artifactExtractedPath}/balo") {
+            into "repo/balo"
+            fileMode 0755
         }
-        into("repo/cache") {
-            from "${artifactExtractedPath}/cache"
+        from("${artifactExtractedPath}/cache") {
+            into "repo/cache"
         }
     }
 }
