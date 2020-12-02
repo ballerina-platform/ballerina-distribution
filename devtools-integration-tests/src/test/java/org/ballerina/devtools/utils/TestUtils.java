@@ -38,11 +38,11 @@ public class TestUtils {
     private TestUtils() {
     }
 
-    public static final PrintStream OUT = System.out;
-    public static final Path TARGET_DIR = Paths.get(System.getProperty("target.dir"));
+    private static final PrintStream OUT = System.out;
+    private static final Path TARGET_DIR = Paths.get(System.getProperty("target.dir"));
+    private static final Path TEST_DISTRIBUTION_PATH = TARGET_DIR.resolve("test-distribution");
     public static final Path MAVEN_VERSION = Paths.get(System.getProperty("maven.version"));
     public static final Path DISTRIBUTIONS_DIR = Paths.get(System.getProperty("distributions.dir"));
-    public static final Path TEST_DISTRIBUTION_PATH = TARGET_DIR.resolve("test-distribution");
 
     /**
      * Execute ballerina command.
@@ -85,6 +85,11 @@ public class TestUtils {
     public static Process executePushCommand(String distributionName, Path sourceDirectory,
             List<String> args, Map<String, String> envProperties) throws IOException, InterruptedException {
         return executeCommand("push", distributionName, sourceDirectory, args, envProperties);
+    }
+
+    public static Process executeSearchCommand(String distributionName, Path sourceDirectory,
+            List<String> args, Map<String, String> envProperties) throws IOException, InterruptedException {
+        return executeCommand("search", distributionName, sourceDirectory, args, envProperties);
     }
     
     /**

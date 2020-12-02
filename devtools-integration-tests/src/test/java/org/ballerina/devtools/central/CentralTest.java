@@ -41,7 +41,7 @@ import java.util.Objects;
 
 import static org.ballerina.devtools.central.CentralTestUtils.BALLERINA_DEV_CENTRAL;
 import static org.ballerina.devtools.central.CentralTestUtils.BALLERINA_TOML;
-import static org.ballerina.devtools.central.CentralTestUtils.HOME_REPO_ENV_KEY;
+import static org.ballerina.devtools.central.CentralTestUtils.BALLERINA_HOME_DIR;
 import static org.ballerina.devtools.central.CentralTestUtils.MAIN_BAL;
 import static org.ballerina.devtools.central.CentralTestUtils.createSettingToml;
 import static org.ballerina.devtools.central.CentralTestUtils.deleteFiles;
@@ -57,6 +57,7 @@ import static org.ballerina.devtools.utils.TestUtils.MAVEN_VERSION;
 import static org.ballerina.devtools.utils.TestUtils.executeBuildCommand;
 import static org.ballerina.devtools.utils.TestUtils.executeCommand;
 import static org.ballerina.devtools.utils.TestUtils.executePushCommand;
+import static org.ballerina.devtools.utils.TestUtils.executeSearchCommand;
 
 /**
  * Tests related central packaging.
@@ -83,20 +84,13 @@ public class CentralTest {
     private static final String OUTPUT_NOT_CONTAINS_EXP_MSG = "build output does not contain expected message:";
 
     @BeforeClass()
-    public void setUp() throws IOException {
+    public void setUp() throws IOException, InterruptedException {
         setupDistributions();
 
         tempHomeDirectory = Files.createTempDirectory("bal-test-integration-packaging-home-");
         tempWorkspaceDirectory = Files.createTempDirectory("bal-test-integration-packaging-workspace-");
         createSettingToml(tempHomeDirectory);
         envVariables = addEnvVariables(getEnvVariables());
-
-        // Get random package names
-        String randomString = randomPackageName(10);
-        this.packageAName = TEST_PREFIX + randomString + "_" + PROJECT_A;
-        this.packageBName = TEST_PREFIX + randomString + "_" + PROJECT_B;
-        this.packageCName = TEST_PREFIX + randomString + "_" + PROJECT_C;
-        this.packageDName = TEST_PREFIX + randomString + "_" + PROJECT_D;
 
         // Copy test resources to temp workspace directory
         try {
@@ -106,6 +100,20 @@ public class CentralTest {
         } catch (URISyntaxException e) {
             Assert.fail("error loading resources");
         }
+
+        // Get random package names
+        do {
+            String randomString = randomPackageName(10);
+            this.packageAName = TEST_PREFIX + randomString + "_" + PROJECT_A;
+            this.packageBName = TEST_PREFIX + randomString + "_" + PROJECT_B;
+            this.packageCName = TEST_PREFIX + randomString + "_" + PROJECT_C;
+            this.packageDName = TEST_PREFIX + randomString + "_" + PROJECT_D;
+        } while (isPkgAvailableInCentral(this.packageAName)
+                || isPkgAvailableInCentral(this.packageBName)
+                || isPkgAvailableInCentral(this.packageCName)
+                || isPkgAvailableInCentral(this.packageDName));
+
+        isPkgAvailableInCentral(this.packageAName);
 
         // Update Ballerina.toml files with new package names"my_package"
         updateFileToken(this.tempWorkspaceDirectory.resolve(PROJECT_A).resolve(BALLERINA_TOML), DEFAULT_PKG_NAME,
@@ -289,7 +297,7 @@ public class CentralTest {
      * @return env directory variable array
      */
     private Map<String, String> addEnvVariables(Map<String, String> envVariables) {
-        envVariables.put(HOME_REPO_ENV_KEY, tempHomeDirectory.toString());
+        envVariables.put(BALLERINA_HOME_DIR, tempHomeDirectory.toString());
         envVariables.put(BALLERINA_DEV_CENTRAL, "true");
         return envVariables;
     }
@@ -300,6 +308,26 @@ public class CentralTest {
     private void setupDistributions() throws IOException {
         TestUtils.cleanDistribution();
         TestUtils.prepareDistribution(DISTRIBUTIONS_DIR.resolve(DISTRIBUTION_FILE_NAME + ".zip"));
+    }
+
+    /**
+     * Check package already available in central.
+     *
+     * @param pkg package
+     * @return is package available in central
+     */
+    private boolean isPkgAvailableInCentral(String pkg) throws IOException, InterruptedException {
+        Process search = executeSearchCommand(DISTRIBUTION_FILE_NAME,
+                                              this.tempWorkspaceDirectory,
+                                              new LinkedList<>(Collections.singletonList(pkg)),
+                                              this.envVariables);
+        String buildErrors = getString(search.getErrorStream());
+        if (!buildErrors.isEmpty()) {
+            Assert.fail(OUTPUT_CONTAIN_ERRORS + buildErrors);
+        }
+
+        String buildOutput = getString(search.getInputStream());
+        return !buildOutput.contains("no modules found");
     }
 
     /**
