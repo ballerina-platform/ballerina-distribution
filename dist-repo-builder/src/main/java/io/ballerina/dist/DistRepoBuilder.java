@@ -17,6 +17,7 @@
  */
 package io.ballerina.dist;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.file.FileSystem;
@@ -73,10 +74,9 @@ public class DistRepoBuilder {
                 @Override
                 public FileVisitResult visitFile(Path from, BasicFileAttributes attrs) throws IOException {
                     if (pathMatcher.matches(from)) {
-                        Path to = packageRoot.resolve(from.toString().replaceFirst("/",""));
+                        Path to = packageRoot.resolve(from.toString().replaceFirst("/", ""));
                         Files.createDirectories(to.getParent());
-                        Files.copy( from, to,
-                            StandardCopyOption.REPLACE_EXISTING );
+                        Files.copy(from, to, StandardCopyOption.REPLACE_EXISTING);
                         Files.delete(from);
                     }
                     return FileVisitResult.CONTINUE;
@@ -89,6 +89,7 @@ public class DistRepoBuilder {
                 }
             });
         }
+        setFilePermission(path);
     }
 
     static List<Path> findBalos(Path repo) throws IOException {
@@ -110,5 +111,11 @@ public class DistRepoBuilder {
             }
         });
         return balos;
+    }
+
+    private static void setFilePermission(Path filepath) {
+        File file = filepath.toFile();
+        file.setReadable(true, false);
+        file.setWritable(true, true);
     }
 }
