@@ -731,11 +731,6 @@ task testExamples() {
 
     // The following BBEs will not be verified by compiling/running.
     def buildIgnoreList = [
-            'secured-client-with-jwt-auth',
-            'secured-client-with-basic-auth',
-            'secured-service-with-jwt-auth',
-            'secured-service-with-basic-auth',
-            'jwt-issue-validate',
             'task-scheduler-appointment',
             'http-retry',
             'http-failover',
@@ -744,9 +739,7 @@ task testExamples() {
             'http-redirects',
             'cache',
             'websocket-proxy-server',
-            'crypto',
             'record-io',
-            'secured_client_with_oauth2',
             'send_and_receive_emails',
             'proto-to-ballerina',
             'websub-hub-client-sample',
