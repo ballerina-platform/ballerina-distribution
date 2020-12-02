@@ -231,7 +231,7 @@ task copyOtherRepos(type: Copy) {
 task buildDistRepo(type: JavaExec) {
     classpath = project.configurations.repoBuilder
     main = 'io.ballerina.dist.DistRepoBuilder'
-    args "$buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/repo/balo"
+    args "$buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/repo"
 }
 
 task copyDevToolsCoverageReport(type: Copy) {
