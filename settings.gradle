@@ -22,6 +22,7 @@ plugins {
 rootProject.name = 'ballerina-distribution'
 include ':ballerina'
 include ':ballerina-distribution-test'
+include ':devtools-integration-tests'
 include 'dist-repo-builder'
 
 project(':ballerina').projectDir = "$rootDir/ballerina" as File
