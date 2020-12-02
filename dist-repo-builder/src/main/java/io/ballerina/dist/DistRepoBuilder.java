@@ -54,11 +54,40 @@ public class DistRepoBuilder {
         Path repo = Paths.get(args[0]);
 
         // Find all balo files
-        List<Path> balos = findBalos(repo);
+        List<Path> balos = findBalos(repo.resolve("balo"));
         // Extract platform libs
+        boolean valid = true;
         for (Path balo : balos) {
             extractPlatformLibs(balo);
+            // following function was put in to validate if bir and jar exists for packed balos
+            valid = valid & validateCache(balo, repo);
         }
+        if (!valid) {
+            System.exit(1);
+        }
+    }
+
+    private static boolean validateCache(Path balo, Path repo) {
+        boolean valid = true;
+        String version = balo.getParent().getFileName().toString();
+        String moduleName = balo.getParent().getParent().getFileName().toString();
+        String orgName = balo.getParent().getParent().getParent().getFileName().toString();
+
+        // Check if the bir exists
+        Path bir = repo.resolve("cache").resolve(orgName).resolve(moduleName).resolve(version).resolve("bir")
+                .resolve(moduleName + ".bir");
+        if (!Files.exists(bir)) {
+            System.out.println("Bir missing for package :" + orgName + "/" + moduleName);
+            valid = false;
+        }
+        // Check if module jar exists
+        Path jar = repo.resolve("cache").resolve(orgName).resolve(moduleName).resolve(version).resolve("java11")
+                .resolve(moduleName + ".jar");
+        if (!Files.exists(jar)) {
+            System.out.println("Jar missing for package :" + orgName + "/" + moduleName);
+           valid = false;
+        }
+        return valid;
     }
 
     private static void extractPlatformLibs(Path path) throws IOException {
