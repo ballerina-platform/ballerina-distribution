@@ -204,7 +204,6 @@ task copyOtherRepos(type: Copy) {
         }
         from("${artifactExtractedPath}/balo") {
             into "repo/balo"
-            fileMode 0755
         }
         from("${artifactExtractedPath}/cache") {
             into "repo/cache"
@@ -222,7 +221,6 @@ task copyOtherRepos(type: Copy) {
         }
         from("${artifactExtractedPath}/balo") {
             into "repo/balo"
-            fileMode 0755
         }
         from("${artifactExtractedPath}/cache") {
             into "repo/cache"
