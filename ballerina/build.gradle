@@ -793,9 +793,7 @@ task testExamples() {
             'mysql-batch-execute-operation',
             'jdbc-batch-execute-operation',
             'log-api',
-            'error-handling-in-single-place',
-            'retry-transactions',
-            'local-transactions'
+            'error-handling-in-single-place'
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
