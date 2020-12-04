@@ -10,10 +10,7 @@ kafka:ProducerConfiguration producerConfiguration = {
     acks: "all",
     retryCount: 3,
     // Uses the builtin string serializer for the values.
-    valueSerializerType: kafka:SER_STRING,
-    // Uses the builtin int serializer for the keys.
-    keySerializerType: kafka:SER_INT
-
+    valueSerializerType: kafka:SER_BYTE_ARRAY
 };
 
 kafka:Producer kafkaProducer = new (producerConfiguration);
@@ -21,7 +18,7 @@ kafka:Producer kafkaProducer = new (producerConfiguration);
 public function main() {
     string message = "Hello World, Ballerina";
     // Send the message to the Kafka topic
-    var sendResult = kafkaProducer->send(message, "test-kafka-topic", key = 1);
+    var sendResult = kafkaProducer->send(message.toBytes(), "test-kafka-topic");
 
     if (sendResult is error) {
         io:println("Error occurred while sending data: " +
