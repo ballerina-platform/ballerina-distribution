@@ -1,10 +1,8 @@
+import ballerina/lang.'string;
 import ballerina/log;
 import ballerinax/rabbitmq;
 
-// Creates a ballerina RabbitMQ connection that allows reusability if necessary.
-rabbitmq:Connection connection = new ({host: "localhost", port: 5672});
-
-listener rabbitmq:Listener channelListener = new (connection);
+listener rabbitmq:Listener channelListener = new;
 
 // The consumer service listens to the "MyQueue" queue.
 // Quality of service settings(prefetchCount and prefetchSize) can be
@@ -20,22 +18,17 @@ listener rabbitmq:Listener channelListener = new (connection);
     prefetchCount: 10
 }
 // Attaches the service to the listener.
-service QosConsumer on channelListener {
-
-    // Gets triggered when a message is received by the queue.
-    resource function onMessage(rabbitmq:Message message) {
-        var messageContent = message.getTextContent();
+service rabbitmq:RabbitmqService on channelListener {
+    remote function onMessage(rabbitmq:Message message, rabbitmq:Caller caller) {
+        string|error messageContent = 'string:fromBytes(message.content);
         if (messageContent is string) {
             log:printInfo("The message received: " + messageContent);
         } else {
             log:printError(
                         "Error occurred while retrieving the message content.");
         }
-        // The consumer will continue to receive messages from the server
-        // once a total of 10(prefetchCount) messages are being acknowledged.
-        var result = message->basicAck();
-        if (result is error) {
-            log:printError("Error occurred while acknowledging the message.");
-        }
+
+        // Positively acknowledges a single message.
+        var result = caller->basicAck();
     }
 }
