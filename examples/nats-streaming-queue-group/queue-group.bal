@@ -1,6 +1,6 @@
 import ballerina/lang.'string as strings;
 import ballerina/io;
-import ballerinax/nats;
+import ballerinax/stan;
 
 // Initializes the NATS Streaming listeners.
 listener stan:Listener lis = new;
