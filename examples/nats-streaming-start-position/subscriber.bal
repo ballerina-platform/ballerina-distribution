@@ -3,7 +3,7 @@ import ballerina/io;
 import ballerinax/stan;
 
 // Initializes the NATS Streaming listener.
-listener nats:StreamingListener lis = new (conn);
+listener stan:Listener lis = new;
 
 // Binds the consumer to listen to the messages published to the 'demo' subject.
 // By default, only new messages are received.

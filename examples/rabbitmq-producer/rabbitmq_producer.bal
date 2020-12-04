@@ -6,7 +6,7 @@ public function main() {
     rabbitmq:Client newClient = new;
 
     // Declares the queue, MyQueue.
-    var queueResult1 = newClient->queueDeclare({queueName: "MyQueue"});
+    var queueResult1 = newClient->queueDeclare("MyQueue");
     if (queueResult1 is error) {
         io:println("An error occurred while creating the MyQueue1 queue.");
     }

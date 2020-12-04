@@ -9,7 +9,7 @@ listener stan:Listener lis = new;
 // Belongs to the queue group named "sample-queue-group"
 @stan:ServiceConfig {
     subject: "demo",
-    queueName: "sample-queue-group"
+    queueGroup: "sample-queue-group"
 }
 service stan:StanService on lis {
     remote function onMessage(stan:Message message) {
