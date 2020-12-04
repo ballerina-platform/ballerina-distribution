@@ -1,31 +1,23 @@
 import ballerina/lang.'string as strings;
 import ballerina/io;
-import ballerinax/nats;
-
-// Creates a NATS connection.
-nats:Connection conn = new;
+import ballerinax/stan;
 
 // Initializes the NATS Streaming listener.
-listener nats:StreamingListener lis = new (conn, clientId = "c0");
+listener stan:Listener lis = new (clientId = "c0");
 
 // Binds the consumer to listen to the messages published to the 'demo' subject.
-@nats:StreamingSubscriptionConfig {
+@stan:ServiceConfig {
     subject: "demo",
     durableName: "sample-name"
 }
-service demoService on lis {
-    resource function onMessage(nats:StreamingMessage message) {
+service stan:StanService on lis {
+    remote function onMessage(stan:Message message) {
        // Prints the incoming message in the console.
-       string|error messageData = strings:fromBytes(message.getData());
+       string|error messageData = strings:fromBytes(message.content);
        if (messageData is string) {
             io:println("Received message: " + messageData);
        } else {
             io:println("Error occurred while obtaining message data.");
        }
-    }
-
-    resource function onError(nats:StreamingMessage message,
-                              nats:Error errorVal) {
-        io:println("Error occurred while consuming the message.");
     }
 }

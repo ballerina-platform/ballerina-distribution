@@ -1,5 +1,0 @@
-# To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run subscriber.bal
-Received message: {"name":"John", "age":31, "city":"New York"}
-

@@ -5,11 +5,10 @@ import ballerinax/nats;
 public function main() returns error? {
     string message = "Hello from Ballerina";
     // Initializes a producer.
-    nats:Connection connection = new ();
-    nats:Producer producer = new (connection);
+    nats:Client natsClient = new;
     // Produces a message to the specified subject.
-    nats:Error? result = producer->publish("demo.bbe.subject",
-                                            <@untainted>message);
+    nats:Error? result = natsClient->publish("demo.bbe.subject",
+                                            <@untainted>message.toBytes());
     if (result is nats:Error) {
         io:println("Error occurred while producing the message.");
     } else {
@@ -17,6 +16,5 @@ public function main() returns error? {
     }
 
     // Closes the publisher connection.
-    check producer.close();
-    check connection.close();
+    check natsClient.close();
 }
