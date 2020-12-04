@@ -1144,10 +1144,6 @@
                 "url": "nats-streaming-client"
             },
             {
-                "name": "Streaming Publisher and Subscriber With Data Binding",
-                "url": "nats-streaming-consumer-with-data-binding"
-            },
-            {
                 "name": "Durable Subscriptions",
                 "url": "nats-streaming-durable-subscriptions"
             },
@@ -1212,10 +1208,6 @@
             {
                 "name": "Client Acknowledgements",
                 "url": "rabbitmq-consumer-with-client-acknowledgement"
-            },
-            {
-                "name": "Data Binding",
-                "url": "rabbitmq-consumer-with-data-binding"
             },
             {
                 "name": "QoS Settings",
