@@ -10,7 +10,7 @@ listener stan:Listener lis = new;
 @stan:ServiceConfig {
     subject: "demo"
 }
-service stan:StanService on lis {
+service stan:Service on lis {
     remote function onMessage(stan:Message message) {
        // Prints the incoming message in the console.
        string|error messageData = strings:fromBytes(message.content);
