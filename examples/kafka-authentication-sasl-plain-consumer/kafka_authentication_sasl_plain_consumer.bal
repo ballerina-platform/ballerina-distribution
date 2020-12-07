@@ -26,7 +26,7 @@ kafka:ConsumerConfiguration consumerConfig = {
 
 listener kafka:Listener kafkaListener = new(consumerConfig);
 
-service kafka:KafkaService on kafkaListener {
+service kafka:Service on kafkaListener {
     remote function onMessage(kafka:Caller caller,
                                 kafka:ConsumerRecord[] records) {
         foreach var consumerRecord in records {

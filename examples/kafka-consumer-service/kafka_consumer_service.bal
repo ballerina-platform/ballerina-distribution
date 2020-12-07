@@ -23,7 +23,7 @@ kafka:ConsumerConfiguration consumerConfigs = {
 
 listener kafka:Listener kafkaListener = new (consumerConfigs);
 
-service kafka:KafkaService on kafkaListener {
+service kafka:Service on kafkaListener {
     remote function onMessage(kafka:Caller caller,
                                 kafka:ConsumerRecord[] records) {
         // The set of Kafka records dispatched to the service are processed one
