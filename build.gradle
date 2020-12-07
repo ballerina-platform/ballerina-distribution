@@ -25,19 +25,19 @@ description = 'Ballerina - Tools - Parent'
 ext {
     ballerinaVersion = project.ballerinaVersion
     shortVersion = project.shortVersion
-    ballerinaJreArtifactsVersion = "3.0.0"
     awslambdaVersion = project.ballerinaVersion
     azFunctionsVersion = project.ballerinaVersion
     dockerVersion = project.ballerinaVersion
-    kubernetesVersion = project.ballerinaVersion
     dataMapperVersion = project.ballerinaVersion
+    c2cVersion = project.ballerinaVersion
+
+    ballerinaJreArtifactsVersion = "3.0.0"
     picocliVersion = "4.0.1"
     ballerinaCommandVersion = "0.8.10"
     testngVersion = "6.14.3"
     netLingalaZip4jVersion = "2.3.2"
     commonsIoVersion = "2.6"
     commonsLang3Version = "3.9"
-    c2cVersion = project.ballerinaVersion
 }
 
 allprojects {
@@ -386,13 +386,13 @@ subprojects {
         /* Ballerina lang staging repository */
         maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1614/" }
         /* Docker staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1290/" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1293/" }
         /* AwsLambda staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1163/" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1166/" }
         /* Datamapper staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdatamapper-1009/" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdatamapper-1010/" }
         /* AzureFunctions staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxazurefunctions-1014" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxazurefunctions-1017" }
     }
 
     configurations {
@@ -480,7 +480,7 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:ftp-ballerina:${stdlibFtpVersion}"
         ballerinaStdLibs "org.ballerinalang:http-ballerina:${stdlibHttpVersion}"
         ballerinaStdLibs "org.ballerinalang:grpc-ballerina:${stdlibGrpcVersion}"
-        ballerinaStdLibs "org.ballerinalang:module-ballerina-openapi:${project.ballerinaVersion}"
+        ballerinaStdLibs "org.ballerinalang:module-ballerina-openapi:${openapiVersion}"
         ballerinaStdLibs "org.ballerinalang:transaction-ballerina:${stdlibTransactionVersion}"
 
         ballerinaC2cLibs "io.ballerina:c2c-ballerina:${c2cVersion}"
