@@ -11,7 +11,7 @@ listener rabbitmq:Listener channelListener = new;
     queueName: "MyQueue"
 }
 // Attaches the service to the listener.
-service rabbitmq:RabbitmqService on channelListener {
+service rabbitmq:Service on channelListener {
     remote function onMessage(rabbitmq:Message message, rabbitmq:Caller caller) {
         string|error messageContent = 'string:fromBytes(message.content);
         if (messageContent is string) {
