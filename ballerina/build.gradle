@@ -243,10 +243,6 @@ task copyDevToolsDocUi(type: Copy) {
     from zipTree("$project.buildDir/target/extracted-distributions/ballerina-dev-tools-zip/docerina-ui-${devToolsVersion}.zip")
     into "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/lib/tools/doc-ui"
 }
-task filterApiDocs(type: Delete) {
-    delete "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs/lang.__internal"
-    delete "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs/lang.annotations"
-}
 task combineDocs(type: Exec) {
     workingDir "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs"
     if (Os.isFamily(Os.FAMILY_WINDOWS)) {
@@ -1159,7 +1155,7 @@ task testStdlibs() {
     patternSet.exclude("**/Ballerina.lock")
     patternSet.exclude("**/ballerina-internal.log")
     inputs.files(files("${distPath}/stdlib-integration-tests").asFileTree.matching(patternSet))
-    def ignoreList = ["sql", "kafka", "crypto", "mime", "http"]
+    def ignoreList = ["sql", "kafka", "mime", "http"]
 
     doFirst {
         copy {
@@ -1469,8 +1465,7 @@ extractJreForWindows.dependsOn extractJreForMac
 copyOtherRepos.dependsOn extractJreForWindows
 copyDevToolsCoverageReport.dependsOn copyOtherRepos
 copyDevToolsDocUi.dependsOn copyDevToolsCoverageReport
-filterApiDocs.dependsOn copyDevToolsDocUi
-combineDocs.dependsOn filterApiDocs
+combineDocs.dependsOn copyDevToolsDocUi
 buildDistRepo.dependsOn combineDocs
 /* Package Distributions */
 packageDist.dependsOn buildDistRepo
