@@ -21,6 +21,7 @@
     <test name="debugger-integration-test-suite" parallel="false">
         <classes>
             <class name="org.ballerinalang.debugger.test.ModuleBreakpointTest"/>
+            <class name="org.ballerinalang.debugger.test.ServiceDebugTest"/>
         </classes>
     </test>
 </suite>
