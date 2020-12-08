@@ -13,7 +13,7 @@ service hello on new http:Listener(9090) {
 function directoryTestServiceFunction ()  {
     string payload = "Invalid";
     http:Client httpClient = new("http://localhost:9090");
-    http:Response | error response = httpClient->get("/hello/sayHello");
+    var response = httpClient->get("/hello/sayHello");
     if (response is http:Response) {
         string | error res = response.getTextPayload();
         if (res is string){

@@ -22,8 +22,8 @@ configurations {
 
 dependencies {
     testImplementation "org.testng:testng:${testngVersion}"
-    testImplementation "org.ballerinalang:jballerina-debugger-integration-test:${ballerinaVersion}"
-    testImplementation "org.ballerinalang:ballerina-test-utils:${ballerinaVersion}"
+    testImplementation "org.ballerinalang:jballerina-debugger-integration-test:${ballerinaNextSnapshotVersion}"
+    testImplementation "org.ballerinalang:ballerina-test-utils:${ballerinaNextSnapshotVersion}"
     testImplementation "org.eclipse.lsp4j:org.eclipse.lsp4j.debug:0.7.1"
 
     jBallerinaDistribution project(path: ":ballerina", configuration: "jBallerinaDistribution")

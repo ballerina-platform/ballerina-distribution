@@ -29,7 +29,7 @@ function beforeSuiteServiceFunc () {
 function directoryTestServiceFunction ()  {
     string payload = "Invalid";
     http:Client httpClient = new("http://localhost:9393");
-    http:Response | error response = httpClient->get("/hello/sayHello");
+    var response = httpClient->get("/hello/sayHello");
     if (response is http:Response) {
         string | error res = response.getTextPayload();
         if (res is string){
@@ -48,7 +48,7 @@ function directoryTestServiceFunction ()  {
 function testServiceFunction ()  {
     string payload = "Invalid";
     http:Client httpClient = new("http://localhost:9090");
-    http:Response | error response = httpClient->get("/greeting/sayHello");
+    var response = httpClient->get("/greeting/sayHello");
     if (response is http:Response) {
         string | error res = response.getTextPayload();
         if (res is string){
