@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.ballerinalang.debugger.test;
+package org.ballerina.devtools.debug;
 
 import org.ballerinalang.debugger.test.utils.DebugTestRunner;
 import org.ballerinalang.test.context.BallerinaTestException;
@@ -29,12 +29,12 @@ import java.nio.file.Paths;
 /**
  * Parent test class for all debug integration test cases.
  */
-public class DebugAdapterBaseTestCase {
+public class BaseTestCase {
 
     @BeforeSuite(alwaysRun = true)
     public void initialize() throws BallerinaTestException, IOException {
-        Path projectResourcePath = Paths.get("src", "test", "resources", "project-based-tests").toAbsolutePath();
-        Path singleFileResourcePath = Paths.get("src", "test", "resources", "single-file-tests").toAbsolutePath();
+        Path projectResourcePath = Paths.get("src", "test", "resources", "debug", "project-based-tests").toAbsolutePath();
+        Path singleFileResourcePath = Paths.get("src", "test", "resources", "debug", "single-file-tests").toAbsolutePath();
         DebugTestRunner.initialize(projectResourcePath, singleFileResourcePath);
     }
 

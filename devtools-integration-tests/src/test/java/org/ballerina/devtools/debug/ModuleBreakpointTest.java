@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.ballerinalang.debugger.test;
+package org.ballerina.devtools.debug;
 
 import org.apache.commons.lang3.tuple.Pair;
 import org.ballerinalang.debugger.test.utils.BallerinaTestDebugPoint;
@@ -33,7 +33,7 @@ import static org.ballerinalang.debugger.test.utils.DebugTestRunner.DebugResumeK
 /**
  * Test class for ballerina breakpoints related test scenarios.
  */
-public class ModuleBreakpointTest extends DebugAdapterBaseTestCase {
+public class ModuleBreakpointTest extends BaseTestCase {
 
     DebugTestRunner debugTestRunner;
 

@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.ballerinalang.debugger.test;
+package org.ballerina.devtools.debug;
 
 import org.apache.commons.lang3.tuple.Pair;
 import org.ballerinalang.debugger.test.utils.BallerinaTestDebugPoint;
@@ -37,7 +37,7 @@ import static org.ballerinalang.debugger.test.utils.DebugUtils.findFreePort;
 /**
  * Test class for service related debug scenarios.
  */
-public class ServiceDebugTest extends DebugAdapterBaseTestCase {
+public class ServiceDebugTest extends BaseTestCase {
 
     DebugTestRunner debugTestRunner;
 
