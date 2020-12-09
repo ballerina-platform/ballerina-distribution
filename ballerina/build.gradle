@@ -77,14 +77,6 @@ task unpackAwsLambdaBalo(type: Copy) {
     }
 }
 
-task unpackAzFunctionsBalo(type: Copy) {
-    group = "unpack_dependencies"
-    configurations.azFunctionsBalo.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        from zipTree(artifact.getFile())
-        into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
-    }
-}
-
 task unpackAwsLambdaExamples(type: Copy) {
     group = "unpack_dependencies"
     configurations.awsLambdaExamples.resolvedConfiguration.resolvedArtifacts.each { artifact ->
@@ -1432,9 +1424,7 @@ task stopNatsServer() {
 /* Unpack Dependencies */
 unpackJballerinaTools.dependsOn unpackBallerinaJre
 unpackDevTools.dependsOn unpackJballerinaTools
-unpackAzFunctionsBalo.dependsOn unpackDevTools
-unpackAzFunctionsExamples.dependsOn unpackAzFunctionsBalo
-unpackAwsLambdaBalo.dependsOn unpackAzFunctionsExamples
+unpackAwsLambdaBalo.dependsOn unpackDevTools
 unpackAwsLambdaExamples.dependsOn unpackAwsLambdaBalo
 unpackDockerAnnotations.dependsOn unpackAwsLambdaExamples
 unpackDockerExamples.dependsOn unpackDockerAnnotations
