@@ -284,17 +284,11 @@ task packageDist(type: Zip) {
     into("${parentDir}/repo/cache") {
         from "build/target/extracted-distributions/awslambda-extension-balo-zip/cache"
     }
-    into("${parentDir}/repo/cache") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/cache"
-    }
     into("${parentDir}/repo/balo/") {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/balo/"
     }
     into("${parentDir}/repo/balo/") {
         from "build/target/extracted-distributions/awslambda-extension-balo-zip/balo/"
-    }
-    into("${parentDir}/repo/balo/") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/balo/"
     }
 
     /* Files */
@@ -336,10 +330,6 @@ task packageDistZip(type: Zip) {
         exclude "index.js"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/azurefunctions-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
         from "build/target/extracted-distributions/docker-extension-examples-zip"
         exclude "index.js"
     }
@@ -353,17 +343,11 @@ task packageDistZip(type: Zip) {
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
         from "build/target/extracted-distributions/awslambda-extension-balo-zip/cache"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/cache"
-    }
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/balo/"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
         from "build/target/extracted-distributions/awslambda-extension-balo-zip/balo/"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/balo/"
     }
 
     /* Tools artifacts */
@@ -438,10 +422,6 @@ task packageDistLinux(type: Zip) {
         exclude "index.js"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/azurefunctions-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
         from "build/target/extracted-distributions/docker-extension-examples-zip"
         exclude "index.js"
     }
@@ -455,17 +435,11 @@ task packageDistLinux(type: Zip) {
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
         from "build/target/extracted-distributions/awslambda-extension-balo-zip/cache"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/cache"
-    }
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/balo/"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
         from "build/target/extracted-distributions/awslambda-extension-balo-zip/balo/"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/balo/"
     }
 
     /* Tools artifacts */
@@ -536,10 +510,6 @@ task packageDistMac(type: Zip) {
         exclude "index.js"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/azurefunctions-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
         from "build/target/extracted-distributions/docker-extension-examples-zip"
         exclude "index.js"
     }
@@ -553,17 +523,11 @@ task packageDistMac(type: Zip) {
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
         from "build/target/extracted-distributions/awslambda-extension-balo-zip/cache"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/cache"
-    }
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/balo/"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
         from "build/target/extracted-distributions/awslambda-extension-balo-zip/balo/"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/balo/"
     }
 
     /* Tools artifacts */
@@ -629,10 +593,6 @@ task packageDistWindows(type: Zip) {
         exclude "index.js"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/azurefunctions-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
         from "build/target/extracted-distributions/docker-extension-examples-zip"
         exclude "index.js"
     }
@@ -646,17 +606,11 @@ task packageDistWindows(type: Zip) {
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
         from "build/target/extracted-distributions/awslambda-extension-balo-zip/cache"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/cache"
-    }
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/balo/"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
         from "build/target/extracted-distributions/awslambda-extension-balo-zip/balo/"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/balo/"
     }
 
     /* Tools artifacts */
