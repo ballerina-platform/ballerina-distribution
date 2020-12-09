@@ -1,5 +1,5 @@
 // The Ballerina Log API contains the application log handling
-// [functions](https://ballerina.io/swan-lake/learn/api-docs/ballerina/log/index.html#functions).<br/><br/>
+// [functions](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/log/#functions).<br/><br/>
 // To set the log level of the API, use the following CLI parameter: <br>
 // `--b7a.log.level=[LOG_LEVEL]`
 //
@@ -16,4 +16,4 @@
 //
 // E.g., `--foo.loglevel=DEBUG` <br><br>
 // For more information on the underlying module, 
-// see the [Log module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/log/index.html).
+// see the [Log module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/log/).

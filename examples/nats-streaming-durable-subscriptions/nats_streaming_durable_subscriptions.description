@@ -4,4 +4,4 @@
 // disconnects, the position is lost. Durable subscriptions
 // remember their position even if the client is disconnected.<br/><br/>
 // For more information on the underlying module, 
-// see the [NATS module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/nats/index.html).
+// see the [NATS module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/nats/).
