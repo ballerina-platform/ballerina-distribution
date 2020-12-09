@@ -24,7 +24,6 @@ include ':ballerina'
 include ':ballerina-distribution-test'
 include ':devtools-integration-tests'
 include 'dist-repo-builder'
-include 'debugger-integration-tests'
 
 project(':ballerina').projectDir = "$rootDir/ballerina" as File
 project(':ballerina-distribution-test').projectDir = "$rootDir/ballerina-test" as File
