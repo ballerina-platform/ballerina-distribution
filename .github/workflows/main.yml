@@ -26,4 +26,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: distribtuions
-          path: ballerina/build/distributions/*.zip
+          path: ballerina/build/distributions/ballerina-swan-lake-*.zip
