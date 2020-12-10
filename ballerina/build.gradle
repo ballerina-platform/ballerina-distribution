@@ -77,14 +77,6 @@ task unpackAwsLambdaBalo(type: Copy) {
     }
 }
 
-task unpackAzFunctionsBalo(type: Copy) {
-    group = "unpack_dependencies"
-    configurations.azFunctionsBalo.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        from zipTree(artifact.getFile())
-        into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
-    }
-}
-
 task unpackAwsLambdaExamples(type: Copy) {
     group = "unpack_dependencies"
     configurations.awsLambdaExamples.resolvedConfiguration.resolvedArtifacts.each { artifact ->
@@ -143,7 +135,7 @@ task unpackC2cExamples(type: Copy) {
     group = "unpack_dependencies"
     configurations.ballerinaC2cExamples.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         from zipTree(artifact.getFile())
-        into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
+        into new File("${buildDir}/target/extracted-distributions", "c2c-examples-zip")
     }
 }
 
@@ -271,38 +263,18 @@ task packageDist(type: Zip) {
     }
     // Code2Cloud Extensions
     into("${parentDir}/examples") {
-        from "build/target/extracted-distributions/awslambda-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/examples") {
-        from "build/target/extracted-distributions/azurefunctions-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/examples") {
         from "build/target/extracted-distributions/docker-extension-examples-zip"
         exclude "index.js"
     }
     into("${parentDir}/examples") {
-        from "build/target/extracted-distributions/c2c-extension-examples-zip"
+        from "build/target/extracted-distributions/c2c-examples-zip"
         exclude "index.js"
     }
     into("${parentDir}/repo/cache/") {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/cache"
     }
-    into("${parentDir}/repo/cache") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/cache"
-    }
-    into("${parentDir}/repo/cache") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/cache"
-    }
     into("${parentDir}/repo/balo/") {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/balo/"
-    }
-    into("${parentDir}/repo/balo/") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/balo/"
-    }
-    into("${parentDir}/repo/balo/") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/balo/"
     }
 
     /* Files */
@@ -340,38 +312,18 @@ task packageDistZip(type: Zip) {
     }
     // Code2Cloud Extensions
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/awslambda-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/azurefunctions-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
         from "build/target/extracted-distributions/docker-extension-examples-zip"
         exclude "index.js"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/c2c-extension-examples-zip"
+        from "build/target/extracted-distributions/c2c-examples-zip"
         exclude "index.js"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/") {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/cache"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/cache"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/cache"
-    }
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/balo/"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/balo/"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/balo/"
     }
 
     /* Tools artifacts */
@@ -442,38 +394,18 @@ task packageDistLinux(type: Zip) {
     }
     // Code2Cloud Extensions
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/awslambda-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/azurefunctions-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
         from "build/target/extracted-distributions/docker-extension-examples-zip"
         exclude "index.js"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/c2c-extension-examples-zip"
+        from "build/target/extracted-distributions/c2c-examples-zip"
         exclude "index.js"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/") {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/cache"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/cache"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/cache"
-    }
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/balo/"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/balo/"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/balo/"
     }
 
     /* Tools artifacts */
@@ -540,38 +472,18 @@ task packageDistMac(type: Zip) {
 
     // Code2Cloud Extensions
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/awslambda-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/azurefunctions-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
         from "build/target/extracted-distributions/docker-extension-examples-zip"
         exclude "index.js"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/c2c-extension-examples-zip"
+        from "build/target/extracted-distributions/c2c-examples-zip"
         exclude "index.js"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/") {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/cache"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/cache"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/cache"
-    }
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/balo/"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/balo/"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/balo/"
     }
 
     /* Tools artifacts */
@@ -633,38 +545,18 @@ task packageDistWindows(type: Zip) {
 
     // Code2Cloud Extensions
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/awslambda-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/azurefunctions-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
         from "build/target/extracted-distributions/docker-extension-examples-zip"
         exclude "index.js"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/c2c-extension-examples-zip"
+        from "build/target/extracted-distributions/c2c-examples-zip"
         exclude "index.js"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/") {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/cache"
     }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/cache"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/cache"
-    }
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
         from "build/target/extracted-distributions/docker-extension-annotations-zip/balo/"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/balo/"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/balo/"
     }
 
     /* Tools artifacts */
@@ -778,15 +670,7 @@ task testExamples() {
             'counter-metrics',
             'tracing',
             'openapi-to-ballerina',
-            'taint-checking', // Should not compile
-            //TODO failing due to transaction changes probably. Need to fix
-            'rabbitmq-transaction-consumer',
-            'rabbitmq-transaction-producer',
-            'kafka-producer-transactional',
-            'mysql-batch-execute-operation',
-            'jdbc-batch-execute-operation',
-            'log-api',
-            'error-handling-in-single-place'
+            'taint-checking' // Should not compile
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
@@ -850,6 +734,7 @@ task testExamples() {
             'rabbitmq-transaction-producer',
             'rabbitmq-transaction-consumer',
             'jdbc-complex-type-queries', // Consists date time in output
+            'jdbc-batch-execute-operation', // Consists transaction server sart log
             'log-api',
             'mysql-init-options',
             'mysql-query-operation',
@@ -878,17 +763,6 @@ task testExamples() {
             'task-scheduler-timer',
             'task-scheduler-appointment',
             'cache',
-
-            //TODO failing due to transaction changes probably. Need to fix
-            'rabbitmq-transaction-consumer',
-            'rabbitmq-transaction-producer',
-            'kafka-producer-transactional',
-            'mysql-batch-execute-operation',
-            'jdbc-batch-execute-operation',
-            'retry-transactions',
-            'local-transactions-with-handlers',
-            'local-transactions',
-            'log-api',
             'error-handling-in-single-place',
             'file-io'
     ]
@@ -928,6 +802,7 @@ task testExamples() {
         if (bbe == "secured-service-with-basic-auth" || bbe == "secured-client-with-basic-auth") {
             additionalBuildParams = "--b7a.config.file=${baseBuildPath}/${bbe}/sample-users.toml"
         }
+        println "Building example ${bbe}"
         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
             //TODO: Need to verify with windows
             exec {
@@ -1009,6 +884,7 @@ task testExamples() {
             curlCommands.each {
                 fileReference << "${it}\n"
             }
+            println "Verify output ${bbe}"
             def scriptPath = "${project.rootDir}/ballerina/lib"
             def exitVal
             if (Os.isFamily(Os.FAMILY_WINDOWS)) {
@@ -1050,6 +926,7 @@ task testExamples() {
             def cmdOutAry = []
             def errOut = new ByteArrayOutputStream()
             new ByteArrayOutputStream().withStream { os ->
+                println "Output Verification ${bbe}"
                 if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                     exec {
                         workingDir "${directoryPath}"
@@ -1155,7 +1032,7 @@ task testStdlibs() {
     patternSet.exclude("**/Ballerina.lock")
     patternSet.exclude("**/ballerina-internal.log")
     inputs.files(files("${distPath}/stdlib-integration-tests").asFileTree.matching(patternSet))
-    def ignoreList = ["sql", "kafka", "crypto", "mime", "http"]
+    def ignoreList = ["sql", "kafka"]
 
     doFirst {
         copy {
@@ -1194,6 +1071,7 @@ task testStdlibs() {
                 additionalBuildParams = "--user.name=ballerina-user"
             }
 
+            println "Testing standard library ${stdlibTest}"
             if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                 //TODO: Need to verify with windows
                 exec {
@@ -1446,9 +1324,7 @@ task stopNatsServer() {
 /* Unpack Dependencies */
 unpackJballerinaTools.dependsOn unpackBallerinaJre
 unpackDevTools.dependsOn unpackJballerinaTools
-unpackAzFunctionsBalo.dependsOn unpackDevTools
-unpackAzFunctionsExamples.dependsOn unpackAzFunctionsBalo
-unpackAwsLambdaBalo.dependsOn unpackAzFunctionsExamples
+unpackAwsLambdaBalo.dependsOn unpackDevTools
 unpackAwsLambdaExamples.dependsOn unpackAwsLambdaBalo
 unpackDockerAnnotations.dependsOn unpackAwsLambdaExamples
 unpackDockerExamples.dependsOn unpackDockerAnnotations

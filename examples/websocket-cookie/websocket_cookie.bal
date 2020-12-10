@@ -2,7 +2,7 @@ import ballerina/http;
 import ballerina/io;
 import ballerina/log;
 
-// The HTTP client configurations associated with [enabling cookies](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/CookieConfig.html).
+// The HTTP client configurations associated with [enabling cookies](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/CookieConfig).
 http:ClientConfiguration clientEPConfig = {
     cookieConfig: {
         enabled: true
@@ -35,7 +35,7 @@ public function main() {
         if (loginMessage is error) {
             io:println("Login failed", loginMessage);
         } else {
-            // [Gets cookies from the `http:Response`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Response.html#getCookies)
+            // [Gets cookies from the `http:Response`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Response#getCookies)
             http:Cookie[] cookies = loginResp.getCookies();
             // Initialize the WebSocket client with the cookies
             http:WebSocketClient wsClientEp =
