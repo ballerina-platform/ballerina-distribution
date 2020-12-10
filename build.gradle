@@ -408,8 +408,6 @@ subprojects {
 
         /* Ballerina lang staging repository */
         maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1614/" }
-        /* Docker staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1293/" }
         /* Datamapper staging repository */
         maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdatamapper-1010/" }
     }
@@ -444,11 +442,6 @@ subprojects {
 
         /* Ballerina Dev Tools */
         devTools "org.ballerinalang:ballerina-dev-tools:${devToolsVersion}"
-
-        /* Docker extension */
-        exten "org.ballerinax.docker:docker-extension:${dockerVersion}@jar"
-        dockerAnnotations "org.ballerinax.docker:docker-extension-annotations:${dockerVersion}"
-        dockerExamples "org.ballerinax.docker:docker-extension-examples:${dockerVersion}@zip"
 
         /* Data Mapper extension */
         exten "org.ballerinax.datamapper:datamapper-extension:${dataMapperVersion}@jar"
@@ -492,13 +485,17 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:module-ballerina-openapi:${openapiVersion}"
         ballerinaStdLibs "org.ballerinalang:transaction-ballerina:${stdlibTransactionVersion}"
 
+        /* Code to cloud extensions */
         ballerinaC2cLibs "io.ballerina:c2c-ballerina:${c2cVersion}"
         ballerinaC2cLibs "org.ballerinax.azurefunctions:azurefunctions-extension-balo:${azFunctionsVersion}"
         ballerinaC2cLibs "org.ballerinax.awslambda:awslambda-extension-balo:${awslambdaVersion}"
+        ballerinaC2cLibs "org.ballerinax.docker:docker-extension-annotations:${dockerVersion}"
 
+        /* Code to cloud examples */
         ballerinaC2cExamples "io.ballerina:c2c-extension-examples:${c2cVersion}@zip"
         ballerinaC2cExamples "org.ballerinax.azurefunctions:azurefunctions-extension-examples:${azFunctionsVersion}@zip"
         ballerinaC2cExamples "org.ballerinax.awslambda:awslambda-extension-examples:${awslambdaVersion}@zip"
+        ballerinaC2cExamples "org.ballerinax.docker:docker-extension-examples:${dockerVersion}@zip"
 
         balCommand "org.ballerinalang:ballerina-command-distribution:${ballerinaCommandVersion}@zip"
     }
