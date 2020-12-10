@@ -778,15 +778,7 @@ task testExamples() {
             'counter-metrics',
             'tracing',
             'openapi-to-ballerina',
-            'taint-checking', // Should not compile
-            //TODO failing due to transaction changes probably. Need to fix
-            'rabbitmq-transaction-consumer',
-            'rabbitmq-transaction-producer',
-            'kafka-producer-transactional',
-            'mysql-batch-execute-operation',
-            'jdbc-batch-execute-operation',
-            'log-api',
-            'error-handling-in-single-place'
+            'taint-checking' // Should not compile
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
@@ -850,6 +842,7 @@ task testExamples() {
             'rabbitmq-transaction-producer',
             'rabbitmq-transaction-consumer',
             'jdbc-complex-type-queries', // Consists date time in output
+            'jdbc-batch-execute-operation', // Consists transaction server sart log
             'log-api',
             'mysql-init-options',
             'mysql-query-operation',
@@ -878,17 +871,6 @@ task testExamples() {
             'task-scheduler-timer',
             'task-scheduler-appointment',
             'cache',
-
-            //TODO failing due to transaction changes probably. Need to fix
-            'rabbitmq-transaction-consumer',
-            'rabbitmq-transaction-producer',
-            'kafka-producer-transactional',
-            'mysql-batch-execute-operation',
-            'jdbc-batch-execute-operation',
-            'retry-transactions',
-            'local-transactions-with-handlers',
-            'local-transactions',
-            'log-api',
             'error-handling-in-single-place',
             'file-io'
     ]
@@ -928,6 +910,7 @@ task testExamples() {
         if (bbe == "secured-service-with-basic-auth" || bbe == "secured-client-with-basic-auth") {
             additionalBuildParams = "--b7a.config.file=${baseBuildPath}/${bbe}/sample-users.toml"
         }
+        println "Building example ${bbe}"
         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
             //TODO: Need to verify with windows
             exec {
@@ -1009,6 +992,7 @@ task testExamples() {
             curlCommands.each {
                 fileReference << "${it}\n"
             }
+            println "Verify output ${bbe}"
             def scriptPath = "${project.rootDir}/ballerina/lib"
             def exitVal
             if (Os.isFamily(Os.FAMILY_WINDOWS)) {
@@ -1050,6 +1034,7 @@ task testExamples() {
             def cmdOutAry = []
             def errOut = new ByteArrayOutputStream()
             new ByteArrayOutputStream().withStream { os ->
+                println "Output Verification ${bbe}"
                 if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                     exec {
                         workingDir "${directoryPath}"
@@ -1194,6 +1179,7 @@ task testStdlibs() {
                 additionalBuildParams = "--user.name=ballerina-user"
             }
 
+            println "Testing standard library ${stdlibTest}"
             if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                 //TODO: Need to verify with windows
                 exec {
