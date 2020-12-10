@@ -1,14 +1,14 @@
 // This is the client implementation for the UDP socket.
 import ballerina/io;
-import ballerina/socket;
+import ballerina/udp;
 
 public function main() {
-    // Create a new socket client.
+    // Create a new udp client.
     // Optionally, you can provide port that this socket need to bind or
     // both interface and port as follows.
-    // socket:UdpClient client = new(localAddress = { port: 48828 });
-    // socket:UdpClient client = new(localAddress = { host: "localhost", port: 48828 });
-    socket:UdpClient socketClient = new;
+    // udp:Client client = new(localAddress = { port: 48828 });
+    // udp:Client client = new(localAddress = { host: "localhost", port: 48828 });
+    socket:Client socketClient = new;
     string msg = "Hello from UDP client";
     byte[] c1 = msg.toBytes();
     // Send data to remote host.
