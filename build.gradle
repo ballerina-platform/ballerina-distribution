@@ -410,8 +410,6 @@ subprojects {
         maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1614/" }
         /* Docker staging repository */
         maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1293/" }
-        /* AwsLambda staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1166/" }
         /* Datamapper staging repository */
         maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdatamapper-1010/" }
     }
