@@ -135,7 +135,7 @@ task unpackC2cExamples(type: Copy) {
     group = "unpack_dependencies"
     configurations.ballerinaC2cExamples.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         from zipTree(artifact.getFile())
-        into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
+        into new File("${buildDir}/target/extracted-distributions", "c2c-examples-zip")
     }
 }
 
@@ -275,7 +275,7 @@ task packageDist(type: Zip) {
         exclude "index.js"
     }
     into("${parentDir}/examples") {
-        from "build/target/extracted-distributions/c2c-extension-examples-zip"
+        from "build/target/extracted-distributions/c2c-examples-zip"
         exclude "index.js"
     }
     into("${parentDir}/repo/cache/") {
@@ -334,7 +334,7 @@ task packageDistZip(type: Zip) {
         exclude "index.js"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/c2c-extension-examples-zip"
+        from "build/target/extracted-distributions/c2c-examples-zip"
         exclude "index.js"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/") {
@@ -426,7 +426,7 @@ task packageDistLinux(type: Zip) {
         exclude "index.js"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/c2c-extension-examples-zip"
+        from "build/target/extracted-distributions/c2c-examples-zip"
         exclude "index.js"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/") {
@@ -514,7 +514,7 @@ task packageDistMac(type: Zip) {
         exclude "index.js"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/c2c-extension-examples-zip"
+        from "build/target/extracted-distributions/c2c-examples-zip"
         exclude "index.js"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/") {
@@ -597,7 +597,7 @@ task packageDistWindows(type: Zip) {
         exclude "index.js"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/c2c-extension-examples-zip"
+        from "build/target/extracted-distributions/c2c-examples-zip"
         exclude "index.js"
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/") {
