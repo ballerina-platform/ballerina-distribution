@@ -8,7 +8,7 @@ public function main() {
     // both interface and port as follows.
     // udp:Client client = new(localAddress = { port: 48828 });
     // udp:Client client = new(localAddress = { host: "localhost", port: 48828 });
-    socket:Client socketClient = new;
+    udp:Client socketClient = new;
     string msg = "Hello from UDP client";
     byte[] c1 = msg.toBytes();
     // Send data to remote host.
@@ -27,7 +27,7 @@ public function main() {
     // socketClient->receiveFrom(length = 30)
     // This will block until specified length of bytes receive from host.
     var result = socketClient->receiveFrom();
-    if (result is [byte[], int, socket:Address]) {
+    if (result is [byte[], int, udp:Address]) {
         var [content, length, address] = result;
         var byteChannel = io:createReadableChannel(content);
         if (byteChannel is io:ReadableByteChannel) {
