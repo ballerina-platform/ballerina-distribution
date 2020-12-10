@@ -12,7 +12,7 @@ public function main() returns error? {
         io:println("Attempting execution...");
         // Calls a function, which simulates an error scenario to 
         // trigger the retry operation.
-        doWork();
+        check doWork();
     }
 
     int i = 0;
