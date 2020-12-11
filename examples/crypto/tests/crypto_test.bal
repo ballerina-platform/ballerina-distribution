@@ -15,7 +15,7 @@ public function mockPrint(any|error... val) {
 function testFunc() {
     // Invoking the main function
     var ret = main();
-    test:assertEquals(outputs.length(), 25);
+    test:assertEquals(outputs.length(), 30);
     test:assertEquals(outputs[0], "Hex encoded hash with MD5: 0605402ee16d8e96511a58ff105bc24a");
     test:assertEquals(outputs[1], "Base64 encoded hash with SHA1: /8fwbGIevBvv2Nl3gEL9DtWas+Q=");
     test:assertEquals(outputs[2], "Hex encoded hash with SHA256: a984a643c350b17f0738bac0fef17f2cd91d91e04596351d0af" +

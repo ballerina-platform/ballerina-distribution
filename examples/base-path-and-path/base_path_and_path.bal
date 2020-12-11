@@ -1,17 +1,17 @@
 import ballerina/http;
 import ballerina/log;
 
-// The [basePath](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/HttpServiceConfig.html) attribute
+// The [basePath](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/HttpServiceConfig) attribute
 // associates a path to the service. When bound to a listener endpoint, the service will be accessible at the
 // specified path.
 @http:ServiceConfig {
     basePath: "/foo"
 }
 service echo on new http:Listener(9090) {
-    // When the [methods](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/HttpResourceConfig.html) attribute
+    // When the [methods](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/HttpResourceConfig) attribute
     // is used, it confines the resource to the specified HTTP methods. In this instance, only `POST` requests are
     // allowed. The `path` attribute associates a subpath to the resource (i.e., relative to the `basePath` given in
-    // the [ServiceConfig](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/HttpServiceConfig.html) annotation).
+    // the [ServiceConfig](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/HttpServiceConfig) annotation).
     @http:ResourceConfig {
         methods: ["POST"],
         path: "/bar"

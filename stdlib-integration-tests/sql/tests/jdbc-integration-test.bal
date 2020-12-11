@@ -14,14 +14,14 @@
 // under the License.
 
 import ballerina/sql;
-import ballerina/java.jdbc;
-import ballerina/filepath;
+import ballerina/jdbc;
+import ballerina/file;
 import ballerina/test;
 
 string user = "test";
 string password = "Test123";
 
-string dbPath = checkpanic filepath:absolute("target/databases");
+string dbPath = checkpanic file:getAbsolutePath("target/databases");
 string jdbcUrl = "jdbc:h2:" + dbPath + "/" + "CONNECT_DB";
 
 @test:Config {

@@ -14,26 +14,13 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import ballerina/http;
-import ballerina/log;
-import ballerina/kubernetes;
+import ballerina/test;
+import ballerina/config;
+// This tests the functionality of reading config
 
-@kubernetes:Service {
-    serviceType: "NodePort"
+@test:Config{
 }
-@kubernetes:Deployment {
-    buildImage: false
-}
-@http:ServiceConfig {
-    basePath: "/helloWorld"
-}
-service helloWorld on new http:Listener(9090) {
-    resource function sayHello(http:Caller outboundEP, http:Request request) {
-        http:Response response = new;
-        response.setTextPayload("Hello, World from service helloWorld ! \n");
-        var responseResult = outboundEP->respond(response);
-        if (responseResult is error) {
-            log:printError("error responding back to client.", responseResult);
-        }
-    }
+function readConfigTest () {
+     string userName = config:getAsString("user.name");
+     test:assertEquals(userName, "ballerina-user");
 }

@@ -1,6 +1,6 @@
 import ballerina/lang.'transaction as transactions;
 import ballerina/io;
-import ballerina/java.jdbc;
+import ballerina/jdbc;
 
 // The user-defined retry manager object.
 public class MyRetryManager {

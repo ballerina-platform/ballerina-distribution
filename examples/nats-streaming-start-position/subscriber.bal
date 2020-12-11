@@ -1,5 +1,5 @@
 import ballerina/lang.'string as strings;
-import ballerina/log;
+import ballerina/io;
 import ballerinax/nats;
 
 // Creates a NATS connection.
@@ -15,20 +15,19 @@ listener nats:StreamingListener lis = new (conn);
 }
 service receiveNewOnly on lis {
     resource function onMessage(nats:StreamingMessage message) {
-        // Prints the incoming message in the console.
-        string|error messageData = strings:fromBytes(message.getData());
-        if (messageData is string) {
-            log:printInfo("Message Received to service receiveNewOnly: "
-                                                              + messageData);
-        } else {
-            log:printError("Error occurred while obtaining message data");
-        }
+       // Prints the incoming message in the console.
+       string|error messageData = strings:fromBytes(message.getData());
+       if (messageData is string) {
+            io:println("Message received to service receiveNewOnly: "
+                                                      + messageData);
+       } else {
+            io:println("Error occurred while obtaining message data.");
+       }
     }
 
     resource function onError(nats:StreamingMessage message,
                               nats:Error errorVal) {
-        error e = errorVal;
-        log:printError("Error occurred: ", e);
+        io:println("Error occurred while consuming the message.");
     }
 }
 
@@ -40,20 +39,19 @@ service receiveNewOnly on lis {
 }
 service receiveFromBegining on lis {
     resource function onMessage(nats:StreamingMessage message) {
-        // Prints the incoming message in the console.
-        string|error messageData = strings:fromBytes(message.getData());
-        if (messageData is string) {
-            log:printInfo("Message Received to service receiveFromBegining: "
-                                                               + messageData);
-        } else {
-            log:printError("Error occurred while obtaining message data");
-        }
+       // Prints the incoming message in the console.
+       string|error messageData = strings:fromBytes(message.getData());
+       if (messageData is string) {
+            io:println("Message received to service receiveFromBegining: "
+                                                           + messageData);
+       } else {
+            io:println("Error occurred while obtaining message data.");
+       }
     }
 
     resource function onError(nats:StreamingMessage message,
                               nats:Error errorVal) {
-        error e = errorVal;
-        log:printError("Error occurred: ", e);
+        io:println("Error occurred while consuming the message.");
     }
 }
 
@@ -65,20 +63,19 @@ service receiveFromBegining on lis {
 }
 service receiveFromLastReceived on lis {
     resource function onMessage(nats:StreamingMessage message) {
-        // Prints the incoming message in the console.
-        string|error messageData = strings:fromBytes(message.getData());
-        if (messageData is string) {
-            log:printInfo("Message Received to service " +
-                          "receiveFromLastReceived: " + messageData);
-        } else {
-            log:printError("Error occurred while obtaining message data");
-        }
+       // Prints the incoming message in the console.
+       string|error messageData = strings:fromBytes(message.getData());
+       if (messageData is string) {
+            io:println("Message received to service receiveFromLastReceived: "
+                                                               + messageData);
+       } else {
+            io:println("Error occurred while obtaining message data.");
+       }
     }
 
     resource function onError(nats:StreamingMessage message,
                               nats:Error errorVal) {
-        error e = errorVal;
-        log:printError("Error occurred: ", e);
+        io:println("Error occurred while consuming the message.");
     }
 }
 
@@ -91,20 +88,19 @@ service receiveFromLastReceived on lis {
 }
 service receiveFromGivenIndex on lis {
     resource function onMessage(nats:StreamingMessage message) {
-        // Prints the incoming message in the console.
-        string|error messageData = strings:fromBytes(message.getData());
-        if (messageData is string) {
-            log:printInfo("Message Received to service receiveFromGivenIndex: "
-                                                                + messageData);
-        } else {
-            log:printError("Error occurred while obtaining message data");
-        }
+       // Prints the incoming message in the console.
+       string|error messageData = strings:fromBytes(message.getData());
+       if (messageData is string) {
+            io:println("Message Received to service receiveFromGivenIndex: "
+                                                               + messageData);
+       } else {
+            io:println("Error occurred while obtaining message data.");
+       }
     }
 
     resource function onError(nats:StreamingMessage message,
                               nats:Error errorVal) {
-        error e = errorVal;
-        log:printError("Error occurred: ", e);
+        io:println("Error occurred while consuming the message.");
     }
 }
 
@@ -117,19 +113,18 @@ service receiveFromGivenIndex on lis {
 }
 service receiveSinceTimeDelta on lis {
     resource function onMessage(nats:StreamingMessage message) {
-        // Prints the incoming message in the console.
-        string|error messageData = strings:fromBytes(message.getData());
-        if (messageData is string) {
-            log:printInfo("Message Received to service receiveSinceTimeDelta: "
-                                                                + messageData);
-        } else {
-            log:printError("Error occurred while obtaining message data");
-        }
+       // Prints the incoming message in the console.
+       string|error messageData = strings:fromBytes(message.getData());
+       if (messageData is string) {
+            io:println("Message Received to service receiveSinceTimeDelta: "
+                                                               + messageData);
+       } else {
+            io:println("Error occurred while obtaining message data.");
+       }
     }
 
     resource function onError(nats:StreamingMessage message,
                               nats:Error errorVal) {
-        error e = errorVal;
-        log:printError("Error occurred: ", e);
+        io:println("Error occurred while consuming the message.");
     }
 }

@@ -2,16 +2,14 @@
 # `.bal` file and execute the `ballerina run` command below.
 ballerina run file.bal
 Current directory: /A/B
-Created directory path: /A/B/foo
-Created nested directory path: /A/B/foo/bar
-Created file path: /A/B/bar.txt
-File name: bar.txt
+File path: /A/B/bar.txt
 File size: 0
 Is directory: false
 Modified at {"time":1567597039000,"zone":{"id":"Z","offset":0}}
 bar.txt file exists: true
 bar.txt file is copied to new path foo/bar/bar.txt
 bar.txt file is moved to new path foo/bar1.txt
-Temporary directory: /var/folders/4z/xvlnvsp54ks9793d6k5_6bw40000gn/T/
 Removed file at foo/bar1.txt
 Removed 'foo' directory with all the children.
+Absolute path of the tmp file: /tmp/55d2c4cd-0f85-49e1-9e8a-10d78959f017
+Absolute path of the tmp file: /A/B/6844bda0-c32d-470c-b55b-013d6bd93a0e
