@@ -1,24 +1,21 @@
 import ballerina/io;
+import ballerina/lang.'string;
 import ballerinax/nats;
 
-// Initializes a connection.
-nats:Connection connection = new;
-
 // Initializes the NATS listener.
-listener nats:Listener subscription = new (connection);
+listener nats:Listener subscription = new;
 
 // Binds the consumer to listen to the messages published to the 'demo' subject.
-@nats:SubscriptionConfig {
+@nats:ServiceConfig {
     subject: "demo.bbe.*"
 }
-service demo on subscription {
+service nats:Service on subscription {
 
-    resource function onMessage(nats:Message msg, string data) {
+    remote function onMessage(nats:Message message) {
         // Prints the incoming message in the console.
-        io:println("Received message: " + data);
-    }
-
-    resource function onError(nats:Message msg, nats:Error err) {
-        io:println("Error occurred while consuming the message.");
+        string|error messageContent = 'string:fromBytes(message.content);
+        if (messageContent is string) {
+            io:println("Received message: " + messageContent);
+        }
     }
 }

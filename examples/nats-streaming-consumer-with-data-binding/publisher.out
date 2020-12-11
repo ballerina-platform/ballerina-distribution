@@ -1,4 +1,0 @@
-# To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run publisher.bal
-GUID PXbFl6Mlx6cewaL8oXwnn1 received for the produced message.
