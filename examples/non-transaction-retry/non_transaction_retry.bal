@@ -38,11 +38,11 @@ function doWork() returns error? {
         // the default retry manager retries.
         return errors:Retriable("Execution Error");
     } else {
-        io:println("Work is done.");
+        io:println("Work completed.");
     }
 }
 
-// Retry manager class with arbitrarily logic.
+// Sample retry manager class with an arbitrarily logic.
 public class MyRetryManager {
    private int count;
    public function init(int count = 3) {
