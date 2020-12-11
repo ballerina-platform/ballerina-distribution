@@ -6,6 +6,7 @@ on:
       - master
       - stage
       - ballerina-1.1.x
+  workflow_dispatch:
 
 jobs:
   build:
