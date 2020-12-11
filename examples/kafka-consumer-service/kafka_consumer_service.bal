@@ -12,9 +12,7 @@ kafka:ConsumerConfiguration consumerConfigs = {
     topics: ["test-kafka-topic"],
 
     pollingIntervalInMillis: 1000,
-    // Uses the default int deserializer for the keys.
     keyDeserializerType: kafka:DES_BYTE_ARRAY,
-    // Uses the default string deserializer for the values.
     valueDeserializerType: kafka:DES_BYTE_ARRAY,
     // Set `autoCommit` to false, so that the records should be committed
     // manually.
