@@ -430,6 +430,14 @@ subprojects {
             }
         }
 
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-docker"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+
         // Reordering due to version clash
         /* WSO2 Snapshot Repository */
         maven { url "http://maven.wso2.org/nexus/content/repositories/snapshots/" }
