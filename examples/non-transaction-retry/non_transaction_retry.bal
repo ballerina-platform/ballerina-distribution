@@ -24,7 +24,7 @@ public function main() returns error? {
        if(i < 2) {
            fail error("Custom Error");
        }
-       io:println("Work is done.");
+       io:println("Work completed.");
     }
 }
 
