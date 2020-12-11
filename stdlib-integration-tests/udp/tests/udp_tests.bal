@@ -13,3 +13,22 @@
 // KIND, either express or implied.  See the License for the
 // specific language governing permissions and limitations
 // under the License.
+
+import ballerina/log;
+import ballerina/test;
+import ballerina/udp;
+
+//test to check existance of udp module
+@test:Config {
+}
+function testUdp() {
+    udp:Client socketClient = new;
+    string msg = "Hello Ballerina echo";
+    var sendResult = socketClient->sendTo(msg.toBytes(), {host: "localhost", port: 48829});
+    if (sendResult is int) {
+        log:printInfo("Number of bytes written: " + sendResult.toString());
+    } else {
+        test:assertFail(msg = sendResult.message());
+    }
+    checkpanic socketClient->close();
+}
