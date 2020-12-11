@@ -19,21 +19,17 @@ import ballerina/test;
 import ballerina/runtime;
 import ballerina/http;
 import ballerina/websub;
-import ballerina/io;
 
 listener websub:Listener websubDifContentTypeEP = new websub:Listener(23282);
 
 @websub:SubscriberServiceConfig {
-    //path:"/websub",
     target: ["http://localhost:23191/websub/hub", "http://one.websub.topic.com"],
     leaseSeconds: 3000,
     secret: "Kslk30SNF2AChs2"
 }
 service websub:SubscriberService /websub on websubDifContentTypeEP {
     remote function onNotification (websub:Notification notification) {
-        io:println("*******************************onNotification /websub **************************************");
         if (notification.getContentType() == mime:TEXT_PLAIN) {
-        io:println("*******************************TEXT_PLAIN**************************************");
             var payload = notification.getTextPayload();
             if (payload is string) {
                 storeOutput(ID_TEXT_SUBSCRIBER_ONE, "Text WebSub Notification Received by websubSubscriber: " + <@untainted>payload);
@@ -41,7 +37,6 @@ service websub:SubscriberService /websub on websubDifContentTypeEP {
                 panic payload;
             }
         } else if (notification.getContentType() == mime:APPLICATION_XML) {
-        io:println("*******************************APPLICATION_XML**************************************");
             var payload = notification.getXmlPayload();
             if (payload is xml) {
                 storeOutput(ID_XML_SUBSCRIBER_ONE, "XML WebSub Notification Received by websubSubscriber: " + <@untainted>payload.toString());
@@ -49,7 +44,6 @@ service websub:SubscriberService /websub on websubDifContentTypeEP {
                 panic payload;
             }
         } else if (notification.getContentType() == mime:APPLICATION_JSON) {
-        io:println("*******************************APPLICATION_JSON**************************************");
             var payload = notification.getJsonPayload();
             if (payload is json) {
                 storeOutput(ID_JSON_SUBSCRIBER_ONE, "JSON WebSub Notification Received by websubSubscriber: " + <@untainted>payload.toJsonString());
@@ -68,9 +62,7 @@ service websub:SubscriberService /websub on websubDifContentTypeEP {
 }
 service websub:SubscriberService /websubTwo on websubDifContentTypeEP {
     remote function onNotification (websub:Notification notification) {
-    io:println("@@@@@@@@@@@@@@@@@@@@@@@@@@@onNotification /websubTwo@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         if (notification.getContentType() == mime:TEXT_PLAIN) {
-        io:println("@@@@@@@@@@@@@@@@@@@@@@@@@@@TEXT_PLAIN@@@@@@@@@@@@@@@@@@@@@@@@@@@");
             var payload = notification.getTextPayload();
             if (payload is string) {
                 storeOutput(ID_TEXT_SUBSCRIBER_TWO, "Text WebSub Notification Received by websubSubscriberTwo: " + <@untainted>payload);
@@ -78,7 +70,6 @@ service websub:SubscriberService /websubTwo on websubDifContentTypeEP {
                 panic payload;
             }
         } else if (notification.getContentType() == mime:APPLICATION_XML) {
-        io:println("@@@@@@@@@@@@@@@@@@@@@@@@@@@APPLICATION_XML@@@@@@@@@@@@@@@@@@@@@@@@@@@");
             var payload = notification.getXmlPayload();
             if (payload is xml) {
                 storeOutput(ID_XML_SUBSCRIBER_TWO, "XML WebSub Notification Received by websubSubscriberTwo: " + <@untainted>payload.toString());
@@ -86,7 +77,6 @@ service websub:SubscriberService /websubTwo on websubDifContentTypeEP {
                 panic payload;
             }
         } else if (notification.getContentType() == mime:APPLICATION_JSON) {
-        io:println("@@@@@@@@@@@@@@@@@@@@@@@@@@@APPLICATION_JSON@@@@@@@@@@@@@@@@@@@@@@@@@@@");
             var payload = notification.getJsonPayload();
             if (payload is json) {
                 storeOutput(ID_JSON_SUBSCRIBER_TWO, "JSON WebSub Notification Received by websubSubscriberTwo: " + <@untainted>payload.toJsonString());
@@ -158,16 +148,10 @@ function testJsonContentReceiptForRemoteHub() {
 }
 
 function sendSubscriptionAndIntentVerificationRequest (string path, string mode, string contentType) {
-    io:println("++++++++++++++++++++++++++++++++++++++++");
-    io:println(path);
-    io:println("++++++++++++++++++++++++++++++++++++++++");
     http:Client clientEndpoint = new ("http://localhost:23080");
     json jsonPayload = {mode: mode, content_type: contentType};
     http:Request req = new;
     req.addHeader(http:CONTENT_TYPE, CONTENT_TYPE_JSON);
     req.setJsonPayload(jsonPayload);
-    io:println("++++++++++++++++++++++++++++++++++++++++");
-    io:println("Sending request");
-    io:println("++++++++++++++++++++++++++++++++++++++++");
     var response = clientEndpoint->post(path, req);
 }

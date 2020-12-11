@@ -25,7 +25,6 @@ listener websub:Listener multipleSubTestWebsubEP = new websub:Listener(23383);
 listener websub:Listener websubEndPointWithNoAttachedServices = new websub:Listener(23384);
 
 @websub:SubscriberServiceConfig {
-    //path:"/websub",
     target: ["http://localhost:23191/websub/hub", "http://three.websub.topic.com"],
     leaseSeconds: 3600,
     secret: "Kslk30SNF2AChs2"
@@ -42,7 +41,6 @@ service websub:SubscriberService /websub on multipleSubTestWebsubEP {
 }
 
 @websub:SubscriberServiceConfig {
-    //path:"/websubTwo",
     target: "http://localhost:23080/publisherTwo/discover",
     leaseSeconds: 1200,
     secret: "SwklSSf42DLA"

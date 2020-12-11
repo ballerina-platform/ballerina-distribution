@@ -21,7 +21,6 @@ import ballerina/websub;
 listener websub:Listener redirectWebsubEP = new websub:Listener(23484);
 
 @websub:SubscriberServiceConfig {
-    //path:"/websub",
     subscribeOnStartUp:true,
     target: "http://localhost:23081/original/one",
     leaseSeconds: 3600,
@@ -47,7 +46,6 @@ service websub:SubscriberService /websub on redirectWebsubEP {
 }
 
 @websub:SubscriberServiceConfig {
-    //path:"/websubTwo",
     target: "http://localhost:23081/original/two",
     leaseSeconds: 1200,
     secret: "SwklSSf42DLA",
