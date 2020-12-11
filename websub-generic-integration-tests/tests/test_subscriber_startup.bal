@@ -37,7 +37,7 @@ service websub:SubscriberService /subscriber on testSubscriber {
             string errMsg = l1Error.message();
             return caller->respond(errMsg);
         }
-        log:printInfo("listener_1 has started");
+        log:print("listener_1 has started");
 
         var l2Error = l2.'start();
         if (l2Error is error) {
