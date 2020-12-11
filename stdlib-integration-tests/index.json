@@ -1,7 +1,7 @@
 [
   {
-    "name": "Socket standard library ",
-    "path": "socket"
+    "name": "TCP standard library ",
+    "path": "tcp"
   },
   {
     "name": "Email standard library ",
@@ -48,18 +48,6 @@
     "path": "websocket"
   },
   {
-    "name": "RabbitMQ standard library",
-    "path": "rabbitmq"
-  },
-  {
-    "name": "NATS standard library",
-    "path": "nats"
-  },
-  {
-    "name": "Kafka standard library",
-    "path": "kafka"
-  },
-  {
     "name": "SQL Connectors",
     "path": "sql"
   },
@@ -70,5 +58,9 @@
   {
     "name": "Config standard library",
     "path": "config"
+  },
+  {
+    "name": "UDP standard library ",
+    "path": "udp"
   }
 ]

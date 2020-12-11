@@ -16,7 +16,7 @@
 
 import ballerina/http;
 import ballerina/io;
-import ballerina/socket;
+import ballerina/tcp;
 
 listener http:Listener echoEP = new(58291);
 
@@ -28,7 +28,7 @@ service echo on echoEP {
         path: "/"
     }
     resource function echo1(http:Caller caller, http:Request req) {
-        socket:Client socketClient = new({ host: "localhost", port: 59152, callbackService: ClientService });
+        tcp:Client socketClient = new({ host: "localhost", port: 59152, callbackService: ClientService });
         var payload = req.getTextPayload();
         http:Response resp = new;
         if (payload is string) {
@@ -57,13 +57,13 @@ service echo on echoEP {
     }
 }
 
-service ClientService = service {
+service object {} ClientService = service object {
 
-    resource function onConnect(socket:Caller caller) {
+    remote function onConnect(tcp:Caller caller) {
         io:println("connect: ", caller.remotePort);
     }
 
-    resource function onReadReady(socket:Caller caller) {
+    remote function onReadReady(tcp:Caller caller) {
         io:println("New content received for callback");
         var result = caller->read();
         if (result is [byte[], int]) {
@@ -89,7 +89,7 @@ service ClientService = service {
         }
     }
 
-    resource function onError(socket:Caller caller, error er) {
+    remote function onError(tcp:Caller caller, error er) {
         io:println(er.message());
     }
 };
