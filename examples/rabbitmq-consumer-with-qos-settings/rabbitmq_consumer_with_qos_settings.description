@@ -14,4 +14,4 @@
 // To apply the settings per consumer service, they should be specified in the
 // service config annotation.<br/><br/>
 // For more information on the underlying module, 
-// see the [RabbitMQ module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/rabbitmq/index.html).
+// see the [RabbitMQ module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/rabbitmq/).
