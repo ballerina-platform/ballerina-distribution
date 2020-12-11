@@ -31,7 +31,7 @@ service websub:SubscriberService /subscriber on testSubscriber {
         websub:Listener l2 = new(23387);
 
         string responseMsg = "";
-        var l1Error = l1.start();
+        var l1Error = l1.'start();
         if (l1Error is error) {
             log:printError("listener_1 has not started");
             string errMsg = l1Error.message();
