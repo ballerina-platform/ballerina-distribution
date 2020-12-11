@@ -30,7 +30,8 @@ service kafka:Service on kafkaListener {
     remote function onMessage(kafka:Caller caller,
                                 kafka:ConsumerRecord[] records) {
         foreach var consumerRecord in records {
-            string|error messageContent = 'string:fromBytes(consumerRecord.value);
+            string|error messageContent =
+                                   'string:fromBytes(consumerRecord.value);
             if (messageContent is string) {
                 log:printInfo(messageContent);
             }
