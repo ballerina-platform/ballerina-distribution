@@ -1060,6 +1060,7 @@ task testStdlibs() {
         }
 
         if (!failedStdLibs.isEmpty()) {
+            sleep(10 * 1000)
             println "\n\tThe following Standard Library Tests Failed:\n"
             failedStdLibs.each {
                 println "\t ${it}"
