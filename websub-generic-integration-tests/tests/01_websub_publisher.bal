@@ -29,9 +29,6 @@ websub:PublisherClient websubHubClientEP = new (webSubHub.publishUrl);
 listener http:Listener publisherServiceEP = new http:Listener(23080);
 
 service /publisher on publisherServiceEP {
-    //@http:ResourceConfig {
-    //    methods: ["GET", "HEAD"]
-    //}
     resource function get discover(http:Caller caller, http:Request req) {
         http:Response response = new;
         // Add a link header indicating the hub and topic
@@ -42,14 +39,7 @@ service /publisher on publisherServiceEP {
         }
     }
 
-    //@http:ResourceConfig {
-    //    methods: ["POST"],
-    //        path: "/notify/{subscriber}"
-    //}
     resource function post notify/[string subscriber](http:Caller caller, http:Request req) {
-    //resource function post notify (http:Caller caller, http:Request req, string subscriber) {
-        io:println("-----------------Request sent to notify------------------");
-        io:println(subscriber);
         remoteRegisterTopic();
         json jsonPayload = <json> req.getJsonPayload();
         json jsonMode = <json>jsonPayload.mode;
@@ -118,9 +108,6 @@ service /publisher on publisherServiceEP {
 }
 
 service /publisherTwo on publisherServiceEP {
-    //@http:ResourceConfig {
-       // methods: ["GET", "HEAD"]
-    //}
     resource function get discover(http:Caller caller, http:Request req) {
         http:Response response = new;
         // Add a link header indicating the hub and topic
@@ -131,9 +118,6 @@ service /publisherTwo on publisherServiceEP {
         }
     }
 
-    //@http:ResourceConfig {
-        //methods: ["POST"]
-    //}
     resource function post notify(http:Caller caller, http:Request req) {
         checkSubscrberAvailabilityAndPublishDirectly(WEBSUB_TOPIC_THREE, "http://localhost:23383/websub",
                                                      {"action":"publish","mode":"internal-hub"});
@@ -148,12 +132,7 @@ service /publisherTwo on publisherServiceEP {
 }
 
 service /contentTypePublisher on publisherServiceEP {
-   // @http:ResourceConfig {
-        //methods: ["POST"],
-        //path: "/notify/{port}"
-    //}
     resource function post notify/[string port](http:Caller caller, http:Request req) {
-    io:println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$Request sent to contentTypePublisher$$$$$$$$$$$$$$$$$$$$$$$$$");
         json jsonPayload = <json> req.getJsonPayload();
         json jsonMode = <json>jsonPayload.mode;
         string mode = jsonMode.toJsonString();

@@ -24,7 +24,6 @@ import ballerina/websub;
 listener websub:Listener websubEP = new websub:Listener(23181, { host: "0.0.0.0" });
 
 @websub:SubscriberServiceConfig {
-    //path:"/websub",
     subscribeOnStartUp:true,
     target: ["http://localhost:23191/websub/hub", "http://one.websub.topic.com"]
 }
@@ -96,7 +95,6 @@ function testContentInternalHubNotification() {
     req.addHeader(http:CONTENT_TYPE, CONTENT_TYPE_JSON);
     req.setJsonPayload(jsonPayload);
     var response = clientEndpoint->post("/publisher/notify/23181", req);
-    //var response = clientEndpoint->post("/publisher/notify", req);
     runtime:sleep(5000);
 
     test:assertEquals(fetchOutput(ID_HUB_NOTIFICATION_LOG), INTERNAL_HUB_NOTIFICATION_LOG);
