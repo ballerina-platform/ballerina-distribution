@@ -24,12 +24,12 @@ import ballerina/websub;
 listener websub:Listener websubEP = new websub:Listener(23181, { host: "0.0.0.0" });
 
 @websub:SubscriberServiceConfig {
-    path:"/websub",
+    //path:"/websub",
     subscribeOnStartUp:true,
     target: ["http://localhost:23191/websub/hub", "http://one.websub.topic.com"]
 }
-service websubSubscriber on websubEP {
-    resource function onNotification (websub:Notification notification) {
+service websub:SubscriberService /websub on websubEP {
+    remote function onNotification (websub:Notification notification) {
         json payload = <json> notification.getJsonPayload();
         storeOutput(ID_HUB_NOTIFICATION_LOG, "WebSub Notification Received: " + <@untainted>payload.toJsonString());
         io:println("WebSub Notification Received: " + <@untainted>payload.toJsonString());
@@ -41,8 +41,8 @@ service websubSubscriber on websubEP {
     leaseSeconds: 3650,
     secret: "Kslk30SNF2AChs2"
 }
-service subscriberWithNoPathInAnnot on websubEP {
-    resource function onIntentVerification (websub:Caller caller, websub:IntentVerificationRequest request) {
+service websub:SubscriberService /subscriberWithNoPathInAnnot on websubEP {
+    remote function onIntentVerification (websub:Caller caller, websub:IntentVerificationRequest request) {
         http:Response response = request.buildSubscriptionVerificationResponse("http://one.websub.topic.com");
         if (response.statusCode == 202) {
             storeOutput(ID_EXPLICIT_INTENT_VERIFICATION_LOG, "Intent verified explicitly for subscription change request");
@@ -55,7 +55,7 @@ service subscriberWithNoPathInAnnot on websubEP {
         }
     }
 
-    resource function onNotification (websub:Notification notification) {
+    remote function onNotification (websub:Notification notification) {
         string payload = <string> notification.getTextPayload();
         storeOutput(ID_HUB_NOTIFICATION_LOG_TWO, "WebSub Notification Received by Two: " + <@untainted>payload);
         io:println("WebSub Notification Received by Two: " + <@untainted>payload);
@@ -72,8 +72,8 @@ string subscriberThreeTopic = "http://one.websub.topic.com";
     callback: "http://localhost:23181/websubThree?topic=" + subscriberThreeTopic + "&fooVal=barVal",
     secret: "Xaskdnfe234"
 }
-service websubSubscriberWithQueryParams on websubEP {
-    resource function onNotification (websub:Notification notification) {
+service websub:SubscriberService /websubThree on websubEP {
+    remote function onNotification (websub:Notification notification) {
         string payload = <string> notification.getTextPayload();
         io:println("WebSub Notification Received by Three: ", payload);
         io:println("Query Params: ", notification.getQueryParams());
@@ -96,6 +96,7 @@ function testContentInternalHubNotification() {
     req.addHeader(http:CONTENT_TYPE, CONTENT_TYPE_JSON);
     req.setJsonPayload(jsonPayload);
     var response = clientEndpoint->post("/publisher/notify/23181", req);
+    //var response = clientEndpoint->post("/publisher/notify", req);
     runtime:sleep(5000);
 
     test:assertEquals(fetchOutput(ID_HUB_NOTIFICATION_LOG), INTERNAL_HUB_NOTIFICATION_LOG);

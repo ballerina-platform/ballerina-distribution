@@ -24,14 +24,14 @@ import ballerina/websub;
 listener http:Listener testSubscriber = new(23386);
 listener http:Listener testHub = new(23190);
 
-service subscriber on testSubscriber {
-    resource function 'start(http:Caller caller, http:Request request) returns error? {
+service websub:SubscriberService /subscriber on testSubscriber {
+    resource function get 'start(http:Caller caller, http:Request request) returns error? {
 
         websub:Listener l1 = new(23387);
         websub:Listener l2 = new(23387);
 
         string responseMsg = "";
-        var l1Error = l1.__start();
+        var l1Error = l1.start();
         if (l1Error is error) {
             log:printError("listener_1 has not started");
             string errMsg = l1Error.message();
@@ -39,22 +39,22 @@ service subscriber on testSubscriber {
         }
         log:printInfo("listener_1 has started");
 
-        var l2Error = l2.__start();
+        var l2Error = l2.'start();
         if (l2Error is error) {
             log:printError("listener_2 has not started");
             responseMsg = l2Error.message();
         } else {
             responseMsg = "listener_2 has started";
         }
-        l1Error = l1.__gracefulStop();
-        l2Error = l2.__gracefulStop();
+        l1Error = l1.gracefulStop();
+        l2Error = l2.gracefulStop();
 
         return caller->respond(responseMsg);
     }
 }
 
-service startupHub on testHub {
-    resource function startup(http:Caller caller, http:Request request) returns error? {
+service /startupHub on testHub {
+    resource function get startup(http:Caller caller, http:Request request) returns error? {
         http:Listener lis0 = new (23391);
         http:Listener lis1 = new (23392);
         websub:Hub|websub:HubStartedUpError|websub:HubStartupError res =
@@ -97,13 +97,13 @@ service startupHub on testHub {
         return caller->respond("hub(lis2) start up error");
     }
 
-    resource function testPublisherAndSubscriptionInvalidSameResourcePath(http:Caller caller, http:Request request)
+    resource function get testPublisherAndSubscriptionInvalidSameResourcePath(http:Caller caller, http:Request request)
                                                                                                     returns error? {
         http:Listener lis = new (23394);
         websub:Hub|websub:HubStartedUpError|websub:HubStartupError res =
             websub:startHub(lis, "/websub", "/hub", "/hub");
 
-        var err = lis.__gracefulStop();
+        var err = lis.gracefulStop();
 
         if (res is websub:HubStartupError) {
             return caller->respond(res.message());
@@ -113,7 +113,7 @@ service startupHub on testHub {
 }
 
 @test:Config {
-    dependsOn: ["testJsonContentReceiptForRemoteHub"]
+    //dependsOn: ["testJsonContentReceiptForRemoteHub"]
 }
 function testMultipleSubscribersStartUpInSamePort() {
     http:Client clientEndpoint = new ("http://0.0.0.0:23386");
