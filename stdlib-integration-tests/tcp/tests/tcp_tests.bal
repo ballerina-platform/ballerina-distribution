@@ -16,11 +16,13 @@
 
 import ballerina/http;
 import ballerina/test;
+import ballerina/io;
 
 http:Client clientEndpoint = new ("http://localhost:58291");
 
 @test:Config {}
 function testHttpClientEcho() {
+    io:println("testing ....tcp");
     http:Request req = new;
     req.addHeader("Content-Type", "text/plain");
     string requestMessage = "Hello Ballerina";

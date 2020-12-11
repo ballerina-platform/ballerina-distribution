@@ -1,2 +1,0 @@
-description: BBE on consuming messages from a RabbitMQ queue with specific quality of service (QoS) settings.
-keywords: ballerina, ballerina by example, rabbitmq, consumer, bbe, qos

@@ -16,35 +16,35 @@
 
 import ballerina/io;
 import ballerina/log;
-import ballerina/socket;
+import ballerina/tcp;
 
 const int PORT1 = 59152;
 
-listener socket:Listener server1 = new (PORT1);
+listener tcp:Listener server1 = new (PORT1);
 
-service echoServer on server1 {
+service "echoServer" on server1 {
 
-    resource function onConnect(socket:Caller caller) {
-        log:printInfo("Join: " + caller.remotePort.toString());
+    remote function onConnect(tcp:Caller caller) {
+        log:print("Join: " + caller.remotePort.toString());
     }
 
-    resource function onReadReady(socket:Caller caller) {
+    remote function onReadReady(tcp:Caller caller) {
         var result = caller->read();
         if (result is [byte[], int]) {
             var [content, length] = result;
             if (length > 0) {
                 _ = checkpanic caller->write(content);
-                log:printInfo("Server write");
+                log:print("Server write");
             } else {
-                log:printInfo("Client close: " + caller.remotePort.toString());
+                log:print("Client close: " + caller.remotePort.toString());
             }
         } else {
-            log:printError("Error on echo server read", <error>result);
+            log:printError("Error on echo server read", err = <error> result);
         }
     }
 
-    resource function onError(socket:Caller caller, error er) {
-        log:printError("Error on echo service", <error>er);
+    remote function onError(tcp:Caller caller, error er) {
+        log:printError("Error on echo service", err = <error> er);
     }
 }
 

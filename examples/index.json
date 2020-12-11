@@ -1144,10 +1144,6 @@
                 "url": "nats-streaming-client"
             },
             {
-                "name": "Streaming Publisher and Subscriber With Data Binding",
-                "url": "nats-streaming-consumer-with-data-binding"
-            },
-            {
                 "name": "Durable Subscriptions",
                 "url": "nats-streaming-durable-subscriptions"
             },
@@ -1214,14 +1210,6 @@
                 "url": "rabbitmq-consumer-with-client-acknowledgement"
             },
             {
-                "name": "Data Binding",
-                "url": "rabbitmq-consumer-with-data-binding"
-            },
-            {
-                "name": "QoS Settings",
-                "url": "rabbitmq-consumer-with-qos-settings"
-            },
-            {
                 "name": "Transactional Producer",
                 "url": "rabbitmq-transaction-producer"
             },
@@ -1232,14 +1220,20 @@
         ]
     },
     {
-        "title": "Socket",
+        "title": "TCP",
         "column": 3,
         "category": "Working over the network",
         "samples": [{
                 "name": "Basic TCP Socket",
                 "url": "tcp-socket-listener-client"
-            },
-            {
+            }
+        ]
+    },
+    {
+        "title": "UDP",
+        "column": 3,
+        "category": "Working over the network",
+        "samples": [{
                 "name": "Basic UDP Client Socket",
                 "url": "udp-socket-client"
             }

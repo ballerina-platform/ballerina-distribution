@@ -24,7 +24,7 @@ import ballerina/log;
 service HelloWorld on new grpc:Listener(20003) {
 
     isolated resource function lotsOfReplies(grpc:Caller caller, string name) {
-        log:printInfo("Server received hello from " + name);
+        log:print("Server received hello from " + name);
         string[] greets = ["Hi", "Hey", "GM"];
 
         // Send multiple messages to the caller.
@@ -34,7 +34,7 @@ service HelloWorld on new grpc:Listener(20003) {
             if (err is grpc:Error) {
                 log:printError("Error from Connector: " + err.message());
             } else {
-                log:printInfo("Send reply: " + msg);
+                log:print("Send reply: " + msg);
             }
         }
 

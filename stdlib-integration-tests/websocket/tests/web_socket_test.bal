@@ -17,27 +17,38 @@
 import ballerina/runtime;
 import ballerina/test;
 import ballerina/http;
+import ballerina/websocket;
+import ballerina/io;
 
 string data = "";
 
-service onTextString on new http:Listener(21003) {
-
-    resource function onText(http:WebSocketCaller caller, string data, boolean finalFrame) {
-        checkpanic caller->pushText(data);
-    }
+service websocket:UpgradeService /onTextString on new websocket:Listener(21003) {
+   remote isolated function onUpgrade(http:Caller caller, http:Request req) returns websocket:Service|websocket:WebSocketError {
+       return new WsService1();
+   }
 }
 
-service clientPushCallbackService = @http:WebSocketServiceConfig {} service {
+service class WsService1 {
+  *websocket:Service;
+  remote isolated function onText(websocket:Caller caller, string data, boolean finalFrame) {
+      checkpanic caller->pushText(data);
+  }
+}
 
-    resource function onText(http:WebSocketClient wsEp, string text) {
+service object {} clientPushCallbackService = service object {
+    remote function onText(websocket:Client wsEp, string text) {
         data = <@untainted>text;
+    }
+
+    remote isolated function onError(websocket:Client wsEp, error err) {
+        io:println(err);
     }
 };
 
 // Tests string support for pushText and onText
 @test:Config {}
 public function testString() {
-    http:WebSocketClient wsClient = new ("ws://localhost:21003/onTextString", {callbackService: clientPushCallbackService});
+    websocket:Client wsClient = new ("ws://localhost:21003/onTextString", {callbackService: clientPushCallbackService});
     checkpanic wsClient->pushText("Hi");
     runtime:sleep(500);
     test:assertEquals(data, "Hi", msg = "Failed pushtext");

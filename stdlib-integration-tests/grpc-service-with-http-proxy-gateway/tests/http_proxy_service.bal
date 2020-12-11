@@ -52,12 +52,12 @@ service passthrough on helloWorldEP {
     }
 
     resource function hello(http:Caller caller, http:Request req) {
-        log:printInfo("[http2-passthrough] Invoke http2 service");
+        log:print("[http2-passthrough] Invoke http2 service");
         req.setHeader("Test", "mytest");
         var clientResponse = clientEP->forward("/Chat/chat", req);
 
         if (clientResponse is http:Response) {
-            log:printInfo("[http2-passthrough] send client response");
+            log:print("[http2-passthrough] send client response");
             var result = caller->respond(<@untainted> clientResponse);
             if (result is error) {
                log:printError("[http2-passthrough] Error sending response", err = result);

@@ -1,4 +1,5 @@
 import ballerinax/kafka;
+import ballerina/lang.'string;
 import ballerina/log;
 
 // The `kafka:AuthenticationConfiguration` is used to provide authentication-related details.
@@ -18,20 +19,22 @@ kafka:ConsumerConfiguration consumerConfig = {
     clientId: "sasl-consumer",
     offsetReset:"earliest",
     topics:["topic-sasl"],
-    valueDeserializerType: kafka:DES_STRING,
+    valueDeserializerType: kafka:DES_BYTE_ARRAY,
     // Provide the relevant authentication configuration record to authenticate the consumer.
     authenticationConfiguration: authConfig
-
 };
 
-listener kafka:Consumer consumer = new(consumerConfig);
+listener kafka:Listener kafkaListener = new(consumerConfig);
 
-service KafkaService on consumer {
-    resource function onMessage(kafka:Consumer consumer,
+service kafka:Service on kafkaListener {
+    remote function onMessage(kafka:Caller caller,
                                 kafka:ConsumerRecord[] records) {
         foreach var consumerRecord in records {
-            string value = <string> consumerRecord.value;
-            log:printInfo(value);
+            string|error messageContent =
+                                   'string:fromBytes(consumerRecord.value);
+            if (messageContent is string) {
+                log:printInfo(messageContent);
+            }
         }
     }
 }
