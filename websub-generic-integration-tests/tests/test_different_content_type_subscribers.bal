@@ -23,13 +23,12 @@ import ballerina/websub;
 listener websub:Listener websubDifContentTypeEP = new websub:Listener(23282);
 
 @websub:SubscriberServiceConfig {
-    path:"/websub",
     target: ["http://localhost:23191/websub/hub", "http://one.websub.topic.com"],
     leaseSeconds: 3000,
     secret: "Kslk30SNF2AChs2"
 }
-service websubDifContentTypeSubscriber on websubDifContentTypeEP {
-    resource function onNotification (websub:Notification notification) {
+service websub:SubscriberService /websub on websubDifContentTypeEP {
+    remote function onNotification (websub:Notification notification) {
         if (notification.getContentType() == mime:TEXT_PLAIN) {
             var payload = notification.getTextPayload();
             if (payload is string) {
@@ -61,8 +60,8 @@ service websubDifContentTypeSubscriber on websubDifContentTypeEP {
     target: ["http://localhost:23191/websub/hub", "http://one.websub.topic.com"],
     leaseSeconds: 1000
 }
-service websubDifContentTypeSubscriberTwo on websubDifContentTypeEP {
-    resource function onNotification (websub:Notification notification) {
+service websub:SubscriberService /websubTwo on websubDifContentTypeEP {
+    remote function onNotification (websub:Notification notification) {
         if (notification.getContentType() == mime:TEXT_PLAIN) {
             var payload = notification.getTextPayload();
             if (payload is string) {

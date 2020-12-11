@@ -21,7 +21,6 @@ import ballerina/websub;
 listener websub:Listener redirectWebsubEP = new websub:Listener(23484);
 
 @websub:SubscriberServiceConfig {
-    path:"/websub",
     subscribeOnStartUp:true,
     target: "http://localhost:23081/original/one",
     leaseSeconds: 3600,
@@ -35,8 +34,8 @@ listener websub:Listener redirectWebsubEP = new websub:Listener(23484);
         }
     }
 }
-service redirectWebsubSubscriber on redirectWebsubEP {
-    resource function onNotification (websub:Notification notification) {
+service websub:SubscriberService /websub on redirectWebsubEP {
+    remote function onNotification (websub:Notification notification) {
         var payload = notification.getJsonPayload();
         if (payload is json) {
             io:println("WebSub Notification Received: " + payload.toJsonString());
@@ -47,7 +46,6 @@ service redirectWebsubSubscriber on redirectWebsubEP {
 }
 
 @websub:SubscriberServiceConfig {
-    path:"/websubTwo",
     target: "http://localhost:23081/original/two",
     leaseSeconds: 1200,
     secret: "SwklSSf42DLA",
@@ -60,8 +58,8 @@ service redirectWebsubSubscriber on redirectWebsubEP {
         }
     }
 }
-service redirectWebsubSubscriberTwo on redirectWebsubEP {
-    resource function onNotification (websub:Notification notification) {
+service websub:SubscriberService /websubTwo on redirectWebsubEP {
+    remote function onNotification (websub:Notification notification) {
         var payload = notification.getJsonPayload();
         if (payload is json) {
             io:println("WebSub Notification Received: " + payload.toJsonString());

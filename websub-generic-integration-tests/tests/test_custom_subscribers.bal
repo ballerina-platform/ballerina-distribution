@@ -14,8 +14,6 @@
 // specific language governing permissions and limitations
 // under the License.
 
-
-import ballerina/lang.'object as lang;
 import ballerina/test;
 import ballerina/http;
 import ballerina/websub;
@@ -32,87 +30,79 @@ public type CustomSubMockDomainEvent record {|
     string domain;
 |};
 
-@websub:SubscriberServiceConfig {
-    path:"/key"
-}
-service customSubKeyWebhook on new CustomSubWebhookServerForPayload(23585) {
-    resource function onIntentVerification(websub:Caller caller, websub:IntentVerificationRequest verRequest) {
+@websub:SubscriberServiceConfig {}
+service websub:SubscriberService /key on new CustomSubWebhookServerForPayload(23585) {
+    remote function onIntentVerification(websub:Caller caller, websub:IntentVerificationRequest verRequest) {
         storeOutput(ID_INTENT_VER_REQ_RECEIVED_LOG, "Intent verification request received");
         checkpanic caller->accepted();
     }
 
-    resource function onCreated(websub:Notification notification, CustomSubMockActionEvent event) {
+    remote function onCreated(websub:Notification notification, CustomSubMockActionEvent event) {
         storeOutput(ID_BY_KEY_CREATED_LOG,  "Created Notification Received, action: " + <@untainted>event.action);
     }
 
-    resource function onFeature(websub:Notification notification, CustomSubMockDomainEvent event) {
+    remote function onFeature(websub:Notification notification, CustomSubMockDomainEvent event) {
         storeOutput(ID_BY_KEY_FEATURE_LOG, "Feature Notification Received, domain: " +  <@untainted>event.domain);
     }
 
-    resource function onStatus(websub:Notification notification, CustomSubMockActionEvent event) {
+    remote function onStatus(websub:Notification notification, CustomSubMockActionEvent event) {
         // do nothing - test start up
     }
 }
 
-@websub:SubscriberServiceConfig {
-    path:"/header"
-}
-service customSubHeaderWebhook on new CustomSubWebhookServerForHeader(23686) {
-    resource function onIssue(websub:Notification notification, CustomSubMockActionEvent event) {
+@websub:SubscriberServiceConfig {}
+service websub:SubscriberService /header on new CustomSubWebhookServerForHeader(23686) {
+    remote function onIssue(websub:Notification notification, CustomSubMockActionEvent event) {
         string msg = "Issue Notification Received, header value: " + <@untainted>notification.getHeader(CUSTOM_SUB_MOCK_HEADER) +
                                  " action: " +  <@untainted>event.action;
         storeOutput(ID_BY_HEADER_ISSUE_LOG, msg);
     }
 
-    resource function onCommit(websub:Notification notification, CustomSubMockActionEvent event) {
+    remote function onCommit(websub:Notification notification, CustomSubMockActionEvent event) {
         string msg = "Commit Notification Received, header value: " + <@untainted>notification.getHeader(CUSTOM_SUB_MOCK_HEADER) +
                                  " action: " + <@untainted>event.action;
         storeOutput(ID_BY_HEADER_COMMIT_LOG, msg);
     }
 
-    resource function onStatus(websub:Notification notification, CustomSubMockActionEvent event) {
+    remote function onStatus(websub:Notification notification, CustomSubMockActionEvent event) {
         // do nothing - test start up
     }
 }
 
-@websub:SubscriberServiceConfig {
-    path:"/headerAndPayload"
-}
-service customSubHeaderAndPayloadWebhook on new CustomSubWebhookServerForHeaderAndPayload(23787) {
-    resource function onIssueCreated(websub:Notification notification, CustomSubMockActionEvent event) {
+@websub:SubscriberServiceConfig {}
+service websub:SubscriberService /headerAndPayload on new CustomSubWebhookServerForHeaderAndPayload(23787) {
+    remote function onIssueCreated(websub:Notification notification, CustomSubMockActionEvent event) {
         string msg = "Issue Created Notification Received, header value: " + <@untainted>notification.getHeader(CUSTOM_SUB_MOCK_HEADER) +
             " action: " +  <@untainted>event.action;
         storeOutput(ID_BY_HEADER_AND_PAYLOAD_ISSUE_CREATED_LOG, msg);
 
     }
 
-    resource function onFeaturePull(websub:Notification notification, CustomSubMockDomainEvent event) {
+    remote function onFeaturePull(websub:Notification notification, CustomSubMockDomainEvent event) {
         string msg = "Feature Pull Notification Received, header value: " + <@untainted>notification.getHeader(CUSTOM_SUB_MOCK_HEADER) +
             " domain: " +  <@untainted>event.domain;
         storeOutput(ID_BY_HEADER_AND_PAYLOAD_FEATURE_PULL_LOG, msg);
     }
 
-    resource function onHeaderOnly(websub:Notification notification, CustomSubMockActionEvent event) {
+    remote function onHeaderOnly(websub:Notification notification, CustomSubMockActionEvent event) {
         string msg = "HeaderOnly Notification Received, header value: " + <@untainted>notification.getHeader(CUSTOM_SUB_MOCK_HEADER) +
             " action: " +  <@untainted>event.action;
         storeOutput(ID_BY_HEADER_AND_PAYLOAD_HEADER_ONLY_LOG, msg);
     }
 
-    resource function onKeyOnly(websub:Notification notification, CustomSubMockActionEvent event) {
+    remote function onKeyOnly(websub:Notification notification, CustomSubMockActionEvent event) {
         string msg = "KeyOnly Notification Received, header value: " + <@untainted>notification.getHeader(CUSTOM_SUB_MOCK_HEADER) +
             " action: " +  <@untainted>event.action;
         storeOutput(ID_BY_HEADER_AND_PAYLOAD_KEY_ONLY_LOG, msg);
     }
 
-    resource function onStatus(websub:Notification notification, CustomSubMockActionEvent event) {
+    remote function onStatus(websub:Notification notification, CustomSubMockActionEvent event) {
         // do nothing - test start up
     }
 }
 
 /////////////////// Specific Webhook for dispatching by key ///////////////////
 public class CustomSubWebhookServerForPayload {
-
-    *lang:Listener;
 
     private websub:Listener websubListener;
 
@@ -139,31 +129,29 @@ public class CustomSubWebhookServerForPayload {
         self.websubListener = new(port, sseConfig);
     }
 
-    public function __attach(service s, string? name = ()) returns error? {
-        return self.websubListener.__attach(s, name);
+    public function attach(websub:SubscriberService s, string[]|string? name = ()) returns error? {
+        return self.websubListener.attach(s, name);
     }
 
-    public function __detach(service s) returns error? {
-        return self.websubListener.__detach(s);
+    public function detach(websub:SubscriberService s) returns error? {
+        return self.websubListener.detach(s);
     }
 
-    public function __start() returns error? {
-        return self.websubListener.__start();
+    public function 'start() returns error? {
+        return self.websubListener.'start();
     }
 
-    public function __gracefulStop() returns error? {
+    public function gracefulStop() returns error? {
         return ();
     }
 
-    public function __immediateStop() returns error? {
-        return self.websubListener.__immediateStop();
+    public function immediateStop() returns error? {
+        return self.websubListener.immediateStop();
     }
 }
 
 /////////////////// Specific Webhook for dispatching by header ///////////////////
 public class CustomSubWebhookServerForHeader {
-
-    *lang:Listener;
 
     private websub:Listener websubListener;
 
@@ -185,31 +173,29 @@ public class CustomSubWebhookServerForHeader {
         self.websubListener = new(port, sseConfig);
     }
 
-    public function __attach(service s, string? name = ()) returns error? {
-        return self.websubListener.__attach(s, name);
+    public function attach(websub:SubscriberService s, string[]|string? name = ()) returns error? {
+        return self.websubListener.attach(s, name);
     }
 
-    public function __detach(service s) returns error? {
-        return self.websubListener.__detach(s);
+    public function detach(websub:SubscriberService s) returns error? {
+        return self.websubListener.detach(s);
     }
 
-    public function __start() returns error? {
-        return self.websubListener.__start();
+    public function 'start() returns error? {
+        return self.websubListener.'start();
     }
 
-    public function __gracefulStop() returns error? {
+    public function gracefulStop() returns error? {
         return ();
     }
 
-    public function __immediateStop() returns error? {
-        return self.websubListener.__immediateStop();
+    public function immediateStop() returns error? {
+        return self.websubListener.immediateStop();
     }
 }
 
 /////////////////// Specific Webhook for dispatching by header and payload ///////////////////
 public class CustomSubWebhookServerForHeaderAndPayload {
-
-    *lang:Listener;
 
     private websub:Listener websubListener;
 
@@ -252,24 +238,24 @@ public class CustomSubWebhookServerForHeaderAndPayload {
         self.websubListener = new(port, sseConfig);
     }
 
-    public function __attach(service s, string? name = ()) returns error? {
-        return self.websubListener.__attach(s, name);
+    public function attach(websub:SubscriberService s, string[]|string? name = ()) returns error? {
+        return self.websubListener.attach(s, name);
     }
 
-    public function __detach(service s) returns error? {
-        return self.websubListener.__detach(s);
+    public function detach(websub:SubscriberService s) returns error? {
+        return self.websubListener.detach(s);
     }
 
-    public function __start() returns error? {
-        return self.websubListener.__start();
+    public function 'start() returns error? {
+        return self.websubListener.'start();
     }
 
-    public function __gracefulStop() returns error? {
+    public function gracefulStop() returns error? {
         return ();
     }
 
-    public function __immediateStop() returns error? {
-        return self.websubListener.__immediateStop();
+    public function immediateStop() returns error? {
+        return self.websubListener.immediateStop();
     }
 }
 
@@ -281,8 +267,7 @@ function testOnIntentVerificationInvocation() {
 }
 
 @test:Config {
-    dependsOn: ["testOnIntentVerificationInvocation"],
-    enable: false
+    dependsOn: ["testOnIntentVerificationInvocation"]
 }
 function testDispatchingByKey() {
     http:Client clientEndpoint = new ("http://localhost:23585");

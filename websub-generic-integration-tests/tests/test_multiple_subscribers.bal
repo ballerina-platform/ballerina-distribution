@@ -25,13 +25,12 @@ listener websub:Listener multipleSubTestWebsubEP = new websub:Listener(23383);
 listener websub:Listener websubEndPointWithNoAttachedServices = new websub:Listener(23384);
 
 @websub:SubscriberServiceConfig {
-    path:"/websub",
     target: ["http://localhost:23191/websub/hub", "http://three.websub.topic.com"],
     leaseSeconds: 3600,
     secret: "Kslk30SNF2AChs2"
 }
-service multipleSubTestWebsubSubscriber on multipleSubTestWebsubEP {
-    resource function onNotification (websub:Notification notification) {
+service websub:SubscriberService /websub on multipleSubTestWebsubEP {
+    remote function onNotification (websub:Notification notification) {
         var payload = notification.getJsonPayload();
         if (payload is json) {
             storeOutput(ID_INTERNAL_HUB_NOTIFICATION_SUBSCRIBER_ONE_LOG, "WebSub Notification Received by One: " + <@untainted>payload.toJsonString());
@@ -42,13 +41,12 @@ service multipleSubTestWebsubSubscriber on multipleSubTestWebsubEP {
 }
 
 @websub:SubscriberServiceConfig {
-    path:"/websubTwo",
     target: "http://localhost:23080/publisherTwo/discover",
     leaseSeconds: 1200,
     secret: "SwklSSf42DLA"
 }
-service multipleSubTestWebsubSubscriberTwo on multipleSubTestWebsubEP {
-    resource function onNotification (websub:Notification notification) {
+service websub:SubscriberService /websubTwo on multipleSubTestWebsubEP {
+    remote function onNotification (websub:Notification notification) {
         var payload = notification.getJsonPayload();
         if (payload is json) {
             storeOutput(ID_INTERNAL_HUB_NOTIFICATION_SUBSCRIBER_TWO_LOG, "WebSub Notification Received by Two: " + <@untainted>payload.toJsonString());
