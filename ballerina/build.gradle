@@ -1003,46 +1003,70 @@ task testStdlibs() {
             if (folder.exists()) {
                 stdlibTestsList.push("$stdlibTest.path")
             }
-
         }
+    }
+
+    ext.buildStandardLibs = { stdlibTest ->
+        def exitVal
+        def additionalBuildParams = ""
+        if (stdlibTest == "auth" || stdlibTest == "jwt") {
+            additionalBuildParams = "--b7a.config.file=${baseBuildPath}/${stdlibTest}/tests/resources/datafiles/users.toml"
+        }
+
+        if (stdlibTest == "config") {
+            additionalBuildParams = "--user.name=ballerina-user"
+        }
+
+        println "Testing standard library ${stdlibTest}"
+        if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+            //TODO: Need to verify with windows
+            exec {
+                workingDir "${baseBuildPath}/${stdlibTest}"
+                commandLine 'cmd', '/c', "${distPath}/bin/ballerina/ballerina.bat init test"
+            }
+            exitVal = exec {
+                ignoreExitValue true
+                workingDir "${buildDir}/${stdlibTest}"
+                commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat build -c --experimental --b7a.home=${distPath} ${additionalBuildParams}"
+            }
+        } else {
+            exec {
+                workingDir "${baseBuildPath}/${stdlibTest}"
+                commandLine 'sh', '-c', "${distPath}/bin/ballerina init test"
+            }
+            exitVal = exec {
+                ignoreExitValue true
+                workingDir "${baseBuildPath}/${stdlibTest}"
+                commandLine 'sh', '-c', "${distPath}/bin/ballerina build -c --experimental --b7a.home=${distPath} ${additionalBuildParams}"
+            }
+        }
+        if (exitVal.getExitValue() == 1) {
+            return true
+        }
+        return false
     }
 
     doLast {
         ignoreList.each { String elements ->
             stdlibTestsList.remove("$elements")
         }
+
+        def failedStdLibs = []
         stdlibTestsList.each { String stdlibTest ->
-            def additionalBuildParams = ""
-            if (stdlibTest == "auth" || stdlibTest == "jwt") {
-                additionalBuildParams = "--b7a.config.file=${baseBuildPath}/${stdlibTest}/tests/resources/datafiles/users.toml"
-            }
-
-            if (stdlibTest == "config") {
-                additionalBuildParams = "--user.name=ballerina-user"
-            }
-
-            println "Testing standard library ${stdlibTest}"
-            if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                //TODO: Need to verify with windows
-                exec {
-                    workingDir "${baseBuildPath}/${stdlibTest}"
-                    commandLine 'cmd', '/c', "${distPath}/bin/ballerina/ballerina.bat init test"
-                }
-                exec {
-                    workingDir "${buildDir}/${stdlibTest}"
-                    commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat build -c --experimental --b7a.home=${distPath} ${additionalBuildParams}"
-                }
-            } else {
-                exec {
-                    workingDir "${baseBuildPath}/${stdlibTest}"
-                    commandLine 'sh', '-c', "${distPath}/bin/ballerina init test"
-                }
-                exec {
-                    workingDir "${baseBuildPath}/${stdlibTest}"
-                    commandLine 'sh', '-c', "${distPath}/bin/ballerina build -c --experimental --b7a.home=${distPath} ${additionalBuildParams}"
-                }
+            boolean stdLibTestFailFlag = buildStandardLibs(stdlibTest)
+            if (stdLibTestFailFlag) {
+                failedStdLibs.add(stdlibTest);
             }
         }
+
+        if (!failedStdLibs.isEmpty()) {
+            println "\n\tThe following Standard Library Tests Failed:\n"
+            failedStdLibs.each {
+                println "\t ${it}"
+            }
+            throw new GradleException('There are test failures')
+        }
+
     }
 }
 
