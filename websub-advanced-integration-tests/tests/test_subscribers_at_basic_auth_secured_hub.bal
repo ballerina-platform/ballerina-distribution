@@ -90,7 +90,7 @@
 //         websub:addWebSubLinkHeader(response, [webSubHub.subscriptionUrl], WEBSUB_PERSISTENCE_TOPIC_ONE);
 //         var err = caller->accepted(response);
 //         if (err is error) {
-//             log:printError("Error responding on discovery", err);
+//             log:printError("Error responding on discovery", err = err);
 //         }
 //     }
 
@@ -107,13 +107,13 @@
 //         checkSubscriberAvailability(WEBSUB_PERSISTENCE_TOPIC_ONE, "http://localhost:" + subscriber + "/websub");
 //         var err = webSubHub.publishUpdate(WEBSUB_PERSISTENCE_TOPIC_ONE, <@untainted> <json> payload);
 //         if (err is error) {
-//             log:printError("Error publishing update directly", err);
+//             log:printError("Error publishing update directly", err = err);
 //         }
 
 //         http:Response response = new;
 //         err = caller->accepted(response);
 //         if (err is error) {
-//             log:printError("Error responding on notify request", err);
+//             log:printError("Error responding on notify request", err = err);
 //         }
 //     }
 // }
@@ -128,7 +128,7 @@
 //         websub:addWebSubLinkHeader(response, [webSubHub.subscriptionUrl], WEBSUB_PERSISTENCE_TOPIC_TWO);
 //         var err = caller->accepted(response);
 //         if (err is error) {
-//             log:printError("Error responding on discovery", err);
+//             log:printError("Error responding on discovery", err = err);
 //         }
 //     }
 
@@ -144,13 +144,13 @@
 //         checkSubscriberAvailability(WEBSUB_PERSISTENCE_TOPIC_TWO, "http://localhost:23383/websubTwo");
 //         var err = webSubHub.publishUpdate(WEBSUB_PERSISTENCE_TOPIC_TWO, <@untainted> <json> payload);
 //         if (err is error) {
-//             log:printError("Error publishing update directly", err);
+//             log:printError("Error publishing update directly", err = err);
 //         }
 
 //         http:Response response = new;
 //         err = caller->accepted(response);
 //         if (err is error) {
-//             log:printError("Error responding on notify request", err);
+//             log:printError("Error responding on notify request", err = err);
 //         }
 //     }
 // }
@@ -165,7 +165,7 @@
 //         websub:addWebSubLinkHeader(response, [webSubHub.subscriptionUrl], WEBSUB_TOPIC_ONE);
 //         var err = caller->accepted(response);
 //         if (err is error) {
-//             log:printError("Error responding on discovery", err);
+//             log:printError("Error responding on discovery", err = err);
 //         }
 //     }
 
@@ -184,24 +184,24 @@
 //         var err = websubHubClientEP->publishUpdate(WEBSUB_TOPIC_ONE, <@untainted> <json> payload);
 //         if (err is error) {
 //             publishErrorMessagesConcatenated += err.message();
-//             log:printError("Error publishing update remotely", err);
+//             log:printError("Error publishing update remotely", err = err);
 //         }
 
 //         err = authnFailingClient->publishUpdate(WEBSUB_TOPIC_ONE, <@untainted> <json> payload);
 //         if (err is error) {
 //             publishErrorMessagesConcatenated += err.message();
-//             log:printError("Error publishing update remotely", err);
+//             log:printError("Error publishing update remotely", err = err);
 //         }
 
 //         err = authzFailingClient->publishUpdate(WEBSUB_TOPIC_ONE, <@untainted> <json> payload);
 //         if (err is error) {
 //             publishErrorMessagesConcatenated += err.message();
-//             log:printError("Error publishing update remotely", err);
+//             log:printError("Error publishing update remotely", err = err);
 //         }
 
 //         err = caller->accepted(<@untainted> publishErrorMessagesConcatenated);
 //         if (err is error) {
-//             log:printError("Error responding on notify request", err);
+//             log:printError("Error responding on notify request", err = err);
 //         }
 //     }
 // }
@@ -221,15 +221,15 @@
 //     websub:Hub internalHub = startWebSubHub();
 //     var err = internalHub.registerTopic(WEBSUB_PERSISTENCE_TOPIC_ONE);
 //     if (err is error) {
-//         log:printError("Error registering topic", err);
+//         log:printError("Error registering topic", err = err);
 //     }
 //     err = internalHub.registerTopic(WEBSUB_PERSISTENCE_TOPIC_TWO);
 //     if (err is error) {
-//         log:printError("Error registering topic", err);
+//         log:printError("Error registering topic", err = err);
 //     }
 //     err = internalHub.registerTopic(WEBSUB_TOPIC_ONE);
 //     if (err is error) {
-//         log:printError("Error registering topic", err);
+//         log:printError("Error registering topic", err = err);
 //     }
 //     return internalHub;
 // }
