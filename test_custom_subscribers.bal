@@ -14,8 +14,6 @@
 // specific language governing permissions and limitations
 // under the License.
 
-
-//import ballerina/lang.'object as lang;
 import ballerina/test;
 import ballerina/http;
 import ballerina/websub;
@@ -32,9 +30,7 @@ public type CustomSubMockDomainEvent record {|
     string domain;
 |};
 
-@websub:SubscriberServiceConfig {
-    //path:"/key"
-}
+@websub:SubscriberServiceConfig {}
 service websub:SubscriberService /key on new CustomSubWebhookServerForPayload(23585) {
     remote function onIntentVerification(websub:Caller caller, websub:IntentVerificationRequest verRequest) {
         storeOutput(ID_INTENT_VER_REQ_RECEIVED_LOG, "Intent verification request received");
@@ -54,9 +50,7 @@ service websub:SubscriberService /key on new CustomSubWebhookServerForPayload(23
     }
 }
 
-@websub:SubscriberServiceConfig {
-    //path:"/header"
-}
+@websub:SubscriberServiceConfig {}
 service websub:SubscriberService /header on new CustomSubWebhookServerForHeader(23686) {
     remote function onIssue(websub:Notification notification, CustomSubMockActionEvent event) {
         string msg = "Issue Notification Received, header value: " + <@untainted>notification.getHeader(CUSTOM_SUB_MOCK_HEADER) +
@@ -75,9 +69,7 @@ service websub:SubscriberService /header on new CustomSubWebhookServerForHeader(
     }
 }
 
-@websub:SubscriberServiceConfig {
-    //path:"/headerAndPayload"
-}
+@websub:SubscriberServiceConfig {}
 service websub:SubscriberService /headerAndPayload on new CustomSubWebhookServerForHeaderAndPayload(23787) {
     remote function onIssueCreated(websub:Notification notification, CustomSubMockActionEvent event) {
         string msg = "Issue Created Notification Received, header value: " + <@untainted>notification.getHeader(CUSTOM_SUB_MOCK_HEADER) +
@@ -300,7 +292,8 @@ function testDispatchingByKey() {
 }
 
 @test:Config {
-    dependsOn: ["testDispatchingByKey"]
+    dependsOn: ["testDispatchingByKey"],
+    enable:false
 }
 function testDispatchingByHeader() {
     http:Client clientEndpoint = new ("http://localhost:23686");
@@ -326,7 +319,7 @@ function testDispatchingByHeader() {
     test:assertEquals(fetchOutput(ID_BY_HEADER_COMMIT_LOG), BY_HEADER_COMMIT_LOG);
 }
 
-@test:Config {}
+@test:Config {enable: false}
 function testDispatchingByHeaderAndPayloadKey() {
     http:Client clientEndpoint = new ("http://localhost:23787");
     json jsonPayload1 = {action: "created"};
@@ -351,7 +344,7 @@ function testDispatchingByHeaderAndPayloadKey() {
     test:assertEquals(fetchOutput(ID_BY_HEADER_AND_PAYLOAD_FEATURE_PULL_LOG), BY_HEADER_AND_PAYLOAD_FEATURE_PULL_LOG);
 }
 
-@test:Config {}
+@test:Config {enable: false}
 function testDispatchingByHeaderAndPayloadKeyForOnlyHeader() {
     http:Client clientEndpoint = new ("http://localhost:23787");
     json jsonPayload = {action: "header_only"};
@@ -367,7 +360,8 @@ function testDispatchingByHeaderAndPayloadKeyForOnlyHeader() {
 }
 
 @test:Config {
-    dependsOn: ["testDispatchingByHeaderAndPayloadKeyForOnlyHeader"]
+    dependsOn: ["testDispatchingByHeaderAndPayloadKeyForOnlyHeader"],
+    enable:false
 }
 function testDispatchingByHeaderAndPayloadKeyForOnlyKey() {
     http:Client clientEndpoint = new ("http://localhost:23787");
