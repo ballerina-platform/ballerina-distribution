@@ -18,6 +18,7 @@ import ballerina/http;
 import ballerina/runtime;
 import ballerina/task;
 import ballerina/test;
+import ballerina/io;
 
 const HTTP_MESSAGE = "Hello from http service";
 const TASK_MESSAGE = "Hello from task service";
@@ -30,6 +31,7 @@ string http_payload = "";
 
 service PostToHttpService = service {
     resource function onTrigger(string message) {
+        io:println("testing ..... task");
         http:Request request = new;
         request.setTextPayload(<@untainted string>message);
         var result = httpClient->post("/", request);

@@ -1,18 +1,18 @@
 // This is the server implementation for the TCP socket.
 import ballerina/io;
 import ballerina/log;
-import ballerina/socket;
+import ballerina/tcp;
 
 // Bind the service to the port.
-// The socket listener should have these four predefined resources.
-service echoServer on new socket:Listener(61598) {
-    // This resource is invoked when the new client joins.
-    resource function onConnect(socket:Caller caller) {
+// The tcp listener should have these four predefined resources.
+service "echoServer" on new tcp:Listener(61598) {
+    // This remote is invoked when the new client joins.
+    remote function onConnect(tcp:Caller caller) {
         log:printInfo("Client connected: " + caller.id.toString());
     }
 
-    // This resource is invoked once the content is received from the client.
-    resource function onReadReady(socket:Caller caller) {
+    // This remote is invoked once the content is received from the client.
+    remote function onReadReady(tcp:Caller caller) {
         var result = caller->read();
         if (result is [byte[], int]) {
             var [content, length] = result;
@@ -56,9 +56,9 @@ service echoServer on new socket:Listener(61598) {
         }
     }
 
-    // This resource is invoked for the error situation
+    // This remote is invoked for the error situation
     // if it happens during the `onConnect` and `onReadReady`.
-    resource function onError(socket:Caller caller, error er) {
+    remote function onError(tcp:Caller caller, error er) {
         log:printError("An error occurred", er);
     }
 }

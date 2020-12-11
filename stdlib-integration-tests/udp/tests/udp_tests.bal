@@ -14,21 +14,21 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import ballerina/http;
+import ballerina/log;
 import ballerina/test;
+import ballerina/udp;
 
-http:Client clientEndpoint = new ("http://localhost:58291");
-
-@test:Config {}
-function testHttpClientEcho() {
-    http:Request req = new;
-    req.addHeader("Content-Type", "text/plain");
-    string requestMessage = "Hello Ballerina";
-    var response = clientEndpoint->post("/echo", requestMessage);
-
-    if (response is http:Response) {
-        test:assertEquals(response.statusCode, http:STATUS_ACCEPTED, "Unexpected response code");
-    } else if (response is http:ClientError)  {
-        test:assertFail(msg = (<error>response).message());
+//test to check existance of udp module
+@test:Config {
+}
+function testUdp() {
+    udp:Client socketClient = new;
+    string msg = "Hello Ballerina echo";
+    var sendResult = socketClient->sendTo(msg.toBytes(), {host: "localhost", port: 48829});
+    if (sendResult is int) {
+        log:printInfo("Number of bytes written: " + sendResult.toString());
+    } else {
+        test:assertFail(msg = sendResult.message());
     }
+    checkpanic socketClient->close();
 }
