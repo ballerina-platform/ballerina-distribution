@@ -1,10 +1,10 @@
 // This is the client implementation for the TCP socket with the attached callback service. Callback service is optional.
 import ballerina/io;
-import ballerina/socket;
+import ballerina/tcp;
 
 public function main() {
-    // Create a new socket client by providing the host, port, and callback service.
-    socket:Client socketClient = new ({
+    // Create a new tcp client by providing the host, port, and callback service.
+    tcp:Client socketClient = new ({
         host: "localhost",
         port: 61598
     });

@@ -1,7 +1,7 @@
 [
   {
-    "name": "Socket standard library ",
-    "path": "socket"
+    "name": "TCP standard library ",
+    "path": "tcp"
   },
   {
     "name": "Email standard library ",
@@ -58,5 +58,9 @@
   {
     "name": "Config standard library",
     "path": "config"
+  },
+  {
+    "name": "UDP standard library ",
+    "path": "udp"
   }
 ]

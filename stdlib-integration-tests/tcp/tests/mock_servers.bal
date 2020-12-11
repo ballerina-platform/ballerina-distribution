@@ -16,19 +16,19 @@
 
 import ballerina/io;
 import ballerina/log;
-import ballerina/socket;
+import ballerina/tcp;
 
 const int PORT1 = 59152;
 
-listener socket:Listener server1 = new (PORT1);
+listener tcp:Listener server1 = new (PORT1);
 
-service echoServer on server1 {
+service "echoServer" on server1 {
 
-    resource function onConnect(socket:Caller caller) {
+    remote function onConnect(tcp:Caller caller) {
         log:printInfo("Join: " + caller.remotePort.toString());
     }
 
-    resource function onReadReady(socket:Caller caller) {
+    remote function onReadReady(tcp:Caller caller) {
         var result = caller->read();
         if (result is [byte[], int]) {
             var [content, length] = result;
@@ -43,7 +43,7 @@ service echoServer on server1 {
         }
     }
 
-    resource function onError(socket:Caller caller, error er) {
+    remote function onError(tcp:Caller caller, error er) {
         log:printError("Error on echo service", <error>er);
     }
 }

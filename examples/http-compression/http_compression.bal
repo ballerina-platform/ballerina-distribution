@@ -3,10 +3,10 @@ import ballerina/log;
 
 listener http:Listener listenerEndpoint = new (9090);
 
-// Since compression behavior of the service is set as [COMPRESSION_AUTO](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#COMPRESSION_AUTO),
+// Since compression behavior of the service is set as [COMPRESSION_AUTO](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/constants#COMPRESSION_AUTO),
 // entity body compression is done according to the scheme indicated in the `Accept-Encoding` request header.
 // Compression is not performed when the header is not present or when the header value is "identity".
-// [compression](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/CompressionConfig.html) annotation
+// [compression](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/CompressionConfig) annotation
 // provides the related configurations.
 @http:ServiceConfig {
     compression: {
@@ -26,7 +26,7 @@ service autoCompress on listenerEndpoint {
     }
 }
 
-// [COMPRESSION_ALWAYS](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#COMPRESSION_ALWAYS)
+// [COMPRESSION_ALWAYS](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/constants#COMPRESSION_ALWAYS)
 // guarantees a compressed response entity body. Compression scheme is set to the
 // value indicated in Accept-Encoding request header. When a particular header is not present or the header
 // value is "identity", encoding is done using the "gzip" scheme.
@@ -58,13 +58,13 @@ service alwaysCompress on listenerEndpoint {
     }
 }
 
-// The HTTP client can indicate the [compression](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/types.html#Compression)
+// The HTTP client can indicate the [compression](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/types#Compression)
 // behavior ("AUTO", "ALWAYS", "NEVER") for content negotiation.
 // Depending on the compression option values, the `Accept-Encoding` header is sent along with the request.
-// In this example, the client compression behavior is set as [COMPRESSION_ALWAYS](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#COMPRESSION_ALWAYS). If you have not specified
+// In this example, the client compression behavior is set as [COMPRESSION_ALWAYS](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/constants#COMPRESSION_ALWAYS). If you have not specified
 // an `Accept-Encoding` header, the client specifies it with "deflate, gzip". Alternatively, the existing header is sent.
-// When compression is specified as [COMPRESSION_AUTO](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#COMPRESSION_AUTO), only the user-specified `Accept-Encoding` header is sent.
-// If the behavior is set as [COMPRESSION_NEVER](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#COMPRESSION_NEVER), the client makes sure not to send the `Accept-Encoding` header.
+// When compression is specified as [COMPRESSION_AUTO](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/constants#COMPRESSION_AUTO), only the user-specified `Accept-Encoding` header is sent.
+// If the behavior is set as [COMPRESSION_NEVER](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/constants#COMPRESSION_NEVER), the client makes sure not to send the `Accept-Encoding` header.
 http:Client clientEndpoint = new ("http://localhost:9090", {
         compression: http:COMPRESSION_ALWAYS
     }
@@ -91,7 +91,7 @@ service passthrough on new http:Listener(9092) {
     }
 }
 
-// The compression behavior of the service is inferred by [COMPRESSION_AUTO](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#COMPRESSION_AUTO), which is the default value
+// The compression behavior of the service is inferred by [COMPRESSION_AUTO](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/constants#COMPRESSION_AUTO), which is the default value
 // of the compression config.
 service backend on listenerEndpoint {
     resource function echo(http:Caller caller, http:Request req) {
