@@ -1046,7 +1046,7 @@ task testStdlibs() {
     }
 }
 
-task testDevTools() {
+task testDevToolsIntegration() {
     def jBallerinaPack = "${project.rootDir}/ballerina/build/target/extracted-distributions/jballerina-tools-zip"
     def baseBuildPath = "${project.rootDir}/ballerina/build/bbe-pack"
     def distPath = "${baseBuildPath}/jballerina-tools-${ballerinaVersion}"
@@ -1310,11 +1310,11 @@ testStdlibs.finalizedBy stopLdapServer
 //testStdlibs.finalizedBy stopRabbitmqServer
 //testStdlibs.finalizedBy stopNatsServer
 
-testDevTools.dependsOn packageDist
+testDevToolsIntegration.dependsOn packageDist
 
 /* Delete Temporary Files */
 deleteTemporaryFiles.dependsOn packageDistWindows
 deleteTemporaryFiles.dependsOn testExamples
 deleteTemporaryFiles.dependsOn testStdlibs
-deleteTemporaryFiles.dependsOn testDevTools
+deleteTemporaryFiles.dependsOn testDevToolsIntegration
 build.dependsOn deleteTemporaryFiles
