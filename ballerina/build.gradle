@@ -261,20 +261,10 @@ task packageDist(type: Zip) {
         from "${project.rootDir}/examples/"
         fileMode = 0755
     }
-    // Code2Cloud Extensions
-    into("${parentDir}/examples") {
-        from "build/target/extracted-distributions/docker-extension-examples-zip"
-        exclude "index.js"
-    }
+    // Code2Cloud Extension Examples
     into("${parentDir}/examples") {
         from "build/target/extracted-distributions/c2c-examples-zip"
         exclude "index.js"
-    }
-    into("${parentDir}/repo/cache/") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/cache"
-    }
-    into("${parentDir}/repo/balo/") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/balo/"
     }
 
     /* Files */
@@ -310,20 +300,10 @@ task packageDistZip(type: Zip) {
         from "${project.rootDir}/examples/"
         fileMode = 0755
     }
-    // Code2Cloud Extensions
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/docker-extension-examples-zip"
-        exclude "index.js"
-    }
+    // Code2Cloud Extension Examples
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
         from "build/target/extracted-distributions/c2c-examples-zip"
         exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/cache"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/balo/"
     }
 
     /* Tools artifacts */
@@ -392,20 +372,10 @@ task packageDistLinux(type: Zip) {
         from "${project.rootDir}/examples/"
         fileMode = 0755
     }
-    // Code2Cloud Extensions
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/docker-extension-examples-zip"
-        exclude "index.js"
-    }
+    // Code2Cloud Extension Examples
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
         from "build/target/extracted-distributions/c2c-examples-zip"
         exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/cache"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/balo/"
     }
 
     /* Tools artifacts */
@@ -470,20 +440,10 @@ task packageDistMac(type: Zip) {
         fileMode = 0755
     }
 
-    // Code2Cloud Extensions
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/docker-extension-examples-zip"
-        exclude "index.js"
-    }
+    // Code2Cloud Extension Examples
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
         from "build/target/extracted-distributions/c2c-examples-zip"
         exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/cache"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/balo/"
     }
 
     /* Tools artifacts */
@@ -543,20 +503,10 @@ task packageDistWindows(type: Zip) {
         fileMode = 0755
     }
 
-    // Code2Cloud Extensions
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/docker-extension-examples-zip"
-        exclude "index.js"
-    }
+    // Code2Cloud Extension Examples
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
         from "build/target/extracted-distributions/c2c-examples-zip"
         exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/cache"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/balo/"
     }
 
     /* Tools artifacts */
@@ -1324,11 +1274,7 @@ task stopNatsServer() {
 /* Unpack Dependencies */
 unpackJballerinaTools.dependsOn unpackBallerinaJre
 unpackDevTools.dependsOn unpackJballerinaTools
-unpackAwsLambdaBalo.dependsOn unpackDevTools
-unpackAwsLambdaExamples.dependsOn unpackAwsLambdaBalo
-unpackDockerAnnotations.dependsOn unpackAwsLambdaExamples
-unpackDockerExamples.dependsOn unpackDockerAnnotations
-unpackStdLibs.dependsOn unpackDockerExamples
+unpackStdLibs.dependsOn unpackDevTools
 unpackC2cLibs.dependsOn unpackStdLibs
 unpackC2cExamples.dependsOn unpackC2cLibs
 unpackBalCommand.dependsOn unpackC2cExamples
