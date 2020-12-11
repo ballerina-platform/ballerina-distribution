@@ -9,7 +9,6 @@ kafka:ProducerConfiguration producerConfiguration = {
     clientId: "basic-producer",
     acks: "all",
     retryCount: 3,
-    // Uses the builtin string serializer for the values.
     valueSerializerType: kafka:SER_BYTE_ARRAY
 };
 
