@@ -52,7 +52,7 @@ public class OpenAPIDistributionArtifactCheck {
                 .resolve("cache")
                 .resolve("ballerina")
                 .resolve("openapi")
-                .resolve("2.0.1")
+                .resolve("2.0.2")
                 .resolve("bir");
 
         Path jarPath = TEST_DISTRIBUTION_PATH
@@ -61,7 +61,7 @@ public class OpenAPIDistributionArtifactCheck {
                 .resolve("cache")
                 .resolve("ballerina")
                 .resolve("openapi")
-                .resolve("2.0.1")
+                .resolve("2.0.2")
                 .resolve("java11");
 
         Path baloPath = TEST_DISTRIBUTION_PATH
@@ -70,7 +70,7 @@ public class OpenAPIDistributionArtifactCheck {
                 .resolve("balo")
                 .resolve("ballerina")
                 .resolve("openapi")
-                .resolve("2.0.1")
+                .resolve("2.0.2")
                 .resolve("platform")
                 .resolve("java11");
 
