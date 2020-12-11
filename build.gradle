@@ -379,6 +379,13 @@ subprojects {
                 password System.getenv("packagePAT")
             }
         }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-websocket"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
 
         maven {
             url "https://maven.pkg.github.com/ballerina-platform/ballerina-openapi"
@@ -505,6 +512,7 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:ftp-ballerina:${stdlibFtpVersion}"
         ballerinaStdLibs "org.ballerinalang:http-ballerina:${stdlibHttpVersion}"
         ballerinaStdLibs "org.ballerinalang:graphql-ballerina:${stdlibGraphqlVersion}"
+        ballerinaStdLibs "org.ballerinalang:websocket-ballerina:${stdlibWebsocketVersion}"
         ballerinaStdLibs "org.ballerinalang:grpc-ballerina:${stdlibGrpcVersion}"
         ballerinaStdLibs "org.ballerinalang:module-ballerina-openapi:${openapiVersion}"
         ballerinaStdLibs "org.ballerinalang:transaction-ballerina:${stdlibTransactionVersion}"
