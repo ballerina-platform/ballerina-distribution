@@ -26,7 +26,7 @@ function testUdp() {
     string msg = "Hello Ballerina echo";
     var sendResult = socketClient->sendTo(msg.toBytes(), {host: "localhost", port: 48829});
     if (sendResult is int) {
-        log:printInfo("Number of bytes written: " + sendResult.toString());
+        log:print("Number of bytes written: " + sendResult.toString());
     } else {
         test:assertFail(msg = sendResult.message());
     }

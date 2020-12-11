@@ -25,7 +25,7 @@ listener tcp:Listener server1 = new (PORT1);
 service "echoServer" on server1 {
 
     remote function onConnect(tcp:Caller caller) {
-        log:printInfo("Join: " + caller.remotePort.toString());
+        log:print("Join: " + caller.remotePort.toString());
     }
 
     remote function onReadReady(tcp:Caller caller) {
@@ -34,17 +34,17 @@ service "echoServer" on server1 {
             var [content, length] = result;
             if (length > 0) {
                 _ = checkpanic caller->write(content);
-                log:printInfo("Server write");
+                log:print("Server write");
             } else {
-                log:printInfo("Client close: " + caller.remotePort.toString());
+                log:print("Client close: " + caller.remotePort.toString());
             }
         } else {
-            log:printError("Error on echo server read", <error>result);
+            log:printError("Error on echo server read", err = <error> result);
         }
     }
 
     remote function onError(tcp:Caller caller, error er) {
-        log:printError("Error on echo service", <error>er);
+        log:printError("Error on echo service", err = <error> er);
     }
 }
 

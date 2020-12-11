@@ -25,7 +25,7 @@ import ballerina/log;
 service HelloWorld on new grpc:Listener(20002) {
 
     isolated resource function hello(grpc:Caller caller, string name) {
-        log:printInfo("Server received hello from " + name);
+        log:print("Server received hello from " + name);
         string message = "Hello " + name;
 
         // Send a response message to the caller.
