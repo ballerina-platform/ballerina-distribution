@@ -16,8 +16,8 @@ function testFunc() {
     error? output = main();
     test:assertEquals(outputs[0], "Attempting execution...");
     test:assertEquals(outputs[1], "Attempting execution...");
-    test:assertEquals(outputs[2], "Work is done.");
+    test:assertEquals(outputs[2], "Work completed.");
     test:assertEquals(outputs[3], "Attempting execution...");
     test:assertEquals(outputs[4], "Attempting execution...");
-    test:assertEquals(outputs[5], "Work is done.");
+    test:assertEquals(outputs[5], "Work completed.");
 }

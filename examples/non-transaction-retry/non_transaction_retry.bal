@@ -2,7 +2,7 @@ import ballerina/io;
 import ballerina/lang.'error as errors;
 
 public function main() returns error? {
-    // The retry statement provides a general-purpose retry
+    // The retry statement provides a general-purpose retry.
     // facility, which is independent of the transactions.
     // Here, retrying happens according to the default retry manager
     // since there is no custom retry manager being passed to 
@@ -17,7 +17,7 @@ public function main() returns error? {
 
     int i = 0;
 
-    // You can pass a retry manager class as a type parameter
+    // You can pass a retry manager class as a type parameter.
     retry<MyRetryManager>(2) {
        io:println("Attempting execution...");
        i += 1;
