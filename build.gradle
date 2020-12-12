@@ -38,6 +38,7 @@ ext {
     netLingalaZip4jVersion = "2.3.2"
     commonsIoVersion = "2.6"
     commonsLang3Version = "3.9"
+    lsp4jDebugVersion = "0.7.1"
 }
 
 allprojects {
@@ -444,8 +445,14 @@ subprojects {
 
         /* Ballerina lang staging repository */
         maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1614/" }
+        /* Docker staging repository */
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1293/" }
+        /* AwsLambda staging repository */
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1166/" }
         /* Datamapper staging repository */
         maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdatamapper-1010/" }
+        /* AzureFunctions staging repository */
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxazurefunctions-1017" }
     }
 
     configurations {
@@ -478,6 +485,21 @@ subprojects {
 
         /* Ballerina Dev Tools */
         devTools "org.ballerinalang:ballerina-dev-tools:${devToolsVersion}"
+
+        /* AWSLambda extension */
+        exten "org.ballerinax.awslambda:awslambda-extension:${awslambdaVersion}"
+        awsLambdaBalo "org.ballerinax.awslambda:awslambda-extension-balo:${awslambdaVersion}"
+        awsLambdaExamples "org.ballerinax.awslambda:awslambda-extension-examples:${awslambdaVersion}@zip"
+
+        /* Azure Functions extension */
+        exten "org.ballerinax.azurefunctions:azurefunctions-extension:${azFunctionsVersion}"
+        azFunctionsBalo "org.ballerinax.azurefunctions:azurefunctions-extension-balo:${azFunctionsVersion}"
+        azFunctionsExamples "org.ballerinax.azurefunctions:azurefunctions-extension-examples:${azFunctionsVersion}@zip"
+
+        /* Docker extension */
+        exten "org.ballerinax.docker:docker-extension:${dockerVersion}@jar"
+        dockerAnnotations "org.ballerinax.docker:docker-extension-annotations:${dockerVersion}"
+        dockerExamples "org.ballerinax.docker:docker-extension-examples:${dockerVersion}@zip"
 
         /* Data Mapper extension */
         exten "org.ballerinax.datamapper:datamapper-extension:${dataMapperVersion}@jar"
