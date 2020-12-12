@@ -62,5 +62,9 @@
   {
     "name": "UDP standard library ",
     "path": "udp"
+  },
+  {
+    "name": "gRPC standard library ",
+    "path": "grpc"
   }
 ]
