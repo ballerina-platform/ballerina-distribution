@@ -7,7 +7,8 @@ public function main() {
     // Users can pass any number of key/value pairs which needs to be displayed in the log message.
     log:print("info log");
     log:print("info log", id = 845315, name = "foo");
+    //log:print("info log", id = 845315, name = isolated function() returns string { return "foo";});
     log:printError("error log");
-    log:printError("error log", id = 845315, name = "foo");
+    //log:printError("error log", id = isolated function() returns int { return 845315;}, name = "foo");
     log:printError("error log with cause", err = e, id = 845315, name = "foo");
 }
