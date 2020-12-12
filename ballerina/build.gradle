@@ -972,7 +972,7 @@ task testExamples() {
 
 task testStdlibs() {
     def jBallerinaPack = "${project.rootDir}/ballerina/build/target/extracted-distributions/jballerina-tools-zip"
-    def baseBuildPath = "${project.rootDir}/ballerina/build/bbe-pack"
+    def baseBuildPath = "${project.rootDir}/ballerina/build/stdlib-pack"
     def distPath = "${baseBuildPath}/jballerina-tools-${ballerinaVersion}"
     def stdlibTestsList = []
 
