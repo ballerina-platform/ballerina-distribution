@@ -37,25 +37,27 @@ dependencies {
     ballerinaWindowsDistribution project(path: ":ballerina", configuration: "ballerinaWindowsDistribution")
 }
 
-test {
+task devToolsIntegrationTest {
     dependsOn configurations.jBallerinaDistribution
     dependsOn configurations.ballerinaDistribution
     dependsOn configurations.ballerinaLinuxDistribution
     dependsOn configurations.ballerinaLinuxDistribution
     dependsOn configurations.ballerinaWindowsDistribution
-    systemProperty "distributions.dir", "$buildDir/../../ballerina/build/distributions"
-    systemProperty "target.dir", "$buildDir"
-    systemProperty "maven.version", "$version"
-    systemProperty "examples.dir", "$buildDir/../../examples"
-    systemProperty "line.check.extensions", ".java, .bal"
-    systemProperty "short.version", "$shortVersion"
+    test {
+        systemProperty "distributions.dir", "$buildDir/../../ballerina/build/distributions"
+        systemProperty "target.dir", "$buildDir"
+        systemProperty "maven.version", "$version"
+        systemProperty "examples.dir", "$buildDir/../../examples"
+        systemProperty "line.check.extensions", ".java, .bal"
+        systemProperty "short.version", "$shortVersion"
 
-    useTestNG() {
-        suites 'src/test/resources/testng.xml'
-    }
-    testLogging {
-        showStandardStreams = true
+        useTestNG() {
+            suites 'src/test/resources/testng.xml'
+        }
+        testLogging {
+            showStandardStreams = true
+        }
     }
 }
 
-build.dependsOn test
+test.dependsOn devToolsIntegrationTest
