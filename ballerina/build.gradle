@@ -1342,4 +1342,6 @@ deleteTemporaryFiles.dependsOn packageDistWindows
 deleteTemporaryFiles.dependsOn testExamples
 deleteTemporaryFiles.dependsOn testStdlibs
 deleteTemporaryFiles.dependsOn testDevToolsIntegration
-build.dependsOn deleteTemporaryFiles
+test.dependsOn deleteTemporaryFiles
+test.dependsOn testExamples
+test.dependsOn testStdlibs
