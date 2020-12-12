@@ -18,18 +18,18 @@ service "localObserver" on inFolder {
     // This resource is invoked once a new file is created in the listening directory.
     remote function onCreate(file:FileEvent m) {
         string msg = "Create: " + m.name;
-        log:printInfo(msg);
+        log:print(msg);
     }
 
     // This resource is invoked once an existing file is deleted from the listening directory.
     remote function onDelete(file:FileEvent m) {
         string msg = "Delete: " + m.name;
-        log:printInfo(msg);
+        log:print(msg);
     }
 
     // This resource is invoked once an existing file is modified in the listening directory.
     remote function onModify(file:FileEvent m) {
         string msg = "Modify: " + m.name;
-        log:printInfo(msg);
+        log:print(msg);
     }
 }
