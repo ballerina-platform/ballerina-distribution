@@ -38,14 +38,13 @@ listener grpc:Listener ep3 = new (20007, {
 
 boolean initialized = false;
 
-@grpc:ServiceConfig {name:"Chat"}
 @grpc:ServiceDescriptor {
     descriptor: ROOT_DESCRIPTOR,
     descMap: getDescriptorMap()
 }
-service Chat on ep3 {
+service /Chat on ep3 {
 
-    resource function chat(grpc:Caller caller, stream<ChatMessage, error> clientStream) {
+    remote function chat(grpc:Caller caller, stream<ChatMessage, error> clientStream) {
         log:print(string `${caller.getId()} connected to chat`);
         connectionsMap[caller.getId().toString()] = caller;
         log:print("Client registration completed. Connection map status");
@@ -101,7 +100,7 @@ service Chat on ep3 {
     }
 }
 
-type ChatMessage record {
+public type ChatMessage record {
     string name = "";
     string message = "";
 };

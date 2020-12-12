@@ -48,20 +48,20 @@ function testUnaryNonBlockingClient() {
 }
 
 // Server Message Listener.
-service messageListener = service {
+service object {}  messageListener = service object {
 
     // Resource registered to receive server messages.
-    resource function onMessage(string message) {
+    function onMessage(string message) {
         responseMsg = <@untainted>message;
     }
 
     // Resource registered to receive server error messages.
-    resource function onError(error err) {
+    function onError(error err) {
         responseMsg = io:sprintf(ERROR_MSG_FORMAT, err.message());
     }
 
     // Resource registered to receive server completed messages.
-    resource function onComplete() {
+    function onComplete() {
         test:assertTrue(true);
         io:println("Server Complete Sending Response.");
         completed = true;

@@ -43,15 +43,9 @@ http:ClientConfiguration endpointConfig = {
 http:Client clientEP = new("https://localhost:20007", endpointConfig);
 listener http:Listener helloWorldEP = new(20008, helloWorldEPConfig);
 
-@http:ServiceConfig {
-    basePath: "/"
-}
-service passthrough on helloWorldEP {
-    @http:ResourceConfig {
-        path: "Chat/chat"
-    }
+service /Chat on helloWorldEP {
 
-    resource function hello(http:Caller caller, http:Request req) {
+    resource function post chat(http:Caller caller, http:Request req) {
         log:print("[http2-passthrough] Invoke http2 service");
         req.setHeader("Test", "mytest");
         var clientResponse = clientEP->forward("/Chat/chat", req);

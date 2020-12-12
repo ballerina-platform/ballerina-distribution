@@ -7,10 +7,10 @@ import ballerina/log;
     descriptor: ROOT_DESCRIPTOR,
     descMap: getDescriptorMap()
 }
-service HelloWorld on new grpc:Listener(9090) {
+service /HelloWorld on new grpc:Listener(9090) {
 
-    resource function hello(grpc:Caller caller, string name) {
-        log:printInfo("Server received hello from " + name);
+    isolated remote function hello(grpc:Caller caller, string name) {
+        log:print("Server received hello from " + name);
         string message = "Hello " + name;
 
         // Send a response message to the caller.

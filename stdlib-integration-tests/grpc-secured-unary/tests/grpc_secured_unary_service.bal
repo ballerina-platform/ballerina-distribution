@@ -32,8 +32,8 @@ listener grpc:Listener ep = new (20004, {
     descriptor: ROOT_DESCRIPTOR,
     descMap: getDescriptorMap()
 }
-service HelloWorld on ep {
-    isolated resource function hello(grpc:Caller caller, string name) {
+service /HelloWorld on ep {
+    isolated remote function hello(grpc:Caller caller, string name) {
         log:print("Server received hello from " + name);
         string message = "Hello " + name;
 

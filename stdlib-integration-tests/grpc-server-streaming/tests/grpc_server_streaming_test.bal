@@ -59,21 +59,21 @@ function testServerStreamingService() {
 }
 
 // Server Message Listener.
-service messageListener = service {
+service object{} messageListener = service object {
 
     // Resource registered to receive server messages.
-    resource function onMessage(string message) {
+    function onMessage(string message) {
         responseMsgs[msgCount] = <@untainted> message;
         msgCount = msgCount + 1;
     }
 
     // Resource registered to receive server error messages.
-    resource function onError(error err) {
+    function onError(error err) {
         respError = io:sprintf(ERROR_MSG_FORMAT, err.message());
     }
 
     // Resource registered to receive server completed messages.
-    resource function onComplete() {
+    function onComplete() {
         test:assertTrue(true);
         io:println("Server Complete Sending Response.");
         completed = true;

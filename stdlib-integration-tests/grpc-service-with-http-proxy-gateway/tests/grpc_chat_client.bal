@@ -75,22 +75,22 @@ function isValidResponse(string expectedMsg) returns boolean {
 }
 
 
-service ChatMessageListener = service {
+service object{} ChatMessageListener = service object {
 
     // Resource registered to receive server messages.
-    resource function onMessage(string message) {
+    function onMessage(string message) {
         responseChatMsg = <@untainted> message;
         io:println("Response received from server: " + responseChatMsg);
     }
 
     // Resource registered to receive server error messages.
-    resource function onError(error err) {
+    function onError(error err) {
         responseChatMsg = io:sprintf(ERROR_MSG_FORMAT, err.message());
         io:println(responseChatMsg);
     }
 
     // Resource registered to receive server completed message.
-    resource function onComplete() {
+    function onComplete() {
         io:println("Server Complete Sending Responses.");
     }
 };
@@ -109,7 +109,7 @@ public client class ChatClient {
     }
 
 
-    public isolated remote function chat(service msgListener, grpc:Headers? headers = ()) returns
+    isolated remote function chat(service object{} msgListener, grpc:Headers? headers = ()) returns
     (grpc:StreamingClient|grpc:Error) {
         return self.grpcClient->streamingExecute("Chat/chat", msgListener, headers);
     }

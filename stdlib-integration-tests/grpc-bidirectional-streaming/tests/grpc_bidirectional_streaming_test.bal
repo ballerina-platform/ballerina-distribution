@@ -61,23 +61,23 @@ function testBidiStreamingService() {
     checkpanic ep->complete();
 }
 
-service MessageListener = service {
+service object{} MessageListener = service object {
 
     // Resource registered to receive server messages.
-    resource function onMessage(string message) {
+    function onMessage(string message) {
         responseMsg = <@untainted> message;
         received = true;
         io:println("Response received from server: " + message);
     }
 
     // Resource registered to receive server error messages.
-    resource function onError(error err) {
+    function onError(error err) {
         test:assertFail(io:sprintf(ERROR_MSG_FORMAT, err.message()));
         received = true;
     }
 
     // Resource registered to receive server completed message.
-    resource function onComplete() {
+    function onComplete() {
         received = true;
         io:println("Server Complete Sending Responses.");
     }

@@ -6,15 +6,15 @@ import ballerina/log;
     descriptor: ROOT_DESCRIPTOR,
     descMap: getDescriptorMap()
 }
-service HelloWorld on new grpc:Listener(9090) {
+service /HelloWorld on new grpc:Listener(9090) {
 
-    resource function hello(grpc:Caller caller, string name,
+    isolated remote function hello(grpc:Caller caller, string name,
                              grpc:Headers headers) {
-        log:printInfo("Server received hello from " + name);
+        log:print("Server received hello from " + name);
         string message = "Hello " + name;
         // Reads custom headers in request message.
         string reqHeader = headers.get("client_header_key") ?: "none";
-        log:printInfo("Server received header value: " + reqHeader);
+        log:print("Server received header value: " + reqHeader);
 
         // Writes custom headers to response message.
         grpc:Headers resHeader = new;

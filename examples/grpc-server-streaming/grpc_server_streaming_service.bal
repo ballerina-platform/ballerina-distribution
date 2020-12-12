@@ -6,10 +6,10 @@ import ballerina/log;
     descriptor: ROOT_DESCRIPTOR,
     descMap: getDescriptorMap()
 }
-service HelloWorld on new grpc:Listener(9090) {
+service /HelloWorld on new grpc:Listener(9090) {
 
-    resource function lotsOfReplies(grpc:Caller caller, string name) {
-        log:printInfo("Server received hello from " + name);
+    isolated function lotsOfReplies(grpc:Caller caller, string name) {
+        log:print("Server received hello from " + name);
         string[] greets = ["Hi", "Hey", "GM"];
 
         // Send multiple messages to the caller.
@@ -19,7 +19,7 @@ service HelloWorld on new grpc:Listener(9090) {
             if (err is grpc:Error) {
                 log:printError("Error from Connector: " + err.message());
             } else {
-                log:printInfo("Send reply: " + msg);
+                log:print("Send reply: " + msg);
             }
         }
 

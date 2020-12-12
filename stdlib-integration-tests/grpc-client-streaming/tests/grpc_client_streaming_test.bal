@@ -66,23 +66,23 @@ function testClientStreamingService() {
 }
 
 // Server Message Listener.
-service MessageListener = service {
+service object{} MessageListener = service object {
 
     // Resource registered to receive server messages.
-    resource function onMessage(string message) {
+    function onMessage(string message) {
         completed = true;
         responseMsg = <@untainted> message;
         io:println("Response received from server: " + message);
     }
 
     // Resource registered to receive server error messages.
-    resource function onError(error err) {
+    function onError(error err) {
         completed = true;
         responseMsg = io:sprintf(ERROR_MSG_FORMAT, err.message());
     }
 
     // Resource registered to receive server completed messages.
-    resource function onComplete() {
+    function onComplete() {
         completed = true;
         io:println("Server Complete Sending Responses.");
     }

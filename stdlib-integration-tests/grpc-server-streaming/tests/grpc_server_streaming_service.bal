@@ -21,9 +21,9 @@ import ballerina/log;
     descriptor: ROOT_DESCRIPTOR,
     descMap: getDescriptorMap()
 }
-service HelloWorld on new grpc:Listener(20003) {
+service /HelloWorld on new grpc:Listener(20003) {
 
-    isolated resource function lotsOfReplies(grpc:Caller caller, string name) {
+    isolated function lotsOfReplies(grpc:Caller caller, string name) {
         log:print("Server received hello from " + name);
         string[] greets = ["Hi", "Hey", "GM"];
 

@@ -1,19 +1,3 @@
-// Copyright (c) 2020 WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
-//
-// WSO2 Inc. licenses this file to you under the Apache License,
-// Version 2.0 (the "License"); you may not use this file except
-// in compliance with the License.
-// You may obtain a copy of the License at
-//
-// http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-
 import ballerina/grpc;
 
 public client class HelloWorldBlockingClient {
@@ -28,7 +12,8 @@ public client class HelloWorldBlockingClient {
         checkpanic self.grpcClient.initStub(self, "blocking", ROOT_DESCRIPTOR, getDescriptorMap());
     }
 
-    public isolated remote function hello(string req, grpc:Headers? headers = ()) returns ([string, grpc:Headers]|grpc:Error) {
+    isolated remote function hello(string req, grpc:Headers? headers = ()) returns ([string, grpc:Headers]|grpc:Error) {
+        
         var payload = check self.grpcClient->blockingExecute("service.HelloWorld/hello", req, headers);
         grpc:Headers resHeaders = new;
         anydata result = ();
@@ -50,12 +35,11 @@ public client class HelloWorldClient {
         checkpanic self.grpcClient.initStub(self, "non-blocking", ROOT_DESCRIPTOR, getDescriptorMap());
     }
 
-    public isolated remote function hello(string req, service msgListener, grpc:Headers? headers = ()) returns (grpc:Error?) {
+    isolated remote function hello(string req, service object {} msgListener, grpc:Headers? headers = ()) returns (grpc:Error?) {
         
         return self.grpcClient->nonBlockingExecute("service.HelloWorld/hello", req, msgListener, headers);
     }
 }
-
 
 const string ROOT_DESCRIPTOR = "0A1D677270635F756E6172795F6E6F6E5F626C6F636B696E672E70726F746F1207736572766963651A1E676F6F676C652F70726F746F6275662F77726170706572732E70726F746F32510A0A48656C6C6F576F726C6412430A0568656C6C6F121C2E676F6F676C652E70726F746F6275662E537472696E6756616C75651A1C2E676F6F676C652E70726F746F6275662E537472696E6756616C7565620670726F746F33";
 isolated function getDescriptorMap() returns map<string> {

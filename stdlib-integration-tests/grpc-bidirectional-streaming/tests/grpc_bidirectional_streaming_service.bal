@@ -23,9 +23,9 @@ map<grpc:Caller> consMap = {};
     descriptor: ROOT_DESCRIPTOR,
     descMap: getDescriptorMap()
 }
-service Chat on new grpc:Listener(20006) {
+service /Chat on new grpc:Listener(20006) {
 
-    resource function chat(grpc:Caller caller,
+    remote function chat(grpc:Caller caller,
                                 stream<ChatMessage, error> clientStream) {
         log:print(string `${caller.getId()} connected to chat`);
         consMap[caller.getId().toString()] = <@untainted>caller;
