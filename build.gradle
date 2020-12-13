@@ -477,6 +477,7 @@ subprojects {
             transitive = false
         }
         devTools
+        externalTestJars
     }
 
     dependencies {
@@ -503,6 +504,10 @@ subprojects {
 
         /* Data Mapper extension */
         exten "org.ballerinax.datamapper:datamapper-extension:${dataMapperVersion}@jar"
+
+        externalTestJars (group: 'mysql', name: 'mysql-connector-java', version: "8.0.21") {
+            transitive = false
+        }
 
         /* Standard libraries */
         ballerinaStdLibs "org.ballerinalang:encoding-ballerina:${stdlibEncodingVersion}"
