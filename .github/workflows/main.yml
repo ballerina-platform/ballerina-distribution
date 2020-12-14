@@ -22,7 +22,7 @@ jobs:
         env:
           packageUser: ${{ github.actor }}
           packagePAT: ${{ secrets.GITHUB_TOKEN }}
-        run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue -x :ballerina:testExamples -x :ballerina:testStdLibs
+        run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue
       - name: Archive distribtuions
         uses: actions/upload-artifact@v2
         with:
