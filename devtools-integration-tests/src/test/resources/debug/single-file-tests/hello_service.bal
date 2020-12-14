@@ -17,25 +17,19 @@
 import ballerina/http;
 import ballerina/test;
 
-service hello on new http:Listener(9090) {
-    resource function sayHello(http:Caller caller,
-        http:Request req) returns error? {
-        check caller->respond("Hello Test!");
+service on new http:Listener(9090) {
+    resource function get sayHello(http:Caller caller, http:Request req) returns error? {
+            check caller->respond("Hello, World!");
     }
 }
 
 # Test function
 @test:Config{}
-function directoryTestServiceFunction ()  {
-    string payload = "Invalid";
+function testServiceFunction ()  {
     http:Client httpClient = new("http://localhost:9090");
-    var response = httpClient->get("/hello/sayHello");
+    var response = httpClient->get("/sayHello");
     if (response is http:Response) {
-        string | error res = response.getTextPayload();
-        if (res is string){
-            payload = res;
-        }
-        test:assertEquals(payload, "Hello Test!", "Service involation test");
+        test:assertEquals(response.getTextPayload(), "Hello, World!", "Service involation test");
     } else {
         test:assertFail(response.toString());
     }

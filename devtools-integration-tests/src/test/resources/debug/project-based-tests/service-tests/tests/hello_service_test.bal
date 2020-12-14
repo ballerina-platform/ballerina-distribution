@@ -26,37 +26,11 @@ function beforeSuiteServiceFunc () {
 
 # Test function
 @test:Config{}
-function directoryTestServiceFunction ()  {
-    string payload = "Invalid";
-    http:Client httpClient = new("http://localhost:9393");
-    var response = httpClient->get("/hello/sayHello");
-    if (response is http:Response) {
-        string | error res = response.getTextPayload();
-        if (res is string){
-            payload = res;
-        }
-        test:assertEquals(payload, "Hello Test!", "Service involation test");
-        io:println(payload);
-        io:println("Service 1 completed");
-    } else {
-        test:assertFail(response.toString());
-    }
-}
-
-# Test function
-@test:Config{}
 function testServiceFunction ()  {
-    string payload = "Invalid";
-    http:Client httpClient = new("http://localhost:9090");
-    var response = httpClient->get("/greeting/sayHello");
+    http:Client httpClient = new("http://localhost:9191");
+    var response = httpClient->get("/sayHello");
     if (response is http:Response) {
-        string | error res = response.getTextPayload();
-        if (res is string){
-            payload = res;
-        }
-        test:assertEquals(payload, "Greeting, World!", "Service involation test");
-        io:println(payload);
-        io:println("Service 1 completed");
+        test:assertEquals(response.getTextPayload(), "Hello, World!", "Service involation test");
     } else {
         test:assertFail(response.toString());
     }
