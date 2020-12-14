@@ -17,8 +17,7 @@
 import ballerina/http;
 
 service on new http:Listener(9191) {
-    resource function get sayHello(http:Caller caller,
-        http:Request req) returns error? {
+    resource function get sayHello(http:Caller caller, http:Request req) returns error? {
             check caller->respond("Hello, World!");
     }
 }
