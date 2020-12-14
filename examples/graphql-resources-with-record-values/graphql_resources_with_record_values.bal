@@ -16,15 +16,15 @@ service graphql:Service /graphql on new graphql:Listener(httpListener) {
 }
 
 // Define the custom record types to return data.
-public type Address record {
-    string number;
-    string street;
-    string city;
-};
 public type Person record {
     string name;
     int age;
     Address address;
+};
+public type Address record {
+    string number;
+    string street;
+    string city;
 };
 
 // Define an array of `Person` records.
@@ -37,7 +37,6 @@ Person p1 = {
         city: "London"
     }
 };
-
 Person p2 = {
     name: "Walter White",
     age: 50,
@@ -47,7 +46,6 @@ Person p2 = {
         city: "Albuquerque"
     }
 };
-
 Person p3 = {
     name: "Tom Marvolo Riddle",
     age: 100,
@@ -57,5 +55,4 @@ Person p3 = {
         city: "Hogwarts"
     }
 };
-
 Person[] people = [p1, p2, p3];
