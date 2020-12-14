@@ -682,7 +682,6 @@ task testExamples() {
             'rabbitmq-transaction-producer',
             'rabbitmq-transaction-consumer',
             'jdbc-complex-type-queries', // Consists date time in output
-            'jdbc-batch-execute-operation', // Consists transaction server sart log
             'log-api',
             'mysql-init-options',
             'mysql-query-operation',
@@ -717,6 +716,11 @@ task testExamples() {
             into baseBuildPath
         }
 
+        copy {
+            into "$baseBuildPath/lib"
+            from configurations.externalTestJars
+        }
+
         def src = "${project.rootDir}/examples/"
         def dis = "${baseBuildPath}"
         copy {
@@ -740,6 +744,28 @@ task testExamples() {
         }
     }
 
+    ext.prepareProject = { bbe ->
+        if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+            //TODO: Need to verify with windows
+            exec {
+                workingDir "${baseBuildPath}/${bbe}"
+                commandLine 'cmd', '/c', "${distPath}/bin/ballerina/ballerina.bat init test"
+            }
+
+        } else {
+            exec {
+                workingDir "${baseBuildPath}/${bbe}"
+                commandLine 'sh', '-c', "${distPath}/bin/ballerina init test"
+            }
+        }
+
+        if (bbe.startsWith('mysql')) {
+            def tomlFile = new File("${baseBuildPath}/${bbe}/Ballerina.toml")
+            tomlFile.append("\n\n[[platform.java11.dependency]]")
+            tomlFile.append("\npath = \"$baseBuildPath/lib/mysql-connector-java-8.0.21.jar\"\n")
+        }
+    }
+
     ext.buildBBE = { bbe ->
         def exitVal
         def additionalBuildParams = ""
@@ -749,22 +775,12 @@ task testExamples() {
         println "Building example ${bbe}"
         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
             //TODO: Need to verify with windows
-            exec {
-                workingDir "${baseBuildPath}/${bbe}"
-                commandLine 'cmd', '/c', "${distPath}/bin/ballerina/ballerina.bat init test"
-            }
-
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${baseBuildPath}/${bbe}"
                 commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'build', '--experimental', " --b7a.home=${distPath} ${additionalBuildParams}"
             }
         } else {
-            exec {
-                workingDir "${baseBuildPath}/${bbe}"
-                commandLine 'sh', '-c', "${distPath}/bin/ballerina init test"
-            }
-
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${baseBuildPath}/${bbe}"
@@ -933,10 +949,15 @@ task testExamples() {
                     failOutputVerificationExamples.add(bbe)
                 }
             }
+            File tomlFile = new File("${baseBuildPath}/${bbe}/Ballerina.toml")
+            if (!tomlFile.exists()) {
+                prepareProject(bbe)
+            }
             boolean buildFailFlag = buildBBE(bbe)
             if (buildFailFlag) {
                 failedBuildExamples.add(bbe)
             }
+            delete tomlFile
         }
 
         boolean buildFailure = false
