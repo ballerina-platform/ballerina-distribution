@@ -44,7 +44,7 @@ function testReturnWithArgs() {
     // when the specified argument is passed.
     test:prepare(clientEndpoint).when("get").
     withArguments("/headers").thenReturn(mockResponse);
-    // The object and record types should be denoted by the `test:ANY` constant
+    // The object and record types should be denoted by the `test:ANY` constant.
     test:prepare(clientEndpoint).when("get").withArguments("/get?test=123",
     test:ANY).thenReturn(mockResponse);
     http:Response res = performGet();
@@ -70,7 +70,7 @@ function testReturnSequence() {
 function testSendNotification() {
     smtpClient = test:mock(email:SmtpClient);
     // This stubs the `send` method of the `mockSmtpClient` to do nothing.
-    // This is used for functions with an optional or no return type
+    // This is used for functions with an optional or no return type.
     test:prepare(smtpClient).when("sendEmailMessage").doNothing();
     string[] emailIds = ["user1@test.com", "user2@test.com"];
     error? err = sendNotification(emailIds);

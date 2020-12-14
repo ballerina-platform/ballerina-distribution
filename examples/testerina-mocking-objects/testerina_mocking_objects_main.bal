@@ -26,7 +26,7 @@ function performGet() returns @tainted http:Response {
     return response;
 }
 
-// This function sends out email to specified email addresses
+// This function sends out an email to the specified email addresses
 // and returns an error if found.
 function sendNotification(string[] emailIds) returns error? {
     email:Message msg = {
