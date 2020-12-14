@@ -705,6 +705,7 @@ task testExamples() {
             'secured-client-with-jwt-auth', // Need to run the service first
             'secured-client-with-oauth2', // Need to run the service first
             'send-and-receive-emails',
+            'task-service-timer',       // Services needs to be stopped during build
             'task-service-appointment',
             'error-handling-in-single-place',
             'file-io'
