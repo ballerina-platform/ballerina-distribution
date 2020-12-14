@@ -686,6 +686,10 @@
                 "url": "task-service-timer"
             },
             {
+                "name": "UUID",
+                "url": "uuid"
+            },
+            {
                 "name": "XSLT Transformation",
                 "url": "xslt-transformation"
             }
