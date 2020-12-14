@@ -942,7 +942,7 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "GraphQL Resources Returning Record Values",
+                "name": "GraphQL Resources with Record Values",
                 "url": "graphql-resources-with-record-values"
             }
         ]
