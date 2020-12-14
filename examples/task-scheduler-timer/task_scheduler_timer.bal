@@ -37,9 +37,9 @@ public function main() returns error? {
 }
 
 // The service, which will be attached to the timer.
-service timerService = service {
+service object{} timerService = service object {
     // The onTrigger resource, which will be invoked when the timer is triggered.
-    resource function onTrigger(CounterContext ctx) {
+    remote function onTrigger(CounterContext ctx) {
         ctx.count += 1;
         io:println(ctx.name, ": ", ctx.count);
     }
