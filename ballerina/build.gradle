@@ -573,13 +573,11 @@ task testExamples() {
 
     // The following BBEs will not be verified by compiling/running.
     def buildIgnoreList = [
-            'task-scheduler-appointment',
             'http-retry',
             'http-failover',
             'http-load-balancer',
             'http-circuit-breaker',
             'http-redirects',
-            'cache',
             'websocket-proxy-server',
             'record-io',
             'send_and_receive_emails',
@@ -708,11 +706,7 @@ task testExamples() {
             'secured-client-with-jwt-auth', // Need to run the service first
             'secured-client-with-oauth2', // Need to run the service first
             'send-and-receive-emails',
-            'task-service-timer',
             'task-service-appointment',
-            'task-scheduler-timer',
-            'task-scheduler-appointment',
-            'cache',
             'error-handling-in-single-place',
             'file-io'
     ]
