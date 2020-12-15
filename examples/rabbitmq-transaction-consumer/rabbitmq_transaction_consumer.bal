@@ -3,21 +3,20 @@ import ballerinax/rabbitmq;
 
 // The consumer service listens to the "MyQueue" queue.
 @rabbitmq:ServiceConfig {
-    queueConfig: {
-        queueName: "MyQueue"
-    },
-    ackMode: rabbitmq:CLIENT_ACK
+    queueName: "MyQueue",
+    autoAck: false
 }
 // Attaches the service to the listener.
-service transactionConsumer on
+service /transactionConsumer on
                     new rabbitmq:Listener({host: "localhost", port: 5672}) {
 
     // Gets triggered when a message is received by the queue.
-    resource function onMessage(rabbitmq:Message message) {
+    remote function onMessage(rabbitmq:Message message,
+                                rabbitmq:Caller caller) {
 
-        var messageContent = message.getTextContent();
+        var messageContent = 'string:fromBytes(message.content);
         if (messageContent is string) {
-            log:printInfo("The message received: " + messageContent);
+            log:print("The message received: " + messageContent);
         } else {
             log:printError(
                        "Error occurred while retrieving the message content.");
@@ -26,7 +25,7 @@ service transactionConsumer on
         // The acknowledgement gets committed upon successful execution of the transaction,
         // or will rollback otherwise.
         transaction {
-            var result = message->basicAck();
+            var result = caller->basicAck();
             if (result is error) {
                 log:printError(
                             "Error occurred while acknowledging the message.");

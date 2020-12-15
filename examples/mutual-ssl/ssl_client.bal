@@ -29,10 +29,10 @@ public function main() {
     // Create an HTTP client to interact with the created listener endpoint.
     http:Client clientEP = new("https://localhost:9095", clientEPConfig);
     // Send a GET request to the listener and bind the payload to a string value.
-    var payload = clientEP->get("/hello", targetType = string);
+    var payload = clientEP->get("/helloWorld/hello", targetType = string);
     if (payload is string) {
         // Log the retrieved text payload.
-        log:printInfo(payload);
+        log:print(payload);
     } else {
         // If an error occurs when getting the response or binding payload, log the error.
         log:printError((<error>payload).message());
