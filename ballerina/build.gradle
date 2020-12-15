@@ -618,7 +618,14 @@ task testExamples() {
             'counter-metrics',
             'tracing',
             'openapi-to-ballerina',
-            'taint-checking' // Should not compile
+            'taint-checking', // Should not compile
+            'secured-client-with-basic-auth',
+            'secured-client-with-jwt-auth',
+            'secured-client-with-oauth2',
+            'secured-service-with-basic-auth',
+            'secured-service-with-jwt-auth',
+            'secured-service-with-ldap',
+            'secured-service-with-oauth2',
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
