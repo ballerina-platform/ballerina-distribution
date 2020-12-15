@@ -42,7 +42,7 @@ public function main() {
 }
 
 //The below function handles the response received from the remote HTTP endpoint.
-function handleResponse(http:Response|http:Payload|error response) {
+function handleResponse(http:Response|http:PayloadType|error response) {
     if (response is http:Response) {
         // [Get the JSON payload](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Response#getJsonPayload) from the response.
         var msg = response.getJsonPayload();
