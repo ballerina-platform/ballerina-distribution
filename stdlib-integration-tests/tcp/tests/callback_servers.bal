@@ -20,14 +20,9 @@ import ballerina/tcp;
 
 listener http:Listener echoEP = new(58291);
 
-@http:ServiceConfig { basePath: "/echo" }
-service echo on echoEP {
-
-    @http:ResourceConfig {
-        methods: ["POST"],
-        path: "/"
-    }
-    resource function echo1(http:Caller caller, http:Request req) {
+service /echo on echoEP {
+    
+    resource function post .(http:Caller caller, http:Request req) {
         tcp:Client socketClient = new({ host: "localhost", port: 59152, callbackService: ClientService });
         var payload = req.getTextPayload();
         http:Response resp = new;
