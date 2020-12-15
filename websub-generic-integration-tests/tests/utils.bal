@@ -31,7 +31,7 @@ public function fetchOutput(string key) returns (anydata|error) {
     return outputs[key];
 }
 
-function fetchHttpResponse(http:Response|http:Payload|error response) returns HttpResponseDetails {
+function fetchHttpResponse(http:Response|http:PayloadType|error response) returns HttpResponseDetails {
     string responseMessage = "";
     int statusCode = -1;
     if (response is http:Response) {
