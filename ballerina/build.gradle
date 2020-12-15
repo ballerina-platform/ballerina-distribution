@@ -708,7 +708,8 @@ task testExamples() {
             'task-service-timer',       // Services needs to be stopped during build
             'task-service-appointment',
             'error-handling-in-single-place',
-            'file-io'
+            'file-io',
+            'uuid'  // Output varies
     ]
 
     doFirst {
