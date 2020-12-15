@@ -1,7 +1,6 @@
 import ballerina/http;
 import ballerina/io;
 import ballerina/log;
-import ballerina/lang.'transaction as transactions;
 
 // This is a participant in the distributed transaction. It will get infected when it receives
 // a transaction context from the participant.
@@ -10,8 +9,6 @@ service /stockquote on new http:Listener(8889) {
     // as a participant.
     transactional resource function post update/updateStockQuote(http:Caller conn, http:Request req) {
         log:print("Received update stockquote request");
-        // Print information about the current transaction.
-        log:print("Joined transaction: " + transactions:info().toString());
         // Get the json payload.
         json|http:ClientError updateReq = <@untainted>req.getJsonPayload();
 

@@ -1,10 +1,10 @@
 # To start the `initiator` service, navigate to the directory that contains the
 # `.bal` file and use the `ballerina run` command.
 ballerina run initiator.bal
+[ballerina/http] started HTTP/WS listener 192.168.1.18:37869
 [ballerina/http] started HTTP/WS listener 0.0.0.0:8080
-time = 2020-12-15 09:20:20,878 level = INFO  module = "" message = "Initiating transaction..."
-time = 2020-12-15 09:20:20,907 level = INFO  module = "" message = "Started transaction: {"xid":[98,48,98,52,48,99,102,53,45,53,99,56,99,45,52,55,55,102,45,98,97,100,97,45,57,56,54,49,55,98,53,49,51,52,48,52],"retryNumber":0,"startTime":2020-12-15 09:20:20,890,"prevAttempt":null}"
-[ballerina/http] started HTTP/WS listener 192.168.1.18:36581
-time = 2020-12-15 09:20:21,093 level = INFO  module = "" message = "Got response from bizservice"
-time = 2020-12-15 09:20:21,095 level = INFO module = "" message = "Transaction committed"
-time = 2020-12-15 09:20:21,109 level = INFO  module = "" message = "Sent response back to client"
+time = 2020-12-15 21:19:15,787 level = INFO  module = "" message = "Initiating transaction..."
+time = 2020-12-15 21:19:15,820 level = INFO  module = "" message = "Started transaction: {"xid":[54,50,57,53,51,55,101,101,45,50,100,52,49,45,52,55,56,52,45,57,98,49,102,45,98,57,98,57,97,57,51,50,54,50,99,97],"retryNumber":0,"startTime":2020-12-15 21:19:15,801,"prevAttempt":null}"
+time = 2020-12-15 21:19:16,315 level = INFO  module = "" message = "Got response from bizservice"
+time = 2020-12-15 21:19:16,373 level = INFO  module = "" message = "Transaction committed"
+time = 2020-12-15 21:19:16,376 level = INFO  module = "" message = "Sent response back to client"

@@ -2,4 +2,8 @@
 # `.bal` file and use the `ballerina run` command.
 # Run this command to start the `participant` service.
 ballerina run participant.bal
+[ballerina/http] started HTTP/WS listener 192.168.1.18:37209
 [ballerina/http] started HTTP/WS listener 0.0.0.0:8889
+time = 2020-12-15 21:19:16,287 level = INFO  module = "" message = "Received update stockquote request"
+time = 2020-12-15 21:19:16,292 level = INFO  module = "" message = "Update stock quote request received. symbol:GOODS, price:100.0"
+time = 2020-12-15 21:19:16,313 level = INFO  module = "" message = "Sent response back to initiator"
