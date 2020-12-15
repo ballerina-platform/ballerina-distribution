@@ -34,7 +34,7 @@ service kafka:Service on kafkaListener {
 
         if (commitResult is error) {
             log:printError("Error occurred while committing the " +
-                "offsets for the consumer ", commitResult);
+                "offsets for the consumer ", err = commitResult);
         }
     }
 }
@@ -45,7 +45,7 @@ function processKafkaRecord(kafka:ConsumerRecord kafkaRecord) {
     // for the value.
     string|error messageContent = 'string:fromBytes(value);
     if (messageContent is string) {
-            log:printInfo("Value: " + messageContent);
+        log:print("Value: " + messageContent);
     } else {
         log:printError("Invalid value type received");
     }

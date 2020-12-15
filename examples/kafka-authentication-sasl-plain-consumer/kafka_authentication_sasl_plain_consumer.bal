@@ -33,7 +33,7 @@ service kafka:Service on kafkaListener {
             string|error messageContent =
                                    'string:fromBytes(consumerRecord.value);
             if (messageContent is string) {
-                log:printInfo(messageContent);
+                log:print(messageContent);
             }
         }
     }
