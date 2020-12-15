@@ -161,7 +161,7 @@ service /backEndService on new http:Listener(9091) {
 }
 
 //Handle response data received from HTTP client remote functions.
-function handleResponse(http:Response|http:Payload|error response) {
+function handleResponse(http:Response|http:PayloadType|error response) {
     if (response is http:Response) {
         //Print the content type of the received data.
         if (response.hasHeader("content-type")) {

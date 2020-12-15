@@ -37,6 +37,6 @@ function testUdp() {
         } else {
             test:assertFail(msg = sendResult.message());
         }
+        checkpanic socketClient->close();
     }
-    checkpanic socketClient->close();
 }

@@ -13,7 +13,7 @@ service /cbr on new http:Listener(9090) {
         if (jsonMsg is json) {
             // Get the `string` value relevant to the key `name`.
             json|error nameString = jsonMsg.name;
-            http:Response|http:Payload|error response;
+            http:Response|http:PayloadType|error response;
             if (nameString is json) {
                 if (nameString.toString() == "sanFrancisco") {
                     // Here, [post](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Client#post) remote function represents the POST operation of

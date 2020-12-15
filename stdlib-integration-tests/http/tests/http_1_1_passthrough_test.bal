@@ -21,13 +21,9 @@ import ballerina/test;
 
 listener http:Listener passthroughEP1 = new(9113);
 
-@http:ServiceConfig { basePath: "/passthrough" }
-service passthroughService on passthroughEP1 {
-    @http:ResourceConfig {
-        methods: ["GET"],
-        path: "/"
-    }
-    resource function passthrough(http:Caller caller, http:Request clientRequest) {
+service /passthrough on passthroughEP1 {
+
+    resource function get .(http:Caller caller, http:Request clientRequest) {
         http:Client nyseEP1 = new("http://localhost:9113");
         var response = nyseEP1->get("/nyseStock/stocks", <@untainted> clientRequest);
         if (response is http:Response) {
@@ -37,11 +33,7 @@ service passthroughService on passthroughEP1 {
         }
     }
 
-    @http:ResourceConfig {
-        methods: ["POST"],
-        path: "/forwardMultipart"
-    }
-    resource function forwardMultipart(http:Caller caller, http:Request clientRequest) {
+    resource function post forwardMultipart(http:Caller caller, http:Request clientRequest) {
         http:Client nyseEP1 = new("http://localhost:9113");
         var response = nyseEP1->forward("/nyseStock/stocksAsMultiparts", clientRequest);
         if (response is http:Response) {
@@ -51,11 +43,7 @@ service passthroughService on passthroughEP1 {
         }
     }
 
-    @http:ResourceConfig {
-        methods: ["POST"],
-        path: "/forward"
-    }
-    resource function accessInboundEntity(http:Caller caller, http:Request clientRequest) {
+    resource function post forward(http:Caller caller, http:Request clientRequest) {
         http:Client nyseEP1 = new("http://localhost:9113");
         var response = nyseEP1->forward("/nyseStock/entityCheck", clientRequest);
         if (response is http:Response) {
@@ -76,22 +64,13 @@ service passthroughService on passthroughEP1 {
     }
 }
 
-@http:ServiceConfig { basePath: "/nyseStock" }
-service nyseStockQuote1 on passthroughEP1 {
+service /nyseStock on passthroughEP1 {
 
-    @http:ResourceConfig {
-        methods: ["GET"],
-        path: "/stocks"
-    }
-    resource function stocks(http:Caller caller, http:Request clientRequest) {
+    resource function get stocks(http:Caller caller, http:Request clientRequest) {
         checkpanic caller->respond({ "exchange": "nyse", "name": "IBM", "value": "127.50" });
     }
 
-    @http:ResourceConfig {
-        methods: ["POST"],
-        path: "/stocksAsMultiparts"
-    }
-    resource function stocksAsMultiparts(http:Caller caller, http:Request clientRequest) {
+    resource function post stocksAsMultiparts(http:Caller caller, http:Request clientRequest) {
         var bodyParts = clientRequest.getBodyParts();
         if (bodyParts is mime:Entity[]) {
             checkpanic caller->respond(<@untainted> bodyParts);
@@ -100,11 +79,7 @@ service nyseStockQuote1 on passthroughEP1 {
         }
     }
 
-    @http:ResourceConfig {
-        methods: ["POST"],
-        path: "/entityCheck"
-    }
-    resource function accessInboundRequestEntity(http:Caller caller, http:Request clientRequest) {
+    resource function post entityCheck(http:Caller caller, http:Request clientRequest) {
         http:Response res = new;
         var entity = clientRequest.getEntity();
         if (entity is mime:Entity) {
