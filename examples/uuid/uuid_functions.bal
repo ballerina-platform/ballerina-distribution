@@ -29,11 +29,13 @@ public function main() {
     io:println("UUID of type 4 as a record: ", uuid4Record);
 
     // Generate a UUID of type 5 as a string.
-    string|uuid:Error uuid5String = uuid:createType5AsString(uuid:NAME_SPACE_DNS, "ballerina.io");
+    string|uuid:Error uuid5String = uuid:createType5AsString(
+                                    uuid:NAME_SPACE_DNS, "ballerina.io");
     io:println("UUID of type 5 as a string: ", uuid5String);
 
     // Generate a UUID of type 5 as a record.
-    uuid:Uuid|uuid:Error uuid5Record = uuid:createType5AsRecord(uuid:NAME_SPACE_DNS, "ballerina.io");
+    uuid:Uuid|uuid:Error uuid5Record = uuid:createType5AsRecord(
+                                       uuid:NAME_SPACE_DNS, "ballerina.io");
     io:println("UUID of type 5 as a record: ", uuid5Record);
 
     // Generate a nil UUID as a string.
@@ -49,15 +51,17 @@ public function main() {
     io:println("UUID validated: ", valid.toString());
 
     // Detect RFC version of a UUID.
-    uuid:Version|uuid:Error v = uuid:getVersion("4397465e-35f9-11eb-adc1-0242ac120002");
+    uuid:Version|uuid:Error v = uuid:getVersion(
+                                "4397465e-35f9-11eb-adc1-0242ac120002");
     io:println("UUID version: ", v.toString());
 
-    // Convert UUID string to a UUID record.
-    uuid:Uuid|uuid:Error uuidRecord = uuid:toRecord("4397465e-35f9-11eb-adc1-0242ac120002");
-    io:println("UUID record: ", uuidRecord);
+    // Convert a UUID string to an array of bytes.
+    byte[]|uuid:Error uuidBytes = uuid:toBytes(
+                                  "4397465e-35f9-11eb-adc1-0242ac120002");
+    io:println("UUID bytes: ", uuidBytes);
 
-    // Convert UUID record to a UUID string.
-    uuid:Uuid uuidRecord2 = {
+    // Convert a UUID record to a UUID string.
+    uuid:Uuid uuidRecord = {
         timeLow: 1133987422,
         timeMid: 13817,
         timeHiAndVersion: 4587,
@@ -65,6 +69,11 @@ public function main() {
         clockSeqLo: 193,
         node: 2485377957890
     };
-    string|error uuidString = uuid:toString(uuidRecord2);
+    string|error uuidString = uuid:toString(uuidRecord);
     io:println("UUID string: ", uuidString);
+
+    // Convert a UUID string to a UUID record.
+    uuid:Uuid|uuid:Error uuidRecord2 = uuid:toRecord(
+                                       "4397465e-35f9-11eb-adc1-0242ac120002");
+    io:println("UUID record: ", uuidRecord2);
 }
