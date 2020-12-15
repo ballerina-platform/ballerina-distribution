@@ -625,6 +625,19 @@ task testExamples() {
             'class-definition',
             'functional-iteration',
 
+            // Disabling due to pending migration for service typing
+            'websub-service-integration-sample',
+            'websub-internal-hub-sample',
+            'websocket-cookie',
+            'websocket-retry',
+            'websocket-failover',
+            'websocket-chat-application',
+            'websocket-proxy-server',
+            'http-to-websocket-upgrade',
+            'websocket-basic-sample',
+            'websocket-client',
+            'http-filters',
+
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
