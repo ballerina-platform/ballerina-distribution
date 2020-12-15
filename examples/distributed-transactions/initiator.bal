@@ -37,7 +37,8 @@ service / on new http:Listener(8080) {
         // Send response back to the client.
         var result = conn->respond(res);
         if (result is error) {
-            log:printError("Could not send response back to client", {"error": result.message()});
+            log:printError("Could not send response back to client",
+            {"error": result.message()});
         } else {
             log:print("Sent response back to client");
         }
@@ -46,7 +47,8 @@ service / on new http:Listener(8080) {
 
 // This is the participant business function call.
 transactional function callBusinessService() returns @tainted boolean {
-    http:Client participantEP = new ("http://localhost:8889/stockquote/update/updateStockQuote");
+    http:Client participantEP = new ("http://localhost:8889/stockquote/" +
+                                        "update/updateStockQuote");
 
     // Generate the payload.
     float price = 100.00;

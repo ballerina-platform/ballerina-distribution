@@ -7,7 +7,8 @@ import ballerina/log;
 service /stockquote on new http:Listener(8889) {
     // Since the transaction context has been received, this resource will register with initiator
     // as a participant.
-    transactional resource function post update/updateStockQuote(http:Caller conn, http:Request req) {
+    transactional resource function post update/updateStockQuote
+                                     (http:Caller conn, http:Request req) {
         log:print("Received update stockquote request");
         // Get the json payload.
         json|http:ClientError updateReq = <@untainted>req.getJsonPayload();
@@ -24,13 +25,15 @@ service /stockquote on new http:Listener(8889) {
         } else {
             res.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
             res.setPayload(updateReq.message());
-            log:printError("Payload error occurred!", {"error": updateReq.message()});
+            log:printError("Payload error occurred!",
+            {"error": updateReq.message()});
         }
 
         // Send the response back to the initiator.
         var result = conn->respond(res);
         if (result is error) {
-            log:printError("Could not send response back to initiator", {"error": result.message()});
+            log:printError("Could not send response back to initiator",
+            {"error": result.message()});
         } else {
             log:print("Sent response back to initiator");
         }
