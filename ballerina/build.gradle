@@ -767,8 +767,12 @@ task testExamples() {
             }
         }
 
+        // Disable due to https://github.com/ballerina-platform/ballerina-lang/issues/27510
+        def tomlFile = new File("${baseBuildPath}/${bbe}/Ballerina.toml")
+        def updatedToml = tomlFile.text.replaceAll("true", "false")
+        tomlFile.text = updatedToml
+
         if (bbe.startsWith('mysql')) {
-            def tomlFile = new File("${baseBuildPath}/${bbe}/Ballerina.toml")
             tomlFile.append("\n\n[[platform.java11.dependency]]")
             tomlFile.append("\npath = \"$baseBuildPath/lib/mysql-connector-java-8.0.21.jar\"\n")
         }
