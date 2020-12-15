@@ -23,7 +23,7 @@ function testUdp() {
     udp:Client|udp:Error? socketClient = new ("localhost", 2000);
     if (socketClient is udp:Client) {
         string msg = "Hello Ballerina echo";
-        Datagram datagram = {
+        udp:Datagram datagram = {
             remoteAddress: {
                 host: "localhost",
                 port: 48829
