@@ -26,16 +26,16 @@ function performGet() returns @tainted http:Response {
     return response;
 }
 
-// This function sends out email to specified email addresses
+// This function sends out an email to the specified email addresses
 // and returns an error if found.
 function sendNotification(string[] emailIds) returns error? {
-    email:Email msg = {
+    email:Message msg = {
         'from: "builder@abc.com",
         subject: "Error Alert ...",
         to: emailIds,
         body: ""
     };
-    email:Error? response = smtpClient -> send(msg);
+    email:Error? response = smtpClient -> sendEmailMessage(msg);
     if (response is error) {
         io:println("error while sending the email: ", response.message());
         return response;

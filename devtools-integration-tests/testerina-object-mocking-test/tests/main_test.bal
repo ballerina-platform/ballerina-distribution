@@ -12,7 +12,7 @@ public client class MockHttpClient {
     }
 
      remote function post(@untainted string path, http:RequestMessage message = (),
-        http:TargetType targetType = http:Response) returns http:Response|http:Payload|http:ClientError {
+        http:TargetType targetType = http:Response) returns http:Response|http:PayloadType|http:ClientError {
             http:Response res = new;
             res.statusCode = 500;
             return res;

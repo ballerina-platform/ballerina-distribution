@@ -1,0 +1,5 @@
+# Navigate to the directory that contains the
+# 'dynamic_listener.bal' file, and run the 'ballerina run' command below.
+
+ballerina run dynamic_listener.bal
+[ballerina/http] started HTTP/WS listener 0.0.0.0:9090

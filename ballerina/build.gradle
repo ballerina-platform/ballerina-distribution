@@ -573,13 +573,11 @@ task testExamples() {
 
     // The following BBEs will not be verified by compiling/running.
     def buildIgnoreList = [
-            'task-scheduler-appointment',
             'http-retry',
             'http-failover',
             'http-load-balancer',
             'http-circuit-breaker',
             'http-redirects',
-            'cache',
             'websocket-proxy-server',
             'record-io',
             'send_and_receive_emails',
@@ -684,7 +682,6 @@ task testExamples() {
             'rabbitmq-transaction-producer',
             'rabbitmq-transaction-consumer',
             'jdbc-complex-type-queries', // Consists date time in output
-            'jdbc-batch-execute-operation', // Consists transaction server sart log
             'log-api',
             'mysql-init-options',
             'mysql-query-operation',
@@ -708,11 +705,8 @@ task testExamples() {
             'secured-client-with-jwt-auth', // Need to run the service first
             'secured-client-with-oauth2', // Need to run the service first
             'send-and-receive-emails',
-            'task-service-timer',
+            'task-service-timer',       // Services needs to be stopped during build
             'task-service-appointment',
-            'task-scheduler-timer',
-            'task-scheduler-appointment',
-            'cache',
             'error-handling-in-single-place',
             'file-io'
     ]
@@ -721,6 +715,11 @@ task testExamples() {
         copy {
             from jBallerinaPack
             into baseBuildPath
+        }
+
+        copy {
+            into "$baseBuildPath/lib"
+            from configurations.externalTestJars
         }
 
         def src = "${project.rootDir}/examples/"
@@ -746,6 +745,28 @@ task testExamples() {
         }
     }
 
+    ext.prepareProject = { bbe ->
+        if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+            //TODO: Need to verify with windows
+            exec {
+                workingDir "${baseBuildPath}/${bbe}"
+                commandLine 'cmd', '/c', "${distPath}/bin/ballerina/ballerina.bat init test"
+            }
+
+        } else {
+            exec {
+                workingDir "${baseBuildPath}/${bbe}"
+                commandLine 'sh', '-c', "${distPath}/bin/ballerina init test"
+            }
+        }
+
+        if (bbe.startsWith('mysql')) {
+            def tomlFile = new File("${baseBuildPath}/${bbe}/Ballerina.toml")
+            tomlFile.append("\n\n[[platform.java11.dependency]]")
+            tomlFile.append("\npath = \"$baseBuildPath/lib/mysql-connector-java-8.0.21.jar\"\n")
+        }
+    }
+
     ext.buildBBE = { bbe ->
         def exitVal
         def additionalBuildParams = ""
@@ -755,22 +776,12 @@ task testExamples() {
         println "Building example ${bbe}"
         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
             //TODO: Need to verify with windows
-            exec {
-                workingDir "${baseBuildPath}/${bbe}"
-                commandLine 'cmd', '/c', "${distPath}/bin/ballerina/ballerina.bat init test"
-            }
-
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${baseBuildPath}/${bbe}"
                 commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'build', '--experimental', " --b7a.home=${distPath} ${additionalBuildParams}"
             }
         } else {
-            exec {
-                workingDir "${baseBuildPath}/${bbe}"
-                commandLine 'sh', '-c', "${distPath}/bin/ballerina init test"
-            }
-
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${baseBuildPath}/${bbe}"
@@ -939,10 +950,15 @@ task testExamples() {
                     failOutputVerificationExamples.add(bbe)
                 }
             }
+            File tomlFile = new File("${baseBuildPath}/${bbe}/Ballerina.toml")
+            if (!tomlFile.exists()) {
+                prepareProject(bbe)
+            }
             boolean buildFailFlag = buildBBE(bbe)
             if (buildFailFlag) {
                 failedBuildExamples.add(bbe)
             }
+            delete tomlFile
         }
 
         boolean buildFailure = false
@@ -1342,4 +1358,6 @@ deleteTemporaryFiles.dependsOn packageDistWindows
 deleteTemporaryFiles.dependsOn testExamples
 deleteTemporaryFiles.dependsOn testStdlibs
 deleteTemporaryFiles.dependsOn testDevToolsIntegration
-build.dependsOn deleteTemporaryFiles
+test.dependsOn deleteTemporaryFiles
+test.dependsOn testExamples
+test.dependsOn testStdlibs

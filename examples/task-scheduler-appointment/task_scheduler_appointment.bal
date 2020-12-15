@@ -30,9 +30,9 @@ public function main() returns error? {
 }
 
 // Creating a service on the task listener.
-service appointmentService = service {
+service object {} appointmentService = service object {
     // This resource is triggered when the appointment is due.
-    resource function onTrigger() {
+    remote function onTrigger() {
         reminderCount += 1;
         io:println("Schedule is due - Reminder: ", reminderCount);
     }

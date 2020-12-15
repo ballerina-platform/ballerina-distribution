@@ -24,5 +24,3 @@ Data in Customers table:
 {"CUSTOMERID":3,"FIRSTNAME":"Bill","LASTNAME":"John","REGISTRATIONID":3,"CREDITLIMIT":3000.25,"COUNTRY":"USA"}
 
 Sample executed successfully!
-[ballerina/http] started HTTP/WS listener 192.168.1.18:43179
-[ballerina/http] stopped HTTP/WS listener 192.168.1.18:43179
