@@ -15,9 +15,9 @@ listener task:Listener appointment = new (appointmentConfiguration);
 int reminderCount = 0;
 
 // Creating a service bound to the task listener.
-service appointmentService on appointment {
+service on appointment {
     // This resource triggers when the appointment is due.
-    resource function onTrigger() {
+    remote function onTrigger() {
         reminderCount += 1;
         io:println("Schedule is due - Reminder: ", reminderCount);
     }

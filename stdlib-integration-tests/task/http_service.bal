@@ -29,8 +29,8 @@ listener http:Listener clientListener = new (15002);
 
 string http_payload = "";
 
-service PostToHttpService = service {
-    resource function onTrigger(string message) {
+service object {} PostToHttpService = service object {
+    remote function onTrigger(string message) {
         io:println("testing ..... task");
         http:Request request = new;
         request.setTextPayload(<@untainted string>message);
@@ -50,25 +50,16 @@ service PostToHttpService = service {
     }
 };
 
-@http:ServiceConfig {
-    basePath: "/"
-}
-service GetResultService on clientListener {
-    @http:ResourceConfig {
-        methods: ["GET"],
-        path: "/"
-    }
-    resource function getResult(http:Caller caller, http:Request request) {
+service / on clientListener {
+
+    resource function get .(http:Caller caller, http:Request request) {
         var result = caller->respond(http_payload);
     }
 }
 
-service HttpService on backEndListener {
-    @http:ResourceConfig {
-        methods: ["POST"],
-        path: "/"
-    }
-    resource function handlePost(http:Caller caller, http:Request request) {
+service /HttpService on backEndListener {
+
+    resource function post .(http:Caller caller, http:Request request) {
         http:Response response = new;
         var requestMessage = request.getTextPayload();
         if (requestMessage is error) {

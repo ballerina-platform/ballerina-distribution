@@ -37,7 +37,7 @@ function close(io:ReadableByteChannel|io:WritableByteChannel ch) {
     } channelResult = ch;
     var cr = channelResult.close();
     if (cr is error) {
-        log:printError("Error occurred while closing the channel: ", cr);
+        log:printError("Error occurred while closing the channel: ", err=cr);
     }
 }
 
@@ -52,7 +52,7 @@ public function main() returns error? {
     // Copies the source byte channel to the target byte channel.
     var result = copy(srcCh, dstCh);
     if (result is error) {
-        log:printError("error occurred while performing copy ", result);
+        log:printError("error occurred while performing copy ", err=result);
     } else {
         io:println("File copy completed. The copied file is located at " +
                     dstPath);
