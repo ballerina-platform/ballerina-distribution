@@ -689,6 +689,7 @@ task testExamples() {
             'rabbitmq-transaction-producer',
             'rabbitmq-transaction-consumer',
             'jdbc-complex-type-queries', // Consists date time in output
+            'jdbc-batch-execute-operation', // Consists transaction server sart log
             'log-api',
             'mysql-init-options',
             'mysql-query-operation',
