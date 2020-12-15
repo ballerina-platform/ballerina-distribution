@@ -808,10 +808,6 @@
                 "url": "http-client-data-binding"
             },
             {
-                "name": "Base Path and Path",
-                "url": "base-path-and-path"
-            },
-            {
                 "name": "Query Path Matrix Param",
                 "url": "query-path-matrix-param"
             },
