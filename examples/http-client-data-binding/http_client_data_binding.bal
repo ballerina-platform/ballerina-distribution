@@ -54,7 +54,7 @@ service /call on new http:Listener(9090) {
     }
 
     resource function get '5xx(http:Caller caller, http:Request request) {
-        var res = backendClient->post("/backend/get5XX", "want 500", targetType = json);
+        var res = backendClient->post("/backend/get5XX", "want 500", json);
         // When the data binding is expected to happen and if the `post` remote function gets a 5XX response from the
         // backend, the response will be returned as an [http:RemoteServerError](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/errors#RemoteServerError)
         // including the error message and status code.
@@ -72,7 +72,7 @@ service /call on new http:Listener(9090) {
         // When the data binding is expected to happen and if the client remote function gets a 4XX response from the
         // backend, the response will be returned as an [http:ClientRequestError](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/errors#ClientRequestError)
         // including the error message and status code.
-        var res = backendClient->post("/backend/err", "want 400", targetType = json);
+        var res = backendClient->post("/backend/err", "want 400", json);
         if (res is http:ClientRequestError) {
             http:Response resp = new;
             resp.statusCode = res.detail()?.statusCode ?: 400;
