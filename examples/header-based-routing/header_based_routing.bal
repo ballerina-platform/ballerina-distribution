@@ -39,7 +39,7 @@ service /hbr on new http:Listener(9090) {
         //[getHeader()](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request#getHeader) returns header value of the specified header name.
         string nameString = req.getHeader("x-type");
 
-        http:Response|http:Payload|error response;
+        http:Response|http:PayloadType|error response;
         if (nameString == "location") {
             //[post()](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Client#post) remote function represents the 'POST' operation
             // of the HTTP client.
