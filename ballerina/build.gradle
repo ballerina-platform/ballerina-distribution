@@ -618,6 +618,13 @@ task testExamples() {
             'secured-service-with-jwt-auth',
             'secured-service-with-ldap',
             'secured-service-with-oauth2',
+
+            //Disabling due to https://github.com/ballerina-platform/ballerina-lang/issues/27510
+            'graphql-resources-with-record-values',
+            'graphql-resources-with-scalar-values',
+            'class-definition',
+            'functional-iteration',
+
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
