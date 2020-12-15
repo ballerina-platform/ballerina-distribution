@@ -24,7 +24,7 @@ public function mockPrint(string msg, *log:KeyValues keyValues) {
 
 @test:Config {}
 function testFunc() {
-    // Invoking the main function
+    // Invoking the main function.
     main();
     test:assertEquals(printError, "error log with cause");
     test:assertEquals(print, "info log");
