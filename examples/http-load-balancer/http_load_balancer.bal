@@ -79,6 +79,7 @@ service /mock3 on backendEP {
 // Function to handle respond results
 function handleRespondResult(http:ListenerError? result) {
     if (result is http:ListenerError) {
-        log:printError("Error sending response from mock service", err = result);
+        log:printError("Error sending response from mock service",
+                        err = result);
     }
 }
