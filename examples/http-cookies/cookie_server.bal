@@ -3,16 +3,9 @@ import ballerina/log;
 
 listener http:Listener serverEP = new (9095);
 
-@http:ServiceConfig {
-    basePath: "/cookie-demo"
-}
+service /cookieDemo on serverEP {
 
-service cookieServer on serverEP {
-    @http:ResourceConfig {
-        methods: ["POST"],
-        path: "/login"
-    }
-    resource function login(http:Caller caller, http:Request req) {
+    resource function post login(http:Caller caller, http:Request req) {
         // Retrieve the JSON payload from the request as it
         // contains the login details of a user.
         json|error details = req.getJsonPayload();
@@ -44,18 +37,14 @@ service cookieServer on serverEP {
                     response.setTextPayload("Login succeeded");
                     var result = caller->respond(response);
                     if (result is error) {
-                        log:printError("Failed to respond", result);
+                        log:printError("Failed to respond", err = result);
                     }
                 }
             }
         }
     }
 
-    @http:ResourceConfig {
-        methods: ["GET"],
-        path: "/welcome"
-    }
-    resource function welcome(http:Caller caller, http:Request req) {
+    resource function get welcome(http:Caller caller, http:Request req) {
         // [Retrieve cookies from the request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request#getCookies).
         http:Cookie[] cookies = req.getCookies();
 
