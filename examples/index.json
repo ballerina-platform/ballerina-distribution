@@ -808,6 +808,10 @@
             {
                 "name": "Retry Transactions",
                 "url": "retry-transactions"
+            },
+            {
+                "name": "Distributed Transactions",
+                "url": "distributed-transactions"
             }
         ]
     },
