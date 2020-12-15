@@ -1005,7 +1005,7 @@ task testStdlibs() {
     patternSet.exclude("**/Ballerina.lock")
     patternSet.exclude("**/ballerina-internal.log")
     inputs.files(files("${distPath}/stdlib-integration-tests").asFileTree.matching(patternSet))
-    def ignoreList = ["kafka"]
+    def ignoreList = ["kafka", "auth", "jwt", "oauth2", "ldap"]
 
     doFirst {
         copy {
