@@ -1,15 +1,11 @@
 import ballerina/http;
 import ballerina/log;
 
-service sample on new http:Listener(9090) {
+service /sample on new http:Listener(9090) {
 
-    @http:ResourceConfig {
-        methods: ["GET"],
-        path: "/path/{foo}"
-    }
     // The `PathParam` and `QueryParam` parameters extract values from the request URI.
-    resource function params(http:Caller caller, http:Request req,
-                                string foo) {
+    resource function get path/[string foo](http:Caller caller,
+                                            http:Request req) {
         // Get the [QueryParam](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request#getQueryParamValue)
         // value for a given parameter key.
         var bar = req.getQueryParamValue("bar");
@@ -38,7 +34,7 @@ service sample on new http:Listener(9090) {
         var result = caller->respond(res);
 
         if (result is error) {
-            log:printError("Error when responding", result);
+            log:printError("Error when responding", err = result);
         }
     }
 }
