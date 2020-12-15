@@ -12,7 +12,7 @@ public function main() {
    
 
     string msg = "Hello Ballerina echo";
-    Datagram datagram = {
+    tcp:Datagram datagram = {
         remoteAddress : {
             host : "localhost",
             port : 48829
@@ -33,7 +33,7 @@ public function main() {
     
     // Wait until data receive from remote host.
     var result = socketClient->receive();
-    if (result is Datagram) {
+    if (result is tcp:Datagram) {
 
         var byteChannel = io:createReadableChannel(result.data);
         if (byteChannel is io:ReadableByteChannel) {
@@ -56,5 +56,5 @@ public function main() {
     if (closeResult is error) {
         io:println("An error occurred while closing the socket ",
             closeResult);
-    
+    }
 }
