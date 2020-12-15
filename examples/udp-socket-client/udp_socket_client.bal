@@ -12,7 +12,7 @@ public function main() {
    
 
     string msg = "Hello Ballerina echo";
-    tcp:Datagram datagram = {
+    udp:Datagram datagram = {
         remoteAddress : {
             host : "localhost",
             port : 48829
@@ -33,7 +33,7 @@ public function main() {
     
     // Wait until data receive from remote host.
     var result = socketClient->receive();
-    if (result is tcp:Datagram) {
+    if (result is udp:Datagram) {
 
         var byteChannel = io:createReadableChannel(result.data);
         if (byteChannel is io:ReadableByteChannel) {
