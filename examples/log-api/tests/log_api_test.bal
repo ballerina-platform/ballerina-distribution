@@ -4,7 +4,7 @@ import ballerina/log;
 string printError = "";
 string print = "";
 
-// This is the mock function which will replace the real function
+// This is the mock function, which will replace the real function.
 
 @test:Mock {
     moduleName: "ballerina/log",
