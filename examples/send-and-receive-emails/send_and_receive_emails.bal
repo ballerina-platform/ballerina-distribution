@@ -11,7 +11,7 @@ public function main() returns error? {
     // Define the email that is required to be sent.
     email:Message email = {
         // "TO", "CC", and "BCC" address lists are added as follows.
-        // Only "TO" address list is mandatory out of these three.
+        // Only the "TO" address list is mandatory out of these three.
         to: ["receiver1@email.com", "receiver2@email.com"],
         cc: ["receiver3@email.com", "receiver4@email.com"],
         bcc: ["receiver5@email.com"],
@@ -80,7 +80,7 @@ public function main() returns error? {
 
 }
 
-// Create the listener with the connection parameters and protocol-related
+// Create the listener with the connection parameters and the protocol-related
 // configuration. The polling interval specifies the time duration between each poll
 // performed by the listener in milliseconds.
 listener email:PopListener emailListener = new ({
