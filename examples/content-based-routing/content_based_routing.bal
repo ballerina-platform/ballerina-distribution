@@ -1,17 +1,9 @@
 import ballerina/http;
 import ballerina/log;
 
-@http:ServiceConfig {
-    basePath: "/cbr"
-}
-service contentBasedRouting on new http:Listener(9090) {
+service /cbr on new http:Listener(9090) {
 
-    // Use [resourceConfig](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/HttpResourceConfig) annotation to declare the HTTP method.
-    @http:ResourceConfig {
-        methods: ["POST"],
-        path: "/route"
-    }
-    resource function cbrResource(http:Caller outboundEP, http:Request req) {
+    resource function post route(http:Caller outboundEP, http:Request req) {
         // Define the attributes associated with the client endpoint here.
         http:Client locationEP = new ("http://www.mocky.io");
 
@@ -41,7 +33,7 @@ service contentBasedRouting on new http:Listener(9090) {
                 if (response is http:Response) {
                     var result = outboundEP->respond(<@untainted>response);
                     if (result is error) {
-                        log:printError("Error sending response", result);
+                        log:printError("Error sending response", err = result);
                     }
                 } else {
                     http:Response res = new;
@@ -49,7 +41,7 @@ service contentBasedRouting on new http:Listener(9090) {
                     res.setPayload((<@untainted error>response).message());
                     var result = outboundEP->respond(res);
                     if (result is error) {
-                        log:printError("Error sending response", result);
+                        log:printError("Error sending response", err = result);
                     }
                 }
             } else {
@@ -59,7 +51,7 @@ service contentBasedRouting on new http:Listener(9090) {
 
                 var result = outboundEP->respond(res);
                 if (result is error) {
-                    log:printError("Error sending response", result);
+                    log:printError("Error sending response", err = result);
                 }
             }
         } else {
@@ -69,7 +61,7 @@ service contentBasedRouting on new http:Listener(9090) {
 
             var result = outboundEP->respond(res);
             if (result is error) {
-                log:printError("Error sending response", result);
+                log:printError("Error sending response", err = result);
             }
         }
     }
