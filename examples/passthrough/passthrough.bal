@@ -38,7 +38,7 @@ service /passthrough on new http:Listener(9090) {
 // Sample hello world service.
 service /hello on new http:Listener(9092) {
 
-    // The `helloResource` only accepts requests made using the specified HTTP methods.
+    // The `helloResource` accepts any HTTP methods as the accessor is defined as `'default`.
     resource function 'default .(http:Caller caller, http:Request req) {
         // [Send the response](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Caller#respond) back to the caller.
         var result = caller->respond("Hello World!");
