@@ -9,7 +9,8 @@ http:Client clientEP = new ("http://localhost:9091/backEndService");
 //Service to test HTTP client remote functions with different payload types.
 service /actionService on new http:Listener(9090) {
 
-    resource function 'default messageUsage(http:Caller caller, http:Request req) {
+    resource function 'default messageUsage(http:Caller caller,
+                                            http:Request req) {
 
         //[GET](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Client#get) remote function without any payload.
         var response = clientEP->get("/greeting");
@@ -192,7 +193,8 @@ function handleResponse(http:Response|http:Payload|error response) {
                 if (payload is string) {
                     log:print("Response contains binary data: " + payload);
                 } else {
-                    log:printError("Error in parsing binary data", err = payload);
+                    log:printError("Error in parsing binary data",
+                                    err = payload);
                 }
             } else if (mime:MULTIPART_FORM_DATA == baseType) {
                 log:print("Response contains body parts: ");
@@ -200,7 +202,8 @@ function handleResponse(http:Response|http:Payload|error response) {
                 if (payload is mime:Entity[]) {
                     handleBodyParts(payload);
                 } else {
-                    log:printError("Error in parsing multipart data", err = payload);
+                    log:printError("Error in parsing multipart data",
+                                    err = payload);
                 }
             } else if (mime:IMAGE_PNG == baseType) {
                 log:print("Response contains an image");
