@@ -1,4 +1,4 @@
-// The `uuid` stdlib provides functions related to UUID(Universal Unique Identifier) such as
+// The `uuid` library provides functions related to UUID(Universal Unique Identifier) such as
 // generating different types of UUIDs, validating UUID strings and checking the UUID  version
 // of a UUID string.<br/><br/>
 // For more information on the underlying module,
