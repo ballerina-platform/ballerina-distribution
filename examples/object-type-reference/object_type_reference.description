@@ -1,6 +1,6 @@
-// Type references in a class or object provide a way to copy the members from a class or object
+// Type inclusions in a class or object provide a way to copy the members from a class or object
 // into another class or object. It is equivalent to declaring the members explicitly
-// within the new class, thus, eliminating redundancy. A class/object can have
-// zero or more type references and may have chained references as well.
-// Fields and method definitions can override referenced fields and methods
-// provided that they are sub-types of referenced field/method types.
+// within the new class/object, thus, eliminating redundancy. A class/object can have
+// zero or more type inclusions.
+// Fields and method definitions can override included fields and methods
+// provided that they are sub-types of included field/method types.
