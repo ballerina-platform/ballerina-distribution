@@ -812,6 +812,10 @@
             {
                 "name": "Retry Transactions",
                 "url": "retry-transactions"
+            },
+            {
+                "name": "XA Transactions",
+                "url": "xa-transactions"
             }
         ]
     },
