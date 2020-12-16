@@ -15,8 +15,8 @@ listener websub:Listener websubEP = new websub:Listener(8181);
 }
 service websub:SubscriberService /websub on websubEP {
 
-    // Define sthe resource, which accepts the intent verification requests.
-    // If the resource is not specified, intent verification happens automatically. It verifies if the topic specified in the intent
+    // Define the remote function, which accepts the intent verification requests.
+    // If the remote function is not specified, intent verification happens automatically. It verifies if the topic specified in the intent
     // verification request matches the topic specified as the annotation.
     remote function onIntentVerification(websub:Caller caller,
                                    websub:IntentVerificationRequest request) {
@@ -37,7 +37,7 @@ service websub:SubscriberService /websub on websubEP {
         }
     }
 
-    // Defines the resource that accepts the content delivery requests.
+    // Defines the remote function that accepts the content delivery requests.
     remote function onNotification(websub:Notification notification) {
         var payload = notification.getTextPayload();
         if (payload is string) {

@@ -15,7 +15,7 @@ listener websub:Listener websubEP = new (8181);
 }
 service websub:SubscriberService /websub on websubEP {
 
-    // This resource accepts content delivery requests.
+    // This remote function accepts content delivery requests.
     remote function onNotification(websub:Notification notification) {
         var payload = notification.getTextPayload();
         if (payload is string) {

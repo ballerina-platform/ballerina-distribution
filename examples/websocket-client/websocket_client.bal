@@ -1,5 +1,5 @@
-import ballerina/websocket;
 import ballerina/io;
+import ballerina/websocket;
 
 public function main() {
     // Creates a new [WebSocket client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/WebSocketClient) with the backend URL and assigns a callback service.

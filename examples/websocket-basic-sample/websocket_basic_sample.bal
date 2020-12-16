@@ -1,7 +1,7 @@
-import ballerina/websocket;
 import ballerina/http;
 import ballerina/io;
 import ballerina/log;
+import ballerina/websocket;
 
 string ping = "ping";
 byte[] pingData = ping.toBytes();

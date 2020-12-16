@@ -15,7 +15,7 @@ listener websub:Listener websubEP = new (8181);
     secret: "Kslk30SNF2AChs2"
 }
 service websub:SubscriberService /ordereventsubscriber on websubEP {
-    // Defines the resource, which accepts the content delivery requests.
+    // Defines the remote function, which accepts the content delivery requests.
     remote function onNotification(websub:Notification notification) {
         var payload = notification.getTextPayload();
         if (payload is string) {
