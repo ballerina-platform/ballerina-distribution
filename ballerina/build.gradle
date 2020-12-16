@@ -619,12 +619,6 @@ task testExamples() {
             'secured-service-with-ldap',
             'secured-service-with-oauth2',
 
-            //Disabling due to https://github.com/ballerina-platform/ballerina-lang/issues/27510
-            'graphql-resources-with-record-values',
-            'graphql-resources-with-scalar-values',
-            'class-definition',
-            'functional-iteration',
-
             // Disabling due to pending migration for service typing
             'websocket-cookie',
             'websocket-retry',
