@@ -19,7 +19,7 @@ function testText() {
 }
 
 service object {} callback = @websocket:ServiceConfig {} service object {
-    resource function onText(websocket:Client conn, string text, boolean finalFrame) {
+    remote function onText(websocket:Client conn, string text, boolean finalFrame) {
         serviceReply = <@untainted>text;
     }
 };
