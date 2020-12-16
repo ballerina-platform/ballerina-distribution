@@ -6,15 +6,9 @@ import ballerina/log;
 listener http:Listener http2ServiceEP = new (7090,
     config = {httpVersion: "2.0"});
 
-@http:ServiceConfig {
-    basePath: "/http2Service"
-}
-service http2Service on http2ServiceEP {
+service /http2Service on http2ServiceEP {
 
-    @http:ResourceConfig {
-        path: "/"
-    }
-    resource function http2Resource(http:Caller caller, http:Request req) {
+    resource function 'default .(http:Caller caller, http:Request req) {
 
         // [Send a Push Promise](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Caller#promise).
         http:PushPromise promise1 = new (path = "/resource1", method = "GET");

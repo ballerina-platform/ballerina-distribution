@@ -22,7 +22,7 @@ public function main() {
     var results = consumer->poll(1000);
 
     if (results is error) {
-        log:printError("Error occurred while polling ", results);
+        log:printError("Error occurred while polling ", err = results);
     }
     kafka:ConsumerRecord[] records = <kafka:ConsumerRecord[]>results;
     foreach var kafkaRecord in records {
@@ -35,7 +35,7 @@ public function main() {
 
         } else {
             log:printError("Error occurred while converting message data",
-                message);
+                err = message);
         }
     }
 }
