@@ -3,7 +3,7 @@ import ballerina/log;
 
 // The `absolute-resource-path` identifier represents the absolute path to the service.  When bound to a listener
 // endpoint, the service will be accessible at the specified path. If the path is omitted, then it defaults to `/`.
-// A string literal also can represent the absolute path. E.g., ``"/foo"`.
+// A string literal also can represent the absolute path. E.g., `"/foo"`.
 // The `type descriptor` represents the respective type of the service. E.g., `http:Service`.
 service http:Service /foo on new http:Listener(9090) {
 
