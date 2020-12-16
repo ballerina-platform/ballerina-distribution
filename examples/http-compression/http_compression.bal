@@ -13,15 +13,13 @@ listener http:Listener listenerEndpoint = new (9090);
         enable: http:COMPRESSION_AUTO
     }
 }
-service autoCompress on listenerEndpoint {
-    @http:ResourceConfig {
-        path: "/"
-    }
-    resource function invokeEndpoint(http:Caller caller, http:Request req) {
+service /autoCompress on listenerEndpoint {
+
+    resource function 'default .(http:Caller caller, http:Request req) {
         var result = caller->respond({"Type": "Auto compression"});
 
         if (result is error) {
-            log:printError("Error sending response", result);
+            log:printError("Error sending response", err = result);
         }
     }
 }
@@ -39,21 +37,22 @@ service autoCompress on listenerEndpoint {
         contentTypes: ["text/plain"]
     }
 }
-service alwaysCompress on listenerEndpoint {
+service /alwaysCompress on listenerEndpoint {
+
     // Since compression is only constrained to "text/plain" MIME type,
     // `getJson` resource does not compress the response entity body.
-    resource function getJson(http:Caller caller, http:Request req) {
+    resource function 'default getJson(http:Caller caller, http:Request req) {
         json msg = {"Type": "Always but constrained by content-type"};
         var result = caller->respond(msg);
         if (result is error) {
-            log:printError("Error sending response", result);
+            log:printError("Error sending response", err = result);
         }
     }
     // The response entity body is always compressed since MIME type has matched.
-    resource function getString(http:Caller caller, http:Request req) {
+    resource function 'default getString(http:Caller caller, http:Request req) {
         var result = caller->respond("Type : This is a string");
         if (result is error) {
-            log:printError("Error sending response", result);
+            log:printError("Error sending response", err = result);
         }
     }
 }
@@ -70,22 +69,20 @@ http:Client clientEndpoint = new ("http://localhost:9090", {
     }
 );
 
-service passthrough on new http:Listener(9092) {
-    @http:ResourceConfig {
-        path: "/"
-    }
-    resource function getCompressed(http:Caller caller, http:Request req) {
+service /passthrough on new http:Listener(9092) {
+
+    resource function 'default .(http:Caller caller, http:Request req) {
         var response = clientEndpoint->post("/backend/echo", <@untainted>req);
         if (response is http:Response) {
             var result = caller->respond(<@untainted>response);
             if (result is error) {
-                log:printError("Error sending response", result);
+                log:printError("Error sending response", err = result);
             }
         } else {
             json err = {"error": "error occurred while invoking service"};
             var result = caller->respond(err);
             if (result is error) {
-                log:printError("Error sending response", result);
+                log:printError("Error sending response", err = result);
             }
         }
     }
@@ -93,8 +90,8 @@ service passthrough on new http:Listener(9092) {
 
 // The compression behavior of the service is inferred by [COMPRESSION_AUTO](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/constants#COMPRESSION_AUTO), which is the default value
 // of the compression config.
-service backend on listenerEndpoint {
-    resource function echo(http:Caller caller, http:Request req) {
+service /backend on listenerEndpoint {
+    resource function 'default echo(http:Caller caller, http:Request req) {
         http:Response res = new;
         if (req.hasHeader("accept-encoding")) {
             string value = req.getHeader("accept-encoding");
@@ -106,7 +103,7 @@ service backend on listenerEndpoint {
 
         var result = caller->respond(res);
         if (result is error) {
-            log:printError("Error sending response", result);
+            log:printError("Error sending response", err = result);
         }
     }
 }

@@ -6,16 +6,9 @@ import ballerina/mime;
 // Creates an endpoint for the [client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Client).
 http:Client clientEndpoint = new ("http://localhost:9090");
 
-@http:ServiceConfig {
-    basePath: "/stream"
-}
-service HTTPStreamingService on new http:Listener(9090) {
+service /'stream on new http:Listener(9090) {
 
-    @http:ResourceConfig {
-        methods: ["GET"],
-        path: "/fileupload"
-    }
-    resource function handleOutputStream(http:Caller caller,
+    resource function get fileupload(http:Caller caller,
                                          http:Request clientRequest) {
         http:Request request = new;
 
@@ -36,7 +29,7 @@ service HTTPStreamingService on new http:Listener(9090) {
             }
         } else {
             log:printError("Error occurred while sending data to the client ",
-                            <error>clientResponse);
+                            err = <error>clientResponse);
             setError(res, <error>clientResponse);
         }
         var result = caller->respond(res);
@@ -46,11 +39,7 @@ service HTTPStreamingService on new http:Listener(9090) {
         }
     }
 
-    @http:ResourceConfig {
-        methods: ["POST"],
-        path: "/receiver"
-    }
-    resource function handleInputStream(http:Caller caller,
+    resource function post receiver(http:Caller caller,
                                         http:Request clientRequest) {
         http:Response res = new;
         var payload = clientRequest.getByteChannel();
@@ -123,6 +112,6 @@ function close(io:ReadableByteChannel|io:WritableByteChannel ch) {
     } channelResult = ch;
     var cr = channelResult.close();
     if (cr is error) {
-        log:printError("Error occurred while closing the channel: ", cr);
+        log:printError("Error occurred while closing the channel: ", err = cr);
     }
 }

@@ -32,21 +32,14 @@ http:ListenerConfiguration helloWorldEPConfig = {
 // Create a listener endpoint.
 listener http:Listener helloWorldEP = new (9095, helloWorldEPConfig);
 
-@http:ServiceConfig {
-    basePath: "/hello"
-}
 // Bind the service to the listener endpoint that you declared earlier.
-service helloWorld on helloWorldEP {
+service /helloWorld on helloWorldEP {
 
-    @http:ResourceConfig {
-        methods: ["GET"],
-        path: "/"
-    }
-    resource function sayHello(http:Caller caller, http:Request req) {
+    resource function get hello(http:Caller caller, http:Request req) {
         // Send the response to the caller.
         var result = caller->respond("Successful");
         if (result is error) {
-            log:printError("Error in responding", result);
+            log:printError("Error in responding", err = result);
         }
     }
 }

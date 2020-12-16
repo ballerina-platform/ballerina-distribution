@@ -2,9 +2,9 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run log_api.bal
-time = 2020-12-12 17:07:24,517 level = INFO  module = "" message = "info log"
-time = 2020-12-12 17:07:24,558 level = INFO  module = "" message = "info log" name = "foo" id = 845315
-time = 2020-12-12 17:07:24,560 level = INFO  module = "" message = "info log" name = "madhuka92" id = 845315
-time = 2020-12-12 17:07:24,562 level = ERROR module = "" message = "error log"
-time = 2020-12-12 17:07:24,563 level = ERROR module = "" message = "error log" name = "foo" id = 845315
-time = 2020-12-12 17:07:24,566 level = ERROR module = "" message = "error log with cause" error = "something went wrong!" name = "foo" id = 845315
+time = 2020-12-15 17:54:53,058 level = INFO  module = "" message = "info log"
+time = 2020-12-15 17:54:53,098 level = INFO  module = "" message = "info log" name = "foo" id = 845315
+time = 2020-12-15 17:54:53,100 level = INFO  module = "" message = "info log" name = "foo" id = 845315
+time = 2020-12-15 17:54:53,102 level = ERROR module = "" message = "error log"
+time = 2020-12-15 17:54:53,103 level = ERROR module = "" message = "error log" name = "foo" id = 845315
+time = 2020-12-15 17:54:53,105 level = ERROR module = "" message = "error log with cause" error = "something went wrong!" name = "foo" id = 845315

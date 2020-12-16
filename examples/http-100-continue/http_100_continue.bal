@@ -1,15 +1,9 @@
 import ballerina/http;
 import ballerina/log;
 
-@http:ServiceConfig {
-    basePath: "/hello"
-}
-service helloWorld on new http:Listener(9090) {
+service /hello on new http:Listener(9090) {
 
-    @http:ResourceConfig {
-        path: "/"
-    }
-    resource function hello(http:Caller caller, http:Request request) {
+    resource function 'default .(http:Caller caller, http:Request request) {
         // [Check if the client expects a 100-continue response](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request#expects100Continue).
         if (request.expects100Continue()) {
             string mediaType = request.getContentType();
@@ -17,7 +11,7 @@ service helloWorld on new http:Listener(9090) {
                 // Send a 100-continue response to the client.
                 var result = caller->continue();
                 if (result is error) {
-                    log:printError("Error sending response", result);
+                    log:printError("Error sending response", err = result);
                 }
             } else {
                 // Send a 417 response to ignore the payload since content type is mismatched
@@ -27,7 +21,7 @@ service helloWorld on new http:Listener(9090) {
                 res.setPayload("Unprocessable Entity");
                 var result = caller->respond(res);
                 if (result is error) {
-                    log:printError("Error sending response", result);
+                    log:printError("Error sending response", err = result);
                 }
                 return;
             }
@@ -38,19 +32,19 @@ service helloWorld on new http:Listener(9090) {
         http:Response res = new;
         var payload = request.getTextPayload();
         if (payload is string) {
-            log:printInfo(payload);
+            log:print(payload);
             res.statusCode = 200;
             res.setPayload("Hello World!\n");
             var result = caller->respond(res);
             if (result is error) {
-                log:printError("Error sending response", result);
+                log:printError("Error sending response", err = result);
             }
         } else {
             res.statusCode = 500;
             res.setPayload(<@untainted>payload.message());
             var result = caller->respond(res);
             if (result is error) {
-                log:printError("Error sending response", result);
+                log:printError("Error sending response", err = result);
             }
         }
     }

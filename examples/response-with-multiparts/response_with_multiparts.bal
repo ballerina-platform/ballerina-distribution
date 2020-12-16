@@ -9,15 +9,9 @@ http:Client clientEP = new ("http://localhost:9092");
 // Creates a listener for the service.
 listener http:Listener multipartEP = new (9090);
 
-@http:ServiceConfig {
-    basePath: "/multiparts"
-}
-service multipartResponseEncoder on new http:Listener(9092) {
-    @http:ResourceConfig {
-        methods: ["GET"],
-        path: "/encode_out_response"
-    }
-    resource function multipartSender(http:Caller caller,
+service /multiparts on new http:Listener(9092) {
+
+    resource function get encode_out_response(http:Caller caller,
                                         http:Request request) {
         // Creates an enclosing entity to hold the child parts.
         mime:Entity parentPart = new;
@@ -44,22 +38,16 @@ service multipartResponseEncoder on new http:Listener(9092) {
             contentType = mime:MULTIPART_FORM_DATA);
         var result = caller->respond(outResponse);
         if (result is error) {
-            log:printError("Error in responding ", result);
+            log:printError("Error in responding ", err = result);
         }
     }
 }
 
 // Binds the listener to the service.
-@http:ServiceConfig {
-    basePath: "/multiparts"
-}
-service multipartResponseDecoder on multipartEP {
-    @http:ResourceConfig {
-        methods: ["GET"],
-        path: "/decode_in_response"
-    }
+service /multiparts on multipartEP {
+
     // This resource accepts multipart responses.
-    resource function multipartReceiver(http:Caller caller,
+    resource function get decode_in_response(http:Caller caller,
                                         http:Request request) {
         http:Response inResponse = new;
         var returnResult = clientEP->get("/multiparts/encode_out_response");
@@ -80,7 +68,7 @@ service multipartResponseDecoder on multipartEP {
         }
         var result = caller->respond(res);
         if (result is error) {
-            log:printError("Error in responding ", result);
+            log:printError("Error in responding ", err = result);
         }
     }
 }
@@ -91,7 +79,7 @@ function handleNestedParts(mime:Entity parentPart) {
     if (contentTypeOfParent.startsWith("multipart/")) {
         var childParts = parentPart.getBodyParts();
         if (childParts is mime:Entity[]) {
-            log:printInfo("Nested Parts Detected!");
+            log:print("Nested Parts Detected!");
             foreach var childPart in childParts {
                 handleContent(childPart);
             }
@@ -111,25 +99,25 @@ function handleContent(mime:Entity bodyPart) {
         var payload = bodyPart.getXml();
         if (payload is xml) {
             string strValue = io:sprintf("%s", payload);
-             log:printInfo("XML data: " + strValue);
+             log:print("XML data: " + strValue);
         } else {
-             log:printError("Error in parsing XML data", payload);
+             log:printError("Error in parsing XML data", err = payload);
         }
     } else if (mime:APPLICATION_JSON == baseType) {
         // [Extracts `json` data](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/mime/classes/Entity#getJson) from the body part.
         var payload = bodyPart.getJson();
         if (payload is json) {
-            log:printInfo("JSON data: " + payload.toJsonString());
+            log:print("JSON data: " + payload.toJsonString());
         } else {
-             log:printError("Error in parsing JSON data", payload);
+             log:printError("Error in parsing JSON data", err = payload);
         }
     } else if (mime:TEXT_PLAIN == baseType) {
         // [Extracts text data](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/mime/classes/Entity#getText) from the body part.
         var payload = bodyPart.getText();
         if (payload is string) {
-            log:printInfo("Text data: " + payload);
+            log:print("Text data: " + payload);
         } else {
-            log:printError("Error in parsing text data", payload);
+            log:printError("Error in parsing text data", err = payload);
         }
     } else if (mime:APPLICATION_PDF == baseType) {
         // [Extracts byte channel](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Response#getByteChannel) from the body part and save it as a file.
@@ -140,12 +128,13 @@ function handleContent(mime:Entity bodyPart) {
                                         io:openWritableFile("ReceivedFile.pdf");
             var result = copy(payload, destinationChannel);
             if (result is error) {
-                log:printError("Error occurred while performing copy ", result);
+                log:printError("Error occurred while performing copy ",
+                                err = result);
             }
             close(payload);
             close(destinationChannel);
         } else {
-            log:printError("Error in parsing byte channel :", payload);
+            log:printError("Error in parsing byte channel :", err = payload);
         }
     }
 }
@@ -193,6 +182,6 @@ function close(io:ReadableByteChannel|io:WritableByteChannel ch) {
     } channelResult = ch;
     var cr = channelResult.close();
     if (cr is error) {
-        log:printError("Error occurred while closing the channel: ", cr);
+        log:printError("Error occurred while closing the channel: ", err = cr);
     }
 }
