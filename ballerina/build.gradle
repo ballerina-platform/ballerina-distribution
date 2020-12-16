@@ -618,7 +618,14 @@ task testExamples() {
             'counter-metrics',
             'tracing',
             'openapi-to-ballerina',
-            'taint-checking' // Should not compile
+            'taint-checking', // Should not compile
+            'secured-client-with-basic-auth',
+            'secured-client-with-jwt-auth',
+            'secured-client-with-oauth2',
+            'secured-service-with-basic-auth',
+            'secured-service-with-jwt-auth',
+            'secured-service-with-ldap',
+            'secured-service-with-oauth2',
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
@@ -682,6 +689,7 @@ task testExamples() {
             'rabbitmq-transaction-producer',
             'rabbitmq-transaction-consumer',
             'jdbc-complex-type-queries', // Consists date time in output
+            'jdbc-batch-execute-operation', // Consists transaction server sart log
             'log-api',
             'mysql-init-options',
             'mysql-query-operation',
@@ -705,6 +713,7 @@ task testExamples() {
             'secured-client-with-jwt-auth', // Need to run the service first
             'secured-client-with-oauth2', // Need to run the service first
             'send-and-receive-emails',
+            'task-service-timer',       // Services needs to be stopped during build
             'task-service-appointment',
             'error-handling-in-single-place',
             'file-io'
@@ -997,7 +1006,7 @@ task testStdlibs() {
     patternSet.exclude("**/Ballerina.lock")
     patternSet.exclude("**/ballerina-internal.log")
     inputs.files(files("${distPath}/stdlib-integration-tests").asFileTree.matching(patternSet))
-    def ignoreList = ["kafka"]
+    def ignoreList = ["kafka", "auth", "jwt", "oauth2", "ldap"]
 
     doFirst {
         copy {

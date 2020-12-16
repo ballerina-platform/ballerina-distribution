@@ -45,15 +45,9 @@ ResponseFilter responseFilter = new;
 listener http:Listener echoListener = new http:Listener(9090,
                     config = {filters: [requestFilter, responseFilter]});
 
-@http:ServiceConfig {
-    basePath: "/hello"
-}
-service echo on echoListener {
-    @http:ResourceConfig {
-        methods: ["GET"],
-        path: "/sayHello"
-    }
-    resource function echo(http:Caller caller, http:Request req) {
+service /hello on echoListener {
+
+    resource function get sayHello(http:Caller caller, http:Request req) {
         // Create a new http response.
         http:Response res = new;
         // Set the `filter_name_header` from the request to the response.
@@ -61,8 +55,7 @@ service echo on echoListener {
         res.setPayload("Hello, World!");
         var result = caller->respond(<@untainted>res);
         if (result is error) {
-            log:printError("Error sending response", result);
+            log:printError("Error sending response", err = result);
         }
     }
 }
-

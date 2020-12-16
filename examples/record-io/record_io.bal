@@ -62,7 +62,7 @@ function closeRc(io:ReadableTextRecordChannel rc) {
     var closeResult = rc.close();
     if (closeResult is error) {
         log:printError("Error occurred while closing the channel: ",
-                        closeResult);
+                        err=closeResult);
     }
 }
 
@@ -71,7 +71,7 @@ function closeWc(io:WritableTextRecordChannel wc) {
     var closeResult = wc.close();
     if (closeResult is error) {
         log:printError("Error occurred while closing the channel: ",
-                        closeResult);
+                        err=closeResult);
     }
 }
 
@@ -87,7 +87,7 @@ public function main() {
                                                      "UTF-8", "\\r?\\n", ",");
     if (readableChannel is error) {
         log:printError("An error occurred while creating readable record " +
-                        "channel. ", readableChannel);
+                        "channel. ", err=readableChannel);
         return;
     } else {
         srcRecordChannel = readableChannel;
@@ -100,7 +100,7 @@ public function main() {
                                                         "UTF-8", "\r\n", "|");
     if (writableChannel is error) {
         log:printError("An error occurred while creating writable record " +
-                        "channel. ", writableChannel);
+                        "channel. ", err=writableChannel);
         return;
     } else {
         dstRecordChannel = writableChannel;
@@ -111,7 +111,7 @@ public function main() {
     var result = process(srcRecordChannel, dstRecordChannel);
     if (result is error) {
         log:printError("An error occurred while processing the records: ",
-                        result);
+                        err=result);
     } else {
         io:println("Processing completed. The processed file is located in ",
                     dstFileName);

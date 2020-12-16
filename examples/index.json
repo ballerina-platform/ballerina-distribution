@@ -686,6 +686,10 @@
                 "url": "task-service-timer"
             },
             {
+                "name": "UUID",
+                "url": "uuid"
+            },
+            {
                 "name": "XSLT Transformation",
                 "url": "xslt-transformation"
             }
@@ -829,10 +833,6 @@
                 "url": "http-client-data-binding"
             },
             {
-                "name": "Base Path and Path",
-                "url": "base-path-and-path"
-            },
-            {
                 "name": "Query Path Matrix Param",
                 "url": "query-path-matrix-param"
             },
@@ -942,7 +942,7 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "GraphQL Resources Returning Record Values",
+                "name": "GraphQL Resources with Record Values",
                 "url": "graphql-resources-with-record-values"
             }
         ]

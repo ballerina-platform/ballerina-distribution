@@ -16,7 +16,7 @@ service rabbitmq:Service on channelListener {
                                                     rabbitmq:Caller caller) {
         string|error messageContent = 'string:fromBytes(message.content);
         if (messageContent is string) {
-            log:printInfo("The message received: " + messageContent);
+            log:print("The message received: " + messageContent);
         } else {
             log:printError(
                         "Error occurred while retrieving the message content.");

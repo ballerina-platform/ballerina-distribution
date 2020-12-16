@@ -3,14 +3,14 @@
 ballerina run different_payload_types.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9091
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
-2018-12-04 21:17:59,696 INFO  [ballerina/log] - Text data: Hello
-2018-12-04 21:17:59,717 INFO  [ballerina/log] - Text data: Hello
-2018-12-04 21:17:59,727 INFO  [ballerina/log] - Entity body is not available
-2018-12-04 21:17:59,737 INFO  [ballerina/log] - Text data: Sample Text
-2018-12-04 21:18:00,005 INFO  [ballerina/log] - Xml data: <yy>Sample Xml</yy>
-2018-12-04 21:18:00,026 INFO  [ballerina/log] - Json data: {"name":"apple", "color":"red"}
-2018-12-04 21:18:00,036 INFO  [ballerina/log] - Response contains binary data: Sample Text
-2018-12-04 21:18:00,051 INFO  [ballerina/log] - Response contains an image
-2018-12-04 21:18:00,081 INFO  [ballerina/log] - Response contains body parts:
-2018-12-04 21:18:00,084 INFO  [ballerina/log] - Json Part: {"name":"Jane"}
-2018-12-04 21:18:00,085 INFO  [ballerina/log] - Text Part: Hello
+time = 2020-12-15 17:41:04,032 level = INFO  module = "" message = "Text data: Hello"
+time = 2020-12-15 17:41:04,050 level = INFO  module = "" message = "Text data: Hello"
+time = 2020-12-15 17:41:04,055 level = INFO  module = "" message = "Entity body is not available"
+time = 2020-12-15 17:41:04,062 level = INFO  module = "" message = "Text data: Sample Text"
+time = 2020-12-15 17:41:04,206 level = INFO  module = "" message = "Xml data: <yy>Sample Xml</yy>"
+time = 2020-12-15 17:41:04,224 level = INFO  module = "" message = "Json data: {"name":"apple", "color":"red"}"
+time = 2020-12-15 17:41:04,232 level = INFO  module = "" message = "Response contains binary data: Sample Text"
+time = 2020-12-15 17:41:04,256 level = INFO  module = "" message = "Response contains an image"
+time = 2020-12-15 17:41:04,275 level = INFO  module = "" message = "Response contains body parts: "
+time = 2020-12-15 17:41:04,280 level = INFO  module = "" message = "Json Part: {"name":"Jane"}"
+time = 2020-12-15 17:41:04,281 level = INFO  module = "" message = "Text Part: Hello"

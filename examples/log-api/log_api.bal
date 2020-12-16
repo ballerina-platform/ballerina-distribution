@@ -8,9 +8,9 @@ public function main() {
     log:print("info log");
     log:print("info log", id = 845315, name = "foo");
     log:print("info log", id = 845315,
-    name = isolated function() returns string { return "foo";});
+              name = isolated function() returns string { return "foo";});
     log:printError("error log");
     log:printError("error log",
-    id = isolated function() returns int { return 845315;}, name = "foo");
+        id = isolated function() returns int { return 845315;}, name = "foo");
     log:printError("error log with cause", err = e, id = 845315, name = "foo");
 }
