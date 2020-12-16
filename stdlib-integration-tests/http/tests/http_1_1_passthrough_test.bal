@@ -21,7 +21,7 @@ import ballerina/test;
 
 listener http:Listener passthroughEP1 = new(9113);
 
-service /passthrough on passthroughEP1 {
+service http:Service /passthrough on passthroughEP1 {
 
     resource function get .(http:Caller caller, http:Request clientRequest) {
         http:Client nyseEP1 = new("http://localhost:9113");
@@ -64,9 +64,9 @@ service /passthrough on passthroughEP1 {
     }
 }
 
-service /nyseStock on passthroughEP1 {
+service http:Service /nyseStock on passthroughEP1 {
 
-    resource function get stocks(http:Caller caller, http:Request clientRequest) {
+    resource function get stocks(http:Caller caller) {
         checkpanic caller->respond({ "exchange": "nyse", "name": "IBM", "value": "127.50" });
     }
 
@@ -111,7 +111,7 @@ public function testPassthroughServiceByBasePath() {
             test:assertEquals(body.toJsonString(), "{\"exchange\":\"nyse\", \"name\":\"IBM\", \"value\":\"127.50\"}");
         } else {
             test:assertFail(msg = "Found unexpected output: " + body.message());
-        } 
+        }
     } else {
         test:assertFail(msg = "Found unexpected output: " +  (<error>resp).message());
     }
@@ -129,7 +129,7 @@ public function testPassthroughServiceWithMimeEntity() {
             test:assertEquals(body, "payload :Hello from POST!, header: text/plain, entity-check-header");
         } else {
             test:assertFail(msg = "Found unexpected output: " + body.message());
-        } 
+        }
     } else {
         test:assertFail(msg = "Found unexpected output: " +  (<error>resp).message());
     }
@@ -168,7 +168,7 @@ public function testPassthroughWithMultiparts() {
             } else {
                 test:assertFail(msg = "Found an unexpected output: " + txtPart2.message());
             }
-        }         
+        }
     } else {
         test:assertFail(msg = "Found unexpected output: " +  (<error>resp).message());
     }
