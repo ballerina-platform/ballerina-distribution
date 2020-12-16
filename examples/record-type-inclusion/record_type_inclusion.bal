@@ -27,7 +27,7 @@ public function main() {
 
     // Type inclusion copies the fields including their properties
     // (e.g., type, default value, optional status). As it can be seen
-    // by printing an `Employee` record, the optional field company
+    // by printing an `Employee` record, the optional field (`company`)
     // is not included in the record.
     io:println(john);
     io:println(jane);
