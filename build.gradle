@@ -494,21 +494,6 @@ subprojects {
         /* Ballerina Dev Tools */
         devTools "org.ballerinalang:ballerina-dev-tools:${devToolsVersion}"
 
-        /* AWSLambda extension */
-        exten "org.ballerinax.awslambda:awslambda-extension:${awslambdaVersion}"
-        awsLambdaBalo "org.ballerinax.awslambda:awslambda-extension-balo:${awslambdaVersion}"
-        awsLambdaExamples "org.ballerinax.awslambda:awslambda-extension-examples:${awslambdaVersion}@zip"
-
-        /* Azure Functions extension */
-        exten "org.ballerinax.azurefunctions:azurefunctions-extension:${azFunctionsVersion}"
-        azFunctionsBalo "org.ballerinax.azurefunctions:azurefunctions-extension-balo:${azFunctionsVersion}"
-        azFunctionsExamples "org.ballerinax.azurefunctions:azurefunctions-extension-examples:${azFunctionsVersion}@zip"
-
-        /* Docker extension */
-        exten "org.ballerinax.docker:docker-extension:${dockerVersion}@jar"
-        dockerAnnotations "org.ballerinax.docker:docker-extension-annotations:${dockerVersion}"
-        dockerExamples "org.ballerinax.docker:docker-extension-examples:${dockerVersion}@zip"
-
         /* Data Mapper extension */
         exten "org.ballerinax.datamapper:datamapper-extension:${dataMapperVersion}@jar"
 
