@@ -647,7 +647,7 @@ task testExamples() {
             'the-main-function', //Needs user input
             'local-transactions',  // Xid varies
             'local-transactions-with-handlers', // Xid varies
-            'xa-transactions', // Consists transaction coordinator start log
+            'xa-transactions', // Consists of the transaction coordinator start log
             'retry-transactions', // Xid varies
             'optional-type',  // Needs inputs at runtime
             'while',        // Needs inputs at runtime

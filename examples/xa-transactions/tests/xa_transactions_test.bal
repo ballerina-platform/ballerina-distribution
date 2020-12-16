@@ -2,7 +2,7 @@ import ballerina/test;
 
 (any|error)[] outputs = [];
 
-// This is the mock function which will replace the real function
+// This is the mock function, which will replace the real function.
 @test:Mock {
     moduleName: "ballerina/io",
     functionName: "println"
@@ -15,7 +15,7 @@ public function mockPrint(any|error... s) {
 
 @test:Config {}
 function testFunc() {
-    // Invoking the main function
+    // Invoking the main function.
     error? output = main();
     int len = outputs.length();
     test:assertExactEquals(outputs[len-7], "Transaction Info: ");
