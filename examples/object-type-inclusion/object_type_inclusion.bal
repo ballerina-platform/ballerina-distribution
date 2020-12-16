@@ -14,7 +14,7 @@ type Person object {
 
 // Defines another object type called `Employee`, which "includes" the `Person` object.
 type Employee object {
-    // Add an object type (`Person`) inclusion
+    // Add an object type (`Person`) inclusion.
     // All the member fields and member-method declarations will be copied from the `Person` object.
     *Person;
     public float|string salary;
