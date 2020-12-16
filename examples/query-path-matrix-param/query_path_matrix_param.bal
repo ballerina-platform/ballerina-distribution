@@ -4,6 +4,7 @@ import ballerina/log;
 service /sample on new http:Listener(9090) {
 
     // The `PathParam` and `QueryParam` parameters extract values from the request URI.
+    // Path param is defined as a part of the resource path along with the type.
     resource function get path/[string foo](http:Caller caller,
                                             http:Request req) {
         // Get the [QueryParam](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request#getQueryParamValue)

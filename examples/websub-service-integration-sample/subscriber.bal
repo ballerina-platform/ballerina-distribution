@@ -9,20 +9,20 @@ listener websub:Listener websubEP = new (8181);
 // A subscription request would be sent to the hub with the topic discovered at the
 // resource URL specified.
 @websub:SubscriberServiceConfig {
-    path: "/ordereventsubscriber",
     subscribeOnStartUp: true,
     target: "http://localhost:9090/ordermgt/order",
     leaseSeconds: 3600,
     secret: "Kslk30SNF2AChs2"
 }
-service websubSubscriber on websubEP {
-    // Defines the resource, which accepts the content delivery requests.
-    resource function onNotification(websub:Notification notification) {
+service websub:SubscriberService /ordereventsubscriber on websubEP {
+    // Defines the remote function, which accepts the content delivery requests.
+    remote function onNotification(websub:Notification notification) {
         var payload = notification.getTextPayload();
         if (payload is string) {
-            log:printInfo("WebSub Notification Received: " + payload);
+            log:print("WebSub Notification Received: " + payload);
         } else {
-            log:printError("Error retrieving payload as string", payload);
+            log:printError("Error retrieving payload as string",
+                              err = payload);
         }
     }
 }
