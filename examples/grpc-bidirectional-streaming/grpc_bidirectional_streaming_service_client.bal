@@ -38,20 +38,20 @@ public function main() {
 }
 
 
-service ChatMessageListener = service {
+service object{} ChatMessageListener = service object {
 
     // Resource registered to receive server messages.
-    resource function onMessage(string message) {
+    function onMessage(string message) {
         io:println("Response received from server: " + message);
     }
 
     // Resource registered to receive server error messages.
-    resource function onError(error err) {
+    function onError(error err) {
         io:println("Error reported from server: " + err.message());
     }
 
     // Resource registered to receive server completed message.
-    resource function onComplete() {
+    function onComplete() {
         io:println("Server Complete Sending Responses.");
     }
 };

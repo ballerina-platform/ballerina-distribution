@@ -2,11 +2,11 @@ import ballerina/io;
 import ballerinax/rabbitmq;
 
 public function main() {
-    // Creates a ballerina RabbitMQ channel.
-    rabbitmq:Channel newChannel = new ({host: "localhost", port: 5672});
+    // Creates a ballerina RabbitMQ Client.
+    rabbitmq:Client newClient = new ({host: "localhost", port: 5672});
 
     // Declares the queue.
-    var queueResult = newChannel->queueDeclare({queueName: "MyQueue"});
+    var queueResult = newClient->queueDeclare("MyQueue");
     if (queueResult is error) {
         io:println("An error occurred while creating the queue");
     } else {
@@ -14,8 +14,9 @@ public function main() {
     }
     transaction {
         // Publishes the message using the routing key named "MyQueue".
-        var sendResult = newChannel->basicPublish("Hello from Ballerina",
-                                                  "MyQueue");
+        var sendResult = newClient->basicPublish(
+                                        "Hello from Ballerina".toBytes(),
+                                        "MyQueue");
         if (sendResult is error) {
             io:println("An error occurred while sending the message");
         } else {

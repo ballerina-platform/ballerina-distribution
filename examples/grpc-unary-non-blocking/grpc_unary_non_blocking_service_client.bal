@@ -21,20 +21,20 @@ public function main() {
 }
 
 // Server Message Listener.
-service HelloWorldMessageListener = service {
+service object{} HelloWorldMessageListener = service object {
 
     // The `resource` registered to receive server messages.
-    resource function onMessage(string message) {
+    function onMessage(string message) {
         io:println("Response received from server: " + message);
     }
 
     // The `resource` registered to receive server error messages.
-    resource function onError(error err) {
+    function onError(error err) {
         io:println("Error reported from server: " + err.message());
     }
 
     // The `resource` registered to receive server completed messages.
-    resource function onComplete() {
+    function onComplete() {
         io:println("Server Complete Sending Response.");
         total = 1;
     }

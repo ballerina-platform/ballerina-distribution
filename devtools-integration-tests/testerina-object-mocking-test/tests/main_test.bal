@@ -4,15 +4,15 @@ import ballerina/http;
 public client class MockHttpClient {
     public string url = "http://mockUrl";
 
-    public remote function get(@untainted string path, http:RequestMessage message = (),
+     remote function get(@untainted string path, http:RequestMessage message = (),
         http:TargetType targetType = http:Response) returns http:Response|http:ClientError {
             http:Response res = new;
             res.statusCode = 500;
             return res;
     }
 
-    public remote function post(@untainted string path, http:RequestMessage message = (),
-        http:TargetType targetType = http:Response) returns http:Response|http:Payload|http:ClientError {
+     remote function post(@untainted string path, http:RequestMessage message = (),
+        http:TargetType targetType = http:Response) returns http:Response|http:PayloadType|http:ClientError {
             http:Response res = new;
             res.statusCode = 500;
             return res;

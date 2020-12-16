@@ -1,7 +1,7 @@
 import ballerina/io;
 import ballerina/java;
 
-// The [@java:Constructor](https://ballerina.io/swan-lake/learn/api-docs/ballerina/java/annotations.html#Constructor) 
+// The [@java:Constructor](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/java/annotations#Constructor) 
 // annotation links the default constructor of
 // the class `java.util.ArrayDeque` with this Ballerina function declaration.
 function newArrayDeque() returns handle = @java:Constructor {

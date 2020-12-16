@@ -3,4 +3,4 @@
 // and it should be configured to use the SASL/PLAIN authentication mechanism.
 // <br/><br/>
 // For more information on the underlying module,
-// see the [Kafka module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/kafka/index.html).
+// see the [Kafka module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/kafka/).

@@ -3,16 +3,9 @@ import ballerina/log;
 
 listener http:Listener serverEP = new (9095);
 
-@http:ServiceConfig {
-    basePath: "/cookie-demo"
-}
+service /cookieDemo on serverEP {
 
-service cookieServer on serverEP {
-    @http:ResourceConfig {
-        methods: ["POST"],
-        path: "/login"
-    }
-    resource function login(http:Caller caller, http:Request req) {
+    resource function post login(http:Caller caller, http:Request req) {
         // Retrieve the JSON payload from the request as it
         // contains the login details of a user.
         json|error details = req.getJsonPayload();
@@ -26,7 +19,7 @@ service cookieServer on serverEP {
                 // Check the password value.
                 if (password == "p@ssw0rd") {
 
-                    // [Create a new cookie](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Cookie.html) by setting `name` as the `username`
+                    // [Create a new cookie](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Cookie) by setting `name` as the `username`
                     // and `value` as the logged-in user's name.
                     http:Cookie cookie = new("username", name.toString());
 
@@ -36,7 +29,7 @@ service cookieServer on serverEP {
 
                     http:Response response = new;
 
-                    // [Add the created cookie to the response](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Response.html#addCookie).
+                    // [Add the created cookie to the response](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Response#addCookie).
                     response.addCookie(cookie);
 
                     // Set a message payload to inform that the login has
@@ -44,19 +37,15 @@ service cookieServer on serverEP {
                     response.setTextPayload("Login succeeded");
                     var result = caller->respond(response);
                     if (result is error) {
-                        log:printError("Failed to respond", result);
+                        log:printError("Failed to respond", err = result);
                     }
                 }
             }
         }
     }
 
-    @http:ResourceConfig {
-        methods: ["GET"],
-        path: "/welcome"
-    }
-    resource function welcome(http:Caller caller, http:Request req) {
-        // [Retrieve cookies from the request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html#getCookies).
+    resource function get welcome(http:Caller caller, http:Request req) {
+        // [Retrieve cookies from the request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request#getCookies).
         http:Cookie[] cookies = req.getCookies();
 
         // Get the cookie value of the `username`.

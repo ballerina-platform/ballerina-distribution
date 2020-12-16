@@ -1,7 +1,7 @@
 import ballerina/io;
 import ballerina/task;
 
-// The [`task:AppointmentConfiguration`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/task/records/AppointmentConfiguration.html) record of the task listener.
+// The [`task:AppointmentConfiguration`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/task/records/AppointmentConfiguration) record of the task listener.
 task:AppointmentConfiguration appointmentConfiguration = {
     // This CRON expression will schedule the appointment every second.
     cronExpression: "* * * * * ?",
@@ -15,9 +15,9 @@ listener task:Listener appointment = new (appointmentConfiguration);
 int reminderCount = 0;
 
 // Creating a service bound to the task listener.
-service appointmentService on appointment {
+service on appointment {
     // This resource triggers when the appointment is due.
-    resource function onTrigger() {
+    remote function onTrigger() {
         reminderCount += 1;
         io:println("Schedule is due - Reminder: ", reminderCount);
     }

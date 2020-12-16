@@ -6,7 +6,7 @@ int reminderCount = 0;
 
 public function main() returns error? {
 
-    // The [`task:AppointmentConfiguration`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/task/records/AppointmentConfiguration.html) record of the task scheduler.
+    // The [`task:AppointmentConfiguration`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/task/records/AppointmentConfiguration) record of the task scheduler.
     task:AppointmentConfiguration appointmentConfiguration = {
         // This CRON expression will schedule the appointment every two second.
         cronExpression: "0/2 * * ? * * *"
@@ -30,9 +30,9 @@ public function main() returns error? {
 }
 
 // Creating a service on the task listener.
-service appointmentService = service {
+service object {} appointmentService = service object {
     // This resource is triggered when the appointment is due.
-    resource function onTrigger() {
+    remote function onTrigger() {
         reminderCount += 1;
         io:println("Schedule is due - Reminder: ", reminderCount);
     }

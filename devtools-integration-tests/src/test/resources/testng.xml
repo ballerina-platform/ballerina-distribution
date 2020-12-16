@@ -21,6 +21,8 @@
     <test name="ballerina-dev-tools-tests" parallel="false">
         <classes>
             <class name="org.ballerina.devtools.central.CentralTest"/>
+            <class name="org.ballerina.devtools.debug.ModuleBreakpointTest"/>
+            <class name="org.ballerina.devtools.debug.ServiceDebugTest"/>
         </classes>
     </test>
 </suite>

@@ -14,7 +14,7 @@ kafka:AuthenticationConfiguration authConfig = {
 
 kafka:ProducerConfiguration producerConfigs = {
     bootstrapServers: "localhost:9092",
-    valueSerializerType: kafka:SER_STRING,
+    valueSerializerType: kafka:SER_BYTE_ARRAY,
     // Provide the relevant authentication configuration record to authenticate the producer.
     authenticationConfiguration: authConfig
 
@@ -23,7 +23,8 @@ kafka:ProducerConfiguration producerConfigs = {
 kafka:Producer kafkaProducer = new (producerConfigs);
 
 public function main() {
-    var result = kafkaProducer->send("Hello from Ballerina", "topic-sasl");
+    string message = "Hello from Ballerina";
+    var result = kafkaProducer->send(message.toBytes(), "topic-sasl");
     if (result is error) {
         io:println(result);
     } else {

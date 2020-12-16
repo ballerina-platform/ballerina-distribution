@@ -77,14 +77,6 @@ task unpackAwsLambdaBalo(type: Copy) {
     }
 }
 
-task unpackAzFunctionsBalo(type: Copy) {
-    group = "unpack_dependencies"
-    configurations.azFunctionsBalo.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        from zipTree(artifact.getFile())
-        into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
-    }
-}
-
 task unpackAwsLambdaExamples(type: Copy) {
     group = "unpack_dependencies"
     configurations.awsLambdaExamples.resolvedConfiguration.resolvedArtifacts.each { artifact ->
@@ -143,7 +135,7 @@ task unpackC2cExamples(type: Copy) {
     group = "unpack_dependencies"
     configurations.ballerinaC2cExamples.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         from zipTree(artifact.getFile())
-        into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
+        into new File("${buildDir}/target/extracted-distributions", "c2c-examples-zip")
     }
 }
 
@@ -269,40 +261,10 @@ task packageDist(type: Zip) {
         from "${project.rootDir}/examples/"
         fileMode = 0755
     }
-    // Code2Cloud Extensions
+    // Code2Cloud Extension Examples
     into("${parentDir}/examples") {
-        from "build/target/extracted-distributions/awslambda-extension-examples-zip"
+        from "build/target/extracted-distributions/c2c-examples-zip"
         exclude "index.js"
-    }
-    into("${parentDir}/examples") {
-        from "build/target/extracted-distributions/azurefunctions-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/examples") {
-        from "build/target/extracted-distributions/docker-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/examples") {
-        from "build/target/extracted-distributions/c2c-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/repo/cache/") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/cache"
-    }
-    into("${parentDir}/repo/cache") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/cache"
-    }
-    into("${parentDir}/repo/cache") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/cache"
-    }
-    into("${parentDir}/repo/balo/") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/balo/"
-    }
-    into("${parentDir}/repo/balo/") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/balo/"
-    }
-    into("${parentDir}/repo/balo/") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/balo/"
     }
 
     /* Files */
@@ -338,40 +300,10 @@ task packageDistZip(type: Zip) {
         from "${project.rootDir}/examples/"
         fileMode = 0755
     }
-    // Code2Cloud Extensions
+    // Code2Cloud Extension Examples
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/awslambda-extension-examples-zip"
+        from "build/target/extracted-distributions/c2c-examples-zip"
         exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/azurefunctions-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/docker-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/c2c-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/cache"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/cache"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/cache"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/balo/"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/balo/"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/balo/"
     }
 
     /* Tools artifacts */
@@ -440,40 +372,10 @@ task packageDistLinux(type: Zip) {
         from "${project.rootDir}/examples/"
         fileMode = 0755
     }
-    // Code2Cloud Extensions
+    // Code2Cloud Extension Examples
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/awslambda-extension-examples-zip"
+        from "build/target/extracted-distributions/c2c-examples-zip"
         exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/azurefunctions-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/docker-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/c2c-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/cache"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/cache"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/cache"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/balo/"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/balo/"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/balo/"
     }
 
     /* Tools artifacts */
@@ -538,40 +440,10 @@ task packageDistMac(type: Zip) {
         fileMode = 0755
     }
 
-    // Code2Cloud Extensions
+    // Code2Cloud Extension Examples
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/awslambda-extension-examples-zip"
+        from "build/target/extracted-distributions/c2c-examples-zip"
         exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/azurefunctions-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/docker-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/c2c-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/cache"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/cache"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/cache"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/balo/"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/balo/"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/balo/"
     }
 
     /* Tools artifacts */
@@ -631,40 +503,10 @@ task packageDistWindows(type: Zip) {
         fileMode = 0755
     }
 
-    // Code2Cloud Extensions
+    // Code2Cloud Extension Examples
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/awslambda-extension-examples-zip"
+        from "build/target/extracted-distributions/c2c-examples-zip"
         exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/azurefunctions-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/docker-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
-        from "build/target/extracted-distributions/c2c-extension-examples-zip"
-        exclude "index.js"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache/") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/cache"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/cache"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/cache") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/cache"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/balo/"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/balo/"
-    }
-    into("${parentDir}/distributions/ballerina-${shortVersion}/repo/balo/") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/balo/"
     }
 
     /* Tools artifacts */
@@ -731,16 +573,6 @@ task testExamples() {
 
     // The following BBEs will not be verified by compiling/running.
     def buildIgnoreList = [
-            'task-scheduler-appointment',
-            'http-retry',
-            'http-failover',
-            'http-load-balancer',
-            'http-circuit-breaker',
-            'http-redirects',
-            'cache',
-            'websocket-proxy-server',
-            'record-io',
-            'send_and_receive_emails',
             'proto-to-ballerina',
             'websub-hub-client-sample',
             'websub-remote-hub-sample',
@@ -779,14 +611,30 @@ task testExamples() {
             'tracing',
             'openapi-to-ballerina',
             'taint-checking', // Should not compile
-            //TODO failing due to transaction changes probably. Need to fix
-            'rabbitmq-transaction-consumer',
-            'rabbitmq-transaction-producer',
-            'kafka-producer-transactional',
-            'mysql-batch-execute-operation',
-            'jdbc-batch-execute-operation',
-            'log-api',
-            'error-handling-in-single-place'
+            'secured-client-with-basic-auth',
+            'secured-client-with-jwt-auth',
+            'secured-client-with-oauth2',
+            'secured-service-with-basic-auth',
+            'secured-service-with-jwt-auth',
+            'secured-service-with-ldap',
+            'secured-service-with-oauth2',
+
+            //Disabling due to https://github.com/ballerina-platform/ballerina-lang/issues/27510
+            'graphql-resources-with-record-values',
+            'graphql-resources-with-scalar-values',
+            'class-definition',
+            'functional-iteration',
+
+            // Disabling due to pending migration for service typing
+            'websocket-cookie',
+            'websocket-retry',
+            'websocket-failover',
+            'websocket-chat-application',
+            'websocket-proxy-server',
+            'http-to-websocket-upgrade',
+            'websocket-basic-sample',
+            'http-filters',
+
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
@@ -850,6 +698,7 @@ task testExamples() {
             'rabbitmq-transaction-producer',
             'rabbitmq-transaction-consumer',
             'jdbc-complex-type-queries', // Consists date time in output
+            'jdbc-batch-execute-operation', // Consists transaction server sart log
             'log-api',
             'mysql-init-options',
             'mysql-query-operation',
@@ -873,30 +722,22 @@ task testExamples() {
             'secured-client-with-jwt-auth', // Need to run the service first
             'secured-client-with-oauth2', // Need to run the service first
             'send-and-receive-emails',
-            'task-service-timer',
+            'task-service-timer',       // Services needs to be stopped during build
             'task-service-appointment',
-            'task-scheduler-timer',
-            'task-scheduler-appointment',
-            'cache',
-
-            //TODO failing due to transaction changes probably. Need to fix
-            'rabbitmq-transaction-consumer',
-            'rabbitmq-transaction-producer',
-            'kafka-producer-transactional',
-            'mysql-batch-execute-operation',
-            'jdbc-batch-execute-operation',
-            'retry-transactions',
-            'local-transactions-with-handlers',
-            'local-transactions',
-            'log-api',
             'error-handling-in-single-place',
-            'file-io'
+            'file-io',
+            'uuid'  // Output varies
     ]
 
     doFirst {
         copy {
             from jBallerinaPack
             into baseBuildPath
+        }
+
+        copy {
+            into "$baseBuildPath/lib"
+            from configurations.externalTestJars
         }
 
         def src = "${project.rootDir}/examples/"
@@ -922,12 +763,7 @@ task testExamples() {
         }
     }
 
-    ext.buildBBE = { bbe ->
-        def exitVal
-        def additionalBuildParams = ""
-        if (bbe == "secured-service-with-basic-auth" || bbe == "secured-client-with-basic-auth") {
-            additionalBuildParams = "--b7a.config.file=${baseBuildPath}/${bbe}/sample-users.toml"
-        }
+    ext.prepareProject = { bbe ->
         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
             //TODO: Need to verify with windows
             exec {
@@ -935,17 +771,35 @@ task testExamples() {
                 commandLine 'cmd', '/c', "${distPath}/bin/ballerina/ballerina.bat init test"
             }
 
+        } else {
+            exec {
+                workingDir "${baseBuildPath}/${bbe}"
+                commandLine 'sh', '-c', "${distPath}/bin/ballerina init test"
+            }
+        }
+
+        if (bbe.startsWith('mysql')) {
+            def tomlFile = new File("${baseBuildPath}/${bbe}/Ballerina.toml")
+            tomlFile.append("\n\n[[platform.java11.dependency]]")
+            tomlFile.append("\npath = \"$baseBuildPath/lib/mysql-connector-java-8.0.21.jar\"\n")
+        }
+    }
+
+    ext.buildBBE = { bbe ->
+        def exitVal
+        def additionalBuildParams = ""
+        if (bbe == "secured-service-with-basic-auth" || bbe == "secured-client-with-basic-auth") {
+            additionalBuildParams = "--b7a.config.file=${baseBuildPath}/${bbe}/sample-users.toml"
+        }
+        println "Building example ${bbe}"
+        if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+            //TODO: Need to verify with windows
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${baseBuildPath}/${bbe}"
                 commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'build', '--experimental', " --b7a.home=${distPath} ${additionalBuildParams}"
             }
         } else {
-            exec {
-                workingDir "${baseBuildPath}/${bbe}"
-                commandLine 'sh', '-c', "${distPath}/bin/ballerina init test"
-            }
-
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${baseBuildPath}/${bbe}"
@@ -1009,6 +863,7 @@ task testExamples() {
             curlCommands.each {
                 fileReference << "${it}\n"
             }
+            println "Verify output ${bbe}"
             def scriptPath = "${project.rootDir}/ballerina/lib"
             def exitVal
             if (Os.isFamily(Os.FAMILY_WINDOWS)) {
@@ -1050,6 +905,7 @@ task testExamples() {
             def cmdOutAry = []
             def errOut = new ByteArrayOutputStream()
             new ByteArrayOutputStream().withStream { os ->
+                println "Output Verification ${bbe}"
                 if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                     exec {
                         workingDir "${directoryPath}"
@@ -1112,10 +968,15 @@ task testExamples() {
                     failOutputVerificationExamples.add(bbe)
                 }
             }
+            File tomlFile = new File("${baseBuildPath}/${bbe}/Ballerina.toml")
+            if (!tomlFile.exists()) {
+                prepareProject(bbe)
+            }
             boolean buildFailFlag = buildBBE(bbe)
             if (buildFailFlag) {
                 failedBuildExamples.add(bbe)
             }
+            delete tomlFile
         }
 
         boolean buildFailure = false
@@ -1155,7 +1016,7 @@ task testStdlibs() {
     patternSet.exclude("**/Ballerina.lock")
     patternSet.exclude("**/ballerina-internal.log")
     inputs.files(files("${distPath}/stdlib-integration-tests").asFileTree.matching(patternSet))
-    def ignoreList = ["sql", "kafka", "crypto", "mime", "http"]
+    def ignoreList = ["auth", "jwt", "oauth2", "ldap"]
 
     doFirst {
         copy {
@@ -1176,49 +1037,75 @@ task testStdlibs() {
             if (folder.exists()) {
                 stdlibTestsList.push("$stdlibTest.path")
             }
-
         }
+    }
+
+    ext.buildStandardLibs = { stdlibTest ->
+        def exitVal
+        def additionalBuildParams = ""
+        if (stdlibTest == "auth" || stdlibTest == "jwt") {
+            additionalBuildParams = "--b7a.config.file=${baseBuildPath}/${stdlibTest}/tests/resources/datafiles/users.toml"
+        }
+
+        if (stdlibTest == "config") {
+            additionalBuildParams = "--user.name=ballerina-user"
+        }
+
+        println "Testing standard library ${stdlibTest}"
+        if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+            //TODO: Need to verify with windows
+            exec {
+                workingDir "${baseBuildPath}/${stdlibTest}"
+                commandLine 'cmd', '/c', "${distPath}/bin/ballerina/ballerina.bat init test"
+            }
+            exitVal = exec {
+                ignoreExitValue true
+                workingDir "${buildDir}/${stdlibTest}"
+                commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat build -c --experimental --b7a.home=${distPath} ${additionalBuildParams}"
+            }
+        } else {
+            exec {
+                workingDir "${baseBuildPath}/${stdlibTest}"
+                commandLine 'sh', '-c', "${distPath}/bin/ballerina init test"
+            }
+            exitVal = exec {
+                ignoreExitValue true
+                workingDir "${baseBuildPath}/${stdlibTest}"
+                commandLine 'sh', '-c', "${distPath}/bin/ballerina build -c --experimental --b7a.home=${distPath} ${additionalBuildParams}"
+            }
+        }
+        if (exitVal.getExitValue() == 1) {
+            return true
+        }
+        return false
     }
 
     doLast {
         ignoreList.each { String elements ->
             stdlibTestsList.remove("$elements")
         }
+
+        def failedStdLibs = []
         stdlibTestsList.each { String stdlibTest ->
-            def additionalBuildParams = ""
-            if (stdlibTest == "auth" || stdlibTest == "jwt") {
-                additionalBuildParams = "--b7a.config.file=${baseBuildPath}/${stdlibTest}/tests/resources/datafiles/users.toml"
-            }
-
-            if (stdlibTest == "config") {
-                additionalBuildParams = "--user.name=ballerina-user"
-            }
-
-            if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                //TODO: Need to verify with windows
-                exec {
-                    workingDir "${baseBuildPath}/${stdlibTest}"
-                    commandLine 'cmd', '/c', "${distPath}/bin/ballerina/ballerina.bat init test"
-                }
-                exec {
-                    workingDir "${buildDir}/${stdlibTest}"
-                    commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat build -c --experimental --b7a.home=${distPath} ${additionalBuildParams}"
-                }
-            } else {
-                exec {
-                    workingDir "${baseBuildPath}/${stdlibTest}"
-                    commandLine 'sh', '-c', "${distPath}/bin/ballerina init test"
-                }
-                exec {
-                    workingDir "${baseBuildPath}/${stdlibTest}"
-                    commandLine 'sh', '-c', "${distPath}/bin/ballerina build -c --experimental --b7a.home=${distPath} ${additionalBuildParams}"
-                }
+            boolean stdLibTestFailFlag = buildStandardLibs(stdlibTest)
+            if (stdLibTestFailFlag) {
+                failedStdLibs.add(stdlibTest);
             }
         }
+
+        if (!failedStdLibs.isEmpty()) {
+            sleep(10 * 1000)
+            println "\n\tThe following Standard Library Tests Failed:\n"
+            failedStdLibs.each {
+                println "\t ${it}"
+            }
+            throw new GradleException('There are test failures')
+        }
+
     }
 }
 
-task testDevTools() {
+task testDevToolsIntegration() {
     def jBallerinaPack = "${project.rootDir}/ballerina/build/target/extracted-distributions/jballerina-tools-zip"
     def baseBuildPath = "${project.rootDir}/ballerina/build/bbe-pack"
     def distPath = "${baseBuildPath}/jballerina-tools-${ballerinaVersion}"
@@ -1351,108 +1238,102 @@ task stopLdapServer() {
     }
 }
 
-task startRabbitmqServer() {
-    doLast {
-        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
-            def stdOut = new ByteArrayOutputStream()
-            exec {
-                commandLine 'sh', '-c', "docker ps --filter name=my-rabbit"
-                standardOutput = stdOut
-            }
-            if (!stdOut.toString().contains("my-rabbit")) {
-                println "Starting RabbitMQ server."
-                exec {
-                    commandLine 'sh', '-c', "docker run --rm -d --name my-rabbit -p 15672:15672 -p  5672:5672 rabbitmq:3-management"
-                    standardOutput = stdOut
-                }
-                println stdOut.toString()
-                sleep(5 * 1000)
-            } else {
-                println "RabbitMQ server is already started."
-            }
-        }
-    }
-}
-
-task stopRabbitmqServer() {
-    doLast {
-        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
-            def stdOut = new ByteArrayOutputStream()
-            exec {
-                commandLine 'sh', '-c', "docker ps --filter name=my-rabbit"
-                standardOutput = stdOut
-            }
-            if (stdOut.toString().contains("my-rabbit")) {
-                println "Stopping RabbitMQ server."
-                exec {
-                    commandLine 'sh', '-c', "docker stop my-rabbit"
-                    standardOutput = stdOut
-                }
-                println stdOut.toString()
-                sleep(5 * 1000)
-            } else {
-                println "RabbitMQ server is not started."
-            }
-        }
-    }
-}
-
-task startNatsServer() {
-    doLast {
-        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
-            def stdOut = new ByteArrayOutputStream()
-            exec {
-                commandLine 'sh', '-c', "docker ps --filter name=my-nats"
-                standardOutput = stdOut
-            }
-            if (!stdOut.toString().contains("my-nats")) {
-                println "Starting NATS Basic server."
-                exec {
-                    commandLine 'sh', '-c', "docker run --rm -d --name my-nats -p 4222:4222 nats:latest"
-                    standardOutput = stdOut
-                }
-                println stdOut.toString()
-                sleep(5 * 1000)
-            } else {
-                println "NATS Basic server is already started."
-            }
-        }
-    }
-}
-
-task stopNatsServer() {
-    doLast {
-        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
-            def stdOut = new ByteArrayOutputStream()
-            exec {
-                commandLine 'sh', '-c', "docker ps --filter name=my-nats"
-                standardOutput = stdOut
-            }
-            if (stdOut.toString().contains("my-nats")) {
-                println "Stopping NATS server."
-                exec {
-                    commandLine 'sh', '-c', "docker stop my-nats"
-                    standardOutput = stdOut
-                }
-                println stdOut.toString()
-                sleep(5 * 1000)
-            } else {
-                println "NATS server is not started."
-            }
-        }
-    }
-}
+//task startRabbitmqServer() {
+//    doLast {
+//        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+//            def stdOut = new ByteArrayOutputStream()
+//            exec {
+//                commandLine 'sh', '-c', "docker ps --filter name=my-rabbit"
+//                standardOutput = stdOut
+//            }
+//            if (!stdOut.toString().contains("my-rabbit")) {
+//                println "Starting RabbitMQ server."
+//                exec {
+//                    commandLine 'sh', '-c', "docker run --rm -d --name my-rabbit -p 15672:15672 -p  5672:5672 rabbitmq:3-management"
+//                    standardOutput = stdOut
+//                }
+//                println stdOut.toString()
+//                sleep(5 * 1000)
+//            } else {
+//                println "RabbitMQ server is already started."
+//            }
+//        }
+//    }
+//}
+//
+//task stopRabbitmqServer() {
+//    doLast {
+//        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+//            def stdOut = new ByteArrayOutputStream()
+//            exec {
+//                commandLine 'sh', '-c', "docker ps --filter name=my-rabbit"
+//                standardOutput = stdOut
+//            }
+//            if (stdOut.toString().contains("my-rabbit")) {
+//                println "Stopping RabbitMQ server."
+//                exec {
+//                    commandLine 'sh', '-c', "docker stop my-rabbit"
+//                    standardOutput = stdOut
+//                }
+//                println stdOut.toString()
+//                sleep(5 * 1000)
+//            } else {
+//                println "RabbitMQ server is not started."
+//            }
+//        }
+//    }
+//}
+//
+//task startNatsServer() {
+//    doLast {
+//        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+//            def stdOut = new ByteArrayOutputStream()
+//            exec {
+//                commandLine 'sh', '-c', "docker ps --filter name=my-nats"
+//                standardOutput = stdOut
+//            }
+//            if (!stdOut.toString().contains("my-nats")) {
+//                println "Starting NATS Basic server."
+//                exec {
+//                    commandLine 'sh', '-c', "docker run --rm -d --name my-nats -p 4222:4222 nats:latest"
+//                    standardOutput = stdOut
+//                }
+//                println stdOut.toString()
+//                sleep(5 * 1000)
+//            } else {
+//                println "NATS Basic server is already started."
+//            }
+//        }
+//    }
+//}
+//
+//task stopNatsServer() {
+//    doLast {
+//        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+//            def stdOut = new ByteArrayOutputStream()
+//            exec {
+//                commandLine 'sh', '-c', "docker ps --filter name=my-nats"
+//                standardOutput = stdOut
+//            }
+//            if (stdOut.toString().contains("my-nats")) {
+//                println "Stopping NATS server."
+//                exec {
+//                    commandLine 'sh', '-c', "docker stop my-nats"
+//                    standardOutput = stdOut
+//                }
+//                println stdOut.toString()
+//                sleep(5 * 1000)
+//            } else {
+//                println "NATS server is not started."
+//            }
+//        }
+//    }
+//}
 
 /* Unpack Dependencies */
 unpackJballerinaTools.dependsOn unpackBallerinaJre
 unpackDevTools.dependsOn unpackJballerinaTools
-unpackAzFunctionsBalo.dependsOn unpackDevTools
-unpackAzFunctionsExamples.dependsOn unpackAzFunctionsBalo
-unpackAwsLambdaBalo.dependsOn unpackAzFunctionsExamples
-unpackAwsLambdaExamples.dependsOn unpackAwsLambdaBalo
-unpackDockerAnnotations.dependsOn unpackAwsLambdaExamples
-unpackDockerExamples.dependsOn unpackDockerAnnotations
-unpackStdLibs.dependsOn unpackDockerExamples
+unpackStdLibs.dependsOn unpackDevTools
 unpackC2cLibs.dependsOn unpackStdLibs
 unpackC2cExamples.dependsOn unpackC2cLibs
 unpackBalCommand.dependsOn unpackC2cExamples
@@ -1481,18 +1362,20 @@ unpackStdLibs.dependsOn unpackJballerinaTools
 testExamples.dependsOn packageDist
 
 testStdlibs.dependsOn startLdapServer
-testStdlibs.dependsOn startRabbitmqServer
-testStdlibs.dependsOn startNatsServer
+//testStdlibs.dependsOn startRabbitmqServer
+//testStdlibs.dependsOn startNatsServer
 testStdlibs.dependsOn packageDist
 testStdlibs.finalizedBy stopLdapServer
-testStdlibs.finalizedBy stopRabbitmqServer
-testStdlibs.finalizedBy stopNatsServer
+//testStdlibs.finalizedBy stopRabbitmqServer
+//testStdlibs.finalizedBy stopNatsServer
 
-testDevTools.dependsOn packageDist
+testDevToolsIntegration.dependsOn packageDist
 
 /* Delete Temporary Files */
 deleteTemporaryFiles.dependsOn packageDistWindows
 deleteTemporaryFiles.dependsOn testExamples
 deleteTemporaryFiles.dependsOn testStdlibs
-deleteTemporaryFiles.dependsOn testDevTools
-build.dependsOn deleteTemporaryFiles
+deleteTemporaryFiles.dependsOn testDevToolsIntegration
+test.dependsOn deleteTemporaryFiles
+test.dependsOn testExamples
+test.dependsOn testStdlibs

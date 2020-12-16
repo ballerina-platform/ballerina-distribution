@@ -5,9 +5,6 @@ ballerina test bbe_mocking
 Compiling source
         ballerinatest/bbe_mocking:0.1.0
 
-Creating balos
-        target/balo/bbe_mocking-2020r1-any-0.1.0.balo
-
 Running Tests
         ballerinatest/bbe_mocking:0.1.0
 Executing the 1st GET request
