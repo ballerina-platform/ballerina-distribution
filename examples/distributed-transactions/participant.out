@@ -1,6 +1,6 @@
 # To start the `participant` service, navigate to the directory that contains the
-# `.bal` file and use the `ballerina run` command.
-# Run this command to start the `participant` service.
+# `.bal` file and execute the `ballerina run` command.
+# Execute the command below to start the `participant` service.
 ballerina run participant.bal
 [ballerina/http] started HTTP/WS listener 192.168.1.18:37209
 [ballerina/http] started HTTP/WS listener 0.0.0.0:8889

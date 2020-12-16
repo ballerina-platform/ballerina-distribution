@@ -9,16 +9,16 @@ service / on new http:Listener(8080) {
         log:print("Initiating transaction...");
         // When transaction statement starts, a distributed transaction context is created.
         transaction {
-            // Print information about the current transaction.
+            // Print the information about the current transaction.
             log:print("Started transaction: " +
                           transactions:info().toString());
 
-            // When a participant is called, transaction context is propagated and,
+            // When a participant is called, the transaction context is propagated and
             // that participant joins the distributed transaction.
             boolean successful = callBusinessService();
             if (successful) {
                 res.statusCode = http:STATUS_OK;
-                // Run `2-phase commit coordination` protocol.
+                // Run the `2-phase commit coordination` protocol.
                 // All participants are prepared and depending on the joint outcome,
                 // either a `notify commit` or `notify abort` will be sent to the participants.
                 var commitResult = commit;
@@ -34,7 +34,7 @@ service / on new http:Listener(8080) {
             }
         }
 
-        // Send response back to the client.
+        // Send the response back to the client.
         var result = conn->respond(res);
         if (result is error) {
             log:printError("Could not send response back to client",
@@ -45,7 +45,7 @@ service / on new http:Listener(8080) {
     }
 }
 
-// This is the participant business function call.
+// This is the business function call to the participant.
 transactional function callBusinessService() returns @tainted boolean {
     http:Client participantEP = new ("http://localhost:8889/stockquote/" +
                                         "update/updateStockQuote");
