@@ -632,7 +632,6 @@ task testExamples() {
             'websocket-chat-application',
             'websocket-proxy-server',
             'http-to-websocket-upgrade',
-            'websocket-basic-sample',
             'http-filters',
 
     ]
@@ -644,7 +643,9 @@ task testExamples() {
             'the-main-function', //Needs user input
             'local-transactions',  // Xid varies
             'local-transactions-with-handlers', // Xid varies
+            'xa-transactions', // Consists of the transaction coordinator start log
             'retry-transactions', // Xid varies
+            'distributed-transactions', // has timestamps in the output
             'optional-type',  // Needs inputs at runtime
             'while',        // Needs inputs at runtime
             'any-type', // Has time component

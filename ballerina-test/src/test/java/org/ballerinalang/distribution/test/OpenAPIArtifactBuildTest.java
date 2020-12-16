@@ -85,7 +85,7 @@ public class OpenAPIArtifactBuildTest {
         TestUtils.deleteGeneratedFiles("petstore");
     }
 
-    @Test(description = "Check openapi to ballerina generator command for given tags")
+    @Test(description = "Check openapi to ballerina generator command for given tags", enabled = false)
     public void buildOpenAPIToBallerinaWithFilterTagsTest() throws IOException,
             InterruptedException {
         Path testResource = Paths.get("/openapi");
@@ -107,7 +107,7 @@ public class OpenAPIArtifactBuildTest {
             Stream<String> serviceLines = Files.lines(generatedServiceFile);
             String generatedService = serviceLines.collect(Collectors.joining("\n"));
             serviceLines.close();
-            expectedService = replaceContractPath(expectedServiceLines, expectedService, generatedService);
+//            expectedService = replaceContractPath(expectedServiceLines, expectedService, generatedService);
 
             expectedService = (expectedService.trim()).replaceAll(WHITESPACE_PATTERN, "");
             generatedService = (generatedService.trim()).replaceAll(WHITESPACE_PATTERN, "");
