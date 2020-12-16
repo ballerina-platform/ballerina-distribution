@@ -3,8 +3,8 @@ import ballerina/log;
 
 listener http:Listener helloEp = new (9090);
 
-service hello on helloEp {
-    resource function hi(http:Caller caller, http:Request request) {
+service /hello on helloEp {
+    resource function get hi(http:Caller caller, http:Request request) {
         http:Response res = new;
         res.setPayload("Hello World!");
 

@@ -122,7 +122,7 @@ public class OpenAPIArtifactBuildTest {
         }
     }
 
-    @Test(description = "Check ballerina to openapi generator command", enabled = false)
+    @Test(description = "Check ballerina to openapi generator command", enabled = true)
     public void buildBallerinaToOpenAPITest() throws IOException, InterruptedException {
         Path testResource = Paths.get("/openapi");
         List<String> buildArgs = new LinkedList<>();
