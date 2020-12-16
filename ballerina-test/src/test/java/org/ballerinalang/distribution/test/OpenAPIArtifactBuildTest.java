@@ -132,7 +132,7 @@ public class OpenAPIArtifactBuildTest {
                 buildArgs);
         Assert.assertTrue(successful);
         Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("hello-openapi.yaml")));
-//        TestUtils.deleteGeneratedFiles("hello-openapi.yaml");
+        TestUtils.deleteGeneratedFiles("hello-openapi.yaml");
     }
 
     //OpenAPI integration tests
