@@ -632,7 +632,6 @@ task testExamples() {
             'websocket-chat-application',
             'websocket-proxy-server',
             'http-to-websocket-upgrade',
-            'websocket-basic-sample',
             'http-filters',
 
     ]
