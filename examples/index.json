@@ -816,6 +816,10 @@
             {
                 "name": "Distributed Transactions",
                 "url": "distributed-transactions"
+            },
+            {
+                "name": "XA Transactions",
+                "url": "xa-transactions"
             }
         ]
     },

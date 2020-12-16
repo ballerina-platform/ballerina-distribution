@@ -626,8 +626,6 @@ task testExamples() {
             'functional-iteration',
 
             // Disabling due to pending migration for service typing
-            'websub-service-integration-sample',
-            'websub-internal-hub-sample',
             'websocket-cookie',
             'websocket-retry',
             'websocket-failover',
@@ -635,7 +633,6 @@ task testExamples() {
             'websocket-proxy-server',
             'http-to-websocket-upgrade',
             'websocket-basic-sample',
-            'websocket-client',
             'http-filters',
 
     ]
@@ -647,6 +644,7 @@ task testExamples() {
             'the-main-function', //Needs user input
             'local-transactions',  // Xid varies
             'local-transactions-with-handlers', // Xid varies
+            'xa-transactions', // Consists of the transaction coordinator start log
             'retry-transactions', // Xid varies
             'distributed-transactions', // has timestamps in the output
             'optional-type',  // Needs inputs at runtime
