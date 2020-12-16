@@ -4,17 +4,10 @@ import ballerina/mime;
 
 http:Client clientEP = new ("http://localhost:9090");
 
-@http:ServiceConfig {
-    basePath: "/multiparts"
-}
 //Binds the listener to the service.
-service multipartDemoService on new http:Listener(9090) {
+service /multiparts on new http:Listener(9090) {
 
-    @http:ResourceConfig {
-        methods: ["POST"],
-        path: "/decode"
-    }
-    resource function multipartReceiver(http:Caller caller, http:Request
+    resource function post decode(http:Caller caller, http:Request
                                         request) {
         http:Response response = new;
         // [Extracts bodyparts](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request#getBodyParts) from the request.
@@ -31,15 +24,11 @@ service multipartDemoService on new http:Listener(9090) {
         }
         var result = caller->respond(response);
         if (result is error) {
-            log:printError("Error sending response", result);
+            log:printError("Error sending response", err = result);
         }
     }
 
-    @http:ResourceConfig {
-        methods: ["GET"],
-        path: "/encode"
-    }
-    resource function multipartSender(http:Caller caller, http:Request req) {
+    resource function get encode(http:Caller caller, http:Request req) {
         //Create a json body part.
         mime:Entity jsonBodyPart = new;
         jsonBodyPart.setContentDisposition(
@@ -67,7 +56,7 @@ service multipartDemoService on new http:Listener(9090) {
         if (returnResponse is http:Response) {
             var result = caller->respond(<@untainted>returnResponse);
             if (result is error) {
-                log:printError("Error sending response", result);
+                log:printError("Error sending response", err = result);
             }
         } else {
             http:Response response = new;
@@ -76,7 +65,7 @@ service multipartDemoService on new http:Listener(9090) {
             response.statusCode = 500;
             var result = caller->respond(response);
             if (result is error) {
-                log:printError("Error sending response", result);
+                log:printError("Error sending response", err = result);
             }
         }
     }
@@ -92,7 +81,7 @@ function handleContent(mime:Entity bodyPart) {
             //[Extracts `xml` data](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/mime/classes/Entity#getXml) from the body part.
             var payload = bodyPart.getXml();
             if (payload is xml) {
-                log:printInfo(payload.toString());
+                log:print(payload.toString());
             } else {
                 log:printError(payload.message());
             }
@@ -100,7 +89,7 @@ function handleContent(mime:Entity bodyPart) {
             //[Extracts `json` data](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/mime/classes/Entity#getJson) from the body part.
             var payload = bodyPart.getJson();
             if (payload is json) {
-                log:printInfo(payload.toJsonString());
+                log:print(payload.toJsonString());
             } else {
                 log:printError(payload.message());
             }
@@ -108,7 +97,7 @@ function handleContent(mime:Entity bodyPart) {
             //[Extracts text data](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/mime/classes/Entity#getText) from the body part.
             var payload = bodyPart.getText();
             if (payload is string) {
-                log:printInfo(payload);
+                log:print(payload);
             } else {
                 log:printError(payload.message());
             }

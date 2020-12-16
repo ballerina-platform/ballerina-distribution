@@ -2,7 +2,8 @@
 # `.bal` file and execute the `ballerina run` command below.
 ballerina run mysql_batch_execute_operation.bal
 
-Database created. 
+ballerina/http] stopped HTTP/WS listener 192.168.1.18:43179
+Database created.
 Drop table executed: {"affectedRowCount":0,"lastInsertId":null}
 Create table executed: {"affectedRowCount":0,"lastInsertId":null}
 

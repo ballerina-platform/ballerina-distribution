@@ -686,6 +686,10 @@
                 "url": "task-service-timer"
             },
             {
+                "name": "UUID",
+                "url": "uuid"
+            },
+            {
                 "name": "XSLT Transformation",
                 "url": "xslt-transformation"
             }
@@ -827,10 +831,6 @@
             {
                 "name": "Client Data Binding",
                 "url": "http-client-data-binding"
-            },
-            {
-                "name": "Base Path and Path",
-                "url": "base-path-and-path"
             },
             {
                 "name": "Query Path Matrix Param",

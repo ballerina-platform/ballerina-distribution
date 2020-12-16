@@ -3,6 +3,6 @@
 ballerina run udp_socket_client.bal
 
 # This will print the below output upon a successful write.
-Number of bytes written: 21
+Datagram was sent to the remote host.
 # Print the response that is returned from the server as an echo.
-Received: Hello from UDP client
+Received: Hello Ballerina echo

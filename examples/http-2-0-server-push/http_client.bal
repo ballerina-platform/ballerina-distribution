@@ -37,14 +37,14 @@ public function main() {
                 err = nextPromiseResult);
             return;
         }
-        log:printInfo("Received a promise for " + pushPromise.path);
+        log:print("Received a promise for " + pushPromise.path);
 
         if (pushPromise.path == "/resource2") {
             // The client is not interested in receiving `/resource2`.
             // Therefore, [reject the promise](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Client#rejectPromise).
             clientEP->rejectPromise(pushPromise);
 
-            log:printInfo("Push promise for resource2 rejected");
+            log:print("Push promise for resource2 rejected");
         } else {
             // Store the required promises.
             promises[promiseCount] = pushPromise;
@@ -62,13 +62,13 @@ public function main() {
         response = result;
     } else {
         log:printError("Error occurred while fetching response",
-                <error>result);
+                err = <error>result);
         return;
     }
 
     var responsePayload = response.getJsonPayload();
     if (responsePayload is json) {
-        log:printInfo("Response : " + responsePayload.toJsonString());
+        log:print("Response : " + responsePayload.toJsonString());
     } else {
         log:printError("Expected response payload not received",
           err = responsePayload);
@@ -88,7 +88,7 @@ public function main() {
         }
         var promisedPayload = promisedResponse.getJsonPayload();
         if (promisedPayload is json) {
-            log:printInfo("Promised resource : " +
+            log:print("Promised resource : " +
                            promisedPayload.toJsonString());
         } else {
             log:printError("Expected promised response payload not received",
