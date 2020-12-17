@@ -913,10 +913,6 @@
                 "url": "http-compression"
             },
             {
-                "name": "HTTP Interceptors/Filters",
-                "url": "http-filters"
-            },
-            {
                 "name": "HTTP Cookies",
                 "url": "http-cookies"
             }
@@ -1314,22 +1310,6 @@
         "column": 3,
         "category": "Working over the network",
         "samples": [
-            {
-                "name": "Secured Service with Basic Auth",
-                "url": "secured-service-with-basic-auth"
-            },
-            {
-                "name": "Secured Service with JWT Auth",
-                "url": "secured-service-with-jwt-auth"
-            },
-            {
-                "name": "Secured Service with OAuth2",
-                "url": "secured-service-with-oauth2"
-            },
-            {
-                "name": "Secured Service with LDAP",
-                "url": "secured-service-with-ldap"
-            },
             {
                 "name": "Secured Client with Basic Auth",
                 "url": "secured-client-with-basic-auth"
