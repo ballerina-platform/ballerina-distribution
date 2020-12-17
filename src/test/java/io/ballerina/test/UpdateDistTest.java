@@ -21,13 +21,14 @@ import org.testng.annotations.Test;
 
 
 public class UpdateDistTest {
-    String version = System.getProperty("jballerina-version");
-    String specVersion = System.getProperty("spec-version");
-    String toolVersion = System.getProperty("tool-version");
+    String version = System.getProperty("BALLERINA_VERSION");
+    String specVersion = System.getProperty("SPEC_VERSION");
+    String toolVersion = System.getProperty("TOOL_VERSION");
+    String latestToolVersion = System.getProperty("LATEST_TOOL_VERSION");
 
-    String previousVersion = "1.1.0";
-    String previousSpecVersion = "2019R3";
-    String previousVersionsLatestPatch = "1.1.4";
+    String previousVersion = "1.2.0";
+    String previousSpecVersion = "2020R1";
+    String previousVersionsLatestPatch = System.getProperty("LATEST_PATCH_VERSION");;
 
     @DataProvider(name = "getExecutors")
     public Object[][] dataProviderMethod() {
@@ -42,7 +43,7 @@ public class UpdateDistTest {
         executor.install();
 
         TestUtils.testDistCommands(executor, version, specVersion, toolVersion, previousVersion, previousSpecVersion,
-                previousVersionsLatestPatch);
+                previousVersionsLatestPatch, latestToolVersion);
 
         executor.uninstall();
         executor.cleanArtifacts();

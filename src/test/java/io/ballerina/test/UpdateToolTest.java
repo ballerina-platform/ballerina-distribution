@@ -22,14 +22,15 @@ import org.testng.annotations.Test;
 
 
 public class UpdateToolTest {
-    String version = System.getProperty("jballerina-version");
-    String specVersion = System.getProperty("spec-version");
-    String toolVersion = System.getProperty("latest-tool-version");
+    String version = System.getProperty("BALLERINA_VERSION");
+    String specVersion = System.getProperty("SPEC_VERSION");
+    String toolVersion = System.getProperty("TOOL_VERSION");
+    String latestToolVersion = System.getProperty("LATEST_TOOL_VERSION");
 
-    String previousVersion = "1.1.0";
-    String previousSpecVersion = "2019R3";
-    String previousVersionsLatestPatch = "1.1.4";
-    String previousToolVersion = "0.8.0";
+    String previousVersion = "1.2.0";
+    String previousSpecVersion = "2020R1";
+    String previousVersionsLatestPatch = System.getProperty("LATEST_PATCH_VERSION");
+    String previousToolVersion = "0.8.5";
 
     @DataProvider(name = "getExecutors")
     public Object[][] dataProviderMethod() {
@@ -52,7 +53,7 @@ public class UpdateToolTest {
 
         //Execute all ballerina dist commands once updated
         TestUtils.testDistCommands(executor, previousVersion, previousSpecVersion, toolVersion, previousVersion,
-                previousSpecVersion, previousVersionsLatestPatch);
+                previousSpecVersion, previousVersionsLatestPatch, latestToolVersion);
 
         executor.uninstall();
         executor.cleanArtifacts();

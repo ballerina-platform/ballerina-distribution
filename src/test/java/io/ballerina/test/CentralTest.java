@@ -22,7 +22,7 @@ import org.testng.annotations.Test;
 
 
 public class CentralTest {
-    String version = System.getProperty("jballerina-version");
+    String version = System.getProperty("BALLERINA_VERSION");
 
     @DataProvider(name = "getExecutors")
     public Object[][] dataProviderMethod() {
@@ -36,8 +36,8 @@ public class CentralTest {
         executor.transferArtifacts();
         executor.install();
         //Checks part as output varies depending on the network speed
-        Assert.assertTrue(executor.executeCommand("ballerina pull wso2/twitter", false)
-                .contains("wso2/twitter:0.9.26 pulled from central successfully"));
+        Assert.assertTrue(executor.executeCommand("ballerina pull ballerinax/sdfc", false)
+                .contains("ballerinax/sfdc:2.1.3 pulled from central successfully"));
         executor.uninstall();
         executor.cleanArtifacts();
     }

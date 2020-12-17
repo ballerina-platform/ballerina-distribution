@@ -27,6 +27,7 @@
             <class name="io.ballerina.test.UpdateDistTest"/>
             <class name="io.ballerina.test.UpdateToolTest"/>
             <class name="io.ballerina.test.CentralTest"/>
+            <class name="io.ballerina.test.FetchDependencyTest"/>
         </classes>
     </test>
 </suite>
