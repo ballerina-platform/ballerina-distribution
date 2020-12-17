@@ -967,30 +967,6 @@
             {
                 "name": "Basic Server Functionalities",
                 "url": "websocket-basic-sample"
-            },
-            {
-                "name": "HTTP To WebSocket Upgrade",
-                "url": "http-to-websocket-upgrade"
-            },
-            {
-                "name": "Proxy Server",
-                "url": "websocket-proxy-server"
-            },
-            {
-                "name": "Chat Application",
-                "url": "websocket-chat-application"
-            },
-            {
-                "name": "Failover",
-                "url": "websocket-failover"
-            },
-            {
-                "name": "Retry",
-                "url": "websocket-retry"
-            },
-            {
-                "name": "Cookie",
-                "url": "websocket-cookie"
             }
         ]
     },
