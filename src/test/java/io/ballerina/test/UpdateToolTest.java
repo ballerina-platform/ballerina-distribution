@@ -44,6 +44,8 @@ public class UpdateToolTest {
         executor.transferArtifacts();
         executor.install();
 
+        //Test dist list
+        TestUtils.verifyDistList(executor);
         //Test installation
         TestUtils.testInstallation(executor, previousVersion, previousSpecVersion, previousToolVersion);
 

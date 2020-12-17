@@ -168,6 +168,18 @@ public class TestUtils {
     }
 
     /**
+     * Execute smoke testing to verify dist list.
+     *
+     * @param executor    Executor for relevant operating system
+     */
+    public static void verifyDistList(Executor executor) {
+        String actualOutput = executor.executeCommand("ballerina dist list", false);
+        Assert.assertTrue(actualOutput.contains("1.0.0"));
+        Assert.assertTrue(actualOutput.contains("1.1.0"));
+        Assert.assertTrue(actualOutput.contains("1.2.0"));
+    }
+
+    /**
      * To check whether installation is a 1.0.x release.
      *
      * @return returns is a 1.0.x release
