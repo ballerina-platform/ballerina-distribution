@@ -135,7 +135,7 @@ public class TestUtils {
     public static void testDependencyFetch(Executor executor, String version, String specVersion, String toolVersion) {
         //Test installation
         TestUtils.testInstallation(executor, version, specVersion, toolVersion);
-
+        executor.executeCommand("ballerina dist list", false);
         //Test `Fetching compatible JRE dependency`
         String output = executor.executeCommand("ballerina dist pull slp1", true);
         Assert.assertTrue(output.contains("Downloading slp1"));
