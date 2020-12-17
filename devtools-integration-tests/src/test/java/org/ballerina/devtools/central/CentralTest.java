@@ -326,8 +326,10 @@ public class CentralTest {
         }
 
         String buildOutput = getString(build.getInputStream());
-        if (!buildOutput.contains(getPushedToCentralLog(orgName, this.packageSnapshotName))) {
-            Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + getPushedToCentralLog(orgName, this.packageSnapshotName));
+        String expectedMsg =
+                orgName + "/" + this.packageSnapshotName + ":1.0.0-snapshot pushed to central successfully";
+        if (!buildOutput.contains(expectedMsg)) {
+            Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedMsg);
         }
     }
 
