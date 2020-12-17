@@ -1,0 +1,10 @@
+# To start the `initiator` service, navigate to the directory that contains the
+# `.bal` file and execute the `ballerina run` command.
+ballerina run initiator.bal
+[ballerina/http] started HTTP/WS listener 192.168.1.18:37869
+[ballerina/http] started HTTP/WS listener 0.0.0.0:8080
+time = 2020-12-15 21:19:15,787 level = INFO  module = "" message = "Initiating transaction..."
+time = 2020-12-15 21:19:15,820 level = INFO  module = "" message = "Started transaction: {"xid":[54,50,57,53,51,55,101,101,45,50,100,52,49,45,52,55,56,52,45,57,98,49,102,45,98,57,98,57,97,57,51,50,54,50,99,97],"retryNumber":0,"startTime":2020-12-15 21:19:15,801,"prevAttempt":null}"
+time = 2020-12-15 21:19:16,315 level = INFO  module = "" message = "Got response from bizservice"
+time = 2020-12-15 21:19:16,373 level = INFO  module = "" message = "Transaction committed"
+time = 2020-12-15 21:19:16,376 level = INFO  module = "" message = "Sent response back to client"

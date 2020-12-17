@@ -282,8 +282,8 @@
                 "url": "record-readonly-fields"
             },
             {
-                "name": "Record Type Reference",
-                "url": "record-type-reference"
+                "name": "Record Type Inclusion",
+                "url": "record-type-inclusion"
             }
         ]
     },
@@ -325,8 +325,8 @@
                 "url": "object-final-fields"
             },
             {
-                "name": "Object Type Reference",
-                "url": "object-type-reference"
+                "name": "Object Type Inclusion",
+                "url": "object-type-inclusion"
             },
             {
                 "name": "Iterable Objects",
@@ -686,6 +686,10 @@
                 "url": "task-service-timer"
             },
             {
+                "name": "UUID",
+                "url": "uuid"
+            },
+            {
                 "name": "XSLT Transformation",
                 "url": "xslt-transformation"
             }
@@ -808,6 +812,14 @@
             {
                 "name": "Retry Transactions",
                 "url": "retry-transactions"
+            },
+            {
+                "name": "Distributed Transactions",
+                "url": "distributed-transactions"
+            },
+            {
+                "name": "XA Transactions",
+                "url": "xa-transactions"
             }
         ]
     },
@@ -829,8 +841,8 @@
                 "url": "http-client-data-binding"
             },
             {
-                "name": "Base Path and Path",
-                "url": "base-path-and-path"
+                "name": "Absolute Resource Path and Resource Path",
+                "url": "http-absolute-path-and-path"
             },
             {
                 "name": "Query Path Matrix Param",

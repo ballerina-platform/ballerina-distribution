@@ -220,6 +220,13 @@ subprojects {
             }
         }
         maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-uuid"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-cache"
             credentials {
                 username System.getenv("packageUser")
@@ -445,14 +452,8 @@ subprojects {
 
         /* Ballerina lang staging repository */
         maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1614/" }
-        /* Docker staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1293/" }
-        /* AwsLambda staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1166/" }
         /* Datamapper staging repository */
         maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdatamapper-1010/" }
-        /* AzureFunctions staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxazurefunctions-1017" }
     }
 
     configurations {
@@ -487,21 +488,6 @@ subprojects {
         /* Ballerina Dev Tools */
         devTools "org.ballerinalang:ballerina-dev-tools:${devToolsVersion}"
 
-        /* AWSLambda extension */
-        exten "org.ballerinax.awslambda:awslambda-extension:${awslambdaVersion}"
-        awsLambdaBalo "org.ballerinax.awslambda:awslambda-extension-balo:${awslambdaVersion}"
-        awsLambdaExamples "org.ballerinax.awslambda:awslambda-extension-examples:${awslambdaVersion}@zip"
-
-        /* Azure Functions extension */
-        exten "org.ballerinax.azurefunctions:azurefunctions-extension:${azFunctionsVersion}"
-        azFunctionsBalo "org.ballerinax.azurefunctions:azurefunctions-extension-balo:${azFunctionsVersion}"
-        azFunctionsExamples "org.ballerinax.azurefunctions:azurefunctions-extension-examples:${azFunctionsVersion}@zip"
-
-        /* Docker extension */
-        exten "org.ballerinax.docker:docker-extension:${dockerVersion}@jar"
-        dockerAnnotations "org.ballerinax.docker:docker-extension-annotations:${dockerVersion}"
-        dockerExamples "org.ballerinax.docker:docker-extension-examples:${dockerVersion}@zip"
-
         /* Data Mapper extension */
         exten "org.ballerinax.datamapper:datamapper-extension:${dataMapperVersion}@jar"
 
@@ -525,23 +511,24 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:task-ballerina:${stdlibTaskVersion}"
         ballerinaStdLibs "org.ballerinalang:cache-ballerina:${stdlibCacheVersion}"
         ballerinaStdLibs "org.ballerinalang:system-ballerina:${stdlibSystemVersion}"
+        ballerinaStdLibs "org.ballerinalang:uuid-ballerina:${stdlibUuidVersion}"
         ballerinaStdLibs "org.ballerinalang:runtime-ballerina:${stdlibRuntimeVersion}"
         ballerinaStdLibs "org.ballerinalang:sql-ballerina:${stdlibSqlVersion}"
         ballerinaStdLibs "org.ballerinalang:java.jdbc-ballerina:${stdlibJdbcVersion}"
-        ballerinaStdLibs "org.ballerinalang:mysql-ballerina:${stdlibMySqlVersion}"
+        ballerinaStdLibs "org.ballerinalang:mysql-ballerina:${stdlibMysqlVersion}"
         ballerinaStdLibs "org.ballerinalang:config-ballerina:${stdlibConfigVersion}"
         ballerinaStdLibs "org.ballerinalang:math-ballerina:${stdlibMathVersion}"
-        ballerinaStdLibs "org.ballerinalang:jsonutils-ballerina:${stdlibJsonUtilsVersion}"
-        ballerinaStdLibs "org.ballerinalang:xmlutils-ballerina:${stdlibXmlUtilsVersion}"
+        ballerinaStdLibs "org.ballerinalang:jsonutils-ballerina:${stdlibJsonutilsVersion}"
+        ballerinaStdLibs "org.ballerinalang:xmlutils-ballerina:${stdlibXmlutilsVersion}"
         ballerinaStdLibs "org.ballerinalang:log-ballerina:${stdlibLogVersion}"
         ballerinaStdLibs "org.ballerinalang:reflect-ballerina:${stdlibReflectVersion}"
         ballerinaStdLibs "org.ballerinalang:io-ballerina:${stdlibIoVersion}"
         ballerinaStdLibs "org.ballerinalang:stringutils-ballerina:${stdlibStringutilsVersion}"
         ballerinaStdLibs "org.ballerinalang:auth-ballerina:${stdlibAuthVersion}"
-        ballerinaStdLibs "org.ballerinalang:oauth2-ballerina:${stdlibOAuth2Version}"
+        ballerinaStdLibs "org.ballerinalang:oauth2-ballerina:${stdlibOauth2Version}"
         ballerinaStdLibs "org.ballerinalang:ldap-ballerina:${stdlibLdapVersion}"
         ballerinaStdLibs "org.ballerinalang:crypto-ballerina:${stdlibCryptoVersion}"
-        ballerinaStdLibs "org.ballerinalang:jarrays-ballerina:${stdlibJavaArraysVersion}"
+        ballerinaStdLibs "org.ballerinalang:jarrays-ballerina:${stdlibJarraysVersion}"
         ballerinaStdLibs "org.ballerinalang:mime-ballerina:${stdlibMimeVersion}"
         ballerinaStdLibs "org.ballerinalang:email-ballerina:${stdlibEmailVersion}"
         ballerinaStdLibs "org.ballerinalang:ftp-ballerina:${stdlibFtpVersion}"

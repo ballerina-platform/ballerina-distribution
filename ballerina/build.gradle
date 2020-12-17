@@ -573,14 +573,6 @@ task testExamples() {
 
     // The following BBEs will not be verified by compiling/running.
     def buildIgnoreList = [
-            'http-retry',
-            'http-failover',
-            'http-load-balancer',
-            'http-circuit-breaker',
-            'http-redirects',
-            'websocket-proxy-server',
-            'record-io',
-            'send_and_receive_emails',
             'proto-to-ballerina',
             'websub-hub-client-sample',
             'websub-remote-hub-sample',
@@ -626,6 +618,22 @@ task testExamples() {
             'secured-service-with-jwt-auth',
             'secured-service-with-ldap',
             'secured-service-with-oauth2',
+
+            //Disabling due to https://github.com/ballerina-platform/ballerina-lang/issues/27510
+            'graphql-resources-with-record-values',
+            'graphql-resources-with-scalar-values',
+            'class-definition',
+            'functional-iteration',
+
+            // Disabling due to pending migration for service typing
+            'websocket-cookie',
+            'websocket-retry',
+            'websocket-failover',
+            'websocket-chat-application',
+            'websocket-proxy-server',
+            'http-to-websocket-upgrade',
+            'http-filters',
+
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
@@ -635,7 +643,9 @@ task testExamples() {
             'the-main-function', //Needs user input
             'local-transactions',  // Xid varies
             'local-transactions-with-handlers', // Xid varies
+            'xa-transactions', // Consists of the transaction coordinator start log
             'retry-transactions', // Xid varies
+            'distributed-transactions', // has timestamps in the output
             'optional-type',  // Needs inputs at runtime
             'while',        // Needs inputs at runtime
             'any-type', // Has time component
@@ -689,6 +699,7 @@ task testExamples() {
             'rabbitmq-transaction-producer',
             'rabbitmq-transaction-consumer',
             'jdbc-complex-type-queries', // Consists date time in output
+            'jdbc-batch-execute-operation', // Consists transaction server sart log
             'log-api',
             'mysql-init-options',
             'mysql-query-operation',
@@ -715,7 +726,8 @@ task testExamples() {
             'task-service-timer',       // Services needs to be stopped during build
             'task-service-appointment',
             'error-handling-in-single-place',
-            'file-io'
+            'file-io',
+            'uuid'  // Output varies
     ]
 
     doFirst {
@@ -1005,7 +1017,7 @@ task testStdlibs() {
     patternSet.exclude("**/Ballerina.lock")
     patternSet.exclude("**/ballerina-internal.log")
     inputs.files(files("${distPath}/stdlib-integration-tests").asFileTree.matching(patternSet))
-    def ignoreList = ["kafka", "auth", "jwt", "oauth2", "ldap"]
+    def ignoreList = ["auth", "jwt", "oauth2", "ldap"]
 
     doFirst {
         copy {

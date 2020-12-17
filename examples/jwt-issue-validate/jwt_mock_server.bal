@@ -12,13 +12,9 @@ listener http:Listener oauth2Server = new (20000, {
         }
     });
 
-service oauth2 on oauth2Server {
+service /oauth2 on oauth2Server {
 
-    @http:ResourceConfig {
-        methods: ["GET"],
-        path: "/jwks"
-    }
-    resource function jwks(http:Caller caller, http:Request req) {
+    resource function get jwks(http:Caller caller, http:Request req) {
         http:Response res = new;
         json jwks = {
             "keys": [

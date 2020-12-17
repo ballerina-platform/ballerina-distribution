@@ -14,19 +14,9 @@ http:ClientConfiguration weatherEPConfig = {
 };
 
 //Service is invoked using `basePath` value "/hbr".
-@http:ServiceConfig {
-    basePath: "/hbr"
-}
+service /hbr on new http:Listener(9090) {
 
-service headerBasedRouting on new http:Listener(9090) {
-    // [http:ResourceConfig](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/HttpResourceConfig) annotation with 'GET' method declares the
-    // HTTP method.
-    @http:ResourceConfig {
-        methods: ["GET"],
-        path: "/route"
-    }
-
-    resource function hbrResource(http:Caller caller, http:Request req) {
+    resource function get route(http:Caller caller, http:Request req) {
         http:Client weatherEP = new ("http://samples.openweathermap.org",
                                      weatherEPConfig);
         http:Client locationEP = new ("http://www.mocky.io");
@@ -42,14 +32,14 @@ service headerBasedRouting on new http:Listener(9090) {
             var result = caller->respond(errorResponse);
 
             if (result is error) {
-                log:printError("Error sending response", result);
+                log:printError("Error sending response", err = result);
             }
             return;
         }
         //[getHeader()](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request#getHeader) returns header value of the specified header name.
         string nameString = req.getHeader("x-type");
 
-        http:Response|http:Payload|error response;
+        http:Response|http:PayloadType|error response;
         if (nameString == "location") {
             //[post()](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Client#post) remote function represents the 'POST' operation
             // of the HTTP client.
@@ -72,7 +62,7 @@ service headerBasedRouting on new http:Listener(9090) {
             var result = caller->respond(<@untainted>response);
 
             if (result is error) {
-                log:printError("Error sending response", result);
+                log:printError("Error sending response", err = result);
             }
 
         } else {
@@ -82,7 +72,7 @@ service headerBasedRouting on new http:Listener(9090) {
             var result = caller->respond(errorResponse);
 
             if (result is error) {
-                log:printError("Error sending response", result);
+                log:printError("Error sending response", err = result);
             }
         }
     }

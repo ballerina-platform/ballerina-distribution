@@ -12,9 +12,9 @@ type Person object {
     function getFullName() returns string;
 };
 
-// Defines another object type called `Employee`, which references the `Person` object.
+// Defines another object type called `Employee`, which "includes" the `Person` object.
 type Employee object {
-    // Add a reference to the `Person` object type. 
+    // Add an object type (`Person`) inclusion.
     // All the member fields and member-method declarations will be copied from the `Person` object.
     *Person;
     public float|string salary;
@@ -27,21 +27,21 @@ class Owner {
 }
 
 class Manager {
-    // Type references can be chained by adding a reference to the `Employee` object, which
-    // again has a reference to the `Employee` object. This will copy all the members from
-    // the `Employee` object. It will be the same as declaring each of those members within this object.
+    // Inclusing the `Employee` object transitively includes the `Person` object as well.
+    // This will copy all the members in both `Employee` and `Person`.
+    // It will be the same as declaring each of those members within this object.
     *Employee;
 
-    // It is possible to have more than one type reference as well.
+    // It is possible to have more than one type inclusion as well.
     *Owner;
 
     public string dpt;
 
-    // Referenced fields can be overridden in a type-descriptor if the type of the field  
+    // Included fields can be overridden in a type-descriptor if the type of the field
     // in the overriding descriptor is a sub-type of the original type of the field.
     public float salary;
 
-    // All the fields referenced through the type reference can be accessed within this object.
+    // All the fields included through a type inclusion can be accessed within this object.
     function init(int age, string firstName, string lastName, string status) {
         self.age = age;
         self.firstName = firstName;
@@ -51,13 +51,13 @@ class Manager {
         self.dpt = "HR";
     }
 
-    // The member methods coming from the referenced type should be defined within the object.
+    // The member methods coming from the included type should be defined within the object.
     function getFullName() returns string {
         return self.firstName + " " + self.lastName;
     }
 
-    // Referenced methods can also be overridden as long as the method in the overriding 
-    // descriptor is a sub-type of the method in the referenced type.
+    // Included methods can also be overridden as long as the method in the overriding
+    // descriptor is a sub-type of the method in the included type.
     function getSalary() returns float {
         return self.salary;
     }
@@ -66,11 +66,11 @@ class Manager {
 public function main() {
     Manager p = new Manager(5, "John", "Doe", "Senior");
 
-    // Accessing the fields that are coming from the referenced type.
+    // Accessing the fields that are coming from the included type.
     io:println(p.age);
     io:println(p.dpt);
 
-    // Invoking the methods that are coming from the referenced type.
+    // Invoking the methods that are coming from the included type.
     io:println(p.getFullName());
     io:println(p.getSalary());
 }
