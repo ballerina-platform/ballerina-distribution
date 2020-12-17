@@ -8,7 +8,7 @@ public function main() {
     log:printError("error log");
 
     // Users can pass any number of key/value pairs which needs to be displayed in the log message.
-    // These can be of anydata type including int, string and boolean.
+    // These can be of `anydata` type including int, string and boolean.
     log:print("info log", id = 845315, name = "foo", successful = true);
 
     // Users can also pass key/value pairs where the values are function pointers.
