@@ -4,7 +4,7 @@ import ballerina/graphql;
 service graphql:Service /graphql on new graphql:Listener(9090) {
 
     // A resource function inside a `graphql:Service` represents a resolver.
-    resource function get greet(string name) returns string {
+    resource function query greet(string name) returns string {
 
         return "Hello, " + name;
     }
