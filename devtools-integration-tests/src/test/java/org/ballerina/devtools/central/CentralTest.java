@@ -70,6 +70,7 @@ public class CentralTest {
     private String packageBName;
     private String packageCName;
     private String packageDName;
+    private String packageSnapshotName;
     private String orgName = "bc2testorg";
     private Map<String, String> envVariables;
 
@@ -79,6 +80,7 @@ public class CentralTest {
     private static final String PROJECT_B = "projectB";
     private static final String PROJECT_C = "projectC";
     private static final String PROJECT_D = "projectD";
+    private static final String PROJECT_SNAPSHOT = "projectSnapshot";
     private static final String TEST_PREFIX = "test_";
     private static final String OUTPUT_CONTAIN_ERRORS = "build output contain errors:";
     private static final String OUTPUT_NOT_CONTAINS_EXP_MSG = "build output does not contain expected message:";
@@ -108,10 +110,12 @@ public class CentralTest {
             this.packageBName = TEST_PREFIX + randomString + "_" + PROJECT_B;
             this.packageCName = TEST_PREFIX + randomString + "_" + PROJECT_C;
             this.packageDName = TEST_PREFIX + randomString + "_" + PROJECT_D;
+            this.packageSnapshotName = TEST_PREFIX + randomString + "_" + PROJECT_SNAPSHOT;
         } while (isPkgAvailableInCentral(this.packageAName)
                 || isPkgAvailableInCentral(this.packageBName)
                 || isPkgAvailableInCentral(this.packageCName)
-                || isPkgAvailableInCentral(this.packageDName));
+                || isPkgAvailableInCentral(this.packageDName)
+                || isPkgAvailableInCentral(this.packageSnapshotName));
 
         isPkgAvailableInCentral(this.packageAName);
 
@@ -124,6 +128,8 @@ public class CentralTest {
                         this.packageCName);
         updateFileToken(this.tempWorkspaceDirectory.resolve(PROJECT_D).resolve(BALLERINA_TOML), DEFAULT_PKG_NAME,
                         this.packageDName);
+        updateFileToken(this.tempWorkspaceDirectory.resolve(PROJECT_SNAPSHOT).resolve(BALLERINA_TOML), DEFAULT_PKG_NAME,
+                        this.packageSnapshotName);
         // Update imports
         updateFileToken(this.tempWorkspaceDirectory.resolve(PROJECT_C).resolve(MAIN_BAL), "<PKG_A>",
                         this.packageAName);
@@ -282,6 +288,46 @@ public class CentralTest {
         String runOutput = getString(run.getInputStream());
         if (!runOutput.contains(runExpectedMsg)) {
             Assert.fail("run output does not contain expected message:" + runExpectedMsg);
+        }
+    }
+
+    @Test(description = "Build package with pre-release version")
+    public void testBuildSnapshotPackage() throws IOException, InterruptedException {
+        Process build = executeBuildCommand(DISTRIBUTION_FILE_NAME,
+                                            this.tempWorkspaceDirectory.resolve(PROJECT_SNAPSHOT),
+                                            new LinkedList<>(),
+                                            this.envVariables);
+
+        String buildErrors = getString(build.getErrorStream());
+        if (!buildErrors.isEmpty()) {
+            Assert.fail(OUTPUT_CONTAIN_ERRORS + buildErrors);
+        }
+
+        String buildOutput = getString(build.getInputStream());
+        if (!buildOutput.contains(getGenerateExecutableLog(this.packageSnapshotName))) {
+            Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + getGenerateExecutableLog(this.packageSnapshotName));
+        }
+
+        Assert.assertTrue(
+                getExecutableJarPath(this.tempWorkspaceDirectory.resolve(PROJECT_SNAPSHOT), this.packageSnapshotName)
+                        .toFile().exists());
+    }
+
+    @Test(description = "Push package with pre-release version to central",
+            dependsOnMethods = "testBuildSnapshotPackage")
+    public void testPushSnapshotPackage() throws IOException, InterruptedException {
+        Process build = executePushCommand(DISTRIBUTION_FILE_NAME,
+                                           this.tempWorkspaceDirectory.resolve(PROJECT_SNAPSHOT),
+                                           new LinkedList<>(),
+                                           this.envVariables);
+        String buildErrors = getString(build.getErrorStream());
+        if (!buildErrors.isEmpty()) {
+            Assert.fail(OUTPUT_CONTAIN_ERRORS + buildErrors);
+        }
+
+        String buildOutput = getString(build.getInputStream());
+        if (!buildOutput.contains(getPushedToCentralLog(orgName, this.packageSnapshotName))) {
+            Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + getPushedToCentralLog(orgName, this.packageSnapshotName));
         }
     }
 
