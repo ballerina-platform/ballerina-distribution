@@ -1,36 +1,20 @@
 import ballerina/io;
-import ballerina/log;
 import ballerinax/nats;
 
-// Represents the escape character.
-const string ESCAPE = "!q";
-
 // Produces a message to a subject in the NATS sever.
-public function main() {
-    string message = "";
-    string subject = io:readln("Subject : ");
-    // Initializes a producer.
-    nats:Connection connection = new ();
-    nats:Producer producer = new (connection);
-    while (message != ESCAPE) {
-        message = io:readln("Message : ");
-        // Produces a message to the specified subject.
-        nats:Error? result = producer->publish(subject, <@untainted>message);
-        if (result is nats:Error) {
-            io:println("Error occurred while producing the message.");
-        } else {
-            io:println("Message published successfully.");
-        }
-    }
-    // Closes the publisher connection.
-    nats:Error? result = producer.close();
+public function main() returns error? {
+    string message = "Hello from Ballerina";
+    // Initializes a client.
+    nats:Client natsClient = new;
+    // Produces a message to the specified subject.
+    nats:Error? result = natsClient->publish("demo.bbe.subject",
+                                            <@untainted>message.toBytes());
     if (result is nats:Error) {
-        log:printError("Error occurred while closing the logical connection",
-                       result);
+        io:println("Error occurred while producing the message.");
+    } else {
+        io:println("Message published successfully.");
     }
 
-    result = connection.close();
-    if (result is nats:Error) {
-        log:printError("Error occurred while closing the connection", result);
-    }
+    // Closes the client connection.
+    check natsClient.close();
 }

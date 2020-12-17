@@ -1,7 +1,8 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run retry_transactions.bal
-Transaction Info: {"xid":[56,54,56,53,48,51,57,52,45,53,52,56,55,45,52,55,53,49,45,98,50,56,48,45,55,102,56,97,99,52,53,49,51,97,100,102],"retryNumber":0,"startTime":1600688502047,"prevAttempt":null}
+[ballerina/http] started HTTP/WS listener 192.168.1.18:32885
+Transaction Info: {"xid":[51,101,52,55,55,101,54,49,45,54,54,101,97,45,52,100,97,53,45,56,102,97,48,45,99,56,99,53,53,49,51,102,55,48,50,102],"retryNumber":0,"startTime":2020-12-16 09:44:27,339,"prevAttempt":null}
 Commit handler executed.
 Transaction committed.
 Account Credit: {"affectedRowCount":1,"lastInsertId":null}

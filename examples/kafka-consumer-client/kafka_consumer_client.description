@@ -6,4 +6,4 @@
 // this example to work properly, an active Kafka broker should be present.
 // <br/><br/>
 // For more information on the underlying module, 
-// see the [Kafka module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/kafka/index.html).
+// see the [Kafka module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/kafka/).

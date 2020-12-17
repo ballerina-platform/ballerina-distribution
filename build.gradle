@@ -25,18 +25,20 @@ description = 'Ballerina - Tools - Parent'
 ext {
     ballerinaVersion = project.ballerinaVersion
     shortVersion = project.shortVersion
-    ballerinaJreArtifactsVersion = "2.0.0"
-    awslambdaVersion = project.ballerinaVersion
-    azFunctionsVersion = project.ballerinaVersion
-    dockerVersion = project.ballerinaVersion
-    kubernetesVersion = project.ballerinaVersion
-    dataMapperVersion = project.ballerinaVersion
+    awslambdaVersion = project.awslambdaVersion
+    azFunctionsVersion = project.azFunctionsVersion
+    dockerVersion = project.dockerVersion
+    dataMapperVersion = project.dataMapperVersion
+    c2cVersion = project.c2cVersion
+
+    ballerinaJreArtifactsVersion = "3.0.0"
     picocliVersion = "4.0.1"
-    ballerinaCommandVersion = "0.8.8"
+    ballerinaCommandVersion = "0.8.10"
     testngVersion = "6.14.3"
     netLingalaZip4jVersion = "2.3.2"
     commonsIoVersion = "2.6"
     commonsLang3Version = "3.9"
+    lsp4jDebugVersion = "0.7.1"
 }
 
 allprojects {
@@ -69,8 +71,8 @@ allprojects {
 
 subprojects {
     apply plugin: 'java'
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
+    sourceCompatibility = 11
+    targetCompatibility = 11
     tasks.withType(JavaCompile) {
         options.encoding = 'UTF-8'
     }
@@ -81,8 +83,6 @@ subprojects {
             maven { url "https://repo.maven.apache.org/maven2" }
             /* CWSO2 Releases Repository */
             maven { url "http://maven.wso2.org/nexus/content/repositories/releases/" }
-            /* WSO2 Snapshot Repository */
-            maven { url "http://maven.wso2.org/nexus/content/repositories/snapshots/" }
             /* WSO2 internal Repository */
             maven { url "http://maven.wso2.org/nexus/content/groups/wso2-public/" }
 
@@ -96,8 +96,6 @@ subprojects {
         maven { url "https://repo.maven.apache.org/maven2" }
         /* WSO2 Releases Repository */
         maven { url "https://maven.wso2.org/nexus/content/repositories/releases/" }
-        /* WSO2 Snapshot Repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/snapshots/" }
         /* WSO2 internal Repository */
         maven { url "https://maven.wso2.org/nexus/content/groups/wso2-public/" }
         /* Github Package Repository */
@@ -110,7 +108,14 @@ subprojects {
         }
         /* Ballerina standard library package links */
         maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-socket"
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-tcp"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+         maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-udp"
             credentials {
                 username System.getenv("packageUser")
                 password System.getenv("packagePAT")
@@ -153,6 +158,13 @@ subprojects {
         }
         maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-nats"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-stan"
             credentials {
                 username System.getenv("packageUser")
                 password System.getenv("packagePAT")
@@ -202,6 +214,13 @@ subprojects {
         }
         maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-system"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-uuid"
             credentials {
                 username System.getenv("packageUser")
                 password System.getenv("packagePAT")
@@ -258,13 +277,6 @@ subprojects {
         }
         maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-time"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-filepath"
             credentials {
                 username System.getenv("packageUser")
                 password System.getenv("packagePAT")
@@ -344,7 +356,21 @@ subprojects {
             }
         }
         maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-ftp"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-http"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-graphql"
             credentials {
                 username System.getenv("packageUser")
                 password System.getenv("packagePAT")
@@ -357,19 +383,77 @@ subprojects {
                 password System.getenv("packagePAT")
             }
         }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-websocket"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/ballerina-openapi"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinai-transaction"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/ballerina-dev-tools"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+
+        /* Code2Cloud extension repos */
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-c2c"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-azure.functions"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-aws.lambda"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-docker"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+
+        // Reordering due to version clash
+        /* WSO2 Snapshot Repository */
+        maven { url "http://maven.wso2.org/nexus/content/repositories/snapshots/" }
 
         /* Ballerina lang staging repository */
         maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1614/" }
-        /* Docker staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1286/" }
-        /* Kubernetes staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxkubernetes-1262/" }
-        /* AwsLambda staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1159/" }
         /* Datamapper staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdatamapper-1008/" }
-        /* AzureFunctions staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxazurefunctions-1010" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdatamapper-1010/" }
     }
 
     configurations {
@@ -384,6 +468,8 @@ subprojects {
         kubernetesAnnotations
         kubernetesExamples
         ballerinaStdLibs
+        ballerinaC2cLibs
+        ballerinaC2cExamples
         balCommand
         exten {
             transitive = false
@@ -391,71 +477,79 @@ subprojects {
         balCommand {
             transitive = false
         }
+        devTools
+        externalTestJars
     }
 
     dependencies {
         jbalTools "org.ballerinalang:jballerina-tools:${ballerinaVersion}@zip"
         ballerinaJre "org.wso2.ballerina.jre.artifacts:ballerina-jre-artifacts:${ballerinaJreArtifactsVersion}@zip"
 
-        /* AWSLambda extension */
-        exten "org.ballerinax.awslambda:awslambda-extension:${awslambdaVersion}"
-        awsLambdaBalo "org.ballerinax.awslambda:awslambda-extension-balo:${awslambdaVersion}@zip"
-        awsLambdaExamples "org.ballerinax.awslambda:awslambda-extension-examples:${awslambdaVersion}@zip"
-
-        /* Azure Functions extension */
-        exten "org.ballerinax.azurefunctions:azurefunctions-extension:${azFunctionsVersion}"
-        azFunctionsBalo "org.ballerinax.azurefunctions:azurefunctions-extension-balo:${azFunctionsVersion}@zip"
-        azFunctionsExamples "org.ballerinax.azurefunctions:azurefunctions-extension-examples:${azFunctionsVersion}@zip"
-
-        /* Docker extension */
-        exten "org.ballerinax.docker:docker-extension:${dockerVersion}@jar"
-        dockerAnnotations "org.ballerinax.docker:docker-extension-annotations:${dockerVersion}@zip"
-        dockerExamples "org.ballerinax.docker:docker-extension-examples:${dockerVersion}@zip"
-
-        /* Kubernetes extension */
-        exten "org.ballerinax.kubernetes:kubernetes-extension:${kubernetesVersion}@jar"
-        kubernetesAnnotations "org.ballerinax.kubernetes:kubernetes-extension-annotations:${kubernetesVersion}@zip"
-        kubernetesExamples "org.ballerinax.kubernetes:kubernetes-extension-examples:${kubernetesVersion}@zip"
+        /* Ballerina Dev Tools */
+        devTools "org.ballerinalang:ballerina-dev-tools:${devToolsVersion}"
 
         /* Data Mapper extension */
         exten "org.ballerinax.datamapper:datamapper-extension:${dataMapperVersion}@jar"
+
+        externalTestJars (group: 'mysql', name: 'mysql-connector-java', version: "8.0.21") {
+            transitive = false
+        }
 
         /* Standard libraries */
         ballerinaStdLibs "org.ballerinalang:encoding-ballerina:${stdlibEncodingVersion}"
         ballerinaStdLibs "org.ballerinalang:websub-ballerina:${stdlibWebsubVersion}"
         ballerinaStdLibs "org.ballerinalang:jwt-ballerina:${stdlibJwtVersion}"
-        ballerinaStdLibs "org.ballerinalang:socket-ballerina:${stdlibSocketVersion}"
+        ballerinaStdLibs "org.ballerinalang:tcp-ballerina:${stdlibTcpVersion}"
+        ballerinaStdLibs "org.ballerinalang:udp-ballerina:${stdlibUdpVersion}"
         ballerinaStdLibs "org.ballerinalang:rabbitmq-ballerina:${stdlibRabbitmqVersion}"
         ballerinaStdLibs "org.ballerinalang:xslt-ballerina:${stdlibXsltVersion}"
         ballerinaStdLibs "org.ballerinalang:nats-ballerina:${stdlibNatsVersion}"
+        ballerinaStdLibs "org.ballerinalang:stan-ballerina:${stdlibStanVersion}"
         ballerinaStdLibs "org.ballerinalang:kafka-ballerina:${stdlibKafkaVersion}"
         ballerinaStdLibs "org.ballerinalang:file-ballerina:${stdlibFileVersion}"
         ballerinaStdLibs "org.ballerinalang:time-ballerina:${stdlibTimeVersion}"
-        ballerinaStdLibs "org.ballerinalang:filepath-ballerina:${stdlibFilepathVersion}"
         ballerinaStdLibs "org.ballerinalang:task-ballerina:${stdlibTaskVersion}"
         ballerinaStdLibs "org.ballerinalang:cache-ballerina:${stdlibCacheVersion}"
         ballerinaStdLibs "org.ballerinalang:system-ballerina:${stdlibSystemVersion}"
+        ballerinaStdLibs "org.ballerinalang:uuid-ballerina:${stdlibUuidVersion}"
         ballerinaStdLibs "org.ballerinalang:runtime-ballerina:${stdlibRuntimeVersion}"
         ballerinaStdLibs "org.ballerinalang:sql-ballerina:${stdlibSqlVersion}"
         ballerinaStdLibs "org.ballerinalang:java.jdbc-ballerina:${stdlibJdbcVersion}"
-        ballerinaStdLibs "org.ballerinalang:mysql-ballerina:${stdlibMySqlVersion}"
+        ballerinaStdLibs "org.ballerinalang:mysql-ballerina:${stdlibMysqlVersion}"
         ballerinaStdLibs "org.ballerinalang:config-ballerina:${stdlibConfigVersion}"
         ballerinaStdLibs "org.ballerinalang:math-ballerina:${stdlibMathVersion}"
-        ballerinaStdLibs "org.ballerinalang:jsonutils-ballerina:${stdlibJsonUtilsVersion}"
-        ballerinaStdLibs "org.ballerinalang:xmlutils-ballerina:${stdlibXmlUtilsVersion}"
+        ballerinaStdLibs "org.ballerinalang:jsonutils-ballerina:${stdlibJsonutilsVersion}"
+        ballerinaStdLibs "org.ballerinalang:xmlutils-ballerina:${stdlibXmlutilsVersion}"
         ballerinaStdLibs "org.ballerinalang:log-ballerina:${stdlibLogVersion}"
         ballerinaStdLibs "org.ballerinalang:reflect-ballerina:${stdlibReflectVersion}"
         ballerinaStdLibs "org.ballerinalang:io-ballerina:${stdlibIoVersion}"
         ballerinaStdLibs "org.ballerinalang:stringutils-ballerina:${stdlibStringutilsVersion}"
         ballerinaStdLibs "org.ballerinalang:auth-ballerina:${stdlibAuthVersion}"
-        ballerinaStdLibs "org.ballerinalang:oauth2-ballerina:${stdlibOAuth2Version}"
+        ballerinaStdLibs "org.ballerinalang:oauth2-ballerina:${stdlibOauth2Version}"
         ballerinaStdLibs "org.ballerinalang:ldap-ballerina:${stdlibLdapVersion}"
         ballerinaStdLibs "org.ballerinalang:crypto-ballerina:${stdlibCryptoVersion}"
-        ballerinaStdLibs "org.ballerinalang:java.arrays-ballerina:${stdlibJavaArraysVersion}"
+        ballerinaStdLibs "org.ballerinalang:jarrays-ballerina:${stdlibJarraysVersion}"
         ballerinaStdLibs "org.ballerinalang:mime-ballerina:${stdlibMimeVersion}"
         ballerinaStdLibs "org.ballerinalang:email-ballerina:${stdlibEmailVersion}"
+        ballerinaStdLibs "org.ballerinalang:ftp-ballerina:${stdlibFtpVersion}"
         ballerinaStdLibs "org.ballerinalang:http-ballerina:${stdlibHttpVersion}"
+        ballerinaStdLibs "org.ballerinalang:graphql-ballerina:${stdlibGraphqlVersion}"
+        ballerinaStdLibs "org.ballerinalang:websocket-ballerina:${stdlibWebsocketVersion}"
         ballerinaStdLibs "org.ballerinalang:grpc-ballerina:${stdlibGrpcVersion}"
+        ballerinaStdLibs "org.ballerinalang:module-ballerina-openapi:${openapiVersion}"
+        ballerinaStdLibs "org.ballerinalang:transaction-ballerina:${stdlibTransactionVersion}"
+
+        /* Code to cloud extensions */
+        ballerinaC2cLibs "io.ballerina:c2c-ballerina:${c2cVersion}"
+        ballerinaC2cLibs "org.ballerinax.azurefunctions:azurefunctions-extension-balo:${azFunctionsVersion}"
+        ballerinaC2cLibs "org.ballerinax.awslambda:awslambda-extension-balo:${awslambdaVersion}"
+        ballerinaC2cLibs "org.ballerinax.docker:docker-extension-annotations:${dockerVersion}"
+
+        /* Code to cloud examples */
+        ballerinaC2cExamples "io.ballerina:c2c-extension-examples:${c2cVersion}@zip"
+        ballerinaC2cExamples "org.ballerinax.azurefunctions:azurefunctions-extension-examples:${azFunctionsVersion}@zip"
+        ballerinaC2cExamples "org.ballerinax.awslambda:awslambda-extension-examples:${awslambdaVersion}@zip"
+        ballerinaC2cExamples "org.ballerinax.docker:docker-extension-examples:${dockerVersion}@zip"
 
         balCommand "org.ballerinalang:ballerina-command-distribution:${ballerinaCommandVersion}@zip"
     }

@@ -6,11 +6,7 @@ on:
       - master
       - stage
       - ballerina-1.1.x
-  pull_request:
-    branches:
-      - master
-      - stage
-      - ballerina-1.1.x
+  workflow_dispatch:
 
 jobs:
   build:
@@ -18,8 +14,37 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
       - name: Build Ballerina Distribution
         env:
           packageUser: ${{ github.actor }}
           packagePAT: ${{ secrets.GITHUB_TOKEN }}
-        run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon
+        run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue
+      - name: Archive distribtuions
+        uses: actions/upload-artifact@v2
+        with:
+          name: Ballerina ZIP
+          path: ballerina/build/distributions/ballerina-swan-lake-*.zip
+      - name: Archive distribtuions
+        uses: actions/upload-artifact@v2
+        with:
+          name: Ballerina ZIP with short name
+          path: ballerina/build/distributions/ballerina-sl*.zip
+      - name: Archive distribtuions
+        uses: actions/upload-artifact@v2
+        with:
+          name: Linux installer ZIP
+          path: ballerina/build/distributions/ballerina-linux-*.zip
+      - name: Archive distribtuions
+        uses: actions/upload-artifact@v2
+        with:
+          name: MacOS installer ZIP
+          path: ballerina/build/distributions/ballerina-macos-*.zip
+      - name: Archive distribtuions
+        uses: actions/upload-artifact@v2
+        with:
+          name: Windows Installer ZIP
+          path: ballerina/build/distributions/ballerina-windows-*.zip

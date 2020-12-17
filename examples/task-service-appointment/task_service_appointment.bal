@@ -1,30 +1,25 @@
-import ballerina/log;
+import ballerina/io;
 import ballerina/task;
 
-// The [`task:AppointmentConfiguration`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/task/records/AppointmentConfiguration.html) record of the Task Listener.
-// Task Appointment can either have a CRON expression (`string`) or an
-// `AppointmentData` record for the `appointmentData` field. Optionally, a
-// `noOfRecurrences` can be provided to limit the number of executions.
+// The [`task:AppointmentConfiguration`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/task/records/AppointmentConfiguration) record of the task listener.
 task:AppointmentConfiguration appointmentConfiguration = {
-    // This cron expression will schedule the appointment every second.
-    appointmentDetails: "* * * * * ?",
+    // This CRON expression will schedule the appointment every second.
+    cronExpression: "* * * * * ?",
     // Number of recurrences will limit the number of times the timer runs.
-    noOfRecurrences: 10
-
+    noOfRecurrences: 5
 };
 
-// Initialize the listener using pre defined configurations.
+// Initialize the listener using the pre-defined configurations.
 listener task:Listener appointment = new (appointmentConfiguration);
 
-int count = 0;
+int reminderCount = 0;
 
-// Creating a service on the task Listener.
-service appointmentService on appointment {
+// Creating a service bound to the task listener.
+service on appointment {
     // This resource triggers when the appointment is due.
-    resource function onTrigger() {
-        log:printInfo("Cleaning up...");
-        log:printInfo(count.toString());
-        count = count + 1;
+    remote function onTrigger() {
+        reminderCount += 1;
+        io:println("Schedule is due - Reminder: ", reminderCount);
     }
 
 }

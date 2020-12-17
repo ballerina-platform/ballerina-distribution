@@ -1,9 +1,9 @@
 // A `task:Scheduler` can be used to create timers to trigger periodically. A
-// service can be attached to the task Scheduler object using the `attach()`
-// function and the Listener can be started using the `start()` function.
+// service can be attached to the task scheduler object using the `attach()`
+// method and the listener can be started using the `start()` method.
 // The service that is being attached must contain the `onTrigger()` resource function.
 // Additionally, a user can pass a set of `any` values to the resource using
-// the [`attach()`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/task/classes/Scheduler.html#attach) function, which then can be used inside the `onTrigger()`
-// function. The Listener can be stopped by calling the `stop()` function.<br/><br/>
+// the [`attach()`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/task/classes/Scheduler#attach) method, which then can be used inside the `onTrigger()`
+// function. The Listener can be stopped by calling the `stop()` method.<br/><br/>
 // For more information on the underlying module, 
-// see the [Task module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/task/index.html).
+// see the [Task module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/task/).

@@ -10,7 +10,7 @@ int counter = 0;
     moduleName: "ballerina/io",
     functionName: "println"
 }
-public isolated function mockPrint(any|error... s) {
+public function mockPrint(any|error... s) {
     outputs[counter] = s[0];
     counter += 1;
 }
@@ -19,11 +19,10 @@ public isolated function mockPrint(any|error... s) {
 @test:Mock {
     functionName: "getReadableRecordChannel"
 }
-public isolated function mockGetReadableRecordChannel(string filePath, string encoding,
+public function mockGetReadableRecordChannel(string filePath, string encoding,
                                              string rs, string fs)
                     returns io:ReadableTextRecordChannel|error {
-    string path = "./src/record-io/" + filePath;
-    io:ReadableByteChannel byteChannel = check io:openReadableFile(path);
+    io:ReadableByteChannel byteChannel = check io:openReadableFile(filePath);
     io:ReadableCharacterChannel characterChannel = new(byteChannel, encoding);
     io:ReadableTextRecordChannel delimitedRecordChannel = new(characterChannel,
         rs = rs,
@@ -35,11 +34,10 @@ public isolated function mockGetReadableRecordChannel(string filePath, string en
 @test:Mock {
     functionName: "getWritableRecordChannel"
 }
-public isolated function mockGetWritableRecordChannel(string filePath, string encoding,
+public function mockGetWritableRecordChannel(string filePath, string encoding,
                                              string rs, string fs)
                     returns io:WritableTextRecordChannel|error {
-    string path = "./src/record-io/" + filePath;
-    io:WritableByteChannel byteChannel = check io:openWritableFile(path);
+    io:WritableByteChannel byteChannel = check io:openWritableFile(filePath);
     io:WritableCharacterChannel characterChannel = new(byteChannel, encoding);
     io:WritableTextRecordChannel delimitedRecordChannel = new(characterChannel,
         rs = rs,

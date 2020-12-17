@@ -6,17 +6,11 @@ import ballerina/log;
 listener http:Listener http2ServiceEP = new (7090,
     config = {httpVersion: "2.0"});
 
-@http:ServiceConfig {
-    basePath: "/http2Service"
-}
-service http2Service on http2ServiceEP {
+service /http2Service on http2ServiceEP {
 
-    @http:ResourceConfig {
-        path: "/"
-    }
-    resource function http2Resource(http:Caller caller, http:Request req) {
+    resource function 'default .(http:Caller caller, http:Request req) {
 
-        // [Send a Push Promise](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Caller.html#promise).
+        // [Send a Push Promise](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Caller#promise).
         http:PushPromise promise1 = new (path = "/resource1", method = "GET");
         var promiseResponse1 = caller->promise(promise1);
         if (promiseResponse1 is error) {
@@ -57,7 +51,7 @@ service http2Service on http2ServiceEP {
         msg = {"push": {"name": "resource1"}};
         push1.setPayload(msg);
 
-        // [Push promised resource1](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/Caller.html#pushPromisedResponse).
+        // [Push promised resource1](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Caller#pushPromisedResponse).
         var pushResponse1 = caller->pushPromisedResponse(promise1, push1);
         if (pushResponse1 is error) {
             log:printError("Error occurred while sending the promised " +

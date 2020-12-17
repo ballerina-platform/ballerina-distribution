@@ -22,27 +22,20 @@ public function main() {
     var results = consumer->poll(1000);
 
     if (results is error) {
-        log:printError("Error occurred while polling ", results);
+        log:printError("Error occurred while polling ", err = results);
     }
     kafka:ConsumerRecord[] records = <kafka:ConsumerRecord[]>results;
     foreach var kafkaRecord in records {
-        anydata serializedMessage = kafkaRecord.value;
-        if (serializedMessage is byte[]) {
-            // Converts byte[] to string.
-            string|error message = 'string:fromBytes(serializedMessage);
+        byte[] messageContent = kafkaRecord.value;
+        string|error message = 'string:fromBytes(messageContent);
 
-            if (message is string) {
-                // Prints the retrieved Kafka record.
-                io:println("Topic: ", kafkaRecord.topic, " Received Message: ",
-                    message);
+        if (message is string) {
+            // Prints the retrieved Kafka record.
+            io:println("Received Message: ", message);
 
-            } else {
-                log:printError("Error occurred while converting message data",
-                    message);
-            }
         } else {
-            log:printError("Error occurred while retrieving message data;" +
-                "Unexpected type");
+            log:printError("Error occurred while converting message data",
+                err = message);
         }
     }
 }

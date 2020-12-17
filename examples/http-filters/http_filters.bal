@@ -6,11 +6,11 @@ final string filter_name_header = "X-requestHeader";
 // Header value to be set to the request in the filter.
 final string filter_name_header_value = "RequestFilter";
 
-// The [Request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html) implementation.
+// The [Request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request) implementation.
 // It intercepts the request and adds a new header to the request before it is dispatched to the HTTP resource.
 public class RequestFilter {
     *http:RequestFilter;
-    // [Intercepts the request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html#filterRequest).
+    // [Intercepts the request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request#filterRequest).
     public isolated function filterRequest(http:Caller caller,
                         http:Request request, http:FilterContext context)
                         returns boolean {
@@ -24,11 +24,11 @@ public class RequestFilter {
 // Creates a new RequestFilter.
 RequestFilter requestFilter = new;
 
-// The [response(https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Response.html) implementation.
+// The [response(https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Response) implementation.
 // It intercepts the response in the response path and adds a new header to the response.
 public class ResponseFilter {
     *http:ResponseFilter;
-    // [Intercepts the response](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Response.html#filterResponse).
+    // [Intercepts the response](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Response#filterResponse).
     public isolated function filterResponse(http:Response response, 
                         http:FilterContext context) returns boolean {
         // Sets a header to the response inside the filter.
@@ -38,22 +38,16 @@ public class ResponseFilter {
     }
 }
 
-// Creates a new [Response](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Response.html).
+// Creates a new [Response](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Response).
 ResponseFilter responseFilter = new;
 
-// Creates an HTTP listener and assigns the [filters as a config parameter](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/ListenerConfiguration.html).
+// Creates an HTTP listener and assigns the [filters as a config parameter](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/ListenerConfiguration).
 listener http:Listener echoListener = new http:Listener(9090,
                     config = {filters: [requestFilter, responseFilter]});
 
-@http:ServiceConfig {
-    basePath: "/hello"
-}
-service echo on echoListener {
-    @http:ResourceConfig {
-        methods: ["GET"],
-        path: "/sayHello"
-    }
-    resource function echo(http:Caller caller, http:Request req) {
+service /hello on echoListener {
+
+    resource function get sayHello(http:Caller caller, http:Request req) {
         // Create a new http response.
         http:Response res = new;
         // Set the `filter_name_header` from the request to the response.
@@ -61,8 +55,7 @@ service echo on echoListener {
         res.setPayload("Hello, World!");
         var result = caller->respond(<@untainted>res);
         if (result is error) {
-            log:printError("Error sending response", result);
+            log:printError("Error sending response", err = result);
         }
     }
 }
-

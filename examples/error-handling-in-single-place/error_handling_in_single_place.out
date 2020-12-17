@@ -4,4 +4,3 @@ $ ballerina run error_handling_in_single_place.bal
 Error caught: InvalidAccountID, Account ID: -1
 Error caught: AccountNotFound, Account ID: 200
 Error caught during parsing: {ballerina/lang.int}NumberParsingError
-

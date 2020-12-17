@@ -1,7 +1,8 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run local_transactions.bal
-Transaction Info: {"xid":[51,97,99,100,97,49,101,48,45,102,98,97,54,45,52,52,54,51,45,57,55,52,54,45,56,49,97,55,53,51,57,52,52,50,101,99],"retryNumber":0,"startTime":1600688660802,"prevAttempt":null}
+[ballerina/http] started HTTP/WS listener 192.168.1.18:36005
+Transaction Info: {"xid":[49,101,56,100,100,53,51,98,45,100,52,55,98,45,52,99,98,101,45,57,54,56,100,45,57,101,97,55,51,54,99,100,102,101,100,57],"retryNumber":0,"startTime":2020-12-16 09:39:50,711,"prevAttempt":null}
 Transaction committed
 Account Credit: {"affectedRowCount":1,"lastInsertId":null}
 Account Debit: {"affectedRowCount":1,"lastInsertId":null}

@@ -35,7 +35,7 @@ public function testWithoutTokenPropagation() {
     if (response is http:Response) {
         assertUnauthorized(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 }
 
@@ -55,7 +55,7 @@ public function testTokenPropagationWithBasicAuthInbound() {
     if (response is http:Response) {
         assertOK(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 }
 
@@ -81,7 +81,7 @@ public function testTokenPropagationWithJwtAuthInbound() {
     if (response is http:Response) {
         assertOK(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 }
 
@@ -107,7 +107,7 @@ public function testTokenPropagationWithJwtAuthInboundAndTokenReissuing() {
     if (response is http:Response) {
         assertOK(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 }
 
@@ -132,6 +132,6 @@ public function testTokenPropagationWithJwtAuthInboundAndTokenReissuingNegative(
     if (response is http:Response) {
         assertUnauthorized(response);
     } else {
-        test:assertFail(msg = "Test Failed! " + <string>response.message());
+        test:assertFail(msg = "Test Failed! " + (<http:ClientError>response).message());
     }
 }

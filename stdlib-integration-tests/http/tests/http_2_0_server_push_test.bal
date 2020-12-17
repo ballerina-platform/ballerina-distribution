@@ -25,16 +25,9 @@ listener http:Listener serverPushBackendEP = new(9116, { httpVersion: "2.0" });
 http:Client serverPushClient = new("http://localhost:9115");
 http:Client backendClientEP = new("http://localhost:9116", { httpVersion: "2.0" });
 
-@http:ServiceConfig {
-    basePath: "/frontend"
-}
-service frontendHttpService on serverPushFrontendEP {
+service /frontend on serverPushFrontendEP {
 
-    @http:ResourceConfig {
-        methods: ["GET"],
-        path: "/"
-    }
-    resource function frontendHttpResource(http:Caller caller, http:Request clientRequest) {
+    resource function get .(http:Caller caller, http:Request clientRequest) {
 
         http:Request serviceReq = new;
         http:HttpFuture httpFuture = new;
@@ -151,15 +144,9 @@ service frontendHttpService on serverPushFrontendEP {
     }
 }
 
-@http:ServiceConfig {
-    basePath: "/backend"
-}
-service backendHttp2Service on serverPushBackendEP {
+service /backend on serverPushBackendEP {
 
-    @http:ResourceConfig {
-        path: "/main"
-    }
-    resource function backendHttp2Resource(http:Caller caller, http:Request req) {
+    resource function get main(http:Caller caller, http:Request req) {
 
         io:println("Request received");
 
@@ -224,6 +211,6 @@ function testPushPromise() {
         }
 
     } else {
-        test:assertFail(msg = "Found unexpected output type: " + response.message());
+        test:assertFail(msg = "Found unexpected output type: " + (<error>response).message());
     }
 }

@@ -5,17 +5,11 @@ import ballerina/log;
 http:Client http2serviceClientEP =
                         new ("http://localhost:7090", {httpVersion: "2.0"});
 
-@http:ServiceConfig {
-    basePath: "/http11Service"
-}
-service http11Service on new http:Listener(9090) {
+service /http11Service on new http:Listener(9090) {
 
-    @http:ResourceConfig {
-        path: "/"
-    }
-    resource function http11Resource(http:Caller caller,
+    resource function 'default .(http:Caller caller,
                                      http:Request clientRequest) {
-        // Forward the [clientRequest](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/classes/Request.html) to the `http2` service.
+        // Forward the [clientRequest](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request) to the `http2` service.
         var clientResponse = http2serviceClientEP->forward("/http2service",
                                                         clientRequest);
 
@@ -24,12 +18,12 @@ service http11Service on new http:Listener(9090) {
             response = clientResponse;
         } else {
             // Handle the errors that are returned when invoking the
-            // [forward](https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/clients/HttpClient.html#forward) function.
+            // [forward](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/HttpClient#forward) function.
             response.statusCode = 500;
-            response.setPayload(clientResponse.message());
+            response.setPayload(<@untainted>(<error>clientResponse).message());
         }
         // Send the response back to the caller.
-        var result = caller->respond(response);
+        var result = caller->respond(<@untainted>response);
         if (result is error) {
            log:printError("Error occurred while sending the response",
                err = result);
@@ -42,15 +36,9 @@ service http11Service on new http:Listener(9090) {
 listener http:Listener http2serviceEP = new (7090,
     config = {httpVersion: "2.0"});
 
-@http:ServiceConfig {
-    basePath: "/http2service"
-}
-service http2service on http2serviceEP {
+service /http2service on http2serviceEP {
 
-    @http:ResourceConfig {
-        path: "/"
-    }
-    resource function http2Resource(http:Caller caller,
+    resource function 'default .(http:Caller caller,
                                     http:Request clientRequest) {
         // Construct the response message.
         http:Response response = new;

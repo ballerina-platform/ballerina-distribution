@@ -10,19 +10,19 @@ listener websub:Listener websubEP = new (8181);
 // automatically on the start up.
 // Also, the exclusion of the onIntentVerification resource will result in auto intent-verification.
 @websub:SubscriberServiceConfig {
-    path: "/websub",
     target: ["http://localhost:9191/websub/hub", "http://websubpubtopic.com"],
     secret: "Kslk30SNF2AChs2"
 }
-service websubSubscriber on websubEP {
+service websub:SubscriberService /websub on websubEP {
 
-    // This resource accepts content delivery requests.
-    resource function onNotification(websub:Notification notification) {
+    // This remote function accepts content delivery requests.
+    remote function onNotification(websub:Notification notification) {
         var payload = notification.getTextPayload();
         if (payload is string) {
-            log:printInfo("WebSub Notification Received: " + payload);
+            log:print("WebSub Notification Received: " + payload);
         } else {
-            log:printError("Error retrieving payload as string", payload);
+            log:printError("Error retrieving payload as string",
+                                  err = payload);
         }
     }
 }

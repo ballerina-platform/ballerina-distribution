@@ -11,4 +11,4 @@
 // that is brought up remotely is used by a Ballerina WebSub publisher to publish updates to a topic. A Ballerina
 // WebSub Subscriber subscribes at this remote hub to get the topic updates.<br/><br/>
 // For more information on the underlying module, 
-// see the [WebSub module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/websub/index.html).
+// see the [WebSub module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/websub/).

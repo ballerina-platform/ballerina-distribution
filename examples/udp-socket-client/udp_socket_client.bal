@@ -1,35 +1,41 @@
-// This is the client implementation for the UDP socket.
+// This is the connectionless client implementation for the UDP socket.
 import ballerina/io;
-import ballerina/socket;
+import ballerina/udp;
 
 public function main() {
-    // Create a new socket client.
-    // Optionally, you can provide port that this socket need to bind or
-    // both interface and port as follows.
-    // socket:UdpClient client = new(localAddress = { port: 48828 });
-    // socket:UdpClient client = new(localAddress = { host: "localhost", port: 48828 });
-    socket:UdpClient socketClient = new;
-    string msg = "Hello from UDP client";
-    byte[] c1 = msg.toBytes();
+  
+    // Create a new connectionless udp client.
+    // Optionally, you can provide interface that the socket need to bind 
+    // and the timeout in milliseconds which specifies the read timeout value
+    // udp:Client client = new ("localhost", 2000);
+    udp:Client socketClient = checkpanic new ;
+   
+
+    string msg = "Hello Ballerina echo";
+    udp:Datagram datagram = {
+        remoteAddress : {
+            host : "localhost",
+            port : 48829
+        },
+        data : msg.toBytes()
+    };
+
     // Send data to remote host.
-    // Second parameter is the address of the remote host.
-    var sendResult =
-        socketClient->sendTo(c1, {host: "localhost", port: 48826});
-    if (sendResult is int) {
-        io:println("Number of bytes written: ", sendResult);
+    // The parameter is a Datagram record which contains the remote address
+    // and the data to be.
+    var sendResult = socketClient->send(datagram);
+    if (sendResult is ()) {
+        io:println("Datagram was sent to the remote host.");
     } else {
         error e = sendResult;
         panic e;
     }
+    
     // Wait until data receive from remote host.
-    // This will block until receive at least a single byte.
-    // Optionally, you can specify the length as below.
-    // socketClient->receiveFrom(length = 30)
-    // This will block until specified length of bytes receive from host.
-    var result = socketClient->receiveFrom();
-    if (result is [byte[], int, socket:Address]) {
-        var [content, length, address] = result;
-        var byteChannel = io:createReadableChannel(content);
+    var result = socketClient->receive();
+    if (result is udp:Datagram) {
+
+        var byteChannel = io:createReadableChannel(result.data);
         if (byteChannel is io:ReadableByteChannel) {
             io:ReadableCharacterChannel characterChannel =
                 new io:ReadableCharacterChannel(byteChannel, "UTF-8");
@@ -44,10 +50,11 @@ public function main() {
         io:println("An error occurred while receiving the data ",
             result);
     }
+
     // Close the client and release the bound port.
     var closeResult = socketClient->close();
     if (closeResult is error) {
-        io:println("An error occurred while closing the connection ",
+        io:println("An error occurred while closing the socket ",
             closeResult);
     }
 }

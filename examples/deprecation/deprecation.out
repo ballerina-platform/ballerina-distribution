@@ -1,13 +1,14 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file and execute the `ballerina run` command below.
 ballerina run deprecation.bal
-warning: .::deprecation.bal:35:5: usage of construct 'Address' is deprecated
-warning: .::deprecation.bal:39:22: usage of construct 'LKA' is deprecated
-warning: .::deprecation.bal:65:76: usage of construct 'Person' is deprecated
-warning: .::deprecation.bal:68:5: usage of construct 'Person' is deprecated
-warning: .::deprecation.bal:78:5: usage of construct 'Person' is deprecated
-warning: .::deprecation.bal:78:16: usage of construct 'createPerson(Jane, Doe, Castro Street, Mountain View, USA)' is deprecated
-warning: .::deprecation.bal:81:16: usage of construct 'p.getFullName()' is deprecated
-Running executables
+WARNING [deprecation.bal:(35:5,35:12)] usage of construct 'Address' is deprecated
+WARNING [deprecation.bal:(39:22,39:25)] usage of construct 'LKA' is deprecated
+WARNING [deprecation.bal:(66:38,66:44)] usage of construct 'Person' is deprecated
+WARNING [deprecation.bal:(69:5,69:11)] usage of construct 'Person' is deprecated
+WARNING [deprecation.bal:(79:5,79:11)] usage of construct 'Person' is deprecated
+WARNING [deprecation.bal:(79:16,80:50)] usage of construct 'createPerson(Jane, Doe, Castro Street, Mountain View, USA)' is deprecated
+WARNING [deprecation.bal:(83:16,83:31)] usage of construct 'p.getFullName()' is deprecated
+
+Running executable
 
 Jane Doe

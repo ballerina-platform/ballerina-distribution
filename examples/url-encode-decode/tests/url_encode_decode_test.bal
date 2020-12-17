@@ -1,23 +1,21 @@
 import ballerina/stringutils;
 import ballerina/test;
 
-(any|error)[] outputs = [];
-int counter = 0;
+string[] outputs = [];
 
-// This is the mock function which will replace the real function
+// This is the mock function, which will replace the real function.
 @test:Mock {
     moduleName: "ballerina/io",
     functionName: "println"
 }
-public isolated function mockPrint(any|error... s) {
-    outputs[counter] = s[0];
-    counter += 1;
+public function mockPrint(any|error... val) {
+    outputs.push(val.reduce(function (any|error a, any|error b) returns string => a.toString() + b.toString(), "").toString());
 }
 
 @test:Config { }
-function testFunc() {
+function testFunc() returns error? {
     // Invoking the main function
-    var ret = main();
+    check main();
     test:assertEquals(outputs.length(), 4);
     test:assertTrue(stringutils:contains(<string>outputs[0], "Base64 URL encoded value: YWJjMTIzIT8kKiYoKSctPUB-"));
     test:assertTrue(stringutils:contains(<string>outputs[1], "Base64 URL decoded value: abc123!?$*&()'-=@~"));

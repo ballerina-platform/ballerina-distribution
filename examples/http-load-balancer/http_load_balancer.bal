@@ -16,33 +16,29 @@ http:LoadBalanceClient lbBackendEP = new ({
         timeoutInMillis: 5000
 });
 
-@http:ServiceConfig {
-    basePath: "/lb"
-}
 // Create an HTTP service bound to the endpoint (`loadBalancerEP`).
-service loadBalancerDemoService on new http:Listener(9090) {
+service /lb on new http:Listener(9090) {
 
-    @http:ResourceConfig {
-        path: "/"
-    }
-    resource function roundRobin(http:Caller caller, http:Request req) {
+    resource function 'default .(http:Caller caller, http:Request req) {
         json requestPayload = {"name": "Ballerina"};
         var response = lbBackendEP->post("/", requestPayload);
         // If a response is returned, the normal process runs. If the service
         // does not get the expected response, the error-handling logic is
         // executed.
         if (response is http:Response) {
-            var responseToCaller = caller->respond(response);
+            var responseToCaller = caller->respond(<@untainted>response);
             if (responseToCaller is http:ListenerError) {
-                log:printError("Error sending response", responseToCaller);
+                log:printError("Error sending response",
+                                err = responseToCaller);
             }
         } else {
             http:Response outResponse = new;
             outResponse.statusCode = 500;
-            outResponse.setPayload(<string>response.message());
+            outResponse.setPayload((<@untainted error>response).message());
             var responseToCaller = caller->respond(outResponse);
             if (responseToCaller is http:ListenerError) {
-                log:printError("Error sending response", responseToCaller);
+                log:printError("Error sending response",
+                                err = responseToCaller);
             }
         }
 
@@ -50,14 +46,9 @@ service loadBalancerDemoService on new http:Listener(9090) {
 }
 
 // Define the mock backend services, which are called by the load balancer.
-@http:ServiceConfig {
-    basePath: "/mock1"
-}
-service mock1 on backendEP {
-    @http:ResourceConfig {
-        path: "/"
-    }
-    resource function mock1Resource(http:Caller caller, http:Request req) {
+service /mock1 on backendEP {
+
+    resource function 'default .(http:Caller caller, http:Request req) {
         var responseToCaller = caller->respond("Mock1 resource was invoked.");
         if (responseToCaller is http:ListenerError) {
             handleRespondResult(responseToCaller);
@@ -65,14 +56,9 @@ service mock1 on backendEP {
     }
 }
 
-@http:ServiceConfig {
-    basePath: "/mock2"
-}
-service mock2 on backendEP {
-    @http:ResourceConfig {
-        path: "/"
-    }
-    resource function mock2Resource(http:Caller caller, http:Request req) {
+service /mock2 on backendEP {
+
+    resource function 'default .(http:Caller caller, http:Request req) {
         var responseToCaller = caller->respond("Mock2 resource was invoked.");
         if (responseToCaller is http:ListenerError) {
             handleRespondResult(responseToCaller);
@@ -80,14 +66,9 @@ service mock2 on backendEP {
     }
 }
 
-@http:ServiceConfig {
-    basePath: "/mock3"
-}
-service mock3 on backendEP {
-    @http:ResourceConfig {
-        path: "/"
-    }
-    resource function mock3Resource(http:Caller caller, http:Request req) {
+service /mock3 on backendEP {
+
+    resource function 'default .(http:Caller caller, http:Request req) {
         var responseToCaller = caller->respond("Mock3 resource was invoked.");
         if (responseToCaller is http:ListenerError) {
             handleRespondResult(responseToCaller);
@@ -98,6 +79,7 @@ service mock3 on backendEP {
 // Function to handle respond results
 function handleRespondResult(http:ListenerError? result) {
     if (result is http:ListenerError) {
-        log:printError("Error sending response from mock service", result);
+        log:printError("Error sending response from mock service",
+                        err = result);
     }
 }

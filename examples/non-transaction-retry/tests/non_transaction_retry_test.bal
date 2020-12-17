@@ -7,7 +7,7 @@ string[] outputs = [];
     moduleName: "ballerina/io",
     functionName: "println"
 }
-public isolated function mockPrint(any|error... val) {
+public function mockPrint(any|error... val) {
     outputs.push(val.reduce(function (any|error a, any|error b) returns string => a.toString() + b.toString(), "").toString());
 }
 
@@ -16,5 +16,8 @@ function testFunc() {
     error? output = main();
     test:assertEquals(outputs[0], "Attempting execution...");
     test:assertEquals(outputs[1], "Attempting execution...");
-    test:assertEquals(outputs[2], "Work done.");
+    test:assertEquals(outputs[2], "Work completed.");
+    test:assertEquals(outputs[3], "Attempting execution...");
+    test:assertEquals(outputs[4], "Attempting execution...");
+    test:assertEquals(outputs[5], "Work completed.");
 }

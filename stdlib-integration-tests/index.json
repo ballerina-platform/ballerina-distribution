@@ -1,7 +1,7 @@
 [
   {
-    "name": "Socket standard library ",
-    "path": "socket"
+    "name": "TCP standard library ",
+    "path": "tcp"
   },
   {
     "name": "Email standard library ",
@@ -36,34 +36,6 @@
     "path": "task"
   },
   {
-    "name": "gRPC Unary Blocking RPC",
-    "path": "grpc-unary-blocking"
-  },
-  {
-    "name": "gRPC Unary non-Blocking RPC",
-    "path": "grpc-unary-non-blocking"
-  },
-  {
-    "name": "gRPC Server Streaming RPC",
-    "path": "grpc-server-streaming"
-  },
-  {
-    "name": "gRPC Unary Secured RPC",
-    "path": "grpc-secured-unary"
-  },
-  {
-    "name": "gRPC Client Streaming RPC",
-    "path": "grpc-client-streaming"
-  },
-  {
-    "name": "gRPC Bidirectional Streaming RPC",
-    "path": "grpc-bidirectional-streaming"
-  },
-  {
-    "name": "gRPC service with HTTP gateway",
-    "path": "grpc-service-with-http-proxy-gateway"
-  },
-  {
     "name": "HTTP standard library",
     "path": "http"
   },
@@ -74,5 +46,25 @@
   {
     "name": "Websocket pushText and onText",
     "path": "websocket"
+  },
+  {
+    "name": "SQL Connectors",
+    "path": "sql"
+  },
+  {
+    "name": "Websub start hub and register topic",
+    "path": "websub"
+  },
+  {
+    "name": "Config standard library",
+    "path": "config"
+  },
+  {
+    "name": "UDP standard library ",
+    "path": "udp"
+  },
+  {
+    "name": "gRPC standard library ",
+    "path": "grpc"
   }
 ]

@@ -1,0 +1,25 @@
+# To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina run` command below.
+# Note that to run this examples successfully, you should place an image in the `files` directory as follows.
+# tree .
+# ├── files
+# │   └── ballerina.jpeg
+# └── bytes_io.bal
+ballerina run file_io.bal
+
+Successfully copied the image as a byte array.
+Successfully copied the image as a stream.
+Ballerina is an open source programming language.
+["The Big Bang Theory","F.R.I.E.N.D.S","Game of Thrones","LOST"]
+The Big Bang Theory
+F.R.I.E.N.D.S
+Game of Thrones
+LOST
+{"Store":{"@id":"AST","name":"Anne","address":{"street":"Main","city":"94"},"codes":["4","8"]}}
+<book>The Lost World</book>
+[["1","James","10000"],["2","Nathan","150000"],["3","Ronald","120000"],["4","Roy","6000"],["5","Oliver","1100000"]]
+["1","James","10000"]
+["2","Nathan","150000"]
+["3","Ronald","120000"]
+["4","Roy","6000"]
+["5","Oliver","1100000"]

@@ -29,17 +29,12 @@ http:Client backendClientEP = new ("http://localhost:8080", {
         }
     );
 
-@http:ServiceConfig {
-    basePath: "/retry"
-}
-service retryDemoService on new http:Listener(9090) {
-    @http:ResourceConfig {
-        methods: ["GET"],
-        path: "/"
-    }
+
+service /'retry on new http:Listener(9090) {
+
     // Parameters include a reference to the caller and an object of the
     // request data.
-    resource function invokeEndpoint(http:Caller caller, http:Request request) {
+    resource function 'default .(http:Caller caller, http:Request request) {
 
         var backendResponse = backendClientEP->forward("/hello", request);
 
@@ -47,18 +42,19 @@ service retryDemoService on new http:Listener(9090) {
         // client. If `backendResponse` is an `http:ClientError`, an internal
         // server error is returned to the client.
         if (backendResponse is http:Response) {
-            var responseToCaller = caller->respond(backendResponse);
+            var responseToCaller = caller->respond(<@untainted>backendResponse);
             if (responseToCaller is error) {
-                log:printError("Error sending response", responseToCaller);
+                log:printError("Error sending response",
+                                err = responseToCaller);
             }
         } else {
             http:Response response = new;
             response.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
-            string errCause = <string>backendResponse.message();
-            response.setPayload(errCause);
+            response.setPayload((<@untainted error>backendResponse).message());
             var responseToCaller = caller->respond(response);
             if (responseToCaller is error) {
-                log:printError("Error sending response", responseToCaller);
+                log:printError("Error sending response",
+                                err = responseToCaller);
             }
         }
 
@@ -70,27 +66,19 @@ int counter = 0;
 // This sample service is used to mock connection timeouts and service outages.
 // The service outage is mocked by stopping/starting this service.
 // This should run separately from the `retryDemoService` service.
-@http:ServiceConfig {
-    basePath: "/hello"
-}
-service mockHelloService on new http:Listener(8080) {
+service /hello on new http:Listener(8080) {
 
-    @http:ResourceConfig {
-        methods: ["GET", "POST"],
-        path: "/"
-    }
-    resource function sayHello(http:Caller caller, http:Request req) {
+    resource function get .(http:Caller caller, http:Request req) {
         counter = counter + 1;
         if (counter % 4 != 0) {
-            log:printInfo(
-                "Request received from the client to delayed service.");
+            log:print("Request received from the client to delayed service.");
             // Delay the response by 5000 milliseconds to mimic network level delays.
             runtime:sleep(5000);
 
             var responseToCaller = caller->respond("Hello World!!!");
             handleRespondResult(responseToCaller);
         } else {
-            log:printInfo(
+            log:print(
                 "Request received from the client to healthy service.");
             var responseToCaller = caller->respond("Hello World!!!");
             handleRespondResult(responseToCaller);
@@ -100,6 +88,7 @@ service mockHelloService on new http:Listener(8080) {
 
 function handleRespondResult(error? result) {
     if (result is http:ListenerError) {
-        log:printError("Error sending response from mock service", result);
+        log:printError("Error sending response from mock service",
+                        err = result);
     }
 }

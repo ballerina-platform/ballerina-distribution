@@ -15,9 +15,13 @@ listener grpc:Listener ep = new (9090, {
     }
 });
 
-service HelloWorld on ep {
-    resource function hello(grpc:Caller caller, string name) {
-        log:printInfo("Server received hello from " + name);
+@grpc:ServiceDescriptor {
+    descriptor: ROOT_DESCRIPTOR,
+    descMap: getDescriptorMap()
+}
+service /HelloWorld on ep {
+    isolated remote function hello(grpc:Caller caller, string name) {
+        log:print("Server received hello from " + name);
         string message = "Hello " + name;
 
         // Send a response message to the caller.
@@ -26,7 +30,7 @@ service HelloWorld on ep {
         if (err is grpc:Error) {
             log:printError("Error from Connector: " + err.message());
         } else {
-            log:printInfo("Server send response : " + message);
+            log:print("Server send response : " + message);
         }
 
         // Send the `completed` notification to the caller.
