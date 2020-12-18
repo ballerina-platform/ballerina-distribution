@@ -3,4 +3,12 @@
 ballerina run class-definition.bal
 0
 0
-0
+John
+20
+Colombo, Sri Lanka
+john@abc.com
+true
+true
+false
+error("Jo is not a teenager!")
+true

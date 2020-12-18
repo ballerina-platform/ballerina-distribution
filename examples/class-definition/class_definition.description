@@ -1,4 +1,7 @@
-// Classes are used to create values of the `object` type.
+// Classes describe an object type and provide a way to construct values of that type. <br/>
 // Objects are a behaviourial type. An object is a combination of public, private, and module-level visible fields along with a
 // set of associated functions (called methods) that can be used to manipulate the fields. This allows you
-// to define custom-behavioural data types.
+// to define custom-behavioural data types. <br/>
+// A class can have an `init` method that gets called when creating an object using the `new` expression.
+// The return type of the`init` method should be a subtype of `error?` containing `()`. If the `init` method execution
+// returns an error, the `new` expression will return the error.
