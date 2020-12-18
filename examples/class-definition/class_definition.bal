@@ -11,7 +11,7 @@ class Person {
     // Fields with no access modifiers are visible only within the same module.
     string address = "No 20, Palm Grove";
 
-    // Private fields are only visible within the object.
+    // Private fields are only visible within the class.
     private boolean employed;
 
     // If you need to have a field of the same class, you need to make that field's
