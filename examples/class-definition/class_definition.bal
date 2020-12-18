@@ -33,7 +33,7 @@ class Person {
     function isEmployed() returns boolean => self.employed;
 }
 
-// Define a class named `Person`. It contains `public`, `private`, and module-level visible fields.
+// Define a class named `Employee`. It contains `public`, `private`, and module-level visible fields.
 // Initializer expressions are specified for all of the fields and this class does not contain
 // an `init` method.
 class Employee {
