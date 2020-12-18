@@ -7,6 +7,11 @@ on:
       - stage
       - ballerina-1.1.x
   workflow_dispatch:
+    inputs:
+      skipTests:
+        description: 'Skip Tests during build'
+        required: false
+        default: 'false'
 
 jobs:
   build:
@@ -19,10 +24,17 @@ jobs:
         with:
           java-version: 11
       - name: Build Ballerina Distribution
+        if: ${{ github.event.inputs.skipTests == false }}
         env:
           packageUser: ${{ github.actor }}
           packagePAT: ${{ secrets.GITHUB_TOKEN }}
         run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue
+      - name: Build Ballerina Distribution Skip Tests
+        if: ${{ github.event.inputs.skipTests }}
+        env:
+          packageUser: ${{ github.actor }}
+          packagePAT: ${{ secrets.GITHUB_TOKEN }}
+        run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue -x test
       - name: Archive distribtuions
         uses: actions/upload-artifact@v2
         with:
