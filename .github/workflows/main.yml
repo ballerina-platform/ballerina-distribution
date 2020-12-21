@@ -24,38 +24,38 @@ jobs:
         with:
           java-version: 11
       - name: Build Ballerina Distribution
-        if: ${{ github.event.inputs.skipTests == false }}
+        if: ${{ github.event.inputs.skipTests == '' || github.event.inputs.skipTests == 'false' }}
         env:
           packageUser: ${{ github.actor }}
           packagePAT: ${{ secrets.GITHUB_TOKEN }}
         run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue
       - name: Build Ballerina Distribution Skip Tests
-        if: ${{ github.event.inputs.skipTests }}
+        if: ${{ github.event.inputs.skipTests == 'true' }}
         env:
           packageUser: ${{ github.actor }}
           packagePAT: ${{ secrets.GITHUB_TOKEN }}
         run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue -x test
-      - name: Archive distribtuions
+      - name: Archive Ballerina ZIP
         uses: actions/upload-artifact@v2
         with:
           name: Ballerina ZIP
           path: ballerina/build/distributions/ballerina-swan-lake-*.zip
-      - name: Archive distribtuions
+      - name: Archive Ballerina Short Name ZIP
         uses: actions/upload-artifact@v2
         with:
-          name: Ballerina ZIP with short name
+          name: Ballerina Short Name ZIP
           path: ballerina/build/distributions/ballerina-sl*.zip
-      - name: Archive distribtuions
+      - name: Archive Linux installer ZIP
         uses: actions/upload-artifact@v2
         with:
           name: Linux installer ZIP
           path: ballerina/build/distributions/ballerina-linux-*.zip
-      - name: Archive distribtuions
+      - name: Archive MacOS installer ZIP
         uses: actions/upload-artifact@v2
         with:
           name: MacOS installer ZIP
           path: ballerina/build/distributions/ballerina-macos-*.zip
-      - name: Archive distribtuions
+      - name: Archive Windows Installer ZIP
         uses: actions/upload-artifact@v2
         with:
           name: Windows Installer ZIP
