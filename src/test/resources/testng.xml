@@ -28,6 +28,7 @@
             <class name="io.ballerina.test.UpdateToolTest"/>
 <!--            <class name="io.ballerina.test.CentralTest"/>-->
             <class name="io.ballerina.test.FetchDependencyTest"/>
+            <class name="io.ballerina.test.ProjectTest"/>
         </classes>
     </test>
 </suite>

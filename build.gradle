@@ -48,6 +48,7 @@ test {
     systemProperty 'TOOL_VERSION', project.properties['toolVersion']
     systemProperty 'LATEST_TOOL_VERSION', project.properties['latestToolVersion']
     systemProperty 'LATEST_PATCH_VERSION', project.properties['latestPatchVersion']
+    systemProperty 'LATEST_PATCH_SPEC_VERSION', project.properties['latestPatchSpecVersion']
 }
 
 repositories {
