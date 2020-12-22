@@ -673,7 +673,7 @@ task testExamples() {
             'http-circuit-breaker',
             'request-with-multiparts',
             'different-payload-types',
-            'base-path-and-path',
+            'absolute-path-and-path',
             'http-trace-logs',
             'restrict-by-media-type',
             'http-cors',

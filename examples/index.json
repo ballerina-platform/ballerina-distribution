@@ -841,8 +841,8 @@
                 "url": "http-client-data-binding"
             },
             {
-                "name": "Absolute Resource Path and Resource Path",
-                "url": "http-absolute-path-and-path"
+                "name": "Absolute Path and Resource Path",
+                "url": "absolute-path-and-path"
             },
             {
                 "name": "Query Path Matrix Param",
