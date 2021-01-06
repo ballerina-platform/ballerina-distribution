@@ -97,6 +97,12 @@
             </directory>
             <outputDirectory>bir-cache/ballerinax/azure.functions</outputDirectory>
         </fileSet>
+        <fileSet>
+            <directory>
+                ${project.build.directory}/extracted-distributions/azurefunctions-extension-examples-zip/azurefunctions-extension-examples-${project.version}
+            </directory>
+            <outputDirectory>examples</outputDirectory>
+        </fileSet>
     </fileSets>
     <files>
         <file>
