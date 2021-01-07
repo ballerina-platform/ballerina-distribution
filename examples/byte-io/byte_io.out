@@ -1,5 +1,11 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
-ballerina run byte_io.bal
-Start to copy files from ./files/ballerina.jpg to ./files/ballerinaCopy.jpg
-File copy completed. The copied file is located at ./files/ballerinaCopy.jpg
+# Note that to run this examples successfully, you should place an image in the `files` directory as follows.
+# tree .
+# ├── files
+# │   └── ballerina.jpeg
+# └── bytes_io.bal
+ballerina run bytes_io.bal
+
+Successfully copied the image as a byte array.
+Successfully copied the image as a stream.
