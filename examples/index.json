@@ -607,32 +607,24 @@
         "category": "Language concepts",
         "samples": [
             {
-                "name": "Byte I/O",
+                "name": "Read/Write Bytes",
                 "url": "byte-io"
             },
             {
-                "name": "Data I/O",
-                "url": "data-io"
+                "name": "Read/Write Text",
+                "url": "text-io"
             },
             {
-                "name": "Record I/O",
-                "url": "record-io"
-            },
-            {
-                "name": "CSV I/O",
+                "name": "Read/Write CSV",
                 "url": "csv-io"
             },
             {
-                "name": "JSON I/O",
+                "name": "Read/Write JSON",
                 "url": "json-io"
             },
             {
-                "name": "XML I/O",
+                "name": "Read/Write XML",
                 "url": "xml-io"
-            },
-            {
-                "name": "File I/O",
-                "url": "file-io"
             }
         ]
     },
