@@ -24,7 +24,8 @@ type HttpResponseDetails record {
 map<(anydata|error)> outputs = {};
 
 public function storeOutput(string key, any|error... s) {
-    outputs[key] = s[0].toString();
+    any|error statusCode = s[0];
+    outputs[key] = statusCode is error ? statusCode.toString() : statusCode.toString();
 }
 
 public function fetchOutput(string key) returns (anydata|error) {

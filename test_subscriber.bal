@@ -29,7 +29,7 @@ listener websub:Listener websubEP = new websub:Listener(23181, { host: "0.0.0.0"
 }
 service websub:SubscriberService /websub on websubEP {
     remote function onNotification (websub:Notification notification) {
-        json payload = <json> notification.getJsonPayload();
+        json payload = <json> checkpanic notification.getJsonPayload();
         storeOutput(ID_HUB_NOTIFICATION_LOG, "WebSub Notification Received: " + <@untainted>payload.toJsonString());
         io:println("WebSub Notification Received: " + <@untainted>payload.toJsonString());
     }
@@ -55,7 +55,7 @@ service websub:SubscriberService /subscriberWithNoPathInAnnot on websubEP {
     }
 
     remote function onNotification (websub:Notification notification) {
-        string payload = <string> notification.getTextPayload();
+        string payload = <string> checkpanic notification.getTextPayload();
         storeOutput(ID_HUB_NOTIFICATION_LOG_TWO, "WebSub Notification Received by Two: " + <@untainted>payload);
         io:println("WebSub Notification Received by Two: " + <@untainted>payload);
     }
@@ -73,7 +73,7 @@ string subscriberThreeTopic = "http://one.websub.topic.com";
 }
 service websub:SubscriberService /websubThree on websubEP {
     remote function onNotification (websub:Notification notification) {
-        string payload = <string> notification.getTextPayload();
+        string payload = <string> checkpanic notification.getTextPayload();
         io:println("WebSub Notification Received by Three: ", payload);
         io:println("Query Params: ", notification.getQueryParams());
         storeOutput(ID_QUERY_PARAM_LOG, "Query Params: " + <@untainted>notification.getQueryParams().toString());
