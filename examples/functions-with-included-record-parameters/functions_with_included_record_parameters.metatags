@@ -1,0 +1,2 @@
+description: Ballerina functions can have included record parameters. type of included record parameter must be record type and it cannot have default values.
+keywords: ballerina, ballerina by example, bbe, included record parameters, function

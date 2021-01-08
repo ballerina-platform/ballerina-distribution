@@ -1,0 +1,8 @@
+# To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run functions_with_included_record_parameters.bal
+Admission No: 1001, Student Name: Anna Christeena
+Admission No: 1002, Student Name: Anne Doe
+Admission No: 1003, Student Name: Peter
+Admission No: 1004, Admission Date: 2020-Jan
+Average Marks: 82

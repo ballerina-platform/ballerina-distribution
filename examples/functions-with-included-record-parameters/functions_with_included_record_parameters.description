@@ -1,0 +1,5 @@
+// Ballerina function can be have included record parameters.
+// The type of included record parameter must be record type and it cannot have default values.
+// A function with included record parameters can be invoked by providing values for fields of included
+// record parameters as named arguments using the field’s names, as if it had been declared as parameters.
+// Arguments for included record parameters also can be passed as positional arguments.
