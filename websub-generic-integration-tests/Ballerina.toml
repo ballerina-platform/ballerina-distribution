@@ -1,40 +1,40 @@
 [package]
 org = "ballerina"
 name = "websub_generic_integration_tests"
-version = "@toml.version@"
+version = "1.0.9"
 
 [[dependency]]
 org = "ballerina"
 name = "io"
-version = "@stdlib.io.version@"
+version = "0.5.5"
 
 [[dependency]]
 org = "ballerina"
 name = "mime"
-version = "@stdlib.mime.version@"
+version = "1.0.5"
 
 [[dependency]]
 org = "ballerina"
 name = "runtime"
-version = "@stdlib.runtime.version@"
+version = "0.5.5"
 
 [[dependency]]
 org = "ballerina"
 name = "log"
-version = "@stdlib.log.version@"
+version = "1.0.5"
 
 [[dependency]]
 org = "ballerina"
 name = "http"
-version = "@stdlib.http.version@"
+version = "1.0.5"
 
 [[dependency]]
 org = "ballerina"
 name = "auth"
-version = "@stdlib.auth.version@"
+version = "1.0.5"
 
 [[platform.java11.dependency]]
-path = "../websub-native/build/libs/websub-native-@project.version@.jar"
+path = "../websub-native/build/libs/websub-native-1.0.9-SNAPSHOT.jar"
 groupId = "ballerina"
 artifactId = "web-sub"
-version = "@project.version@"
+version = "1.0.9-SNAPSHOT"

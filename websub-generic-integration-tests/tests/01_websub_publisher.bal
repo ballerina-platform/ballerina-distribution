@@ -41,10 +41,10 @@ service /publisher on publisherServiceEP {
 
     resource function post notify/[string subscriber](http:Caller caller, http:Request req) {
         remoteRegisterTopic();
-        json jsonPayload = <json> req.getJsonPayload();
-        json jsonMode = <json>jsonPayload.mode;
+        json jsonPayload = <json> checkpanic req.getJsonPayload();
+        json jsonMode = <json> checkpanic jsonPayload.mode;
         string mode = jsonMode.toJsonString();
-        json jsonContentType = <json>jsonPayload.content_type;
+        json jsonContentType = <json> checkpanic jsonPayload.content_type;
         string contentType = jsonContentType.toJsonString();
 
         var err = caller->accepted();
@@ -89,7 +89,7 @@ service /publisher on publisherServiceEP {
                 allTopics["Topic_" + index.toString()] = topic;
                 index += 1;
             }
-            json j = <json> allTopics.cloneWithType(JsonTypedesc);
+            json j = <json> checkpanic allTopics.cloneWithType(JsonTypedesc);
             var err = caller->respond(j);
             if (err is error) {
                 log:printError("Error responding on topicInfo request", err = err);
@@ -133,10 +133,10 @@ service /publisherTwo on publisherServiceEP {
 
 service /contentTypePublisher on publisherServiceEP {
     resource function post notify/[string port](http:Caller caller, http:Request req) {
-        json jsonPayload = <json> req.getJsonPayload();
-        json jsonMode = <json>jsonPayload.mode;
+        json jsonPayload = <json> checkpanic req.getJsonPayload();
+        json jsonMode = <json> checkpanic jsonPayload.mode;
         string mode = jsonMode.toJsonString();
-        json jsonContentType = <json>jsonPayload.content_type;
+        json jsonContentType = <json> checkpanic jsonPayload.content_type;
         string contentType = jsonContentType.toJsonString();
 
         var err = caller->accepted();
