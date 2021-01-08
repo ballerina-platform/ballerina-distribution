@@ -78,7 +78,7 @@ service /startupHub on testHub {
         }
 
         // testHubShutdownAndStart
-        websub:Hub hub = <websub:Hub> res;
+        websub:Hub hub = <websub:Hub> checkpanic res;
         error? err = hub.stop();
         if (err is error) {
             io:println(err);
