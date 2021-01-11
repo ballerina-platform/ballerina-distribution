@@ -47,11 +47,11 @@ def ballerinaWindowsDistributionZip = file("$project.buildDir/distributions/ball
 
 task unpackBallerinaJre(type: Download) {
     group = "unpack_dependencies"
-    def jreBaseURL = "https://github.com/ballerina-platform/ballerina-custom-jre/releases/download/${jreVersion}"
+    def jreBaseURL = "https://github.com/ballerina-platform/ballerina-custom-jre/releases/download/${ballerinaJreVersion}"
     src([
-            "${jreBaseURL}/ballerina-jre-linux-${jreVersion}.zip",
-            "${jreBaseURL}/ballerina-jre-macos-${jreVersion}.zip",
-            "${jreBaseURL}/ballerina-jre-windows-${jreVersion}.zip"
+            "${jreBaseURL}/ballerina-jre-linux-${ballerinaJreVersion}.zip",
+            "${jreBaseURL}/ballerina-jre-macos-${ballerinaJreVersion}.zip",
+            "${jreBaseURL}/ballerina-jre-windows-${ballerinaJreVersion}.zip"
     ])
     onlyIfModified true
     dest "${jreLocation}"
@@ -153,19 +153,19 @@ task unpackBalCommand(type: Copy) {
 
 task extractJreForLinux(type: Copy) {
     group = "extract_jre"
-    from zipTree { "${jreLocation}/ballerina-jre-linux-${jreVersion}.zip" }
+    from zipTree { "${jreLocation}/ballerina-jre-linux-${ballerinaJreVersion}.zip" }
     into("${buildDir}/target/extracted-jre-linux")
 }
 
 task extractJreForMac(type: Copy) {
     group = "extract_jre"
-    from zipTree { "${jreLocation}/ballerina-jre-macos-${jreVersion}.zip" }
+    from zipTree { "${jreLocation}/ballerina-jre-macos-${ballerinaJreVersion}.zip" }
     into("${buildDir}/target/extracted-jre-macos")
 }
 
 task extractJreForWindows(type: Copy) {
     group = "extract_jre"
-    from zipTree { "${jreLocation}/ballerina-jre-windows-${jreVersion}.zip" }
+    from zipTree { "${jreLocation}/ballerina-jre-windows-${ballerinaJreVersion}.zip" }
     into("${buildDir}/target/extracted-jre-windows")
 }
 

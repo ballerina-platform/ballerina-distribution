@@ -31,8 +31,8 @@ ext {
     dockerVersion = project.dockerVersion
     dataMapperVersion = project.dataMapperVersion
     c2cVersion = project.c2cVersion
+    ballerinaJreVersion = project.ballerinaJreVersion
 
-    jreVersion = "0.8.0"
     picocliVersion = "4.0.1"
     ballerinaCommandVersion = "0.8.10"
     testngVersion = "6.14.3"
