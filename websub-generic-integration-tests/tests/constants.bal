@@ -34,6 +34,22 @@ const string WEBSUB_TOPIC_FOUR = "http://four.websub.topic.com";
 const string WEBSUB_TOPIC_FIVE = "http://one.redir.topic.com";
 const string WEBSUB_TOPIC_SIX = "http://two.redir.topic.com";
 
+const string HEADER_ACCEPT = "Accept";
+const string HEADER_ACCEPT_LANGUAGE = "Accept-Language";
+const string ID_MATCH_ACCEPT_AND_ACCEPT_LANGUAGE_HEADER_ARRAY = "MatchingAcceptAndAcceptLanguageHeaderArray";
+const string ID_MATCH_ACCEPT_AND_ACCEPT_LANGUAGE_HEADERS = "MatchingAcceptAndAcceptLanguageHeaders";
+const string ID_MATCH_ACCEPT_HEADER = "MatchingAcceptHeader";
+const string ID_MATCH_ACCEPT_LANGUAGE_HEADER = "MatchingAcceptLanguageHeader";
+const string ID_MISMATCH_ACCEPT_AND_ACCEPT_LANGUAGE_HEADER_ARRAY = "MisMatchingAcceptAcceptLanguageHeaderArray";
+const string ID_MISMATCH_ACCEPT_AND_ACCEPT_LANGUAGE_HEADERS = "MisMatchingAcceptAndAcceptLanguageHeaders";
+const string ID_MISMATCH_ACCEPT_HEADER = "MisMathingAcceptHeader";
+const string ID_MISMATCH_ACCEPT_LANGUAGE_HEADER = "MisMatchingAcceptLanguageHeader";
+const string ID_MISSING_ACCEPT_AND_ACCEPT_LANGUAGE_HEADERS = "MissingAcceptAndAcceptLanguageHeaders";
+const string LANGUAGE_TYPE_DE = "de-DE";
+const string RESPONSE_CODE_ACCEPTED = "202";
+const string RESPONSE_CODE_NOT_ACCEPTABLE = "406";
+const string RESPONSE_CODE_INTERNAL_SERVER_ERROR = "500";
+
 const string ID_INTENT_VER_REQ_RECEIVED_LOG = "IntentVerificationInvocation";
 const string ID_BY_KEY_CREATED_LOG = "DispatchingByKeyCreated";
 const string ID_BY_KEY_FEATURE_LOG = "DispatchingByKeyFeatured";
