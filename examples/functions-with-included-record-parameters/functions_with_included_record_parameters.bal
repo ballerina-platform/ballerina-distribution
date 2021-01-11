@@ -5,11 +5,11 @@ type Student record {
     string lastName?;
 };
 
-type AdmissionDate record {
+type AdmissionDate record {|
     string year = "2020";
     string month = "Jan";
     never admissionNo?;
-};
+|};
 
 type Grades record {|
     never math?;
@@ -20,7 +20,7 @@ type Grades record {|
 // Adding `*` before the parameter name marks the parameter as an included record parameter.
 // The names of the fields in the record type of an included record parameter must be distinct 
 // from each other and also from the names of the other parameters, unless it is an optional field of type never. 
-// If not, it creates a compilation error.
+// If not, it results in a compilation error.
 function printStudentDetails(int admissionNo, *Student student) {
     string name = student.firstName;
  
@@ -54,7 +54,7 @@ public function main() {
 
     Student student = {
         firstName: "Anna",
-        lastName: "Christeena"
+        lastName: "Christina"
     };
     
     // Call the function by passing a positional argument to the `student` included record parameter.
