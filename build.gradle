@@ -217,13 +217,6 @@ subprojects {
             }
         }
         maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-system"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-uuid"
             credentials {
                 username System.getenv("packageUser")
@@ -318,13 +311,6 @@ subprojects {
         }
         maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-oauth2"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-ldap"
             credentials {
                 username System.getenv("packageUser")
                 password System.getenv("packagePAT")
@@ -510,7 +496,6 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:time-ballerina:${stdlibTimeVersion}"
         ballerinaStdLibs "org.ballerinalang:task-ballerina:${stdlibTaskVersion}"
         ballerinaStdLibs "org.ballerinalang:cache-ballerina:${stdlibCacheVersion}"
-        ballerinaStdLibs "org.ballerinalang:system-ballerina:${stdlibSystemVersion}"
         ballerinaStdLibs "org.ballerinalang:uuid-ballerina:${stdlibUuidVersion}"
         ballerinaStdLibs "org.ballerinalang:runtime-ballerina:${stdlibRuntimeVersion}"
         ballerinaStdLibs "org.ballerinalang:sql-ballerina:${stdlibSqlVersion}"
@@ -526,7 +511,6 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:stringutils-ballerina:${stdlibStringutilsVersion}"
         ballerinaStdLibs "org.ballerinalang:auth-ballerina:${stdlibAuthVersion}"
         ballerinaStdLibs "org.ballerinalang:oauth2-ballerina:${stdlibOauth2Version}"
-        ballerinaStdLibs "org.ballerinalang:ldap-ballerina:${stdlibLdapVersion}"
         ballerinaStdLibs "org.ballerinalang:crypto-ballerina:${stdlibCryptoVersion}"
         ballerinaStdLibs "org.ballerinalang:jarrays-ballerina:${stdlibJarraysVersion}"
         ballerinaStdLibs "org.ballerinalang:mime-ballerina:${stdlibMimeVersion}"
