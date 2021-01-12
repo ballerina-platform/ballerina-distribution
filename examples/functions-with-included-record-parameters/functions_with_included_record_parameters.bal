@@ -1,9 +1,9 @@
 import ballerina/io;
  
-type Student record {
+type Student record {|
     string firstName;
     string lastName?;
-};
+|};
 
 type AdmissionDate record {|
     string year = "2020";
