@@ -1,2 +1,3 @@
 ln -sf /usr/lib/ballerina/bin/ballerina /usr/bin/ballerina
+ln -sf /usr/lib/ballerina/bin/ballerina /usr/bin/bal
 echo "export BALLERINA_HOME=/usr/lib/ballerina" >> /etc/profile.d/wso2.sh

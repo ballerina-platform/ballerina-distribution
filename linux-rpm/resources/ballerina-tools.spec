@@ -33,6 +33,7 @@ cp -r ./* %{buildroot}%{_libdir}/ballerina/
 
 %post
 ln -sf %{_libdir}/ballerina/bin/ballerina /usr/bin/%{_ballerina_name}
+ln -sf %{_libdir}/ballerina/bin/ballerina /usr/bin/bal
 echo 'export BALLERINA_HOME=' >> /etc/profile.d/wso2.sh
 chmod 0755 /etc/profile.d/wso2.sh
 
