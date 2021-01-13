@@ -537,6 +537,12 @@ task packageDistWindows(type: Zip) {
         fileMode = 775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
+    into("${parentDir}/bin") {
+        from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/ballerina.bat"
+        fileMode = 775
+        filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
+        rename "ballerina.bat", "bal.bat"
+    }
     into("${parentDir}/lib") {
         from "build/target/extracted-distributions/ballerina-command-distribution-zip/lib/ballerina-command-${ballerinaCommandVersion}.jar"
         fileMode = 0775
