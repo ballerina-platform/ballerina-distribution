@@ -654,10 +654,6 @@
                 "url": "log-api"
             },
             {
-                "name": "Math",
-                "url": "math-functions"
-            },
-            {
                 "name": "String",
                 "url": "strings"
             },
