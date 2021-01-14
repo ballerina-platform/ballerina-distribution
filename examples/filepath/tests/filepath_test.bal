@@ -8,6 +8,8 @@ string[] outputs = [];
     moduleName: "ballerina/io",
     functionName: "println"
 }
+test:MockFunction mock_printLn = new();
+
 public function mockPrint(any|error... val) {
     outputs.push(val.reduce(function (any|error a, any|error b) returns string => a.toString() + b.toString(), "").toString());
 }
@@ -16,6 +18,7 @@ boolean isWindows = system:getEnv("OS") != "";
 
 @test:Config {}
 function testFunc() returns error? {
+    test:when(mock_printLn).call("mockPrint");
     // Invoking the main function
     check main();
 
