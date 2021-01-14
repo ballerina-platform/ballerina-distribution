@@ -17,7 +17,7 @@
 // import ballerina/auth;
 // import ballerina/http;
 // import ballerina/io;
-// import ballerina/runtime;
+// import ballerina/lang.runtime as runtime;
 // import ballerina/test;
 // import ballerina/log;
 // import ballerina/websub;
@@ -272,7 +272,7 @@
 //         if (isSubscriberAvailable(topicDetails, callback)) {
 //             return;
 //         }
-//         runtime:sleep(1000);
+//         runtime:sleep(1);
 //         count += 1;
 //     }
 // }
@@ -413,7 +413,7 @@
 //     req.addHeader(http:CONTENT_TYPE, "application/json");
 //     req.setJsonPayload(jsonPayload);
 //     var response = clientEndpoint->post("/publisher/notify/23484", req);
-//     runtime:sleep(10000);
+//     runtime:sleep(10);
 //     test:assertEquals(fetchOutput(ID_NOTIFICATION_ONE), NOTIFICATION_ONE, msg = "Response code mismatched");
 // }
 
@@ -427,7 +427,7 @@
 //     req.addHeader(http:CONTENT_TYPE, "application/json");
 //     req.setJsonPayload(jsonPayload);
 //     var response = clientEndpoint->post("/publisherThree/notify", req);
-//     runtime:sleep(10000);
+//     runtime:sleep(10);
 //     test:assertEquals(fetchOutput(ID_NOTIFICATION_FOUR), NOTIFICATION_FOUR, msg = "Response code mismatched");
 // }
 
