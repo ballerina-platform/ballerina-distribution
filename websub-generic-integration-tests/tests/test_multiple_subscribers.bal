@@ -16,7 +16,7 @@
 
 import ballerina/http;
 import ballerina/test;
-import ballerina/runtime;
+import ballerina/lang.runtime as runtime;
 import ballerina/websub;
 
 listener websub:Listener multipleSubTestWebsubEP = new websub:Listener(23383);
@@ -68,7 +68,7 @@ function testContentReceipt() {
     req.setJsonPayload(jsonPayload);
 
     var response = clientEndpoint->post("/publisherTwo/notify", req);
-    runtime:sleep(5000);
+    runtime:sleep(5);
     test:assertEquals(fetchOutput(ID_INTERNAL_HUB_NOTIFICATION_SUBSCRIBER_ONE_LOG), INTERNAL_HUB_NOTIFICATION_SUBSCRIBER_ONE_LOG);
     test:assertEquals(fetchOutput(ID_INTERNAL_HUB_NOTIFICATION_SUBSCRIBER_TWO_LOG), INTERNAL_HUB_NOTIFICATION_SUBSCRIBER_TWO_LOG);
 }

@@ -15,7 +15,7 @@
 // under the License.
 
 import ballerina/io;
-import ballerina/runtime;
+import ballerina/lang.runtime as runtime;
 import ballerina/websub;
 
 function sendUnsubscription() {
@@ -37,7 +37,7 @@ function sendUnsubscription() {
     }
 
     // Confirm unsubscription - no notifications should be received.
-    runtime:sleep(5000);
+    runtime:sleep(5);
 }
 
 

@@ -16,7 +16,7 @@
 
 import ballerina/io;
 import ballerina/http;
-import ballerina/runtime;
+import ballerina/lang.runtime as runtime;
 import ballerina/stringutils;
 import ballerina/test;
 import ballerina/websub;
@@ -95,7 +95,7 @@ function testContentInternalHubNotification() {
     req.addHeader(http:CONTENT_TYPE, CONTENT_TYPE_JSON);
     req.setJsonPayload(jsonPayload);
     var response = clientEndpoint->post("/publisher/notify/23181", req);
-    runtime:sleep(5000);
+    runtime:sleep(5);
 
     test:assertEquals(fetchOutput(ID_HUB_NOTIFICATION_LOG), INTERNAL_HUB_NOTIFICATION_LOG);
     test:assertEquals(fetchOutput(ID_HUB_NOTIFICATION_LOG_TWO), INTERNAL_HUB_NOTIFICATION_LOG_TWO);
@@ -111,7 +111,7 @@ function testContentRemoteHubNotification() {
     req.addHeader(http:CONTENT_TYPE, CONTENT_TYPE_JSON);
     req.setJsonPayload(jsonPayload);
     var response = clientEndpoint->post("/publisher/notify/23181", req);
-    runtime:sleep(5000);
+    runtime:sleep(5);
 
     test:assertEquals(fetchOutput(ID_HUB_NOTIFICATION_LOG), REMOTE_HUB_NOTIFICATION_LOG);
     test:assertEquals(fetchOutput(ID_HUB_NOTIFICATION_LOG_TWO), REMOTE_HUB_NOTIFICATION_LOG_TWO);
@@ -196,7 +196,7 @@ function testUnsubscription() {
     req.addHeader(http:CONTENT_TYPE, CONTENT_TYPE_JSON);
     req.setJsonPayload(jsonPayload);
     var postResponse = clientEndpoint->post("/publisher/notify/skip_subscriber_check", req);
-    runtime:sleep(5000);
+    runtime:sleep(5);
     if (postResponse is http:Response) {
         test:assertEquals(postResponse.statusCode, http:STATUS_ACCEPTED, msg = "Response code mismatched");
     } else {

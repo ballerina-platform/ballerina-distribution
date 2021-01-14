@@ -15,11 +15,6 @@ version = "@stdlib.mime.version@"
 
 [[dependency]]
 org = "ballerina"
-name = "runtime"
-version = "@stdlib.runtime.version@"
-
-[[dependency]]
-org = "ballerina"
 name = "log"
 version = "@stdlib.log.version@"
 

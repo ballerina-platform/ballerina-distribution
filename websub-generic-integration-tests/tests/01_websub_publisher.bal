@@ -17,7 +17,7 @@
 import ballerina/http;
 import ballerina/io;
 import ballerina/log;
-import ballerina/runtime;
+import ballerina/lang.runtime as runtime;
 import ballerina/websub;
 
 boolean remoteTopicRegistered = false;
@@ -253,7 +253,7 @@ function checkSubscriberAvailability(string topic, string callback) {
         if (isSubscriberAvailable(topicDetails, callback)) {
             return;
         }
-        runtime:sleep(1000);
+        runtime:sleep(1);
         count += 1;
     }
 }
