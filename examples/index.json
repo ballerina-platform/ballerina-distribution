@@ -666,6 +666,10 @@
                 "url": "file"
             },
             {
+                "name": "Random",
+                "url": "random"
+            },
+            {
                 "name": "Task Scheduler Appointment",
                 "url": "task-scheduler-appointment"
             },

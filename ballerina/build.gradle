@@ -724,6 +724,7 @@ task testExamples() {
             'rabbitmq-consumer-with-qos-settings',
             'rabbitmq-transaction-producer',
             'rabbitmq-transaction-consumer',
+            'random',  // Output varies
             'jdbc-complex-type-queries', // Consists date time in output
             'jdbc-batch-execute-operation', // Consists transaction server sart log
             'log-api',
