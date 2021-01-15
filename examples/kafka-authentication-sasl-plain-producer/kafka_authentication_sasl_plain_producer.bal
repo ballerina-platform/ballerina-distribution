@@ -20,11 +20,13 @@ kafka:ProducerConfiguration producerConfigs = {
 
 };
 
-kafka:Producer kafkaProducer = new (producerConfigs);
+kafka:Producer kafkaProducer = checkpanic new (producerConfigs);
 
 public function main() {
     string message = "Hello from Ballerina";
-    var result = kafkaProducer->send(message.toBytes(), "topic-sasl");
+    var result = kafkaProducer->sendProducerRecord({
+                            topic: "topic-sasl",
+                            value: message.toBytes() });
     if (result is error) {
         io:println(result);
     } else {
