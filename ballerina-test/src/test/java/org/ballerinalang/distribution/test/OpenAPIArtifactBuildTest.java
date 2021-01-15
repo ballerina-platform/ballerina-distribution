@@ -55,7 +55,7 @@ public class OpenAPIArtifactBuildTest {
         TestUtils.prepareDistribution(DISTRIBUTIONS_DIR.resolve(distributionFileName + ".zip"));
     }
 
-    @Test( description = "Check openapi to ballerina generator command")
+    @Test( description = "Check openapi to ballerina generator command", enabled = false)
     public void buildOpenAPIToBallerinaTest() throws IOException, InterruptedException {
         Path testResource = Paths.get("/openapi");
         List<String> buildArgs = new LinkedList<>();
@@ -69,7 +69,7 @@ public class OpenAPIArtifactBuildTest {
         TestUtils.deleteGeneratedFiles("petstore");
     }
 
-    @Test(description = "Check openapi to ballerina generator command with service file only.")
+    @Test(description = "Check openapi to ballerina generator command with service file only.", enabled = false)
     public void buildOpenAPIToBallerinaServiceFileGenerationTest() throws IOException,
             InterruptedException {
         Path testResource = Paths.get("/openapi");
