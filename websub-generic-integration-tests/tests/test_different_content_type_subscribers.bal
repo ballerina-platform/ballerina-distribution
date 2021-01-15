@@ -16,7 +16,7 @@
 
 import ballerina/mime;
 import ballerina/test;
-import ballerina/runtime;
+import ballerina/lang.runtime as runtime;
 import ballerina/http;
 import ballerina/websub;
 
@@ -92,7 +92,7 @@ service websub:SubscriberService /websubTwo on websubDifContentTypeEP {
 }
 function testTextContentReceiptForInternalHub() {
     sendSubscriptionAndIntentVerificationRequest(COMMON_PATH + "23282", HUB_MODE_INTERNAL, TYPE_STRING);
-    runtime:sleep(5000);
+    runtime:sleep(5);
     test:assertEquals(fetchOutput(ID_TEXT_SUBSCRIBER_ONE), TEXT_INTERNAL_HUB_NOTIFICATION_SUBSCRIBER_ONE_LOG);
     test:assertEquals(fetchOutput(ID_TEXT_SUBSCRIBER_TWO), TEXT_INTERNAL_HUB_NOTIFICATION_SUBSCRIBER_TWO_LOG);
 }
@@ -102,7 +102,7 @@ function testTextContentReceiptForInternalHub() {
 }
 function testTextContentReceiptForRemoteHub() {
     sendSubscriptionAndIntentVerificationRequest(COMMON_PATH + SKIP_SUBSCRIBER_CHECK, HUB_MODE_REMOTE, TYPE_STRING);
-    runtime:sleep(5000);
+    runtime:sleep(5);
     test:assertEquals(fetchOutput(ID_TEXT_SUBSCRIBER_ONE), TEXT_REMOTE_HUB_NOTIFICATION_SUBSCRIBER_ONE_LOG);
     test:assertEquals(fetchOutput(ID_TEXT_SUBSCRIBER_TWO), TEXT_REMOTE_HUB_NOTIFICATION_SUBSCRIBER_TWO_LOG);
 }
@@ -112,7 +112,7 @@ function testTextContentReceiptForRemoteHub() {
 }
 function testXmlContentReceiptForInternalHub() {
     sendSubscriptionAndIntentVerificationRequest(COMMON_PATH + SKIP_SUBSCRIBER_CHECK, HUB_MODE_INTERNAL, TYPE_XML);
-    runtime:sleep(5000);
+    runtime:sleep(5);
     test:assertEquals(fetchOutput(ID_XML_SUBSCRIBER_ONE), XML_INTERNAL_HUB_NOTIFICATION_SUBSCRIBER_ONE_LOG);
     test:assertEquals(fetchOutput(ID_XML_SUBSCRIBER_TWO), XML_INTERNAL_HUB_NOTIFICATION_SUBSCRIBER_TWO_LOG);
 }
@@ -122,7 +122,7 @@ function testXmlContentReceiptForInternalHub() {
 }
 function testXmlContentReceiptForRemoteHub() {
     sendSubscriptionAndIntentVerificationRequest(COMMON_PATH + SKIP_SUBSCRIBER_CHECK, HUB_MODE_REMOTE, TYPE_XML);
-    runtime:sleep(5000);
+    runtime:sleep(5);
     test:assertEquals(fetchOutput(ID_XML_SUBSCRIBER_ONE), XML_REMOTE_HUB_NOTIFICATION_SUBSCRIBER_ONE_LOG);
     test:assertEquals(fetchOutput(ID_XML_SUBSCRIBER_TWO), XML_REMOTE_HUB_NOTIFICATION_SUBSCRIBER_TWO_LOG);
 }
@@ -132,7 +132,7 @@ function testXmlContentReceiptForRemoteHub() {
 }
 function testJsonContentReceiptForInternalHub() {
     sendSubscriptionAndIntentVerificationRequest(COMMON_PATH + SKIP_SUBSCRIBER_CHECK, HUB_MODE_INTERNAL, TYPE_JSON);
-    runtime:sleep(10000);
+    runtime:sleep(10);
     test:assertEquals(fetchOutput(ID_JSON_SUBSCRIBER_ONE), JSON_INTERNAL_HUB_NOTIFICATION_SUBSCRIBER_ONE_LOG);
     test:assertEquals(fetchOutput(ID_JSON_SUBSCRIBER_TWO), JSON_INTERNAL_HUB_NOTIFICATION_SUBSCRIBER_TWO_LOG);
 }
@@ -142,7 +142,7 @@ function testJsonContentReceiptForInternalHub() {
 }
 function testJsonContentReceiptForRemoteHub() {
     sendSubscriptionAndIntentVerificationRequest(COMMON_PATH + SKIP_SUBSCRIBER_CHECK, HUB_MODE_REMOTE, TYPE_JSON);
-    runtime:sleep(10000);
+    runtime:sleep(10);
     test:assertEquals(fetchOutput(ID_JSON_SUBSCRIBER_ONE), JSON_REMOTE_HUB_NOTIFICATION_SUBSCRIBER_ONE_LOG);
     test:assertEquals(fetchOutput(ID_JSON_SUBSCRIBER_TWO), JSON_REMOTE_HUB_NOTIFICATION_SUBSCRIBER_TWO_LOG);
 }
