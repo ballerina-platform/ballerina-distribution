@@ -116,112 +116,7 @@ subprojects {
         }
         /* Ballerina standard library package links */
         maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-tcp"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-         maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-udp"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-encoding"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-jwt"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-websub"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-rabbitmq"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-xslt"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-nats"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-stan"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-kafka"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-math"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-jsonutils"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-xmlutils"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-log"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-task"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-uuid"
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-auth"
             credentials {
                 username System.getenv("packageUser")
                 password System.getenv("packagePAT")
@@ -235,13 +130,6 @@ subprojects {
             }
         }
         maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-runtime"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-config"
             credentials {
                 username System.getenv("packageUser")
@@ -249,94 +137,7 @@ subprojects {
             }
         }
         maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-sql"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-java.jdbc"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-mysql"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-file"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-time"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-reflect"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-io"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-stringutils"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-auth"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-oauth2"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-crypto"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-java.arrays"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-mime"
             credentials {
                 username System.getenv("packageUser")
                 password System.getenv("packagePAT")
@@ -350,14 +151,21 @@ subprojects {
             }
         }
         maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-ftp"
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-encoding"
             credentials {
                 username System.getenv("packageUser")
                 password System.getenv("packagePAT")
             }
         }
         maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-http"
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-file"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-ftp"
             credentials {
                 username System.getenv("packageUser")
                 password System.getenv("packagePAT")
@@ -378,7 +186,84 @@ subprojects {
             }
         }
         maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-websocket"
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-http"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-io"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-java.arrays"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-java.jdbc"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-jsonutils"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-jwt"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-kafka"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-log"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-mime"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-mysql"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-nats"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-oauth2"
             credentials {
                 username System.getenv("packageUser")
                 password System.getenv("packagePAT")
@@ -391,7 +276,127 @@ subprojects {
                 password System.getenv("packagePAT")
             }
         }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-rabbitmq"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-random"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-reflect"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-regex"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-runtime"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-sql"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-stan"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-stringutils"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-task"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-tcp"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-time"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-udp"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-uuid"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-websocket"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-websub"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-xmlutils"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-xslt"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
 
+        /* Other libraries */
         maven {
             url "https://maven.pkg.github.com/ballerina-platform/ballerina-openapi"
             credentials {
