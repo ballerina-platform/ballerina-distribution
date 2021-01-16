@@ -1,40 +1,41 @@
-name: Ballerina Distribution Pull Request
+name: Push Request
 
 on:
-  pull_request:
-    branches:
-      - master
-      - stage
-      - ballerina-1.1.x
+    pull_request:
+        branches:
+            - master
+            - ballerina-1.1.x
+            - ballerina-1.2.x
 
 jobs:
+    integrationTests:
+        name: Build without BBE Tests
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v2
+            -   name: Set up JDK 11
+                uses: actions/setup-java@v1
+                with:
+                    java-version: 11
+            -   name: Build Ballerina Distribution
+                env:
+                    packageUser: ${{ github.actor }}
+                    packagePAT: ${{ secrets.GITHUB_TOKEN }}
+                run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue -x :ballerina:testExamples
 
-  BBETests:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Set up JDK 11
-        uses: actions/setup-java@v1
-        with:
-          java-version: 11
-      - name: Build Ballerina Distribution
-        env:
-          packageUser: ${{ github.actor }}
-          packagePAT: ${{ secrets.GITHUB_TOKEN }}
-        run: ./gradlew clean build -x test --stacktrace --scan --console=plain --no-daemon --continue
+    BBETests:
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v2
+            -   name: Set up JDK 11
+                uses: actions/setup-java@v1
+                with:
+                    java-version: 11
+            -   name: Build Ballerina Distribution
+                env:
+                    packageUser: ${{ github.actor }}
+                    packagePAT: ${{ secrets.GITHUB_TOKEN }}
+                run: ./gradlew clean :ballerina:testExamples --stacktrace --scan --console=plain --no-daemon --continue
 
-  IntegrationTests:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Set up JDK 11
-        uses: actions/setup-java@v1
-        with:
-          java-version: 11
-      - name: Build Ballerina Distribution
-        env:
-          packageUser: ${{ github.actor }}
-          packagePAT: ${{ secrets.GITHUB_TOKEN }}
-        run: ./gradlew clean build -x test --stacktrace --scan --console=plain --no-daemon --continue -x :ballerina:testExamples
