@@ -1,11 +1,6 @@
-name: Push / Pull Request
+name: Push Request
 
 on:
-    push:
-        branches-ignore:
-            - master
-            - ballerina-1.1.x
-            - ballerina-1.2.x
     pull_request:
         branches:
             - master
