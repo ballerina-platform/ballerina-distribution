@@ -182,7 +182,7 @@ function testAvailableTopicsRetrievalFromHub() {
 }
 
 @test:Config {
-    before: "sendUnsubscription",
+    before: sendUnsubscription,
     dependsOn: [testAvailableTopicsRetrievalFromHub]
 }
 function testUnsubscription() {
