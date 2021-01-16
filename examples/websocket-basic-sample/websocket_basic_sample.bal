@@ -11,9 +11,9 @@ byte[] pingData = ping.toBytes();
     idleTimeoutInSeconds: 120
 }
 
-service websocket:UpgradeService /basic/ws on new websocket:Listener(9090) {
-   remote isolated function onUpgrade(http:Caller caller, http:Request req)
-                     returns websocket:Service|websocket:WebSocketError {
+service /basic/ws on new websocket:Listener(9090) {
+   resource isolated function get .(http:Request req)
+                     returns websocket:Service|websocket:Error {
        return new WsService();
    }
 }
@@ -21,7 +21,7 @@ service websocket:UpgradeService /basic/ws on new websocket:Listener(9090) {
 service class WsService {
     *websocket:Service;
     // This `remote function` is triggered after a successful client connection.
-    remote function onOpen(websocket:Caller caller) {
+    remote function onConnect(websocket:Caller caller) {
         io:println("\nNew client connected");
         io:println("Connection ID: " + caller.getConnectionId());
         io:println("Negotiated Sub protocol: " +
@@ -31,27 +31,25 @@ service class WsService {
     }
 
     // This `remote function` is triggered when a new text frame is received from a client.
-    remote function onText(websocket:Caller caller, string text,
-                                boolean finalFrame) {
-        io:println("\ntext message: " + text + " & final fragment: "
-                                                    + finalFrame.toString());
+    remote function onString(websocket:Caller caller, string text) {
+        io:println("\ntext message: " + text);
         if (text == "ping") {
             io:println("Pinging...");
             var err = caller->ping(pingData);
-            if (err is websocket:WebSocketError) {
+            if (err is websocket:Error) {
                 log:printError("Error sending ping", err = err);
             }
         } else if (text == "closeMe") {
             error? result = caller->close(statusCode = 1001,
                             reason = "You asked me to close the connection",
                             timeoutInSeconds = 0);
-            if (result is websocket:WebSocketError) {
+            if (result is websocket:Error) {
                 log:printError("Error occurred when closing connection",
                                 err = result);
             }
         } else {
-            var err = caller->pushText("You said: " + text);
-            if (err is websocket:WebSocketError) {
+            var err = caller->writeString("You said: " + text);
+            if (err is websocket:Error) {
                 log:printError("Error occurred when sending text", err = err);
             }
         }
@@ -62,8 +60,8 @@ service class WsService {
         io:println("\nNew binary message received");
         io:print("UTF-8 decoded binary message: ");
         io:println(b);
-        var err = caller->pushBinary(b);
-        if (err is websocket:WebSocketError) {
+        var err = caller->writeBytes(b);
+        if (err is websocket:Error) {
             log:printError("Error occurred when sending binary", err = err);
         }
     }
@@ -72,7 +70,7 @@ service class WsService {
     // a pong message is automatically sent to the connected [http:WebSocketCaller](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/WebSocketCaller) when a ping is received.
     remote function onPing(websocket:Caller caller, byte[] data) {
         var err = caller->pong(data);
-        if (err is websocket:WebSocketError) {
+        if (err is websocket:Error) {
             log:printError("Error occurred when closing the connection",
                                    err = err);
         }
@@ -90,7 +88,7 @@ service class WsService {
         io:println("Closing connection " + caller.getConnectionId());
         var err = caller->close(statusCode = 1001, reason =
                                     "Connection timeout");
-        if (err is websocket:WebSocketError) {
+        if (err is websocket:Error) {
             log:printError("Error occurred when closing the connection",
                                err = err);
         }

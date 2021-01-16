@@ -19,7 +19,7 @@ kafka:ConsumerConfiguration consumerConfigs = {
     autoCommit: false
 };
 
-listener kafka:Listener kafkaListener = new (consumerConfigs);
+listener kafka:Listener kafkaListener = checkpanic new (consumerConfigs);
 
 service kafka:Service on kafkaListener {
     remote function onMessage(kafka:Caller caller,
