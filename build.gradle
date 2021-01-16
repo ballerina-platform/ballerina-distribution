@@ -102,8 +102,6 @@ subprojects {
         maven { url "https://repo.maven.apache.org/maven2" }
         /* WSO2 Releases Repository */
         maven { url "https://maven.wso2.org/nexus/content/repositories/releases/" }
-        /* WSO2 Snapshot Repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/snapshots/" }
         /* WSO2 internal Repository */
         maven { url "https://maven.wso2.org/nexus/content/groups/wso2-public/" }
         /* Github Package Repository */
