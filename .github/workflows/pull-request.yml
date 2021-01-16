@@ -9,7 +9,6 @@ on:
 
 jobs:
     integrationTests:
-        name: Build without BBE Tests
         runs-on: ubuntu-latest
         steps:
             -   name: Checkout
