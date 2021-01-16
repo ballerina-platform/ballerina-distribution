@@ -1,0 +1,153 @@
+/*
+ * Copyright (c) 2020, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
+import org.apache.tools.ant.taskdefs.condition.Os
+
+description = 'Ballerina - Websub Generic Integration Tests'
+
+configurations {
+    jbalTools
+}
+
+dependencies {
+    jbalTools ("org.ballerinalang:jballerina-tools:${ballerinaLangVersion}") {
+        transitive = false
+    }
+    compile group: 'org.ballerinalang', name: 'toml-parser', version: "${ballerinaTomlParserVersion}"
+}
+
+clean {
+    delete "$project.projectDir/target"
+}
+
+jar {
+    manifest {
+        attributes('Implementation-Title': project.name,
+                'Implementation-Version': project.version)
+    }
+}
+
+task unpackJballerinaTools(type: Copy) {
+    configurations.jbalTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+        from zipTree(artifact.getFile())
+        into new File("${buildDir}/target/extracted-distributions", "jballerina-tools-zip")
+    }
+
+}
+
+task unpackStdLibs() {
+    doLast {
+        configurations.ballerinaStdLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+            copy {
+                from project.zipTree(artifact.getFile())
+                into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
+            }
+        }
+    }
+}
+
+def packageOrg = "ballerina"
+def ballerinaConfigFile = new File("$project.projectDir/Ballerina.toml")
+def tomlVersion = project.version.split("-")[0]
+def distributionPath =  project.projectDir.absolutePath + "/build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+def distributionBinPath = distributionPath + "/bin"
+def originalConfig = ballerinaConfigFile.text
+
+task copyStdlibs(type: Copy) {
+    dependsOn(unpackStdLibs)
+
+    into distributionPath
+    /* Standard Libraries */
+    configurations.ballerinaStdLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+        def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
+        into("repo/balo") {
+            from "${artifactExtractedPath}/balo/"
+        }
+        into("repo/cache") {
+            from "${artifactExtractedPath}/cache"
+        }
+    }
+    /* Copy WebSub module */
+    into("repo/balo/${packageOrg}/websub/${tomlVersion}") {
+        from "../websub-ballerina/target/balo"
+    }
+}
+
+task updateTomlFile {
+    doLast {
+        def stdlibDependentHttpVersion = project.stdlibHttpVersion.split("-")[0]
+        def stdlibDependentMimeVersion = project.stdlibMimeVersion.split("-")[0]
+        def stdlibDependentAuthVersion = project.stdlibAuthVersion.split("-")[0]
+        def stdlibDependentLogVersion = project.stdlibLogVersion.split("-")[0]
+        def stdlibDependentIoVersion = project.stdlibIoVersion.split("-")[0]
+
+        def newConfig = ballerinaConfigFile.text.replace("@project.version@", project.version)
+        newConfig = newConfig.replace("@toml.version@", tomlVersion)
+
+        // Dynamic version update of stdlib dependencies
+        newConfig = newConfig.replace("@stdlib.http.version@", stdlibDependentHttpVersion)
+        newConfig = newConfig.replace("@stdlib.mime.version@", stdlibDependentMimeVersion)
+        newConfig = newConfig.replace("@stdlib.auth.version@", stdlibDependentAuthVersion)
+        newConfig = newConfig.replace("@stdlib.log.version@", stdlibDependentLogVersion)
+        newConfig = newConfig.replace("@stdlib.io.version@", stdlibDependentIoVersion)
+        ballerinaConfigFile.text = newConfig
+    }
+}
+
+task revertTomlFile {
+    doLast {
+        ballerinaConfigFile.text = originalConfig
+    }
+}
+
+task ballerinaTest {
+    inputs.dir file(project.projectDir)
+    dependsOn(copyStdlibs)
+    dependsOn(":websub-native:build")
+    dependsOn(updateTomlFile)
+    finalizedBy(revertTomlFile)
+
+    def debugParams = ""
+    if (project.hasProperty("debug")) {
+        debugParams = "--debug ${project.findProperty("debug")}"
+    }
+
+    doLast {
+        exec {
+            workingDir project.projectDir
+            environment "JAVA_OPTS", "-DBALLERINA_DEV_COMPILE_BALLERINA_ORG=true"
+            if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+                environment "OS_TYPE", "windows"
+                commandLine 'cmd', '/c', "$distributionBinPath/ballerina.bat test ${debugParams} --b7a.config.file=tests/advanced_services/sample-users.toml --test.hub.url=https://localhost:23191/websub/hub && exit %%ERRORLEVEL%%"
+            } else {
+                environment "OS_TYPE", "linux"
+                commandLine 'sh', '-c', "$distributionBinPath/ballerina test ${debugParams} --b7a.config.file=tests/advanced_services/sample-users.toml --test.hub.url=https://localhost:23191/websub/hub"
+            }
+        }
+    }
+}
+
+test {
+    dependsOn(ballerinaTest)
+}
+
+ballerinaTest.dependsOn ":websub-ballerina:build"
+unpackStdLibs.dependsOn unpackJballerinaTools
+copyStdlibs.dependsOn unpackStdLibs
+updateTomlFile.dependsOn copyStdlibs
+ballerinaTest.dependsOn updateTomlFile
+build.dependsOn test
