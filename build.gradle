@@ -31,6 +31,9 @@ ext {
     dockerVersion = project.dockerVersion
     dataMapperVersion = project.dataMapperVersion
     c2cVersion = project.c2cVersion
+    observeExtPrometheusVersion = project.observeExtPrometheusVersion
+    observeExtJaegerVersion = project.observeExtJaegerVersion
+    observeExtChoreoVersion = project.observeExtChoreoVersion
     ballerinaJreVersion = project.ballerinaJreVersion
 
     picocliVersion = "4.0.1"
@@ -451,6 +454,31 @@ subprojects {
             }
         }
 
+        /* Observability extension repos */
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-prometheus"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-jaeger"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-choreo"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+
         /* Ballerina lang staging repository */
         maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1614/" }
         /* Datamapper staging repository */
@@ -470,6 +498,7 @@ subprojects {
         ballerinaStdLibs
         ballerinaC2cLibs
         ballerinaC2cExamples
+        ballerinaObserveExtensions
         balCommand
         exten {
             transitive = false
@@ -543,6 +572,11 @@ subprojects {
         ballerinaC2cLibs "org.ballerinax.azurefunctions:azurefunctions-extension-balo:${azFunctionsVersion}"
         ballerinaC2cLibs "org.ballerinax.awslambda:awslambda-extension-balo:${awslambdaVersion}"
         ballerinaC2cLibs "org.ballerinax.docker:docker-extension-annotations:${dockerVersion}"
+
+        /* Observability extensions */
+        ballerinaObserveExtensions "org.ballerinalang:prometheus-extension-ballerina:${observeExtPrometheusVersion}"
+        ballerinaObserveExtensions "org.ballerinalang:jaeger-extension-ballerina:${observeExtJaegerVersion}"
+        ballerinaObserveExtensions "org.ballerinalang:choreo-extension-ballerina:${observeExtChoreoVersion}"
 
         /* Code to cloud examples */
         ballerinaC2cExamples "io.ballerina:c2c-extension-examples:${c2cVersion}@zip"
