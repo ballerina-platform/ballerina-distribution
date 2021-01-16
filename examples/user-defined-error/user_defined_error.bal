@@ -21,7 +21,7 @@ function getTypeId(string accountType) returns int|InvalidAccountTypeError {
     // The first argument to the error constructor is the error message,
     // and the error constructor takes a second optional argument as the error cause.
     // The error details can be provided as named arguments.
-    return InvalidAccountTypeError("Invalid account type",
+    return error InvalidAccountTypeError("Invalid account type",
                                     accountType = accountType);
 }
 
@@ -46,11 +46,11 @@ type AccountNotFoundError distinct AccountError;
 function getAccountBalance(int accountID) returns int|AccountError {
     if (accountID < 0) {
         // Return an `InvalidAccountIdError` if the `accountID` is less than zero.
-        return InvalidAccountIdError("Invalid account Id",
+        return error InvalidAccountIdError("Invalid account Id",
                                       accountID = accountID);
     } else if (accountID > 100) {
         // Return an `AccountNotFoundError` if the `accountID` is greater than hundred.
-        return AccountNotFoundError("Account not found", accountID = accountID);
+        return error AccountNotFoundError("Account not found", accountID = accountID);
     }
     // Return a value if the `accountID` is in between zero and hundred inclusive.
     return 600;
@@ -63,7 +63,7 @@ function transferToAccount(int fromAccountId, int toAccountId, int amount)
     var result = getAccountBalance(fromAccountId);
     if (result is error) {
         // Create a new error with the error returned from `getAccountBalance()` as the cause.
-        return AccountTransferError("Account transfer failed", result, 
+        return error AccountTransferError("Account transfer failed", result,
                                     fromAccountId = fromAccountId,
                                     toAccountId = toAccountId);
     } else {
