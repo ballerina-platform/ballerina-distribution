@@ -418,7 +418,7 @@
 // }
 
 // @test:Config{
-//     dependsOn: ["testDiscoveryAndIntentVerification"]
+//     dependsOn: [testDiscoveryAndIntentVerification]
 // }
 // function testContentReceipt() {
 //     http:Client clientEndpoint = new ("http://localhost:23080");
