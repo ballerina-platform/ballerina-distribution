@@ -20,7 +20,7 @@ function testText() returns websocket:Error? {
 
 service class callback {
     *websocket:Service;
-    remote function onString(websocket:Caller conn, string text, boolean finalFrame) {
+    remote function onString(websocket:Caller conn, string text) {
         serviceReply = <@untainted>text;
     }
 }
