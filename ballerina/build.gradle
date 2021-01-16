@@ -1078,6 +1078,10 @@ task testStdlibs() {
             additionalBuildParams = "--user.name=ballerina-user"
         }
 
+        if (stdlibTest == "websub-generic") {
+            additionalBuildParams = "--b7a.config.file=tests/advanced_services/sample-users.toml --test.hub.url=https://localhost:23191/websub/hub"
+        }
+
         println "Testing standard library ${stdlibTest}"
         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
             //TODO: Need to verify with windows
