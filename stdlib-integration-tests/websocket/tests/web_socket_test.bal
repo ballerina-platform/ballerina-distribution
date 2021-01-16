@@ -14,7 +14,7 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import ballerina/runtime;
+import ballerina/lang.runtime as runtime;
 import ballerina/test;
 import ballerina/http;
 import ballerina/websocket;
@@ -22,35 +22,36 @@ import ballerina/io;
 
 string data = "";
 
-service websocket:UpgradeService /onTextString on new websocket:Listener(21003) {
-   remote isolated function onUpgrade(http:Caller caller, http:Request req) returns websocket:Service|websocket:WebSocketError {
+service /onTextString on new websocket:Listener(21003) {
+   resource isolated function get .(http:Request req) returns websocket:Service|websocket:Error {
        return new WsService1();
    }
 }
 
 service class WsService1 {
   *websocket:Service;
-  remote isolated function onText(websocket:Caller caller, string data, boolean finalFrame) {
-      checkpanic caller->pushText(data);
+  remote isolated function onString(websocket:Caller caller, string data) {
+      checkpanic caller->writeString(data);
   }
 }
 
-service object {} clientPushCallbackService = service object {
-    remote function onText(websocket:Client wsEp, string text) {
+service class clientPushCallbackService {
+    *websocket:Service;
+    remote function onString(websocket:Caller wsEp, string text) {
         data = <@untainted>text;
     }
 
-    remote isolated function onError(websocket:Client wsEp, error err) {
+    remote isolated function onError(websocket:Caller wsEp, error err) {
         io:println(err);
     }
-};
+}
 
-// Tests string support for pushText and onText
+// Tests string support for writeString and onString
 @test:Config {}
-public function testString() {
-    websocket:Client wsClient = new ("ws://localhost:21003/onTextString", {callbackService: clientPushCallbackService});
-    checkpanic wsClient->pushText("Hi");
-    runtime:sleep(500);
+public function testWebsocketString() returns websocket:Error? {
+    websocket:AsyncClient wsClient = check new ("ws://localhost:21003/onTextString", new clientPushCallbackService());
+    checkpanic wsClient->writeString("Hi");
+    runtime:sleep(5);
     test:assertEquals(data, "Hi", msg = "Failed pushtext");
     var closeResp = wsClient->close(statusCode = 1000, reason = "Close the connection", timeoutInSeconds = 180);
 }
