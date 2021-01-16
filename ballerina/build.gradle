@@ -143,6 +143,17 @@ task unpackC2cExamples(type: Copy) {
     }
 }
 
+task unpackObservabilityExtensions() {
+    doLast {
+        configurations.ballerinaObserveExtensions.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+            copy {
+                from project.zipTree(artifact.getFile())
+                into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
+            }
+        }
+    }
+}
+
 task unpackBalCommand(type: Copy) {
     group = "unpack_dependencies"
     configurations.balCommand.resolvedConfiguration.resolvedArtifacts.each { artifact ->
@@ -208,6 +219,23 @@ task copyOtherRepos(type: Copy) {
 
     /* C2C Libraries */
     configurations.ballerinaC2cLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+        def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
+        from("${artifactExtractedPath}/libs") {
+            into "bre/lib/"
+        }
+        from("${artifactExtractedPath}/docs") {
+            into"docs/"
+        }
+        from("${artifactExtractedPath}/balo") {
+            into "repo/balo"
+        }
+        from("${artifactExtractedPath}/cache") {
+            into "repo/cache"
+        }
+    }
+
+    /* Observability extensions */
+    configurations.ballerinaObserveExtensions.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
         from("${artifactExtractedPath}/libs") {
             into "bre/lib/"
@@ -1335,6 +1363,7 @@ unpackDevTools.dependsOn unpackJballerinaTools
 unpackStdLibs.dependsOn unpackDevTools
 unpackC2cLibs.dependsOn unpackStdLibs
 unpackC2cExamples.dependsOn unpackC2cLibs
+unpackBalCommand.dependsOn unpackObservabilityExtensions
 unpackBalCommand.dependsOn unpackC2cExamples
 
 /* Extract JRE */
