@@ -19,8 +19,9 @@ import ballerina/log;
 import ballerina/stringutils;
 import ballerina/test;
 import ballerina/websub;
+import ballerina/websubhub;
 
-websub:Hub WebSubHub = startHubAndRegisterTopic();
+websubhub:Hub WebSubHub = startHubAndRegisterTopic();
 listener http:Listener publisherServiceEPOne = new http:Listener(24080);
 listener websub:Listener websubSubscriberEPOne = new websub:Listener(24081);
 listener websub:Listener websubSubscriberEPTwo = new websub:Listener(24082);
@@ -44,7 +45,7 @@ service /publisherService on publisherServiceEPOne {
             string mediaType = req.getHeader(HEADER_ACCEPT);
             string languageType = req.getHeader(HEADER_ACCEPT_LANGUAGE);
             if (stringutils:contains(mediaType, CONTENT_TYPE_JSON) && stringutils:contains(languageType, LANGUAGE_TYPE_DE)) {
-                websub:addWebSubLinkHeader(response, [WebSubHub.subscriptionUrl], WEBSUB_TOPIC_ONE);
+                websubhub:addWebSubLinkHeader(response, [WebSubHub.subscriptionUrl], WEBSUB_TOPIC_ONE);
                 response.statusCode = 202;
                 var result = caller->respond(response);
                 storeOutput(ID_MATCH_ACCEPT_AND_ACCEPT_LANGUAGE_HEADER_ARRAY, response.statusCode);
@@ -71,7 +72,7 @@ service /publisherService on publisherServiceEPOne {
              string mediaType = req.getHeader(HEADER_ACCEPT);
              string languageType = req.getHeader(HEADER_ACCEPT_LANGUAGE);
              if (mediaType == CONTENT_TYPE_JSON && languageType == LANGUAGE_TYPE_DE) {
-                 websub:addWebSubLinkHeader(response, [WebSubHub.subscriptionUrl], WEBSUB_TOPIC_ONE);
+                 websubhub:addWebSubLinkHeader(response, [WebSubHub.subscriptionUrl], WEBSUB_TOPIC_ONE);
                  response.statusCode = 202;
                  var result = caller->respond(response);
                  storeOutput(ID_MATCH_ACCEPT_AND_ACCEPT_LANGUAGE_HEADERS, response.statusCode);
@@ -91,7 +92,7 @@ service /publisherService on publisherServiceEPOne {
         http:Response response = new;
         string mediaType = req.getHeader(HEADER_ACCEPT);
         if (mediaType == CONTENT_TYPE_JSON) {
-            websub:addWebSubLinkHeader(response, [WebSubHub.subscriptionUrl], WEBSUB_TOPIC_ONE);
+            websubhub:addWebSubLinkHeader(response, [WebSubHub.subscriptionUrl], WEBSUB_TOPIC_ONE);
             response.statusCode = 202;
             var result = caller->respond(response);
             storeOutput(ID_MATCH_ACCEPT_HEADER, response.statusCode);
@@ -110,7 +111,7 @@ service /publisherService on publisherServiceEPOne {
         http:Response response = new;
         string languageType = req.getHeader(HEADER_ACCEPT_LANGUAGE);
         if (languageType == LANGUAGE_TYPE_DE) {
-            websub:addWebSubLinkHeader(response, [WebSubHub.subscriptionUrl], WEBSUB_TOPIC_ONE);
+            websubhub:addWebSubLinkHeader(response, [WebSubHub.subscriptionUrl], WEBSUB_TOPIC_ONE);
             response.statusCode = 202;
             var result = caller->respond(response);
             storeOutput(ID_MATCH_ACCEPT_LANGUAGE_HEADER, response.statusCode);

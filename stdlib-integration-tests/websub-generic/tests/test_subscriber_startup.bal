@@ -20,6 +20,7 @@ import ballerina/test;
 import ballerina/io;
 import ballerina/config;
 import ballerina/websub;
+import ballerina/websubhub;
 
 listener http:Listener testSubscriber = new(23386);
 listener http:Listener testHub = new(23190);
@@ -57,10 +58,10 @@ service /startupHub on testHub {
     resource function get startup(http:Caller caller, http:Request request) returns error? {
         http:Listener lis0 = new (23391);
         http:Listener lis1 = new (23392);
-        websub:Hub|websub:HubStartedUpError|websub:HubStartupError res =
-            websub:startHub(lis0, "/websub", "/hub", "/pub", publicUrl = "https://localhost:23391");
+        websubhub:Hub|websubhub:HubStartedUpError|websubhub:HubStartupError res =
+            websubhub:startHub(lis0, "/websub", "/hub", "/pub", publicUrl = "https://localhost:23391");
 
-        if (res is websub:Hub) {
+        if (res is websubhub:Hub) {
             if (res.publishUrl != "https://localhost:23391/websub/pub" ||
                     res.subscriptionUrl != "https://localhost:23391/websub/hub") {
                 return caller->respond("invalid publishUrl and subscriptionUrl");
@@ -71,14 +72,14 @@ service /startupHub on testHub {
         }
 
         // testHubStartUpWhenStarted
-        websub:Hub|websub:HubStartedUpError|websub:HubStartupError res2 = websub:startHub(lis1);
+        websubhub:Hub|websubhub:HubStartedUpError|websubhub:HubStartupError res2 = websubhub:startHub(lis1);
 
-        if !(res2 is websub:HubStartedUpError) || res2.startedUpHub !== res {
+        if !(res2 is websubhub:HubStartedUpError) || res2.startedUpHub !== res {
             return caller->respond("seperate hub(lis1) has started");
         }
 
         // testHubShutdownAndStart
-        websub:Hub hub = <websub:Hub> checkpanic res;
+        websubhub:Hub hub = <websubhub:Hub> checkpanic res;
         error? err = hub.stop();
         if (err is error) {
             io:println(err);
@@ -86,8 +87,8 @@ service /startupHub on testHub {
         }
 
         http:Listener lis2 = new (23393);
-        res2 = websub:startHub(lis2);
-        if res2 is websub:Hub {
+        res2 = websubhub:startHub(lis2);
+        if res2 is websubhub:Hub {
             string responseMsg = res2.publishUrl == "http://localhost:23393/publish" && res2.subscriptionUrl ==
                             "http://localhost:23393/" ? "hub(lis2) start successfully" :
                             "incorrect hub(lis2) has started";
@@ -100,12 +101,12 @@ service /startupHub on testHub {
     resource function get testPublisherAndSubscriptionInvalidSameResourcePath(http:Caller caller, http:Request request)
                                                                                                     returns error? {
         http:Listener lis = new (23394);
-        websub:Hub|websub:HubStartedUpError|websub:HubStartupError res =
-            websub:startHub(lis, "/websub", "/hub", "/hub");
+        websubhub:Hub|websubhub:HubStartedUpError|websubhub:HubStartupError res =
+            websubhub:startHub(lis, "/websub", "/hub", "/hub");
 
         var err = lis.gracefulStop();
 
-        if (res is websub:HubStartupError) {
+        if (res is websubhub:HubStartupError) {
             return caller->respond(res.message());
         }
         return caller->respond("Unexpected result");
