@@ -86,7 +86,7 @@ function testSubscriptionAndAutomaticIntentVerification() {
 }
 
 @test:Config {
-    dependsOn: ["testSubscriptionAndAutomaticIntentVerification"]
+    dependsOn: [testSubscriptionAndAutomaticIntentVerification]
 }
 function testContentInternalHubNotification() {
     http:Client clientEndpoint = new ("http://localhost:23080");
@@ -102,7 +102,7 @@ function testContentInternalHubNotification() {
 }
 
 @test:Config {
-    dependsOn: ["testContentInternalHubNotification"]
+    dependsOn: [testContentInternalHubNotification]
 }
 function testContentRemoteHubNotification() {
     http:Client clientEndpoint = new ("http://localhost:23080");
@@ -118,14 +118,14 @@ function testContentRemoteHubNotification() {
 }
 
 @test:Config {
-    dependsOn: ["testContentRemoteHubNotification"]
+    dependsOn: [testContentRemoteHubNotification]
 }
 function testContentReceiptForCallbackWithQueryParams() {
     test:assertEquals(fetchOutput(ID_QUERY_PARAM_LOG), QUERY_PARAM_LOG);
 }
 
 @test:Config {
-    dependsOn: ["testContentReceiptForCallbackWithQueryParams"]
+    dependsOn: [testContentReceiptForCallbackWithQueryParams]
 }
 function testRemoteTopicRegistration() {
     http:Client clientEndpoint = new ("http://localhost:23191");
@@ -142,7 +142,7 @@ function testRemoteTopicRegistration() {
 }
 
 @test:Config {
-    dependsOn: ["testRemoteTopicRegistration"]
+    dependsOn: [testRemoteTopicRegistration]
 }
 function testSubscriberDetailsRetrievalFromHub() {
     http:Client clientEndpoint = new ("http://localhost:23080");
@@ -164,7 +164,7 @@ function testSubscriberDetailsRetrievalFromHub() {
 }
 
 @test:Config {
-    dependsOn: ["testSubscriberDetailsRetrievalFromHub"]
+    dependsOn: [testSubscriberDetailsRetrievalFromHub]
 }
 function testAvailableTopicsRetrievalFromHub() {
     http:Client clientEndpoint = new ("http://localhost:23080");
@@ -182,8 +182,8 @@ function testAvailableTopicsRetrievalFromHub() {
 }
 
 @test:Config {
-    before: "sendUnsubscription",
-    dependsOn: ["testAvailableTopicsRetrievalFromHub"]
+    before: sendUnsubscription,
+    dependsOn: [testAvailableTopicsRetrievalFromHub]
 }
 function testUnsubscription() {
     http:Client clientEndpoint = new ("http://localhost:23080");

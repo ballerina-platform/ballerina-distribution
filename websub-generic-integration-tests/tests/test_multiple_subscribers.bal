@@ -57,7 +57,7 @@ service websub:SubscriberService /websubTwo on multipleSubTestWebsubEP {
 }
 
 @test:Config {
-    dependsOn: ["testJsonContentReceiptForRemoteHub"],
+    dependsOn: [testJsonContentReceiptForRemoteHub],
     enable: false
 }
 function testContentReceipt() {

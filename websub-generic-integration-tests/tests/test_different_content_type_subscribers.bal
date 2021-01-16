@@ -88,7 +88,7 @@ service websub:SubscriberService /websubTwo on websubDifContentTypeEP {
 }
 
 @test:Config {
-    dependsOn: ["testUnsubscription"]
+    dependsOn: [testUnsubscription]
 }
 function testTextContentReceiptForInternalHub() {
     sendSubscriptionAndIntentVerificationRequest(COMMON_PATH + "23282", HUB_MODE_INTERNAL, TYPE_STRING);
@@ -98,7 +98,7 @@ function testTextContentReceiptForInternalHub() {
 }
 
 @test:Config {
-    dependsOn: ["testTextContentReceiptForInternalHub"]
+    dependsOn: [testTextContentReceiptForInternalHub]
 }
 function testTextContentReceiptForRemoteHub() {
     sendSubscriptionAndIntentVerificationRequest(COMMON_PATH + SKIP_SUBSCRIBER_CHECK, HUB_MODE_REMOTE, TYPE_STRING);
@@ -108,7 +108,7 @@ function testTextContentReceiptForRemoteHub() {
 }
 
 @test:Config {
-    dependsOn: ["testTextContentReceiptForRemoteHub"]
+    dependsOn: [testTextContentReceiptForRemoteHub]
 }
 function testXmlContentReceiptForInternalHub() {
     sendSubscriptionAndIntentVerificationRequest(COMMON_PATH + SKIP_SUBSCRIBER_CHECK, HUB_MODE_INTERNAL, TYPE_XML);
@@ -118,7 +118,7 @@ function testXmlContentReceiptForInternalHub() {
 }
 
 @test:Config {
-    dependsOn: ["testXmlContentReceiptForInternalHub"]
+    dependsOn: [testXmlContentReceiptForInternalHub]
 }
 function testXmlContentReceiptForRemoteHub() {
     sendSubscriptionAndIntentVerificationRequest(COMMON_PATH + SKIP_SUBSCRIBER_CHECK, HUB_MODE_REMOTE, TYPE_XML);
@@ -128,7 +128,7 @@ function testXmlContentReceiptForRemoteHub() {
 }
 
 @test:Config {
-    dependsOn: ["testXmlContentReceiptForRemoteHub"]
+    dependsOn: [testXmlContentReceiptForRemoteHub]
 }
 function testJsonContentReceiptForInternalHub() {
     sendSubscriptionAndIntentVerificationRequest(COMMON_PATH + SKIP_SUBSCRIBER_CHECK, HUB_MODE_INTERNAL, TYPE_JSON);
@@ -138,7 +138,7 @@ function testJsonContentReceiptForInternalHub() {
 }
 
 @test:Config {
-    dependsOn: ["testJsonContentReceiptForInternalHub"]
+    dependsOn: [testJsonContentReceiptForInternalHub]
 }
 function testJsonContentReceiptForRemoteHub() {
     sendSubscriptionAndIntentVerificationRequest(COMMON_PATH + SKIP_SUBSCRIBER_CHECK, HUB_MODE_REMOTE, TYPE_JSON);
