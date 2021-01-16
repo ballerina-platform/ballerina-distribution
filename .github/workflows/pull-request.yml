@@ -8,7 +8,7 @@ on:
             - ballerina-1.2.x
 
 jobs:
-    integrationTests:
+    IntegrationTests:
         runs-on: ubuntu-latest
         steps:
             -   name: Checkout
