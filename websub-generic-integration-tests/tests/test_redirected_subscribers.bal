@@ -70,7 +70,7 @@ service websub:SubscriberService /websubTwo on redirectWebsubEP {
 }
 
 @test:Config {
-    dependsOn: ["testJsonContentReceiptForRemoteHub"],
+    dependsOn: [testJsonContentReceiptForRemoteHub],
     enable: false
 }
 function testTopicMovedPermanentlyAndHubTemporaryRedirect() {
@@ -78,7 +78,7 @@ function testTopicMovedPermanentlyAndHubTemporaryRedirect() {
 }
 
 @test:Config {
-    dependsOn: ["testJsonContentReceiptForRemoteHub"],
+    dependsOn: [testJsonContentReceiptForRemoteHub],
     enable: false
 }
 function testTopicRedirectFoundAndHubPermanentRedirect() {
