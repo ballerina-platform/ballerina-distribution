@@ -221,13 +221,6 @@ subprojects {
             }
         }
         maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-os"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-random"
             credentials {
                 username System.getenv("packageUser")
