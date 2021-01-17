@@ -2,7 +2,7 @@
 // at which it will publish updates.
 import ballerina/http;
 import ballerina/log;
-import ballerina/websub;
+import ballerina/websubhub;
 
 listener http:Listener httpListener = new (9090);
 
@@ -16,7 +16,7 @@ map<json> orderMap = {};
 // Invokes the function that starts up a Ballerina WebSub Hub, registers the topic
 // against which updates will be published, and maintains a reference to the
 // returned hub object to publish updates.
-websub:Hub webSubHub = startHubAndRegisterTopic();
+websubhub:Hub webSubHub = startHubAndRegisterTopic();
 
 service /ordermgt on httpListener {
 
@@ -26,7 +26,7 @@ service /ordermgt on httpListener {
     resource function get 'order(http:Caller caller, http:Request req) {
         http:Response response = new;
         // Adds a link header indicating the hub and topic.
-        websub:addWebSubLinkHeader(response, [webSubHub.subscriptionUrl],
+        websubhub:addWebSubLinkHeader(response, [webSubHub.subscriptionUrl],
                                     ORDER_TOPIC);
         response.statusCode = 202;
         var result = caller->respond(response);
@@ -69,19 +69,19 @@ service /ordermgt on httpListener {
 
 // Starts up a Ballerina WebSub Hub on port 9191 and registers the topic against
 // which updates will be published.
-function startHubAndRegisterTopic() returns websub:Hub {
-    var hubStartUpResult = websub:startHub(new http:Listener(9191),
+function startHubAndRegisterTopic() returns websubhub:Hub {
+    var hubStartUpResult = websubhub:startHub(new http:Listener(9191),
                                             "/websub", "/hub");
 
-    websub:Hub? hubVar = ();
-    if hubStartUpResult is websub:HubStartupError {
+    websubhub:Hub? hubVar = ();
+    if hubStartUpResult is websubhub:HubStartupError {
         panic hubStartUpResult;
     } else {
-        hubVar = hubStartUpResult is websub:HubStartedUpError ?
+        hubVar = hubStartUpResult is websubhub:HubStartedUpError ?
                             hubStartUpResult["startedUpHub"] : hubStartUpResult;
     }
 
-    websub:Hub internalHub = <websub:Hub>hubVar;
+    websubhub:Hub internalHub = <websubhub:Hub>hubVar;
     var result = internalHub.registerTopic(ORDER_TOPIC);
     if (result is error) {
         log:printError("Error registering topic", err = result);
