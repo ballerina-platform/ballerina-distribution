@@ -380,6 +380,13 @@ subprojects {
             }
         }
         maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-websubhub"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
+        maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-xmlutils"
             credentials {
                 username System.getenv("packageUser")
@@ -560,6 +567,7 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:uuid-ballerina:${stdlibUuidVersion}"
         ballerinaStdLibs "org.ballerinalang:websocket-ballerina:${stdlibWebsocketVersion}"
         ballerinaStdLibs "org.ballerinalang:websub-ballerina:${stdlibWebsubVersion}"
+        ballerinaStdLibs "org.ballerinalang:websubhub-ballerina:${stdlibWebsubhubVersion}"
         ballerinaStdLibs "org.ballerinalang:xmlutils-ballerina:${stdlibXmlutilsVersion}"
         ballerinaStdLibs "org.ballerinalang:xslt-ballerina:${stdlibXsltVersion}"
 
