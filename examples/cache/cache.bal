@@ -1,6 +1,6 @@
 import ballerina/cache;
 import ballerina/io;
-import ballerina/runtime;
+import ballerina/lang.runtime;
 
 public function main() returns error? {
     // This creates a new cache of size 10. The eviction factor is set to 0.2,

@@ -1,5 +1,5 @@
 import ballerina/io;
-import ballerina/runtime;
+import ballerina/lang.runtime;
 import ballerina/task;
 
 // Defines a custom record type to use in the timer.

@@ -1,6 +1,6 @@
 import ballerina/test;
 import ballerina/http;
-import ballerina/runtime;
+import ballerina/lang.runtime;
 
 string serviceReply = "";
 string msg = "hey";

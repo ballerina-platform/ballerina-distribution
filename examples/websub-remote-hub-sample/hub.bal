@@ -1,7 +1,7 @@
 // The Main program, which brings up the Ballerina WebSub Hub.
 import ballerina/http;
 import ballerina/io;
-import ballerina/runtime;
+import ballerina/lang.runtime;
 import ballerina/websub;
 
 public function main() {

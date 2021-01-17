@@ -1,6 +1,6 @@
 // The Ballerina WebSub Publisher, which registers a topic at the hub and publishes updates to the hub for the topic.
 import ballerina/io;
-import ballerina/runtime;
+import ballerina/lang.runtime;
 import ballerina/websub;
 
 // This is the remote [WebSub Hub client]((https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/websub/clients/PublisherClient) to which registration and publish requests are sent.

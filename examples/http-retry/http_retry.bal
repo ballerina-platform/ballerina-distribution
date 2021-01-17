@@ -1,6 +1,6 @@
 import ballerina/http;
 import ballerina/log;
-import ballerina/runtime;
+import ballerina/lang.runtime;
 
 // Define the endpoint to the call the `mockHelloService`.
 http:Client backendClientEP = new ("http://localhost:8080", {
