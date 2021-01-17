@@ -1,5 +1,5 @@
 import ballerina/io;
-import ballerina/runtime;
+import ballerina/lang.runtime;
 import ballerina/task;
 
 int reminderCount = 0;

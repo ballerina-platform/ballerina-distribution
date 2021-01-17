@@ -1,6 +1,6 @@
 // This is the B7a test for bidirectional streaming scenario.
 import ballerina/io;
-import ballerina/runtime;
+import ballerina/lang.runtime;
 import ballerina/test;
 
 //Client endpoint configuration.
