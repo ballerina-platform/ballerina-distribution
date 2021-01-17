@@ -15,7 +15,7 @@ kafka:ConsumerConfiguration consumerConfiguration = {
 
 };
 
-kafka:Consumer consumer = new (consumerConfiguration);
+kafka:Consumer consumer = checkpanic new (consumerConfiguration);
 
 public function main() {
     // Poll the consumer for messages.

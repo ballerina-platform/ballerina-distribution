@@ -1,5 +1,18 @@
 #!/bin/bash
 
+kill_service() {
+  case "$(uname -s)" in
+  Darwin)
+    kill $(lsof -ti:$1)
+    ;;
+
+  Linux)
+    fuser -k $1/tcp
+    ;;
+  *) ;;
+  esac
+}
+
 # Change directory to provided path
 cd ${1}
 
@@ -12,10 +25,10 @@ sleep 10
 . ${4}
 
 # kill the process which is using the server ports
-while read line; do
-if lsof -Pi :$line -sTCP:LISTEN -t >/dev/null ; then
-fuser -k $line/tcp
-else
-echo "not open"
-fi
-done < ${5}
+while read -r line; do
+  if lsof -Pi :$line -sTCP:LISTEN -t >/dev/null; then
+    kill_service $line
+  else
+    echo "Service is not running"
+  fi
+done <${5}

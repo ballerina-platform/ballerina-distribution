@@ -22,7 +22,7 @@ import org.apache.tools.ant.taskdefs.condition.Os
 description = 'Ballerina - Tools'
 
 ext {
-    jreLocation = "build/target/ballerina-jre-artifacts-zip/ballerina-jre-artifacts-${ballerinaJreArtifactsVersion}"
+    jreLocation = "build/target/ballerina-jre-artifacts-zip/"
     distributionName = "ballerina"
 }
 
@@ -45,12 +45,16 @@ def ballerinaLinuxDistributionZip = file("$project.buildDir/distributions/baller
 def ballerinaMacDistributionZip = file("$project.buildDir/distributions/ballerina-macos-${ballerinaVersion}.zip")
 def ballerinaWindowsDistributionZip = file("$project.buildDir/distributions/ballerina-windows-${ballerinaVersion}.zip")
 
-task unpackBallerinaJre(type: Copy) {
+task unpackBallerinaJre(type: Download) {
     group = "unpack_dependencies"
-    configurations.ballerinaJre.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        from zipTree(artifact.getFile())
-        into new File("${buildDir}/target", artifact.name + "-zip")
-    }
+    def jreBaseURL = "https://github.com/ballerina-platform/ballerina-custom-jre/releases/download/${ballerinaJreVersion}"
+    src([
+            "${jreBaseURL}/ballerina-jre-linux-${ballerinaJreVersion}.zip",
+            "${jreBaseURL}/ballerina-jre-macos-${ballerinaJreVersion}.zip",
+            "${jreBaseURL}/ballerina-jre-windows-${ballerinaJreVersion}.zip"
+    ])
+    onlyIfModified true
+    dest "${jreLocation}"
 }
 
 task unpackJballerinaTools(type: Copy) {
@@ -139,6 +143,17 @@ task unpackC2cExamples(type: Copy) {
     }
 }
 
+task unpackObservabilityExtensions() {
+    doLast {
+        configurations.ballerinaObserveExtensions.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+            copy {
+                from project.zipTree(artifact.getFile())
+                into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
+            }
+        }
+    }
+}
+
 task unpackBalCommand(type: Copy) {
     group = "unpack_dependencies"
     configurations.balCommand.resolvedConfiguration.resolvedArtifacts.each { artifact ->
@@ -149,19 +164,19 @@ task unpackBalCommand(type: Copy) {
 
 task extractJreForLinux(type: Copy) {
     group = "extract_jre"
-    from zipTree { "${jreLocation}/jre-11-linux.zip" }
+    from zipTree { "${jreLocation}/ballerina-jre-linux-${ballerinaJreVersion}.zip" }
     into("${buildDir}/target/extracted-jre-linux")
 }
 
 task extractJreForMac(type: Copy) {
     group = "extract_jre"
-    from zipTree { "${jreLocation}/jre-11-macos.zip" }
+    from zipTree { "${jreLocation}/ballerina-jre-macos-${ballerinaJreVersion}.zip" }
     into("${buildDir}/target/extracted-jre-macos")
 }
 
 task extractJreForWindows(type: Copy) {
     group = "extract_jre"
-    from zipTree { "${jreLocation}/jre-11-windows.zip" }
+    from zipTree { "${jreLocation}/ballerina-jre-windows-${ballerinaJreVersion}.zip" }
     into("${buildDir}/target/extracted-jre-windows")
 }
 
@@ -204,6 +219,23 @@ task copyOtherRepos(type: Copy) {
 
     /* C2C Libraries */
     configurations.ballerinaC2cLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+        def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
+        from("${artifactExtractedPath}/libs") {
+            into "bre/lib/"
+        }
+        from("${artifactExtractedPath}/docs") {
+            into"docs/"
+        }
+        from("${artifactExtractedPath}/balo") {
+            into "repo/balo"
+        }
+        from("${artifactExtractedPath}/cache") {
+            into "repo/cache"
+        }
+    }
+
+    /* Observability extensions */
+    configurations.ballerinaObserveExtensions.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
         from("${artifactExtractedPath}/libs") {
             into "bre/lib/"
@@ -364,7 +396,7 @@ task packageDistLinux(type: Zip) {
     ext { parentDir = "${baseName}-${version}" }
     entryCompression = ZipEntryCompression.STORED
 
-    into("${parentDir}/dependencies") {
+    into("${parentDir}/dependencies/jdk-11.0.8+10-jre") {
         from "build/target/extracted-jre-linux"
         fileMode = 0755
     }
@@ -431,7 +463,7 @@ task packageDistMac(type: Zip) {
     ext { parentDir = "${baseName}-${version}" }
     entryCompression = ZipEntryCompression.STORED
 
-    into("${parentDir}/dependencies") {
+    into("${parentDir}/dependencies/jdk-11.0.8+10-jre") {
         from "build/target/extracted-jre-macos"
         fileMode = 0755
     }
@@ -494,7 +526,7 @@ task packageDistWindows(type: Zip) {
     ext { parentDir = "${baseName}-${version}" }
     entryCompression = ZipEntryCompression.STORED
 
-    into("${parentDir}/dependencies") {
+    into("${parentDir}/dependencies/jdk-11.0.8+10-jre") {
         from "build/target/extracted-jre-windows"
         fileMode = 0755
     }
@@ -692,6 +724,7 @@ task testExamples() {
             'rabbitmq-consumer-with-qos-settings',
             'rabbitmq-transaction-producer',
             'rabbitmq-transaction-consumer',
+            'random',  // Output varies
             'jdbc-complex-type-queries', // Consists date time in output
             'jdbc-batch-execute-operation', // Consists transaction server sart log
             'log-api',
@@ -1331,6 +1364,7 @@ unpackDevTools.dependsOn unpackJballerinaTools
 unpackStdLibs.dependsOn unpackDevTools
 unpackC2cLibs.dependsOn unpackStdLibs
 unpackC2cExamples.dependsOn unpackC2cLibs
+unpackBalCommand.dependsOn unpackObservabilityExtensions
 unpackBalCommand.dependsOn unpackC2cExamples
 
 /* Extract JRE */

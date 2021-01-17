@@ -18,7 +18,7 @@ kafka:ProducerConfiguration producerConfigs = {
 
 };
 
-kafka:Producer kafkaProducer = new (producerConfigs);
+kafka:Producer kafkaProducer = checkpanic new (producerConfigs);
 
 public function main() {
     string message = "Hello World Transaction Message";
@@ -32,8 +32,10 @@ public function main() {
 
 function kafkaAdvancedTransactionalProduce(byte[] message) {
     transaction {
-        var sendResult = kafkaProducer->send(message, "test-kafka-topic",
-            partition = 0);
+        var sendResult = kafkaProducer->sendProducerRecord({
+            topic: "test-kafka-topic",
+            value: message,
+            partition: 0 });
         if (sendResult is error) {
             io:println("Kafka producer failed to send first message",
                 sendResult.toString());

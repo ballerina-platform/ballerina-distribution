@@ -654,10 +654,6 @@
                 "url": "log-api"
             },
             {
-                "name": "Math",
-                "url": "math-functions"
-            },
-            {
                 "name": "String",
                 "url": "strings"
             },
@@ -668,6 +664,10 @@
             {
                 "name": "File",
                 "url": "file"
+            },
+            {
+                "name": "Random",
+                "url": "random"
             },
             {
                 "name": "Task Scheduler Appointment",
