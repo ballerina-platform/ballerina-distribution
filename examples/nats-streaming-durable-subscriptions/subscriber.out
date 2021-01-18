@@ -1,6 +1,8 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run subscriber.bal
+
+[ballerina/nats] Client subscribed for subject demo
 Received message: First Message
 
 # Stop the subscriber and publish some messages while it is stopped.
@@ -9,4 +11,6 @@ Received message: First Message
 # wasn't running should be received.
 
 ballerina run subscriber.bal
+
+[ballerina/nats] Client subscribed for subject demo
 Received message: Second Message
