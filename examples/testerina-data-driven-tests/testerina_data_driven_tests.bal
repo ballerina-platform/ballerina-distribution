@@ -4,7 +4,7 @@ import ballerina/test;
 // The `dataProvider` attribute allows you to add a data-provider function to the test-case.
 @test:Config { 
     // The `stringDataProvider` function provides the dataset to this function.
-    dataProvider: "stringDataProvider" }
+    dataProvider: stringDataProvider }
 // Data is passed to the function as function parameters.
 function testAddingValues(string fValue, string sValue, string result) {
 
@@ -26,7 +26,7 @@ function stringDataProvider() returns (string[][]) {
 
 @test:Config { 
     // The `jsonDataProvider` function provides the dataset to this function.
-    dataProvider: "jsonDataProvider" }
+    dataProvider: jsonDataProvider }
 function testJsonObjects(json fValue, json sValue, json result) {
     json a = { "a": "a" };
     json b = { "b": "b" };

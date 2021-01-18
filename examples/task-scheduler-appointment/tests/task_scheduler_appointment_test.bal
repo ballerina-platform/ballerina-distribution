@@ -9,6 +9,8 @@ int counter = 0;
     moduleName: "ballerina/io",
     functionName: "println"
 }
+test:MockFunction mock_printLn = new();
+
 public function mockPrint(any|error... s) {
     outputs[counter] = s[0];
     counter += 1;
@@ -16,6 +18,8 @@ public function mockPrint(any|error... s) {
 
 @test:Config{}
 function testFunc() returns error? {
+    test:when(mock_printLn).call("mockPrint");
+
     // Invoke the main function.
     check main();
     runtime:sleep(12000);
