@@ -45,7 +45,7 @@ public function main() returns error? {
     int milliSecond = time:getMilliSecond(time);
     io:println("Millisecond: ", milliSecond);
     // This fetches the day of the week of a given time.
-    string weekday = time:getWeekday(time);
+    time:DayOfWeek weekday = time:getWeekday(time);
     io:println("Weekday: ", weekday);
     // This fetches the date component of the time using a single function.
     [year, month, day] = time:getDate(time);
@@ -55,11 +55,16 @@ public function main() returns error? {
     io:println("Time: ", hour, ":", minute, ":", second, ":", milliSecond);
     // This adds a given duration to a time. This example adds
     // one year, one month, and one second to the current time.
-    time:Time tmAdd = time:addDuration(time, 1, 1, 0, 0, 0, 1, 0);
+    time:Duration duration = {
+        years: 1,
+        months: 1,
+        seconds: 1
+    };
+    time:Time tmAdd = time:addDuration(time, duration);
     io:println("After adding a duration: ", time:toString(tmAdd));
     // This subtracts a given duration from a time. This example
-    // subtract sone year, one month, and one second from the current time.
-    time:Time tmSub = time:subtractDuration(time, 1, 1, 0, 0, 0, 1, 0);
+    // subtracts one year, one month, and one second from the current time.
+    time:Time tmSub = time:subtractDuration(time, duration);
     io:println("After subtracting a duration: ", time:toString(tmSub));
     // This converts the time to a different timezone.
     time:Time t2 = check time:createTime(2017, 3, 28, 23, 42, 45, 554,
@@ -67,4 +72,9 @@ public function main() returns error? {
     io:println("Before converting the time zone: ", time:toString(t2));
     time:Time t3 = check time:toTimeZone(t2, "Asia/Colombo");
     io:println("After converting the time zone: ", time:toString(t3));
+    //This calculates the difference between two time values.
+    time:Time startTime = check time:createTime(2021, 5, 3, 10);
+    time:Time endTime = check time:createTime(2022, 7, 4, 11);
+    time:Duration delta = check time:getDifference(startTime, endTime);
+    io:println("Difference between the two time values: ", delta);
 }
