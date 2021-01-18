@@ -3,19 +3,19 @@ import ballerina/io;
 
 // Defines the rollback handlers, which are triggered once the
 // rollback statement is executed.
-function onRollbackFunc(transactions:Info info, error? cause,
+isolated function onRollbackFunc(transactions:Info info, error? cause,
                         boolean willRetry) {
     io:println("Rollback handler #1 executed.");
 }
 
-function onRollbackFunc2(transactions:Info info, error? cause,
+isolated function onRollbackFunc2(transactions:Info info, error? cause,
                          boolean willRetry) {
     io:println("Rollback handler #2 executed.");
 }
 
 // Defines the commit handler, which gets triggered once the
 // commit action is executed.
-function onCommitFunc(transactions:Info info) {
+isolated function onCommitFunc(transactions:Info info) {
     io:println("Commit handler executed.");
 }
 
