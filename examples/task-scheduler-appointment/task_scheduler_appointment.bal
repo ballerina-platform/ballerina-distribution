@@ -13,7 +13,7 @@ public function main() returns error? {
     };
 
     // Creates an appointment using the given configuration.
-    task:Scheduler appointment = new (appointmentConfiguration);
+    task:Scheduler appointment = check new (appointmentConfiguration);
 
     // Attaches the service to the scheduler.
     check appointment.attach(appointmentService);
@@ -21,7 +21,7 @@ public function main() returns error? {
     // Starts the scheduler.
     check appointment.start();
 
-    runtime:sleep(9000);
+    runtime:sleep(9);
 
     // Cancels the appointment.
     check appointment.stop();

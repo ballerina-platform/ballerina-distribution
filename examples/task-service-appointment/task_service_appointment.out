@@ -2,7 +2,7 @@
 //
 # To start the service, navigate to the directory that contains the
 # `.bal` file and execute the `ballerina run` command below.
-ballerina run task_service_appointment.bal
+bal run task_service_appointment.bal
 Schedule is due - Reminder: 1
 Schedule is due - Reminder: 2
 Schedule is due - Reminder: 3

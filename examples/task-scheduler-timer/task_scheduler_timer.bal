@@ -11,7 +11,7 @@ public type CounterContext record {|
 public function main() returns error? {
     // Initializes the timer scheduler using the interval value. The delay will
     // be equal to the interval if an initial delay is not provided.
-    task:Scheduler timer = new ({
+    task:Scheduler timer = check new ({
         intervalInMillis: 1000,
         initialDelayInMillis: 0
     });
@@ -27,7 +27,7 @@ public function main() returns error? {
     // Starts the timer.
     check timer.start();
 
-    runtime:sleep(4500);
+    runtime:sleep(4.5);
 
     // Cancels the timer. This will stop the timer and all the services
     // attached to it.
