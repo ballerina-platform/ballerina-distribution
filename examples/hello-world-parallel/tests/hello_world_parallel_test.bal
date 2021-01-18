@@ -9,6 +9,8 @@ int counter = 0;
     moduleName: "ballerina/io",
     functionName: "println"
 }
+test:MockFunction mock_printLn = new();
+
 public function mockPrint(any|error... s) {
     string outStr = "";
     foreach var str in s {
@@ -22,6 +24,7 @@ public function mockPrint(any|error... s) {
 
 @test:Config {}
 function testFunc() {
+    test:when(mock_printLn).call("mockPrint");
     // Invoking the main function
     main();
 

@@ -8,8 +8,8 @@ function startService() {
 }
 
 @test:Config {
-    before: "startService",
-    after: "stopService"
+    before: startService,
+    after: stopService
 }
 function testFunc() {
     // Invoking the main function

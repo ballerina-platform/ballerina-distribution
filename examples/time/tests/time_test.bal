@@ -8,6 +8,8 @@ int counter = 0;
     moduleName: "ballerina/io",
     functionName: "println"
 }
+test:MockFunction mock_printLn = new();
+
 public function mockPrint(any|error... s) {
     string outstr = "";
         foreach var str in s {
@@ -19,6 +21,8 @@ public function mockPrint(any|error... s) {
 
 @test:Config {}
 function testFunc() returns error? {
+    test:when(mock_printLn).call("mockPrint");
+
     // Invoking the main function
     check main();
     test:assertEquals(outputs[1], "Created Time: 2017-03-28T23:42:45.554-05:00");
