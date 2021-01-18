@@ -3,7 +3,7 @@
 # Navigate to the directory that contains the
 # 'rabbitmq_consumer_with_client_acknowledgement.bal' file and runthe 'ballerina run' command below.
 
-ballerina run rabbitmq_consumer_with_client_acknowledgement.bal
+bal run rabbitmq_consumer_with_client_acknowledgement.bal
 
 # The RabbitMQ consumer runs as a Ballerina service and listens to the subscribed queue.
 

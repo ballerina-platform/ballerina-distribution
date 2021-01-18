@@ -3,7 +3,7 @@
 # Navigate to the directory that contains the
 # 'rabbitmq_consumer.bal' file, and run the 'ballerina run' command below.
 
-ballerina run rabbitmq_consumer.bal
+bal run rabbitmq_consumer.bal
 
 # The RabbitMQ consumer runs as a Ballerina service and listens to the subscribed queue.
 

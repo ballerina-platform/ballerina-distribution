@@ -1,3 +1,3 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
-ballerina run publisher.bal
+bal run publisher.bal

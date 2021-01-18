@@ -3,6 +3,6 @@
 # Navigate to the directory that contains the
 # 'rabbitmq_transaction_producer.bal' file, and run the 'ballerina run' command below.
 
-$ ballerina run rabbitmq_transaction_producer.bal
+$ bal run rabbitmq_transaction_producer.bal
 
 [ballerina/http] started HTTP/WS listener 192.168.1.2:51659
