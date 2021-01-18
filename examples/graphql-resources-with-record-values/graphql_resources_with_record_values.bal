@@ -2,7 +2,7 @@ import ballerina/graphql;
 import ballerina/http;
 
 // Create an `http:Listener`.
-http:Listener httpListener = new(9090);
+http:Listener httpListener = check new(9090);
 
 // The `graphql:Service` exposes a GraphQL service on the provided HTTP listener.
 service graphql:Service /graphql on new graphql:Listener(httpListener) {
