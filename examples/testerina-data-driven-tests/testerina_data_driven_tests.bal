@@ -3,11 +3,11 @@ import ballerina/test;
 
 // The `dataProvider` attribute allows you to add a data-provider function to the test-case.
 @test:Config { 
-    // The `stringDataProvider` function provides the dataset to this function.
-    dataProvider: stringDataProvider }
+    dataProvider: stringDataProvider
+}
+// The `stringDataProvider` function provides the dataset to this function.
 // Data is passed to the function as function parameters.
 function testAddingValues(string fValue, string sValue, string result) {
-
     int|error val1 = 'int:fromString(fValue);
     int value1 = val1 is int ? val1 : 0;
     int|error val2 = 'int:fromString(sValue);
@@ -25,8 +25,9 @@ function stringDataProvider() returns (string[][]) {
 }
 
 @test:Config { 
-    // The `jsonDataProvider` function provides the dataset to this function.
-    dataProvider: jsonDataProvider }
+    dataProvider: jsonDataProvider
+}
+// The `jsonDataProvider` function provides the dataset to this function.
 function testJsonObjects(json fValue, json sValue, json result) {
     json a = { "a": "a" };
     json b = { "b": "b" };
