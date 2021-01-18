@@ -63,7 +63,7 @@ public function main() returns error? {
     time:Time tmAdd = time:addDuration(time, duration);
     io:println("After adding a duration: ", time:toString(tmAdd));
     // This subtracts a given duration from a time. This example
-    // subtract sone year, one month, and one second from the current time.
+    // subtracts one year, one month, and one second from the current time.
     time:Time tmSub = time:subtractDuration(time, duration);
     io:println("After subtracting a duration: ", time:toString(tmSub));
     // This converts the time to a different timezone.
