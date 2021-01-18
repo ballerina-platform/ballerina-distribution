@@ -25,7 +25,7 @@ function getString(byte[] content, int numberOfBytes = 50) returns @tainted stri
     return check characterChannel.read(numberOfBytes);
 }
 
-isolated function prepareDatagram(string msg, string remoteHost = "localhost", int remotePort = 9001) returns udp:Datagram {
+isolated function prepareDatagram(string msg, string remoteHost = "localhost", int remotePort = PORT1) returns udp:Datagram {
     byte[] data =  msg.toBytes();
     return { data, remoteHost: remoteHost, remotePort: remotePort };
 }
@@ -72,7 +72,7 @@ function testConnectionlessClient() {
 
 @test:Config { }
 function testConnectClient() {
-    udp:ConnectClient|udp:Error? socketClient = new("localhost", 9001);
+    udp:ConnectClient|udp:Error? socketClient = new("localhost", PORT1);
     if (socketClient is udp:ConnectClient) {
         string msg = "who are you?";
         string expectedResponse = "I'm a ballerina bot";

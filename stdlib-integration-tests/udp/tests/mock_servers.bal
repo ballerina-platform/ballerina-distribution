@@ -19,12 +19,14 @@ import ballerina/test;
 import ballerina/udp;
 import ballerina/io;
 
+const int PORT1 = 9001;
+
 map<string> QuestionBank = {
     "hi": "hi there!",
     "who are you?": "I'm a ballerina bot"
 };
 
-service on new udp:Lisetener(9001) {
+service on new udp:Lisetener(PORT1) {
 
     remote function onDatagram(udp:Datagram datagram, udp:Caller caller) returns udp:Error? {
         string|error? dataString = getString(datagram.data);
