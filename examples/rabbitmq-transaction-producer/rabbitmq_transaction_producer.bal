@@ -1,4 +1,3 @@
-import ballerina/io;
 import ballerinax/rabbitmq;
 
 public function main() returns error? {
