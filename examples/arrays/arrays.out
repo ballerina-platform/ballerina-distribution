@@ -5,13 +5,13 @@ ballerina run arrays.bal
 1
 8
 Reversed: [8,7,6,5,4,3,2,1]
-Reversed array and original array is exact : true
+Reversed array and original array are the same: true
 Before pop: [8,7,6,5,4,3,2,1]
 Popped value: 1
 After pop: [8,7,6,5,4,3,2]
 Doubled: [16,14,12,10,8,6,4]
 Array sorted in ascending order: [2,3,4,5,6,7,8]
-Array sorted in descending order using a key : [4,3,2,8,7,6,5]
+Array sorted in descending order using a key: [4,3,2,8,7,6,5]
 23
 1000
 3
