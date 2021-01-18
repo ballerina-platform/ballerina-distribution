@@ -36,7 +36,7 @@ function test_addOrderWithoutMock() {
 
 }
 
-@test:Config {}
+@test:Config { dependsOn: [test_addOrderWithoutMock]}
 function test_addOrderAgain() {
      json orderPayload = {
         "Order": {
