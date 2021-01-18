@@ -23,9 +23,9 @@ public function main() {
 
     // Arrays are an iterable type and arrays support functional iteration operations such as `.map()`, `.filter()`, and
     // `.reduce()`.
-    int[] doubled = b.map(function(int value) returns int {
-                              return value * 2;
-                          });
+    int[] doubled = b.map(function (int value) returns int {
+            return value * 2;
+        });
     io:println("Doubled: ", doubled);
 
     // An array can be sorted using `.sort()`. The `array:DESCENDING` is the `direction` in which sort should be done.
@@ -36,13 +36,14 @@ public function main() {
     int[] sortedArray = b.sort();
     io:println("Array sorted in ascending order: ", sortedArray);
 
-    sortedArray = b.sort(array:DESCENDING, isolated function(int value) returns string[] {
-                                                     if (value < 5) {
-                                                         return ["Z", value.toString()];
-                                                     } else {
-                                                         return ["B", value.toString()];
-                                                     }
-                                                 });
+    sortedArray = b.sort(array:DESCENDING, isolated function(int value)
+    returns string[] {
+         if (value < 5) {
+             return ["Z", value.toString()];
+         } else {
+             return ["B", value.toString()];
+         }
+     });
     io:println("Array sorted in descending order using a key: ", sortedArray);
 
     // Unless the length is explicitly specified or is expected to be inferred, arrays are unbounded in length.
