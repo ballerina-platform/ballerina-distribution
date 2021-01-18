@@ -3,10 +3,10 @@ import ballerina/io;
 import ballerina/websocket;
 
 public function main() returns websocket:Error? {
-    // Creates a new [WebSocket client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/WebSocketClient) with the backend URL and assigns a callback service.
+    // Creates a new [WebSocket Async client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/AsyncClient) with the backend URL and assigns a callback service.
     websocket:AsyncClient wsClientEp = check new ("ws://echo.websocket.org",
                                           new ClientService());
-    // Pushes a text message to the server using [pushText](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/WebSocketClient#pushText).
+    // Writes a text message to the server using [writeString](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/websocket/clients/AsyncClient#writeString).
     var err = wsClientEp->writeString("Hello World!");
     if (err is error) {
         // Prints the error.
