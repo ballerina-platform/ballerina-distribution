@@ -27,7 +27,7 @@ public function main() returns error? {
     // Starts the timer.
     check timer.start();
 
-    runtime:sleep(4500);
+    runtime:sleep(4.5);
 
     // Cancels the timer. This will stop the timer and all the services
     // attached to it.

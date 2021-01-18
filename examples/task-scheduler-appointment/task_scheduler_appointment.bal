@@ -21,7 +21,7 @@ public function main() returns error? {
     // Starts the scheduler.
     check appointment.start();
 
-    runtime:sleep(9000);
+    runtime:sleep(9);
 
     // Cancels the appointment.
     check appointment.stop();
