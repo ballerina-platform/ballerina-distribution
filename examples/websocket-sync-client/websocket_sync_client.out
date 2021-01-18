@@ -1,5 +1,6 @@
 # To start the service, navigate to the directory that contains the
 # `.bal` file and execute the `ballerina run` command below.
-ballerina run websocket_client.bal
+ballerina run websocket_sync_client.bal
 
-Hello World!
+Text message
+Binary message

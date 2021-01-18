@@ -1,3 +1,3 @@
-// This example explains the basic functions of a WebSocket server.<br/><br/>
+// The WebSocket Async client can be used to connect to and interact with a WebSocket server in an asynchronous.<br/><br/>
 // For more information on the underlying module, 
 // see the [WebSocket module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/websocket/).

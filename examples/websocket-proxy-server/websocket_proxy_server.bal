@@ -1,161 +1,238 @@
 import ballerina/http;
 import ballerina/log;
+import ballerina/websocket;
 
 final string ASSOCIATED_CONNECTION = "ASSOCIATED_CONNECTION";
 // The Url of the remote backend.
 final string REMOTE_BACKEND = "ws://echo.websocket.org";
 
-@http:WebSocketServiceConfig {
-    path: "/proxy/ws"
-}
-service SimpleProxyService on new http:Listener(9090) {
+service /proxy/ws on new websocket:Listener(9090) {
+    resource function get .(http:Request req) returns
+                         websocket:Service|websocket:UpgradeError {
+        return service object websocket:Service {
+            websocket:AsyncClient? targetEp = ();
+            // This resource gets invoked when a new client connects.
+            // Since messages to the server are not read by the service until
+            // the execution of the `onConnect` resource finishes, operations
+            // which should happen before reading messages should be done
+            // in the `onConnect` resource.
+            remote function onConnect(websocket:Caller caller) returns
+                            websocket:Error? {
 
-    // This resource gets invoked when a new client connects.
-    // Since messages to the server are not read by the service until the execution of the `onOpen` resource finishes,
-    // operations which should happen before reading messages should be done in the `onOpen` resource.
-    resource function onOpen(http:WebSocketCaller caller) {
+                websocket:AsyncClient wsClientEp = check new (
+                    REMOTE_BACKEND, service object websocket:Service {
+                         //This resource gets invoked upon receiving a new
+                         // text frame from the remote backend.
+                        remote function onString(websocket:Caller caller,
+                                        string text) {
 
-        http:WebSocketClient wsClientEp = new (
-            REMOTE_BACKEND,
-            {
-                callbackService: ClientService,
-                // When creating client endpoint, if `readyOnConnect` flag is set to
-                // `false` client endpoint does not start reading frames automatically.
-                readyOnConnect: false
+                            websocket:Caller serverEp =
+                                        getAssociatedServerEndpoint(caller);
+                            var err = serverEp->writeString(text);
+                            if (err is websocket:Error) {
+                                log:printError(
+                                    "Error occurred when sending text message", err = err);
+                            }
+                        }
+
+                        //This resource gets invoked upon receiving a new
+                        // binary frame from the remote backend.
+                        remote function onBytes(websocket:Caller caller,
+                                        byte[] data) {
+
+                            websocket:Caller serverEp =
+                                        getAssociatedServerEndpoint(caller);
+                            var err = serverEp->writeBytes(data);
+                            if (err is websocket:Error) {
+                                log:printError(
+                                    "Error occurred when sending binary message",
+                                    err = err);
+                            }
+                        }
+
+                        //This resource gets invoked when an error
+                        // occurs in the connection.
+                        remote function onError(websocket:Caller caller,
+                                        error err) {
+
+                            websocket:Caller serverEp =
+                                        getAssociatedServerEndpoint(caller);
+                            var e = serverEp->close(statusCode = 1011,
+                                            reason = "Unexpected condition");
+                            if (e is websocket:Error) {
+                                log:printError(
+                                    "Error occurred when closing the connection",
+                                    err = e);
+                            }
+                            _ = caller.removeAttribute(ASSOCIATED_CONNECTION);
+                            log:printError(
+                                "Unexpected error hense closing the connection",
+                                err = err);
+                        }
+
+                        //This resource gets invoked when a client connection
+                        // is closed by the remote backend.
+                        remote function onClose(websocket:Caller caller,
+                                        int statusCode, string reason) {
+
+                            websocket:Caller serverEp =
+                                        getAssociatedServerEndpoint(caller);
+                            var err = serverEp->close(statusCode = statusCode,
+                                       reason = reason);
+                            if (err is websocket:Error) {
+                                log:printError(
+                                    "Error occurred when closing the connection",
+                                    err = err);
+                            }
+                            _ = caller.removeAttribute(ASSOCIATED_CONNECTION);
+                        }
+                    },
+                    {
+                        // When creating client endpoint, if `readyOnConnect`
+                        // flag is set to `false` client endpoint does not
+                        // start reading frames automatically.
+                        readyOnConnect: false
+                    }
+                );
+                //Associate connections before starting to read messages.
+                self.targetEp = wsClientEp;
+                wsClientEp.setAttribute(ASSOCIATED_CONNECTION, caller);
+
+                // Once the client is ready to receive frames, the remote function [ready](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/websocket/clients/WebSocketClient#ready)
+                // of the client need to be called separately.
+                var err = wsClientEp->ready();
+                if (err is websocket:Error) {
+                    log:printError("Error calling ready on client", err = err);
+                }
             }
-        );
-        //Associate connections before starting to read messages.
-        wsClientEp.setAttribute(ASSOCIATED_CONNECTION, caller);
-        caller.setAttribute(ASSOCIATED_CONNECTION, wsClientEp);
 
-        // Once the client is ready to receive frames, the remote function [ready](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/WebSocketClient#ready)
-        // of the client need to be called separately.
-        var err = wsClientEp->ready();
-        if (err is http:WebSocketError) {
-            log:printError("Error calling ready on client", err);
-        }
-    }
+            //This resource gets invoked upon receiving a new text frame
+            // from a client.
+            remote function onString(websocket:Caller caller, string text) {
+                websocket:AsyncClient clientEp =
+                        <websocket:AsyncClient>self.targetEp;
+                var err = clientEp->writeString(text);
+                if (err is websocket:Error) {
+                    log:printError("Error occurred when sending text message",
+                             err = err);
+                }
+            }
 
-    //This resource gets invoked upon receiving a new text frame from a client.
-    resource function onText(http:WebSocketCaller caller, string text,
-                                boolean finalFrame) {
+            //This resource gets invoked upon receiving a new binary
+            // frame from a client.
+            remote function onBinary(websocket:Caller caller, byte[] data) {
+                websocket:AsyncClient clientEp =
+                        <websocket:AsyncClient>self.targetEp;
+                var err = clientEp->writeBytes(data);
+                if (err is websocket:Error) {
+                    log:printError(
+                        "Error occurred when sending binary message",
+                        err = err);
+                }
+            }
 
-        http:WebSocketClient clientEp =
-                    getAssociatedClientEndpoint(caller);
-        var err = clientEp->pushText(text, finalFrame);
-        if (err is http:WebSocketError) {
-            log:printError("Error occurred when sending text message", err);
-        }
-    }
+            //This resource gets invoked when an error occurs
+            // in the connection.
+            remote function onError(websocket:Caller caller, error err) {
+                websocket:AsyncClient clientEp =
+                         <websocket:AsyncClient>self.targetEp;
+                var e = clientEp->close(statusCode = 1011,
+                                reason = "Unexpected condition");
+                if (e is websocket:Error) {
+                    log:printError(
+                        "Error occurred when closing the connection",
+                        err = e);
+                }
+                _ = caller.removeAttribute(ASSOCIATED_CONNECTION);
+                log:printError(
+                    "Unexpected error hence closing the connection",
+                    err = err);
+            }
 
-    //This resource gets invoked upon receiving a new binary frame from a client.
-    resource function onBinary(http:WebSocketCaller caller, byte[] data,
-                                boolean finalFrame) {
-
-        http:WebSocketClient clientEp =
-                        getAssociatedClientEndpoint(caller);
-        var err = clientEp->pushBinary(data, finalFrame);
-        if (err is http:WebSocketError) {
-            log:printError("Error occurred when sending binary message", err);
-        }
-    }
-
-    //This resource gets invoked when an error occurs in the connection.
-    resource function onError(http:WebSocketCaller caller, error err) {
-
-        http:WebSocketClient clientEp =
-                        getAssociatedClientEndpoint(caller);
-        var e = clientEp->close(statusCode = 1011,
-                        reason = "Unexpected condition");
-        if (e is http:WebSocketError) {
-            log:printError("Error occurred when closing the connection", e);
-        }
-        _ = caller.removeAttribute(ASSOCIATED_CONNECTION);
-        log:printError("Unexpected error hence closing the connection", err);
-    }
-
-    //This resource gets invoked when a client connection is closed from the client side.
-    resource function onClose(http:WebSocketCaller caller, int statusCode,
-                                string reason) {
-
-        http:WebSocketClient clientEp =
-                        getAssociatedClientEndpoint(caller);
-        var err = clientEp->close(statusCode = statusCode, reason = reason);
-        if (err is http:WebSocketError) {
-            log:printError("Error occurred when closing the connection", err);
-        }
-        _ = caller.removeAttribute(ASSOCIATED_CONNECTION);
+            //This resource gets invoked when a client connection is closed
+            // from the client side.
+            remote function onClose(websocket:Caller caller, int statusCode,
+                                        string reason) {
+                websocket:AsyncClient clientEp =
+                         <websocket:AsyncClient>self.targetEp;
+                var err = clientEp->close(statusCode = statusCode,
+                           reason = reason);
+                if (err is websocket:Error) {
+                    log:printError(
+                        "Error occurred when closing the connection",
+                        err = err);
+                }
+                _ = caller.removeAttribute(ASSOCIATED_CONNECTION);
+            }
+        };
     }
 }
 
 //Client service to receive frames from the remote server.
-service ClientService = @http:WebSocketServiceConfig {} service {
+service class ClientService {
+    *websocket:Service;
+    //This resource gets invoked upon receiving a new text frame from
+    // the remote backend.
+    remote function onString(websocket:Caller caller, string text) {
 
-    //This resource gets invoked upon receiving a new text frame from the remote backend.
-    resource function onText(http:WebSocketClient caller, string text,
-                                boolean finalFrame) {
-
-        http:WebSocketCaller serverEp =
+        websocket:Caller serverEp =
                         getAssociatedServerEndpoint(caller);
-        var err = serverEp->pushText(text, finalFrame);
-        if (err is http:WebSocketError) {
-            log:printError("Error occurred when sending text message", err);
+        var err = serverEp->writeString(text);
+        if (err is websocket:Error) {
+            log:printError("Error occurred when sending text message",
+                err = err);
         }
     }
 
-    //This resource gets invoked upon receiving a new binary frame from the remote backend.
-    resource function onBinary(http:WebSocketClient caller, byte[] data,
-                                boolean finalFrame) {
+    //This resource gets invoked upon receiving a new binary frame from
+    // the remote backend.
+    remote function onBytes(websocket:Caller caller, byte[] data) {
 
-        http:WebSocketCaller serverEp =
+        websocket:Caller serverEp =
                         getAssociatedServerEndpoint(caller);
-        var err = serverEp->pushBinary(data, finalFrame);
-        if (err is http:WebSocketError) {
-            log:printError("Error occurred when sending binary message", err);
+        var err = serverEp->writeBytes(data);
+        if (err is websocket:Error) {
+            log:printError("Error occurred when sending binary message",
+                err = err);
         }
     }
 
     //This resource gets invoked when an error occurs in the connection.
-    resource function onError(http:WebSocketClient caller, error err) {
+    remote function onError(websocket:Caller caller, error err) {
 
-        http:WebSocketCaller serverEp =
+        websocket:Caller serverEp =
                         getAssociatedServerEndpoint(caller);
         var e = serverEp->close(statusCode = 1011,
                         reason = "Unexpected condition");
-        if (e is http:WebSocketError) {
+        if (e is websocket:Error) {
             log:printError("Error occurred when closing the connection",
                             err = e);
         }
         _ = caller.removeAttribute(ASSOCIATED_CONNECTION);
-        log:printError("Unexpected error hense closing the connection", err);
+        log:printError("Unexpected error hense closing the connection",
+            err = err);
     }
 
-    //This resource gets invoked when a client connection is closed by the remote backend.
-    resource function onClose(http:WebSocketClient caller, int statusCode,
+    //This resource gets invoked when a client connection is closed by
+    // the remote backend.
+    remote function onClose(websocket:Caller caller, int statusCode,
                                 string reason) {
 
-        http:WebSocketCaller serverEp =
+        websocket:Caller serverEp =
                         getAssociatedServerEndpoint(caller);
         var err = serverEp->close(statusCode = statusCode, reason = reason);
-        if (err is http:WebSocketError) {
-            log:printError("Error occurred when closing the connection", err);
+        if (err is websocket:Error) {
+            log:printError("Error occurred when closing the connection",
+                err = err);
         }
         _ = caller.removeAttribute(ASSOCIATED_CONNECTION);
     }
-};
-
-// Function to retrieve associated client for a particular caller.
-function getAssociatedClientEndpoint(http:WebSocketCaller ep)
-                                        returns (http:WebSocketClient) {
-    http:WebSocketClient wsClient =
-            <http:WebSocketClient>ep.getAttribute(ASSOCIATED_CONNECTION);
-    return wsClient;
 }
 
 // Function to retrieve the associated caller for a client.
-function getAssociatedServerEndpoint(http:WebSocketClient ep)
-                                        returns (http:WebSocketCaller) {
-    http:WebSocketCaller wsEndpoint =
-            <http:WebSocketCaller>ep.getAttribute(ASSOCIATED_CONNECTION);
+function getAssociatedServerEndpoint(websocket:Caller ep)
+                                        returns (websocket:Caller) {
+    websocket:Caller wsEndpoint =
+            <websocket:Caller>ep.getAttribute(ASSOCIATED_CONNECTION);
     return wsEndpoint;
 }
