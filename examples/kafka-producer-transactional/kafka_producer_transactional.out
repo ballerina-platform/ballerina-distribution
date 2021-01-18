@@ -4,4 +4,5 @@ ballerina run --experimental kafka_message_producer_transactional.bal
 
 # If the producer successfully sent the message, the following will be printed
 # in the Console.
+[ballerina/http] started HTTP/WS listener 192.168.1.2:57457
 Transaction successful
