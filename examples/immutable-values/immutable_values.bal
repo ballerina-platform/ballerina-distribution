@@ -61,7 +61,7 @@ public function main() {
     if (updateResult is error) {
         // An error should occur since `m2` is immutable.
         io:println("Error occurred on update: ",
-                   <string>updateResult.detail()["message"]);
+                   updateResult.detail()["message"].toString());
     }
 
     // Now call `.cloneReadOnly()` on the immutable value `m2`.
