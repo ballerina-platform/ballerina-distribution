@@ -43,7 +43,7 @@ public function main() {
                                                          return ["B", value.toString()];
                                                      }
                                                  });
-    io:println("Array sorted in descending order using a key : ", sortedArray);
+    io:println("Array sorted in descending order using a key: ", sortedArray);
 
     // Unless the length is explicitly specified or is expected to be inferred, arrays are unbounded in length.
     // They can grow up to any length based on the given index.
