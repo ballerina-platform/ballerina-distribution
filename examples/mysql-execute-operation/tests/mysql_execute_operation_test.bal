@@ -23,6 +23,8 @@ int counter = 0;
     moduleName: "ballerina/io",
     functionName: "println"
 }
+test:MockFunction mock_printLn = new();
+
 public function mockPrint(any|error... s) {
     match counter {
         0|1|6 => {
@@ -39,6 +41,8 @@ public function mockPrint(any|error... s) {
     enable:false
 }
 function testFunc() {
+    test:when(mock_printLn).call("mockPrint");
+
     main();
     test:assertEquals(outputs[2], "Rows affected: 1");
     test:assertEquals(outputs[3], "Generated Customer ID: 1");

@@ -8,6 +8,8 @@ int counter = 0;
     moduleName: "ballerina/io",
     functionName: "println"
 }
+test:MockFunction mock_printLn = new();
+
 public function mockPrint(any|error... s) {
     if (s[0] is ()) {
         // Cannot convert () to string.
@@ -20,6 +22,7 @@ public function mockPrint(any|error... s) {
 
 @test:Config{}
 function testFunc() {
+    test:when(mock_printLn).call("mockPrint");
     // Invoking the main function
     main();
     string op0 = "<ns0:book xmlns:ns0=\"http://ballerina.com/aa\" ns0:status=\"available\" count=\"5\"/>";

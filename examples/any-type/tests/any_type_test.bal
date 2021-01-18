@@ -3,11 +3,12 @@ import ballerina/time;
 
 string[] outputs = [];
 
-// This is the mock function which will replace the real function
 @test:Mock {
-    moduleName: "ballerina/io",
-    functionName: "println"
+    moduleName : "ballerina/io",
+    functionName : "println"
 }
+test:MockFunction mock_printLn = new();
+
 public function mockPrint(any|error... val) {
     outputs.push(val.reduce(function (any|error a, any|error b) returns string => a.toString() + b.toString(), "").toString());
 }
@@ -16,12 +17,17 @@ public function mockPrint(any|error... val) {
     moduleName: "ballerina/time",
     functionName: "currentTime"
 }
+test:MockFunction mock_currentTime = new();
+
 public function mockCurrentTime() returns time:Time {
     return checkpanic time:createTime(2020, 1, 1, 0, 0, 0, 0, "America/Panama");
 }
 
 @test:Config {}
 function testFunc() {
+    test:when(mock_printLn).call("mockPrint");
+    test:when(mock_currentTime).call("mockCurrentTime");
+
     // Calling the main fuction with empty args array
     main();
     test:assertEquals(outputs[0], "Full name: John Doe");

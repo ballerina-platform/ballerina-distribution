@@ -23,6 +23,8 @@ int counter = 0;
     moduleName: "ballerina/io",
     functionName: "println"
 }
+test:MockFunction mock_printLn = new();
+
 public function mockPrint(any|error... s) {
     outputs[counter] = s[0].toString();
     counter += 1;
@@ -30,6 +32,8 @@ public function mockPrint(any|error... s) {
 
 @test:Config {}
 function testFunc() {
+    test:when(mock_printLn).call("mockPrint");
+
     main();
     test:assertEquals(outputs[0], "------ Query Binary Type -------");
     test:assertEquals(outputs[1], "Result 1:");

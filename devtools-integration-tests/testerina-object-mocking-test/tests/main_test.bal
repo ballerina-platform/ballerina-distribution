@@ -105,7 +105,7 @@ json postResponse1 = {
 };
 
 
-@test:Config { dependsOn : ["test_findOrder"]}
+@test:Config { dependsOn : [test_findOrder]}
 function test_addOrder() {
     http:Response mockPostResponse = new;
     mockPostResponse.setJsonPayload(<@untainted> postResponse1);

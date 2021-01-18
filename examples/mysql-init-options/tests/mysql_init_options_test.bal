@@ -23,6 +23,8 @@ int counter = 0;
     moduleName: "ballerina/io",
     functionName: "println"
 }
+test:MockFunction mock_printLn = new();
+
 public function mockPrint(any|error... s) {
     match counter {
         0 => {
@@ -39,6 +41,8 @@ public function mockPrint(any|error... s) {
     enable: false
 }
 function testFunc() {
+    test:when(mock_printLn).call("mockPrint");
+
     main();
     test:assertEquals(outputs[0], "Error when initializing the MySQL client without any params. Error in SQL connector configuration: Failed to initialize pool: Access denied for user ''@'localhost' (using password: NO) Caused by :Access denied for user ''@'localhost' (using password: NO)");
     test:assertEquals(outputs[1], "MySQL client with user and password created.");

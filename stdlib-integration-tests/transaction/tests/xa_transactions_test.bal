@@ -20,7 +20,7 @@ import ballerina/test;
 string xaDatasourceName = "org.h2.jdbcx.JdbcDataSource";
 
 @test:Config {
-    before: "addConfigs"
+    before: addConfigs
 }
 function testXATransactions() returns error? {
     string str = "";
