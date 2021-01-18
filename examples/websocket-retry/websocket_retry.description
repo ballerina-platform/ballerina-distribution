@@ -2,4 +2,4 @@
 // Ballerina automatically reconnects to the same backend until the connection becomes successful or until 
 // the maximum reconnect attempts count is reached.<br/><br/>
 // For more information on the underlying module, 
-// see the [HTTP module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/).
+// see the [HTTP module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/).

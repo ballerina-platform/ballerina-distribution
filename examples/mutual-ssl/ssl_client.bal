@@ -5,7 +5,7 @@ import ballerina/log;
 // Create a client configuration to be passed to the client endpoint.
 // Configure the `keyStore` file `path` and `password`, `truststore`
 // file `path` and `password`, which are required to enable mutual SSL.
-// [secureSocket](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/ClientSecureSocket) record provides the SSL related configurations.
+// [secureSocket](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/ClientSecureSocket) record provides the SSL related configurations.
 http:ClientConfiguration clientEPConfig = {
     secureSocket: {
         keyStore: {

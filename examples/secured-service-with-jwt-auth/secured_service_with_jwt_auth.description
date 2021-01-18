@@ -10,4 +10,4 @@
 // In the authorization phase, the scopes of the resource are compared against
 // the scopes mapped to the user for at least one match between the two sets.<br/><br/>
 // For more information on the underlying module, 
-// see the [JWT module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/jwt/).
+// see the [JWT module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/jwt/latest/jwt/).

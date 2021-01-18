@@ -3,4 +3,4 @@
 // sending and receiving emails with default configurations over SSL using
 // default ports.<br/><br/>
 // For more information on the underlying module, 
-// see the [Email module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/email/).
+// see the [Email module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/email/latest/email/).

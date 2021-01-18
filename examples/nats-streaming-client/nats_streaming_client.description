@@ -3,4 +3,4 @@
 // In order to run this sample, a NATS Streaming server should be
 // running on the corresponding port used in the sample.<br/><br/>
 // For more information on the underlying module, 
-// see the [NATS module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/nats/).
+// see the [NATS module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/nats/latest/nats/).

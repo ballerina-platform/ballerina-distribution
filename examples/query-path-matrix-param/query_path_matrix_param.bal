@@ -7,11 +7,11 @@ service /sample on new http:Listener(9090) {
     // Path param is defined as a part of the resource path along with the type.
     resource function get path/[string foo](http:Caller caller,
                                             http:Request req) {
-        // Get the [QueryParam](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request#getQueryParamValue)
+        // Get the [QueryParam](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#getQueryParamValue)
         // value for a given parameter key.
         var bar = req.getQueryParamValue("bar");
 
-        // Get the [MatrixParams](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request#getMatrixParams).
+        // Get the [MatrixParams](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#getMatrixParams).
         map<any> pathMParams = req.getMatrixParams("/sample/path");
         var a = <string>pathMParams["a"];
         var b = <string>pathMParams["b"];

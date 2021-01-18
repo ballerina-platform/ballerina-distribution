@@ -2,4 +2,4 @@
 // The TCP Client is used to connect to a remote TCP server.
 // This sample demonstrates how the TCP socket listener service interacts with the TCP client.<br/><br/>
 // For more information on the underlying module, 
-// see the [TCP module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/tcp/).
+// see the [TCP module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/tcp/latest/tcp/).

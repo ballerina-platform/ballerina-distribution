@@ -3,4 +3,4 @@
 // configured LDAP server. The result returned from the LDAP
 // server is used for authentication and authorization.
 // For more information on the underlying module,
-// see the [LDAP module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ldap/).
+// see the [LDAP module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/ldap/latest/ldap/).

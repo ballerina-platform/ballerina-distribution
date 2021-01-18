@@ -3,4 +3,4 @@
 // system in a consistent state. This sample uses an H2 database, which is 
 // created when running the sample. <br/><br/>
 // For more information on the underlying module, 
-// see the [Transactions module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/lang.transaction/).
+// see the [Transactions module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/lang.transaction/latest/lang.transaction/).

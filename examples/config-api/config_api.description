@@ -18,4 +18,4 @@
 // optional configurations are the default values of the return types of
 // the functions. <br/><br/>
 // For more information on the underlying module, 
-// see the [Config module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/config/).
+// see the [Config module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/config/latest/config/).

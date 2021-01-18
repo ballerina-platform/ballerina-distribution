@@ -67,7 +67,7 @@ service class WsService {
     }
 
     // This `remote function` is triggered when a ping message is received from the client. If this remote function is not implemented,
-    // a pong message is automatically sent to the connected [http:WebSocketCaller](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/WebSocketCaller) when a ping is received.
+    // a pong message is automatically sent to the connected [http:WebSocketCaller](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/WebSocketCaller) when a ping is received.
     remote function onPing(websocket:Caller caller, byte[] data) {
         var err = caller->pong(data);
         if (err is websocket:Error) {
@@ -82,7 +82,7 @@ service class WsService {
     }
 
     // This remote function is triggered when a particular client reaches the idle timeout that is defined in the
-    // [http:WebSocketServiceConfig](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/annotations#WebSocketServiceConfig) annotation.
+    // [http:WebSocketServiceConfig](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/annotations#WebSocketServiceConfig) annotation.
     remote function onIdleTimeout(websocket:Caller caller) {
         io:println("\nReached idle timeout");
         io:println("Closing connection " + caller.getConnectionId());

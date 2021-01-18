@@ -7,4 +7,4 @@
 // the introspection response and the scopes of the resource are compared
 // against those for at least one match between the two sets.<br/><br/>
 // For more information on the underlying module, 
-// see the [OAuth2 module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/oauth2/).
+// see the [OAuth2 module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/oauth2/latest/oauth2/).

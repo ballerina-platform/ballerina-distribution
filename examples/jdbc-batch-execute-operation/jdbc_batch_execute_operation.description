@@ -5,4 +5,4 @@
 // default into the Ballerina distribution. Therefore, it is not required to
 // copy the driver JAR for H2 databases.<br><br>
 // For more information on the underlying module,
-// see the [JDBC module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/jdbc/).
+// see the [JDBC module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/jdbc/latest/jdbc/).

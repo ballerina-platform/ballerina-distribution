@@ -9,7 +9,7 @@ service /http11Service on new http:Listener(9090) {
 
     resource function 'default .(http:Caller caller,
                                      http:Request clientRequest) {
-        // Forward the [clientRequest](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request) to the `http2` service.
+        // Forward the [clientRequest](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request) to the `http2` service.
         var clientResponse = http2serviceClientEP->forward("/http2service",
                                                         clientRequest);
 
@@ -18,7 +18,7 @@ service /http11Service on new http:Listener(9090) {
             response = clientResponse;
         } else {
             // Handle the errors that are returned when invoking the
-            // [forward](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/HttpClient#forward) function.
+            // [forward](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/HttpClient#forward) function.
             response.statusCode = 500;
             response.setPayload(<@untainted>(<error>clientResponse).message());
         }

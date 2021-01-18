@@ -3,4 +3,4 @@
 // values and `int` keys. For this example to work properly, an active Kafka
 // broker should be present.<br/><br/>
 // For more information on the underlying module, 
-// see the [Kafka module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/kafka/).
+// see the [Kafka module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/kafka/latest/kafka/).

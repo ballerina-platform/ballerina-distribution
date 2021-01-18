@@ -1,7 +1,7 @@
 import ballerina/io;
 import ballerina/task;
 
-// The [`task:TimerConfiguration`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/task/records/TimerConfiguration) record to configure the task listener.
+// The [`task:TimerConfiguration`](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/task/latest/task/records/TimerConfiguration) record to configure the task listener.
 task:TimerConfiguration timerConfiguration = {
     intervalInMillis: 1000,
     initialDelayInMillis: 3000,

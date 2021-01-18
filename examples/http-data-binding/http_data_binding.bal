@@ -9,7 +9,7 @@ type Student record {
 
 service /hello on new http:Listener(9090) {
 
-    // The `orderDetails` parameter in [Payload annotation](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/Payload)
+    // The `orderDetails` parameter in [Payload annotation](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/Payload)
     // represents the entity body of the inbound request.
     resource function post bindJson(http:Caller caller, http:Request req,
                                @http:Payload {} json orderDetails) {

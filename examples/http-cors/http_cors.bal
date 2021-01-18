@@ -1,7 +1,7 @@
 import ballerina/http;
 import ballerina/log;
 
-// Service-level [CORS config](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/CorsConfig) applies
+// Service-level [CORS config](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/CorsConfig) applies
 // globally to each `resource`.
 @http:ServiceConfig {
     cors: {
@@ -14,7 +14,7 @@ import ballerina/log;
 }
 service /crossOriginService on new http:Listener(9092) {
 
-    // Resource-level [CORS config](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/CorsConfig)
+    // Resource-level [CORS config](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/CorsConfig)
     // overrides the service-level CORS headers.
     @http:ResourceConfig {
         cors: {
