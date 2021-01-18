@@ -50,7 +50,8 @@ function getAccountBalance(int accountID) returns int|AccountError {
                                       accountID = accountID);
     } else if (accountID > 100) {
         // Return an `AccountNotFoundError` if the `accountID` is greater than hundred.
-        return error AccountNotFoundError("Account not found", accountID = accountID);
+        return error AccountNotFoundError("Account not found",
+                                        accountID = accountID);
     }
     // Return a value if the `accountID` is in between zero and hundred inclusive.
     return 600;
