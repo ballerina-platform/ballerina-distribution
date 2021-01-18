@@ -18,6 +18,6 @@ public function mockPrint(any|error... s) {
 function testFunc() returns error? {
     // Invoke the main function.
     check main();
-    runtime:sleep(6000);
+    runtime:sleep(6);
     test:assertEquals(outputs[5].toString(), "End.");
 }
