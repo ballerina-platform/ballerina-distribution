@@ -5,7 +5,7 @@ import ballerina/log;
 // This is a client endpoint configured to connect to the HTTPS service.
 // As this is a 1-way SSL connection, the client needs to provide
 // `trustStore` file `path` and its `password`.
-// [secureSocket](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/ClientSecureSocket) record provides the SSL related configurations.
+// [secureSocket](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/ClientSecureSocket) record provides the SSL related configurations.
 http:ClientConfiguration clientEPConfig = {
     secureSocket: {
         trustStore: {

@@ -98,7 +98,7 @@ service /proxy/ws on new websocket:Listener(9090) {
                 self.targetEp = wsClientEp;
                 wsClientEp.setAttribute(ASSOCIATED_CONNECTION, caller);
 
-                // Once the client is ready to receive frames, the remote function [ready](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/websocket/clients/WebSocketClient#ready)
+                // Once the client is ready to receive frames, the remote function [ready](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/WebSocketClient#ready)
                 // of the client need to be called separately.
                 var err = wsClientEp->ready();
                 if (err is websocket:Error) {
