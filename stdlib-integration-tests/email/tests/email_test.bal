@@ -2,8 +2,8 @@ import ballerina/email;
 import ballerina/test;
 
 @test:Config {}
-function testEmail() {
-    email:SmtpClient smtpClient = new ("smtp.email.com", "sender@email.com"
+function testEmail() returns @tainted error?{
+    email:SmtpClient smtpClient = check new ("smtp.email.com", "sender@email.com"
         , "pass123");
     email:Message email = {
         to: ["receiver1@email.com", "receiver2@email.com"],

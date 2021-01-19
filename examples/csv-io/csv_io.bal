@@ -26,7 +26,7 @@ function process(io:ReadableCSVChannel csvChannel)
 //Specifies the location of the `.CSV` file.
 public function main() returns error? {
     string srcFileName = "./files/sample.csv";
-    // Opens a [CSV channel in the `write` mode](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/io/classes/WritableCSVChannel)
+    // Opens a [CSV channel in the `write` mode](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/io/latest/io/classes/WritableCSVChannel)
     // and writes some data to the `./files/sample.csv` file for later use.
     // The record separator of the `.CSV` file is a
     // new line and the field separator is a comma (,).
@@ -37,7 +37,7 @@ public function main() returns error? {
     ["5", "Oliver", "1100000"]];
     writeDataToCSVChannel(wCsvChannel, ...data);
     closeWritableCSVChannel(wCsvChannel);
-    // Opens a [CSV channel in the `read` mode](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/io/classes/ReadableCSVChannel),
+    // Opens a [CSV channel in the `read` mode](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/io/latest/io/classes/ReadableCSVChannel),
     // which is the default mode.
     io:ReadableCSVChannel rCsvChannel =
                         check io:openReadableCsvFile(srcFileName);
@@ -53,7 +53,7 @@ public function main() returns error? {
     // Opens a CSV channel in the `read` mode, which is the default mode.
     io:ReadableCSVChannel rCsvChannel2 =
                             check io:openReadableCsvFile(srcFileName);
-    // Reads the `.CSV` file as a `table` using [getTable](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/io/classes/ReadableCSVChannel#getTable) function.
+    // Reads the `.CSV` file as a `table` using [getTable](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/io/latest/io/classes/ReadableCSVChannel#getTable) function.
     io:println("Reading  " + srcFileName + " as a table");
     var tblResult = rCsvChannel2.getTable(Employee);
     if (tblResult is table<record {}>) {

@@ -16,7 +16,7 @@ service /cbr on new http:Listener(9090) {
             http:Response|http:PayloadType|error response;
             if (nameString is json) {
                 if (nameString.toString() == "sanFrancisco") {
-                    // Here, [post](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Client#post) remote function represents the POST operation of
+                    // Here, [post](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function represents the POST operation of
                     // the HTTP client.
                     // This routes the payload to the relevant service when the server
                     // accepts the enclosed entity.
@@ -28,7 +28,7 @@ service /cbr on new http:Listener(9090) {
                            locationEP->post("/v2/594e026c1100004011d6d39c", ());
                 }
 
-                // Use the remote function [respond](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Caller#respond) to send the client response
+                // Use the remote function [respond](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Caller#respond) to send the client response
                 // back to the caller.
                 if (response is http:Response) {
                     var result = outboundEP->respond(<@untainted>response);
