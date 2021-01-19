@@ -271,10 +271,10 @@ task combineDocs(type: Exec) {
     workingDir "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs"
     if (Os.isFamily(Os.FAMILY_WINDOWS)) {
         commandLine 'cmd', '/c', "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/" +
-                "jballerina-tools-${ballerinaVersion}/bin/ballerina.bat", "doc", "--combine"
+                "jballerina-tools-${ballerinaVersion}/bin/bal.bat", "doc", "--combine"
     } else {
         commandLine "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/" +
-                "jballerina-tools-${ballerinaVersion}/bin/ballerina", "doc", "--combine"
+                "jballerina-tools-${ballerinaVersion}/bin/bal", "doc", "--combine"
     }
 }
 
@@ -363,12 +363,12 @@ task packageDistZip(type: Zip) {
         filter(ReplaceTokens, tokens: [version: shortVersion])
     }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/ballerina"
+        from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/bal"
         fileMode = 0775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/ballerina.bat"
+        from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/bal.bat"
         fileMode = 0775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
@@ -414,7 +414,7 @@ task packageDistLinux(type: Zip) {
     into("${parentDir}/distributions/ballerina-${shortVersion}") {
         from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
         exclude "distributions/ballerina-version"
-        exclude "/bin/ballerina.bat"
+        exclude "/bin/bal.bat"
         exclude "/bin/version.txt"
     }
     into("${parentDir}") {
@@ -435,7 +435,7 @@ task packageDistLinux(type: Zip) {
         filter(ReplaceTokens, tokens: [version: shortVersion])
     }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/ballerina"
+        from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/bal"
         fileMode = 775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
@@ -482,7 +482,7 @@ task packageDistMac(type: Zip) {
     into("${parentDir}/distributions/ballerina-${shortVersion}") {
         from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
         exclude "distributions/ballerina-version"
-        exclude "/bin/ballerina.bat"
+        exclude "/bin/bal.bat"
         exclude "/bin/version.txt"
     }
 
@@ -498,7 +498,7 @@ task packageDistMac(type: Zip) {
         filter(ReplaceTokens, tokens: [version: shortVersion])
     }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/ballerina"
+        from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/bal"
         fileMode = 775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
@@ -545,7 +545,7 @@ task packageDistWindows(type: Zip) {
     into("${parentDir}/distributions/ballerina-${shortVersion}") {
         from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
         exclude "distributions/ballerina-version"
-        exclude "/bin/ballerina"
+        exclude "/bin/bal"
         exclude "/bin/version.txt"
     }
 
@@ -561,7 +561,7 @@ task packageDistWindows(type: Zip) {
         filter(ReplaceTokens, tokens: [version: shortVersion])
     }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/ballerina.bat"
+        from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/bal.bat"
         fileMode = 775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
@@ -797,13 +797,13 @@ task testExamples() {
             //TODO: Need to verify with windows
             exec {
                 workingDir "${baseBuildPath}/${bbe}"
-                commandLine 'cmd', '/c', "${distPath}/bin/ballerina/ballerina.bat init test"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat init test"
             }
 
         } else {
             exec {
                 workingDir "${baseBuildPath}/${bbe}"
-                commandLine 'sh', '-c', "${distPath}/bin/ballerina init test"
+                commandLine 'sh', '-c', "${distPath}/bin/bal init test"
             }
         }
 
@@ -826,13 +826,13 @@ task testExamples() {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${baseBuildPath}/${bbe}"
-                commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'build', '--experimental', " --b7a.home=${distPath} ${additionalBuildParams}"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'build', '--experimental', " --b7a.home=${distPath} ${additionalBuildParams}"
             }
         } else {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${baseBuildPath}/${bbe}"
-                commandLine 'sh', '-c', "${distPath}/bin/ballerina build --experimental --b7a.home=${distPath} ${additionalBuildParams}"
+                commandLine 'sh', '-c', "${distPath}/bin/bal build --experimental --b7a.home=${distPath} ${additionalBuildParams}"
             }
         }
         if (exitVal.getExitValue() == 1) {
@@ -899,13 +899,13 @@ task testExamples() {
                 exitVal = exec {
                     def windowsPath = scriptPath.replace('/', '\\')
                     workingDir "$windowsPath"
-                    commandLine "$windowsPath\\run.bat", "${directoryPath}", "${distPath}/bin/ballerina.bat", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath} ${additionalBuildParams}"
+                    commandLine "$windowsPath\\run.bat", "${directoryPath}", "${distPath}/bin/bal.bat", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath} ${additionalBuildParams}"
                     ignoreExitValue true
                 }
             } else {
                 exitVal = exec {
                     workingDir "$scriptPath"
-                    commandLine "bash", "run.sh", "${directoryPath}", "${distPath}/bin/./ballerina", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath} ${additionalBuildParams}"
+                    commandLine "bash", "run.sh", "${directoryPath}", "${distPath}/bin/./bal", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath} ${additionalBuildParams}"
                     ignoreExitValue true
                 }
             }
@@ -938,7 +938,7 @@ task testExamples() {
                 if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                     exec {
                         workingDir "${directoryPath}"
-                        commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'run', '--experimental', "${balName}.bal", "--b7a.home=${distPath} ${additionalBuildParams}"
+                        commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'run', '--experimental', "${balName}.bal", "--b7a.home=${distPath} ${additionalBuildParams}"
                         ignoreExitValue true
                         standardOutput = os
                         errorOutput = errOut
@@ -946,7 +946,7 @@ task testExamples() {
                 } else {
                     exec {
                         workingDir "${directoryPath}"
-                        commandLine 'sh', '-c', "${distPath}/bin/ballerina run --experimental ${balName}.bal --b7a.home=${distPath} ${additionalBuildParams}"
+                        commandLine 'sh', '-c', "${distPath}/bin/bal run --experimental ${balName}.bal --b7a.home=${distPath} ${additionalBuildParams}"
                         ignoreExitValue true
                         standardOutput = os
                         errorOutput = errOut
@@ -1085,22 +1085,22 @@ task testStdlibs() {
             //TODO: Need to verify with windows
             exec {
                 workingDir "${baseBuildPath}/${stdlibTest}"
-                commandLine 'cmd', '/c', "${distPath}/bin/ballerina/ballerina.bat init test"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal/ballerina.bat init test"
             }
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${buildDir}/${stdlibTest}"
-                commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat build -c --experimental --b7a.home=${distPath} ${additionalBuildParams}"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat build -c --experimental --b7a.home=${distPath} ${additionalBuildParams}"
             }
         } else {
             exec {
                 workingDir "${baseBuildPath}/${stdlibTest}"
-                commandLine 'sh', '-c', "${distPath}/bin/ballerina init test"
+                commandLine 'sh', '-c', "${distPath}/bin/bal init test"
             }
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${baseBuildPath}/${stdlibTest}"
-                commandLine 'sh', '-c', "${distPath}/bin/ballerina build -c --experimental --b7a.home=${distPath} ${additionalBuildParams}"
+                commandLine 'sh', '-c', "${distPath}/bin/bal build -c --experimental --b7a.home=${distPath} ${additionalBuildParams}"
             }
         }
         if (exitVal.getExitValue() == 1) {
@@ -1190,23 +1190,23 @@ task testDevToolsIntegration() {
                 if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                     exec {
                         workingDir "${buildDir}/${devtoolsProject}"
-                        commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat init test"
+                        commandLine 'cmd', '/c', "${distPath}/bin/bal.bat init test"
                     }
                     exec {
                         workingDir "${buildDir}/${devtoolsProject}"
                         commandLine 'cmd', '/c',
-                                "${distPath}/bin/ballerina.bat test --b7a.home=${distPath} ${additionalBuildParams}"
+                                "${distPath}/bin/bal.bat test --b7a.home=${distPath} ${additionalBuildParams}"
                     }
                 } else {
                     exec {
                         workingDir "${baseBuildPath}/${devtoolsProject}"
                         commandLine 'sh', '-c',
-                                "${distPath}/bin/ballerina init test"
+                                "${distPath}/bin/bal init test"
                     }
                     exec {
                         workingDir "${baseBuildPath}/${devtoolsProject}"
                         commandLine 'sh', '-c',
-                                "${distPath}/bin/ballerina test --b7a.home=${distPath} ${additionalBuildParams}"
+                                "${distPath}/bin/bal test --b7a.home=${distPath} ${additionalBuildParams}"
                     }
                 }
             }

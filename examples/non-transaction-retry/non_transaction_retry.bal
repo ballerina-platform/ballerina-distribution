@@ -36,7 +36,7 @@ function doWork() returns error? {
         count += 1;
         // Return a retriable error so that
         // the default retry manager retries.
-        return errors:Retriable("Execution Error");
+        return error errors:Retriable("Execution Error");
     } else {
         io:println("Work completed.");
     }

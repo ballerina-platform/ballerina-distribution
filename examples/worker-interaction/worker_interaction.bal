@@ -42,7 +42,7 @@ public function main() {
 }
 
 function calculate(string expr) returns @tainted int|error {
-    http:Client httpClient = new ("https://api.mathjs.org");
+    http:Client httpClient = checkpanic new ("https://api.mathjs.org");
     string response = <string> check
         httpClient->get(string `/v4/?expr=${expr}`, targetType = string);
     return check 'int:fromString(response);

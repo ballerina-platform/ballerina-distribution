@@ -35,13 +35,13 @@ function getAccountBalance(int accountID) returns int {
              // Throw an error with the `InvalidAccountID` as the reason if
              //the `accountID` is less than zero.
              InvalidAccountIDError invalidAccoundIdError
-             = InvalidAccountIDError(INVALID_ACCOUNT_ID, accountID = accountID);
+             = error InvalidAccountIDError(INVALID_ACCOUNT_ID, accountID = accountID);
              fail invalidAccoundIdError;
          } else if (accountID > 100) {
              // Throw an error with the `AccountNotFound` as the reason if
              //the `accountID` is greater than hundred.
              AccountNotFoundError accountNotFoundError
-             = AccountNotFoundError(ACCOUNT_NOT_FOUND, accountID = accountID);
+             = error AccountNotFoundError(ACCOUNT_NOT_FOUND, accountID = accountID);
              fail accountNotFoundError;
          }
        //The type of `e` should be the union of the error types that are
