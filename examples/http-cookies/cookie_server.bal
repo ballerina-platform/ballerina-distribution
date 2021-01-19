@@ -19,7 +19,7 @@ service /cookieDemo on serverEP {
                 // Check the password value.
                 if (password == "p@ssw0rd") {
 
-                    // [Create a new cookie](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Cookie) by setting `name` as the `username`
+                    // [Create a new cookie](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Cookie) by setting `name` as the `username`
                     // and `value` as the logged-in user's name.
                     http:Cookie cookie = new("username", name.toString());
 
@@ -29,7 +29,7 @@ service /cookieDemo on serverEP {
 
                     http:Response response = new;
 
-                    // [Add the created cookie to the response](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Response#addCookie).
+                    // [Add the created cookie to the response](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Response#addCookie).
                     response.addCookie(cookie);
 
                     // Set a message payload to inform that the login has
@@ -45,7 +45,7 @@ service /cookieDemo on serverEP {
     }
 
     resource function get welcome(http:Caller caller, http:Request req) {
-        // [Retrieve cookies from the request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/classes/Request#getCookies).
+        // [Retrieve cookies from the request](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#getCookies).
         http:Cookie[] cookies = req.getCookies();
 
         // Get the cookie value of the `username`.

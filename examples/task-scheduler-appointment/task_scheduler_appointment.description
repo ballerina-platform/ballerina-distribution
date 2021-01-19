@@ -7,4 +7,4 @@
 // Then, the scheduler can be started using the `start()` method. When the scheduler
 // needs to be cancelled, the `stop()` method can be called.<br/><br/>
 // For more information on the underlying module, 
-// see the [Task module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/task/).
+// see the [Task module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/task/latest/task/).

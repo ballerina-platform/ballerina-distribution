@@ -20,7 +20,7 @@ public function main() {
         return;
     }
 
-    // Registers a topic at the hub using [registerTopic](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/websub/classes/Hub#registerTopic).
+    // Registers a topic at the hub using [registerTopic](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websub/latest/websub/classes/Hub#registerTopic).
     var registrationResponse = webSubHub.registerTopic(
                                             "http://websubpubtopic.com");
     if (registrationResponse is error) {
@@ -33,7 +33,7 @@ public function main() {
     // Makes the publisher wait until the subscriber subscribes at the hub.
     runtime:sleep(5000);
 
-    // Publishes directly to the internal Ballerina hub using [publishUpdate](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/websub/classes/Hub#publishUpdate).
+    // Publishes directly to the internal Ballerina hub using [publishUpdate](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websub/latest/websub/classes/Hub#publishUpdate).
     io:println("Publishing update to internal Hub");
     var publishResponse = webSubHub.publishUpdate("http://websubpubtopic.com",
         {"action": "publish", "mode": "internal-hub"});

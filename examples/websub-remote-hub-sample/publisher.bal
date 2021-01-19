@@ -3,13 +3,13 @@ import ballerina/io;
 import ballerina/runtime;
 import ballerina/websub;
 
-// This is the remote [WebSub Hub client]((https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/websub/clients/PublisherClient) to which registration and publish requests are sent.
+// This is the remote [WebSub Hub client]((https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websub/latest/websub/clients/PublisherClient) to which registration and publish requests are sent.
 websub:PublisherClient websubHubClientEP =
                     new ("http://localhost:9191/websub/publish");
 
 public function main() {
 
-    // Registers a topic at the hub using [registerTopic](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/websub/clients/PublisherClient#registerTopic).
+    // Registers a topic at the hub using [registerTopic](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websub/latest/websub/clients/PublisherClient#registerTopic).
     var registrationResponse =
                 websubHubClientEP->registerTopic("http://websubpubtopic.com");
     if (registrationResponse is error) {
@@ -22,7 +22,7 @@ public function main() {
     // Makes the publisher wait until the subscriber subscribes at the hub.
     runtime:sleep(5000);
 
-    // Publishes updates to the remote hub using [publishUpdate](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/websub/clients/PublisherClient#publishUpdate).
+    // Publishes updates to the remote hub using [publishUpdate](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websub/latest/websub/clients/PublisherClient#publishUpdate).
     io:println("Publishing update to remote Hub");
     var publishResponse =
         websubHubClientEP->publishUpdate("http://websubpubtopic.com",
