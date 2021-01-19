@@ -52,6 +52,10 @@
                 "url": "functions-with-defaultable-parameters"
             },
             {
+                "name": "Included Record Parameters",
+                "url": "functions-with-included-record-parameters"
+            },
+            {
                 "name": "Rest Parameters",
                 "url": "functions-with-rest-parameter"
             },
