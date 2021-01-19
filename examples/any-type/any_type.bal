@@ -1,6 +1,6 @@
 import ballerina/io;
-import ballerina/time;
 import ballerina/lang.'float as float;
+import ballerina/time;
 
 class Person {
     string fname;
