@@ -9,7 +9,7 @@ public function main() {
 
     // This block belongs to the `w1` worker.
     worker w1 {
-        http:Client httpClient = new ("https://api.mathjs.org");
+        http:Client httpClient = checkpanic new ("https://api.mathjs.org");
         var response = httpClient->get("/v4/?expr=2*3");
         if response is http:Response {
             io:println("Worker 1 response: ", response.getTextPayload());
@@ -17,7 +17,7 @@ public function main() {
     }
 
     worker w2 {
-        http:Client httpClient = new ("https://api.mathjs.org");
+        http:Client httpClient = checkpanic new ("https://api.mathjs.org");
         var response = httpClient->get("/v4/?expr=5*7");
         if response is http:Response {
             io:println("Worker 2 response: ", response.getTextPayload());
