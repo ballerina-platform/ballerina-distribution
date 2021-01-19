@@ -1,5 +1,5 @@
 import ballerina/test;
-import ballerina/http;
+import ballerina/websocket;
 import ballerina/lang.runtime;
 
 string serviceReply = "";
@@ -7,14 +7,15 @@ string msg = "hey";
 
 @test:Config {}
 function testText() {
-    http:WebSocketClient wsClient = new("ws://localhost:9090/proxy/ws", {callbackService:callback});
-    checkpanic wsClient->pushText(msg);
-    runtime:sleep(4000);
+    websocket:AsyncClient wsClient = new("ws://localhost:9090/proxy/ws", new callback());
+    checkpanic wsClient->writeTextMessage(msg);
+    runtime:sleep(4);
     test:assertEquals(serviceReply, msg, "Received message should be equal to the expected message");
 }
 
-service callback = @http:WebSocketServiceConfig {} service {
-    resource function onText(http:WebSocketClient conn, string text, boolean finalFrame) {
+service class callback{
+    *websocket:Service;
+    remote function onTextMessage(websocket:Caller conn, string text) {
         serviceReply = <@untainted>text;
     }
-};
+}
