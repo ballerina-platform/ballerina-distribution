@@ -3,8 +3,8 @@
 // A `CounterContext` record is attached to the Scheduler when attaching the service.
 // It is then passed into the resource functions of the service.
 # To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run task_scheduler_timer.bal
+# `.bal` file, and execute the `bal run` command below.
+bal run task_scheduler_timer.bal
 MyCounter: 1
 MyCounter: 2
 MyCounter: 3

@@ -65,16 +65,16 @@ The below is a list of guidelines that must be followed when updating and adding
 
     ```bash
     # To run this sample, navigate to the directory that contains the
-    # `.bal` file and issue the `ballerina run` command.
-    ballerina run <sample_file_name>.bal
+    # `.bal` file and issue the `bal run` command.
+    bal run <sample_file_name>.bal
     ```
 
     For an example with a service:
 
     ```bash
     # To start the service, navigate to the directory that contains the
-    # `.bal` file and issue the `ballerina run` command.
-    ballerina run hello_world_service.bal
+    # `.bal` file and issue the `bal run` command.
+    bal run hello_world_service.bal
     ```
 
 8. Service examples demonstrating client-server scenarios have a `.bal` file only for the server and two different output files. That is, one to display the server output (`.server.out` file) and the other (`.client.out` file) to display the cURL command and the output. These two separate output files can be introduced with `.server` and `.client` suffixed to the file names. 

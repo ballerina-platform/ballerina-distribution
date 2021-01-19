@@ -1,6 +1,6 @@
 # To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run constant.bal
+# `.bal` file, and execute the `bal run` command below.
+bal run constant.bal
 PI: 3.14159
 Distance of a light year (meters): 9454240512000000
 {"user":"Ballerina","ID":"1234"}
