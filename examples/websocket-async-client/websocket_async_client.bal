@@ -7,7 +7,7 @@ public function main() returns websocket:Error? {
     websocket:AsyncClient wsClientEp = check new ("ws://echo.websocket.org",
                                           new ClientService());
     // Writes a text message to the server using [writeString](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/websocket/clients/AsyncClient#writeString).
-    var err = wsClientEp->writeString("Hello World!");
+    var err = wsClientEp->writeTextMessage("Hello World!");
     if (err is error) {
         // Prints the error.
         io:println(err);
@@ -19,7 +19,7 @@ service class ClientService {
     *websocket:Service;
     // This remote function is triggered when a new text frame is received from
     // the remote backend.
-    remote function onString(websocket:Caller conn, string text) {
+    remote function onTextMessage(websocket:Caller conn, string text) {
         io:println(text);
     }
     // This is triggered if an error occurs.
