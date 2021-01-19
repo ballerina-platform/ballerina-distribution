@@ -8,4 +8,4 @@
 ballerina build client
 
 # To run the client, execute the command below by passing the path to the Ballerina home directory using the --`b7a.home` parameter.
-bal run target/bin/client.jar --b7a.home=<ballerina_home_path>
+ballerina run target/bin/client.jar --b7a.home=<ballerina_home_path>

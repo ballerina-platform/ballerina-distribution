@@ -1,7 +1,7 @@
 # After running the sample, create a new file called `test1.txt` in the directory called `observed-dir`, modify it, and delete it.
 # To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-bal run directory_listener.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run directory_listener.bal
 time = 2020-12-12 13:49:08,497 level = INFO  module = "" message = "Create: /home/ballerina/fs-server-connector/observed-dir/test1.txt"
 time = 2020-12-12 13:49:41,709 level = INFO  module = "" message = "Modify: /home/ballerina/fs-server-connector/observed-dir/test1.txt"
 time = 2020-12-12 13:50:04,997 level = INFO  module = "" message = "Delete: /home/ballerina/fs-server-connector/observed-dir/test1.txt"
