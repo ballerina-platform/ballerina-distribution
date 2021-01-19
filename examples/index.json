@@ -1287,8 +1287,16 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "Basic UDP Client Socket",
-                "url": "udp-socket-client"
+                "name": "UDP Connectionless Client",
+                "url": "udp-client"
+            },
+            {
+                "name": "UDP Connection oriented Client",
+                "url": "udp-connect-client"
+            },
+            {
+                "name": "UDP Listener",
+                "url": "udp-listener"
             }
         ]
     },
