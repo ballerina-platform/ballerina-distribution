@@ -4,8 +4,9 @@ import ballerina/io;
 public function main() returns error? {
     // Creates an SMTP client with the connection parameters, host, username,
     // and password. The default port number `465` is used over SSL with these
-    // configurations.
-    email:SmtpClient smtpClient = new ("smtp.email.com", "sender@email.com"
+    // configurations. `SmtpConfig` can be configured and passed to this
+    // client if port or the security is to be customized.
+    email:SmtpClient smtpClient = check new ("smtp.email.com", "sender@email.com"
         , "pass123");
 
     // Define the email that is required to be sent.
@@ -33,13 +34,15 @@ public function main() returns error? {
         replyTo: ["replyTo1@email.com", "replyTo2@email.com"]
     };
 
-    // Send the email message with the client.
+    // Send the email message with the client. `sendEmail` method can be used
+    // instead, if the email is required to be sent with mandatory and optional
+    // parameters instead of configuring an `email:Message` record.
     check smtpClient->sendEmailMessage(email);
 
     // Create the client with the connection parameters, host, username, and
-    // password. An error is received in a failure. The default port number
+    // password. An error is returned in a failure. The default port number
     // `995` is used over SSL with these configurations.
-    email:PopClient popClient = new ("pop.email.com", "reader@email.com",
+    email:PopClient popClient = check new ("pop.email.com", "reader@email.com",
         "pass456");
 
     // Read the first unseen email received by the POP3 server. `()` is
@@ -60,7 +63,7 @@ public function main() returns error? {
     // Create the client with the connection parameters, host, username, and
     // password. An error is received in a failure. The default port number
     // `993` is used over SSL with these configurations.
-    email:ImapClient imapClient = new ("imap.email.com", "reader@email.com",
+    email:ImapClient imapClient = check new ("imap.email.com", "reader@email.com",
         "pass456");
 
     // Read the first unseen email received by the IMAP4 server. `()` is
@@ -83,20 +86,19 @@ public function main() returns error? {
 // Create the listener with the connection parameters and the protocol-related
 // configuration. The polling interval specifies the time duration between each poll
 // performed by the listener in milliseconds.
-listener email:PopListener emailListener = new ({
+listener email:PopListener emailListener = check new ({
     host: "pop.email.com",
     username: "reader@email.com",
     password: "pass456",
     pollingIntervalInMillis: 2000,
-    port: 995,
-    enableSsl: true
+    port: 995
 });
 
 // One or many services can listen to the email listener for the periodically-polled
 // emails.
 service "emailObserver" on emailListener {
 
-    // When an email is successfully received, the `onMessage` method is called.
+    // When an email is successfully received, the `onEmailMessage` method is called.
     remote function onEmailMessage(email:Message emailMessage) {
         io:println("POP Listener received an email.");
         io:println("Email Subject: ", emailMessage.subject);
