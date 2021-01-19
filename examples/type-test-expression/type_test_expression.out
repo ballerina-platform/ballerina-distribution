@@ -1,6 +1,6 @@
 # To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-bal run type_test_expression.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run type_test_expression.bal
 Is 'message' a string? true
 'message' is a string with value: Hello, world!
 entity is a student

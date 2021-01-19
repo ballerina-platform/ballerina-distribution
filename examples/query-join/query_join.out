@@ -1,6 +1,6 @@
 # To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `bal run` command below.
-bal run query_join.bal
+# `.bal` file and execute the `ballerina run` command below.
+ballerina run query_join.bal
 
 {"name":"Michelle Sadler","deptName":"Physics","degree":"Bachelor of Science","intakeYear":1990}
 {"name":"Ranjan Fonseka","deptName":"Chemistry","degree":"Bachelor of Science","intakeYear":2001}

@@ -1,9 +1,9 @@
 # To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `bal run` command below.
+# `.bal` file and execute the `ballerina run` command below.
 
-bal run websocket_service.bal
+ballerina run websocket_service.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9095
-bal run websocket_retry.bal
+ballerina run websocket_retry.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 
 # Now, this service can be invoked by any WebSocket client using the URL: "ws://localhost:9090/retry/ws".

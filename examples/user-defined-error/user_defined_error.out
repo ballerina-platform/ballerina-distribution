@@ -1,6 +1,6 @@
 # To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-bal run user_defined_error.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run user_defined_error.bal
 Error: Invalid account type, Account type: Joined
 Invalid account number: Please try again!
 Error: Account transfer failed, Cause: error InvalidAccountIdError ("Invalid account Id",accountID=-1)

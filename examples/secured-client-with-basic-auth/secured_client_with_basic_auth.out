@@ -1,5 +1,5 @@
 # To test the client, first start a sample service secured with Basic Auth.
 # Then start the client by executing the below command by passing Ballerina home
 # path as a system property.
-bal run secured_client_with_basic_auth.bal --b7a.home=<ballerina_home_path>
+ballerina run secured_client_with_basic_auth.bal --b7a.home=<ballerina_home_path>
 INFO  [ballerina/log] - Hello, World!!!

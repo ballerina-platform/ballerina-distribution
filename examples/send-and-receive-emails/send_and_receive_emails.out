@@ -1,6 +1,6 @@
 # To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-bal run email.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run email.bal
 
 # Check the inbox to view the sent emails.
 # Subject and the content body of the received emails would be printed.

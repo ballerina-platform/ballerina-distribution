@@ -1,6 +1,6 @@
 # To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-bal run uuid_functions.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run uuid_functions.bal
 UUID of type 1 as a string: 01eb3f05-fbf8-1b92-8711-dc6a5719bb63
 UUID of type 1 as a record: {"timeLow":32194310,"timeMid":7997,"timeHiAndVersion":5524,"clockSeqHiAndReserved":170,"clockSeqLo":116,"node":82490221220318}
 UUID of type 3 as a string: cea5c405-7d11-3fbb-bdfb-9b68497be28b
