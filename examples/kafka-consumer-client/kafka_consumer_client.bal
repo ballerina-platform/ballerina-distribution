@@ -12,6 +12,7 @@ kafka:ConsumerConfiguration consumerConfiguration = {
     offsetReset: "earliest",
     // Subscribes to the topic `test-kafka-topic`.
     topics: ["test-kafka-topic"]
+
 };
 
 kafka:Consumer consumer = checkpanic new (consumerConfiguration);
