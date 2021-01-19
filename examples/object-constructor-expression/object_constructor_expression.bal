@@ -50,5 +50,5 @@ public function main() {
                   };
 
     Person jane = {name: "Jane Doe", age: 20, address: adr};
-    io:println("Address: ", jane.address.country);
+    io:println("Country: ", jane.address.country);
 }
