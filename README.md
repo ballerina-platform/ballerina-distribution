@@ -2,7 +2,7 @@
 [![Ballerina Distribution Build](https://github.com/ballerina-platform/ballerina-distribution/workflows/Ballerina%20Distribution%20Build/badge.svg)](https://github.com/ballerina-platform/ballerina-distribution/actions?query=workflow%3A%22Ballerina+Distribution+Build%22)
 [![Daily build](https://github.com/ballerina-platform/ballerina-distribution/workflows/Daily%20build/badge.svg)](https://github.com/ballerina-platform/ballerina-distribution/actions?query=workflow%3A%22Daily+build%22)
 
-The Ballerina distribution repository builds the final Ballerina distributions. It combines the bal runtime with standard libraries and language extensions.
+The Ballerina distribution repository builds the final Ballerina distributions. It combines the Ballerina runtime with standard libraries and language extensions.
 
 ## Table of contents
 
