@@ -2,11 +2,10 @@ import ballerina/config;
 import ballerina/crypto;
 import ballerina/io;
 import ballerina/lang.'string;
-import ballerina/math;
+import ballerina/random;
 
-public function main() returns error? {
-
-    // Input value for crypto operations.
+function hash() returns error? {
+    // Input value for hash operations.
     string input = "Hello Ballerina!";
     byte[] inputArr = input.toBytes();
 
@@ -32,18 +31,19 @@ public function main() returns error? {
 
     // Hex encoded CRC32B checksum generation for input value.
     io:println("CRC32B for text: " + crypto:crc32b(inputArr));
+}
 
-    // Hex encoded CRC32B checksum generation for XML data.
-    xml xmlContent = xml `<foo>Hello Ballerina</foo>`;
-    io:println("CRC32 for xml content: " +
-        crypto:crc32b(xmlContent.toString().toBytes()));
+function hmac() returns error? {
+    // Input value for hmac operations.
+    string input = "Hello Ballerina!";
+    byte[] inputArr = input.toBytes();
 
     // The key used for HMAC generation.
     string key = "somesecret";
     byte[] keyArr = key.toBytes();
 
     // HMAC generation for input value using MD5 hashing algorithm, and printing HMAC value using Hex encoding.
-    output = crypto:hmacMd5(inputArr, keyArr);
+    byte[] output = crypto:hmacMd5(inputArr, keyArr);
     io:println("Hex encoded HMAC with MD5: " + output.toBase16());
 
     // HMAC generation for input value using SHA1 hashing algorithm, and printing HMAC value using Base64 encoding.
@@ -61,8 +61,9 @@ public function main() returns error? {
     // HMAC generation for input value using SHA512 hashing algorithm, and printing HMAC value using Hex encoding.
     output = crypto:hmacSha512(inputArr, keyArr);
     io:println("Hex encoded HMAC with SHA512: " + output.toBase16());
+}
 
-
+function decodeKeys() returns [crypto:PrivateKey, crypto:PublicKey]|error {
     // Obtaining reference to a RSA private key stored within a PKCS#12 or PFX format archive file.
     crypto:KeyStore keyStore = {
         path: config:getAsString("b7a.home") +
@@ -81,8 +82,20 @@ public function main() returns error? {
     crypto:PublicKey publicKey =
         check crypto:decodePublicKey(trustStore, "ballerina");
 
+    return [privateKey, publicKey];
+}
+
+function sign() returns error? {
+    // Input value for sign operations.
+    string input = "Hello Ballerina!";
+    byte[] inputArr = input.toBytes();
+
+    // Private and public keys for sign and verify operations.
+    [crypto:PrivateKey, crypto:PublicKey] [privateKey, publicKey] =
+        check decodeKeys();
+
     // Signing input value using RSA-MD5 signature algorithms, and printing the signature value using Hex encoding.
-    output = check crypto:signRsaMd5(inputArr, privateKey);
+    byte[] output = check crypto:signRsaMd5(inputArr, privateKey);
     io:println("Hex encoded RSA-MD5 signature: " + output.toBase16());
 
     boolean verified = check crypto:verifyRsaMd5Signature(inputArr, output,
@@ -119,10 +132,19 @@ public function main() returns error? {
     verified = check crypto:verifyRsaSha512Signature(inputArr, output,
                                                      publicKey);
     io:println("RSA-SHA512 signature verified: " + verified.toString());
+}
 
+function encrypt() returns error? {
+    // Input value for encrypt operations.
+    string input = "Hello Ballerina!";
+    byte[] inputArr = input.toBytes();
+
+    // Private and public keys for encrypt and decrypt operations.
+    [crypto:PrivateKey, crypto:PublicKey] [privateKey, publicKey] =
+        check decodeKeys();
 
     // Encrypt and decrypt an input value using RSA ECB PKCS1 padding.
-    output = check crypto:encryptRsaEcb(inputArr, publicKey);
+    byte[] output = check crypto:encryptRsaEcb(inputArr, publicKey);
     output = check crypto:decryptRsaEcb(output, privateKey);
     io:println("RSA ECB PKCS1 decrypted value: " +
         check 'string:fromBytes(output));
@@ -138,13 +160,13 @@ public function main() returns error? {
     // Randomly generate a 128 bit key for AES encryption.
     byte[16] rsaKeyArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     foreach var i in 0 ... 15 {
-        rsaKeyArr[i] = <byte>(math:randomInRange(0, 255));
+        rsaKeyArr[i] = <byte>(check random:createIntInRange(0, 255));
     }
 
     // Randomly generate a 128 bit IV for AES encryption.
     byte[16] ivArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     foreach var i in 0 ... 15 {
-        ivArr[i] = <byte>(math:randomInRange(0, 255));
+        ivArr[i] = <byte>(check random:createIntInRange(0, 255));
     }
 
     // Encrypt and decrypt an input value using AES CBC PKCS5 padding.
@@ -184,4 +206,11 @@ public function main() returns error? {
     output = check crypto:decryptAesEcb(output, rsaKeyArr, crypto:NONE);
     io:println("AES ECB no padding decrypted value: " +
         check 'string:fromBytes(output));
+}
+
+public function main() returns error? {
+    check hash();
+    check hmac();
+    check sign();
+    check encrypt();
 }
