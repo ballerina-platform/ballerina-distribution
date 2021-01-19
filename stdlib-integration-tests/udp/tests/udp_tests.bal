@@ -95,7 +95,7 @@ function testConnectClient() {
 @test:Config { }
 isolated function testConnectClientReadTimeOut() {
     udp:ConnectClient|udp:Error? socketClient = new("www.ballerina.io", 48830, localHost = "localhost", timeoutInMillis = 1000);
-    if (socketClient is ConnectClient) {
+    if (socketClient is udp:ConnectClient) {
         
         var result = socketClient->readBytes();
         if (result is byte[]) {
@@ -109,4 +109,21 @@ isolated function testConnectClientReadTimeOut() {
     } else if (socketClient is udp:Error) {
         log:printError("Error initializing UDP Client", err = socketClient);
     }
+}
+
+function readConnectClientContent(udp:ConnectClient socketClient) returns string {
+    string returnStr = "";
+    var result = socketClient->readBytes();
+    if (result is byte[]) {
+        var str = getString(result, 50);
+        if (str is string) {
+            returnStr = <@untainted>str;
+            io:println("Response is :", returnStr);
+        } else {
+            test:assertFail(msg = str.message());
+        }
+    } else {
+        test:assertFail(msg = "Failed to receive the data");
+    }
+    return returnStr;
 }

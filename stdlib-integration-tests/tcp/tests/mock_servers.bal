@@ -27,7 +27,7 @@ listener tcp:Listener closeServer = new tcp:Listener(PORT3);
 
 service on echoServer {
 
-    remote function onConnect(tcp:Caller caller) returns ConnectionService {
+    remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService {
         io:println("Client connected to echoServer: ", caller.remotePort);
         return new EchoService(caller);
     }
@@ -55,7 +55,7 @@ service class EchoService {
 
 service on discardServer {
 
-    remote function onConnect(tcp:Caller caller) returns ConnectionService {
+    remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService {
         io:println("Client connected to discardServer: ", caller.remotePort);
         return new DiscardService(caller);
     }
@@ -79,7 +79,7 @@ service class DiscardService {
 }
 
 service on closeServer {
-    remote function onConnect(tcp:Caller caller) returns ConnectionService|tcp:Error {
+    remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService|tcp:Error {
         io:println("Client connected to closeServer: ", caller.remotePort);
         check caller->close();
         return new EchoService(caller);
