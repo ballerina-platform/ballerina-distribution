@@ -5,7 +5,7 @@ public function main() returns error? {
     // Creates an SMTP client with the connection parameters, host, username,
     // and password. The default port number `465` is used over SSL with these
     // configurations. `SmtpConfig` can be configured and passed to this
-    // client if port or the security is to be customized.
+    // client if the port or security is to be customized.
     email:SmtpClient smtpClient = check new ("smtp.email.com", "sender@email.com"
         , "pass123");
 
@@ -34,7 +34,7 @@ public function main() returns error? {
         replyTo: ["replyTo1@email.com", "replyTo2@email.com"]
     };
 
-    // Send the email message with the client. `sendEmail` method can be used
+    // Send the email message with the client. The `sendEmail` method can be used
     // instead, if the email is required to be sent with mandatory and optional
     // parameters instead of configuring an `email:Message` record.
     check smtpClient->sendEmailMessage(email);
