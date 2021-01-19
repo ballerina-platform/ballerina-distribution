@@ -23,7 +23,7 @@ import ballerina/io;
 const HTTP_MESSAGE = "Hello from http service";
 const TASK_MESSAGE = "Hello from task service";
 
-http:Client httpClient = new ("http://localhost:15001/HttpService");
+http:Client httpClient = check new ("http://localhost:15001/HttpService");
 listener http:Listener backEndListener = new (15001);
 listener http:Listener clientListener = new (15002);
 
@@ -82,9 +82,9 @@ service /HttpService on backEndListener {
 }
 
 @test:Config {}
-function testTaskWithHttpClient() {
-    http:Client multipleAttachmentClientEndpoint = new ("http://localhost:15002");
-    task:Scheduler timerForHttpClient = new ({intervalInMillis: 1000, initialDelayInMillis: 1000});
+function testTaskWithHttpClient() returns error? {
+    http:Client multipleAttachmentClientEndpoint = check new ("http://localhost:15002");
+    task:Scheduler timerForHttpClient = check new ({intervalInMillis: 1000, initialDelayInMillis: 1000});
     var attachResult = timerForHttpClient.attach(PostToHttpService, TASK_MESSAGE);
     if (attachResult is task:SchedulerError) {
         panic attachResult;
