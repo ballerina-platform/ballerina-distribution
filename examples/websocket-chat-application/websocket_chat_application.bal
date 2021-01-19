@@ -33,10 +33,10 @@ service /chat on new websocket:Listener(9090) {
                 // Once a user connects to the chat, store the attributes
                 // of the user, such as username and age, and broadcast
                 // that the user has joined the chat.
-                remote function onConnect(websocket:Caller caller) {
+                remote function onOpen(websocket:Caller caller) {
                     string welcomeMsg = "Hi " + nameValue
                            + "! You have successfully connected to the chat";
-                    var err = caller->writeString(welcomeMsg);
+                    var err = caller->writeTextMessage(welcomeMsg);
                     if (err is websocket:Error) {
                         io:println("Error sending message:" + err.message());
                     }
@@ -52,7 +52,7 @@ service /chat on new websocket:Listener(9090) {
                                             <@untainted>caller;
                 }
                 // Broadcast the messages sent by a user.
-                remote function onString(websocket:Caller caller,
+                remote function onTextMessage(websocket:Caller caller,
                                           string text) {
                     string msg = getAttributeStr(caller, NAME) + ": " + text;
                     io:println(msg);
@@ -75,7 +75,7 @@ service /chat on new websocket:Listener(9090) {
 // Function to perform the broadcasting of text messages.
 function broadcast(string text) {
     foreach var con in connectionsMap {
-        var err = con->writeString(text);
+        var err = con->writeTextMessage(text);
         if (err is websocket:Error) {
             io:println("Error sending message:" + err.message());
         }

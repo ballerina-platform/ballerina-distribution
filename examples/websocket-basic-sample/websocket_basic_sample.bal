@@ -21,7 +21,7 @@ service /basic/ws on new websocket:Listener(9090) {
 service class WsService {
     *websocket:Service;
     // This `remote function` is triggered after a successful client connection.
-    remote function onConnect(websocket:Caller caller) {
+    remote function onOpen(websocket:Caller caller) {
         io:println("\nNew client connected");
         io:println("Connection ID: " + caller.getConnectionId());
         io:println("Negotiated Sub protocol: " +
@@ -31,7 +31,7 @@ service class WsService {
     }
 
     // This `remote function` is triggered when a new text frame is received from a client.
-    remote function onString(websocket:Caller caller, string text) {
+    remote function onTextMessage(websocket:Caller caller, string text) {
         io:println("\ntext message: " + text);
         if (text == "ping") {
             io:println("Pinging...");
@@ -48,7 +48,7 @@ service class WsService {
                                 err = result);
             }
         } else {
-            var err = caller->writeString("You said: " + text);
+            var err = caller->writeTextMessage("You said: " + text);
             if (err is websocket:Error) {
                 log:printError("Error occurred when sending text", err = err);
             }
@@ -56,11 +56,11 @@ service class WsService {
     }
 
     // This `remote function` is triggered when a new binary frame is received from a client.
-    remote function onBinary(websocket:Caller caller, byte[] b) {
+    remote function onBinaryMessage(websocket:Caller caller, byte[] b) {
         io:println("\nNew binary message received");
         io:print("UTF-8 decoded binary message: ");
         io:println(b);
-        var err = caller->writeBytes(b);
+        var err = caller->writeBinaryMessage(b);
         if (err is websocket:Error) {
             log:printError("Error occurred when sending binary", err = err);
         }
