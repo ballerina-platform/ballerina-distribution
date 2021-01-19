@@ -1,6 +1,6 @@
 // A task appointment service can be used to schedule an appointment. The task listener can be provided with an 
-// appointment configuration that should have an `appointmentDetails` field. This can be either a `string` representing a
-// CRON expression or a `task:AppointmentData` record. There is an optional
+// appointment configuration that should have a `cronExpression` field. This is a `string` representing a
+// CRON expression. There is an optional
 // `noOfRecurrences` field that can be used to provide the maximum number of times
 // the appointment should run before shutting down.<br/><br/>
 // For more information on the underlying module, 

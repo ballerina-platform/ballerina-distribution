@@ -23,5 +23,6 @@ function testFunc() returns error? {
     // Invoke the main function.
     check main();
     runtime:sleep(12);
-    test:assertEquals(outputs[5].toString(), "Appointment cancelled.");
+    any result = check outputs[5];
+    test:assertEquals(result.toString(), "Appointment cancelled.");
 }
