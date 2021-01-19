@@ -62,14 +62,14 @@ public function main() {
     printStudentDetails(1001, student);
 
     // Call the function by passing values for the fields of the included record parameter. 
-    // Value need to be supplied for the required fields that do not have default values.
+    // Values need to be supplied for the required fields that do not have default values.
     printStudentDetails(1002, firstName = "Anne", lastName = "Doe");
 
     // Call the function by passing values only for the required fields of the included record parameter.
     // The `lastName` field of the included record parameter defaults to `()`. 
     printStudentDetails(1003, firstName = "Peter");
 
-    // Call the function by passing only for the `admissionNo` parameter.
+    // Call the function by passing an argument only for the `admissionNo` parameter.
     // The `year` and `month` fields of the `date` included record parameter default to `2020` and `Jan` respectively.
     printAdmissionDate(1004);
 
