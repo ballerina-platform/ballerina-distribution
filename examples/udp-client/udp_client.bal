@@ -4,9 +4,9 @@ import ballerina/udp;
 
 public function main() returns error? {
   
-    // Create a new connectionless udp client.
-    // Optionally, you can provide interface that the socket need to bind 
-    // and the timeout in milliseconds which specifies the read timeout value.
+    // Create a new connectionless UDP client.
+    // Optionally, you can provide the interface that the socket needs to bind 
+    // and the timeout in milliseconds, which specifies the read timeout value.
     // udp:Client client = new (localHost = "localhost", timeoutInMillis = 2000);
     udp:Client socketClient = check new;
    
@@ -18,9 +18,9 @@ public function main() returns error? {
         data : msg.toBytes()
     };
 
-    // Send data to remote host.
-    // The parameter is a Datagram record which contains the remoteHost, remotePort
-    // and the data to be.
+    // Send the data to remote host.
+    // The parameter is a Datagram record, which contains the `remoteHost`, `remotePort`,
+    // and the `data` to be sent.
     var sendResult = socketClient->sendDatagram(datagram);
     if (sendResult is ()) {
         io:println("Datagram was sent to the remote host.");
@@ -29,7 +29,7 @@ public function main() returns error? {
         panic e;
     }
     
-    // Wait until data receive from remote host.
+    // Wait until data is received from the remote host.
     var result = socketClient->receiveDatagram();
     if (result is (readonly & udp:Datagram)) {
 

@@ -4,10 +4,10 @@ import ballerina/udp;
 
 public function main() returns error? {
   
-    // Create a new connection oriented udp client by providing the 
-    // remoteHost and the remotePort.
-    // Optionally, you can provide interface that the socket need to bind 
-    // and the timeout in milliseconds which specifies the read timeout value
+    // Create a new connection-oriented UDP client by providing the 
+    // `remoteHost` and the `remotePort`.
+    // Optionally, you can provide the interface that the socket needs to bind 
+    // and the timeout in milliseconds, which specifies the read timeout value.
     // udp:Client client = new ("www.ballerina.com", 80,
     //                         localHost = "localhost", timeoutInMillis = 2000);
     udp:ConnectClient socketClient = check new("www.ballerina.com", 80);
@@ -15,7 +15,7 @@ public function main() returns error? {
     string msg = "Hello Ballerina echo";
 
     // Send data to the connected remote host.
-    // The parameter is a byte[] which contains the data to be.
+    // The parameter is a byte[], which contains the data to be sent.
     var sendResult = socketClient->writeBytes(msg.toBytes());
     if (sendResult is ()) {
         io:println("Data was sent to the remote host.");
@@ -24,7 +24,7 @@ public function main() returns error? {
         panic e;
     }
     
-    // Wait until data receive from the connected host.
+    // Wait until data is received from the connected host.
     var result = socketClient->readBytes();
     if (result is (readonly & byte[])) {
 
