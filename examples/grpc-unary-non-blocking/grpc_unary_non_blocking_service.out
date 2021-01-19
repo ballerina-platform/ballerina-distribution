@@ -8,4 +8,4 @@
 ballerina build service
 
 # Run the service using the command below.
-ballerina run target/bin/service.jar
+bal run target/bin/service.jar

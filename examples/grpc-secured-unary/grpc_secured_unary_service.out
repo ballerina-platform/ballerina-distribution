@@ -8,4 +8,4 @@
 ballerina build service
 
 # To run the service, execute the command below by passing Ballerina home path as a system property.
-ballerina run target/bin/service.jar --b7a.home=<ballerina_home_path>
+bal run target/bin/service.jar --b7a.home=<ballerina_home_path>

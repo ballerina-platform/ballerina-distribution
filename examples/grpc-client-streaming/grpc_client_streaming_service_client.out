@@ -8,4 +8,4 @@
 ballerina build client
 
 # Run the client using the command below.
-ballerina run target/bin/client.jar
+bal run target/bin/client.jar

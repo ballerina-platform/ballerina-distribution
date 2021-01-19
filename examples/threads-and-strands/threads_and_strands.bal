@@ -5,12 +5,12 @@ import ballerina/io;
 public function case1() {
     // Execution of the `start` action causes the creation of a new strand and
     // it will be part of the thread executing the current strand.
-    // However, the Ballerina runtime will not execute the new strand until the current strand yields.
+    // However, the bal runtime will not execute the new strand until the current strand yields.
     io:println("--- case 1 ---");
     future<int> f1 = start multiply(1, 2);
 
     // Here, the `wait` action causes the current strand to yield.
-    // Once it yields, the Ballerina runtime executes the new strand.
+    // Once it yields, the bal runtime executes the new strand.
     io:println("Before the wait action");
     int result = wait f1;
     io:println("After the wait action\n");
@@ -20,7 +20,7 @@ public function case1() {
 // The usage of the `@strand` annotation with the `thread` field value "any" enforces this behavior.
 public function case2() {
     // This new strand does not belong to the thread executing the current strand.
-    // The Ballerina runtime assigns this new strand to a separate thread in the runtime thread pool.
+    // The bal runtime assigns this new strand to a separate thread in the runtime thread pool.
     io:println("--- case 2 ---");
     future<int> f1 = @strand {thread: "any"} start multiply(1, 2);
 
@@ -40,7 +40,7 @@ public function case3() {
     io:println("After the wait action\n");
 }
 
-// Create two new strands. Ballerina runtime assigns the first one to a separate thread and assigns
+// Create two new strands. bal runtime assigns the first one to a separate thread and assigns
 // the second one to the same thread executing the current strand.
 public function case4() {
     io:println("--- case 4 ---");
@@ -52,7 +52,7 @@ public function case4() {
     io:println("After the wait action\n");
 }
 
-// Create two new strands. The Ballerina runtime assigns both strands to the same thread executing the current strand.
+// Create two new strands. The bal runtime assigns both strands to the same thread executing the current strand.
 public function case5() {
     io:println("--- case 5 ---");
     future<int> f1 = start multiply(1, 2);
