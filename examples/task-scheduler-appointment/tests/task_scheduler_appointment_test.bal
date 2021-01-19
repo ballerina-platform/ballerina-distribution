@@ -19,5 +19,10 @@ function testFunc() returns error? {
     // Invoke the main function.
     check main();
     runtime:sleep(12);
-    test:assertEquals(outputs[5].toString(), "Appointment cancelled.");
+    any|error result = outputs[5];
+    if (result is error) {
+        test:assertFail("Test failed.");
+    } else {
+        test:assertEquals(result.toString(), "Appointment cancelled.");
+    }
 }

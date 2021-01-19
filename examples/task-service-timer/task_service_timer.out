@@ -1,6 +1,6 @@
 // The `onTrigger()` function is triggered every second but with an initial delay of 3 seconds.
 # To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command below.
+# `.bal` file and execute the `bal run` command below.
 bal run task_service_timer.bal
 MyCounter: 1
 MyCounter: 2

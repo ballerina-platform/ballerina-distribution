@@ -15,7 +15,7 @@
 // under the License.
 
 import ballerina/http;
-import ballerina/runtime;
+import ballerina/lang.runtime as runtime;
 import ballerina/task;
 import ballerina/test;
 import ballerina/io;
@@ -94,7 +94,7 @@ function testTaskWithHttpClient() {
             panic startResult;
         }
     }
-    runtime:sleep(4000);
+    runtime:sleep(4);
     var response = multipleAttachmentClientEndpoint->get("/");
     checkpanic timerForHttpClient.stop();
     if (response is http:Response) {

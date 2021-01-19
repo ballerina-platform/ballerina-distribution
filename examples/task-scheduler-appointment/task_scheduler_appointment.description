@@ -1,8 +1,7 @@
 // A `task:Scheduler` can be used to schedule an appointment. An appointment configuration should
-// have an `appointmentDetails` field. It can be either a `string` representing a
-// CRON expression or a `task:AppointmentData` record. There is an optional
-// `noOfRecurrences` field that can be used to provide the maximum number of times
-// the appointment should run before shutting down.<br/><br/>
+// have an `cronExpression` field. It is a `string` representing a
+// CRON expression. There is an optional `noOfRecurrences` field that can be used to
+// provide the maximum number of times the appointment should run before shutting down.<br/><br/>
 // A service can be attached to the scheduler using the `attach()` method.
 // Then, the scheduler can be started using the `start()` method. When the scheduler
 // needs to be cancelled, the `stop()` method can be called.<br/><br/>
