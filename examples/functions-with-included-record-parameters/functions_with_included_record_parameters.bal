@@ -66,7 +66,8 @@ public function main() {
     printStudentDetails(1002, firstName = "Anne", lastName = "Doe");
 
     // Call the function by passing values only for the required fields of the included record parameter.
-    // The `lastName` field of the included record parameter defaults to `()`. 
+    // Since the `lastName` field is an optional field in the type of the included record parameter
+    // it is not mandatory to pass an argument for `lastName`. 
     printStudentDetails(1003, firstName = "Peter");
 
     // Call the function by passing an argument only for the `admissionNo` parameter.
