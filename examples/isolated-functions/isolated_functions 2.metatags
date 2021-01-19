@@ -1,0 +1,2 @@
+description: An isolated function in Ballerina accesses mutable state only via its parameters.
+keywords: ballerina, ballerina by example, bbe, isolated functions, concurrency safety

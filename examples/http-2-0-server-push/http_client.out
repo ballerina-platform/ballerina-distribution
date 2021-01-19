@@ -1,5 +1,5 @@
 #Run the `http_client.bal` that contains ballerina client.
-ballerina run http_client.bal
+bal run http_client.bal
 2020-09-22 09:13:10,516 INFO  [] - Received a promise for /resource1
 2020-09-22 09:13:10,522 INFO  [] - Received a promise for /resource2
 2020-09-22 09:13:10,525 INFO  [] - Push promise for resource2 rejected
