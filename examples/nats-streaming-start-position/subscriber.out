@@ -14,9 +14,9 @@
 # 5. `receiveNewOnly` service receives only the messages, which are
 #    published after the subscriber starts.
 
-ballerina run subscriber.bal
+bal run subscriber.bal
 
-[ballerina/nats] Connection established with server nats://localhost:4222
+[ballerina/nats] Client subscribed for subject demo
 Message Received to service receiveSinceTimeDelta: Third Message
 Message Received to service receiveFromGivenIndex: Third Message
 Message Received to service receiveFromLastReceived: Third Message

@@ -1,7 +1,8 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
-ballerina run --experimental kafka_message_producer_transactional.bal
+bal run --experimental kafka_message_producer_transactional.bal
 
 # If the producer successfully sent the message, the following will be printed
 # in the Console.
+[ballerina/http] started HTTP/WS listener 192.168.1.2:57457
 Transaction successful

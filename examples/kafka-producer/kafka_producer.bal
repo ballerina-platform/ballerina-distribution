@@ -1,4 +1,3 @@
-import ballerina/io;
 import ballerinax/kafka;
 
 kafka:ProducerConfiguration producerConfiguration = {

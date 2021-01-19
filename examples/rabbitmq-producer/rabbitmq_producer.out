@@ -3,4 +3,4 @@
 # Navigate to the directory that contains the
 # 'rabbitmq_producer.bal' file, and run the 'ballerina run' command below.
 
-ballerina run rabbitmq_producer.bal
+bal run rabbitmq_producer.bal

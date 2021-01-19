@@ -1,8 +1,3 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
-ballerina run kafka_producer.bal
-
-# If the producer successfully sent the message, the following will be printed
-# in the Console.
-Message sent successfully.
-Records were flushed successfully.
+bal run kafka_producer.bal
