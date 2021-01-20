@@ -6,8 +6,8 @@ string serviceReply = "";
 string msg = "hey";
 
 @test:Config {}
-function testText() {
-    websocket:AsyncClient wsClient = new("ws://localhost:9090/proxy/ws", new callback());
+function testText() returns websocket:Error {
+    websocket:AsyncClient wsClient = check new("ws://localhost:9090/proxy/ws", new callback());
     checkpanic wsClient->writeTextMessage(msg);
     runtime:sleep(4);
     test:assertEquals(serviceReply, msg, "Received message should be equal to the expected message");
