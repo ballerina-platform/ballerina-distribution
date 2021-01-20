@@ -1280,12 +1280,8 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "TCP Client",
-                "url": "tcp-client"
-            },
-            {
-                "name": "TCP Listener",
-                "url": "tcp-listener"
+                "name": "Basic TCP Socket",
+                "url": "tcp-socket-listener-client"
             }
         ]
     },
