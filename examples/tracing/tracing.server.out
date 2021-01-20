@@ -2,7 +2,7 @@
 docker run -d -p5775:5775/udp -p6831:6831/udp -p6832:6832/udp -p5778:5778 -p16686:16686 -p14268:14268 jaegertracing/all-in-one:latest
 
 # To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `bal run` command with `--observability-included` option and `--b7a.observability.tracing.enabled=true` property.
+# `.bal` file and execute the `bal run` command below with the build time flag `--observability-included` and the runtime flag `--b7a.observability.tracing.enabled=true`.
 bal run --observability-included tracing.bal --b7a.observability.tracing.enabled=true
 
 ballerina: started publishing traces to Jaeger on localhost:5775

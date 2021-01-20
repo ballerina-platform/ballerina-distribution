@@ -1,5 +1,5 @@
 # To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `bal run` command  below with the `--observability-included` option and `--b7a.observability.metrics.enabled=true` property.
+# `.bal` file and execute the `bal run` command below with the build time flag `--observability-included` and the runtime flag `--b7a.observability.metrics.enabled=true`.
 bal run --observability-included counter_metrics.bal --b7a.observability.metrics.enabled=true
 
 ballerina: enabled prometheus metrics reporter
