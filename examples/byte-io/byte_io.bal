@@ -8,7 +8,7 @@ public function main() returns @tainted error? {
 
     // Read the file content as a byte array using the given file path.
     byte[] bytes = check io:fileReadBytes(imagePath);
-    // Write the content that already read to the given destination file.
+    // Write the already-read content to the given destination file.
     check io:fileWriteBytes(imageCopyPath1, bytes);
     io:println("Successfully copied the image as a byte array.");
 
