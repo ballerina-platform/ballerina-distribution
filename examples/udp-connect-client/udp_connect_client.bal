@@ -1,7 +1,6 @@
-// This is the connection oriented client implementation of the UDP socket.
+// This is the connection oriented client implementation for the UDP socket.
 import ballerina/io;
 import ballerina/udp;
-import ballerina/lang.'string;
 
 public function main() returns error? {
   
@@ -12,18 +11,43 @@ public function main() returns error? {
     // udp:Client client = new ("www.ballerina.com", 80,
     //                         localHost = "localhost", timeoutInMillis = 2000);
     udp:ConnectClient socketClient = check new("www.ballerina.com", 80);
-
+   
     string msg = "Hello Ballerina echo";
 
     // Send data to the connected remote host.
     // The parameter is a byte[], which contains the data to be sent.
-    check socketClient->writeBytes(msg.toBytes());
-    io:println("Data was sent to the remote host.");
-
+    var sendResult = socketClient->writeBytes(msg.toBytes());
+    if (sendResult is ()) {
+        io:println("Data was sent to the remote host.");
+    } else {
+        error e = sendResult;
+        panic e;
+    }
+    
     // Wait until data is received from the connected host.
-    readonly & byte[] result = check socketClient->readBytes();
-    io:println("Received: ", 'string:fromBytes(result));
+    var result = socketClient->readBytes();
+    if (result is (readonly & byte[])) {
+
+        var byteChannel = io:createReadableChannel(result);
+        if (byteChannel is io:ReadableByteChannel) {
+            io:ReadableCharacterChannel characterChannel =
+                new io:ReadableCharacterChannel(byteChannel, "UTF-8");
+            var str = characterChannel.read(60);
+            if (str is string) {
+                io:println("Received: ", <@untainted>str);
+            } else {
+                io:println("Error: ", str.message());
+            }
+        }
+    } else {
+        io:println("An error occurred while receiving the data ",
+            result);
+    }
 
     // Close the client and release the bound port.
-    check socketClient->close();
+    var closeResult = socketClient->close();
+    if (closeResult is error) {
+        io:println("An error occurred while closing the socket ",
+            closeResult);
+    }
 }

@@ -1,7 +1,7 @@
+// This is the server implementation for the UDP socket.
 import ballerina/io;
 import ballerina/udp;
 import ballerina/log;
-import ballerina/lang.'string;
 
 // Bind the service to the port.
 // Optionally, you can provide the `remoteHost` and `remotePort` to
@@ -11,11 +11,11 @@ import ballerina/lang.'string;
 service on new udp:Listener(48829) {
 
     // This remote method is invoked once the content is received from the client.
-    // You may replace the `onBytes` method with `onDatagram`, which reads the data as
+    // You may replace the onBytes method with onDatagram which reads the data as
     // readonly & udp:Datagram.
     remote function onBytes(readonly & byte[] data, udp:Caller caller) 
             returns (readonly & byte[])|udp:Error? {
-        io:println("Received by listener: ", 'string:fromBytes(data));
+        io:println("Received by listener:", getString(data));
         // Echo back the data to the same client.
         // This is similar to calling `caller->sendBytes(data);`.
         return data;
@@ -28,3 +28,8 @@ service on new udp:Listener(48829) {
     }
 }
 
+function getString(byte[] content) returns @tainted string|io:Error {
+    io:ReadableByteChannel byteChannel = check io:createReadableChannel(content);
+    io:ReadableCharacterChannel characterChannel = new io:ReadableCharacterChannel(byteChannel, "UTF-8");
+    return check characterChannel.read(content.length());
+}
