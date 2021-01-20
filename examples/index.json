@@ -1131,10 +1131,6 @@
                 "url": "grpc-unary-blocking"
             },
             {
-                "name": "Unary Non-Blocking",
-                "url": "grpc-unary-non-blocking"
-            },
-            {
                 "name": "Server Streaming",
                 "url": "grpc-server-streaming"
             },

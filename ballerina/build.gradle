@@ -623,7 +623,6 @@ task testExamples() {
             'grpc-secured-unary',
             'grpc-bidirectional-streaming',
             'grpc-client-streaming',
-            'grpc-unary-non-blocking',
             'grpc-unary-blocking',
             'testerina-guarantee-test-execution-order',
             'testerina-data-driven-tests',
