@@ -5,10 +5,10 @@ import ballerina/lang.'string;
 public function main() returns error? {
   
     // Create a new connectionless UDP client.
-    // Optionally, you can provide the address that the socket needs to bind 
+    // Optionally, you can provide the interface that the socket needs to bind 
     // and the timeout in milliseconds, which specifies the read timeout value.
     // udp:Client client = new (localHost = "localhost", timeoutInMillis = 2000);
-    udp:Client socketClient = check new;
+    udp:Client socketClient = check new(localHost = "localhost");
 
     string msg = "Hello Ballerina echo";
     udp:Datagram datagram = {
