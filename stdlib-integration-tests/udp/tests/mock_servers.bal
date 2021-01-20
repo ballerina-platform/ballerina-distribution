@@ -15,6 +15,7 @@
 // under the License.
 
 import ballerina/log;
+import ballerina/test;
 import ballerina/udp;
 import ballerina/io;
 
@@ -25,7 +26,7 @@ map<string> QuestionBank = {
     "who are you?": "I'm a ballerina bot"
 };
 
-service on new udp:Listener(PORT1) {
+service on new udp:Lisetener(PORT1) {
 
     remote function onDatagram(udp:Datagram datagram, udp:Caller caller) returns udp:Error? {
         string|error? dataString = getString(datagram.data);
