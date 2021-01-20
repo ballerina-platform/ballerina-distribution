@@ -35,7 +35,7 @@ listener http:Listener jwtListener = new(25002, {
                 audience: "ballerina",
                 trustStoreConfig: {
                     trustStore: {
-                        path: "tests/resources/keystore/ballerinaTruststore.p12",,
+                        path: "tests/resources/keystore/ballerinaTruststore.p12",
                         password: "ballerina"
                     },
                     certificateAlias: "ballerina"
