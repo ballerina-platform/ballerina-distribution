@@ -1,12 +1,12 @@
 import ballerina/http;
 import ballerina/log;
 
-// The HTTP client's chunking behavior can be configured as [CHUNKING_AUTO](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/constants#CHUNKING_AUTO),
-// [CHUNKING_ALWAYS](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/constants#CHUNKING_ALWAYS),
-// or [CHUNKING_NEVER](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/constants#CHUNKING_NEVER).
+// The HTTP client's chunking behavior can be configured as [CHUNKING_AUTO](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#CHUNKING_AUTO),
+// [CHUNKING_ALWAYS](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#CHUNKING_ALWAYS),
+// or [CHUNKING_NEVER](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#CHUNKING_NEVER).
 // In this example, it is set to `CHUNKING_NEVER`, which means that chunking never happens irrespective of how it is
 // specified in the request. When chunking is set to `CHUNKING_AUTO`, chunking is done as specified in the request.
-// [http1Settings](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/ClientHttp1Settings) annotation
+// [http1Settings](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/ClientHttp1Settings) annotation
 // provides the chunking-related configurations.
 http:Client clientEndpoint = new ("http://localhost:9090",
                                     {http1Settings:

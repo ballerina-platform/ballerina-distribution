@@ -4,8 +4,8 @@ import ballerina/io;
 import ballerina/email;
 
 // Clients objects are defined globally to be able to replace in test files.
-http:Client clientEndpoint = new("http://postman-echo.com");
-email:SmtpClient smtpClient = new("localhost", "admin", "admin");
+http:Client clientEndpoint = check new("http://postman-echo.com");
+email:SmtpClient smtpClient = check new("localhost", "admin", "admin");
 
 // This function performs two `GET` requests to the specified
 // endpoint and returns the response.
