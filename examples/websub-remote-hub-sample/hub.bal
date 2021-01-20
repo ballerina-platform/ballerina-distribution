@@ -2,7 +2,7 @@
 import ballerina/http;
 import ballerina/io;
 import ballerina/runtime;
-import ballerina/websub;
+import ballerina/websubhub;
 
 public function main() {
 
@@ -10,8 +10,8 @@ public function main() {
     // updates of the topics.
     io:println("Starting up the Ballerina Hub Service");
 
-    websub:Hub webSubHub;
-    var result = websub:startHub(new http:Listener(9191), "/websub", "/hub",
+    websubhub:Hub webSubHub;
+    var result = websubhub:startHub(new http:Listener(9191), "/websub", "/hub",
         hubConfiguration = {
             remotePublish: {
                 enabled: true
@@ -19,9 +19,9 @@ public function main() {
         }
     );
 
-    if (result is websub:Hub) {
+    if (result is websubhub:Hub) {
         webSubHub = result;
-    } else if (result is websub:HubStartedUpError) {
+    } else if (result is websubhub:HubStartedUpError) {
         webSubHub = result.startedUpHub;
     } else {
         io:println("Hub start error:" + result.message());

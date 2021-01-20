@@ -56,6 +56,14 @@ The below is a list of guidelines that must be followed when updating and adding
         For example,
 
         <img src="/images/bbe-folder-structure.png" alt="BBE folder structure" width="250" height="150">
+    - `.metatags` - Contains the meta description and keywords to build SEO in the webpage. The description should be 50-160 characters long, and there should be 3-5 keywords that are comma-separated.
+    
+        For example,
+        
+        [Hello World BBE .metatags file](https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/hello-world/hello_world.metatags)  
+        description: BBE on how to print “Hello, World!” using a main function in Ballerina. A public function named main is considered as an entry point to a Ballerina program.  
+        keywords: ballerina, ballerina by example, bbe, hello world main function
+        
 
 6. Break the `.description` file content into paragraphs when necessary and use `<br/>` tags to separate them. New lines in the content do not get translated into new lines in the final rendering.
 
