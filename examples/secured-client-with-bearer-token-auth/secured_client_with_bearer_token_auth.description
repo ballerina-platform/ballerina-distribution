@@ -1,0 +1,4 @@
+// A client, which is secured with Bearer Token Auth can be used to connect
+// to a service, which is secured.
+// The HTTP is enriched with `Authorization` header by passing the record of
+// token configurations for `auth` configuration of the client.
