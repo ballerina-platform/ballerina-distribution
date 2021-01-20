@@ -1,6 +1,7 @@
-// A client, which is secured with OAuth2 can be used
-// to connect to a service, which is secured with OAuth2.
-// The HTTP is enriched with `Authorization` header by passing the record of
-// direct token configurations for `auth` configuration of the client.<br/><br/>
+// A client, which is secured with OAuth2 direct token type
+// can be used to connect to a secured service.
+// The client is enriched with `Authorization: Bearer <token>` header by
+// passing the `http:OAuth2DirectTokenConfig` for the `auth`
+// configuration of the client.<br/><br/>
 // For more information on the underlying module,
 // see the [OAuth2 module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/oauth2/latest/oauth2/).

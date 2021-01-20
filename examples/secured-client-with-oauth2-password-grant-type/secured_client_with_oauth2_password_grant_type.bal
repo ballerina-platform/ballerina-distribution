@@ -1,10 +1,9 @@
 import ballerina/http;
 import ballerina/log;
 
-// Defines the HTTP client to call the OAuth2 password grant type
-// secured APIs.
-// The client is enriched with `Authorization` header by passing the
-// record of password grant configurations for `auth` configuration
+// Defines the HTTP client to call the OAuth2 secured APIs.
+// The client is enriched with `Authorization: Bearer <token>` header by
+// passing the `http:PasswordGrantConfig` for the `auth` configuration
 // of the client.
 http:Client securedEP = checkpanic new("https://localhost:9090", {
     auth: {

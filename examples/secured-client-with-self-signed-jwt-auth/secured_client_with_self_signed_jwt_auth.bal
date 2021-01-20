@@ -1,11 +1,10 @@
 import ballerina/http;
 import ballerina/log;
 
-// Defines the HTTP client to call the JWT Auth secured APIs.
-// The client is enriched with `Authorization` header by passing the
-// record of JWT issuer configurations for `auth` configuration
-// of the client. The signature of the JWT is a self signed signature
-// at the time of issuing.
+// Defines the HTTP client to call the JWT auth secured APIs.
+// The client is enriched with `Authorization: Bearer <token>` header by
+// passing the `http:JwtIssuerConfig` for the `auth` configuration
+// of the client. A self signed JWT is issued before the request is sent.
 http:Client securedEP = checkpanic new("https://localhost:9090", {
     auth: {
         username: "admin",

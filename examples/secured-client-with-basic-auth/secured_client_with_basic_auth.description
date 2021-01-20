@@ -1,6 +1,7 @@
-// A client, which is secured with Basic auth can be used to connect to a
-// service, which is secured with Basic auth.
-// The HTTP is enriched with `Authorization` header by passing the record of
-// `username` and `password` for `auth` configuration of the client.<br/><br/>
+// A client, which is secured with Basic auth can be used to connect to
+// a secured service.
+// The client is enriched with `Authorization: Basic <token>` header by
+// passing the `http:CredentialsConfig` for the `auth` configuration
+// of the client.<br/><br/>
 // For more information on the underlying module, 
 // see the [Auth module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/auth/latest/auth/).
