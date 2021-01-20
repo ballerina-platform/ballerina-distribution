@@ -1,42 +1,29 @@
-import ballerina/auth;
-import ballerina/config;
 import ballerina/http;
 import ballerina/log;
 
-// Defines the Basic Auth client endpoint to call the backend services.
-// Basic Authentication is enabled by creating an
-// `auth:OutboundBasicAuthProvider` with the `username` and `password`
-// passed as a record.
-auth:OutboundBasicAuthProvider outboundBasicAuthProvider = new({
-    username: "tom",
-    password: "1234"
-});
-
-// Creates a Basic Auth handler with the created Basic Auth provider.
-http:BasicAuthHandler outboundBasicAuthHandler =
-    new (outboundBasicAuthProvider);
-
-http:Client httpEndpoint = new("https://localhost:9090", {
-        auth: {
-            authHandler: outboundBasicAuthHandler
-        },
-        secureSocket: {
-            trustStore: {
-                path: config:getAsString("b7a.home") +
-                    "/bre/security/ballerinaTruststore.p12",
-                password: "ballerina"
-            }
+// Defines the HTTP client to call the Basic Auth secured APIs.
+// The client is enriched with `Authorization` header by passing the
+// record of `username` and `password` for `auth` configuration
+// of the client.
+http:Client securedEP = checkpanic new("https://localhost:9090", {
+    auth: {
+        username: "alice",
+        password: "123"
+    },
+    secureSocket: {
+        trustStore: {
+            path: "../resources/ballerinaTruststore.p12",
+            password: "ballerina"
         }
-    });
+    }
+});
 
 public function main() {
     // Send a `GET` request to the specified endpoint.
-    var response = httpEndpoint->get("/hello/sayHello");
+    var response = securedEP->get("/foo/bar");
     if (response is http:Response) {
-        var result = response.getTextPayload();
-        log:printInfo((result is error) ?
-            "Failed to retrieve payload." : result);
-    } else {
-        log:printError("Failed to call the endpoint.", <error>response);
+        log:print(response.statusCode.toString());
+    } else if (response is http:ClientError) {
+        log:printError("Failed to call the endpoint.", err = response);
     }
 }
