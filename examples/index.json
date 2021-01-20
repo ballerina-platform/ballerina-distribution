@@ -1279,28 +1279,6 @@
         ]
     },
     {
-        "title": "TCP",
-        "column": 3,
-        "category": "Working over the network",
-        "samples": [
-            {
-                "name": "Basic TCP Socket",
-                "url": "tcp-socket-listener-client"
-            }
-        ]
-    },
-    {
-        "title": "UDP",
-        "column": 3,
-        "category": "Working over the network",
-        "samples": [
-            {
-                "name": "Basic UDP Client Socket",
-                "url": "udp-socket-client"
-            }
-        ]
-    },
-    {
         "title": "Access Control",
         "column": 3,
         "category": "Working over the network",
