@@ -12,13 +12,13 @@ service "HelloWorld" on ep {
     remote function lotsOfReplies(string name) returns stream<string,error>|error {
         io:println("Server received hello from " + name);
         string[] greets = ["Hi", "Hey", "GM"];
-        // Create the array of responses by appending recieved name
+        // Create the array of responses by appending recieved name.
         int i = 0;
         foreach string greet in greets {
             greets[i] = greet + " " + name;
             i += 1;
         }
-        // Return the stream of strings back to the client
+        // Return the stream of strings back to the client.
         return greets.toStream();
     }
 }

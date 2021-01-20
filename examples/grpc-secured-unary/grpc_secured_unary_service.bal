@@ -1,7 +1,7 @@
 // This is the server implementation for the secured connection (HTTPS) scenario.
 import ballerina/config;
 import ballerina/grpc;
-import ballerina/log;
+import ballerina/io;
 
 // Server endpoint configuration with the SSL configurations.
 listener grpc:Listener ep = new (9090, {
@@ -59,5 +59,5 @@ public client class HelloWorldStringCaller {
 # Context record includes message payload and headers.
 public type ContextString record {|
     string content;
-    map<string[]> headers;
+    map<string|string[]> headers;
 |};

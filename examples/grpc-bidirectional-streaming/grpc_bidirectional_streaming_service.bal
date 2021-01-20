@@ -13,7 +13,8 @@ service "Chat" on ep {
         string[] responses = [];
         int i = 0;
         // Read and process each message in the client stream
-        error? e = clientStream.forEach(function(anydata value) {
+        error? e = clientStream.forEach(function(ChatMessage value) {
+            io:println(value);
             ChatMessage chatMsg = <ChatMessage> value;
             responses[i] = string `${chatMsg.message}: ${chatMsg.name}`;
             i += 1;

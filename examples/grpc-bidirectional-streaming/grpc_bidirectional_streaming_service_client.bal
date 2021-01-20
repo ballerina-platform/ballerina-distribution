@@ -1,7 +1,6 @@
 // This is client implementation for bidirectional streaming scenario.
 import ballerina/grpc;
 import ballerina/io;
-import ballerina/lang.runtime as runtime;
 
 public function main (string... args) returns error? {
     // Client endpoint configuration
