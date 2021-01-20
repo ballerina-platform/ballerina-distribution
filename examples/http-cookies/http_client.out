@@ -1,4 +1,4 @@
 # To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run http_client.bal
+# `.bal` file, and execute the `bal run` command below.
+bal run http_client.bal
 time = 2020-12-15 16:14:08,691 level = INFO  module = "" message = "Welcome back John"

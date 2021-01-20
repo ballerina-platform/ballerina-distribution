@@ -53,7 +53,9 @@ public function main() {
     // Detect RFC version of a UUID.
     uuid:Version|uuid:Error v = uuid:getVersion(
                                 "4397465e-35f9-11eb-adc1-0242ac120002");
-    io:println("UUID version: ", v.toString());
+    if (v is uuid:Version) {
+        io:println("UUID version: ", v.toString());
+    }
 
     // Convert a UUID string to an array of bytes.
     byte[]|uuid:Error uuidBytes = uuid:toBytes(

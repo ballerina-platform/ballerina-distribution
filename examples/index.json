@@ -52,6 +52,10 @@
                 "url": "functions-with-defaultable-parameters"
             },
             {
+                "name": "Included Record Parameters",
+                "url": "functions-with-included-record-parameters"
+            },
+            {
                 "name": "Rest Parameters",
                 "url": "functions-with-rest-parameter"
             },
@@ -603,32 +607,24 @@
         "category": "Language concepts",
         "samples": [
             {
-                "name": "Byte I/O",
+                "name": "Read/Write Bytes",
                 "url": "byte-io"
             },
             {
-                "name": "Data I/O",
-                "url": "data-io"
+                "name": "Read/Write Text",
+                "url": "text-io"
             },
             {
-                "name": "Record I/O",
-                "url": "record-io"
-            },
-            {
-                "name": "CSV I/O",
+                "name": "Read/Write CSV",
                 "url": "csv-io"
             },
             {
-                "name": "JSON I/O",
+                "name": "Read/Write JSON",
                 "url": "json-io"
             },
             {
-                "name": "XML I/O",
+                "name": "Read/Write XML",
                 "url": "xml-io"
-            },
-            {
-                "name": "File I/O",
-                "url": "file-io"
             }
         ]
     },
@@ -654,10 +650,6 @@
                 "url": "log-api"
             },
             {
-                "name": "Math",
-                "url": "math-functions"
-            },
-            {
                 "name": "String",
                 "url": "strings"
             },
@@ -668,6 +660,10 @@
             {
                 "name": "File",
                 "url": "file"
+            },
+            {
+                "name": "Random",
+                "url": "random"
             },
             {
                 "name": "Task Scheduler Appointment",
@@ -954,12 +950,24 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "Client Endpoint",
-                "url": "websocket-client"
+                "name": "Async Client Endpoint",
+                "url": "websocket-async-client"
+            },
+            {
+                "name": "Sync Client",
+                "url": "websocket-sync-client"
             },
             {
                 "name": "Basic Server Functionalities",
                 "url": "websocket-basic-sample"
+            },
+            {
+                "name": "Proxy Server",
+                "url": "websocket-proxy-server"
+            },
+            {
+                "name": "Chat Application",
+                "url": "websocket-chat-application"
             }
         ]
     },

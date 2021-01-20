@@ -60,11 +60,11 @@ public function main() returns error? {
     check dbClient.close();
 }
 
-function onRollbackFunc(transactions:Info info,
+isolated function onRollbackFunc(transactions:Info info,
                         error? cause, boolean willRetry) {
     io:println("Rollback handler executed.");
 }
 
-function onCommitFunc(transactions:Info info) {
+isolated function onCommitFunc(transactions:Info info) {
     io:println("Commit handler executed.");
 }

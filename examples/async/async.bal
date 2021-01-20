@@ -26,7 +26,7 @@ public function main() {
 }
 
 function calculate(string expr) returns int {
-    http:Client httpClient = new ("https://api.mathjs.org");
+    http:Client httpClient = checkpanic new ("https://api.mathjs.org");
     string response = <string> checkpanic
         httpClient->get(string `/v4/?expr=${expr}`, targetType = string);
     return checkpanic 'int:fromString(<@untainted>response);

@@ -1,6 +1,6 @@
 import ballerina/http;
 import ballerina/log;
-import ballerina/runtime;
+import ballerina/lang.runtime;
 
 http:Client backendClientEP = new ("http://localhost:8080", {
         // Timeout configuration.

@@ -30,6 +30,6 @@ public function main() {
     if (result is error) {
         io:println(result);
     } else {
-        io:println("success");
+        io:println("Message successfully sent");
     }
 }

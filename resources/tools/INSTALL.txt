@@ -37,8 +37,8 @@ INSTALLING BALLERINA
             └── release
     - Ensure that the directory which contains the JRE is named "jdk-11.0.8+10-jre"
 
-- Finally, to verify whether Ballerina is installed properly, you can run the `ballerina version` command. If Ballerina was installed correctly, you should see an output similar to the following:
-    $ ballerina version
+- Finally, to verify whether Ballerina is installed properly, you can run the `bal version` command. If Ballerina was installed correctly, you should see an output similar to the following:
+    $ bal version
     Ballerina Swan Lake Preview 5
     Language specification v2020-09-22
     Update Tool 0.8.9

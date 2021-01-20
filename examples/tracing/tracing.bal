@@ -1,7 +1,7 @@
 import ballerina/http;
 import ballerina/log;
 import ballerina/observe;
-import ballerina/runtime;
+import ballerina/lang.runtime;
 
 // Simple `Hello` HTTP Service
 service hello on new http:Listener(9234) {

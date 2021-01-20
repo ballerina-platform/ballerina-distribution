@@ -1,6 +1,6 @@
 # To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command below.
-ballerina run mysql_batch_execute_operation.bal
+# `.bal` file and execute the `bal run` command below.
+bal run mysql_batch_execute_operation.bal
 
 ballerina/http] stopped HTTP/WS listener 192.168.1.18:43179
 Database created.

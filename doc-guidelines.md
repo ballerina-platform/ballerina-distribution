@@ -56,6 +56,14 @@ The below is a list of guidelines that must be followed when updating and adding
         For example,
 
         <img src="/images/bbe-folder-structure.png" alt="BBE folder structure" width="250" height="150">
+    - `.metatags` - Contains the meta description and keywords to build SEO in the webpage. The description should be 50-160 characters long, and there should be 3-5 keywords that are comma-separated.
+    
+        For example,
+        
+        [Hello World BBE .metatags file](https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/hello-world/hello_world.metatags)  
+        description: BBE on how to print “Hello, World!” using a main function in Ballerina. A public function named main is considered as an entry point to a Ballerina program.  
+        keywords: ballerina, ballerina by example, bbe, hello world main function
+        
 
 6. Break the `.description` file content into paragraphs when necessary and use `<br/>` tags to separate them. New lines in the content do not get translated into new lines in the final rendering.
 
@@ -65,16 +73,16 @@ The below is a list of guidelines that must be followed when updating and adding
 
     ```bash
     # To run this sample, navigate to the directory that contains the
-    # `.bal` file and issue the `ballerina run` command.
-    ballerina run <sample_file_name>.bal
+    # `.bal` file and issue the `bal run` command.
+    bal run <sample_file_name>.bal
     ```
 
     For an example with a service:
 
     ```bash
     # To start the service, navigate to the directory that contains the
-    # `.bal` file and issue the `ballerina run` command.
-    ballerina run hello_world_service.bal
+    # `.bal` file and issue the `bal run` command.
+    bal run hello_world_service.bal
     ```
 
 8. Service examples demonstrating client-server scenarios have a `.bal` file only for the server and two different output files. That is, one to display the server output (`.server.out` file) and the other (`.client.out` file) to display the cURL command and the output. These two separate output files can be introduced with `.server` and `.client` suffixed to the file names. 

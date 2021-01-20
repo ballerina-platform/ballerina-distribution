@@ -24,10 +24,10 @@ kafka:ConsumerConfiguration consumerConfig = {
     authenticationConfiguration: authConfig
 };
 
-listener kafka:Listener kafkaListener = checkpanic new(consumerConfig);
+listener kafka:Listener kafkaListener = new(consumerConfig);
 
 service kafka:Service on kafkaListener {
-    remote function onMessage(kafka:Caller caller,
+    remote function onConsumerRecord(kafka:Caller caller,
                                 kafka:ConsumerRecord[] records) {
         foreach var consumerRecord in records {
             string|error messageContent =

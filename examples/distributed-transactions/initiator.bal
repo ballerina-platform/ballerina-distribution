@@ -47,7 +47,7 @@ service / on new http:Listener(8080) {
 
 // This is the business function call to the participant.
 transactional function callBusinessService() returns @tainted boolean {
-    http:Client participantEP = new ("http://localhost:8889/stockquote/" +
+    http:Client participantEP = checkpanic new ("http://localhost:8889/stockquote/" +
                                         "update/updateStockQuote");
 
     // Generate the payload.
