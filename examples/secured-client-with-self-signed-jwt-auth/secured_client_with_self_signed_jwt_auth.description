@@ -1,0 +1,8 @@
+// A client, which is secured with self signed JWT auth can be used to connect
+// to a service, which is secured with JWT auth.
+// The HTTP is enriched with `Authorization` header by passing the record of
+// JWT issuer configurations for `auth` configuration of the client. The
+// signature of the JWT is a self signed signature at the time of issuing.
+// <br/><br/>
+// For more information on the underlying module,
+// see the [JWT module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/jwt/latest/jwt/).
