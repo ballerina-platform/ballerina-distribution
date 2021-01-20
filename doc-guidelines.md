@@ -60,8 +60,8 @@ The below is a list of guidelines that must be followed when updating and adding
     
         For example,
         
-        [Hello World BBE .metatags file](https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/hello-world/hello_world.metatags)
-        description: BBE on how to print “Hello, World!” using a main function in Ballerina. A public function named main is considered as an entry point to a Ballerina program.
+        [Hello World BBE .metatags file](https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/hello-world/hello_world.metatags)  
+        description: BBE on how to print “Hello, World!” using a main function in Ballerina. A public function named main is considered as an entry point to a Ballerina program.  
         keywords: ballerina, ballerina by example, bbe, hello world main function
         
 
