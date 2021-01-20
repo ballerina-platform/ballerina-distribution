@@ -1,6 +1,6 @@
-// This is the client implementation for the TCP socket.
 import ballerina/io;
 import ballerina/tcp;
+import ballerina/lang.'string;
 
 public function main() returns error? {
 
@@ -14,20 +14,12 @@ public function main() returns error? {
     // Send the desired content to the server.
     string msg = "Hello Ballerina Echo from client";
     byte[] msgByteArray = msg.toBytes();
-    check  socketClient->writeBytes(msgByteArray);
+    check socketClient->writeBytes(msgByteArray);
 
     // Reading the response from the server.
     readonly & byte[] receivedData = check socketClient->readBytes();
-
-    io:ReadableByteChannel byteChannel = check io:createReadableChannel(receivedData);
-    io:ReadableCharacterChannel characterChannel = new io:ReadableCharacterChannel(byteChannel, "UTF-8");
-    string stringData = check characterChannel.read(receivedData.length());
-    io:println("Recived: ", stringData);
+    io:println("Recived: ", 'string:fromBytes(receivedData));
 
     // Close the connection between the server and the client.
-    var closeResult = socketClient->close();
-    if (closeResult is error) {
-        io:println("An error occurred while closing the socket ", closeResult);
-    }
+    check socketClient->close();
 }
-
