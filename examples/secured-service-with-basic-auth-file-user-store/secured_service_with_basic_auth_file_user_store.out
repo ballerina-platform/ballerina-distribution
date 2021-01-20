@@ -1,4 +1,5 @@
-# At the command line, navigate to the directory that contains the `.bal` file.
+# To run this sample, navigate to the directory that contains the `.bal` file,
+# and execute the `bal run` command below.
 # Ensure that the `sample-users.toml` file is populated correctly with the user
 # information. If required, user passwords can be encrypted using the
 # `ballerina encrypt` configuration encryption command.
@@ -9,8 +10,8 @@ scopes="scope1"
 ["b7a.users.bob"]
 password="password2"
 scopes="scope2,scope3"' > sample-users.toml
-
-# To run the service, execute the command below by specifying the configuration
-# file name and passing Ballerina home path as a system property.
-bal run secured_service_with_basic_auth.bal --b7a.config.file=sample-users.toml --b7a.home=<ballerina_home_path>
+# (You may need to change the keystore path, a sample keystore file is
+# available in the distribution.
+# The file path is <ballerina.home>/examples/resources/ballerinaKeystore.p12)
+bal run secured_service_with_basic_auth_file_user_store.bal --b7a.config.file=sample-users.toml
 [ballerina/http] started HTTPS/WSS listener 0.0.0.0:9090
