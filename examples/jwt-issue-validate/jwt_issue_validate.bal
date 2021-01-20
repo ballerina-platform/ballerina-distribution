@@ -1,4 +1,3 @@
-import ballerina/config;
 import ballerina/io;
 import ballerina/jwt;
 
@@ -11,8 +10,7 @@ public function main() {
         expTimeInSeconds: 3600,
         keyStoreConfig: {
             keyStore: {
-                path: config:getAsString("b7a.home") +
-                        "/bre/security/ballerinaKeystore.p12",
+                path: "../resources/ballerinaKeystore.p12",
                 password: "ballerina"
             },
             keyAlias: "ballerina",
@@ -37,8 +35,7 @@ public function main() {
         trustStoreConfig: {
             certificateAlias: "ballerina",
             trustStore: {
-                path: config:getAsString("b7a.home") +
-                        "/bre/security/ballerinaTruststore.p12",
+                path: "../resources/ballerinaTruststore.p12",
                 password: "ballerina"
             }
         }
@@ -64,8 +61,7 @@ public function main() {
             clientConfig: {
                 secureSocket: {
                     trustStore: {
-                        path: config:getAsString("b7a.home") +
-                                "/bre/security/ballerinaTruststore.p12",
+                        path: "../resources/ballerinaTruststore.p12",
                         password: "ballerina"
                     }
                 }
