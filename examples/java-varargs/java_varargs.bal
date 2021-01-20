@@ -6,7 +6,7 @@ import ballerina/java;
 // a Java array before the invocation.
 public function asList(int... values) returns handle = @java:Method {
     name: "asList",
-    class: "java.util.Arrays"
+    'class: "java.util.Arrays"
 } external;
 
 public function main() {

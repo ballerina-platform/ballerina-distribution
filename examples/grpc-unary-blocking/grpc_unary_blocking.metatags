@@ -1,0 +1,2 @@
+description: This Ballerina by Example has a gRPC unary service and a blocking client. The client sends and receives messages in a blocking manner.
+keywords: ballerina, ballerina by example, bbe, grpc, unary, simple, blocking

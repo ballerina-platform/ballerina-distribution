@@ -32,7 +32,7 @@ function closeWc(io:WritableCharacterChannel ch) {
     }
 }
 
-public function main() returns @tainted error? {
+public function main() returns error? {
     // This example uses the <BALLERINA_LANG>/examples/character-io/files/sample.txt file as the 
     // source file, which includes the text "Hello Ballerina!!".
     // You can replace this with the file path of a preferred text file. 

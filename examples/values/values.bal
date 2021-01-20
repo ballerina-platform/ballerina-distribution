@@ -2,7 +2,7 @@ import ballerina/io;
 import ballerina/lang.'float;
 import ballerina/lang.'int;
 
-// The types `int`, `float`, `decimal`, `string`, `boolean`, `byte`, and `nil` are called simple basic types
+// The types `int`, `float`, `decimal`, `boolean`, `byte`, and `nil` are called simple basic types
 // because they are basic types with only simple values. Simple values are always immutable.
 public function main() {
     // The `int` type represents the set of 64-bit signed integers.

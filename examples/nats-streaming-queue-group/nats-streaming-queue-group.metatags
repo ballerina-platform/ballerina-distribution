@@ -1,0 +1,2 @@
+description: BBE on leveraging the NATS built-in load balancing feature called "distributed queues" using Ballerina.
+keywords: ballerina, ballerina by example, bbe, nats, distributed, queues

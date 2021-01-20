@@ -3,10 +3,11 @@ import ballerina/log;
 import ballerina/observe;
 import ballerina/runtime;
 
-// Make sure you start the service with the '--b7a.observability.enabled=true` property or with tracing enabled.
+// Simple `Hello` HTTP Service
 service hello on new http:Listener(9234) {
 
-    // Invoke all resources with arguments of server connector and request.
+    // Resource functions are invoked with the HTTP caller and the
+    // incoming request as arguments.
     resource function sayHello(http:Caller caller, http:Request req)
                                 returns error? {
         http:Response res = new;

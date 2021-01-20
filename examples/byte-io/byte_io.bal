@@ -13,7 +13,7 @@ function copy(io:ReadableByteChannel src,
         if (result is io:EofError) {
             break;
         } else if (result is error) {
-            return <@untained>result;
+            return <@untainted>result;
         } else {
             // The operation writes the given content into the channel.
             int i = 0;
@@ -32,16 +32,16 @@ function copy(io:ReadableByteChannel src,
 
 // Closes a given readable or writable byte channel.
 function close(io:ReadableByteChannel|io:WritableByteChannel ch) {
-    abstract object {
+    object {
         public function close() returns error?;
     } channelResult = ch;
     var cr = channelResult.close();
     if (cr is error) {
-        log:printError("Error occurred while closing the channel: ", cr);
+        log:printError("Error occurred while closing the channel: ", err=cr);
     }
 }
 
-public function main() returns @tainted error? {
+public function main() returns error? {
     string srcPath = "./files/ballerina.jpg";
     string dstPath = "./files/ballerinaCopy.jpg";
     // Initializes the readable byte channel.
@@ -52,7 +52,7 @@ public function main() returns @tainted error? {
     // Copies the source byte channel to the target byte channel.
     var result = copy(srcCh, dstCh);
     if (result is error) {
-        log:printError("error occurred while performing copy ", result);
+        log:printError("error occurred while performing copy ", err=result);
     } else {
         io:println("File copy completed. The copied file is located at " +
                     dstPath);

@@ -5,14 +5,14 @@ import ballerina/log;
 
 // Creates a Basic Auth header handler with the relevant configurations.
 auth:InboundBasicAuthProvider basicAuthProvider = new;
-http:BasicAuthHandler basicAuthHandler = new (basicAuthProvider);
+http:BasicAuthHandler basicAuthHandler = new(basicAuthProvider);
 
 // The endpoint used here is the `http:Listener`, which by default tries to
 // authenticate and authorize each request. The Basic Authentication handler is
 // set to this endpoint using the `authHandlers` attribute. It is optional to
 // override the authentication and authorization at the service level and/or
 // resource level.
-listener http:Listener ep = new (9090, config = {
+listener http:Listener ep = new(9090, config = {
     auth: {
         authHandlers: [basicAuthHandler]
     },
@@ -20,7 +20,7 @@ listener http:Listener ep = new (9090, config = {
     secureSocket: {
         keyStore: {
             path: config:getAsString("b7a.home") +
-                  "/bre/security/ballerinaKeystore.p12",
+                "/bre/security/ballerinaKeystore.p12",
             password: "ballerina"
         }
     }

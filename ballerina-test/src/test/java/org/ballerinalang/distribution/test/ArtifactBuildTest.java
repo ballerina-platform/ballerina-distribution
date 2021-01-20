@@ -68,56 +68,6 @@ public class ArtifactBuildTest {
                 buildArgs);
         Assert.assertTrue(successful);
         Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("docker")));
-        FileUtils.deleteDirectory(TestUtils.getResource(testResource).resolve("kubernetes").toFile());
-    }
-    
-    
-    @Test(dataProvider = "distribution-provider")
-    public void buildKubernetesTest(String distributionFileName) throws IOException, InterruptedException {
-        Path testResource = Paths.get("/kubernetes");
-        List<String> buildArgs = new LinkedList<>();
-        buildArgs.add("hello_world_k8s.bal");
-        boolean successful = TestUtils.executeBuild(distributionFileName, TestUtils.getResource(testResource),
-                buildArgs);
-        Assert.assertTrue(successful);
-        Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("kubernetes")));
-        FileUtils.deleteDirectory(TestUtils.getResource(testResource).resolve("kubernetes").toFile());
-    }
-    
-    @Test(dataProvider = "distribution-provider")
-    public void buildIstioTest(String distributionFileName) throws IOException, InterruptedException {
-        Path testResource = Paths.get("/istio");
-        List<String> buildArgs = new LinkedList<>();
-        buildArgs.add("travel_agency_service.bal");
-        boolean successful = TestUtils.executeBuild(distributionFileName, TestUtils.getResource(testResource),
-                buildArgs);
-        Assert.assertTrue(successful);
-        Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("kubernetes")));
-        FileUtils.deleteDirectory(TestUtils.getResource(testResource).resolve("kubernetes").toFile());
-    }
-    
-    @Test(dataProvider = "distribution-provider")
-    public void buildOpenshiftTest(String distributionFileName) throws IOException, InterruptedException {
-        Path testResource = Paths.get("/openshift");
-        List<String> buildArgs = new LinkedList<>();
-        buildArgs.add("hello_world_oc.bal");
-        boolean successful = TestUtils.executeBuild(distributionFileName, TestUtils.getResource(testResource),
-                buildArgs);
-        Assert.assertTrue(successful);
-        Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("kubernetes").resolve("openshift")));
-        FileUtils.deleteDirectory(TestUtils.getResource(testResource).resolve("kubernetes").toFile());
-    }
-    
-    @Test(dataProvider = "distribution-provider")
-    public void buildKnativeTest(String distributionFileName) throws IOException, InterruptedException {
-        Path testResource = Paths.get("/knative");
-        List<String> buildArgs = new LinkedList<>();
-        buildArgs.add("hello_world_knative.bal");
-        boolean successful = TestUtils.executeBuild(distributionFileName, TestUtils.getResource(testResource),
-                buildArgs);
-        Assert.assertTrue(successful);
-        Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("kubernetes")));
-        FileUtils.deleteDirectory(TestUtils.getResource(testResource).resolve("kubernetes").toFile());
     }
     
     @AfterClass

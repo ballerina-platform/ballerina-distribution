@@ -1,12 +1,12 @@
 # To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run xml_functions.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run xml_functions.bal
 
-name
-Hello, World!<name>Book1</name><!--some comment-->
-true
-3
-<!--some comment-->
-<name>Book1</name>
-<book>Hello, World!<name>Book1</name><!--some comment--></book>
-Hello, World!<name>Book1</name>
+Element name: name
+Concat: Hello, World!<name>Book1</name><!--some comment-->
+Equals: true
+Length: 3
+Subsequence: <!--some comment-->
+All XML elements: <name>Book1</name>
+Child elements set: <book>Hello, World!<name>Book1</name><!--some comment--></book>
+Stripped: Hello, World!<name>Book1</name>

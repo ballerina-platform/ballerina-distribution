@@ -1,0 +1,6 @@
+# To run this sample, navigate to the directory that contains the
+# `.bal` file and execute the `ballerina run` command below.
+ballerina run query_expression_to_stream.bal
+
+{"name":"Michelle Sadler","degree":"Bachelor of Medicine","graduationYear":1995}
+{"name":"Martin Guthrie","degree":"Bachelor of Medicine","graduationYear":2007}

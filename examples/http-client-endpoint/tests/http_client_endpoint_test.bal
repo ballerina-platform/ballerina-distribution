@@ -9,13 +9,16 @@ int counter = 0;
     moduleName: "ballerina/io",
     functionName: "println"
 }
+test:MockFunction mock_printLn = new();
+
 public function mockPrint(any|error... a) {
     outputs[counter] = a[0];
     counter += 1;
 }
 
-@test:Config
+@test:Config {}
 function testFunc() {
+     test:when(mock_printLn).call("mockPrint");
 
     json jsonRes1 = {
         "args": {

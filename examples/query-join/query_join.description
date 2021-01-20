@@ -1,0 +1,5 @@
+// The `join` clause can be used to perform an inner equijoin on iterables using the `query expression`.
+// It starts with `join`, which behaves similar to the `from` clause iterating any iterable value.
+// Then, an `on` condition is defined with the `equals` keyword to compare the values and identify
+// the matching items based on the given condition. The iteration is skipped for the non-matching items,
+// which dissatisfies the `on` condition.

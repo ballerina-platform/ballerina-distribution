@@ -1,0 +1,4 @@
+// Fields of a record can be marked as `readonly`. These fields cannot be updated once the record is created and can
+// only hold immutable values.
+// If all the fields of a record are `readonly`, the record itself is considered to have its read-only bit set and
+// can thus be used where a `readonly` (immutable) value is expected.

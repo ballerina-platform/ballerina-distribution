@@ -1,0 +1,2 @@
+description: This BBE demonstrates the usage of the WebSub Hub Client subscribe and unsubscribe to update for a particular topic at the hub.
+keywords: ballerina, ballerina by example, bbe, websub, hub, subscriber, client

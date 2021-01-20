@@ -1,0 +1,6 @@
+// A raw template literal is similar to a string template literal. The difference is while a string
+// template literal results in a `string` value, a raw template literal results in an object value
+// whose type is a subtype of `lang.object:RawTemplate`. This object value contains two list-typed fields:
+// `strings` and `insertions`. The `strings` field contains the string literal portions of the raw template
+// while the `insertions` field contains the values obtained by evaluating the expressions given in the
+// interpolations.

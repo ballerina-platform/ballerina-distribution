@@ -1,0 +1,2 @@
+description: BBE on sending messages to a Kafka topic using a `kafka:Producer` object.
+keywords: ballerina, ballerina by example, bbe, kafka, producer

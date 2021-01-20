@@ -1,3 +1,3 @@
-// The `.constructFrom()` method creates a new value with a target storage type from a given `anydata`-typed
+// The `.cloneWithType()` method creates a new value with a target storage type from a given `anydata`-typed
 // value, and assigns it to a target variable.
-// `.constructFrom()` is defined on all structured types, and returns an error if the operation is unsuccessful.
+// `.cloneWithType()` is defined on all structured types, and returns an error if the operation is unsuccessful.

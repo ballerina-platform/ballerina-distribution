@@ -4,7 +4,8 @@ import ballerina/io;
 
 public function main() {
     // Client endpoint configuration.
-    HelloWorldBlockingClient helloWorldBlockingEp = new ("http://localhost:9090");
+    HelloWorldBlockingClient helloWorldBlockingEp =
+                                             new ("http://localhost:9090");
 
     // Writes custom headers to request message.
     grpc:Headers headers = new;
@@ -15,8 +16,7 @@ public function main() {
 
     // Reads message and headers from response.
     if (unionResp is grpc:Error) {
-        io:println("Error from Connector: " + unionResp.reason() + " - "
-                + <string>unionResp.detail()["message"]);
+        io:println("Error from Connector: " + unionResp.message());
     } else {
         string result;
         grpc:Headers resHeaders;

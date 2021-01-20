@@ -30,7 +30,7 @@ function testFunc() returns @tainted error? {
     var response = httpEndpoint->post("/cbr/route", req);
     if (response is http:Response) {
         var jsonRes = check response.getJsonPayload();
-        test:assertEquals(jsonRes, response1);
+        test:assertEquals(jsonRes.toJsonString(), response1.toJsonString());
     } else {
         test:assertFail(msg = "Failed to call the endpoint:");
     }
@@ -41,7 +41,7 @@ function testFunc() returns @tainted error? {
     var respnc = httpEndpoint->post("/cbr/route", req2);
     if (respnc is http:Response) {
         var jsonRes = check respnc.getJsonPayload();
-        test:assertEquals(jsonRes, response2);
+        test:assertEquals(jsonRes.toJsonString(), response2.toJsonString());
     } else {
         test:assertFail(msg = "Failed to call the endpoint:");
     }

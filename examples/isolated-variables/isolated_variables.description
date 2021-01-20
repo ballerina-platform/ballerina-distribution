@@ -1,0 +1,10 @@
+// An `isolated` variable's mutable state is isolated from the rest of the program. The
+// mutable state reachable from such a variable is only reachable from the variable itself,
+// making an `isolated` variable an "isolated root" similar to `isolated` objects.
+// Such a variable can only be accessed within a `lock` statement ensuring that there
+// will be no data race when accessing the mutable state reachable from the variable.
+// If a `lock` statement in a function accesses such a field, additional rules apply to how values are
+// transferred in and out of the `lock` statement similar to `isolated` objects.
+// The initial value expression of the variable also needs to be an isolated expression.
+// A function/method call within a `lock` statement that accesses an `isolated` variable should call a
+// function/method that is `isolated`.

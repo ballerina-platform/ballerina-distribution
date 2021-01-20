@@ -1,0 +1,9 @@
+# To start the service, navigate to the directory that contains the
+# `.bal` file and execute the `ballerina run` command below.
+ballerina run http_client_data_binding.bal
+[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+[ballerina/http] started HTTP/WS listener 0.0.0.0:9092
+2020-10-21 19:45:28,828 INFO  [] - String payload: Hello ballerina!!!!
+2020-10-21 19:45:28,873 INFO  [] - Json payload: {"id":"Ballerina", "values":{"a":{"x":"b"}}}
+2020-10-21 19:45:28,885 INFO  [] - Ballerina
+2020-10-21 19:45:28,902 INFO  [] - Person name: Smith

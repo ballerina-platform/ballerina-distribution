@@ -1,2 +1,3 @@
 // Documentation attachments allow you to document different Ballerina constructs such as functions, records, objects, and listeners that are defined in modules.
-// These attachments are used by Docerina (i.e., the Ballerina documentation generation tool) to generate API documentation for the modules.
+// These attachments are used by the Ballerina documentation generation tool to generate API documentation for the modules. The documentation is written in 
+// Ballerina Flavored Markdown, which is a dialect of GitHub's Markdown format. 

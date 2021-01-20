@@ -3,10 +3,10 @@ import ballerina/io;
 // Declare a module-level variable.
 int total = 99;
 
-// Declare a constant.
+// Declare a compile-time constant.
 const string OK = "ok";
 
-// Declare a `public` constant.
+// Declare a `public` compile-time constant.
 public const int COUNT = 1;
 
 // Declare a final variable.
@@ -16,13 +16,10 @@ public const int COUNT = 1;
 final int status = 1;
 
 public function main() {
-
     // Access a global variable.
     io:println(total);
-
     // Access a public constant.
     io:println(COUNT);
-
     // This is a local variable.
     boolean available = false;
     io:println(available);

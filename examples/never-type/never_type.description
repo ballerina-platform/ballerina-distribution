@@ -1,0 +1,4 @@
+// The `never` type represents the type which has no values.
+// This can be useful to describe the return type of a function, if the function
+// never returns. As no value can ever belong to the `never` type, variables of type `never`
+// cannot be declared.

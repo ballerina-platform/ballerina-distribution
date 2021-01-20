@@ -1,5 +1,5 @@
 // The `.clone()` method can be used to make a copy of an `anydata` value.
-// `anydata` is equivalent to `()|boolean|int|float|decimal|string|(anydata|error)[]|map<anydata|error>|xml|table`.
+// `anydata` is equivalent to `()|boolean|int|float|decimal|string|anydata[]|map<anydata>|xml|table<map<anydata>>`.
 // Clone is defined for all structured types that belong to `anydata`.
 // The resultant copy is a deep copy.
 // A deep copy copies all fields and makes copies of the dynamically-allocated memory that is pointed to by the fields.

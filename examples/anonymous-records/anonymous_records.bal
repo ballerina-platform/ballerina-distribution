@@ -26,9 +26,9 @@ public function main() {
     record {|
         string city;
         string country;
-    |} adr = {city: "London", country: "UK"};
+    |} addr = {city: "London", country: "UK"};
 
-    Person jane = {name: "Jane Doe", age: 20, address: adr};
+    Person jane = {name: "Jane Doe", age: 20, address: addr};
     io:println(jane);
 
     anydata[] fields = toFieldsArray(john);

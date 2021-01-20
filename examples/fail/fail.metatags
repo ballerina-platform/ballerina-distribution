@@ -1,0 +1,2 @@
+description: This BBE demonstrates how the `fail` statement can be used to return an error when its known to be an error.
+keywords: ballerina, ballerina by example, bbe, error handling, fail

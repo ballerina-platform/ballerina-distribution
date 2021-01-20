@@ -1,0 +1,8 @@
+// To improve the reliability of microservice-based applications, a series of
+// microservice invocations can be bound into a single unit of work. The underlying
+// mechanisms are that of infection and agreement protocols. This example demonstrates
+// the Ballerina distributed transactions protocol in action.  <br/><br/>
+// After starting the `initiator service` and the `participant service`, execute the `curl -v localhost:8080/init`
+// cURL command to invoke the services. <br/><br/>
+// For more information on the underlying module,
+// see the [Transactions module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/lang.transaction/index.html).

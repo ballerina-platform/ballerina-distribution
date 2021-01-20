@@ -1,0 +1,3 @@
+// In Ballerina GraphQL, a service represents the GraphQL endpoint.
+// Each resource function inside the service represents a resolver function for a field in the root Query type.
+// This example shows a simple GraphQL endpoint that has a single field in the root Query type, which returns a string.

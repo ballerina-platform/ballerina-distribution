@@ -6,17 +6,11 @@ import ballerina/log;
 listener http:Listener http2ServiceEP = new (7090,
     config = {httpVersion: "2.0"});
 
-@http:ServiceConfig {
-    basePath: "/http2Service"
-}
-service http2Service on http2ServiceEP {
+service /http2Service on http2ServiceEP {
 
-    @http:ResourceConfig {
-        path: "/"
-    }
-    resource function http2Resource(http:Caller caller, http:Request req) {
+    resource function 'default .(http:Caller caller, http:Request req) {
 
-        // Send a Push Promise.
+        // [Send a Push Promise](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Caller#promise).
         http:PushPromise promise1 = new (path = "/resource1", method = "GET");
         var promiseResponse1 = caller->promise(promise1);
         if (promiseResponse1 is error) {
@@ -57,11 +51,11 @@ service http2Service on http2ServiceEP {
         msg = {"push": {"name": "resource1"}};
         push1.setPayload(msg);
 
-        // Push promised resource1.
+        // [Push promised resource1](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Caller#pushPromisedResponse).
         var pushResponse1 = caller->pushPromisedResponse(promise1, push1);
         if (pushResponse1 is error) {
-            log:printError("Error occurred while sending the promised response1",
-                err = pushResponse1);
+            log:printError("Error occurred while sending the promised " +
+                           "response1", err = pushResponse1);
         }
 
         // Construct promised resource2.
@@ -72,8 +66,8 @@ service http2Service on http2ServiceEP {
         // Push promised resource2.
         var pushResponse2 = caller->pushPromisedResponse(promise2, push2);
         if (pushResponse2 is error) {
-            log:printError("Error occurred while sending the promised response2",
-                err = pushResponse2);
+            log:printError("Error occurred while sending the promised " +
+                            "response2", err = pushResponse2);
         }
 
         // Construct promised resource3.
@@ -84,8 +78,8 @@ service http2Service on http2ServiceEP {
         // Push promised resource3.
         var pushResponse3 = caller->pushPromisedResponse(promise3, push3);
         if (pushResponse3 is error) {
-            log:printError("Error occurred while sending the promised response3",
-                err = pushResponse3);
+            log:printError("Error occurred while sending the promised " +
+                            "response3", err = pushResponse3);
         }
     }
 }

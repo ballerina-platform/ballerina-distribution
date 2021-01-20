@@ -1,38 +1,31 @@
 import ballerina/io;
 
 // This function (optionally) returns a `string` value. In this example, `string?` is equivalent to `string|()`.
-function getValue(string key) returns string? {
-    if (key == "string") {
-        return "hello world";
+function getLargestCountryInContinent(string continent) returns string? {
+    match continent {
+        "North America" => { return "USA"; }
+        "South America" => { return "Brazil"; }
+        "Africa" => { return "Algeria"; }
+        "Europe" => { return "Russia"; }
+        "Asia" => { return "Russia"; }
+        "Australia" => { return "Australia"; }
+        // In Ballerina, the `nil` type that is provided as `()` contains a single value named "nil". This is used
+        // to represent the absence of any other value. The `nil` value is written as `()`.
+        "Antarctica" => { return (); }
     }
-
-    // In Ballerina, the `nil` type that is provided as `()` contains a single value named "nil". This is used
-    // to represent the absence of any other value.
-    // The `nil` value is written as `()`.
-    // `null` is syntactic sugar for "nil" that is to be used with JSON values because JSON uses `null`.
-    // `return ();` here is the same as `return;`. Not having a return statement at the end is also the same as
-    // explicitly returning `()`.
-    return ();
+    // Not having a return statement at the end is also the same as explicitly returning `()`.
 }
 
 public function main() {
-    // It is optional for `getValue()` to return a value of type `string`. Thus, the value could be either
-    // of type `string` or of type `()` and needs to be handled explicitly.
-    // The statement `string s = getValue("string");` produces a compilation error.
-    string? s = getValue("string");
+    // It is optional for `getLargestCountryInContinent()` to return a value of type `string`. 
+    // Thus, the value could be either of type `string` or of type `()` and needs to be handled explicitly.
+    string continent = io:readln("Enter continent: ");
+    string? country = getLargestCountryInContinent(continent);
 
     // The type test can then be used to check if the value is in fact a `string` and then operate on it.
-    if (s is string) {
-        io:println("Length of the string: ", s.length());
+    if country is string {
+        io:println("The largest country in ", continent, " is ", country);
     } else {
-        io:println("s is ()");
-    }
-
-    // A value of type `string` or `()` can be assigned to `s`.
-    s = ();
-    if (s is string) {
-        io:println("Length of the string: ", s.length());
-    } else {
-        io:println("s is ()");
+        io:println("The continent ", continent, " does not have any countries");
     }
 }

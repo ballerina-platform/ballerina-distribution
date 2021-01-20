@@ -29,9 +29,9 @@ public function main() {
     // The table preserves the order of its members. Iterating over the table gives the
     // members of the table sequentially.
     EmployeeTable employeeTab = table [
-      { id: 1, name: "John", salary: 300.50 },
-      { id: 2, name: "Bella", salary: 500.50 },
-      { id: 3, name: "Peter", salary: 750.0 }
+      {id: 1, name: "John", salary: 300.50},
+      {id: 2, name: "Bella", salary: 500.50},
+      {id: 3, name: "Peter", salary: 750.0}
     ];
 
     // Prints the `table` data.
@@ -41,7 +41,7 @@ public function main() {
     io:println("Total number of Employees: ", employeeTab.length());
 
     // Adds a new member to the `Employee` table.
-    Employee emp = { id: 4, name: "Max", salary: 900.0 };
+    Employee emp = {id: 4, name: "Max", salary: 900.0};
     employeeTab.add(emp);
 
     // Retrieves a member using the ID field of an Employee.
@@ -75,23 +75,23 @@ public function main() {
     // `.map()` applies a function to each member of a table and returns a table of the result.
     // The resulting table will have the same keys as the argument table.
     table<Person> personTab = employeeTab.'map(function (Employee employee)
-    returns Person {
-        return { id: employee.id, name:employee.name, age:23 };
+                                                            returns Person {
+        return {id: employee.id, name:employee.name, age:23};
     });
     io:println("Person Table Information: ", personTab);
 
     // Create `table` values with map-constrained members.
     CustomerTable customerTab = table [
-        { id: 13 , fname: "Dan", lname: "Bing" },
-        { id: 23 , fname: "Hay" , lname: "Kelsey" }
+        {id: 13 , fname: "Dan", lname: "Bing"},
+        {id: 23 , fname: "Hay" , lname: "Kelsey"}
     ];
     io:println("Customer Table Information: ", customerTab);
 
     // The table constructor can be used without a contextually-expected type. Member access is not
     // allowed here.
     var studentTab = table [
-        { id: 44, fname: "Meena", lname: "Kaur" },
-        { id: 55, fname: "Jay", address: "Palm Grove, NY"}
+        {id: 44, fname: "Meena", lname: "Kaur"},
+        {id: 55, fname: "Jay", address: "Palm Grove, NY"}
     ];
    io:println("Student Table Information: ", studentTab);
 

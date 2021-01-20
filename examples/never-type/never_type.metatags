@@ -1,0 +1,2 @@
+description: Never type can be used to represent the type which has no values. This example demonstrates how you can use never type in some scenarios.
+keywords: ballerina, ballerina by example, bbe, type, never type

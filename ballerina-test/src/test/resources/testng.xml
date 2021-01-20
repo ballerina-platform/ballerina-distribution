@@ -22,6 +22,8 @@
         <classes>
             <class name="org.ballerinalang.distribution.test.DistributionArtifactCheckTest"/>
             <class name="org.ballerinalang.distribution.test.PlatformDistributionArtifactCheckTest"/>
+            <class name="org.ballerinalang.distribution.test.OpenAPIDistributionArtifactCheck"/>
+            <class name="org.ballerinalang.distribution.test.OpenAPIArtifactBuildTest"/>
         </classes>
     </test>
 </suite>

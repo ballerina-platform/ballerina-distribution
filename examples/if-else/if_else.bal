@@ -16,7 +16,7 @@ public function main() {
         io:println("a >= b");
     }
 
-    // This is an `if-else-if-else` scenario.
+    // This is an `if-else-if` ladder scenario.
     if (b < 0) {
         io:println("b < 0");
     } else if (b > 0) {

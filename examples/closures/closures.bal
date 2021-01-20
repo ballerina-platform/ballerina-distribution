@@ -1,6 +1,6 @@
 import ballerina/io;
 
-int globalA = 5;
+int moduleA = 5;
 
 // A basic example in which an anonymous function with an `if` block accesses its outer scope
 // variables.
@@ -9,7 +9,7 @@ function basicClosure() returns (function (int) returns int) {
     var foo = function (int b) returns int {
         int c = 34;
         if (b == 3) {
-            c = c + b + a + globalA;
+            c = c + b + a + moduleA;
         }
         return c + a;
     };

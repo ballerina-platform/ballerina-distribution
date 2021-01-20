@@ -1,0 +1,3 @@
+description: BBE on how to use an HTTP load balancer in Ballerina. This will allow to balance the load of an endpoint
+using a given algorithm to select the endpoint.
+keywords: ballerina, ballerina by examples, bbe, http, resiliency, load balancer, load balance

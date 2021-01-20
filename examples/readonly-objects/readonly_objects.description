@@ -1,0 +1,2 @@
+// A class can be defined as a `readonly class`. This is equivalent to all the fields of an object being
+// `final` and immutable. A `readonly object` value can be used where an immutable value is expected.

@@ -2,8 +2,8 @@
 # Subscriber Service needs to start after the publisher registers the topic at the hub.
 # If the port is not specified, the hub service starts on the default port.
 # To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run hub.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run hub.bal
 Starting up the Ballerina Hub Service
 [ballerina/websub] Ballerina WebSub Hub started up.
 [ballerina/websub] Publish URL: http://localhost:9191/websub/publish

@@ -26,9 +26,9 @@ public type Address record {|
     CountryCode countryCode;
 |};
 
-// The `Person` object type is deprecated, but does not have the `# # Deprecated` documentation.
+// The `Person` class type is deprecated, but does not have the `# # Deprecated` documentation.
 @deprecated
-public type Person object {
+public class Person {
     public string firstName = "John";
     public string lastName = "Doe";
     // Usage of the deprecated record `Address`.
@@ -45,7 +45,7 @@ public type Person object {
         return self.firstName + " " + self.lastName;
     }
 
-};
+}
 
 // The function `createPerson` is marked as deprecated using the `@deprecated` annotation.
 // Since it has documentation, the `# # Deprecated` documentation needs to be added as well.
@@ -62,9 +62,10 @@ public type Person object {
 # This function is deprecated since the `Person` type is deprecated.
 @deprecated
 public function createPerson(string fname, string lname, string street,
-                             string city, CountryCode countryCode) returns Person {
+                             string city, CountryCode countryCode)
+                             returns Person {
 
-    // Usage of the deprecated object `Person`.
+    // Usage of the deprecated class `Person`.
     Person p = new;
 
     p.firstName = fname;
@@ -75,7 +76,8 @@ public function createPerson(string fname, string lname, string street,
 
 public function main() {
     // Usage of the deprecated object `Person` and function `createPerson`.
-    Person p = createPerson("Jane", "Doe", "Castro Street", "Mountain View", USA);
+    Person p = createPerson("Jane", "Doe", "Castro Street",
+                            "Mountain View", USA);
 
     // Usage of the deprecated object method `getFullName`
     io:println(p.getFullName());

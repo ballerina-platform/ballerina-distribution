@@ -1,56 +1,22 @@
-import ballerina/io;
 import ballerina/log;
 
 public function main() {
-    error e = error("error occurred");
+    error e = error("something went wrong!");
 
-    // The Ballerina log API provides functions to log at five levels, which are
-    // `DEBUG`, `ERROR`, `INFO`, `TRACE`, and `WARN`. By default, all log
-    // messages are logged to the console at the `INFO` level. In addition to
-    // these log levels, there are 2 additional levels named `OFF` and `ALL`.
-    // `OFF` turns off logging and `ALL` enables all the log levels. The log
-    // level can be configured via a Ballerina configuration file or CLI
-    // parameters.
-    log:printDebug("debug log");
+    // There are two log levels (INFO, ERROR) and there is no user configuration to control which log level to print.
+    log:print("info log");
     log:printError("error log");
-    log:printError("error log with cause", e);
-    log:printInfo("info log");
-    log:printTrace("trace log");
-    log:printWarn("warn log");
-    // To set the log level of the API, use the following CLI parameter: <br>
-    // `--b7a.log.level=[LOG_LEVEL]`
-    //
-    // To configure using a configuration file, place the entry given below in
-    // the file:
-    //
-    // ```
-    // [b7a.log]
-    // level="[LOG_LEVEL]"
-    // ```
 
-    // Each module can also be assigned its own log level. To assign a
-    // log level to a module, provide the following configuration
-    // `<MODULE_NAME>.loglevel`.
-    //
-    // E.g., `--foo.loglevel=DEBUG`
-    Fruit apple = new ("Apple");
-    Fruit orange = new ("Orange");
+    // Users can pass any number of key/value pairs which needs to be displayed in the log message.
+    // These can be of `anydata` type including int, string and boolean.
+    log:print("info log", id = 845315, name = "foo", successful = true);
 
-    log:printDebug("Name of the fruit is Strawberry.");
-    log:printDebug(io:sprintf("Names of the fruits are %s, %s.", apple.getName(), orange.getName()));
-    // Logic constructing log messages with expensive operations can alternatively be passed as a function
-    // pointer implementation. The function will be executed if and only if that particular log level is enabled.
-    log:printDebug(function() returns string {
-        return io:sprintf("Name of the fruit is is %s", apple.getName());
-    });
+    // Users can also pass key/value pairs where the values are function pointers.
+    log:print("info log", id = 845315,
+              name = isolated function() returns string { return "foo";});
+    log:printError("error log",
+        id = isolated function() returns int { return 845315;}, name = "foo");
+
+    // Optionally an error can be passed to the printError function.
+    log:printError("error log with cause", err = e, id = 845315, name = "foo");
 }
-
-public type Fruit object {
-    string name;
-    public function __init(string name) {
-        self.name = name;
-    }
-    function getName() returns string {
-        return self.name;
-    }
-};

@@ -12,8 +12,7 @@ public function main() {
     var res = helloWorldEp->lotsOfGreetings(HelloWorldMessageListener);
 
     if (res is grpc:Error) {
-        io:println("Error from Connector: " + res.reason() + " - "
-                                           + <string>res.detail()["message"]);
+        io:println("Error from Connector: " + res.message());
         return;
     } else {
         io:println("Initialized connection sucessfully.");
@@ -26,10 +25,9 @@ public function main() {
     foreach string greet in greets {
         grpc:Error? connErr = ep->send(greet + " " + name);
         if (connErr is grpc:Error) {
-            io:println("Error from Connector: " + connErr.reason() + " - "
-                                       + <string>connErr.detail()["message"]);
+            io:println("Error from Connector: " + connErr.message());
         } else {
-            io:println("send greeting: " + greet + " " + name);
+            io:println("Send greeting: " + greet + " " + name);
         }
     }
 
@@ -40,26 +38,25 @@ public function main() {
     }
 
     while (total == 0) {}
-    io:println("completed successfully");
+    io:println("Completed successfully");
 }
 
 // Server Message Listener.
-service HelloWorldMessageListener = service {
+service object{} HelloWorldMessageListener = service object {
 
     // Resource registered to receive server messages.
-    resource function onMessage(string message) {
+    function onMessage(string message) {
         total = 1;
         io:println("Response received from server: " + message);
     }
 
     // Resource registered to receive server error messages.
-    resource function onError(error err) {
-        io:println("Error reported from server: " + err.reason() + " - "
-                                           + <string>err.detail()["message"]);
+    function onError(error err) {
+        io:println("Error reported from server: " + err.message());
     }
 
     // Resource registered to receive server completed messages.
-    resource function onComplete() {
+    function onComplete() {
         total = 1;
         io:println("Server Complete Sending Responses.");
     }

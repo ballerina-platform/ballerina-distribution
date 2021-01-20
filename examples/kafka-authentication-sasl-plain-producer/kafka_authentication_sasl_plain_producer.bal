@@ -1,5 +1,5 @@
 import ballerina/io;
-import ballerina/kafka;
+import ballerinax/kafka;
 
 // The `kafka:AuthenticationConfiguration` is used to provide authentication-related details.
 kafka:AuthenticationConfiguration authConfig = {
@@ -9,19 +9,24 @@ kafka:AuthenticationConfiguration authConfig = {
     // Check Ballerina `config` APIs to see how to use encrypted values instead of plain text values here.
     username: "ballerina",
     password: "ballerina-secret"
+
 };
 
 kafka:ProducerConfiguration producerConfigs = {
     bootstrapServers: "localhost:9092",
-    valueSerializerType: kafka:SER_STRING,
+    valueSerializerType: kafka:SER_BYTE_ARRAY,
     // Provide the relevant authentication configuration record to authenticate the producer.
     authenticationConfiguration: authConfig
+
 };
 
-kafka:Producer kafkaProducer = new (producerConfigs);
+kafka:Producer kafkaProducer = checkpanic new (producerConfigs);
 
 public function main() {
-    var result = kafkaProducer->send("Hello from Ballerina", "topic-sasl");
+    string message = "Hello from Ballerina";
+    var result = kafkaProducer->sendProducerRecord({
+                            topic: "topic-sasl",
+                            value: message.toBytes() });
     if (result is error) {
         io:println(result);
     } else {

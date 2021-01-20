@@ -1,0 +1,44 @@
+dn: ou=Users,dc=avix,dc=lk
+changetype: add
+objectClass: organizationalUnit
+ou: Users
+
+dn: ou=Groups,dc=avix,dc=lk
+changetype: add
+objectClass: organizationalUnit
+ou: Groups
+
+dn: uid=ldclakmal,ou=Users,dc=avix,dc=lk
+changetype: add
+objectClass: inetOrgPerson
+cn: Super Admin
+givenName: Chanaka
+sn: Lakmal
+uid: ldclakmal
+displayName: Chanaka Lakmal
+mail: ldclakmal@gmail.com
+userpassword: ldclakmal123
+
+dn: uid=janedoe,ou=Users,dc=avix,dc=lk
+changetype: add
+objectClass: inetOrgPerson
+cn: Test Developer
+givenName: Jane
+sn: Doe
+uid: janedoe
+displayName: Jane Doe
+mail: janedoe@gmail.com
+userpassword: janedoe123
+
+dn: cn=Admin,ou=Groups,dc=avix,dc=lk
+changetype: add
+cn: Admin
+objectClass: groupOfNames
+member: uid=ldclakmal,ou=Users,dc=avix,dc=lk
+
+dn: cn=Developer,ou=Groups,dc=avix,dc=lk
+changetype: add
+cn: Developer
+objectClass: groupOfNames
+member: uid=ldclakmal,ou=Users,dc=avix,dc=lk
+member: uid=janedoe,ou=Users,dc=avix,dc=lk

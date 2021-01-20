@@ -4,8 +4,8 @@
 
 # Add new Ballerina file `grpc_secured_unary_client.bal` inside the `client` module and add client implementation.
 
-# Execute the following command to build the 'client' module.
-$ ballerina build client
+# Execute the command below to build the 'client' module.
+ballerina build client
 
-# To run the client, execute the below command by passing the path to the Ballerina home directory using the --`b7a.home` parameter.
-$ ballerina run target/bin/client.jar --b7a.home=<ballerina_home_path>
+# To run the client, execute the command below by passing the path to the Ballerina home directory using the --`b7a.home` parameter.
+ballerina run target/bin/client.jar --b7a.home=<ballerina_home_path>

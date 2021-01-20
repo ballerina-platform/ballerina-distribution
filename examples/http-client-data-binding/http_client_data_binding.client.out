@@ -1,0 +1,48 @@
+# To invoke the `bindCheck` resource, use the cURL command below.
+curl -v "http://localhost:9090/call/all"
+> GET /call/all HTTP/1.1
+> Host: localhost:9090
+> User-Agent: curl/7.64.1
+> Accept: */*
+>
+< HTTP/1.1 200 OK
+< content-type: application/json
+< x-fact: backend-payload
+< date: Wed, 21 Oct 2020 19:45:28 +0530
+< server: ballerina
+< content-length: 26
+<
+* Connection #0 to host localhost left intact
+{"id":"data-binding-done"}* Closing connection 0
+
+# To invoke the `handle500` resource, use the cURL command below.
+curl -v "http://localhost:9090/call/5xx"
+> GET /call/5xx HTTP/1.1
+> Host: localhost:9090
+> User-Agent: curl/7.64.1
+> Accept: */*
+>
+< HTTP/1.1 501 Not Implemented
+< content-type: text/plain
+< content-length: 28
+< server: ballerina
+< date: Wed, 21 Oct 2020 19:46:42 +0530
+<
+* Connection #0 to host localhost left intact
+data-binding-failed-with-501* Closing connection 0
+
+# To invoke the `handle404` resource, use the cURL command below.
+curl -v "http://localhost:9090/call/4xx"
+> GET /call/4xx HTTP/1.1
+> Host: localhost:9090
+> User-Agent: curl/7.64.1
+> Accept: */*
+>
+< HTTP/1.1 404 Not Found
+< content-type: text/plain
+< content-length: 66
+< server: ballerina
+< date: Wed, 21 Oct 2020 19:48:37 +0530
+<
+* Connection #0 to host localhost left intact
+no matching resource found for path : /backend/err , method : POST* Closing connection 0

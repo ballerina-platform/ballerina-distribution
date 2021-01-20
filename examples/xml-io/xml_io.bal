@@ -9,7 +9,7 @@ public function main() {
     // Writes the content.
     var wResult = write(x1, filePath);
     if (wResult is error) {
-        log:printError("Error occurred while writing xml: ", wResult);
+        log:printError("Error occurred while writing xml: ", err=wResult);
     } else {
         io:println("Preparing to read the content written");
         // Reads the content.
@@ -17,13 +17,13 @@ public function main() {
         if (rResult is xml) {
             io:println(rResult);
         } else {
-            log:printError("Error occurred while reading xml: ", rResult);
+            log:printError("Error occurred while reading xml: ", err=rResult);
         }
     }
 }
 
 // Writes `xml` content to a given path.
-function write(xml content, string path) returns @tainted error? {
+function write(xml content, string path) returns error? {
     // Creates a byte channel from the given path.
     io:WritableByteChannel wbc = check io:openWritableFile(path);
     // Derives the character channel from the byte channel.

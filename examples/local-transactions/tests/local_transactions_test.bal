@@ -1,25 +1,30 @@
 import ballerina/test;
-import ballerina/io;
 
 (any|error)[] outputs = [];
-int count = 0;
 
+// This is the mock function which will replace the real function
 @test:Mock {
     moduleName: "ballerina/io",
     functionName: "println"
 }
+test:MockFunction mock_printLn = new();
+
 public function mockPrint(any|error... s) {
-    outputs[count] = string.convert(s[0]);
-    count += 1;
+    foreach var entry in s {
+        outputs.push(entry.toString());
+    }
 }
 
-@test:Config
+@test:Config {}
 function testFunc() {
-    main();
-    test:assertEquals(outputs[0], "Create CUSTOMER table status: 0");
-    test:assertEquals(outputs[1], "Create SALARY table status: 0");
-    test:assertEquals(outputs[2], "Inserted count: 1");
-    test:assertEquals(outputs[3], "Transaction committed");
-    test:assertEquals(outputs[4], "Drop table CUSTOMER status: 0");
-    test:assertEquals(outputs[5], "Drop table SALARY status: 0");
+    test:when(mock_printLn).call("mockPrint");
+
+    // Invoking the main function
+    error? output = main();
+    test:assertExactEquals(outputs[0], "Transaction Info: ");
+    test:assertExactEquals(outputs[2], "Transaction committed");
+    test:assertExactEquals(outputs[3], "Account Credit: ");
+    test:assertExactEquals(outputs[4], "{\"affectedRowCount\":1,\"lastInsertId\":null}");
+    test:assertExactEquals(outputs[5], "Account Debit: ");
+    test:assertExactEquals(outputs[6], "{\"affectedRowCount\":1,\"lastInsertId\":null}");
 }

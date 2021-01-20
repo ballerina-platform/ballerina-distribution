@@ -12,7 +12,7 @@ public function main() {
 #
 # + fieldOne - This is the description of the `DummyObject`'s `fieldOne` field.
 # + fieldTwo - This is the description of the `DummyObject`'s `fieldTwo` field.
-public type DummyObject abstract object {
+public type DummyObject object {
 
     public string fieldOne;
     public string fieldTwo;

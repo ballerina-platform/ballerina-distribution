@@ -1,0 +1,3 @@
+# Invoke the GraphQL service with a cURL command.
+curl -XPOST -H "Content-type: application/json" -d '{ "query": " { greet (name: \"Walter\") }" }' 'http://localhost:9090/graphql'
+{"data":{"greet":"Hello, Walter"}}

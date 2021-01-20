@@ -10,8 +10,7 @@ function readRecord(Record? value) {
         io:println("Record ID: ", value.id, ", value: ", value.name);
     } else {
         // Panics if `value` is `()`.
-        error err = error("Record is nil");
-        panic err;
+        panic error("Record is nil");
     }
 }
 

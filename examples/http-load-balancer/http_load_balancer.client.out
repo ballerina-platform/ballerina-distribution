@@ -1,5 +1,5 @@
-# To invoke the Load Balancer Demo Service, use following cURL command.
-$ curl -v http://localhost:9090/lb
+# To invoke the Load Balancer Demo Service, use the cURL command below.
+curl -v http://localhost:9090/lb
 *   Trying ::1...
 * TCP_NODELAY set
 * Connected to localhost (::1) port 9090 (#0)
@@ -10,8 +10,8 @@ $ curl -v http://localhost:9090/lb
 >
 < HTTP/1.1 200 OK
 < content-type: text/plain
-< date: Wed, 4 Sep 2019 15:36:57 +0530
-< server: ballerina/1.0.0-beta
+< date: Wed, 23 Sep 2020 09:59:31 +0530
+< server: ballerina
 < content-length: 27
 <
 * Connection #0 to host localhost left intact
@@ -19,7 +19,7 @@ Mock1 resource was invoked.
 
 # Repeat the same cURL command to invoke the Load Balance Demo Service again.
 # The request will be load balanced to the second mock service.
-$ curl -v http://localhost:9090/lb
+curl -v http://localhost:9090/lb
 *   Trying ::1...
 * TCP_NODELAY set
 * Connected to localhost (::1) port 9090 (#0)
@@ -30,8 +30,8 @@ $ curl -v http://localhost:9090/lb
 >
 < HTTP/1.1 200 OK
 < content-type: text/plain
-< date: Wed, 4 Sep 2019 15:36:58 +0530
-< server: ballerina/1.0.0-beta
+< date: Wed, 23 Sep 2020 10:00:20 +0530
+< server: ballerina
 < content-length: 27
 <
 * Connection #0 to host localhost left intact
@@ -39,7 +39,7 @@ Mock2 resource was invoked.
 
 # Invoke the Load Balancer Demo Service one more time using the same cURL command.
 # The request will be load balanced to the third mock service.
-$ curl -v http://localhost:9090/lb
+curl -v http://localhost:9090/lb
 *   Trying ::1...
 * TCP_NODELAY set
 * Connected to localhost (::1) port 9090 (#0)
@@ -50,8 +50,8 @@ $ curl -v http://localhost:9090/lb
 >
 < HTTP/1.1 200 OK
 < content-type: text/plain
-< date: Wed, 4 Sep 2019 15:36:59 +0530
-< server: ballerina/1.0.0-beta
+< date: Wed, 23 Sep 2020 10:00:22 +0530
+< server: ballerina
 < content-length: 27
 <
 * Connection #0 to host localhost left intact
@@ -59,7 +59,7 @@ Mock3 resource was invoked.
 
 # Invoke the Load Balancer Demo Service using the same cURL command for the last time.
 # The request will be load balanced to the first mock service again.
-$ curl -v http://localhost:9090/lb
+curl -v http://localhost:9090/lb
 *   Trying ::1...
 * TCP_NODELAY set
 * Connected to localhost (::1) port 9090 (#0)
@@ -70,8 +70,8 @@ $ curl -v http://localhost:9090/lb
 >
 < HTTP/1.1 200 OK
 < content-type: text/plain
-< date: Wed, 4 Sep 2019 15:37:00 +0530
-< server: ballerina/1.0.0-beta
+< date: Wed, 23 Sep 2020 10:00:25 +0530
+< server: ballerina
 < content-length: 27
 <
 * Connection #0 to host localhost left intact

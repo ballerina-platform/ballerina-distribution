@@ -1,7 +1,7 @@
 import ballerina/http;
 import ballerina/test;
 
-@test:Config
+@test:Config{}
 function testFunc() returns error? {
     http:Client httpEndpoint = new("http://localhost:9090");
 

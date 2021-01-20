@@ -65,7 +65,7 @@ public function main() {
     json j13 = checkpanic s.fromJsonString();
     io:println(j13.toJsonString());
 
-    // The value would be equal to the original value from which the string
-    // was created.
-    io:println(j6 == j13);
+    // The result of using `.fromJsonString()` with `s` would be a JSON object (`map<json>`),
+    // given that the string `s` was the result of calling `.toJsonString()` on a JSON object.
+    io:println(j13 is map<json>);
 }

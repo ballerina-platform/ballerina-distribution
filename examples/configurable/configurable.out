@@ -1,0 +1,19 @@
+# To run this sample, create a new TOML file with name `configuration.toml` in the
+# same directory as the `.bal` file.
+
+# The TOML file must contain the following,
+#
+# hostName = "192.0.1.2"
+# port = 9090
+# enableRemote = false
+# maxPayload = 0.321
+
+# Then, navigate to the directory that contains the `.bal` and
+# `configuration.toml` files, and execute the `ballerina run` command below.
+
+ballerina run configurable.bal
+host: 192.0.1.2
+port: 9090
+protocol: http
+maximum payload (in MB): 0.321
+remote enabled: false

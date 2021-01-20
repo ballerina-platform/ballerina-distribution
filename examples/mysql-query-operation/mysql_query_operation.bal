@@ -1,6 +1,6 @@
 import ballerina/io;
-import ballerina/mysql;
 import ballerina/sql;
+import ballerinax/mysql;
 
 // Username and password of the MySQL database. This is used in the below
 // examples when initializing the MySQL connector. You need to change these
@@ -31,11 +31,6 @@ function simpleQuery(mysql:Client mysqlClient) {
         io:println("ForEach operation on the stream failed!", e);
     }
 
-    // In general cases, the stream will be closed automatically
-    // when the stream is fully consumed or any error is encountered.
-    // However, in case if the stream is not fully consumed, the stream should be
-    // closed specifically.
-    e = resultStream.close();
     io:println("------ End Simple Query -------");
 }
 
@@ -57,8 +52,13 @@ function countRows(mysql:Client mysqlClient) {
     } else {
         io:println("Customer table is empty");
     }
-    // Close the stream.
+
+    // In general cases, the stream will be closed automatically
+    // when the stream is fully consumed or any error is encountered.
+    // However, in case if the stream is not fully consumed, the stream should be
+    // closed specifically.
     error? e = resultStream.close();
+
     io:println("------ End Count Total Rows -------");
 }
 
@@ -91,11 +91,8 @@ function typedQuery(mysql:Client mysqlClient) {
         io:println(customer);
     });
     if (e is error) {
-            io:println(e);
+       io:println(e);
     }
-
-    // Close the stream.
-    e = resultStream.close();
 
     io:println("------ End Query With Type Description -------");
 }
@@ -103,7 +100,7 @@ function typedQuery(mysql:Client mysqlClient) {
 //Initialize the database table with sample data.
 function initializeTable() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = dbUser, password = dbPassword);
-    sql:ExecuteResult? result =
+    sql:ExecutionResult result =
         check mysqlClient->execute("CREATE DATABASE IF NOT EXISTS MYSQL_BBE");
     result = check mysqlClient->execute("DROP TABLE IF EXISTS "+
         "MYSQL_BBE.Customers");
@@ -124,6 +121,7 @@ function initializeTable() returns sql:Error? {
 public function main() {
     // Initialize the MySQL client.
     sql:Error? err = initializeTable();
+
     if (err is sql:Error) {
         io:println("Sample data initialization failed!");
         io:println(err);
@@ -139,6 +137,7 @@ public function main() {
 
             // Close the MySQL client.
             sql:Error? e = mysqlClient.close();
+
         } else {
             io:println("MySQL Client initialization for " +
                 "querying data failed!", mysqlClient);

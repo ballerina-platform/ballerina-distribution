@@ -20,7 +20,7 @@ function closeWc(io:WritableCharacterChannel wc) {
 }
 
 // Writes the provided `json` to the specified path.
-function write(json content, string path) returns @tainted error? {
+function write(json content, string path) returns error? {
     // Creates a writable byte channel from the given path.
     io:WritableByteChannel wbc = check io:openWritableFile(path);
     // Derives the character channel from the byte channel.
@@ -59,7 +59,7 @@ public function main() {
     // Writes the `json` content.
     var wResult = write(j1, filePath);
     if (wResult is error) {
-        log:printError("Error occurred while writing json: ", wResult);
+        log:printError("Error occurred while writing json: ", err=wResult);
     } else {
         io:println("Preparing to read the content written");
         // Reads the `json` content.

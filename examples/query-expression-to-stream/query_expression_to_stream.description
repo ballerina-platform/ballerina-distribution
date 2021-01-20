@@ -1,0 +1,4 @@
+// Adding the `stream` keyword as a prefix to a `query expression` allows users to create streams from query expressions.
+// The first clause must be the `stream from` clause and must consist of a `select` clause as well.
+// The resulted `stream` is a stream that generates the emitted values from the `select` clause.
+// In this scenario, the result of the query expression is a stream with the constraint type of the `select` clause.

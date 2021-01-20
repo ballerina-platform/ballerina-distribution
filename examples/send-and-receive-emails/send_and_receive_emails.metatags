@@ -1,0 +1,2 @@
+description: This is a BBE on sending and receiving emails. It has both client and listener based functionalities for email receiving.
+keywords: ballerina, ballerina by example, bbe, email, SMTP, POP3, POP, IMAP, listener

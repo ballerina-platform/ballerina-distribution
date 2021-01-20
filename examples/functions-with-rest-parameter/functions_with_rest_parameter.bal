@@ -15,16 +15,7 @@ function printDetails(string name,
     }
 
     int index = 0;
-    string moduleString = "Module(s): ";
-
-    foreach string module in modules {
-        if (index == 0) {
-            moduleString += module;
-        } else {
-            moduleString += ", " + module;
-        }
-        index += 1;
-    }
+    string moduleString = "Module(s): " + ", ".'join(...modules);
 
     io:println(detailString, ", ", moduleString);
 }

@@ -54,7 +54,7 @@ function testFunc() {
     //    } else if (result is error){
     //        test:assertFail(msg = "Invalid body parts");
     //    }
-    //} else if (response2 is error) {
+    //} else {
     //    test:assertFail(msg = "Error in calling multipart encoder");
     //}
 }
