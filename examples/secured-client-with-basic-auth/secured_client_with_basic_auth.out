@@ -5,4 +5,4 @@
 # available in the distribution.
 # The file path is <ballerina.home>/examples/resources/ballerinaKeystore.p12)
 bal run secured_client_with_basic_auth.bal
-
+time = 2021-01-20 20:04:13,261 level = INFO  module = "" message = "200"

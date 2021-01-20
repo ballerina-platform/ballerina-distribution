@@ -7,7 +7,7 @@ import ballerina/log;
 // of the client. A self signed JWT is issued before the request is sent.
 http:Client securedEP = checkpanic new("https://localhost:9090", {
     auth: {
-        username: "admin",
+        username: "wso2",
         issuer: "ballerina",
         audience: ["ballerina", "ballerina.org", "ballerina.io"],
         keyId: "5a0b754-895f-4279-8843-b745e11a57e9",
