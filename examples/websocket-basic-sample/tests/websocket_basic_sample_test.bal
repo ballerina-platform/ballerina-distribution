@@ -10,7 +10,7 @@ string msg = "hey";
 function testText() returns websocket:Error? {
     websocket:AsyncClient wsClient = check new("ws://localhost:9090/basic/ws", new callback(),
     {subProtocols:["xml", "my-protocol"]});
-    websocket:Error? result = wsClient->writeString(msg);
+    websocket:Error? result = wsClient->writeTextMessage(msg);
     if (result is websocket:Error) {
         log:printError("Error occurred when pushing text", err = result);
     }
@@ -20,7 +20,7 @@ function testText() returns websocket:Error? {
 
 service class callback {
     *websocket:Service;
-    remote function onString(websocket:Caller conn, string text) {
+    remote function onTextMessage(websocket:Caller conn, string text) {
         serviceReply = <@untainted>text;
     }
 }
