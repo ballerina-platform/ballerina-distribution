@@ -1,5 +1,5 @@
 import ballerina/io;
-import ballerina/java;
+import ballerina/jballerina.java;
 
 // Define a Ballerina function which will act as a Java field getter.
 public function pi() returns float = @java:FieldGet {

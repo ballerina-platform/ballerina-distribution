@@ -1,5 +1,5 @@
 import ballerina/io;
-import ballerina/java;
+import ballerina/jballerina.java;
 
 // The [@java:Constructor](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/java/annotations#Constructor) 
 // annotation links the default constructor of
