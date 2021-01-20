@@ -655,8 +655,6 @@ task testExamples() {
             'websocket-cookie',
             'websocket-retry',
             'websocket-failover',
-            'websocket-chat-application',
-            'websocket-proxy-server',
             'http-to-websocket-upgrade',
             'http-filters',
 
