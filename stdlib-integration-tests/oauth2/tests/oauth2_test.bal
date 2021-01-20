@@ -76,6 +76,9 @@ public function testOAuth2Module() {
     }
 }
 
+function assertOK(http:Response res) {
+    test:assertEquals(res.statusCode, http:STATUS_OK, msg = "Response code mismatched");
+}
 
 // Mock OAuth2 authorization server implementation, which treats the APIs with successful responses.
 listener http:Listener authorizationServer = new(25999, {
@@ -87,25 +90,22 @@ listener http:Listener authorizationServer = new(25999, {
     }
 });
 service /oauth2 on authorizationServer {
-    resource function post token/introspect(http:Caller caller, http:Request request) {
+    resource function post token/introspect(http:Request request) returns json {
         string|http:ClientError payload = request.getTextPayload();
-        json response = ();
         if (payload is string) {
             string[] parts = regex:split(payload, "&");
             foreach string part in parts {
                 if (part.indexOf("token=") is int) {
                     string token = regex:split(part, "=")[1];
                     if (token == ACCESS_TOKEN) {
-                        response = { "active": true, "exp": 3600, "scp": "read write" };
+                        json response = { "active": true, "exp": 3600, "scp": "read write" };
+                        return response;
                     } else {
-                        response = { "active": false };
+                        json response = { "active": false };
+                        return response;
                     }
-                    break;
                 }
             }
         }
-        http:Response res = new;
-        res.setPayload(response);
-        checkpanic caller->respond(res);
     }
 }

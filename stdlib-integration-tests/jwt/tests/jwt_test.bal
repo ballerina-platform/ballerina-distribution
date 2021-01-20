@@ -51,7 +51,7 @@ service /foo on jwtListener {
     }
 }
 
-const string jwt = "eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QiLCAia2lkIjoiTlRBeFptTXhORE15WkRnM01UVTFaR00wTXpFek9ESmhaV0k" +
+const string JWT = "eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QiLCAia2lkIjoiTlRBeFptTXhORE15WkRnM01UVTFaR00wTXpFek9ESmhaV0k" +
                     "0TkRObFpEVTFPR0ZrTmpGaU1RIn0.eyJzdWIiOiJhZG1pbiIsICJpc3MiOiJ3c28yIiwgImV4cCI6MTkyNTk1NTcyNCwgIm" +
                     "p0aSI6IjEwMDA3ODIzNGJhMjMiLCAiYXVkIjpbImJhbGxlcmluYSJdLCAic2NwIjoid3JpdGUifQ.H99ufLvCLFA5i1gfCt" +
                     "klVdPrBvEl96aobNvtpEaCsO4v6_EgEZYz8Pg0B1Y7yJPbgpuAzXEg_CzowtfCTu3jUFf5FH_6M1fWGko5vpljtCb5Xknt_" +
@@ -69,7 +69,7 @@ public function testJwtModule() {
            }
         },
         auth: {
-            token: jwt
+            token: JWT
         }
     });
     var response = clientEP->get("/foo/bar");
@@ -78,4 +78,8 @@ public function testJwtModule() {
     } else {
         test:assertFail(msg = "Test Failed!");
     }
+}
+
+function assertOK(http:Response res) {
+    test:assertEquals(res.statusCode, http:STATUS_OK, msg = "Response code mismatched");
 }

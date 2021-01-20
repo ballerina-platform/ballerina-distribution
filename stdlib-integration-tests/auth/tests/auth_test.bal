@@ -64,3 +64,7 @@ public function testAuthModule() {
         test:assertFail(msg = "Test Failed!");
     }
 }
+
+function assertOK(http:Response res) {
+    test:assertEquals(res.statusCode, http:STATUS_OK, msg = "Response code mismatched");
+}
