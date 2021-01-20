@@ -17,10 +17,6 @@
 import ballerina/http;
 import ballerina/test;
 
-const string KEYSTORE_PATH = "src/jwt/tests/resources/keystore/ballerinaKeystore.p12";
-const string TRUSTSTORE_PATH = "src/jwt/tests/resources/keystore/ballerinaTruststore.p12";
-const string EXPIRED_TRUSTSTORE_PATH = "src/jwt/tests/resources/keystore/expiredTruststore.p12";
-
 function assertOK(http:Response res) {
     test:assertEquals(res.statusCode, http:STATUS_OK, msg = "Response code mismatched");
 }

@@ -15,11 +15,12 @@
 // under the License.
 
 import ballerina/http;
+import ballerina/test;
 
 listener http:Listener authListener = new(25001, {
     secureSocket: {
         keyStore: {
-            path: "./resources/keystore/ballerinaKeystore.p12",
+            path: "tests/resources/keystore/ballerinaKeystore.p12",
             password: "ballerina"
         }
     }
@@ -36,7 +37,7 @@ listener http:Listener authListener = new(25001, {
         }
     ]
 }
-service /foo on new authListener {
+service /foo on authListener {
     resource function get bar() returns string {
         return "Hello World!";
     }
@@ -44,13 +45,13 @@ service /foo on new authListener {
 
 @test:Config {}
 public function testAuthModule() {
-    http:Client clientEP = new("https://localhost:25001", {
+    http:Client clientEP = checkpanic new("https://localhost:25001", {
         secureSocket: {
            trustStore: {
-               path: "./resources/keystore/ballerinaTruststore.p12",
+               path: "tests/resources/keystore/ballerinaTruststore.p12",
                password: "ballerina"
            }
-        }
+        },
         auth: {
             username: "alice",
             password: "123"

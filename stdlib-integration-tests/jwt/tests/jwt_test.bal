@@ -15,11 +15,12 @@
 // under the License.
 
 import ballerina/http;
+import ballerina/test;
 
 listener http:Listener jwtListener = new(25002, {
     secureSocket: {
         keyStore: {
-            path: "./resources/keystore/ballerinaKeystore.p12",
+            path: "tests/resources/keystore/ballerinaKeystore.p12",
             password: "ballerina"
         }
     }
@@ -34,7 +35,7 @@ listener http:Listener jwtListener = new(25002, {
                 audience: "ballerina",
                 trustStoreConfig: {
                     trustStore: {
-                        path: TRUSTSTORE_PATH,
+                        path: "tests/resources/keystore/ballerinaTruststore.p12",,
                         password: "ballerina"
                     },
                     certificateAlias: "ballerina"
@@ -44,7 +45,7 @@ listener http:Listener jwtListener = new(25002, {
         }
     ]
 }
-service /foo on new authListener {
+service /foo on jwtListener {
     resource function get bar() returns string {
         return "Hello World!";
     }
@@ -59,14 +60,14 @@ const string jwt = "eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QiLCAia2lkIjoiTlRBeFptTXhO
                     "oFJ6pgzbFuniVNuqYghikCQIizqzQNfC7JUD8wA";
 
 @test:Config {}
-public function testAuthModule() {
-    http:Client clientEP = new("https://localhost:25001", {
+public function testJwtModule() {
+    http:Client clientEP = checkpanic new("https://localhost:25002", {
         secureSocket: {
            trustStore: {
-               path: "./resources/keystore/ballerinaTruststore.p12",
+               path: "tests/resources/keystore/ballerinaTruststore.p12",
                password: "ballerina"
            }
-        }
+        },
         auth: {
             token: jwt
         }

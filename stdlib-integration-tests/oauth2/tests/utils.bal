@@ -15,11 +15,7 @@
 // under the License.
 
 import ballerina/http;
-import ballerina/stringutils;
 import ballerina/test;
-
-const string KEYSTORE_PATH = "src/oauth2/tests/resources/keystore/ballerinaKeystore.p12";
-const string TRUSTSTORE_PATH = "src/oauth2/tests/resources/keystore/ballerinaTruststore.p12";
 
 function assertOK(http:Response res) {
     test:assertEquals(res.statusCode, http:STATUS_OK, msg = "Response code mismatched");
@@ -31,25 +27,4 @@ function assertUnauthorized(http:Response res) {
 
 function assertForbidden(http:Response res) {
     test:assertEquals(res.statusCode, http:STATUS_FORBIDDEN, msg = "Response code mismatched");
-}
-
-function assertContains(http:Response|http:ClientError res, string text) {
-    if (res is http:Response) {
-        var payload = res.getTextPayload();
-        test:assertFalse(trap <string>payload is error);
-        test:assertTrue(stringutils:contains(<string>payload, text));
-    } else {
-        http:ClientError err = <http:ClientError>res;
-        string message = err.message();
-        var cause = err.cause();
-        if (cause is error) {
-            var innerCause = cause.cause();
-            while (innerCause is error) {
-                cause = innerCause;
-                innerCause = innerCause.cause();
-            }
-            message = cause.message();
-        }
-        test:assertTrue(stringutils:contains(message, text));
-    }
 }

@@ -15,11 +15,13 @@
 // under the License.
 
 import ballerina/http;
+import ballerina/regex;
+import ballerina/test;
 
 listener http:Listener oauth2Listener = new(25003, {
     secureSocket: {
         keyStore: {
-            path: "./resources/keystore/ballerinaKeystore.p12",
+            path: "tests/resources/keystore/ballerinaKeystore.p12",
             password: "ballerina"
         }
     }
@@ -30,13 +32,13 @@ listener http:Listener oauth2Listener = new(25003, {
         {
             scopes: ["write", "update"],
             oauth2IntrospectionConfig: {
-                url: "https://localhost:25099/oauth2/token/introspect",
+                url: "https://localhost:25999/oauth2/token/introspect",
                 tokenTypeHint: "access_token",
                 scopeKey: "scp",
                 clientConfig: {
                     secureSocket: {
                        trustStore: {
-                           path: "./resources/keystore/ballerinaTruststore.p12",
+                           path: "tests/resources/keystore/ballerinaTruststore.p12",
                            password: "ballerina"
                        }
                     }
@@ -45,31 +47,25 @@ listener http:Listener oauth2Listener = new(25003, {
         }
     ]
 }
-service /foo on new authListener {
+service /foo on oauth2Listener {
     resource function get bar() returns string {
         return "Hello World!";
     }
 }
 
-const string jwt = "eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QiLCAia2lkIjoiTlRBeFptTXhORE15WkRnM01UVTFaR00wTXpFek9ESmhaV0k" +
-                    "0TkRObFpEVTFPR0ZrTmpGaU1RIn0.eyJzdWIiOiJhZG1pbiIsICJpc3MiOiJ3c28yIiwgImV4cCI6MTkyNTk1NTcyNCwgIm" +
-                    "p0aSI6IjEwMDA3ODIzNGJhMjMiLCAiYXVkIjpbImJhbGxlcmluYSJdLCAic2NwIjoid3JpdGUifQ.H99ufLvCLFA5i1gfCt" +
-                    "klVdPrBvEl96aobNvtpEaCsO4v6_EgEZYz8Pg0B1Y7yJPbgpuAzXEg_CzowtfCTu3jUFf5FH_6M1fWGko5vpljtCb5Xknt_" +
-                    "YPqvbk5fJbifKeXqbkCGfM9c0GS0uQO5ss8StquQcofxNgvImRV5eEGcDdybkKBNkbA-sJFHd1jEhb8rMdT0M0SZFLnhrPL" +
-                    "8edbFZ-oa-ffLLls0vlEjUA7JiOSpnMbxRmT-ac6QjPxTQgNcndvIZVP2BHueQ1upyNorFKSMv8HZpATYHZjgnJQSpmt3Oa" +
-                    "oFJ6pgzbFuniVNuqYghikCQIizqzQNfC7JUD8wA";
+const string ACCESS_TOKEN = "2YotnFZFEjr1zCsicMWpAA";
 
 @test:Config {}
-public function testAuthModule() {
-    http:Client clientEP = new("https://localhost:25001", {
+public function testOAuth2Module() {
+    http:Client clientEP = checkpanic new("https://localhost:25003", {
         secureSocket: {
            trustStore: {
-               path: "./resources/keystore/ballerinaTruststore.p12",
+               path: "tests/resources/keystore/ballerinaTruststore.p12",
                password: "ballerina"
            }
-        }
+        },
         auth: {
-            token: jwt
+            token: ACCESS_TOKEN
         }
     });
     var response = clientEP->get("/foo/bar");
@@ -82,10 +78,10 @@ public function testAuthModule() {
 
 
 // Mock OAuth2 authorization server implementation, which treats the APIs with successful responses.
-listener http:Listener authorizationServer = new(25099, {
+listener http:Listener authorizationServer = new(25999, {
     secureSocket: {
         keyStore: {
-            path: "./resources/keystore/ballerinaKeystore.p12",
+            path: "tests/resources/keystore/ballerinaKeystore.p12",
             password: "ballerina"
         }
     }
