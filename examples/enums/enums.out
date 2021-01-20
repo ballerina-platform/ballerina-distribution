@@ -1,6 +1,6 @@
 # To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run enums.bal
+# `.bal` file, and execute the `bal run` command.
+$ bal run enums.bal
 Color of the sky: BLUE
 concatenated: QUEEN and Pink Floyd
 language: English
