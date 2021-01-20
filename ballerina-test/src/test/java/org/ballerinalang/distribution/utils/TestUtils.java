@@ -76,7 +76,7 @@ public class TestUtils {
     public static boolean executeBuild(String distributionName, Path sourceDirectory, List<String> args) throws
             IOException, InterruptedException {
         args.add(0, "build");
-        args.add(0, TEST_DISTRIBUTION_PATH.resolve(distributionName).resolve("bin").resolve("ballerina").toString());
+        args.add(0, TEST_DISTRIBUTION_PATH.resolve(distributionName).resolve("bin").resolve("bal").toString());
         OUT.println("Executing: " + StringUtils.join(args, ' '));
         ProcessBuilder pb = new ProcessBuilder(args);
         pb.directory(sourceDirectory.toFile());
@@ -136,7 +136,7 @@ public class TestUtils {
     public static Process getProcessBuilderResults(String distributionName, Path sourceDirectory, List<String> args)
             throws IOException, InterruptedException {
 
-        args.add(0, TEST_DISTRIBUTION_PATH.resolve(distributionName).resolve("bin").resolve("ballerina").toString());
+        args.add(0, TEST_DISTRIBUTION_PATH.resolve(distributionName).resolve("bin").resolve("bal").toString());
         OUT.println("Executing: " + StringUtils.join(args, ' '));
         ProcessBuilder pb = new ProcessBuilder(args);
         pb.directory(sourceDirectory.toFile());
