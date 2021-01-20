@@ -8,7 +8,7 @@ public function main() returns error? {
     // Optionally, you can provide the interface that the socket needs to bind 
     // and the timeout in milliseconds, which specifies the read timeout value.
     // udp:Client client = new (localHost = "localhost", timeoutInMillis = 2000);
-    udp:Client socketClient = check new(localHost = "localhost");
+    udp:Client socketClient = check new;
 
     string msg = "Hello Ballerina echo";
     udp:Datagram datagram = {

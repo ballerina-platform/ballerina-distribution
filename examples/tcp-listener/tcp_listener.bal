@@ -16,9 +16,7 @@ service on new tcp:Listener(3000) {
 service class EchoService {
     tcp:Caller caller;
 
-    public function init(tcp:Caller c) {
-        self.caller = c;
-    }
+    public function init(tcp:Caller c) {self.caller = c;}
 
     // This remote method is invoked once the content is received from the client.
     remote function onBytes(readonly & byte[] data) returns tcp:Error? {
@@ -35,7 +33,7 @@ service class EchoService {
 
     // This remote method is invoked when the connection is closed.
     remote function onClose() returns tcp:Error? {
-        io:println("Client left: ", self.caller.remoteHost, "/", self.caller.remotePort);
+         io:println("Client left: ", self.caller.remotePort);
     }
 }
 
