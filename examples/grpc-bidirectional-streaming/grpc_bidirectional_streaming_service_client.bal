@@ -1,7 +1,7 @@
 // This is client implementation for bidirectional streaming scenario.
 import ballerina/grpc;
 import ballerina/io;
-import ballerina/runtime;
+import ballerina/lang.runtime;
 
 int total = 0;
 public function main() {

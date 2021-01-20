@@ -1,6 +1,6 @@
 # To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run readonly_type.bal
+# `.bal` file, and execute the `bal run` command below.
+bal run readonly_type.bal
 5
 ballerina
 {"math":80,"physics":85,"chemistry":75}

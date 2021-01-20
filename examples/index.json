@@ -650,10 +650,6 @@
                 "url": "log-api"
             },
             {
-                "name": "Math",
-                "url": "math-functions"
-            },
-            {
                 "name": "String",
                 "url": "strings"
             },
@@ -664,6 +660,10 @@
             {
                 "name": "File",
                 "url": "file"
+            },
+            {
+                "name": "Random",
+                "url": "random"
             },
             {
                 "name": "Task Scheduler Appointment",
@@ -950,12 +950,24 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "Client Endpoint",
-                "url": "websocket-client"
+                "name": "Async Client Endpoint",
+                "url": "websocket-async-client"
+            },
+            {
+                "name": "Sync Client",
+                "url": "websocket-sync-client"
             },
             {
                 "name": "Basic Server Functionalities",
                 "url": "websocket-basic-sample"
+            },
+            {
+                "name": "Proxy Server",
+                "url": "websocket-proxy-server"
+            },
+            {
+                "name": "Chat Application",
+                "url": "websocket-chat-application"
             }
         ]
     },

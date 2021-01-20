@@ -1,6 +1,6 @@
 import ballerina/http;
 import ballerina/log;
-import ballerina/runtime;
+import ballerina/lang.runtime;
 
 // The circuit breaker looks for errors across a rolling time window.
 // After the circuit is broken, it does not send requests to

@@ -1,4 +1,4 @@
-import ballerina/runtime;
+import ballerina/lang.runtime;
 import ballerina/test;
 
 (any|error)[] outputs = [];
@@ -22,6 +22,7 @@ function testFunc() returns error? {
 
     // Invoke the main function.
     check main();
-    runtime:sleep(12000);
-    test:assertEquals(outputs[5].toString(), "Appointment cancelled.");
+    runtime:sleep(12);
+    any result = check outputs[5];
+    test:assertEquals(result.toString(), "Appointment cancelled.");
 }

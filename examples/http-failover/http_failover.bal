@@ -1,6 +1,6 @@
 import ballerina/http;
 import ballerina/log;
-import ballerina/runtime;
+import ballerina/lang.runtime;
 
 // Create an endpoint with port 8080 for the mock backend services.
 listener http:Listener backendEP = new (8080);

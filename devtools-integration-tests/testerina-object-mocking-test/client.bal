@@ -1,6 +1,6 @@
 import ballerina/http;
 
-http:Client orderManagementClient = new ("http://localhost:9117/ordermgt");
+http:Client orderManagementClient = checkpanic new ("http://localhost:9117/ordermgt");
 
 json responsePayload = {};
 

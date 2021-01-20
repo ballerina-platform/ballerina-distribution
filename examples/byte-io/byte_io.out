@@ -5,7 +5,7 @@
 # ├── files
 # │   └── ballerina.jpeg
 # └── bytes_io.bal
-ballerina run bytes_io.bal
+bal run bytes_io.bal
 
 Successfully copied the image as a byte array.
 Successfully copied the image as a stream.
