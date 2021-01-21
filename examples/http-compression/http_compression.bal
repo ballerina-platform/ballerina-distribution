@@ -64,7 +64,7 @@ service /alwaysCompress on listenerEndpoint {
 // an `Accept-Encoding` header, the client specifies it with "deflate, gzip". Alternatively, the existing header is sent.
 // When compression is specified as [COMPRESSION_AUTO](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#COMPRESSION_AUTO), only the user-specified `Accept-Encoding` header is sent.
 // If the behavior is set as [COMPRESSION_NEVER](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#COMPRESSION_NEVER), the client makes sure not to send the `Accept-Encoding` header.
-http:Client clientEndpoint = new ("http://localhost:9090", {
+http:Client clientEndpoint = checkpanic new ("http://localhost:9090", {
         compression: http:COMPRESSION_ALWAYS
     }
 );
@@ -94,9 +94,11 @@ service /backend on listenerEndpoint {
     resource function 'default echo(http:Caller caller, http:Request req) {
         http:Response res = new;
         if (req.hasHeader("accept-encoding")) {
-            string value = req.getHeader("accept-encoding");
-            res.setPayload("Backend response was encoded : " +
-                            <@untainted> value);
+            string|error value = req.getHeader("accept-encoding");
+            if (value is string) {
+                res.setPayload("Backend response was encoded : " +
+                                <@untainted> value);
+            }
         } else {
             res.setPayload("Accept-Encoding header is not present");
         }

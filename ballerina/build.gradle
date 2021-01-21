@@ -623,7 +623,6 @@ task testExamples() {
             'grpc-secured-unary',
             'grpc-bidirectional-streaming',
             'grpc-client-streaming',
-            'grpc-unary-non-blocking',
             'grpc-unary-blocking',
             'testerina-guarantee-test-execution-order',
             'testerina-data-driven-tests',
@@ -650,19 +649,16 @@ task testExamples() {
             'openapi-to-ballerina',
             'taint-checking', // Should not compile
             'secured-client-with-basic-auth',
-            'secured-client-with-jwt-auth',
-            'secured-client-with-oauth2',
-            'secured-service-with-basic-auth',
-            'secured-service-with-jwt-auth',
-            'secured-service-with-ldap',
-            'secured-service-with-oauth2',
+            'secured-client-with-bearer-token-auth',
+            'secured-client-with-self-signed-jwt-auth',
+            'secured-client-with-oauth2-client-credentials-grant-type',
+            'secured-client-with-oauth2-password-grant-type',
+            'secured-client-with-oauth2-direct-token-type',
 
             // Disabling due to pending migration for service typing
             'websocket-cookie',
             'websocket-retry',
             'websocket-failover',
-            'http-to-websocket-upgrade',
-            // Disabling due to pending redesign
             'http-filters',
             'http-streaming',
 
@@ -702,7 +698,6 @@ task testExamples() {
             'nats-streaming-durable-subscriptions',
             'nats-streaming-queue-group',
             'nats-streaming-start-position',
-            'http-to-websocket-upgrade',
             'http-compression',
             'http-redirects',
             'http-2-0-server-push',
@@ -719,7 +714,6 @@ task testExamples() {
             'websocket-basic-sample',
             'websocket-chat-application',
             'websocket-async-client',
-            'websocket-sync-client',
             'websocket-cookie',
             'websocket-failover',
             'websocket-proxy-server',
@@ -756,9 +750,10 @@ task testExamples() {
             'locks', // Output is inconsistent between runs
             'crypto', // Output with line breaks cannot be compared
             'jwt-issue-validate', // Output depends on time
-            'secured-client-with-basic-auth', // Need to run the service first
-            'secured-client-with-jwt-auth', // Need to run the service first
-            'secured-client-with-oauth2', // Need to run the service first
+            'secured-service-with-basic-auth-file-user-store', // Log output depends on time
+            'secured-service-with-basic-auth-ldap-user-store', // Log output depends on time
+            'secured-service-with-jwt-auth', // Log output depends on time
+            'secured-service-with-oauth2', // Log output depends on time
             'send-and-receive-emails',
             'task-service-timer',       // Services needs to be stopped during build
             'task-service-appointment',
@@ -826,9 +821,9 @@ task testExamples() {
     ext.buildBBE = { bbe ->
         def exitVal
         def additionalBuildParams = ""
-        if (bbe == "secured-service-with-basic-auth" || bbe == "secured-client-with-basic-auth") {
-            additionalBuildParams = "--b7a.config.file=${baseBuildPath}/${bbe}/sample-users.toml"
-        }
+//        if (bbe == "secured-service-with-basic-auth" || bbe == "secured-client-with-basic-auth") {
+//            additionalBuildParams = "--b7a.config.file=${baseBuildPath}/${bbe}/sample-users.toml"
+//        }
         println "Building example ${bbe}"
         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
             //TODO: Need to verify with windows
