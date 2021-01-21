@@ -1,4 +1,4 @@
-import ballerina/runtime;
+import ballerina/lang.runtime;
 import ballerina/test;
 
 (string|error)[] outputs = [];

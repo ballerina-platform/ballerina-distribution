@@ -2,7 +2,7 @@ import ballerina/io;
 import ballerinax/nats;
 
 // Initializes the NATS listener.
-listener nats:Listener subscription = checkpanic new;
+listener nats:Listener subscription = new;
 
 // Binds the consumer to listen to the messages published to the 'demo' subject.
 @nats:ServiceConfig {

@@ -2,8 +2,8 @@ import ballerina/test;
 import ballerina/http;
 
 @test:Config {}
-function testFunc() {
-    http:Client httpEndpoint = new("http://localhost:9090");
+function testFunc() returns error? {
+    http:Client httpEndpoint = check new("http://localhost:9090");
     var response = httpEndpoint->get("/http11Service");
     if (response is http:Response) {
         json expectedResult = { "response": { "message": "response from http2 service" } };

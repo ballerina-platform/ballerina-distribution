@@ -2,62 +2,67 @@
 import ballerina/grpc;
 import ballerina/io;
 
-int total = 0;
-public function main() {
-    // Client endpoint configuration.
-    HelloWorldClient helloWorldEp = new ("http://localhost:9090");
-
-    grpc:StreamingClient ep;
-    // Execute the unary non-blocking call that registers a server message listener.
-    var res = helloWorldEp->lotsOfGreetings(HelloWorldMessageListener);
-
-    if (res is grpc:Error) {
-        io:println("Error from Connector: " + res.message());
-        return;
-    } else {
-        io:println("Initialized connection sucessfully.");
-        ep = res;
-    }
-
+public function main (string... args) returns error? {
+    // The client endpoint configuration.
+    HelloWorldClient ep = check new("http://localhost:9090");
+    string[] requests = ["Hi Sam", "Hey Sam", "GM Sam"];
+    // Execute the client-streaming RPC call and receive the streaming client.
+    LotsOfGreetingsStreamingClient streamingClient = check ep->lotsOfGreetings();
     // Send multiple messages to the server.
-    string[] greets = ["Hi", "Hey", "GM"];
-    var name = "John";
-    foreach string greet in greets {
-        grpc:Error? connErr = ep->send(greet + " " + name);
-        if (connErr is grpc:Error) {
-            io:println("Error from Connector: " + connErr.message());
-        } else {
-            io:println("Send greeting: " + greet + " " + name);
-        }
+    foreach var greet in requests {
+        checkpanic streamingClient->send(greet);
     }
-
     // Once all the messages are sent, the server notifies the caller with a `complete` message.
-    grpc:Error? result = ep->complete();
-    if (result is grpc:Error) {
-        io:println("Error in sending complete message", result);
-    }
-
-    while (total == 0) {}
+    checkpanic streamingClient->complete();
     io:println("Completed successfully");
+    anydata response = checkpanic streamingClient->receive();
+    io:println(response);
+
 }
 
-// Server Message Listener.
-service object{} HelloWorldMessageListener = service object {
+// The client that used to invoke the RPC.
+public client class HelloWorldClient {
 
-    // Resource registered to receive server messages.
-    function onMessage(string message) {
-        total = 1;
-        io:println("Response received from server: " + message);
+    *grpc:AbstractClientEndpoint;
+
+    private grpc:Client grpcClient;
+
+    public isolated function init(string url, grpc:ClientConfiguration? config = ()) returns grpc:Error? {
+        // Initialize the client endpoint.
+        self.grpcClient = check new(url, config);
+        checkpanic self.grpcClient.initStub(self, ROOT_DESCRIPTOR, getDescriptorMap());
     }
 
-    // Resource registered to receive server error messages.
-    function onError(error err) {
-        io:println("Error reported from server: " + err.message());
+    isolated remote function lotsOfGreetings() returns (LotsOfGreetingsStreamingClient|grpc:Error) {
+        grpc:StreamingClient sClient = check self.grpcClient->executeClientStreaming("HelloWorld/lotsOfGreetings");
+        return new LotsOfGreetingsStreamingClient(sClient);
+    }
+}
+
+// The streaming client, which is used to send the streaming messages.
+public client class LotsOfGreetingsStreamingClient {
+    private grpc:StreamingClient sClient;
+
+    isolated function init(grpc:StreamingClient sClient) {
+        self.sClient = sClient;
     }
 
-    // Resource registered to receive server completed messages.
-    function onComplete() {
-        total = 1;
-        io:println("Server Complete Sending Responses.");
+    isolated remote function send(string message) returns grpc:Error? {
+
+        return self.sClient->send(message);
     }
-};
+
+    isolated remote function receive() returns string|grpc:Error {
+        var payload = check self.sClient->receive();
+        return payload.toString();
+    }
+
+    isolated remote function sendError(grpc:Error response) returns grpc:Error? {
+        return self.sClient->sendError(response);
+    }
+
+    isolated remote function complete() returns grpc:Error? {
+        return self.sClient->complete();
+    }
+}
+

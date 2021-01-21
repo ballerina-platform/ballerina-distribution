@@ -21,7 +21,7 @@ service class EchoService {
 
     // This remote method is invoked once the content is received from the client.
     remote function onBytes(readonly & byte[] data) returns tcp:Error? {
-        io:println("Echo: ", string.fromBytes(data));
+        io:println("Echo: ", string:fromBytes(data));
         // Echo back the data to the same client which the data received from.
         check self.caller->writeBytes(data);
     }

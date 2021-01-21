@@ -1,5 +1,5 @@
 import ballerina/test;
-import ballerina/system;
+import ballerina/os;
 
 string[] outputs = [];
 
@@ -10,11 +10,11 @@ string[] outputs = [];
 }
 test:MockFunction mock_printLn = new();
 
-public function mockPrint(any|error... val) {
-    outputs.push(val.reduce(function (any|error a, any|error b) returns string => a.toString() + b.toString(), "").toString());
+public function mockPrint(any... val) {
+    outputs.push(val.reduce(function (any a, any b) returns string => a.toString() + b.toString(), "").toString());
 }
 
-boolean isWindows = system:getEnv("OS") != "";
+boolean isWindows = os:getEnv("OS") != "";
 
 @test:Config {}
 function testFunc() returns error? {

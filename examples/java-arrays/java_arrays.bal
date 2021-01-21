@@ -1,5 +1,5 @@
 import ballerina/io;
-import ballerina/java;
+import ballerina/jballerina.java;
 import ballerina/jarrays;
 
 public function splitString(handle receiver, handle regex)

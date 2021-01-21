@@ -11,17 +11,16 @@ kafka:ConsumerConfiguration consumerConfigs = {
     topics: ["test-kafka-topic"],
 
     pollingIntervalInMillis: 1000,
-    keyDeserializerType: kafka:DES_BYTE_ARRAY,
-    valueDeserializerType: kafka:DES_BYTE_ARRAY,
+
     // Set `autoCommit` to false, so that the records should be committed
     // manually.
     autoCommit: false
 };
 
-listener kafka:Listener kafkaListener = checkpanic new (consumerConfigs);
+listener kafka:Listener kafkaListener = new (consumerConfigs);
 
 service kafka:Service on kafkaListener {
-    remote function onMessage(kafka:Caller caller,
+    remote function onConsumerRecord(kafka:Caller caller,
                                 kafka:ConsumerRecord[] records) {
         // The set of Kafka records dispatched to the service are processed one
         // by one.
