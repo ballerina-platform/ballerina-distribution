@@ -2,7 +2,7 @@ import ballerina/http;
 import ballerina/log;
 import ballerina/mime;
 
-http:Client clientEP = new ("http://localhost:9090");
+http:Client clientEP = check new ("http://localhost:9090");
 
 //Binds the listener to the service.
 service /multiparts on new http:Listener(9090) {

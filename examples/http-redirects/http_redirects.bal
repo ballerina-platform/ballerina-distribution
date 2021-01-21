@@ -3,7 +3,7 @@ import ballerina/log;
 
 // Creates an HTTP client to interact with a remote endpoint.
 // [followRedirects](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/FollowRedirects) record provides configurations associated with HTTP redirects.
-http:Client clientEndpoint = new ("http://localhost:9092", {
+http:Client clientEndpoint = check new ("http://localhost:9092", {
         followRedirects: {enabled: true, maxCount: 5}
     }
 );

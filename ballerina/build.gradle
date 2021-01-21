@@ -660,6 +660,7 @@ task testExamples() {
             'websocket-retry',
             'websocket-failover',
             'http-filters',
+            'http-streaming',
 
     ]
 

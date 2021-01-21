@@ -4,7 +4,7 @@ import ballerina/http;
 @test:Config {}
 function testFunc() {
     // Invoking the main function
-    http:Client httpEndpoint = new("http://localhost:9090", config = {
+    http:Client httpEndpoint = checkpanic new("http://localhost:9090", config = {
             followRedirects: { enabled: true, maxCount: 5 }
     });
 

@@ -4,7 +4,7 @@ import ballerina/test;
 
 @test:Config {}
 function testFunc() {
-    http:Client httpEP = new("http://localhost:9090");
+    http:Client httpEP = checkpanic new("http://localhost:9090");
 
     mime:Entity jsonBodyPart = new;
     jsonBodyPart.setJson({ "name": "ballerina" });

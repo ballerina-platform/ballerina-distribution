@@ -4,7 +4,7 @@ import ballerina/log;
 import ballerina/mime;
 
 // Creates an endpoint for the client.
-http:Client clientEP = new ("http://localhost:9092");
+http:Client clientEP = check new ("http://localhost:9092");
 
 // Creates a listener for the service.
 listener http:Listener multipartEP = new (9090);
@@ -118,23 +118,6 @@ function handleContent(mime:Entity bodyPart) {
             log:print("Text data: " + payload);
         } else {
             log:printError("Error in parsing text data", err = payload);
-        }
-    } else if (mime:APPLICATION_PDF == baseType) {
-        // [Extracts byte channel](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Response#getByteChannel) from the body part and save it as a file.
-        var payload = bodyPart.getByteChannel();
-        if (payload is io:ReadableByteChannel) {
-            io:WritableByteChannel destinationChannel =
-                                <@untainted io:WritableByteChannel>
-                                        io:openWritableFile("ReceivedFile.pdf");
-            var result = copy(payload, destinationChannel);
-            if (result is error) {
-                log:printError("Error occurred while performing copy ",
-                                err = result);
-            }
-            close(payload);
-            close(destinationChannel);
-        } else {
-            log:printError("Error in parsing byte channel :", err = payload);
         }
     }
 }
