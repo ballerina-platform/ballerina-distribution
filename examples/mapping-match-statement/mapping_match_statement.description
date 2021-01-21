@@ -1,0 +1,3 @@
+// The match statement in Ballerina will support value-based match patterns only. The value will be checked
+// for the "isLike" relationship with the pattern to match during runtime.
+// The match pattern clauses can also have additional type-guard conditions as strong match conditions.
