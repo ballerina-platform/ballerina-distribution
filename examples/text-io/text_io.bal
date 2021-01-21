@@ -24,9 +24,9 @@ public function main() returns @tainted error? {
     // Write the given stream of lines to a file.
     check io:fileWriteLinesFromStream(textFilePath3, lines.toStream());
     // If the write operation was successful, then, perform a read operation to read the lines as a stream.
-    stream<string> lineStream = check io:fileReadLinesAsStream(textFilePath3);
+    stream<string, io:Error?> lineStream = check io:fileReadLinesAsStream(textFilePath3);
     // Loop through the stream and print the content.
-    _ = lineStream.forEach(function(string val) {
+    error? e = lineStream.forEach(function(string val) {
                                io:println(val);
                            });
 }
