@@ -662,7 +662,9 @@ task testExamples() {
             'websocket-retry',
             'websocket-failover',
             'http-to-websocket-upgrade',
+            // Disabling due to pending redesign
             'http-filters',
+            'http-streaming',
 
     ]
 
