@@ -23,10 +23,12 @@ int counter = 0;
     moduleName: "ballerina/io",
     functionName: "println"
 }
+test:MockFunction mock_printLn = new();
+
 public function mockPrint(any|error... s) {
     string output = "";
     foreach var str in s {
-        output += str.toString();
+        output += str is error ? str.toString() : str.toString();
     }
     outputs[counter] = output;
     counter += 1;
@@ -36,6 +38,8 @@ public function mockPrint(any|error... s) {
     enable: false
 }
 function testFunc() {
+    test:when(mock_printLn).call("mockPrint");
+
     main();
     test:assertEquals(outputs[3], "\nInsert success, generated Id: 1");
     test:assertEquals(outputs[4], "\nBatch Insert success, generated IDs are: [2,3,4]");
