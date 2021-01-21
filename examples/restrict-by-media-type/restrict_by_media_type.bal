@@ -16,11 +16,13 @@ service /infoService on new http:Listener(9092) {
         http:Response res = new;
         var msg = req.getJsonPayload();
         if (msg is json) {
-            // Get the `string` value, which is relevant to the key "name".
-            string nameString = <string>msg.name;
-            // Create the XML payload and send back a response.
-            xml name = xml `<name>${nameString}</name>`;
-            res.setXmlPayload(<@untainted>name);
+            // Get the value, which is relevant to the key "name".
+            json|error nameString = msg.name;
+            if (nameString is json) {
+                // Create the XML payload and send back a response.
+                xml name = xml `<name>${<string>nameString}</name>`;
+                res.setXmlPayload(<@untainted>name);
+            }
         } else {
             res.statusCode = 500;
             res.setPayload(<@untainted>msg.message());
