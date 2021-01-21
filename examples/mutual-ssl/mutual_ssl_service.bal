@@ -1,4 +1,3 @@
-import ballerina/config;
 import ballerina/http;
 import ballerina/log;
 
@@ -8,13 +7,11 @@ import ballerina/log;
 http:ListenerConfiguration helloWorldEPConfig = {
     secureSocket: {
         keyStore: {
-            path: config:getAsString("b7a.home") +
-                  "/bre/security/ballerinaKeystore.p12",
+            path: "../resources/ballerinaKeystore.p12",
             password: "ballerina"
         },
         trustStore: {
-            path: config:getAsString("b7a.home") +
-                  "/bre/security/ballerinaTruststore.p12",
+            path: "../resources/ballerinaTruststore.p12",
             password: "ballerina"
         },
         // Enable the preferred SSL protocol and its versions.

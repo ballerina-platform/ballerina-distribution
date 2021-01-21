@@ -3,7 +3,7 @@ import ballerina/test;
 
 @test:Config {}
 function testFunc() {
-    http:Client httpEndpoint = new("https://localhost:9095", config = {
+    http:Client httpEndpoint = checkpanic new("https://localhost:9095", config = {
         secureSocket: {
             keyStore: {
                 path: "${ballerina.home}/bre/security/ballerinaKeystore.p12",

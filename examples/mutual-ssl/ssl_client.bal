@@ -1,4 +1,3 @@
-import ballerina/config;
 import ballerina/http;
 import ballerina/log;
 
@@ -9,13 +8,11 @@ import ballerina/log;
 http:ClientConfiguration clientEPConfig = {
     secureSocket: {
         keyStore: {
-            path: config:getAsString("b7a.home") +
-                  "/bre/security/ballerinaKeystore.p12",
+            path: "../resources/ballerinaKeystore.p12",
             password: "ballerina"
         },
         trustStore: {
-            path: config:getAsString("b7a.home") +
-                  "/bre/security/ballerinaTruststore.p12",
+            path: "../resources/ballerinaTruststore.p12",
             password: "ballerina"
         },
         protocol: {
@@ -27,7 +24,7 @@ http:ClientConfiguration clientEPConfig = {
 
 public function main() {
     // Create an HTTP client to interact with the created listener endpoint.
-    http:Client clientEP = new("https://localhost:9095", clientEPConfig);
+    http:Client clientEP = checkpanic new("https://localhost:9095", clientEPConfig);
     // Send a GET request to the listener and bind the payload to a string value.
     var payload = clientEP->get("/helloWorld/hello", targetType = string);
     if (payload is string) {
