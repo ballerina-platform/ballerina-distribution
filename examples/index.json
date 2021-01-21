@@ -1318,16 +1318,40 @@
         "category": "Working over the network",
         "samples": [
             {
+                "name": "Secured Service with Basic Auth LDAP User Store",
+                "url": "secured-service-with-basic-auth-ldap-user-store"
+            },
+            {
+                "name": "Secured Service with JWT Auth",
+                "url": "secured-service-with-jwt-auth"
+            },
+            {
+                "name": "Secured Service with OAuth2",
+                "url": "secured-service-with-oauth2"
+            },
+            {
                 "name": "Secured Client with Basic Auth",
                 "url": "secured-client-with-basic-auth"
             },
             {
-                "name": "Secured Client with JWT Auth",
-                "url": "secured-client-with-jwt-auth"
+                "name": "Secured Client with Bearer Token Auth",
+                "url": "secured-client-with-bearer-token-auth"
             },
             {
-                "name": "Secured Client with OAuth2",
-                "url": "secured-client-with-oauth2"
+                "name": "Secured Client with Self Signed JWT Auth",
+                "url": "secured-client-with-self-signed-jwt-auth"
+            },
+            {
+                "name": "Secured Client with OAuth2 Client Credentials Grant Type",
+                "url": "secured-client-with-oauth2-client-credentials-grant-type"
+            },
+            {
+                "name": "Secured Client with OAuth2 Password Grant Type",
+                "url": "secured-client-with-oauth2-password-grant-type"
+            },
+            {
+                "name": "Secured Client with OAuth2 Direct Token Type",
+                "url": "secured-client-with-oauth2-direct-token-type"
             }
         ]
     },

@@ -1,14 +1,13 @@
 import ballerina/http;
 import ballerina/log;
 
-// Defines the HTTP client to call the Basic auth secured APIs.
-// The client is enriched with the `Authorization: Basic <token>` header by
-// passing the `http:CredentialsConfig` for the `auth` configuration of the
+// Defines the HTTP client to call the secured APIs.
+// The client is enriched with the `Authorization: Bearer <token>` header by
+// passing the `http:BearerTokenConfig` for the `auth` configuration of the
 // client.
 http:Client securedEP = checkpanic new("https://localhost:9090", {
     auth: {
-        username: "alice",
-        password: "123"
+        token: "JlbmMiOiJBMTI4Q0JDLUhTMjU2In"
     },
     secureSocket: {
         trustStore: {
