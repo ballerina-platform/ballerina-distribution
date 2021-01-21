@@ -5,7 +5,7 @@ import ballerina/http;
 @test:Config {}
 function testFunc() {
     // Invoking the main function.
-    http:Client httpEndpoint = new("http://localhost:9090");
+    http:Client httpEndpoint = checkpanic new("http://localhost:9090");
 
     string responseString = "Hello World!!!";
     // Send a GET request to the specified endpoint

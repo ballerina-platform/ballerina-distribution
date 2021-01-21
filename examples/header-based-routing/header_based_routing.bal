@@ -1,4 +1,3 @@
-import ballerina/config;
 import ballerina/http;
 import ballerina/log;
 
@@ -6,8 +5,7 @@ http:ClientConfiguration weatherEPConfig = {
     followRedirects: {enabled: true, maxCount: 5},
     secureSocket: {
         trustStore: {
-            path: config:getAsString("b7a.home") +
-                        "/bre/security/ballerinaTruststore.p12",
+            path: "../resources/ballerinaTruststore.p12",
             password: "ballerina"
         }
     }
@@ -17,9 +15,9 @@ http:ClientConfiguration weatherEPConfig = {
 service /hbr on new http:Listener(9090) {
 
     resource function get route(http:Caller caller, http:Request req) {
-        http:Client weatherEP = new ("http://samples.openweathermap.org",
+        http:Client weatherEP = checkpanic new ("http://samples.openweathermap.org",
                                      weatherEPConfig);
-        http:Client locationEP = new ("http://www.mocky.io");
+        http:Client locationEP = checkpanic new ("http://www.mocky.io");
         // Create a new outbound request to handle client call.
         http:Request newRequest = new;
         // Check whether `x-type` header exists in the request.
@@ -37,7 +35,7 @@ service /hbr on new http:Listener(9090) {
             return;
         }
         //[getHeader()](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#getHeader) returns header value of the specified header name.
-        string nameString = req.getHeader("x-type");
+        string nameString = checkpanic req.getHeader("x-type");
 
         http:Response|http:PayloadType|error response;
         if (nameString == "location") {

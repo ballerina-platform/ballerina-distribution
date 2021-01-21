@@ -6,7 +6,7 @@ import ballerina/lang.runtime;
 listener http:Listener backendEP = new (8080);
 
 // Define the failover client endpoint to call the backend services.
-http:FailoverClient foBackendEP = new ({
+http:FailoverClient foBackendEP = check new ({
 
     timeoutInMillis: 5000,
     failoverCodes: [501, 502, 503],
@@ -53,7 +53,7 @@ service /echo on backendEP {
     resource function 'default .(http:Caller caller, http:Request req) {
         // Delay the response for 30000 milliseconds to mimic network level
         // delays.
-        runtime:sleep(30000);
+        runtime:sleep(30);
 
         var result = caller->respond("echo Resource is invoked");
         if (result is error) {

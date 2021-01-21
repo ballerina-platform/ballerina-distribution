@@ -1,7 +1,7 @@
 import ballerina/http;
 import ballerina/log;
 
-http:Client clientEP = new ("http://localhost:9092/hello");
+http:Client clientEP = check new ("http://localhost:9092/hello");
 
 service /passthrough on new http:Listener(9090) {
 
