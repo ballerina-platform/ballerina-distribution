@@ -8,9 +8,9 @@ http:ClientConfiguration clientEPConfig = {
     }
 };
 
-public function main() {
+public function main() returns error? {
     // Create a new HTTP client by giving the URL and the client configuration.
-    http:Client httpClient = new("http://localhost:9095/cookieDemo",
+    http:Client httpClient = check new("http://localhost:9095/cookieDemo",
                                   clientEPConfig);
 
     // Initialize an HTTP request.
