@@ -26,17 +26,19 @@ listener http:Listener authListener = new(25001, {
     }
 });
 
-@http:ServiceConfig {
-    auth: [
-        {
-            scopes: ["write", "update"],
-            fileUserStoreConfig: {
-                tableName: "b7a.users",
-                scopeKey: "scopes"
-            }
-        }
-    ]
-}
+// TODO: Enable these tests once the configurable features supports for map data types.
+// https://github.com/ballerina-platform/ballerina-standard-library/issues/862
+//@http:ServiceConfig {
+//    auth: [
+//        {
+//            scopes: ["write", "update"],
+//            fileUserStoreConfig: {
+//                tableName: "b7a.users",
+//                scopeKey: "scopes"
+//            }
+//        }
+//    ]
+//}
 service /foo on authListener {
     resource function get bar() returns string {
         return "Hello World!";
