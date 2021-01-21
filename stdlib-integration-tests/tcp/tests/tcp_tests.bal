@@ -70,7 +70,7 @@ function testServerAlreadyClosed() returns  @tainted error? {
     check socketClient->close();
 }
 
-function getString(readonly & byte[] content) returns @tainted string|io:tcp:Error {
+function getString(readonly & byte[] content) returns @tainted string|io:Error {
     io:ReadableByteChannel byteChannel = check io:createReadableChannel(content);
     io:ReadableCharacterChannel characterChannel = new io:ReadableCharacterChannel(byteChannel, "UTF-8");
 

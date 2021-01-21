@@ -52,6 +52,10 @@
                 "url": "functions-with-defaultable-parameters"
             },
             {
+                "name": "Included Record Parameters",
+                "url": "functions-with-included-record-parameters"
+            },
+            {
                 "name": "Rest Parameters",
                 "url": "functions-with-rest-parameter"
             },
@@ -1288,8 +1292,12 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "Basic TCP Socket",
-                "url": "tcp-socket-listener-client"
+                "name": "TCP Client",
+                "url": "tcp-client"
+            },
+            {
+                "name": "TCP Listener",
+                "url": "tcp-listener"
             }
         ]
     },
@@ -1299,8 +1307,16 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "Basic UDP Client Socket",
-                "url": "udp-socket-client"
+                "name": "UDP Connectionless Client",
+                "url": "udp-client"
+            },
+            {
+                "name": "UDP Connection oriented Client",
+                "url": "udp-connect-client"
+            },
+            {
+                "name": "UDP Listener",
+                "url": "udp-listener"
             }
         ]
     },
