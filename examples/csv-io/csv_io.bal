@@ -17,9 +17,9 @@ public function main() returns @tainted error? {
     // Write the given content stream to a CSV file.
     check io:fileWriteCsvFromStream(csvFilePath2, csvContent.toStream());
     // If the write operation was successful, then, perform a read operation to read the CSV content as a stream.
-    stream<string[]> csvStream = check io:fileReadCsvAsStream(csvFilePath2);
+    stream<string[], io:Error?> csvStream = check io:fileReadCsvAsStream(csvFilePath2);
     // Loop through the stream and print the content.
-    _ = csvStream.forEach(function(string[] val) {
+    error? e = csvStream.forEach(function(string[] val) {
                               io:println(val);
                           });
 }
