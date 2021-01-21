@@ -4,7 +4,7 @@ import ballerina/log;
 import ballerina/observe;
 import ballerinax/prometheus as _;
 
-//Create a counter as a global variable in the service with optional field description.
+//Create a counter as a global variable in the service with the optional field description.
 observe:Counter globalCounter = new ("total_orders",
                                     desc = "Total quantity required");
 
