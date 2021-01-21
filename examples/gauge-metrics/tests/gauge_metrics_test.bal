@@ -9,7 +9,7 @@ function testFunc() {
 
     string response1 = "Order Processed!";
 
-    // Send a GET request to the specified endpoint
+    // Send a GET request to the specified endpoint.
     var response = httpEndpoint->get("/onlineStoreService/makeOrder");
     if response is http:Response {
         var res = response.getTextPayload();
