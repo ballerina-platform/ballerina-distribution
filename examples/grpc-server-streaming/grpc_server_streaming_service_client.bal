@@ -2,40 +2,32 @@
 import ballerina/grpc;
 import ballerina/io;
 
-int total = 0;
-public function main() {
-    // Client endpoint configuration.
-    HelloWorldClient helloWorldEp = new ("http://localhost:9090");
-
-    // Execute the unary non-blocking call that registers the server message listener.
-    grpc:Error? result = helloWorldEp->lotsOfReplies("Sam",
-                                                    HelloWorldMessageListener);
-    if (result is grpc:Error) {
-        io:println("Error from Connector: " + result.message());
-    } else {
-        io:println("Connected successfully");
-    }
-
-    while (total == 0) {}
-    io:println("Client got response successfully.");
+public function main (string... args) returns error? {
+    // The client endpoint configuration.
+    HelloWorldClient ep = check new("http://localhost:9090");
+    // Execute the streaming RPC call that registers the server message listener and gets the response as a stream.
+    stream<anydata> result = check ep->lotsOfReplies("WSO2");
+    // Iterate through the stream and print the content.
+    error? e = result.forEach(function(anydata str) {
+        io:println(str);
+    });
 }
 
-// Server Message Listener.
-service object{} HelloWorldMessageListener = service object {
+// The client, which is used to invoke the RPC.
+public client class HelloWorldClient {
 
-    // The `resource` registered to receive server messages
-    function onMessage(string message) {
-        io:println("Response received from server: " + message);
+    *grpc:AbstractClientEndpoint;
+
+    private grpc:Client grpcClient;
+
+    public isolated function init(string url, grpc:ClientConfiguration? config = ()) returns grpc:Error? {
+        // Initialize the client endpoint.
+        self.grpcClient = check new(url, config);
+        grpc:Error? result = self.grpcClient.initStub(self, ROOT_DESCRIPTOR, getDescriptorMap());
     }
 
-    // The `resource` registered to receive server error messages
-    function onError(error err) {
-        io:println("Error from Connector: " + err.message());
+    isolated remote function lotsOfReplies(string req) returns stream<anydata>|error {
+        return self.grpcClient->executeServerStreaming("HelloWorld/lotsOfReplies", req);
     }
 
-    // The `resource` registered to receive server completed messages.
-    function onComplete() {
-        total = 1;
-        io:println("Server Complete Sending Responses.");
-    }
-};
+}

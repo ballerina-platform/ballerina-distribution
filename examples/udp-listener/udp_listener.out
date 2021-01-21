@@ -1,0 +1,6 @@
+# To run the listener, navigate to the directory that contains the
+# `.bal` file, and execute the `bal run` command below.
+bal run udp_listener.bal
+
+# This will print the output below upon a successful read by the listener.
+Received by listener: Hello Ballerina echo

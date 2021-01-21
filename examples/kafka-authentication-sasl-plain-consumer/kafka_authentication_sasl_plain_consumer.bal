@@ -19,7 +19,6 @@ kafka:ConsumerConfiguration consumerConfig = {
     clientId: "sasl-consumer",
     offsetReset:"earliest",
     topics:["topic-sasl"],
-    valueDeserializerType: kafka:DES_BYTE_ARRAY,
     // Provide the relevant authentication configuration record to authenticate the consumer.
     authenticationConfiguration: authConfig
 };

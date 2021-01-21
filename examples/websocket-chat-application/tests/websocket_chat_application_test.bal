@@ -6,7 +6,7 @@ string serviceReply = "";
 string msg = "hey";
 
 @test:Config {}
-function testText() returns websocket:Error {
+function testText() returns websocket:Error? {
     websocket:AsyncClient wsClient = check new("ws://localhost:9090/chat/bruce?age=30", new callback());
     runtime:sleep(4);
     test:assertEquals(serviceReply, "Hi bruce! You have successfully connected to the chat",

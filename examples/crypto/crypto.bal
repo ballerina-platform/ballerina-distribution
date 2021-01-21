@@ -1,4 +1,3 @@
-import ballerina/config;
 import ballerina/crypto;
 import ballerina/io;
 import ballerina/lang.'string;
@@ -66,8 +65,7 @@ function hmac() returns error? {
 function decodeKeys() returns [crypto:PrivateKey, crypto:PublicKey]|error {
     // Obtaining reference to a RSA private key stored within a PKCS#12 or PFX format archive file.
     crypto:KeyStore keyStore = {
-        path: config:getAsString("b7a.home") +
-            "/bre/security/ballerinaKeystore.p12",
+        path: "../resources/ballerinaKeystore.p12",
         password: "ballerina"
     };
     crypto:PrivateKey privateKey =
@@ -75,8 +73,7 @@ function decodeKeys() returns [crypto:PrivateKey, crypto:PublicKey]|error {
 
     // Obtaining reference to a RSA public key stored within a PKCS#12 or PFX format archive file.
     crypto:TrustStore trustStore = {
-        path: config:getAsString("b7a.home") +
-            "/bre/security/ballerinaTruststore.p12",
+        path: "../resources/ballerinaTruststore.p12",
         password: "ballerina"
     };
     crypto:PublicKey publicKey =
