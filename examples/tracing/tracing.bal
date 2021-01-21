@@ -18,7 +18,7 @@ service /hello on new http:Listener(9234) {
 
         //Start a new root span without attaching to the system span.
         int rootParentSpanId = observe:startRootSpan("MyRootParentSpan");
-        // Some actual logic will go here, and for example we have introduced some delay with sleep.
+        // Some actual logic will go here, and for example, we have introduced some delay with the sleep.
         runtime:sleep(1);
         //Start a new child span for the span `MyRootParentSpan`.
         int childSpanId = check observe:startSpan("MyRootChildSpan", (),
