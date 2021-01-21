@@ -43,7 +43,7 @@ service /onlineStoreService on new http:Listener(9090) {
         //first invocation and will throw an error if there is already a registration of different metrics instance
         //or type. And subsequent invocations of register() will simply retrieve the stored metrics instance
         //for the provided name and tags fields, and use that instance for the subsequent operations on the
-        //counter instance.
+        //Counter instance.
         error? result = registeredGaugeWithTags.register();
         if (result is error) {
             log:printError("Error in registering gauge", err = result);
