@@ -139,8 +139,7 @@ function encrypt() returns error? {
     [crypto:PrivateKey, crypto:PublicKey] [privateKey, publicKey] =
         check decodeKeys();
 
-    // Encrypt and decry
-    pt an input value using RSA ECB PKCS1 padding.
+    // Encrypt and decrypt an input value using RSA ECB PKCS1 padding.
     byte[] output = check crypto:encryptRsaEcb(inputArr, publicKey);
     output = check crypto:decryptRsaEcb(output, privateKey);
     io:println("RSA ECB PKCS1 decrypted value: " +
