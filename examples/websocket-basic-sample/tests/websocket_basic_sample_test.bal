@@ -16,6 +16,7 @@ function testText() returns websocket:Error? {
     }
     runtime:sleep(4);
     test:assertEquals(serviceReply, "You said: " + msg, "Received message should be equal to the expected message");
+    error? err = wsClient->close(statusCode = 1000, timeoutInSeconds = 10);
 }
 
 service class callback {

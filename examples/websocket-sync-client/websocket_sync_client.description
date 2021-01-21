@@ -1,3 +1,0 @@
-// The WebSocket Sync client can be used to connect to and interact with a WebSocket server in a Synchronous manner.<br/><br/>
-// For more information on the underlying module, 
-// see the [WebSocket module](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/).

@@ -1,4 +1,3 @@
-import ballerina/lang.runtime as runtime;
 import ballerina/io;
 import ballerina/websocket;
 
@@ -12,8 +11,8 @@ public function main() returns websocket:Error? {
         // Prints the error.
         io:println(err);
     }
-    runtime:sleep(5);
 }
+
 // The client callback service, which handles backend responses.
 service class ClientService {
     *websocket:Service;
