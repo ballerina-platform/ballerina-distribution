@@ -34,20 +34,20 @@ public function main() {
 }
 
 // This method uses mapping match patterns with different fields. The given `match` expression will
-// be checked for "isLike" relationship and will be matched at runtime.
+// be checked for the `isLike` relationship and will be matched during runtime.
 function basicMatch(any a) {
     match a {
-        // This pattern checks for a mapping value with three fields `a`, `b` and `c` and types will
+        // This pattern checks for a mapping value with three fields `a`, `b`, and `c` and types will
         // be `any` in the pattern block.
         {a: var var1, b: var var2, c: var var3} => {
             io:println("Matched with three vars : ", var1, ", ", var2, ", ", var3);
         }
-        // This pattern checks for a mapping value with two fields `a`, `b` and types will be `any` in
+        // This pattern checks for a mapping value with two fields `a`, `b`, and the types will be `any` in
         // the pattern block.
         {a: var var1, b: var var2} => {
             io:println("Matched with two vars : ", var1, ", ", var2);
         }
-        // This pattern checks for a mapping value with single field `a` and type will be `any` in the pattern block.
+        // This pattern checks for a mapping value with a single field `a` and type will be `any` in the pattern block.
         {a: var var1} => {
             io:println("Matched with single var : ", var1);
         }
@@ -55,8 +55,8 @@ function basicMatch(any a) {
 }
 
 // This method uses structured record match patterns with different fields
-// along with type guards. The expression used with match will be evaluated to
-// check if it "is like" any of the match patterns. For a successful match, an additional
+// along with type guards. The expression used with the matching will be evaluated to
+// check if it `is like` any of the match patterns. For a successful match, an additional
 // check will also be performed against the specified type guard.
 function matchWithTypeGuard(any matchExpr) {
     // All the patterns except the last one will check for a mapping value with two fields `var1` and `var2`

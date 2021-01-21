@@ -29,7 +29,7 @@ public function main() {
 }
 
 // This method uses tuple match patterns of different sizes. The `match` expression `a`
-// will be matched against the given pattern list at run time based on the
+// will be matched against the given pattern list during runtime based on the
 // "is-like" relationship between the expression and a pattern.
 function basicMatch(any a) {
     match a {
@@ -49,8 +49,8 @@ function basicMatch(any a) {
 }
 
 // This method uses tuple match patterns with different sizes along with match guards. The given
-// `match` expression will be checked for "is-like" relationship and also it will check the match guard for the pattern
-// to match at runtime.
+// `match` expression will be checked for the `is-like` relationship and also it will check the match guard for the pattern
+// to match during runtime.
 function matchWithMatchGuard(any b) {
     match b {
         // This pattern check is for a tuple of two members of the types `string` and `int` respectively.
@@ -61,7 +61,7 @@ function matchWithMatchGuard(any b) {
         [var s, var i] if s is float => {
             io:println("Only 's' is float : ", io:sprintf("%s", b));
         }
-        // This pattern check is for a tuple of two members where the second member is of the type `int`.
+        // This pattern check is for a tuple of two members, in which the second member is of the type `int`.
         [var s, var i] if i is int => {
             io:println("Only 'i' is int : ", io:sprintf("%s", b));
         }

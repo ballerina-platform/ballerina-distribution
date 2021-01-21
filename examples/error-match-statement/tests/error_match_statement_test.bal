@@ -4,7 +4,7 @@ import ballerina/io;
 any[] outputs = [];
 int counter = 0;
 
-// This is the mock function which will replace the real function
+// This is the mock function, which will replace the real function.
 @test:Mock {
     moduleName: "ballerina/io",
     functionName: "println"
@@ -20,7 +20,7 @@ public function mockPrint(any... s) {
 
 @test:Config {}
 function testFunc() {
-    // Invoking the main function
+    // Invoking the main function.
     main();
 
     string out1 = "Matched a value with a tuple shape";
