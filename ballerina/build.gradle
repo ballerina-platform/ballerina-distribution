@@ -659,7 +659,6 @@ task testExamples() {
             'websocket-cookie',
             'websocket-retry',
             'websocket-failover',
-            'http-to-websocket-upgrade',
             'http-filters',
 
     ]
@@ -698,7 +697,6 @@ task testExamples() {
             'nats-streaming-durable-subscriptions',
             'nats-streaming-queue-group',
             'nats-streaming-start-position',
-            'http-to-websocket-upgrade',
             'http-compression',
             'http-redirects',
             'http-2-0-server-push',
@@ -715,7 +713,6 @@ task testExamples() {
             'websocket-basic-sample',
             'websocket-chat-application',
             'websocket-async-client',
-            'websocket-sync-client',
             'websocket-cookie',
             'websocket-failover',
             'websocket-proxy-server',
