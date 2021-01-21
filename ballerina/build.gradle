@@ -24,6 +24,7 @@ description = 'Ballerina - Tools'
 ext {
     jreLocation = "build/target/ballerina-jre-artifacts-zip/"
     distributionName = "ballerina"
+    installerVersion = UUID.randomUUID().toString()
 }
 
 configurations {
@@ -44,10 +45,6 @@ def ballerinaDistributionZip = file("$project.buildDir/distributions/ballerina-$
 def ballerinaLinuxDistributionZip = file("$project.buildDir/distributions/ballerina-linux-${ballerinaVersion}.zip")
 def ballerinaMacDistributionZip = file("$project.buildDir/distributions/ballerina-macos-${ballerinaVersion}.zip")
 def ballerinaWindowsDistributionZip = file("$project.buildDir/distributions/ballerina-windows-${ballerinaVersion}.zip")
-
-ext {
-    installerVersion = UUID.randomUUID().toString()
-}
 
 task unpackBallerinaJre(type: Download) {
     group = "unpack_dependencies"
