@@ -1,5 +1,4 @@
 import ballerina/io;
-import ballerina/lang.'string;
 import ballerinax/nats;
 
 // Initializes the NATS listener.
@@ -13,7 +12,7 @@ service nats:Service on subscription {
 
     remote function onMessage(nats:Message message) {
         // Prints the incoming message in the console.
-        string|error messageContent = 'string:fromBytes(message.content);
+        string|error messageContent = string:fromBytes(message.content);
         if (messageContent is string) {
             io:println("Received message: " + messageContent);
         }

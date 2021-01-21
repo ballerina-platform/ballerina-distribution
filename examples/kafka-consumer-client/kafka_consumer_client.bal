@@ -1,6 +1,5 @@
 import ballerina/io;
 import ballerinax/kafka;
-import ballerina/lang.'string;
 import ballerina/log;
 
 kafka:ConsumerConfiguration consumerConfiguration = {
@@ -27,7 +26,7 @@ public function main() {
     kafka:ConsumerRecord[] records = <kafka:ConsumerRecord[]>results;
     foreach var kafkaRecord in records {
         byte[] messageContent = kafkaRecord.value;
-        string|error message = 'string:fromBytes(messageContent);
+        string|error message = string:fromBytes(messageContent);
 
         if (message is string) {
             // Prints the retrieved Kafka record.

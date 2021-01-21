@@ -1,7 +1,6 @@
 import ballerina/io;
 import ballerina/udp;
 import ballerina/log;
-import ballerina/lang.'string;
 
 // Bind the service to the port.
 // Optionally, you can provide the `remoteHost` and `remotePort` to
@@ -15,7 +14,7 @@ service on new udp:Listener(48829) {
     // readonly & udp:Datagram.
     remote function onBytes(readonly & byte[] data, udp:Caller caller) 
             returns (readonly & byte[])|udp:Error? {
-        io:println("Received by listener: ", 'string:fromBytes(data));
+        io:println("Received by listener: ", string:fromBytes(data));
         // Echo back the data to the same client.
         // This is similar to calling `caller->sendBytes(data);`.
         return data;

@@ -1,5 +1,4 @@
 import ballerinax/kafka;
-import ballerina/lang.'string;
 import ballerina/log;
 
 kafka:ConsumerConfiguration consumerConfigs = {
@@ -43,7 +42,7 @@ function processKafkaRecord(kafka:ConsumerRecord kafkaRecord) {
     byte[] value = kafkaRecord.value;
     // The value should be a `byte[]`, since the byte[] deserializer is used
     // for the value.
-    string|error messageContent = 'string:fromBytes(value);
+    string|error messageContent = string:fromBytes(value);
     if (messageContent is string) {
         log:print("Value: " + messageContent);
     } else {

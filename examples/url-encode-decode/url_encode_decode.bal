@@ -1,6 +1,5 @@
 import ballerina/encoding;
 import ballerina/io;
-import ballerina/lang.'string;
 
 public function main() returns error? {
     string encodingValue = "abc123!?$*&()'-=@~";
@@ -12,7 +11,7 @@ public function main() returns error? {
     // Decoding a Base64 URL encoded string into a byte array.
     byte[] urlDecodedValue = check encoding:decodeBase64Url(decodingValue);
     io:println("Base64 URL decoded value: ",
-        check 'string:fromBytes(urlDecodedValue));
+        check string:fromBytes(urlDecodedValue));
 
     string encodingUriComp = "data=value";
     // Encoding a URI component into a string.
