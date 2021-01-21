@@ -5,7 +5,7 @@ import ballerina/lang.runtime;
 // The circuit breaker looks for errors across a rolling time window.
 // After the circuit is broken, it does not send requests to
 // the backend until the `resetTime`.
-http:Client backendClientEP = new ("http://localhost:8080", {
+http:Client backendClientEP = check new ("http://localhost:8080", {
             // Configuration options that control the behavior of the circuit
             // breaker.
             circuitBreaker: {
@@ -84,7 +84,7 @@ service /hello on new http:Listener(8080) {
         if (counter % 5 == 0) {
             // Delay the response by 5000 milliseconds to
             // mimic the network level delays.
-            runtime:sleep(5000);
+            runtime:sleep(5);
 
             var result = caller->respond("Hello World!!!");
             handleRespondResult(result);

@@ -3,7 +3,7 @@ import ballerina/log;
 import ballerina/lang.runtime;
 
 // Define the endpoint to the call the `mockHelloService`.
-http:Client backendClientEP = new ("http://localhost:8080", {
+http:Client backendClientEP = check new ("http://localhost:8080", {
             // Retry configuration options.
             retryConfig: {
 
@@ -73,7 +73,7 @@ service /hello on new http:Listener(8080) {
         if (counter % 4 != 0) {
             log:print("Request received from the client to delayed service.");
             // Delay the response by 5000 milliseconds to mimic network level delays.
-            runtime:sleep(5000);
+            runtime:sleep(5);
 
             var responseToCaller = caller->respond("Hello World!!!");
             handleRespondResult(responseToCaller);

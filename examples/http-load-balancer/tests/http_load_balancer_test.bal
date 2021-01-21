@@ -5,7 +5,7 @@ import ballerina/http;
 }
 function testFunc() {
     // Invoking the main function
-    http:Client httpEndpoint = new("http://localhost:9090");
+    http:Client httpEndpoint = checkpanic new("http://localhost:9090");
 
     // Send a GET request to the specified endpoint
     var response1 = httpEndpoint->get("/lb");

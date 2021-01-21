@@ -5,7 +5,7 @@ service /cbr on new http:Listener(9090) {
 
     resource function post route(http:Caller outboundEP, http:Request req) {
         // Define the attributes associated with the client endpoint here.
-        http:Client locationEP = new ("http://www.mocky.io");
+        http:Client locationEP = checkpanic new ("http://www.mocky.io");
 
         // Get the `json` payload from the request message.
         var jsonMsg = req.getJsonPayload();
