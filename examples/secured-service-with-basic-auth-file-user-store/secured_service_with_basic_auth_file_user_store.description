@@ -1,14 +1,14 @@
-// A HTTP service/resource can be secured using Basic auth and optionally by
-// enforcing authorization. Then it validates the Basic auth token sent in the
+// An HTTP service/resource can be secured using Basic auth and optionally by
+// enforcing authorization. Then, it validates the Basic auth token sent in the
 // `Authorization` header against the provided configurations. This reads data
-// from a file which has a TOML format. This stores usernames, passwords for
+// from a file, which has a TOML format. This stores the usernames, passwords for
 // authentication, and scopes for authorization.<br/>
 // Ballerina uses the concept of scopes for authorization. A resource declared
 // in a service can be bound to one/more scope(s).<br/>
 // In the authorization phase, the scopes of the service/resource are compared
 // against the scope included in the user store for at least one match between
 // the two sets.<br/>
-// The following code block shows the contents of the file `sample-users.toml`,
+// The following code block shows the contents of the `sample-users.toml` file,
 // which has the required format of usernames, passwords and scopes, including
 // their mapping.<br/>
 //

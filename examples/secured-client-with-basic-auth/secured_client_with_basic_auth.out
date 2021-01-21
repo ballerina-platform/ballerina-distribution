@@ -1,4 +1,4 @@
-# Before test this sample, first start a sample service secured with Basic Auth.
+# Before testing this sample, first start a sample service secured with Basic Auth.
 # To run this sample, navigate to the directory that contains the `.bal` file,
 # and execute the `bal run` command below.
 # (You may need to change the keystore path, a sample keystore file is

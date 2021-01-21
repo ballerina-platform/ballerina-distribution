@@ -10,7 +10,7 @@ scopes="scope1"
 ["b7a.users.bob"]
 password="password2"
 scopes="scope2,scope3"' > sample-users.toml
-# (You may need to change the keystore path, a sample keystore file is
+# (You may need to change the keystore path. A sample keystore file is
 # available in the distribution.
 # The file path is <ballerina.home>/examples/resources/ballerinaKeystore.p12)
 bal run secured_service_with_basic_auth_file_user_store.bal --b7a.config.file=sample-users.toml

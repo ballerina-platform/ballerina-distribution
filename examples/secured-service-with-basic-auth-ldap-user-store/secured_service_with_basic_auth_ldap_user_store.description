@@ -1,5 +1,5 @@
-// A HTTP service/resource can be secured using Basic auth and optionally by
-// enforcing authorization. Then it validates the Basic auth token sent in the
+// An HTTP service/resource can be secured using Basic auth and by
+// enforcing authorization optionally. Then, it validates the Basic auth token sent in the
 // `Authorization` header against the provided configurations. This reads data
 // from the configured LDAP. This stores usernames, passwords for
 // authentication, and scopes for authorization.<br/>
