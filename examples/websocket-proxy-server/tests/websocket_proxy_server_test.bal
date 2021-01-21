@@ -11,9 +11,10 @@ function testText() returns websocket:Error? {
     checkpanic wsClient->writeTextMessage(msg);
     runtime:sleep(4);
     test:assertEquals(serviceReply, msg, "Received message should be equal to the expected message");
+    error? result = wsClient->close(statusCode = 1000, timeoutInSeconds = 10);
 }
 
-service class callback{
+service class callback {
     *websocket:Service;
     remote function onTextMessage(websocket:Caller conn, string text) {
         serviceReply = <@untainted>text;

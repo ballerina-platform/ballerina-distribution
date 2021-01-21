@@ -962,10 +962,6 @@
                 "url": "websocket-async-client"
             },
             {
-                "name": "Sync Client",
-                "url": "websocket-sync-client"
-            },
-            {
                 "name": "Basic Server Functionalities",
                 "url": "websocket-basic-sample"
             },
