@@ -60,6 +60,11 @@ public function main() {
     boolean hasPrefix = statement.startsWith("Lion");
     io:println("HasPrefix: ", hasPrefix);
 
+    // Check whether the given string contains another string.
+    // An optional second argument is the index to start searching from.
+    boolean contains = statement.includes("Town", 7);
+    io:println("Contains: ", contains);
+
     // Format a `string` according to the given format arguments.
     string name = "Sam";
     int marks = 90;
