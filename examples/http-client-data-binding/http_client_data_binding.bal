@@ -62,6 +62,8 @@ service /call on new http:Listener(9090) {
             http:Response resp = new;
             if (res is http:RemoteServerError) {
                 resp.statusCode = res.detail()?.statusCode ?: 500;
+            } else {
+                resp.statusCode = 500;
             }
             resp.setPayload(<@untainted>res.message());
             var responseToCaller = caller->respond(<@untainted>resp);
@@ -79,6 +81,8 @@ service /call on new http:Listener(9090) {
             http:Response resp = new;
             if (res is http:ClientRequestError) {
                 resp.statusCode = res.detail()?.statusCode ?: 400;
+            } else {
+                resp.statusCode = 500;
             }
             resp.setPayload(<@untainted>res.message());
             var responseToCaller = caller->respond(<@untainted>resp);
