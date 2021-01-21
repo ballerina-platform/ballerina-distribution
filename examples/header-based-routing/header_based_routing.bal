@@ -20,8 +20,10 @@ service /hbr on new http:Listener(9090) {
         http:Client locationEP = checkpanic new ("http://www.mocky.io");
         // Create a new outbound request to handle client call.
         http:Request newRequest = new;
-        // Check whether `x-type` header exists in the request.
-        if (!req.hasHeader("x-type")) {
+
+        //[getHeader()](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#getHeader) returns header value of the specified header name.
+        string|error headerValue = req.getHeader("x-type");
+        if (headerValue is error) {
             http:Response errorResponse = new;
             errorResponse.statusCode = 500;
             json errMsg = {"error": "'x-type' header is not found"};
@@ -34,9 +36,8 @@ service /hbr on new http:Listener(9090) {
             }
             return;
         }
-        //[getHeader()](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#getHeader) returns header value of the specified header name.
-        string nameString = checkpanic req.getHeader("x-type");
 
+        string nameString = checkpanic headerValue;
         http:Response|http:PayloadType|error response;
         if (nameString == "location") {
             //[post()](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function represents the 'POST' operation
