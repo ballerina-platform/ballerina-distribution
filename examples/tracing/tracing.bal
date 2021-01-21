@@ -30,7 +30,7 @@ service /hello on new http:Listener(9234) {
         if (result is error) {
             log:printError("Error in finishing span", err = result);
         }
-        // Some actual logic will go here, and for example we have introduced some delay with sleep.
+        // Some actual logic will go here, and for example, we have introduced some delay with the sleep.
         runtime:sleep(1);
         //Finish the `MyRootParentSpan` span.
         result = observe:finishSpan(rootParentSpanId);
