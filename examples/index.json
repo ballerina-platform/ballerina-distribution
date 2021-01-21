@@ -901,10 +901,6 @@
                 "url": "different-payload-types"
             },
             {
-                "name": "HTTP Streaming",
-                "url": "http-streaming"
-            },
-            {
                 "name": "HTTP Compression",
                 "url": "http-compression"
             },

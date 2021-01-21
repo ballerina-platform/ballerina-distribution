@@ -13,7 +13,7 @@ import ballerina/log;
 // [CACHE_CONTROL_AND_VALIDATORS](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#CACHE_CONTROL_AND_VALIDATORS)
 // (the default policy) and [RFC_7234](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#RFC_7234).
 
-http:Client cachingEP = new ("http://localhost:8080",
+http:Client cachingEP = check new ("http://localhost:8080",
                              {cache: {isShared: true}});
 
 service /cache on new http:Listener(9090) {

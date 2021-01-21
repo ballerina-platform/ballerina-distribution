@@ -1,7 +1,7 @@
 import ballerina/http;
 import ballerina/log;
 
-service /infoService on new http:Listener(9092) {
+service on new http:Listener(9092) {
     // The `consumes` and `produces` annotations of the [resource configuration](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/HttpResourceConfig)
     // contain MIME types as an array of strings. The resource can only consume/accept `text/json` and
     // `application/json` media types. Therefore, the `Content-Type` header
@@ -11,7 +11,7 @@ service /infoService on new http:Listener(9092) {
         consumes: ["text/json", "application/json"],
         produces: ["application/xml"]
     }
-    resource function post .(http:Caller caller, http:Request req) {
+    resource function post infoService(http:Caller caller, http:Request req) {
         // Get the JSON payload from the request message.
         http:Response res = new;
         var msg = req.getJsonPayload();

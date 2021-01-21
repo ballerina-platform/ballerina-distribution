@@ -2,4 +2,4 @@
 # `.bal` file and use the `bal run` command below.
 bal run http_expect_header.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
-2018-12-04 21:37:36,272 INFO  [ballerina/log] - TEST 100 CONTINUE
+time = 2021-01-21 20:31:28,347 level = INFO  module = "" message = "TEST 100 CONTINUE"
