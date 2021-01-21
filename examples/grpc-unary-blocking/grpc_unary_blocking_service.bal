@@ -1,36 +1,57 @@
-// This is the server implementation for the unary blocking/unblocking scenario.
+// This is the server implementation of the unary blocking/unblocking scenario.
 import ballerina/grpc;
 import ballerina/log;
+
+listener grpc:Listener ep = new (9090);
 
 @grpc:ServiceDescriptor {
     descriptor: ROOT_DESCRIPTOR,
     descMap: getDescriptorMap()
 }
-service /HelloWorld on new grpc:Listener(9090) {
-
-    isolated remote function hello(grpc:Caller caller, string name,
-                             grpc:Headers headers) {
-        log:print("Server received hello from " + name);
-        string message = "Hello " + name;
-        // Reads custom headers in request message.
-        string reqHeader = headers.get("client_header_key") ?: "none";
+service "HelloWorld" on ep {
+    remote function hello(HelloWorldStringCaller caller, ContextString request) {
+        log:print("Invoked the hello RPC call.");
+        // Reads the request content.
+        string message = "Hello " + request.content;
+        // Reads the custom headers in the request as `request.headers.hasKey`.
+        string reqHeader = request.headers.hasKey("client_header_key")? <string>request.headers.get("client_header_key"):"none";
         log:print("Server received header value: " + reqHeader);
-
-        // Writes custom headers to response message.
-        grpc:Headers resHeader = new;
-        resHeader.setEntry("server_header_key", "Response Header value");
-
-        // Sends response message with headers.
-        grpc:Error? err = caller->send(message, resHeader);
-        if (err is grpc:Error) {
-            log:printError("Error from Connector: " + err.message());
-        }
-
-        // Sends `completed` notification to caller.
-        grpc:Error? result = caller->complete();
-        if (result is grpc:Error) {
-            log:printError("Error in sending completed notification to caller",
-                err = result);
-        }
+        // Writes the custom headers to the response message.
+        map<string|string[]> responseHeaders = {};
+        responseHeaders["server_header_key"] = ["Response Header value"];
+        // Set up the response message and send it.
+        ContextString responseMessage = {content: message, headers: responseHeaders};
+        checkpanic caller->send(responseMessage);
+        checkpanic caller->complete();
     }
 }
+
+public client class HelloWorldStringCaller {
+    private grpc:Caller caller;
+
+    public function init(grpc:Caller caller) {
+        self.caller = caller;
+    }
+
+    public isolated function getId() returns int {
+        return self.caller.getId();
+    }
+    
+    isolated remote function send(string|ContextString response) returns grpc:Error? {
+        return self.caller->send(response);
+    }
+    
+    isolated remote function sendError(grpc:Error response) returns grpc:Error? {
+        return self.caller->sendError(response);
+    }
+
+    isolated remote function complete() returns grpc:Error? {
+        return self.caller->complete();
+    }
+}
+
+// The context record includes the message payload and headers.
+public type ContextString record {|
+    string content;
+    map<string|string[]> headers;
+|};

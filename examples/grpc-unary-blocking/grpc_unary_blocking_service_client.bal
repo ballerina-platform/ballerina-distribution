@@ -2,27 +2,65 @@
 import ballerina/grpc;
 import ballerina/io;
 
-public function main() {
-    // Client endpoint configuration.
-    HelloWorldBlockingClient helloWorldBlockingEp =
-                                             new ("http://localhost:9090");
-
-    // Writes custom headers to request message.
-    grpc:Headers headers = new;
-    headers.setEntry("client_header_key", "Request Header Value");
-
-    // Executes unary blocking call with headers.
-    var unionResp = helloWorldBlockingEp->hello("WSO2", headers);
-
-    // Reads message and headers from response.
-    if (unionResp is grpc:Error) {
-        io:println("Error from Connector: " + unionResp.message());
-    } else {
-        string result;
-        grpc:Headers resHeaders;
-        [result, resHeaders] = unionResp;
-        io:println("Client Got Response : " + result);
-        string headerValue = resHeaders.get("server_header_key") ?: "none";
-        io:println("Headers: " + headerValue);
-    }
+public function main (string... args) returns error? {
+    HelloWorldClient ep = check new("http://localhost:9090");
+    // Setting the custom headers.
+    map<string[]> requestHeaders = {};
+    requestHeaders["client_header_key"] = ["0987654321"];
+    ContextString requestMessage = {content: "WSO2", headers: requestHeaders};
+    // Executing the unary call.
+    ContextString result = check ep->helloContext(requestMessage);
+    // Print the content.
+    io:println(result.content);
+    // Print a header value.
+    io:println(result.headers.get("server_header_key"));
 }
+
+public client class HelloWorldClient {
+
+    *grpc:AbstractClientEndpoint;
+
+    private grpc:Client grpcClient;
+
+    public isolated function init(string url, grpc:ClientConfiguration? config = ()) returns grpc:Error? {
+        // Initialize the client endpoint.
+        self.grpcClient = check new(url, config);
+        grpc:Error? result = self.grpcClient.initStub(self, ROOT_DESCRIPTOR, getDescriptorMap());
+    }
+
+    isolated remote function hello(string|ContextString req) returns (string|grpc:Error) {
+
+        map<string[]> headers = {};
+        string message;
+        if (req is ContextString) {
+            message = req.content;
+            headers = req.headers;
+        } else {
+            message = req;
+        }
+        var payload = check self.grpcClient->executeSimpleRPC("HelloWorld/hello", message, headers);
+        [anydata, map<string[]>][result, _] = payload;
+        return result.toString();
+    }
+    isolated remote function helloContext(string|ContextString req) returns (ContextString|grpc:Error) {
+
+        map<string[]> headers = {};
+        string message;
+        if (req is ContextString) {
+            message = req.content;
+            headers = req.headers;
+        } else {
+            message = req;
+        }
+        var payload = check self.grpcClient->executeSimpleRPC("HelloWorld/hello", message, headers);
+        [anydata, map<string[]>][result, respHeaders] = payload;
+        return {content: result.toString(), headers: respHeaders};
+    }
+
+}
+
+// The context record includes the message payload and headers.
+public type ContextString record {|
+    string content;
+    map<string[]> headers;
+|};
