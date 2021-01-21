@@ -1,9 +1,9 @@
-// This is the server implementation for the secured connection (HTTPS) scenario.
+// This is the server implementation of the secured connection (HTTPS) scenario.
 import ballerina/config;
 import ballerina/grpc;
 import ballerina/log;
 
-// Server endpoint configuration with the SSL configurations.
+// The server endpoint configuration with the SSL configurations.
 listener grpc:Listener ep = new (9090, {
     host: "localhost",
     secureSocket: {
@@ -22,9 +22,9 @@ listener grpc:Listener ep = new (9090, {
 service "HelloWorld" on ep {
     remote function hello(HelloWorldStringCaller caller, ContextString request) {
         log:print("Invoked the hello RPC call.");
-        // Reads the request content
+        // Reads the request content.
         string message = "Hello " + request.content;
-        // Set up the response message and send it
+        // Set up the response message and send it.
         ContextString responseMessage = {content: message, headers: {}};
         checkpanic caller->send(responseMessage);
         checkpanic caller->complete();
@@ -55,7 +55,7 @@ public client class HelloWorldStringCaller {
     }
 }
 
-# Context record includes message payload and headers.
+// The context record includes the message payload and headers.
 public type ContextString record {|
     string content;
     map<string|string[]> headers;

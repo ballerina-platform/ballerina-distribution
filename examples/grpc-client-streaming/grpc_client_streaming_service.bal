@@ -1,4 +1,4 @@
-// This is the server implementation for the client streaming scenario.
+// This is the server implementation of the client streaming scenario.
 import ballerina/grpc;
 import ballerina/log;
 
@@ -11,11 +11,11 @@ listener grpc:Listener ep = new (9090);
 service "HelloWorld" on ep {
     remote function lotsOfGreetings(stream<string,error> clientStream) returns string|error {
         log:print("Connected sucessfully.");
-        // Read and process each message in the client stream
+        // Read and process each message in the client stream.
         error? e = clientStream.forEach(isolated function(string name) {
             log:print("Greet received: " + name);
         });
-        //Once the client sends a notification to indicate the end of the stream, 'grpc:EOS' is returned by the stream
+        // Once the client sends a notification to indicate the end of the stream, 'grpc:EOS' is returned by the stream.
         if (e is grpc:EOS) {
             return "Ack";
         }
@@ -47,7 +47,7 @@ public client class HelloWorldStringCaller {
     }
 }
 
-// Context record includes message payload and headers
+// The context record includes the message payload and headers.
 public type ContextString record {|
     string content;
     map<string[]> headers;

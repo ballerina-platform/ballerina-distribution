@@ -4,15 +4,15 @@ import ballerina/io;
 
 public function main (string... args) returns error? {
     HelloWorldClient ep = check new("http://localhost:9090");
-    //Setting the custom headers
+    // Setting the custom headers.
     map<string[]> requestHeaders = {};
     requestHeaders["client_header_key"] = ["0987654321"];
     ContextString requestMessage = {content: "WSO2", headers: requestHeaders};
-    // Executing unary call
+    // Executing the unary call.
     ContextString result = check ep->helloContext(requestMessage);
-    // Print the content
+    // Print the content.
     io:println(result.content);
-    // Print a header value
+    // Print a header value.
     io:println(result.headers.get("server_header_key"));
 }
 
@@ -23,7 +23,7 @@ public client class HelloWorldClient {
     private grpc:Client grpcClient;
 
     public isolated function init(string url, grpc:ClientConfiguration? config = ()) returns grpc:Error? {
-        // Initialize client endpoint.
+        // Initialize the client endpoint.
         self.grpcClient = check new(url, config);
         grpc:Error? result = self.grpcClient.initStub(self, ROOT_DESCRIPTOR, getDescriptorMap());
     }
@@ -59,7 +59,7 @@ public client class HelloWorldClient {
 
 }
 
-# Context record includes message payload and headers.
+// The context record includes the message payload and headers.
 public type ContextString record {|
     string content;
     map<string[]> headers;

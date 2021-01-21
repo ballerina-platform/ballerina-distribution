@@ -1,11 +1,11 @@
-// This is client implementation for bidirectional streaming scenario.
+// This is the client implementation of the bidirectional streaming scenario.
 import ballerina/grpc;
 import ballerina/io;
 
 public function main (string... args) returns error? {
-    // Client endpoint configuration
+    // Client endpoint configuration.
     ChatClient ep = check new("http://localhost:9090");
-    // Executes the RPC call and receives the customized streaming client
+    // Executes the RPC call and receives the customized streaming client.
     ChatStreamingClient streamingClient = check ep->chat();
 
     // Sends multiple messages to the server.
@@ -17,9 +17,9 @@ public function main (string... args) returns error? {
     foreach ChatMessage msg in messages {
         check streamingClient->send(msg);
     }
-    // Once all messages are sent, client send complete message to notify the server, I’m done.
+    // Once all the messages are sent, the client sends the message to notify the server about the completion.
     check streamingClient->complete();
-    // Receives the server stream response iteratively
+    // Receives the server stream response iteratively.
     var result = streamingClient->receive();
     while !(result is grpc:EOS) {
         io:println(result);
@@ -34,7 +34,7 @@ public client class ChatClient {
     private grpc:Client grpcClient;
 
     public isolated function init(string url, grpc:ClientConfiguration? config = ()) returns grpc:Error? {
-        // Initialize client endpoint.
+        // Initialize the client endpoint.
         self.grpcClient = check new(url, config);
         checkpanic self.grpcClient.initStub(self, ROOT_DESCRIPTOR, getDescriptorMap());
     }

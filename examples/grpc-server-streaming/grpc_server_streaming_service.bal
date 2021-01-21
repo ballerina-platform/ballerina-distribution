@@ -1,4 +1,4 @@
-// This is the server implementation for the server streaming scenario.
+// This is the server implementation of the server streaming scenario.
 import ballerina/grpc;
 import ballerina/log;
 
@@ -12,7 +12,7 @@ service "HelloWorld" on ep {
     remote function lotsOfReplies(string name) returns stream<string,error>|error {
         log:print("Server received hello from " + name);
         string[] greets = ["Hi", "Hey", "GM"];
-        // Create the array of responses by appending recieved name.
+        // Create the array of responses by appending the received name.
         int i = 0;
         foreach string greet in greets {
             greets[i] = greet + " " + name;
@@ -47,7 +47,7 @@ public client class HelloWorldStringCaller {
     }
 }
 
-// Context record includes message payload and headers
+// The `context` record includes the message payload and headers.
 public type ContextString record {|
     stream<string> content;
     map<string[]> headers;

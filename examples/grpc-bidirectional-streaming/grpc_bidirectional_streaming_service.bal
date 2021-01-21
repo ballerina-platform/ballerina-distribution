@@ -1,4 +1,4 @@
-// This is the server implementation for the bidirectional streaming scenario.
+// This is the server implementation of the bidirectional streaming scenario.
 import ballerina/grpc;
 import ballerina/log;
 
@@ -13,13 +13,13 @@ service "Chat" on ep {
         log:print("Invoke the chat RPC");
         string[] responses = [];
         int i = 0;
-        // Read and process each message in the client stream
+        // Read and process each message in the client stream.
         error? e = clientStream.forEach(function(ChatMessage value) {
             ChatMessage chatMsg = <ChatMessage> value;
             responses[i] = string `${chatMsg.message}: ${chatMsg.name}`;
             i += 1;
         });
-        // Once the client sends a notification to indicate the end of the stream, 'grpc:EOS' is returned by the stream
+        // Once the client sends a notification to indicate the end of the stream, 'grpc:EOS' is returned by the stream.
         return responses.toStream();
     }
 }
@@ -49,13 +49,13 @@ public client class ChatStringCaller {
 }
 
 
-// Context record includes message payload and headers.
+// The context record includes the message payload and headers.
 public type ContextString record {|
     stream<string> content;
     map<string[]> headers;
 |};
 
-// Context record includes message payload and headers.
+// The context record includes the message payload and headers.
 public type ContextChatMessage record {|
     stream<ChatMessage> content;
     map<string[]> headers;

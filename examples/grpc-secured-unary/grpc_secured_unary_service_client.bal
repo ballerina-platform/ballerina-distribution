@@ -4,7 +4,7 @@ import ballerina/grpc;
 import ballerina/io;
 
 public function main (string... args) returns error? {
-    // Client endpoint configuration with SSL configurations.
+    // The client endpoint configuration with the SSL configurations.
     HelloWorldClient ep = check
         new ("https://localhost:9090", {
             secureSocket: {
@@ -16,9 +16,9 @@ public function main (string... args) returns error? {
             }
     });
     ContextString requestMessage = {content: "WSO2", headers: {}};
-    // Executing unary call
+    // Executing the unary call.
     ContextString result = check ep->helloContext(requestMessage);
-    // Print the content
+    // Print the content.
     io:println(result.content);
 }
 
@@ -65,7 +65,7 @@ public client class HelloWorldClient {
 
 }
 
-# Context record includes message payload and headers.
+// The context record includes the message payload and headers.
 public type ContextString record {|
     string content;
     map<string|string[]> headers;

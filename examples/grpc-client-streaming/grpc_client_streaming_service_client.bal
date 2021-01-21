@@ -3,16 +3,16 @@ import ballerina/grpc;
 import ballerina/io;
 
 public function main (string... args) returns error? {
-    // Client endpoint configuration.
+    // The client endpoint configuration.
     HelloWorldClient ep = check new("http://localhost:9090");
     string[] requests = ["Hi Sam", "Hey Sam", "GM Sam"];
-    // Execute the client-streaming RPC call and receives the streaming client
+    // Execute the client-streaming RPC call and receive the streaming client.
     LotsOfGreetingsStreamingClient streamingClient = check ep->lotsOfGreetings();
-    // Send multiple messages to the server
+    // Send multiple messages to the server.
     foreach var greet in requests {
         checkpanic streamingClient->send(greet);
     }
-    // Once all the messages are sent, the server notifies the caller with a `complete` message
+    // Once all the messages are sent, the server notifies the caller with a `complete` message.
     checkpanic streamingClient->complete();
     io:println("Completed successfully");
     anydata response = checkpanic streamingClient->receive();
@@ -20,7 +20,7 @@ public function main (string... args) returns error? {
 
 }
 
-// The client that used to invoke the RPC
+// The client that used to invoke the RPC.
 public client class HelloWorldClient {
 
     *grpc:AbstractClientEndpoint;
@@ -28,7 +28,7 @@ public client class HelloWorldClient {
     private grpc:Client grpcClient;
 
     public isolated function init(string url, grpc:ClientConfiguration? config = ()) returns grpc:Error? {
-        // initialize client endpoint.
+        // Initialize the client endpoint.
         self.grpcClient = check new(url, config);
         checkpanic self.grpcClient.initStub(self, ROOT_DESCRIPTOR, getDescriptorMap());
     }
@@ -39,7 +39,7 @@ public client class HelloWorldClient {
     }
 }
 
-// The streaming client that used send the streaming messages
+// The streaming client, which is used to send the streaming messages.
 public client class LotsOfGreetingsStreamingClient {
     private grpc:StreamingClient sClient;
 
