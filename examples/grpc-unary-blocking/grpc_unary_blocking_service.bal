@@ -1,6 +1,6 @@
 // This is the server implementation for the unary blocking/unblocking scenario.
 import ballerina/grpc;
-import ballerina/io;
+import ballerina/log;
 
 listener grpc:Listener ep = new (9090);
 
@@ -10,15 +10,14 @@ listener grpc:Listener ep = new (9090);
 }
 service "HelloWorld" on ep {
     remote function hello(HelloWorldStringCaller caller, ContextString request) {
-        io:println("Invoked the hello RPC call.");
+        log:print("Invoked the hello RPC call.");
         // Reads the request content 
         string message = "Hello " + request.content;
-        io:println(request);
         // Reads the custom headers in the request request.headers.hasKey
-        string[] reqHeaders = request.headers.hasKey("client_header_key")?request.headers.get("client_header_key"):["none"];
-        io:println("Server received header value: " + reqHeaders[0]);
+        string reqHeader = request.headers.hasKey("client_header_key")? <string>request.headers.get("client_header_key"):"none";
+        log:print("Server received header value: " + reqHeader);
         // Writes custom headers to response message.
-        map<string[]> responseHeaders = {};
+        map<string|string[]> responseHeaders = {};
         responseHeaders["server_header_key"] = ["Response Header value"];
         // Set up the response message and send it
         ContextString responseMessage = {content: message, headers: responseHeaders};
@@ -54,5 +53,5 @@ public client class HelloWorldStringCaller {
 # Context record includes message payload and headers.
 public type ContextString record {|
     string content;
-    map<string[]> headers;
+    map<string|string[]> headers;
 |};

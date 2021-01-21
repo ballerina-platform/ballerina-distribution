@@ -1,6 +1,6 @@
 // This is the server implementation for the client streaming scenario.
 import ballerina/grpc;
-import ballerina/io;
+import ballerina/log;
 
 listener grpc:Listener ep = new (9090);
 
@@ -10,10 +10,10 @@ listener grpc:Listener ep = new (9090);
 }
 service "HelloWorld" on ep {
     remote function lotsOfGreetings(stream<string,error> clientStream) returns string|error {
-        io:println("connected sucessfully.");
+        log:print("Connected sucessfully.");
         // Read and process each message in the client stream
         error? e = clientStream.forEach(isolated function(string name) {
-            io:println("greet received: ", name);
+            log:print("Greet received: " + name);
         });
         //Once the client sends a notification to indicate the end of the stream, 'grpc:EOS' is returned by the stream
         if (e is grpc:EOS) {
