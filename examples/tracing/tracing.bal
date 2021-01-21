@@ -13,7 +13,7 @@ service /hello on new http:Listener(9234) {
             returns error? {
         http:Response res = new;
 
-        //Start a child span attaching to the system span generated.
+        //Start a child span attaching to the generated system span.
         int spanId = check observe:startSpan("MyFirstLogicSpan");
 
         //Start a new root span without attaching to the system span.
