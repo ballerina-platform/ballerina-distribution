@@ -41,7 +41,7 @@ service /hello on new http:Listener(9234) {
         //Some actual logic will go here, and for example, we have introduced some delay with the sleep.
         runtime:sleep(1);
 
-        //Finish the created child span `MyFirstLogicSpan`, which was attached to the system trace.
+        //Finish the created child `MyFirstLogicSpan` span, which was attached to the system trace.
         result = observe:finishSpan(spanId);
         if (result is error) {
             log:printError("Error in finishing span", err = result);
