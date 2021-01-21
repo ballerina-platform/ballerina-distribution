@@ -23,7 +23,7 @@ service /hello on new http:Listener(9234) {
         //Start a new child span for the `MyRootParentSpan` span.
         int childSpanId = check observe:startSpan("MyRootChildSpan", (),
                                                             rootParentSpanId);
-        // Some actual logic will go here, and for example we have introduced some delay with sleep.
+        // Some actual logic will go here, and for example, we have introduced some delay with the sleep.
         runtime:sleep(1);
         //Finish `MyRootChildSpan` span.
         error? result = observe:finishSpan(childSpanId);
