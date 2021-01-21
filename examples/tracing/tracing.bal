@@ -25,7 +25,7 @@ service /hello on new http:Listener(9234) {
                                                             rootParentSpanId);
         // Some actual logic will go here, and for example, we have introduced some delay with the sleep.
         runtime:sleep(1);
-        //Finish `MyRootChildSpan` span.
+        //Finish the `MyRootChildSpan` span.
         error? result = observe:finishSpan(childSpanId);
         if (result is error) {
             log:printError("Error in finishing span", err = result);
