@@ -9,9 +9,9 @@
 //    }
 //});
 //
-//// The service can be secured with Basic auth and can be
-//// authorized optionally. Using Basic auth with the file user store can be enabled by setting
-//// the `http:FileUserStoreConfig` configurations.
+//// The service can be secured with Basic auth and can be authorized optionally.
+//// Using Basic auth with the file user store can be enabled by setting the
+//// `http:FileUserStoreConfig` configurations.
 //// Authorization is based on scopes. A scope maps to one or more groups.
 //// Authorization can be enabled by setting the `string|string[]` type
 //// configurations.

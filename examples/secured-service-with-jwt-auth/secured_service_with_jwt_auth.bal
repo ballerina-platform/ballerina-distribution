@@ -9,8 +9,8 @@ listener http:Listener securedEP = new(9090, config = {
     }
 });
 
-// The service can be secured with JWT authentication and can be
-// authorized optionally. JWT authentication can be enabled by setting the
+// The service can be secured with JWT authentication and can be authorized
+// optionally. JWT authentication can be enabled by setting the
 // `http:JwtValidatorConfig` configurations.
 // Authorization is based on scopes. A scope maps to one or more groups.
 // Authorization can be enabled by setting the `string|string[]` type
