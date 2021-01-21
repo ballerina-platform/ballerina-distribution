@@ -1076,7 +1076,7 @@ task testStdlibs() {
     patternSet.exclude("**/Ballerina.lock")
     patternSet.exclude("**/ballerina-internal.log")
     inputs.files(files("${distPath}/stdlib-integration-tests").asFileTree.matching(patternSet))
-    def ignoreList = []
+    def ignoreList = ["auth", "jwt", "oauth2", "ldap", "websub", "websub-advance", "websub-generic"]
 
     doFirst {
         copy {
