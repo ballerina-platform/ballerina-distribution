@@ -12,8 +12,7 @@ kafka:ConsumerConfiguration consumerConfigs = {
     topics: ["test-kafka-topic"],
 
     pollingIntervalInMillis: 1000,
-    keyDeserializerType: kafka:DES_BYTE_ARRAY,
-    valueDeserializerType: kafka:DES_BYTE_ARRAY,
+
     // Set `autoCommit` to false, so that the records should be committed
     // manually.
     autoCommit: false

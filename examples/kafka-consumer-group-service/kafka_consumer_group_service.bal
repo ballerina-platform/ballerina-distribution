@@ -13,9 +13,7 @@ kafka:ConsumerConfiguration consumerConfigs = {
     // Subscribes to the topic `test-kafka-topic`.
     topics: ["test-kafka-topic"],
 
-    pollingIntervalInMillis: 1000,
-    // Uses the default string deserializer to deserialize the Kafka value.
-    valueDeserializerType: kafka:DES_BYTE_ARRAY
+    pollingIntervalInMillis: 1000
 
 };
 
