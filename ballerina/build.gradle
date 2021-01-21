@@ -45,8 +45,6 @@ def ballerinaLinuxDistributionZip = file("$project.buildDir/distributions/baller
 def ballerinaMacDistributionZip = file("$project.buildDir/distributions/ballerina-macos-${ballerinaVersion}.zip")
 def ballerinaWindowsDistributionZip = file("$project.buildDir/distributions/ballerina-windows-${ballerinaVersion}.zip")
 
-def installerVersion = new Random().nextInt(10 ** 10)
-
 task unpackBallerinaJre(type: Download) {
     group = "unpack_dependencies"
     def jreBaseURL = "https://github.com/ballerina-platform/ballerina-custom-jre/releases/download/${ballerinaJreVersion}"
@@ -375,7 +373,7 @@ task packageDistZip(type: Zip) {
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/installer-version"
         fileMode = 0644
-        filter(ReplaceTokens, tokens: [uuid: "${installerVersion}"])
+        filter(ReplaceTokens, tokens: [uuid: installerVersion])
     }
     into("${parentDir}/bin") {
         from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/bal"
@@ -454,7 +452,7 @@ task packageDistLinux(type: Zip) {
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/installer-version"
         fileMode = 0644
-        filter(ReplaceTokens, tokens: [uuid:  "${installerVersion}"])
+        filter(ReplaceTokens, tokens: [uuid:  installerVersion])
     }
     into("${parentDir}/bin") {
         from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/bal"
@@ -523,7 +521,7 @@ task packageDistMac(type: Zip) {
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/installer-version"
         fileMode = 0644
-        filter(ReplaceTokens, tokens: [uuid: "${installerVersion}"])
+        filter(ReplaceTokens, tokens: [uuid: installerVersion])
     }
     into("${parentDir}/bin") {
         from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/bal"
@@ -592,7 +590,7 @@ task packageDistWindows(type: Zip) {
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/installer-version"
         fileMode = 0644
-        filter(ReplaceTokens, tokens: [uuid: "${installerVersion}"])
+        filter(ReplaceTokens, tokens: [uuid: installerVersion])
     }
     into("${parentDir}/bin") {
         from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/bal.bat"
