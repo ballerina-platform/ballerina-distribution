@@ -652,8 +652,8 @@ task testExamples() {
             'secured-client-with-bearer-token-auth',
             'secured-client-with-self-signed-jwt-auth',
             'secured-client-with-oauth2-client-credentials-grant-type',
-            'secured-client-with-oauth2-client-password-type',
-            'secured-client-with-oauth2-client-direct-token-type',
+            'secured-client-with-oauth2-password-grant-type',
+            'secured-client-with-oauth2-direct-token-type',
 
             // Disabling due to pending migration for service typing
             'websocket-cookie',
