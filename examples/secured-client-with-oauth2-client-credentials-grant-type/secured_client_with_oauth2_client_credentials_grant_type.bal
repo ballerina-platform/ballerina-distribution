@@ -5,7 +5,7 @@ import ballerina/log;
 // The client is enriched with the `Authorization: Bearer <token>` header by
 // passing the `http:ClientCredentialsGrantConfig` for the `auth` configuration
 // of the client.
-http:Client securedEP = checkpanic new("https://localhost:9090", {
+http:Client securedEP = check new("https://localhost:9090", {
     auth: {
         tokenUrl: "https://localhost:9090/oauth2/token",
         clientId: "s6BhdRkqt3",
