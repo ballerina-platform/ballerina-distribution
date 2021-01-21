@@ -1,7 +1,6 @@
 import ballerina/io;
 import ballerina/log;
 import ballerina/tcp;
-import ballerina/lang.'string;
 
 // Bind the service to the port. 
 service on new tcp:Listener(3000) {
@@ -22,7 +21,7 @@ service class EchoService {
 
     // This remote method is invoked once the content is received from the client.
     remote function onBytes(readonly & byte[] data) returns tcp:Error? {
-        io:println("Echo: ", 'string:fromBytes(data));
+        io:println("Echo: ", string:fromBytes(data));
         // Echo back the data to the same client which the data received from.
         check self.caller->writeBytes(data);
     }

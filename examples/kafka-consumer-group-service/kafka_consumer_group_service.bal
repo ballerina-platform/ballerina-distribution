@@ -1,5 +1,4 @@
 import ballerinax/kafka;
-import ballerina/lang.'string;
 import ballerina/log;
 
 kafka:ConsumerConfiguration consumerConfigs = {
@@ -35,7 +34,7 @@ service kafka:Service on kafkaListener {
 
 function processKafkaRecord(kafka:ConsumerRecord kafkaRecord) {
     byte[] messageContent = kafkaRecord.value;
-    string|error message = 'string:fromBytes(messageContent);
+    string|error message = string:fromBytes(messageContent);
     if (message is string) {
         // Prints the retrieved message.
         log:print(" Received Message: " + message);

@@ -1,5 +1,4 @@
 import ballerinax/kafka;
-import ballerina/lang.'string;
 import ballerina/log;
 
 // The `kafka:AuthenticationConfiguration` is used to provide authentication-related details.
@@ -30,7 +29,7 @@ service kafka:Service on kafkaListener {
                                 kafka:ConsumerRecord[] records) {
         foreach var consumerRecord in records {
             string|error messageContent =
-                                   'string:fromBytes(consumerRecord.value);
+                                   string:fromBytes(consumerRecord.value);
             if (messageContent is string) {
                 log:print(messageContent);
             }

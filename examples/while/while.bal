@@ -1,5 +1,4 @@
 import ballerina/io;
-import ballerina/lang.'int as ints;
 
 public function main() {
     int i = 0;
@@ -15,7 +14,7 @@ public function main() {
             // The `break` statement can be used to break the loop.
             break;
         }
-        var value = ints:fromString(input);
+        var value = int:fromString(input);
         int age;
         if (value is int) {
             age = value;

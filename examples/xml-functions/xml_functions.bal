@@ -1,5 +1,4 @@
 import ballerina/io;
-import ballerina/lang.'xml as xmllib;
 
 public function main() {
     xml bookName = xml `<name>Book1</name>`;
@@ -7,14 +6,14 @@ public function main() {
     xml someText = xml `Hello, World!`;
     xml content = someText + bookName + bookComment;
 
-    xmllib:Element book = <xmllib:Element> xml `<book/>`;
+    xml:Element book = <xml:Element> xml `<book/>`;
 
     // Get the name of an XML element.
-    xmllib:Element bookNameElem = <xmllib:Element> bookName;
+    xml:Element bookNameElem = <xml:Element> bookName;
     io:println("Element name: ", bookNameElem.getName());
 
     // Concatenate XML and string values.
-    xml concat = xmllib:concat(someText, bookName, bookComment);
+    xml concat = xml:concat(someText, bookName, bookComment);
     io:println("Concat: ", concat);
     io:println("Equals: ", content == concat);
 
