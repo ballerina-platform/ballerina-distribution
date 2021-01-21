@@ -4,7 +4,7 @@ public function main() returns @tainted error? {
     // Initialize the image paths.
     string imagePath = "./files/ballerina.jpg";
     string imageCopyPath1 = "./files/ballerinaCopy1.jpg";
-    string imageCopyPath2 = "./files/ballerinaCopy1.jpg";
+    string imageCopyPath2 = "./files/ballerinaCopy2.jpg";
 
     // Read the file content as a byte array using the given file path.
     byte[] bytes = check io:fileReadBytes(imagePath);
