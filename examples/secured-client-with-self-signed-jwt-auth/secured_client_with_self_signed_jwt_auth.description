@@ -1,5 +1,5 @@
 // A client, which is secured with self signed JWT can be used to connect to
-// a secured service.
+// a secured service.<br/>
 // The client is enriched with `Authorization: Bearer <token>` header by
 // passing the `http:JwtIssuerConfig` for the `auth` configuration of the
 // client. A self signed JWT is issued before the request is sent.<br/><br/>

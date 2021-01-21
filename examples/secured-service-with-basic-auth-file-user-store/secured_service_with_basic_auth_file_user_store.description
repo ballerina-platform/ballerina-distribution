@@ -2,15 +2,15 @@
 // enforcing authorization. Then it validates the Basic auth token sent in the
 // `Authorization` header against the provided configurations. This reads data
 // from a file which has a TOML format. This stores usernames, passwords for
-// authentication, and scopes for authorization.
+// authentication, and scopes for authorization.<br/>
 // Ballerina uses the concept of scopes for authorization. A resource declared
-// in a service can be bound to one/more scope(s).
+// in a service can be bound to one/more scope(s).<br/>
 // In the authorization phase, the scopes of the service/resource are compared
 // against the scope included in the user store for at least one match between
-// the two sets.
+// the two sets.<br/>
 // The following code block shows the contents of the file `sample-users.toml`,
 // which has the required format of usernames, passwords and scopes, including
-// their mapping.
+// their mapping.<br/>
 //
 //      [b7a.users]
 //
