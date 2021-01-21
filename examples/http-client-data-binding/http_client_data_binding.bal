@@ -7,7 +7,7 @@ type Person record {|
     int age;
 |};
 
-http:Client backendClient = new("http://localhost:9092");
+http:Client backendClient = check new("http://localhost:9092");
 
 service /call on new http:Listener(9090) {
 
@@ -27,7 +27,7 @@ service /call on new http:Listener(9090) {
 
         // If the type test of the error becomes false, it implies that the [payload type](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/types#Payload)
         // is string.
-        log:print("String payload: " + <string>result);
+        log:print("String payload: " + <string> checkpanic result);
 
         // Binding the payload to a JSON type. If an error returned, it will be responded back to the caller.
         json jsonPayload = <json> check backendClient->
@@ -58,9 +58,11 @@ service /call on new http:Listener(9090) {
         // When the data binding is expected to happen and if the `post` remote function gets a 5XX response from the
         // backend, the response will be returned as an [http:RemoteServerError](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/errors#RemoteServerError)
         // including the error message and status code.
-        if (res is http:RemoteServerError) {
+        if (res is error) {
             http:Response resp = new;
-            resp.statusCode = res.detail()?.statusCode ?: 500;
+            if (res is http:RemoteServerError) {
+                resp.statusCode = res.detail()?.statusCode ?: 500;
+            }
             resp.setPayload(<@untainted>res.message());
             var responseToCaller = caller->respond(<@untainted>resp);
         } else {
@@ -73,9 +75,11 @@ service /call on new http:Listener(9090) {
         // backend, the response will be returned as an [http:ClientRequestError](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/errors#ClientRequestError)
         // including the error message and status code.
         var res = backendClient->post("/backend/err", "want 400", json);
-        if (res is http:ClientRequestError) {
+        if (res is error) {
             http:Response resp = new;
-            resp.statusCode = res.detail()?.statusCode ?: 400;
+            if (res is http:ClientRequestError) {
+                resp.statusCode = res.detail()?.statusCode ?: 400;
+            }
             resp.setPayload(<@untainted>res.message());
             var responseToCaller = caller->respond(<@untainted>resp);
         } else {
