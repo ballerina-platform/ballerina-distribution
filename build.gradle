@@ -524,7 +524,7 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:grpc-ballerina:${stdlibGrpcVersion}"
         ballerinaStdLibs "org.ballerinalang:http-ballerina:${stdlibHttpVersion}"
         ballerinaStdLibs "org.ballerinalang:io-ballerina:${stdlibIoVersion}"
-        ballerinaStdLibs "org.ballerinalang:jarrays-ballerina:${stdlibJarraysVersion}"
+        ballerinaStdLibs "org.ballerinalang:java.arrays-ballerina:${stdlibJavaArraysVersion}"
         ballerinaStdLibs "org.ballerinalang:java.jdbc-ballerina:${stdlibJdbcVersion}"
         ballerinaStdLibs "org.ballerinalang:jsonutils-ballerina:${stdlibJsonutilsVersion}"
         ballerinaStdLibs "org.ballerinalang:jwt-ballerina:${stdlibJwtVersion}"
