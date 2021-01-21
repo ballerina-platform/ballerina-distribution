@@ -133,6 +133,18 @@
                 "url": "match"
             },
             {
+                "name": "Tuple Match",
+                "url": "tuple-match-statement"
+            },
+            {
+                "name": "Mapping Match",
+                "url": "mapping-match-statement"
+            },
+            {
+                "name": "Error Match",
+                "url": "error-match-statement"
+            },
+            {
                 "name": "Type Test Expression",
                 "url": "type-test-expression"
             },
