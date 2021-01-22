@@ -9,18 +9,21 @@ listener grpc:Listener ep = new (9090);
     descMap: getDescriptorMap()
 }
 service "HelloWorld" on ep {
-    remote function hello(HelloWorldStringCaller caller, ContextString request) {
+    remote function hello(HelloWorldStringCaller caller,
+                            ContextString request) {
         log:print("Invoked the hello RPC call.");
         // Reads the request content.
         string message = "Hello " + request.content;
         // Reads the custom headers in the request as `request.headers.hasKey`.
-        string reqHeader = request.headers.hasKey("client_header_key")? <string>request.headers.get("client_header_key"):"none";
+        string reqHeader = request.headers.hasKey("client_header_key")?
+        <string>request.headers.get("client_header_key"):"none";
         log:print("Server received header value: " + reqHeader);
         // Writes the custom headers to the response message.
         map<string|string[]> responseHeaders = {};
         responseHeaders["server_header_key"] = ["Response Header value"];
         // Set up the response message and send it.
-        ContextString responseMessage = {content: message, headers: responseHeaders};
+        ContextString responseMessage = {content: message,
+        headers: responseHeaders};
         checkpanic caller->send(responseMessage);
         checkpanic caller->complete();
     }
@@ -37,11 +40,13 @@ public client class HelloWorldStringCaller {
         return self.caller.getId();
     }
     
-    isolated remote function send(string|ContextString response) returns grpc:Error? {
+    isolated remote function send(string|ContextString response)
+                                returns grpc:Error? {
         return self.caller->send(response);
     }
     
-    isolated remote function sendError(grpc:Error response) returns grpc:Error? {
+    isolated remote function sendError(grpc:Error response)
+                                returns grpc:Error? {
         return self.caller->sendError(response);
     }
 

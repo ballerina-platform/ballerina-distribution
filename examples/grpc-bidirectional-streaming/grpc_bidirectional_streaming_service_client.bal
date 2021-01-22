@@ -33,14 +33,17 @@ public client class ChatClient {
 
     private grpc:Client grpcClient;
 
-    public isolated function init(string url, grpc:ClientConfiguration? config = ()) returns grpc:Error? {
+    public isolated function init(string url,
+    grpc:ClientConfiguration? config = ()) returns grpc:Error? {
         // Initialize the client endpoint.
         self.grpcClient = check new(url, config);
-        checkpanic self.grpcClient.initStub(self, ROOT_DESCRIPTOR, getDescriptorMap());
+        checkpanic self.grpcClient.initStub(self, ROOT_DESCRIPTOR,
+        getDescriptorMap());
     }
 
     isolated remote function chat() returns (ChatStreamingClient|grpc:Error) {
-        grpc:StreamingClient sClient = check self.grpcClient->executeBidirectionalStreaming("Chat/chat");
+        grpc:StreamingClient sClient = check
+        self.grpcClient->executeBidirectionalStreaming("Chat/chat");
         return new ChatStreamingClient(sClient);
     }
 }
@@ -61,7 +64,8 @@ public client class ChatStreamingClient {
         return self.sClient->receive();
     }
 
-    isolated remote function sendError(grpc:Error response) returns grpc:Error? {
+    isolated remote function sendError(grpc:Error response)
+                                returns grpc:Error? {
         return self.sClient->sendError(response);
     }
 

@@ -22,13 +22,16 @@ public client class HelloWorldClient {
 
     private grpc:Client grpcClient;
 
-    public isolated function init(string url, grpc:ClientConfiguration? config = ()) returns grpc:Error? {
+    public isolated function init(string url,
+    grpc:ClientConfiguration? config = ()) returns grpc:Error? {
         // Initialize the client endpoint.
         self.grpcClient = check new(url, config);
-        grpc:Error? result = self.grpcClient.initStub(self, ROOT_DESCRIPTOR, getDescriptorMap());
+        grpc:Error? result = self.grpcClient.initStub(self,
+                                ROOT_DESCRIPTOR, getDescriptorMap());
     }
 
-    isolated remote function hello(string|ContextString req) returns (string|grpc:Error) {
+    isolated remote function hello(string|ContextString req)
+                                returns (string|grpc:Error) {
 
         map<string[]> headers = {};
         string message;
@@ -38,11 +41,13 @@ public client class HelloWorldClient {
         } else {
             message = req;
         }
-        var payload = check self.grpcClient->executeSimpleRPC("HelloWorld/hello", message, headers);
+        var payload = check self.grpcClient->executeSimpleRPC(
+                            "HelloWorld/hello", message, headers);
         [anydata, map<string[]>][result, _] = payload;
         return result.toString();
     }
-    isolated remote function helloContext(string|ContextString req) returns (ContextString|grpc:Error) {
+    isolated remote function helloContext(string|ContextString req)
+                                returns (ContextString|grpc:Error) {
 
         map<string[]> headers = {};
         string message;
@@ -52,7 +57,8 @@ public client class HelloWorldClient {
         } else {
             message = req;
         }
-        var payload = check self.grpcClient->executeSimpleRPC("HelloWorld/hello", message, headers);
+        var payload = check self.grpcClient->executeSimpleRPC(
+                            "HelloWorld/hello", message, headers);
         [anydata, map<string[]>][result, respHeaders] = payload;
         return {content: result.toString(), headers: respHeaders};
     }
