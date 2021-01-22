@@ -72,7 +72,7 @@ public class OpenAPIDistributionArtifactCheck {
                 .resolve("openapi")
                 .resolve("2.0.3")
                 .resolve("platform")
-                .resolve("java11");
+                .resolve("any");
 
         Path breLibPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
