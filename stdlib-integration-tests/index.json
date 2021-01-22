@@ -56,10 +56,6 @@
     "path": "websub"
   },
   {
-    "name": "Config standard library",
-    "path": "config"
-  },
-  {
     "name": "UDP standard library ",
     "path": "udp"
   }
