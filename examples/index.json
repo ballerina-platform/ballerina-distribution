@@ -654,10 +654,6 @@
                 "url": "cache"
             },
             {
-                "name": "Config",
-                "url": "config-api"
-            },
-            {
                 "name": "Log",
                 "url": "log-api"
             },
