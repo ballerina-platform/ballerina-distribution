@@ -6,8 +6,8 @@ public function main() returns error? {
     // and password. The default port number `465` is used over SSL with these
     // configurations. `SmtpConfig` can be configured and passed to this
     // client if the port or security is to be customized.
-    email:SmtpClient smtpClient = check new ("smtp.email.com", "sender@email.com"
-        , "pass123");
+    email:SmtpClient smtpClient = check new ("smtp.email.com",
+        "sender@email.com" , "pass123");
 
     // Define the email that is required to be sent.
     email:Message email = {
@@ -63,8 +63,8 @@ public function main() returns error? {
     // Create the client with the connection parameters, host, username, and
     // password. An error is received in a failure. The default port number
     // `993` is used over SSL with these configurations.
-    email:ImapClient imapClient = check new ("imap.email.com", "reader@email.com",
-        "pass456");
+    email:ImapClient imapClient = check new ("imap.email.com",
+        "reader@email.com", "pass456");
 
     // Read the first unseen email received by the IMAP4 server. `()` is
     // returned when there are no new unseen emails. In error cases, an
