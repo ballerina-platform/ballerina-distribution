@@ -691,27 +691,17 @@ task testExamples() {
 
             // Disabling temporarily (https://github.com/ballerina-platform/ballerina-distribution/issues/1242)
             "ballerina-to-openapi",
-            "dynamic-listener",
             "xa-transactions",
             "retry-transactions",
             "non-transaction-retry",
             "local-transactions-with-handlers",
             "local-transactions",
             "log-api",
-            "async",
-            "worker-interaction",
-            "workers",
-            "fail",
-            "xml-attributes",
-            "any-type",
             "optional-type",
             "error-match-statement",
             "mapping-match-statement",
             "tuple-match-statement",
-            "foreach",
-            "while",
-            "function-pointers",
-            "modules"
+            "while"
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
@@ -812,8 +802,7 @@ task testExamples() {
 
             // Disabling temporarily (https://github.com/ballerina-platform/ballerina-distribution/issues/1242)
             "configurable",
-            "error-match-statement",
-            "modules"
+            "error-match-statement"
     ]
 
     doFirst {
