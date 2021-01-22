@@ -16,7 +16,8 @@ http:ClientConfiguration clientEPConfig = {
 
 public function main() {
     // Create an HTTP client to interact with the created listener endpoint.
-    http:Client clientEP = checkpanic new("https://localhost:9095", clientEPConfig);
+    http:Client clientEP = checkpanic new("https://localhost:9095",
+                                          clientEPConfig);
     // Sends an outbound request and bind the payload to a string value.
     var payload = clientEP->get("/helloWorld/hello", targetType = string);
     if (payload is string) {

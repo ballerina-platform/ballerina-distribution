@@ -15,7 +15,8 @@ http:ClientConfiguration weatherEPConfig = {
 service /hbr on new http:Listener(9090) {
 
     resource function get route(http:Caller caller, http:Request req) {
-        http:Client weatherEP = checkpanic new ("http://samples.openweathermap.org",
+        http:Client weatherEP = checkpanic new (
+                                    "http://samples.openweathermap.org",
                                      weatherEPConfig);
         http:Client locationEP = checkpanic new ("http://www.mocky.io");
         // Create a new outbound request to handle client call.
