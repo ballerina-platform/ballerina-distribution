@@ -34,7 +34,8 @@ service class EchoService {
 
     // This remote method is invoked when the connection is closed.
     remote function onClose() returns tcp:Error? {
-        io:println("Client left: ", self.caller.remoteHost, "/", self.caller.remotePort);
+        io:println("Client left: ", self.caller.remoteHost, "/",
+            self.caller.remotePort);
     }
 }
 
