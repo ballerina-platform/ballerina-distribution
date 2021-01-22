@@ -1,5 +1,5 @@
 import ballerina/io;
-import ballerina/jdbc;
+import ballerinax/java.jdbc;
 import ballerina/lang.'transaction as transactions;
 
 string xaDatasourceName = "org.h2.jdbcx.JdbcDataSource";
