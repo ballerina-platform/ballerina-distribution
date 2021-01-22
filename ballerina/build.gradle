@@ -67,11 +67,11 @@ task unpackJballerinaTools(type: Copy) {
 }
 
 task unpackDevTools(type: Copy) {
-     group = "unpack_dependencies"
-     configurations.devTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-         from zipTree(artifact.getFile())
-         into new File("${buildDir}/target/extracted-distributions", artifact.name+"-zip")
-     }
+    group = "unpack_dependencies"
+    configurations.devTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+        from zipTree(artifact.getFile())
+        into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
+    }
 }
 
 task unpackAwsLambdaBalo(type: Copy) {
@@ -208,7 +208,7 @@ task copyOtherRepos(type: Copy) {
             into "bre/lib/"
         }
         from("${artifactExtractedPath}/docs") {
-            into"docs/"
+            into "docs/"
         }
         from("${artifactExtractedPath}/balo") {
             into "repo/balo"
@@ -225,7 +225,7 @@ task copyOtherRepos(type: Copy) {
             into "bre/lib/"
         }
         from("${artifactExtractedPath}/docs") {
-            into"docs/"
+            into "docs/"
         }
         from("${artifactExtractedPath}/balo") {
             into "repo/balo"
@@ -242,7 +242,7 @@ task copyOtherRepos(type: Copy) {
             into "bre/lib/"
         }
         from("${artifactExtractedPath}/docs") {
-            into"docs/"
+            into "docs/"
         }
         from("${artifactExtractedPath}/balo") {
             into "repo/balo"
@@ -260,9 +260,9 @@ task buildDistRepo(type: JavaExec) {
 }
 
 task copyDevToolsCoverageReport(type: Copy) {
-     from "$project.buildDir/target/extracted-distributions/ballerina-dev-tools-zip/testerina-report-tools-${devToolsVersion}.zip"
-     into "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/lib/tools/coverage"
-     rename ("testerina-report-tools-${devToolsVersion}.zip", "report.zip")
+    from "$project.buildDir/target/extracted-distributions/ballerina-dev-tools-zip/testerina-report-tools-${devToolsVersion}.zip"
+    into "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/lib/tools/coverage"
+    rename("testerina-report-tools-${devToolsVersion}.zip", "report.zip")
 }
 task copyDevToolsDocUi(type: Copy) {
     from zipTree("$project.buildDir/target/extracted-distributions/ballerina-dev-tools-zip/docerina-ui-${devToolsVersion}.zip")
@@ -453,7 +453,7 @@ task packageDistLinux(type: Zip) {
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/installer-version"
         fileMode = 0644
-        filter(ReplaceTokens, tokens: [uuid:  installerVersion])
+        filter(ReplaceTokens, tokens: [uuid: installerVersion])
     }
     into("${parentDir}/bin") {
         from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/bal"
@@ -689,6 +689,16 @@ task testExamples() {
             'http-filters',
             'http-streaming',
 
+            // Disabling temporarily (https://github.com/ballerina-platform/ballerina-distribution/issues/1242)
+            "ballerina-to-openapi",
+            "xa-transactions",
+            "retry-transactions",
+            "non-transaction-retry",
+            "local-transactions-with-handlers",
+            "local-transactions",
+            "log-api",
+            "optional-type",
+            "while"
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
