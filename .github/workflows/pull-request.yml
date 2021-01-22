@@ -21,7 +21,7 @@ jobs:
                 env:
                     packageUser: ${{ github.actor }}
                     packagePAT: ${{ secrets.GITHUB_TOKEN }}
-                run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue -x :ballerina:testExamples
+                run: ./gradlew clean build -x test --stacktrace --scan --console=plain --no-daemon --continue
 
     BBETests:
         runs-on: ubuntu-latest
@@ -36,5 +36,5 @@ jobs:
                 env:
                     packageUser: ${{ github.actor }}
                     packagePAT: ${{ secrets.GITHUB_TOKEN }}
-                run: ./gradlew clean :ballerina:testExamples --stacktrace --scan --console=plain --no-daemon --continue
+                run: ./gradlew build -x test --stacktrace --scan --console=plain --no-daemon --continue
 
