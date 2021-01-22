@@ -698,9 +698,6 @@ task testExamples() {
             "local-transactions",
             "log-api",
             "optional-type",
-            "error-match-statement",
-            "mapping-match-statement",
-            "tuple-match-statement",
             "while"
     ]
 
@@ -798,10 +795,7 @@ task testExamples() {
             'task-service-appointment',
             'error-handling-in-single-place',
             'file-io',
-            'uuid',  // Output varies
-
-            // Disabling temporarily (https://github.com/ballerina-platform/ballerina-distribution/issues/1242)
-            "error-match-statement"
+            'uuid'  // Output varies
     ]
 
     doFirst {
