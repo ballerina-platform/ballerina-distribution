@@ -3,7 +3,7 @@ import ballerina/log;
 
 // HTTP version is set to 2.0.
 http:Client http2serviceClientEP =
-                        checkpanic new ("http://localhost:7090", {httpVersion: "2.0"});
+        checkpanic new ("http://localhost:7090", {httpVersion: "2.0"});
 
 service /http11Service on new http:Listener(9090) {
 

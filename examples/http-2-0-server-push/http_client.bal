@@ -3,7 +3,8 @@ import ballerina/log;
 
 // Create an [HTTP client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client) that can send HTTP/2 messages.
 // HTTP version is set to 2.0.
-http:Client clientEP = checkpanic new ("http://localhost:7090", {httpVersion: "2.0"});
+http:Client clientEP =
+        checkpanic new ("http://localhost:7090", {httpVersion: "2.0"});
 
 public function main() {
 
