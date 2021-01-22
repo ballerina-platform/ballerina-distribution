@@ -708,7 +708,6 @@ task testExamples() {
             'checkpanic', // Has user name in output
             'deprecation', // Contains user input
             'foreach', // Has tabs for formatting in input
-            'config-api',
             'kafka-consumer-client',
             'kafka-producer',
             'kafka-consumer-service',
