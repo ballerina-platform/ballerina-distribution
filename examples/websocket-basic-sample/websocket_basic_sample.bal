@@ -30,7 +30,8 @@ service class WsService {
         io:println("Is connection secured: " + caller.isSecure().toString());
     }
 
-    // This `remote function` is triggered when a new text frame is received from a client.
+    // This `remote function` is triggered when a new text message is received
+    // from a client.
     remote function onTextMessage(websocket:Caller caller, string text) {
         io:println("\ntext message: " + text);
         if (text == "ping") {
@@ -55,7 +56,8 @@ service class WsService {
         }
     }
 
-    // This `remote function` is triggered when a new binary frame is received from a client.
+    // This `remote function` is triggered when a new binary message is
+    // received from a client.
     remote function onBinaryMessage(websocket:Caller caller, byte[] b) {
         io:println("\nNew binary message received");
         io:print("UTF-8 decoded binary message: ");
@@ -95,7 +97,7 @@ service class WsService {
     }
 
     // This remote function is triggered when an error occurred in the connection or the transport.
-    // This remote function is always followed by a connection closure with an appropriate WebSocket close frame
+    // This remote function is always followed by a connection closure with an appropriate WebSocket close message
     // and this is used only to indicate the error to the user and take post decisions if needed.
     remote function onError(websocket:Caller caller, error err) {
         log:printError("Error occurred ", err = err);

@@ -16,8 +16,8 @@ public function main() returns websocket:Error? {
 // The client callback service, which handles backend responses.
 service class ClientService {
     *websocket:Service;
-    // This remote function is triggered when a new text frame is received from
-    // the remote backend.
+    // This remote function is triggered when a new text message is
+    // received from the remote backend.
     remote function onTextMessage(websocket:Caller conn, string text) {
         io:println(text);
     }
