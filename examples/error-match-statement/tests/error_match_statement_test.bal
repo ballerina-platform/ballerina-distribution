@@ -1,7 +1,7 @@
 import ballerina/test;
 import ballerina/io;
 
-any[] outputs = [];
+string[] outputs = [];
 int counter = 0;
 
 // This is the mock function, which will replace the real function.
@@ -9,6 +9,8 @@ int counter = 0;
     moduleName: "ballerina/io",
     functionName: "println"
 }
+test:MockFunction mockPrintLn = new();
+
 public function mockPrint(any... s) {
     string outstr = "";
     foreach var str in s {
@@ -20,13 +22,14 @@ public function mockPrint(any... s) {
 
 @test:Config {}
 function testFunc() {
+    test:when(mockPrintLn).call("mockPrint");
     // Invoking the main function.
     main();
 
     string out1 = "Matched a value with a tuple shape";
     string out2 = "Matched a value with a record shape";
-    string out3 = "Matched an error value : reason: Generic Error, message: Failed";
-    string out4 = "Matched an error value : reason: Fatal, rest detail: {\"fatal\":true}";
+    string out3 = "Matched an error value : message: Failed";
+    string out4 = "Matched an error value : message: Fatal, rest detail: {\"fatal\":true}";
     string out5 = "Matched `InvalidError` id=33456";
 
     test:assertEquals(outputs[0], out1);
