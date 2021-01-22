@@ -1,4 +1,3 @@
-import ballerina/stringutils;
 import ballerina/test;
 
 string[] outputs = [];
@@ -21,8 +20,8 @@ function testFunc() returns error? {
     // Invoking the main function
     check main();
     test:assertEquals(outputs.length(), 4);
-    test:assertTrue(stringutils:contains(<string>outputs[0], "Base64 URL encoded value: YWJjMTIzIT8kKiYoKSctPUB-"));
-    test:assertTrue(stringutils:contains(<string>outputs[1], "Base64 URL decoded value: abc123!?$*&()'-=@~"));
-    test:assertTrue(stringutils:contains(<string>outputs[2], "URI encoded value: data%3Dvalue"));
-    test:assertTrue(stringutils:contains(<string>outputs[3], "URI decoded value: data=value"));
+    test:assertTrue(outputs[0].includes("Base64 URL encoded value: YWJjMTIzIT8kKiYoKSctPUB-"));
+    test:assertTrue(outputs[1].includes("Base64 URL decoded value: abc123!?$*&()'-=@~"));
+    test:assertTrue(outputs[2].includes("URI encoded value: data%3Dvalue"));
+    test:assertTrue(outputs[3].includes("URI decoded value: data=value"));
 }
