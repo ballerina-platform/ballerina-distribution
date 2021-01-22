@@ -7,7 +7,7 @@ public function main (string... args) returns error? {
     HelloWorldClient ep = check new("http://localhost:9090");
     // Execute the streaming RPC call that registers
     // the server message listener and gets the response as a stream.
-    stream<anydata> result = check ep->lotsOfReplies("WSO2");
+    stream<anydata, grpc:Error?> result = check ep->lotsOfReplies("WSO2");
     // Iterate through the stream and print the content.
     error? e = result.forEach(function(anydata str) {
         io:println(str);
@@ -30,9 +30,39 @@ public client class HelloWorldClient {
     }
 
     isolated remote function lotsOfReplies(string req)
-                                returns stream<anydata>|error {
-        return self.grpcClient->executeServerStreaming(
+                            returns stream<anydata, grpc:Error?>|grpc:Error {
+        var payload = check self.grpcClient->executeServerStreaming(
         "HelloWorld/lotsOfReplies", req);
+        [stream<anydata, grpc:Error?>, map<string|string[]>][result, _] =
+        payload;
+        StringStream stringStream = new StringStream(result);
+        return new stream<string, grpc:Error?>(stringStream);
     }
 
+}
+
+public class StringStream {
+    private stream<anydata, grpc:Error?> anydataStream;
+
+    public isolated function init(stream<anydata, grpc:Error?> anydataStream) {
+        self.anydataStream = anydataStream;
+    }
+
+    public isolated function next() returns
+                            record {| string value; |}|grpc:Error? {
+        var streamValue = self.anydataStream.next();
+        if (streamValue is ()) {
+            return streamValue;
+        } else if (streamValue is grpc:Error) {
+            return streamValue;
+        } else {
+            record {| string value; |} nextRecord =
+            {value: <string>streamValue.value};
+            return nextRecord;
+        }
+    }
+
+    public isolated function close() returns grpc:Error? {
+        return self.anydataStream.close();
+    }
 }
