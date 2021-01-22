@@ -31,7 +31,7 @@ service stan:Service on lis {
 service stan:Service on lis {
     remote function onMessage(stan:Message message) {
        // Prints the incoming message in the console.
-       string|error messageData = strings:fromBytes(message.content);
+       string|error messageData = string:fromBytes(message.content);
        if (messageData is string) {
             io:println("Message Received to second queue group member: "
                                                         + messageData);
@@ -49,7 +49,7 @@ service stan:Service on lis {
 service stan:Service on lis {
     remote function onMessage(stan:Message message) {
        // Prints the incoming message in the console.
-       string|error messageData = strings:fromBytes(message.content);
+       string|error messageData = string:fromBytes(message.content);
        if (messageData is string) {
             io:println("Message Received to third queue group member: "
                                                         + messageData);
