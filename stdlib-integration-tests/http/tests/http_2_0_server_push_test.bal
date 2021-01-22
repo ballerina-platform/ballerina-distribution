@@ -16,14 +16,14 @@
 
 import ballerina/http;
 import ballerina/io;
-import ballerina/stringutils;
+import ballerina/lang.'string as strings;
 import ballerina/test;
 
 listener http:Listener serverPushFrontendEP = new(9115);
 listener http:Listener serverPushBackendEP = new(9116, { httpVersion: "2.0" });
 
-http:Client serverPushClient = new("http://localhost:9115");
-http:Client backendClientEP = new("http://localhost:9116", { httpVersion: "2.0" });
+http:Client serverPushClient = checkpanic new("http://localhost:9115");
+http:Client backendClientEP = checkpanic new("http://localhost:9116", { httpVersion: "2.0" });
 
 service /frontend on serverPushFrontendEP {
 
@@ -96,7 +96,7 @@ service /frontend on serverPushFrontendEP {
         }
         // Check whether correct response received
         string responseStringPayload = responseJsonPayload.toString();
-        if (!(stringutils:contains(responseStringPayload, "main"))) {
+        if (!(strings:includes(responseStringPayload, "main"))) {
             json errMsg = { "error": "expected response message not received" };
             checkpanic caller->respond(errMsg);
             return;
@@ -130,7 +130,7 @@ service /frontend on serverPushFrontendEP {
             // check whether expected
             string expectedVal = promise.path.substring(1, 10);
             string promisedStringPayload = promisedJsonPayload.toString();
-            if (!(stringutils:contains(promisedStringPayload, expectedVal))) {
+            if (!(strings:includes(promisedStringPayload, expectedVal))) {
                 json errMsg = { "error": "expected promised response not received" };
                 checkpanic caller->respond(errMsg);
                 return;
@@ -202,10 +202,10 @@ function testPushPromise() {
     var response = serverPushClient->get("/frontend");
     if (response is http:Response) {
         test:assertEquals(response.statusCode, 200, msg = "Found unexpected output");
-        test:assertEquals(response.getHeader("content-type"), "application/json", msg = "Found unexpected headerValue");
+        test:assertEquals(checkpanic response.getHeader("content-type"), "application/json");
         var payload = response.getJsonPayload();
         if payload is json {
-        test:assertEquals(payload, {status:"successful"}, msg = "Found unexpected output");
+            test:assertEquals(payload, {status:"successful"}, msg = "Found unexpected output");
         } else {
             test:assertFail(msg = "Found unexpected output type: " + payload.message());
         }

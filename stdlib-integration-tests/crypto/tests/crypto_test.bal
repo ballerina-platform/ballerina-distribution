@@ -14,15 +14,13 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import ballerina/config;
 import ballerina/crypto;
 import ballerina/test;
 
 @test:Config {}
 function testDecodePrivateKey() {
     crypto:KeyStore keyStore = {
-        path: config:getAsString("b7a.home") +
-              "/bre/security/ballerinaKeystore.p12",
+        path: "tests/resources/keystore/ballerinaKeystore.p12",
         password: "ballerina"
     };
     var result = crypto:decodePrivateKey(keyStore, "ballerina", "ballerina");
@@ -36,8 +34,7 @@ function testDecodePrivateKey() {
 @test:Config {}
 function testDecodePublicKey() {
     crypto:TrustStore truststore = {
-        path: config:getAsString("b7a.home") +
-              "/bre/security/ballerinaTruststore.p12",
+        path: "tests/resources/keystore/ballerinaTruststore.p12",
         password: "ballerina"
     };
     var result = crypto:decodePublicKey(truststore, "ballerina");

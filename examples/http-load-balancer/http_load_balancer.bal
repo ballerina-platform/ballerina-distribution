@@ -2,10 +2,10 @@ import ballerina/http;
 import ballerina/log;
 
 // Create an endpoint with port 8080 for the mock backend services.
-listener http:Listener backendEP = new (8080);
+listener http:Listener backendEP = check new (8080);
 
 // Define the load balance client endpoint to call the backend services.
-http:LoadBalanceClient lbBackendEP = new ({
+http:LoadBalanceClient lbBackendEP = check new ({
         // Define the set of HTTP clients that need to be load balanced.
         targets: [
             {url: "http://localhost:8080/mock1"},

@@ -317,13 +317,6 @@ subprojects {
             }
         }
         maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-stringutils"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-task"
             credentials {
                 username System.getenv("packageUser")
@@ -531,7 +524,7 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:grpc-ballerina:${stdlibGrpcVersion}"
         ballerinaStdLibs "org.ballerinalang:http-ballerina:${stdlibHttpVersion}"
         ballerinaStdLibs "org.ballerinalang:io-ballerina:${stdlibIoVersion}"
-        ballerinaStdLibs "org.ballerinalang:jarrays-ballerina:${stdlibJarraysVersion}"
+        ballerinaStdLibs "org.ballerinalang:java.arrays-ballerina:${stdlibJavaArraysVersion}"
         ballerinaStdLibs "org.ballerinalang:java.jdbc-ballerina:${stdlibJdbcVersion}"
         ballerinaStdLibs "org.ballerinalang:jsonutils-ballerina:${stdlibJsonutilsVersion}"
         ballerinaStdLibs "org.ballerinalang:jwt-ballerina:${stdlibJwtVersion}"
@@ -549,7 +542,6 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:runtime-ballerina:${stdlibRuntimeVersion}"
         ballerinaStdLibs "org.ballerinalang:sql-ballerina:${stdlibSqlVersion}"
         ballerinaStdLibs "org.ballerinalang:stan-ballerina:${stdlibStanVersion}"
-        ballerinaStdLibs "org.ballerinalang:stringutils-ballerina:${stdlibStringutilsVersion}"
         ballerinaStdLibs "org.ballerinalang:task-ballerina:${stdlibTaskVersion}"
         ballerinaStdLibs "org.ballerinalang:tcp-ballerina:${stdlibTcpVersion}"
         ballerinaStdLibs "org.ballerinalang:time-ballerina:${stdlibTimeVersion}"

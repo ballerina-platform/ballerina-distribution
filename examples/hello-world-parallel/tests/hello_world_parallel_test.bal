@@ -1,4 +1,4 @@
-import ballerina/runtime;
+import ballerina/lang.runtime;
 import ballerina/test;
 
 (string|error)[] outputs = [];
@@ -14,7 +14,11 @@ test:MockFunction mock_printLn = new();
 public function mockPrint(any|error... s) {
     string outStr = "";
     foreach var str in s {
-        outStr = outStr + str.toString();
+        if (str is error) {
+            return;
+        } else {
+            outStr = outStr + str.toString();
+        }
     }
     lock {
         outputs[counter] = outStr;
@@ -34,7 +38,7 @@ function testFunc() {
         if (outputs.length() < 3) {
             i += i;
             // Sleep for 50 milli seconds
-            runtime:sleep(50);
+            runtime:sleep(.05);
             continue;
         } else {
             break;
@@ -46,15 +50,19 @@ function testFunc() {
     } else {
         // The output is in random order
         foreach var x in outputs {
-            string value = x.toString();
-            if (value == "Hello, World! #m") {
-                // continue;
-            } else if (value == "Hello, World! #n") {
-                // continue;
-            } else if (value == "Hello, World! #k") {
-                // continue;
+            if (x is error) {
+                return;
             } else {
-                test:assertFail(msg = "The output doesn't contain the expected.");
+                string value = x.toString();
+                if (value == "Hello, World! #m") {
+                    // continue;
+                } else if (value == "Hello, World! #n") {
+                    // continue;
+                } else if (value == "Hello, World! #k") {
+                    // continue;
+                } else {
+                    test:assertFail(msg = "The output doesn't contain the expected.");
+                }
             }
         }
     }

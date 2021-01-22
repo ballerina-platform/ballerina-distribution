@@ -1,13 +1,13 @@
 # To start the services, navigate to the directory that contains the
-# `.bal` file and run the `ballerina run` command below.
+# `.bal` file and run the `bal run` command below.
 
-ballerina run websocket_service_9095.bal
+bal run websocket_service_9095.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9095
 
-ballerina run websocket_service_9094.bal
+bal run websocket_service_9094.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9094
 
-ballerina run websocket_failover.bal
+bal run websocket_failover.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 
 # Now, this service can be invoked by any WebSocket client using the following URL: "ws://localhost:9090/failover/ws"

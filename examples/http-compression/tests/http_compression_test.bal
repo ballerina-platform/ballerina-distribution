@@ -3,8 +3,8 @@ import ballerina/test;
 
 @test:Config {}
 function testFunc() returns  @tainted error? {
-    http:Client httpEndpoint = new("http://localhost:9090");
-    http:Client httpPassthroughEndpoint = new("http://localhost:9092");
+    http:Client httpEndpoint = check new("http://localhost:9090");
+    http:Client httpPassthroughEndpoint = check new("http://localhost:9092");
 
     json expectedJson = {"Type":"Always but constrained by content-type"};
     // Send a GET request to the specified endpoint

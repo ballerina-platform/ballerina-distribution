@@ -10,17 +10,18 @@ string msg = "hey";
 function testText() returns websocket:Error? {
     websocket:AsyncClient wsClient = check new("ws://localhost:9090/basic/ws", new callback(),
     {subProtocols:["xml", "my-protocol"]});
-    websocket:Error? result = wsClient->writeString(msg);
+    websocket:Error? result = wsClient->writeTextMessage(msg);
     if (result is websocket:Error) {
         log:printError("Error occurred when pushing text", err = result);
     }
     runtime:sleep(4);
     test:assertEquals(serviceReply, "You said: " + msg, "Received message should be equal to the expected message");
+    error? err = wsClient->close(statusCode = 1000, timeoutInSeconds = 10);
 }
 
 service class callback {
     *websocket:Service;
-    remote function onString(websocket:Caller conn, string text, boolean finalFrame) {
+    remote function onTextMessage(websocket:Caller conn, string text) {
         serviceReply = <@untainted>text;
     }
 }

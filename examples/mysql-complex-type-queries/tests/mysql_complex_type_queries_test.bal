@@ -26,7 +26,9 @@ int counter = 0;
 test:MockFunction mock_printLn = new();
 
 public function mockPrint(any|error... s) {
-    outputs[counter] = s[0].toString();
+    any|error s0 = s[0];
+    string data = s0 is error ? s0.toString() : s0.toString();
+    outputs[counter] = data;
     counter += 1;
 }
 

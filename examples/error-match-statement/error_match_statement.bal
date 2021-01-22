@@ -20,7 +20,8 @@ public function main() {
     [string, string] v1 = ["Sample String", "Sample String 2"];
     Foo v2 = {message: "A", fatal: false};
     InvalidIdError e3 = error InvalidIdError("Invalid Error", id = "33456");
-    SampleError e2 = error SampleError("Sample Error", message = "Fatal", fatal = true);
+    SampleError e2 = error SampleError("Sample Error", message = "Fatal",
+                                       fatal = true);
     error e1 = error("Generic Error", message = "Failed");
 
     basicMatch(v1);

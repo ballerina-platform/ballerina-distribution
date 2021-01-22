@@ -4,7 +4,7 @@ import ballerina/test;
 @test:Config {}
 function testFunc() returns @tainted error? {
     // Invoking the main function.
-    http:Client httpEndpoint = new("http://localhost:9090");
+    http:Client httpEndpoint = checkpanic new("http://localhost:9090");
     json expectedJson = {
         name: "Colombo,Sri Lanka",
         longitude: -556.49,

@@ -1,9 +1,9 @@
 import ballerina/test;
 import ballerina/http;
 
-@test:Config
+@test:Config {}
 function testCachingClient() {
-    http:Client httpEndpoint = new("http://localhost:9090");
+    http:Client httpEndpoint = checkpanic new("http://localhost:9090");
 
     var response = httpEndpoint->get("/cache");
     if (response is http:Response) {

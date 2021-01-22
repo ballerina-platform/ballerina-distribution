@@ -1,6 +1,5 @@
 import ballerina/io;
 import ballerina/tcp;
-import ballerina/lang.'string;
 
 public function main() returns error? {
 
@@ -18,7 +17,7 @@ public function main() returns error? {
 
     // Reading the response from the server.
     readonly & byte[] receivedData = check socketClient->readBytes();
-    io:println("Recived: ", 'string:fromBytes(receivedData));
+    io:println("Recived: ", string:fromBytes(receivedData));
 
     // Close the connection between the server and the client.
     check socketClient->close();

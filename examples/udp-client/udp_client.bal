@@ -1,6 +1,5 @@
 import ballerina/io;
 import ballerina/udp;
-import ballerina/lang.'string;
 
 public function main() returns error? {
   
@@ -25,7 +24,7 @@ public function main() returns error? {
 
     // Wait until data is received from the remote host.
     readonly & udp:Datagram result = check socketClient->receiveDatagram();
-    io:println("Received: ", 'string:fromBytes(result.data));        
+    io:println("Received: ", string:fromBytes(result.data));        
 
     // Close the client and release the bound port.
     check socketClient->close();

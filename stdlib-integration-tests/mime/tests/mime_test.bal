@@ -45,7 +45,7 @@ function testMimeFunctions() {
     string headerNameToBeUsedForRetrieval = "Content-Type";
     entity = new;
     entity.addHeader(headerName, headerValue);
-    string returnVal = entity.getHeader(headerNameToBeUsedForRetrieval);
+    string returnVal = checkpanic entity.getHeader(headerNameToBeUsedForRetrieval);
 
     test:assertEquals(returnVal, headerValue, msg = "Found unexpected output");
 

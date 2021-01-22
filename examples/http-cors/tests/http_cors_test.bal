@@ -3,7 +3,7 @@ import ballerina/http;
 
 @test:Config {}
 function testFunc() returns @tainted  error? {
-    http:Client httpEndpoint = new("http://localhost:9092");
+    http:Client httpEndpoint = check new("http://localhost:9092");
     json expectedJson = { "type": "middleware" };
 
     http:Request companyReq = new;

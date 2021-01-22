@@ -1,7 +1,6 @@
 // This is the connection oriented client implementation of the UDP socket.
 import ballerina/io;
 import ballerina/udp;
-import ballerina/lang.'string;
 
 public function main() returns error? {
   
@@ -22,7 +21,7 @@ public function main() returns error? {
 
     // Wait until data is received from the connected host.
     readonly & byte[] result = check socketClient->readBytes();
-    io:println("Received: ", 'string:fromBytes(result));
+    io:println("Received: ", string:fromBytes(result));
 
     // Close the client and release the bound port.
     check socketClient->close();

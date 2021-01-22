@@ -21,7 +21,7 @@ service /basic/ws on new websocket:Listener(9090) {
 service class WsService {
     *websocket:Service;
     // This `remote function` is triggered after a successful client connection.
-    remote function onConnect(websocket:Caller caller) {
+    remote function onOpen(websocket:Caller caller) {
         io:println("\nNew client connected");
         io:println("Connection ID: " + caller.getConnectionId());
         io:println("Negotiated Sub protocol: " +
@@ -30,8 +30,9 @@ service class WsService {
         io:println("Is connection secured: " + caller.isSecure().toString());
     }
 
-    // This `remote function` is triggered when a new text frame is received from a client.
-    remote function onString(websocket:Caller caller, string text) {
+    // This `remote function` is triggered when a new text message is received
+    // from a client.
+    remote function onTextMessage(websocket:Caller caller, string text) {
         io:println("\ntext message: " + text);
         if (text == "ping") {
             io:println("Pinging...");
@@ -48,26 +49,27 @@ service class WsService {
                                 err = result);
             }
         } else {
-            var err = caller->writeString("You said: " + text);
+            var err = caller->writeTextMessage("You said: " + text);
             if (err is websocket:Error) {
                 log:printError("Error occurred when sending text", err = err);
             }
         }
     }
 
-    // This `remote function` is triggered when a new binary frame is received from a client.
-    remote function onBinary(websocket:Caller caller, byte[] b) {
+    // This `remote function` is triggered when a new binary message is
+    // received from a client.
+    remote function onBinaryMessage(websocket:Caller caller, byte[] b) {
         io:println("\nNew binary message received");
         io:print("UTF-8 decoded binary message: ");
         io:println(b);
-        var err = caller->writeBytes(b);
+        var err = caller->writeBinaryMessage(b);
         if (err is websocket:Error) {
             log:printError("Error occurred when sending binary", err = err);
         }
     }
 
     // This `remote function` is triggered when a ping message is received from the client. If this remote function is not implemented,
-    // a pong message is automatically sent to the connected [http:WebSocketCaller](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/WebSocketCaller) when a ping is received.
+    // a pong message is automatically sent to the connected [http:WebSocketCaller](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/WebSocketCaller) when a ping is received.
     remote function onPing(websocket:Caller caller, byte[] data) {
         var err = caller->pong(data);
         if (err is websocket:Error) {
@@ -82,7 +84,7 @@ service class WsService {
     }
 
     // This remote function is triggered when a particular client reaches the idle timeout that is defined in the
-    // [http:WebSocketServiceConfig](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/annotations#WebSocketServiceConfig) annotation.
+    // [http:WebSocketServiceConfig](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/annotations#WebSocketServiceConfig) annotation.
     remote function onIdleTimeout(websocket:Caller caller) {
         io:println("\nReached idle timeout");
         io:println("Closing connection " + caller.getConnectionId());
@@ -95,7 +97,7 @@ service class WsService {
     }
 
     // This remote function is triggered when an error occurred in the connection or the transport.
-    // This remote function is always followed by a connection closure with an appropriate WebSocket close frame
+    // This remote function is always followed by a connection closure with an appropriate WebSocket close message
     // and this is used only to indicate the error to the user and take post decisions if needed.
     remote function onError(websocket:Caller caller, error err) {
         log:printError("Error occurred ", err = err);

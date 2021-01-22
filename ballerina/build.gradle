@@ -650,7 +650,6 @@ task testExamples() {
             'grpc-secured-unary',
             'grpc-bidirectional-streaming',
             'grpc-client-streaming',
-            'grpc-unary-non-blocking',
             'grpc-unary-blocking',
             'testerina-guarantee-test-execution-order',
             'testerina-data-driven-tests',
@@ -677,21 +676,18 @@ task testExamples() {
             'openapi-to-ballerina',
             'taint-checking', // Should not compile
             'secured-client-with-basic-auth',
-            'secured-client-with-jwt-auth',
-            'secured-client-with-oauth2',
-            'secured-service-with-basic-auth',
-            'secured-service-with-jwt-auth',
-            'secured-service-with-ldap',
-            'secured-service-with-oauth2',
+            'secured-client-with-bearer-token-auth',
+            'secured-client-with-self-signed-jwt-auth',
+            'secured-client-with-oauth2-client-credentials-grant-type',
+            'secured-client-with-oauth2-password-grant-type',
+            'secured-client-with-oauth2-direct-token-type',
 
             // Disabling due to pending migration for service typing
             'websocket-cookie',
             'websocket-retry',
             'websocket-failover',
-            'websocket-chat-application',
-            'websocket-proxy-server',
-            'http-to-websocket-upgrade',
             'http-filters',
+            'http-streaming',
 
     ]
 
@@ -712,7 +708,6 @@ task testExamples() {
             'checkpanic', // Has user name in output
             'deprecation', // Contains user input
             'foreach', // Has tabs for formatting in input
-            'config-api',
             'kafka-consumer-client',
             'kafka-producer',
             'kafka-consumer-service',
@@ -729,7 +724,6 @@ task testExamples() {
             'nats-streaming-durable-subscriptions',
             'nats-streaming-queue-group',
             'nats-streaming-start-position',
-            'http-to-websocket-upgrade',
             'http-compression',
             'http-redirects',
             'http-2-0-server-push',
@@ -745,7 +739,7 @@ task testExamples() {
             'http-client-data-binding',
             'websocket-basic-sample',
             'websocket-chat-application',
-            'websocket-client',
+            'websocket-async-client',
             'websocket-cookie',
             'websocket-failover',
             'websocket-proxy-server',
@@ -757,6 +751,7 @@ task testExamples() {
             'rabbitmq-consumer-with-qos-settings',
             'rabbitmq-transaction-producer',
             'rabbitmq-transaction-consumer',
+            'random',  // Output varies
             'jdbc-complex-type-queries', // Consists date time in output
             'jdbc-batch-execute-operation', // Consists transaction server sart log
             'log-api',
@@ -781,9 +776,10 @@ task testExamples() {
             'locks', // Output is inconsistent between runs
             'crypto', // Output with line breaks cannot be compared
             'jwt-issue-validate', // Output depends on time
-            'secured-client-with-basic-auth', // Need to run the service first
-            'secured-client-with-jwt-auth', // Need to run the service first
-            'secured-client-with-oauth2', // Need to run the service first
+            'secured-service-with-basic-auth-file-user-store', // Log output depends on time
+            'secured-service-with-basic-auth-ldap-user-store', // Log output depends on time
+            'secured-service-with-jwt-auth', // Log output depends on time
+            'secured-service-with-oauth2', // Log output depends on time
             'send-and-receive-emails',
             'task-service-timer',       // Services needs to be stopped during build
             'task-service-appointment',
@@ -851,9 +847,9 @@ task testExamples() {
     ext.buildBBE = { bbe ->
         def exitVal
         def additionalBuildParams = ""
-        if (bbe == "secured-service-with-basic-auth" || bbe == "secured-client-with-basic-auth") {
-            additionalBuildParams = "--b7a.config.file=${baseBuildPath}/${bbe}/sample-users.toml"
-        }
+//        if (bbe == "secured-service-with-basic-auth" || bbe == "secured-client-with-basic-auth") {
+//            additionalBuildParams = "--b7a.config.file=${baseBuildPath}/${bbe}/sample-users.toml"
+//        }
         println "Building example ${bbe}"
         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
             //TODO: Need to verify with windows
@@ -1079,7 +1075,7 @@ task testStdlibs() {
     patternSet.exclude("**/Ballerina.lock")
     patternSet.exclude("**/ballerina-internal.log")
     inputs.files(files("${distPath}/stdlib-integration-tests").asFileTree.matching(patternSet))
-    def ignoreList = ["auth", "jwt", "oauth2", "ldap", "websub", "websub-advance", "websub-generic"]
+    def ignoreList = ["websub", "websub-advance", "websub-generic"]
 
     doFirst {
         copy {
@@ -1253,58 +1249,58 @@ task testDevToolsIntegration() {
     }
 }
 
-task startLdapServer() {
-    doLast {
-        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
-            def stdOut = new ByteArrayOutputStream()
-            exec {
-                commandLine 'sh', '-c', "docker ps --filter name=openldap-server"
-                standardOutput = stdOut
-            }
-            if (!stdOut.toString().contains("openldap-server")) {
-                println "Starting LDAP server."
-                copy {
-                    from file("$project.rootDir/stdlib-integration-tests/ldap/tests/resources/openldap")
-                    into file("/tmp")
-                }
-                exec {
-                    commandLine 'sh', '-c', "docker run --rm -d -p 389:389 --name openldap-server --env LDAP_ORGANISATION=\"AVIX\" --env LDAP_DOMAIN=\"avix.lk\" --env LDAP_ADMIN_PASSWORD=\"avix123\" --env LDAP_BASE_DN=\"dc=avix,dc=lk\" --volume /tmp/bootstrap.ldif:/container/service/slapd/assets/config/bootstrap/ldif/custom/bootstrap.ldif osixia/openldap:1.3.0 --copy-service"
-                    standardOutput = stdOut
-                }
-                println stdOut.toString()
-                println "Waiting 15s until the LDAP server get initiated."
-                sleep(15 * 1000)
-            } else {
-                println "LDAP server is already started."
-            }
-        }
-    }
-}
-
-task stopLdapServer() {
-    doLast {
-        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
-            def stdOut = new ByteArrayOutputStream()
-            exec {
-                commandLine 'sh', '-c', "docker ps --filter name=openldap-server"
-                standardOutput = stdOut
-            }
-            if (stdOut.toString().contains("openldap-server")) {
-                println "Stopping LDAP server."
-                exec {
-                    commandLine 'sh', '-c', "docker stop openldap-server"
-                    standardOutput = stdOut
-                }
-                println stdOut.toString()
-                println "Waiting 5s until the LDAP server get stopped."
-                sleep(5 * 1000)
-            } else {
-                println "LDAP server is not started."
-            }
-        }
-    }
-}
-
+//task startLdapServer() {
+//    doLast {
+//        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+//            def stdOut = new ByteArrayOutputStream()
+//            exec {
+//                commandLine 'sh', '-c', "docker ps --filter name=openldap-server"
+//                standardOutput = stdOut
+//            }
+//            if (!stdOut.toString().contains("openldap-server")) {
+//                println "Starting LDAP server."
+//                copy {
+//                    from file("$project.rootDir/stdlib-integration-tests/ldap/tests/resources/openldap")
+//                    into file("/tmp")
+//                }
+//                exec {
+//                    commandLine 'sh', '-c', "docker run --rm -d -p 389:389 --name openldap-server --env LDAP_ORGANISATION=\"AVIX\" --env LDAP_DOMAIN=\"avix.lk\" --env LDAP_ADMIN_PASSWORD=\"avix123\" --env LDAP_BASE_DN=\"dc=avix,dc=lk\" --volume /tmp/bootstrap.ldif:/container/service/slapd/assets/config/bootstrap/ldif/custom/bootstrap.ldif osixia/openldap:1.3.0 --copy-service"
+//                    standardOutput = stdOut
+//                }
+//                println stdOut.toString()
+//                println "Waiting 15s until the LDAP server get initiated."
+//                sleep(15 * 1000)
+//            } else {
+//                println "LDAP server is already started."
+//            }
+//        }
+//    }
+//}
+//
+//task stopLdapServer() {
+//    doLast {
+//        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+//            def stdOut = new ByteArrayOutputStream()
+//            exec {
+//                commandLine 'sh', '-c', "docker ps --filter name=openldap-server"
+//                standardOutput = stdOut
+//            }
+//            if (stdOut.toString().contains("openldap-server")) {
+//                println "Stopping LDAP server."
+//                exec {
+//                    commandLine 'sh', '-c', "docker stop openldap-server"
+//                    standardOutput = stdOut
+//                }
+//                println stdOut.toString()
+//                println "Waiting 5s until the LDAP server get stopped."
+//                sleep(5 * 1000)
+//            } else {
+//                println "LDAP server is not started."
+//            }
+//        }
+//    }
+//}
+//
 //task startRabbitmqServer() {
 //    doLast {
 //        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
@@ -1429,11 +1425,11 @@ unpackStdLibs.dependsOn unpackJballerinaTools
 
 testExamples.dependsOn packageDist
 
-testStdlibs.dependsOn startLdapServer
+//testStdlibs.dependsOn startLdapServer
 //testStdlibs.dependsOn startRabbitmqServer
 //testStdlibs.dependsOn startNatsServer
 testStdlibs.dependsOn packageDist
-testStdlibs.finalizedBy stopLdapServer
+//testStdlibs.finalizedBy stopLdapServer
 //testStdlibs.finalizedBy stopRabbitmqServer
 //testStdlibs.finalizedBy stopNatsServer
 

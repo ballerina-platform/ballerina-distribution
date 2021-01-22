@@ -1,33 +1,57 @@
-// This is the server implementation for the client streaming scenario.
+// This is the server implementation of the client streaming scenario.
 import ballerina/grpc;
 import ballerina/log;
+
+listener grpc:Listener ep = new (9090);
 
 @grpc:ServiceDescriptor {
     descriptor: ROOT_DESCRIPTOR,
     descMap: getDescriptorMap()
 }
-service /HelloWorld on new grpc:Listener(9090) {
-
-    isolated function lotsOfGreetings(grpc:Caller caller,
-                            stream<string,error> clientStream) {
-        log:print("Client connected successfully.");
-        //Read and process each message in the client stream
+service "HelloWorld" on ep {
+    remote function lotsOfGreetings(stream<string,error> clientStream)
+                                    returns string|error {
+        log:print("Connected sucessfully.");
+        // Read and process each message in the client stream.
         error? e = clientStream.forEach(isolated function(string name) {
-            log:print("Server received greet: " + name);
+            log:print("Greet received: " + name);
         });
-
-        //Once the client sends a notification to indicate the end of the stream, 'grpc:EOS' is returned by the stream
+        // Once the client sends a notification to indicate the end of the stream, 'grpc:EOS' is returned by the stream.
         if (e is grpc:EOS) {
-            grpc:Error? err = caller->send("Ack");
-            if (err is grpc:Error) {
-                log:printError("Error from Connector: " + err.message());
-            } else {
-                log:print("Server send response : Ack");
-            }
-
-        //If the client sends an error to the server, the stream closes and returns the error
-        } else if (e is error) {
-            log:printError("Error from Connector: " + e.message());
+            return "Ack";
         }
+        return "";
     }
 }
+
+public client class HelloWorldStringCaller {
+    private grpc:Caller caller;
+
+    public function init(grpc:Caller caller) {
+        self.caller = caller;
+    }
+
+    public isolated function getId() returns int {
+        return self.caller.getId();
+    }
+
+    isolated remote function send(string|ContextString response)
+                                    returns grpc:Error? {
+        return self.caller->send(response);
+    }
+
+    isolated remote function sendError(grpc:Error response)
+                                    returns grpc:Error? {
+        return self.caller->sendError(response);
+    }
+
+    isolated remote function complete() returns grpc:Error? {
+        return self.caller->complete();
+    }
+}
+
+// The context record includes the message payload and headers.
+public type ContextString record {|
+    string content;
+    map<string[]> headers;
+|};
