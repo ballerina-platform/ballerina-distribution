@@ -32,7 +32,7 @@ if [ $? -ne '0' ]; then
   exit $?
 fi
 
-\cp $CURRENT_PATH/ballerina-command-@ballerinaCommandVersion@/bin/ballerina $CURRENT_PATH/../bin
+\cp $CURRENT_PATH/ballerina-command-@ballerinaCommandVersion@/bin/bal $CURRENT_PATH/../bin
 
 if [ $? -ne '0' ]; then
   echo "error occurred while copying ballerina file."

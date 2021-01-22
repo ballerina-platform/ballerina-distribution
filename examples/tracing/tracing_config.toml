@@ -1,0 +1,2 @@
+[ballerina.observe]
+tracingEnabled=true

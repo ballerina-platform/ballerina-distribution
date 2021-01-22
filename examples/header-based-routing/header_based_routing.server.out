@@ -1,5 +1,7 @@
 # To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command  below along with the
+# `.bal` file and execute the `bal run` command  below along with the
 # Ballerina home path as a config.
-ballerina run header_based_routing.bal --b7a.home=<ballerina_home_path>
+# (You may need to change the truststore path, a sample truststore file is available in the distribution.
+# The file path is <ballerina.home>/examples/resources/ballerinaTruststore.p12)
+bal run header_based_routing.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090

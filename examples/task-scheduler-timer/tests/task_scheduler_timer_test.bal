@@ -1,4 +1,4 @@
-import ballerina/runtime;
+import ballerina/lang.runtime;
 import ballerina/test;
 
 (any|error)[] outputs = [];
@@ -21,6 +21,7 @@ function testFunc() returns error? {
     test:when(mock_printLn).call("mockPrint");
     // Invoke the main function.
     check main();
-    runtime:sleep(6000);
-    test:assertEquals(outputs[5].toString(), "End.");
+    runtime:sleep(6);
+    any result = check outputs[5];
+    test:assertEquals(result.toString(), "End.");
 }

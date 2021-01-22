@@ -24,6 +24,7 @@ description = 'Ballerina - Tools'
 ext {
     jreLocation = "build/target/ballerina-jre-artifacts-zip/"
     distributionName = "ballerina"
+    installerVersion = UUID.randomUUID().toString()
 }
 
 configurations {
@@ -267,14 +268,20 @@ task copyDevToolsDocUi(type: Copy) {
     from zipTree("$project.buildDir/target/extracted-distributions/ballerina-dev-tools-zip/docerina-ui-${devToolsVersion}.zip")
     into "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/lib/tools/doc-ui"
 }
+
+task filterApiDocs(type: Delete) {
+    delete "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs/lang.__internal"
+    delete "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs/lang.annotations"
+}
+
 task combineDocs(type: Exec) {
     workingDir "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs"
     if (Os.isFamily(Os.FAMILY_WINDOWS)) {
         commandLine 'cmd', '/c', "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/" +
-                "jballerina-tools-${ballerinaVersion}/bin/ballerina.bat", "doc", "--combine"
+                "jballerina-tools-${ballerinaVersion}/bin/bal.bat", "doc", "--combine"
     } else {
         commandLine "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/" +
-                "jballerina-tools-${ballerinaVersion}/bin/ballerina", "doc", "--combine"
+                "jballerina-tools-${ballerinaVersion}/bin/bal", "doc", "--combine"
     }
 }
 
@@ -342,12 +349,14 @@ task packageDistZip(type: Zip) {
     into("${parentDir}/distributions/ballerina-${shortVersion}") {
         from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
         exclude "distributions/ballerina-version"
+        exclude "distributions/installer-version"
         exclude "/bin/version.txt"
 
     }
     into("${parentDir}") {
         from "../resources/tools"
         exclude "distributions/ballerina-version"
+        exclude "distributions/installer-version"
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
 
@@ -362,13 +371,18 @@ task packageDistZip(type: Zip) {
         fileMode = 0644
         filter(ReplaceTokens, tokens: [version: shortVersion])
     }
+    into("${parentDir}/distributions") {
+        from "../resources/tools/distributions/installer-version"
+        fileMode = 0644
+        filter(ReplaceTokens, tokens: [uuid: installerVersion])
+    }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/ballerina"
+        from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/bal"
         fileMode = 0775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/ballerina.bat"
+        from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/bal.bat"
         fileMode = 0775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
@@ -414,12 +428,14 @@ task packageDistLinux(type: Zip) {
     into("${parentDir}/distributions/ballerina-${shortVersion}") {
         from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
         exclude "distributions/ballerina-version"
-        exclude "/bin/ballerina.bat"
+        exclude "distributions/installer-version"
+        exclude "/bin/bal.bat"
         exclude "/bin/version.txt"
     }
     into("${parentDir}") {
         from "../resources/tools"
         exclude "distributions/ballerina-version"
+        exclude "distributions/installer-version"
         exclude "**/scripts/**"
     }
 
@@ -434,8 +450,13 @@ task packageDistLinux(type: Zip) {
         fileMode = 0644
         filter(ReplaceTokens, tokens: [version: shortVersion])
     }
+    into("${parentDir}/distributions") {
+        from "../resources/tools/distributions/installer-version"
+        fileMode = 0644
+        filter(ReplaceTokens, tokens: [uuid:  installerVersion])
+    }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/ballerina"
+        from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/bal"
         fileMode = 775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
@@ -482,7 +503,8 @@ task packageDistMac(type: Zip) {
     into("${parentDir}/distributions/ballerina-${shortVersion}") {
         from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
         exclude "distributions/ballerina-version"
-        exclude "/bin/ballerina.bat"
+        exclude "distributions/installer-version"
+        exclude "/bin/bal.bat"
         exclude "/bin/version.txt"
     }
 
@@ -497,8 +519,13 @@ task packageDistMac(type: Zip) {
         fileMode = 0644
         filter(ReplaceTokens, tokens: [version: shortVersion])
     }
+    into("${parentDir}/distributions") {
+        from "../resources/tools/distributions/installer-version"
+        fileMode = 0644
+        filter(ReplaceTokens, tokens: [uuid: installerVersion])
+    }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/ballerina"
+        from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/bal"
         fileMode = 775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
@@ -545,7 +572,8 @@ task packageDistWindows(type: Zip) {
     into("${parentDir}/distributions/ballerina-${shortVersion}") {
         from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
         exclude "distributions/ballerina-version"
-        exclude "/bin/ballerina"
+        exclude "distributions/installer-version"
+        exclude "/bin/bal"
         exclude "/bin/version.txt"
     }
 
@@ -560,8 +588,13 @@ task packageDistWindows(type: Zip) {
         fileMode = 0644
         filter(ReplaceTokens, tokens: [version: shortVersion])
     }
+    into("${parentDir}/distributions") {
+        from "../resources/tools/distributions/installer-version"
+        fileMode = 0644
+        filter(ReplaceTokens, tokens: [uuid: installerVersion])
+    }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/ballerina.bat"
+        from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/bal.bat"
         fileMode = 775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
@@ -617,7 +650,6 @@ task testExamples() {
             'grpc-secured-unary',
             'grpc-bidirectional-streaming',
             'grpc-client-streaming',
-            'grpc-unary-non-blocking',
             'grpc-unary-blocking',
             'testerina-guarantee-test-execution-order',
             'testerina-data-driven-tests',
@@ -644,21 +676,18 @@ task testExamples() {
             'openapi-to-ballerina',
             'taint-checking', // Should not compile
             'secured-client-with-basic-auth',
-            'secured-client-with-jwt-auth',
-            'secured-client-with-oauth2',
-            'secured-service-with-basic-auth',
-            'secured-service-with-jwt-auth',
-            'secured-service-with-ldap',
-            'secured-service-with-oauth2',
+            'secured-client-with-bearer-token-auth',
+            'secured-client-with-self-signed-jwt-auth',
+            'secured-client-with-oauth2-client-credentials-grant-type',
+            'secured-client-with-oauth2-password-grant-type',
+            'secured-client-with-oauth2-direct-token-type',
 
             // Disabling due to pending migration for service typing
             'websocket-cookie',
             'websocket-retry',
             'websocket-failover',
-            'websocket-chat-application',
-            'websocket-proxy-server',
-            'http-to-websocket-upgrade',
             'http-filters',
+            'http-streaming',
 
     ]
 
@@ -679,7 +708,6 @@ task testExamples() {
             'checkpanic', // Has user name in output
             'deprecation', // Contains user input
             'foreach', // Has tabs for formatting in input
-            'config-api',
             'kafka-consumer-client',
             'kafka-producer',
             'kafka-consumer-service',
@@ -696,7 +724,6 @@ task testExamples() {
             'nats-streaming-durable-subscriptions',
             'nats-streaming-queue-group',
             'nats-streaming-start-position',
-            'http-to-websocket-upgrade',
             'http-compression',
             'http-redirects',
             'http-2-0-server-push',
@@ -712,7 +739,7 @@ task testExamples() {
             'http-client-data-binding',
             'websocket-basic-sample',
             'websocket-chat-application',
-            'websocket-client',
+            'websocket-async-client',
             'websocket-cookie',
             'websocket-failover',
             'websocket-proxy-server',
@@ -724,6 +751,7 @@ task testExamples() {
             'rabbitmq-consumer-with-qos-settings',
             'rabbitmq-transaction-producer',
             'rabbitmq-transaction-consumer',
+            'random',  // Output varies
             'jdbc-complex-type-queries', // Consists date time in output
             'jdbc-batch-execute-operation', // Consists transaction server sart log
             'log-api',
@@ -734,8 +762,11 @@ task testExamples() {
             'mysql-batch-execute-operation',
             'mysql-parameterized-query',
             'mysql-call-stored-procedures',
-            'udp-socket-client',
-            'tcp-socket-listener-client',
+            'udp-client',
+            'udp-connect-client',
+            'udp-listener',
+            'tcp-listener',
+            'tcp-client',
             'ballerina-to-openapi',
             'client-generation',
             'directory-listener',
@@ -745,9 +776,10 @@ task testExamples() {
             'locks', // Output is inconsistent between runs
             'crypto', // Output with line breaks cannot be compared
             'jwt-issue-validate', // Output depends on time
-            'secured-client-with-basic-auth', // Need to run the service first
-            'secured-client-with-jwt-auth', // Need to run the service first
-            'secured-client-with-oauth2', // Need to run the service first
+            'secured-service-with-basic-auth-file-user-store', // Log output depends on time
+            'secured-service-with-basic-auth-ldap-user-store', // Log output depends on time
+            'secured-service-with-jwt-auth', // Log output depends on time
+            'secured-service-with-oauth2', // Log output depends on time
             'send-and-receive-emails',
             'task-service-timer',       // Services needs to be stopped during build
             'task-service-appointment',
@@ -795,13 +827,13 @@ task testExamples() {
             //TODO: Need to verify with windows
             exec {
                 workingDir "${baseBuildPath}/${bbe}"
-                commandLine 'cmd', '/c', "${distPath}/bin/ballerina/ballerina.bat init test"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat init test"
             }
 
         } else {
             exec {
                 workingDir "${baseBuildPath}/${bbe}"
-                commandLine 'sh', '-c', "${distPath}/bin/ballerina init test"
+                commandLine 'sh', '-c', "${distPath}/bin/bal init test"
             }
         }
 
@@ -815,22 +847,22 @@ task testExamples() {
     ext.buildBBE = { bbe ->
         def exitVal
         def additionalBuildParams = ""
-        if (bbe == "secured-service-with-basic-auth" || bbe == "secured-client-with-basic-auth") {
-            additionalBuildParams = "--b7a.config.file=${baseBuildPath}/${bbe}/sample-users.toml"
-        }
+//        if (bbe == "secured-service-with-basic-auth" || bbe == "secured-client-with-basic-auth") {
+//            additionalBuildParams = "--b7a.config.file=${baseBuildPath}/${bbe}/sample-users.toml"
+//        }
         println "Building example ${bbe}"
         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
             //TODO: Need to verify with windows
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${baseBuildPath}/${bbe}"
-                commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'build', '--experimental', " --b7a.home=${distPath} ${additionalBuildParams}"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'build', '--experimental', " --b7a.home=${distPath} ${additionalBuildParams}"
             }
         } else {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${baseBuildPath}/${bbe}"
-                commandLine 'sh', '-c', "${distPath}/bin/ballerina build --experimental --b7a.home=${distPath} ${additionalBuildParams}"
+                commandLine 'sh', '-c', "${distPath}/bin/bal build --experimental --b7a.home=${distPath} ${additionalBuildParams}"
             }
         }
         if (exitVal.getExitValue() == 1) {
@@ -897,13 +929,13 @@ task testExamples() {
                 exitVal = exec {
                     def windowsPath = scriptPath.replace('/', '\\')
                     workingDir "$windowsPath"
-                    commandLine "$windowsPath\\run.bat", "${directoryPath}", "${distPath}/bin/ballerina.bat", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath} ${additionalBuildParams}"
+                    commandLine "$windowsPath\\run.bat", "${directoryPath}", "${distPath}/bin/bal.bat", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath} ${additionalBuildParams}"
                     ignoreExitValue true
                 }
             } else {
                 exitVal = exec {
                     workingDir "$scriptPath"
-                    commandLine "bash", "run.sh", "${directoryPath}", "${distPath}/bin/./ballerina", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath} ${additionalBuildParams}"
+                    commandLine "bash", "run.sh", "${directoryPath}", "${distPath}/bin/./bal", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath} ${additionalBuildParams}"
                     ignoreExitValue true
                 }
             }
@@ -936,7 +968,7 @@ task testExamples() {
                 if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                     exec {
                         workingDir "${directoryPath}"
-                        commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat", 'run', '--experimental', "${balName}.bal", "--b7a.home=${distPath} ${additionalBuildParams}"
+                        commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'run', '--experimental', "${balName}.bal", "--b7a.home=${distPath} ${additionalBuildParams}"
                         ignoreExitValue true
                         standardOutput = os
                         errorOutput = errOut
@@ -944,7 +976,7 @@ task testExamples() {
                 } else {
                     exec {
                         workingDir "${directoryPath}"
-                        commandLine 'sh', '-c', "${distPath}/bin/ballerina run --experimental ${balName}.bal --b7a.home=${distPath} ${additionalBuildParams}"
+                        commandLine 'sh', '-c', "${distPath}/bin/bal run --experimental ${balName}.bal --b7a.home=${distPath} ${additionalBuildParams}"
                         ignoreExitValue true
                         standardOutput = os
                         errorOutput = errOut
@@ -1043,7 +1075,7 @@ task testStdlibs() {
     patternSet.exclude("**/Ballerina.lock")
     patternSet.exclude("**/ballerina-internal.log")
     inputs.files(files("${distPath}/stdlib-integration-tests").asFileTree.matching(patternSet))
-    def ignoreList = ["auth", "jwt", "oauth2", "ldap"]
+    def ignoreList = ["websub", "websub-advance", "websub-generic"]
 
     doFirst {
         copy {
@@ -1078,27 +1110,31 @@ task testStdlibs() {
             additionalBuildParams = "--user.name=ballerina-user"
         }
 
+        if (stdlibTest == "websub-generic" || stdlibTest == "websub-advance") {
+            additionalBuildParams = "--b7a.config.file=tests/advanced_services/sample-users.toml --test.hub.url=https://localhost:23191/websub/hub"
+        }
+
         println "Testing standard library ${stdlibTest}"
         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
             //TODO: Need to verify with windows
             exec {
                 workingDir "${baseBuildPath}/${stdlibTest}"
-                commandLine 'cmd', '/c', "${distPath}/bin/ballerina/ballerina.bat init test"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal/ballerina.bat init test"
             }
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${buildDir}/${stdlibTest}"
-                commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat build -c --experimental --b7a.home=${distPath} ${additionalBuildParams}"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat build -c --experimental --b7a.home=${distPath} ${additionalBuildParams}"
             }
         } else {
             exec {
                 workingDir "${baseBuildPath}/${stdlibTest}"
-                commandLine 'sh', '-c', "${distPath}/bin/ballerina init test"
+                commandLine 'sh', '-c', "${distPath}/bin/bal init test"
             }
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${baseBuildPath}/${stdlibTest}"
-                commandLine 'sh', '-c', "${distPath}/bin/ballerina build -c --experimental --b7a.home=${distPath} ${additionalBuildParams}"
+                commandLine 'sh', '-c', "${distPath}/bin/bal build -c --experimental --b7a.home=${distPath} ${additionalBuildParams}"
             }
         }
         if (exitVal.getExitValue() == 1) {
@@ -1188,23 +1224,23 @@ task testDevToolsIntegration() {
                 if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                     exec {
                         workingDir "${buildDir}/${devtoolsProject}"
-                        commandLine 'cmd', '/c', "${distPath}/bin/ballerina.bat init test"
+                        commandLine 'cmd', '/c', "${distPath}/bin/bal.bat init test"
                     }
                     exec {
                         workingDir "${buildDir}/${devtoolsProject}"
                         commandLine 'cmd', '/c',
-                                "${distPath}/bin/ballerina.bat test --b7a.home=${distPath} ${additionalBuildParams}"
+                                "${distPath}/bin/bal.bat test --b7a.home=${distPath} ${additionalBuildParams}"
                     }
                 } else {
                     exec {
                         workingDir "${baseBuildPath}/${devtoolsProject}"
                         commandLine 'sh', '-c',
-                                "${distPath}/bin/ballerina init test"
+                                "${distPath}/bin/bal init test"
                     }
                     exec {
                         workingDir "${baseBuildPath}/${devtoolsProject}"
                         commandLine 'sh', '-c',
-                                "${distPath}/bin/ballerina test --b7a.home=${distPath} ${additionalBuildParams}"
+                                "${distPath}/bin/bal test --b7a.home=${distPath} ${additionalBuildParams}"
                     }
                 }
             }
@@ -1213,58 +1249,58 @@ task testDevToolsIntegration() {
     }
 }
 
-task startLdapServer() {
-    doLast {
-        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
-            def stdOut = new ByteArrayOutputStream()
-            exec {
-                commandLine 'sh', '-c', "docker ps --filter name=openldap-server"
-                standardOutput = stdOut
-            }
-            if (!stdOut.toString().contains("openldap-server")) {
-                println "Starting LDAP server."
-                copy {
-                    from file("$project.rootDir/stdlib-integration-tests/ldap/tests/resources/openldap")
-                    into file("/tmp")
-                }
-                exec {
-                    commandLine 'sh', '-c', "docker run --rm -d -p 389:389 --name openldap-server --env LDAP_ORGANISATION=\"AVIX\" --env LDAP_DOMAIN=\"avix.lk\" --env LDAP_ADMIN_PASSWORD=\"avix123\" --env LDAP_BASE_DN=\"dc=avix,dc=lk\" --volume /tmp/bootstrap.ldif:/container/service/slapd/assets/config/bootstrap/ldif/custom/bootstrap.ldif osixia/openldap:1.3.0 --copy-service"
-                    standardOutput = stdOut
-                }
-                println stdOut.toString()
-                println "Waiting 15s until the LDAP server get initiated."
-                sleep(15 * 1000)
-            } else {
-                println "LDAP server is already started."
-            }
-        }
-    }
-}
-
-task stopLdapServer() {
-    doLast {
-        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
-            def stdOut = new ByteArrayOutputStream()
-            exec {
-                commandLine 'sh', '-c', "docker ps --filter name=openldap-server"
-                standardOutput = stdOut
-            }
-            if (stdOut.toString().contains("openldap-server")) {
-                println "Stopping LDAP server."
-                exec {
-                    commandLine 'sh', '-c', "docker stop openldap-server"
-                    standardOutput = stdOut
-                }
-                println stdOut.toString()
-                println "Waiting 5s until the LDAP server get stopped."
-                sleep(5 * 1000)
-            } else {
-                println "LDAP server is not started."
-            }
-        }
-    }
-}
-
+//task startLdapServer() {
+//    doLast {
+//        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+//            def stdOut = new ByteArrayOutputStream()
+//            exec {
+//                commandLine 'sh', '-c', "docker ps --filter name=openldap-server"
+//                standardOutput = stdOut
+//            }
+//            if (!stdOut.toString().contains("openldap-server")) {
+//                println "Starting LDAP server."
+//                copy {
+//                    from file("$project.rootDir/stdlib-integration-tests/ldap/tests/resources/openldap")
+//                    into file("/tmp")
+//                }
+//                exec {
+//                    commandLine 'sh', '-c', "docker run --rm -d -p 389:389 --name openldap-server --env LDAP_ORGANISATION=\"AVIX\" --env LDAP_DOMAIN=\"avix.lk\" --env LDAP_ADMIN_PASSWORD=\"avix123\" --env LDAP_BASE_DN=\"dc=avix,dc=lk\" --volume /tmp/bootstrap.ldif:/container/service/slapd/assets/config/bootstrap/ldif/custom/bootstrap.ldif osixia/openldap:1.3.0 --copy-service"
+//                    standardOutput = stdOut
+//                }
+//                println stdOut.toString()
+//                println "Waiting 15s until the LDAP server get initiated."
+//                sleep(15 * 1000)
+//            } else {
+//                println "LDAP server is already started."
+//            }
+//        }
+//    }
+//}
+//
+//task stopLdapServer() {
+//    doLast {
+//        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+//            def stdOut = new ByteArrayOutputStream()
+//            exec {
+//                commandLine 'sh', '-c', "docker ps --filter name=openldap-server"
+//                standardOutput = stdOut
+//            }
+//            if (stdOut.toString().contains("openldap-server")) {
+//                println "Stopping LDAP server."
+//                exec {
+//                    commandLine 'sh', '-c', "docker stop openldap-server"
+//                    standardOutput = stdOut
+//                }
+//                println stdOut.toString()
+//                println "Waiting 5s until the LDAP server get stopped."
+//                sleep(5 * 1000)
+//            } else {
+//                println "LDAP server is not started."
+//            }
+//        }
+//    }
+//}
+//
 //task startRabbitmqServer() {
 //    doLast {
 //        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
@@ -1389,11 +1425,11 @@ unpackStdLibs.dependsOn unpackJballerinaTools
 
 testExamples.dependsOn packageDist
 
-testStdlibs.dependsOn startLdapServer
+//testStdlibs.dependsOn startLdapServer
 //testStdlibs.dependsOn startRabbitmqServer
 //testStdlibs.dependsOn startNatsServer
 testStdlibs.dependsOn packageDist
-testStdlibs.finalizedBy stopLdapServer
+//testStdlibs.finalizedBy stopLdapServer
 //testStdlibs.finalizedBy stopRabbitmqServer
 //testStdlibs.finalizedBy stopNatsServer
 

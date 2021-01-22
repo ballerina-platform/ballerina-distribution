@@ -1,11 +1,10 @@
 import ballerina/io;
-import ballerina/lang.'object;
 
 public function main() {
     string name = "Ballerina";
     // Create a raw template with the `name` variable interpolated in the
     // literal.
-    'object:RawTemplate template = `Hello ${name}!!!`;
+    object:RawTemplate template = `Hello ${name}!!!`;
     // The string literal portions of the raw template are accessible
     // through the `strings` field. The `strings` field is a list of
     // `string` values. The string literal portions of the raw template

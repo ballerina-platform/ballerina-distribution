@@ -14,7 +14,6 @@ kafka:AuthenticationConfiguration authConfig = {
 
 kafka:ProducerConfiguration producerConfigs = {
     bootstrapServers: "localhost:9092",
-    valueSerializerType: kafka:SER_BYTE_ARRAY,
     // Provide the relevant authentication configuration record to authenticate the producer.
     authenticationConfiguration: authConfig
 
@@ -30,6 +29,6 @@ public function main() {
     if (result is error) {
         io:println(result);
     } else {
-        io:println("success");
+        io:println("Message successfully sent");
     }
 }

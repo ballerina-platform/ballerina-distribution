@@ -55,7 +55,7 @@ public class OpenAPIArtifactBuildTest {
         TestUtils.prepareDistribution(DISTRIBUTIONS_DIR.resolve(distributionFileName + ".zip"));
     }
 
-    @Test( description = "Check openapi to ballerina generator command", enabled = false)
+    @Test( description = "Check openapi to ballerina generator command")
     public void buildOpenAPIToBallerinaTest() throws IOException, InterruptedException {
         Path testResource = Paths.get("/openapi");
         List<String> buildArgs = new LinkedList<>();
@@ -69,7 +69,7 @@ public class OpenAPIArtifactBuildTest {
         TestUtils.deleteGeneratedFiles("petstore");
     }
 
-    @Test(description = "Check openapi to ballerina generator command with service file only.", enabled = false)
+    @Test(description = "Check openapi to ballerina generator command with service file only.")
     public void buildOpenAPIToBallerinaServiceFileGenerationTest() throws IOException,
             InterruptedException {
         Path testResource = Paths.get("/openapi");
@@ -85,7 +85,7 @@ public class OpenAPIArtifactBuildTest {
         TestUtils.deleteGeneratedFiles("petstore");
     }
 
-    @Test(description = "Check openapi to ballerina generator command for given tags", enabled = false)
+    @Test(description = "Check openapi to ballerina generator command for given tags", enabled = true)
     public void buildOpenAPIToBallerinaWithFilterTagsTest() throws IOException,
             InterruptedException {
         Path testResource = Paths.get("/openapi");
@@ -98,7 +98,7 @@ public class OpenAPIArtifactBuildTest {
                 buildArgs);
         Assert.assertTrue(successful);
 
-        Path expectedServiceFile = RESOURCES_PATH.resolve("openapi/expected/filteredTags.bal");
+        Path expectedServiceFile = RESOURCES_PATH.resolve("openapi/expected/filtered_tags.bal");
         Stream<String> expectedServiceLines = Files.lines(expectedServiceFile);
         String expectedService = expectedServiceLines.collect(Collectors.joining("\n"));
 
@@ -122,7 +122,7 @@ public class OpenAPIArtifactBuildTest {
         }
     }
 
-    @Test(description = "Check ballerina to openapi generator command", enabled = false)
+    @Test(description = "Check ballerina to openapi generator command")
     public void buildBallerinaToOpenAPITest() throws IOException, InterruptedException {
         Path testResource = Paths.get("/openapi");
         List<String> buildArgs = new LinkedList<>();

@@ -2,7 +2,7 @@
 # Replace the content of the `main.bal` and ``main_test.bal` files with the above code
 # and execute the `ballerina test` command below from the project root directory.
 # Function mocking is not supported for testing single BAL files.
-ballerina test bbe_mocking
+bal test bbe_mocking
 Compiling source
         ballerinatest/bbe_mocking:0.1.0
 

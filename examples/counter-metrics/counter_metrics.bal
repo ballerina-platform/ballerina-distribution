@@ -2,20 +2,15 @@ import ballerina/http;
 import ballerina/io;
 import ballerina/log;
 import ballerina/observe;
+import ballerinax/prometheus as _;
 
-//Create a counter as a global variable in the service with optional field description.
+//Create a counter as a global variable in the service with the optional field description.
 observe:Counter globalCounter = new ("total_orders",
                                     desc = "Total quantity required");
 
-@http:ServiceConfig {
-    basePath: "/online-store-service"
-}
-service onlineStoreService on new http:Listener(9090) {
+service /onlineStoreService on new http:Listener(9090) {
 
-    @http:ResourceConfig {
-        path: "/make-order"
-    }
-    resource function makeOrder(http:Caller caller, http:Request req) {
+    resource function get makeOrder(http:Caller caller, http:Request req) {
         //Incrementing the global counter defined with the default value 1.
         globalCounter.increment();
 
@@ -38,7 +33,7 @@ service onlineStoreService on new http:Listener(9090) {
         //counter instance.
         error? result = registeredCounter.register();
         if (result is error) {
-            log:printError("Error in registering counter", result);
+            log:printError("Error in registering counter", err = result);
         }
 
         //Increase the amount of the registered counter instance by amount 10.
@@ -59,7 +54,7 @@ service onlineStoreService on new http:Listener(9090) {
         // Send the response back to the caller.
         result = caller->respond(res);
         if (result is error) {
-            log:printError("Error sending response", result);
+            log:printError("Error sending response", err = result);
         }
     }
 }

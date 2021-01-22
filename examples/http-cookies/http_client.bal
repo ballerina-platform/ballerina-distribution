@@ -1,16 +1,16 @@
 import ballerina/http;
 import ballerina/log;
 
-// HTTP client configurations associated with [enabling cookies](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/CookieConfig).
+// HTTP client configurations associated with [enabling cookies](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/CookieConfig).
 http:ClientConfiguration clientEPConfig = {
     cookieConfig: {
         enabled: true
     }
 };
 
-public function main() {
+public function main() returns error? {
     // Create a new HTTP client by giving the URL and the client configuration.
-    http:Client httpClient = new("http://localhost:9095/cookieDemo",
+    http:Client httpClient = check new("http://localhost:9095/cookieDemo",
                                   clientEPConfig);
 
     // Initialize an HTTP request.

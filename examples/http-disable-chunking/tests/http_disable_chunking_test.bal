@@ -6,7 +6,7 @@ boolean serviceStarted = false;
 @test:Config {}
 function testFunc() {
     // Invoking the main function.
-    http:Client httpEndpoint = new("http://localhost:9092");
+    http:Client httpEndpoint = checkpanic new("http://localhost:9092");
 
     json response1 = { "Outbound request content": "Length-20" };
 

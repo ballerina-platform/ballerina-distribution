@@ -1,4 +1,3 @@
-import ballerina/io;
 import ballerinax/kafka;
 
 kafka:ProducerConfiguration producerConfiguration = {
@@ -8,8 +7,7 @@ kafka:ProducerConfiguration producerConfiguration = {
 
     clientId: "basic-producer",
     acks: "all",
-    retryCount: 3,
-    valueSerializerType: kafka:SER_BYTE_ARRAY
+    retryCount: 3
 };
 
 kafka:Producer kafkaProducer = checkpanic new (producerConfiguration);

@@ -1,5 +1,4 @@
 import ballerina/http;
-import ballerina/lang.'int;
 import ballerina/io;
 
 // Workers interact with each other by sending and receiving messages.
@@ -42,8 +41,8 @@ public function main() {
 }
 
 function calculate(string expr) returns @tainted int|error {
-    http:Client httpClient = new ("https://api.mathjs.org");
+    http:Client httpClient = checkpanic new ("https://api.mathjs.org");
     string response = <string> check
         httpClient->get(string `/v4/?expr=${expr}`, targetType = string);
-    return check 'int:fromString(response);
+    return check int:fromString(response);
 }

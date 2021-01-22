@@ -1,8 +1,8 @@
 import ballerina/http;
 import ballerina/log;
-import ballerina/runtime;
+import ballerina/lang.runtime;
 
-http:Client backendClientEP = new ("http://localhost:8080", {
+http:Client backendClientEP = check new ("http://localhost:8080", {
         // Timeout configuration.
         timeoutInMillis: 10000
 
@@ -52,7 +52,7 @@ service /hello on new http:Listener(8080) {
     resource function get .(http:Caller caller, http:Request req) {
         // Delay the response by 15000 milliseconds to mimic the network level
         // delays.
-        runtime:sleep(15000);
+        runtime:sleep(15);
 
         var result = caller->respond("Hello World!!!");
         if (result is error) {

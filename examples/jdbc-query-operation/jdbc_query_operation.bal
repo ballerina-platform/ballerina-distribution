@@ -1,5 +1,5 @@
 import ballerina/io;
-import ballerina/jdbc;
+import ballerinax/java.jdbc;
 import ballerina/sql;
 
 function simpleQuery(jdbc:Client jdbcClient) {

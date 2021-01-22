@@ -26,11 +26,12 @@ service on new http:Listener(9090) {
 # Test function
 @test:Config{}
 function testServiceFunction ()  {
-    http:Client httpClient = new("http://localhost:9090");
+    http:Client httpClient = checkpanic new("http://localhost:9090");
     var response = httpClient->get("/sayHello");
     if (response is http:Response) {
         test:assertEquals(response.getTextPayload(), "Hello, World!", "Service involation test");
     } else {
-        test:assertFail(response.toString());
+        string errorMessage = response is error? response.toString() : response.toString();
+        test:assertFail(errorMessage);
     }
 }

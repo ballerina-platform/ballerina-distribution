@@ -1,6 +1,6 @@
 # To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run strings.bal
+# `.bal` file, and execute the `bal run` command below.
+bal run strings.bal
 ToUpper: LION IN TOWN. CATCH THE LION
 ToLower: lion in town. catch the lion
 SubString: Lion
@@ -12,5 +12,6 @@ From bytes: Hello
 Trim: Ballerina Programming Language
 HasSuffix: true
 HasPrefix: true
+Contains: true
 Sprintf: Sam scored 90 for English and has an average of 71.50.
 Member Access: L

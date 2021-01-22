@@ -1,20 +1,17 @@
-import ballerina/config;
 import ballerina/http;
 import ballerina/log;
 
 // Create an HTTP listener configuration, which will configure a listener to
 // accept new connections that are secured via mutual SSL.
-// [secureSocket](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/records/ListenerSecureSocket) record provides the SSL related listener configurations.
+// [secureSocket](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/ListenerSecureSocket) record provides the SSL related listener configurations.
 http:ListenerConfiguration helloWorldEPConfig = {
     secureSocket: {
         keyStore: {
-            path: config:getAsString("b7a.home") +
-                  "/bre/security/ballerinaKeystore.p12",
+            path: "../resources/ballerinaKeystore.p12",
             password: "ballerina"
         },
         trustStore: {
-            path: config:getAsString("b7a.home") +
-                  "/bre/security/ballerinaTruststore.p12",
+            path: "../resources/ballerinaTruststore.p12",
             password: "ballerina"
         },
         // Enable the preferred SSL protocol and its versions.

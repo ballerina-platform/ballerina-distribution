@@ -57,7 +57,7 @@ public class TestUtils {
     public static Process executeCommand(String command, String distributionName, Path sourceDirectory,
             List<String> args, Map<String, String> envProperties) throws IOException, InterruptedException {
         args.add(0, command);
-        args.add(0, TEST_DISTRIBUTION_PATH.resolve(distributionName).resolve("bin").resolve("ballerina").toString());
+        args.add(0, TEST_DISTRIBUTION_PATH.resolve(distributionName).resolve("bin").resolve("bal").toString());
 
         OUT.println("Executing: " + StringUtils.join(args, ' '));
 

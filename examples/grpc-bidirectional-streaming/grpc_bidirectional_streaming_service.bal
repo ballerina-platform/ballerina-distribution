@@ -1,54 +1,70 @@
-// This is the server implementation for the bidirectional streaming scenario.
+// This is the server implementation of the bidirectional streaming scenario.
 import ballerina/grpc;
 import ballerina/log;
 
-map<grpc:Caller> consMap = {};
+listener grpc:Listener ep = new (9090);
 
 @grpc:ServiceDescriptor {
     descriptor: ROOT_DESCRIPTOR,
     descMap: getDescriptorMap()
 }
-service /Chat on new grpc:Listener(9090) {
-
-    remote function chat(grpc:Caller caller,
-                                stream<ChatMessage, error> clientStream) {
-        log:print(string `${caller.getId()} connected to chat`);
-        consMap[caller.getId().toString()] = <@untainted>caller;
-        //Read and process each message in the client stream
-        error? e = clientStream.forEach(function(ChatMessage chatMsg) {
-            grpc:Caller ep;
-            string msg = string `${chatMsg.name}: ${chatMsg.message}`;
-            log:print("Server received message: " + msg);
-            foreach var [callerId, connection] in consMap.entries() {
-                ep = connection;
-                grpc:Error? err = ep->send(msg);
-                if (err is grpc:Error) {
-                    log:printError("Error from Connector: " + err.message());
-                } else {
-                    log:print("Server message to caller " + callerId
-                                                    + " sent successfully.");
-                }
-            }
+service "Chat" on ep {
+    remote function chat(stream<ChatMessage, error> clientStream)
+                            returns stream<string> {
+        log:print("Invoke the chat RPC");
+        string[] responses = [];
+        int i = 0;
+        // Read and process each message in the client stream.
+        error? e = clientStream.forEach(function(ChatMessage value) {
+            ChatMessage chatMsg = <ChatMessage> value;
+            responses[i] = string `${chatMsg.message}: ${chatMsg.name}`;
+            i += 1;
         });
-        //Once the client sends a notification to indicate the end of the stream, 'grpc:EOS' is returned by the stream
-        if (e is grpc:EOS) {
-            string msg = string `${caller.getId()} left the chat`;
-            log:print(msg);
-            var v = consMap.remove(caller.getId().toString());
-            foreach var [callerId, connection] in consMap.entries() {
-                grpc:Caller ep = connection;
-                grpc:Error? err = ep->send(msg);
-                if (err is grpc:Error) {
-                    log:printError("Error from Connector: " + err.message());
-                } else {
-                    log:print("Server message to caller " + callerId
-                                                    + " sent successfully.");
-                }
-            }
-        //If the client sends an error to the server, the stream closes and returns the error
-        } else if (e is error) {
-            log:printError("Error from Connector: " + e.message());
-        }
-
+        // Once the client sends a notification to indicate the end of the stream, 'grpc:EOS' is returned by the stream.
+        return responses.toStream();
     }
 }
+
+public client class ChatStringCaller {
+    private grpc:Caller caller;
+
+    public function init(grpc:Caller caller) {
+        self.caller = caller;
+    }
+
+    public isolated function getId() returns int {
+        return self.caller.getId();
+    }
+
+    isolated remote function send(string|ContextString response)
+                                returns grpc:Error? {
+        return self.caller->send(<anydata>response);
+    }
+
+    isolated remote function sendError(grpc:Error response)
+                                        returns grpc:Error? {
+        return self.caller->sendError(response);
+    }
+
+    isolated remote function complete() returns grpc:Error? {
+        return self.caller->complete();
+    }
+}
+
+
+// The context record includes the message payload and headers.
+public type ContextString record {|
+    stream<string> content;
+    map<string[]> headers;
+|};
+
+// The context record includes the message payload and headers.
+public type ContextChatMessage record {|
+    stream<ChatMessage> content;
+    map<string[]> headers;
+|};
+
+public type ChatMessage record {|
+    string name = "";
+    string message = "";
+|};

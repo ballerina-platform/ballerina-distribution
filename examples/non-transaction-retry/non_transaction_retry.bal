@@ -1,5 +1,4 @@
 import ballerina/io;
-import ballerina/lang.'error as errors;
 
 public function main() returns error? {
     // The retry statement provides a general-purpose retry.
@@ -36,7 +35,7 @@ function doWork() returns error? {
         count += 1;
         // Return a retriable error so that
         // the default retry manager retries.
-        return errors:Retriable("Execution Error");
+        return error error:Retriable("Execution Error");
     } else {
         io:println("Work completed.");
     }
