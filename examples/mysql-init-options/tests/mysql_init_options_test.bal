@@ -26,12 +26,16 @@ int counter = 0;
 test:MockFunction mock_printLn = new();
 
 public function mockPrint(any|error... s) {
+    any|error s0 = s[0];
+    string data0 = s0 is error ? s0.toString() : s0.toString();
     match counter {
         0 => {
-            outputs[counter] = s[0].toString() + s[1].toString();
+            any|error s1 = s[1];
+            string data1 = s1 is error ? s1.toString() : s1.toString();
+            outputs[counter] = data0+ data1;
         }
         _ => {
-            outputs[counter] = s[0].toString();
+            outputs[counter] = data0;
         }
     }
     counter += 1;

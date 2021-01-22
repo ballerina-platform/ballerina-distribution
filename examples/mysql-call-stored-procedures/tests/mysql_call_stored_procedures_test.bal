@@ -28,7 +28,8 @@ test:MockFunction mock_printLn = new();
 public function mockPrint(any|error... s) {
     string output = "";
     foreach var str in s {
-        output += str.toString();
+        string data =  str is error ? str.toString() : str.toString();
+        output += data;
     }
     outputs[counter] = output;
     counter += 1;
