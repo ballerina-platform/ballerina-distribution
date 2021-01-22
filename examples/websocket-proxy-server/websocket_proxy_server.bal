@@ -24,7 +24,8 @@ service /proxy/ws on new websocket:Listener(9090) {
 
             //This resource gets invoked upon receiving a new text frame
             // from a client.
-            remote function onTextMessage(websocket:Caller caller, string text) {
+            remote function onTextMessage(websocket:Caller caller,
+                                string text) {
                 websocket:AsyncClient clientEp =
                         <websocket:AsyncClient>self.targetEp;
                 var err = clientEp->writeTextMessage(text);
@@ -36,7 +37,8 @@ service /proxy/ws on new websocket:Listener(9090) {
 
             //This resource gets invoked upon receiving a new binary
             // frame from a client.
-            remote function onBinaryMessage(websocket:Caller caller, byte[] data) {
+            remote function onBinaryMessage(websocket:Caller caller,
+                                byte[] data) {
                 websocket:AsyncClient clientEp =
                         <websocket:AsyncClient>self.targetEp;
                 var err = clientEp->writeBinaryMessage(data);
