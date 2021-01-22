@@ -7,7 +7,8 @@ public function main (string... args) returns error? {
     HelloWorldClient ep = check new("http://localhost:9090");
     string[] requests = ["Hi Sam", "Hey Sam", "GM Sam"];
     // Execute the client-streaming RPC call and receive the streaming client.
-    LotsOfGreetingsStreamingClient streamingClient = check ep->lotsOfGreetings();
+    LotsOfGreetingsStreamingClient streamingClient = check
+    ep->lotsOfGreetings();
     // Send multiple messages to the server.
     foreach var greet in requests {
         checkpanic streamingClient->send(greet);
@@ -27,14 +28,18 @@ public client class HelloWorldClient {
 
     private grpc:Client grpcClient;
 
-    public isolated function init(string url, grpc:ClientConfiguration? config = ()) returns grpc:Error? {
+    public isolated function init(string url,
+    grpc:ClientConfiguration? config = ()) returns grpc:Error? {
         // Initialize the client endpoint.
         self.grpcClient = check new(url, config);
-        checkpanic self.grpcClient.initStub(self, ROOT_DESCRIPTOR, getDescriptorMap());
+        checkpanic self.grpcClient.initStub(self, ROOT_DESCRIPTOR,
+        getDescriptorMap());
     }
 
-    isolated remote function lotsOfGreetings() returns (LotsOfGreetingsStreamingClient|grpc:Error) {
-        grpc:StreamingClient sClient = check self.grpcClient->executeClientStreaming("HelloWorld/lotsOfGreetings");
+    isolated remote function lotsOfGreetings()
+                    returns (LotsOfGreetingsStreamingClient|grpc:Error) {
+        grpc:StreamingClient sClient = check
+        self.grpcClient->executeClientStreaming("HelloWorld/lotsOfGreetings");
         return new LotsOfGreetingsStreamingClient(sClient);
     }
 }
@@ -57,7 +62,8 @@ public client class LotsOfGreetingsStreamingClient {
         return payload.toString();
     }
 
-    isolated remote function sendError(grpc:Error response) returns grpc:Error? {
+    isolated remote function sendError(grpc:Error response)
+                                returns grpc:Error? {
         return self.sClient->sendError(response);
     }
 

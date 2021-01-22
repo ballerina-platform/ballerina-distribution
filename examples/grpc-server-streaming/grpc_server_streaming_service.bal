@@ -9,7 +9,8 @@ listener grpc:Listener ep = new (9090);
     descMap: getDescriptorMap()
 }
 service "HelloWorld" on ep {
-    remote function lotsOfReplies(string name) returns stream<string,error>|error {
+    remote function lotsOfReplies(string name)
+                        returns stream<string,error>|error {
         log:print("Server received hello from " + name);
         string[] greets = ["Hi", "Hey", "GM"];
         // Create the array of responses by appending the received name.
@@ -34,11 +35,13 @@ public client class HelloWorldStringCaller {
         return self.caller.getId();
     }
 
-    isolated remote function send(string|ContextString response) returns grpc:Error? {
+    isolated remote function send(string|ContextString response)
+                                    returns grpc:Error? {
         return self.caller->send(<anydata>response);
     }
 
-    isolated remote function sendError(grpc:Error response) returns grpc:Error? {
+    isolated remote function sendError(grpc:Error response)
+                                    returns grpc:Error? {
         return self.caller->sendError(response);
     }
 

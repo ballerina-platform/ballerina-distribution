@@ -20,7 +20,8 @@ listener grpc:Listener ep = new (9090, {
     descMap: getDescriptorMap()
 }
 service "HelloWorld" on ep {
-    remote function hello(HelloWorldStringCaller caller, ContextString request) {
+    remote function hello(HelloWorldStringCaller caller,
+                            ContextString request) {
         log:print("Invoked the hello RPC call.");
         // Reads the request content.
         string message = "Hello " + request.content;
@@ -42,11 +43,13 @@ public client class HelloWorldStringCaller {
         return self.caller.getId();
     }
 
-    isolated remote function send(string|ContextString response) returns grpc:Error? {
+    isolated remote function send(string|ContextString response)
+                                    returns grpc:Error? {
         return self.caller->send(response);
     }
 
-    isolated remote function sendError(grpc:Error response) returns grpc:Error? {
+    isolated remote function sendError(grpc:Error response)
+                                returns grpc:Error? {
         return self.caller->sendError(response);
     }
 

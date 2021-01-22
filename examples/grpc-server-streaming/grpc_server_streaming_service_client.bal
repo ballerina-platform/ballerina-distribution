@@ -5,7 +5,8 @@ import ballerina/io;
 public function main (string... args) returns error? {
     // The client endpoint configuration.
     HelloWorldClient ep = check new("http://localhost:9090");
-    // Execute the streaming RPC call that registers the server message listener and gets the response as a stream.
+    // Execute the streaming RPC call that registers
+    // the server message listener and gets the response as a stream.
     stream<anydata> result = check ep->lotsOfReplies("WSO2");
     // Iterate through the stream and print the content.
     error? e = result.forEach(function(anydata str) {
@@ -20,14 +21,18 @@ public client class HelloWorldClient {
 
     private grpc:Client grpcClient;
 
-    public isolated function init(string url, grpc:ClientConfiguration? config = ()) returns grpc:Error? {
+    public isolated function init(string url,
+    grpc:ClientConfiguration? config = ()) returns grpc:Error? {
         // Initialize the client endpoint.
         self.grpcClient = check new(url, config);
-        grpc:Error? result = self.grpcClient.initStub(self, ROOT_DESCRIPTOR, getDescriptorMap());
+        grpc:Error? result = self.grpcClient.initStub(self,
+                                    ROOT_DESCRIPTOR, getDescriptorMap());
     }
 
-    isolated remote function lotsOfReplies(string req) returns stream<anydata>|error {
-        return self.grpcClient->executeServerStreaming("HelloWorld/lotsOfReplies", req);
+    isolated remote function lotsOfReplies(string req)
+                                returns stream<anydata>|error {
+        return self.grpcClient->executeServerStreaming(
+        "HelloWorld/lotsOfReplies", req);
     }
 
 }
