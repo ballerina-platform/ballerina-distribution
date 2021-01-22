@@ -22,7 +22,11 @@ public function main (string... args) returns error? {
     // Receives the server stream response iteratively.
     var result = streamingClient->receive();
     while !(result is grpc:EOS) {
-        io:println(result);
+        if !(result is grpc:Error) {
+            [anydata, map<string|string[]>][value, _] =
+            <[anydata, map<string|string[]>]> result;
+            io:println(<[anydata, map<string|string[]>]> result);
+        }
         result = streamingClient->receive();
     }
 }
