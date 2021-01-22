@@ -40,7 +40,8 @@ function basicMatch(any a) {
         // This pattern checks for a mapping value with three fields `a`, `b`, and `c` and types will
         // be `any` in the pattern block.
         {a: var var1, b: var var2, c: var var3} => {
-            io:println("Matched with three vars : ", var1, ", ", var2, ", ", var3);
+            io:println("Matched with three vars : ", var1, ", ", var2, ", ",
+                       var3);
         }
         // This pattern checks for a mapping value with two fields `a`, `b`, and the types will be `any` in
         // the pattern block.
@@ -80,7 +81,8 @@ function matchWithTypeGuard(any matchExpr) {
         }
         // This pattern will only match if `var1` is of the type `string` and `var2` is of the type `RecordTwo`.
         {a: var var1, b: var var2} if (var1 is string && var2 is RecordTwo) => {
-            io:println("Matched with string and RecordTwo typeguard : ", var2.a);
+            io:println("Matched with string and RecordTwo typeguard : ",
+                       var2.a);
         }
         // A pattern with a single identifier can be used as the last match pattern and all values will
         // be matched to this.
