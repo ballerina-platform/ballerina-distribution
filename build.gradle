@@ -451,7 +451,7 @@ subprojects {
         maven { url "http://maven.wso2.org/nexus/content/repositories/snapshots/" }
 
         /* Ballerina lang staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1638/" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1639/" }
         /* Datamapper staging repository */
         maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdatamapper-1010/" }
     }
