@@ -801,7 +801,6 @@ task testExamples() {
             'uuid',  // Output varies
 
             // Disabling temporarily (https://github.com/ballerina-platform/ballerina-distribution/issues/1242)
-            "configurable",
             "error-match-statement"
     ]
 
