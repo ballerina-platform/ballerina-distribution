@@ -1,6 +1,6 @@
 import ballerina/lang.'transaction as transactions;
 import ballerina/io;
-import ballerina/jdbc;
+import ballerinax/java.jdbc;
 
 public function main() returns error? {
     // The JDBC Client for the H2 database.
