@@ -3,7 +3,7 @@
 BALCONFIGFILE=Config.toml bal run --observability-included counter_metrics.bal
 
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9797
-ballerina: enabled prometheus metrics reporter
+ballerina: started Prometheus HTTP listener 0.0.0.0:9797
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 ------------------------------------------
 Global Counter = 1
