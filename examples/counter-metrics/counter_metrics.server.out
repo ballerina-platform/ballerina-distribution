@@ -1,5 +1,5 @@
 # To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `bal run` command below with the build time flag `--observability-included` and the runtime configuration file `Config.toml`.
+# `.bal` file and execute the `bal run` command below with the `--observability-included` build time flag and the `Config.toml` runtime configuration file.
 BALCONFIGFILE=Config.toml bal run --observability-included counter_metrics.bal
 
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9797
