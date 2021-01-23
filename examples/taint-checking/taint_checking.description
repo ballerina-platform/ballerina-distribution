@@ -7,6 +7,6 @@
 // and unvalidated redirect (open redirect).
 // For more information, see [How to Write Secure Ballerina Programs](https://ballerina.io/swan-lake/learn/how-to-write-secure-ballerina-code/).
 //
-// Taint analysis is activated during the Ballerina compilation process either by providing `--taint-check` argument
-// to the Ballerina `run` or `build` commands, or it can be activated for a given project by adding build option
-// `taintCheck = true` to `Ballerina.toml` file under `[build-options]` section.
+// Taint analysis is currently disabled by default and can be enabled by providing the `--taint-check` option
+// to the Ballerina `run` or `build` commands. It can also be enabled for a project by adding the build option
+// `taintCheck = true` under the `[build-options]` section in the `Ballerina.toml` file.
