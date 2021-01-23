@@ -52,7 +52,7 @@ public class OpenAPIDistributionArtifactCheck {
                 .resolve("cache")
                 .resolve("ballerina")
                 .resolve("openapi")
-                .resolve("2.0.3")
+                .resolve("2.0.4")
                 .resolve("bir");
 
         Path jarPath = TEST_DISTRIBUTION_PATH
