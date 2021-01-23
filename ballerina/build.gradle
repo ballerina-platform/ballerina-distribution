@@ -691,11 +691,6 @@ task testExamples() {
 
             // Disabling temporarily (https://github.com/ballerina-platform/ballerina-distribution/issues/1242)
             "ballerina-to-openapi",
-            "xa-transactions",
-            "retry-transactions",
-            "non-transaction-retry",
-            "local-transactions-with-handlers",
-            "local-transactions",
             "log-api",
             "optional-type",
             "while"
