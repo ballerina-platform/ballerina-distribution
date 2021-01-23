@@ -11,7 +11,8 @@ test:MockFunction mock_printLn = new();
 
 public function mockPrint(any|error... s) {
     foreach var entry in s {
-        outputs.push(entry.toString());
+        string str = entry is error ? entry.toString() : entry.toString();
+        outputs.push(str);
     }
 }
 

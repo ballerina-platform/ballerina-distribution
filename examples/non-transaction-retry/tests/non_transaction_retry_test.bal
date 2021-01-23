@@ -10,8 +10,10 @@ string[] outputs = [];
 test:MockFunction mock_printLn = new();
 
 public function mockPrint(any|error... val) {
-    outputs.push(val.reduce(function (any|error a, any|error b) returns string => a.toString() + b.toString(), "").toString());
+    outputs.push(toString(val.reduce(function (any|error a, any|error b) returns string => toString(a) + toString(b), "")));
 }
+
+function toString(any|error val) returns string => val is error? val.toString() : val.toString();
 
 @test:Config {}
 function testFunc() {
