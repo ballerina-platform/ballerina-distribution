@@ -9,8 +9,8 @@ listener grpc:Listener ep = new (9090);
     descMap: getDescriptorMap()
 }
 service "Chat" on ep {
-    remote function chat(stream<ChatMessage, error> clientStream)
-                            returns stream<string> {
+    remote function chat(stream<ChatMessage, grpc:Error?> clientStream)
+                            returns stream<string, grpc:Error?> {
         log:print("Invoke the chat RPC");
         string[] responses = [];
         int i = 0;
