@@ -90,6 +90,18 @@ public client class ChatStreamingClient {
     }
 }
 
+// The context record includes the message payload and headers.
+public type ContextString record {|
+    string content;
+    map<string|string[]> headers;
+|};
+
+// The context record includes the message payload and headers.
+public type ContextChatMessage record {|
+    ChatMessage content;
+    map<string|string[]> headers;
+|};
+
 public type ChatMessage record {|
     string name = "";
     string message = "";
