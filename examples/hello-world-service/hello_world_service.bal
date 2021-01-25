@@ -3,11 +3,10 @@ import ballerina/http;
 // By default, Ballerina exposes an HTTP service via HTTP/1.1.
 service /hello on new http:Listener(9090) {
 
-    // Resource functions are invoked with the HTTP caller and the
-    // incoming request as arguments.
-    resource function get sayHello(http:Caller caller, http:Request req)
-            returns error? {
-        // Send a response back to the caller.
-        check caller->respond("Hello, World!");
+    // Resource method is invoked by GET request for
+    // `/hello/sayHello` path. The returned string value
+    // is eventually becomes the payload of the http:Response.
+    resource function get sayHello() returns string {
+        return "Hello, World!";
     }
 }
