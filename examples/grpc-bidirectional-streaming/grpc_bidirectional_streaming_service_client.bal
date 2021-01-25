@@ -15,19 +15,19 @@ public function main (string... args) returns error? {
         {name: "John", message: "Hello"}
     ];
     foreach ChatMessage msg in messages {
-        check streamingClient->send(msg);
+        check streamingClient->sendChatMessage(msg);
     }
     // Once all the messages are sent, the client sends the message to notify the server about the completion.
     check streamingClient->complete();
     // Receives the server stream response iteratively.
-    var result = streamingClient->receive();
+    var result = streamingClient->receiveString();
     while !(result is grpc:EOS) {
         if !(result is grpc:Error) {
             [anydata, map<string|string[]>][value, _] =
             <[anydata, map<string|string[]>]> result;
             io:println(<[anydata, map<string|string[]>]> result);
         }
-        result = streamingClient->receive();
+        result = streamingClient->receiveString();
     }
 }
 
@@ -41,7 +41,7 @@ public client class ChatClient {
     grpc:ClientConfiguration? config = ()) returns grpc:Error? {
         // Initialize the client endpoint.
         self.grpcClient = check new(url, config);
-        checkpanic self.grpcClient.initStub(self, ROOT_DESCRIPTOR,
+        check self.grpcClient.initStub(self, ROOT_DESCRIPTOR,
         getDescriptorMap());
     }
 
@@ -59,17 +59,31 @@ public client class ChatStreamingClient {
         self.sClient = sClient;
     }
 
-    isolated remote function send(ChatMessage message) returns grpc:Error? {
-
+    isolated remote function sendChatMessage(ChatMessage message) returns
+    grpc:Error? {
         return self.sClient->send(message);
     }
 
-    isolated remote function receive() returns anydata|grpc:Error {
-        return self.sClient->receive();
+    isolated remote function sendContextChatMessage(ContextChatMessage message)
+    returns grpc:Error? {
+        return self.sClient->send(message);
     }
 
-    isolated remote function sendError(grpc:Error response)
-                                returns grpc:Error? {
+    isolated remote function receiveString() returns string|grpc:Error {
+        [anydata, map<string|string[]>] [payload, headers] =
+        check self.sClient->receive();
+        return payload.toString();
+    }
+
+    isolated remote function receiveContextString() returns
+    ContextString|grpc:Error {
+        [anydata, map<string|string[]>] [payload, headers] =
+        check self.sClient->receive();
+        return {content: payload.toString(), headers: headers};
+    }
+
+    isolated remote function sendError(grpc:Error response) returns
+    grpc:Error? {
         return self.sClient->sendError(response);
     }
 

@@ -25,45 +25,6 @@ service "Chat" on ep {
     }
 }
 
-public client class ChatStringCaller {
-    private grpc:Caller caller;
-
-    public function init(grpc:Caller caller) {
-        self.caller = caller;
-    }
-
-    public isolated function getId() returns int {
-        return self.caller.getId();
-    }
-
-    isolated remote function send(string|ContextString response)
-                                returns grpc:Error? {
-        return self.caller->send(<anydata>response);
-    }
-
-    isolated remote function sendError(grpc:Error response)
-                                        returns grpc:Error? {
-        return self.caller->sendError(response);
-    }
-
-    isolated remote function complete() returns grpc:Error? {
-        return self.caller->complete();
-    }
-}
-
-
-// The context record includes the message payload and headers.
-public type ContextString record {|
-    stream<string> content;
-    map<string[]> headers;
-|};
-
-// The context record includes the message payload and headers.
-public type ContextChatMessage record {|
-    stream<ChatMessage> content;
-    map<string[]> headers;
-|};
-
 public type ChatMessage record {|
     string name = "";
     string message = "";
