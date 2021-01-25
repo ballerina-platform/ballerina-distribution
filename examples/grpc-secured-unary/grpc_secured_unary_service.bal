@@ -1,15 +1,16 @@
 // This is the server implementation of the secured connection (HTTPS) scenario.
-import ballerina/config;
 import ballerina/grpc;
 import ballerina/log;
+
+// The configurable path to the Ballerina home.
+configurable string balHome = "<PATH_TO_THE_BALLERINA_HOME>";
 
 // The server endpoint configuration with the SSL configurations.
 listener grpc:Listener ep = new (9090, {
     host: "localhost",
     secureSocket: {
         keyStore: {
-            path: config:getAsString("b7a.home") +
-                  "/bre/security/ballerinaKeystore.p12",
+            path: balHome + "/bre/security/ballerinaKeystore.p12",
             password: "ballerina"
         }
     }

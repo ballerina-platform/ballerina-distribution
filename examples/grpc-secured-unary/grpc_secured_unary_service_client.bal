@@ -1,7 +1,9 @@
 // This is the client implementation of the secured connection (HTTPS) scenario.
-import ballerina/config;
 import ballerina/grpc;
 import ballerina/io;
+
+// The configurable path to the Ballerina home.
+configurable string balHome = "<PATH_TO_THE_BALLERINA_HOME>";
 
 public function main (string... args) returns error? {
     // The client endpoint configuration with the SSL configurations.
@@ -9,8 +11,7 @@ public function main (string... args) returns error? {
         new ("https://localhost:9090", {
             secureSocket: {
                 trustStore: {
-                    path: config:getAsString("b7a.home") +
-                            "/bre/security/ballerinaTruststore.p12",
+                    path: balHome + "/bre/security/ballerinaTruststore.p12",
                     password: "ballerina"
                 }
             }
