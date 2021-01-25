@@ -2,16 +2,13 @@
 import ballerina/grpc;
 import ballerina/io;
 
-// The configurable path to the Ballerina home.
-configurable string balHome = "<PATH_TO_THE_BALLERINA_HOME>";
-
 public function main (string... args) returns error? {
     // The client endpoint configuration with the SSL configurations.
     HelloWorldClient ep = check
         new ("https://localhost:9090", {
             secureSocket: {
                 trustStore: {
-                    path: balHome + "/bre/security/ballerinaTruststore.p12",
+                    path: "../resources/ballerinaTruststore.p12",
                     password: "ballerina"
                 }
             }
