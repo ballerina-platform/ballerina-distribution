@@ -25,18 +25,29 @@ public client class HelloWorldClient {
     grpc:ClientConfiguration? config = ()) returns grpc:Error? {
         // Initialize the client endpoint.
         self.grpcClient = check new(url, config);
-        grpc:Error? result = self.grpcClient.initStub(self,
-                                    ROOT_DESCRIPTOR, getDescriptorMap());
+        check self.grpcClient.initStub(self, ROOT_DESCRIPTOR, getDescriptorMap());
     }
 
     isolated remote function lotsOfReplies(string req)
-                            returns stream<anydata, grpc:Error?>|grpc:Error {
+                              returns stream<string, grpc:Error?>|grpc:Error {
+
         var payload = check self.grpcClient->executeServerStreaming(
         "HelloWorld/lotsOfReplies", req);
-        [stream<anydata, grpc:Error?>, map<string|string[]>][result, _] =
+        [stream<anydata, grpc:Error?>, map<string|string[]>][result, _] = payload;
+        StringStream outputStream = new StringStream(result);
+        return new stream<string, grpc:Error?>(outputStream);
+    }
+
+    isolated remote function lotsOfRepliesContext(string req)
+                             returns ContextStringStream|grpc:Error {
+
+        var payload = check self.grpcClient->executeServerStreaming(
+        "HelloWorld/lotsOfReplies", req);
+        [stream<anydata, grpc:Error?>, map<string|string[]>][result, headers] =
         payload;
-        StringStream stringStream = new StringStream(result);
-        return new stream<string, grpc:Error?>(stringStream);
+        StringStream outputStream = new StringStream(result);
+        return {content: new stream<string, grpc:Error?>(outputStream),
+         headers: headers};
     }
 
 }
