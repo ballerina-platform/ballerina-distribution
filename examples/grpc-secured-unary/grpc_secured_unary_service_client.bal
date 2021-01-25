@@ -1,5 +1,4 @@
 // This is the client implementation of the secured connection (HTTPS) scenario.
-import ballerina/config;
 import ballerina/grpc;
 import ballerina/io;
 
@@ -9,8 +8,7 @@ public function main (string... args) returns error? {
         new ("https://localhost:9090", {
             secureSocket: {
                 trustStore: {
-                    path: config:getAsString("b7a.home") +
-                            "/bre/security/ballerinaTruststore.p12",
+                    path: "../resources/ballerinaTruststore.p12",
                     password: "ballerina"
                 }
             }
