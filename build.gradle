@@ -35,9 +35,9 @@ ext {
     observeExtJaegerVersion = project.observeExtJaegerVersion
     observeExtChoreoVersion = project.observeExtChoreoVersion
     ballerinaJreVersion = project.ballerinaJreVersion
+    ballerinaCommandVersion = project.ballerinaCommandVersion
 
     picocliVersion = "4.0.1"
-    ballerinaCommandVersion = "0.8.11"
     testngVersion = "6.14.3"
     netLingalaZip4jVersion = "2.3.2"
     commonsIoVersion = "2.6"
