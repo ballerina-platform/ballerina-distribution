@@ -41,7 +41,7 @@ public client class HelloWorldClient {
         }
         var payload = check self.grpcClient->executeSimpleRPC(
                             "HelloWorld/hello", message, headers);
-        [anydata, map<string[]>][result, _] = payload;
+        [anydata, map<string|string[]>][result, _] = payload;
         return result.toString();
     }
     isolated remote function helloContext(string|ContextString req)
@@ -66,5 +66,5 @@ public client class HelloWorldClient {
 // The context record includes the message payload and headers.
 public type ContextString record {|
     string content;
-    map<string[]> headers;
+    map<string|string[]> headers;
 |};
