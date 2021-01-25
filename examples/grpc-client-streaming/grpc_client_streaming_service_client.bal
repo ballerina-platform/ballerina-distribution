@@ -32,7 +32,8 @@ public client class HelloWorldClient {
     grpc:ClientConfiguration? config = ()) returns grpc:Error? {
         // Initialize the client endpoint.
         self.grpcClient = check new(url, config);
-        check self.grpcClient.initStub(self, ROOT_DESCRIPTOR, getDescriptorMap());
+        check self.grpcClient.initStub(self, ROOT_DESCRIPTOR,
+        getDescriptorMap());
     }
 
     isolated remote function lotsOfGreetings()
