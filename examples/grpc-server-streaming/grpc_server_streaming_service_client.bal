@@ -79,3 +79,8 @@ public class StringStream {
         return self.anydataStream.close();
     }
 }
+
+public type ContextStringStream record {|
+    stream<string> content;
+    map<string|string[]> headers;
+|};

@@ -9,7 +9,7 @@ listener grpc:Listener ep = new (9090);
     descMap: getDescriptorMap()
 }
 service "HelloWorld" on ep {
-    remote function lotsOfGreetings(stream<string,error> clientStream)
+    remote function lotsOfGreetings(stream<string, grpc:Error?> clientStream)
                                     returns string|error {
         log:print("Connected sucessfully.");
         // Read and process each message in the client stream.
