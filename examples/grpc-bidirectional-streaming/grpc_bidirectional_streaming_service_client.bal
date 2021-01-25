@@ -23,9 +23,7 @@ public function main (string... args) returns error? {
     var result = streamingClient->receiveString();
     while !(result is grpc:EOS) {
         if !(result is grpc:Error) {
-            [anydata, map<string|string[]>][value, _] =
-            <[anydata, map<string|string[]>]> result;
-            io:println(<[anydata, map<string|string[]>]> result);
+            io:println(result);
         }
         result = streamingClient->receiveString();
     }
