@@ -41,7 +41,9 @@ service object{} timerService = service object {
     // The onTrigger resource, which will be invoked when the timer is triggered.
     remote function onTrigger(CounterContext ctx) {
         ctx.count += 1;
-        io:println(ctx.name, ": ", ctx.count);
+        if (ctx.count <= 5) {
+            io:println(ctx.name, ": ", ctx.count);
+        }
     }
 
 };
