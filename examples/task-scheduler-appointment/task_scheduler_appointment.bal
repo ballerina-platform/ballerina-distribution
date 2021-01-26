@@ -34,7 +34,8 @@ service object {} appointmentService = service object {
     // This resource is triggered when the appointment is due.
     remote function onTrigger() {
         reminderCount += 1;
-        io:println("Schedule is due - Reminder: ", reminderCount);
+        if (reminderCount <= 5) {
+            io:println("Schedule is due - Reminder: ", reminderCount);
+        }
     }
-
 };
