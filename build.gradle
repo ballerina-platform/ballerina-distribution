@@ -533,7 +533,7 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:mime-ballerina:${stdlibMimeVersion}"
         ballerinaStdLibs "org.ballerinalang:mysql-ballerina:${stdlibMysqlVersion}"
         ballerinaStdLibs "org.ballerinalang:nats-ballerina:${stdlibNatsVersion}"
-        ballerinaStdLibs "org.ballerinalang:oauth2-ballerina:${stdlibOauth2Version}"
+        ballerinaStdLibs "org.ballerinalang:oauth2-ballerina:${stdlibOAuth2Version}"
         ballerinaStdLibs "org.ballerinalang:os-ballerina:${stdlibOsVersion}"
         ballerinaStdLibs "org.ballerinalang:rabbitmq-ballerina:${stdlibRabbitmqVersion}"
         ballerinaStdLibs "org.ballerinalang:random-ballerina:${stdlibRandomVersion}"
