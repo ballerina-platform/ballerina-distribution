@@ -56,6 +56,7 @@ import static org.ballerina.devtools.utils.TestUtils.DISTRIBUTIONS_DIR;
 import static org.ballerina.devtools.utils.TestUtils.MAVEN_VERSION;
 import static org.ballerina.devtools.utils.TestUtils.executeBuildCommand;
 import static org.ballerina.devtools.utils.TestUtils.executeCommand;
+import static org.ballerina.devtools.utils.TestUtils.executePullCommand;
 import static org.ballerina.devtools.utils.TestUtils.executePushCommand;
 import static org.ballerina.devtools.utils.TestUtils.executeSearchCommand;
 
@@ -328,6 +329,27 @@ public class CentralTest {
         String buildOutput = getString(build.getInputStream());
         String expectedMsg =
                 orgName + "/" + this.packageSnapshotName + ":1.0.0-snapshot pushed to central successfully";
+        if (!buildOutput.contains(expectedMsg)) {
+            Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedMsg);
+        }
+    }
+
+    @Test(description = "Pull package with pre-release version from central",
+            dependsOnMethods = "testPushSnapshotPackage")
+    public void testPullSnapshotPackage() throws IOException, InterruptedException {
+        String pkg = orgName + "/" + this.packageSnapshotName + ":1.0.0-snapshot";
+
+        Process build = executePullCommand(DISTRIBUTION_FILE_NAME,
+                                           this.tempWorkspaceDirectory.resolve(PROJECT_SNAPSHOT),
+                                           new LinkedList<>(Collections.singletonList(pkg)),
+                                           this.envVariables);
+        String buildErrors = getString(build.getErrorStream());
+        if (!buildErrors.isEmpty()) {
+            Assert.fail(OUTPUT_CONTAIN_ERRORS + buildErrors);
+        }
+
+        String buildOutput = getString(build.getInputStream());
+        String expectedMsg = pkg + " pulled from central successfully";
         if (!buildOutput.contains(expectedMsg)) {
             Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedMsg);
         }
