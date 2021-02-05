@@ -1415,7 +1415,8 @@ extractJreForWindows.dependsOn extractJreForMac
 copyOtherRepos.dependsOn extractJreForWindows
 copyDevToolsCoverageReport.dependsOn copyOtherRepos
 copyDevToolsDocUi.dependsOn copyDevToolsCoverageReport
-combineDocs.dependsOn copyDevToolsDocUi
+filterApiDocs.dependsOn copyDevToolsDocUi
+combineDocs.dependsOn filterApiDocs
 buildDistRepo.dependsOn combineDocs
 /* Package Distributions */
 packageDist.dependsOn buildDistRepo
