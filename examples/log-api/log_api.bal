@@ -20,7 +20,7 @@ public function main() {
     // Optionally an error can be passed to the printError function.
     log:printError("error log with cause", err = e, id = 845315, name = "foo");
 
-    // To set the output format to json, place the entry given below in the Config.toml file:
+    // To set the output format to JSON, place the entry given below in the `Config.toml` file.
     //
     // ```
     // [log]
