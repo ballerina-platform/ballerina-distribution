@@ -32,6 +32,7 @@ import java.io.IOException;
 public class BallerinaCommandTest {
     private static final String DIST_NAME = "ballerina-" + TestUtils.MAVEN_VERSION;
     public static final String VERSION = System.getProperty("maven.version");
+    public static final String SHORT_VERSION = System.getProperty("short.version");
     private static final String SPEC_VERSION = System.getProperty("spec.version");
     public static final String VERSION_DISPLAY_TEXT = System.getProperty("version.display.text");
     private static final String TOOL_VERSION = System.getProperty("tool.version");
@@ -88,14 +89,15 @@ public class BallerinaCommandTest {
         // test bal dist remove <version>
         actualOutput = TestUtils.executeCommand(path + " dist remove slp7");
         Assert.assertTrue(actualOutput.contains("The active Ballerina distribution cannot be removed"));
-        actualOutput = TestUtils.executeCommand(path + " dist remove 1.2.3");
-        Assert.assertTrue(actualOutput.contains("Distribution '1.2.3' successfully removed"));
-        // test bal update
-        actualOutput = TestUtils.executeCommand(path + " update");
-        Assert.assertTrue(actualOutput.contains("Fetching the latest tool version from the remote server..."));
+        actualOutput = TestUtils.executeCommand(path + " dist remove " + SHORT_VERSION);
+        Assert.assertTrue(actualOutput.contains("Distribution '" + SHORT_VERSION + "' successfully removed"));
+        actualOutput = TestUtils.executeCommand(path + " dist use " + SHORT_VERSION);
+        Assert.assertTrue(actualOutput.contains("Distribution '" + SHORT_VERSION + "' not found"));
         // test bal dist remove -a
         actualOutput = TestUtils.executeCommand(path + " dist remove -a");
         Assert.assertTrue(actualOutput.contains("All non-active distributions are successfully removed"));
+        actualOutput = TestUtils.executeCommand(path + " dist use 1.2.3");
+        Assert.assertTrue(actualOutput.contains("Distribution '1.2.3' not found"));
     }
 
     @AfterClass
