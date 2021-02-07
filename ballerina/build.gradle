@@ -745,6 +745,7 @@ task testExamples() {
             'websocket-basic-sample',
             'websocket-chat-application',
             'websocket-async-client',
+            'websocket-client',
             'websocket-cookie',
             'websocket-failover',
             'websocket-proxy-server',

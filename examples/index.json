@@ -954,6 +954,10 @@
         "category": "Working over the network",
         "samples": [
             {
+                "name": "Client",
+                "url": "websocket-client"
+            },
+            {
                 "name": "Async Client Endpoint",
                 "url": "websocket-async-client"
             },
