@@ -34,7 +34,8 @@ service /proxy/ws on new websocket:Listener(9090) {
                 string resp = check clientEp->readTextMessage();
                 var sourceEperr = caller->writeTextMessage(resp);
                 if (err is websocket:Error) {
-                    log:printError("Error occurred when sending text", err = err);
+                    log:printError("Error occurred when sending text",
+                             err = err);
                 }
             }
 
