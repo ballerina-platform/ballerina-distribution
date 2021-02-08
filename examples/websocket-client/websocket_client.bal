@@ -2,7 +2,7 @@ import ballerina/io;
 import ballerina/lang.'string;
 import ballerina/websocket;
 
-public function main() returns websocket:Error? {
+public function main() returns error? {
     // Creates a new [WebSocket client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/Client).
    websocket:Client wsClient = check new("ws://echo.websocket.org");
 
@@ -18,8 +18,6 @@ public function main() returns websocket:Error? {
 
    // Reads a binary message echoed from the server using [readBinaryMessage](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/Client#readBinaryMessage).
    byte[] byteResp = check wsClient->readBinaryMessage();
-   string|error stringResp = 'string:fromBytes(byteResp);
-   if (stringResp is string) {
-       io:println(stringResp);
-   }
+   string stringResp = check 'string:fromBytes(byteResp);
+   io:println(stringResp);
 }
