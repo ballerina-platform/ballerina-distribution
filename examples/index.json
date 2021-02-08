@@ -8,7 +8,7 @@
                 "name": "Hello World Service",
                 "url": "hello-world-service",
                 "disablePlayground": true
-                
+
             },
             {
                 "name": "Hello World Main",
@@ -625,12 +625,12 @@
         "samples": [
             {
                 "name": "Read/Write Bytes",
-                "url": "byte-io",
+                "url": "bytes-io",
                 "disablePlayground": true
             },
             {
-                "name": "Read/Write Text",
-                "url": "text-io",
+                "name": "Read/Write Strings",
+                "url": "strings-io",
                 "disablePlayground": true
             },
             {
@@ -1233,17 +1233,17 @@
         "samples": [{	
                 "name": "Distributed Tracing",	
                 "url": "tracing",
-                "disablePlayground": true	
-            },	
-            {	
-                "name": "Counter-Based Metrics",	
+                "disablePlayground": true
+            },
+            {
+                "name": "Counter-Based Metrics",
                 "url": "counter-metrics",
-                "disablePlayground": true	
-            },	
-            {	
-                "name": "Gauge-Based Metrics",	
+                "disablePlayground": true
+            },
+            {
+                "name": "Gauge-Based Metrics",
                 "url": "gauge-metrics",
-                "disablePlayground": true	
+                "disablePlayground": true
             }	
         ]	
     },
