@@ -280,7 +280,7 @@ public class TestUtils {
 
     /**
      * Get version output for version command.
-     *  @param jBallerinaVersion     Installed jBallerina version
+     *  @param jBallerinaVersion Installed jBallerina version
      *  @param specVersion Installed language specification
      *  @param toolVersion Installed tool version
      *  @param versionDisplayText display text for installed jBallerina version
@@ -322,5 +322,15 @@ public class TestUtils {
 
         String[] versions = version.split("\\.");
         return !(versions[0].equals("1") && versions[1].equals("0"));
+    }
+
+    /**
+     * Get the content of the file.
+     * @param filePath Path to the file
+     * @return content of the file
+     * @throws IOException
+     */
+    public static String getContent(Path filePath) throws IOException {
+        return Files.readString(filePath);
     }
 }

@@ -25,6 +25,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * Test ballerina commands.
@@ -51,6 +53,7 @@ public class BallerinaCommandTest {
 
     @Test(description = "Execute smoke testing to verify dist commands.", dependsOnMethods = {"testVersionCommand"})
     public void testDistCommands() throws IOException {
+        Path ballerinaHome = Paths.get(TestUtils.getUserHome()).resolve(".ballerina").resolve("ballerina-version");
         // test bal dist list
         String actualOutput = TestUtils.executeCommand(path + " dist list");
         Assert.assertTrue(actualOutput.contains("Distributions available locally:"));
@@ -63,6 +66,7 @@ public class BallerinaCommandTest {
         Assert.assertTrue(actualOutput.contains("Swan Lake channel"));
         Assert.assertTrue(actualOutput.contains("slp1"));
         Assert.assertTrue(actualOutput.contains("slp8"));
+
         // test bal dist pull and fetching dependencies
         actualOutput = TestUtils.executeCommand(path + " dist pull 1.2.3");
         Assert.assertTrue(actualOutput.contains("Fetching the '1.2.3' distribution from the remote server..."));
@@ -70,12 +74,16 @@ public class BallerinaCommandTest {
         Assert.assertTrue(actualOutput.contains("Downloading jdk8u202-b08-jre"));
         Assert.assertTrue(actualOutput.contains("'1.2.3' successfully set as the active distribution"));
         TestUtils.testInstallation(path, "1.2.3", "2020R1", TOOL_VERSION, "1.2.3");
+
         // test bal dist update
         actualOutput = TestUtils.executeCommand(path + " dist update");
         Assert.assertTrue(actualOutput.contains("Fetching the latest patch distribution for 'jballerina-1.2.3' from the remote server..."));
         Assert.assertTrue(actualOutput.contains("Successfully set the latest patch distribution"));
+        Assert.assertEquals(TestUtils.getContent(ballerinaHome).split("-")[1].trim(),
+                actualOutput.split("Downloading ")[1].split(" ")[0]);
         actualOutput = TestUtils.executeCommand(path + " dist update");
         Assert.assertTrue(actualOutput.contains("is already the active distribution"));
+
         // test bal dist use
         actualOutput = TestUtils.executeCommand(path + " dist use 1.2.3");
         Assert.assertTrue(actualOutput.contains("'1.2.3' successfully set as the active distribution"));
@@ -86,6 +94,7 @@ public class BallerinaCommandTest {
         Assert.assertTrue(actualOutput.contains("Downloading jdk-11.0.8+10-jre"));
         Assert.assertTrue(actualOutput.contains("'slp7' successfully set as the active distribution"));
         TestUtils.testInstallation(path, "swan-lake-preview7", "v2020-09-22", TOOL_VERSION, "Preview 7");
+
         // test bal dist remove <version>
         actualOutput = TestUtils.executeCommand(path + " dist remove slp7");
         Assert.assertTrue(actualOutput.contains("The active Ballerina distribution cannot be removed"));
@@ -93,6 +102,13 @@ public class BallerinaCommandTest {
         Assert.assertTrue(actualOutput.contains("Distribution '" + SHORT_VERSION + "' successfully removed"));
         actualOutput = TestUtils.executeCommand(path + " dist use " + SHORT_VERSION);
         Assert.assertTrue(actualOutput.contains("Distribution '" + SHORT_VERSION + "' not found"));
+
+        actualOutput = TestUtils.executeCommand(path + " dist update");
+        Assert.assertTrue(actualOutput.contains("Fetching the latest patch distribution for 'ballerina-slp7' from the remote server..."));
+        Assert.assertTrue(actualOutput.contains("Successfully set the latest patch distribution"));
+        Assert.assertEquals(actualOutput.split("Downloading ")[1].split(" ")[0],
+                actualOutput.split("Downloading ")[1].split(" ")[0]);
+
         // test bal dist remove -a
         actualOutput = TestUtils.executeCommand(path + " dist remove -a");
         Assert.assertTrue(actualOutput.contains("All non-active distributions are successfully removed"));
