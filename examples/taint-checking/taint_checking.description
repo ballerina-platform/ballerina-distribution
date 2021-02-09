@@ -5,7 +5,7 @@
 // By enabling taint analysis, Ballerina programs can be made resilient to major security vulnerabilities including
 // SQL injection, path manipulation, file manipulation, unauthorized file access,
 // and unvalidated redirect (open redirect).
-// For more information, see [Writing Secure Ballerina Code](https://ballerina.io/swan-lake/learn/writing-secure-ballerina-code/).<br/><br/>
+// For more information, see [Writing Secure Ballerina Code](https://ballerina.io/learn/writing-secure-ballerina-code/).<br/><br/>
 //
 // Taint analysis is disabled by default and it can be enabled by providing the `--taint-check` option
 // to the Ballerina `run` or `build` commands. It can also be enabled for a project by adding the build option
