@@ -1,5 +1,4 @@
 import ballerina/io;
-import ballerina/lang.'string;
 import ballerina/websocket;
 
 public function main() returns error? {
@@ -12,12 +11,4 @@ public function main() returns error? {
    // Reads a text message echoed from the server using [readTextMessage](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/Client#readTextMessage).
    string textResp = check wsClient->readTextMessage();
    io:println(textResp);
-
-   // Writes a binary message to the server using [writeBinaryMessage](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/Client#writeBinaryMessage).
-   check wsClient->writeBinaryMessage("Binary message".toBytes());
-
-   // Reads a binary message echoed from the server using [readBinaryMessage](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/Client#readBinaryMessage).
-   byte[] byteResp = check wsClient->readBinaryMessage();
-   string stringResp = check 'string:fromBytes(byteResp);
-   io:println(stringResp);
 }
