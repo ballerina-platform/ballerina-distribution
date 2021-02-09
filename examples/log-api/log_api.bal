@@ -17,6 +17,13 @@ public function main() {
     log:printError("error log",
         id = isolated function() returns int { return 845315;}, name = "foo");
 
-    // Optionally an error can be passed to the printError function.
+    // Optionally, an error can be passed to the `printError` function.
     log:printError("error log with cause", err = e, id = 845315, name = "foo");
+
+    // To set the output format to JSON, place the entry given below in the `Config.toml` file.
+    //
+    // ```
+    // [log]
+    // output_format = "json"
+    // ```
 }
