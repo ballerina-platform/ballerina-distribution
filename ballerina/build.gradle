@@ -456,7 +456,7 @@ task packageDistLinux(type: Zip) {
         filter(ReplaceTokens, tokens: [uuid: installerVersion])
     }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-zip//ballerina-command-${ballerinaCommandVersion}/bin/bal"
+        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/bin/bal"
         fileMode = 775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
