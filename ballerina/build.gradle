@@ -74,9 +74,9 @@ task unpackDevTools(type: Copy) {
     }
 }
 
-task unpackAwsLambdaBalo(type: Copy) {
+task unpackAwsLambdaBala(type: Copy) {
     group = "unpack_dependencies"
-    configurations.awsLambdaBalo.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+    configurations.awsLambdaBala.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         from zipTree(artifact.getFile())
         into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
     }
@@ -194,11 +194,11 @@ task copyOtherRepos(type: Copy) {
     }
 
     into("docs") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/docs"
+        from "build/target/extracted-distributions/awslambda-extension-bala-zip/docs"
     }
 
     into("docs") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/docs"
+        from "build/target/extracted-distributions/azurefunctions-extension-bala-zip/docs"
     }
 
     /* Standard Libraries */
@@ -210,8 +210,8 @@ task copyOtherRepos(type: Copy) {
         from("${artifactExtractedPath}/docs") {
             into "docs/"
         }
-        from("${artifactExtractedPath}/balo") {
-            into "repo/balo"
+        from("${artifactExtractedPath}/bala") {
+            into "repo/bala"
         }
         from("${artifactExtractedPath}/cache") {
             into "repo/cache"
@@ -227,8 +227,8 @@ task copyOtherRepos(type: Copy) {
         from("${artifactExtractedPath}/docs") {
             into "docs/"
         }
-        from("${artifactExtractedPath}/balo") {
-            into "repo/balo"
+        from("${artifactExtractedPath}/bala") {
+            into "repo/bala"
         }
         from("${artifactExtractedPath}/cache") {
             into "repo/cache"
@@ -244,8 +244,8 @@ task copyOtherRepos(type: Copy) {
         from("${artifactExtractedPath}/docs") {
             into "docs/"
         }
-        from("${artifactExtractedPath}/balo") {
-            into "repo/balo"
+        from("${artifactExtractedPath}/bala") {
+            into "repo/bala"
         }
         from("${artifactExtractedPath}/cache") {
             into "repo/cache"

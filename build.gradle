@@ -476,9 +476,9 @@ subprojects {
 
     configurations {
         jbalTools
-        awsLambdaBalo
+        awsLambdaBala
         awsLambdaExamples
-        azFunctionsBalo
+        azFunctionsBala
         azFunctionsExamples
         dockerAnnotations
         dockerExamples
@@ -558,8 +558,8 @@ subprojects {
 
         /* Code to cloud extensions */
         ballerinaC2cLibs "io.ballerina:c2c-ballerina:${c2cVersion}"
-        ballerinaC2cLibs "org.ballerinax.azurefunctions:azurefunctions-extension-balo:${azFunctionsVersion}"
-        ballerinaC2cLibs "org.ballerinax.awslambda:awslambda-extension-balo:${awslambdaVersion}"
+        ballerinaC2cLibs "org.ballerinax.azurefunctions:azurefunctions-extension-bala:${azFunctionsVersion}"
+        ballerinaC2cLibs "org.ballerinax.awslambda:awslambda-extension-bala:${awslambdaVersion}"
         ballerinaC2cLibs "org.ballerinax.docker:docker-extension-annotations:${dockerVersion}"
 
         /* Observability extensions */
