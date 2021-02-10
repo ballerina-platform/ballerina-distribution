@@ -573,6 +573,6 @@ subprojects {
         ballerinaC2cExamples "org.ballerinax.awslambda:awslambda-extension-examples:${awslambdaVersion}@zip"
         ballerinaC2cExamples "org.ballerinax.docker:docker-extension-examples:${dockerVersion}@zip"
 
-        balCommand "org.ballerinalang:ballerina-command-distribution:${ballerinaCommandVersion}@zip"
+        balCommand "org.ballerinalang:ballerina-command:${ballerinaCommandVersion}@zip"
     }
 }
