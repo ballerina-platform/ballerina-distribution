@@ -531,7 +531,7 @@ task packageDistMac(type: Zip) {
     }
     into("${parentDir}/lib") {
         from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}" +
-                "/ballerina-command-${ballerinaCommandVersion}/lib/ballerina-command-${ballerinaCommandVersion}.jar"
+                "/lib/ballerina-command-${ballerinaCommandVersion}.jar"
         fileMode = 0775
     }
 
