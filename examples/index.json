@@ -972,14 +972,6 @@
             {
                 "name": "Basic Server Functionalities",
                 "url": "websocket-basic-sample"
-            },
-            {
-                "name": "Proxy Server",
-                "url": "websocket-proxy-server"
-            },
-            {
-                "name": "Chat Application",
-                "url": "websocket-chat-application"
             }
         ]
     },
