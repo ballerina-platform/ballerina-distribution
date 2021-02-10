@@ -13,10 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package io.ballerina.installer.test;
 
-package io.ballerina.test;
-
-
+import io.ballerina.test.*;
 import org.testng.Assert;
 
 import java.nio.file.Files;

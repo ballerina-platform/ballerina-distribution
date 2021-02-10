@@ -14,16 +14,20 @@
  * limitations under the License.
  */
 
-package io.ballerina.test;
+package io.ballerina.installer.test;
 
+import io.ballerina.test.Executor;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 
-public class FetchDependencyTest {
-    String version = "1.2.10";
-    String specVersion = "2020R1";
-    String toolVersion = "0.8.10";
+public class ProjectTest {
+    String version = System.getProperty("BALLERINA_VERSION");
+    String specVersion = System.getProperty("SPEC_VERSION");
+    String toolVersion = System.getProperty("TOOL_VERSION");
+
+    String previousVersion = System.getProperty("LATEST_PATCH_VERSION");
+    String previousSpecVersion = System.getProperty("LATEST_PATCH_SPEC_VERSION");
 
     @DataProvider(name = "getExecutors")
     public Object[][] dataProviderMethod() {
@@ -33,12 +37,12 @@ public class FetchDependencyTest {
     }
 
     @Test(dataProvider = "getExecutors")
-    public void testFetchDependency(Executor executor) {
+    public void testProject(Executor executor) {
         executor.transferArtifacts();
         executor.install();
 
         TestUtils.testInstallation(executor, version, specVersion, toolVersion);
-        TestUtils.testDependencyFetch(executor, version, specVersion, toolVersion);
+        TestUtils.testProject(executor, previousVersion, previousSpecVersion, toolVersion);
 
         executor.uninstall();
         executor.cleanArtifacts();

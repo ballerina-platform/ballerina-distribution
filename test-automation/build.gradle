@@ -15,11 +15,20 @@
  *
  */
 
-rootProject.name = 'ballerina-test-automation'
-include 'test-automation'
-include 'installer-test'
-include 'update-tool-test'
+plugins {
+    id 'java'
+}
 
-project(':test-automation').projectDir = "$rootDir/test-automation" as File
-project(':installer-test').projectDir = "$rootDir/installer-test" as File
-project(':update-tool-test').projectDir = "$rootDir/update-tool-test" as File
+group 'io.ballerina'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+dependencies {
+    implementation 'org.testng:testng:6.14.3'
+    testCompile 'org.testng:testng'
+}
+
+repositories {
+    mavenCentral()
+}

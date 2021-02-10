@@ -14,15 +14,23 @@
  * limitations under the License.
  */
 
-package io.ballerina.test;
+package io.ballerina.tool.test;
 
-import org.testng.Assert;
+import io.ballerina.installer.test.TestUtils;
+import io.ballerina.test.Executor;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 
-public class CentralTest {
+public class UpdateDistTest {
     String version = System.getProperty("BALLERINA_VERSION");
+    String specVersion = System.getProperty("SPEC_VERSION");
+    String toolVersion = System.getProperty("TOOL_VERSION");
+    String latestToolVersion = System.getProperty("LATEST_TOOL_VERSION");
+
+    String previousVersion = "1.2.0";
+    String previousSpecVersion = "2020R1";
+    String previousVersionsLatestPatch = System.getProperty("LATEST_PATCH_VERSION");
 
     @DataProvider(name = "getExecutors")
     public Object[][] dataProviderMethod() {
@@ -32,12 +40,13 @@ public class CentralTest {
     }
 
     @Test(dataProvider = "getExecutors")
-    public void testPull(Executor executor) {
+    public void testDistCommands(Executor executor) {
         executor.transferArtifacts();
         executor.install();
-        //Checks part as output varies depending on the network speed
-        Assert.assertTrue(executor.executeCommand("ballerina pull ballerinax/sdfc", false)
-                .contains("ballerinax/sfdc:2.1.3 pulled from central successfully"));
+
+        TestUtils.testDistCommands(executor, version, specVersion, toolVersion, previousVersion, previousSpecVersion,
+                previousVersionsLatestPatch, latestToolVersion);
+
         executor.uninstall();
         executor.cleanArtifacts();
     }
