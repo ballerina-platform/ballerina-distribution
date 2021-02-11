@@ -8,13 +8,15 @@ public function main() {
         audience: "vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
         keyId: "NTAxZmMxNDMyZDg3MTU1ZGM0MzEzODJhZWI4NDNlZDU1OGFkNjFiMQ",
         expTimeInSeconds: 3600,
-        keyStoreConfig: {
-            keyStore: {
-                path: "../resources/ballerinaKeystore.p12",
-                password: "ballerina"
-            },
-            keyAlias: "ballerina",
-            keyPassword: "ballerina"
+        signatureConfig: {
+            config: {
+                keyStore: {
+                    path: "../resources/ballerinaKeystore.p12",
+                    password: "ballerina"
+                },
+                keyAlias: "ballerina",
+                keyPassword: "ballerina"
+            }
         }
     };
 
@@ -32,11 +34,13 @@ public function main() {
         issuer: "ballerina",
         audience: "vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
         clockSkewInSeconds: 60,
-        trustStoreConfig: {
-            certificateAlias: "ballerina",
-            trustStore: {
-                path: "../resources/ballerinaTruststore.p12",
-                password: "ballerina"
+        signatureConfig: {
+            trustStoreConfig: {
+                certAlias: "ballerina",
+                trustStore: {
+                    path: "../resources/ballerinaTruststore.p12",
+                    password: "ballerina"
+                }
             }
         }
     };
@@ -56,13 +60,15 @@ public function main() {
         issuer: "ballerina",
         audience: "vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
         clockSkewInSeconds: 60,
-        jwksConfig: {
-            url: "https://localhost:20000/oauth2/jwks",
-            clientConfig: {
-                secureSocket: {
-                    trustStore: {
-                        path: "../resources/ballerinaTruststore.p12",
-                        password: "ballerina"
+        signatureConfig: {
+            jwksConfig: {
+                url: "https://localhost:20000/oauth2/jwks",
+                clientConfig: {
+                    secureSocket: {
+                        trustStore: {
+                            path: "../resources/ballerinaTruststore.p12",
+                            password: "ballerina"
+                        }
                     }
                 }
             }
