@@ -46,12 +46,12 @@ public class UpdateToolTest {
         executor.install();
 
         //Test dist list
-        TestUtils.verifyDistList(executor);
+//        TestUtils.verifyDistList(executor);
         //Test installation
         TestUtils.testInstallation(executor, previousVersion, previousSpecVersion, previousToolVersion);
 
         //Test `ballerina update`
-        executor.executeCommand("ballerina update", true);
+        executor.executeCommand("update", true, previousToolVersion);
         TestUtils.testInstallation(executor, previousVersion, previousSpecVersion, toolVersion);
 
         //Execute all ballerina dist commands once updated

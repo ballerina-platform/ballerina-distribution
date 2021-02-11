@@ -41,9 +41,9 @@ public class Ubuntu implements Executor {
     }
 
     @Override
-    public String executeCommand(String command, boolean isAdminMode) {
+    public String executeCommand(String command, boolean isAdminMode, String toolVersion) {
         String sudoCommand = isAdminMode ? "sudo " : "";
-        return Utils.executeCommand(sudoCommand + command);
+        return Utils.executeCommand(sudoCommand + Utils.getCommandName(toolVersion) + command);
     }
 
     @Override

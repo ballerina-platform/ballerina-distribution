@@ -24,6 +24,8 @@ import org.testng.annotations.Test;
 
 public class CentralTest {
     String version = System.getProperty("BALLERINA_VERSION");
+    String toolVersion = System.getProperty("TOOL_VERSION");
+
 
     @DataProvider(name = "getExecutors")
     public Object[][] dataProviderMethod() {
@@ -37,7 +39,7 @@ public class CentralTest {
         executor.transferArtifacts();
         executor.install();
         //Checks part as output varies depending on the network speed
-        Assert.assertTrue(executor.executeCommand("ballerina pull ballerinax/sdfc", false)
+        Assert.assertTrue(executor.executeCommand("pull ballerinax/googleapis_sheets", false, toolVersion)
                 .contains("pulled from central successfully"));
         executor.uninstall();
         executor.cleanArtifacts();

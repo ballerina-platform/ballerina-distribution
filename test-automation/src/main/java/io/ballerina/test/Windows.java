@@ -38,10 +38,10 @@ public class Windows implements Executor {
     }
 
     @Override
-    public String executeCommand(String command, boolean isAdminMode) {
+    public String executeCommand(String command, boolean isAdminMode, String toolVersion) {
         //TODO: Temporary call bat file directly
-        String batLocation = "call \"C:\\Program Files\\Ballerina\\bin\\ballerina.bat\"";
-        return Utils.executeWindowsCommand(command.replace("ballerina", batLocation));
+        String batLocation = "call \"C:\\Program Files\\Ballerina\\bin\\ballerina.bat \"";
+        return Utils.executeWindowsCommand(command.replace(Utils.getCommandName(toolVersion), batLocation));
     }
 
     @Override

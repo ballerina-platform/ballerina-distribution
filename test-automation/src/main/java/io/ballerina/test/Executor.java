@@ -21,7 +21,7 @@ public interface Executor {
 
     String install();
 
-    String executeCommand(String command, boolean isAdminMode);
+    String executeCommand(String command, boolean isAdminMode, String toolVersion);
 
     String uninstall();
 
