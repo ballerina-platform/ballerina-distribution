@@ -40,7 +40,7 @@ public class FetchDependencyTest {
         executor.install();
 
         TestUtils.testInstallation(executor, version, specVersion, toolVersion);
-        TestUtils.testDependencyFetch(executor, version, specVersion, toolVersion);
+        TestUtils.testDependencyFetch(executor, toolVersion);
 
         executor.uninstall();
         executor.cleanArtifacts();

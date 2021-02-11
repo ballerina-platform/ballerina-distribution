@@ -129,19 +129,15 @@ public class TestUtils {
      * Execute smoke testing to verify fetching dependencies.
      *
      * @param executor    Executor for relevant operating system
-     * @param version     Installed Ballerina version
-     * @param specVersion Installed language specification
      * @param toolVersion Installed tool version
      */
-    public static void testDependencyFetch(Executor executor, String version, String specVersion, String toolVersion) {
-        //Test installation
-        TestUtils.testInstallation(executor, version, specVersion, toolVersion);
+    public static void testDependencyFetch(Executor executor, String toolVersion) {
         executor.executeCommand("dist list", false, toolVersion);
         //Test `Fetching compatible JRE dependency`
         String output = executor.executeCommand("dist pull slp1", true, toolVersion);
         Assert.assertTrue(output.contains("Downloading slp1"));
         Assert.assertTrue(output.contains("Fetching the dependencies for 'slp1' from the remote server..."));
-        Assert.assertTrue(output.contains("Downloading jdk8u202-b08-jre"));
+        Assert.assertTrue(output.contains("jdk8u202-b08-jre"));
         Assert.assertTrue(output.contains("'slp1' successfully set as the active distribution"));
         TestUtils.testInstallation(executor, "swan-lake-preview1", "v2020-06-18", toolVersion);
         String cmdName = Utils.getCommandName(toolVersion);
