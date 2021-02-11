@@ -50,6 +50,9 @@ task distributionTest {
         systemProperty "examples.dir", "$buildDir/../../examples"
         systemProperty "line.check.extensions", ".java, .bal"
         systemProperty "short.version", "$shortVersion"
+        systemProperty "version.display.text", "$versionDisplayText"
+        systemProperty "spec.version", "$specVersion"
+        systemProperty "tool.version", "$ballerinaCommandVersion"
 
         useTestNG() {
             suites 'src/test/resources/testng.xml'

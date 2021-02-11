@@ -74,9 +74,9 @@ task unpackDevTools(type: Copy) {
     }
 }
 
-task unpackAwsLambdaBalo(type: Copy) {
+task unpackAwsLambdaBala(type: Copy) {
     group = "unpack_dependencies"
-    configurations.awsLambdaBalo.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+    configurations.awsLambdaBala.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         from zipTree(artifact.getFile())
         into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
     }
@@ -194,11 +194,11 @@ task copyOtherRepos(type: Copy) {
     }
 
     into("docs") {
-        from "build/target/extracted-distributions/awslambda-extension-balo-zip/docs"
+        from "build/target/extracted-distributions/awslambda-extension-bala-zip/docs"
     }
 
     into("docs") {
-        from "build/target/extracted-distributions/azurefunctions-extension-balo-zip/docs"
+        from "build/target/extracted-distributions/azurefunctions-extension-bala-zip/docs"
     }
 
     /* Standard Libraries */
@@ -210,8 +210,8 @@ task copyOtherRepos(type: Copy) {
         from("${artifactExtractedPath}/docs") {
             into "docs/"
         }
-        from("${artifactExtractedPath}/balo") {
-            into "repo/balo"
+        from("${artifactExtractedPath}/bala") {
+            into "repo/bala"
         }
         from("${artifactExtractedPath}/cache") {
             into "repo/cache"
@@ -227,8 +227,8 @@ task copyOtherRepos(type: Copy) {
         from("${artifactExtractedPath}/docs") {
             into "docs/"
         }
-        from("${artifactExtractedPath}/balo") {
-            into "repo/balo"
+        from("${artifactExtractedPath}/bala") {
+            into "repo/bala"
         }
         from("${artifactExtractedPath}/cache") {
             into "repo/cache"
@@ -244,8 +244,8 @@ task copyOtherRepos(type: Copy) {
         from("${artifactExtractedPath}/docs") {
             into "docs/"
         }
-        from("${artifactExtractedPath}/balo") {
-            into "repo/balo"
+        from("${artifactExtractedPath}/bala") {
+            into "repo/bala"
         }
         from("${artifactExtractedPath}/cache") {
             into "repo/cache"
@@ -377,17 +377,17 @@ task packageDistZip(type: Zip) {
         filter(ReplaceTokens, tokens: [uuid: installerVersion])
     }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/bal"
+        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/bin/bal"
         fileMode = 0775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/bal.bat"
+        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/bin/bal.bat"
         fileMode = 0775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
     into("${parentDir}/lib") {
-        from "build/target/extracted-distributions/ballerina-command-distribution-zip/lib/ballerina-command-${ballerinaCommandVersion}.jar"
+        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/lib/ballerina-command-${ballerinaCommandVersion}.jar"
         fileMode = 0775
     }
 
@@ -456,12 +456,12 @@ task packageDistLinux(type: Zip) {
         filter(ReplaceTokens, tokens: [uuid: installerVersion])
     }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/bal"
+        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/bin/bal"
         fileMode = 775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
     into("${parentDir}/lib") {
-        from "build/target/extracted-distributions/ballerina-command-distribution-zip/lib/ballerina-command-${ballerinaCommandVersion}.jar"
+        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/lib/ballerina-command-${ballerinaCommandVersion}.jar"
         fileMode = 0775
     }
 
@@ -525,12 +525,13 @@ task packageDistMac(type: Zip) {
         filter(ReplaceTokens, tokens: [uuid: installerVersion])
     }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/bal"
+        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/bin/bal"
         fileMode = 775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
     into("${parentDir}/lib") {
-        from "build/target/extracted-distributions/ballerina-command-distribution-zip/lib/ballerina-command-${ballerinaCommandVersion}.jar"
+        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}" +
+                "/lib/ballerina-command-${ballerinaCommandVersion}.jar"
         fileMode = 0775
     }
 
@@ -594,12 +595,12 @@ task packageDistWindows(type: Zip) {
         filter(ReplaceTokens, tokens: [uuid: installerVersion])
     }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-distribution-zip/bin/bal.bat"
+        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/bin/bal.bat"
         fileMode = 775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
     into("${parentDir}/lib") {
-        from "build/target/extracted-distributions/ballerina-command-distribution-zip/lib/ballerina-command-${ballerinaCommandVersion}.jar"
+        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/lib/ballerina-command-${ballerinaCommandVersion}.jar"
         fileMode = 0775
     }
 
@@ -753,7 +754,10 @@ task testExamples() {
             'http-client-data-binding',
             'websocket-basic-sample',
             'websocket-chat-application',
-            'websocket-async-client',
+            'websocket-async-text-client',
+            'websocket-async-binary-client',
+            'websocket-text-client',
+            'websocket-binary-client',
             'websocket-cookie',
             'websocket-failover',
             'websocket-proxy-server',
