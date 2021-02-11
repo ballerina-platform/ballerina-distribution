@@ -5,7 +5,7 @@ public function main() returns websocket:Error? {
     // Creates a new [WebSocket Async client](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/AsyncClient) with the backend URL and assigns a callback service.
     websocket:AsyncClient wsClientEp = check new ("ws://echo.websocket.org",
                                           new ClientService());
-    // Writes a text message to the server using [writeTextMessage](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/AsyncClient#writeString).
+    // Writes a text message to the server using [writeTextMessage](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/websocket/latest/websocket/clients/AsyncClient#writeString).
     check wsClientEp->writeTextMessage("Hello World!");
 }
 
