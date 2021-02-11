@@ -22,7 +22,7 @@ import org.apache.tools.ant.taskdefs.condition.Os
 description = 'Ballerina - Tools'
 
 ext {
-    jreLocation = "build/target/ballerina-jre-artifacts-zip/"
+    jreLocation = "downloads/ballerina-jre-artifacts-zip/"
     distributionName = "ballerina"
     installerVersion = UUID.randomUUID().toString()
 }
