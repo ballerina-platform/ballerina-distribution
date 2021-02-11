@@ -21,12 +21,14 @@ listener http:Listener securedEP = new(9090, config = {
             jwtValidatorConfig: {
                 issuer: "wso2",
                 audience: "ballerina",
-                trustStoreConfig: {
-                    trustStore: {
-                        path: "../resources/ballerinaTruststore.p12",
-                        password: "ballerina"
-                    },
-                    certificateAlias: "ballerina"
+                signatureConfig: {
+                    trustStoreConfig: {
+                        trustStore: {
+                            path: "../resources/ballerinaTruststore.p12",
+                            password: "ballerina"
+                        },
+                        certAlias: "ballerina"
+                    }
                 },
                 scopeKey: "scp"
             },
