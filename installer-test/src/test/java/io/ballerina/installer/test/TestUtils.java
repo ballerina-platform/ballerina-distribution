@@ -168,17 +168,18 @@ public class TestUtils {
         Assert.assertTrue(Files.exists(projectPath.resolve("target/bin/project2.jar")));
     }
 
-//    /**
-//     * Execute smoke testing to verify dist list.
-//     *
-//     * @param executor    Executor for relevant operating system
-//     */
-//    public static void verifyDistList(Executor executor) {
-//        String actualOutput = executor.executeCommand("dist list", false);
-//        Assert.assertTrue(actualOutput.contains("1.0.0"));
-//        Assert.assertTrue(actualOutput.contains("1.1.0"));
-//        Assert.assertTrue(actualOutput.contains("1.2.0"));
-//    }
+    /**
+     * Execute smoke testing to verify dist list.
+     *
+     * @param executor    Executor for relevant operating system
+     */
+    public static void verifyDistList(Executor executor, String toolVersion) {
+        String actualOutput = executor.executeCommand("dist list", false, toolVersion);
+        Assert.assertTrue(actualOutput.contains("1.0.0"));
+        Assert.assertTrue(actualOutput.contains("1.1.0"));
+        Assert.assertTrue(actualOutput.contains("1.2.0"));
+        Assert.assertTrue(actualOutput.contains("slp1"));
+    }
 
     /**
      * To check whether installation is a 1.0.x release.
