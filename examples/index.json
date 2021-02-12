@@ -124,7 +124,8 @@
             },
             {
                 "name": "While",
-                "url": "while"
+                "url": "while",
+                "disablePlayground": true
             },
             {
                 "name": "Foreach",
@@ -230,7 +231,8 @@
             },
             {
                 "name": "Optional Type",
-                "url": "optional-type"
+                "url": "optional-type",
+                "disablePlayground": true
             },
             {
                 "name": "Anydata Type",
