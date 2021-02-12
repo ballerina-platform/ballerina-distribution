@@ -119,7 +119,22 @@ function handleContent(mime:Entity bodyPart) {
         } else {
             log:printError("Error in parsing text data", err = payload);
         }
-    }
+    } else if (mime:APPLICATION_PDF == baseType) {
+        // [Extracts byte stream](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Response#getByteStream) from the body part and save it as a file.
+        var payload = bodyPart.getByteStream();
+        if (payload is stream<byte[], io:Error>) {
+            //Writes the incoming stream to a file using `io:fileWriteBlocksFromStream` API by providing the file location which the content should be written to.
+            io:Error? result = io:fileWriteBlocksFromStream(
+                                    "./files/ReceivedFile.pdf", streamer);
+
+            if (result is error) {
+                log:printError("Error occurred while writing ",
+                                err = result);
+            }
+            close(payload);
+        } else {
+            log:printError("Error in parsing byte channel :", err = payload);
+        }
 }
 
 //Gets the base type from a given content type.
@@ -132,39 +147,10 @@ function getBaseType(string contentType) returns string {
     }
 }
 
-// Copies the content from the source channel to the destination channel.
-function copy(io:ReadableByteChannel src, io:WritableByteChannel dst)
-                returns error? {
-    while (true) {
-        //Operation attempts to read a maximum of 1000 bytes.
-        byte[]|io:Error result = src.read(1000);
-        if (result is io:EofError) {
-            break;
-        } else if (result is error) {
-            return <@untainted>result;
-        } else {
-            //Writes the given content into the channel.
-            int i = 0;
-            while (i < result.length()) {
-                var result2 = dst.write(result, i);
-                if (result2 is error) {
-                    return result2;
-                } else {
-                    i = i + result2;
-                }
-            }
-        }
-    }
-    return;
-}
-
-//Closes the byte channel.
-function close(io:ReadableByteChannel|io:WritableByteChannel ch) {
-    object {
-        public function close() returns error?;
-    } channelResult = ch;
-    var cr = channelResult.close();
+//Closes the byte stream.
+function close(stream<byte[], io:Error> byteStream) {
+    var cr = byteStream.close();
     if (cr is error) {
-        log:printError("Error occurred while closing the channel: ", err = cr);
+        log:printError("Error occurred while closing the stream: ", err = cr);
     }
 }
