@@ -15,7 +15,8 @@ service class ClientService {
     *websocket:Service;
     // This remote function is triggered when a new binary message is
     // received from the remote backend.
-    remote function onBinaryMessage(websocket:Caller conn, byte[] data) returns error? {
+    remote function onBinaryMessage(websocket:Caller conn, byte[] data)
+                    returns error? {
         string stringData = check 'string:fromBytes(data);
         io:println(stringData);
     }
