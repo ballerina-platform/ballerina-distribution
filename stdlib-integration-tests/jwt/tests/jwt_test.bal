@@ -33,12 +33,14 @@ listener http:Listener jwtListener = new(25002, {
             jwtValidatorConfig: {
                 issuer: "wso2",
                 audience: "ballerina",
-                trustStoreConfig: {
-                    trustStore: {
-                        path: "tests/resources/keystore/ballerinaTruststore.p12",
-                        password: "ballerina"
-                    },
-                    certificateAlias: "ballerina"
+                signatureConfig: {
+                    trustStoreConfig: {
+                        trustStore: {
+                            path: "tests/resources/keystore/ballerinaTruststore.p12",
+                            password: "ballerina"
+                        },
+                        certAlias: "ballerina"
+                    }
                 },
                 scopeKey: "scp"
             }

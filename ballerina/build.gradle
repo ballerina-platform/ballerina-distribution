@@ -22,7 +22,7 @@ import org.apache.tools.ant.taskdefs.condition.Os
 description = 'Ballerina - Tools'
 
 ext {
-    jreLocation = "build/target/ballerina-jre-artifacts-zip/"
+    jreLocation = "downloads/ballerina-jre-artifacts-zip/"
     distributionName = "ballerina"
     installerVersion = UUID.randomUUID().toString()
 }
@@ -377,17 +377,17 @@ task packageDistZip(type: Zip) {
         filter(ReplaceTokens, tokens: [uuid: installerVersion])
     }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-zip/bin/bal"
+        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/bin/bal"
         fileMode = 0775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-zip/bin/bal.bat"
+        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/bin/bal.bat"
         fileMode = 0775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
     into("${parentDir}/lib") {
-        from "build/target/extracted-distributions/ballerina-command-zip/lib/ballerina-command-${ballerinaCommandVersion}.jar"
+        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/lib/ballerina-command-${ballerinaCommandVersion}.jar"
         fileMode = 0775
     }
 
@@ -456,12 +456,12 @@ task packageDistLinux(type: Zip) {
         filter(ReplaceTokens, tokens: [uuid: installerVersion])
     }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-zip/bin/bal"
+        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/bin/bal"
         fileMode = 775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
     into("${parentDir}/lib") {
-        from "build/target/extracted-distributions/ballerina-command-zip/lib/ballerina-command-${ballerinaCommandVersion}.jar"
+        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/lib/ballerina-command-${ballerinaCommandVersion}.jar"
         fileMode = 0775
     }
 
@@ -525,12 +525,13 @@ task packageDistMac(type: Zip) {
         filter(ReplaceTokens, tokens: [uuid: installerVersion])
     }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-zip/bin/bal"
+        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/bin/bal"
         fileMode = 775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
     into("${parentDir}/lib") {
-        from "build/target/extracted-distributions/ballerina-command-zip/lib/ballerina-command-${ballerinaCommandVersion}.jar"
+        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}" +
+                "/lib/ballerina-command-${ballerinaCommandVersion}.jar"
         fileMode = 0775
     }
 
@@ -594,12 +595,12 @@ task packageDistWindows(type: Zip) {
         filter(ReplaceTokens, tokens: [uuid: installerVersion])
     }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-zip/bin/bal.bat"
+        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/bin/bal.bat"
         fileMode = 775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
     into("${parentDir}/lib") {
-        from "build/target/extracted-distributions/ballerina-command-zip/lib/ballerina-command-${ballerinaCommandVersion}.jar"
+        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/lib/ballerina-command-${ballerinaCommandVersion}.jar"
         fileMode = 0775
     }
 
@@ -693,7 +694,29 @@ task testExamples() {
             "ballerina-to-openapi",
             "log-api",
             "optional-type",
-            "while"
+            "while",
+
+            // Disabling since these modules are removed from the distribution
+            'kafka-consumer-client',
+            'kafka-producer',
+            'kafka-consumer-service',
+            'kafka-producer-transactional',
+            'kafka-consumer-group-service',
+            'kafka-authentication-sasl-plain-consumer',
+            'kafka-authentication-sasl-plain-producer',
+            'nats-basic-client',
+            'nats-streaming-client',
+            'nats-streaming-consumer-with-data-binding',
+            'nats-streaming-durable-subscriptions',
+            'nats-streaming-queue-group',
+            'nats-streaming-start-position',
+            'rabbitmq-producer',
+            'rabbitmq-consumer',
+            'rabbitmq-consumer-with-client-acknowledgement',
+            'rabbitmq-consumer-with-data-binding',
+            'rabbitmq-consumer-with-qos-settings',
+            'rabbitmq-transaction-producer',
+            'rabbitmq-transaction-consumer'
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
@@ -713,22 +736,9 @@ task testExamples() {
             'checkpanic', // Has user name in output
             'deprecation', // Contains user input
             'foreach', // Has tabs for formatting in input
-            'kafka-consumer-client',
-            'kafka-producer',
-            'kafka-consumer-service',
-            'kafka-producer-transactional',
-            'kafka-consumer-group-service',
-            'kafka-authentication-sasl-plain-consumer',
-            'kafka-authentication-sasl-plain-producer', // Kafka BBEs are ignored since a KafkaCluster is not present
             'websub-service-integration-sample',
             'websub-internal-hub-sample',
             'grpc-server-streaming',
-            'nats-basic-client',
-            'nats-streaming-client',
-            'nats-streaming-consumer-with-data-binding',
-            'nats-streaming-durable-subscriptions',
-            'nats-streaming-queue-group',
-            'nats-streaming-start-position',
             'http-compression',
             'http-redirects',
             'http-2-0-server-push',
@@ -744,18 +754,14 @@ task testExamples() {
             'http-client-data-binding',
             'websocket-basic-sample',
             'websocket-chat-application',
-            'websocket-async-client',
+            'websocket-async-text-client',
+            'websocket-async-binary-client',
+            'websocket-text-client',
+            'websocket-binary-client',
             'websocket-cookie',
             'websocket-failover',
             'websocket-proxy-server',
             'websocket-retry',
-            'rabbitmq-producer',
-            'rabbitmq-consumer',
-            'rabbitmq-consumer-with-client-acknowledgement',
-            'rabbitmq-consumer-with-data-binding',
-            'rabbitmq-consumer-with-qos-settings',
-            'rabbitmq-transaction-producer',
-            'rabbitmq-transaction-consumer',
             'random',  // Output varies
             'jdbc-complex-type-queries', // Consists date time in output
             'jdbc-batch-execute-operation', // Consists transaction server sart log
@@ -1306,98 +1312,6 @@ task stopLdapServer() {
     }
 }
 
-//task startRabbitmqServer() {
-//    doLast {
-//        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
-//            def stdOut = new ByteArrayOutputStream()
-//            exec {
-//                commandLine 'sh', '-c', "docker ps --filter name=my-rabbit"
-//                standardOutput = stdOut
-//            }
-//            if (!stdOut.toString().contains("my-rabbit")) {
-//                println "Starting RabbitMQ server."
-//                exec {
-//                    commandLine 'sh', '-c', "docker run --rm -d --name my-rabbit -p 15672:15672 -p  5672:5672 rabbitmq:3-management"
-//                    standardOutput = stdOut
-//                }
-//                println stdOut.toString()
-//                sleep(5 * 1000)
-//            } else {
-//                println "RabbitMQ server is already started."
-//            }
-//        }
-//    }
-//}
-//
-//task stopRabbitmqServer() {
-//    doLast {
-//        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
-//            def stdOut = new ByteArrayOutputStream()
-//            exec {
-//                commandLine 'sh', '-c', "docker ps --filter name=my-rabbit"
-//                standardOutput = stdOut
-//            }
-//            if (stdOut.toString().contains("my-rabbit")) {
-//                println "Stopping RabbitMQ server."
-//                exec {
-//                    commandLine 'sh', '-c', "docker stop my-rabbit"
-//                    standardOutput = stdOut
-//                }
-//                println stdOut.toString()
-//                sleep(5 * 1000)
-//            } else {
-//                println "RabbitMQ server is not started."
-//            }
-//        }
-//    }
-//}
-//
-//task startNatsServer() {
-//    doLast {
-//        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
-//            def stdOut = new ByteArrayOutputStream()
-//            exec {
-//                commandLine 'sh', '-c', "docker ps --filter name=my-nats"
-//                standardOutput = stdOut
-//            }
-//            if (!stdOut.toString().contains("my-nats")) {
-//                println "Starting NATS Basic server."
-//                exec {
-//                    commandLine 'sh', '-c', "docker run --rm -d --name my-nats -p 4222:4222 nats:latest"
-//                    standardOutput = stdOut
-//                }
-//                println stdOut.toString()
-//                sleep(5 * 1000)
-//            } else {
-//                println "NATS Basic server is already started."
-//            }
-//        }
-//    }
-//}
-//
-//task stopNatsServer() {
-//    doLast {
-//        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
-//            def stdOut = new ByteArrayOutputStream()
-//            exec {
-//                commandLine 'sh', '-c', "docker ps --filter name=my-nats"
-//                standardOutput = stdOut
-//            }
-//            if (stdOut.toString().contains("my-nats")) {
-//                println "Stopping NATS server."
-//                exec {
-//                    commandLine 'sh', '-c', "docker stop my-nats"
-//                    standardOutput = stdOut
-//                }
-//                println stdOut.toString()
-//                sleep(5 * 1000)
-//            } else {
-//                println "NATS server is not started."
-//            }
-//        }
-//    }
-//}
-
 /* Unpack Dependencies */
 unpackJballerinaTools.dependsOn unpackBallerinaJre
 unpackDevTools.dependsOn unpackJballerinaTools
@@ -1432,12 +1346,8 @@ unpackStdLibs.dependsOn unpackJballerinaTools
 testExamples.dependsOn packageDist
 
 testStdlibs.dependsOn startLdapServer
-//testStdlibs.dependsOn startRabbitmqServer
-//testStdlibs.dependsOn startNatsServer
 testStdlibs.dependsOn packageDist
 testStdlibs.finalizedBy stopLdapServer
-//testStdlibs.finalizedBy stopRabbitmqServer
-//testStdlibs.finalizedBy stopNatsServer
 
 testDevToolsIntegration.dependsOn packageDist
 
