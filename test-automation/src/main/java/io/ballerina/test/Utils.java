@@ -49,8 +49,7 @@ public class Utils {
             }
     };
 
-    public static final String DISTRIBUTION_LOCATION =
-            "http://dist-dev.ballerina.io/downloads/";
+    public static final String DISTRIBUTION_LOCATION ="http://dist-dev.ballerina.io/downloads/";
 
     public static void downloadFile(String version, String installerName) {
         try {
@@ -106,7 +105,6 @@ public class Utils {
             file.createNewFile();
             file.setExecutable(true);
             PrintWriter writer = new PrintWriter(file.getPath(), "UTF-8");
-            System.out.println(command);
             writer.println(command);
             writer.close();
 
@@ -117,7 +115,6 @@ public class Utils {
             while ((line = reader.readLine()) != null) {
                 output += line + "\n";
             }
-            System.out.println(output);
             file.delete();
         } catch (Exception e) {
             System.out.print("Error occurred");

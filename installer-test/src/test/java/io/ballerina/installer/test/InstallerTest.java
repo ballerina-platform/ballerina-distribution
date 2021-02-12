@@ -38,7 +38,7 @@ public class InstallerTest {
         executor.transferArtifacts();
         executor.install();
 
-        TestUtils.testInstallation(executor, version, specVersion, toolVersion);
+        TestUtils.testInstallation(executor, version, specVersion, toolVersion, System.getProperty("VERSION_DISPLAY_TEXT"));
 
         executor.uninstall();
         executor.cleanArtifacts();

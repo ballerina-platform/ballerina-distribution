@@ -41,7 +41,7 @@ public class ProjectTest {
         executor.transferArtifacts();
         executor.install();
 
-        TestUtils.testInstallation(executor, version, specVersion, toolVersion);
+        TestUtils.testInstallation(executor, version, specVersion, toolVersion, System.getProperty("VERSION_DISPLAY_TEXT"));
         TestUtils.testProject(executor, previousVersion, previousSpecVersion, toolVersion);
 
         executor.uninstall();

@@ -27,6 +27,7 @@ public class UpdateToolTest {
     String specVersion = System.getProperty("SPEC_VERSION");
     String toolVersion = System.getProperty("TOOL_VERSION");
     String latestToolVersion = System.getProperty("LATEST_TOOL_VERSION");
+    String VERSION_DISPLAY_TEXT = System.getProperty("VERSION_DISPLAY_TEXT");
 
     String previousVersion = "1.2.0";
     String previousSpecVersion = "2020R1";
@@ -47,11 +48,11 @@ public class UpdateToolTest {
         //Test dist list
         TestUtils.verifyDistList(executor, toolVersion);
         //Test installation
-        TestUtils.testInstallation(executor, version, specVersion, toolVersion);
+        TestUtils.testInstallation(executor, version, specVersion, toolVersion, VERSION_DISPLAY_TEXT);
 
         //Test `ballerina update`
         executor.executeCommand("update", true, toolVersion);
-        TestUtils.testInstallation(executor, version, specVersion, latestToolVersion);
+        TestUtils.testInstallation(executor, version, specVersion, latestToolVersion, VERSION_DISPLAY_TEXT);
 
         //Execute all ballerina dist commands once updated
         TestUtils.testDistCommands(executor, version, specVersion, latestToolVersion, previousVersion,
