@@ -276,7 +276,8 @@
             },
             {
                 "name": "Configurable Variables",
-                "url": "configurable"
+                "url": "configurable",
+                "disablePlayground": true
             }
         ]
     },
@@ -724,11 +725,13 @@
             },
             {
                 "name": "Cryptographic Operations",
-                "url": "crypto"
+                "url": "crypto",
+                "disablePlayground": true
             },
             {
                 "name": "JWT Issue/Validate",
-                "url": "jwt-issue-validate"
+                "url": "jwt-issue-validate",
+                "disablePlayground": true
             },
             {
                 "name": "URL Encode/Decode Operations",
