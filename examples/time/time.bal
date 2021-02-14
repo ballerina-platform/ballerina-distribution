@@ -24,34 +24,34 @@ public function main() returns error? {
     io:println("Current system time in custom format: ", customTimeString);
     // These functions retrieve information related to a time object.
     // This fetches the year of a given time.
-    int year = time:getYear(time);
+    int year = check time:getYear(time);
     io:println("Year: ", year);
     // This fetches the month value of a given time.
-    int month = time:getMonth(time);
+    int month = check time:getMonth(time);
     io:println("Month: ", month);
     // This fetches the day value of a given time.
-    int day = time:getDay(time);
+    int day = check time:getDay(time);
     io:println("Day: ", day);
     // This fetches the hour value of a given time.
-    int hour = time:getHour(time);
+    int hour = check time:getHour(time);
     io:println("Hour: ", hour);
     // This fetches the minute value of a given time.
-    int minute = time:getMinute(time);
+    int minute = check time:getMinute(time);
     io:println("Minute: ", minute);
     // This fetches the seconds value of a given time.
-    int second = time:getSecond(time);
+    int second = check time:getSecond(time);
     io:println("Second: ", second);
     // This fetches the millisecond value of a given time.
-    int milliSecond = time:getMilliSecond(time);
+    int milliSecond = check time:getMilliSecond(time);
     io:println("Millisecond: ", milliSecond);
     // This fetches the day of the week of a given time.
-    time:DayOfWeek weekday = time:getWeekday(time);
+    time:DayOfWeek weekday = check time:getWeekday(time);
     io:println("Weekday: ", weekday);
     // This fetches the date component of the time using a single function.
-    [year, month, day] = time:getDate(time);
+    [year, month, day] = check time:getDate(time);
     io:println("Date: ", year, ":", month, ":", day);
     // This fetches the time component using a single function.
-    [hour, minute, second, milliSecond] = time:getTime(time);
+    [hour, minute, second, milliSecond] = check time:getTime(time);
     io:println("Time: ", hour, ":", minute, ":", second, ":", milliSecond);
     // This adds a given duration to a time. This example adds
     // one year, one month, and one second to the current time.
@@ -60,11 +60,11 @@ public function main() returns error? {
         months: 1,
         seconds: 1
     };
-    time:Time tmAdd = time:addDuration(time, duration);
+    time:Time tmAdd = check time:addDuration(time, duration);
     io:println("After adding a duration: ", time:toString(tmAdd));
     // This subtracts a given duration from a time. This example
     // subtracts one year, one month, and one second from the current time.
-    time:Time tmSub = time:subtractDuration(time, duration);
+    time:Time tmSub = check time:subtractDuration(time, duration);
     io:println("After subtracting a duration: ", time:toString(tmSub));
     // This converts the time to a different timezone.
     time:Time t2 = check time:createTime(2017, 3, 28, 23, 42, 45, 554,
