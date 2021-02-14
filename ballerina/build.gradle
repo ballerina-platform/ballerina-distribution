@@ -791,7 +791,9 @@ task testExamples() {
             'secured-service-with-basic-auth-ldap-user-store', // Log output depends on time
             'secured-service-with-jwt-auth', // Log output depends on time
             'secured-service-with-oauth2', // Log output depends on time
-            'send-and-receive-emails',
+            'send-email',
+            'receive-email-using-client',
+            'receive-email-using-listener',
             'task-service-timer',       // Services needs to be stopped during build
             'task-service-appointment',
             'error-handling-in-single-place',
