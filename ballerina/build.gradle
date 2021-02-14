@@ -867,7 +867,7 @@ task testExamples() {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${baseBuildPath}/${bbe}"
-                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'build', '--experimental ', ${additionalBuildParams}
+                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'build', '--experimental', "${additionalBuildParams}"
             }
         } else {
             exitVal = exec {
