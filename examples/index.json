@@ -1467,9 +1467,16 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "Send and Receive Emails",
-                "url": "send-and-receive-emails",
-                "disablePlayground": true
+                "name": "Send Emails",
+                "url": "send-email"
+            },
+            {
+                "name": "Receive Emails using a client",
+                "url": "receive-email-using-client"
+            },
+            {
+                "name": "Receive Emails using a listener",
+                "url": "receive-email-using-listener"
             }
         ]
     }
