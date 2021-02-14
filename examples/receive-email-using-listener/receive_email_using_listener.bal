@@ -20,7 +20,7 @@ service "emailObserver" on emailListener {
     remote function onEmailMessage(email:Message emailMessage) {
         io:println("POP Listener received an email.");
         io:println("Email Subject: ", emailMessage.subject);
-        io:println("Email Body: ", emailMessage.body);
+        io:println("Email Body: ", emailMessage?.body);
     }
 
     // When an error occurs during the email poll operations, the `onError` method is called.

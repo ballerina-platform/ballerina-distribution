@@ -16,7 +16,7 @@ public function main() returns error? {
     if (emailResponse is email:Message) {
         io:println("POP client received an email.");
         io:println("Email Subject: ", emailResponse.subject);
-        io:println("Email Body: ", emailResponse.body);
+        io:println("Email Body: ", emailResponse?.body);
     // When no emails are available in the server, `()` is returned.
     } else {
         io:println("There are no emails in the INBOX.");
@@ -36,7 +36,7 @@ public function main() returns error? {
     if (emailResponse is email:Message) {
         io:println("IMAP client received an email.");
         io:println("Email Subject: ", emailResponse.subject);
-        io:println("Email Body: ", emailResponse.body);
+        io:println("Email Body: ", emailResponse?.body);
     // When no emails are available in the server, `()` is returned.
     } else {
         io:println("There are no emails in the INBOX.");
