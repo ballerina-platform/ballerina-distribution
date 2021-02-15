@@ -120,10 +120,10 @@ function handleContent(mime:Entity bodyPart) {
             log:printError("Error in parsing text data", err = payload);
         }
     } else if (mime:APPLICATION_PDF == baseType) {
-        // [Extracts byte stream](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Response#getByteStream) from the body part and save it as a file.
+        // [Extracts byte stream](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Response#getByteStream) from the body part and saves it as a file.
         var payload = bodyPart.getByteStream();
         if (payload is stream<byte[], io:Error>) {
-            //Writes the incoming stream to a file using `io:fileWriteBlocksFromStream` API by providing the file location which the content should be written to.
+            //Writes the incoming stream to a file using `io:fileWriteBlocksFromStream` API by providing the file location to which the content should be written to.
             io:Error? result = io:fileWriteBlocksFromStream(
                                     "./files/ReceivedFile.pdf", payload);
 

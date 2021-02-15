@@ -37,11 +37,11 @@ service /'stream on new http:Listener(9090) {
     resource function post receiver(http:Caller caller,
                                         http:Request request) {
         http:Response res = new;
-        //[Retrieve the byteStream](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#getByteStream).
+        //[Retrieve the byte stream](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#getByteStream).
         stream<byte[], io:Error>|error streamer = request.getByteStream();
 
         if (streamer is stream<byte[], io:Error>) {
-            //Writes the incoming stream to a file using `io:fileWriteBlocksFromStream` API by providing the file location which the content should be written to.
+            //Writes the incoming stream to a file using `io:fileWriteBlocksFromStream` API by providing the file location to which the content should be written to.
             io:Error? result = io:fileWriteBlocksFromStream(
                                     "./files/ReceivedFile.pdf", streamer);
 

@@ -51,8 +51,8 @@ service /actionService on new http:Listener(9090) {
         var bStream = io:fileReadBlocksAsStream("./files/logo.png");
 
         if (bStream is stream<byte[], io:Error>) {
-            //POST remote function with byte stream as payload. Since the file path is static
-            //`untaint` is used to denote that the byte stream is trusted .
+            //Make a POST request with a byte stream as the payload. Since the file path is static
+            //`<@untainted>` is used to denote that the byte stream is trusted.
             response = clientEP->post("/image", <@untainted>bStream);
             handleResponse(response);
 
@@ -64,14 +64,13 @@ service /actionService on new http:Listener(9090) {
             mime:Entity part2 = new;
             part2.setText("Hello");
 
-            //[POST](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function
-            //with a body parts as the payload.
+            //Make a POST request with a body parts as the payload.
             mime:Entity[] bodyParts = [part1, part2];
             response = clientEP->post("/echo", bodyParts);
             handleResponse(response);
 
-            var result = caller->respond(
-                                    "Client actions successfully executed!");
+            var result =
+                    caller->respond("Client actions successfully executed!");
             handleError(result);
         } else {
             http:Response res = new;
