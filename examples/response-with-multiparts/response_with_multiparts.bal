@@ -125,7 +125,7 @@ function handleContent(mime:Entity bodyPart) {
         if (payload is stream<byte[], io:Error>) {
             //Writes the incoming stream to a file using `io:fileWriteBlocksFromStream` API by providing the file location which the content should be written to.
             io:Error? result = io:fileWriteBlocksFromStream(
-                                    "./files/ReceivedFile.pdf", streamer);
+                                    "./files/ReceivedFile.pdf", payload);
 
             if (result is error) {
                 log:printError("Error occurred while writing ",
@@ -135,6 +135,7 @@ function handleContent(mime:Entity bodyPart) {
         } else {
             log:printError("Error in parsing byte channel :", err = payload);
         }
+    }
 }
 
 //Gets the base type from a given content type.
