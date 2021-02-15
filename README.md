@@ -42,10 +42,19 @@ Alternatively, you can install Ballerina from the source using the following ins
     git clone https://github.com/ballerina-platform/ballerina-distribution
     ```
 2. This repository is depending on Github packages. You need to have a personal access token with read package permissions. Then you need to set following environment variables.
+    
+    Linux/Unix
     ```bash
     export packageUser=<Your github username>
     export packagePAT=<Your personal access token>
     ```
+    
+    Windows
+    ```batch
+    set packageUser=<Your github username>
+    set packagePAT=<Your personal access token>
+    ```
+ 
 3. Run the Gradle build command ``./gradlew build`` from the repository root directory.
 4. Extract the Ballerina distribution created at `ballerina/target/ballerina-<version>-SNAPSHOT.zip`.
 
