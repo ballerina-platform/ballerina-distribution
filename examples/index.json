@@ -897,18 +897,8 @@
                 "disablePlayground": true
             },
             {
-                "name": "HTTP Caching",
-                "url": "http-caching-client",
-                "disablePlayground": true
-            },
-            {
                 "name": "Disable Chunking",
                 "url": "http-disable-chunking",
-                "disablePlayground": true
-            },
-            {
-                "name": "Trace Logs",
-                "url": "http-trace-logs",
                 "disablePlayground": true
             },
             {
@@ -939,11 +929,6 @@
             {
                 "name": "CORS",
                 "url": "http-cors",
-                "disablePlayground": true
-            },
-            {
-                "name": "Access Logs",
-                "url": "http-access-logs",
                 "disablePlayground": true
             },
             {
