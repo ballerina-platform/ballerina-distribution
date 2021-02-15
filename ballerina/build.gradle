@@ -24,7 +24,6 @@ description = 'Ballerina - Tools'
 ext {
     jreLocation = "downloads/ballerina-jre-artifacts-zip/"
     distributionName = "ballerina"
-    installerVersion = UUID.randomUUID().toString()
 }
 
 configurations {
