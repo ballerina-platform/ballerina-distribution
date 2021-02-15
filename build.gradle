@@ -485,7 +485,7 @@ subprojects {
         }
 
         /* Standard libraries */
-        ballerinaStdLibs "org.ballerinalang:auth-ballerina:${stdlibAuthVersion}"
+//        ballerinaStdLibs "org.ballerinalang:auth-ballerina:${stdlibAuthVersion}"
         ballerinaStdLibs "org.ballerinalang:cache-ballerina:${stdlibCacheVersion}"
         ballerinaStdLibs "org.ballerinalang:crypto-ballerina:${stdlibCryptoVersion}"
         ballerinaStdLibs "org.ballerinalang:email-ballerina:${stdlibEmailVersion}"
