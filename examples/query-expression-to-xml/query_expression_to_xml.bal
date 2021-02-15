@@ -30,7 +30,7 @@ public function main() {
         limit 2
         // The `select` clause is evaluated for each iteration.
         // The emitted values are concatenated to form the `xml` result.
-        select <xml> studentName;
+        select studentName;
 
     io:println(students);
 }
