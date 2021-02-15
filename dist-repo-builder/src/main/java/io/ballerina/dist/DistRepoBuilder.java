@@ -96,8 +96,12 @@ public class DistRepoBuilder {
         env.put("create", "true");
         // locate file system by using the syntax
         // defined in java.net.JarURLConnection
-        URI uri = URI.create("jar:file:" + path.toAbsolutePath());
-        try (FileSystem zipfs = FileSystems.newFileSystem(uri, env)) {
+
+        String filePath  = ("jar:file:" + path.toAbsolutePath().toString());
+        if (isWindows()) {
+            filePath = filePath.replace("\\", "/").replace("file:", "file:/");
+        }
+        try (FileSystem zipfs = FileSystems.newFileSystem(URI.create(filePath), env)) {
             final PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher(jarGlob);
             Files.walkFileTree(zipfs.getPath("/"), new SimpleFileVisitor<Path>() {
                 @Override
@@ -146,5 +150,9 @@ public class DistRepoBuilder {
         File file = filepath.toFile();
         file.setReadable(true, false);
         file.setWritable(true, true);
+    }
+
+    private static boolean isWindows() {
+        return System.getProperty("os.name").startsWith("Windows");
     }
 }
