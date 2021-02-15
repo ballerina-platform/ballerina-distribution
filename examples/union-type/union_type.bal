@@ -7,7 +7,7 @@ function lookupPerson(string|int id) returns Person|error {
         if !personTab.hasKey(id) {
             return error("id '" + id + "' not found");
         }
-        return personTab[id];
+        return personTab.get(id);
     } else {
         // If the `id` is an int, lookup the `Person` by index
         return personTab.toArray()[id];

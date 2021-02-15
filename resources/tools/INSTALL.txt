@@ -39,9 +39,9 @@ INSTALLING BALLERINA
 
 - Finally, to verify whether Ballerina is installed properly, you can run the `bal version` command. If Ballerina was installed correctly, you should see an output similar to the following:
     $ bal version
-    Ballerina Swan Lake Preview 5
-    Language specification v2020-09-22
-    Update Tool 0.8.9
+    Ballerina Swan Lake Alpha 1
+    Language specification v2020-12-17
+    Update Tool 0.8.14
 
 
 INSTALLING THE VS CODE PLUGIN
