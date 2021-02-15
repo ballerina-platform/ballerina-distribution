@@ -947,6 +947,10 @@
                 "disablePlayground": true
             },
             {
+                "name": "HTTP Streaming",
+                "url": "http-streaming"
+            },
+            {
                 "name": "HTTP Compression",
                 "url": "http-compression",
                 "disablePlayground": true

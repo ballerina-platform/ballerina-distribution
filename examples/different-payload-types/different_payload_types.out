@@ -10,6 +10,7 @@ time = 2020-12-15 17:41:04,062 level = INFO  module = "" message = "Text data: S
 time = 2020-12-15 17:41:04,206 level = INFO  module = "" message = "Xml data: <yy>Sample Xml</yy>"
 time = 2020-12-15 17:41:04,224 level = INFO  module = "" message = "Json data: {"name":"apple", "color":"red"}"
 time = 2020-12-15 17:41:04,232 level = INFO  module = "" message = "Response contains binary data: Sample Text"
+time = 2020-12-15 17:41:04,256 level = INFO  module = "" message = "Response contains an image"
 time = 2020-12-15 17:41:04,275 level = INFO  module = "" message = "Response contains body parts: "
 time = 2020-12-15 17:41:04,280 level = INFO  module = "" message = "Json Part: {"name":"Jane"}"
 time = 2020-12-15 17:41:04,281 level = INFO  module = "" message = "Text Part: Hello"
