@@ -4,7 +4,7 @@ import ballerina/log;
 import ballerina/mime;
 
 // Creates an endpoint for the [client](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client).
-http:Client clientEndpoint = check new("http://localhost:9090");
+http:Client clientEndpoint = check new ("http://localhost:9090");
 
 service /'stream on new http:Listener(9090) {
 
