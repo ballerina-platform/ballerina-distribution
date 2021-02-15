@@ -63,7 +63,7 @@ service /actionService on new http:Listener(9090) {
             mime:Entity part2 = new;
             part2.setText("Hello");
 
-            //Make a POST request with a body parts as the payload.
+            //Make a POST request with body parts as the payload.
             mime:Entity[] bodyParts = [part1, part2];
             response = clientEP->post("/echo", bodyParts);
             handleResponse(response);
