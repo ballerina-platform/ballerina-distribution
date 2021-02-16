@@ -804,7 +804,7 @@ task testExamples() {
 
     doFirst {
         copy {
-            into "$baseBuildPath/lib"
+            into "$distPath/lib"
             from configurations.externalTestJars
         }
 
@@ -849,7 +849,7 @@ task testExamples() {
         if (bbe.startsWith('mysql')) {
             def tomlFile = new File("${distPath}/${bbe}/Ballerina.toml")
             tomlFile.append("\n\n[[platform.java11.dependency]]")
-            tomlFile.append("\npath = \"$baseBuildPath/lib/mysql-connector-java-8.0.21.jar\"\n")
+            tomlFile.append("\npath = \"$distPath/lib/mysql-connector-java-8.0.21.jar\"\n")
         }
     }
 
