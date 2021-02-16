@@ -616,10 +616,8 @@ task packageDistWindows(type: Zip) {
 }
 
 task unzipDistForTests(type: Copy) {
-    def outputDir = file("${project.rootDir}/ballerina/build/target/extracted-distributions/")
-
     from zipTree(ballerinaDistributionZip)
-    into outputDir
+    into file("${project.rootDir}/ballerina/build/target/extracted-distributions/")
 }
 
 artifacts {
