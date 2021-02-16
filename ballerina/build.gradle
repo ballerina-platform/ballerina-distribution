@@ -24,7 +24,6 @@ description = 'Ballerina - Tools'
 ext {
     jreLocation = "downloads/ballerina-jre-artifacts-zip/"
     distributionName = "ballerina"
-    installerVersion = UUID.randomUUID().toString()
 }
 
 configurations {
@@ -688,7 +687,6 @@ task testExamples() {
             'websocket-retry',
             'websocket-failover',
             'http-filters',
-            'http-streaming',
 
             // Disabling temporarily (https://github.com/ballerina-platform/ballerina-distribution/issues/1242)
             "ballerina-to-openapi",
@@ -791,7 +789,9 @@ task testExamples() {
             'secured-service-with-basic-auth-ldap-user-store', // Log output depends on time
             'secured-service-with-jwt-auth', // Log output depends on time
             'secured-service-with-oauth2', // Log output depends on time
-            'send-and-receive-emails',
+            'send-email',
+            'receive-email-using-client',
+            'receive-email-using-listener',
             'task-service-timer',       // Services needs to be stopped during build
             'task-service-appointment',
             'error-handling-in-single-place',
@@ -867,13 +867,13 @@ task testExamples() {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${baseBuildPath}/${bbe}"
-                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'build', '--experimental', " --b7a.home=${distPath} ${additionalBuildParams}"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'build', '--experimental', "${additionalBuildParams}"
             }
         } else {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${baseBuildPath}/${bbe}"
-                commandLine 'sh', '-c', "${distPath}/bin/bal build --experimental --b7a.home=${distPath} ${additionalBuildParams}"
+                commandLine 'sh', '-c', "${distPath}/bin/bal build --experimental ${additionalBuildParams}"
             }
         }
         if (exitVal.getExitValue() == 1) {
@@ -940,13 +940,13 @@ task testExamples() {
                 exitVal = exec {
                     def windowsPath = scriptPath.replace('/', '\\')
                     workingDir "$windowsPath"
-                    commandLine "$windowsPath\\run.bat", "${directoryPath}", "${distPath}/bin/bal.bat", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath} ${additionalBuildParams}"
+                    commandLine "$windowsPath\\run.bat", "${directoryPath}", "${distPath}/bin/bal.bat", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "${additionalBuildParams}"
                     ignoreExitValue true
                 }
             } else {
                 exitVal = exec {
                     workingDir "$scriptPath"
-                    commandLine "bash", "run.sh", "${directoryPath}", "${distPath}/bin/./bal", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "--b7a.home=${distPath} ${additionalBuildParams}"
+                    commandLine "bash", "run.sh", "${directoryPath}", "${distPath}/bin/./bal", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "${additionalBuildParams}"
                     ignoreExitValue true
                 }
             }
@@ -979,7 +979,7 @@ task testExamples() {
                 if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                     exec {
                         workingDir "${directoryPath}"
-                        commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'run', '--experimental', "${balName}.bal", "--b7a.home=${distPath} ${additionalBuildParams}"
+                        commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'run', '--experimental', "${balName}.bal ", ${additionalBuildParams}
                         ignoreExitValue true
                         standardOutput = os
                         errorOutput = errOut
@@ -987,7 +987,7 @@ task testExamples() {
                 } else {
                     exec {
                         workingDir "${directoryPath}"
-                        commandLine 'sh', '-c', "${distPath}/bin/bal run --experimental ${balName}.bal --b7a.home=${distPath} ${additionalBuildParams}"
+                        commandLine 'sh', '-c', "${distPath}/bin/bal run --experimental ${balName}.bal ${additionalBuildParams}"
                         ignoreExitValue true
                         standardOutput = os
                         errorOutput = errOut
@@ -1135,7 +1135,7 @@ task testStdlibs() {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${buildDir}/${stdlibTest}"
-                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat build -c --experimental --b7a.home=${distPath} ${additionalBuildParams}"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat build -c --experimental ${additionalBuildParams}"
             }
         } else {
             exec {
@@ -1145,7 +1145,7 @@ task testStdlibs() {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${baseBuildPath}/${stdlibTest}"
-                commandLine 'sh', '-c', "${distPath}/bin/bal build -c --experimental --b7a.home=${distPath} ${additionalBuildParams}"
+                commandLine 'sh', '-c', "${distPath}/bin/bal build -c --experimental ${additionalBuildParams}"
             }
         }
         if (exitVal.getExitValue() == 1) {
@@ -1240,7 +1240,7 @@ task testDevToolsIntegration() {
                     exec {
                         workingDir "${buildDir}/${devtoolsProject}"
                         commandLine 'cmd', '/c',
-                                "${distPath}/bin/bal.bat test --b7a.home=${distPath} ${additionalBuildParams}"
+                                "${distPath}/bin/bal.bat test ${additionalBuildParams}"
                     }
                 } else {
                     exec {
@@ -1251,7 +1251,7 @@ task testDevToolsIntegration() {
                     exec {
                         workingDir "${baseBuildPath}/${devtoolsProject}"
                         commandLine 'sh', '-c',
-                                "${distPath}/bin/bal test --b7a.home=${distPath} ${additionalBuildParams}"
+                                "${distPath}/bin/bal test ${additionalBuildParams}"
                     }
                 }
             }
