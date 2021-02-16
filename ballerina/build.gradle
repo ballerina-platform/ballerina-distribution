@@ -1331,12 +1331,7 @@ testExamples.dependsOn unzipDistForTests
 testStdlibs.dependsOn startLdapServer
 testStdlibs.dependsOn unzipDistForTests
 testStdlibs.finalizedBy stopLdapServer
-
-
 testDevToolsIntegration.dependsOn unzipDistForTests
-
-
-
 
 /* Delete Temporary Files */
 deleteTemporaryFiles.dependsOn packageDistWindows
