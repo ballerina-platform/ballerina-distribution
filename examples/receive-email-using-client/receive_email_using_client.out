@@ -1,0 +1,5 @@
+# To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `bal run` command below.
+bal run email.bal
+
+# Subject and the content body of the received emails would be printed.
