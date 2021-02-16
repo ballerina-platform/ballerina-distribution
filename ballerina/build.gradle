@@ -856,9 +856,6 @@ task testExamples() {
     ext.buildBBE = { bbe ->
         def exitVal
         def additionalBuildParams = ""
-//        if (bbe == "secured-service-with-basic-auth" || bbe == "secured-client-with-basic-auth") {
-//            additionalBuildParams = "--b7a.config.file=${distPath}/${bbe}/sample-users.toml"
-//        }
         println "Building example ${bbe}"
         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
             //TODO: Need to verify with windows
@@ -892,9 +889,6 @@ task testExamples() {
         def portFilePath = "${directoryPath}/ports.txt"
         def outputFilePath = "${directoryPath}/output.txt"
         def additionalBuildParams = ""
-        if (bbe == "secured-service-with-basic-auth" || bbe == "secured-client-with-basic-auth") {
-            additionalBuildParams = "--b7a.config.file=${distPath}/${bbe}/sample-users.toml"
-        }
         tree.each { content ->
             if (content.name.contains("client.out")) {
                 fileReference = file(content)
@@ -1104,16 +1098,13 @@ task testStdlibs() {
     ext.buildStandardLibs = { stdlibTest ->
         def exitVal
         def additionalBuildParams = ""
-        if (stdlibTest == "auth" || stdlibTest == "jwt") {
-            additionalBuildParams = "--b7a.config.file=${distPath}/${stdlibTest}/tests/resources/datafiles/users.toml"
-        }
 
         if (stdlibTest == "config") {
             additionalBuildParams = "--user.name=ballerina-user"
         }
 
         if (stdlibTest == "websub-generic" || stdlibTest == "websub-advance") {
-            additionalBuildParams = "--b7a.config.file=tests/advanced_services/sample-users.toml --test.hub.url=https://localhost:23191/websub/hub"
+            additionalBuildParams = "--test.hub.url=https://localhost:23191/websub/hub"
         }
 
         println "Testing standard library ${stdlibTest}"
