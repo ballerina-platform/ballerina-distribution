@@ -629,8 +629,7 @@ artifacts {
 }
 
 task testExamples() {
-    def jBallerinaPack = "${project.rootDir}/ballerina/build/target/extracted-distributions/ballerina-${version}.zip"
-    def baseBuildPath = "${project.rootDir}/ballerina/build/bbe-pack"
+    def baseBuildPath = "${project.rootDir}/ballerina/build/target/extracted-distributions/ballerina-${version}.zip"
     def distPath = "${baseBuildPath}/jballerina-tools-${ballerinaVersion}"
     def bbeList = []
 
@@ -805,11 +804,6 @@ task testExamples() {
     ]
 
     doFirst {
-        copy {
-            from jBallerinaPack
-            into baseBuildPath
-        }
-
         copy {
             into "$baseBuildPath/lib"
             from configurations.externalTestJars
@@ -1080,8 +1074,7 @@ task testExamples() {
 }
 
 task testStdlibs() {
-    def jBallerinaPack = "${project.rootDir}/ballerina/build/target/extracted-distributions/ballerina-${version}.zip"
-    def baseBuildPath = "${project.rootDir}/ballerina/build/bbe-pack"
+    def baseBuildPath = "${project.rootDir}/ballerina/build/target/extracted-distributions/ballerina-${version}"
     def distPath = "${baseBuildPath}/jballerina-tools-${ballerinaVersion}"
     def stdlibTestsList = []
 
@@ -1094,11 +1087,6 @@ task testStdlibs() {
     def ignoreList = ["websub", "websub-advance", "websub-generic"]
 
     doFirst {
-        copy {
-            from jBallerinaPack
-            into baseBuildPath
-        }
-
         def src = "${project.rootDir}/stdlib-integration-tests/"
         def dis = "${baseBuildPath}"
         copy {
@@ -1185,8 +1173,7 @@ task testStdlibs() {
 }
 
 task testDevToolsIntegration() {
-    def jBallerinaPack = "${project.rootDir}/ballerina/build/target/extracted-distributions/ballerina-${version}.zip"
-    def baseBuildPath = "${project.rootDir}/ballerina/build/bbe-pack"
+    def baseBuildPath = "${project.rootDir}/ballerina/build/target/extracted-distributions/ballerina-${version}"
     def distPath = "${baseBuildPath}/jballerina-tools-${ballerinaVersion}"
     def devtoolsProjectList = []
 
@@ -1199,12 +1186,6 @@ task testDevToolsIntegration() {
     inputs.files(files("${distPath}/devtools-integration-tests").asFileTree.matching(patternSet))
 
     doFirst {
-        // Copy compiled pack to baseBuild temp directory
-        copy {
-            from jBallerinaPack
-            into baseBuildPath
-        }
-
         // Copy projects to baseBuildPath
         def devToolsProjectSrc = "${project.rootDir}/devtools-integration-tests/"
         copy {
