@@ -68,7 +68,6 @@ public class BallerinaCommandTest {
     @Test(description = "Execute smoke testing to verify dist commands.", dependsOnMethods = {"testVersionCommand"})
     public void testDistCommands() throws IOException {
         Path ballerinaHome = Paths.get(TestUtils.getUserHome()).resolve(".ballerina").resolve("ballerina-version");
-
         // test bal dist list
         String actualOutput = TestUtils.executeCommand(path + " dist list");
         Assert.assertTrue(actualOutput.contains("Distributions available locally:"));
