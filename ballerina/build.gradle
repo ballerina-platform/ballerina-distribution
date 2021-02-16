@@ -1322,21 +1322,21 @@ packageDistZip.dependsOn packageDist
 packageDistLinux.dependsOn packageDistZip
 packageDistMac.dependsOn packageDistLinux
 packageDistWindows.dependsOn packageDistMac
-
+unzipDistForTests.dependsOn packageDistZip
 unpackStdLibs.dependsOn unpackBallerinaJre
 unpackStdLibs.dependsOn unpackJballerinaTools
 
-testExamples.dependsOn packageDist
+testExamples.dependsOn unzipDistForTests
 
 testStdlibs.dependsOn startLdapServer
-testStdlibs.dependsOn packageDist
+testStdlibs.dependsOn unzipDistForTests
 testStdlibs.finalizedBy stopLdapServer
 
-testDevToolsIntegration.dependsOn packageDist
 
-testExamples.dependsOn unzipDistForTests
-testStdlibs.dependsOn unzipDistForTests
 testDevToolsIntegration.dependsOn unzipDistForTests
+
+
+
 
 /* Delete Temporary Files */
 deleteTemporaryFiles.dependsOn packageDistWindows
