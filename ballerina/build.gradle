@@ -1073,7 +1073,7 @@ task testExamples() {
 }
 
 task testStdlibs() {
-    def distPath = "${project.rootDir}/ballerina/build/target/extracted-distributions/"
+    def distPath = "${project.rootDir}/ballerina/build/target/extracted-distributions/ballerina-${version}"
     def stdlibTestsList = []
 
     PatternSet patternSet = new PatternSet()
