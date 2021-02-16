@@ -57,7 +57,6 @@ public class BallerinaCommandTest {
         // test bal dist list
         String actualOutput = TestUtils.executeCommand(path + " dist list");
         Assert.assertTrue(actualOutput.contains("Distributions available locally:"));
-        Assert.assertTrue(actualOutput.contains(VERSION_DISPLAY_TEXT));
         Assert.assertTrue(actualOutput.contains("Distributions available remotely:"));
         Assert.assertTrue(actualOutput.contains("1.* channel"));
         Assert.assertTrue(actualOutput.contains("1.0.0"));

@@ -47,23 +47,37 @@ service /actionService on new http:Listener(9090) {
         response = clientEP->post("/echo", binaryValue);
         handleResponse(response);
 
-         //[Create a JSON body part](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#setJson).
-        mime:Entity part1 = new;
-        part1.setJson({"name": "Jane"});
+        //Get a byte stream to a given file.
+        var bStream = io:fileReadBlocksAsStream("./files/logo.png");
 
-        //[Create a text body part](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#setText).
-        mime:Entity part2 = new;
-        part2.setText("Hello");
+        if (bStream is stream<byte[], io:Error>) {
+            //Make a POST request with a byte stream as the payload. Since the file path is static `<@untainted>` is used to denote that the byte stream is trusted.
+            response = clientEP->post("/image", <@untainted>bStream);
+            handleResponse(response);
 
-        //[POST](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function
-        //with a body parts as the payload.
-        mime:Entity[] bodyParts = [part1, part2];
-        response = clientEP->post("/echo", bodyParts);
-        handleResponse(response);
+            //[Create a JSON body part](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#setJson).
+            mime:Entity part1 = new;
+            part1.setJson({"name": "Jane"});
 
-        var result = caller->respond(
-                                "Client actions successfully executed!");
-        handleError(result);
+            //[Create a text body part](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#setText).
+            mime:Entity part2 = new;
+            part2.setText("Hello");
+
+            //Make a POST request with body parts as the payload.
+            mime:Entity[] bodyParts = [part1, part2];
+            response = clientEP->post("/echo", bodyParts);
+            handleResponse(response);
+
+            var result =
+                    caller->respond("Client actions successfully executed!");
+            handleError(result);
+        } else {
+            http:Response res = new;
+            res.statusCode = 500;
+            res.setPayload(<@untainted>bStream.message());
+            var result = caller->respond(res);
+            handleError(result);
+        }
     }
 }
 
