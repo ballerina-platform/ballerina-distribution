@@ -615,6 +615,13 @@ task packageDistWindows(type: Zip) {
     outputs.file ballerinaWindowsDistributionZip
 }
 
+task unzipDistForTests(type: Copy) {
+    def outputDir = file("${project.rootDir}/ballerina/build/target/extracted-distributions/")
+
+    from zipTree(ballerinaDistributionZip)
+    into outputDir
+}
+
 artifacts {
     jBallerinaDistribution file: jBallerinaDistributionZip, builtBy: packageDist
     ballerinaDistribution file: ballerinaDistributionZip, builtBy: packageDistZip
@@ -624,7 +631,7 @@ artifacts {
 }
 
 task testExamples() {
-    def jBallerinaPack = "${project.rootDir}/ballerina/build/target/extracted-distributions/jballerina-tools-zip"
+    def jBallerinaPack = "${project.rootDir}/ballerina/build/target/extracted-distributions/ballerina-${ballerinaVersion}.zip"
     def baseBuildPath = "${project.rootDir}/ballerina/build/bbe-pack"
     def distPath = "${baseBuildPath}/jballerina-tools-${ballerinaVersion}"
     def bbeList = []
@@ -1075,7 +1082,7 @@ task testExamples() {
 }
 
 task testStdlibs() {
-    def jBallerinaPack = "${project.rootDir}/ballerina/build/target/extracted-distributions/jballerina-tools-zip"
+    def jBallerinaPack = "${project.rootDir}/ballerina/build/target/extracted-distributions/ballerina-${ballerinaVersion}.zip"
     def baseBuildPath = "${project.rootDir}/ballerina/build/bbe-pack"
     def distPath = "${baseBuildPath}/jballerina-tools-${ballerinaVersion}"
     def stdlibTestsList = []
@@ -1180,7 +1187,7 @@ task testStdlibs() {
 }
 
 task testDevToolsIntegration() {
-    def jBallerinaPack = "${project.rootDir}/ballerina/build/target/extracted-distributions/jballerina-tools-zip"
+    def jBallerinaPack = "${project.rootDir}/ballerina/build/target/extracted-distributions/ballerina-${ballerinaVersion}.zip"
     def baseBuildPath = "${project.rootDir}/ballerina/build/bbe-pack"
     def distPath = "${baseBuildPath}/jballerina-tools-${ballerinaVersion}"
     def devtoolsProjectList = []
@@ -1350,6 +1357,10 @@ testStdlibs.dependsOn packageDist
 testStdlibs.finalizedBy stopLdapServer
 
 testDevToolsIntegration.dependsOn packageDist
+
+testExamples.dependsOn unzipDistForTests
+testStdlibs.dependsOn unzipDistForTests
+testDevToolsIntegration.dependsOn unzipDistForTests
 
 /* Delete Temporary Files */
 deleteTemporaryFiles.dependsOn packageDistWindows
