@@ -616,7 +616,7 @@ task packageDistWindows(type: Zip) {
 }
 
 task unzipDistForTests(type: Copy) {
-    from zipTree(ballerinaDistributionZip)
+    from zipTree("${project.rootDir}/ballerina/build/distributions/ballerina-${version}.zip")
     into file("${project.rootDir}/ballerina/build/target/extracted-distributions/")
 }
 
@@ -629,8 +629,7 @@ artifacts {
 }
 
 task testExamples() {
-    def baseBuildPath = "${project.rootDir}/ballerina/build/target/extracted-distributions/ballerina-${version}.zip"
-    def distPath = "${baseBuildPath}/jballerina-tools-${ballerinaVersion}"
+    def distPath = "${project.rootDir}/ballerina/build/target/extracted-distributions/ballerina-${version}"
     def bbeList = []
 
     PatternSet patternSet = new PatternSet()
@@ -810,17 +809,17 @@ task testExamples() {
         }
 
         def src = "${project.rootDir}/examples/"
-        def dis = "${baseBuildPath}"
+        def dis = "${distPath}"
         copy {
             from(src)
             into dis
         }
-        def inputFile = new File("${baseBuildPath}/index.json")
+        def inputFile = new File("${distPath}/index.json")
         def categories = new JsonSlurper().parseText(inputFile.text)
         categories.each { category ->
             def examples = category.samples
             examples.each { example ->
-                def folder = new File("${baseBuildPath}/${example.url}")
+                def folder = new File("${distPath}/${example.url}")
                 if (folder.exists()) {
                     bbeList.push("$example.url")
                 }
@@ -836,19 +835,19 @@ task testExamples() {
         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
             //TODO: Need to verify with windows
             exec {
-                workingDir "${baseBuildPath}/${bbe}"
+                workingDir "${distPath}/${bbe}"
                 commandLine 'cmd', '/c', "${distPath}/bin/bal.bat init test"
             }
 
         } else {
             exec {
-                workingDir "${baseBuildPath}/${bbe}"
+                workingDir "${distPath}/${bbe}"
                 commandLine 'sh', '-c', "${distPath}/bin/bal init test"
             }
         }
 
         if (bbe.startsWith('mysql')) {
-            def tomlFile = new File("${baseBuildPath}/${bbe}/Ballerina.toml")
+            def tomlFile = new File("${distPath}/${bbe}/Ballerina.toml")
             tomlFile.append("\n\n[[platform.java11.dependency]]")
             tomlFile.append("\npath = \"$baseBuildPath/lib/mysql-connector-java-8.0.21.jar\"\n")
         }
@@ -858,20 +857,20 @@ task testExamples() {
         def exitVal
         def additionalBuildParams = ""
 //        if (bbe == "secured-service-with-basic-auth" || bbe == "secured-client-with-basic-auth") {
-//            additionalBuildParams = "--b7a.config.file=${baseBuildPath}/${bbe}/sample-users.toml"
+//            additionalBuildParams = "--b7a.config.file=${distPath}/${bbe}/sample-users.toml"
 //        }
         println "Building example ${bbe}"
         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
             //TODO: Need to verify with windows
             exitVal = exec {
                 ignoreExitValue true
-                workingDir "${baseBuildPath}/${bbe}"
+                workingDir "${distPath}/${bbe}"
                 commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'build', '--experimental', "${additionalBuildParams}"
             }
         } else {
             exitVal = exec {
                 ignoreExitValue true
-                workingDir "${baseBuildPath}/${bbe}"
+                workingDir "${distPath}/${bbe}"
                 commandLine 'sh', '-c', "${distPath}/bin/bal build --experimental ${additionalBuildParams}"
             }
         }
@@ -882,7 +881,7 @@ task testExamples() {
     }
 
     ext.outputVerification = { bbe ->
-        def directoryPath = "${baseBuildPath}/${bbe}"
+        def directoryPath = "${distPath}/${bbe}"
         File fileReference
         def curlCommands = []
         def ports = []
@@ -894,7 +893,7 @@ task testExamples() {
         def outputFilePath = "${directoryPath}/output.txt"
         def additionalBuildParams = ""
         if (bbe == "secured-service-with-basic-auth" || bbe == "secured-client-with-basic-auth") {
-            additionalBuildParams = "--b7a.config.file=${baseBuildPath}/${bbe}/sample-users.toml"
+            additionalBuildParams = "--b7a.config.file=${distPath}/${bbe}/sample-users.toml"
         }
         tree.each { content ->
             if (content.name.contains("client.out")) {
@@ -1037,7 +1036,7 @@ task testExamples() {
                     failOutputVerificationExamples.add(bbe)
                 }
             }
-            File tomlFile = new File("${baseBuildPath}/${bbe}/Ballerina.toml")
+            File tomlFile = new File("${distPath}/${bbe}/Ballerina.toml")
             if (!tomlFile.exists()) {
                 prepareProject(bbe)
             }
@@ -1074,8 +1073,7 @@ task testExamples() {
 }
 
 task testStdlibs() {
-    def baseBuildPath = "${project.rootDir}/ballerina/build/target/extracted-distributions/ballerina-${version}"
-    def distPath = "${baseBuildPath}/jballerina-tools-${ballerinaVersion}"
+    def distPath = "${project.rootDir}/ballerina/build/target/extracted-distributions/"
     def stdlibTestsList = []
 
     PatternSet patternSet = new PatternSet()
@@ -1088,15 +1086,15 @@ task testStdlibs() {
 
     doFirst {
         def src = "${project.rootDir}/stdlib-integration-tests/"
-        def dis = "${baseBuildPath}"
+        def dis = "${distPath}"
         copy {
             from(src)
             into dis
         }
-        def inputFile = new File("${baseBuildPath}/index.json")
+        def inputFile = new File("${distPath}/index.json")
         def stdlibTests = new JsonSlurper().parseText(inputFile.text)
         stdlibTests.each { stdlibTest ->
-            def folder = new File("${baseBuildPath}/${stdlibTest.path}")
+            def folder = new File("${distPath}/${stdlibTest.path}")
             if (folder.exists()) {
                 stdlibTestsList.push("$stdlibTest.path")
             }
@@ -1107,7 +1105,7 @@ task testStdlibs() {
         def exitVal
         def additionalBuildParams = ""
         if (stdlibTest == "auth" || stdlibTest == "jwt") {
-            additionalBuildParams = "--b7a.config.file=${baseBuildPath}/${stdlibTest}/tests/resources/datafiles/users.toml"
+            additionalBuildParams = "--b7a.config.file=${distPath}/${stdlibTest}/tests/resources/datafiles/users.toml"
         }
 
         if (stdlibTest == "config") {
@@ -1122,22 +1120,22 @@ task testStdlibs() {
         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
             //TODO: Need to verify with windows
             exec {
-                workingDir "${baseBuildPath}/${stdlibTest}"
+                workingDir "${distPath}/${stdlibTest}"
                 commandLine 'cmd', '/c', "${distPath}/bin/bal/ballerina.bat init test"
             }
             exitVal = exec {
                 ignoreExitValue true
-                workingDir "${buildDir}/${stdlibTest}"
+                workingDir "${distPath}/${stdlibTest}"
                 commandLine 'cmd', '/c', "${distPath}/bin/bal.bat build -c --experimental ${additionalBuildParams}"
             }
         } else {
             exec {
-                workingDir "${baseBuildPath}/${stdlibTest}"
+                workingDir "${distPath}/${stdlibTest}"
                 commandLine 'sh', '-c', "${distPath}/bin/bal init test"
             }
             exitVal = exec {
                 ignoreExitValue true
-                workingDir "${baseBuildPath}/${stdlibTest}"
+                workingDir "${distPath}/${stdlibTest}"
                 commandLine 'sh', '-c', "${distPath}/bin/bal build -c --experimental ${additionalBuildParams}"
             }
         }
@@ -1173,8 +1171,7 @@ task testStdlibs() {
 }
 
 task testDevToolsIntegration() {
-    def baseBuildPath = "${project.rootDir}/ballerina/build/target/extracted-distributions/ballerina-${version}"
-    def distPath = "${baseBuildPath}/jballerina-tools-${ballerinaVersion}"
+    def distPath = "${project.rootDir}/ballerina/build/target/extracted-distributions/ballerina-${version}"
     def devtoolsProjectList = []
 
     PatternSet patternSet = new PatternSet()
@@ -1186,20 +1183,20 @@ task testDevToolsIntegration() {
     inputs.files(files("${distPath}/devtools-integration-tests").asFileTree.matching(patternSet))
 
     doFirst {
-        // Copy projects to baseBuildPath
+        // Copy projects to distPath
         def devToolsProjectSrc = "${project.rootDir}/devtools-integration-tests/"
         copy {
             from(devToolsProjectSrc)
-            into baseBuildPath
+            into distPath
         }
 
         // Read the projects from the index.json
-        def inputFile = new File("${baseBuildPath}/index.json")
+        def inputFile = new File("${distPath}/index.json")
         def devtoolsProjects = new JsonSlurper().parseText(inputFile.text)
 
         // For each project in the devtools integration tests folder, we add it to the project list
         devtoolsProjects.each { devtoolsProject ->
-            def folder = new File("${baseBuildPath}/${devtoolsProject.path}")
+            def folder = new File("${distPath}/${devtoolsProject.path}")
             if (folder.exists()) {
                 devtoolsProjectList.push("$devtoolsProject.path")
             }
@@ -1210,7 +1207,7 @@ task testDevToolsIntegration() {
         // For each devtools project in the list
         devtoolsProjectList.each { String devtoolsProject ->
             // Read the modules from the index.json
-            def inputFile = new File("${baseBuildPath}/index.json")
+            def inputFile = new File("${distPath}/index.json")
             def projectModules = new JsonSlurper().parseText(inputFile.text)
 
             // For each module we execute the `test -c ${projectModule} command
@@ -1230,12 +1227,12 @@ task testDevToolsIntegration() {
                     }
                 } else {
                     exec {
-                        workingDir "${baseBuildPath}/${devtoolsProject}"
+                        workingDir "${distPath}/${devtoolsProject}"
                         commandLine 'sh', '-c',
                                 "${distPath}/bin/bal init test"
                     }
                     exec {
-                        workingDir "${baseBuildPath}/${devtoolsProject}"
+                        workingDir "${distPath}/${devtoolsProject}"
                         commandLine 'sh', '-c',
                                 "${distPath}/bin/bal test ${additionalBuildParams}"
                     }
