@@ -51,15 +51,17 @@ public class BallerinaCommandTest {
         TestUtils.testInstallation(path, VERSION, SPEC_VERSION, TOOL_VERSION, VERSION_DISPLAY_TEXT);
     }
 
-    @Test(description = "Execute smoke testing to verify build command output.", dependsOnMethods = {"testVersionCommand"})
+    @Test(description = "Execute smoke testing to verify build command.", dependsOnMethods = {"testVersionCommand"})
     public void testBuildCommand() throws IOException {
         String projectName = "project1";
-        String actualOutput = TestUtils.executeCommand(path + " new " + projectName);
-        actualOutput = TestUtils.executeCommand("cd " + projectName + " && " + path + " add module1");
-        actualOutput = TestUtils.executeCommand("cd " + projectName + " && " + path + " build");
+        String moduleName = "module1";
+
+        TestUtils.executeCommand(path + " new " + projectName);
+        TestUtils.executeCommand("cd " + projectName + " && " + path + " add " + moduleName);
+        String actualOutput = TestUtils.executeCommand("cd " + projectName + " && " + path + " build");
+
         Assert.assertTrue(actualOutput.contains("Compiling source"));
         Assert.assertTrue(actualOutput.contains("Running Tests"));
-        Assert.assertTrue(actualOutput.contains("Creating balo"));
         Assert.assertTrue(actualOutput.contains("Generating executable"));
     }
 
