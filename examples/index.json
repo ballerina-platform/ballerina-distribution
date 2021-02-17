@@ -1002,22 +1002,23 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "Handle Text Message with Client",
+                "name": "Handle Text Messages with Client",
                 "url": "websocket-text-client",
                 "disablePlayground": true
             },
             {
-                "name": "Handle Binary Message with Client",
-                "url": "websocket-binary-client",
-                "disablePlayground": true
-            },
-            {
-                "name": "Handle Text Message with Async Client",
+                "name": "Handle Text Messages with Async Client",
                 "url": "websocket-async-text-client",
                 "disablePlayground": true
             },
             {
-                "name": "Handle Binary Message with Async Client",
+                "name": "Handle Binary Messages with Client",
+                "url": "websocket-binary-client",
+                "disablePlayground": true
+            },
+
+            {
+                "name": "Handle Binary Messages with Async Client",
                 "url": "websocket-async-binary-client",
                 "disablePlayground": true
             },
