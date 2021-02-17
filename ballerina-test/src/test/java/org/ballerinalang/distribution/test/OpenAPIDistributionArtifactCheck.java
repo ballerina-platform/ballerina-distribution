@@ -45,7 +45,7 @@ public class OpenAPIDistributionArtifactCheck {
     }
 
     @Test
-    public void openapiAnnotationExistsTest() throws IOException {
+    public void openapiAnnotationExistsTest() {
         Path birPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
                 .resolve("repo")
