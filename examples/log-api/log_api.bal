@@ -24,6 +24,6 @@ public function main() {
     //
     // ```
     // [log]
-    // output_format = "json"
+    // format = "json"
     // ```
 }
