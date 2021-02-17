@@ -35,13 +35,15 @@ public class MacOS implements Executor {
 
     @Override
     public String install() {
-        return Utils.executeCommand("sudo installer -pkg " + installerName + " -target /");
+        return Utils.executeCommand("sudo installer -pkg ~/" + installerName + " -target /");
     }
 
     @Override
     public String executeCommand(String command, boolean isAdminMode, String toolVersion) {
         String sudoCommand = isAdminMode ? "sudo " : "";
-        return Utils.executeCommand(sudoCommand + Utils.getCommandName(toolVersion) + command);
+        Utils.executeCommand("sudo chmod 755 /Library/Ballerina/bin/bal");
+        String exportCmd = "export BAL_HOME=/Library/Ballerina && export PATH=$PATH:$BAL_HOME/bin && ";
+        return Utils.executeCommand(exportCmd + sudoCommand + Utils.getCommandName(toolVersion) + command);
     }
 
     @Override
