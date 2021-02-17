@@ -1387,7 +1387,7 @@
                 "disablePlayground": true
             },
             {
-                "name": "UDP Connection oriented Client",
+                "name": "UDP Connection Oriented Client",
                 "url": "udp-connect-client",
                 "disablePlayground": true
             },
