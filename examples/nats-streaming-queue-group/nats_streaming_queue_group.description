@@ -5,4 +5,4 @@
 // to receive the message. Although queue groups have multiple subscribers,
 // each message is consumed by only one.<br/><br/>
 // For more information on the underlying module, 
-// see the [NATS module](https://ballerina.io/learn/api-docs/ballerina/#/ballerinax/nats/latest/nats/).
+// see the [NATS module](https://docs.central.ballerina.io/ballerinax/nats/*).

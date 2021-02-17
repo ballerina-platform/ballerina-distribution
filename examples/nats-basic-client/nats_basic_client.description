@@ -3,4 +3,4 @@
 // For instructions on installing the NATS server,
 // go to [NATS Server Installation](https://docs.nats.io/nats-server/installation).<br/><br/>
 // For more information on the underlying module, 
-// see the [NATS module](https://ballerina.io/learn/api-docs/ballerina/#/ballerinax/nats/latest/nats/).
+// see the [NATS module](https://docs.central.ballerina.io/ballerinax/nats/*).
