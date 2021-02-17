@@ -24,9 +24,14 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Properties;
 
 import static org.ballerinalang.distribution.utils.TestUtils.DISTRIBUTIONS_DIR;
 import static org.ballerinalang.distribution.utils.TestUtils.SHORT_VERSION;
@@ -45,14 +50,23 @@ public class OpenAPIDistributionArtifactCheck {
     }
 
     @Test
-    public void openapiAnnotationExistsTest() {
+    public void openapiAnnotationExistsTest() throws IOException {
+        File gradleFile = Paths.get(System.getProperty("user.dir")).getParent().resolve("gradle.properties").toFile();
+        String openApiVersion = "";
+
+        try (InputStream input = new FileInputStream(gradleFile)) {
+            Properties prop = new Properties();
+            prop.load(input);
+            openApiVersion = (String) prop.get("openapiVersion");
+        }
+
         Path birPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
                 .resolve("repo")
                 .resolve("cache")
                 .resolve("ballerina")
                 .resolve("openapi")
-                .resolve("2.0.6")
+                .resolve(openApiVersion)
                 .resolve("bir");
 
         Path jarPath = TEST_DISTRIBUTION_PATH
@@ -61,7 +75,7 @@ public class OpenAPIDistributionArtifactCheck {
                 .resolve("cache")
                 .resolve("ballerina")
                 .resolve("openapi")
-                .resolve("2.0.6")
+                .resolve(openApiVersion)
                 .resolve("java11");
 
         Path balaPath = TEST_DISTRIBUTION_PATH
@@ -70,7 +84,7 @@ public class OpenAPIDistributionArtifactCheck {
                 .resolve("bala")
                 .resolve("ballerina")
                 .resolve("openapi")
-                .resolve("2.0.6")
+                .resolve(openApiVersion)
                 .resolve("platform")
                 .resolve("any");
 
