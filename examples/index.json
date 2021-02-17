@@ -954,23 +954,23 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "Text Message Client",
+                "name": "Handle Text Message with Client",
                 "url": "websocket-text-client"
             },
             {
-                "name": "Binary Message Client",
+                "name": "Handle Binary Message with Client",
                 "url": "websocket-binary-client"
             },
             {
-                "name": "Async Text Message Client",
+                "name": "Handle Text Message with Async Client",
                 "url": "websocket-async-text-client"
             },
             {
-                "name": "Async Binary Message Client",
+                "name": "Handle Binary Message with Async Client",
                 "url": "websocket-async-binary-client"
             },
             {
-                "name": "Basic Server Functionalities",
+                "name": "Listener Functionalities",
                 "url": "websocket-basic-sample"
             }
         ]
