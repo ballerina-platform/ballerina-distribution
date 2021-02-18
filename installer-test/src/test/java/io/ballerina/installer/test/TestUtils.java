@@ -227,7 +227,7 @@ public class TestUtils {
         Path projectPath = userDir.resolve("sampleProject1");
         Assert.assertTrue(Files.exists(projectPath));
         Assert.assertTrue(Files.isDirectory(projectPath.resolve("modules").resolve("module1")));
-        Assert.assertTrue(Files.exists(projectPath.resolve("target/bin/sampleProject1.jar")));
+        Assert.assertTrue(Files.exists(projectPath.resolve("target/bin/sampleProject1-0.1.0.jar")));
 
         executor.executeCommand("dist pull " + previousVersion, true, toolVersion);
         testInstallation(executor, previousVersion, previousSpecVersion, toolVersion, previousVersion);
