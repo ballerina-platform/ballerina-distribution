@@ -25,9 +25,9 @@ configurable float maxPayload = 1.0;
 // provided for it in the `Config.toml` file.
 configurable string protocol = "http";
 
-// A `configurable` variable `admin` with record type `UserInfo & readonly` is initialized
+// A `configurable` variable named `admin` of the `UserInfo & readonly` record type is initialized.
 configurable UserInfo & readonly admin = ?;
-// A `configurable` variable `users` with table type `table<(UserInfo & readonly)> key(username)` is initialized
+// A `configurable` variable named `users` of the `table<(UserInfo & readonly)> key(username)` table type is initialized.
 configurable UserTable & readonly users = ?;
 
 public function main() {
