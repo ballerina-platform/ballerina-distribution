@@ -46,7 +46,7 @@ public class TestUtils {
         }
 
         String ballerinaReference = isSupportedRelease(jBallerinaVersion) ? "jBallerina" : "Ballerina";
-        return ballerinaReference + " " + jBallerinaVersion + "\n" + "Language specification " + specVersion + "\n" +
+        return ballerinaReference + " " + versionDisplayText + "\n" + "Language specification " + specVersion + "\n" +
                 toolText + " " + toolVersion + "\n";
     }
 
