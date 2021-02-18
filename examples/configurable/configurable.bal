@@ -1,5 +1,12 @@
 import ballerina/io;
 
+type UserInfo record {|
+    readonly string username;
+    string password;
+|};
+
+type UserTable table<UserInfo> key(username);
+
 // `configurable` variables can be initialized with the `?` expression.
 // A value must be supplied for such variables in a `Config.toml` file.
 configurable string hostName = ?;
@@ -18,10 +25,17 @@ configurable float maxPayload = 1.0;
 // provided for it in the `Config.toml` file.
 configurable string protocol = "http";
 
+// A `configurable` variable named `admin` of the `UserInfo & readonly` record type is initialized.
+configurable UserInfo & readonly admin = ?;
+// A `configurable` variable named `users` of the `table<(UserInfo & readonly)> key(username)` table type is initialized.
+configurable UserTable & readonly users = ?;
+
 public function main() {
     io:println("host: ", hostName);
     io:println("port: ", port);
     io:println("protocol: ", protocol);
     io:println("maximum payload (in MB): ", maxPayload);
     io:println("remote enabled: ", enableRemote);
+    io:println("admin details: ", admin);
+    io:println("users: ", users);
 }
