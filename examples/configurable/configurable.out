@@ -7,6 +7,19 @@
 # port = 9090
 # enableRemote = false
 # maxPayload = 0.321
+# 
+# [admin]
+# username = "admin"
+# password = "password"
+# 
+# [[users]]
+# username = "John"
+# password="abc123"
+# 
+# [[users]]
+# username = "Bob"
+# password="cde456"
+
 
 # Then, navigate to the directory that contains the `.bal` and
 # `Config.toml` files, and execute the `bal run` command below.
@@ -17,3 +30,5 @@ port: 9090
 protocol: http
 maximum payload (in MB): 0.321
 remote enabled: false
+admin details: {"username":"admin","password":"password"}
+users: [{"username":"John","password":"abc123"},{"username":"Bob","password":"cde456"}]
