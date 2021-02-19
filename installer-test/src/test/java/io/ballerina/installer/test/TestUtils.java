@@ -142,7 +142,15 @@ public class TestUtils {
      * @param toolVersion Installed tool version
      */
     public static void testDependencyFetch(Executor executor, String toolVersion) {
+        String cmdName = Utils.getCommandName(toolVersion);
+        Path userDir = Paths.get(System.getProperty("user.dir"));
         executor.executeCommand("dist list", false, toolVersion);
+        executor.executeCommand("new project1 && cd project1 &&" + cmdName +  "add module1 && " +
+                cmdName + "build", false, toolVersion);
+        Path projectPath = userDir.resolve("project1");
+        Assert.assertTrue(Files.isDirectory(projectPath));
+        Assert.assertTrue(Files.isDirectory(projectPath.resolve("modules").resolve("module1")));
+        Assert.assertTrue(Files.exists(projectPath.resolve("target/bin/project1-0.1.0.jar")));
         //Test `Fetching compatible JRE dependency`
         String output = executor.executeCommand("dist pull slp1", true, toolVersion);
         Assert.assertTrue(output.contains("Downloading slp1"));
@@ -150,28 +158,26 @@ public class TestUtils {
         Assert.assertTrue(output.contains("jdk8u202-b08-jre"));
         Assert.assertTrue(output.contains("'slp1' successfully set as the active distribution"));
         TestUtils.testInstallation(executor, "swan-lake-preview1", "v2020-06-18", toolVersion, "Preview 1");
-        String cmdName = Utils.getCommandName(toolVersion);
-        Path userDir = Paths.get(System.getProperty("user.dir"));
-        executor.executeCommand("new project1 && cd project1 && " + cmdName + "add module1 && " +
+        executor.executeCommand("new project2 && cd project2 && " + cmdName + "add module1 && " +
                 cmdName + "build module1", false, toolVersion);
-        Path projectPath = userDir.resolve("project1");
+        projectPath = userDir.resolve("project2");
         Assert.assertTrue(Files.isDirectory(projectPath));
         Assert.assertTrue(Files.isDirectory(projectPath.resolve("src").resolve("module1")));
         Assert.assertTrue(Files.exists(projectPath.resolve("target/bin/module1.jar")));
 
-        output = executor.executeCommand("dist pull slp7", true, toolVersion);
-        Assert.assertTrue(output.contains("Downloading slp7"));
-        Assert.assertTrue(output.contains("Fetching the dependencies for 'slp7' from the remote server..."));
-        Assert.assertTrue(output.contains("Downloading jdk-11.0.8+10-jre"));
-        Assert.assertTrue(output.contains("'slp7' successfully set as the active distribution"));
-        TestUtils.testInstallation(executor, "swan-lake-preview7", "v2020-09-22", toolVersion, "Preview 7");
+        output = executor.executeCommand("dist pull 1.2.10", true, toolVersion);
+        Assert.assertTrue(output.contains("Downloading 1.2.10"));
+        Assert.assertTrue(output.contains("Fetching the dependencies for '1.2.10' from the remote server..."));
+        Assert.assertTrue(output.contains("jdk8u265-b01-jre"));
+        Assert.assertTrue(output.contains("'1.2.10' successfully set as the active distribution"));
+        TestUtils.testInstallation(executor, "1.2.10", "2020R1", toolVersion, "1.2.10");
 
-        executor.executeCommand("new project2 && cd project2 &&" + cmdName +  "add module1 && " +
-                cmdName + "build", false, toolVersion);
-        projectPath = userDir.resolve("project2");
+        executor.executeCommand("new project3 && cd project3 &&" + cmdName +  "add module1 && " +
+                cmdName + "build module1", false, toolVersion);
+        projectPath = userDir.resolve("project3");
         Assert.assertTrue(Files.isDirectory(projectPath));
-        Assert.assertTrue(Files.isDirectory(projectPath.resolve("modules").resolve("module1")));
-        Assert.assertTrue(Files.exists(projectPath.resolve("target/bin/project2.jar")));
+        Assert.assertTrue(Files.isDirectory(projectPath.resolve("src").resolve("module1")));
+        Assert.assertTrue(Files.exists(projectPath.resolve("target/bin/module1.jar")));
     }
 
     /**

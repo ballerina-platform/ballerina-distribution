@@ -32,7 +32,6 @@ public class Ubuntu implements Executor {
     @Override
     public String transferArtifacts() {
         Utils.downloadFile(version, installerName);
-        Utils.executeCommand("ls ~/");
         return Utils.executeCommand("cp " + installerName + " ~");
     }
 

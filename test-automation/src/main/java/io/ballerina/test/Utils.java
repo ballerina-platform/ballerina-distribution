@@ -108,7 +108,6 @@ public class Utils {
             file.setExecutable(true);
             PrintWriter writer = new PrintWriter(file.getPath(), "UTF-8");
             writer.println(command);
-            System.out.println(command);
             writer.close();
 
             ProcessBuilder pb = new ProcessBuilder(file.getPath());
@@ -126,7 +125,6 @@ public class Utils {
                     output += line + "\n";
                 }
             }
-            System.out.println(output);
             file.delete();
         } catch (Exception e) {
             System.out.print("Error occurred");

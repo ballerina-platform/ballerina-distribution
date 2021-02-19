@@ -23,9 +23,10 @@ import org.testng.annotations.Test;
 
 
 public class FetchDependencyTest {
-    String version = "1.2.10";
-    String specVersion = "2020R1";
-    String toolVersion = "0.8.10";
+    String version = System.getProperty("BALLERINA_VERSION");
+    String specVersion = System.getProperty("SPEC_VERSION");
+    String toolVersion = System.getProperty("TOOL_VERSION");
+    String VERSION_DISPLAY_TEXT = System.getProperty("VERSION_DISPLAY_TEXT");
 
     @DataProvider(name = "getExecutors")
     public Object[][] dataProviderMethod() {
@@ -39,7 +40,7 @@ public class FetchDependencyTest {
         executor.transferArtifacts();
         executor.install();
 
-        TestUtils.testInstallation(executor, version, specVersion, toolVersion, "1.2.10");
+        TestUtils.testInstallation(executor, version, specVersion, toolVersion, VERSION_DISPLAY_TEXT);
         TestUtils.testDependencyFetch(executor, toolVersion);
 
         executor.uninstall();
