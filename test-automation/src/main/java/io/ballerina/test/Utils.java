@@ -30,8 +30,10 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.sql.Timestamp;
+import java.util.Locale;
 
 public class Utils {
+    private static final String OS = System.getProperty("os.name").toLowerCase(Locale.getDefault());
 
     private static TrustManager[] trustAllCerts = new TrustManager[]{
             new X509TrustManager() {
@@ -106,20 +108,34 @@ public class Utils {
             file.setExecutable(true);
             PrintWriter writer = new PrintWriter(file.getPath(), "UTF-8");
             writer.println(command);
+            System.out.println(command);
             writer.close();
 
             ProcessBuilder pb = new ProcessBuilder(file.getPath());
-            Process p = pb.start();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            Process process = pb.start();
+            InputStream inputStream = process.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
             String line;
             while ((line = reader.readLine()) != null) {
                 output += line + "\n";
             }
+            if (output.isEmpty()) {
+                inputStream =  process.getErrorStream();
+                reader = new BufferedReader(new InputStreamReader(inputStream));
+                while ((line = reader.readLine()) != null) {
+                    output += line + "\n";
+                }
+            }
+            System.out.println(output);
             file.delete();
         } catch (Exception e) {
             System.out.print("Error occurred");
         }
         return output;
+    }
+
+    private static boolean isUnix() {
+        return OS.contains("nix") || OS.contains("nux") || OS.contains("aix");
     }
 
     /**
@@ -129,6 +145,9 @@ public class Utils {
      */
     public static String getUserHome() {
         String userHome = System.getenv("HOME");
+        if (isUnix() && userHome.contains("root")) {
+            userHome = "/home/" + System.getenv("SUDO_USER");
+        }
         if (userHome == null) {
             userHome = System.getProperty("user.home");
         }

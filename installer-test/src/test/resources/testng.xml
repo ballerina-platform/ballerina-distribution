@@ -25,7 +25,7 @@
         <classes>
             <class name="io.ballerina.installer.test.InstallerTest"/>
             <class name="io.ballerina.installer.test.ProjectTest"/>
-            <class name="io.ballerina.installer.test.CentralTest"/>
+<!--            <class name="io.ballerina.installer.test.CentralTest"/>-->
         </classes>
     </test>
 </suite>
