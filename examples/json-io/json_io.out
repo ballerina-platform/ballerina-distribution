@@ -1,4 +1,4 @@
-# In the directory, which contains the `.bal` file, create a directory named `file`,
+# In the directory, which contains the `.bal` file, create a directory named `files`,
 # and add a JSON file named `jsonFile.json` in it.
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `bal run` command below.
