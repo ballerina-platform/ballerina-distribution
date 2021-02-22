@@ -1,3 +1,5 @@
+# In the directory, which contains the `.bal` file, create a directory named `file`,
+# and add an image file named `ballerina.jpg` in it.
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `bal run` command below.
 # Note that to run this examples successfully, you should place an image in the `files` directory as follows.
