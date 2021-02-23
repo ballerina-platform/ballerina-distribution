@@ -103,7 +103,7 @@ The below is a list of guidelines that must be followed when updating and adding
 
 10. Currently, you can add `.proto`,`.conf`, and `.toml` files also to be displayed on the website. For example, see the [GRPC Bidirectional Streaming BBE](https://ballerina.io/learn/by-example/grpc-bidirectional-streaming.html).
 
->**Note:** The `proto` files will be displayed first on the website.
+>**Note:** The `.proto` files will be displayed first on the website. The `.conf` and `.toml` files will be displayed just before the last `.out` file.
 
 11. Use language features to make the examples look elegant (and small). For example, string templates, functional iteration, anonymous functions, etc.
 
