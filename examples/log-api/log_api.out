@@ -1,18 +1,22 @@
-# As shown in the output, both `INFO` and `ERROR` level logs are logged.
+# As shown in the output, only the `INFO` and higher level logs are logged by default.
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `bal run` command below.
 bal run log_api.bal
-time = 2020-12-15 17:54:53,058 level = INFO  module = "" message = "info log"
-time = 2020-12-15 17:54:53,102 level = ERROR module = "" message = "error log"
-time = 2020-12-15 17:54:53,098 level = INFO  module = "" message = "info log" name = "foo" id = 845315 successful = true
-time = 2020-12-15 17:54:53,100 level = INFO  module = "" message = "info log" name = "foo" id = 845315
-time = 2020-12-15 17:54:53,103 level = ERROR module = "" message = "error log" name = "foo" id = 845315
-time = 2020-12-15 17:54:53,105 level = ERROR module = "" message = "error log with cause" error = "something went wrong!" name = "foo" id = 845315
+time = 2021-02-23 15:50:36,620 level = ERROR module = "" message = "error log"
+time = 2021-02-23 15:50:36,649 level = INFO  module = "" message = "info log"
+time = 2021-02-23 15:50:36,650 level = WARN  module = "" message = "warn log"
+time = 2021-02-23 15:50:36,660 level = INFO  module = "" message = "info log" name = "foo" id = 845315 successful = true
+time = 2021-02-23 15:50:36,662 level = INFO  module = "" message = "info log" name = "foo" id = 845315
+time = 2021-02-23 15:50:36,664 level = ERROR module = "" message = "error log" name = "foo" id = 845315
+time = 2021-02-23 15:50:36,679 level = ERROR module = "" message = "error log" stackTrace = [{"callableName":"f3","moduleName":"log-bbe","fileName":"log-bbe.bal","lineNumber":62},{"callableName":"f2","moduleName":"log-bbe","fileName":"log-bbe.bal","lineNumber":58},{"callableName":"f1","moduleName":"log-bbe","fileName":"log-bbe.bal","lineNumber":54},{"callableName":"main","moduleName":"log-bbe","fileName":"log-bbe.bal","lineNumber":39}] id = 845315 username = "Alex92"
+time = 2021-02-23 15:50:36,681 level = ERROR module = "" message = "error log with cause" error = "something went wrong!" name = "foo" id = 845315
 
 # If the `format` is set to "json", the log output will be as follows.
-{"time": "2021-02-05 10:52:52,437", "level": "INFO ", "module": "", "message": "info log"}
-{"time": "2021-02-05 10:52:52,465", "level": "ERROR", "module": "", "message": "error log"}
-{"time": "2021-02-05 10:52:52,472", "level": "INFO ", "module": "", "message": "info log", "name": "foo", "id": 845315, "successful": true}
-{"time": "2021-02-05 10:52:52,474", "level": "INFO ", "module": "", "message": "info log", "name": "foo", "id": 845315}
-{"time": "2021-02-05 10:52:52,475", "level": "ERROR", "module": "", "message": "error log", "name": "foo", "id": 845315}
-{"time": "2021-02-05 10:52:52,478", "level": "ERROR", "module": "", "message": "error log with cause", "error": "something went wrong!", "name": "foo", "id": 845315}
+{"time": "2021-02-23 15:51:54,117", "level": "ERROR", "module": "", "message": "error log"}
+{"time": "2021-02-23 15:51:54,147", "level": "INFO ", "module": "", "message": "info log"}
+{"time": "2021-02-23 15:51:54,148", "level": "WARN ", "module": "", "message": "warn log"}
+{"time": "2021-02-23 15:51:54,156", "level": "INFO ", "module": "", "message": "info log", "name": "foo", "id": 845315, "successful": true}
+{"time": "2021-02-23 15:51:54,157", "level": "INFO ", "module": "", "message": "info log", "name": "foo", "id": 845315}
+{"time": "2021-02-23 15:51:54,158", "level": "ERROR", "module": "", "message": "error log", "name": "foo", "id": 845315}
+{"time": "2021-02-23 15:51:54,169", "level": "ERROR", "module": "", "message": "error log", "stackTrace": [{"callableName":"f3","moduleName":"log-bbe","fileName":"log-bbe.bal","lineNumber":62},{"callableName":"f2","moduleName":"log-bbe","fileName":"log-bbe.bal","lineNumber":58},{"callableName":"f1","moduleName":"log-bbe","fileName":"log-bbe.bal","lineNumber":54},{"callableName":"main","moduleName":"log-bbe","fileName":"log-bbe.bal","lineNumber":39}], "id": 845315, "username": "Alex92"}
+{"time": "2021-02-23 15:51:54,171", "level": "ERROR", "module": "", "message": "error log with cause", "error": "something went wrong!", "name": "foo", "id": 845315}
