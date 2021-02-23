@@ -1,0 +1,9 @@
+[[auth.users]]
+username="alice"
+password="password1"
+scopes=["scope1"]
+
+[[auth.users]]
+username="bob"
+password="password2"
+scopes=["scope2", "scope3"]

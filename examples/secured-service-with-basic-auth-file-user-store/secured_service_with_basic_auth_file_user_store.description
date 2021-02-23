@@ -8,21 +8,25 @@
 // In the authorization phase, the scopes of the service/resource are compared
 // against the scope included in the user store for at least one match between
 // the two sets.<br/>
-// The following code block shows the contents of the `sample-users.toml` file,
+// The following code block shows the contents of the `Config.toml` file,
 // which has the required format of usernames, passwords and scopes, including
 // their mapping.<br/>
 //
-//      [b7a.users]
-//
-//      [b7a.users.alice]
+//      [[auth.users]]
+//      username="alice"
 //      password="password1"
-//      scopes="scope1"
+//      scopes=["scope1"]
 //
-//      [b7a.users.bob]
+//      [[auth.users]]
+//      username="bob"
 //      password="password2"
-//      scopes="scope2,scope3"
+//      scopes=["scope2", "scope3"]
 //
-// There are two users defined - Alice and Bob. Each user has a password and
-// assigned scopes.<br/><br/>
+//      [[auth.users]]
+//      username="eve"
+//      password="password3"
+//
+// There are three users defined - Alice, Bob and Eve. Each user has a password and
+// optionally assigned scopes as an array.<br/><br/>
 // For more information on the underlying module,
 // see the [Auth module](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/auth/latest/auth/).
