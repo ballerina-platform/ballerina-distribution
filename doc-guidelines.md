@@ -101,7 +101,7 @@ The below is a list of guidelines that must be followed when updating and adding
 
     >**Note:** The `publisher.bal` file and its `publisher.out` file will be displayed first on the website (before the subscriber files).
 
-10. Currently, you can add `proto` files also to be displayed on the website. For example, see the [GRPC Bidirectional Streaming BBE](https://ballerina.io/learn/by-example/grpc-bidirectional-streaming.html).
+10. Currently, you can add `.proto`,`.conf`, and `.toml` files also to be displayed on the website. For example, see the [GRPC Bidirectional Streaming BBE](https://ballerina.io/learn/by-example/grpc-bidirectional-streaming.html).
 
 >**Note:** The `proto` files will be displayed first on the website.
 
