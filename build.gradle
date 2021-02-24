@@ -205,13 +205,6 @@ subprojects {
             }
         }
         maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-jsonutils"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-        maven {
             url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-jwt"
             credentials {
                 username System.getenv("packageUser")
@@ -345,7 +338,7 @@ subprojects {
             }
         }
         maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-xmlutils"
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerina-xmldata"
             credentials {
                 username System.getenv("packageUser")
                 password System.getenv("packagePAT")
@@ -498,7 +491,6 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:io-ballerina:${stdlibIoVersion}"
         ballerinaStdLibs "org.ballerinalang:java.arrays-ballerina:${stdlibJavaArraysVersion}"
         ballerinaStdLibs "org.ballerinalang:java.jdbc-ballerina:${stdlibJdbcVersion}"
-        ballerinaStdLibs "org.ballerinalang:jsonutils-ballerina:${stdlibJsonutilsVersion}"
         ballerinaStdLibs "org.ballerinalang:jwt-ballerina:${stdlibJwtVersion}"
         ballerinaStdLibs "org.ballerinalang:log-ballerina:${stdlibLogVersion}"
         ballerinaStdLibs "org.ballerinalang:mime-ballerina:${stdlibMimeVersion}"
@@ -518,7 +510,7 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:websocket-ballerina:${stdlibWebsocketVersion}"
         ballerinaStdLibs "org.ballerinalang:websub-ballerina:${stdlibWebsubVersion}"
         ballerinaStdLibs "org.ballerinalang:websubhub-ballerina:${stdlibWebsubhubVersion}"
-        ballerinaStdLibs "org.ballerinalang:xmlutils-ballerina:${stdlibXmlutilsVersion}"
+        ballerinaStdLibs "org.ballerinalang:xmldata-ballerina:${stdlibXmldataVersion}"
         ballerinaStdLibs "org.ballerinalang:xslt-ballerina:${stdlibXsltVersion}"
 
         ballerinaStdLibs "org.ballerinalang:transaction-ballerina:${stdlibTransactionVersion}"
