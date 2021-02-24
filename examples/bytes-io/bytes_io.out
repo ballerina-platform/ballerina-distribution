@@ -1,0 +1,12 @@
+# In the directory, which contains the `.bal` file, create a directory named `files`,
+# and add an image file named `ballerina.jpg` in it as follows.
+# tree .
+# ├── files
+# │   └── ballerina.jpeg
+# └── bytes_io.bal
+bal run bytes_io.bal
+# To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `bal run` command below.
+
+Successfully copied the image as a byte array.
+Successfully copied the image as a stream.

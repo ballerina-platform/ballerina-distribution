@@ -13,12 +13,14 @@ http:Client securedEP = check new("https://localhost:9090", {
         keyId: "5a0b754-895f-4279-8843-b745e11a57e9",
         customClaims: { "scp": "hello" },
         expTimeInSeconds: 3600,
-        keyStoreConfig: {
-            keyAlias: "ballerina",
-            keyPassword: "ballerina",
-            keyStore: {
-                path: "../resources/ballerinaKeystore.p12",
-                password: "ballerina"
+        signatureConfig: {
+            config: {
+                keyAlias: "ballerina",
+                keyPassword: "ballerina",
+                keyStore: {
+                    path: "../resources/ballerinaKeystore.p12",
+                    password: "ballerina"
+                }
             }
         }
     },

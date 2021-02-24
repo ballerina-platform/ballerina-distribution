@@ -42,7 +42,7 @@ import java.util.Map;
  */
 public class DistRepoBuilder {
 
-    final static String baloGlob = "glob:**/*.balo";
+    final static String balaGlob = "glob:**/*.bala";
     final static String jarGlob = "glob:**/*.jar";
 
     public static void main(String args[]) throws IOException {
@@ -53,25 +53,25 @@ public class DistRepoBuilder {
         }
         Path repo = Paths.get(args[0]);
 
-        // Find all balo files
-        List<Path> balos = findBalos(repo.resolve("balo"));
+        // Find all bala files
+        List<Path> balas = findBalas(repo.resolve("bala"));
         // Extract platform libs
         boolean valid = true;
-        for (Path balo : balos) {
-            extractPlatformLibs(balo);
-            // following function was put in to validate if bir and jar exists for packed balos
-            valid = valid & validateCache(balo, repo);
+        for (Path bala : balas) {
+            extractPlatformLibs(bala);
+            // following function was put in to validate if bir and jar exists for packed balas
+            valid = valid & validateCache(bala, repo);
         }
         if (!valid) {
             System.exit(1);
         }
     }
 
-    private static boolean validateCache(Path balo, Path repo) {
+    private static boolean validateCache(Path bala, Path repo) {
         boolean valid = true;
-        String version = balo.getParent().getFileName().toString();
-        String moduleName = balo.getParent().getParent().getFileName().toString();
-        String orgName = balo.getParent().getParent().getParent().getFileName().toString();
+        String version = bala.getParent().getFileName().toString();
+        String moduleName = bala.getParent().getParent().getFileName().toString();
+        String orgName = bala.getParent().getParent().getParent().getFileName().toString();
 
         // Check if the bir exists
         Path bir = repo.resolve("cache").resolve(orgName).resolve(moduleName).resolve(version).resolve("bir")
@@ -96,8 +96,12 @@ public class DistRepoBuilder {
         env.put("create", "true");
         // locate file system by using the syntax
         // defined in java.net.JarURLConnection
-        URI uri = URI.create("jar:file:" + path.toAbsolutePath());
-        try (FileSystem zipfs = FileSystems.newFileSystem(uri, env)) {
+
+        String filePath  = ("jar:file:" + path.toAbsolutePath().toString());
+        if (isWindows()) {
+            filePath = filePath.replace("\\", "/").replace("file:", "file:/");
+        }
+        try (FileSystem zipfs = FileSystems.newFileSystem(URI.create(filePath), env)) {
             final PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher(jarGlob);
             Files.walkFileTree(zipfs.getPath("/"), new SimpleFileVisitor<Path>() {
                 @Override
@@ -121,14 +125,14 @@ public class DistRepoBuilder {
         setFilePermission(path);
     }
 
-    static List<Path> findBalos(Path repo) throws IOException {
-        List<Path> balos = new ArrayList<>();
-        final PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher(baloGlob);
+    static List<Path> findBalas(Path repo) throws IOException {
+        List<Path> balas = new ArrayList<>();
+        final PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher(balaGlob);
         Files.walkFileTree(repo, new SimpleFileVisitor<Path>() {
             @Override
             public FileVisitResult visitFile(Path path, BasicFileAttributes attrs) throws IOException {
                 if (pathMatcher.matches(path)) {
-                    balos.add(path);
+                    balas.add(path);
                 }
                 return FileVisitResult.CONTINUE;
             }
@@ -139,12 +143,16 @@ public class DistRepoBuilder {
                 return FileVisitResult.CONTINUE;
             }
         });
-        return balos;
+        return balas;
     }
 
     private static void setFilePermission(Path filepath) {
         File file = filepath.toFile();
         file.setReadable(true, false);
         file.setWritable(true, true);
+    }
+
+    private static boolean isWindows() {
+        return System.getProperty("os.name").startsWith("Windows");
     }
 }

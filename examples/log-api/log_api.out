@@ -8,3 +8,11 @@ time = 2020-12-15 17:54:53,098 level = INFO  module = "" message = "info log" na
 time = 2020-12-15 17:54:53,100 level = INFO  module = "" message = "info log" name = "foo" id = 845315
 time = 2020-12-15 17:54:53,103 level = ERROR module = "" message = "error log" name = "foo" id = 845315
 time = 2020-12-15 17:54:53,105 level = ERROR module = "" message = "error log with cause" error = "something went wrong!" name = "foo" id = 845315
+
+# If the `format` is set to "json", the log output will be as follows.
+{"time": "2021-02-05 10:52:52,437", "level": "INFO ", "module": "", "message": "info log"}
+{"time": "2021-02-05 10:52:52,465", "level": "ERROR", "module": "", "message": "error log"}
+{"time": "2021-02-05 10:52:52,472", "level": "INFO ", "module": "", "message": "info log", "name": "foo", "id": 845315, "successful": true}
+{"time": "2021-02-05 10:52:52,474", "level": "INFO ", "module": "", "message": "info log", "name": "foo", "id": 845315}
+{"time": "2021-02-05 10:52:52,475", "level": "ERROR", "module": "", "message": "error log", "name": "foo", "id": 845315}
+{"time": "2021-02-05 10:52:52,478", "level": "ERROR", "module": "", "message": "error log with cause", "error": "something went wrong!", "name": "foo", "id": 845315}

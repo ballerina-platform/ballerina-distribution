@@ -10,4 +10,5 @@
 //
 // The configuration file must be in the TOML(v0.4) format.
 // Ballerina currently supports configurable variables of types `int`, `float`,
-// `boolean`, `string`, `decimal` and the arrays of respective types.
+// `boolean`, `string`, `decimal`, the arrays of the respective types, record, and
+// table.
