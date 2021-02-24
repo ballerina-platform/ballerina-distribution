@@ -6,7 +6,7 @@ import ballerina/io;
 // to avoid deadlocks.
 public function main() {
     worker w1 {
-        int w1val = checkpanic calculate("2*3");
+        int w1val = calculate("2*3");
         // Sends a message asynchronously to the worker `w2`.
         w1val -> w2;
         // Receives a message from the worker `w2`.
@@ -24,7 +24,7 @@ public function main() {
     // A worker can have an explicit return type, or else, if a return type is not mentioned,
     // it is equivalent to returning ().
     worker w2 {
-        int w2val = checkpanic calculate("17*5");
+        int w2val = calculate("17*5");
         // Receives a message from the worker `w1`.
         int w1val = <- w1;
         io:println("[w2] Message from w1: ", w1val);
@@ -32,17 +32,17 @@ public function main() {
         w1val + w2val -> w1;
     }
     worker w3 {
-        int|error w1val = <- w1;
-        int|error w2val = <- w1;
+        int w1val = <- w1;
+        int w2val = <- w1;
         io:println("[w3] Messages from w1: ", w1val, ", ", w2val);
     }
     // Waits for the worker `w1`to finish.
     wait w1;
 }
 
-function calculate(string expr) returns @tainted int|error {
+function calculate(string expr) returns @tainted int {
     http:Client httpClient = checkpanic new ("https://api.mathjs.org");
-    string response = <string> check
-        httpClient->get(string `/v4/?expr=${expr}`, targetType = string);
-    return check int:fromString(response);
+    string response = <string> checkpanic httpClient->get(
+        string `/v4/?expr=${expr}`, targetType = string);
+    return checkpanic int:fromString(response);
 }
