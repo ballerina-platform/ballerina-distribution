@@ -7,3 +7,7 @@ scopes=["scope1"]
 username="bob"
 password="password2"
 scopes=["scope2", "scope3"]
+
+[[auth.users]]
+username="eve"
+password="password3"
