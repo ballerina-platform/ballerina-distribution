@@ -717,7 +717,20 @@ task testExamples() {
             'rabbitmq-consumer-with-data-binding',
             'rabbitmq-consumer-with-qos-settings',
             'rabbitmq-transaction-producer',
-            'rabbitmq-transaction-consumer'
+            'rabbitmq-transaction-consumer',
+            'jdbc-parameterized-query',
+            'jdbc-execute-operation',
+            'jdbc-query-operation',
+            'jdbc-init-options',
+            'jdbc-complex-type-queries', // Consists date time in output
+            'jdbc-batch-execute-operation', // Consists transaction server start log
+            'mysql-init-options',
+            'mysql-query-operation',
+            'mysql-complex-type-queries',
+            'mysql-execute-operation',
+            'mysql-batch-execute-operation',
+            'mysql-parameterized-query',
+            'mysql-call-stored-procedures',
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
@@ -764,16 +777,7 @@ task testExamples() {
             'websocket-proxy-server',
             'websocket-retry',
             'random',  // Output varies
-            'jdbc-complex-type-queries', // Consists date time in output
-            'jdbc-batch-execute-operation', // Consists transaction server sart log
             'log-api',
-            'mysql-init-options',
-            'mysql-query-operation',
-            'mysql-complex-type-queries',
-            'mysql-execute-operation',
-            'mysql-batch-execute-operation',
-            'mysql-parameterized-query',
-            'mysql-call-stored-procedures',
             'udp-client',
             'udp-connect-client',
             'udp-listener',
