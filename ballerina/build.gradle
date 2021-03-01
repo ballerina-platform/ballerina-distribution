@@ -731,6 +731,9 @@ task testExamples() {
             'mysql-batch-execute-operation',
             'mysql-parameterized-query',
             'mysql-call-stored-procedures',
+            'local-transactions',  // Xid varies
+            'xa-transactions', // Consists of the transaction coordinator start log
+            'retry-transactions', // Xid varies
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
@@ -738,10 +741,7 @@ task testExamples() {
     // to the above buildIgnoreList.
     def outputVerificationIgnoreList = [
             'the-main-function', //Needs user input
-            'local-transactions',  // Xid varies
             'local-transactions-with-handlers', // Xid varies
-            'xa-transactions', // Consists of the transaction coordinator start log
-            'retry-transactions', // Xid varies
             'distributed-transactions', // has timestamps in the output
             'optional-type',  // Needs inputs at runtime
             'while',        // Needs inputs at runtime
