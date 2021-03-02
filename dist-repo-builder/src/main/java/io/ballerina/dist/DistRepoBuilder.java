@@ -117,6 +117,7 @@ public class DistRepoBuilder {
                 "ballerina-graphql",
                 "ballerina-graphql", // TODO : graphql had to generate twice
                 //Extensions
+                //TODO: Revisit extensions
 //                "ballerinax-awslambda",
 //                "ballerinax-azure_functions",
                 "ballerina-docker",
@@ -137,8 +138,10 @@ public class DistRepoBuilder {
                         Project balaProject = BalaProject.loadProject(defaultBuilder, bala);
                         PackageCompilation packageCompilation = balaProject.currentPackage().getCompilation();
                         JBallerinaBackend.from(packageCompilation, JvmTarget.JAVA_11);
+                        //TODO : Remove when regeneration is not required
                         balas.remove(bala);
                     } catch (Error e) {
+                        //TODO : Ignore Error and continue generation as regeneration will be done
                         System.out.println("Error occurred " + stdLib);
                     }
                     break;
