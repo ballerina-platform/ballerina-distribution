@@ -1,6 +1,6 @@
 # To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `bal run` command along with the Ballerina home path as a config.
-# (You may need to change the keystore/truststore path, a sample keystore/truststore file is available in the distribution.
-# The file path is <ballerina.home>/examples/resources/ballerinaKeystore.p12)
+# `.bal` file and execute the `bal run` command below.
+# (You may need to change the certificate file path, private key file path and
+# trusted certificate file path.)
 bal run mutual_ssl_service.bal
 [ballerina/http] started HTTPS/WSS listener 0.0.0.0:9095

@@ -4,14 +4,10 @@ import ballerina/io;
 
 public function main (string... args) returns error? {
     // The client endpoint configuration with the SSL configurations.
-    HelloWorldClient ep = check
-        new ("https://localhost:9090", {
-            secureSocket: {
-                trustStore: {
-                    path: "../resources/ballerinaTruststore.p12",
-                    password: "ballerina"
-                }
-            }
+    HelloWorldClient ep = check new ("https://localhost:9090", {
+        secureSocket: {
+            trustedCertFile: "../resource/path/to/public.crt"
+        }
     });
     ContextString requestMessage = {content: "WSO2", headers: {}};
     // Executing the unary call.
