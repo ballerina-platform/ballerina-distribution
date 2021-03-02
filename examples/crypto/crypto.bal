@@ -63,31 +63,31 @@ function hmac() returns error? {
 
 function decodeKeys() returns [crypto:PrivateKey, crypto:PublicKey]|error {
     // Obtaining reference to a RSA private key by a key file.
-    string keyFile = "/path/to/private.key";
+    string keyFile = "../resource/path/to/private.key";
     crypto:PrivateKey privateKey =
         check crypto:decodeRsaPrivateKeyFromKeyFile(keyFile);
 
     // Obtaining reference to a RSA private key by a encrypted key file.
-    string encryptedKeyFile = "/path/to/encrypted-private.key";
+    string encryptedKeyFile = "../resource/path/to/encryptedPrivate.key";
     privateKey = check crypto:decodeRsaPrivateKeyFromKeyFile(keyFile,
                                                              "ballerina");
 
     // Obtaining reference to a RSA private key stored within a PKCS#12 or PFX format archive file.
     crypto:KeyStore keyStore = {
-        path: "/path/to/keystore.p12",
+        path: "../resource/path/to/ballerinaKeystore.p12",
         password: "ballerina"
     };
     privateKey = check crypto:decodeRsaPrivateKeyFromKeyStore(keyStore,
                                                    "ballerina", "ballerina");
 
     // Obtaining reference to a RSA public key by a cert file.
-    string certFile = "/path/to/public.crt";
+    string certFile = "../resource/path/to/public.crt";
     crypto:PublicKey publicKey =
         check crypto:decodeRsaPublicKeyFromCertFile(certFile);
 
     // Obtaining reference to a RSA public key stored within a PKCS#12 or PFX format archive file.
     crypto:TrustStore trustStore = {
-        path: "/path/to/truststore.p12",
+        path: "../resource/path/to/ballerinaTruststore.p12",
         password: "ballerina"
     };
     publicKey = check crypto:decodeRsaPublicKeyFromTrustStore(trustStore,

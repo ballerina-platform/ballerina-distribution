@@ -7,8 +7,8 @@ import ballerina/log;
 // The [secureSocket](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/ListenerSecureSocket) record provides the SSL-related listener configurations.
 http:ListenerConfiguration helloWorldEPConfig = {
     secureSocket: {
-        certFile: "/path/to/public.cert",
-        keyFile: "/path/to/private.key"
+        certFile: "../resource/path/to/public.crt",
+        keyFile: "../resource/path/to/private.key"
     }
 };
 

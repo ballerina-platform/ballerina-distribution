@@ -7,7 +7,7 @@ import ballerina/log;
 // [secureSocket](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/ClientSecureSocket) record provides the SSL related configurations.
 http:ClientConfiguration clientEPConfig = {
     secureSocket: {
-        trustedCertFile: "/path/to/public.cert"
+        trustedCertFile: "../resource/path/to/public.crt"
     }
 };
 

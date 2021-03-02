@@ -10,7 +10,7 @@ public function main() {
         expTimeInSeconds: 3600,
         signatureConfig: {
             config: {
-                keyFile: "/path/to/private.key"
+                keyFile: "../resource/path/to/private.key"
             }
         }
     };
@@ -30,7 +30,7 @@ public function main() {
         audience: "vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
         clockSkewInSeconds: 60,
         signatureConfig: {
-            certFile: "/path/to/public.cert"
+            certFile: "../resource/path/to/public.crt"
         }
     };
 
@@ -54,7 +54,7 @@ public function main() {
                 url: "https://localhost:20000/oauth2/jwks",
                 clientConfig: {
                     secureSocket: {
-                        trustedCertFile: "/path/to/public.cert"
+                        trustedCertFile: "../resource/path/to/public.crt"
                     }
                 }
             }

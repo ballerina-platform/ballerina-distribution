@@ -5,7 +5,7 @@ import ballerina/test;
 // Client endpoint configuration with SSL configurations.
 HelloWorldBlockingClient helloWorldBlockingEp = new("https://localhost:9090", {
     secureSocket: {
-        trustedCertFile: "/path/to/public.cert"
+        trustedCertFile: "../resource/path/to/public.crt"
     }
 });
 

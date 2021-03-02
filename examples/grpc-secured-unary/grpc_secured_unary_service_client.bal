@@ -6,7 +6,7 @@ public function main (string... args) returns error? {
     // The client endpoint configuration with the SSL configurations.
     HelloWorldClient ep = check new ("https://localhost:9090", {
         secureSocket: {
-            trustedCertFile: "/path/to/public.cert"
+            trustedCertFile: "../resource/path/to/public.crt"
         }
     });
     ContextString requestMessage = {content: "WSO2", headers: {}};

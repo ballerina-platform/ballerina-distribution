@@ -5,9 +5,9 @@ import ballerina/test;
 function testFunc() {
     http:Client httpEndpoint = checkpanic new("https://localhost:9095", config = {
         secureSocket: {
-            certFile: "/path/to/public.cert",
-            keyFile: "/path/to/private.key"
-            trustedCertFile: "/path/to/public.cert",
+            certFile: "../resource/path/to/public.crt",
+            keyFile: "../resource/path/to/private.key"
+            trustedCertFile: "../resource/path/to/public.crt",
             protocol: {
                 name: "TLS"
             },

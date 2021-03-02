@@ -13,12 +13,12 @@ http:Client securedEP = check new("https://localhost:9090", {
         scopes: ["hello"],
         clientConfig: {
             secureSocket: {
-                trustedCertFile: "/path/to/public.cert"
+                trustedCertFile: "../resource/path/to/public.crt"
             }
         }
     },
     secureSocket: {
-        trustedCertFile: "/path/to/public.cert"
+        trustedCertFile: "../resource/path/to/public.crt"
     }
 });
 

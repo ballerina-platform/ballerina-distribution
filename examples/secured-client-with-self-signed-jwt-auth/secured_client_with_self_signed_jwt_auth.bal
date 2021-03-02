@@ -15,12 +15,12 @@ http:Client securedEP = check new("https://localhost:9090", {
         expTimeInSeconds: 3600,
         signatureConfig: {
             config: {
-                keyFile: "/path/to/private.key"
+                keyFile: "../resource/path/to/private.key"
             }
         }
     },
     secureSocket: {
-        trustedCertFile: "/path/to/public.cert"
+        trustedCertFile: "../resource/path/to/public.crt"
     }
 });
 

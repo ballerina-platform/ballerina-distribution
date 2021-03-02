@@ -4,7 +4,7 @@ import ballerina/log;
 http:ClientConfiguration weatherEPConfig = {
     followRedirects: {enabled: true, maxCount: 5},
     secureSocket: {
-        trustedCertFile: "/path/to/public.cert"
+        trustedCertFile: "../resource/path/to/public.crt"
     }
 };
 

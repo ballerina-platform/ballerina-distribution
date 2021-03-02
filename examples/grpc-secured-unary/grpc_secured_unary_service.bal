@@ -6,8 +6,8 @@ import ballerina/log;
 listener grpc:Listener ep = new (9090, {
     host: "localhost",
     secureSocket: {
-        certFile: "/path/to/public.cert",
-        keyFile: "/path/to/private.key"
+        certFile: "../resource/path/to/public.crt",
+        keyFile: "../resource/path/to/private.key"
     }
 });
 
