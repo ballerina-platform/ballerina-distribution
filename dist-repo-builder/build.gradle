@@ -9,5 +9,10 @@ dependencies {
     implementation "org.ballerinalang:docerina:${ballerinaVersion}"
     implementation "org.ballerinalang:ballerina-lang:${ballerinaVersion}"
 
+    implementation "org.ballerinalang:ballerina-core:${ballerinaVersion}"
+    implementation "org.ballerinalang:ballerina-lang:${ballerinaVersion}"
+    implementation "org.ballerinalang:ballerina-rt:${ballerinaVersion}"
+    implementation "org.ballerinalang:ballerina-runtime:${ballerinaVersion}"
+    implementation "org.ballerinalang:ballerina-tools-api:${ballerinaVersion}"
 }
 

@@ -208,9 +208,6 @@ task copyOtherRepos(type: Copy) {
         from("${artifactExtractedPath}/bala") {
             into "repo/bala"
         }
-        from("${artifactExtractedPath}/cache") {
-            into "repo/cache"
-        }
     }
 
     /* C2C Libraries */
@@ -221,9 +218,6 @@ task copyOtherRepos(type: Copy) {
         }
         from("${artifactExtractedPath}/bala") {
             into "repo/bala"
-        }
-        from("${artifactExtractedPath}/cache") {
-            into "repo/cache"
         }
     }
 
@@ -243,9 +237,6 @@ task copyOtherRepos(type: Copy) {
         }
         from("${artifactExtractedPath}/bala") {
             into "repo/bala"
-        }
-        from("${artifactExtractedPath}/cache") {
-            into "repo/cache"
         }
     }
 }
