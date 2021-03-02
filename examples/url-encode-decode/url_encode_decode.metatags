@@ -1,2 +1,2 @@
-description: BBE on how to perform encoding/decoding content using different URL encoding mechanisms and algorithms in Ballerina.
-keywords: ballerina, ballerina by example, encoding, decoding, url encoding, url decoding
+description: BBE on how to perform encoding/decoding a URL or part of a URL.
+keywords: ballerina, ballerina by example, url encoding, url decoding
