@@ -650,7 +650,6 @@ task testExamples() {
             'azure-functions-deployment',
             'openshift-deployment',
             'grpc-server-streaming',
-            'grpc-secured-unary',
             'grpc-bidirectional-streaming',
             'grpc-client-streaming',
             'grpc-unary-blocking',
@@ -668,22 +667,32 @@ task testExamples() {
             'http-caching-client',
             'http-data-binding',
             'http-1.1-to-2.0-protocol-switch',
-            'basic-https-listener-client',
-            'https-listener',
             'http-client-endpoint',
             'response-with-multiparts',
-            'mutual-ssl',
             'gauge-metrics',
             'counter-metrics',
             'tracing',
             'openapi-to-ballerina',
             'taint-checking', // Should not compile
+
+            // Disabled since cert/key file paths are not configured
+            'basic-https-listener-client',
+            'grpc-secured-unary',
+            'header-based-routing',
+            'https-listener',
+            'jwt-issue-validate',
+            'mutual-ssl',
+            'crypto',
             'secured-client-with-basic-auth',
             'secured-client-with-bearer-token-auth',
             'secured-client-with-self-signed-jwt-auth',
             'secured-client-with-oauth2-client-credentials-grant-type',
             'secured-client-with-oauth2-password-grant-type',
             'secured-client-with-oauth2-direct-token-type',
+            'secured-service-with-basic-auth-file-user-store',
+            'secured-service-with-basic-auth-ldap-user-store',
+            'secured-service-with-jwt-auth',
+            'secured-service-with-oauth2',
 
             // Disabling due to pending migration for service typing
             'websocket-cookie',
@@ -744,7 +753,6 @@ task testExamples() {
             'http-redirects',
             'http-2-0-server-push',
             'http-cookies',
-            'header-based-routing',
             'http-circuit-breaker',
             'request-with-multiparts',
             'different-payload-types',
@@ -786,12 +794,6 @@ task testExamples() {
             'filepath', // Depends on OS
             'time',
             'locks', // Output is inconsistent between runs
-            'crypto', // Output with line breaks cannot be compared
-            'jwt-issue-validate', // Output depends on time
-            'secured-service-with-basic-auth-file-user-store', // Log output depends on time
-            'secured-service-with-basic-auth-ldap-user-store', // Log output depends on time
-            'secured-service-with-jwt-auth', // Log output depends on time
-            'secured-service-with-oauth2', // Log output depends on time
             'send-email',
             'receive-email-using-client',
             'receive-email-using-listener',
