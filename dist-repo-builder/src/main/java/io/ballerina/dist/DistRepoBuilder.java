@@ -137,9 +137,11 @@ public class DistRepoBuilder {
                         Project balaProject = BalaProject.loadProject(defaultBuilder, bala);
                         PackageCompilation packageCompilation = balaProject.currentPackage().getCompilation();
                         JBallerinaBackend.from(packageCompilation, JvmTarget.JAVA_11);
+                        balas.remove(bala);
                     } catch (Error e) {
                         System.out.println("Error occurred " + stdLib);
                     }
+                    break;
                 }
             }
         }
