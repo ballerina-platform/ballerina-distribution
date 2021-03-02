@@ -18,27 +18,18 @@ http:Client securedEP = check new("https://localhost:9090", {
             scopes: ["hello"],
             clientConfig: {
                 secureSocket: {
-                    trustStore: {
-                        path: "../resources/ballerinaTruststore.p12",
-                        password: "ballerina"
-                    }
+                    trustedCertFile: "../resource/path/to/public.crt"
                 }
             }
         },
         clientConfig: {
             secureSocket: {
-                trustStore: {
-                    path: "../resources/ballerinaTruststore.p12",
-                    password: "ballerina"
-                }
+                trustedCertFile: "../resource/path/to/public.crt"
             }
         }
     },
     secureSocket: {
-        trustStore: {
-            path: "../resources/ballerinaTruststore.p12",
-            password: "ballerina"
-        }
+        trustedCertFile: "../resource/path/to/public.crt"
     }
 });
 

@@ -10,10 +10,7 @@ http:Client securedEP = check new("https://localhost:9090", {
         token: "JlbmMiOiJBMTI4Q0JDLUhTMjU2In"
     },
     secureSocket: {
-        trustStore: {
-            path: "../resources/ballerinaTruststore.p12",
-            password: "ballerina"
-        }
+        trustedCertFile: "../resource/path/to/public.crt"
     }
 });
 

@@ -3,13 +3,11 @@ import ballerina/log;
 
 // `helloWorldEP` listener endpoint is configured to communicate through HTTPS.
 // It is configured to listen on port 9095. As this is an HTTPS Listener,
-// it is required to give the PKCS12 keystore file location and its password.
+// it is required to configure certificate file and private key file.
 http:ListenerConfiguration helloWorldEPConfig = {
     secureSocket: {
-        keyStore: {
-            path: "../resources/ballerinaKeystore.p12",
-            password: "ballerina"
-        }
+        certFile: "../resource/path/to/public.crt",
+        keyFile: "../resource/path/to/private.key"
     }
 };
 
