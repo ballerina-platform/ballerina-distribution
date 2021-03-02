@@ -35,11 +35,9 @@ import java.nio.file.SimpleFileVisitor;
 import java.nio.file.StandardCopyOption;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.NoSuchElementException;
 
 /**
  * Utility class to build and populate distribution cache.
@@ -50,7 +48,7 @@ public class DistRepoBuilder {
 
     final static String balaGlob = "glob:**/*.bala";
     final static String jarGlob = "glob:**/*.jar";
-    final static String docGlob = "glob:**/api-docs.js";
+    final static String docGlob = "glob:**/api-docs.json";
 
     public static void main(String args[]) throws IOException {
         System.out.println("Building Distribution Repo ...");
@@ -109,7 +107,7 @@ public class DistRepoBuilder {
                 ProjectEnvironmentBuilder defaultBuilder = ProjectEnvironmentBuilder.getDefaultBuilder();
                 defaultBuilder.addCompilationCacheFactory(TempDirCompilationCache::from);
                 BalaProject balaProject = BalaProject.loadProject(defaultBuilder, balaPath);
-                BallerinaDocGenerator.generateAPIDocs(balaProject, jBalToolsPath.toString() + "/docs");
+                BallerinaDocGenerator.generateAPIDocs(balaProject, jBalToolsPath.toString() + "/docs", true);
             } catch (Exception e) {
                 System.out.println("Exception when generating docs from bala: " + balaPath.toString());
                 e.printStackTrace();
