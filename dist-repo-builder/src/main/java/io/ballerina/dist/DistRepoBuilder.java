@@ -69,6 +69,7 @@ public class DistRepoBuilder {
             extractPlatformLibs(bala);
         }
         generateCaches(balas, repo);
+        //TODO : generate twice to avoid errors
         generateCaches(balas, repo);
     }
 
