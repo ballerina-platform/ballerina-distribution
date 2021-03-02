@@ -348,8 +348,14 @@ task packageDistZip(type: Zip) {
         exclude "distributions/ballerina-version"
         exclude "distributions/installer-version"
         exclude "/bin/version.txt"
-
+        exclude "/docs"
     }
+
+    into("${parentDir}/docs") {
+        from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs"
+        fileMode = 0775
+    }
+
     into("${parentDir}") {
         from "../resources/tools"
         exclude "distributions/ballerina-version"
@@ -428,7 +434,14 @@ task packageDistLinux(type: Zip) {
         exclude "distributions/installer-version"
         exclude "/bin/bal.bat"
         exclude "/bin/version.txt"
+        exclude "/docs"
     }
+
+    into("${parentDir}/docs") {
+        from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs"
+        fileMode = 0775
+    }
+
     into("${parentDir}") {
         from "../resources/tools"
         exclude "distributions/ballerina-version"
@@ -503,6 +516,12 @@ task packageDistMac(type: Zip) {
         exclude "distributions/installer-version"
         exclude "/bin/bal.bat"
         exclude "/bin/version.txt"
+        exclude "/docs"
+    }
+
+    into("${parentDir}/docs") {
+        from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs"
+        fileMode = 0775
     }
 
     /* Files */
@@ -573,6 +592,12 @@ task packageDistWindows(type: Zip) {
         exclude "distributions/installer-version"
         exclude "/bin/bal"
         exclude "/bin/version.txt"
+        exclude "/docs"
+    }
+
+    into("${parentDir}/docs") {
+        from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs"
+        fileMode = 0775
     }
 
     /* Files */
