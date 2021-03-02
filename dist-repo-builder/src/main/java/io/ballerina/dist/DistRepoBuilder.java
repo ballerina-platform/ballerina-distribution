@@ -67,23 +67,81 @@ public class DistRepoBuilder {
         boolean valid = true;
         for (Path bala : balas) {
             extractPlatformLibs(bala);
-            generateCache(bala, repo);
-            // following function was put in to validate if bir and jar exists for packed balas
-            valid = valid & validateCache(bala, repo);
         }
-        if (!valid) {
-            System.exit(1);
-        }
+        generateCaches(balas, repo);
+        generateCaches(balas, repo);
     }
 
-    private static void generateCache(Path bala, Path repo) {
-        System.setProperty(BALLERINA_HOME_KEY, repo.getParent().toString());
-        ProjectEnvironmentBuilder defaultBuilder = ProjectEnvironmentBuilder.getDefaultBuilder();
-        defaultBuilder.addCompilationCacheFactory(new FileSystemCache.FileSystemCacheFactory(
-                Paths.get(repo.toString() + "/cache")));
-        Project balaProject = BalaProject.loadProject(defaultBuilder, bala);
-        PackageCompilation packageCompilation = balaProject.currentPackage().getCompilation();
-        JBallerinaBackend.from(packageCompilation, JvmTarget.JAVA_11);
+    private static void generateCaches(List<Path> balas, Path repo) {
+        String[] stdLibs = {
+                //Standard Libraries
+                "ballerina-io",
+                "ballerina-java.arrays",
+                "ballerina-random",
+                "ballerina-regex",
+                "ballerina-runtime",
+                "ballerina-task",
+                "ballerina-time",
+                "ballerina-url",
+                "ballerina-xmldata",
+                "ballerina-cache",
+                "ballerina-crypto",
+                "ballerina-os",
+                "ballerina-xslt",
+                "ballerina-log",
+                "ballerina-reflect",
+                "ballerina-uuid",
+                "ballerina-auth",
+                "ballerina-file",
+                "ballerina-ftp",
+                "ballerina-jwt",
+                "ballerina-mime",
+                "ballerina-nats",
+                "ballerina-oauth2",
+                "ballerina-stan",
+                "ballerina-tcp",
+                "ballerina-udp",
+                "ballerina-email",
+                "ballerina-http",
+                "ballerina-grpc",
+                "ballerinai-transaction",
+                "ballerina-websocket",
+                "ballerina-websub",
+                "ballerina-websubhub",
+                "ballerina-kafka",
+                "ballerina-rabbitmq",
+                "ballerina-sql",
+                "ballerinax-java.jdbc",
+                "ballerinax-mysql",
+                "ballerina-graphql",
+                "ballerina-graphql", // TODO : graphql had to generate twice
+                //Extensions
+//                "ballerinax-awslambda",
+//                "ballerinax-azure_functions",
+                "ballerina-docker",
+//                "ballerinax-choreo",
+//                "ballerinax-jaeger",
+//                "ballerinax-prometheus",
+//                "ballerinai-observe"
+        };
+
+        for (String stdLib : stdLibs) {
+            for (Path bala : balas) {
+                if (bala.getFileName().toString().contains(stdLib)) {
+                    System.out.println("Generating " + stdLib);
+                    try {
+                        System.setProperty(BALLERINA_HOME_KEY, repo.getParent().toString());
+                        ProjectEnvironmentBuilder defaultBuilder = ProjectEnvironmentBuilder.getDefaultBuilder();
+                        defaultBuilder.addCompilationCacheFactory(new FileSystemCache.FileSystemCacheFactory(repo));
+                        Project balaProject = BalaProject.loadProject(defaultBuilder, bala);
+                        PackageCompilation packageCompilation = balaProject.currentPackage().getCompilation();
+                        JBallerinaBackend.from(packageCompilation, JvmTarget.JAVA_11);
+                    } catch (Error e) {
+                        System.out.println("Error occurred " + stdLib);
+                    }
+                }
+            }
+        }
     }
 
     private static boolean validateCache(Path bala, Path repo) {
