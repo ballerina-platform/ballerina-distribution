@@ -2,10 +2,8 @@ import ballerina/http;
 
 listener http:Listener securedEP = new(9090, config = {
     secureSocket: {
-        keyStore: {
-            path: "../resources/ballerinaKeystore.p12",
-            password: "ballerina"
-        }
+        certFile: "/path/to/public.cert",
+        keyFile: "/path/to/private.key"
     }
 });
 
@@ -22,13 +20,7 @@ listener http:Listener securedEP = new(9090, config = {
                 issuer: "wso2",
                 audience: "ballerina",
                 signatureConfig: {
-                    trustStoreConfig: {
-                        trustStore: {
-                            path: "../resources/ballerinaTruststore.p12",
-                            password: "ballerina"
-                        },
-                        certAlias: "ballerina"
-                    }
+                    certFile: "/path/to/public.cert"
                 },
                 scopeKey: "scp"
             },

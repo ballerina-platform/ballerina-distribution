@@ -4,10 +4,7 @@ import ballerina/log;
 http:ClientConfiguration weatherEPConfig = {
     followRedirects: {enabled: true, maxCount: 5},
     secureSocket: {
-        trustStore: {
-            path: "../resources/ballerinaTruststore.p12",
-            password: "ballerina"
-        }
+        trustedCertFile: "/path/to/public.cert"
     }
 };
 

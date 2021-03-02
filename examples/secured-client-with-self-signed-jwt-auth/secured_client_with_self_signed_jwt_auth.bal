@@ -15,20 +15,12 @@ http:Client securedEP = check new("https://localhost:9090", {
         expTimeInSeconds: 3600,
         signatureConfig: {
             config: {
-                keyAlias: "ballerina",
-                keyPassword: "ballerina",
-                keyStore: {
-                    path: "../resources/ballerinaKeystore.p12",
-                    password: "ballerina"
-                }
+                keyFile: "/path/to/private.key"
             }
         }
     },
     secureSocket: {
-        trustStore: {
-            path: "../resources/ballerinaTruststore.p12",
-            password: "ballerina"
-        }
+        trustedCertFile: "/path/to/public.cert"
     }
 });
 

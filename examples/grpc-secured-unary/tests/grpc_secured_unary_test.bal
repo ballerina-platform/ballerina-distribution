@@ -4,13 +4,10 @@ import ballerina/test;
 
 // Client endpoint configuration with SSL configurations.
 HelloWorldBlockingClient helloWorldBlockingEp = new("https://localhost:9090", {
-        secureSocket: {
-            trustStore: {
-                path: "${ballerina.home}/bre/security/ballerinaTruststore.p12",
-                password: "ballerina"
-            }
-        }
-    });
+    secureSocket: {
+        trustedCertFile: "/path/to/public.cert"
+    }
+});
 
 @test:Config
 function testSecuredUnaryService() {
