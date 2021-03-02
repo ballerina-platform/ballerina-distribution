@@ -1,8 +1,7 @@
 # To run this sample, navigate to the directory that contains the `.bal` file,
 # and execute the `bal run` command below.
-# (You may need to change the keystore path, a sample keystore file is
-# available in the distribution.
-# The file path is <ballerina.home>/examples/resources/ballerinaKeystore.p12)
+# (You may need to change the certificate file path, trusted certificate file
+# path and private key file path.)
 bal run jwt_issue_validate.bal
 Issued JWT: eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QiLCAia2lkIjoiTlRBeFptTXhORE15WkR
             nM01UVTFaR00wTXpFek9ESmhaV0k0TkRObFpEVTFPR0ZrTmpGaU1RIn0.eyJpc3MiOi

@@ -2,19 +2,14 @@ import ballerina/http;
 import ballerina/log;
 
 // Create a client configuration to be passed to the client endpoint.
-// Configure the `keyStore` file `path` and `password`, `truststore`
-// file `path` and `password`, which are required to enable mutual SSL.
+// Configure the `certFile`, `keyFile` and `trustedCertFile`, which
+// are required to enable mutual SSL.
 // [secureSocket](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/ClientSecureSocket) record provides the SSL related configurations.
 http:ClientConfiguration clientEPConfig = {
     secureSocket: {
-        keyStore: {
-            path: "../resources/ballerinaKeystore.p12",
-            password: "ballerina"
-        },
-        trustStore: {
-            path: "../resources/ballerinaTruststore.p12",
-            password: "ballerina"
-        },
+        certFile: "../resource/path/to/public.crt",
+        keyFile: "../resource/path/to/private.key"
+        trustedCertFile: "../resource/path/to/public.crt"
         protocol: {
             name: "TLS"
         },
