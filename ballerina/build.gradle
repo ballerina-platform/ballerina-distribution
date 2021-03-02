@@ -674,6 +674,7 @@ task testExamples() {
             'response-with-multiparts',
             'mutual-ssl',
             'gauge-metrics',
+            'java-arrays',
             'counter-metrics',
             'tracing',
             'openapi-to-ballerina',
