@@ -14,20 +14,24 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import ballerina/encoding;
 import ballerina/test;
+import ballerina/url;
 
 @test:Config {}
-public function testEncodingAndDecodingBase64Url() {
-    string input = "Ballerina Base64 URL encoding test";
-    string output = "QmFsbGVyaW5hIEJhc2U2NCBVUkwgZW5jb2RpbmcgdGVzdA";
-    string encodedResult = encoding:encodeBase64Url(input.toBytes());
-    test:assertEquals(encodedResult, output, msg = "Unexpected base64 encoding.");
-
-    byte[]|encoding:Error decodedResult = encoding:decodeBase64Url(output);
-    if (decodedResult is byte[]) {
-        test:assertEquals(decodedResult, input.toBytes(), msg = "Unexpected base64 decoding.");
+public function testUrlEncodingAndDecoding() {
+    string input = "http://localhost:9090/echoService?type=string&value=hello world";
+    string output = "http%3A%2F%2Flocalhost%3A9090%2FechoService%3Ftype%3Dstring%26value%3Dhello%20world";
+    string|url:Error encodedResult = url:encode(input);
+    if (encodedResult is string) {
+        test:assertEquals(encodedResult, output);
     } else {
-        test:assertFail(msg = "Unexpected results from decodeBase64Url. " + decodedResult.message());
+        test:assertFail(msg = "Test Failed!");
+    }
+
+    string|url:Error decodedResult = url:decode(<string>output);
+    if (decodedResult is string) {
+        test:assertEquals(decodedResult, input);
+    } else {
+        test:assertFail(msg = "Test Failed!");
     }
 }
