@@ -77,7 +77,7 @@ public class DistRepoBuilder {
         String[] stdLibs = {
                 //Standard Libraries
                 "ballerina-io",
-                "ballerina-java.arrays",
+                "ballerinax-java.arrays",
                 "ballerina-random",
                 "ballerina-regex",
                 "ballerina-runtime",
@@ -118,13 +118,14 @@ public class DistRepoBuilder {
                 "ballerina-graphql", // TODO : graphql had to generate twice
                 //Extensions
                 //TODO: Revisit extensions
-//                "ballerinax-awslambda",
-//                "ballerinax-azure_functions",
+                "ballerina-openapi",
                 "ballerina-docker",
-//                "ballerinax-choreo",
-//                "ballerinax-jaeger",
-//                "ballerinax-prometheus",
-//                "ballerinai-observe"
+                "ballerinax-awslambda",
+                "ballerinax-azure_functions",
+                "ballerinax-choreo",
+                "ballerinax-jaeger",
+                "ballerinax-prometheus",
+                "ballerinai-observe"
         };
 
         for (String stdLib : stdLibs) {
@@ -142,7 +143,10 @@ public class DistRepoBuilder {
                         balas.remove(bala);
                     } catch (Error e) {
                         //TODO : Ignore Error and continue generation as regeneration will be done
-                        System.out.println("Error occurred " + stdLib);
+                        System.out.println("Error occurred " + stdLib + " " + e);
+                    } catch (Exception e) {
+                        //TODO : Ignore Exception and continue generation as regeneration will be done
+                        System.out.println("Exception occurred " + stdLib + " " + e);
                     }
                     break;
                 }
