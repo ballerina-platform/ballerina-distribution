@@ -86,7 +86,7 @@ public class PlatformDistributionArtifactCheckTest {
                 .resolve("docker-deployment");
 
         Path docsPath = distributionsPath
-                .resolve(jballerinaFileName)
+                .getParent()
                 .resolve("docs")
                 .resolve("ballerina")
                 .resolve("docker");
@@ -122,7 +122,7 @@ public class PlatformDistributionArtifactCheckTest {
                 .resolve("aws-lambda-deployment");
 
         Path docsPath = distributionsPath
-                .resolve(jballerinaFileName)
+                .getParent()
                 .resolve("docs")
                 .resolve("ballerinax")
                 .resolve("awslambda");
@@ -158,7 +158,7 @@ public class PlatformDistributionArtifactCheckTest {
                 .resolve("azure-functions-deployment");
 
         Path docsPath = distributionsPath
-                .resolve(jballerinaFileName)
+                .getParent()
                 .resolve("docs")
                 .resolve("ballerinax")
                 .resolve("azure_functions");
