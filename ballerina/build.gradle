@@ -135,6 +135,17 @@ task unpackC2cLibs() {
     }
 }
 
+task unpackC2cTooling() {
+    doLast {
+        configurations.ballerinaC2cTooling.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+            copy {
+                from project.zipTree(artifact.getFile())
+                into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
+            }
+        }
+    }
+}
+
 task unpackC2cExamples(type: Copy) {
     group = "unpack_dependencies"
     configurations.ballerinaC2cExamples.resolvedConfiguration.resolvedArtifacts.each { artifact ->
@@ -231,6 +242,14 @@ task copyOtherRepos(type: Copy) {
         }
         from("${artifactExtractedPath}/cache") {
             into "repo/cache"
+        }
+    }
+
+    /* C2C Tooling */
+    configurations.ballerinaC2cTooling.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+        def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
+        from("${artifactExtractedPath}") {
+            into "lib/tools/lang-server/lib/"
         }
     }
 
@@ -1292,8 +1311,9 @@ unpackDevTools.dependsOn unpackJballerinaTools
 unpackStdLibs.dependsOn unpackDevTools
 unpackC2cLibs.dependsOn unpackStdLibs
 unpackC2cExamples.dependsOn unpackC2cLibs
+unpackC2cTooling.dependsOn unpackC2cExamples
 unpackBalCommand.dependsOn unpackObservabilityExtensions
-unpackBalCommand.dependsOn unpackC2cExamples
+unpackBalCommand.dependsOn unpackC2cTooling
 
 /* Extract JRE */
 extractJreForLinux.dependsOn unpackBalCommand

@@ -451,6 +451,7 @@ subprojects {
         kubernetesExamples
         ballerinaStdLibs
         ballerinaC2cLibs
+        ballerinaC2cTooling
         ballerinaC2cExamples
         ballerinaObserveExtensions
         balCommand
@@ -521,6 +522,8 @@ subprojects {
         ballerinaC2cLibs "org.ballerinax.azurefunctions:azurefunctions-extension-bala:${azFunctionsVersion}"
         ballerinaC2cLibs "org.ballerinax.awslambda:awslambda-extension-bala:${awslambdaVersion}"
         ballerinaC2cLibs "org.ballerinax.docker:docker-extension-annotations:${dockerVersion}"
+
+        ballerinaC2cTooling "io.ballerina:c2c-tooling:${c2cVersion}"
 
         /* Observability extensions */
         ballerinaObserveExtensions "org.ballerinalang:prometheus-extension-ballerina:${observeExtPrometheusVersion}"
