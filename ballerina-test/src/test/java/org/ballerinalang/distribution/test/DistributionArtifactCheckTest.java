@@ -67,6 +67,7 @@ public class DistributionArtifactCheckTest {
         Path docsPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
                 .resolve("docs")
+                .resolve("ballerinax")
                 .resolve("docker");
 
         Assert.assertTrue(Files.exists(cachePath));
@@ -98,6 +99,7 @@ public class DistributionArtifactCheckTest {
         Path docsPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
                 .resolve("docs")
+                .resolve("ballerinax")
                 .resolve("awslambda");
 
         Assert.assertTrue(Files.exists(cachePath));
@@ -129,6 +131,7 @@ public class DistributionArtifactCheckTest {
         Path docsPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
                 .resolve("docs")
+                .resolve("ballerinax")
                 .resolve("azure_functions");
 
         Assert.assertTrue(Files.exists(cachePath));
