@@ -67,7 +67,7 @@ public class DistributionArtifactCheckTest {
         Path docsPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
                 .resolve("docs")
-                .resolve("ballerinax")
+                .resolve("ballerina")
                 .resolve("docker");
 
         Assert.assertTrue(Files.exists(cachePath));
