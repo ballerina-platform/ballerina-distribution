@@ -199,26 +199,11 @@ task copyOtherRepos(type: Copy) {
     def ballerinaDist = "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
     into ballerinaDist
 
-    into("docs") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/docs"
-    }
-
-    into("docs") {
-        from "build/target/extracted-distributions/awslambda-extension-bala-zip/docs"
-    }
-
-    into("docs") {
-        from "build/target/extracted-distributions/azurefunctions-extension-bala-zip/docs"
-    }
-
     /* Standard Libraries */
     configurations.ballerinaStdLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
         from("${artifactExtractedPath}/libs") {
             into "bre/lib/"
-        }
-        from("${artifactExtractedPath}/docs") {
-            into "docs/"
         }
         from("${artifactExtractedPath}/bala") {
             into "repo/bala"
@@ -233,9 +218,6 @@ task copyOtherRepos(type: Copy) {
         def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
         from("${artifactExtractedPath}/libs") {
             into "bre/lib/"
-        }
-        from("${artifactExtractedPath}/docs") {
-            into "docs/"
         }
         from("${artifactExtractedPath}/bala") {
             into "repo/bala"
@@ -259,9 +241,6 @@ task copyOtherRepos(type: Copy) {
         from("${artifactExtractedPath}/libs") {
             into "bre/lib/"
         }
-        from("${artifactExtractedPath}/docs") {
-            into "docs/"
-        }
         from("${artifactExtractedPath}/bala") {
             into "repo/bala"
         }
@@ -274,7 +253,7 @@ task copyOtherRepos(type: Copy) {
 task buildDistRepo(type: JavaExec) {
     classpath = project.configurations.repoBuilder
     main = 'io.ballerina.dist.DistRepoBuilder'
-    args "$buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/repo"
+    args "$buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
 }
 
 task copyDevToolsCoverageReport(type: Copy) {
@@ -288,8 +267,8 @@ task copyDevToolsDocUi(type: Copy) {
 }
 
 task filterApiDocs(type: Delete) {
-    delete "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs/lang.__internal"
-    delete "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs/lang.annotations"
+    delete "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs/ballerina/lang.__internal"
+    delete "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs/ballerina/lang.annotations"
 }
 
 task combineDocs(type: Exec) {
@@ -1323,9 +1302,10 @@ extractJreForWindows.dependsOn extractJreForMac
 copyOtherRepos.dependsOn extractJreForWindows
 copyDevToolsCoverageReport.dependsOn copyOtherRepos
 copyDevToolsDocUi.dependsOn copyDevToolsCoverageReport
-filterApiDocs.dependsOn copyDevToolsDocUi
+buildDistRepo.dependsOn copyDevToolsDocUi
+filterApiDocs.dependsOn buildDistRepo
 combineDocs.dependsOn filterApiDocs
-buildDistRepo.dependsOn combineDocs
+
 /* Package Distributions */
 packageDist.dependsOn buildDistRepo
 packageDist.dependsOn combineDocs

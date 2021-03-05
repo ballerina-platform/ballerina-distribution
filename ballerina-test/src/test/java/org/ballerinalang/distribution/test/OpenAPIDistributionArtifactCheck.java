@@ -92,6 +92,7 @@ public class OpenAPIDistributionArtifactCheck {
         Path docsPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
                 .resolve("docs")
+                .resolve("ballerina")
                 .resolve("openapi");
 
         Assert.assertTrue(Files.exists(birPath));
