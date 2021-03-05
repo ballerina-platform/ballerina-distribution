@@ -8,7 +8,7 @@ byte[] pingData = ping.toBytes();
 
 @websocket:ServiceConfig {
     subProtocols: ["xml", "json"],
-    idleTimeoutInSeconds: 120
+    idleTimeout: 120
 }
 
 service /basic/ws on new websocket:Listener(9090) {
@@ -43,7 +43,7 @@ service class WsService {
         } else if (text == "closeMe") {
             error? result = caller->close(statusCode = 1001,
                             reason = "You asked me to close the connection",
-                            timeoutInSeconds = 0);
+                            timeout = 0);
             if (result is websocket:Error) {
                 log:printError("Error occurred when closing connection",
                                 err = result);
