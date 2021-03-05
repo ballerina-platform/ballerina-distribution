@@ -17,6 +17,10 @@
  */
 package io.ballerina.dist;
 
+import io.ballerina.projects.ProjectEnvironmentBuilder;
+import io.ballerina.projects.bala.BalaProject;
+import io.ballerina.projects.repos.TempDirCompilationCache;
+import org.ballerinalang.docgen.docs.BallerinaDocGenerator;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
@@ -44,6 +48,7 @@ public class DistRepoBuilder {
 
     final static String balaGlob = "glob:**/*.bala";
     final static String jarGlob = "glob:**/*.jar";
+    final static String docGlob = "glob:**/api-docs.json";
 
     public static void main(String args[]) throws IOException {
         System.out.println("Building Distribution Repo ...");
@@ -51,19 +56,62 @@ public class DistRepoBuilder {
             System.out.println("Invalid Inputs");
             System.exit(1);
         }
-        Path repo = Paths.get(args[0]);
+        Path jBalToolsPath = Paths.get(args[0]);
+        Path repo = jBalToolsPath.resolve("repo");
+        System.setProperty("ballerina.home", jBalToolsPath.toString());
 
         // Find all bala files
         List<Path> balas = findBalas(repo.resolve("bala"));
         // Extract platform libs
         boolean valid = true;
+        // The following list will contain existing docs from ballerina-lang repo
+        List<Path> existingDocs = getExistingDocs(jBalToolsPath.resolve("docs"));
         for (Path bala : balas) {
             extractPlatformLibs(bala);
+            generateDocsFromBala(bala, jBalToolsPath, existingDocs);
             // following function was put in to validate if bir and jar exists for packed balas
             valid = valid & validateCache(bala, repo);
         }
         if (!valid) {
             System.exit(1);
+        }
+    }
+
+    private static List<Path> getExistingDocs(Path jBalToolsDocPath) throws IOException {
+        List<Path> existingDocs = new ArrayList<>();
+        final PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher(docGlob);
+        Files.walkFileTree(jBalToolsDocPath, new SimpleFileVisitor<Path>() {
+            @Override
+            public FileVisitResult visitFile(Path path, BasicFileAttributes attrs) throws IOException {
+                if (pathMatcher.matches(path)) {
+                    Path relativePath = jBalToolsDocPath.relativize(path.getParent());
+                    if (!relativePath.toString().equals("")) {
+                        existingDocs.add(jBalToolsDocPath.relativize(path.getParent()));
+                    }
+                }
+                return FileVisitResult.CONTINUE;
+            }
+
+            @Override
+            public FileVisitResult visitFileFailed(Path file, IOException exc)
+                    throws IOException {
+                return FileVisitResult.CONTINUE;
+            }
+        });
+        return existingDocs;
+    }
+
+    private static void generateDocsFromBala(Path balaPath, Path jBalToolsPath, List<Path> existingDocs) {
+        if (existingDocs.stream().noneMatch(path -> balaPath.toString().contains(path.toString()))) {
+            try {
+                ProjectEnvironmentBuilder defaultBuilder = ProjectEnvironmentBuilder.getDefaultBuilder();
+                defaultBuilder.addCompilationCacheFactory(TempDirCompilationCache::from);
+                BalaProject balaProject = BalaProject.loadProject(defaultBuilder, balaPath);
+                BallerinaDocGenerator.generateAPIDocs(balaProject, jBalToolsPath.toString() + "/docs", true);
+            } catch (Exception e) {
+                System.out.println("Exception when generating docs from bala: " + balaPath.toString());
+                e.printStackTrace();
+            }
         }
     }
 
