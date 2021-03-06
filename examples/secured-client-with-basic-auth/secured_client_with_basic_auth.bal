@@ -11,7 +11,7 @@ http:Client securedEP = check new("https://localhost:9090", {
         password: "123"
     },
     secureSocket: {
-        trustedCertFile: "../resource/path/to/public.crt"
+        cert: "../resource/path/to/public.crt"
     }
 });
 
