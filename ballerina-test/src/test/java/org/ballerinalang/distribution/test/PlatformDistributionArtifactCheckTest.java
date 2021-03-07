@@ -88,6 +88,7 @@ public class PlatformDistributionArtifactCheckTest {
         Path docsPath = distributionsPath
                 .resolve(jballerinaFileName)
                 .resolve("docs")
+                .resolve("ballerina")
                 .resolve("docker");
 
         Assert.assertTrue(Files.exists(cachePath));
@@ -123,6 +124,7 @@ public class PlatformDistributionArtifactCheckTest {
         Path docsPath = distributionsPath
                 .resolve(jballerinaFileName)
                 .resolve("docs")
+                .resolve("ballerinax")
                 .resolve("awslambda");
 
         Assert.assertTrue(Files.exists(cachePath));
@@ -158,6 +160,7 @@ public class PlatformDistributionArtifactCheckTest {
         Path docsPath = distributionsPath
                 .resolve(jballerinaFileName)
                 .resolve("docs")
+                .resolve("ballerinax")
                 .resolve("azure_functions");
 
         Assert.assertTrue(Files.exists(birPath));
