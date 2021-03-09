@@ -7,7 +7,7 @@ public function main() {
         issuer: "ballerina",
         audience: "vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
         keyId: "NTAxZmMxNDMyZDg3MTU1ZGM0MzEzODJhZWI4NDNlZDU1OGFkNjFiMQ",
-        expTimeInSeconds: 3600,
+        expTime: 3600,
         signatureConfig: {
             config: {
                 keyFile: "../resource/path/to/private.key"
