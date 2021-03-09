@@ -676,12 +676,12 @@ task testExamples() {
             'tracing',
             'openapi-to-ballerina',
             'taint-checking', // Should not compile
-            'secured-client-with-basic-auth',
-            'secured-client-with-bearer-token-auth',
-            'secured-client-with-self-signed-jwt-auth',
-            'secured-client-with-oauth2-client-credentials-grant-type',
-            'secured-client-with-oauth2-password-grant-type',
-            'secured-client-with-oauth2-direct-token-type',
+            'http-client-with-basic-auth',
+            'http-client-with-bearer-token-auth',
+            'http-client-with-self-signed-jwt-auth',
+            'http-client-with-oauth2-client-credentials-grant-type',
+            'http-client-with-oauth2-password-grant-type',
+            'http-client-with-oauth2-direct-token-type',
 
             // Disabling due to pending migration for service typing
             'websocket-cookie',
@@ -786,10 +786,10 @@ task testExamples() {
             'locks', // Output is inconsistent between runs
             'crypto', // Output with line breaks cannot be compared
             'jwt-issue-validate', // Output depends on time
-            'secured-service-with-basic-auth-file-user-store', // Log output depends on time
-            'secured-service-with-basic-auth-ldap-user-store', // Log output depends on time
-            'secured-service-with-jwt-auth', // Log output depends on time
-            'secured-service-with-oauth2', // Log output depends on time
+            'http-service-with-basic-auth-file-user-store', // Log output depends on time
+            'http-service-with-basic-auth-ldap-user-store', // Log output depends on time
+            'http-service-with-jwt-auth', // Log output depends on time
+            'http-service-with-oauth2', // Log output depends on time
             'send-email',
             'receive-email-using-client',
             'receive-email-using-listener',

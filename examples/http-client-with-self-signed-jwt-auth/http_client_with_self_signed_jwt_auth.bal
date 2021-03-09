@@ -12,7 +12,7 @@ http:Client securedEP = check new("https://localhost:9090", {
         audience: ["ballerina", "ballerina.org", "ballerina.io"],
         keyId: "5a0b754-895f-4279-8843-b745e11a57e9",
         customClaims: { "scp": "hello" },
-        expTimeInSeconds: 3600,
+        expTime: 3600,
         signatureConfig: {
             config: {
                 keyFile: "../resource/path/to/private.key"
