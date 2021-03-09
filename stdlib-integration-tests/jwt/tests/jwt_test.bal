@@ -19,7 +19,7 @@ import ballerina/test;
 
 listener http:Listener jwtListener = new(25002, {
     secureSocket: {
-        keyStore: {
+        key: {
             path: "tests/resources/keystore/ballerinaKeystore.p12",
             password: "ballerina"
         }
@@ -65,7 +65,7 @@ const string JWT = "eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QiLCAia2lkIjoiTlRBeFptTXhO
 public function testJwtModule() {
     http:Client clientEP = checkpanic new("https://localhost:25002", {
         secureSocket: {
-           trustStore: {
+           cert: {
                path: "tests/resources/keystore/ballerinaTruststore.p12",
                password: "ballerina"
            }

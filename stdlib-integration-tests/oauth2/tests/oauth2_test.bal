@@ -20,7 +20,7 @@ import ballerina/test;
 
 listener http:Listener oauth2Listener = new(25003, {
     secureSocket: {
-        keyStore: {
+        key: {
             path: "tests/resources/keystore/ballerinaKeystore.p12",
             password: "ballerina"
         }
@@ -37,7 +37,7 @@ listener http:Listener oauth2Listener = new(25003, {
                 scopeKey: "scp",
                 clientConfig: {
                     secureSocket: {
-                       trustStore: {
+                       cert: {
                            path: "tests/resources/keystore/ballerinaTruststore.p12",
                            password: "ballerina"
                        }
@@ -59,7 +59,7 @@ const string ACCESS_TOKEN = "2YotnFZFEjr1zCsicMWpAA";
 public function testOAuth2Module() {
     http:Client clientEP = checkpanic new("https://localhost:25003", {
         secureSocket: {
-           trustStore: {
+           cert: {
                path: "tests/resources/keystore/ballerinaTruststore.p12",
                password: "ballerina"
            }
@@ -83,7 +83,7 @@ function assertOK(http:Response res) {
 // Mock OAuth2 authorization server implementation, which treats the APIs with successful responses.
 listener http:Listener authorizationServer = new(25999, {
     secureSocket: {
-        keyStore: {
+        key: {
             path: "tests/resources/keystore/ballerinaKeystore.p12",
             password: "ballerina"
         }
