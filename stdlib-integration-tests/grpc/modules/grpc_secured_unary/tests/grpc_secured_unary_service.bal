@@ -21,7 +21,7 @@ import ballerina/log;
 listener grpc:Listener ep = new (20004, {
     host: "localhost",
     secureSocket: {
-        keyStore: {
+        key: {
             path: KEYSTORE_PATH,
             password: "ballerina"
         }

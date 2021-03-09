@@ -6,8 +6,10 @@ import ballerina/log;
 // it is required to configure certificate file and private key file.
 http:ListenerConfiguration helloWorldEPConfig = {
     secureSocket: {
-        certFile: "../resource/path/to/public.crt",
-        keyFile: "../resource/path/to/private.key"
+        key: {
+            certFile: "../resource/path/to/public.crt",
+            keyFile: "../resource/path/to/private.key"
+        }
     }
 };
 

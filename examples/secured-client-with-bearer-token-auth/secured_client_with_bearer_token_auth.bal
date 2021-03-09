@@ -10,7 +10,7 @@ http:Client securedEP = check new("https://localhost:9090", {
         token: "JlbmMiOiJBMTI4Q0JDLUhTMjU2In"
     },
     secureSocket: {
-        trustedCertFile: "../resource/path/to/public.crt"
+        cert: "../resource/path/to/public.crt"
     }
 });
 
