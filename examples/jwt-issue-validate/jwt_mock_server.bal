@@ -3,8 +3,10 @@ import ballerina/http;
 
 listener http:Listener oauth2Server = new (20000, {
     secureSocket: {
-        certFile: "../resource/path/to/public.crt",
-        keyFile: "../resource/path/to/private.key"
+        key: {
+            certFile: "../resource/path/to/public.crt",
+            keyFile: "../resource/path/to/private.key"
+        }
     }
 });
 

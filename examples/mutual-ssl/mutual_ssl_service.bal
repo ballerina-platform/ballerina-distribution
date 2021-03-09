@@ -6,18 +6,22 @@ import ballerina/log;
 // [secureSocket](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/ListenerSecureSocket) record provides the SSL related listener configurations.
 http:ListenerConfiguration helloWorldEPConfig = {
     secureSocket: {
-        certFile: "../resource/path/to/public.crt",
-        keyFile: "../resource/path/to/private.key"
-        trustedCertFile: "../resource/path/to/public.crt"
+        key: {
+            certFile: "../resource/path/to/public.crt",
+            keyFile: "../resource/path/to/private.key"
+        },
+        // Enable mutual SSL.
+        mutualSsl: {
+            verifyClient: http:REQUIRE,
+            cert: "../resource/path/to/public.crt"
+        },
         // Enable the preferred SSL protocol and its versions.
         protocol: {
-            name: "TLS",
+            name: http:TLS,
             versions: ["TLSv1.2", "TLSv1.1"]
         },
         // Configure the preferred ciphers.
-        ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"],
-        // Enable mutual SSL.
-        sslVerifyClient: "require"
+        ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
     }
 };
 

@@ -54,7 +54,7 @@ public function main() {
                 url: "https://localhost:20000/oauth2/jwks",
                 clientConfig: {
                     secureSocket: {
-                        trustedCertFile: "../resource/path/to/public.crt"
+                        cert: "../resource/path/to/public.crt"
                     }
                 }
             }
