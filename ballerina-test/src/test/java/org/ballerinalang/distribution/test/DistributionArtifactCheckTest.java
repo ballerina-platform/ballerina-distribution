@@ -140,6 +140,18 @@ public class DistributionArtifactCheckTest {
         Assert.assertTrue(Files.exists(docsPath));
     }
 
+    @Test()
+    public void c2cToolingExistsTest() {
+        Path c2cToolingLibPath = TEST_DISTRIBUTION_PATH
+                .resolve(DIST_NAME)
+                .resolve("lib")
+                .resolve("tools")
+                .resolve("lang-server")
+                .resolve("lib");
+
+        Assert.assertNotNull(TestUtils.findFileOrDirectory(c2cToolingLibPath, "c2c-tooling-"));
+    }
+
     @AfterClass
     public void cleanUp() throws IOException {
         TestUtils.cleanDistribution();
