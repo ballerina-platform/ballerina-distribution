@@ -17,18 +17,18 @@ function toString(any|error val) returns string => val is error? val.toString() 
 
 @test:Mock {
     moduleName: "ballerina/time",
-    functionName: "currentTime"
+    functionName: "utcNow"
 }
-test:MockFunction mock_currentTime = new();
+test:MockFunction mock_utcNow = new();
 
-public function mockCurrentTime() returns time:Time {
-    return checkpanic time:createTime(2020, 1, 1, 0, 0, 0, 0, "America/Panama");
+public function mockUtcNow(int? p) returns time:Utc {
+    return checkpanic time:utcFromString("2020-12-03T10:15:30.00Z");
 }
 
 @test:Config {}
 function testFunc() {
     test:when(mock_printLn).call("mockPrint");
-    test:when(mock_currentTime).call("mockCurrentTime");
+    test:when(mock_utcNow).call("mockUtcNow");
 
     // Calling the main fuction with empty args array
     main();
@@ -36,6 +36,6 @@ function testFunc() {
     test:assertEquals(outputs[1], "First name: John");
     test:assertEquals(outputs[2], "[1,3,5,6]");
     test:assertEquals(outputs[3], "3.141592653589793");
-    test:assertEquals(outputs[4], "{\"time\":1577854800000,\"zone\":{\"id\":\"America/Panama\",\"offset\":-18000}}");
+    test:assertEquals(outputs[4], "2020-12-03T10:15:30Z");
     test:assertEquals(outputs[5], "Jane Doe");
 }
