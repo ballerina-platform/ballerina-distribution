@@ -1,5 +1,5 @@
 // A  `task:scheduleJobRecurByFrequency()` can be used to execute Ballerina jobs periodically.
-// The `task:Job and interval should be specified and optional configurations are start time,
-// end time, and maximum count. Job is a Ballerina `task:Job` object.
+// The `task:Job` and interval should be specified and optional configurations are start time,
+// end time, and maximum count.
 // For more information on the underlying module, 
 // see the [Task module](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/task/latest/task/).

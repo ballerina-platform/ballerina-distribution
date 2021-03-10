@@ -1,2 +1,2 @@
-description: BBE on how to create a task dynamically as a timer in Ballerina.
-keywords: ballerina, ballerina by examples, bbe, task, scheduler, timer
+description: BBE on how to schedule the one-time job execution in Ballerina.
+keywords: ballerina, ballerina by examples, bbe, task, job

@@ -1,6 +1,6 @@
-// The `execute()` function is triggered every second, navigate to the directory that contains the
+# The `execute()` function is triggered every second, navigate to the directory that contains the
 # `.bal` file and execute the `bal run` command below.
-bal run task_service_timer.bal
+bal run task_frequency_job_execution.bal
 MyCounter: 1
 MyCounter: 2
 MyCounter: 3
