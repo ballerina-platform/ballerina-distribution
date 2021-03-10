@@ -21,18 +21,20 @@ import ballerina/runtime;
 
 // Server endpoint configuration
 listener grpc:Listener ep3 = new (20007, {
-      host: "localhost",
-      secureSocket: {
-          trustStore: {
-              path: TRUSTSTORE_PATH,
-              password: "ballerina"
-          },
-          keyStore: {
-              path: KEYSTORE_PATH,
-              password: "ballerina"
-          }
-      }
-  });
+    host: "localhost",
+    secureSocket: {
+        key: {
+            path: KEYSTORE_PATH,
+            password: "ballerina"
+        },
+        mutualSsl: {
+            cert: {
+                path: TRUSTSTORE_PATH,
+                password: "ballerina"
+            }
+        }
+    }
+});
 
 @tainted final map<grpc:Caller> connectionsMap = {};
 

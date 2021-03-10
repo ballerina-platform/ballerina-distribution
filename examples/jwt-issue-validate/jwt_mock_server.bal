@@ -2,13 +2,13 @@
 import ballerina/http;
 
 listener http:Listener oauth2Server = new (20000, {
-        secureSocket: {
-            keyStore: {
-                path: "../resources/ballerinaKeystore.p12",
-                password: "ballerina"
-            }
+    secureSocket: {
+        key: {
+            certFile: "../resource/path/to/public.crt",
+            keyFile: "../resource/path/to/private.key"
         }
-    });
+    }
+});
 
 service /oauth2 on oauth2Server {
     resource function get jwks() returns json {

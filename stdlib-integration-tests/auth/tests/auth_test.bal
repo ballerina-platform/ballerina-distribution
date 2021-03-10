@@ -19,18 +19,19 @@ import ballerina/test;
 
 listener http:Listener authListener = new(25001, {
     secureSocket: {
-        keyStore: {
+        key: {
             path: "tests/resources/keystore/ballerinaKeystore.p12",
             password: "ballerina"
         }
     }
 });
 
-// TODO: Improve with file user store tests once the configurable features supports for map data types.
-// https://github.com/ballerina-platform/ballerina-standard-library/issues/862
-
 @http:ServiceConfig {
     auth: [
+        {
+            fileUserStoreConfig: {},
+            scopes: ["Admin"]
+        },
         {
             ldapUserStoreConfig: {
                 domainName: "avix.lk",
@@ -64,10 +65,76 @@ service /foo on authListener {
 }
 
 @test:Config {}
-public function testAuthModule1() {
+public function testAuthModuleFileUserStore1() {
     http:Client clientEP = checkpanic new("https://localhost:25001", {
         secureSocket: {
-           trustStore: {
+           cert: {
+               path: "tests/resources/keystore/ballerinaTruststore.p12",
+               password: "ballerina"
+           }
+        },
+        auth: {
+            username: "alice",
+            password: "123"
+        }
+    });
+    var response = clientEP->get("/foo/bar");
+    if (response is http:Response) {
+        assertOK(response);
+    } else {
+        test:assertFail(msg = "Test Failed!");
+    }
+}
+
+@test:Config {}
+public function testAuthModuleFileUserStore2() {
+    http:Client clientEP = checkpanic new("https://localhost:25001", {
+        secureSocket: {
+           cert: {
+               path: "tests/resources/keystore/ballerinaTruststore.p12",
+               password: "ballerina"
+           }
+        },
+        auth: {
+            username: "bob",
+            password: "456"
+        }
+    });
+    var response = clientEP->get("/foo/bar");
+    if (response is http:Response) {
+        assertForbidden(response);
+    } else {
+        test:assertFail(msg = "Test Failed!");
+    }
+}
+
+@test:Config {}
+public function testAuthModuleFileUserStore3() {
+    http:Client clientEP = checkpanic new("https://localhost:25001", {
+        secureSocket: {
+           cert: {
+               path: "tests/resources/keystore/ballerinaTruststore.p12",
+               password: "ballerina"
+           }
+        },
+        auth: {
+            username: "eve",
+            password: "789"
+        }
+    });
+    var response = clientEP->get("/foo/bar");
+    if (response is http:Response) {
+        assertUnauthorized(response);
+    } else {
+        test:assertFail(msg = "Test Failed!");
+    }
+}
+
+@test:Config {}
+public function testAuthModuleLdapUserStore1() {
+    http:Client clientEP = checkpanic new("https://localhost:25001", {
+        secureSocket: {
+           cert: {
                path: "tests/resources/keystore/ballerinaTruststore.p12",
                password: "ballerina"
            }
@@ -86,10 +153,10 @@ public function testAuthModule1() {
 }
 
 @test:Config {}
-public function testAuthModule2() {
+public function testAuthModuleLdapUserStore2() {
     http:Client clientEP = checkpanic new("https://localhost:25001", {
         secureSocket: {
-           trustStore: {
+           cert: {
                path: "tests/resources/keystore/ballerinaTruststore.p12",
                password: "ballerina"
            }
@@ -108,10 +175,10 @@ public function testAuthModule2() {
 }
 
 @test:Config {}
-public function testAuthModule3() {
+public function testAuthModuleLdapUserStore3() {
     http:Client clientEP = checkpanic new("https://localhost:25001", {
         secureSocket: {
-           trustStore: {
+           cert: {
                path: "tests/resources/keystore/ballerinaTruststore.p12",
                password: "ballerina"
            }

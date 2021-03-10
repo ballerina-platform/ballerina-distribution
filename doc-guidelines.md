@@ -24,6 +24,8 @@ The below is a list of guidelines that must be followed when updating and adding
 
 3. Each new BBE should have its own directory named after it. The directory name should be in all lowercase letters. Use hyphens (`-`) in the directory names (e.g., `hello-world`) and underscores (`_`) in the file names (e.g., `hello_world.bal`).
 
+>**Note:** The first letter of every word in the title of the BBE should be uppercase. Never capitalize prepositions and conjunctions of four or fewer letters. Words with five or more letters, regardless of whether the word is a conjunction or preposition, must be capitalized.
+
 4. If a new example is added/deleted, update the `index.json` file as well.
 
     >**Info:** Individual BBEs can be configured to disable the playground link generation and to override the default GitHub edit URL by setting the `disablePlayground` and `githubLink` properties accordignly in the `index.json` file. 
@@ -90,22 +92,30 @@ The below is a list of guidelines that must be followed when updating and adding
     For example, see the  `hello_world_service.server.out` and `hello_world_service.client.out` files below of the [Hello World Service BBE](https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/hello-world-service).
 
     <img src="/images/service-examples.png" alt="A service example" width="250" height="150">
+
+    >**Note:** The `server.out` file will be displayed first on the website.
     
 9. Unless it is really required, it is not encouraged to have multiple BAL files in the same sample. In that case, each BAL file can have its own name and the `.out` file should match with the name of the `.bal` file. For example,
 
     <img src="/images/mulitple-bal-files.png" alt="A service example" width="350" height="150">
 
-10. Use language features to make the examples look elegant (and small). For example, string templates, functional iteration, anonymous functions, etc.
+    >**Note:** The `publisher.bal` file and its `publisher.out` file will be displayed first on the website (before the subscriber files).
 
-11. Use meaningful variable names, function names, etc.
+10. Currently, you can add `.proto`,`.conf`, and `.toml` files also to be displayed on the website. For example, see the [GRPC Bidirectional Streaming BBE](https://ballerina.io/learn/by-example/grpc-bidirectional-streaming.html).
 
-12. Remove unused imports in `.bal` files.
+>**Note:** The `.proto` files will be displayed first on the website. The `.conf` and `.toml` files will be displayed just before the last `.out` file.
 
-13. Format the Ballerina source using an IDE Plugin. 
+11. Use language features to make the examples look elegant (and small). For example, string templates, functional iteration, anonymous functions, etc.
 
-14. Do not set (too many or any) optional properties in BBEs (e.g., JDBC connection pooling props). Users will figure it out with code assist or with additional documentation as those will be covered in the User Guide. Also, all the possible options will be covered in the API docs.
+12. Use meaningful variable names, function names, etc.
 
-15. All keywords and any other word, which needs to be highlighted should be used with backquotes (e.g.,  `xml`).  Do not use a single quote as it will not get highlighted in the Ballerina website. 
+13. Remove unused imports in `.bal` files.
+
+14. Format the Ballerina source using an IDE Plugin. 
+
+15. Do not set (too many or any) optional properties in BBEs (e.g., JDBC connection pooling props). Users will figure it out with code assist or with additional documentation as those will be covered in the User Guide. Also, all the possible options will be covered in the API docs.
+
+16. All keywords and any other word, which needs to be highlighted should be used with backquotes (e.g.,  `xml`).  Do not use a single quote as it will not get highlighted in the Ballerina website. 
 
     For example, if the keywords are added with backquotes in the BAL file of the BBE as follows,
 
@@ -115,15 +125,15 @@ The below is a list of guidelines that must be followed when updating and adding
 
     ![Comment in the BBE](/images/bbe-comment.png)
 
-16. Simplify error handling. Use `check` whenever possible. These examples do not need to show all possible error-handling situations. These possibilities can be shown in the actual error-handling BBEs.
+17. Simplify error handling. Use `check` whenever possible. These examples do not need to show all possible error-handling situations. These possibilities can be shown in the actual error-handling BBEs.
 
-17. As a practice, use `ballerina/io` methods in main examples and `ballerina/log` methods in the examples with services. Do not use both `io:println` and `log:printInfo` in the same sample.
+18. As a practice, use `ballerina/io` methods in main examples and `ballerina/log` methods in the examples with services. Do not use both `io:println` and `log:printInfo` in the same sample.
 
-18. Keep the length of the code lines in BBEs to a maximum character count of 80 per line in BAL files. Else, they get wrapped and you get horizontal scroll bars in the code view in the website reducing the readibility.
+19. Keep the length of the code lines in BBEs to a maximum character count of 80 per line in BAL files. Else, they get wrapped and you get horizontal scroll bars in the code view in the website reducing the readibility.
 
     <img src="/images/max-char-count.png" alt="Max character count" width="520" height="70">
 
-19. Add comments to the code blocks as much as possible with “//” as they are used as a mechanism to describe the code. They will be displayed in the RHS section in the Ballerina website. 
+20. Add comments to the code blocks as much as possible with “//” as they are used as a mechanism to describe the code. They will be displayed in the RHS section in the Ballerina website. 
 
     For example, if a code comment is added in the BAL file of the BBE as follows,
 
@@ -133,19 +143,19 @@ The below is a list of guidelines that must be followed when updating and adding
 
     ![Comment in the BBE](/images/bbe-comment.png)
 
-20. Since comments are displayed in the RHS in the website, they should be valid sentences (i.e. start with an upper case letter and end with a full stop etc.)
+21. Since comments are displayed in the RHS in the website, they should be valid sentences (i.e. start with an upper case letter and end with a full stop etc.)
 
-21. Try to keep the code-level comments short. If there are multiline large comments, the final website view would not be nice in which there will be large gaps between code lines to accommodate the comments in the right side of the code panel. 
+22. Try to keep the code-level comments short. If there are multiline large comments, the final website view would not be nice in which there will be large gaps between code lines to accommodate the comments in the right side of the code panel. 
 
-22. A comment applies to the subsequent lines in the file until another comment or an empty line is found. Use comments/new lines appropriately to ensure that it applies only to the relevant lines.
+23. A comment applies to the subsequent lines in the file until another comment or an empty line is found. Use comments/new lines appropriately to ensure that it applies only to the relevant lines.
 
-23. No restriction is applicable for the maximum character count in comment lines as they will go to RHS side and get wrapped automatically. However, since users can refer to the code in GitHub, it is better if we can have the same char limit as the code lines (i.e., 80) as it increases the readability of the code file.
+24. No restriction is applicable for the maximum character count in comment lines as they will go to RHS side and get wrapped automatically. However, since users can refer to the code in GitHub, it is better if we can have the same char limit as the code lines (i.e., 80) as it increases the readability of the code file.
 
     For example, comments are significantly longer than the code line in the image below, which is not readable. 
 
     ![Length of comments](/images/comments-length.png)
 
-24. After any update to a BBE is done or a new BBE is added, please add Anjana Fernando (lafernando) and Praneesha as reviewers.
+25. After any update to a BBE is done or a new BBE is added, please add Anjana Fernando (lafernando) and Praneesha as reviewers.
 
 ## Running Ballerina By Examples
 

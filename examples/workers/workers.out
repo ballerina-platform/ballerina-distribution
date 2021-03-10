@@ -4,4 +4,4 @@ bal run workers.bal
 Worker execution started
 Worker 2 response: 35
 Worker 1 response: 6
-Worker execution finished
+Worker execution finished: {"w1":null,"w2":null}

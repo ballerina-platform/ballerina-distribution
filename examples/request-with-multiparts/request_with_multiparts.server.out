@@ -1,3 +1,5 @@
+# In the directory, which contains the `.bal` file, create a directory named `file`,
+# and add an XML files named `test.xml` in it.
 # To start the service, navigate to the directory that contains the
 # `.bal` file and use the `bal run` command below.
 bal run request_with_multiparts.bal
