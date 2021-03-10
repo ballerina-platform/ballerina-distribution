@@ -782,7 +782,7 @@ task testExamples() {
             'directory-listener',
             'file', // Absolute path varies
             'filepath', // Depends on OS
-            'time',
+            'time', // Due to a current timestamp
             'locks', // Output is inconsistent between runs
             'crypto', // Output with line breaks cannot be compared
             'jwt-issue-validate', // Output depends on time
