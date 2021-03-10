@@ -1,5 +1,5 @@
-# The `execute()` function is triggered every second, navigate to the directory that contains the
-# `.bal` file and execute the `bal run` command below.
+# To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `bal run` command below.
 bal run task_frequency_job_execution.bal
 MyCounter: 1
 MyCounter: 2
