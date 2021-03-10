@@ -715,7 +715,10 @@ task testExamples() {
             'rabbitmq-consumer-with-data-binding',
             'rabbitmq-consumer-with-qos-settings',
             'rabbitmq-transaction-producer',
-            'rabbitmq-transaction-consumer'
+            'rabbitmq-transaction-consumer',
+            'mysql-complex-type-queries',
+            'jdbc-complex-type-queries'
+
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
