@@ -2,27 +2,31 @@ import ballerina/http;
 
 listener http:Listener securedEP = new(9090, config = {
     secureSocket: {
-        certFile: "../resource/path/to/public.crt",
-        keyFile: "../resource/path/to/private.key"
+        key: {
+            certFile: "../resource/path/to/public.crt",
+            keyFile: "../resource/path/to/private.key"
+        }
     }
 });
 
-// The service can be secured with JWT authentication and can be authorized
-// optionally. JWT authentication can be enabled by setting the
-// `http:JwtValidatorConfig` configurations.
+// The service can be secured with OAuth2 authentication and can be authorized
+// optionally. OAuth2 authentication can be enabled by setting the
+// `http:OAuth2IntrospectionConfig` configurations.
 // Authorization is based on scopes. A scope maps to one or more groups.
 // Authorization can be enabled by setting the `string|string[]` type
 // configurations.
 @http:ServiceConfig {
     auth: [
         {
-            jwtValidatorConfig: {
-                issuer: "wso2",
-                audience: "ballerina",
-                signatureConfig: {
-                    certFile: "../resource/path/to/public.crt"
-                },
-                scopeKey: "scp"
+            oauth2IntrospectionConfig: {
+                url: "https://localhost:9999/oauth2/token/introspect",
+                tokenTypeHint: "access_token",
+                scopeKey: "scp",
+                clientConfig: {
+                    secureSocket: {
+                        cert: "../resource/path/to/public.crt"
+                    }
+                }
             },
             scopes: ["hello"]
         }

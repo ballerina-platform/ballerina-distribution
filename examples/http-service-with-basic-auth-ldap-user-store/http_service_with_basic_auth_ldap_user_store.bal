@@ -2,8 +2,10 @@ import ballerina/http;
 
 listener http:Listener securedEP = new(9090, config = {
     secureSocket: {
-        certFile: "../resource/path/to/public.crt",
-        keyFile: "../resource/path/to/private.key"
+        key: {
+            certFile: "../resource/path/to/public.crt",
+            keyFile: "../resource/path/to/private.key"
+        }
     }
 });
 
@@ -34,8 +36,8 @@ listener http:Listener securedEP = new(9090, config = {
                 membershipAttribute: "member",
                 userRolesCacheEnabled: true,
                 connectionPoolingEnabled: false,
-                connectionTimeoutInMillis: 5000,
-                readTimeoutInMillis: 60000
+                connectionTimeout: 5000,
+                readTimeout: 60000
             },
             scopes: ["hello"]
         }

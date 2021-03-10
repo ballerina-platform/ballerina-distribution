@@ -7,7 +7,7 @@ public function main() {
         issuer: "ballerina",
         audience: "vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
         keyId: "NTAxZmMxNDMyZDg3MTU1ZGM0MzEzODJhZWI4NDNlZDU1OGFkNjFiMQ",
-        expTimeInSeconds: 3600,
+        expTime: 3600,
         signatureConfig: {
             config: {
                 keyFile: "../resource/path/to/private.key"
@@ -28,7 +28,7 @@ public function main() {
     jwt:ValidatorConfig validatorConfig1 = {
         issuer: "ballerina",
         audience: "vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
-        clockSkewInSeconds: 60,
+        clockSkew: 60,
         signatureConfig: {
             certFile: "../resource/path/to/public.crt"
         }
@@ -48,13 +48,13 @@ public function main() {
     jwt:ValidatorConfig validatorConfig2 = {
         issuer: "ballerina",
         audience: "vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
-        clockSkewInSeconds: 60,
+        clockSkew: 60,
         signatureConfig: {
             jwksConfig: {
                 url: "https://localhost:20000/oauth2/jwks",
                 clientConfig: {
                     secureSocket: {
-                        trustedCertFile: "../resource/path/to/public.crt"
+                        cert: "../resource/path/to/public.crt"
                     }
                 }
             }

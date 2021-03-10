@@ -1,16 +1,24 @@
 import ballerina/http;
 import ballerina/log;
 
-// Defines the HTTP client to call the secured APIs.
+// Defines the HTTP client to call the OAuth2 secured APIs.
 // The client is enriched with the `Authorization: Bearer <token>` header by
-// passing the `http:BearerTokenConfig` for the `auth` configuration of the
-// client.
+// passing the `http:ClientCredentialsGrantConfig` for the `auth` configuration
+// of the client.
 http:Client securedEP = check new("https://localhost:9090", {
     auth: {
-        token: "JlbmMiOiJBMTI4Q0JDLUhTMjU2In"
+        tokenUrl: "https://localhost:9090/oauth2/token",
+        clientId: "s6BhdRkqt3",
+        clientSecret: "7Fjfp0ZBr1KtDRbnfVdmIw",
+        scopes: ["hello"],
+        clientConfig: {
+            secureSocket: {
+                cert: "../resource/path/to/public.crt"
+            }
+        }
     },
     secureSocket: {
-        trustedCertFile: "../resource/path/to/public.crt"
+        cert: "../resource/path/to/public.crt"
     }
 });
 

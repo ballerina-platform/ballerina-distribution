@@ -1,25 +1,26 @@
 import ballerina/http;
 import ballerina/log;
 
-// Defines the HTTP client to call the OAuth2 secured APIs.
+// Defines the HTTP client to call the JWT auth secured APIs.
 // The client is enriched with the `Authorization: Bearer <token>` header by
-// passing the `http:DirectTokenConfig` for the `auth` configuration of the
-// client.
+// passing the `http:JwtIssuerConfig` for the `auth` configuration of the
+// client. A self-signed JWT is issued before the request is sent.
 http:Client securedEP = check new("https://localhost:9090", {
     auth: {
-        refreshUrl: "https://localhost:9090/oauth2/token/refresh",
-        refreshToken: "tGzv3JOkF0XG5Qx2TlKWIA",
-        clientId: "s6BhdRkqt3",
-        clientSecret: "7Fjfp0ZBr1KtDRbnfVdmIw",
-        scopes: ["hello"],
-        clientConfig: {
-            secureSocket: {
-                trustedCertFile: "../resource/path/to/public.crt"
+        username: "wso2",
+        issuer: "ballerina",
+        audience: ["ballerina", "ballerina.org", "ballerina.io"],
+        keyId: "5a0b754-895f-4279-8843-b745e11a57e9",
+        customClaims: { "scp": "hello" },
+        expTime: 3600,
+        signatureConfig: {
+            config: {
+                keyFile: "../resource/path/to/private.key"
             }
         }
     },
     secureSocket: {
-        trustedCertFile: "../resource/path/to/public.crt"
+        cert: "../resource/path/to/public.crt"
     }
 });
 

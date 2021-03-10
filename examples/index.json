@@ -1411,53 +1411,53 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "Secured Service with Basic Auth File User Store",
-                "url": "secured-service-with-basic-auth-file-user-store",
+                "name": "HTTP Service with Basic Auth File User Store",
+                "url": "http-service-with-basic-auth-file-user-store",
                 "disablePlayground": true
             },
             {
-                "name": "Secured Service with Basic Auth LDAP User Store",
-                "url": "secured-service-with-basic-auth-ldap-user-store",
+                "name": "HTTP Service with Basic Auth LDAP User Store",
+                "url": "http-service-with-basic-auth-ldap-user-store",
                 "disablePlayground": true
             },
             {
-                "name": "Secured Service with JWT Auth",
-                "url": "secured-service-with-jwt-auth",
+                "name": "HTTP Service with JWT Auth",
+                "url": "http-service-with-jwt-auth",
                 "disablePlayground": true
             },
             {
-                "name": "Secured Service with OAuth2",
-                "url": "secured-service-with-oauth2",
+                "name": "HTTP Service with OAuth2",
+                "url": "http-service-with-oauth2",
                 "disablePlayground": true
             },
             {
-                "name": "Secured Client with Basic Auth",
-                "url": "secured-client-with-basic-auth",
+                "name": "HTTP Client with Basic Auth",
+                "url": "http-client-with-basic-auth",
                 "disablePlayground": true
             },
             {
-                "name": "Secured Client with Bearer Token Auth",
-                "url": "secured-client-with-bearer-token-auth",
+                "name": "HTTP Client with Bearer Token Auth",
+                "url": "http-client-with-bearer-token-auth",
                 "disablePlayground": true
             },
             {
-                "name": "Secured Client with Self Signed JWT Auth",
-                "url": "secured-client-with-self-signed-jwt-auth",
+                "name": "HTTP Client with Self Signed JWT Auth",
+                "url": "http-client-with-self-signed-jwt-auth",
                 "disablePlayground": true
             },
             {
-                "name": "Secured Client with OAuth2 Client Credentials Grant Type",
-                "url": "secured-client-with-oauth2-client-credentials-grant-type",
+                "name": "HTTP Client with OAuth2 Client Credentials Grant Type",
+                "url": "http-client-with-oauth2-client-credentials-grant-type",
                 "disablePlayground": true
             },
             {
-                "name": "Secured Client with OAuth2 Password Grant Type",
-                "url": "secured-client-with-oauth2-password-grant-type",
+                "name": "HTTP Client with OAuth2 Password Grant Type",
+                "url": "http-client-with-oauth2-password-grant-type",
                 "disablePlayground": true
             },
             {
-                "name": "Secured Client with OAuth2 Direct Token Type",
-                "url": "secured-client-with-oauth2-direct-token-type",
+                "name": "HTTP Client with OAuth2 Direct Token Type",
+                "url": "http-client-with-oauth2-direct-token-type",
                 "disablePlayground": true
             }
         ]

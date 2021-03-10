@@ -5,7 +5,7 @@ import ballerina/test;
 function testFunc() {
     http:Client httpEndpoint = new("https://localhost:9095", config = {
         secureSocket: {
-            trustedCertFile: "../resource/path/to/public.crt"
+            cert: "../resource/path/to/public.crt"
         }
     });
 

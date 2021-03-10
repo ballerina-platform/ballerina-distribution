@@ -135,6 +135,17 @@ task unpackC2cLibs() {
     }
 }
 
+task unpackC2cTooling() {
+    doLast {
+        configurations.ballerinaC2cTooling.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+            copy {
+                from project.zipTree(artifact.getFile())
+                into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
+            }
+        }
+    }
+}
+
 task unpackC2cExamples(type: Copy) {
     group = "unpack_dependencies"
     configurations.ballerinaC2cExamples.resolvedConfiguration.resolvedArtifacts.each { artifact ->
@@ -188,26 +199,11 @@ task copyOtherRepos(type: Copy) {
     def ballerinaDist = "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
     into ballerinaDist
 
-    into("docs") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/docs"
-    }
-
-    into("docs") {
-        from "build/target/extracted-distributions/awslambda-extension-bala-zip/docs"
-    }
-
-    into("docs") {
-        from "build/target/extracted-distributions/azurefunctions-extension-bala-zip/docs"
-    }
-
     /* Standard Libraries */
     configurations.ballerinaStdLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
         from("${artifactExtractedPath}/libs") {
             into "bre/lib/"
-        }
-        from("${artifactExtractedPath}/docs") {
-            into "docs/"
         }
         from("${artifactExtractedPath}/bala") {
             into "repo/bala"
@@ -223,9 +219,6 @@ task copyOtherRepos(type: Copy) {
         from("${artifactExtractedPath}/libs") {
             into "bre/lib/"
         }
-        from("${artifactExtractedPath}/docs") {
-            into "docs/"
-        }
         from("${artifactExtractedPath}/bala") {
             into "repo/bala"
         }
@@ -234,14 +227,19 @@ task copyOtherRepos(type: Copy) {
         }
     }
 
+    /* C2C Tooling */
+    configurations.ballerinaC2cTooling.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+        def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
+        from("${artifactExtractedPath}") {
+            into "lib/tools/lang-server/lib/"
+        }
+    }
+
     /* Observability extensions */
     configurations.ballerinaObserveExtensions.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
         from("${artifactExtractedPath}/libs") {
             into "bre/lib/"
-        }
-        from("${artifactExtractedPath}/docs") {
-            into "docs/"
         }
         from("${artifactExtractedPath}/bala") {
             into "repo/bala"
@@ -255,7 +253,7 @@ task copyOtherRepos(type: Copy) {
 task buildDistRepo(type: JavaExec) {
     classpath = project.configurations.repoBuilder
     main = 'io.ballerina.dist.DistRepoBuilder'
-    args "$buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/repo"
+    args "$buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
 }
 
 task copyDevToolsCoverageReport(type: Copy) {
@@ -269,8 +267,8 @@ task copyDevToolsDocUi(type: Copy) {
 }
 
 task filterApiDocs(type: Delete) {
-    delete "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs/lang.__internal"
-    delete "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs/lang.annotations"
+    delete "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs/ballerina/lang.__internal"
+    delete "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs/ballerina/lang.annotations"
 }
 
 task combineDocs(type: Exec) {
@@ -678,12 +676,12 @@ task testExamples() {
             'tracing',
             'openapi-to-ballerina',
             'taint-checking', // Should not compile
-            'secured-client-with-basic-auth',
-            'secured-client-with-bearer-token-auth',
-            'secured-client-with-self-signed-jwt-auth',
-            'secured-client-with-oauth2-client-credentials-grant-type',
-            'secured-client-with-oauth2-password-grant-type',
-            'secured-client-with-oauth2-direct-token-type',
+            'http-client-with-basic-auth',
+            'http-client-with-bearer-token-auth',
+            'http-client-with-self-signed-jwt-auth',
+            'http-client-with-oauth2-client-credentials-grant-type',
+            'http-client-with-oauth2-password-grant-type',
+            'http-client-with-oauth2-direct-token-type',
 
             // Disabling due to pending migration for service typing
             'websocket-cookie',
@@ -788,10 +786,10 @@ task testExamples() {
             'locks', // Output is inconsistent between runs
             'crypto', // Output with line breaks cannot be compared
             'jwt-issue-validate', // Output depends on time
-            'secured-service-with-basic-auth-file-user-store', // Log output depends on time
-            'secured-service-with-basic-auth-ldap-user-store', // Log output depends on time
-            'secured-service-with-jwt-auth', // Log output depends on time
-            'secured-service-with-oauth2', // Log output depends on time
+            'http-service-with-basic-auth-file-user-store', // Log output depends on time
+            'http-service-with-basic-auth-ldap-user-store', // Log output depends on time
+            'http-service-with-jwt-auth', // Log output depends on time
+            'http-service-with-oauth2', // Log output depends on time
             'send-email',
             'receive-email-using-client',
             'receive-email-using-listener',
@@ -1292,8 +1290,9 @@ unpackDevTools.dependsOn unpackJballerinaTools
 unpackStdLibs.dependsOn unpackDevTools
 unpackC2cLibs.dependsOn unpackStdLibs
 unpackC2cExamples.dependsOn unpackC2cLibs
+unpackC2cTooling.dependsOn unpackC2cExamples
 unpackBalCommand.dependsOn unpackObservabilityExtensions
-unpackBalCommand.dependsOn unpackC2cExamples
+unpackBalCommand.dependsOn unpackC2cTooling
 
 /* Extract JRE */
 extractJreForLinux.dependsOn unpackBalCommand
@@ -1303,9 +1302,10 @@ extractJreForWindows.dependsOn extractJreForMac
 copyOtherRepos.dependsOn extractJreForWindows
 copyDevToolsCoverageReport.dependsOn copyOtherRepos
 copyDevToolsDocUi.dependsOn copyDevToolsCoverageReport
-filterApiDocs.dependsOn copyDevToolsDocUi
+buildDistRepo.dependsOn copyDevToolsDocUi
+filterApiDocs.dependsOn buildDistRepo
 combineDocs.dependsOn filterApiDocs
-buildDistRepo.dependsOn combineDocs
+
 /* Package Distributions */
 packageDist.dependsOn buildDistRepo
 packageDist.dependsOn combineDocs
