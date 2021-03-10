@@ -11,11 +11,12 @@ int counter = 0;
 test:MockFunction mock_printLn = new();
 
 public function mockPrint(any|error... s) {
-    if (s[0] is ()) {
+    var v = s[0];
+    if (v is ()) {
         // Cannot convert () to string.
         outputs[counter] = "()";
     } else {
-        outputs[counter] = s[0].toString();
+        outputs[counter] = v is error ? v.toString() : v.toString();
     }
     counter += 1;
 }

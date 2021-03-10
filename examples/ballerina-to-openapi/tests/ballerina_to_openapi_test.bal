@@ -4,7 +4,7 @@ import ballerina/http;
 @test:Config {}
 function testFunc() {
     // Invoking the service on localhost:9090.
-    http:Client httpEndpoint = new("http://localhost:9090");
+    http:Client httpEndpoint = checkpanic new("http://localhost:9090");
 
     string expectedResponse = "Hello World!";
 

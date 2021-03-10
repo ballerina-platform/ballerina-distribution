@@ -1,8 +1,0 @@
-# Before test this sample, first start a sample service secured with OAuth2.
-# To run this sample, navigate to the directory that contains the `.bal` file,
-# and execute the `bal run` command below.
-# (You may need to change the keystore path. A sample keystore file is
-# available in the distribution.
-# The file path is <ballerina.home>/examples/resources/ballerinaKeystore.p12)
-bal run secured_client_with_oauth2_password_grant_type.bal
-time = 2021-01-20 20:04:13,261 level = INFO  module = "" message = "200"

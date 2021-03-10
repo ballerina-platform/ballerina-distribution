@@ -1,0 +1,16 @@
+hostName = "192.0.1.2"
+port = 9090
+enableRemote = false
+maxPayload = 0.321
+
+[admin]
+username = "admin"
+password = "password"
+
+[[users]]
+username = "John"
+password="abc123"
+
+[[users]]
+username = "Bob"
+password="cde456"

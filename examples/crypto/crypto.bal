@@ -7,7 +7,7 @@ function hash() returns error? {
     string input = "Hello Ballerina!";
     byte[] inputArr = input.toBytes();
 
-    // Hashing input value using [MD5 hashing algorithm](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/crypto/latest/crypto/functions#hashMd5), and printing hash value using Hex encoding.
+    // Hashing input value using [MD5 hashing algorithm](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/crypto/latest/crypto/functions#hashMd5), and printing hash value using Hex encoding.
     byte[] output = crypto:hashMd5(inputArr);
     io:println("Hex encoded hash with MD5: " + output.toBase16());
 
@@ -41,42 +41,57 @@ function hmac() returns error? {
     byte[] keyArr = key.toBytes();
 
     // HMAC generation for input value using MD5 hashing algorithm, and printing HMAC value using Hex encoding.
-    byte[] output = crypto:hmacMd5(inputArr, keyArr);
+    byte[] output = check crypto:hmacMd5(inputArr, keyArr);
     io:println("Hex encoded HMAC with MD5: " + output.toBase16());
 
     // HMAC generation for input value using SHA1 hashing algorithm, and printing HMAC value using Base64 encoding.
-    output = crypto:hmacSha1(inputArr, keyArr);
+    output = check crypto:hmacSha1(inputArr, keyArr);
     io:println("Base64 encoded HMAC with SHA1: " + output.toBase64());
 
     // HMAC generation for input value using SHA256 hashing algorithm, and printing HMAC value using Hex encoding.
-    output = crypto:hmacSha256(inputArr, keyArr);
+    output = check crypto:hmacSha256(inputArr, keyArr);
     io:println("Hex encoded HMAC with SHA256: " + output.toBase16());
 
     // HMAC generation for input value using SHA384 hashing algorithm, and printing HMAC value using Base64 encoding.
-    output = crypto:hmacSha384(inputArr, keyArr);
+    output = check crypto:hmacSha384(inputArr, keyArr);
     io:println("Base64 encoded HMAC with SHA384: " + output.toBase64());
 
     // HMAC generation for input value using SHA512 hashing algorithm, and printing HMAC value using Hex encoding.
-    output = crypto:hmacSha512(inputArr, keyArr);
+    output = check crypto:hmacSha512(inputArr, keyArr);
     io:println("Hex encoded HMAC with SHA512: " + output.toBase16());
 }
 
 function decodeKeys() returns [crypto:PrivateKey, crypto:PublicKey]|error {
+    // Obtaining reference to a RSA private key by a key file.
+    string keyFile = "../resource/path/to/private.key";
+    crypto:PrivateKey privateKey =
+        check crypto:decodeRsaPrivateKeyFromKeyFile(keyFile);
+
+    // Obtaining reference to a RSA private key by a encrypted key file.
+    string encryptedKeyFile = "../resource/path/to/encryptedPrivate.key";
+    privateKey = check crypto:decodeRsaPrivateKeyFromKeyFile(keyFile,
+                                                             "ballerina");
+
     // Obtaining reference to a RSA private key stored within a PKCS#12 or PFX format archive file.
     crypto:KeyStore keyStore = {
-        path: "../resources/ballerinaKeystore.p12",
+        path: "../resource/path/to/ballerinaKeystore.p12",
         password: "ballerina"
     };
-    crypto:PrivateKey privateKey =
-        check crypto:decodePrivateKey(keyStore, "ballerina", "ballerina");
+    privateKey = check crypto:decodeRsaPrivateKeyFromKeyStore(keyStore,
+                                                   "ballerina", "ballerina");
+
+    // Obtaining reference to a RSA public key by a cert file.
+    string certFile = "../resource/path/to/public.crt";
+    crypto:PublicKey publicKey =
+        check crypto:decodeRsaPublicKeyFromCertFile(certFile);
 
     // Obtaining reference to a RSA public key stored within a PKCS#12 or PFX format archive file.
     crypto:TrustStore trustStore = {
-        path: "../resources/ballerinaTruststore.p12",
+        path: "../resource/path/to/ballerinaTruststore.p12",
         password: "ballerina"
     };
-    crypto:PublicKey publicKey =
-        check crypto:decodePublicKey(trustStore, "ballerina");
+    publicKey = check crypto:decodeRsaPublicKeyFromTrustStore(trustStore,
+                                                              "ballerina");
 
     return [privateKey, publicKey];
 }

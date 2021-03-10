@@ -1,7 +1,0 @@
-# To run this sample, navigate to the directory that contains the `.bal` file,
-# and execute the `bal run` command below.
-# (You may need to change the keystore path. A sample keystore file is
-# available in the distribution.
-# The file path is <ballerina.home>/examples/resources/ballerinaKeystore.p12)
-bal run secured_service_with_oauth2.bal
-[ballerina/http] started HTTPS/WSS listener 0.0.0.0:9090

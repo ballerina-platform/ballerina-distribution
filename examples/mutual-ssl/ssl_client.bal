@@ -2,21 +2,20 @@ import ballerina/http;
 import ballerina/log;
 
 // Create a client configuration to be passed to the client endpoint.
-// Configure the `keyStore` file `path` and `password`, `truststore`
-// file `path` and `password`, which are required to enable mutual SSL.
-// [secureSocket](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/ClientSecureSocket) record provides the SSL related configurations.
+// Configure the `certFile`, `keyFile` including `cert` which
+// is required to enable mutual SSL.
+// [secureSocket](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/ClientSecureSocket) record provides the SSL related configurations.
 http:ClientConfiguration clientEPConfig = {
     secureSocket: {
-        keyStore: {
-            path: "../resources/ballerinaKeystore.p12",
-            password: "ballerina"
+        key: {
+            certFile: "../resource/path/to/public.crt",
+            keyFile: "../resource/path/to/private.key"
         },
-        trustStore: {
-            path: "../resources/ballerinaTruststore.p12",
-            password: "ballerina"
+        mutualSsl: {
+            cert: "../resource/path/to/public.crt"
         },
         protocol: {
-            name: "TLS"
+            name: http:TLS
         },
         ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
     }
@@ -24,7 +23,8 @@ http:ClientConfiguration clientEPConfig = {
 
 public function main() {
     // Create an HTTP client to interact with the created listener endpoint.
-    http:Client clientEP = checkpanic new("https://localhost:9095", clientEPConfig);
+    http:Client clientEP = checkpanic new("https://localhost:9095",
+                                          clientEPConfig);
     // Send a GET request to the listener and bind the payload to a string value.
     var payload = clientEP->get("/helloWorld/hello", targetType = string);
     if (payload is string) {

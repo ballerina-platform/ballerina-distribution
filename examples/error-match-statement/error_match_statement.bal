@@ -20,7 +20,8 @@ public function main() {
     [string, string] v1 = ["Sample String", "Sample String 2"];
     Foo v2 = {message: "A", fatal: false};
     InvalidIdError e3 = error InvalidIdError("Invalid Error", id = "33456");
-    SampleError e2 = error SampleError("Sample Error", message = "Fatal", fatal = true);
+    SampleError e2 = error SampleError("Sample Error", message = "Fatal",
+                                       fatal = true);
     error e1 = error("Generic Error", message = "Failed");
 
     basicMatch(v1);
@@ -42,20 +43,20 @@ function basicMatch(any|error v) {
         // `InvalidIdError`, it will be matched to the `InvalidIdError` indirect
         // error match pattern.
         error InvalidIdError(id = var a) => {
-            io:println("Matched `InvalidError` id=", id);
+            io:println("Matched `InvalidError` id=", a);
         }
         // If a rest binding pattern is used, the error details that are not
         // matched will be recorded in a map.
         error SampleError("Sample Error", message = var a, ...var b) => {
             io:println("Matched an error value : ",
-            io:sprintf("reason: %s, rest detail: %s", reason, rest));
+            io:sprintf("message: %s, rest detail: %s", a, b));
         }
         // If the `v` variable contains an `error` value, it will be matched
         // to this pattern and the reason string and the detail record will be
         // destructed within the pattern block.
         error("Generic Error", message = var a) => {
             io:println("Matched an error value : ",
-            io:sprintf("message: %s", message));
+            io:sprintf("message: %s", a));
         }
     }
 }

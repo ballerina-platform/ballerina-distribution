@@ -1,5 +1,4 @@
 // This is the server implementation of the secured connection (HTTPS) scenario.
-import ballerina/config;
 import ballerina/grpc;
 import ballerina/log;
 
@@ -7,10 +6,9 @@ import ballerina/log;
 listener grpc:Listener ep = new (9090, {
     host: "localhost",
     secureSocket: {
-        keyStore: {
-            path: config:getAsString("b7a.home") +
-                  "/bre/security/ballerinaKeystore.p12",
-            password: "ballerina"
+        key: {
+            certFile: "../resource/path/to/public.crt",
+            keyFile: "../resource/path/to/private.key"
         }
     }
 });

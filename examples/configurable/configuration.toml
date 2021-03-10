@@ -1,4 +1,0 @@
-hostName = "192.0.1.2"
-port = 9090
-enableRemote = false
-maxPayload = 0.321

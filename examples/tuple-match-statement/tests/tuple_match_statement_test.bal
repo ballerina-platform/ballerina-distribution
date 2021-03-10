@@ -1,7 +1,7 @@
 import ballerina/test;
 import ballerina/io;
 
-any[] outputs = [];
+string[] outputs = [];
 int counter = 0;
 
 // This is the mock function which will replace the real function.
@@ -9,6 +9,8 @@ int counter = 0;
     moduleName: "ballerina/io",
     functionName: "println"
 }
+test:MockFunction mockPrintLn = new();
+
 public function mockPrint(any... s) {
     string outstr = "";
     foreach var str in s {
@@ -18,19 +20,20 @@ public function mockPrint(any... s) {
     counter += 1;
 }
 
-@test:Config
+@test:Config {}
 function testFunc() {
+    test:when(mockPrintLn).call("mockPrint");
     // Invoking the main function.
     main();
 
     string out1 = "Matched with single var : 66.6";
-    string out2 = "Matched with two vars : (\"Hello\", 12)";
-    string out3 = "Matched with two vars : (4.5, true)";
-    string out4 = "Matched with three vars : (6.7, \"Test\", false)";
-    string out5 = "'s' is string and 'i' is int : (\"Hello\", 45)";
-    string out6 = "Only 's' is float : (4.5, true)";
-    string out7 = "Only 'i' is int : (false, 4)";
-    string out8 = "No type guard : (455, true)";
+    string out2 = "Matched with two vars : Hello 12";
+    string out3 = "Matched with two vars : 4.5 true";
+    string out4 = "Matched with three vars : 6.7 Test false";
+    string out5 = "'s' is string and 'i' is int : Hello 45";
+    string out6 = "Only 's' is float : 4.5 true";
+    string out7 = "Only 'i' is int : false 4";
+    string out8 = "No type guard : 455 true";
     string out9 = "'s' is float only : 5.6";
 
     test:assertEquals(outputs[0], out1);

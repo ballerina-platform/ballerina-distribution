@@ -1,0 +1,5 @@
+# To start the service, navigate to the directory that contains the
+# `.bal` file and execute the `bal run` command below.
+bal run websocket_binary_client.bal
+
+Binary message

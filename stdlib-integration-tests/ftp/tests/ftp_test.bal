@@ -7,7 +7,12 @@ function testFtp() {
             protocol: ftp:FTP,
             host: "127.0.0.1",
             port: 21212,
-            secureSocket: {basicAuth: {username: "wso2", password: "wso2123"}}
+            secureSocket: {
+                basicAuth: {
+                    username: "wso2",
+                    password: "wso2123"
+                }
+            }
     };
     test:assertEquals(config.host, "127.0.0.1");
 }

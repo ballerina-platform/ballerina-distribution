@@ -3,7 +3,7 @@ import ballerina/io;
 import ballerina/log;
 import ballerina/mime;
 
-//[Client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client) endpoint.
+//[Client](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client) endpoint.
 http:Client clientEP = check new ("http://localhost:9091/backEndService");
 
 //Service to test HTTP client remote functions with different payload types.
@@ -12,26 +12,26 @@ service /actionService on new http:Listener(9090) {
     resource function 'default messageUsage(http:Caller caller,
                                             http:Request req) {
 
-        //[GET](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#get) remote function without any payload.
+        //[GET](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#get) remote function without any payload.
         var response = clientEP->get("/greeting");
         handleResponse(response);
 
-        //[GET](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#get) remote function with
+        //[GET](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#get) remote function with
         //the request given as a message.
         http:Request request = new;
         response = clientEP->get("/greeting", message = request);
         handleResponse(response);
 
-        //[POST](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function without any payload.
+        //[POST](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function without any payload.
         response = clientEP->post("/echo", ());
         handleResponse(response);
 
-        //[POST](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function with
+        //[POST](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function with
         //text as the payload.
         response = clientEP->post("/echo", "Sample Text");
         handleResponse(response);
 
-        //[POST](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function with
+        //[POST](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function with
         //`xml` as the payload.
         response = clientEP->post("/echo", xml `<yy>Sample Xml</yy>`);
         handleResponse(response);
@@ -40,30 +40,44 @@ service /actionService on new http:Listener(9090) {
         response = clientEP->post("/echo", {name: "apple", color: "red"});
         handleResponse(response);
 
-        //[POST](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function with
+        //[POST](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function with
         //`byte[]` as the payload.
         string textVal = "Sample Text";
         byte[] binaryValue = textVal.toBytes();
         response = clientEP->post("/echo", binaryValue);
         handleResponse(response);
 
-         //[Create a JSON body part](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#setJson).
-        mime:Entity part1 = new;
-        part1.setJson({"name": "Jane"});
+        //Get a byte stream to a given file.
+        var bStream = io:fileReadBlocksAsStream("./files/logo.png");
 
-        //[Create a text body part](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#setText).
-        mime:Entity part2 = new;
-        part2.setText("Hello");
+        if (bStream is stream<byte[], io:Error>) {
+            //Make a POST request with a byte stream as the payload. Since the file path is static `<@untainted>` is used to denote that the byte stream is trusted.
+            response = clientEP->post("/image", <@untainted>bStream);
+            handleResponse(response);
 
-        //[POST](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function
-        //with a body parts as the payload.
-        mime:Entity[] bodyParts = [part1, part2];
-        response = clientEP->post("/echo", bodyParts);
-        handleResponse(response);
+            //[Create a JSON body part](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#setJson).
+            mime:Entity part1 = new;
+            part1.setJson({"name": "Jane"});
 
-        var result = caller->respond(
-                                "Client actions successfully executed!");
-        handleError(result);
+            //[Create a text body part](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#setText).
+            mime:Entity part2 = new;
+            part2.setText("Hello");
+
+            //Make a POST request with body parts as the payload.
+            mime:Entity[] bodyParts = [part1, part2];
+            response = clientEP->post("/echo", bodyParts);
+            handleResponse(response);
+
+            var result =
+                    caller->respond("Client actions successfully executed!");
+            handleError(result);
+        } else {
+            http:Response res = new;
+            res.statusCode = 500;
+            res.setPayload(<@untainted>bStream.message());
+            var result = caller->respond(res);
+            handleError(result);
+        }
     }
 }
 

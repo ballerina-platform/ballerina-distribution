@@ -28,8 +28,8 @@ public function mockPrint(string msg, *log:KeyValues keyValues) {
 
 @test:Config {}
 function testFunc() {
-    test:when(mock_printLn).call("mockPrintError");
-    test:when(mock_printLn).call("mockPrint");
+    test:when(mock_printError).call("mockPrintError");
+    test:when(mock_print).call("mockPrint");
 
     // Invoking the main function.
     main();

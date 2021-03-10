@@ -36,7 +36,7 @@ public function main() {
 
     io:println("\nIterating a JSON array:- ");
     // To iterate a JSON array, you need to first cast it into a JSON array (`json[]`).
-    json[] colors = <json[]> apple.colors;
+    json[] colors = <json[]> checkpanic apple.colors;
     foreach var color in colors {
         io:println("Color: ", color);
     }
