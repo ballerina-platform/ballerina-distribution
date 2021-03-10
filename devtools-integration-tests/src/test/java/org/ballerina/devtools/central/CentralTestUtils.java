@@ -154,11 +154,10 @@ public class CentralTestUtils {
      * Get generate executable log.
      *
      * @param pkgName package name
-     * @param version package version
      * @return generate executable log
      */
-    static String getGenerateExecutableLog(String pkgName, String version) {
-        return "Generating executable\n" + "\ttarget/bin/" + pkgName + "-" + version + ".jar";
+    static String getGenerateExecutableLog(String pkgName) {
+        return "Generating executable\n" + "\ttarget/bin/" + pkgName + ".jar";
     }
 
     /**
@@ -177,10 +176,9 @@ public class CentralTestUtils {
      *
      * @param projectPath project path
      * @param pkgName     package name
-     * @param version     package version
      * @return executable jar path
      */
-    static Path getExecutableJarPath(Path projectPath, String pkgName, String version) {
-        return projectPath.resolve("target").resolve("bin").resolve(pkgName + "-" + version + ".jar");
+    static Path getExecutableJarPath(Path projectPath, String pkgName) {
+        return projectPath.resolve("target").resolve("bin").resolve(pkgName + ".jar");
     }
 }

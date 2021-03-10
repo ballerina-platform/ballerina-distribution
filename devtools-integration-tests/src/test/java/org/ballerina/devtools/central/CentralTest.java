@@ -151,12 +151,12 @@ public class CentralTest {
         }
 
         String buildOutput = getString(build.getInputStream());
-        if (!buildOutput.contains(getGenerateExecutableLog(this.packageAName, COMMON_VERSION))) {
-            Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + getGenerateExecutableLog(this.packageAName, COMMON_VERSION));
+        if (!buildOutput.contains(getGenerateExecutableLog(this.packageAName))) {
+            Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + getGenerateExecutableLog(this.packageAName));
         }
 
         Assert.assertTrue(
-                getExecutableJarPath(this.tempWorkspaceDirectory.resolve(PROJECT_A), this.packageAName, COMMON_VERSION)
+                getExecutableJarPath(this.tempWorkspaceDirectory.resolve(PROJECT_A), this.packageAName)
                         .toFile().exists());
     }
 
@@ -186,12 +186,12 @@ public class CentralTest {
         }
 
         String buildOutput = getString(build.getInputStream());
-        if (!buildOutput.contains(getGenerateExecutableLog(this.packageBName, COMMON_VERSION))) {
-            Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + getGenerateExecutableLog(this.packageBName, COMMON_VERSION));
+        if (!buildOutput.contains(getGenerateExecutableLog(this.packageBName))) {
+            Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + getGenerateExecutableLog(this.packageBName));
         }
 
         Assert.assertTrue(
-                getExecutableJarPath(this.tempWorkspaceDirectory.resolve(PROJECT_B), this.packageBName, COMMON_VERSION)
+                getExecutableJarPath(this.tempWorkspaceDirectory.resolve(PROJECT_B), this.packageBName)
                         .toFile().exists());
     }
 
@@ -241,12 +241,12 @@ public class CentralTest {
         }
 
         String buildOutput = getString(build.getInputStream());
-        if (!buildOutput.contains(getGenerateExecutableLog(this.packageCName, COMMON_VERSION))) {
-            Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + getGenerateExecutableLog(this.packageCName, COMMON_VERSION));
+        if (!buildOutput.contains(getGenerateExecutableLog(this.packageCName))) {
+            Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + getGenerateExecutableLog(this.packageCName));
         }
 
         Assert.assertTrue(
-                getExecutableJarPath(this.tempWorkspaceDirectory.resolve(PROJECT_C), this.packageCName, COMMON_VERSION)
+                getExecutableJarPath(this.tempWorkspaceDirectory.resolve(PROJECT_C), this.packageCName)
                         .toFile().exists());
     }
 
@@ -276,12 +276,12 @@ public class CentralTest {
         }
 
         String buildOutput = getString(build.getInputStream());
-        if (!buildOutput.contains(getGenerateExecutableLog(this.packageDName, COMMON_VERSION))) {
-            Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + getGenerateExecutableLog(this.packageDName, COMMON_VERSION));
+        if (!buildOutput.contains(getGenerateExecutableLog(this.packageDName))) {
+            Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + getGenerateExecutableLog(this.packageDName));
         }
 
         Assert.assertTrue(
-                getExecutableJarPath(this.tempWorkspaceDirectory.resolve(PROJECT_D), this.packageDName, COMMON_VERSION)
+                getExecutableJarPath(this.tempWorkspaceDirectory.resolve(PROJECT_D), this.packageDName)
                         .toFile().exists());
 
         String runExpectedMsg = "Hello World:110";
@@ -307,14 +307,14 @@ public class CentralTest {
         }
 
         String buildOutput = getString(build.getInputStream());
-        if (!buildOutput.contains(getGenerateExecutableLog(this.packageSnapshotName, snapshotVersion))) {
+        if (!buildOutput.contains(getGenerateExecutableLog(this.packageSnapshotName))) {
             Assert.fail(
-                    OUTPUT_NOT_CONTAINS_EXP_MSG + getGenerateExecutableLog(this.packageSnapshotName, snapshotVersion));
+                    OUTPUT_NOT_CONTAINS_EXP_MSG + getGenerateExecutableLog(this.packageSnapshotName));
         }
 
         Assert.assertTrue(
-                getExecutableJarPath(this.tempWorkspaceDirectory.resolve(PROJECT_SNAPSHOT), this.packageSnapshotName,
-                                     snapshotVersion).toFile().exists());
+                getExecutableJarPath(this.tempWorkspaceDirectory.resolve(PROJECT_SNAPSHOT), this.packageSnapshotName)
+                        .toFile().exists());
     }
 
     @Test(description = "Push package with pre-release version to central",
