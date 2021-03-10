@@ -32,7 +32,7 @@ public function main() {
 
 function kafkaAdvancedTransactionalProduce(byte[] message) {
     transaction {
-        var sendResult = kafkaProducer->sendProducerRecord({
+        var sendResult = kafkaProducer->send({
             topic: "test-kafka-topic",
             value: message,
             partition: 0 });
