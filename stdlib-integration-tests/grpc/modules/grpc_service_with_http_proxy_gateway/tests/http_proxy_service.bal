@@ -19,13 +19,15 @@ import ballerina/log;
 
 http:ListenerConfiguration helloWorldEPConfig = {
     secureSocket: {
-        trustStore: {
-            path: TRUSTSTORE_PATH,
-            password: "ballerina"
-        },
-        keyStore: {
+        key: {
             path: KEYSTORE_PATH,
             password: "ballerina"
+        },
+        mutualSsl: {
+            cert: {
+                path: TRUSTSTORE_PATH,
+                password: "ballerina"
+            }
         }
     },
    httpVersion: "2.0"
@@ -33,12 +35,12 @@ http:ListenerConfiguration helloWorldEPConfig = {
 
 http:ClientConfiguration endpointConfig = {
     secureSocket: {
-        trustStore: {
+        cert: {
             path: TRUSTSTORE_PATH,
             password: "ballerina"
         }
     },
-   httpVersion: "2.0"
+    httpVersion: "2.0"
 };
 http:Client clientEP = new("https://localhost:20007", endpointConfig);
 listener http:Listener helloWorldEP = new(20008, helloWorldEPConfig);

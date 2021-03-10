@@ -28,7 +28,7 @@ public function testBidiStreamingInChatClient() {
     //Client endpoint configuration.
     ChatClient chatEp = new("https://localhost:20008", {
         secureSocket: {
-            trustStore: {
+            cert: {
                 path: TRUSTSTORE_PATH,
                 password: "ballerina"
             }

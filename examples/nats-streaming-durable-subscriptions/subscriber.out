@@ -2,7 +2,7 @@
 # `.bal` file, and execute the `bal run` command below.
 bal run subscriber.bal
 
-[ballerina/nats] Client subscribed for subject demo
+[ballerinax/nats] Client subscribed for subject demo
 Received message: First Message
 
 # Stop the subscriber and publish some messages while it is stopped.
@@ -12,5 +12,5 @@ Received message: First Message
 
 bal run subscriber.bal
 
-[ballerina/nats] Client subscribed for subject demo
+[ballerinax/nats] Client subscribed for subject demo
 Received message: Second Message

@@ -9,7 +9,7 @@ listener grpc:Listener ep = new (9090);
     descMap: getDescriptorMap()
 }
 service "HelloWorld" on ep {
-    remote function lotsOfGreetings(stream<string,error> clientStream)
+    remote function lotsOfGreetings(stream<string, grpc:Error?> clientStream)
                                     returns string|error {
         log:print("Connected sucessfully.");
         // Read and process each message in the client stream.
@@ -23,35 +23,3 @@ service "HelloWorld" on ep {
         return "";
     }
 }
-
-public client class HelloWorldStringCaller {
-    private grpc:Caller caller;
-
-    public function init(grpc:Caller caller) {
-        self.caller = caller;
-    }
-
-    public isolated function getId() returns int {
-        return self.caller.getId();
-    }
-
-    isolated remote function send(string|ContextString response)
-                                    returns grpc:Error? {
-        return self.caller->send(response);
-    }
-
-    isolated remote function sendError(grpc:Error response)
-                                    returns grpc:Error? {
-        return self.caller->sendError(response);
-    }
-
-    isolated remote function complete() returns grpc:Error? {
-        return self.caller->complete();
-    }
-}
-
-// The context record includes the message payload and headers.
-public type ContextString record {|
-    string content;
-    map<string[]> headers;
-|};

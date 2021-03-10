@@ -23,7 +23,7 @@ function testDecodePrivateKey() {
         path: "tests/resources/keystore/ballerinaKeystore.p12",
         password: "ballerina"
     };
-    var result = crypto:decodePrivateKey(keyStore, "ballerina", "ballerina");
+    var result = crypto:decodeRsaPrivateKeyFromKeyStore(keyStore, "ballerina", "ballerina");
     if (result is crypto:PrivateKey) {
         test:assertEquals(result.algorithm, "RSA", msg = "Invalid algorithm of decoded private key.");
     } else {
@@ -37,7 +37,7 @@ function testDecodePublicKey() {
         path: "tests/resources/keystore/ballerinaTruststore.p12",
         password: "ballerina"
     };
-    var result = crypto:decodePublicKey(truststore, "ballerina");
+    var result = crypto:decodeRsaPublicKeyFromTrustStore(truststore, "ballerina");
     if (result is crypto:PublicKey) {
         test:assertEquals(result.algorithm, "RSA", msg = "Invalid algorithm of decoded public key.");
     } else {

@@ -13,14 +13,14 @@ function startService() {
 }
 function testFunc() {
     // Invoking the main function
-    http:Client httpEndpoint = new("http://localhost:9090");
+    http:Client httpEndpoint = checkpanic new("http://localhost:9090");
     // Check whether the server is started
     //test:assertTrue(serviceStarted, msg = "Unable to start the service");
 
     string response1 = "Hello, World!";
 
     // Send a GET request to the specified endpoint
-    var response = httpEndpoint->get("/hello/sayHello");
+    var response = httpEndpoint->get("/greeting");
     if (response is http:Response) {
         test:assertEquals(response.getTextPayload(), response1);
     } else {

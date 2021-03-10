@@ -2,6 +2,6 @@
 # `.bal` file, and execute the `bal run` command below.
 bal run subscriber.bal
 
-[ballerina/nats] Client subscribed for subject demo
+[ballerinax/nats] Client subscribed for subject demo
 Received message: Hello from Ballerina
 

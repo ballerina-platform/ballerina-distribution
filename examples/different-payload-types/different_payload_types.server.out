@@ -1,0 +1,18 @@
+# In the directory, which contains the `.bal` file, create a directory named `files`,
+# and add an image file named `logo.png` in it.
+# To start the service, navigate to the directory that contains the
+# `.bal` file and use the `bal run` command below.
+bal run different_payload_types.bal
+[ballerina/http] started HTTP/WS listener 0.0.0.0:9091
+[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+time = 2020-12-15 17:41:04,032 level = INFO  module = "" message = "Text data: Hello"
+time = 2020-12-15 17:41:04,050 level = INFO  module = "" message = "Text data: Hello"
+time = 2020-12-15 17:41:04,055 level = INFO  module = "" message = "Entity body is not available"
+time = 2020-12-15 17:41:04,062 level = INFO  module = "" message = "Text data: Sample Text"
+time = 2020-12-15 17:41:04,206 level = INFO  module = "" message = "Xml data: <yy>Sample Xml</yy>"
+time = 2020-12-15 17:41:04,224 level = INFO  module = "" message = "Json data: {"name":"apple", "color":"red"}"
+time = 2020-12-15 17:41:04,232 level = INFO  module = "" message = "Response contains binary data: Sample Text"
+time = 2020-12-15 17:41:04,256 level = INFO  module = "" message = "Response contains an image"
+time = 2020-12-15 17:41:04,275 level = INFO  module = "" message = "Response contains body parts: "
+time = 2020-12-15 17:41:04,280 level = INFO  module = "" message = "Json Part: {"name":"Jane"}"
+time = 2020-12-15 17:41:04,281 level = INFO  module = "" message = "Text Part: Hello"
