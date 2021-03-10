@@ -82,7 +82,6 @@ public class CentralTest {
     private static final String PROJECT_C = "projectC";
     private static final String PROJECT_D = "projectD";
     private static final String PROJECT_SNAPSHOT = "projectSnapshot";
-    private static final String COMMON_VERSION = "1.0.0";
     private static final String TEST_PREFIX = "test_";
     private static final String OUTPUT_CONTAIN_ERRORS = "build output contain errors:";
     private static final String OUTPUT_NOT_CONTAINS_EXP_MSG = "build output does not contain expected message:";
@@ -295,7 +294,6 @@ public class CentralTest {
 
     @Test(description = "Build package with pre-release version")
     public void testBuildSnapshotPackage() throws IOException, InterruptedException {
-        String snapshotVersion = "1.0.0-snapshot";
         Process build = executeBuildCommand(DISTRIBUTION_FILE_NAME,
                                             this.tempWorkspaceDirectory.resolve(PROJECT_SNAPSHOT),
                                             new LinkedList<>(),
