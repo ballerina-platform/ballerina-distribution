@@ -10,7 +10,7 @@ kafka:ConsumerConfiguration consumerConfigs = {
     // Subscribes to the topic `test-kafka-topic`.
     topics: ["test-kafka-topic"],
 
-    pollingIntervalInMillis: 1000,
+    pollingInterval: 1000,
 
     // Set `autoCommit` to false, so that the records should be committed
     // manually.
