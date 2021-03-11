@@ -36,7 +36,7 @@ function testClientEcho() returns  @tainted error? {
     dependsOn: [testClientEcho]
 }
 function testClientReadTimeout() returns  @tainted error? {
-    tcp:Client socketClient = check new ("localhost", PORT2, timeoutInMillis = 100);
+    tcp:Client socketClient = check new ("localhost", PORT2, timeout = 1);
 
     string msg = "Do not reply";
     byte[] msgByteArray = msg.toBytes();
@@ -57,7 +57,7 @@ function testClientReadTimeout() returns  @tainted error? {
     dependsOn: [testClientReadTimeout]
 }
 function testServerAlreadyClosed() returns  @tainted error? {
-    tcp:Client socketClient = check new ("localhost", PORT3, timeoutInMillis = 100);
+    tcp:Client socketClient = check new ("localhost", PORT3, timeout = 1);
 
     tcp:Error|(readonly & byte[]) res = socketClient->readBytes();
     if (res is (readonly & byte[])) {
