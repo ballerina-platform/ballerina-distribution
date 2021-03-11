@@ -5,7 +5,7 @@ import ballerina/time;
 // Creating a job to be executed by the scheduler.
 class Job {
 
-    *Job;
+    *task:Job;
     int i = 1;
 
     // Get executed by the scheduler when the scheduled trigger fires.
@@ -19,7 +19,7 @@ class Job {
     }
 }
 
-public function main() {
+public function main() returns error? {
 
     // Get the current time.
     time:Utc currentUtc = time:utcNow();
@@ -28,15 +28,15 @@ public function main() {
     // Get the `time:Civil` for the given time.
     time:Civil time = time:utcToCivil(newTime);
     // Create a `time:ZoneOffset` using the given configuration.
-    time:ZoneOffset zoneOffset = {hours: 5, minutes: 30};
+    time:ZoneOffset zoneOffset = {hours: 0, minutes: 0};
     // Set the offset to the `time:Civil`.
     time.utcOffset = zoneOffset;
 
     // Schedule the frequency job.
-    JobId id = check task:scheduleJobRecurByFrequency(new Job(1), 1, stratTime = time);
+    JobId id = check task:scheduleJobRecurByFrequency(new Job(1), 1, startTime = time);
 
-    // Wait for nine seconds.
-    runtime:sleep(9.5);
+    // Wait for twelve seconds.
+    runtime:sleep(12);
 
     // UnSchedule the job.
     check task:unscheduleJob(id);

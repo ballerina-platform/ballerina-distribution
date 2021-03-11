@@ -5,7 +5,7 @@ import ballerina/time;
 // Creating a job to be executed by the scheduler.
 class Job {
 
-    *Job;
+    *task:Job;
     int i = 1;
 
     // Get executed by the scheduler when the scheduled trigger fires.
@@ -19,7 +19,7 @@ class Job {
     }
 }
 
-public function main() {
+public function main() returns error? {
     // Get the current time.
     time:Utc currentUtc = time:utcNow();
     // Increase the time by three seconds.
