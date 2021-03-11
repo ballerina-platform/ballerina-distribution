@@ -24,7 +24,7 @@ service /stockquote on new http:Listener(8889) {
         } else {
             res.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
             res.setPayload(updateReq.message());
-            log:printError("Payload error occurred!", 'err = updateReq);
+            log:printError("Payload error occurred!", 'error = updateReq);
         }
 
         // Send the response back to the initiator.
