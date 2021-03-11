@@ -57,7 +57,7 @@ function testConnectionlessClient() {
 
         var sendResult = socketClient->sendDatagram(datagram);
         if (sendResult is ()) {
-            log:print("Datagram was sent to the remote host.");
+            log:printInfo("Datagram was sent to the remote host.");
         } else {
             test:assertFail(msg = sendResult.message());
         }
@@ -66,7 +66,7 @@ function testConnectionlessClient() {
         checkpanic socketClient->close();
         
     } else if (socketClient is udp:Error) {
-        log:printError("Error initializing UDP Client", err = socketClient);
+        log:printError("Error initializing UDP Client", 'error = socketClient);
     }
 }
 
@@ -79,7 +79,7 @@ function testConnectClient() {
 
         var sendResult = socketClient->writeBytes(msg.toBytes());
         if (sendResult is ()) {
-            log:print("Data was sent to the remote host.");
+            log:printInfo("Data was sent to the remote host.");
         } else {
             test:assertFail(msg = sendResult.message());
         }
@@ -88,7 +88,7 @@ function testConnectClient() {
         checkpanic socketClient->close();
         
     } else if (socketClient is udp:Error) {
-        log:printError("Error initializing UDP Client", err = socketClient);
+        log:printError("Error initializing UDP Client", 'error = socketClient);
     }
 }
 
@@ -101,13 +101,13 @@ isolated function testConnectClientReadTimeOut() {
         if (result is byte[]) {
             test:assertFail(msg = "No UDP service running on www.ballerina.io, no result should be returned");
         } else {
-            log:print(result.message());
+            log:printInfo(result.message());
         }
 
         checkpanic socketClient->close();
         
     } else if (socketClient is udp:Error) {
-        log:printError("Error initializing UDP Client", err = socketClient);
+        log:printError("Error initializing UDP Client", 'error = socketClient);
     }
 }
 

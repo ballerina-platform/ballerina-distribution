@@ -42,6 +42,6 @@ service on new udp:Listener(PORT1) {
     }
 
     remote function onError(readonly & udp:Error err) {
-        log:print(err.message());
+        log:printError("An error occurred", 'error = err);
     }
 }
