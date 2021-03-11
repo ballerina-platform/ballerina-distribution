@@ -15,9 +15,9 @@ kafka:Producer kafkaProducer = checkpanic new (producerConfiguration);
 public function main() returns error? {
     string message = "Hello World, Ballerina";
     // Send the message to the Kafka topic
-    check kafkaProducer->sendProducerRecord({
+    check kafkaProducer->send({
                                 topic: "test-kafka-topic",
                                 value: message.toBytes() });
     // Flush the sent messages
-    check kafkaProducer->flushRecords();
+    check kafkaProducer->'flush();
 }

@@ -169,6 +169,22 @@ public class PlatformDistributionArtifactCheckTest {
         Assert.assertTrue(Files.exists(docsPath));
     }
 
+    @Test(dataProvider = "distribution-provider")
+    public void c2cToolingExistsTest(String distributionFileName) {
+        Path distributionsPath = TEST_DISTRIBUTION_PATH.resolve(distributionFileName).resolve("distributions");
+        String jballerinaFileName = TestUtils.findFileOrDirectory(distributionsPath, DIST_NAME);
+        Objects.requireNonNull(jballerinaFileName);
+
+        Path c2cToolingLibPath = distributionsPath
+                .resolve(jballerinaFileName)
+                .resolve("lib")
+                .resolve("tools")
+                .resolve("lang-server")
+                .resolve("lib");
+
+        Assert.assertNotNull(TestUtils.findFileOrDirectory(c2cToolingLibPath, "c2c-tooling-"));
+    }
+
     @AfterClass
     public void cleanUp() throws IOException {
         TestUtils.cleanDistribution();
