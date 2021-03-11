@@ -31,7 +31,7 @@ service /stockquote on new http:Listener(8889) {
         var result = conn->respond(res);
         if (result is error) {
             log:printError("Could not send response back to initiator",
-            'err = result);
+            'error = result);
         } else {
             log:printInfo("Sent response back to initiator");
         }
