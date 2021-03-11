@@ -996,8 +996,13 @@
                 "disablePlayground": true
             },
             {
-                "name": "GraphQL Resources with Record Values",
+                "name": "Resources with Record Values",
                 "url": "graphql-resources-with-record-values",
+                "disablePlayground": true
+            },
+            {
+                "name": "Resources with Hierarchical Resource Paths",
+                "url": "graphql-hierarchical-resource-paths",
                 "disablePlayground": true
             }
         ]
