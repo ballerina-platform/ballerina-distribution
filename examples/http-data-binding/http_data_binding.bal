@@ -12,7 +12,7 @@ service /hello on new http:Listener(9090) {
     // The `orderDetails` parameter in [Payload annotation](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/Payload)
     // represents the entity body of the inbound request.
     resource function post bindJson(http:Caller caller, http:Request req,
-                               @http:Payload {} json orderDetails) {
+                               @http:Payload json orderDetails) {
         //Accesses the JSON field values.
         var details = orderDetails.Details;
         http:Response res = new;
@@ -33,7 +33,7 @@ service /hello on new http:Listener(9090) {
         consumes: ["application/xml"]
     }
     resource function post bindXML(http:Caller caller, http:Request req,
-                                    @http:Payload {} xml store) {
+                                    @http:Payload xml store) {
         //Accesses the XML content.
         xml city = store.selectDescendants("{http://www.test.com}city");
         http:Response res = new;
@@ -51,7 +51,7 @@ service /hello on new http:Listener(9090) {
         consumes: ["application/json"]
     }
     resource function post bindStruct(http:Caller caller, http:Request req,
-                                 @http:Payload {} Student student) {
+                                 @http:Payload Student student) {
         //Accesses the fields of the `Student` record.
         string name = <@untainted>student.Name;
         int grade = <@untainted>student.Grade;
