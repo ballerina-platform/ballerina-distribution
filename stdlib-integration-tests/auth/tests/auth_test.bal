@@ -51,8 +51,8 @@ listener http:Listener authListener = new(25001, {
                 membershipAttribute: "member",
                 userRolesCacheEnabled: true,
                 connectionPoolingEnabled: false,
-                connectionTimeoutInMillis: 5000,
-                readTimeoutInMillis: 60000
+                connectionTimeout: 5000,
+                readTimeout: 60000
             },
             scopes: ["Admin"]
         }
