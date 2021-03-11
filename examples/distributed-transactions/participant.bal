@@ -9,33 +9,31 @@ service /stockquote on new http:Listener(8889) {
     // as a participant.
     transactional resource function post update/updateStockQuote
                                      (http:Caller conn, http:Request req) {
-        log:print("Received update stockquote request");
+        log:printInfo("Received update stockquote request");
         // Get the JSON payload.
         json|http:ClientError updateReq = <@untainted>req.getJsonPayload();
 
         // Generate the response.
         http:Response res = new;
         if (updateReq is json) {
-            string msg = io:sprintf("Update stock quote request received. " +
-                    "symbol:%s, price:%s", updateReq.symbol, updateReq.price);
-            log:print(msg);
+            log:printInfo("Update stock quote request received. symbol:" +
+                       updateReq.symbol + ", price:" + updateReq.price);
             json jsonRes = {"message": "updating stock"};
             res.statusCode = http:STATUS_OK;
             res.setJsonPayload(jsonRes);
         } else {
             res.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
             res.setPayload(updateReq.message());
-            log:printError("Payload error occurred!",
-            {"error": updateReq.message()});
+            log:printError("Payload error occurred!", 'err = updateReq);
         }
 
         // Send the response back to the initiator.
         var result = conn->respond(res);
         if (result is error) {
             log:printError("Could not send response back to initiator",
-            {"error": result.message()});
+            'err = result);
         } else {
-            log:print("Sent response back to initiator");
+            log:printInfo("Sent response back to initiator");
         }
     }
 }
