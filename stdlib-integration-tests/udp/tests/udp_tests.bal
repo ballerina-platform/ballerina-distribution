@@ -94,7 +94,7 @@ function testConnectClient() {
 
 @test:Config { }
 isolated function testConnectClientReadTimeOut() {
-    udp:ConnectClient|udp:Error? socketClient = new("www.ballerina.io", 48830, localHost = "localhost", timeoutInMillis = 1000);
+    udp:ConnectClient|udp:Error? socketClient = new("www.ballerina.io", 48830, localHost = "localhost", timeout = 1);
     if (socketClient is udp:ConnectClient) {
         
         var result = socketClient->readBytes();
