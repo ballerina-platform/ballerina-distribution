@@ -23,7 +23,7 @@ kafka:Producer kafkaProducer = checkpanic new (producerConfigs);
 
 public function main() {
     string message = "Hello from Ballerina";
-    var result = kafkaProducer->sendProducerRecord({
+    var result = kafkaProducer->send({
                             topic: "topic-sasl",
                             value: message.toBytes() });
     if (result is error) {
