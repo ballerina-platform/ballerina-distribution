@@ -8,8 +8,8 @@ http:Listener httpListener = check new(9090);
 service graphql:Service /graphql on new graphql:Listener(httpListener) {
 
     // Ballerina GraphQL resolvers can return `anydata` values with union of
-    // `error`s.
-    // Each field of the `Person` object can be queried by a GraphQL client.
+    // `error`s. Each field of the `Person` object can be queried by a GraphQL
+    // client.
     resource function get profile(int id) returns Person|error {
 
         if (id < people.length()) {
