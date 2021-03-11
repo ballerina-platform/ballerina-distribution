@@ -1018,19 +1018,8 @@
                 "disablePlayground": true
             },
             {
-                "name": "Handle Text Messages with Async Client",
-                "url": "websocket-async-text-client",
-                "disablePlayground": true
-            },
-            {
                 "name": "Handle Binary Messages with Client",
                 "url": "websocket-binary-client",
-                "disablePlayground": true
-            },
-
-            {
-                "name": "Handle Binary Messages with Async Client",
-                "url": "websocket-async-binary-client",
                 "disablePlayground": true
             },
             {
