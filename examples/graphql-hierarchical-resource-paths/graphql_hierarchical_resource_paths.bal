@@ -13,6 +13,6 @@ service graphql:Service /graphql on new graphql:Listener(9090) {
 
     // This resource returns the name for the provided ID.
     resource function get profile/name(int id) returns string {
-        return string "Walter White";
+        return "Walter White";
     }
 }
