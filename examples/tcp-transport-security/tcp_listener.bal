@@ -5,7 +5,7 @@ import ballerina/io;
 // The [secureSocket](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/tcp/latest/tcp/records/ListenerSecureSocket) record provides the SSL related configurations,
 // which will configure a listener to accept new connections that
 // are secured via SSL.
-service on new tcp:Listener(9090, secureSocket = {
+tcp:ListenerSecureSocket listenerSecureSocket = {
     // Provide the server certificate path and the private key path 
     // or the keystore path along with keystore password.
     key: {
@@ -19,7 +19,9 @@ service on new tcp:Listener(9090, secureSocket = {
     },
     // Configure the preferred ciphers.
     ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
-}) {
+};
+
+service on new tcp:Listener(9090, secureSocket = listenerSecureSocket) {
 
     isolated remote function onConnect(tcp:Caller caller) 
         returns tcp:ConnectionService {
