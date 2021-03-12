@@ -7,7 +7,7 @@ public function main() returns error? {
     // Optionally, you can provide the interface that the socket needs to bind 
     // and the timeout in milliseconds, which specifies the read timeout value.
     // tcp:Client client = check new ("localhost", 3000, localHost = "localhost",
-    //                             timeoutInMillis = 2000);
+    //                             timeout = 5);
     tcp:Client socketClient = check new ("localhost", 3000);
 
     // Send the desired content to the server.

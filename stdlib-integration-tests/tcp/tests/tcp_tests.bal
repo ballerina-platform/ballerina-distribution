@@ -27,7 +27,7 @@ function testClientEcho() returns  @tainted error? {
     check  socketClient->writeBytes(msgByteArray);
 
     readonly & byte[] receivedData = check socketClient->readBytes();
-    test:assertEquals(check getString(receivedData), msg, "Found unexpected output");
+    test:assertEquals(string:fromBytes(receivedData), msg, "Found unexpected output");
 
     check socketClient->close();
 }
@@ -36,7 +36,7 @@ function testClientEcho() returns  @tainted error? {
     dependsOn: [testClientEcho]
 }
 function testClientReadTimeout() returns  @tainted error? {
-    tcp:Client socketClient = check new ("localhost", PORT2, timeoutInMillis = 100);
+    tcp:Client socketClient = check new ("localhost", PORT2, timeout = 1);
 
     string msg = "Do not reply";
     byte[] msgByteArray = msg.toBytes();
@@ -57,7 +57,7 @@ function testClientReadTimeout() returns  @tainted error? {
     dependsOn: [testClientReadTimeout]
 }
 function testServerAlreadyClosed() returns  @tainted error? {
-    tcp:Client socketClient = check new ("localhost", PORT3, timeoutInMillis = 100);
+    tcp:Client socketClient = check new ("localhost", PORT3, timeout = 1);
 
     tcp:Error|(readonly & byte[]) res = socketClient->readBytes();
     if (res is (readonly & byte[])) {
@@ -70,9 +70,23 @@ function testServerAlreadyClosed() returns  @tainted error? {
     check socketClient->close();
 }
 
-function getString(readonly & byte[] content) returns @tainted string|io:Error {
-    io:ReadableByteChannel byteChannel = check io:createReadableChannel(content);
-    io:ReadableCharacterChannel characterChannel = new io:ReadableCharacterChannel(byteChannel, "UTF-8");
+@test:Config {dependsOn: [testServerAlreadyClosed]}
+function testSecureListenerWithSecureClient() returns @tainted error? {
+    tcp:Client socketClient = check new ("localhost", PORT4, secureSocket = {
+        cert: certPath,
+        protocol: {
+            name: tcp:TLS,
+            versions: ["TLSv1.2", "TLSv1.1"]
+        },
+        ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
+    });
 
-    return check characterChannel.read(content.length());
+    string msg = "Hello Ballerina Echo from secure client";
+    byte[] msgByteArray = msg.toBytes();
+    check socketClient->writeBytes(msgByteArray);
+
+    readonly & byte[] receivedData = check socketClient->readBytes();
+    test:assertEquals('string:fromBytes(receivedData), msg, "Found unexpected output");
+
+    check socketClient->close();
 }
