@@ -23,12 +23,12 @@ public function main() returns error? {
 
     // Get the current time.
     time:Utc currentUtc = time:utcNow();
-    // Increase the time by three seconds.
+    // Increase the time by three seconds to set the starting delay for the scheduling job.
     time:Utc newTime = time:utcAddSeconds(currentUtc, 3);
     // Get the `time:Civil` for the given time.
     time:Civil time = time:utcToCivil(newTime);
 
-    // Schedule the frequency job.
+    // Schedule the task to execute the job every second.
     JobId id = check task:scheduleJobRecurByFrequency(new Job(1), 1, startTime = time);
 
     // Wait for twelve seconds.

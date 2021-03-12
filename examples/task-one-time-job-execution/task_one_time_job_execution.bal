@@ -22,12 +22,12 @@ class Job {
 public function main() returns error? {
     // Get the current time.
     time:Utc currentUtc = time:utcNow();
-    // Increase the time by three seconds.
+    // Increase the time by three seconds to get the specified time for scheduling the job.
     time:Utc newTime = time:utcAddSeconds(currentUtc, 3);
     // Get the `time:Civil` for the given time.
     time:Civil time = time:utcToCivil(newTime);
 
-    // Schedule the one-time job.
+    // Schedule the one-time job at the specified time.
     JobId result = check scheduleOneTimeJob(new Job(5), time);
 
     // Wait for five seconds.
