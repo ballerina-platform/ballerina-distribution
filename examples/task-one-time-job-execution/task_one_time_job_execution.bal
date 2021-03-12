@@ -26,14 +26,10 @@ public function main() returns error? {
     time:Utc newTime = time:utcAddSeconds(currentUtc, 3);
     // Get the `time:Civil` for the given time.
     time:Civil time = time:utcToCivil(newTime);
-    // Creates a `time:ZoneOffset` using the given configuration.
-    time:ZoneOffset zoneOffset = {hours: 5, minutes: 30};
-    // Set the offset to the `time:Civil`.
-    time.utcOffset = zoneOffset;
 
     // Schedule the one-time job.
     JobId result = check scheduleOneTimeJob(new Job(5), time);
 
-    // Wait for nine seconds.
+    // Wait for five seconds.
     runtime:sleep(5);
 }

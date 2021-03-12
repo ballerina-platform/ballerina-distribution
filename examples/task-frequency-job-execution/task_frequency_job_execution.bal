@@ -27,10 +27,6 @@ public function main() returns error? {
     time:Utc newTime = time:utcAddSeconds(currentUtc, 3);
     // Get the `time:Civil` for the given time.
     time:Civil time = time:utcToCivil(newTime);
-    // Create a `time:ZoneOffset` using the given configuration.
-    time:ZoneOffset zoneOffset = {hours: 0, minutes: 0};
-    // Set the offset to the `time:Civil`.
-    time.utcOffset = zoneOffset;
 
     // Schedule the frequency job.
     JobId id = check task:scheduleJobRecurByFrequency(new Job(1), 1, startTime = time);
