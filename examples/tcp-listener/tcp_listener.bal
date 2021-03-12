@@ -15,7 +15,8 @@ service on new tcp:Listener(3000) {
 service class EchoService {
 
     // This remote method is invoked once the content is received from the client.
-    remote function onBytes(tcp:Caller caller, readonly & byte[] data) returns tcp:Error? {
+    remote function onBytes(tcp:Caller caller, readonly & byte[] data) 
+        returns tcp:Error? {
         io:println("Echo: ", string:fromBytes(data));
         // Echo back the data to the same client which the data received from.
         check caller->writeBytes(data);
@@ -32,4 +33,3 @@ service class EchoService {
         io:println("Client left");
     }
 }
-
