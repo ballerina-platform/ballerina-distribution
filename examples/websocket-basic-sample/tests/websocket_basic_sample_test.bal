@@ -12,7 +12,7 @@ function testText() returns websocket:Error? {
                      );
     websocket:Error? result = wsClient->writeTextMessage(msg);
     if (result is websocket:Error) {
-        log:printError("Error occurred when pushing text", err = result);
+        log:printError("Error occurred when pushing text", 'error = result);
     }
     runtime:sleep(4);
     string serviceReply = check wsClient->readTextMessage();
