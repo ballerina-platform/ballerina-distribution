@@ -20,7 +20,7 @@ function lookupInfo(string id) returns any {
     if id == "pi" {
         return float:PI;
     } else if id == "date" {
-        return time:currentTime().toString();
+        return time:utcToString(time:utcNow());
     } else if id == "bio" {
         return new Person("Jane", "Doe");
     }
