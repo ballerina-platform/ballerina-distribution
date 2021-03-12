@@ -780,6 +780,7 @@ task testExamples() {
             'udp-listener',
             'tcp-listener',
             'tcp-client',
+            'tcp-transport-security',
             'ballerina-to-openapi',
             'client-generation',
             'directory-listener',
