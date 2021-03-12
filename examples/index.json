@@ -991,13 +991,18 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "GraphQL Resources with Scalar Values",
-                "url": "graphql-resources-with-scalar-values",
+                "name": "Hello World",
+                "url": "graphql-hello-world",
                 "disablePlayground": true
             },
             {
-                "name": "GraphQL Resources with Record Values",
+                "name": "Resources with Record Values",
                 "url": "graphql-resources-with-record-values",
+                "disablePlayground": true
+            },
+            {
+                "name": "Resources with Hierarchical Resource Paths",
+                "url": "graphql-hierarchical-resource-paths",
                 "disablePlayground": true
             }
         ]
@@ -1013,19 +1018,8 @@
                 "disablePlayground": true
             },
             {
-                "name": "Handle Text Messages with Async Client",
-                "url": "websocket-async-text-client",
-                "disablePlayground": true
-            },
-            {
                 "name": "Handle Binary Messages with Client",
                 "url": "websocket-binary-client",
-                "disablePlayground": true
-            },
-
-            {
-                "name": "Handle Binary Messages with Async Client",
-                "url": "websocket-async-binary-client",
                 "disablePlayground": true
             },
             {
