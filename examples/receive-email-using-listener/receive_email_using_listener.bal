@@ -3,12 +3,12 @@ import ballerina/io;
 
 // Create the listener with the connection parameters and the protocol-related
 // configuration. The polling interval specifies the time duration between each poll
-// performed by the listener in milliseconds.
+// performed by the listener in seconds.
 listener email:PopListener emailListener = check new ({
     host: "pop.email.com",
     username: "reader@email.com",
     password: "pass456",
-    pollingIntervalInMillis: 2000,
+    pollingInterval: 2,
     port: 995
 });
 
@@ -16,8 +16,8 @@ listener email:PopListener emailListener = check new ({
 // emails.
 service "emailObserver" on emailListener {
 
-    // When an email is successfully received, the `onEmailMessage` method is called.
-    remote function onEmailMessage(email:Message emailMessage) {
+    // When an email is successfully received, the `onMessage` method is called.
+    remote function onMessage(email:Message emailMessage) {
         io:println("POP Listener received an email.");
         io:println("Email Subject: ", emailMessage.subject);
         io:println("Email Body: ", emailMessage?.body);
@@ -27,6 +27,11 @@ service "emailObserver" on emailListener {
     remote function onError(email:Error emailError) {
         io:println("Error while polling for the emails: "
             + emailError.message());
+    }
+
+    // When the listener is closed, the `onClose` method is called.
+    remote function onClose(email:Error? closeError) {
+        io:println("Closed the listener.");
     }
 
 }
