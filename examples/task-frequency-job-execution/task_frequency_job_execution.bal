@@ -1,4 +1,5 @@
 import ballerina/io;
+import ballerina/lang.runtime;
 import ballerina/task;
 import ballerina/time;
 
@@ -29,7 +30,7 @@ public function main() returns error? {
     time:Civil time = time:utcToCivil(newTime);
 
     // Schedule the task to execute the job every second.
-    JobId id = check task:scheduleJobRecurByFrequency(new Job(1), 1, startTime = time);
+    task:JobId id = check task:scheduleJobRecurByFrequency(new Job(0), 1, startTime = time);
 
     // Wait for twelve seconds.
     runtime:sleep(12);

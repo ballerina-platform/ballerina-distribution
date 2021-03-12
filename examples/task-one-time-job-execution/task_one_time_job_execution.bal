@@ -1,4 +1,5 @@
 import ballerina/io;
+import ballerina/lang.runtime;
 import ballerina/task;
 import ballerina/time;
 
@@ -28,7 +29,7 @@ public function main() returns error? {
     time:Civil time = time:utcToCivil(newTime);
 
     // Schedule the one-time job at the specified time.
-    JobId result = check scheduleOneTimeJob(new Job(5), time);
+    task:JobId result = check task:scheduleOneTimeJob(new Job(0), time);
 
     // Wait for five seconds.
     runtime:sleep(5);
