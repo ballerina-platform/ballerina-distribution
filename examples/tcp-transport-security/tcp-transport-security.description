@@ -1,0 +1,7 @@
+// This example demonstrates how the Ballerina tcp client can be configured to
+// connect to an SSL/TLS listener through 1-way SSL/TLS connection 
+// (i.e., the server is verified by the client). This example uses the Ballerina
+// tcp listener to host a service and the tcp client sends 
+// requests for that listener.
+
+// For more information on the underlying module, see the [TCP module](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/tcp/latest/tcp).
