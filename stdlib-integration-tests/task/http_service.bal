@@ -15,10 +15,10 @@
 // under the License.
 
 import ballerina/http;
-import ballerina/lang.runtime as runtime;
+import ballerina/lang.runtime;
 import ballerina/task;
 import ballerina/test;
-import ballerina/io;
+import ballerina/time;
 
 const HTTP_MESSAGE = "Hello from http service";
 const TASK_MESSAGE = "Hello from task service";
@@ -28,27 +28,6 @@ listener http:Listener backEndListener = new (15001);
 listener http:Listener clientListener = new (15002);
 
 string http_payload = "";
-
-service object {} PostToHttpService = service object {
-    remote function onTrigger(string message) {
-        io:println("testing ..... task");
-        http:Request request = new;
-        request.setTextPayload(<@untainted string>message);
-        var result = httpClient->post("/", request);
-        if (result is http:ClientError) {
-            panic result;
-        } else if (result is http:Response) {
-            if (result.statusCode == 200) {
-                var payload = result.getTextPayload();
-                if (payload is http:ClientError) {
-                    panic payload;
-                } else {
-                    http_payload = <@untainted string>payload;
-                }
-            }
-        }
-    }
-};
 
 service / on clientListener {
 
@@ -84,22 +63,38 @@ service /HttpService on backEndListener {
 @test:Config {}
 function testTaskWithHttpClient() returns error? {
     http:Client multipleAttachmentClientEndpoint = check new ("http://localhost:15002");
-    task:Scheduler timerForHttpClient = check new ({intervalInMillis: 1000, initialDelayInMillis: 1000});
-    var attachResult = timerForHttpClient.attach(PostToHttpService, TASK_MESSAGE);
-    if (attachResult is task:SchedulerError) {
-        panic attachResult;
-    } else {
-        var startResult = timerForHttpClient.start();
-        if (startResult is error) {
-            panic startResult;
-        }
-    }
+    time:Utc currentUtc = time:utcNow();
+    time:Utc newTime = time:utcAddSeconds(currentUtc, 1);
+    time:Civil time = time:utcToCivil(newTime);
     runtime:sleep(4);
+    task:JobId id = check task:scheduleJobRecurByFrequency(new Job(), 1, startTime = time);
     var response = multipleAttachmentClientEndpoint->get("/");
-    checkpanic timerForHttpClient.stop();
     if (response is http:Response) {
         test:assertEquals(response.getTextPayload(), HTTP_MESSAGE, msg = "Response payload mismatched");
     } else {
         test:assertFail(msg = (<error>response).message());
+    }
+}
+
+class Job {
+
+    *task:Job;
+
+    public function execute() {
+        http:Request request = new;
+        request.setTextPayload(TASK_MESSAGE);
+        var result = httpClient->post("/", request);
+        if (result is http:ClientError) {
+            panic result;
+        } else {
+            if (result.statusCode == 200) {
+                var payload = result.getTextPayload();
+                if (payload is http:ClientError) {
+                    panic payload;
+                } else {
+                    http_payload = <@untainted string>payload;
+                }
+            }
+        }
     }
 }
