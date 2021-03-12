@@ -165,12 +165,20 @@ task unpackObservabilityExtensions() {
     }
 }
 
+task downloadBalCommand(type: Download) {
+    group = "unpack_dependencies"
+    def commandBaseURL = "https://github.com/ballerina-platform/ballerina-update-tool/releases/download/v${ballerinaCommandVersion}"
+    src([
+            "${commandBaseURL}/ballerina-command-${ballerinaCommandVersion}.zip"
+    ])
+    onlyIfModified true
+    dest "${buildDir}/target/"
+}
+
 task unpackBalCommand(type: Copy) {
     group = "unpack_dependencies"
-    configurations.balCommand.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        from zipTree(artifact.getFile())
-        into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
-    }
+    from zipTree { "${buildDir}/target/ballerina-command-${ballerinaCommandVersion}.zip" }
+    into new File("${buildDir}/target/")
 }
 
 task extractJreForLinux(type: Copy) {
@@ -374,17 +382,17 @@ task packageDistZip(type: Zip) {
         filter(ReplaceTokens, tokens: [uuid: installerVersion])
     }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/bin/bal"
+        from "build/target/ballerina-command-${ballerinaCommandVersion}/bin/bal"
         fileMode = 0775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/bin/bal.bat"
+        from "build/target/ballerina-command-${ballerinaCommandVersion}/bin/bal.bat"
         fileMode = 0775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
     into("${parentDir}/lib") {
-        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/lib/ballerina-command-${ballerinaCommandVersion}.jar"
+        from "build/target/ballerina-command-${ballerinaCommandVersion}/lib/ballerina-command-${ballerinaCommandVersion}.jar"
         fileMode = 0775
     }
 
@@ -453,12 +461,12 @@ task packageDistLinux(type: Zip) {
         filter(ReplaceTokens, tokens: [uuid: installerVersion])
     }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/bin/bal"
+        from "build/target/ballerina-command-${ballerinaCommandVersion}/bin/bal"
         fileMode = 775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
     into("${parentDir}/lib") {
-        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/lib/ballerina-command-${ballerinaCommandVersion}.jar"
+        from "build/target/ballerina-command-${ballerinaCommandVersion}/lib/ballerina-command-${ballerinaCommandVersion}.jar"
         fileMode = 0775
     }
 
@@ -522,12 +530,12 @@ task packageDistMac(type: Zip) {
         filter(ReplaceTokens, tokens: [uuid: installerVersion])
     }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/bin/bal"
+        from "build/target/ballerina-command-${ballerinaCommandVersion}/bin/bal"
         fileMode = 775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
     into("${parentDir}/lib") {
-        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}" +
+        from "build/target/ballerina-command-${ballerinaCommandVersion}" +
                 "/lib/ballerina-command-${ballerinaCommandVersion}.jar"
         fileMode = 0775
     }
@@ -592,12 +600,12 @@ task packageDistWindows(type: Zip) {
         filter(ReplaceTokens, tokens: [uuid: installerVersion])
     }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/bin/bal.bat"
+        from "build/target/ballerina-command-${ballerinaCommandVersion}/bin/bal.bat"
         fileMode = 775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
     into("${parentDir}/lib") {
-        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/lib/ballerina-command-${ballerinaCommandVersion}.jar"
+        from "build/target/ballerina-command-${ballerinaCommandVersion}/lib/ballerina-command-${ballerinaCommandVersion}.jar"
         fileMode = 0775
     }
 
@@ -1295,8 +1303,8 @@ unpackStdLibs.dependsOn unpackDevTools
 unpackC2cLibs.dependsOn unpackStdLibs
 unpackC2cExamples.dependsOn unpackC2cLibs
 unpackC2cTooling.dependsOn unpackC2cExamples
-unpackBalCommand.dependsOn unpackObservabilityExtensions
-unpackBalCommand.dependsOn unpackC2cTooling
+downloadBalCommand.dependsOn unpackObservabilityExtensions
+downloadBalCommand.dependsOn unpackC2cTooling
 
 /* Extract JRE */
 extractJreForLinux.dependsOn unpackBalCommand
@@ -1320,6 +1328,7 @@ packageDistWindows.dependsOn packageDistMac
 unzipDistForTests.dependsOn packageDistZip
 unpackStdLibs.dependsOn unpackBallerinaJre
 unpackStdLibs.dependsOn unpackJballerinaTools
+unpackBalCommand.dependsOn downloadBalCommand
 
 testExamples.dependsOn unzipDistForTests
 
