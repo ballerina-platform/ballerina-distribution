@@ -10,14 +10,14 @@ listener grpc:Listener ep = new (9090);
 }
 service "HelloWorld" on ep {
     remote function hello(ContextString request) returns ContextString|error {
-        log:print("Invoked the hello RPC call.");
+        log:printInfo("Invoked the hello RPC call.");
         // Reads the request content.
         string message = "Hello " + request.content;
 
         // Reads custom headers in request message.
         string reqHeader = check grpc:getHeader(request.headers,
         "client_header_key");
-        log:print("Server received header value: " + reqHeader);
+        log:printInfo("Server received header value: " + reqHeader);
 
         // Sends response with custom headers.
         return {content: message, headers: {server_header_key:
