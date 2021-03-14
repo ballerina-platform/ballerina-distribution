@@ -11,7 +11,7 @@ service /hello on new http:Listener(9090) {
 
     // The `orderDetails` parameter in [Payload annotation](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/Payload)
     // represents the entity body of the inbound request.
-    resource function post bindJson(http:Caller caller, http:Request req,
+    resource function post bindJson(http:Caller caller,
                                     @http:Payload json orderDetails) {
         //Accesses the JSON field values.
         var details = orderDetails.Details;
@@ -24,7 +24,7 @@ service /hello on new http:Listener(9090) {
         }
         var result = caller->respond(res);
         if (result is error) {
-            log:printError(result.message(), err = result);
+            log:printError(result.message(), 'error = result);
         }
     }
 
@@ -32,7 +32,7 @@ service /hello on new http:Listener(9090) {
     @http:ResourceConfig {
         consumes: ["application/xml"]
     }
-    resource function post bindXML(http:Caller caller, http:Request req,
+    resource function post bindXML(http:Caller caller,
                                    @http:Payload xml store) {
         //Accesses the XML content.
         xml city = store.selectDescendants("{http://www.test.com}city");
@@ -41,7 +41,7 @@ service /hello on new http:Listener(9090) {
 
         var result = caller->respond(res);
         if (result is error) {
-            log:printError(result.message(), err = result);
+            log:printError(result.message(), 'error = result);
         }
     }
 
@@ -50,7 +50,7 @@ service /hello on new http:Listener(9090) {
     @http:ResourceConfig {
         consumes: ["application/json"]
     }
-    resource function post bindStruct(http:Caller caller, http:Request req,
+    resource function post bindStruct(http:Caller caller,
                                       @http:Payload Student student) {
         //Accesses the fields of the `Student` record.
         string name = <@untainted>student.Name;
@@ -61,7 +61,7 @@ service /hello on new http:Listener(9090) {
 
         var result = caller->respond(res);
         if (result is error) {
-            log:printError(result.message(), err = result);
+            log:printError(result.message(), 'error = result);
         }
     }
 }

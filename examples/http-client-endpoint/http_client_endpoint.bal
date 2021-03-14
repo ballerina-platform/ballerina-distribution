@@ -24,9 +24,10 @@ public function main() {
     // Initializes a request.
     http:Request req = new;
     req.addHeader("Sample-Name", "http-client-connector");
-    // The `get()`, `head()`, and `options()` can have the optional `message` parameter,
-    // which will be a request or a payload.
-    response = clientEndpoint->get("/get", req);
+    // The `get()`, `head()`, and `options()` have the optional headers parameter to send out headers,
+    response = clientEndpoint->get("/get",
+                            {"Sample-Name": "http-client-connector"});
+
     if (response is http:Response) {
         // [Get the content type](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Response#getContentType) from the response.
         string contentType = response.getContentType();
@@ -37,12 +38,12 @@ public function main() {
 
     } else {
         io:println("Error when calling the backend: ",
-                            (<error>response).message());
+                            response.message());
     }
 }
 
 //The below function handles the response received from the remote HTTP endpoint.
-function handleResponse(http:Response|http:PayloadType|error response) {
+function handleResponse(http:Response|error response) {
     if (response is http:Response) {
         // [Get the JSON payload](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Response#getJsonPayload) from the response.
         var msg = response.getJsonPayload();
@@ -54,6 +55,6 @@ function handleResponse(http:Response|http:PayloadType|error response) {
         }
     } else {
         io:println("Error when calling the backend: ",
-                            (<error>response).message());
+                            response.message());
     }
 }

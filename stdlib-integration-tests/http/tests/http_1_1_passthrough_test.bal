@@ -25,7 +25,7 @@ service http:Service /passthrough on passthroughEP1 {
 
     resource function get .(http:Caller caller, http:Request clientRequest) {
         http:Client nyseEP1 = checkpanic new("http://localhost:9113");
-        var response = nyseEP1->get("/nyseStock/stocks", <@untainted> clientRequest);
+        var response = nyseEP1->get("/nyseStock/stocks");
         if (response is http:Response) {
             checkpanic caller->respond(<@untainted> response);
         } else {

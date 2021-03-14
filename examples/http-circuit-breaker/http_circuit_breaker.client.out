@@ -74,7 +74,7 @@ curl -v http://localhost:9090/cb
 < date: Mon, 21 Sep 2020 17:08:02 +0530
 <
 * Connection #0 to host localhost left intact
-Upstream service unavailable. Requests to upstream service will be suspended for 8340 milliseconds.
+Upstream service unavailable. Requests to upstream service will be suspended for 8.340 seconds.
 
 curl -v http://localhost:9090/cb
 *   Trying ::1...
@@ -92,7 +92,7 @@ curl -v http://localhost:9090/cb
 < date: Mon, 21 Sep 2020 17:08:04 +0530
 <
 * Connection #0 to host localhost left intact
-Upstream service unavailable. Requests to upstream service will be suspended for 6079 milliseconds.
+Upstream service unavailable. Requests to upstream service will be suspended for 6.079 seconds.
 
 curl -v http://localhost:9090/cb
 *   Trying ::1...
@@ -110,7 +110,7 @@ curl -v http://localhost:9090/cb
 < date: Mon, 21 Sep 2020 17:08:07 +0530
 <
 * Connection #0 to host localhost left intact
-Upstream service unavailable. Requests to upstream service will be suspended for 3475 milliseconds.
+Upstream service unavailable. Requests to upstream service will be suspended for 3.475 seconds.
 
 # The request sent immediately after the timeout period expires, is the trial
 # request. It is sent to see if the backend service is back to normal.
@@ -172,7 +172,7 @@ curl -v http://localhost:9090/cb
 < date: Mon, 21 Sep 2020 17:08:22 +0530
 <
 * Connection #0 to host localhost left intact
-Upstream service unavailable. Requests to upstream service will be suspended for 4917 milliseconds.
+Upstream service unavailable. Requests to upstream service will be suspended for 4.917 seconds.
 
 # The request sent immediately after the timeout period expires, is the trial
 # request. It is sent to see if the backend service is back to normal.

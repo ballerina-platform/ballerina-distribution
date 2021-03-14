@@ -28,7 +28,7 @@ service /cache on new http:Listener(9090) {
             var result = caller->respond(<@untainted>response);
             if (result is error) {
                 log:printError("Failed to respond to the caller",
-                                err = result);
+                                'error = result);
             }
         } else {
             // For failed requests, a `500` response is sent back to the
@@ -39,7 +39,7 @@ service /cache on new http:Listener(9090) {
             var result = caller->respond(res);
             if (result is error) {
                 log:printError("Failed to respond to the caller",
-                                err = result);
+                                'error = result);
             }
         }
     }
@@ -87,7 +87,8 @@ service /hello on new http:Listener(8080) {
 
         var result = caller->respond(res);
         if (result is error) {
-            log:printError("Failed to respond to the caller", err = result);
+            log:printError("Failed to respond to the caller",
+                            'error = result);
         }
     }
 }

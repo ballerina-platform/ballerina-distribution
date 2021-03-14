@@ -1,7 +1,6 @@
 import ballerina/test;
-import ballerina/io;
 
-(any|error)[] outputs = [];
+(anydata|error)[] outputs = [];
 int counter = 0;
 
 // This is the mock function which will replace the real function
@@ -11,13 +10,13 @@ int counter = 0;
 }
 test:MockFunction mock_printLn = new();
 
-public function mockPrint(any|error... a) {
+public function mockPrint(anydata|error... a) {
     outputs[counter] = a[0];
     counter += 1;
 }
 
 @test:Config {}
-function testFunc() {
+function testFunc() returns error? {
      test:when(mock_printLn).call("mockPrint");
 
     json jsonRes1 = {
@@ -52,20 +51,20 @@ function testFunc() {
 
     // Remove the headers since the user-agent will be different
     // from ballerina version to version.
-    json res = <json>outputs[1];
-    res.remove("headers");
+    map<json> res = <map<json>> check outputs[1];
+    var result = res.remove("headers");
     test:assertEquals(res, jsonRes1);
 
     test:assertEquals(outputs[2], "\nPOST request:");
 
-    res = <json>outputs[3];
-    res.remove("headers");
+    res = <map<json>> check outputs[3];
+    result = res.remove("headers");
     test:assertEquals(res, jsonRes2);
 
     test:assertEquals(outputs[4], "\nDELETE request:");
 
-    res = <json>outputs[5];
-    res.remove("headers");
+    res = <map<json>> check outputs[5];
+    result = res.remove("headers");
     test:assertEquals(res, jsonRes5);
 
     test:assertEquals(outputs[6], "\nUse custom HTTP verbs:");
