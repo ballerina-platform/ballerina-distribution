@@ -25,10 +25,10 @@ service /HelloWorld on new grpc:Listener(20005) {
 
     isolated function lotsOfGreetings(grpc:Caller caller,
                             stream<string,error> clientStream) {
-        log:print("Client connected successfully.");
+        log:printInfo("Client connected successfully.");
         //Read and process each message in the client stream
         error? e = clientStream.forEach(isolated function(string name) {
-            log:print("Server received greet: " + name);
+            log:printInfo("Server received greet: " + name);
         });
 
         //Once the client sends a notification to indicate the end of the stream, 'grpc:EOS' is returned by the stream
@@ -37,7 +37,7 @@ service /HelloWorld on new grpc:Listener(20005) {
             if (err is grpc:Error) {
                 log:printError("Error from Connector: " + err.message());
             } else {
-                log:print("Server send response : Ack");
+                log:printInfo("Server send response : Ack");
             }
 
         //If the client sends an error to the server, the stream closes and returns the error
