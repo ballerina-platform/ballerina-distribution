@@ -61,7 +61,6 @@ public class BallerinaCommandTest {
         String actualOutput = TestUtils.executeCommand("cd " + projectName + " && " + path + " build");
 
         Assert.assertTrue(actualOutput.contains("Compiling source"));
-        Assert.assertTrue(actualOutput.contains("Running Tests"));
         Assert.assertTrue(actualOutput.contains("Generating executable"));
     }
 
