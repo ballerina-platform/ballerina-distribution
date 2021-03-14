@@ -71,6 +71,7 @@ public class OpenAPIDistributionArtifactCheck {
                 .resolve("ballerina")
                 .resolve("openapi")
                 .resolve("2.0.8")
+                .resolve("any")
                 .resolve("platform")
                 .resolve("any");
 
