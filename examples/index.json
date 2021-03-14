@@ -1364,6 +1364,11 @@
                 "name": "TCP Listener",
                 "url": "tcp-listener",
                 "disablePlayground": true
+            },
+            {
+                "name": "TCP Transport Security",
+                "url": "tcp-transport-security",
+                "disablePlayground": true
             }
         ]
     },

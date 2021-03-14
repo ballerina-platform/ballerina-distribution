@@ -440,11 +440,7 @@ subprojects {
         ballerinaC2cTooling
         ballerinaC2cExamples
         ballerinaObserveExtensions
-        balCommand
         exten {
-            transitive = false
-        }
-        balCommand {
             transitive = false
         }
         devTools
@@ -519,7 +515,5 @@ subprojects {
         ballerinaC2cExamples "org.ballerinax.azurefunctions:azurefunctions-extension-examples:${azFunctionsVersion}@zip"
         ballerinaC2cExamples "org.ballerinax.awslambda:awslambda-extension-examples:${awslambdaVersion}@zip"
         ballerinaC2cExamples "org.ballerinax.docker:docker-extension-examples:${dockerVersion}@zip"
-
-        balCommand "org.ballerinalang:ballerina-command:${ballerinaCommandVersion}@zip"
     }
 }

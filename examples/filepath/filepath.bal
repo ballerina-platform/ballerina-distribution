@@ -23,7 +23,7 @@ public function main() returns error? {
 
     // Get the list of path elements joined by the OS-specific path separator.
     string[] parts = check file:splitPath("/A/B/C");
-    io:println(io:sprintf("Path elements of /A/B/C: %s", parts));
+    io:println(string `Path elements of /A/B/C: ${parts.toString()}`);
 
     // Join any number of path elements into a single path.
     string path = check file:joinPath("/", "foo", "bar");

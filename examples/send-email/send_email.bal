@@ -33,9 +33,9 @@ public function main() returns error? {
         replyTo: ["replyTo1@email.com", "replyTo2@email.com"]
     };
 
-    // Send the email message with the client. The `sendEmail` method can be used
+    // Send the email message with the client. The `send` method can be used
     // instead, if the email is required to be sent with mandatory and optional
     // parameters instead of configuring an `email:Message` record.
-    check smtpClient->sendEmailMessage(email);
+    check smtpClient->sendMessage(email);
 
 }
