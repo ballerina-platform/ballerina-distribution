@@ -40,7 +40,8 @@ public function main() {
 
     // Optionally, an error can be passed to the functions.
     error e = error("something went wrong!");
-    log:printError("error log with cause", 'error = e, id = 845315, name = "foo");
+    log:printError("error log with cause", 'error = e, id = 845315,
+        name = "foo");
 
     // To set the output format to JSON, place the entry given below in the `Config.toml` file.
     //
