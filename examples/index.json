@@ -684,23 +684,13 @@
                 "url": "random"
             },
             {
-                "name": "Task Scheduler Appointment",
-                "url": "task-scheduler-appointment",
+                "name": "Task Frequency Job Execution",
+                "url": "task-frequency-job-execution",
                 "disablePlayground": true
             },
             {
-                "name": "Task Scheduler Timer",
-                "url": "task-scheduler-timer",
-                "disablePlayground": true
-            },
-            {
-                "name": "Task Service Appointment",
-                "url": "task-service-appointment",
-                "disablePlayground": true
-            },
-            {
-                "name": "Task Service Timer",
-                "url": "task-service-timer",
+                "name": "Task One-time Job Execution",
+                "url": "task-one-time-job-execution",
                 "disablePlayground": true
             },
             {
@@ -1373,6 +1363,11 @@
             {
                 "name": "TCP Listener",
                 "url": "tcp-listener",
+                "disablePlayground": true
+            },
+            {
+                "name": "TCP Transport Security",
+                "url": "tcp-transport-security",
                 "disablePlayground": true
             }
         ]

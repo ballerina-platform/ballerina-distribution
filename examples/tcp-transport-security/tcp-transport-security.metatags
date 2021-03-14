@@ -1,0 +1,2 @@
+description: BBE on how the Ballerina TCP client and TCP listener can be configured to use a one-way SSL connection (i.e. the server is verified by the client).
+keywords: ballerina, ballerina by example, bbe, ssl, tls, tcp client, tcp listener

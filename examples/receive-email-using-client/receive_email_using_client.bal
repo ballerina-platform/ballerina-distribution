@@ -11,7 +11,7 @@ public function main() returns error? {
     // Read the first unseen email received by the POP3 server. `()` is
     // returned when there are no new unseen emails. In error cases, an
     // error is returned.
-    email:Message? emailResponse = check popClient->receiveEmailMessage();
+    email:Message? emailResponse = check popClient->receiveMessage();
 
     if (emailResponse is email:Message) {
         io:println("POP client received an email.");
@@ -22,6 +22,9 @@ public function main() returns error? {
         io:println("There are no emails in the INBOX.");
     }
 
+    // Closes the POP3 store which would close the TCP connection.
+    email:Error? closeStatus = popClient->close();
+
     // Create the client with the connection parameters, host, username, and
     // password. An error is received in a failure. The default port number
     // `993` is used over SSL with these configurations.
@@ -31,7 +34,7 @@ public function main() returns error? {
     // Read the first unseen email received by the IMAP4 server. `()` is
     // returned when there are no new unseen emails. In error cases, an
     // error is returned.
-    emailResponse = check imapClient->receiveEmailMessage();
+    emailResponse = check imapClient->receiveMessage();
 
     if (emailResponse is email:Message) {
         io:println("IMAP client received an email.");
@@ -41,5 +44,8 @@ public function main() returns error? {
     } else {
         io:println("There are no emails in the INBOX.");
     }
+
+    // Closes the IMAP store which would close the TCP connection.
+    closeStatus = imapClient->close();
 
 }
