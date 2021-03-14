@@ -32,7 +32,7 @@ function testServiceFunction ()  {
     if (response is http:Response) {
         test:assertEquals(response.getTextPayload(), "Hello, World!", "Service involation test");
     } else {
-        string errorMessage = response is error? response.toString() : response.toString();
+        string errorMessage = response.toString();
         test:assertFail(errorMessage);
     }
 }
