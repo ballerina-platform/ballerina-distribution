@@ -62,7 +62,7 @@ public class ServiceDebugTest extends BaseTestCase {
         Assert.assertEquals(debugHitInfo.getLeft(), debugTestRunner.testBreakpoints.get(0));
     }
 
-    @Test(description = "Test for single bal file debug engage")
+    @Test(enabled = false, description = "Test for single bal file debug engage")
     public void testSingleBalFileServiceDebugScenarios() throws BallerinaTestException {
         String testProjectName = "";
         String testSingleFileName = "hello_service.bal";
