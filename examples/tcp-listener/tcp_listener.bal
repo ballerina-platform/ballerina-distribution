@@ -24,7 +24,7 @@ service class EchoService {
 
     // This remote method is invoked in an error situation
     // if it happens during the `onConnect` and `onBytes` methods.
-    remote function onError(readonly & tcp:Error err) returns tcp:Error? {
+    remote function onError(tcp:Error err) returns tcp:Error? {
         log:printError("An error occurred", 'error = err);
     }
 
