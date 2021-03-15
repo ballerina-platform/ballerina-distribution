@@ -21,14 +21,14 @@ import ballerina/url;
 public function testUrlEncodingAndDecoding() {
     string input = "http://localhost:9090/echoService?type=string&value=hello world";
     string output = "http%3A%2F%2Flocalhost%3A9090%2FechoService%3Ftype%3Dstring%26value%3Dhello%20world";
-    string|url:Error encodedResult = url:encode(input);
+    string|url:Error encodedResult = url:encode(input, "UTF-8");
     if (encodedResult is string) {
         test:assertEquals(encodedResult, output);
     } else {
         test:assertFail(msg = "Test Failed!");
     }
 
-    string|url:Error decodedResult = url:decode(<string>output);
+    string|url:Error decodedResult = url:decode(<string>output, "UTF-8");
     if (decodedResult is string) {
         test:assertEquals(decodedResult, input);
     } else {

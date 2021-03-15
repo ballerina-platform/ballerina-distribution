@@ -1,12 +1,10 @@
 import ballerina/http;
-import ballerina/log;
 
 service /sample on new http:Listener(9090) {
 
     // The `PathParam` and `QueryParam` parameters extract values from the request URI.
     // Path param is defined as a part of the resource path along with the type.
-    resource function get path/[string foo](http:Caller caller,
-                                            http:Request req) {
+    resource function get path/[string foo](http:Request req) returns json {
         // Get the [QueryParam](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#getQueryParamValue)
         // value for a given parameter key.
         var bar = req.getQueryParamValue("bar");
@@ -28,14 +26,7 @@ service /sample on new http:Listener(9090) {
             "queryParam": bar,
             "matrix": matrixJson
         };
-        http:Response res = new;
-        // A util method to set the JSON payload to the response message.
-        res.setJsonPayload(<@untainted>responseJson);
-        // Send a response to the client.
-        var result = caller->respond(res);
-
-        if (result is error) {
-            log:printError("Error when responding", err = result);
-        }
+        // Send a response with the JSON payload to the client.
+        return responseJson;
     }
 }

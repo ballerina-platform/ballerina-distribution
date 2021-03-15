@@ -9,12 +9,12 @@ listener grpc:Listener ep = new (9090);
     descMap: getDescriptorMap()
 }
 service "HelloWorld" on ep {
-    remote function lotsOfGreetings(stream<string, grpc:Error?> clientStream)
+    remote function lotsOfGreetings(stream<string, grpc:Error> clientStream)
                                     returns string|error {
-        log:print("Connected sucessfully.");
+        log:printInfo("Connected sucessfully.");
         // Read and process each message in the client stream.
         error? e = clientStream.forEach(isolated function(string name) {
-            log:print("Greet received: " + name);
+            log:printInfo("Greet received: " + name);
         });
         // Once the client sends a notification to indicate the end of the stream, 'grpc:EOS' is returned by the stream.
         if (e is grpc:EOS) {

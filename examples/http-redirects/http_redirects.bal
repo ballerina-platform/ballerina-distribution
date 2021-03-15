@@ -20,20 +20,20 @@ service /hello on new http:Listener(9090) {
                 var result = caller->respond("Response received : "
                                                 + <@untainted>payload);
                 if (result is error) {
-                    log:printError("Error in responding", err = result);
+                    log:printError("Error in responding", 'error = result);
                 }
             } else {
                 var result = caller->respond("Error in payload : "
                         + <@untainted>payload.message());
                 if (result is error) {
-                    log:printError("Error in responding", err = result);
+                    log:printError("Error in responding", 'error = result);
                 }
             }
         } else {
             var result = caller->respond("Error in connection : "
                             + (<@untainted error>returnResult).message());
             if (result is error) {
-                log:printError("Error in responding", err = result);
+                log:printError("Error in responding", 'error = result);
             }
         }
     }
@@ -49,7 +49,7 @@ service /redirect1 on new http:Listener(9092) {
             ["http://localhost:9093/redirect2"]);
         if (result is error) {
             log:printError("Error in sending redirect response to caller",
-                err = result);
+                'error = result);
         }
     }
 }
@@ -60,7 +60,7 @@ service /redirect2 on new http:Listener(9093) {
         // Sends a response to the caller.
         var result = caller->respond("Hello World!");
         if (result is error) {
-            log:printError("Error in responding", err = result);
+            log:printError("Error in responding", 'error = result);
         }
     }
 }

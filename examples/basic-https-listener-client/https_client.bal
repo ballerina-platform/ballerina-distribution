@@ -19,9 +19,9 @@ public function main() {
     var payload = clientEP->get("/helloWorld/hello", targetType = string);
     if (payload is string) {
         // Log the retrieved text payload.
-        log:print(payload);
+        log:printInfo(payload);
     } else {
         // If an error occurs when getting the response or binding payload, log the error.
-        log:printError((<error>payload).message());
+        log:printError(payload.message());
     }
 }

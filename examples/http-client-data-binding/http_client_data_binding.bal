@@ -27,34 +27,35 @@ service /call on new http:Listener(9090) {
 
         // If the type test of the error becomes false, it implies that the [payload type](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/types#Payload)
         // is string.
-        log:print("String payload: " + <string> checkpanic result);
+        log:printInfo("String payload: " + <string> checkpanic result);
 
         // Binding the payload to a JSON type. If an error returned, it will be responded back to the caller.
-        json jsonPayload = <json> check backendClient->
-                                    post("/backend/getJson", "foo", json);
+        json jsonPayload = check backendClient->
+                        post("/backend/getJson", "foo", targetType = json);
 
-        log:print("Json payload: " + jsonPayload.toJsonString());
+        log:printInfo("Json payload: " + jsonPayload.toJsonString());
 
         // Since only the `named types` or `built-in types` can be passed as function parameters,  `Map` or `Array`
         // types have to be defined beforehand. Here, the type `MapJson` is passed instead of `map<json>`.
         // Same can be done for `byte[]` or `Person[]` as well.
-        map<json> value = <map<json>> check backendClient->
-                                post("/backend/getJson", "foo", MapJson);
-        log:print(check value.id);
+        map<json> value = check backendClient->
+                        post("/backend/getJson", "foo", targetType = MapJson);
+        log:printInfo(check value.id);
 
         // A `record` and `record[]` are also possible types for data binding.
-        Person person = <Person> check backendClient->
+        Person person = check backendClient->
                             get("/backend/getPerson", targetType = Person);
-        log:print("Person name: " + person.name);
+        log:printInfo("Person name: " + person.name);
 
         // When the complete response is expected, the default value of the `targetType` will be applied.
-        http:Response res =  <http:Response> check backendClient->
-                                            get("/backend/getResponse");
+        http:Response res =  check backendClient->
+                                        get("/backend/getResponse");
         check caller->respond(<@untainted>res);
     }
 
     resource function get '5xx(http:Caller caller, http:Request request) {
-        var res = backendClient->post("/backend/get5XX", "want 500", json);
+        var res = backendClient->
+                        post("/backend/get5XX", "want 500", targetType = json);
         // When the data binding is expected to happen and if the `post` remote function gets a 5XX response from the
         // backend, the response will be returned as an [http:RemoteServerError](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/errors#RemoteServerError)
         // including the error message and status code.
@@ -68,7 +69,7 @@ service /call on new http:Listener(9090) {
             resp.setPayload(<@untainted>res.message());
             var responseToCaller = caller->respond(<@untainted>resp);
         } else {
-            var responseToCaller = caller->respond(<@untainted json>res);
+            var responseToCaller = caller->respond(<@untainted>res);
         }
     }
 
@@ -76,7 +77,8 @@ service /call on new http:Listener(9090) {
         // When the data binding is expected to happen and if the client remote function gets a 4XX response from the
         // backend, the response will be returned as an [http:ClientRequestError](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/errors#ClientRequestError)
         // including the error message and status code.
-        var res = backendClient->post("/backend/err", "want 400", json);
+        var res = backendClient->
+                        post("/backend/err", "want 400", targetType = json);
         if (res is error) {
             http:Response resp = new;
             if (res is http:ClientRequestError) {
@@ -87,7 +89,7 @@ service /call on new http:Listener(9090) {
             resp.setPayload(<@untainted>res.message());
             var responseToCaller = caller->respond(<@untainted>resp);
         } else {
-            var responseToCaller = caller->respond(<@untainted json>res);
+            var responseToCaller = caller->respond(<@untainted>res);
         }
     }
 }

@@ -8,9 +8,9 @@ listener http:Listener backendEP = new (8080);
 // Define the failover client endpoint to call the backend services.
 http:FailoverClient foBackendEP = check new ({
 
-    timeoutInMillis: 5000,
+    timeout: 5,
     failoverCodes: [501, 502, 503],
-    intervalInMillis: 5000,
+    interval: 5,
     // Define a set of HTTP Clients that are targeted for failover.
     targets: [
             {url: "http://nonexistentEP/mock1"},
@@ -22,7 +22,7 @@ http:FailoverClient foBackendEP = check new ({
 service /fo on new http:Listener(9090) {
 
     resource function 'default .(http:Caller caller, http:Request request) {
-        var backendResponse = foBackendEP->get("/", <@untainted>request);
+        var backendResponse = foBackendEP->get("/");
 
         // If `backendResponse` is an `http:Response`, it is sent back to the
         // client. If `backendResponse` is an `http:ClientError`, an internal
@@ -31,7 +31,7 @@ service /fo on new http:Listener(9090) {
             var responseToCaller = caller->respond(<@untainted>backendResponse);
             if (responseToCaller is error) {
                 log:printError("Error sending response",
-                                err = responseToCaller);
+                                'error = responseToCaller);
             }
         } else {
             http:Response response = new;
@@ -40,7 +40,7 @@ service /fo on new http:Listener(9090) {
             var responseToCaller = caller->respond(response);
             if (responseToCaller is error) {
                 log:printError("Error sending response",
-                                err = responseToCaller);
+                                'error = responseToCaller);
             }
         }
 
@@ -51,14 +51,13 @@ service /fo on new http:Listener(9090) {
 service /echo on backendEP {
 
     resource function 'default .(http:Caller caller, http:Request req) {
-        // Delay the response for 30000 milliseconds to mimic network level
-        // delays.
+        // Delay the response for 30 seconds to mimic network level delays.
         runtime:sleep(30);
 
         var result = caller->respond("echo Resource is invoked");
         if (result is error) {
             log:printError("Error sending response from mock service",
-                            err = result);
+                            'error = result);
         }
     }
 }
@@ -70,7 +69,7 @@ service /mock on backendEP {
         var result = caller->respond("Mock Resource is Invoked.");
         if (result is error) {
             log:printError("Error sending response from mock service",
-                            err = result);
+                            'error = result);
         }
     }
 }

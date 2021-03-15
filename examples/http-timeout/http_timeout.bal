@@ -4,7 +4,7 @@ import ballerina/lang.runtime;
 
 http:Client backendClientEP = check new ("http://localhost:8080", {
         // Timeout configuration.
-        timeoutInMillis: 10000
+        timeout: 10
 
     });
 
@@ -21,12 +21,12 @@ service /timeout on new http:Listener(9090) {
             var responseToCaller = caller->respond(<@untainted>backendResponse);
             if (responseToCaller is error) {
                 log:printError("Error sending response",
-                                err = responseToCaller);
+                                'error = responseToCaller);
             }
         } else {
             http:Response response = new;
             response.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
-            string errorMessage = (<error>backendResponse).message();
+            string errorMessage = backendResponse.message();
             string expectedMessage = "Idle timeout triggered before " +
                 "initiating inbound response";
             if (errorMessage == expectedMessage) {
@@ -39,7 +39,7 @@ service /timeout on new http:Listener(9090) {
             var responseToCaller = caller->respond(response);
             if (responseToCaller is error) {
                 log:printError("Error sending response",
-                                err = responseToCaller);
+                                'error = responseToCaller);
             }
         }
 
@@ -50,14 +50,13 @@ service /timeout on new http:Listener(9090) {
 service /hello on new http:Listener(8080) {
 
     resource function get .(http:Caller caller, http:Request req) {
-        // Delay the response by 15000 milliseconds to mimic the network level
-        // delays.
+        // Delay the response by 15 seconds to mimic the network level delays.
         runtime:sleep(15);
 
         var result = caller->respond("Hello World!!!");
         if (result is error) {
             log:printError("Error sending response from mock service",
-                            err = result);
+                            'error = result);
         }
     }
 }

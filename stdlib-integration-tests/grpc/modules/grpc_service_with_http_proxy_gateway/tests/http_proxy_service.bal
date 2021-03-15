@@ -48,15 +48,15 @@ listener http:Listener helloWorldEP = new(20008, helloWorldEPConfig);
 service /Chat on helloWorldEP {
 
     resource function post chat(http:Caller caller, http:Request req) {
-        log:print("[http2-passthrough] Invoke http2 service");
+        log:printInfo("[http2-passthrough] Invoke http2 service");
         req.setHeader("Test", "mytest");
         var clientResponse = clientEP->forward("/Chat/chat", req);
 
         if (clientResponse is http:Response) {
-            log:print("[http2-passthrough] send client response");
+            log:printInfo("[http2-passthrough] send client response");
             var result = caller->respond(<@untainted> clientResponse);
             if (result is error) {
-               log:printError("[http2-passthrough] Error sending response", err = result);
+               log:printError("[http2-passthrough] Error sending response", 'error = result);
                http:Response res = new;
                res.statusCode = 500;
                res.setPayload(<@untainted string> result.detail()["message"]);
@@ -64,13 +64,13 @@ service /Chat on helloWorldEP {
             }
         } else {
             error err = <error>clientResponse;
-            log:printError("[http2-passthrough] Error forwarding the message", err = err);
+            log:printError("[http2-passthrough] Error forwarding the message", 'error = err);
             http:Response res = new;
             res.statusCode = 500;
             res.setPayload(<@untainted> <string> err.detail()["message"]);
             var result = caller->respond(res);
             if (result is error) {
-               log:printError("[http2-passthrough] Error sending response", err = result);
+               log:printError("[http2-passthrough] Error sending response", 'error = result);
             }
         }
     }

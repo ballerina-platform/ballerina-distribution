@@ -11,7 +11,7 @@ service /hello on new http:Listener(9090) {
                 // Send a 100-continue response to the client.
                 var result = caller->continue();
                 if (result is error) {
-                    log:printError("Error sending response", err = result);
+                    log:printError("Error sending response", 'error = result);
                 }
             } else {
                 // Send a 417 response to ignore the payload since content type is mismatched
@@ -21,7 +21,7 @@ service /hello on new http:Listener(9090) {
                 res.setPayload("Unprocessable Entity");
                 var result = caller->respond(res);
                 if (result is error) {
-                    log:printError("Error sending response", err = result);
+                    log:printError("Error sending response", 'error = result);
                 }
                 return;
             }
@@ -32,19 +32,19 @@ service /hello on new http:Listener(9090) {
         http:Response res = new;
         var payload = request.getTextPayload();
         if (payload is string) {
-            log:print(payload);
+            log:printInfo(payload);
             res.statusCode = 200;
             res.setPayload("Hello World!\n");
             var result = caller->respond(res);
             if (result is error) {
-                log:printError("Error sending response", err = result);
+                log:printError("Error sending response", 'error = result);
             }
         } else {
             res.statusCode = 500;
             res.setPayload(<@untainted>payload.message());
             var result = caller->respond(res);
             if (result is error) {
-                log:printError("Error sending response", err = result);
+                log:printError("Error sending response", 'error = result);
             }
         }
     }

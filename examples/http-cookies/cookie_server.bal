@@ -37,7 +37,7 @@ service /cookieDemo on serverEP {
                     response.setTextPayload("Login succeeded");
                     var result = caller->respond(response);
                     if (result is error) {
-                        log:printError("Failed to respond", err = result);
+                        log:printError("Failed to respond", 'error = result);
                     }
                 }
             }
