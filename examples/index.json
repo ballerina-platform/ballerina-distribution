@@ -1445,8 +1445,8 @@
                 "disablePlayground": true
             },
             {
-                "name": "HTTP Client with OAuth2 Direct Token Type",
-                "url": "http-client-with-oauth2-direct-token-type",
+                "name": "HTTP Client with OAuth2 Refresh Token Grant Type",
+                "url": "http-client-with-oauth2-refresh-token-grant-type",
                 "disablePlayground": true
             }
         ]

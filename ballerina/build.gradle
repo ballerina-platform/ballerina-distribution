@@ -689,7 +689,7 @@ task testExamples() {
             'http-client-with-self-signed-jwt-auth',
             'http-client-with-oauth2-client-credentials-grant-type',
             'http-client-with-oauth2-password-grant-type',
-            'http-client-with-oauth2-direct-token-type',
+            'http-client-with-oauth2-refresh-token-grant-type',
 
             // Disabling due to pending migration for service typing
             'websocket-cookie',
