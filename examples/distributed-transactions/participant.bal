@@ -1,5 +1,4 @@
 import ballerina/http;
-import ballerina/io;
 import ballerina/log;
 
 // This is a participant in the distributed transaction. It will get invoked when it receives
@@ -16,8 +15,8 @@ service /stockquote on new http:Listener(8889) {
         // Generate the response.
         http:Response res = new;
         if (updateReq is json) {
-            log:printInfo("Update stock quote request received. symbol:" +
-                       updateReq.symbol + ", price:" + updateReq.price);
+            log:printInfo("Update stock quote request received. " +
+                          updateReq.toJsonString());
             json jsonRes = {"message": "updating stock"};
             res.statusCode = http:STATUS_OK;
             res.setJsonPayload(jsonRes);
