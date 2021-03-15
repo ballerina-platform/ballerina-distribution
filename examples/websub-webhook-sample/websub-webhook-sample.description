@@ -1,4 +1,4 @@
-// Ballerina provides the capability to easily introduce subscribers services that are WebSub-compliant.
+// Ballerina provides the capability to easily introduce subscriber services that are WebSub-compliant.
 // Ballerina WebSub subscribers can specify the topic and hub to which they wish to subscribe
 
 // to receive notifications. If specified, the subscription process will be initiated at the startup. Signature validation
