@@ -1,0 +1,9 @@
+// Ballerina provides the capability to easily introduce subscribers services that are WebSub-compliant.
+// Ballerina WebSub subscribers can specify the topic they wish to subscribe to and the hub they wish to subscribe at,
+// to receive notifications. If specified, the subscription process will be initiated at the startup. Signature validation
+// is performed by default for subscribers that receive authenticated content. Ballerina WebSub Subscriber
+// Services could thus be registered as webhooks to receive event notifications.
+//
+// In this example, a WebSub Subscriber service is used to implement GitHub based WebHook Serivice.
+// For more information on the underlying module, 
+// see the [WebSub module](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/websub/latest/websub/).
