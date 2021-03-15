@@ -1047,7 +1047,7 @@
         "category": "Working with WebSub Protocol",
         "samples": [
             {
-                "name": "GitHub WebHook Service",
+                "name": "Websub Subscriber Service",
                 "url": "websub-webhook-sample",
                 "disablePlayground": true
             }
