@@ -20,16 +20,16 @@ service /passthrough on new http:Listener(9090) {
             // Here, the received response is forwarded to the client through the outbound endpoint.
             var result = caller->respond(<@untainted>clientResponse);
             if (result is error) {
-                log:printError("Error sending response", err = result);
+                log:printError("Error sending response", 'error = result);
             }
         } else {
             // If there was an error, the 500 error response is constructed and sent back to the client.
             http:Response res = new;
             res.statusCode = 500;
-            res.setPayload((<@untainted error>clientResponse).message());
+            res.setPayload((<@untainted>clientResponse).message());
             var result = caller->respond(res);
             if (result is error) {
-                log:printError("Error sending response", err = result);
+                log:printError("Error sending response", 'error = result);
             }
         }
     }
@@ -43,7 +43,7 @@ service /hello on new http:Listener(9092) {
         // [Send the response](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Caller#respond) back to the caller.
         var result = caller->respond("Hello World!");
         if (result is error) {
-            log:printError("Error sending response", err = result);
+            log:printError("Error sending response", 'error = result);
         }
     }
 }

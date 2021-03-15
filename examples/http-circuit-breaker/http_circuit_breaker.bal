@@ -15,12 +15,12 @@ http:Client backendClientEP = check new ("http://localhost:8080", {
 
                     // Time period in milliseconds for which the failure
                     // threshold is calculated.
-                    timeWindowInMillis: 10000,
+                    timeWindow: 10,
 
                     // The granularity (in milliseconds) at which the time
                     // window slides. The `RollingWindow` is divided into
                     // buckets and slides by these increments.
-                    bucketSizeInMillis: 2000,
+                    bucketSize: 2,
 
                     // Minimum number of requests in the `RollingWindow` that
                     // will trip the circuit.
@@ -36,13 +36,13 @@ http:Client backendClientEP = check new ("http://localhost:8080", {
 
                 // The time period (in milliseconds) to wait before attempting to
                 // make another request to the upstream service.
-                resetTimeInMillis: 10000,
+                resetTime: 10,
 
                 // HTTP response status codes that are considered as failures
                 statusCodes: [400, 404, 500]
 
             },
-            timeoutInMillis: 2000
+            timeout: 2
         }
     );
 
@@ -58,7 +58,7 @@ service /cb on new http:Listener(9090) {
             var responseToCaller = caller->respond(<@untainted>backendResponse);
             if (responseToCaller is http:ListenerError) {
                 log:printError("Error sending response",
-                                err = responseToCaller);
+                                'error = responseToCaller);
             }
         } else {
             http:Response response = new;
@@ -67,7 +67,7 @@ service /cb on new http:Listener(9090) {
             var responseToCaller = caller->respond(response);
             if (responseToCaller is http:ListenerError) {
                 log:printError("Error sending response",
-                                err = responseToCaller);
+                                'error = responseToCaller);
             }
         }
 
@@ -106,6 +106,6 @@ service /hello on new http:Listener(8080) {
 function handleRespondResult(error? result) {
     if (result is http:ListenerError) {
         log:printError("Error sending response from mock service",
-                        err = result);
+                        'error = result);
     }
 }

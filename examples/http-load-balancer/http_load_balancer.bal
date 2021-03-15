@@ -13,7 +13,7 @@ http:LoadBalanceClient lbBackendEP = check new ({
             {url: "http://localhost:8080/mock3"}
         ],
 
-        timeoutInMillis: 5000
+        timeout: 5
 });
 
 // Create an HTTP service bound to the endpoint (`loadBalancerEP`).
@@ -29,7 +29,7 @@ service /lb on new http:Listener(9090) {
             var responseToCaller = caller->respond(<@untainted>response);
             if (responseToCaller is http:ListenerError) {
                 log:printError("Error sending response",
-                                err = responseToCaller);
+                                'error = responseToCaller);
             }
         } else {
             http:Response outResponse = new;
@@ -38,7 +38,7 @@ service /lb on new http:Listener(9090) {
             var responseToCaller = caller->respond(outResponse);
             if (responseToCaller is http:ListenerError) {
                 log:printError("Error sending response",
-                                err = responseToCaller);
+                                'error = responseToCaller);
             }
         }
 
@@ -80,6 +80,6 @@ service /mock3 on backendEP {
 function handleRespondResult(http:ListenerError? result) {
     if (result is http:ListenerError) {
         log:printError("Error sending response from mock service",
-                        err = result);
+                        'error = result);
     }
 }

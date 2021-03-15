@@ -1,5 +1,4 @@
 import ballerina/http;
-import ballerina/log;
 
 // The `absolute resource path` identifier represents the absolute path to the service.  When bound to a listener
 // endpoint, the service will be accessible at the specified path. If the path is omitted, then it defaults to `/`.
@@ -11,7 +10,7 @@ service http:Service /foo on new http:Listener(9090) {
     // instance, only `POST` requests are allowed. The `default` accessor name can be used to match with all methods
     // including standard HTTP methods and custom methods.
     // The `resource path` identifier associates the relative path to the service object's path. E.g., `bar`.
-    resource function post bar(http:Caller caller, http:Request req) {
+    resource function post bar(http:Request req) returns http:Response {
         // This method retrieves the request payload as a JSON.
         var payload = req.getJsonPayload();
         http:Response res = new;
@@ -23,9 +22,6 @@ service http:Service /foo on new http:Listener(9090) {
             res.setPayload(<@untainted>payload.message());
         }
         // Reply to the client with the response.
-        var result = caller->respond(res);
-        if (result is error) {
-           log:printError("Error in responding", err = result);
-        }
+        return res;
     }
 }

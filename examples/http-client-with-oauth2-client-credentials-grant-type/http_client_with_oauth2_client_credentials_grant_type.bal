@@ -26,8 +26,8 @@ public function main() {
     // Send a `GET` request to the specified endpoint.
     var response = securedEP->get("/foo/bar");
     if (response is http:Response) {
-        log:print(response.statusCode.toString());
-    } else if (response is http:ClientError) {
-        log:printError("Failed to call the endpoint.", err = response);
+        log:printInfo(response.statusCode.toString());
+    } else {
+        log:printError("Failed to call the endpoint.", 'error = response);
     }
 }

@@ -26,7 +26,7 @@ service /http11Service on new http:Listener(9090) {
         var result = caller->respond(<@untainted>response);
         if (result is error) {
            log:printError("Error occurred while sending the response",
-               err = result);
+               'error = result);
         }
 
     }
@@ -49,7 +49,7 @@ service /http2service on http2serviceEP {
         var result = caller->respond(response);
         if (result is error) {
             log:printError("Error occurred while sending the response",
-                err = result);
+                'error = result);
         }
     }
 }

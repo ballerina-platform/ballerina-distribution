@@ -9,9 +9,7 @@ import ballerina/log;
 // [http1Settings](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/ClientHttp1Settings) annotation
 // provides the chunking-related configurations.
 http:Client clientEndpoint = check new ("http://localhost:9090",
-                                    {http1Settings:
-                                        {chunking: http:CHUNKING_NEVER}}
-                                  );
+                        {http1Settings: {chunking: http:CHUNKING_NEVER}});
 
 service /chunkingSample on new http:Listener(9092) {
 
@@ -23,7 +21,7 @@ service /chunkingSample on new http:Listener(9092) {
         if (clientResponse is http:Response) {
             var result = caller->respond(<@untainted>clientResponse);
             if (result is error) {
-                log:printError("Error sending response", err = result);
+                log:printError("Error sending response", 'error = result);
             }
         } else {
             http:Response errorResponse = new;
@@ -32,7 +30,7 @@ service /chunkingSample on new http:Listener(9092) {
             errorResponse.setPayload(msg);
             var response = caller->respond(errorResponse);
             if (response is error) {
-                log:printError("Error sending response", err = response);
+                log:printError("Error sending response", 'error = response);
             }
         }
     }
@@ -75,7 +73,7 @@ service /echo on new http:Listener(9090) {
         var result = caller->respond(res);
         if (result is error) {
            log:printError("Error sending response from echo service",
-                        err = result);
+                        'error = result);
         }
     }
 }

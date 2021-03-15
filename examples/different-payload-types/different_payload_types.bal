@@ -19,14 +19,14 @@ service /actionService on new http:Listener(9090) {
         //[GET](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#get) remote function with
         //the request given as a message.
         http:Request request = new;
-        response = clientEP->get("/greeting", message = request);
+        response = clientEP->execute("GET", "/greeting", request);
         handleResponse(response);
 
         //[POST](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function without any payload.
         response = clientEP->post("/echo", ());
         handleResponse(response);
 
-        //[POST](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function with
+        //[POST](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http`/clients/Client#post) remote function with
         //text as the payload.
         response = clientEP->post("/echo", "Sample Text");
         handleResponse(response);
@@ -87,7 +87,7 @@ service /backEndService on new http:Listener(9091) {
     resource function get greeting(http:Caller caller, http:Request req) {
         error? result = caller->respond("Hello");
         if (result is error) {
-            log:printError("Error in responding to caller", err = result);
+            log:printError("Error in responding to caller", 'error = result);
         }
     }
 
@@ -158,7 +158,7 @@ service /backEndService on new http:Listener(9091) {
 }
 
 //Handle response data received from HTTP client remote functions.
-function handleResponse(http:Response|http:PayloadType|error response) {
+function handleResponse(http:Response|error response) {
     if (response is http:Response) {
         //Print the content type of the received data.
         if (response.hasHeader("content-type")) {
@@ -166,51 +166,52 @@ function handleResponse(http:Response|http:PayloadType|error response) {
             if (mime:TEXT_PLAIN == baseType) {
                 var payload = response.getTextPayload();
                 if (payload is string) {
-                    log:print("Text data: " + payload);
+                    log:printInfo("Text data: " + payload);
                 } else {
-                    log:printError("Error in parsing text data", err = payload);
+                    log:printError("Error in parsing text data",
+                                                    'error = payload);
                 }
             } else if (mime:APPLICATION_XML == baseType) {
                 var payload = response.getXmlPayload();
                 if (payload is xml) {
-                    string strValue = io:sprintf("%s", payload);
-                    log:print("Xml data: " + strValue);
+                    log:printInfo("Xml data: " + payload.toString());
                 } else {
-                    log:printError("Error in parsing xml data", err = payload);
+                    log:printError("Error in parsing xml data",
+                                                    'error = payload);
                 }
             } else if (mime:APPLICATION_JSON == baseType) {
                 var payload = response.getJsonPayload();
                 if (payload is json) {
-                    log:print("Json data: " + payload.toJsonString());
+                    log:printInfo("Json data: " + payload.toJsonString());
                 } else {
-                    log:printError("Error in parsing json data", err = payload);
+                    log:printError("Error in parsing json data",
+                                                    'error = payload);
                 }
             } else if (mime:APPLICATION_OCTET_STREAM == baseType) {
                 var payload = response.getTextPayload();
                 if (payload is string) {
-                    log:print("Response contains binary data: " + payload);
+                    log:printInfo("Response contains binary data: " + payload);
                 } else {
                     log:printError("Error in parsing binary data",
-                                    err = payload);
+                                                    'error = payload);
                 }
             } else if (mime:MULTIPART_FORM_DATA == baseType) {
-                log:print("Response contains body parts: ");
+                log:printInfo("Response contains body parts: ");
                 var payload = response.getBodyParts();
                 if (payload is mime:Entity[]) {
                     handleBodyParts(payload);
                 } else {
                     log:printError("Error in parsing multipart data",
-                                    err = payload);
+                                                    'error = payload);
                 }
             } else if (mime:IMAGE_PNG == baseType) {
-                log:print("Response contains an image");
+                log:printInfo("Response contains an image");
             }
         } else {
-            log:print("Entity body is not available");
+            log:printInfo("Entity body is not available");
         }
     } else {
-        error err = <error>response;
-        log:printError(err.message(), err = err);
+        log:printError(response.message(), 'error = response);
     }
 }
 
@@ -224,7 +225,7 @@ function sendErrorMsg(http:Caller caller, error err) {
 
 function handleError(error? result) {
     if (result is error) {
-        log:printError(result.message(), err = result);
+        log:printError(result.message(), 'error = result);
     }
 }
 
@@ -245,17 +246,17 @@ function handleBodyParts(mime:Entity[] bodyParts) {
         if (mime:APPLICATION_JSON == baseType) {
             var payload = bodyPart.getJson();
             if (payload is json) {
-                log:print("Json Part: " + payload.toJsonString());
+                log:printInfo("Json Part: " + payload.toJsonString());
             } else {
-                log:printError(payload.message(), err = payload);
+                log:printError(payload.message(), 'error = payload);
             }
         }
         if (mime:TEXT_PLAIN == baseType) {
-                var payload = bodyPart.getText();
+            var payload = bodyPart.getText();
             if (payload is string) {
-                log:print("Text Part: " + payload);
+                log:printInfo("Text Part: " + payload);
             } else {
-                log:printError(payload.message(), err = payload);
+                log:printError(payload.message(), 'error = payload);
             }
         }
     }

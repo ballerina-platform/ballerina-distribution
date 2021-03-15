@@ -8,8 +8,7 @@ http:Client clientEndpoint = check new ("http://localhost:9090");
 
 service /'stream on new http:Listener(9090) {
 
-    resource function get fileupload(http:Caller caller,
-                                         http:Request clientRequest) {
+    resource function get fileupload(http:Caller caller) {
         http:Request request = new;
 
         //[Sets the file](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#setFileAsPayload) as the request payload.
@@ -24,13 +23,13 @@ service /'stream on new http:Listener(9090) {
             res = clientResponse;
         } else {
             log:printError("Error occurred while sending data to the client ",
-                            err = <error>clientResponse);
-            setError(res, <error>clientResponse);
+                            'error = clientResponse);
+            setError(res, clientResponse);
         }
         var result = caller->respond(res);
         if (result is error) {
             log:printError("Error while while sending response to the caller",
-                            err = result);
+                            'error = result);
         }
     }
 
@@ -46,7 +45,8 @@ service /'stream on new http:Listener(9090) {
                                     "./files/ReceivedFile.pdf", streamer);
 
             if (result is error) {
-                log:printError("error occurred while writing ", err = result);
+                log:printError("error occurred while writing ",
+                                                        'error = result);
                 setError(res, result);
             } else {
                 res.setPayload("File Received!");
@@ -58,7 +58,7 @@ service /'stream on new http:Listener(9090) {
         var result = caller->respond(res);
         if (result is error) {
            log:printError("Error occurred while sending response",
-                           err = result);
+                           'error = result);
         }
     }
 }
@@ -73,6 +73,7 @@ function setError(http:Response res, error err) {
 function close(stream<byte[], io:Error> byteStream) {
     var cr = byteStream.close();
     if (cr is error) {
-        log:printError("Error occurred while closing the stream: ", err = cr);
+        log:printError("Error occurred while closing the stream: ",
+                            'error = cr);
     }
 }
