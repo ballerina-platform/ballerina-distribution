@@ -5,6 +5,6 @@
 // is performed by default for subscribers that receive authenticated content. Ballerina WebSub Subscriber
 // Services could thus be registered as WebHooks to receive event notifications.
 //
-// In this example, a WebSub Subscriber service is used to implement GitHub based WebHook Serivice.
+// In this example, a WebSub Subscriber service is used to implement a GitHub-based WebHook service.
 // For more information on the underlying module, 
 // see the [WebSub module](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/websub/latest/websub/).
