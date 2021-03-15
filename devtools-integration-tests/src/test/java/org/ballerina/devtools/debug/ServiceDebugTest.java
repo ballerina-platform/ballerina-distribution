@@ -47,7 +47,7 @@ public class ServiceDebugTest extends BaseTestCase {
         debugTestRunner = new DebugTestRunner(testProjectName, testModuleFileName, true);
     }
 
-    @Test(description = "Test for service module debug engage")
+    @Test(enabled = false, description = "Test for service module debug engage")
     public void testModuleServiceDebugScenarios() throws BallerinaTestException {
         String fileName = "hello_service.bal";
         String filePath = Paths.get(debugTestRunner.testProjectPath, fileName).toString();
