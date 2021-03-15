@@ -1,8 +1,8 @@
-// Ballerina WebSub Subscriber service, which could be used as a WebHook Listener for GitHub.
+// The Ballerina WebSub Subscriber service, which could be used as a WebHook Listener for GitHub.
 import ballerina/websub;
 import ballerina/io;
 
-// Annotation based configurations specifying the subscription parameters.
+// Annotation-based configurations specifying the subscription parameters.
 @websub:SubscriberServiceConfig {
     target: ["https://api.github.com/hub", "https://github.com/<YOUR_ORGANIZATION>/<YOUR_REPOSITORY>/events/push.json"],
     secret: "<YOUR_SECRET_KEY>",
