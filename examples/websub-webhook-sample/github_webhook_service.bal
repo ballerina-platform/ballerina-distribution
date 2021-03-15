@@ -137,7 +137,7 @@ public type GitHubEvent PingEvent|PushEvent;
 // The endpoint to which the webhook service is inbound.
 listener websub:Listener websubEP = new (9090);
 
-// Annotation based configurations specifying the subscription parameters.
+// Annotation-based configurations specifying the subscription parameters.
 @websub:SubscriberServiceConfig {
     target: ["https://api.github.com/hub", "https://github.com/<YOUR_ORGANIZATION>/<YOUR_REPOSITORY>/events/push.json"],
     secret: "<YOUR_SECRET_KEY>",
