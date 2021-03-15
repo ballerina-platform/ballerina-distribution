@@ -125,7 +125,8 @@ function handleContent(mime:Entity bodyPart) {
             }
             close(payload);
         } else {
-            log:printError("Error in parsing byte channel :", 'error = payload);
+            log:printError("Error in parsing byte channel :",
+                            'error = payload);
         }
     }
 }
@@ -144,6 +145,7 @@ function getBaseType(string contentType) returns string {
 function close(stream<byte[], io:Error> byteStream) {
     var cr = byteStream.close();
     if (cr is error) {
-        log:printError("Error occurred while closing the stream: ", 'error = cr);
+        log:printError("Error occurred while closing the stream: ",
+                       'error = cr);
     }
 }
