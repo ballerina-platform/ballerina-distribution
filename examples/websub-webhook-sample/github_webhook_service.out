@@ -1,5 +1,5 @@
 # To start the service, navigate to the directory that contains the
-# `.bal` file, and use the `bal run` command below.
+# `.bal` file, and execute the `bal run` command below.
 bal run github_webhook_service.bal
 time = 2021-03-15 15:43:00,198 level = INFO  module = ballerina/websub message = "HTTPS is recommended but using HTTP" 
 time = 2021-03-15 15:43:01,960 level = INFO  module = ballerina/websub message = "Subscription request considered successful for non 202 status code: 204" 
