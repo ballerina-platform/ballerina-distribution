@@ -1,5 +1,4 @@
 import ballerina/http;
-import ballerina/io;
 import ballerina/log;
 
 // This is a participant in the distributed transaction. It will get invoked when it receives
