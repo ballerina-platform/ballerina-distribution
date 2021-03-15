@@ -3,7 +3,7 @@
 
 // to receive notifications. If specified, the subscription process will be initiated at the startup. Signature validation
 // is performed by default for subscribers that receive authenticated content. Ballerina WebSub Subscriber
-// Services could thus be registered as webhooks to receive event notifications.
+// Services could thus be registered as WebHooks to receive event notifications.
 //
 // In this example, a WebSub Subscriber service is used to implement GitHub based WebHook Serivice.
 // For more information on the underlying module, 
