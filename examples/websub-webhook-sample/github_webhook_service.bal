@@ -1,4 +1,4 @@
-// Ballerina WebSub Subscriber service, which could be used as a WebHook Listener for GitHub.
+// The Ballerina WebSub Subscriber service, which could be used as a WebHook Listener for GitHub.
 import ballerina/websub;
 import ballerina/io;
 
