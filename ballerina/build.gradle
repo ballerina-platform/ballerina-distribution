@@ -97,22 +97,6 @@ task unpackAzFunctionsExamples(type: Copy) {
     }
 }
 
-task unpackDockerAnnotations(type: Copy) {
-    group = "unpack_dependencies"
-    configurations.dockerAnnotations.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        from zipTree(artifact.getFile())
-        into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
-    }
-}
-
-task unpackDockerExamples(type: Copy) {
-    group = "unpack_dependencies"
-    configurations.dockerExamples.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        from zipTree(artifact.getFile())
-        into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
-    }
-}
-
 task unpackStdLibs() {
     doLast {
         configurations.ballerinaStdLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
