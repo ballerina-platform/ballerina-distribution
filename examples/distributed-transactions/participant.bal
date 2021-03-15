@@ -16,9 +16,8 @@ service /stockquote on new http:Listener(8889) {
         // Generate the response.
         http:Response res = new;
         if (updateReq is json) {
-            log:printInfo("Update stock quote request received. symbol:" +
-                          updateReq.symbol.toString() + ", price:" +
-                          updateReq.price.toString());
+            log:printInfo("Update stock quote request received. " +
+                          updateReq.toJsonString());
             json jsonRes = {"message": "updating stock"};
             res.statusCode = http:STATUS_OK;
             res.setJsonPayload(jsonRes);
