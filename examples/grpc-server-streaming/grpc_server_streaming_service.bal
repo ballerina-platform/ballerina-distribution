@@ -11,7 +11,7 @@ listener grpc:Listener ep = new (9090);
 service "HelloWorld" on ep {
     remote function lotsOfReplies(string name)
                         returns stream<string,error>|error {
-        log:print("Server received hello from " + name);
+        log:printInfo("Server received hello from " + name);
         string[] greets = ["Hi", "Hey", "GM"];
         // Create the array of responses by appending the received name.
         int i = 0;

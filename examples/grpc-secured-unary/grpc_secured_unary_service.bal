@@ -20,7 +20,7 @@ listener grpc:Listener ep = new (9090, {
 service "HelloWorld" on ep {
     remote function hello(HelloWorldStringCaller caller,
                             ContextString request) {
-        log:print("Invoked the hello RPC call.");
+        log:printInfo("Invoked the hello RPC call.");
         // Reads the request content.
         string message = "Hello " + request.content;
         // Set up the response message and send it.
