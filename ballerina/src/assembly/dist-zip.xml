@@ -162,19 +162,19 @@
             <fileMode>644</fileMode>
         </file>
         <file>
-            <source>${project.build.directory}/extracted-distributions/ballerina-command-distribution-zip/bin/ballerina</source>
+            <source>${project.build.directory}/extracted-distributions/ballerina-command-${ballerina.command.version}/bin/bal</source>
             <outputDirectory>bin</outputDirectory>
             <filtered>true</filtered>
             <fileMode>775</fileMode>
         </file>
         <file>
-            <source>${project.build.directory}/extracted-distributions/ballerina-command-distribution-zip/bin/ballerina.bat</source>
+            <source>${project.build.directory}/extracted-distributions/ballerina-command-${ballerina.command.version}/bin/bal.bat</source>
             <outputDirectory>bin</outputDirectory>
             <filtered>true</filtered>
             <fileMode>775</fileMode>
         </file>
         <file>
-            <source>${project.build.directory}/extracted-distributions/ballerina-command-distribution-zip/lib/ballerina-command-${ballerina.command.version}.jar</source>
+            <source>${project.build.directory}/extracted-distributions/ballerina-command-${ballerina.command.version}/lib/ballerina-command-${ballerina.command.version}.jar</source>
             <outputDirectory>lib</outputDirectory>
             <fileMode>775</fileMode>
         </file>

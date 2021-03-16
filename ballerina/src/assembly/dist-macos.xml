@@ -105,7 +105,7 @@
             </directory>
             <outputDirectory>distributions/jballerina-${ballerina.version}</outputDirectory>
             <excludes>
-                <exclude>distributions/jballerina-${ballerina.version}/bin/ballerina.bat</exclude>
+                <exclude>distributions/jballerina-${ballerina.version}/bin/bal.bat</exclude>
                 <exclude>distributions/ballerina-version</exclude>
             </excludes>
         </fileSet>
@@ -159,13 +159,13 @@
             <fileMode>644</fileMode>
         </file>
         <file>
-            <source>${project.build.directory}/extracted-distributions/ballerina-command-distribution-zip/bin/ballerina</source>
+            <source>${project.build.directory}/extracted-distributions/ballerina-command-${ballerina.command.version}/bin/bal</source>
             <outputDirectory>bin</outputDirectory>
             <filtered>true</filtered>
             <fileMode>775</fileMode>
         </file>
         <file>
-            <source>${project.build.directory}/extracted-distributions/ballerina-command-distribution-zip/lib/ballerina-command-${ballerina.command.version}.jar</source>
+            <source>${project.build.directory}/extracted-distributions/ballerina-command-${ballerina.command.version}/lib/ballerina-command-${ballerina.command.version}.jar</source>
             <outputDirectory>lib</outputDirectory>
             <fileMode>775</fileMode>
         </file>
