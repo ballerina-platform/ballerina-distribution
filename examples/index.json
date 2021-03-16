@@ -1042,6 +1042,18 @@
         ]
     },
     {
+        "title": "WebSub",
+        "column": 1,
+        "category": "Working with WebSub Protocol",
+        "samples": [
+            {
+                "name": "Websub Subscriber Service",
+                "url": "websub-webhook-sample",
+                "disablePlayground": true
+            }
+        ]     
+    },
+    {
         "title": "Resiliency",
         "column": 1,
         "category": "Working over the network",

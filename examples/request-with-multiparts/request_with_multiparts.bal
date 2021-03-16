@@ -24,7 +24,7 @@ service /multiparts on new http:Listener(9090) {
         }
         var result = caller->respond(response);
         if (result is error) {
-            log:printError("Error sending response", err = result);
+            log:printError("Error sending response", 'error = result);
         }
     }
 
@@ -56,7 +56,7 @@ service /multiparts on new http:Listener(9090) {
         if (returnResponse is http:Response) {
             var result = caller->respond(<@untainted>returnResponse);
             if (result is error) {
-                log:printError("Error sending response", err = result);
+                log:printError("Error sending response", 'error = result);
             }
         } else {
             http:Response response = new;
@@ -65,7 +65,7 @@ service /multiparts on new http:Listener(9090) {
             response.statusCode = 500;
             var result = caller->respond(response);
             if (result is error) {
-                log:printError("Error sending response", err = result);
+                log:printError("Error sending response", 'error = result);
             }
         }
     }
@@ -81,7 +81,7 @@ function handleContent(mime:Entity bodyPart) {
             //[Extracts `xml` data](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#getXml) from the body part.
             var payload = bodyPart.getXml();
             if (payload is xml) {
-                log:print(payload.toString());
+                log:printInfo(payload.toString());
             } else {
                 log:printError(payload.message());
             }
@@ -89,7 +89,7 @@ function handleContent(mime:Entity bodyPart) {
             //[Extracts `json` data](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#getJson) from the body part.
             var payload = bodyPart.getJson();
             if (payload is json) {
-                log:print(payload.toJsonString());
+                log:printInfo(payload.toJsonString());
             } else {
                 log:printError(payload.message());
             }
@@ -97,7 +97,7 @@ function handleContent(mime:Entity bodyPart) {
             //[Extracts text data](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/mime/latest/mime/classes/Entity#getText) from the body part.
             var payload = bodyPart.getText();
             if (payload is string) {
-                log:print(payload);
+                log:printInfo(payload);
             } else {
                 log:printError(payload.message());
             }
