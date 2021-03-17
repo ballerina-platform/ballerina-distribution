@@ -1,8 +1,8 @@
 # Create a Ballerina package.
-# Copy generated stub file `grpc_server_streaming_pb.bal` to the package.
+# Copy the generated `grpc_server_streaming_pb.bal` stub file to the package.
 # For example, if you create a package named `service`, copy the stub file to the `service` package.
 
-# Create new Ballerina file `grpc_server_streaming.bal` inside the `service` package and add service implementation.
+# Create a new `grpc_server_streaming.bal` Ballerina file inside the `service` package and add the service implementation.
 
 # Execute the command below to build the 'service' package.
 bal build service
