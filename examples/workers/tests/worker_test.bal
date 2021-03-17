@@ -20,7 +20,11 @@ function testFunc() {
     test:when(mock_printLn).call("mockPrint");
 
     // Invoke the main function.
-    main();
+    error? e = main();
+    if (e is error) {
+        test:assertFail("Main function failed with : " + e.toString());
+    }
+
     boolean assert = false;
     if ((outputs[1] == "Worker 2 response: 35") && (outputs[2] == "Worker 1 response: 6")) {
        assert = true;
