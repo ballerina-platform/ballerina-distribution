@@ -24,9 +24,3 @@ service "HelloWorld" on ep {
         "Response Header value"}};
     }
 }
-
-// The context record includes the message payload and headers.
-public type ContextString record {|
-    string content;
-    map<string|string[]> headers;
-|};
