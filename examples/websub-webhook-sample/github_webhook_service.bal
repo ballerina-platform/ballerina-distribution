@@ -4,7 +4,10 @@ import ballerina/io;
 
 // Annotation-based configurations specifying the subscription parameters.
 @websub:SubscriberServiceConfig {
-    target: ["https://api.github.com/hub", "https://github.com/<YOUR_ORGANIZATION>/<YOUR_REPOSITORY>/events/push.json"],
+    target: [
+        "https://api.github.com/hub", 
+        "https://github.com/<YOUR_ORGANIZATION>/<REPOSITORY>/events/push.json"
+    ],
     secret: "<YOUR_SECRET_KEY>",
     callback: "<YOUR_CALLBACK_URL>",
     httpConfig: {
@@ -21,11 +24,15 @@ service /subscriber on new websub:Listener(9090) {
             if (retrievedContent.zen is string) {
                 int hookId = check retrievedContent.hook_id;
                 int senderId = check retrievedContent.sender.id;
-                io:println(string`Ping Event received for webhook [${hookId}]. Event sender [${senderId}]`);
+                io:println(string`PingEvent received for webhook [${hookId}]`);
+                io:println(string`Event sender [${senderId}]`);
             } else if (retrievedContent.ref is string) {
-                string repositoryName = check retrievedContent.repository.name;
-                string lastUpdatedTime = check retrievedContent.repository.updated_at;
-                io:println(string`Push Event received for repository [${repositoryName}]. Last updated at ${lastUpdatedTime}`);
+                string repositoryName = 
+                            check retrievedContent.repository.name;
+                string lastUpdatedTime = 
+                            check retrievedContent.repository.updated_at;
+                io:println(string`PushEvent received for [${repositoryName}]`);
+                io:println(string`Last updated at ${lastUpdatedTime}`);
             }
         } else {
             io:println("Unrecognized content type, hence ignoring");
