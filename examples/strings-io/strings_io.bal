@@ -21,13 +21,17 @@ public function main() returns @tainted error? {
     string[] readLines = check io:fileReadLines(textFilePath2);
     io:println(readLines);
 
+    // Read the previously written lines from 'textFile2.txt' as a stream.
+    stream<string, io:Error> lineStream1 = check
+                                    io:fileReadLinesAsStream(textFilePath2);
     // Write the given stream of lines to a file.
-    check io:fileWriteLinesFromStream(textFilePath3, lines.toStream());
-    // If the write operation was successful, then, perform a read operation to read the lines as a stream.
-    stream<string, io:Error> lineStream = check
-                                    io:fileReadLinesAsStream(textFilePath3);
+    check io:fileWriteLinesFromStream(textFilePath3, lineStream1);
+
+    // Verify the streaming write operation by reading 'textFile3.txt' as a stream.
+    stream<string, io:Error> lineStream2 = check
+                                    io:fileReadLinesAsStream(textFilePath2);
     // Loop through the stream and print the content.
-    error? e = lineStream.forEach(function(string val) {
+    error? e = lineStream2.forEach(function(string val) {
                                io:println(val);
                            });
 }
