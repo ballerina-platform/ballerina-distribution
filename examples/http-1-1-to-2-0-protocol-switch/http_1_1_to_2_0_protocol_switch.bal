@@ -36,7 +36,7 @@ service /http2service on http2serviceEP {
 
     resource function 'default .() returns json {
         // Construct the response payload.
-        json response = {"response": {"message": "response from http2 service"}};
+        json response = {"response":{"message":"response from http2 service"}};
 
         // Send the response back to the caller (http11Service).
         return response;
