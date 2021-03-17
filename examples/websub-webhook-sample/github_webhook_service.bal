@@ -18,7 +18,8 @@ import ballerina/io;
 }
 service /subscriber on new websub:Listener(9090) {
     // Defines the remote function that accepts the event notification request for the WebHook.
-    remote function onEventNotification(websub:ContentDistributionMessage event) returns error? {
+    remote function onEventNotification(
+                    websub:ContentDistributionMessage event) returns error? {
         var retrievedContent = event.content;
         if (retrievedContent is json) {
             if (retrievedContent.zen is string) {
