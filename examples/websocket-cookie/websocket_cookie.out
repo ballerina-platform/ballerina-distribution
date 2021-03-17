@@ -1,5 +1,5 @@
 # To start the services, navigate to the directory that contains the
-# `.bal` file and run the `ballerina run` command.
+# `.bal` file and run the `bal run` command.
 
-$ ballerina run websocket_cookie.bal
+$ bal run websocket_cookie.bal
 Hello World!

@@ -26,7 +26,15 @@ service /ordermgt on httpListener {
         http:Response response = new;
         var orderReq = req.getJsonPayload();
         if (orderReq is json) {
-            string orderId = orderReq.Order.ID.toString();
+            json|error orderIdJson = orderReq.Order.ID;
+            string orderId = "";
+
+            if (orderIdJson is json) {
+                orderId = orderIdJson.toString();
+            } else {
+                log:printError("Error sending response", err = orderIdJson);
+            }
+
             ordersMap[orderId] = <@untainted> orderReq;
 
             json payload = { status: "Order Created.", orderId: orderId };

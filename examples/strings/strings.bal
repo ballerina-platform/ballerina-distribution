@@ -1,5 +1,4 @@
 import ballerina/io;
-import ballerina/lang.'string;
 
 public function main() {
 
@@ -42,7 +41,7 @@ public function main() {
     byte[] bArray = hello.toBytes();
 
     // Convert a `byte` array to a `string`.
-    string|error s6 = 'string:fromBytes(bArray);
+    string|error s6 = string:fromBytes(bArray);
     if (s6 is string) {
         io:println("From bytes: ", s6);
     }
@@ -59,6 +58,11 @@ public function main() {
     // Check whether the given `string` starts with the prefix "Lion".
     boolean hasPrefix = statement.startsWith("Lion");
     io:println("HasPrefix: ", hasPrefix);
+
+    // Check whether the given string contains another string.
+    // An optional second argument is the index to start searching from.
+    boolean contains = statement.includes("Town", 7);
+    io:println("Contains: ", contains);
 
     // Format a `string` according to the given format arguments.
     string name = "Sam";

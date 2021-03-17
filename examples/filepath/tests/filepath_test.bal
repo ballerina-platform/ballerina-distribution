@@ -1,5 +1,5 @@
 import ballerina/test;
-import ballerina/system;
+import ballerina/os;
 
 string[] outputs = [];
 
@@ -8,14 +8,17 @@ string[] outputs = [];
     moduleName: "ballerina/io",
     functionName: "println"
 }
-public function mockPrint(any|error... val) {
-    outputs.push(val.reduce(function (any|error a, any|error b) returns string => a.toString() + b.toString(), "").toString());
+test:MockFunction mock_printLn = new();
+
+public function mockPrint(any... val) {
+    outputs.push(val.reduce(function (any a, any b) returns string => a.toString() + b.toString(), "").toString());
 }
 
-boolean isWindows = system:getEnv("OS") != "";
+boolean isWindows = os:getEnv("OS") != "";
 
 @test:Config {}
 function testFunc() returns error? {
+    test:when(mock_printLn).call("mockPrint");
     // Invoking the main function
     check main();
 

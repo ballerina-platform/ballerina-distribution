@@ -21,7 +21,7 @@ import ballerina/log;
 listener grpc:Listener ep = new (20004, {
     host: "localhost",
     secureSocket: {
-        keyStore: {
+        key: {
             path: KEYSTORE_PATH,
             password: "ballerina"
         }
@@ -34,7 +34,7 @@ listener grpc:Listener ep = new (20004, {
 }
 service /HelloWorld on ep {
     isolated remote function hello(grpc:Caller caller, string name) {
-        log:print("Server received hello from " + name);
+        log:printInfo("Server received hello from " + name);
         string message = "Hello " + name;
 
         // Send a response message to the caller.
@@ -43,7 +43,7 @@ service /HelloWorld on ep {
         if (err is grpc:Error) {
             log:printError("Error from Connector: " + err.message());
         } else {
-            log:print("Server send response : " + message);
+            log:printInfo("Server send response : " + message);
         }
 
         // Send the `completed` notification to the caller.

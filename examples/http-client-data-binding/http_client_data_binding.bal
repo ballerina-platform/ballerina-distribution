@@ -7,13 +7,13 @@ type Person record {|
     int age;
 |};
 
-http:Client backendClient = new("http://localhost:9092");
+http:Client backendClient = check new("http://localhost:9092");
 
 service /call on new http:Listener(9090) {
 
     resource function get all(http:Caller caller, http:Request request)
                                                     returns @tainted error? {
-        // The `string` typedesc is being passed to the `get` [client remote function](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/clients/Client#get)
+        // The `string` typedesc is being passed to the `get` [client remote function](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#get)
         // as the `targetType` expecting the payload to be bound to a string value.
         var result = backendClient->
                         get("/backend/getString", targetType = string);
@@ -25,9 +25,9 @@ service /call on new http:Listener(9090) {
             return result;
         }
 
-        // If the type test of the error becomes false, it implies that the [payload type](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/types#Payload)
+        // If the type test of the error becomes false, it implies that the [payload type](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/types#Payload)
         // is string.
-        log:print("String payload: " + <string>result);
+        log:print("String payload: " + <string> checkpanic result);
 
         // Binding the payload to a JSON type. If an error returned, it will be responded back to the caller.
         json jsonPayload = <json> check backendClient->
@@ -56,11 +56,15 @@ service /call on new http:Listener(9090) {
     resource function get '5xx(http:Caller caller, http:Request request) {
         var res = backendClient->post("/backend/get5XX", "want 500", json);
         // When the data binding is expected to happen and if the `post` remote function gets a 5XX response from the
-        // backend, the response will be returned as an [http:RemoteServerError](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/errors#RemoteServerError)
+        // backend, the response will be returned as an [http:RemoteServerError](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/errors#RemoteServerError)
         // including the error message and status code.
-        if (res is http:RemoteServerError) {
+        if (res is error) {
             http:Response resp = new;
-            resp.statusCode = res.detail()?.statusCode ?: 500;
+            if (res is http:RemoteServerError) {
+                resp.statusCode = res.detail()?.statusCode ?: 500;
+            } else {
+                resp.statusCode = 500;
+            }
             resp.setPayload(<@untainted>res.message());
             var responseToCaller = caller->respond(<@untainted>resp);
         } else {
@@ -70,12 +74,16 @@ service /call on new http:Listener(9090) {
 
     resource function get '4xx(http:Caller caller, http:Request request) {
         // When the data binding is expected to happen and if the client remote function gets a 4XX response from the
-        // backend, the response will be returned as an [http:ClientRequestError](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/http/errors#ClientRequestError)
+        // backend, the response will be returned as an [http:ClientRequestError](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/errors#ClientRequestError)
         // including the error message and status code.
         var res = backendClient->post("/backend/err", "want 400", json);
-        if (res is http:ClientRequestError) {
+        if (res is error) {
             http:Response resp = new;
-            resp.statusCode = res.detail()?.statusCode ?: 400;
+            if (res is http:ClientRequestError) {
+                resp.statusCode = res.detail()?.statusCode ?: 400;
+            } else {
+                resp.statusCode = 500;
+            }
             resp.setPayload(<@untainted>res.message());
             var responseToCaller = caller->respond(<@untainted>resp);
         } else {

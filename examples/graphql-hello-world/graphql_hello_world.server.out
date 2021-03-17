@@ -1,0 +1,6 @@
+# To start the service, navigate to the directory that contains the
+# `.bal` file, and issue the `bal run` command below.
+# Since Ballerina GraphQL runs on a Ballerina HTTP listener, an `http:Listener`
+# log will be printed.
+bal run graphql_hello_world.bal
+[ballerina/http] started HTTP/WS listener 0.0.0.0:9090

@@ -1,6 +1,6 @@
+# In the directory, which contains the `.bal` file, create a directory named `files`.
 # To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run xml_io.bal
-Preparing to write xml file
-Preparing to read the content written
+# `.bal` file, and execute the `bal run` command below.
+bal run xml_io.bal
+
 <book>The Lost World</book>

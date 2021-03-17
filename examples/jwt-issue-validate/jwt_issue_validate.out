@@ -1,6 +1,30 @@
-# To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command below.
-ballerina run jwt_issue_validate.bal --b7a.home=<ballerina_home_path>
-Issued JWT: eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QiLCAia2lkIjoiTlRBeFptTXhORE15WkRnM01UVTFaR00wTXpFek9ESmhaV0k0TkRObFpEVTFPR0ZrTmpGaU1RIn0.eyJzdWIiOiJhZG1pbiIsICJpc3MiOiJiYWxsZXJpbmEiLCAiZXhwIjoxNjAyNzc3NDA1LCAianRpIjoiMTAwMDc4MjM0YmEyMyIsICJhdWQiOlsidkV3emJjYXNKVlFtMWpWWUhVSENqaHhaNHRZYSJdfQ.EQSIa_YYsQMCfSdYqocIbePzw2zU5Gg50aEk_C3TieGBWbzsz3S8YCN3UsLMAmFp5cQxBnQWik8ncDoeBVvHP1X1ox4PbSIbHz-AbMFyKkscMqcl9RO16X3EZ7oOCy0XGjINULphublSA6tZ00iu8oPA8ABDw4EtkvoKZrT31eujv7EHpB5heyez3KxNAkl7V-kbEBW_-6RQs40yeK-sHPYwbz5I3LRZ9R5PvzdGblTDBENSirRakijZ9pyTpHMjXkzMcQZWBQs8Z-TR_1oOmqnVLgiYfra43tdV6rz2Yz8sXpvF0jeH9LI-uZIP_yflSbRn-Q0h5r58beVzqCx5Ug
-Validated JWT Payload: {"iss":"ballerina","sub":"admin","aud":["vEwzbcasJVQm1jVYHUHCjhxZ4tYa"],"jti":"100078234ba23","exp":1602777405,"customClaims":{"sub":"admin","iss":"ballerina","exp":"1602777405","jti":"100078234ba23","aud":["vEwzbcasJVQm1jVYHUHCjhxZ4tYa"]}}
-Validated JWT Payload: {"iss":"ballerina","sub":"admin","aud":["vEwzbcasJVQm1jVYHUHCjhxZ4tYa"],"jti":"100078234ba23","exp":1602777405,"customClaims":{"sub":"admin","iss":"ballerina","exp":"1602777405","jti":"100078234ba23","aud":["vEwzbcasJVQm1jVYHUHCjhxZ4tYa"]}}
+# To run this sample, navigate to the directory that contains the `.bal` file,
+# and execute the `bal run` command below.
+# (You may need to change the certificate file path, trusted certificate file
+# path and private key file path.)
+bal run jwt_issue_validate.bal
+Issued JWT: eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QiLCAia2lkIjoiTlRBeFptTXhORE15WkR
+            nM01UVTFaR00wTXpFek9ESmhaV0k0TkRObFpEVTFPR0ZrTmpGaU1RIn0.eyJpc3MiOi
+            JiYWxsZXJpbmEiLCAic3ViIjoiYWRtaW4iLCAiYXVkIjoidkV3emJjYXNKVlFtMWpWW
+            UhVSENqaHhaNHRZYSIsICJqdGkiOiI1NWEwYjc1NC04OTVmLTQyNzktODg0My1iNzQ1
+            ZTExYTU3ZTkiLCAiZXhwIjoxNjExMTI3MDIzLCAibmJmIjoxNjExMTIzNDIzLCAiaWF
+            0IjoxNjExMTIzNDIzfQ.DMJDjJEFiQN7d_2CXGfXX_UR8Fi7Witr3aVGm4K7amEm3xN
+            cbh1bZmKO2ir-oP2_ikoM1_ETO7i4E4LKJHNAEdhqj8YHyKpbszaEq5zouMOtdFcI7i
+            TS8LyYDnyLEQQ6sa9L9NoMz3xULeF8epk0eaN1vVA-ijndVkZlMjaXJNf9Bgzn2qJOd
+            sQ6F0GeC4WKEt-xcEY5C2_haEDotSOYhUzEqh6D1fRtrGy7GaH5gzx99n-xjn8NZbTD
+            F0VnD6c1kJPe25FiPz24l9KdaCE1i2WbuzEhZWMclHW5RcTXVkLLkjQ4DvxfE-riGmK
+            qPN1gatWViZQF_VGBK-G7rEhi9Q
+Validated JWT Payload: {"iss":"ballerina",
+                        "sub":"admin",
+                        "aud":"vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
+                        "jti":"55a0b754-895f-4279-8843-b745e11a57e9",
+                        "exp":1611127023,"nbf":1611123423,
+                        "iat":1611123423
+                       }
+Validated JWT Payload: {"iss":"ballerina",
+                        "sub":"admin",
+                        "aud":"vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
+                        "jti":"55a0b754-895f-4279-8843-b745e11a57e9",
+                        "exp":1611127023,"nbf":1611123423,
+                        "iat":1611123423
+                       }

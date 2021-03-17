@@ -1,0 +1,2 @@
+description: Configurable variables in Ballerina provide configuration of module-level variables from various sources such as files and environment variables at the program execution.
+keywords: ballerina, ballerina by example, bbe, configurable, configurable variable, config management, configuration

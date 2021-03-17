@@ -2,69 +2,83 @@ import ballerina/io;
 import ballerina/time;
 
 public function main() returns error? {
-    // To create the `time:Time` object, use either the `currentTime()`,
-    // `createTime()`, or the `parse()` function.
-    // This fetches the current time.
-    time:Time time = time:currentTime();
-    int currentTimeMills = time.time;
-    io:println("Current system time in milliseconds: ", currentTimeMills);
-    // Specifies a time with the required year, month, date,
-    // time, and timezone information.
-    time:Time timeCreated = check time:createTime(2017, 3, 28, 23, 42, 45,
-        554, "America/Panama");
-    io:println("Created Time: ", time:toString(timeCreated));
-    // This retrieves the time for a given string representation
-    // based on the specified string format.
-    time:Time t1 = check time:parse("2017-06-26T09:46:22.444-0500",
-        "yyyy-MM-dd'T'HH:mm:ss.SSSZ");
-    // Prints it as an ISO 8601 formatted string.
-    io:println("Parsed Time: ", time:toString(t1));
-    // This fetches the formatted string of a given time.
-    string customTimeString = check time:format(time, "yyyy-MM-dd-E");
-    io:println("Current system time in custom format: ", customTimeString);
-    // These functions retrieve information related to a time object.
-    // This fetches the year of a given time.
-    int year = time:getYear(time);
-    io:println("Year: ", year);
-    // This fetches the month value of a given time.
-    int month = time:getMonth(time);
-    io:println("Month: ", month);
-    // This fetches the day value of a given time.
-    int day = time:getDay(time);
-    io:println("Day: ", day);
-    // This fetches the hour value of a given time.
-    int hour = time:getHour(time);
-    io:println("Hour: ", hour);
-    // This fetches the minute value of a given time.
-    int minute = time:getMinute(time);
-    io:println("Minute: ", minute);
-    // This fetches the seconds value of a given time.
-    int second = time:getSecond(time);
-    io:println("Second: ", second);
-    // This fetches the millisecond value of a given time.
-    int milliSecond = time:getMilliSecond(time);
-    io:println("Millisecond: ", milliSecond);
-    // This fetches the day of the week of a given time.
-    string weekday = time:getWeekday(time);
-    io:println("Weekday: ", weekday);
-    // This fetches the date component of the time using a single function.
-    [year, month, day] = time:getDate(time);
-    io:println("Date: ", year, ":", month, ":", day);
-    // This fetches the time component using a single function.
-    [hour, minute, second, milliSecond] = time:getTime(time);
-    io:println("Time: ", hour, ":", minute, ":", second, ":", milliSecond);
-    // This adds a given duration to a time. This example adds
-    // one year, one month, and one second to the current time.
-    time:Time tmAdd = time:addDuration(time, 1, 1, 0, 0, 0, 1, 0);
-    io:println("After adding a duration: ", time:toString(tmAdd));
-    // This subtracts a given duration from a time. This example
-    // subtract sone year, one month, and one second from the current time.
-    time:Time tmSub = time:subtractDuration(time, 1, 1, 0, 0, 0, 1, 0);
-    io:println("After subtracting a duration: ", time:toString(tmSub));
-    // This converts the time to a different timezone.
-    time:Time t2 = check time:createTime(2017, 3, 28, 23, 42, 45, 554,
-        "America/Panama");
-    io:println("Before converting the time zone: ", time:toString(t2));
-    time:Time t3 = check time:toTimeZone(t2, "Asia/Colombo");
-    io:println("After converting the time zone: ", time:toString(t3));
+    // Get the current instant of the system clock(seconds from the epoch of
+    // 1970-01-01T00:00:00). The returned `time:Utc` value represents seconds
+    // from the epoch with nanoseconds precision.
+    // The `time:Utc` is a tuple with [int, decimal]. The first member of the
+    // tuple represents the number of seconds from the epoch. The second
+    // member represents the rest of the nanoseconds from the epoch as a
+    // fraction.
+    time:Utc currentUtc = time:utcNow();
+    io:println(string `Current timestamp seconds: ${currentUtc[0]}s`);
+    io:println(string `Current timestamp nanoseconds as a
+    fraction: ${currentUtc[1]}s`);
+
+    // Return seconds from some unspecified epoch. The returned `seconds` has
+    // the nanoseconds precision which represents using the fractional part.
+    time:Seconds seconds = time:monotonicNow();
+    io:println(string `Seconds from an unspecified epoch: ${seconds}s`);
+
+    // Returns a `time:Utc` from a given RFC 3339 timestamp
+    // (e.g. `2007-12-03T10:15:30.00Z`).
+    time:Utc utc1 = check time:utcFromString("2007-12-03T10:15:30.00Z");
+    io:println("UTC value: " + utc1.toString());
+
+    // Returns the string representation of RFC 3339 timestamp
+    // (e.g. `2007-12-03T10:15:30.00Z`) from a given `time:Utc`.
+    string utcString1 = time:utcToString(utc1);
+    io:println(string `UTC string representation: ${utcString1}`);
+
+    // Returns the difference of two `time:Utc` values as
+    // seconds(`time:Seconds`).
+    time:Seconds utcDiff = time:utcDiffSeconds(currentUtc, utc1);
+    io:println(string `UTC diff: ${utcDiff}`);
+
+    // Check the given `time:Date` value is valid or not.
+    time:Date date = {year: 1994, month: 11, day: 7};
+    boolean isValidDate = (time:dateValidate(date) is ())? true: false;
+    io:println(string `Is valid date: ${isValidDate}`);
+
+    // Return the day of week as a number starting from 0 to 6 inclusive.
+    // 0 - SUNDAY, 1 - MONDAY, 2 - TUESDAY, 3 - WEDNESDAY, 4 - THURSDAY,
+    // 5 - FRIDAY, 6 - SATURDAY
+    time:DayOfWeek dayOfWeek = time:dayOfWeek(date);
+    io:println("Day of week: " + dayOfWeek.toString());
+
+    // Converts a given `time:Utc` value to a `time:Civil` value.
+    time:Civil civil1 = time:utcToCivil(utc1);
+    io:println("Civil record: " + civil1.toString());
+
+    // Converts a given `time:Civil` value to a `time:Utc` value.
+    // Note that, since `time:Civil` is used to represent localized time,
+    // it is mandatory to have the `utcOffset` field to be specified in the
+    // given `time:Civil` value.
+    time:ZoneOffset zoneOffset = {
+        hours: 5,
+        minutes: 30,
+        seconds: <decimal>0.0
+    };
+    time:Civil civil2 = {
+        year: 2021,
+        month: 4,
+        day: 13,
+        hour: 4,
+        minute: 50,
+        second: 50.52,
+        timeAbbrev: "Asia/Colombo",
+        utcOffset: zoneOffset
+    };
+    time:Utc utc2 = check time:utcFromCivil(civil2);
+    io:println("UTC value of the civil record: " + utc2.toString());
+
+    // Converts a given RFC 3339 timestamp(e.g. `2007-12-03T10:15:30.00Z`)
+    // to `time:Civil`.
+    time:Civil civil3 = check
+    time:civilFromString("2021-04-12T23:20:50.520+05:30[Asia/Colombo]");
+    io:println("Converted civil value: " + civil3.toString());
+
+    // Converts a given `time:Civil` value to a RFC 3339
+    // timestamp(e.g. `2007-12-03T10:15:30.00Z`) formatted string.
+    string civilString = check time:civilToString(civil3);
+    io:println(string `Civil string representation: ${civilString}`);
 }

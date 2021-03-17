@@ -1,4 +1,3 @@
-import ballerina/lang.'string as strings;
 import ballerina/io;
 import ballerinax/stan;
 
@@ -12,7 +11,7 @@ listener stan:Listener lis = new;
 service stan:Service on lis {
     remote function onMessage(stan:Message message) {
        // Prints the incoming message in the console.
-       string|error messageData = strings:fromBytes(message.content);
+       string|error messageData = string:fromBytes(message.content);
        if (messageData is string) {
             io:println("Received message: " + messageData);
        } else {

@@ -1,4 +1,3 @@
-import ballerina/lang.'string as stringlib;
 import ballerinax/mysql;
 
 const EXEC_MAGIC_NUMBER = "MZ";
@@ -28,15 +27,15 @@ public function main(string... args) returns error? {
     // The call to `query` action results in a compile time error because untainted
     // data from `args[0]` is directly used in the SQL query string.
     // Users should rather use raw templates when providing SQL query parameters
-    // to make sure SQL injection attacks are not possible. For more information, see [Parameterized Query](https://ballerina.io/swan-lake/learn/by-example/jdbc-parameterized-query.html)
-    // support. 
+    // to make sure SQL injection attacks are not possible. For more information, see [Parameterized Query](https://ballerina.io/learn/by-example/jdbc-parameterized-query.html)
+    // support.
     var result = dbClient->query("SELECT name, favQuote from Student " +
                                  "WHERE registrationId = " + args[0], ());
 
     // This line results in a compiler error because a user-provided argument is passed to a sensitive parameter.
     userDefinedSecureOperation(args[1]);
 
-    if !stringlib:startsWith(args[1], EXEC_MAGIC_NUMBER) {
+    if !string:startsWith(args[1], EXEC_MAGIC_NUMBER) {
         // After performing the necessary validations and/or escaping,
         // use the type-cast expression with the @untainted annotation
         // to mark the proceeding value as `trusted` and pass it to a sensitive parameter.

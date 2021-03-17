@@ -1,4 +1,4 @@
-// Copyright (c) 2020 WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+// Copyright (c) 2021 WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
 //
 // WSO2 Inc. licenses this file to you under the Apache License,
 // Version 2.0 (the "License"); you may not use this file except
@@ -14,23 +14,79 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import ballerina/http;
 import ballerina/test;
 import ballerina/io;
-
-http:Client clientEndpoint = new ("http://localhost:58291");
+import ballerina/tcp;
 
 @test:Config {}
-function testHttpClientEcho() {
-    io:println("testing ....tcp");
-    http:Request req = new;
-    req.addHeader("Content-Type", "text/plain");
-    string requestMessage = "Hello Ballerina";
-    var response = clientEndpoint->post("/echo", requestMessage);
+function testClientEcho() returns  @tainted error? {
+    tcp:Client socketClient = check new ("localhost", PORT1);
 
-    if (response is http:Response) {
-        test:assertEquals(response.statusCode, http:STATUS_ACCEPTED, "Unexpected response code");
-    } else if (response is http:ClientError)  {
-        test:assertFail(msg = (<error>response).message());
+    string msg = "Hello Ballerina Echo from client";
+    byte[] msgByteArray = msg.toBytes();
+    check  socketClient->writeBytes(msgByteArray);
+
+    readonly & byte[] receivedData = check socketClient->readBytes();
+    test:assertEquals(string:fromBytes(receivedData), msg, "Found unexpected output");
+
+    check socketClient->close();
+}
+
+@test:Config {
+    dependsOn: [testClientEcho]
+}
+function testClientReadTimeout() returns  @tainted error? {
+    tcp:Client socketClient = check new ("localhost", PORT2, timeout = 1);
+
+    string msg = "Do not reply";
+    byte[] msgByteArray = msg.toBytes();
+    check  socketClient->writeBytes(msgByteArray);
+
+    tcp:Error|(readonly & byte[]) res = socketClient->readBytes();
+    if (res is (readonly & byte[])) {
+        test:assertFail(msg = "Read timeout test failed");
+        io:println(res.length());
     }
+    // print expected timeout error
+    io:println(res);
+
+    check socketClient->close();
+}
+
+@test:Config {
+    dependsOn: [testClientReadTimeout]
+}
+function testServerAlreadyClosed() returns  @tainted error? {
+    tcp:Client socketClient = check new ("localhost", PORT3, timeout = 1);
+
+    tcp:Error|(readonly & byte[]) res = socketClient->readBytes();
+    if (res is (readonly & byte[])) {
+        test:assertFail(msg = "Test for server already disconnected failed");
+        io:println(res.length());
+    }
+    // print expected timeout error
+    io:println(res);
+
+    check socketClient->close();
+}
+
+@test:Config {dependsOn: [testServerAlreadyClosed]}
+function testSecureListenerWithSecureClient() returns @tainted error? {
+    tcp:Client socketClient = check new ("localhost", PORT4, secureSocket = {
+        cert: certPath,
+        protocol: {
+            name: tcp:TLS,
+            versions: ["TLSv1.2", "TLSv1.1"]
+        },
+        ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
+    });
+
+    string msg = "Hello Ballerina Echo from secure client";
+    byte[] msgByteArray = msg.toBytes();
+    check socketClient->writeBytes(msgByteArray);
+
+    readonly & byte[] receivedData = check socketClient->readBytes();
+    test:assertEquals('string:fromBytes(receivedData), msg, "Found unexpected output");
+
+    check socketClient->close();
 }

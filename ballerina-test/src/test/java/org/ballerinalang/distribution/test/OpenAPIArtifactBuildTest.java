@@ -85,7 +85,7 @@ public class OpenAPIArtifactBuildTest {
         TestUtils.deleteGeneratedFiles("petstore");
     }
 
-    @Test(description = "Check openapi to ballerina generator command for given tags")
+    @Test(description = "Check openapi to ballerina generator command for given tags", enabled = true)
     public void buildOpenAPIToBallerinaWithFilterTagsTest() throws IOException,
             InterruptedException {
         Path testResource = Paths.get("/openapi");
@@ -98,7 +98,7 @@ public class OpenAPIArtifactBuildTest {
                 buildArgs);
         Assert.assertTrue(successful);
 
-        Path expectedServiceFile = RESOURCES_PATH.resolve("openapi/expected/filteredTags.bal");
+        Path expectedServiceFile = RESOURCES_PATH.resolve("openapi/expected/filtered_tags.bal");
         Stream<String> expectedServiceLines = Files.lines(expectedServiceFile);
         String expectedService = expectedServiceLines.collect(Collectors.joining("\n"));
 
@@ -107,7 +107,7 @@ public class OpenAPIArtifactBuildTest {
             Stream<String> serviceLines = Files.lines(generatedServiceFile);
             String generatedService = serviceLines.collect(Collectors.joining("\n"));
             serviceLines.close();
-            expectedService = replaceContractPath(expectedServiceLines, expectedService, generatedService);
+//            expectedService = replaceContractPath(expectedServiceLines, expectedService, generatedService);
 
             expectedService = (expectedService.trim()).replaceAll(WHITESPACE_PATTERN, "");
             generatedService = (generatedService.trim()).replaceAll(WHITESPACE_PATTERN, "");
@@ -122,7 +122,7 @@ public class OpenAPIArtifactBuildTest {
         }
     }
 
-    @Test(description = "Check ballerina to openapi generator command", enabled = false)
+    @Test(description = "Check ballerina to openapi generator command")
     public void buildBallerinaToOpenAPITest() throws IOException, InterruptedException {
         Path testResource = Paths.get("/openapi");
         List<String> buildArgs = new LinkedList<>();

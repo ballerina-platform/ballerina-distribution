@@ -16,18 +16,18 @@
 
 import ballerina/io;
 import ballerina/http;
-import ballerina/websub;
+import ballerina/websubhub;
 import ballerina/test;
 
 public function startHub() returns string {
     io:println("Starting up the Ballerina Hub Service");
     string resultString = "";
-    websub:Hub webSubHub;
+    websubhub:Hub webSubHub;
 
-    var result = websub:startHub(new http:Listener(9191), "/websub", "/hub");
-    if (result is websub:Hub) {
+    var result = websubhub:startHub(new http:Listener(9191), "/websub", "/hub");
+    if (result is websubhub:Hub) {
         webSubHub = result;
-    } else if (result is websub:HubStartedUpError) {
+    } else if (result is websubhub:HubStartedUpError) {
         webSubHub = result.startedUpHub;
     } else {
         resultString = result.message();

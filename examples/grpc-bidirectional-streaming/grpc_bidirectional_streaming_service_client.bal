@@ -1,57 +1,30 @@
-// This is client implementation for bidirectional streaming scenario.
+// This is the client implementation of the bidirectional streaming scenario.
 import ballerina/grpc;
 import ballerina/io;
-import ballerina/runtime;
 
-int total = 0;
-public function main() {
-
-    //Client endpoint configuration.
-    ChatClient chatEp = new ("http://localhost:9090");
-
-    grpc:StreamingClient ep;
-    // Executes unary non-blocking call registering server message listener.
-    var res = chatEp->chat(ChatMessageListener);
-
-    if (res is grpc:Error) {
-        io:println("Error from Connector: " + res.message());
-        return;
-    } else {
-        io:println("Initialized connection sucessfully.");
-        ep = res;
-    }
+public function main (string... args) returns error? {
+    // Client endpoint configuration.
+    ChatClient ep = check new("http://localhost:9090");
+    // Executes the RPC call and receives the customized streaming client.
+    ChatStreamingClient streamingClient = check ep->chat();
 
     // Sends multiple messages to the server.
-    ChatMessage mes = {name: "Sam", message: "Hi "};
-    grpc:Error? connErr = ep->send(mes);
-
-    if (connErr is grpc:Error) {
-        io:println("Error from Connector: " + connErr.message());
+    ChatMessage[] messages = [
+        {name: "Sam", message: "Hi"},
+        {name: "Ann", message: "Hey"},
+        {name: "John", message: "Hello"}
+    ];
+    foreach ChatMessage msg in messages {
+        check streamingClient->sendChatMessage(msg);
     }
-    runtime:sleep(6000);
-
-    // Once all messages are sent, client send complete message to notify the server, I’m done.
-    grpc:Error? result = ep->complete();
-    if (result is grpc:Error) {
-        io:println("Error in sending complete message", result);
+    // Once all the messages are sent, the client sends the message to notify the server about the completion.
+    check streamingClient->complete();
+    // Receives the server stream response iteratively.
+    var result = streamingClient->receiveString();
+    while !(result is grpc:EOS) {
+        if !(result is grpc:Error) {
+            io:println(result);
+        }
+        result = streamingClient->receiveString();
     }
 }
-
-
-service object{} ChatMessageListener = service object {
-
-    // Resource registered to receive server messages.
-    function onMessage(string message) {
-        io:println("Response received from server: " + message);
-    }
-
-    // Resource registered to receive server error messages.
-    function onError(error err) {
-        io:println("Error reported from server: " + err.message());
-    }
-
-    // Resource registered to receive server completed message.
-    function onComplete() {
-        io:println("Server Complete Sending Responses.");
-    }
-};

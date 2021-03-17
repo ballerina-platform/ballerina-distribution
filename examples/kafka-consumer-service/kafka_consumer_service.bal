@@ -1,5 +1,4 @@
 import ballerinax/kafka;
-import ballerina/lang.'string;
 import ballerina/log;
 
 kafka:ConsumerConfiguration consumerConfigs = {
@@ -11,9 +10,8 @@ kafka:ConsumerConfiguration consumerConfigs = {
     // Subscribes to the topic `test-kafka-topic`.
     topics: ["test-kafka-topic"],
 
-    pollingIntervalInMillis: 1000,
-    keyDeserializerType: kafka:DES_BYTE_ARRAY,
-    valueDeserializerType: kafka:DES_BYTE_ARRAY,
+    pollingInterval: 1000,
+
     // Set `autoCommit` to false, so that the records should be committed
     // manually.
     autoCommit: false
@@ -22,7 +20,7 @@ kafka:ConsumerConfiguration consumerConfigs = {
 listener kafka:Listener kafkaListener = new (consumerConfigs);
 
 service kafka:Service on kafkaListener {
-    remote function onMessage(kafka:Caller caller,
+    remote function onConsumerRecord(kafka:Caller caller,
                                 kafka:ConsumerRecord[] records) {
         // The set of Kafka records dispatched to the service are processed one
         // by one.
@@ -34,7 +32,7 @@ service kafka:Service on kafkaListener {
 
         if (commitResult is error) {
             log:printError("Error occurred while committing the " +
-                "offsets for the consumer ", commitResult);
+                "offsets for the consumer ", err = commitResult);
         }
     }
 }
@@ -43,9 +41,9 @@ function processKafkaRecord(kafka:ConsumerRecord kafkaRecord) {
     byte[] value = kafkaRecord.value;
     // The value should be a `byte[]`, since the byte[] deserializer is used
     // for the value.
-    string|error messageContent = 'string:fromBytes(value);
+    string|error messageContent = string:fromBytes(value);
     if (messageContent is string) {
-            log:printInfo("Value: " + messageContent);
+        log:print("Value: " + messageContent);
     } else {
         log:printError("Invalid value type received");
     }

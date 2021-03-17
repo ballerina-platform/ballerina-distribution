@@ -1,5 +1,4 @@
 import ballerina/io;
-import ballerina/math;
 import ballerina/time;
 
 class Person {
@@ -19,9 +18,9 @@ class Person {
 // This function returns a value of the `any` type.
 function lookupInfo(string id) returns any {
     if id == "pi" {
-        return math:PI;
+        return float:PI;
     } else if id == "date" {
-        return time:currentTime().toString();
+        return time:utcToString(time:utcNow());
     } else if id == "bio" {
         return new Person("Jane", "Doe");
     }

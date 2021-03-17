@@ -24,6 +24,9 @@ target
 /tool-plugins/intellij/src/main/antlr/org/ballerinalang/plugins/idea/grammar/BallerinaLexer.tokens
 velocity.log
 
+# direct downloads
+ballerina/downloads/ballerina-jre-artifacts-zip/
+
 # gradle
 .gradle
 build/

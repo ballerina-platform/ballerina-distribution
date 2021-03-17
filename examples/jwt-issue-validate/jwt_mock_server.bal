@@ -1,25 +1,17 @@
 // This is a mock JWK server, which is to expose the JWK components for testing purpose.
-import ballerina/config;
 import ballerina/http;
 
 listener http:Listener oauth2Server = new (20000, {
-        secureSocket: {
-            keyStore: {
-                path: config:getAsString("b7a.home") +
-                    "/bre/security/ballerinaKeystore.p12",
-                password: "ballerina"
-            }
+    secureSocket: {
+        key: {
+            certFile: "../resource/path/to/public.crt",
+            keyFile: "../resource/path/to/private.key"
         }
-    });
-
-service oauth2 on oauth2Server {
-
-    @http:ResourceConfig {
-        methods: ["GET"],
-        path: "/jwks"
     }
-    resource function jwks(http:Caller caller, http:Request req) {
-        http:Response res = new;
+});
+
+service /oauth2 on oauth2Server {
+    resource function get jwks() returns json {
         json jwks = {
             "keys": [
                     {
@@ -40,7 +32,6 @@ service oauth2 on oauth2Server {
                     }
                 ]
         };
-        res.setJsonPayload(jwks);
-        checkpanic caller->respond(res);
+        return jwks;
     }
 }

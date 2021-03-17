@@ -7,9 +7,13 @@ string[] outputs = [];
     moduleName: "ballerina/io",
     functionName: "println"
 }
+test:MockFunction mock_printLn = new();
+
 public function mockPrint(any|error... val) {
-    outputs.push(val.reduce(function (any|error a, any|error b) returns string => a.toString() + b.toString(), "").toString());
+    outputs.push(toString(val.reduce(function (any|error a, any|error b) returns string => toString(a) + toString(b), "")));
 }
+
+function toString(any|error val) returns string => val is error? val.toString() : val.toString();
 
 string[] inputs = ["10b", "15", "Jack", "19", "Jane", "q"];
 
@@ -17,12 +21,17 @@ string[] inputs = ["10b", "15", "Jack", "19", "Jane", "q"];
     moduleName: "ballerina/io",
     functionName: "readln"
 }
+test:MockFunction mock_readLn = new();
+
 public function mockReadln(any prompt) returns string {
     return inputs.shift();
 }
 
 @test:Config {}
 function testFunc() {
+    test:when(mock_printLn).call("mockPrint");
+    test:when(mock_readLn).call("mockReadln");
+
     // Invoking the main function
     main();
     test:assertEquals(outputs[0], "0");

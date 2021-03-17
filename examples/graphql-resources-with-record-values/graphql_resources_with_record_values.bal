@@ -2,16 +2,21 @@ import ballerina/graphql;
 import ballerina/http;
 
 // Create an `http:Listener`.
-http:Listener httpListener = new(9090);
+http:Listener httpListener = check new(9090);
 
 // The `graphql:Service` exposes a GraphQL service on the provided HTTP listener.
 service graphql:Service /graphql on new graphql:Listener(httpListener) {
 
-    // This resolver returns a `Person` object. Each field of the `Person` object
-    // can be queried by a GraphQL client.
-    resource function get profile(int id) returns Person {
+    // Ballerina GraphQL resolvers can return `anydata` values with a union of
+    // `error`s. Each field of the `Person` object can be queried by a GraphQL
+    // client.
+    resource function get profile(int id) returns Person|error {
 
-        return people[id];
+        if (id < people.length()) {
+            return people[id];
+        } else {
+            return error("Person with id " + id.toString() + " not found");
+        }
     }
 }
 

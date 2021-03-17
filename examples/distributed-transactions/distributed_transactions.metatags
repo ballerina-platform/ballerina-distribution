@@ -1,0 +1,2 @@
+description: This BBE demonstrates how distributed transactions work in Ballerina.
+keywords: ballerina by example, distributed transactions, transaction, commit, rollback, transactional

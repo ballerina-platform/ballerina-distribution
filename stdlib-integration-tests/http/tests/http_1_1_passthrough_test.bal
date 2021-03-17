@@ -15,20 +15,16 @@
 // under the License.
 
 import ballerina/http;
+import ballerina/lang.'string as strings;
 import ballerina/mime;
-import ballerina/stringutils;
 import ballerina/test;
 
 listener http:Listener passthroughEP1 = new(9113);
 
-@http:ServiceConfig { basePath: "/passthrough" }
-service passthroughService on passthroughEP1 {
-    @http:ResourceConfig {
-        methods: ["GET"],
-        path: "/"
-    }
-    resource function passthrough(http:Caller caller, http:Request clientRequest) {
-        http:Client nyseEP1 = new("http://localhost:9113");
+service http:Service /passthrough on passthroughEP1 {
+
+    resource function get .(http:Caller caller, http:Request clientRequest) {
+        http:Client nyseEP1 = checkpanic new("http://localhost:9113");
         var response = nyseEP1->get("/nyseStock/stocks", <@untainted> clientRequest);
         if (response is http:Response) {
             checkpanic caller->respond(<@untainted> response);
@@ -37,12 +33,8 @@ service passthroughService on passthroughEP1 {
         }
     }
 
-    @http:ResourceConfig {
-        methods: ["POST"],
-        path: "/forwardMultipart"
-    }
-    resource function forwardMultipart(http:Caller caller, http:Request clientRequest) {
-        http:Client nyseEP1 = new("http://localhost:9113");
+    resource function post forwardMultipart(http:Caller caller, http:Request clientRequest) {
+        http:Client nyseEP1 = checkpanic new("http://localhost:9113");
         var response = nyseEP1->forward("/nyseStock/stocksAsMultiparts", clientRequest);
         if (response is http:Response) {
             checkpanic caller->respond(<@untainted> response);
@@ -51,47 +43,38 @@ service passthroughService on passthroughEP1 {
         }
     }
 
-    @http:ResourceConfig {
-        methods: ["POST"],
-        path: "/forward"
-    }
-    resource function accessInboundEntity(http:Caller caller, http:Request clientRequest) {
-        http:Client nyseEP1 = new("http://localhost:9113");
+    resource function post forward(http:Request clientRequest) returns @tainted http:Ok|http:InternalServerError {
+        http:Client nyseEP1 = checkpanic new("http://localhost:9113");
         var response = nyseEP1->forward("/nyseStock/entityCheck", clientRequest);
         if (response is http:Response) {
             var entity = response.getEntity();
             if (entity is mime:Entity) {
-                json|error payload = entity.getText();
+                string|error payload = entity.getText();
                 if (payload is string) {
-                    checkpanic caller->ok(<@untainted> (payload + ", " + entity.getHeader("X-check-header")));
+                    http:Ok ok = {body: payload + ", " + checkpanic entity.getHeader("X-check-header")};
+                    return ok;
                 } else {
-                    checkpanic caller->internalServerError(<@untainted> payload.toString());
+                    http:InternalServerError err = {body: payload.toString()};
+                    return err;
                 }
             } else {
-                checkpanic caller->internalServerError(<@untainted> entity.toString());
+                http:InternalServerError err = {body: entity.toString()};
+                return err;
             }
         } else {
-            checkpanic caller->internalServerError(<@untainted> (<error>response).toString());
+            http:InternalServerError err = {body: (<error>response).toString()};
+            return err;
         }
     }
 }
 
-@http:ServiceConfig { basePath: "/nyseStock" }
-service nyseStockQuote1 on passthroughEP1 {
+service http:Service /nyseStock on passthroughEP1 {
 
-    @http:ResourceConfig {
-        methods: ["GET"],
-        path: "/stocks"
-    }
-    resource function stocks(http:Caller caller, http:Request clientRequest) {
+    resource function get stocks(http:Caller caller) {
         checkpanic caller->respond({ "exchange": "nyse", "name": "IBM", "value": "127.50" });
     }
 
-    @http:ResourceConfig {
-        methods: ["POST"],
-        path: "/stocksAsMultiparts"
-    }
-    resource function stocksAsMultiparts(http:Caller caller, http:Request clientRequest) {
+    resource function post stocksAsMultiparts(http:Caller caller, http:Request clientRequest) {
         var bodyParts = clientRequest.getBodyParts();
         if (bodyParts is mime:Entity[]) {
             checkpanic caller->respond(<@untainted> bodyParts);
@@ -100,43 +83,40 @@ service nyseStockQuote1 on passthroughEP1 {
         }
     }
 
-    @http:ResourceConfig {
-        methods: ["POST"],
-        path: "/entityCheck"
-    }
-    resource function accessInboundRequestEntity(http:Caller caller, http:Request clientRequest) {
+    resource function post entityCheck(http:Caller caller, http:Request clientRequest) returns http:InternalServerError? {
         http:Response res = new;
         var entity = clientRequest.getEntity();
         if (entity is mime:Entity) {
             json|error textPayload = entity.getText();
             if (textPayload is string) {
                 mime:Entity ent = new;
-                ent.setText(<@untainted> ("payload :" + textPayload + ", header: " + entity.getHeader("Content-type")));
+                ent.setText(<@untainted> ("payload :" + textPayload + ", header: " + checkpanic entity.getHeader("Content-type")));
                 ent.setHeader("X-check-header", "entity-check-header");
                 res.setEntity(ent);
-                checkpanic caller->ok(res);
+                checkpanic caller->respond(res);
             } else {
-                checkpanic caller->internalServerError("Error while retrieving from entity");
+                return {body: "Error while retrieving from entity"};
             }
         } else {
-            checkpanic caller->internalServerError({ message: "Error while retrieving from request" });
+            return {body: "Error while retrieving from request"};
         }
+        return;
     }
 }
 
 @test:Config {}
 public function testPassthroughServiceByBasePath() {
-    http:Client httpClient = new("http://localhost:9113");
+    http:Client httpClient = checkpanic new("http://localhost:9113");
     var resp = httpClient->get("/passthrough");
     if (resp is http:Response) {
-        string contentType = resp.getHeader("content-type");
+        string contentType = checkpanic resp.getHeader("content-type");
         test:assertEquals(contentType, "application/json");
         var body = resp.getJsonPayload();
         if (body is json) {
             test:assertEquals(body.toJsonString(), "{\"exchange\":\"nyse\", \"name\":\"IBM\", \"value\":\"127.50\"}");
         } else {
             test:assertFail(msg = "Found unexpected output: " + body.message());
-        } 
+        }
     } else {
         test:assertFail(msg = "Found unexpected output: " +  (<error>resp).message());
     }
@@ -144,17 +124,17 @@ public function testPassthroughServiceByBasePath() {
 
 @test:Config {}
 public function testPassthroughServiceWithMimeEntity() {
-    http:Client httpClient = new("http://localhost:9113");
+    http:Client httpClient = checkpanic new("http://localhost:9113");
     var resp = httpClient->post("/passthrough/forward", "Hello from POST!");
     if (resp is http:Response) {
-        string contentType = resp.getHeader("content-type");
+        string contentType = checkpanic resp.getHeader("content-type");
         test:assertEquals(contentType, "text/plain");
         var body = resp.getTextPayload();
         if (body is string) {
             test:assertEquals(body, "payload :Hello from POST!, header: text/plain, entity-check-header");
         } else {
             test:assertFail(msg = "Found unexpected output: " + body.message());
-        } 
+        }
     } else {
         test:assertFail(msg = "Found unexpected output: " +  (<error>resp).message());
     }
@@ -162,7 +142,7 @@ public function testPassthroughServiceWithMimeEntity() {
 
 @test:Config {}
 public function testPassthroughWithMultiparts() {
-    http:Client httpClient = new("http://localhost:9113");
+    http:Client httpClient = checkpanic new("http://localhost:9113");
     mime:Entity textPart1 = new;
     textPart1.setText("Part1");
     textPart1.setHeader("Content-Type", "text/plain; charset=UTF-8");
@@ -176,8 +156,8 @@ public function testPassthroughWithMultiparts() {
     request.setBodyParts(bodyParts, contentType = mime:MULTIPART_FORM_DATA);
     var resp = httpClient->post("/passthrough/forwardMultipart", request);
     if (resp is http:Response) {
-        string contentType = resp.getHeader("content-type");
-        test:assertTrue(stringutils:contains(contentType, "multipart/form-data"));
+        string contentType = checkpanic resp.getHeader("content-type");
+        test:assertTrue(strings:includes(contentType, "multipart/form-data"));
         var respBodyParts = resp.getBodyParts();
         if (respBodyParts is mime:Entity[]) {
             test:assertEquals(respBodyParts.length(), 2);
@@ -193,7 +173,7 @@ public function testPassthroughWithMultiparts() {
             } else {
                 test:assertFail(msg = "Found an unexpected output: " + txtPart2.message());
             }
-        }         
+        }
     } else {
         test:assertFail(msg = "Found unexpected output: " +  (<error>resp).message());
     }

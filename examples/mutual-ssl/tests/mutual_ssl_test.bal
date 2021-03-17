@@ -3,18 +3,17 @@ import ballerina/test;
 
 @test:Config {}
 function testFunc() {
-    http:Client httpEndpoint = new("https://localhost:9095", config = {
+    http:Client httpEndpoint = checkpanic new("https://localhost:9095", config = {
         secureSocket: {
-            keyStore: {
-                path: "${ballerina.home}/bre/security/ballerinaKeystore.p12",
-                password: "ballerina"
+            key: {
+                certFile: "../resource/path/to/public.crt",
+                keyFile: "../resource/path/to/private.key"
             },
-            trustStore: {
-                path: "${ballerina.home}/bre/security/ballerinaTruststore.p12",
-                password: "ballerina"
-            },
+            mutualSsl: {
+                cert: "../resource/path/to/public.crt",
+            }
             protocol: {
-                name: "TLS"
+                name: http:TLS
             },
             ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
         }

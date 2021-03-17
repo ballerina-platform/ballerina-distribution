@@ -1,22 +1,21 @@
 import ballerina/io;
 import ballerina/http;
-import ballerina/lang.'int;
 
 public function main() {
     // The in-scope variables can be accessed by the workers inside the `fork` block.
-    http:Client httpClient = new ("https://api.mathjs.org");
+    http:Client httpClient = checkpanic new ("https://api.mathjs.org");
     // The `fork` block allows you to spawn (fork) multiple workers
     // within any execution flow of a Ballerina program.
     fork {
         worker w1 returns int {
             string response = <string> checkpanic
                 httpClient->get("/v4/?expr=2*3", targetType = string);
-            return checkpanic 'int:fromString(response);
+            return checkpanic int:fromString(response);
         }
         worker w2 returns int {
             string response = <string> checkpanic
                 httpClient->get("/v4/?expr=9*4", targetType = string);
-            return checkpanic 'int:fromString(response);
+            return checkpanic int:fromString(response);
         }
     }
 

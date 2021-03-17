@@ -22,6 +22,7 @@ import net.lingala.zip4j.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.testng.Assert;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -30,12 +31,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.sql.Timestamp;
 
 /**
  * Utility class for tests
@@ -50,6 +54,7 @@ public class TestUtils {
     public static final Path EXAMPLES_DIR = Paths.get(System.getProperty("examples.dir"));
     public static final String EXTENSTIONS_TO_BE_FILTERED_FOR_LINE_CHECKS = System.getProperty("line.check.extensions");
     public static final Path RESOURCES_PATH = TARGET_DIR.resolve("resources/test");
+    private static final String SWAN_LAKE_KEYWORD = "swan-lake";
 
     /**
      * Log the output of an input stream.
@@ -76,7 +81,7 @@ public class TestUtils {
     public static boolean executeBuild(String distributionName, Path sourceDirectory, List<String> args) throws
             IOException, InterruptedException {
         args.add(0, "build");
-        args.add(0, TEST_DISTRIBUTION_PATH.resolve(distributionName).resolve("bin").resolve("ballerina").toString());
+        args.add(0, TEST_DISTRIBUTION_PATH.resolve(distributionName).resolve("bin").resolve("bal").toString());
         OUT.println("Executing: " + StringUtils.join(args, ' '));
         ProcessBuilder pb = new ProcessBuilder(args);
         pb.directory(sourceDirectory.toFile());
@@ -136,7 +141,7 @@ public class TestUtils {
     public static Process getProcessBuilderResults(String distributionName, Path sourceDirectory, List<String> args)
             throws IOException, InterruptedException {
 
-        args.add(0, TEST_DISTRIBUTION_PATH.resolve(distributionName).resolve("bin").resolve("ballerina").toString());
+        args.add(0, TEST_DISTRIBUTION_PATH.resolve(distributionName).resolve("bin").resolve("bal").toString());
         OUT.println("Executing: " + StringUtils.join(args, ' '));
         ProcessBuilder pb = new ProcessBuilder(args);
         pb.directory(sourceDirectory.toFile());
@@ -208,5 +213,124 @@ public class TestUtils {
                 }
             }
         }
+    }
+
+    /**
+     * Execute the given command.
+     *
+     * @param command command needs to be execute
+     * @return output of the executed command
+     */
+    public static String executeCommand(String command) throws IOException {
+        String output = "";
+        File file = new File(getUserHome() + File.separator
+                + "temp-" + new Timestamp(System.currentTimeMillis()).getTime() + ".sh");
+        file.createNewFile();
+        file.setExecutable(true);
+        PrintWriter writer = new PrintWriter(file.getPath(), StandardCharsets.UTF_8);
+        writer.println(command);
+        writer.close();
+
+        ProcessBuilder pb = new ProcessBuilder(file.getPath());
+        Process process = pb.start();
+        InputStream inputStream = process.getInputStream();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        String line;
+        while ((line = reader.readLine()) != null) {
+            output += line + "\n";
+        }
+        if (output.isEmpty()) {
+            inputStream =  process.getErrorStream();
+            reader = new BufferedReader(new InputStreamReader(inputStream));
+            while ((line = reader.readLine()) != null) {
+                output += line + "\n";
+            }
+        }
+        file.delete();
+        return output;
+    }
+
+    /**
+     * Provide user home directory based on command.
+     *
+     * @return user home directory
+     */
+    public static String getUserHome() {
+        String userHome = System.getenv("HOME");
+        if (userHome == null) {
+            userHome = System.getProperty("user.home");
+        }
+        return userHome;
+    }
+
+    /**
+     * Execute smoke testing to verify installation.
+     *
+     * @param path Path to the bal file
+     * @param jBallerinaVersion Installed jBallerina version
+     * @param specVersion Installed language specification
+     * @param toolVersion Installed tool version
+     * @param versionDisplayText Installed version display text
+     */
+    public static void testInstallation(String path, String jBallerinaVersion, String specVersion, String toolVersion,
+                                        String versionDisplayText) throws IOException {
+        Assert.assertEquals(TestUtils.executeCommand(path + " -v"),
+                TestUtils.getVersionOutput(jBallerinaVersion, specVersion, toolVersion, versionDisplayText));
+    }
+
+    /**
+     * Get version output for version command.
+     *  @param jBallerinaVersion Installed jBallerina version
+     *  @param specVersion Installed language specification
+     *  @param toolVersion Installed tool version
+     *  @param versionDisplayText display text for installed jBallerina version
+     *
+     * @return version output
+     */
+    public static String getVersionOutput(String jBallerinaVersion, String specVersion, String toolVersion,
+                                          String versionDisplayText) {
+        String toolText = TestUtils.isOldToolVersion(toolVersion) ? "Ballerina tool" : "Update Tool";
+        if (jBallerinaVersion.contains(TestUtils.SWAN_LAKE_KEYWORD)) {
+            return "Ballerina Swan Lake " + versionDisplayText + "\n" + "Language specification " + specVersion +
+                    "\n" + toolText + " " + toolVersion + "\n";
+        }
+
+        String ballerinaReference = isSupportedRelease(jBallerinaVersion) ? "jBallerina" : "Ballerina";
+        return ballerinaReference + " " + jBallerinaVersion + "\n" + "Language specification " + specVersion + "\n" +
+                toolText + " " + toolVersion + "\n";
+    }
+
+    /**
+     * To check whether older tool version before swan lake support
+     *
+     * @param toolVersion
+     * @return returns is a older version
+     */
+    public static boolean isOldToolVersion(String toolVersion) {
+        return toolVersion.equals("0.8.5") || toolVersion.equals("0.8.0");
+    }
+
+    /**
+     * To check whether installation is a 1.0.x release.
+     *
+     * @return returns is a 1.0.x release
+     */
+    public static boolean isSupportedRelease(String version) {
+        if (version.contains(SWAN_LAKE_KEYWORD)) {
+            return true;
+        }
+
+        String[] versions = version.split("\\.");
+        return !(versions[0].equals("1") && versions[1].equals("0"));
+    }
+
+    /**
+     * Get the content of the file.
+     * @param filePath Path to the file
+     * @return content of the file
+     * @throws IOException
+     */
+    public static String getContent(Path filePath) throws IOException {
+        return Files.readString(filePath);
     }
 }

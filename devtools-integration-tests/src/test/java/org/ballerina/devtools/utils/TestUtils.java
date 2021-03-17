@@ -57,7 +57,7 @@ public class TestUtils {
     public static Process executeCommand(String command, String distributionName, Path sourceDirectory,
             List<String> args, Map<String, String> envProperties) throws IOException, InterruptedException {
         args.add(0, command);
-        args.add(0, TEST_DISTRIBUTION_PATH.resolve(distributionName).resolve("bin").resolve("ballerina").toString());
+        args.add(0, TEST_DISTRIBUTION_PATH.resolve(distributionName).resolve("bin").resolve("bal").toString());
 
         OUT.println("Executing: " + StringUtils.join(args, ' '));
 
@@ -85,6 +85,11 @@ public class TestUtils {
     public static Process executePushCommand(String distributionName, Path sourceDirectory,
             List<String> args, Map<String, String> envProperties) throws IOException, InterruptedException {
         return executeCommand("push", distributionName, sourceDirectory, args, envProperties);
+    }
+
+    public static Process executePullCommand(String distributionName, Path sourceDirectory,
+            List<String> args, Map<String, String> envProperties) throws IOException, InterruptedException {
+        return executeCommand("pull", distributionName, sourceDirectory, args, envProperties);
     }
 
     public static Process executeSearchCommand(String distributionName, Path sourceDirectory,

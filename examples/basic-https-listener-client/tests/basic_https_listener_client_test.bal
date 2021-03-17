@@ -3,12 +3,9 @@ import ballerina/test;
 
 @test:Config {}
 function testFunc() {
-    http:Client httpEndpoint = new("https://localhost:9095", config = {
+    http:Client httpEndpoint = checkpanic new("https://localhost:9095", config = {
         secureSocket: {
-            trustStore: {
-                path: "${ballerina.home}/bre/security/ballerinaTruststore.p12",
-                password: "ballerina"
-            }
+            cert: "../resource/path/to/public.crt"
         }
     });
 

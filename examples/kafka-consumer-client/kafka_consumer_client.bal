@@ -1,6 +1,5 @@
 import ballerina/io;
 import ballerinax/kafka;
-import ballerina/lang.'string;
 import ballerina/log;
 
 kafka:ConsumerConfiguration consumerConfiguration = {
@@ -15,19 +14,15 @@ kafka:ConsumerConfiguration consumerConfiguration = {
 
 };
 
-kafka:Consumer consumer = new (consumerConfiguration);
+kafka:Consumer consumer = checkpanic new (consumerConfiguration);
 
-public function main() {
+public function main() returns error? {
     // Poll the consumer for messages.
-    var results = consumer->poll(1000);
+    kafka:ConsumerRecord[] records = check consumer->poll(1000);
 
-    if (results is error) {
-        log:printError("Error occurred while polling ", results);
-    }
-    kafka:ConsumerRecord[] records = <kafka:ConsumerRecord[]>results;
     foreach var kafkaRecord in records {
         byte[] messageContent = kafkaRecord.value;
-        string|error message = 'string:fromBytes(messageContent);
+        string|error message = string:fromBytes(messageContent);
 
         if (message is string) {
             // Prints the retrieved Kafka record.
@@ -35,7 +30,7 @@ public function main() {
 
         } else {
             log:printError("Error occurred while converting message data",
-                message);
+                err = message);
         }
     }
 }

@@ -1,4 +1,3 @@
-import ballerina/lang.'string;
 import ballerina/log;
 import ballerinax/rabbitmq;
 
@@ -13,9 +12,9 @@ listener rabbitmq:Listener channelListener = new;
 // Attaches the service to the listener.
 service rabbitmq:Service on channelListener {
     remote function onMessage(rabbitmq:Message message) {
-        string|error messageContent = 'string:fromBytes(message.content);
+        string|error messageContent = string:fromBytes(message.content);
         if (messageContent is string) {
-            log:printInfo("The message received: " + messageContent);
+            log:print("The message received: " + messageContent);
         } else {
             log:printError(
                         "Error occurred while retrieving the message content.");

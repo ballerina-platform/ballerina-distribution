@@ -23,13 +23,19 @@ int counter = 0;
     moduleName: "ballerina/io",
     functionName: "println"
 }
+test:MockFunction mock_printLn = new();
+
 public function mockPrint(any|error... s) {
+    any|error s0 = s[0];
+    string data0 = s0 is error ? s0.toString() : s0.toString();
     match counter {
         1|4|9 => {
-            outputs[counter] = s[0].toString() + s[1].toString();
+            any|error s1 = s[1];
+            string data1 = s1 is error ? s1.toString() : s1.toString();
+            outputs[counter] =  data0 + data1;
         }
         _ => {
-            outputs[counter] = s[0].toString();
+            outputs[counter] = data0;
         }
     }
     counter += 1;
@@ -39,6 +45,8 @@ public function mockPrint(any|error... s) {
     enable: false
 }
 function testFunc() {
+    test:when(mock_printLn).call("mockPrint");
+
     main();
     test:assertEquals(outputs[1], "Customer full details: {\"customerId\":1,\"FirstName\":\"Peter\",\"LastName\":\"Stuart\",\"RegistrationID\":1,\"CreditLimit\":5000.75,\"Country\":\"USA\"}");
     test:assertEquals(outputs[4], "Customer full details: {\"customerId\":2,\"FirstName\":\"Dan\",\"LastName\":\"Brown\",\"RegistrationID\":2,\"CreditLimit\":10000.0,\"Country\":\"UK\"}");

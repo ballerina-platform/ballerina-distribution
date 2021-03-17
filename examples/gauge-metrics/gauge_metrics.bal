@@ -2,21 +2,16 @@ import ballerina/http;
 import ballerina/io;
 import ballerina/log;
 import ballerina/observe;
+import ballerinax/prometheus as _;
 
-//Create a gauge as a global variable in the service with optional field description,
-//and default statistics configurations = { timeWindow: 600000, buckets: 5,
-// percentiles: [0.33, 0.5, 0.66, 0.99] }.
+//Create a gauge as a global variable in the service with the optional field description,
+//default statistics configurations = { timeWindow: 600000, buckets: 5,
+// and percentiles: [0.33, 0.5, 0.66, 0.99] }.
 observe:Gauge globalGauge = new ("global_gauge", "Global gauge defined");
 
-@http:ServiceConfig {
-    basePath: "/online-store-service"
-}
-service onlineStoreService on new http:Listener(9090) {
+service /onlineStoreService on new http:Listener(9090) {
 
-    @http:ResourceConfig {
-        path: "/make-order"
-    }
-    resource function makeOrder(http:Caller caller, http:Request req) {
+    resource function get makeOrder(http:Caller caller, http:Request req) {
         io:println("------------------------------------------");
         //Incrementing the global gauge defined by 15.0.
         globalGauge.increment(15.0);
@@ -48,10 +43,10 @@ service onlineStoreService on new http:Listener(9090) {
         //first invocation and will throw an error if there is already a registration of different metrics instance
         //or type. And subsequent invocations of register() will simply retrieve the stored metrics instance
         //for the provided name and tags fields, and use that instance for the subsequent operations on the
-        //counter instance.
+        //Counter instance.
         error? result = registeredGaugeWithTags.register();
         if (result is error) {
-            log:printError("Error in registering gauge", result);
+            log:printError("Error in registering gauge", err = result);
         }
 
         //Set the value of the gauge with the new value.
@@ -99,7 +94,7 @@ service onlineStoreService on new http:Listener(9090) {
         result = caller->respond(res);
 
         if (result is error) {
-            log:printError("Error sending response", result);
+            log:printError("Error sending response", err = result);
         }
     }
 }

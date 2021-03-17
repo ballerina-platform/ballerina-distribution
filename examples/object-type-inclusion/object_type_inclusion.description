@@ -1,0 +1,6 @@
+// Type inclusions in a class or object provide a way to copy the members from a class or object
+// into another class or object. It is equivalent to declaring the members explicitly
+// within the new class/object, thus, eliminating redundancy. A class/object can have
+// zero or more type inclusions.
+// Fields and method definitions can override included fields and methods
+// provided that they are sub-types of included field/method types.

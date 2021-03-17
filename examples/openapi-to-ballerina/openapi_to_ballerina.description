@@ -2,9 +2,9 @@
 // you can use that contract to generate a Ballerina source code.
 // Currently, Ballerina supports two types of code generation.
 // To generate a mock version of the Ballerina service for a provided OAS definition:
-// `ballerina openapi -i <openapi-contract> --mode service -o <output path>`
+// `bal openapi -i <openapi-contract-path> --mode service -o <output-path>`
 // To generate a Ballerina client endpoint for a provided OAS definition:
-// `ballerina openapi -i <openapi-contract> --mode client -o <output path>`
+// `bal openapi -i <openapi-contract-path> --mode client -o <output-path>`
 // To generate both the mock version of the Ballerina service and a Ballerina client endpoint for a provided OAS definition.
-// `ballerina openapi -i <openapi-contract> -o <output path>`<br/><br/>
-// For more information, see [Ballerina OpenAPI Tools](https://ballerina.io/swan-lake/learn/how-to-use-openapi-tools/).
+// `bal openapi -i <openapi-contract-path> -o <output-path>`<br/><br/>
+// For more information, see [Ballerina OpenAPI Tools](https://ballerina.io/learn/how-to-use-openapi-tools/).

@@ -1,6 +1,6 @@
 import ballerina/cache;
 import ballerina/io;
-import ballerina/runtime;
+import ballerina/lang.runtime;
 
 public function main() returns error? {
     // This creates a new cache of size 10. The eviction factor is set to 0.2,
@@ -11,8 +11,8 @@ public function main() returns error? {
     cache:Cache cache = new({
         capacity: 10,
         evictionFactor: 0.2,
-        defaultMaxAgeInSeconds: 2,
-        cleanupIntervalInSeconds: 3
+        defaultMaxAge: 2,
+        cleanupInterval: 3
     });
 
     // Adds a new entry to the cache.
@@ -32,7 +32,7 @@ public function main() returns error? {
     // During this time, the cache entry with the key 'key1' should be removed
     // since the max of it is set to 2 seconds by default. However, the cache
     // entry with the key 'key2' should exist in the cache.
-    runtime:sleep(4000);
+    runtime:sleep(4);
 
     // Get the keys of the cache entries.
     string[] keys = cache.keys();

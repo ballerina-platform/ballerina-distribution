@@ -8,12 +8,12 @@ function startService() {
 }
 
 @test:Config {
-    before: "startService",
-    after: "stopService"
+    before: startService,
+    after: stopService
 }
 function testFunc() {
     // Invoking the main function
-    http:Client httpEndpoint = new("http://localhost:9090");
+    http:Client httpEndpoint = checkpanic new("http://localhost:9090");
     // Check whether the server is started
     //test:assertTrue(serviceStarted, msg = "Unable to start the service");
 

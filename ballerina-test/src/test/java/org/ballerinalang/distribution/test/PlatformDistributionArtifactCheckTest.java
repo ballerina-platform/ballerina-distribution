@@ -88,6 +88,7 @@ public class PlatformDistributionArtifactCheckTest {
         Path docsPath = distributionsPath
                 .resolve(jballerinaFileName)
                 .resolve("docs")
+                .resolve("ballerina")
                 .resolve("docker");
 
         Assert.assertTrue(Files.exists(cachePath));
@@ -123,6 +124,7 @@ public class PlatformDistributionArtifactCheckTest {
         Path docsPath = distributionsPath
                 .resolve(jballerinaFileName)
                 .resolve("docs")
+                .resolve("ballerinax")
                 .resolve("awslambda");
 
         Assert.assertTrue(Files.exists(cachePath));
@@ -158,12 +160,29 @@ public class PlatformDistributionArtifactCheckTest {
         Path docsPath = distributionsPath
                 .resolve(jballerinaFileName)
                 .resolve("docs")
+                .resolve("ballerinax")
                 .resolve("azure_functions");
 
         Assert.assertTrue(Files.exists(birPath));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "azurefunctions-extension-"));
         Assert.assertTrue(Files.exists(bbePath));
         Assert.assertTrue(Files.exists(docsPath));
+    }
+
+    @Test(dataProvider = "distribution-provider")
+    public void c2cToolingExistsTest(String distributionFileName) {
+        Path distributionsPath = TEST_DISTRIBUTION_PATH.resolve(distributionFileName).resolve("distributions");
+        String jballerinaFileName = TestUtils.findFileOrDirectory(distributionsPath, DIST_NAME);
+        Objects.requireNonNull(jballerinaFileName);
+
+        Path c2cToolingLibPath = distributionsPath
+                .resolve(jballerinaFileName)
+                .resolve("lib")
+                .resolve("tools")
+                .resolve("lang-server")
+                .resolve("lib");
+
+        Assert.assertNotNull(TestUtils.findFileOrDirectory(c2cToolingLibPath, "c2c-tooling-"));
     }
 
     @AfterClass

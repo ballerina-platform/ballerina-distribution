@@ -14,20 +14,21 @@ kafka:AuthenticationConfiguration authConfig = {
 
 kafka:ProducerConfiguration producerConfigs = {
     bootstrapServers: "localhost:9092",
-    valueSerializerType: kafka:SER_BYTE_ARRAY,
     // Provide the relevant authentication configuration record to authenticate the producer.
     authenticationConfiguration: authConfig
 
 };
 
-kafka:Producer kafkaProducer = new (producerConfigs);
+kafka:Producer kafkaProducer = checkpanic new (producerConfigs);
 
 public function main() {
     string message = "Hello from Ballerina";
-    var result = kafkaProducer->send(message.toBytes(), "topic-sasl");
+    var result = kafkaProducer->send({
+                            topic: "topic-sasl",
+                            value: message.toBytes() });
     if (result is error) {
         io:println(result);
     } else {
-        io:println("success");
+        io:println("Message successfully sent");
     }
 }

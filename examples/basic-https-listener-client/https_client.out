@@ -1,4 +1,5 @@
 # To start the service and run the main function, navigate to the directory that contains the
-# `.bal` file and use the `ballerina run` command  below along with the Ballerina home path as a config.
-ballerina run https_client.bal --b7a.home=<ballerina_home_path>
-level = INFO  module = "" message = "Hello World!"
+# `.bal` file and use the `bal run` command  below along with the Ballerina home path as a config.
+# (You may need to change the trusted certificate file path.)
+bal run https_client.bal
+time = 2021-01-21 21:41:54,225 level = INFO  module = "" message = "Hello World!"

@@ -10,8 +10,8 @@ function beforeFunc() {
 // Use the `before` and `after` attributes to define the function names
 // of the functions that need to be executed before and after the test function.
 @test:Config {
-    before: "beforeFunc",
-    after: "afterFunc"
+    before: beforeFunc,
+    after: afterFunc
 }
 function testFunction() {
     io:println("I'm in test function!");
