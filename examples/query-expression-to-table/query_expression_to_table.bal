@@ -1,7 +1,7 @@
 import ballerina/io;
 
 type Student record {
-    readonly id;
+    readonly int id;
     string firstName;
     string lastName;
     int intakeYear;
