@@ -9,7 +9,7 @@ type Student record {
 };
 
 type Report record {
-    readonly id;
+    readonly int id;
     string name;
     string degree;
     int graduationYear;
