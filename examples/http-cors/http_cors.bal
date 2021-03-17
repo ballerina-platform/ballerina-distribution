@@ -23,25 +23,13 @@ service /crossOriginService on new http:Listener(9092) {
             allowHeaders: ["X-Content-Type-Options", "X-PINGOTHER"]
         }
     }
-    resource function get company(http:Caller caller, http:Request req) {
-        http:Response res = new;
-        json responseJson = {"type": "middleware"};
-        res.setJsonPayload(responseJson);
-        var result = caller->respond(res);
-        if (result is error) {
-            log:printError(result.message(), 'error = result);
-        }
+    resource function get company() returns json {
+        return {"type": "middleware"};
     }
 
     // Since there are no resource-level CORS configs defined here, the global
     // service-level CORS configs will be applied to this resource.
-    resource function post lang(http:Caller caller, http:Request req) {
-        http:Response res = new;
-        json responseJson = {"lang": "Ballerina"};
-        res.setJsonPayload(responseJson);
-        var result = caller->respond(res);
-        if (result is error) {
-            log:printError(result.message(), 'error = result);
-        }
+    resource function post lang() returns json {
+        return {"lang": "Ballerina"};
     }
 }

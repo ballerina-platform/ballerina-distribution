@@ -1,5 +1,4 @@
 import ballerina/http;
-import ballerina/log;
 import ballerina/lang.runtime;
 
 // The circuit breaker looks for errors across a rolling time window.
@@ -49,26 +48,16 @@ http:Client backendClientEP = check new ("http://localhost:8080", {
 // Create an HTTP service bound to the endpoint (circuitBreakerEP).
 service /cb on new http:Listener(9090) {
 
-    resource function get .(http:Caller caller, http:Request request) {
+    resource function get .(http:Request request)
+            returns http:Response|http:InternalServerError {
         var backendResponse = backendClientEP->forward("/hello", request);
         // If the `backendResponse` is an `http:Response`, it is sent back to
         // the client. If `backendResponse` is an `http:ClientError`, an
         // internal server error is returned to the client.
         if (backendResponse is http:Response) {
-            var responseToCaller = caller->respond(<@untainted>backendResponse);
-            if (responseToCaller is http:ListenerError) {
-                log:printError("Error sending response",
-                                'error = responseToCaller);
-            }
+            return backendResponse;
         } else {
-            http:Response response = new;
-            response.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
-            response.setPayload((<@untainted error>backendResponse).message());
-            var responseToCaller = caller->respond(response);
-            if (responseToCaller is http:ListenerError) {
-                log:printError("Error sending response",
-                                'error = responseToCaller);
-            }
+            return {body:backendResponse.message()};
         }
 
     }
@@ -80,32 +69,20 @@ int counter = 1;
 // This should run separately from the `circuitBreakerDemo` service.
 service /hello on new http:Listener(8080) {
 
-    resource function get .(http:Caller caller, http:Request req) {
+    resource function get .() returns string|http:InternalServerError {
         if (counter % 5 == 0) {
-            // Delay the response by 5000 milliseconds to
+            counter += 1;
+            // Delay the response by 5 seconds to
             // mimic the network level delays.
             runtime:sleep(5);
 
-            var result = caller->respond("Hello World!!!");
-            handleRespondResult(result);
+            return "Hello World!!!";
         } else if (counter % 5 == 3) {
-            http:Response res = new;
-            res.statusCode = 500;
-            res.setPayload(
-                "Internal error occurred while processing the request.");
-            var result = caller->respond(res);
-            handleRespondResult(result);
+            counter += 1;
+            return {body:"Error occurred while processing the request."};
         } else {
-            var result = caller->respond("Hello World!!!");
-            handleRespondResult(result);
+            counter += 1;
+            return "Hello World!!!";
         }
-        counter = counter + 1;
-    }
-}
-
-function handleRespondResult(error? result) {
-    if (result is http:ListenerError) {
-        log:printError("Error sending response from mock service",
-                        'error = result);
     }
 }

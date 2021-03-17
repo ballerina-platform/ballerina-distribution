@@ -9,6 +9,7 @@ service /cbr on new http:Listener(9090) {
 
         // Get the `string` value relevant to the key `name`.
         json|error nameString = jsonMsg.name;
+
         http:Response|error response;
         http:InternalServerError errResponse = {};
         if (nameString is json) {
@@ -29,12 +30,10 @@ service /cbr on new http:Listener(9090) {
                 return response;
             } else {
                 errResponse.body = response.message();
-                return errResponse;
             }
         } else {
             errResponse.body = nameString.message();
-            return errResponse;
         }
-
+        return errResponse;
     }
 }

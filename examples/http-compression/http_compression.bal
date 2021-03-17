@@ -1,5 +1,4 @@
 import ballerina/http;
-import ballerina/log;
 
 listener http:Listener listenerEndpoint = new (9090);
 
@@ -15,12 +14,8 @@ listener http:Listener listenerEndpoint = new (9090);
 }
 service /autoCompress on listenerEndpoint {
 
-    resource function 'default .(http:Caller caller, http:Request req) {
-        var result = caller->respond({"Type": "Auto compression"});
-
-        if (result is error) {
-            log:printError("Error sending response", 'error = result);
-        }
+    resource function 'default .() returns json {
+        return {"Type": "Auto compression"};
     }
 }
 
@@ -41,19 +36,12 @@ service /alwaysCompress on listenerEndpoint {
 
     // Since compression is only constrained to "text/plain" MIME type,
     // `getJson` resource does not compress the response entity body.
-    resource function 'default getJson(http:Caller caller, http:Request req) {
-        json msg = {"Type": "Always but constrained by content-type"};
-        var result = caller->respond(msg);
-        if (result is error) {
-            log:printError("Error sending response", 'error = result);
-        }
+    resource function 'default getJson() returns json {
+        return {"Type": "Always but constrained by content-type"};
     }
     // The response entity body is always compressed since MIME type has matched.
-    resource function 'default getString(http:Caller caller, http:Request req) {
-        var result = caller->respond("Type : This is a string");
-        if (result is error) {
-            log:printError("Error sending response", 'error = result);
-        }
+    resource function 'default getString() returns string {
+        return "Type : This is a string";
     }
 }
 
@@ -71,19 +59,12 @@ http:Client clientEndpoint = checkpanic new ("http://localhost:9090", {
 
 service /passthrough on new http:Listener(9092) {
 
-    resource function 'default .(http:Caller caller, http:Request req) {
+    resource function 'default .(http:Request req) returns http:Response|json {
         var response = clientEndpoint->post("/backend/echo", <@untainted>req);
         if (response is http:Response) {
-            var result = caller->respond(<@untainted>response);
-            if (result is error) {
-                log:printError("Error sending response", 'error = result);
-            }
+            return response;
         } else {
-            json err = {"error": "error occurred while invoking service"};
-            var result = caller->respond(err);
-            if (result is error) {
-                log:printError("Error sending response", 'error = result);
-            }
+            return {"error": "error occurred while invoking service"};
         }
     }
 }
@@ -91,21 +72,12 @@ service /passthrough on new http:Listener(9092) {
 // The compression behavior of the service is inferred by [COMPRESSION_AUTO](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/constants#COMPRESSION_AUTO), which is the default value
 // of the compression config.
 service /backend on listenerEndpoint {
-    resource function 'default echo(http:Caller caller, http:Request req) {
-        http:Response res = new;
-        if (req.hasHeader("accept-encoding")) {
-            string|error value = req.getHeader("accept-encoding");
-            if (value is string) {
-                res.setPayload("Backend response was encoded : " +
-                                <@untainted> value);
-            }
+    resource function 'default echo(@http:Header{name:"accept-encoding"}
+            string? accept) returns string {
+        if (accept is string) {
+            return "Backend response was encoded : " + accept;
         } else {
-            res.setPayload("Accept-Encoding header is not present");
-        }
-
-        var result = caller->respond(res);
-        if (result is error) {
-            log:printError("Error sending response", 'error = result);
+            return "Accept-Encoding header is not present";
         }
     }
 }

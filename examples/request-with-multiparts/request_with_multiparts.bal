@@ -7,28 +7,26 @@ http:Client clientEP = check new ("http://localhost:9090");
 //Binds the listener to the service.
 service /multiparts on new http:Listener(9090) {
 
-    resource function post decode(http:Caller caller, http:Request
-                                        request) {
+    resource function post decode(http:Request request)
+            returns http:Response|http:InternalServerError{
         http:Response response = new;
         // [Extracts bodyparts](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#getBodyParts) from the request.
         var bodyParts = request.getBodyParts();
+
         if (bodyParts is mime:Entity[]) {
             foreach var part in bodyParts {
                 handleContent(part);
             }
             response.setPayload(<@untainted>bodyParts);
+            return response;
         } else {
             log:printError(bodyParts.message());
-            response.setPayload("Error in decoding multiparts!");
-            response.statusCode = 500;
-        }
-        var result = caller->respond(response);
-        if (result is error) {
-            log:printError("Error sending response", 'error = result);
+            return {body:"Error in decoding multiparts!"};
         }
     }
 
-    resource function get encode(http:Caller caller, http:Request req) {
+    resource function get encode(http:Request req)
+            returns http:Response|http:InternalServerError {
         //Create a json body part.
         mime:Entity jsonBodyPart = new;
         jsonBodyPart.setContentDisposition(
@@ -54,19 +52,9 @@ service /multiparts on new http:Listener(9090) {
         request.setBodyParts(bodyParts, contentType = mime:MULTIPART_FORM_DATA);
         var returnResponse = clientEP->post("/multiparts/decode", request);
         if (returnResponse is http:Response) {
-            var result = caller->respond(<@untainted>returnResponse);
-            if (result is error) {
-                log:printError("Error sending response", 'error = result);
-            }
+            return returnResponse;
         } else {
-            http:Response response = new;
-            response.setPayload("Error occurred while sending multipart " +
-                                    "request!");
-            response.statusCode = 500;
-            var result = caller->respond(response);
-            if (result is error) {
-                log:printError("Error sending response", 'error = result);
-            }
+            return {body:"Error occurred while sending multipart request!"};
         }
     }
 }

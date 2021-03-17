@@ -6,8 +6,6 @@ function testFunc() returns @tainted  error? {
     http:Client httpEndpoint = check new("http://localhost:9092");
     json expectedJson = { "type": "middleware" };
 
-    http:Request companyReq = new;
-    companyReq.setHeader("Origin", "http://www.bbc.com");
     // Send a `GET` request to the specified endpoint.
     var companyResponse = httpEndpoint->get("/crossOriginService/company", {"Origin":"http://www.bbc.com"});
     if (companyResponse is http:Response) {
