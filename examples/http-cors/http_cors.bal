@@ -1,5 +1,4 @@
 import ballerina/http;
-import ballerina/log;
 
 // Service-level [CORS config](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/CorsConfig) applies
 // globally to each `resource`.

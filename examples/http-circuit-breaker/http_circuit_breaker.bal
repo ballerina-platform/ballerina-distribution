@@ -12,11 +12,11 @@ http:Client backendClientEP = check new ("http://localhost:8080", {
                 // breaker keeps the statistics for the operations.
                 rollingWindow: {
 
-                    // Time period in milliseconds for which the failure
+                    // Time period in seconds for which the failure
                     // threshold is calculated.
                     timeWindow: 10,
 
-                    // The granularity (in milliseconds) at which the time
+                    // The granularity (in seconds) at which the time
                     // window slides. The `RollingWindow` is divided into
                     // buckets and slides by these increments.
                     bucketSize: 2,
@@ -33,7 +33,7 @@ http:Client backendClientEP = check new ("http://localhost:8080", {
                 // rolling window.
                 failureThreshold: 0.2,
 
-                // The time period (in milliseconds) to wait before attempting to
+                // The time period (in seconds) to wait before attempting to
                 // make another request to the upstream service.
                 resetTime: 10,
 
