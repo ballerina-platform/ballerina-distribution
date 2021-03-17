@@ -9,9 +9,8 @@ http:Client clientEP = check new ("http://localhost:9091/backEndService");
 //Service to test HTTP client remote functions with different payload types.
 service /actionService on new http:Listener(9090) {
 
-    resource function 'default messageUsage(http:Caller caller,
-                                            http:Request req) {
-
+    resource function 'default messageUsage()
+            returns string|http:InternalServerError {
         //[GET](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#get) remote function without any payload.
         var response = clientEP->get("/greeting");
         handleResponse(response);
@@ -68,15 +67,9 @@ service /actionService on new http:Listener(9090) {
             response = clientEP->post("/echo", bodyParts);
             handleResponse(response);
 
-            var result =
-                    caller->respond("Client actions successfully executed!");
-            handleError(result);
+            return "Client actions successfully executed!";
         } else {
-            http:Response res = new;
-            res.statusCode = 500;
-            res.setPayload(<@untainted>bStream.message());
-            var result = caller->respond(res);
-            handleError(result);
+            return {body:bStream.message()};
         }
     }
 }
@@ -84,11 +77,8 @@ service /actionService on new http:Listener(9090) {
 //Back end service that send out different payload types as response.
 service /backEndService on new http:Listener(9091) {
 
-    resource function get greeting(http:Caller caller, http:Request req) {
-        error? result = caller->respond("Hello");
-        if (result is error) {
-            log:printError("Error in responding to caller", 'error = result);
-        }
+    resource function get greeting() returns string {
+        return "Hello";
     }
 
     resource function post echo(http:Caller caller, http:Request req) {

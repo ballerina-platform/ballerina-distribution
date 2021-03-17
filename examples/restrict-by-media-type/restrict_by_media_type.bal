@@ -10,8 +10,8 @@ service on new http:Listener(9092) {
         consumes: ["text/json", "application/json"],
         produces: ["application/xml"]
     }
-    resource function post infoService(@http:Payload json msg) returns xml|
-                                                http:InternalServerError  {
+    resource function post infoService(@http:Payload json msg)
+            returns xml|http:InternalServerError {
         // Get the value, which is relevant to the key "name".
         json|error nameString = msg.name;
         if (nameString is json) {

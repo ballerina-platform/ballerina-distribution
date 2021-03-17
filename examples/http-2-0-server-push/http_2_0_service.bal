@@ -8,7 +8,7 @@ listener http:Listener http2ServiceEP = new (7090,
 
 service /http2Service on http2ServiceEP {
 
-    resource function 'default .(http:Caller caller, http:Request req) {
+    resource function 'default .(http:Caller caller) {
 
         // [Send a Push Promise](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Caller#promise).
         http:PushPromise promise1 = new (path = "/resource1", method = "GET");

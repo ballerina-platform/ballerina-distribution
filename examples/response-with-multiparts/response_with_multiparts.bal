@@ -43,8 +43,8 @@ service /multiparts on new http:Listener(9092) {
 service /multiparts on multipartEP {
 
     // This resource accepts multipart responses.
-    resource function get decode_in_response() returns string|
-                                                http:InternalServerError {
+    resource function get decode_in_response()
+            returns string|http:InternalServerError {
         http:Response inResponse = new;
         var returnResult = clientEP->get("/multiparts/encode_out_response");
         http:Response res = new;
