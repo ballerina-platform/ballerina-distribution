@@ -1,5 +1,4 @@
 import ballerina/test;
-import ballerina/io;
 
 string[] outputs = [];
 int counter = 0;
@@ -14,7 +13,7 @@ test:MockFunction mockPrintLn = new();
 public function mockPrint(any... s) {
     string outstr = "";
     foreach var str in s {
-        outstr = outstr + io:sprintf("%s", str);
+        outstr = outstr + (str is string ? str : "");
     }
     outputs[counter] = outstr;
     counter += 1;

@@ -49,14 +49,14 @@ function basicMatch(any|error v) {
         // matched will be recorded in a map.
         error SampleError("Sample Error", message = var a, ...var b) => {
             io:println("Matched an error value : ",
-            io:sprintf("message: %s, rest detail: %s", a, b));
+            string `message: ${a is string ? a : ""}, rest detail: ${b.toString()}`);
         }
         // If the `v` variable contains an `error` value, it will be matched
         // to this pattern and the reason string and the detail record will be
         // destructed within the pattern block.
         error("Generic Error", message = var a) => {
             io:println("Matched an error value : ",
-            io:sprintf("message: %s", a));
+            string `message: ${a is string ? a : ""}`);
         }
     }
 }
