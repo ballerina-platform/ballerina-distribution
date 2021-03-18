@@ -2,7 +2,7 @@ import ballerina/tcp;
 import ballerina/io;
 
 // A TCP listener can be configured to communicate through SSL/TLS as well.
-// The [secureSocket](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/tcp/latest/tcp/records/ListenerSecureSocket) record provides the SSL related configurations,
+// The [secureSocket](https://docs.central.ballerina.io/ballerina/tcp/latest/tcp/records/ListenerSecureSocket) record provides the SSL related configurations,
 // which will configure a listener to accept new connections that
 // are secured via SSL.
 tcp:ListenerSecureSocket listenerSecureSocket = {

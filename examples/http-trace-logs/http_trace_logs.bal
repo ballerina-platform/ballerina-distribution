@@ -4,7 +4,7 @@ service /hello on new http:Listener(9090) {
 
     resource function get .(http:Request req)
             returns http:Response|http:InternalServerError {
-        // Create a new [http:Client](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client).
+        // Create a new [http:Client](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client).
         http:Client clientEP = checkpanic new ("http://httpstat.us");
 
         // Forward incoming requests to the remote backend.
