@@ -105,7 +105,7 @@
             </directory>
             <outputDirectory>distributions/jballerina-${ballerina.version}</outputDirectory>
             <excludes>
-                <exclude>distributions/jballerina-${ballerina.version}/bin/ba;.bat</exclude>
+                <exclude>distributions/jballerina-${ballerina.version}/bin/bal.bat</exclude>
                 <exclude>distributions/ballerina-version</exclude>
             </excludes>
         </fileSet>
