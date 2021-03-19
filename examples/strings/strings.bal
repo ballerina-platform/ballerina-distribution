@@ -67,11 +67,11 @@ public function main() {
     // Format a `string` according to the given format arguments
     // using string templates.
     string name = "Sam";
-    int mrk = 90;
+    int marks = 90;
     string[] subjects = ["English", "Science"];
-    float avg = 71.5;
-    string s8 = string `${name} scored ${mrk} for ${subjects[0]} and has an
-                  average of ${avg}`;
+    float average = 71.5;
+    string s8 = string `${name} scored ${marks} for ${subjects[0]} and has an
+                  average of ${average}`;
     io:println("String templates: ", s8);
 
     // Member access is allowed with strings to access individual characters
