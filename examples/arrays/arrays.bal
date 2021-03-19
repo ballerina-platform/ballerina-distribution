@@ -14,8 +14,6 @@ public function main() {
     // Arrays support several inbuilt functions such as `.reverse()`, `.pop()`, `.push()`, and `.removeAll()`.
     int[] bReveresed = b.reverse();
     io:println("Reversed: ", bReveresed);
-    io:println("Reversed array and original array are the same: ",
-               bReveresed === b);
 
     io:println("Before pop: ", b);
     int poppedValue = b.pop();
