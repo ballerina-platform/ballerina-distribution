@@ -65,7 +65,7 @@ json getResponse1 = {
 
 json getResponse2 = { "Error" : "Order : 200 cannot be found." };
 
-@test:Config { }
+@test:Config { dependsOn: [test_addOrderWithoutMock]}
 function test_findOrder() {
 
     // Create a Specific response for get
