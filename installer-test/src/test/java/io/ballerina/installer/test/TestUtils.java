@@ -150,7 +150,7 @@ public class TestUtils {
         Path projectPath = userDir.resolve("project1");
         Assert.assertTrue(Files.isDirectory(projectPath));
         Assert.assertTrue(Files.isDirectory(projectPath.resolve("modules").resolve("module1")));
-        Assert.assertTrue(Files.exists(projectPath.resolve("target/bin/project1-0.1.0.jar")));
+        Assert.assertTrue(Files.exists(projectPath.resolve("target/bin/project1.jar")));
         //Test `Fetching compatible JRE dependency`
         String output = executor.executeCommand("dist pull slp1", true, toolVersion);
         Assert.assertTrue(output.contains("Downloading slp1"));
@@ -233,7 +233,7 @@ public class TestUtils {
         Path projectPath = userDir.resolve("sampleProject1");
         Assert.assertTrue(Files.exists(projectPath));
         Assert.assertTrue(Files.isDirectory(projectPath.resolve("modules").resolve("module1")));
-        Assert.assertTrue(Files.exists(projectPath.resolve("target/bin/sampleProject1-0.1.0.jar")));
+        Assert.assertTrue(Files.exists(projectPath.resolve("target/bin/sampleProject1.jar")));
 
         executor.executeCommand("dist pull " + previousVersion, true, toolVersion);
         testInstallation(executor, previousVersion, previousSpecVersion, toolVersion, previousVersion);
