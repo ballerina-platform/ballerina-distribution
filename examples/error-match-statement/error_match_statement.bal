@@ -48,8 +48,8 @@ function basicMatch(any|error v) {
         // If a rest binding pattern is used, the error details that are not
         // matched will be recorded in a map.
         error SampleError("Sample Error", message = var a, ...var b) => {
-            io:println("Matched an error value : ",
-            string `message: ${a is string ? a : ""}, rest detail: ${b.toString()}`);
+            io:println("Matched an error value : ", string
+            `message: ${a is string ? a : ""}, rest detail: ${b.toString()}`);
         }
         // If the `v` variable contains an `error` value, it will be matched
         // to this pattern and the reason string and the detail record will be

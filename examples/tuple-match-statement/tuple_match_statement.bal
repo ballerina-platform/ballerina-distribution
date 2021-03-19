@@ -55,7 +55,8 @@ function matchWithMatchGuard(any b) {
     match b {
         // This pattern check is for a tuple of two members of the types `string` and `int` respectively.
         [var s, var i] if (s is string && i is int) => {
-            io:println("'s' is string and 'i' is int : ", string `${b.toString()}`);
+            io:println("'s' is string and 'i' is int : ",
+            string `${b.toString()}`);
         }
         // This pattern check is for a tuple of two members where the first member is of the type `float`.
         [var s, var i] if s is float => {
