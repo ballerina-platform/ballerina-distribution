@@ -18,7 +18,7 @@ service /ordermgt on httpListener {
 
         var result = caller->respond(response);
         if (result is error) {
-            log:printError("Error sending response", err = result);
+            log:printError("Error sending response");
         }
     }
 
@@ -32,7 +32,7 @@ service /ordermgt on httpListener {
             if (orderIdJson is json) {
                 orderId = orderIdJson.toString();
             } else {
-                log:printError("Error sending response", err = orderIdJson);
+                log:printError("Error sending response");
             }
 
             ordersMap[orderId] = <@untainted> orderReq;
@@ -47,14 +47,14 @@ service /ordermgt on httpListener {
 
             var result = caller->respond(response);
             if (result is error) {
-                log:printError("Error sending response", err = result);
+                log:printError("Error sending response");
             }
         } else {
             response.statusCode = 400;
             response.setPayload("Invalid payload received");
             var result = caller->respond(response);
             if (result is error) {
-                log:printError("Error sending response", err = result);
+                log:printError("Error sending response");
             }
         }
     }
