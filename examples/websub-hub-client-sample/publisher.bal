@@ -7,7 +7,7 @@ import ballerina/websubhub;
 
 public function main() {
 
-    // Starts the internal Ballerina Hub using [startHub](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/websub/latest/websub/functions#startHub).
+    // Starts the internal Ballerina Hub using [startHub](https://docs.central.ballerina.io/ballerina/websub/latest/websub/functions#startHub).
     io:println("Starting up the Ballerina Hub Service");
     websubhub:Hub webSubHub;
     var result = websubhub:startHub(new http:Listener(9191), "/websub", "/hub");
@@ -19,7 +19,7 @@ public function main() {
         io:println("Hub start error:" + result.message());
         return;
     }
-    // Registers a topic at the hub using [registerTopic](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/websub/latest/websub/classes/Hub#registerTopic).
+    // Registers a topic at the hub using [registerTopic](https://docs.central.ballerina.io/ballerina/websub/latest/websub/classes/Hub#registerTopic).
     var registrationResponse = webSubHub.registerTopic(
                                             "http://websubpubtopic.com");
     if (registrationResponse is error) {
@@ -32,7 +32,7 @@ public function main() {
     // Makes the publisher wait until the subscriber subscribes at the hub.
     runtime:sleep(5000);
 
-    // Publishes directly to the internal Ballerina Hub using [publishUpdate][publishUpdate](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/websub/latest/websub/clients/PublisherClient#publishUpdate)..
+    // Publishes directly to the internal Ballerina Hub using [publishUpdate][publishUpdate](https://docs.central.ballerina.io/ballerina/websub/latest/websub/clients/PublisherClient#publishUpdate)..
     var publishResponse = webSubHub.publishUpdate("http://websubpubtopic.com",
                             {"action": "publish", "mode": "internal-hub"});
     if (publishResponse is error) {

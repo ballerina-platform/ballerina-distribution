@@ -29,7 +29,7 @@ function testUnaryNonBlockingClient() {
     // Execute the unary non-blocking call that registers the server message listener.
     error? result = helloWorldEp->hello("WSO2", messageListener);
     if (result is error) {
-        test:assertFail(io:sprintf(ERROR_MSG_FORMAT, result.message()));
+        test:assertFail(string `Error from Connector: ${result.message()}`);
     } else {
         io:println("Connected successfully");
     }
@@ -57,7 +57,7 @@ service object {}  messageListener = service object {
 
     // Resource registered to receive server error messages.
     function onError(error err) {
-        responseMsg = io:sprintf(ERROR_MSG_FORMAT, err.message());
+        responseMsg = string `Error from Connector: ${err.message()}`;
     }
 
     // Resource registered to receive server completed messages.

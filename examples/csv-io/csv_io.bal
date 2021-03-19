@@ -14,13 +14,18 @@ public function main() returns @tainted error? {
     string[][] readCsv = check io:fileReadCsv(csvFilePath1);
     io:println(readCsv);
 
-    // Write the given content stream to a CSV file.
-    check io:fileWriteCsvFromStream(csvFilePath2, csvContent.toStream());
-    // If the write operation was successful, then, perform a read operation to read the CSV content as a stream.
-    stream<string[], io:Error> csvStream = check
+    // Read the previously written CSV from the 'csvFile1.csv' file as a stream.
+    stream<string[], io:Error> csvStream1 = check
+                                        io:fileReadCsvAsStream(csvFilePath1);
+    // Write the given streaming content to a CSV file.
+    check io:fileWriteCsvFromStream(csvFilePath2, csvStream1);
+
+    // Verify the streaming write operation by reading 'csvFile2.csv' as a stream.
+    stream<string[], io:Error> csvStream2 = check
                                         io:fileReadCsvAsStream(csvFilePath2);
     // Loop through the stream and print the content.
-    error? e = csvStream.forEach(function(string[] val) {
+    error? e = csvStream2.forEach(function(string[] val) {
                               io:println(val);
                           });
+
 }

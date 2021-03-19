@@ -1,7 +1,7 @@
 import ballerina/http;
 
 service on new http:Listener(9092) {
-    // The `consumes` and `produces` annotations of the [resource configuration](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/HttpResourceConfig)
+    // The `consumes` and `produces` annotations of the [resource configuration](https://docs.central.ballerina.io/ballerina/http/latest/http/records/HttpResourceConfig)
     // contain MIME types as an array of strings. The resource can only consume/accept `text/json` and
     // `application/json` media types. Therefore, the `Content-Type` header
     // of the request must be in one of these two types. The resource can produce
@@ -10,8 +10,8 @@ service on new http:Listener(9092) {
         consumes: ["text/json", "application/json"],
         produces: ["application/xml"]
     }
-    resource function post infoService(@http:Payload json msg) returns xml|
-                                                http:InternalServerError  {
+    resource function post infoService(@http:Payload json msg)
+            returns xml|http:InternalServerError {
         // Get the value, which is relevant to the key "name".
         json|error nameString = msg.name;
         if (nameString is json) {

@@ -1,11 +1,11 @@
-# Create a Ballerina project and a module inside it.
-# Copy generated stub file `grpc_bidirectional_streaming_pb.bal` to the module.
-# For example, if you create a module named `client`, copy the stub file to the `client` module.
+# Create a Ballerina package.
+# Copy the generated `grpc_bidirectional_streaming_pb.bal` stub file to the package.
+# For example, if you create a package named `client`, copy the stub file to the `client` package.
 
-# Add new Ballerina file `grpc_bidirectional_streaming_client.bal` inside the `client` module and add client implementation.
+# Create a new `grpc_bidirectional_streaming_client.bal` Ballerina file inside the `client` package and add the client implementation.
 
-# Execute the command below to build the 'client' module.
+# Execute the command below to build the 'client' package.
 bal build client
 
 # Run the client using the command below.
-bal run target/bin/client.jar
+bal run client/target/bin/client.jar

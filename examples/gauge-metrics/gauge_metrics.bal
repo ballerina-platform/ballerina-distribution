@@ -46,7 +46,7 @@ service /onlineStoreService on new http:Listener(9090) {
         //Counter instance.
         error? result = registeredGaugeWithTags.register();
         if (result is error) {
-            log:printError("Error in registering gauge", err = result);
+            log:printError("Error in registering gauge", 'error = result);
         }
 
         //Set the value of the gauge with the new value.
@@ -94,7 +94,7 @@ service /onlineStoreService on new http:Listener(9090) {
         result = caller->respond(res);
 
         if (result is error) {
-            log:printError("Error sending response", err = result);
+            log:printError("Error sending response", 'error = result);
         }
     }
 }

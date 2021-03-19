@@ -21,21 +21,21 @@ service /hbr on new http:Listener(9090) {
         http:Request newRequest = new;
         http:Response|error response;
         if (nameString == "location") {
-            //[post()](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function represents the 'POST' operation
+            //[post()](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#post) remote function represents the 'POST' operation
             // of the HTTP client.
             // Route payload to the relevant service.
             response = locationEP->post("/v2/5adddd66300000bd2a4b2912",
                                         newRequest);
 
         } else {
-            //[get()](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#get) remote function can be used to make an http GET call.
+            //[get()](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#get) remote function can be used to make an http GET call.
             response =
                 weatherEP->get("/data/2.5/weather?lat=35&lon=139&appid=b1b1");
 
         }
 
         if (response is http:Response) {
-            // [respond()](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Caller#respond) sends back the inbound clientResponse to the caller
+            // [respond()](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Caller#respond) sends back the inbound clientResponse to the caller
             // if no error occurs.
 
             var result = caller->respond(<@untainted>response);

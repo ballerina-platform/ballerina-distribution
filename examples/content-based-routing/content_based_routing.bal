@@ -9,11 +9,12 @@ service /cbr on new http:Listener(9090) {
 
         // Get the `string` value relevant to the key `name`.
         json|error nameString = jsonMsg.name;
+
         http:Response|error response;
         http:InternalServerError errResponse = {};
         if (nameString is json) {
             if (nameString.toString() == "sanFrancisco") {
-                // Here, [post](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Client#post) remote function represents the POST operation of
+                // Here, [post](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#post) remote function represents the POST operation of
                 // the HTTP client.
                 // This routes the payload to the relevant service when the server
                 // accepts the enclosed entity.
@@ -29,12 +30,10 @@ service /cbr on new http:Listener(9090) {
                 return response;
             } else {
                 errResponse.body = response.message();
-                return errResponse;
             }
         } else {
             errResponse.body = nameString.message();
-            return errResponse;
         }
-
+        return errResponse;
     }
 }
