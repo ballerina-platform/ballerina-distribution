@@ -1044,7 +1044,7 @@
     {
         "title": "WebSub",
         "column": 1,
-        "category": "Working with WebSub Protocol",
+        "category": "Working over the network",
         "samples": [
             {
                 "name": "Websub Subscriber Service",
