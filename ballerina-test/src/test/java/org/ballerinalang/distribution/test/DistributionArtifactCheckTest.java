@@ -51,7 +51,7 @@ public class DistributionArtifactCheckTest {
                 .resolve("repo")
                 .resolve("cache")
                 .resolve("ballerina")
-                .resolve("docker")
+                .resolve("cloud")
                 .resolve("1.0.0");
 
         Path breLibPath = TEST_DISTRIBUTION_PATH
@@ -62,16 +62,16 @@ public class DistributionArtifactCheckTest {
         Path bbePath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
                 .resolve("examples")
-                .resolve("docker-deployment");
+                .resolve("c2c-deployment");
 
         Path docsPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
                 .resolve("docs")
                 .resolve("ballerina")
-                .resolve("docker");
+                .resolve("cloud");
 
         Assert.assertTrue(Files.exists(cachePath));
-        Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "docker-extension-"));
+        Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "c2c-extension-"));
         Assert.assertTrue(Files.exists(bbePath));
         Assert.assertTrue(Files.exists(docsPath));
     }

@@ -59,7 +59,7 @@ allprojects {
     release {
         // Workaround to fix build task not found issue in release plugin
         buildTasks = []
-        failOnSnapshotDependencies = false
+        failOnSnapshotDependencies = true
         failOnCommitNeeded = false
         versionPropertyFile = 'gradle.properties'
         tagTemplate = 'v${version}'
@@ -501,7 +501,6 @@ subprojects {
         ballerinaC2cLibs "io.ballerina:c2c-ballerina:${c2cVersion}"
         ballerinaC2cLibs "org.ballerinax.azurefunctions:azurefunctions-extension-bala:${azFunctionsVersion}"
         ballerinaC2cLibs "org.ballerinax.awslambda:awslambda-extension-bala:${awslambdaVersion}"
-        ballerinaC2cLibs "org.ballerinax.docker:docker-extension-annotations:${dockerVersion}"
 
         ballerinaC2cTooling "io.ballerina:c2c-tooling:${c2cVersion}"
 
@@ -514,6 +513,5 @@ subprojects {
         ballerinaC2cExamples "io.ballerina:c2c-extension-examples:${c2cVersion}@zip"
         ballerinaC2cExamples "org.ballerinax.azurefunctions:azurefunctions-extension-examples:${azFunctionsVersion}@zip"
         ballerinaC2cExamples "org.ballerinax.awslambda:awslambda-extension-examples:${awslambdaVersion}@zip"
-        ballerinaC2cExamples "org.ballerinax.docker:docker-extension-examples:${dockerVersion}@zip"
     }
 }

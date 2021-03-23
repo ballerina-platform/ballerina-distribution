@@ -7,12 +7,12 @@ import ballerina/graphql;
 service graphql:Service /graphql on new graphql:Listener(9090) {
 
     // This resource provides a quote for the provided ID.
-    resource function get profile/quote(int id) returns string {
+    resource function get profile/quote() returns string {
         return "I am the one who knocks!";
     }
 
     // This resource returns the name for the provided ID.
-    resource function get profile/name(int id) returns string {
+    resource function get profile/name() returns string {
         return "Walter White";
     }
 }

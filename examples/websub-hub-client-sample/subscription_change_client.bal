@@ -1,4 +1,4 @@
-// The Ballerina main program, which demonstrates the usage of the [Hub client](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/websub/latest/websub/clients/SubscriptionClient) to subscribe/unsubscribe to notifications.
+// The Ballerina main program, which demonstrates the usage of the [Hub client](https://docs.central.ballerina.io/ballerina/websub/latest/websub/clients/SubscriptionClient) to subscribe/unsubscribe to notifications.
 import ballerina/io;
 import ballerina/lang.runtime;
 import ballerina/websub;

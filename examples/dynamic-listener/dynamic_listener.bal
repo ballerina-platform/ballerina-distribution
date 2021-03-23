@@ -11,7 +11,7 @@ var helloService =  service object {
         var respondResult = caller->respond("Hello, World!");
         if (respondResult is error) {
             log:printError("Error occurred when responding.", 
-                err = respondResult);
+                'error = respondResult);
         }
     }
 
@@ -27,11 +27,11 @@ var helloService =  service object {
         // Handle the errors at the end.
         if (respondResult is error) {
             log:printError("Error occurred when responding.", 
-                err = respondResult);
+                'error = respondResult);
         } 
         if (stopResult is error) {
             log:printError("Error occurred when stopping the listener. ", 
-                err = stopResult);
+                'error = stopResult);
         }
     }
 };

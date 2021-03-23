@@ -88,7 +88,7 @@ public function main() {
     map<int> modifiedMarks = marks.entries().map(function ([string, int] pair)
         returns int {
             var [name, score] = pair;
-            io:println(io:sprintf("%s scored: %d", name, score));
+            io:println(string `${name} scored: ${score}`);
             return score + 10;
         }
     );
