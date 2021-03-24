@@ -632,8 +632,6 @@ task testExamples() {
     // The following BBEs will not be verified by compiling/running.
     def buildIgnoreList = [
             'proto-to-ballerina',
-            'websub-hub-client-sample',
-            'websub-remote-hub-sample',
             'docker-deployment',
             'c2c-deployment',
             'aws-lambda-deployment',
@@ -680,6 +678,9 @@ task testExamples() {
             'websocket-retry',
             'websocket-failover',
             'http-filters',
+
+            // Disabling sice we could not include credentials in the BBE
+            'websub-webhook-sample',
 
             // Disabling temporarily (https://github.com/ballerina-platform/ballerina-distribution/issues/1242)
             "ballerina-to-openapi",
@@ -730,8 +731,6 @@ task testExamples() {
             'checkpanic', // Has user name in output
             'deprecation', // Contains user input
             'foreach', // Has tabs for formatting in input
-            'websub-service-integration-sample',
-            'websub-internal-hub-sample',
             'grpc-server-streaming',
             'http-compression',
             'http-redirects',
