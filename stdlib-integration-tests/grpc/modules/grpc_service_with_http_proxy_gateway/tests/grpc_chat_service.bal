@@ -21,18 +21,20 @@ import ballerina/runtime;
 
 // Server endpoint configuration
 listener grpc:Listener ep3 = new (20007, {
-      host: "localhost",
-      secureSocket: {
-          trustStore: {
-              path: TRUSTSTORE_PATH,
-              password: "ballerina"
-          },
-          keyStore: {
-              path: KEYSTORE_PATH,
-              password: "ballerina"
-          }
-      }
-  });
+    host: "localhost",
+    secureSocket: {
+        key: {
+            path: KEYSTORE_PATH,
+            password: "ballerina"
+        },
+        mutualSsl: {
+            cert: {
+                path: TRUSTSTORE_PATH,
+                password: "ballerina"
+            }
+        }
+    }
+});
 
 @tainted final map<grpc:Caller> connectionsMap = {};
 
@@ -45,45 +47,45 @@ boolean initialized = false;
 service /Chat on ep3 {
 
     remote function chat(grpc:Caller caller, stream<ChatMessage, error> clientStream) {
-        log:print(string `${caller.getId()} connected to chat`);
+        log:printInfo(string `${caller.getId()} connected to chat`);
         connectionsMap[caller.getId().toString()] = caller;
-        log:print("Client registration completed. Connection map status");
-        log:print("Map length: " + connectionsMap.length().toString());
-        log:print(connectionsMap.toString());
+        log:printInfo("Client registration completed. Connection map status");
+        log:printInfo("Map length: " + connectionsMap.length().toString());
+        log:printInfo(connectionsMap.toString());
         initialized = true;
         error? e = clientStream.forEach(function(ChatMessage chatMsg) {
             grpc:Caller conn;
             string msg = string `${chatMsg.name}: ${chatMsg.message}`;
-            log:print("Server received message: " + msg);
+            log:printInfo("Server received message: " + msg);
             int waitCount = 0;
             while(!initialized) {
                 runtime:sleep(1000);
-                log:print("Waiting till connection initialize. status: " + initialized.toString());
+                log:printInfo("Waiting till connection initialize. status: " + initialized.toString());
                 if (waitCount > 10) {
                     break;
                 }
                 waitCount += 1;
             }
-            log:print("Starting message broadcast. Connection map status");
-            log:print("Map length: " + connectionsMap.length().toString());
-            log:print(connectionsMap.toString());
+            log:printInfo("Starting message broadcast. Connection map status");
+            log:printInfo("Map length: " + connectionsMap.length().toString());
+            log:printInfo(connectionsMap.toString());
             foreach var [callerId, connection] in connectionsMap.entries() {
                 conn = connection;
                 grpc:Error? err = conn->send(msg);
                 if (err is grpc:Error) {
                     log:printError("Error from Connector: " + err.message());
                 } else {
-                    log:print("Server message to caller " + callerId + " sent successfully.");
+                    log:printInfo("Server message to caller " + callerId + " sent successfully.");
                 }
             }
         });
         if (e is grpc:EOS) {
             string msg = string `${caller.getId()} left the chat`;
-            log:print(msg);
+            log:printInfo(msg);
             var v = connectionsMap.remove(caller.getId().toString());
-            log:print("Starting client left broadcast. Connection map status");
-            log:print("Map length: " + connectionsMap.length().toString());
-            log:print(connectionsMap.toString());
+            log:printInfo("Starting client left broadcast. Connection map status");
+            log:printInfo("Map length: " + connectionsMap.length().toString());
+            log:printInfo(connectionsMap.toString());
             foreach var [callerId, connection] in connectionsMap.entries() {
                 grpc:Caller conn;
                 conn = connection;
@@ -91,7 +93,7 @@ service /Chat on ep3 {
                 if (err is grpc:Error) {
                     log:printError("Error from Connector: " + err.message());
                 } else {
-                    log:print("Server message to caller " + callerId + " sent successfully.");
+                    log:printInfo("Server message to caller " + callerId + " sent successfully.");
                 }
             }
         } else if (e is error) {

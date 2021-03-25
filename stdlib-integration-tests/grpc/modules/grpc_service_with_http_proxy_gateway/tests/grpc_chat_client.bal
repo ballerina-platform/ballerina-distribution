@@ -28,7 +28,7 @@ public function testBidiStreamingInChatClient() {
     //Client endpoint configuration.
     ChatClient chatEp = new("https://localhost:20008", {
         secureSocket: {
-            trustStore: {
+            cert: {
                 path: TRUSTSTORE_PATH,
                 password: "ballerina"
             }
@@ -39,7 +39,7 @@ public function testBidiStreamingInChatClient() {
     // Executes unary non-blocking call registering server message listener.
     var res = chatEp->chat(ChatMessageListener);
     if (res is grpc:Error) {
-        test:assertFail(io:sprintf(ERROR_MSG_FORMAT, res.message()));
+        test:assertFail(string `Error from Connector: ${res.message()}`);
         return;
     } else {
         ep = res;
@@ -49,10 +49,10 @@ public function testBidiStreamingInChatClient() {
     ChatMessage mes = {name: "Sam", message: "Hi"};
     grpc:Error? result = ep->send(mes);
     if (result is grpc:Error) {
-        test:assertFail(io:sprintf(ERROR_MSG_FORMAT, result.message()));
+        test:assertFail(string `Error from Connector: ${result.message()}`);
     }
     if (!isValidResponse("Sam: Hi")) {
-        test:assertFail(io:sprintf(RESP_MSG_FORMAT, "Sam: Hi", responseChatMsg));
+        test:assertFail(string `Failed: Invalid Response, expected Sam: Hi, but received ${responseChatMsg}`);
     } else {
         responseChatMsg = "";
     }
@@ -85,7 +85,7 @@ service object{} ChatMessageListener = service object {
 
     // Resource registered to receive server error messages.
     function onError(error err) {
-        responseChatMsg = io:sprintf(ERROR_MSG_FORMAT, err.message());
+        responseChatMsg = string `Error from Connector: ${err.message()}`;
         io:println(responseChatMsg);
     }
 

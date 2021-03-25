@@ -16,7 +16,7 @@ map<websocket:Caller> connectionsMap = {};
 service /chat on new websocket:Listener(9090) {
     resource function get [string name](http:Request req) returns
                          websocket:Service|websocket:UpgradeError {
-        // Retrieve query parameters from the [http:Request](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request).
+        // Retrieve query parameters from the [http:Request](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Request).
         map<string[]> queryParams = req.getQueryParams();
         if (!queryParams.hasKey(AGE)) {
             // Cancel the handshake by sending an UpgradeError

@@ -35,15 +35,15 @@ function basicMatch(any a) {
     match a {
         // This pattern check is for a tuple of three members of any type.
         [var s, var i, var b] => {
-            io:println("Matched with three vars : ", io:sprintf("%s", a));
+            io:println("Matched with three vars : ", string `${a.toString()}`);
         }
         // This pattern check is for a tuple of two members of any type.
         [var s, var i] => {
-            io:println("Matched with two vars : ", io:sprintf("%s", a));
+            io:println("Matched with two vars : ", string `${a.toString()}`);
         }
         // This pattern check is for a single variable, which can be of type `any`. This has to be the last pattern.
         var s => {
-            io:println("Matched with single var : ", io:sprintf("%s", a));
+            io:println("Matched with single var : ", string `${a.toString()}`);
         }
     }
 }
@@ -55,23 +55,24 @@ function matchWithMatchGuard(any b) {
     match b {
         // This pattern check is for a tuple of two members of the types `string` and `int` respectively.
         [var s, var i] if (s is string && i is int) => {
-            io:println("'s' is string and 'i' is int : ", io:sprintf("%s", b));
+            io:println("'s' is string and 'i' is int : ",
+            string `${b.toString()}`);
         }
         // This pattern check is for a tuple of two members where the first member is of the type `float`.
         [var s, var i] if s is float => {
-            io:println("Only 's' is float : ", io:sprintf("%s", b));
+            io:println("Only 's' is float : ", string `${b.toString()}`);
         }
         // This pattern check is for a tuple of two members, in which the second member is of the type `int`.
         [var s, var i] if i is int => {
-            io:println("Only 'i' is int : ", io:sprintf("%s", b));
+            io:println("Only 'i' is int : ", string `${b.toString()}`);
         }
         // This pattern check is for a tuple of two members without any match guard.
         [var s, var i] => {
-            io:println("No type guard : ", io:sprintf("%s", b));
+            io:println("No type guard : ", string `${b.toString()}`);
         }
         // This pattern check is for a single variable of the type `float`.
         var s if s is float => {
-            io:println("'s' is float only : ", io:sprintf("%s", b));
+            io:println("'s' is float only : ", string `${b.toString()}`);
         }
 
     }

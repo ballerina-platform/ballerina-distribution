@@ -1,0 +1,11 @@
+# To start the service, navigate to the directory that contains the
+# `.bal` file, and execute the `bal run` command below.
+bal run websub_webhook_sample.bal
+time = 2021-03-15 15:43:00,198 level = INFO  module = ballerina/websub message = "HTTPS is recommended but using HTTP" 
+time = 2021-03-15 15:43:01,960 level = INFO  module = ballerina/websub message = "Subscription request considered successful for non 202 status code: 204" 
+time = 2021-03-15 15:43:01,962 level = INFO  module = ballerina/websub message = "Subscription Request successfully sent to Hub[https://api.github.com/hub], for Topic[https://github.com/<your-org>/<your-repository/events/push.json], with Callback [<your-callback-url>]. Awaiting intent verification." 
+[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+PingEvent received for webhook [287075824]
+Event sender [77491511]
+PushEvent received for [Hello-World]
+Last updated at 2021-03-15T15:43:01Z

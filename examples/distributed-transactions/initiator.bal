@@ -6,11 +6,11 @@ import ballerina/lang.'transaction as transactions;
 service / on new http:Listener(8080) {
     resource function get init(http:Caller conn, http:Request req) {
         http:Response res = new;
-        log:print("Initiating transaction...");
+        log:printInfo("Initiating transaction...");
         // When transaction statement starts, a distributed transaction context is created.
         transaction {
             // Print the information about the current transaction.
-            log:print("Started transaction: " +
+            log:printInfo("Started transaction: " +
                           transactions:info().toString());
 
             // When a participant is called, the transaction context is propagated and
@@ -23,7 +23,7 @@ service / on new http:Listener(8080) {
                 // either a `notify commit` or `notify abort` will be sent to the participants.
                 var commitResult = commit;
                 if commitResult is () {
-                    log:print("Transaction committed");
+                    log:printInfo("Transaction committed");
                 } else {
                     log:printError("Transaction failed");
                 }
@@ -38,9 +38,9 @@ service / on new http:Listener(8080) {
         var result = conn->respond(res);
         if (result is error) {
             log:printError("Could not send response back to client",
-            {"error": result.message()});
+            'error = result);
         } else {
-            log:print("Sent response back to client");
+            log:printInfo("Sent response back to client");
         }
     }
 }
@@ -59,7 +59,7 @@ transactional function callBusinessService() returns @tainted boolean {
     http:Request req = new;
     req.setJsonPayload(bizReq);
     var result = participantEP->post("", req);
-    log:print("Got response from bizservice");
+    log:printInfo("Got response from bizservice");
     if (result is http:Response) {
         return result.statusCode == http:STATUS_OK;
     } else {

@@ -52,7 +52,7 @@ public class OpenAPIDistributionArtifactCheck {
                 .resolve("cache")
                 .resolve("ballerina")
                 .resolve("openapi")
-                .resolve("2.0.7")
+                .resolve("2.0.8")
                 .resolve("bir");
 
         Path jarPath = TEST_DISTRIBUTION_PATH
@@ -61,7 +61,7 @@ public class OpenAPIDistributionArtifactCheck {
                 .resolve("cache")
                 .resolve("ballerina")
                 .resolve("openapi")
-                .resolve("2.0.7")
+                .resolve("2.0.8")
                 .resolve("java11");
 
         Path balaPath = TEST_DISTRIBUTION_PATH
@@ -70,7 +70,8 @@ public class OpenAPIDistributionArtifactCheck {
                 .resolve("bala")
                 .resolve("ballerina")
                 .resolve("openapi")
-                .resolve("2.0.7")
+                .resolve("2.0.8")
+                .resolve("any")
                 .resolve("platform")
                 .resolve("any");
 
@@ -92,6 +93,7 @@ public class OpenAPIDistributionArtifactCheck {
         Path docsPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
                 .resolve("docs")
+                .resolve("ballerina")
                 .resolve("openapi");
 
         Assert.assertTrue(Files.exists(birPath));

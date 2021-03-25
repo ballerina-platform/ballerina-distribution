@@ -51,7 +51,7 @@ public class DistributionArtifactCheckTest {
                 .resolve("repo")
                 .resolve("cache")
                 .resolve("ballerina")
-                .resolve("docker")
+                .resolve("cloud")
                 .resolve("1.0.0");
 
         Path breLibPath = TEST_DISTRIBUTION_PATH
@@ -62,15 +62,16 @@ public class DistributionArtifactCheckTest {
         Path bbePath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
                 .resolve("examples")
-                .resolve("docker-deployment");
+                .resolve("c2c-deployment");
 
         Path docsPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
                 .resolve("docs")
-                .resolve("docker");
+                .resolve("ballerina")
+                .resolve("cloud");
 
         Assert.assertTrue(Files.exists(cachePath));
-        Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "docker-extension-"));
+        Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "c2c-extension-"));
         Assert.assertTrue(Files.exists(bbePath));
         Assert.assertTrue(Files.exists(docsPath));
     }
@@ -98,6 +99,7 @@ public class DistributionArtifactCheckTest {
         Path docsPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
                 .resolve("docs")
+                .resolve("ballerinax")
                 .resolve("awslambda");
 
         Assert.assertTrue(Files.exists(cachePath));
@@ -129,12 +131,25 @@ public class DistributionArtifactCheckTest {
         Path docsPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
                 .resolve("docs")
+                .resolve("ballerinax")
                 .resolve("azure_functions");
 
         Assert.assertTrue(Files.exists(cachePath));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "azurefunctions-extension-"));
         Assert.assertTrue(Files.exists(bbePath));
         Assert.assertTrue(Files.exists(docsPath));
+    }
+
+    @Test()
+    public void c2cToolingExistsTest() {
+        Path c2cToolingLibPath = TEST_DISTRIBUTION_PATH
+                .resolve(DIST_NAME)
+                .resolve("lib")
+                .resolve("tools")
+                .resolve("lang-server")
+                .resolve("lib");
+
+        Assert.assertNotNull(TestUtils.findFileOrDirectory(c2cToolingLibPath, "c2c-tooling-"));
     }
 
     @AfterClass

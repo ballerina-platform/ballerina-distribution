@@ -7,20 +7,15 @@ public function main() {
         issuer: "ballerina",
         audience: "vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
         keyId: "NTAxZmMxNDMyZDg3MTU1ZGM0MzEzODJhZWI4NDNlZDU1OGFkNjFiMQ",
-        expTimeInSeconds: 3600,
+        expTime: 3600,
         signatureConfig: {
             config: {
-                keyStore: {
-                    path: "../resources/ballerinaKeystore.p12",
-                    password: "ballerina"
-                },
-                keyAlias: "ballerina",
-                keyPassword: "ballerina"
+                keyFile: "../resource/path/to/private.key"
             }
         }
     };
 
-    // Issues a JWT based on the provided header, payload, and keystore config.
+    // Issues a JWT based on the provided header, payload, and private key.
     string|jwt:Error jwt = jwt:issue(issuerConfig);
     if (jwt is string) {
         io:println("Issued JWT: ", jwt);
@@ -29,23 +24,17 @@ public function main() {
             jwt.message());
     }
 
-    // Defines the JWT validator configurations with truststore configurations.
+    // Defines the JWT validator configurations with certificate file configurations.
     jwt:ValidatorConfig validatorConfig1 = {
         issuer: "ballerina",
         audience: "vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
-        clockSkewInSeconds: 60,
+        clockSkew: 60,
         signatureConfig: {
-            trustStoreConfig: {
-                certAlias: "ballerina",
-                trustStore: {
-                    path: "../resources/ballerinaTruststore.p12",
-                    password: "ballerina"
-                }
-            }
+            certFile: "../resource/path/to/public.crt"
         }
     };
 
-    // Validates the created JWT. Signature is validated using the truststore.
+    // Validates the created JWT. Signature is validated using the public certificate.
     jwt:Payload|jwt:Error result = jwt:validate(checkpanic jwt,
                                                 validatorConfig1);
     if (result is jwt:Payload) {
@@ -59,16 +48,13 @@ public function main() {
     jwt:ValidatorConfig validatorConfig2 = {
         issuer: "ballerina",
         audience: "vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
-        clockSkewInSeconds: 60,
+        clockSkew: 60,
         signatureConfig: {
             jwksConfig: {
                 url: "https://localhost:20000/oauth2/jwks",
                 clientConfig: {
                     secureSocket: {
-                        trustStore: {
-                            path: "../resources/ballerinaTruststore.p12",
-                            password: "ballerina"
-                        }
+                        cert: "../resource/path/to/public.crt"
                     }
                 }
             }

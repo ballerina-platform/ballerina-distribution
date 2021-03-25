@@ -1,5 +1,4 @@
 import ballerina/http;
-import ballerina/log;
 
 // HTTP version is set to 2.0.
 http:Client http2serviceClientEP =
@@ -7,9 +6,9 @@ http:Client http2serviceClientEP =
 
 service /http11Service on new http:Listener(9090) {
 
-    resource function 'default .(http:Caller caller,
-                                     http:Request clientRequest) {
-        // Forward the [clientRequest](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request) to the `http2` service.
+    resource function 'default .(http:Request clientRequest)
+            returns http:Response {
+        // Forward the [clientRequest](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Request) to the `http2` service.
         var clientResponse = http2serviceClientEP->forward("/http2service",
                                                         clientRequest);
 
@@ -18,16 +17,13 @@ service /http11Service on new http:Listener(9090) {
             response = clientResponse;
         } else {
             // Handle the errors that are returned when invoking the
-            // [forward](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/HttpClient#forward) function.
+            // [forward](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/HttpClient#forward) function.
             response.statusCode = 500;
-            response.setPayload(<@untainted>(<error>clientResponse).message());
+            response.setPayload(<@untainted>clientResponse.message());
+
         }
         // Send the response back to the caller.
-        var result = caller->respond(<@untainted>response);
-        if (result is error) {
-           log:printError("Error occurred while sending the response",
-               err = result);
-        }
+        return response;
 
     }
 }
@@ -38,18 +34,11 @@ listener http:Listener http2serviceEP = new (7090,
 
 service /http2service on http2serviceEP {
 
-    resource function 'default .(http:Caller caller,
-                                    http:Request clientRequest) {
-        // Construct the response message.
-        http:Response response = new;
-        json msg = {"response": {"message": "response from http2 service"}};
-        response.setPayload(msg);
+    resource function 'default .() returns json {
+        // Construct the response payload.
+        json response = {"response":{"message":"response from http2 service"}};
 
         // Send the response back to the caller (http11Service).
-        var result = caller->respond(response);
-        if (result is error) {
-            log:printError("Error occurred while sending the response",
-                err = result);
-        }
+        return response;
     }
 }

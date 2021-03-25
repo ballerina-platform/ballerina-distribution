@@ -19,20 +19,20 @@ import ballerina/test;
 
 // Client endpoint configuration with SSL configurations.
 HelloWorldBlockingClient helloWorldBlockingEp = new("https://localhost:20004", {
-        secureSocket: {
-            trustStore: {
-                path: TRUSTSTORE_PATH,
-                password: "ballerina"
-            }
+    secureSocket: {
+        cert: {
+            path: TRUSTSTORE_PATH,
+            password: "ballerina"
         }
-    });
+    }
+});
 
 @test:Config {}
 function testSecuredUnaryService() {
     // Executes unary blocking secured call.
     var unionResp = helloWorldBlockingEp->hello("WSO2");
     if (unionResp is error) {
-        test:assertFail(io:sprintf(ERROR_MSG_FORMAT, unionResp.message()));
+        test:assertFail(string `Error from Connector: ${unionResp.message()}`);
     } else {
         string result;
         [result, _] = unionResp;

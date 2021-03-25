@@ -36,7 +36,7 @@ function initializeClients() returns sql:Error? {
         maxOpenConnections: 5,
         // Default max life time of a connection in the connection pool is
         // 1800 seconds (30 minutes).
-        maxConnectionLifeTimeInSeconds: 2000.0,
+        maxConnectionLifeTime: 2000.0,
         // Default minimum number of idle connections is 15.
         minIdleConnections: 5
 

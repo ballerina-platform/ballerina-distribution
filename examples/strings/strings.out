@@ -13,5 +13,6 @@ Trim: Ballerina Programming Language
 HasSuffix: true
 HasPrefix: true
 Contains: true
-Sprintf: Sam scored 90 for English and has an average of 71.50.
+String templates: Sam scored 90 for English and has an
+                  average of 71.5
 Member Access: L

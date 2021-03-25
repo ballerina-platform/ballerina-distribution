@@ -3,14 +3,11 @@ import ballerina/log;
 
 // This is a client endpoint configured to connect to the HTTPS service.
 // As this is a 1-way SSL connection, the client needs to provide
-// `trustStore` file `path` and its `password`.
-// [secureSocket](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/ClientSecureSocket) record provides the SSL related configurations.
+// `cert` file.
+// [secureSocket](https://docs.central.ballerina.io/ballerina/http/latest/http/records/ClientSecureSocket) record provides the SSL related configurations.
 http:ClientConfiguration clientEPConfig = {
     secureSocket: {
-        trustStore: {
-            path: "../resources/ballerinaTruststore.p12",
-            password: "ballerina"
-        }
+        cert: "../resource/path/to/public.crt"
     }
 };
 
@@ -22,9 +19,9 @@ public function main() {
     var payload = clientEP->get("/helloWorld/hello", targetType = string);
     if (payload is string) {
         // Log the retrieved text payload.
-        log:print(payload);
+        log:printInfo(payload);
     } else {
         // If an error occurs when getting the response or binding payload, log the error.
-        log:printError((<error>payload).message());
+        log:printError(payload.message());
     }
 }

@@ -1,0 +1,6 @@
+# Before testing this sample, first start a sample service secured with Basic Auth.
+# To run this sample, navigate to the directory that contains the `.bal` file,
+# and execute the `bal run` command below.
+# (You may need to change the trusted certificate file path.)
+bal run http_client_with_basic_auth.bal
+time = 2021-01-20 20:04:13,261 level = INFO  module = "" message = "200"

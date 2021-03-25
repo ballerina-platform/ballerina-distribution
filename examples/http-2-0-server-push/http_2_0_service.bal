@@ -8,14 +8,14 @@ listener http:Listener http2ServiceEP = new (7090,
 
 service /http2Service on http2ServiceEP {
 
-    resource function 'default .(http:Caller caller, http:Request req) {
+    resource function 'default .(http:Caller caller) {
 
-        // [Send a Push Promise](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Caller#promise).
+        // [Send a Push Promise](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Caller#promise).
         http:PushPromise promise1 = new (path = "/resource1", method = "GET");
         var promiseResponse1 = caller->promise(promise1);
         if (promiseResponse1 is error) {
             log:printError("Error occurred while sending the promise1",
-                err = promiseResponse1);
+                'error = promiseResponse1);
         }
 
         // Send another Push Promise.
@@ -23,7 +23,7 @@ service /http2Service on http2ServiceEP {
         var promiseResponse2 = caller->promise(promise2);
         if (promiseResponse2 is error) {
             log:printError("Error occurred while sending the promise2",
-                err = promiseResponse2);
+                'error = promiseResponse2);
         }
 
         // Send one more Push Promise.
@@ -31,7 +31,7 @@ service /http2Service on http2ServiceEP {
         var promiseResponse3 = caller->promise(promise3);
         if (promiseResponse3 is error) {
             log:printError("Error occurred while sending the promise3",
-                err = promiseResponse3);
+                'error = promiseResponse3);
         }
 
         // Construct the requested resource.
@@ -43,7 +43,7 @@ service /http2Service on http2ServiceEP {
         var response = caller->respond(res);
         if (response is error) {
             log:printError("Error occurred while sending the response",
-                err = response);
+                'error = response);
         }
 
         // Construct promised resource1.
@@ -51,11 +51,11 @@ service /http2Service on http2ServiceEP {
         msg = {"push": {"name": "resource1"}};
         push1.setPayload(msg);
 
-        // [Push promised resource1](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/clients/Caller#pushPromisedResponse).
+        // [Push promised resource1](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Caller#pushPromisedResponse).
         var pushResponse1 = caller->pushPromisedResponse(promise1, push1);
         if (pushResponse1 is error) {
             log:printError("Error occurred while sending the promised " +
-                           "response1", err = pushResponse1);
+                           "response1", 'error = pushResponse1);
         }
 
         // Construct promised resource2.
@@ -67,7 +67,7 @@ service /http2Service on http2ServiceEP {
         var pushResponse2 = caller->pushPromisedResponse(promise2, push2);
         if (pushResponse2 is error) {
             log:printError("Error occurred while sending the promised " +
-                            "response2", err = pushResponse2);
+                            "response2", 'error = pushResponse2);
         }
 
         // Construct promised resource3.
@@ -79,7 +79,7 @@ service /http2Service on http2ServiceEP {
         var pushResponse3 = caller->pushPromisedResponse(promise3, push3);
         if (pushResponse3 is error) {
             log:printError("Error occurred while sending the promised " +
-                            "response3", err = pushResponse3);
+                            "response3", 'error = pushResponse3);
         }
     }
 }

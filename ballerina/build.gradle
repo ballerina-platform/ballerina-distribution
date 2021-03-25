@@ -97,22 +97,6 @@ task unpackAzFunctionsExamples(type: Copy) {
     }
 }
 
-task unpackDockerAnnotations(type: Copy) {
-    group = "unpack_dependencies"
-    configurations.dockerAnnotations.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        from zipTree(artifact.getFile())
-        into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
-    }
-}
-
-task unpackDockerExamples(type: Copy) {
-    group = "unpack_dependencies"
-    configurations.dockerExamples.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        from zipTree(artifact.getFile())
-        into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
-    }
-}
-
 task unpackStdLibs() {
     doLast {
         configurations.ballerinaStdLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
@@ -127,6 +111,17 @@ task unpackStdLibs() {
 task unpackC2cLibs() {
     doLast {
         configurations.ballerinaC2cLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+            copy {
+                from project.zipTree(artifact.getFile())
+                into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
+            }
+        }
+    }
+}
+
+task unpackC2cTooling() {
+    doLast {
+        configurations.ballerinaC2cTooling.resolvedConfiguration.resolvedArtifacts.each { artifact ->
             copy {
                 from project.zipTree(artifact.getFile())
                 into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
@@ -154,12 +149,20 @@ task unpackObservabilityExtensions() {
     }
 }
 
+task downloadBalCommand(type: Download) {
+    group = "unpack_dependencies"
+    def commandBaseURL = "https://github.com/ballerina-platform/ballerina-update-tool/releases/download/v${ballerinaCommandVersion}"
+    src([
+            "${commandBaseURL}/ballerina-command-${ballerinaCommandVersion}.zip"
+    ])
+    onlyIfModified true
+    dest "${buildDir}/target/"
+}
+
 task unpackBalCommand(type: Copy) {
     group = "unpack_dependencies"
-    configurations.balCommand.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        from zipTree(artifact.getFile())
-        into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
-    }
+    from zipTree { "${buildDir}/target/ballerina-command-${ballerinaCommandVersion}.zip" }
+    into new File("${buildDir}/target/")
 }
 
 task extractJreForLinux(type: Copy) {
@@ -188,26 +191,11 @@ task copyOtherRepos(type: Copy) {
     def ballerinaDist = "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
     into ballerinaDist
 
-    into("docs") {
-        from "build/target/extracted-distributions/docker-extension-annotations-zip/docs"
-    }
-
-    into("docs") {
-        from "build/target/extracted-distributions/awslambda-extension-bala-zip/docs"
-    }
-
-    into("docs") {
-        from "build/target/extracted-distributions/azurefunctions-extension-bala-zip/docs"
-    }
-
     /* Standard Libraries */
     configurations.ballerinaStdLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
         from("${artifactExtractedPath}/libs") {
             into "bre/lib/"
-        }
-        from("${artifactExtractedPath}/docs") {
-            into "docs/"
         }
         from("${artifactExtractedPath}/bala") {
             into "repo/bala"
@@ -223,9 +211,6 @@ task copyOtherRepos(type: Copy) {
         from("${artifactExtractedPath}/libs") {
             into "bre/lib/"
         }
-        from("${artifactExtractedPath}/docs") {
-            into "docs/"
-        }
         from("${artifactExtractedPath}/bala") {
             into "repo/bala"
         }
@@ -234,14 +219,19 @@ task copyOtherRepos(type: Copy) {
         }
     }
 
+    /* C2C Tooling */
+    configurations.ballerinaC2cTooling.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+        def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
+        from("${artifactExtractedPath}") {
+            into "lib/tools/lang-server/lib/"
+        }
+    }
+
     /* Observability extensions */
     configurations.ballerinaObserveExtensions.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
         from("${artifactExtractedPath}/libs") {
             into "bre/lib/"
-        }
-        from("${artifactExtractedPath}/docs") {
-            into "docs/"
         }
         from("${artifactExtractedPath}/bala") {
             into "repo/bala"
@@ -255,7 +245,7 @@ task copyOtherRepos(type: Copy) {
 task buildDistRepo(type: JavaExec) {
     classpath = project.configurations.repoBuilder
     main = 'io.ballerina.dist.DistRepoBuilder'
-    args "$buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/repo"
+    args "$buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
 }
 
 task copyDevToolsCoverageReport(type: Copy) {
@@ -269,8 +259,8 @@ task copyDevToolsDocUi(type: Copy) {
 }
 
 task filterApiDocs(type: Delete) {
-    delete "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs/lang.__internal"
-    delete "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs/lang.annotations"
+    delete "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs/ballerina/lang.__internal"
+    delete "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs/ballerina/lang.annotations"
 }
 
 task combineDocs(type: Exec) {
@@ -376,17 +366,17 @@ task packageDistZip(type: Zip) {
         filter(ReplaceTokens, tokens: [uuid: installerVersion])
     }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/bin/bal"
+        from "build/target/ballerina-command-${ballerinaCommandVersion}/bin/bal"
         fileMode = 0775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/bin/bal.bat"
+        from "build/target/ballerina-command-${ballerinaCommandVersion}/bin/bal.bat"
         fileMode = 0775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
     into("${parentDir}/lib") {
-        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/lib/ballerina-command-${ballerinaCommandVersion}.jar"
+        from "build/target/ballerina-command-${ballerinaCommandVersion}/lib/ballerina-command-${ballerinaCommandVersion}.jar"
         fileMode = 0775
     }
 
@@ -455,12 +445,12 @@ task packageDistLinux(type: Zip) {
         filter(ReplaceTokens, tokens: [uuid: installerVersion])
     }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/bin/bal"
+        from "build/target/ballerina-command-${ballerinaCommandVersion}/bin/bal"
         fileMode = 775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
     into("${parentDir}/lib") {
-        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/lib/ballerina-command-${ballerinaCommandVersion}.jar"
+        from "build/target/ballerina-command-${ballerinaCommandVersion}/lib/ballerina-command-${ballerinaCommandVersion}.jar"
         fileMode = 0775
     }
 
@@ -524,12 +514,12 @@ task packageDistMac(type: Zip) {
         filter(ReplaceTokens, tokens: [uuid: installerVersion])
     }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/bin/bal"
+        from "build/target/ballerina-command-${ballerinaCommandVersion}/bin/bal"
         fileMode = 775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
     into("${parentDir}/lib") {
-        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}" +
+        from "build/target/ballerina-command-${ballerinaCommandVersion}" +
                 "/lib/ballerina-command-${ballerinaCommandVersion}.jar"
         fileMode = 0775
     }
@@ -594,12 +584,12 @@ task packageDistWindows(type: Zip) {
         filter(ReplaceTokens, tokens: [uuid: installerVersion])
     }
     into("${parentDir}/bin") {
-        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/bin/bal.bat"
+        from "build/target/ballerina-command-${ballerinaCommandVersion}/bin/bal.bat"
         fileMode = 775
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
     into("${parentDir}/lib") {
-        from "build/target/extracted-distributions/ballerina-command-zip/ballerina-command-${ballerinaCommandVersion}/lib/ballerina-command-${ballerinaCommandVersion}.jar"
+        from "build/target/ballerina-command-${ballerinaCommandVersion}/lib/ballerina-command-${ballerinaCommandVersion}.jar"
         fileMode = 0775
     }
 
@@ -642,8 +632,6 @@ task testExamples() {
     // The following BBEs will not be verified by compiling/running.
     def buildIgnoreList = [
             'proto-to-ballerina',
-            'websub-hub-client-sample',
-            'websub-remote-hub-sample',
             'docker-deployment',
             'c2c-deployment',
             'aws-lambda-deployment',
@@ -678,18 +666,21 @@ task testExamples() {
             'tracing',
             'openapi-to-ballerina',
             'taint-checking', // Should not compile
-            'secured-client-with-basic-auth',
-            'secured-client-with-bearer-token-auth',
-            'secured-client-with-self-signed-jwt-auth',
-            'secured-client-with-oauth2-client-credentials-grant-type',
-            'secured-client-with-oauth2-password-grant-type',
-            'secured-client-with-oauth2-direct-token-type',
+            'http-client-with-basic-auth',
+            'http-client-with-bearer-token-auth',
+            'http-client-with-self-signed-jwt-auth',
+            'http-client-with-oauth2-client-credentials-grant-type',
+            'http-client-with-oauth2-password-grant-type',
+            'http-client-with-oauth2-refresh-token-grant-type',
 
             // Disabling due to pending migration for service typing
             'websocket-cookie',
             'websocket-retry',
             'websocket-failover',
             'http-filters',
+
+            // Disabling sice we could not include credentials in the BBE
+            'websub-webhook-sample',
 
             // Disabling temporarily (https://github.com/ballerina-platform/ballerina-distribution/issues/1242)
             "ballerina-to-openapi",
@@ -718,6 +709,8 @@ task testExamples() {
             'rabbitmq-consumer-with-qos-settings',
             'rabbitmq-transaction-producer',
             'rabbitmq-transaction-consumer',
+
+            // Disabling since JDBC & MySQL modules are removed from the distribution
             'jdbc-parameterized-query',
             'jdbc-execute-operation',
             'jdbc-query-operation',
@@ -731,9 +724,9 @@ task testExamples() {
             'mysql-batch-execute-operation',
             'mysql-parameterized-query',
             'mysql-call-stored-procedures',
-            'local-transactions',  // Xid varies
-            'xa-transactions', // Consists of the transaction coordinator start log
-            'retry-transactions', // Xid varies
+            'local-transactions',
+            'xa-transactions',
+            'retry-transactions',
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
@@ -750,8 +743,6 @@ task testExamples() {
             'checkpanic', // Has user name in output
             'deprecation', // Contains user input
             'foreach', // Has tabs for formatting in input
-            'websub-service-integration-sample',
-            'websub-internal-hub-sample',
             'grpc-server-streaming',
             'http-compression',
             'http-redirects',
@@ -783,19 +774,20 @@ task testExamples() {
             'udp-listener',
             'tcp-listener',
             'tcp-client',
+            'tcp-transport-security',
             'ballerina-to-openapi',
             'client-generation',
             'directory-listener',
             'file', // Absolute path varies
             'filepath', // Depends on OS
-            'time',
+            'time', // Due to a current timestamp
             'locks', // Output is inconsistent between runs
             'crypto', // Output with line breaks cannot be compared
             'jwt-issue-validate', // Output depends on time
-            'secured-service-with-basic-auth-file-user-store', // Log output depends on time
-            'secured-service-with-basic-auth-ldap-user-store', // Log output depends on time
-            'secured-service-with-jwt-auth', // Log output depends on time
-            'secured-service-with-oauth2', // Log output depends on time
+            'http-service-with-basic-auth-file-user-store', // Log output depends on time
+            'http-service-with-basic-auth-ldap-user-store', // Log output depends on time
+            'http-service-with-jwt-auth', // Log output depends on time
+            'http-service-with-oauth2', // Log output depends on time
             'send-email',
             'receive-email-using-client',
             'receive-email-using-listener',
@@ -1296,8 +1288,9 @@ unpackDevTools.dependsOn unpackJballerinaTools
 unpackStdLibs.dependsOn unpackDevTools
 unpackC2cLibs.dependsOn unpackStdLibs
 unpackC2cExamples.dependsOn unpackC2cLibs
-unpackBalCommand.dependsOn unpackObservabilityExtensions
-unpackBalCommand.dependsOn unpackC2cExamples
+unpackC2cTooling.dependsOn unpackC2cExamples
+downloadBalCommand.dependsOn unpackObservabilityExtensions
+downloadBalCommand.dependsOn unpackC2cTooling
 
 /* Extract JRE */
 extractJreForLinux.dependsOn unpackBalCommand
@@ -1307,9 +1300,10 @@ extractJreForWindows.dependsOn extractJreForMac
 copyOtherRepos.dependsOn extractJreForWindows
 copyDevToolsCoverageReport.dependsOn copyOtherRepos
 copyDevToolsDocUi.dependsOn copyDevToolsCoverageReport
-filterApiDocs.dependsOn copyDevToolsDocUi
+buildDistRepo.dependsOn copyDevToolsDocUi
+filterApiDocs.dependsOn buildDistRepo
 combineDocs.dependsOn filterApiDocs
-buildDistRepo.dependsOn combineDocs
+
 /* Package Distributions */
 packageDist.dependsOn buildDistRepo
 packageDist.dependsOn combineDocs
@@ -1320,6 +1314,7 @@ packageDistWindows.dependsOn packageDistMac
 unzipDistForTests.dependsOn packageDistZip
 unpackStdLibs.dependsOn unpackBallerinaJre
 unpackStdLibs.dependsOn unpackJballerinaTools
+unpackBalCommand.dependsOn downloadBalCommand
 
 testExamples.dependsOn unzipDistForTests
 

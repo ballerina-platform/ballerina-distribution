@@ -8,8 +8,8 @@
     "path": "email"
   },
   {
-    "name": "Encoding standard library ",
-    "path": "encoding"
+    "name": "URL standard library ",
+    "path": "url"
   },
   {
     "name": "Crypto standard library ",
@@ -26,10 +26,6 @@
   {
     "name": "OAuth2 standard library ",
     "path": "oauth2"
-  },
-  {
-    "name": "LDAP standard library ",
-    "path": "ldap"
   },
   {
     "name": "Task standard library ",

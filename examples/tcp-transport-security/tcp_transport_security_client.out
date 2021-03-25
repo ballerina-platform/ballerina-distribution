@@ -1,0 +1,5 @@
+# To start the service and run the main function, navigate to the directory that contains the
+# `.bal` file and execute the `bal run` command below along with the Ballerina home path as a config.
+# (You may need to change the trusted certificate file path.)
+bal run tcp_transport_security_client.bal
+Hello Ballerina Echo from secure client

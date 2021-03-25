@@ -19,7 +19,7 @@ import ballerina/test;
 
 listener http:Listener authListener = new(25001, {
     secureSocket: {
-        keyStore: {
+        key: {
             path: "tests/resources/keystore/ballerinaKeystore.p12",
             password: "ballerina"
         }
@@ -51,8 +51,8 @@ listener http:Listener authListener = new(25001, {
                 membershipAttribute: "member",
                 userRolesCacheEnabled: true,
                 connectionPoolingEnabled: false,
-                connectionTimeoutInMillis: 5000,
-                readTimeoutInMillis: 60000
+                connectionTimeout: 5000,
+                readTimeout: 60000
             },
             scopes: ["Admin"]
         }
@@ -68,7 +68,7 @@ service /foo on authListener {
 public function testAuthModuleFileUserStore1() {
     http:Client clientEP = checkpanic new("https://localhost:25001", {
         secureSocket: {
-           trustStore: {
+           cert: {
                path: "tests/resources/keystore/ballerinaTruststore.p12",
                password: "ballerina"
            }
@@ -90,7 +90,7 @@ public function testAuthModuleFileUserStore1() {
 public function testAuthModuleFileUserStore2() {
     http:Client clientEP = checkpanic new("https://localhost:25001", {
         secureSocket: {
-           trustStore: {
+           cert: {
                path: "tests/resources/keystore/ballerinaTruststore.p12",
                password: "ballerina"
            }
@@ -112,7 +112,7 @@ public function testAuthModuleFileUserStore2() {
 public function testAuthModuleFileUserStore3() {
     http:Client clientEP = checkpanic new("https://localhost:25001", {
         secureSocket: {
-           trustStore: {
+           cert: {
                path: "tests/resources/keystore/ballerinaTruststore.p12",
                password: "ballerina"
            }
@@ -134,7 +134,7 @@ public function testAuthModuleFileUserStore3() {
 public function testAuthModuleLdapUserStore1() {
     http:Client clientEP = checkpanic new("https://localhost:25001", {
         secureSocket: {
-           trustStore: {
+           cert: {
                path: "tests/resources/keystore/ballerinaTruststore.p12",
                password: "ballerina"
            }
@@ -156,7 +156,7 @@ public function testAuthModuleLdapUserStore1() {
 public function testAuthModuleLdapUserStore2() {
     http:Client clientEP = checkpanic new("https://localhost:25001", {
         secureSocket: {
-           trustStore: {
+           cert: {
                path: "tests/resources/keystore/ballerinaTruststore.p12",
                password: "ballerina"
            }
@@ -178,7 +178,7 @@ public function testAuthModuleLdapUserStore2() {
 public function testAuthModuleLdapUserStore3() {
     http:Client clientEP = checkpanic new("https://localhost:25001", {
         secureSocket: {
-           trustStore: {
+           cert: {
                path: "tests/resources/keystore/ballerinaTruststore.p12",
                password: "ballerina"
            }

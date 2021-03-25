@@ -1,11 +1,11 @@
 import ballerina/http;
-import ballerina/log;
 
 listener http:Listener serverEP = new (9095);
 
 service /cookieDemo on serverEP {
 
-    resource function post login(http:Caller caller, http:Request req) {
+    resource function post login(http:Request req)
+            returns http:Response|http:BadRequest {
         // Retrieve the JSON payload from the request as it
         // contains the login details of a user.
         json|error details = req.getJsonPayload();
@@ -19,7 +19,7 @@ service /cookieDemo on serverEP {
                 // Check the password value.
                 if (password == "p@ssw0rd") {
 
-                    // [Create a new cookie](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Cookie) by setting `name` as the `username`
+                    // [Create a new cookie](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Cookie) by setting `name` as the `username`
                     // and `value` as the logged-in user's name.
                     http:Cookie cookie = new("username", name.toString());
 
@@ -29,23 +29,21 @@ service /cookieDemo on serverEP {
 
                     http:Response response = new;
 
-                    // [Add the created cookie to the response](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Response#addCookie).
+                    // [Add the created cookie to the response](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Response#addCookie).
                     response.addCookie(cookie);
 
                     // Set a message payload to inform that the login has
                     // been succeeded.
                     response.setTextPayload("Login succeeded");
-                    var result = caller->respond(response);
-                    if (result is error) {
-                        log:printError("Failed to respond", err = result);
-                    }
+                    return response;
                 }
             }
         }
+        return {body: "Invalid request payload"};
     }
 
-    resource function get welcome(http:Caller caller, http:Request req) {
-        // [Retrieve cookies from the request](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/classes/Request#getCookies).
+    resource function get welcome(http:Request req) returns string {
+        // [Retrieve cookies from the request](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Request#getCookies).
         http:Cookie[] cookies = req.getCookies();
 
         // Get the cookie value of the `username`.
@@ -57,16 +55,16 @@ service /cookieDemo on serverEP {
         if (usernameCookie.length() > 0) {
             string? user = usernameCookie[0].value;
             if (user is string) {
-            // Respond with the username added to the welcome message.
-            var result = caller->respond("Welcome back " + <@untainted> user);
+                // Respond with the username added to the welcome message.
+                return "Welcome back " + <@untainted> user;
 
             } else {
                 // If the user is `nil`, send a login message.
-                var result = caller->respond("Please login");
+                return "Please login";
             }
         } else {
             // If the `username` cookie is not presented, send a login message.
-            var result = caller->respond("Please login");
+            return "Please login";
         }
     }
 }

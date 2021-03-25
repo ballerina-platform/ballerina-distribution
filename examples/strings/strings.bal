@@ -64,18 +64,20 @@ public function main() {
     boolean contains = statement.includes("Town", 7);
     io:println("Contains: ", contains);
 
-    // Format a `string` according to the given format arguments.
+    // Format a `string` according to the given format arguments
+    // using string templates.
     string name = "Sam";
     int marks = 90;
     string[] subjects = ["English", "Science"];
     float average = 71.5;
-    string s8 = io:sprintf("%s scored %d for %s and has an average of %.2f.",
-     name, marks, subjects[0], average);
-    io:println("Sprintf: ", s8);
+    string s8 = string `${name} scored ${marks} for ${subjects[0]} and has an
+                  average of ${average}`;
+    io:println("String templates: ", s8);
 
     // Member access is allowed with strings to access individual characters
     // of a string. Member access panics if the integer index is out of range.
     string country = "Sri Lanka";
     string c = country[4];
     io:println("Member Access: ", c);
+
 }

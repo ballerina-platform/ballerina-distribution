@@ -16,7 +16,6 @@
 
 import ballerina/log;
 import ballerina/udp;
-import ballerina/io;
 
 const int PORT1 = 9001;
 
@@ -27,21 +26,23 @@ map<string> QuestionBank = {
 
 service on new udp:Listener(PORT1) {
 
-    remote function onDatagram(udp:Datagram datagram, udp:Caller caller) returns udp:Error? {
-        string|error? dataString = getString(datagram.data);
-        io:println("Received data: ", dataString);
-        if (dataString is string && QuestionBank.hasKey(dataString)) {
-            string? response = QuestionBank[dataString];
-            if (response is string) {
-                udp:Error? res = caller->sendDatagram(prepareDatagram(response, <string>caller.remoteHost,
-                    <int>caller.remotePort));
-            }
+ remote function onDatagram(readonly & udp:Datagram datagram, udp:Caller caller ) 
+        returns udp:Error|readonly & udp:Datagram? {
+            string|error request = string:fromBytes(datagram.data);
+        if (request is string && QuestionBank.hasKey(request)) {
+            udp:Datagram|error response = datagram.cloneWithType(udp:Datagram);
+            if (response is error) {
+                return datagram;
+            } else {
+                response.data = QuestionBank.get(request).toBytes();
+                check caller->sendDatagram(response);
+            }   
+        } else {
+            return datagram;
         }
-        udp:Error? res = caller->sendDatagram(prepareDatagram("Sorry,I Can’t help you with that",
-        <string>caller.remoteHost, <int>caller.remotePort));
     }
 
-    remote function onError(readonly & udp:Error err) {
-        log:print(err.message());
+    remote function onError(udp:Error err) {
+        log:printError("An error occurred", 'error = err);
     }
 }

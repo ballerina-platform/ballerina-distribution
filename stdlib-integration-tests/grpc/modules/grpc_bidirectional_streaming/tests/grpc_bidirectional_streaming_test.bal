@@ -31,7 +31,7 @@ function testBidiStreamingService() {
     // Executes unary non-blocking call registering server message listener.
     var res = chatEp->chat(MessageListener);
     if (res is grpc:Error) {
-        test:assertFail(io:sprintf(ERROR_MSG_FORMAT, res.message()));
+        test:assertFail(string `Error from Connector: ${res.message()}`);
         return;
     } else {
         io:println("Initialized connection sucessfully.");
@@ -42,7 +42,7 @@ function testBidiStreamingService() {
     ChatMessage mes = { name: "Sam", message: "Hi" };
     grpc:Error? connErr = ep->send(mes);
     if (connErr is grpc:Error) {
-        test:assertFail(io:sprintf(ERROR_MSG_FORMAT, connErr.message()));
+        test:assertFail(string `Error from Connector: ${connErr.message()}`);
     }
 
     int waitCount = 0;
@@ -72,7 +72,7 @@ service object{} MessageListener = service object {
 
     // Resource registered to receive server error messages.
     function onError(error err) {
-        test:assertFail(io:sprintf(ERROR_MSG_FORMAT, err.message()));
+        test:assertFail(string `Error from Connector: ${err.message()}`);
         received = true;
     }
 

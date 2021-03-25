@@ -151,14 +151,16 @@ public class CentralTestUtils {
     }
 
     /**
-     * Get generate executable log.
+     * Get generate bala log.
      *
-     * @param pkgName package name
-     * @param version package version
-     * @return generate executable log
+     * @param org      org name
+     * @param pkgName  package name
+     * @param platform platform name
+     * @param version  package version
+     * @return generate bala log
      */
-    static String getGenerateExecutableLog(String pkgName, String version) {
-        return "Generating executable\n" + "\ttarget/bin/" + pkgName + "-" + version + ".jar";
+    static String getGenerateBalaLog(String org, String pkgName, String platform, String version) {
+        return "Creating bala\n" + "\ttarget/bala/" + org + "-" + pkgName + "-" + platform + "-" + version + ".bala";
     }
 
     /**
@@ -177,10 +179,24 @@ public class CentralTestUtils {
      *
      * @param projectPath project path
      * @param pkgName     package name
-     * @param version     package version
      * @return executable jar path
      */
-    static Path getExecutableJarPath(Path projectPath, String pkgName, String version) {
-        return projectPath.resolve("target").resolve("bin").resolve(pkgName + "-" + version + ".jar");
+    static Path getExecutableJarPath(Path projectPath, String pkgName) {
+        return projectPath.resolve("target").resolve("bin").resolve(pkgName + ".jar");
+    }
+
+    /**
+     * Get executable jar path.
+     *
+     * @param projectPath project path
+     * @param org         org name
+     * @param pkgName     package name
+     * @param platform    platform name
+     * @param version     package version
+     * @return bala path
+     */
+    static Path getBalaPath(Path projectPath, String org, String pkgName, String platform, String version) {
+        return projectPath.resolve("target").resolve("bala")
+                .resolve(org + "-" + pkgName + "-" + platform + "-" + version + ".bala");
     }
 }

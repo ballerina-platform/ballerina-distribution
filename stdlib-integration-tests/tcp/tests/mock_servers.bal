@@ -20,6 +20,10 @@ import ballerina/tcp;
 const int PORT1 = 8809;
 const int PORT2 = 8023;
 const int PORT3 = 8639;
+const int PORT4 = 8475;
+
+string keyPath = "tests/resources/private.key";
+string certPath = "tests/resources/public.crt";
 
 listener tcp:Listener echoServer = new tcp:Listener(PORT1);
 listener tcp:Listener discardServer = new tcp:Listener(PORT2);
@@ -27,27 +31,24 @@ listener tcp:Listener closeServer = new tcp:Listener(PORT3);
 
 service on echoServer {
 
-    remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService {
+    isolated remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService {
         io:println("Client connected to echoServer: ", caller.remotePort);
-        return new EchoService(caller);
+        return new EchoService();
     }
 }
 
 service class EchoService {
-    tcp:Caller caller;
 
-    public function init(tcp:Caller c) {self.caller = c;}
-
-    remote function onBytes(readonly & byte[] data) returns (readonly & byte[])|tcp:Error? {
-        io:println("Echo: ", getString(data));
-        return data;
+    remote function onBytes(tcp:Caller caller, readonly & byte[] data) returns tcp:Error? {
+        io:println("Echo: ", 'string:fromBytes(data));
+        check caller->writeBytes(data);
     }
 
-    remote function onError(readonly & tcp:Error err) returns tcp:Error? {
+    isolated remote function onError(tcp:Error err) returns tcp:Error? {
         io:println(err.message());
     }
 
-    remote function onClose() returns tcp:Error? {
+    isolated remote function onClose() returns tcp:Error? {
         io:println("invoke on close");
     }
 }
@@ -55,40 +56,54 @@ service class EchoService {
 
 service on discardServer {
 
-    remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService {
+    isolated remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService {
         io:println("Client connected to discardServer: ", caller.remotePort);
-        return new DiscardService(caller);
+        return new DiscardService();
     }
 }
 
 service class DiscardService {
-    tcp:Caller caller;
-
-    public function init(tcp:Caller c) {self.caller = c;}
 
     remote function onBytes(readonly & byte[] data) returns tcp:Error? {
         // read and discard the message
-        io:println("Discard: ", getString(data));
+        io:println("Discard: ", 'string:fromBytes(data));
     }
-
-    remote function onError(readonly & tcp:Error err) returns tcp:Error? {
-        io:println(err.message());
-    }
-
-    remote function onClose() returns tcp:Error? {}
 }
 
 service on closeServer {
-    remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService|tcp:Error {
+    isolated remote function onConnect(tcp:Caller caller) returns tcp:Error? {
         io:println("Client connected to closeServer: ", caller.remotePort);
         check caller->close();
-        return new EchoService(caller);
     }
 }
 
-service class closeService {
-    tcp:Caller caller;
+service on new tcp:Listener(PORT4, secureSocket = {
+    key: {
+        certFile: certPath,
+        keyFile: keyPath
+    },
+    protocol: {
+        name: tcp:TLS,
+        versions: ["TLSv1.2", "TLSv1.1"]
+    },
+    ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"],
+    handshakeTimeout: 10
+}, localHost = "localhost") {
 
-    public function init(tcp:Caller c) {self.caller = c;}
+    isolated remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService {
+        io:println("Client connected to secureEchoServer: ", caller.remotePort);
+        return new SecureEchoService();
+    }
+}
 
+service class SecureEchoService {
+
+    remote function onBytes(readonly & byte[] data) returns readonly & byte[] {
+        io:println("Echo: ", 'string:fromBytes(data));
+        return data;
+    }
+
+    isolated remote function onError(tcp:Error err) returns tcp:Error? {
+        io:println(err.message());
+    }
 }

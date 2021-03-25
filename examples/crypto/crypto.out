@@ -1,8 +1,6 @@
 # To run this sample, navigate to the directory that contains the `.bal` file,
 # and execute the `bal run` command below.
-# (You may need to change the keystore path, a sample keystore file is
-# available in the distribution.
-# The file path is <ballerina.home>/examples/resources/ballerinaKeystore.p12)
+# (You may need to change the keystore/truststore path.)
 bal run crypto.bal
 Hex encoded hash with MD5: 0605402ee16d8e96511a58ff105bc24a
 Base64 encoded hash with SHA1: /8fwbGIevBvv2Nl3gEL9DtWas+Q=

@@ -7,7 +7,7 @@ function hash() returns error? {
     string input = "Hello Ballerina!";
     byte[] inputArr = input.toBytes();
 
-    // Hashing input value using [MD5 hashing algorithm](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/crypto/latest/crypto/functions#hashMd5), and printing hash value using Hex encoding.
+    // Hashing input value using [MD5 hashing algorithm](https://docs.central.ballerina.io/ballerina/crypto/latest/crypto/functions#hashMd5), and printing hash value using Hex encoding.
     byte[] output = crypto:hashMd5(inputArr);
     io:println("Hex encoded hash with MD5: " + output.toBase16());
 
@@ -63,31 +63,31 @@ function hmac() returns error? {
 
 function decodeKeys() returns [crypto:PrivateKey, crypto:PublicKey]|error {
     // Obtaining reference to a RSA private key by a key file.
-    string keyFile = "../resources/private.key";
+    string keyFile = "../resource/path/to/private.key";
     crypto:PrivateKey privateKey =
         check crypto:decodeRsaPrivateKeyFromKeyFile(keyFile);
 
     // Obtaining reference to a RSA private key by a encrypted key file.
-    string encryptedKeyFile = "../resources/encrypted-private.key";
+    string encryptedKeyFile = "../resource/path/to/encryptedPrivate.key";
     privateKey = check crypto:decodeRsaPrivateKeyFromKeyFile(keyFile,
                                                              "ballerina");
 
     // Obtaining reference to a RSA private key stored within a PKCS#12 or PFX format archive file.
     crypto:KeyStore keyStore = {
-        path: "../resources/ballerinaKeystore.p12",
+        path: "../resource/path/to/ballerinaKeystore.p12",
         password: "ballerina"
     };
     privateKey = check crypto:decodeRsaPrivateKeyFromKeyStore(keyStore,
                                                    "ballerina", "ballerina");
 
     // Obtaining reference to a RSA public key by a cert file.
-    string certFile = "../resources/public.crt";
+    string certFile = "../resource/path/to/public.crt";
     crypto:PublicKey publicKey =
         check crypto:decodeRsaPublicKeyFromCertFile(certFile);
 
     // Obtaining reference to a RSA public key stored within a PKCS#12 or PFX format archive file.
     crypto:TrustStore trustStore = {
-        path: "../resources/ballerinaTruststore.p12",
+        path: "../resource/path/to/ballerinaTruststore.p12",
         password: "ballerina"
     };
     publicKey = check crypto:decodeRsaPublicKeyFromTrustStore(trustStore,

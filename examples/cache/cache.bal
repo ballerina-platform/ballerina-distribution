@@ -11,8 +11,8 @@ public function main() returns error? {
     cache:Cache cache = new({
         capacity: 10,
         evictionFactor: 0.2,
-        defaultMaxAgeInSeconds: 2,
-        cleanupIntervalInSeconds: 3
+        defaultMaxAge: 2,
+        cleanupInterval: 3
     });
 
     // Adds a new entry to the cache.
