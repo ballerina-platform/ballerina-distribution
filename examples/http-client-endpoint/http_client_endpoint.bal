@@ -21,9 +21,6 @@ public function main() {
     // Uses the `execute()` remote function for custom HTTP verbs.
     response = clientEndpoint->execute("COPY", "/get", "CUSTOM: Hello World");
 
-    // Initializes a request.
-    http:Request req = new;
-    req.addHeader("Sample-Name", "http-client-connector");
     // The `get()`, `head()`, and `options()` have the optional headers parameter to send out headers,
     response = clientEndpoint->get("/get",
                             {"Sample-Name": "http-client-connector"});
