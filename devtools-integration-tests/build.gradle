@@ -29,8 +29,8 @@ dependencies {
     testImplementation "net.lingala.zip4j:zip4j:${netLingalaZip4jVersion}"
     testImplementation "commons-io:commons-io:${commonsIoVersion}"
     testImplementation "org.apache.commons:commons-lang3:${commonsLang3Version}"
-    testImplementation "org.ballerinalang:jballerina-debugger-integration-test:${ballerinaVersion}"
-    testImplementation "org.ballerinalang:ballerina-test-utils:${ballerinaVersion}"
+    testImplementation "org.ballerinalang:jballerina-debugger-integration-test:${ballerinaLangVersion}"
+    testImplementation "org.ballerinalang:ballerina-test-utils:${ballerinaLangVersion}"
     testImplementation "org.eclipse.lsp4j:org.eclipse.lsp4j.debug:${lsp4jDebugVersion}"
 
     jBallerinaDistribution project(path: ":ballerina", configuration: "jBallerinaDistribution")
