@@ -13,7 +13,6 @@ kafka:AuthenticationConfiguration authConfig = {
 };
 
 kafka:ConsumerConfiguration consumerConfig = {
-    bootstrapServers:"localhost:9092",
     groupId:"test-group",
     clientId: "sasl-consumer",
     offsetReset:"earliest",
@@ -22,7 +21,7 @@ kafka:ConsumerConfiguration consumerConfig = {
     authenticationConfiguration: authConfig
 };
 
-listener kafka:Listener kafkaListener = new(consumerConfig);
+listener kafka:Listener kafkaListener = new(kafka:DEFAULT_URL, consumerConfig);
 
 service kafka:Service on kafkaListener {
     remote function onConsumerRecord(kafka:Caller caller,
