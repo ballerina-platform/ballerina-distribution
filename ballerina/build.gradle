@@ -709,9 +709,24 @@ task testExamples() {
             'rabbitmq-consumer-with-qos-settings',
             'rabbitmq-transaction-producer',
             'rabbitmq-transaction-consumer',
-            'mysql-complex-type-queries',
-            'jdbc-complex-type-queries'
 
+            // Disabling since JDBC & MySQL modules are removed from the distribution
+            'jdbc-parameterized-query',
+            'jdbc-execute-operation',
+            'jdbc-query-operation',
+            'jdbc-init-options',
+            'jdbc-complex-type-queries', // Consists date time in output
+            'jdbc-batch-execute-operation', // Consists transaction server start log
+            'mysql-init-options',
+            'mysql-query-operation',
+            'mysql-complex-type-queries',
+            'mysql-execute-operation',
+            'mysql-batch-execute-operation',
+            'mysql-parameterized-query',
+            'mysql-call-stored-procedures',
+            'local-transactions',
+            'xa-transactions',
+            'retry-transactions',
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
@@ -719,10 +734,7 @@ task testExamples() {
     // to the above buildIgnoreList.
     def outputVerificationIgnoreList = [
             'the-main-function', //Needs user input
-            'local-transactions',  // Xid varies
             'local-transactions-with-handlers', // Xid varies
-            'xa-transactions', // Consists of the transaction coordinator start log
-            'retry-transactions', // Xid varies
             'distributed-transactions', // has timestamps in the output
             'optional-type',  // Needs inputs at runtime
             'while',        // Needs inputs at runtime
@@ -756,16 +768,7 @@ task testExamples() {
             'websocket-proxy-server',
             'websocket-retry',
             'random',  // Output varies
-            'jdbc-complex-type-queries', // Consists date time in output
-            'jdbc-batch-execute-operation', // Consists transaction server sart log
             'log-api',
-            'mysql-init-options',
-            'mysql-query-operation',
-            'mysql-complex-type-queries',
-            'mysql-execute-operation',
-            'mysql-batch-execute-operation',
-            'mysql-parameterized-query',
-            'mysql-call-stored-procedures',
             'udp-client',
             'udp-connect-client',
             'udp-listener',

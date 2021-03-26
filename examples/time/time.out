@@ -1,22 +1,16 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `bal run` command below.
 bal run time.bal
-Current system time in milliseconds: 1599865900176
-Created Time: 2017-03-28T23:42:45.554-05:00
-Parsed Time: 2017-06-26T09:46:22.444-05:00
-Current system time in custom format: 2020-09-11-Fri
-Year: 2020
-Month: 9
-Day: 11
-Hour: 16
-Minute: 11
-Second: 40
-Millisecond: 176
-Weekday: FRIDAY
-Date: 2020:9:11
-Time: 16:11:40:176
-After adding a duration: 2021-10-11T16:11:41.176-07:00
-After subtracting a duration: 2019-08-11T16:11:39.176-07:00
-Before converting the time zone: 2017-03-28T23:42:45.554-05:00
-After converting the time zone: 2017-03-29T10:12:45.554+05:30
-Difference between the two time values: {"years":1,"months":2,"days":1,"hours":1,"minutes":0,"seconds":0,"milliSeconds":0}
+Current timestamp seconds: 1616668384s
+Current timestamp nanoseconds as a
+    fraction: 0.460415000s
+Seconds from an unspecified epoch: 28082.664869815s
+UTC value: 1196676930 0.0
+UTC string representation: 2007-12-03T10:15:30Z
+UTC diff: 419991454.460415
+Is valid date: true
+Day of week: 1
+Civil record: {"timeAbbrev":"Z","year":2007,"month":12,"day":3,"hour":10,"minute":15,"second":30}
+UTC value of the civil record: 1618269650 0.52
+Converted civil value: {"utcOffset":{"hours":5,"minutes":30},"timeAbbrev":"Asia/Colombo","year":2021,"month":4,"day":12,"hour":23,"minute":20,"second":50.52}
+Civil string representation: 2021-04-12T17:50:50.520Z
