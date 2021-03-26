@@ -136,7 +136,7 @@ public class OpenAPIArtifactBuildTest {
     }
 
     //OpenAPI integration tests
-    @Test(description = "Test for openapi validator off", enabled = true)
+    @Test(description = "Test for openapi validator off")
     public void buildOpenAPIValidatorOffTest() throws IOException, InterruptedException {
 
         Path testResource = Paths.get("/openapi/integration-tests/testFiles");
@@ -162,7 +162,7 @@ public class OpenAPIArtifactBuildTest {
         }
     }
 
-    @Test(description = "Tests for openapi validator on", enabled = true)
+    @Test(description = "Tests for openapi validator on")
     public void buildOpenAPIValidatorONTest() throws IOException, InterruptedException {
 
         Path testResource = Paths.get("/openapi/integration-tests/testFiles");
