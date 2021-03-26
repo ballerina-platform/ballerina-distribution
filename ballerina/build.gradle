@@ -40,10 +40,10 @@ dependencies {
 }
 
 def jBallerinaDistributionZip = file("$project.buildDir/distributions/ballerina-${shortVersion}.zip")
-def ballerinaDistributionZip = file("$project.buildDir/distributions/ballerina-${ballerinaVersion}.zip")
-def ballerinaLinuxDistributionZip = file("$project.buildDir/distributions/ballerina-linux-${ballerinaVersion}.zip")
-def ballerinaMacDistributionZip = file("$project.buildDir/distributions/ballerina-macos-${ballerinaVersion}.zip")
-def ballerinaWindowsDistributionZip = file("$project.buildDir/distributions/ballerina-windows-${ballerinaVersion}.zip")
+def ballerinaDistributionZip = file("$project.buildDir/distributions/ballerina-${ballerinaLangVersion}.zip")
+def ballerinaLinuxDistributionZip = file("$project.buildDir/distributions/ballerina-linux-${ballerinaLangVersion}.zip")
+def ballerinaMacDistributionZip = file("$project.buildDir/distributions/ballerina-macos-${ballerinaLangVersion}.zip")
+def ballerinaWindowsDistributionZip = file("$project.buildDir/distributions/ballerina-windows-${ballerinaLangVersion}.zip")
 
 task unpackBallerinaJre(type: Download) {
     group = "unpack_dependencies"
@@ -188,7 +188,7 @@ task deleteTemporaryFiles(type: Delete) {
 }
 
 task copyOtherRepos(type: Copy) {
-    def ballerinaDist = "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
+    def ballerinaDist = "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
     into ballerinaDist
 
     /* Standard Libraries */
@@ -245,32 +245,32 @@ task copyOtherRepos(type: Copy) {
 task buildDistRepo(type: JavaExec) {
     classpath = project.configurations.repoBuilder
     main = 'io.ballerina.dist.DistRepoBuilder'
-    args "$buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
+    args "$buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
 }
 
 task copyDevToolsCoverageReport(type: Copy) {
     from "$project.buildDir/target/extracted-distributions/ballerina-dev-tools-zip/testerina-report-tools-${devToolsVersion}.zip"
-    into "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/lib/tools/coverage"
+    into "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/lib/tools/coverage"
     rename("testerina-report-tools-${devToolsVersion}.zip", "report.zip")
 }
 task copyDevToolsDocUi(type: Copy) {
     from zipTree("$project.buildDir/target/extracted-distributions/ballerina-dev-tools-zip/docerina-ui-${devToolsVersion}.zip")
-    into "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/lib/tools/doc-ui"
+    into "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/lib/tools/doc-ui"
 }
 
 task filterApiDocs(type: Delete) {
-    delete "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs/ballerina/lang.__internal"
-    delete "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs/ballerina/lang.annotations"
+    delete "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/docs/ballerina/lang.__internal"
+    delete "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/docs/ballerina/lang.annotations"
 }
 
 task combineDocs(type: Exec) {
-    workingDir "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs"
+    workingDir "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/docs"
     if (Os.isFamily(Os.FAMILY_WINDOWS)) {
         commandLine 'cmd', '/c', "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/" +
-                "jballerina-tools-${ballerinaVersion}/bin/bal.bat", "doc", "--combine"
+                "jballerina-tools-${ballerinaLangVersion}/bin/bal.bat", "doc", "--combine"
     } else {
         commandLine "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/" +
-                "jballerina-tools-${ballerinaVersion}/bin/bal", "doc", "--combine"
+                "jballerina-tools-${ballerinaLangVersion}/bin/bal", "doc", "--combine"
     }
 }
 
@@ -283,7 +283,7 @@ task packageDist(type: Zip) {
     entryCompression = ZipEntryCompression.STORED
 
     into("${parentDir}") {
-        from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
+        from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
     }
     into("${parentDir}/examples") {
         from "${project.rootDir}/examples/"
@@ -336,7 +336,7 @@ task packageDistZip(type: Zip) {
 
     /* Tools artifacts */
     into("${parentDir}/distributions/ballerina-${shortVersion}") {
-        from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
+        from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
         exclude "distributions/ballerina-version"
         exclude "distributions/installer-version"
         exclude "/bin/version.txt"
@@ -415,7 +415,7 @@ task packageDistLinux(type: Zip) {
 
     /* Tools artifacts */
     into("${parentDir}/distributions/ballerina-${shortVersion}") {
-        from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
+        from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
         exclude "distributions/ballerina-version"
         exclude "distributions/installer-version"
         exclude "/bin/bal.bat"
@@ -490,7 +490,7 @@ task packageDistMac(type: Zip) {
 
     /* Tools artifacts */
     into("${parentDir}/distributions/ballerina-${shortVersion}") {
-        from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
+        from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
         exclude "distributions/ballerina-version"
         exclude "distributions/installer-version"
         exclude "/bin/bal.bat"
@@ -560,7 +560,7 @@ task packageDistWindows(type: Zip) {
 
     /* Tools artifacts */
     into("${parentDir}/distributions/ballerina-${shortVersion}") {
-        from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
+        from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
         exclude "distributions/ballerina-version"
         exclude "distributions/installer-version"
         exclude "/bin/bal"
