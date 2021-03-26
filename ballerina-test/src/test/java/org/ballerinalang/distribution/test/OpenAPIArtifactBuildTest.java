@@ -64,8 +64,8 @@ public class OpenAPIArtifactBuildTest {
         boolean successful = TestUtils.executeOpenAPI(distributionFileName, TestUtils.getResource(testResource),
                 buildArgs);
         Assert.assertTrue(successful);
-        Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("petstore-service.bal")));
-        Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("petstore-client.bal")));
+        Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("petstore_service.bal")));
+        Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("petstore_client.bal")));
         TestUtils.deleteGeneratedFiles("petstore");
     }
 
@@ -81,7 +81,7 @@ public class OpenAPIArtifactBuildTest {
         boolean successful = TestUtils.executeOpenAPI(distributionFileName, TestUtils.getResource(testResource),
                 buildArgs);
         Assert.assertTrue(successful);
-        Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("petstore-service.bal")));
+        Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("petstore_service.bal")));
         TestUtils.deleteGeneratedFiles("petstore");
     }
 
@@ -102,8 +102,8 @@ public class OpenAPIArtifactBuildTest {
         Stream<String> expectedServiceLines = Files.lines(expectedServiceFile);
         String expectedService = expectedServiceLines.collect(Collectors.joining("\n"));
 
-        if (Files.exists(RESOURCES_PATH.resolve("openapi/petstoretags-service.bal"))) {
-            Path generatedServiceFile = TestUtils.getResource(testResource).resolve("petstoretags-service.bal");
+        if (Files.exists(RESOURCES_PATH.resolve("openapi/petstoretags_service.bal"))) {
+            Path generatedServiceFile = TestUtils.getResource(testResource).resolve("petstoretags_service.bal");
             Stream<String> serviceLines = Files.lines(generatedServiceFile);
             String generatedService = serviceLines.collect(Collectors.joining("\n"));
             serviceLines.close();
@@ -131,8 +131,8 @@ public class OpenAPIArtifactBuildTest {
         boolean successful = TestUtils.executeOpenAPI(distributionFileName, TestUtils.getResource(testResource),
                 buildArgs);
         Assert.assertTrue(successful);
-        Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("hello-openapi.yaml")));
-        TestUtils.deleteGeneratedFiles("hello-openapi.yaml");
+        Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("hello_openapi.yaml")));
+        TestUtils.deleteGeneratedFiles("hello_openapi.yaml");
     }
 
     //OpenAPI integration tests
