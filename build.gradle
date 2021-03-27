@@ -24,7 +24,7 @@ plugins {
 description = 'Ballerina - Tools - Parent'
 
 ext {
-    ballerinaVersion = project.ballerinaVersion
+    ballerinaLangVersion = project.ballerinaLangVersion
     shortVersion = project.shortVersion
     awslambdaVersion = project.awslambdaVersion
     azFunctionsVersion = project.azFunctionsVersion
@@ -434,7 +434,7 @@ subprojects {
     }
 
     dependencies {
-        jbalTools "org.ballerinalang:jballerina-tools:${ballerinaVersion}@zip"
+        jbalTools "org.ballerinalang:jballerina-tools:${ballerinaLangVersion}@zip"
 
         /* Ballerina Dev Tools */
         devTools "org.ballerinalang:ballerina-dev-tools:${devToolsVersion}"
