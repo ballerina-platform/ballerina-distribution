@@ -2,22 +2,18 @@ import ballerinax/kafka;
 import ballerina/log;
 
 kafka:ConsumerConfiguration consumerConfigs = {
-    // The `bootstrapServers` is the list of remote server endpoints of the
-    // Kafka brokers.
-    bootstrapServers: "localhost:9092",
-
     groupId: "group-id",
     // Subscribes to the topic `test-kafka-topic`.
     topics: ["test-kafka-topic"],
 
-    pollingInterval: 1000,
+    pollingInterval: 1,
 
     // Set `autoCommit` to false, so that the records should be committed
     // manually.
     autoCommit: false
 };
 
-listener kafka:Listener kafkaListener = new (consumerConfigs);
+listener kafka:Listener kafkaListener = new (kafka:DEFAULT_URL, consumerConfigs);
 
 service kafka:Service on kafkaListener {
     remote function onConsumerRecord(kafka:Caller caller,

@@ -2,7 +2,7 @@ import ballerina/io;
 import ballerinax/stan;
 
 // Initializes the NATS Streaming listener.
-listener stan:Listener lis = new (clientId = "c0");
+listener stan:Listener lis = new(stan:DEFAULT_URL, clientId = "c0");
 
 // Binds the consumer to listen to the messages published to the 'demo' subject.
 @stan:ServiceConfig {
