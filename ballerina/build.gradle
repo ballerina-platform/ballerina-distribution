@@ -778,7 +778,8 @@ task testExamples() {
             'function-pointers',
             'hello-world-client',
             'hello-world-parallel',
-            'hello-world-service'
+            'hello-world-service',
+            'distributed-transactions'
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
