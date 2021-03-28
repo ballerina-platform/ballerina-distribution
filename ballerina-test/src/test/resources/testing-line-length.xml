@@ -20,7 +20,8 @@
 <suite name="Ballerina-External-Line-Length-Test-Suite">
     <test name="ballerina-external-length-validation-tests" parallel="false">
         <classes>
-            <class name="org.ballerinalang.distribution.lengthValidation.LengthValidator"/>
+<!--            TODO: Enable this for slp4 release-->
+<!--            <class name="org.ballerinalang.distribution.lengthValidation.LengthValidator"/>-->
         </classes>
     </test>
 </suite>
