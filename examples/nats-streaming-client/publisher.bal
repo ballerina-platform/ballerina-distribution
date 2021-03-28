@@ -4,7 +4,7 @@ import ballerinax/stan;
 // Produces a message to a subject in the NATS sever.
 public function main() returns error? {
     string message = "Hello from Ballerina";
-    stan:Client stanClient = check new;
+    stan:Client stanClient = check new(stan:DEFAULT_URL);
     // Produces a message to the specified subject.
     string|stan:Error result =
                     stanClient->publishMessage({

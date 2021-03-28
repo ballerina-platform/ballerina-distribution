@@ -13,13 +13,12 @@ kafka:AuthenticationConfiguration authConfig = {
 };
 
 kafka:ProducerConfiguration producerConfigs = {
-    bootstrapServers: "localhost:9092",
     // Provide the relevant authentication configuration record to authenticate the producer.
     authenticationConfiguration: authConfig
 
 };
 
-kafka:Producer kafkaProducer = checkpanic new (producerConfigs);
+kafka:Producer kafkaProducer = check new (kafka:DEFAULT_URL, producerConfigs);
 
 public function main() {
     string message = "Hello from Ballerina";
