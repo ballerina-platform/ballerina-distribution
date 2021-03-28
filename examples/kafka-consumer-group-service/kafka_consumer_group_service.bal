@@ -2,9 +2,6 @@ import ballerinax/kafka;
 import ballerina/log;
 
 kafka:ConsumerConfiguration consumerConfigs = {
-    // The `bootstrapServers` is the list of remote server endpoints of the
-    // Kafka brokers.
-    bootstrapServers: "localhost:9092",
     // Using two concurrent consumers to work as a group.
     concurrentConsumers: 2,
 
@@ -12,11 +9,11 @@ kafka:ConsumerConfiguration consumerConfigs = {
     // Subscribes to the topic `test-kafka-topic`.
     topics: ["test-kafka-topic"],
 
-    pollingInterval: 1000
+    pollingInterval: 1
 
 };
 
-listener kafka:Listener kafkaListener = new (consumerConfigs);
+listener kafka:Listener kafkaListener = new (kafka:DEFAULT_URL, consumerConfigs);
 
 service kafka:Service on kafkaListener {
     // This remote function executes when a message or a set of messages are published

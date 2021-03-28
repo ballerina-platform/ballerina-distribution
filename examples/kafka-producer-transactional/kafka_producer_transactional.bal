@@ -2,10 +2,6 @@ import ballerina/io;
 import ballerinax/kafka;
 
 kafka:ProducerConfiguration producerConfigs = {
-    // The `bootstrapServers` is the list of remote server endpoints of the
-    // Kafka brokers.
-    bootstrapServers: "localhost:9092",
-
     clientId: "basic-producer",
     acks: "all",
     retryCount: 3,
@@ -18,7 +14,7 @@ kafka:ProducerConfiguration producerConfigs = {
 
 };
 
-kafka:Producer kafkaProducer = checkpanic new (producerConfigs);
+kafka:Producer kafkaProducer = check new (kafka:DEFAULT_URL, producerConfigs);
 
 public function main() {
     string message = "Hello World Transaction Message";
