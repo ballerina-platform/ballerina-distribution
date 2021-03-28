@@ -847,7 +847,7 @@ task testExamples() {
             'task-service-appointment',
             'error-handling-in-single-place',
             'file-io',
-            'uuid'  // Output varies,
+            'uuid',  // Output varies
             //TODO: Enable following for slp4
             'non-transaction-retry',
             'url-encode-decode',
