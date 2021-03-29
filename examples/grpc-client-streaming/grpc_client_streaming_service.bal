@@ -19,7 +19,8 @@ service "HelloWorld" on new grpc:Listener(9090) {
             return "Ack";
         } else {
             //If the client sends an error to the server, the stream closes and returns the error
-            log:printError("Connection is closed by the client with Error", 'error = e);
+            log:printError("Connection is closed by the client with Error",
+                'error = e);
             return "";
         }
     }
