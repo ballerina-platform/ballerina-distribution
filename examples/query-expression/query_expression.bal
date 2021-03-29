@@ -50,9 +50,9 @@ public function main() {
               graduationYear: graduationYear
        };
 
-    foreach var report in reportList {
-        io:println(report);
-    }
+    error? e = reportList.forEach(function (Report report) {
+       io:println(report);
+    });
 }
 
 function calGraduationYear(int year) returns int {
