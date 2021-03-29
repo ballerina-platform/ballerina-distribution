@@ -63,7 +63,7 @@ public function main() {
     //The `filter` and `map` functions return streams and work lazily.
     stream<Subscription> subscriptionStream =
         studentStream.filter(function (Student student) returns boolean {
-            return student.score > 1;
+            return student.score > <float>1;
         }).'map(function (Student student) returns Subscription {
             Subscription subscription = {
                 firstName: student.firstName,
