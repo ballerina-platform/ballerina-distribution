@@ -867,7 +867,6 @@ task testExamples() {
             'error-match-statement',
             'mapping-match-statement',
             'tuple-match-statement',
-            'anonymous-functions',
             'function-pointers',
             'basic-documentation',
             'functions',
