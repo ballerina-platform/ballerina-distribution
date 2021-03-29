@@ -35,7 +35,7 @@ function processKafkaRecord(kafka:ConsumerRecord kafkaRecord) {
     string|error message = string:fromBytes(messageContent);
     if (message is string) {
         // Prints the retrieved message.
-        log:print(" Received Message: " + message);
+        log:printInfo(" Received Message: " + message);
 
     } else {
         log:printError("Error occurred while retrieving message data;" +
