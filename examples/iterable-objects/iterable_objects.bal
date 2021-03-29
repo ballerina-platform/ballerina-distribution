@@ -22,7 +22,7 @@ class ArrayIterator {
 //  A class that is a subtype of `Iterable<int, ()>`.
 class IteratorGenerator {
     *object:Iterable;
-    // The `iterator()` method should return a new `Iterator<T,()>`.
+    // The `iterator()` method should return a subtype of `Iterator<int, ()>`.
     public function iterator() returns object {
         public isolated function next() returns record {| int value; |}?;
         } {
