@@ -17,9 +17,7 @@ function performGet() returns @tainted http:Response {
 
     if (response.statusCode == 200) {
         io:println("Executing the 2nd GET request");
-        http:Request req = new;
-        req.addHeader("Sample-Name", "http-client-connector");
-        response = <http:Response> checkpanic 
+        response = <http:Response> checkpanic
         clientEndpoint -> get("/get?test=123",
             {"Sample-Name": "http-client-connector"});
         io:println("Status code: ", response.statusCode.toString());
