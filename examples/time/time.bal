@@ -10,14 +10,14 @@ public function main() returns error? {
     // member represents the rest of the nanoseconds from the epoch as a
     // fraction.
     time:Utc currentUtc = time:utcNow();
-    io:println(string `Current timestamp seconds: ${currentUtc[0]}s`);
-    io:println(string `Current timestamp nanoseconds as a
+    io:println(`Current timestamp seconds: ${currentUtc[0]}s`);
+    io:println(`Current timestamp nanoseconds as a
     fraction: ${currentUtc[1]}s`);
 
     // Return seconds from some unspecified epoch. The returned `seconds` has
     // the nanoseconds precision which represents using the fractional part.
     time:Seconds seconds = time:monotonicNow();
-    io:println(string `Seconds from an unspecified epoch: ${seconds}s`);
+    io:println(`Seconds from an unspecified epoch: ${seconds}s`);
 
     // Returns a `time:Utc` from a given RFC 3339 timestamp
     // (e.g. `2007-12-03T10:15:30.00Z`).
@@ -27,16 +27,16 @@ public function main() returns error? {
     // Returns the string representation of RFC 3339 timestamp
     // (e.g. `2007-12-03T10:15:30.00Z`) from a given `time:Utc`.
     string utcString1 = time:utcToString(utc1);
-    io:println(string `UTC string representation: ${utcString1}`);
+    io:println(`UTC string representation: ${utcString1}`);
 
     // Returns the difference of two `time:Utc` values as
     // seconds(`time:Seconds`).
     time:Seconds utcDiff = time:utcDiffSeconds(currentUtc, utc1);
-    io:println(string `UTC diff: ${utcDiff}`);
+    io:println(`UTC diff: ${utcDiff}`);
 
     // Check the given `time:Date` value is valid or not.
     time:Date date = {year: 1994, month: 11, day: 7};
-    boolean isValidDate = (time:dateValidate(date) is ())? true: false;
+    boolean isValidDate = (time:dateValidate(date) is ()) ? true : false;
     io:println(string `Is valid date: ${isValidDate}`);
 
     // Return the day of week as a number starting from 0 to 6 inclusive.
@@ -80,5 +80,5 @@ public function main() returns error? {
     // Converts a given `time:Civil` value to a RFC 3339
     // timestamp(e.g. `2007-12-03T10:15:30.00Z`) formatted string.
     string civilString = check time:civilToString(civil3);
-    io:println(string `Civil string representation: ${civilString}`);
+    io:println(`Civil string representation: ${civilString}`);
 }
