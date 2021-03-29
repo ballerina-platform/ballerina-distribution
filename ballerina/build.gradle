@@ -761,7 +761,6 @@ task testExamples() {
             'iterable-objects',
             'raw-template',
             'range-expressions',
-            'any-type',
             'query-action',
             'query-expression-to-stream',
             'error-match-statement',
