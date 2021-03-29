@@ -15,6 +15,7 @@
 // under the License.
 
 import ballerina/grpc;
+import ballerina/io;
 import ballerina/lang.runtime;
 import ballerina/test;
 
@@ -37,17 +38,19 @@ function testBidiStreamingService() returns error? {
         test:assertFail(string `Error from Connector: ${connErr.message()}`);
     }
 
-    runtime:sleep(5000);
+    runtime:sleep(5);
     // Once all messages are sent, client send complete message to notify the server, I am done.
     check streamingClient->complete();
 }
 
 public function readResponses(ChatStreamingClient streamingClient) returns error? {
-   string? response = check streamingClient->receiveString();
-   while !(response is ()) {
-      string expected = "Sam: Hi";
-      test:assertEquals(response, expected);
-      response = check streamingClient->receiveString();
-   }
+    string? response = check streamingClient->receiveString();
+    if (response is string) {
+        io:println("Response Message: " + response);
+        string expected = "Sam: Hi";
+        test:assertEquals(response, expected);
+    } else {
+        test:assertFail(string `Connection closed before receiving server response`);
+    }
 }
 

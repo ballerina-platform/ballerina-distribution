@@ -23,7 +23,7 @@ function testServerStreamingService() returns error? {
     HelloWorldClient streamingEp = check new("http://localhost:20003");
 
     // Execute the unary non-blocking call that registers the server message listener.
-    stream<string, grpc:Error?> result = check streamingEp->lotsOfReplies("WSO2");
+    stream<string, grpc:Error?> result = check streamingEp->lotsOfReplies("Sam");
 
     string expectedMsg1 = "Hi Sam";
     string expectedMsg2 = "Hey Sam";
