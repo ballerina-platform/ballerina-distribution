@@ -12,8 +12,8 @@ type UserTable table<UserInfo> key(username);
 configurable string hostName = ?;
 configurable int port = ?;
 
-// A `configurable` variable can be initialized with an expression that is not `?`.
-// It is not mandatory to specify a value for such a variable.
+// A `configurable` variable can be initialized with an expression that is
+// not `?`. It is not mandatory to specify a value for such a variable.
 // But if specified, the value provided at configuration overrides the value
 // specified as the initializer.
 // The values of the `enableRemote` and `maxPayload` variables here are
@@ -21,14 +21,22 @@ configurable int port = ?;
 configurable boolean enableRemote = true;
 configurable float maxPayload = 1.0;
 
-// The value `http` is used to initialize the `protocol` variable since a value is not
-// provided for it at configuration.
+// The value `http` is used to initialize the `protocol` variable since a value
+// is not provided for it at configuration.
 configurable string protocol = "http";
 
-// A `configurable` variable named `admin` of the `UserInfo & readonly` record type is initialized.
-configurable UserInfo & readonly admin = {username: "default", password: "password"};
-// A `configurable` variable named `users` of the `table<(UserInfo & readonly)> key(username)` table type is initialized.
-configurable UserTable & readonly users =  table [{username: "default", password: "password"}];
+// A `configurable` variable named `admin` of the `UserInfo & readonly`
+// record type is initialized.
+configurable UserInfo & readonly admin = {
+    username: "default",
+    password: "password"
+};
+// A `configurable` variable named `users` of the
+// `table<(UserInfo & readonly)> key(username)` table type is initialized.
+configurable UserTable & readonly users = table [{
+            username: "default",
+            password: "password"
+        }];
 
 public function main() {
     io:println("host: ", hostName);
