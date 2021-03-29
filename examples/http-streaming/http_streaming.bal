@@ -37,9 +37,9 @@ service /'stream on new http:Listener(9090) {
                                         http:Request request) {
         http:Response res = new;
         //[Retrieve the byte stream](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Request#getByteStream).
-        stream<byte[], io:Error>|error streamer = request.getByteStream();
+        stream<byte[], io:Error?>|error streamer = request.getByteStream();
 
-        if (streamer is stream<byte[], io:Error>) {
+        if (streamer is stream<byte[], io:Error?>) {
             //Writes the incoming stream to a file using `io:fileWriteBlocksFromStream` API by providing the file location to which the content should be written to.
             io:Error? result = io:fileWriteBlocksFromStream(
                                     "./files/ReceivedFile.pdf", streamer);
@@ -70,7 +70,7 @@ function setError(http:Response res, error err) {
 }
 
 //Closes the byte stream.
-function close(stream<byte[], io:Error> byteStream) {
+function close(stream<byte[], io:Error?> byteStream) {
     var cr = byteStream.close();
     if (cr is error) {
         log:printError("Error occurred while closing the stream: ",
