@@ -13,7 +13,8 @@ kafka:ConsumerConfiguration consumerConfigs = {
 
 };
 
-listener kafka:Listener kafkaListener = new (kafka:DEFAULT_URL, consumerConfigs);
+listener kafka:Listener kafkaListener =
+            new (kafka:DEFAULT_URL, consumerConfigs);
 
 service kafka:Service on kafkaListener {
     // This remote function executes when a message or a set of messages are published
