@@ -35,7 +35,7 @@ users: [{"username":"John","password":"abc123"},{"username":"Bob","password":"cd
 # A similar configuration can be given via CLI parameters in the
 # following format.
 
-bal run configurable.bal -- -Chost=192\.168\.1\.1 -Cport=9091 -CenableRemote=false -CmaxPayload=0.456
+bal run configurable.bal -- -ChostName=192.168.1.1 -Cport=9091 -CenableRemote=false -CmaxPayload=0.456
 host: 192.168.1.1
 port: 9091
 protocol: http
