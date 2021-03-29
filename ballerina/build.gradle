@@ -748,7 +748,6 @@ task testExamples() {
             'crypto',
             'xml-attributes',
             'iterable-objects',
-            'raw-template',
             'range-expressions',
             'any-type',
             'error-match-statement',
