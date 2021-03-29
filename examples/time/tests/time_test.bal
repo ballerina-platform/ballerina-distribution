@@ -1,3 +1,4 @@
+import ballerina/io;
 import ballerina/test;
 
 string[] outputs = [];
@@ -10,13 +11,58 @@ int counter = 0;
 }
 test:MockFunction mock_printLn = new();
 
-public function mockPrint(any... s) {
+public function mockPrint(io:Printable... s) {
     string outstr = "";
-        foreach var str in s {
-            outstr = outstr + str.toString();
+    foreach io:Printable str in s {
+        outstr = outstr + new PrintableClassImpl(str).toString();
+    }
+    outputs[counter] = outstr;
+    counter += 1;
+}
+
+// From ballerina/io module to mock io:println() with raw templates
+class PrintableClassImpl {
+    io:Printable printable;
+
+    public isolated function init(io:Printable printable) {
+        self.printable = printable;
+    }
+    public isolated function toString() returns string {
+        io:Printable printable = self.printable;
+        if printable is io:PrintableRawTemplate {
+            return new PrintableRawTemplateImpl(printable).toString();
+        } else if printable is error {
+            return printable.toString();
+        } else {
+            return printable.toString();
         }
-        outputs[counter] = outstr;
-        counter += 1;
+    }
+}
+
+class PrintableRawTemplateImpl {
+    *object:RawTemplate;
+    io:Printable[] insertions;
+
+    public isolated function init(io:PrintableRawTemplate printableRawTemplate) {
+        self.strings = printableRawTemplate.strings;
+        self.insertions = printableRawTemplate.insertions;
+    }
+    public isolated function toString() returns string {
+        io:Printable[] templeteInsertions = self.insertions;
+        string[] templeteStrings = self.strings;
+        string templatedString = templeteStrings[0];
+        foreach int i in 1 ..< (templeteStrings.length()) {
+            io:Printable templateInsert = templeteInsertions[i - 1];
+            if (templateInsert is io:PrintableRawTemplate) {
+                templatedString += new PrintableRawTemplateImpl(templateInsert).toString() + templeteStrings[i];
+            } else if (templateInsert is error) {
+                templatedString += templateInsert.toString() + templeteStrings[i];
+            } else {
+                templatedString += templateInsert.toString() + templeteStrings[i];
+            }
+        }
+        return templatedString;
+    }
 }
 
 @test:Config {}
