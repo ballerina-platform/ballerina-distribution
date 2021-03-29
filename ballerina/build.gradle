@@ -768,7 +768,6 @@ task testExamples() {
             'mapping-match-statement',
             'tuple-match-statement',
             'the-main-function',
-            'function-pointers',
             'hello-world-client',
             'hello-world-parallel',
             'hello-world-service',
