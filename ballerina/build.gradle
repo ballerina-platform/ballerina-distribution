@@ -858,7 +858,6 @@ task testExamples() {
             'java-exceptions',
             'overloaded-methods-constructors',
             'java-varargs',
-            'java-arrays',
             'access-mutate-java-fields',
             'invoke-java-methods',
             'create-java-objects',
