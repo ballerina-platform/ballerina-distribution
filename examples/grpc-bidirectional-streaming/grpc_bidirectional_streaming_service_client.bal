@@ -1,5 +1,4 @@
 // This is the client implementation of the bidirectional streaming scenario.
-import ballerina/grpc;
 import ballerina/io;
 
 // Client endpoint configuration.
