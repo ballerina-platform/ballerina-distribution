@@ -23,9 +23,7 @@ public function main (string... args) returns error? {
     // Receives the server stream response iteratively.
     string? result = check streamingClient->receiveString();
     while !(result is ()) {
-        if !(result is grpc:Error) {
-            io:println(result);
-        }
+        io:println(result);
         result = check streamingClient->receiveString();
     }
 }
