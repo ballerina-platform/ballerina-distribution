@@ -31,8 +31,8 @@ string http_payload = "";
 
 service / on clientListener {
 
-    resource function get .(http:Caller caller, http:Request request) {
-        var result = caller->respond(http_payload);
+    resource function get .(http:Caller caller, http:Request request) returns error? {
+        var result = check caller->respond(http_payload);
     }
 }
 
@@ -66,8 +66,8 @@ function testTaskWithHttpClient() returns error? {
     time:Utc currentUtc = time:utcNow();
     time:Utc newTime = time:utcAddSeconds(currentUtc, 1);
     time:Civil time = time:utcToCivil(newTime);
-    runtime:sleep(4);
     task:JobId id = check task:scheduleJobRecurByFrequency(new Job(), 1, startTime = time);
+    runtime:sleep(4);
     var response = multipleAttachmentClientEndpoint->get("/");
     if (response is http:Response) {
         test:assertEquals(response.getTextPayload(), HTTP_MESSAGE, msg = "Response payload mismatched");
