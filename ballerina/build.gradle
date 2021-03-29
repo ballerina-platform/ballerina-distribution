@@ -728,7 +728,6 @@ task testExamples() {
             'xml-attributes',
             'iterable-objects',
             'range-expressions',
-            'any-type',
             'error-match-statement',
             'mapping-match-statement',
             'tuple-match-statement',
