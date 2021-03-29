@@ -681,7 +681,6 @@ task testExamples() {
 
             // Disabling temporarily (https://github.com/ballerina-platform/ballerina-distribution/issues/1242)
             "ballerina-to-openapi",
-            "log-api",
             "optional-type",
             "while",
 
