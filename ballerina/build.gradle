@@ -870,7 +870,6 @@ task testExamples() {
             'tuple-match-statement',
             'anonymous-functions',
             'function-pointers',
-            'basic-documentation',
             'functions',
             'var',
             'variables',
