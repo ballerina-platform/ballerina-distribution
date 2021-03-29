@@ -6,7 +6,7 @@ class ArrayIterator {
     private int cursor = -1;
 
     // `next` method which generates the sequence of values of type `int`.
-    public function next() returns record {|int value;|}? {
+    public isolated function next() returns record {|int value;|}? {
         self.cursor += 1;
         if (self.cursor < self.integers.length()) {
             record {|int value;|} nextVal = {value: self.integers[self.cursor]};
@@ -18,10 +18,10 @@ class ArrayIterator {
 
 //  An object that is a subtype of `Iterable<int>`.
 class IteratorGenerator {
-
+    *object:Iterable;
     // The `__iterator()` method should return a new `Iterator<T>`.
-    public function __iterator() returns object {
-            public function next() returns record {|int value;|}?;} {
+    public function iterator() returns object {
+            public isolated function next() returns record {|int value;|}?;} {
         return new ArrayIterator();
     }
 }
