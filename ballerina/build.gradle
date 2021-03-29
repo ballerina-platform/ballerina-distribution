@@ -759,7 +759,6 @@ task testExamples() {
             'xml-attributes',
             'streams',
             'iterable-objects',
-            'raw-template',
             'range-expressions',
             'any-type',
             'query-action',
