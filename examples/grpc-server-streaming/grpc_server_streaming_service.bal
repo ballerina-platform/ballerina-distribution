@@ -2,13 +2,11 @@
 import ballerina/grpc;
 import ballerina/log;
 
-listener grpc:Listener ep = check new (9090);
-
 @grpc:ServiceDescriptor {
     descriptor: ROOT_DESCRIPTOR,
     descMap: getDescriptorMap()
 }
-service "HelloWorld" on ep {
+service "HelloWorld" on new grpc:Listener(9090) {
     remote function lotsOfReplies(string name)
                         returns stream<string, error?>|error {
         log:printInfo("Server received hello from " + name);

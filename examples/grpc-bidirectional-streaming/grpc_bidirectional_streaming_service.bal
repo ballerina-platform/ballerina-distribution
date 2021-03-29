@@ -2,13 +2,11 @@
 import ballerina/grpc;
 import ballerina/log;
 
-listener grpc:Listener ep = check new (9090);
-
 @grpc:ServiceDescriptor {
     descriptor: ROOT_DESCRIPTOR,
     descMap: getDescriptorMap()
 }
-service "Chat" on ep {
+service "Chat" on new grpc:Listener(9090) {
     remote function chat(stream<ChatMessage, grpc:Error?> clientStream)
                             returns stream<string, grpc:Error?> {
         log:printInfo("Invoke the chat RPC");

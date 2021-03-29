@@ -6,8 +6,7 @@ import ballerina/io;
 HelloWorldClient ep = check new("http://localhost:9090");
 
 public function main () returns error? {
-    // Execute the streaming RPC call that registers
-    // the server message listener and gets the response as a stream.
+    // Execute the streaming RPC call and gets the response as a stream.
     stream<string, grpc:Error?> result = check ep->lotsOfReplies("WSO2");
     // Iterate through the stream and print the content.
     error? e = result.forEach(function(string str) {
