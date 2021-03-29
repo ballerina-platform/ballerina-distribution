@@ -20,7 +20,6 @@
 # username = "Bob"
 # password="cde456"
 
-
 # Then, navigate to the directory that contains the `.bal` and
 # `Config.toml` files, and execute the `bal run` command below.
 
@@ -32,3 +31,15 @@ maximum payload (in MB): 0.321
 remote enabled: false
 admin details: {"username":"admin","password":"password"}
 users: [{"username":"John","password":"abc123"},{"username":"Bob","password":"cde456"}]
+
+# A similar configuration can be given via CLI parameters in the
+# following format.
+
+bal run configurable.bal -- -Chost=192\.168\.1\.1 -Cport=9091 -CenableRemote=false -CmaxPayload=0.456
+host: 192.168.1.1
+port: 9091
+protocol: http
+maximum payload (in MB): 0.456
+remote enabled: false
+admin details: {"username":"default","password":"password"}
+users: [{"username":"default","password":"password"}]

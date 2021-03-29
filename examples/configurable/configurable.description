@@ -3,12 +3,32 @@
 // variables with values provided externally. The `configurable` keyword can
 // be applied to a module-level variable declaration that contains an initializer.<br/>
 //
-// The values for `configurable` variables can be provided in a file named
-// `Config.toml`. The file location can be set through an environment variable with
-// the name `BALCONFIGFILE`. If an environment variable is not specified, it is located
-// in the current directory.
+// The values for `configurable` variables can be provided through configuration files,
+// CLI parameters, and environment variables.
+// The precedence order for retrieving configurable values is as follows:
 //
-// The configuration file must be in the TOML(v0.4) format.
-// Ballerina currently supports configurable variables of types `int`, `float`,
-// `boolean`, `string`, `decimal`, the arrays of the respective types, record, and
-// table.
+// * CLI parameters with the following format
+// ```
+// -Ckey=value
+// ```
+// Currently, CLI based configuration is supported for configurable variables of types
+// `int`, `float`, `boolean`, `string`, `decimal`, and `xml`.
+//
+// * Configuration files
+//
+// The values can be provided through configuration files in TOML(v0.4) format.
+// The file location can be set through an environment variable with
+// the name `BAL_CONFIG_FILES`. It is possible to specify multiple configuration files
+// using the OS-specific separator.
+// The file precedence order will be as specified in the environment variable.
+// If an environment variable is not specified, it is located in the current directory
+// with the file name `Config.toml`.
+//
+// * Environment variables
+//
+// The values can be provided through an environment variable with the name
+// `BAL_CONFIG_DATA` where the content is expected to be in TOML(v0.4) format.
+//
+// Currently, TOML based configuration is supported for configurable variables of
+// types `int`, `float`, `boolean`, `string`, `decimal`, the arrays of the respective
+// types, record, and table.
