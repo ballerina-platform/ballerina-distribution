@@ -674,9 +674,6 @@ task testExamples() {
             'http-client-with-oauth2-refresh-token-grant-type',
 
             // Disabling due to pending migration for service typing
-            'websocket-cookie',
-            'websocket-retry',
-            'websocket-failover',
             'http-filters',
 
             // Disabling sice we could not include credentials in the BBE
@@ -811,15 +808,8 @@ task testExamples() {
             'http-cors',
             'http-client-data-binding',
             'websocket-basic-sample',
-            'websocket-chat-application',
-            'websocket-async-text-client',
-            'websocket-async-binary-client',
             'websocket-text-client',
             'websocket-binary-client',
-            'websocket-cookie',
-            'websocket-failover',
-            'websocket-proxy-server',
-            'websocket-retry',
             'random',  // Output varies
             'log-api',
             'udp-client',
