@@ -750,10 +750,6 @@ task testExamples() {
             'error-match-statement',
             'mapping-match-statement',
             'tuple-match-statement',
-            'the-main-function',
-            'hello-world-client',
-            'hello-world-parallel',
-            'hello-world-service',
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
@@ -831,13 +827,6 @@ task testExamples() {
             'mapping-match-statement',
             'tuple-match-statement',
             'function-pointers',
-            'functions',
-            'var',
-            'variables',
-            'modules',
-            'hello-world-client',
-            'hello-world-parallel',
-            'hello-world'
     ]
 
     doFirst {
