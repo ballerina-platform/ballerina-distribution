@@ -20,7 +20,9 @@ function lookupInfo(string id) returns any {
     if id == "pi" {
         return float:PI;
     } else if id == "date" {
-        return time:utcToString(time:utcNow());
+        time:Utc utc = checkpanic 
+            time:utcFromString("2021-03-29T09:35:37.529306Z");
+        return time:utcToString(utc); 
     } else if id == "bio" {
         return new Person("Jane", "Doe");
     }

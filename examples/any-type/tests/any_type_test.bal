@@ -36,6 +36,6 @@ function testFunc() {
     test:assertEquals(outputs[1], "First name: John");
     test:assertEquals(outputs[2], "[1,3,5,6]");
     test:assertEquals(outputs[3], "3.141592653589793");
-    test:assertEquals(outputs[4], "2020-12-03T10:15:30Z");
+    test:assertEquals(outputs[4], "2021-03-29T09:35:37.529306Z");
     test:assertEquals(outputs[5], "Jane Doe");
 }
