@@ -2,15 +2,13 @@
 import ballerina/grpc;
 import ballerina/log;
 
-listener grpc:Listener ep = new (9090);
-
 @grpc:ServiceDescriptor {
     descriptor: ROOT_DESCRIPTOR,
     descMap: getDescriptorMap()
 }
-service "Chat" on ep {
-    remote function chat(stream<ChatMessage, grpc:Error> clientStream)
-                            returns stream<string, grpc:Error|never> {
+service "Chat" on new grpc:Listener(9090) {
+    remote function chat(stream<ChatMessage, grpc:Error?> clientStream)
+                            returns stream<string, grpc:Error?> {
         log:printInfo("Invoke the chat RPC");
         string[] responses = [];
         int i = 0;
@@ -20,7 +18,7 @@ service "Chat" on ep {
             responses[i] = string `${chatMsg.message}: ${chatMsg.name}`;
             i += 1;
         });
-        // Once the client sends a notification to indicate the end of the stream, 'grpc:EOS' is returned by the stream.
+        // Once the client sends a notification to indicate the end of the stream, '()' is returned by the stream.
         return responses.toStream();
     }
 }

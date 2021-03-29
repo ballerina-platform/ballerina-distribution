@@ -17,26 +17,24 @@
 import ballerina/grpc;
 import ballerina/log;
 
-// Bind the `service` to the port.
 @grpc:ServiceDescriptor {
     descriptor: ROOT_DESCRIPTOR,
     descMap: getDescriptorMap()
 }
-service /HelloWorld on new grpc:Listener(20002) {
+service "HelloWorld" on new grpc:Listener(20001) {
 
-    isolated remote isolated function hello(grpc:Caller caller, string name) {
-        log:print("Server received hello from " + name);
-        string message = "Hello " + name;
+    remote function hello(ContextString request) returns ContextString|error {
+        log:printInfo("Invoked the hello RPC call.");
+        // Reads the request content.
+        string message = "Hello " + request.content;
 
-        // Send a response message to the caller.
-        grpc:Error? result = caller->send(message);
-        if (result is grpc:Error) {
-            log:printError("Error from Connector: " + result.message());
-        }
-        // Send the `completed` notification to the caller.
-        result = caller->complete();
-        if (result is grpc:Error) {
-            log:printError("Error from Connector: " + result.message());
-        }
+        // Reads custom headers in request message.
+        string reqHeader = check grpc:getHeader(request.headers,
+        "client_header_key");
+        log:printInfo("Server received header value: " + reqHeader);
+
+        // Sends response with custom headers.
+        return {content: message, headers: {server_header_key:
+        "Response Header value"}};
     }
 }
