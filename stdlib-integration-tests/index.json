@@ -46,5 +46,21 @@
   {
     "name": "UDP standard library ",
     "path": "udp"
+  },
+  {
+    "name": "gRPC standard library - Unary",
+    "path": "grpc_unary_blocking"
+  },
+  {
+    "name": "gRPC standard library - Server Streaming",
+    "path": "grpc_server_streaming"
+  },
+  {
+    "name": "gRPC standard library - Client Streaming",
+    "path": "grpc_client_streaming"
+  },
+  {
+    "name": "gRPC standard library - Bidirectional streaming",
+    "path": "grpc_bidirectional_streaming"
   }
 ]

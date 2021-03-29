@@ -3,7 +3,7 @@ import ballerina/grpc;
 import ballerina/log;
 
 // The server endpoint configuration with the SSL configurations.
-listener grpc:Listener ep = new (9090, {
+listener grpc:Listener ep = check new (9090, {
     host: "localhost",
     secureSocket: {
         key: {

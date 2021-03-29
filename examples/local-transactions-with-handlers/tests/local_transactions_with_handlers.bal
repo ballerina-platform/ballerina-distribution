@@ -17,11 +17,11 @@ public function mockPrint(any|error... s) {
 }
 
 @test:Config {}
-function testFunc() {
+function testFunc() returns error? {
     test:when(mock_printLn).call("mockPrint");
 
     // Invoking the main function
-    main();
+    check main();
     test:assertExactEquals(outputs[0], "Transaction Info: ");
     test:assertExactEquals(outputs[2], "Invoke local participant function.");
     test:assertExactEquals(outputs[3], "Local participant error.");

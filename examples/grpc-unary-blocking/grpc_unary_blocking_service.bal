@@ -2,13 +2,11 @@
 import ballerina/grpc;
 import ballerina/log;
 
-listener grpc:Listener ep = new (9090);
-
 @grpc:ServiceDescriptor {
     descriptor: ROOT_DESCRIPTOR,
     descMap: getDescriptorMap()
 }
-service "HelloWorld" on ep {
+service "HelloWorld" on new grpc:Listener(9090) {
     remote function hello(ContextString request) returns ContextString|error {
         log:printInfo("Invoked the hello RPC call.");
         // Reads the request content.
