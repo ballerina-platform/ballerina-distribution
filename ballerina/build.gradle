@@ -744,8 +744,6 @@ task testExamples() {
             'absolute-path-and-path',
             'http-client-data-binding',
             'http-redirects',
-            'non-transaction-retry',
-            'local-transactions-with-handlers',
             'url-encode-decode',
             'jwt-issue-validate',
             'crypto',
@@ -765,7 +763,6 @@ task testExamples() {
             'hello-world-client',
             'hello-world-parallel',
             'hello-world-service',
-            'distributed-transactions'
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
@@ -826,7 +823,6 @@ task testExamples() {
             'file-io',
             'uuid',  // Output varies
             //TODO: Enable following for slp4
-            'non-transaction-retry',
             'url-encode-decode',
             'xslt-transformation',
             'java-exceptions',
