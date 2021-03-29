@@ -31,7 +31,7 @@ function testClientStreamingService() {
     // Execute the unary non-blocking call that registers a server message listener.
     var res = helloWorldEp->lotsOfGreetings(MessageListener);
     if (res is error) {
-        test:assertFail(io:sprintf(ERROR_MSG_FORMAT, res.message()));
+        test:assertFail(string `Error from Connector: ${result.message()}`);
         return;
     } else {
         io:println("Initialized connection sucessfully.");
@@ -44,7 +44,7 @@ function testClientStreamingService() {
     foreach string greet in greets {
         error? connErr = ep->send(greet + " " + name);
         if (connErr is error) {
-            test:assertFail(io:sprintf(ERROR_MSG_FORMAT, connErr.message()));
+            test:assertFail(string `Error from Connector: ${connErr.message()}`);
         } else {
             io:println("Send greeting: " + greet + " " + name);
         }
@@ -78,7 +78,7 @@ service object{} MessageListener = service object {
     // Resource registered to receive server error messages.
     function onError(error err) {
         completed = true;
-        responseMsg = io:sprintf(ERROR_MSG_FORMAT, err.message());
+        responseMsg = string `Error from Connector: ${err.message()}`;
     }
 
     // Resource registered to receive server completed messages.

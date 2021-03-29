@@ -6,8 +6,8 @@ group 'org.ballerinalang'
 version '1.0.0'
 
 dependencies {
-    implementation "org.ballerinalang:docerina:${ballerinaVersion}"
-    implementation "org.ballerinalang:ballerina-lang:${ballerinaVersion}"
+    implementation "org.ballerinalang:docerina:${ballerinaLangVersion}"
+    implementation "org.ballerinalang:ballerina-lang:${ballerinaLangVersion}"
 
 }
 

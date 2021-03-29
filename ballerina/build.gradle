@@ -40,10 +40,10 @@ dependencies {
 }
 
 def jBallerinaDistributionZip = file("$project.buildDir/distributions/ballerina-${shortVersion}.zip")
-def ballerinaDistributionZip = file("$project.buildDir/distributions/ballerina-${ballerinaVersion}.zip")
-def ballerinaLinuxDistributionZip = file("$project.buildDir/distributions/ballerina-linux-${ballerinaVersion}.zip")
-def ballerinaMacDistributionZip = file("$project.buildDir/distributions/ballerina-macos-${ballerinaVersion}.zip")
-def ballerinaWindowsDistributionZip = file("$project.buildDir/distributions/ballerina-windows-${ballerinaVersion}.zip")
+def ballerinaDistributionZip = file("$project.buildDir/distributions/ballerina-${ballerinaLangVersion}.zip")
+def ballerinaLinuxDistributionZip = file("$project.buildDir/distributions/ballerina-linux-${ballerinaLangVersion}.zip")
+def ballerinaMacDistributionZip = file("$project.buildDir/distributions/ballerina-macos-${ballerinaLangVersion}.zip")
+def ballerinaWindowsDistributionZip = file("$project.buildDir/distributions/ballerina-windows-${ballerinaLangVersion}.zip")
 
 task unpackBallerinaJre(type: Download) {
     group = "unpack_dependencies"
@@ -188,7 +188,7 @@ task deleteTemporaryFiles(type: Delete) {
 }
 
 task copyOtherRepos(type: Copy) {
-    def ballerinaDist = "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
+    def ballerinaDist = "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
     into ballerinaDist
 
     /* Standard Libraries */
@@ -245,32 +245,32 @@ task copyOtherRepos(type: Copy) {
 task buildDistRepo(type: JavaExec) {
     classpath = project.configurations.repoBuilder
     main = 'io.ballerina.dist.DistRepoBuilder'
-    args "$buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
+    args "$buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
 }
 
 task copyDevToolsCoverageReport(type: Copy) {
     from "$project.buildDir/target/extracted-distributions/ballerina-dev-tools-zip/testerina-report-tools-${devToolsVersion}.zip"
-    into "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/lib/tools/coverage"
+    into "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/lib/tools/coverage"
     rename("testerina-report-tools-${devToolsVersion}.zip", "report.zip")
 }
 task copyDevToolsDocUi(type: Copy) {
     from zipTree("$project.buildDir/target/extracted-distributions/ballerina-dev-tools-zip/docerina-ui-${devToolsVersion}.zip")
-    into "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/lib/tools/doc-ui"
+    into "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/lib/tools/doc-ui"
 }
 
 task filterApiDocs(type: Delete) {
-    delete "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs/ballerina/lang.__internal"
-    delete "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs/ballerina/lang.annotations"
+    delete "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/docs/ballerina/lang.__internal"
+    delete "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/docs/ballerina/lang.annotations"
 }
 
 task combineDocs(type: Exec) {
-    workingDir "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}/docs"
+    workingDir "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/docs"
     if (Os.isFamily(Os.FAMILY_WINDOWS)) {
         commandLine 'cmd', '/c', "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/" +
-                "jballerina-tools-${ballerinaVersion}/bin/bal.bat", "doc", "--combine"
+                "jballerina-tools-${ballerinaLangVersion}/bin/bal.bat", "doc", "--combine"
     } else {
         commandLine "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/" +
-                "jballerina-tools-${ballerinaVersion}/bin/bal", "doc", "--combine"
+                "jballerina-tools-${ballerinaLangVersion}/bin/bal", "doc", "--combine"
     }
 }
 
@@ -283,7 +283,7 @@ task packageDist(type: Zip) {
     entryCompression = ZipEntryCompression.STORED
 
     into("${parentDir}") {
-        from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
+        from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
     }
     into("${parentDir}/examples") {
         from "${project.rootDir}/examples/"
@@ -336,7 +336,7 @@ task packageDistZip(type: Zip) {
 
     /* Tools artifacts */
     into("${parentDir}/distributions/ballerina-${shortVersion}") {
-        from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
+        from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
         exclude "distributions/ballerina-version"
         exclude "distributions/installer-version"
         exclude "/bin/version.txt"
@@ -415,7 +415,7 @@ task packageDistLinux(type: Zip) {
 
     /* Tools artifacts */
     into("${parentDir}/distributions/ballerina-${shortVersion}") {
-        from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
+        from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
         exclude "distributions/ballerina-version"
         exclude "distributions/installer-version"
         exclude "/bin/bal.bat"
@@ -490,7 +490,7 @@ task packageDistMac(type: Zip) {
 
     /* Tools artifacts */
     into("${parentDir}/distributions/ballerina-${shortVersion}") {
-        from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
+        from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
         exclude "distributions/ballerina-version"
         exclude "distributions/installer-version"
         exclude "/bin/bal.bat"
@@ -560,7 +560,7 @@ task packageDistWindows(type: Zip) {
 
     /* Tools artifacts */
     into("${parentDir}/distributions/ballerina-${shortVersion}") {
-        from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaVersion}"
+        from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
         exclude "distributions/ballerina-version"
         exclude "distributions/installer-version"
         exclude "/bin/bal"
@@ -632,8 +632,6 @@ task testExamples() {
     // The following BBEs will not be verified by compiling/running.
     def buildIgnoreList = [
             'proto-to-ballerina',
-            'websub-hub-client-sample',
-            'websub-remote-hub-sample',
             'docker-deployment',
             'c2c-deployment',
             'aws-lambda-deployment',
@@ -676,10 +674,10 @@ task testExamples() {
             'http-client-with-oauth2-refresh-token-grant-type',
 
             // Disabling due to pending migration for service typing
-            'websocket-cookie',
-            'websocket-retry',
-            'websocket-failover',
             'http-filters',
+
+            // Disabling sice we could not include credentials in the BBE
+            'websub-webhook-sample',
 
             // Disabling temporarily (https://github.com/ballerina-platform/ballerina-distribution/issues/1242)
             "ballerina-to-openapi",
@@ -708,9 +706,73 @@ task testExamples() {
             'rabbitmq-consumer-with-qos-settings',
             'rabbitmq-transaction-producer',
             'rabbitmq-transaction-consumer',
-            'mysql-complex-type-queries',
-            'jdbc-complex-type-queries'
 
+            // Disabling since JDBC & MySQL modules are removed from the distribution
+            'jdbc-parameterized-query',
+            'jdbc-execute-operation',
+            'jdbc-query-operation',
+            'jdbc-init-options',
+            'jdbc-complex-type-queries', // Consists date time in output
+            'jdbc-batch-execute-operation', // Consists transaction server start log
+            'mysql-init-options',
+            'mysql-query-operation',
+            'mysql-complex-type-queries',
+            'mysql-execute-operation',
+            'mysql-batch-execute-operation',
+            'mysql-parameterized-query',
+            'mysql-call-stored-procedures',
+            'local-transactions',
+            'xa-transactions',
+            'retry-transactions',
+            //TODO: Enable following for slp4
+            'http-timeout',
+            'http-retry',
+            'http-failover',
+            'http-load-balancer',
+            'http-circuit-breaker',
+            'content-based-routing',
+            'header-based-routing',
+            'websocket-basic-sample',
+            'http-1-1-to-2-0-protocol-switch',
+            'http-compression',
+            'http-streaming',
+            'different-payload-types',
+            'http-100-continue',
+            'http-cors',
+            'request-with-multiparts',
+            'http-disable-chunking',
+            'absolute-path-and-path',
+            'http-client-data-binding',
+            'http-redirects',
+            'non-transaction-retry',
+            'local-transactions-with-handlers',
+            'url-encode-decode',
+            'jwt-issue-validate',
+            'crypto',
+            'filepath',
+            'cache',
+            'time',
+            'csv-io',
+            'strings-io',
+            'bytes-io',
+            'error-handling-in-single-place',
+            'xml-attributes',
+            'streams',
+            'iterable-objects',
+            'raw-template',
+            'range-expressions',
+            'any-type',
+            'query-action',
+            'query-expression-to-stream',
+            'error-match-statement',
+            'mapping-match-statement',
+            'tuple-match-statement',
+            'the-main-function',
+            'function-pointers',
+            'hello-world-client',
+            'hello-world-parallel',
+            'hello-world-service',
+            'distributed-transactions'
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
@@ -718,10 +780,7 @@ task testExamples() {
     // to the above buildIgnoreList.
     def outputVerificationIgnoreList = [
             'the-main-function', //Needs user input
-            'local-transactions',  // Xid varies
             'local-transactions-with-handlers', // Xid varies
-            'xa-transactions', // Consists of the transaction coordinator start log
-            'retry-transactions', // Xid varies
             'distributed-transactions', // has timestamps in the output
             'optional-type',  // Needs inputs at runtime
             'while',        // Needs inputs at runtime
@@ -730,8 +789,6 @@ task testExamples() {
             'checkpanic', // Has user name in output
             'deprecation', // Contains user input
             'foreach', // Has tabs for formatting in input
-            'websub-service-integration-sample',
-            'websub-internal-hub-sample',
             'grpc-server-streaming',
             'http-compression',
             'http-redirects',
@@ -747,26 +804,10 @@ task testExamples() {
             'http-cors',
             'http-client-data-binding',
             'websocket-basic-sample',
-            'websocket-chat-application',
-            'websocket-async-text-client',
-            'websocket-async-binary-client',
             'websocket-text-client',
             'websocket-binary-client',
-            'websocket-cookie',
-            'websocket-failover',
-            'websocket-proxy-server',
-            'websocket-retry',
             'random',  // Output varies
-            'jdbc-complex-type-queries', // Consists date time in output
-            'jdbc-batch-execute-operation', // Consists transaction server sart log
             'log-api',
-            'mysql-init-options',
-            'mysql-query-operation',
-            'mysql-complex-type-queries',
-            'mysql-execute-operation',
-            'mysql-batch-execute-operation',
-            'mysql-parameterized-query',
-            'mysql-call-stored-procedures',
             'udp-client',
             'udp-connect-client',
             'udp-listener',
@@ -793,7 +834,50 @@ task testExamples() {
             'task-service-appointment',
             'error-handling-in-single-place',
             'file-io',
-            'uuid'  // Output varies
+            'uuid',  // Output varies
+            //TODO: Enable following for slp4
+            'non-transaction-retry',
+            'url-encode-decode',
+            'xslt-transformation',
+            'task-one-time-job-execution',
+            'task-frequency-job-execution',
+            'strings',
+            'cache',
+            'xml-io',
+            'json-io',
+            'csv-io',
+            'strings-io',
+            'bytes-io',
+            'java-exceptions',
+            'overloaded-methods-constructors',
+            'java-varargs',
+            'java-arrays',
+            'access-mutate-java-fields',
+            'invoke-java-methods',
+            'create-java-objects',
+            'xml-functions',
+            'xml-access',
+            'xml-namespaces',
+            'xml-attributes',
+            'xml-literal',
+            'query-expression-to-xml',
+            'query-expression-to-table',
+            'query-expression-to-string',
+            'query-expression-to-stream',
+            'query-expression',
+            'error-match-statement',
+            'mapping-match-statement',
+            'tuple-match-statement',
+            'anonymous-functions',
+            'function-pointers',
+            'basic-documentation',
+            'functions',
+            'var',
+            'variables',
+            'modules',
+            'hello-world-client',
+            'hello-world-parallel',
+            'hello-world'
     ]
 
     doFirst {

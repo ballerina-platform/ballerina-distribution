@@ -56,7 +56,7 @@ Alternatively, you can install Ballerina from the source using the following ins
     ```
  
 3. Run the Gradle build command ``./gradlew build`` from the repository root directory.
-4. Extract the Ballerina distribution created at `ballerina/target/ballerina-<version>-SNAPSHOT.zip`.
+4. Extract the Ballerina distribution created at `ballerina/build/distributions/ballerina-<version>-SNAPSHOT.zip`.
 
 ## Contributing to Ballerina
 
