@@ -5,7 +5,7 @@ import ballerina/io;
 // The client endpoint configuration.
 HelloWorldClient ep = check new("http://localhost:9090");
 
-public function main (string... args) returns error? {
+public function main () returns error? {
     // Setting the custom headers.
     ContextString requestMessage =
     {content: "WSO2", headers: {client_header_key: "0987654321"}};

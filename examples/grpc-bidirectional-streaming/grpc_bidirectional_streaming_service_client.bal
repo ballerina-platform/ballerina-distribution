@@ -4,7 +4,7 @@ import ballerina/io;
 // Client endpoint configuration.
 ChatClient ep = check new("http://localhost:9090");
 
-public function main (string... args) returns error? {
+public function main () returns error? {
     // Executes the RPC call and receives the customized streaming client.
     ChatStreamingClient streamingClient = check ep->chat();
 

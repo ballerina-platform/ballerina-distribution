@@ -8,7 +8,7 @@ HelloWorldClient ep = check new ("https://localhost:9090", {
     }
 });
 
-public function main (string... args) returns error? {
+public function main () returns error? {
     ContextString requestMessage = {content: "WSO2", headers: {}};
     // Executing the unary call.
     ContextString result = check ep->helloContext(requestMessage);

@@ -4,7 +4,7 @@ import ballerina/io;
 // The client endpoint configuration.
 HelloWorldClient ep = check new("http://localhost:9090");
 
-public function main (string... args) returns error? {
+public function main () returns error? {
     string[] requests = ["Hi Sam", "Hey Sam", "GM Sam"];
     // Execute the client-streaming RPC call and receive the streaming client.
     LotsOfGreetingsStreamingClient streamingClient = check
