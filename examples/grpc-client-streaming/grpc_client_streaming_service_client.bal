@@ -14,7 +14,7 @@ public function main (string... args) returns error? {
         check streamingClient->sendstring(greet);
     }
     // Once all the messages are sent, the server notifies the caller with a `complete` message.
-    checkp streamingClient->complete();
+    check streamingClient->complete();
     io:println("Completed successfully");
     string? response = check streamingClient->receiveString();
     io:println(response);

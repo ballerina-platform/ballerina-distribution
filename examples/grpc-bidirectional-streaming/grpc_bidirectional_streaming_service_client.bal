@@ -26,6 +26,6 @@ public function main (string... args) returns error? {
         if !(result is grpc:Error) {
             io:println(result);
         }
-        result = streamingClient->receiveString();
+        result = check streamingClient->receiveString();
     }
 }
