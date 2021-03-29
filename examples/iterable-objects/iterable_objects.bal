@@ -76,7 +76,7 @@ public function main() {
     i = 0;
     IteratorGeneratorWithError itarableWithError = new;
 
-    // Using iterble object in query expression 
+    // An iterable object can be used in a query expression.
     int[]|error integers = from var item in itarableWithError select item;
     if integers is error {
         panic integers;
