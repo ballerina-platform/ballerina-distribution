@@ -1,6 +1,6 @@
 import ballerina/io;
 
-// A class that is a subtype of `Iterator<int,()>`.
+// A class that is a subtype of `Iterator<int, ()>`.
 class ArrayIterator {
     private int[] integers = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34];
     private int cursor = -1;
