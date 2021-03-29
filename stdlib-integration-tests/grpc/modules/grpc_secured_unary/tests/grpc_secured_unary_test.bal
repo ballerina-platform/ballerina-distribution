@@ -14,11 +14,10 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import ballerina/io;
 import ballerina/test;
 
 // Client endpoint configuration with SSL configurations.
-HelloWorldBlockingClient helloWorldBlockingEp = new("https://localhost:20004", {
+HelloWorldClient helloWorldBlockingEp = check new("https://localhost:20004", {
     secureSocket: {
         cert: {
             path: TRUSTSTORE_PATH,
@@ -30,12 +29,10 @@ HelloWorldBlockingClient helloWorldBlockingEp = new("https://localhost:20004", {
 @test:Config {}
 function testSecuredUnaryService() {
     // Executes unary blocking secured call.
-    var unionResp = helloWorldBlockingEp->hello("WSO2");
-    if (unionResp is error) {
-        test:assertFail(io:sprintf(ERROR_MSG_FORMAT, unionResp.message()));
+    string|error result = helloWorldBlockingEp->hello("WSO2");
+    if (result is error) {
+        test:assertFail(string `Error from Connector: ${result.message()}`);
     } else {
-        string result;
-        [result, _] = unionResp;
         string expected = "Hello WSO2";
         test:assertEquals(result, expected);
     }

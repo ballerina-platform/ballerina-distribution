@@ -14,76 +14,30 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import ballerina/io;
-import ballerina/grpc;
-import ballerina/runtime;
 import ballerina/test;
 
 // Client endpoint configuration.
-HelloWorldClient helloWorldEp = new("http://localhost:20005");
-const string ERROR_MSG_FORMAT = "Error from Connector: %s";
-boolean completed = false;
-string responseMsg = "";
+HelloWorldClient helloWorldEp = check new("http://localhost:20005");
 
 @test:Config {}
-function testClientStreamingService() {
-    grpc:StreamingClient ep;
-    // Execute the unary non-blocking call that registers a server message listener.
-    var res = helloWorldEp->lotsOfGreetings(MessageListener);
-    if (res is error) {
-        test:assertFail(io:sprintf(ERROR_MSG_FORMAT, res.message()));
-        return;
-    } else {
-        io:println("Initialized connection sucessfully.");
-        ep = res;
-    }
-
+function testClientStreamingService() returns error? {
     // Send multiple messages to the server.
-    string[] greets = ["Hi", "Hey", "GM"];
-    var name = "John";
-    foreach string greet in greets {
-        error? connErr = ep->send(greet + " " + name);
-        if (connErr is error) {
-            test:assertFail(io:sprintf(ERROR_MSG_FORMAT, connErr.message()));
-        } else {
-            io:println("Send greeting: " + greet + " " + name);
-        }
+    string[] requests = ["Hi Sam", "Hey Sam", "GM Sam"];
+    // Execute the client-streaming RPC call and receive the streaming client.
+    LotsOfGreetingsStreamingClient streamingClient = check helloWorldEp->lotsOfGreetings();
+    // Send multiple messages to the server.
+    foreach var greet in requests {
+        check streamingClient->sendstring(greet);
     }
     // Once all the messages are sent, the server notifies the caller with a `complete` message.
-    checkpanic ep->complete();
+    check streamingClient->complete();
 
-    int waitCount = 0;
-    while(!completed) {
-        runtime:sleep(1000);
-        if (waitCount > 10) {
-            break;
-        }
-        waitCount += 1;
+    string? response = check streamingClient->receiveString();
+    if response is string {
+        string expected = "Ack";
+        test:assertEquals(response, expected);
+    } else {
+        test:assertFail(string `Error from Connector: connection closed before receiving the response`);
     }
-    test:assertEquals(completed, true, msg = "Incomplete response message.");
-    string expected = "Ack";
-    test:assertEquals(responseMsg, expected);
+
 }
-
-// Server Message Listener.
-service object{} MessageListener = service object {
-
-    // Resource registered to receive server messages.
-    function onMessage(string message) {
-        completed = true;
-        responseMsg = <@untainted> message;
-        io:println("Response received from server: " + message);
-    }
-
-    // Resource registered to receive server error messages.
-    function onError(error err) {
-        completed = true;
-        responseMsg = io:sprintf(ERROR_MSG_FORMAT, err.message());
-    }
-
-    // Resource registered to receive server completed messages.
-    function onComplete() {
-        completed = true;
-        io:println("Server Complete Sending Responses.");
-    }
-};

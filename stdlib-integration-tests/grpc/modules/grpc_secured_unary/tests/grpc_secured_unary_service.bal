@@ -32,25 +32,9 @@ listener grpc:Listener ep = new (20004, {
     descriptor: ROOT_DESCRIPTOR,
     descMap: getDescriptorMap()
 }
-service /HelloWorld on ep {
-    isolated remote function hello(grpc:Caller caller, string name) {
-        log:printInfo("Server received hello from " + name);
-        string message = "Hello " + name;
-
-        // Send a response message to the caller.
-        grpc:Error? err = caller->send(message);
-
-        if (err is grpc:Error) {
-            log:printError("Error from Connector: " + err.message());
-        } else {
-            log:printInfo("Server send response : " + message);
-        }
-
-        // Send the `completed` notification to the caller.
-        grpc:Error? result = caller->complete();
-        if (result is grpc:Error) {
-            log:printError("Error in sending completed notification to caller",
-                err = result);
-        }
+service "HelloWorld" on ep {
+    remote function hello(string request) returns string|error {
+        log:printInfo("Server received hello from " + request);
+        return "Hello " + request;
     }
 }

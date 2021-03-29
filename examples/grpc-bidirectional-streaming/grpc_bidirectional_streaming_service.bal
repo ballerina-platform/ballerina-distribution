@@ -20,7 +20,7 @@ service "Chat" on ep {
             responses[i] = string `${chatMsg.message}: ${chatMsg.name}`;
             i += 1;
         });
-        // Once the client sends a notification to indicate the end of the stream, 'grpc:EOS' is returned by the stream.
+        // Once the client sends a notification to indicate the end of the stream, '()' is returned by the stream.
         return responses.toStream();
     }
 }

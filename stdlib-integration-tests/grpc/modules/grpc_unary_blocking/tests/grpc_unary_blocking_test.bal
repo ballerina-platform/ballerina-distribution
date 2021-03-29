@@ -15,30 +15,25 @@
 // under the License.
 
 import ballerina/grpc;
-import ballerina/io;
 import ballerina/test;
 
 // Client endpoint configuration
-HelloWorldBlockingClient blockingEp = new("http://localhost:20001");
-const string ERROR_MSG_FORMAT = "Error from Connector: %s";
+HelloWorldClient ep = check new("http://localhost:20001");
 
 @test:Config {}
-function testUnaryBlockingService() {
-    // Writes custom headers to request message.
-    grpc:Headers headers = new;
-    headers.setEntry("client_header_key", "Request Header Value");
+function testUnaryBlockingService() returns error? {
+    // Setting the custom headers.
+    ContextString requestMessage =
+    {content: "WSO2", headers: {client_header_key: "0987654321"}};
 
-    // Executes unary blocking call with headers.
-    var unionResp = blockingEp->hello("WSO2", headers);
-    if (unionResp is error) {
-        test:assertFail(io:sprintf(ERROR_MSG_FORMAT, unionResp.message()));
+    // Executing the unary call.
+    ContextString|error result = ep->helloContext(requestMessage);
+    if (result is error) {
+        test:assertFail(string `Error from Connector: ${result.message()}`);
     } else {
-        string result;
-        grpc:Headers resHeaders;
-        [result, resHeaders] = unionResp;
         string expected = "Hello WSO2";
-        test:assertEquals(result, expected);
-        string headerValue = resHeaders.get("server_header_key") ?: "none";
+        test:assertEquals(result.content, expected);
+        string headerValue = check grpc:getHeader(result.headers, "server_header_key");
         string expectedHeaderValue = "Response Header value";
         test:assertEquals(headerValue, expectedHeaderValue);
     }

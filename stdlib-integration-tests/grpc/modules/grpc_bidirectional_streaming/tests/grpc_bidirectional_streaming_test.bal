@@ -15,70 +15,39 @@
 // under the License.
 
 import ballerina/grpc;
-import ballerina/io;
-import ballerina/runtime;
+import ballerina/lang.runtime;
 import ballerina/test;
 
 //Client endpoint configuration.
-ChatClient chatEp = new("http://localhost:20006");
+ChatClient chatEp = check new("http://localhost:20006");
 const string ERROR_MSG_FORMAT = "Error from Connector: %s";
-boolean received = false;
-string responseMsg = "";
 
 @test:Config {}
-function testBidiStreamingService() {
-    grpc:StreamingClient ep;
-    // Executes unary non-blocking call registering server message listener.
-    var res = chatEp->chat(MessageListener);
-    if (res is grpc:Error) {
-        test:assertFail(io:sprintf(ERROR_MSG_FORMAT, res.message()));
-        return;
-    } else {
-        io:println("Initialized connection sucessfully.");
-        ep = res;
-    }
+function testBidiStreamingService() returns error? {
+    // Executes the RPC call and receives the customized streaming client.
+    ChatStreamingClient streamingClient = check chatEp->chat();
+
+    // Reads response from the server.
+    _ = start readResponses(streamingClient);
 
     // Sends multiple messages to the server.
     ChatMessage mes = { name: "Sam", message: "Hi" };
-    grpc:Error? connErr = ep->send(mes);
+    grpc:Error? connErr = streamingClient->sendChatMessage(mes);
     if (connErr is grpc:Error) {
-        test:assertFail(io:sprintf(ERROR_MSG_FORMAT, connErr.message()));
+        test:assertFail(string `Error from Connector: ${connErr.message()}`);
     }
 
-    int waitCount = 0;
-    while(!received) {
-        io:println(responseMsg);
-        runtime:sleep(1000);
-        if (waitCount > 10) {
-            break;
-        }
-        waitCount += 1;
-    }
-    test:assertEquals(received, true, msg = "Server message didn't receive.");
-    string expected = "Sam: Hi";
-    test:assertEquals(responseMsg, expected);
+    runtime:sleep(5000);
     // Once all messages are sent, client send complete message to notify the server, I am done.
-    checkpanic ep->complete();
+    check streamingClient->complete();
 }
 
-service object{} MessageListener = service object {
+public function readResponses(ChatStreamingClient streamingClient) returns error? {
+   string? response = check streamingClient->receiveString();
+   while !(response is ()) {
+      string expected = "Sam: Hi";
+      test:assertEquals(response, expected);
+      response = check streamingClient->receiveString();
+   }
+}
 
-    // Resource registered to receive server messages.
-    function onMessage(string message) {
-        responseMsg = <@untainted> message;
-        received = true;
-        io:println("Response received from server: " + message);
-    }
-
-    // Resource registered to receive server error messages.
-    function onError(error err) {
-        test:assertFail(io:sprintf(ERROR_MSG_FORMAT, err.message()));
-        received = true;
-    }
-
-    // Resource registered to receive server completed message.
-    function onComplete() {
-        received = true;
-        io:println("Server Complete Sending Responses.");
-    }
-};
