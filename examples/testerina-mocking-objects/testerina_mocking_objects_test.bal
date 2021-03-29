@@ -10,9 +10,9 @@ public client class MockHttpClient {
     map<string|string[]>? headers = (),
     http:TargetType targetType = http:Response) returns
     http:Response | http:ClientError {
-        http:Response res = new;
-        res.statusCode = 500;
-        return res;
+        http:Response response = new;
+        response.statusCode = 500;
+        return response;
     }
 }
 

@@ -5,24 +5,24 @@ Compiling source
 Running tests
     ballerinatest/test_module:0.1.0
 
-        [pass] testAssertIntEquals
-        [pass] testAssertFloatEquals
-        [pass] testAssertStringEquals
-        [pass] testAssertJsonEquals
-        [pass] testAssertXmlEquals
-        [pass] testAssertBooleanEquals
-        [pass] testAssertStringArrayEquals
-        [pass] testAssertIntArrayEquals
-        [pass] testAssertFloatArrayEquals
-        [pass] testAssertNotEqualsString
-        [pass] testAssertNotEqualsJson
-        [pass] testAssertNotEqualsXml
-        [pass] testAssertExactEqualsObject
-        [pass] testAssertNotExactEqualsObject
-        [pass] testAssertTrue
-        [pass] testAssertFalse
-        [pass] testAssertFail
+                [pass] testAssertBooleanEquals
+                [pass] testAssertExactEqualsObject
+                [pass] testAssertFail
+                [pass] testAssertFalse
+                [pass] testAssertFloatArrayEquals
+                [pass] testAssertFloatEquals
+                [pass] testAssertIntArrayEquals
+                [pass] testAssertIntEquals
+                [pass] testAssertJsonEquals
+                [pass] testAssertNotEqualsJson
+                [pass] testAssertNotEqualsString
+                [pass] testAssertNotEqualsXml
+                [pass] testAssertNotExactEqualsObject
+                [pass] testAssertStringArrayEquals
+                [pass] testAssertStringEquals
+                [pass] testAssertTrue
+                [pass] testAssertXmlEquals
 
-        17 passing
-        0 failing
-        0 skipped
+                17 passing
+                0 failing
+                0 skipped
