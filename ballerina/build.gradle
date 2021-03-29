@@ -849,7 +849,6 @@ task testExamples() {
             'non-transaction-retry',
             'url-encode-decode',
             'xslt-transformation',
-            'strings',
             'xml-io',
             'json-io',
             'csv-io',
