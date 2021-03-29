@@ -7,12 +7,20 @@
 // CLI parameters, and environment variables.
 // The precedence order for retrieving configurable values is as follows:
 //
-// * CLI parameters with the following format
+// * CLI parameters with the following format,
 // ```
 // -Ckey=value
 // ```
-// Currently, CLI based configuration is supported for configurable variables of types
-// `int`, `float`, `boolean`, `string`, `decimal`, and `xml`.
+// The key of a CLI parameter can be specified as,
+//
+// ```
+// key:= [[org-name .] module-name .] variable
+// ```
+//
+// The org-name and module-name is optional for the variable defined in the
+// root module or single ballerina file. Currently, CLI based configuration
+// is supported for configurable variables of types `int`, `float`, `boolean`,
+// `string`, `decimal`, and `xml`.
 //
 // * Configuration files
 //
