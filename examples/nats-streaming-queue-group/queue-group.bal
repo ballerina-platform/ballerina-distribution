@@ -2,7 +2,7 @@ import ballerina/io;
 import ballerinax/stan;
 
 // Initializes the NATS Streaming listeners.
-listener stan:Listener lis = checkpanic new;
+listener stan:Listener lis = new(stan:DEFAULT_URL);
 
 // Binds the consumer to listen to the messages published to the 'demo' subject.
 // Belongs to the queue group named "sample-queue-group"

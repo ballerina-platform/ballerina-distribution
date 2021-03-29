@@ -8,7 +8,7 @@ import ballerinax/rabbitmq;
 }
 // Attaches the service to the listener.
 service /transactionConsumer on
-                    new rabbitmq:Listener({host: "localhost", port: 5672}) {
+    new rabbitmq:Listener(rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT) {
 
     // Gets triggered when a message is received by the queue.
     remote function onMessage(rabbitmq:Message message,
@@ -16,7 +16,7 @@ service /transactionConsumer on
 
         var messageContent = 'string:fromBytes(message.content);
         if (messageContent is string) {
-            log:print("The message received: " + messageContent);
+            log:printInfo("The message received: " + messageContent);
         } else {
             log:printError(
                        "Error occurred while retrieving the message content.");
