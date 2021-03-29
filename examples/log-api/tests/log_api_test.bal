@@ -14,7 +14,7 @@ string printWarn = "";
 }
 test:MockFunction mock_printDebug = new();
 
-public function mockPrintDebug(string msg, *log:KeyValues keyValues, error? err = () {
+public function mockPrintDebug(string msg, *log:KeyValues keyValues, error? err = ()) {
     printDebug = msg;
 }
 
