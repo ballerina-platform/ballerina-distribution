@@ -19,7 +19,7 @@ isolated function onCommitFunc(transactions:Info info) {
     io:println("Commit handler executed.");
 }
 
-public function main() {
+public function main() returns error? {
     // The `transaction` block initiates the transaction.
     transaction {
         // Register the rollback handler to the transaction context.
@@ -45,7 +45,7 @@ public function main() {
             rollback;
         } else {
             io:println("Local participant successfully executed.");
-            var commitRes = commit;
+            var commitRes = check commit;
         }
     }
 }

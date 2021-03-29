@@ -681,7 +681,6 @@ task testExamples() {
 
             // Disabling temporarily (https://github.com/ballerina-platform/ballerina-distribution/issues/1242)
             "ballerina-to-openapi",
-            "log-api",
             "optional-type",
             "while",
 
@@ -744,18 +743,12 @@ task testExamples() {
             'absolute-path-and-path',
             'http-client-data-binding',
             'http-redirects',
-            'non-transaction-retry',
-            'local-transactions-with-handlers',
             'url-encode-decode',
             'jwt-issue-validate',
             'crypto',
-            'streams',
             'iterable-objects',
-            'raw-template',
             'range-expressions',
             'any-type',
-            'query-action',
-            'query-expression-to-stream',
             'error-match-statement',
             'mapping-match-statement',
             'tuple-match-statement',
@@ -764,7 +757,6 @@ task testExamples() {
             'hello-world-client',
             'hello-world-parallel',
             'hello-world-service',
-            'distributed-transactions'
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
@@ -825,7 +817,6 @@ task testExamples() {
             'file-io',
             'uuid',  // Output varies
             //TODO: Enable following for slp4
-            'non-transaction-retry',
             'url-encode-decode',
             'xslt-transformation',
             'java-exceptions',
@@ -834,17 +825,11 @@ task testExamples() {
             'access-mutate-java-fields',
             'invoke-java-methods',
             'create-java-objects',
-            'query-expression-to-xml',
-            'query-expression-to-table',
-            'query-expression-to-string',
-            'query-expression-to-stream',
-            'query-expression',
             'error-match-statement',
             'mapping-match-statement',
             'tuple-match-statement',
             'anonymous-functions',
             'function-pointers',
-            'basic-documentation',
             'functions',
             'var',
             'variables',
