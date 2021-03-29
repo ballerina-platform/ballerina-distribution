@@ -18,7 +18,7 @@ function testFunc() {
     test:when(mock_printLn).call("mockPrint");
 
     // Invoking the main function
-    var ret = main();
+    error? ret = main();
     test:assertEquals(outputs.length(), 29);
     test:assertEquals(outputs[0], "Hex encoded hash with MD5: 0605402ee16d8e96511a58ff105bc24a");
     test:assertEquals(outputs[1], "Base64 encoded hash with SHA1: /8fwbGIevBvv2Nl3gEL9DtWas+Q=");

@@ -41,8 +41,9 @@ public function main() {
     // Create an `anydata`-typed `map` with two entries.
     map<string|int> m1 = {stringVal: "str", intVal: 1};
 
-    // Call `.cloneReadOnly()` on the map `m1` and assign the returned value to another variable.
-    map<string|int> m2 = m1.cloneReadOnly();
+    // Call `.cloneReadOnly()` on the map `m1` and assign the returned value to another variable
+    // of type `map<string|int> & readonly`.
+    map<string|int> & readonly m2 = m1.cloneReadOnly();
 
     // Reference equality checks for `m1` and `m2` should evaluate to false due to a clone being created
     // since `m1` is not an immutable value.
@@ -65,7 +66,7 @@ public function main() {
     }
 
     // Now call `.cloneReadOnly()` on the immutable value `m2`.
-    map<string|int> m3 = m2.cloneReadOnly();
+    map<string|int> & readonly m3 = m2.cloneReadOnly();
 
     // Reference equality checks for `m2` and `m3` should evaluate to true due to no clones being created
     // since `m2` is already an immutable value.
@@ -82,8 +83,8 @@ public function main() {
     var immutableClonedVal = m5.cloneReadOnly();
     // Checking if the immutable value is of the type `map<string>`. Thus,
     // it evaluates to `true`.
-    if (immutableClonedVal is map<string>) {
-        io:println("immutableClonedVal is map<string>");
+    if (immutableClonedVal is map<string> & readonly) {
+        io:println("immutableClonedVal is map<string> & readonly");
     }
 }
 

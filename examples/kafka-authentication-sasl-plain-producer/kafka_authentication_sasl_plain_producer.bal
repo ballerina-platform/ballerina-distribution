@@ -14,7 +14,7 @@ kafka:AuthenticationConfiguration authConfig = {
 
 kafka:ProducerConfiguration producerConfigs = {
     // Provide the relevant authentication configuration record to authenticate the producer.
-    authenticationConfiguration: authConfig
+    auth: authConfig
 
 };
 

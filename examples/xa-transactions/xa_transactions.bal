@@ -36,7 +36,7 @@ public function main() returns error? {
         var customer = dbClient1->execute("UPDATE EMPLOYEE " +
                                        "SET NAME='Annie' WHERE ID=1");
         var salary = dbClient2->execute("UPDATE SALARY " +
-                                       "SET SALARY=30000 WHERE ID=1");
+                                       "SET VALUE=30000 WHERE ID=1");
 
         // Return information about the current transaction.
         transactions:Info transInfo = transactions:info();

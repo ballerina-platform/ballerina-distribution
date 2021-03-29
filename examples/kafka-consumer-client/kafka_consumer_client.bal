@@ -21,11 +21,11 @@ public function main() returns error? {
 
         if (message is string) {
             // Prints the retrieved Kafka record.
-            log:printInfo("Received Message: ", message);
+            log:printInfo("Received Message: " + message);
 
         } else {
             log:printError("Error occurred while converting message data",
-                err = message);
+                'error = message);
         }
     }
 }
