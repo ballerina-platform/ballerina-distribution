@@ -9,7 +9,8 @@ class ArrayIterator {
     public isolated function next() returns record {| int value; |}? {
         self.cursor += 1;
         if self.cursor < self.integers.length() {
-            record {| int value; |} nextVal = {value: self.integers[self.cursor]};
+            record {| int value; |} nextVal = 
+                {value: self.integers[self.cursor]};
             return nextVal;
         } else if self.cursor > self.integers.length() {
             panic error("Index out of range");
@@ -23,8 +24,8 @@ class IteratorGenerator {
     *object:Iterable;
     // The `iterator()` method should return a new `Iterator<T,()>`.
     public function iterator() returns object {
-                                           public isolated function next() returns record {| int value; |}?;
-                                       } {
+        public isolated function next() returns record {| int value; |}?;
+        } {
         return new ArrayIterator();
     }
 }
@@ -40,7 +41,7 @@ class ArrayIteratorWithError {
         self.cursor += 1;
         if self.cursor < self.integers.length() {
             int nextValue = self.integers[self.cursor];
-            if (nextValue < 0) {
+            if nextValue < 0 {
                 return error("Negative value recieved");
             }
             record {| int value; |} nextVal = {value: nextValue};
@@ -56,8 +57,8 @@ class IteratorGeneratorWithError {
     *object:Iterable;
     // The `iterator()` method should return a new `Iterator<T,()>`.
     public function iterator() returns object {
-                                           public isolated function next() returns record {| int value; |}|error?;
-                                       } {
+        public isolated function next() returns record {| int value; |}|error?;
+       } {
         return new ArrayIteratorWithError();
     }
 }
@@ -77,7 +78,7 @@ public function main() {
 
     // Using iterble object in query expression 
     int[]|error integers = from var item in itarableWithError select item;
-    if (integers is error) {
+    if integers is error {
         panic integers;
     } else {
         foreach var item in integers {
