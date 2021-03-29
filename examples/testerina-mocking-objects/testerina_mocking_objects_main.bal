@@ -20,7 +20,8 @@ function performGet() returns @tainted http:Response {
         http:Request req = new;
         req.addHeader("Sample-Name", "http-client-connector");
         response = <http:Response> checkpanic 
-        clientEndpoint -> get("/get?test=123", req);
+        clientEndpoint -> get("/get?test=123",
+            {"Sample-Name": "http-client-connector"});
         io:println("Status code: ", response.statusCode.toString());
     }
     return response;
@@ -35,7 +36,7 @@ function sendNotification(string[] emailIds) returns error? {
         to: emailIds,
         body: ""
     };
-    email:Error? response = smtpClient -> sendEmailMessage(msg);
+    email:Error? response = smtpClient -> sendMessage(msg);
     if (response is error) {
         io:println("error while sending the email: ", response.message());
         return response;
