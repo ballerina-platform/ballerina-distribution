@@ -794,12 +794,6 @@ task testExamples() {
             //TODO: Enable following for slp4
             'url-encode-decode',
             'xslt-transformation',
-            'java-exceptions',
-            'overloaded-methods-constructors',
-            'java-varargs',
-            'access-mutate-java-fields',
-            'invoke-java-methods',
-            'create-java-objects',
             'error-match-statement',
             'mapping-match-statement',
             'tuple-match-statement',
