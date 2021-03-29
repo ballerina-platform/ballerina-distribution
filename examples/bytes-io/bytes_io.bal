@@ -14,7 +14,7 @@ public function main() returns @tainted error? {
 
     // Read the file as a stream of blocks. The default block size is 4KB.
     // Here, the default size is overridden by the value 2KB.
-    stream<io:Block, io:Error> blockStream = check
+    stream<io:Block, io:Error?> blockStream = check
     io:fileReadBlocksAsStream(imagePath, 2048);
     // If the file reading was successful, then,
     // the content will be written to the given destination file using the given stream.

@@ -1,5 +1,4 @@
 import ballerina/http;
-import ballerina/log;
 
 type Student record {
     string Name;
@@ -9,22 +8,17 @@ type Student record {
 
 service /hello on new http:Listener(9090) {
 
-    // The `orderDetails` parameter in [Payload annotation](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/Payload)
+    // The `orderDetails` parameter in [Payload annotation](https://docs.central.ballerina.io/ballerina/http/latest/http/records/Payload)
     // represents the entity body of the inbound request.
-    resource function post bindJson(http:Caller caller, http:Request req,
-                               @http:Payload {} json orderDetails) {
+    resource function post bindJson(@http:Payload json orderDetails)
+            returns json|http:BadRequest {
         //Accesses the JSON field values.
         var details = orderDetails.Details;
-        http:Response res = new;
         if (details is json) {
-            res.setPayload(<@untainted>details);
+            return details;
         } else {
-            res.statusCode = 400;
-            res.setPayload("Order Details unavailable");
-        }
-        var result = caller->respond(res);
-        if (result is error) {
-            log:printError(result.message(), err = result);
+            http:BadRequest response = {body: "Order Details unavailable"};
+            return response;
         }
     }
 
@@ -32,17 +26,10 @@ service /hello on new http:Listener(9090) {
     @http:ResourceConfig {
         consumes: ["application/xml"]
     }
-    resource function post bindXML(http:Caller caller, http:Request req,
-                                    @http:Payload {} xml store) {
+    resource function post bindXML(@http:Payload xml store) returns xml {
         //Accesses the XML content.
         xml city = store.selectDescendants("{http://www.test.com}city");
-        http:Response res = new;
-        res.setPayload(<@untainted>city);
-
-        var result = caller->respond(res);
-        if (result is error) {
-            log:printError(result.message(), err = result);
-        }
+        return city;
     }
 
     //Binds the JSON payload to a custom record. The payload's content should
@@ -50,18 +37,12 @@ service /hello on new http:Listener(9090) {
     @http:ResourceConfig {
         consumes: ["application/json"]
     }
-    resource function post bindStruct(http:Caller caller, http:Request req,
-                                 @http:Payload {} Student student) {
+    resource function post bindStruct(@http:Payload Student student)
+            returns json {
         //Accesses the fields of the `Student` record.
         string name = <@untainted>student.Name;
         int grade = <@untainted>student.Grade;
         string english = <@untainted string>student.Marks["English"];
-        http:Response res = new;
-        res.setPayload({Name: name, Grade: grade, English: english});
-
-        var result = caller->respond(res);
-        if (result is error) {
-            log:printError(result.message(), err = result);
-        }
+        return {Name: name, Grade: grade, English: english};
     }
 }

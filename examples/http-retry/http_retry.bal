@@ -7,8 +7,8 @@ http:Client backendClientEP = check new ("http://localhost:8080", {
             // Retry configuration options.
             retryConfig: {
 
-                // Initial retry interval in milliseconds.
-                intervalInMillis: 3000,
+                // Initial retry interval in seconds.
+                interval: 3,
 
                 // Number of retry attempts before giving up.
                 count: 3,
@@ -17,15 +17,15 @@ http:Client backendClientEP = check new ("http://localhost:8080", {
                 // the retry interval.
                 backOffFactor: 2.0,
 
-                // Upper limit of the retry interval in milliseconds. If
-                // `intervalInMillis` into `backOffFactor` value exceeded
-                // `maxWaitIntervalInMillis` interval value,
-                // `maxWaitIntervalInMillis` will be considered as the retry
+                // Upper limit of the retry interval in seconds. If
+                // `interval` into `backOffFactor` value exceeded
+                // `maxWaitInterval` interval value,
+                // `maxWaitInterval` will be considered as the retry
                 // interval.
-                maxWaitIntervalInMillis: 20000
+                maxWaitInterval: 20
 
             },
-            timeoutInMillis: 2000
+            timeout: 2
         }
     );
 
@@ -45,7 +45,7 @@ service /'retry on new http:Listener(9090) {
             var responseToCaller = caller->respond(<@untainted>backendResponse);
             if (responseToCaller is error) {
                 log:printError("Error sending response",
-                                err = responseToCaller);
+                                'error = responseToCaller);
             }
         } else {
             http:Response response = new;
@@ -54,7 +54,7 @@ service /'retry on new http:Listener(9090) {
             var responseToCaller = caller->respond(response);
             if (responseToCaller is error) {
                 log:printError("Error sending response",
-                                err = responseToCaller);
+                                'error = responseToCaller);
             }
         }
 
@@ -71,14 +71,15 @@ service /hello on new http:Listener(8080) {
     resource function get .(http:Caller caller, http:Request req) {
         counter = counter + 1;
         if (counter % 4 != 0) {
-            log:print("Request received from the client to delayed service.");
-            // Delay the response by 5000 milliseconds to mimic network level delays.
+            log:printInfo(
+                "Request received from the client to delayed service.");
+            // Delay the response by 5 seconds to mimic network level delays.
             runtime:sleep(5);
 
             var responseToCaller = caller->respond("Hello World!!!");
             handleRespondResult(responseToCaller);
         } else {
-            log:print(
+            log:printInfo(
                 "Request received from the client to healthy service.");
             var responseToCaller = caller->respond("Hello World!!!");
             handleRespondResult(responseToCaller);
@@ -89,6 +90,6 @@ service /hello on new http:Listener(8080) {
 function handleRespondResult(error? result) {
     if (result is http:ListenerError) {
         log:printError("Error sending response from mock service",
-                        err = result);
+                        'error = result);
     }
 }

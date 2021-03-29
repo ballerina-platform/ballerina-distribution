@@ -8,8 +8,8 @@
     "path": "email"
   },
   {
-    "name": "Encoding standard library ",
-    "path": "encoding"
+    "name": "URL standard library ",
+    "path": "url"
   },
   {
     "name": "Crypto standard library ",
@@ -24,16 +24,12 @@
     "path": "jwt"
   },
   {
-    "name": "OAuth2 standard library ",
-    "path": "oauth2"
-  },
-  {
-    "name": "LDAP standard library ",
-    "path": "ldap"
-  },
-  {
     "name": "Task standard library ",
     "path": "task"
+  },
+  {
+    "name": "OAuth2 standard library ",
+    "path": "oauth2"
   },
   {
     "name": "HTTP standard library",
@@ -42,14 +38,6 @@
   {
     "name": "MIME standard library",
     "path": "mime"
-  },
-  {
-    "name": "Websocket pushText and onText",
-    "path": "websocket"
-  },
-  {
-    "name": "SQL Connectors",
-    "path": "sql"
   },
   {
     "name": "Websub start hub and register topic",

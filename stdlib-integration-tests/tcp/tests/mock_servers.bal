@@ -44,7 +44,7 @@ service class EchoService {
         check caller->writeBytes(data);
     }
 
-    isolated remote function onError(readonly & tcp:Error err) returns tcp:Error? {
+    isolated remote function onError(tcp:Error err) returns tcp:Error? {
         io:println(err.message());
     }
 
@@ -103,7 +103,7 @@ service class SecureEchoService {
         return data;
     }
 
-    isolated remote function onError(readonly & tcp:Error err) returns tcp:Error? {
+    isolated remote function onError(tcp:Error err) returns tcp:Error? {
         io:println(err.message());
     }
 }

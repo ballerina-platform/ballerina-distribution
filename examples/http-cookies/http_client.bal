@@ -1,7 +1,7 @@
 import ballerina/http;
 import ballerina/log;
 
-// HTTP client configurations associated with [enabling cookies](https://ballerina.io/learn/api-docs/ballerina/#/ballerina/http/latest/http/records/CookieConfig).
+// HTTP client configurations associated with [enabling cookies](https://docs.central.ballerina.io/ballerina/http/latest/http/records/CookieConfig).
 http:ClientConfiguration clientEPConfig = {
     cookieConfig: {
         enabled: true
@@ -27,7 +27,7 @@ public function main() returns error? {
     var loginResp = httpClient->post("/login", request);
 
     if (loginResp is error) {
-        log:printError("Login failed", err = loginResp);
+        log:printError("Login failed", 'error = loginResp);
     } else {
         // When the login is successful, make another request to the
         // `/welcome` resource of the backend service.
@@ -39,7 +39,7 @@ public function main() returns error? {
         if (welcomeResp is string) {
             // A welcome message with the sent username
             // will get printed.
-            log:print(welcomeResp);
+            log:printInfo(welcomeResp);
         }
     }
 }

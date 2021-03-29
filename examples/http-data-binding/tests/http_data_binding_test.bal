@@ -3,7 +3,7 @@ import ballerina/test;
 
 @test:Config{}
 function testFunc() returns error? {
-    http:Client httpEndpoint = new("http://localhost:9090");
+    http:Client httpEndpoint = check new("http://localhost:9090");
 
     json jsonPayload = { "Details": { "ID": "77999", "Name": "XYZ"} , "Location": { "No": "01", "City": "Colombo"}};
     json expectedJson = {"ID":"77999","Name":"XYZ"};
@@ -26,7 +26,7 @@ function testFunc() returns error? {
     }
 
     jsonPayload = { "Name": "John", "Grade": 12, "Marks": {"English" : "85", "IT" : "100"}};
-    expectedJson = {"Name":"John","Grade":12};
+    expectedJson = {"Name":"John","Grade":12,"English":"85"};
     response = httpEndpoint->post("/hello/bindStruct", jsonPayload);
     if (response is http:Response) {
         json actualPayload = check response.getJsonPayload();

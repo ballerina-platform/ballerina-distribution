@@ -283,12 +283,11 @@ public class CentralTest {
                 getExecutableJarPath(this.tempWorkspaceDirectory.resolve(PROJECT_D), this.packageDName)
                         .toFile().exists());
 
-        String runExpectedMsg = "Hello World:110";
         Process run = executeCommand("run", DISTRIBUTION_FILE_NAME, this.tempWorkspaceDirectory.resolve(PROJECT_D),
                                      new LinkedList<>(), this.envVariables);
-        String runOutput = getString(run.getInputStream());
-        if (!runOutput.contains(runExpectedMsg)) {
-            Assert.fail("run output does not contain expected message:" + runExpectedMsg);
+        String runErrors = getString(run.getInputStream());
+        if (!runErrors.isEmpty()) {
+            Assert.fail(OUTPUT_CONTAIN_ERRORS + runErrors);
         }
     }
 

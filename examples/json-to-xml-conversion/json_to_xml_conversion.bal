@@ -1,5 +1,5 @@
 import ballerina/io;
-import ballerina/xmlutils;
+import ballerina/xmldata;
 
 public function main() {
     // Creates a JSON object.
@@ -16,7 +16,7 @@ public function main() {
     };
     // Converts the JSON object to XML using the default `attributePrefix`
     // and the default `arrayEntryTag`.
-    var x1 = xmlutils:fromJSON(j1);
+    var x1 = xmldata:fromJson(j1);
     io:println(x1);
 
     json j2 = {
@@ -32,7 +32,7 @@ public function main() {
     };
     // Converts the JSON object to XML using a custom `attributePrefix` (i.e., the `#` character)
     // and the custom `arrayEntryTag` (i.e., `wrapper`).
-    var x2 = xmlutils:fromJSON(j2,
+    var x2 = xmldata:fromJson(j2,
                         {attributePrefix: "#", arrayEntryTag: "wrapper"});
     io:println(x2);
 }

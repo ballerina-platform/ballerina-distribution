@@ -40,6 +40,7 @@ public function main() {
 // 2) It should only have the two fields `strings` and `insertions`<br>
 // 3) It should not have method declarations
 type Query object {
+    *object:RawTemplate;
     // The value space of the raw template type can be constrained to a certain
     // extent by selecting suitable types for the `strings` and `insertions`
     // fields. For example,<br>
@@ -61,6 +62,10 @@ function buildQuery(Query qu) returns string {
     // We can do additional checks/verifications on the raw template.
     // Here we're just building a concrete string query from the
     // components.
-    return io:sprintf("%s%s%s%s%s", qu.strings[0], qu.insertions[0],
-                        qu.strings[1], qu.insertions[1], qu.strings[2]);
+    string s0 = qu.strings[0];
+    string s1 = qu.strings[1];
+    string s2 = qu.strings[2];
+    string i0 = qu.insertions[0];
+    int i1 = qu.insertions[1];
+    return string `${s0}${i0}${s1}${i1}${s2}`;
 }

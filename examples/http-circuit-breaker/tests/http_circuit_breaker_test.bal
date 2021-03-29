@@ -39,7 +39,7 @@ function testFunc() {
     if (response3 is http:Response) {
         var result = response3.getTextPayload();
         if (result is string) {
-            test:assertEquals(result, "Internal error occurred while processing the request.");
+            test:assertEquals(result, "Error occurred while processing the request.");
         } else {
             test:assertFail(msg = "Invalid response message:");
         }

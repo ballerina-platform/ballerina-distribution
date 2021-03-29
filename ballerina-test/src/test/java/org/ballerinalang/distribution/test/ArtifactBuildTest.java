@@ -18,20 +18,12 @@
 
 package org.ballerinalang.distribution.test;
 
-import org.apache.commons.io.FileUtils;
 import org.ballerinalang.distribution.utils.TestUtils;
-import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.LinkedList;
-import java.util.List;
 
 import static org.ballerinalang.distribution.utils.TestUtils.DISTRIBUTIONS_DIR;
 import static org.ballerinalang.distribution.utils.TestUtils.MAVEN_VERSION;
@@ -40,7 +32,7 @@ import static org.ballerinalang.distribution.utils.TestUtils.MAVEN_VERSION;
  * Tests related to artifact generation.
  */
 public class ArtifactBuildTest {
-    
+
     @DataProvider(name = "distribution-provider")
     public Object[][] distributionNameProvider() {
         return new Object[][]{
@@ -49,7 +41,7 @@ public class ArtifactBuildTest {
                 {"ballerina-macos-" + MAVEN_VERSION}
         };
     }
-    
+
     @BeforeClass
     public void setupDistributions() throws IOException {
         TestUtils.cleanDistribution();
@@ -58,18 +50,7 @@ public class ArtifactBuildTest {
             TestUtils.prepareDistribution(DISTRIBUTIONS_DIR.resolve(distName + ".zip"));
         }
     }
-    
-    @Test(dataProvider = "distribution-provider")
-    public void buildDockerTest(String distributionFileName) throws IOException, InterruptedException {
-        Path testResource = Paths.get("/docker");
-        List<String> buildArgs = new LinkedList<>();
-        buildArgs.add("hello_world_docker.bal");
-        boolean successful = TestUtils.executeBuild(distributionFileName, TestUtils.getResource(testResource),
-                buildArgs);
-        Assert.assertTrue(successful);
-        Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("docker")));
-    }
-    
+
     @AfterClass
     public void cleanUp() throws IOException {
         TestUtils.cleanDistribution();

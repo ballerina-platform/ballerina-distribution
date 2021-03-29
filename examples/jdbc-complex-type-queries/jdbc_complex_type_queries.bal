@@ -24,7 +24,7 @@ type DateTimeType record {|
     int row_id;
     string date_type;
     int time_type;
-    time:Time timestamp_type;
+    time:Utc timestamp_type;
     string datetime_type;
 |};
 
@@ -122,7 +122,7 @@ function queryDateTimeType(jdbc:Client jdbcClient) {
     }
     // Since the `rowType` is provided as a `DateTimeType`, the `resultStream`
     // will have `DateTimeType` records. The Date, Time, DateTime, and
-    // Timestamp fields of the database table can be mapped to time:Time,
+    // Timestamp fields of the database table can be mapped to time:Utc,
     // string, and int types in Ballerina.
     resultStream = jdbcClient->query("Select * from DATE_TIME_TYPES",
         DateTimeType);

@@ -1,6 +1,6 @@
 import ballerina/io;
 import ballerina/jballerina.java;
-import ballerinax/java.arrays as jarrays;
+import ballerina/jballerina.java.arrays;
 
 public function splitString(handle receiver, handle regex)
                                     returns handle = @java:Method {
@@ -16,10 +16,10 @@ public function main() {
     // Invoke an external method, implemented in Java.
     handle words = splitString(helloString, regex);
 
-    int numWords = jarrays:getLength(words);
+    int numWords = arrays:getLength(words);
     io:println(numWords);
 
     // Access an array element, pass the handle that refers to the Java array instance as the first argument.
-    handle secondWord = jarrays:get(words, 1);
+    handle secondWord = arrays:get(words, 1);
     io:println(secondWord);
 }
