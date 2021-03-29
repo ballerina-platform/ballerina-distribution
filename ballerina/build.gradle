@@ -766,11 +766,7 @@ task testExamples() {
             'error-match-statement',
             'mapping-match-statement',
             'tuple-match-statement',
-            'the-main-function',
             'function-pointers',
-            'hello-world-client',
-            'hello-world-parallel',
-            'hello-world-service',
             'distributed-transactions'
     ]
 
@@ -869,10 +865,6 @@ task testExamples() {
             'anonymous-functions',
             'function-pointers',
             'basic-documentation',
-            'functions',
-            'var',
-            'variables',
-            'modules',
             'hello-world-client',
             'hello-world-parallel',
             'hello-world'
