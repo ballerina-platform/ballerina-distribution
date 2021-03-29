@@ -25,7 +25,7 @@ service /transactionConsumer on
         // The acknowledgement gets committed upon successful execution of the transaction,
         // or will rollback otherwise.
         transaction {
-            var result = caller->basicAck();
+            rabbitmq:Error? result = caller->basicAck();
             if (result is error) {
                 log:printError(
                             "Error occurred while acknowledging the message.");

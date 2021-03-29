@@ -23,6 +23,6 @@ service rabbitmq:Service on channelListener {
         }
 
         // Positively acknowledges a single message.
-        var result = caller->basicAck();
+        rabbitmq:Error? result = caller->basicAck();
     }
 }
