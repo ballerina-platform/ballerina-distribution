@@ -40,6 +40,7 @@ public function main() {
 // 2) It should only have the two fields `strings` and `insertions`<br>
 // 3) It should not have method declarations
 type Query object {
+    *object:RawTemplate;
     // The value space of the raw template type can be constrained to a certain
     // extent by selecting suitable types for the `strings` and `insertions`
     // fields. For example,<br>
