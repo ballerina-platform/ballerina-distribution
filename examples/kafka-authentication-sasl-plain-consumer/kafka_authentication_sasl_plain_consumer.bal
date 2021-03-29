@@ -18,7 +18,7 @@ kafka:ConsumerConfiguration consumerConfig = {
     offsetReset:"earliest",
     topics:["topic-sasl"],
     // Provide the relevant authentication configuration record to authenticate the consumer.
-    authenticationConfiguration: authConfig
+    auth: authConfig
 };
 
 listener kafka:Listener kafkaListener = new(kafka:DEFAULT_URL, consumerConfig);
@@ -30,7 +30,7 @@ service kafka:Service on kafkaListener {
             string|error messageContent =
                                    string:fromBytes(consumerRecord.value);
             if (messageContent is string) {
-                log:print(messageContent);
+                log:printInfo(messageContent);
             }
         }
     }

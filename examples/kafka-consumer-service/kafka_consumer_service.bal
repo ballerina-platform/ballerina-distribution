@@ -13,7 +13,8 @@ kafka:ConsumerConfiguration consumerConfigs = {
     autoCommit: false
 };
 
-listener kafka:Listener kafkaListener = new (kafka:DEFAULT_URL, consumerConfigs);
+listener kafka:Listener kafkaListener =
+        new (kafka:DEFAULT_URL, consumerConfigs);
 
 service kafka:Service on kafkaListener {
     remote function onConsumerRecord(kafka:Caller caller,
@@ -24,11 +25,11 @@ service kafka:Service on kafkaListener {
             processKafkaRecord(kafkaRecord);
         }
         // Commit offsets for returned records by marking them as consumed.
-        var commitResult = caller->commit();
+        kafka:Error? commitResult = caller->commit();
 
         if (commitResult is error) {
             log:printError("Error occurred while committing the " +
-                "offsets for the consumer ", err = commitResult);
+                "offsets for the consumer ", 'error = commitResult);
         }
     }
 }
@@ -39,7 +40,7 @@ function processKafkaRecord(kafka:ConsumerRecord kafkaRecord) {
     // for the value.
     string|error messageContent = string:fromBytes(value);
     if (messageContent is string) {
-        log:print("Value: " + messageContent);
+        log:printInfo("Value: " + messageContent);
     } else {
         log:printError("Invalid value type received");
     }

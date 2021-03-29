@@ -13,7 +13,8 @@ kafka:ConsumerConfiguration consumerConfigs = {
 
 };
 
-listener kafka:Listener kafkaListener = new (kafka:DEFAULT_URL, consumerConfigs);
+listener kafka:Listener kafkaListener =
+            new (kafka:DEFAULT_URL, consumerConfigs);
 
 service kafka:Service on kafkaListener {
     // This remote function executes when a message or a set of messages are published
@@ -34,7 +35,7 @@ function processKafkaRecord(kafka:ConsumerRecord kafkaRecord) {
     string|error message = string:fromBytes(messageContent);
     if (message is string) {
         // Prints the retrieved message.
-        log:print(" Received Message: " + message);
+        log:printInfo(" Received Message: " + message);
 
     } else {
         log:printError("Error occurred while retrieving message data;" +

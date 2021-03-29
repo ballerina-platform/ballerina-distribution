@@ -9,9 +9,9 @@ Compiling source
 Running Tests
         ballerinatest/bbe_mocking:0.1.0
 
-        [pass] testReturn
-        [pass] testCall
+                [pass] testCall
+                [pass] testReturn
 
-        2 passing
-        0 failing
-        0 skipped
+                2 passing
+                0 failing
+                0 skipped

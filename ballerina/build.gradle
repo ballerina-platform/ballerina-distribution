@@ -674,9 +674,6 @@ task testExamples() {
             'http-client-with-oauth2-refresh-token-grant-type',
 
             // Disabling due to pending migration for service typing
-            'websocket-cookie',
-            'websocket-retry',
-            'websocket-failover',
             'http-filters',
 
             // Disabling sice we could not include credentials in the BBE
@@ -684,7 +681,6 @@ task testExamples() {
 
             // Disabling temporarily (https://github.com/ballerina-platform/ballerina-distribution/issues/1242)
             "ballerina-to-openapi",
-            "log-api",
             "optional-type",
             "while",
 
@@ -727,6 +723,37 @@ task testExamples() {
             'local-transactions',
             'xa-transactions',
             'retry-transactions',
+            //TODO: Enable following for slp4
+            'http-timeout',
+            'http-retry',
+            'http-failover',
+            'http-load-balancer',
+            'http-circuit-breaker',
+            'content-based-routing',
+            'header-based-routing',
+            'websocket-basic-sample',
+            'http-1-1-to-2-0-protocol-switch',
+            'http-compression',
+            'http-streaming',
+            'different-payload-types',
+            'http-100-continue',
+            'http-cors',
+            'request-with-multiparts',
+            'http-disable-chunking',
+            'absolute-path-and-path',
+            'http-client-data-binding',
+            'http-redirects',
+            'xml-attributes',
+            'iterable-objects',
+            'range-expressions',
+            'any-type',
+            'error-match-statement',
+            'mapping-match-statement',
+            'tuple-match-statement',
+            'the-main-function',
+            'hello-world-client',
+            'hello-world-parallel',
+            'hello-world-service',
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
@@ -758,15 +785,8 @@ task testExamples() {
             'http-cors',
             'http-client-data-binding',
             'websocket-basic-sample',
-            'websocket-chat-application',
-            'websocket-async-text-client',
-            'websocket-async-binary-client',
             'websocket-text-client',
             'websocket-binary-client',
-            'websocket-cookie',
-            'websocket-failover',
-            'websocket-proxy-server',
-            'websocket-retry',
             'random',  // Output varies
             'log-api',
             'udp-client',
@@ -791,11 +811,33 @@ task testExamples() {
             'send-email',
             'receive-email-using-client',
             'receive-email-using-listener',
-            'task-service-timer',       // Services needs to be stopped during build
-            'task-service-appointment',
-            'error-handling-in-single-place',
             'file-io',
-            'uuid'  // Output varies
+            'uuid',  // Output varies
+            //TODO: Enable following for slp4
+            'url-encode-decode',
+            'xslt-transformation',
+            'java-exceptions',
+            'overloaded-methods-constructors',
+            'java-varargs',
+            'access-mutate-java-fields',
+            'invoke-java-methods',
+            'create-java-objects',
+            'xml-functions',
+            'xml-access',
+            'xml-namespaces',
+            'xml-attributes',
+            'xml-literal',
+            'error-match-statement',
+            'mapping-match-statement',
+            'tuple-match-statement',
+            'function-pointers',
+            'functions',
+            'var',
+            'variables',
+            'modules',
+            'hello-world-client',
+            'hello-world-parallel',
+            'hello-world'
     ]
 
     doFirst {

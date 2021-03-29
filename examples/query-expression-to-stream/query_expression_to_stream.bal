@@ -47,9 +47,9 @@ public function main() {
               graduationYear: graduationYear
        };
 
-    foreach var report in reportStream {
-        io:println(report);
-    }
+    error? e = reportStream.forEach(function (Report report) {
+       io:println(report);
+    });
 }
 
 function calGraduationYear(int year) returns int {

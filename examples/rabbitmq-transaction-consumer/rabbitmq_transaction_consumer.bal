@@ -8,7 +8,7 @@ import ballerinax/rabbitmq;
 }
 // Attaches the service to the listener.
 service /transactionConsumer on
-                    new rabbitmq:Listener(rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT) {
+    new rabbitmq:Listener(rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT) {
 
     // Gets triggered when a message is received by the queue.
     remote function onMessage(rabbitmq:Message message,
@@ -25,7 +25,7 @@ service /transactionConsumer on
         // The acknowledgement gets committed upon successful execution of the transaction,
         // or will rollback otherwise.
         transaction {
-            var result = caller->basicAck();
+            rabbitmq:Error? result = caller->basicAck();
             if (result is error) {
                 log:printError(
                             "Error occurred while acknowledging the message.");

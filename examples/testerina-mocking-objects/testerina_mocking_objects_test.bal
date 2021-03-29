@@ -6,13 +6,13 @@ import ballerina/email;
 // This is the test double of the `http:Client` object with the
 // implementation of the required functions.
 public client class MockHttpClient {
-    remote function get(@untainted string path,
-    http:RequestMessage message = (),
+    remote isolated function get(@untainted string path,
+    map<string|string[]>? headers = (),
     http:TargetType targetType = http:Response) returns
-    @tainted http:Response|http:PayloadType|http:ClientError {
-        http:Response res = new;
-        res.statusCode = 500;
-        return res;
+    http:Response | http:ClientError {
+        http:Response response = new;
+        response.statusCode = 500;
+        return response;
     }
 }
 
@@ -45,8 +45,8 @@ function testReturnWithArgs() {
     test:prepare(clientEndpoint).when("get").
     withArguments("/headers").thenReturn(mockResponse);
     // The object and record types should be denoted by the `test:ANY` constant.
-    test:prepare(clientEndpoint).when("get").withArguments("/get?test=123",
-    test:ANY).thenReturn(mockResponse);
+    test:prepare(clientEndpoint).when("get").withArguments("/get?test=123")
+        .thenReturn(mockResponse);
     http:Response res = performGet();
     test:assertEquals(res.statusCode, 404);
 }
@@ -71,7 +71,7 @@ function testSendNotification() {
     smtpClient = test:mock(email:SmtpClient);
     // This stubs the `send` method of the `mockSmtpClient` to do nothing.
     // This is used for functions with an optional or no return type.
-    test:prepare(smtpClient).when("sendEmailMessage").doNothing();
+    test:prepare(smtpClient).when("sendMessage").doNothing();
     string[] emailIds = ["user1@test.com", "user2@test.com"];
     error? err = sendNotification(emailIds);
     test:assertEquals(err, ());
