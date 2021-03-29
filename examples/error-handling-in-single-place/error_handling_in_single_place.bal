@@ -51,7 +51,7 @@ function getAccountBalance(int accountID) returns int {
    // `do` statement.
    } on fail InvalidAccountIDError|AccountNotFoundError e {
       io:println("Error occurred: ", e.message(),
-                 "Account ID: ", e.detail()["accountID"]);
+                 ", Account ID: ", e.detail()["accountID"]);
    }
    return 600;
 }
