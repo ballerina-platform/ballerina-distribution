@@ -18,7 +18,7 @@ class ArrayIterator {
     }
 }
 
-//  A class that is a subtype of `object:Iterable`.
+//  A class that is a subtype of `Iterable<int,()>`.
 class IteratorGenerator {
     *object:Iterable;
     // The `iterator()` method should return a new `Iterator<T,()>`.
