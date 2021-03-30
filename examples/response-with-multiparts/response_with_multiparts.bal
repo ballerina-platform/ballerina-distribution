@@ -114,7 +114,7 @@ function handleContent(mime:Entity bodyPart) {
     } else if (mime:APPLICATION_PDF == baseType) {
         // [Extracts the byte stream](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Response#getByteStream) from the body part and saves it as a file.
         var payload = bodyPart.getByteStream();
-        if (payload is stream<byte[], io:Error>) {
+        if (payload is stream<byte[], io:Error?>) {
             //Writes the incoming stream to a file using `io:fileWriteBlocksFromStream` API by providing the file location to which the content should be written to.
             io:Error? result = io:fileWriteBlocksFromStream(
                                     "./files/ReceivedFile.pdf", payload);
@@ -142,7 +142,7 @@ function getBaseType(string contentType) returns string {
 }
 
 //Closes the byte stream.
-function close(stream<byte[], io:Error> byteStream) {
+function close(stream<byte[], io:Error?> byteStream) {
     var cr = byteStream.close();
     if (cr is error) {
         log:printError("Error occurred while closing the stream: ",

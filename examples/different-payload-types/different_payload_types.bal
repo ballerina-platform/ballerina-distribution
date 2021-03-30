@@ -49,7 +49,7 @@ service /actionService on new http:Listener(9090) {
         //Get a byte stream to a given file.
         var bStream = io:fileReadBlocksAsStream("./files/logo.png");
 
-        if (bStream is stream<byte[], io:Error>) {
+        if (bStream is stream<byte[], io:Error?>) {
             //Make a POST request with a byte stream as the payload. Since the file path is static `<@untainted>` is used to denote that the byte stream is trusted.
             response = clientEP->post("/image", <@untainted>bStream);
             handleResponse(response);

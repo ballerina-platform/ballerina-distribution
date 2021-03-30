@@ -10,8 +10,8 @@ Result 2:
 ------ ********* -------
 ------ Query Date Time Type -------
 Result 1:
-{"row_id":1,"date_type":"2017-05-23+05:30","time_type":"19:45:23.000+05:30","timestamp_type":"2017-01-25T22:03:55.000+05:30","datetime_type":"2017-01-25T22:03:55.000+05:30"}
+{"row_id":1,"date_type":"2017-05-23","time_type":"14:15:23","timestamp_type":"2017-01-25 16:33:55.0","datetime_type":"2017-01-25 16:33:55.0"}
 Result 2:
-{"row_id":1,"date_type":"2017-05-23+05:30","time_type":51323000,"timestamp_type":{"time":1485362035000,"zone":{"id":"UTC","offset":0}},"datetime_type":"2017-01-25T22:03:55.000+05:30"}
+{"row_id":1,"date_type":"2017-05-23","time_type":31523000,"timestamp_type":1485342235 0,"datetime_type":"2017-01-25 16:33:55.0"}
 ------ ********* -------
 Sample executed successfully!

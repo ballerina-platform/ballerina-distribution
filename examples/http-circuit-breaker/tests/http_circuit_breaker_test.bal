@@ -50,7 +50,7 @@ function testFunc() {
     // Send a GET request to the specified endpoint.
     var response4 = httpEndpoint->get("/cb");
     if (response4 is http:Response) {
-        var result = response4.getTextPayload();
+        string|error result = response4.getTextPayload();
     } else {
         test:assertFail(msg = "Failed to call the endpoint:");
     }
@@ -58,7 +58,7 @@ function testFunc() {
     // Send a GET request to the specified endpoint.
     var response5 = httpEndpoint->get("/cb");
     if (response5 is http:Response) {
-        var result = response5.getTextPayload();
+        string|error result = response5.getTextPayload();
     } else {
         test:assertFail(msg = "Failed to call the endpoint:");
     }
@@ -68,7 +68,7 @@ function testFunc() {
     // Send a GET request to the specified endpoint.
     var response6 = httpEndpoint->get("/cb");
     if (response6 is http:Response) {
-        var result = response6.getTextPayload();
+        string|error result = response6.getTextPayload();
     } else {
         test:assertFail(msg = "Failed to call the endpoint:");
     }
