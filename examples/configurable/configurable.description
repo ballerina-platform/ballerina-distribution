@@ -39,4 +39,4 @@
 //
 // Currently, TOML based configuration is supported for configurable variables of
 // types `int`, `float`, `boolean`, `string`, `decimal`, the arrays of the respective
-// types, record, and table.
+// types, and table.
