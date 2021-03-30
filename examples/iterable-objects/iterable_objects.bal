@@ -12,8 +12,6 @@ class ArrayIterator {
             record {| int value; |} nextVal = 
                 {value: self.integers[self.cursor]};
             return nextVal;
-        } else if self.cursor > self.integers.length() {
-            panic error("Index out of range");
         }
         return ();
     }
