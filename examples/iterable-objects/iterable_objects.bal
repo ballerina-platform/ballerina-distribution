@@ -31,7 +31,7 @@ class IteratorGenerator {
 }
 
 // A class that is a subtype of `Iterator<int, error?>`.
-// This class can create objects that can return error on some cases for next method.
+// The `next` method of this class may return an error.
 class ArrayIteratorWithError {
     private int[] integers = [0, 12, 21, 45];
     private int cursor = -1;
