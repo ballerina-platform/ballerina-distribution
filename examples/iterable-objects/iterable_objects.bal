@@ -52,7 +52,8 @@ class ArrayIteratorWithError {
 }
 
 // A class that is a subtype of `Iterable<int, error?>`.
-// This class can create an object iterator which can return error.
+// The `next` method of the iterator object returned by this class 
+// may return an error.
 class IteratorGeneratorWithError {
     *object:Iterable;
     // The `iterator()` method should return a new `Iterator<T,()>`.
