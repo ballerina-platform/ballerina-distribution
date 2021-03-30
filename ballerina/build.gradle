@@ -724,7 +724,7 @@ task testExamples() {
             'xa-transactions',
             'retry-transactions',
             //TODO: Enable following for slp4
-            'iterable-objects',
+            'range-expressions',
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file

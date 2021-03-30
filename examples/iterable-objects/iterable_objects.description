@@ -1,5 +1,7 @@
-// An object can be made iterable as a sequence of values of type `T` by providing a method named `__iterator` which
-// returns a value that is a subtype of `Iterator<T>`. We refer to this type as `Iterable<T>`. Any subtype
-// of `abstract object {public next() returns record {| T value; |}?;}`, is called Iterator<T>. An iterable object can be
-// iterated over using a `foreach` loop. In this example, `IteratorGenerator` is a subtype of `Iterable<int>` and
-// `ArrayIterator` is a subtype of `Iterator<int>`.
+// An object can be made iterable as a sequence of values of type `T` using type inclusion with `lang.object:Iterable` 
+// and providing a method named `iterator` which returns an iterator that is a subtype of
+// `object { public isolated function next() returns record {| T value; |}|C;}` in which `C` is the completion type.
+// An iterable object is denoted as `Iterable<T, C>` and an iterator as `Iterator<T, C>`. An
+// iterable object which does not return an error in the next method can be iterated over using a `foreach` loop.
+// In this example, `IteratorGenerator` is a subtype of `Iterable<int, ()>` and `ArrayIterator` is a subtype
+// of `Iterator<int, ()>`.
