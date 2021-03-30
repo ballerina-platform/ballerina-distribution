@@ -62,5 +62,9 @@
   {
     "name": "gRPC standard library - Bidirectional streaming",
     "path": "grpc_bidirectional_streaming"
+  },
+  {
+    "name": "WebSocket standard library",
+    "path": "websocket"
   }
 ]

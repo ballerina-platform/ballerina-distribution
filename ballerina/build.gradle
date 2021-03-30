@@ -724,7 +724,6 @@ task testExamples() {
             'xa-transactions',
             'retry-transactions',
             //TODO: Enable following for slp4
-            'websocket-basic-sample',
             'iterable-objects',
             'range-expressions',
             'error-match-statement',
