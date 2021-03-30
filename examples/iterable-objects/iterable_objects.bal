@@ -57,7 +57,7 @@ class ArrayIteratorWithError {
 // may return an error.
 class IteratorGeneratorWithError {
     *object:Iterable;
-    // The `iterator()` method should return a new `Iterator<T,()>`.
+    // The `iterator()` method should return a new `Iterator<T, error?>`.
     public function iterator() returns object {
         public isolated function next() returns record {| int value; |}|error?;
        } {
