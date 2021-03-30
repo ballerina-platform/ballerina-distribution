@@ -758,7 +758,6 @@ task testExamples() {
             'error-handling-in-single-place',
             'xml-attributes',
             'streams',
-            'iterable-objects',
             'raw-template',
             'range-expressions',
             'any-type',
