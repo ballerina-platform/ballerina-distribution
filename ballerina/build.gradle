@@ -724,7 +724,6 @@ task testExamples() {
             'xa-transactions',
             'retry-transactions',
             //TODO: Enable following for slp4
-            'iterable-objects',
             'range-expressions',
             'error-match-statement',
             'mapping-match-statement',
