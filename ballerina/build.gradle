@@ -784,11 +784,6 @@ task testExamples() {
             'receive-email-using-listener',
             'file-io',
             'uuid',  // Output varies
-            //TODO: Enable following for slp4
-            'xslt-transformation',
-            'error-match-statement',
-            'mapping-match-statement',
-            'tuple-match-statement',
     ]
 
     doFirst {
