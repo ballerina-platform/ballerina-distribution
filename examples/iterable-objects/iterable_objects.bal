@@ -37,6 +37,7 @@ class ArrayIteratorWithError {
     private int cursor = -1;
 
     // `next` method which generates the sequence of values of type `int`.
+    // This method may return an `error` value.
     public isolated function next() returns record {| int value; |}|error? {
         self.cursor += 1;
         if self.cursor < self.integers.length() {
