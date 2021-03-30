@@ -21,12 +21,12 @@ public function main() {
         *object:Iterable;
         public function iterator() returns
             object {
-                public isolated function next() returns record {|int value;|}?;
+                public function next() returns record {|int value;|}?;
             };
     } iterableObj = 25 ..< 28;
 
     object {
-            public isolated function next() returns (record {|int value;|}?);
+            public function next() returns (record {|int value;|}?);
     } iterator = iterableObj.iterator();
 
     io:println("\niterable object for 25 ..< 28");
