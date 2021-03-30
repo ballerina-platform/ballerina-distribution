@@ -726,9 +726,6 @@ task testExamples() {
             //TODO: Enable following for slp4
             'iterable-objects',
             'range-expressions',
-            'error-match-statement',
-            'mapping-match-statement',
-            'tuple-match-statement',
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
@@ -790,9 +787,6 @@ task testExamples() {
             'uuid',  // Output varies
             //TODO: Enable following for slp4
             'xslt-transformation',
-            'error-match-statement',
-            'mapping-match-statement',
-            'tuple-match-statement',
     ]
 
     doFirst {
