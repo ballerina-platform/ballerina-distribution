@@ -14,7 +14,7 @@ configurable int port = ?;
 
 // A `configurable` variable can be initialized with an expression that is
 // not `?`. It is not mandatory to specify a value for such a variable.
-// But if specified, the value provided at configuration overrides the value
+// However, if specified, the value provided at configuration overrides the value
 // specified as the initializer.
 // The values of the `enableRemote` and `maxPayload` variables here are
 // overridden by the values specified at configuration.
