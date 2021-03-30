@@ -724,13 +724,8 @@ task testExamples() {
             'xa-transactions',
             'retry-transactions',
             //TODO: Enable following for slp4
-            'websocket-basic-sample',
-            'xml-attributes',
             'iterable-objects',
             'range-expressions',
-            'error-match-statement',
-            'mapping-match-statement',
-            'tuple-match-statement',
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
@@ -790,13 +785,6 @@ task testExamples() {
             'receive-email-using-listener',
             'file-io',
             'uuid',  // Output varies
-            //TODO: Enable following for slp4
-            'url-encode-decode',
-            'xslt-transformation',
-            'error-match-statement',
-            'mapping-match-statement',
-            'tuple-match-statement',
-            'function-pointers',
     ]
 
     doFirst {

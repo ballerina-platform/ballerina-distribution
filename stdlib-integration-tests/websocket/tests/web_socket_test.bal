@@ -40,5 +40,5 @@ public function testWebsocketString() returns websocket:Error? {
     runtime:sleep(5);
     string data = check wsClient->readTextMessage();
     test:assertEquals(data, "Hi", msg = "Failed pushtext");
-    var closeResp = wsClient->close(statusCode = 1000, reason = "Close the connection", timeout = 180);
+    websocket:Error? closeResp = wsClient->close(statusCode = 1000, reason = "Close the connection", timeout = 180);
 }
