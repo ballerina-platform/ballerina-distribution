@@ -11,6 +11,7 @@ http:Client securedEP = check new("https://localhost:9090", {
         issuer: "ballerina",
         audience: ["ballerina", "ballerina.org", "ballerina.io"],
         keyId: "5a0b754-895f-4279-8843-b745e11a57e9",
+        jwtId: "JlbmMiOiJBMTI4Q0JDLUhTMjU2In",
         customClaims: { "scp": "hello" },
         expTime: 3600,
         signatureConfig: {
@@ -26,7 +27,7 @@ http:Client securedEP = check new("https://localhost:9090", {
 
 public function main() {
     // Send a `GET` request to the specified endpoint.
-    var response = securedEP->get("/foo/bar");
+    http:Response|http:ClientError response = securedEP->get("/foo/bar");
     if (response is http:Response) {
         log:printInfo(response.statusCode.toString());
     } else {
