@@ -1,6 +1,7 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `bal run` command below.
 bal run iterable_objects.bal
+Elements of IteratorGenerator
 Element 1: 0
 Element 2: 1
 Element 3: 1
@@ -11,3 +12,8 @@ Element 7: 8
 Element 8: 13
 Element 9: 21
 Element 10: 34
+Elements of IteratorGeneratorWithError
+Element 1: 0
+Element 2: 12
+Element 3: 21
+Element 4: 45
