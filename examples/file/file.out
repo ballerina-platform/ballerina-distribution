@@ -5,7 +5,7 @@ Current directory: /A/B
 File path: /A/B/bar.txt
 File size: 0
 Is directory: false
-Modified at {"time":1567597039000,"zone":{"id":"Z","offset":0}}
+Modified at 1617251006 0.358000000
 bar.txt file exists: true
 bar.txt file is copied to new path foo/bar/bar.txt
 bar.txt file is moved to new path foo/bar1.txt

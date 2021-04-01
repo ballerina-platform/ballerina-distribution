@@ -21,8 +21,8 @@ function testFunc() {
     test:assertEquals(outputs.length(), 3);
     test:assertTrue(outputs[0].includes("Issued JWT: eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QiLCAia2" +
         "lkIjoiTlRBeFptTXhORE15WkRnM01UVTFaR00wTXpFek9ESmhaV0k0TkRObFpEVTFPR0ZrTmpGaU1RIn0."));
-    test:assertTrue(outputs[1].includes("Validated JWT Payload: {\"iss\":\"ballerina\",\"sub\":" +
-        "\"admin\",\"aud\":\"vEwzbcasJVQm1jVYHUHCjhxZ4tYa\","));
-    test:assertTrue(outputs[2].includes("Validated JWT Payload: {\"iss\":\"ballerina\",\"sub\":" +
-        "\"admin\",\"aud\":\"vEwzbcasJVQm1jVYHUHCjhxZ4tYa\","));
+    test:assertTrue(outputs[1].includes("Validated JWT Payload: {\"iss\":\"wso2\",\"sub\":" +
+        "\"ballerina\",\"aud\":\"vEwzbcasJVQm1jVYHUHCjhxZ4tYa\","));
+    test:assertTrue(outputs[2].includes("Validated JWT Payload: {\"iss\":\"wso2\",\"sub\":" +
+        "\"ballerina\",\"aud\":\"vEwzbcasJVQm1jVYHUHCjhxZ4tYa\","));
 }
