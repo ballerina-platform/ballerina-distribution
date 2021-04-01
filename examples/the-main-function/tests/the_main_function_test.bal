@@ -22,31 +22,31 @@ function testFunc() {
     test:when(mock_printLn).call("mockPrint");
 
     // Invoking the main function.
-    error? e = main("Alice");
+    error? e = main(name="Alice", modules=[]);
     test:assertTrue(e is ());
     test:assertExactEquals(outputs[0], "Name: Alice, Age: 18, Year: Freshman");
 
     // Invoking the main function.
     counter = 0;
-    e = main("Alice", 20);
+    e = main(name = "Alice", age = 20, modules=[]);
     test:assertTrue(e is ());
     test:assertExactEquals(outputs[0], "Name: Alice, Age: 20, Year: Freshman");
 
     // Invoking the main function.
     counter = 0;
-    e = main("Alice", year="Sophomore");
+    e = main(name="Alice", year="Sophomore", modules=[]);
     test:assertTrue(e is ());
     test:assertExactEquals(outputs[0], "Name: Alice, Age: 18, Year: Sophomore");
 
     // Invoking the main function.
     counter = 0;
-    e = main("Alice", 20, "Sophomore", "math", "physics");
+    e = main(name="Alice", age=20, modules=["Sophomore", "math", "physics"]);
     test:assertTrue(e is ());
     test:assertExactEquals(outputs[0], "Name: Alice, Age: 20, Year: Sophomore, Module(s): [\"math\",\"physics\"]");
 
     // Invoking the main function.
     counter = 0;
-    e = main("Ali");
+    e = main(name="Ali", modules=[]);
     if (e is error) {
         test:assertExactEquals(e.message(), "InvalidName");
         test:assertExactEquals(e.toString(), "error(\"InvalidName\",message=\"invalid length\")");
