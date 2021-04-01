@@ -24,8 +24,8 @@ public function main() returns error? {
                                  "(ID INT, VALUE FLOAT)");
 
     // Populate the tables with the records.
-    var e1 = check dbClient1->execute("INSERT INTO EMPLOYEE(NAME) " +
-                                      "VALUES ('Anne')");
+    var e1 = check dbClient1->execute("INSERT INTO EMPLOYEE " +
+                                      "VALUES (1, 'Anne')");
     var e2 = check dbClient2->execute("INSERT INTO SALARY " +
                                       "VALUES (1, 25000.00)");
 
@@ -48,8 +48,8 @@ public function main() returns error? {
             // Operations to be executed if the transaction is committed
             // successfully.
             io:println("Transaction committed");
-            io:println("Employee Updated: ", e1);
-            io:println("Salary Updated: ", e2);
+            io:println("Employee Updated: ", customer);
+            io:println("Salary Updated: ", salary);
         } else {
             // Operations to be executed if the transaction commit failed.
             io:println("Transaction failed");
