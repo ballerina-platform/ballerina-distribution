@@ -13,6 +13,7 @@ jobs:
         id: version-set
         run: |
           SHORT_VERSION=$(grep -w 'shortVersion' | cut -d= -f2) < gradle.properties
+          echo $SHORT_VERSION
           RELEASE_VERSION=$((grep -w 'version' | cut -d= -f2) < gradle.properties | rev | cut --complement -d- -f1 | rev)
           echo VERSION=$RELEASE_VERSION >> $GITHUB_ENV
           echo "::set-output name=version::$RELEASE_VERSION"
@@ -54,7 +55,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_name: ballerina-swan-lake-${{ steps.version-set.outputs.version }}.zip
+          asset_name: ballerina-${{ steps.version-set.outputs.version }}.zip
           asset_path: ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.version }}.zip
           asset_content_type: application/octet-stream
       - name: Upload zip without tool artifacts
