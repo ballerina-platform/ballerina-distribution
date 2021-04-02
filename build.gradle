@@ -58,7 +58,7 @@ allprojects {
 
     release {
         // Workaround to fix build task not found issue in release plugin
-        buildTasks = ['build']
+        buildTasks = ['']
         failOnSnapshotDependencies = true
         failOnCommitNeeded = false
         versionPropertyFile = 'gradle.properties'
@@ -68,6 +68,9 @@ allprojects {
             requireBranch = ''
         }
     }
+
+    afterReleaseBuild.dependsOn publishToMavenLocal
+    afterReleaseBuild.dependsOn publish
 }
 
 subprojects {
