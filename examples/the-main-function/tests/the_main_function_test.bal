@@ -34,7 +34,7 @@ function testFunc() {
 
     // Invoking the main function.
     counter = 0;
-    e = main("Alice", year="Sophomore");
+    e = main("Alice", 18, "Sophomore");
     test:assertTrue(e is ());
     test:assertExactEquals(outputs[0], "Name: Alice, Age: 18, Year: Sophomore");
 
