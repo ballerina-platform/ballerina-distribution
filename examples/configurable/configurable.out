@@ -8,6 +8,10 @@
 # enableRemote = false
 # maxPayload = 0.321
 #
+# [admin]
+# username = "admin"
+# password = "admin-password"
+#
 # [[users]]
 # username = "John"
 # password="abc123"
@@ -25,6 +29,7 @@ port: 9090
 protocol: http
 maximum payload (in MB): 0.321
 remote enabled: false
+admin details: {"username":"admin","password":"admin-password"}
 users: [{"username":"John","password":"abc123"},{"username":"Bob","password":"cde456"}]
 
 # A similar configuration can be given via CLI parameters in the
@@ -36,4 +41,5 @@ port: 9091
 protocol: http
 maximum payload (in MB): 0.456
 remote enabled: false
+admin details: {"username":"default","password":"password"}
 users: [{"username":"default","password":"password"}]
