@@ -1,4 +1,11 @@
+
 // A `public` function named `main` is considered as an entry point to a Ballerina program.
-// The `main` function is data-binding and can have zero or more parameters whose types are subtypes of `anydata`,
+// The `main` function is data-binding and can have zero or more parameters whose types are
+// string, int, float, decimal or union of one of these types and nil.
 // including any number of required/defaultable parameters and/or a single rest parameter.
-// The `main` function could also return a value whose type is a subtype of `error?`.
+// The main parameters except for the last parameters if it is a *record, represents operands 
+// in the command line. The order of operands is significant.
+// The last parameter can be a *record that represents options in the command line.
+// The *record field types are same as that of the parameter types. 
+// The order of option command line arguments are insignificant. 
+// There can be required/defaultable parameters in the record.
