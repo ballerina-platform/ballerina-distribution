@@ -85,13 +85,6 @@ subprojects {
         repositories {
             /* Central Repository */
             maven { url "https://repo.maven.apache.org/maven2" }
-            /* CWSO2 Releases Repository */
-            maven { url "http://maven.wso2.org/nexus/content/repositories/releases/" }
-            /* WSO2 Snapshot Repository */
-            maven { url "http://maven.wso2.org/nexus/content/repositories/snapshots/" }
-            /* WSO2 internal Repository */
-            maven { url "http://maven.wso2.org/nexus/content/groups/wso2-public/" }
-
         }
     }
 
@@ -100,10 +93,6 @@ subprojects {
         mavenLocal()
         /* Central Repository */
         maven { url "https://repo.maven.apache.org/maven2" }
-        /* WSO2 Releases Repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/releases/" }
-        /* WSO2 internal Repository */
-        maven { url "https://maven.wso2.org/nexus/content/groups/wso2-public/" }
         /* Github Package Repository */
         maven {
             url "https://maven.pkg.github.com/ballerina-platform/ballerina-update-tool"
@@ -404,11 +393,6 @@ subprojects {
                 password System.getenv("packagePAT")
             }
         }
-
-        /* Ballerina lang staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1614/" }
-        /* Datamapper staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdatamapper-1010/" }
     }
 
     configurations {
