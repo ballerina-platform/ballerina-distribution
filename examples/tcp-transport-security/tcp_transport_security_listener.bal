@@ -32,7 +32,7 @@ service on new tcp:Listener(9090, secureSocket = listenerSecureSocket) {
 
 service class EchoService {
 
-    remote function onBytes(readonly & byte[] data) returns readonly & byte[] {
+    remote function onBytes(readonly & byte[] data) returns byte[] {
         io:println("Received: ", 'string:fromBytes(data));
         return data;
     }
