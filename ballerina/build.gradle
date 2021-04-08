@@ -379,10 +379,6 @@ task packageDistZip(type: Zip) {
         from "build/target/ballerina-command-${ballerinaCommandVersion}/lib/ballerina-command-${ballerinaCommandVersion}.jar"
         fileMode = 0775
     }
-    into("${parentDir}/scripts") {
-        from "build/target/ballerina-command-${ballerinaCommandVersion}/scripts/bal_completion.bash"
-        fileMode = 0775
-    }
 
     /* Dependencies */
     into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
