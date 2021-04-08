@@ -1094,12 +1094,12 @@ task testStdlibs() {
             //TODO: Need to verify with windows
             exec {
                 workingDir "${distPath}/${stdlibTest}"
-                commandLine 'cmd', '/c', "${distPath}/bin/bal/ballerina.bat init test"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal/bal.bat init test"
             }
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${distPath}/${stdlibTest}"
-                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat build -c --experimental ${additionalBuildParams}"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat build --experimental ${additionalBuildParams}"
             }
         } else {
             exec {
@@ -1109,7 +1109,7 @@ task testStdlibs() {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${distPath}/${stdlibTest}"
-                commandLine 'sh', '-c', "${distPath}/bin/bal build -c --experimental ${additionalBuildParams}"
+                commandLine 'sh', '-c', "${distPath}/bin/bal build --experimental ${additionalBuildParams}"
             }
         }
         if (exitVal.getExitValue() == 1) {
