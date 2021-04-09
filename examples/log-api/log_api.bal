@@ -12,7 +12,7 @@ public function main() {
     // To set the global log level, place the entry given below in the Config.toml file:
     //
     // ```
-    // [log]
+    // [ballerina.log]
     // level = "[LOG_LEVEL]"
     // ```
 
@@ -20,8 +20,8 @@ public function main() {
     // log level to a module, provide the following entry in the Config.toml file:
     //
     // ```
-    // [[log.modules]]
-    // name = "[MODULE_NAME]"
+    // [[ballerina.log.modules]]
+    // name = "[ORG_NAME]/[MODULE_NAME]"
     // level = "[LOG_LEVEL]"
     // ```
 
@@ -46,7 +46,7 @@ public function main() {
     // To set the output format to JSON, place the entry given below in the `Config.toml` file.
     //
     // ```
-    // [log]
+    // [ballerina.log]
     // format = "json"
     // ```
 }
