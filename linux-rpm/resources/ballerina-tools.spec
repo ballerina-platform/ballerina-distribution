@@ -38,6 +38,11 @@ ln -sf %{_libdir}/ballerina/bin/bal /usr/bin/%{_ballerina_name}
 echo 'export BALLERINA_HOME=' >> /etc/profile.d/wso2.sh
 chmod 0755 /etc/profile.d/wso2.sh
 
+fileName=bal
+bal completion bash > $fileName
+cp -R $fileName usr/share/bash-completion/completions/
+rm -f $fileName
+
 %postun
 sed -i.bak '\:SED_BALLERINA_HOME:d' /etc/profile.d/wso2.sh
 
