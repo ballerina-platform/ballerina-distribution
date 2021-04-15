@@ -1258,7 +1258,6 @@ unpackStdLibs.dependsOn unpackDevTools
 unpackC2cLibs.dependsOn unpackStdLibs
 unpackC2cExamples.dependsOn unpackC2cLibs
 unpackC2cTooling.dependsOn unpackC2cExamples
-downloadBalCommand.dependsOn unpackObservabilityExtensions
 downloadBalCommand.dependsOn unpackC2cTooling
 
 /* Extract JRE */
