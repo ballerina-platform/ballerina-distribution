@@ -31,9 +31,6 @@ ext {
     dockerVersion = project.dockerVersion
     dataMapperVersion = project.dataMapperVersion
     c2cVersion = project.c2cVersion
-    observeExtPrometheusVersion = project.observeExtPrometheusVersion
-    observeExtJaegerVersion = project.observeExtJaegerVersion
-    observeExtChoreoVersion = project.observeExtChoreoVersion
     ballerinaJreVersion = project.ballerinaJreVersion
     ballerinaCommandVersion = project.ballerinaCommandVersion
 
@@ -380,31 +377,6 @@ subprojects {
             }
         }
 
-        /* Observability extension repos */
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-prometheus"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-jaeger"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-choreo"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-
         /* Ballerina lang staging repository */
         maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1614/" }
         /* Datamapper staging repository */
@@ -487,11 +459,6 @@ subprojects {
         ballerinaC2cLibs "org.ballerinax.awslambda:awslambda-extension-bala:${awslambdaVersion}"
 
         ballerinaC2cTooling "io.ballerina:c2c-tooling:${c2cVersion}"
-
-        /* Observability extensions */
-        ballerinaObserveExtensions "org.ballerinalang:prometheus-extension-ballerina:${observeExtPrometheusVersion}"
-        ballerinaObserveExtensions "org.ballerinalang:jaeger-extension-ballerina:${observeExtJaegerVersion}"
-        ballerinaObserveExtensions "org.ballerinalang:choreo-extension-ballerina:${observeExtChoreoVersion}"
 
         /* Code to cloud examples */
         ballerinaC2cExamples "io.ballerina:c2c-extension-examples:${c2cVersion}@zip"
