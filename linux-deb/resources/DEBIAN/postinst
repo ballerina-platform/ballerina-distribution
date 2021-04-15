@@ -4,7 +4,4 @@ rm -f /usr/bin/bal
 ln -sf /usr/lib/ballerina/bin/bal /usr/bin/bal
 echo "export BALLERINA_HOME=/usr/lib/bal" >> /etc/profile.d/wso2.sh
 
-fileName=bal
-bal completion bash > $fileName
-cp -R $fileName usr/share/bash-completion/completions/
-rm -f $fileName
+bal completion bash > /usr/local/etc/bash_completion.d/bal
