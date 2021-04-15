@@ -138,17 +138,6 @@ task unpackC2cExamples(type: Copy) {
     }
 }
 
-task unpackObservabilityExtensions() {
-    doLast {
-        configurations.ballerinaObserveExtensions.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-            copy {
-                from project.zipTree(artifact.getFile())
-                into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
-            }
-        }
-    }
-}
-
 task downloadBalCommand(type: Download) {
     group = "unpack_dependencies"
     def commandBaseURL = "https://github.com/ballerina-platform/ballerina-update-tool/releases/download/v${ballerinaCommandVersion}"
@@ -224,20 +213,6 @@ task copyOtherRepos(type: Copy) {
         def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
         from("${artifactExtractedPath}") {
             into "lib/tools/lang-server/lib/"
-        }
-    }
-
-    /* Observability extensions */
-    configurations.ballerinaObserveExtensions.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
-        from("${artifactExtractedPath}/libs") {
-            into "bre/lib/"
-        }
-        from("${artifactExtractedPath}/bala") {
-            into "repo/bala"
-        }
-        from("${artifactExtractedPath}/cache") {
-            into "repo/cache"
         }
     }
 }
