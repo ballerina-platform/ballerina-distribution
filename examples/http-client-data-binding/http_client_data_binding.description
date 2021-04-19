@@ -6,4 +6,4 @@
 // client remote operation. Since the default `targetType` is `http:Response`, the user still has the option to access
 // the complete response to explore more.<br/><br/>
 // For more information on the underlying module,
-// see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/http/).
+// see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).

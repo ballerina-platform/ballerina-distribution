@@ -2,4 +2,4 @@
 // function depends on. These functions will be executed before the test execution.
 // This allows you to ensure that the tests are being executed in the expected order.<br/><br/>
 // For more information, see [Testing Ballerina Code](https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/)
-// and the [Test Module](https://docs.central.ballerina.io/ballerina/test/latest/test/).
+// and the [Test Module](https://docs.central.ballerina.io/ballerina/test/latest/).

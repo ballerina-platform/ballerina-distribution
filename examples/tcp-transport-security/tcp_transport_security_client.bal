@@ -2,7 +2,7 @@ import ballerina/tcp;
 import ballerina/io;
 
 public function main() returns error? {
-    // The [secureSocket](https://docs.central.ballerina.io/ballerina/tcp/latest/tcp/records/ClientSecureSocket) record used to configure the client with TLS
+    // The [secureSocket](https://docs.central.ballerina.io/ballerina/tcp/latest/records/ClientSecureSocket) record used to configure the client with TLS
     tcp:Client socketClient = check new ("localhost", 9002, secureSocket = {
         // Provide the trusted certificate path or the truststore path 
         // along with the truststore password.

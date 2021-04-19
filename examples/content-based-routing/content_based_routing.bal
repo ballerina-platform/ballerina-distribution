@@ -14,7 +14,7 @@ service /cbr on new http:Listener(9090) {
         http:InternalServerError errResponse = {};
         if (nameString is json) {
             if (nameString.toString() == "sanFrancisco") {
-                // Here, [post](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#post) remote function represents the POST operation of
+                // Here, [post](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#post) remote function represents the POST operation of
                 // the HTTP client.
                 // This routes the payload to the relevant service when the server
                 // accepts the enclosed entity.

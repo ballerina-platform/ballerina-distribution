@@ -4,4 +4,4 @@
 // passing the `http:CredentialsConfig` for the `auth` configuration of the
 // client.<br/><br/>
 // For more information on the underlying module,
-// see the [Auth module](https://docs.central.ballerina.io/ballerina/auth/latest/auth/).
+// see the [Auth module](https://docs.central.ballerina.io/ballerina/auth/latest/).

@@ -3,7 +3,7 @@ import ballerina/io;
 import ballerina/log;
 import ballerina/mime;
 
-// Creates an endpoint for the [client](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client).
+// Creates an endpoint for the [client](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client).
 http:Client clientEndpoint = check new ("http://localhost:9090");
 
 service /'stream on new http:Listener(9090) {
@@ -11,7 +11,7 @@ service /'stream on new http:Listener(9090) {
     resource function get fileupload(http:Caller caller) {
         http:Request request = new;
 
-        //[Sets the file](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Request#setFileAsPayload) as the request payload.
+        //[Sets the file](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#setFileAsPayload) as the request payload.
         request.setFileAsPayload("./files/BallerinaLang.pdf",
             contentType = mime:APPLICATION_PDF);
 
@@ -36,7 +36,7 @@ service /'stream on new http:Listener(9090) {
     resource function post receiver(http:Caller caller,
                                         http:Request request) {
         http:Response res = new;
-        //[Retrieve the byte stream](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Request#getByteStream).
+        //[Retrieve the byte stream](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getByteStream).
         stream<byte[], io:Error?>|error streamer = request.getByteStream();
 
         if (streamer is stream<byte[], io:Error?>) {

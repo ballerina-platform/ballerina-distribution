@@ -2,4 +2,4 @@
 // generating different types of UUIDs, validating UUID strings, and checking the UUID  version
 // of a UUID string.<br/><br/>
 // For more information on the underlying module,
-// see the [UUID module](https://docs.central.ballerina.io/ballerina/uuid/latest/uuid/).
+// see the [UUID module](https://docs.central.ballerina.io/ballerina/uuid/latest/).

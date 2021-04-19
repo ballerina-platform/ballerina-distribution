@@ -7,7 +7,7 @@ function hash() returns error? {
     string input = "Hello Ballerina!";
     byte[] inputArr = input.toBytes();
 
-    // Hashing input value using [MD5 hashing algorithm](https://docs.central.ballerina.io/ballerina/crypto/latest/crypto/functions#hashMd5), and printing hash value using Hex encoding.
+    // Hashing input value using [MD5 hashing algorithm](https://docs.central.ballerina.io/ballerina/crypto/latest/functions#hashMd5), and printing hash value using Hex encoding.
     byte[] output = crypto:hashMd5(inputArr);
     io:println("Hex encoded hash with MD5: " + output.toBase16());
 

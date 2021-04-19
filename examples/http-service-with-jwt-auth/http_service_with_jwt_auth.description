@@ -9,4 +9,4 @@
 // against the scope included in the JWT for at least one match between the two
 // sets.<br/><br/>
 // For more information on the underlying module, 
-// see the [JWT module](https://docs.central.ballerina.io/ballerina/jwt/latest/jwt/).
+// see the [JWT module](https://docs.central.ballerina.io/ballerina/jwt/latest/).

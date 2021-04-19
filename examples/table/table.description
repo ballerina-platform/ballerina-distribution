@@ -3,4 +3,4 @@
 // members in order but does not provide random access to a member using its position in this order. The built-in
 // functions enable inserting, accessing, deleting data, and applying functions on members of a `table`.
 // For more information on the underlying module,
-// see the [lang.table module](https://docs.central.ballerina.io/ballerina/lang.table/latest/lang.table/).
+// see the [lang.table module](https://docs.central.ballerina.io/ballerina/lang.table/latest/).
