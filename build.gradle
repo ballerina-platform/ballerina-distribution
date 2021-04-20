@@ -376,11 +376,13 @@ subprojects {
                 password System.getenv("packagePAT")
             }
         }
-
-        /* Ballerina lang staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1614/" }
-        /* Datamapper staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdatamapper-1010/" }
+        maven {
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-datamapper"
+            credentials {
+                username System.getenv("packageUser")
+                password System.getenv("packagePAT")
+            }
+        }
     }
 
     configurations {
