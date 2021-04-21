@@ -9,7 +9,6 @@ import ballerina/io;
         "https://github.com/<YOUR_ORGANIZATION>/<REPOSITORY>/events/push.json"
     ],
     secret: "<YOUR_SECRET_KEY>",
-    callback: "<YOUR_CALLBACK_URL>",
     httpConfig: {
         auth: {
             token: "<YOUR_AUTH_TOKEN>"
