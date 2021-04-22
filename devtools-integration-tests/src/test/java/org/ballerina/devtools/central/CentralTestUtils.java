@@ -84,7 +84,7 @@ public class CentralTestUtils {
      */
     private static String getToken() {
         // staging and dev both has the same access token
-        return new String(Base64.getDecoder().decode("OGM0Mzk4OTktYjNjMy0zOGZmLThkMjYtY2Q2MjlkNTY3OTFj"));
+        return System.getenv("devCentralToken");
     }
 
     /**

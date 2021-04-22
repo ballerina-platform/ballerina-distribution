@@ -138,17 +138,6 @@ task unpackC2cExamples(type: Copy) {
     }
 }
 
-task unpackObservabilityExtensions() {
-    doLast {
-        configurations.ballerinaObserveExtensions.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-            copy {
-                from project.zipTree(artifact.getFile())
-                into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
-            }
-        }
-    }
-}
-
 task downloadBalCommand(type: Download) {
     group = "unpack_dependencies"
     def commandBaseURL = "https://github.com/ballerina-platform/ballerina-update-tool/releases/download/v${ballerinaCommandVersion}"
@@ -224,20 +213,6 @@ task copyOtherRepos(type: Copy) {
         def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
         from("${artifactExtractedPath}") {
             into "lib/tools/lang-server/lib/"
-        }
-    }
-
-    /* Observability extensions */
-    configurations.ballerinaObserveExtensions.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
-        from("${artifactExtractedPath}/libs") {
-            into "bre/lib/"
-        }
-        from("${artifactExtractedPath}/bala") {
-            into "repo/bala"
-        }
-        from("${artifactExtractedPath}/cache") {
-            into "repo/cache"
         }
     }
 }
@@ -731,6 +706,8 @@ task testExamples() {
             'local-transactions',
             'xa-transactions',
             'retry-transactions',
+
+            'isolated-objects',
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
@@ -785,6 +762,7 @@ task testExamples() {
             'http-service-with-basic-auth-ldap-user-store', // Log output depends on time
             'http-service-with-jwt-auth', // Log output depends on time
             'http-service-with-oauth2', // Log output depends on time
+            'isolated-objects',
             'send-email',
             'receive-email-using-client',
             'receive-email-using-listener',
@@ -1283,7 +1261,6 @@ unpackStdLibs.dependsOn unpackDevTools
 unpackC2cLibs.dependsOn unpackStdLibs
 unpackC2cExamples.dependsOn unpackC2cLibs
 unpackC2cTooling.dependsOn unpackC2cExamples
-downloadBalCommand.dependsOn unpackObservabilityExtensions
 downloadBalCommand.dependsOn unpackC2cTooling
 
 /* Extract JRE */
