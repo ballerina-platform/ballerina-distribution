@@ -64,9 +64,7 @@ service /foo on authListener {
     }
 }
 
-@test:Config {
-    enable:false
-}
+@test:Config {}
 public function testAuthModuleFileUserStore1() {
     http:Client clientEP = checkpanic new("https://localhost:25001", {
         secureSocket: {
@@ -88,9 +86,7 @@ public function testAuthModuleFileUserStore1() {
     }
 }
 
-@test:Config {
-    enable:false
-}
+@test:Config {}
 public function testAuthModuleFileUserStore2() {
     http:Client clientEP = checkpanic new("https://localhost:25001", {
         secureSocket: {

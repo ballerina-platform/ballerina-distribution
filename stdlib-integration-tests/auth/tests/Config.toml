@@ -1,9 +1,9 @@
-[[auth.users]]
+[[ballerina.auth.users]]
 username="alice"
 password="123"
 scopes=["Admin", "Developer"]
 
-[[auth.users]]
+[[ballerina.auth.users]]
 username="bob"
 password="456"
 scopes=["Developer"]
