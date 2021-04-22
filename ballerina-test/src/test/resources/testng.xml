@@ -23,7 +23,7 @@
             <class name="org.ballerinalang.distribution.test.DistributionArtifactCheckTest"/>
             <class name="org.ballerinalang.distribution.test.PlatformDistributionArtifactCheckTest"/>
             <class name="org.ballerinalang.distribution.test.OpenAPIDistributionArtifactCheck"/>
-<!--            <class name="org.ballerinalang.distribution.test.OpenAPIArtifactBuildTest"/>-->
+            <class name="org.ballerinalang.distribution.test.OpenAPIArtifactBuildTest"/>
 <!--            <class name="org.ballerinalang.distribution.test.BallerinaCommandTest"/>-->
         </classes>
     </test>
