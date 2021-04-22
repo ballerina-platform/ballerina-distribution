@@ -10,7 +10,7 @@ service /http2Service on http2ServiceEP {
 
     resource function 'default .(http:Caller caller) {
 
-        // [Send a Push Promise](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Caller#promise).
+        // [Send a Push Promise](https://docs.central.ballerina.io/ballerina/http/latest/clients/Caller#promise).
         http:PushPromise promise1 = new (path = "/resource1", method = "GET");
         var promiseResponse1 = caller->promise(promise1);
         if (promiseResponse1 is error) {
@@ -51,7 +51,7 @@ service /http2Service on http2ServiceEP {
         msg = {"push": {"name": "resource1"}};
         push1.setPayload(msg);
 
-        // [Push promised resource1](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Caller#pushPromisedResponse).
+        // [Push promised resource1](https://docs.central.ballerina.io/ballerina/http/latest/clients/Caller#pushPromisedResponse).
         var pushResponse1 = caller->pushPromisedResponse(promise1, push1);
         if (pushResponse1 is error) {
             log:printError("Error occurred while sending the promised " +

@@ -1,9 +1,9 @@
 // This example demonstrates how to use the MySQL client with complex data types
 // such as binary, blobs, and date/time fields. Note that the MySQL database
 // driver JAR should be defined in the `Ballerina.toml` file as a dependency.
-// See [MySQL module](https://docs.central.ballerina.io/ballerinax/mysql/latest/mysql/) for sample configuration.
+// See [MySQL module](https://docs.central.ballerina.io/ballerinax/mysql/latest/) for sample configuration.
 // The MySQL connector uses some database properties from MySQL version 8.0.x
 // onwards. Therefore, it is recommended to use a MySQL driver version greater
 // than 8.0.x.<br><br>
 // For more information on the underlying module,
-// see the [MySQL module](https://docs.central.ballerina.io/ballerinax/mysql/latest/mysql/).
+// see the [MySQL module](https://docs.central.ballerina.io/ballerinax/mysql/latest/).

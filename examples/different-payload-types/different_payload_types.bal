@@ -3,7 +3,7 @@ import ballerina/io;
 import ballerina/log;
 import ballerina/mime;
 
-//[Client](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client) endpoint.
+//[Client](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client) endpoint.
 http:Client clientEP = check new ("http://localhost:9091/backEndService");
 
 //Service to test HTTP client remote functions with different payload types.
@@ -11,26 +11,26 @@ service /actionService on new http:Listener(9090) {
 
     resource function 'default messageUsage()
             returns string|http:InternalServerError {
-        //[GET](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#get) remote function without any payload.
+        //[GET](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#get) remote function without any payload.
         var response = clientEP->get("/greeting");
         handleResponse(response);
 
-        //[GET](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#get) remote function with
+        //[GET](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#get) remote function with
         //the request given as a message.
         http:Request request = new;
         response = clientEP->execute("GET", "/greeting", request);
         handleResponse(response);
 
-        //[POST](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#post) remote function without any payload.
+        //[POST](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#post) remote function without any payload.
         response = clientEP->post("/echo", ());
         handleResponse(response);
 
-        //[POST](https://docs.central.ballerina.io/ballerina/http/latest/http`/clients/Client#post) remote function with
+        //[POST](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#post) remote function with
         //text as the payload.
         response = clientEP->post("/echo", "Sample Text");
         handleResponse(response);
 
-        //[POST](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#post) remote function with
+        //[POST](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#post) remote function with
         //`xml` as the payload.
         response = clientEP->post("/echo", xml `<yy>Sample Xml</yy>`);
         handleResponse(response);
@@ -39,7 +39,7 @@ service /actionService on new http:Listener(9090) {
         response = clientEP->post("/echo", {name: "apple", color: "red"});
         handleResponse(response);
 
-        //[POST](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#post) remote function with
+        //[POST](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#post) remote function with
         //`byte[]` as the payload.
         string textVal = "Sample Text";
         byte[] binaryValue = textVal.toBytes();
@@ -54,11 +54,11 @@ service /actionService on new http:Listener(9090) {
             response = clientEP->post("/image", <@untainted>bStream);
             handleResponse(response);
 
-            //[Create a JSON body part](https://docs.central.ballerina.io/ballerina/mime/latest/mime/classes/Entity#setJson).
+            //[Create a JSON body part](https://docs.central.ballerina.io/ballerina/mime/latest/classes/Entity#setJson).
             mime:Entity part1 = new;
             part1.setJson({"name": "Jane"});
 
-            //[Create a text body part](https://docs.central.ballerina.io/ballerina/mime/latest/mime/classes/Entity#setText).
+            //[Create a text body part](https://docs.central.ballerina.io/ballerina/mime/latest/classes/Entity#setText).
             mime:Entity part2 = new;
             part2.setText("Hello");
 

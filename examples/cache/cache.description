@@ -2,4 +2,4 @@
 // LRU algorithm based eviction policy. The caching implementation can be customized by providing different
 // storage mechanisms and eviction policies. <br/><br/>
 // For more information on the underlying module, 
-// see the [Cache module](https://docs.central.ballerina.io/ballerina/cache/latest/cache/).
+// see the [Cache module](https://docs.central.ballerina.io/ballerina/cache/latest/).

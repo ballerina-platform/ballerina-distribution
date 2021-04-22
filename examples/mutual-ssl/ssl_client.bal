@@ -4,7 +4,7 @@ import ballerina/log;
 // Create a client configuration to be passed to the client endpoint.
 // Configure the `certFile`, `keyFile` including `cert` which
 // is required to enable mutual SSL.
-// [secureSocket](https://docs.central.ballerina.io/ballerina/http/latest/http/records/ClientSecureSocket) record provides the SSL related configurations.
+// [secureSocket](https://docs.central.ballerina.io/ballerina/http/latest/records/ClientSecureSocket) record provides the SSL related configurations.
 http:ClientConfiguration clientEPConfig = {
     secureSocket: {
         key: {

@@ -1,4 +1,4 @@
 // The `map` type in Ballerina defines a mutable mapping from keys (that are strings) to values of the type specified as
 // the map's constraint type.<br/><br/>
 // For more information on the underlying module, 
-// see the [lang.map module](https://docs.central.ballerina.io/ballerina/lang.map/latest/lang.map/).
+// see the [lang.map module](https://docs.central.ballerina.io/ballerina/lang.map/latest/).

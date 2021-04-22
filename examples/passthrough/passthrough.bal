@@ -9,7 +9,7 @@ service /passthrough on new http:Listener(9090) {
     // which HTTP methods are allowed.
     resource function 'default .(http:Request req)
             returns http:Response|http:InternalServerError {
-        // When [forward()](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#forward) is called on the backend client endpoint, it forwards the request that the passthrough
+        // When [forward()](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#forward) is called on the backend client endpoint, it forwards the request that the passthrough
         // resource received to the backend. When forwarding, the request is made using the same HTTP method that was
         // used to invoke the passthrough resource. The `forward()` function returns the response from the backend if
         // there are no errors.
@@ -33,7 +33,7 @@ service /hello on new http:Listener(9092) {
 
     // The `helloResource` accepts any HTTP methods as the accessor is defined as `'default`.
     resource function 'default .(http:Caller caller) {
-        // [Send the response](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Caller#respond) back to the caller.
+        // [Send the response](https://docs.central.ballerina.io/ballerina/http/latest/clients/Caller#respond) back to the caller.
         var result = caller->respond("Hello World!");
 
         if (result is error) {

@@ -4,7 +4,7 @@ import ballerina/log;
 // This is a client endpoint configured to connect to the HTTPS service.
 // As this is a 1-way SSL connection, the client needs to provide
 // `cert` file.
-// [secureSocket](https://docs.central.ballerina.io/ballerina/http/latest/http/records/ClientSecureSocket) record provides the SSL related configurations.
+// [secureSocket](https://docs.central.ballerina.io/ballerina/http/latest/records/ClientSecureSocket) record provides the SSL related configurations.
 http:ClientConfiguration clientEPConfig = {
     secureSocket: {
         cert: "../resource/path/to/public.crt"

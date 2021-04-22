@@ -12,7 +12,7 @@ http:Client backendClient = check new("http://localhost:9092");
 service /call on new http:Listener(9090) {
 
     resource function get all() returns http:Response|error {
-        // The `string` typedesc is being passed to the `get` [client remote function](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#get)
+        // The `string` typedesc is being passed to the `get` [client remote function](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#get)
         // as the `targetType` expecting the payload to be bound to a string value.
         var result = backendClient->
                         get("/backend/String", targetType = string);
@@ -22,7 +22,7 @@ service /call on new http:Listener(9090) {
             log:printError("Error: " + result.message());
             return result;
         } else {
-            // It implies that the [payload type](https://docs.central.ballerina.io/ballerina/http/latest/http/types#Payload)
+            // It implies that the [payload type](https://docs.central.ballerina.io/ballerina/http/latest/types#Payload)
             // is string.
             log:printInfo("String payload: " + result);
         }
@@ -54,7 +54,7 @@ service /call on new http:Listener(9090) {
         var res = backendClient->
                         post("/backend/5XX", "want 500", targetType = json);
         // When the data binding is expected to happen and if the `post` remote function gets a 5XX response from the
-        // backend, the response will be returned as an [http:RemoteServerError](https://docs.central.ballerina.io/ballerina/http/latest/http/errors#RemoteServerError)
+        // backend, the response will be returned as an [http:RemoteServerError](https://docs.central.ballerina.io/ballerina/http/latest/errors#RemoteServerError)
         // including the error message and status code.
         if (res is error) {
             http:Response resp = new;
@@ -72,7 +72,7 @@ service /call on new http:Listener(9090) {
 
     resource function get '4xx() returns http:Response|json {
         // When the data binding is expected to happen and if the client remote function gets a 4XX response from the
-        // backend, the response will be returned as an [http:ClientRequestError](https://docs.central.ballerina.io/ballerina/http/latest/http/errors#ClientRequestError)
+        // backend, the response will be returned as an [http:ClientRequestError](https://docs.central.ballerina.io/ballerina/http/latest/errors#ClientRequestError)
         // including the error message and status code.
         var res = backendClient->
                         post("/backend/err", "want 400", targetType = json);

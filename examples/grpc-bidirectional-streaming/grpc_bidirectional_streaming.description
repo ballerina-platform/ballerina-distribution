@@ -3,4 +3,4 @@
 // operate when each of them sends a sequence of messages using a read-write stream. 
 // In such scenarios, the two streams operate independently. Therefore, clients and servers can read and write in any order.<br/><br/>
 // For more information on the underlying module, 
-// see the [GRPC module](https://docs.central.ballerina.io/ballerina/grpc/latest/grpc/).
+// see the [GRPC module](https://docs.central.ballerina.io/ballerina/grpc/latest/).
