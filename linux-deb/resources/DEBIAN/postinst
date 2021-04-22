@@ -3,3 +3,6 @@ rm -f /usr/bin/bal
 
 ln -sf /usr/lib/ballerina/bin/bal /usr/bin/bal
 echo "export BALLERINA_HOME=/usr/lib/bal" >> /etc/profile.d/wso2.sh
+
+bal completion bash > /usr/share/bash-completion/completions/bal
+chmod 755 /usr/share/bash-completion/completions/bal
