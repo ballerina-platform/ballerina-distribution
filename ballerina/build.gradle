@@ -705,9 +705,7 @@ task testExamples() {
             'mysql-call-stored-procedures',
             'local-transactions',
             'xa-transactions',
-            'retry-transactions',
-
-            'isolated-objects',
+            'retry-transactions'
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
@@ -762,7 +760,6 @@ task testExamples() {
             'http-service-with-basic-auth-ldap-user-store', // Log output depends on time
             'http-service-with-jwt-auth', // Log output depends on time
             'http-service-with-oauth2', // Log output depends on time
-            'isolated-objects',
             'send-email',
             'receive-email-using-client',
             'receive-email-using-listener',

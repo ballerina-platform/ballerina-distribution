@@ -13,7 +13,6 @@ type Coordinates record {|
 // in which all the subexpressions are isolated expressions, etc.
 isolated map<Coordinates> cities = {};
 
-
 function add(string city, Coordinates coordinates) {
     lock {
         // An `isolated` variable can be accessed within a `lock` statement.
@@ -22,12 +21,10 @@ function add(string city, Coordinates coordinates) {
             return;
         }
 
-        map<Coordinates> updatedCities = cities.clone();
         // Any values transferred into the `lock` statement also need to be
         // isolated expressions ensuring that the variable will continue
         // to be an isolated root.
-        updatedCities[city] = coordinates.clone();
-        cities = updatedCities.clone();
+        cities[city] = coordinates.clone();
     }
 
     io:println("Added coordinates for ", city);
@@ -49,7 +46,7 @@ function getAllCoordinates() returns string[] {
         // A function/method call within a `lock` statement that accesses an
         // `isolated` variable should call a function/method that is
         // `isolated`.
-        return formatCoordinates(cities.clone());
+        return formatCoordinates(cities).clone();
     }
 }
 
