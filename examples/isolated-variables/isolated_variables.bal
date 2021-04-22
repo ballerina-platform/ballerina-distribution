@@ -46,8 +46,7 @@ function getAllCoordinates() returns string[] {
         // A function/method call within a `lock` statement that accesses an
         // `isolated` variable should call a function/method that is
         // `isolated`.
-        string[] formattedCoordinates = formatCoordinates(cities);
-        return formattedCoordinates.clone();
+        return formatCoordinates(cities).clone();
     }
 }
 
