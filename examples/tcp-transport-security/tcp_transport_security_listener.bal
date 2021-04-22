@@ -21,7 +21,7 @@ tcp:ListenerSecureSocket listenerSecureSocket = {
     ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
 };
 
-service on new tcp:Listener(9090, secureSocket = listenerSecureSocket) {
+service on new tcp:Listener(9002, secureSocket = listenerSecureSocket) {
 
     isolated remote function onConnect(tcp:Caller caller) 
         returns tcp:ConnectionService {
