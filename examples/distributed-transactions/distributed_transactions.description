@@ -5,4 +5,4 @@
 // After starting the `initiator service` and the `participant service`, execute the `curl -v localhost:8080/init`
 // cURL command to invoke the services. <br/><br/>
 // For more information on the underlying module,
-// see the [Transactions module](https://ballerina.io/learn/api-docs/ballerina/lang.transaction/index.html).
+// see the [Transactions module](https://docs.central.ballerina.io/ballerina/lang.transaction/latest).
