@@ -20,7 +20,7 @@ listener http:Listener securedEP = new(9090, config = {
         {
             ldapUserStoreConfig: {
                 domainName: "ballerina.io",
-                connectionUrl: "ldap://localhost:20000",
+                connectionUrl: "ldap://localhost:389",
                 connectionName: "uid=admin,ou=system",
                 connectionPassword: "secret",
                 userSearchBase: "ou=Users,dc=ballerina,dc=io",
