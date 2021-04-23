@@ -61,7 +61,7 @@ isolated class Cities {
             // access a `final` field of a type that is a subtype of
             // `readonly` or `isolated object {}`, can call another
             // function/method only if that function/method is `isolated`.
-            return formatCoordinates(self.cities);
+            return formatCoordinates(self.cities).clone();
         }
     }
 }

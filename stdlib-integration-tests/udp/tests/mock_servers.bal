@@ -27,7 +27,7 @@ map<string> QuestionBank = {
 service on new udp:Listener(PORT1) {
 
  remote function onDatagram(readonly & udp:Datagram datagram, udp:Caller caller ) 
-        returns udp:Error|readonly & udp:Datagram? {
+        returns udp:Error|udp:Datagram? {
             string|error request = string:fromBytes(datagram.data);
         if (request is string && QuestionBank.hasKey(request)) {
             udp:Datagram|error response = datagram.cloneWithType(udp:Datagram);

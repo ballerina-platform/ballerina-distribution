@@ -47,7 +47,7 @@ public class ServiceDebugTest extends BaseTestCase {
         debugTestRunner = new DebugTestRunner(testProjectName, testModuleFileName, true);
     }
 
-    @Test(enabled = false, description = "Test for service module debug engage")
+    @Test(description = "Test for service module debug engage")
     public void testModuleServiceDebugScenarios() throws BallerinaTestException {
         String fileName = "hello_service.bal";
         String filePath = Paths.get(debugTestRunner.testProjectPath, fileName).toString();
@@ -62,7 +62,7 @@ public class ServiceDebugTest extends BaseTestCase {
         Assert.assertEquals(debugHitInfo.getLeft(), debugTestRunner.testBreakpoints.get(0));
     }
 
-    @Test(enabled = false, description = "Test for single bal file debug engage")
+    @Test(description = "Test for single bal file debug engage")
     public void testSingleBalFileServiceDebugScenarios() throws BallerinaTestException {
         String testProjectName = "";
         String testSingleFileName = "hello_service.bal";

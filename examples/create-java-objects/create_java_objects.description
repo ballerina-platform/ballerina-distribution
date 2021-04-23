@@ -7,4 +7,4 @@
 // the implementations of Ballerina functions that are marked as `external`.
 // In this example, let's look at how to create Java objects by invoking their constructors from Ballerina.<br/><br/>
 // For more information on the underlying module, 
-// see the [Java module](https://docs.central.ballerina.io/ballerina/jballerina.java/latest/jballerina.java/).
+// see the [Java module](https://docs.central.ballerina.io/ballerina/jballerina.java/latest/).

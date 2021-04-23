@@ -11,4 +11,4 @@
 // `Config.toml` has defined three users - Alice, Bob and Eve. Each user has a
 // password and optionally assigned scopes as an array.<br/><br/>
 // For more information on the underlying module,
-// see the [Auth module](https://docs.central.ballerina.io/ballerina/auth/latest/auth/).
+// see the [Auth module](https://docs.central.ballerina.io/ballerina/auth/latest/).

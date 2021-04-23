@@ -2,4 +2,4 @@
 // The `task:Job` and interval should be specified and optional configurations are start time,
 // end time, and maximum count.
 // For more information on the underlying module, 
-// see the [Task module](https://docs.central.ballerina.io/ballerina/task/latest/task/).
+// see the [Task module](https://docs.central.ballerina.io/ballerina/task/latest/).

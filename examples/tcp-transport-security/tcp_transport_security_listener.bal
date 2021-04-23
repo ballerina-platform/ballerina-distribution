@@ -2,7 +2,7 @@ import ballerina/tcp;
 import ballerina/io;
 
 // A TCP listener can be configured to communicate through SSL/TLS as well.
-// The [secureSocket](https://docs.central.ballerina.io/ballerina/tcp/latest/tcp/records/ListenerSecureSocket) record provides the SSL related configurations,
+// The [secureSocket](https://docs.central.ballerina.io/ballerina/tcp/latest/records/ListenerSecureSocket) record provides the SSL related configurations,
 // which will configure a listener to accept new connections that
 // are secured via SSL.
 tcp:ListenerSecureSocket listenerSecureSocket = {
@@ -21,7 +21,7 @@ tcp:ListenerSecureSocket listenerSecureSocket = {
     ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
 };
 
-service on new tcp:Listener(9090, secureSocket = listenerSecureSocket) {
+service on new tcp:Listener(9002, secureSocket = listenerSecureSocket) {
 
     isolated remote function onConnect(tcp:Caller caller) 
         returns tcp:ConnectionService {
@@ -32,7 +32,7 @@ service on new tcp:Listener(9090, secureSocket = listenerSecureSocket) {
 
 service class EchoService {
 
-    remote function onBytes(readonly & byte[] data) returns readonly & byte[] {
+    remote function onBytes(readonly & byte[] data) returns byte[] {
         io:println("Received: ", 'string:fromBytes(data));
         return data;
     }

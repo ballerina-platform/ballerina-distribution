@@ -1,4 +1,4 @@
 //The Header-Based Router service reads a particular Header of a request and routes it to a specific recipient based on the Header value.<br/><br/>
 // For more information on the underlying module, 
-// see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/http/).
+// see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
 

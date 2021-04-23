@@ -2,7 +2,7 @@ import ballerina/http;
 
 // Create an HTTP listener configuration, which will configure a listener to
 // accept new connections that are secured via mutual SSL.
-// [secureSocket](https://docs.central.ballerina.io/ballerina/http/latest/http/records/ListenerSecureSocket) record provides the SSL related listener configurations.
+// [secureSocket](https://docs.central.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket) record provides the SSL related listener configurations.
 http:ListenerConfiguration helloWorldEPConfig = {
     secureSocket: {
         key: {

@@ -8,7 +8,7 @@ service /http11Service on new http:Listener(9090) {
 
     resource function 'default .(http:Request clientRequest)
             returns http:Response {
-        // Forward the [clientRequest](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Request) to the `http2` service.
+        // Forward the [clientRequest](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request) to the `http2` service.
         var clientResponse = http2serviceClientEP->forward("/http2service",
                                                         clientRequest);
 
@@ -17,7 +17,7 @@ service /http11Service on new http:Listener(9090) {
             response = clientResponse;
         } else {
             // Handle the errors that are returned when invoking the
-            // [forward](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/HttpClient#forward) function.
+            // [forward](https://docs.central.ballerina.io/ballerina/http/latest/clients/HttpClient#forward) function.
             response.statusCode = 500;
             response.setPayload(<@untainted>clientResponse.message());
 

@@ -1,5 +1,0 @@
-[b7a.users]
-
-[b7a.users.alice]
-password="123"
-scopes="read,write"

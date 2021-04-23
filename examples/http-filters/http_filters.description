@@ -3,4 +3,4 @@
 // The request will go through the filter logic before its dispatched to the
 // actual resource in the target service.<br/><br/>
 // For more information on the underlying module, 
-// see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/http/).
+// see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).

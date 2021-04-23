@@ -7,4 +7,4 @@
 // should have the `error` type in its return signature.
 // Let's look at how to handle Java exceptions in Ballerina.<br/><br/>
 // For more information on the underlying module, 
-// see the [Java module](https://docs.central.ballerina.io/ballerina/jballerina.java/latest/jballerina.java/).
+// see the [Java module](https://docs.central.ballerina.io/ballerina/jballerina.java/latest/).

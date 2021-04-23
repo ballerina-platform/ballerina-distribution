@@ -41,7 +41,7 @@ class PrintableClassImpl {
 
 class PrintableRawTemplateImpl {
     *object:RawTemplate;
-    io:Printable[] insertions;
+    public io:Printable[] insertions;
 
     public isolated function init(io:PrintableRawTemplate printableRawTemplate) {
         self.strings = printableRawTemplate.strings;

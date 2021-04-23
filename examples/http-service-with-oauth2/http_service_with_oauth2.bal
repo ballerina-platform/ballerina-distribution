@@ -19,7 +19,7 @@ listener http:Listener securedEP = new(9090, config = {
     auth: [
         {
             oauth2IntrospectionConfig: {
-                url: "https://localhost:9999/oauth2/token/introspect",
+                url: "https://localhost:9443/oauth2/introspect",
                 tokenTypeHint: "access_token",
                 scopeKey: "scp",
                 clientConfig: {
