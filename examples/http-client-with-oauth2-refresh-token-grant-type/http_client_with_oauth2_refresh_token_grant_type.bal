@@ -7,10 +7,10 @@ import ballerina/log;
 // client.
 http:Client securedEP = check new("https://localhost:9090", {
     auth: {
-        refreshUrl: "https://localhost:9090/oauth2/token/refresh",
-        refreshToken: "tGzv3JOkF0XG5Qx2TlKWIA",
-        clientId: "s6BhdRkqt3",
-        clientSecret: "7Fjfp0ZBr1KtDRbnfVdmIw",
+        refreshUrl: "https://localhost:9443/oauth2/token/refresh",
+        refreshToken: "tGzv3JOkFNp0AaXG5QrHOo68Qx2TlKz0UWIA",
+        clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
+        clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
         scopes: ["hello"],
         clientConfig: {
             secureSocket: {
