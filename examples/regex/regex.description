@@ -1,0 +1,3 @@
+// The `regex` library provides regex utility functions.<br/><br/>
+// For more information on the underlying module,
+// see the [Regex module](https://docs.central.ballerina.io/ballerina/regex/latest/).
