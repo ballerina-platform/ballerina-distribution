@@ -1,0 +1,7 @@
+# To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `bal run` command below.
+bal run regex.bal
+Is this matched: true
+Replaced string: Ballerina_is_great
+String after replacing first Match: Replace thisTextThis
+No of names: 4
