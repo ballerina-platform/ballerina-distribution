@@ -672,6 +672,10 @@
                 "url": "strings"
             },
             {
+                "name": "Regex",
+                "url": "regex"
+            },
+            {
                 "name": "File Path",
                 "url": "filepath"
             },
