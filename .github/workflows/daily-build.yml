@@ -54,8 +54,37 @@ jobs:
           -X POST 'https://chat.googleapis.com/v1/spaces/${{secrets.BALLERINA_CHAT_ID}}/messages?key=${{secrets.BALLERINA_CHAT_KEY}}&token=${{secrets.BALLERINA_CHAT_TOKEN}}' \
           --header 'Content-Type: application/json' \
           -d '{"text": "*ballerina-distribution daily build failure* \nPlease \n visit <https://github.com/ballerina-platform/ballerina-distribution/actions?query=workflow%3A%22Daily+build%22|the daily build page> for more information"}'
-
-
+      - name: Get current date
+          id: date
+          run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+      - name: Checkout tools repo
+        uses: actions/checkout@v2
+        with:
+          repository: ballerina-platform/module-ballerina-docker
+          path: module-ballerina-docker
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USER }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        env:
+          DATE: ${{ steps.date.outputs.date }}
+        with:
+          context: ./
+          file: ./module-ballerina-docker/tree/master/base/docker/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_HUB_USER }}/ballerina:${DATE}
+      - name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
   windows-build:
 
     runs-on: windows-latest
