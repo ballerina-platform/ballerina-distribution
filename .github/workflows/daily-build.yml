@@ -55,13 +55,15 @@ jobs:
           --header 'Content-Type: application/json' \
           -d '{"text": "*ballerina-distribution daily build failure* \nPlease \n visit <https://github.com/ballerina-platform/ballerina-distribution/actions?query=workflow%3A%22Daily+build%22|the daily build page> for more information"}'
       - name: Get current date
-          id: date
-          run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
-      - name: Checkout tools repo
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+      - name: Checkout docker repo
         uses: actions/checkout@v2
         with:
           repository: ballerina-platform/module-ballerina-docker
           path: module-ballerina-docker
+      - name: Copy zip artifact
+        run: cp ballerina/build/distributions/ballerina-swan-lake-*.zip /module-ballerina-docker/base/docker/Dockerfile/
       - name: Checkout
         uses: actions/checkout@v2
       - name: Set up QEMU
@@ -80,7 +82,7 @@ jobs:
           DATE: ${{ steps.date.outputs.date }}
         with:
           context: ./
-          file: ./module-ballerina-docker/tree/master/base/docker/Dockerfile
+          file: ./module-ballerina-docker/base/docker/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USER }}/ballerina:${DATE}
       - name: Image digest
