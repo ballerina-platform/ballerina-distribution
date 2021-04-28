@@ -82,12 +82,11 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          context: ./
-          file: module-ballerina-docker/base/docker/Dockerfile
+          context: module-ballerina-docker/base/docker/
           push: true
           tags: ${{ secrets.DOCKER_HUB_USER }}/ballerina:${{ steps.version.outputs.version }}
           build-args: |
-            BALLERINA_DIST=module-ballerina-docker/base/docker/ballerina-${{ steps.project-version.outputs.version }}.zip
+            BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.version }}.zip
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
   windows-build:
