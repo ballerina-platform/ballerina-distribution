@@ -57,6 +57,11 @@ jobs:
       - name: Get daily docker version
         id: version
         run: echo "::set-output name=version::$(date +'%Y-%m-%d')"
+      - name: Get project version
+        id: project-version
+        run: |
+          RELEASE_VERSION=$((grep -w "version" | cut -d= -f2) < gradle.properties)
+          echo "::set-output name=version::$RELEASE_VERSION"
       - name: Checkout docker repo
         uses: actions/checkout@v2
         with:
@@ -81,6 +86,8 @@ jobs:
           file: module-ballerina-docker/base/docker/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USER }}/ballerina:${{ steps.version.outputs.version }}
+          build-args: |
+            BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.version }}.zip
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
   windows-build:
