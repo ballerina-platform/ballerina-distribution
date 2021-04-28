@@ -80,7 +80,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./
-          file: ./module-ballerina-docker/base/docker/Dockerfile
+          file: module-ballerina-docker/base/docker/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USER }}/ballerina:${{ steps.version.outputs.version }}
       - name: Image digest
