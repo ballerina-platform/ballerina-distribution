@@ -84,7 +84,7 @@ jobs:
         with:
           context: module-ballerina-docker/base/docker/
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USER }}/ballerina:${{ steps.version.outputs.version }}
+          tags: ballerina/ballerina:${{ steps.version.outputs.version }}
           build-args: |
             BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.version }}.zip
       - name: Image digest
