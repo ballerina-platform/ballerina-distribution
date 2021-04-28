@@ -87,7 +87,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_HUB_USER }}/ballerina:${{ steps.version.outputs.version }}
           build-args: |
-            BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.version }}.zip
+            BALLERINA_DIST=module-ballerina-docker/base/docker/ballerina-${{ steps.project-version.outputs.version }}.zip
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
   windows-build:
