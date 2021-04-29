@@ -707,7 +707,8 @@ task testExamples() {
             'xa-transactions',
             'retry-transactions',
 
-            'task-one-time-job-execution'
+            'task-one-time-job-execution',
+            'task-frequency-job-execution'
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
