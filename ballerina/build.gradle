@@ -705,7 +705,9 @@ task testExamples() {
             'mysql-call-stored-procedures',
             'local-transactions',
             'xa-transactions',
-            'retry-transactions'
+            'retry-transactions',
+
+            'task-one-time-job-execution'
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
