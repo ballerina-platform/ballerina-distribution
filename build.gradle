@@ -454,7 +454,7 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:xslt-ballerina:${stdlibXsltVersion}"
 
         ballerinaStdLibs "org.ballerinalang:transaction-ballerina:${stdlibTransactionVersion}"
-        ballerinaStdLibs "org.ballerinalang:module-ballerina-openapi:${openapiVersion}"
+        ballerinaStdLibs "io.ballerina:module-ballerina-openapi:${openapiVersion}"
 
         /* Code to cloud extensions */
         ballerinaC2cLibs "io.ballerina:c2c-ballerina:${c2cVersion}"
