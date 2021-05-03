@@ -40,16 +40,16 @@ chmod 0755 /etc/profile.d/wso2.sh
 
 if [ "$(basename -- "$SHELL")" = "bash" ]; then
     bal completion bash > /usr/share/bash-completion/completions/bal
-    chmod 755 /usr/share/bash-completion/completions/bal
+    chmod 766 /usr/share/bash-completion/completions/bal
 elif [ "$(basename -- "$SHELL")" = "zsh" ]; then
     if [ ! -d ~/.ballerina ]; then
         mkdir –m766 ~/.ballerina
     fi
-    mkdir -p ~/.ballerina/completion
+    mkdir -p –m766 ~/.ballerina/completion
     echo "fpath=(~/.ballerina/completion $fpath)" >> ~/.zshrc
     echo "autoload -U compinit && compinit" >> ~/.zshrc
     \cp /usr/lib/ballerina/scripts/_bal ~/.ballerina/completion/
-    chmod 755 ~/.ballerina/completion/_bal
+    chmod 766 ~/.ballerina/completion/_bal
 fi
 
 %postun
