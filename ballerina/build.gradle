@@ -432,6 +432,10 @@ task packageDistLinux(type: Zip) {
         from "build/target/ballerina-command-${ballerinaCommandVersion}/scripts/bal_completion.bash"
         fileMode = 775
     }
+    into("${parentDir}/scripts") {
+        from "build/target/ballerina-command-${ballerinaCommandVersion}/scripts/_bal"
+        fileMode = 775
+    }
 
     /* Dependencies */
     into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
@@ -504,6 +508,10 @@ task packageDistMac(type: Zip) {
     }
     into("${parentDir}/scripts") {
         from "build/target/ballerina-command-${ballerinaCommandVersion}/scripts/bal_completion.bash"
+        fileMode = 775
+    }
+    into("${parentDir}/scripts") {
+        from "build/target/ballerina-command-${ballerinaCommandVersion}/scripts/_bal"
         fileMode = 775
     }
 
