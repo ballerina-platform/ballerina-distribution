@@ -42,11 +42,14 @@ if [ "$(basename -- "$SHELL")" = "bash" ]; then
     bal completion bash > /usr/share/bash-completion/completions/bal
     chmod 755 /usr/share/bash-completion/completions/bal
 elif [ "$(basename -- "$SHELL")" = "zsh" ]; then
-    mkdir -p ~/.zsh/completion
-    echo "fpath=(~/.zsh/completion $fpath)" >> ~/.zshrc
+    if [ ! -d ~/.ballerina ]; then
+        mkdir –m766 ~/.ballerina
+    fi
+    mkdir -p ~/.ballerina/completion
+    echo "fpath=(~/.ballerina/completion $fpath)" >> ~/.zshrc
     echo "autoload -U compinit && compinit" >> ~/.zshrc
-    \cp /usr/lib/ballerina/scripts/_bal ~/.zsh/completion/
-    chmod 755 ~/.zsh/completion/_bal
+    \cp /usr/lib/ballerina/scripts/_bal ~/.ballerina/completion/
+    chmod 755 ~/.ballerina/completion/_bal
 fi
 
 %postun
