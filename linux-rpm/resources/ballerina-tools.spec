@@ -48,7 +48,7 @@ elif [ "$(basename -- "$SHELL")" = "zsh" ]; then
     mkdir -p –m766 ~/.ballerina/completion
     echo "fpath=(~/.ballerina/completion $fpath)" >> ~/.zshrc
     echo "autoload -U compinit && compinit" >> ~/.zshrc
-    \cp /usr/lib/ballerina/scripts/_bal ~/.ballerina/completion/
+    \cp %{_libdir}/ballerina/scripts/_bal ~/.ballerina/completion/
     chmod 766 ~/.ballerina/completion/_bal
 fi
 
