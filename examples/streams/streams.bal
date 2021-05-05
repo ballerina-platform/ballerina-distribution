@@ -78,7 +78,7 @@ public function main() {
     //The `reduce` function reduces the stream to a single value.
     float? avg = subscriptionStream.reduce(
                     function (float accum, Student student) returns float {
-        return accum + <float>student.score / studentList.length();
+        return accum + student.score / <float> studentList.length();
     }, 0.0);
 
     if (avg is float) {
