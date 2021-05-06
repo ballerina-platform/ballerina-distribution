@@ -7,7 +7,7 @@ import ballerina/log;
 // client.
 http:Client securedEP = check new("https://localhost:9090",
     auth = {
-        token: "JlbmMiOiJBMTI4Q0JDLUhTMjU2In"
+        token: "56ede317-4511-44b4-8579-a08f094ee8c5"
     },
     secureSocket = {
         cert: "../resource/path/to/public.crt"

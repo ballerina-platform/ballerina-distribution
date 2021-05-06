@@ -19,16 +19,16 @@ listener http:Listener securedEP = new(9090,
     auth: [
         {
             ldapUserStoreConfig: {
-                domainName: "ballerina.io",
+                domainName: "avix.lk",
                 connectionUrl: "ldap://localhost:389",
-                connectionName: "uid=admin,ou=system",
-                connectionPassword: "secret",
-                userSearchBase: "ou=Users,dc=ballerina,dc=io",
-                userEntryObjectClass: "identityPerson",
+                connectionName: "cn=admin,dc=avix,dc=lk",
+                connectionPassword: "avix123",
+                userSearchBase: "ou=Users,dc=avix,dc=lk",
+                userEntryObjectClass: "inetOrgPerson",
                 userNameAttribute: "uid",
-                userNameSearchFilter: "(&(objectClass=person)(uid=?))",
-                userNameListFilter: "(objectClass=person)",
-                groupSearchBase: ["ou=Groups,dc=ballerina,dc=io"],
+                userNameSearchFilter: "(&(objectClass=inetOrgPerson)(uid=?))",
+                userNameListFilter: "(objectClass=inetOrgPerson)",
+                groupSearchBase: ["ou=Groups,dc=avix,dc=lk"],
                 groupEntryObjectClass: "groupOfNames",
                 groupNameAttribute: "cn",
                 groupNameSearchFilter: "(&(objectClass=groupOfNames)(cn=?))",
@@ -36,10 +36,10 @@ listener http:Listener securedEP = new(9090,
                 membershipAttribute: "member",
                 userRolesCacheEnabled: true,
                 connectionPoolingEnabled: false,
-                connectionTimeout: 5000,
-                readTimeout: 60000
+                connectionTimeout: 5,
+                readTimeout: 60
             },
-            scopes: ["hello"]
+            scopes: ["admin"]
         }
     ]
 }
