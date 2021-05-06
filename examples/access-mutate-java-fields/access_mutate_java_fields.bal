@@ -10,6 +10,6 @@ public function pi() returns float = @java:FieldGet {
 public function main() {
     float r = 4;
     // If a field is an instance field, the receiver instance has to be provided as the first parameter.
-    float l = 2 * pi() * r;
+    float l = (<float> 2) * pi() * r;
     io:println(l);
 }
