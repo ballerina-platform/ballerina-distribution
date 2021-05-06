@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: slbeta1-stage
       - name: Set version env variable
         id: version-set
         run: |
