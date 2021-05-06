@@ -6,8 +6,8 @@ import ballerina/io;
 // The rest parameter `modules` represents the additional arguments.
 // The `main` function may return an `error` or `()`.
 public function main(string name,
-                     int age = 18,
-                     string year = "Freshman",
+                     int age,
+                     string year,
                      string... modules)
                   returns error? {
 
