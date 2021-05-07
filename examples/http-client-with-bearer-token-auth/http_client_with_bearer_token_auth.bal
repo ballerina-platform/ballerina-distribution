@@ -5,14 +5,14 @@ import ballerina/log;
 // The client is enriched with the `Authorization: Bearer <token>` header by
 // passing the `http:BearerTokenConfig` for the `auth` configuration of the
 // client.
-http:Client securedEP = check new("https://localhost:9090", {
-    auth: {
-        token: "JlbmMiOiJBMTI4Q0JDLUhTMjU2In"
+http:Client securedEP = check new("https://localhost:9090",
+    auth = {
+        token: "56ede317-4511-44b4-8579-a08f094ee8c5"
     },
-    secureSocket: {
+    secureSocket = {
         cert: "../resource/path/to/public.crt"
     }
-});
+);
 
 public function main() {
     // Send a `GET` request to the specified endpoint.

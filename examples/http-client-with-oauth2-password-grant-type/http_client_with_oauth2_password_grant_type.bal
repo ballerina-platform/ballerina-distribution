@@ -5,16 +5,16 @@ import ballerina/log;
 // The client is enriched with the `Authorization: Bearer <token>` header by
 // passing the `http:PasswordGrantConfig` to the `auth` configuration of the
 // client.
-http:Client securedEP = check new("https://localhost:9090", {
-    auth: {
-        tokenUrl: "https://localhost:9443/oauth2/token",
+http:Client securedEP = check new("https://localhost:9090",
+    auth = {
+        tokenUrl: "https://localhost:9445/oauth2/token",
         username: "admin",
-        password: "123",
+        password: "admin",
         clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
-        clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY3Aa",
-        scopes: ["hello"],
+        clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
+        scopes: ["admin"],
         refreshConfig: {
-            refreshUrl: "https://localhost:9443/oauth2/token/refresh",
+            refreshUrl: "https://localhost:9445/oauth2/token",
             scopes: ["hello"],
             clientConfig: {
                 secureSocket: {
@@ -28,10 +28,10 @@ http:Client securedEP = check new("https://localhost:9090", {
             }
         }
     },
-    secureSocket: {
+    secureSocket = {
         cert: "../resource/path/to/public.crt"
     }
-});
+);
 
 public function main() {
     // Send a `GET` request to the specified endpoint.
