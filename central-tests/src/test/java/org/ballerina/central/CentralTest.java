@@ -16,9 +16,8 @@
  * under the License.
  */
 
-package org.ballerina.devtools.central;
+package org.ballerina.central;
 
-import org.ballerina.devtools.utils.TestUtils;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -39,27 +38,27 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Objects;
 
-import static org.ballerina.devtools.central.CentralTestUtils.BALLERINA_DEV_CENTRAL;
-import static org.ballerina.devtools.central.CentralTestUtils.BALLERINA_TOML;
-import static org.ballerina.devtools.central.CentralTestUtils.BALLERINA_HOME_DIR;
-import static org.ballerina.devtools.central.CentralTestUtils.MAIN_BAL;
-import static org.ballerina.devtools.central.CentralTestUtils.createSettingToml;
-import static org.ballerina.devtools.central.CentralTestUtils.deleteFiles;
-import static org.ballerina.devtools.central.CentralTestUtils.getBalaPath;
-import static org.ballerina.devtools.central.CentralTestUtils.getEnvVariables;
-import static org.ballerina.devtools.central.CentralTestUtils.getExecutableJarPath;
-import static org.ballerina.devtools.central.CentralTestUtils.getGenerateBalaLog;
-import static org.ballerina.devtools.central.CentralTestUtils.getPushedToCentralLog;
-import static org.ballerina.devtools.central.CentralTestUtils.getString;
-import static org.ballerina.devtools.central.CentralTestUtils.randomPackageName;
-import static org.ballerina.devtools.central.CentralTestUtils.updateFileToken;
-import static org.ballerina.devtools.utils.TestUtils.DISTRIBUTIONS_DIR;
-import static org.ballerina.devtools.utils.TestUtils.MAVEN_VERSION;
-import static org.ballerina.devtools.utils.TestUtils.executeBuildCommand;
-import static org.ballerina.devtools.utils.TestUtils.executeCommand;
-import static org.ballerina.devtools.utils.TestUtils.executePullCommand;
-import static org.ballerina.devtools.utils.TestUtils.executePushCommand;
-import static org.ballerina.devtools.utils.TestUtils.executeSearchCommand;
+import static org.ballerina.central.CentralTestUtils.BALLERINA_DEV_CENTRAL;
+import static org.ballerina.central.CentralTestUtils.BALLERINA_HOME_DIR;
+import static org.ballerina.central.CentralTestUtils.BALLERINA_TOML;
+import static org.ballerina.central.CentralTestUtils.MAIN_BAL;
+import static org.ballerina.central.CentralTestUtils.createSettingToml;
+import static org.ballerina.central.CentralTestUtils.deleteFiles;
+import static org.ballerina.central.CentralTestUtils.getBalaPath;
+import static org.ballerina.central.CentralTestUtils.getEnvVariables;
+import static org.ballerina.central.CentralTestUtils.getExecutableJarPath;
+import static org.ballerina.central.CentralTestUtils.getGenerateBalaLog;
+import static org.ballerina.central.CentralTestUtils.getPushedToCentralLog;
+import static org.ballerina.central.CentralTestUtils.getString;
+import static org.ballerina.central.CentralTestUtils.randomPackageName;
+import static org.ballerina.central.CentralTestUtils.updateFileToken;
+import static org.ballerina.central.TestUtils.DISTRIBUTIONS_DIR;
+import static org.ballerina.central.TestUtils.MAVEN_VERSION;
+import static org.ballerina.central.TestUtils.executeBuildCommand;
+import static org.ballerina.central.TestUtils.executeCommand;
+import static org.ballerina.central.TestUtils.executePullCommand;
+import static org.ballerina.central.TestUtils.executePushCommand;
+import static org.ballerina.central.TestUtils.executeSearchCommand;
 
 /**
  * Tests related central packaging.

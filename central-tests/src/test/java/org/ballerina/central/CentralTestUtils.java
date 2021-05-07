@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.ballerina.devtools.central;
+package org.ballerina.central;
 
 import org.testng.Assert;
 
@@ -27,7 +27,6 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
-import java.util.Base64;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
