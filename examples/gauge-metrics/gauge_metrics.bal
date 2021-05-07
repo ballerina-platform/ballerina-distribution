@@ -52,7 +52,7 @@ service /onlineStoreService on new http:Listener(9090) {
         //Set the value of the gauge with the new value.
         registeredGaugeWithTags.increment();
         float value = registeredGaugeWithTags.getValue();
-        float newValue = value * 12;
+        float newValue = value * 12.0;
         registeredGaugeWithTags.setValue(newValue);
         //Log the current state of registered gauge with tags.
         printGauge(registeredGaugeWithTags);
@@ -77,7 +77,7 @@ service /onlineStoreService on new http:Listener(9090) {
                                         "Some description", (), statsConfigs);
         int i = 1;
         while (i < 6) {
-            gaugeWithCustomStats.setValue(100.0 * i);
+            gaugeWithCustomStats.setValue(<float>(100 * i));
             i = i + 1;
         }
         //Log the current state of registered gauge with tags.
