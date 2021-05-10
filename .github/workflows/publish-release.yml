@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: slbeta1-rc2
       - name: Set version env variable
         id: version-set
         run: |
@@ -45,7 +47,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
-          tag_name: "v${{ steps.version-set.outputs.version }}"
+          tag_name: "v${{ steps.version-set.outputs.version }}-rc2"
           release_name: ${{ steps.version-set.outputs.version }}
           draft: false
           prerelease: false
