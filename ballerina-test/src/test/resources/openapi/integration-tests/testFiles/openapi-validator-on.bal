@@ -9,7 +9,7 @@ listener http:Listener ep0 = new(9090, config = {host: "localhost"});
         failOnErrors: true
 }
 service /api/v1 on ep0{
-    resource function get /[string param1]/[string param3]() returns error? {
+    resource function get [string param1]/[string param3]() returns error? {
         http:Caller caller = new;
         string msg = "Hello, " + param1 + " " + param3 ;
         var result = caller->respond(<@untainted> msg);
