@@ -54,9 +54,23 @@ Alternatively, you can install Ballerina from the source using the following ins
     set packageUser=<Your github username>
     set packagePAT=<Your personal access token>
     ```
- 
-3. Run the Gradle build command ``./gradlew build`` from the repository root directory.
-4. Extract the Ballerina distribution created at `ballerina/build/distributions/ballerina-<version>-SNAPSHOT.zip`.
+3. This repository contains central integration tests. You need to have dev access token of the bc2testorg organization to run these tests. Then you need to set following environment variables. 
+
+   Linux/Unix
+    ```bash
+    export BALLERINA_DEV_CENTRAL=true
+    export BALLERINA_CENTRAL_ACCESS_TOKEN=<Dev access token>
+    ```
+
+   Windows
+    ```batch
+    set BALLERINA_DEV_CENTRAL=true
+    set BALLERINA_CENTRAL_ACCESS_TOKEN=<Dev access token>
+    ```
+   Else you can disable central integration tests and build the repository.
+   
+4. Run the Gradle build command ``./gradlew build`` from the repository root directory.
+5. Extract the Ballerina distribution created at `ballerina/build/distributions/ballerina-<version>-SNAPSHOT.zip`.
 
 ## Contributing to Ballerina
 

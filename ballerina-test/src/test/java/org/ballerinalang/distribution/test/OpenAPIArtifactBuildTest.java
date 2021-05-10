@@ -144,7 +144,7 @@ public class OpenAPIArtifactBuildTest {
         buildArgs.add("openapi-validator-off.bal");
         InputStream outputs = TestUtils.executeOpenapiBuild(distributionFileName, TestUtils.getResource(testResource),
                 buildArgs);
-        String msg = "WARNING [openapi-validator-off.bal:(7:1,20:2)] Could not find a Ballerina service resource for " +
+        String msg = "WARNING [openapi-validator-off.bal:(6:0,19:1)] Could not find a Ballerina service resource for " +
                 "the path";
         try (BufferedReader br = new BufferedReader(new InputStreamReader(outputs))) {
 
@@ -170,7 +170,7 @@ public class OpenAPIArtifactBuildTest {
         buildArgs.add("openapi-validator-on.bal");
         InputStream outputs = TestUtils.executeOpenapiBuild(distributionFileName, TestUtils.getResource(testResource),
                 buildArgs);
-        String msg = "ERROR [openapi-validator-on.bal:(7:1,20:2)] Could not find a Ballerina service resource for " +
+        String msg = "ERROR [openapi-validator-on.bal:(6:0,19:1)] Could not find a Ballerina service resource for " +
                 "the path";
         try (BufferedReader br = new BufferedReader(new InputStreamReader(outputs))) {
 
