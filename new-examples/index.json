@@ -55,6 +55,10 @@
             {
                 "name": "Check Expression",
                 "url": "check-expression"
+            },
+            {
+                "name": "Error Subtyping",
+                "url": "error-subtyping"
             }
         ]
     }
