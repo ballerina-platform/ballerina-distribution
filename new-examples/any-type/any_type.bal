@@ -1,11 +1,10 @@
 import ballerina/io;
 
-// A variable of type `any` can hold any value
-// except an error.
+// A variable of type `any` can hold any value except an error.
 any x = 1;
 
 public function main() {
-    // Can cast any to specific type.
+    // Can cast `any` to specific type.
     int n = <int>x;
     
     io:println(n);
