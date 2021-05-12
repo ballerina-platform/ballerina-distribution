@@ -67,6 +67,10 @@
             {
                 "name": "Any Type",
                 "url": "any-type"
+            },
+            {
+                "name": "Ignoring Return Values and Errors",
+                "url": "ignoring-return-values-and-errors"
             }
         ]
     }
