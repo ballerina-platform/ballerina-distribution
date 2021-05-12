@@ -1,0 +1,2 @@
+description: const in Ballerina is an immutable value known at compile-time. final is used to assign a value to a field or variable only once.
+keywords: ballerina, ballerina by example, bbe, const, final
