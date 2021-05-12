@@ -59,6 +59,10 @@
             {
                 "name": "Error Subtyping",
                 "url": "error-subtyping"
+            },
+            {
+                "name": "Panics",
+                "url": "panics"
             }
         ]
     }
