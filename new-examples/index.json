@@ -95,6 +95,10 @@
             {
                 "name": "Enumerations",
                 "url": "enumerations"
+            },
+            {
+                "name": "Match Statement",
+                "url": "match-statement"
             }
         ]
     }
