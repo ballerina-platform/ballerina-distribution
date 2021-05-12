@@ -1,0 +1,2 @@
+description: Maps in Ballerina defines a mutable mapping from keys (that are strings) to values of a type.
+keywords: ballerina, ballerina by example, bbe, maps
