@@ -1,0 +1,49 @@
+[
+    {
+        "title": "Basics",
+        "column": 0,
+        "category": "Language concepts",
+        "samples": [
+            {
+                "name": "Programs and modules",
+                "url": "programs-and-modules"
+            },
+            {
+                "name": "Variables and types",
+                "url": "variables-and-types"
+            },
+            {
+                "name": "Functions",
+                "url": "functions"
+            },
+            {
+                "name": "Identifiers",
+                "url": "identifiers"
+            },
+            {
+                "name": "Integers",
+                "url": "integers"
+            },
+            {
+                "name": "Booleans",
+                "url": "booleans"
+            },
+            {
+                "name": "Floating Point Numbers",
+                "url": "floating-point-numbers"
+            },
+            {
+                "name": "Nil",
+                "url": "nil"
+            },
+            {
+                "name": "Strings",
+                "url": "strings"
+            },
+            {
+                "name": "Langlib Functions",
+                "url": "langlib-functions"
+            }
+        ]
+    }
+]
