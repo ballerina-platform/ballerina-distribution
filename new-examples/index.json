@@ -63,6 +63,10 @@
             {
                 "name": "Panics",
                 "url": "panics"
+            },
+            {
+                "name": "Any Type",
+                "url": "any-type"
             }
         ]
     }
