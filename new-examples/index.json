@@ -43,6 +43,38 @@
             {
                 "name": "Langlib Functions",
                 "url": "langlib-functions"
+            },
+            {
+                "name": "Arrays",
+                "url": "arrays"
+            },
+            {
+                "name": "Foreach Statement",
+                "url": "foreach-statement"
+            },
+            {
+                "name": "While Statement",
+                "url": "while-statement"
+            },
+            {
+                "name": "Binary Data",
+                "url": "binary-data"
+            },
+            {
+                "name": "Maps",
+                "url": "maps"
+            },
+            {
+                "name": "Type Definitions",
+                "url": "type-definitions"
+            },
+            {
+                "name": "Records",
+                "url": "records"
+            },
+            {
+                "name": "Unions",
+                "url": "unions"
             }
         ]
     }
