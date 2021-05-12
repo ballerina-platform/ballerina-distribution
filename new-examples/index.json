@@ -79,6 +79,10 @@
             {
                 "name": "Object",
                 "url": "object"
+            },
+            {
+                "name": "Defining Classes",
+                "url": "defining-classes"
             }
         ]
     }
