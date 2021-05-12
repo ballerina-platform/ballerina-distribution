@@ -1,0 +1,2 @@
+description: The foreach statement in Ballerina iterates over an iterable value, by binding a variable to each member of the iterable value in order.
+keywords: ballerina, ballerina by example, bbe, foreach, loops
