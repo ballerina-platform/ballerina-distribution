@@ -43,6 +43,10 @@
             {
                 "name": "Langlib Functions",
                 "url": "langlib-functions"
+            },
+            {
+                "name": "Error Reporting",
+                "url": "error-reporting"
             }
         ]
     }
