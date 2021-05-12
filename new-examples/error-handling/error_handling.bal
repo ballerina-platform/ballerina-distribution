@@ -17,6 +17,8 @@ function intFromBytes(byte[] bytes) returns int|error {
 public function main() returns error? {
     int|error res = intFromBytes([104, 101, 108, 108, 111]);    
     if res is error {
+        // The `check` expression is shorthand for this pattern of
+        // checking if a value is an error and returning that value.
         return res;
     } else {
         io:println("result: ", res);
