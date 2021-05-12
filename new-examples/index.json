@@ -73,8 +73,28 @@
                 "url": "records"
             },
             {
+                "name": "Structural Typing",
+                "url": "structural-typing"
+            },
+            {
                 "name": "Unions",
                 "url": "unions"
+            },
+            {
+                "name": "Init Return Type",
+                "url": "init-return-type"
+            },
+            {
+                "name": "Identity",
+                "url": "identity"
+            },
+            {
+                "name": "Const and Final",
+                "url": "const-and-final"
+            },
+            {
+                "name": "Enumerations",
+                "url": "enumerations"
             }
         ]
     }
