@@ -65,7 +65,7 @@ public class OpenAPIArtifactBuildTest {
                 buildArgs);
         Assert.assertTrue(successful);
         Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("petstore_service.bal")));
-        Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("petstore_client.bal")));
+        Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("client.bal")));
         TestUtils.deleteGeneratedFiles("petstore");
     }
 
