@@ -47,6 +47,10 @@
             {
                 "name": "Error Reporting",
                 "url": "error-reporting"
+            },
+            {
+                "name": "Error Handling",
+                "url": "error-handling"
             }
         ]
     }
