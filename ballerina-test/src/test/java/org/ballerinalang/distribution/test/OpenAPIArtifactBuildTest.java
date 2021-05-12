@@ -65,7 +65,7 @@ public class OpenAPIArtifactBuildTest {
                 buildArgs);
         Assert.assertTrue(successful);
         Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("petstore_service.bal")));
-        Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("petstore_client.bal")));
+        Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("client.bal")));
         TestUtils.deleteGeneratedFiles("petstore");
     }
 
@@ -144,8 +144,7 @@ public class OpenAPIArtifactBuildTest {
         buildArgs.add("openapi-validator-off.bal");
         InputStream outputs = TestUtils.executeOpenapiBuild(distributionFileName, TestUtils.getResource(testResource),
                 buildArgs);
-        String msg = "WARNING [openapi-validator-off.bal:(6:0,19:1)] Could not find a Ballerina service resource for " +
-                "the path";
+        String msg = "WARNING [openapi-validator-off.bal";
         try (BufferedReader br = new BufferedReader(new InputStreamReader(outputs))) {
 
             Stream<String> logLines = br.lines();
@@ -170,8 +169,7 @@ public class OpenAPIArtifactBuildTest {
         buildArgs.add("openapi-validator-on.bal");
         InputStream outputs = TestUtils.executeOpenapiBuild(distributionFileName, TestUtils.getResource(testResource),
                 buildArgs);
-        String msg = "ERROR [openapi-validator-on.bal:(6:0,19:1)] Could not find a Ballerina service resource for " +
-                "the path";
+        String msg = "ERROR [openapi-validator-on.bal:";
         try (BufferedReader br = new BufferedReader(new InputStreamReader(outputs))) {
 
             Stream<String> logLines = br.lines();
