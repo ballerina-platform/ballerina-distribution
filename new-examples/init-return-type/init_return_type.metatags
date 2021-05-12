@@ -1,0 +1,2 @@
+description: init function in Ballerina has a return type, which must be subtype of error?
+keywords: ballerina, ballerina by example, bbe, init, return type
