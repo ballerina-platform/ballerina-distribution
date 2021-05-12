@@ -9,9 +9,8 @@ function parse(string s) returns int|error {
     foreach int cp in cps {
         cp -= 0x30;
         if cp < 0 || cp > 9 {
-            // Construct and return an error value with
-            // "not a digit" as the error message if 
-            // `cp` is not a digit.
+            // If `cp` is not a digit construct and return 
+            // an error value with "not a digit" as the error message.
             return error("not a digit");
         }
         n = n * 10 + cp;
