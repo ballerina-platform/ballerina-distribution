@@ -43,62 +43,6 @@
             {
                 "name": "Langlib Functions",
                 "url": "langlib-functions"
-            },
-            {
-                "name": "Arrays",
-                "url": "arrays"
-            },
-            {
-                "name": "Foreach Statement",
-                "url": "foreach-statement"
-            },
-            {
-                "name": "While Statement",
-                "url": "while-statement"
-            },
-            {
-                "name": "Binary Data",
-                "url": "binary-data"
-            },
-            {
-                "name": "Maps",
-                "url": "maps"
-            },
-            {
-                "name": "Type Definitions",
-                "url": "type-definitions"
-            },
-            {
-                "name": "Records",
-                "url": "records"
-            },
-            {
-                "name": "Structural Typing",
-                "url": "structural-typing"
-            },
-            {
-                "name": "Unions",
-                "url": "unions"
-            },
-            {
-                "name": "Init Return Type",
-                "url": "init-return-type"
-            },
-            {
-                "name": "Identity",
-                "url": "identity"
-            },
-            {
-                "name": "Const and Final",
-                "url": "const-and-final"
-            },
-            {
-                "name": "Enumerations",
-                "url": "enumerations"
-            },
-            {
-                "name": "Match Statement",
-                "url": "match-statement"
             }
         ]
     }
