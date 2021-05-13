@@ -879,6 +879,11 @@
                 "disablePlayground": true
             },
             {
+                "name": "Default resource",
+                "url": "http-default-resource",
+                "disablePlayground": true
+            },
+            {
                 "name": "Query Path Matrix Param",
                 "url": "query-path-matrix-param",
                 "disablePlayground": true
