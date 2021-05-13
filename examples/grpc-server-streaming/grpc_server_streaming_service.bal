@@ -17,7 +17,7 @@ service "HelloWorld" on new grpc:Listener(9090) {
             greets[i] = greet + " " + name;
             i += 1;
         }
-        // Return the stream of strings back to the client.
+        // Return the stream of messages back to the client.
         return greets.toStream();
     }
 }

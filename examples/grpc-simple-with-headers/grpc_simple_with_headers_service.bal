@@ -1,4 +1,4 @@
-// This is the server implementation of the unary blocking/unblocking scenario.
+// This is the server implementation of the simple RPC scenario.
 import ballerina/grpc;
 import ballerina/log;
 
@@ -7,17 +7,17 @@ import ballerina/log;
     descMap: getDescriptorMap()
 }
 service "HelloWorld" on new grpc:Listener(9090) {
+
     remote function hello(ContextString request) returns ContextString|error {
-        log:printInfo("Invoked the hello RPC call.");
-        // Reads the request content.
+        // Reads the request message and creates a response.
         string message = "Hello " + request.content;
 
-        // Reads custom headers in request message.
+        // Reads header value in the request message by passing the request header map and header key.
         string reqHeader = check grpc:getHeader(request.headers,
-        "client_header_key");
+                "client_header_key");
         log:printInfo("Server received header value: " + reqHeader);
 
-        // Sends response with custom headers.
+        // Sends response with header.
         return {content: message, headers: {server_header_key:
         "Response Header value"}};
     }

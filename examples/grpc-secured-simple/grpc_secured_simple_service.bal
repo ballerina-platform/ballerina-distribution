@@ -1,9 +1,8 @@
 // This is the server implementation of the secured connection (HTTPS) scenario.
 import ballerina/grpc;
-import ballerina/log;
 
-// The server endpoint configuration with the SSL configurations.
-listener grpc:Listener ep = check new (9090, {
+// Create a gRPC Listener endpoint with TLS enabled.
+listener grpc:Listener securedEp = new (9090, {
     host: "localhost",
     secureSocket: {
         key: {
@@ -17,9 +16,8 @@ listener grpc:Listener ep = check new (9090, {
     descriptor: ROOT_DESCRIPTOR,
     descMap: getDescriptorMap()
 }
-service "HelloWorld" on ep {
+service "HelloWorld" on securedEp {
     remote function hello(string request) returns string|error {
-        log:printInfo("Invoked the hello RPC call.");
         // Reads the request message and sends a response.
         return "Hello " + request;
     }
