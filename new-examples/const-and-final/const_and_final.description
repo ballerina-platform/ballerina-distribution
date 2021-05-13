@@ -1,0 +1,3 @@
+// `const` means immutable and known at compile-time. Its type is singleton: set containing single value.
+// A `variable` or a `class` field can be declared as `final`, meaning it cannot be assigned to, after
+// it has been initialized.

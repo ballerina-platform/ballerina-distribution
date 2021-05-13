@@ -1,0 +1,2 @@
+bal run structured_keys.bal
+{"name":{"first":"Fred","last":"Bloggs"},"salary":200}
