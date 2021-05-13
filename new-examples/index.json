@@ -43,46 +43,6 @@
             {
                 "name": "Langlib Functions",
                 "url": "langlib-functions"
-            },
-            {
-                "name": "Error Reporting",
-                "url": "error-reporting"
-            },
-            {
-                "name": "Error Handling",
-                "url": "error-handling"
-            },
-            {
-                "name": "Check Expression",
-                "url": "check-expression"
-            },
-            {
-                "name": "Error Subtyping",
-                "url": "error-subtyping"
-            },
-            {
-                "name": "Panics",
-                "url": "panics"
-            },
-            {
-                "name": "Any Type",
-                "url": "any-type"
-            },
-            {
-                "name": "Ignoring Return Values and Errors",
-                "url": "ignoring-return-values-and-errors"
-            },
-            {
-                "name": "Covariance",
-                "url": "covariance"
-            },
-            {
-                "name": "Object",
-                "url": "object"
-            },
-            {
-                "name": "Defining Classes",
-                "url": "defining-classes"
             }
         ]
     }
