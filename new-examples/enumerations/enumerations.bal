@@ -9,6 +9,7 @@ enum Color {
     RED, GREEN, BLUE
 }
 
+// An `enum` member can explicitly specify an associated expression.
 enum Language {
     ENG = "English",
     TL = "Tamil",

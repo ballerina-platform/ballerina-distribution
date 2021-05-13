@@ -8,6 +8,8 @@ public function main() {
 
 function sum(float[] v) returns float {
     float r = 0.0;
+    // `foreach` statement can be used to iterate an `array`.
+    // Each iteration returns an element in the `array`.
     foreach float x in v {
         r += x;
     }

@@ -9,10 +9,12 @@ type StructuredName record {
 type Name StructuredName|string;
 
 public function main() {
+    // `name1` is a `StructuredName`.
     Name name1 = {
         firstName: "Rowan",
         lastName: "Atkinson"
     };
+    // `name2` is a `string`.
     Name name2 = "Leslie Banks";
 
     io:println(nameToString(name1));
