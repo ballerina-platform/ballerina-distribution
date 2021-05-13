@@ -1,2 +1,2 @@
-description: A match statement is a value-switching construct that allows selective code execution based on matching the value of the expression against the pattern.
+description: This BBE demonstrates match statement in Ballerina.
 keywords: ballerina, ballerina by example, bbe, match
