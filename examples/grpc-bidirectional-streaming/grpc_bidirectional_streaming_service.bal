@@ -6,11 +6,12 @@ import ballerina/grpc;
     descMap: getDescriptorMap()
 }
 service "Chat" on new grpc:Listener(9090) {
-    remote function chat(ChatStringCaller caller, stream<ChatMessage, error?> clientStream)
-                            returns error? {
+    remote function chat(ChatStringCaller caller,
+                    stream<ChatMessage, error?> clientStream) returns error? {
         // Read and process each message in the client stream.
         check clientStream.forEach(function(ChatMessage chatMsg) {
-            checkpanic caller->sendString(string `${chatMsg.name}: ${chatMsg.message}`);
+            checkpanic caller->sendString(
+                                string `${chatMsg.name}: ${chatMsg.message}`);
         });
         // Once the client sends a notification to indicate the end of the stream, '()' is returned by the stream.
         check caller->complete();
