@@ -14,6 +14,8 @@ type LinkedList record {
 function len(LinkedList ll) returns int {
     int n = 0;
     LinkedList? v = ll;
+    // Executes the code block that is defined within the `while` block
+    // as long as the value of `v` is not `nil`.
     while v != () {
         n += 1;
         if v is LinkedList {

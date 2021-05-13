@@ -7,10 +7,13 @@ type Coord record {
 };
 
 public function main() {
+    // Creates a `record`, specifying values for its fields.
     record { int x; int y; } r = {
         x: 1,
         y: 2
     };
+
+    // Creates a `Coord` record.
     Coord c = {
         x: 1,
         y: 2

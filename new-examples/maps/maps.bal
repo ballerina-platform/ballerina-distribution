@@ -1,19 +1,20 @@
 import ballerina/io;
 
 public function main() {
+    // Creates a `map` constrained by the type `int`.
     map<int> m = {
         "x": 1,
         "y": 2
     };
 
-    // `m[k]` gets the entry for `k`; `nil` if missing.
+    // Gets the entry for `x`.
     int? v = m["x"];
     io:println(v);
 
-    // `m[k]` is an `lvalue`.
+    // Adds a new entry for `z`.
     m["z"] = 5;
 
-    // Using `m["x"]` wouldn't work here because type would be `int?`
+    // Using `m["x"]` wouldn't work here because type would be `int?`.
     // not `int`.
     m["z"] = m.get("x");
 }
