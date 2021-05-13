@@ -1,0 +1,3 @@
+bal run destructuring_records.bal
+[{"first":"Melina","last":"Kodel"},{"first":"Tom","last":"Riddle"}]
+[{"first":"Melina","last":"Kodel"},{"first":"Tom","last":"Riddle"}]
