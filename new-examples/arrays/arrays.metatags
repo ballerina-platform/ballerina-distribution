@@ -1,2 +1,2 @@
-description: Arrays in Ballerina are mutable lists of values of dynamic length in which each member in the list is of the same type.
+description: This BBE demonstrates arrays in Ballerina.
 keywords: ballerina, ballerina by example, bbe, arrays, mutable list
