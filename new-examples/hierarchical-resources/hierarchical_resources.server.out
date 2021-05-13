@@ -1,0 +1,2 @@
+bal run hierarchical_resources.bal
+[ballerina/http] started HTTP/WS listener 0.0.0.0:8080
