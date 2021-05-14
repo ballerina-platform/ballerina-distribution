@@ -1,7 +1,7 @@
 import ballerina/io;
 import ballerina/jwt;
 
-public function main() {
+public function main() returns error? {
     jwt:IssuerConfig issuerConfig = {
         username: "ballerina",
         issuer: "wso2",
@@ -16,13 +16,8 @@ public function main() {
     };
 
     // Issues a JWT based on the provided header, payload, and private key.
-    string|jwt:Error jwt = jwt:issue(issuerConfig);
-    if (jwt is string) {
-        io:println("Issued JWT: ", jwt);
-    } else {
-        io:println("An error occurred while issuing the JWT: ",
-            jwt.message());
-    }
+    string jwt = check jwt:issue(issuerConfig);
+    io:println("Issued JWT: ", jwt);
 
     // Defines the JWT validator configurations with certificate file configurations.
     jwt:ValidatorConfig validatorConfig1 = {
@@ -35,14 +30,8 @@ public function main() {
     };
 
     // Validates the created JWT. Signature is validated using the public certificate.
-    jwt:Payload|jwt:Error result = jwt:validate(checkpanic jwt,
-                                                validatorConfig1);
-    if (result is jwt:Payload) {
-        io:println("Validated JWT Payload: ", result.toString());
-    } else {
-        io:println("An error occurred while validating the JWT: ",
-            result.message());
-    }
+    jwt:Payload payload1 = check jwt:validate(jwt, validatorConfig1);
+    io:println("Validated JWT Payload: ", payload1.toString());
 
     // Defines the JWT validator configurations with JWKs configurations.
     jwt:ValidatorConfig validatorConfig2 = {
@@ -62,11 +51,6 @@ public function main() {
     };
 
     // Validates the created JWT. Signature is validated using the JWKs endpoint.
-    result = jwt:validate(checkpanic jwt, validatorConfig2);
-    if (result is jwt:Payload) {
-        io:println("Validated JWT Payload: ", result.toString());
-    } else {
-        io:println("An error occurred while validating the JWT: ",
-            result.message());
-    }
+    jwt:Payload payload2 = check jwt:validate(jwt, validatorConfig2);
+    io:println("Validated JWT Payload: ", payload2.toString());
 }
