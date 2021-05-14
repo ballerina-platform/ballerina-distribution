@@ -9,14 +9,13 @@ kafka:AuthenticationConfiguration authConfig = {
     // Check Ballerina `config` APIs to see how to use encrypted values instead of plain text values here.
     username: "ballerina",
     password: "ballerina-secret"
-
 };
 
 kafka:ConsumerConfiguration consumerConfig = {
-    groupId:"test-group",
+    groupId: "test-group",
     clientId: "sasl-consumer",
-    offsetReset:"earliest",
-    topics:["topic-sasl"],
+    offsetReset: "earliest",
+    topics: ["topic-sasl"],
     // Provide the relevant authentication configuration record to authenticate the consumer.
     auth: authConfig
 };
@@ -26,12 +25,12 @@ listener kafka:Listener kafkaListener = new(kafka:DEFAULT_URL, consumerConfig);
 service kafka:Service on kafkaListener {
     remote function onConsumerRecord(kafka:Caller caller,
                                 kafka:ConsumerRecord[] records) {
+        // Loops through the received consumer records.
         foreach var consumerRecord in records {
-            string|error messageContent =
-                                   string:fromBytes(consumerRecord.value);
-            if (messageContent is string) {
-                log:printInfo(messageContent);
-            }
+            // Converts the `byte[]` to a `string`.
+            string messageContent = check
+                                        string:fromBytes(consumerRecord.value);
+            log:printInfo(messageContent);
         }
     }
 }

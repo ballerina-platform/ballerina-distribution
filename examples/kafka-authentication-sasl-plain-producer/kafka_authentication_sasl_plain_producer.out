@@ -2,6 +2,6 @@
 # `.bal` file, and execute the `bal run` command below.
 bal run kafka_authentication_sasl_plain_producer.bal
 
-# If the producer is authenticated and the message sent successfully,
-# following message will be printed in the console.
+# If the producer is authenticated and the message is sent successfully,
+# the following message will be printed in the console.
 Message successfully sent.
