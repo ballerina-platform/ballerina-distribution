@@ -26,7 +26,7 @@ public function main() returns @tainted error? {
     // If the write operation was successful, then, perform a read operation to read the lines as a stream.
     stream<string, io:Error?> lineStream = check
                                     io:fileReadLinesAsStream(textFilePath3);
-    // Iterates through the stream and print the content.
+    // Iterates through the stream and prints the content.
     error? e = lineStream.forEach(function(string val) {
                                io:println(val);
                            });
