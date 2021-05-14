@@ -2,7 +2,7 @@ import ballerina/io;
 import ballerina/random;
 
 public function main() returns error? {
-    // Generate a random decimal number between 0.0 and 1.0.
+    // Generates a random decimal number between 0.0 and 1.0.
     float randomDecimal = random:createDecimal();
     io:println("Random decimal number: ", randomDecimal);
 
