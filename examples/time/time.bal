@@ -2,10 +2,10 @@ import ballerina/io;
 import ballerina/time;
 
 public function main() returns error? {
-    // Gets the current instant of the system clock(seconds from the epoch of
+    // Gets the current instant of the system clock (seconds from the epoch of
     // 1970-01-01T00:00:00). The returned `time:Utc` value represents seconds
     // from the epoch with nanoseconds precision.
-    // The `time:Utc` is a tuple with [int, decimal]. The first member of the
+    // The `time:Utc` is a tuple with `[int, decimal]`. The first member of the
     // tuple represents the number of seconds from the epoch. The second
     // member represents the rest of the nanoseconds from the epoch as a
     // fraction.
@@ -14,8 +14,8 @@ public function main() returns error? {
     io:println(`Current timestamp nanoseconds as a
     fraction: ${currentUtc[1]}s`);
 
-    // Returns seconds from some unspecified epoch. The returned `seconds` has
-    // the nanoseconds precision which represents using the fractional part.
+    // Returns seconds from some unspecified epoch. The returned `seconds` have
+    // the nanoseconds precision, which represents using the fractional part.
     time:Seconds seconds = time:monotonicNow();
     io:println(`Seconds from an unspecified epoch: ${seconds}s`);
 
@@ -34,12 +34,12 @@ public function main() returns error? {
     time:Seconds utcDiff = time:utcDiffSeconds(currentUtc, utc1);
     io:println(`UTC diff: ${utcDiff}`);
 
-    // Checks the given `time:Date` value is valid or not.
+    // Checks if the given `time:Date` value is valid or not.
     time:Date date = {year: 1994, month: 11, day: 7};
     boolean isValidDate = (time:dateValidate(date) is ()) ? true : false;
     io:println(string `Is valid date: ${isValidDate}`);
 
-    // Returns the day of week as a number starting from 0 to 6 inclusive.
+    // Returns the day of the week as a number starting from 0 to 6 inclusive.
     // 0 - SUNDAY, 1 - MONDAY, 2 - TUESDAY, 3 - WEDNESDAY, 4 - THURSDAY,
     // 5 - FRIDAY, 6 - SATURDAY
     time:DayOfWeek dayOfWeek = time:dayOfWeek(date);
