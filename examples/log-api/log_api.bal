@@ -28,31 +28,6 @@ public function main() {
     error e = error("something went wrong!");
     log:printError("error log with cause", 'error = e, id = 845315,
         name = "foo");
-
-    // The log level can be configured via a Ballerina configuration file.
-    // To set the global log level, place the entry given below in the `Config.toml` file:
-    //
-    // ```
-    // [ballerina.log]
-    // level = "[LOG_LEVEL]"
-    // ```
-
-    // Each module can also be assigned its own log level. To assign a
-    // log level to a module, provide the following entry in the `Config.toml` file:
-    //
-    // ```
-    // [[ballerina.log.modules]]
-    // name = "[ORG_NAME]/[MODULE_NAME]"
-    // level = "[LOG_LEVEL]"
-    // ```
-
-    // By default, log messages are logged to the console in LogFmt format.
-    // To set the output format to JSON, place the entry given below in the `Config.toml` file.
-    //
-    // ```
-    // [ballerina.log]
-    // format = "json"
-    // ```
 }
 
 function f1() returns error {
