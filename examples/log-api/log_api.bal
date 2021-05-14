@@ -9,7 +9,7 @@ public function main() {
     log:printInfo("info log");
     log:printWarn("warn log");
 
-    // Users can pass any number of key/value pairs which needs to be displayed in the log message.
+    // You can pass any number of key/value pairs, which need to be displayed in the log message.
     // These can be of `anydata` type including int, string and boolean.
     log:printInfo("info log", id = 845315, name = "foo", successful = true);
 
