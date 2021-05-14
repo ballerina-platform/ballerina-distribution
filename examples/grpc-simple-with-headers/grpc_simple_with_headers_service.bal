@@ -12,12 +12,12 @@ service "HelloWorld" on new grpc:Listener(9090) {
         // Reads the request message and creates a response.
         string message = "Hello " + request.content;
 
-        // Reads header value in the request message by passing the request header map and header key.
+        // Reads the header value in the request message by passing the request header map and header key.
         string reqHeader = check grpc:getHeader(request.headers,
                 "client_header_key");
         log:printInfo("Server received header value: " + reqHeader);
 
-        // Sends response with header.
+        // Sends the response with the header.
         return {content: message, headers: {server_header_key:
         "Response Header value"}};
     }

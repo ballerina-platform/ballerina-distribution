@@ -9,7 +9,7 @@ function testBidiStreamingService() returns error? {
         // Executes the RPC call and receives the customized streaming client.
         ChatStreamingClient streamingClient = check chatEp->chat();
 
-        // Reads server responses in another strand.
+        // Reads the server responses in another strand.
         future<error?> f1 = start readResponseTest(streamingClient);
 
         // Sends multiple messages to the server.

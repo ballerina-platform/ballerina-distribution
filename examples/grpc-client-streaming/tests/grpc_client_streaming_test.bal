@@ -6,11 +6,11 @@ HelloWorldClient helloWorldEp = check new("http://localhost:9090");
 
 @test:Config
 function testClientStreamingService() returns error? {
-    // Execute the client-streaming RPC call and receive the streaming client.
+    // Executes the client-streaming RPC call and receives the streaming client.
     LotsOfGreetingsStreamingClient streamingClient = check ep->lotsOfGreetings();
     string[] requests = ["Hi Sam", "Hey Sam", "GM Sam"];
 
-    // Send multiple messages to the server.
+    // Sends multiple messages to the server.
     string[] greets = ["Hi", "Hey", "GM"];
     foreach var greet in requests {
         check streamingClient->sendString(greet);

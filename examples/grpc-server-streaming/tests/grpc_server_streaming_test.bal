@@ -7,13 +7,13 @@ HelloWorldClient streamingEp = check new("http://localhost:9090");
 
 @test:Config
 function testServerStreamingService() returns error? {
-    // Execute the streaming RPC call and gets the response as a stream.
+    // Executes the streaming RPC call and gets the response as a stream.
     stream<string, grpc:Error?> result = check ep->lotsOfReplies("Sam");
 
     string expectedMsg1 = "Hi Sam";
     string expectedMsg2 = "Hey Sam";
     string expectedMsg3 = "GM Sam";
-    // Iterate through the stream and print the content.
+    // Iterates through the stream and prints the content.
     check result.forEach(function(string msg) {
         test:assertTrue(msg == expectedMsg1 || msg == expectedMsg2 || msg == expectedMsg3);
     });

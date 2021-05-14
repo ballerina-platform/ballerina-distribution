@@ -1,7 +1,7 @@
 // This is the server implementation of the secured connection (HTTPS) scenario.
 import ballerina/grpc;
 
-// Create a gRPC Listener endpoint with TLS enabled.
+// Creates a gRPC Listener endpoint with TLS enabled.
 listener grpc:Listener securedEp = new (9090, {
     host: "localhost",
     secureSocket: {
