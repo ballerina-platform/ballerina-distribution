@@ -30,7 +30,7 @@ public function main() {
         name = "foo");
 
     // The log level can be configured via a Ballerina configuration file.
-    // To set the global log level, place the entry given below in the Config.toml file:
+    // To set the global log level, place the entry given below in the `Config.toml` file:
     //
     // ```
     // [ballerina.log]
