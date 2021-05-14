@@ -1,4 +1,4 @@
 // The gRPC Server Connector is used to expose gRPC services over HTTP/2.
 // This sample demonstrates how a gRPC secured unary service interacts with a gRPC secured blocking client.<br/><br/>
 // For more information on the underlying module, 
-// see the [GRPC module](https://docs.central.ballerina.io/ballerina/grpc/latest/grpc/).
+// see the [GRPC module](https://docs.central.ballerina.io/ballerina/grpc/latest/).

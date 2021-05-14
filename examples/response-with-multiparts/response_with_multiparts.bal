@@ -27,7 +27,7 @@ service /multiparts on new http:Listener(9092) {
             contentType = mime:TEXT_XML);
         // Creates an array to hold the child parts.
         mime:Entity[] childParts = [childPart1, childPart2];
-        // [Sets the child parts to the parent part](https://docs.central.ballerina.io/ballerina/mime/latest/mime/classes/Entity#setBodyParts).
+        // [Sets the child parts to the parent part](https://docs.central.ballerina.io/ballerina/mime/latest/classes/Entity#setBodyParts).
         parentPart.setBodyParts(childParts,
             contentType = mime:MULTIPART_MIXED);
         // Creates an array to hold the parent part and set it to the response.
@@ -49,7 +49,7 @@ service /multiparts on multipartEP {
         var returnResult = clientEP->get("/multiparts/encode_out_response");
         http:Response res = new;
         if (returnResult is http:Response) {
-            // [Extracts the body parts](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Response#getBodyParts)  from the response.
+            // [Extracts the body parts](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response#getBodyParts)  from the response.
             var parentParts = returnResult.getBodyParts();
             if (parentParts is mime:Entity[]) {
                 //Loops through body parts.
@@ -88,7 +88,7 @@ function handleNestedParts(mime:Entity parentPart) {
 function handleContent(mime:Entity bodyPart) {
     string baseType = getBaseType(bodyPart.getContentType());
     if (mime:APPLICATION_XML == baseType || mime:TEXT_XML == baseType) {
-        // [Extracts XML data](https://docs.central.ballerina.io/ballerina/mime/latest/mime/classes/Entity#getXml) from the body part.
+        // [Extracts XML data](https://docs.central.ballerina.io/ballerina/mime/latest/classes/Entity#getXml) from the body part.
         var payload = bodyPart.getXml();
         if (payload is xml) {
              log:printInfo("XML data: " + payload.toString());
@@ -96,7 +96,7 @@ function handleContent(mime:Entity bodyPart) {
              log:printError("Error in parsing XML data", 'error = payload);
         }
     } else if (mime:APPLICATION_JSON == baseType) {
-        // [Extracts JSON data](https://docs.central.ballerina.io/ballerina/mime/latest/mime/classes/Entity#getJson) from the body part.
+        // [Extracts JSON data](https://docs.central.ballerina.io/ballerina/mime/latest/classes/Entity#getJson) from the body part.
         var payload = bodyPart.getJson();
         if (payload is json) {
             log:printInfo("JSON data: " + payload.toJsonString());
@@ -104,7 +104,7 @@ function handleContent(mime:Entity bodyPart) {
              log:printError("Error in parsing JSON data", 'error = payload);
         }
     } else if (mime:TEXT_PLAIN == baseType) {
-        // [Extracts text data](https://docs.central.ballerina.io/ballerina/mime/latest/mime/classes/Entity#getText) from the body part.
+        // [Extracts text data](https://docs.central.ballerina.io/ballerina/mime/latest/classes/Entity#getText) from the body part.
         var payload = bodyPart.getText();
         if (payload is string) {
             log:printInfo("Text data: " + payload);
@@ -112,7 +112,7 @@ function handleContent(mime:Entity bodyPart) {
             log:printError("Error in parsing text data", 'error = payload);
         }
     } else if (mime:APPLICATION_PDF == baseType) {
-        // [Extracts the byte stream](https://docs.central.ballerina.io/ballerina/http/latest/http/classes/Response#getByteStream) from the body part and saves it as a file.
+        // [Extracts the byte stream](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response#getByteStream) from the body part and saves it as a file.
         var payload = bodyPart.getByteStream();
         if (payload is stream<byte[], io:Error?>) {
             //Writes the incoming stream to a file using `io:fileWriteBlocksFromStream` API by providing the file location to which the content should be written to.

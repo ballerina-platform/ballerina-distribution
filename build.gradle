@@ -31,9 +31,6 @@ ext {
     dockerVersion = project.dockerVersion
     dataMapperVersion = project.dataMapperVersion
     c2cVersion = project.c2cVersion
-    observeExtPrometheusVersion = project.observeExtPrometheusVersion
-    observeExtJaegerVersion = project.observeExtJaegerVersion
-    observeExtChoreoVersion = project.observeExtChoreoVersion
     ballerinaJreVersion = project.ballerinaJreVersion
     ballerinaCommandVersion = project.ballerinaCommandVersion
 
@@ -379,36 +376,15 @@ subprojects {
                 password System.getenv("packagePAT")
             }
         }
-
-        /* Observability extension repos */
+        
         maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-prometheus"
+            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-datamapper"
             credentials {
                 username System.getenv("packageUser")
                 password System.getenv("packagePAT")
             }
         }
 
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-jaeger"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-
-        maven {
-            url "https://maven.pkg.github.com/ballerina-platform/module-ballerinax-choreo"
-            credentials {
-                username System.getenv("packageUser")
-                password System.getenv("packagePAT")
-            }
-        }
-
-        /* Ballerina lang staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1614/" }
-        /* Datamapper staging repository */
-        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdatamapper-1010/" }
     }
 
     configurations {
@@ -425,7 +401,6 @@ subprojects {
         ballerinaC2cLibs
         ballerinaC2cTooling
         ballerinaC2cExamples
-        ballerinaObserveExtensions
         exten {
             transitive = false
         }
@@ -479,7 +454,7 @@ subprojects {
         ballerinaStdLibs "org.ballerinalang:xslt-ballerina:${stdlibXsltVersion}"
 
         ballerinaStdLibs "org.ballerinalang:transaction-ballerina:${stdlibTransactionVersion}"
-        ballerinaStdLibs "org.ballerinalang:module-ballerina-openapi:${openapiVersion}"
+        ballerinaStdLibs "io.ballerina:module-ballerina-openapi:${openapiVersion}"
 
         /* Code to cloud extensions */
         ballerinaC2cLibs "io.ballerina:c2c-ballerina:${c2cVersion}"
@@ -487,11 +462,6 @@ subprojects {
         ballerinaC2cLibs "org.ballerinax.awslambda:awslambda-extension-bala:${awslambdaVersion}"
 
         ballerinaC2cTooling "io.ballerina:c2c-tooling:${c2cVersion}"
-
-        /* Observability extensions */
-        ballerinaObserveExtensions "org.ballerinalang:prometheus-extension-ballerina:${observeExtPrometheusVersion}"
-        ballerinaObserveExtensions "org.ballerinalang:jaeger-extension-ballerina:${observeExtJaegerVersion}"
-        ballerinaObserveExtensions "org.ballerinalang:choreo-extension-ballerina:${observeExtChoreoVersion}"
 
         /* Code to cloud examples */
         ballerinaC2cExamples "io.ballerina:c2c-extension-examples:${c2cVersion}@zip"

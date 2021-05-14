@@ -12,15 +12,15 @@ jobs:
       - name: Set version env variable
         id: version-set
         run: |
-          SHORT_VERSION=$(grep -w 'shortVersion' | cut -d= -f2) < gradle.properties
+          SHORT_VERSION=$((grep -w 'shortVersion' | cut -d= -f2) < gradle.properties)
           RELEASE_VERSION=$((grep -w 'version' | cut -d= -f2) < gradle.properties | rev | cut --complement -d- -f1 | rev)
           echo VERSION=$RELEASE_VERSION >> $GITHUB_ENV
           echo "::set-output name=version::$RELEASE_VERSION"
-          echo "::set-output name=sversion::SHORT_VERSION"
-      - name: Set up JDK 1.8
+          echo "::set-output name=sversion::$SHORT_VERSION"
+      - name: Set up JDK 11
         uses: actions/setup-java@v1
         with:
-          java-version: 1.8
+          java-version: 11
       - name: Pre release depenency version update
         env:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
@@ -36,8 +36,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
           packageUser: ${{ secrets.BALLERINA_BOT_USERNAME }}
           packagePAT: ${{ secrets.BALLERINA_BOT_TOKEN }}
+          devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
         run: |
-          ./gradlew release -Prelease.useAutomaticVersion=true
+          ./gradlew build release -Prelease.useAutomaticVersion=true -Pversion=${VERSION}
       - name: Create release
         id: create_release
         uses: actions/create-release@v1
@@ -54,8 +55,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_name: ballerina-swan-lake-${{ steps.version-set.outputs.version }}.zip
-          asset_path: ballerina/build/distributions/ballerina-swan-lake-${{ steps.version-set.outputs.version }}.zip
+          asset_name: ballerina-${{ steps.version-set.outputs.version }}.zip
+          asset_path: ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.version }}.zip
           asset_content_type: application/octet-stream
       - name: Upload zip without tool artifacts
         uses: actions/upload-release-asset@v1

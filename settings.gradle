@@ -23,6 +23,7 @@ rootProject.name = 'ballerina-distribution'
 include ':ballerina'
 include ':ballerina-distribution-test'
 include ':devtools-integration-tests'
+include ':central-tests'
 include 'dist-repo-builder'
 
 project(':ballerina').projectDir = "$rootDir/ballerina" as File

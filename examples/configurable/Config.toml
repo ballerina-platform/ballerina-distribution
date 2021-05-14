@@ -5,7 +5,7 @@ maxPayload = 0.321
 
 [admin]
 username = "admin"
-password = "password"
+password = "admin-password"
 
 [[users]]
 username = "John"

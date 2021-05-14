@@ -1,5 +1,5 @@
 // In the Ballerina GraphQL package, a service represents a GraphQL endpoint.
 // Each resource function inside the service represents a resolver function for a field in the root Query type.<br/><br/>
 // For more information on the underlying package, see the
-// [GraphQL package](https://docs.central.ballerina.io/ballerina/graphql/latest/graphql/).<br/><br/>
+// [GraphQL package](https://docs.central.ballerina.io/ballerina/graphql/latest/).<br/><br/>
 // This example shows a simple GraphQL endpoint that has a single field in the root Query type, which returns a string.

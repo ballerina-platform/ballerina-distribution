@@ -1,7 +1,7 @@
 import ballerina/http;
 import ballerina/log;
 
-// Create an [HTTP client](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client) that can send HTTP/2 messages.
+// Create an [HTTP client](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client) that can send HTTP/2 messages.
 // HTTP version is set to 2.0.
 http:Client clientEP =
         checkpanic new ("http://localhost:7090", {httpVersion: "2.0"});
@@ -10,7 +10,7 @@ public function main() {
 
     http:Request serviceReq = new;
     http:HttpFuture httpFuture = new;
-    // [Submit a request](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#submit).
+    // [Submit a request](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#submit).
     var submissionResult = clientEP->submit("GET", "/http2Service", serviceReq);
 
     if (submissionResult is http:HttpFuture) {
@@ -23,12 +23,12 @@ public function main() {
 
     http:PushPromise?[] promises = [];
     int promiseCount = 0;
-    // [Check if promises exists](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#hasPromise).
+    // [Check if promises exists](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#hasPromise).
     boolean hasPromise = clientEP->hasPromise(httpFuture);
 
     while (hasPromise) {
         http:PushPromise pushPromise = new;
-        // [Get the next promise](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#getNextPromise).
+        // [Get the next promise](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#getNextPromise).
         var nextPromiseResult = clientEP->getNextPromise(httpFuture);
 
         if (nextPromiseResult is http:PushPromise) {
@@ -42,7 +42,7 @@ public function main() {
 
         if (pushPromise.path == "/resource2") {
             // The client is not interested in receiving `/resource2`.
-            // Therefore, [reject the promise](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#rejectPromise).
+            // Therefore, [reject the promise](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#rejectPromise).
             clientEP->rejectPromise(pushPromise);
 
             log:printInfo("Push promise for resource2 rejected");
@@ -56,7 +56,7 @@ public function main() {
     }
 
     http:Response response = new;
-    // [Get the requested resource](https://docs.central.ballerina.io/ballerina/http/latest/http/clients/Client#getResponse).
+    // [Get the requested resource](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#getResponse).
     var result = clientEP->getResponse(httpFuture);
 
     if (result is http:Response) {

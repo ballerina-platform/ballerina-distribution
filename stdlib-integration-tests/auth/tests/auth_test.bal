@@ -30,31 +30,7 @@ listener http:Listener authListener = new(25001, {
     auth: [
         {
             fileUserStoreConfig: {},
-            scopes: ["Admin"]
-        },
-        {
-            ldapUserStoreConfig: {
-                domainName: "avix.lk",
-                connectionUrl: "ldap://localhost:389",
-                connectionName: "cn=admin,dc=avix,dc=lk",
-                connectionPassword: "avix123",
-                userSearchBase: "ou=Users,dc=avix,dc=lk",
-                userEntryObjectClass: "inetOrgPerson",
-                userNameAttribute: "uid",
-                userNameSearchFilter: "(&(objectClass=inetOrgPerson)(uid=?))",
-                userNameListFilter: "(objectClass=inetOrgPerson)",
-                groupSearchBase: ["ou=Groups,dc=avix,dc=lk"],
-                groupEntryObjectClass: "groupOfNames",
-                groupNameAttribute: "cn",
-                groupNameSearchFilter: "(&(objectClass=groupOfNames)(cn=?))",
-                groupNameListFilter: "(objectClass=groupOfNames)",
-                membershipAttribute: "member",
-                userRolesCacheEnabled: true,
-                connectionPoolingEnabled: false,
-                connectionTimeout: 5000,
-                readTimeout: 60000
-            },
-            scopes: ["Admin"]
+            scopes: ["admin"]
         }
     ]
 }
@@ -75,7 +51,7 @@ public function testAuthModuleFileUserStore1() {
         },
         auth: {
             username: "alice",
-            password: "123"
+            password: "alice@123"
         }
     });
     var response = clientEP->get("/foo/bar");
@@ -97,7 +73,7 @@ public function testAuthModuleFileUserStore2() {
         },
         auth: {
             username: "bob",
-            password: "456"
+            password: "bob@123"
         }
     });
     var response = clientEP->get("/foo/bar");
@@ -119,73 +95,7 @@ public function testAuthModuleFileUserStore3() {
         },
         auth: {
             username: "eve",
-            password: "789"
-        }
-    });
-    var response = clientEP->get("/foo/bar");
-    if (response is http:Response) {
-        assertUnauthorized(response);
-    } else {
-        test:assertFail(msg = "Test Failed!");
-    }
-}
-
-@test:Config {}
-public function testAuthModuleLdapUserStore1() {
-    http:Client clientEP = checkpanic new("https://localhost:25001", {
-        secureSocket: {
-           cert: {
-               path: "tests/resources/keystore/ballerinaTruststore.p12",
-               password: "ballerina"
-           }
-        },
-        auth: {
-            username: "ldclakmal",
-            password: "ldclakmal123"
-        }
-    });
-    var response = clientEP->get("/foo/bar");
-    if (response is http:Response) {
-        assertOK(response);
-    } else {
-        test:assertFail(msg = "Test Failed!");
-    }
-}
-
-@test:Config {}
-public function testAuthModuleLdapUserStore2() {
-    http:Client clientEP = checkpanic new("https://localhost:25001", {
-        secureSocket: {
-           cert: {
-               path: "tests/resources/keystore/ballerinaTruststore.p12",
-               password: "ballerina"
-           }
-        },
-        auth: {
-            username: "alice",
-            password: "alice123"
-        }
-    });
-    var response = clientEP->get("/foo/bar");
-    if (response is http:Response) {
-        assertForbidden(response);
-    } else {
-        test:assertFail(msg = "Test Failed!");
-    }
-}
-
-@test:Config {}
-public function testAuthModuleLdapUserStore3() {
-    http:Client clientEP = checkpanic new("https://localhost:25001", {
-        secureSocket: {
-           cert: {
-               path: "tests/resources/keystore/ballerinaTruststore.p12",
-               password: "ballerina"
-           }
-        },
-        auth: {
-            username: "eve",
-            password: "eve123"
+            password: "eve@123"
         }
     });
     var response = clientEP->get("/foo/bar");

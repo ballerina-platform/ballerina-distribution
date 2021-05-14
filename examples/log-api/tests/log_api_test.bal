@@ -14,7 +14,7 @@ string printWarn = "";
 }
 test:MockFunction mock_printDebug = new();
 
-public function mockPrintDebug(string msg, *log:KeyValues keyValues, error? err = ()) {
+public function mockPrintDebug(string msg, error? err = (), *log:KeyValues keyValues) {
     printDebug = msg;
 }
 
@@ -24,7 +24,7 @@ public function mockPrintDebug(string msg, *log:KeyValues keyValues, error? err 
 }
 test:MockFunction mock_printError = new();
 
-public function mockPrintError(string msg, *log:KeyValues keyValues, error? err = ()) {
+public function mockPrintError(string msg, error? err = (), *log:KeyValues keyValues) {
     printError = msg;
 }
 
@@ -34,7 +34,7 @@ public function mockPrintError(string msg, *log:KeyValues keyValues, error? err 
 }
 test:MockFunction mock_printInfo = new();
 
-public function mockPrintInfo(string msg, *log:KeyValues keyValues, error? err = ()) {
+public function mockPrintInfo(string msg, error? err = (), *log:KeyValues keyValues) {
     printInfo = msg;
 }
 
@@ -44,7 +44,7 @@ public function mockPrintInfo(string msg, *log:KeyValues keyValues, error? err =
 }
 test:MockFunction mock_printWarn = new();
 
-public function mockPrintWarn(string msg, *log:KeyValues keyValues, error? err = ()) {
+public function mockPrintWarn(string msg, error? err = (), *log:KeyValues keyValues) {
     printWarn = msg;
 }
 

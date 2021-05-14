@@ -20,6 +20,7 @@ jobs:
         env:
           packageUser: ${{ github.actor }}
           packagePAT: ${{ secrets.GITHUB_TOKEN }}
+          devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
         run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue
       - name: Archive Ballerina ZIP
         uses: actions/upload-artifact@v2
@@ -53,7 +54,55 @@ jobs:
           -X POST 'https://chat.googleapis.com/v1/spaces/${{secrets.BALLERINA_CHAT_ID}}/messages?key=${{secrets.BALLERINA_CHAT_KEY}}&token=${{secrets.BALLERINA_CHAT_TOKEN}}' \
           --header 'Content-Type: application/json' \
           -d '{"text": "*ballerina-distribution daily build failure* \nPlease \n visit <https://github.com/ballerina-platform/ballerina-distribution/actions?query=workflow%3A%22Daily+build%22|the daily build page> for more information"}'
-
+      - name: Get daily docker version
+        id: version
+        run: echo "::set-output name=version::$(date +'%Y-%m-%d')"
+      - name: Get project version
+        id: project-version
+        run: |
+          RELEASE_VERSION=$((grep -w "version" | cut -d= -f2) < gradle.properties)
+          echo "::set-output name=version::$RELEASE_VERSION"
+      - name: Checkout docker repo
+        uses: actions/checkout@v2
+        with:
+          repository: ballerina-platform/module-ballerina-docker
+          path: module-ballerina-docker
+      - name: Copy zip artifact
+        run: cp ballerina/build/distributions/ballerina-swan-lake-*.zip module-ballerina-docker/base/docker/
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USER }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          context: module-ballerina-docker/base/docker/
+          push: true
+          tags: ballerina/ballerina:nightly-${{ steps.version.outputs.version }}, ballerina/ballerina:nightly
+          build-args: |
+            BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.version }}.zip
+      - name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
+      - name: Invoke Connector Ballerina Version Bump
+        run: |
+          ballerinaVersion=$((grep -w 'ballerinaLangVersion' | cut -d= -f2) < gradle.properties)
+          echo "Triggering connectors dependency bumps..." && \
+          curl -X POST \
+          https://api.github.com/repos/ballerina-platform/ballerina-release/dispatches \
+          -H 'Accept: application/vnd.github.v3+json' \
+          -H 'Authorization: token ${{ secrets.BALLERINA_BOT_TOKEN }}' \
+          --data "{
+            \"event_type\": \"connector-update\",
+            \"client_payload\": {
+              \"ballerinaVersion\": \"$ballerinaVersion\"
+            }
+          }"
 
   windows-build:
 
@@ -69,4 +118,5 @@ jobs:
         env:
           packageUser: ${{ github.actor }}
           packagePAT: ${{ secrets.GITHUB_TOKEN }}
+          devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
         run: ./gradlew.bat clean build --stacktrace --scan --console=plain --no-daemon -x test

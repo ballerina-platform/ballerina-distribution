@@ -21,7 +21,8 @@ jobs:
                 env:
                     packageUser: ${{ github.actor }}
                     packagePAT: ${{ secrets.GITHUB_TOKEN }}
-                run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue -x :ballerina:testExamples
+                    devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
+                run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue -x :ballerina:testExamples -x :central-tests:test
 
     ubuntu-bbe-tests:
         runs-on: ubuntu-latest
@@ -36,7 +37,8 @@ jobs:
                 env:
                     packageUser: ${{ github.actor }}
                     packagePAT: ${{ secrets.GITHUB_TOKEN }}
-                run: ./gradlew clean :ballerina:testExamples --stacktrace --scan --console=plain --no-daemon --continue
+                    devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
+                run: ./gradlew clean :ballerina:testExamples --stacktrace --scan --console=plain --no-daemon --continue -x :central-tests:test
     windows-build-without-tests:
         runs-on: windows-latest
         steps:
@@ -50,4 +52,5 @@ jobs:
               env:
                   packageUser: ${{ github.actor }}
                   packagePAT: ${{ secrets.GITHUB_TOKEN }}
+                  devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
               run: ./gradlew.bat clean build --stacktrace --scan --console=plain --no-daemon --continue -x test

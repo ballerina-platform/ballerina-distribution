@@ -1,13 +1,13 @@
 import ballerina/http;
 
-listener http:Listener securedEP = new(9090, config = {
-    secureSocket: {
+listener http:Listener securedEP = new(9090,
+    secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
             keyFile: "../resource/path/to/private.key"
         }
     }
-});
+);
 
 // The service can be secured with Basic auth and can be authorized optionally.
 // Using Basic auth with the file user store can be enabled by setting the
@@ -19,7 +19,7 @@ listener http:Listener securedEP = new(9090, config = {
     auth: [
         {
             fileUserStoreConfig: {},
-            scopes: ["hello"]
+            scopes: ["admin"]
         }
     ]
 }

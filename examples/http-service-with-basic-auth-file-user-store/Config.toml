@@ -1,13 +1,13 @@
-[[auth.users]]
+[[ballerina.auth.users]]
 username="alice"
-password="password1"
-scopes=["scope1"]
+password="alice@123"
+scopes=["developer"]
 
-[[auth.users]]
-username="bob"
-password="password2"
-scopes=["scope2", "scope3"]
+[[ballerina.auth.users]]
+username="ldclakmal"
+password="ldclakmal@123"
+scopes=["developer", "admin"]
 
-[[auth.users]]
+[[ballerina.auth.users]]
 username="eve"
-password="password3"
+password="eve@123"

@@ -1,4 +1,4 @@
 // The `Method` annotation in `ballerina/java` module allows you to link a Java method (static or instance) with a
 // Ballerina function with an external function body.<br/><br/>
 // For more information on the underlying module, 
-// see the [Java module](https://docs.central.ballerina.io/ballerina/jballerina.java/latest/jballerina.java/).
+// see the [Java module](https://docs.central.ballerina.io/ballerina/jballerina.java/latest/).

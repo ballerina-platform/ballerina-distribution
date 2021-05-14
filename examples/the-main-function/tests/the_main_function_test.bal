@@ -22,19 +22,8 @@ function testFunc() {
     test:when(mock_printLn).call("mockPrint");
 
     // Invoking the main function.
-    error? e = main("Alice");
-    test:assertTrue(e is ());
-    test:assertExactEquals(outputs[0], "Name: Alice, Age: 18, Year: Freshman");
-
-    // Invoking the main function.
     counter = 0;
-    e = main("Alice", 20);
-    test:assertTrue(e is ());
-    test:assertExactEquals(outputs[0], "Name: Alice, Age: 20, Year: Freshman");
-
-    // Invoking the main function.
-    counter = 0;
-    e = main("Alice", year="Sophomore");
+    error? e = main("Alice", 18, "Sophomore");
     test:assertTrue(e is ());
     test:assertExactEquals(outputs[0], "Name: Alice, Age: 18, Year: Sophomore");
 
@@ -46,7 +35,7 @@ function testFunc() {
 
     // Invoking the main function.
     counter = 0;
-    e = main("Ali");
+    e = main("Ali", 30, "Freshman");
     if (e is error) {
         test:assertExactEquals(e.message(), "InvalidName");
         test:assertExactEquals(e.toString(), "error(\"InvalidName\",message=\"invalid length\")");

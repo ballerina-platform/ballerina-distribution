@@ -138,17 +138,6 @@ task unpackC2cExamples(type: Copy) {
     }
 }
 
-task unpackObservabilityExtensions() {
-    doLast {
-        configurations.ballerinaObserveExtensions.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-            copy {
-                from project.zipTree(artifact.getFile())
-                into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
-            }
-        }
-    }
-}
-
 task downloadBalCommand(type: Download) {
     group = "unpack_dependencies"
     def commandBaseURL = "https://github.com/ballerina-platform/ballerina-update-tool/releases/download/v${ballerinaCommandVersion}"
@@ -224,20 +213,6 @@ task copyOtherRepos(type: Copy) {
         def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
         from("${artifactExtractedPath}") {
             into "lib/tools/lang-server/lib/"
-        }
-    }
-
-    /* Observability extensions */
-    configurations.ballerinaObserveExtensions.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
-        from("${artifactExtractedPath}/libs") {
-            into "bre/lib/"
-        }
-        from("${artifactExtractedPath}/bala") {
-            into "repo/bala"
-        }
-        from("${artifactExtractedPath}/cache") {
-            into "repo/cache"
         }
     }
 }
@@ -453,6 +428,14 @@ task packageDistLinux(type: Zip) {
         from "build/target/ballerina-command-${ballerinaCommandVersion}/lib/ballerina-command-${ballerinaCommandVersion}.jar"
         fileMode = 0775
     }
+    into("${parentDir}/scripts") {
+        from "build/target/ballerina-command-${ballerinaCommandVersion}/scripts/bal_completion.bash"
+        fileMode = 775
+    }
+    into("${parentDir}/scripts") {
+        from "build/target/ballerina-command-${ballerinaCommandVersion}/scripts/_bal"
+        fileMode = 775
+    }
 
     /* Dependencies */
     into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
@@ -522,6 +505,14 @@ task packageDistMac(type: Zip) {
         from "build/target/ballerina-command-${ballerinaCommandVersion}" +
                 "/lib/ballerina-command-${ballerinaCommandVersion}.jar"
         fileMode = 0775
+    }
+    into("${parentDir}/scripts") {
+        from "build/target/ballerina-command-${ballerinaCommandVersion}/scripts/bal_completion.bash"
+        fileMode = 775
+    }
+    into("${parentDir}/scripts") {
+        from "build/target/ballerina-command-${ballerinaCommandVersion}/scripts/_bal"
+        fileMode = 775
     }
 
     /* Dependencies */
@@ -722,13 +713,7 @@ task testExamples() {
             'mysql-call-stored-procedures',
             'local-transactions',
             'xa-transactions',
-            'retry-transactions',
-            //TODO: Enable following for slp4
-            'iterable-objects',
-            'range-expressions',
-            'error-match-statement',
-            'mapping-match-statement',
-            'tuple-match-statement',
+            'retry-transactions'
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
@@ -788,11 +773,6 @@ task testExamples() {
             'receive-email-using-listener',
             'file-io',
             'uuid',  // Output varies
-            //TODO: Enable following for slp4
-            'xslt-transformation',
-            'error-match-statement',
-            'mapping-match-statement',
-            'tuple-match-statement',
     ]
 
     doFirst {
@@ -1105,12 +1085,12 @@ task testStdlibs() {
             //TODO: Need to verify with windows
             exec {
                 workingDir "${distPath}/${stdlibTest}"
-                commandLine 'cmd', '/c', "${distPath}/bin/bal/ballerina.bat init test"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal/bal.bat init test"
             }
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${distPath}/${stdlibTest}"
-                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat build -c --experimental ${additionalBuildParams}"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat build --experimental ${additionalBuildParams}"
             }
         } else {
             exec {
@@ -1120,7 +1100,7 @@ task testStdlibs() {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${distPath}/${stdlibTest}"
-                commandLine 'sh', '-c', "${distPath}/bin/bal build -c --experimental ${additionalBuildParams}"
+                commandLine 'sh', '-c', "${distPath}/bin/bal build --experimental ${additionalBuildParams}"
             }
         }
         if (exitVal.getExitValue() == 1) {
@@ -1227,58 +1207,6 @@ task testDevToolsIntegration() {
     }
 }
 
-task startLdapServer() {
-    doLast {
-        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
-            def stdOut = new ByteArrayOutputStream()
-            exec {
-                commandLine 'sh', '-c', "docker ps --filter name=openldap-server"
-                standardOutput = stdOut
-            }
-            if (!stdOut.toString().contains("openldap-server")) {
-                println "Starting LDAP server."
-                copy {
-                    from file("$project.rootDir/stdlib-integration-tests/auth/tests/resources/openldap")
-                    into file("/tmp")
-                }
-                exec {
-                    commandLine 'sh', '-c', "docker run --rm -d -p 389:389 --name openldap-server --env LDAP_ORGANISATION=\"AVIX\" --env LDAP_DOMAIN=\"avix.lk\" --env LDAP_ADMIN_PASSWORD=\"avix123\" --env LDAP_BASE_DN=\"dc=avix,dc=lk\" --volume /tmp/bootstrap.ldif:/container/service/slapd/assets/config/bootstrap/ldif/custom/bootstrap.ldif osixia/openldap:1.3.0 --copy-service"
-                    standardOutput = stdOut
-                }
-                println stdOut.toString()
-                println "Waiting 15s until the LDAP server get initiated."
-                sleep(15 * 1000)
-            } else {
-                println "LDAP server is already started."
-            }
-        }
-    }
-}
-
-task stopLdapServer() {
-    doLast {
-        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
-            def stdOut = new ByteArrayOutputStream()
-            exec {
-                commandLine 'sh', '-c', "docker ps --filter name=openldap-server"
-                standardOutput = stdOut
-            }
-            if (stdOut.toString().contains("openldap-server")) {
-                println "Stopping LDAP server."
-                exec {
-                    commandLine 'sh', '-c', "docker stop openldap-server"
-                    standardOutput = stdOut
-                }
-                println stdOut.toString()
-                println "Waiting 5s until the LDAP server get stopped."
-                sleep(5 * 1000)
-            } else {
-                println "LDAP server is not started."
-            }
-        }
-    }
-}
-
 /* Unpack Dependencies */
 unpackJballerinaTools.dependsOn unpackBallerinaJre
 unpackDevTools.dependsOn unpackJballerinaTools
@@ -1286,7 +1214,6 @@ unpackStdLibs.dependsOn unpackDevTools
 unpackC2cLibs.dependsOn unpackStdLibs
 unpackC2cExamples.dependsOn unpackC2cLibs
 unpackC2cTooling.dependsOn unpackC2cExamples
-downloadBalCommand.dependsOn unpackObservabilityExtensions
 downloadBalCommand.dependsOn unpackC2cTooling
 
 /* Extract JRE */
@@ -1315,9 +1242,7 @@ unpackBalCommand.dependsOn downloadBalCommand
 
 testExamples.dependsOn unzipDistForTests
 
-testStdlibs.dependsOn startLdapServer
 testStdlibs.dependsOn unzipDistForTests
-testStdlibs.finalizedBy stopLdapServer
 testDevToolsIntegration.dependsOn unzipDistForTests
 
 /* Delete Temporary Files */

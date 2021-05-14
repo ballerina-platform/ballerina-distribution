@@ -7,4 +7,4 @@
 //
 // In this example, a WebSub Subscriber service is used to implement a GitHub-based WebHook service.
 // For more information on the underlying module, 
-// see the [WebSub module](https://docs.central.ballerina.io/ballerina/websub/latest/websub/).
+// see the [WebSub module](https://docs.central.ballerina.io/ballerina/websub/latest/).

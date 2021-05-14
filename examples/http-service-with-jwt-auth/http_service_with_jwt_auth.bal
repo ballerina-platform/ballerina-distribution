@@ -1,13 +1,13 @@
 import ballerina/http;
 
-listener http:Listener securedEP = new(9090, config = {
-    secureSocket: {
+listener http:Listener securedEP = new(9090,
+    secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
             keyFile: "../resource/path/to/private.key"
         }
     }
-});
+);
 
 // The service can be secured with JWT authentication and can be authorized
 // optionally. JWT authentication can be enabled by setting the
@@ -26,7 +26,7 @@ listener http:Listener securedEP = new(9090, config = {
                 },
                 scopeKey: "scp"
             },
-            scopes: ["hello"]
+            scopes: ["admin"]
         }
     ]
 }

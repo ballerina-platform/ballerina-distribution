@@ -2,4 +2,4 @@
 // This capability can be used for setting up prerequisites that need to be executed before executing a test.
 // Similarly, the `after` attribute can be used to execute a function after a test function.<br/><br/>
 // For more information, see [Testing Ballerina Code](https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/)
-// and the [Test Module](https://docs.central.ballerina.io/ballerina/test/latest/test/).
+// and the [Test Module](https://docs.central.ballerina.io/ballerina/test/latest/).

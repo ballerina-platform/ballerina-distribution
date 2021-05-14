@@ -3,8 +3,8 @@ import ballerina/jwt;
 
 public function main() {
     jwt:IssuerConfig issuerConfig = {
-        username: "admin",
-        issuer: "ballerina",
+        username: "ballerina",
+        issuer: "wso2",
         audience: "vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
         keyId: "NTAxZmMxNDMyZDg3MTU1ZGM0MzEzODJhZWI4NDNlZDU1OGFkNjFiMQ",
         expTime: 3600,
@@ -26,7 +26,7 @@ public function main() {
 
     // Defines the JWT validator configurations with certificate file configurations.
     jwt:ValidatorConfig validatorConfig1 = {
-        issuer: "ballerina",
+        issuer: "wso2",
         audience: "vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
         clockSkew: 60,
         signatureConfig: {
@@ -46,7 +46,7 @@ public function main() {
 
     // Defines the JWT validator configurations with JWKs configurations.
     jwt:ValidatorConfig validatorConfig2 = {
-        issuer: "ballerina",
+        issuer: "wso2",
         audience: "vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
         clockSkew: 60,
         signatureConfig: {
