@@ -880,6 +880,11 @@
                 "disablePlayground": true
             },
             {
+                "name": "Query parameter",
+                "url": "http-query-parameter",
+                "disablePlayground": true
+            },
+            {
                 "name": "Query Path Matrix Param",
                 "url": "query-path-matrix-param",
                 "disablePlayground": true
