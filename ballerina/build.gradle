@@ -773,7 +773,7 @@ task testExamples() {
             'receive-email-using-listener',
             'file-io',
             'uuid',  // Output varies.
-            'os',  // Output varies
+            'os',  // Output varies.
     ]
 
     doFirst {
