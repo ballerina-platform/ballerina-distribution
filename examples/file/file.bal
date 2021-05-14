@@ -46,11 +46,11 @@ public function main() returns error? {
     // Removes the directory in the specified file path with all its children.
     check file:remove("foo", file:RECURSIVE);
 
-    // Creates a temporary file in the default tmp directory of the OS
+    // Creates a temporary file in the default `tmp` directory of the OS.
     string tmpResult = check file:createTemp();
     io:println("Absolute path of the tmp file: ", tmpResult);
 
-    // Creates a temporary file in a specific directory
+    // Creates a temporary file in a specific directory.
     string tmp2Result = check file:createTemp(dir = file:getCurrentDir());
     io:println("Absolute path of the tmp file: ", tmp2Result);
 }

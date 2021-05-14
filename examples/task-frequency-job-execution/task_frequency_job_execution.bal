@@ -9,7 +9,7 @@ class Job {
     *task:Job;
     int i = 1;
 
-    // Executes by the scheduler when the scheduled trigger fires.
+    // Executes this function when the scheduled trigger fires.
     public function execute() {
         self.i += 1;
         io:println("MyCounter: ", self.i);
@@ -36,6 +36,6 @@ public function main() returns error? {
     // Waits for twelve seconds.
     runtime:sleep(12);
 
-    // UnSchedules the job.
+    // Unschedules the job.
     check task:unscheduleJob(id);
 }
