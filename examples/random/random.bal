@@ -6,7 +6,7 @@ public function main() returns error? {
     float randomDecimal = random:createDecimal();
     io:println("Random decimal number: ", randomDecimal);
 
-    // Generate a random number between the given start(inclusive) and end(exclusive) values.
+    // Generates a random number between the given start(inclusive) and end(exclusive) values.
     int randomInteger = check random:createIntInRange(1, 100);
     io:println("Random integer number in range: ", randomInteger);
 }
