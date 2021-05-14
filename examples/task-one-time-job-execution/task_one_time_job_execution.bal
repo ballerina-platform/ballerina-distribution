@@ -9,7 +9,7 @@ class Job {
     *task:Job;
     int i = 1;
 
-    // Executes by the scheduler when the scheduled trigger fires.
+    // Executes this function when the scheduled trigger fires.
     public function execute() {
         self.i += 1;
         io:println("MyCounter: ", self.i);
