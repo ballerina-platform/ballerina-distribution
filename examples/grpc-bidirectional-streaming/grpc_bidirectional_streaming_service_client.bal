@@ -1,7 +1,7 @@
 // This is the client implementation of the bidirectional streaming scenario.
 import ballerina/io;
 
-// Client endpoint configuration.
+// Creates a gRPC client to interact with the remote server.
 ChatClient ep = check new("http://localhost:9090");
 
 public function main () returns error? {
