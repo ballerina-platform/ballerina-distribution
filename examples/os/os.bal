@@ -6,7 +6,7 @@ public function main() {
     string port = os:getEnv("HTTP_PORT");
     io:println("HTTP_PORT: ", port);
 
-    // Returns the current user's name.
+    // Returns the username of the current user.
     string username = os:getUsername();
     io:println("Username: ", username);
 
