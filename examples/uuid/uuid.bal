@@ -50,7 +50,7 @@ public function main() returns error? {
     boolean valid = uuid:validate("4397465e-35f9-11eb-adc1-0242ac120002");
     io:println("UUID validated: ", valid.toString());
 
-    // Detects RFC version of a UUID.
+    // Detects the RFC version of a UUID.
     uuid:Version v = check uuid:getVersion(
                                 "4397465e-35f9-11eb-adc1-0242ac120002");
     io:println("UUID version: ", v.toString());
