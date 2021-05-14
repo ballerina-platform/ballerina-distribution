@@ -38,7 +38,7 @@ public function main() {
     // ```
 
     // Each module can also be assigned its own log level. To assign a
-    // log level to a module, provide the following entry in the Config.toml file:
+    // log level to a module, provide the following entry in the `Config.toml` file:
     //
     // ```
     // [[ballerina.log.modules]]
