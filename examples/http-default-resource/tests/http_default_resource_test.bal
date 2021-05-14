@@ -7,20 +7,18 @@ function testFunc() returns @tainted error? {
     http:Client httpEndpoint = check new("http://localhost:9090");
 
     json payload = {"method":"GET","path":["foo","bar"]};
-    var response = httpEndpoint->get("/foo/bar");
-    if (response is http:Response) {
-        var jsonRes = check response.getJsonPayload();
-        test:assertEquals(jsonRes, payload);
+    var response = httpEndpoint->get("/foo/bar", targetType = json);
+    if (response is json) {
+        test:assertEquals(response, payload);
     } else {
-        test:assertFail(msg = "Failed to call the endpoint:");
+        test:assertFail(msg = "Failed to call the endpoint");
     }
 
     string value = "Specific resource is invoked";
-    response = httpEndpoint->get("/greeting");
-    if (response is http:Response) {
-        var res = check response.getTextPayload();
-        test:assertEquals(res, value);
+    response = httpEndpoint->get("/greeting", targetType = string);
+    if (response is string) {
+        test:assertEquals(response, value);
     } else {
-        test:assertFail(msg = "Failed to call the endpoint:");
+        test:assertFail(msg = "Failed to call the endpoint");
     }
 }
