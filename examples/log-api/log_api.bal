@@ -19,7 +19,7 @@ public function main() {
     log:printError("error log",
         id = isolated function() returns int { return 845315;}, name = "foo");
 
-    // Users can also pass a key/value pair where the value is an error stack trace.
+    // You can also pass a key/value pair in which the value is an error stack trace.
     error err = f1();
     log:printError("error log", stackTrace = err.stackTrace().callStack,
      username = "Alex92", id = 845315);
