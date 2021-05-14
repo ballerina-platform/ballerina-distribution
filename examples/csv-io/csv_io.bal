@@ -10,7 +10,7 @@ public function main() returns @tainted error? {
 
     // Writes the given content string[][] to a CSV file.
     check io:fileWriteCsv(csvFilePath1, csvContent);
-    // If the write operation was successful, then, perform a read operation to read the CSV content as a string array of arrays.
+    // If the write operation was successful, then, performs a read operation to read the CSV content as a string array of arrays.
     string[][] readCsv = check io:fileReadCsv(csvFilePath1);
     io:println(readCsv);
 

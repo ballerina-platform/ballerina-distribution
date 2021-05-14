@@ -11,19 +11,19 @@ public function main() returns @tainted error? {
 
     // Writes the given string to a file.
     check io:fileWriteString(textFilePath1, textContent);
-    // If the write operation was successful, then, read the content as a string.
+    // If the write operation was successful, then, reads the content as a string.
     string readContent = check io:fileReadString(textFilePath1);
     io:println(readContent);
 
     // Writes the given array of lines to a file.
     check io:fileWriteLines(textFilePath2, lines);
-    // If the write operation was successful, then, perform a read operation to read the lines as an array.
+    // If the write operation was successful, then, performs a read operation to read the lines as an array.
     string[] readLines = check io:fileReadLines(textFilePath2);
     io:println(readLines);
 
     // Writes the given stream of lines to a file.
     check io:fileWriteLinesFromStream(textFilePath3, lines.toStream());
-    // If the write operation was successful, then, perform a read operation to read the lines as a stream.
+    // If the write operation was successful, then, performs a read operation to read the lines as a stream.
     stream<string, io:Error?> lineStream = check
                                     io:fileReadLinesAsStream(textFilePath3);
     // Iterates through the stream and prints the content.
