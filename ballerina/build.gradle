@@ -772,7 +772,7 @@ task testExamples() {
             'receive-email-using-client',
             'receive-email-using-listener',
             'file-io',
-            'uuid',  // Output varies
+            'uuid',  // Output varies.
             'os',  // Output varies
     ]
 
