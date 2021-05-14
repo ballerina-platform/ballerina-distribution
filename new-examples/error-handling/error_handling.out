@@ -1,0 +1,2 @@
+bal run error_handling.bal
+error: {ballerina/lang.int}NumberParsingError {"message":"'string' value 'hello' cannot be converted to 'int'"}

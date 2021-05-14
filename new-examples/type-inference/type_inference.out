@@ -1,0 +1,3 @@
+bal run type_inference.bal
+str
+str

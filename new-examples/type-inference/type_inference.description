@@ -1,0 +1,2 @@
+// Type inference is local and restricted to a single expression.
+// Overuse Type inference can make code harder to understand
