@@ -1,4 +1,4 @@
-// This is a mock JWK server, which is to expose the JWK components for testing purpose.
+// This is a mock JWK server, which exposes the JWK components for testing purposes.
 import ballerina/http;
 
 listener http:Listener oauth2Server = new (20000,

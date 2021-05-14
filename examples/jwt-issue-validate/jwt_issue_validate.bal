@@ -19,7 +19,7 @@ public function main() returns error? {
     string jwt = check jwt:issue(issuerConfig);
     io:println("Issued JWT: ", jwt);
 
-    // Defines the JWT validator configurations with certificate file configurations.
+    // Defines the JWT validator configurations with the certificate file configurations.
     jwt:ValidatorConfig validatorConfig1 = {
         issuer: "wso2",
         audience: "vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
@@ -29,11 +29,11 @@ public function main() returns error? {
         }
     };
 
-    // Validates the created JWT. Signature is validated using the public certificate.
+    // Validates the created JWT. The signature is validated using the public certificate.
     jwt:Payload payload1 = check jwt:validate(jwt, validatorConfig1);
     io:println("Validated JWT Payload: ", payload1.toString());
 
-    // Defines the JWT validator configurations with JWKs configurations.
+    // Defines the JWT validator configurations with the JWKs configurations.
     jwt:ValidatorConfig validatorConfig2 = {
         issuer: "wso2",
         audience: "vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
@@ -50,7 +50,7 @@ public function main() returns error? {
         }
     };
 
-    // Validates the created JWT. Signature is validated using the JWKs endpoint.
+    // Validates the created JWT. The signature is validated using the JWKs endpoint.
     jwt:Payload payload2 = check jwt:validate(jwt, validatorConfig2);
     io:println("Validated JWT Payload: ", payload2.toString());
 }

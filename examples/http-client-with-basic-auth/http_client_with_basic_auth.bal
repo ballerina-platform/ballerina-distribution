@@ -16,7 +16,7 @@ http:Client securedEP = check new("https://localhost:9090",
 );
 
 public function main() {
-    // Send a `GET` request to the specified endpoint.
+    // Sends a `GET` request to the specified endpoint.
     http:Response|http:ClientError response = securedEP->get("/foo/bar");
     if response is http:Response {
         log:printInfo(response.statusCode.toString());
