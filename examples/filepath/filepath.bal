@@ -2,30 +2,30 @@ import ballerina/file;
 import ballerina/io;
 
 public function main() returns error? {
-    // Get the absolute representation of the path.
+    // Gets the absolute representation of the path.
     string absValue = check file:getAbsolutePath("test.txt");
 
-    // Check whether the path is absolute.
+    // Checks whether the path is absolute.
     boolean isAbs = check file:isAbsolutePath("/A/B/C");
     io:println("/A/B/C is absolute: ", isAbs);
 
-    // Get the base name of the path.
+    // Gets the base name of the path.
     string name = check file:basename("/A/B/C");
     io:println("Filename of /A/B/C: ", name);
 
-    // Get the enclosing parent directory.
+    // Gets the enclosing parent directory.
     string parentPath = check file:parentPath("/A/B/C");
     io:println("Parent of /A/B/C: ", parentPath);
 
-    // Get the shortest path name equivalent to path by purely lexical processing.
+    // Gets the shortest path name equivalent to path by purely lexical processing.
     string normalizedPath = check file:normalizePath("foo/../bar", file:CLEAN);
     io:println("Normalized path of foo/../bar: ", normalizedPath);
 
-    // Get the list of path elements joined by the OS-specific path separator.
+    // Gets the list of path elements joined by the OS-specific path separator.
     string[] parts = check file:splitPath("/A/B/C");
     io:println(string `Path elements of /A/B/C: ${parts.toString()}`);
 
-    // Join any number of path elements into a single path.
+    // Joins any number of path elements into a single path.
     string path = check file:joinPath("/", "foo", "bar");
     io:println("Built path of '/', 'foo', 'bar': ", path);
 
