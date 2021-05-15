@@ -13,7 +13,7 @@ public function main() {
     // These can be of the `anydata` type including int, string, and boolean.
     log:printInfo("info log", id = 845315, name = "foo", successful = true);
 
-    // Users can also pass key/value pairs where the values are function pointers.
+    // You can also pass key/value pairs where the values are function pointers.
     log:printInfo("info log", id = 845315,
               name = isolated function() returns string { return "foo";});
     log:printError("error log",
