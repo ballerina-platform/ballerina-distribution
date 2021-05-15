@@ -52,7 +52,7 @@ public class DistributionArtifactCheckTest {
                 .resolve("cache")
                 .resolve("ballerina")
                 .resolve("cloud")
-                .resolve("1.0.0");
+                .resolve("2.0.0-beta.1");
 
         Path breLibPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
