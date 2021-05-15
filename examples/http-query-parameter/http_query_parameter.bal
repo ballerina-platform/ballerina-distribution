@@ -7,7 +7,7 @@ service /product on new http:Listener(9090) {
         return { count : a + b};
     }
 
-    // The query param type is nilable which means the URL may contain the param.
+    // The query param type is nilable which means the URI may contain the param.
     // In the absence of the query param `id` the type is nil.
     resource function get name(string? id) returns string {
         if (id is string) {
