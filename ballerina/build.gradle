@@ -744,6 +744,7 @@ task testExamples() {
             'restrict-by-media-type',
             'http-cors',
             'http-client-data-binding',
+            'http-resource-returns', // Date header varies
             'websocket-basic-sample',
             'websocket-text-client',
             'websocket-binary-client',
