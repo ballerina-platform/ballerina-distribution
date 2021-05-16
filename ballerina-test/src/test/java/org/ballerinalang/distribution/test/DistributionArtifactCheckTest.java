@@ -54,11 +54,6 @@ public class DistributionArtifactCheckTest {
                 .resolve("cloud")
                 .resolve("2.0.0-beta.1");
 
-        Path breLibPath = TEST_DISTRIBUTION_PATH
-                .resolve(DIST_NAME)
-                .resolve("bre")
-                .resolve("lib");
-
         Path bbePath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
                 .resolve("examples")
@@ -71,7 +66,6 @@ public class DistributionArtifactCheckTest {
                 .resolve("cloud");
 
         Assert.assertTrue(Files.exists(cachePath));
-        Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "c2c-extension-"));
         Assert.assertTrue(Files.exists(bbePath));
         Assert.assertTrue(Files.exists(docsPath));
     }
