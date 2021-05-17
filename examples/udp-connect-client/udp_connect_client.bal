@@ -14,7 +14,7 @@ public function main() returns error? {
 
     string msg = "Hello Ballerina echo";
 
-    // Sends data to the connected remote host.
+    // Sends the data to the connected remote host.
     // The parameter is a byte[], which contains the data to be sent.
     check socketClient->writeBytes(msg.toBytes());
     io:println("Data was sent to the remote host.");

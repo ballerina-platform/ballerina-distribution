@@ -14,9 +14,8 @@ service on new udp:Listener(8080) {
     remote function onDatagram(readonly & udp:Datagram datagram) 
         returns udp:Datagram|udp:Error? {
         io:println("Received by listener: ", string:fromBytes(datagram.data));
-        // Echos back the data to the same client.
+        // Echoes back the data to the same client.
         // This is similar to calling `caller->sendDatagram(data);`.
         return datagram;
     }
 }
-
