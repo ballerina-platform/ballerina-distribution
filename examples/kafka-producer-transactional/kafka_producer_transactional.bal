@@ -18,7 +18,7 @@ public function main() {
     string message = "Hello World Transaction Message";
     byte[] serializedMessage = message.toBytes();
     // Creates a producer config with optional parameters.
-    // `transactionalId` - enables transactional message production.
+    // The `transactionalId` enables transactional message production.
     kafkaAdvancedTransactionalProduce(serializedMessage);
 }
 
