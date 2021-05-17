@@ -25,7 +25,7 @@
 
     <groupId>org.ballerinalang</groupId>
     <artifactId>ballerina-distribution</artifactId>
-    <version>1.2.13-SNAPSHOT</version>
+    <version>1.2.15-SNAPSHOT</version>
     <modelVersion>4.0.0</modelVersion>
 
     <name>Ballerina - Tools - Parent</name>
@@ -107,7 +107,7 @@
         <repository>
             <id>wso2.stage</id>
             <name>WSO2 Stage Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1637/</url>
+            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1647/</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -117,7 +117,7 @@
         <repository>
             <id>wso2.docker.stage</id>
             <name>WSO2 Stage Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1295/</url>
+            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1297/</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -127,7 +127,7 @@
         <repository>
             <id>wso2.kubernetes.stage</id>
             <name>WSO2 Stage Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxkubernetes-1270/</url>
+            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxkubernetes-1272/</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -137,7 +137,7 @@
         <repository>
             <id>wso2.awslambda.stage</id>
             <name>WSO2 Stage Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1168/</url>
+            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1170/</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -147,17 +147,12 @@
         <repository>
             <id>wso2.azurefunctions.stage</id>
             <name>WSO2 Stage Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxazurefunctions-1019/</url>
+            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxazurefunctions-1024/</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
-        </repository>
-        <repository>
-            <id>github</id>
-            <name>Github Package Repository</name>
-            <url>https://maven.pkg.github.com/ballerina-platform/ballerina-update-tool</url>
         </repository>
     </repositories>
 
@@ -325,12 +320,6 @@
                 <version>${kubernetes.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.ballerinalang</groupId>
-                <artifactId>ballerina-command-distribution</artifactId>
-                <type>zip</type>
-                <version>${ballerina.command.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.testng</groupId>
                 <artifactId>testng</artifactId>
                 <version>${testng.version}</version>
@@ -357,15 +346,15 @@
         </dependencies>
     </dependencyManagement>
     <properties>
-        <ballerina.version>1.2.13</ballerina.version>
+        <ballerina.version>1.2.15</ballerina.version>
         <ballerina.jre.artifacts.version>2.0.1</ballerina.jre.artifacts.version>
         <project.scm.id>ballerina-scm-server</project.scm.id>
-        <docker.version>1.2.13</docker.version>
-        <kubernetes.version>1.2.13</kubernetes.version>
-        <awslambda.version>1.2.13</awslambda.version>
-        <azurefunctions.version>1.2.13</azurefunctions.version>
+        <docker.version>1.2.15</docker.version>
+        <kubernetes.version>1.2.15</kubernetes.version>
+        <awslambda.version>1.2.15</awslambda.version>
+        <azurefunctions.version>1.2.15</azurefunctions.version>
         <picocli.version>4.0.1</picocli.version>
-        <ballerina.command.version>0.8.10</ballerina.command.version>
+        <ballerina.command.version>1.3.1</ballerina.command.version>
         <testng.version>6.14.3</testng.version>
         <net.lingala.zip4j.version>2.3.2</net.lingala.zip4j.version>
         <commons.io.version>2.6</commons.io.version>
