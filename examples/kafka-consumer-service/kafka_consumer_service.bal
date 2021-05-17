@@ -7,8 +7,7 @@ kafka:ConsumerConfiguration consumerConfigs = {
     topics: ["test-kafka-topic"],
 
     pollingInterval: 1,
-    // Sets `autoCommit` to false, so that the records should be committed
-    // manually.
+    // Sets the `autoCommit` to false, so that the records should be committed manually.
     autoCommit: false
 };
 
@@ -18,8 +17,7 @@ listener kafka:Listener kafkaListener =
 service kafka:Service on kafkaListener {
     remote function onConsumerRecord(kafka:Caller caller,
                                 kafka:ConsumerRecord[] records) {
-        // The set of Kafka records received by the service processes one
-        // by one.
+        // The set of Kafka records received by the service is processed one by one.
         foreach var kafkaRecord in records {
             processKafkaRecord(kafkaRecord);
         }
@@ -35,7 +33,7 @@ service kafka:Service on kafkaListener {
 }
 
 function processKafkaRecord(kafka:ConsumerRecord kafkaRecord) {
-    // The value should be a `byte[]`, since the byte[] deserializer is used
+    // The value should be a `byte[]` since the byte[] deserializer is used
     // for the value.
     byte[] value = kafkaRecord.value;
 
