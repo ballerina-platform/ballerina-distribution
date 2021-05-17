@@ -21,7 +21,7 @@
     <parent>
         <groupId>org.ballerinalang</groupId>
         <artifactId>ballerina-distribution</artifactId>
-        <version>1.2.14-SNAPSHOT</version>
+        <version>1.2.15-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -287,8 +287,7 @@
                         <phase>generate-resources</phase>
                         <configuration>
                             <tasks>
-                                <unzip src="${project.build.directory}/extracted-distributions/ballerina-command-${ballerina.command.version}.zip"
-                                       dest="${project.build.directory}/extracted-distributions/" />
+                                <unzip src="${project.build.directory}/extracted-distributions/ballerina-command-${ballerina.command.version}.zip" dest="${project.build.directory}/extracted-distributions/" />
                                 <unzip src="${jre.location}/jre-1.8-linux.zip" dest="${project.build.directory}/extracted-jre-linux" />
                                 <unzip src="${jre.location}/jre-1.8-macos.zip" dest="${project.build.directory}/extracted-jre-macos" />
                                 <unzip src="${jre.location}/jre-1.8-windows.zip" dest="${project.build.directory}/extracted-jre-windows" />
