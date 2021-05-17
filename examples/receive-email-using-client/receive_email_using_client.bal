@@ -22,7 +22,7 @@ public function main() returns error? {
         io:println("There are no emails in the INBOX.");
     }
 
-    // Closes the POP3 store which would close the TCP connection.
+    // Closes the POP3 store, which would close the TCP connection.
     email:Error? closeStatus = popClient->close();
 
     // Creates the client with the connection parameters, host, username, and

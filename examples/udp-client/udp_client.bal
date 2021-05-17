@@ -16,7 +16,7 @@ public function main() returns error? {
         data : msg.toBytes()
     };
 
-    // Sends data to the remote host.
+    // Sends the data to the remote host.
     // The parameter is a Datagram record, which contains the `remoteHost`,
     // `remotePort`, and the `data` to be sent.
     check socketClient->sendDatagram(datagram);
