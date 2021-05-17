@@ -6,7 +6,7 @@ kafka:AuthenticationConfiguration authConfig = {
     // Provide the authentication mechanism used by the Kafka server.
     mechanism: kafka:AUTH_SASL_PLAIN,
     // Username and password should be set here in order to authenticate the producer.
-    // Check Ballerina `config` APIs to see how to use encrypted values instead of plain text values here.
+    // Check [Writing Secure Ballerina Code](https://ballerina.io/learn/user-guide/security/writing-secure-ballerina-code/#securing-sensitive-data-using-configurable-variables) to see how to secure values instead of directly using plain text values here.
     username: "ballerina",
     password: "ballerina-secret"
 };
