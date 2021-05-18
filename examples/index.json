@@ -978,12 +978,12 @@
                 "disablePlayground": true
             },
             {
-                "name": "Resources with Record Values",
-                "url": "graphql-resources-with-record-values",
+                "name": "Returning Record Values",
+                "url": "graphql-returning-record-values",
                 "disablePlayground": true
             },
             {
-                "name": "Resources with Hierarchical Resource Paths",
+                "name": "Hierarchical Resource Paths",
                 "url": "graphql-hierarchical-resource-paths",
                 "disablePlayground": true
             }
