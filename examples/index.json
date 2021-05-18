@@ -991,6 +991,11 @@
                 "name":"Returning Service Objects",
                 "url": "graphql-returning-service-objects",
                 "disablePlayground": true
+            },
+            {
+                "name":"Input Types",
+                "url": "graphql-input-types",
+                "disablePlayground": true
             }
         ]
     },
