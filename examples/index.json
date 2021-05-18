@@ -914,13 +914,13 @@
                 "disablePlayground": true
             },
             {
-                "name": "Basic HTTPS Listener Client",
-                "url": "basic-https-listener-client",
+                "name": "HTTPS Client",
+                "url": "https-client",
                 "disablePlayground": true
             },
             {
-                "name": "Mutual SSL",
-                "url": "mutual-ssl",
+                "name": "HTTPS Mutual SSL",
+                "url": "https-mutual-ssl",
                 "disablePlayground": true
             },
             {

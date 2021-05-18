@@ -1,19 +1,18 @@
 import ballerina/http;
 import ballerina/test;
 
+http:Client clientEP = check new("https://localhost:9090",
+    secureSocket = {
+        cert: "../resource/path/to/public.crt"
+    }
+);
+
 @test:Config {}
 function testFunc() {
-    http:Client httpEndpoint = new("https://localhost:9095", config = {
-        secureSocket: {
-            cert: "../resource/path/to/public.crt"
-        }
-    });
-
-    string response1 = "Hello World!";
-    var response = httpEndpoint->get("/hello");
+    var response = clientEP->get("/foo/bar");
     if (response is http:Response) {
-        test:assertEquals(response.getTextPayload(), response1);
+        test:assertEquals(response.getTextPayload(), "Hello, World!");
     } else {
-        test:assertFail(msg = "Failed to call the endpoint:");
+        test:assertFail(msg = "Failed to call the endpoint.");
     }
 }
