@@ -5,9 +5,9 @@ import ballerinax/mysql;
 // The username and password of the MySQL database and database
 // name which is to be created to execute the sample.
 // You can change these based on your setup.
-string dbUser = "root";
-string dbPassword = "Ashakalai123@";
-string dbName = "MYSQL_BBE";
+string dbUser = "DB_USER_NAME";
+string dbPassword = "DB_PASSWORD";
+string dbName = "DB_NAME";
 
 public function main() returns error? {
     io:println("\nCreating the prerequisites...!");

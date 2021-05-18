@@ -1,8 +1,17 @@
-# To create the `Ballerina` project, execute the `bal run` command below and copy this code to that project
+# To create the `Ballerina` project, execute the `bal run` command below
+# and copy this code to that project
 bal new afterExample
+
+# To define the MySQL database driver JAR as a dependency, change the path of
+# the MYSQL driver and add it in the `Ballerina.toml`
+[[platform.java11.dependency]]
+artifactId = "mysql-connector-java"
+version = "VERSIONN"
+path = "/path/to/mysql-connector-java.jar"
+groupId = "mysql"
 
 # To run this, execute the `bal run` command below.
 bal run afterExample
 
-Starting to drop the tables...
-Drop the tables successfully done!
+Starts to clean bbe tables...
+Dropped table successfully!
