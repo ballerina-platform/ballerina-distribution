@@ -9,7 +9,7 @@ class Job {
     *task:Job;
     int i = 1;
 
-    // Get executed by the scheduler when the scheduled trigger fires.
+    // Executes this function when the scheduled trigger fires.
     public function execute() {
         self.i += 1;
         io:println("MyCounter: ", self.i);
@@ -21,16 +21,16 @@ class Job {
 }
 
 public function main() returns error? {
-    // Get the current time.
+    // Gets the current time.
     time:Utc currentUtc = time:utcNow();
-    // Increase the time by three seconds to get the specified time for scheduling the job.
+    // Increases the time by three seconds to get the specified time for scheduling the job.
     time:Utc newTime = time:utcAddSeconds(currentUtc, 3);
-    // Get the `time:Civil` for the given time.
+    // Gets the `time:Civil` for the given time.
     time:Civil time = time:utcToCivil(newTime);
 
-    // Schedule the one-time job at the specified time.
+    // Schedules the one-time job at the specified time.
     task:JobId result = check task:scheduleOneTimeJob(new Job(0), time);
 
-    // Wait for five seconds.
+    // Waits for five seconds.
     runtime:sleep(5);
 }

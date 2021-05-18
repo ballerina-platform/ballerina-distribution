@@ -8,7 +8,7 @@ public function main() returns error? {
     email:SmtpClient smtpClient = check new ("smtp.email.com",
         "sender@email.com" , "pass123");
 
-    // Define the email that is required to be sent.
+    // Defines the email that is required to be sent.
     email:Message email = {
         // "TO", "CC", and "BCC" address lists are added as follows.
         // Only the "TO" address list is mandatory out of these three.
@@ -33,7 +33,7 @@ public function main() returns error? {
         replyTo: ["replyTo1@email.com", "replyTo2@email.com"]
     };
 
-    // Send the email message with the client. The `send` method can be used
+    // Sends the email message with the client. The `send` method can be used
     // instead, if the email is required to be sent with mandatory and optional
     // parameters instead of configuring an `email:Message` record.
     check smtpClient->sendMessage(email);

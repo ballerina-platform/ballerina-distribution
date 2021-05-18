@@ -1,7 +1,7 @@
 import ballerina/io;
 import ballerina/xmldata;
 
-public function main() {
+public function main() returns error? {
     // Creates a JSON object.
     json j1 = {
         "Store": {
@@ -16,7 +16,7 @@ public function main() {
     };
     // Converts the JSON object to XML using the default `attributePrefix`
     // and the default `arrayEntryTag`.
-    var x1 = xmldata:fromJson(j1);
+    xml? x1 = check xmldata:fromJson(j1);
     io:println(x1);
 
     json j2 = {
@@ -32,7 +32,7 @@ public function main() {
     };
     // Converts the JSON object to XML using a custom `attributePrefix` (i.e., the `#` character)
     // and the custom `arrayEntryTag` (i.e., `wrapper`).
-    var x2 = xmldata:fromJson(j2,
+    xml? x2 = check xmldata:fromJson(j2,
                         {attributePrefix: "#", arrayEntryTag: "wrapper"});
     io:println(x2);
 }

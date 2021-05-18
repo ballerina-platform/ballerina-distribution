@@ -1,18 +1,18 @@
 import ballerina/io;
 
 public function main() returns @tainted error? {
-    // Initialize the image paths.
+    // Initializes the image paths.
     string imagePath = "./files/ballerina.jpg";
     string imageCopyPath1 = "./files/ballerinaCopy1.jpg";
     string imageCopyPath2 = "./files/ballerinaCopy2.jpg";
 
-    // Read the file content as a byte array using the given file path.
+    // Reads the file content as a byte array using the given file path.
     byte[] bytes = check io:fileReadBytes(imagePath);
-    // Write the already-read content to the given destination file.
+    // Writes the already-read content to the given destination file.
     check io:fileWriteBytes(imageCopyPath1, bytes);
     io:println("Successfully copied the image as a byte array.");
 
-    // Read the file as a stream of blocks. The default block size is 4KB.
+    // Reads the file as a stream of blocks. The default block size is 4KB.
     // Here, the default size is overridden by the value 2KB.
     stream<io:Block, io:Error?> blockStream = check
     io:fileReadBlocksAsStream(imagePath, 2048);

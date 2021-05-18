@@ -1,3 +1,25 @@
 // The Ballerina Log API contains the application log handling functions.<br/><br/>
+// The log level can be configured via a Ballerina configuration file.
+// To set the global log level, place the entry given below in the `Config.toml` file:
+//
+// ```
+// [ballerina.log]
+// level = "[LOG_LEVEL]"
+// ```
+// Each module can also be assigned its own log level. To assign a
+// log level to a module, provide the following entry in the `Config.toml` file:
+//
+// ```
+// [[ballerina.log.modules]]
+// name = "[ORG_NAME]/[MODULE_NAME]"
+// level = "[LOG_LEVEL]"
+// ```
+// By default, log messages are logged to the console in LogFmt format.
+// To set the output format to JSON, place the entry given below in the `Config.toml` file.
+//
+// ```
+// [ballerina.log]
+// format = "json"
+// ```
 // For more information on the underlying module,
 // see the [Log module](https://docs.central.ballerina.io/ballerina/log/latest/).

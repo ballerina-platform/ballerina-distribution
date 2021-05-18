@@ -34,19 +34,19 @@ public function main() returns error? {
     // entry with the key 'key2' should exist in the cache.
     runtime:sleep(4);
 
-    // Get the keys of the cache entries.
+    // Gets the keys of the cache entries.
     string[] keys = cache.keys();
     io:println("keys: " + keys.toString());
 
-    // Get the size of the cache.
+    // Gets the size of the cache.
     int size = cache.size();
     io:println("size: ", size);
 
-    // Discard the given cache entry.
+    // Discards the given cache entry.
     _ = check cache.invalidate("key2");
 
     io:println("keys: ", cache.keys());
 
-    // Discard all the cache entries of the cache.
+    // Discards all the cache entries of the cache.
     _ = check cache.invalidateAll();
 }
