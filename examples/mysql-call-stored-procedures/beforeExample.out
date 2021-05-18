@@ -1,0 +1,14 @@
+# To create the `Ballerina` project, execute the `bal run` command below and copy this code to that project
+bal new beforeExample
+
+# To run this, execute the `bal run` command below.
+bal run beforeExample
+
+Creating the prerequisites...
+Database created.
+Creating necessary table and procedures...
+Create Student table executed.
+Stored procedure with IN param created.
+Stored procedure with INOUT/OUT param created.
+Stored procedure with result set returned created.
+Setup successfully done!

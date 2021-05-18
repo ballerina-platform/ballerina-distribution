@@ -1,0 +1,8 @@
+# To create the `Ballerina` project, execute the `bal run` command below and copy this code to that project
+bal new afterExample
+
+# To run this, execute the `bal run` command below.
+bal run afterExample
+
+Starting to drop the tables...
+Drop the tables successfully done!

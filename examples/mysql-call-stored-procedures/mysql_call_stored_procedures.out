@@ -1,14 +1,10 @@
-# To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `bal run` command below.
-bal run mysql_call_stored_procedures.bal
+# To create the `Ballerina` project, execute the `bal run` command below and copy this code to that project
+bal new mysql_call_stored_procedures
 
-Database created. 
-Creating necessary table and procedures...
-Successfully dropped tables and procedures.
-Create Student table executed.
-Stored procedure with IN param created.
-Stored procedure with INOUT/OUT param created.
-Stored procedure with result set returned created.
+# To run this, execute the `bal run` command below.
+bal run mysql_call_stored_procedures
+
+Starts to run the sample!
 
 Invoke `InsertStudent` procedure with IN params
 Call stored procedure `InsertStudent` is successful : {"affectedRowCount":1,"lastInsertId":null}
