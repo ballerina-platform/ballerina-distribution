@@ -8,7 +8,7 @@ import ballerina/graphql;
 // type of the `quote` field is `String`, and the type of the `name` field is
 // `name`. The type `name` has two fields, `first`, and the `last`. Both of the
 // fields are of type `String`.
-service graphql:Service /graphql on new graphql:Listener(9090) {
+service graphql:Service /graphql on new graphql:Listener(4000) {
 
     // This resource represents the field `quote` under the `profile` object.
     resource function get profile/quote() returns string {
