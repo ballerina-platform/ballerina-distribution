@@ -8,7 +8,7 @@ function testFunc() returns @tainted error? {
 
     // Send a `POST` request to the specified endpoint.
     json payload = { "hello": "world" };
-    json jsonRes = httpEndpoint->post("/foo/bar", payload);
+    json jsonRes = check httpEndpoint->post("/foo/bar", payload);
     test:assertEquals(jsonRes, payload);
     return;
 }

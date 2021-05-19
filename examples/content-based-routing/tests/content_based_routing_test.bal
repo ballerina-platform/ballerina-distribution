@@ -4,7 +4,7 @@ import ballerina/test;
 @test:Config {}
 function testFunc() returns @tainted error? {
     // Invoking the main function
-    http:Client httpEndpoint = checkpanic new("http://localhost:9090");
+    http:Client httpEndpoint = check new("http://localhost:9090");
     json payload = { name: "sanFrancisco" };
     json payload2 = { name: "london" };
 
@@ -33,7 +33,7 @@ function testFunc() returns @tainted error? {
     http:Request req2 = new;
     req2.setJsonPayload(payload2);
     // Send a GET request to the specified endpoint
-    json respnc = httpEndpoint->post("/cbr/route", req2);
+    json respnc = check httpEndpoint->post("/cbr/route", req2);
     test:assertEquals(respnc.toJsonString(), response2.toJsonString());
     return;
 }

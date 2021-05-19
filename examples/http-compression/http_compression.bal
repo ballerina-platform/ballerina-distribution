@@ -60,7 +60,8 @@ http:Client clientEndpoint = checkpanic new ("http://localhost:9090", {
 service /passthrough on new http:Listener(9092) {
 
     resource function 'default .(http:Request req) returns http:Response|json {
-        http:Response|error response = clientEndpoint->post("/backend/echo", <@untainted>req);
+        http:Response|error response =
+            clientEndpoint->post("/backend/echo", <@untainted>req);
         if (response is http:Response) {
             return response;
         } else {

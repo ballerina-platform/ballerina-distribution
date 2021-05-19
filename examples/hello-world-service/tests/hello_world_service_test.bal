@@ -11,7 +11,7 @@ function startService() {
     before: startService,
     after: stopService
 }
-function testFunc() {
+function testFunc() returns error? {
     // Invoking the main function
     http:Client httpEndpoint = checkpanic new("http://localhost:9090");
     // Check whether the server is started
