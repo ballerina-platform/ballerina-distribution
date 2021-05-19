@@ -23,15 +23,15 @@ service /product on new http:Listener(9090) {
 
     // In addition to resource method argument, query params can be retrieved from the inbound request
     resource function get part(http:Request req) returns json {
-        // Get the [first queryParam](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getQueryParamValue)
+        // Gets the [first queryParam](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getQueryParamValue)
         // value for a given parameter key.
         string? foo = req.getQueryParamValue("foo");
 
-        // Get [multiple queryParam](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getQueryParamValues)
+        // Gets [multiple queryParam](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getQueryParamValues)
         // values for a given parameter key.
         string[]? bar = req.getQueryParamValues("bar");
 
-        // Get [all the queryParam](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getQueryParams)
+        // Gets [all the queryParam](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getQueryParams)
         // key value pairs of the inbound request.
         map<string[]> all = req.getQueryParams();
 
