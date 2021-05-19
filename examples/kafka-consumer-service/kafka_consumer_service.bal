@@ -7,7 +7,7 @@ kafka:ConsumerConfiguration consumerConfigs = {
     topics: ["test-kafka-topic"],
 
     pollingInterval: 1,
-    // Sets the `autoCommit` to false so that the records should be committed manually.
+    // Sets the `autoCommit` to `false` so that the records should be committed manually.
     autoCommit: false
 };
 
@@ -17,7 +17,7 @@ listener kafka:Listener kafkaListener =
 service kafka:Service on kafkaListener {
     remote function onConsumerRecord(kafka:Caller caller,
                                 kafka:ConsumerRecord[] records) {
-        // The set of Kafka records received by the service is processed one by one.
+        // The set of Kafka records received by the service are processed one by one.
         foreach var kafkaRecord in records {
             processKafkaRecord(kafkaRecord);
         }
