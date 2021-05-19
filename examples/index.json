@@ -1258,28 +1258,13 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "Basic Publisher and Subscriber",
-                "url": "nats-basic-client",
+                "name": "Publish/Subscribe",
+                "url": "nats-basic-pub-sub",
                 "disablePlayground": true
             },
             {
-                "name": "Basic Streaming Publisher and Subscriber",
-                "url": "nats-streaming-client",
-                "disablePlayground": true
-            },
-            {
-                "name": "Durable Subscriptions",
-                "url": "nats-streaming-durable-subscriptions",
-                "disablePlayground": true
-            },
-            {
-                "name": "Queue Groups",
-                "url": "nats-streaming-queue-group",
-                "disablePlayground": true
-            },
-            {
-                "name": "Historical Message Replay",
-                "url": "nats-streaming-start-position",
+                "name": "Request/Reply",
+                "url": "nats-basic-request-reply",
                 "disablePlayground": true
             }
         ]

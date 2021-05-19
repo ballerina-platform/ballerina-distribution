@@ -1,14 +1,14 @@
 import ballerinax/nats;
 
-// Produces a message to a subject in the NATS sever.
 public function main() returns error? {
     string message = "Hello from Ballerina";
-    // Initializes a client.
+    // Initializes a NATS client.
     nats:Client natsClient = check new(nats:DEFAULT_URL);
+
     // Produces a message to the specified subject.
     check natsClient->publishMessage({
                              content: <@untainted>message.toBytes(),
-                             subject: "demo.bbe.subject"});
+                             subject: "demo.bbe"});
 
     // Closes the client connection.
     check natsClient.close();
