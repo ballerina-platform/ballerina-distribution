@@ -1,0 +1,7 @@
+# Create a new Protocol Buffers definition file named `grpc_simple_with_headers.proto` and add the service definition.
+# Run the command below in the Ballerina tools distribution for stub generation.
+`bal grpc --input grpc_simple_with_headers.proto  --output stubs`
+
+# Once you run the command, the `grpc_simple_with_headers_pb.bal` file is generated inside the `stubs` directory.
+
+# For more information on how to use the Ballerina Protocol Buffers tool, see the [Proto To Ballerina](https://ballerina.io/learn/by-example/proto-to-ballerina.html) example.

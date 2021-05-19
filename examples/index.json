@@ -1208,28 +1208,33 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "Unary Blocking",
-                "url": "grpc-unary-blocking",
+                "name": "Simple RPC",
+                "url": "grpc-simple",
                 "disablePlayground": true
             },
             {
-                "name": "Server Streaming",
+                "name": "Simple RPC with Headers",
+                "url": "grpc-simple-with-headers",
+                "disablePlayground": true
+            },
+            {
+                "name": "Secured Simple RPC",
+                "url": "grpc-secured-simple",
+                "disablePlayground": true
+            },
+            {
+                "name": "Server Streaming RPC",
                 "url": "grpc-server-streaming",
                 "disablePlayground": true
             },
             {
-                "name": "Client Streaming",
+                "name": "Client Streaming RPC",
                 "url": "grpc-client-streaming",
                 "disablePlayground": true
             },
             {
-                "name": "Bidirectional Streaming",
+                "name": "Bidirectional Streaming RPC",
                 "url": "grpc-bidirectional-streaming",
-                "disablePlayground": true
-            },
-            {
-                "name": "Secured Unary",
-                "url": "grpc-secured-unary",
                 "disablePlayground": true
             },
             {
