@@ -1,14 +1,14 @@
-// This is a mock JWK server, which is to expose the JWK components for testing purpose.
+// This is a mock JWK server, which exposes the JWK components for testing purposes.
 import ballerina/http;
 
-listener http:Listener oauth2Server = new (20000, {
-    secureSocket: {
+listener http:Listener oauth2Server = new (20000,
+    secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
             keyFile: "../resource/path/to/private.key"
         }
     }
-});
+);
 
 service /oauth2 on oauth2Server {
     resource function get jwks() returns json {
