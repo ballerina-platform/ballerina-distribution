@@ -7,7 +7,7 @@ kafka:ConsumerConfiguration consumerConfigs = {
     topics: ["test-kafka-topic"],
 
     pollingInterval: 1,
-    // Sets the `autoCommit` to false, so that the records should be committed manually.
+    // Sets the `autoCommit` to false so that the records should be committed manually.
     autoCommit: false
 };
 
