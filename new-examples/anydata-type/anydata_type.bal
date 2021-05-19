@@ -1,7 +1,7 @@
 import ballerina/io;
 
 anydata x1 = [1, "string", true];
-// `x1.clone()` returns a deep copy, with same mutability.
+// `x1.clone()` returns a deep copy with the same mutability.
 anydata x2 = x1.clone();
 
 // Checks deep equality. `eq`
