@@ -199,7 +199,7 @@ service /backend on serverPushBackendEP {
 //Test HTTP/2.0 Server Push scenario
 @test:Config {}
 function testPushPromise() {
-    var response = serverPushClient->get("/frontend");
+    http:Response|error response = serverPushClient->get("/frontend");
     if (response is http:Response) {
         test:assertEquals(response.statusCode, 200, msg = "Found unexpected output");
         test:assertEquals(checkpanic response.getHeader("content-type"), "application/json");

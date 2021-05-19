@@ -5,7 +5,7 @@ http:Client orderManagementClient = checkpanic new ("http://localhost:9117/order
 json responsePayload = {};
 
 public function findOrder(string orderId) returns (json) {
-    var response = orderManagementClient->get("/order/" + orderId);
+    http:Response|error response = orderManagementClient->get("/order/" + orderId);
 
     if (response is http:Response) {
         return handleResponse(response);
@@ -23,7 +23,7 @@ public function addOrder(json orderPayload) returns (json) {
         json foundOrder = findOrder(ID.toJsonString());
 
         if (foundOrder == {"Error": "Order : " + ID + " cannot be found."}) {
-            var response = orderManagementClient->post("/order", orderPayload);
+            http:Response|error response = orderManagementClient->post("/order", orderPayload);
             if (response is http:Response) {
                 return handleResponse(response);
             } else {
