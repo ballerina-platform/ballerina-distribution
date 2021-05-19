@@ -2,15 +2,15 @@ import ballerina/io;
 import ballerina/sql;
 import ballerinax/mysql;
 
-// The username and password of the MySQL database and database
-// name which is to be created to execute the sample.
+// The username and password of the MySQL database and the database
+// name, which is to be created to execute the sample.
 // You can change these based on your setup.
 string dbUser = "DB_USER_NAME";
 string dbPassword = "DB_PASSWORD";
 string dbName = "DB_NAME";
 
 public function main() returns error? {
-    io:println("\nCreating the prerequisites...!");
+    io:println("\nCreating the prerequisites...");
     // Initializes the client without any database to create the database.
     mysql:Client sqlClient = check new (user = dbUser, password = dbPassword);
 
@@ -22,7 +22,7 @@ public function main() returns error? {
 
     io:println("Creating necessary table and procedures...");
 
-    // Initializes the MySQL client with created database. If any error occurred,
+    // Initializes the MySQL client with the created database. If any error occurred,
     // the error will be returned.
     sqlClient = check new (user = dbUser,
             password = dbPassword, database = dbName);
@@ -36,7 +36,7 @@ public function main() returns error? {
 
     // Necessary stored procedures are created using the execute command.
 
-    // Creates `InsertStudent` stored procedure. If any error occurred,
+    // Creates the `InsertStudent` stored procedure. If any error occurred,
     // the error will be returned.
     result = check sqlClient->execute("CREATE PROCEDURE InsertStudent" +
         "(IN pName VARCHAR(255), IN pAge INT) " +
@@ -45,7 +45,7 @@ public function main() returns error? {
         "END");
     io:println("Stored procedure with IN param created.");
 
-    // Creates `GetCount` stored procedure. If any error occurred,
+    // Creates the `GetCount` stored procedure. If any error occurred,
     // the error will be returned.
     result = check sqlClient->execute("CREATE PROCEDURE GetCount" +
         "(INOUT pID INT, OUT totalCount INT) " +
@@ -55,13 +55,13 @@ public function main() returns error? {
         "END");
     io:println("Stored procedure with INOUT/OUT param created.");
 
-    // Creates `GetStudents` stored procedure. If any error occurred,
+    // Creates the `GetStudents` stored procedure. If any error occurred,
     // the error will be returned.
     result = check sqlClient->execute("CREATE PROCEDURE GetStudents() " +
         "BEGIN SELECT * FROM Student; END");
     io:println("Stored procedure with result set returned created.");
 
-    io:println("\nSetup successfully done!");
+    io:println("Setup successfully done!");
 
     // Closes the client.
     check sqlClient.close();

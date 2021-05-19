@@ -14,4 +14,4 @@ groupId = "mysql"
 bal run afterExample
 
 Starts to clean bbe tables...
-Dropped table successfully!
+Dropped the tables successfully!
