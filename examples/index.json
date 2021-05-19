@@ -684,6 +684,10 @@
                 "url": "file"
             },
             {
+                "name": "OS",
+                "url": "os"
+            },
+            {
                 "name": "Random",
                 "url": "random"
             },
@@ -875,8 +879,23 @@
                 "disablePlayground": true
             },
             {
-                "name": "Query Path Matrix Param",
-                "url": "query-path-matrix-param",
+                "name": "Default Resource",
+                "url": "http-default-resource",
+                "disablePlayground": true
+            },
+            {
+                "name": "Query Parameter",
+                "url": "http-query-parameter",
+                "disablePlayground": true
+            },
+            {
+                "name": "Path Matrix Param",
+                "url": "http-path-matrix-param",
+                "disablePlayground": true
+            },
+            {
+                "name": "Resource return types",
+                "url": "http-resource-returns",
                 "disablePlayground": true
             },
             {
@@ -895,13 +914,13 @@
                 "disablePlayground": true
             },
             {
-                "name": "Basic HTTPS Listener Client",
-                "url": "basic-https-listener-client",
+                "name": "HTTPS Client",
+                "url": "https-client",
                 "disablePlayground": true
             },
             {
                 "name": "Mutual SSL",
-                "url": "mutual-ssl",
+                "url": "https-mutual-ssl",
                 "disablePlayground": true
             },
             {
@@ -978,13 +997,23 @@
                 "disablePlayground": true
             },
             {
-                "name": "Resources with Record Values",
-                "url": "graphql-resources-with-record-values",
+                "name": "Returning Record Values",
+                "url": "graphql-returning-record-values",
                 "disablePlayground": true
             },
             {
-                "name": "Resources with Hierarchical Resource Paths",
+                "name": "Hierarchical Resource Paths",
                 "url": "graphql-hierarchical-resource-paths",
+                "disablePlayground": true
+            },
+            {
+                "name":"Returning Service Objects",
+                "url": "graphql-returning-service-objects",
+                "disablePlayground": true
+            },
+            {
+                "name":"Input Types",
+                "url": "graphql-input-types",
                 "disablePlayground": true
             }
         ]

@@ -7,4 +7,4 @@ bal run tcp_listener.bal
 bal run tcp_client.bal
 
 # Print the response that is obtained from the server.
-Recived: Hello Ballerina Echo from client
+Received: Hello Ballerina Echo from client

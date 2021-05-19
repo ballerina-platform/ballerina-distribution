@@ -647,11 +647,8 @@ task testExamples() {
             'http-caching-client',
             'http-data-binding',
             'http-1.1-to-2.0-protocol-switch',
-            'basic-https-listener-client',
-            'https-listener',
             'http-client-endpoint',
             'response-with-multiparts',
-            'mutual-ssl',
             'gauge-metrics',
             'counter-metrics',
             'tracing',
@@ -663,6 +660,8 @@ task testExamples() {
             'http-client-with-oauth2-client-credentials-grant-type',
             'http-client-with-oauth2-password-grant-type',
             'http-client-with-oauth2-refresh-token-grant-type',
+            'https-client',
+            'https-mutual-ssl',
 
             // Disabling due to pending migration for service typing
             'http-filters',
@@ -744,6 +743,7 @@ task testExamples() {
             'restrict-by-media-type',
             'http-cors',
             'http-client-data-binding',
+            'http-resource-returns', // Date header varies
             'websocket-basic-sample',
             'websocket-text-client',
             'websocket-binary-client',
@@ -772,7 +772,8 @@ task testExamples() {
             'receive-email-using-client',
             'receive-email-using-listener',
             'file-io',
-            'uuid',  // Output varies
+            'uuid',  // Output varies.
+            'os',  // Output varies.
     ]
 
     doFirst {

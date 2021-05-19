@@ -1,6 +1,0 @@
-# To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `bal run` command along with the Ballerina home path as a config.
-# (You may need to change the certificate file path, private key file path and
-# trusted certificate file path.)
-bal run ssl_client.bal
-time = 2021-01-21 21:47:42,768 level = INFO  module = "" message = "Successful"

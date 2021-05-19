@@ -1,0 +1,11 @@
+# As a prerequisite, navigate to the directory that contains the
+# `https_listener.bal` file and execute the `bal run` command below.
+# (You may need to change the certificate file path and private key file path.)
+bal run https_listener.bal
+
+# Before testing this sample, first start a sample HTTPS service.
+# To run this sample, navigate to the directory that contains the `.bal` file,
+# and execute the `bal run` command below.
+# (You may need to change the trusted certificate file path.)
+bal run https_client.bal
+time = 2021-01-20 20:04:13,261 level = INFO  module = "" message = "200"
