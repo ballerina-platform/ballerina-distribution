@@ -20,7 +20,7 @@ function testFunc() {
     });
 
     string response1 = "Successful";
-    var response = httpEndpoint->get("/hello");
+    http:Response|error response = httpEndpoint->get("/hello");
     if (response is http:Response) {
         test:assertEquals(response.getTextPayload(), response1);
     } else {

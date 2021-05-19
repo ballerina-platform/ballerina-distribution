@@ -27,23 +27,13 @@ function testFunc() returns @tainted error? {
     http:Request req = new;
     req.setJsonPayload(payload);
     // Send a GET request to the specified endpoint
-    var response = httpEndpoint->post("/cbr/route", req);
-    if (response is http:Response) {
-        var jsonRes = check response.getJsonPayload();
-        test:assertEquals(jsonRes.toJsonString(), response1.toJsonString());
-    } else {
-        test:assertFail(msg = "Failed to call the endpoint:");
-    }
+    json response = check httpEndpoint->post("/cbr/route", req);
+    test:assertEquals(response.toJsonString(), response1.toJsonString());
 
     http:Request req2 = new;
     req2.setJsonPayload(payload2);
     // Send a GET request to the specified endpoint
-    var respnc = httpEndpoint->post("/cbr/route", req2);
-    if (respnc is http:Response) {
-        var jsonRes = check respnc.getJsonPayload();
-        test:assertEquals(jsonRes.toJsonString(), response2.toJsonString());
-    } else {
-        test:assertFail(msg = "Failed to call the endpoint:");
-    }
+    json respnc = httpEndpoint->post("/cbr/route", req2);
+    test:assertEquals(respnc.toJsonString(), response2.toJsonString());
     return;
 }

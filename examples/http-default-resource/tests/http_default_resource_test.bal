@@ -7,7 +7,7 @@ function testFunc() returns @tainted error? {
     http:Client httpEndpoint = check new("http://localhost:9090");
 
     json payload = {"method":"GET","path":["foo","bar"]};
-    var response = httpEndpoint->get("/foo/bar", targetType = json);
+    http:Response|error response = httpEndpoint->get("/foo/bar", targetType = json);
     if (response is json) {
         test:assertEquals(response, payload);
     } else {
