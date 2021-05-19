@@ -919,7 +919,7 @@
                 "disablePlayground": true
             },
             {
-                "name": "HTTPS Mutual SSL",
+                "name": "Mutual SSL",
                 "url": "https-mutual-ssl",
                 "disablePlayground": true
             },
