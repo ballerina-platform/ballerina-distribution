@@ -65,7 +65,6 @@ public function main() returns error? {
 
     // Executes the stored procedure.
     retCall = check sqlClient->call("{CALL GetStudents()}", [Student]);
-    io:println("Call stored procedure `InsertStudent` is successful.");
 
     // Processes the returned result stream.
     stream<record{}, sql:Error>? result = retCall.queryResult;
