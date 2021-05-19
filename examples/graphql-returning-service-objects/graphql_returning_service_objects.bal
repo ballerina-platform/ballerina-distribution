@@ -11,7 +11,7 @@ service graphql:Service /graphql on new graphql:Listener(4000) {
     }
 }
 
-// Define a service class to use in GraphQL service
+// Define a service class to use in GraphQL service.
 service class Person {
     private string name;
     private int age;
@@ -21,7 +21,7 @@ service class Person {
         self.age = age;
     }
 
-    // Each resource function becomes a field in the `Person` type.
+    // Each resource function becomes a field of the `Person` type.
     isolated resource function get name() returns string {
         return self.name;
     }
