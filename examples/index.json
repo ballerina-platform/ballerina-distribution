@@ -997,13 +997,23 @@
                 "disablePlayground": true
             },
             {
-                "name": "Resources with Record Values",
-                "url": "graphql-resources-with-record-values",
+                "name": "Returning Record Values",
+                "url": "graphql-returning-record-values",
                 "disablePlayground": true
             },
             {
-                "name": "Resources with Hierarchical Resource Paths",
+                "name": "Hierarchical Resource Paths",
                 "url": "graphql-hierarchical-resource-paths",
+                "disablePlayground": true
+            },
+            {
+                "name":"Returning Service Objects",
+                "url": "graphql-returning-service-objects",
+                "disablePlayground": true
+            },
+            {
+                "name":"Input Types",
+                "url": "graphql-input-types",
                 "disablePlayground": true
             }
         ]
