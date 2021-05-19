@@ -1,5 +1,5 @@
 import ballerinax/kafka;
-import ballerina/log;
+import ballerina/io;
 
 kafka:ConsumerConfiguration consumerConfiguration = {
     groupId: "group-id",
@@ -21,6 +21,6 @@ public function main() returns error? {
         string message = check string:fromBytes(messageContent);
 
         // Prints the retrieved Kafka record.
-        log:printInfo("Received Message: " + message);
+        io:println("Received Message: " + message);
     }
 }
