@@ -20,7 +20,7 @@ service kafka:Service on kafkaListener {
     // to the subscribed topic/topics.
     remote function onConsumerRecord(kafka:Caller caller,
                         kafka:ConsumerRecord[] records) {
-        // The set of Kafka records received by the service is processed one
+        // The set of Kafka records received by the service are processed one
         // by one.
         foreach var kafkaRecord in records {
             processKafkaRecord(kafkaRecord);
