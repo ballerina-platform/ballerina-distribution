@@ -14,10 +14,9 @@ function testFunc() returns @tainted error? {
         test:assertFail(msg = "Failed to call the endpoint");
     }
 
-    string value = "Specific resource is invoked";
     response = httpEndpoint->get("/greeting", targetType = string);
     if (response is string) {
-        test:assertEquals(response, value);
+        test:assertEquals(response, "Specific resource is invoked");
     } else {
         test:assertFail(msg = "Failed to call the endpoint");
     }

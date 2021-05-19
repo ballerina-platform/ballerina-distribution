@@ -1,7 +1,7 @@
-Run the cURL command below with unmatched path and method.
+Run the cURL command below with the unmatched path and method.
 curl "http://localhost:9090/foo/bar" -X POST
 {"method":"POST", "path":["foo", "bar"]}
 
-Run the cURL command below to invoke greeting resource.
+Run the cURL command below to invoke the `greeting` resource.
 curl "http://localhost:9090/greeting"
 Specific resource is invoked
