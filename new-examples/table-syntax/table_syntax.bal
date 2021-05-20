@@ -13,7 +13,7 @@ table<Employee> key(name) t = table [
 ];
 
 function increaseSalary(int n) {
-    // Iterates over `t`'s rows in order.
+    // Iterates over the rows of `t` in the specified order.
     foreach Employee e in t {
         e.salary += n;
     }

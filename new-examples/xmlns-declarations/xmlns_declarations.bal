@@ -6,7 +6,7 @@ xml x = xml`<eg:doc>Hello</eg:doc>`;
 
 xmlns "http://example.com" as ex;
 
-// `b` will be true.
+// `b` will be `true`.
 boolean b = (x === x.<ex:doc>);
 
 // `exdoc` will be `{http://example.com}doc`.

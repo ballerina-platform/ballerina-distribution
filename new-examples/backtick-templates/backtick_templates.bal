@@ -3,7 +3,7 @@ import ballerina/io;
 public function main() {
     string name = "James";
 
-    // Concatenates `Hello, ` strings with `name` value.
+    // Concatenates `Hello, ` strings with the `name` value.
     string s1 = string`Hello, ${name}`;
     io:println(s1);
 
