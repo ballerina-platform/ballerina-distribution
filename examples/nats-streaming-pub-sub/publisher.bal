@@ -5,14 +5,12 @@ import ballerinax/stan;
 public function main() returns error? {
     string message = "Hello from Ballerina";
     stan:Client stanClient = check new(stan:DEFAULT_URL);
+
     // Produces a message to the specified subject.
-    string|stan:Error result =
-                    stanClient->publishMessage({
+    string result = check stanClient->publishMessage({
                                     content: <@untainted>message.toBytes(),
                                     subject: "demo"});
-    if (result is stan:Error) {
-        io:println("Error occurred while producing the message.");
-    } else {
-        io:println("GUID " + result + " received for the produced message.");
-    }
+    io:println("GUID " + result + " received for the produced message.");
+    // Closes client connection
+    check stanClient.close();
 }

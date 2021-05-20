@@ -1270,6 +1270,33 @@
         ]
     },
     {
+        "title": "NATS Streaming",
+        "column": 3,
+        "category": "Working over the network",
+        "samples": [
+            {
+                "name": "Publish/Subscribe",
+                "url": "nats-streaming-pub-sub",
+                "disablePlayground": true
+            },
+            {
+                "name": "Queue Groups",
+                "url": "nats-streaming-queue-group",
+                "disablePlayground": true
+            },
+            {
+                "name": "Durable Subscriptions",
+                "url": "nats-streaming-durable-subscriptions",
+                "disablePlayground": true
+            },
+            {
+                "name": "Historical Message Replay",
+                "url": "nats-streaming-start-position",
+                "disablePlayground": true
+            }
+        ]
+    },
+    {
         "title": "Kafka",
         "column": 3,
         "category": "Working over the network",
