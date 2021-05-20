@@ -12,10 +12,8 @@ http:Client backendClient = check new("http://localhost:9092");
 service /call on new http:Listener(9090) {
 
     resource function get all() returns http:Response|error {
-        // The `string` typedesc is being passed to the `get` [client remote function](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#get)
-        // as the `targetType` expecting the payload to be bound to a string value.
-        var result = backendClient->
-                        get("/backend/String", targetType = string);
+        // Binding the payload to a string type. The `targetType` is inferred from the LHS variable type.
+        string|error result = backendClient->get("/backend/String");
 
         // In this instance, The return type of the client remote action is `string` or `http:ClientError`.
         if (result is error) {
@@ -28,31 +26,27 @@ service /call on new http:Listener(9090) {
         }
 
         // Binding the payload to a JSON type. If an error returned, it will be responded back to the caller.
-        json jsonPayload = check backendClient->
-                        post("/backend/Json", "foo", targetType = json);
+        json jsonPayload = check backendClient->post("/backend/Json", "foo");
 
         log:printInfo("Json payload: " + jsonPayload.toJsonString());
 
         // Since only the `named types` or `built-in types` can be passed as function parameters,  `Map` or `Array`
         // types have to be defined beforehand. Here, the type `MapJson` is passed instead of `map<json>`.
         // Same can be done for `byte[]` or `Person[]` as well.
-        map<json> value = check backendClient->
-                        post("/backend/Json", "foo", targetType = MapJson);
+        map<json> value = check backendClient->post("/backend/Json", "foo");
         log:printInfo(check value.id);
 
         // A `record` and `record[]` are also possible types for data binding.
-        Person person = check backendClient->
-                            get("/backend/person", targetType = Person);
+        Person person = check backendClient->get("/backend/person");
         log:printInfo("Person name: " + person.name);
 
-        // When the complete response is expected, the default value of the `targetType` will be applied.
-        http:Response res =  check backendClient->get("/backend/Response");
+        // Still the `targetType` can be specified and use `var`.
+        var res =  check backendClient->get("/backend/Response", targetType = http:Response);
         return res;
     }
 
     resource function get '5xx() returns http:Response|json {
-        var res = backendClient->
-                        post("/backend/5XX", "want 500", targetType = json);
+        json|error res = backendClient->post("/backend/5XX", "want 500");
         // When the data binding is expected to happen and if the `post` remote function gets a 5XX response from the
         // backend, the response will be returned as an [http:RemoteServerError](https://docs.central.ballerina.io/ballerina/http/latest/errors#RemoteServerError)
         // including the error message and status code.
@@ -74,8 +68,7 @@ service /call on new http:Listener(9090) {
         // When the data binding is expected to happen and if the client remote function gets a 4XX response from the
         // backend, the response will be returned as an [http:ClientRequestError](https://docs.central.ballerina.io/ballerina/http/latest/errors#ClientRequestError)
         // including the error message and status code.
-        var res = backendClient->
-                        post("/backend/err", "want 400", targetType = json);
+        json|error res = backendClient->post("/backend/err", "want 400");
         if (res is error) {
             http:Response resp = new;
             if (res is http:ClientRequestError) {
