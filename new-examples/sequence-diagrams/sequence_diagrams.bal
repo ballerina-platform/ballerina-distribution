@@ -8,7 +8,7 @@ public function main() returns error? {
     // The diagram also has a lifeline for each client object parameter or variable in 
     // the initialization section, representing the remote system to which the client  
     // object is sending messages.
-    http:Client cl = check new ("http://www.mocky.io");
+    http:Client cl = check new ("https://www.mocky.io");
 
     // Each remote method call on a client object is represented as a horizontal line
     // between the lifeline of the worker making the call and the remote system.
