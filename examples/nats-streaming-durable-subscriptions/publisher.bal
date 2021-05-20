@@ -11,6 +11,6 @@ public function main() returns error? {
                                     content: <@untainted>message.toBytes(),
                                     subject: "demo"});
     io:println("GUID " + result + " received for the produced message.");
-    // Closes client connection
+    // Closes the client connection.
     check stanClient.close();
 }

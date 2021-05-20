@@ -16,8 +16,8 @@ service "demo.bbe" on subscription {
             log:printInfo("Received message: " + messageContent);
         }
 
-        // Sends the reply message to the replyTo subject
-        // of the message received.
+        // Sends the reply message to the `replyTo` subject
+        // of the received message.
         return "Hello Back!";
     }
 }
