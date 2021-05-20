@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: slbeta1-rc3
       - name: Set version env variable
         id: version-set
         run: |
@@ -45,10 +47,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
-          tag_name: "v${{ steps.version-set.outputs.version }}"
+          tag_name: "v${{ steps.version-set.outputs.version }}-rc3"
           release_name: ${{ steps.version-set.outputs.version }}
           draft: false
-          prerelease: false
+          prerelease: true
       - name: Upload zip artifacts
         uses: actions/upload-release-asset@v1
         env:
