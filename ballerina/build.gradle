@@ -709,7 +709,15 @@ task testExamples() {
             'mysql-call-stored-procedures',
             'local-transactions',
             'xa-transactions',
-            'retry-transactions'
+            'retry-transactions',
+
+            // Disabling since grpc tool not available to build
+            'grpc-simple',
+            'grpc-simple-with-headers',
+            'grpc-secured-simple',
+            'grpc-server-streaming',
+            'grpc-client-streaming',
+            'grpc-bidirectional-streaming'
     ]
 
     // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
