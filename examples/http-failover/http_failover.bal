@@ -22,7 +22,7 @@ service /fo on new http:Listener(9090) {
 
     resource function 'default .()
             returns http:Response|http:InternalServerError {
-        var backendResponse = foBackendEP->get("/");
+        http:Response|error backendResponse = foBackendEP->get("/");
 
         // If `backendResponse` is an `http:Response`, it is sent back to the
         // client. If `backendResponse` is an `http:ClientError`, an internal

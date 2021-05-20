@@ -21,7 +21,7 @@ service /lb on new http:Listener(9090) {
     resource function 'default .()
             returns http:Response|http:InternalServerError {
         json requestPayload = {"name": "Ballerina"};
-        var response = lbBackendEP->post("/", requestPayload);
+        http:Response|error response = lbBackendEP->post("/", requestPayload);
         // If a response is returned, the normal process runs. If the service
         // does not get the expected response, the error-handling logic is
         // executed.

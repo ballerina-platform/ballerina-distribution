@@ -7,7 +7,7 @@ function testFunc() returns @tainted error? {
     string expectedResponse = "Successful";
 
     // Send a GET request to the specified endpoint.
-    var response = httpEndpoint->get("/hello");
+    http:Response|error response = httpEndpoint->get("/hello");
     if (response is http:Response) {
         var res = check response.getTextPayload();
         test:assertEquals(res, expectedResponse);

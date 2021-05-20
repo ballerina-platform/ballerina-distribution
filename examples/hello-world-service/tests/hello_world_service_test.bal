@@ -11,7 +11,7 @@ function startService() {
     before: startService,
     after: stopService
 }
-function testFunc() {
+function testFunc() returns error? {
     // Invoking the main function
     http:Client httpEndpoint = checkpanic new("http://localhost:9090");
     // Check whether the server is started
@@ -20,12 +20,8 @@ function testFunc() {
     string response1 = "Hello, World!";
 
     // Send a GET request to the specified endpoint
-    var response = httpEndpoint->get("/greeting");
-    if (response is http:Response) {
-        test:assertEquals(response.getTextPayload(), response1);
-    } else {
-        test:assertFail(msg = "Failed to call the endpoint:");
-    }
+    string response = check httpEndpoint->get("/greeting");
+    test:assertEquals(response, response1);
 }
 
 function stopService() {

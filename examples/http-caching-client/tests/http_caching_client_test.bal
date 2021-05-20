@@ -5,7 +5,7 @@ import ballerina/http;
 function testCachingClient() {
     http:Client httpEndpoint = checkpanic new("http://localhost:9090");
 
-    var response = httpEndpoint->get("/cache");
+    http:Response|error response = httpEndpoint->get("/cache");
     if (response is http:Response) {
         test:assertEquals(response.getHeader("etag"), "620328e8");
         test:assertEquals(response.getHeader("cache-control"), "must-revalidate,public,max-age=15");

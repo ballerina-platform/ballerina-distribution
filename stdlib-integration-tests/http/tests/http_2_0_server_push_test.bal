@@ -32,7 +32,7 @@ service /frontend on serverPushFrontendEP {
         http:Request serviceReq = new;
         http:HttpFuture httpFuture = new;
         // Submit a request
-        var submissionResult = backendClientEP->submit("GET", "/backend/main", serviceReq);
+        http:HttpFuture|http:ClientError submissionResult = backendClientEP->submit("GET", "/backend/main", serviceReq);
         if (submissionResult is http:HttpFuture) {
             httpFuture = submissionResult;
         } else {
@@ -49,7 +49,7 @@ service /frontend on serverPushFrontendEP {
         while (hasPromise) {
             http:PushPromise pushPromise = new;
             // Get the next promise
-            var nextPromiseResult = backendClientEP->getNextPromise(httpFuture);
+            http:PushPromise|http:ClientError nextPromiseResult = backendClientEP->getNextPromise(httpFuture);
             if (nextPromiseResult is http:PushPromise) {
                 pushPromise = nextPromiseResult;
             } else {
@@ -75,7 +75,7 @@ service /frontend on serverPushFrontendEP {
 
         // Get the requested resource
         http:Response response = new;
-        var result = backendClientEP->getResponse(httpFuture);
+        http:Response|http:ClientError result = backendClientEP->getResponse(httpFuture);
         if (result is http:Response) {
             response = result;
         } else {
@@ -107,7 +107,7 @@ service /frontend on serverPushFrontendEP {
         foreach var p in promises {
             http:PushPromise promise = <http:PushPromise>p;
             http:Response promisedResponse = new;
-            var promisedResponseResult = backendClientEP->getPromisedResponse(promise);
+            http:Response|http:ClientError promisedResponseResult = backendClientEP->getPromisedResponse(promise);
             if (promisedResponseResult is http:Response) {
                 promisedResponse = promisedResponseResult;
             } else {
@@ -199,7 +199,7 @@ service /backend on serverPushBackendEP {
 //Test HTTP/2.0 Server Push scenario
 @test:Config {}
 function testPushPromise() {
-    var response = serverPushClient->get("/frontend");
+    http:Response|error response = serverPushClient->get("/frontend");
     if (response is http:Response) {
         test:assertEquals(response.statusCode, 200, msg = "Found unexpected output");
         test:assertEquals(checkpanic response.getHeader("content-type"), "application/json");

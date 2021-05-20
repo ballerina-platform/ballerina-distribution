@@ -36,7 +36,8 @@ service /'retry on new http:Listener(9090) {
     // request data.
     resource function 'default .(http:Caller caller, http:Request request) {
 
-        var backendResponse = backendClientEP->forward("/hello", request);
+        http:Response|error backendResponse =
+            backendClientEP->forward("/hello", request);
 
         // If `backendResponse` is an `http:Response`, it is sent back to the
         // client. If `backendResponse` is an `http:ClientError`, an internal
