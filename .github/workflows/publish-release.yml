@@ -38,7 +38,7 @@ jobs:
           packagePAT: ${{ secrets.BALLERINA_BOT_TOKEN }}
           devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
         run: |
-          ./gradlew build release -Prelease.useAutomaticVersion=true -Pversion=${VERSION}
+          ./gradlew release -Prelease.useAutomaticVersion=true -x test
       - name: Create release
         id: create_release
         uses: actions/create-release@v1
@@ -47,8 +47,8 @@ jobs:
         with:
           tag_name: "v${{ steps.version-set.outputs.version }}"
           release_name: ${{ steps.version-set.outputs.version }}
-          draft: false
-          prerelease: false
+          draft: true
+          prerelease: true
       - name: Upload zip artifacts
         uses: actions/upload-release-asset@v1
         env:

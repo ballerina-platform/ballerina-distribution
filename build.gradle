@@ -54,8 +54,7 @@ allprojects {
     }
 
     release {
-        // Workaround to fix build task not found issue in release plugin
-        buildTasks = []
+        buildTasks = ['build']
         failOnSnapshotDependencies = true
         failOnCommitNeeded = false
         versionPropertyFile = 'gradle.properties'
