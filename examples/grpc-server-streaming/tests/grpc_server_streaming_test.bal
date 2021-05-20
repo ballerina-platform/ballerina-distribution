@@ -1,65 +1,20 @@
-// This is the B7a test for the server streaming scenario.
-import ballerina/io;
-import ballerina/lang.runtime;
+// This is the Ballerina test for the server streaming scenario.
+import ballerina/grpc;
 import ballerina/test;
 
 // Client endpoint configuration.
-HelloWorldClient streamingEp = new("http://localhost:9090");
-boolean completed = false;
-string respError = "";
-string[] responseMsgs = [];
-int msgCount = 0;
+HelloWorldClient streamingEp = check new("http://localhost:9090");
 
 @test:Config
-function testServerStreamingService() {
-    // Execute the unary non-blocking call that registers the server message listener.
-    error? result = streamingEp->lotsOfReplies("Sam", messageListener);
-    if (result is error) {
-        test:assertFail(msg = "Error from Connector: " + result.reason() + " - " + <string> result.detail()["message"]);
-    } else {
-        io:println("Connected successfully");
-    }
+function testServerStreamingService() returns error? {
+    // Executes the streaming RPC call and gets the response as a stream.
+    stream<string, grpc:Error?> result = check ep->lotsOfReplies("Sam");
 
-    int waitCount = 0;
-    while(true) {
-        if (completed && (responseMsgs.length() == 3)) {
-            break;
-        }
-        io:println(responseMsgs);
-        runtime:sleep(1000);
-        if (waitCount > 10) {
-            break;
-        }
-        waitCount += 1;
-    }
-    test:assertEquals(completed, true, msg = "Incomplete response message.");
     string expectedMsg1 = "Hi Sam";
     string expectedMsg2 = "Hey Sam";
     string expectedMsg3 = "GM Sam";
-    foreach string msg in responseMsgs {
+    // Iterates through the stream and prints the content.
+    check result.forEach(function(string msg) {
         test:assertTrue(msg == expectedMsg1 || msg == expectedMsg2 || msg == expectedMsg3);
-    }
-    test:assertEquals(respError, "");
+    });
 }
-
-// Server Message Listener.
-service messageListener = service {
-
-    // Resource registered to receive server messages.
-    resource function onMessage(string message) {
-        responseMsgs[msgCount] = <@untainted> message;
-        msgCount = msgCount + 1;
-    }
-
-    // Resource registered to receive server error messages.
-    resource function onError(error err) {
-        respError = "Error from Connector: " + <@untainted> err.reason() + " - " + <@untainted> <string>err.detail().message;
-    }
-
-    // Resource registered to receive server completed messages.
-    resource function onComplete() {
-        test:assertTrue(true);
-        io:println("Server Complete Sending Response.");
-        completed = true;
-    }
-};

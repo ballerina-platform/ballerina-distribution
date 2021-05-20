@@ -1,25 +1,21 @@
 import ballerina/http;
 
-// An HTTP endpoint can be configured to communicate through HTTPS as well.
-// To secure an endpoint using HTTPS, the endpoint needs to be configured with
-// a certificate file and a private key file for the endpoint.
-// The [secureSocket](https://docs.central.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket) record provides the SSL-related listener configurations.
-http:ListenerConfiguration helloWorldEPConfig = {
-    secureSocket: {
+// An HTTP listener can be configured to communicate through HTTPS as well.
+// To secure an listener using HTTPS, the listener needs to be configured with
+// a certificate file and a private key file for the listener.
+// The [http:ListenerSecureSocket](https://docs.central.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket) record
+// provides the SSL-related listener configurations of the listener.
+listener http:Listener securedEP = new(9090,
+    secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
             keyFile: "../resource/path/to/private.key"
         }
     }
-};
+);
 
-// Create a listener endpoint.
-listener http:Listener helloWorldEP = new (9095, helloWorldEPConfig);
-
-service /hello on helloWorldEP {
-
-    resource function get .() returns string {
-        // Send the response with a string payload back to the caller.
-        return "Hello World!";
+service /foo on securedEP {
+    resource function get bar() returns string {
+        return "Hello, World!";
     }
 }

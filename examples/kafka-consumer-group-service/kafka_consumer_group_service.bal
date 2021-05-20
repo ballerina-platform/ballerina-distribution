@@ -2,15 +2,14 @@ import ballerinax/kafka;
 import ballerina/log;
 
 kafka:ConsumerConfiguration consumerConfigs = {
-    // Using two concurrent consumers to work as a group.
+    // Uses two concurrent consumers to work as a group.
     concurrentConsumers: 2,
 
     groupId: "group-id",
-    // Subscribes to the topic `test-kafka-topic`.
+    // Subscribes to the `test-kafka-topic`.
     topics: ["test-kafka-topic"],
 
     pollingInterval: 1
-
 };
 
 listener kafka:Listener kafkaListener =
@@ -21,24 +20,19 @@ service kafka:Service on kafkaListener {
     // to the subscribed topic/topics.
     remote function onConsumerRecord(kafka:Caller caller,
                         kafka:ConsumerRecord[] records) {
-        // The set of Kafka records dispatched to the service are processed one
+        // The set of Kafka records received by the service are processed one
         // by one.
         foreach var kafkaRecord in records {
             processKafkaRecord(kafkaRecord);
         }
-
     }
 }
 
 function processKafkaRecord(kafka:ConsumerRecord kafkaRecord) {
     byte[] messageContent = kafkaRecord.value;
-    string|error message = string:fromBytes(messageContent);
-    if (message is string) {
-        // Prints the retrieved message.
-        log:printInfo(" Received Message: " + message);
+    // Converts the `byte[]` to a `string`.
+    string message = check string:fromBytes(messageContent);
 
-    } else {
-        log:printError("Error occurred while retrieving message data;" +
-            "Unexpected type");
-    }
+    // Prints the retrieved message.
+    log:printInfo("Received Message: " + message);
 }

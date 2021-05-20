@@ -7,9 +7,7 @@ kafka:ConsumerConfiguration consumerConfigs = {
     topics: ["test-kafka-topic"],
 
     pollingInterval: 1,
-
-    // Set `autoCommit` to false, so that the records should be committed
-    // manually.
+    // Sets the `autoCommit` to `false` so that the records should be committed manually.
     autoCommit: false
 };
 
@@ -19,15 +17,15 @@ listener kafka:Listener kafkaListener =
 service kafka:Service on kafkaListener {
     remote function onConsumerRecord(kafka:Caller caller,
                                 kafka:ConsumerRecord[] records) {
-        // The set of Kafka records dispatched to the service are processed one
-        // by one.
+        // The set of Kafka records received by the service are processed one by one.
         foreach var kafkaRecord in records {
             processKafkaRecord(kafkaRecord);
         }
-        // Commit offsets for returned records by marking them as consumed.
+
+        // Commits offsets of the returned records by marking them as consumed.
         kafka:Error? commitResult = caller->commit();
 
-        if (commitResult is error) {
+        if commitResult is error {
             log:printError("Error occurred while committing the " +
                 "offsets for the consumer ", 'error = commitResult);
         }
@@ -35,13 +33,11 @@ service kafka:Service on kafkaListener {
 }
 
 function processKafkaRecord(kafka:ConsumerRecord kafkaRecord) {
-    byte[] value = kafkaRecord.value;
-    // The value should be a `byte[]`, since the byte[] deserializer is used
+    // The value should be a `byte[]` since the byte[] deserializer is used
     // for the value.
-    string|error messageContent = string:fromBytes(value);
-    if (messageContent is string) {
-        log:printInfo("Value: " + messageContent);
-    } else {
-        log:printError("Invalid value type received");
-    }
+    byte[] value = kafkaRecord.value;
+
+    // Converts the `byte[]` to a `string`.
+    string messageContent = check string:fromBytes(value);
+    log:printInfo("Received Message: " + messageContent);
 }

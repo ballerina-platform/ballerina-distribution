@@ -1,0 +1,2 @@
+description: BBE on how to use the `rest-param`, `default` accessor(HTTP verb) in Ballerina to dispatch and constrain the service in a RESTful manner.
+keywords: ballerina, ballerina by example, bbe, http service, path, verb

@@ -1,0 +1,2 @@
+description: This Ballerina by Example has a gRPC simple service and a simple client. The client sends and receives messages in a secured connection.
+keywords: ballerina, ballerina by example, bbe, grpc, simple, secure connection, tls
