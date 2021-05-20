@@ -1,0 +1,4 @@
+// Ballerina provides support for interacting with a transaction manager.
+// Ballerina does not have a transactional memory.
+// Ballerina runtime includes transaction manager.
+// Current transaction is a part of the execution context of a strand.
