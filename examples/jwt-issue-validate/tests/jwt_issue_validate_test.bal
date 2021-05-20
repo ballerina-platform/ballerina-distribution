@@ -16,8 +16,9 @@ public function mockPrint(any... val) {
 @test:Config {}
 function testFunc() {
     test:when(mock_printLn).call("mockPrint");
-    // Invoking the main function
-    var ret = main();
+
+    // Invokes the main function.
+    error? ret = main();
     test:assertEquals(outputs.length(), 3);
     test:assertTrue(outputs[0].includes("Issued JWT: eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QiLCAia2" +
         "lkIjoiTlRBeFptTXhORE15WkRnM01UVTFaR00wTXpFek9ESmhaV0k0TkRObFpEVTFPR0ZrTmpGaU1RIn0."));

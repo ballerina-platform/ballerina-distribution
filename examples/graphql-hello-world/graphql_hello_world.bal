@@ -1,7 +1,7 @@
 import ballerina/graphql;
 
 // The `graphql:Service` exposes a GraphQL service on the provided port.
-service graphql:Service /graphql on new graphql:Listener(9090) {
+service graphql:Service /graphql on new graphql:Listener(4000) {
 
     // A resource function inside a `graphql:Service` represents a resolver.
     // This resource can be queried using the `{ greeting }`.

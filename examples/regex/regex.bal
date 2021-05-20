@@ -20,7 +20,7 @@ public function main() {
     new_string = regex:replaceFirst("ReplacethisthisTextThis", "this", " ");
     io:println("String after replacing first Match: ", new_string);
 
-    // Retrieve an array of strings by splitting a string using the provided
+    // Retrieves an array of strings by splitting a string using the provided
     // delimiter.
     string[] names = regex:split("amal, kamal, nimal, sunimal", ",");
     io:println("No of names: ", names.length());

@@ -1,21 +1,24 @@
-// This is the client implementation for the client streaming scenario.
+// This is the client implementation of the client streaming scenario.
 import ballerina/io;
 
-// The client endpoint configuration.
+// Creates a gRPC client to interact with the remote server.
 HelloWorldClient ep = check new("http://localhost:9090");
 
 public function main () returns error? {
-    string[] requests = ["Hi Sam", "Hey Sam", "GM Sam"];
-    // Execute the client-streaming RPC call and receive the streaming client.
+    // Executes the client-streaming RPC call and receives the streaming client.
     LotsOfGreetingsStreamingClient streamingClient = check
     ep->lotsOfGreetings();
-    // Send multiple messages to the server.
+
+    // Sends multiple messages to the server.
+    string[] requests = ["Hi Sam", "Hey Sam", "GM Sam"];
     foreach var greet in requests {
-        check streamingClient->sendstring(greet);
+        check streamingClient->sendString(greet);
     }
+
     // Once all the messages are sent, the server notifies the caller with a `complete` message.
     check streamingClient->complete();
-    io:println("Completed successfully");
+
+    // Receives the server response.
     string? response = check streamingClient->receiveString();
     io:println(response);
 

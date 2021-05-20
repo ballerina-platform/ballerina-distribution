@@ -1,0 +1,6 @@
+# To run this sample, navigate to the directory that contains the `.bal` file,
+# and execute the `bal run` command below.
+# (You may need to change the certificate file path, private key file path and
+# trusted certificate file path.)
+bal run https_mutual_ssl_client.bal
+time = 2021-01-20 20:04:13,261 level = INFO  module = "" message = "200"

@@ -3,4 +3,4 @@
 # Since Ballerina GraphQL runs on a Ballerina HTTP listener, an `http:Listener`
 # log will be printed.
 bal run graphql_hierarchical_resource_paths.bal
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+[ballerina/http] started HTTP/WS listener 0.0.0.0:4000

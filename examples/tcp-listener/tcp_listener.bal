@@ -5,9 +5,10 @@ import ballerina/tcp;
 // Bind the service to the port. 
 service on new tcp:Listener(3000) {
 
-    // This remote method is invoked when the new client joins the server.
-    remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService {
-        io:println("Client connected to echoServer: ", caller.remotePort);
+    // This remote method is invoked when the new client connects to the server.
+    remote function onConnect(tcp:Caller caller)
+                              returns tcp:ConnectionService {
+        io:println("Client connected to echo server: ", caller.remotePort);
         return new EchoService();
     }
 }
@@ -18,12 +19,12 @@ service class EchoService {
     remote function onBytes(tcp:Caller caller, readonly & byte[] data) 
         returns tcp:Error? {
         io:println("Echo: ", string:fromBytes(data));
-        // Echo back the data to the same client which the data received from.
+        // Echoes back the data to the client from which the data is received.
         check caller->writeBytes(data);
     }
 
-    // This remote method is invoked in an error situation
-    // if it happens during the `onConnect` and `onBytes` methods.
+    // This remote method is invoked in an erroneous situation,
+    // which occurs during the execution of the `onConnect` or `onBytes` method.
     remote function onError(tcp:Error err) returns tcp:Error? {
         log:printError("An error occurred", 'error = err);
     }

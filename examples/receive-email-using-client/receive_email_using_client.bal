@@ -2,13 +2,13 @@ import ballerina/email;
 import ballerina/io;
 
 public function main() returns error? {
-    // Create the client with the connection parameters, host, username, and
+    // Creates the client with the connection parameters, host, username, and
     // password. An error is returned in a failure. The default port number
     // `995` is used over SSL with these configurations.
     email:PopClient popClient = check new ("pop.email.com", "reader@email.com",
         "pass456");
 
-    // Read the first unseen email received by the POP3 server. `()` is
+    // Reads the first unseen email received by the POP3 server. `()` is
     // returned when there are no new unseen emails. In error cases, an
     // error is returned.
     email:Message? emailResponse = check popClient->receiveMessage();
@@ -22,16 +22,16 @@ public function main() returns error? {
         io:println("There are no emails in the INBOX.");
     }
 
-    // Closes the POP3 store which would close the TCP connection.
+    // Closes the POP3 store, which would close the TCP connection.
     email:Error? closeStatus = popClient->close();
 
-    // Create the client with the connection parameters, host, username, and
+    // Creates the client with the connection parameters, host, username, and
     // password. An error is received in a failure. The default port number
     // `993` is used over SSL with these configurations.
     email:ImapClient imapClient = check new ("imap.email.com",
         "reader@email.com", "pass456");
 
-    // Read the first unseen email received by the IMAP4 server. `()` is
+    // Reads the first unseen email received by the IMAP4 server. `()` is
     // returned when there are no new unseen emails. In error cases, an
     // error is returned.
     emailResponse = check imapClient->receiveMessage();

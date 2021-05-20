@@ -1,18 +1,29 @@
 import ballerina/graphql;
 
 // This service has multiple resources with hierarchical resource paths.
-// There are two resources under the `profile` path. Therefore, a type named
-// `profile`, which has two fields (`quote`, and `name`) will be created when the
-// GraphQL schema is generated for this service.
-service graphql:Service /graphql on new graphql:Listener(9090) {
+// The root operation has a field named `profile` and it is the first segment
+// of the hierarchical path in this service. The type of this field will also
+// be `profile`. (For hierarchical paths, the field name and the type name will
+// be the same). The `profile` type has two fields: `quote` and `name`. The
+// type of the `quote` field is `String` and the type of the `name` field is
+// `name`. The `name` type has two fields:`first` and the `last`. Both of the
+// fields are of type `String`.
+service graphql:Service /graphql on new graphql:Listener(4000) {
 
-    // This resource provides a quote for the provided ID.
+    // This resource represents the `quote` field under the `profile` object.
     resource function get profile/quote() returns string {
         return "I am the one who knocks!";
     }
 
-    // This resource returns the name for the provided ID.
-    resource function get profile/name() returns string {
-        return "Walter White";
+    // This resource represents the `first` field under the `name` object type.
+    // The `name` field in the `profile` object is of type `name`.
+    resource function get profile/name/first() returns string {
+        return "Walter";
+    }
+
+    // This resource represents the `last` field under the `name` object type.
+    // The `name` field in the `profile` object is of type `name`.
+    resource function get profile/name/last() returns string {
+        return "White";
     }
 }
