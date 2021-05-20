@@ -1,0 +1,4 @@
+bal run strands.bal
+In worker B
+In function worker
+In worker A
