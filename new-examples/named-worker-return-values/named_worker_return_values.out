@@ -1,0 +1,5 @@
+bal run named_worker_return_values.bal
+In function worker
+52
+In function worker
+error: {ballerina/lang.int}NumberParsingError {"message":"'string' value '50m' cannot be converted to 'int'"}
