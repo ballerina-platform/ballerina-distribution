@@ -8,4 +8,4 @@ bal run rabbitmq_consumer.bal
 # The RabbitMQ consumer runs as a Ballerina service and listens to the subscribed queue.
 
 [ballerinax/rabbitmq] Consumer service started for queue MyQueue
-time = 2021-01-18 14:49:16,472 level = INFO  module = "" message = "The message received: Hello from Ballerina"
+time = 2021-05-20T14:49:11.011+05:30 level = INFO module = "" message = "Received message: Hello from Ballerina"

@@ -14,11 +14,8 @@ listener rabbitmq:Listener channelListener =
 service rabbitmq:Service on channelListener {
     remote function onMessage(rabbitmq:Message message) {
         string|error messageContent = string:fromBytes(message.content);
-        if (messageContent is string) {
-            log:printInfo("The message received: " + messageContent);
-        } else {
-            log:printError(
-                        "Error occurred while retrieving the message content.");
+        if messageContent is string {
+            log:printInfo("Received message: " + messageContent);
         }
     }
 }
