@@ -78,7 +78,7 @@ public class DistributionArtifactCheckTest {
                 .resolve("cache")
                 .resolve("ballerinax")
                 .resolve("awslambda")
-                .resolve("0.0.0");
+                .resolve("1.0.0");
 
         Path breLibPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
