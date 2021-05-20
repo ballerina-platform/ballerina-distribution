@@ -74,7 +74,7 @@ public function testJwtModule() {
             token: JWT
         }
     });
-    var response = clientEP->get("/foo/bar");
+    http:Response|http:ClientError response = clientEP->get("/foo/bar");
     if (response is http:Response) {
         assertOK(response);
     } else {
