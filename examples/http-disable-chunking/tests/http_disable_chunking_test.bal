@@ -11,7 +11,7 @@ function testFunc() {
     json response1 = { "Outbound request content": "Length-20" };
 
     // Sending a GET request to the specified endpoint.
-    var response = httpEndpoint->get("/chunkingSample");
+    http:Response|error response = httpEndpoint->get("/chunkingSample");
     if (response is http:Response) {
         test:assertEquals(response.getJsonPayload(), response1);
     } else {
