@@ -12,7 +12,7 @@ public function case1() {
     // Here, the `wait` action causes the current strand to yield.
     // Once it yields, the Ballerina runtime executes the new strand.
     io:println("Before the wait action");
-    int result = wait f1;
+    int|error result = wait f1;
     io:println("After the wait action\n");
 }
 
@@ -25,7 +25,7 @@ public function case2() {
     future<int> f1 = @strand {thread: "any"} start multiply(1, 2);
 
     io:println("Before the wait action");
-    int result = wait f1;
+    int|error result = wait f1;
     io:println("After the wait action\n");
 }
 
@@ -36,7 +36,7 @@ public function case3() {
     future<int> f2 = @strand {thread: "any"} start multiply(4, 5);
 
     io:println("Before the wait action");
-    map<int> results = wait {f1, f2};
+    map<int|error> results = wait {f1, f2};
     io:println("After the wait action\n");
 }
 
@@ -48,7 +48,7 @@ public function case4() {
     future<int> f2 = start multiply(4, 5);
 
     io:println("Before the wait action");
-    map<int> results = wait {f1, f2};
+    map<int|error> results = wait {f1, f2};
     io:println("After the wait action\n");
 }
 
@@ -59,7 +59,7 @@ public function case5() {
     future<int> f2 = start multiply(4, 5);
 
     io:println("Before the wait action");
-    map<int> results = wait {f1, f2};
+    map<int|error> results = wait {f1, f2};
     io:println("After the wait action\n");
 }
 

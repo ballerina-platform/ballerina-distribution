@@ -21,7 +21,7 @@ public function main() returns error? {
     future<int> f5 = start calculate("5*4*3*2*1");
     // Wait for all the given futures to complete. The result of the `wait` action can be assigned to a map or a record. 
     record { int|error r1; int|error r2; } result2 = wait {r1: f4, r2: f5};
-    io:println("9! = ", result2.r1 * result2.r2);
+    io:println("9! = ", check result2.r1 * check result2.r2);
 }
 
 function calculate(string expr) returns int {
