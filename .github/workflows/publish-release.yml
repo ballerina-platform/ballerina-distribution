@@ -38,7 +38,8 @@ jobs:
           packagePAT: ${{ secrets.BALLERINA_BOT_TOKEN }}
           devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
         run: |
-          ./gradlew build release -Prelease.useAutomaticVersion=true -Pversion=${VERSION}
+          ./gradlew build -Pversion=${VERSION}
+          ./gradlew release -Prelease.useAutomaticVersion=true -x test
       - name: Create release
         id: create_release
         uses: actions/create-release@v1
