@@ -41,7 +41,8 @@ service /call on new http:Listener(9090) {
         log:printInfo("Person name: " + person.name);
 
         // Still the `targetType` can be specified and use `var`.
-        var res =  check backendClient->get("/backend/Response", targetType = http:Response);
+        var res =  check backendClient->get("/backend/Response",
+                                                targetType = http:Response);
         return res;
     }
 
