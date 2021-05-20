@@ -54,7 +54,7 @@ allprojects {
     }
 
     release {
-        buildTasks = ['build']
+        buildTasks = []
         failOnSnapshotDependencies = true
         failOnCommitNeeded = false
         versionPropertyFile = 'gradle.properties'
