@@ -1,0 +1,2 @@
+bal run inferring_isolated.bal
+true
