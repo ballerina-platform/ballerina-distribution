@@ -14,13 +14,11 @@ service /transactionConsumer on
     remote function onMessage(rabbitmq:Message message,
                                 rabbitmq:Caller caller) {
 
-        var messageContent = 'string:fromBytes(message.content);
-        if (messageContent is string) {
+        string|error messageContent = 'string:fromBytes(message.content);
+        if messageContent is string {
             log:printInfo("The message received: " + messageContent);
-        } else {
-            log:printError(
-                       "Error occurred while retrieving the message content.");
         }
+
         // Acknowledges a single message positively.
         // The acknowledgement gets committed upon successful execution of the transaction,
         // or will rollback otherwise.
