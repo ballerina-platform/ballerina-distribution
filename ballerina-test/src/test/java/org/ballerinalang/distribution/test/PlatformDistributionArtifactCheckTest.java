@@ -109,7 +109,7 @@ public class PlatformDistributionArtifactCheckTest {
                 .resolve("cache")
                 .resolve("ballerinax")
                 .resolve("awslambda")
-                .resolve("0.0.0");
+                .resolve("1.0.0");
 
         Path breLibPath = distributionsPath
                 .resolve(jballerinaFileName)

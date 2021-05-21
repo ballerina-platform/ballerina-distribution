@@ -7,7 +7,7 @@ function testFunc() {
     http:Client httpEndpoint = checkpanic new("http://localhost:9090");
 
     // Send a GET request to the specified endpoint
-    var response = httpEndpoint->get("/fo");
+    http:Response|error response = httpEndpoint->get("/fo");
     if (response is http:Response) {
         var result = response.getTextPayload();
         if (result is string) {

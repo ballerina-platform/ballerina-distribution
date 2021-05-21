@@ -25,7 +25,7 @@ service http:Service /passthrough on passthroughEP1 {
 
     resource function get .(http:Caller caller, http:Request clientRequest) {
         http:Client nyseEP1 = checkpanic new("http://localhost:9113");
-        var response = nyseEP1->get("/nyseStock/stocks");
+        http:Response|error response = nyseEP1->get("/nyseStock/stocks");
         if (response is http:Response) {
             checkpanic caller->respond(<@untainted> response);
         } else {
@@ -35,7 +35,7 @@ service http:Service /passthrough on passthroughEP1 {
 
     resource function post forwardMultipart(http:Caller caller, http:Request clientRequest) {
         http:Client nyseEP1 = checkpanic new("http://localhost:9113");
-        var response = nyseEP1->forward("/nyseStock/stocksAsMultiparts", clientRequest);
+        http:Response|error response = nyseEP1->forward("/nyseStock/stocksAsMultiparts", clientRequest);
         if (response is http:Response) {
             checkpanic caller->respond(<@untainted> response);
         } else {
@@ -45,7 +45,7 @@ service http:Service /passthrough on passthroughEP1 {
 
     resource function post forward(http:Request clientRequest) returns @tainted http:Ok|http:InternalServerError {
         http:Client nyseEP1 = checkpanic new("http://localhost:9113");
-        var response = nyseEP1->forward("/nyseStock/entityCheck", clientRequest);
+        http:Response|error response = nyseEP1->forward("/nyseStock/entityCheck", clientRequest);
         if (response is http:Response) {
             var entity = response.getEntity();
             if (entity is mime:Entity) {
@@ -107,7 +107,7 @@ service http:Service /nyseStock on passthroughEP1 {
 @test:Config {}
 public function testPassthroughServiceByBasePath() {
     http:Client httpClient = checkpanic new("http://localhost:9113");
-    var resp = httpClient->get("/passthrough");
+    http:Response|error resp = httpClient->get("/passthrough");
     if (resp is http:Response) {
         string contentType = checkpanic resp.getHeader("content-type");
         test:assertEquals(contentType, "application/json");
@@ -125,7 +125,7 @@ public function testPassthroughServiceByBasePath() {
 @test:Config {}
 public function testPassthroughServiceWithMimeEntity() {
     http:Client httpClient = checkpanic new("http://localhost:9113");
-    var resp = httpClient->post("/passthrough/forward", "Hello from POST!");
+    http:Response|error resp = httpClient->post("/passthrough/forward", "Hello from POST!");
     if (resp is http:Response) {
         string contentType = checkpanic resp.getHeader("content-type");
         test:assertEquals(contentType, "text/plain");
@@ -154,7 +154,7 @@ public function testPassthroughWithMultiparts() {
     mime:Entity[] bodyParts = [textPart1, textPart2];
     http:Request request = new;
     request.setBodyParts(bodyParts, contentType = mime:MULTIPART_FORM_DATA);
-    var resp = httpClient->post("/passthrough/forwardMultipart", request);
+    http:Response|error resp = httpClient->post("/passthrough/forwardMultipart", request);
     if (resp is http:Response) {
         string contentType = checkpanic resp.getHeader("content-type");
         test:assertTrue(strings:includes(contentType, "multipart/form-data"));
