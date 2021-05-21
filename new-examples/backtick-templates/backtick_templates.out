@@ -1,0 +1,3 @@
+bal run backtick_templates.bal
+Hello, James
+Backtick:`

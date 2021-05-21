@@ -1,0 +1,3 @@
+bal run controlling_openness.bal
+{"x":1.0,"y":2.0}
+{"from":"Jane","to":"John"}
