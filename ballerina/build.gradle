@@ -769,10 +769,6 @@ task testExamples() {
             'locks', // Output is inconsistent between runs
             'crypto', // Output with line breaks cannot be compared
             'jwt-issue-validate', // Output depends on time
-            'http-service-with-basic-auth-file-user-store', // Log output depends on time
-            'http-service-with-basic-auth-ldap-user-store', // Log output depends on time
-            'http-service-with-jwt-auth', // Log output depends on time
-            'http-service-with-oauth2', // Log output depends on time
             'send-email',
             'receive-email-using-client',
             'receive-email-using-listener',
@@ -912,10 +908,14 @@ task testExamples() {
                 }
             } else if (content.name.contains("server.out") || content.name.contains("service.out")) {
                 fileReference = file(content)
-                String portPrefix = "[ballerina/http] started HTTP/WS listener 0.0.0.0:"
+                String portPrefixHttp = "[ballerina/http] started HTTP/WS listener 0.0.0.0:"
+                String portPrefixHttps = "[ballerina/http] started HTTPS/WSS listener 0.0.0.0:"
                 fileReference.readLines().each { lines ->
-                    if (lines.contains(portPrefix)) {
-                        lines = (lines - portPrefix).trim()
+                    if (lines.contains(portPrefixHttp)) {
+                        lines = (lines - portPrefixHttp).trim()
+                        ports.add(lines)
+                    } else if (lines.contains(portPrefixHttps)) {
+                        lines = (lines - portPrefixHttps).trim()
                         ports.add(lines)
                     }
                 }
