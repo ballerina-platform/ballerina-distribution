@@ -1,8 +1,7 @@
 import ballerina/io;
 
 public function main() {
-    // Named workers, which run concurrently with the
-    // function's default worker and other named workers.
+    // function's default worker, worker `A` and `B` run concurrently.
     worker A {
         // It is safe to access the parameters of `sayHello` for the
         // duration of the function call.
