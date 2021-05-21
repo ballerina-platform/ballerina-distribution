@@ -1,0 +1,3 @@
+bal run open_records.bal
+{"name":"James","id":10}
+{"name":"John","country":"UK"}
