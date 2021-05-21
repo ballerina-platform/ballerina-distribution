@@ -1,13 +1,12 @@
-// This demonstrates different ways to mock a client object.
 import ballerina/http;
 import ballerina/io;
 import ballerina/email;
 
-// Clients objects are defined globally to be able to replace in test files.
+// Clients objects are defined globally to be able to replace in tests.
 http:Client clientEndpoint = check new("http://postman-echo.com");
 email:SmtpClient smtpClient = check new("localhost", "admin", "admin");
 
-// This function performs two `GET` requests to the specified
+// Performs two `GET` requests to the specified
 // endpoint and returns the response.
 function performGet() returns @tainted http:Response {
     io:println("Executing the 1st GET request");
@@ -25,7 +24,7 @@ function performGet() returns @tainted http:Response {
     return response;
 }
 
-// This function sends out an email to the specified email addresses
+// Sends an email to the specified email addresses
 // and returns an error if found.
 function sendNotification(string[] emailIds) returns error? {
     email:Message msg = {
@@ -34,9 +33,5 @@ function sendNotification(string[] emailIds) returns error? {
         to: emailIds,
         body: ""
     };
-    email:Error? response = smtpClient -> sendMessage(msg);
-    if (response is error) {
-        io:println("error while sending the email: ", response.message());
-        return response;
-    }
+    return smtpClient -> sendMessage(msg);
 }

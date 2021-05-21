@@ -1,12 +1,14 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina test` command below.
-# You need to have the ballerina-tools distribution
-# installed to execute this command.
-bal test --groups g1 --groups g2 testerina_group_tests.bal
-Compiling tests
+
+# Run tests belonging to the groups g1 and g2
+bal test --groups g1,g2 testerina_group_tests.bal
+
+Compiling source
     testerina_group_tests.bal
 
 Running tests
+
     testerina_group_tests.bal
 I'm in test belonging to group g1!
 I'm in test belonging to groups g1 and g2!
@@ -18,11 +20,14 @@ I'm in test belonging to groups g1 and g2!
         0 failing
         0 skipped
 
-ballerina test --groups g1 testerina_group_tests.bal 
-Compiling tests
+# Run tests belonging to the group g1
+bal test --groups g1 testerina_group_tests.bal
+
+Compiling source
     testerina_group_tests.bal
 
 Running tests
+
     testerina_group_tests.bal
 I'm in test belonging to group g1!
 I'm in test belonging to groups g1 and g2!
@@ -34,11 +39,14 @@ I'm in test belonging to groups g1 and g2!
         0 failing
         0 skipped
 
-ballerina test --disable-groups g2 testerina_group_tests.bal 
-Compiling tests
+# Run all tests other than the tests belonging to the group g2
+bal test --disable-groups g2 testerina_group_tests.bal
+
+Compiling source
     testerina_group_tests.bal
 
 Running tests
+
     testerina_group_tests.bal
 I'm in test belonging to group g1!
 I'm the ungrouped test

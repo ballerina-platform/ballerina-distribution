@@ -2,27 +2,26 @@
 import ballerina/test;
 import ballerina/io;
 
-// This creates an object for stubbing calls to `intAdd`
-// which is written in the same module.
+// Creates a `MockFunction` for stubbing calls to
+// the function `intAdd` in the same module.
 @test:Mock { functionName: "intAdd" }
 test:MockFunction intAddMockFn = new();
 
 @test:Config {}
 function testReturn() {
-    // This stubs the calls to `intAdd` function to return the specified value.
+    // Stubs the calls to return a specific value.
     test:when(intAddMockFn).thenReturn(20);
-
-    // This stubs the calls to `intAdd` function to return the specified value
-    // when the specified arguments are provided.
+    // Stubs the calls to return a specific value when
+    // specific arguments are provided.
     test:when(intAddMockFn).withArguments(0, 0).thenReturn(-1);
 
     test:assertEquals(intAdd(10, 6), 20, msg = "function mocking failed");
     test:assertEquals(intAdd(0, 0), -1,
-        msg = "function mocking with arguments failed");
+            msg = "function mocking with arguments failed");
 }
 
-// This specifies a mock function that should replace the
-// imported function `println`.
+// Creates a `MockFunction` that should replace the
+// imported function `io:println`.
 @test:Mock {
     moduleName: "ballerina/io",
     functionName: "println"
@@ -31,15 +30,15 @@ test:MockFunction printlnMockFn = new();
 
 int tally = 0;
 
-// This is a function that can be called in place of the `io:println` function.
+// This has function signature similar to the `io:println` function.
 public function mockPrint(any|error... val) {
     tally = tally + 1;
 }
 
 @test:Config {}
 function testCall() {
-    // This stubs the calls to io:println function
-    // to invoke the specified function.
+    // Stubs the calls to `io:println` function
+    // to invoke the `mockPrint` function instead.
     test:when(printlnMockFn).call("mockPrint");
 
     io:println("Testing 1");

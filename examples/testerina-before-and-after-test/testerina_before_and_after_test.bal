@@ -1,14 +1,14 @@
 import ballerina/io;
 import ballerina/test;
 
-// This before-function is executed before the test function.
+// Executed before the `testFunction` function.
 function beforeFunc() {
     io:println("I'm the before function!");
 }
 
 // The Test function.
-// Use the `before` and `after` attributes to define the function names
-// of the functions that need to be executed before and after the test function.
+// `before` and `after` attributes are used to define the functions
+// that need to be executed before and after this test function.
 @test:Config {
     before: beforeFunc,
     after: afterFunc
@@ -18,7 +18,7 @@ function testFunction() {
     test:assertTrue(true, msg = "Failed!");
 }
 
-// This after-function is executed after the test function.
+// Executed after the `testFunction` function.
 function afterFunc() {
     io:println("I'm the after function!");
 }

@@ -1,28 +1,20 @@
 bal test test_module
+
 Compiling source
         ballerinatest/test_module:0.1.0
 
 Running tests
     ballerinatest/test_module:0.1.0
 
-                [pass] testAssertBooleanEquals
-                [pass] testAssertExactEqualsObject
+                [pass] testAssertEquals
+                [pass] testAssertExactEquals
                 [pass] testAssertFail
                 [pass] testAssertFalse
-                [pass] testAssertFloatArrayEquals
-                [pass] testAssertFloatEquals
-                [pass] testAssertIntArrayEquals
-                [pass] testAssertIntEquals
-                [pass] testAssertJsonEquals
-                [pass] testAssertNotEqualsJson
-                [pass] testAssertNotEqualsString
-                [pass] testAssertNotEqualsXml
-                [pass] testAssertNotExactEqualsObject
-                [pass] testAssertStringArrayEquals
-                [pass] testAssertStringEquals
+                [pass] testAssertNotEquals
+                [pass] testAssertNotExactEquals
                 [pass] testAssertTrue
-                [pass] testAssertXmlEquals
 
-                17 passing
+                7 passing
                 0 failing
                 0 skipped
+
