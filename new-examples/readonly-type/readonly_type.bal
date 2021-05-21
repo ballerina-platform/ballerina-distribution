@@ -1,11 +1,13 @@
 import ballerina/io;
 
 // Value of `s` is an immutable array.
-readonly & string s = "foo";
+readonly & string[] s = [
+    "foo", "bar"
+];
 
 type Row record {
     // Both field and its value are immutable.
-    readonly string k;
+    readonly string[] k;
     int value;
 };
 
