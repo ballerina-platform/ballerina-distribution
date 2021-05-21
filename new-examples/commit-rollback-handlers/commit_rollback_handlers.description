@@ -1,0 +1,4 @@
+// Often code needs to get executed depending on whether a transaction committed.
+// Testing the result of the commit within the transaction statement works, but inconvenient from a modularity perspective, particularly when you want to undo changes on rollback.
+// This seems much worse in a distributed transaction, when transaction statement is in another program.
+// Ballerina provides commit/rollback handlers which are functions that get run when decision whether to commit is known.
