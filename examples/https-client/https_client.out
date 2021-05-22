@@ -8,4 +8,4 @@ bal run https_listener.bal
 # and execute the `bal run` command below.
 # (You may need to change the trusted certificate file path.)
 bal run https_client.bal
-time = 2021-01-20 20:04:13,261 level = INFO  module = "" message = "200"
+Hello, World!
