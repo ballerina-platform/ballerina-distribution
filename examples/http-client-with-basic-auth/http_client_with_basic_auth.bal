@@ -1,5 +1,5 @@
 import ballerina/http;
-import ballerina/log;
+import ballerina/io;
 
 // Defines the HTTP client to call the Basic auth secured APIs.
 // The client is enriched with the `Authorization: Basic <token>` header by
@@ -16,7 +16,6 @@ http:Client securedEP = check new("https://localhost:9090",
 );
 
 public function main() returns error? {
-    // Sends a `GET` request to the specified endpoint.
     http:Response response = check securedEP->get("/foo/bar");
-    log:printInfo(response.statusCode.toString());
+    io:println(check response.getTextPayload());
 }
