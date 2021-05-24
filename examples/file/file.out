@@ -1,12 +1,15 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file and execute the `bal run` command below.
 bal run file.bal
-The bar.txt file created successfully.
-Is the bar.txt file exists: true
-Is the bar.txt file readable: true
-Is the bar.txt file writeable: true
-The bar.txt file copied successfully.
+Current directory: /A/B
 File path: /A/B/bar.txt
 File size: 0
 Is directory: false
-Modified at 1621856202 0.329000000
+Modified at 1617251006 0.358000000
+bar.txt file exists: true
+bar.txt file is copied to new path foo/bar/bar.txt
+bar.txt file is moved to new path foo/bar1.txt
+Removed file at foo/bar1.txt
+Removed 'foo' directory with all the children.
+Absolute path of the tmp file: /tmp/55d2c4cd-0f85-49e1-9e8a-10d78959f017
+Absolute path of the tmp file: /A/B/6844bda0-c32d-470c-b55b-013d6bd93a0e

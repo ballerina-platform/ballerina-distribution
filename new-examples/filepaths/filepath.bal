@@ -4,6 +4,7 @@ import ballerina/io;
 public function main() returns error? {
     // Gets the absolute representation of the path.
     string absValue = check file:getAbsolutePath("test.txt");
+    io:println("Absolute path: ", absValue);
 
     // Checks whether the path is absolute.
     boolean isAbs = check file:isAbsolutePath("/A/B/C");
