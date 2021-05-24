@@ -1,0 +1,7 @@
+// This example demonstrates how to use the JDBC client select query operations
+// with the stream return type. Note that the relevant database driver JAR
+// should be defined in the `Ballerina.toml` file as a dependency.
+// This sample is based on an H2 database and the H2 database driver JAR need to be added to `Ballerina.toml` file.
+// See [JDBC module](https://docs.central.ballerina.io/ballerinax/java.jdbc/latest/) for sample configuration.<br><br>
+// For more information on the underlying module,
+// see the [JDBC module](https://docs.central.ballerina.io/ballerinax/java.jdbc/latest/).
