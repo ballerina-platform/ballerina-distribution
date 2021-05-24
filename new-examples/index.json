@@ -52,28 +52,16 @@
         "category": "Language concepts",
         "samples": [
             {
-                "name": "Current Time in UTC",
+                "name": "UTC Time",
                 "url": "time-utc"
             },
             {
-                "name": "Convert between UTC and Civil",
+                "name": "Time with Zone Offset",
                 "url": "time-utc-and-civil"
             },
             {
-                "name": "Convert between UTC and String",
-                "url": "time-utc-and-string"
-            },
-            {
-                "name": "Convert between Civil and String",
-                "url": "time-civil-and-string"
-            },
-            {
-                "name": "Convert between UTC and Email String",
-                "url": "time-utc-and-email"
-            },
-            {
-                "name": "Convert between Civil and Email String",
-                "url": "time-civil-and-email"
+                "name": "Time Formatting/Parsing",
+                "url": "time_formatting_and_parsing"
             }
         ]
     }
