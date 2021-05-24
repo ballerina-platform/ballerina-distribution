@@ -6,7 +6,7 @@ public function main() returns error? {
     // Creates a new connectionless UDP client.
     // Optionally, you can provide the address that the socket needs to bind 
     // and the timeout in milliseconds, which specifies the read timeout value.
-    // udp:Client client = new (localHost = "localhost", timeout = 5);
+    // e.g.: `udp:Client client = new (localHost = "localhost", timeout = 5);`
     udp:Client socketClient = check new;
 
     string msg = "Hello Ballerina echo";
