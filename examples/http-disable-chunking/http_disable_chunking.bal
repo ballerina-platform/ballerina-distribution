@@ -14,8 +14,8 @@ service /chunkingSample on new http:Listener(9092) {
 
     resource function get .() returns http:Response|http:InternalServerError {
         //Invoke endpoint with along with a JSON payload.
-        var clientResponse = clientEndpoint->post("/echo/",
-                                                  {"name": "Ballerina"});
+        http:Response|error clientResponse =
+            clientEndpoint->post("/echo/", {"name": "Ballerina"});
         if (clientResponse is http:Response) {
             return clientResponse;
         } else {

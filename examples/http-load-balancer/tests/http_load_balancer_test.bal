@@ -8,7 +8,7 @@ function testFunc() {
     http:Client httpEndpoint = checkpanic new("http://localhost:9090");
 
     // Send a GET request to the specified endpoint
-    var response1 = httpEndpoint->get("/lb");
+    http:Response|error response1 = httpEndpoint->get("/lb");
     if (response1 is http:Response) {
         var result = response1.getTextPayload();
         if (result is string) {
@@ -20,7 +20,7 @@ function testFunc() {
         test:assertFail(msg = "Failed to call the endpoint:");
     }
 
-    var response2 = httpEndpoint->get("/lb");
+    http:Response|error response2 = httpEndpoint->get("/lb");
     if (response2 is http:Response) {
         var result = response2.getTextPayload();
         if (result is string) {
@@ -33,7 +33,7 @@ function testFunc() {
     }
 
     // Send a GET request to the specified endpoint
-    var response3 = httpEndpoint->get("/lb");
+    http:Response|error response3 = httpEndpoint->get("/lb");
     if (response3 is http:Response) {
         var result = response3.getTextPayload();
         if (result is string) {
@@ -46,7 +46,7 @@ function testFunc() {
     }
 
     // Send a GET request to the specified endpoint
-    var response4 = httpEndpoint->get("/lb");
+    http:Response|error response4 = httpEndpoint->get("/lb");
     if (response4 is http:Response) {
         var result = response4.getTextPayload();
         if (result is string) {

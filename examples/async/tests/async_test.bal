@@ -16,11 +16,11 @@ public function mockPrint(any|error... val) {
 function toString(any|error val) returns string => val is error? val.toString() : val.toString();
 
 @test:Config{}
-function testFunc() {
+function testFunc() returns error? {
     test:when(mock_printLn).call("mockPrint");
 
     // Invoke the main function.
-    main();
+    check main();
     test:assertEquals(outputs[0], "Seconds in an year = 31536000");
     test:assertEquals(outputs[1], "125*34 = 4250");
     test:assertEquals(outputs[2], "9! = 362880");

@@ -8,7 +8,7 @@ function testFunc() returns  @tainted error? {
 
     json expectedJson = {"Type":"Always but constrained by content-type"};
     // Send a GET request to the specified endpoint
-    var response = httpEndpoint->get("/alwaysCompress/getJson");
+    http:Response|error response = httpEndpoint->get("/alwaysCompress/getJson");
     // Assert the uncompressed response
     if (response is http:Response) {
         json actualPayload = check response.getJsonPayload();

@@ -19,7 +19,7 @@ http:Client cachingEP = check new ("http://localhost:8080",
 service /cache on new http:Listener(9090) {
 
     resource function get .(http:Caller caller, http:Request req) {
-        var response = cachingEP->forward("/hello", req);
+        http:Response|error response = cachingEP->forward("/hello", req);
 
         if (response is http:Response) {
             // If the request was successful, an HTTP response will be

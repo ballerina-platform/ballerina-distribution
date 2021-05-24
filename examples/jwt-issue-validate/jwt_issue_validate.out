@@ -21,10 +21,3 @@ Validated JWT Payload: {"iss":"ballerina",
                         "exp":1611127023,"nbf":1611123423,
                         "iat":1611123423
                        }
-Validated JWT Payload: {"iss":"ballerina",
-                        "sub":"admin",
-                        "aud":"vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
-                        "jti":"55a0b754-895f-4279-8843-b745e11a57e9",
-                        "exp":1611127023,"nbf":1611123423,
-                        "iat":1611123423
-                       }
