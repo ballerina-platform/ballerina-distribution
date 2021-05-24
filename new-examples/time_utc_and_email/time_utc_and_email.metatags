@@ -1,0 +1,2 @@
+description: BBE on how to convert a given UTC time to an RFC 5322 formatted string.
+keywords: ballerina, ballerina by examples, bbe, time, utc, rfc5322, email
