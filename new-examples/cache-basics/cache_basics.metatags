@@ -1,0 +1,2 @@
+description: This BBE shows how to perform an in-memory caching basic operations with the "Least Recently Used" algorithm in Ballerina.
+keywords: ballerina, ballerina by examples, bbe, cache, put, get, size, hasKey

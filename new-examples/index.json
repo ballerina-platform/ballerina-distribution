@@ -45,5 +45,20 @@
                 "url": "langlib-functions"
             }
         ]
+    },
+    {
+        "title": "Cache",
+        "column": 0,
+        "category": "Language concepts",
+        "samples": [
+            {
+                "name": "Cache Basic Operations",
+                "url": "cache-basics"
+            },
+            {
+                "name": "Cache Invalidation",
+                "url": "cache-invalidation"
+            }
+        ]
     }
 ]
