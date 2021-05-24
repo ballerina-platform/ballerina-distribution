@@ -7,7 +7,7 @@ function beforeFunc() {
 }
 
 // The Test function.
-// `before` and `after` attributes are used to define the functions
+// The `before` and `after` attributes are used to define the functions
 // that need to be executed before and after this test function.
 @test:Config {
     before: beforeFunc,

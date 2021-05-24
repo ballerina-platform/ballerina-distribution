@@ -2,7 +2,7 @@ import ballerina/http;
 import ballerina/io;
 import ballerina/email;
 
-// Clients objects are defined globally to be able to replace in tests.
+// Clients objects are defined globally to be able to replace them in tests.
 http:Client clientEndpoint = check new("http://postman-echo.com");
 email:SmtpClient smtpClient = check new("localhost", "admin", "admin");
 

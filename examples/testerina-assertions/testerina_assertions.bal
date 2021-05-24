@@ -21,14 +21,14 @@ function testAssertNotEquals() {
 @test:Config { }
 function testAssertTrue() {
     boolean value = true;
-    // Asserts if provided value is `true`.
+    // Asserts if the provided value is `true`.
     test:assertTrue(value, msg = "AssertTrue failed");
 }
 
 @test:Config { }
 function testAssertFalse() {
     boolean value = false;
-    // Asserts if provided value is `false`.
+    // Asserts if the provided value is `false`.
     test:assertFalse(value, msg = "AssertFalse failed");
 }
 
@@ -37,7 +37,7 @@ function testAssertFail() {
     if (true) {
         return;
     }
-    // Intentionally throws an AssertionError.
+    // Intentionally, throws an `AssertionError`.
     test:assertFail(msg = "AssertFailed");
 }
 
@@ -53,7 +53,7 @@ class Person {
 function testAssertExactEquals() {
     Person person1 = new;
     Person person2 = person1;
-    // Compares values for exact equality i.e. whether both refer to the same entity.
+    // Compares the values for exact equality i.e. whether both refer to the same entity.
     test:assertExactEquals(person1, person2,
         msg = "Objects are not exactly equal");
 }
@@ -62,7 +62,7 @@ function testAssertExactEquals() {
 function testAssertNotExactEquals() {
     Person person1 = new;
     Person person2 = new;
-    // Compares values for the negation of exact equality.
+    // Compares the values for the negation of exact equality.
     test:assertNotExactEquals(person1, person2,
         msg = "Objects are exactly equal");
 }

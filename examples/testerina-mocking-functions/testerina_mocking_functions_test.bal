@@ -3,7 +3,7 @@ import ballerina/test;
 import ballerina/io;
 
 // Creates a `MockFunction` for stubbing calls to
-// the function `intAdd` in the same module.
+// the `intAdd` function of the same module.
 @test:Mock { functionName: "intAdd" }
 test:MockFunction intAddMockFn = new();
 
@@ -21,7 +21,7 @@ function testReturn() {
 }
 
 // Creates a `MockFunction` that should replace the
-// imported function `io:println`.
+// imported `io:println` function.
 @test:Mock {
     moduleName: "ballerina/io",
     functionName: "println"
@@ -30,14 +30,14 @@ test:MockFunction printlnMockFn = new();
 
 int tally = 0;
 
-// This has function signature similar to the `io:println` function.
+// This has a function signature similar to the `io:println` function.
 public function mockPrint(any|error... val) {
     tally = tally + 1;
 }
 
 @test:Config {}
 function testCall() {
-    // Stubs the calls to `io:println` function
+    // Stubs the calls to the `io:println` function
     // to invoke the `mockPrint` function instead.
     test:when(printlnMockFn).call("mockPrint");
 

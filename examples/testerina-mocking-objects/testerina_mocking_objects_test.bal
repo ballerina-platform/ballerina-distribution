@@ -26,7 +26,8 @@ function testTestDouble() {
 
 @test:Config { }
 function testReturn() {
-    // Creates and assigns a default mock object which subsequently needs to stubbed.
+    // Creates and assigns a default mock object,
+    // which subsequently needs to be stubbed.
     clientEndpoint = test:mock(http:Client);
     // Stubs the `get` function to return the specified HTTP response.
     test:prepare(clientEndpoint).when("get").thenReturn(new http:Response());
@@ -41,8 +42,8 @@ function testReturnSequence() {
 
     clientEndpoint = test:mock(http:Client);
     // Stubs the `get` function to return the specified HTTP response
-    // for each call. i.e., The first call will return the status code `200`
-    // and the second call will return the status code `404`.
+    // for each call (i.e., The first call will return the status code `200`
+    // and the second call will return the status code `404`).
     test:prepare(clientEndpoint).when("get").thenReturnSequence(
         new http:Response(), mockResponse);
     http:Response res = performGet();
@@ -64,7 +65,7 @@ function testSendNotification() {
 function testMemberVariable() {
     string mockClientUrl = "http://foo";
     clientEndpoint = test:mock(http:Client);
-    // Stubs the value of `url` to return the specified string.
+    // Stubs the value of the `url` to return the specified string.
     test:prepare(clientEndpoint).getMember("url").thenReturn(mockClientUrl);
     test:assertEquals(clientEndpoint.url, mockClientUrl);
 }

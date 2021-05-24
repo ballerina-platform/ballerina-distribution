@@ -1,7 +1,7 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina test` command below.
 
-# Run tests belonging to the groups g1 and g2
+# Run the tests belonging to the `g1` and `g2` groups
 bal test --groups g1,g2 testerina_group_tests.bal
 
 Compiling source
@@ -20,7 +20,7 @@ I'm in test belonging to groups g1 and g2!
         0 failing
         0 skipped
 
-# Run tests belonging to the group g1
+# Run the tests belonging to the `g1` group
 bal test --groups g1 testerina_group_tests.bal
 
 Compiling source
@@ -39,7 +39,7 @@ I'm in test belonging to groups g1 and g2!
         0 failing
         0 skipped
 
-# Run all tests other than the tests belonging to the group g2
+# Run all tests other than the tests belonging to the `g2` group
 bal test --disable-groups g2 testerina_group_tests.bal
 
 Compiling source

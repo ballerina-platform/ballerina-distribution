@@ -1,13 +1,13 @@
 import ballerina/io;
 import ballerina/test;
 
-// `BeforeEach` function is executed before each test function.
+// The `BeforeEach` function is executed before each test function.
 @test:BeforeEach
 function beforeEachFunc() {
     io:println("I'm the before each function!");
 }
 
-// `AfterEach` function is executed after each test function.
+// The `AfterEach` function is executed after each test function.
 @test:AfterEach
 function afterEachFunc() {
     io:println("I'm the after each function!");

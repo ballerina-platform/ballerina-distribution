@@ -13,7 +13,7 @@ function afterGroupsFunc() {
     io:println("I'm the after groups function!");
 }
 
-// A test function belonging to group `g1`.
+// A test function belonging to the group `g1`.
 @test:Config { groups: ["g1"]}
 function testFunction1() {
     io:println("I'm in test function 1!");

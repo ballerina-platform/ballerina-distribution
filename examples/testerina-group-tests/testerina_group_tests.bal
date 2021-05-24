@@ -15,7 +15,7 @@ function testFunction2() {
     test:assertTrue(true, msg = "Failed!");
 }
 
-// Doesn't belong to any test group.
+// Does not belong to any test group.
 @test:Config { }
 function testFunction3() {
     io:println("I'm the ungrouped test");
