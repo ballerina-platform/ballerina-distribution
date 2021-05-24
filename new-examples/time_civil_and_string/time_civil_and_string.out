@@ -1,0 +1,5 @@
+# To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `bal run` command below.
+bal run time_civil_and_string.bal
+Converted civil value: {"utcOffset":{"hours":5,"minutes":30},"timeAbbrev":"Asia/Colombo","dayOfWeek":1,"year":2021,"month":4,"day":12,"hour":23,"minute":20,"second":50.52}
+Civil string representation: 2021-04-12T17:50:50.520Z
