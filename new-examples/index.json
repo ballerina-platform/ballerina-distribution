@@ -45,5 +45,36 @@
                 "url": "langlib-functions"
             }
         ]
+    },
+    {
+        "title": "Time",
+        "column": 0,
+        "category": "Language concepts",
+        "samples": [
+            {
+                "name": "Current Time in UTC",
+                "url": "time-utc"
+            },
+            {
+                "name": "Convert between UTC and Civil",
+                "url": "time-utc-and-civil"
+            },
+            {
+                "name": "Convert between UTC and String",
+                "url": "time-utc-and-string"
+            },
+            {
+                "name": "Convert between Civil and String",
+                "url": "time-civil-and-string"
+            },
+            {
+                "name": "Convert between UTC and Email String",
+                "url": "time-utc-and-email"
+            },
+            {
+                "name": "Convert between Civil and Email String",
+                "url": "time-civil-and-email"
+            }
+        ]
     }
 ]
