@@ -47,17 +47,25 @@
         ]
     },
     {
-        "title": "Cache",
+        "title": "File",
         "column": 0,
         "category": "Language concepts",
         "samples": [
             {
-                "name": "Cache Basic Operations",
-                "url": "cache-basics"
+                "name": "File Path",
+                "url": "filepaths"
             },
             {
-                "name": "Cache Invalidation",
-                "url": "cache-invalidation"
+                "name": "Directories",
+                "url": "cdirectories"
+            },
+            {
+                "name": "Files",
+                "url": "files"
+            },
+            {
+                "name": "Temp Files and Directories",
+                "url": "temp-files-directories"
             }
         ]
     }
