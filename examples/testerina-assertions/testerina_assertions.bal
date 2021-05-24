@@ -54,7 +54,8 @@ function testAssertExactEquals() {
     Person person1 = new;
     Person person2 = person1;
     // Compares values for exact equality i.e. whether both refer to the same entity.
-    test:assertExactEquals(person1, person2, msg = "Objects are not exactly equal");
+    test:assertExactEquals(person1, person2,
+        msg = "Objects are not exactly equal");
 }
 
 @test:Config { }
@@ -62,5 +63,6 @@ function testAssertNotExactEquals() {
     Person person1 = new;
     Person person2 = new;
     // Compares values for the negation of exact equality.
-    test:assertNotExactEquals(person1, person2, msg = "Objects are exactly equal");
+    test:assertNotExactEquals(person1, person2,
+        msg = "Objects are exactly equal");
 }
