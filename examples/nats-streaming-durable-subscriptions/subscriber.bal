@@ -4,7 +4,7 @@ import ballerinax/stan;
 // Initializes the NATS Streaming listener with a specific client ID.
 listener stan:Listener lis = new(stan:DEFAULT_URL, clientId = "c0");
 
-// Provide the durable name to create a durable subscription.
+// Provides the durable name to create a durable subscription.
 @stan:ServiceConfig {
     subject: "demo",
     durableName: "sample-name"

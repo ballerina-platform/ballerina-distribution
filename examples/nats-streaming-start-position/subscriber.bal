@@ -21,7 +21,7 @@ service stan:Service on lis {
 }
 
 // Binds the consumer to listen to the messages published to the 'demo' subject.
-// Receives all messages from the beginning.
+// Receives all the messages from the beginning.
 @stan:ServiceConfig {
     subject: "demo",
     startPosition: stan:FIRST
