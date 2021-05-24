@@ -1,0 +1,2 @@
+description: BBE on how to convert a given UTC time to an RFC 3339 formatted string vice versa.
+keywords: ballerina, ballerina by examples, bbe, time, utc, string, rfc3339

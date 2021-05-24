@@ -1,0 +1,5 @@
+# To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `bal run` command below.
+bal run string.bal
+UTC value: 1196676930 0.12
+UTC string representation: 2007-12-03T10:15:30.120Z
