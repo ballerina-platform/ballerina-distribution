@@ -5,7 +5,7 @@ public function main() returns error? {
     // This creates a new cache instance with default configurations.
     cache:Cache cache = new();
 
-    // Adds a new entries to the cache.
+    // Adds new entries to the cache.
     check cache.put("key1", "value1");
     check cache.put("key2", "value2");
 

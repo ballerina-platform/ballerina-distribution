@@ -17,7 +17,7 @@ public function main() returns error? {
         cleanupInterval: 3
     });
 
-    // Adds a new entry to the cache.
+    // Adds new entries to the cache.
     check cache.put("key1", "value1");
     check cache.put("key2", "value2");
     // Adds a new entry to the cache by overriding the default max age.
