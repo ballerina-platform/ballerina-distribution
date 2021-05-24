@@ -8,8 +8,8 @@ public function main() returns error? {
     // `remoteHost` and the `remotePort`.
     // Optionally, you can provide the interface that the socket needs to bind 
     // and the timeout in milliseconds, which specifies the read timeout value.
-    // udp:Client client = new ("www.ballerina.com", 80,
-    //                         localHost = "localhost", timeout = 5);
+    // E.g.: `udp:Client client = new ("www.ballerina.com", 80,
+    // localHost = "localhost", timeout = 5);`
     udp:ConnectClient socketClient = check new("localhost", 8080);
 
     string msg = "Hello Ballerina echo";
