@@ -47,6 +47,25 @@
         ]
     },
     {
+        "title": "Time",
+        "column": 0,
+        "category": "Language concepts",
+        "samples": [
+            {
+                "name": "UTC Time",
+                "url": "time-utc"
+            },
+            {
+                "name": "Time with Zone Offset",
+                "url": "time-utc-and-civil"
+            },
+            {
+                "name": "Time Formatting/Parsing",
+                "url": "time_formatting_and_parsing"
+            }
+        ]
+    },
+    {
         "title": "Cache",
         "column": 0,
         "category": "Language concepts",
