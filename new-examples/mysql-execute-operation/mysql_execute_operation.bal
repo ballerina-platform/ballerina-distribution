@@ -37,7 +37,7 @@ public function main() returns error? {
 function beforeExample() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
 
-    // Creates a Database.
+    // Creates a database.
     sql:ExecutionResult result =
         check mysqlClient -> execute(`CREATE DATABASE MYSQL_BBE`);
 
@@ -47,7 +47,7 @@ function beforeExample() returns sql:Error? {
             VARCHAR(300), lastName  VARCHAR(300), registrationID INTEGER, 
             creditLimit DOUBLE, country  VARCHAR(300),PRIMARY KEY (customerId))`);
 
-    // Inserts data into the table. The result will have `affectedRowCount`
+    // Inserts data into the table. The result will have the `affectedRowCount`
     // and `lastInsertedId` with the auto-generated ID of the last row.
     result = check mysqlClient -> execute(`INSERT INTO MYSQL_BBE.Customers (firstName,
             lastName, registrationID,creditLimit,country) VALUES ('Peter',

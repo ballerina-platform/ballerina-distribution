@@ -79,7 +79,7 @@ public function main() returns error? {
 function beforeExample() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
 
-    // Creates a Database.
+    // Creates a database.
     sql:ExecutionResult result =
         check mysqlClient -> execute(`CREATE DATABASE MYSQL_BBE`);
 
@@ -89,7 +89,7 @@ function beforeExample() returns sql:Error? {
             registrationID INTEGER, creditLimit DOUBLE, country  VARCHAR(300),
             PRIMARY KEY (customerId))`);
 
-    // Adds records to the newly created table.
+    // Adds the records to the newly-created table.
     result = check mysqlClient -> execute(`INSERT INTO MYSQL_BBE.Customers(firstName,
             lastName, registrationID,creditLimit,country) VALUES ('Peter',
             'Stuart', 1, 5000.75, 'USA')`);

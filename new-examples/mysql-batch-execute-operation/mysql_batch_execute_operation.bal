@@ -10,7 +10,7 @@ public function main() returns error? {
     mysql:Client mysqlClient = check new (user = "root",
             password = "Test@123", database = "MYSQL_BBE");
 
-    // The Records to be inserted.
+    // The records to be inserted.
     var insertRecords = [
         {firstName: "Peter", lastName: "Stuart", registrationID: 1,
                                     creditLimit: 5000.75, country: "USA"},
@@ -54,7 +54,7 @@ public function main() returns error? {
 function beforeExample() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
 
-    // Creates a Database.
+    // Creates a database.
     sql:ExecutionResult result =
         check mysqlClient -> execute(`CREATE DATABASE MYSQL_BBE`);
     
@@ -72,6 +72,6 @@ function afterExample(mysql:Client mysqlClient) returns sql:Error? {
     // Cleans the database.
     sql:ExecutionResult result =
             check mysqlClient -> execute(`DROP DATABASE MYSQL_BBE`);
-    // Closes the mySQL client.
+    // Closes the MySQL client.
     check mysqlClient.close();
 }

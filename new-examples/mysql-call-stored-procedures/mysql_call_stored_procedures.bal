@@ -2,7 +2,7 @@ import ballerina/io;
 import ballerinax/mysql;
 import ballerina/sql;
 
-// Student record to represent the database table.
+// The `Student` record to represent the database table.
 type Student record {
     int id;
     int age;
@@ -22,13 +22,13 @@ public function main() returns error? {
     sql:ParameterizedCallQuery sqlQuery = 
                                 `CALL InsertStudent(${name}, ${age})`;
 
-    // The stored procedure `InsertStudent` with the `IN` parameters is invoked.
+    // Invokes the stored procedure `InsertStudent` with the `IN` parameters.
     sql:ProcedureCallResult retCall = check mysqlClient -> call(sqlQuery);
     io:println("Call stored procedure `InsertStudent`." +
         "\nAffected Row count: ", retCall.executionResult?.affectedRowCount);
     check retCall.close();
 
-    // Initializes the `INOUT` & `OUT` parameters.
+    // Initializes the `INOUT` and `OUT` parameters.
     sql:InOutParameter id = new (1);
     sql:IntegerOutParameter totalCount = new;
     sql:ParameterizedCallQuery sqlQuery2 = 
@@ -41,7 +41,7 @@ public function main() returns error? {
     io:println("Total student count: ", totalCount.get(int));
     check retCall2.close();
 
-    // Invokes the stored procedure, which returns data.
+    // Invokes the stored procedure, which returns the data.
     sql:ProcedureCallResult retCall3 = 
             check mysqlClient -> call("{CALL GetStudents()}", [Student]);
     io:println("Call stored procedure `GetStudents`.");              
@@ -57,7 +57,7 @@ public function main() returns error? {
     }
     check retCall3.close();
 
-    // Performs cleanup after the example.
+    // Performs the cleanup after the example.
     check afterExample(mysqlClient);
 }
 
@@ -65,7 +65,7 @@ public function main() returns error? {
 function beforeExample() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
 
-    // Creates a Database.
+    // Creates a database.
     sql:ExecutionResult result =
         check mysqlClient -> execute(`CREATE DATABASE MYSQL_BBE`);
 
@@ -73,7 +73,7 @@ function beforeExample() returns sql:Error? {
     result = check mysqlClient -> execute(`CREATE TABLE MYSQL_BBE.Student( id INT 
             AUTO_INCREMENT, age INT, name VARCHAR(255),PRIMARY KEY (id))`);
 
-    // Creates necessary stored procedures using the execute command.
+    // Creates the necessary stored procedures using the execute command.
     result = check mysqlClient -> execute(`CREATE PROCEDURE MYSQL_BBE.InsertStudent
         (IN pName VARCHAR(255), IN pAge INT) BEGIN INSERT INTO Student(age, name) 
         VALUES (pAge, pName); END`);

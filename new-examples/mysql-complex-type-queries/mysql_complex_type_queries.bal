@@ -80,7 +80,7 @@ public function main() returns error? {
 function beforeExample() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
 
-    // Creates a Database.
+    // Creates a database.
     sql:ExecutionResult result =
         check mysqlClient -> execute(`CREATE DATABASE MYSQL_BBE`);
     
