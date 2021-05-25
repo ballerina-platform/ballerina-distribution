@@ -66,17 +66,43 @@
         ]
     },
     {
-        "title": "Cache",
+        "title": "Task",
         "column": 0,
         "category": "Language concepts",
         "samples": [
             {
-                "name": "Cache Basics",
-                "url": "cache-basics"
+                "name": "Schedule Frequency Job",
+                "url": "task-frequency-job-execution"
             },
             {
-                "name": "Cache Invalidation",
-                "url": "cache-invalidation"
+                "name": "Schedule One Time Job",
+                "url": "task-one-time-job-execution"
+            },
+            {
+                "name": "Manage Scheduled Jobs",
+                "url": "manage-scheduled-jobs"
+            }
+        ]
+    },
+    {
+        "title": "Regex",
+        "column": 0,
+        "category": "Language concepts",
+        "samples": [
+            {
+                "name": "Regular Expressions",
+                "url": "regular-expressions"
+            }
+        ]
+    },
+    {
+        "title": "XML Data",
+        "column": 0,
+        "category": "Language concepts",
+        "samples": [
+            {
+                "name": "XML/JSON Conversion",
+                "url": "xml-json-conversion"
             }
         ]
     }
