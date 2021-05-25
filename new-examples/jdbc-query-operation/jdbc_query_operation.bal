@@ -2,7 +2,27 @@ import ballerina/io;
 import ballerinax/java.jdbc;
 import ballerina/sql;
 
-function getDataForSimpleQuery(jdbc:Client jdbcClient) returns sql:Error? {
+// Define a record to load the query result schema as shown below in the
+// 'getDataWithTypedQuery' function. In this example, all columns of the 
+// customer table will be loaded. Therefore, the `Customer` record will be 
+// created with all the columns. The column name of the result and the 
+// defined field name of the record will be matched case insensitively.
+type Customer record {|
+    int customerId;
+    string lastName;
+    string firstName;
+    int registrationId;
+    float creditLimit;
+    string country;
+|};
+
+public function main() returns error? {
+    // Initialize the JDBC client.
+    jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
+        "rootUser", "rootPass");
+    // Run the prerequisite setup for the example.
+    check beforeExample(jdbcClient);
+
     // Select the rows in the database table via the query remote operation.
     // The result is returned as a stream and the elements of the stream can
     // be either a record or an error. The name and type of the attributes 
@@ -35,40 +55,27 @@ function getDataForSimpleQuery(jdbc:Client jdbcClient) returns sql:Error? {
     // However, in case if the stream is not fully consumed, the stream
     // should be closed specifically.
     error? er = resultStream.close();
-}
 
-// Define a record to load the query result schema as shown below in the
-// 'getDataWithTypedQuery' function. In this example, all columns of the 
-// customer table will be loaded. Therefore, the `Customer` record will be 
-// created with all the columns. The column name of the result and the 
-// defined field name of the record will be matched case insensitively.
-type Customer record {|
-    int customerId;
-    string lastName;
-    string firstName;
-    int registrationId;
-    float creditLimit;
-    string country;
-|};
-
-function getDataWithTypedQuery(jdbc:Client jdbcClient) returns sql:Error? {
     // The result is returned as a Customer record stream and the elements
     // of the stream can be either a Customer record or an error.
-    stream<record{}, error> resultStream =
+    stream<record{}, error> resultStream3 =
         jdbcClient->query(`SELECT * FROM Customers`, Customer);
 
     // Cast the generic record type to the Customer stream type.
     stream<Customer, sql:Error> customerStream =
-        <stream<Customer, sql:Error>>resultStream;
+        <stream<Customer, sql:Error>>resultStream3;
 
     // Iterate the customer stream.
-    error? e = customerStream.forEach(function(Customer customer) {
+    e = customerStream.forEach(function(Customer customer) {
         io:println("Full Customer details: ", customer);
     });
+
+    // Perform cleanup after the example.
+    check afterExample(jdbcClient);
 }
 
 // Initializes the database as the prerequisite to the example.
-function beforeRunningExample(jdbc:Client jdbcClient) returns sql:Error? {
+function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
     // Create a table in the database.
     sql:ExecutionResult result =
         check jdbcClient -> execute(`CREATE TABLE Customers(customerId INTEGER
@@ -86,27 +93,10 @@ function beforeRunningExample(jdbc:Client jdbcClient) returns sql:Error? {
 }
 
 // Cleans up the database after running the example.
-function afterRunningExample(jdbc:Client jdbcClient) returns sql:Error? {
+function afterExample(jdbc:Client jdbcClient) returns sql:Error? {
     // Clean the database.
     sql:ExecutionResult result =
             check jdbcClient -> execute(`DROP TABLE Customers`);
     // Close the JDBC client.
     check jdbcClient.close();
-}
-
-public function main() returns error? {
-    // Initialize the JDBC client.
-    jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
-        "rootUser", "rootPass");
-    // Run the prerequisite setup for the example.
-    check beforeRunningExample(jdbcClient);
-
-    // Run a simple query without providing a record type.
-    check getDataForSimpleQuery(jdbcClient);
-
-    // Run a simple query with a record type which is required as the query result.
-    check getDataWithTypedQuery(jdbcClient);
-
-    // Perform cleanup after the example.
-    check afterRunningExample(jdbcClient);
 }

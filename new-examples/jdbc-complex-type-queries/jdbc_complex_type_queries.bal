@@ -10,7 +10,31 @@ type BinaryType record {|
     byte[] binary_type;
 |};
 
-function getDataFromBinaryTypes(jdbc:Client jdbcClient) returns sql:Error? {
+type ArrayType record {|
+    int row_id;
+    int[] int_array;
+    int[] long_array;
+    decimal[] float_array;
+    float[] double_array;
+    boolean[] boolean_array;
+    string[] string_array;
+|};
+
+type DateTimeType record {|
+    int row_id;
+    string date_type;
+    int time_type;
+    time:Utc timestamp_type;
+    string datetime_type;
+|};
+
+public function main() returns error? {
+    // Initialize the JDBC client.
+    jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
+        "rootUser", "rootPass");
+    // Run the prerequisite setup for the example.
+    check beforeExample(jdbcClient);
+
     // Since the `rowType` is provided as a `BinaryType`, the `resultStream` 
     // will have `BinaryType` records.
     stream<record{}, error> resultStream = 
@@ -23,60 +47,38 @@ function getDataFromBinaryTypes(jdbc:Client jdbcClient) returns sql:Error? {
     error? e = binaryResultStream.forEach(function(BinaryType result) {
         io:println(result);
     });
-}
 
-type ArrayType record {|
-    int row_id;
-    int[] int_array;
-    int[] long_array;
-    decimal[] float_array;
-    float[] double_array;
-    boolean[] boolean_array;
-    string[] string_array;
-|};
-
-function getDataFromArrayTypes(jdbc:Client jdbcClient) returns sql:Error? {
-    // Since the `rowType` is provided as an `ArrayType`, the `resultStream` will
+    // Since the `rowType` is provided as an `ArrayType`, the `resultStream2` will
     // have `ArrayType` records.
-    stream<record{}, error> resultStream = 
+    stream<record{}, error> resultStream2 = 
                 jdbcClient -> query(`SELECT * FROM ARRAY_TYPES`, ArrayType);
     stream<ArrayType, sql:Error> arrayResultStream =
-                <stream<ArrayType, sql:Error>>resultStream;
+                <stream<ArrayType, sql:Error>>resultStream2;
 
     io:println("Array types Result :");
     // Iterate the `arrayResultStream`.
-    error? e = arrayResultStream.forEach(function(ArrayType result) {
+    error? e2 = arrayResultStream.forEach(function(ArrayType result) {
         io:println(result);
     });
-}
 
-type DateTimeType record {|
-    int row_id;
-    string date_type;
-    int time_type;
-    time:Utc timestamp_type;
-    string datetime_type;
-|};
-
-function getDataFromDateTimeTypes(jdbc:Client jdbcClient) returns sql:Error? {
-    // Since the `rowType` is provided as a `DateTimeType`, the `resultStream`
+    // Since the `rowType` is provided as a `DateTimeType`, the `resultStream3`
     // will have `DateTimeType` records. The Date, Time, DateTime, and
     // Timestamp fields of the database table can be mapped to time:Utc,
     // string, and int types in Ballerina.
-    stream<record{}, error> resultStream = 
+    stream<record{}, error> resultStream3 = 
                 jdbcClient -> query(`SELECT * FROM DATE_TIME_TYPES`, DateTimeType);
     stream<DateTimeType, sql:Error> dateResultStream =
-                <stream<DateTimeType, sql:Error>>resultStream;
+                <stream<DateTimeType, sql:Error>>resultStream3;
 
     io:println("DateTime types Result :");
     // Iterate the `dateResultStream`.
-    error? e = dateResultStream.forEach(function(DateTimeType result) {
+    error? e3 = dateResultStream.forEach(function(DateTimeType result) {
         io:println(result);
     });
 }
 
 // Initializes the database as the prerequisite to the example.
-function beforeRunningExample(jdbc:Client jdbcClient) returns sql:Error? {
+function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
     // Create complex data type tables in the database.
     sql:ExecutionResult result =
         check jdbcClient -> execute(`CREATE TABLE BINARY_TYPES (row_id 
@@ -113,7 +115,7 @@ function beforeRunningExample(jdbc:Client jdbcClient) returns sql:Error? {
 }
 
 // Clean up the database after running the example.
-function afterRunningExample(jdbc:Client jdbcClient) returns sql:Error? {
+function afterExample(jdbc:Client jdbcClient) returns sql:Error? {
     // Clean the database.
     sql:ExecutionResult result =
             check jdbcClient -> execute(`DROP TABLE BINARY_TYPES`);
@@ -121,24 +123,4 @@ function afterRunningExample(jdbc:Client jdbcClient) returns sql:Error? {
     result = check jdbcClient -> execute(`DROP TABLE DATE_TIME_TYPES`);
     // Close the JDBC client.
     check jdbcClient.close();
-}
-
-public function main() returns error? {
-    // Initialize the JDBC client.
-    jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
-        "rootUser", "rootPass");
-    // Run the prerequisite setup for the example.
-    check beforeRunningExample(jdbcClient);
-
-    // Run a query for binary data types. 
-    check getDataFromBinaryTypes(jdbcClient);
-
-    // Run a query for array data types.
-    check getDataFromArrayTypes(jdbcClient);
-
-    // Run a query for date time data types.
-    check getDataFromDateTimeTypes(jdbcClient);
-
-    // Perform cleanup after the example.
-    check afterRunningExample(jdbcClient);
 }

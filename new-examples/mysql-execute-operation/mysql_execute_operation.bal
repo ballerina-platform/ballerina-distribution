@@ -2,7 +2,14 @@ import ballerina/io;
 import ballerinax/mysql;
 import ballerina/sql;
 
-function updateRecord(mysql:Client mysqlClient) returns sql:Error? {
+public function main() returns error? {
+    // Run the prerequisite setup for the example.
+    check beforeExample();
+
+    // Initialize the MySQL client.
+    mysql:Client mysqlClient = check new (user = "root",
+            password = "Test@123", database = "MYSQL_BBE");
+
     float newCreditLimit = 15000.5;
 
     // Create a parameterized query for record update.
@@ -12,20 +19,22 @@ function updateRecord(mysql:Client mysqlClient) returns sql:Error? {
 
     sql:ExecutionResult result = check mysqlClient -> execute(updateQuery);
     io:println("Updated Row count: ", result?.affectedRowCount);
-}
 
-function deleteRecord(mysql:Client mysqlClient) returns sql:Error? {
     string firstName = "Dan";
 
     // Create a parameterized query for record delete.
     sql:ParameterizedQuery deleteQuery =
             `DELETE FROM Customers WHERE firstName = ${firstName}`;
-    sql:ExecutionResult result = check mysqlClient -> execute(deleteQuery);
+    
+    result = check mysqlClient -> execute(deleteQuery);
     io:println("Deleted Row count: ", result.affectedRowCount);
+
+    // Perform cleanup after the example.
+    check afterExample(mysqlClient);
 }
 
 // Initializes the database as the prerequisite to the example.
-function beforeRunningExample() returns sql:Error? {
+function beforeExample() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
 
     // Create a Database.
@@ -54,28 +63,10 @@ function beforeRunningExample() returns sql:Error? {
 }
 
 // Cleans up the database after running the example.
-function afterRunningExample(mysql:Client mysqlClient) returns sql:Error? {
+function afterExample(mysql:Client mysqlClient) returns sql:Error? {
     // Clean the database.
     sql:ExecutionResult result =
             check mysqlClient -> execute(`DROP DATABASE MYSQL_BBE`);
     // Close the MySQL client.
     check mysqlClient.close();
-}
-
-public function main() returns error? {
-    // Run the prerequisite setup for the example.
-    check beforeRunningExample();
-
-    // Initialize the MySQL client.
-    mysql:Client mysqlClient = check new (user = "root",
-            password = "Test@123", database = "MYSQL_BBE");
-
-    // Update a record.
-    check updateRecord(mysqlClient);
-
-    // Delete a record.
-    check deleteRecord(mysqlClient);
-
-    // Perform cleanup after the example.
-    check afterRunningExample(mysqlClient);
 }

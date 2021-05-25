@@ -2,7 +2,13 @@ import ballerina/io;
 import ballerinax/java.jdbc;
 import ballerina/sql;
 
-function updateRecord(jdbc:Client jdbcClient) returns sql:Error? {
+public function main() returns error? {
+    // Initialize the JDBC client.
+    jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
+        "rootUser", "rootPass");
+    // Run the prerequisite setup for the example.
+    check beforeExample(jdbcClient);
+
     float newCreditLimit = 15000.5;
 
     // Create a parameterized query for record update.
@@ -12,20 +18,22 @@ function updateRecord(jdbc:Client jdbcClient) returns sql:Error? {
 
     sql:ExecutionResult result = check jdbcClient -> execute(updateQuery);
     io:println("Updated Row count: ", result?.affectedRowCount);
-}
 
-function deleteRecord(jdbc:Client jdbcClient) returns sql:Error? {
     string firstName = "Dan";
 
     // Create a parameterized query for record delete.
     sql:ParameterizedQuery deleteQuery =
             `DELETE FROM Customers WHERE firstName = ${firstName}`;
-    sql:ExecutionResult result = check jdbcClient -> execute(deleteQuery);
+    
+    result = check jdbcClient -> execute(deleteQuery);
     io:println("Deleted Row count: ", result.affectedRowCount);
+
+    // Perform cleanup after the example.
+    check afterExample(jdbcClient);
 }
 
 // Initializes the database as the prerequisite to the example.
-function beforeRunningExample(jdbc:Client jdbcClient) returns sql:Error? {
+function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
     //Create a table in the database.
     sql:ExecutionResult result =
         check jdbcClient -> execute(`CREATE TABLE Customers(customerId INTEGER
@@ -47,27 +55,10 @@ function beforeRunningExample(jdbc:Client jdbcClient) returns sql:Error? {
 }
 
 // Cleans up the database after running the example.
-function afterRunningExample(jdbc:Client jdbcClient) returns sql:Error? {
+function afterExample(jdbc:Client jdbcClient) returns sql:Error? {
     // Clean the database.
     sql:ExecutionResult result =
             check jdbcClient -> execute(`DROP TABLE Customers`);
     // Close the JDBC client.
     check jdbcClient.close();
-}
-
-public function main() returns error? {
-    // Initialize the JDBC client.
-    jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
-        "rootUser", "rootPass");
-    // Run the prerequisite setup for the example.
-    check beforeRunningExample(jdbcClient);
-
-    // Update a record.
-    check updateRecord(jdbcClient);
-
-    // Delete a record.
-    check deleteRecord(jdbcClient);
-
-    // Perform cleanup after the example.
-    check afterRunningExample(jdbcClient);
 }

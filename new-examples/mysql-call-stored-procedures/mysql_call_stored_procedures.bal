@@ -2,53 +2,52 @@ import ballerina/io;
 import ballerinax/mysql;
 import ballerina/sql;
 
-// The stored procedure `InsertStudent` with the IN parameters is invoked. 
-function insertRecord(mysql:Client mysqlClient) returns sql:Error? {
-    // Create a parameterized query to invoke the procedure.
-    string name = "George";
-    int age = 24;
-    sql:ParameterizedCallQuery sqlQuery = 
-                                `CALL InsertStudent(${name}, ${age})`;
-
-    // Execute the stored procedure.
-    sql:ProcedureCallResult retCall = check mysqlClient -> call(sqlQuery);
-    io:println("Call stored procedure `InsertStudent`." +
-        "\nAffected Row count: ", retCall.executionResult?.affectedRowCount);
-    checkpanic retCall.close();
-}
-
-// Here, the stored procedure with the OUT and INOUT parameters is invoked.
-function getCount(mysql:Client mysqlClient) returns sql:Error? {
-    // Initialize the INOUT & OUT parameters.
-    sql:InOutParameter id = new (1);
-    sql:IntegerOutParameter totalCount = new;
-    sql:ParameterizedCallQuery sqlQuery = 
-                        `{CALL GetCount(${id}, ${totalCount})}`;
-
-    // Execute the stored procedure.
-    sql:ProcedureCallResult retCall = check mysqlClient -> call(sqlQuery);
-    io:println("Call stored procedure `GetCount`.");
-    io:println("Age of the student with id '1' : ", id.get(int));
-    io:println("Total student count: ", totalCount.get(int));
-    checkpanic retCall.close();
-}
-
 // Student record to represent the database table.
 type Student record {
     int id;
     int age;
     string name;
 };
+public function main() returns error? {
+    // Run the prerequisite setup for the example.
+    check beforeExample();
 
-// Invoke the stored procedure, which returns data.
-function checkData(mysql:Client sqlClient) returns sql:Error? {
-    // Execute the stored procedure.
-    sql:ProcedureCallResult retCall = 
-            check sqlClient->call("{CALL GetStudents()}", [Student]);
+    // Initialize the MySQL client.
+    mysql:Client mysqlClient = check new (user = "root",
+            password = "Test@123", database = "MYSQL_BBE");
+
+    // Create a parameterized query to invoke the procedure.
+    string name = "George";
+    int age = 24;
+    sql:ParameterizedCallQuery sqlQuery = 
+                                `CALL InsertStudent(${name}, ${age})`;
+
+    // The stored procedure `InsertStudent` with the IN parameters is invoked. 
+    sql:ProcedureCallResult retCall = check mysqlClient -> call(sqlQuery);
+    io:println("Call stored procedure `InsertStudent`." +
+        "\nAffected Row count: ", retCall.executionResult?.affectedRowCount);
+    check retCall.close();
+
+    // Initialize the INOUT & OUT parameters.
+    sql:InOutParameter id = new (1);
+    sql:IntegerOutParameter totalCount = new;
+    sql:ParameterizedCallQuery sqlQuery2 = 
+                        `{CALL GetCount(${id}, ${totalCount})}`;
+
+    // The stored procedure with the OUT and INOUT parameters is invoked.
+    sql:ProcedureCallResult retCall2 = check mysqlClient -> call(sqlQuery2);
+    io:println("Call stored procedure `GetCount`.");
+    io:println("Age of the student with id '1' : ", id.get(int));
+    io:println("Total student count: ", totalCount.get(int));
+    check retCall2.close();
+
+    // Invoke the stored procedure, which returns data.
+    sql:ProcedureCallResult retCall3 = 
+            check mysqlClient -> call("{CALL GetStudents()}", [Student]);
     io:println("Call stored procedure `GetStudents`.");              
 
     // Process the returned result stream.
-    stream<record{}, sql:Error>? result = retCall.queryResult;
+    stream<record{}, sql:Error>? result = retCall3.queryResult;
     if result is stream<record{}, sql:Error> {
         stream<Student, sql:Error> studentStream = 
                 <stream<Student, sql:Error>> result;
@@ -56,11 +55,14 @@ function checkData(mysql:Client sqlClient) returns sql:Error? {
             io:println("Student details: ", student);
         });
     }
-    checkpanic retCall.close();
+    check retCall3.close();
+
+    // Performs cleanup after the example.
+    check afterExample(mysqlClient);
 }
 
 // Initializes the database as the prerequisite to the example.
-function beforeRunningExample() returns sql:Error? {
+function beforeExample() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
 
     // Create a Database.
@@ -85,32 +87,11 @@ function beforeRunningExample() returns sql:Error? {
 }
 
 // Cleans up the database after running the example.
-function afterRunningExample(mysql:Client mysqlClient) returns sql:Error? {
+function afterExample(mysql:Client mysqlClient) returns sql:Error? {
     // Clean the database.
     sql:ExecutionResult result =
             check mysqlClient -> execute(`DROP DATABASE MYSQL_BBE`);
 
     // Close the MySQL client.
     check mysqlClient.close();
-}
-
-public function main() returns error? {
-    // Run the prerequisite setup for the example.
-    check beforeRunningExample();
-
-    // Initialize the MySQL client.
-    mysql:Client mysqlClient = check new (user = "root",
-            password = "Test@123", database = "MYSQL_BBE");
-
-    // Insert a record by calling a procedure.
-    check insertRecord(mysqlClient);
-
-    // Get the total count by calling a procedure.
-    check getCount(mysqlClient);
-                
-    // Get all the results by invoking a procedure.
-    check checkData(mysqlClient);
-
-    // Performs cleanup after the example.
-    check afterRunningExample(mysqlClient);
 }

@@ -2,7 +2,28 @@ import ballerina/io;
 import ballerinax/mysql;
 import ballerina/sql;
 
-function getDataForSimpleQuery(mysql:Client mysqlClient) returns sql:Error? {
+// Define a record to load the query result schema as shown below in the
+// 'getDataWithTypedQuery' function. In this example, all columns of the 
+// customer table will be loaded. Therefore, the `Customer` record will be 
+// created with all the columns. The column name of the result and the 
+// defined field name of the record will be matched case insensitively.
+type Customer record {|
+    int customerId;
+    string lastName;
+    string firstName;
+    int registrationId;
+    float creditLimit;
+    string country;
+|};
+
+public function main() returns error? {
+    // Run the prerequisite setup for the example.
+    check beforeExample();
+
+    // Initialize the MySQL client.
+    mysql:Client mysqlClient = check new (user = "root",
+            password = "Test@123", database = "MYSQL_BBE");
+
     // Select the rows in the database table via the query remote operation.
     // The result is returned as a stream and the elements of the stream can
     // be either a record or an error. The name and type of the attributes 
@@ -35,40 +56,27 @@ function getDataForSimpleQuery(mysql:Client mysqlClient) returns sql:Error? {
     // However, in case if the stream is not fully consumed, the stream
     // should be closed specifically.
     error? er = resultStream.close();
-}
 
-// Define a record to load the query result schema as shown below in the
-// 'getDataWithTypedQuery' function. In this example, all columns of the 
-// customer table will be loaded. Therefore, the `Customer` record will be 
-// created with all the columns. The column name of the result and the 
-// defined field name of the record will be matched case insensitively.
-type Customer record {|
-    int customerId;
-    string lastName;
-    string firstName;
-    int registrationId;
-    float creditLimit;
-    string country;
-|};
-
-function getDataWithTypedQuery(mysql:Client mysqlClient) returns sql:Error? {
     // The result is returned as a Customer record stream and the elements
     // of the stream can be either a Customer record or an error.
-    stream<record{}, error> resultStream =
+    stream<record{}, error> resultStream3 =
         mysqlClient->query(`SELECT * FROM Customers`, Customer);
 
     // Cast the generic record type to the Customer stream type.
     stream<Customer, sql:Error> customerStream =
-        <stream<Customer, sql:Error>>resultStream;
+        <stream<Customer, sql:Error>>resultStream3;
 
     // Iterate the customer stream.
-    error? e = customerStream.forEach(function(Customer customer) {
+    error? e2 = customerStream.forEach(function(Customer customer) {
         io:println("Full Customer details: ", customer);
     });
+
+    // Perform cleanup after the example.
+    check afterExample(mysqlClient);
 }
 
 // Initializes the database as the prerequisite to the example.
-function beforeRunningExample() returns sql:Error? {
+function beforeExample() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
 
     // Create a Database.
@@ -93,27 +101,10 @@ function beforeRunningExample() returns sql:Error? {
 }
 
 // Cleans up the database after running the example.
-function afterRunningExample(mysql:Client mysqlClient) returns sql:Error? {
+function afterExample(mysql:Client mysqlClient) returns sql:Error? {
     // Clean the database.
     sql:ExecutionResult result =
             check mysqlClient -> execute(`DROP DATABASE MYSQL_BBE`);
     // Close the MySQL client.
     check mysqlClient.close();
-}
-
-public function main() returns error? {
-    // Run the prerequisite setup for the example.
-    check beforeRunningExample();
-
-    // Initialize the MySQL client.
-    mysql:Client mysqlClient = check new (user = "root",
-            password = "Test@123", database = "MYSQL_BBE");
-    // Run a simple query without providing a record type.
-    check getDataForSimpleQuery(mysqlClient);
-
-    // Run a simple query with a record type which is required as the query result.
-    check getDataWithTypedQuery(mysqlClient);
-
-    // Perform cleanup after the example.
-    check afterRunningExample(mysqlClient);
 }

@@ -2,7 +2,14 @@ import ballerina/io;
 import ballerinax/mysql;
 import ballerina/sql;
 
-function simulateBatchExecuteFailure(mysql:Client mysqlClient) returns sql:Error? {
+public function main() returns error? {
+    // Run the prerequisite setup for the example.
+    check beforeExample();
+
+    // Initialize the MySQL client.
+    mysql:Client mysqlClient = check new (user = "root",
+            password = "Test@123", database = "MYSQL_BBE");
+
     // Records with duplicate `registrationID` entry (registrationID = 1).
     var insertRecords = [
         {firstName: "Linda", lastName: "Jones", registrationID: 4,
@@ -36,9 +43,8 @@ function simulateBatchExecuteFailure(mysql:Client mysqlClient) returns sql:Error
             }
         }
     }
-}
 
-function tableInspectAfterBatchExecute(mysql:Client mysqlClient) returns sql:Error? {
+    // Check the data after batch execute.
     stream<record{}, error> resultStream =
         mysqlClient -> query("SELECT * FROM Customers");
 
@@ -46,16 +52,18 @@ function tableInspectAfterBatchExecute(mysql:Client mysqlClient) returns sql:Err
     error? e = resultStream.forEach(function(record {} result) {
                  io:println(result.toString());
     });
+
+    // Perform cleanup after the example.
+    check afterExample(mysqlClient);
 }
 
 // Initializes the database as the prerequisite to the example.
-function beforeRunningExample() returns sql:Error? {
+function beforeExample() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
 
     // Create a Database.
     sql:ExecutionResult result =
         check mysqlClient -> execute(`CREATE DATABASE MYSQL_BBE`);
-
 
     // Create a table in the database.
     result = check mysqlClient -> execute(`CREATE TABLE MYSQL_BBE.Customers
@@ -72,28 +80,10 @@ function beforeRunningExample() returns sql:Error? {
 }
 
 // Cleans up the database after running the example.
-function afterRunningExample(mysql:Client mysqlClient) returns sql:Error? {
+function afterExample(mysql:Client mysqlClient) returns sql:Error? {
     // Clean the database.
     sql:ExecutionResult result =
             check mysqlClient -> execute(`DROP DATABASE MYSQL_BBE`);
     // Close the MySQL client.
     check mysqlClient.close();
-}
-
-public function main() returns error? {
-    // Run the prerequisite setup for the example.
-    check beforeRunningExample();
-
-    // Initialize the MySQL client.
-    mysql:Client mysqlClient = check new (user = "root",
-            password = "Test@123", database = "MYSQL_BBE");
-
-    // Simulate Failure Rollback.
-    check simulateBatchExecuteFailure(mysqlClient);
-
-    // Check the data.
-    check tableInspectAfterBatchExecute(mysqlClient);
-
-    // Perform cleanup after the example.
-    check afterRunningExample(mysqlClient);
 }

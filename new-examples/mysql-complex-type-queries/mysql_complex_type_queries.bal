@@ -9,7 +9,28 @@ type BinaryType record {|
     byte[] binary_type;
 |};
 
-function getDataFromBinaryTypes(mysql:Client mysqlClient) returns sql:Error? {
+type JsonType record {|
+    int row_id;
+    json json_doc;
+    json json_array;
+|};
+
+type DateTimeType record {|
+    int row_id;
+    string date_type;
+    int time_type;
+    time:Utc timestamp_type;
+    string datetime_type;
+|};
+
+public function main() returns error? {
+    // Run the prerequisite setup for the example.
+    check beforeExample();
+
+    // Initialize the MySQL client.
+    mysql:Client mysqlClient = check new (user = "root",
+            password = "Test@123", database = "MYSQL_BBE");
+
     // Since the `rowType` is provided as a `BinaryType`, the `resultStream` 
     // will have `BinaryType` records.
     stream<record{}, error> resultStream = 
@@ -22,56 +43,41 @@ function getDataFromBinaryTypes(mysql:Client mysqlClient) returns sql:Error? {
     error? e = binaryResultStream.forEach(function(BinaryType result) {
         io:println(result);
     });
-}
 
-type JsonType record {|
-    int row_id;
-    json json_doc;
-    json json_array;
-|};
-
-function getDataFromJsonTypes(mysql:Client mysqlClient) returns sql:Error? {
-    // Since the `rowType` is provided as an `JsonType`, the `resultStream` will
+    // Since the `rowType` is provided as an `JsonType`, the `resultStream2` will
     // have `JsonType` records.
-    stream<record{}, error> resultStream = 
+    stream<record{}, error> resultStream2 = 
                 mysqlClient -> query(`SELECT * FROM JSON_TYPES`, JsonType);
     stream<JsonType, sql:Error> jsonResultStream =
-                <stream<JsonType, sql:Error>> resultStream;
+                <stream<JsonType, sql:Error>> resultStream2;
 
     io:println("Json type Result :");
     // Iterate the `jsonResultStream`.
-    error? e = jsonResultStream.forEach(function(JsonType result) {
+    error? e2 = jsonResultStream.forEach(function(JsonType result) {
         io:println(result);
     });
-}
 
-type DateTimeType record {|
-    int row_id;
-    string date_type;
-    int time_type;
-    time:Utc timestamp_type;
-    string datetime_type;
-|};
-
-function getDataFromDateTimeTypes(mysql:Client mysqlClient) returns sql:Error? {
-    // Since the `rowType` is provided as a `DateTimeType`, the `resultStream`
+    // Since the `rowType` is provided as a `DateTimeType`, the `resultStream3`
     // will have `DateTimeType` records. The Date, Time, DateTime, and
     // Timestamp fields of the database table can be mapped to time:Utc,
     // string, and int types in Ballerina.
-    stream<record{}, error> resultStream = 
+    stream<record{}, error> resultStream3 = 
                 mysqlClient -> query(`SELECT * FROM DATE_TIME_TYPES`, DateTimeType);
     stream<DateTimeType, sql:Error> dateResultStream =
-                <stream<DateTimeType, sql:Error>>resultStream;
+                <stream<DateTimeType, sql:Error>>resultStream3;
 
     io:println("DateTime types Result :");
     // Iterate the `dateResultStream`.
-    error? e = dateResultStream.forEach(function(DateTimeType result) {
+    error? e3 = dateResultStream.forEach(function(DateTimeType result) {
         io:println(result);
     });
+
+    // Perform cleanup after the example.
+    check afterExample(mysqlClient);
 }
 
 // Initializes the database as the prerequisite to the example.
-function beforeRunningExample() returns sql:Error? {
+function beforeExample() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
 
     // Create a Database.
@@ -109,31 +115,10 @@ function beforeRunningExample() returns sql:Error? {
 }
 
 // Clean up the database after running the example.
-function afterRunningExample(mysql:Client mysqlClient) returns sql:Error? {
+function afterExample(mysql:Client mysqlClient) returns sql:Error? {
     // Clean the database.
     sql:ExecutionResult result =
             check mysqlClient -> execute(`DROP DATABASE MYSQL_BBE`);
     // Close the MySQL client.
     check mysqlClient.close();
-}
-
-public function main() returns error? {
-    // Run the prerequisite setup for the example.
-    check beforeRunningExample();
-
-    // Initialize the MySQL client.
-    mysql:Client mysqlClient = check new (user = "root",
-            password = "Test@123", database = "MYSQL_BBE");
-
-    // Run a query for binary data types. 
-    check getDataFromBinaryTypes(mysqlClient);
-
-    // Run a query for json data types.
-    check getDataFromJsonTypes(mysqlClient);
-
-    // Run a query for date time data types.
-    check getDataFromDateTimeTypes(mysqlClient);
-
-    // Perform cleanup after the example.
-    check afterRunningExample(mysqlClient);
 }

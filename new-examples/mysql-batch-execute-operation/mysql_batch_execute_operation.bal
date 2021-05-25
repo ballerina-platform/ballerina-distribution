@@ -2,7 +2,14 @@ import ballerina/io;
 import ballerinax/mysql;
 import ballerina/sql;
 
-function insertRecords(mysql:Client mysqlClient) returns sql:Error? {
+public function main() returns error? {
+    // Run the prerequisite setup for the example.
+    check beforeExample();
+
+    // Initialize the MySQL client.
+    mysql:Client mysqlClient = check new (user = "root",
+            password = "Test@123", database = "MYSQL_BBE");
+
     // Records to be inserted.
     var insertRecords = [
         {firstName: "Peter", lastName: "Stuart", registrationID: 1,
@@ -29,9 +36,8 @@ function insertRecords(mysql:Client mysqlClient) returns sql:Error? {
         generatedIds.push(<int> summary.lastInsertId);
     }
     io:println("\nInsert success, generated IDs are: ", generatedIds, "\n");
-}
 
-function tableInspectAfterBatchExecute(mysql:Client mysqlClient) returns sql:Error? {
+    // Check the data after batch execute.
     stream<record{}, error> resultStream =
         mysqlClient -> query("SELECT * FROM Customers");
 
@@ -39,10 +45,13 @@ function tableInspectAfterBatchExecute(mysql:Client mysqlClient) returns sql:Err
     error? e = resultStream.forEach(function(record {} result) {
                  io:println(result.toString());
     });
+
+    // Perform cleanup after the example.
+    check afterExample(mysqlClient);
 }
 
 // Initializes the database as the prerequisite to the example.
-function beforeRunningExample() returns sql:Error? {
+function beforeExample() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
 
     // Create a Database.
@@ -59,28 +68,10 @@ function beforeRunningExample() returns sql:Error? {
 }
 
 // Cleans up the database after running the example.
-function afterRunningExample(mysql:Client mysqlClient) returns sql:Error? {
+function afterExample(mysql:Client mysqlClient) returns sql:Error? {
     // Clean the database.
     sql:ExecutionResult result =
             check mysqlClient -> execute(`DROP DATABASE MYSQL_BBE`);
     // Close the mySQL client.
     check mysqlClient.close();
-}
-
-public function main() returns error? {
-    // Run the prerequisite setup for the example.
-    check beforeRunningExample();
-
-    // Initialize the MySQL client.
-    mysql:Client mysqlClient = check new (user = "root",
-            password = "Test@123", database = "MYSQL_BBE");
-
-    // Insert multiple records using `batchExecute`
-    check insertRecords(mysqlClient);
-
-    // Check the data.
-    check tableInspectAfterBatchExecute(mysqlClient);
-
-    // Perform cleanup after the example.
-    check afterRunningExample(mysqlClient);
 }
