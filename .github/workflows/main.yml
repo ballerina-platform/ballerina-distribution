@@ -1,4 +1,4 @@
-name: Ballerina Distribution Build 
+name: Build 
 
 on:
   push:
