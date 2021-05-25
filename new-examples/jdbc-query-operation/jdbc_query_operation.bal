@@ -2,7 +2,7 @@ import ballerina/io;
 import ballerinax/java.jdbc;
 import ballerina/sql;
 
-// Define a record to load the query result schema as shown below in the
+// Defines a record to load the query result schema as shown below in the
 // 'getDataWithTypedQuery' function. In this example, all columns of the 
 // customer table will be loaded. Therefore, the `Customer` record will be 
 // created with all the columns. The column name of the result and the 
@@ -17,13 +17,13 @@ type Customer record {|
 |};
 
 public function main() returns error? {
-    // Initialize the JDBC client.
+    // Initializes the JDBC client.
     jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
         "rootUser", "rootPass");
-    // Run the prerequisite setup for the example.
+    // Runs the prerequisite setup for the example.
     check beforeExample(jdbcClient);
 
-    // Select the rows in the database table via the query remote operation.
+    // Selects the rows in the database table via the query remote operation.
     // The result is returned as a stream and the elements of the stream can
     // be either a record or an error. The name and type of the attributes 
     // within the record from the `resultStream` will be automatically 
@@ -45,7 +45,7 @@ public function main() returns error? {
     // Since the above count query will return only a single row,
     // the `next()` operation is sufficient to retrieve the data.
     record {|record {} value;|}|error? result = resultStream2.next();
-    // Check the result and retrieve the value for total.
+    // Checks the result and retrieves the value for the total.
     if result is record {|record {} value;|} {
         io:println("Total rows in customer table : ", result.value["TOTAL"]);
     } 
@@ -56,34 +56,34 @@ public function main() returns error? {
     // should be closed specifically.
     error? er = resultStream.close();
 
-    // The result is returned as a Customer record stream and the elements
-    // of the stream can be either a Customer record or an error.
+    // The result is returned as a `Customer` record stream and the elements
+    // of the stream can be either a `Customer` record or an error.
     stream<record{}, error> resultStream3 =
         jdbcClient->query(`SELECT * FROM Customers`, Customer);
 
-    // Cast the generic record type to the Customer stream type.
+    // Casts the generic record type to the `Customer` stream type.
     stream<Customer, sql:Error> customerStream =
         <stream<Customer, sql:Error>>resultStream3;
 
-    // Iterate the customer stream.
+    // Iterates the customer stream.
     e = customerStream.forEach(function(Customer customer) {
         io:println("Full Customer details: ", customer);
     });
 
-    // Perform cleanup after the example.
+    // Performs the cleanup after the example.
     check afterExample(jdbcClient);
 }
 
-// Initializes the database as the prerequisite to the example.
+// Initializes the database as a prerequisite to the example.
 function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
-    // Create a table in the database.
+    // Creates a table in the database.
     sql:ExecutionResult result =
         check jdbcClient -> execute(`CREATE TABLE Customers(customerId INTEGER
             NOT NULL IDENTITY, firstName  VARCHAR(300), lastName  VARCHAR(300),
             registrationID INTEGER, creditLimit DOUBLE, country  VARCHAR(300),
             PRIMARY KEY (customerId))`);
 
-    // Add records to the newly created table.
+    // Adds records to the newly-created table.
     result = check jdbcClient -> execute(`INSERT INTO Customers (firstName,
             lastName, registrationID,creditLimit,country) VALUES ('Peter',
             'Stuart', 1, 5000.75, 'USA')`);
@@ -94,9 +94,9 @@ function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
 
 // Cleans up the database after running the example.
 function afterExample(jdbc:Client jdbcClient) returns sql:Error? {
-    // Clean the database.
+    // Cleans the database.
     sql:ExecutionResult result =
             check jdbcClient -> execute(`DROP TABLE Customers`);
-    // Close the JDBC client.
+    // Closes the JDBC client.
     check jdbcClient.close();
 }

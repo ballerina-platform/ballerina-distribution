@@ -29,10 +29,10 @@ type DateTimeType record {|
 |};
 
 public function main() returns error? {
-    // Initialize the JDBC client.
+    // Initializes the JDBC client.
     jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
         "rootUser", "rootPass");
-    // Run the prerequisite setup for the example.
+    // Runs the prerequisite setup for the example.
     check beforeExample(jdbcClient);
 
     // Since the `rowType` is provided as a `BinaryType`, the `resultStream` 
@@ -43,7 +43,7 @@ public function main() returns error? {
                 <stream<BinaryType, sql:Error>> resultStream;
 
     io:println("Binary types Result :");
-    // Iterate the `binaryResultStream`.
+    // Iterates the `binaryResultStream`.
     error? e = binaryResultStream.forEach(function(BinaryType result) {
         io:println(result);
     });
@@ -56,14 +56,14 @@ public function main() returns error? {
                 <stream<ArrayType, sql:Error>>resultStream2;
 
     io:println("Array types Result :");
-    // Iterate the `arrayResultStream`.
+    // Iterates the `arrayResultStream`.
     error? e2 = arrayResultStream.forEach(function(ArrayType result) {
         io:println(result);
     });
 
     // Since the `rowType` is provided as a `DateTimeType`, the `resultStream3`
-    // will have `DateTimeType` records. The Date, Time, DateTime, and
-    // Timestamp fields of the database table can be mapped to time:Utc,
+    // will have `DateTimeType` records. The `Date`, `Time`, `DateTime`, and
+    // `Timestamp` fields of the database table can be mapped to `time:Utc`,
     // string, and int types in Ballerina.
     stream<record{}, error> resultStream3 = 
                 jdbcClient -> query(`SELECT * FROM DATE_TIME_TYPES`, DateTimeType);
@@ -71,15 +71,18 @@ public function main() returns error? {
                 <stream<DateTimeType, sql:Error>>resultStream3;
 
     io:println("DateTime types Result :");
-    // Iterate the `dateResultStream`.
+    // Iterates the `dateResultStream`.
     error? e3 = dateResultStream.forEach(function(DateTimeType result) {
         io:println(result);
     });
+
+    // Performs the cleanup after the example.
+    check afterExample(jdbcClient);
 }
 
-// Initializes the database as the prerequisite to the example.
+// Initializes the database as a prerequisite to the example.
 function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
-    // Create complex data type tables in the database.
+    // Creates complex data type tables in the database.
     sql:ExecutionResult result =
         check jdbcClient -> execute(`CREATE TABLE BINARY_TYPES (row_id 
             INTEGER NOT NULL, blob_type BLOB(1024), clob_type CLOB(1024), 
@@ -95,7 +98,7 @@ function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
             timestamp_type timestamp, datetime_type  datetime, 
             PRIMARY KEY (row_id))`);
 
-    // Add records to newly created tables.
+    // Adds the records to the newly-created tables.
     result = check jdbcClient -> execute(`INSERT INTO BINARY_TYPES (row_id, 
             blob_type, clob_type, binary_type) VALUES (1, 
             X'77736F322062616C6C6572696E6120626C6F6220746573742E', 
@@ -114,13 +117,13 @@ function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
             '2017-01-25 16:33:55')`);
 }
 
-// Clean up the database after running the example.
+// Cleans up the database after running the example.
 function afterExample(jdbc:Client jdbcClient) returns sql:Error? {
-    // Clean the database.
+    // Cleans the database.
     sql:ExecutionResult result =
             check jdbcClient -> execute(`DROP TABLE BINARY_TYPES`);
     result = check jdbcClient -> execute(`DROP TABLE ARRAY_TYPES`);
     result = check jdbcClient -> execute(`DROP TABLE DATE_TIME_TYPES`);
-    // Close the JDBC client.
+    // Closes the JDBC client.
     check jdbcClient.close();
 }

@@ -24,10 +24,10 @@ type DateTimeType record {|
 |};
 
 public function main() returns error? {
-    // Run the prerequisite setup for the example.
+    // Runs the prerequisite setup for the example.
     check beforeExample();
 
-    // Initialize the MySQL client.
+    // Initializes the MySQL client.
     mysql:Client mysqlClient = check new (user = "root",
             password = "Test@123", database = "MYSQL_BBE");
 
@@ -39,7 +39,7 @@ public function main() returns error? {
                 <stream<BinaryType, sql:Error>> resultStream;
 
     io:println("Binary types Result :");
-    // Iterate the `binaryResultStream`.
+    // Iterates the `binaryResultStream`.
     error? e = binaryResultStream.forEach(function(BinaryType result) {
         io:println(result);
     });
@@ -52,14 +52,14 @@ public function main() returns error? {
                 <stream<JsonType, sql:Error>> resultStream2;
 
     io:println("Json type Result :");
-    // Iterate the `jsonResultStream`.
+    // Iterates the `jsonResultStream`.
     error? e2 = jsonResultStream.forEach(function(JsonType result) {
         io:println(result);
     });
 
     // Since the `rowType` is provided as a `DateTimeType`, the `resultStream3`
-    // will have `DateTimeType` records. The Date, Time, DateTime, and
-    // Timestamp fields of the database table can be mapped to time:Utc,
+    // will have `DateTimeType` records. The `Date`, `Time`, `DateTime`, and
+    // `Timestamp` fields of the database table can be mapped to `time:Utc`,
     // string, and int types in Ballerina.
     stream<record{}, error> resultStream3 = 
                 mysqlClient -> query(`SELECT * FROM DATE_TIME_TYPES`, DateTimeType);
@@ -67,20 +67,20 @@ public function main() returns error? {
                 <stream<DateTimeType, sql:Error>>resultStream3;
 
     io:println("DateTime types Result :");
-    // Iterate the `dateResultStream`.
+    // Iterates the `dateResultStream`.
     error? e3 = dateResultStream.forEach(function(DateTimeType result) {
         io:println(result);
     });
 
-    // Perform cleanup after the example.
+    // Performs the cleanup after the example.
     check afterExample(mysqlClient);
 }
 
-// Initializes the database as the prerequisite to the example.
+// Initializes the database as a prerequisite to the example.
 function beforeExample() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
 
-    // Create a Database.
+    // Creates a Database.
     sql:ExecutionResult result =
         check mysqlClient -> execute(`CREATE DATABASE MYSQL_BBE`);
     
@@ -97,7 +97,7 @@ function beforeExample() returns sql:Error? {
             timestamp_type timestamp, datetime_type  datetime, 
             PRIMARY KEY (row_id))`);
 
-    // Add records to newly created tables.
+    // Adds the records to the newly-created tables.
     result = check mysqlClient -> execute(`INSERT INTO MYSQL_BBE.BINARY_TYPES (row_id, 
             blob_type, binary_type) VALUES (1, 
             X'77736F322062616C6C6572696E6120626C6F6220746573742E',  
@@ -114,11 +114,11 @@ function beforeExample() returns sql:Error? {
     check mysqlClient.close();        
 }
 
-// Clean up the database after running the example.
+// Cleans up the database after running the example.
 function afterExample(mysql:Client mysqlClient) returns sql:Error? {
-    // Clean the database.
+    // Cleans the database.
     sql:ExecutionResult result =
             check mysqlClient -> execute(`DROP DATABASE MYSQL_BBE`);
-    // Close the MySQL client.
+    // Closes the MySQL client.
     check mysqlClient.close();
 }

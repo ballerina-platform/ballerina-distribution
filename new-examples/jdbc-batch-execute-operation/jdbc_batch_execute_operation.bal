@@ -3,13 +3,13 @@ import ballerinax/java.jdbc;
 import ballerina/sql;
 
 public function main() returns error? {
-    // Initialize the JDBC client.
+    // Initializes the JDBC client.
     jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
         "rootUser", "rootPass");
-    // Run the prerequisite setup for the example.
+    // Runs the prerequisite setup for the example.
     check beforeExample(jdbcClient);
 
-    // Records to be inserted.
+    // The records to be inserted.
     var insertRecords = [
         {firstName: "Peter", lastName: "Stuart", registrationID: 1,
                                     creditLimit: 5000.75, country: "USA"},
@@ -19,7 +19,7 @@ public function main() returns error? {
                                     creditLimit: 3000.25, country: "USA"}
     ];
 
-    // Create a batch Parameterized Query.
+    // Creates a batch parameterized query.
     sql:ParameterizedQuery[] insertQueries =
         from var data in insertRecords
             select  `INSERT INTO Customers
@@ -27,7 +27,7 @@ public function main() returns error? {
                 VALUES (${data.firstName}, ${data.lastName},
                 ${data.registrationID}, ${data.creditLimit}, ${data.country})`;
     
-    // Insert the records with the auto-generated ID.
+    // Inserts the records with the auto-generated ID.
     sql:ExecutionResult[] result = check jdbcClient -> batchExecute(insertQueries);
 
     int[] generatedIds = [];
@@ -36,7 +36,7 @@ public function main() returns error? {
     }
     io:println("\nInsert success, generated IDs are: ", generatedIds, "\n");
 
-    // Check the data after batch execute.
+    // Checks the data after the batch execution.
     stream<record{}, error> resultStream =
         jdbcClient -> query("SELECT * FROM Customers");
 
@@ -45,13 +45,13 @@ public function main() returns error? {
                  io:println(result.toString());
     });
 
-    // Perform cleanup after the example.
+    // Performs the cleanup after the example.
     check afterExample(jdbcClient);
 }
 
-// Initializes the database as the prerequisite to the example.
+// Initializes the database as a prerequisite to the example.
 function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
-    // Create a table in the database.
+    // Creates a table in the database.
     sql:ExecutionResult result =
         check jdbcClient -> execute(`CREATE TABLE Customers(customerId INTEGER
             NOT NULL IDENTITY, firstName  VARCHAR(300), lastName  VARCHAR(300),
@@ -61,9 +61,9 @@ function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
 
 // Cleans up the database after running the example.
 function afterExample(jdbc:Client jdbcClient) returns sql:Error? {
-    // Clean the database.
+    // Cleans the database.
     sql:ExecutionResult result =
             check jdbcClient -> execute(`DROP TABLE Customers`);
-    // Close the JDBC client.
+    // Closes the JDBC client.
     check jdbcClient.close();
 }

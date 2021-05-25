@@ -3,16 +3,16 @@ import ballerinax/mysql;
 import ballerina/sql;
 
 public function main() returns error? {
-    // Run the prerequisite setup for the example.
+    // Runs the prerequisite setup for the example.
     check beforeExample();
 
-    // Initialize the MySQL client.
+    // Initializes the MySQL client.
     mysql:Client mysqlClient = check new (user = "root",
             password = "Test@123", database = "MYSQL_BBE");
 
     float newCreditLimit = 15000.5;
 
-    // Create a parameterized query for record update.
+    // Creates a parameterized query for the record update.
     sql:ParameterizedQuery updateQuery = 
             `UPDATE Customers SET creditLimit = ${newCreditLimit} 
             where customerId = 1`;
@@ -22,32 +22,32 @@ public function main() returns error? {
 
     string firstName = "Dan";
 
-    // Create a parameterized query for record delete.
+    // Creates a parameterized query for deleting the records.
     sql:ParameterizedQuery deleteQuery =
             `DELETE FROM Customers WHERE firstName = ${firstName}`;
     
     result = check mysqlClient -> execute(deleteQuery);
     io:println("Deleted Row count: ", result.affectedRowCount);
 
-    // Perform cleanup after the example.
+    // Performs the cleanup after the example.
     check afterExample(mysqlClient);
 }
 
-// Initializes the database as the prerequisite to the example.
+// Initializes the database as a prerequisite to the example.
 function beforeExample() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
 
-    // Create a Database.
+    // Creates a Database.
     sql:ExecutionResult result =
         check mysqlClient -> execute(`CREATE DATABASE MYSQL_BBE`);
 
-    //Create a table in the database.
+    //Creates a table in the database.
     result = check mysqlClient -> execute(`CREATE TABLE MYSQL_BBE.Customers
             (customerId INTEGER NOT NULL AUTO_INCREMENT, firstName  
             VARCHAR(300), lastName  VARCHAR(300), registrationID INTEGER, 
             creditLimit DOUBLE, country  VARCHAR(300),PRIMARY KEY (customerId))`);
 
-    // Insert data into the table. The result will have `affectedRowCount`
+    // Inserts data into the table. The result will have `affectedRowCount`
     // and `lastInsertedId` with the auto-generated ID of the last row.
     result = check mysqlClient -> execute(`INSERT INTO MYSQL_BBE.Customers (firstName,
             lastName, registrationID,creditLimit,country) VALUES ('Peter',
@@ -64,9 +64,9 @@ function beforeExample() returns sql:Error? {
 
 // Cleans up the database after running the example.
 function afterExample(mysql:Client mysqlClient) returns sql:Error? {
-    // Clean the database.
+    // Cleans the database.
     sql:ExecutionResult result =
             check mysqlClient -> execute(`DROP DATABASE MYSQL_BBE`);
-    // Close the MySQL client.
+    // Closes the MySQL client.
     check mysqlClient.close();
 }
