@@ -64,28 +64,5 @@
                 "url": "time_formatting_and_parsing"
             }
         ]
-    },
-    {
-        "title": "File",
-        "column": 0,
-        "category": "Language concepts",
-        "samples": [
-            {
-                "name": "File Paths",
-                "url": "filepaths"
-            },
-            {
-                "name": "Directories",
-                "url": "directories"
-            },
-            {
-                "name": "Files",
-                "url": "files"
-            },
-            {
-                "name": "Temp Files and Directories",
-                "url": "temp-files-directories"
-            }
-        ]
     }
 ]
