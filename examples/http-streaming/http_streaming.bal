@@ -16,7 +16,8 @@ service /'stream on new http:Listener(9090) {
             contentType = mime:APPLICATION_PDF);
 
         //Sends the request to the client with the file content.
-        var clientResponse = clientEndpoint->post("/stream/receiver", request);
+        http:Response|error clientResponse =
+            clientEndpoint->post("/stream/receiver", request);
 
         http:Response res = new;
         if (clientResponse is http:Response) {

@@ -1,5 +1,5 @@
 import ballerina/http;
-import ballerina/log;
+import ballerina/io;
 
 // An HTTP client can be configured to initiate new connections that are
 // secured via mutual SSL.
@@ -22,5 +22,5 @@ http:Client securedEP = check new("https://localhost:9090",
 
 public function main() returns error? {
     http:Response response = check securedEP->get("/foo/bar");
-    log:printInfo(response.statusCode.toString());
+    io:println(check response.getTextPayload());
 }

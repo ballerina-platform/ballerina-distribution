@@ -11,18 +11,14 @@ public function main() returns error? {
 
     while (message != ESCAPE) {
         message = io:readln("Message: ");
-        if (message != ESCAPE) {
+        if message != ESCAPE {
+
             // Produces a message to the specified subject.
-            string|stan:Error result =
-                            publisher->publishMessage({
+            string result = check publisher->publishMessage({
                                     content: <@untainted>message.toBytes(),
                                     subject: "demo"});
-            if (result is stan:Error) {
-                io:println("Error occurred while producing the message.");
-            } else {
-                io:println("GUID " + result +
+            io:println("GUID " + result +
                             " received for the produced message.");
-            }
         }
     }
 }

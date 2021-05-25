@@ -3,4 +3,4 @@
 # and execute the `bal run` command below.
 # (You may need to change the trusted certificate file path.)
 bal run http_client_with_basic_auth.bal
-time = 2021-01-20 20:04:13,261 level = INFO  module = "" message = "200"
+Hello, World!

@@ -24,7 +24,7 @@ public function main() returns error? {
     request.setJsonPayload(jsonPart);
 
     // Send an outbound request to the `login` backend resource.
-    var loginResp = httpClient->post("/login", request);
+    http:Response|error loginResp = httpClient->post("/login", request);
 
     if (loginResp is error) {
         log:printError("Login failed", 'error = loginResp);

@@ -58,7 +58,7 @@ transactional function callBusinessService() returns @tainted boolean {
     // Send the request to the backend service.
     http:Request req = new;
     req.setJsonPayload(bizReq);
-    var result = participantEP->post("", req);
+    http:Response|error result = participantEP->post("", req);
     log:printInfo("Got response from bizservice");
     if (result is http:Response) {
         return result.statusCode == http:STATUS_OK;

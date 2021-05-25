@@ -9,7 +9,7 @@ function testFunc() {
     string response1 = "Hello, World!";
 
     // Send a GET request to the specified endpoint
-    var response = httpEndpoint->get("/hello/sayHello");
+    http:Response|error response = httpEndpoint->get("/hello/sayHello");
     if response is http:Response {
         var res = response.getTextPayload();
         if res is error {
