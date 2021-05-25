@@ -16,7 +16,7 @@ public function main() returns error? {
     check file:copy(dirPath, "test", file:REPLACE_EXISTING);
     io:println("The " + dirPath + " directory copied successfully.");
 
-    // Renames the directory in the new another name.
+    // Renames the directory to another new name.
     check file:rename("foo", "test1");
     io:println("The foo directory renamed successfully.");
 
