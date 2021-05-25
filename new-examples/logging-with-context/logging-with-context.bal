@@ -12,7 +12,7 @@ public function main() {
                   current_time = isolated function() returns string {
                       return time:utcToString(time:utcNow());});
     // The following log prints a random percentage as a key/value pair.
-    log:printError("error log",
+    log:printInfo("info log",
                    percentage = isolated function() returns float {
-                       return random:createDecimal() *100.0;});
+                       return random:createDecimal() * 100.0;});
 }
