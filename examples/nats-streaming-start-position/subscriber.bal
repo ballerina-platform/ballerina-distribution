@@ -48,8 +48,8 @@ service stan:Service on lis {
         // Prints the incoming message in the console.
         string|error messageData = string:fromBytes(message.content);
         if messageData is string {
-            log:printInfo("Message Received to service receiveFromLastReceived: "
-                + messageData);
+            log:printInfo("Message Received to service " +
+            "receiveFromLastReceived: " + messageData);
         }
     }
 }
