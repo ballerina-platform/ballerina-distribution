@@ -36,6 +36,6 @@ public function main() returns error? {
     // Discards all the cache entries of the cache.
     _ = check cache.invalidateAll();
 
-    // Gets the keys of the cache entries, after invalidated all the keys.
+    // Gets the keys of the cache entries after all the keys are invalidated.
     io:println("The keys after invalidating all the keys: ", cache.keys());
 }
