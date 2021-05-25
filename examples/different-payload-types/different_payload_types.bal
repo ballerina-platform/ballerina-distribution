@@ -12,7 +12,7 @@ service /actionService on new http:Listener(9090) {
     resource function 'default messageUsage()
             returns string|http:InternalServerError {
         //[GET](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#get) remote function without any payload.
-        var response = clientEP->get("/greeting");
+        http:Response|error response = clientEP->get("/greeting");
         handleResponse(response);
 
         //[GET](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#get) remote function with

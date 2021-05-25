@@ -7,7 +7,7 @@ Compiling source
 
 Running Tests
 
-        ballerinatest/bbe_mocking:0.1.0
+        bbe_mocking
 Executing the 1st GET request
 Status code: 200
 Executing the 2nd GET request
@@ -15,8 +15,6 @@ Status code: 200
 Executing the 1st GET request
 Status code: 200
 Executing the 2nd GET request
-Status code: 404
-Executing the 1st GET request
 Status code: 404
 Executing the 1st GET request
 Status code: 500
@@ -24,10 +22,9 @@ Status code: 500
                 [pass] testMemberVariable
                 [pass] testReturn
                 [pass] testReturnSequence
-                [pass] testReturnWithArgs
                 [pass] testSendNotification
                 [pass] testTestDouble
 
-                6 passing
+                5 passing
                 0 failing
                 0 skipped

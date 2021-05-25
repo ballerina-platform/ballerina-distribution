@@ -12,7 +12,7 @@ service /hello on new http:Listener(9090) {
 
     resource function get .() returns string {
         // Sends a `GET` request to the specified endpoint.
-        var returnResult = clientEndpoint->get("/redirect1");
+        http:Response|error returnResult = clientEndpoint->get("/redirect1");
 
         if (returnResult is http:Response) {
             // Retrieves the text payload from the response.

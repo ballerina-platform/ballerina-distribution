@@ -6,7 +6,7 @@ function testFunc() returns @tainted error? {
     http:Client httpEndpoint = check new("http://localhost:9090");
     json expectedJson = {id: "data-binding-done"};
 
-    var resp = httpEndpoint->get("/call/all");
+    http:Response|error resp = httpEndpoint->get("/call/all");
     if (resp is http:Response) {
         var jsonPayload = check resp.getJsonPayload();
         test:assertEquals(jsonPayload, expectedJson);

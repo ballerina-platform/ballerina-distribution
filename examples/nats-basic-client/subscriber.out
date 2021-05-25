@@ -1,6 +1,0 @@
-# To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-bal run subscriber.bal
-
-[ballerinax/nats] Client subscribed for subject demo.bbe.*
-Received message: Hello from Ballerina

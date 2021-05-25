@@ -13,7 +13,7 @@ function testFunc() {
     http:Request request = new;
     request.setBodyParts(bodyParts, contentType = mime:MULTIPART_FORM_DATA);
 
-    var response1 = httpEP->post("/multiparts/decode", request);
+    http:Response|error response1 = httpEP->post("/multiparts/decode", request);
     if (response1 is http:Response) {
         var result = response1.getBodyParts();
         if (result is mime:Entity[]) {

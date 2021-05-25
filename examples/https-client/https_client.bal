@@ -1,5 +1,5 @@
 import ballerina/http;
-import ballerina/log;
+import ballerina/io;
 
 // An HTTP client can be configured to communicate through HTTPS as well.
 // To secure a client using HTTPS, the client needs to be configured with
@@ -14,5 +14,5 @@ http:Client securedEP = check new("https://localhost:9090",
 
 public function main() returns error? {
     http:Response response = check securedEP->get("/foo/bar");
-    log:printInfo(response.statusCode.toString());
+    io:println(check response.getTextPayload());
 }
