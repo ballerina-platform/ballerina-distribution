@@ -1,6 +1,6 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `bal run` command below.
-bal run uuid.bal
+bal run uuid-operations.bal
 UUID validated: true
 UUID version: V1
 UUID bytes: [67,151,70,94,53,249,17,235,173,193,2,66,172,18,0,2]
