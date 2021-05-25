@@ -24,9 +24,6 @@ class Job {
 
 public function main() returns error? {
 
-    //
-    check task:configureWorkerPool(6, 7000);
-
     // Gets the current time.
     time:Utc currentUtc = time:utcNow();
     // Increases the time by three seconds to set the starting delay for the scheduling job.
