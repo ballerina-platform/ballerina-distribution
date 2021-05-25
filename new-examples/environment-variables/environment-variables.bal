@@ -2,7 +2,7 @@ import ballerina/io;
 import ballerina/os;
 
 public function main() {
-    // Returns the environment variable value associated with "HTTP_PORT".
+    // Returns the environment variable value associated with the `HTTP_PORT`.
     string port = os:getEnv("HTTP_PORT");
     io:println("HTTP_PORT: ", port);
 
