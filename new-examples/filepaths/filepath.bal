@@ -18,7 +18,7 @@ public function main() returns error? {
     string parentPath = check file:parentPath("/A/B/C");
     io:println("Parent of /A/B/C: ", parentPath);
 
-    // Gets the shortest path name equivalent to path by purely lexical processing.
+    // Gets the shortest path name equivalent to the path by purely lexical processing.
     string normalizedPath = check file:normalizePath("foo/../bar", file:CLEAN);
     io:println("Normalized path of foo/../bar: ", normalizedPath);
 

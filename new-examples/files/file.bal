@@ -7,7 +7,7 @@ public function main() returns error? {
     check file:create("bar.txt");
     io:println("The bar.txt file created successfully.");
 
-    // Checks whether the file of the provided path exists.
+    // Checks whether the file exists on the provided path.
     boolean fileExists = check file:test("bar.txt", file:EXISTS);
     io:println("Is the bar.txt file exist: ", fileExists.toString());
 
@@ -15,7 +15,7 @@ public function main() returns error? {
     fileExists = check file:test("bar.txt", file:READABLE);
     io:println("Is the bar.txt file readable: ", fileExists.toString());
 
-    // Checks whether the file is readable or not.
+    // Checks whether the file is writable or not.
     fileExists = check file:test("bar.txt", file:WRITABLE);
     io:println("Is the bar.txt file writeable: ", fileExists.toString());
 
@@ -26,7 +26,7 @@ public function main() returns error? {
     check file:rename("bar.txt", "bar2.txt");
     io:println("The bar.txt file renamed successfully.");
 
-    // Gets metadata information of the file.
+    // Gets the metadata information of the file.
     file:MetaData fileMetadata = check file:getMetaData("bar1.txt");
     io:println("File path: ", fileMetadata.absPath);
     io:println("File size: ", fileMetadata.size.toString());
