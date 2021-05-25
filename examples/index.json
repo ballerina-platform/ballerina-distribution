@@ -619,38 +619,6 @@
         ]
     },
     {
-        "title": "I/O",
-        "column": 3,
-        "category": "Language concepts",
-        "samples": [
-            {
-                "name": "Read/Write Bytes",
-                "url": "bytes-io",
-                "disablePlayground": true
-            },
-            {
-                "name": "Read/Write Strings",
-                "url": "strings-io",
-                "disablePlayground": true
-            },
-            {
-                "name": "Read/Write CSV",
-                "url": "csv-io",
-                "disablePlayground": true
-            },
-            {
-                "name": "Read/Write JSON",
-                "url": "json-io",
-                "disablePlayground": true
-            },
-            {
-                "name": "Read/Write XML",
-                "url": "xml-io",
-                "disablePlayground": true
-            }
-        ]
-    },
-    {
         "title": "Common Libraries",
         "column": 3,
         "category": "Language concepts",
