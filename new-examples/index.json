@@ -64,46 +64,5 @@
                 "url": "time_formatting_and_parsing"
             }
         ]
-    },
-    {
-        "title": "Task",
-        "column": 0,
-        "category": "Language concepts",
-        "samples": [
-            {
-                "name": "Schedule Frequency Job",
-                "url": "task-frequency-job-execution"
-            },
-            {
-                "name": "Schedule One Time Job",
-                "url": "task-one-time-job-execution"
-            },
-            {
-                "name": "Manage Scheduled Jobs",
-                "url": "manage-scheduled-jobs"
-            }
-        ]
-    },
-    {
-        "title": "Regex",
-        "column": 0,
-        "category": "Language concepts",
-        "samples": [
-            {
-                "name": "Regular Expressions",
-                "url": "regular-expressions"
-            }
-        ]
-    },
-    {
-        "title": "XML Data",
-        "column": 0,
-        "category": "Language concepts",
-        "samples": [
-            {
-                "name": "XML/JSON Conversion",
-                "url": "xml-json-conversion"
-            }
-        ]
     }
 ]
