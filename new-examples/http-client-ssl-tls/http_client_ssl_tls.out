@@ -1,11 +1,11 @@
 # As a prerequisite, navigate to the directory that contains the
-# `https_listener.bal` file and execute the `bal run` command below.
+# `http_service_ssl_tls.bal` file and execute the `bal run` command below.
 # (You may need to change the certificate file path and private key file path.)
-bal run https_listener.bal
+bal run http_service_ssl_tls.bal
+[ballerina/http] started HTTPS/WSS listener 0.0.0.0:9090
 
-# Before testing this sample, first start a sample HTTPS service.
 # To run this sample, navigate to the directory that contains the `.bal` file,
 # and execute the `bal run` command below.
 # (You may need to change the trusted certificate file path.)
-bal run https_client.bal
+bal run http_client_ssl_tls.bal
 Hello, World!

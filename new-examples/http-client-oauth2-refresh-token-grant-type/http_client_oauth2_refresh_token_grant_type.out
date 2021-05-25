@@ -2,5 +2,5 @@
 # To run this sample, navigate to the directory that contains the `.bal` file,
 # and execute the `bal run` command below.
 # (You may need to change the trusted certificate file path.)
-bal run http_client_with_oauth2_refresh_token_grant_type.bal
+bal run http_client_oauth2_refresh_token_grant_type.bal
 Hello, World!

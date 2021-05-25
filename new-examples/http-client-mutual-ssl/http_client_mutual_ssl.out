@@ -1,6 +1,12 @@
+# As a prerequisite, navigate to the directory that contains the
+# `http_service_mutual_ssl.bal` file and execute the `bal run` command below.
+# (You may need to change the certificate file path and private key file path.)
+bal run http_service_mutual_ssl.bal
+[ballerina/http] started HTTPS/WSS listener 0.0.0.0:9090
+
 # To run this sample, navigate to the directory that contains the `.bal` file,
 # and execute the `bal run` command below.
 # (You may need to change the certificate file path, private key file path and
 # trusted certificate file path.)
-bal run https_mutual_ssl_client.bal
+bal run http_client_mutual_ssl.bal
 Hello, World!

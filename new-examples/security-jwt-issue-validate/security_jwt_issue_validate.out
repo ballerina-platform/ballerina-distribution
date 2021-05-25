@@ -2,7 +2,7 @@
 # and execute the `bal run` command below.
 # (You may need to change the certificate file path, trusted certificate file
 # path and private key file path.)
-bal run jwt_issue_validate.bal
+bal run security_jwt_issue_validate.bal
 Issued JWT: eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QiLCAia2lkIjoiTlRBeFptTXhORE15WkR
             nM01UVTFaR00wTXpFek9ESmhaV0k0TkRObFpEVTFPR0ZrTmpGaU1RIn0.eyJpc3MiOi
             JiYWxsZXJpbmEiLCAic3ViIjoiYWRtaW4iLCAiYXVkIjoidkV3emJjYXNKVlFtMWpWW
@@ -14,10 +14,7 @@ Issued JWT: eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QiLCAia2lkIjoiTlRBeFptTXhORE15WkR
             sQ6F0GeC4WKEt-xcEY5C2_haEDotSOYhUzEqh6D1fRtrGy7GaH5gzx99n-xjn8NZbTD
             F0VnD6c1kJPe25FiPz24l9KdaCE1i2WbuzEhZWMclHW5RcTXVkLLkjQ4DvxfE-riGmK
             qPN1gatWViZQF_VGBK-G7rEhi9Q
-Validated JWT Payload: {"iss":"ballerina",
-                        "sub":"admin",
+Validated JWT Payload: {"iss":"ballerina","sub":"admin",
                         "aud":"vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
                         "jti":"55a0b754-895f-4279-8843-b745e11a57e9",
-                        "exp":1611127023,"nbf":1611123423,
-                        "iat":1611123423
-                       }
+                        "exp":1611127023,"nbf":1611123423,"iat":1611123423}

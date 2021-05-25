@@ -2,5 +2,5 @@
 # To run this sample, navigate to the directory that contains the `.bal` file,
 # and execute the `bal run` command below.
 # (You may need to change the trusted certificate file path and private key file path.)
-bal run http_client_with_self_signed_jwt_auth.bal
+bal run http_client_self_signed_jwt_auth.bal
 Hello, World!
