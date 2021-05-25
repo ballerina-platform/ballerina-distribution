@@ -2,4 +2,8 @@
 # `.bal` file, and execute the `bal run` command below.
 bal run publisher.bal
 Message: First Message
-GUID m2jS6SLLefK325DWTkkwBh received for the produced message.
+GUID ywNe3mXd96jFL33ouJbFfg received for the produced message.
+Message: Second Message
+GUID ywNe3mXd96jFL33ouJbFkp received for the produced message.
+Message: Third Message
+GUID ywNe3mXd96jFL33ouJbFpy received for the produced message.
