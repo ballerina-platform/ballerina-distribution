@@ -3,7 +3,7 @@ import ballerina/lang.runtime;
 import ballerina/task;
 import ballerina/time;
 
-// Creating a job to be executed by the scheduler.
+// Creates a job to be executed by the scheduler.
 class Job {
 
     *task:Job;
@@ -28,7 +28,7 @@ public function main() returns error? {
     time:Utc currentUtc = time:utcNow();
     // Increases the time by three seconds to set the starting delay for the scheduling job.
     time:Utc newTime = time:utcAddSeconds(currentUtc, 5);
-    // Get the `time:Civil` for the given time.
+    // Gets the `time:Civil` for the given time.
     time:Civil time = time:utcToCivil(newTime);
 
     // Schedules the tasks to execute the job every second.

@@ -2,7 +2,7 @@ import ballerina/io;
 import ballerina/lang.runtime;
 import ballerina/task;
 
-// Creating a job to be executed by the scheduler.
+// Creates a job to be executed by the scheduler.
 class Job {
 
     *task:Job;
@@ -24,7 +24,7 @@ public function main() returns error? {
     // Schedules the task to execute the job every second.
     task:JobId id = check task:scheduleJobRecurByFrequency(new Job(0), 1);
 
-    // Waits for twelve seconds.
+    // Waits for nine seconds.
     runtime:sleep(9);
 
     // Unschedules the job.
