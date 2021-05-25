@@ -2,7 +2,7 @@ import ballerina/cache;
 import ballerina/io;
 
 public function main() returns error? {
-    // This creates a new cache instance with default configurations.
+    // This creates a new cache instance with the default configurations.
     cache:Cache cache = new();
 
     // Adds new entries to the cache.

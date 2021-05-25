@@ -3,9 +3,9 @@ import ballerina/io;
 
 public function main() returns error? {
 
-    // This creates a new cache with custom configuration.
+    // This creates a new cache with the advanced configuration.
     cache:Cache cache = new ({
-        // The maximum size of the cache 10.
+        // The maximum size of the cache is 10.
         capacity: 10,
         // The eviction factor is set to 0.2, which means at the
         // time of eviction 10*0.2=2 entries get removed from the cache.
@@ -17,7 +17,7 @@ public function main() returns error? {
         cleanupInterval: 3
     });
 
-    // Adds new entries to the cache.
+    // Adds the new entries to the cache.
     check cache.put("key1", "value1");
     check cache.put("key2", "value2");
     // Adds a new entry to the cache by overriding the default max age.
@@ -30,12 +30,12 @@ public function main() returns error? {
     // Discards the given cache entry.
     _ = check cache.invalidate("key2");
 
-    // Gets the keys of the cache entries
+    // Gets the keys of the cache entries.
     io:println("The existing keys in after invalidating a given key: ", cache.keys());
 
     // Discards all the cache entries of the cache.
     _ = check cache.invalidateAll();
 
     // Gets the keys of the cache entries, after invalidated all the keys.
-    io:println("The keys in after invalidating all the keys: ", cache.keys());
+    io:println("The keys after invalidating all the keys: ", cache.keys());
 }

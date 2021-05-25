@@ -2,7 +2,7 @@ import ballerina/test;
 
 string[] outputs = [];
 
-// This is the mock function which will replace the real function
+// This is the mock function, which will replace the real function.
 @test:Mock {
     moduleName: "ballerina/io",
     functionName: "println"
@@ -22,7 +22,7 @@ public function mockPrint(any|error... val) {
 function testFunc() returns error? {
     test:when(mock_printLn).call("mockPrint");
 
-    // Invoking the main function
+    // Invoking the main function.
     error? output = main();
     if (output is error) {
         test:assertFail("Test failed");
