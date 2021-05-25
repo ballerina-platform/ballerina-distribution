@@ -27,7 +27,7 @@ service on new http:Listener(9090) {
 @test:Config{}
 function testServiceFunction ()  {
     http:Client httpClient = checkpanic new("http://localhost:9090");
-    var response = httpClient->get("/sayHello");
+    http:Response|error response = httpClient->get("/sayHello");
     if (response is http:Response) {
         test:assertEquals(response.getTextPayload(), "Hello, World!", "Service involation test");
     } else {

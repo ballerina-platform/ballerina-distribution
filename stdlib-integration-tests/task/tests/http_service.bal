@@ -68,7 +68,7 @@ function testTaskWithHttpClient() returns error? {
     time:Civil time = time:utcToCivil(newTime);
     task:JobId id = check task:scheduleJobRecurByFrequency(new Job(), 1, startTime = time);
     runtime:sleep(4);
-    var response = multipleAttachmentClientEndpoint->get("/");
+    http:Response|http:ClientError response = multipleAttachmentClientEndpoint->get("/");
     if (response is http:Response) {
         test:assertEquals(response.getTextPayload(), HTTP_MESSAGE, msg = "Response payload mismatched");
     } else {
@@ -83,7 +83,7 @@ class Job {
     public function execute() {
         http:Request request = new;
         request.setTextPayload(TASK_MESSAGE);
-        var result = httpClient->post("/", request);
+        http:Response|http:ClientError result = httpClient->post("/", request);
         if (result is http:ClientError) {
             panic result;
         } else {

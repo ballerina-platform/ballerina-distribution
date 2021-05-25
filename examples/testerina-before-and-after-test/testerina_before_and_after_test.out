@@ -1,4 +1,5 @@
 bal test test_module
+
 Compiling source
         ballerinatest/test_module:0.1.0
 
