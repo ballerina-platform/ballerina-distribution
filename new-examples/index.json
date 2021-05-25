@@ -1,8 +1,23 @@
 [
     {
+        "title": "Hello World",
+        "column": 0,
+        "category": "Language Concepts",
+        "samples": [
+            {
+                "name": "Hello world main",
+                "url": "hello-world"
+            },
+            {
+                "name": "Hello world service",
+                "url": "hello-world-service"
+            }
+        ]
+    },
+    {
         "title": "Basics",
         "column": 0,
-        "category": "Language concepts",
+        "category": "Language Concepts",
         "samples": [
             {
                 "name": "Programs and modules",
@@ -25,11 +40,11 @@
                 "url": "integers"
             },
             {
-                "name": "Booleans",
+                "name": "Booleans and conditionals",
                 "url": "booleans"
             },
             {
-                "name": "Floating Point Numbers",
+                "name": "Floating point numbers",
                 "url": "floating-point-numbers"
             },
             {
@@ -41,8 +56,242 @@
                 "url": "strings"
             },
             {
-                "name": "Langlib Functions",
+                "name": "Langlib functions",
                 "url": "langlib-functions"
+            },
+            {
+                "name": "Arrays",
+                "url": "arrays"
+            },
+            {
+                "name": "foreach statement",
+                "url": "foreach-statement"
+            },
+            {
+                "name": "while statement",
+                "url": "while-statement"
+            },
+            {
+                "name": "Binary data",
+                "url": "binary-data"
+            },
+            {
+                "name": "Maps",
+                "url": "maps"
+            },
+            {
+                "name": "Type definitions",
+                "url": "type-definitions"
+            },
+            {
+                "name": "Records",
+                "url": "records"
+            },
+            {
+                "name": "Structural typing",
+                "url": "structural-typing"
+            },
+            {
+                "name": "Unions",
+                "url": "unions"
+            },
+            {
+                "name": "Error reporting",
+                "url": "error-reporting"
+            },
+            {
+                "name": "Error handling",
+                "url": "error-handling"
+            },
+            {
+                "name": "check expression",
+                "url": "check-expression"
+            },
+            {
+                "name": "Error subtyping",
+                "url": "error-subtyping"
+            },
+            {
+                "name": "Panics",
+                "url": "panics"
+            },
+            {
+                "name": "Ignoring return values and errors",
+                "url": "ignoring-return-values-and-errors"
+            },
+            {
+                "name": "Covariance",
+                "url": "covariance"
+            },
+            {
+                "name": "Object",
+                "url": "object"
+            },
+            {
+                "name": "Defining classes",
+                "url": "defining-classes"
+            },
+            {
+                "name": "init return type",
+                "url": "init-return-type"
+            },
+            {
+                "name": "Identity",
+                "url": "identity"
+            },
+            {
+                "name": "const and final ",
+                "url": "const-and-final"
+            },
+            {
+                "name": "Enumerations",
+                "url": "enumerations"
+            },
+            {
+                "name": "match statement",
+                "url": "match-statement"
+            },
+            {
+                "name": "Type inference ",
+                "url": "type-inference"
+            },
+            {
+                "name": "Function values",
+                "url": "function-values"
+            },
+            {
+                "name": "Asynchronous function calls",
+                "url": "asynchronous-function-calls"
+            },
+            {
+                "name": "Annotations",
+                "url": "annotations"
+            },
+            {
+                "name": "Documentation",
+                "url": "documentation"
+            }
+        ]
+    },
+    {
+        "title": "Network interaction",
+        "column": 0,
+        "category": "Language Concepts",
+        "samples": [
+            {
+                "name": "Consuming services: Client objects",
+                "url": "consuming-services"
+            },
+            {
+                "name": "Providing services",
+                "url": "providing-services"
+            },
+            {
+                "name": "Module lifecycle",
+                "url": "module-lifecycle"
+            },
+            {
+                "name": "Service declaration",
+                "url": "service-declaration"
+            },
+            {
+                "name": "Resource methods",
+                "url": "resource-methods"
+            },
+            {
+                "name": "Hierarchical resources",
+                "url": "hierarchical-resources"
+            },
+            {
+                "name": "Resource path parameters",
+                "url": "resource-path-parameters"
+            }
+        ]
+    },
+    {
+        "title": "Working with Data",
+        "column": 0,
+        "category": "Language Concepts",
+        "samples": [
+            {
+                "name": "anydata type",
+                "url": "any-type"
+            },
+            {
+                "name": "match statement with Maps",
+                "url": "match-statement-with-maps"
+            },
+            {
+                "name": "Converting from user-defined type to JSON",
+                "url": "converting-from-user-defined-type-to-json"
+            },
+            {
+                "name": "Converting from JSON to user-defined type",
+                "url": "converting-from-json-to-user-defined-type"
+            },
+            {
+                "name": "Converting to user-defined type",
+                "url": "converting-to-user-defined-type"
+            },
+            {
+                "name": "Resource method typing",
+                "url": "resource-method-typing"
+            },
+            {
+                "name": "Query expressions",
+                "url": "query-expressions"
+            },
+            {
+                "name": "Destructuring records",
+                "url": "destructuring-records"
+            },
+            {
+                "name": "Let clause",
+                "url": "let-clause"
+            },
+            {
+                "name": "Ordering",
+                "url": "ordering"
+            },
+            {
+                "name": "Limit clause",
+                "url": "limit-clause"
+            },
+            {
+                "name": "Multiple key fields",
+                "url": "multiple-key-fields"
+            },
+            {
+                "name": "structured keys",
+                "url": "structured-keys"
+            },
+            {
+                "name": "Querying tables",
+                "url": "querying-tables"
+            },
+            {
+                "name": "Creating tables with query",
+                "url": "creating-tables-with-query"
+            },
+            {
+                "name": "Join clause",
+                "url": "join-clause"
+            },
+            {
+                "name": "xml templates",
+                "url": "xml-templates"
+            },
+            {
+                "name": "xml operations",
+                "url": "xml-operations"
+            },
+            {
+                "name": "xml subtyping",
+                "url": "xml-subtyping"
+            },
+            {
+                "name": "xml navigation ",
+                "url": "xml-navigation"
             }
         ]
     },
