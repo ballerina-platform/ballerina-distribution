@@ -72,27 +72,27 @@
         "samples": [
             {
                 "name": "Read/Write Bytes",
-                "url": "bytes-io",
+                "url": "io-bytes",
                 "disablePlayground": true
             },
             {
                 "name": "Read/Write Strings",
-                "url": "strings-io",
+                "url": "io-strings",
                 "disablePlayground": true
             },
             {
                 "name": "Read/Write CSV",
-                "url": "csv-io",
+                "url": "io-csv",
                 "disablePlayground": true
             },
             {
                 "name": "Read/Write JSON",
-                "url": "json-io",
+                "url": "io-json",
                 "disablePlayground": true
             },
             {
                 "name": "Read/Write XML",
-                "url": "xml-io",
+                "url": "io-xml",
                 "disablePlayground": true
             }
         ]
