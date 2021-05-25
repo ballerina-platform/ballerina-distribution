@@ -64,20 +64,5 @@
                 "url": "time_formatting_and_parsing"
             }
         ]
-    },
-    {
-        "title": "Cache",
-        "column": 0,
-        "category": "Language concepts",
-        "samples": [
-            {
-                "name": "Cache Basics",
-                "url": "cache-basics"
-            },
-            {
-                "name": "Cache Invalidation",
-                "url": "cache-invalidation"
-            }
-        ]
     }
 ]
