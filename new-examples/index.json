@@ -310,7 +310,39 @@
             },
             {
                 "name": "Time Formatting/Parsing",
-                "url": "time_formatting_and_parsing"
+                "url": "time-formatting-and-parsing"
+            }
+        ]
+    },
+    {
+        "title": "I/O",
+        "column": 3,
+        "category": "Language concepts",
+        "samples": [
+            {
+                "name": "Read/Write Bytes",
+                "url": "io-bytes",
+                "disablePlayground": true
+            },
+            {
+                "name": "Read/Write Strings",
+                "url": "io-strings",
+                "disablePlayground": true
+            },
+            {
+                "name": "Read/Write CSV",
+                "url": "io-csv",
+                "disablePlayground": true
+            },
+            {
+                "name": "Read/Write JSON",
+                "url": "io-json",
+                "disablePlayground": true
+            },
+            {
+                "name": "Read/Write XML",
+                "url": "io-xml",
+                "disablePlayground": true
             }
         ]
     }

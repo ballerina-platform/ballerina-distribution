@@ -3,8 +3,8 @@
 # tree .
 # ├── files
 # │   └── ballerina.jpeg
-# └── bytes_io.bal
-bal run bytes_io.bal
+# └── io_bytes.bal
+bal run io_bytes.bal
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `bal run` command below.
 
