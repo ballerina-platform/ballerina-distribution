@@ -27,7 +27,7 @@ time = 2021-05-25T11:11:24.915+05:30 level = WARN module = "" message = "warn lo
 # level = "[LOG_LEVEL]"
 # ```
 
-# By default, log messages are logged to the console in LogFmt format.
+# By default, log messages are logged to the console in the LogFmt format.
 # To set the output format to JSON, place the entry given below in the `Config.toml` file and run the sample.
 # ```
 # [ballerina.log]
