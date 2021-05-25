@@ -1,0 +1,2 @@
+bal run readonly_type.bal
+[{"k":["foo","bar"],"value":17}]

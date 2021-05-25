@@ -1,0 +1,8 @@
+bal run json_numbers.bal
+[1, 2.1, 3.24]
+[1,2.1,3.24]
+typedesc int
+typedesc decimal
+typedesc decimal
+3.24
+typedesc float

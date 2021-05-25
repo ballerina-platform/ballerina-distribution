@@ -1,0 +1,7 @@
+// Object is a separate basic type.
+// An object value has named methods and fields.
+// Methods and fields are in the same symbol space.
+// A class both defines an object type and provides a way to construct an object.
+// Apply `new` operator to a class to get an object.
+// Call method using `obj.foo(args)`.
+// Access field using `obj.x`.

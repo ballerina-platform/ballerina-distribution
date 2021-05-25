@@ -1,0 +1,3 @@
+// Record types are by default open: they allow fields other than those specified. The type of unspecified
+// fields are `anydata`. Records are `maps`. Open records belongs to `map<anydata>`. Use quoted keys for
+// fields not mentioned in the `record` type.

@@ -1,0 +1,5 @@
+bal run named_workers.bal
+Initializing
+Hello from function worker
+Hello from worker B
+Hello from worker A

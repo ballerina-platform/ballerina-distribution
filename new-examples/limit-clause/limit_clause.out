@@ -1,0 +1,4 @@
+bal run limit_clause.bal
+{"firstName":"Michael","lastName":"Cain","salary":10000.00}
+{"firstName":"Anne","lastName":"Frank","salary":5000.00}
+{"firstName":"Tom","lastName":"Hiddleston","salary":2000.00}

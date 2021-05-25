@@ -1,0 +1,2 @@
+// Query-like expressions start with `from` clause and end with `select` clause. It is a
+// list comprehension, based on mathematical "set builder" notation.

@@ -1,0 +1,4 @@
+bal run inferring_isolated.bal
+true
+Hello Anne
+Hello John

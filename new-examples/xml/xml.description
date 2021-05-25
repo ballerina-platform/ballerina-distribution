@@ -1,0 +1,5 @@
+// `xml` is a separate basic type. Uses sequence concept similar to XQuery and XPath2. Based on XML Infoset,
+// rather than PSVI. Allows XM` syntax to be used to construct `xml` values. `xml` type is designed to
+// work well for HTML as well as XML. Navigation syntax with XPath-like functionality. Works with `query
+// expressions` to provide XQuery FLWOR-like functionality. No up pointers: elements do not have a reference to
+// parents or siblings.

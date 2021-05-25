@@ -1,0 +1,3 @@
+// `boolean` type has two values: `true`, `false`.
+// The `!` operator works on booleans only.  `&&` and `||` operators short-curcit as in C. 
+// Usual comparison operators produce boolean values: `== != < > <= >=`.

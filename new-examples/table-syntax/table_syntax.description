@@ -1,0 +1,4 @@
+// A `record` field can be declared as `readonly`: cannot assign to the field after the record is created.
+// `table` type gives type of row and name of key field. `table constructor expression` looks like an
+// `array constructor`. `foreach` statement will iterate over a table's rows in order. Use `t[k]`
+// to access a row using its key.
