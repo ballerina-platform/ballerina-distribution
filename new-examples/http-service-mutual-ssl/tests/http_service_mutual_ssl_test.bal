@@ -1,15 +1,13 @@
 import ballerina/http;
 import ballerina/test;
 
-http:Client securedEP = check new("https://localhost:9090",
+http:Client clientEP = check new("https://localhost:9090",
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
             keyFile: "../resource/path/to/private.key"
         },
-        mutualSsl: {
-            cert: "../resource/path/to/public.crt"
-        },
+        cert: "../resource/path/to/public.crt",
         protocol: {
             name: http:TLS
         },

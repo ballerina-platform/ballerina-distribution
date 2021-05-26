@@ -10,9 +10,7 @@ http:Client securedEP = check new("https://localhost:9090",
             certFile: "../resource/path/to/public.crt",
             keyFile: "../resource/path/to/private.key"
         },
-        mutualSsl: {
-            cert: "../resource/path/to/public.crt"
-        },
+        cert: "../resource/path/to/public.crt",
         protocol: {
             name: http:TLS
         },
