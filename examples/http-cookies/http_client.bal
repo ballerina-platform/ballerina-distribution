@@ -34,12 +34,9 @@ public function main() returns error? {
         // As cookies are enabled in the HTTP client, it automatically handles cookies
         // received with the login response and sends the relevant cookies
         // to the `welcome` service resource.
-        var welcomeResp = httpClient->get("/welcome", targetType = string);
+        string welcomeResp = check httpClient->get("/welcome");
 
-        if (welcomeResp is string) {
-            // A welcome message with the sent username
-            // will get printed.
-            log:printInfo(welcomeResp);
-        }
+        // A welcome message with the sent username will get printed.
+        log:printInfo(welcomeResp);
     }
 }
