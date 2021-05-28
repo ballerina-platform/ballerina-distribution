@@ -1,0 +1,3 @@
+bal run transactional_qualifier.bal
+Calling from a transactional context
+Calling from a transactional context
