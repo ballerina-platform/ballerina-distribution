@@ -1,6 +1,6 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file and execute the `bal run` command below.
-bal run file.bal
+bal run files.bal
 The bar.txt file created successfully.
 Is the bar.txt file exists: true
 Is the bar.txt file readable: true
