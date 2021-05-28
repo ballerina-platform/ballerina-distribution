@@ -48,7 +48,10 @@
 - sublinks: {}
   title: HTTP2
   url: '#'
-- sublinks: {}
+- sublinks:
+    active: graphql-input-types
+    title: Input Types
+    url: /learn/by-example/graphql-input-types/
   title: GraphQL
   url: '#'
 - sublinks: {}
