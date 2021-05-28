@@ -1,6 +1,6 @@
 import ballerina/io;
 
-public function main() returns @tainted error? {
+public function main() returns error? {
     // Initializes the XML file path and content.
     string xmlFilePath = "./files/xmlFile.xml";
     xml xmlContent = xml `<book>The Lost World</book>`;
