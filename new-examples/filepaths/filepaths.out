@@ -1,6 +1,6 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file and issue the `bal run` command below.
-bal run filepath.bal
+bal run filepaths.bal
 On Unix:
 Absolute path of test.txt: /A/test.txt
 /A/B/C is absolute: true
