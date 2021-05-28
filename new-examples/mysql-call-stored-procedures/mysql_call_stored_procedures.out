@@ -1,6 +1,6 @@
-# To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `bal run` command below.
-bal run mysql_call_stored_procedures.bal
+# To run this sample, Create a ballerina project, copy the `mysql_call_stored_procedures.bal`
+#file to the project home directory, add dependency jar details to `Ballerina.toml` and execute the `bal run` command below.
+bal run
 
 Call stored procedure `InsertStudent`.
 Affected Row count: 1
