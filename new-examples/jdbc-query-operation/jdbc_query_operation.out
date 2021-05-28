@@ -1,5 +1,6 @@
-# To run this sample, Create a ballerina project, copy the `jdbc_query_operation.bal`
-#file to the project home directory, add dependency jar details to `Ballerina.toml` and execute the `bal run` command below.
+# Create a Ballerina project.
+# Copy the example to the project and add relevant database driver jar details to the `Ballerina.toml` file.
+# Execute the command below to build and run the project.
 bal run
 
 Full Customer details: {"CUSTOMERID":1,"FIRSTNAME":"Peter","LASTNAME":"Stuart","REGISTRATIONID":1,"CREDITLIMIT":5000.75,"COUNTRY":"USA"}

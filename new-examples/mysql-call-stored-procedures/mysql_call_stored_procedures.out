@@ -1,5 +1,6 @@
-# To run this sample, Create a ballerina project, copy the `mysql_call_stored_procedures.bal`
-#file to the project home directory, add dependency jar details to `Ballerina.toml` and execute the `bal run` command below.
+# Create a Ballerina project.
+# Copy the example to the project and add relevant database driver jar details to the `Ballerina.toml` file.
+# Execute the command below to build and run the project.
 bal run
 
 Call stored procedure `InsertStudent`.
