@@ -1295,48 +1295,6 @@
         ]
     },
     {
-        "title": "Kafka",
-        "column": 3,
-        "category": "Working over the network",
-        "samples": [
-            {
-                "name": "Producer",
-                "url": "kafka-producer",
-                "disablePlayground": true
-            },
-            {
-                "name": "Consumer Service",
-                "url": "kafka-consumer-service",
-                "disablePlayground": true
-            },
-            {
-                "name": "Consumer Client",
-                "url": "kafka-consumer-client",
-                "disablePlayground": true
-            },
-            {
-                "name": "Transactional Producer",
-                "url": "kafka-producer-transactional",
-                "disablePlayground": true
-            },
-            {
-                "name": "Consumer Groups",
-                "url": "kafka-consumer-group-service",
-                "disablePlayground": true
-            },
-            {
-                "name": "SASL Authentication - Consumer",
-                "url": "kafka-authentication-sasl-plain-consumer",
-                "disablePlayground": true
-            },
-            {
-                "name": "SASL Authentication - Producer",
-                "url": "kafka-authentication-sasl-plain-producer",
-                "disablePlayground": true
-            }
-        ]
-    },
-    {
         "title": "RabbitMQ",
         "column": 3,
         "category": "Working over the network",
