@@ -1,6 +1,6 @@
 import ballerina/io;
 
-public function main() returns @tainted error? {
+public function main() returns error? {
     // Initializes the image paths.
     string imagePath = "./files/ballerina.jpg";
     string imageCopyPath1 = "./files/ballerinaCopy1.jpg";

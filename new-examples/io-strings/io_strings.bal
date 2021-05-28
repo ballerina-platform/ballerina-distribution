@@ -1,6 +1,6 @@
 import ballerina/io;
 
-public function main() returns @tainted error? {
+public function main() returns error? {
     // Initializes the text path and the content.
     string textFilePath1 = "./files/textfile1.txt";
     string textFilePath2 = "./files/textfile2.txt";

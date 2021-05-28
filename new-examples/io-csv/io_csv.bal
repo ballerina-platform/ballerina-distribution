@@ -1,6 +1,6 @@
 import ballerina/io;
 
-public function main() returns @tainted error? {
+public function main() returns error? {
     // Initializes the CSV file path and content.
     string csvFilePath1 = "./files/csvFile1.csv";
     string csvFilePath2 = "./files/csvFile2.csv";
