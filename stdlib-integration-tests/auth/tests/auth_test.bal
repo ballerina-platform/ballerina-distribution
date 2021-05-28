@@ -54,7 +54,7 @@ public function testAuthModuleFileUserStore1() {
             password: "alice@123"
         }
     });
-    var response = clientEP->get("/foo/bar");
+    http:Response|http:ClientError response = clientEP->get("/foo/bar");
     if (response is http:Response) {
         assertOK(response);
     } else {
@@ -76,7 +76,7 @@ public function testAuthModuleFileUserStore2() {
             password: "bob@123"
         }
     });
-    var response = clientEP->get("/foo/bar");
+    http:Response|http:ClientError response = clientEP->get("/foo/bar");
     if (response is http:Response) {
         assertForbidden(response);
     } else {
@@ -98,7 +98,7 @@ public function testAuthModuleFileUserStore3() {
             password: "eve@123"
         }
     });
-    var response = clientEP->get("/foo/bar");
+    http:Response|http:ClientError response = clientEP->get("/foo/bar");
     if (response is http:Response) {
         assertUnauthorized(response);
     } else {

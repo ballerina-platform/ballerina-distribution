@@ -3,7 +3,6 @@ import ballerina/test;
 
 // This test function depends on the `testFunction3`.
 @test:Config { 
-    // You can provide a list of the dependent functions here.
     dependsOn: [testFunction3] }
 function testFunction1() {
     io:println("I'm in test function 1!");

@@ -1,0 +1,5 @@
+# To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `bal run` command below.
+bal run publisher.bal
+
+Reply message: Hello Back!

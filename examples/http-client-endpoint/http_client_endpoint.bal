@@ -7,7 +7,7 @@ http:Client clientEndpoint = check new ("http://postman-echo.com");
 public function main() {
     io:println("GET request:");
     // Sends a `GET` request to the specified endpoint.
-    var response = clientEndpoint->get("/get?test=123");
+    http:Response|error response = clientEndpoint->get("/get?test=123");
     // Handles the response.
     handleResponse(response);
 

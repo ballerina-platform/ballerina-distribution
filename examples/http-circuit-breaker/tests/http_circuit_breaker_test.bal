@@ -9,7 +9,7 @@ function testFunc() {
 
     string responseString = "Hello World!!!";
     // Send a GET request to the specified endpoint
-    var response1 = httpEndpoint->get("/cb");
+    http:Response|error response1 = httpEndpoint->get("/cb");
     if (response1 is http:Response) {
         var result = response1.getTextPayload();
         if (result is string) {
@@ -22,7 +22,7 @@ function testFunc() {
     }
 
     // Send a GET request to the specified endpoint.
-    var response2 = httpEndpoint->get("/cb");
+    http:Response|error response2 = httpEndpoint->get("/cb");
     if (response2 is http:Response) {
         var result = response2.getTextPayload();
         if (result is string) {
@@ -35,7 +35,7 @@ function testFunc() {
     }
 
     // Send a GET request to the specified endpoint.
-    var response3 = httpEndpoint->get("/cb");
+    http:Response|error response3 = httpEndpoint->get("/cb");
     if (response3 is http:Response) {
         var result = response3.getTextPayload();
         if (result is string) {
@@ -48,7 +48,7 @@ function testFunc() {
     }
 
     // Send a GET request to the specified endpoint.
-    var response4 = httpEndpoint->get("/cb");
+    http:Response|error response4 = httpEndpoint->get("/cb");
     if (response4 is http:Response) {
         string|error result = response4.getTextPayload();
     } else {
@@ -56,7 +56,7 @@ function testFunc() {
     }
 
     // Send a GET request to the specified endpoint.
-    var response5 = httpEndpoint->get("/cb");
+    http:Response|error response5 = httpEndpoint->get("/cb");
     if (response5 is http:Response) {
         string|error result = response5.getTextPayload();
     } else {
@@ -66,7 +66,7 @@ function testFunc() {
     io:println("Reached");
 
     // Send a GET request to the specified endpoint.
-    var response6 = httpEndpoint->get("/cb");
+    http:Response|error response6 = httpEndpoint->get("/cb");
     if (response6 is http:Response) {
         string|error result = response6.getTextPayload();
     } else {

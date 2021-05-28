@@ -50,7 +50,8 @@ service /cb on new http:Listener(9090) {
 
     resource function get .(http:Request request)
             returns http:Response|http:InternalServerError {
-        var backendResponse = backendClientEP->forward("/hello", request);
+        http:Response|error backendResponse =
+            backendClientEP->forward("/hello", request);
         // If the `backendResponse` is an `http:Response`, it is sent back to
         // the client. If `backendResponse` is an `http:ClientError`, an
         // internal server error is returned to the client.

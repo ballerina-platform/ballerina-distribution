@@ -7,7 +7,7 @@ function testFunc() returns error? {
 
     json jsonPayload = { "Details": { "ID": "77999", "Name": "XYZ"} , "Location": { "No": "01", "City": "Colombo"}};
     json expectedJson = {"ID":"77999","Name":"XYZ"};
-    var response = httpEndpoint->post("/hello/bindJson", jsonPayload);
+    http:Response|error response = httpEndpoint->post("/hello/bindJson", jsonPayload);
     if (response is http:Response) {
         json actualPayload = check response.getJsonPayload();
         test:assertEquals(actualPayload, expectedJson);

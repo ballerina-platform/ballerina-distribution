@@ -68,7 +68,7 @@ public function testOAuth2Module() {
             token: ACCESS_TOKEN
         }
     });
-    var response = clientEP->get("/foo/bar");
+    http:Response|http:ClientError response = clientEP->get("/foo/bar");
     if (response is http:Response) {
         assertOK(response);
     } else {

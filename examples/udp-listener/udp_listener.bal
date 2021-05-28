@@ -5,7 +5,8 @@ import ballerina/udp;
 // Optionally, you can provide the `remoteHost` and `remotePort` to
 // configure the listener as a connected listener, which only
 // reads and writes to the configured remote host.
-// udp:Listener(8080, remoteHost = "www.remote-clinet.com", remotePort = 9090)
+// E.g.: `udp:Listener(8080, remoteHost
+// = "www.remote-clinet.com", remotePort = 9090)`
 service on new udp:Listener(8080) {
 
     // This remote method is invoked once the content is received from the
