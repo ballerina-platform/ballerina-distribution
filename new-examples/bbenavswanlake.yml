@@ -1,0 +1,130 @@
+- title: Language Concepts
+- title: Hello World
+  url: '#'
+  sublinks:
+    - title: Hello World Main
+      url: /downloads/swan-lake-release-notes/hello-world-main
+      active: hello-world-main
+    - title: Hello World Service 
+      url: /downloads/swan-lake-release-notes/hello-world-service
+      active: hello-world-service
+- title: Basics
+  url: '#'
+  sublinks:
+    - title: Programs and Modules
+      url: /downloads/swan-lake-release-notes/programs-and-modules
+      active: programs-and-modules
+    - title: Variables and types 
+      url: /downloads/swan-lake-release-notes/variables-and-types
+      active: variables-and-types
+    - title: Functions 
+      url: /downloads/swan-lake-release-notes/functions
+      active: functions
+    - title: Identifiers 
+      url: /downloads/swan-lake-release-notes/identifiers
+      active: identifiers
+    - title: Integers
+      url: /downloads/swan-lake-release-notes/integers
+      active: integers
+    - title: Booleans and Conditionals 
+      url: /downloads/swan-lake-release-notes/booleans
+      active: booleans
+    - title: Floating point numbers 
+      url: /downloads/swan-lake-release-notes/floating-point-numbers
+      active: floating-point-numbers
+    - title: Nil 
+      url: /downloads/swan-lake-release-notes/nil
+      active: nil
+    - title: Strings 
+      url: /downloads/swan-lake-release-notes/strings
+      active: strings
+    - title: Langlib Functions 
+      url: /downloads/swan-lake-release-notes/langlib-functions
+      active: langlib-functions
+    - title: Arrays 
+      url: /downloads/swan-lake-release-notes/arrays
+      active: arrays
+    - title: Foreach Statement 
+      url: /downloads/swan-lake-release-notes/foreach-statement
+      active: foreach-statement
+    - title: While Statement 
+      url: /downloads/swan-lake-release-notes/while-statement
+      active: while-statement
+    - title: Binary Data 
+      url: /downloads/swan-lake-release-notes/binary-data
+      active: binary-data
+    - title: Maps 
+      url: /downloads/swan-lake-release-notes/maps
+      active: maps
+    - title: Type Definitions 
+      url: /downloads/swan-lake-release-notes/type-definitions
+      active: type-definitions
+    - title: Records 
+      url: /downloads/swan-lake-release-notes/records
+      active: records
+    - title: Structural Typing
+      url: /downloads/swan-lake-release-notes/structural-typing
+      active: structural-typing
+    - title: Unions 
+      url: /downloads/swan-lake-release-notes/unions
+      active: unions
+    - title: Error Reporting 
+      url: /downloads/swan-lake-release-notes/error-reporting
+      active: error-reporting
+    - title: Error Handling 
+      url: /downloads/swan-lake-release-notes/error-handling
+      active: error-handling
+    - title: Check Expression 
+      url: /downloads/swan-lake-release-notes/check-expression
+      active: check-expression
+    - title: Error Subtyping 
+      url: /downloads/swan-lake-release-notes/error-subtyping
+      active: error-subtyping
+    - title: Panics 
+      url: /downloads/swan-lake-release-notes/panics
+      active: panics
+    - title: Any Type 
+      url: /downloads/swan-lake-release-notes/any-data-type
+      active: any-data-type
+    - title: Ignoring Return Values and Errors 
+      url: /downloads/swan-lake-release-notes/ignoring-return-values-and-errors
+      active: ignoring-return-values-and-errors
+    - title: Covariance 
+      url: /downloads/swan-lake-release-notes/covariance
+      active: covariance
+    - title: Object 
+      url: /downloads/swan-lake-release-notes/object
+      active: object
+    - title: Defining Classes 
+      url: /downloads/swan-lake-release-notes/defining-classes
+      active: defining-classes
+    - title: Init Return Type 
+      url: /downloads/swan-lake-release-notes/init-return-type
+      active: init-return-type
+    - title: Identity 
+      url: /downloads/swan-lake-release-notes/identity
+      active: identity
+    - title: Const and Final  
+      url: /downloads/swan-lake-release-notes/const-and-final 
+      active: const-and-final
+    - title: Enumerations 
+      url: /downloads/swan-lake-release-notes/enumerations
+      active: enumerations
+    - title: Match Statement 
+      url: /downloads/swan-lake-release-notes/match-statement
+      active: match-statement
+    - title: Type Inference  
+      url: /downloads/swan-lake-release-notes/type-inference 
+      active: type-inference
+    - title: Function Values 
+      url: /downloads/swan-lake-release-notes/function-values
+      active: function-values
+    - title: Asynchronous function calls 
+      url: /downloads/swan-lake-release-notes/asynchronous-function-calls
+      active: asynchronous-function-calls
+    - title: Annotations 
+      url: /downloads/swan-lake-release-notes/annotations
+      active: annotations
+    - title: Documentation 
+      url: /downloads/swan-lake-release-notes/documentation
+      active: documentation
