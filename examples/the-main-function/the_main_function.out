@@ -1,19 +1,27 @@
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `bal run` command below.
 
-# Use the ballerina `run` command to invoke the `main` function specifying `Alice`
-# as the string argument for `name`, 18 as the `age` and `Sophomore` as the string
-# argument for `year`.
-bal run the_main_function.bal -- Alice 18 Sophomore
-Name: Alice, Age: 18, Year: Sophomore
+# Use the ballerina `run` command to invoke the `main` function 
+# specifying the value `3` as the`after-context` and 
+# the value `4` as the `before-context`.
+# The values of the `ignore-case`, `recursive`, and `line-number` options 
+# can be set to `true` by specifying them explicitly.
+# `file` is an optional option argument, which is the the name of `file` with
+# newline-separated patterns to search for.
+# The operand arguments for `pattern` and `fileName` can be specified along 
+# with the options but they have to be specified in the same order. 
+# Here, `pattern` is specified as `context` and `fileName` is specified
+# as `the_main_function.bal`
 
-# Use the ballerina `run` command to invoke the `main` function specifying values for
-# all parameters, including the rest parameter. All arguments are specified as
-# operands.
-bal run the_main_function.bal -- Alice 20 Sophomore math physics
-Name: Alice, Age: 20, Year: Sophomore, Module(s): ["math","physics"]
+bal run the_main_function.bal -- --after-context 3 --before-context=4 --ignore-case --recursive --line-number "context" the_main_function.bal
+The options for 'grep' command is set to the following: 
+Print '3' lines of the trailing context after each match
+Print '4' lines of the leading context after each match
+Perform case insensitive matching
+Precede each output line by its line number
+Recursively search subdirectories listed
 
-# Use the ballerina `run` command to invoke the `main` function specifying an invalid 
-# string as the argument for `name`. The `error` returned would be printed.
- bal run the_main_function.bal -- Ali 30 Freshman
-error: InvalidName {"message":"invalid length"}
+The operands for the 'grep'  command is set to the following: 
+The pattern to search for is 'context'
+The file to search in is 'the_main_function.bal'
+
