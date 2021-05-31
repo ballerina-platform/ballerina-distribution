@@ -736,6 +736,10 @@
             {
                 "name": "Bidirectional Streaming RPC",
                 "url": "grpc-bidirectional-streaming"
+            },
+            {
+                "name": "Proto To Ballerina",
+                "url": "proto-to-ballerina"
             }
         ]
     },
