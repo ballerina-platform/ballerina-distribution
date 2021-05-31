@@ -558,10 +558,7 @@
       active: websub-webhook-sample
 - title: Listeners
   url: '#'
-  sublinks:  
-    - title: Directory Listener
-      url: /learn/by-example/directory-listener
-      active: directory-listener  
+  sublinks:
     - title: Dynamic Listener
       url: /learn/by-example/dynamic-listener
       active: dynamic-listener  
