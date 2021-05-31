@@ -12,7 +12,7 @@ service graphql:Service /graphql on new graphql:Listener(4000) {
 }
 
 // Define a service class to use in GraphQL service.
-service class Person {
+isolated service class Person {
     private final string name;
     private final int age;
 
