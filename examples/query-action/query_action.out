@@ -1,7 +1,0 @@
-# To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `bal run` command below.
-bal run query_action.bal
-
-{"firstName":"Michelle","lastName":"Sadler"}
-{"firstName":"Ranjan","lastName":"Fonseka"}
-{"firstName":"Martin","lastName":"Guthrie"}
