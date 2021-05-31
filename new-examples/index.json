@@ -735,22 +735,6 @@
         ]
     },
     {
-        "title": "OpenAPI",
-        "column": 0,
-        "category": "Working Over the Network",
-        "samples": [
-            {
-                "name": "Ballerina To OpenAPI",
-                "url": "ballerina-to-openapi"
-            },
-            {
-                "name": "OpenAPI To Ballerina",
-                "url": "openapi-to-ballerina"
-            }
-
-        ]
-    },
-    {
         "title": "NATS",
         "column": 0,
         "category": "Working Over the Network",
