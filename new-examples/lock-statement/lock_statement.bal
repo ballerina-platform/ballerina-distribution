@@ -7,6 +7,7 @@ function inc() {
     lock {
         n += 1;
     }
+
     io:println(n);
 }
 

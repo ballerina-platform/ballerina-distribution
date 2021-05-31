@@ -6,6 +6,7 @@ public function main() {
         // It is safe to access the parameters of `sayHello` for the
         // duration of the function call.
         string a = sayHello("John");
+
         io:println(a);
     }
 
@@ -16,6 +17,7 @@ public function main() {
 
     // `sayHello` is inferred to be an `isolated` function.
     boolean c = sayHello is isolated function (string str) returns string;
+
     io:println(c);
 }
 
