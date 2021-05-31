@@ -1,6 +1,6 @@
 import ballerina/io;
 
-// An `xml` value belongs to `xml:Element` if it is consists of just an element
+// An `xml` value belongs to `xml:Element` if it consists of just an element
 // item. 
 xml:Element element = xml `<p>Hello</p>`;
 
