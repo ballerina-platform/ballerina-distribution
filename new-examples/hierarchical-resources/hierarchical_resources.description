@@ -1,2 +1,2 @@
-// Resource name is relative path, which can have multiple path seqments.
-// Base path is absolute path. Single listener can have multple services each with different base paths.
+// Resource name is relative path, which can have multiple path segments.
+// Base path is absolute path. A listener can have multiple services each with different base paths.
