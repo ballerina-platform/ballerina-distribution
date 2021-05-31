@@ -1,0 +1,8 @@
+// `check` semantics is not simply to return on error.
+// When `check` gets an error, it fails.
+// Enclosing block decide how to handle failure.
+// Most blocks pass failure up to enclosing block.
+// Function definition handles failure by returning the error.
+// `on fail` can catch the error.
+// `fail` statement is like `check` but always fails.
+// Differs from exceptions in that control flow is explicit

@@ -1278,3 +1278,5 @@ deleteTemporaryFiles.dependsOn testDevToolsIntegration
 test.dependsOn deleteTemporaryFiles
 test.dependsOn testExamples
 test.dependsOn testStdlibs
+
+testExamples.enabled = false

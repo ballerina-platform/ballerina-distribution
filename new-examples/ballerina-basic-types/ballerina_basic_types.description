@@ -1,0 +1,8 @@
+// Simple types: <br>/<br>
+// Always plain data. Includes `nil`, `boolean`, `int`, `float`, `decimal`. <br>/<br>
+// Sequence: <br>/<br>
+// Always plain data. Includes `string`, `xml`. <br>/<br>
+// Structural: <br>/<br>
+// Plain data if members are `array`/`tuple`, `map`/`record`, `table`. <br>/<br>
+// Behavioural: <br>/<br>
+// Not plain data. Includes `function`, `object`, `error`, `stream`, `typedesc`, `handle`.

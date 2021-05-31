@@ -1,0 +1,3 @@
+bal run error_reporting.bal
+123
+error("not a digit")

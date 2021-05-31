@@ -619,38 +619,6 @@
         ]
     },
     {
-        "title": "I/O",
-        "column": 3,
-        "category": "Language concepts",
-        "samples": [
-            {
-                "name": "Read/Write Bytes",
-                "url": "bytes-io",
-                "disablePlayground": true
-            },
-            {
-                "name": "Read/Write Strings",
-                "url": "strings-io",
-                "disablePlayground": true
-            },
-            {
-                "name": "Read/Write CSV",
-                "url": "csv-io",
-                "disablePlayground": true
-            },
-            {
-                "name": "Read/Write JSON",
-                "url": "json-io",
-                "disablePlayground": true
-            },
-            {
-                "name": "Read/Write XML",
-                "url": "xml-io",
-                "disablePlayground": true
-            }
-        ]
-    },
-    {
         "title": "Common Libraries",
         "column": 3,
         "category": "Language concepts",
@@ -1322,48 +1290,6 @@
             {
                 "name": "Historical Message Replay",
                 "url": "nats-streaming-start-position",
-                "disablePlayground": true
-            }
-        ]
-    },
-    {
-        "title": "Kafka",
-        "column": 3,
-        "category": "Working over the network",
-        "samples": [
-            {
-                "name": "Producer",
-                "url": "kafka-producer",
-                "disablePlayground": true
-            },
-            {
-                "name": "Consumer Service",
-                "url": "kafka-consumer-service",
-                "disablePlayground": true
-            },
-            {
-                "name": "Consumer Client",
-                "url": "kafka-consumer-client",
-                "disablePlayground": true
-            },
-            {
-                "name": "Transactional Producer",
-                "url": "kafka-producer-transactional",
-                "disablePlayground": true
-            },
-            {
-                "name": "Consumer Groups",
-                "url": "kafka-consumer-group-service",
-                "disablePlayground": true
-            },
-            {
-                "name": "SASL Authentication - Consumer",
-                "url": "kafka-authentication-sasl-plain-consumer",
-                "disablePlayground": true
-            },
-            {
-                "name": "SASL Authentication - Producer",
-                "url": "kafka-authentication-sasl-plain-producer",
                 "disablePlayground": true
             }
         ]

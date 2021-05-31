@@ -1,0 +1,3 @@
+bal run commit_rollback_handlers.bal
+Database updated
+Email sent.

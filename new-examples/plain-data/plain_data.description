@@ -1,0 +1,4 @@
+// Ballerina has concept of "plain data": data that is independent of any specific code operating on the data.
+// The network interfaces between programs are based on plain data. It is the opposite of objects, which combine
+// data and code. Plain data supports deep copy and deep equality. Plain data supports serialization/deserialization
+// without coupling. Key goal of Ballerina is to facilitate programs that work on plain data.

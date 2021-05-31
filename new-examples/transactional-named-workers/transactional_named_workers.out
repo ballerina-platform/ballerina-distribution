@@ -1,0 +1,2 @@
+bal run transactional_named_workers.bal
+bar() invoked
