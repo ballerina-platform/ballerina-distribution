@@ -7,5 +7,5 @@ import ballerina/grpc as _;
 // A module can have an `init` function just like an object. 
 // The initialization of a module ends by called its `init` function if there is one.
 function init() {
- io:println("Hello world");
+    io:println("Hello world");
 }
