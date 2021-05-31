@@ -1129,6 +1129,10 @@
                 "url": "directories"
             },
             {
+                "name": "Files",
+                "url": "files"
+            },
+            {
                 "name": "Temp Files and Directories",
                 "url": "temp-files-directories"
             },
