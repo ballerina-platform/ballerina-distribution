@@ -2,7 +2,7 @@ import ballerina/http;
 
 // An HTTP listener can be configured to accept new connections that are
 // secured via mutual SSL.
-// The [http:ListenerSecureSocket](https://docs.central.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket) record provides the SSL-related listener configurations.
+// The [`http:ListenerSecureSocket`](https://docs.central.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket) record provides the SSL-related listener configurations.
 listener http:Listener securedEP = new(9090,
     secureSocket = {
         key: {
@@ -21,6 +21,7 @@ listener http:Listener securedEP = new(9090,
         },
         // Configures the preferred ciphers.
         ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
+
     }
 );
 
