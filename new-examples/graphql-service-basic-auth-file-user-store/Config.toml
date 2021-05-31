@@ -1,0 +1,13 @@
+[[ballerina.auth.users]]
+username="alice"
+password="alice@123"
+scopes=["developer"]
+
+[[ballerina.auth.users]]
+username="ldclakmal"
+password="ldclakmal@123"
+scopes=["developer", "admin"]
+
+[[ballerina.auth.users]]
+username="eve"
+password="eve@123"
