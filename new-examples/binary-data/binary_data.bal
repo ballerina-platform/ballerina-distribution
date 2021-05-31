@@ -7,4 +7,5 @@ public function main() {
 
     // `byte & int` will be `byte`.
     byte b = x & 0xFF;
+
 }

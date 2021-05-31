@@ -19,8 +19,9 @@ public function main() {
         y: 2
     };
 
-    // a will be 2
     int a = r.y;
-    // b will be 1.
+    io:println(a);
+
     int b = c.x;
+    io:println(b);
 }

@@ -22,5 +22,6 @@ function len(LinkedList ll) returns int {
             v = v.next;
         }
     }
+
     return n;
 }

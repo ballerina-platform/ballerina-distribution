@@ -22,7 +22,9 @@ public function main() {
 }
 
 function nameToString(Name nm) returns string {
+    // Checks whether `nm` belongs to `string` type.
     if nm is string {
+
         return nm;
     } else {
         return nm.firstName + " " + nm.lastName;
