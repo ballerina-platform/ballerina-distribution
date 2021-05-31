@@ -41,11 +41,10 @@ service /actionService on new http:Listener(9090) {
         handleResponse(response);
 
         //Get a byte stream to a given file.
-        var bStream = io:fileReadBlocksAsStream("/home/ayesh/projects/ballerina-platform/ballerina-distribution/new-examples/http-different-payload-types/files/logo.png");
-
+        stream<byte[], io:Error?>|io:Error bStream = io:fileReadBlocksAsStream("./files/logo.png");
         if (bStream is stream<byte[], io:Error?>) {
-            //Make a POST request with a byte stream as the payload. Since the file path is static `<@untainted>` is used to denote that the byte stream is trusted.
-            response = check clientEP->post("/image", <@untainted>bStream);
+            //Make a POST request with a byte stream as the payload.
+            response = check clientEP->post("/image", bStream);
             handleResponse(response);
 
             //[Create a JSON body part](https://docs.central.ballerina.io/ballerina/mime/latest/classes/Entity#setJson).
@@ -82,23 +81,23 @@ service /backEndService on new http:Listener(9091) {
             match (baseType) {
                 mime:TEXT_PLAIN => {
                     string textValue = check req.getTextPayload();
-                    check caller->respond(<@untainted>textValue);
+                    check caller->respond(textValue);
                 }
                 mime:APPLICATION_XML => {
                     xml xmlValue = check req.getXmlPayload();
-                    check caller->respond(<@untainted>xmlValue);
+                    check caller->respond(xmlValue);
                 }
                 mime:APPLICATION_JSON => {
                     json jsonValue = check req.getJsonPayload();
-                    check caller->respond(<@untainted>jsonValue);
+                    check caller->respond(jsonValue);
                 }
                 mime:APPLICATION_OCTET_STREAM => {
                     byte[] blobValue = check req.getBinaryPayload();
-                    check caller->respond(<@untainted>blobValue);
+                    check caller->respond(blobValue);
                 }
                 mime:MULTIPART_FORM_DATA => {
                     mime:Entity[] bodyParts = check req.getBodyParts();
-                    check caller->respond(<@untainted>bodyParts);
+                    check caller->respond(bodyParts);
                 }
                 _ => {
                     string message = "Could not find the requested content type";
@@ -116,8 +115,7 @@ service /backEndService on new http:Listener(9091) {
     resource function post image(http:Caller caller, http:Request req) returns error? {
         byte[] bytes = check req.getBinaryPayload();
         http:Response response = new;
-        response.setBinaryPayload(<@untainted>bytes,
-                                        contentType = mime:IMAGE_PNG);
+        response.setBinaryPayload(bytes, contentType = mime:IMAGE_PNG);
         check caller->respond(response);
     }
 }
