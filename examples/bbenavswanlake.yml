@@ -161,12 +161,12 @@
 - title: Working With Data
   url: '#'
   sublinks:
-    - title: Plain Data 
-      url: /learn/by-example/plain-data
-      active: plain-data
-    - title: Ballerina Basic Types 
-      url: /learn/by-example/ballerina-basic-types
-      active: ballerina-basic-types
+    #- title: Plain Data 
+      #url: /learn/by-example/plain-data
+      #active: plain-data
+    #- title: Ballerina Basic Types 
+      #url: /learn/by-example/ballerina-basic-types
+      #active: ballerina-basic-types
     - title: Decimal Type 
       url: /learn/by-example/decimal-type
       active: decimal-type
@@ -227,9 +227,9 @@
     - title: Limit Clause 
       url: /learn/by-example/limit-clause
       active: limit-clause
-    - title: Table Concept 
-      url: /learn/by-example/table-concept
-      active: table-concept
+    #- title: Table Concept 
+      #url: /learn/by-example/table-concept
+      #active: table-concept
     - title: Table Syntax 
       url: /learn/by-example/table-syntax
       active: table-syntax
@@ -260,12 +260,12 @@
     - title: Raw Templates 
       url: /learn/by-example/raw-templates
       active: raw-templates
-    - title: XML 
-      url: /learn/by-example/xml
-      active: xml
-    - title: Sequences 
-      url: /learn/by-example/sequences
-      active: sequences
+    #- title: XML 
+      #url: /learn/by-example/xml
+      #active: xml
+    #- title: Sequences 
+      #url: /learn/by-example/sequences
+      #active: sequences
     - title: XML Data Model 
       url: /learn/by-example/xml-data-model
       active: xml-data-model
