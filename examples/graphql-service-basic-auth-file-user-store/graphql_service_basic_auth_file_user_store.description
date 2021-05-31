@@ -5,7 +5,7 @@
 // for authentication, and scopes for authorization.<br/>
 // Ballerina uses the concept of scopes for authorization. A resource declared
 // in a service can be bound to one/more scope(s).<br/>
-// In the authorization phase, the scopes of the service/resource are compared
+// In the authorization phase, the scopes of the service are compared
 // against the scope included in the user store for at least one match between
 // the two sets.<br/>
 // `Config.toml` has defined three users - alice, ldclakmal and eve. Each user has a
