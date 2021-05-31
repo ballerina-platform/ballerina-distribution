@@ -588,16 +588,7 @@
       active: grpc-bidirectional-streaming 
     - title: Proto To Ballerina
       url: /learn/by-example/proto-to-ballerina
-      active: proto-to-ballerina 
-- title: OpenAPI
-  url: '#'
-  sublinks:  
-    - title: Ballerina To OpenAPI
-      url: /learn/by-example/ballerina-to-openapi
-      active: ballerina-to-openapi
-    - title: OpenAPI To Ballerina
-      url: /learn/by-example/openapi-to-ballerina
-      active: openapi-to-ballerina 
+      active: proto-to-ballerina
 - title: NATS
   url: '#'
   sublinks:  
