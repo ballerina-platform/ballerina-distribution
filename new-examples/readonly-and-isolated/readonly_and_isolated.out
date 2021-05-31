@@ -1,2 +1,0 @@
-bal run readonly_and_isolated.bal
-{"bordeaux":{"latitude":"44.8378N","longtitude":"0.5792W"},"paris":{"latitude":"48.8566N","longtitude":"2.3522E"}}
