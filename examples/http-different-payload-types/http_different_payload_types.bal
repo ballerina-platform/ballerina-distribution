@@ -135,7 +135,7 @@ function handleResponse(string|xml|json|http:Response|error response) {
             string baseType = getBaseType(response.getContentType());
             match (baseType) {
                 mime:APPLICATION_OCTET_STREAM => {
-                    var payload = response.getTextPayload();
+                    string|http:ClientError payload = response.getTextPayload();
                     if (payload is string) {
                         log:printInfo("Response contains binary data: " + payload);
                     } else {
