@@ -1,0 +1,89 @@
+# Before you build the package, we are going to override some of the default values taken by the compiler,
+In order to do this you need to create a filed named `Cloud.toml` in package directory and paste the following content into it.
+All the supported key value properties can be found in the Code to cloud deployment guide.
+
+[container.image]
+repository="wso2inc"
+name="hello"
+tag="v0.1.0"
+
+Additionally, if you are using minikube, you could execute the following command to reuse the Docker daemon from minikube.
+$ eval $(minikube docker-env)
+
+# Now let's build the ballerina package.
+
+# Note that the `bal build` command should be executed on the package. Code to cloud generates only one container per package.
+$ bal build
+
+Compiling source
+        wso2/hello:0.1.0
+
+Creating balas
+        target/bala/hello-2020r2-any-0.1.0.bala
+
+Running Tests
+
+        wso2/hello:0.1.0
+        No tests found
+
+Generating executables
+        target/bin/hello.jar
+
+Generating artifacts...
+
+        @kubernetes:Service                      - complete 1/1
+        @kubernetes:Deployment                   - complete 1/1
+        @kubernetes:HPA                          - complete 1/1
+        @kubernetes:Docker                       - complete 2/2
+
+        Execute the below command to deploy the Kubernetes artifacts:
+        kubectl apply -f /home/wso2/project/target/kubernetes/hello-0.1.0
+
+        Execute the below command to access service via NodePort:
+        kubectl expose deployment wso2-hello-0--deployment --type=NodePort --name=wso2-hello-0--svc-local
+
+
+
+# Let’s try executing the Docker image separately first.
+
+# Verify if the Docker image is generated.
+$ docker images
+
+REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE
+wso2inc/hello                       v0.1.0              60d95f0928b2        About a minute ago   228MB
+
+# Run the generated Docker image.
+$ docker run -d -p 9090:9090 wso2inc/hello:v0.1.0
+c04194eb0b4d0d78cbc8ca55e0527d381d8ab4a1a68f8ea5dd3770a0845d5fbb
+
+# Access the service.
+$ curl http://localhost:9090/helloWorld/sayHello
+Hello, World from service helloWorld !
+
+# Lets try executing Kubernetes service now.
+$ kubectl apply -f /home/wso2/project/target/kubernetes/hello-0.1.0
+service/helloep-svc created
+deployment.apps/wso2-hello-0--deployment created
+horizontalpodautoscaler.autoscaling/wso2-hello-0--hpa created
+
+# Verify the kubernetes pods.
+$ kubectl get pods
+NAME                                          READY   STATUS    RESTARTS   AGE
+wso2-hello-0--deployment-7d4d56457b-7jlzx   1/1     Running   0          57s
+
+# Expose via Nodeport to test in the developer environment.
+$ kubectl expose deployment wso2-hello-0--deployment --type=NodePort --name=wso2-hello-0--svc-local
+service/wso2-hello-0--svc-local exposed
+
+# Get the IP and port of the Kubernetes service.
+$ kubectl get svc
+NAME                        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+wso2-hello-0--svc-local   NodePort    10.111.61.112    <none>        9090:32437/TCP   4m17s
+
+# If you are using Minikube, IP address should be changed according to the output of the `minikube ip` command.
+$ minikube ip
+192.168.49.2
+
+# Access the deployed service via CURL.
+$ curl http://192.168.49.2:32437/helloWorld/sayHello
+Hello, World from service helloWorld !

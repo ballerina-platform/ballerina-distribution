@@ -1,9 +1,5 @@
-// The `readonly` type consists of values that are immutable.
-// `()`, `boolean`, `int`, `float`, `decimal`, `string`, `error`, `function`, `service`, and `typedesc` are
-// considered to be inherently immutable basic types, and a value belonging to an inherently immutable basic type
-// will always belong to the `readonly` type.
-// XML, lists, mappings, tables, and objects are selectively-immutable types, where values belonging to such types
-// are immutable and belong to the `readonly` type, only if they are constructed as immutable values (either by
-// using a subtype of `readonly` as the contextually-expected type with a constructor expression or by calling
-// `.cloneReadOnly()` on a mutable value).
-// A `readonly` value is deeply immutable, and guarantees that members, if any, are also immutable.
+// The `readonly` type consists of values that are immutable. For structural type `T`, `T & readonly` means
+// immutable `T`. `T & readonly` is subtype of `T` and subtype of `readonly`. Guaranteed that if declared
+// type of a value is a subtype of `readonly`, then at runtime the value can never be mutated. It is enforced
+// by runtime checks on the mutating structures. With `readonly` field, both the field and its value
+// are immutable.

@@ -1,0 +1,2 @@
+bal run asynchronous_function_calls.bal
+10

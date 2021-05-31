@@ -13,10 +13,14 @@ kafka:AuthenticationConfiguration authConfig = {
 
 kafka:ProducerConfiguration producerConfigs = {
     // Provide the relevant authentication configuration record to authenticate the producer.
-    auth: authConfig
+    auth: authConfig,
+    securityProtocol: kafka:PROTOCOL_SASL_PLAINTEXT
 };
 
-kafka:Producer kafkaProducer = check new (kafka:DEFAULT_URL, producerConfigs);
+// Provide the relevant SASL URL of the configured Kafka server.
+const string SASL_URL = "localhost:9093";
+
+kafka:Producer kafkaProducer = check new (SASL_URL, producerConfigs);
 
 public function main() {
     string message = "Hello from Ballerina";

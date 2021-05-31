@@ -1,0 +1,2 @@
+// XML templates combine nicely with `query`. (e.g., you can have a template containing a `query expression`
+// containing a template).

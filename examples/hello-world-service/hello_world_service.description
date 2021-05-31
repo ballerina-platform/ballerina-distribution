@@ -1,3 +1,2 @@
-// In Ballerina, services represent collections of network-accessible entry points.
-// Resources represent one such entry point.
-// How a resource is exposed over a network protocol depends on the listener to which a service is attached.
+// Let's write a simple HTTP service in Ballerina. 
+// This example demonstrates the network primitives in the language that make it simpler to develop services.

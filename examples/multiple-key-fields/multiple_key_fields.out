@@ -1,0 +1,2 @@
+bal run multiple_key_fields.bal
+{"firstName":"Fred","lastName":"Bloggs","salary":200}

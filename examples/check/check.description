@@ -1,3 +1,0 @@
-// The `check` expression is a unary expression that is used to handle errors.
-// The `check` expression checks the result of the sub expression and returns immediately from the function 
-// if the result is of type `error`. Hence, if `check` is used inside a function, the function must have `error` in its return type.

@@ -1,0 +1,8 @@
+// Ballerina encourages use of its built-in data structures: `array`, `map` and `table`. A `table` is a
+// collection of records; each `record` represents a row of the `table`. A `table` is plain data if
+// and only if its rows are plain data. Table maintains invariant that each row is uniquely identified
+// by a key. Each row’s key is stored in fields, which must be immutable. <br></br>
+// Compared to maps: <br></br>
+// - key is part of the value, rather than separate. <br></br>
+// - type of the key is not restricted to `string`. <br></br>
+// - order of members is preserved. <br></br>
