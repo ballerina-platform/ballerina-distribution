@@ -1,6 +1,2 @@
-# To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
 bal run functions.bal
-This is a sample text
-11
-Hello World
+16

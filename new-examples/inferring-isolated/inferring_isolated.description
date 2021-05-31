@@ -1,9 +1,0 @@
-// `isolated` is a complex feature, which would be a lot for an application developer to understand.
-// A typical Ballerina application consists of a single module that imports multiple library modules.
-// Within a single module, we can infer `isolated` qualifiers. Object w/o mutable fields is
-// inherently `isolated`. Application developer's responsibility is to use `lock` statement where
-// needed. <br></br>
-// - access self in a `service` object with mutable state. <br></br>
-// - access mutable module-level variables. <br></br>
-// Compiler can inform developer where missing locks are preventing a `service` object or method from
-// being `isolated`.
