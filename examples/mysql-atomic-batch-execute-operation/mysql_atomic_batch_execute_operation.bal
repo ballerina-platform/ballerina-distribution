@@ -67,14 +67,15 @@ function beforeExample() returns sql:Error? {
 
     // Creates a table in the database.
     result = check mysqlClient -> execute(`CREATE TABLE MYSQL_BBE.Customers
-            (customerId INTEGER NOT NULL AUTO_INCREMENT, firstName  VARCHAR(300), 
-            lastName  VARCHAR(300), registrationID INTEGER UNIQUE, creditLimit DOUBLE, 
-            country  VARCHAR(300), PRIMARY KEY (customerId))`);
+            (customerId INTEGER NOT NULL AUTO_INCREMENT,
+            firstName VARCHAR(300), lastName  VARCHAR(300), registrationID
+            INTEGER UNIQUE, creditLimit DOUBLE, country  VARCHAR(300),
+            PRIMARY KEY (customerId))`);
 
     // Adds records to the newly-created table.
-    result = check mysqlClient -> execute(`INSERT INTO MYSQL_BBE.Customers (firstName,
-            lastName, registrationID,creditLimit,country) VALUES ('Peter',
-            'Stuart', 1, 5000.75, 'USA')`);
+    result = check mysqlClient -> execute(`INSERT INTO MYSQL_BBE.Customers
+            (firstName, lastName, registrationID,creditLimit,country) VALUES
+             ('Peter', 'Stuart', 1, 5000.75, 'USA')`);
 
     check mysqlClient.close();
 }
