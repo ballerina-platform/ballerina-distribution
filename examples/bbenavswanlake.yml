@@ -14,7 +14,7 @@
     - title: Programs and Modules
       url: /learn/by-example/programs-and-modules
       active: programs-and-modules
-    - title: Variables and types 
+    - title: Variables and Types 
       url: /learn/by-example/variables-and-types
       active: variables-and-types
     - title: Functions 
@@ -29,7 +29,7 @@
     - title: Booleans and Conditionals 
       url: /learn/by-example/booleans
       active: booleans
-    - title: Floating point numbers 
+    - title: Floating Point Numbers 
       url: /learn/by-example/floating-point-numbers
       active: floating-point-numbers
     - title: Nil 
@@ -119,7 +119,7 @@
     - title: Function Values 
       url: /learn/by-example/function-values
       active: function-values
-    - title: Asynchronous function calls 
+    - title: Asynchronous Function Calls 
       url: /learn/by-example/asynchronous-function-calls
       active: asynchronous-function-calls
     - title: Annotations 
@@ -161,12 +161,12 @@
 - title: Working With Data
   url: '#'
   sublinks:
-    - title: Plain Data 
-      url: /learn/by-example/plain-data
-      active: plain-data
-    - title: Ballerina Basic Types 
-      url: /learn/by-example/ballerina-basic-types
-      active: ballerina-basic-types
+    #- title: Plain Data 
+      #url: /learn/by-example/plain-data
+      #active: plain-data
+    #- title: Ballerina Basic Types 
+      #url: /learn/by-example/ballerina-basic-types
+      #active: ballerina-basic-types
     - title: Decimal Type 
       url: /learn/by-example/decimal-type
       active: decimal-type
@@ -185,7 +185,7 @@
     - title: Open Records 
       url: /learn/by-example/open-records
       active: open-records
-    - title: Controlling openness 
+    - title: Controlling Openness 
       url: /learn/by-example/controlling-openness
       active: controlling-openness
     - title: JSON Type 
@@ -197,7 +197,7 @@
     - title: Match Statement with Maps 
       url: /learn/by-example/match-statement-with-maps
       active: match-statement-with-maps
-    - title: Converting from User-Defined type to JSON
+    - title: Converting from User-Defined Type to JSON
       url: /learn/by-example/converting-from-user-defined-type-to-json
       active: converting-from-user-defined-type-to-json
     - title: Converting from JSON to User-Defined Type 
@@ -212,7 +212,7 @@
     - title: JSON Numbers 
       url: /learn/by-example/json-numbers
       active: json-numbers
-    - title: Query expressions 
+    - title: Query Expressions 
       url: /learn/by-example/query-expressions
       active: query-expressions
     - title: Destructuring Records 
@@ -227,9 +227,9 @@
     - title: Limit Clause 
       url: /learn/by-example/limit-clause
       active: limit-clause
-    - title: Table Concept 
-      url: /learn/by-example/table-concept
-      active: table-concept
+    #- title: Table Concept 
+      #url: /learn/by-example/table-concept
+      #active: table-concept
     - title: Table Syntax 
       url: /learn/by-example/table-syntax
       active: table-syntax
@@ -248,7 +248,7 @@
     - title: Join Clause 
       url: /learn/by-example/join-clause
       active: join-clause
-    - title: Stream type 
+    - title: Stream Type 
       url: /learn/by-example/stream-type
       active: stream-type
     - title: Querying with Streams 
@@ -260,12 +260,12 @@
     - title: Raw Templates 
       url: /learn/by-example/raw-templates
       active: raw-templates
-    - title: XML 
-      url: /learn/by-example/xml
-      active: xml
-    - title: Sequences 
-      url: /learn/by-example/sequences
-      active: sequences
+    #- title: XML 
+      #url: /learn/by-example/xml
+      #active: xml
+    #- title: Sequences 
+      #url: /learn/by-example/sequences
+      #active: sequences
     - title: XML Data Model 
       url: /learn/by-example/xml-data-model
       active: xml-data-model
@@ -813,7 +813,7 @@
     - title: Time with Zone Offset
       url: /learn/by-example/time-utc-and-civil
       active: time-utc-and-civil
-    - title: Time formatting/Parsing
+    - title: Time Formatting/Parsing
       url: /learn/by-example/time-formatting-and-parsing
       active: time-formatting-and-parsing
 - title: Cache
@@ -864,7 +864,7 @@
 - title: Task
   url: '#'
   sublinks:
-    - title: Schedule Job recurrence by Frequency
+    - title: Schedule Job Recurrence by Frequency
       url: /learn/by-example/task-frequency-job-execution
       active: task-frequency-job-execution
     - title: Schedule One Time Job
