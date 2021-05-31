@@ -1,4 +1,4 @@
-// The `anydata` type consists of plain data (a simple value, sequence value, or structured value that does not contain behavioral members at any depth). 
-// Thus, the `anydata` type is the union of `()`, `boolean`, `int`, `float`, `decimal`, `string`, `xml`, `anydata[]`, `map<anydata>`, and `table<map<anydata>>`.
-// Although `json` and `byte` are not explicitly mentioned, they are subsets of the aforementioned union.
-// The same is true for a record of which the type of each individual field is a subtype of `anydata`(including the rest field in open records).
+// The type for plain data is `anydata`. The subtype of `any`. `==` and `!=` operators tests for deep equality.
+// `x.clone()` returns a deep copy, with the same mutability. `x.cloneReadOnly()` returns a deep copy that is
+// immutable. Ballerina syntax uses `ReadOnly` to mean immutable. Both `x.clone` and `cloneReadOnly()` do
+// not copy immutable parts of `x`. `const` structures are allowed. Equality and cloning handle cycles.

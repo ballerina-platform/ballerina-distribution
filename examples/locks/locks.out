@@ -1,5 +1,0 @@
-# To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `bal run` command below.
-bal run locks.bal
-Amount: 50000
-Request Count: 1993

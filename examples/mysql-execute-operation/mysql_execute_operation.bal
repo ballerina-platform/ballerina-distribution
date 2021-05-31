@@ -1,116 +1,72 @@
 import ballerina/io;
-import ballerina/sql;
 import ballerinax/mysql;
+import ballerina/sql;
 
-// Username and password of the MySQL database. This is used in the below
-// examples when initializing the MySQL connector. You need to change these
-// based on your setup if you try locally.
-string dbUser = "root";
-string dbPassword = "Test@123";
-string dbName = "MYSQL_BBE";
+public function main() returns error? {
+    // Runs the prerequisite setup for the example.
+    check beforeExample();
 
-function initializeDatabase() returns sql:Error? {
-    // Initialize the client without any database to create the database.
-    mysql:Client mysqlClient = check new (user = dbUser, password = dbPassword);
-    // Create database if it does not exist. If any error occurred,
-    // the error will be returned.
-    sql:ExecutionResult result =
-        check mysqlClient->execute("CREATE DATABASE IF NOT EXISTS " + dbName);
-    io:println("Database created. ");
-    // Close the MySQL client.
-    check mysqlClient.close();
+    // Initializes the MySQL client.
+    mysql:Client mysqlClient = check new (user = "root",
+            password = "Test@123", database = "MYSQL_BBE");
 
+    float newCreditLimit = 15000.5;
+
+    // Creates a parameterized query for the record update.
+    sql:ParameterizedQuery updateQuery = 
+            `UPDATE Customers SET creditLimit = ${newCreditLimit} 
+            where customerId = 1`;
+
+    sql:ExecutionResult result = check mysqlClient -> execute(updateQuery);
+    io:println("Updated Row count: ", result?.affectedRowCount);
+
+    string firstName = "Dan";
+
+    // Creates a parameterized query for deleting the records.
+    sql:ParameterizedQuery deleteQuery =
+            `DELETE FROM Customers WHERE firstName = ${firstName}`;
+    
+    result = check mysqlClient -> execute(deleteQuery);
+    io:println("Deleted Row count: ", result.affectedRowCount);
+
+    // Performs the cleanup after the example.
+    check afterExample(mysqlClient);
 }
 
-function initializeTable(mysql:Client mysqlClient)
-    returns int|string|sql:Error? {
-    // Execute dropping the table. The `sql:ExecutionResult` is returned upon
-    // successful execution. An error will be returned in case of a failure.
+// Initializes the database as a prerequisite to the example.
+function beforeExample() returns sql:Error? {
+    mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
+
+    // Creates a database.
     sql:ExecutionResult result =
-        check mysqlClient->execute("DROP TABLE IF EXISTS Customers");
-    io:println("Drop table executed. ", result);
+        check mysqlClient -> execute(`CREATE DATABASE MYSQL_BBE`);
 
-    // Similarly, to drop a table, the `create` table query is executed.
-    // Here, the `customerId` is an auto-generated column.
-    result = check mysqlClient->execute("CREATE TABLE IF NOT EXISTS Customers" +
-        "(customerId INTEGER NOT NULL AUTO_INCREMENT, firstName  VARCHAR(300)" +
-        ",lastName  VARCHAR(300), registrationID INTEGER," +
-        "creditLimit DOUBLE, country  VARCHAR(300), PRIMARY KEY (customerId))");
+    //Creates a table in the database.
+    result = check mysqlClient -> execute(`CREATE TABLE MYSQL_BBE.Customers
+            (customerId INTEGER NOT NULL AUTO_INCREMENT, firstName  
+            VARCHAR(300), lastName  VARCHAR(300), registrationID INTEGER, 
+            creditLimit DOUBLE, country  VARCHAR(300),PRIMARY KEY (customerId))`);
 
-    // Insert sample data into the table. The result will have
-    // `affectedRowCount` and `lastInsertedId` with the auto-generated ID of
-    // the last row.
-    result = check mysqlClient->execute("INSERT INTO Customers (firstName," +
-        "lastName,registrationID,creditLimit, country) VALUES ('Peter', " +
-        "'Stuart', 1, 5000.75, 'USA')");
+    // Inserts data into the table. The result will have the `affectedRowCount`
+    // and `lastInsertedId` with the auto-generated ID of the last row.
+    result = check mysqlClient -> execute(`INSERT INTO MYSQL_BBE.Customers (firstName,
+            lastName, registrationID,creditLimit,country) VALUES ('Peter',
+            'Stuart', 1, 5000.75, 'USA')`);
+    result = check mysqlClient -> execute(`INSERT INTO MYSQL_BBE.Customers (firstName,
+            lastName, registrationID,creditLimit,country) VALUES ('Dan', 'Brown',
+            2, 10000, 'UK')`);
 
     io:println("Rows affected: ", result.affectedRowCount);
-    io:println("Generated Customer ID: ", result.lastInsertId);
-    return result.lastInsertId;
+    io:println("Generated Customer ID: ", result.lastInsertId);  
+
+    check mysqlClient.close();      
 }
 
-function updateRecord(mysql:Client mysqlClient, int generatedId) {
-    // Create a parameterized query.
-    sql:ParameterizedQuery updateQuery =
-        `Update Customers set creditLimit = 15000.5
-        where customerId = ${generatedId}`;
-
-    // Update the record with the auto-generated ID.
-    sql:ExecutionResult|sql:Error result =
-        mysqlClient->execute(updateQuery);
-
-    if (result is sql:ExecutionResult) {
-        io:println("Updated Row count: ", result?.affectedRowCount);
-    } else {
-        io:println("Error occurred: ", result);
-    }
-}
-
-function deleteRecord(mysql:Client mysqlClient, int generatedId) {
-    // Delete the record with the auto-generated ID.
-    sql:ParameterizedQuery deleteQuery =
-            `Delete from Customers where customerId = ${generatedId}`;
-    sql:ExecutionResult|sql:Error result =
-                mysqlClient->execute(deleteQuery);
-
-    if (result is sql:ExecutionResult) {
-        io:println("Deleted Row count: ", result.affectedRowCount);
-    } else {
-        io:println("Error occurred: ", result);
-    }
-}
-
-public function main() {
-    // Initialize the database.
-    sql:Error? err = initializeDatabase();
-
-    if (err is ()) {
-        // Initialize the MySQL client to be used for the rest of the DDL
-        // and DML operations.
-        mysql:Client|sql:Error mysqlClient = new (user = dbUser,
-            password = dbPassword, database = dbName);
-
-        if (mysqlClient is mysql:Client) {
-            //  Initialize a table and insert data.
-            int|string|sql:Error? initResult = initializeTable(mysqlClient);
-
-            if (initResult is int) {
-                // Update a record.
-                updateRecord(mysqlClient, initResult);
-                // Delete a record.
-                deleteRecord(mysqlClient, initResult);
-
-                io:println("Sample executed successfully!");
-            } else if (initResult is sql:Error) {
-                io:println("Customer table initialization failed!", initResult);
-            }
-            // Close the MySQL client.
-            sql:Error? e = mysqlClient.close();
-
-        } else {
-            io:println("Table initialization failed!!", mysqlClient);
-        }
-    } else {
-        io:println("Database initialization failed!!", err);
-    }
+// Cleans up the database after running the example.
+function afterExample(mysql:Client mysqlClient) returns sql:Error? {
+    // Cleans the database.
+    sql:ExecutionResult result =
+            check mysqlClient -> execute(`DROP DATABASE MYSQL_BBE`);
+    // Closes the MySQL client.
+    check mysqlClient.close();
 }

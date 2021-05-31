@@ -1,4 +1,0 @@
-// In Ballerina, objects can have a method named `init()`, which is used to initialize the object when creating a
-// new object. This method can have parameters as in any other method. However, the return type of the `init()` method
-// should be a subtype of `error|()`, which includes `()`. If an explicit definition for the `init()` method
-// is not specified, there will be an implicit `init()` method, which does not accept any parameters and returns `()`.

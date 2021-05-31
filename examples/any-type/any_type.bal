@@ -1,54 +1,22 @@
 import ballerina/io;
-import ballerina/time;
 
-class Person {
-    string fname;
-    string lname;
-
-    function init(string fname, string lname) {
-        self.fname = fname;
-        self.lname = lname;
-    }
-
-    function getFullName() returns string {
-        return self.fname + " " + self.lname;
-    }
-}
-
-// This function returns a value of the `any` type.
-function lookupInfo(string id) returns any {
-    if id == "pi" {
-        return float:PI;
-    } else if id == "date" {
-        time:Utc utc = checkpanic 
-            time:utcFromString("2021-03-29T09:35:37.529306Z");
-        return time:utcToString(utc); 
-    } else if id == "bio" {
-        return new Person("Jane", "Doe");
-    }
-}
+// A variable of type `any` can hold any value except an error.
+any x = 1;
 
 public function main() {
-    // In this example, the variable named `any1` of the `any` type holds
-    // a `Person` object.
-    any any1 = new Person("John", "Doe");
+    // Can cast `any` to specific type.
+    int n = <int>x;
+    
+    io:println(n);
 
-    // Before anything useful can be done with `any1`, it is required to ascertain
-    // its type. A type cast or a type guard can be used for this.
-    Person john = <Person> any1;
-    io:println("Full name: ", john.getFullName());
+    // Langlib lang.value module contains functions that apply to multiple basic types.
+    // Can convert to string.
+    string s = x.toString();
 
-    if any1 is Person {
-        io:println("First name: ", any1.fname);
-    }
+    io:println(s == "1");
 
-    // Variables of type `any` can hold values of any type except for `error`.
-    int[] intArray = [1, 3, 5, 6];
-    any anyArray = intArray;
-    io:println(anyArray);
+    // Can test its type with the `is` operator.
+    float f = x is int|float ? <float>x : 0.0;
 
-    io:println(lookupInfo("pi"));
-    io:println(lookupInfo("date"));
-    Person person = <Person> lookupInfo("bio");
-    io:println(person.getFullName());
+    io:println(f);
 }
