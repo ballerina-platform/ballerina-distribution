@@ -1,6 +1,0 @@
-# To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `bal run` command below.
-bal run query_expression.bal
-
-{"name":"Michelle Guthrie","degree":"Bachelor of Medicine","graduationYear":2007}
-{"name":"Martin Sadler","degree":"Bachelor of Medicine","graduationYear":1995}

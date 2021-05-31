@@ -1,5 +1,0 @@
-# To run this sample, navigate to the directory that contains the
-# `.bal` file and use the `bal run` command below.
-bal run java_arrays.bal
-2
-world

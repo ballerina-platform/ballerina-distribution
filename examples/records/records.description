@@ -1,3 +1,4 @@
-// In Ballerina, records are a mapping type. However, the keys (fields) are named and their types define the
-// types of values that are allowed for the fields. If the set of fields is fixed, the record is called a "closed record".
-// If the set of fields is not fixed, the record is called an "open record".
+// A `record` type has specific named fields. Fields can be accessed with `r.x`. Records are mutable: `r.x` is an
+// `lvalue`. Records can be constructed using a similar syntax to a `map`. Typically a `record` type is combined
+// with a type definition. The name of the type is not significant: a `record` is just a collection of fields.
+// Record equality works same as `map` equality.

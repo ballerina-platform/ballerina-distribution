@@ -1,7 +1,0 @@
-# To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-bal run workers.bal
-Worker execution started
-Worker 2 response: 35
-Worker 1 response: 6
-Worker execution finished: {"w1":null,"w2":null}
