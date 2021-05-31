@@ -1,21 +1,20 @@
 import ballerina/io;
 
-// Value of `s` is an immutable array.
-readonly & string[] s = [
-    "foo", "bar"
-];
+// A `const` is immutable.
+const s = "Anne";
 
 type Row record {
-    // Both field and its value are immutable.
-    readonly string[] k;
+    // Both the field and its value are immutable.
+    readonly string k;
     int value;
 };
 
 table<Row> key(k) t = table [
-    // Can safely use `s` as a key.
-    { k: s, value: 17 }
+    { k: "John", value: 17 }
 ];
 
 public function main() {
+    // Can safely use `s` as a key.
+    t.add({k: s, value: 18});
     io:println(t);
 }

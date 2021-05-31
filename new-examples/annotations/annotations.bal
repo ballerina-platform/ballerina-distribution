@@ -1,5 +1,5 @@
 import ballerina/io;
-// The `@display` annotation applies to the transform function
+// The `@display` annotation applies to the transform function.
 @display {
     label: "Transform",
     iconPath: "transform.png"
@@ -8,8 +8,8 @@ public function transform(string s) returns string {
    return s.toUpperAscii();
 }
 
-public function main() {
-    // The strand annotation applies to the start action.
+public function main() returns error? {
+    // The `@strand` annotation applies to the `start` action.
     future<int> fut = @strand { thread: "any" } start foo();
     int x = check wait fut;
     io:println(x);
