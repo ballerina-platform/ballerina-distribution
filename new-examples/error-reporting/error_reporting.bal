@@ -7,13 +7,13 @@ function parse(string s) returns int|error {
     int n = 0;
     int[] cps = s.toCodePointInts();
     foreach int cp in cps {
-        cp -= 0x30;
-        if cp < 0 || cp > 9 {
-            // If `cp` is not a digit construct and return 
+        int p = cp - 0x30;
+        if p < 0 || p > 9 {
+            // If `p` is not a digit construct and return 
             // an error value with "not a digit" as the error message.
             return error("not a digit");
         }
-        n = n * 10 + cp;
+        n = n * 10 + p;
     }
     return n;
 }
