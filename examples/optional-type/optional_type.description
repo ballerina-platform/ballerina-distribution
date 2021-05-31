@@ -1,4 +1,0 @@
-// One of the design principles of the type system of Ballerina is to eliminate null reference errors.
-// Over the years, null reference errors have caused numerous system crashes, security vulnerabilities etc.
-// The use of optional types `T?` is simply a shortcut for representing `T|()`, where it says that the 
-// value of this type is either `T` or `()` (nil). 

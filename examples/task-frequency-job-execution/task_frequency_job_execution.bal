@@ -1,9 +1,8 @@
 import ballerina/io;
 import ballerina/lang.runtime;
 import ballerina/task;
-import ballerina/time;
 
-// Creating a job to be executed by the scheduler.
+// Creates a job to be executed by the scheduler.
 class Job {
 
     *task:Job;
@@ -22,19 +21,11 @@ class Job {
 
 public function main() returns error? {
 
-    // Gets the current time.
-    time:Utc currentUtc = time:utcNow();
-    // Increases the time by three seconds to set the starting delay for the scheduling job.
-    time:Utc newTime = time:utcAddSeconds(currentUtc, 3);
-    // Get the `time:Civil` for the given time.
-    time:Civil time = time:utcToCivil(newTime);
-
     // Schedules the task to execute the job every second.
-    task:JobId id = check task:scheduleJobRecurByFrequency(new Job(0),
-                                        1, startTime = time);
+    task:JobId id = check task:scheduleJobRecurByFrequency(new Job(0), 1);
 
-    // Waits for twelve seconds.
-    runtime:sleep(12);
+    // Waits for nine seconds.
+    runtime:sleep(9);
 
     // Unschedules the job.
     check task:unscheduleJob(id);

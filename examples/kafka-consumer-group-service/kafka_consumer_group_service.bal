@@ -19,16 +19,17 @@ service kafka:Service on kafkaListener {
     // This remote function executes when a message or a set of messages are published
     // to the subscribed topic/topics.
     remote function onConsumerRecord(kafka:Caller caller,
-                        kafka:ConsumerRecord[] records) {
+                        kafka:ConsumerRecord[] records) returns error? {
         // The set of Kafka records received by the service are processed one
         // by one.
         foreach var kafkaRecord in records {
-            processKafkaRecord(kafkaRecord);
+            check processKafkaRecord(kafkaRecord);
         }
+
     }
 }
 
-function processKafkaRecord(kafka:ConsumerRecord kafkaRecord) {
+function processKafkaRecord(kafka:ConsumerRecord kafkaRecord) returns error? {
     byte[] messageContent = kafkaRecord.value;
     // Converts the `byte[]` to a `string`.
     string message = check string:fromBytes(messageContent);

@@ -1,0 +1,2 @@
+curl http://localhost:9090/calc/add -d "{\"x\": 1.0, \"y\": 2.0}"
+3.0

@@ -1,8 +1,0 @@
-# To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `bal run` command below.
-bal run query_expression_to_string.bal
-
-Michelle Sadler
-Martin Guthrie
-George Fernando
-

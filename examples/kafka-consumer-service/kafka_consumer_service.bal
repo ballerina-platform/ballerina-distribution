@@ -16,10 +16,10 @@ listener kafka:Listener kafkaListener =
 
 service kafka:Service on kafkaListener {
     remote function onConsumerRecord(kafka:Caller caller,
-                                kafka:ConsumerRecord[] records) {
+                                kafka:ConsumerRecord[] records) returns error? {
         // The set of Kafka records received by the service are processed one by one.
         foreach var kafkaRecord in records {
-            processKafkaRecord(kafkaRecord);
+            check processKafkaRecord(kafkaRecord);
         }
 
         // Commits offsets of the returned records by marking them as consumed.
@@ -32,7 +32,7 @@ service kafka:Service on kafkaListener {
     }
 }
 
-function processKafkaRecord(kafka:ConsumerRecord kafkaRecord) {
+function processKafkaRecord(kafka:ConsumerRecord kafkaRecord) returns error? {
     // The value should be a `byte[]` since the byte[] deserializer is used
     // for the value.
     byte[] value = kafkaRecord.value;

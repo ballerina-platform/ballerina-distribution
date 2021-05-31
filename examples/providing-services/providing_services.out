@@ -1,0 +1,3 @@
+bal run providing_services.bal
+[ballerina/http] started HTTP/WS listener 0.0.0.0:8080
+

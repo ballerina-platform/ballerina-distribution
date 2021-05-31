@@ -1,0 +1,2 @@
+bal run ordering.bal
+[{"firstName":"Anne","lastName":"Frank","salary":5000.00},{"firstName":"Jones","lastName":"Welsh","salary":1000.00}]

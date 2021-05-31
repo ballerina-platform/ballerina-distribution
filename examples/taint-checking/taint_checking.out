@@ -1,7 +1,0 @@
-# To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-bal run --taint-check taint_checking.bal
-ERROR [taint_checking.bal:(32:34,33:69)] tainted value passed to untainted parameter 'sqlQuery'
-ERROR [taint_checking.bal:(36:32,36:39)] tainted value passed to untainted parameter 'secureParameter'
-ERROR [taint_checking.bal:(55:32,55:48)] tainted value passed to untainted parameter 'secureParameter'
-ERROR [taint_checking.bal:(60:32,60:46)] tainted value passed to untainted parameter 'secureParameter'

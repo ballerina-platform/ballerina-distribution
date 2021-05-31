@@ -3,7 +3,7 @@ import ballerina/lang.runtime;
 import ballerina/task;
 import ballerina/time;
 
-// Creating a job to be executed by the scheduler.
+// Creates a job to be executed by the scheduler.
 class Job {
 
     *task:Job;

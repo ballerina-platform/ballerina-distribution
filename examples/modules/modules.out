@@ -1,4 +1,0 @@
-# To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-bal run modules.bal
-3.141592653589793

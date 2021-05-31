@@ -1,0 +1,3 @@
+// Key fields can be structured where they belong to any subtype of plain data. The Value of key field
+// must be immutable. Initializer of `readonly` field will be constructed as immutable. In other cases,
+// can use `cloneReadOnly` to create an immutable value.

@@ -1,0 +1,11 @@
+// Ballerina has two basic types that are sequences: `string`, `xml`. A value is a sequence of basic type `T`
+// if it is <br></br>
+// - an empty sequence of basic type `T`, <br></br>
+// - a singleton of basic type `T`, or <br></br>
+// - a concatenation of two sequences of basic type `T`. <br></br>
+// Sequences differ from `arrays`: <br></br>
+// - sequences are flat: no nesting. <br></br>
+// - there is no difference between a singleton `x` and a sequence consisting of just `x`. <br></br>
+// - basic type of sequence determines basic type of members. <br></br>
+// Membership of a sequence is immutable (e.g., cannot mutate a sequence of one item into a sequence of two items).
+// A sequence has no identity: two sequences are `===` if their members are `===`.

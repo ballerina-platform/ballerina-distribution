@@ -1,0 +1,2 @@
+description: This BBE demonstrates how return values and errors can be ignored in Ballerina
+keywords:  ballerina, ballerina by example, bbe, error, ignore value
