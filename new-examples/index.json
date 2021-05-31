@@ -1230,5 +1230,24 @@
                 "url": "xml-json-conversion"
             }
         ]
+    },
+    {
+        "title": "Deployment",
+        "column": 0,
+        "category": "Language concepts",
+        "samples": [
+            {
+                "name": "Code to Cloud",
+                "url": "c2c-deployment"
+            },
+            {
+                "name": "Azure Functions",
+                "url": "azure-functions-deployment"
+            },
+            {
+                "name": "AWS Lambda",
+                "url": "aws-lambda-deployment"
+            }
+        ]
     }
 ]
