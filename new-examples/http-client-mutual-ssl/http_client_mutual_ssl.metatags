@@ -1,2 +1,2 @@
-description: BBE on how the Ballerina listener client support mutual SSL.
-keywords: ballerina, ballerina by example, bbe, mutual ssl, ssl protocols, ciphers
+description: BBE on how to secure HTTP client with mutual SSL.
+keywords: ballerina, ballerina by example, bbe, http, mutual ssl, ssl protocols, ciphers
