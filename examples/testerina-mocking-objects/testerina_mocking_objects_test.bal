@@ -63,9 +63,9 @@ function testSendNotification() {
 
 @test:Config { }
 function testMemberVariable() {
-    string mockClientUrl = "http://foo";
-    clientEndpoint = test:mock(http:Client);
-    // Stubs the value of the `url` to return the specified string.
-    test:prepare(clientEndpoint).getMember("url").thenReturn(mockClientUrl);
-    test:assertEquals(clientEndpoint.url, mockClientUrl);
+    string mockId = "test";
+    exampleClient = test:mock(exClient);
+    // Stubs the value of the `id` to return the specified string.
+    test:prepare(exampleClient).getMember("id").thenReturn(mockId);
+    test:assertEquals(exampleClient.id, mockId);
 }

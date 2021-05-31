@@ -2,9 +2,19 @@ import ballerina/http;
 import ballerina/io;
 import ballerina/email;
 
-// Clients objects are defined globally to be able to replace them in tests.
+// Sample client that we can use for member access
+public client class exClient {
+    public string id;
+
+    public function init(string id) {
+        self.id = id;
+    }
+}
+
+// Clients objects are defined globally to be able to replace in test files.
 http:Client clientEndpoint = check new("http://postman-echo.com");
 email:SmtpClient smtpClient = check new("localhost", "admin", "admin");
+exClient exampleClient = new("originalId");
 
 // Performs two `GET` requests to the specified
 // endpoint and returns the response.
