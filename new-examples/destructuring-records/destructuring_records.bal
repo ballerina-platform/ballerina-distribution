@@ -17,10 +17,12 @@ public function main() {
     // `{first: f, last: l}` is the `binding pattern`.
     var names1 = from var {first: f, last: l} in persons
                 select {first: f, last: l};
+                
     io:println(names1);
 
     // The same can be simplified as this.
     var names2 = from var {first, last} in persons
                 select {first, last};
+                
     io:println(names2);
 }

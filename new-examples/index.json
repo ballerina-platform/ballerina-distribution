@@ -434,7 +434,36 @@
         "title": "Transactions",
         "column": 0,
         "category": "Language Concepts",
-        "samples": []
+        "samples": [
+            {
+                "name": "Transaction Statement",
+                "url": "transaction-statement"
+            },
+            {
+                "name": "Check Semantics",
+                "url": "check-semantics"
+            },
+            {
+                "name": "Rollback",
+                "url": "rollback"
+            },
+            {
+                "name": "Retry Transaction Statement",
+                "url": "retry-transaction-statement"
+            },
+            {
+                "name": "Transactional Qualifier",
+                "url": "transactional-qualifier"
+            },
+            {
+                "name": "Transactional Named Workers",
+                "url": "transactional-named-workers"
+            },
+            {
+                "name": "Commit/Rollback Handlers",
+                "url": "commit-rollback-handlers"
+            }
+        ]
     },
     {
         "title": "Concurrency Safety",
@@ -673,10 +702,6 @@
         "column": 0,
         "category": "Working Over the Network",
         "samples": [
-            {
-                "name": "Directory Listener",
-                "url": "directory-listener"
-            },
             {
                 "name": "Dynamic Listener",
                 "url": "dynamic-listener"
@@ -1133,6 +1158,10 @@
                 "url": "directories"
             },
             {
+                "name": "Files",
+                "url": "files"
+            },
+            {
                 "name": "Temp Files and Directories",
                 "url": "temp-files-directories"
             },
@@ -1228,6 +1257,25 @@
             {
                 "name": "XML JSON Conversion",
                 "url": "xml-json-conversion"
+            }
+        ]
+    },
+    {
+        "title": "Deployment",
+        "column": 0,
+        "category": "Language concepts",
+        "samples": [
+            {
+                "name": "Code to Cloud",
+                "url": "c2c-deployment"
+            },
+            {
+                "name": "Azure Functions",
+                "url": "azure-functions-deployment"
+            },
+            {
+                "name": "AWS Lambda",
+                "url": "aws-lambda-deployment"
             }
         ]
     }

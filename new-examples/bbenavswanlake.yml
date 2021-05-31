@@ -341,9 +341,6 @@
     - title: Transactional Qualifier 
       url: /learn/by-example/transactional-qualifier
       active: transactional-qualifier
-    - title: Distributed Transactions 
-      url: /learn/by-example/distributed-transactions
-      active: distributed-transactions
     - title: Transactional Named Workers
       url: /learn/by-example/transactional-named-workers
       active: transactional-named-workers
@@ -558,10 +555,7 @@
       active: websub-webhook-sample
 - title: Listeners
   url: '#'
-  sublinks:  
-    - title: Directory Listener
-      url: /learn/by-example/directory-listener
-      active: directory-listener  
+  sublinks:
     - title: Dynamic Listener
       url: /learn/by-example/dynamic-listener
       active: dynamic-listener  
@@ -764,7 +758,7 @@
       active: io-bytes
     - title: Read/Write Strings
       url: /learn/by-example/strings
-      active: io-bytes
+      active: io-strings
     - title: Read/Write CSV
       url: /learn/by-example/io-csv
       active: io-csv
@@ -891,8 +885,15 @@
     - title: XML/JSON Conversion
       url: /learn/by-example/xml-json-conversion
       active: xml-json-conversion
-
-
-
-
-    
+- title: Deployment
+  url: '#'
+  sublinks:
+    - title: Code to Cloud
+      url: /learn/by-example/c2c-deployment
+      active: c2c-deployment
+    - title: Azure Functions
+      url: /learn/by-example/azure-functions-deployment
+      active: azure-functions-deployment
+    - title: AWS Lambda
+      url: /learn/by-example/aws-lambda-deployment
+      active: aws-lambda-deployment

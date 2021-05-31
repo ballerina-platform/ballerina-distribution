@@ -7,6 +7,7 @@ public function main() {
     int[] numsTimes10 = from var i in nums
                         // The `select` clause is evaluated for each iteration.
                         select i * 10;
+                        
     io:println(numsTimes10);
 
     // This is based on <br></br>
