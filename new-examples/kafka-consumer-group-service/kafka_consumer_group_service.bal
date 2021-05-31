@@ -25,6 +25,7 @@ service kafka:Service on kafkaListener {
         foreach var kafkaRecord in records {
             check processKafkaRecord(kafkaRecord);
         }
+
     }
 }
 

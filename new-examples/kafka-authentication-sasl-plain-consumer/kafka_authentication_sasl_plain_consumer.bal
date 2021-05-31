@@ -34,6 +34,7 @@ service kafka:Service on kafkaListener {
             // Converts the `byte[]` to a `string`.
             string messageContent = check
                                         string:fromBytes(consumerRecord.value);
+
             log:printInfo(messageContent);
         }
     }
