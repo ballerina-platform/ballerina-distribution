@@ -13,6 +13,7 @@ function sum(float[] v) returns float {
     foreach float x in v {
         r += x;
     }
+
     return r;
 }
 
@@ -23,5 +24,6 @@ function sum2(float[] v) returns float {
     foreach int i in 0 ..< v.length() {
         r += v[i];
     }
+
     return r;
 }

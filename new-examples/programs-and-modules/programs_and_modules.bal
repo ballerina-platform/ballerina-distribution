@@ -6,6 +6,7 @@ import ballerina/io;
 // `main` function is the program entry point. 
 // `public` makes function visible outside the module.
 public function main() {
-    // Here `io:println` means function `println` is in module bound to prefix `io`
+    // Here `io:println` means function `println` is in the module bound to prefix `io`.
     io:println("Hello, World!");
+
 }

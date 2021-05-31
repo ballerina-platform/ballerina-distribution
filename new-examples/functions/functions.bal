@@ -3,9 +3,11 @@ import ballerina/io;
 // This function definition has two parameters of type `int`. 
 // `returns` clause specifies type of return value.
 function add(int x, int y) returns int {
+
     int sum = x + y;
     // `return` statement returns a value.
     return sum;
+
 }
 
 public function main() {

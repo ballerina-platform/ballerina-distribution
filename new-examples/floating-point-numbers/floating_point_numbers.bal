@@ -5,8 +5,9 @@ public function main() {
 
     int n = 5;
 
-    // No implicit coversion between integers and floating point values are allowed. 
-    // You can `<T>` for explicit conversions.
+    // No implicit conversions between integers and floating point values are allowed.
+    // You can use `<T>` for explicit conversions.
     float y = x + <float>n;
+
     io:println(y);
 }

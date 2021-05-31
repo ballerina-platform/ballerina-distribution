@@ -10,5 +10,6 @@ public function main() {
         {"x": "foo"},
         {"y": "bar"}
     ];
+
     io:println(arr[0]);
 }

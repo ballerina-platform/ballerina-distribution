@@ -12,4 +12,5 @@ public function main() {
     } else {
         io:println(2);
     }
+
 }

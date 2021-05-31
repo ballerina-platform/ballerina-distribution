@@ -8,5 +8,6 @@ public function main() {
 
     // You can use compound assignment operations such as `+=` and `-=`. 
     n += m;
+
     io:println(n);
 }
