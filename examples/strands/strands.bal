@@ -11,7 +11,8 @@ public function main() {
     // An annotation can be used to make a strand run on a separate thread.
     @strand {
         thread: "any"
-    }    
+    }
+
     worker B {
         io:println("In worker B");
     }

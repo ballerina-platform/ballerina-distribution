@@ -16,6 +16,7 @@ function multiFetch(string urlA, string urlB) returns Result {
 
     // The `wait` action can be used to wait for multiple named workers.
     return wait {a: WA, b: WB};
+
 }
 
 public function main() returns error? {

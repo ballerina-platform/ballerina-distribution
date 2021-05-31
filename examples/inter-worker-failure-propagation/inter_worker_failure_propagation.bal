@@ -13,10 +13,12 @@ function demo() returns int|error {
             return res;
         }
         42 -> function;
+
     }
 
     // Send to or receive from failed worker will propagate the failure.
     int x = check <- A;
+
     return x;
 }
 
