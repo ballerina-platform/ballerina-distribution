@@ -217,14 +217,6 @@
         "column": 0,
         "category": "Language Concepts",
         "samples": [
-            /**{
-                "name": "Plain Data",
-                "url": "plain-data"
-            },
-            {
-                "name": "Ballerina Basic Types",
-                "url": "ballerina-basic-types"
-            },**/
             {
                 "name": "Decimal Type",
                 "url": "decimal-type"
@@ -297,10 +289,6 @@
                 "name": "Limit Clause",
                 "url": "limit-clause"
             },
-            /**{
-                "name": "Table Concept",
-                "url": "table-concept"
-            },**/
             {
                 "name": "Table Syntax",
                 "url": "table-syntax"
@@ -341,14 +329,6 @@
                 "name": "Raw Templates",
                 "url": "raw-templates"
             },
-            /**{
-                "name": "XML",
-                "url": "xml"
-            },
-            {
-                "name": "Sequences",
-                "url": "sequences"
-            },**/
             {
                 "name": "XML Data Model",
                 "url": "xml-data-model"
