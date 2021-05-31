@@ -13,8 +13,8 @@ service graphql:Service /graphql on new graphql:Listener(4000) {
 
 // Define a service class to use in GraphQL service.
 service class Person {
-    private string name;
-    private int age;
+    private final string name;
+    private final int age;
 
     isolated function init(string name, int age) {
         self.name = name;
