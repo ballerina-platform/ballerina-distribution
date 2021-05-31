@@ -341,9 +341,6 @@
     - title: Transactional Qualifier 
       url: /learn/by-example/transactional-qualifier
       active: transactional-qualifier
-    - title: Distributed Transactions 
-      url: /learn/by-example/distributed-transactions
-      active: distributed-transactions
     - title: Transactional Named Workers
       url: /learn/by-example/transactional-named-workers
       active: transactional-named-workers
