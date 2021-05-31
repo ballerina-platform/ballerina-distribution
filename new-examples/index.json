@@ -434,7 +434,36 @@
         "title": "Transactions",
         "column": 0,
         "category": "Language Concepts",
-        "samples": []
+        "samples": [
+            {
+                "name": "Transaction Statement",
+                "url": "transaction-statement"
+            },
+            {
+                "name": "Check Semantics",
+                "url": "check-semantics"
+            },
+            {
+                "name": "Rollback",
+                "url": "rollback"
+            },
+            {
+                "name": "Retry Transaction Statement",
+                "url": "retry-transaction-statement"
+            },
+            {
+                "name": "Transactional Qualifier",
+                "url": "transactional-qualifier"
+            },
+            {
+                "name": "Transactional Named Workers",
+                "url": "transactional-named-workers"
+            },
+            {
+                "name": "Commit/Rollback Handlers",
+                "url": "commit-rollback-handlers"
+            }
+        ]
     },
     {
         "title": "Concurrency Safety",
