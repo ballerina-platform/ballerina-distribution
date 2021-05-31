@@ -1,0 +1,2 @@
+bal run rollback.bal
+error: Not enough Stocks:  {"stockIndex":4}

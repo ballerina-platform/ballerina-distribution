@@ -1,2 +1,2 @@
 bal run readonly_type.bal
-[{"k":["foo","bar"],"value":17}]
+[{"k":"John","value":17},{"k":"Anne","value":18}]

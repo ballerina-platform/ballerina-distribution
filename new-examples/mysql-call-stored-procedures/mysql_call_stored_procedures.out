@@ -1,0 +1,12 @@
+# Create a Ballerina project.
+# Copy the example to the project and add relevant database driver jar details to the `Ballerina.toml` file.
+# Execute the command below to build and run the project.
+bal run
+
+Call stored procedure `InsertStudent`.
+Affected Row count: 1
+Call stored procedure `GetCount`.
+Age of the student with id '1' : 24
+Total student count: 1
+Call stored procedure `GetStudents`.
+Student details: {"id":1,"age":24,"name":"George"}

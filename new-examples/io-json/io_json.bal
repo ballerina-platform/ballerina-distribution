@@ -1,6 +1,6 @@
 import ballerina/io;
 
-public function main() returns @tainted error? {
+public function main() returns error? {
     // Initializes the JSON file path and content.
     string jsonFilePath = "./files/jsonFile.json";
     json jsonContent = {"Store": {
