@@ -21,5 +21,6 @@ public function main() {
                      where len2 > 0
                      let string name = first + " " + last
                      select name;
+                     
     io:println(names);
 }
