@@ -11,7 +11,7 @@ public function transform(string s) returns string {
 public function main() returns error? {
     // The `@strand` annotation applies to the `start` action.
     future<int> fut = @strand { thread: "any" } start foo();
-    int x = check wait fut;
+    int|error x = wait fut;
     io:println(x);
 }
 
