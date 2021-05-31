@@ -17,14 +17,18 @@ kafka:ConsumerConfiguration consumerConfig = {
     offsetReset: "earliest",
     topics: ["topic-sasl"],
     // Provide the relevant authentication configuration record to authenticate the consumer.
-    auth: authConfig
+    auth: authConfig,
+    securityProtocol: kafka:PROTOCOL_SASL_PLAINTEXT
 };
 
-listener kafka:Listener kafkaListener = new(kafka:DEFAULT_URL, consumerConfig);
+// Provide the relevant SASL URL of the configured Kafka server.
+const string SASL_URL = "localhost:9093";
+
+listener kafka:Listener kafkaListener = new(SASL_URL, consumerConfig);
 
 service kafka:Service on kafkaListener {
     remote function onConsumerRecord(kafka:Caller caller,
-                                kafka:ConsumerRecord[] records) {
+                                kafka:ConsumerRecord[] records) returns error? {
         // Loops through the received consumer records.
         foreach var consumerRecord in records {
             // Converts the `byte[]` to a `string`.
