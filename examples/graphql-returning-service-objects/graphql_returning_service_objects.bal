@@ -16,7 +16,7 @@ service class Person {
     private final string name;
     private final int age;
 
-    isolated function init(string name, int age) {
+    function init(string name, int age) {
         self.name = name;
         self.age = age;
     }
