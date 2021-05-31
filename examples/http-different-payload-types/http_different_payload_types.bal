@@ -12,7 +12,7 @@ service /actionService on new http:Listener(9090) {
     resource function 'default messageUsage()
             returns string|http:InternalServerError|error? {
         //[GET](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#get) remote function without any payload.
-        string greetingMessage = check clientEP->get("/greeting", targetType = string);
+        string greetingMessage = check clientEP->get("/greeting");
         handleResponse(greetingMessage);
 
         //[POST](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#post) remote function without any payload.
@@ -21,7 +21,7 @@ service /actionService on new http:Listener(9090) {
 
         //[POST](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#post) remote function with
         //text as the payload.
-        string textResponse = check clientEP->post("/echo", "Sample Text", targetType = string);
+        string textResponse = check clientEP->post("/echo", "Sample Text");
         handleResponse(textResponse);
 
         //[POST](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#post) remote function with
@@ -30,7 +30,7 @@ service /actionService on new http:Listener(9090) {
         handleResponse(xmlResponse);
 
         //POST remote function with `json` as the payload.
-        json jsonResponse = check clientEP->post("/echo", {name: "apple", color: "red"}, targetType = json);
+        json jsonResponse = check clientEP->post("/echo", {name: "apple", color: "red"});
         handleResponse(jsonResponse);
 
         //[POST](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#post) remote function with
