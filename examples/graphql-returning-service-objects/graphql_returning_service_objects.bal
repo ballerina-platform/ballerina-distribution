@@ -22,13 +22,13 @@ service class Person {
     }
 
     // Each resource function becomes a field of the `Person` type.
-    isolated resource function get name() returns string {
+    resource function get name() returns string {
         return self.name;
     }
-    isolated resource function get age() returns int {
+    resource function get age() returns int {
         return self.age;
     }
-    isolated resource function get isAdult() returns boolean {
+    resource function get isAdult() returns boolean {
         return self.age > 21;
     }
 }

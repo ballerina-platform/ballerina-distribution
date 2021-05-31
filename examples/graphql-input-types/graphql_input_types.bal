@@ -6,7 +6,7 @@ service /graphql on new graphql:Listener(4000) {
     // corresponding GraphQL field. In this GraphQL schema, the 
     // `greeting` field of `Query` type  has a `name`  input value, which accepts
     // `string` values.
-    isolated resource function get greeting(string name) returns string {
+    resource function get greeting(string name) returns string {
 
         return string`Hello, ${name}`;
     }
