@@ -12,10 +12,10 @@ public function main() returns error? {
                                   customerId INTEGER, noOfItems INTEGER,
                                   PRIMARY KEY (orderId))`);
     // Uses a raw template to insert values to `Orders` table.
-    _ = check dbClient->execute(`INSERT INTO Orders (orderId, customerId, noOfItems)
-                                 VALUES (1, 1, 20)`);
-    _ = check dbClient->execute(`INSERT INTO Orders (orderId, customerId, noOfItems)
-                                 VALUES (2, 1, 15)`);
+    _ = check dbClient->execute(`INSERT INTO Orders (orderId, customerId,
+                                noOfItems) VALUES (1, 1, 20)`);
+    _ = check dbClient->execute(`INSERT INTO Orders (orderId, customerId,
+                                noOfItems) VALUES (2, 1, 15)`);
 
     stream<record {| anydata...; |}, sql:Error?> strm = getOrders(1);
     record {|record {} value;|}|sql:Error? v = strm.next();
@@ -26,7 +26,8 @@ public function main() returns error? {
     }
 }
 
-function getOrders(int customerId) returns stream<record {| anydata...; |}, sql:Error?> {
+function getOrders(int customerId)
+    returns stream<record {| anydata...; |}, sql:Error?> {
     // In this raw template `customerId` variable is interpolated in the literal.
     return dbClient->query(`SELECT * FROM orders
                           WHERE customerId = ${customerId}`);

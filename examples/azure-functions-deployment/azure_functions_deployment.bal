@@ -3,7 +3,8 @@ import ballerinax/azure_functions as af;
 
 // HTTP request/response with no authentication
 @af:Function
-public function hello(@af:HTTPTrigger { authLevel: "anonymous" } string payload) 
+public function hello(@af:HTTPTrigger { authLevel: "anonymous" }
+                      string payload)
                       returns @af:HTTPOutput string|error {
     return "Hello, " + payload + "!";
 }
@@ -41,7 +42,8 @@ public function fromBlobToQueue(af:Context ctx,
 // HTTP request to read a blob value
 @af:Function
 public function httpTriggerBlobInput(@af:HTTPTrigger af:HTTPRequest req, 
-                    @af:BlobInput { path: "bpath1/{Query.name}" } byte[]? blobIn)
+                    @af:BlobInput { path: "bpath1/{Query.name}" }
+                    byte[]? blobIn)
                     returns @af:HTTPOutput string {
     int length = 0;
     if blobIn is byte[] {
@@ -54,7 +56,8 @@ public function httpTriggerBlobInput(@af:HTTPTrigger af:HTTPRequest req,
 // HTTP request to add a new blob
 @af:Function
 public function httpTriggerBlobOutput(@af:HTTPTrigger af:HTTPRequest req, 
-        @af:BlobOutput { path: "bpath1/{Query.name}" } af:StringOutputBinding bb)
+        @af:BlobOutput { path: "bpath1/{Query.name}" }
+            af:StringOutputBinding bb)
         returns @af:HTTPOutput string|error {
     bb.value = req.body;
     return "Blob: " + req.query["name"].toString() + " Content: " + 
@@ -79,7 +82,8 @@ public function sendSMS(@af:HTTPTrigger af:HTTPRequest req,
                         returns @af:HTTPOutput string {
     tb.to = req.query["to"].toString();
     tb.body = req.body.toString();
-    return "Message - to: " + tb?.to.toString() + " body: " + tb?.body.toString();
+    return "Message - to: " + tb?.to.toString() + " body: " +
+            tb?.body.toString();
 }
 
 public type Person record {
@@ -121,7 +125,8 @@ public function httpTriggerCosmosDBInput2(
             @af:HTTPTrigger af:HTTPRequest httpReq, 
             @af:CosmosDBInput { connectionStringSetting: "CosmosDBConnection", 
                 databaseName: "db1", collectionName: "c1", 
-                id: "{Query.id}", partitionKey: "{Query.country}" } Person? dbReq)
+                id: "{Query.id}", partitionKey: "{Query.country}" }
+                      Person? dbReq)
                 returns @af:HTTPOutput string|error {
     return dbReq.toString();
 }
@@ -142,8 +147,10 @@ public function httpTriggerCosmosDBInput3(
 public function httpTriggerCosmosDBOutput1(
     @af:HTTPTrigger af:HTTPRequest httpReq, @af:HTTPOutput af:HTTPBinding hb) 
     returns @af:CosmosDBOutput { connectionStringSetting: "CosmosDBConnection", 
-                                 databaseName: "db1", collectionName: "c1" } json {
-    json entry = { id: uuid:createType1AsString(), name: "Saman", country: "Sri Lanka" };
+                                 databaseName: "db1", collectionName: "c1" }
+                                 json {
+    json entry = { id: uuid:createType1AsString(), name: "Saman",
+                    country: "Sri Lanka" };
     hb.payload = "Adding entry: " + entry.toString();
     return entry;
 }
@@ -155,8 +162,10 @@ public function httpTriggerCosmosDBOutput2(
         returns @af:CosmosDBOutput { 
             connectionStringSetting: "CosmosDBConnection", 
             databaseName: "db1", collectionName: "c1" } json {
-    json entry = [{ id: uuid:createType1AsString(), name: "John Doe A", country: "USA" },
-                  { id: uuid:createType1AsString(), name: "John Doe B", country: "USA" }];
+    json entry = [{ id: uuid:createType1AsString(),
+                    name: "John Doe A", country: "USA" },
+                  { id: uuid:createType1AsString(),
+                    name: "John Doe B", country: "USA" }];
     hb.payload = "Adding entries: " + entry.toString();
     return entry;
 }
@@ -177,6 +186,6 @@ public function httpTriggerCosmosDBOutput3(
 @af:Function
 public function queuePopulationTimer(
             @af:TimerTrigger { schedule: "*/10 * * * * *" } json triggerInfo, 
-            @af:QueueOutput { queueName: "queue4" } af:StringOutputBinding msg) {
-    msg.value = triggerInfo.toString();
+            @af:QueueOutput { queueName: "queue4" }
+             af:StringOutputBinding msg) {msg.value = triggerInfo.toString();
 }

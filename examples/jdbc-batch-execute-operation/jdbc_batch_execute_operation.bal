@@ -28,7 +28,8 @@ public function main() returns error? {
                 ${data.registrationID}, ${data.creditLimit}, ${data.country})`;
     
     // Inserts the records with the auto-generated ID.
-    sql:ExecutionResult[] result = check jdbcClient -> batchExecute(insertQueries);
+    sql:ExecutionResult[] result =
+                            check jdbcClient -> batchExecute(insertQueries);
 
     int[] generatedIds = [];
     foreach var summary in result {

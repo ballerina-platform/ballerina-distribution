@@ -62,8 +62,8 @@ function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
     sql:ExecutionResult result =
         check jdbcClient -> execute(`CREATE TABLE Customers(customerId INTEGER
             NOT NULL IDENTITY, firstName  VARCHAR(300), lastName  VARCHAR(300),
-            registrationID INTEGER UNIQUE, creditLimit DOUBLE, country  VARCHAR(300),
-            PRIMARY KEY (customerId))`);
+            registrationID INTEGER UNIQUE, creditLimit DOUBLE,
+            country VARCHAR(300), PRIMARY KEY (customerId))`);
 
     // Adds records to the newly-created table.
     result = check jdbcClient -> execute(`INSERT INTO Customers (firstName,
