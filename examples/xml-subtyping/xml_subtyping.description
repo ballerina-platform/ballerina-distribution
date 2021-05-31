@@ -1,4 +1,4 @@
-// An `xml` value belongs to `xml:Element` if it is consists of just an element
+// An `xml` value belongs to `xml:Element` if it consists of just an element
 // item. Similarly for `xml:Comment` and `xml:ProcessingInstruction`.
 // An `xml` value belongs to `xml:Text` if it consists of a text item or is 
 // empty.
