@@ -885,8 +885,15 @@
     - title: XML/JSON Conversion
       url: /learn/by-example/xml-json-conversion
       active: xml-json-conversion
-
-
-
-
-    
+- title: Deployment
+  url: '#'
+  sublinks:
+    - title: Code to Cloud
+      url: /learn/by-example/c2c-deployment
+      active: c2c-deployment
+    - title: Azure Functions
+      url: /learn/by-example/azure-functions-deployment
+      active: azure-functions-deployment
+    - title: AWS Lambda
+      url: /learn/by-example/aws-lambda-deployment
+      active: aws-lambda-deployment
