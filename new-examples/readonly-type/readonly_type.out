@@ -1,2 +1,0 @@
-bal run readonly_type.bal
-[{"k":"John","value":17},{"k":"Anne","value":18}]

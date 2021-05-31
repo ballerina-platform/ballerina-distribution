@@ -1,7 +1,0 @@
-# To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-bal run raw_template.bal
-["Hello ","!!!"]
-Ballerina
-INSERT INTO Details VALUES (John Doe, 25)
-INSERT INTO Details VALUES (Jane Doe, 20)

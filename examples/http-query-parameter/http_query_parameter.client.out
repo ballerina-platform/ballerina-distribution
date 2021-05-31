@@ -1,0 +1,11 @@
+Run the cURL command below to invoke product/count resource.
+curl "http://localhost:9090/product/count?a=315&b=585"
+{"count":900}
+
+Run the cURL command below to invoke product/name resource.
+curl "http://localhost:9090/product/name?id=432423"
+product_432423
+
+Run the cURL command below to invoke product/detail resource.
+curl "http://localhost:9090/product/detail?colour=red&colour=green"
+{"product_colour":["red", "green"]}

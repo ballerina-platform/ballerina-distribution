@@ -1,7 +1,0 @@
-# To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `bal run` command below.
-bal run query_join.bal
-
-{"name":"Michelle Sadler","deptName":"Physics","degree":"Bachelor of Science","intakeYear":1990}
-{"name":"Ranjan Fonseka","deptName":"Chemistry","degree":"Bachelor of Science","intakeYear":2001}
-{"name":"Martin Guthrie","deptName":"Physics","degree":"Bachelor of Science","intakeYear":2002}

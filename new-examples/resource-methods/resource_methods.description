@@ -1,4 +1,0 @@
-// Service objects use `remote` methods to expose services in procedural style: remote methods are named by verbs. <br/><br/>
-// Service objects user `resource` methods to expose services in an RESTful style: resources are named by nounds. <br/><br/>
-// Resources are motivated by HTTP, but are general enough also to work for GraphQL. 
-// `resource` methods are network-oriented generalization of OO getter/setter concept. 

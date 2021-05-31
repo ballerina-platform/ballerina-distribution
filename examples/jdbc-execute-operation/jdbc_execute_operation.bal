@@ -2,88 +2,63 @@ import ballerina/io;
 import ballerinax/java.jdbc;
 import ballerina/sql;
 
-function initializeTable(jdbc:Client jdbcClient)
-returns int|string|sql:Error? {
-    // Execute dropping the table. The `sql:ExecutionResult` is returned upon
-    // successful execution. An error will be returned in case of a failure.
-    sql:ExecutionResult result =
-        check jdbcClient->execute("DROP TABLE IF EXISTS Customers");
-    io:println("Drop table executed. ", result);
-
-    // Similarly, to drop a table, the `create` table query is executed.
-    // Here, the `customerId` is an auto-generated column.
-    result = check jdbcClient->execute("CREATE TABLE IF NOT EXISTS Customers" +
-        "(customerId INTEGER NOT NULL IDENTITY, firstName VARCHAR(300), " +
-        "lastName VARCHAR(300), registrationID INTEGER, creditLimit DOUBLE, " +
-        "country VARCHAR(300), PRIMARY KEY (customerId))");
-
-    // Insert sample data into the table. The result will have
-    // `affectedRowCount` and `lastInsertedId` with the auto-generated ID of
-    // the last row.
-    result = check jdbcClient->execute("INSERT INTO Customers (firstName, " +
-        "lastName,registrationID,creditLimit,country)" +
-        "VALUES ('Peter', 'Stuart', 1, 5000.75, 'USA')");
-    io:println("Rows affected: ", result.affectedRowCount);
-    io:println("Generated Customer ID: ", result.lastInsertId);
-    
-    return result.lastInsertId;
-}
-
-function updateRecord(jdbc:Client jdbcClient, int generatedId) {
-    // Create a parameterized query.
-    sql:ParameterizedQuery updateQuery =
-        `Update Customers set creditLimit = 15000.5
-         where customerId = ${generatedId}`;
-
-    // Update the record with the auto-generated ID.
-    sql:ExecutionResult|sql:Error result =
-        jdbcClient->execute(updateQuery);
-
-    if (result is sql:ExecutionResult) {
-        io:println("Updated Row count: ", result?.affectedRowCount);
-    } else {
-        io:println("Error occurred: ", result);
-    }
-}
-
-function deleteRecord(jdbc:Client jdbcClient, int generatedId) {
-    // Delete the record with the auto-generated ID.
-    sql:ParameterizedQuery deleteQuery =
-        `Delete from Customers where customerId = ${generatedId}`;
-    sql:ExecutionResult|sql:Error result =
-            jdbcClient->execute(deleteQuery);
-
-    if (result is sql:ExecutionResult) {
-        io:println("Deleted Row count: ", result.affectedRowCount);
-    } else {
-        io:println("Error occurred: ", result);
-    }
-}
-
-public function main() {
-    // Initialize the JDBC client.
-    jdbc:Client|sql:Error jdbcClient = new ("jdbc:h2:file:./target/customers",
+public function main() returns error? {
+    // Initializes the JDBC client.
+    jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
         "rootUser", "rootPass");
+    // Runs the prerequisite setup for the example.
+    check beforeExample(jdbcClient);
 
-    if (jdbcClient is jdbc:Client) {
-        // Initialize a table and insert sample data.
-        int|string|sql:Error? initResult = initializeTable(jdbcClient);
+    float newCreditLimit = 15000.5;
 
-        if (initResult is int) {
-            // Update a record.
-            updateRecord(jdbcClient, initResult);
-            // Delete a record.
-            deleteRecord(jdbcClient, initResult);
+    // Creates a parameterized query for the record update.
+    sql:ParameterizedQuery updateQuery = 
+            `UPDATE Customers SET creditLimit = ${newCreditLimit} 
+            where customerId = 1`;
 
-            io:println("Sample executed successfully!");
-        } else if (initResult is sql:Error) {
-            io:println("Customer table initialization failed: ", initResult);
-        }
-        // Close the JDBC client.
-        sql:Error? e = jdbcClient.close();
+    sql:ExecutionResult result = check jdbcClient -> execute(updateQuery);
+    io:println("Updated Row count: ", result?.affectedRowCount);
 
-    } else {
-        io:println("Initialization failed!!");
-        io:println(jdbcClient);
-    }
+    string firstName = "Dan";
+
+    // Creates a parameterized query for deleting the records.
+    sql:ParameterizedQuery deleteQuery =
+            `DELETE FROM Customers WHERE firstName = ${firstName}`;
+    
+    result = check jdbcClient -> execute(deleteQuery);
+    io:println("Deleted Row count: ", result.affectedRowCount);
+
+    // Performs the cleanup after the example.
+    check afterExample(jdbcClient);
+}
+
+// Initializes the database as a prerequisite to the example.
+function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
+    //Creates a table in the database.
+    sql:ExecutionResult result =
+        check jdbcClient -> execute(`CREATE TABLE Customers(customerId INTEGER
+            NOT NULL IDENTITY, firstName  VARCHAR(300), lastName  VARCHAR(300),
+            registrationID INTEGER, creditLimit DOUBLE, country  VARCHAR(300),
+            PRIMARY KEY (customerId))`);
+
+    // Inserts data into the table. The result will have the `affectedRowCount`
+    // and `lastInsertedId` with the auto-generated ID of the last row.
+    result = check jdbcClient -> execute(`INSERT INTO Customers (firstName,
+            lastName, registrationID,creditLimit,country) VALUES ('Peter',
+            'Stuart', 1, 5000.75, 'USA')`);
+    result = check jdbcClient -> execute(`INSERT INTO Customers (firstName,
+            lastName, registrationID,creditLimit,country) VALUES
+            ('Dan', 'Brown', 2, 10000, 'UK')`);
+
+    io:println("Rows affected: ", result.affectedRowCount);
+    io:println("Generated Customer ID: ", result.lastInsertId);        
+}
+
+// Cleans up the database after running the example.
+function afterExample(jdbc:Client jdbcClient) returns sql:Error? {
+    // Cleans the database.
+    sql:ExecutionResult result =
+            check jdbcClient -> execute(`DROP TABLE Customers`);
+    // Closes the JDBC client.
+    check jdbcClient.close();
 }
