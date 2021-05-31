@@ -5,7 +5,7 @@ public function main() returns error? {
     future<int> fut = start foo();
 
     // `wait` for `future<T>` gives `T|error`.
-    int x = check wait fut;
+    int|error x = wait fut;
     io:println(x);
 }
 
