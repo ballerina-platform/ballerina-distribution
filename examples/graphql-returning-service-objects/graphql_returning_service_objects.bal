@@ -1,6 +1,6 @@
 import ballerina/graphql;
 
-service graphql:Service /graphql on new graphql:Listener(4000) {
+service /graphql on new graphql:Listener(4000) {
 
     // Resource functions can return service objects. The returning service
     // object is mapped to an `OBJECT` type in GraphQL. Each resource
@@ -12,7 +12,7 @@ service graphql:Service /graphql on new graphql:Listener(4000) {
 }
 
 // Define a service class to use in GraphQL service.
-isolated service class Person {
+service class Person {
     private final string name;
     private final int age;
 
