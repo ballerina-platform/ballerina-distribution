@@ -1,5 +1,3 @@
-# To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
 bal run isolated_functions.bal
-["hello from Ballerina","greetings from Ballerina"]
-1
+{"v":200}
+{"v":100}
