@@ -538,6 +538,27 @@
     - title: Input Types
       url: /learn/by-example/graphql-input-types
       active: graphql-input-types
+- title: GraphQL Security
+  url: '#'
+  sublinks:
+    - title: Service - SSL/TLS
+      url: /learn/by-example/graphql-service-ssl-tls
+      active: graphql-service-ssl-tls
+    - title: Service - Mutual SSL
+      url: /learn/by-example/graphql-service-mutual-ssl
+      active: graphql-service-mutual-ssl
+    - title: Service - Basic Auth File User Store
+      url: /learn/by-example/graphql-service-basic-auth-file-user-store
+      active: graphql-service-basic-auth-file-user-store
+    - title: Service - Basic Auth LDAP User Store
+      url: /learn/by-example/graphql-service-basic-auth-ldap-user-store
+      active: graphql-service-basic-auth-ldap-user-store
+    - title: Service - JWT Auth
+      url: /learn/by-example/graphql-service-jwt-auth
+      active: graphql-service-jwt-auth
+    - title: Service - OAuth2
+      url: /learn/by-example/graphql-service-oauth2
+      active: graphql-service-oauth2
 - title: WebSockets
   url: '#'
   sublinks:  
