@@ -19,5 +19,6 @@ public function main() {
     var highPaidEmployees = table key(id) from var e in employees
                             where e.salary >= 1000
                             select e;
+                            
     io:println(highPaidEmployees);
 }

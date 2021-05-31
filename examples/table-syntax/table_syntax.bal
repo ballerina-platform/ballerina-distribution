@@ -23,6 +23,6 @@ public function main() {
     // Retrieves `Employee` with key value `Fred`.
     Employee? e = t["Fred"];
 
-    increaseSalary(100)
+    increaseSalary(100);
     io:println(t);
 }
