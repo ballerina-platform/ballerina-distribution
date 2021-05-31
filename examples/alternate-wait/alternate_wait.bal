@@ -3,6 +3,7 @@ import ballerina/io;
 
 // Fetch from A or B.
 function altFetch(string urlA, string urlB) returns string|error {
+
     worker A returns string|error {
         return fetch(urlA);
     }
@@ -15,6 +16,7 @@ function altFetch(string urlA, string urlB) returns string|error {
     // This function will return as soon as the return value of either
     // `A` or `B` is available.
     return wait A | B;
+
 }
 
 public function main() returns error? {

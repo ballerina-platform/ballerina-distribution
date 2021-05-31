@@ -31,7 +31,8 @@ public function main() returns error? {
     _ = check cache.invalidate("key2");
 
     // Gets the keys of the cache entries.
-    io:println("The existing keys in after invalidating a given key: ", cache.keys());
+    io:println("The existing keys in after invalidating a given key: ",
+                cache.keys());
 
     // Discards all the cache entries of the cache.
     _ = check cache.invalidateAll();

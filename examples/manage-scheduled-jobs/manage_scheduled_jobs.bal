@@ -32,8 +32,10 @@ public function main() returns error? {
     time:Civil time = time:utcToCivil(newTime);
 
     // Schedules the tasks to execute the job every second.
-    task:JobId id1 = check task:scheduleJobRecurByFrequency(new Job(0, "1st Job"), 1);
-    task:JobId id2 = check task:scheduleJobRecurByFrequency(new Job(0, "2nd Job"), 3);
+    task:JobId id1 = check task:scheduleJobRecurByFrequency(
+                            new Job(0, "1st Job"), 1);
+    task:JobId id2 = check task:scheduleJobRecurByFrequency(
+                            new Job(0, "2nd Job"), 3);
     // Schedules the one-time job at the specified time.
     task:JobId id3 = check task:scheduleOneTimeJob(new Job(0, "3rd Job"), time);
 

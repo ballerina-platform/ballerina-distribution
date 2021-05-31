@@ -10,12 +10,14 @@ function demo(string s) returns int|error {
         // to an error, the error value is returned terminating only the worker.
         int x = check int:fromString(s);
         return x + 1;
+
     }
 
     io:println("In function worker");
 
     // Waiting on a named worker will give its return value.
     int y = check wait A;
+
     return y + 1;
 }
 

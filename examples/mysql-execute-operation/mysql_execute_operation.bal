@@ -45,21 +45,22 @@ function beforeExample() returns sql:Error? {
     result = check mysqlClient -> execute(`CREATE TABLE MYSQL_BBE.Customers
             (customerId INTEGER NOT NULL AUTO_INCREMENT, firstName  
             VARCHAR(300), lastName  VARCHAR(300), registrationID INTEGER, 
-            creditLimit DOUBLE, country  VARCHAR(300),PRIMARY KEY (customerId))`);
+            creditLimit DOUBLE, country VARCHAR(300),
+            PRIMARY KEY (customerId))`);
 
     // Inserts data into the table. The result will have the `affectedRowCount`
     // and `lastInsertedId` with the auto-generated ID of the last row.
-    result = check mysqlClient -> execute(`INSERT INTO MYSQL_BBE.Customers (firstName,
-            lastName, registrationID,creditLimit,country) VALUES ('Peter',
-            'Stuart', 1, 5000.75, 'USA')`);
-    result = check mysqlClient -> execute(`INSERT INTO MYSQL_BBE.Customers (firstName,
-            lastName, registrationID,creditLimit,country) VALUES ('Dan', 'Brown',
-            2, 10000, 'UK')`);
+    result = check mysqlClient -> execute(`INSERT INTO MYSQL_BBE.Customers
+            (firstName, lastName, registrationID,creditLimit,country) VALUES
+            ('Peter','Stuart', 1, 5000.75, 'USA')`);
+    result = check mysqlClient -> execute(`INSERT INTO MYSQL_BBE.Customers
+            (firstName, lastName, registrationID,creditLimit,country) VALUES
+            ('Dan', 'Brown', 2, 10000, 'UK')`);
 
     io:println("Rows affected: ", result.affectedRowCount);
-    io:println("Generated Customer ID: ", result.lastInsertId);  
+    io:println("Generated Customer ID: ", result.lastInsertId);
 
-    check mysqlClient.close();      
+    check mysqlClient.close();
 }
 
 // Cleans up the database after running the example.

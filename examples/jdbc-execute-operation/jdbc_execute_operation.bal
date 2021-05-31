@@ -47,8 +47,8 @@ function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
             lastName, registrationID,creditLimit,country) VALUES ('Peter',
             'Stuart', 1, 5000.75, 'USA')`);
     result = check jdbcClient -> execute(`INSERT INTO Customers (firstName,
-            lastName, registrationID,creditLimit,country) VALUES ('Dan', 'Brown',
-            2, 10000, 'UK')`);
+            lastName, registrationID,creditLimit,country) VALUES
+            ('Dan', 'Brown', 2, 10000, 'UK')`);
 
     io:println("Rows affected: ", result.affectedRowCount);
     io:println("Generated Customer ID: ", result.lastInsertId);        

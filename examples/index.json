@@ -641,6 +641,37 @@
         ]
     },
     {
+        "title": "GraphQL Security",
+        "column": 0,
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Service - SSL/TLS",
+                "url": "graphql-service-ssl-tls"
+            },
+            {
+                "name": "Service - Mutual SSL",
+                "url": "graphql-service-mutual-ssl"
+            },
+            {
+                "name": "Service - Basic Auth File User Store",
+                "url": "graphql-service-basic-auth-file-user-store"
+            },
+            {
+                "name": "Service - Basic Auth LDAP User Store",
+                "url": "graphql-service-basic-auth-ldap-user-store"
+            },
+            {
+                "name": "Service - JWT Auth",
+                "url": "graphql-service-jwt-auth"
+            },
+            {
+                "name": "Service - OAuth2",
+                "url": "graphql-service-oauth2"
+            }
+        ]
+    },
+    {
         "title": "WebSockets",
         "column": 0,
         "category": "Working Over the Network",
@@ -736,6 +767,10 @@
             {
                 "name": "Bidirectional Streaming RPC",
                 "url": "grpc-bidirectional-streaming"
+            },
+            {
+                "name": "Proto To Ballerina",
+                "url": "proto-to-ballerina"
             }
         ]
     },

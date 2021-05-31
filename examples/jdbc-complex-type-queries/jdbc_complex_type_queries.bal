@@ -66,7 +66,8 @@ public function main() returns error? {
     // `Timestamp` fields of the database table can be mapped to `time:Utc`,
     // string, and int types in Ballerina.
     stream<record{}, error> resultStream3 = 
-                jdbcClient -> query(`SELECT * FROM DATE_TIME_TYPES`, DateTimeType);
+                jdbcClient -> query(`SELECT * FROM DATE_TIME_TYPES`,
+                DateTimeType);
     stream<DateTimeType, sql:Error> dateResultStream =
                 <stream<DateTimeType, sql:Error>>resultStream3;
 

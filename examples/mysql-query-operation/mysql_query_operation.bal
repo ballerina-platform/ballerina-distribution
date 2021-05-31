@@ -84,18 +84,19 @@ function beforeExample() returns sql:Error? {
         check mysqlClient -> execute(`CREATE DATABASE MYSQL_BBE`);
 
     // Creates a table in the database.
-    result = check mysqlClient -> execute(`CREATE TABLE MYSQL_BBE.Customers(customerId 
-            INTEGER NOT NULL AUTO_INCREMENT, firstName  VARCHAR(300), lastName  VARCHAR(300),
-            registrationID INTEGER, creditLimit DOUBLE, country  VARCHAR(300),
+    result = check mysqlClient -> execute(`CREATE TABLE MYSQL_BBE.Customers
+            (customerId INTEGER NOT NULL AUTO_INCREMENT, firstName
+            VARCHAR(300), lastName  VARCHAR(300), registrationID INTEGER,
+            creditLimit DOUBLE, country  VARCHAR(300),
             PRIMARY KEY (customerId))`);
 
     // Adds the records to the newly-created table.
-    result = check mysqlClient -> execute(`INSERT INTO MYSQL_BBE.Customers(firstName,
-            lastName, registrationID,creditLimit,country) VALUES ('Peter',
-            'Stuart', 1, 5000.75, 'USA')`);
-    result = check mysqlClient -> execute(`INSERT INTO MYSQL_BBE.Customers(firstName,
-            lastName, registrationID,creditLimit,country) VALUES ('Dan', 'Brown',
-            2, 10000, 'UK')`);
+    result = check mysqlClient -> execute(`INSERT INTO MYSQL_BBE.Customers
+            (firstName, lastName, registrationID,creditLimit,country) VALUES
+            ('Peter','Stuart', 1, 5000.75, 'USA')`);
+    result = check mysqlClient -> execute(`INSERT INTO MYSQL_BBE.Customers
+            (firstName, lastName, registrationID,creditLimit,country) VALUES
+            ('Dan', 'Brown', 2, 10000, 'UK')`);
 
     check mysqlClient.close();        
 }

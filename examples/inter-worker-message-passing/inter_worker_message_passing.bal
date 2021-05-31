@@ -15,6 +15,7 @@ public function main() {
 
         // Use `function` to refer to the function's default worker.
         x1 -> function;
+
     }
 
     worker C {

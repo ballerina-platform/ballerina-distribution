@@ -29,7 +29,8 @@ public function main() returns error? {
                 ${data.registrationID}, ${data.creditLimit}, ${data.country})`;
     
     // Inserts the records with the auto-generated ID.
-    sql:ExecutionResult[] result = check mysqlClient -> batchExecute(insertQueries);
+    sql:ExecutionResult[] result =
+                            check mysqlClient -> batchExecute(insertQueries);
 
     int[] generatedIds = [];
     foreach var summary in result {
@@ -60,8 +61,9 @@ function beforeExample() returns sql:Error? {
     
     // Creates a table in the database.
     result = check mysqlClient -> execute(`CREATE TABLE MYSQL_BBE.Customers
-            (customerId INTEGER NOT NULL AUTO_INCREMENT, firstName  VARCHAR(300), 
-            lastName  VARCHAR(300), registrationID INTEGER, creditLimit DOUBLE, 
+            (customerId INTEGER NOT NULL AUTO_INCREMENT,
+            firstName VARCHAR(300), lastName  VARCHAR(300),
+            registrationID INTEGER, creditLimit DOUBLE,
             country  VARCHAR(300), PRIMARY KEY (customerId))`);  
 
     check mysqlClient.close();            
