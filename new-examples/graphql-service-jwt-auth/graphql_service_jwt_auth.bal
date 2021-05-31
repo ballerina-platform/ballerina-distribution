@@ -14,7 +14,7 @@ listener graphql:Listener securedEP = new(9090,
 // `graphql:JwtValidatorConfig` configurations.
 // Authorization is based on scopes. A scope maps to one or more groups.
 // Authorization can be enabled by setting the `string|string[]` type
-// configurations.
+// configurations for `scopes` field.
 @graphql:ServiceConfig {
     auth: [
         {
