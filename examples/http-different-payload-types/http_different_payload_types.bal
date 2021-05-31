@@ -26,11 +26,13 @@ service /actionService on new http:Listener(9090) {
 
         //[POST](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#post) remote function with
         //`xml` as the payload.
-        xml xmlResponse = check clientEP->post("/echo", xml `<yy>Sample Xml</yy>`);
+        xml xmlResponse = check clientEP->post("/echo",
+                                                xml `<yy>Sample Xml</yy>`);
         handleResponse(xmlResponse);
 
         //POST remote function with `json` as the payload.
-        json jsonResponse = check clientEP->post("/echo", {name: "apple", color: "red"});
+        json jsonResponse = check clientEP->post("/echo",
+                                            {name: "apple", color: "red"});
         handleResponse(jsonResponse);
 
         //[POST](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#post) remote function with
@@ -41,7 +43,8 @@ service /actionService on new http:Listener(9090) {
         handleResponse(response);
 
         //Get a byte stream to a given file.
-        stream<byte[], io:Error?>|io:Error bStream = io:fileReadBlocksAsStream("./files/logo.png");
+        stream<byte[], io:Error?>|io:Error bStream =
+                    io:fileReadBlocksAsStream("./files/logo.png");
         if (bStream is stream<byte[], io:Error?>) {
             //Make a POST request with a byte stream as the payload.
             response = check clientEP->post("/image", bStream);
@@ -74,7 +77,8 @@ service /backEndService on new http:Listener(9091) {
         return "Hello";
     }
 
-    resource function post echo(http:Caller caller, http:Request req) returns error? {
+    resource function post echo(http:Caller caller, http:Request req)
+      returns error? {
         if (req.hasHeader("content-type")) {
             string baseType = getBaseType(req.getContentType());
             // filter requests based on content-type
@@ -100,7 +104,8 @@ service /backEndService on new http:Listener(9091) {
                     check caller->respond(bodyParts);
                 }
                 _ => {
-                    string message = "Could not find the requested content type";
+                    string message =
+                            "Could not find the requested content type";
                     http:Response res = new;
                     res.setTextPayload(message);
                     res.statusCode = 404;
@@ -112,7 +117,8 @@ service /backEndService on new http:Listener(9091) {
         }
     }
 
-    resource function post image(http:Caller caller, http:Request req) returns error? {
+    resource function post image(http:Caller caller, http:Request req)
+      returns error? {
         byte[] bytes = check req.getBinaryPayload();
         http:Response response = new;
         response.setBinaryPayload(bytes, contentType = mime:IMAGE_PNG);
@@ -135,7 +141,8 @@ function handleResponse(string|xml|json|http:Response|error response) {
                 mime:APPLICATION_OCTET_STREAM => {
                     string|http:ClientError payload = response.getTextPayload();
                     if (payload is string) {
-                        log:printInfo("Response contains binary data: " + payload);
+                        log:printInfo("Response contains binary data: " +
+                                       payload);
                     } else {
                         log:printError("Error in parsing binary data",
                                                     'error = payload);
