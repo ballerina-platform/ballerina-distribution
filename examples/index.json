@@ -840,6 +840,13 @@
         "category": "Working Over the Network",
         "samples": [
             {
+                "name": "Absolute Path and Resource Path",
+                "url": "http-absolute-path-and-path",
+                "verifyBuild": "true",
+                "verifyOutput": "true",
+                "disablePlayground": true
+            },
+            {
                 "name": "Service Data Binding",
                 "url": "http-data-binding",
                 "verifyBuild": "true",
@@ -854,13 +861,6 @@
                 "disablePlayground": true
             },
             {
-                "name": "Absolute Path and Resource Path",
-                "url": "http-absolute-path-and-path",
-                "verifyBuild": "true",
-                "verifyOutput": "true",
-                "disablePlayground": true
-            },
-            {
                 "name": "Default Resource",
                 "url": "http-default-resource",
                 "verifyBuild": "true",
@@ -868,8 +868,15 @@
                 "disablePlayground": true
             },
             {
-                "name": "Path Matrix Param",
-                "url": "http-path-matrix-param",
+                "name": "Path Param",
+                "url": "http-path-param",
+                "verifyBuild": "true",
+                "verifyOutput": "true",
+                "disablePlayground": true
+            },
+            {
+                "name": "Matrix Param",
+                "url": "http-matrix-param",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true
