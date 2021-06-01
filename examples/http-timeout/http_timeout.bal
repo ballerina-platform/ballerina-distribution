@@ -20,7 +20,8 @@ service /timeout on new http:Listener(9090) {
             return backendResponse;
         } else {
             if (backendResponse is http:IdleTimeoutError) {
-                return { body: "Request timed out. Please try again in sometime."};
+                return { body: 
+                "Request timed out. Please try again in sometime."};
             } else {
                 return backendResponse;
             }
