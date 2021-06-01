@@ -51,6 +51,22 @@ function testReturnSequence() {
 }
 
 @test:Config { }
+function testReturnWithArgs() {
+    http:Response mockResponse = new;
+    mockResponse.statusCode = 404;
+    clientEndpoint = test:mock(http:Client);
+    // This stubs the `get` function to return the specified HTTP response when the specified
+    // argument is passed.
+    test:prepare(clientEndpoint).when("get").
+    withArguments("/headers").thenReturn(mockResponse);
+    // The object and record types should be denoted by the `test:ANY` constant.
+    test:prepare(clientEndpoint).when("get").withArguments("/get?test=123")
+        .thenReturn(mockResponse);
+    http:Response res = performGet();
+    test:assertEquals(res.statusCode, 404);
+}
+
+@test:Config { }
 function testSendNotification() {
     smtpClient = test:mock(email:SmtpClient);
     // Stubs the `send` method of the `mockSmtpClient` to do nothing.
