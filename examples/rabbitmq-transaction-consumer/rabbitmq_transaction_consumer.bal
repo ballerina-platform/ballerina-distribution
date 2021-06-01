@@ -28,7 +28,7 @@ service /transactionConsumer on
                 log:printError(
                             "Error occurred while acknowledging the message.");
             }
-            var res = commit;
+            error? res = commit;
         }
     }
 }
