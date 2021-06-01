@@ -43,7 +43,7 @@ service /'retry on new http:Listener(9090) {
         // client. If `backendResponse` is an `http:ClientError`, an internal
         // server error is returned to the client.
         if (backendResponse is http:Response) {
-            var responseToCaller = caller->respond(<@untainted>backendResponse);
+            var responseToCaller = caller->respond(backendResponse);
             if (responseToCaller is error) {
                 log:printError("Error sending response",
                                 'error = responseToCaller);
@@ -51,7 +51,7 @@ service /'retry on new http:Listener(9090) {
         } else {
             http:Response response = new;
             response.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
-            response.setPayload((<@untainted error>backendResponse).message());
+            response.setPayload(backendResponse.message());
             var responseToCaller = caller->respond(response);
             if (responseToCaller is error) {
                 log:printError("Error sending response",

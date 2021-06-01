@@ -2,7 +2,7 @@ import ballerina/http;
 import ballerina/test;
 
 @test:Config {}
-function testFunc() returns @tainted error? {
+function testFunc() returns error? {
 
     http:Client httpEndpoint = checkpanic new("http://localhost:9090");
 

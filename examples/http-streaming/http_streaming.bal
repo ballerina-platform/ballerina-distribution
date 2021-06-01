@@ -26,8 +26,8 @@ service /'stream on new http:Listener(9090) {
                                         http:Request request) returns error? {
         //[Retrieve the byte stream](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getByteStream).
         stream<byte[], io:Error?> streamer = check request.getByteStream();
-        
-        //Writes the incoming stream to a file using `io:fileWriteBlocksFromStream` API by providing the file location to which the content should be written to. 
+
+        //Writes the incoming stream to a file using `io:fileWriteBlocksFromStream` API by providing the file location to which the content should be written to.
         check io:fileWriteBlocksFromStream(
                                     "./files/ReceivedFile.pdf", streamer);
         check streamer.close();

@@ -2,7 +2,7 @@ import ballerina/test;
 import ballerina/http;
 
 @test:Config {}
-function testFunc() returns @tainted error? {
+function testFunc() returns error? {
     http:Client httpEndpoint = check new("http://localhost:9090");
     json expectedJson = {id: "data-binding-done"};
 
