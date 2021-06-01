@@ -1156,14 +1156,14 @@
             {
                 "name": "Publish/Subscribe",
                 "url": "nats-basic-pub-sub",
-                "verifyBuild": "true",
+                "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true
             },
             {
                 "name": "Request/Reply",
                 "url": "nats-basic-request-reply",
-                "verifyBuild": "true",
+                "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true
             }
@@ -1177,28 +1177,28 @@
             {
                 "name": "Publish/Subscribe",
                 "url": "nats-streaming-pub-sub",
-                "verifyBuild": "true",
+                "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true
             },
             {
                 "name": "Queue Groups",
                 "url": "nats-streaming-queue-group",
-                "verifyBuild": "true",
+                "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true
             },
             {
                 "name": "Durable Subscriptions",
                 "url": "nats-streaming-durable-subscriptions",
-                "verifyBuild": "true",
+                "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true
             },
             {
                 "name": "Historical Message Replay",
                 "url": "nats-streaming-start-position",
-                "verifyBuild": "true",
+                "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true
             }
@@ -1212,49 +1212,49 @@
             {
                 "name": "Producer",
                 "url": "kafka-producer",
-                "verifyBuild": "true",
+                "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true
             },
             {
                 "name": "Consumer Service",
                 "url": "kafka-consumer-service",
-                "verifyBuild": "true",
+                "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true
             },
             {
                 "name": "Consumer Client",
                 "url": "kafka-consumer-client",
-                "verifyBuild": "true",
+                "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true
             },
             {
                 "name": "Transactional Producer",
                 "url": "kafka-producer-transactional",
-                "verifyBuild": "true",
+                "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true
             },
             {
                 "name": "Consumer Groups",
                 "url": "kafka-consumer-group-service",
-                "verifyBuild": "true",
+                "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true
             },
             {
                 "name": "SASL Authentication - Consumer",
                 "url": "kafka-authentication-sasl-plain-consumer",
-                "verifyBuild": "true",
+                "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true
             },
             {
                 "name": "SASL Authentication - Producer",
                 "url": "kafka-authentication-sasl-plain-producer",
-                "verifyBuild": "true",
+                "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true
             }
@@ -1268,35 +1268,35 @@
             {
                 "name": "Producer",
                 "url": "rabbitmq-producer",
-                "verifyBuild": "true",
+                "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true
             },
             {
                 "name": "Consumer",
                 "url": "rabbitmq-consumer",
-                "verifyBuild": "true",
+                "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true
             },
             {
                 "name": "Client Acknowledgements",
                 "url": "rabbitmq-consumer-with-client-acknowledgement",
-                "verifyBuild": "true",
+                "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true
             },
             {
                 "name": "Transactional Producer",
                 "url": "rabbitmq-transaction-producer",
-                "verifyBuild": "true",
+                "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true
             },
             {
                 "name": "SASL Authentication - Consumer",
                 "url": "rabbitmq-transaction-consumer",
-                "verifyBuild": "true",
+                "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true
             }
