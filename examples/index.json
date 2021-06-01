@@ -130,7 +130,8 @@
                 "name": "Structural Typing",
                 "url": "structural-typing",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "disablePlayground": true
             },
             {
                 "name": "Unions",
