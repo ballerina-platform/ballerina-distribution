@@ -732,7 +732,7 @@
     {
         "title": "Testing",
         "column": 0,
-        "category": "Language concepts",
+        "category": "Language Concepts",
         "samples": [
             {
                 "name": "Assertions",
@@ -809,7 +809,7 @@
     {
         "title": "Deployment",
         "column": 0,
-        "category": "Language concepts",
+        "category": "Language Concepts",
         "samples": [
             {
                 "name": "Code to Cloud",
