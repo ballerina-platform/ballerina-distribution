@@ -17,7 +17,7 @@ service /multiparts on new http:Listener(9090) {
             foreach var part in bodyParts {
                 handleContent(part);
             }
-            response.setPayload(<@untainted>bodyParts);
+            response.setPayload(bodyParts);
             return response;
         } else {
             log:printError(bodyParts.message());

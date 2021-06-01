@@ -61,7 +61,7 @@ service /passthrough on new http:Listener(9092) {
 
     resource function 'default .(http:Request req) returns http:Response|json {
         http:Response|error response =
-            clientEndpoint->post("/backend/echo", <@untainted>req);
+            clientEndpoint->post("/backend/echo", req);
         if (response is http:Response) {
             return response;
         } else {
