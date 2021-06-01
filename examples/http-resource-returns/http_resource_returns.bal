@@ -12,7 +12,6 @@ service /bank on new http:Listener(9090) {
     // annotation.
     resource function get branch() returns
             @http:Payload {mediaType:"application/json+id"} json {
-
         return { branch : ["Colombo, Srilanka"]};
     }
 
@@ -20,16 +19,15 @@ service /bank on new http:Listener(9090) {
     // can be state as return type to send responses with specific HTTP status codes.
     resource function get [string 'type]()
             returns http:Ok|http:InternalServerError {
-
         if 'type == "open" {
+
             // Creates response with 200 status code and set body as response payload.
             http:Ok ok = {body: "Bank is open"};
-
             return ok;
         } else {
+
             // Creates response with 500 status code and set body as response payload.
             http:InternalServerError err = {body: "Bank is closed"};
-
             return err;
         }
     }
@@ -39,7 +37,6 @@ service /bank on new http:Listener(9090) {
     // record, hence 201 response will be sent.
     resource function get createAccount(string name)
             returns record {|*http:Created; PersonAccount body;|} {
-
         PersonAccount account = {accountNo: 84230, name: name};
         return {
             mediaType: "application/account+json",
