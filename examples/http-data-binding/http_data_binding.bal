@@ -12,8 +12,10 @@ service /hello on new http:Listener(9090) {
     // represents the entity body of the inbound request.
     resource function post bindJson(@http:Payload json orderDetails)
             returns json|http:BadRequest {
+
         //Accesses the JSON field values.
         var details = orderDetails.Details;
+
         if (details is json) {
             return details;
         } else {
@@ -27,7 +29,6 @@ service /hello on new http:Listener(9090) {
         consumes: ["application/xml"]
     }
     resource function post bindXML(@http:Payload xml store) returns xml {
-        //Accesses the XML content.
         xml city = store.selectDescendants("{http://www.test.com}city");
         return city;
     }
@@ -39,10 +40,9 @@ service /hello on new http:Listener(9090) {
     }
     resource function post bindStruct(@http:Payload Student student)
             returns json {
-        //Accesses the fields of the `Student` record.
-        string name = <@untainted>student.Name;
-        int grade = <@untainted>student.Grade;
-        string english = <@untainted string>student.Marks["English"];
+        string name = student.Name;
+        int grade = student.Grade;
+        string english = <string>student.Marks["English"];
         return {Name: name, Grade: grade, English: english};
     }
 }

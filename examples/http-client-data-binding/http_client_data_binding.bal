@@ -1,7 +1,6 @@
 import ballerina/http;
 import ballerina/log;
 
-type MapJson map<json>;
 type Person record {|
     string name;
     int age;
@@ -19,9 +18,10 @@ service /call on new http:Listener(9090) {
         if (result is error) {
             log:printError("Error: " + result.message());
             return result;
+
+        // It implies that the [payload type](https://docs.central.ballerina.io/ballerina/http/latest/types#Payload)
+        // is string.
         } else {
-            // It implies that the [payload type](https://docs.central.ballerina.io/ballerina/http/latest/types#Payload)
-            // is string.
             log:printInfo("String payload: " + result);
         }
 
@@ -30,9 +30,7 @@ service /call on new http:Listener(9090) {
 
         log:printInfo("Json payload: " + jsonPayload.toJsonString());
 
-        // Since only the `named types` or `built-in types` can be passed as function parameters,  `Map` or `Array`
-        // types have to be defined beforehand. Here, the type `MapJson` is passed instead of `map<json>`.
-        // Same can be done for `byte[]` or `Person[]` as well.
+        // Binding the payload to a map of JSON.
         map<json> value = check backendClient->post("/backend/Json", "foo");
         log:printInfo(check value.id);
 
@@ -46,39 +44,36 @@ service /call on new http:Listener(9090) {
         return res;
     }
 
-    resource function get '5xx() returns http:Response|json {
+    // When the data binding is expected to happen and if the `post` remote function gets a 5XX response from the
+    // backend, the response will be returned as an [http:RemoteServerError](https://docs.central.ballerina.io/ballerina/http/latest/errors#RemoteServerError)
+    // including the error payload, headers, and status code.
+    resource function get '5xx() returns json {
         json|error res = backendClient->post("/backend/5XX", "want 500");
-        // When the data binding is expected to happen and if the `post` remote function gets a 5XX response from the
-        // backend, the response will be returned as an [http:RemoteServerError](https://docs.central.ballerina.io/ballerina/http/latest/errors#RemoteServerError)
-        // including the error message and status code.
         if (res is error) {
             http:Response resp = new;
             if (res is http:RemoteServerError) {
-                resp.statusCode = res.detail()?.statusCode ?: 500;
+                http:Detail detail = res.detail();
+                return { code:detail.statusCode, payload:<string>detail.body};
             } else {
-                resp.statusCode = 500;
+                return { code: 500, payload: res.message()};
             }
-            resp.setPayload(<@untainted>res.message());
-            return resp;
         } else {
             return res;
         }
     }
 
-    resource function get '4xx() returns http:Response|json {
-        // When the data binding is expected to happen and if the client remote function gets a 4XX response from the
-        // backend, the response will be returned as an [http:ClientRequestError](https://docs.central.ballerina.io/ballerina/http/latest/errors#ClientRequestError)
-        // including the error message and status code.
+    // When the data binding is expected to happen and if the client remote function gets a 4XX response from the
+    // backend, the response will be returned as an [http:ClientRequestError](https://docs.central.ballerina.io/ballerina/http/latest/errors#ClientRequestError)
+    // including the error payload, headers, and status code.
+    resource function get '4xx() returns json {
         json|error res = backendClient->post("/backend/err", "want 400");
         if (res is error) {
-            http:Response resp = new;
             if (res is http:ClientRequestError) {
-                resp.statusCode = res.detail()?.statusCode ?: 400;
+                http:Detail detail = res.detail();
+                return { code:detail.statusCode, payload:<string>detail.body};
             } else {
-                resp.statusCode = 500;
+                return { code: 500, payload: res.message()};
             }
-            resp.setPayload(<@untainted>res.message());
-            return resp;
         } else {
             return res;
         }
