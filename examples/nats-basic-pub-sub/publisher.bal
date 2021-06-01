@@ -7,7 +7,7 @@ public function main() returns error? {
 
     // Produces a message to the specified subject.
     check natsClient->publishMessage({
-                             content: <@untainted>message.toBytes(),
+                             content: message.toBytes(),
                              subject: "demo.bbe"});
 
     // Closes the client connection.
