@@ -31,8 +31,7 @@ function kafkaAdvancedTransactionalProduce(byte[] message) {
         });
         // Checks for an error and notifies if an error has occurred.
         if sendResult is kafka:Error {
-            io:println("Error occurred when sending message ",
-                'error = sendResult);
+            io:println("Error occurred when sending message ", sendResult);
         }
 
         var commitResult = commit;

@@ -30,7 +30,7 @@ public function main() {
     });
     // Checks for an error and notifies if an error has occurred.
     if err is kafka:Error {
-        io:println("Error occurred when sending message ", 'error = err);
+        io:println("Error occurred when sending message ", err);
     } else {
         io:println("Message successfully sent.");
     }
