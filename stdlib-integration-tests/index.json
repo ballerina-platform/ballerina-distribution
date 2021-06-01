@@ -16,10 +16,6 @@
     "path": "crypto"
   },
   {
-    "name": "Auth standard library ",
-    "path": "auth"
-  },
-  {
     "name": "JWT standard library ",
     "path": "jwt"
   },
