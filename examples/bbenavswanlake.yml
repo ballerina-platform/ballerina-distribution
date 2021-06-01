@@ -152,12 +152,6 @@
     - title: Resource Path Parameters 
       url: /learn/by-example/resource-path-parameters
       active: resource-path-parameters    
-    - title: Hierarchical Services 
-      url: /learn/by-example/hierarchical-services
-      active: hierarchical-services
-    - title: Representing Responses 
-      url: /learn/by-example/representing-responses
-      active: representing-responses
 - title: Working With Data
   url: '#'
   sublinks:

@@ -12,10 +12,8 @@ service on new http:Listener(9092) {
     }
     resource function post infoService(@http:Payload json msg)
             returns xml|http:InternalServerError {
-        // Get the value, which is relevant to the key "name".
         json|error nameString = msg.name;
         if (nameString is json) {
-            // Create the XML payload and send back a response.
             xml name = xml `<name>${<string>nameString}</name>`;
             return name;
         }
