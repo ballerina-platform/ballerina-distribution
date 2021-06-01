@@ -3,7 +3,7 @@ import ballerina/io;
 import ballerina/email;
 
 // Sample client that you can use for member access.
-public client class exClient {
+public client class ExampleClient {
     public string id;
 
     public function init(string id) {
@@ -14,7 +14,7 @@ public client class exClient {
 // Client objects are defined globally to be able to replace in the test files.
 http:Client clientEndpoint = check new("http://postman-echo.com");
 email:SmtpClient smtpClient = check new("localhost", "admin", "admin");
-exClient exampleClient = new("originalId");
+ExampleClient exampleClient = new("originalId");
 
 // Performs two `GET` requests to the specified
 // endpoint and returns the response.

@@ -64,7 +64,7 @@ function testSendNotification() {
 @test:Config { }
 function testMemberVariable() {
     string mockId = "test";
-    exampleClient = test:mock(exClient);
+    exampleClient = test:mock(ExampleClient);
     // Stubs the value of the `id` to return the specified string.
     test:prepare(exampleClient).getMember("id").thenReturn(mockId);
     test:assertEquals(exampleClient.id, mockId);
