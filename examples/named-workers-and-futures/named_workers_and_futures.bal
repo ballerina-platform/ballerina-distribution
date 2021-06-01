@@ -22,10 +22,10 @@ function startInt(FuncInt f) returns future<int> {
 
 public function main() {
     future<int> a = demo();
-    int b = wait a;
+    int b = checkpanic wait a;
     io:println(b);
 
     future<int> c = startInt(() => 100);
-    int d = wait c;
+    int d = checkpanic wait c;
     io:println(d);
 }
