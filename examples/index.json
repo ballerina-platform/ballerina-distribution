@@ -14,7 +14,8 @@
                 "name": "Hello World Service",
                 "url": "hello-world-service",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "disablePlayground": true
             }
         ]
     },
@@ -45,7 +46,8 @@
                 "name": "Identifiers",
                 "url": "identifiers",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "disablePlayground": true
             },
             {
                 "name": "Integers",
@@ -274,7 +276,8 @@
                 "name": "Providing Services",
                 "url": "providing-services",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "disablePlayground": true
             },
             {
                 "name": "Module Lifecycle",
@@ -286,25 +289,29 @@
                 "name": "Service Declaration",
                 "url": "service-declaration",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "disablePlayground": true
             },
             {
                 "name": "Resource Methods",
                 "url": "resource-methods",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "disablePlayground": true
             },
             {
                 "name": "Hierarchical Resources",
                 "url": "hierarchical-resources",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "disablePlayground": true
             },
             {
                 "name": "Resource Path Parameters",
                 "url": "resource-path-parameters",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "disablePlayground": true
             }
         ]
     },
@@ -387,7 +394,8 @@
                 "name": "Resource Method Typing",
                 "url": "resource-method-typing",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "disablePlayground": true
             },
             {
                 "name": "JSON Numbers",
@@ -483,7 +491,8 @@
                 "name": "Raw Templates",
                 "url": "raw-templates",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "disablePlayground": true
             },
             {
                 "name": "XML Data Model",
