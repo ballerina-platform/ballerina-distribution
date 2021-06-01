@@ -339,7 +339,9 @@
             },
             {
                 "name": "Optional Fields",
-                "url": "optional-fields"
+                "url": "optional-fields",
+                "verifyBuild": "true",
+                "verifyOutput": "true"
             },
             {
                 "name": "Open Records",
@@ -356,6 +358,12 @@
             {
                 "name": "JSON Type",
                 "url": "json-type",
+                "verifyBuild": "true",
+                "verifyOutput": "true"
+            },
+            {
+                "name": "Working directly with JSON",
+                "url": "working-directly-with-json",
                 "verifyBuild": "true",
                 "verifyOutput": "true"
             },
