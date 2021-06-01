@@ -778,7 +778,7 @@
       url: /learn/by-example/io-bytes
       active: io-bytes
     - title: Read/Write Strings
-      url: /learn/by-example/strings
+      url: /learn/by-example/io-strings
       active: io-strings
     - title: Read/Write CSV
       url: /learn/by-example/io-csv
