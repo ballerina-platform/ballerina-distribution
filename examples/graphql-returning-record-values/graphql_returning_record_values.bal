@@ -1,6 +1,6 @@
 import ballerina/graphql;
 
-service graphql:Service /graphql on new graphql:Listener(4000) {
+service /graphql on new graphql:Listener(4000) {
 
     // Ballerina GraphQL resolvers can return `record` values. The record will be mapped to an `OBJECT` type.
     resource function get profile() returns Person {

@@ -907,11 +907,15 @@
       url: /learn/by-example/xml-json-conversion
       active: xml-json-conversion
 - title: Deployment
+- title: Code to Cloud
   url: '#'
   sublinks:
-    - title: Code to Cloud
+    - title: Kubernetes
       url: /learn/by-example/c2c-deployment
       active: c2c-deployment
+- title: Function as a service
+  url: '#'
+  sublinks:
     - title: Azure Functions
       url: /learn/by-example/azure-functions-deployment
       active: azure-functions-deployment
