@@ -681,6 +681,12 @@
                 "verifyOutput": "true"
             },
             {
+                "name": "Combining Isolated Functions and Lock",
+                "url": "combining-isolated-functions-and-lock",
+                "verifyBuild": "true",
+                "verifyOutput": "true"
+            },
+            {
                 "name": "Isolated Variables",
                 "url": "isolated-variables",
                 "verifyBuild": "true",

@@ -16,5 +16,6 @@ table<Row> key(k) t = table [
 public function main() {
     // Can safely use `s` as a key.
     t.add({k: s, value: 18});
+
     io:println(t);
 }
