@@ -29,7 +29,7 @@ public function main() returns error? {
     
     // Inserts the records with the auto-generated ID.
     sql:ExecutionResult[] result =
-                            check jdbcClient -> batchExecute(insertQueries);
+                            check jdbcClient->batchExecute(insertQueries);
 
     int[] generatedIds = [];
     foreach var summary in result {
@@ -39,7 +39,7 @@ public function main() returns error? {
 
     // Checks the data after the batch execution.
     stream<record{}, error> resultStream =
-        jdbcClient -> query("SELECT * FROM Customers");
+        jdbcClient->query("SELECT * FROM Customers");
 
     io:println("Data in Customers table:");
     error? e = resultStream.forEach(function(record {} result) {
@@ -54,7 +54,7 @@ public function main() returns error? {
 function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
     // Creates a table in the database.
     sql:ExecutionResult result =
-        check jdbcClient -> execute(`CREATE TABLE Customers(customerId INTEGER
+        check jdbcClient->execute(`CREATE TABLE Customers(customerId INTEGER
             NOT NULL IDENTITY, firstName  VARCHAR(300), lastName  VARCHAR(300),
             registrationID INTEGER, creditLimit DOUBLE, country  VARCHAR(300),
             PRIMARY KEY (customerId))`);      
@@ -64,7 +64,7 @@ function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
 function afterExample(jdbc:Client jdbcClient) returns sql:Error? {
     // Cleans the database.
     sql:ExecutionResult result =
-            check jdbcClient -> execute(`DROP TABLE Customers`);
+            check jdbcClient->execute(`DROP TABLE Customers`);
     // Closes the JDBC client.
     check jdbcClient.close();
 }

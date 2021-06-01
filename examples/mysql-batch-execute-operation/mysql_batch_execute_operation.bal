@@ -30,7 +30,7 @@ public function main() returns error? {
     
     // Inserts the records with the auto-generated ID.
     sql:ExecutionResult[] result =
-                            check mysqlClient -> batchExecute(insertQueries);
+                            check mysqlClient->batchExecute(insertQueries);
 
     int[] generatedIds = [];
     foreach var summary in result {
@@ -40,7 +40,7 @@ public function main() returns error? {
 
     // Checks the data after the batch execution.
     stream<record{}, error> resultStream =
-        mysqlClient -> query("SELECT * FROM Customers");
+        mysqlClient->query("SELECT * FROM Customers");
 
     io:println("Data in Customers table:");
     error? e = resultStream.forEach(function(record {} result) {
@@ -57,10 +57,10 @@ function beforeExample() returns sql:Error? {
 
     // Creates a database.
     sql:ExecutionResult result =
-        check mysqlClient -> execute(`CREATE DATABASE MYSQL_BBE`);
+        check mysqlClient->execute(`CREATE DATABASE MYSQL_BBE`);
     
     // Creates a table in the database.
-    result = check mysqlClient -> execute(`CREATE TABLE MYSQL_BBE.Customers
+    result = check mysqlClient->execute(`CREATE TABLE MYSQL_BBE.Customers
             (customerId INTEGER NOT NULL AUTO_INCREMENT,
             firstName VARCHAR(300), lastName  VARCHAR(300),
             registrationID INTEGER, creditLimit DOUBLE,
@@ -73,7 +73,7 @@ function beforeExample() returns sql:Error? {
 function afterExample(mysql:Client mysqlClient) returns sql:Error? {
     // Cleans the database.
     sql:ExecutionResult result =
-            check mysqlClient -> execute(`DROP DATABASE MYSQL_BBE`);
+            check mysqlClient->execute(`DROP DATABASE MYSQL_BBE`);
     // Closes the MySQL client.
     check mysqlClient.close();
 }

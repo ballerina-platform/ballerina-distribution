@@ -17,7 +17,7 @@ public function main() returns error? {
             `UPDATE Customers SET creditLimit = ${newCreditLimit} 
             where customerId = 1`;
 
-    sql:ExecutionResult result = check mysqlClient -> execute(updateQuery);
+    sql:ExecutionResult result = check mysqlClient->execute(updateQuery);
     io:println("Updated Row count: ", result?.affectedRowCount);
 
     string firstName = "Dan";
@@ -26,7 +26,7 @@ public function main() returns error? {
     sql:ParameterizedQuery deleteQuery =
             `DELETE FROM Customers WHERE firstName = ${firstName}`;
     
-    result = check mysqlClient -> execute(deleteQuery);
+    result = check mysqlClient->execute(deleteQuery);
     io:println("Deleted Row count: ", result.affectedRowCount);
 
     // Performs the cleanup after the example.
@@ -39,10 +39,10 @@ function beforeExample() returns sql:Error? {
 
     // Creates a database.
     sql:ExecutionResult result =
-        check mysqlClient -> execute(`CREATE DATABASE MYSQL_BBE`);
+        check mysqlClient->execute(`CREATE DATABASE MYSQL_BBE`);
 
     //Creates a table in the database.
-    result = check mysqlClient -> execute(`CREATE TABLE MYSQL_BBE.Customers
+    result = check mysqlClient->execute(`CREATE TABLE MYSQL_BBE.Customers
             (customerId INTEGER NOT NULL AUTO_INCREMENT, firstName  
             VARCHAR(300), lastName  VARCHAR(300), registrationID INTEGER, 
             creditLimit DOUBLE, country VARCHAR(300),
@@ -50,10 +50,10 @@ function beforeExample() returns sql:Error? {
 
     // Inserts data into the table. The result will have the `affectedRowCount`
     // and `lastInsertedId` with the auto-generated ID of the last row.
-    result = check mysqlClient -> execute(`INSERT INTO MYSQL_BBE.Customers
+    result = check mysqlClient->execute(`INSERT INTO MYSQL_BBE.Customers
             (firstName, lastName, registrationID,creditLimit,country) VALUES
             ('Peter','Stuart', 1, 5000.75, 'USA')`);
-    result = check mysqlClient -> execute(`INSERT INTO MYSQL_BBE.Customers
+    result = check mysqlClient->execute(`INSERT INTO MYSQL_BBE.Customers
             (firstName, lastName, registrationID,creditLimit,country) VALUES
             ('Dan', 'Brown', 2, 10000, 'UK')`);
 
@@ -67,7 +67,7 @@ function beforeExample() returns sql:Error? {
 function afterExample(mysql:Client mysqlClient) returns sql:Error? {
     // Cleans the database.
     sql:ExecutionResult result =
-            check mysqlClient -> execute(`DROP DATABASE MYSQL_BBE`);
+            check mysqlClient->execute(`DROP DATABASE MYSQL_BBE`);
     // Closes the MySQL client.
     check mysqlClient.close();
 }

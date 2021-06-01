@@ -41,7 +41,7 @@ public function main() returns error? {
     // Since the `rowType` is provided as a `BinaryType`, the `resultStream` 
     // will have `BinaryType` records.
     stream<record{}, error> resultStream = 
-                jdbcClient -> query(`SELECT * FROM BINARY_TYPES`, BinaryType);
+                jdbcClient->query(`SELECT * FROM BINARY_TYPES`, BinaryType);
     stream<BinaryType, sql:Error> binaryResultStream = 
                 <stream<BinaryType, sql:Error>> resultStream;
 
@@ -54,7 +54,7 @@ public function main() returns error? {
     // Since the `rowType` is provided as an `ArrayType`, the `resultStream2` will
     // have `ArrayType` records.
     stream<record{}, error> resultStream2 = 
-                jdbcClient -> query(`SELECT * FROM ARRAY_TYPES`, ArrayType);
+                jdbcClient->query(`SELECT * FROM ARRAY_TYPES`, ArrayType);
     stream<ArrayType, sql:Error> arrayResultStream =
                 <stream<ArrayType, sql:Error>>resultStream2;
 
@@ -69,7 +69,7 @@ public function main() returns error? {
     // `Timestamp` fields of the database table can be mapped to `time:Utc`,
     // string, and int types in Ballerina.
     stream<record{}, error> resultStream3 = 
-                jdbcClient -> query(`SELECT * FROM DATE_TIME_TYPES`,
+                jdbcClient->query(`SELECT * FROM DATE_TIME_TYPES`,
                 DateTimeType);
     stream<DateTimeType, sql:Error> dateResultStream =
                 <stream<DateTimeType, sql:Error>>resultStream3;
@@ -88,30 +88,30 @@ public function main() returns error? {
 function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
     // Creates complex data type tables in the database.
     sql:ExecutionResult result =
-        check jdbcClient -> execute(`CREATE TABLE BINARY_TYPES (row_id 
+        check jdbcClient->execute(`CREATE TABLE BINARY_TYPES (row_id
             INTEGER NOT NULL, blob_type BLOB(1024), clob_type CLOB(1024), 
             binary_type BINARY(27), PRIMARY KEY (row_id))`);
-    result = check jdbcClient -> execute(`CREATE TABLE ARRAY_TYPES (row_id 
+    result = check jdbcClient->execute(`CREATE TABLE ARRAY_TYPES (row_id
             INTEGER NOT NULL, int_array ARRAY, long_array ARRAY, 
             float_array ARRAY, double_array ARRAY, boolean_array ARRAY, 
             string_array ARRAY, PRIMARY KEY (row_id))`);
-    result = check jdbcClient -> execute(`CREATE TABLE DATE_TIME_TYPES(row_id 
+    result = check jdbcClient->execute(`CREATE TABLE DATE_TIME_TYPES(row_id
             INTEGER NOT NULL, date_type DATE, time_type TIME, 
             timestamp_type timestamp, datetime_type  datetime, 
             PRIMARY KEY (row_id))`);
 
     // Adds the records to the newly-created tables.
-    result = check jdbcClient -> execute(`INSERT INTO BINARY_TYPES (row_id, 
+    result = check jdbcClient->execute(`INSERT INTO BINARY_TYPES (row_id,
             blob_type, clob_type, binary_type) VALUES (1, 
             X'77736F322062616C6C6572696E6120626C6F6220746573742E', 
             CONVERT('very long text', CLOB), 
             X'77736F322062616C6C6572696E612062696E61727920746573742E')`);
-    result = check jdbcClient -> execute(`INSERT INTO ARRAY_TYPES (row_id, 
+    result = check jdbcClient->execute(`INSERT INTO ARRAY_TYPES (row_id,
             int_array, long_array, float_array, double_array, boolean_array, 
             string_array) VALUES (1, (1, 2, 3), (100000000, 200000000, 
             300000000), (245.23, 5559.49, 8796.123), (245.23, 5559.49, 
             8796.123), (TRUE, FALSE, TRUE), ('Hello', 'Ballerina'))`);
-    result = check jdbcClient -> execute(`Insert into DATE_TIME_TYPES (row_id, 
+    result = check jdbcClient->execute(`Insert into DATE_TIME_TYPES (row_id,
             date_type, time_type, timestamp_type, datetime_type) values (1, 
             '2017-05-23', '14:15:23', '2017-01-25 16:33:55', 
             '2017-01-25 16:33:55')`);
@@ -121,9 +121,9 @@ function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
 function afterExample(jdbc:Client jdbcClient) returns sql:Error? {
     // Cleans the database.
     sql:ExecutionResult result =
-            check jdbcClient -> execute(`DROP TABLE BINARY_TYPES`);
-    result = check jdbcClient -> execute(`DROP TABLE ARRAY_TYPES`);
-    result = check jdbcClient -> execute(`DROP TABLE DATE_TIME_TYPES`);
+            check jdbcClient->execute(`DROP TABLE BINARY_TYPES`);
+    result = check jdbcClient->execute(`DROP TABLE ARRAY_TYPES`);
+    result = check jdbcClient->execute(`DROP TABLE DATE_TIME_TYPES`);
     // Closes the JDBC client.
     check jdbcClient.close();
 }
