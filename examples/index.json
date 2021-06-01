@@ -815,19 +815,22 @@
                 "name": "Code to Cloud",
                 "url": "c2c-deployment",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "disablePlayground": true
             },
             {
                 "name": "Azure Functions",
                 "url": "azure-functions-deployment",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "disablePlayground": true
             },
             {
                 "name": "AWS Lambda",
                 "url": "aws-lambda-deployment",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "disablePlayground": true
             }
         ]
     },
