@@ -20,12 +20,12 @@ function startInt(FuncInt f) returns future<int> {
 
 }
 
-public function main() {
+public function main() returns error? {
     future<int> a = demo();
-    int b = checkpanic wait a;
+    int b = check wait a;
     io:println(b);
 
     future<int> c = startInt(() => 100);
-    int d = checkpanic wait c;
+    int d = check wait c;
     io:println(d);
 }
