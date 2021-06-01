@@ -10,10 +10,9 @@ final http:Client backendClientEP = check new ("http://localhost:8080", {
 service /timeout on new http:Listener(9090) {
 
     resource function get .() returns http:InternalServerError|string|error? {
-        string|error backendResponse =
-                        backendClientEP->get("/hello");
+        string|error backendResponse = backendClientEP->get("/hello");
 
-        // If `backendResponse` is an string (text/plain), it is sent back to the
+        // If `backendResponse` is a `string` (text/plain), it is sent back to the
         // client. If `backendResponse` is an `http:ClientError`, an internal
         // server error is returned to the client.
         if (backendResponse is string) {
