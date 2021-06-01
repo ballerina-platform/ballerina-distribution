@@ -730,6 +730,108 @@
         ]
     },
     {
+        "title": "Testing",
+        "column": 0,
+        "category": "Language concepts",
+        "samples": [
+            {
+                "name": "Assertions",
+                "url": "testerina-assertions",
+                "verifyBuild": "true",
+                "verifyOutput": "true",
+                "disablePlayground": true
+            },
+            {
+                "name": "Before and After Test",
+                "url": "testerina-before-and-after-test",
+                "verifyBuild": "true",
+                "verifyOutput": "true",
+                "disablePlayground": true
+            },
+            {
+                "name": "Before and After Each",
+                "url": "testerina-before-and-after-each",
+                "verifyBuild": "true",
+                "verifyOutput": "true",
+                "disablePlayground": true
+            },
+            {
+                "name": "Before and After Groups",
+                "url": "testerina-before-and-after-groups",
+                "verifyBuild": "true",
+                "verifyOutput": "true",
+                "disablePlayground": true
+            },
+            {
+                "name": "Before and After Suite",
+                "url": "testerina-before-and-after-suite",
+                "verifyBuild": "true",
+                "verifyOutput": "true",
+                "disablePlayground": true
+            },
+            {
+                "name": "Data Driven Tests",
+                "url": "testerina-data-driven-tests",
+                "verifyBuild": "true",
+                "verifyOutput": "true",
+                "disablePlayground": true
+            },
+            {
+                "name": "Guarantee Test Execution Order",
+                "url": "testerina-guarantee-test-execution-order",
+                "verifyBuild": "true",
+                "verifyOutput": "true",
+                "disablePlayground": true
+            },
+            {
+                "name": "Group Tests",
+                "url": "testerina-group-tests",
+                "verifyBuild": "true",
+                "verifyOutput": "true",
+                "disablePlayground": true
+            },
+            {
+                "name": "Function Mocking",
+                "url": "testerina-mocking-functions",
+                "verifyBuild": "true",
+                "verifyOutput": "true",
+                "disablePlayground": true
+            },
+            {
+                "name": "Object Mocking",
+                "url": "testerina-mocking-objects",
+                "verifyBuild": "true",
+                "verifyOutput": "true",
+                "disablePlayground": true
+            }
+        ]
+    },
+    {
+        "title": "Deployment",
+        "column": 0,
+        "category": "Language concepts",
+        "samples": [
+            {
+                "name": "Code to Cloud",
+                "url": "c2c-deployment",
+                "verifyBuild": "true",
+                "verifyOutput": "true"
+            },
+            {
+                "name": "Azure Functions",
+                "url": "azure-functions-deployment",
+                "verifyBuild": "true",
+                "verifyOutput": "true"
+            },
+            {
+                "name": "AWS Lambda",
+                "url": "aws-lambda-deployment",
+                "verifyBuild": "true",
+                "verifyOutput": "true"
+            }
+        ]
+    },
+    {
         "title": "REST API",
         "column": 0,
         "category": "Working Over the Network",
@@ -1889,31 +1991,6 @@
             {
                 "name": "XML JSON Conversion",
                 "url": "xml-json-conversion",
-                "verifyBuild": "true",
-                "verifyOutput": "true"
-            }
-        ]
-    },
-    {
-        "title": "Deployment",
-        "column": 0,
-        "category": "Language concepts",
-        "samples": [
-            {
-                "name": "Code to Cloud",
-                "url": "c2c-deployment",
-                "verifyBuild": "true",
-                "verifyOutput": "true"
-            },
-            {
-                "name": "Azure Functions",
-                "url": "azure-functions-deployment",
-                "verifyBuild": "true",
-                "verifyOutput": "true"
-            },
-            {
-                "name": "AWS Lambda",
-                "url": "aws-lambda-deployment",
                 "verifyBuild": "true",
                 "verifyOutput": "true"
             }

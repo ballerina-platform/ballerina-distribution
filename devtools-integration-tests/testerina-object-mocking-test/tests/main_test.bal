@@ -84,10 +84,9 @@ function test_findOrder() {
     json expected = getResponse1;
     test:assertEquals(actual, expected, "Correct mocked response not recieved");
 
-    // Disabled due to known issue in withArguments() function
-    // actual = findOrder("200");
-    // expected = getResponse2;
-    // test:assertEquals(actual, expected, "Correct mocked response not recieved");
+    actual = findOrder("200");
+    expected = getResponse2;
+    test:assertEquals(actual, expected, "Correct mocked response not recieved");
 
 }
 
@@ -105,10 +104,7 @@ json postResponse1 = {
     orderId : "200"
 };
 
-
-// Disabled due to issue in withArguements()
 @test:Config {
-    enable : false,
     dependsOn : [test_findOrder]
 }
 function test_addOrder() {
