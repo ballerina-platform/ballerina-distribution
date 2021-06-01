@@ -400,7 +400,6 @@ subprojects {
         ballerinaStdLibs
         ballerinaC2cLibs
         ballerinaC2cTooling
-        ballerinaC2cExamples
         exten {
             transitive = false
         }
@@ -462,10 +461,5 @@ subprojects {
         ballerinaC2cLibs "org.ballerinax.awslambda:awslambda-extension-bala:${awslambdaVersion}"
 
         ballerinaC2cTooling "io.ballerina:c2c-tooling:${c2cVersion}"
-
-        /* Code to cloud examples */
-        ballerinaC2cExamples "io.ballerina:c2c-extension-examples:${c2cVersion}@zip"
-        ballerinaC2cExamples "org.ballerinax.azurefunctions:azurefunctions-extension-examples:${azFunctionsVersion}@zip"
-        ballerinaC2cExamples "org.ballerinax.awslambda:awslambda-extension-examples:${awslambdaVersion}@zip"
     }
 }
