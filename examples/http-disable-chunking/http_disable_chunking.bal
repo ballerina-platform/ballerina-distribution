@@ -38,7 +38,7 @@ service /echo on new http:Listener(9090) {
         if (cLen is string) {
             value = "Length-" + cLen;
             //Mark the `value` as trusted data and send out the JSON.
-            return {"Outbound request content": <@untainted>value};
+            return {"Outbound request content": value};
         }
         if (traEncoding is string) {
             value = traEncoding;
@@ -51,7 +51,7 @@ service /echo on new http:Listener(9090) {
                 return badRequest;
             } else {
                 //Mark the `value` as trusted data and send out the JSON.
-                return {"Outbound request content": <@untainted>value};
+                return {"Outbound request content": value};
             }
         }
         value = "Neither Transfer-Encoding nor content-length header found";

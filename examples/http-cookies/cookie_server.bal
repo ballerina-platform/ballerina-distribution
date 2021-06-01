@@ -54,7 +54,7 @@ service /cookieDemo on serverEP {
             string? user = usernameCookie[0].value;
             if (user is string) {
                 // Respond with the username added to the welcome message.
-                return "Welcome back " + <@untainted> user;
+                return "Welcome back " + user;
 
             } else {
                 // If the user is `nil`, send a login message.
