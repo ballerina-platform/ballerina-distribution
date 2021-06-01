@@ -9,6 +9,7 @@ function personsToXml(Person[] persons) returns xml {
     // Uses a template containing a `query expression` containing a template.
     return xml`<data>${from var {name, country} in persons
            select xml`<person country="${country}">${name}</person>`}</data>`;
+
 }
 
 public function main() {

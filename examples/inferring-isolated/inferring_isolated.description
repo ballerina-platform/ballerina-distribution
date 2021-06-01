@@ -7,5 +7,6 @@
 // <li>access self in a `service` object with mutable state</li>
 // <li>access mutable module-level variables</li>
 // </ul>
+// <br></br>
 // Compiler can inform developer where missing locks are preventing a `service` object or method from
 // being `isolated`.
