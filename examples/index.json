@@ -46,8 +46,7 @@
                 "name": "Identifiers",
                 "url": "identifiers",
                 "verifyBuild": "true",
-                "verifyOutput": "true",
-                "disablePlayground": true
+                "verifyOutput": "true"
             },
             {
                 "name": "Integers",
