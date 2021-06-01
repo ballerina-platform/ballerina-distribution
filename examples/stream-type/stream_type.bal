@@ -1,5 +1,9 @@
 import ballerina/io;
 
+// Defines a class called `EvenNumberGenerator`.
+// Each class has its own `next()` method, which gets 
+// invoked when the stream's `next()` function
+// gets called.
 class EvenNumberGenerator {
     int i = 0;
     public isolated function next() returns record {| int value; |}|error? {
