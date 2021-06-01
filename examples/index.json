@@ -784,6 +784,31 @@
         ]
     },
     {
+        "title": "Deployment",
+        "column": 0,
+        "category": "Language concepts",
+        "samples": [
+            {
+                "name": "Code to Cloud",
+                "url": "c2c-deployment",
+                "verifyBuild": "true",
+                "verifyOutput": "true"
+            },
+            {
+                "name": "Azure Functions",
+                "url": "azure-functions-deployment",
+                "verifyBuild": "true",
+                "verifyOutput": "true"
+            },
+            {
+                "name": "AWS Lambda",
+                "url": "aws-lambda-deployment",
+                "verifyBuild": "true",
+                "verifyOutput": "true"
+            }
+        ]
+    },
+    {
         "title": "REST API",
         "column": 0,
         "category": "Working Over the Network",
@@ -1839,31 +1864,6 @@
             {
                 "name": "XML JSON Conversion",
                 "url": "xml-json-conversion",
-                "verifyBuild": "true",
-                "verifyOutput": "true"
-            }
-        ]
-    },
-    {
-        "title": "Deployment",
-        "column": 0,
-        "category": "Language concepts",
-        "samples": [
-            {
-                "name": "Code to Cloud",
-                "url": "c2c-deployment",
-                "verifyBuild": "true",
-                "verifyOutput": "true"
-            },
-            {
-                "name": "Azure Functions",
-                "url": "azure-functions-deployment",
-                "verifyBuild": "true",
-                "verifyOutput": "true"
-            },
-            {
-                "name": "AWS Lambda",
-                "url": "aws-lambda-deployment",
                 "verifyBuild": "true",
                 "verifyOutput": "true"
             }
