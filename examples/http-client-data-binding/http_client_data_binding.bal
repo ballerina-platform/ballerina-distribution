@@ -49,16 +49,11 @@ service /call on new http:Listener(9090) {
     // including the error payload, headers, and status code.
     resource function get '5xx() returns json {
         json|error res = backendClient->post("/backend/5XX", "want 500");
-        if (res is error) {
-            http:Response resp = new;
-            if (res is http:RemoteServerError) {
-                http:Detail detail = res.detail();
-                return { code:detail.statusCode, payload:<string>detail.body};
-            } else {
-                return { code: 500, payload: res.message()};
-            }
+        if (res is http:RemoteServerError) {
+            http:Detail detail = res.detail();
+            return { code:detail.statusCode, payload:<string>detail.body};
         } else {
-            return res;
+            return { code: "invalid" };
         }
     }
 
@@ -67,15 +62,11 @@ service /call on new http:Listener(9090) {
     // including the error payload, headers, and status code.
     resource function get '4xx() returns json {
         json|error res = backendClient->post("/backend/err", "want 400");
-        if (res is error) {
-            if (res is http:ClientRequestError) {
-                http:Detail detail = res.detail();
-                return { code:detail.statusCode, payload:<string>detail.body};
-            } else {
-                return { code: 500, payload: res.message()};
-            }
+        if (res is http:ClientRequestError) {
+            http:Detail detail = res.detail();
+            return { code:detail.statusCode, payload:<string>detail.body};
         } else {
-            return res;
+            return { code: "invalid" };
         }
     }
 }

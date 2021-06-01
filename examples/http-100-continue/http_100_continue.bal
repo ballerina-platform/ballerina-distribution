@@ -7,21 +7,20 @@ service /hello on new http:Listener(9090) {
             returns string|http:InternalServerError|http:ExpectationFailed {
         // [Check if the client expects a 100-continue response](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#expects100Continue).
         if (request.expects100Continue()) {
-
             string mediaType = request.getContentType();
             if (mediaType.toLowerAscii() == "text/plain") {
+
                 // Send a 100-continue response to the client.
                 var result = caller->continue();
-
                 if (result is error) {
                     log:printError("Error sending response", 'error = result);
                 }
+
+            // Send a 417 response to ignore the payload since content type is mismatched
+            // with the expected content type.
             } else {
-                // Send a 417 response to ignore the payload since content type is mismatched
-                // with the expected content type.
                 http:ExpectationFailed resp = {body:"Unprocessable Entity"};
                 return resp;
-
             }
         }
 

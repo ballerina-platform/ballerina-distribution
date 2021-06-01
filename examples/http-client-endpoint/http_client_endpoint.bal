@@ -2,23 +2,21 @@ import ballerina/http;
 import ballerina/io;
 
 // Creates a new client with the backend URL.
-http:Client clientEndpoint = check new ("http://postman-echo.com");
+final http:Client clientEndpoint = check new ("http://postman-echo.com");
 
 public function main() {
-    io:println("GET request:");
     // Sends a `GET` request to the specified endpoint.
+    io:println("GET request:");
     http:Response|error response = clientEndpoint->get("/get?test=123");
-    // Handles the response.
     handleResponse(response);
 
-    io:println("\nPOST request:");
     // Sends a `POST` request to the specified endpoint.
+    io:println("\nPOST request:");
     response = clientEndpoint->post("/post", "POST: Hello World");
-    // Handles the response.
     handleResponse(response);
 
-    io:println("\nUse custom HTTP verbs:");
     // Uses the `execute()` remote function for custom HTTP verbs.
+    io:println("\nUse custom HTTP verbs:");
     response = clientEndpoint->execute("COPY", "/get", "CUSTOM: Hello World");
 
     // The `get()`, `head()`, and `options()` have the optional headers parameter to send out headers,
@@ -29,10 +27,8 @@ public function main() {
         // [Get the content type](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response#getContentType) from the response.
         string contentType = response.getContentType();
         io:println("Content-Type: " + contentType);
-
         int statusCode = response.statusCode;
         io:println("Status code: " + statusCode.toString());
-
     } else {
         io:println("Error when calling the backend: ",
                             response.message());
@@ -42,10 +38,8 @@ public function main() {
 //The below function handles the response received from the remote HTTP endpoint.
 function handleResponse(http:Response|error response) {
     if (response is http:Response) {
-        // [Get the JSON payload](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response#getJsonPayload) from the response.
         var msg = response.getJsonPayload();
         if (msg is json) {
-            // Prints the received `JSON` response.
             io:println(msg.toJsonString());
         } else {
             io:println("Invalid payload received:", msg.message());

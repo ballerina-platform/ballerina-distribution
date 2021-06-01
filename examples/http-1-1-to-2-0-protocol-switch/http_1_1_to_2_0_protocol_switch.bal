@@ -19,7 +19,7 @@ service /http11Service on new http:Listener(9090) {
             // Handle the errors that are returned when invoking the
             // [forward](https://docs.central.ballerina.io/ballerina/http/latest/clients/HttpClient#forward) function.
             response.statusCode = 500;
-            response.setPayload(<@untainted>clientResponse.message());
+            response.setPayload(clientResponse.message());
 
         }
         // Send the response back to the caller.
