@@ -4,6 +4,4 @@ bal run http_client_data_binding.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9092
 time = 2021-01-21 19:29:10,007 level = INFO  module = "" message = "String payload: Hello ballerina!!!!"
-time = 2021-01-21 19:29:10,057 level = INFO  module = "" message = "Json payload: {"id":"Ballerina", "values":{"a":{"x":"b"}}}"
-time = 2021-01-21 19:29:10,078 level = INFO  module = "" message = "Ballerina"
 time = 2021-01-21 19:29:10,092 level = INFO  module = "" message = "Person name: Smith"
