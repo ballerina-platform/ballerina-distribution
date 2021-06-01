@@ -8,7 +8,7 @@ public function main() returns error? {
 
     // Sends a request and returns the reply.
     nats:Message reply = check natsClient->requestMessage({
-                             content: <@untainted>message.toBytes(),
+                             content: message.toBytes(),
                              subject: "demo.bbe"});
 
     // Prints the reply message.

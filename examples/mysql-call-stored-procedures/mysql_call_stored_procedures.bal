@@ -8,6 +8,7 @@ type Student record {
     int age;
     string name;
 };
+
 public function main() returns error? {
     // Runs the prerequisite setup for the example.
     check beforeExample();

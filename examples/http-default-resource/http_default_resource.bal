@@ -10,9 +10,4 @@ service on new http:Listener(9090) {
             returns json {
         return {method: req.method, path: paths};
     }
-
-    // The resource is confined to `GET` requests with the path `/greeting`.
-    resource function get greeting() returns string {
-        return "Specific resource is invoked";
-    }
 }

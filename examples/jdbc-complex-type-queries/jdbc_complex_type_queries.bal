@@ -3,6 +3,7 @@ import ballerinax/java.jdbc;
 import ballerina/sql;
 import ballerina/time;
 
+// The `BinaryType` record to represent the `BINARY_TYPES` database table.
 type BinaryType record {|
     int row_id;
     byte[] blob_type;
@@ -10,6 +11,7 @@ type BinaryType record {|
     byte[] binary_type;
 |};
 
+// The `ArrayType` record to represent the `ARRAY_TYPES` database table.
 type ArrayType record {|
     int row_id;
     int[] int_array;
@@ -20,6 +22,7 @@ type ArrayType record {|
     string[] string_array;
 |};
 
+// The `DateTimeType` record to represent the `DATE_TIME_TYPES` database table.
 type DateTimeType record {|
     int row_id;
     string date_type;
@@ -88,12 +91,10 @@ function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
         check jdbcClient -> execute(`CREATE TABLE BINARY_TYPES (row_id 
             INTEGER NOT NULL, blob_type BLOB(1024), clob_type CLOB(1024), 
             binary_type BINARY(27), PRIMARY KEY (row_id))`);
-    
     result = check jdbcClient -> execute(`CREATE TABLE ARRAY_TYPES (row_id 
             INTEGER NOT NULL, int_array ARRAY, long_array ARRAY, 
             float_array ARRAY, double_array ARRAY, boolean_array ARRAY, 
             string_array ARRAY, PRIMARY KEY (row_id))`);
-
     result = check jdbcClient -> execute(`CREATE TABLE DATE_TIME_TYPES(row_id 
             INTEGER NOT NULL, date_type DATE, time_type TIME, 
             timestamp_type timestamp, datetime_type  datetime, 
@@ -105,13 +106,11 @@ function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
             X'77736F322062616C6C6572696E6120626C6F6220746573742E', 
             CONVERT('very long text', CLOB), 
             X'77736F322062616C6C6572696E612062696E61727920746573742E')`);
-
     result = check jdbcClient -> execute(`INSERT INTO ARRAY_TYPES (row_id, 
             int_array, long_array, float_array, double_array, boolean_array, 
             string_array) VALUES (1, (1, 2, 3), (100000000, 200000000, 
             300000000), (245.23, 5559.49, 8796.123), (245.23, 5559.49, 
             8796.123), (TRUE, FALSE, TRUE), ('Hello', 'Ballerina'))`);
-
     result = check jdbcClient -> execute(`Insert into DATE_TIME_TYPES (row_id, 
             date_type, time_type, timestamp_type, datetime_type) values (1, 
             '2017-05-23', '14:15:23', '2017-01-25 16:33:55', 
