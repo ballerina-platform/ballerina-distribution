@@ -30,7 +30,7 @@ public function main() returns error? {
     // within the record from the `resultStream` will be automatically 
     // identified based on the column name and type of the query result.
     stream<record{}, error> resultStream =
-             mysqlClient -> query(`SELECT * FROM Customers`);
+             mysqlClient->query(`SELECT * FROM Customers`);
 
     // If there is any error during the execution of the SQL query or
     // iteration of the result stream, the result stream will terminate and
@@ -41,7 +41,7 @@ public function main() returns error? {
 
     // The result of the count operation is provided as a record stream.
     stream<record{}, error> resultStream2 =
-            mysqlClient -> query(`SELECT COUNT(*) AS total FROM Customers`);
+            mysqlClient->query(`SELECT COUNT(*) AS total FROM Customers`);
 
     // Since the above count query will return only a single row,
     // the `next()` operation is sufficient to retrieve the data.
@@ -81,20 +81,20 @@ function beforeExample() returns sql:Error? {
 
     // Creates a database.
     sql:ExecutionResult result =
-        check mysqlClient -> execute(`CREATE DATABASE MYSQL_BBE`);
+        check mysqlClient->execute(`CREATE DATABASE MYSQL_BBE`);
 
     // Creates a table in the database.
-    result = check mysqlClient -> execute(`CREATE TABLE MYSQL_BBE.Customers
+    result = check mysqlClient->execute(`CREATE TABLE MYSQL_BBE.Customers
             (customerId INTEGER NOT NULL AUTO_INCREMENT, firstName
             VARCHAR(300), lastName  VARCHAR(300), registrationID INTEGER,
             creditLimit DOUBLE, country  VARCHAR(300),
             PRIMARY KEY (customerId))`);
 
     // Adds the records to the newly-created table.
-    result = check mysqlClient -> execute(`INSERT INTO MYSQL_BBE.Customers
+    result = check mysqlClient->execute(`INSERT INTO MYSQL_BBE.Customers
             (firstName, lastName, registrationID,creditLimit,country) VALUES
             ('Peter','Stuart', 1, 5000.75, 'USA')`);
-    result = check mysqlClient -> execute(`INSERT INTO MYSQL_BBE.Customers
+    result = check mysqlClient->execute(`INSERT INTO MYSQL_BBE.Customers
             (firstName, lastName, registrationID,creditLimit,country) VALUES
             ('Dan', 'Brown', 2, 10000, 'UK')`);
 
@@ -105,7 +105,7 @@ function beforeExample() returns sql:Error? {
 function afterExample(mysql:Client mysqlClient) returns sql:Error? {
     // Cleans the database.
     sql:ExecutionResult result =
-            check mysqlClient -> execute(`DROP DATABASE MYSQL_BBE`);
+            check mysqlClient->execute(`DROP DATABASE MYSQL_BBE`);
     // Closes the MySQL client.
     check mysqlClient.close();
 }

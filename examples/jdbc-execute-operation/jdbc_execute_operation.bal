@@ -16,7 +16,7 @@ public function main() returns error? {
             `UPDATE Customers SET creditLimit = ${newCreditLimit} 
             where customerId = 1`;
 
-    sql:ExecutionResult result = check jdbcClient -> execute(updateQuery);
+    sql:ExecutionResult result = check jdbcClient->execute(updateQuery);
     io:println("Updated Row count: ", result?.affectedRowCount);
 
     string firstName = "Dan";
@@ -25,7 +25,7 @@ public function main() returns error? {
     sql:ParameterizedQuery deleteQuery =
             `DELETE FROM Customers WHERE firstName = ${firstName}`;
     
-    result = check jdbcClient -> execute(deleteQuery);
+    result = check jdbcClient->execute(deleteQuery);
     io:println("Deleted Row count: ", result.affectedRowCount);
 
     // Performs the cleanup after the example.
@@ -36,17 +36,17 @@ public function main() returns error? {
 function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
     //Creates a table in the database.
     sql:ExecutionResult result =
-        check jdbcClient -> execute(`CREATE TABLE Customers(customerId INTEGER
+        check jdbcClient->execute(`CREATE TABLE Customers(customerId INTEGER
             NOT NULL IDENTITY, firstName  VARCHAR(300), lastName  VARCHAR(300),
             registrationID INTEGER, creditLimit DOUBLE, country  VARCHAR(300),
             PRIMARY KEY (customerId))`);
 
     // Inserts data into the table. The result will have the `affectedRowCount`
     // and `lastInsertedId` with the auto-generated ID of the last row.
-    result = check jdbcClient -> execute(`INSERT INTO Customers (firstName,
+    result = check jdbcClient->execute(`INSERT INTO Customers (firstName,
             lastName, registrationID,creditLimit,country) VALUES ('Peter',
             'Stuart', 1, 5000.75, 'USA')`);
-    result = check jdbcClient -> execute(`INSERT INTO Customers (firstName,
+    result = check jdbcClient->execute(`INSERT INTO Customers (firstName,
             lastName, registrationID,creditLimit,country) VALUES
             ('Dan', 'Brown', 2, 10000, 'UK')`);
 
@@ -58,7 +58,7 @@ function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
 function afterExample(jdbc:Client jdbcClient) returns sql:Error? {
     // Cleans the database.
     sql:ExecutionResult result =
-            check jdbcClient -> execute(`DROP TABLE Customers`);
+            check jdbcClient->execute(`DROP TABLE Customers`);
     // Closes the JDBC client.
     check jdbcClient.close();
 }
