@@ -1,5 +1,4 @@
 // A function can be viewed as a sequence diagram.
-    </br><img src="sequence_diagrams.png"></br>
 // The diagram has a lifeline (vertical line) for each worker (both named 
 // worker and function's default worker).
 // The diagram also has a lifeline for each client object parameter or variable in 
