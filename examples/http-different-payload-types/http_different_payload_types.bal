@@ -3,17 +3,15 @@ import ballerina/io;
 import ballerina/log;
 import ballerina/mime;
 
-//[Client](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client) endpoint.
-http:Client clientEP = check new ("http://localhost:9091/backEndService");
+final http:Client clientEP = check new ("http://localhost:9091/backend");
 
-//Service to test HTTP client remote functions with different payload types.
 service /actionService on new http:Listener(9090) {
 
     resource function 'default messageUsage()
             returns string|http:InternalServerError|error? {
         //[GET](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#get) remote function without any payload.
         string greetingMessage = check clientEP->get("/greeting");
-        handleResponse(greetingMessage);
+        log:printInfo("Text data: " + greetingMessage);
 
         //[POST](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#post) remote function without any payload.
         http:Response response = check clientEP->post("/echo", ());
@@ -22,23 +20,22 @@ service /actionService on new http:Listener(9090) {
         //[POST](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#post) remote function with
         //text as the payload.
         string textResponse = check clientEP->post("/echo", "Sample Text");
-        handleResponse(textResponse);
+        log:printInfo("Text data: " + textResponse);
 
         //[POST](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#post) remote function with
         //`xml` as the payload.
         xml xmlResponse = check clientEP->post("/echo",
                                                 xml `<yy>Sample Xml</yy>`);
-        handleResponse(xmlResponse);
+        log:printInfo("Xml data: " + xmlResponse.toString());
 
         //POST remote function with `json` as the payload.
         json jsonResponse = check clientEP->post("/echo",
-                                            {name: "apple", color: "red"});
-        handleResponse(jsonResponse);
+                                        {name: "apple", color: "red"});
+        log:printInfo("Json data: " + jsonResponse.toJsonString());
 
         //[POST](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#post) remote function with
         //`byte[]` as the payload.
-        string textVal = "Sample Text";
-        byte[] binaryValue = textVal.toBytes();
+        byte[] binaryValue = "Sample Text".toBytes();
         response = check clientEP->post("/echo", binaryValue);
         handleResponse(response);
 
@@ -71,7 +68,7 @@ service /actionService on new http:Listener(9090) {
 }
 
 //Back end service that send out different payload types as response.
-service /backEndService on new http:Listener(9091) {
+service /backend on new http:Listener(9091) {
 
     resource function get greeting() returns string {
         return "Hello";
@@ -128,13 +125,7 @@ service /backEndService on new http:Listener(9091) {
 
 //Handle response data received from HTTP client remote functions.
 function handleResponse(string|xml|json|http:Response|error response) {
-    if (response is string) {
-        log:printInfo("Text data: " + response);
-    } else if (response is xml) {
-        log:printInfo("Xml data: " + response.toString());
-    } else if (response is json) {
-        log:printInfo("Json data: " + response.toJsonString());
-    } else if (response is http:Response) {
+    if (response is http:Response) {
         if (response.hasHeader("content-type")) {
             string baseType = getBaseType(response.getContentType());
             match (baseType) {

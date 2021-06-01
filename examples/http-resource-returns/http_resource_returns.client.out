@@ -30,22 +30,6 @@ curl -v "http://localhost:9090/bank/open"
 * Connection #0 to host localhost left intact
 Bank is open* Closing connection 0
 
-Run the cURL command below to invoke second resource again.
-curl -v "http://localhost:9090/bank/close"
-> GET /bank/close HTTP/1.1
-> Host: localhost:9090
-> User-Agent: curl/7.64.1
-> Accept: */*
->
-< HTTP/1.1 500 Internal Server Error
-< content-type: text/plain
-< content-length: 14
-< server: ballerina
-< date: Sat, 15 May 2021 16:18:36 +0530
-<
-* Connection #0 to host localhost left intact
-Bank is closed* Closing connection 0
-
 Run the cURL command below to invoke bank/createAccount resource.
 curl -v "http://localhost:9090/bank/createAccount?name=bal"
 > GET /bank/createAccount?name=bal HTTP/1.1

@@ -11,6 +11,7 @@ service /sample on new http:Listener(9090) {
         var a = <string>pathMParams["a"];
         var b = <string>pathMParams["b"];
         string pathMatrixStr = string `a=${a}, b=${b}`;
+
         map<any> fooMParams = req.getMatrixParams("/sample/path/" + foo);
         var x = <string>fooMParams["x"];
         var y = <string>fooMParams["y"];
