@@ -12,27 +12,8 @@ service /call on new http:Listener(9090) {
 
     resource function get all() returns http:Response|error {
         // Binding the payload to a string type. The `targetType` is inferred from the LHS variable type.
-        string|error result = backendClient->get("/backend/String");
-
-        // In this instance, The return type of the client remote action is `string` or `http:ClientError`.
-        if (result is error) {
-            log:printError("Error: " + result.message());
-            return result;
-
-        // It implies that the [payload type](https://docs.central.ballerina.io/ballerina/http/latest/types#Payload)
-        // is string.
-        } else {
-            log:printInfo("String payload: " + result);
-        }
-
-        // Binding the payload to a JSON type. If an error returned, it will be responded back to the caller.
-        json jsonPayload = check backendClient->post("/backend/Json", "foo");
-
-        log:printInfo("Json payload: " + jsonPayload.toJsonString());
-
-        // Binding the payload to a map of JSON.
-        map<json> value = check backendClient->post("/backend/Json", "foo");
-        log:printInfo(check value.id);
+        string result = check backendClient->get("/backend/String");
+        log:printInfo("String payload: " + result);
 
         // A `record` and `record[]` are also possible types for data binding.
         Person person = check backendClient->get("/backend/person");
@@ -75,10 +56,6 @@ service /backend on new http:Listener(9092) {
 
     resource function get 'String() returns string {
         return "Hello ballerina!!!!";
-    }
-
-    resource function post 'Json() returns json {
-        return {id: "Ballerina", values: {a: {x: "b"}}};
     }
 
     resource function get person() returns record {|*http:Ok; Person body;|} {
