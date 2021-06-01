@@ -4,26 +4,14 @@ import ballerina/test;
 @test:Config {}
 function testFunc() returns  @tainted error? {
     http:Client httpEndpoint = check new("http://localhost:9090");
-    http:Client httpPassthroughEndpoint = check new("http://localhost:9092");
 
-    json expectedJson = {"Type":"Always but constrained by content-type"};
+    string expectedJson = "Type : This is a string";
     // Send a GET request to the specified endpoint
-    http:Response|error response = httpEndpoint->get("/alwaysCompress/getJson");
+    http:Response|error response = httpEndpoint->get("/alwaysCompress");
     // Assert the uncompressed response
     if (response is http:Response) {
-        json actualPayload = check response.getJsonPayload();
-        test:assertEquals(actualPayload, expectedJson);
-    } else {
-        test:assertFail(msg = "Failed to call the endpoint:");
-    }
-
-    string expectedString = "Backend response was encoded : deflate, gzip";
-    // Send a GET request to the passthrough endpoint
-    response = httpPassthroughEndpoint->get("/passthrough/");
-    // Assert the response of passthrough
-    if (response is http:Response) {
         string actualPayload = check response.getTextPayload();
-        test:assertEquals(actualPayload, expectedString);
+        test:assertEquals(actualPayload, expectedJson);
     } else {
         test:assertFail(msg = "Failed to call the endpoint:");
     }
