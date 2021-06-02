@@ -929,7 +929,7 @@
     - title: Kubernetes
       url: /learn/by-example/c2c-deployment
       active: c2c-deployment
-- title: Function as a service
+- title: Function as a Service
   url: '#'
   sublinks:
     - title: Azure Functions
