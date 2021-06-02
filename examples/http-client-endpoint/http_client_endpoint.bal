@@ -23,7 +23,8 @@ public function main() returns error? {
 
     // Uses the `execute()` remote function for custom HTTP verbs.
     io:println("\nUse custom HTTP verbs:");
-    http:Response response = check clientEndpoint->execute("COPY", "/get", "CUSTOM: Hello World");
+    http:Response response = check clientEndpoint->execute(
+                        "COPY", "/get", "CUSTOM: Hello World");
 
     io:println("Status code: " + response.statusCode.toString());
 }

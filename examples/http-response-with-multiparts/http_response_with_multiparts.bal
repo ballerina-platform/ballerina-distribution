@@ -42,7 +42,8 @@ service /multiparts on new http:Listener(9090) {
     // This resource accepts multipart responses.
     resource function get decode_in_response()
             returns string|http:InternalServerError {
-        http:Response|error returnResult = clientEP->get("/multiparts/encode_out_response");
+        http:Response|error returnResult = clientEP->get(
+                        "/multiparts/encode_out_response");
         if (returnResult is http:Response) {
             // [Extracts the body parts](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response#getBodyParts)  from the response.
             var parentParts = returnResult.getBodyParts();
