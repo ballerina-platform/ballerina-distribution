@@ -1,12 +1,12 @@
-# To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
 bal run http_client_endpoint.bal
 GET request:
-{"args":{"test":"123"}, "headers":{"x-forwarded-proto":"http", "x-forwarded-port":"80", "host":"postman-echo.com", "x-amzn-trace-id":"Root=1-60b7160c-1836325a3313401f1ff499c8", "user-agent":"ballerina"}, "url":"http://postman-echo.com/get?test=123"}
+{"args":{"test":"123"}, "headers":{"x-forwarded-proto":"http", "x-forwarded-port":"80", "host":"postman-echo.com", "x-amzn-trace-id":"Root=1-60b723e3-2cec8477340e121571a5df88", "user-agent":"ballerina"}, "url":"http://postman-echo.com/get?test=123"}
+
+GET request with Headers:
+{"args":{}, "headers":{"x-forwarded-proto":"http", "x-forwarded-port":"80", "host":"postman-echo.com", "x-amzn-trace-id":"Root=1-60b723e6-124af9746490533b1a560cca", "sample-name":"http-client-connector", "user-agent":"ballerina"}, "url":"http://postman-echo.com/get"}
 
 POST request:
-{"args":{}, "data":"POST: Hello World", "files":{}, "form":{}, "headers":{"x-forwarded-proto":"http", "x-forwarded-port":"80", "host":"postman-echo.com", "x-amzn-trace-id":"Root=1-60b7160d-17a459083a1f05e43f87ef07", "content-length":"17", "content-type":"text/plain", "user-agent":"ballerina"}, "json":null, "url":"http://postman-echo.com/post"}
+{"args":{}, "data":"POST: Hello World", "files":{}, "form":{}, "headers":{"x-forwarded-proto":"http", "x-forwarded-port":"80", "host":"postman-echo.com", "x-amzn-trace-id":"Root=1-60b723e6-60ad459c47889ca53a89df90", "content-length":"17", "content-type":"text/plain", "user-agent":"ballerina"}, "json":null, "url":"http://postman-echo.com/post"}
 
 Use custom HTTP verbs:
-Content-Type: application/json; charset=utf-8
-Status code: 200
+Status code: 404
