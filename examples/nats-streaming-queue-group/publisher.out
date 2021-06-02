@@ -1,5 +1,3 @@
-# To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
 bal run publisher.bal
 Message: First Message
 GUID ywNe3mXd96jFL33ouJbFfg received for the produced message.
