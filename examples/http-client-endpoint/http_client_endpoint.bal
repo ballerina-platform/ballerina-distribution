@@ -25,6 +25,5 @@ public function main() returns error? {
     io:println("\nUse custom HTTP verbs:");
     http:Response response = check clientEndpoint->execute("COPY", "/get", "CUSTOM: Hello World");
 
-    // [Get the content type](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response#getContentType) from the response.
     io:println("Status code: " + response.statusCode.toString());
 }
