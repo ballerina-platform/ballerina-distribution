@@ -1,9 +1,6 @@
 import ballerina/http;
 import ballerina/lang.runtime;
 
-// Create an endpoint with port 8080 for the mock backend services.
-listener http:Listener backendEP = new (8080);
-
 // Define the failover client endpoint to call the backend services.
 http:FailoverClient foBackendEP = check new ({
 
@@ -18,39 +15,24 @@ http:FailoverClient foBackendEP = check new ({
         ]
 });
 
-service /fo on new http:Listener(9090) {
-
-    resource function 'default .()
-            returns http:Response|http:InternalServerError {
-        http:Response|error backendResponse = foBackendEP->get("/");
-
-        // If `backendResponse` is an `http:Response`, it is sent back to the
-        // client. If `backendResponse` is an `http:ClientError`, an internal
-        // server error is returned to the client.
-        if (backendResponse is http:Response) {
-            return backendResponse;
-        } else {
-            return {body: backendResponse.message()};
-        }
-
+service / on new http:Listener(9090) {
+    resource function 'default fo() returns string|error {
+        string payload = check foBackendEP->get("/");
+        return payload;
     }
 }
 
 // Define the sample service to mock connection timeouts and service outages.
-service /echo on backendEP {
+service / on new http:Listener(8080) {
+    resource function 'default echo() returns string {
 
-    resource function 'default .() returns string {
         // Delay the response for 30 seconds to mimic network level delays.
         runtime:sleep(30);
-
         return "echo Resource is invoked";
     }
-}
 
-// Define the sample service to mock a healthy service.
-service /mock on backendEP {
-
-    resource function 'default .() returns string {
+    // Define the sample resource to mock a healthy service.
+    resource function 'default mock() returns string {
         return "Mock Resource is Invoked.";
     }
 }

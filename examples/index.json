@@ -897,13 +897,6 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true
-            },
-            {
-                "name": "Handling Different Payload Types",
-                "url": "http-different-payload-types",
-                "verifyBuild": "true",
-                "verifyOutput": "true",
-                "disablePlayground": true
             }
         ]
     },
