@@ -8,7 +8,7 @@ public function main() returns error? {
 
     // Produces a message to the specified subject.
     string result = check stanClient->publishMessage({
-                                    content: <@untainted>message.toBytes(),
+                                    content: message.toBytes(),
                                     subject: "demo"});
     io:println("GUID " + result + " received for the produced message.");
     // Closes the client connection.

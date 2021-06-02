@@ -1,6 +1,3 @@
-# To start the services, navigate to the directory that contains the
-# `.bal` file and use the `bal run` command below.
 bal run http_timeout.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 [ballerina/http] started HTTP/WS listener 0.0.0.0:8080
-time = 2021-01-21 18:56:14,394 level = ERROR module = "" message = "Error sending response from mock service" error = "Connection between remote client and host is closed"

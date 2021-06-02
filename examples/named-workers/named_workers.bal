@@ -12,6 +12,7 @@ public function main() {
         // Variables declared before all named workers and function 
         // parameters are accessible in named workers.
         io:println(greeting + " from worker A");
+
     }
 
     worker B {

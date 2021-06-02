@@ -11,4 +11,5 @@ public function main() {
 
     // `s.length()` is same as `string:length(s)`.
     int m = string:length(s);
+
 }

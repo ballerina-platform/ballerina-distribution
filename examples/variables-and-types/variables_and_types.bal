@@ -7,5 +7,6 @@ string greeting = "Hello";
 public function main() {
     // Assignments are statements not expressions.
     string name = "Ballerina";
+
     io:println(greeting, " ", name);
 }

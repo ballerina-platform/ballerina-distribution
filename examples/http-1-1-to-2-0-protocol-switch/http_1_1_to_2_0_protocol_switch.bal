@@ -2,7 +2,7 @@ import ballerina/http;
 
 // HTTP version is set to 2.0.
 http:Client http2serviceClientEP =
-        checkpanic new ("http://localhost:7090", {httpVersion: "2.0"});
+        check new ("http://localhost:7090", {httpVersion: "2.0"});
 
 service /http11Service on new http:Listener(9090) {
 
@@ -19,7 +19,7 @@ service /http11Service on new http:Listener(9090) {
             // Handle the errors that are returned when invoking the
             // [forward](https://docs.central.ballerina.io/ballerina/http/latest/clients/HttpClient#forward) function.
             response.statusCode = 500;
-            response.setPayload(<@untainted>clientResponse.message());
+            response.setPayload(clientResponse.message());
 
         }
         // Send the response back to the caller.

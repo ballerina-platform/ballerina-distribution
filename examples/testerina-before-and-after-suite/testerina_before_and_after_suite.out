@@ -1,0 +1,18 @@
+bal test test_module
+
+Compiling source
+        ballerinatest/test_module:0.1.0
+
+Running tests
+        ballerinatest/test_module:0.1.0
+I'm the before suite function!
+I'm in test function 1!
+I'm in test function 2!
+I'm the after suite function!
+
+                [pass] testFunction1
+                [pass] testFunction2
+
+                2 passing
+                0 failing
+                0 skipped

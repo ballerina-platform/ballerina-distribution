@@ -8,6 +8,7 @@ type Student record {
     int age;
     string name;
 };
+
 public function main() returns error? {
     // Runs the prerequisite setup for the example.
     check beforeExample();
@@ -23,7 +24,7 @@ public function main() returns error? {
                                 `CALL InsertStudent(${name}, ${age})`;
 
     // Invokes the stored procedure `InsertStudent` with the `IN` parameters.
-    sql:ProcedureCallResult retCall = check mysqlClient -> call(sqlQuery);
+    sql:ProcedureCallResult retCall = check mysqlClient->call(sqlQuery);
     io:println("Call stored procedure `InsertStudent`." +
         "\nAffected Row count: ", retCall.executionResult?.affectedRowCount);
     check retCall.close();
@@ -35,7 +36,7 @@ public function main() returns error? {
                         `{CALL GetCount(${id}, ${totalCount})}`;
 
     // The stored procedure with the `OUT` and `INOUT` parameters is invoked.
-    sql:ProcedureCallResult retCall2 = check mysqlClient -> call(sqlQuery2);
+    sql:ProcedureCallResult retCall2 = check mysqlClient->call(sqlQuery2);
     io:println("Call stored procedure `GetCount`.");
     io:println("Age of the student with id '1' : ", id.get(int));
     io:println("Total student count: ", totalCount.get(int));
@@ -43,7 +44,7 @@ public function main() returns error? {
 
     // Invokes the stored procedure, which returns the data.
     sql:ProcedureCallResult retCall3 = 
-            check mysqlClient -> call("{CALL GetStudents()}", [Student]);
+            check mysqlClient->call(`{CALL GetStudents()}`, [Student]);
     io:println("Call stored procedure `GetStudents`.");              
 
     // Processes the returned result stream.
@@ -67,22 +68,22 @@ function beforeExample() returns sql:Error? {
 
     // Creates a database.
     sql:ExecutionResult result =
-        check mysqlClient -> execute(`CREATE DATABASE MYSQL_BBE`);
+        check mysqlClient->execute(`CREATE DATABASE MYSQL_BBE`);
 
     // Creates a table in the database.
-    result = check mysqlClient -> execute(`CREATE TABLE MYSQL_BBE.Student
+    result = check mysqlClient->execute(`CREATE TABLE MYSQL_BBE.Student
             (id INT AUTO_INCREMENT, age INT, name VARCHAR(255),
             PRIMARY KEY (id))`);
 
     // Creates the necessary stored procedures using the execute command.
-    result = check mysqlClient -> execute(`CREATE PROCEDURE
+    result = check mysqlClient->execute(`CREATE PROCEDURE
         MYSQL_BBE.InsertStudent (IN pName VARCHAR(255), IN pAge INT)
         BEGIN INSERT INTO Student(age, name) VALUES (pAge, pName); END`);
-    result = check mysqlClient -> execute(`CREATE PROCEDURE MYSQL_BBE.GetCount
+    result = check mysqlClient->execute(`CREATE PROCEDURE MYSQL_BBE.GetCount
         (INOUT pID INT, OUT totalCount INT) BEGIN SELECT age INTO pID FROM
         Student WHERE id = pID; SELECT COUNT(*) INTO totalCount FROM Student;
         END`);
-    result = check mysqlClient -> execute(`CREATE PROCEDURE
+    result = check mysqlClient->execute(`CREATE PROCEDURE
         MYSQL_BBE.GetStudents() BEGIN SELECT * FROM Student; END`);
 
     check mysqlClient.close();    
@@ -92,7 +93,7 @@ function beforeExample() returns sql:Error? {
 function afterExample(mysql:Client mysqlClient) returns sql:Error? {
     // Cleans the database.
     sql:ExecutionResult result =
-            check mysqlClient -> execute(`DROP DATABASE MYSQL_BBE`);
+            check mysqlClient->execute(`DROP DATABASE MYSQL_BBE`);
 
     // Closes the MySQL client.
     check mysqlClient.close();

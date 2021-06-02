@@ -2,7 +2,7 @@ import ballerina/test;
 import ballerina/http;
 
 @test:Config {}
-function testFunc() returns @tainted error? {
+function testFunc() returns error? {
     http:Client httpEndpoint = check new("http://localhost:9090");
     json expectedJson = {id: "data-binding-done"};
 
@@ -16,19 +16,18 @@ function testFunc() returns @tainted error? {
 
     resp = httpEndpoint->get("/call/5xx");
     if (resp is http:Response) {
-        var textPayload = check resp.getTextPayload();
-        test:assertEquals(textPayload, "data-binding-failed-with-501");
-        test:assertEquals(resp.statusCode, 501);
+        var jsonPayload = check resp.getJsonPayload();
+        test:assertEquals(jsonPayload, {code:501, payload:"data-binding-failed-with-501"});
     } else {
         test:assertFail(msg = "Failed to call the endpoint:");
     }
 
     resp = httpEndpoint->get("/call/4xx");
     if (resp is http:Response) {
-        var textPayload = check resp.getTextPayload();
-        test:assertEquals(textPayload, "no matching resource found for path : /backend/err , method : POST");
-        test:assertEquals(resp.statusCode, 404);
+        var jsonPayload = check resp.getJsonPayload();
+        test:assertEquals(jsonPayload, {code:404, payload:"no matching resource found for path : /backend/err , method : POST"});
     } else {
         test:assertFail(msg = "Failed to call the endpoint:");
     }
+
 }

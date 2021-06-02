@@ -29,7 +29,7 @@ public function main() returns error? {
     // within the record from the `resultStream` will be automatically 
     // identified based on the column name and type of the query result.
     stream<record{}, error> resultStream =
-             jdbcClient -> query(`SELECT * FROM Customers`);
+             jdbcClient->query(`SELECT * FROM Customers`);
 
     // If there is any error during the execution of the SQL query or
     // iteration of the result stream, the result stream will terminate and
@@ -40,7 +40,7 @@ public function main() returns error? {
 
     // The result of the count operation is provided as a record stream.
     stream<record{}, error> resultStream2 =
-            jdbcClient -> query(`SELECT COUNT(*) AS total FROM Customers`);
+            jdbcClient->query(`SELECT COUNT(*) AS total FROM Customers`);
 
     // Since the above count query will return only a single row,
     // the `next()` operation is sufficient to retrieve the data.
@@ -78,16 +78,16 @@ public function main() returns error? {
 function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
     // Creates a table in the database.
     sql:ExecutionResult result =
-        check jdbcClient -> execute(`CREATE TABLE Customers(customerId INTEGER
+        check jdbcClient->execute(`CREATE TABLE Customers(customerId INTEGER
             NOT NULL IDENTITY, firstName  VARCHAR(300), lastName  VARCHAR(300),
             registrationID INTEGER, creditLimit DOUBLE, country  VARCHAR(300),
             PRIMARY KEY (customerId))`);
 
     // Adds records to the newly-created table.
-    result = check jdbcClient -> execute(`INSERT INTO Customers (firstName,
+    result = check jdbcClient->execute(`INSERT INTO Customers (firstName,
             lastName, registrationID,creditLimit,country) VALUES ('Peter',
             'Stuart', 1, 5000.75, 'USA')`);
-    result = check jdbcClient -> execute(`INSERT INTO Customers (firstName,
+    result = check jdbcClient->execute(`INSERT INTO Customers (firstName,
             lastName, registrationID,creditLimit,country) VALUES
             ('Dan', 'Brown', 2, 10000, 'UK')`);
 }
@@ -96,7 +96,7 @@ function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
 function afterExample(jdbc:Client jdbcClient) returns sql:Error? {
     // Cleans the database.
     sql:ExecutionResult result =
-            check jdbcClient -> execute(`DROP TABLE Customers`);
+            check jdbcClient->execute(`DROP TABLE Customers`);
     // Closes the JDBC client.
     check jdbcClient.close();
 }

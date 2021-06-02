@@ -1,0 +1,3 @@
+bal run working_directly_with_json.bal
+Value of s1: ballerina
+Value of s2: ballerina
