@@ -1,27 +1,21 @@
 import ballerina/io;
 
+// A `const` is immutable.
+const s = "Anne";
+
+type Row record {
+    // Both the field and its value are immutable.
+    readonly string k;
+    int value;
+};
+
+table<Row> key(k) t = table [
+    { k: "John", value: 17 }
+];
+
 public function main() {
-    // A value belonging to an inherently immutable basic type can be used directly
-    // where an immutable `readonly` value is expected.
-    readonly a = 5;
-    io:println(a);
+    // Can safely use `s` as a key.
+    t.add({k: s, value: 18});
 
-    string ballerina = "ballerina";
-    readonly b = ballerina;
-    io:println(b);
-
-    // A value of a selectively immutable type can be created as immutable, by using
-    // an intersection type with `readonly` as the contextually expected type.
-    map<int> & readonly marks = {
-        math: 80,
-        physics: 85,
-        chemistry: 75
-    };
-
-    // If the inherent type of a value is `T & readonly`, its read-only bit is set,
-    // and the value will belong to the `readonly` type.
-    readonly c = marks;
-    // The `.isReadOnly()` check for an immutable value returns `true`.
-    io:println(c);
-    io:println(marks.isReadOnly());
+    io:println(t);
 }

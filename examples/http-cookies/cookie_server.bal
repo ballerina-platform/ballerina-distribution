@@ -19,13 +19,11 @@ service /cookieDemo on serverEP {
                 // Check the password value.
                 if (password == "p@ssw0rd") {
 
-                    // [Create a new cookie](https://docs.central.ballerina.io/ballerina/http/latest/classes/Cookie) by setting `name` as the `username`
-                    // and `value` as the logged-in user's name.
-                    http:Cookie cookie = new("username", name.toString());
-
-                    // Set the cookies path as `/` to apply it to all the
-                    // resources in the service.
-                    cookie.path = "/";
+                    // [Create a new cookie](https://docs.central.ballerina.io/ballerina/http/latest/classes/Cookie)
+                    // by setting `name` as the `username` and `value` as the logged-in user's name. Set the cookies
+                    // path as `/` to apply it to all the resources in the service.
+                    http:Cookie cookie = new("username", name.toString(),
+                                                path = "/");
 
                     http:Response response = new;
 
@@ -56,7 +54,7 @@ service /cookieDemo on serverEP {
             string? user = usernameCookie[0].value;
             if (user is string) {
                 // Respond with the username added to the welcome message.
-                return "Welcome back " + <@untainted> user;
+                return "Welcome back " + user;
 
             } else {
                 // If the user is `nil`, send a login message.

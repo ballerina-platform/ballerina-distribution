@@ -1,5 +1,0 @@
-// All modules are initialized at program startup. Module intialization is ordered so that if module A imports module B, 
-//  then module A is initialized after module B. intialization phase ends by calling `main` function. <br/><br/>
-// A module's listeners are registered during module initialization.
-// If there are registered listeners, then initialization phase is followed by listening phase. <br/><br/>
-// Listening phase starts by calling `start` method on each registered listener. Listening phase is terminated by signal (e.g. `SIGINT`, `SIGTERM`).

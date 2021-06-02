@@ -83,22 +83,6 @@ task unpackAwsLambdaBala(type: Copy) {
     }
 }
 
-task unpackAwsLambdaExamples(type: Copy) {
-    group = "unpack_dependencies"
-    configurations.awsLambdaExamples.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        from zipTree(artifact.getFile())
-        into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
-    }
-}
-
-task unpackAzFunctionsExamples(type: Copy) {
-    group = "unpack_dependencies"
-    configurations.azFunctionsExamples.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        from zipTree(artifact.getFile())
-        into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
-    }
-}
-
 task unpackStdLibs() {
     doLast {
         configurations.ballerinaStdLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
@@ -129,14 +113,6 @@ task unpackC2cTooling() {
                 into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
             }
         }
-    }
-}
-
-task unpackC2cExamples(type: Copy) {
-    group = "unpack_dependencies"
-    configurations.ballerinaC2cExamples.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        from zipTree(artifact.getFile())
-        into new File("${buildDir}/target/extracted-distributions", "c2c-examples-zip")
     }
 }
 
@@ -1237,8 +1213,7 @@ unpackJballerinaTools.dependsOn unpackBallerinaJre
 unpackDevTools.dependsOn unpackJballerinaTools
 unpackStdLibs.dependsOn unpackDevTools
 unpackC2cLibs.dependsOn unpackStdLibs
-unpackC2cExamples.dependsOn unpackC2cLibs
-unpackC2cTooling.dependsOn unpackC2cExamples
+unpackC2cTooling.dependsOn unpackC2cLibs
 downloadBalCommand.dependsOn unpackC2cTooling
 
 /* Extract JRE */
@@ -1278,3 +1253,5 @@ deleteTemporaryFiles.dependsOn testDevToolsIntegration
 test.dependsOn deleteTemporaryFiles
 test.dependsOn testExamples
 test.dependsOn testStdlibs
+
+testExamples.enabled = false

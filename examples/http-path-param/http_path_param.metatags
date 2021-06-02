@@ -1,0 +1,2 @@
+description: BBE on how to extract values using the `PathParam` and `MatrixParam` parameters in Ballerina.
+keywords: ballerina, ballerina by example, bbe, http, path param

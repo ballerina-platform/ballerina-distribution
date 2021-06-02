@@ -1,0 +1,5 @@
+bal run check_semantics.bal
+OK
+OK
+error("not OK")
+error: not OK {}

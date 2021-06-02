@@ -34,29 +34,17 @@ service /'retry on new http:Listener(9090) {
 
     // Parameters include a reference to the caller and an object of the
     // request data.
-    resource function 'default .(http:Caller caller, http:Request request) {
+    resource function 'default .() returns string|http:InternalServerError {
 
-        http:Response|error backendResponse =
-            backendClientEP->forward("/hello", request);
+        string|error backendResponse = backendClientEP->get("/hello");
 
-        // If `backendResponse` is an `http:Response`, it is sent back to the
+        // If `backendResponse` is a `string`, it is sent back to the
         // client. If `backendResponse` is an `http:ClientError`, an internal
         // server error is returned to the client.
-        if (backendResponse is http:Response) {
-            var responseToCaller = caller->respond(<@untainted>backendResponse);
-            if (responseToCaller is error) {
-                log:printError("Error sending response",
-                                'error = responseToCaller);
-            }
+        if (backendResponse is string) {
+            return backendResponse;
         } else {
-            http:Response response = new;
-            response.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
-            response.setPayload((<@untainted error>backendResponse).message());
-            var responseToCaller = caller->respond(response);
-            if (responseToCaller is error) {
-                log:printError("Error sending response",
-                                'error = responseToCaller);
-            }
+            return { body: backendResponse.message()};
         }
 
     }
@@ -69,28 +57,19 @@ int counter = 0;
 // This should run separately from the `retryDemoService` service.
 service /hello on new http:Listener(8080) {
 
-    resource function get .(http:Caller caller, http:Request req) {
-        counter = counter + 1;
+    resource function get .() returns string {
+        counter += 1;
+        // Delay the response by 5 seconds to mimic network level delays.
         if (counter % 4 != 0) {
             log:printInfo(
                 "Request received from the client to delayed service.");
-            // Delay the response by 5 seconds to mimic network level delays.
             runtime:sleep(5);
 
-            var responseToCaller = caller->respond("Hello World!!!");
-            handleRespondResult(responseToCaller);
+            return "Hello World!!!";
         } else {
             log:printInfo(
                 "Request received from the client to healthy service.");
-            var responseToCaller = caller->respond("Hello World!!!");
-            handleRespondResult(responseToCaller);
+            return "Hello World!!!";
         }
-    }
-}
-
-function handleRespondResult(error? result) {
-    if (result is http:ListenerError) {
-        log:printError("Error sending response from mock service",
-                        'error = result);
     }
 }

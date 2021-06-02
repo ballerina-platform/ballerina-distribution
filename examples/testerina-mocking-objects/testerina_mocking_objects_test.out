@@ -17,14 +17,17 @@ Status code: 200
 Executing the 2nd GET request
 Status code: 404
 Executing the 1st GET request
+Status code: 404
+Executing the 1st GET request
 Status code: 500
 
                 [pass] testMemberVariable
                 [pass] testReturn
                 [pass] testReturnSequence
+                [pass] testReturnWithArgs
                 [pass] testSendNotification
                 [pass] testTestDouble
 
-                5 passing
+                6 passing
                 0 failing
                 0 skipped

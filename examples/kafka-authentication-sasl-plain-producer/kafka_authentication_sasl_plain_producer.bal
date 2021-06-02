@@ -13,10 +13,14 @@ kafka:AuthenticationConfiguration authConfig = {
 
 kafka:ProducerConfiguration producerConfigs = {
     // Provide the relevant authentication configuration record to authenticate the producer.
-    auth: authConfig
+    auth: authConfig,
+    securityProtocol: kafka:PROTOCOL_SASL_PLAINTEXT
 };
 
-kafka:Producer kafkaProducer = check new (kafka:DEFAULT_URL, producerConfigs);
+// Provide the relevant SASL URL of the configured Kafka server.
+const string SASL_URL = "localhost:9093";
+
+kafka:Producer kafkaProducer = check new (SASL_URL, producerConfigs);
 
 public function main() {
     string message = "Hello from Ballerina";
@@ -26,7 +30,7 @@ public function main() {
     });
     // Checks for an error and notifies if an error has occurred.
     if err is kafka:Error {
-        io:println("Error occurred when sending message ", 'error = err);
+        io:println("Error occurred when sending message ", err);
     } else {
         io:println("Message successfully sent.");
     }

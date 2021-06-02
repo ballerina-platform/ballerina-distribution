@@ -1,0 +1,6 @@
+bal run retry_transaction_statement.bal
+Stage1 completed
+Stage1 completed
+Stage1 completed
+Stage1 completed
+error: Stage2 failed {}

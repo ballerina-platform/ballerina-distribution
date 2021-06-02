@@ -1,1 +1,0 @@
-// The `trap` expression stops a panic and gives access to the error value associated with the panic.

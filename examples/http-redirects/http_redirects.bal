@@ -19,12 +19,12 @@ service /hello on new http:Listener(9090) {
             var payload = returnResult.getTextPayload();
 
             if (payload is string) {
-                return "Response received : " + <@untainted>payload;
+                return "Response received : " + payload;
             } else {
-                return "Error in payload: " + <@untainted>payload.message();
+                return "Error in payload: " + payload.message();
             }
         } else {
-            return "Connection error: " + <@untainted>returnResult.message();
+            return "Connection error: " + returnResult.message();
         }
     }
 }
