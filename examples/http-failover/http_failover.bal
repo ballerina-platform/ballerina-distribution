@@ -16,10 +16,9 @@ http:FailoverClient foBackendEP = check new ({
 });
 
 service / on new http:Listener(9090) {
-
     resource function 'default fo() returns string|error {
-        string resp = check foBackendEP->get("/");
-        return resp;
+        string payload = check foBackendEP->get("/");
+        return payload;
     }
 }
 

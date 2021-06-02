@@ -44,19 +44,17 @@ http:Client cbrBackend = check new ("http://localhost:8080", {
         }
     );
 
-// Create an HTTP service bound to the endpoint (circuitBreakerEP).
 service / on new http:Listener(9090) {
     resource function get cb() returns string|error {
-        string resp = check cbrBackend->get("/hello");
-        return resp;
+        string payload = check cbrBackend->get("/hello");
+        return payload;
     }
 }
 
 // This sample service is used to mock connection timeouts and service outages.
-// This should run separately from the `circuitBreakerDemo` service.
+// This should run separately from the above service.
 service / on new http:Listener(8080) {
     private int counter = 1;
-
     resource function get hello() returns string|http:InternalServerError {
         if (self.counter % 5 == 3) {
             self.counter += 1;
