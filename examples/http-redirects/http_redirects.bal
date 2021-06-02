@@ -1,5 +1,4 @@
 import ballerina/http;
-import ballerina/log;
 
 // Creates an HTTP client to interact with a remote endpoint.
 // [followRedirects](https://docs.central.ballerina.io/ballerina/http/latest/records/FollowRedirects) record provides configurations associated with HTTP redirects.
@@ -10,38 +9,21 @@ http:Client clientEndpoint = check new ("http://localhost:9092", {
 
 service /hello on new http:Listener(9090) {
 
-    resource function get .() returns string {
-        // Sends a `GET` request to the specified endpoint.
-        http:Response|error returnResult = clientEndpoint->get("/redirect1");
-
-        if (returnResult is http:Response) {
-            // Retrieves the text payload from the response.
-            var payload = returnResult.getTextPayload();
-
-            if (payload is string) {
-                return "Response received : " + payload;
-            } else {
-                return "Error in payload: " + payload.message();
-            }
-        } else {
-            return "Connection error: " + returnResult.message();
-        }
+    resource function get .() returns string|error {
+        // Sends a `GET` request to the specified endpoint and Retrieved the text payload from the response.
+        string returnResult = check clientEndpoint->get("/redirect1");
+        return "Response received : " + returnResult;
     }
 }
 
 service /redirect1 on new http:Listener(9092) {
 
-    resource function get .(http:Caller caller) {
+    resource function get .(http:Caller caller) returns error? {
         http:Response res = new;
         // Sends a redirect response with a location.
-        error? result = caller->redirect(res,
+        check caller->redirect(res,
             http:REDIRECT_TEMPORARY_REDIRECT_307,
             ["http://localhost:9093/redirect2"]);
-
-        if (result is error) {
-            log:printError("Error in sending redirect response to caller",
-                'error = result);
-        }
     }
 }
 
@@ -50,6 +32,5 @@ service /redirect2 on new http:Listener(9093) {
     resource function get .() returns string {
         // Sends a response to the caller.
         return "Hello World!";
-
     }
 }
