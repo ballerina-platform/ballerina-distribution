@@ -7,18 +7,18 @@ http:Client clientEndpoint = check new ("http://localhost:9092", {
     }
 );
 
-service /hello on new http:Listener(9090) {
+service / on new http:Listener(9090) {
 
-    resource function get .() returns string|error {
+    resource function get hello() returns string|error {
         // Sends a `GET` request to the specified endpoint and Retrieved the text payload from the response.
         string returnResult = check clientEndpoint->get("/redirect1");
         return "Response received : " + returnResult;
     }
 }
 
-service /redirect1 on new http:Listener(9092) {
+service / on new http:Listener(9092) {
 
-    resource function get .(http:Caller caller) returns error? {
+    resource function get redirect1(http:Caller caller) returns error? {
         http:Response res = new;
         // Sends a redirect response with a location.
         check caller->redirect(res,

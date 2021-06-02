@@ -6,9 +6,6 @@ import ballerina/mime;
 // Creates an endpoint for the client.
 http:Client clientEP = check new ("http://localhost:9092");
 
-// Creates a listener for the service.
-listener http:Listener multipartEP = new (9090);
-
 service /multiparts on new http:Listener(9092) {
 
     resource function get encode_out_response() returns http:Response {
@@ -40,14 +37,12 @@ service /multiparts on new http:Listener(9092) {
 }
 
 // Binds the listener to the service.
-service /multiparts on multipartEP {
+service /multiparts on new http:Listener(9090) {
 
     // This resource accepts multipart responses.
     resource function get decode_in_response()
             returns string|http:InternalServerError {
-        http:Response inResponse = new;
-        var returnResult = clientEP->get("/multiparts/encode_out_response");
-        http:Response res = new;
+        http:Response|error returnResult = clientEP->get("/multiparts/encode_out_response");
         if (returnResult is http:Response) {
             // [Extracts the body parts](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response#getBodyParts)  from the response.
             var parentParts = returnResult.getBodyParts();
