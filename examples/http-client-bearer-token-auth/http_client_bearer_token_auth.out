@@ -1,6 +1,3 @@
-# Before testing this sample, first start a secured sample service.
-# To run this sample, navigate to the directory that contains the `.bal` file,
-# and execute the `bal run` command below.
-# (You may need to change the trusted certificate file path.)
+# As a prerequisite, start a secured sample service.
 bal run http_client_bearer_token_auth.bal
 Hello, World!

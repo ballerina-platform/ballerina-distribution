@@ -1,5 +1,3 @@
-# To run this sample, navigate to the directory that contains the `.bal` file,
-# and execute the `bal run` command below.
 # (You may need to change the certificate file path, trusted certificate file
 # path and private key file path.)
 bal run security_jwt_issue_validate.bal

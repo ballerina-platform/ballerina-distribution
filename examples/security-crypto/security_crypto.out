@@ -1,5 +1,3 @@
-# To run this sample, navigate to the directory that contains the `.bal` file,
-# and execute the `bal run` command below.
 # (You may need to change the certificate file path, private key file path and
 keystore/truststore file path.)
 bal run security_crypto.bal
