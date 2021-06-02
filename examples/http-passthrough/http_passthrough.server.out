@@ -1,3 +1,2 @@
 bal run passthrough.bal
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9092
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
