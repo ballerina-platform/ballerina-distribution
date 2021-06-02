@@ -1,5 +1,3 @@
-# To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
 bal run manage_scheduled_jobs.bal
 1st Job, MyCounter: 1
 2nd Job, MyCounter: 1

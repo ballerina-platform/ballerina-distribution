@@ -100,7 +100,8 @@
                 "name": "While Statement",
                 "url": "while-statement",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "disablePlayground": true
             },
             {
                 "name": "Binary Data",
@@ -330,7 +331,8 @@
                 "name": "Immutability",
                 "url": "immutability",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "disablePlayground": true
             },
             {
                 "name": "Any Type",
@@ -524,7 +526,8 @@
                 "name": "XML Subtyping",
                 "url": "xml-subtyping",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "disablePlayground": true
             },
             {
                 "name": "XML Navigation ",

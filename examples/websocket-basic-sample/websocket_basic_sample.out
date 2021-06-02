@@ -1,5 +1,3 @@
-# To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `bal run` command below.
 bal run websocket_basic_sample.bal
 
 # To check the sample, use a Chrome or Firefox JavaScript console and run the commands below. <br>
