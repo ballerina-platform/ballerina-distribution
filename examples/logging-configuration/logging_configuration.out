@@ -1,5 +1,3 @@
-# To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
 bal run logging_configuration.bal
 time = 2021-05-25T11:06:54.998+05:30 level = ERROR module = "" message = "error log"
 time = 2021-05-25T11:06:55.009+05:30 level = INFO module = "" message = "info log"
