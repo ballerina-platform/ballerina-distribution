@@ -1,5 +1,3 @@
-# To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
 bal run environment_variables.bal
 HTTP_PORT: 5005
 Username: Alex
