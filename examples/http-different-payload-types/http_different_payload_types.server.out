@@ -1,7 +1,5 @@
 # In the directory, which contains the `.bal` file, create a directory named `files`,
 # and add an image file named `logo.png` in it.
-# To start the service, navigate to the directory that contains the
-# `.bal` file and use the `bal run` command below.
 bal run different_payload_types.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9091
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
