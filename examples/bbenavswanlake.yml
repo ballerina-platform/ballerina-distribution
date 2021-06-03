@@ -415,15 +415,21 @@
     - title: Client Data Binding 
       url: /learn/by-example/http-client-data-binding
       active: http-client-data-binding
-    - title: Absolute Path and Resource Path
+    - title: Service Path and Resource Path
       url: /learn/by-example/http-absolute-path-and-path
       active: http-absolute-path-and-path
     - title: Default Resource
       url: /learn/by-example/http-default-resource
       active: http-default-resource
-    - title: Path Matrix Param
-      url: /learn/by-example/http-path-matrix-param
-      active: http-path-matrix-param
+    - title: Path Parameter
+      url: /learn/by-example/http-path-param
+      active: http-path-param
+    - title: Query Parameter
+      url: /learn/by-example/http-query-parameter
+      active: http-query-parameter
+    - title: Matrix Parameter
+      url: /learn/by-example/http-matrix-param
+      active: http-matrix-param
     - title: Resource Return Types 
       url: /learn/by-example/http-resource-returns
       active: http-resource-returns
@@ -433,6 +439,12 @@
     - title: Handling Different Payload Types 
       url: /learn/by-example/http-different-payload-types
       active: http-different-payload-types
+- title: REST Client
+  url: '#'
+  sublinks:
+    - title: Client
+      url: /learn/by-example/http-client-endpoint
+      active: http-client-endpoint
 - title: REST API Security
   url: '#'
   sublinks:
@@ -478,12 +490,9 @@
     - title: Client - OAuth2 Refresh Token Grant Type
       url: /learn/by-example/http-client-oauth2-refresh-token-grant-type
       active: http-client-oauth2-refresh-token-grant-type
-- title: HTTP
+- title: REST API Advance
   url: '#'
   sublinks:
-    - title: Client
-      url: /learn/by-example/http-client-endpoint
-      active: http-client-endpoint
     - title: CORS 
       url: /learn/by-example/http-cors
       active: http-cors
@@ -502,10 +511,7 @@
     - title: Cookies
       url: /learn/by-example/http-cookies
       active: http-cookies
-    - title: Query Parameter
-      url: /learn/by-example/http-query-parameter
-      active: http-query-parameter
-    - title: Disable Chunking
+    - title: Chunking
       url: http-disable-chunking
       active: http-disable-chunking
     - title: Response With Multiparts

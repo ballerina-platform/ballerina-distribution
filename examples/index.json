@@ -843,7 +843,7 @@
         "category": "Working Over the Network",
         "samples": [
             {
-                "name": "Absolute Path and Resource Path",
+                "name": "Service Path and Resource Path",
                 "url": "http-absolute-path-and-path",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
@@ -871,14 +871,21 @@
                 "disablePlayground": true
             },
             {
-                "name": "Path Param",
+                "name": "Path Parameter",
                 "url": "http-path-param",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true
             },
             {
-                "name": "Matrix Param",
+                "name": "Query Parameter",
+                "url": "http-query-parameter",
+                "verifyBuild": "true",
+                "verifyOutput": "true",
+                "disablePlayground": true
+            },
+            {
+                "name": "Matrix Parameter",
                 "url": "http-matrix-param",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
@@ -897,6 +904,19 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true
+            }
+        ]
+    },
+    {
+        "title": "REST Client",
+        "column": 0,
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Client",
+                "url": "http-client-endpoint",
+                "verifyBuild": "true",
+                "verifyOutput": "true"
             }
         ]
     },
@@ -1006,7 +1026,7 @@
         ]
     },
     {
-        "title": "HTTP",
+        "title": "REST API Advance",
         "column": 0,
         "category": "Working Over the Network",
         "samples": [
@@ -1059,14 +1079,7 @@
                 "disablePlayground": true
             },
             {
-                "name": "Query Parameter",
-                "url": "http-query-parameter",
-                "verifyBuild": "true",
-                "verifyOutput": "true",
-                "disablePlayground": true
-            },
-            {
-                "name": "Disable Chanking",
+                "name": "Chanking",
                 "url": "http-disable-chunking",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
