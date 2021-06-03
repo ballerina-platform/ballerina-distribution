@@ -857,13 +857,6 @@
                 "disablePlayground": true
             },
             {
-                "name": "Client Data Binding",
-                "url": "http-client-data-binding",
-                "verifyBuild": "true",
-                "verifyOutput": "true",
-                "disablePlayground": true
-            },
-            {
                 "name": "Default Resource",
                 "url": "http-default-resource",
                 "verifyBuild": "true",
@@ -892,7 +885,7 @@
                 "disablePlayground": true
             },
             {
-                "name": "Resource Return Types",
+                "name": "Typed Resource Responses",
                 "url": "http-resource-returns",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
@@ -917,6 +910,13 @@
                 "url": "http-client-endpoint",
                 "verifyBuild": "true",
                 "verifyOutput": "true"
+            },
+            {
+                "name": "Client Data Binding",
+                "url": "http-client-data-binding",
+                "verifyBuild": "true",
+                "verifyOutput": "true",
+                "disablePlayground": true
             }
         ]
     },
@@ -1031,10 +1031,11 @@
         "category": "Working Over the Network",
         "samples": [
             {
-                "name": "Client",
-                "url": "http-client-endpoint",
+                "name": "Redirects",
+                "url": "http-redirects",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "disablePlayground": true
             },
             {
                 "name": "CORS",
@@ -1046,13 +1047,6 @@
             {
                 "name": "100 Continue",
                 "url": "http-100-continue",
-                "verifyBuild": "true",
-                "verifyOutput": "true",
-                "disablePlayground": true
-            },
-            {
-                "name": "Redirects",
-                "url": "http-redirects",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true
@@ -1079,7 +1073,7 @@
                 "disablePlayground": true
             },
             {
-                "name": "Chanking",
+                "name": "Chunking",
                 "url": "http-disable-chunking",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
