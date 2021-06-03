@@ -13,6 +13,6 @@ public function main() returns error? {
         }
     );
     check wssClient->writeTextMessage("Hello");
-    string textResp = check wssClient->readTextMessage();
-    io:println(textResp);
+    string textMessage = check wssClient->readTextMessage();
+    io:println(textMessage);
 }

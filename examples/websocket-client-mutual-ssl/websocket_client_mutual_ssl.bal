@@ -20,6 +20,6 @@ public function main() returns error? {
         }
     );
     check mTlsClient->writeTextMessage("Hello");
-    string textResp = check mTlsClient->readTextMessage();
-    io:println(textResp);
+    string textMessage = check mTlsClient->readTextMessage();
+    io:println(textMessage);
 }

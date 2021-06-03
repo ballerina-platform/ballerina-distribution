@@ -25,7 +25,7 @@ public function main() returns error? {
             cert: "../resource/path/to/public.crt"
         }
     );
-    check securedEP->writeTextMessage("Hello");
-    string textResp = check securedEP->readTextMessage();
-    io:println(textResp);
+    check securedEP->writeTextMessage("Hello, World");
+    string textMessage = check securedEP->readTextMessage();
+    io:println(textMessage);
 }
