@@ -439,7 +439,7 @@
     - title: Service - SSL/TLS
       url: /learn/by-example/http-service-ssl-tls
       active: http-service-ssl-tls
-    - title: Service - Mutual SSL 
+    - title: Service - Mutual SSL
       url: /learn/by-example/http-service-mutual-ssl
       active: http-service-mutual-ssl
     - title: Service - Basic Auth File User Store
@@ -451,25 +451,25 @@
     - title: Service - JWT Auth
       url: /learn/by-example/http-service-jwt-auth
       active: http-service-jwt-auth
-    - title: Service - OAuth2 
+    - title: Service - OAuth2
       url: /learn/by-example/http-service-oauth2
       active: http-service-oauth2
     - title: Client - SSL/TLS
       url: /learn/by-example/http-client-ssl-tls
       active: http-client-ssl-tls
-    - title: Client - Mutual SSL 
+    - title: Client - Mutual SSL
       url: /learn/by-example/http-client-mutual-ssl
       active: http-client-mutual-ssl
     - title: Client - Basic Auth
       url: /learn/by-example/http-client-basic-auth
       active: http-client-basic-auth
-    - title: Client - Bearer Token Auth 
+    - title: Client - Bearer Token Auth
       url: /learn/by-example/http-client-bearer-token-auth
       active: http-client-bearer-token-auth
     - title: Client - Self Signed JWT Auth
       url: /learn/by-example/http-client-self-signed-jwt-auth
       active: http-client-self-signed-jwt-auth
-    - title: Client - OAuth2 Client Credentials Grant Type 
+    - title: Client - OAuth2 Client Credentials Grant Type
       url: /learn/by-example/http-client-oauth2-client-credentials-grant-type
       active: http-client-oauth2-client-credentials-grant-type
     - title: Client - OAuth2 Password Grant Type
@@ -595,6 +595,39 @@
     - title: Listener Functionalities
       url: /learn/by-example/websocket-basic-sample
       active: websocket-basic-sample
+- title: WebSocket Security
+  url: '#'
+  sublinks:
+    - title: Service - SSL/TLS
+      url: /learn/by-example/websocket-service-ssl-tls
+      active: websocket-service-ssl-tls
+    - title: Service - Mutual SSL
+      url: /learn/by-example/websocket-service-mutual-ssl
+      active: websocket-service-mutual-ssl
+    - title: Client - SSL/TLS
+      url: /learn/by-example/websocket-client-ssl-tls
+      active: websocket-client-ssl-tls
+    - title: Client - Mutual SSL
+      url: /learn/by-example/websocket-client-mutual-ssl
+      active: websocket-client-mutual-ssl
+    - title: Client - Basic Auth
+      url: /learn/by-example/websocket-client-basic-auth
+      active: websocket-client-basic-auth
+    - title: Client - Bearer Token Auth
+      url: /learn/by-example/websocket-client-bearer-token-auth
+      active: websocket-client-bearer-token-auth
+    - title: Client - Self Signed JWT Auth
+      url: /learn/by-example/websocket-client-self-signed-jwt-auth
+      active: websocket-client-self-signed-jwt-auth
+    - title: Client - OAuth2 Client Credentials Grant Type
+      url: /learn/by-example/websocket-client-oauth2-client-credentials-grant-type
+      active: websocket-client-oauth2-client-credentials-grant-type
+    - title: Client - OAuth2 Password Grant Type
+      url: /learn/by-example/websocket-client-oauth2-password-grant-type
+      active: websocket-client-oauth2-password-grant-type
+    - title: Client - OAuth2 Refresh Token Grant Type
+      url: /learn/by-example/websocket-client-oauth2-refresh-token-grant-type
+      active: websocket-client-oauth2-refresh-token-grant-type
 - title: WebSub
   url: '#'
   sublinks:  
