@@ -7,5 +7,5 @@
 // <li>can only call functions that are `isolated`</li>
 // </ul>
 // <br></br>
-// Constraints are enforced at compile-time. `isolated` is a part of the function type.
-// Weaker concept than pure function.
+// <p>Constraints are enforced at compile-time. `isolated` is a part of the function type.
+// Weaker concept than pure function.</p>
