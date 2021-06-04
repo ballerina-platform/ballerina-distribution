@@ -13,11 +13,11 @@ public function main() returns error? {
     }
 }
 
-// Called within transaction statement.
+// Called within the transaction statement.
 transactional function doUpdate(Update u) returns error? {
-    // Calls non-transactional function `foo()`.
+    // Calls the `foo()` non-transactional function.
     foo(u);
-    // Calls transactional function `bar()`.
+    // Calls the `bar()` transactional function.
     bar(u);
 
 }

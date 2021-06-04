@@ -43,7 +43,7 @@ public function main() {
     io:println(f);
 
     // x/<para>[0]  - for every element `e` in `x`, first element named `para` in 
-    // the children of `e`.
+    // The children of `e`.
     xml g = x/<book>[0];
     io:println(g);
 

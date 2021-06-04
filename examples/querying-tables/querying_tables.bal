@@ -14,7 +14,7 @@ public function main() {
     ];
 
     // `from` clause iterates `employees` `table`.
-    // The contextually expected type of the `query expression` is an `int[]`.
+    // The contextually-expected type of the `query expression` is an `int[]`.
     int[] salaries = from var {salary} in employees
                      select salary;
 

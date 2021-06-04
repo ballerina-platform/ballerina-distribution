@@ -31,7 +31,7 @@ class LineGenerator {
 
 // This method strips the blank lines.
 function strip(LS lines) returns LS {
-    // Creates a `stream` from query expression.
+    // Creates a `stream` from the query expression.
     LS res = stream from var line in lines
              where line.trim().length() > 0
              select line;

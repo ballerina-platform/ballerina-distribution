@@ -1,11 +1,11 @@
 import ballerina/io;
 
-//`var` says that type of variable from type of expression
+//`var` says that the type of the variable is from the type of expression
 // used to initialize it.
 var x = "str";
 
 function printLines(string[] sv) {
-    // Type inference with `foreach` statement
+    // Type inference with a `foreach` statement.
     foreach var s in sv {
         io:println(s);
     }
@@ -16,10 +16,10 @@ public function main() {
     string[] s = [x, x];
     printLines(s);
 
-    // Infers `x` as type `MyClass`.
+    // Infers `x` as the `MyClass` type.
     var x = new MyClass();
 
-    // Infers class for `new` as `MyClass`.
+    // Infers the class for `new` as `MyClass`.
     MyClass y = new;
 
 }

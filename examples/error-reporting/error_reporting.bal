@@ -27,8 +27,8 @@ public function main() {
 
     io:println(x);
 
-    // An `error` value is returned when the argument is a string
-    // that has a character that is not a digit.
+    // An `error` value is returned when the argument is a string,
+    // which has a character that is not a digit.
     int|error y = parse("1h");
 
     io:println(y);

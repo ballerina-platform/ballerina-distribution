@@ -12,7 +12,7 @@ type Err XErr|YErr;
 Err err = error XErr("Whoops!");
 
 function desc(Err err) returns string {
-    // `is` operator can be used to distinguish distinct subtypes.
+    // The `is` operator can be used to distinguish distinct subtypes.
     return err is XErr ? "X" : "Y";
 
 }

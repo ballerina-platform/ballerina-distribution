@@ -15,7 +15,7 @@ public function main() {
     boolean b4 = ([1,2,3] === [1,2,3]);
     // b5 will be true.
     boolean b5 = (-0.0 == +0.0);
-    // b6 will be false.
+    // `b6` will be false.
     boolean b6 = (-0.0 === +0.0);
 
 }

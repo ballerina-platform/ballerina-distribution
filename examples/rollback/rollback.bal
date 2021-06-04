@@ -13,8 +13,8 @@ public function main() returns error? {
     {updateIndex: 2, stockMnt: 1500},
     {updateIndex: 3, stockMnt: -1000},
     {updateIndex: 4, stockMnt: -2000}];
-    // If error is returned from `transfer` function,
-    // the error is returned from main and exit.
+    // If an error is returned from the `transfer` function,
+    // the error is returned from the `main` and it exits.
     check transfer(updates);
 
 }
@@ -24,12 +24,12 @@ function transfer(Update[] updates) returns error? {
     transaction {
         // Inside the transaction, call `doUpdate` on each `update` record.
         foreach var u in updates {
-            // If an error is returned, `transfer` function returns with
+            // If an error is returned, the `transfer` function returns with
             // that error and the transaction is rolled back.
             check doUpdate(u);
 
         }
-        // `commit` will not be called, because of implicit rollback.
+        // `commit` will not be called,because of an implicit rollback.
         check commit;
 
     }

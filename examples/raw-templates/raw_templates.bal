@@ -28,7 +28,7 @@ public function main() returns error? {
 
 function getOrders(int customerId)
     returns stream<record {| anydata...; |}, sql:Error?> {
-    // In this raw template `customerId` variable is interpolated in the literal.
+    // In this raw template, the `customerId` variable is interpolated in the literal.
     return dbClient->query(`SELECT * FROM orders
                           WHERE customerId = ${customerId}`);
 
