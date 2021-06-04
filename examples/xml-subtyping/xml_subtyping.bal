@@ -9,7 +9,7 @@ xml:Comment comment = xml `<!--This is a comment-->`;
 xml:ProcessingInstruction procInst = xml `<?target data?>`;
 
 public function main() {
-    // An xml value belongs to xml:Text if it consists of a text item or is empty.
+    // An `xml` value belongs to the `xml:Text` if it consists of a text item or is empty.
     xml:Text a = xml ``;
     xml:Text b = xml `Hello World`;
 

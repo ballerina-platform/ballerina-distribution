@@ -26,12 +26,14 @@ public function main() returns error? {
     io:println(typeof g[1]);
     io:println(typeof g[2]);
 
-    // `cloneWithType` or `ensureType` will convert from `int` or `decimal` into user's
+    // `cloneWithType` or `ensureType` will convert from `int` or `decimal` into the user's
     // chosen numeric type.
     float h = check g[2].ensureType();
+
     io:println(h);
 
     // `-0` is an edge case: represented as `float`.
     string i = "-0";
+
     io:println(typeof check i.fromJsonString());
 }

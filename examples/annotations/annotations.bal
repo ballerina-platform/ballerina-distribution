@@ -8,9 +8,10 @@ public function transform(string s) returns string {
    return s.toUpperAscii();
 }
 
-public function main() returns error? {
+public function main() {
     // The `@strand` annotation applies to the `start` action.
     future<int> fut = @strand { thread: "any" } start foo();
+
     int|error x = wait fut;
     io:println(x);
 }
