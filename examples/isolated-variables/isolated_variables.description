@@ -9,5 +9,5 @@
 // <li>transfers of values in and out must use `isolated` expressions</li>
 // </ul>
 // <br></br>
-// The `isolated` functions are allowed to access `isolated` module-level variables,
-// provided they follow the above rules.
+// <p>The `isolated` functions are allowed to access `isolated` module-level variables,
+// provided they follow the above rules.</p>
