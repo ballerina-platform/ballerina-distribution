@@ -1375,19 +1375,22 @@
                 "name": "Distributed Tracing",
                 "url": "tracing",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "disablePlayground": true
             },
             {
                 "name": "Counter-Based Metrics",
                 "url": "counter-metrics",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "disablePlayground": true
             },
             {
                 "name": "Gauge-Based Metrics",
                 "url": "gauge-metrics",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "disablePlayground": true
             }
         ]
     },
