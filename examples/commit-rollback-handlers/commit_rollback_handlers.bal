@@ -9,7 +9,7 @@ public function main() returns error? {
 
 transactional function update() returns error? {
     check updateDatabase();
-    //  Registers a commit handler to be invoked when `commit` is executed.
+    //  Registers a commit handler to be invoked when the `commit` is executed.
     'transaction:onCommit(sendEmail);
     'transaction:onRollback(logError);
 

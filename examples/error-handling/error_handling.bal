@@ -1,12 +1,12 @@
 import ballerina/io;
 
-// Convert bytes to a string and then to an int.
+// Converts bytes to a string and then to an int.
 function intFromBytes(byte[] bytes) returns int|error {
 
     string|error ret = string:fromBytes(bytes);
 
     // The `is` operator can be used to distinguish errors
-    // from others value.
+    // from other values.
     if ret is error {
 
         return ret;

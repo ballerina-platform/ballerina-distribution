@@ -2,7 +2,7 @@ import ballerina/io;
 
 // Parses a string to convert to an integer value.
 // This function may return error values.
-// The return type is a union with error.
+// The return type is a union with the error.
 function parse(string s) returns int|error {
 
     int n = 0;
@@ -10,7 +10,7 @@ function parse(string s) returns int|error {
     foreach int cp in cps {
         int p = cp - 0x30;
         if p < 0 || p > 9 {
-            // If `p` is not a digit construct and return 
+            // If `p` is not a digit construct, it returns
             // an error value with "not a digit" as the error message.
             return error("not a digit");
 
@@ -21,8 +21,8 @@ function parse(string s) returns int|error {
 }
 
 public function main() {
-    // An `int` value is returned when the argument is a string
-    // that can be successfully parsed as an integer.
+    // An `int` value is returned when the argument is a string,
+    // which can be parsed successfully  as an integer.
     int|error x = parse("123");
 
     io:println(x);

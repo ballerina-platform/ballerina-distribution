@@ -9,12 +9,12 @@ public function main() returns error? {
     json j = {x: 1.0, y: 2.0};
 
     // Argument is a `typedesc` value.
-    // Static return type depends on the argument.
+    // The static return type depends on the argument.
     Coord c = check j.cloneWithType(Coord);
 
     io:println(c.x);
 
-    // Argument defaulted from context.
+    // Argument defaulted from the context.
     Coord d = check j.cloneWithType();
 
     io:println(d.x);
