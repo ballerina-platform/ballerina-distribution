@@ -9,7 +9,7 @@ public function main() returns error? {
         check bar();
 
         if !isOK() {
-            // explicitly fail with an `error`.
+            // Explicitly fails with an `error`.
             fail error("not OK");
 
         }
