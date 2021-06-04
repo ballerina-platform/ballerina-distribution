@@ -31,7 +31,7 @@ function bar() returns error? {
 }
 
 function isOK() returns boolean {
-// Returns `false`.
+    // Returns `false`.
     return false;
 
 }
