@@ -8,5 +8,6 @@ public function main() returns error? {
     // Remote method calls use `->` syntax. This enables sequence diagram view.
     http:Response resp =
                     check httpClient->get("/orgs/ballerina-platform/repos");
+
     io:println(resp.statusCode);
 }

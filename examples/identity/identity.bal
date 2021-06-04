@@ -17,4 +17,5 @@ public function main() {
     boolean b5 = (-0.0 == +0.0);
     // b6 will be false.
     boolean b6 = (-0.0 === +0.0);
+
 }

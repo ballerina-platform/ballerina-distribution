@@ -2,6 +2,7 @@ import ballerina/io;
 
 // Defines a class called `File`.
 class File {
+
     string path;
     string contents;
     // `init()` method is used to initialize the `object`
@@ -10,10 +11,12 @@ class File {
         self.path = p;
         self.contents = check c.ensureType(string);
     }
+
 }
 
 public function main() returns error? {
     // `new` returns the newly constructed `File` object.
     File f = check new File("test.txt", "Hello World");
+
     io:println(f.contents);
 }

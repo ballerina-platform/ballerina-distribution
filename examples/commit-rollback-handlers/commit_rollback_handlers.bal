@@ -12,6 +12,7 @@ transactional function update() returns error? {
     //  Registers a commit handler to be invoked when `commit` is executed.
     'transaction:onCommit(sendEmail);
     'transaction:onRollback(logError);
+
 }
 
 function updateDatabase() returns error? {

@@ -1,4 +1,4 @@
-// Define the `Update` record type.
+// Defines the `Update` record type.
 type Update record {
     int updateIndex;
     int stockMnt;
@@ -6,7 +6,7 @@ type Update record {
 
 public function main() returns error? {
 
-    // Create an array of `Update` records.
+    // Creates an array of `Update` records.
     Update[] updates =
     [{updateIndex: 0, stockMnt: 2000},
     {updateIndex: 1, stockMnt: -1000},
@@ -16,6 +16,7 @@ public function main() returns error? {
     // If error is returned from `transfer` function,
     // the error is returned from main and exit.
     check transfer(updates);
+
 }
 
 function transfer(Update[] updates) returns error? {
@@ -26,10 +27,11 @@ function transfer(Update[] updates) returns error? {
             // If an error is returned, `transfer` function returns with
             // that error and the transaction is rolled back.
             check doUpdate(u);
-        }
 
+        }
         // `commit` will not be called, because of implicit rollback.
         check commit;
+
     }
 }
 
@@ -38,4 +40,5 @@ function doUpdate(Update u) returns error? {
     if (u.stockMnt < -1500) {
         return error("Not enough Stocks: ", stockIndex = u.updateIndex);
     }
+
 }

@@ -9,7 +9,8 @@ function intFromBytes(byte[] bytes) returns int|error {
     // If not, the returned string value is used as the 
     // value of the `str` variable.
     string str = check string:fromBytes(bytes);
-    
+
+
     return int:fromString(str);
 }
 

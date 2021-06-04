@@ -17,6 +17,7 @@ public function main() {
     // The contextually expected type of the `query expression` is an `int[]`.
     int[] salaries = from var {salary} in employees
                      select salary;
-                     
+
+
     io:println(salaries);
 }

@@ -31,4 +31,5 @@ function getOrders(int customerId)
     // In this raw template `customerId` variable is interpolated in the literal.
     return dbClient->query(`SELECT * FROM orders
                           WHERE customerId = ${customerId}`);
+
 }
