@@ -668,10 +668,6 @@ task testExamples() {
 
     ext.buildBBE = { bbe ->
 
-        if (bbe.verifyBuild == false) {
-            return false
-        }
-
         def exitVal
         def additionalBuildParams = ""
         println "Building example '${bbe.url}'"
@@ -696,10 +692,6 @@ task testExamples() {
     }
 
     ext.outputVerification = { bbe ->
-
-        if (bbe.verifyOutput == false) {
-            return false
-        }
 
         def directoryPath = "${distPath}/${bbe.url}"
         File fileReference
@@ -851,19 +843,24 @@ task testExamples() {
         def failedBuildExamples = []
         def failOutputVerificationExamples = []
         bbeList.each { bbe ->
-            boolean outputVerificationFailFlag = outputVerification(bbe)
-            if (outputVerificationFailFlag) {
-                failOutputVerificationExamples.add(bbe.url)
+            if (bbe.verifyOutput) {
+                boolean outputVerificationFailFlag = outputVerification(bbe)
+                if (outputVerificationFailFlag) {
+                    failOutputVerificationExamples.add(bbe.url)
+                }
             }
-            File tomlFile = new File("${distPath}/${bbe.url}/Ballerina.toml")
-            if (!tomlFile.exists()) {
-                prepareProject(bbe.url)
+
+            if (bbe.verifyBuild) {
+                File tomlFile = new File("${distPath}/${bbe.url}/Ballerina.toml")
+                if (!tomlFile.exists()) {
+                    prepareProject(bbe.url)
+                }
+                boolean buildFailFlag = buildBBE(bbe)
+                if (buildFailFlag) {
+                    failedBuildExamples.add(bbe.url)
+                }
+                delete tomlFile
             }
-            boolean buildFailFlag = buildBBE(bbe)
-            if (buildFailFlag) {
-                failedBuildExamples.add(bbe.url)
-            }
-            delete tomlFile
         }
 
         boolean buildFailure = false
