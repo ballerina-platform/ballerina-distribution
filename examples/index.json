@@ -8,14 +8,16 @@
                 "name": "Hello World Main",
                 "url": "hello-world",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Hello World Service",
                 "url": "hello-world-service",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -28,237 +30,276 @@
                 "name": "Programs and Modules",
                 "url": "programs-and-modules",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Variables and Types",
                 "url": "variables-and-types",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Functions",
                 "url": "functions",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Identifiers",
                 "url": "identifiers",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Integers",
                 "url": "integers",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Booleans and Conditionals",
                 "url": "booleans",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Floating Point Numbers",
                 "url": "floating-point-numbers",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Nil",
                 "url": "nil",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Strings",
                 "url": "strings",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Langlib Functions",
                 "url": "langlib-functions",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Arrays",
                 "url": "arrays",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Foreach Statement",
                 "url": "foreach-statement",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "While Statement",
                 "url": "while-statement",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Binary Data",
                 "url": "binary-data",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Maps",
                 "url": "maps",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Type Definitions",
                 "url": "type-definitions",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Records",
                 "url": "records",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Structural Typing",
                 "url": "structural-typing",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Unions",
                 "url": "unions",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Error Reporting",
                 "url": "error-reporting",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Error Handling",
                 "url": "error-handling",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Check Expression",
                 "url": "check-expression",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Error Subtyping",
                 "url": "error-subtyping",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Panics",
                 "url": "panics",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Anydata Type",
                 "url": "anydata-type",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Ignoring Return Values and Errors",
                 "url": "ignoring-return-values-and-errors",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Covariance",
                 "url": "covariance",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Object",
                 "url": "object",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Defining Classes",
                 "url": "defining-classes",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Init Return Type",
                 "url": "init-return-type",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Identity",
                 "url": "identity",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Const and Final ",
                 "url": "const-and-final",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Enumerations",
                 "url": "enumerations",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Match Statement",
                 "url": "match-statement",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Type Inference ",
                 "url": "type-inference",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Function Values",
                 "url": "function-values",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Asynchronous Function Calls",
                 "url": "asynchronous-function-calls",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Annotations",
                 "url": "annotations",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Documentation",
                 "url": "documentation",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -271,48 +312,55 @@
                 "name": "Consuming Services: Client Objects",
                 "url": "consuming-services",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Providing Services",
                 "url": "providing-services",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Module Lifecycle",
                 "url": "module-lifecycle",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Service Declaration",
                 "url": "service-declaration",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Resource Methods",
                 "url": "resource-methods",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Hierarchical Resources",
                 "url": "hierarchical-resources",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Resource Path Parameters",
                 "url": "resource-path-parameters",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -325,233 +373,271 @@
                 "name": "Decimal Type",
                 "url": "decimal-type",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Immutability",
                 "url": "immutability",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Any Type",
                 "url": "any-type",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Configurable Variables",
                 "url": "configurable-variables",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Optional Fields",
                 "url": "optional-fields",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Open Records",
                 "url": "open-records",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Controlling Openness",
                 "url": "controlling-openness",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "JSON Type",
                 "url": "json-type",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Working directly with JSON",
                 "url": "working-directly-with-json",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Match Statement With Maps",
                 "url": "match-statement-with-maps",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Converting From User-Defined Type to JSON",
                 "url": "converting-from-user-defined-type-to-json",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Converting From JSON to User-Defined Type",
                 "url": "converting-from-json-to-user-defined-type",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Converting to User-Defined Type",
                 "url": "converting-to-user-defined-type",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Resource Method Typing",
                 "url": "resource-method-typing",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "JSON Numbers",
                 "url": "json-numbers",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Query Expressions",
                 "url": "query-expressions",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Destructuring Records",
                 "url": "destructuring-records",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Let Clause",
                 "url": "let-clause",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Ordering",
                 "url": "ordering",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Limit Clause",
                 "url": "limit-clause",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Table Syntax",
                 "url": "table-syntax",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Multiple Key Fields",
                 "url": "multiple-key-fields",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Structured Keys",
                 "url": "structured-keys",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Querying Tables",
                 "url": "querying-tables",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Creating Tables With Query",
                 "url": "creating-tables-with-query",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Join Clause",
                 "url": "join-clause",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Stream Type",
                 "url": "stream-type",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Querying With Streams",
                 "url": "querying-with-streams",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Backtick Templates",
                 "url": "backtick-templates",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Raw Templates",
                 "url": "raw-templates",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "XML Data Model",
                 "url": "xml-data-model",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "XML Templates",
                 "url": "xml-templates",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "XML Operations",
                 "url": "xml-operations",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "XML Subtyping",
                 "url": "xml-subtyping",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "XML Navigation ",
                 "url": "xml-navigation",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "XML Templates and Query",
                 "url": "xml-templates-and-query",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "XML Namespaces",
                 "url": "xml-namespaces",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "XMLNS Declarations",
                 "url": "xmlns-declarations",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -564,61 +650,71 @@
                 "name": "Named Workers",
                 "url": "named-workers",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Sequence Diagrams",
                 "url": "sequence-diagrams",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Waiting for Workers",
                 "url": "waiting-for-workers",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Strands",
                 "url": "strands",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Named Worker Return Values",
                 "url": "named-worker-return-values",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Alternate Wait",
                 "url": "alternate-wait",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Multiple Wait",
                 "url": "multiple-wait",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Named Workers and Futures",
                 "url": "named-workers-and-futures",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Inter-Worker Message Passing",
                 "url": "inter-worker-message-passing",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Inter-Worker Failure Propagation",
                 "url": "inter-worker-failure-propagation",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -631,43 +727,50 @@
                 "name": "Transaction Statement",
                 "url": "transaction-statement",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Check Semantics",
                 "url": "check-semantics",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Rollback",
                 "url": "rollback",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Retry Transaction Statement",
                 "url": "retry-transaction-statement",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Transactional Qualifier",
                 "url": "transactional-qualifier",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Transactional Named Workers",
                 "url": "transactional-named-workers",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Commit/Rollback Handlers",
                 "url": "commit-rollback-handlers",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -680,55 +783,64 @@
                 "name": "Lock Statement",
                 "url": "lock-statement",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Isolated Functions",
                 "url": "isolated-functions",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Readonly Type",
                 "url": "readonly-type",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Readonly and Isolated",
                 "url": "readonly-and-isolated",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Combining Isolated Functions and Lock",
                 "url": "combining-isolated-functions-and-lock",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Isolated Variables",
                 "url": "isolated-variables",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Isolated Methods",
                 "url": "isolated-methods",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Isolated Objects",
                 "url": "isolated-objects",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Inferring Isolated",
                 "url": "inferring-isolated",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -742,70 +854,80 @@
                 "url": "testerina-assertions",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Before and After Test",
                 "url": "testerina-before-and-after-test",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Before and After Each",
                 "url": "testerina-before-and-after-each",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Before and After Groups",
                 "url": "testerina-before-and-after-groups",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Before and After Suite",
                 "url": "testerina-before-and-after-suite",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Data Driven Tests",
                 "url": "testerina-data-driven-tests",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Guarantee Test Execution Order",
                 "url": "testerina-guarantee-test-execution-order",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Group Tests",
                 "url": "testerina-group-tests",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Function Mocking",
                 "url": "testerina-mocking-functions",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Object Mocking",
                 "url": "testerina-mocking-objects",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -819,21 +941,24 @@
                 "url": "c2c-deployment",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Azure Functions",
                 "url": "azure-functions-deployment",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "AWS Lambda",
                 "url": "aws-lambda-deployment",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -847,56 +972,64 @@
                 "url": "http-absolute-path-and-path",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Service Data Binding",
                 "url": "http-data-binding",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Default Resource",
                 "url": "http-default-resource",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Path Parameter",
                 "url": "http-path-param",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Query Parameter",
                 "url": "http-query-parameter",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Matrix Parameter",
                 "url": "http-matrix-param",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Typed Resource Responses",
                 "url": "http-resource-returns",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Restrict By Media Type",
                 "url": "http-restrict-by-media-type",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -909,14 +1042,16 @@
                 "name": "Client",
                 "url": "http-client-endpoint",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Client Data Binding",
                 "url": "http-client-data-binding",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -930,98 +1065,112 @@
                 "url": "http-service-ssl-tls",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Service - Mutual SSL",
                 "url": "http-service-mutual-ssl",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Service - Basic Auth File User Store",
                 "url": "http-service-basic-auth-file-user-store",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Service - Basic Auth LDAP User Store",
                 "url": "http-service-basic-auth-ldap-user-store",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Service - JWT Auth",
                 "url": "http-service-jwt-auth",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Service - OAuth2",
                 "url": "http-service-oauth2",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Client - SSL/TLS",
                 "url": "http-client-ssl-tls",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Client - Mutual SSL",
                 "url": "http-client-mutual-ssl",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Client - Basic Auth",
                 "url": "http-client-basic-auth",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Client - Bearer Token Auth",
                 "url": "http-client-bearer-token-auth",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Client - Self Signed JWT Auth",
                 "url": "http-client-self-signed-jwt-auth",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Client - OAuth2 Client Credentials Grant Type",
                 "url": "http-client-oauth2-client-credentials-grant-type",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Client - OAuth2 Password Grant Type",
                 "url": "http-client-oauth2-password-grant-type",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Client - OAuth2 Refresh Token Grant Type",
                 "url": "http-client-oauth2-refresh-token-grant-type",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1035,70 +1184,80 @@
                 "url": "http-redirects",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "CORS",
                 "url": "http-cors",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "100 Continue",
                 "url": "http-100-continue",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Streaming",
                 "url": "http-streaming",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Compression",
                 "url": "http-compression",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Cookies",
                 "url": "http-cookies",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Chunking",
                 "url": "http-disable-chunking",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Response With Multiparts",
                 "url": "http-response-with-multiparts",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Request With Multiparts",
                 "url": "http-request-with-multiparts",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Passthrough",
                 "url": "http-passthrough",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1112,14 +1271,16 @@
                 "url": "http-1-1-to-2-0-protocol-switch",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "HTTP 2.0 Server Push",
                 "url": "http-2-0-server-push",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1133,35 +1294,40 @@
                 "url": "graphql-hello-world",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Returning Record Values",
                 "url": "graphql-returning-record-values",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Hierarchical Resource Paths",
                 "url": "graphql-hierarchical-resource-paths",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Returning Service Objects",
                 "url": "graphql-returning-service-objects",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Input Types",
                 "url": "graphql-input-types",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1175,42 +1341,48 @@
                 "url": "graphql-service-ssl-tls",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Service - Mutual SSL",
                 "url": "graphql-service-mutual-ssl",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Service - Basic Auth File User Store",
                 "url": "graphql-service-basic-auth-file-user-store",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Service - Basic Auth LDAP User Store",
                 "url": "graphql-service-basic-auth-ldap-user-store",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Service - JWT Auth",
                 "url": "graphql-service-jwt-auth",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Service - OAuth2",
                 "url": "graphql-service-oauth2",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1223,20 +1395,23 @@
                 "name": "Handle Text Messages with Client",
                 "url": "websocket-text-client",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Handle Binary Messages with Client",
                 "url": "websocket-binary-client",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Listener Functionalities",
                 "url": "websocket-basic-sample",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1250,7 +1425,8 @@
                 "url": "websub-webhook-sample",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1264,35 +1440,40 @@
                 "url": "http-circuit-breaker",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Load Balancer",
                 "url": "http-load-balancer",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Failover",
                 "url": "http-failover",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Retry",
                 "url": "http-retry",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Timeout",
                 "url": "http-timeout",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1306,7 +1487,8 @@
                 "url": "dynamic-listener",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1320,49 +1502,56 @@
                 "url": "grpc-simple",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Simple RPC With Headers",
                 "url": "grpc-simple-with-headers",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Secured Simple RPC",
                 "url": "grpc-secured-simple",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Server Streaming RPC",
                 "url": "grpc-server-streaming",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Client Streaming RPC",
                 "url": "grpc-client-streaming",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Bidirectional Streaming RPC",
                 "url": "grpc-bidirectional-streaming",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Proto To Ballerina",
                 "url": "proto-to-ballerina",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1376,21 +1565,24 @@
                 "url": "tracing",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Counter-Based Metrics",
                 "url": "counter-metrics",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Gauge-Based Metrics",
                 "url": "gauge-metrics",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1404,14 +1596,16 @@
                 "url": "nats-basic-pub-sub",
                 "verifyBuild": "false",
                 "verifyOutput": "false",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Request/Reply",
                 "url": "nats-basic-request-reply",
                 "verifyBuild": "false",
                 "verifyOutput": "false",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1425,28 +1619,32 @@
                 "url": "nats-streaming-pub-sub",
                 "verifyBuild": "false",
                 "verifyOutput": "false",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Queue Groups",
                 "url": "nats-streaming-queue-group",
                 "verifyBuild": "false",
                 "verifyOutput": "false",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Durable Subscriptions",
                 "url": "nats-streaming-durable-subscriptions",
                 "verifyBuild": "false",
                 "verifyOutput": "false",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Historical Message Replay",
                 "url": "nats-streaming-start-position",
                 "verifyBuild": "false",
                 "verifyOutput": "false",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1460,49 +1658,56 @@
                 "url": "kafka-producer",
                 "verifyBuild": "false",
                 "verifyOutput": "false",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Consumer Service",
                 "url": "kafka-consumer-service",
                 "verifyBuild": "false",
                 "verifyOutput": "false",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Consumer Client",
                 "url": "kafka-consumer-client",
                 "verifyBuild": "false",
                 "verifyOutput": "false",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Transactional Producer",
                 "url": "kafka-producer-transactional",
                 "verifyBuild": "false",
                 "verifyOutput": "false",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Consumer Groups",
                 "url": "kafka-consumer-group-service",
                 "verifyBuild": "false",
                 "verifyOutput": "false",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "SASL Authentication - Consumer",
                 "url": "kafka-authentication-sasl-plain-consumer",
                 "verifyBuild": "false",
                 "verifyOutput": "false",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "SASL Authentication - Producer",
                 "url": "kafka-authentication-sasl-plain-producer",
                 "verifyBuild": "false",
                 "verifyOutput": "false",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1516,35 +1721,40 @@
                 "url": "rabbitmq-producer",
                 "verifyBuild": "false",
                 "verifyOutput": "false",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Consumer",
                 "url": "rabbitmq-consumer",
                 "verifyBuild": "false",
                 "verifyOutput": "false",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Client Acknowledgements",
                 "url": "rabbitmq-consumer-with-client-acknowledgement",
                 "verifyBuild": "false",
                 "verifyOutput": "false",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Transactional Producer",
                 "url": "rabbitmq-transaction-producer",
                 "verifyBuild": "false",
                 "verifyOutput": "false",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "SASL Authentication - Consumer",
                 "url": "rabbitmq-transaction-consumer",
                 "verifyBuild": "false",
                 "verifyOutput": "false",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1558,21 +1768,24 @@
                 "url": "tcp-client",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "TCP Listener",
                 "url": "tcp-listener",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "TCP Transport Security",
                 "url": "tcp-transport-security",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1586,21 +1799,24 @@
                 "url": "udp-client",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "UDP Connection-Oriented Client",
                 "url": "udp-connect-client",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "UDP Listener",
                 "url": "udp-listener",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1614,21 +1830,24 @@
                 "url": "send-email",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Receive Emails Using a Client",
                 "url": "receive-email-using-client",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Receive Emails Using a Listener",
                 "url": "receive-email-using-listener",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1642,42 +1861,48 @@
                 "url": "mysql-query-operation",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Query With Complex Types",
                 "url": "mysql-complex-type-queries",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "DML and DDL Operation",
                 "url": "mysql-execute-operation",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Batch Execute",
                 "url": "mysql-batch-execute-operation",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Atomic Batch Execute",
                 "url": "mysql-atomic-batch-execute-operation",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Call Stored Procedures",
                 "url": "mysql-call-stored-procedures",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1691,35 +1916,40 @@
                 "url": "jdbc-query-operation",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Query With Complex Types",
                 "url": "jdbc-complex-type-queries",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "DML and DDL Operation",
                 "url": "jdbc-execute-operation",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Batch Execute",
                 "url": "jdbc-batch-execute-operation",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Atomic Batch Execute",
                 "url": "jdbc-atomic-batch-execute-operation",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1733,31 +1963,36 @@
                 "url": "io-bytes",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Read/Write Strings",
                 "url": "io-strings",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Read/Write CSV",
                 "url": "io-csv",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Read/Write JSON",
                 "url": "io-json",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Read/Write XML",
                 "url": "io-xml",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1771,14 +2006,16 @@
                 "url": "security-crypto",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "JWT Issue/Validate",
                 "url": "security-jwt-issue-validate",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1791,7 +2028,8 @@
                 "name": "URL Encode/Decode Operations",
                 "url": "url-encode-decode",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1804,19 +2042,22 @@
                 "name": "UTC Time",
                 "url": "time-utc",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Time with Zone Offset",
                 "url": "time-utc-and-civil",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Time formatting/Parsing",
                 "url": "time-formatting-and-parsing",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1829,13 +2070,15 @@
                 "name": "Cache Basics",
                 "url": "cache-basics",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Cache Invalidation",
                 "url": "cache-invalidation",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1848,20 +2091,23 @@
                 "name": "Logging",
                 "url": "logging",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Logging with Context",
                 "url": "logging-with-context",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Configure Logging",
                 "url": "logging-configuration",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1874,32 +2120,37 @@
                 "name": "File Paths",
                 "url": "filepaths",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Directories",
                 "url": "directories",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Files",
                 "url": "files",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Temp Files and Directories",
                 "url": "temp-files-directories",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Directory Listener",
                 "url": "directory-listener",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "disablePlayground": true
+                "disablePlayground": true,
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1912,7 +2163,8 @@
                 "name": "Random Numbers",
                 "url": "random-numbers",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1925,19 +2177,22 @@
                 "name": "Schedule Job recurrence by Frequency",
                 "url": "task-frequency-job-execution",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Schedule one time job",
                 "url": "task-one-time-job-execution",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "Manage Scheduled Jobs",
                 "url": "manage-scheduled-jobs",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1950,13 +2205,15 @@
                 "name": "Generate UUID",
                 "url": "uuid-generation",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             },
             {
                 "name": "UUID Operations",
                 "url": "uuid-operations",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1969,7 +2226,8 @@
                 "name": "XSLT Transformation",
                 "url": "xslt-transformation",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1982,7 +2240,8 @@
                 "name": "Regular Expressions",
                 "url": "regular-expressions",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -1995,7 +2254,8 @@
                 "name": "Environment Variables",
                 "url": "environment-variables",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             }
         ]
     },
@@ -2008,7 +2268,8 @@
                 "name": "XML JSON Conversion",
                 "url": "xml-json-conversion",
                 "verifyBuild": "true",
-                "verifyOutput": "true"
+                "verifyOutput": "true",
+                "permalink": "/learn/by-example/"
             }
         ]
     }
