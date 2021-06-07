@@ -674,7 +674,7 @@ task testExamples() {
 
         def exitVal
         def additionalBuildParams = ""
-        println "Building example '${bbe.name}'"
+        println "Building example '${bbe.url}'"
         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
             //TODO: Need to verify with windows
             exitVal = exec {
@@ -752,7 +752,7 @@ task testExamples() {
             curlCommands.each {
                 fileReference << "${it}\n"
             }
-            println "Verify output '${bbe.name}'"
+            println "Verify output '${bbe.url}'"
             def scriptPath = "${project.rootDir}/ballerina/lib"
             def exitVal
             if (Os.isFamily(Os.FAMILY_WINDOWS)) {
@@ -794,7 +794,7 @@ task testExamples() {
             def cmdOutAry = []
             def errOut = new ByteArrayOutputStream()
             new ByteArrayOutputStream().withStream { os ->
-                println "Output Verification '${bbe.name}'"
+                println "Output Verification '${bbe.url}'"
                 if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                     exec {
                         workingDir "${directoryPath}"
