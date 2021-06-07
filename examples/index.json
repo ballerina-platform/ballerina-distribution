@@ -500,8 +500,8 @@
             {
                 "name": "Raw Templates",
                 "url": "raw-templates",
-                "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyBuild": false,
+                "verifyOutput": false,
                 "disablePlayground": true
             },
             {
@@ -1640,43 +1640,43 @@
             {
                 "name": "Simple Query",
                 "url": "mysql-query-operation",
-                "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyBuild": false,
+                "verifyOutput": false,
                 "disablePlayground": true
             },
             {
                 "name": "Query With Complex Types",
                 "url": "mysql-complex-type-queries",
-                "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyBuild": false,
+                "verifyOutput": false,
                 "disablePlayground": true
             },
             {
                 "name": "DML and DDL Operation",
                 "url": "mysql-execute-operation",
-                "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyBuild": false,
+                "verifyOutput": false,
                 "disablePlayground": true
             },
             {
                 "name": "Batch Execute",
                 "url": "mysql-batch-execute-operation",
-                "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyBuild": false,
+                "verifyOutput": false,
                 "disablePlayground": true
             },
             {
                 "name": "Atomic Batch Execute",
                 "url": "mysql-atomic-batch-execute-operation",
-                "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyBuild": false,
+                "verifyOutput": false,
                 "disablePlayground": true
             },
             {
                 "name": "Call Stored Procedures",
                 "url": "mysql-call-stored-procedures",
-                "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyBuild": false,
+                "verifyOutput": false,
                 "disablePlayground": true
             }
         ]
@@ -1689,36 +1689,36 @@
             {
                 "name": "Simple Query",
                 "url": "jdbc-query-operation",
-                "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyBuild": false,
+                "verifyOutput": false,
                 "disablePlayground": true
             },
             {
                 "name": "Query With Complex Types",
                 "url": "jdbc-complex-type-queries",
-                "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyBuild": false,
+                "verifyOutput": false,
                 "disablePlayground": true
             },
             {
                 "name": "DML and DDL Operation",
                 "url": "jdbc-execute-operation",
-                "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyBuild": false,
+                "verifyOutput": false,
                 "disablePlayground": true
             },
             {
                 "name": "Batch Execute",
                 "url": "jdbc-batch-execute-operation",
-                "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyBuild": false,
+                "verifyOutput": false,
                 "disablePlayground": true
             },
             {
                 "name": "Atomic Batch Execute",
                 "url": "jdbc-atomic-batch-execute-operation",
-                "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyBuild": false,
+                "verifyOutput": false,
                 "disablePlayground": true
             }
         ]
