@@ -686,35 +686,35 @@
                 "url": "alternate-wait",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/alternate-wait"
             },
             {
                 "name": "Multiple Wait",
                 "url": "multiple-wait",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/multiple-wait"
             },
             {
                 "name": "Named Workers and Futures",
                 "url": "named-workers-and-futures",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/named-workers-and-futures"
             },
             {
                 "name": "Inter-Worker Message Passing",
                 "url": "inter-worker-message-passing",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/inter-worker-message-passing"
             },
             {
                 "name": "Inter-Worker Failure Propagation",
                 "url": "inter-worker-failure-propagation",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/inter-worker-failure-propagation"
             }
         ]
     },
@@ -728,49 +728,49 @@
                 "url": "transaction-statement",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/transaction-statement"
             },
             {
                 "name": "Check Semantics",
                 "url": "check-semantics",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/check-semantics"
             },
             {
                 "name": "Rollback",
                 "url": "rollback",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/rollback"
             },
             {
                 "name": "Retry Transaction Statement",
                 "url": "retry-transaction-statement",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/retry-transaction-statement"
             },
             {
                 "name": "Transactional Qualifier",
                 "url": "transactional-qualifier",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/transactional-qualifier"
             },
             {
                 "name": "Transactional Named Workers",
                 "url": "transactional-named-workers",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/transactional-named-workers"
             },
             {
                 "name": "Commit/Rollback Handlers",
                 "url": "commit-rollback-handlers",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/commit-rollback-handlers"
             }
         ]
     },
@@ -784,63 +784,63 @@
                 "url": "lock-statement",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/lock-statement"
             },
             {
                 "name": "Isolated Functions",
                 "url": "isolated-functions",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/isolated-functions"
             },
             {
                 "name": "Readonly Type",
                 "url": "readonly-type",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/readonly-type"
             },
             {
                 "name": "Readonly and Isolated",
                 "url": "readonly-and-isolated",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/readonly-and-isolated"
             },
             {
                 "name": "Combining Isolated Functions and Lock",
                 "url": "combining-isolated-functions-and-lock",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/combining-isolated-functions-and-lock"
             },
             {
                 "name": "Isolated Variables",
                 "url": "isolated-variables",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/isolated-variables"
             },
             {
                 "name": "Isolated Methods",
                 "url": "isolated-methods",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/isolated-methods"
             },
             {
                 "name": "Isolated Objects",
                 "url": "isolated-objects",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/isolated-objects"
             },
             {
                 "name": "Inferring Isolated",
                 "url": "inferring-isolated",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/inferring-isolated"
             }
         ]
     },
@@ -855,7 +855,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/testerina-assertions"
             },
             {
                 "name": "Before and After Test",
@@ -863,7 +863,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/testerina-before-and-after-test"
             },
             {
                 "name": "Before and After Each",
@@ -871,7 +871,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/testerina-before-and-after-each"
             },
             {
                 "name": "Before and After Groups",
@@ -879,7 +879,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/testerina-before-and-after-groups"
             },
             {
                 "name": "Before and After Suite",
@@ -887,7 +887,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/testerina-before-and-after-suite"
             },
             {
                 "name": "Data Driven Tests",
@@ -895,7 +895,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/testerina-data-driven-tests"
             },
             {
                 "name": "Guarantee Test Execution Order",
@@ -903,7 +903,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/testerina-guarantee-test-execution-order"
             },
             {
                 "name": "Group Tests",
@@ -911,7 +911,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/testerina-group-tests"
             },
             {
                 "name": "Function Mocking",
@@ -919,7 +919,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/testerina-mocking-functions"
             },
             {
                 "name": "Object Mocking",
@@ -927,7 +927,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/testerina-mocking-objects"
             }
         ]
     },
@@ -942,7 +942,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/c2c-deployment"
             },
             {
                 "name": "Azure Functions",
@@ -950,7 +950,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/azure-functions-deployment"
             },
             {
                 "name": "AWS Lambda",
@@ -958,7 +958,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/aws-lambda-deployment"
             }
         ]
     },
@@ -973,7 +973,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-absolute-path-and-path"
             },
             {
                 "name": "Service Data Binding",
@@ -981,7 +981,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-data-binding"
             },
             {
                 "name": "Default Resource",
@@ -989,7 +989,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-default-resource"
             },
             {
                 "name": "Path Parameter",
@@ -997,7 +997,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-path-param"
             },
             {
                 "name": "Query Parameter",
@@ -1005,7 +1005,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-query-parameter"
             },
             {
                 "name": "Matrix Parameter",
@@ -1013,7 +1013,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-matrix-param"
             },
             {
                 "name": "Typed Resource Responses",
@@ -1021,7 +1021,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-resource-returns"
             },
             {
                 "name": "Restrict By Media Type",
@@ -1029,7 +1029,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-restrict-by-media-type"
             }
         ]
     },
@@ -1043,7 +1043,7 @@
                 "url": "http-client-endpoint",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-client-endpoint"
             },
             {
                 "name": "Client Data Binding",
@@ -1051,7 +1051,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-client-data-binding"
             }
         ]
     },
@@ -1066,7 +1066,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-service-ssl-tls"
             },
             {
                 "name": "Service - Mutual SSL",
@@ -1074,7 +1074,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-service-mutual-ssl"
             },
             {
                 "name": "Service - Basic Auth File User Store",
@@ -1082,7 +1082,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-service-basic-auth-file-user-store"
             },
             {
                 "name": "Service - Basic Auth LDAP User Store",
@@ -1090,7 +1090,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-service-basic-auth-ldap-user-store"
             },
             {
                 "name": "Service - JWT Auth",
@@ -1098,7 +1098,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-service-jwt-auth"
             },
             {
                 "name": "Service - OAuth2",
@@ -1106,7 +1106,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-service-oauth2"
             },
             {
                 "name": "Client - SSL/TLS",
@@ -1114,7 +1114,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-client-ssl-tls"
             },
             {
                 "name": "Client - Mutual SSL",
@@ -1122,7 +1122,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-client-mutual-ssl"
             },
             {
                 "name": "Client - Basic Auth",
@@ -1130,7 +1130,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-client-basic-auth"
             },
             {
                 "name": "Client - Bearer Token Auth",
@@ -1138,7 +1138,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-client-bearer-token-auth"
             },
             {
                 "name": "Client - Self Signed JWT Auth",
@@ -1146,7 +1146,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-client-self-signed-jwt-auth"
             },
             {
                 "name": "Client - OAuth2 Client Credentials Grant Type",
@@ -1154,7 +1154,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-client-oauth2-client-credentials-grant-type"
             },
             {
                 "name": "Client - OAuth2 Password Grant Type",
@@ -1162,7 +1162,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-client-oauth2-password-grant-type"
             },
             {
                 "name": "Client - OAuth2 Refresh Token Grant Type",
@@ -1170,7 +1170,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-client-oauth2-refresh-token-grant-type"
             }
         ]
     },
@@ -1185,7 +1185,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-redirects"
             },
             {
                 "name": "CORS",
@@ -1193,7 +1193,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-cors"
             },
             {
                 "name": "100 Continue",
@@ -1201,7 +1201,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-100-continue"
             },
             {
                 "name": "Streaming",
@@ -1209,7 +1209,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-streaming"
             },
             {
                 "name": "Compression",
@@ -1217,7 +1217,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-compression"
             },
             {
                 "name": "Cookies",
@@ -1225,7 +1225,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-cookies"
             },
             {
                 "name": "Chunking",
@@ -1233,7 +1233,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-disable-chunking"
             },
             {
                 "name": "Response With Multiparts",
@@ -1241,7 +1241,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-response-with-multiparts"
             },
             {
                 "name": "Request With Multiparts",
@@ -1249,7 +1249,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-request-with-multiparts"
             },
             {
                 "name": "Passthrough",
@@ -1257,7 +1257,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-passthrough"
             }
         ]
     },
@@ -1272,7 +1272,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-1-1-to-2-0-protocol-switch"
             },
             {
                 "name": "HTTP 2.0 Server Push",
@@ -1280,7 +1280,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-2-0-server-push"
             }
         ]
     },
@@ -1295,7 +1295,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/graphql-hello-world"
             },
             {
                 "name": "Returning Record Values",
@@ -1303,7 +1303,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/graphql-returning-record-values"
             },
             {
                 "name": "Hierarchical Resource Paths",
@@ -1311,7 +1311,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/graphql-hierarchical-resource-paths"
             },
             {
                 "name": "Returning Service Objects",
@@ -1319,7 +1319,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/graphql-returning-service-objects"
             },
             {
                 "name": "Input Types",
@@ -1327,7 +1327,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/graphql-input-types"
             }
         ]
     },
@@ -1342,7 +1342,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/graphql-service-ssl-tls"
             },
             {
                 "name": "Service - Mutual SSL",
@@ -1350,7 +1350,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/graphql-service-mutual-ssl"
             },
             {
                 "name": "Service - Basic Auth File User Store",
@@ -1358,7 +1358,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/graphql-service-basic-auth-file-user-store"
             },
             {
                 "name": "Service - Basic Auth LDAP User Store",
@@ -1366,7 +1366,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/graphql-service-basic-auth-ldap-user-store"
             },
             {
                 "name": "Service - JWT Auth",
@@ -1374,7 +1374,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/graphql-service-jwt-auth"
             },
             {
                 "name": "Service - OAuth2",
@@ -1382,7 +1382,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/graphql-service-oauth2"
             }
         ]
     },
@@ -1396,14 +1396,14 @@
                 "url": "websocket-text-client",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/websocket-text-client"
             },
             {
                 "name": "Handle Binary Messages with Client",
                 "url": "websocket-binary-client",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/websocket-binary-client"
             },
             {
                 "name": "Listener Functionalities",
@@ -1411,7 +1411,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/websocket-basic-sample"
             }
         ]
     },
@@ -1426,7 +1426,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/websub-webhook-sample"
             }
         ]
     },
@@ -1441,7 +1441,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-circuit-breaker"
             },
             {
                 "name": "Load Balancer",
@@ -1449,7 +1449,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-load-balancer"
             },
             {
                 "name": "Failover",
