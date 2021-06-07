@@ -9,7 +9,7 @@
                 "url": "hello-world",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/hello-world"
             },
             {
                 "name": "Hello World Service",
@@ -17,7 +17,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/hello-world-service"
             }
         ]
     },
@@ -31,84 +31,84 @@
                 "url": "programs-and-modules",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/programs-and-modules"
             },
             {
                 "name": "Variables and Types",
                 "url": "variables-and-types",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/variables-and-types"
             },
             {
                 "name": "Functions",
                 "url": "functions",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/functions"
             },
             {
                 "name": "Identifiers",
                 "url": "identifiers",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/identifiers"
             },
             {
                 "name": "Integers",
                 "url": "integers",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/integers"
             },
             {
                 "name": "Booleans and Conditionals",
                 "url": "booleans",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/booleans"
             },
             {
                 "name": "Floating Point Numbers",
                 "url": "floating-point-numbers",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/floating-point-numbers"
             },
             {
                 "name": "Nil",
                 "url": "nil",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/nil"
             },
             {
                 "name": "Strings",
                 "url": "strings",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/strings"
             },
             {
                 "name": "Langlib Functions",
                 "url": "langlib-functions",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/langlib-functions"
             },
             {
                 "name": "Arrays",
                 "url": "arrays",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/arrays"
             },
             {
                 "name": "Foreach Statement",
                 "url": "foreach-statement",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/foreach-statement"
             },
             {
                 "name": "While Statement",
@@ -116,35 +116,35 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/while-statement"
             },
             {
                 "name": "Binary Data",
                 "url": "binary-data",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/binary-data"
             },
             {
                 "name": "Maps",
                 "url": "maps",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/maps"
             },
             {
                 "name": "Type Definitions",
                 "url": "type-definitions",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/type-definitions"
             },
             {
                 "name": "Records",
                 "url": "records",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/records"
             },
             {
                 "name": "Structural Typing",
@@ -152,154 +152,154 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/structural-typing"
             },
             {
                 "name": "Unions",
                 "url": "unions",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/unions"
             },
             {
                 "name": "Error Reporting",
                 "url": "error-reporting",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/error-reporting"
             },
             {
                 "name": "Error Handling",
                 "url": "error-handling",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/error-handling"
             },
             {
                 "name": "Check Expression",
                 "url": "check-expression",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/check-expression"
             },
             {
                 "name": "Error Subtyping",
                 "url": "error-subtyping",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/error-subtyping"
             },
             {
                 "name": "Panics",
                 "url": "panics",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/panics"
             },
             {
                 "name": "Anydata Type",
                 "url": "anydata-type",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/anydata-type"
             },
             {
                 "name": "Ignoring Return Values and Errors",
                 "url": "ignoring-return-values-and-errors",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/ignoring-return-values-and-errors"
             },
             {
                 "name": "Covariance",
                 "url": "covariance",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/covariance"
             },
             {
                 "name": "Object",
                 "url": "object",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/object"
             },
             {
                 "name": "Defining Classes",
                 "url": "defining-classes",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/defining-classes"
             },
             {
                 "name": "Init Return Type",
                 "url": "init-return-type",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/init-return-type"
             },
             {
                 "name": "Identity",
                 "url": "identity",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/identity"
             },
             {
                 "name": "Const and Final ",
                 "url": "const-and-final",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/const-and-final"
             },
             {
                 "name": "Enumerations",
                 "url": "enumerations",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/enumerations"
             },
             {
                 "name": "Match Statement",
                 "url": "match-statement",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/match-statement"
             },
             {
                 "name": "Type Inference ",
                 "url": "type-inference",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/type-inference"
             },
             {
                 "name": "Function Values",
                 "url": "function-values",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/function-values"
             },
             {
                 "name": "Asynchronous Function Calls",
                 "url": "asynchronous-function-calls",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/asynchronous-function-calls"
             },
             {
                 "name": "Annotations",
                 "url": "annotations",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/annotations"
             },
             {
                 "name": "Documentation",
                 "url": "documentation",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/documentation"
             }
         ]
     },
@@ -313,7 +313,7 @@
                 "url": "consuming-services",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/consuming-services"
             },
             {
                 "name": "Providing Services",
@@ -321,14 +321,14 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/providing-services"
             },
             {
                 "name": "Module Lifecycle",
                 "url": "module-lifecycle",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/module-lifecycle"
             },
             {
                 "name": "Service Declaration",
@@ -336,7 +336,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/service-declaration"
             },
             {
                 "name": "Resource Methods",
@@ -344,7 +344,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/resource-methods"
             },
             {
                 "name": "Hierarchical Resources",
@@ -352,7 +352,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/hierarchical-resources"
             },
             {
                 "name": "Resource Path Parameters",
@@ -360,7 +360,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/resource-path-parameters"
             }
         ]
     },
@@ -374,7 +374,7 @@
                 "url": "decimal-type",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/decimal-type"
             },
             {
                 "name": "Immutability",
@@ -382,84 +382,84 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/immutability"
             },
             {
                 "name": "Any Type",
                 "url": "any-type",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/any-type"
             },
             {
                 "name": "Configurable Variables",
                 "url": "configurable-variables",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/configurable-variables"
             },
             {
                 "name": "Optional Fields",
                 "url": "optional-fields",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/optional-fields"
             },
             {
                 "name": "Open Records",
                 "url": "open-records",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/open-records"
             },
             {
                 "name": "Controlling Openness",
                 "url": "controlling-openness",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/controlling-openness"
             },
             {
                 "name": "JSON Type",
                 "url": "json-type",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/json-type"
             },
             {
                 "name": "Working directly with JSON",
                 "url": "working-directly-with-json",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/working-directly-with-json"
             },
             {
                 "name": "Match Statement With Maps",
                 "url": "match-statement-with-maps",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/match-statement-with-maps"
             },
             {
                 "name": "Converting From User-Defined Type to JSON",
                 "url": "converting-from-user-defined-type-to-json",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/converting-from-user-defined-type-to-json"
             },
             {
                 "name": "Converting From JSON to User-Defined Type",
                 "url": "converting-from-json-to-user-defined-type",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/converting-from-json-to-user-defined-type"
             },
             {
                 "name": "Converting to User-Defined Type",
                 "url": "converting-to-user-defined-type",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/converting-to-user-defined-type"
             },
             {
                 "name": "Resource Method Typing",
@@ -467,112 +467,112 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/resource-method-typing"
             },
             {
                 "name": "JSON Numbers",
                 "url": "json-numbers",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/json-numbers"
             },
             {
                 "name": "Query Expressions",
                 "url": "query-expressions",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/query-expressions"
             },
             {
                 "name": "Destructuring Records",
                 "url": "destructuring-records",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/destructuring-records"
             },
             {
                 "name": "Let Clause",
                 "url": "let-clause",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/let-clause"
             },
             {
                 "name": "Ordering",
                 "url": "ordering",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/ordering"
             },
             {
                 "name": "Limit Clause",
                 "url": "limit-clause",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/limit-clause"
             },
             {
                 "name": "Table Syntax",
                 "url": "table-syntax",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/table-syntax"
             },
             {
                 "name": "Multiple Key Fields",
                 "url": "multiple-key-fields",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/multiple-key-fields"
             },
             {
                 "name": "Structured Keys",
                 "url": "structured-keys",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/structured-keys"
             },
             {
                 "name": "Querying Tables",
                 "url": "querying-tables",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/querying-tables"
             },
             {
                 "name": "Creating Tables With Query",
                 "url": "creating-tables-with-query",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/creating-tables-with-query"
             },
             {
                 "name": "Join Clause",
                 "url": "join-clause",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/join-clause"
             },
             {
                 "name": "Stream Type",
                 "url": "stream-type",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/stream-type"
             },
             {
                 "name": "Querying With Streams",
                 "url": "querying-with-streams",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/querying-with-streams"
             },
             {
                 "name": "Backtick Templates",
                 "url": "backtick-templates",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/backtick-templates"
             },
             {
                 "name": "Raw Templates",
@@ -580,28 +580,28 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/raw-templates"
             },
             {
                 "name": "XML Data Model",
                 "url": "xml-data-model",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/xml-data-model"
             },
             {
                 "name": "XML Templates",
                 "url": "xml-templates",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/xml-templates"
             },
             {
                 "name": "XML Operations",
                 "url": "xml-operations",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/xml-operations"
             },
             {
                 "name": "XML Subtyping",
@@ -609,35 +609,35 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/xml-subtyping"
             },
             {
                 "name": "XML Navigation ",
                 "url": "xml-navigation",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/xml-navigation"
             },
             {
                 "name": "XML Templates and Query",
                 "url": "xml-templates-and-query",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/xml-templates-and-query"
             },
             {
                 "name": "XML Namespaces",
                 "url": "xml-namespaces",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/xml-namespaces"
             },
             {
                 "name": "XMLNS Declarations",
                 "url": "xmlns-declarations",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/xmlns-declarations"
             }
         ]
     },
@@ -651,35 +651,35 @@
                 "url": "named-workers",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/named-workers"
             },
             {
                 "name": "Sequence Diagrams",
                 "url": "sequence-diagrams",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/sequence-diagrams"
             },
             {
                 "name": "Waiting for Workers",
                 "url": "waiting-for-workers",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/waiting-for-workers"
             },
             {
                 "name": "Strands",
                 "url": "strands",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/strands"
             },
             {
                 "name": "Named Worker Return Values",
                 "url": "named-worker-return-values",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/named-worker-return-values"
             },
             {
                 "name": "Alternate Wait",
