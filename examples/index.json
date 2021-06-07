@@ -1457,7 +1457,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-failover"
             },
             {
                 "name": "Retry",
@@ -1465,7 +1465,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-retry"
             },
             {
                 "name": "Timeout",
@@ -1473,7 +1473,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/http-timeout"
             }
         ]
     },
@@ -1488,7 +1488,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/dynamic-listener"
             }
         ]
     },
@@ -1503,7 +1503,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/grpc-simple"
             },
             {
                 "name": "Simple RPC With Headers",
@@ -1511,7 +1511,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/grpc-simple-with-headers"
             },
             {
                 "name": "Secured Simple RPC",
@@ -1519,7 +1519,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/grpc-secured-simple"
             },
             {
                 "name": "Server Streaming RPC",
@@ -1527,7 +1527,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/grpc-server-streaming"
             },
             {
                 "name": "Client Streaming RPC",
@@ -1535,7 +1535,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/grpc-client-streaming"
             },
             {
                 "name": "Bidirectional Streaming RPC",
@@ -1543,7 +1543,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/grpc-bidirectional-streaming"
             },
             {
                 "name": "Proto To Ballerina",
@@ -1551,7 +1551,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/proto-to-ballerina"
             }
         ]
     },
@@ -1566,7 +1566,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/tracing"
             },
             {
                 "name": "Counter-Based Metrics",
@@ -1574,7 +1574,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/counter-metrics"
             },
             {
                 "name": "Gauge-Based Metrics",
@@ -1582,7 +1582,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/gauge-metrics"
             }
         ]
     },
@@ -1597,7 +1597,7 @@
                 "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/nats-basic-pub-sub"
             },
             {
                 "name": "Request/Reply",
@@ -1605,7 +1605,7 @@
                 "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/nats-basic-request-reply"
             }
         ]
     },
@@ -1620,7 +1620,7 @@
                 "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/nats-streaming-pub-sub"
             },
             {
                 "name": "Queue Groups",
@@ -1628,7 +1628,7 @@
                 "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/nats-streaming-queue-group"
             },
             {
                 "name": "Durable Subscriptions",
@@ -1636,7 +1636,7 @@
                 "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/nats-streaming-durable-subscriptions"
             },
             {
                 "name": "Historical Message Replay",
@@ -1644,7 +1644,7 @@
                 "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/nats-streaming-start-position"
             }
         ]
     },
@@ -1659,7 +1659,7 @@
                 "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/kafka-producer"
             },
             {
                 "name": "Consumer Service",
@@ -1667,7 +1667,7 @@
                 "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/kafka-consumer-service"
             },
             {
                 "name": "Consumer Client",
@@ -1675,7 +1675,7 @@
                 "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/kafka-consumer-client"
             },
             {
                 "name": "Transactional Producer",
@@ -1683,7 +1683,7 @@
                 "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/kafka-producer-transactional"
             },
             {
                 "name": "Consumer Groups",
@@ -1691,7 +1691,7 @@
                 "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/kafka-consumer-group-service"
             },
             {
                 "name": "SASL Authentication - Consumer",
@@ -1699,7 +1699,7 @@
                 "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/kafka-authentication-sasl-plain-consumer"
             },
             {
                 "name": "SASL Authentication - Producer",
@@ -1707,7 +1707,7 @@
                 "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/kafka-authentication-sasl-plain-producer"
             }
         ]
     },
@@ -1722,7 +1722,7 @@
                 "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/rabbitmq-producer"
             },
             {
                 "name": "Consumer",
@@ -1730,7 +1730,7 @@
                 "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/rabbitmq-consumer"
             },
             {
                 "name": "Client Acknowledgements",
@@ -1738,7 +1738,7 @@
                 "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/rabbitmq-consumer-with-client-acknowledgement"
             },
             {
                 "name": "Transactional Producer",
@@ -1746,7 +1746,7 @@
                 "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/rabbitmq-transaction-producer"
             },
             {
                 "name": "SASL Authentication - Consumer",
@@ -1754,7 +1754,7 @@
                 "verifyBuild": "false",
                 "verifyOutput": "false",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/rabbitmq-transaction-consumer"
             }
         ]
     },
@@ -1769,7 +1769,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/tcp-client"
             },
             {
                 "name": "TCP Listener",
@@ -1777,7 +1777,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/tcp-listener"
             },
             {
                 "name": "TCP Transport Security",
@@ -1785,7 +1785,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/tcp-transport-security"
             }
         ]
     },
@@ -1800,7 +1800,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/udp-client"
             },
             {
                 "name": "UDP Connection-Oriented Client",
@@ -1808,7 +1808,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/udp-connect-client"
             },
             {
                 "name": "UDP Listener",
@@ -1816,7 +1816,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/udp-listener"
             }
         ]
     },
@@ -1831,7 +1831,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/send-email"
             },
             {
                 "name": "Receive Emails Using a Client",
@@ -1839,7 +1839,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/receive-email-using-client"
             },
             {
                 "name": "Receive Emails Using a Listener",
@@ -1847,7 +1847,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/receive-email-using-listener"
             }
         ]
     },
@@ -1862,7 +1862,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/mysql-query-operation"
             },
             {
                 "name": "Query With Complex Types",
@@ -1870,7 +1870,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/mysql-complex-type-queries"
             },
             {
                 "name": "DML and DDL Operation",
@@ -1878,7 +1878,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/mysql-execute-operation"
             },
             {
                 "name": "Batch Execute",
@@ -1886,7 +1886,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/mysql-batch-execute-operation"
             },
             {
                 "name": "Atomic Batch Execute",
@@ -1894,7 +1894,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/mysql-atomic-batch-execute-operation"
             },
             {
                 "name": "Call Stored Procedures",
@@ -1902,7 +1902,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/mysql-call-stored-procedures"
             }
         ]
     },
@@ -1917,7 +1917,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/jdbc-query-operation"
             },
             {
                 "name": "Query With Complex Types",
@@ -1925,7 +1925,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/jdbc-complex-type-queries"
             },
             {
                 "name": "DML and DDL Operation",
@@ -1933,7 +1933,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/jdbc-execute-operation"
             },
             {
                 "name": "Batch Execute",
@@ -1941,7 +1941,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/jdbc-batch-execute-operation"
             },
             {
                 "name": "Atomic Batch Execute",
@@ -1949,7 +1949,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/jdbc-atomic-batch-execute-operation"
             }
         ]
     },
@@ -1964,35 +1964,35 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/io-bytes"
             },
             {
                 "name": "Read/Write Strings",
                 "url": "io-strings",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/io-strings"
             },
             {
                 "name": "Read/Write CSV",
                 "url": "io-csv",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/io-csv"
             },
             {
                 "name": "Read/Write JSON",
                 "url": "io-json",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/io-json"
             },
             {
                 "name": "Read/Write XML",
                 "url": "io-xml",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/io-xml"
             }
         ]
     },
@@ -2007,7 +2007,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/security-crypto"
             },
             {
                 "name": "JWT Issue/Validate",
@@ -2015,7 +2015,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/security-jwt-issue-validate"
             }
         ]
     },
@@ -2029,7 +2029,7 @@
                 "url": "url-encode-decode",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/url-encode-decode"
             }
         ]
     },
@@ -2043,21 +2043,21 @@
                 "url": "time-utc",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/time-utc"
             },
             {
                 "name": "Time with Zone Offset",
                 "url": "time-utc-and-civil",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/time-utc-and-civil"
             },
             {
                 "name": "Time formatting/Parsing",
                 "url": "time-formatting-and-parsing",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/time-formatting-and-parsing"
             }
         ]
     },
@@ -2071,14 +2071,14 @@
                 "url": "cache-basics",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/cache-basics"
             },
             {
                 "name": "Cache Invalidation",
                 "url": "cache-invalidation",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/cache-invalidation"
             }
         ]
     },
@@ -2092,14 +2092,14 @@
                 "url": "logging",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/logging"
             },
             {
                 "name": "Logging with Context",
                 "url": "logging-with-context",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/logging-with-context"
             },
             {
                 "name": "Configure Logging",
@@ -2107,7 +2107,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/logging-configuration"
             }
         ]
     },
@@ -2121,28 +2121,28 @@
                 "url": "filepaths",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/filepaths"
             },
             {
                 "name": "Directories",
                 "url": "directories",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/directories"
             },
             {
                 "name": "Files",
                 "url": "files",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/files"
             },
             {
                 "name": "Temp Files and Directories",
                 "url": "temp-files-directories",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/temp-files-directories"
             },
             {
                 "name": "Directory Listener",
@@ -2150,7 +2150,7 @@
                 "verifyBuild": "true",
                 "verifyOutput": "true",
                 "disablePlayground": true,
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/directory-listener"
             }
         ]
     },
@@ -2164,7 +2164,7 @@
                 "url": "random-numbers",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/random-numbers"
             }
         ]
     },
@@ -2178,21 +2178,21 @@
                 "url": "task-frequency-job-execution",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/task-frequency-job-execution"
             },
             {
                 "name": "Schedule one time job",
                 "url": "task-one-time-job-execution",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/task-one-time-job-execution"
             },
             {
                 "name": "Manage Scheduled Jobs",
                 "url": "manage-scheduled-jobs",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/manage-scheduled-jobs"
             }
         ]
     },
@@ -2206,14 +2206,14 @@
                 "url": "uuid-generation",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/uuid-generation"
             },
             {
                 "name": "UUID Operations",
                 "url": "uuid-operations",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/uuid-operations"
             }
         ]
     },
@@ -2227,7 +2227,7 @@
                 "url": "xslt-transformation",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/xslt-transformation"
             }
         ]
     },
@@ -2241,7 +2241,7 @@
                 "url": "regular-expressions",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/regular-expressions"
             }
         ]
     },
@@ -2255,7 +2255,7 @@
                 "url": "environment-variables",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/environment-variables"
             }
         ]
     },
@@ -2269,7 +2269,7 @@
                 "url": "xml-json-conversion",
                 "verifyBuild": "true",
                 "verifyOutput": "true",
-                "permalink": "/learn/by-example/"
+                "permalink": "/learn/by-example/xml-json-conversion"
             }
         ]
     }
