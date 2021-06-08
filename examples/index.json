@@ -1131,36 +1131,36 @@
             {
                 "name": "Hello World",
                 "url": "graphql-hello-world",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true
             },
             {
                 "name": "Returning Record Values",
                 "url": "graphql-returning-record-values",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true
             },
             {
                 "name": "Hierarchical Resource Paths",
                 "url": "graphql-hierarchical-resource-paths",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true
             },
             {
                 "name": "Returning Service Objects",
                 "url": "graphql-returning-service-objects",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true
             },
             {
                 "name": "Input Types",
                 "url": "graphql-input-types",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true
             }
         ]
