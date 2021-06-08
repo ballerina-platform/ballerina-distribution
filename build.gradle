@@ -66,13 +66,17 @@ allprojects {
         }
     }
 
-    task updateInstallerVersion() {
-        installerVersion = UUID.randomUUID().toString()
+    task updateInstallerVersion(type: WriteProperties) {
+        exec {
+            def installerVersionVal=UUID.randomUUID().toString()
+            def propertyFilePath="${project.rootDir}/gradle.properties"
+            commandLine 'sh', '-c', "sed -ie \"s/^installerVersion=.*/installerVersion=$installerVersionVal/\" $propertyFilePath"
+        }
     }
 
     afterReleaseBuild.dependsOn publishToMavenLocal
     afterReleaseBuild.dependsOn publish
-    afterReleaseBuild.dependsOn updateInstallerVersion
+    beforeReleaseBuild.dependsOn updateInstallerVersion
 }
 
 subprojects {
