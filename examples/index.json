@@ -1173,43 +1173,43 @@
             {
                 "name": "Service - SSL/TLS",
                 "url": "graphql-service-ssl-tls",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true
             },
             {
                 "name": "Service - Mutual SSL",
                 "url": "graphql-service-mutual-ssl",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true
             },
             {
                 "name": "Service - Basic Auth File User Store",
                 "url": "graphql-service-basic-auth-file-user-store",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true
             },
             {
                 "name": "Service - Basic Auth LDAP User Store",
                 "url": "graphql-service-basic-auth-ldap-user-store",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true
             },
             {
                 "name": "Service - JWT Auth",
                 "url": "graphql-service-jwt-auth",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true
             },
             {
                 "name": "Service - OAuth2",
                 "url": "graphql-service-oauth2",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true
             }
         ]
