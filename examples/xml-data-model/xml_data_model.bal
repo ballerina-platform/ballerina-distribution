@@ -21,4 +21,5 @@ public function main() {
     // The resulting sequence is another XML on its own.
     xml x5 = x1 + x2 + x3 + x4;
     io:println(x5);
+
 }

@@ -10,8 +10,8 @@ import ballerina/http;
 final http:Client clientEndpoint = check new ("http://localhost:9090",
                         {http1Settings: {chunking: http:CHUNKING_NEVER}});
 
-service /chunkingSample on new http:Listener(9092) {
-    resource function get .() returns json|error {
+service / on new http:Listener(9092) {
+    resource function get chunkingSample() returns json|error {
         //Invoke endpoint along with a JSON payload.
         json clientResponse =
             check clientEndpoint->post("/echo", {"name": "Ballerina"});
@@ -20,8 +20,8 @@ service /chunkingSample on new http:Listener(9092) {
 }
 
 // A sample backend, which responds according to the chunking behavior.
-service /echo on new http:Listener(9090) {
-    resource function post .(@http:Header{name:"Content-length"} string cLen)
+service / on new http:Listener(9090) {
+    resource function post echo(@http:Header{name:"Content-length"} string cLen)
              returns json {
         //Set the response with the content length.
         string value = "Length-" + cLen;

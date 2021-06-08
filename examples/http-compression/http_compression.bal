@@ -13,10 +13,10 @@ import ballerina/http;
         contentTypes: ["text/plain"]
     }
 }
-service /alwaysCompress on new http:Listener(9090) {
+service / on new http:Listener(9090) {
 
     // The response entity body is always compressed since MIME type has matched.
-    resource function 'default .() returns string {
+    resource function 'default alwaysCompress() returns string {
         return "Type : This is a string";
     }
 }

@@ -11,6 +11,7 @@ function foo(json j) returns error? {
             decimal n = check x.ensureType(decimal);
             add(n);
         }
+
         _ => {
             return error("invalid command");
         }

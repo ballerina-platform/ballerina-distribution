@@ -17,6 +17,7 @@ public function main() {
                      let int len1 = first.length()
                      // The `where` clause provides a way to perform conditional execution.
                      where len1 > 0
+
                      let int len2 = last.length()
                      where len2 > 0
                      let string name = first + " " + last

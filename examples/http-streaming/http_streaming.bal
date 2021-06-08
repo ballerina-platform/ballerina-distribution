@@ -7,7 +7,7 @@ http:Client clientEndpoint = check new ("http://localhost:9090");
 
 service /'stream on new http:Listener(9090) {
 
-    resource function get fileupload(http:Caller caller) returns error? {
+    resource function get fileupload() returns http:Response|error? {
         http:Request request = new;
 
         //[Sets the file](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#setFileAsPayload) as the request payload.
@@ -19,11 +19,11 @@ service /'stream on new http:Listener(9090) {
             check clientEndpoint->post("/stream/receiver", request);
 
         // forward received response to caller
-        check caller->respond(clientResponse);
+        return clientResponse;
     }
 
     resource function post receiver(http:Caller caller,
-                                        http:Request request) returns error? {
+                                    http:Request request) returns error? {
         //[Retrieve the byte stream](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getByteStream).
         stream<byte[], io:Error?> streamer = check request.getByteStream();
 

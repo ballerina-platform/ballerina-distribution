@@ -7,6 +7,7 @@ type Row record {
     // Both the field and its value are immutable.
     readonly string k;
     int value;
+
 };
 
 table<Row> key(k) t = table [
