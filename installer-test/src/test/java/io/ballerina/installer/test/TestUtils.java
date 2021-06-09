@@ -15,7 +15,12 @@
  */
 package io.ballerina.installer.test;
 
-import io.ballerina.test.*;
+import io.ballerina.test.CentOS;
+import io.ballerina.test.Executor;
+import io.ballerina.test.MacOS;
+import io.ballerina.test.Ubuntu;
+import io.ballerina.test.Utils;
+import io.ballerina.test.Windows;
 import org.testng.Assert;
 
 import java.nio.file.Files;
@@ -236,7 +241,7 @@ public class TestUtils {
         Assert.assertTrue(Files.exists(projectPath.resolve("target/bin/sampleProject1.jar")));
 
         executor.executeCommand("dist pull " + previousVersion, true, toolVersion);
-//        testInstallation(executor, previousVersion, previousSpecVersion, toolVersion, previousVersion);
+        testInstallation(executor, previousVersion, previousSpecVersion, toolVersion, previousVersion);
         executor.executeCommand("new sampleProject2 && cd sampleProject2 && " + cmdName + "add module1 && " +
                         cmdName + "build module1", false, toolVersion);
         projectPath = userDir.resolve("sampleProject2");

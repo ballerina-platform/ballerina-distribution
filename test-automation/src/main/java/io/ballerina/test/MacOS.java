@@ -43,7 +43,9 @@ public class MacOS implements Executor {
         String sudoCommand = isAdminMode ? "sudo " : "";
         Utils.executeCommand("sudo chmod 755 /Library/Ballerina/bin/bal");
         String exportCmd = "export BAL_HOME=/Library/Ballerina && export PATH=$PATH:$BAL_HOME/bin && ";
-        return Utils.executeCommand(exportCmd + sudoCommand + Utils.getCommandName(toolVersion) + command);
+        String ballerinaStagingUpdate = Utils.BALLERINA_STAGING_UPDATE ? "BALLERINA_STAGING_UPDATE=true" : "";
+        return Utils.executeCommand(exportCmd + sudoCommand + ballerinaStagingUpdate +
+                Utils.getCommandName(toolVersion) + command);
     }
 
     @Override

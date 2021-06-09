@@ -34,6 +34,8 @@ import java.util.Locale;
 
 public class Utils {
     private static final String OS = System.getProperty("os.name").toLowerCase(Locale.getDefault());
+    public static final boolean BALLERINA_STAGING_UPDATE = Boolean.parseBoolean(
+            System.getenv("BALLERINA_STAGING_UPDATE"));
 
     private static TrustManager[] trustAllCerts = new TrustManager[]{
             new X509TrustManager() {

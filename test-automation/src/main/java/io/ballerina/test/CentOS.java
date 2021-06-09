@@ -41,7 +41,8 @@ public class CentOS implements Executor {
     @Override
     public String executeCommand(String command, boolean isAdminMode, String toolVersion) {
         String sudoCommand = isAdminMode ? "sudo " : "";
-        return Utils.executeCommand(sudoCommand + Utils.getCommandName(toolVersion) + command);
+        String ballerinaStagingUpdate = Utils.BALLERINA_STAGING_UPDATE ? "BALLERINA_STAGING_UPDATE=true" : "";
+        return Utils.executeCommand(sudoCommand + ballerinaStagingUpdate + Utils.getCommandName(toolVersion) + command);
     }
 
     @Override
