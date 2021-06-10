@@ -44,6 +44,7 @@ public class CentralTestUtils {
 
     static final String BALLERINA_HOME_DIR = "BALLERINA_HOME_DIR";
     static final String BALLERINA_DEV_CENTRAL = "BALLERINA_DEV_CENTRAL";
+    static final String BALLERINA_CENTRAL_ACCESS_TOKEN = "BALLERINA_CENTRAL_ACCESS_TOKEN";
     static final String BALLERINA_TOML = "Ballerina.toml";
     static final String MAIN_BAL = "main.bal";
 
