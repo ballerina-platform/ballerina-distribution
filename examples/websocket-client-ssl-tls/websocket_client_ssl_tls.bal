@@ -6,7 +6,7 @@ import ballerina/io;
 // a certificate file of the listener.
 // The [`websocket:ClientSecureSocket`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/ClientSecureSocket) record
 // provides the SSL-related configurations of the client.
-websocket:Client wssClient = check new("wss://localhost:9090/foo/bar",
+websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
     secureSocket = {
         cert: "../resource/path/to/public.crt"
     }

@@ -5,7 +5,7 @@ import ballerina/websocket;
 // A WebSocket client can be configured to initiate new connections that are
 // secured via mutual SSL.
 // The [`websocket:ClientSecureSocket`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/ClientSecureSocket) record provides the SSL-related configurations.
-websocket:Client mTlsClient = check new("wss://localhost:9090/foo/bar",
+websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
