@@ -8,11 +8,7 @@ http:Client clientEP = check new("https://localhost:9090",
 );
 
 @test:Config {}
-function testFunc() {
-    http:Response|error response = clientEP->get("/foo/bar");
-    if (response is http:Response) {
-        test:assertEquals(response.getTextPayload(), "Hello, World!");
-    } else {
-        test:assertFail(msg = "Failed to call the endpoint.");
-    }
+function testFunc() returns error? {
+    string response = check clientEP->get("/foo/bar");
+    test:assertEquals(response, "Hello, World!");
 }
