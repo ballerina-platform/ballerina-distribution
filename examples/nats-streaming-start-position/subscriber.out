@@ -1,5 +1,3 @@
-# To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
 # When you start the subscriber after publishing several messages,
 # You'll notice that,
 # 1. `receiveSinceTimeDelta` service receives the messages if
@@ -15,7 +13,6 @@
 #    published after the subscriber starts.
 
 bal run subscriber.bal
-
 [ballerinax/nats] Client subscribed for subject demo
 Message Received to service receiveSinceTimeDelta: Third Message
 Message Received to service receiveFromGivenIndex: Third Message

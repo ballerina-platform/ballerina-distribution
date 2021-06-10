@@ -30,6 +30,8 @@ public function main() {
                         // based on the `userId`. The iteration is skipped when the
                         // condition is not satisfied.
                         on login.userId equals user.id
+
+
                         select user.name + ":" + login.time;
     io:println(loginLog);
 }

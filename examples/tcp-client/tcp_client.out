@@ -1,10 +1,3 @@
-# As a prerequisite, navigate to the directory that contains the
-# `tcp_listener.bal` file and use the `bal run` command below.
-bal run tcp_listener.bal
-
-# To run the client, navigate to the directory that contains the
-# `.bal` file and use the `bal run` command below.
+# As a prerequisite, start a sample TCP service.
 bal run tcp_client.bal
-
-# Print the response that is obtained from the server.
 Received: Hello Ballerina Echo from client

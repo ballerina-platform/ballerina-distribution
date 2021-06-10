@@ -15,43 +15,28 @@ http:LoadBalanceClient lbBackendEP = check new ({
         timeout: 5
 });
 
-// Create an HTTP service bound to the endpoint (`loadBalancerEP`).
-service /lb on new http:Listener(9090) {
-
-    resource function 'default .()
-            returns http:Response|http:InternalServerError {
-        json requestPayload = {"name": "Ballerina"};
-        http:Response|error response = lbBackendEP->post("/", requestPayload);
-        // If a response is returned, the normal process runs. If the service
-        // does not get the expected response, the error-handling logic is
-        // executed.
-        if (response is http:Response) {
-            return response;
-        } else {
-            return {body: response.message()};
-        }
-
+service / on new http:Listener(9090) {
+    resource function 'default lb() returns string|error {
+        string payload = check lbBackendEP->get("/");
+        return payload;
     }
 }
 
 // Define the mock backend services, which are called by the load balancer.
 service /mock1 on backendEP {
-
-    resource function 'default .() returns string {
+    resource function get .() returns string {
         return "Mock1 resource was invoked.";
     }
 }
 
 service /mock2 on backendEP {
-
-    resource function 'default .() returns string {
+    resource function get .() returns string {
         return "Mock2 resource was invoked.";
     }
 }
 
 service /mock3 on backendEP {
-
-    resource function 'default .() returns string {
+    resource function get .() returns string {
         return "Mock3 resource was invoked.";
     }
 }

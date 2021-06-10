@@ -10,6 +10,11 @@ http:Client clientEP = check new("https://localhost:9090",
 @test:Config {}
 function testFunc() returns error? {
     json payload = { "query": "{ greeting }" };
-    http:Response response = check clientEP->post("/graphql", payload, "application/json");
-    io:println((check response.getJsonPayload()).toString());
+    json actualResponse = check clientEP->post("/graphql", payload);
+    json expectedResponse = {
+        data: {
+            greeting: "Hello, World!"
+        }
+    };
+    test:assertEquals(actualResponse, expectedResponse);
 }

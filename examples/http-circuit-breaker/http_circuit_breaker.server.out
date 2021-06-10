@@ -1,12 +1,4 @@
-# To start the services, navigate to the directory that contains the
-# `.bal` file and use the `bal run` command below.
 bal run http_circuit_breaker.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 [ballerina/http] started HTTP/WS listener 0.0.0.0:8080
-time = 2021-01-21 19:20:04,028 level = INFO  module = ballerina/http message = "CircuitBreaker failure threshold exceeded. Circuit tripped from CLOSE to OPEN state."
-time = 2021-01-21 19:20:14,306 level = INFO  module = ballerina/http message = "CircuitBreaker reset timeout reached. Circuit switched from OPEN to HALF_OPEN state."
-time = 2021-01-21 19:20:17,810 level = INFO  module = ballerina/http message = "CircuitBreaker trial run  was successful. Circuit switched from HALF_OPEN to CLOSE state."
-time = 2021-01-21 19:20:36,295 level = ERROR module = "" message = "Error sending response from mock service" error = "Connection between remote client and host is closed"
-time = 2021-01-21 19:22:38,052 = INFO  module = ballerina/http message = "CircuitBreaker failure threshold exceeded. Circuit tripped from CLOSE to OPEN state."
-time = 2021-01-21 19:23:23,628 level = INFO  module = ballerina/http message = "CircuitBreaker reset timeout reached. Circuit switched from OPEN to HALF_OPEN state."
-time = 2021-01-21 19:23:57,633 level = INFO  module = ballerina/http message = "CircuitBreaker trial run  was successful. Circuit switched from HALF_OPEN to CLOSE state."
+

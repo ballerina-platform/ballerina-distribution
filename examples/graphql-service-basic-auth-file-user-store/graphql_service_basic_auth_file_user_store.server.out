@@ -1,7 +1,5 @@
-# To run this sample, navigate to the directory that contains the `.bal` file,
-# and execute the `bal run` command below.
-# Ensure that the `Config.toml` file is populated correctly with the user
-# information.
+# As a prerequisite, ensure that the `Config.toml` file is populated correctly
+# with the user information.
 echo '[["ballerina.auth.users"]]
 username="alice"
 password="password1"
@@ -10,6 +8,7 @@ scopes=["scope1"]
 username="bob"
 password="password2"
 scopes=["scope2", "scope3"]' > Config.toml
-# (You may need to change the certificate file path and private key file path.)
+
+# You may need to change the certificate file path and private key file path.
 bal run graphql_service_basic_auth_file_user_store.bal
 [ballerina/http] started HTTPS/WSS listener 0.0.0.0:9090

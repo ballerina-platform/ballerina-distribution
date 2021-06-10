@@ -1,5 +1,3 @@
-# To run this sample, navigate to the directory that contains the
-# `.bal` file and run the `bal run` command below.
 bal run xslt_transformation.bal
 Transformed XML: <html>
 <body>

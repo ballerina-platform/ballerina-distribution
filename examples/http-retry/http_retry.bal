@@ -2,7 +2,6 @@ import ballerina/http;
 import ballerina/log;
 import ballerina/lang.runtime;
 
-// Define the endpoint to the call the `mockHelloService`.
 http:Client backendClientEP = check new ("http://localhost:8080", {
             // Retry configuration options.
             retryConfig: {
@@ -30,37 +29,24 @@ http:Client backendClientEP = check new ("http://localhost:8080", {
     );
 
 
-service /'retry on new http:Listener(9090) {
-
-    // Parameters include a reference to the caller and an object of the
-    // request data.
-    resource function 'default .() returns string|http:InternalServerError {
-
-        string|error backendResponse = backendClientEP->get("/hello");
-
-        // If `backendResponse` is a `string`, it is sent back to the
-        // client. If `backendResponse` is an `http:ClientError`, an internal
-        // server error is returned to the client.
-        if (backendResponse is string) {
-            return backendResponse;
-        } else {
-            return { body: backendResponse.message()};
-        }
-
+service / on new http:Listener(9090) {
+    resource function 'default 'retry() returns string|error {
+        string payload = check backendClientEP->get("/hello");
+        return payload;
     }
 }
 
-int counter = 0;
 
 // This sample service is used to mock connection timeouts and service outages.
 // The service outage is mocked by stopping/starting this service.
-// This should run separately from the `retryDemoService` service.
-service /hello on new http:Listener(8080) {
+// This should run separately from the `retry` service.
+service / on new http:Listener(8080) {
+    private int counter = 0;
 
-    resource function get .() returns string {
-        counter += 1;
+    resource function get hello() returns string {
+        self.counter += 1;
         // Delay the response by 5 seconds to mimic network level delays.
-        if (counter % 4 != 0) {
+        if (self.counter % 4 != 0) {
             log:printInfo(
                 "Request received from the client to delayed service.");
             runtime:sleep(5);

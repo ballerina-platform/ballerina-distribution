@@ -10,19 +10,15 @@ http:Client backendClient = check new("http://localhost:9092");
 
 service /call on new http:Listener(9090) {
 
-    resource function get all() returns http:Response|error {
+    resource function get all() returns json|error {
         // Binding the payload to a string type. The `targetType` is inferred from the LHS variable type.
-        string result = check backendClient->get("/backend/String");
+        string result = check backendClient->get("/backend/string");
         log:printInfo("String payload: " + result);
 
         // A `record` and `record[]` are also possible types for data binding.
         Person person = check backendClient->get("/backend/person");
         log:printInfo("Person name: " + person.name);
-
-        // Still the `targetType` can be specified and use `var`.
-        var res =  check backendClient->get("/backend/Response",
-                                                targetType = http:Response);
-        return res;
+        return person;
     }
 
     // When the data binding is expected to happen and if the `post` remote function gets a 5XX response from the
@@ -54,19 +50,12 @@ service /call on new http:Listener(9090) {
 
 service /backend on new http:Listener(9092) {
 
-    resource function get 'String() returns string {
+    resource function get 'string() returns string {
         return "Hello ballerina!!!!";
     }
 
     resource function get person() returns record {|*http:Ok; Person body;|} {
         return {body: {name: "Smith", age: 15}};
-    }
-
-    resource function get 'Response() returns http:Ok {
-        return {
-            body: {id: "data-binding-done"},
-            headers: {"x-fact":"backend-payload"}
-        };
     }
 
     resource function post '5XX() returns http:NotImplemented {
