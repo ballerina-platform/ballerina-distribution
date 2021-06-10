@@ -1,7 +1,7 @@
 import ballerina/log;
 import ballerina/websocket;
 
-// An WebSocket listener can be configured to communicate through WSS as well.
+// A WebSocket listener can be configured to communicate through WSS as well.
 // To secure an listener using SSL/TLS, the listener needs to be configured with
 // a certificate file and a private key file for the listener.
 // The [`websocket:ListenerSecureSocket`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/ListenerSecureSocket) record
@@ -15,19 +15,16 @@ listener websocket:Listener securedEP = new(9090,
     }
 );
 
-service /basic/wss on securedEP {
-   resource isolated function get .()
-                     returns websocket:Service|websocket:UpgradeError {
-       return new WsService();
+service /foo on securedEP {
+    resource isolated function get bar() returns websocket:Service {
+        return new WsService();
    }
 }
 
 service class WsService {
     *websocket:Service;
     remote isolated function onTextMessage(websocket:Caller caller,
-                                 string text) returns error? {
-        log:printInfo("text message: " + text);
-        check caller->writeTextMessage("You said: " + text);
+                             string text) returns websocket:Error? {
+        check caller->writeTextMessage(text);
     }
 }
-
