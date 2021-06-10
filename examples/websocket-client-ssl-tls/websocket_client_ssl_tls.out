@@ -1,10 +1,4 @@
-# As a prerequisite, navigate to the directory that contains the
-# `websocket_service_ssl_tls.bal` file and execute the `bal run` command below.
-# (You may need to change the certificate file path and private key file path.)
-bal run websocket_service_ssl_tls.bal
-[ballerina/websocket] started WSS listener 0.0.0.0:9090
-time = 2021-06-01T11:09:21.215+05:30 level = INFO module = "" message = "text message: Hello"
-
-# (You may need to change the trusted certificate file path.)
-bal run websocket_client_ssl_tls.bal
-You said: Hello
+# As a prerequisite, start a sample service secured with SSL.
+# You may need to change the trusted certificate file path.
+bal run http_client_ssl_tls.bal
+Hello, World!
