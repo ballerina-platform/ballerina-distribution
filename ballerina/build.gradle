@@ -723,12 +723,20 @@ task testExamples() {
                 fileReference = file(content)
                 String portPrefixHttp = "[ballerina/http] started HTTP/WS listener 0.0.0.0:"
                 String portPrefixHttps = "[ballerina/http] started HTTPS/WSS listener 0.0.0.0:"
+                String portPrefixWs = "[ballerina/websocket] started WS listener 0.0.0.0:"
+                String portPrefixWss = "[ballerina/websocket] started WSS listener 0.0.0.0:"
                 fileReference.readLines().each { lines ->
                     if (lines.contains(portPrefixHttp)) {
                         lines = (lines - portPrefixHttp).trim()
                         ports.add(lines)
                     } else if (lines.contains(portPrefixHttps)) {
                         lines = (lines - portPrefixHttps).trim()
+                        ports.add(lines)
+                    } else if (lines.contains(portPrefixWs)) {
+                        lines = (lines - portPrefixWs).trim()
+                        ports.add(lines)
+                    } else if (lines.contains(portPrefixWss)) {
+                        lines = (lines - portPrefixWss).trim()
                         ports.add(lines)
                     }
                 }
