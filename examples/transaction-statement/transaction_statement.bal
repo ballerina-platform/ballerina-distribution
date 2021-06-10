@@ -12,6 +12,7 @@ public function main() returns error? {
         // Commit must be lexically within a transaction statement and may
         // return an error;
         check commit;
+
     }
 }
 

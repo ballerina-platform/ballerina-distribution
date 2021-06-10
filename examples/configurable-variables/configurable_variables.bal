@@ -1,5 +1,6 @@
 // Port on which to run the service.
 configurable int port = 8080;
 
-// Password must be supplied in configuration file.
-// configurable string password = ?;
+//`configurable string password = ?;`
+//
+// This specifies that the password must be supplied in a configuration file.

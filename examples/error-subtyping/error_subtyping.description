@@ -3,6 +3,6 @@
 // The name of the distinct error type can be used with the error
 // constructor to create an error value of that type.
 // Works like a nominal type: `is` operator can be used to 
-// distinguish distinct subtypes
+// distinguish distinct subtypes.
 // Each occurrence of `distinct` has a unique identifier that is 
 // used to tag instances of the type.

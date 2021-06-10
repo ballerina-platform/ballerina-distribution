@@ -5,4 +5,4 @@
 // <li>an `array` of the results of expression evaluation and an `array` of `strings` separating</li>
 // </ul>
 //<br></br>
-// Important use case: SQL parameters.
+// <p>Important use case: SQL parameters.</p>

@@ -7,15 +7,20 @@ public function main() {
     int[] numsTimes10 = from var i in nums
                         // The `select` clause is evaluated for each iteration.
                         select i * 10;
+
                         
     io:println(numsTimes10);
 
-    // This is based on <br></br>
-    // `{ 10 × i | i ∈ nums }` <br></br>
-    // `{ i | i mod 2 = 0, i ∈ nums }` <br></br>
+    // This is based on
+    //
+    // `{ 10 × i | i ∈ nums }`
+    //
+    // `{ i | i mod 2 = 0, i ∈ nums }`
+    //
     // set builder notation.
     int[] evenNums = from var i in nums
                      where i % 2 == 0
                      select i;
+
     io:println(evenNums);
 }

@@ -85,6 +85,7 @@ public class CentralTest {
     private static final String COMMON_VERSION = "1.0.0";
     private static final String TEST_PREFIX = "test_";
     private static final String ANY_PLATFORM = "any";
+    private static final String JAVA11_PLATFORM = "java11";
     private static final String OUTPUT_CONTAIN_ERRORS = "build output contain errors:";
     private static final String OUTPUT_NOT_CONTAINS_EXP_MSG = "build output does not contain expected message:";
 
@@ -177,7 +178,7 @@ public class CentralTest {
         }
     }
 
-    @Test(description = "Build package B")
+    @Test(description = "Build package B which has java11 platform dependency")
     public void testBuildPackageB() throws IOException, InterruptedException {
         Process build = executeBuildCommand(DISTRIBUTION_FILE_NAME, this.tempWorkspaceDirectory.resolve(PROJECT_B),
                                        new LinkedList<>(Collections.singletonList("-c")), this.envVariables);
@@ -188,12 +189,12 @@ public class CentralTest {
         }
 
         String buildOutput = getString(build.getInputStream());
-        if (!buildOutput.contains(getGenerateBalaLog(orgName, this.packageBName, ANY_PLATFORM, COMMON_VERSION))) {
-            Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + getGenerateBalaLog(orgName, this.packageBName, ANY_PLATFORM,
+        if (!buildOutput.contains(getGenerateBalaLog(orgName, this.packageBName, JAVA11_PLATFORM, COMMON_VERSION))) {
+            Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + getGenerateBalaLog(orgName, this.packageBName, JAVA11_PLATFORM,
                                                                          COMMON_VERSION));
         }
         Assert.assertTrue(
-                getBalaPath(this.tempWorkspaceDirectory.resolve(PROJECT_B), orgName, this.packageBName, ANY_PLATFORM,
+                getBalaPath(this.tempWorkspaceDirectory.resolve(PROJECT_B), orgName, this.packageBName, JAVA11_PLATFORM,
                             COMMON_VERSION).toFile().exists());
     }
 
