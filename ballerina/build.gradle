@@ -233,7 +233,7 @@ task packageDist(type: Zip) {
     baseName = "${distributionName}"
     ext { parentDir = "${baseName}-${shortVersion}" }
     archiveFileName = "${baseName}-${shortVersion}.zip"
-    entryCompression = ZipEntryCompression.STORED
+    entryCompression = ZipEntryCompression.DEFLATED
 
     into("${parentDir}") {
         from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
@@ -271,7 +271,7 @@ task packageDistZip(type: Zip) {
     description = 'Ballerina Distribution Assembly'
     baseName = "${distributionName}"
     ext { parentDir = "${baseName}-${version}" }
-    entryCompression = ZipEntryCompression.STORED
+    entryCompression = ZipEntryCompression.DEFLATED
 
     into("${parentDir}") {
         from({ new File(temporaryDir, 'dependencies').mkdirs(); temporaryDir })
@@ -350,7 +350,7 @@ task packageDistLinux(type: Zip) {
     description = 'Ballerina Linux Distribution Assembly'
     baseName = "${distributionName}-linux"
     ext { parentDir = "${baseName}-${version}" }
-    entryCompression = ZipEntryCompression.STORED
+    entryCompression = ZipEntryCompression.DEFLATED
 
     into("${parentDir}/dependencies/jdk-11.0.8+10-jre") {
         from "build/target/extracted-jre-linux"
@@ -432,7 +432,7 @@ task packageDistMac(type: Zip) {
     description = 'Ballerina MacOS Distribution Assembly'
     baseName = "${distributionName}-macos"
     ext { parentDir = "${baseName}-${version}" }
-    entryCompression = ZipEntryCompression.STORED
+    entryCompression = ZipEntryCompression.DEFLATED
 
     into("${parentDir}/dependencies/jdk-11.0.8+10-jre") {
         from "build/target/extracted-jre-macos"
@@ -510,7 +510,7 @@ task packageDistWindows(type: Zip) {
     description = 'Ballerina Windows Distribution Assembly'
     baseName = "${distributionName}-windows"
     ext { parentDir = "${baseName}-${version}" }
-    entryCompression = ZipEntryCompression.STORED
+    entryCompression = ZipEntryCompression.DEFLATED
 
     into("${parentDir}/dependencies/jdk-11.0.8+10-jre") {
         from "build/target/extracted-jre-windows"

@@ -15,7 +15,8 @@ import ballerina/io;
         }
     }
 }
-service /subscriber on new websub:Listener(9090) {
+// Service path is not specified, hence Subscriber Service will auto generate a unique random service path segment.
+service on new websub:Listener(9090) {
     // Defines the remote function that accepts the event notification request for the WebHook.
     remote function onEventNotification(
                     websub:ContentDistributionMessage event) returns error? {
