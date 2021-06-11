@@ -45,14 +45,13 @@ public class DistributionArtifactCheckTest {
     }
 
     @Test()
-    public void dockerAnnotationExistsTest() {
+    public void c2cExistsTest() {
         Path cachePath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
                 .resolve("repo")
                 .resolve("cache")
                 .resolve("ballerina")
-                .resolve("cloud")
-                .resolve("2.0.0-beta.2");
+                .resolve("cloud");
 
         Path bbePath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
