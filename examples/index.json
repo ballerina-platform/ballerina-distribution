@@ -810,34 +810,6 @@
         ]
     },
     {
-        "title": "Deployment",
-        "column": 0,
-        "category": "Language Concepts",
-        "samples": [
-            {
-                "name": "Code to Cloud",
-                "url": "c2c-deployment",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disablePlayground": true
-            },
-            {
-                "name": "Azure Functions",
-                "url": "azure-functions-deployment",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disablePlayground": true
-            },
-            {
-                "name": "AWS Lambda",
-                "url": "aws-lambda-deployment",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disablePlayground": true
-            }
-        ]
-    },
-    {
         "title": "REST API",
         "column": 0,
         "category": "Working Over the Network",
@@ -1026,7 +998,7 @@
         ]
     },
     {
-        "title": "REST API Advance",
+        "title": "REST API Advanced",
         "column": 0,
         "category": "Working Over the Network",
         "samples": [
@@ -1361,34 +1333,6 @@
                 "name": "Proto To Ballerina",
                 "url": "proto-to-ballerina",
                 "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true
-            }
-        ]
-    },
-    {
-        "title": "Observability",
-        "column": 0,
-        "category": "Working Over the Network",
-        "samples": [
-            {
-                "name": "Distributed Tracing",
-                "url": "tracing",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disablePlayground": true
-            },
-            {
-                "name": "Counter-Based Metrics",
-                "url": "counter-metrics",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disablePlayground": true
-            },
-            {
-                "name": "Gauge-Based Metrics",
-                "url": "gauge-metrics",
-                "verifyBuild": false,
                 "verifyOutput": false,
                 "disablePlayground": true
             }
@@ -2009,6 +1953,76 @@
                 "url": "xml-json-conversion",
                 "verifyBuild": true,
                 "verifyOutput": true
+            }
+        ]
+    },
+    {
+        "title": "Tracing",
+        "column": 0,
+        "category": "Observability",
+        "samples": [
+            {
+                "name": "Distributed Tracing",
+                "url": "tracing",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disablePlayground": true
+            },
+            {
+                "name": "Counter-Based Metrics",
+                "url": "counter-metrics",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disablePlayground": true
+            }
+        ]
+    },
+    {
+            "title": "Metrics",
+            "column": 0,
+            "category": "Observability",
+            "samples": [
+                {
+                "name": "Gauge-Based Metrics",
+                "url": "gauge-metrics",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disablePlayground": true
+                }
+        ]
+    },
+    {
+        "title": "Code to Cloud",
+        "column": 0,
+        "category": "Deployment",
+        "samples": [
+            {
+                "name": "Kubernetes",
+                "url": "c2c-deployment",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disablePlayground": true
+            }
+        ]
+    },
+    {
+        "title": "Function as a Service",
+        "column": 0,
+        "category": "Deployment",
+        "samples": [
+            {
+                "name": "Azure Functions",
+                "url": "azure-functions-deployment",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disablePlayground": true
+            },
+            {
+                "name": "AWS Lambda",
+                "url": "aws-lambda-deployment",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disablePlayground": true
             }
         ]
     }
