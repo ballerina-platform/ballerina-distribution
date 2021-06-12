@@ -1,5 +1,4 @@
 import ballerina/http;
-import ballerina/log;
 import ballerina/websocket;
 
 // A WebSocket listener can be configured to accept new connections that are

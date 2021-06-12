@@ -1,4 +1,3 @@
-import ballerina/log;
 import ballerina/websocket;
 
 // A WebSocket listener can be configured to communicate through WSS as well.
