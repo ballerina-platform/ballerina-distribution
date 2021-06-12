@@ -1,6 +1,9 @@
 // A function can be viewed as a sequence diagram.
 // The diagram has a lifeline (vertical line) for each worker (both named 
 // worker and function's default worker).
+ <br/>
+ <img src="/images/sequence-diagram.png" alt="Sequence Diagrams" width="500" height="600">
+ <br/>
 // The diagram also has a lifeline for each client object parameter or variable in 
 // the initialization section, representing the remote system to which the client 
 // object is sending messages.
