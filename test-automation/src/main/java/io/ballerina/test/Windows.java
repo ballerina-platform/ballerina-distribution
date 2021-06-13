@@ -39,18 +39,16 @@ public class Windows implements Executor {
 
     @Override
     public String executeCommand(String command, boolean isAdminMode, String toolVersion) {
-        //TODO: Temporary call bat file directly
-        String batLocation = "call \"C:\\Program Files\\Ballerina\\bin\\ballerina.bat \"";
-        return Utils.executeWindowsCommand(command.replace(Utils.getCommandName(toolVersion), batLocation));
+        return Utils.executeWindowsCommand(Utils.getCommandName(toolVersion) + command);
     }
 
     @Override
     public String uninstall() {
-        return "";
+        return Utils.executeWindowsCommand("wmic product where name=\"Ballerina " + version + "\" call uninstall/nointeractive");
     }
 
     @Override
     public String cleanArtifacts() {
-        return Utils.executeWindowsCommand("del " + Utils.getUserHome() + "\\.ballerina");
+        return Utils.executeWindowsCommand("rmdir /Q /S " + Utils.getUserHome() + "\\.ballerina");
     }
 }
