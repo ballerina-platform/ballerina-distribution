@@ -57,18 +57,6 @@ public class Utils {
 
     public static final String DISTRIBUTION_LOCATION = "http://dist-dev.ballerina.io/downloads/";
 
-    /**
-     * Log the output of an input stream.
-     *
-     * @param inputStream The stream.
-     * @throws IOException Error reading the stream.
-     */
-    private static void logOutput(InputStream inputStream) throws IOException {
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
-            br.lines().forEach(OUT::println);
-        }
-    }
-
     public static void downloadFile(String version, String installerName) {
         OUT.println("Downloading " + installerName);
         try {
@@ -99,7 +87,7 @@ public class Utils {
         }
     }
 
-    public static String executeWindowsCommand(String command) {
+    public static String executeCommand(String command) {
         OUT.println("Executing: " + command);
         String output = "";
         try {
@@ -107,7 +95,7 @@ public class Utils {
             if (isWindows()) {
                 processBuilder = new ProcessBuilder("cmd", "/c", command);
             } else {
-                processBuilder = new ProcessBuilder(command);
+                processBuilder = new ProcessBuilder("bash", "-c", command);
             }
             Process process = processBuilder.start();
             int exitCode = process.waitFor();
@@ -128,42 +116,9 @@ public class Utils {
                     output += line + "\n";
                 }
             }
-            logOutput(inputStream);
+            OUT.println(output);
         } catch (IOException | InterruptedException e) {
             OUT.println("Error occurred while executing " + command + ": " + e.getMessage());
-        }
-        return output;
-    }
-
-    public static String executeCommand(String command) {
-        String output = "";
-        try {
-            File file = new File(getUserHome() + File.separator
-                    + "temp-" + new Timestamp(System.currentTimeMillis()).getTime() + ".sh");
-            file.createNewFile();
-            file.setExecutable(true);
-            PrintWriter writer = new PrintWriter(file.getPath(), "UTF-8");
-            writer.println(command);
-            writer.close();
-
-            ProcessBuilder pb = new ProcessBuilder(file.getPath());
-            Process process = pb.start();
-            InputStream inputStream = process.getInputStream();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                output += line + "\n";
-            }
-            if (output.isEmpty()) {
-                inputStream = process.getErrorStream();
-                reader = new BufferedReader(new InputStreamReader(inputStream));
-                while ((line = reader.readLine()) != null) {
-                    output += line + "\n";
-                }
-            }
-            file.delete();
-        } catch (Exception e) {
-            System.out.print("Error occurred");
         }
         return output;
     }

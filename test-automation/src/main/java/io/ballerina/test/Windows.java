@@ -33,22 +33,22 @@ public class Windows implements Executor {
 
     @Override
     public String install() {
-        return Utils.executeWindowsCommand("msiexec /i " + Utils.getUserHome() + "\\" + installerName
+        return Utils.executeCommand("msiexec /i " + Utils.getUserHome() + "\\" + installerName
                 + " /qn /l \"install-log.log\"");
     }
 
     @Override
     public String executeCommand(String command, boolean isAdminMode, String toolVersion) {
-        return Utils.executeWindowsCommand(Utils.getCommandName(toolVersion) + command);
+        return Utils.executeCommand(Utils.getCommandName(toolVersion) + command);
     }
 
     @Override
     public String uninstall() {
-        return Utils.executeWindowsCommand("wmic product where name=\"Ballerina " + version + "\" call uninstall/nointeractive");
+        return Utils.executeCommand("wmic product where name=\"Ballerina " + version + "\" call uninstall/nointeractive");
     }
 
     @Override
     public String cleanArtifacts() {
-        return Utils.executeWindowsCommand("rmdir /Q /S " + Utils.getUserHome() + "\\.ballerina");
+        return Utils.executeCommand("rmdir /Q /S " + Utils.getUserHome() + "\\.ballerina");
     }
 }
