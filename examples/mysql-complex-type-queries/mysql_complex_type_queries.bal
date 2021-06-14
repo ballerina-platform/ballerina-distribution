@@ -34,12 +34,10 @@ public function main() returns error? {
     mysql:Client mysqlClient = check new (user = "root",
             password = "Test@123", database = "MYSQL_BBE");
 
-    // Since the `rowType` is provided as a `BinaryType`, the `resultStream` 
+    // Since the `rowType` is provided as a `BinaryType`, the `binaryResultStream`
     // will have `BinaryType` records.
-    stream<record{}, error> resultStream = 
+    stream<BinaryType, error> binaryResultStream =
                 mysqlClient->query(`SELECT * FROM BINARY_TYPES`, BinaryType);
-    stream<BinaryType, sql:Error> binaryResultStream = 
-                <stream<BinaryType, sql:Error>> resultStream;
 
     io:println("Binary types Result :");
     // Iterates the `binaryResultStream`.
@@ -47,12 +45,10 @@ public function main() returns error? {
         io:println(result);
     });
 
-    // Since the `rowType` is provided as an `JsonType`, the `resultStream2` will
+    // Since the `rowType` is provided as an `JsonType`, the `jsonResultStream` will
     // have `JsonType` records.
-    stream<record{}, error> resultStream2 = 
+    stream<JsonType, error> jsonResultStream =
                 mysqlClient->query(`SELECT * FROM JSON_TYPES`, JsonType);
-    stream<JsonType, sql:Error> jsonResultStream =
-                <stream<JsonType, sql:Error>> resultStream2;
 
     io:println("Json type Result :");
     // Iterates the `jsonResultStream`.
@@ -60,15 +56,13 @@ public function main() returns error? {
         io:println(result);
     });
 
-    // Since the `rowType` is provided as a `DateTimeType`, the `resultStream3`
+    // Since the `rowType` is provided as a `DateTimeType`, the `dateResultStream`
     // will have `DateTimeType` records. The `Date`, `Time`, `DateTime`, and
     // `Timestamp` fields of the database table can be mapped to `time:Utc`,
     // string, and int types in Ballerina.
-    stream<record{}, error> resultStream3 = 
+    stream<DateTimeType, error> dateResultStream =
                 mysqlClient->query(`SELECT * FROM DATE_TIME_TYPES`,
                                      DateTimeType);
-    stream<DateTimeType, sql:Error> dateResultStream =
-                <stream<DateTimeType, sql:Error>>resultStream3;
 
     io:println("DateTime types Result :");
     // Iterates the `dateResultStream`.
