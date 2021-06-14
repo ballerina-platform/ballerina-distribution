@@ -37,7 +37,7 @@ public function main() returns error? {
     // Since the `rowType` is provided as a `BinaryType`, the `binaryResultStream`
     // will have `BinaryType` records.
     stream<BinaryType, error> binaryResultStream =
-                mysqlClient->query(`SELECT * FROM BINARY_TYPES`, BinaryType);
+                mysqlClient->query(`SELECT * FROM BINARY_TYPES`);
 
     io:println("Binary types Result :");
     // Iterates the `binaryResultStream`.
@@ -48,7 +48,7 @@ public function main() returns error? {
     // Since the `rowType` is provided as an `JsonType`, the `jsonResultStream` will
     // have `JsonType` records.
     stream<JsonType, error> jsonResultStream =
-                mysqlClient->query(`SELECT * FROM JSON_TYPES`, JsonType);
+                mysqlClient->query(`SELECT * FROM JSON_TYPES`);
 
     io:println("Json type Result :");
     // Iterates the `jsonResultStream`.
@@ -61,8 +61,7 @@ public function main() returns error? {
     // `Timestamp` fields of the database table can be mapped to `time:Utc`,
     // string, and int types in Ballerina.
     stream<DateTimeType, error> dateResultStream =
-                mysqlClient->query(`SELECT * FROM DATE_TIME_TYPES`,
-                                     DateTimeType);
+                mysqlClient->query(`SELECT * FROM DATE_TIME_TYPES);
 
     io:println("DateTime types Result :");
     // Iterates the `dateResultStream`.
