@@ -1,8 +1,10 @@
 name: Generate Ballerina By Examples
 on:
     push:
+        branches:
+            - 'master'
         paths:
-        - 'examples/**'
+            - 'examples/**'
 jobs:
     trigger-bbe-gen:
         name: Trigger Ballerina By Examples genration
