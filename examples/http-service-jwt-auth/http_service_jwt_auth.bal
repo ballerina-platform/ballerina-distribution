@@ -14,7 +14,7 @@ listener http:Listener securedEP = new(9090,
 // `http:JwtValidatorConfig` configurations.
 // Authorization is based on scopes. A scope maps to one or more groups.
 // Authorization can be enabled by setting the `string|string[]` type
-// configurations.
+// configurations for `scopes` field.
 @http:ServiceConfig {
     auth: [
         {
