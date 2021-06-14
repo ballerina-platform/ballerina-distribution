@@ -57,10 +57,11 @@ public function main() returns error? {
     // should be closed specifically.
     error? er = resultStream.close();
 
+    // If a `Customer` stream type is defined when calling the query method,
     // The result is returned as a `Customer` record stream and the elements
     // of the stream can be either a `Customer` record or an error.
-    stream<record{}, error> resultStream3 =
-        mysqlClient->query(`SELECT * FROM Customers`, Customer);
+    stream<Customer, error> customerStream =
+        mysqlClient->query(`SELECT * FROM Customers`);
 
     // Casts the generic record type to the `Customer` stream type.
     stream<Customer, sql:Error> customerStream =
