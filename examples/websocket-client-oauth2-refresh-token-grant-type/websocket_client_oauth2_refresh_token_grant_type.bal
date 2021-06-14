@@ -25,6 +25,6 @@ websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
 
 public function main() returns error? {
     check securedEP->writeTextMessage("Hello, World!");
-    string response = check securedEP->readTextMessage();
-    io:println(response);
+    string textMessage = check securedEP->readTextMessage();
+    io:println(textMessage);
 }
