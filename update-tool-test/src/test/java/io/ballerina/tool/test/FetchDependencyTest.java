@@ -36,7 +36,7 @@ public class FetchDependencyTest {
     }
 
     @Test(dataProvider = "getExecutors")
-    public void testFetchDependency(Executor executor) {
+    public void testFetchDependency(Executor executor) throws InterruptedException {
         executor.transferArtifacts();
         executor.install();
 

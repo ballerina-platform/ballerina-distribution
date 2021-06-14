@@ -40,7 +40,7 @@ public class UpdateDistTest {
     }
 
     @Test(dataProvider = "getExecutors")
-    public void testDistCommands(Executor executor) {
+    public void testDistCommands(Executor executor) throws InterruptedException {
         executor.transferArtifacts();
         executor.install();
 

@@ -37,7 +37,7 @@ public class ProjectTest {
     }
 
     @Test(dataProvider = "getExecutors")
-    public void testProject(Executor executor) {
+    public void testProject(Executor executor) throws InterruptedException {
         executor.transferArtifacts();
         executor.install();
 

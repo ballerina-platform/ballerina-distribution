@@ -41,7 +41,7 @@ public class UpdateToolTest {
     }
 
     @Test(dataProvider = "getExecutors")
-    public void testUpdateTool(Executor executor) {
+    public void testUpdateTool(Executor executor) throws InterruptedException {
         executor.transferArtifacts();
         executor.install();
 
