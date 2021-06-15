@@ -32,19 +32,21 @@ jobs:
         run: chmod +x gradlew
       - name: Update installer version
         env:
-         GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+         GITHUB_TOKEN: "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"
+         packageUser: "parkavi11"
+         packagePAT: "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"
         run: |
           ./gradlew build updateInstallerVersion -x test
           git commit -m "update auto generated installer version"
-      - name: Publish artifact
-        env:
-          GITHUB_TOKEN: "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"
-          packageUser: "parkavi11"
-          packagePAT: "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"
-          devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
-        run: |
-          ./gradlew build -Pversion=${VERSION}
-          ./gradlew release -Prelease.useAutomaticVersion=true -x test
+#      - name: Publish artifact
+#        env:
+#          GITHUB_TOKEN: "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"
+#          packageUser: "parkavi11"
+#          packagePAT: "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"
+#          devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
+#        run: |
+#          ./gradlew build -Pversion=${VERSION}
+#          ./gradlew release -Prelease.useAutomaticVersion=true -x test
 #      - name: Create release
 #        id: create_release
 #        uses: actions/create-release@v1
