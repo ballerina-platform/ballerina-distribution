@@ -1,3 +1,5 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
 /*
  * Copyright (c) 2020, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
@@ -67,16 +69,22 @@ allprojects {
     }
 
     task updateInstallerVersion(type: WriteProperties) {
-        exec {
             def installerVersionVal=UUID.randomUUID().toString()
             def propertyFilePath="${project.rootDir}/gradle.properties"
-            commandLine 'sh', '-c', "sed -ie \"s/^installerVersion=.*/installerVersion=$installerVersionVal/\" $propertyFilePath"
+        if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+            exec {
+                commandLine 'cmd', '/c', "sed -ie \"s/^installerVersion=.*/installerVersion=$installerVersionVal/\" \"$propertyFilePath\""
+            }
+        } else {
+            exec {
+                commandLine 'bash', '-c', "sed -ie \"s/^installerVersion=.*/installerVersion=$installerVersionVal/\" \"$propertyFilePath\""
+            }
         }
     }
 
     afterReleaseBuild.dependsOn publishToMavenLocal
     afterReleaseBuild.dependsOn publish
-    beforeReleaseBuild.dependsOn updateInstallerVersion
+//    beforeReleaseBuild.dependsOn updateInstallerVersion
 }
 
 subprojects {
