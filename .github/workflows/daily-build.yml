@@ -91,6 +91,14 @@ jobs:
             BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.version }}.zip
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'ballerina/ballerina:nightly-${{ steps.version.outputs.version }}'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          severity: 'CRITICAL'
       - name: Invoke Connector Ballerina Version Bump
         run: |
           ballerinaVersion=$((grep -w 'ballerinaLangVersion' | cut -d= -f2) < gradle.properties)
