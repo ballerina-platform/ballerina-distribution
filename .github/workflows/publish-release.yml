@@ -34,14 +34,14 @@ jobs:
         env:
          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         run: |
-          ./gradlew build updateInstallerVersion
+          ./gradlew build updateInstallerVersion -x test
           git commit -m "update auto generated installer version"
-#      - name: Publish artifact
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
-#          packageUser: ${{ secrets.BALLERINA_BOT_USERNAME }}
-#          packagePAT: ${{ secrets.BALLERINA_BOT_TOKEN }}
-#          devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
+      - name: Publish artifact
+        env:
+          GITHUB_TOKEN: "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"
+          packageUser: "parkavi11"
+          packagePAT: "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"
+          devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
 #        run: |
 #          ./gradlew build -Pversion=${VERSION}
 #          ./gradlew release -Prelease.useAutomaticVersion=true -x test
