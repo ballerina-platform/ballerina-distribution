@@ -1,11 +1,6 @@
 import ballerina/io;
-import ballerina/log;
 import ballerina/websocket;
 
-@websocket:ServiceConfig {
-    subProtocols: ["xml", "json"],
-    idleTimeout: 120
-}
 service /basic/ws on new websocket:Listener(9090) {
    resource isolated function get .()
                      returns websocket:Service|websocket:UpgradeError {
@@ -19,11 +14,8 @@ service class WsService {
     // This `remote function` is triggered when a new text message is received
     // from a client.
     remote isolated function onTextMessage(websocket:Caller caller,
-                                 string text) {
+                                 string text) returns websocket:Error? {
         io:println("\ntext message: " + text);
-        websocket:Error? err = caller->writeTextMessage("You said: " + text);
-        if err is websocket:Error {
-            log:printError("Error occurred when sending text", 'error = err);
-        }
+        check caller->writeTextMessage("You said: " + text);
     }
 }
