@@ -38,6 +38,7 @@ jobs:
         run: |
           ./gradlew build updateInstallerVersion -x test
           git commit -m "update auto generated installer version"
+          git add .
       - name: Publish artifact
         env:
           GITHUB_TOKEN: ${{ secrets.PARKAVI_ACCESS_TOKEN }}
