@@ -97,8 +97,6 @@ jobs:
           image-ref: 'ballerina/ballerina:nightly-${{ steps.version.outputs.version }}'
           format: 'table'
           exit-code: '1'
-          ignore-unfixed: true
-          severity: 'CRITICAL'
       - name: Invoke Connector Ballerina Version Bump
         run: |
           ballerinaVersion=$((grep -w 'ballerinaLangVersion' | cut -d= -f2) < gradle.properties)
