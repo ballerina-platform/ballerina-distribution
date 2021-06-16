@@ -38,15 +38,15 @@ jobs:
         run: |
           ./gradlew build updateInstallerVersion -x test
           git commit -m "update auto generated installer version"
-#      - name: Publish artifact
-#        env:
-#          GITHUB_TOKEN: "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"
-#          packageUser: "parkavi11"
-#          packagePAT: "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"
+      - name: Publish artifact
+        env:
+          GITHUB_TOKEN: ${{ secrets.PARKAVI_ACCESS_TOKEN }}
+          packageUser: ${{ secrets.PARKAVI_SECRET }}
+          packagePAT: ${{ secrets.PARKAVI_PAT }}
 #          devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
-#        run: |
-#          ./gradlew build -Pversion=${VERSION}
-#          ./gradlew release -Prelease.useAutomaticVersion=true -x test
+        run: |
+          ./gradlew build -Pversion=${VERSION}
+          ./gradlew release -Prelease.useAutomaticVersion=true -x test
 #      - name: Create release
 #        id: create_release
 #        uses: actions/create-release@v1
