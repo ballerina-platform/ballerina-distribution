@@ -34,7 +34,7 @@ jobs:
         env:
          GITHUB_TOKEN: ${{ secrets.PARKAVI_ACCESS_TOKEN }}
          packageUser: ${{ secrets.PARKAVI_SECRET }}
-         packagePAT: ${{ secrets.${{ secrets.PARKAVI_SECRET }}
+         packagePAT: ${{ secrets.PARKAVI_PAT }}
         run: |
           ./gradlew build updateInstallerVersion -x test
           git commit -m "update auto generated installer version"
