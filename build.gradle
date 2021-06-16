@@ -14,6 +14,8 @@
  * limitations under the License.
 */
 
+import org.apache.tools.ant.taskdefs.condition.Os
+
 plugins {
     id 'base'
     id 'maven-publish'
@@ -63,6 +65,20 @@ allprojects {
         git {
             // To release from any branch
             requireBranch = ''
+        }
+    }
+
+    task updateInstallerVersion(type: WriteProperties) {
+        def installerVersionVal=UUID.randomUUID().toString()
+        def propertyFilePath="${project.rootDir}/gradle.properties"
+        if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+            exec {
+                commandLine 'cmd', '/c', "sed -ie \"s/^installerVersion=.*/installerVersion=$installerVersionVal/\" \"$propertyFilePath\""
+            }
+        } else {
+            exec {
+                commandLine 'bash', '-c', "sed -ie \"s/^installerVersion=.*/installerVersion=$installerVersionVal/\" \"$propertyFilePath\""
+            }
         }
     }
 
