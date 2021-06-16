@@ -1,0 +1,4 @@
+# Before testing this sample, first start a sample service secured with JWT Auth.
+# You may need to change the trusted certificate file path and private key file path.
+bal run websocket_client_self_signed_jwt_auth.bal
+Hello, World!

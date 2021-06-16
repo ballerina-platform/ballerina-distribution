@@ -3,7 +3,7 @@ import ballerina/io;
 
 // Defines the HTTP client to call the OAuth2 secured APIs.
 // The client is enriched with the `Authorization: Bearer <token>` header by
-// passing the `http:PasswordGrantConfig` to the `auth` configuration of the
+// passing the `http:OAuth2PasswordGrantConfig` to the `auth` configuration of the
 // client.
 http:Client securedEP = check new("https://localhost:9090",
     auth = {
@@ -34,6 +34,6 @@ http:Client securedEP = check new("https://localhost:9090",
 );
 
 public function main() returns error? {
-    http:Response response = check securedEP->get("/foo/bar");
-    io:println(check response.getTextPayload());
+    string response = check securedEP->get("/foo/bar");
+    io:println(response);
 }

@@ -13,18 +13,20 @@ public function main() returns error? {
     }
 }
 
-// Called within transaction stmt
+// Called within the transaction statement.
 transactional function doUpdate(Update u) returns error? {
-    // Call non-transactional function
+    // Calls the `foo()` non-transactional function.
     foo(u);
-    // Call transactional function
+    // Calls the `bar()` transactional function.
     bar(u);
+
 }
 
 function foo(Update u) {
     if transactional {
-        // This is transactional context
+        // This is a transactional context.
         bar(u);
+
     }
 }
 

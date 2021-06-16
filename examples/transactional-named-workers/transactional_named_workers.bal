@@ -23,6 +23,7 @@ transactional function exec(Update u) returns error? {
     transactional worker A {
         bar();
     }
+
 }
 
 transactional function bar() {

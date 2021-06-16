@@ -8,5 +8,5 @@
 // <li>field is mutable unless it is `final` and has type that is subtype of `readonly`</li>
 // </ul>
 // <br></br>
-// Isolated root concept treats `isolated` objects as opaque. Isolated functions can access a `final`
-// variable whose type is an `isolated` object.
+// <p>Isolated root concept treats `isolated` objects as opaque. Isolated functions can access a `final`
+// variable whose type is an `isolated` object.</p>

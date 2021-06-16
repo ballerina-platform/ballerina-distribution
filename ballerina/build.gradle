@@ -233,7 +233,7 @@ task packageDist(type: Zip) {
     baseName = "${distributionName}"
     ext { parentDir = "${baseName}-${shortVersion}" }
     archiveFileName = "${baseName}-${shortVersion}.zip"
-    entryCompression = ZipEntryCompression.STORED
+    entryCompression = ZipEntryCompression.DEFLATED
 
     into("${parentDir}") {
         from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
@@ -271,7 +271,7 @@ task packageDistZip(type: Zip) {
     description = 'Ballerina Distribution Assembly'
     baseName = "${distributionName}"
     ext { parentDir = "${baseName}-${version}" }
-    entryCompression = ZipEntryCompression.STORED
+    entryCompression = ZipEntryCompression.DEFLATED
 
     into("${parentDir}") {
         from({ new File(temporaryDir, 'dependencies').mkdirs(); temporaryDir })
@@ -350,7 +350,7 @@ task packageDistLinux(type: Zip) {
     description = 'Ballerina Linux Distribution Assembly'
     baseName = "${distributionName}-linux"
     ext { parentDir = "${baseName}-${version}" }
-    entryCompression = ZipEntryCompression.STORED
+    entryCompression = ZipEntryCompression.DEFLATED
 
     into("${parentDir}/dependencies/jdk-11.0.8+10-jre") {
         from "build/target/extracted-jre-linux"
@@ -432,7 +432,7 @@ task packageDistMac(type: Zip) {
     description = 'Ballerina MacOS Distribution Assembly'
     baseName = "${distributionName}-macos"
     ext { parentDir = "${baseName}-${version}" }
-    entryCompression = ZipEntryCompression.STORED
+    entryCompression = ZipEntryCompression.DEFLATED
 
     into("${parentDir}/dependencies/jdk-11.0.8+10-jre") {
         from "build/target/extracted-jre-macos"
@@ -510,7 +510,7 @@ task packageDistWindows(type: Zip) {
     description = 'Ballerina Windows Distribution Assembly'
     baseName = "${distributionName}-windows"
     ext { parentDir = "${baseName}-${version}" }
-    entryCompression = ZipEntryCompression.STORED
+    entryCompression = ZipEntryCompression.DEFLATED
 
     into("${parentDir}/dependencies/jdk-11.0.8+10-jre") {
         from "build/target/extracted-jre-windows"
@@ -598,159 +598,6 @@ task testExamples() {
     patternSet.exclude("**/ballerina-internal.log")
     inputs.files(files("${distPath}/examples").asFileTree.matching(patternSet))
 
-    // The following BBEs will not be verified by compiling/running.
-    def buildIgnoreList = [
-            'proto-to-ballerina',
-            'docker-deployment',
-            'c2c-deployment',
-            'aws-lambda-deployment',
-            'azure-functions-deployment',
-            'openshift-deployment',
-            'testerina-guarantee-test-execution-order',
-            'testerina-data-driven-tests',
-            'testerina-before-and-after-suite',
-            'testerina-before-each-test',
-            'testerina-before-and-after-test',
-            'testerina-assertions',
-            'testerina-before-and-after-each',
-            'testerina-before-and-after-groups',
-            'testerina-group-tests',
-            'testerina-mocking-objects',
-            'testerina-mocking-functions',
-            'http-caching-client',
-            'http-data-binding',
-            'http-1.1-to-2.0-protocol-switch',
-            'http-client-endpoint',
-            'response-with-multiparts',
-            'gauge-metrics',
-            'counter-metrics',
-            'tracing',
-            'openapi-to-ballerina',
-            'taint-checking', // Should not compile
-            'http-client-with-basic-auth',
-            'http-client-with-bearer-token-auth',
-            'http-client-with-self-signed-jwt-auth',
-            'http-client-with-oauth2-client-credentials-grant-type',
-            'http-client-with-oauth2-password-grant-type',
-            'http-client-with-oauth2-refresh-token-grant-type',
-            'https-client',
-            'https-mutual-ssl',
-
-            // Disabling due to pending migration for service typing
-            'http-filters',
-
-            // Disabling sice we could not include credentials in the BBE
-            'websub-webhook-sample',
-
-            // Disabling temporarily (https://github.com/ballerina-platform/ballerina-distribution/issues/1242)
-            "ballerina-to-openapi",
-            "optional-type",
-            "while",
-
-            // Disabling since these modules are removed from the distribution
-            'kafka-consumer-client',
-            'kafka-producer',
-            'kafka-consumer-service',
-            'kafka-producer-transactional',
-            'kafka-consumer-group-service',
-            'kafka-authentication-sasl-plain-consumer',
-            'kafka-authentication-sasl-plain-producer',
-            'nats-basic-pub-sub',
-            'nats-basic-request-reply',
-            'nats-streaming-pub-sub',
-            'nats-streaming-durable-subscriptions',
-            'nats-streaming-queue-group',
-            'nats-streaming-start-position',
-            'rabbitmq-producer',
-            'rabbitmq-consumer',
-            'rabbitmq-consumer-with-client-acknowledgement',
-            'rabbitmq-consumer-with-data-binding',
-            'rabbitmq-consumer-with-qos-settings',
-            'rabbitmq-transaction-producer',
-            'rabbitmq-transaction-consumer',
-
-            // Disabling since JDBC & MySQL modules are removed from the distribution
-            'jdbc-parameterized-query',
-            'jdbc-execute-operation',
-            'jdbc-query-operation',
-            'jdbc-init-options',
-            'jdbc-complex-type-queries', // Consists date time in output
-            'jdbc-batch-execute-operation', // Consists transaction server start log
-            'mysql-init-options',
-            'mysql-query-operation',
-            'mysql-complex-type-queries',
-            'mysql-execute-operation',
-            'mysql-batch-execute-operation',
-            'mysql-parameterized-query',
-            'mysql-call-stored-procedures',
-            'local-transactions',
-            'xa-transactions',
-            'retry-transactions'
-    ]
-
-    // The following BBEs will be excluded from output verification, which means verifying the output of the `.bal` file
-    // against the output given at `.out` file. But will be verified by compiling and running tests if it is not added
-    // to the above buildIgnoreList.
-    def outputVerificationIgnoreList = [
-            'the-main-function', //Needs user input
-            'local-transactions-with-handlers', // Xid varies
-            'distributed-transactions', // has timestamps in the output
-            'optional-type',  // Needs inputs at runtime
-            'while',        // Needs inputs at runtime
-            'any-type', // Has time component
-            'record-readonly-fields', // Has user name in output
-            'checkpanic', // Has user name in output
-            'deprecation', // Contains user input
-            'foreach', // Has tabs for formatting in input
-            'grpc-server-streaming',
-            'http-compression',
-            'http-redirects',
-            'http-2-0-server-push',
-            'http-cookies',
-            'header-based-routing',
-            'http-circuit-breaker',
-            'request-with-multiparts',
-            'different-payload-types',
-            'absolute-path-and-path',
-            'http-trace-logs',
-            'restrict-by-media-type',
-            'http-cors',
-            'http-client-data-binding',
-            'http-resource-returns', // Date header varies
-            'websocket-basic-sample',
-            'websocket-text-client',
-            'websocket-binary-client',
-            'random',  // Output varies
-            'log-api',
-            'udp-client',
-            'udp-connect-client',
-            'udp-listener',
-            'tcp-listener',
-            'tcp-client',
-            'tcp-transport-security',
-            'ballerina-to-openapi',
-            'client-generation',
-            'directory-listener',
-            'file', // Absolute path varies
-            'filepath', // Depends on OS
-            'time', // Due to a current timestamp
-            'locks', // Output is inconsistent between runs
-            'crypto', // Output with line breaks cannot be compared
-            'jwt-issue-validate', // Output depends on time
-            'send-email',
-            'receive-email-using-client',
-            'receive-email-using-listener',
-            'file-io',
-            'uuid',  // Output varies.
-            'os',  // Output varies.
-            'grpc-simple',
-            'grpc-simple-with-headers',
-            'grpc-secured-simple',
-            'grpc-server-streaming',
-            'grpc-client-streaming',
-            'grpc-bidirectional-streaming'
-    ]
-
     doFirst {
         copy {
             into "$distPath/lib"
@@ -770,13 +617,9 @@ task testExamples() {
             examples.each { example ->
                 def folder = new File("${distPath}/${example.url}")
                 if (folder.exists()) {
-                    bbeList.push("$example.url")
+                    bbeList.push(example)
                 }
             }
-        }
-
-        buildIgnoreList.each { String elements ->
-            bbeList.remove("$elements")
         }
     }
 
@@ -824,20 +667,21 @@ task testExamples() {
     }
 
     ext.buildBBE = { bbe ->
+
         def exitVal
         def additionalBuildParams = ""
-        println "Building example ${bbe}"
+        println "Building example '${bbe.url}'"
         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
             //TODO: Need to verify with windows
             exitVal = exec {
                 ignoreExitValue true
-                workingDir "${distPath}/${bbe}"
+                workingDir "${distPath}/${bbe.url}"
                 commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'build', '--experimental', "${additionalBuildParams}"
             }
         } else {
             exitVal = exec {
                 ignoreExitValue true
-                workingDir "${distPath}/${bbe}"
+                workingDir "${distPath}/${bbe.url}"
                 commandLine 'sh', '-c', "${distPath}/bin/bal build --experimental ${additionalBuildParams}"
             }
         }
@@ -848,12 +692,13 @@ task testExamples() {
     }
 
     ext.outputVerification = { bbe ->
-        def directoryPath = "${distPath}/${bbe}"
+
+        def directoryPath = "${distPath}/${bbe.url}"
         File fileReference
         def curlCommands = []
         def ports = []
         def fileOut = []
-        def balName = bbe.replace('-', '_') + ".bal"
+        def balName = bbe.url.replace('-', '_') + ".bal"
         FileTree tree = fileTree(directoryPath)
         def curlCommandsFilePath = "${directoryPath}/curlcommandout.txt"
         def portFilePath = "${directoryPath}/ports.txt"
@@ -878,12 +723,20 @@ task testExamples() {
                 fileReference = file(content)
                 String portPrefixHttp = "[ballerina/http] started HTTP/WS listener 0.0.0.0:"
                 String portPrefixHttps = "[ballerina/http] started HTTPS/WSS listener 0.0.0.0:"
+                String portPrefixWs = "[ballerina/websocket] started WS listener 0.0.0.0:"
+                String portPrefixWss = "[ballerina/websocket] started WSS listener 0.0.0.0:"
                 fileReference.readLines().each { lines ->
                     if (lines.contains(portPrefixHttp)) {
                         lines = (lines - portPrefixHttp).trim()
                         ports.add(lines)
                     } else if (lines.contains(portPrefixHttps)) {
                         lines = (lines - portPrefixHttps).trim()
+                        ports.add(lines)
+                    } else if (lines.contains(portPrefixWs)) {
+                        lines = (lines - portPrefixWs).trim()
+                        ports.add(lines)
+                    } else if (lines.contains(portPrefixWss)) {
+                        lines = (lines - portPrefixWss).trim()
                         ports.add(lines)
                     }
                 }
@@ -899,7 +752,7 @@ task testExamples() {
             curlCommands.each {
                 fileReference << "${it}\n"
             }
-            println "Verify output ${bbe}"
+            println "Verify output '${bbe.url}'"
             def scriptPath = "${project.rootDir}/ballerina/lib"
             def exitVal
             if (Os.isFamily(Os.FAMILY_WINDOWS)) {
@@ -934,14 +787,14 @@ task testExamples() {
             delete curlCommandsFilePath
             delete outputFilePath
         } else if (ports.isEmpty() && curlCommands.isEmpty()) {
-            balName = bbe.replace('-', '_')
+            balName = bbe.url.replace('-', '_')
             def str = ""
             fileOut = []
             def bbeOutput = []
             def cmdOutAry = []
             def errOut = new ByteArrayOutputStream()
             new ByteArrayOutputStream().withStream { os ->
-                println "Output Verification ${bbe}"
+                println "Output Verification '${bbe.url}'"
                 if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                     exec {
                         workingDir "${directoryPath}"
@@ -997,22 +850,25 @@ task testExamples() {
     doLast {
         def failedBuildExamples = []
         def failOutputVerificationExamples = []
-        bbeList.each { String bbe ->
-            if (!outputVerificationIgnoreList.contains(bbe)) {
+        bbeList.each { bbe ->
+            if (bbe.verifyOutput) {
                 boolean outputVerificationFailFlag = outputVerification(bbe)
                 if (outputVerificationFailFlag) {
-                    failOutputVerificationExamples.add(bbe)
+                    failOutputVerificationExamples.add(bbe.url)
                 }
             }
-            File tomlFile = new File("${distPath}/${bbe}/Ballerina.toml")
-            if (!tomlFile.exists()) {
-                prepareProject(bbe)
+
+            if (bbe.verifyBuild) {
+                File tomlFile = new File("${distPath}/${bbe.url}/Ballerina.toml")
+                if (!tomlFile.exists()) {
+                    prepareProject(bbe.url)
+                }
+                boolean buildFailFlag = buildBBE(bbe)
+                if (buildFailFlag) {
+                    failedBuildExamples.add(bbe.url)
+                }
+                delete tomlFile
             }
-            boolean buildFailFlag = buildBBE(bbe)
-            if (buildFailFlag) {
-                failedBuildExamples.add(bbe)
-            }
-            delete tomlFile
         }
 
         boolean buildFailure = false
@@ -1253,5 +1109,3 @@ deleteTemporaryFiles.dependsOn testDevToolsIntegration
 test.dependsOn deleteTemporaryFiles
 test.dependsOn testExamples
 test.dependsOn testStdlibs
-
-testExamples.enabled = false

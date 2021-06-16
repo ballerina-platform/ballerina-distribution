@@ -12,6 +12,7 @@ public class Counter {
     public function get() returns int {
         // Methods use `self` to access their object.
         return self.n;
+
     }
 
     public function inc() {
