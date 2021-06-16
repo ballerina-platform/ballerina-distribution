@@ -37,8 +37,8 @@ jobs:
           packagePAT: ${{ secrets.PARKAVI_PAT }}
         run: |
           ./gradlew build updateInstallerVersion -x test
-          git commit -m "update auto generated installer version"
           git add .
+          git commit -m "update auto generated installer version"
 
 #name: Publish release
 #
