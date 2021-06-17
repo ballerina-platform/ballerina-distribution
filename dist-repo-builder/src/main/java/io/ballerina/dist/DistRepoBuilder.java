@@ -21,6 +21,7 @@ import io.ballerina.projects.ProjectEnvironmentBuilder;
 import io.ballerina.projects.bala.BalaProject;
 import io.ballerina.projects.repos.TempDirCompilationCache;
 import org.ballerinalang.docgen.docs.BallerinaDocGenerator;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileSystems;
@@ -124,7 +125,7 @@ public class DistRepoBuilder {
         }
         // Check if module jar exists
         Path jar = repo.resolve("cache").resolve(orgName).resolve(moduleName).resolve(version).resolve("java11")
-                .resolve(moduleName + ".jar");
+                .resolve(getJarName(orgName, moduleName, version));
         if (!Files.exists(jar)) {
             System.out.println("Jar missing for package :" + orgName + "/" + moduleName);
            valid = false;
@@ -151,6 +152,10 @@ public class DistRepoBuilder {
             }
         });
         return balas;
+    }
+
+    private static String getJarName(String orgName, String moduleName, String version) {
+        return orgName + '-' + moduleName + '-' + version + ".jar";
     }
 
     private static void setFilePermission(Path filepath) {
