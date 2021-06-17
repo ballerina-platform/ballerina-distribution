@@ -35,9 +35,9 @@ jobs:
         run: chmod +x gradlew
       - name: Update installer version
         env:
-          GITHUB_TOKEN: ${{ secrets.PARKAVI_ACCESS_TOKEN }}
-          packageUser: ${{ secrets.PARKAVI_SECRET }}
-          packagePAT: ${{ secrets.PARKAVI_PAT }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+          packageUser: ${{ secrets.BALLERINA_BOT_USERNAME }}
+          packagePAT: ${{ secrets.BALLERINA_BOT_TOKEN }}
         run: |
           ./gradlew build updateInstallerVersion -x test
           git add .
