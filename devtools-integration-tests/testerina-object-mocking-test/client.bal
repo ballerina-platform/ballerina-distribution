@@ -17,11 +17,9 @@ public function findOrder(string orderId) returns (json) {
 public function addOrder(json orderPayload) returns (json) {
 
     json|error IDJson = orderPayload.Order.ID;
-
     if (IDJson is json) {
-        string ID = IDJson.toJsonString();
-        json foundOrder = findOrder(ID.toJsonString());
-
+        string ID = IDJson.toString();
+        json foundOrder = findOrder(ID);
         if (foundOrder == {"Error": "Order : " + ID + " cannot be found."}) {
             http:Response|error response = orderManagementClient->post("/order", orderPayload);
             if (response is http:Response) {
