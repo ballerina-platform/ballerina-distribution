@@ -644,7 +644,7 @@ task testExamples() {
             tomlFile.append("\npath = \"$distPath/lib/mysql-connector-java-8.0.21.jar\"\n")
         }
 
-        if (bbe.startsWith('grpc')) {
+        if (bbe.startsWith('grpc') || (bbe == 'proto-to-ballerina')) {
             new File("${distPath}/${bbe}").eachFileRecurse(FILES) {
                 if(it.name.endsWith('.proto')) {
                     def grpcCommand =  "grpc --input ${it.name} --output ."
