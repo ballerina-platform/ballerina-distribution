@@ -2,6 +2,11 @@ name: Publish release
 
 on:
   workflow_dispatch:
+    inputs:
+      isPreRelease:
+        description: 'Tag created is a pre-release tag'
+        required: true
+        default: 'false'
 
 jobs:
   publish-release:
@@ -10,6 +15,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+        with:
+            ref: slbeta2-rc1
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
@@ -48,10 +55,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
-          tag_name: "v${{ steps.version-set.outputs.version }}"
-          release_name: ${{ steps.version-set.outputs.version }}
+          tag_name: "v${{ steps.version-set.outputs.version }}-rc1"
+          release_name: ${{ steps.version-set.outputs.version }}-rc1
           draft: false
-          prerelease: false
+          prerelease: ${{ github.event.inputs.isPreRelease }}
       - name: Upload zip artifacts
         uses: actions/upload-release-asset@v1
         env:
