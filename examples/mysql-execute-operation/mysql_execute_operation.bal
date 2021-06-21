@@ -7,7 +7,7 @@ public function main() returns error? {
     check beforeExample();
 
     // Initializes the MySQL client.
-    mysql:Client mysqlClient = check new (user = "root",
+    mysql:Client mysqlClient = check new (user = "root", 
             password = "Test@123", database = "MYSQL_BBE");
 
     float newCreditLimit = 15000.5;
@@ -23,9 +23,9 @@ public function main() returns error? {
     string firstName = "Dan";
 
     // Creates a parameterized query for deleting the records.
-    sql:ParameterizedQuery deleteQuery =
+    sql:ParameterizedQuery deleteQuery = 
             `DELETE FROM Customers WHERE firstName = ${firstName}`;
-    
+
     result = check mysqlClient->execute(deleteQuery);
     io:println("Deleted Row count: ", result.affectedRowCount);
 
@@ -38,7 +38,7 @@ function beforeExample() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
 
     // Creates a database.
-    sql:ExecutionResult result =
+    sql:ExecutionResult result = 
         check mysqlClient->execute(`CREATE DATABASE MYSQL_BBE`);
 
     //Creates a table in the database.
@@ -66,7 +66,7 @@ function beforeExample() returns sql:Error? {
 // Cleans up the database after running the example.
 function afterExample(mysql:Client mysqlClient) returns sql:Error? {
     // Cleans the database.
-    sql:ExecutionResult result =
+    sql:ExecutionResult result = 
             check mysqlClient->execute(`DROP DATABASE MYSQL_BBE`);
     // Closes the MySQL client.
     check mysqlClient.close();

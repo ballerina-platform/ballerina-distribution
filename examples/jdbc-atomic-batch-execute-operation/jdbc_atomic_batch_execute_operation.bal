@@ -4,25 +4,40 @@ import ballerina/sql;
 
 public function main() returns error? {
     // Initializes the JDBC client.
-    jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
+    jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc", 
         "rootUser", "rootPass");
     // Runs the prerequisite setup for the example.
     check beforeExample(jdbcClient);
 
     // Records with the duplicate `registrationID` entry. Here it is registrationID = 1.
     var insertRecords = [
-        {firstName: "Linda", lastName: "Jones", registrationID: 2,
-                                    creditLimit: 10000.75, country: "USA"},
-        {firstName: "Peter", lastName: "Stuart", registrationID: 1,
-                                    creditLimit: 5000.75, country: "USA"},
-        {firstName: "Camellia", lastName: "Potter", registrationID: 4,
-                                    creditLimit: 2000.25, country: "USA"}
+        {
+            firstName: "Linda",
+            lastName: "Jones",
+            registrationID: 2,
+            creditLimit: 10000.75,
+            country: "USA"
+        }, 
+        {
+            firstName: "Peter",
+            lastName: "Stuart",
+            registrationID: 1,
+            creditLimit: 5000.75,
+            country: "USA"
+        }, 
+        {
+            firstName: "Camellia",
+            lastName: "Potter",
+            registrationID: 4,
+            creditLimit: 2000.25,
+            country: "USA"
+        }
     ];
 
     // Creates a batch parameterized query.
-    sql:ParameterizedQuery[] insertQueries =
+    sql:ParameterizedQuery[] insertQueries = 
         from var data in insertRecords
-            select  `INSERT INTO Customers
+        select `INSERT INTO Customers
                 (firstName, lastName, registrationID, creditLimit, country)
                 VALUES (${data.firstName}, ${data.lastName},
                 ${data.registrationID}, ${data.creditLimit}, ${data.country})`;
@@ -44,12 +59,12 @@ public function main() returns error? {
     }
 
     // Checks the data after the batch execution.
-    stream<record{}, error> resultStream =
+    stream<record {}, error> resultStream = 
         jdbcClient->query(`SELECT * FROM Customers`);
 
     io:println("Data in Customers table:");
     error? e = resultStream.forEach(function(record {} result) {
-                 io:println(result.toString());
+        io:println(result.toString());
     });
 
     // Performs the cleanup after the example.
@@ -59,7 +74,7 @@ public function main() returns error? {
 // Initializes the database as a prerequisite to the example.
 function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
     // Creates a table in the database.
-    sql:ExecutionResult result =
+    sql:ExecutionResult result = 
         check jdbcClient->execute(`CREATE TABLE Customers(customerId INTEGER
             NOT NULL IDENTITY, firstName  VARCHAR(300), lastName  VARCHAR(300),
             registrationID INTEGER UNIQUE, creditLimit DOUBLE,
@@ -74,7 +89,7 @@ function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
 // Cleans up the database after running the example.
 function afterExample(jdbc:Client jdbcClient) returns sql:Error? {
     // Cleans the database.
-    sql:ExecutionResult result =
+    sql:ExecutionResult result = 
             check jdbcClient->execute(`DROP TABLE Customers`);
     // Closes the JDBC client.
     check jdbcClient.close();

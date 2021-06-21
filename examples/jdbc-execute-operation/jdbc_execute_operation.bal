@@ -4,7 +4,7 @@ import ballerina/sql;
 
 public function main() returns error? {
     // Initializes the JDBC client.
-    jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
+    jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc", 
         "rootUser", "rootPass");
     // Runs the prerequisite setup for the example.
     check beforeExample(jdbcClient);
@@ -22,9 +22,9 @@ public function main() returns error? {
     string firstName = "Dan";
 
     // Creates a parameterized query for deleting the records.
-    sql:ParameterizedQuery deleteQuery =
+    sql:ParameterizedQuery deleteQuery = 
             `DELETE FROM Customers WHERE firstName = ${firstName}`;
-    
+
     result = check jdbcClient->execute(deleteQuery);
     io:println("Deleted Row count: ", result.affectedRowCount);
 
@@ -35,7 +35,7 @@ public function main() returns error? {
 // Initializes the database as a prerequisite to the example.
 function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
     //Creates a table in the database.
-    sql:ExecutionResult result =
+    sql:ExecutionResult result = 
         check jdbcClient->execute(`CREATE TABLE Customers(customerId INTEGER
             NOT NULL IDENTITY, firstName  VARCHAR(300), lastName  VARCHAR(300),
             registrationID INTEGER, creditLimit DOUBLE, country  VARCHAR(300),
@@ -51,13 +51,13 @@ function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
             ('Dan', 'Brown', 2, 10000, 'UK')`);
 
     io:println("Rows affected: ", result.affectedRowCount);
-    io:println("Generated Customer ID: ", result.lastInsertId);        
+    io:println("Generated Customer ID: ", result.lastInsertId);
 }
 
 // Cleans up the database after running the example.
 function afterExample(jdbc:Client jdbcClient) returns sql:Error? {
     // Cleans the database.
-    sql:ExecutionResult result =
+    sql:ExecutionResult result = 
             check jdbcClient->execute(`DROP TABLE Customers`);
     // Closes the JDBC client.
     check jdbcClient.close();
