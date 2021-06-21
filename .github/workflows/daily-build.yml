@@ -111,6 +111,17 @@ jobs:
               \"ballerinaVersion\": \"$ballerinaVersion\"
             }
           }"
+      - name: Run Samples and Archive Build Time
+        env:
+          packageUser: ${{ github.actor }}
+          packagePAT: ${{ secrets.GITHUB_TOKEN }}
+          devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
+        run: ./gradlew :build-time-tests:processData --console=plain --no-daemon --continue
+      - name: Archive BuildTime CSV
+        uses: actions/upload-artifact@v2
+        with:
+          name: BuildTimeCSV
+          path: build-time-tests/build/build-time-data/buildTimeData.csv
 
   windows-build:
 
