@@ -46,7 +46,7 @@ jobs:
           echo "Tagged Version: ${GIT_TAG}"
           git config user.name ${{ secrets.BALLERINA_BOT_USERNAME }}
           git config user.email ${{ secrets.BALLERINA_BOT_EMAIL }}
-          git checkout -b release-${VERSION}
+          git checkout -b release-${GIT_TAG}
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Publish artifact
