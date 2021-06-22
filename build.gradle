@@ -68,7 +68,7 @@ allprojects {
         }
     }
 
-    task updateInstallerVersion(type: WriteProperties) {
+    task updateInstallerVersion() {
         def installerVersionVal=UUID.randomUUID().toString()
         def propertyFilePath="${project.rootDir}/gradle.properties"
         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
