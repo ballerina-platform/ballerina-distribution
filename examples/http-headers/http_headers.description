@@ -1,0 +1,3 @@
+// Annotation support is provided in the HTTP library to simplify the HTTP Header retrieval.
+// For more information on the underlying module, 
+// see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).

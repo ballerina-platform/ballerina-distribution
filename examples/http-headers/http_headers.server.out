@@ -1,0 +1,3 @@
+bal run http_headers.bal
+[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+time = 2021-06-25T11:56:13.746+05:30 level = INFO module = "" message = "Received authorized request " payload = {"payload":"This is a message from the client"}

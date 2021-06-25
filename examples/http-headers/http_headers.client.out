@@ -1,0 +1,7 @@
+#Run the cURL command below to run the client.
+curl http://localhost:9090/hello -d "{\"message\": \"This is a message from the client\"}" -H "X-Client-Key: 0987654321"
+Request processed successfully
+
+# Use the following cURL to invoke the service using an unauthorized client-key. Service is supposed to
+# send an unauthorized response.
+Unauthorized request
