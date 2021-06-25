@@ -986,7 +986,7 @@
             },
             {
                 "name": "Header Parameter",
-                "url": "http-headers",
+                "url": "http-header-param",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "disablePlayground": true,
@@ -996,7 +996,7 @@
                 "name": "Typed Resource Responses",
                 "url": "http-resource-returns",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1018,8 +1018,8 @@
             {
                 "name": "Client",
                 "url": "http-client-endpoint",
-                "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyBuild": false,
+                "verifyOutput": false,
                 "isLearnByExample": false
             },
             {
@@ -1215,8 +1215,8 @@
             {
                 "name": "Response With Multiparts",
                 "url": "http-response-with-multiparts",
-                "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyBuild": false,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1232,7 +1232,7 @@
                 "name": "Passthrough",
                 "url": "http-passthrough",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
