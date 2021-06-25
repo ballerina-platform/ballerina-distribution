@@ -4,7 +4,7 @@ import ballerina/log;
 service / on new http:Listener(9090) {
 
     resource function 'default hello(http:Caller caller, http:Request request)
-            returns string|http:InternalServerError|http:ExpectationFailed {
+            returns error? {
         // [Check if the client expects a 100-continue response](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#expects100Continue).
         if (request.expects100Continue()) {
             string mediaType = request.getContentType();
@@ -19,8 +19,10 @@ service / on new http:Listener(9090) {
             // Send a 417 response to ignore the payload since content type is mismatched
             // with the expected content type.
             } else {
-                http:ExpectationFailed resp = {body:"Unprocessable Entity"};
-                return resp;
+                http:Response resp = new;
+                resp.statusCode = http:STATUS_EXPECTATION_FAILED;
+                resp.setPayload("Unprocessable Entity");
+                check caller->respond(resp);
             }
         }
 
@@ -29,10 +31,12 @@ service / on new http:Listener(9090) {
         var payload = request.getTextPayload();
         if (payload is string) {
             log:printInfo(payload);
-            return "Hello World!\n";
+            check caller->respond("Hello World!\n");
         } else {
-            http:InternalServerError resp = {body:payload.message()};
-            return resp;
+            http:Response resp = new;
+            resp.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
+            resp.setPayload(payload.message());
+            check caller->respond(resp);
         }
     }
 }
