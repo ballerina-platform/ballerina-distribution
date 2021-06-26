@@ -67,7 +67,7 @@ jobs:
           tag_name: "v${{ steps.version-set.outputs.taggedVersion }}"
           release_name: ${{ steps.version-set.outputs.taggedVersion }}
           draft: false
-          prerelease: false
+          prerelease: ${{ github.event.inputs.isPreRelease }}
       - name: Upload zip artifacts
         uses: actions/upload-release-asset@v1
         env:
