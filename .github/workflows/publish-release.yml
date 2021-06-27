@@ -40,8 +40,8 @@ jobs:
           packagePAT: ${{ secrets.BALLERINA_BOT_TOKEN }}
         run: |
           ./gradlew build updateInstallerVersion -x test
-          git add .
-          git commit -m "update auto generated installer version"
+          git add gradle.properties
+          git commit -m "Update auto generated installer version"
       - name: Publish artifact
         env:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
