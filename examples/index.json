@@ -314,13 +314,15 @@
                 "url": "consuming-services",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Failing intermittently due to github rate limiting",
                 "isLearnByExample": true
             },
             {
                 "name": "Providing Services",
                 "url": "providing-services",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Service cannot be stopped",
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -334,32 +336,33 @@
             {
                 "name": "Service Declaration",
                 "url": "service-declaration",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Does not include udp client",
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
             {
                 "name": "Resource Methods",
                 "url": "resource-methods",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
             {
                 "name": "Hierarchical Resources",
                 "url": "hierarchical-resources",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
             {
                 "name": "Resource Path Parameters",
                 "url": "resource-path-parameters",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": true
             }
