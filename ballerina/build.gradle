@@ -906,7 +906,6 @@ task testStdlibs() {
     patternSet.exclude("**/Ballerina.lock")
     patternSet.exclude("**/ballerina-internal.log")
     inputs.files(files("${distPath}/stdlib-integration-tests").asFileTree.matching(patternSet))
-    def ignoreList = ["websub", "websub-advance", "websub-generic"]
 
     doFirst {
         def src = "${project.rootDir}/stdlib-integration-tests/"
@@ -920,7 +919,7 @@ task testStdlibs() {
         stdlibTests.each { stdlibTest ->
             def folder = new File("${distPath}/${stdlibTest.path}")
             if (folder.exists()) {
-                stdlibTestsList.push("$stdlibTest.path")
+                stdlibTestsList.push(stdlibTest)
             }
         }
     }
@@ -967,15 +966,13 @@ task testStdlibs() {
     }
 
     doLast {
-        ignoreList.each { String elements ->
-            stdlibTestsList.remove("$elements")
-        }
-
         def failedStdLibs = []
-        stdlibTestsList.each { String stdlibTest ->
-            boolean stdLibTestFailFlag = buildStandardLibs(stdlibTest)
-            if (stdLibTestFailFlag) {
-                failedStdLibs.add(stdlibTest);
+        stdlibTestsList.each { stdlibTest ->
+            if (stdlibTest.enableTest) {
+                boolean stdLibTestFailFlag = buildStandardLibs(stdlibTest.path)
+                if (stdLibTestFailFlag) {
+                    failedStdLibs.add(stdlibTest.path);
+                }
             }
         }
 
