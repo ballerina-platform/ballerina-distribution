@@ -150,8 +150,7 @@
                 "name": "Structural Typing",
                 "url": "structural-typing",
                 "verifyBuild": true,
-                "verifyOutput": false,
-                "disableVerificationReason": "Output includes HINTS",
+                "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -383,8 +382,8 @@
             {
                 "name": "Immutability",
                 "url": "immutability",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -468,8 +467,8 @@
             {
                 "name": "Resource Method Typing",
                 "url": "resource-method-typing",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -583,6 +582,7 @@
                 "url": "raw-templates",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -610,8 +610,8 @@
             {
                 "name": "XML Subtyping",
                 "url": "xml-subtyping",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
