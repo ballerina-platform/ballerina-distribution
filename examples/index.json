@@ -1855,24 +1855,27 @@
             {
                 "name": "TCP Client",
                 "url": "tcp-client",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Service not present",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
                 "name": "TCP Listener",
                 "url": "tcp-listener",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Service cannot be stopped",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
                 "name": "TCP Transport Security",
                 "url": "tcp-transport-security",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
