@@ -2141,6 +2141,7 @@
                 "url": "time-utc",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes varying output",
                 "isLearnByExample": false
             },
             {
@@ -2148,6 +2149,7 @@
                 "url": "time-utc-and-civil",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes varying output",
                 "isLearnByExample": false
             },
             {
