@@ -1915,24 +1915,27 @@
             {
                 "name": "Send Emails",
                 "url": "send-email",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
                 "name": "Receive Emails Using a Client",
                 "url": "receive-email-using-client",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
                 "name": "Receive Emails Using a Listener",
                 "url": "receive-email-using-listener",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
