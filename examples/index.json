@@ -859,6 +859,7 @@
                 "url": "testerina-assertions",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -867,6 +868,7 @@
                 "url": "testerina-before-and-after-test",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -875,6 +877,7 @@
                 "url": "testerina-before-and-after-each",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -883,6 +886,7 @@
                 "url": "testerina-before-and-after-groups",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -891,6 +895,7 @@
                 "url": "testerina-before-and-after-suite",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -899,6 +904,7 @@
                 "url": "testerina-data-driven-tests",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -907,6 +913,7 @@
                 "url": "testerina-guarantee-test-execution-order",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -915,6 +922,7 @@
                 "url": "testerina-group-tests",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -923,6 +931,7 @@
                 "url": "testerina-mocking-functions",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -931,6 +940,7 @@
                 "url": "testerina-mocking-objects",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": true
             }
@@ -1604,6 +1614,7 @@
                 "url": "grpc-simple",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1612,6 +1623,7 @@
                 "url": "grpc-simple-with-headers",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1620,6 +1632,7 @@
                 "url": "grpc-secured-simple",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1628,6 +1641,7 @@
                 "url": "grpc-server-streaming",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1636,6 +1650,7 @@
                 "url": "grpc-client-streaming",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1644,6 +1659,7 @@
                 "url": "grpc-bidirectional-streaming",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1652,6 +1668,7 @@
                 "url": "proto-to-ballerina",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
