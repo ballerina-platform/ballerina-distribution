@@ -50,7 +50,6 @@ task buildSamples {
     }
 }
 
-
 task processData(type: JavaExec) {
     dependsOn buildSamples
     classpath = sourceSets.main.runtimeClasspath
