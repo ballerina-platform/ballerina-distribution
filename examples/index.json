@@ -1886,24 +1886,27 @@
             {
                 "name": "UDP Connectionless Client",
                 "url": "udp-client",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Service cannot be reached",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
                 "name": "UDP Connection-Oriented Client",
                 "url": "udp-connect-client",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Service cannot be reached",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
                 "name": "UDP Listener",
                 "url": "udp-listener",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Service cannot be stopped",
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
