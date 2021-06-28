@@ -1376,22 +1376,23 @@
             {
                 "name": "Handle Text Messages with Client",
                 "url": "websocket-text-client",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "isLearnByExample": false
             },
             {
                 "name": "Handle Binary Messages with Client",
                 "url": "websocket-binary-client",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "isLearnByExample": false
             },
             {
                 "name": "Listener Functionalities",
                 "url": "websocket-basic-sample",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Service cannot be stopped",
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
