@@ -689,7 +689,7 @@
                 "name": "Alternate Wait",
                 "url": "alternate-wait",
                 "verifyBuild": true,
-                "verifyOutput": false,
+                "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
