@@ -18,9 +18,7 @@ function len(LinkedList ll) returns int {
     // as long as the value of `v` is not `nil`.
     while v != () {
         n += 1;
-        if v is LinkedList {
-            v = v.next;
-        }
+        v = v.next;
     }
 
     return n;

@@ -113,8 +113,8 @@
             {
                 "name": "While Statement",
                 "url": "while-statement",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -149,8 +149,9 @@
             {
                 "name": "Structural Typing",
                 "url": "structural-typing",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Output includes HINTS",
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -193,7 +194,7 @@
                 "name": "Panics",
                 "url": "panics",
                 "verifyBuild": true,
-                "verifyOutput": false,
+                "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
@@ -207,7 +208,7 @@
                 "name": "Ignoring Return Values and Errors",
                 "url": "ignoring-return-values-and-errors",
                 "verifyBuild": true,
-                "verifyOutput": false,
+                "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
