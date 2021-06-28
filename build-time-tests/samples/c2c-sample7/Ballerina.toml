@@ -1,0 +1,8 @@
+[package]
+org = "fusion"
+name = "cafe"
+version = "1.0.0"
+
+[build-options]
+observabilityIncluded = true
+cloud = "k8s"
