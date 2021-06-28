@@ -29,7 +29,7 @@ function testFunc() returns error? {
     } else {
         test:assertEquals(outputs[0].toString(), "The existing keys in the cache: [\"key1\",\"key2\",\"key3\"]");
         test:assertEquals(outputs[1].toString(), "The existing keys in after invalidating a given key: [\"key1\",\"key3\"]");
-        test:assertEquals(outputs[2].toString(), "The keys in after invalidating all the keys: []");
+        test:assertEquals(outputs[2].toString(), "The keys after invalidating all the keys: []");
     }
 }
 

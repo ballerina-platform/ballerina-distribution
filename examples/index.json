@@ -2176,8 +2176,9 @@
             {
                 "name": "Cache Invalidation",
                 "url": "cache-invalidation",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Intermittently failing with github api rate limiting",
                 "isLearnByExample": false
             }
         ]
@@ -2192,6 +2193,7 @@
                 "url": "logging",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes varying output",
                 "isLearnByExample": false
             },
             {
@@ -2199,6 +2201,7 @@
                 "url": "logging-with-context",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes varying output",
                 "isLearnByExample": false
             },
             {
@@ -2206,6 +2209,7 @@
                 "url": "logging-configuration",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes varying output",
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
@@ -2219,8 +2223,9 @@
             {
                 "name": "File Paths",
                 "url": "filepaths",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes varying output",
                 "isLearnByExample": false
             },
             {
@@ -2228,6 +2233,7 @@
                 "url": "directories",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes varying output",
                 "isLearnByExample": false
             },
             {
@@ -2235,6 +2241,7 @@
                 "url": "files",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes varying output",
                 "isLearnByExample": false
             },
             {
@@ -2242,6 +2249,7 @@
                 "url": "temp-files-directories",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes varying output",
                 "isLearnByExample": false
             },
             {
@@ -2249,6 +2257,7 @@
                 "url": "directory-listener",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
@@ -2264,6 +2273,7 @@
                 "url": "random-numbers",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes varying output",
                 "isLearnByExample": false
             }
         ]
@@ -2306,6 +2316,7 @@
                 "url": "uuid-generation",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes varying output",
                 "isLearnByExample": false
             },
             {
@@ -2355,6 +2366,7 @@
                 "url": "environment-variables",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes varying output",
                 "isLearnByExample": false
             }
         ]
@@ -2383,6 +2395,7 @@
                 "url": "tracing",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -2391,6 +2404,7 @@
                 "url": "counter-metrics",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
@@ -2406,6 +2420,7 @@
                 "url": "gauge-metrics",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
                 }
