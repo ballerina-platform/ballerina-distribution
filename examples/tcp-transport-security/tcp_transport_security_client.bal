@@ -1,10 +1,14 @@
-import ballerina/tcp;
 import ballerina/io;
+import ballerina/tcp;
 
-public function main() returns error? {
-    // The [secureSocket](https://docs.central.ballerina.io/ballerina/tcp/latest/records/ClientSecureSocket) record used to configure the client with TLS
-    tcp:Client socketClient = check new ("localhost", 9002, secureSocket = {
-        // Provide the trusted certificate path or the truststore path 
+// An TCP client can be configured to communicate through SSL/TLS as well.
+// To secure a client using SSL/TLS, the client needs to be configured with
+// a certificate file of the listener.
+// The [`tcp:ClientSecureSocket`](https://docs.central.ballerina.io/ballerina/tcp/latest/records/ClientSecureSocket) record
+// provides the SSL-related configurations of the client.
+tcp:Client securedEP = check new ("localhost", 3000,
+    secureSocket = {
+        // Provide the trusted certificate path or the truststore path
         // along with the truststore password.
         cert: "../resource/path/to/public.crt",
         protocol: {
@@ -12,14 +16,12 @@ public function main() returns error? {
             versions: ["TLSv1.2", "TLSv1.1"]
         },
         ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
-    });
+    }
+);
 
-    string msg = "Hello Ballerina Echo from secure client";
-    byte[] msgByteArray = msg.toBytes();
-    check socketClient->writeBytes(msgByteArray);
-
-    readonly & byte[] receivedData = check socketClient->readBytes();
-    io:print('string:fromBytes(receivedData));
-
-    check socketClient->close();
+public function main() returns error? {
+    check securedEP->writeBytes("Hello, World!".toBytes());
+    readonly & byte[] receivedData = check securedEP->readBytes();
+    io:println("Received message: ", string:fromBytes(receivedData));
+    check securedEP->close();
 }
