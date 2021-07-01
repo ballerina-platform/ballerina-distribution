@@ -1,41 +1,32 @@
 import ballerinax/kafka;
 import ballerina/log;
 
-// The `kafka:AuthenticationConfiguration` is used to provide authentication-related details.
-kafka:AuthenticationConfiguration authConfig = {
-    // Provide the authentication mechanism used by the Kafka server.
-    mechanism: kafka:AUTH_SASL_PLAIN,
-    // Username and password should be set here in order to authenticate the consumer.
-    // For information on how to secure values instead of directly using plain text values, see [Writing Secure Ballerina Code](https://ballerina.io/learn/user-guide/security/writing-secure-ballerina-code/#securing-sensitive-data-using-configurable-variables).
-    username: "ballerina",
-    password: "ballerina-secret"
-};
+// Define the relevant SASL URL of the configured Kafka server.
+const string SASL_URL = "localhost:9093";
 
 kafka:ConsumerConfiguration consumerConfig = {
     groupId: "test-group",
-    clientId: "sasl-consumer",
-    offsetReset: "earliest",
-    topics: ["topic-sasl"],
-    // Provide the relevant authentication configuration record to authenticate the consumer.
-    auth: authConfig,
+    topics: ["demo-security"],
+    // Provide the relevant authentication configurations to authenticate the consumer by `kafka:AuthenticationConfiguration`.
+    auth: {
+        // Provide the authentication mechanism used by the Kafka server.
+        mechanism: kafka:AUTH_SASL_PLAIN,
+        // Username and password should be set here in order to authenticate the consumer.
+        // For information on how to secure values instead of directly using plain text values, see [Defining Configurable Variables](https://ballerina.io/learn/user-guide/configurability/defining-configurable-variables/#securing-sensitive-data-using-configurable-variables).
+        username: "alice",
+        password: "alice@123"
+    },
     securityProtocol: kafka:PROTOCOL_SASL_PLAINTEXT
 };
-
-// Provide the relevant SASL URL of the configured Kafka server.
-const string SASL_URL = "localhost:9093";
 
 listener kafka:Listener kafkaListener = new(SASL_URL, consumerConfig);
 
 service kafka:Service on kafkaListener {
     remote function onConsumerRecord(kafka:Caller caller,
-                                kafka:ConsumerRecord[] records) returns error? {
-        // Loops through the received consumer records.
+                    kafka:ConsumerRecord[] records) returns error? {
         foreach var consumerRecord in records {
-            // Converts the `byte[]` to a `string`.
-            string messageContent = check
-                                        string:fromBytes(consumerRecord.value);
-
-            log:printInfo(messageContent);
+            string value = check string:fromBytes(consumerRecord.value);
+            log:printInfo(value);
         }
     }
 }
