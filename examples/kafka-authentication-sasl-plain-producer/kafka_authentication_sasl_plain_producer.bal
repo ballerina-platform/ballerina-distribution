@@ -17,7 +17,7 @@ kafka:ProducerConfiguration producerConfig = {
     securityProtocol: kafka:PROTOCOL_SASL_PLAINTEXT
 };
 
-kafka:Producer kafkaProducer = check new(SASL_URL, producerConfigs);
+kafka:Producer kafkaProducer = check new(SASL_URL, producerConfig);
 
 public function main() returns error? {
     string message = "Hello, World!";
@@ -25,6 +25,6 @@ public function main() returns error? {
         topic: "demo-security",
         value: message.toBytes()
     });
-    check producer->'flush();
+    check kafkaProducer->'flush();
     io:println("Message published successfully.");
 }

@@ -6,7 +6,7 @@ import ballerina/tcp;
 // a certificate file and a private key file for the listener.
 // The [`tcp:ListenerSecureSocket`](https://docs.central.ballerina.io/ballerina/tcp/latest/records/ListenerSecureSocket) record
 // provides the SSL-related listener configurations of the listener.
-listener tcp:Listener securedEP = check new(3000,
+listener tcp:Listener securedListnerEP = check new(3000,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -15,7 +15,7 @@ listener tcp:Listener securedEP = check new(3000,
     }
 );
 
-service "tcp" on securedEP {
+service "tcp" on securedListnerEP {
     isolated remote function onConnect(tcp:Caller caller)
                              returns tcp:ConnectionService {
         io:println("Client connected on server port: ", caller.remotePort);
