@@ -8,14 +8,7 @@ import ballerina/tcp;
 // provides the SSL-related configurations of the client.
 tcp:Client securedEP = check new ("localhost", 3000,
     secureSocket = {
-        // Provide the trusted certificate path or the truststore path
-        // along with the truststore password.
-        cert: "../resource/path/to/public.crt",
-        protocol: {
-            name: tcp:TLS,
-            versions: ["TLSv1.2", "TLSv1.1"]
-        },
-        ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
+        cert: "../resource/path/to/public.crt"
     }
 );
 

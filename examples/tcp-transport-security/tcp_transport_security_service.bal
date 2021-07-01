@@ -8,19 +8,10 @@ import ballerina/tcp;
 // provides the SSL-related listener configurations of the listener.
 listener tcp:Listener securedEP = check new(3000,
     secureSocket = {
-        // Provide the server certificate path and the private key path
-        // or the keystore path along with keystore password.
         key: {
             certFile: "../resource/path/to/public.crt",
             keyFile: "../resource/path/to/private.key"
-        },
-        // Enable the preferred SSL protocol and its versions.
-        protocol: {
-            name: tcp:TLS,
-            versions: ["TLSv1.2", "TLSv1.1"]
-        },
-        // Configure the preferred ciphers.
-        ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
+        }
     }
 );
 
