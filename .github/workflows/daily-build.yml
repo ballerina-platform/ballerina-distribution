@@ -25,6 +25,7 @@ jobs:
           devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
         run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue
       - name: Archive Ballerina ZIP
+        id: create_zip
         uses: actions/upload-artifact@v2
         with:
           name: Ballerina ZIP
@@ -111,13 +112,16 @@ jobs:
               \"ballerinaVersion\": \"$ballerinaVersion\"
             }
           }"
-      - name: Run Samples and Archive Build Time
+      - name: Run Build Performance Samples
+        id: build_samples
+        if: steps.create_zip.outputs.exit_code == 0
         env:
           packageUser: ${{ github.actor }}
           packagePAT: ${{ secrets.GITHUB_TOKEN }}
           devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
         run: ./gradlew :build-time-tests:processData --console=plain --no-daemon --continue
-      - name: Archive BuildTime CSV
+      - name: Archive Build Performance CSV
+        if: steps.build_samples.outputs.exit_code == 0
         uses: actions/upload-artifact@v2
         with:
           name: BuildTimeCSV
