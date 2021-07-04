@@ -25,7 +25,6 @@ jobs:
           devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
         run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue
       - name: Archive Ballerina ZIP
-        id: create_zip
         uses: actions/upload-artifact@v2
         with:
           name: Ballerina ZIP
@@ -92,6 +91,17 @@ jobs:
             BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.version }}.zip
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
+      - name: Run Build Performance Samples
+        env:
+          packageUser: ${{ github.actor }}
+          packagePAT: ${{ secrets.GITHUB_TOKEN }}
+          devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
+        run: ./gradlew :build-time-tests:processData --console=plain --no-daemon --continue
+      - name: Archive Build Performance CSV
+        uses: actions/upload-artifact@v2
+        with:
+          name: BuildTimeCSV
+          path: build-time-tests/build/build-time-data/buildTimeData.csv
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
@@ -112,20 +122,6 @@ jobs:
               \"ballerinaVersion\": \"$ballerinaVersion\"
             }
           }"
-      - name: Run Build Performance Samples
-        id: build_samples
-        if: steps.create_zip.outputs.exit_code == 0
-        env:
-          packageUser: ${{ github.actor }}
-          packagePAT: ${{ secrets.GITHUB_TOKEN }}
-          devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
-        run: ./gradlew :build-time-tests:processData --console=plain --no-daemon --continue
-      - name: Archive Build Performance CSV
-        if: steps.build_samples.outputs.exit_code == 0
-        uses: actions/upload-artifact@v2
-        with:
-          name: BuildTimeCSV
-          path: build-time-tests/build/build-time-data/buildTimeData.csv
 
   windows-build:
 
