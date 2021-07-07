@@ -1,4 +1,4 @@
-// This example demonstrates how to use the JDBC client to execute a batch of 
+// This BBE demonstrates how to use the JDBC client to execute a batch of
 // DDL/DML operations with the help of a `transaction` to achieve the atomic behaviour.
 // Note that the relevant database driver JAR should be defined in the `Ballerina.toml`
 // file as a dependency. 
