@@ -65,6 +65,23 @@ public class BuildNewCommandTest {
         this.printStream = new PrintStream(this.console);
     }
 
+    protected String readOutput() throws IOException {
+        return readOutput(false);
+    }
+
+    protected String readOutput(boolean silent) throws IOException {
+        String output = "";
+        output = console.toString();
+        console.close();
+        console = new ByteArrayOutputStream();
+        printStream = new PrintStream(console);
+        if (!silent) {
+            PrintStream out = System.out;
+            out.println(output);
+        }
+        return output;
+    }
+
     @Test(description = "Build package created from new command with default template")
     public void testCompilingNewCommandDefaultTempProject() throws IOException, InterruptedException {
         Process newCommand = executeNewCommand(DISTRIBUTION_FILE_NAME, this.tempWorkspaceDirectory,
@@ -77,7 +94,6 @@ public class BuildNewCommandTest {
                 new LinkedList<>(Collections.singletonList("project_name")), this.envVariables);
 
         Assert.assertTrue(packageDir.resolve("target").resolve("bin").resolve("project_name.jar").toFile().exists());
-        Assert.assertTrue(build.toString().contains("Compiling source"));
     }
 
     @Test(description = "Build package created from new command with main template")
