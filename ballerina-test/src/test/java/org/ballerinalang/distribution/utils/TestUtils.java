@@ -212,7 +212,7 @@ public class TestUtils {
                     existsFile.delete();
                 }
             }
-            Path directoryPath = resourcesPath.resolve("test");
+            Path directoryPath = resourcesPath.resolve("tests");
             boolean isDir = Files.isDirectory(directoryPath);
             if (isDir) {
                 File file = new File(directoryPath.toString());
