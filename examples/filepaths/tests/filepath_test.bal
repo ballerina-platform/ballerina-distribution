@@ -47,11 +47,11 @@ function testFunc() returns error? {
         buildPath ="Built path of '/', 'foo', 'bar': /foo/bar";
         relative ="Relative path between 'a/b/c' and 'a/c/d': ../../c/d";
     }
-    test:assertEquals(outputs[0], absolutePath);
-    test:assertEquals(outputs[1], filename);
-    test:assertEquals(outputs[2], parent);
-    test:assertEquals(outputs[3], normalized);
-    test:assertEquals(outputs[4], elements);
-    test:assertEquals(outputs[5], buildPath);
-    test:assertEquals(outputs[6], relative);
+    test:assertEquals(outputs[1], absolutePath);
+    test:assertEquals(outputs[2], filename);
+    test:assertEquals(outputs[3], parent);
+    test:assertEquals(outputs[4], normalized);
+    test:assertEquals(outputs[5], elements);
+    test:assertEquals(outputs[6], buildPath);
+    test:assertEquals(outputs[7], relative);
 }

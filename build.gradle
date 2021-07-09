@@ -59,7 +59,7 @@ allprojects {
         failOnSnapshotDependencies = true
         failOnCommitNeeded = false
         versionPropertyFile = 'gradle.properties'
-        tagTemplate = 'v${version}'
+        tagTemplate = 'v${System.env.GIT_TAG}'
         git {
             // To release from any branch
             requireBranch = ''

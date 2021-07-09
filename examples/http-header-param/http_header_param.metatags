@@ -1,0 +1,2 @@
+description: BBE on how to use `@http:Header` annotation to retrieve HTTP headers.
+keywords: ballerina, ballerina by example, bbe, http, http-headers

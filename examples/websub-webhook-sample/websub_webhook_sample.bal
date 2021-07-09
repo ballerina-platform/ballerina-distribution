@@ -24,14 +24,14 @@ service on new websub:Listener(9090) {
         if (retrievedContent is json) {
             if (retrievedContent.zen is string) {
                 int hookId = check retrievedContent.hook_id;
-                int senderId = check retrievedContent.sender.id;
+                json sender = check retrievedContent.sender;
+                int senderId = check sender.id;
                 io:println(string`PingEvent received for webhook [${hookId}]`);
                 io:println(string`Event sender [${senderId}]`);
             } else if (retrievedContent.ref is string) {
-                string repositoryName = 
-                            check retrievedContent.repository.name;
-                string lastUpdatedTime = 
-                            check retrievedContent.repository.updated_at;
+                json repository = check retrievedContent.repository;
+                string repositoryName =  check repository.name;
+                string lastUpdatedTime =  check repository.updated_at;
                 io:println(string`PushEvent received for [${repositoryName}]`);
                 io:println(string`Last updated at ${lastUpdatedTime}`);
             }

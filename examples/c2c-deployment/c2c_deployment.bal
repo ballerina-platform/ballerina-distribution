@@ -1,5 +1,4 @@
 import ballerina/http;
-import ballerina/log;
 
 // Note that the code below is completely focused on the business logic and it does not specify anything related to operations.
 listener http:Listener helloEP = new(9090);

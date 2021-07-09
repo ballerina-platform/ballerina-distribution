@@ -1,0 +1,3 @@
+#Run the cURL command below to run the client.
+curl http://localhost:9090/hello -H "X-Client-Key: 0987654321" 
+0987654321
