@@ -39,27 +39,30 @@ public class TestUtils {
     private TestUtils() {
     }
 
-    static final String BALLERINA_HOME_DIR = "BALLERINA_HOME_DIR";
-    static final String BALLERINA_DEV_CENTRAL = "BALLERINA_DEV_CENTRAL";
     public static final Path DISTRIBUTIONS_DIR = Paths.get(System.getProperty("distributions.dir"));
+    public static final Path MAVEN_VERSION = Paths.get(System.getProperty("maven.version"));
 
+    private static final String BALLERINA_HOME_DIR = "BALLERINA_HOME_DIR";
+    private static final String BALLERINA_DEV_CENTRAL = "BALLERINA_DEV_CENTRAL";
     private static final PrintStream OUT = System.out;
     private static final Path TARGET_DIR = Paths.get(System.getProperty("target.dir"));
     private static final Path TEST_DISTRIBUTION_PATH = TARGET_DIR.resolve("test-distribution");
-    public static final Path MAVEN_VERSION = Paths.get(System.getProperty("maven.version"));
+
+    public static String distributionName = "ballerina-" + MAVEN_VERSION;
+    private static Path sourceDirectory;
+    private static Path tempHomeDirectory;
+    private static Map<String, String> envProperties;
 
     /**
      * Execute ballerina command.
      *
-     * @param distributionName The name of the distribution.
-     * @param sourceDirectory  The directory where the sources files are location.
+     * @param command The ballerina command to be executed.
      * @param args             The arguments to be passed to the build command.
      * @return inputream with log outputs
      * @throws IOException          Error executing build command.
      * @throws InterruptedException Interrupted error executing build command.
      */
-    public static Process executeCommand(String command, String distributionName, Path sourceDirectory,
-                                         List<String> args, Map<String, String> envProperties) throws IOException, InterruptedException {
+    public static Path executeCommand(String command, List<String> args) throws IOException, InterruptedException {
         args.add(0, command);
         args.add(0, TEST_DISTRIBUTION_PATH.resolve(distributionName).resolve("bin").resolve("bal").toString());
 
@@ -77,18 +80,20 @@ public class TestUtils {
 
         pb.directory(sourceDirectory.toFile());
         Process process = pb.start();
-        int exitCode = process.waitFor();
-        return process;
+        process.waitFor();
+        return sourceDirectory;
     }
 
-    public static Process executeNewCommand(String distributionName, Path sourceDirectory,
-                                            List<String> args, Map<String, String> envProperties) throws IOException, InterruptedException {
-        return executeCommand("new", distributionName, sourceDirectory, args, envProperties);
-    }
-
-    public static Process executeBuildCommand(String distributionName, Path sourceDirectory,
-                                              List<String> args, Map<String, String> envProperties) throws IOException, InterruptedException {
-        return executeCommand("build", distributionName, sourceDirectory, args, envProperties);
+    /**
+     * Creates temporary directories.
+     *
+     * @throws ZipException Error occurred when extracting.
+     */
+    public static void createTempDirectories() throws IOException {
+        sourceDirectory = Files.createTempDirectory("bal-test-integration-packaging-workspace-");
+        envProperties = addEnvVariables(getEnvVariables());
+        tempHomeDirectory = Files.createTempDirectory("bal-test-integration-packaging-home-");
+        createSettingToml(tempHomeDirectory);
     }
 
     /**
@@ -114,8 +119,9 @@ public class TestUtils {
 
     /**
      * Create Settings.toml inside the home repository.
+     * @param dirPath Path to directory for creating settings.toml.
      *
-     * @throws IOException i/o exception when writing to file
+     * @throws IOException i/o exception when writing to file.
      */
     static void createSettingToml(Path dirPath) throws IOException {
         String content = "[central]\n accesstoken = \"" + getToken() + "\"";
@@ -148,33 +154,42 @@ public class TestUtils {
     /**
      * Delete files inside directories.
      *
-     * @param dirPath directory path
      * @throws IOException throw an exception if an issue occurs
      */
-    static void deleteFiles(Path dirPath) throws IOException {
-        if (dirPath == null) {
+    static void deleteFiles() throws IOException {
+        if (sourceDirectory == null && tempHomeDirectory == null) {
             return;
         }
-        Files.walk(dirPath).sorted(Comparator.reverseOrder()).forEach(path -> {
-            try {
-                Files.delete(path);
-            } catch (IOException e) {
-                Assert.fail(e.getMessage(), e);
-            }
-        });
+        if (sourceDirectory != null) {
+            Files.walk(sourceDirectory).sorted(Comparator.reverseOrder()).forEach(path -> {
+                try {
+                    Files.delete(path);
+                } catch (IOException e) {
+                    Assert.fail(e.getMessage(), e);
+                }
+            });
+        }
+        if (tempHomeDirectory != null) {
+            Files.walk(tempHomeDirectory).sorted(Comparator.reverseOrder()).forEach(path -> {
+                try {
+                    Files.delete(path);
+                } catch (IOException e) {
+                    Assert.fail(e.getMessage(), e);
+                }
+            });
+        }
     }
 
     /**
-     * Get generate bala log.
+     * Get environment variables and add ballerina_home as a env variable the tmp directory.
      *
-     * @param org      org name
-     * @param pkgName  package name
-     * @param platform platform name
-     * @param version  package version
-     * @return generate bala log
+     * @return env directory variable array
      */
-    static String getGenerateBalaLog(String org, String pkgName, String platform, String version) {
-        return "Creating bala\n" + "\ttarget/bala/" + org + "-" + pkgName + "-" + platform + "-" + version + ".bala";
+    public static Map<String, String> addEnvVariables(Map<String, String> envVariables) throws IOException {
+        Path tempHomeDirectory = Files.createTempDirectory("bal-test-integration-packaging-home-");
+        envVariables.put(BALLERINA_HOME_DIR, tempHomeDirectory.toString());
+        envVariables.put(BALLERINA_DEV_CENTRAL, "true");
+        return envVariables;
     }
 
     /**
@@ -186,20 +201,5 @@ public class TestUtils {
      */
     static Path getExecutableJarPath(Path projectPath, String pkgName) {
         return projectPath.resolve("target").resolve("bin").resolve(pkgName + ".jar");
-    }
-
-    /**
-     * Get executable jar path.
-     *
-     * @param projectPath project path
-     * @param org         org name
-     * @param pkgName     package name
-     * @param platform    platform name
-     * @param version     package version
-     * @return bala path
-     */
-    static Path getBalaPath(Path projectPath, String org, String pkgName, String platform, String version) {
-        return projectPath.resolve("target").resolve("bala")
-                .resolve(org + "-" + pkgName + "-" + platform + "-" + version + ".bala");
     }
 }
