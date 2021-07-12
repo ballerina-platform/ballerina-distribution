@@ -213,8 +213,7 @@ public class TestUtils {
                 }
             }
             Path directoryPath = resourcesPath.resolve("tests");
-            boolean isDir = Files.isDirectory(directoryPath);
-            if (isDir) {
+            if (Files.isDirectory(directoryPath)) {
                 File file = new File(directoryPath.toString());
                 FileUtils.deleteDirectory(file);
             }
