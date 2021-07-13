@@ -200,7 +200,7 @@ public class TestUtils {
      *
      * @param generatedFileName file name that need to delete.
      */
-    public static void deleteGeneratedFiles(String generatedFileName) {
+    public static void deleteGeneratedFiles(String generatedFileName) throws IOException {
         Path resourcesPath = RESOURCES_PATH.resolve("openapi");
         if (Files.exists(resourcesPath)) {
             List<File> listFiles = Arrays.asList(
@@ -211,6 +211,11 @@ public class TestUtils {
                         fileName.equals("client.bal") || fileName.equals("types.bal")) {
                     existsFile.delete();
                 }
+            }
+            Path directoryPath = resourcesPath.resolve("tests");
+            if (Files.isDirectory(directoryPath)) {
+                File file = new File(directoryPath.toString());
+                FileUtils.deleteDirectory(file);
             }
         }
     }
