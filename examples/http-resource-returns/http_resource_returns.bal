@@ -35,7 +35,7 @@ service /bank on new http:Listener(9090) {
     // Inline response records are useful to return headers and body along with status code. In this instance the
     // return type is a subtype of [http:Created](https://docs.central.ballerina.io/ballerina/http/latest/records/Created)
     // record, hence 201 response will be sent.
-    resource function get createAccount(string name)
+    resource function get account/[string name]()
             returns record {|*http:Created; PersonAccount body;|} {
         PersonAccount account = {accountNo: 84230, name: name};
         return {
