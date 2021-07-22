@@ -1,7 +1,7 @@
 import ballerina/log;
 import ballerinax/nats;
 
-// Initializes a NATS client with TLS/SSL and username/password authentication.
+// Initializes a NATS listener with TLS/SSL and username/password authentication.
 listener nats:Listener securedEP = new(nats:DEFAULT_URL,
 
     // To secure the client connections using username/password authentication, provide the credentials
