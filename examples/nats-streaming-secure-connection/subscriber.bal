@@ -1,10 +1,11 @@
 import ballerina/log;
 import ballerinax/stan;
 
-// Initializes the NATS Streaming listener with TLS/SSL and basic authentication.
-listener stan:Listener lis = new(stan:DEFAULT_URL, clusterId = "my_secure_cluster",
+// Initializes the NATS Streaming listener with TLS/SSL and username/password authentication.
+listener stan:Listener securedEP = new(stan:DEFAULT_URL,
+    clusterId = "my_secure_cluster",
 
-    // To secure the client connections using basic authentication, provide the credentials
+    // To secure the client connections using username/password authentication, provide the credentials
     // with the [`stan:Credentials`](https://docs.central.ballerina.io/ballerinax/stan/latest/records/Credentials) record.
     auth = {
          username: "alice",
@@ -24,7 +25,7 @@ listener stan:Listener lis = new(stan:DEFAULT_URL, clusterId = "my_secure_cluste
 @stan:ServiceConfig {
     subject: "security.demo"
 }
-service stan:Service on lis {
+service stan:Service on securedEP {
     remote function onMessage(stan:Message message) {
         // Prints the incoming message in the console.
         string|error messageData = string:fromBytes(message.content);

@@ -5,11 +5,11 @@ import ballerinax/stan;
 public function main() returns error? {
     string message = "Hello from Ballerina";
 
-    // Initializes the NATS Streaming client TLS/SSL and basic authentication.
+    // Initializes the NATS Streaming client with TLS/SSL and username/password authentication.
     stan:Client stanClient = check new(stan:DEFAULT_URL,
         clusterId = "my_secure_cluster",
 
-        // To secure the client connections using basic authentication, provide the credentials
+        // To secure the client connections using username/password authentication, provide the credentials
         // with the [`stan:Credentials`](https://docs.central.ballerina.io/ballerinax/stan/latest/records/Credentials) record.
         auth = {
              username: "alice",

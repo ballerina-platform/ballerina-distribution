@@ -1,10 +1,10 @@
 import ballerinax/rabbitmq;
 
 public function main() returns error? {
-    // Creates a ballerina RabbitMQ client with TLS/SSL and basic authentication.
-    rabbitmq:Client newClient = check new(rabbitmq:DEFAULT_HOST, 5671,
+    // Creates a ballerina RabbitMQ client with TLS/SSL and username/password authentication.
+    rabbitmq:Client rabbitmqClient = check new(rabbitmq:DEFAULT_HOST, 5671,
 
-        // To secure the client connections using basic authentication, provide the credentials
+        // To secure the client connections using username/password authentication, provide the credentials
         // with the [`rabbitmq:Credentials`](https://docs.central.ballerina.io/ballerinax/rabbitmq/latest/records/Credentials) record.
         auth = {
              username: "alice",
@@ -21,10 +21,10 @@ public function main() returns error? {
     );
 
     // Declares the queue, Secured.
-    check newClient->queueDeclare("Secured");
+    check rabbitmqClient->queueDeclare("Secured");
 
-    // Publishes the message using newClient and the routing key named MyQueue.
+    // Publishes the message using the `rabbitmqClient` and the routing key named `Secured`.
     string message = "Hello from Ballerina";
-    check newClient->publishMessage({ content: message.toBytes(),
+    check rabbitmqClient->publishMessage({ content: message.toBytes(),
                                             routingKey: "Secured" });
 }

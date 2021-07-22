@@ -1,10 +1,10 @@
 import ballerina/log;
 import ballerinax/nats;
 
-// Initializes a NATS listener with TLS/SSL and basic authentication.
-listener nats:Listener subscription = new(nats:DEFAULT_URL,
+// Initializes a NATS client with TLS/SSL and username/password authentication.
+listener nats:Listener securedEP = new(nats:DEFAULT_URL,
 
-    // To secure the client connections using basic authentication, provide the credentials
+    // To secure the client connections using username/password authentication, provide the credentials
     // with the [`nats:Credentials`](https://docs.central.ballerina.io/ballerinax/nats/latest/records/Credentials) record.
     auth = {
          username: "alice",
@@ -22,7 +22,7 @@ listener nats:Listener subscription = new(nats:DEFAULT_URL,
 
 // Binds the consumer to listen to the messages published
 // to the 'security.demo' subject.
-service "security.demo" on subscription {
+service "security.demo" on securedEP {
 
     remote function onMessage(nats:Message message) returns error? {
         string|error messageContent = string:fromBytes(message.content);
