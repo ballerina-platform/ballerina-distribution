@@ -32,7 +32,7 @@ Bank is open* Closing connection 0
 
 Run the cURL command below to invoke bank/createAccount resource.
 curl -v "http://localhost:9090/bank/createAccount?name=bal"
-> GET /bank/createAccount?name=bal HTTP/1.1
+> GET /bank/account/bal HTTP/1.1
 > Host: localhost:9090
 > User-Agent: curl/7.64.1
 > Accept: */*
