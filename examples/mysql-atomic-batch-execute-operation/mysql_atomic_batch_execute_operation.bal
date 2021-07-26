@@ -60,7 +60,7 @@ public function main() returns error? {
     }
 
     // Checks the data after the batch execution.
-    stream<record {}, error> resultStream = 
+    stream<record {}, error?> resultStream =
         mysqlClient->query(`SELECT * FROM Customers`);
 
     io:println("Data in Customers table:");
