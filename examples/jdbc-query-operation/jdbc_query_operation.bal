@@ -28,7 +28,7 @@ public function main() returns error? {
     // be either a record or an error. The name and type of the attributes 
     // within the record from the `resultStream` will be automatically 
     // identified based on the column name and type of the query result.
-    stream<record {}, error> resultStream = 
+    stream<record {}, error?> resultStream =
             jdbcClient->query(`SELECT * FROM Customers`);
 
     // If there is any error during the execution of the SQL query or
@@ -39,7 +39,7 @@ public function main() returns error? {
     });
 
     // The result of the count operation is provided as a record stream.
-    stream<record {}, error> resultStream2 = 
+    stream<record {}, error?> resultStream2 =
             jdbcClient->query(`SELECT COUNT(*) AS total FROM Customers`);
 
     // Since the above count query will return only a single row,
@@ -54,12 +54,12 @@ public function main() returns error? {
     // when the stream is fully consumed or any error is encountered.
     // However, in case if the stream is not fully consumed, the stream
     // should be closed specifically.
-    error? er = resultStream.close();
+    error? er = resultStream2.close();
 
     // If a `Customer` stream type is defined when calling the query method,
     // The result is returned as a `Customer` record stream and the elements
     // of the stream can be either a `Customer` record or an error.
-    stream<Customer, error> customerStream = 
+    stream<Customer, error?> customerStream =
         jdbcClient->query(`SELECT * FROM Customers`);
 
     // Iterates the customer stream.

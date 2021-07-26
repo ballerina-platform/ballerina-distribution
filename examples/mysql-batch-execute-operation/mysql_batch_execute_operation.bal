@@ -54,7 +54,7 @@ public function main() returns error? {
     io:println("\nInsert success, generated IDs are: ", generatedIds, "\n");
 
     // Checks the data after the batch execution.
-    stream<record {}, error> resultStream = 
+    stream<record {}, error?> resultStream =
         mysqlClient->query(`SELECT * FROM Customers`);
 
     io:println("Data in Customers table:");

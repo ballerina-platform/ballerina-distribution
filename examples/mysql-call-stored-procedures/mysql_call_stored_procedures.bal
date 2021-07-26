@@ -48,10 +48,10 @@ public function main() returns error? {
     io:println("Call stored procedure `GetStudents`.");
 
     // Processes the returned result stream.
-    stream<record {}, sql:Error>? result = retCall3.queryResult;
-    if result is stream<record {}, sql:Error> {
-        stream<Student, sql:Error> studentStream = 
-                <stream<Student, sql:Error>>result;
+    stream<record {}, sql:Error?>? result = retCall3.queryResult;
+    if result is stream<record {}, sql:Error?> {
+        stream<Student, sql:Error?> studentStream =
+                <stream<Student, sql:Error?>>result;
         sql:Error? e = studentStream.forEach(function(Student student) {
             io:println("Student details: ", student);
         });
