@@ -70,7 +70,7 @@ jobs:
           repository: ballerina-platform/module-ballerina-docker
           path: module-ballerina-docker
       - name: Copy zip artifact
-        run: cp ballerina/build/distributions/ballerina-swan-lake-*.zip module-ballerina-docker/base/docker/
+        run: cp ballerina/build/distributions/ballerina-sl*.zip module-ballerina-docker/base/docker/
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
