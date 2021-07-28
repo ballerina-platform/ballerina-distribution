@@ -18,12 +18,23 @@
 
 package org.ballerina.central;
 
+import io.ballerina.cli.utils.CentralUtils;
+import io.ballerina.projects.Settings;
+import io.ballerina.projects.util.ProjectConstants;
+import io.ballerina.projects.util.ProjectUtils;
+import org.awaitility.Duration;
+import org.ballerinalang.central.client.CentralAPIClient;
+import org.ballerinalang.toml.exceptions.SettingsTomlException;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import org.wso2.ballerinalang.util.RepoUtils;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
+import java.net.Proxy;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.FileVisitResult;
@@ -38,6 +49,8 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Objects;
 
+import static java.util.concurrent.TimeUnit.SECONDS;
+import static org.awaitility.Awaitility.given;
 import static org.ballerina.central.CentralTestUtils.BALLERINA_DEV_CENTRAL;
 import static org.ballerina.central.CentralTestUtils.BALLERINA_HOME_DIR;
 import static org.ballerina.central.CentralTestUtils.BALLERINA_TOML;
@@ -75,6 +88,9 @@ public class CentralTest {
     private String orgName = "bc2testorg";
     private Map<String, String> envVariables;
 
+    private ByteArrayOutputStream console;
+    private PrintStream outStream;
+
     private static final String DISTRIBUTION_FILE_NAME = "ballerina-" + MAVEN_VERSION;
     private static final String DEFAULT_PKG_NAME = "my_package";
     private static final String PROJECT_A = "projectA";
@@ -88,6 +104,7 @@ public class CentralTest {
     private static final String JAVA11_PLATFORM = "java11";
     private static final String OUTPUT_CONTAIN_ERRORS = "build output contain errors:";
     private static final String OUTPUT_NOT_CONTAINS_EXP_MSG = "build output does not contain expected message:";
+    private static final String OUTPUT_CONTAINS_LOGS = "build output contains output messages";
 
     @BeforeClass()
     public void setUp() throws IOException, InterruptedException {
@@ -355,6 +372,53 @@ public class CentralTest {
         if (!buildOutput.contains(expectedMsg)) {
             Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedMsg);
         }
+    }
+
+    @Test()
+    public void testPullPackage() throws IOException, SettingsTomlException {
+
+        String devCentralUrl = "https://central.ballerina.io";
+
+        Settings settings = CentralUtils.readSettings();
+
+        Proxy proxy = ProjectUtils.initializeProxy(settings.getProxy());
+        String accessToken = ProjectUtils.getAccessTokenOfCLI(settings);
+
+        // Create a client
+        CentralAPIClient centralAPIClient = new CentralAPIClient(devCentralUrl, proxy,
+                accessToken);
+
+        Path packagePathInBalaCache = ProjectUtils.createAndGetHomeReposPath()
+                .resolve(ProjectConstants.REPOSITORIES_DIR).resolve(ProjectConstants.CENTRAL_REPOSITORY_CACHE_NAME)
+                .resolve(ProjectConstants.BALA_DIR_NAME)
+                .resolve(orgName).resolve(this.packageSnapshotName);
+
+        try {
+            centralAPIClient.pullPackage("ibaqu", "foo", "1.0.0", packagePathInBalaCache,
+                    "java11", RepoUtils.getBallerinaVersion(), false);
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.toString());
+            Assert.fail("Exception occurred");
+        }
+
+        String buildLog = readOutput();
+
+        given().with().pollInterval(Duration.ONE_SECOND).and().with().pollDelay(Duration.ONE_SECOND).await()
+                .atMost(10, SECONDS)
+                .until(() -> buildLog.contains("ibaqu/foo:1.0.0 pulled from central successfully"));
+
+        deleteFiles(packagePathInBalaCache);
+        // Check logs
+
+    }
+
+    private String readOutput() throws IOException {
+        String output;
+        output = this.console.toString();
+        this.console.close();
+        this.console = new ByteArrayOutputStream();
+        this.outStream = new PrintStream(this.console);
+        return output;
     }
 
     @AfterClass
