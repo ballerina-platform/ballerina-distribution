@@ -125,6 +125,7 @@ subprojects {
         ballerinaStdLibs
         ballerinaC2cLibs
         ballerinaC2cTooling
+        ballerinaOpenAPILibs
         exten {
             transitive = false
         }
@@ -178,7 +179,8 @@ subprojects {
         ballerinaStdLibs "io.ballerina.stdlib:xslt-ballerina:${stdlibXsltVersion}"
 
         ballerinaStdLibs "org.ballerinalang:transaction-ballerina:${stdlibTransactionVersion}"
-        ballerinaStdLibs "io.ballerina:module-ballerina-openapi:${openapiVersion}"
+        ballerinaOpenAPILibs "io.ballerina:module-ballerina-openapi:${openapiVersion}"
+
 
         /* Code to cloud extensions */
         ballerinaC2cLibs "io.ballerina:c2c-ballerina:${c2cVersion}"
