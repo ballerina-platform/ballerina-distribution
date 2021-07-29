@@ -86,11 +86,20 @@ public class OpenAPIDistributionArtifactCheck {
                 .resolve("ballerina")
                 .resolve("openapi");
 
+        Path languageExtension = TEST_DISTRIBUTION_PATH
+                .resolve(DIST_NAME)
+                .resolve("lib")
+                .resolve("tools")
+                .resolve("lang-server")
+                .resolve("lib");
+
         Assert.assertTrue(Files.exists(birPath));
         Assert.assertTrue(Files.exists(balaPath));
         Assert.assertTrue(Files.exists(jarPath.resolve("ballerina-openapi-0.9.0-beta.3.jar")));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "openapi-cli-"));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "openapi-validator-"));
+        Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "openapi-bal-service-"));
+        Assert.assertNotNull(TestUtils.findFileOrDirectory(languageExtension, "openapi-ls-"));
         Assert.assertTrue(Files.exists(docsPath));
     }
 
