@@ -62,15 +62,17 @@ jobs:
       - name: Get project version
         id: project-version
         run: |
+          SHORT_VERSION=$((grep -w 'shortVersion' | cut -d= -f2) < gradle.properties)
           RELEASE_VERSION=$((grep -w "version" | cut -d= -f2) < gradle.properties)
           echo "::set-output name=version::$RELEASE_VERSION"
+          echo "::set-output name=sversion::$SHORT_VERSION"
       - name: Checkout docker repo
         uses: actions/checkout@v2
         with:
           repository: ballerina-platform/module-ballerina-docker
           path: module-ballerina-docker
       - name: Copy zip artifact
-        run: cp ballerina/build/distributions/ballerina-swan-lake-*.zip module-ballerina-docker/base/docker/
+        run: cp ballerina/build/distributions/ballerina-sl*.zip module-ballerina-docker/base/docker/
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
@@ -88,7 +90,7 @@ jobs:
           push: true
           tags: ballerina/ballerina:nightly-${{ steps.version.outputs.version }}, ballerina/ballerina:nightly
           build-args: |
-            BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.version }}.zip
+            BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.sversion }}.zip
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
       - name: Invoke Connector Ballerina Version Bump

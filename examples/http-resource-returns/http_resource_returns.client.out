@@ -30,12 +30,14 @@ curl -v "http://localhost:9090/bank/open"
 * Connection #0 to host localhost left intact
 Bank is open* Closing connection 0
 
-Run the cURL command below to invoke bank/createAccount resource.
-curl -v "http://localhost:9090/bank/createAccount?name=bal"
-> GET /bank/account/bal HTTP/1.1
+Run the cURL command below to invoke bank/account resource.
+curl -v "http://localhost:9090/bank/account" -d "bal" -X PUT
+> PUT /bank/account HTTP/1.1
 > Host: localhost:9090
 > User-Agent: curl/7.64.1
 > Accept: */*
+> Content-Length: 3
+> Content-Type: application/x-www-form-urlencoded
 >
 < HTTP/1.1 201 Created
 < Location: /myServer/084230
