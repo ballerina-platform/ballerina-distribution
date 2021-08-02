@@ -1,9 +1,2 @@
-# To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
 bal run kafka_consumer_service.bal
-
-# If the listener started successfully, the following lines will be printed in
-# the Console.
-[ballerinax/kafka] kafka servers: localhost:9092
-[ballerinax/kafka] subscribed topics: test-kafka-topic
-[ballerinax/kafka] started kafka listener
+[ballerinax/kafka] Kafka listener started for topics: test-kafka-topic

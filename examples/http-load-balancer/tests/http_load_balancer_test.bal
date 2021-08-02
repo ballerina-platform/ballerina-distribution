@@ -3,58 +3,18 @@ import ballerina/http;
 
 @test:Config {
 }
-function testFunc() {
-    // Invoking the main function
-    http:Client httpEndpoint = checkpanic new("http://localhost:9090");
+function testFunc() returns error? {
+    http:Client httpEndpoint = check new("http://localhost:9090");
 
-    // Send a GET request to the specified endpoint
-    http:Response|error response1 = httpEndpoint->get("/lb");
-    if (response1 is http:Response) {
-        var result = response1.getTextPayload();
-        if (result is string) {
-            test:assertEquals(result, "Mock1 resource was invoked.");
-        } else {
-            test:assertFail(msg = "Invalid response message:");
-        }
-    } else {
-        test:assertFail(msg = "Failed to call the endpoint:");
-    }
+    string response = check httpEndpoint->get("/lb");
+    test:assertEquals(response, "Mock1 resource was invoked.");
 
-    http:Response|error response2 = httpEndpoint->get("/lb");
-    if (response2 is http:Response) {
-        var result = response2.getTextPayload();
-        if (result is string) {
-            test:assertEquals(result, "Mock2 resource was invoked.");
-        } else {
-            test:assertFail(msg = "Invalid response message:");
-        }
-    } else {
-        test:assertFail(msg = "Failed to call the endpoint:");
-    }
+    response = check httpEndpoint->get("/lb");
+    test:assertEquals(response, "Mock2 resource was invoked.");
 
-    // Send a GET request to the specified endpoint
-    http:Response|error response3 = httpEndpoint->get("/lb");
-    if (response3 is http:Response) {
-        var result = response3.getTextPayload();
-        if (result is string) {
-            test:assertEquals(result, "Mock3 resource was invoked.");
-        } else {
-            test:assertFail(msg = "Invalid response message:");
-        }
-    } else {
-        test:assertFail(msg = "Failed to call the endpoint:");
-    }
+    response = check httpEndpoint->get("/lb");
+    test:assertEquals(response, "Mock3 resource was invoked.");
 
-    // Send a GET request to the specified endpoint
-    http:Response|error response4 = httpEndpoint->get("/lb");
-    if (response4 is http:Response) {
-        var result = response4.getTextPayload();
-        if (result is string) {
-            test:assertEquals(result, "Mock1 resource was invoked.");
-        } else {
-            test:assertFail(msg = "Invalid response message:");
-        }
-    } else {
-        test:assertFail(msg = "Failed to call the endpoint:");
-    }
+    response = check httpEndpoint->get("/lb");
+    test:assertEquals(response, "Mock1 resource was invoked.");
 }

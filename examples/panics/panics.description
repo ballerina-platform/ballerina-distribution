@@ -2,5 +2,5 @@
 // Normal errors are handled by returning error values.
 // Abnormal errors are handled using the panic statement.
 // Abnormal errors should typically result in immediate program termination.
-// e.g., programming bug or out of memory
+// e.g., A programming bug or out of memory.
 // A panic has an associated error value.

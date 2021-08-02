@@ -7,23 +7,38 @@ public function main() returns error? {
     check beforeExample();
 
     // Initializes the MySQL client.
-    mysql:Client mysqlClient = check new (user = "root",
+    mysql:Client mysqlClient = check new (user = "root", 
             password = "Test@123", database = "MYSQL_BBE");
 
     // Records with the duplicate `registrationID` entry. Here it is `registrationID` = 1.
     var insertRecords = [
-        {firstName: "Linda", lastName: "Jones", registrationID: 4,
-                                    creditLimit: 10000.75, country: "USA"},
-        {firstName: "Peter", lastName: "Stuart", registrationID: 1,
-                                    creditLimit: 5000.75, country: "USA"},
-        {firstName: "Camellia", lastName: "Potter", registrationID: 5,
-                                    creditLimit: 2000.25, country: "USA"}
+        {
+            firstName: "Linda",
+            lastName: "Jones",
+            registrationID: 4,
+            creditLimit: 10000.75,
+            country: "USA"
+        }, 
+        {
+            firstName: "Peter",
+            lastName: "Stuart",
+            registrationID: 1,
+            creditLimit: 5000.75,
+            country: "USA"
+        }, 
+        {
+            firstName: "Camellia",
+            lastName: "Potter",
+            registrationID: 5,
+            creditLimit: 2000.25,
+            country: "USA"
+        }
     ];
 
     // Creates a batch parameterized query.
-    sql:ParameterizedQuery[] insertQueries =
+    sql:ParameterizedQuery[] insertQueries = 
         from var data in insertRecords
-            select  `INSERT INTO Customers
+        select `INSERT INTO Customers
                 (firstName, lastName, registrationID, creditLimit, country)
                 VALUES (${data.firstName}, ${data.lastName},
                 ${data.registrationID}, ${data.creditLimit}, ${data.country})`;
@@ -45,12 +60,12 @@ public function main() returns error? {
     }
 
     // Checks the data after the batch execution.
-    stream<record{}, error> resultStream =
-        mysqlClient->query("SELECT * FROM Customers");
+    stream<record {}, error?> resultStream =
+        mysqlClient->query(`SELECT * FROM Customers`);
 
     io:println("Data in Customers table:");
     error? e = resultStream.forEach(function(record {} result) {
-                 io:println(result.toString());
+        io:println(result.toString());
     });
 
     // Performs a cleanup after the example.
@@ -62,7 +77,7 @@ function beforeExample() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
 
     // Creates a database.
-    sql:ExecutionResult result =
+    sql:ExecutionResult result = 
         check mysqlClient->execute(`CREATE DATABASE MYSQL_BBE`);
 
     // Creates a table in the database.
@@ -83,7 +98,7 @@ function beforeExample() returns sql:Error? {
 // Cleans up the database after running the example.
 function afterExample(mysql:Client mysqlClient) returns sql:Error? {
     // Cleans the database.
-    sql:ExecutionResult result =
+    sql:ExecutionResult result = 
             check mysqlClient->execute(`DROP DATABASE MYSQL_BBE`);
     // Closes the MySQL client.
     check mysqlClient.close();

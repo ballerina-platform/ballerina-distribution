@@ -7,7 +7,7 @@ public function main() {
     string s1 = string`Hello, ${name}`;
     io:println(s1);
 
-    // Concatenates `Backtick:` strings with ```.
+    // Concatenates `Backtick:` strings with `.
     string s2 = string`Backtick:${"`"}`;
     io:println(s2);
 }

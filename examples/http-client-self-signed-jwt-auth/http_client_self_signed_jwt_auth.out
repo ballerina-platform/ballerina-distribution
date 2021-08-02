@@ -1,6 +1,4 @@
-# Before testing this sample, first start a sample service secured with JWT Auth.
-# To run this sample, navigate to the directory that contains the `.bal` file,
-# and execute the `bal run` command below.
-# (You may need to change the trusted certificate file path and private key file path.)
+# As a prerequisite, start a sample service secured with OAuth2.
+# You may need to change the trusted certificate file path and private key file path.
 bal run http_client_self_signed_jwt_auth.bal
 Hello, World!

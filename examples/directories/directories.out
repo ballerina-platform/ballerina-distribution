@@ -1,5 +1,3 @@
-# To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `bal run` command below.
 bal run directories.bal
 The foo/bar directory created successfully.
 Is foo directory exist: true

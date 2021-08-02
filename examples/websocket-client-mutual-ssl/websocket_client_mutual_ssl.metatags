@@ -1,0 +1,2 @@
+description: BBE on how to secure WebSocket client with mutual SSL.
+keywords: ballerina, ballerina by example, bbe, websocket, mutual ssl, ssl protocols, ciphers

@@ -1,0 +1,4 @@
+# As a prerequisite, start a sample echo WebSocket service secured with Basic Auth.
+# You may need to change the trusted certificate file path.
+bal run websocket_client_basic_auth.bal
+Hello, World!

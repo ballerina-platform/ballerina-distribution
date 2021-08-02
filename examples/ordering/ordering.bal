@@ -18,7 +18,8 @@ public function main() {
                         // must be an `ordered` type. The `order-direction` is `ascending`
                         // if not specified explicitly.
                         order by e.lastName ascending, e.firstName ascending
-                        
+
+
                         select e;
     io:println(sorted);
 }

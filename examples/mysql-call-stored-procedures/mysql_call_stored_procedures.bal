@@ -14,7 +14,7 @@ public function main() returns error? {
     check beforeExample();
 
     // Initializes the MySQL client.
-    mysql:Client mysqlClient = check new (user = "root",
+    mysql:Client mysqlClient = check new (user = "root", 
             password = "Test@123", database = "MYSQL_BBE");
 
     // Creates a parameterized query to invoke the procedure.
@@ -25,7 +25,7 @@ public function main() returns error? {
 
     // Invokes the stored procedure `InsertStudent` with the `IN` parameters.
     sql:ProcedureCallResult retCall = check mysqlClient->call(sqlQuery);
-    io:println("Call stored procedure `InsertStudent`." +
+    io:println("Call stored procedure `InsertStudent`." + 
         "\nAffected Row count: ", retCall.executionResult?.affectedRowCount);
     check retCall.close();
 
@@ -45,13 +45,13 @@ public function main() returns error? {
     // Invokes the stored procedure, which returns the data.
     sql:ProcedureCallResult retCall3 = 
             check mysqlClient->call(`{CALL GetStudents()}`, [Student]);
-    io:println("Call stored procedure `GetStudents`.");              
+    io:println("Call stored procedure `GetStudents`.");
 
     // Processes the returned result stream.
-    stream<record{}, sql:Error>? result = retCall3.queryResult;
-    if result is stream<record{}, sql:Error> {
-        stream<Student, sql:Error> studentStream = 
-                <stream<Student, sql:Error>> result;
+    stream<record {}, sql:Error?>? result = retCall3.queryResult;
+    if result is stream<record {}, sql:Error?> {
+        stream<Student, sql:Error?> studentStream =
+                <stream<Student, sql:Error?>>result;
         sql:Error? e = studentStream.forEach(function(Student student) {
             io:println("Student details: ", student);
         });
@@ -67,7 +67,7 @@ function beforeExample() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
 
     // Creates a database.
-    sql:ExecutionResult result =
+    sql:ExecutionResult result = 
         check mysqlClient->execute(`CREATE DATABASE MYSQL_BBE`);
 
     // Creates a table in the database.
@@ -86,13 +86,13 @@ function beforeExample() returns sql:Error? {
     result = check mysqlClient->execute(`CREATE PROCEDURE
         MYSQL_BBE.GetStudents() BEGIN SELECT * FROM Student; END`);
 
-    check mysqlClient.close();    
+    check mysqlClient.close();
 }
 
 // Cleans up the database after running the example.
 function afterExample(mysql:Client mysqlClient) returns sql:Error? {
     // Cleans the database.
-    sql:ExecutionResult result =
+    sql:ExecutionResult result = 
             check mysqlClient->execute(`DROP DATABASE MYSQL_BBE`);
 
     // Closes the MySQL client.

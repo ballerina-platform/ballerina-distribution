@@ -1,8 +1,1 @@
-# To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
 bal run kafka_consumer_client.bal
-
-# Then it will print the following lines in the Console, and the
-# received messages if there's any.
-[ballerinax/kafka] kafka servers: localhost:9092
-[ballerinax/kafka] subscribed topics: test-kafka-topic
