@@ -19,6 +19,6 @@ function testFunc() returns error? {
         test:assertFail(msg = "Failed to call the endpoint");
     }
 
-    json response4 = check httpEndpoint->get("/bank/account/bal");
+    json response4 = check httpEndpoint->put("/bank/account", "bal");
     test:assertEquals(response4, {"name":"bal", "accountNo":84230});
 }
