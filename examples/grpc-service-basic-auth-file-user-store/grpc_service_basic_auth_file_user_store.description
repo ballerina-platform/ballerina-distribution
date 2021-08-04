@@ -1,4 +1,4 @@
-// An gRPC service/resource can be secured using Basic auth and optionally by
+// A gRPC service/resource can be secured using Basic auth and optionally by
 // enforcing authorization. Then, it validates the Basic auth token sent as the
 // `Authorization` metadata against the provided configurations. This reads data
 // from a file, which has a TOML format. This stores the usernames, passwords
