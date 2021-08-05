@@ -7,7 +7,7 @@ const string SASL_URL = "localhost:9093";
 kafka:ConsumerConfiguration consumerConfig = {
     groupId: "test-group",
     topics: ["demo-security"],
-    // Provide the relevant authentication configurations to authenticate the consumer by `kafka:AuthenticationConfiguration`.
+    // Provide the relevant authentication configurations to authenticate the consumer by [`kafka:AuthenticationConfiguration`](https://docs.central.ballerina.io/ballerinax/kafka/latest/records/AuthenticationConfiguration).
     auth: {
         // Provide the authentication mechanism used by the Kafka server.
         mechanism: kafka:AUTH_SASL_PLAIN,

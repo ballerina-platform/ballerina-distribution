@@ -11,7 +11,7 @@ listener http:Listener securedEP = new(9090,
 
 // The service can be secured with Basic auth and can be authorized  optionally.
 // Basic auth using the LDAP user store can be enabled by setting the
-// `http:LdapUserStoreConfig` configurations.
+// [`http:LdapUserStoreConfig`](https://docs.central.ballerina.io/ballerina/http/latest/records/LdapUserStoreConfig) configurations.
 // Authorization is based on scopes. A scope maps to one or more groups.
 // Authorization can be enabled by setting the `string|string[]` type
 // configurations for `scopes` field.
