@@ -3,7 +3,7 @@ import ballerina/io;
 public function main() {
     // By default, named workers are multitasked cooperatively, not preemptively.
     // Each named worker has a "strand" (logical thread of control) and execution
-    // switches been strands only at specific "yield" points.
+    // switches between strands only at specific "yield" points.
     worker A {
         io:println("In worker A");
     }
