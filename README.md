@@ -70,7 +70,7 @@ Alternatively, you can install Ballerina from the source using the following ins
    Else you can disable central integration tests and build the repository.
    
 4. Run the Gradle build command ``./gradlew build`` from the repository root directory.
-5. Inside `ballerina/build/distributions/` directory there will be several zip distributions. From there extract `ballerina-<version>-SNAPSHOT.zip` file (eg:- ballerina-swan-lake-beta3-SNAPSHOT.zip). The other distributions are generated for installer generation.
+5. Out of the ZIP distributions in the `ballerina/build/distributions/` directory, extract the `ballerina-<version>-SNAPSHOT.zip` file (e.g., `ballerina-swan-lake-beta3-SNAPSHOT.zip`). The other distributions are used for installer generation.
 
 ## Contributing to Ballerina
 
