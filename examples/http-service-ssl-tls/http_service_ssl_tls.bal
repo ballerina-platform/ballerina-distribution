@@ -1,7 +1,7 @@
 import ballerina/http;
 
 // An HTTP listener can be configured to communicate through HTTPS as well.
-// To secure n listener using HTTPS, the listener needs to be configured with
+// To secure a listener using HTTPS, the listener needs to be configured with
 // a certificate file and a private key file for the listener.
 // The [`http:ListenerSecureSocket`](https://docs.central.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket) record
 // provides the SSL-related listener configurations of the listener.
