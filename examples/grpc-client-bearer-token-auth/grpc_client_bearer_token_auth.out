@@ -2,7 +2,7 @@
 # Copy the generated `grpc_secured_pb.bal` stub file to the package.
 # For example, if you create a package named `client`, copy the stub file to the `client` package.
 
-# Create a new `grpc-client-bearer-token-auth.bal` Ballerina file inside the `client` package and add the client implementation.
+# Create a new `grpc_client_bearer_token_auth.bal` Ballerina file inside the `client` package and add the client implementation.
 
 # Execute the command below to build the 'client' package.
 # You may need to change the trusted certificate file path.
