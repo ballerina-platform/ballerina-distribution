@@ -17,23 +17,21 @@
  */
 package io.ballerina.dist;
 
-import io.ballerina.projects.ProjectEnvironmentBuilder;
+import io.ballerina.projects.*;
 import io.ballerina.projects.bala.BalaProject;
+import io.ballerina.projects.repos.FileSystemCache;
 import io.ballerina.projects.repos.TempDirCompilationCache;
 import org.ballerinalang.docgen.docs.BallerinaDocGenerator;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.FileSystems;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.PathMatcher;
-import java.nio.file.Paths;
-import java.nio.file.SimpleFileVisitor;
+import java.net.URI;
+import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Utility class to build and populate distribution cache.
@@ -42,9 +40,13 @@ import java.util.List;
  */
 public class DistRepoBuilder {
 
-    final static String balaGlob = "glob:**/bala.json";
-    final static String jarGlob = "glob:**/*.jar";
+    // final static String balaGlob = "glob:**/bala.json";
+    // final static String jarGlob = "glob:**/*.jar";
     final static String docGlob = "glob:**/api-docs.json";
+
+    private final static String balaGlob = "glob:**/*.bala";
+    private final static String jarGlob = "glob:**/*.jar";
+    private static final String BALLERINA_HOME_KEY = "ballerina.home";
 
     public static void main(String args[]) throws IOException {
         System.out.println("Building Distribution Repo ...");
@@ -62,14 +64,20 @@ public class DistRepoBuilder {
         boolean valid = true;
         // The following list will contain existing docs from ballerina-lang repo
         List<Path> existingDocs = getExistingDocs(jBalToolsPath.resolve("docs"));
+
+
         for (Path bala : balas) {
-            generateDocsFromBala(bala, jBalToolsPath, existingDocs);
-            // following function was put in to validate if bir and jar exists for packed balas
-            valid = valid & validateCache(bala, repo);
+            //     generateDocsFromBala(bala, jBalToolsPath, existingDocs);
+            //     // following function was put in to validate if bir and jar exists for packed balas
+            //     valid = valid & validateCache(bala, repo);
+            // }
+            // if (!valid) {
+            //     System.exit(1);
+
+            extractPlatformLibs(bala);
+
         }
-        if (!valid) {
-            System.exit(1);
-        }
+        generateCaches(repo);
     }
 
     private static List<Path> getExistingDocs(Path jBalToolsDocPath) throws IOException {
@@ -128,9 +136,123 @@ public class DistRepoBuilder {
                 .resolve(getJarName(orgName, moduleName, version));
         if (!Files.exists(jar)) {
             System.out.println("Jar missing for package :" + orgName + "/" + moduleName);
-           valid = false;
+            valid = false;
         }
         return valid;
+    }
+
+    private static void generateCaches( Path repo) {
+        String[] stdLibs = {
+                //Standard Libraries
+                "io-ballerina-zip",
+                "ballerinax-java.arrays",
+                "ballerina-random",
+                "ballerina-regex",
+                "ballerina-runtime",
+                "ballerina-task",
+                "ballerina-time",
+                "ballerina-url",
+                "ballerina-xmldata",
+                "ballerina-cache",
+                "ballerina-crypto",
+                "ballerina-os",
+                "ballerina-xslt",
+                "ballerina-log",
+                "ballerina-reflect",
+                "ballerina-uuid",
+                "ballerina-auth",
+                "ballerina-file",
+                "ballerina-ftp",
+                "ballerina-jwt",
+                "ballerina-mime",
+                "ballerina-nats",
+                "ballerina-oauth2",
+                "ballerina-stan",
+                "ballerina-tcp",
+                "ballerina-udp",
+                "ballerina-email",
+                "ballerina-http",
+                "ballerina-grpc",
+                "ballerinai-transaction",
+                "ballerina-websocket",
+                "ballerina-websub",
+                "ballerina-websubhub",
+                "ballerina-kafka",
+                "ballerina-rabbitmq",
+                "ballerina-sql",
+                "ballerinax-java.jdbc",
+                "ballerinax-mysql",
+                "ballerina-graphql",
+                "ballerina-graphql", // TODO : graphql had to generate twice
+                //Extensions
+                //TODO: Revisit extensions
+                "ballerina-openapi",
+                "ballerina-docker",
+                "ballerinax-awslambda",
+                "ballerinax-azure_functions",
+                "ballerinax-choreo",
+                "ballerinax-jaeger",
+                "ballerinax-prometheus",
+                "ballerinai-observe"
+        };
+
+        for (String stdLib : stdLibs) {
+            Path bala=Paths.get("build/target/extracted-distributions/tcp-ballerina-zip/bala/ballerina/tcp/0.8.0-beta.3/java11");
+            System.out.println(bala);
+            try {
+                System.setProperty(BALLERINA_HOME_KEY, repo.getParent().toString());
+                ProjectEnvironmentBuilder defaultBuilder = ProjectEnvironmentBuilder.getDefaultBuilder();
+                defaultBuilder.addCompilationCacheFactory(new FileSystemCache.FileSystemCacheFactory(repo.resolve("cache")));
+                Project balaProject = BalaProject.loadProject(defaultBuilder, bala);
+                PackageCompilation packageCompilation = balaProject.currentPackage().getCompilation();
+                JBallerinaBackend.from(packageCompilation, JvmTarget.JAVA_11);
+                //TODO : Remove when regeneration is not required
+//                        balas.remove(bala);
+            } catch (Error e) {
+                //TODO : Ignore Error and continue generation as regeneration will be done
+                System.out.println("Error occurred " + stdLib + " " + e);
+            } catch (Exception e) {
+                //TODO : Ignore Exception and continue generation as regeneration will be done
+                System.out.println("Exception occurred " + stdLib + " " + e);
+            }
+            break;
+        }
+    }
+
+
+    private static void extractPlatformLibs(Path path) throws IOException {
+        Path packageRoot = path.getParent();
+        Map<String, String> env = new HashMap<>();
+        env.put("create", "true");
+        // locate file system by using the syntax
+        // defined in java.net.JarURLConnection
+
+        String filePath  = ("jar:file:" + path.toAbsolutePath().toString());
+        if (isWindows()) {
+            filePath = filePath.replace("\\", "/").replace("file:", "file:/");
+        }
+        try (FileSystem zipfs = FileSystems.newFileSystem(URI.create(filePath), env)) {
+            final PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher(jarGlob);
+            Files.walkFileTree(zipfs.getPath("/"), new SimpleFileVisitor<Path>() {
+                @Override
+                public FileVisitResult visitFile(Path from, BasicFileAttributes attrs) throws IOException {
+                    if (pathMatcher.matches(from)) {
+                        Path to = packageRoot.resolve(from.toString().replaceFirst("/", ""));
+                        Files.createDirectories(to.getParent());
+                        Files.copy(from, to, StandardCopyOption.REPLACE_EXISTING);
+                        Files.delete(from);
+                    }
+                    return FileVisitResult.CONTINUE;
+                }
+
+                @Override
+                public FileVisitResult visitFileFailed(Path file, IOException exc)
+                        throws IOException {
+                    return FileVisitResult.CONTINUE;
+                }
+            });
+        }
+        setFilePermission(path);
     }
 
     static List<Path> findBalas(Path repo) throws IOException {
@@ -140,7 +262,7 @@ public class DistRepoBuilder {
             @Override
             public FileVisitResult visitFile(Path path, BasicFileAttributes attrs) throws IOException {
                 if (pathMatcher.matches(path)) {
-                    balas.add(path.getParent());
+                    balas.add(path);
                 }
                 return FileVisitResult.CONTINUE;
             }
