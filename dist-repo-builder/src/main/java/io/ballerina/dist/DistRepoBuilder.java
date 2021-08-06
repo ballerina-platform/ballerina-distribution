@@ -17,9 +17,8 @@
  */
 package io.ballerina.dist;
 
-import io.ballerina.projects.*;
+import io.ballerina.projects.ProjectEnvironmentBuilder;
 import io.ballerina.projects.bala.BalaProject;
-import io.ballerina.projects.repos.FileSystemCache;
 import io.ballerina.projects.repos.TempDirCompilationCache;
 import org.ballerinalang.docgen.docs.BallerinaDocGenerator;
 
@@ -77,7 +76,6 @@ public class DistRepoBuilder {
             extractPlatformLibs(bala);
 
         }
-        generateCaches(repo);
     }
 
     private static List<Path> getExistingDocs(Path jBalToolsDocPath) throws IOException {
@@ -141,83 +139,83 @@ public class DistRepoBuilder {
         return valid;
     }
 
-    private static void generateCaches( Path repo) {
-        String[] stdLibs = {
-                //Standard Libraries
-                "io-ballerina-zip",
-                "ballerinax-java.arrays",
-                "ballerina-random",
-                "ballerina-regex",
-                "ballerina-runtime",
-                "ballerina-task",
-                "ballerina-time",
-                "ballerina-url",
-                "ballerina-xmldata",
-                "ballerina-cache",
-                "ballerina-crypto",
-                "ballerina-os",
-                "ballerina-xslt",
-                "ballerina-log",
-                "ballerina-reflect",
-                "ballerina-uuid",
-                "ballerina-auth",
-                "ballerina-file",
-                "ballerina-ftp",
-                "ballerina-jwt",
-                "ballerina-mime",
-                "ballerina-nats",
-                "ballerina-oauth2",
-                "ballerina-stan",
-                "ballerina-tcp",
-                "ballerina-udp",
-                "ballerina-email",
-                "ballerina-http",
-                "ballerina-grpc",
-                "ballerinai-transaction",
-                "ballerina-websocket",
-                "ballerina-websub",
-                "ballerina-websubhub",
-                "ballerina-kafka",
-                "ballerina-rabbitmq",
-                "ballerina-sql",
-                "ballerinax-java.jdbc",
-                "ballerinax-mysql",
-                "ballerina-graphql",
-                "ballerina-graphql", // TODO : graphql had to generate twice
-                //Extensions
-                //TODO: Revisit extensions
-                "ballerina-openapi",
-                "ballerina-docker",
-                "ballerinax-awslambda",
-                "ballerinax-azure_functions",
-                "ballerinax-choreo",
-                "ballerinax-jaeger",
-                "ballerinax-prometheus",
-                "ballerinai-observe"
-        };
-
-        for (String stdLib : stdLibs) {
-            Path bala=Paths.get("build/target/extracted-distributions/tcp-ballerina-zip/bala/ballerina/tcp/0.8.0-beta.3/java11");
-            System.out.println(bala);
-            try {
-                System.setProperty(BALLERINA_HOME_KEY, repo.getParent().toString());
-                ProjectEnvironmentBuilder defaultBuilder = ProjectEnvironmentBuilder.getDefaultBuilder();
-                defaultBuilder.addCompilationCacheFactory(new FileSystemCache.FileSystemCacheFactory(repo.resolve("cache")));
-                Project balaProject = BalaProject.loadProject(defaultBuilder, bala);
-                PackageCompilation packageCompilation = balaProject.currentPackage().getCompilation();
-                JBallerinaBackend.from(packageCompilation, JvmTarget.JAVA_11);
-                //TODO : Remove when regeneration is not required
-//                        balas.remove(bala);
-            } catch (Error e) {
-                //TODO : Ignore Error and continue generation as regeneration will be done
-                System.out.println("Error occurred " + stdLib + " " + e);
-            } catch (Exception e) {
-                //TODO : Ignore Exception and continue generation as regeneration will be done
-                System.out.println("Exception occurred " + stdLib + " " + e);
-            }
-            break;
-        }
-    }
+//    private static void generateCaches( Path repo) {
+//        String[] stdLibs = {
+//                //Standard Libraries
+//                "io-ballerina-zip",
+//                "ballerinax-java.arrays",
+//                "ballerina-random",
+//                "ballerina-regex",
+//                "ballerina-runtime",
+//                "ballerina-task",
+//                "ballerina-time",
+//                "ballerina-url",
+//                "ballerina-xmldata",
+//                "ballerina-cache",
+//                "ballerina-crypto",
+//                "ballerina-os",
+//                "ballerina-xslt",
+//                "ballerina-log",
+//                "ballerina-reflect",
+//                "ballerina-uuid",
+//                "ballerina-auth",
+//                "ballerina-file",
+//                "ballerina-ftp",
+//                "ballerina-jwt",
+//                "ballerina-mime",
+//                "ballerina-nats",
+//                "ballerina-oauth2",
+//                "ballerina-stan",
+//                "ballerina-tcp",
+//                "ballerina-udp",
+//                "ballerina-email",
+//                "ballerina-http",
+//                "ballerina-grpc",
+//                "ballerinai-transaction",
+//                "ballerina-websocket",
+//                "ballerina-websub",
+//                "ballerina-websubhub",
+//                "ballerina-kafka",
+//                "ballerina-rabbitmq",
+//                "ballerina-sql",
+//                "ballerinax-java.jdbc",
+//                "ballerinax-mysql",
+//                "ballerina-graphql",
+//                "ballerina-graphql", // TODO : graphql had to generate twice
+//                //Extensions
+//                //TODO: Revisit extensions
+//                "ballerina-openapi",
+//                "ballerina-docker",
+//                "ballerinax-awslambda",
+//                "ballerinax-azure_functions",
+//                "ballerinax-choreo",
+//                "ballerinax-jaeger",
+//                "ballerinax-prometheus",
+//                "ballerinai-observe"
+//        };
+//
+//        for (String stdLib : stdLibs) {
+//            Path bala=Paths.get("build/target/extracted-distributions/tcp-ballerina-zip/bala/ballerina/tcp/0.8.0-beta.3/java11");
+//            System.out.println(bala);
+//            try {
+//                System.setProperty(BALLERINA_HOME_KEY, repo.getParent().toString());
+//                ProjectEnvironmentBuilder defaultBuilder = ProjectEnvironmentBuilder.getDefaultBuilder();
+//                defaultBuilder.addCompilationCacheFactory(new FileSystemCache.FileSystemCacheFactory(repo.resolve("cache")));
+//                Project balaProject = BalaProject.loadProject(defaultBuilder, bala);
+//                PackageCompilation packageCompilation = balaProject.currentPackage().getCompilation();
+//                JBallerinaBackend.from(packageCompilation, JvmTarget.JAVA_11);
+//                //TODO : Remove when regeneration is not required
+////                        balas.remove(bala);
+//            } catch (Error e) {
+//                //TODO : Ignore Error and continue generation as regeneration will be done
+//                System.out.println("Error occurred " + stdLib + " " + e);
+//            } catch (Exception e) {
+//                //TODO : Ignore Exception and continue generation as regeneration will be done
+//                System.out.println("Exception occurred " + stdLib + " " + e);
+//            }
+//            break;
+//        }
+//    }
 
 
     private static void extractPlatformLibs(Path path) throws IOException {

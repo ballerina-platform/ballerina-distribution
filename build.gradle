@@ -19,6 +19,8 @@ plugins {
     id 'maven-publish'
     id 'net.researchgate.release' version '2.6.0'
     id 'de.undercouch.download' version '4.1.1'
+    id "com.github.johnrengelman.shadow" version "5.2.0"
+    id "com.github.spotbugs" version "4.0.5"
 }
 
 description = 'Ballerina - Tools - Parent'
@@ -40,6 +42,7 @@ ext {
     commonsIoVersion = "2.6"
     commonsLang3Version = "3.9"
     lsp4jDebugVersion = "0.7.1"
+    puppycrawlCheckstyleVersion = "8.18"
 }
 
 allprojects {

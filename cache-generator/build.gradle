@@ -57,57 +57,51 @@ dependencies {
     }
 }
 def bDistribution = file("$project.buildDir/extracted-distribution/jballerina-tools-${ballerinaLangVersion}")
-task jBallerinaPack {
-    doLast {
-        configurations.balTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-            copy {
-                from project.zipTree(artifact.getFile())
-                into new File(project.buildDir, "extracted-distribution/")
-            }
-        }
-    }
-    outputs.dir bDistribution
-}
+//task jBallerinaPack {
+//    doLast {
+//        configurations.balTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+//            copy {
+//                from project.zipTree(artifact.getFile())
+//                into new File(project.buildDir, "extracted-distribution/")
+//            }
+//        }
+//    }
+//    outputs.dir bDistribution
+//}
 
-task unpackStdLibs() {
-    dependsOn(jBallerinaPack)
-    doLast {
-        configurations.ballerinaStdLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-            copy {
-                from project.zipTree(artifact.getFile())
-                into new File("${project.buildDir}/extracted-distribution/" + artifact.name + "-zip")
-            }
-        }
-    }
-}
+//task unpackStdLibs() {
+//    dependsOn(jBallerinaPack)
+//    doLast {
+//        configurations.ballerinaStdLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+//            copy {
+//                from project.zipTree(artifact.getFile())
+//                into new File("${project.buildDir}/extracted-distribution/" + artifact.name + "-zip")
+//            }
+//        }
+//    }
+//}
 
-task copyStdlibs(type: Copy) {
-    dependsOn(unpackStdLibs)
-    def ballerinaDist = "$project.buildDir/extracted-distribution/jballerina-tools-${ballerinaLangVersion}"
-    into ballerinaDist
+//task copyStdlibs(type: Copy) {
+//    dependsOn(unpackStdLibs)
+//    def ballerinaDist = "$project.buildDir/extracted-distribution/jballerina-tools-${ballerinaLangVersion}"
+//    into ballerinaDist
+//
+//    /* Standard Libraries */
+//    configurations.ballerinaStdLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+//        def artifactExtractedPath = "${project.buildDir}/extracted-distribution/" + artifact.name + "-zip"
+//        into("repo/bala") {
+//            from "${artifactExtractedPath}/bala/"
+//        }
+//    }
+//}
 
-    /* Standard Libraries */
-    configurations.ballerinaStdLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        def artifactExtractedPath = "${project.buildDir}/extracted-distribution/" + artifact.name + "-zip"
-        into("repo/bala") {
-            from "${artifactExtractedPath}/bala/"
-        }
-        into("repo/cache") {
-            from "${artifactExtractedPath}/cache"
-        }
-    }
-}
-
-test {
-    dependsOn {
-        copyStdlibs
-    }
-    systemProperty "ballerina.home", bDistribution
-
-    useTestNG() {
-        suites "src/test/resources/testng.xml"
-    }
-}
+//test {
+//    systemProperty "ballerina.home", bDistribution
+//
+//    useTestNG() {
+//        suites "src/test/resources/testng.xml"
+//    }
+//}
 
 shadowJar {
     configurations = [project.configurations.runtimeClasspath]
@@ -133,6 +127,6 @@ compileJava {
 }
 
 
-test {
-    useJUnitPlatform()
-}
+//test {
+//    useJUnitPlatform()
+//}

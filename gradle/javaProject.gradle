@@ -63,8 +63,7 @@ dependencies {
     }
 
     jacocoRuntime "org.jacoco:org.jacoco.agent:${jacoco.toolVersion}:runtime"
-//    checkstyle project(":config:checkstyle")
-//    checkstyle "com.puppycrawl.tools:checkstyle:${puppycrawlCheckstyleVersion}"
+    checkstyle "com.puppycrawl.tools:checkstyle:${puppycrawlCheckstyleVersion}"
 }
 
 sourceCompatibility = JavaVersion.VERSION_11
@@ -94,26 +93,16 @@ test {
     }
 }
 
-task validateSpotbugs() {
-    doLast {
-        if (spotbugsMain.reports.size() > 0 &&
-                spotbugsMain.reports[0].destination.exists() &&
-                spotbugsMain.reports[0].destination.text.readLines().size() > 0) {
-            spotbugsMain.reports[0].destination?.eachLine {
-                println 'Failure: ' + it
-            }
-            throw new GradleException("Spotbugs rule violations were found.")
-        }
-    }
+checkstyle {
+    toolVersion '7.8.2'
+    configFile rootProject.file("config/checkstyle/build/checkstyle.xml")
+    configProperties = ["suppressionFile": rootProject.file("config/checkstyle/build/suppressions.xml")]
+    checkstyleTest.enabled = false
+    checkstyleMain.enabled = false
 }
 
-//checkstyle {
-//    toolVersion '7.8.2'
-//    configFile rootProject.file("config/checkstyle/build/checkstyle.xml")
-//    configProperties = ["suppressionFile": rootProject.file("config/checkstyle/build/suppressions.xml")]
-//}
-
 spotbugsMain {
+    spotbugsMain.enabled = false
     ignoreFailures = true
     effort = "max"
     reportLevel = "low"
@@ -123,7 +112,7 @@ spotbugsMain {
         it.excludeFilter = excludeFile
     }
     reports {
-        text.enabled = true
+        text.enabled = false
     }
 }
 
@@ -137,6 +126,5 @@ jacocoTestReport {
     }
 }
 
-spotbugsMain.finalizedBy validateSpotbugs
-//checkstyleMain.dependsOn(":config:checkstyle:downloadMultipleFiles")
+checkstyleMain.dependsOn(":config:checkstyle:downloadMultipleFiles")
 
