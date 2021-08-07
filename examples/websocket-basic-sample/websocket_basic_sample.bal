@@ -3,7 +3,7 @@ import ballerina/websocket;
 
 service /basic/ws on new websocket:Listener(9090) {
    resource isolated function get .()
-                     returns websocket:Service|websocket:UpgradeError {
+                     returns websocket:Service|websocket:Error {
        // Accept the WebSocket upgrade by returning a `websocket:Service`.
        return new WsService();
    }
