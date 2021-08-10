@@ -86,7 +86,7 @@
                 "name": "Strings",
                 "url": "strings",
                 "verifyBuild": true,
-                "verifyOutput": false,
+                "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
