@@ -11,7 +11,7 @@ service /graphql on new graphql:Listener(4000) {
     }
 }
 
-// Define a service class to use in GraphQL service.
+// Define a service class to use as an object in GraphQL service.
 service class Person {
     private final string name;
     private final int age;
