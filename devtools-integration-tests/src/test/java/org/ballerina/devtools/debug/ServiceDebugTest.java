@@ -23,6 +23,7 @@ import org.ballerinalang.debugger.test.utils.BallerinaTestDebugPoint;
 import org.ballerinalang.debugger.test.utils.DebugTestRunner;
 import org.ballerinalang.debugger.test.utils.DebugUtils;
 import org.ballerinalang.test.context.BallerinaTestException;
+import org.eclipse.lsp4j.debug.StackFrame;
 import org.eclipse.lsp4j.debug.StoppedEventArguments;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -60,6 +61,22 @@ public class ServiceDebugTest extends BaseTestCase {
         // Test for service debug where service is in the default module
         Pair<BallerinaTestDebugPoint, StoppedEventArguments> debugHitInfo = debugTestRunner.waitForDebugHit(20000);
         Assert.assertEquals(debugHitInfo.getLeft(), debugTestRunner.testBreakpoints.get(0));
+    }
+
+    @Test(description = "Test for service call stack representation")
+    public void serviceCallStackDebugTest() throws BallerinaTestException {
+        String fileName = "hello_service.bal";
+        String filePath = Paths.get(debugTestRunner.testProjectPath, fileName).toString();
+        int port = findFreePort();
+
+        debugTestRunner.runDebuggeeProgram(debugTestRunner.testProjectPath, port);
+        debugTestRunner.addBreakPoint(new BallerinaTestDebugPoint(filePath, 21));
+        debugTestRunner.initDebugSession(DebugUtils.DebuggeeExecutionKind.BUILD, port);
+
+        // Test for service call stack representation
+        Pair<BallerinaTestDebugPoint, StoppedEventArguments> debugHitInfo = debugTestRunner.waitForDebugHit(20000);
+        StackFrame[] frames = debugTestRunner.fetchStackFrames(debugHitInfo.getRight());
+        debugTestRunner.assertCallStack(frames[0], "sayHello", 21, "hello_service.bal");
     }
 
     @Test(description = "Test for single bal file debug engage")
