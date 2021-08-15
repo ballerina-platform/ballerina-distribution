@@ -72,18 +72,17 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
     post:
-      summary: Create a pet
+      summary: Create pet
+      operationId: createPets
       tags:
         - pets
+      requestBody:
+        content:
+          application/json:
+            schema: {}
       responses:
-        '201':
-          description: Null response
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
+        '202':
+          description: Accepted
   /pets/{petId}:
     get:
       summary: Info for a specific pet
