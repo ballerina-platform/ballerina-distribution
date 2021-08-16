@@ -1320,6 +1320,14 @@
                 "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "Mutations",
+                "url": "graphql-mutations",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
