@@ -31,8 +31,8 @@ listener grpc:Listener securedEP = new(9090,
     ]
 }
 @grpc:ServiceDescriptor {
-    descriptor: ROOT_DESCRIPTOR,
-    descMap: getDescriptorMap()
+    descriptor: ROOT_DESCRIPTOR_GRPC_SERVICE,
+    descMap: getDescriptorMapGrpcService()
 }
 service "HelloWorld" on securedEP {
     remote function hello() returns string {
