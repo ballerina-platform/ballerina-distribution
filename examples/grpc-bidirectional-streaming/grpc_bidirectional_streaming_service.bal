@@ -2,8 +2,8 @@
 import ballerina/grpc;
 
 @grpc:ServiceDescriptor {
-    descriptor: ROOT_DESCRIPTOR,
-    descMap: getDescriptorMap()
+    descriptor: ROOT_DESCRIPTOR_GRPC_BIDIRECTIONAL_STREAMING,
+    descMap: getDescriptorMapGrpcBidirectionalStreaming()
 }
 service "Chat" on new grpc:Listener(9090) {
     remote function chat(ChatStringCaller caller,

@@ -3,8 +3,8 @@ import ballerina/grpc;
 import ballerina/log;
 
 @grpc:ServiceDescriptor {
-    descriptor: ROOT_DESCRIPTOR,
-    descMap: getDescriptorMap()
+    descriptor: ROOT_DESCRIPTOR_GRPC_SIMPLE_WITH_HEADERS,
+    descMap: getDescriptorMapGrpcSimpleWithHeaders()
 }
 service "HelloWorld" on new grpc:Listener(9090) {
 
