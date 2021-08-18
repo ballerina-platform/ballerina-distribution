@@ -1163,6 +1163,14 @@
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "Client - OAuth2 JWT Bearer Grant Type",
+                "url": "http-client-oauth2-jwt-bearer-grant-type",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1532,6 +1540,14 @@
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "Client - OAuth2 JWT Bearer Grant Type",
+                "url": "websocket-client-oauth2-jwt-bearer-grant-type",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1785,6 +1801,14 @@
             {
                 "name": "Client - OAuth2 Refresh Token Grant Type",
                 "url": "grpc-client-oauth2-refresh-token-grant-type",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Client - OAuth2 JWT Bearer Grant Type",
+                "url": "grpc-client-oauth2-jwt-bearer-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
