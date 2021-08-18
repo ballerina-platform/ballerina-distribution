@@ -1395,14 +1395,14 @@
                 "name": "Handle Text Messages with Client",
                 "url": "websocket-text-client",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "isLearnByExample": false
             },
             {
                 "name": "Handle Binary Messages with Client",
                 "url": "websocket-binary-client",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "isLearnByExample": false
             },
             {
