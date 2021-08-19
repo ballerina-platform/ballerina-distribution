@@ -73,5 +73,5 @@ function testFunc() returns error? {
     // Invoking the main function
     check main();
     test:assertTrue(langstring:includes(outputs[0], "Civil record: {\"timeAbbrev\":\"Z\","));
-    test:assertEquals(outputs[1], "UTC value of the civil record: 1618269650 0.52");
+    test:assertEquals(outputs[1], "UTC value of the civil record: [1618269650,0.52]");
 }
