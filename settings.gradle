@@ -41,9 +41,4 @@ gradleEnterprise {
         termsOfServiceAgree = 'yes'
     }
 }
-//include 'checkstyle'
-//include 'config'
-//findProject(':config')?.name = 'checkstyle'
-
-//findProject(':config:checkstyle')?.name = 'checkstyle'
 

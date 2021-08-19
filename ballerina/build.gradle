@@ -179,9 +179,6 @@ task copyOtherRepos(type: Copy) {
         from("${artifactExtractedPath}/bala") {
             into "repo/bala"
         }
-//        from("${artifactExtractedPath}/cache") {
-//            into "repo/cache"
-//        }
     }
 
     /* OpenAPI Libraries */
@@ -192,9 +189,6 @@ task copyOtherRepos(type: Copy) {
         }
         from("${artifactExtractedPath}/bala") {
             into "repo/bala"
-        }
-        from("${artifactExtractedPath}/cache") {
-            into "repo/cache"
         }
         from("${artifactExtractedPath}/lslibs") {
             into "lib/tools/lang-server/lib/"
@@ -210,9 +204,6 @@ task copyOtherRepos(type: Copy) {
         from("${artifactExtractedPath}/bala") {
             into "repo/bala"
         }
-//        from("${artifactExtractedPath}/cache") {
-//            into "repo/cache"
-//        }
     }
 
     /* C2C Tooling */
@@ -361,11 +352,6 @@ task packageDistZip(type: Zip) {
         from "build/target/ballerina-command-${ballerinaCommandVersion}/lib/ballerina-command-${ballerinaCommandVersion}.jar"
         fileMode = 0775
     }
-    into("${parentDir}/lib") {
-        from "../cache-generator/build/libs/cache-generator/build/libs/cache-generator-swan-lake-beta3-SNAPSHOT.jar"
-        fileMode = 0775
-    }
-
     /* Dependencies */
     into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
         from configurations.exten
@@ -437,10 +423,6 @@ task packageDistLinux(type: Zip) {
     }
     into("${parentDir}/lib") {
         from "build/target/ballerina-command-${ballerinaCommandVersion}/lib/ballerina-command-${ballerinaCommandVersion}.jar"
-        fileMode = 0775
-    }
-    into("${parentDir}/lib") {
-        from "../cache-generator/build/libs/cache-generator/build/libs/cache-generator-swan-lake-beta3-SNAPSHOT.jar"
         fileMode = 0775
     }
     into("${parentDir}/scripts") {
@@ -521,10 +503,6 @@ task packageDistMac(type: Zip) {
                 "/lib/ballerina-command-${ballerinaCommandVersion}.jar"
         fileMode = 0775
     }
-    into("${parentDir}/lib") {
-        from "../cache-generator/build/libs/cache-generator/build/libs/cache-generator-swan-lake-beta3-SNAPSHOT.jar"
-        fileMode = 0775
-    }
     into("${parentDir}/scripts") {
         from "build/target/ballerina-command-${ballerinaCommandVersion}/scripts/bal_completion.bash"
         fileMode = 775
@@ -600,10 +578,6 @@ task packageDistWindows(type: Zip) {
     }
     into("${parentDir}/lib") {
         from "build/target/ballerina-command-${ballerinaCommandVersion}/lib/ballerina-command-${ballerinaCommandVersion}.jar"
-        fileMode = 0775
-    }
-    into("${parentDir}/lib") {
-        from "../cache-generator/build/libs/cache-generator/build/libs/cache-generator-swan-lake-beta3-SNAPSHOT.jar"
         fileMode = 0775
     }
 
@@ -1115,6 +1089,7 @@ task generateCache() {
     }
 
     doLast {
+        /* Standard Libraries */
         configurations.ballerinaStdLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
             def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
             String balaDir = artifactExtractedPath + "/bala"
@@ -1128,12 +1103,72 @@ task generateCache() {
             File versionDir = new File(balaDir + "/" + orgName + "/" + moduleName)
             String version = versionDir.listFiles()[0].toString().split("/")[-1]
 
-            String balaPath = "${buildDir}/target/extracted-distributions/${artifact.name}-zip/bala/${orgName}/${moduleName}/${version}/java11"
+            String balaPath ;
+
+            if (orgName == "ballerinax"){
+                balaPath = "${buildDir}/target/extracted-distributions/${artifact.name}-zip/bala/${orgName}/${moduleName}/${version}/any"
+            }
+            else {
+                balaPath = "${buildDir}/target/extracted-distributions/${artifact.name}-zip/bala/${orgName}/${moduleName}/${version}/java11"
+            }
             String jbalPath = "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
 
             exec {
                 workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/bin"
                 commandLine 'sh','-c',"${workingDir}/bal gencache ${balaPath} ${jbalPath}"
+            }
+        }
+
+        /* OpenApi Libraries */
+        configurations.ballerinaOpenAPILibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+            def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
+            String balaDir = artifactExtractedPath + "/bala"
+
+            File orgDir = new File(balaDir)
+            String orgName = orgDir.listFiles()[0].toString().split("/")[-1]
+
+            File moduleDir = new File(balaDir + "/" + orgName)
+            String moduleName = moduleDir.listFiles()[0].toString().split("/")[-1]
+
+            File versionDir = new File(balaDir + "/" + orgName + "/" + moduleName)
+            String version = versionDir.listFiles()[0].toString().split("/")[-1]
+
+            String balaPath ;
+
+            if (orgName == "ballerinax"){
+                balaPath = "${buildDir}/target/extracted-distributions/${artifact.name}-zip/bala/${orgName}/${moduleName}/${version}/any"
+            }
+            else {
+                balaPath = "${buildDir}/target/extracted-distributions/${artifact.name}-zip/bala/${orgName}/${moduleName}/${version}/java11"
+            }
+            String jbalPath = "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+
+            exec {
+                workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/bin"
+                commandLine 'sh','-c',"${workingDir}/bal gencache ${balaPath} ${jbalPath}"
+            }
+        }
+
+        /* C2C Libraries */
+        configurations.ballerinaC2cLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+            def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
+            String balaDir = artifactExtractedPath + "/bala"
+
+            File orgDir = new File(balaDir)
+            String orgName = orgDir.listFiles()[0].toString().split("/")[-1]
+
+            File moduleDir = new File(balaDir + "/" + orgName)
+            String moduleName = moduleDir.listFiles()[0].toString().split("/")[-1]
+
+            File versionDir = new File(balaDir + "/" + orgName + "/" + moduleName)
+            String version = versionDir.listFiles()[0].toString().split("/")[-1]
+
+            String balaPath = "${buildDir}/target/extracted-distributions/${artifact.name}-zip/bala/${orgName}/${moduleName}/${version}/any"
+            String jbalPath = "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+
+            exec {
+                workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/bin"
+                commandLine 'sh', '-c', "${workingDir}/bal gencache ${balaPath} ${jbalPath}"
             }
         }
     }
@@ -1162,7 +1197,7 @@ copyOtherRepos.dependsOn extractJreForWindows
 copyDevToolsCoverageReport.dependsOn copyOtherRepos
 copyDevToolsDocUi.dependsOn copyDevToolsCoverageReport
 buildDistRepo.dependsOn copyDevToolsDocUi
-//buildDistRepo.dependsOn generateCache
+buildDistRepo.dependsOn generateCache
 filterApiDocs.dependsOn buildDistRepo
 combineDocs.dependsOn filterApiDocs
 
