@@ -1171,6 +1171,8 @@ task generateCache() {
                 commandLine 'sh', '-c', "${workingDir}/bal gencache ${balaPath} ${jbalPath}"
             }
         }
+        delete "$buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/bre/lib/cache-generator-${project.version}.jar"
+        delete "${project.rootDir}/cache-generator/build/libs/cache-generator-${project.version}.jar"
     }
 }
 
@@ -1214,7 +1216,8 @@ unpackStdLibs.dependsOn unpackJballerinaTools
 unpackBalCommand.dependsOn downloadBalCommand
 
 testExamples.dependsOn unzipDistForTests
-
+testExamples.dependsOn generateCache
+testStdlibs.dependsOn generateCache
 testStdlibs.dependsOn unzipDistForTests
 testDevToolsIntegration.dependsOn unzipDistForTests
 
