@@ -1089,6 +1089,8 @@ task generateCache() {
     }
 
     doLast {
+        def distPath = "${project.rootDir}/ballerina/build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+
         /* Standard Libraries */
         configurations.ballerinaStdLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
             def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
@@ -1113,9 +1115,17 @@ task generateCache() {
             }
             String jbalPath = "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
 
-            exec {
-                workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/bin"
-                commandLine 'sh','-c',"${workingDir}/bal gencache ${balaPath} ${jbalPath}"
+            if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+                exec {
+                    workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+                    commandLine 'cmd', '/c', "${distPath}/bin/bal.bat gencache ${balaPath} ${jbalPath}"
+                }
+            }
+            else{
+                exec {
+                    workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+                    commandLine 'sh', '-c', "${distPath}/bin/bal gencache ${balaPath} ${jbalPath}"
+                }
             }
         }
 
@@ -1143,9 +1153,17 @@ task generateCache() {
             }
             String jbalPath = "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
 
-            exec {
-                workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/bin"
-                commandLine 'sh','-c',"${workingDir}/bal gencache ${balaPath} ${jbalPath}"
+            if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+                exec {
+                    workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+                    commandLine 'cmd', '/c', "${distPath}/bin/bal.bat gencache ${balaPath} ${jbalPath}"
+                }
+            }
+            else {
+                exec {
+                    workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+                    commandLine 'sh', '-c', "${distPath}/bin/bal gencache ${balaPath} ${jbalPath}"
+                }
             }
         }
 
@@ -1166,9 +1184,17 @@ task generateCache() {
             String balaPath = "${buildDir}/target/extracted-distributions/${artifact.name}-zip/bala/${orgName}/${moduleName}/${version}/any"
             String jbalPath = "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
 
-            exec {
-                workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/bin"
-                commandLine 'sh', '-c', "${workingDir}/bal gencache ${balaPath} ${jbalPath}"
+            if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+                exec {
+                    workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+                    commandLine 'cmd', '/c', "${distPath}/bin/bal.bat gencache ${balaPath} ${jbalPath}"
+                }
+            }
+            else {
+                exec {
+                    workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+                    commandLine 'sh', '-c', "${distPath}/bin/bal gencache ${balaPath} ${jbalPath}"
+                }
             }
         }
         delete "$buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/bre/lib/cache-generator-${project.version}.jar"
@@ -1188,7 +1214,6 @@ downloadBalCommand.dependsOn unpackC2cTooling
 /* Cache Generation */
 generateCache.dependsOn unpackStdLibs
 generateCache.dependsOn unpackC2cTooling
-packageDistZip.dependsOn generateCache
 
 /* Extract JRE */
 extractJreForLinux.dependsOn unpackBalCommand
@@ -1206,6 +1231,7 @@ combineDocs.dependsOn filterApiDocs
 /* Package Distributions */
 packageDist.dependsOn buildDistRepo
 packageDist.dependsOn combineDocs
+packageDist.dependsOn generateCache
 packageDistZip.dependsOn packageDist
 packageDistLinux.dependsOn packageDistZip
 packageDistMac.dependsOn packageDistLinux
@@ -1216,8 +1242,6 @@ unpackStdLibs.dependsOn unpackJballerinaTools
 unpackBalCommand.dependsOn downloadBalCommand
 
 testExamples.dependsOn unzipDistForTests
-testExamples.dependsOn generateCache
-testStdlibs.dependsOn generateCache
 testStdlibs.dependsOn unzipDistForTests
 testDevToolsIntegration.dependsOn unzipDistForTests
 
