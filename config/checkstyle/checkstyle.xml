@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-    # Copyright (c) 2020, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+    # Copyright (c) 2021, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
     #
     # WSO2 Inc. licenses this file to you under the Apache License,
     # Version 2.0 (the "License"); you may not use this file except
@@ -65,7 +65,8 @@ page at http://checkstyle.sourceforge.net/config.html -->
     </module>
 
     <!--<module name="JavadocPackage">-->
-    <!--&lt;!&ndash; Checks that each Java package has a Javadoc file used for commenting.-->
+    <!--&lt;!&ndash; Checks that each Java package has a Javadoc file used for
+    commenting.-->
     <!--Only allows a package-info.java, not package.html. &ndash;&gt;-->
     <!--<property name="severity" value="warning"/>-->
     <!--</module>-->

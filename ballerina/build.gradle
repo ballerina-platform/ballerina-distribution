@@ -1080,7 +1080,7 @@ task testDevToolsIntegration() {
     }
 }
 
-task generateCache() {
+task generateCache(dependsOn: ':cache-generator:build') {
     doFirst {
         copy {
             from "${project.rootDir}/cache-generator/build/libs/cache-generator-${project.version}.jar"
@@ -1096,35 +1096,24 @@ task generateCache() {
             def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
             String balaDir = artifactExtractedPath + "/bala"
 
-            File orgDir = new File(balaDir)
-            String orgName = orgDir.listFiles()[0].toString().split("/")[-1]
-
-            File moduleDir = new File(balaDir + "/" + orgName)
-            String moduleName = moduleDir.listFiles()[0].toString().split("/")[-1]
-
-            File versionDir = new File(balaDir + "/" + orgName + "/" + moduleName)
-            String version = versionDir.listFiles()[0].toString().split("/")[-1]
-
-            String balaPath ;
-
-            if (orgName == "ballerinax"){
-                balaPath = "${buildDir}/target/extracted-distributions/${artifact.name}-zip/bala/${orgName}/${moduleName}/${version}/any"
-            }
-            else {
-                balaPath = "${buildDir}/target/extracted-distributions/${artifact.name}-zip/bala/${orgName}/${moduleName}/${version}/java11"
-            }
+            String orgDir = new File("${balaDir}").listFiles()[0].toString()
+            String moduleDir = new File("${orgDir}").listFiles()[0].toString()
+            String versionDir = new File("${moduleDir}").listFiles()[0].toString()
+            String balaPath = new File("${versionDir}").listFiles()[0].toString()
             String jbalPath = "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
 
             if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                 exec {
                     workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
                     commandLine 'cmd', '/c', "${distPath}/bin/bal.bat gencache ${balaPath} ${jbalPath}"
+                    ignoreExitValue true
                 }
             }
             else{
                 exec {
                     workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
                     commandLine 'sh', '-c', "${distPath}/bin/bal gencache ${balaPath} ${jbalPath}"
+                    ignoreExitValue true
                 }
             }
         }
@@ -1134,35 +1123,24 @@ task generateCache() {
             def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
             String balaDir = artifactExtractedPath + "/bala"
 
-            File orgDir = new File(balaDir)
-            String orgName = orgDir.listFiles()[0].toString().split("/")[-1]
-
-            File moduleDir = new File(balaDir + "/" + orgName)
-            String moduleName = moduleDir.listFiles()[0].toString().split("/")[-1]
-
-            File versionDir = new File(balaDir + "/" + orgName + "/" + moduleName)
-            String version = versionDir.listFiles()[0].toString().split("/")[-1]
-
-            String balaPath ;
-
-            if (orgName == "ballerinax"){
-                balaPath = "${buildDir}/target/extracted-distributions/${artifact.name}-zip/bala/${orgName}/${moduleName}/${version}/any"
-            }
-            else {
-                balaPath = "${buildDir}/target/extracted-distributions/${artifact.name}-zip/bala/${orgName}/${moduleName}/${version}/java11"
-            }
+            String orgDir = new File("${balaDir}").listFiles()[0].toString()
+            String moduleDir = new File("${orgDir}").listFiles()[0].toString()
+            String versionDir = new File("${moduleDir}").listFiles()[0].toString()
+            String balaPath = new File("${versionDir}").listFiles()[0].toString()
             String jbalPath = "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
 
             if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                 exec {
                     workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
                     commandLine 'cmd', '/c', "${distPath}/bin/bal.bat gencache ${balaPath} ${jbalPath}"
+                    ignoreExitValue true
                 }
             }
             else {
                 exec {
                     workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
                     commandLine 'sh', '-c', "${distPath}/bin/bal gencache ${balaPath} ${jbalPath}"
+                    ignoreExitValue true
                 }
             }
         }
@@ -1172,28 +1150,24 @@ task generateCache() {
             def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
             String balaDir = artifactExtractedPath + "/bala"
 
-            File orgDir = new File(balaDir)
-            String orgName = orgDir.listFiles()[0].toString().split("/")[-1]
-
-            File moduleDir = new File(balaDir + "/" + orgName)
-            String moduleName = moduleDir.listFiles()[0].toString().split("/")[-1]
-
-            File versionDir = new File(balaDir + "/" + orgName + "/" + moduleName)
-            String version = versionDir.listFiles()[0].toString().split("/")[-1]
-
-            String balaPath = "${buildDir}/target/extracted-distributions/${artifact.name}-zip/bala/${orgName}/${moduleName}/${version}/any"
+            String orgDir = new File("${balaDir}").listFiles()[0].toString()
+            String moduleDir = new File("${orgDir}").listFiles()[0].toString()
+            String versionDir = new File("${moduleDir}").listFiles()[0].toString()
+            String balaPath = new File("${versionDir}").listFiles()[0].toString()
             String jbalPath = "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
 
             if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                 exec {
                     workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
                     commandLine 'cmd', '/c', "${distPath}/bin/bal.bat gencache ${balaPath} ${jbalPath}"
+                    ignoreExitValue true
                 }
             }
             else {
                 exec {
                     workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
                     commandLine 'sh', '-c', "${distPath}/bin/bal gencache ${balaPath} ${jbalPath}"
+                    ignoreExitValue true
                 }
             }
         }
@@ -1214,6 +1188,7 @@ downloadBalCommand.dependsOn unpackC2cTooling
 /* Cache Generation */
 generateCache.dependsOn unpackStdLibs
 generateCache.dependsOn unpackC2cTooling
+generateCache.dependsOn copyDevToolsDocUi
 
 /* Extract JRE */
 extractJreForLinux.dependsOn unpackBalCommand
