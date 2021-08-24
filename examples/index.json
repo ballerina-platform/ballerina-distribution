@@ -746,7 +746,7 @@
                 "name": "Rollback",
                 "url": "rollback",
                 "verifyBuild": true,
-                "verifyOutput": false,
+                "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
