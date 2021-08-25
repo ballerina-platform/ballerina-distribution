@@ -26,10 +26,14 @@ include ':devtools-integration-tests'
 include ':central-tests'
 include 'dist-repo-builder'
 include 'build-time-tests'
+include 'cache-generator'
+include 'config:checkstyle'
 
 project(':ballerina').projectDir = "$rootDir/ballerina" as File
 project(':ballerina-distribution-test').projectDir = "$rootDir/ballerina-test" as File
 project(':dist-repo-builder').projectDir = "$rootDir/dist-repo-builder" as File
+project(':cache-generator').projectDir = "$rootDir/cache-generator" as File
+project(':config').projectDir = "$rootDir config" as File
 
 gradleEnterprise {
     buildScan {
@@ -37,3 +41,4 @@ gradleEnterprise {
         termsOfServiceAgree = 'yes'
     }
 }
+

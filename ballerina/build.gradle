@@ -39,6 +39,7 @@ configurations {
 
 dependencies {
     repoBuilder project(':dist-repo-builder')
+    implementation project(':cache-generator')
 }
 
 def jBallerinaDistributionZip = file("$project.buildDir/distributions/ballerina-${shortVersion}.zip")
@@ -178,9 +179,6 @@ task copyOtherRepos(type: Copy) {
         from("${artifactExtractedPath}/bala") {
             into "repo/bala"
         }
-        from("${artifactExtractedPath}/cache") {
-            into "repo/cache"
-        }
     }
 
     /* OpenAPI Libraries */
@@ -191,9 +189,6 @@ task copyOtherRepos(type: Copy) {
         }
         from("${artifactExtractedPath}/bala") {
             into "repo/bala"
-        }
-        from("${artifactExtractedPath}/cache") {
-            into "repo/cache"
         }
         from("${artifactExtractedPath}/lslibs") {
             into "lib/tools/lang-server/lib/"
@@ -208,9 +203,6 @@ task copyOtherRepos(type: Copy) {
         }
         from("${artifactExtractedPath}/bala") {
             into "repo/bala"
-        }
-        from("${artifactExtractedPath}/cache") {
-            into "repo/cache"
         }
     }
 
@@ -360,7 +352,6 @@ task packageDistZip(type: Zip) {
         from "build/target/ballerina-command-${ballerinaCommandVersion}/lib/ballerina-command-${ballerinaCommandVersion}.jar"
         fileMode = 0775
     }
-
     /* Dependencies */
     into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
         from configurations.exten
@@ -1089,6 +1080,102 @@ task testDevToolsIntegration() {
     }
 }
 
+task generateCache(dependsOn: ':cache-generator:build') {
+    doFirst {
+        copy {
+            from "${project.rootDir}/cache-generator/build/libs/cache-generator-${project.version}.jar"
+            into "$buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/bre/lib"
+        }
+    }
+
+    doLast {
+        def distPath = "${project.rootDir}/ballerina/build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+
+        /* Standard Libraries */
+        configurations.ballerinaStdLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+            def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
+            String balaDir = artifactExtractedPath + "/bala"
+
+            String orgDir = new File("${balaDir}").listFiles()[0].toString()
+            String moduleDir = new File("${orgDir}").listFiles()[0].toString()
+            String versionDir = new File("${moduleDir}").listFiles()[0].toString()
+            String balaPath = new File("${versionDir}").listFiles()[0].toString()
+            String jbalPath = "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+
+            if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+                exec {
+                    workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+                    commandLine 'cmd', '/c', "${distPath}/bin/bal.bat gencache ${balaPath} ${jbalPath}"
+                    ignoreExitValue true
+                }
+            }
+            else{
+                exec {
+                    workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+                    commandLine 'sh', '-c', "${distPath}/bin/bal gencache ${balaPath} ${jbalPath}"
+                    ignoreExitValue true
+                }
+            }
+        }
+
+        /* OpenApi Libraries */
+        configurations.ballerinaOpenAPILibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+            def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
+            String balaDir = artifactExtractedPath + "/bala"
+
+            String orgDir = new File("${balaDir}").listFiles()[0].toString()
+            String moduleDir = new File("${orgDir}").listFiles()[0].toString()
+            String versionDir = new File("${moduleDir}").listFiles()[0].toString()
+            String balaPath = new File("${versionDir}").listFiles()[0].toString()
+            String jbalPath = "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+
+            if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+                exec {
+                    workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+                    commandLine 'cmd', '/c', "${distPath}/bin/bal.bat gencache ${balaPath} ${jbalPath}"
+                    ignoreExitValue true
+                }
+            }
+            else {
+                exec {
+                    workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+                    commandLine 'sh', '-c', "${distPath}/bin/bal gencache ${balaPath} ${jbalPath}"
+                    ignoreExitValue true
+                }
+            }
+        }
+
+        /* C2C Libraries */
+        configurations.ballerinaC2cLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+            def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
+            String balaDir = artifactExtractedPath + "/bala"
+
+            String orgDir = new File("${balaDir}").listFiles()[0].toString()
+            String moduleDir = new File("${orgDir}").listFiles()[0].toString()
+            String versionDir = new File("${moduleDir}").listFiles()[0].toString()
+            String balaPath = new File("${versionDir}").listFiles()[0].toString()
+            String jbalPath = "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+
+            if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+                exec {
+                    workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+                    commandLine 'cmd', '/c', "${distPath}/bin/bal.bat gencache ${balaPath} ${jbalPath}"
+                    ignoreExitValue true
+                }
+            }
+            else {
+                exec {
+                    workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+                    commandLine 'sh', '-c', "${distPath}/bin/bal gencache ${balaPath} ${jbalPath}"
+                    ignoreExitValue true
+                }
+            }
+        }
+        delete "$buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/bre/lib/cache-generator-${project.version}.jar"
+        delete "${project.rootDir}/cache-generator/build/libs/cache-generator-${project.version}.jar"
+    }
+}
+
 /* Unpack Dependencies */
 unpackJballerinaTools.dependsOn unpackBallerinaJre
 unpackDevTools.dependsOn unpackJballerinaTools
@@ -1097,6 +1184,11 @@ unpackOpenAPILibs.dependsOn unpackStdLibs
 unpackC2cLibs.dependsOn unpackOpenAPILibs
 unpackC2cTooling.dependsOn unpackC2cLibs
 downloadBalCommand.dependsOn unpackC2cTooling
+
+/* Cache Generation */
+generateCache.dependsOn unpackStdLibs
+generateCache.dependsOn unpackC2cTooling
+generateCache.dependsOn copyDevToolsDocUi
 
 /* Extract JRE */
 extractJreForLinux.dependsOn unpackBalCommand
@@ -1107,12 +1199,14 @@ copyOtherRepos.dependsOn extractJreForWindows
 copyDevToolsCoverageReport.dependsOn copyOtherRepos
 copyDevToolsDocUi.dependsOn copyDevToolsCoverageReport
 buildDistRepo.dependsOn copyDevToolsDocUi
+buildDistRepo.dependsOn generateCache
 filterApiDocs.dependsOn buildDistRepo
 combineDocs.dependsOn filterApiDocs
 
 /* Package Distributions */
 packageDist.dependsOn buildDistRepo
 packageDist.dependsOn combineDocs
+packageDist.dependsOn generateCache
 packageDistZip.dependsOn packageDist
 packageDistLinux.dependsOn packageDistZip
 packageDistMac.dependsOn packageDistLinux
@@ -1123,7 +1217,6 @@ unpackStdLibs.dependsOn unpackJballerinaTools
 unpackBalCommand.dependsOn downloadBalCommand
 
 testExamples.dependsOn unzipDistForTests
-
 testStdlibs.dependsOn unzipDistForTests
 testDevToolsIntegration.dependsOn unzipDistForTests
 
