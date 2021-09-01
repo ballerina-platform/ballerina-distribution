@@ -170,9 +170,9 @@ function encrypt() returns error? {
         check string:fromBytes(output));
 
     // Randomly generates a 128 bit key for the AES encryption.
-    byte[16] rsaKey = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    byte[16] aesKey = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     foreach var i in 0 ... 15 {
-        rsaKey[i] = <byte>(check random:createIntInRange(0, 255));
+        aesKey[i] = <byte>(check random:createIntInRange(0, 255));
     }
 
     // Randomly generates a 128 bit IV for the AES encryption.
@@ -182,38 +182,38 @@ function encrypt() returns error? {
     }
 
     // Encrypts and decrypts an input value using the `AES CBC PKCS5` padding.
-    output = check crypto:encryptAesCbc(input, rsaKey, iv);
-    output = check crypto:decryptAesCbc(output, rsaKey, iv);
+    output = check crypto:encryptAesCbc(input, aesKey, iv);
+    output = check crypto:decryptAesCbc(output, aesKey, iv);
     io:println("AES CBC PKCS5 decrypted value: " +
         check string:fromBytes(output));
 
     // Encrypts and decrypts an input value using the `AES CBC` without padding.
-    output = check crypto:encryptAesCbc(input, rsaKey, iv, crypto:NONE);
-    output = check crypto:decryptAesCbc(output, rsaKey, iv, crypto:NONE);
+    output = check crypto:encryptAesCbc(input, aesKey, iv, crypto:NONE);
+    output = check crypto:decryptAesCbc(output, aesKey, iv, crypto:NONE);
     io:println("AES CBC no padding decrypted value: " +
         check string:fromBytes(output));
 
     // Encrypts and decrypts an input value using the `AES GCM PKCS5` padding.
-    output = check crypto:encryptAesGcm(input, rsaKey, iv);
-    output = check crypto:decryptAesGcm(output, rsaKey, iv);
+    output = check crypto:encryptAesGcm(input, aesKey, iv);
+    output = check crypto:decryptAesGcm(output, aesKey, iv);
     io:println("AES GCM PKCS5 decrypted value: " +
         check string:fromBytes(output));
 
     // Encrypts and decrypts an input value using the `AES GCM` without padding.
-    output = check crypto:encryptAesGcm(input, rsaKey, iv, crypto:NONE);
-    output = check crypto:decryptAesGcm(output, rsaKey, iv, crypto:NONE);
+    output = check crypto:encryptAesGcm(input, aesKey, iv, crypto:NONE);
+    output = check crypto:decryptAesGcm(output, aesKey, iv, crypto:NONE);
     io:println("AES GCM no padding decrypted value: " +
         check string:fromBytes(output));
 
     // Encrypts and decrypts an input value using the `AES ECB PKCS5 padding`.
-    output = check crypto:encryptAesEcb(input, rsaKey);
-    output = check crypto:decryptAesEcb(output, rsaKey);
+    output = check crypto:encryptAesEcb(input, aesKey);
+    output = check crypto:decryptAesEcb(output, aesKey);
     io:println("AES ECB PKCS5 decrypted value: " +
         check string:fromBytes(output));
 
     // Encrypts and decrypts an input value using the `AES ECB` without padding.
-    output = check crypto:encryptAesEcb(input, rsaKey, crypto:NONE);
-    output = check crypto:decryptAesEcb(output, rsaKey, crypto:NONE);
+    output = check crypto:encryptAesEcb(input, aesKey, crypto:NONE);
+    output = check crypto:decryptAesEcb(output, aesKey, crypto:NONE);
     io:println("AES ECB no padding decrypted value: " +
         check string:fromBytes(output));
 }
