@@ -9,7 +9,11 @@ on:
 
 jobs:
     ubuntu-integration-tests:
+        name: Integration Tests on Ubuntu
         runs-on: ubuntu-latest
+        concurrency:
+            group: ${{ github.head_ref }}-integration-tests
+            cancel-in-progress: true
         steps:
             -   name: Checkout Repository
                 uses: actions/checkout@v2
@@ -26,7 +30,11 @@ jobs:
                 run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue -x :ballerina:testExamples -x :central-tests:test
 
     ubuntu-bbe-tests:
+        name: BBE Tests on Ubuntu
         runs-on: ubuntu-latest
+        concurrency:
+            group: ${{ github.head_ref }}-bbe-tests
+            cancel-in-progress: true
         steps:
             -   name: Checkout Repository
                 uses: actions/checkout@v2
@@ -42,7 +50,11 @@ jobs:
                     devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
                 run: ./gradlew clean :ballerina:testExamples --stacktrace --scan --console=plain --no-daemon --continue -x :central-tests:test
     windows-build-without-tests:
+        name: Windows Build
         runs-on: windows-latest
+        concurrency:
+            group: ${{ github.head_ref }}-windows
+            cancel-in-progress: true
         steps:
             -   name: Checkout Repository
                 uses: actions/checkout@v2
