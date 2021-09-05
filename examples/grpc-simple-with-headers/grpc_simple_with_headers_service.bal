@@ -9,7 +9,8 @@ import ballerina/protobuf.types.wrappers;
 }
 service "HelloWorld" on new grpc:Listener(9090) {
 
-    remote function hello(wrappers:ContextString request) returns wrappers:ContextString|error {
+    remote function hello(wrappers:ContextString request)
+                        returns wrappers:ContextString|error {
         // Reads the request message and creates a response.
         string message = "Hello " + request.content;
 
