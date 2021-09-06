@@ -19,6 +19,8 @@ plugins {
     id 'maven-publish'
     id 'net.researchgate.release' version '2.6.0'
     id 'de.undercouch.download' version '4.1.1'
+    id "com.github.johnrengelman.shadow" version "5.2.0"
+    id "com.github.spotbugs" version "4.0.5"
 }
 
 description = 'Ballerina - Tools - Parent'
@@ -40,6 +42,7 @@ ext {
     commonsIoVersion = "2.6"
     commonsLang3Version = "3.9"
     lsp4jDebugVersion = "0.7.1"
+    puppycrawlCheckstyleVersion = "8.18"
 }
 
 allprojects {
@@ -147,38 +150,40 @@ subprojects {
         }
 
         /* Standard libraries */
-        ballerinaStdLibs "io.ballerina.stdlib:auth-ballerina:${stdlibAuthVersion}"
-        ballerinaStdLibs "io.ballerina.stdlib:cache-ballerina:${stdlibCacheVersion}"
-        ballerinaStdLibs "io.ballerina.stdlib:crypto-ballerina:${stdlibCryptoVersion}"
-        ballerinaStdLibs "io.ballerina.stdlib:email-ballerina:${stdlibEmailVersion}"
-        ballerinaStdLibs "io.ballerina.stdlib:file-ballerina:${stdlibFileVersion}"
-        ballerinaStdLibs "io.ballerina.stdlib:ftp-ballerina:${stdlibFtpVersion}"
-        ballerinaStdLibs "io.ballerina.stdlib:graphql-ballerina:${stdlibGraphqlVersion}"
-        ballerinaStdLibs "io.ballerina.stdlib:grpc-ballerina:${stdlibGrpcVersion}"
-        ballerinaStdLibs "io.ballerina.stdlib:http-ballerina:${stdlibHttpVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:io-ballerina:${stdlibIoVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:jballerina.java.arrays-ballerina:${stdlibJavaArraysVersion}"
-        ballerinaStdLibs "io.ballerina.stdlib:jwt-ballerina:${stdlibJwtVersion}"
-        ballerinaStdLibs "io.ballerina.stdlib:log-ballerina:${stdlibLogVersion}"
-        ballerinaStdLibs "io.ballerina.stdlib:mime-ballerina:${stdlibMimeVersion}"
-        ballerinaStdLibs "io.ballerina.stdlib:oauth2-ballerina:${stdlibOAuth2Version}"
-        ballerinaStdLibs "io.ballerina.stdlib:os-ballerina:${stdlibOsVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:random-ballerina:${stdlibRandomVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:regex-ballerina:${stdlibRegexVersion}"
-        ballerinaStdLibs "io.ballerina.stdlib:sql-ballerina:${stdlibSqlVersion}"
-        ballerinaStdLibs "io.ballerina.stdlib:task-ballerina:${stdlibTaskVersion}"
-        ballerinaStdLibs "io.ballerina.stdlib:tcp-ballerina:${stdlibTcpVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:time-ballerina:${stdlibTimeVersion}"
-        ballerinaStdLibs "io.ballerina.stdlib:udp-ballerina:${stdlibUdpVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:url-ballerina:${stdlibUrlVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:xmldata-ballerina:${stdlibXmldataVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:crypto-ballerina:${stdlibCryptoVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:log-ballerina:${stdlibLogVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:os-ballerina:${stdlibOsVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:task-ballerina:${stdlibTaskVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:xslt-ballerina:${stdlibXsltVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:protobuf-ballerina:${stdlibProtobufVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:cache-ballerina:${stdlibCacheVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:file-ballerina:${stdlibFileVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:ftp-ballerina:${stdlibFtpVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:mime-ballerina:${stdlibMimeVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:tcp-ballerina:${stdlibTcpVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:udp-ballerina:${stdlibUdpVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:uuid-ballerina:${stdlibUuidVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:auth-ballerina:${stdlibAuthVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:email-ballerina:${stdlibEmailVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:jwt-ballerina:${stdlibJwtVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:oauth2-ballerina:${stdlibOAuth2Version}"
+        ballerinaStdLibs "io.ballerina.stdlib:http-ballerina:${stdlibHttpVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:graphql-ballerina:${stdlibGraphqlVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:grpc-ballerina:${stdlibGrpcVersion}"
+
+        ballerinaStdLibs "org.ballerinalang:transaction-ballerina:${stdlibTransactionVersion}"
+
         ballerinaStdLibs "io.ballerina.stdlib:websocket-ballerina:${stdlibWebsocketVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:websub-ballerina:${stdlibWebsubVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:websubhub-ballerina:${stdlibWebsubhubVersion}"
-        ballerinaStdLibs "io.ballerina.stdlib:xmldata-ballerina:${stdlibXmldataVersion}"
-        ballerinaStdLibs "io.ballerina.stdlib:xslt-ballerina:${stdlibXsltVersion}"
-
-        ballerinaStdLibs "org.ballerinalang:transaction-ballerina:${stdlibTransactionVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:sql-ballerina:${stdlibSqlVersion}"
 
         /* Ballerina OpenAPI */
         ballerinaOpenAPILibs "io.ballerina:module-ballerina-openapi:${openapiVersion}"
@@ -189,5 +194,6 @@ subprojects {
         ballerinaC2cLibs "org.ballerinax.awslambda:awslambda-extension-bala:${awslambdaVersion}"
 
         ballerinaC2cTooling "io.ballerina:c2c-tooling:${c2cVersion}"
+
     }
 }
