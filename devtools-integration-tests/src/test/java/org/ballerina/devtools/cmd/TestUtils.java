@@ -24,8 +24,12 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.testng.Assert;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -62,6 +66,28 @@ public class TestUtils {
      * @throws IOException          Error executing build command.
      * @throws InterruptedException Interrupted error executing build command.
      */
+    public static Path executeCommand1(String command, Path sourceDirectory, List<String> args) throws IOException, InterruptedException {
+        args.add(0, command);
+        args.add(0, TEST_DISTRIBUTION_PATH.resolve(distributionName).resolve("bin").resolve("bal").toString());
+
+        OUT.println("Executing: " + StringUtils.join(args, ' '));
+
+        ProcessBuilder pb = new ProcessBuilder(args);
+
+        // Add env variables
+        if (envProperties != null) {
+            Map<String, String> env = pb.environment();
+            for (Map.Entry<String, String> entry : envProperties.entrySet()) {
+                env.put(entry.getKey(), entry.getValue());
+            }
+        }
+
+        pb.directory(sourceDirectory.toFile());
+        Process process = pb.start();
+        process.waitFor();
+        return sourceDirectory;
+    }
+
     public static Path executeCommand(String command, List<String> args) throws IOException, InterruptedException {
         args.add(0, command);
         args.add(0, TEST_DISTRIBUTION_PATH.resolve(distributionName).resolve("bin").resolve("bal").toString());
@@ -82,6 +108,177 @@ public class TestUtils {
         Process process = pb.start();
         process.waitFor();
         return sourceDirectory;
+    }
+
+    /**
+     * Provide user home directory based on command.
+     *
+     * @return user home directory
+     */
+    public static String getUserHome() {
+        String userHome = System.getenv("HOME");
+        if (userHome == null) {
+            userHome = System.getProperty("user.home");
+        }
+        return userHome;
+    }
+
+    /**
+     * Read the output of a given command.
+     *
+     * @return output of the executed command
+     */
+    public static String getOutput(URI pathURI) throws IOException {
+        String output = "";
+//        File file = new File(getUserHome() + File.separator
+//                + "temp-" + new Timestamp(System.currentTimeMillis()).getTime() + ".sh");
+        ProcessBuilder pb = new ProcessBuilder(pathURI.getPath());
+        Process process = pb.start();
+        InputStream inputStream = process.getInputStream();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        String line;
+        while ((line = reader.readLine()) != null) {
+            output += line + "\n";
+        }
+        if (output.isEmpty()) {
+            inputStream =  process.getErrorStream();
+            reader = new BufferedReader(new InputStreamReader(inputStream));
+            while ((line = reader.readLine()) != null) {
+                output += line + "\n";
+            }
+        }
+//        file.delete();
+        return output;
+    }
+
+    /**
+     * Log the output of an input stream.
+     *
+     * @param inputStream The stream.
+     * @throws IOException Error reading the stream.
+     */
+    private static void logOutput(InputStream inputStream) throws IOException {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
+            br.lines().forEach(OUT::println);
+        }
+    }
+
+    public static InputStream executeCommand(String arg, String distributionName, List<String> args) throws
+            IOException, InterruptedException {
+        args.add(0, arg);
+        Process process = getProcessBuilderResults(distributionName, sourceDirectory, args);
+        return process.getErrorStream();
+    }
+
+    public static Path executeBuildCommand(Path sourceDirectory, List<String> args) throws IOException, InterruptedException {
+        return executeCommand1("build", sourceDirectory, args);
+    }
+
+    public static Process getProcessBuilderResults(String distributionName, Path sourceDirectory, List<String> args)
+            throws IOException, InterruptedException {
+
+        args.add(0, TEST_DISTRIBUTION_PATH.resolve(distributionName).resolve("bin").resolve("bal").toString());
+        OUT.println("Executing: " + StringUtils.join(args, ' '));
+        ProcessBuilder pb = new ProcessBuilder(args);
+        pb.directory(sourceDirectory.toFile());
+        Process process = pb.start();
+        int exitCode = process.waitFor();
+        return process;
+    }
+
+    public static boolean executeBuild(String distributionName, Path sourceDirectory, List<String> args) throws
+            IOException, InterruptedException {
+        args.add(0, "build");
+        args.add(0, TEST_DISTRIBUTION_PATH.resolve(distributionName).resolve("bin").resolve("bal").toString());
+        OUT.println("Executing: " + StringUtils.join(args, ' '));
+        ProcessBuilder pb = new ProcessBuilder(args);
+        pb.directory(sourceDirectory.toFile());
+        Process process = pb.start();
+        int exitCode = process.waitFor();
+        logOutput(process.getInputStream());
+        logOutput(process.getErrorStream());
+        return exitCode == 0;
+    }
+
+    /**
+     * Execute ballerina build command.
+     *
+     * @param distributionName The name of the distribution.
+     * @param args             The arguments to be passed to the build command.
+     * @return True if build is successful, else false.
+     * @throws IOException          Error executing build command.
+     * @throws InterruptedException Interrupted error executing build command.
+     */
+    public static boolean executeNew(String distributionName, List<String> args) throws
+            IOException, InterruptedException {
+        args.add(0, "new");
+        args.add(0, TEST_DISTRIBUTION_PATH.resolve(distributionName).resolve("bin").resolve("bal").toString());
+        OUT.println("Executing: " + StringUtils.join(args, ' '));
+        ProcessBuilder pb = new ProcessBuilder(args);
+        pb.directory(sourceDirectory.toFile());
+        Process process = pb.start();
+        int exitCode = process.waitFor();
+        logOutput(process.getInputStream());
+        logOutput(process.getErrorStream());
+        return exitCode == 0;
+    }
+
+    /**
+     * Execute the given command.
+     *
+     * @param command command needs to be execute
+     * @return output of the executed command
+     */
+//    public static String executeCommand(String command, Path projectPath) throws IOException {
+//        String output = "";
+//        File file = new File(getUserHome() + File.separator
+//                + "temp-" + new Timestamp(System.currentTimeMillis()).getTime() + ".sh");
+//        file.createNewFile();
+//        file.setExecutable(true);
+//        PrintWriter writer = new PrintWriter(file.getPath(), StandardCharsets.UTF_8);
+//        writer.println(command);
+//        writer.close();
+//
+//        ProcessBuilder pb = new ProcessBuilder(file.getPath());
+//        Process process = pb.start();
+//        InputStream inputStream = process.getInputStream();
+//        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+//        String line;
+//        while ((line = reader.readLine()) != null) {
+//            output += line + "\n";
+//        }
+//        if (output.isEmpty()) {
+//            inputStream =  process.getErrorStream();
+//            reader = new BufferedReader(new InputStreamReader(inputStream));
+//            while ((line = reader.readLine()) != null) {
+//                output += line + "\n";
+//            }
+//        }
+//        file.delete();
+//        return output;
+//    }
+
+    public static Process executeCommand(String command, Path sourceDirectory, List<String> args)
+            throws IOException, InterruptedException {
+        args.add(0, command);
+        args.add(0, TEST_DISTRIBUTION_PATH.resolve(distributionName).resolve("bin").resolve("bal").toString());
+
+        OUT.println("Executing: " + StringUtils.join(args, ' '));
+
+        ProcessBuilder pb = new ProcessBuilder(args);
+
+        // Add env variables
+        if (envProperties != null) {
+            Map<String, String> env = pb.environment();
+            for (Map.Entry<String, String> entry : envProperties.entrySet()) {
+                env.put(entry.getKey(), entry.getValue());
+            }
+        }
+
+        pb.directory(sourceDirectory.toFile());
+        Process process = pb.start();
+        int exitCode = process.waitFor();
+        return process;
     }
 
     /**
