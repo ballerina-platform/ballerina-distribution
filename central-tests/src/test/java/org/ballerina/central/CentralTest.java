@@ -71,6 +71,7 @@ public class CentralTest {
     private String packageBName;
     private String packageCName;
     private String packageDName;
+    private String packageEName;
     private String packageSnapshotName;
     private String orgName = "bc2testorg";
     private Map<String, String> envVariables;
@@ -81,6 +82,7 @@ public class CentralTest {
     private static final String PROJECT_B = "projectB";
     private static final String PROJECT_C = "projectC";
     private static final String PROJECT_D = "projectD";
+    private static final String PROJECT_E = "projectE";
     private static final String PROJECT_SNAPSHOT = "projectSnapshot";
     private static final String COMMON_VERSION = "1.0.0";
     private static final String TEST_PREFIX = "test_";
@@ -114,6 +116,7 @@ public class CentralTest {
             this.packageBName = TEST_PREFIX + randomString + "_" + PROJECT_B;
             this.packageCName = TEST_PREFIX + randomString + "_" + PROJECT_C;
             this.packageDName = TEST_PREFIX + randomString + "_" + PROJECT_D;
+            this.packageEName = TEST_PREFIX + randomString + "_" + PROJECT_E;
             this.packageSnapshotName = TEST_PREFIX + randomString + "_" + PROJECT_SNAPSHOT;
         } while (isPkgAvailableInCentral(this.packageAName)
                 || isPkgAvailableInCentral(this.packageBName)
@@ -132,6 +135,8 @@ public class CentralTest {
                         this.packageCName);
         updateFileToken(this.tempWorkspaceDirectory.resolve(PROJECT_D).resolve(BALLERINA_TOML), DEFAULT_PKG_NAME,
                         this.packageDName);
+        updateFileToken(this.tempWorkspaceDirectory.resolve(PROJECT_E).resolve(BALLERINA_TOML), DEFAULT_PKG_NAME,
+                this.packageDName);
         updateFileToken(this.tempWorkspaceDirectory.resolve(PROJECT_SNAPSHOT).resolve(BALLERINA_TOML), DEFAULT_PKG_NAME,
                         this.packageSnapshotName);
         // Update imports
@@ -141,6 +146,8 @@ public class CentralTest {
                         this.packageBName);
         updateFileToken(this.tempWorkspaceDirectory.resolve(PROJECT_D).resolve(MAIN_BAL), "<PKG_C>",
                         this.packageCName);
+        updateFileToken(this.tempWorkspaceDirectory.resolve(PROJECT_E).resolve(MAIN_BAL), "<PKG_C>",
+                this.packageCName);
     }
 
     @Test(description = "Build package A with a native lib dependency")
@@ -285,6 +292,28 @@ public class CentralTest {
 
         Process run = executeCommand("run", DISTRIBUTION_FILE_NAME, this.tempWorkspaceDirectory.resolve(PROJECT_D),
                                      new LinkedList<>(), this.envVariables);
+        String runErrors = getString(run.getInputStream());
+        if (!runErrors.isEmpty()) {
+            Assert.fail(OUTPUT_CONTAIN_ERRORS + runErrors);
+        }
+    }
+
+    @Test(description = "Build test name resolution", dependsOnMethods = "testPushPackageC")
+    public void testBuildAndRunPackageE() throws IOException, InterruptedException {
+        Process build = executeBuildCommand(DISTRIBUTION_FILE_NAME, this.tempWorkspaceDirectory.resolve(PROJECT_E),
+                new LinkedList<>(), this.envVariables);
+
+        String buildErrors = getString(build.getErrorStream());
+        if (!buildErrors.isEmpty()) {
+            Assert.fail(OUTPUT_CONTAIN_ERRORS + buildErrors);
+        }
+
+        Assert.assertTrue(
+                getExecutableJarPath(this.tempWorkspaceDirectory.resolve(PROJECT_E), this.packageDName)
+                        .toFile().exists());
+
+        Process run = executeCommand("run", DISTRIBUTION_FILE_NAME, this.tempWorkspaceDirectory.resolve(PROJECT_E),
+                new LinkedList<>(), this.envVariables);
         String runErrors = getString(run.getInputStream());
         if (!runErrors.isEmpty()) {
             Assert.fail(OUTPUT_CONTAIN_ERRORS + runErrors);

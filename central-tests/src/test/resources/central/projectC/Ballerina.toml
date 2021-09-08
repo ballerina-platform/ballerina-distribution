@@ -2,3 +2,4 @@
 org = "bc2testorg"
 name = "my_package"
 version = "1.0.0"
+export = [ "my_package" , "my_package.sub"]
