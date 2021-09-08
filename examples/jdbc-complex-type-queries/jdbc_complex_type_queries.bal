@@ -40,7 +40,7 @@ public function main() returns error? {
 
     // Since the `rowType` is provided as a `BinaryType`, the `binaryResultStream`
     // will have `BinaryType` records.
-    stream<BinaryType, error> binaryResultStream =
+    stream<BinaryType, error?> binaryResultStream =
                 jdbcClient->query(`SELECT * FROM BINARY_TYPES`);
 
     io:println("Binary types Result :");
@@ -51,7 +51,7 @@ public function main() returns error? {
 
     // Since the `rowType` is provided as an `ArrayType`, the `arrayResultStream` will
     // have `ArrayType` records.
-    stream<ArrayType, error> arrayResultStream =
+    stream<ArrayType, error?> arrayResultStream =
                 jdbcClient->query(`SELECT * FROM ARRAY_TYPES`);
 
     io:println("Array types Result :");
@@ -64,7 +64,7 @@ public function main() returns error? {
     // will have `DateTimeType` records. The `Date`, `Time`, `DateTime`, and
     // `Timestamp` fields of the database table can be mapped to `time:Utc`,
     // string, and int types in Ballerina.
-    stream<DateTimeType, error> dateResultStream =
+    stream<DateTimeType, error?> dateResultStream =
                 jdbcClient->query(`SELECT * FROM DATE_TIME_TYPES`);
 
     io:println("DateTime types Result :");

@@ -1,4 +1,4 @@
-// This example demonstrates how to use the JDBC client with complex data types
+// This BBE demonstrates how to use the JDBC client with complex data types
 // such as arrays, binary, blobs, clob, and date/time fields. Note that the
 // relevant database driver JAR should be defined in the `Ballerina.toml` file as a dependency.
 // This sample is based on an H2 database and the H2 database driver JAR need to be added to `Ballerina.toml` file.

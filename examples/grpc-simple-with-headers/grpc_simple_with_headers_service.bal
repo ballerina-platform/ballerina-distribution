@@ -1,14 +1,16 @@
 // This is the server implementation of the simple RPC scenario.
 import ballerina/grpc;
 import ballerina/log;
+import ballerina/protobuf.types.wrappers;
 
 @grpc:ServiceDescriptor {
-    descriptor: ROOT_DESCRIPTOR,
-    descMap: getDescriptorMap()
+    descriptor: ROOT_DESCRIPTOR_GRPC_SIMPLE_WITH_HEADERS,
+    descMap: getDescriptorMapGrpcSimpleWithHeaders()
 }
 service "HelloWorld" on new grpc:Listener(9090) {
 
-    remote function hello(ContextString request) returns ContextString|error {
+    remote function hello(wrappers:ContextString request)
+                        returns wrappers:ContextString|error {
         // Reads the request message and creates a response.
         string message = "Hello " + request.content;
 

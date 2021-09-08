@@ -71,7 +71,7 @@ function testFunc() returns error? {
 
     // Invoking the main function
     check main();
-    test:assertEquals(outputs[0], "UTC value: 1196676930 0.12");
+    test:assertEquals(outputs[0], "UTC value: [1196676930,0.12]");
     test:assertEquals(outputs[1], "UTC string representation: 2007-12-03T10:15:30.120Z");
 
     test:assertEquals(outputs[2], 

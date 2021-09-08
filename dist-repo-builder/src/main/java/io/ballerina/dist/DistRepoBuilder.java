@@ -128,7 +128,7 @@ public class DistRepoBuilder {
                 .resolve(getJarName(orgName, moduleName, version));
         if (!Files.exists(jar)) {
             System.out.println("Jar missing for package :" + orgName + "/" + moduleName);
-           valid = false;
+            valid = false;
         }
         return valid;
     }

@@ -55,6 +55,7 @@ public class TestUtils {
     public static final String EXTENSTIONS_TO_BE_FILTERED_FOR_LINE_CHECKS = System.getProperty("line.check.extensions");
     public static final Path RESOURCES_PATH = TARGET_DIR.resolve("resources/test");
     private static final String SWAN_LAKE_KEYWORD = "swan-lake";
+    private static String balFile = "bal";
 
     /**
      * Log the output of an input stream.
@@ -80,8 +81,11 @@ public class TestUtils {
      */
     public static boolean executeBuild(String distributionName, Path sourceDirectory, List<String> args) throws
             IOException, InterruptedException {
+        if (System.getProperty("os.name").startsWith("Windows")) {
+            balFile = "bal.bat";
+        }
         args.add(0, "build");
-        args.add(0, TEST_DISTRIBUTION_PATH.resolve(distributionName).resolve("bin").resolve("bal").toString());
+        args.add(0, TEST_DISTRIBUTION_PATH.resolve(distributionName).resolve("bin").resolve(balFile).toString());
         OUT.println("Executing: " + StringUtils.join(args, ' '));
         ProcessBuilder pb = new ProcessBuilder(args);
         pb.directory(sourceDirectory.toFile());
@@ -140,8 +144,11 @@ public class TestUtils {
      */
     public static Process getProcessBuilderResults(String distributionName, Path sourceDirectory, List<String> args)
             throws IOException, InterruptedException {
-
-        args.add(0, TEST_DISTRIBUTION_PATH.resolve(distributionName).resolve("bin").resolve("bal").toString());
+        
+        if (System.getProperty("os.name").startsWith("Windows")) {
+            balFile = "bal.bat";
+        }
+        args.add(0, TEST_DISTRIBUTION_PATH.resolve(distributionName).resolve("bin").resolve(balFile).toString());
         OUT.println("Executing: " + StringUtils.join(args, ' '));
         ProcessBuilder pb = new ProcessBuilder(args);
         pb.directory(sourceDirectory.toFile());
@@ -200,7 +207,7 @@ public class TestUtils {
      *
      * @param generatedFileName file name that need to delete.
      */
-    public static void deleteGeneratedFiles(String generatedFileName) {
+    public static void deleteGeneratedFiles(String generatedFileName) throws IOException {
         Path resourcesPath = RESOURCES_PATH.resolve("openapi");
         if (Files.exists(resourcesPath)) {
             List<File> listFiles = Arrays.asList(
@@ -211,6 +218,11 @@ public class TestUtils {
                         fileName.equals("client.bal") || fileName.equals("types.bal")) {
                     existsFile.delete();
                 }
+            }
+            Path directoryPath = resourcesPath.resolve("tests");
+            if (Files.isDirectory(directoryPath)) {
+                File file = new File(directoryPath.toString());
+                FileUtils.deleteDirectory(file);
             }
         }
     }

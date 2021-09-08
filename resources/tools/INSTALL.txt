@@ -24,7 +24,7 @@ INSTALLING BALLERINA
 
 - If you do not have Java 11 or if you have a different version of Java, download a compatible JRE 11 version as specified in the prerequisites.
 
-    - To set the obtained JRE as the one used by Ballerina, extract the downloaded JRE zip/tar.gz to the <BALLERINA_HOME>/dependencies/jdk8u202-b08-jre directory.
+    - To set the obtained JRE as the one used by Ballerina, extract the downloaded JRE `zip/tar.gz` to the `<BALLERINA_HOME>/dependencies/jdk-11.0.8+10-jre` directory.
     - Once you are done, the directory structure should look exactly like the following:
         <BALLERINA_HOME>/dependencies/
         └── jdk-11.0.8+10-jre

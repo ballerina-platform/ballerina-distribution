@@ -1,7 +1,7 @@
 import ballerina/websocket;
 
 // A WebSocket listener can be configured to communicate through WSS as well.
-// To secure an listener using SSL/TLS, the listener needs to be configured with
+// To secure a listener using SSL/TLS, the listener needs to be configured with
 // a certificate file and a private key file for the listener.
 // The [`websocket:ListenerSecureSocket`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/ListenerSecureSocket) record
 // provides the SSL-related listener configurations of the listener.
