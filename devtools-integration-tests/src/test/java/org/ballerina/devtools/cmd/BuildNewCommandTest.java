@@ -24,32 +24,18 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.PrintStream;
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-import static javax.swing.UIManager.getString;
 import static org.ballerina.devtools.cmd.TestUtils.DISTRIBUTIONS_DIR;
 import static org.ballerina.devtools.cmd.TestUtils.MAVEN_VERSION;
 import static org.ballerina.devtools.cmd.TestUtils.distributionName;
-import static org.ballerina.devtools.cmd.TestUtils.getExecutableJarPath;
 
 /**
  * Tests related new command compiling.
@@ -79,99 +65,140 @@ public class BuildNewCommandTest {
     }
 
     @Test(description = "Build package created from new command with default template")
-    public void testCompilingNewCommandDefaultTempProject() throws IOException, InterruptedException {
-        Path result = TestUtils.executeCommand("new", new LinkedList<>(Collections.singletonList("project_name")));
-        Path projectPath = Paths.get(result.toString(), "project_name");
-        Assert.assertTrue(Files.exists(projectPath));
-        Assert.assertTrue(Files.exists(projectPath.resolve("Ballerina.toml")));
-
+    public void testCompilingNewCommandDefaultTempProject() throws IOException {
         List<String> args = new LinkedList<>();
-        boolean success = TestUtils.executeBuild(distributionName, projectPath,args);
-////        Assert.assertTrue(builldLog.toString().contains("Compiling source"));
-        Assert.assertTrue(Files.isDirectory(projectPath.resolve("target").resolve("bin")));
-//        Assert.assertTrue(Files.exists(projectPath.resolve("target").resolve("bin").resolve("project_name.jar")));
+        args.add("project_sample");
+        Path newOutputPath = TestUtils.executeNew(distributionName, args);
+        Assert.assertTrue(Files.isDirectory(newOutputPath.resolve("project_sample")));
+        Assert.assertTrue(Files.exists(newOutputPath.resolve("project_sample").resolve("Ballerina.toml")));
+
+        List<String> buildArgs = new LinkedList<>();
+        String buildOutput = TestUtils.executeBuild(distributionName, newOutputPath.resolve("project_sample"), buildArgs);
+        Assert.assertTrue(buildOutput.contains("Compiling source"));
+        Assert.assertTrue(buildOutput.contains("Generating executable"));
     }
 
     @Test(description = "Build package created from new command with main template")
-    public void testCompilingNewCommandMainTempProject() throws IOException, InterruptedException {
-        Path resultPath = TestUtils.executeCommand("new",
-                new LinkedList(Arrays.asList("main_sample", "-t", "main")));
-        Path projectPath = Paths.get(resultPath.toString(), "main_sample");
-        Assert.assertTrue(Files.exists(projectPath));
+    public void testCompilingNewCommandMainTempProject() throws IOException {
+        List<String> args = new LinkedList<>();
+        args.add("main_sample");
+        args.add("-t");
+        args.add("main");
+        Path newOutputPath = TestUtils.executeNew(distributionName, args);
+        Assert.assertTrue(Files.isDirectory(newOutputPath.resolve("main_sample")));
+        Assert.assertTrue(Files.exists(newOutputPath.resolve("main_sample").resolve("Ballerina.toml")));
 
-        TestUtils.executeCommand("build", new LinkedList<>(Collections.singletonList("main_sample")));
-        Assert.assertTrue(getExecutableJarPath(projectPath, "main_sample").toFile().exists());
+        List<String> buildArgs = new LinkedList<>();
+        String buildOutput = TestUtils.executeBuild(distributionName, newOutputPath.resolve("main_sample"), buildArgs);
+        Assert.assertTrue(buildOutput.contains("Compiling source"));
+        Assert.assertTrue(buildOutput.contains("Generating executable"));
     }
 
     @Test(description = "Build package created from new command with service template")
-    public void testCompilingNewCommandServiceTempProject() throws IOException, InterruptedException {
-        Path resultPath = TestUtils.executeCommand("new",
-                new LinkedList(Arrays.asList("service_sample", "-t", "service")));
-        Path projectPath = Paths.get(resultPath.toString(), "service_sample");
-        Assert.assertTrue(Files.exists(projectPath));
+    public void testCompilingNewCommandServiceTempProject() throws IOException {
+        List<String> args = new LinkedList<>();
+        args.add("service_sample");
+        args.add("-t");
+        args.add("service");
+        Path newOutputPath = TestUtils.executeNew(distributionName, args);
+        Assert.assertTrue(Files.isDirectory(newOutputPath.resolve("service_sample")));
+        Assert.assertTrue(Files.exists(newOutputPath.resolve("service_sample").resolve("Ballerina.toml")));
 
-        TestUtils.executeCommand("build", new LinkedList<>(Collections.singletonList("service_sample")));
-        Assert.assertTrue(getExecutableJarPath(projectPath, "service_sample").toFile().exists());
+        List<String> buildArgs = new LinkedList<>();
+        String buildOutput = TestUtils.executeBuild(distributionName, newOutputPath.resolve("service_sample"), buildArgs);
+        Assert.assertTrue(buildOutput.contains("Compiling source"));
+        Assert.assertTrue(buildOutput.contains("Generating executable"));
     }
 
     @Test(description = "Build package created from new command with lib template")
-    public void testCompilingNewCommandLibTempProject() throws IOException, InterruptedException {
-        Path resultPath = TestUtils.executeCommand("new",
-                new LinkedList(Arrays.asList("lib_sample", "-t", "lib")));
-        Path projectPath = Paths.get(resultPath.toString(), "lib_sample");
-        System.out.println("--------------");
-        System.out.println(projectPath);
-        System.out.println("---------------");
-        System.out.println(resultPath.toString());
-        System.out.println("---------------");
+    public void testCompilingNewCommandLibTempProject() throws IOException {
+        List<String> args = new LinkedList<>();
+        args.add("lib_sample");
+        args.add("-t");
+        args.add("lib");
+        Path newOutputPath = TestUtils.executeNew(distributionName, args);
+        Assert.assertTrue(Files.isDirectory(newOutputPath.resolve("lib_sample")));
+        Assert.assertTrue(Files.exists(newOutputPath.resolve("lib_sample").resolve("Ballerina.toml")));
 
-        Assert.assertTrue(Files.exists(projectPath));
-
-        TestUtils.executeCommand("build", new LinkedList<>(Collections.singletonList("lib_sample")));
-        Assert.assertTrue(getExecutableJarPath(projectPath, "lib_sample").toFile().exists());
-    }
-
-    @Test(description = "Create a new package with pulling a module from central")
-    public void testNewCommandWithCentralPull() throws IOException, InterruptedException {
         List<String> buildArgs = new LinkedList<>();
-        buildArgs.add("SamplePull");
-        buildArgs.add("-t");
-        buildArgs.add("admin/Sample:0.1.4");
-        InputStream outputs = TestUtils.executeCommand("new", DISTRIBUTION_FILE_NAME, buildArgs);
-        String generatedLog = readOutputLog(outputs);
-        Assert.assertTrue(generatedLog.contains("Compiling source"));
-
-//        Path projectPath = Paths.get(System.getProperty("user.dir")).resolve("SamplePull");
-//        Assert.assertTrue(Files.exists(projectPath));
+        String buildOutput = TestUtils.executeBuild(distributionName, newOutputPath.resolve("lib_sample"), buildArgs);
+        Assert.assertTrue(buildOutput.contains("Compiling source"));
+        Assert.assertTrue(buildOutput.contains("Generating executable"));
     }
 
-//    @Test(description = "Create a new package with io module by pulling from central")
-//    public void testNewCommandCentralPullWithoutVersion() throws IOException, InterruptedException {
-//        List<String> buildArgs = new LinkedList<>();
-//        buildArgs.add("SamplePullWithoutVersion");
-//        buildArgs.add("-t");
-//        buildArgs.add("ballerinax/livestorm");
-//        InputStream outputs = TestUtils.executeNewCommand(DISTRIBUTION_FILE_NAME, buildArgs);
-//        try (BufferedReader br = new BufferedReader(new InputStreamReader(outputs))) {
-//
-//            Stream<String> logLines = br.lines();
-//            String generatedLog = logLines.collect(Collectors.joining("\n"));
-//            logLines.close();
-//
-//            System.out.println(generatedLog);
-//            Assert.assertTrue(generatedLog.contains("Created new Ballerina package 'SamplePullWithoutVersion'"));
-//        }
-//    }
+    @Test(description = "Create a new package by pulling a module from central")
+    public void testNewCommandWithCentralPull() throws IOException {
+        List<String> args = new LinkedList<>();
+        args.add("project");
+        args.add("-t");
+        args.add("admin/Sample:0.1.2");
+        Path newOutputPath = TestUtils.executeNew(distributionName, args);
+        Assert.assertTrue(Files.isDirectory(newOutputPath.resolve("project")));
+        Assert.assertTrue(Files.exists(newOutputPath.resolve("project").resolve("Ballerina.toml")));
+        Assert.assertTrue(Files.exists(newOutputPath.resolve("project").resolve("Package.md")));
+        String tomlContent = Files.readString(
+                newOutputPath.resolve("project").resolve("Ballerina.toml"), StandardCharsets.UTF_8);
+        Assert.assertTrue(tomlContent.contains("version = \"0.1.2\""));
 
-    public String readOutputLog(InputStream outputs) throws IOException {
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(outputs))) {
-            Stream<String> logLines = br.lines();
-            String generatedLog = logLines.collect(Collectors.joining("\n"));
-            logLines.close();
-//            Assert.assertTrue(generatedLog.contains("Compiling source"));
-            return generatedLog;
-        }
+        List<String> buildArgs = new LinkedList<>();
+        String buildOutput = TestUtils.executeBuild(distributionName, newOutputPath.resolve("project"), buildArgs);
+        Assert.assertTrue(buildOutput.contains("Compiling source"));
+        Assert.assertTrue(buildOutput.contains("Generating executable"));
     }
+
+    @Test(description = "Create a new package by pulling a module from central without specifying version")
+    public void testNewCommandCentralPullWithoutVersion() throws IOException {
+        List<String> args = new LinkedList<>();
+        args.add("project_without_version");
+        args.add("-t");
+        args.add("admin/Sample");
+        Path newOutputPath = TestUtils.executeNew(distributionName, args);
+        Assert.assertTrue(Files.isDirectory(newOutputPath.resolve("project_without_version")));
+        Assert.assertTrue(Files.exists(newOutputPath.resolve("project_without_version").resolve("Ballerina.toml")));
+        Assert.assertTrue(Files.exists(newOutputPath.resolve("project_without_version").resolve("Package.md")));
+
+        String tomlContent = Files.readString(
+                newOutputPath.resolve("project_without_version").resolve("Ballerina.toml"), StandardCharsets.UTF_8);
+        Assert.assertTrue(tomlContent.contains("version = \"0.1.5\""));
+        Assert.assertTrue(tomlContent.contains("template = true"));
+
+        List<String> buildArgs = new LinkedList<>();
+        String buildOutput = TestUtils.executeBuild(distributionName, newOutputPath.resolve("project_without_version"), buildArgs);
+        Assert.assertTrue(buildOutput.contains("Compiling source"));
+        Assert.assertTrue(buildOutput.contains("Generating executable"));
+    }
+
+    @Test(description = "Create a new package by pulling a module without template tagging from central")
+    public void testNewCommandCentralPullPkgWithTemplateUntagged() throws IOException {
+        List<String> args = new LinkedList<>();
+        args.add("project_with_twitter_module");
+        args.add("-t");
+        args.add("ballerinax/twitter:1.0.0");
+        Path newOutputPath = TestUtils.executeNew(distributionName, args);
+        Assert.assertTrue(Files.exists(newOutputPath.resolve("project_with_twitter_module")));
+        Assert.assertFalse(Files.exists(newOutputPath.resolve("project_with_twitter_module").resolve("Ballerina.toml")));
+    }
+
+    @Test(description = "Create a new package by pulling a module with platform dependencies from central")
+    public void testNewCommandCentralPullWithPlatformDependencies() throws IOException {
+        List<String> args = new LinkedList<>();
+        args.add("project_with_platform_dep");
+        args.add("-t");
+        args.add("admin/lib_project:0.1.0");
+        Path newOutputPath = TestUtils.executeNew(distributionName, args);
+        Assert.assertTrue(Files.exists(newOutputPath.resolve("project_with_platform_dep").resolve("Ballerina.toml")));
+        String tomlContent = Files.readString(
+                newOutputPath.resolve("project_with_platform_dep").resolve("Ballerina.toml"), StandardCharsets.UTF_8);
+        Assert.assertTrue(tomlContent.contains("artifactId = \"snakeyaml\""));
+        Assert.assertTrue(tomlContent.contains("groupId = \"org.yaml\""));
+        Assert.assertTrue(tomlContent.contains("version = \"1.9\""));
+
+        List<String> buildArgs = new LinkedList<>();
+        String buildOutput = TestUtils.executeBuild(distributionName, newOutputPath.resolve("project_with_platform_dep"), buildArgs);
+        Assert.assertTrue(buildOutput.contains("Compiling source"));
+        Assert.assertTrue(buildOutput.contains("Generating executable"));
+    }
+
     @AfterClass
     private void cleanup() throws IOException {
         TestUtils.deleteFiles();
