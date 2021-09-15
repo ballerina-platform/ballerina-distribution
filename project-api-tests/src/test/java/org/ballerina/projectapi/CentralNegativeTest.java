@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.ballerina.central;
+package org.ballerina.projectapi;
 
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -34,22 +34,23 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Objects;
 
-import static org.ballerina.central.CentralTestUtils.BALLERINA_CENTRAL_ACCESS_TOKEN;
-import static org.ballerina.central.CentralTestUtils.BALLERINA_DEV_CENTRAL;
-import static org.ballerina.central.CentralTestUtils.BALLERINA_HOME_DIR;
-import static org.ballerina.central.CentralTestUtils.BALLERINA_TOML;
-import static org.ballerina.central.CentralTestUtils.deleteFiles;
-import static org.ballerina.central.CentralTestUtils.getBalaPath;
-import static org.ballerina.central.CentralTestUtils.getEnvVariables;
-import static org.ballerina.central.CentralTestUtils.getGenerateBalaLog;
-import static org.ballerina.central.CentralTestUtils.getString;
-import static org.ballerina.central.CentralTestUtils.randomPackageName;
-import static org.ballerina.central.CentralTestUtils.updateFileToken;
-import static org.ballerina.central.TestUtils.DISTRIBUTIONS_DIR;
-import static org.ballerina.central.TestUtils.MAVEN_VERSION;
-import static org.ballerina.central.TestUtils.executeBuildCommand;
-import static org.ballerina.central.TestUtils.executePushCommand;
-import static org.ballerina.central.TestUtils.executeSearchCommand;
+import static org.ballerina.projectapi.CentralTestUtils.BALLERINA_CENTRAL_ACCESS_TOKEN;
+import static org.ballerina.projectapi.CentralTestUtils.BALLERINA_DEV_CENTRAL;
+import static org.ballerina.projectapi.CentralTestUtils.BALLERINA_HOME_DIR;
+import static org.ballerina.projectapi.CentralTestUtils.BALLERINA_TOML;
+import static org.ballerina.projectapi.CentralTestUtils.deleteFiles;
+import static org.ballerina.projectapi.CentralTestUtils.getBalaPath;
+import static org.ballerina.projectapi.CentralTestUtils.getEnvVariables;
+import static org.ballerina.projectapi.CentralTestUtils.getGenerateBalaLog;
+import static org.ballerina.projectapi.CentralTestUtils.getString;
+import static org.ballerina.projectapi.CentralTestUtils.randomPackageName;
+import static org.ballerina.projectapi.CentralTestUtils.updateFileToken;
+import static org.ballerina.projectapi.TestUtils.DISTRIBUTIONS_DIR;
+import static org.ballerina.projectapi.TestUtils.MAVEN_VERSION;
+import static org.ballerina.projectapi.TestUtils.OUTPUT_CONTAIN_ERRORS;
+import static org.ballerina.projectapi.TestUtils.executeBuildCommand;
+import static org.ballerina.projectapi.TestUtils.executePushCommand;
+import static org.ballerina.projectapi.TestUtils.executeSearchCommand;
 
 /**
  * Negative tests related central packaging.
@@ -68,7 +69,6 @@ public class CentralNegativeTest {
     private static final String COMMON_VERSION = "1.0.0";
     private static final String TEST_PREFIX = "test_";
     private static final String ANY_PLATFORM = "any";
-    private static final String OUTPUT_CONTAIN_ERRORS = "build output contain errors:";
     private static final String OUTPUT_NOT_CONTAINS_EXP_MSG = "build output does not contain expected message:";
 
     @BeforeClass()
