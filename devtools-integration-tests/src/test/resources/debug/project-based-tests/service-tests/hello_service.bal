@@ -16,10 +16,10 @@
 
 import ballerina/http;
 
-service / on new http:Listener(9090) {
+service / on new http:Listener(9191) {
     final int x = 5;
 
-    resource function get greeting() returns string {
+    resource function get sayHello() returns string {
         return "Hello, World!";
     }
 }
