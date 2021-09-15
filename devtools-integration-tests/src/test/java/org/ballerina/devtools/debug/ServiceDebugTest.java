@@ -55,12 +55,18 @@ public class ServiceDebugTest extends BaseTestCase {
         int port = findFreePort();
 
         debugTestRunner.runDebuggeeProgram(debugTestRunner.testProjectPath, port);
-        debugTestRunner.addBreakPoint(new BallerinaTestDebugPoint(filePath, 22));
+        debugTestRunner.addBreakPoint(new BallerinaTestDebugPoint(filePath, 20));
+        debugTestRunner.addBreakPoint(new BallerinaTestDebugPoint(filePath, 24));
         debugTestRunner.initDebugSession(DebugUtils.DebuggeeExecutionKind.BUILD, port);
 
-        // Test for service debug where service is in the default module
+        // test for debug hits in service level variables
         Pair<BallerinaTestDebugPoint, StoppedEventArguments> debugHitInfo = debugTestRunner.waitForDebugHit(20000);
         Assert.assertEquals(debugHitInfo.getLeft(), debugTestRunner.testBreakpoints.get(0));
+
+        // test for debug instructions within service
+        debugTestRunner.resumeProgram(debugHitInfo.getRight(), DebugTestRunner.DebugResumeKind.NEXT_BREAKPOINT);
+        debugHitInfo = debugTestRunner.waitForDebugHit(10000);
+        Assert.assertEquals(debugHitInfo.getLeft(), debugTestRunner.testBreakpoints.get(1));
     }
 
     @Test(description = "Test for service call stack representation")
