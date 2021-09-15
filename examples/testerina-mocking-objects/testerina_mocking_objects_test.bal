@@ -77,11 +77,13 @@ function testSendNotification() {
     test:assertEquals(err, ());
 }
 
-@test:Config { }
+@test:Config {}
 function testMemberVariable() {
     string mockId = "test";
-    exampleClient = test:mock(ExampleClient);
-    // Stubs the value of the `id` to return the specified string.
-    test:prepare(exampleClient).getMember("id").thenReturn(mockId);
-    test:assertEquals(exampleClient.id, mockId);
+    lock {
+        exampleClient = test:mock(ExampleClient);
+        // Stubs the value of the `id` to return the specified string.
+        test:prepare(exampleClient).getMember("id").thenReturn(mockId);
+        test:assertEquals(exampleClient.id, mockId);
+    }
 }
