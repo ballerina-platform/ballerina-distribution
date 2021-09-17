@@ -68,6 +68,20 @@ jobs:
           release_name: ${{ steps.version-set.outputs.taggedVersion }}
           draft: false
           prerelease: ${{ github.event.inputs.isPreRelease }}
+      - name: Create linux-deb
+        id: run_installers_deb
+        run: |
+          cd installers/linux-deb
+          ./build-ballerina-linux-deb-x64.sh -v ${{ steps.project-version.outputs.version }} -p ./../../ballerina/build/distributions
+          mv target/*.deb ${{ steps.project-version.outputs.version }}.deb
+          echo "Created linux-deb successfully"
+      - name: Create linux-rpm
+        id: run_installers_rpm
+        run: |
+          cd installers/linux-rpm
+          ./build-ballerina-linux-rpm-x64.sh -v ${{ steps.project-version.outputs.version }} -p ./../../ballerina/build/distributions
+          mv rpmbuild/RPMS/x86_64/*.rpm ${{ steps.project-version.outputs.version }}.rpm
+          echo "Created linux-rpm successfully"
       - name: Upload zip artifacts
         uses: actions/upload-release-asset@v1
         env:
@@ -86,15 +100,20 @@ jobs:
           asset_name: ballerina-${{ steps.version-set.outputs.sversion }}.zip
           asset_path: ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.sversion }}.zip
           asset_content_type: application/octet-stream
-      - name: Upload Linux zip artifacts
-        uses: actions/upload-release-asset@v1
+      - name: Upload Linux deb
+        uses: actions/upload-artifact@v2
         env:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_name: ballerina-linux-${{ steps.version-set.outputs.version }}.zip
-          asset_path: ballerina/build/distributions/ballerina-linux-${{ steps.version-set.outputs.version }}.zip
-          asset_content_type: application/octet-stream
+          name: Linux Installer deb
+          path: installers/linux-deb/${{ steps.project-version.outputs.version }}.deb
+      - name: Upload Linux rpm
+        uses: actions/upload-artifact@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          name: Linux Installer rpm
+          path: installers/linux-rpm/${{ steps.project-version.outputs.version }}.rpm
       - name: Upload MacOS zip artifacts
         uses: actions/upload-release-asset@v1
         env:
