@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.ballerina.central;
+package org.ballerina.projectapi;
 
 import org.testng.Assert;
 

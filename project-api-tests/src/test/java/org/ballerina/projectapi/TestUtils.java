@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.ballerina.central;
+package org.ballerina.projectapi;
 
 import net.lingala.zip4j.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
@@ -43,6 +43,7 @@ public class TestUtils {
     private static final Path TEST_DISTRIBUTION_PATH = TARGET_DIR.resolve("test-distribution");
     public static final Path MAVEN_VERSION = Paths.get(System.getProperty("maven.version"));
     public static final Path DISTRIBUTIONS_DIR = Paths.get(System.getProperty("distributions.dir"));
+    public static final String OUTPUT_CONTAIN_ERRORS = "build output contain errors:";
 
     /**
      * Execute ballerina command.
