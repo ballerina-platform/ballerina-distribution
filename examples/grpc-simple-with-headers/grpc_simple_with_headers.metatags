@@ -1,0 +1,2 @@
+description: This Ballerina by Example has a gRPC simple service and a client and the client sends and receives messages and headers through a remote call.
+keywords: ballerina, ballerina by example, bbe, grpc, unary, simple

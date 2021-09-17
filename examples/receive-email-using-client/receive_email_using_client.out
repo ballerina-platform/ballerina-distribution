@@ -1,0 +1,3 @@
+bal run email.bal
+
+# Subject and the content body of the received emails would be printed.

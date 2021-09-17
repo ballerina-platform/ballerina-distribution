@@ -1,0 +1,5 @@
+bal run regex_expressions.bal
+Is the given string matched with the original string: true
+Replaced string: Ballerina_is_great
+String after replacing first Match: Replace thisTextThis
+No of names: 4

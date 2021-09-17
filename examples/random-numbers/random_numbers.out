@@ -1,0 +1,3 @@
+bal run random_numbers.bal
+Random decimal number: 0.6146990788006506
+Random integer number in range: 94

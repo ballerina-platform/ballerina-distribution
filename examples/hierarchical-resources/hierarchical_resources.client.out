@@ -1,0 +1,3 @@
+# Run this cURL command to invoke the resource.
+curl "localhost:8080/demo/greeting/hello?name=Ballerina"
+Hello, Ballerina

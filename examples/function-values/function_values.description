@@ -1,0 +1,3 @@
+// Functions are values and work as closures 
+// Function type is a Separate basic type
+// Anonymous function and type syntax look like function definition without the name.

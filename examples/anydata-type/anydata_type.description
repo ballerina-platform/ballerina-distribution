@@ -1,0 +1,4 @@
+// The type for plain data is `anydata`. The subtype of `any`. `==` and `!=` operators tests for deep equality.
+// `x.clone()` returns a deep copy, with the same mutability. `x.cloneReadOnly()` returns a deep copy that is
+// immutable. Ballerina syntax uses `ReadOnly` to mean immutable. Both `x.clone` and `cloneReadOnly()` do
+// not copy immutable parts of `x`. `const` structures are allowed. Equality and cloning handle cycles.

@@ -1,0 +1,67 @@
+import ballerina/io;
+
+type Error error;
+
+type LS stream<string, Error?>;
+
+type ValueRecord record {|
+    string value;
+|};
+
+const SAMPLE_LINE_COUNT = 5;
+
+class LineGenerator {
+    int i = -1;
+    string inputString;
+
+    public function init(string str) {
+        self.inputString = str;
+    }
+
+    public isolated function next() returns ValueRecord|Error? {
+        self.i += 1;
+        if (self.i < SAMPLE_LINE_COUNT) {
+            if (self.i % 2 == 0) {
+                return {value: self.inputString};
+            }
+            return {value: ""};
+        }
+    }
+}
+
+// This method strips the blank lines.
+function strip(LS lines) returns LS {
+    // Creates a `stream` from the query expression.
+    LS res = stream from var line in lines
+             where line.trim().length() > 0
+             select line;
+
+    return res;
+}
+
+function count(LS lines) returns int|Error {
+    int nLines = 0;
+    // Counts the number of lines by iterating the `stream`
+    // in `query action`.
+    var res = check from var line in lines
+              do {
+                  nLines += 1;
+              };
+
+    return nLines;
+}
+
+public function main() {
+    LineGenerator generator = new ("Everybody can dance");
+    LS inputLineStream = new (generator);
+
+    LS strippedStream = strip(inputLineStream);
+
+    int|Error nonBlankCount = count(strippedStream);
+
+    if (nonBlankCount is int) {
+        io:println("Input line count:" + SAMPLE_LINE_COUNT.toString());
+        io:println("Non blank line count:" + nonBlankCount.toString());
+    }
+
+}

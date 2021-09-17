@@ -1,0 +1,3 @@
+Run the cURL command below with the unmatched path and method.
+curl "http://localhost:9090/foo/bar" -X POST
+{"method":"POST", "path":["foo", "bar"]}

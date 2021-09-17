@@ -1,0 +1,2 @@
+bal run io_json.bal
+{"Store":{"@id":"AST","name":"Anne","address":{"street":"Main","city":"94"},"codes":["4","8"]}}

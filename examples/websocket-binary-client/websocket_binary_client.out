@@ -1,0 +1,3 @@
+bal run websocket_binary_client.bal
+
+Binary message

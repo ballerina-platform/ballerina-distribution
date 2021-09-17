@@ -1,0 +1,2 @@
+description: BBE on producing and consuming a message from a subject in the NATS streaming server using Ballerina.
+keywords: ballerina, ballerina by example, bbe, stan, credentials, tls, ssl, authentication

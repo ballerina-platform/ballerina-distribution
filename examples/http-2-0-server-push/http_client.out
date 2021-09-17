@@ -1,0 +1,8 @@
+bal run http_client.bal
+time = 2021-01-21 18:54:45,237 level = INFO  module = "" message = "Received a promise for /resource1"
+time = 2021-01-21 18:54:45,278 level = INFO  module = "" message = "Received a promise for /resource2"
+time = 2021-01-21 18:54:45,281 level = INFO  module = "" message = "Push promise for resource2 rejected"
+time = 2021-01-21 18:54:45,283 level = INFO  module = "" message = "Received a promise for /resource3"
+time = 2021-01-21 18:54:45,306 level = INFO  module = "" message = "Response : {"response":{"name":"main resource"}}"
+time = 2021-01-21 18:54:45,314 level = INFO  module = "" message = "Promised resource : {"push":{"name":"resource1"}}"
+time = 2021-01-21 18:54:45,468 level = INFO  module = "" message = "Promised resource : {"push":{"name":"resource3"}}"

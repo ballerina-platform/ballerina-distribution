@@ -1,0 +1,4 @@
+bal run cache_basic.bal
+The value of the key1: value1
+The existing keys in the cache: ["key1","key2"]
+The cache size: 2

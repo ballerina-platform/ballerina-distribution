@@ -1,0 +1,15 @@
+# To invoke the Load Balancer Demo Service, use the cURL command below.
+curl  http://localhost:9090/lb
+Mock1 resource was invoked.
+
+# Repeat the same cURL command to invoke the service again and it will be load balanced to the second mock service.
+curl http://localhost:9090/lb
+Mock2 resource was invoked.
+
+# The following request will be load balanced to the third mock service.
+curl http://localhost:9090/lb
+Mock3 resource was invoked.
+
+# The following request will be load balanced to the first mock service again.
+curl http://localhost:9090/lb
+Mock1 resource was invoked.

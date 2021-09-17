@@ -1,0 +1,8 @@
+// A raw template is a backtick template without a tag. Exposes result of phase 1 without further processing.
+// Raw template is evaluated by evaluating each expression and creating an object containing.
+// <ul>
+// <li>an `array` of the `strings` separated by insertions</li>
+// <li>an `array` of the results of expression evaluation and an `array` of `strings` separating</li>
+// </ul>
+//<br></br>
+// <p>Important use case: SQL parameters.</p>

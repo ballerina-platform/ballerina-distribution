@@ -1,0 +1,4 @@
+// In this example, the underlying connections of the subscriber and the publisher are
+// secured with TLS/SSL and basic authentication.<br/><br/>
+// For more information on the underlying module,
+// see the [STAN module](https://docs.central.ballerina.io/ballerinax/stan/latest).

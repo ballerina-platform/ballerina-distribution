@@ -1,0 +1,3 @@
+bal run optional_fields.bal
+Header value: {"from":"John","to":"Jill"}
+Subject value:

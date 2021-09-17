@@ -1,0 +1,50 @@
+Run the cURL command below to invoke bank/branch resource.
+curl -v "http://localhost:9090/bank/branch"
+> GET /bank/branch HTTP/1.1
+> Host: localhost:9090
+> User-Agent: curl/7.64.1
+> Accept: */*
+>
+< HTTP/1.1 200 OK
+< content-type: application/json+id
+< content-length: 32
+< server: ballerina
+< date: Sat, 15 May 2021 16:14:10 +0530
+<
+* Connection #0 to host localhost left intact
+{"branch":["Colombo, Srilanka"]}* Closing connection 0
+
+Run the cURL command below to invoke second resource.
+curl -v "http://localhost:9090/bank/open"
+> GET /bank/open HTTP/1.1
+> Host: localhost:9090
+> User-Agent: curl/7.64.1
+> Accept: */*
+>
+< HTTP/1.1 200 OK
+< content-type: text/plain
+< content-length: 12
+< server: ballerina
+< date: Sat, 15 May 2021 16:16:56 +0530
+<
+* Connection #0 to host localhost left intact
+Bank is open* Closing connection 0
+
+Run the cURL command below to invoke bank/account resource.
+curl -v "http://localhost:9090/bank/account" -d "bal" -X PUT
+> PUT /bank/account HTTP/1.1
+> Host: localhost:9090
+> User-Agent: curl/7.64.1
+> Accept: */*
+> Content-Length: 3
+> Content-Type: application/x-www-form-urlencoded
+>
+< HTTP/1.1 201 Created
+< Location: /myServer/084230
+< content-type: application/account+json
+< content-length: 33
+< server: ballerina
+< date: Sat, 15 May 2021 16:19:31 +0530
+<
+* Connection #0 to host localhost left intact
+{"name":"bal", "accountNo":84230}* Closing connection 0

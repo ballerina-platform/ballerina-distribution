@@ -1,0 +1,7 @@
+# To invoke the `bindStudent` resource, execute the below HTTP request.
+curl http://localhost:9090/hello/bindStudent -d '{ "Name": "John", "Grade": 12, "Marks": {"English" : "85", "IT" : "100"}}' -H "Content-Type:application/json"
+{"Name":"John"}
+
+# To invoke the `bindXML` resource, execute the below HTTP request.
+curl http://localhost:9090/hello/bindXML -d "<h:Store id = \"AST\" xmlns:h=\"http://www.test.com\"><h:street>Main</h:street><h:city>94</h:city></h:Store>" -H "Content-Type:application/xml"
+<h:city xmlns:h="http://www.test.com">94</h:city>

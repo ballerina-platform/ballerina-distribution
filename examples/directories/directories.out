@@ -1,0 +1,10 @@
+bal run directories.bal
+The foo/bar directory created successfully.
+Is foo directory exist: true
+The foo/bar directory copied successfully.
+The foo directory renamed successfully.
+Directory path: /A/B/C/test1/bar
+Directory size: 64
+Is directory: true
+Modified at 1621859440 0.871000000
+Directories removed successfully.

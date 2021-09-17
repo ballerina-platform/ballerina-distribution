@@ -1,0 +1,20 @@
+bal run filepaths.bal
+On Unix:
+Absolute path of test.txt: /A/test.txt
+/A/B/C is absolute: true
+Filename of /A/B/C: C
+Parent of /A/B/C: /A/B
+Normalized path of foo/../bar: bar
+Path elements of /A/B/C: ["A","B","C"]
+Built path of '/', 'foo', 'bar': /foo/bar
+Relative path between 'a/b/c' and 'a/c/d': ../../c/d
+
+On Windows:
+Absolute path of test.txt: \A\test.txt
+/A/B/C is absolute: false
+Filename of /A/B/C: C
+Parent of /A/B/C: \A\B
+Normalized path of foo/../bar: bar
+Path elements of /A/B/C: ["A","B","C"]
+Built path of '/', 'foo', 'bar': \foo\bar
+Relative path between 'a/b/c' and 'a/c/d': ..\..\c\d

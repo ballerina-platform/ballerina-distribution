@@ -1,0 +1,44 @@
+/*
+ * Copyright (c) 2020, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
+plugins {
+    id "com.gradle.enterprise" version "3.2"
+}
+
+rootProject.name = 'ballerina-distribution'
+include ':ballerina'
+include ':ballerina-distribution-test'
+include ':devtools-integration-tests'
+include ':central-tests'
+include 'dist-repo-builder'
+include 'build-time-tests'
+include 'cache-generator'
+include 'config:checkstyle'
+
+project(':ballerina').projectDir = "$rootDir/ballerina" as File
+project(':ballerina-distribution-test').projectDir = "$rootDir/ballerina-test" as File
+project(':dist-repo-builder').projectDir = "$rootDir/dist-repo-builder" as File
+project(':cache-generator').projectDir = "$rootDir/cache-generator" as File
+project(':config').projectDir = "$rootDir config" as File
+
+gradleEnterprise {
+    buildScan {
+        termsOfServiceUrl = 'https://gradle.com/terms-of-service'
+        termsOfServiceAgree = 'yes'
+    }
+}
+

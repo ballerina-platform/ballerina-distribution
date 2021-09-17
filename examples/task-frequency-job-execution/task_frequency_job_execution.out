@@ -1,0 +1,11 @@
+bal run task_frequency_job_execution.bal
+MyCounter: 1
+MyCounter: 2
+MyCounter: 3
+MyCounter: 4
+MyCounter: 5
+MyCounter: 6
+MyCounter: 7
+MyCounter: 8
+MyCounter: 9
+MyCounter: 10

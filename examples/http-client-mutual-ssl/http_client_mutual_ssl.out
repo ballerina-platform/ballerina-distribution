@@ -1,0 +1,5 @@
+# As a prerequisite, start a sample service secured with mutual SSL.
+# You may need to change the certificate file path, private key file path, and
+# trusted certificate file path.
+bal run http_client_mutual_ssl.bal
+Hello, World!

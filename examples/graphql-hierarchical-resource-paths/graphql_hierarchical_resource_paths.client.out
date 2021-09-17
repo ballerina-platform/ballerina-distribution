@@ -1,0 +1,4 @@
+# Send a query to the GraphQL endpoint using a cURL command.
+# The query used: { profile { quote name { first } } }
+curl -X POST -H "Content-type: application/json" -d '{ "query": "{ profile { quote name { first } } }" }' 'http://localhost:4000/graphql'
+{"data":{"profile":{"quote":"I am the one who knocks!", "name":{"first":"Walter"}}}}

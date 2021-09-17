@@ -1,0 +1,4 @@
+bal run panics.bal
+error: division by 0
+        at panics:divide(panics.bal:8)
+           panics:main(panics.bal:15)

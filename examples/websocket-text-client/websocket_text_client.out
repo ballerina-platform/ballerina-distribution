@@ -1,0 +1,3 @@
+bal run websocket_text_client.bal
+
+Text message

@@ -1,0 +1,4 @@
+// `any` means any value except an error.
+// Equivalent to a union of all non-error basic types.
+// Use `any|error` for absolutely any value.
+// Langlib lang.value module contains functions that apply to multiple basic types.

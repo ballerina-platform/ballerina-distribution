@@ -1,0 +1,11 @@
+bal run files.bal
+The bar.txt file created successfully.
+Is the bar.txt file exists: true
+Is the bar.txt file readable: true
+Is the bar.txt file writeable: true
+The bar.txt file copied successfully.
+The bar.txt file renamed successfully.
+File path: /A/B/bar1.txt
+File size: 0
+Is directory: false
+Modified at 1621858537 0.851000000

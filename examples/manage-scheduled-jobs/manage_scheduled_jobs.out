@@ -1,0 +1,20 @@
+bal run manage_scheduled_jobs.bal
+1st Job, MyCounter: 1
+2nd Job, MyCounter: 1
+1st Job, MyCounter: 2
+1st Job, MyCounter: 3
+1st Job, MyCounter: 4
+2nd Job, MyCounter: 2
+No of running jobs: 3
+Pasused the 1st job.
+3rd Job, MyCounter: 1
+2nd Job, MyCounter: 3
+Resumed the 1st job.
+1st Job, MyCounter: 5
+1st Job, MyCounter: 6
+No of running jobs: 2
+1st Job, MyCounter: 7
+1st Job, MyCounter: 8
+1st Job, MyCounter: 9
+1st Job, MyCounter: 10
+2nd Job, MyCounter: 4

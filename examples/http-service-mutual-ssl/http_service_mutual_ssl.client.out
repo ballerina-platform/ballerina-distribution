@@ -1,0 +1,3 @@
+# To invoke the service, use the cURL commands below.
+curl https://localhost:9090/foo/bar --cert /path/to/client-public.crt
+    --key /path/to/client-private.key --cacert /path/to/server-public.crt

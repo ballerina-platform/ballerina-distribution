@@ -1,0 +1,2 @@
+bal run http_resource_returns.bal
+[ballerina/http] started HTTP/WS listener 0.0.0.0:9090

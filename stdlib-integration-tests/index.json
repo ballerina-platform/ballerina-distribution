@@ -1,0 +1,67 @@
+[
+  {
+    "name": "TCP standard library ",
+    "path": "tcp",
+    "enableTest": true
+  },
+  {
+    "name": "Email standard library ",
+    "path": "email",
+    "enableTest": true
+  },
+  {
+    "name": "URL standard library ",
+    "path": "url",
+    "enableTest": true
+  },
+  {
+    "name": "Crypto standard library ",
+    "path": "crypto",
+    "enableTest": true
+  },
+  {
+    "name": "Auth standard library ",
+    "path": "auth",
+    "enableTest": true
+  },
+  {
+    "name": "JWT standard library ",
+    "path": "jwt",
+    "enableTest": true
+  },
+  {
+    "name": "Task standard library ",
+    "path": "task",
+    "enableTest": true
+  },
+  {
+    "name": "OAuth2 standard library ",
+    "path": "oauth2",
+    "enableTest": true
+  },
+  {
+    "name": "HTTP standard library",
+    "path": "http",
+    "enableTest": true
+  },
+  {
+    "name": "MIME standard library",
+    "path": "mime",
+    "enableTest": true
+  },
+  {
+    "name": "Websub start hub and register topic",
+    "path": "websub",
+    "enableTest": false
+  },
+  {
+    "name": "UDP standard library ",
+    "path": "udp",
+    "enableTest": true
+  },
+  {
+    "name": "WebSocket standard library",
+    "path": "websocket",
+    "enableTest": true
+  }
+]

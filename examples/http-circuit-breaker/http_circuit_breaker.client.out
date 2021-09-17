@@ -1,0 +1,3 @@
+# Keep sending the below request to experience how circuit breaker works.
+curl http://localhost:9090/cb
+Hello World!!!

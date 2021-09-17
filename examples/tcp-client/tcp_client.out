@@ -1,0 +1,3 @@
+# As a prerequisite, start a sample TCP service.
+bal run tcp_client.bal
+Received: Hello Ballerina Echo from client

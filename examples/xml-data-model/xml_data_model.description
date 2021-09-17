@@ -1,0 +1,20 @@
+// An `xml` value is a sequence representing the parsed content of an XML element. <br></br>
+// An `xml` value has four kinds of items.
+// <ul>
+// <li>`element`, `processing instruction` and `comment` item correspond 1:1 to XML infoset items</li>
+// <li>`text` item corresponds to one or more Character Information Items</li>
+// </ul>
+//<br></br>
+// <p>XML document is an `xml` sequence with only one `element` and no `text`. An `element` item is mutable
+// and consists of:</p>
+// <ul>
+// <li>name: type `string`</li>
+// <li>attributes: type `map<string>`</li>
+// <li>children: type `xml`</li>
+// </ul>
+//<br></br>
+// <p>A `text` item is immutable.</p>
+// <ul>
+// <li>it has no identity: `==` is the same as `===`</li>
+// <li>consecutive `text` items never occur in an `xml` value: they are always merged</li>
+// </ul>

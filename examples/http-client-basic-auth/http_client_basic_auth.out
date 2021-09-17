@@ -1,0 +1,4 @@
+# As a prerequisite, start a sample service secured with Basic Auth.
+# You may need to change the trusted certificate file path.
+bal run http_client_basic_auth.bal
+Hello, World!

@@ -1,0 +1,2 @@
+bal run service_declaration.bal
+bytes received: 17
