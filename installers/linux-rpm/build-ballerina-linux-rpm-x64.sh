@@ -115,14 +115,10 @@ function createBallerinaPlatform() {
 if [ "$BUILD_ALL_DISTRIBUTIONS" == "true" ]; then
     echo "Creating all distributions"
     createBallerinaPlatform
-    # createBallerinaRuntime
 else
     if [ "$DISTRIBUTION" == "ballerina" ]; then
         echo "Creating Ballerina Platform"
         createBallerinaPlatform
-    # elif [ "$DISTRIBUTION" == "ballerina-runtime" ]; then
-    #     echo "Creating Ballerina Runtime"
-    #     createBallerinaRuntime
     else
         echo "Error"
     fi

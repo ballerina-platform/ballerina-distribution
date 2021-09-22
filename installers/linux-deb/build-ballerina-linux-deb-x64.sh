@@ -64,7 +64,6 @@ fi
 
 BALLERINA_DISTRIBUTION_LOCATION=${DIST_PATH}
 BALLERINA_PLATFORM=ballerina-linux-${BALLERINA_VERSION}
-# BALLERINA_RUNTIME=ballerina-runtime-linux-${BALLERINA_VERSION}
 BALLERINA_INSTALL_DIRECTORY=ballerina-${BALLERINA_VERSION}
 
 echo "Build started at" $(date +"%Y-%m-%d %H:%M:%S")
@@ -91,9 +90,6 @@ function createPackInstallationDirectory() {
     rm -rf target/${BALLERINA_INSTALL_DIRECTORY}/usr/share/doc/${BALLERINA_INSTALL_DIRECTORY}
     mkdir -p target/${BALLERINA_INSTALL_DIRECTORY}/usr/share/doc/${BALLERINA_INSTALL_DIRECTORY}
     chmod -R 755 target/${BALLERINA_INSTALL_DIRECTORY}/usr/share/doc/${BALLERINA_INSTALL_DIRECTORY}
-    # cp target/${BALLERINA_INSTALL_DIRECTORY}/usr/lib/ballerina/${BALLERINA_INSTALL_DIRECTORY}/distributions/jballerina-${BALLERINA_VERSION}/COPYRIGHT target/${BALLERINA_INSTALL_DIRECTORY}/usr/share/doc/${BALLERINA_INSTALL_DIRECTORY}/copyright
-    # cp target/${BALLERINA_INSTALL_DIRECTORY}/usr/lib/ballerina/${BALLERINA_INSTALL_DIRECTORY}/distributions/jballerina-${BALLERINA_VERSION}/README.md target/${BALLERINA_INSTALL_DIRECTORY}/usr/share/doc/${BALLERINA_INSTALL_DIRECTORY}/README.md
-    # cp target/${BALLERINA_INSTALL_DIRECTORY}/usr/lib/ballerina/${BALLERINA_INSTALL_DIRECTORY}/distributions/jballerina-${BALLERINA_VERSION}/LICENSE target/${BALLERINA_INSTALL_DIRECTORY}/usr/share/doc/${BALLERINA_INSTALL_DIRECTORY}/LICENSE
 }
 
 function copyDebianDirectory() {
@@ -101,7 +97,6 @@ function copyDebianDirectory() {
     sed -i -e 's/__BALLERINA_VERSION__/'${BALLERINA_VERSION}'/g' target/${BALLERINA_INSTALL_DIRECTORY}/DEBIAN/postinst
     sed -i -e 's/__BALLERINA_VERSION__/'${BALLERINA_VERSION}'/g' target/${BALLERINA_INSTALL_DIRECTORY}/DEBIAN/postrm
     sed -i -e 's/__BALLERINA_VERSION__/'${BALLERINA_VERSION}'/g' target/${BALLERINA_INSTALL_DIRECTORY}/DEBIAN/control
-    # cp target/${BALLERINA_INSTALL_DIRECTORY}/usr/lib/ballerina/${BALLERINA_INSTALL_DIRECTORY}/distributions/jballerina-${BALLERINA_VERSION}/COPYRIGHT target/${BALLERINA_INSTALL_DIRECTORY}/DEBIAN/copyright
     chmod 755 target/${BALLERINA_INSTALL_DIRECTORY}/DEBIAN/postrm
     chmod 755 target/${BALLERINA_INSTALL_DIRECTORY}/DEBIAN/postinst
 }
@@ -116,29 +111,15 @@ function createBallerinaPlatform() {
     fakeroot dpkg-deb --build target/ballerina-linux-installer-x64-${BALLERINA_VERSION}
 }
 
-# function createBallerinaRuntime() {
-#     echo "Creating ballerina runtime installer"
-
-#     extractPack "$BALLERINA_DISTRIBUTION_LOCATION/$BALLERINA_RUNTIME.zip" ${BALLERINA_RUNTIME}
-#     createPackInstallationDirectory
-#     copyDebianDirectory
-#     mv target/${BALLERINA_INSTALL_DIRECTORY} target/ballerina-runtime-linux-installer-x64-${BALLERINA_VERSION}
-#     fakeroot dpkg-deb --build target/ballerina-runtime-linux-installer-x64-${BALLERINA_VERSION}
-# }
-
 deleteTargetDirectory
 
 if [ "$BUILD_ALL_DISTRIBUTIONS" == "true" ]; then
     echo "Creating all distributions"
     createBallerinaPlatform
-    # createBallerinaRuntime 
 else
     if [ "$DISTRIBUTION" == "ballerina" ]; then
         echo "Creating Ballerina Platform"
         createBallerinaPlatform
-    # elif [ "$DISTRIBUTION" == "ballerina-runtime" ]; then
-    #     echo "Creating Ballerina Runtime"
-    #     createBallerinaRuntime
     else
         echo "Error"
     fi
