@@ -41,7 +41,7 @@ public class BuildTimeTest {
     private Path tempWorkspace;
     private Map<String, String> envVariables;
 
-    @BeforeClass(enabled = false)
+    @BeforeClass
     public void setup() throws IOException {
         setupDistributions();
         tempHome = Files.createTempDirectory("bal-test-integration-packaging-home-");
@@ -58,8 +58,7 @@ public class BuildTimeTest {
         }
     }
 
-    @Test(description = "Build project twice to verify reduction in package resolution time due to caching.",
-            enabled = false)
+    @Test(description = "Build project twice to verify reduction in package resolution time due to caching.")
     public void testResolutionTimeReduction() throws IOException, InterruptedException {
         String projectName = "Project1";
         long expectedMinimumTimeDiff = 500;
@@ -122,7 +121,7 @@ public class BuildTimeTest {
         return 0;
     }
 
-    @AfterClass(enabled = false)
+    @AfterClass
     private void cleanup() throws IOException {
         deleteFiles(tempHome);
         deleteFiles(tempWorkspace);

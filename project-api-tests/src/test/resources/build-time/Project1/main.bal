@@ -1,6 +1,10 @@
 import ballerina/io;
 import ballerina/random;
 import ballerina/uuid;
+import ballerina/http as _;
+import ballerina/log as _;
+import ballerina/file as _;
+import ballerina/graphql as _;
 
 public function main() returns error? {
     // Generates a random decimal number between 0.0 and 1.0.
