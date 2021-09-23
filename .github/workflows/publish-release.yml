@@ -72,15 +72,15 @@ jobs:
         id: run_installers_deb
         run: |
           cd installers/linux-deb
-          ./build-ballerina-linux-deb-x64.sh -v ${{ steps.project-version.outputs.version }} -p ./../../ballerina/build/distributions
-          mv target/*.deb ${{ steps.project-version.outputs.version }}.deb
+          ./build-ballerina-linux-deb-x64.sh -v ${{ steps.version-set.outputs.version }} -p ./../../ballerina/build/distributions
+          mv target/*.deb ${{ steps.version-set.outputs.version }}.deb
           echo "Created linux-deb successfully"
       - name: Create linux-rpm
         id: run_installers_rpm
         run: |
           cd installers/linux-rpm
-          ./build-ballerina-linux-rpm-x64.sh -v ${{ steps.project-version.outputs.version }} -p ./../../ballerina/build/distributions
-          mv rpmbuild/RPMS/x86_64/*.rpm ${{ steps.project-version.outputs.version }}.rpm
+          ./build-ballerina-linux-rpm-x64.sh -v ${{ steps.version-set.outputs.version }} -p ./../../ballerina/build/distributions
+          mv rpmbuild/RPMS/x86_64/*.rpm ${{ steps.version-set.outputs.version }}.rpm
           echo "Created linux-rpm successfully"
       - name: Upload zip artifacts
         uses: actions/upload-release-asset@v1
@@ -106,14 +106,14 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           name: Linux Installer deb
-          path: installers/linux-deb/${{ steps.project-version.outputs.version }}.deb
+          path: installers/linux-deb/${{ steps.version-set.outputs.version }}.deb
       - name: Upload Linux rpm
         uses: actions/upload-artifact@v2
         env:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           name: Linux Installer rpm
-          path: installers/linux-rpm/${{ steps.project-version.outputs.version }}.rpm
+          path: installers/linux-rpm/${{ steps.version-set.outputs.version }}.rpm
       - name: Upload MacOS zip artifacts
         uses: actions/upload-release-asset@v1
         env:
