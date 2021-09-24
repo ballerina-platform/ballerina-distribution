@@ -30,6 +30,9 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 
+import static org.ballerina.projectapi.CentralTestUtils.BALLERINA_DEV_CENTRAL;
+import static org.ballerina.projectapi.CentralTestUtils.BALLERINA_HOME_DIR;
+
 /**
  * Utility class for tests.
  */
@@ -44,6 +47,7 @@ public class TestUtils {
     public static final Path MAVEN_VERSION = Paths.get(System.getProperty("maven.version"));
     public static final Path DISTRIBUTIONS_DIR = Paths.get(System.getProperty("distributions.dir"));
     public static final String OUTPUT_CONTAIN_ERRORS = "build output contain errors:";
+    public static final String DISTRIBUTION_FILE_NAME = "ballerina-" + MAVEN_VERSION;
 
     /**
      * Execute ballerina command.
@@ -97,7 +101,17 @@ public class TestUtils {
             List<String> args, Map<String, String> envProperties) throws IOException, InterruptedException {
         return executeCommand("search", distributionName, sourceDirectory, args, envProperties);
     }
-    
+
+    /**
+     * Clean and setup the distribution.
+     *
+     * @throws IOException
+     */
+    static void setupDistributions() throws IOException {
+        TestUtils.cleanDistribution();
+        TestUtils.prepareDistribution(DISTRIBUTIONS_DIR.resolve(DISTRIBUTION_FILE_NAME + ".zip"));
+    }
+
     /**
      * Extracts a distribution to a temporary directory.
      *
@@ -117,5 +131,16 @@ public class TestUtils {
      */
     public static void cleanDistribution() throws IOException {
         FileUtils.deleteDirectory(TEST_DISTRIBUTION_PATH.toFile());
+    }
+
+    /**
+     * Get environment variables and add ballerina_home as a env variable the tmp directory.
+     *
+     * @return env directory variable array
+     */
+     static Map<String, String> addEnvVariables(Map<String, String> envVariables, Path tempHomeDirectory) {
+        envVariables.put(BALLERINA_HOME_DIR, tempHomeDirectory.toString());
+        envVariables.put(BALLERINA_DEV_CENTRAL, "true");
+        return envVariables;
     }
 }
