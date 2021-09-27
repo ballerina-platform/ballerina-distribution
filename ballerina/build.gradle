@@ -695,13 +695,13 @@ task testExamples() {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${distPath}/${bbe.url}"
-                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'build', '--experimental', "${additionalBuildParams}"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'build', '--offline --experimental', "${additionalBuildParams}"
             }
         } else {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${distPath}/${bbe.url}"
-                commandLine 'sh', '-c', "${distPath}/bin/bal build --experimental ${additionalBuildParams}"
+                commandLine 'sh', '-c', "${distPath}/bin/bal build --offline --experimental ${additionalBuildParams}"
             }
         }
         if (exitVal.getExitValue() == 1) {
@@ -965,7 +965,7 @@ task testStdlibs() {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${distPath}/${stdlibTest}"
-                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat build --experimental ${additionalBuildParams}"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat build --offline --experimental ${additionalBuildParams}"
             }
         } else {
             exec {
@@ -975,7 +975,7 @@ task testStdlibs() {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${distPath}/${stdlibTest}"
-                commandLine 'sh', '-c', "${distPath}/bin/bal build --experimental ${additionalBuildParams}"
+                commandLine 'sh', '-c', "${distPath}/bin/bal build --offline --experimental ${additionalBuildParams}"
             }
         }
         if (exitVal.getExitValue() == 1) {
