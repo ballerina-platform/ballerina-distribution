@@ -142,6 +142,9 @@ jobs:
           format: 'table'
           exit-code: '1'
 
+    outputs:
+      project-version: ${{ steps.project-version.outputs.version }}
+
   windows-build:
 
     runs-on: windows-latest
@@ -160,3 +163,27 @@ jobs:
           packagePAT: ${{ secrets.GITHUB_TOKEN }}
           devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
         run: ./gradlew.bat clean build --stacktrace --scan --console=plain --no-daemon -x test
+
+  macos-installer-build:
+
+    needs: ubuntu-build
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Download MacOS Intaller Zip
+        uses: actions/download-artifact@v2
+        with:
+          name: MacOS installer ZIP
+      - name: Create macos-pkg
+        id: run_installers_pkg
+        run: |
+          cd installers/mac
+          ./build-ballerina-macos-x64.sh -v ${{ needs.ubuntu-build.outputs.project-version }} -p ./../../
+          echo "Created macos-pkg successfully"
+      - name: Archive MacOS pkg
+        uses: actions/upload-artifact@v2
+        with:
+          name: MacOS Installer pkg
+          path: installers/mac/target/pkg/ballerina-macos-installer-x64-${{ needs.ubuntu-build.outputs.project-version }}.pkg
