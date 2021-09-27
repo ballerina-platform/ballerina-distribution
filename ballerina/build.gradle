@@ -710,172 +710,172 @@ task testExamples() {
         return false
     }
 
-    ext.outputVerification = { bbe ->
+    // ext.outputVerification = { bbe ->
 
-        def directoryPath = "${distPath}/${bbe.url}"
-        File fileReference
-        def curlCommands = []
-        def ports = []
-        def fileOut = []
-        def balName = bbe.url.replace('-', '_') + ".bal"
-        FileTree tree = fileTree(directoryPath)
-        def curlCommandsFilePath = "${directoryPath}/curlcommandout.txt"
-        def portFilePath = "${directoryPath}/ports.txt"
-        def outputFilePath = "${directoryPath}/output.txt"
-        def additionalBuildParams = ""
-        tree.each { content ->
-            if (content.name.contains("client.out")) {
-                fileReference = file(content)
-                fileReference.readLines().each { lines ->
-                    fileOut.add(lines.trim())
-                    if (lines.startsWith("curl")) {
-                        lines = lines.trim() + " >> output.txt"
-                        curlCommands.add(lines)
-                        if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                            curlCommands.add("echo. >> output.txt")
-                        } else {
-                            curlCommands.add("echo >> output.txt")
-                        }
-                    }
-                }
-            } else if (content.name.contains("server.out") || content.name.contains("service.out")) {
-                fileReference = file(content)
-                String portPrefixHttp = "[ballerina/http] started HTTP/WS listener 0.0.0.0:"
-                String portPrefixHttps = "[ballerina/http] started HTTPS/WSS listener 0.0.0.0:"
-                String portPrefixWs = "[ballerina/websocket] started WS listener 0.0.0.0:"
-                String portPrefixWss = "[ballerina/websocket] started WSS listener 0.0.0.0:"
-                fileReference.readLines().each { lines ->
-                    if (lines.contains(portPrefixHttp)) {
-                        lines = (lines - portPrefixHttp).trim()
-                        ports.add(lines)
-                    } else if (lines.contains(portPrefixHttps)) {
-                        lines = (lines - portPrefixHttps).trim()
-                        ports.add(lines)
-                    } else if (lines.contains(portPrefixWs)) {
-                        lines = (lines - portPrefixWs).trim()
-                        ports.add(lines)
-                    } else if (lines.contains(portPrefixWss)) {
-                        lines = (lines - portPrefixWss).trim()
-                        ports.add(lines)
-                    }
-                }
-            }
-        }
-        def failFlag = false
-        if (!ports.isEmpty() && !curlCommands.isEmpty()) {
-            fileReference = new File(portFilePath)
-            ports.each {
-                fileReference << "${it}\n"
-            }
-            fileReference = new File(curlCommandsFilePath)
-            curlCommands.each {
-                fileReference << "${it}\n"
-            }
-            println "Verify output '${bbe.url}'"
-            def scriptPath = "${project.rootDir}/ballerina/lib"
-            def exitVal
-            if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                exitVal = exec {
-                    def windowsPath = scriptPath.replace('/', '\\')
-                    workingDir "$windowsPath"
-                    commandLine "$windowsPath\\run.bat", "${directoryPath}", "${distPath}/bin/bal.bat", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "${additionalBuildParams}"
-                    ignoreExitValue true
-                }
-            } else {
-                exitVal = exec {
-                    workingDir "$scriptPath"
-                    commandLine "bash", "run.sh", "${directoryPath}", "${distPath}/bin/./bal", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "${additionalBuildParams}"
-                    ignoreExitValue true
-                }
-            }
-            // Return immediately if command failed
-            if (exitVal.getExitValue() == 1) {
-                println "Failed due to build failure."
-                return true
-            }
-            File bbeOutput = new File(outputFilePath)
-            if (bbeOutput.exists()) {
-                bbeOutput.readLines().each {
-                    if (!fileOut.contains(it.trim()) && it) {
-                        println "Failed due to output did not match. Line ${it}"
-                        failFlag = true
-                    }
-                }
-            }
-            delete portFilePath
-            delete curlCommandsFilePath
-            delete outputFilePath
-        } else if (ports.isEmpty() && curlCommands.isEmpty()) {
-            balName = bbe.url.replace('-', '_')
-            def str = ""
-            fileOut = []
-            def bbeOutput = []
-            def cmdOutAry = []
-            def errOut = new ByteArrayOutputStream()
-            new ByteArrayOutputStream().withStream { os ->
-                println "Output Verification '${bbe.url}'"
-                if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                    exec {
-                        workingDir "${directoryPath}"
-                        commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'run', '--experimental', "${balName}.bal ", ${additionalBuildParams}
-                        ignoreExitValue true
-                        standardOutput = os
-                        errorOutput = errOut
-                    }
-                } else {
-                    exec {
-                        workingDir "${directoryPath}"
-                        commandLine 'sh', '-c', "${distPath}/bin/bal run --experimental ${balName}.bal ${additionalBuildParams}"
-                        ignoreExitValue true
-                        standardOutput = os
-                        errorOutput = errOut
-                    }
-                }
-                cmdOutAry.add(os.toString())
-                cmdOutAry.add(errOut.toString())
-            }
+    //     def directoryPath = "${distPath}/${bbe.url}"
+    //     File fileReference
+    //     def curlCommands = []
+    //     def ports = []
+    //     def fileOut = []
+    //     def balName = bbe.url.replace('-', '_') + ".bal"
+    //     FileTree tree = fileTree(directoryPath)
+    //     def curlCommandsFilePath = "${directoryPath}/curlcommandout.txt"
+    //     def portFilePath = "${directoryPath}/ports.txt"
+    //     def outputFilePath = "${directoryPath}/output.txt"
+    //     def additionalBuildParams = ""
+    //     tree.each { content ->
+    //         if (content.name.contains("client.out")) {
+    //             fileReference = file(content)
+    //             fileReference.readLines().each { lines ->
+    //                 fileOut.add(lines.trim())
+    //                 if (lines.startsWith("curl")) {
+    //                     lines = lines.trim() + " >> output.txt"
+    //                     curlCommands.add(lines)
+    //                     if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+    //                         curlCommands.add("echo. >> output.txt")
+    //                     } else {
+    //                         curlCommands.add("echo >> output.txt")
+    //                     }
+    //                 }
+    //             }
+    //         } else if (content.name.contains("server.out") || content.name.contains("service.out")) {
+    //             fileReference = file(content)
+    //             String portPrefixHttp = "[ballerina/http] started HTTP/WS listener 0.0.0.0:"
+    //             String portPrefixHttps = "[ballerina/http] started HTTPS/WSS listener 0.0.0.0:"
+    //             String portPrefixWs = "[ballerina/websocket] started WS listener 0.0.0.0:"
+    //             String portPrefixWss = "[ballerina/websocket] started WSS listener 0.0.0.0:"
+    //             fileReference.readLines().each { lines ->
+    //                 if (lines.contains(portPrefixHttp)) {
+    //                     lines = (lines - portPrefixHttp).trim()
+    //                     ports.add(lines)
+    //                 } else if (lines.contains(portPrefixHttps)) {
+    //                     lines = (lines - portPrefixHttps).trim()
+    //                     ports.add(lines)
+    //                 } else if (lines.contains(portPrefixWs)) {
+    //                     lines = (lines - portPrefixWs).trim()
+    //                     ports.add(lines)
+    //                 } else if (lines.contains(portPrefixWss)) {
+    //                     lines = (lines - portPrefixWss).trim()
+    //                     ports.add(lines)
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     def failFlag = false
+    //     if (!ports.isEmpty() && !curlCommands.isEmpty()) {
+    //         fileReference = new File(portFilePath)
+    //         ports.each {
+    //             fileReference << "${it}\n"
+    //         }
+    //         fileReference = new File(curlCommandsFilePath)
+    //         curlCommands.each {
+    //             fileReference << "${it}\n"
+    //         }
+    //         println "Verify output '${bbe.url}'"
+    //         def scriptPath = "${project.rootDir}/ballerina/lib"
+    //         def exitVal
+    //         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+    //             exitVal = exec {
+    //                 def windowsPath = scriptPath.replace('/', '\\')
+    //                 workingDir "$windowsPath"
+    //                 commandLine "$windowsPath\\run.bat", "${directoryPath}", "${distPath}/bin/bal.bat", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "${additionalBuildParams}"
+    //                 ignoreExitValue true
+    //             }
+    //         } else {
+    //             exitVal = exec {
+    //                 workingDir "$scriptPath"
+    //                 commandLine "bash", "run.sh", "${directoryPath}", "${distPath}/bin/./bal", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "${additionalBuildParams}"
+    //                 ignoreExitValue true
+    //             }
+    //         }
+    //         // Return immediately if command failed
+    //         if (exitVal.getExitValue() == 1) {
+    //             println "Failed due to build failure."
+    //             return true
+    //         }
+    //         File bbeOutput = new File(outputFilePath)
+    //         if (bbeOutput.exists()) {
+    //             bbeOutput.readLines().each {
+    //                 if (!fileOut.contains(it.trim()) && it) {
+    //                     println "Failed due to output did not match. Line ${it}"
+    //                     failFlag = true
+    //                 }
+    //             }
+    //         }
+    //         delete portFilePath
+    //         delete curlCommandsFilePath
+    //         delete outputFilePath
+    //     } else if (ports.isEmpty() && curlCommands.isEmpty()) {
+    //         balName = bbe.url.replace('-', '_')
+    //         def str = ""
+    //         fileOut = []
+    //         def bbeOutput = []
+    //         def cmdOutAry = []
+    //         def errOut = new ByteArrayOutputStream()
+    //         new ByteArrayOutputStream().withStream { os ->
+    //             println "Output Verification '${bbe.url}'"
+    //             if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+    //                 exec {
+    //                     workingDir "${directoryPath}"
+    //                     commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'run', '--experimental', "${balName}.bal ", ${additionalBuildParams}
+    //                     ignoreExitValue true
+    //                     standardOutput = os
+    //                     errorOutput = errOut
+    //                 }
+    //             } else {
+    //                 exec {
+    //                     workingDir "${directoryPath}"
+    //                     commandLine 'sh', '-c', "${distPath}/bin/bal run --experimental ${balName}.bal ${additionalBuildParams}"
+    //                     ignoreExitValue true
+    //                     standardOutput = os
+    //                     errorOutput = errOut
+    //                 }
+    //             }
+    //             cmdOutAry.add(os.toString())
+    //             cmdOutAry.add(errOut.toString())
+    //         }
 
-            File file = file("${directoryPath}/${balName}.out")
-            file.readLines().each {
-                str = it.trim()
-                if (str?.trim()) {
-                    if (str[0] != '#') {
-                        fileOut.add(str)
-                    }
-                }
-            }
+    //         File file = file("${directoryPath}/${balName}.out")
+    //         file.readLines().each {
+    //             str = it.trim()
+    //             if (str?.trim()) {
+    //                 if (str[0] != '#') {
+    //                     fileOut.add(str)
+    //                 }
+    //             }
+    //         }
 
-            def lines = "${cmdOutAry[0]}".split('\n')
-            lines = lines + "${cmdOutAry[1]}".split('\n')
-            lines.each {
-                str = it.trim()
-                if (str != "Compiling source" && str != "${balName}.bal" && str != "Running executable" && str != ""
-                        && str != "Picked up JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF8" && !str.startsWith('HINT')) {
-                    bbeOutput.add(str)
-                }
-            }
+    //         def lines = "${cmdOutAry[0]}".split('\n')
+    //         lines = lines + "${cmdOutAry[1]}".split('\n')
+    //         lines.each {
+    //             str = it.trim()
+    //             if (str != "Compiling source" && str != "${balName}.bal" && str != "Running executable" && str != ""
+    //                     && str != "Picked up JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF8" && !str.startsWith('HINT')) {
+    //                 bbeOutput.add(str)
+    //             }
+    //         }
 
-            for (int i = 0; i < bbeOutput.size(); i++) {
-                def index = fileOut.findIndexOf { it == bbeOutput[i] }
-                if (index == -1) {
-                    println "Failed due to output did not match. Line ${i}: ${bbeOutput[i]}"
-                    failFlag = true
-                }
-            }
-        }
-        return failFlag
-    }
+    //         for (int i = 0; i < bbeOutput.size(); i++) {
+    //             def index = fileOut.findIndexOf { it == bbeOutput[i] }
+    //             if (index == -1) {
+    //                 println "Failed due to output did not match. Line ${i}: ${bbeOutput[i]}"
+    //                 failFlag = true
+    //             }
+    //         }
+    //     }
+    //     return failFlag
+    // }
 
     doLast {
         def failedBuildExamples = []
         def failOutputVerificationExamples = []
         bbeList.each { bbe ->
-            if (bbe.verifyOutput) {
-                boolean outputVerificationFailFlag = outputVerification(bbe)
-                if (outputVerificationFailFlag) {
-                    failOutputVerificationExamples.add(bbe.url)
-                }
-            }
+            // if (bbe.verifyOutput) {
+            //     boolean outputVerificationFailFlag = outputVerification(bbe)
+            //     if (outputVerificationFailFlag) {
+            //         failOutputVerificationExamples.add(bbe.url)
+            //     }
+            // }
 
             if (bbe.verifyBuild) {
                 File tomlFile = new File("${distPath}/${bbe.url}/Ballerina.toml")
@@ -900,14 +900,14 @@ task testExamples() {
             buildFailure = true
         }
 
-        if (!failOutputVerificationExamples.isEmpty()) {
-            println "\n\tThe following BBEs failed while verifying the output:\n"
-            failOutputVerificationExamples.each {
-                println "\t ${it}"
-            }
-            sleep(10 * 1000)
-            buildFailure = true
-        }
+        // if (!failOutputVerificationExamples.isEmpty()) {
+        //     println "\n\tThe following BBEs failed while verifying the output:\n"
+        //     failOutputVerificationExamples.each {
+        //         println "\t ${it}"
+        //     }
+        //     sleep(10 * 1000)
+        //     buildFailure = true
+        // }
         if (buildFailure) {
             sleep(10 * 1000)
             throw new GradleException('There are test failures')
