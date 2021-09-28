@@ -2511,7 +2511,7 @@
             {
                 "name": "Generate UUID",
                 "url": "uuid-generation",
-                "verifyBuild": true,
+                "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes varying output",
                 "isLearnByExample": false
@@ -2519,8 +2519,8 @@
             {
                 "name": "UUID Operations",
                 "url": "uuid-operations",
-                "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyBuild": false,
+                "verifyOutput": false,
                 "isLearnByExample": false
             }
         ]
@@ -2533,7 +2533,7 @@
             {
                 "name": "XSLT Transformation",
                 "url": "xslt-transformation",
-                "verifyBuild": true,
+                "verifyBuild": false,
                 "verifyOutput": false,
                 "isLearnByExample": false
             }
@@ -2547,8 +2547,8 @@
             {
                 "name": "Regular Expressions",
                 "url": "regular-expressions",
-                "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyBuild": false,
+                "verifyOutput": false,
                 "isLearnByExample": false
             }
         ]
@@ -2561,7 +2561,7 @@
             {
                 "name": "Environment Variables",
                 "url": "environment-variables",
-                "verifyBuild": true,
+                "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes varying output",
                 "isLearnByExample": false
