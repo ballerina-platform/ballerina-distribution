@@ -1,15 +1,14 @@
 [
     {
-        "title": "OS",
+        "title": "Regex",
         "column": 3,
         "category": "Common Libraries",
         "samples": [
             {
-                "name": "Environment Variables",
-                "url": "environment-variables",
+                "name": "Regular Expressions",
+                "url": "regular-expressions",
                 "verifyBuild": true,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes varying output",
+                "verifyOutput": true,
                 "isLearnByExample": false
             }
         ]
