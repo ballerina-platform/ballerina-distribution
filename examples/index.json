@@ -1,27 +1,5 @@
 [
     {
-        "title": "UUID",
-        "column": 3,
-        "category": "Common Libraries",
-        "samples": [
-            {
-                "name": "Generate UUID",
-                "url": "uuid-generation",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes varying output",
-                "isLearnByExample": false
-            },
-            {
-                "name": "UUID Operations",
-                "url": "uuid-operations",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": false
-            }
-        ]
-    },
-    {
         "title": "XSLT",
         "column": 3,
         "category": "Common Libraries",
