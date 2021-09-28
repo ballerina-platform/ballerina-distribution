@@ -1,91 +1,29 @@
 [
     {
-        "title": "File",
-        "column": 2,
+        "title": "Regex",
+        "column": 3,
         "category": "Common Libraries",
         "samples": [
             {
-                "name": "File Paths",
-                "url": "filepaths",
+                "name": "Regular Expressions",
+                "url": "regular-expressions",
                 "verifyBuild": true,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes varying output",
-                "isLearnByExample": false
-            },
-            {
-                "name": "Directories",
-                "url": "directories",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes varying output",
-                "isLearnByExample": false
-            },
-            {
-                "name": "Files",
-                "url": "files",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes varying output",
-                "isLearnByExample": false
-            },
-            {
-                "name": "Temp Files and Directories",
-                "url": "temp-files-directories",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes varying output",
-                "isLearnByExample": false
-            },
-            {
-                "name": "Directory Listener",
-                "url": "directory-listener",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disableVerificationReason": "Needs prerequisite condition",
-                "disablePlayground": true,
+                "verifyOutput": true,
                 "isLearnByExample": false
             }
         ]
     },
     {
-        "title": "Random",
-        "column": 2,
+        "title": "OS",
+        "column": 3,
         "category": "Common Libraries",
         "samples": [
             {
-                "name": "Random Numbers",
-                "url": "random-numbers",
+                "name": "Environment Variables",
+                "url": "environment-variables",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes varying output",
-                "isLearnByExample": false
-            }
-        ]
-    },
-    {
-        "title": "Task",
-        "column": 2,
-        "category": "Common Libraries",
-        "samples": [
-            {
-                "name": "Schedule Job recurrence by Frequency",
-                "url": "task-frequency-job-execution",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Schedule one time job",
-                "url": "task-one-time-job-execution",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Manage Scheduled Jobs",
-                "url": "manage-scheduled-jobs",
-                "verifyBuild": true,
-                "verifyOutput": false,
                 "isLearnByExample": false
             }
         ]
