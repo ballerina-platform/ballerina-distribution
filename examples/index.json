@@ -1,96 +1,91 @@
 [
     {
-        "title": "XML Data",
-        "column": 3,
+        "title": "File",
+        "column": 2,
         "category": "Common Libraries",
         "samples": [
             {
-                "name": "XML JSON Conversion",
-                "url": "xml-json-conversion",
+                "name": "File Paths",
+                "url": "filepaths",
                 "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": false
-            }
-        ]
-    },
-    {
-        "title": "Tracing",
-        "column": 0,
-        "category": "Observability",
-        "samples": [
-            {
-                "name": "Distributed Tracing",
-                "url": "tracing",
-                "verifyBuild": false,
                 "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
+                "disableVerificationReason": "Includes varying output",
                 "isLearnByExample": false
             },
             {
-                "name": "Counter-Based Metrics",
-                "url": "counter-metrics",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            }
-        ]
-    },
-    {
-            "title": "Metrics",
-            "column": 1,
-            "category": "Observability",
-            "samples": [
-                {
-                "name": "Gauge-Based Metrics",
-                "url": "gauge-metrics",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-                }
-        ]
-    },
-    {
-        "title": "Code to Cloud",
-        "column": 0,
-        "category": "Deployment",
-        "samples": [
-            {
-                "name": "Kubernetes",
-                "url": "c2c-deployment",
+                "name": "Directories",
+                "url": "directories",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disableVerificationReason": "Needs prerequisite condition",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            }
-        ]
-    },
-    {
-        "title": "Function as a Service",
-        "column": 1,
-        "category": "Deployment",
-        "samples": [
-            {
-                "name": "Azure Functions",
-                "url": "azure-functions-deployment",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disableVerificationReason": "Needs prerequisite condition",
-                "disablePlayground": true,
+                "disableVerificationReason": "Includes varying output",
                 "isLearnByExample": false
             },
             {
-                "name": "AWS Lambda",
-                "url": "aws-lambda-deployment",
+                "name": "Files",
+                "url": "files",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes varying output",
+                "isLearnByExample": false
+            },
+            {
+                "name": "Temp Files and Directories",
+                "url": "temp-files-directories",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes varying output",
+                "isLearnByExample": false
+            },
+            {
+                "name": "Directory Listener",
+                "url": "directory-listener",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
                 "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "Random",
+        "column": 2,
+        "category": "Common Libraries",
+        "samples": [
+            {
+                "name": "Random Numbers",
+                "url": "random-numbers",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes varying output",
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "Task",
+        "column": 2,
+        "category": "Common Libraries",
+        "samples": [
+            {
+                "name": "Schedule Job recurrence by Frequency",
+                "url": "task-frequency-job-execution",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Schedule one time job",
+                "url": "task-one-time-job-execution",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Manage Scheduled Jobs",
+                "url": "manage-scheduled-jobs",
+                "verifyBuild": true,
+                "verifyOutput": false,
                 "isLearnByExample": false
             }
         ]
