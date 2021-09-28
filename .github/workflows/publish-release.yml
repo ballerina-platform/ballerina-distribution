@@ -140,3 +140,35 @@ jobs:
         run: |
           curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
           bin/hub pull-request -m "[Automated] Sync master after "$VERSION" release"
+
+    outputs:
+      project-version: ${{ steps.version-set.outputs.version }}
+      upload-asset-url: ${{ steps.create_release.outputs.upload_url }}
+      release-version: ${{ steps.version-set.outputs.taggedVersion }}
+
+  macos-installer-build:
+
+    needs: publish-release
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Download MacOS Intaller Zip
+        run: |
+          wget https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-macos-${{ needs.publish-release.outputs.project-version }}.zip
+      - name: Create macos-pkg Installer
+        id: run_installers_pkg
+        run: |
+          cd installers/mac
+          ./build-ballerina-macos-x64.sh -v ${{ needs.publish-release.outputs.project-version }} -p ./../../
+          echo "Created macos-pkg successfully"
+      - name: Upload MacOS pkg Installer
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          upload_url: ${{ needs.publish-release.outputs.upload-asset-url }}
+          asset_name: ballerina-macos-installer-x64-${{ needs.publish-release.outputs.project-version }}.pkg
+          asset_path: installers/mac/target/pkg/ballerina-macos-installer-x64-${{ needs.publish-release.outputs.project-version }}.pkg
+          asset_content_type: application/octet-stream
