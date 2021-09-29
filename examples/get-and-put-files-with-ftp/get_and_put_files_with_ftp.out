@@ -1,4 +1,4 @@
 bal run ftp.bal
 
 # File content of the received file would get printed.
-# Newly added file will appear in the FTP server.
+# The newly-added file will appear in the FTP server.

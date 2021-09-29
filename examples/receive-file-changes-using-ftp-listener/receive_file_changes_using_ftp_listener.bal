@@ -20,7 +20,7 @@ listener ftp:Listener remoteServer = check new({
     fileNamePattern: "(.*).txt"
 });
 
-// One or many services can listen to the ftp listener for the
+// One or many services can listen to the FTP listener for the
 // periodically-polled file related events.
 service on remoteServer {
 
@@ -28,7 +28,7 @@ service on remoteServer {
     // called.
     remote function onFileChange(ftp:WatchEvent event) {
 
-        // `addedFiles` contains the paths of the newly added files/directories
+        // `addedFiles` contains the paths of the newly-added files/directories
         // after the last polling was called.
         foreach ftp:FileInfo addedFile in event.addedFiles {
             io:println("Added file path: " + addedFile.path);
