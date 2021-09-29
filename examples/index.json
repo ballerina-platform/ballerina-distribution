@@ -2136,6 +2136,22 @@
         ]
     },
     {
+        "title": "FTP",
+        "column": 3,
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Get and put files with FTP Client",
+                "url": "get-and-put-files-with-ftp",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
         "title": "MySQL",
         "column": 3,
         "category": "Working Over the Network",
