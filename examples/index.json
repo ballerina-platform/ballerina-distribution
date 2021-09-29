@@ -2150,6 +2150,15 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Get and put files with SFTP Client",
+                "url": "get-and-put-files-with-sftp",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Receive file changes using FTP Listener",
                 "url": "receive-file-changes-using-ftp-listener",
                 "verifyBuild": true,
