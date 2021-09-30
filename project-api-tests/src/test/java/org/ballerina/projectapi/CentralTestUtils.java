@@ -28,8 +28,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -39,7 +37,6 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static org.ballerina.projectapi.TestUtils.DISTRIBUTIONS_DIR;
 import static org.ballerina.projectapi.TestUtils.DISTRIBUTION_FILE_NAME;
 import static org.ballerina.projectapi.TestUtils.OUTPUT_CONTAIN_ERRORS;
 import static org.ballerina.projectapi.TestUtils.executeBuildCommand;
@@ -185,9 +182,9 @@ public class CentralTestUtils {
      * Get the log output when package is successfully pushed to Central.
      *
      * @param orgName Organization name
-     * @param pkgName
+     * @param pkgName Name of the package pushed to central
      * @param version Package Version
-     * @return
+     * @return Expected log message
      */
     static String getPushedToCentralLog(String orgName, String pkgName, String version) {
         return orgName + "/" + pkgName + ":" + version + " pushed to central successfully";
@@ -284,8 +281,7 @@ public class CentralTestUtils {
         if (!buildErrors.isEmpty()) {
             Assert.fail(OUTPUT_CONTAIN_ERRORS + buildErrors);
         }
-        String buildOutput = getString(search.getInputStream());
-        return buildOutput;
+        return getString(search.getInputStream());
     }
 
     /**
@@ -301,7 +297,8 @@ public class CentralTestUtils {
      * @throws InterruptedException
      */
     static void buildPackageBala(Path tempWorkspaceDirectory, Map<String, String> envVariables, String packageName,
-                             String orgName, String version, List<String> additionalArgs) throws IOException, InterruptedException {
+                             String orgName, String version, List<String> additionalArgs)
+            throws IOException, InterruptedException {
         List<String> argsCollection = new ArrayList(additionalArgs);
         argsCollection.add("-c");
         Process build = executeBuildCommand(DISTRIBUTION_FILE_NAME,
@@ -335,7 +332,8 @@ public class CentralTestUtils {
      * @throws InterruptedException
      */
     static void testPushPackage(Path tempWorkspaceDirectory, String projectName, Map<String, String> envVariables,
-                                String orgName, String packageName, String version) throws IOException, InterruptedException {
+                                String orgName, String packageName, String version)
+            throws IOException, InterruptedException {
         Process build = executePushCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory.resolve(projectName),
                 new LinkedList<>(), envVariables);
         String buildErrors = getString(build.getErrorStream());
@@ -360,8 +358,9 @@ public class CentralTestUtils {
      * @throws IOException
      * @throws InterruptedException
      */
-    static void testPushPackageToLocal(Path tempWorkspaceDirectory, String projectName, Map<String, String> envVariables,
-                                       String orgName, String packageName, String version)
+    static void testPushPackageToLocal(Path tempWorkspaceDirectory, String projectName,
+                                       Map<String, String> envVariables, String orgName,
+                                       String packageName, String version)
             throws IOException, InterruptedException {
         Process build = executePushCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory.resolve(projectName),
                 new LinkedList<>(Collections.singletonList("--repository=local")), envVariables);

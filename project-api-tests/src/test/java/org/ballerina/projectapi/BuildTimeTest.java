@@ -25,9 +25,7 @@ import static org.ballerina.projectapi.CentralTestUtils.createSettingToml;
 import static org.ballerina.projectapi.CentralTestUtils.deleteFiles;
 import static org.ballerina.projectapi.CentralTestUtils.getEnvVariables;
 import static org.ballerina.projectapi.CentralTestUtils.getString;
-import static org.ballerina.projectapi.TestUtils.DISTRIBUTIONS_DIR;
 import static org.ballerina.projectapi.TestUtils.DISTRIBUTION_FILE_NAME;
-import static org.ballerina.projectapi.TestUtils.MAVEN_VERSION;
 import static org.ballerina.projectapi.TestUtils.OUTPUT_CONTAIN_ERRORS;
 import static org.ballerina.projectapi.TestUtils.executeBuildCommand;
 
@@ -50,7 +48,8 @@ public class BuildTimeTest {
         envVariables = addEnvVariables(getEnvVariables());
         // Copy test resources to temp workspace directory
         try {
-            URI testResourcesURI = Objects.requireNonNull(getClass().getClassLoader().getResource("build-time")).toURI();
+            URI testResourcesURI = Objects.requireNonNull(getClass().getClassLoader().getResource("build-time")).
+                    toURI();
             Files.walkFileTree(Paths.get(testResourcesURI),
                     new CentralTest.Copy(Paths.get(testResourcesURI), this.tempWorkspace));
         } catch (URISyntaxException e) {

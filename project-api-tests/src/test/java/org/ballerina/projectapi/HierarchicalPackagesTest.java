@@ -38,7 +38,6 @@ import static org.ballerina.projectapi.TestUtils.DISTRIBUTION_FILE_NAME;
 import static org.ballerina.projectapi.TestUtils.OUTPUT_CONTAIN_ERRORS;
 import static org.ballerina.projectapi.TestUtils.executeBuildCommand;
 
-
 /**
  * Tests related to hierarchical packages.
  */
@@ -138,8 +137,8 @@ public class HierarchicalPackagesTest {
     }
 
     // TODO: This test is disabled due to a bug in Central API. Need to re-enable once issue is fixed.
-    @Test(description = "Verify build package behaviour when there is an updated version for a pre-release version of " +
-            "a hierarchical package import in Remote Repo.", enabled = false)
+    @Test(description = "Verify build package behaviour when there is an updated version for a pre-release version " +
+            "of a hierarchical package import in Remote Repo.", enabled = false)
     public void testUpdateToPreReleaseVersionInRemote() throws IOException, InterruptedException {
         String importedPackageName = "PackageN.test";
         String packageName = "PackageP";
@@ -202,7 +201,8 @@ public class HierarchicalPackagesTest {
         buildPackage(packageName, new LinkedList<>());
     }
 
-    @Test(description = "Verify build package behaviour if hierarchical package needs to be pulled from local repository.")
+    @Test(description = "Verify build package behaviour if hierarchical package needs to be pulled from local " +
+            "repository.")
     public void testPackageFromLocal() throws IOException, InterruptedException {
         String packageName = "PackageR";
         buildPackage(packageName, new LinkedList<>());
@@ -238,8 +238,8 @@ public class HierarchicalPackagesTest {
                 "version = \"" + updatedVersion + "\"");
     }
 
-    @Test(description = "Verify build package behaviour when there is direct dependency added for another package with" +
-            " similar hierarchical name structure as a transitive dependency.")
+    @Test(description = "Verify build package behaviour when there is direct dependency added for another package " +
+            "with similar hierarchical name structure as a transitive dependency.")
     public void testTwoPossibleTransitiveDependencies() throws IOException, InterruptedException {
         String transitivePackageName = "PackageH.test";
         String directPackageName = "PackageH.test.mod";
