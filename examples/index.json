@@ -2073,7 +2073,7 @@
         "category": "Working Over the Network",
         "samples": [
             {
-                "name": "Connectionless Client",
+                "name": "UDP Connectionless Client",
                 "url": "udp-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2082,7 +2082,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Connection-Oriented Client",
+                "name": "UDP Connection-Oriented Client",
                 "url": "udp-connect-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2091,7 +2091,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Listener",
+                "name": "UDP Listener",
                 "url": "udp-listener",
                 "verifyBuild": true,
                 "verifyOutput": false,
