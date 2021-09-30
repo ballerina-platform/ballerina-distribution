@@ -2039,7 +2039,7 @@
         "category": "Working Over the Network",
         "samples": [
             {
-                "name": "Client",
+                "name": "TCP Client",
                 "url": "tcp-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2048,7 +2048,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Listener",
+                "name": "TCP Listener",
                 "url": "tcp-listener",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2057,7 +2057,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Transport Security",
+                "name": "TCP Transport Security",
                 "url": "tcp-transport-security",
                 "verifyBuild": true,
                 "verifyOutput": false,
