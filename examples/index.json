@@ -2039,7 +2039,7 @@
         "category": "Working Over the Network",
         "samples": [
             {
-                "name": "TCP Client",
+                "name": "Client",
                 "url": "tcp-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2048,7 +2048,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "TCP Listener",
+                "name": "Listener",
                 "url": "tcp-listener",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2057,7 +2057,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "TCP Transport Security",
+                "name": "Transport Security",
                 "url": "tcp-transport-security",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2073,7 +2073,7 @@
         "category": "Working Over the Network",
         "samples": [
             {
-                "name": "UDP Connectionless Client",
+                "name": "Connectionless Client",
                 "url": "udp-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2082,7 +2082,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "UDP Connection-Oriented Client",
+                "name": "Connection-Oriented Client",
                 "url": "udp-connect-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2091,7 +2091,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "UDP Listener",
+                "name": "Listener",
                 "url": "udp-listener",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2125,8 +2125,8 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Receive Emails Using a Listener",
-                "url": "receive-email-using-listener",
+                "name": "Listener",
+                "url": "ftp-listener",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
@@ -2141,8 +2141,8 @@
         "category": "Working Over the Network",
         "samples": [
             {
-                "name": "Get and put files with FTP Client",
-                "url": "get-and-put-files-with-ftp",
+                "name": "Client",
+                "url": "ftp-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
@@ -2150,8 +2150,24 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Get and put files with SFTP Client",
-                "url": "get-and-put-files-with-sftp",
+                "name": "Listener",
+                "url": "ftp-listener",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "SFTP",
+        "column": 3,
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Client",
+                "url": "sftp-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
@@ -2159,8 +2175,8 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Receive file changes using FTP Listener",
-                "url": "receive-file-changes-using-ftp-listener",
+                "name": "Listener",
+                "url": "sftp-listener",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
