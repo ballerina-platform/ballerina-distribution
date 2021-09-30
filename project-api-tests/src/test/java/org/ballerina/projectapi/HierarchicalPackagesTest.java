@@ -38,13 +38,16 @@ import static org.ballerina.projectapi.TestUtils.DISTRIBUTION_FILE_NAME;
 import static org.ballerina.projectapi.TestUtils.OUTPUT_CONTAIN_ERRORS;
 import static org.ballerina.projectapi.TestUtils.executeBuildCommand;
 
+
+/**
+ * Tests related to hierarchical packages.
+ */
 public class HierarchicalPackagesTest {
 
     private Path tempHomeDirectory;
     private Path tempWorkspaceDirectory;
     private Map<String, String> envVariables;
-    //    private String orgName = "bc2testorg";
-    private String orgName = "dilhashanazeer";
+    private String orgName = "bc2testorg";
     private String projectPath = "hierarchical-packages";
     private String updatedVersion = "1.0.1";
     private final String balExtension = ".bal";
@@ -68,25 +71,36 @@ public class HierarchicalPackagesTest {
             Assert.fail("error loading resources");
         }
         List<String> packageNames = Arrays.asList("PackageH.test", "PackageI.test", "PackageK.test", "PackageN.test",
-                "PackageI.test", "PackageN.test", "PackageH.test.mod");
+                "PackageH.test.mod", "PackageR.test");
         List<String> versions = Arrays.asList(COMMON_VERSION, COMMON_VERSION, COMMON_VERSION, "1.0.0-beta.1",
-                updatedVersion, updatedVersion, updatedVersion);
-        List<Boolean> isUpdatedVersion = Arrays.asList(false, false, false, false, true, true, true);
-        List<String> previousVersions = Arrays.asList("", "", "", "", COMMON_VERSION, "1.0.0-beta.1", COMMON_VERSION);
+                updatedVersion, COMMON_VERSION);
         for (int i = 0; i < packageNames.size(); i++) {
             String packageName = packageNames.get(i);
             String version = versions.get(i);
             if (!CentralTestUtils.isPkgAvailableInCentral(packageName, tempWorkspaceDirectory, envVariables)) {
-                if (isUpdatedVersion.get(i)) {
-                    // Update version details in Ballerina.toml
-                    updateBallerinaToml(packageName, previousVersions.get(i), version, "", "");
-                }
                 // Build the bala for package
                 buildPackageBala(tempWorkspaceDirectory, envVariables, packageName, orgName, version,
                         Collections.emptyList());
                 // Push the package to central
                 testPushPackage(tempWorkspaceDirectory, packageName, envVariables, orgName, packageName,
                         version);
+            }
+        }
+        // Build and push updated Versions to Central
+        packageNames = Arrays.asList("PackageI.test", "PackageN.test");
+        List<String> previousVersions = Arrays.asList(COMMON_VERSION, "1.0.0-beta.1");
+        for (int i = 0; i < packageNames.size(); i++) {
+            String packageName = packageNames.get(i);
+            if (!CentralTestUtils.isPkgVersionAvailableInCentral(packageName, tempWorkspaceDirectory, envVariables,
+                    updatedVersion)) {
+                // Update version details in Ballerina.toml
+                updateBallerinaToml(packageName, previousVersions.get(i), updatedVersion, "", "");
+                // Build the bala for package
+                buildPackageBala(tempWorkspaceDirectory, envVariables, packageName, orgName, updatedVersion,
+                        Collections.emptyList());
+                // Push the package to central
+                testPushPackage(tempWorkspaceDirectory, packageName, envVariables, orgName, packageName,
+                        updatedVersion);
             }
         }
         // Push package to local
@@ -97,22 +111,6 @@ public class HierarchicalPackagesTest {
                     Collections.emptyList());
             testPushPackageToLocal(tempWorkspaceDirectory, localPackageName, envVariables, orgName,
                     localPackageName, COMMON_VERSION);
-        }
-        // Build and push updated Versions to Central
-        packageNames = Arrays.asList("PackageI.test", "PackageN.test", "PackageH.test.mod");
-        previousVersions = Arrays.asList(COMMON_VERSION, "1.0.0-beta.1", COMMON_VERSION);
-        for (int i = 0; i < packageNames.size(); i++) {
-            String packageName = packageNames.get(i);
-            if (!CentralTestUtils.isPkgAvailableInCentral(packageName, tempWorkspaceDirectory, envVariables)) {
-                // Update version details in Ballerina.toml
-                updateBallerinaToml(packageName, previousVersions.get(i), updatedVersion, "", "");
-                // Build the bala for package
-                buildPackageBala(tempWorkspaceDirectory, envVariables, packageName, orgName, updatedVersion,
-                        Collections.emptyList());
-                // Push the package to central
-                testPushPackage(tempWorkspaceDirectory, packageName, envVariables, orgName, packageName,
-                        updatedVersion);
-            }
         }
     }
 
@@ -237,6 +235,25 @@ public class HierarchicalPackagesTest {
         // Check if version has been updated in Dependencies.toml
         verifyUpdatedDependencies(packageName, "org = \"" + orgName + "\"\n" +
                 "name = \"" + transitivePackageName + "\"\n" +
+                "version = \"" + updatedVersion + "\"");
+    }
+
+    @Test(description = "Verify build package behaviour when there is direct dependency added for another package with" +
+            " similar hierarchical name structure as a transitive dependency.")
+    public void testTwoPossibleTransitiveDependencies() throws IOException, InterruptedException {
+        String transitivePackageName = "PackageH.test";
+        String directPackageName = "PackageH.test.mod";
+        String packageName = "PackageT";
+        // Build package with transitive dependency to "PackageH.test"
+        buildPackage(packageName, new LinkedList<>(Collections.emptyList()));
+        verifyUpdatedDependencies(packageName, "org = \"" + orgName + "\"\n" +
+                "name = \"" + transitivePackageName + "\"\n" +
+                "version = \"" + COMMON_VERSION + "\"");
+        // Add direct dependency for "PackageH.test.mod" and build
+        updateImports(packageName, "import " + orgName + "/PackageH.test.mod.api.doc as _;");
+        buildPackage(packageName, new LinkedList<>(Collections.emptyList()));
+        verifyUpdatedDependencies(packageName, "org = \"" + orgName + "\"\n" +
+                "name = \"" + directPackageName + "\"\n" +
                 "version = \"" + updatedVersion + "\"");
     }
 
