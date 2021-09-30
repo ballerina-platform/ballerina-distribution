@@ -2125,8 +2125,8 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Listener",
-                "url": "ftp-listener",
+                "name": "Receive Emails Using a Listener",
+                "url": "receive-email-using-listener",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
