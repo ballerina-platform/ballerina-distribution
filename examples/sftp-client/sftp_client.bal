@@ -16,7 +16,7 @@ public function main() returns error? {
             // Private key file location and its password (if encrypted) is
             // given corresponding to the SSH key file used in the SFTP client.
             privateKey: {
-                path: "prod/keys/sftp.private.key",
+                path: "../resource/path/to/private.key",
                 password: "keyPass123"
             }
         }
