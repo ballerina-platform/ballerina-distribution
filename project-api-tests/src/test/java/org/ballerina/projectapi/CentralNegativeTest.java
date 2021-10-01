@@ -101,7 +101,7 @@ public class CentralNegativeTest {
                         this.packageAName);
     }
 
-    @Test(description = "Build and push package with invalid access token", enabled = false)
+    @Test(description = "Build and push package with invalid access token")
     public void testPushPackageWithInvalidAccessToken() throws IOException, InterruptedException {
         Map<String, String> envVariablesWithInvalidAccessToken = addEnvVariablesWithInvalidAccessToken(
                 this.envVariables);
