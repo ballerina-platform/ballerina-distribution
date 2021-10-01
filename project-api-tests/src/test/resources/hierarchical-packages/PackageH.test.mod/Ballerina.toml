@@ -2,4 +2,4 @@
 org = "dilhashanazeer"
 name = "PackageH.test.mod"
 version = "1.0.1"
-export = ["PackageH.test.mod.api", "PackageH.test.mod.api.doc"]
+export = ["PackageH.test.mod.api.doc"]

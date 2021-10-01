@@ -1,5 +1,5 @@
 import ballerina/io;
-import dilhashanazeer/PackageS.test as _;
+import dilhashanazeer/PackageR.test as _;
 
 // Prints `Hello World`.
 

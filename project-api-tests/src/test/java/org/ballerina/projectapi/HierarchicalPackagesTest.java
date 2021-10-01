@@ -125,7 +125,6 @@ public class HierarchicalPackagesTest {
     @Test(description = "Verify build package behaviour when there is an updated version for a hierarchical package" +
             " import in Remote Repo.")
     public void testUpdatedVersionInRemote() throws IOException, InterruptedException {
-        // Check if specific package version is available in central. If not build and push updated version.
         String importedPackageName = "PackageI.test";
         String packageName = "PackageK";
         // Build package when there is an updated version in Remote Repo
@@ -142,7 +141,7 @@ public class HierarchicalPackagesTest {
     public void testUpdateToPreReleaseVersionInRemote() throws IOException, InterruptedException {
         String importedPackageName = "PackageN.test";
         String packageName = "PackageP";
-        buildPackage(packageName, new LinkedList<>(Collections.singletonList("--sticky")));
+        buildPackage(packageName, new LinkedList<>());
         // Check if version has been updated in Dependencies.toml
         verifyUpdatedDependencies(packageName, "org = \"" + orgName + "\"\n" +
                 "name = \"" + importedPackageName + "\"\n" +
@@ -222,7 +221,7 @@ public class HierarchicalPackagesTest {
                     COMMON_VERSION);
         }
         String packageName = "PackageT";
-        // Build the package that uses above package with sticky true
+        // Build the package that uses `importedPackageName` package with sticky true
         buildPackage(packageName, new LinkedList<>(Collections.singletonList("--sticky")));
         // Check the old package version in Dependencies.toml
         verifyUpdatedDependencies(packageName, "org = \"" + orgName + "\"\n" +
@@ -243,7 +242,7 @@ public class HierarchicalPackagesTest {
     public void testTwoPossibleTransitiveDependencies() throws IOException, InterruptedException {
         String transitivePackageName = "PackageH.test";
         String directPackageName = "PackageH.test.mod";
-        String packageName = "PackageT";
+        String packageName = "PackageS";
         // Build package with transitive dependency to "PackageH.test"
         buildPackage(packageName, new LinkedList<>(Collections.emptyList()));
         verifyUpdatedDependencies(packageName, "org = \"" + orgName + "\"\n" +

@@ -1,6 +1,5 @@
 import ballerina/io;
-import dilhashanazeer/PackageJ.test.mod.api as _;
-import dilhashanazeer/PackageJ.test.doc.api as _;
+import dilhashanazeer/PackageK.test.mod.api as _;
 
 // Prints `Hello World`.
 
