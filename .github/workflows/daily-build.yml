@@ -150,18 +150,6 @@ jobs:
         with:
           name: BuildTimeCSV
           path: build-time-tests/build/build-time-data/buildTimeData.csv
-      - name: Trigger Choreo-Compiler-Plugins daily build
-        run: |
-          curl -X POST \
-          https://api.github.com/repos/wso2-enterprise/choreo-compiler-plugins/dispatches\
-          -H 'Accept: application/vnd.github.v3+json'\
-          -H 'Authorization: Bearer ${{ secrets.BALLERINA_BOT_TOKEN }}'\
-          --data "{
-            \"event_type\": \"choreo-compiler-build"\,
-            \"client_payload\": {
-              \"fileNumber\": \"$fileNumber\"
-            }
-          }"
     outputs:
       project-version: ${{ steps.project-version.outputs.version }}
 
