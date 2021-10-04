@@ -1,5 +1,0 @@
-[package]
-org = "dilhashanazeer"
-name = "PackageI.test"
-version = "1.0.0"
-export = ["PackageI.test.mod.api"]

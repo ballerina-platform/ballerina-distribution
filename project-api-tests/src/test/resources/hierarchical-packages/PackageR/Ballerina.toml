@@ -1,8 +1,0 @@
-[build-options]
-observabilityIncluded = true
-
-[[dependency]]
-org = "dilhashanazeer"
-name = "PackageQ.test"
-version = "1.0.0"
-repository = "local"

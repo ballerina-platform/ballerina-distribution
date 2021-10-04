@@ -25,7 +25,8 @@ import static org.ballerina.projectapi.CentralTestUtils.createSettingToml;
 import static org.ballerina.projectapi.CentralTestUtils.deleteFiles;
 import static org.ballerina.projectapi.CentralTestUtils.getEnvVariables;
 import static org.ballerina.projectapi.CentralTestUtils.getString;
-import static org.ballerina.projectapi.TestUtils.DISTRIBUTION_FILE_NAME;
+import static org.ballerina.projectapi.TestUtils.DISTRIBUTIONS_DIR;
+import static org.ballerina.projectapi.TestUtils.MAVEN_VERSION;
 import static org.ballerina.projectapi.TestUtils.OUTPUT_CONTAIN_ERRORS;
 import static org.ballerina.projectapi.TestUtils.executeBuildCommand;
 
@@ -34,6 +35,7 @@ import static org.ballerina.projectapi.TestUtils.executeBuildCommand;
  */
 public class BuildTimeTest {
 
+    private static final String DISTRIBUTION_FILE_NAME = "ballerina-" + MAVEN_VERSION;
     private static final PrintStream OUT = System.out;
     private Path tempHome;
     private Path tempWorkspace;
@@ -41,15 +43,14 @@ public class BuildTimeTest {
 
     @BeforeClass
     public void setup() throws IOException {
-        TestUtils.setupDistributions();
+        setupDistributions();
         tempHome = Files.createTempDirectory("bal-test-integration-packaging-home-");
         tempWorkspace = Files.createTempDirectory("bal-test-integration-packaging-workspace-");
         createSettingToml(tempHome);
         envVariables = addEnvVariables(getEnvVariables());
         // Copy test resources to temp workspace directory
         try {
-            URI testResourcesURI = Objects.requireNonNull(getClass().getClassLoader().getResource("build-time")).
-                    toURI();
+            URI testResourcesURI = Objects.requireNonNull(getClass().getClassLoader().getResource("build-time")).toURI();
             Files.walkFileTree(Paths.get(testResourcesURI),
                     new CentralTest.Copy(Paths.get(testResourcesURI), this.tempWorkspace));
         } catch (URISyntaxException e) {
@@ -78,6 +79,16 @@ public class BuildTimeTest {
         envVariables.put(BALLERINA_HOME_DIR, tempHome.toString());
         envVariables.put(BALLERINA_DEV_CENTRAL, "true");
         return envVariables;
+    }
+
+    /**
+     * Clean and setup the distribution.
+     *
+     * @throws IOException
+     */
+    private void setupDistributions() throws IOException {
+        TestUtils.cleanDistribution();
+        TestUtils.prepareDistribution(DISTRIBUTIONS_DIR.resolve(DISTRIBUTION_FILE_NAME + ".zip"));
     }
 
     /**
