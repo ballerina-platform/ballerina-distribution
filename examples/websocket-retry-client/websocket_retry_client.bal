@@ -11,7 +11,7 @@ public function main() returns error? {
     // Read the message sent from the server upon upgrading to a WebSocket connection.
     string text = check wsClient->readTextMessage();
     io:println(text);
-    io:println("Sleeping in 5 seconds. Please shutdown the server now.");
+    io:println("Sleeping for 5 seconds. Please shutdown the server now.");
     runtime:sleep(5);
     io:println("Please restart the server now.");
     // Client will retry 20 times(20 seconds in time) until the server gets started.
