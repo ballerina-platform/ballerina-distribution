@@ -9,11 +9,11 @@ import ballerina/lang.value;
         // Initialize the `graphql:Context` object.
         graphql:Context context = new;
 
-        // Retrieve the header named `scope` and add it to the context with the key `userScope`.
-        // If the header does not exist, this will return an error, therefore the request will not be processed.
+        // Retrieve the header named `scope` and add it to the context with the `userScope` key.
+        // If the header does not exist, this will return an error, and thereby, the request will not be processed.
         check context.add("userScope", check request.getHeader("scope"));
 
-        // Finally, the context object have to be returned.
+        // Finally, the context object has to be returned.
         return context;
 
     }
