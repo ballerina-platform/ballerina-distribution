@@ -1414,6 +1414,14 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Retry",
+                "url": "websocket-retry-client",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Listener Functionalities",
                 "url": "websocket-basic-sample",
                 "verifyBuild": true,
