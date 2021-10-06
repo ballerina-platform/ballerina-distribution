@@ -1220,6 +1220,22 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Trace logs",
+                "url": "http-trace-logs",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Access logs",
+                "url": "http-access-logs",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Cookies",
                 "url": "http-cookies",
                 "verifyBuild": true,
