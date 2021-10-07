@@ -1352,6 +1352,14 @@
                 "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "Context",
+                "url": "graphql-context",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
