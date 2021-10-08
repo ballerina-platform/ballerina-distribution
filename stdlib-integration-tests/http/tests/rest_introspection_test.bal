@@ -80,7 +80,7 @@ json openApiDocumentation = {
 //Test REST API Doc
 @test:Config {}
 function testRestApiDoc() returns error? {
-    json receivedApiDoc = check restApiClient->get("/openapi-doc-dygixywsw");
+    json receivedApiDoc = check restApiClient->get("/hello/openapi-doc-dygixywsw");
     test:assertEquals(receivedApiDoc, openApiDocumentation);
 }
 
