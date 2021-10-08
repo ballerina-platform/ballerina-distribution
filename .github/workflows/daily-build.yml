@@ -154,7 +154,7 @@ jobs:
         run: |
           curl -X POST \
           ${{ secrets.PLUGIN_REPO_DISPATCH_URL }}\
-          -H 'Accept: application/vnd.github.v3+json'\
+          -H 'Content-Type: application/vnd.github.v3+json'\
           -H 'Authorization: Bearer ${{ secrets.BALLERINA_BOT_TOKEN }}'\
           --data "{
             \"event_type\": \"plugin-daily-build\",
