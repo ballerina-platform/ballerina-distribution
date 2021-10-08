@@ -15,6 +15,7 @@
 // under the License.
 
 import ballerina/http;
+import ballerina/openapi;
 import ballerina/test;
 
 listener http:Listener restIntrospectionEP = new(9118);
@@ -25,12 +26,12 @@ service /hello on restIntrospectionEP {
     }
 }
 
-http:Client restApiClient = checkpanic new("http://localhost:9118/hello");
+http:Client restApiClient = checkpanic new("http://localhost:9118");
 
 //Test Introspection Resource availability
 @test:Config {}
 function testIntrospectionResourceAvailability() returns error? {
-    http:Response response = check restApiClient->options("/");
+    http:Response response = check restApiClient->options("/hello");
     test:assertEquals(response.statusCode, 204);
     test:assertTrue(response.hasHeader("Link"), "Could not find the Link header");
     string linkHeader = check response.getHeader("Link");
@@ -81,4 +82,20 @@ json openApiDocumentation = {
 function testRestApiDoc() returns error? {
     json receivedApiDoc = check restApiClient->get("/openapi-doc-dygixywsw");
     test:assertEquals(receivedApiDoc, openApiDocumentation);
+}
+
+@openapi:ServiceInfo {
+  embed: false
+}
+service /disabled on restIntrospectionEP {
+    resource function get world() returns string {
+        return "Hello, World!";
+    }
+}
+
+@test:Config {}
+function testUnavailableIntrospectionResource() returns error? {
+    http:Response response = check restApiClient->options("/disabled");
+    test:assertEquals(response.statusCode, 204);
+    test:assertFalse(response.hasHeader("Link"), "Could not find the Link header");
 }
