@@ -47,7 +47,7 @@ set UTC_TIME=%Year%-%Month%-%Day% %Hour%:%Minute%:%Second% UTC
 rmdir ballerina-windows-%BALLERINA_VERSION% /s /q >nul 2>&1
 rmdir target /s /q >nul 2>&1
 
-for /f %%i in ('uuidgen -c') do set UPGRADECODE=%%i
+for /f %%i in ('guid') do set UPGRADECODE=%%i
 echo Upgrade Code - %UPGRADECODE%
 
 IF "%DIST%"=="all" (
