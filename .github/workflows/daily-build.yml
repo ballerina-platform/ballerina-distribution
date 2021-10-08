@@ -60,12 +60,12 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Linux Installer deb
-          path: installers/linux-deb/target/ballerina-linux-installer-x64-${{ steps.project-version.outputs.version }}.deb
+          path: installers/linux-deb/target/ballerina-linux-installer-x64-*.deb
       - name: Archive Linux rpm
         uses: actions/upload-artifact@v2
         with:
           name: Linux Installer rpm
-          path: installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-linux-installer-x64-${{ steps.project-version.outputs.version }}.rpm
+          path: installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-linux-installer-x64-*.rpm
       - name: Archive MacOS installer ZIP
         uses: actions/upload-artifact@v2
         with:
@@ -194,4 +194,36 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: MacOS Installer pkg
-          path: installers/mac/target/pkg/ballerina-macos-installer-x64-${{ needs.ubuntu-build.outputs.project-version }}.pkg
+          path: installers/mac/target/pkg/ballerina-macos-installer-x64-*.pkg
+
+  windows-installer-build:
+
+    needs: ubuntu-build
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '2.1.x'
+      - name: Install GUID Generator
+        run: dotnet tool install -g dotnet-guid
+      - name: Download Windows Intaller Zip
+        uses: actions/download-artifact@v2
+        with:
+          name: Windows Installer ZIP
+      - name: Create windows-msi
+        id: run_installers_msi
+        run: |
+          $env:Path += ";C:\Program Files (x86)\WiX Toolset v3.11\bin"
+          move installers\windows .\
+          ren windows w
+          cd w
+          .\build-ballerina-windows-x64.bat --version ${{ needs.ubuntu-build.outputs.project-version }} --path .\..\
+          echo "Created windows-msi successfully"
+      - name: Archive Windows msi
+        uses: actions/upload-artifact@v2
+        with:
+          name: Windows Installer msi
+          path: w\target\msi\ballerina-windows-installer-x64-*.msi
