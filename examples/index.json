@@ -1220,6 +1220,22 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Trace logs",
+                "url": "http-trace-logs",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Access logs",
+                "url": "http-access-logs",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Cookies",
                 "url": "http-cookies",
                 "verifyBuild": true,
@@ -1336,6 +1352,14 @@
                 "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "Context",
+                "url": "graphql-context",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1411,6 +1435,14 @@
                 "url": "websocket-binary-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Retry",
+                "url": "websocket-retry-client",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
@@ -2039,7 +2071,7 @@
         "category": "Working Over the Network",
         "samples": [
             {
-                "name": "TCP Client",
+                "name": "Client",
                 "url": "tcp-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2048,7 +2080,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "TCP Listener",
+                "name": "Listener",
                 "url": "tcp-listener",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2057,7 +2089,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "TCP Transport Security",
+                "name": "Transport Security",
                 "url": "tcp-transport-security",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2073,7 +2105,7 @@
         "category": "Working Over the Network",
         "samples": [
             {
-                "name": "UDP Connectionless Client",
+                "name": "Connectionless Client",
                 "url": "udp-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2082,7 +2114,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "UDP Connection-Oriented Client",
+                "name": "Connection-Oriented Client",
                 "url": "udp-connect-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2091,7 +2123,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "UDP Listener",
+                "name": "Listener",
                 "url": "udp-listener",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2127,6 +2159,56 @@
             {
                 "name": "Receive Emails Using a Listener",
                 "url": "receive-email-using-listener",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "FTP",
+        "column": 3,
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Client",
+                "url": "ftp-client",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Listener",
+                "url": "ftp-listener",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "SFTP",
+        "column": 3,
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Client",
+                "url": "sftp-client",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Listener",
+                "url": "sftp-listener",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",

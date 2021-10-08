@@ -97,7 +97,7 @@ checkstyle {
     toolVersion '7.8.2'
     configFile rootProject.file("config/checkstyle/build/checkstyle.xml")
     configProperties = ["suppressionFile": rootProject.file("config/checkstyle/build/suppressions.xml")]
-    checkstyleTest.enabled = false
+    checkstyleTest.enabled = true
     checkstyleMain.enabled = false
 }
 

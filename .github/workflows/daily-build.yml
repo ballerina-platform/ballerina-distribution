@@ -18,12 +18,34 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: '11'
+      - name: Get daily docker version
+        id: version
+        run: echo "::set-output name=version::$(date +'%Y-%m-%d')"
+      - name: Get project version
+        id: project-version
+        run: |
+          SHORT_VERSION=$((grep -w 'shortVersion' | cut -d= -f2) < gradle.properties)
+          RELEASE_VERSION=$((grep -w "version" | cut -d= -f2) < gradle.properties)
+          echo "::set-output name=version::$RELEASE_VERSION"
+          echo "::set-output name=sversion::$SHORT_VERSION"
       - name: Build with Gradle
         env:
           packageUser: ${{ github.actor }}
           packagePAT: ${{ secrets.GITHUB_TOKEN }}
           devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
         run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue
+      - name: Create linux-deb
+        id: run_installers_deb
+        run: |
+          cd installers/linux-deb
+          ./build-ballerina-linux-deb-x64.sh -v ${{ steps.project-version.outputs.version }} -p ./../../ballerina/build/distributions
+          echo "Created linux-deb successfully"
+      - name: Create linux-rpm
+        id: run_installers_rpm
+        run: |
+          cd installers/linux-rpm
+          ./build-ballerina-linux-rpm-x64.sh -v ${{ steps.project-version.outputs.version }} -p ./../../ballerina/build/distributions
+          echo "Created linux-rpm successfully"
       - name: Archive Ballerina ZIP
         uses: actions/upload-artifact@v2
         with:
@@ -34,11 +56,16 @@ jobs:
         with:
           name: Ballerina Short Name ZIP
           path: ballerina/build/distributions/ballerina-sl*.zip
-      - name: Archive Linux installer ZIP
+      - name: Archive Linux deb
         uses: actions/upload-artifact@v2
         with:
-          name: Linux installer ZIP
-          path: ballerina/build/distributions/ballerina-linux-*.zip
+          name: Linux Installer deb
+          path: installers/linux-deb/target/ballerina-linux-installer-x64-${{ steps.project-version.outputs.version }}.deb
+      - name: Archive Linux rpm
+        uses: actions/upload-artifact@v2
+        with:
+          name: Linux Installer rpm
+          path: installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-linux-installer-x64-${{ steps.project-version.outputs.version }}.rpm
       - name: Archive MacOS installer ZIP
         uses: actions/upload-artifact@v2
         with:
@@ -56,16 +83,6 @@ jobs:
           -X POST 'https://chat.googleapis.com/v1/spaces/${{secrets.BALLERINA_CHAT_ID}}/messages?key=${{secrets.BALLERINA_CHAT_KEY}}&token=${{secrets.BALLERINA_CHAT_TOKEN}}' \
           --header 'Content-Type: application/json' \
           -d '{"text": "*ballerina-distribution daily build failure* \nPlease \n visit <https://github.com/ballerina-platform/ballerina-distribution/actions?query=workflow%3A%22Daily+build%22|the daily build page> for more information"}'
-      - name: Get daily docker version
-        id: version
-        run: echo "::set-output name=version::$(date +'%Y-%m-%d')"
-      - name: Get project version
-        id: project-version
-        run: |
-          SHORT_VERSION=$((grep -w 'shortVersion' | cut -d= -f2) < gradle.properties)
-          RELEASE_VERSION=$((grep -w "version" | cut -d= -f2) < gradle.properties)
-          echo "::set-output name=version::$RELEASE_VERSION"
-          echo "::set-output name=sversion::$SHORT_VERSION"
       - name: Checkout docker repo
         uses: actions/checkout@v2
         with:
@@ -82,8 +99,23 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USER }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
-      - name: Build and push
+      - name: Build the docker image
         id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          context: module-ballerina-docker/base/docker/
+          load: true
+          push: false
+          tags: ballerina/ballerina:nightly-test
+          build-args: |
+            BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.sversion }}.zip
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'ballerina/ballerina:nightly-test'
+          format: 'table'
+          exit-code: '1'
+      - name: Build and push
         uses: docker/build-push-action@v2
         with:
           context: module-ballerina-docker/base/docker/
@@ -118,12 +150,20 @@ jobs:
         with:
           name: BuildTimeCSV
           path: build-time-tests/build/build-time-data/buildTimeData.csv
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: 'ballerina/ballerina:nightly-${{ steps.version.outputs.version }}'
-          format: 'table'
-          exit-code: '1'
+      - name: Trigger plugin daily build
+        run: |
+          curl -X POST \
+          ${{ secrets.PLUGIN_REPO_DISPATCH_URL }}\
+          -H 'Accept: application/vnd.github.v3+json'\
+          -H 'Authorization: Bearer ${{ secrets.BALLERINA_BOT_TOKEN }}'\
+          --data "{
+            \"event_type\": \"plugin-daily-build\",
+            \"client_payload\": {
+              \"fileNumber\": \"$fileNumber\"
+            }
+          }"
+    outputs:
+      project-version: ${{ steps.project-version.outputs.version }}
 
   windows-build:
 
@@ -143,3 +183,27 @@ jobs:
           packagePAT: ${{ secrets.GITHUB_TOKEN }}
           devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
         run: ./gradlew.bat clean build --stacktrace --scan --console=plain --no-daemon -x test
+
+  macos-installer-build:
+
+    needs: ubuntu-build
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Download MacOS Intaller Zip
+        uses: actions/download-artifact@v2
+        with:
+          name: MacOS installer ZIP
+      - name: Create macos-pkg
+        id: run_installers_pkg
+        run: |
+          cd installers/mac
+          ./build-ballerina-macos-x64.sh -v ${{ needs.ubuntu-build.outputs.project-version }} -p ./../../
+          echo "Created macos-pkg successfully"
+      - name: Archive MacOS pkg
+        uses: actions/upload-artifact@v2
+        with:
+          name: MacOS Installer pkg
+          path: installers/mac/target/pkg/ballerina-macos-installer-x64-${{ needs.ubuntu-build.outputs.project-version }}.pkg
