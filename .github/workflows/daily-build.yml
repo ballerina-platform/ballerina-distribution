@@ -115,6 +115,7 @@ jobs:
           image-ref: 'ballerina/ballerina:nightly-test'
           format: 'table'
           exit-code: '1'
+          timeout: "10m0s"
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
