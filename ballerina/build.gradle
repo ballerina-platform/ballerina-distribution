@@ -695,13 +695,13 @@ task testExamples() {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${distPath}/${bbe.url}"
-                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'build', '--experimental', "${additionalBuildParams}"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'build', '--experimental', '--offline', "${additionalBuildParams}"
             }
         } else {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${distPath}/${bbe.url}"
-                commandLine 'sh', '-c', "${distPath}/bin/bal build --experimental ${additionalBuildParams}"
+                commandLine 'sh', '-c', "${distPath}/bin/bal build --experimental --offline ${additionalBuildParams}"
             }
         }
         if (exitVal.getExitValue() == 1) {
@@ -817,7 +817,7 @@ task testExamples() {
                 if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                     exec {
                         workingDir "${directoryPath}"
-                        commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'run', '--experimental', "${balName}.bal ", ${additionalBuildParams}
+                        commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'run', '--experimental', '--offline', "${balName}.bal ", ${additionalBuildParams}
                         ignoreExitValue true
                         standardOutput = os
                         errorOutput = errOut
@@ -825,7 +825,7 @@ task testExamples() {
                 } else {
                     exec {
                         workingDir "${directoryPath}"
-                        commandLine 'sh', '-c', "${distPath}/bin/bal run --experimental ${balName}.bal ${additionalBuildParams}"
+                        commandLine 'sh', '-c', "${distPath}/bin/bal run --experimental --offline ${balName}.bal ${additionalBuildParams}"
                         ignoreExitValue true
                         standardOutput = os
                         errorOutput = errOut
@@ -965,7 +965,7 @@ task testStdlibs() {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${distPath}/${stdlibTest}"
-                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat build --experimental ${additionalBuildParams}"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat build --experimental --offline ${additionalBuildParams}"
             }
         } else {
             exec {
@@ -975,7 +975,7 @@ task testStdlibs() {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${distPath}/${stdlibTest}"
-                commandLine 'sh', '-c', "${distPath}/bin/bal build --experimental ${additionalBuildParams}"
+                commandLine 'sh', '-c', "${distPath}/bin/bal build --experimental --offline ${additionalBuildParams}"
             }
         }
         if (exitVal.getExitValue() == 1) {
