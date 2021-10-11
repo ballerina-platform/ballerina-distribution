@@ -126,22 +126,8 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Maps",
-                "url": "maps",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
                 "name": "Type Definitions",
                 "url": "type-definitions",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Records",
-                "url": "records",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
@@ -162,7 +148,7 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Error Reporting",
+                "name": "Errors",
                 "url": "error-reporting",
                 "verifyBuild": true,
                 "verifyOutput": true,
