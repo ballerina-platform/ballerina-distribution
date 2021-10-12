@@ -180,7 +180,7 @@ jobs:
       release-version: ${{ steps.version-set.outputs.taggedVersion }}
 
   macos-installer-build:
-
+    name: MacOS Installer Build
     needs: publish-release
     runs-on: macos-latest
 
@@ -204,4 +204,39 @@ jobs:
           upload_url: ${{ needs.publish-release.outputs.upload-asset-url }}
           asset_name: ballerina-macos-installer-x64-${{ needs.publish-release.outputs.project-version }}.pkg
           asset_path: installers/mac/target/pkg/ballerina-macos-installer-x64-${{ needs.publish-release.outputs.project-version }}.pkg
+          asset_content_type: application/octet-stream
+
+  windows-installer-build:
+    name: Windows Installer Build
+    needs: publish-release
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '2.1.x'
+      - name: Install GUID Generator
+        run: dotnet tool install -g dotnet-guid
+      - name: Download Windows Intaller Zip
+        run: |
+          wget https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-windows-${{ needs.publish-release.outputs.project-version }}.zip
+      - name: Create windows-msi Installer
+        id: run_installers_msi
+        run: |
+          $env:Path += ";C:\Program Files (x86)\WiX Toolset v3.11\bin"
+          move installers\windows .\
+          ren windows w
+          cd w
+          .\build-ballerina-windows-x64.bat --version ${{ needs.publish-release.outputs.project-version }} --path .\..\
+          echo "Created windows-msi successfully"
+      - name: Upload Windows msi Installer
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          upload_url: ${{ needs.publish-release.outputs.upload-asset-url }}
+          asset_name: ballerina-windows-installer-x64-${{ needs.publish-release.outputs.project-version }}.msi
+          asset_path: w\target\msi\ballerina-windows-installer-x64-${{ needs.publish-release.outputs.project-version }}.msi
           asset_content_type: application/octet-stream
