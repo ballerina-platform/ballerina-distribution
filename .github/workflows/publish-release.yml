@@ -219,6 +219,8 @@ jobs:
           dotnet-version: '2.1.x'
       - name: Install GUID Generator
         run: dotnet tool install -g dotnet-guid
+      - name: Install Wget
+        run: choco install wget --no-progress
       - name: Download Windows Intaller Zip
         run: |
           wget https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-windows-${{ needs.publish-release.outputs.project-version }}.zip
