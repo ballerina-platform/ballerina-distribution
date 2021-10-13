@@ -49,6 +49,13 @@ jobs:
           git checkout -b release-${GIT_TAG}
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
+      - name: Update installer version
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        run: |
+          ./gradlew build updateInstallerVersion
+          git add gradle.properties
+          git commit -m "update auto generated installer version"
       - name: Publish artifact
         env:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}

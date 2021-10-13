@@ -1,3 +1,5 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
 /*
  * Copyright (c) 2020, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
@@ -66,6 +68,20 @@ allprojects {
         git {
             // To release from any branch
             requireBranch = ''
+        }
+    }
+
+    task updateInstallerVersion() {
+            def installerVersionVal=UUID.randomUUID().toString()
+            def propertyFilePath="${project.rootDir}/gradle.properties"
+        if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+            exec {
+                commandLine 'cmd', '/c', "sed -ie \"s/^installerVersion=.*/installerVersion=$installerVersionVal/\" \"$propertyFilePath\""
+            }
+        } else {
+            exec {
+                commandLine 'bash', '-c', "sed -ie \"s/^installerVersion=.*/installerVersion=$installerVersionVal/\" \"$propertyFilePath\""
+            }
         }
     }
 
