@@ -158,10 +158,7 @@ jobs:
           -H 'Content-Type: application/vnd.github.v3+json'\
           -H 'Authorization: Bearer ${{ secrets.BALLERINA_BOT_TOKEN }}'\
           --data "{
-            \"event_type\": \"plugin-daily-build\",
-            \"client_payload\": {
-              \"fileNumber\": \"$fileNumber\"
-            }
+            \"event_type\": \"plugin-daily-build\"
           }"
     outputs:
       project-version: ${{ steps.project-version.outputs.version }}
