@@ -17,4 +17,5 @@ public function main() returns error? {
 
     // Closes the client connection.
     check natsClient.close();
+    return;
 }

@@ -29,5 +29,6 @@ service "security.demo" on securedEP {
         if messageContent is string {
             log:printInfo("Received message: " + messageContent);
         }
+        return;
     }
 }
