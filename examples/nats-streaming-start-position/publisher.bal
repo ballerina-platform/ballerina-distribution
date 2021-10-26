@@ -21,4 +21,5 @@ public function main() returns error? {
                             " received for the produced message.");
         }
     }
+    return;
 }
