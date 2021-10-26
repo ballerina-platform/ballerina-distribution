@@ -67,11 +67,11 @@ class PrintableRawTemplateImpl {
 }
 
 @test:Config {}
-function testFunc() returns error? {
+function testFunc() {
     test:when(mock_printLn).call("mockPrint");
 
     // Invoking the main function
-    check main();
+    main();
     test:assertTrue(langstring:includes(outputs[0], "Number of seconds from the epoch: "));
     test:assertTrue(langstring:includes(outputs[1], "Nanoseconds fraction: "));
 }
