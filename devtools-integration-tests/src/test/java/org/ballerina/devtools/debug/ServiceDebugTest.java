@@ -56,7 +56,7 @@ public class ServiceDebugTest extends BaseTestCase {
         int port = findFreePort();
 
         debugTestRunner.runDebuggeeProgram(debugTestRunner.testProjectPath, port);
-        debugTestRunner.addBreakPoint(new BallerinaTestDebugPoint(filePath, 22));
+        debugTestRunner.addBreakPoint(new BallerinaTestDebugPoint(filePath.toString(), 22));
         debugTestRunner.initDebugSession(DebugUtils.DebuggeeExecutionKind.BUILD, port);
 
         // Test for service debug where service is in the default module
@@ -71,7 +71,7 @@ public class ServiceDebugTest extends BaseTestCase {
         int port = findFreePort();
 
         debugTestRunner.runDebuggeeProgram(debugTestRunner.testProjectPath, port);
-        debugTestRunner.addBreakPoint(new BallerinaTestDebugPoint(filePath, 21));
+        debugTestRunner.addBreakPoint(new BallerinaTestDebugPoint(filePath.toString(), 21));
         debugTestRunner.initDebugSession(DebugUtils.DebuggeeExecutionKind.BUILD, port);
 
         // Test for service call stack representation
