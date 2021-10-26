@@ -37,4 +37,5 @@ public function main() returns error? {
     check file:remove("bar1.txt");
     check file:remove("bar2.txt");
     io:println("Files removed successfully.");
+    return;
 }
