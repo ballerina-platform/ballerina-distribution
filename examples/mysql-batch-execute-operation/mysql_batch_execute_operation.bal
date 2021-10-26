@@ -1,14 +1,14 @@
 import ballerina/io;
+import ballerina/sql;
 import ballerinax/mysql;
 import ballerinax/mysql.driver as _;
-import ballerina/sql;
 
 public function main() returns error? {
     // Runs the prerequisite setup for the example.
     check beforeExample();
 
     // Initializes the MySQL client.
-    mysql:Client mysqlClient = check new (user = "root", 
+    mysql:Client mysqlClient = check new (user = "root",
             password = "Test@123", database = "MYSQL_BBE");
 
     // The records to be inserted.
@@ -19,14 +19,14 @@ public function main() returns error? {
             registrationID: 1,
             creditLimit: 5000.75,
             country: "USA"
-        }, 
+        },
         {
             firstName: "Stephanie",
             lastName: "Mike",
             registrationID: 2,
             creditLimit: 8000.00,
             country: "USA"
-        }, 
+        },
         {
             firstName: "Bill",
             lastName: "John",
@@ -37,7 +37,7 @@ public function main() returns error? {
     ];
 
     // Creates a batch parameterized query.
-    sql:ParameterizedQuery[] insertQueries = 
+    sql:ParameterizedQuery[] insertQueries =
         from var data in insertRecords
         select `INSERT INTO Customers
                 (firstName, lastName, registrationID, creditLimit, country)
@@ -45,7 +45,7 @@ public function main() returns error? {
                 ${data.registrationID}, ${data.creditLimit}, ${data.country})`;
 
     // Inserts the records with the auto-generated ID.
-    sql:ExecutionResult[] result = 
+    sql:ExecutionResult[] result =
                             check mysqlClient->batchExecute(insertQueries);
 
     int[] generatedIds = [];
@@ -72,7 +72,7 @@ function beforeExample() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
 
     // Creates a database.
-    sql:ExecutionResult result = 
+    sql:ExecutionResult result =
         check mysqlClient->execute(`CREATE DATABASE MYSQL_BBE`);
 
     // Creates a table in the database.
@@ -88,7 +88,7 @@ function beforeExample() returns sql:Error? {
 // Cleans up the database after running the example.
 function afterExample(mysql:Client mysqlClient) returns sql:Error? {
     // Cleans the database.
-    sql:ExecutionResult result = 
+    sql:ExecutionResult result =
             check mysqlClient->execute(`DROP DATABASE MYSQL_BBE`);
     // Closes the MySQL client.
     check mysqlClient.close();

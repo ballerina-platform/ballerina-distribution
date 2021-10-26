@@ -1,7 +1,7 @@
 import ballerina/io;
+import ballerina/sql;
 import ballerinax/mysql;
 import ballerinax/mysql.driver as _;
-import ballerina/sql;
 
 // Defines a record to load the query result schema as shown below in the
 // 'getDataWithTypedQuery' function. In this example, all columns of the 
@@ -22,7 +22,7 @@ public function main() returns error? {
     check beforeExample();
 
     // Initializes the MySQL client.
-    mysql:Client mysqlClient = check new (user = "root", 
+    mysql:Client mysqlClient = check new (user = "root",
             password = "Test@123", database = "MYSQL_BBE");
 
     // Select the rows in the database table via the query remote operation.
@@ -78,7 +78,7 @@ function beforeExample() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
 
     // Creates a database.
-    sql:ExecutionResult result = 
+    sql:ExecutionResult result =
         check mysqlClient->execute(`CREATE DATABASE MYSQL_BBE`);
 
     // Creates a table in the database.
@@ -102,7 +102,7 @@ function beforeExample() returns sql:Error? {
 // Cleans up the database after running the example.
 function afterExample(mysql:Client mysqlClient) returns sql:Error? {
     // Cleans the database.
-    sql:ExecutionResult result = 
+    sql:ExecutionResult result =
             check mysqlClient->execute(`DROP DATABASE MYSQL_BBE`);
     // Closes the MySQL client.
     check mysqlClient.close();

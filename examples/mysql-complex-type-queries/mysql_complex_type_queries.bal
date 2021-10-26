@@ -1,8 +1,8 @@
 import ballerina/io;
-import ballerinax/mysql;
-import ballerinax/mysql.driver as _;
 import ballerina/sql;
 import ballerina/time;
+import ballerinax/mysql;
+import ballerinax/mysql.driver as _;
 
 // The `BinaryType` record to represent the `BINARY_TYPES` database table.
 type BinaryType record {|
@@ -32,7 +32,7 @@ public function main() returns error? {
     check beforeExample();
 
     // Initializes the MySQL client.
-    mysql:Client mysqlClient = check new (user = "root", 
+    mysql:Client mysqlClient = check new (user = "root",
             password = "Test@123", database = "MYSQL_BBE");
 
     // Since the `rowType` is provided as a `BinaryType`, the `binaryResultStream`
@@ -81,7 +81,7 @@ function beforeExample() returns sql:Error? {
     // Creates a database.
     sql:ExecutionResult result =
         check mysqlClient->execute(`CREATE DATABASE MYSQL_BBE`);
-    
+
     // Create complex data type tables in the database.
     result = check mysqlClient->execute(`CREATE TABLE MYSQL_BBE.BINARY_TYPES
             (row_id INTEGER NOT NULL, blob_type BLOB(1024),  
@@ -109,7 +109,7 @@ function beforeExample() returns sql:Error? {
             '2017-05-23', '14:15:23', '2017-01-25 16:33:55', 
             '2017-01-25 16:33:55')`);
 
-    check mysqlClient.close();        
+    check mysqlClient.close();
 }
 
 // Cleans up the database after running the example.
