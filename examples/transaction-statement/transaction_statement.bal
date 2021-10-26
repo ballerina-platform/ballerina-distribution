@@ -14,6 +14,7 @@ public function main() returns error? {
         check commit;
 
     }
+    return;
 }
 
 function doStage1() {
