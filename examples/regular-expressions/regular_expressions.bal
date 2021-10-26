@@ -25,4 +25,5 @@ public function main() {
     // delimiter.
     string[] names = regex:split("amal, kamal, nimal, sunimal", ",");
     io:println("No of names: ", names.length());
+    return;
 }
