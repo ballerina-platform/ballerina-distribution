@@ -60,6 +60,8 @@ public function main() returns error? {
 
     // Performs the cleanup after the example.
     check afterExample(mysqlClient);
+
+    return;
 }
 
 // Initializes the database as a prerequisite to the example.
@@ -87,6 +89,8 @@ function beforeExample() returns sql:Error? {
         MYSQL_BBE.GetStudents() BEGIN SELECT * FROM Student; END`);
 
     check mysqlClient.close();
+
+    return;
 }
 
 // Cleans up the database after running the example.
@@ -97,4 +101,6 @@ function afterExample(mysql:Client mysqlClient) returns sql:Error? {
 
     // Closes the MySQL client.
     check mysqlClient.close();
+
+    return;
 }

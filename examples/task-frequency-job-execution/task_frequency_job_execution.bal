@@ -29,4 +29,5 @@ public function main() returns error? {
 
     // Unschedules the job.
     check task:unscheduleJob(id);
+    return;
 }

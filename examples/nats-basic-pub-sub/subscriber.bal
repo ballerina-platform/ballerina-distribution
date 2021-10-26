@@ -15,5 +15,6 @@ service "demo.bbe" on subscription {
         if messageContent is string {
             log:printInfo("Received message: " + messageContent);
         }
+        return;
     }
 }

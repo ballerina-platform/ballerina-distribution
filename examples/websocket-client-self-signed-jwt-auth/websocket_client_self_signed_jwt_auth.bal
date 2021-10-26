@@ -29,4 +29,5 @@ public function main() returns error? {
     check securedEP->writeTextMessage("Hello, World!");
     string textMessage = check securedEP->readTextMessage();
     io:println(textMessage);
+    return;
 }
