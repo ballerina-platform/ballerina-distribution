@@ -13,7 +13,7 @@ function demo() returns int|error {
             return res;
         }
         42 -> function;
-
+        return;
     }
 
     // Send to or receive from failed worker will propagate the failure.
@@ -28,6 +28,7 @@ function foo() returns error? {
     }
 
     counter += 1;
+    return;
 }
 
 public function main() returns error? {
@@ -36,4 +37,6 @@ public function main() returns error? {
 
     int b = check demo();
     io:println(b);
+
+    return;
 }

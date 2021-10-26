@@ -26,6 +26,7 @@ class LineGenerator {
             }
             return {value: ""};
         }
+        return;
     }
 }
 

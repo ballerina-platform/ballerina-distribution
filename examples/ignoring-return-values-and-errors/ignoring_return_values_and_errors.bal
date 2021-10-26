@@ -27,4 +27,5 @@ function tryX(boolean x) returns error? {
     if !x {
         return error("error!");
     }
+    return;
 }
