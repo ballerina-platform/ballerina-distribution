@@ -23,4 +23,5 @@ public function main() returns error? {
         jsonObject = check xmldata:toJson(xmlData);
         io:println(jsonObject);
     }
+    return;
 }
