@@ -25,4 +25,6 @@ public function main() returns error? {
 
     // Closes the client and releases the bound port.
     check socketClient->close();
+
+    return;
 }
