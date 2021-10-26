@@ -41,14 +41,14 @@ service class EchoService {
 
     remote function onBytes(tcp:Caller caller, readonly & byte[] data) returns tcp:Error? {
         io:println("Echo: ", 'string:fromBytes(data));
-        check caller->writeBytes(data);
+        return check caller->writeBytes(data);
     }
 
-    isolated remote function onError(tcp:Error err) returns tcp:Error? {
+    isolated remote function onError(tcp:Error err) {
         io:println(err.message());
     }
 
-    isolated remote function onClose() returns tcp:Error? {
+    isolated remote function onClose() {
         io:println("invoke on close");
     }
 }
@@ -64,7 +64,7 @@ service on discardServer {
 
 service class DiscardService {
 
-    remote function onBytes(readonly & byte[] data) returns tcp:Error? {
+    remote function onBytes(readonly & byte[] data) {
         // read and discard the message
         io:println("Discard: ", 'string:fromBytes(data));
     }
@@ -73,7 +73,7 @@ service class DiscardService {
 service on closeServer {
     isolated remote function onConnect(tcp:Caller caller) returns tcp:Error? {
         io:println("Client connected to closeServer: ", caller.remotePort);
-        check caller->close();
+        return check caller->close();
     }
 }
 
@@ -103,7 +103,7 @@ service class SecureEchoService {
         return data;
     }
 
-    isolated remote function onError(tcp:Error err) returns tcp:Error? {
+    isolated remote function onError(tcp:Error err) {
         io:println(err.message());
     }
 }

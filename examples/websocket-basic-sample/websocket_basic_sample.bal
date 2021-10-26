@@ -16,6 +16,6 @@ service class WsService {
     remote isolated function onTextMessage(websocket:Caller caller,
                                  string text) returns websocket:Error? {
         io:println("\ntext message: " + text);
-        check caller->writeTextMessage("You said: " + text);
+        return check caller->writeTextMessage("You said: " + text);
     }
 }

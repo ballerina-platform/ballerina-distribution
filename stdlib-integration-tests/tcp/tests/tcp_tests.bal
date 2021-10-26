@@ -30,6 +30,7 @@ function testClientEcho() returns  @tainted error? {
     test:assertEquals(string:fromBytes(receivedData), msg, "Found unexpected output");
 
     check socketClient->close();
+    return;
 }
 
 @test:Config {
@@ -51,6 +52,7 @@ function testClientReadTimeout() returns  @tainted error? {
     io:println(res);
 
     check socketClient->close();
+    return;
 }
 
 @test:Config {
@@ -68,6 +70,7 @@ function testServerAlreadyClosed() returns  @tainted error? {
     io:println(res);
 
     check socketClient->close();
+    return;
 }
 
 @test:Config {dependsOn: [testServerAlreadyClosed]}
@@ -89,4 +92,5 @@ function testSecureListenerWithSecureClient() returns @tainted error? {
     test:assertEquals('string:fromBytes(receivedData), msg, "Found unexpected output");
 
     check socketClient->close();
+    return;
 }

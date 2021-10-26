@@ -21,4 +21,5 @@ public function main() returns error? {
 
     // Close the connection between the server and the client.
     check socketClient->close();
+    return;
 }
