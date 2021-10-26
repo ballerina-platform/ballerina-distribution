@@ -1,5 +1,6 @@
 import ballerina/io;
 import ballerinax/mysql;
+import ballerinax/mysql.driver as _;
 import ballerina/sql;
 import ballerina/time;
 

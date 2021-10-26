@@ -1,5 +1,6 @@
 import ballerina/io;
 import ballerinax/mysql;
+import ballerinax/mysql.driver as _;
 import ballerina/sql;
 
 // Defines a record to load the query result schema as shown below in the
