@@ -5,7 +5,7 @@ bal run
 Error while executing batch command starting with: 'INSERT INTO Customers
                 (firstName, lastName, registrationID, creditLimit, country)
                 VALUES ( ? ,  ? ,
-                 ? ,  ? ,  ? )'.Duplicate entry '1' for key 'Customers.registrationID'.
+                 ? ,  ? ,  ? )'.Duplicate entry '1' for key 'customers.registrationID'.
 [{"affectedRowCount":1,"lastInsertId":null},{"affectedRowCount":-3,"lastInsertId":null},{"affectedRowCount":1,"lastInsertId":null}]
 Rollback transaction.
 
