@@ -17,4 +17,5 @@ public function main() returns error? {
     // Client will retry 20 times(20 seconds in time) until the server gets started.
     string retryMsg = check wsClient->readTextMessage();
     io:println(retryMsg);
+    return;
 }
