@@ -1,5 +1,4 @@
-# Execute the command below to build and run the project.
-bal run
+bal run mysql_execute_operation.bal
 
 Rows affected: 1
 Generated Customer ID: 2
