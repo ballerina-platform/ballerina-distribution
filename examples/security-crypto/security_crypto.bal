@@ -29,6 +29,7 @@ function hash() returns error? {
 
     // The Hex-encoded CRC32B checksum generation for the input value.
     io:println("CRC32B for text: " + crypto:crc32b(input));
+    return;
 }
 
 function hmac() returns error? {
@@ -59,6 +60,7 @@ function hmac() returns error? {
     // HMAC generation for the input value using the SHA512 hashing algorithm, and printing the HMAC value using the Hex encoding.
     output = check crypto:hmacSha512(input, key);
     io:println("Hex encoded HMAC with SHA512: " + output.toBase16());
+    return;
 }
 
 function decodePrivateKey() returns crypto:PrivateKey|error {
@@ -144,6 +146,7 @@ function sign() returns error? {
 
     verified = check crypto:verifyRsaSha512Signature(input, output, publicKey);
     io:println("RSA-SHA512 signature verified: " + verified.toString());
+    return;
 }
 
 function encrypt() returns error? {
@@ -216,6 +219,7 @@ function encrypt() returns error? {
     output = check crypto:decryptAesEcb(output, aesKey, crypto:NONE);
     io:println("AES ECB no padding decrypted value: " +
         check string:fromBytes(output));
+    return;
 }
 
 public function main() returns error? {
@@ -223,4 +227,5 @@ public function main() returns error? {
     check hmac();
     check sign();
     check encrypt();
+    return;
 }

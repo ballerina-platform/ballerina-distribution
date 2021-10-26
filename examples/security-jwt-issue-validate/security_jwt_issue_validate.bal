@@ -38,4 +38,5 @@ public function main() returns error? {
     // Validates the created JWT.
     jwt:Payload payload = check jwt:validate(jwt, validatorConfig);
     io:println("Validated JWT Payload: ", payload.toString());
+    return;
 }

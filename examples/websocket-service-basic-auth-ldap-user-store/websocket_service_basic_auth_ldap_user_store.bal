@@ -54,5 +54,6 @@ service class WsService {
     remote isolated function onTextMessage(websocket:Caller caller,
                              string text) returns websocket:Error? {
         check caller->writeTextMessage(text);
+        return;
     }
 }
