@@ -30,6 +30,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static org.ballerinalang.debugger.test.utils.DebugUtils.findFreePort;
@@ -51,7 +52,7 @@ public class ServiceDebugTest extends BaseTestCase {
     @Test(description = "Test for service module debug engage")
     public void testModuleServiceDebugScenarios() throws BallerinaTestException {
         String fileName = "hello_service.bal";
-        String filePath = Paths.get(debugTestRunner.testProjectPath, fileName).toString();
+        Path filePath = Paths.get(debugTestRunner.testProjectPath, fileName);
         int port = findFreePort();
 
         debugTestRunner.runDebuggeeProgram(debugTestRunner.testProjectPath, port);
@@ -72,7 +73,7 @@ public class ServiceDebugTest extends BaseTestCase {
     @Test(description = "Test for service call stack representation")
     public void serviceCallStackDebugTest() throws BallerinaTestException {
         String fileName = "hello_service.bal";
-        String filePath = Paths.get(debugTestRunner.testProjectPath, fileName).toString();
+        Path filePath = Paths.get(debugTestRunner.testProjectPath, fileName);
         int port = findFreePort();
 
         debugTestRunner.runDebuggeeProgram(debugTestRunner.testProjectPath, port);
