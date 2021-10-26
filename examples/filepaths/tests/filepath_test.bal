@@ -54,4 +54,5 @@ function testFunc() returns error? {
     test:assertEquals(outputs[5], elements);
     test:assertEquals(outputs[6], buildPath);
     test:assertEquals(outputs[7], relative);
+    return;
 }
