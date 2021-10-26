@@ -41,7 +41,7 @@ service class EchoService {
 
     remote function onBytes(tcp:Caller caller, readonly & byte[] data) returns tcp:Error? {
         io:println("Echo: ", 'string:fromBytes(data));
-        return check caller->writeBytes(data);
+        return caller->writeBytes(data);
     }
 
     isolated remote function onError(tcp:Error err) {
@@ -73,7 +73,7 @@ service class DiscardService {
 service on closeServer {
     isolated remote function onConnect(tcp:Caller caller) returns tcp:Error? {
         io:println("Client connected to closeServer: ", caller.remotePort);
-        return check caller->close();
+        return caller->close();
     }
 }
 

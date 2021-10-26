@@ -20,7 +20,7 @@ service class EchoService {
         returns tcp:Error? {
         io:println("Echo: ", string:fromBytes(data));
         // Echoes back the data to the client from which the data is received.
-        return check caller->writeBytes(data);
+        return caller->writeBytes(data);
     }
 
     // This remote method is invoked in an erroneous situation,

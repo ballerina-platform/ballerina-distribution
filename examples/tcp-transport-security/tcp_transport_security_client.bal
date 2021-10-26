@@ -16,6 +16,5 @@ public function main() returns error? {
     check securedClientEP->writeBytes("Hello, World!".toBytes());
     readonly & byte[] receivedData = check securedClientEP->readBytes();
     io:println("Received message: ", string:fromBytes(receivedData));
-    check securedClientEP->close();
-    return;
+    return securedClientEP->close();
 }
