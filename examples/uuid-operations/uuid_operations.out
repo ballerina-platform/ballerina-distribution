@@ -1,0 +1,9 @@
+bal run uuid_operations.bal
+UUID validated: true
+UUID version: V1
+UUID bytes: [67,151,70,94,53,249,17,235,173,193,2,66,172,18,0,2]
+UUID record: {"timeLow":1133987422,"timeMid":13817,"timeHiAndVersion":4587,"clockSeqHiAndReserved":173,"clockSeqLo":193,"node":2485377957890}
+UUID string: 4397465e-35f9-11eb-adc1-0242ac120002
+UUID bytes: [67,151,70,94,53,249,17,235,173,193,2,66,172,18,0,2]
+UUID string: 4397465e-35f9-11eb-adc1-0242ac120002
+UUID record: {"timeLow":1133987422,"timeMid":13817,"timeHiAndVersion":4587,"clockSeqHiAndReserved":173,"clockSeqLo":193,"node":2485377957890}

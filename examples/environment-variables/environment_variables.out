@@ -1,0 +1,4 @@
+bal run environment_variables.bal
+HTTP_PORT: 5005
+Username: Alex
+Userhome: /Users/Alex

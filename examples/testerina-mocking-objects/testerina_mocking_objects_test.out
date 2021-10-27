@@ -1,0 +1,34 @@
+# To run this sample, create a Ballerina project named `bbe_mocking` and create a `tests` directory inside.
+# Replace the content of the `main.bal` and add the `main_test.bal` to the `tests` directory.
+# Execute the `bal test` command below.
+
+bal test bbe_mocking
+Compiling source
+        ballerinatest/bbe_mocking:0.1.0
+
+Running Tests
+
+        bbe_mocking
+Executing the 1st GET request
+Status code: 200
+Executing the 2nd GET request
+Status code: 200
+Executing the 1st GET request
+Status code: 200
+Executing the 2nd GET request
+Status code: 404
+Executing the 1st GET request
+Status code: 404
+Executing the 1st GET request
+Status code: 500
+
+                [pass] testMemberVariable
+                [pass] testReturn
+                [pass] testReturnSequence
+                [pass] testReturnWithArgs
+                [pass] testSendNotification
+                [pass] testTestDouble
+
+                6 passing
+                0 failing
+                0 skipped

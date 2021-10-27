@@ -1,0 +1,4 @@
+# As a prerequisite, start a secured sample service.
+# You may need to change the trusted certificate file path.
+bal run websocket_client_bearer_token_auth.bal
+Hello, World!

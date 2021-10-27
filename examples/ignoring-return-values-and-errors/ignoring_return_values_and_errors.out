@@ -1,0 +1,8 @@
+bal run ignoring_return_values_and_errors.bal
+Do X
+Get X
+Try X
+Try X
+error: error!
+        at ignoring_return_values_and_errors:tryX(ignoring_return_values_and_errors.bal:28)
+           ignoring_return_values_and_errors:main(ignoring_return_values_and_errors.bal:12)

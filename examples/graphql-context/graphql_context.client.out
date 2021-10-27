@@ -1,0 +1,15 @@
+# Send a query to the GraphQL endpoint using a cURL command. Set the `scope` header value to `admin`.
+ # The query used: { profile { name salary } }
+ curl -X POST -H "Content-type: application/json" -H "scope: admin" -d '{ "query": "{ profile { name salary } }" }' 'http://localhost:4000/graphql'
+ {"data":{"profile":{"name":"Walter White", "salary":737000.0}}}
+
+ # Now, send a query with the `scope` header value set to `user`. This will return an error in the `salary` field.
+ # The query used: { profile { name salary } }
+ curl -X POST -H "Content-type: application/json" -H "scope: user" -d '{ "query": "{ profile { name salary } }" }' 'http://localhost:4000/graphql'
+ {"errors":[{"message":"Permission denied", "locations":[{"line":1, "column":18}], "path":["profile", "salary"]}], "data":{"profile":{"name":"Walter White"}}}
+
+ # Now, send a query with the `scope` header value set to `unknown`. This will return an error in the `profile` field.
+ # The query used: { profile { name salary } }
+ curl -X POST -H "Content-type: application/json" -H "scope: unknown" -d '{ "query": "{ profile { name salary } }" }' 'http://localhost:4000/graphql'
+ {"errors":[{"message":"Permission denied", "locations":[{"line":1,
+ "column":3}], "path":["profile"]}]}

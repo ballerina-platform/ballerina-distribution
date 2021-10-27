@@ -1,0 +1,3 @@
+bal run receive_email_using_client.bal
+
+# Subject and the content body of the received emails would be printed.

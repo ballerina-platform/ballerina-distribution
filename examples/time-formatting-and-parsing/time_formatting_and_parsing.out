@@ -1,0 +1,8 @@
+bal run time_formatting_and_parsing.bal
+UTC value: [1196676930,0.12]
+UTC string representation: 2007-12-03T10:15:30.120Z
+Converted civil value: {"utcOffset":{"hours":5,"minutes":30},"timeAbbrev":"Asia/Colombo","dayOfWeek":1,"year":2021,"month":4,"day":12,"hour":23,"minute":20,"second":50.52}
+Civil string representation: 2021-04-12T17:50:50.520Z
+Email formatted string: Mon, 3 Dec 2007 10:15:30 Z
+Civil record of the email string: {"utcOffset":{"hours":-8,"minutes":0},"timeAbbrev":"America/Los_Angeles","dayOfWeek":3,"year":2021,"month":3,"day":10,"hour":19,"minute":51,"second":55}
+Email string of the civil record: Wed, 10 Mar 2021 19:51:55 -0800

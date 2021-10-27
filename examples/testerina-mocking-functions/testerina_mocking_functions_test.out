@@ -1,0 +1,20 @@
+# To run this sample, create a Ballerina project named `bbe_mocking` and create a `tests` directory inside.
+# Replace the content of the `main.bal` and add the `main_test.bal` to the `tests` directory.
+# Execute the `bal test` command below.
+# Function mocking is not supported for testing single `.bal` files.
+
+bal test bbe_mocking
+
+Compiling source
+        ballerinatest/bbe_mocking:0.1.0
+
+Running Tests
+
+        bbe_mocking
+
+                [pass] testCall
+                [pass] testReturn
+
+                2 passing
+                0 failing
+                0 skipped

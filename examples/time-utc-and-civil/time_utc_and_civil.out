@@ -1,0 +1,3 @@
+bal run time_utc_and_civil.bal
+Civil record: {"timeAbbrev":"Z","dayOfWeek":1,"year":2021,"month":5,"day":24,"hour":7,"minute":7,"second":15.757818}
+UTC value of the civil record: [1618269650,0.52]

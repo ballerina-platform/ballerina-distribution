@@ -1,0 +1,2 @@
+bal run restrict_by_media_type.bal
+[ballerina/http] started HTTP/WS listener 0.0.0.0:9092

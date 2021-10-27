@@ -1,0 +1,4 @@
+bal run ftp_client.bal
+
+# File content of the received file would get printed.
+# The newly-added file will appear in the FTP server.

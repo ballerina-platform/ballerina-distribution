@@ -1,0 +1,4 @@
+# As a prerequisite, start a sample service secured with OAuth2.
+# You may need to change the trusted certificate file path.
+bal run websocket_client_oauth2_jwt_bearer_grant_type.bal
+Hello, World!

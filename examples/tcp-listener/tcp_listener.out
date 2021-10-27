@@ -1,0 +1,4 @@
+bal run tcp_listener.bal
+Client connected to echoServer: 48735
+Echo: Hello Ballerina Echo from client
+Client left

@@ -1,0 +1,2 @@
+description: This BBE demonstrates how the XML content can be transformed into HTML using a given XSL transformation.
+keywords: ballerina, ballerina by example, bbe, xslt, xml, html, xsl, transformation

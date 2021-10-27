@@ -1,0 +1,11 @@
+# To invoke the `/call/all` resource, use the cURL command below.
+curl "http://localhost:9090/call/all"
+{"name":"Smith", "age":15}
+
+# To invoke the `/call/5xx` resource, use the cURL command below.
+curl "http://localhost:9090/call/5xx"
+{"code":501, "payload":"data-binding-failed-with-501"}
+
+# To invoke the `/call/4xx` resource, use the cURL command below.
+curl "http://localhost:9090/call/4xx"
+{"code":404, "payload":"no matching resource found for path : /backend/err , method : POST"}

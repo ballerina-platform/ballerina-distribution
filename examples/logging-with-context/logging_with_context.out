@@ -1,0 +1,3 @@
+bal run logging_with_context.bal
+time = 2021-05-25T10:34:25.460+05:30 level = INFO module = "" message = "info log" current_time = "2021-05-25T05:04:25.473981Z"
+time = 2021-05-25T10:34:25.487+05:30 level = INFO module = "" message = "info log" percentage = 38.4141353500368

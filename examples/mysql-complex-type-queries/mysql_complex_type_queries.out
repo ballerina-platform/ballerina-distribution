@@ -1,0 +1,11 @@
+# Create a Ballerina project.
+# Copy the example to the project and add relevant database driver jar details to the `Ballerina.toml` file.
+# Execute the command below to build and run the project.
+bal run
+
+Binary types Result :
+{"row_id":1,"blob_type":[119,115,111,50,32,98,97,108,108,101,114,105,110,97,32,98,108,111,98,32,116,101,115,116,46],"binary_type":[119,115,111,50,32,98,97,108,108,101,114,105,110,97,32,98,105,110,97,114,121,32,116,101,115,116,46]}
+Json type Result :
+{"row_id":1,"json_doc":{"age":18,"lastName":"Bob","firstName":"Jhon"},"json_array":[1,2,3]}
+DateTime types Result :
+{"row_id":1,"date_type":"2017-05-23","time_type":11723000,"timestamp_type":[1485342235,0],"datetime_type":"2017-01-25 11:03:55.0"}

@@ -1,0 +1,3 @@
+bal run url_encode_decode.bal
+URL encoded value: data%3Dvalue
+URL decoded value: data=value

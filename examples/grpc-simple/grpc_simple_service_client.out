@@ -1,0 +1,11 @@
+# Create a Ballerina package.
+# Copy the generated `grpc_unary_blocking_pb.bal` stub file to the package.
+# For example, if you create a package named `client`, copy the stub file to the `client` package.
+
+# Create a new `grpc_unary_blocking_client.bal` Ballerina file inside the `client` package and add the client implementation.
+
+# Execute the command below to build the 'client' package.
+bal build client
+
+# Run the client using the command below.
+bal run client/target/bin/client.jar

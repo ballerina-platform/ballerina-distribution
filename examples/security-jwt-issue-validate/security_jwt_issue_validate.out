@@ -1,0 +1,18 @@
+# You may need to change the certificate file path, private key file path, and
+# trusted certificate file path.
+bal run security_jwt_issue_validate.bal
+Issued JWT: eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QiLCAia2lkIjoiTlRBeFptTXhORE15WkR
+            nM01UVTFaR00wTXpFek9ESmhaV0k0TkRObFpEVTFPR0ZrTmpGaU1RIn0.eyJpc3MiOi
+            JiYWxsZXJpbmEiLCAic3ViIjoiYWRtaW4iLCAiYXVkIjoidkV3emJjYXNKVlFtMWpWW
+            UhVSENqaHhaNHRZYSIsICJqdGkiOiI1NWEwYjc1NC04OTVmLTQyNzktODg0My1iNzQ1
+            ZTExYTU3ZTkiLCAiZXhwIjoxNjExMTI3MDIzLCAibmJmIjoxNjExMTIzNDIzLCAiaWF
+            0IjoxNjExMTIzNDIzfQ.DMJDjJEFiQN7d_2CXGfXX_UR8Fi7Witr3aVGm4K7amEm3xN
+            cbh1bZmKO2ir-oP2_ikoM1_ETO7i4E4LKJHNAEdhqj8YHyKpbszaEq5zouMOtdFcI7i
+            TS8LyYDnyLEQQ6sa9L9NoMz3xULeF8epk0eaN1vVA-ijndVkZlMjaXJNf9Bgzn2qJOd
+            sQ6F0GeC4WKEt-xcEY5C2_haEDotSOYhUzEqh6D1fRtrGy7GaH5gzx99n-xjn8NZbTD
+            F0VnD6c1kJPe25FiPz24l9KdaCE1i2WbuzEhZWMclHW5RcTXVkLLkjQ4DvxfE-riGmK
+            qPN1gatWViZQF_VGBK-G7rEhi9Q
+Validated JWT Payload: {"iss":"ballerina","sub":"admin",
+                        "aud":"vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
+                        "jti":"55a0b754-895f-4279-8843-b745e11a57e9",
+                        "exp":1611127023,"nbf":1611123423,"iat":1611123423}

@@ -1,0 +1,2 @@
+bal run consuming_services.bal
+200

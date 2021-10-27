@@ -1,0 +1,7 @@
+bal run logging.bal
+time = 2021-05-25T11:29:58.290+05:30 level = DEBUG module = "" message = "debug log"
+time = 2021-05-25T11:29:58.305+05:30 level = ERROR module = "" message = "error log"
+time = 2021-05-25T11:29:58.306+05:30 level = INFO module = "" message = "info log"
+time = 2021-05-25T11:29:58.307+05:30 level = WARN module = "" message = "warn log"
+time = 2021-05-25T11:29:58.307+05:30 level = INFO module = "" message = "info log" name = "foo" id = 845315 successful = true
+time = 2021-05-25T11:29:58.317+05:30 level = ERROR module = "" message = "error log with cause" error = "something went wrong!" name = "foo" id = 845315

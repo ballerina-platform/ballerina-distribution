@@ -1,0 +1,3 @@
+bal run function_values.bal
+[2]
+[1,3]

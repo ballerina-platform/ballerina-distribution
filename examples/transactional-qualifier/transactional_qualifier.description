@@ -1,0 +1,4 @@
+// At compile-time, regions of code are typed as being a transactional context.
+// Ballerina guarantees that, whenever that region is executed, there will be a current transaction.
+// A function with a `transactional` qualifier can only be called from transactional context; function  body will be a transactional context.
+// `transactional` is also a boolean expression that tests at runtime whether there is a current transaction: used in a condition results in transactional context.

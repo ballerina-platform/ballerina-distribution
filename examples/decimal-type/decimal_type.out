@@ -1,0 +1,3 @@
+bal run decimal_type.bal
+100.08999999999999
+1E-9

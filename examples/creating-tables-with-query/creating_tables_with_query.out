@@ -1,0 +1,2 @@
+bal run creating_tables_with_query.bal
+[{"id":2,"firstName":"Fred","lastName":"Bloggs","salary":2000}]

@@ -1,0 +1,3 @@
+bal run time_utc.bal
+Number of seconds from the epoch: 1621839972s
+Nanoseconds fraction: 0.005413000s

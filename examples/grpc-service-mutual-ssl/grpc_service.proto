@@ -1,0 +1,8 @@
+// This is the service definition for the scenario.
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+service HelloWorld {
+	rpc hello(google.protobuf.Empty) returns (google.protobuf.StringValue);
+}

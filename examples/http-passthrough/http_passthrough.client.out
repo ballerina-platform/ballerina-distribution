@@ -1,0 +1,3 @@
+# To invoke the service, use the cURL commands below.
+curl http://localhost:9090/passthrough
+{"args":{}, "headers":{"x-forwarded-proto":"http", "x-forwarded-port":"80", "host":"postman-echo.com", "x-amzn-trace-id":"Root=1-60b7255d-23ce05a61ad55a0164ca19d3", "accept":"*/*", "user-agent":"ballerina"}, "url":"http://postman-echo.com/get"}

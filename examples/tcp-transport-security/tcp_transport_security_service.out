@@ -1,0 +1,4 @@
+# You may need to change the certificate file path and private key file path.
+bal run tcp_transport_security_service.bal
+Client connected on server port: 5639
+Received message: Hello, World!

@@ -1,0 +1,3 @@
+bal run anydata_type.bal
+[1,"string",true]
+true

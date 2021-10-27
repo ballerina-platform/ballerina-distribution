@@ -1,0 +1,3 @@
+bal run send_email.bal
+
+# Check the inbox to view the sent emails.

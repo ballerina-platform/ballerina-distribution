@@ -1,0 +1,4 @@
+bal run cache_invalidation.bal
+The existing keys in the cache: ["key1","key2","key3"]
+The existing keys in after invalidating a given key: ["key1","key3"]
+The keys in after invalidating all the keys: []

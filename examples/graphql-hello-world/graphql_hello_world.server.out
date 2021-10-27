@@ -1,0 +1,2 @@
+bal run graphql_hello_world.bal
+[ballerina/http] started HTTP/WS listener 0.0.0.0:4000

@@ -1,0 +1,5 @@
+// With mutable values, would not be type-safe to allow a cast. 
+// Mutable structures have the `inherent` type that limits mutation.
+// Cast to `T` will work on mutable structure `s` only if the `inherent` type
+// of `s` is a subtype of `T`.
+// Casting of immutable value will work but it does not do numeric conversions.

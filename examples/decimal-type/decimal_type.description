@@ -1,0 +1,10 @@
+// It is the third numeric type. Works like `int` and `float`. No implicit conversion.
+// Represents `decimal` fractions exactly. Avoids surprises that you get with `float`. Preserves precision.
+// Separate basic type; counts as `anydata`. Literal uses the suffix `d`(`f` suffix is for `float`).
+// Floating point, not infinite precision.
+// <ul>
+// <li>34 decimal digits</li>
+// <li>22 digits are enough for US national debt in `¢`</li>
+// <li>27 digits are enough for an age of universe in `ns`</li>
+// <li>No `infinity`, `NaN` or negative zero</li>
+// </ul>
