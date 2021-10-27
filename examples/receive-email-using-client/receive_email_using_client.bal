@@ -48,4 +48,6 @@ public function main() returns error? {
     // Closes the IMAP store which would close the TCP connection.
     closeStatus = imapClient->close();
 
+    return;
+
 }

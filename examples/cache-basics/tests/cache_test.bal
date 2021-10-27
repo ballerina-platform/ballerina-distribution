@@ -19,7 +19,7 @@ public function mockPrint(any|error... val) {
 }
 
 @test:Config{}
-function testFunc() returns error? {
+function testFunc() {
     test:when(mock_printLn).call("mockPrint");
 
     // Invoking the main function.

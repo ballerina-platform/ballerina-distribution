@@ -33,4 +33,5 @@ public function main() returns error? {
     // Returns a relative path that is logically equivalent to the target path when joined to the base path.
     string relPath = check file:relativePath("a/b/c", "a/c/d");
     io:println("Relative path between 'a/b/c' and 'a/c/d': ", relPath);
+    return;
 }
