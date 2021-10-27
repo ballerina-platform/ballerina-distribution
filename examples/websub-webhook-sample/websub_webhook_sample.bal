@@ -38,5 +38,6 @@ service on new websub:Listener(9090) {
         } else {
             io:println("Unrecognized content type, hence ignoring");
         }
+        return;
     }
 }
