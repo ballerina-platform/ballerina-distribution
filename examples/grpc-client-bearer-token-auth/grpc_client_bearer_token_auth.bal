@@ -16,4 +16,5 @@ HelloWorldClient securedEP = check new("https://localhost:9090",
 public function main() returns error? {
     string result = check securedEP->hello();
     io:println(result);
+    return;
 }

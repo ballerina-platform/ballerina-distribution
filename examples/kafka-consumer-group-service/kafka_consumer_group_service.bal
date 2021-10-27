@@ -25,7 +25,7 @@ service kafka:Service on kafkaListener {
         foreach var kafkaRecord in records {
             check processKafkaRecord(kafkaRecord);
         }
-
+        return;
     }
 }
 
@@ -36,4 +36,5 @@ function processKafkaRecord(kafka:ConsumerRecord kafkaRecord) returns error? {
 
     // Prints the retrieved message.
     log:printInfo("Received Message: " + message);
+    return;
 }

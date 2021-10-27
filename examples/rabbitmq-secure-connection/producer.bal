@@ -27,4 +27,5 @@ public function main() returns error? {
     string message = "Hello from Ballerina";
     check rabbitmqClient->publishMessage({ content: message.toBytes(),
                                             routingKey: "Secured" });
+    return;
 }

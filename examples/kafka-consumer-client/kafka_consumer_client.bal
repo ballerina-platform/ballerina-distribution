@@ -23,4 +23,5 @@ public function main() returns error? {
         // Prints the retrieved Kafka record.
         io:println("Received Message: " + message);
     }
+    return;
 }

@@ -29,6 +29,7 @@ service kafka:Service on kafkaListener {
             log:printError("Error occurred while committing the " +
                 "offsets for the consumer ", 'error = commitResult);
         }
+        return;
     }
 }
 
@@ -40,4 +41,5 @@ function processKafkaRecord(kafka:ConsumerRecord kafkaRecord) returns error? {
     // Converts the `byte[]` to a `string`.
     string messageContent = check string:fromBytes(value);
     log:printInfo("Received Message: " + messageContent);
+    return;
 }
