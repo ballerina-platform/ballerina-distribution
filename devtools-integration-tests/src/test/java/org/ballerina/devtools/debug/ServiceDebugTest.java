@@ -55,7 +55,7 @@ public class ServiceDebugTest extends BaseTestCase {
         Path filePath = Paths.get(debugTestRunner.testProjectPath, fileName);
         int port = findFreePort();
 
-        debugTestRunner.runDebuggeeProgram(debugTestRunner.testProjectPath, port);
+        debugTestRunner.runDebuggeeProgram(debugTestRunner.testProjectPath.toString(), port);
         debugTestRunner.addBreakPoint(new BallerinaTestDebugPoint(filePath.toString(), 22));
         debugTestRunner.initDebugSession(DebugUtils.DebuggeeExecutionKind.BUILD, port);
 
@@ -70,7 +70,7 @@ public class ServiceDebugTest extends BaseTestCase {
         Path filePath = Paths.get(debugTestRunner.testProjectPath, fileName);
         int port = findFreePort();
 
-        debugTestRunner.runDebuggeeProgram(debugTestRunner.testProjectPath, port);
+        debugTestRunner.runDebuggeeProgram(debugTestRunner.testProjectPath.toString(), port);
         debugTestRunner.addBreakPoint(new BallerinaTestDebugPoint(filePath.toString(), 21));
         debugTestRunner.initDebugSession(DebugUtils.DebuggeeExecutionKind.BUILD, port);
 
