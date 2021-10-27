@@ -11,10 +11,12 @@ public function main() returns error? {
         check commit;
     }
 
+    return;
 }
 
 function doStage1() returns error? {
     io:println("Stage1 completed");
+    return;
 }
 
 function doStage2() returns error? {
