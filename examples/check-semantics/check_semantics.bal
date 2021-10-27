@@ -20,14 +20,17 @@ public function main() returns error? {
         return e;
     }
 
+    return;
 }
 
 function foo() returns error? {
     io:println("OK");
+    return;
 }
 
 function bar() returns error? {
     io:println("OK");
+    return;
 }
 
 function isOK() returns boolean {

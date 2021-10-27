@@ -28,4 +28,6 @@ public function main() returns error? {
     future<int> c = startInt(() => 100);
     int d = check wait c;
     io:println(d);
+
+    return;
 }

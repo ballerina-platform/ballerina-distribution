@@ -27,4 +27,5 @@ public function main() returns error? {
 
     res = check demo("50m");
     io:println(res);
+    return;
 }

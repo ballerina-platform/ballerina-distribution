@@ -1,7 +1,7 @@
 import ballerina/io;
 import ballerina/time;
 
-public function main() returns error? {
+public function main() {
     // Gets the current instant of the system clock (seconds from the epoch of
     // 1970-01-01T00:00:00). The returned `time:Utc` value represents seconds
     // from the epoch with nanoseconds precision.
