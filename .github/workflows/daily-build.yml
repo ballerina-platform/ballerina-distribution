@@ -137,7 +137,6 @@ jobs:
         with:
           name: BuildTimeCSV
           path: build-time-tests/build/build-time-data/buildTimeData.csv
-
     outputs:
       project-version: ${{ steps.project-version.outputs.version }}
 
