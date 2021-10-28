@@ -151,15 +151,6 @@ jobs:
         with:
           name: BuildTimeCSV
           path: build-time-tests/build/build-time-data/buildTimeData.csv
-      - name: Trigger plugin daily build
-        run: |
-          curl -X POST \
-          ${{ secrets.PLUGIN_REPO_DISPATCH_URL }}\
-          -H 'Content-Type: application/vnd.github.v3+json'\
-          -H 'Authorization: Bearer ${{ secrets.BALLERINA_BOT_TOKEN }}'\
-          --data "{
-            \"event_type\": \"plugin-daily-build\"
-          }"
     outputs:
       project-version: ${{ steps.project-version.outputs.version }}
 
