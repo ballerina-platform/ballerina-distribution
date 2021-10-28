@@ -216,6 +216,8 @@ jobs:
           path: w\target\msi\ballerina-windows-installer-x64-*.msi
 
   trigger-notifications:
+
+    needs: [ubuntu-build, macos-installer-build, windows-installer-build]
     runs-on: ubuntu-latest
 
     steps:
