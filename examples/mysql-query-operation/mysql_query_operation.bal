@@ -70,8 +70,6 @@ public function main() returns error? {
 
     // Performs the cleanup after the example.
     check afterExample(mysqlClient);
-
-    return;
 }
 
 // Initializes the database as a prerequisite to the example.
@@ -98,8 +96,6 @@ function beforeExample() returns sql:Error? {
             ('Dan', 'Brown', 2, 10000, 'UK')`);
 
     check mysqlClient.close();
-
-    return;
 }
 
 // Cleans up the database after running the example.
@@ -109,6 +105,4 @@ function afterExample(mysql:Client mysqlClient) returns sql:Error? {
             check mysqlClient->execute(`DROP DATABASE MYSQL_BBE`);
     // Closes the MySQL client.
     check mysqlClient.close();
-
-    return;
 }

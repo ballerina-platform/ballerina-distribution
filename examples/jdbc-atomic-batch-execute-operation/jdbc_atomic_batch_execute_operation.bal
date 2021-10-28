@@ -69,7 +69,6 @@ public function main() returns error? {
 
     // Performs the cleanup after the example.
     check afterExample(jdbcClient);
-    return;
 }
 
 // Initializes the database as a prerequisite to the example.
@@ -85,7 +84,6 @@ function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
     result = check jdbcClient->execute(`INSERT INTO Customers (firstName,
             lastName, registrationID,creditLimit,country) VALUES ('Peter',
             'Stuart', 1, 5000.75, 'USA')`);
-    return;
 }
 
 // Cleans up the database after running the example.
@@ -95,5 +93,4 @@ function afterExample(jdbc:Client jdbcClient) returns sql:Error? {
             check jdbcClient->execute(`DROP TABLE Customers`);
     // Closes the JDBC client.
     check jdbcClient.close();
-    return;
 }

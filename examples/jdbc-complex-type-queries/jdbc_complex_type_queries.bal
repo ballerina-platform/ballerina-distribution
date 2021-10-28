@@ -75,7 +75,6 @@ public function main() returns error? {
 
     // Performs the cleanup after the example.
     check afterExample(jdbcClient);
-    return;
 }
 
 // Initializes the database as a prerequisite to the example.
@@ -109,7 +108,6 @@ function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
             date_type, time_type, timestamp_type, datetime_type) values (1, 
             '2017-05-23', '14:15:23', '2017-01-25 16:33:55', 
             '2017-01-25 16:33:55')`);
-    return;
 }
 
 // Cleans up the database after running the example.
@@ -121,5 +119,4 @@ function afterExample(jdbc:Client jdbcClient) returns sql:Error? {
     result = check jdbcClient->execute(`DROP TABLE DATE_TIME_TYPES`);
     // Closes the JDBC client.
     check jdbcClient.close();
-    return;
 }
