@@ -245,6 +245,7 @@ public class TestUtils {
         Assert.assertTrue(Files.isDirectory(projectPath.resolve("modules").resolve("module1")));
         Assert.assertTrue(Files.exists(projectPath.resolve("target/bin/sampleProject1.jar")));
 
+        /*
         executor.executeCommand("dist pull " + previousVersion, true, toolVersion);
         Thread.sleep(10000);
         testInstallation(executor, previousVersion, previousSpecVersion, toolVersion, previousVersion);
@@ -254,6 +255,7 @@ public class TestUtils {
         Assert.assertTrue(Files.exists(projectPath));
         Assert.assertTrue(Files.isDirectory(projectPath.resolve("src").resolve("module1")));
         Assert.assertTrue(Files.exists(projectPath.resolve("target/bin/module1.jar")));
+         */
     }
 
     private static String getSupportedVersion(String toolVersion, String version) {

@@ -26,9 +26,6 @@ public class ProjectTest {
     String specVersion = System.getProperty("SPEC_VERSION");
     String toolVersion = System.getProperty("TOOL_VERSION");
 
-    String previousVersion = System.getProperty("LATEST_PATCH_VERSION");
-    String previousSpecVersion = System.getProperty("LATEST_PATCH_SPEC_VERSION");
-
     @DataProvider(name = "getExecutors")
     public Object[][] dataProviderMethod() {
         Executor[][] result = new Executor[1][1];
@@ -41,8 +38,9 @@ public class ProjectTest {
         executor.transferArtifacts();
         executor.install();
 
-        TestUtils.testInstallation(executor, version, specVersion, toolVersion, System.getProperty("VERSION_DISPLAY_TEXT"));
-        TestUtils.testProject(executor, previousVersion, previousSpecVersion, toolVersion);
+        TestUtils.testInstallation(executor, version, specVersion, toolVersion,
+                System.getProperty("VERSION_DISPLAY_TEXT"));
+        TestUtils.testProject(executor, version, specVersion, toolVersion);
 
         executor.uninstall();
         executor.cleanArtifacts();
