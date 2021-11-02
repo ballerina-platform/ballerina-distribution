@@ -35,12 +35,16 @@ public class InstallerTest {
 
     @Test(dataProvider = "getExecutors")
     public void testSmoke(Executor executor) {
-        executor.transferArtifacts();
-        executor.install();
+        if (!System.getProperty("BALLERINA_INSTALLED").equals("true")) {
+            executor.transferArtifacts();
+            executor.install();
+        }
 
         TestUtils.testInstallation(executor, version, specVersion, toolVersion, System.getProperty("VERSION_DISPLAY_TEXT"));
 
-        executor.uninstall();
-        executor.cleanArtifacts();
+        if (!System.getProperty("BALLERINA_INSTALLED").equals("true")) {
+            executor.uninstall();
+            executor.cleanArtifacts();
+        }
     }
 }

@@ -36,12 +36,16 @@ public class CentralTest {
 
     @Test(dataProvider = "getExecutors")
     public void testPull(Executor executor) {
-        executor.transferArtifacts();
-        executor.install();
+        if (!System.getProperty("BALLERINA_INSTALLED").equals("true")) {
+            executor.transferArtifacts();
+            executor.install();
+        }
         //Checks part as output varies depending on the network speed
         Assert.assertTrue(executor.executeCommand("pull ballerinax/googleapis_sheets", false, toolVersion)
                 .contains("pulled from central successfully"));
-        executor.uninstall();
-        executor.cleanArtifacts();
+        if (!System.getProperty("BALLERINA_INSTALLED").equals("true")) {
+            executor.uninstall();
+            executor.cleanArtifacts();
+        }
     }
 }

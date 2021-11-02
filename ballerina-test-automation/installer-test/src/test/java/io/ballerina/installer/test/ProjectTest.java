@@ -35,14 +35,18 @@ public class ProjectTest {
 
     @Test(dataProvider = "getExecutors")
     public void testProject(Executor executor) throws InterruptedException {
-        executor.transferArtifacts();
-        executor.install();
+        if (!System.getProperty("BALLERINA_INSTALLED").equals("true")) {
+            executor.transferArtifacts();
+            executor.install();
+        }
 
         TestUtils.testInstallation(executor, version, specVersion, toolVersion,
                 System.getProperty("VERSION_DISPLAY_TEXT"));
         TestUtils.testProject(executor, version, specVersion, toolVersion);
 
-        executor.uninstall();
-        executor.cleanArtifacts();
+        if (!System.getProperty("BALLERINA_INSTALLED").equals("true")) {
+            executor.uninstall();
+            executor.cleanArtifacts();
+        }
     }
 }
