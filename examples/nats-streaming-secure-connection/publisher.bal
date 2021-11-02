@@ -32,4 +32,5 @@ public function main() returns error? {
     io:println("GUID " + result + " received for the produced message.");
     // Closes the client connection.
     check stanClient.close();
+    return;
 }

@@ -23,6 +23,7 @@ public function main() returns error? {
     Result res =  multiFetch("https://postman-echo.com/get?lang=ballerina",
                              "https://postman-echo.com/get?greeting=hello");
     io:println(res);
+    return;
 }
 
 function fetch(string url) returns string|error {

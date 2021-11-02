@@ -28,5 +28,6 @@ service kafka:Service on kafkaListener {
             string value = check string:fromBytes(consumerRecord.value);
             log:printInfo(value);
         }
+        return;
     }
 }

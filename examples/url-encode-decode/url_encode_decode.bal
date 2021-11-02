@@ -11,4 +11,5 @@ public function main() returns error? {
     // Decoding an encoded URL component into a string.
     string decoded = check url:decode(value2, "UTF-8");
     io:println("URL decoded value: ", decoded);
+    return;
 }

@@ -14,6 +14,7 @@ public function main() returns error? {
     // Generates a random number between the given start(inclusive) and end(exclusive) values.
     int randomInteger = check random:createIntInRange(1, 100);
     io:println("Random integer number in range: ", randomInteger);
+    return;
 }
 
 
@@ -62,4 +63,5 @@ public function uuidGen() returns error? {
     uuid:Uuid uuidRecord2 = check uuid:toRecord(
                         [67,151,70,94,53,249,17,235,173,193,2,66,172,18,0,2]);
     io:println("UUID record: ", uuidRecord2);
+    return;
 }

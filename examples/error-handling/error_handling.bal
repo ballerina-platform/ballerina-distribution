@@ -26,5 +26,6 @@ public function main() returns error? {
 
     } else {
         io:println("result: ", res);
+        return;
     }
 }

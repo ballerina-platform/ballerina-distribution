@@ -80,7 +80,7 @@ jobs:
         if: ${{ failure() }}
         run: |
           curl \
-          -X POST 'https://chat.googleapis.com/v1/spaces/${{secrets.BALLERINA_CHAT_ID}}/messages?key=${{secrets.BALLERINA_CHAT_KEY}}&token=${{secrets.BALLERINA_CHAT_TOKEN}}' \
+          -X POST 'https://chat.googleapis.com/v1/spaces/${{secrets.NOTIFICATIONS_CHAT_ID}}/messages?key=${{secrets.NOTIFICATIONS_CHAT_KEY}}&token=${{secrets.NOTIFICATIONS_CHAT_TOKEN}}' \
           --header 'Content-Type: application/json' \
           -d '{"text": "*ballerina-distribution daily build failure* \nPlease \n visit <https://github.com/ballerina-platform/ballerina-distribution/actions?query=workflow%3A%22Daily+build%22|the daily build page> for more information"}'
       - name: Checkout docker repo
@@ -126,20 +126,6 @@ jobs:
             BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.sversion }}.zip
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
-      - name: Invoke Connector Ballerina Version Bump
-        run: |
-          ballerinaVersion=$((grep -w 'ballerinaLangVersion' | cut -d= -f2) < gradle.properties)
-          echo "Triggering connectors dependency bumps..." && \
-          curl -X POST \
-          https://api.github.com/repos/ballerina-platform/ballerina-release/dispatches \
-          -H 'Accept: application/vnd.github.v3+json' \
-          -H 'Authorization: token ${{ secrets.BALLERINA_BOT_TOKEN }}' \
-          --data "{
-            \"event_type\": \"connector-update\",
-            \"client_payload\": {
-              \"ballerinaVersion\": \"$ballerinaVersion\"
-            }
-          }"
       - name: Run Build Performance Samples
         env:
           packageUser: ${{ github.actor }}
@@ -151,15 +137,6 @@ jobs:
         with:
           name: BuildTimeCSV
           path: build-time-tests/build/build-time-data/buildTimeData.csv
-      - name: Trigger plugin daily build
-        run: |
-          curl -X POST \
-          ${{ secrets.PLUGIN_REPO_DISPATCH_URL }}\
-          -H 'Content-Type: application/vnd.github.v3+json'\
-          -H 'Authorization: Bearer ${{ secrets.BALLERINA_BOT_TOKEN }}'\
-          --data "{
-            \"event_type\": \"plugin-daily-build\"
-          }"
     outputs:
       project-version: ${{ steps.project-version.outputs.version }}
 
@@ -237,3 +214,26 @@ jobs:
         with:
           name: Windows Installer msi
           path: w\target\msi\ballerina-windows-installer-x64-*.msi
+
+  trigger-notifications:
+
+    needs: [ubuntu-build, macos-installer-build, windows-installer-build]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Invoke Connector Ballerina Version Bump
+        run: |
+          ballerinaVersion=$((grep -w 'ballerinaLangVersion' | cut -d= -f2) < gradle.properties)
+          echo "Triggering connectors dependency bumps..." && \
+          curl -X POST \
+          https://api.github.com/repos/ballerina-platform/ballerina-release/dispatches \
+          -H 'Accept: application/vnd.github.v3+json' \
+          -H 'Authorization: token ${{ secrets.BALLERINA_BOT_TOKEN }}' \
+          --data "{
+            \"event_type\": \"connector-update\",
+            \"client_payload\": {
+              \"ballerinaVersion\": \"$ballerinaVersion\"
+            }
+          }"

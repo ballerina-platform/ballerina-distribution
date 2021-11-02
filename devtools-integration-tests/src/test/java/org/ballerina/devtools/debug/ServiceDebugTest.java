@@ -52,10 +52,10 @@ public class ServiceDebugTest extends BaseTestCase {
     @Test(description = "Test for service module debug engage")
     public void testModuleServiceDebugScenarios() throws BallerinaTestException {
         String fileName = "hello_service.bal";
-        Path filePath = Paths.get(debugTestRunner.testProjectPath, fileName);
+        Path filePath = debugTestRunner.testProjectPath.resolve(fileName);
         int port = findFreePort();
 
-        debugTestRunner.runDebuggeeProgram(debugTestRunner.testProjectPath, port);
+        debugTestRunner.runDebuggeeProgram(debugTestRunner.testProjectPath.toString(), port);
         debugTestRunner.addBreakPoint(new BallerinaTestDebugPoint(filePath, 20));
         debugTestRunner.addBreakPoint(new BallerinaTestDebugPoint(filePath, 24));
         debugTestRunner.initDebugSession(DebugUtils.DebuggeeExecutionKind.BUILD, port);
@@ -73,10 +73,10 @@ public class ServiceDebugTest extends BaseTestCase {
     @Test(description = "Test for service call stack representation")
     public void serviceCallStackDebugTest() throws BallerinaTestException {
         String fileName = "hello_service.bal";
-        Path filePath = Paths.get(debugTestRunner.testProjectPath, fileName);
+        Path filePath = debugTestRunner.testProjectPath.resolve(fileName);
         int port = findFreePort();
 
-        debugTestRunner.runDebuggeeProgram(debugTestRunner.testProjectPath, port);
+        debugTestRunner.runDebuggeeProgram(debugTestRunner.testProjectPath.toString(), port);
         debugTestRunner.addBreakPoint(new BallerinaTestDebugPoint(filePath, 21));
         debugTestRunner.initDebugSession(DebugUtils.DebuggeeExecutionKind.BUILD, port);
 

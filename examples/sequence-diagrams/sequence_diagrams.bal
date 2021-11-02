@@ -15,4 +15,5 @@ public function main() returns error? {
     string payload = check cl->get("/v2/5ae082123200006b00510c3d/");
 
     io:println(payload);
+    return;
 }

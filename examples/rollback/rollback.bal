@@ -16,7 +16,7 @@ public function main() returns error? {
     // If an error is returned from the `transfer` function,
     // the error is returned from the `main` and it exits.
     check transfer(updates);
-
+    return;
 }
 
 function transfer(Update[] updates) returns error? {
@@ -33,6 +33,7 @@ function transfer(Update[] updates) returns error? {
         check commit;
 
     }
+    return;
 }
 
 function doUpdate(Update u) returns error? {
@@ -41,4 +42,5 @@ function doUpdate(Update u) returns error? {
         return error("Not enough Stocks: ", stockIndex = u.updateIndex);
     }
 
+    return;
 }
