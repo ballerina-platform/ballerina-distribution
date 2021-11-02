@@ -56,12 +56,24 @@ public class ServiceDebugTest extends BaseTestCase {
         int port = findFreePort();
 
         debugTestRunner.runDebuggeeProgram(debugTestRunner.testProjectPath.toString(), port);
-        debugTestRunner.addBreakPoint(new BallerinaTestDebugPoint(filePath, 22));
+        debugTestRunner.addBreakPoint(new BallerinaTestDebugPoint(filePath, 20));
+        debugTestRunner.addBreakPoint(new BallerinaTestDebugPoint(filePath, 24));
         debugTestRunner.initDebugSession(DebugUtils.DebuggeeExecutionKind.BUILD, port);
 
-        // Test for service debug where service is in the default module
+        // test for debug hits in service level variables
         Pair<BallerinaTestDebugPoint, StoppedEventArguments> debugHitInfo = debugTestRunner.waitForDebugHit(20000);
         Assert.assertEquals(debugHitInfo.getLeft(), debugTestRunner.testBreakpoints.get(0));
+
+        // Timeout Exception is expected, since the service get started once the VM is resumed and resource
+        // function cannot have any debug hits until an HTTP request is received.
+        debugTestRunner.resumeProgram(debugHitInfo.getRight(), DebugTestRunner.DebugResumeKind.NEXT_BREAKPOINT);
+        try {
+            debugTestRunner.waitForDebugHit(10000);
+        } catch (BallerinaTestException e) {
+            if (!e.getMessage().equals("Timeout expired waiting for the debug hit")) {
+                throw e;
+            }
+        }
     }
 
     @Test(description = "Test for service call stack representation")
@@ -71,13 +83,13 @@ public class ServiceDebugTest extends BaseTestCase {
         int port = findFreePort();
 
         debugTestRunner.runDebuggeeProgram(debugTestRunner.testProjectPath.toString(), port);
-        debugTestRunner.addBreakPoint(new BallerinaTestDebugPoint(filePath, 21));
+        debugTestRunner.addBreakPoint(new BallerinaTestDebugPoint(filePath, 20));
         debugTestRunner.initDebugSession(DebugUtils.DebuggeeExecutionKind.BUILD, port);
 
         // Test for service call stack representation
         Pair<BallerinaTestDebugPoint, StoppedEventArguments> debugHitInfo = debugTestRunner.waitForDebugHit(20000);
         StackFrame[] frames = debugTestRunner.fetchStackFrames(debugHitInfo.getRight());
-        debugTestRunner.assertCallStack(frames[0], "sayHello", 21, "hello_service.bal");
+        debugTestRunner.assertCallStack(frames[0], "service", 20, "hello_service.bal");
     }
 
     @Test(description = "Test for single bal file debug engage")
