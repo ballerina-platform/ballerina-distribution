@@ -269,7 +269,8 @@ public class CentralTest {
         }
     }
 
-    @Test(description = "Build and run package D which depends on Package C", dependsOnMethods = "testPushPackageC")
+    @Test(description = "Build and run package D which depends on Package C", dependsOnMethods = "testPushPackageC",
+          enabled = false)
     public void testBuildAndRunPackageD() throws IOException, InterruptedException {
         Process build = executeBuildCommand(DISTRIBUTION_FILE_NAME, this.tempWorkspaceDirectory.resolve(PROJECT_D),
                                        new LinkedList<>(), this.envVariables);
