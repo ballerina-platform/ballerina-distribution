@@ -12,7 +12,6 @@ public function main() returns error? {
         // Publishes the message using the routing key named "MyQueue".
         check newClient->publishMessage({ content: message.toBytes(),
                                                     routingKey: "MyQueue" });
-        error? result = commit;
+        check commit;
     }
-    return;
 }
