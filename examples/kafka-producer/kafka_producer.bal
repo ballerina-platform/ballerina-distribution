@@ -11,5 +11,4 @@ public function main() returns error? {
 
     // Flushes the sent messages.
     check kafkaProducer->'flush();
-    return;
 }
