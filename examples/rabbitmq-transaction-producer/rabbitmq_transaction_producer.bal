@@ -14,5 +14,4 @@ public function main() returns error? {
                                                     routingKey: "MyQueue" });
         error? result = commit;
     }
-    return;
 }

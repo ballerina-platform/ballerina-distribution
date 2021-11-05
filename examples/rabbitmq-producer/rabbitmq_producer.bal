@@ -13,5 +13,4 @@ public function main() returns error? {
     string message = "Hello from Ballerina";
     check newClient->publishMessage({ content: message.toBytes(),
                                             routingKey: "MyQueue" });
-    return;
 }
