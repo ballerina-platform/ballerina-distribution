@@ -38,6 +38,4 @@ public function main() returns error? {
     // parameters instead of configuring an `email:Message` record.
     check smtpClient->sendMessage(email);
 
-    return;
-
 }
