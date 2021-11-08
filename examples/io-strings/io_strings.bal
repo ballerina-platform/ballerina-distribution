@@ -30,5 +30,4 @@ public function main() returns error? {
     check lineStream.forEach(function(string val) {
                                io:println(val);
                            });
-    return;
 }

@@ -23,5 +23,4 @@ public function main() returns error? {
     check csvStream.forEach(function(string[] val) {
                               io:println(val);
                           });
-    return;
 }
