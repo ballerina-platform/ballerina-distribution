@@ -1,6 +1,6 @@
 
 public function main() {
-    string helloStr = hello("World");
+    _ = hello("World");
 }
 
 public function hello(string name) returns string {
