@@ -27,8 +27,7 @@ public function main() returns error? {
     stream<string, io:Error?> lineStream = check
                                     io:fileReadLinesAsStream(textFilePath3);
     // Iterates through the stream and prints the content.
-    error? e = lineStream.forEach(function(string val) {
+    check lineStream.forEach(function(string val) {
                                io:println(val);
                            });
-    return;
 }
