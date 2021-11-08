@@ -8,8 +8,10 @@ public function main() {
 
     // `n` will be 1.
     int n = s.length();
+    io:println(n);
 
     // `s.length()` is same as `string:length(s)`.
     int m = string:length(s);
+    io:println(m);
 
 }
