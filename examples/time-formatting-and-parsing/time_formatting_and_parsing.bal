@@ -39,5 +39,4 @@ public function main() returns error? {
     string emailString = check
     time:civilToEmailString(civil2, time:PREFER_ZONE_OFFSET);
     io:println(`Email string of the civil record: ${emailString}`);
-    return;
 }
