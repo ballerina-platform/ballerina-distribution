@@ -83,6 +83,11 @@ public class TestUtils {
         return executeCommand("build", distributionName, sourceDirectory, args, envProperties);
     }
 
+    public static Process executePackCommand(String distributionName, Path sourceDirectory,
+            List<String> args, Map<String, String> envProperties) throws IOException, InterruptedException {
+        return executeCommand("pack", distributionName, sourceDirectory, args, envProperties);
+    }
+
     public static Process executePushCommand(String distributionName, Path sourceDirectory,
             List<String> args, Map<String, String> envProperties) throws IOException, InterruptedException {
         return executeCommand("push", distributionName, sourceDirectory, args, envProperties);

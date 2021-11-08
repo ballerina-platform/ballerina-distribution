@@ -57,6 +57,7 @@ import static org.ballerina.projectapi.TestUtils.MAVEN_VERSION;
 import static org.ballerina.projectapi.TestUtils.OUTPUT_CONTAIN_ERRORS;
 import static org.ballerina.projectapi.TestUtils.executeBuildCommand;
 import static org.ballerina.projectapi.TestUtils.executeCommand;
+import static org.ballerina.projectapi.TestUtils.executePackCommand;
 import static org.ballerina.projectapi.TestUtils.executePullCommand;
 import static org.ballerina.projectapi.TestUtils.executePushCommand;
 import static org.ballerina.projectapi.TestUtils.executeSearchCommand;
@@ -145,8 +146,8 @@ public class CentralTest {
 
     @Test(description = "Build package A with a native lib dependency")
     public void testBuildPackageA() throws IOException, InterruptedException {
-        Process build = executeBuildCommand(DISTRIBUTION_FILE_NAME, this.tempWorkspaceDirectory.resolve(PROJECT_A),
-                                            new LinkedList<>(Collections.singletonList("-c")), this.envVariables);
+        Process build = executePackCommand(DISTRIBUTION_FILE_NAME, this.tempWorkspaceDirectory.resolve(PROJECT_A),
+                                            new LinkedList<>(), this.envVariables);
         String buildErrors = getString(build.getErrorStream());
         if (!buildErrors.isEmpty()) {
             Assert.fail(OUTPUT_CONTAIN_ERRORS + buildErrors);
@@ -180,8 +181,8 @@ public class CentralTest {
 
     @Test(description = "Build package B which has java11 platform dependency")
     public void testBuildPackageB() throws IOException, InterruptedException {
-        Process build = executeBuildCommand(DISTRIBUTION_FILE_NAME, this.tempWorkspaceDirectory.resolve(PROJECT_B),
-                                       new LinkedList<>(Collections.singletonList("-c")), this.envVariables);
+        Process build = executePackCommand(DISTRIBUTION_FILE_NAME, this.tempWorkspaceDirectory.resolve(PROJECT_B),
+                                       new LinkedList<>(), this.envVariables);
 
         String buildErrors = getString(build.getErrorStream());
         if (!buildErrors.isEmpty()) {
@@ -204,8 +205,8 @@ public class CentralTest {
         String expectedMsg = "cannot resolve module '" + orgName + "/" + this.packageBName + " as pkgB'";
         String unexpectedMsg = "cannot resolve module '" + orgName + "/" + this.packageAName + " as pkgA'";
 
-        Process build = executeBuildCommand(DISTRIBUTION_FILE_NAME, this.tempWorkspaceDirectory.resolve(PROJECT_C),
-                                       new LinkedList<>(Collections.singletonList("-c")), this.envVariables);
+        Process build = executePackCommand(DISTRIBUTION_FILE_NAME, this.tempWorkspaceDirectory.resolve(PROJECT_C),
+                                       new LinkedList<>(), this.envVariables);
         String buildErrors = getString(build.getErrorStream());
         if (buildErrors.isEmpty()) {
             Assert.fail("build output should contain errors.");
@@ -235,8 +236,8 @@ public class CentralTest {
 
     @Test(description = "Build package C after pushing Package B", dependsOnMethods = "testPushPackageB")
     public void testBuildPackageCAgain() throws IOException, InterruptedException {
-        Process build = executeBuildCommand(DISTRIBUTION_FILE_NAME, this.tempWorkspaceDirectory.resolve(PROJECT_C),
-                                       new LinkedList<>(Collections.singletonList("-c")), this.envVariables);
+        Process build = executePackCommand(DISTRIBUTION_FILE_NAME, this.tempWorkspaceDirectory.resolve(PROJECT_C),
+                                       new LinkedList<>(), this.envVariables);
 
         String buildErrors = getString(build.getErrorStream());
         if (!buildErrors.isEmpty()) {
@@ -295,9 +296,9 @@ public class CentralTest {
     @Test(description = "Build package with pre-release version")
     public void testBuildSnapshotPackage() throws IOException, InterruptedException {
         String snapshotVersion = "1.0.0-snapshot";
-        Process build = executeBuildCommand(DISTRIBUTION_FILE_NAME,
+        Process build = executePackCommand(DISTRIBUTION_FILE_NAME,
                                             this.tempWorkspaceDirectory.resolve(PROJECT_SNAPSHOT),
-                                            new LinkedList<>(Collections.singletonList("-c")),
+                                            new LinkedList<>(),
                                             this.envVariables);
 
         String buildErrors = getString(build.getErrorStream());
