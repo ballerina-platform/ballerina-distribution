@@ -48,7 +48,7 @@ import static org.ballerina.projectapi.CentralTestUtils.updateFileToken;
 import static org.ballerina.projectapi.TestUtils.DISTRIBUTIONS_DIR;
 import static org.ballerina.projectapi.TestUtils.MAVEN_VERSION;
 import static org.ballerina.projectapi.TestUtils.OUTPUT_CONTAIN_ERRORS;
-import static org.ballerina.projectapi.TestUtils.executeBuildCommand;
+import static org.ballerina.projectapi.TestUtils.executePackCommand;
 import static org.ballerina.projectapi.TestUtils.executePushCommand;
 import static org.ballerina.projectapi.TestUtils.executeSearchCommand;
 
@@ -96,7 +96,7 @@ public class CentralNegativeTest {
 
         isPkgAvailableInCentral(this.packageAName);
 
-        // Update Ballerina.toml files with new package names"my_package"
+        // Update Ballerina.toml files with new package name "my_package"
         updateFileToken(this.tempWorkspaceDirectory.resolve(PROJECT_A).resolve(BALLERINA_TOML), DEFAULT_PKG_NAME,
                         this.packageAName);
     }
@@ -105,9 +105,8 @@ public class CentralNegativeTest {
     public void testPushPackageWithInvalidAccessToken() throws IOException, InterruptedException {
         Map<String, String> envVariablesWithInvalidAccessToken = addEnvVariablesWithInvalidAccessToken(
                 this.envVariables);
-        Process build = executeBuildCommand(DISTRIBUTION_FILE_NAME, this.tempWorkspaceDirectory.resolve(PROJECT_A),
-                                            new LinkedList<>(Collections.singletonList("-c")),
-                                            envVariablesWithInvalidAccessToken);
+        Process build = executePackCommand(DISTRIBUTION_FILE_NAME, this.tempWorkspaceDirectory.resolve(PROJECT_A),
+                                            new LinkedList<>(), envVariablesWithInvalidAccessToken);
         String buildErrors = getString(build.getErrorStream());
         if (!buildErrors.isEmpty()) {
             Assert.fail(OUTPUT_CONTAIN_ERRORS + buildErrors);
