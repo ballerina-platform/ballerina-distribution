@@ -27,5 +27,4 @@ public function main() returns error? {
     });
     check kafkaProducer->'flush();
     io:println("Message published successfully.");
-    return;
 }
