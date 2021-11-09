@@ -32,6 +32,5 @@ service stan:Service on securedEP {
         if messageData is string {
             log:printInfo("Received message: " + messageData);
         }
-        return;
     }
 }
