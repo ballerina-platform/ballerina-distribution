@@ -51,6 +51,7 @@ function testFunc() {
     http:Response|error response4 = httpEndpoint->get("/cb");
     if (response4 is http:Response) {
         string|error result = response4.getTextPayload();
+        test:assertTrue(result is string,  "Invalid return type");
     } else {
         test:assertFail(msg = "Failed to call the endpoint:");
     }
@@ -59,6 +60,7 @@ function testFunc() {
     http:Response|error response5 = httpEndpoint->get("/cb");
     if (response5 is http:Response) {
         string|error result = response5.getTextPayload();
+        test:assertTrue(result is string,  "Invalid return type");
     } else {
         test:assertFail(msg = "Failed to call the endpoint:");
     }
@@ -69,6 +71,7 @@ function testFunc() {
     http:Response|error response6 = httpEndpoint->get("/cb");
     if (response6 is http:Response) {
         string|error result = response6.getTextPayload();
+        test:assertTrue(result is string,  "Invalid return type");
     } else {
         test:assertFail(msg = "Failed to call the endpoint:");
     }
