@@ -69,7 +69,7 @@ function decodePrivateKey() returns crypto:PrivateKey|error {
 
     // Obtaining the reference to an RSA private key by an encrypted key file.
     string encryptedKeyFile = "../resource/path/to/encryptedPrivate.key";
-    privateKey = check crypto:decodeRsaPrivateKeyFromKeyFile(keyFile,
+    privateKey = check crypto:decodeRsaPrivateKeyFromKeyFile(encryptedKeyFile,
                                                          "ballerina");
 
     // Obtaining the reference to an RSA private key stored within a PKCS#12 or PFX format archive file.
