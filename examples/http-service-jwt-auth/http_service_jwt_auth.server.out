@@ -1,3 +1,2 @@
 # You may need to change the certificate file path and private key file path.
 bal run http_service_jwt_auth.bal
-[ballerina/http] started HTTPS/WSS listener 0.0.0.0:9090
