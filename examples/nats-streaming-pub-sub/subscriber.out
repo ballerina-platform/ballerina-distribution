@@ -1,3 +1,2 @@
 bal run subscriber.bal
-[ballerinax/nats] Client subscribed for subject demo
 time = 2021-05-20T12:51:47.417+05:30 level = INFO module = "" message = "Received message: Hello from Ballerina"
