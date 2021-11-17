@@ -13,7 +13,6 @@
 #    published after the subscriber starts.
 
 bal run subscriber.bal
-[ballerinax/nats] Client subscribed for subject demo
 Message Received to service receiveSinceTimeDelta: Third Message
 Message Received to service receiveFromGivenIndex: Third Message
 Message Received to service receiveFromLastReceived: Third Message
