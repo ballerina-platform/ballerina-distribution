@@ -4,7 +4,7 @@ import ballerina/log;
 
 http:Listener httpListener = check new (9090);
 
-var helloService =  service object {
+http:Service helloService =  service object {
 
     resource function get sayHello(http:Caller caller, http:Request req) {
         // Send a response back to the caller.
