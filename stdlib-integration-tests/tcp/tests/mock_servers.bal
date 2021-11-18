@@ -38,6 +38,7 @@ service on echoServer {
 }
 
 service class EchoService {
+    *tcp:ConnectionService;
 
     remote function onBytes(tcp:Caller caller, readonly & byte[] data) returns tcp:Error? {
         io:println("Echo: ", 'string:fromBytes(data));
@@ -63,6 +64,7 @@ service on discardServer {
 }
 
 service class DiscardService {
+    *tcp:ConnectionService;
 
     remote function onBytes(readonly & byte[] data) {
         // read and discard the message
@@ -97,6 +99,7 @@ service on new tcp:Listener(PORT4, secureSocket = {
 }
 
 service class SecureEchoService {
+    *tcp:ConnectionService;
 
     remote function onBytes(readonly & byte[] data) returns byte[] {
         io:println("Echo: ", 'string:fromBytes(data));
