@@ -247,6 +247,29 @@ public class PlatformDistributionArtifactCheckTest {
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "awslambda-extension-"));
     }
     
+    @Test(dataProvider = "distribution-provider")
+    public void azureFunctionsAnnotationExistsTest(String distributionFileName) {
+        Path distributionsPath = TEST_DISTRIBUTION_PATH.resolve(distributionFileName).resolve("distributions");
+        String jballerinaFileName = TestUtils.findFileOrDirectory(distributionsPath, "jballerina-");
+        Objects.requireNonNull(jballerinaFileName);
+        
+        Path birPath = distributionsPath
+                .resolve(jballerinaFileName)
+                .resolve("bir-cache")
+                .resolve("ballerinax")
+                .resolve("azure.functions")
+                .resolve("0.0.0")
+                .resolve("azure.functions.bir");
+        
+        Path breLibPath = distributionsPath
+                .resolve(jballerinaFileName)
+                .resolve("bre")
+                .resolve("lib");
+        
+        Assert.assertTrue(Files.exists(birPath));
+        Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "azurefunctions-extension-"));
+    }
+    
     @AfterClass
     public void cleanUp() throws IOException {
         TestUtils.cleanDistribution();

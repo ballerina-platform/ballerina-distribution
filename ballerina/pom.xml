@@ -21,7 +21,7 @@
     <parent>
         <groupId>org.ballerinalang</groupId>
         <artifactId>ballerina-distribution</artifactId>
-        <version>1.2.4-SNAPSHOT</version>
+        <version>1.2.22-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -58,6 +58,21 @@
             <artifactId>awslambda-extension-examples</artifactId>
             <type>zip</type>
         </dependency>
+        <!-- Azure Functions extension -->
+        <dependency>
+            <groupId>org.ballerinax.azurefunctions</groupId>
+            <artifactId>azurefunctions-extension</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinax.azurefunctions</groupId>
+            <artifactId>azurefunctions-extension-balo</artifactId>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinax.azurefunctions</groupId>
+            <artifactId>azurefunctions-extension-examples</artifactId>
+            <type>zip</type>
+        </dependency>
 
         <!-- Docker extension -->
         <dependency>
@@ -90,11 +105,6 @@
             <artifactId>kubernetes-extension-examples</artifactId>
             <type>zip</type>
         </dependency>
-        <dependency>
-            <groupId>org.ballerinalang</groupId>
-            <artifactId>ballerina-command-distribution</artifactId>
-            <type>zip</type>
-        </dependency>
     </dependencies>
 
     <build>
@@ -125,6 +135,24 @@
                 </executions>
             </plugin>
             <plugin>
+                <groupId>com.googlecode.maven-download-plugin</groupId>
+                <artifactId>download-maven-plugin</artifactId>
+                <version>1.3.0</version>
+                <executions>
+                    <execution>
+                        <id>download-update-tool</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>wget</goal>
+                        </goals>
+                        <configuration>
+                            <url>${update.tool.location}</url>
+                            <outputDirectory>${project.build.directory}/extracted-distributions</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>3.0.0</version>
@@ -140,11 +168,12 @@
                                 jballerina-tools,
                                 awslambda-extension-balo,
                                 awslambda-extension-examples,
+                                azurefunctions-extension-balo,
+                                azurefunctions-extension-examples,
                                 docker-extension-examples,
                                 docker-extension-annotations,
                                 kubernetes-extension-examples,
-                                kubernetes-extension-annotations,
-                                ballerina-command-distribution
+                                kubernetes-extension-annotations
                             </includeArtifactIds>
                             <outputDirectory>${project.build.directory}/extracted-distributions
                             </outputDirectory>
@@ -254,10 +283,11 @@
                 <version>1.8</version>
                 <executions>
                     <execution>
-                        <id>extract-jre</id>
+                        <id>extract-zip-archives</id>
                         <phase>generate-resources</phase>
                         <configuration>
                             <tasks>
+                                <unzip src="${project.build.directory}/extracted-distributions/ballerina-command-${ballerina.command.version}.zip" dest="${project.build.directory}/extracted-distributions/" />
                                 <unzip src="${jre.location}/jre-1.8-linux.zip" dest="${project.build.directory}/extracted-jre-linux" />
                                 <unzip src="${jre.location}/jre-1.8-macos.zip" dest="${project.build.directory}/extracted-jre-macos" />
                                 <unzip src="${jre.location}/jre-1.8-windows.zip" dest="${project.build.directory}/extracted-jre-windows" />
@@ -300,5 +330,8 @@
     <properties>
         <jre.location>target/ballerina-jre-artifacts-zip/ballerina-jre-artifacts-${ballerina.jre.artifacts.version}</jre.location>
         <distribution.name>ballerina</distribution.name>
+        <update.tool.location>
+            https://github.com/ballerina-platform/ballerina-update-tool/releases/download/v${ballerina.command.version}/ballerina-command-${ballerina.command.version}.zip
+        </update.tool.location>
     </properties>
 </project>

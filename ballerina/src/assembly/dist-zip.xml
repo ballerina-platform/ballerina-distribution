@@ -82,6 +82,18 @@
             </directory>
             <outputDirectory>distributions/jballerina-${ballerina.version}/bir-cache/ballerinax/awslambda</outputDirectory>
         </fileSet>
+        <fileSet>
+            <directory>
+                ${project.build.directory}/extracted-distributions/azurefunctions-extension-balo-zip/azure.functions
+            </directory>
+            <outputDirectory>distributions/jballerina-${ballerina.version}/bir-cache/ballerinax/azure.functions</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>
+                ${project.build.directory}/extracted-distributions/azurefunctions-extension-examples-zip/azurefunctions-extension-examples-${project.version}
+            </directory>
+            <outputDirectory>distributions/jballerina-${ballerina.version}/examples</outputDirectory>
+        </fileSet>
 
         <!-- Tools artifacts -->
         <fileSet>
@@ -110,6 +122,11 @@
         </file>
         <file>
             <source>${project.build.directory}/extracted-distributions/awslambda-extension-balo-zip/awslambda-artifacts/ballerinax.awslambda.jar</source>
+            <outputDirectory>distributions/jballerina-${ballerina.version}/bre/lib/</outputDirectory>
+            <fileMode>644</fileMode>
+        </file>
+        <file>
+            <source>${project.build.directory}/extracted-distributions/azurefunctions-extension-balo-zip/ballerinax-azure.functions-0.0.0.jar</source>
             <outputDirectory>distributions/jballerina-${ballerina.version}/bre/lib/</outputDirectory>
             <fileMode>644</fileMode>
         </file>
@@ -145,19 +162,19 @@
             <fileMode>644</fileMode>
         </file>
         <file>
-            <source>${project.build.directory}/extracted-distributions/ballerina-command-distribution-zip/bin/ballerina</source>
+            <source>${project.build.directory}/extracted-distributions/ballerina-command-${ballerina.command.version}/bin/bal</source>
             <outputDirectory>bin</outputDirectory>
             <filtered>true</filtered>
             <fileMode>775</fileMode>
         </file>
         <file>
-            <source>${project.build.directory}/extracted-distributions/ballerina-command-distribution-zip/bin/ballerina.bat</source>
+            <source>${project.build.directory}/extracted-distributions/ballerina-command-${ballerina.command.version}/bin/bal.bat</source>
             <outputDirectory>bin</outputDirectory>
             <filtered>true</filtered>
             <fileMode>775</fileMode>
         </file>
         <file>
-            <source>${project.build.directory}/extracted-distributions/ballerina-command-distribution-zip/lib/ballerina-command-${ballerina.command.version}.jar</source>
+            <source>${project.build.directory}/extracted-distributions/ballerina-command-${ballerina.command.version}/lib/ballerina-command-${ballerina.command.version}.jar</source>
             <outputDirectory>lib</outputDirectory>
             <fileMode>775</fileMode>
         </file>
@@ -169,6 +186,7 @@
                 <include>org.ballerinax.docker:docker-extension</include>
                 <include>org.ballerinax.kubernetes:kubernetes-extension</include>
                 <include>org.ballerinax.awslambda:awslambda-extension</include>
+                <include>org.ballerinax.azurefunctions:azurefunctions-extension</include>
             </includes>
             <unpack>false</unpack>
         </dependencySet>
