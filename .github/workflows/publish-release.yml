@@ -113,6 +113,28 @@ jobs:
           cd installers/linux-rpm
           ./build-ballerina-linux-rpm-x64.sh -v ${{ steps.version-set.outputs.version }} -p ./../../ballerina/build/distributions
           echo "Created linux-rpm successfully"
+      - name: Generate Hashes
+        run: |
+          openssl dgst -sha256 -out ballerina-linux-installer-x64-${{ steps.version-set.outputs.version }}-deb.sha256 installers/linux-deb/target/ballerina-linux-installer-x64-*.deb | openssl enc -base64
+          openssl dgst -sha256 -out ballerina-linux-installer-x64-${{ steps.version-set.outputs.version }}-rpm.sha256 installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-linux-installer-x64-*.rpm | openssl enc -base64
+      - name: Upload Linux deb Hashes
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_name: ballerina-linux-installer-x64-${{ steps.version-set.outputs.version }}-deb.sha256
+          asset_path: ballerina-linux-installer-x64-${{ steps.version-set.outputs.version }}-deb.sha256
+          asset_content_type: application/octet-stream
+      - name: Upload Linux rpm Hashes
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_name: ballerina-linux-installer-x64-${{ steps.version-set.outputs.version }}-rpm.sha256
+          asset_path: ballerina-linux-installer-x64-${{ steps.version-set.outputs.version }}-rpm.sha256
+          asset_content_type: application/octet-stream
       - name: Upload zip artifacts
         uses: actions/upload-release-asset@v1
         env:
@@ -196,6 +218,18 @@ jobs:
           cd installers/mac
           ./build-ballerina-macos-x64.sh -v ${{ needs.publish-release.outputs.project-version }} -p ./../../
           echo "Created macos-pkg successfully"
+      - name: Generate Hashes
+        run: |
+          openssl dgst -sha256 -out ballerina-macos-installer-x64-${{ needs.publish-release.outputs.project-version }}-pkg.sha256 installers/mac/target/pkg/ballerina-macos-installer-x64-${{ needs.publish-release.outputs.project-version }}.pkg | openssl enc -base64
+      - name: Upload MacOS pkg Hashes
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          upload_url: ${{ needs.publish-release.outputs.upload-asset-url }}
+          asset_name: ballerina-macos-installer-x64-${{ needs.publish-release.outputs.project-version }}-pkg.sha256
+          asset_path: ballerina-macos-installer-x64-${{ needs.publish-release.outputs.project-version }}-pkg.sha256
+          asset_content_type: application/octet-stream
       - name: Upload MacOS pkg Installer
         uses: actions/upload-release-asset@v1
         env:
@@ -233,6 +267,18 @@ jobs:
           cd w
           .\build-ballerina-windows-x64.bat --version ${{ needs.publish-release.outputs.project-version }} --path .\..\
           echo "Created windows-msi successfully"
+      - name: Generate Hashes
+        run: |
+          openssl dgst -sha256 -out ballerina-windows-installer-x64-${{ needs.publish-release.outputs.project-version }}-msi.sha256 w\target\msi\ballerina-windows-installer-x64-*.msi | openssl enc -base64
+      - name: Upload Windows msi Hashes
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          upload_url: ${{ needs.publish-release.outputs.upload-asset-url }}
+          asset_name: ballerina-windows-installer-x64-${{ needs.publish-release.outputs.project-version }}-msi.sha256
+          asset_path: ballerina-windows-installer-x64-${{ needs.publish-release.outputs.project-version }}-msi.sha256
+          asset_content_type: application/octet-stream
       - name: Upload Windows msi Installer
         uses: actions/upload-release-asset@v1
         env:
