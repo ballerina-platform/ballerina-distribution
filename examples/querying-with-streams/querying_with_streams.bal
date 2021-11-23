@@ -26,6 +26,7 @@ class LineGenerator {
             }
             return {value: ""};
         }
+        return;
     }
 }
 
@@ -43,7 +44,7 @@ function count(LS lines) returns int|Error {
     int nLines = 0;
     // Counts the number of lines by iterating the `stream`
     // in `query action`.
-    var res = check from var line in lines
+    var _ = check from var _ in lines
               do {
                   nLines += 1;
               };

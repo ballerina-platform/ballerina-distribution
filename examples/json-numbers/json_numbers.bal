@@ -36,4 +36,5 @@ public function main() returns error? {
     string i = "-0";
 
     io:println(typeof check i.fromJsonString());
+    return;
 }

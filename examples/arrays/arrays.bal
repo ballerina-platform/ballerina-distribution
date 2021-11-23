@@ -13,5 +13,5 @@ public function main() {
 
     // `len` will be 3.
     int len = v.length();
-
+    io:println(len);
 }

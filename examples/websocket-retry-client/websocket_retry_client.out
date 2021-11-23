@@ -1,0 +1,9 @@
+# As a prerequisite, start a sample WebSocket service, which sends a message to the client upon upgrading to a WebSocket connection.
+# If you are using a Ballerina WebSocket server, you can send a message to the client in the `onOpen` resource.
+# The client will first connect to the server and then it will wait for 5 seconds to give time for the server to shut down.
+# Start the server after 5 seconds so that the client will start retrying to connect to the server and read messages.
+bal run websocket_retry_client.bal
+Hello World!
+Sleeping for 5 seconds. Please shutdown the server now.
+Please restart the server now.
+Hello World!

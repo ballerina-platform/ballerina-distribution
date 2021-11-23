@@ -1,0 +1,14 @@
+# Run the service by setting the configurations in the `Config.toml` file as follows to have logs in the console.
+echo '[ballerina.http.accessLogConfig]
+console = true' > Config.toml
+
+bal run http_access_logs.bal
+ballerina: HTTP access log enabled
+0:0:0:0:0:0:0:1 - - [06/Oct/2021:18:54:32 +0530] "GET /hello HTTP/1.1" 200 10 "-" "curl/7.64.1"
+
+# Else, change the `Config.toml` file as follows to direct the log to the specified file.
+echo '[ballerina.http.accessLogConfig]
+path = "testAccessLog.txt"' > Config.toml
+
+bal run http_access_logs.bal
+ballerina: HTTP access log enabled

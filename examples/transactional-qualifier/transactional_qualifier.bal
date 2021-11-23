@@ -11,6 +11,7 @@ public function main() returns error? {
         check doUpdate(updates);
         check commit;
     }
+    return;
 }
 
 // Called within the transaction statement.
@@ -19,7 +20,7 @@ transactional function doUpdate(Update u) returns error? {
     foo(u);
     // Calls the `bar()` transactional function.
     bar(u);
-
+    return;
 }
 
 function foo(Update u) {

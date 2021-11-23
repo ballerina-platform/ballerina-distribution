@@ -1,0 +1,4 @@
+bal run sftp_listener.bal
+
+# Paths of the newly-added and newly-deleted files/directories during the
+# latest polling will be printed for each of the polled events.

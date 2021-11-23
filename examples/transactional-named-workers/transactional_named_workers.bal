@@ -14,6 +14,7 @@ public function main() returns error? {
         check exec(newUpdate);
         check commit;
     }
+    return;
 }
 
 // Transactional function can only be called from a transactional context
@@ -23,7 +24,7 @@ transactional function exec(Update u) returns error? {
     transactional worker A {
         bar();
     }
-
+    return;
 }
 
 transactional function bar() {
