@@ -1408,6 +1408,22 @@
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "Request Interceptor",
+                "url": "http-request-interceptor",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Request Error Interceptor",
+                "url": "http-request-error-interceptor",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
