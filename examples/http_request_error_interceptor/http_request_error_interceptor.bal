@@ -10,7 +10,8 @@ final string interceptor_check_header_value = "RequestErrorInterceptor";
 service class RequestInterceptor1 {
     *http:RequestInterceptor;
 
-    resource function 'default [string... path](http:RequestContext ctx, http:Request req) returns http:NextService|error? {
+    resource function 'default [string... path](http:RequestContext ctx, 
+                            http:Request req) returns http:NextService|error? {
         io:println("Executing Request Interceptor 1");
         // Try to read header. This will return a `HeaderNotFoundError` if we do not set this header. Then the execution will 
         // jump to the nearest `RequestErrorInterceptor`.
@@ -25,7 +26,8 @@ RequestInterceptor1 requestInterceptor1 = new;
 service class RequestInterceptor2 {
     *http:RequestInterceptor;
 
-    resource function get greeting(http:RequestContext ctx) returns http:NextService|error? {
+    resource function get greeting(http:RequestContext ctx) 
+            returns http:NextService|error? {
         io:println("Executing Request Interceptor 2");
         return ctx.next();
     }
@@ -40,7 +42,8 @@ service class RequestErrorInterceptor {
 
     // The resource function inside an `RequestErrorInterceptor` is only allowed to have default method and default path. The error occurred
     // in the interceptor execution can be accessed by the `error` parameter.
-    resource function 'default [string... path](http:RequestContext ctx, http:Request req, error err) returns http:NextService|error? {
+    resource function 'default [string... path](http:RequestContext ctx, 
+                http:Request req, error err) returns http:NextService|error? {
         io:println("Executing Request Error Interceptor");
         io:println("Error occurred : " + err.message());
         // Sets a header to the request.
@@ -54,17 +57,20 @@ RequestErrorInterceptor requestErrorInterceptor = new;
 
 listener http:Listener interceptorListener = new http:Listener(9090, config = { 
     // `RequestErrorInterceptor` can be added anywhere in the interceptor pipeline.
-    interceptors: [requestInterceptor1, requestInterceptor2, requestErrorInterceptor] 
+    interceptors: [requestInterceptor1, requestInterceptor2, 
+                   requestErrorInterceptor] 
 });
 
 service / on interceptorListener {
 
-    resource function get greeting(http:Request req, http:Caller caller) returns error? {
+    resource function get greeting(http:Request req, http:Caller caller) 
+            returns error? {
         io:println("Executing Target Resource");
         // Create a new response.
         http:Response res = new;
         // Set the headers from request
-        res.setHeader(interceptor_check_header, check req.getHeader(interceptor_check_header));
+        res.setHeader(interceptor_check_header, 
+                        check req.getHeader(interceptor_check_header));
         res.setTextPayload("Greetings!");
         check caller->respond(res);
     }

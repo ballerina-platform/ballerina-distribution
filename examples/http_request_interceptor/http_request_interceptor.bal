@@ -16,7 +16,8 @@ service class RequestInterceptor1 {
 
     // A default resource function which will be executed for all requests. `RequestContext` is used to share data between 
     // interceptors. Resource methods are only allowed to return `http:NextService|error?`
-    resource function 'default [string... path](http:RequestContext ctx, http:Request req) returns http:NextService|error? {
+    resource function 'default [string... path](http:RequestContext ctx, 
+                            http:Request req) returns http:NextService|error? {
         io:println("Executing Request Interceptor 1");
         // Sets a header to the request inside the interceptor service.
         req.setHeader(interceptor_header1, interceptor_header_value1);
@@ -33,7 +34,8 @@ service class RequestInterceptor2 {
     *http:RequestInterceptor;
 
     // This interceptor is only executed for GET requests with path "/greeting".
-    resource function get greeting(http:RequestContext ctx, http:Request req) returns http:NextService|error? {
+    resource function get greeting(http:RequestContext ctx, http:Request req) 
+                        returns http:NextService|error? {
         io:println("Executing Request Interceptor 2");
         req.setHeader(interceptor_header2, interceptor_header_value2);
         return ctx.next();
@@ -52,13 +54,16 @@ listener http:Listener interceptorListener = new http:Listener(9090, config = {
 
 service / on interceptorListener {
 
-    resource function get greeting(http:Request req, http:Caller caller) returns error? {
+    resource function get greeting(http:Request req, http:Caller caller) 
+            returns error? {
         io:println("Executing Target Resource");
         // Create a new response.
         http:Response res = new;
         // Set the interceptor headers from request
-        res.setHeader(interceptor_header1, check req.getHeader(interceptor_header1));
-        res.setHeader(interceptor_header2, check req.getHeader(interceptor_header2));
+        res.setHeader(interceptor_header1, 
+                            check req.getHeader(interceptor_header1));
+        res.setHeader(interceptor_header2, 
+                            check req.getHeader(interceptor_header2));
         res.setTextPayload("Greetings!");
         check caller->respond(res);
     }
