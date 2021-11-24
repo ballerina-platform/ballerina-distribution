@@ -1,0 +1,20 @@
+# Invoke the service.
+curl -v http://localhost:9090/greeting
+*   Trying ::1...
+* TCP_NODELAY set
+* Connected to localhost (::1) port 9090 (#0)
+> GET /greeting HTTP/1.1
+> Host: localhost:9090
+> User-Agent: curl/7.64.1
+> Accept: */*
+> 
+< HTTP/1.1 200 OK
+< X-requestHeader1: RequestInterceptor1
+< X-requestHeader2: RequestInterceptor2
+< content-type: text/plain
+< content-length: 10
+< server: ballerina
+< date: Tue, 23 Nov 2021 17:16:16 +0530
+< 
+* Connection #0 to host localhost left intact
+Greetings!* Closing connection 0

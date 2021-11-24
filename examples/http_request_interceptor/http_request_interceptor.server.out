@@ -1,0 +1,6 @@
+# Run the service
+bal run http_request_interceptor.bal
+
+Executing Request Interceptor 1
+Executing Request Interceptor 2
+Executing Target Resource
