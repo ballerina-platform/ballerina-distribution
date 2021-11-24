@@ -1408,7 +1408,14 @@
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
-            },
+            }
+        ]
+    },
+    {
+        "title": "REST API Interceptors",
+        "column": 1,
+        "category": "Working Over the Network",
+        "samples": [
             {
                 "name": "Request Interceptor",
                 "url": "http-request-interceptor",
