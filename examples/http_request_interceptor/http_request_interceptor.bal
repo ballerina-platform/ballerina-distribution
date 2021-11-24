@@ -1,5 +1,4 @@
 import ballerina/http;
-import ballerina/io;
 
 // Header name to be set to the request in the request interceptor.
 final string interceptor_header1 = "X-requestHeader1";
@@ -18,7 +17,6 @@ service class RequestInterceptor1 {
     // interceptors. Resource methods are only allowed to return `http:NextService|error?`
     resource function 'default [string... path](http:RequestContext ctx, 
                             http:Request req) returns http:NextService|error? {
-        io:println("Executing Request Interceptor 1");
         // Sets a header to the request inside the interceptor service.
         req.setHeader(interceptor_header1, interceptor_header_value1);
         // Returns the next interceptor or the target service in the pipeline. An error is returned when the call fails.
@@ -36,7 +34,6 @@ service class RequestInterceptor2 {
     // This interceptor is only executed for GET requests with path "/greeting".
     resource function get greeting(http:RequestContext ctx, http:Request req) 
                         returns http:NextService|error? {
-        io:println("Executing Request Interceptor 2");
         req.setHeader(interceptor_header2, interceptor_header_value2);
         return ctx.next();
     }
@@ -56,7 +53,6 @@ service / on interceptorListener {
 
     resource function get greeting(http:Request req, http:Caller caller) 
             returns error? {
-        io:println("Executing Target Resource");
         // Create a new response.
         http:Response res = new;
         // Set the interceptor headers from request
