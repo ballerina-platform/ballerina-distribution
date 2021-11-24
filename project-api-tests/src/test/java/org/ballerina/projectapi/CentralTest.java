@@ -74,7 +74,7 @@ public class CentralTest {
     private String packageCName;
     private String packageDName;
     private String packageSnapshotName;
-    private String orgName = "bc2testorg";
+    private String orgName = "bctestorg";
     private Map<String, String> envVariables;
 
     private static final String DISTRIBUTION_FILE_NAME = "ballerina-" + MAVEN_VERSION;
