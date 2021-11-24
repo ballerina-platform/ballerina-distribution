@@ -62,7 +62,7 @@ public class CentralNegativeTest {
     private String packageAName;
     private Map<String, String> envVariables;
 
-    private static final String ORG_NAME = "bc2testorg";
+    private static final String ORG_NAME = "bctestorg";
     private static final String DISTRIBUTION_FILE_NAME = "ballerina-" + MAVEN_VERSION;
     private static final String DEFAULT_PKG_NAME = "my_package";
     private static final String PROJECT_A = "projectA";
@@ -129,7 +129,7 @@ public class CentralNegativeTest {
             Assert.fail("push command output does not contain any error");
         }
 
-        String expectedError = "ballerina: unauthorized access token for organization: 'bc2testorg'. "
+        String expectedError = "ballerina: unauthorized access token for organization: 'bctestorg'. "
                 + "reason: unauthorized to perform this operation as access token is invalid. "
                 + "check access token set in 'Settings.toml' file.";
         Assert.assertEquals(pushErrors, expectedError);
