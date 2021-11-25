@@ -57,8 +57,8 @@ function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
 // Cleans up the database after running the example.
 function afterExample(jdbc:Client jdbcClient) returns sql:Error? {
     // Cleans the database.
-    sql:ExecutionResult result = 
-            check jdbcClient->execute(`DROP TABLE Customers`);
+    _ = check jdbcClient->execute(`DROP TABLE Customers`);
+    
     // Closes the JDBC client.
     check jdbcClient.close();
 }

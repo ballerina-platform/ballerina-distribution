@@ -57,7 +57,7 @@ public function main() returns error? {
         jdbcClient->query(`SELECT * FROM Customers`);
 
     io:println("Data in Customers table:");
-    error? e = resultStream.forEach(function(record {} result) {
+    check resultStream.forEach(function(record {} result) {
         io:println(result.toString());
     });
 
@@ -68,8 +68,7 @@ public function main() returns error? {
 // Initializes the database as a prerequisite to the example.
 function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
     // Creates a table in the database.
-    sql:ExecutionResult result = 
-        check jdbcClient->execute(`CREATE TABLE Customers(customerId INTEGER
+    _ = check jdbcClient->execute(`CREATE TABLE Customers(customerId INTEGER
             NOT NULL IDENTITY, firstName  VARCHAR(300), lastName  VARCHAR(300),
             registrationID INTEGER, creditLimit DOUBLE, country  VARCHAR(300),
             PRIMARY KEY (customerId))`);
@@ -78,8 +77,8 @@ function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
 // Cleans up the database after running the example.
 function afterExample(jdbc:Client jdbcClient) returns sql:Error? {
     // Cleans the database.
-    sql:ExecutionResult result = 
-            check jdbcClient->execute(`DROP TABLE Customers`);
+    _ = check jdbcClient->execute(`DROP TABLE Customers`);
+    
     // Closes the JDBC client.
     check jdbcClient.close();
 }
