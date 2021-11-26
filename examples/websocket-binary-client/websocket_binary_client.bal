@@ -13,5 +13,4 @@ public function main() returns error? {
    byte[] byteResp = check wsClient->readBinaryMessage();
    string stringResp = check 'string:fromBytes(byteResp);
    io:println(stringResp);
-   return;
 }

@@ -39,5 +39,4 @@ public function main() returns error? {
 
     // Gets the keys of the cache entries after all the keys are invalidated.
     io:println("The keys after invalidating all the keys: ", cache.keys());
-    return;
 }
