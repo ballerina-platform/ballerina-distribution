@@ -1,2 +1,1 @@
 bal run cookie_server.bal
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9095

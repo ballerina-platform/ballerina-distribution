@@ -22,5 +22,4 @@ http:Client securedEP = check new("https://localhost:9090",
 public function main() returns error? {
     string response = check securedEP->get("/foo/bar");
     io:println(response);
-    return;
 }

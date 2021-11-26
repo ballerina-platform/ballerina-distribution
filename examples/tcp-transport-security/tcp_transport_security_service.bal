@@ -24,6 +24,8 @@ service "tcp" on securedListnerEP {
 }
 
 service class EchoService {
+    *tcp:ConnectionService;
+
     remote function onBytes(readonly & byte[] data) returns byte[] {
         io:println("Received message: ", string:fromBytes(data));
         return data;

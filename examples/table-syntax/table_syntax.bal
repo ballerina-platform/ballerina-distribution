@@ -23,6 +23,7 @@ function increaseSalary(int n) {
 public function main() {
     // Retrieves `Employee` with key value `Fred`.
     Employee? e = t["Fred"];
+    io:println(e.toBalString());
 
     increaseSalary(100);
     io:println(t);

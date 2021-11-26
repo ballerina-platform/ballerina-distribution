@@ -1,4 +1,4 @@
 [package]
-org = "bc2testorg"
+org = "bctestorg"
 name = "my_package"
 version = "1.0.0-snapshot"

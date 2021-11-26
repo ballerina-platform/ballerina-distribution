@@ -10,5 +10,4 @@ public function main() returns error? {
     // If the write operation was successful, then, performs a read operation to read the XML content.
     xml readXml = check io:fileReadXml(xmlFilePath);
     io:println(readXml);
-    return;
 }

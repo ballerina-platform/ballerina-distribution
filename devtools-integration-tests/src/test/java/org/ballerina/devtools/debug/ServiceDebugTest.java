@@ -53,12 +53,10 @@ public class ServiceDebugTest extends BaseTestCase {
     public void testModuleServiceDebugScenarios() throws BallerinaTestException {
         String fileName = "hello_service.bal";
         Path filePath = debugTestRunner.testProjectPath.resolve(fileName);
-        int port = findFreePort();
 
-        debugTestRunner.runDebuggeeProgram(debugTestRunner.testProjectPath.toString(), port);
         debugTestRunner.addBreakPoint(new BallerinaTestDebugPoint(filePath, 20));
         debugTestRunner.addBreakPoint(new BallerinaTestDebugPoint(filePath, 24));
-        debugTestRunner.initDebugSession(DebugUtils.DebuggeeExecutionKind.BUILD, port);
+        debugTestRunner.initDebugSession(DebugUtils.DebuggeeExecutionKind.TEST);
 
         // test for debug hits in service level variables
         Pair<BallerinaTestDebugPoint, StoppedEventArguments> debugHitInfo = debugTestRunner.waitForDebugHit(20000);
@@ -80,11 +78,9 @@ public class ServiceDebugTest extends BaseTestCase {
     public void serviceCallStackDebugTest() throws BallerinaTestException {
         String fileName = "hello_service.bal";
         Path filePath = debugTestRunner.testProjectPath.resolve(fileName);
-        int port = findFreePort();
 
-        debugTestRunner.runDebuggeeProgram(debugTestRunner.testProjectPath.toString(), port);
         debugTestRunner.addBreakPoint(new BallerinaTestDebugPoint(filePath, 20));
-        debugTestRunner.initDebugSession(DebugUtils.DebuggeeExecutionKind.BUILD, port);
+        debugTestRunner.initDebugSession(DebugUtils.DebuggeeExecutionKind.TEST);
 
         // Test for service call stack representation
         Pair<BallerinaTestDebugPoint, StoppedEventArguments> debugHitInfo = debugTestRunner.waitForDebugHit(20000);
