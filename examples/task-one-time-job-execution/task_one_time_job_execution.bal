@@ -33,5 +33,4 @@ public function main() returns error? {
 
     // Waits for five seconds.
     runtime:sleep(5);
-    return;
 }

@@ -49,5 +49,4 @@ public function main() returns error? {
 
     io:println(x2);
     io:println(x3);
-    return;
 }
