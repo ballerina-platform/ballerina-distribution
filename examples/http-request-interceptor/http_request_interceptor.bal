@@ -8,13 +8,13 @@ final string interceptor_header2 = "X-requestHeader2";
 final string interceptor_header_value1 = "RequestInterceptor1";
 final string interceptor_header_value2 = "RequestInterceptor2";
 
-// A Request Interceptor service class implementation. It intercepts the Request and adds a header before it dispatched to the 
+// A Request Interceptor service class implementation. It intercepts the request and adds a header before it is dispatched to the 
 // target HTTP Resource. A Request Interceptor service class can have only one resource function.
 service class RequestInterceptor1 {
     *http:RequestInterceptor;
 
-    // A default resource function which will be executed for all requests. `RequestContext` is used to share data between 
-    // interceptors. Resource methods are only allowed to return `http:NextService|error?`
+    // A default resource function, which will be executed for all requests. A `RequestContext` is used to share data between 
+    // interceptors. Resource methods are only allowed to return an `http:NextService|error?`.
     resource function 'default [string... path](http:RequestContext ctx, 
                             http:Request req) returns http:NextService|error? {
         // Sets a header to the request inside the interceptor service.
@@ -24,14 +24,14 @@ service class RequestInterceptor1 {
     }
 }
 
-// Creates a new Request Interceptor
+// Creates a new Request Interceptor.
 RequestInterceptor1 requestInterceptor1 = new;
 
 // Another Request Interceptor service class.
 service class RequestInterceptor2 {
     *http:RequestInterceptor;
 
-    // This interceptor is only executed for GET requests with path "/greeting".
+    // This interceptor is only executed for GET requests with the "/greeting" path.
     resource function get greeting(http:RequestContext ctx, http:Request req) 
                         returns http:NextService|error? {
         req.setHeader(interceptor_header2, interceptor_header_value2);
@@ -39,13 +39,13 @@ service class RequestInterceptor2 {
     }
 }
 
-// Creates another new Request Interceptor
+// Creates another new Request Interceptor.
 RequestInterceptor2 requestInterceptor2 = new;
 
-// Create an HTTP Listener and assign the interceptors as a config parameter. 
+// Creates an HTTP Listener and assigns the interceptors as a config parameter. 
 // Interceptor services will be executed in the configured order.
 listener http:Listener interceptorListener = new http:Listener(9090, config = { 
-    // Interceptor pipeline
+    // Interceptor pipeline.
     interceptors: [requestInterceptor1, requestInterceptor2] 
 });
 
