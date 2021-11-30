@@ -235,11 +235,16 @@ public class HierarchicalPackagesTest {
                 resolve("local").resolve(BALLERINA_ARTIFACT_TYPE).resolve(orgName);
         Path link = Paths.get(envVariables.get("HOME")).resolve(".ballerina").resolve("repositories").
                 resolve("local").resolve(BALLERINA_ARTIFACT_TYPE).resolve(orgName);
-        FileUtils.deleteDirectory(new File(link.toUri()));
+        File linkDir = new File(link.toUri());
+        if (linkDir.exists()) {
+            FileUtils.deleteDirectory(linkDir);
+        }
         Files.createSymbolicLink(link, target);
         buildPackage(packageName, new LinkedList<>());
         // Delete symbolic link for this package in local repository
-        FileUtils.deleteDirectory(new File(link.toUri()));
+        if (linkDir.exists()) {
+            FileUtils.deleteDirectory(linkDir);
+        }
     }
 
     @Test(description = "Verify build package behaviour when there is an updated version for a transitive " +
