@@ -145,7 +145,8 @@ public class HierarchicalPackagesTest {
         }
     }
 
-    @Test(description = "Verify build package behaviour for hierarchical package imports in two consecutive builds.")
+    @Test(description = "Verify build package behaviour for hierarchical package imports in two consecutive builds.",
+            enabled = false)
     public void testConsecutiveBuilds() throws IOException, InterruptedException {
         String packageName = "PackageI";
         // First build
@@ -227,7 +228,7 @@ public class HierarchicalPackagesTest {
     }
 
     @Test(description = "Verify build package behaviour if hierarchical package needs to be pulled from local " +
-            "repository.")
+            "repository.", enabled = false)
     public void testPackageFromLocal() throws IOException, InterruptedException {
         String packageName = "PackageR";
         // Create symbolic link for this package in local repository
