@@ -16,7 +16,7 @@ public function main() {
             <pen><kind>marker</kind><color>blue</color></pen>
         </items>`;
 
-    // `x.<para>` - every element in `x` named `para`.
+    // `x.<items>` - every element in `x` named `items`.
     xml a = x.<items>;
     io:println(a);
 
@@ -24,11 +24,11 @@ public function main() {
     xml b = x/*;
     io:println(b);
 
-    // `x/<para>` - for every element `e` in `x`, every element named para in the children of `e`.
+    // `x/<planner>` - for every element `e` in `x`, every element named `planner` in the children of `e`.
     xml c = x/<planner>;
     io:println(c);
 
-    // `x/<th|td>` - for every element `e` in `x`, every element named `th` or `td` in the 
+    // `x/<planner|pen>` - for every element `e` in `x`, every element named `planner` or `pen` in the
     // children of `e`.
     xml d = x/<planner|pen>;
     io:println(d);
@@ -37,13 +37,13 @@ public function main() {
     xml e = x/<*>;
     io:println(e);
 
-    // x/**/<para>  - for every element `e` in `x`, every element named `para` in 
+    // x/**/<name>  - for every element `e` in `x`, every element named `name` in
     // the descendants of `e`.
     xml f = x/**/<name>;
     io:println(f);
 
-    // x/<para>[0]  - for every element `e` in `x`, first element named `para` in 
-    // The children of `e`.
+    // x/<book>[0]  - for every element `e` in `x`, first element named `book` in
+    // the children of `e`.
     xml g = x/<book>[0];
     io:println(g);
 
