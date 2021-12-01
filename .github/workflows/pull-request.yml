@@ -6,7 +6,6 @@ on:
             - master
             - ballerina-1.1.x
             - ballerina-1.2.x
-            - stage-slbeta5
 
 jobs:
     ubuntu-integration-tests:
