@@ -145,7 +145,8 @@ public class HierarchicalPackagesTest {
         }
     }
 
-    @Test(description = "Verify build package behaviour for hierarchical package imports in two consecutive builds.")
+    @Test(description = "Verify build package behaviour for hierarchical package imports in two consecutive builds.",
+    enabled = false)
     public void testConsecutiveBuilds() throws IOException, InterruptedException {
         String packageName = "PackageI";
         // First build
