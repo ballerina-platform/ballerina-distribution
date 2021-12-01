@@ -13,7 +13,9 @@
   ~ * See the License for the specific language governing permissions and
   ~ * limitations under the License.
   ~ */
-  
+
+apply from: "$rootDir/gradle/javaProject.gradle"
+
 description = 'Ballerina - Central Tests'
 
 configurations {
