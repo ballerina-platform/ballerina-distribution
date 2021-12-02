@@ -21,11 +21,20 @@ import io.ballerina.test.MacOS;
 import io.ballerina.test.Ubuntu;
 import io.ballerina.test.Utils;
 import io.ballerina.test.Windows;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class TestUtils {
@@ -256,6 +265,53 @@ public class TestUtils {
         Assert.assertTrue(Files.isDirectory(projectPath.resolve("src").resolve("module1")));
         Assert.assertTrue(Files.exists(projectPath.resolve("target/bin/module1.jar")));
          */
+    }
+
+    public static void testBBEs(Executor executor, String previousVersion, String previousSpecVersion,
+                                String toolVersion) throws InterruptedException {
+        Path userDir = Paths.get(System.getProperty("user.dir"));
+        Path bbeExamplesPath = userDir.resolve("../../examples");
+        Path bbeJsonFilePath = bbeExamplesPath.resolve("index.json");
+        String cmdName = Utils.getCommandName(toolVersion);
+
+        List<String> bbeTests = new ArrayList<>();
+
+        JSONParser jsonParser = new JSONParser();
+
+        try (FileReader reader = new FileReader(bbeJsonFilePath.toString()))
+        {
+            JSONArray bbeTestData = (JSONArray) jsonParser.parse(reader);
+
+            bbeTestData.forEach(testGroup -> {
+                JSONObject testGroupJsonObject = (JSONObject) testGroup;
+                JSONArray tests = (JSONArray) testGroupJsonObject.get("samples");
+
+                tests.forEach(test -> {
+                    JSONObject testJsonObject = (JSONObject) test;
+                    if (testJsonObject.get("verifyBuild").equals(true) &&
+                            testJsonObject.get("verifyOutput").equals(true)) {
+                        bbeTests.add((String) testJsonObject.get("url"));
+                    }
+                });
+            });
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        bbeTests.forEach(testName -> {
+            Path balFilePath = bbeExamplesPath.resolve(testName);
+
+            executor.executeCommand("version && cd " + balFilePath.toString() + " && " + cmdName + "init && " +
+                    cmdName + "build", false, toolVersion);
+
+            Assert.assertTrue(Files.exists(balFilePath));
+            Assert.assertTrue(Files.exists(balFilePath.resolve("target").resolve("bin").
+                    resolve(testName.replaceAll("-", "_") + ".jar")));
+        });
     }
 
     private static String getSupportedVersion(String toolVersion, String version) {
