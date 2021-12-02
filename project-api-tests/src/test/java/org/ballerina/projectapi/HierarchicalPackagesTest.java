@@ -146,7 +146,7 @@ public class HierarchicalPackagesTest {
     }
 
     @Test(description = "Verify build package behaviour for hierarchical package imports in two consecutive builds.",
-            enabled = false)
+    enabled = false)
     public void testConsecutiveBuilds() throws IOException, InterruptedException {
         String packageName = "PackageI";
         // First build
@@ -228,7 +228,7 @@ public class HierarchicalPackagesTest {
     }
 
     @Test(description = "Verify build package behaviour if hierarchical package needs to be pulled from local " +
-            "repository.", enabled = false)
+            "repository.")
     public void testPackageFromLocal() throws IOException, InterruptedException {
         String packageName = "PackageR";
         // Create symbolic link for this package in local repository
@@ -240,6 +240,8 @@ public class HierarchicalPackagesTest {
         if (linkDir.exists()) {
             FileUtils.deleteDirectory(linkDir);
         }
+
+        Files.createDirectories(link.getParent());
         Files.createSymbolicLink(link, target);
         buildPackage(packageName, new LinkedList<>());
         // Delete symbolic link for this package in local repository
