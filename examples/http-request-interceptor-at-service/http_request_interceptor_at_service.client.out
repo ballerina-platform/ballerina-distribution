@@ -1,5 +1,5 @@
 # Invoke the service.
-curl -v http://localhost:9090/greeting
+curl -v http://localhost:9090/user/greeting
 *   Trying ::1...
 * TCP_NODELAY set
 * Connected to localhost (::1) port 9090 (#0)
