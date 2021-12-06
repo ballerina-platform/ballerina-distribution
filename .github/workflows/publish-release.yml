@@ -117,24 +117,8 @@ jobs:
         run: |
           openssl dgst -sha256 -out ballerina-linux-installer-x64-${{ steps.version-set.outputs.version }}.deb.sha256 installers/linux-deb/target/ballerina-linux-installer-x64-*.deb
           openssl dgst -sha256 -out ballerina-linux-installer-x64-${{ steps.version-set.outputs.version }}.rpm.sha256 installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-linux-installer-x64-*.rpm
-      - name: Upload Linux deb Hashes
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_name: ballerina-linux-installer-x64-${{ steps.version-set.outputs.version }}.deb.sha256
-          asset_path: ballerina-linux-installer-x64-${{ steps.version-set.outputs.version }}.deb.sha256
-          asset_content_type: application/octet-stream
-      - name: Upload Linux rpm Hashes
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_name: ballerina-linux-installer-x64-${{ steps.version-set.outputs.version }}.rpm.sha256
-          asset_path: ballerina-linux-installer-x64-${{ steps.version-set.outputs.version }}.rpm.sha256
-          asset_content_type: application/octet-stream
+          openssl dgst -sha256 -out ballerina-${{ steps.version-set.outputs.version }}.zip.sha256 ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.version }}.zip
+          openssl dgst -sha256 -out ballerina-${{ steps.version-set.outputs.sversion }}.zip.sha256 ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.sversion }}.zip
       - name: Upload zip artifacts
         uses: actions/upload-release-asset@v1
         env:
@@ -188,6 +172,42 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: ballerina-windows-${{ steps.version-set.outputs.version }}.zip
           asset_path: ballerina/build/distributions/ballerina-windows-${{ steps.version-set.outputs.version }}.zip
+          asset_content_type: application/octet-stream
+      - name: Upload Linux deb Hashes
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_name: ballerina-linux-installer-x64-${{ steps.version-set.outputs.version }}.deb.sha256
+          asset_path: ballerina-linux-installer-x64-${{ steps.version-set.outputs.version }}.deb.sha256
+          asset_content_type: application/octet-stream
+      - name: Upload Linux rpm Hashes
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_name: ballerina-linux-installer-x64-${{ steps.version-set.outputs.version }}.rpm.sha256
+          asset_path: ballerina-linux-installer-x64-${{ steps.version-set.outputs.version }}.rpm.sha256
+          asset_content_type: application/octet-stream
+      - name: Upload Ballerina zip Hashes
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_name: ballerina-${{ steps.version-set.outputs.version }}.zip.sha256
+          asset_path: ballerina-${{ steps.version-set.outputs.version }}.zip.sha256
+          asset_content_type: application/octet-stream
+      - name: Upload ballerina Short Name zip Hashes
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_name: ballerina-${{ steps.version-set.outputs.sversion }}.zip.sha256
+          asset_path: ballerina-${{ steps.version-set.outputs.sversion }}.zip.sha256
           asset_content_type: application/octet-stream
       - name: Post release PR
         env:
