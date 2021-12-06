@@ -1,0 +1,53 @@
+# Invoke the service.
+curl -v http://localhost:9090/cache
+> GET /cache HTTP/1.1
+> Host: localhost:9090
+> User-Agent: curl/7.64.1
+> Accept: */*
+>
+< HTTP/1.1 200 OK
+< etag: 620328e8
+< last-modified: Fri, 26 Nov 2021 04:22:32 GMT
+< content-type: application/json
+< cache-control: must-revalidate,public,max-age=15
+< date: Fri, 26 Nov 2021 09:52:32 +0530
+< server: ballerina
+< content-length: 27
+<
+{"message":"Hello, World!"}
+
+curl -v http://localhost:9090/cache
+> GET /cache HTTP/1.1
+> Host: localhost:9090
+> User-Agent: curl/7.64.1
+> Accept: */*
+>
+< HTTP/1.1 200 OK
+< etag: 620328e8
+< last-modified: Fri, 26 Nov 2021 04:22:32 GMT
+< content-type: application/json
+< cache-control: must-revalidate,public,max-age=15
+< date: Fri, 26 Nov 2021 09:52:32 +0530
+< age: 8
+< server: ballerina
+< content-length: 27
+<
+{"message":"Hello, World!"}
+
+curl -v http://localhost:9090/cache
+> GET /cache HTTP/1.1
+> Host: localhost:9090
+> User-Agent: curl/7.64.1
+> Accept: */*
+>
+< HTTP/1.1 200 OK
+< content-type: application/json
+< cache-control: must-revalidate,public,max-age=15
+< date: Fri, 26 Nov 2021 09:52:54 +0530
+< etag: 620328e8
+< last-modified: Fri, 26 Nov 2021 04:22:54 GMT
+< age: 0
+< server: ballerina
+< content-length: 27
+<
+{"message":"Hello, World!"}
