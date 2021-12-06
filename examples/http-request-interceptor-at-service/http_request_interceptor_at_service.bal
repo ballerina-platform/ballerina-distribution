@@ -59,8 +59,7 @@ listener http:Listener interceptorListener = new http:Listener(9090, config = {
 
 // Engage interceptors at service level.
 @http:ServiceConfig {
-    // When interceptors are enaged at service level. The base path of the interceptor
-    // services is same as the target service base path.
+    // The base path of interceptor services is same as the target service.
     interceptors: [requestInterceptor3]
 }
 service /user on interceptorListener {
