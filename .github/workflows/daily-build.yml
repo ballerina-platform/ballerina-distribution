@@ -50,6 +50,8 @@ jobs:
         run: |
           openssl dgst -sha256 -out ballerina-linux-installer-x64-${{ steps.project-version.outputs.version }}.deb.sha256 installers/linux-deb/target/ballerina-linux-installer-x64-*.deb
           openssl dgst -sha256 -out ballerina-linux-installer-x64-${{ steps.project-version.outputs.version }}.rpm.sha256 installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-linux-installer-x64-*.rpm
+          openssl dgst -sha256 -out ballerina-${{ steps.project-version.outputs.version }}.zip.sha256 ballerina/build/distributions/ballerina-${{ steps.project-version.outputs.version }}.zip
+          openssl dgst -sha256 -out ballerina-${{ steps.project-version.outputs.sversion }}.zip.sha256 ballerina/build/distributions/ballerina-${{ steps.project-version.outputs.sversion }}.zip
       - name: Archive Ballerina ZIP
         uses: actions/upload-artifact@v2
         with:
@@ -60,16 +62,6 @@ jobs:
         with:
           name: Ballerina Short Name ZIP
           path: ballerina/build/distributions/ballerina-sl*.zip
-      - name: Archive Linux deb Hashes
-        uses: actions/upload-artifact@v2
-        with:
-          name: Linux deb Hashes
-          path: ballerina-linux-installer-x64-${{ steps.project-version.outputs.version }}.deb.sha256
-      - name: Archive Linux rpm Hashes
-        uses: actions/upload-artifact@v2
-        with:
-          name: Linux rpm Hashes
-          path: ballerina-linux-installer-x64-${{ steps.project-version.outputs.version }}.rpm.sha256
       - name: Archive Linux deb
         uses: actions/upload-artifact@v2
         with:
@@ -90,6 +82,26 @@ jobs:
         with:
           name: Windows Installer ZIP
           path: ballerina/build/distributions/ballerina-windows-*.zip
+      - name: Archive Linux deb Hashes
+        uses: actions/upload-artifact@v2
+        with:
+          name: Linux deb Hashes
+          path: ballerina-linux-installer-x64-${{ steps.project-version.outputs.version }}.deb.sha256
+      - name: Archive Linux rpm Hashes
+        uses: actions/upload-artifact@v2
+        with:
+          name: Linux rpm Hashes
+          path: ballerina-linux-installer-x64-${{ steps.project-version.outputs.version }}.rpm.sha256
+      - name: Archive Ballerina Zip Hashes
+        uses: actions/upload-artifact@v2
+        with:
+          name: Ballerina Zip Hashes
+          path: ballerina-${{ steps.project-version.outputs.version }}.zip.sha256
+      - name: Archive Ballerina Short Name Hashes
+        uses: actions/upload-artifact@v2
+        with:
+          name: Ballerina Short Name Hashes
+          path: ballerina-${{ steps.project-version.outputs.sversion }}.zip.sha256
       - name: Install Ballerina DEB
         run: sudo dpkg -i installers/linux-deb/target/ballerina-linux-installer-x64-*.deb
       - name: Run Installer Tests
