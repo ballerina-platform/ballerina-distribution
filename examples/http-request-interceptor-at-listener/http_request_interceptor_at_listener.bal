@@ -52,16 +52,16 @@ listener http:Listener interceptorListener = new http:Listener(9090, config = {
 
 service / on interceptorListener {
 
-    resource function get greeting(http:Request req, http:Caller caller) 
-            returns error? {
+    resource function get greeting(http:Request req) 
+            returns http:Response|error? {
         // Create a new response.
-        http:Response res = new;
+        http:Response response = new;
         // Set the interceptor headers from request
-        res.setHeader(interceptor_header1, 
+        response.setHeader(interceptor_header1, 
                             check req.getHeader(interceptor_header1));
-        res.setHeader(interceptor_header2, 
+        response.setHeader(interceptor_header2, 
                             check req.getHeader(interceptor_header2));
-        res.setTextPayload("Greetings!");
-        check caller->respond(res);
+        response.setTextPayload("Greetings!");
+        return response;
     }
 }

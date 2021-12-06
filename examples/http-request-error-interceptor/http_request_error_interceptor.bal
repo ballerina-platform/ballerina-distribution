@@ -78,15 +78,15 @@ listener http:Listener interceptorListener = new http:Listener(9090, config = {
 }
 service / on interceptorListener {
 
-    resource function get greeting(http:Request req, http:Caller caller) 
-            returns error? {
+    resource function get greeting(http:Request req) 
+            returns http:Response|error? {
         io:println("Executing Target Resource");
         // Creates a new response.
-        http:Response res = new;
+        http:Response response = new;
         // Sets the headers from the request.
-        res.setHeader(interceptor_check_header, 
+        response.setHeader(interceptor_check_header, 
                         check req.getHeader(interceptor_check_header));
-        res.setTextPayload("Greetings!");
-        check caller->respond(res);
+        response.setTextPayload("Greetings!");
+        return response;
     }
 }
