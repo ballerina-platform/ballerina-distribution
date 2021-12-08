@@ -189,6 +189,9 @@ subprojects {
         /* Ballerina OpenAPI */
         ballerinaOpenAPILibs "io.ballerina:module-ballerina-openapi:${openapiVersion}"
 
+        /* Ballerina AsyncAPI */
+        ballerinaStdLibs "io.ballerina:module-ballerina-asyncapi:${asyncapiVersion}"
+
         /* Code to cloud extensions */
         ballerinaC2cLibs "io.ballerina:c2c-ballerina:${c2cVersion}"
         ballerinaC2cLibs "org.ballerinax.azurefunctions:azurefunctions-extension-bala:${azFunctionsVersion}"
