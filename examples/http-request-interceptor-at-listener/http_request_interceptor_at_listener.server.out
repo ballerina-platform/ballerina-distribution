@@ -1,0 +1,2 @@
+# Run the service
+bal run http_request_interceptor_at_listener.bal
