@@ -2801,7 +2801,7 @@
                 "name": "XML JSON Conversion",
                 "url": "xml-json-conversion",
                 "verifyBuild": true,
-                "verifyOutput": false,
+                "verifyOutput": true,
                 "isLearnByExample": false
             }
         ]
