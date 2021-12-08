@@ -1178,6 +1178,14 @@
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "Caching Client",
+                "url": "http-caching-client",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -2824,7 +2832,7 @@
                 "name": "XML JSON Conversion",
                 "url": "xml-json-conversion",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "isLearnByExample": false
             }
         ]

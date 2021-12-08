@@ -1,3 +1,3 @@
 bal run inter_worker_failure_propagation.bal
 42
-error: maximum count exceeded {}
+error: maximum count exceeded

@@ -66,8 +66,8 @@ function beforeExample() returns sql:Error? {
 // Cleans up the database after running the example.
 function afterExample(mysql:Client mysqlClient) returns sql:Error? {
     // Cleans the database.
-    sql:ExecutionResult result = 
-            check mysqlClient->execute(`DROP DATABASE MYSQL_BBE`);
+    _ = check mysqlClient->execute(`DROP DATABASE MYSQL_BBE`);
+    
     // Closes the MySQL client.
     check mysqlClient.close();
 }

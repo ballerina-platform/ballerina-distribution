@@ -23,7 +23,7 @@ public function main() returns error? {
     }
 
     // Closes the POP3 store, which would close the TCP connection.
-    email:Error? closeStatus = popClient->close();
+    check popClient->close();
 
     // Creates the client with the connection parameters, host, username, and
     // password. An error is received in a failure. The default port number
@@ -46,6 +46,6 @@ public function main() returns error? {
     }
 
     // Closes the IMAP store which would close the TCP connection.
-    closeStatus = imapClient->close();
+    check imapClient->close();
 
 }

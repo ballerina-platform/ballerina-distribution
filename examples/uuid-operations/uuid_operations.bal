@@ -46,5 +46,4 @@ public function main() returns error? {
     uuid:Uuid uuidRecord2 = check uuid:toRecord(
                         [67,151,70,94,53,249,17,235,173,193,2,66,172,18,0,2]);
     io:println("UUID record: ", uuidRecord2);
-    return;
 }

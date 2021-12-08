@@ -45,5 +45,4 @@ public function main() returns error? {
     // Generates a nil UUID as a UUID record.
     uuid:Uuid nilUuidRecord = uuid:nilAsRecord();
     io:println("Nil UUID as a record: ", nilUuidRecord);
-    return;
 }

@@ -37,7 +37,7 @@ public function main() returns error? {
     task:JobId id2 = check task:scheduleJobRecurByFrequency(
                             new Job(0, "2nd Job"), 3);
     // Schedules the one-time job at the specified time.
-    task:JobId id3 = check task:scheduleOneTimeJob(new Job(0, "3rd Job"), time);
+    _ = check task:scheduleOneTimeJob(new Job(0, "3rd Job"), time);
 
     // Waits for 3 seconds.
     runtime:sleep(3);

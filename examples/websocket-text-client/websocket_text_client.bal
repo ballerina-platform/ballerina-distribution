@@ -11,5 +11,4 @@ public function main() returns error? {
    // Read a text message echoed from the server using [readTextMessage](https://lib.ballerina.io/ballerina/websocket/latest/clients/Client#readTextMessage).
    string textResp = check wsClient->readTextMessage();
    io:println(textResp);
-   return;
 }

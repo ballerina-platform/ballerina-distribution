@@ -29,9 +29,8 @@ public function main() returns error? {
     time:Civil time = time:utcToCivil(newTime);
 
     // Schedules the one-time job at the specified time.
-    task:JobId result = check task:scheduleOneTimeJob(new Job(0), time);
+    _ = check task:scheduleOneTimeJob(new Job(0), time);
 
     // Waits for five seconds.
     runtime:sleep(5);
-    return;
 }

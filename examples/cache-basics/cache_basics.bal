@@ -22,5 +22,4 @@ public function main() returns error? {
     // Gets the size of the cache.
     int size = cache.size();
     io:println("The cache size: ", size);
-    return;
 }
