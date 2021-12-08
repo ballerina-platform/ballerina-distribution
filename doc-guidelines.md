@@ -196,18 +196,4 @@ After writing a Ballerina By Example, you can also run it to test and verify if 
 
 ## Ballerina API Documentation Guidelines
 
-1. Study the basics and best practices in writing API doc comments. For information, go to [Documenting Ballerina Code](https://ballerina.io/learn/documenting-ballerina-code/).
-
-2. API docs need to explain what the API is about, when, and how it is used. It should not try to explain language features (e.g., error handling, concurrency, etc). The language-level features will have to be covered in the User Guide. 
-
-3. Module-level documentation page needs to introduce the general concept of the API and the main APIs that are used. In the I/O API scenario, this would be the aspects such as the channels concept, how we have different types of channels etc., and their common behavior. 
-
-    For example, [Rust’s I/O API documentation](https://doc.rust-lang.org/std/io/index.html) is a good example for this. After the module overview, for each object, record, function, a separate documentation page is added, which will contain their individual details and also their specific examples. For example, see [Struct std::io::Cursor](https://doc.rust-lang.org/std/io/struct.Cursor.html) and [Struct std::io::BufReader](https://doc.rust-lang.org/std/io/struct.BufReader.html). Some APIs that were featured in the main module page will need to again have their own examples in their respective page. Therefore, there will be some overlap of information in that area. 
-
-4. The examples in the API Docs need to be short. Mostly, shorter than BBEs. They usually explain a quick API operation and not a complete, end to end scenario. The same guidelines for BBEs as above should be used for API Docs to keep the examples small and clear. 
-
-5. You should not try to refer to examples in BBEs here with links, but rather have separate examples. This is because the required examples will probably not match the examples in the BBEs in the first place. The API docs will probably have more examples, when it explains each API operation etc. Also, users will not want to click another link and navigate away from the API docs to a separate BBE page. Rather, they will need to see the example in the same place where the API is described. 
-
-6. The examples should be self-contained. They should contain a fully working program when an example is given, such as all the imports, and a main function. The Ballerina documentation generator can later remove any redundant code segments in a post-processing operation. This is required, since this code should be runnable from the documentation website. 
-
-7. In scenarios such as error value returns, all possible error types and their scenarios should be mentioned clearly. There should not be statements such as “returns error when something goes wrong”. 
+For Ballerina API Documentation Guidelines, see the [Standard Library API Documentation Guide](https://github.com/ballerina-platform/ballerina-standard-library/blob/main/docs/api-documentation-guide.md).
