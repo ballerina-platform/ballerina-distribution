@@ -11,6 +11,10 @@ on:
         description: 'The text that will be suffixed to the Git tag. e.g., rc1'
         required: false
         default: ''
+      skipBBEBuild:
+        description: 'Skip BBE verify build task'
+        required: false
+        default: 'false'
 
 jobs:
   publish-release:
@@ -56,7 +60,11 @@ jobs:
           packagePAT: ${{ secrets.BALLERINA_BOT_TOKEN }}
           devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
         run: |
-          ./gradlew build -Pversion=${VERSION}
+          if [ "${{ github.event.inputs.skipBBEBuild }}" == true ]; then
+            ./gradlew build -Pversion=${VERSION} -x :ballerina:testExamples
+          else
+            ./gradlew build -Pversion=${VERSION}
+          fi
           ./gradlew release -Prelease.useAutomaticVersion=true -x test
       - name: Checkout docker repo
         uses: actions/checkout@v2
