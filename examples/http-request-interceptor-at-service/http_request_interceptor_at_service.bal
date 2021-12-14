@@ -29,7 +29,7 @@ service class RequestInterceptor2 {
     // This interceptor is only executed for GET requests with the relative path "greeting". 
     resource function get greeting(http:RequestContext ctx, 
                             http:Request req) returns http:NextService|error? {
-        req.setHeader(interceptor_header3, interceptor_header_value3);
+        req.setHeader(interceptor_header2, interceptor_header_value2);
         return ctx.next();
     }
 }
