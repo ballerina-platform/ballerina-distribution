@@ -308,3 +308,11 @@ jobs:
           asset_name: ballerina-windows-installer-x64-${{ needs.publish-release.outputs.project-version }}.msi
           asset_path: w\target\msi\ballerina-windows-installer-x64-${{ needs.publish-release.outputs.project-version }}.msi
           asset_content_type: application/octet-stream
+      - name: Install Ballerina msi
+        run: msiexec /i w\target\msi\ballerina-windows-installer-x64-${{ needs.publish-release.outputs.project-version }}.msi /quiet /qr
+        shell: cmd
+      - name: Run Installer Tests
+        working-directory: .\ballerina-test-automation\installer-test
+        run: |
+          $env:Path += ";C:\Program Files\Ballerina\bin"
+          .\..\gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
