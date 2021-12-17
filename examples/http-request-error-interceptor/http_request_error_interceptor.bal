@@ -35,18 +35,6 @@ service class RequestInterceptor2 {
 
 RequestInterceptor2 requestInterceptor2 = new;
 
-service class RequestInterceptor3 {
-    *http:RequestInterceptor;
-
-    resource function get greeting(http:RequestContext ctx) 
-            returns http:NextService|error? {
-        io:println("Executing Request Interceptor 3");
-        return ctx.next();
-    }
-}
-
-RequestInterceptor3 requestInterceptor3 = new;
-
 // A Request Error Interceptor service class implementation. It intercepts the request when an error occurrs in the interceptor execution,
 // and adds a header before it is dispatched to the target HTTP resource. Also, a Request Error Interceptor service class can have only one resource function.
 service class RequestErrorInterceptor {
@@ -73,9 +61,6 @@ listener http:Listener interceptorListener = new http:Listener(9090, config = {
                    requestErrorInterceptor] 
 });
 
-@http:ServiceConfig {
-    interceptors: [requestInterceptor3]
-}
 service / on interceptorListener {
 
     resource function get greeting(http:Request req) 

@@ -8,5 +8,4 @@ error: Http header does not exist
            RequestInterceptor1:$default$**(http_request_error_interceptor.bal:18)
 Executing Request Error Interceptor
 Error occurred : Http header does not exist
-Executing Request Interceptor 3
 Executing Target Resource
