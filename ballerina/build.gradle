@@ -257,6 +257,10 @@ task packageDist(type: Zip) {
 
     into("${parentDir}") {
         from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+        exclude "/LICENSE"
+    }
+    into("${parentDir}") {
+        from "LICENSE"
     }
     into("${parentDir}/examples") {
         from "${project.rootDir}/examples/"
@@ -313,6 +317,7 @@ task packageDistZip(type: Zip) {
         exclude "distributions/ballerina-version"
         exclude "distributions/installer-version"
         exclude "/bin/version.txt"
+        exclude "/LICENSE"
 
     }
     into("${parentDir}") {
@@ -323,6 +328,9 @@ task packageDistZip(type: Zip) {
     }
 
     /* Files */
+    into("${parentDir}/distributions/ballerina-${shortVersion}") {
+        from "LICENSE"
+    }
     into("${parentDir}/distributions/ballerina-${shortVersion}/bin") {
         from "lib/version.txt"
         fileMode = 0644
@@ -392,6 +400,7 @@ task packageDistLinux(type: Zip) {
         exclude "distributions/installer-version"
         exclude "/bin/bal.bat"
         exclude "/bin/version.txt"
+        exclude "/LICENSE"
     }
     into("${parentDir}") {
         from "../resources/tools"
@@ -401,6 +410,9 @@ task packageDistLinux(type: Zip) {
     }
 
     /* Files */
+    into("${parentDir}/distributions/ballerina-${shortVersion}") {
+        from "LICENSE"
+    }
     into("${parentDir}/distributions/ballerina-${shortVersion}/bin") {
         from "lib/version.txt"
         fileMode = 0644
@@ -475,9 +487,13 @@ task packageDistMac(type: Zip) {
         exclude "distributions/installer-version"
         exclude "/bin/bal.bat"
         exclude "/bin/version.txt"
+        exclude "/LICENSE"
     }
 
     /* Files */
+    into("${parentDir}/distributions/ballerina-${shortVersion}") {
+        from "LICENSE"
+    }
     into("${parentDir}/distributions/ballerina-${shortVersion}/bin") {
         from "lib/version.txt"
         fileMode = 0644
@@ -553,9 +569,13 @@ task packageDistWindows(type: Zip) {
         exclude "distributions/installer-version"
         exclude "/bin/bal"
         exclude "/bin/version.txt"
+        exclude "/LICENSE"
     }
 
     /* Files */
+    into("${parentDir}/distributions/ballerina-${shortVersion}") {
+        from "LICENSE"
+    }
     into("${parentDir}/distributions/ballerina-${shortVersion}/bin") {
         from "lib/version.txt"
         fileMode = 0644

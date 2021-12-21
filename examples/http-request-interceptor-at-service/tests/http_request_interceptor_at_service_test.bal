@@ -8,5 +8,4 @@ function testFunc() returns error? {
     test:assertEquals(check res.getTextPayload(), "Greetings!");
     test:assertEquals(check res.getHeader("X-requestHeader1"), "RequestInterceptor1");
     test:assertEquals(check res.getHeader("X-requestHeader2"), "RequestInterceptor2");
-    test:assertEquals(check res.getHeader("X-requestHeader3"), "RequestInterceptor3");
 }

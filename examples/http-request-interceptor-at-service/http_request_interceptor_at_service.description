@@ -1,5 +1,4 @@
-// When we want to engage a `RequestInterceptor` for a specific service path, we can engage interceptors at
-// service level through `ServiceConfig` annotation. The interceptors engaged at service level will have the 
-// base path same as the target service. When we have interceptors engaged in both listener and service levels,
-// service level interceptors will be executed after listener level interceptors.
+// When you want to engage a `RequestInterceptor` for a specific service path, you can engage interceptors at
+// the service level through the `ServiceConfig` annotation. The interceptors engaged at the service level will have the 
+// base path same as the target service.
 // For more information, see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).

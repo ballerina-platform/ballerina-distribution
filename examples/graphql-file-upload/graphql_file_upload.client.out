@@ -1,11 +1,10 @@
 # Send a HTTP multipart request to upload single file via the GraphQL endpoint using a cURL command.
-# As the first part of the request, set a field named `operations` with a `JSON-encoded` map value.
-# The `operations` map value is similar to a standard GraphQL POST request, where all the variable values related to file upload are null.
+# The first part of the request is `operations` that includes a `JSON-encoded` map value.
+# The `operations` map value is similar to a standard GraphQL POST request, where all the variable values related to file upload are `null`.
 # `operations`: { "query": "mutation($file: Upload!) { singleFileUpload(file: $file) }", "variables": {"file": null} }
 
-# The second part of the request is `map` field that includes a `JSON-encoded` map value.
-# The `key` is the file multipart form field name.
-# The `value` is an array of paths where the files occurred in the `operations`.
+# The second part of the request is `map` field that includes a `JSON encoded` map of where files occurred in the operations
+# The `key` is file field name and the `value` is an array of paths where the files occurred in the `operations`.
 # `map`: { “0”: ["file"] }
 
 # File can be added to the next part of the request with a unique, arbitrary field name.
@@ -23,7 +22,7 @@
 
 # Same as the single file upload, the `map` value is a JSON encoded map of paths where files occurred in the `operations`.
 # Since the `operations` has an array of `null` values, array index is included in the path value.
-# In `file.0`, `0` is the array index.
+# Ex: In `file.0`, `0` is the array index.
 # `map`: { "0": ["file.0"], "1": ["file.1"]}
 
 # Files can be added to the next fields of the request with a unique, arbitrary field name.
