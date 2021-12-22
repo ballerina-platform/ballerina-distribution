@@ -47,7 +47,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Ballerina Short Name ZIP
-          path: ballerina/build/distributions/ballerina-sl*.zip
+          path: ballerina/build/distributions/ballerina-22*.zip
       - name: Archive Linux installer ZIP
         uses: actions/upload-artifact@v2
         with:
