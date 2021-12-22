@@ -55,8 +55,8 @@ task centralTests {
         systemProperty "maven.version", "$version"
         systemProperty "examples.dir", "$buildDir/../../examples"
         systemProperty "line.check.extensions", ".java, .bal"
-        systemProperty "short.version", "$shortVersion"
-        systemProperty "server.zip", "$buildDir/../../ballerina/build/distributions/ballerina-${shortVersion}.zip"
+        systemProperty "short.version", "$version".split("-")[2]
+        systemProperty "server.zip", "$buildDir/../../ballerina/build/distributions/ballerina-${System.getProperty("short.version")}.zip"
 
         useTestNG() {
             suites 'src/test/resources/testng.xml'

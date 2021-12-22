@@ -24,7 +24,7 @@ jobs:
       - name: Get project version
         id: project-version
         run: |
-          SHORT_VERSION=$((grep -w 'shortVersion' | cut -d= -f2) < gradle.properties)
+          SHORT_VERSION=$((grep -w "version" | cut -d= -f2 | cut -d- -f3) < gradle.properties)
           RELEASE_VERSION=$((grep -w "version" | cut -d= -f2) < gradle.properties)
           echo "::set-output name=version::$RELEASE_VERSION"
           echo "::set-output name=sversion::$SHORT_VERSION"
