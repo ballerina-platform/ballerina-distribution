@@ -26,6 +26,7 @@ description = 'Ballerina - Tools'
 ext {
     jreLocation = "downloads/ballerina-jre-artifacts-zip/"
     distributionName = "ballerina"
+    shortVersion = "${version}".split("-")[2]
 }
 
 configurations {

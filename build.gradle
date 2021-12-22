@@ -27,7 +27,7 @@ description = 'Ballerina - Tools - Parent'
 
 ext {
     ballerinaLangVersion = project.ballerinaLangVersion
-    shortVersion = project.shortVersion
+    shortVersion = project.version.split("-")[2]
     awslambdaVersion = project.awslambdaVersion
     azFunctionsVersion = project.azFunctionsVersion
     dockerVersion = project.dockerVersion
