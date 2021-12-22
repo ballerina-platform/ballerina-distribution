@@ -321,8 +321,10 @@ public class TestUtils {
         if (version.contains(TestUtils.SWAN_LAKE_KEYWORD)) {
             if (version.contains("alpha") || version.contains("beta")) {
                 return "sl" + version.split("-")[2];
+            } else if (version.contains("preview")) {
+                return "slp" + version.replace("swan-lake-preview", "");
             }
-            return "slp" + version.replace("swan-lake-preview", "");
+            return version.split("-")[2];
         }
         return version;
     }
