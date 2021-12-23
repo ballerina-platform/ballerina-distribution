@@ -1,0 +1,985 @@
+[
+  {
+    "title": "Hello World",
+    "column": 0,
+    "category": "Language Concepts",
+    "samples": [
+      {
+        "name": "Hello World Main",
+        "url": "hello-world",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Hello World Service",
+        "url": "hello-world-service",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "disablePlayground": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Basics",
+    "column": 0,
+    "category": "Language Concepts",
+    "samples": [
+      {
+        "name": "Programs and Modules",
+        "url": "programs-and-modules",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Variables and Types",
+        "url": "variables-and-types",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Identifiers",
+        "url": "identifiers",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Simple Basic Types",
+    "column": 0,
+    "category": "Language Concepts",
+    "samples": [
+      {
+        "name": "Integers",
+        "url": "integers",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Floating Point Numbers",
+        "url": "floating-point-numbers",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Decimal Type",
+        "url": "decimal-type",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Nil",
+        "url": "nil",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Strings",
+    "column": 0,
+    "category": "Language Concepts",
+    "samples": [
+      {
+        "name": "Strings",
+        "url": "strings",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Conditional Statements",
+    "column": 0,
+    "category": "Language Concepts",
+    "samples": [
+      {
+        "name": "Booleans and Conditionals",
+        "url": "booleans",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Match Statement",
+        "url": "match-statement",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Functions",
+    "column": 0,
+    "category": "Language Concepts",
+    "samples": [
+      {
+        "name": "Functions",
+        "url": "functions",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Function Values",
+        "url": "function-values",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Iteration",
+    "column": 0,
+    "category": "Language Concepts",
+    "samples": [
+      {
+        "name": "Foreach Statement",
+        "url": "foreach-statement",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "While Statement",
+        "url": "while-statement",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "disablePlayground": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Lang Library",
+    "column": 0,
+    "category": "Language Concepts",
+    "samples": [
+      {
+        "name": "Langlib Functions",
+        "url": "langlib-functions",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Types and Typing",
+    "column": 0,
+    "category": "Language Concepts",
+    "samples": [
+      {
+        "name": "Arrays",
+        "url": "arrays",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Binary Data",
+        "url": "binary-data",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Structural Typing",
+        "url": "structural-typing",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "disablePlayground": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Unions",
+        "url": "unions",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Errors",
+        "url": "error-reporting",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Anydata Type",
+        "url": "anydata-type",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Any Type",
+        "url": "any-type",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Type Definitions",
+        "url": "type-definitions",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Covariance",
+        "url": "covariance",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Type Inference ",
+        "url": "type-inference",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Mappings",
+    "column": 1,
+    "category": "Language Concepts",
+    "samples": [
+      {
+        "name": "Maps",
+        "url": "maps",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Records",
+        "url": "records",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Records",
+    "column": 1,
+    "category": "Language Concepts",
+    "samples": [
+      {
+        "name": "Optional Fields",
+        "url": "optional-fields",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Open Records",
+        "url": "open-records",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Controlling Openness",
+        "url": "controlling-openness",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Objects",
+    "column": 1,
+    "category": "Language Concepts",
+    "samples": [
+      {
+        "name": "Object",
+        "url": "object",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Defining Classes",
+        "url": "defining-classes",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Init Return Type",
+        "url": "init-return-type",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Error Handling",
+    "column": 1,
+    "category": "Language Concepts",
+    "samples": [
+      {
+        "name": "Error Handling",
+        "url": "error-handling",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Check Expression",
+        "url": "check-expression",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Error Subtyping",
+        "url": "error-subtyping",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Panics",
+        "url": "panics",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Ignoring Return Values and Errors",
+    "column": 1,
+    "category": "Language Concepts",
+    "samples": [
+      {
+        "name": "Ignoring Return Values and Errors",
+        "url": "ignoring-return-values-and-errors",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Mutability and Identity",
+    "column": 1,
+    "category": "Language Concepts",
+    "samples": [
+      {
+        "name": "Identity",
+        "url": "identity",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Const and Final ",
+        "url": "const-and-final",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Enumerations",
+        "url": "enumerations",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Immutability",
+        "url": "immutability",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "disablePlayground": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "JSON",
+    "column": 1,
+    "category": "Language Concepts",
+    "samples": [
+      {
+        "name": "JSON Type",
+        "url": "json-type",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Working directly with JSON",
+        "url": "working-directly-with-json",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Match Statement With Maps",
+        "url": "match-statement-with-maps",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Converting From User-Defined Type to JSON",
+        "url": "converting-from-user-defined-type-to-json",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Converting From JSON to User-Defined Type",
+        "url": "converting-from-json-to-user-defined-type",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Converting to User-Defined Type",
+        "url": "converting-to-user-defined-type",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Resource Method Typing",
+        "url": "resource-method-typing",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "disablePlayground": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "JSON Numbers",
+        "url": "json-numbers",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Tables",
+    "column": 2,
+    "category": "Language Concepts",
+    "samples": [
+      {
+        "name": "Table Syntax",
+        "url": "table-syntax",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Multiple Key Fields",
+        "url": "multiple-key-fields",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Structured Keys",
+        "url": "structured-keys",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Query Expressions",
+    "column": 2,
+    "category": "Language Concepts",
+    "samples": [
+      {
+        "name": "Query Expressions",
+        "url": "query-expressions",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Destructuring Records",
+        "url": "destructuring-records",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Let Clause",
+        "url": "let-clause",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Ordering",
+        "url": "ordering",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Limit Clause",
+        "url": "limit-clause",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Querying Tables",
+        "url": "querying-tables",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Creating Tables With Query",
+        "url": "creating-tables-with-query",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Join Clause",
+        "url": "join-clause",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Stream Type",
+        "url": "stream-type",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Querying With Streams",
+        "url": "querying-with-streams",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Backtick Templates",
+    "column": 2,
+    "category": "Language Concepts",
+    "samples": [
+      {
+        "name": "Raw Templates",
+        "url": "raw-templates",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Backtick Templates",
+        "url": "backtick-templates",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "XML Templates",
+        "url": "xml-templates",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "XML",
+    "column": 2,
+    "category": "Language Concepts",
+    "samples": [
+      {
+        "name": "XML Data Model",
+        "url": "xml-data-model",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "XML Operations",
+        "url": "xml-operations",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "XML Subtyping",
+        "url": "xml-subtyping",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "disablePlayground": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "XML Navigation ",
+        "url": "xml-navigation",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "XML Templates and Query",
+        "url": "xml-templates-and-query",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "XML Namespaces",
+        "url": "xml-namespaces",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "XMLNS Declarations",
+        "url": "xmlns-declarations",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Metadata",
+    "column": 2,
+    "category": "Language Concepts",
+    "samples": [
+      {
+        "name": "Documentation",
+        "url": "documentation",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Annotations",
+        "url": "annotations",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Network Interaction",
+    "column": 2,
+    "category": "Language Concepts",
+    "samples": [
+      {
+        "name": "Consuming Services: Client Objects",
+        "url": "consuming-services",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Failing intermittently due to github rate limiting",
+        "isLearnByExample": true
+      },
+      {
+        "name": "Providing Services",
+        "url": "providing-services",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Service cannot be stopped",
+        "disablePlayground": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Module Lifecycle",
+        "url": "module-lifecycle",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Service Declaration",
+        "url": "service-declaration",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Does not include udp client",
+        "disablePlayground": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Resource Methods",
+        "url": "resource-methods",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "disablePlayground": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Hierarchical Resources",
+        "url": "hierarchical-resources",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "disablePlayground": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Resource Path Parameters",
+        "url": "resource-path-parameters",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "disablePlayground": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Configurability",
+    "column": 2,
+    "category": "Language Concepts",
+    "samples": [
+      {
+        "name": "Configurable Variables",
+        "url": "configurable-variables",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Concurrency",
+    "column": 3,
+    "category": "Language Concepts",
+    "samples": [
+      {
+        "name": "Asynchronous Function Calls",
+        "url": "asynchronous-function-calls",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Named Workers",
+        "url": "named-workers",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Sequence Diagrams",
+        "url": "sequence-diagrams",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Waiting for Workers",
+        "url": "waiting-for-workers",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Strands",
+        "url": "strands",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Named Worker Return Values",
+        "url": "named-worker-return-values",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Alternate Wait",
+        "url": "alternate-wait",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes varying output",
+        "isLearnByExample": true
+      },
+      {
+        "name": "Multiple Wait",
+        "url": "multiple-wait",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Named Workers and Futures",
+        "url": "named-workers-and-futures",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Inter-Worker Message Passing",
+        "url": "inter-worker-message-passing",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Inter-Worker Failure Propagation",
+        "url": "inter-worker-failure-propagation",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Transactions",
+    "column": 3,
+    "category": "Language Concepts",
+    "samples": [
+      {
+        "name": "Transaction Statement",
+        "url": "transaction-statement",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Check Semantics",
+        "url": "check-semantics",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Rollback",
+        "url": "rollback",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Retry Transaction Statement",
+        "url": "retry-transaction-statement",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Transactional Qualifier",
+        "url": "transactional-qualifier",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Transactional Named Workers",
+        "url": "transactional-named-workers",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Commit/Rollback Handlers",
+        "url": "commit-rollback-handlers",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Concurrency Safety",
+    "column": 3,
+    "category": "Language Concepts",
+    "samples": [
+      {
+        "name": "Lock Statement",
+        "url": "lock-statement",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Isolated Functions",
+        "url": "isolated-functions",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Readonly Type",
+        "url": "readonly-type",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Readonly and Isolated",
+        "url": "readonly-and-isolated",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Combining Isolated Functions and Lock",
+        "url": "combining-isolated-functions-and-lock",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Isolated Variables",
+        "url": "isolated-variables",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Isolated Methods",
+        "url": "isolated-methods",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Isolated Objects",
+        "url": "isolated-objects",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Inferring Isolated",
+        "url": "inferring-isolated",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  }
+]

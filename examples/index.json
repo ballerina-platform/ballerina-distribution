@@ -1723,14 +1723,6 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 Client Credentials Grant Type",
-                "url": "websocket-client-oauth2-client-credentials-grant-type",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
                 "name": "Client - OAuth2 Password Grant Type",
                 "url": "websocket-client-oauth2-password-grant-type",
                 "verifyBuild": true,
