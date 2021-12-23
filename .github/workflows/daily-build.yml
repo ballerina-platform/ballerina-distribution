@@ -157,7 +157,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: module-ballerina-docker/base/docker/
-          push: true
+          push: false
           tags: ballerina/ballerina:nightly-${{ steps.version.outputs.version }}, ballerina/ballerina:nightly
           build-args: |
             BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.sversion }}.zip
