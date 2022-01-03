@@ -768,6 +768,7 @@
                 "url": "configurable-variables",
                 "verifyBuild": true,
                 "verifyOutput": true,
+                "disablePlayground": true,
                 "isLearnByExample": true
             }
         ]

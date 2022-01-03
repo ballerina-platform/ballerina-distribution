@@ -1,1 +1,5 @@
+# As a prerequisite, ensure that the `Config.toml` file is populated correctly
+# with the configuration value for variable 'password'.
+echo 'password="password"' > Config.toml
+
 bal run configurable_variables.bal
