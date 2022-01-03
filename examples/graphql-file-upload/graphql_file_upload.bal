@@ -3,6 +3,10 @@ import ballerina/io;
 
 service /fileUpload on new graphql:Listener(4000) {
 
+    // Store the file information that need to be shared between the remote and
+    // resource functions.
+    string[] uploadedFiles = [];
+
     // Remote functions can use the `graphql:Upload` type as an input
     // parameter type.
     remote function singleFileUpload(graphql:Upload file)
@@ -28,8 +32,6 @@ service /fileUpload on new graphql:Listener(4000) {
         // Returns the message if the uploading process is successful.
         return "Successfully Uploaded";
     }
-
-    string[] uploadedFiles = [];
 
     // Remote functions in GraphQL services can use the `graphql:Upload[]` as
     // an input parameter type. Therefore, remote functions can accept an array

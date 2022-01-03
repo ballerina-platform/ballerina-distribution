@@ -24,7 +24,7 @@ jobs:
       - name: Get project version
         id: project-version
         run: |
-          SHORT_VERSION=$((grep -w 'shortVersion' | cut -d= -f2) < gradle.properties)
+          SHORT_VERSION=$((grep -w "version" | cut -d= -f2 | cut -d- -f3) < gradle.properties)
           RELEASE_VERSION=$((grep -w "version" | cut -d= -f2) < gradle.properties)
           echo "::set-output name=version::$RELEASE_VERSION"
           echo "::set-output name=sversion::$SHORT_VERSION"
@@ -61,7 +61,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Ballerina Short Name ZIP
-          path: ballerina/build/distributions/ballerina-sl*.zip
+          path: ballerina/build/distributions/ballerina-22*.zip
       - name: Archive Linux deb
         uses: actions/upload-artifact@v2
         with:
@@ -126,7 +126,7 @@ jobs:
           repository: ballerina-platform/module-ballerina-docker
           path: module-ballerina-docker
       - name: Copy zip artifact
-        run: cp ballerina/build/distributions/ballerina-sl*.zip module-ballerina-docker/base/docker/
+        run: cp ballerina/build/distributions/ballerina-22*.zip module-ballerina-docker/base/docker/
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
