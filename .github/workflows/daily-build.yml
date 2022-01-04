@@ -169,6 +169,33 @@ jobs:
           packagePAT: ${{ secrets.GITHUB_TOKEN }}
           devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
         run: ./gradlew :build-time-tests:processData --console=plain --no-daemon --continue
+      - name: Copy deb artifact
+        run: cp installers/linux-deb/target/ballerina-linux-installer-x64-*.deb module-ballerina-docker/base/devcontainer/
+      - name: Build the dev container docker image
+        id: docker_build_devcontainer
+        uses: docker/build-push-action@v2
+        with:
+          context: module-ballerina-docker/base/devcontainer/
+          load: true
+          push: false
+          tags: ballerina/ballerina-devcontainer:nightly-test
+          build-args: |
+            BALLERINA_DIST=ballerina-linux-installer-x64-${{ steps.project-version.outputs.sversion }}.deb
+      - name: Run Trivy vulnerability scanner for dev container docker image
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'ballerina/ballerina-devcontainer:nightly-test'
+          format: 'table'
+          exit-code: '1'
+          timeout: "10m0s"
+      - name: Build and push dev container image
+        uses: docker/build-push-action@v2
+        with:
+          context: module-ballerina-docker/base/devcontainer/
+          push: true
+          tags: ballerina/ballerina-devcontainer:nightly
+          build-args: |
+            BALLERINA_DIST=ballerina-linux-installer-x64-${{ steps.project-version.outputs.sversion }}.deb
       - name: Archive Build Performance CSV
         uses: actions/upload-artifact@v2
         with:
