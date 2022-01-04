@@ -44,6 +44,7 @@ public class TestUtils {
 
     public static final Path DISTRIBUTIONS_DIR = Paths.get(System.getProperty("distributions.dir"));
     public static final Path MAVEN_VERSION = Paths.get(System.getProperty("maven.version"));
+    public static final Path CODE_NAME = Paths.get(System.getProperty("code.name"));
 
     private static final String BALLERINA_HOME_DIR = "BALLERINA_HOME_DIR";
     private static final String BALLERINA_DEV_CENTRAL = "BALLERINA_DEV_CENTRAL";
@@ -51,7 +52,7 @@ public class TestUtils {
     private static final Path TARGET_DIR = Paths.get(System.getProperty("target.dir"));
     private static final Path TEST_DISTRIBUTION_PATH = TARGET_DIR.resolve("test-distribution");
 
-    public static String distributionName = "ballerina-" + MAVEN_VERSION;
+    public static String distributionName = "ballerina-" + MAVEN_VERSION + "-" + CODE_NAME;
     private static Path sourceDirectory;
     private static Path tempHomeDirectory;
     private static Map<String, String> envProperties;
@@ -72,7 +73,7 @@ public class TestUtils {
             output += line + "\n";
         }
         if (output.isEmpty()) {
-            inputStream =  process.getErrorStream();
+            inputStream = process.getErrorStream();
             reader = new BufferedReader(new InputStreamReader(inputStream));
             while ((line = reader.readLine()) != null) {
                 output += line + "\n";
@@ -106,7 +107,7 @@ public class TestUtils {
             output += line + "\n";
         }
         if (output.isEmpty()) {
-            inputStream =  process.getErrorStream();
+            inputStream = process.getErrorStream();
             reader = new BufferedReader(new InputStreamReader(inputStream));
             while ((line = reader.readLine()) != null) {
                 output += line + "\n";
@@ -150,8 +151,8 @@ public class TestUtils {
 
     /**
      * Create Settings.toml inside the home repository.
-     * @param dirPath Path to directory for creating settings.toml.
      *
+     * @param dirPath Path to directory for creating settings.toml.
      * @throws IOException i/o exception when writing to file.
      */
     static void createSettingToml(Path dirPath) throws IOException {

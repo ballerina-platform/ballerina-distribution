@@ -46,8 +46,9 @@ public class TestUtils {
     private static final Path TEST_DISTRIBUTION_PATH = TARGET_DIR.resolve("test-distribution");
     public static final Path MAVEN_VERSION = Paths.get(System.getProperty("maven.version"));
     public static final Path DISTRIBUTIONS_DIR = Paths.get(System.getProperty("distributions.dir"));
+    public static final Path CODE_NAME = Paths.get(System.getProperty("code.name"));
     public static final String OUTPUT_CONTAIN_ERRORS = "build output contain errors:";
-    public static final String DISTRIBUTION_FILE_NAME = "ballerina-" + MAVEN_VERSION;
+    public static final String DISTRIBUTION_FILE_NAME = "ballerina-" + MAVEN_VERSION + "-" + CODE_NAME;
 
     /**
      * Execute ballerina command.
@@ -128,7 +129,7 @@ public class TestUtils {
         ZipFile zipFile = new ZipFile(distributionZipPath.toFile());
         zipFile.extractAll(TEST_DISTRIBUTION_PATH.toAbsolutePath().toString());
     }
-    
+
     /**
      * Delete the temporary directory used to extract distributions.
      *
@@ -143,7 +144,7 @@ public class TestUtils {
      *
      * @return env directory variable array
      */
-     static Map<String, String> addEnvVariables(Map<String, String> envVariables, Path tempHomeDirectory) {
+    static Map<String, String> addEnvVariables(Map<String, String> envVariables, Path tempHomeDirectory) {
         envVariables.put(BALLERINA_HOME_DIR, tempHomeDirectory.toString());
         envVariables.put(BALLERINA_DEV_CENTRAL, "true");
         return envVariables;
