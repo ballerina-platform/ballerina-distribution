@@ -23,7 +23,7 @@ public class CentOS implements Executor {
 
     public CentOS(String version) {
         this.version = version;
-        installerName = "ballerina-linux-installer-x64-" + version + ".rpm";
+        installerName = "ballerina-linux-x64-" + version + ".rpm";
         packageName = "ballerina-" + version;
     }
 
