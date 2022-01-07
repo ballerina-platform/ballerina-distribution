@@ -23,7 +23,7 @@ public class MacOS implements Executor {
 
     public MacOS(String version) {
         this.version = version;
-        this.installerName = "ballerina-macos-installer-x64-" + version + ".pkg";
+        this.installerName = "ballerina-macos-x64-" + version + ".pkg";
     }
 
 

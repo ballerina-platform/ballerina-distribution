@@ -27,22 +27,19 @@ import org.testng.annotations.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.ballerina.devtools.cmd.TestUtils.DISTRIBUTIONS_DIR;
-import static org.ballerina.devtools.cmd.TestUtils.MAVEN_VERSION;
-import static org.ballerina.devtools.cmd.TestUtils.distributionName;
+import static org.ballerina.devtools.cmd.TestUtils.*;
 
 /**
  * Tests related new command compiling.
  */
 public class BuildNewCommandTest {
 
-    public static final String DISTRIBUTION_FILE_NAME = "ballerina-" + MAVEN_VERSION;
+    public static final String DISTRIBUTION_FILE_NAME = "ballerina-" + MAVEN_VERSION + "-" + CODE_NAME;
     public static final String WHITESPACE_PATTERN = "\\s+";
 
     private Path tempHomeDirectory;

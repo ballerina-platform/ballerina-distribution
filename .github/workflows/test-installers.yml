@@ -31,9 +31,9 @@ jobs:
           echo "::set-output name=version::$RELEASE_VERSION"
           echo "::set-output name=taggedVersion::$TAGGED_VERSION"
       - name: Download Ballerina pkg Installer
-        run: wget https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${{ steps.set-version.outputs.taggedVersion }}/ballerina-macos-installer-x64-${{ steps.set-version.outputs.version }}.pkg
+        run: wget https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${{ steps.set-version.outputs.taggedVersion }}/ballerina-macos-x64-${{ steps.set-version.outputs.version }}.pkg
       - name: Install Ballerina pkg
-        run: sudo installer -pkg ballerina-macos-installer-x64-${{ steps.set-version.outputs.version }}.pkg -target /
+        run: sudo installer -pkg ballerina-macos-x64-${{ steps.set-version.outputs.version }}.pkg -target /
       - name: Run Installer Tests
         working-directory: ./ballerina-test-automation/installer-test
         run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
