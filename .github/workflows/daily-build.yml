@@ -50,15 +50,15 @@ jobs:
           echo "Created linux-rpm successfully"
       - name: Generate Hashes
         run: |
-          openssl dgst -sha256 -out ballerina-linux-x64-${{ steps.project-version.outputs.version }}.deb.sha256 installers/linux-deb/target/ballerina-linux-x64-*.deb
-          openssl dgst -sha256 -out ballerina-linux-x64-${{ steps.project-version.outputs.version }}.rpm.sha256 installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-linux-x64-*.rpm
+          openssl dgst -sha256 -out ballerina-${{ steps.project-version.outputs.version }}-linux-x64.deb.sha256 installers/linux-deb/target/ballerina-*-linux-x64.deb
+          openssl dgst -sha256 -out ballerina-${{ steps.project-version.outputs.version }}-linux-x64.rpm.sha256 installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-*-linux-x64.rpm
           openssl dgst -sha256 -out ballerina-${{ steps.project-version.outputs.version }}.zip.sha256 ballerina/build/distributions/ballerina-${{ steps.project-version.outputs.version }}.zip
           openssl dgst -sha256 -out ballerina-${{ steps.project-version.outputs.sversion }}.zip.sha256 ballerina/build/distributions/ballerina-${{ steps.project-version.outputs.sversion }}.zip
       - name: Archive Ballerina ZIP
         uses: actions/upload-artifact@v2
         with:
           name: Ballerina ZIP
-          path: ballerina/build/distributions/ballerina-swan-lake-*.zip
+          path: ballerina/build/distributions/ballerina-*-swan-lake.zip
       - name: Archive Ballerina Short Name ZIP
         uses: actions/upload-artifact@v2
         with:
@@ -68,32 +68,32 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Linux Installer deb
-          path: installers/linux-deb/target/ballerina-linux-x64-*.deb
+          path: installers/linux-deb/target/ballerina-*-linux-x64.deb
       - name: Archive Linux rpm
         uses: actions/upload-artifact@v2
         with:
           name: Linux Installer rpm
-          path: installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-linux-x64-*.rpm
+          path: installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-*-linux-x64.rpm
       - name: Archive MacOS installer ZIP
         uses: actions/upload-artifact@v2
         with:
           name: MacOS installer ZIP
-          path: ballerina/build/distributions/ballerina-macos-*.zip
+          path: ballerina/build/distributions/ballerina-*-macos.zip
       - name: Archive Windows Installer ZIP
         uses: actions/upload-artifact@v2
         with:
           name: Windows Installer ZIP
-          path: ballerina/build/distributions/ballerina-windows-*.zip
+          path: ballerina/build/distributions/ballerina-*-windows.zip
       - name: Archive Linux deb Hashes
         uses: actions/upload-artifact@v2
         with:
           name: Linux deb Hashes
-          path: ballerina-linux-x64-${{ steps.project-version.outputs.version }}.deb.sha256
+          path: ballerina-${{ steps.project-version.outputs.version }}-linux-x64.deb.sha256
       - name: Archive Linux rpm Hashes
         uses: actions/upload-artifact@v2
         with:
           name: Linux rpm Hashes
-          path: ballerina-linux-x64-${{ steps.project-version.outputs.version }}.rpm.sha256
+          path: ballerina-${{ steps.project-version.outputs.version }}-linux-x64.rpm.sha256
       - name: Archive Ballerina Zip Hashes
         uses: actions/upload-artifact@v2
         with:
@@ -105,7 +105,7 @@ jobs:
           name: Ballerina Short Name Hashes
           path: ballerina-${{ steps.project-version.outputs.sversion }}.zip.sha256
       - name: Install Ballerina DEB
-        run: sudo dpkg -i installers/linux-deb/target/ballerina-linux-x64-*.deb
+        run: sudo dpkg -i installers/linux-deb/target/ballerina-*-linux-x64.deb
       - name: Run Installer Tests
         working-directory: ./ballerina-test-automation/installer-test
         run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
@@ -172,7 +172,7 @@ jobs:
           devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
         run: ./gradlew :build-time-tests:processData --console=plain --no-daemon --continue
       - name: Copy deb artifact
-        run: cp installers/linux-deb/target/ballerina-linux-installer-x64-*.deb module-ballerina-docker/base/devcontainer/
+        run: cp installers/linux-deb/target/ballerina-*-linux-installer-x64.deb module-ballerina-docker/base/devcontainer/
       - name: Build the dev container docker image
         id: docker_build_devcontainer
         uses: docker/build-push-action@v2
@@ -182,7 +182,7 @@ jobs:
           push: false
           tags: ballerina/ballerina-devcontainer:nightly-test
           build-args: |
-            BALLERINA_DIST=ballerina-linux-installer-x64-${{ steps.project-version.outputs.sversion }}.deb
+            BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.sversion }}-linux-installer-x64.deb
       - name: Run Trivy vulnerability scanner for dev container docker image
         uses: aquasecurity/trivy-action@master
         with:
@@ -197,7 +197,7 @@ jobs:
           push: true
           tags: ballerina/ballerina-devcontainer:nightly
           build-args: |
-            BALLERINA_DIST=ballerina-linux-installer-x64-${{ steps.project-version.outputs.sversion }}.deb
+            BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.sversion }}-linux-installer-x64.deb
       - name: Archive Build Performance CSV
         uses: actions/upload-artifact@v2
         with:
@@ -244,7 +244,7 @@ jobs:
           name: Linux Installer rpm
       - name: Install Ballerina RPM
         run: |
-          rpm -ivh ballerina-linux-x64-*.rpm
+          rpm -ivh ballerina-*-linux-x64.rpm
       - name: Run Installer Tests
         working-directory: ./ballerina-test-automation/installer-test
         run: |
@@ -271,19 +271,19 @@ jobs:
           echo "Created macos-pkg successfully"
       - name: Generate Hashes
         run: |
-          openssl dgst -sha256 -out ballerina-macos-x64-${{ needs.ubuntu-build.outputs.project-version }}.pkg.sha256 installers/mac/target/pkg/ballerina-macos-x64-*.pkg
+          openssl dgst -sha256 -out ballerina-${{ needs.ubuntu-build.outputs.project-version }}-macos-x64.pkg.sha256 installers/mac/target/pkg/ballerina-*-macos-x64.pkg
       - name: Archive MacOS pkg Hashes
         uses: actions/upload-artifact@v2
         with:
           name: MacOS pkg Hashes
-          path: ballerina-macos-x64-${{ needs.ubuntu-build.outputs.project-version }}.pkg.sha256
+          path: ballerina-${{ needs.ubuntu-build.outputs.project-version }}-macos-x64.pkg.sha256
       - name: Archive MacOS pkg
         uses: actions/upload-artifact@v2
         with:
           name: MacOS Installer pkg
-          path: installers/mac/target/pkg/ballerina-macos-x64-*.pkg
+          path: installers/mac/target/pkg/ballerina-*-macos-x64.pkg
       - name: Install Ballerina PKG
-        run: sudo installer -pkg installers/mac/target/pkg/ballerina-macos-x64-*.pkg -target /
+        run: sudo installer -pkg installers/mac/target/pkg/ballerina-*-macos-x64.pkg -target /
       - name: Run Installer Tests
         working-directory: ./ballerina-test-automation/installer-test
         run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
@@ -316,19 +316,19 @@ jobs:
           echo "Created windows-msi successfully"
       - name: Generate Hashes
         run: |
-          openssl dgst -sha256 -out ballerina-windows-x64-${{ needs.ubuntu-build.outputs.project-version }}.msi.sha256 w\target\msi\ballerina-windows-x64-*.msi
+          openssl dgst -sha256 -out ballerina-${{ needs.ubuntu-build.outputs.project-version }}-windows-x64.msi.sha256 w\target\msi\ballerina-*-windows-x64.msi
       - name: Archive Windows msi Hashes
         uses: actions/upload-artifact@v2
         with:
           name: Windows msi Hashes
-          path: ballerina-windows-x64-${{ needs.ubuntu-build.outputs.project-version }}.msi.sha256
+          path: ballerina-${{ needs.ubuntu-build.outputs.project-version }}-windows-x64.msi.sha256
       - name: Archive Windows msi
         uses: actions/upload-artifact@v2
         with:
           name: Windows Installer msi
-          path: w\target\msi\ballerina-windows-x64-*.msi
+          path: w\target\msi\ballerina-*-windows-x64.msi
       - name: Install Ballerina msi
-        run: msiexec /i w\target\msi\ballerina-windows-x64-${{ needs.ubuntu-build.outputs.project-version }}.msi /quiet /qr
+        run: msiexec /i w\target\msi\ballerina-${{ needs.ubuntu-build.outputs.project-version }}-windows-x64.msi /quiet /qr
         shell: cmd
       - name: Run Installer Tests
         working-directory: .\ballerina-test-automation\installer-test
