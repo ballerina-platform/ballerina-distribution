@@ -372,4 +372,34 @@ public class CentralTestUtils {
             Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedLog);
         }
     }
+
+    /**
+     * Push a bala to central using bala path.
+     *
+     * @param tempWorkspaceDirectory Path to workspace
+     * @param projectName Project name
+     * @param envVariables Environmental variables
+     * @param orgName Organization name
+     * @param packageName package
+     * @param version Package Version
+     * @param balaPath Path to the bala file to be pushed
+     * @throws IOException
+     * @throws InterruptedException
+     */
+    public static void testPushPackageUsingBalaPath(Path tempWorkspaceDirectory, String projectName,
+                                       Map<String, String> envVariables, String orgName,
+                                       String packageName, String version, String balaPath)
+            throws IOException, InterruptedException {
+        Process build = executePushCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory.resolve(projectName),
+                new LinkedList<>(Collections.singletonList(balaPath)), envVariables);
+        String buildErrors = getString(build.getErrorStream());
+        if (!buildErrors.isEmpty()) {
+            Assert.fail(OUTPUT_CONTAIN_ERRORS + buildErrors);
+        }
+        String buildOutput = getString(build.getInputStream());
+        if (!buildOutput.contains(getPushedToCentralLog(orgName, packageName, version))) {
+            Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + getPushedToCentralLog(orgName, packageName));
+        }
+    }
+
 }
