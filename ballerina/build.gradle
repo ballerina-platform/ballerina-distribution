@@ -721,12 +721,14 @@ task testExamples() {
                 ignoreExitValue true
                 workingDir "${distPath}/${bbe.url}"
                 commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'build', '--experimental', "${additionalBuildParams}"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'test'
             }
         } else {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${distPath}/${bbe.url}"
                 commandLine 'sh', '-c', "${distPath}/bin/bal build --experimental ${additionalBuildParams}"
+                commandLine 'sh', '-c', "${distPath}/bin/bal test"
             }
         }
         if (exitVal.getExitValue() == 1) {
