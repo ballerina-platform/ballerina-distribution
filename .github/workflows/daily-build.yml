@@ -165,12 +165,6 @@ jobs:
             BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.sversion }}.zip
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
-      - name: Run Build Performance Samples
-        env:
-          packageUser: ${{ github.actor }}
-          packagePAT: ${{ secrets.GITHUB_TOKEN }}
-          devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
-        run: ./gradlew :build-time-tests:processData --console=plain --no-daemon --continue
       - name: Copy deb artifact
         run: cp installers/linux-deb/target/ballerina-*-linux-installer-x64.deb module-ballerina-docker/base/devcontainer/
       - name: Build the dev container docker image
@@ -198,11 +192,6 @@ jobs:
           tags: ballerina/ballerina-devcontainer:nightly
           build-args: |
             BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.sversion }}-linux-installer-x64.deb
-      - name: Archive Build Performance CSV
-        uses: actions/upload-artifact@v2
-        with:
-          name: BuildTimeCSV
-          path: build-time-tests/build/build-time-data/buildTimeData.csv
     outputs:
       project-version: ${{ steps.project-version.outputs.version }}
 
