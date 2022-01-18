@@ -1110,7 +1110,7 @@ task testDevToolsIntegration() {
 task generateCache(dependsOn: ':cache-generator:build') {
     doFirst {
         download {
-            src "https://raw.githubusercontent.com/ballerina-platform/ballerina-standard-library/${balstdlibBranch}/release/resources/stdlib_modules.json"
+            src "https://raw.githubusercontent.com/ballerina-platform/ballerina-release/${balstdlibBranch}/dependabot/resources/module_list.json"
             dest "${project.rootDir}"
         }
 
@@ -1124,10 +1124,10 @@ task generateCache(dependsOn: ':cache-generator:build') {
         def distPath = "${project.rootDir}/ballerina/build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
 
         /* Standard Libraries */
-        def stdlibJson = file("${project.rootDir}/stdlib_modules.json")
+        def stdlibJson = file("${project.rootDir}/module_list.json")
         def parsedJson = new JsonSlurper().parseText(stdlibJson.text)
         def sortedLibs = []
-        parsedJson.modules.each { module ->
+        parsedJson.standard_library.each { module ->
             def libName = module.name.toString().split("-")[-1] + "-ballerina-zip"
             sortedLibs.add(libName)
         }
@@ -1218,7 +1218,7 @@ task generateCache(dependsOn: ':cache-generator:build') {
         }
         delete "$buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/bre/lib/cache-generator-${project.version}.jar"
         delete "${project.rootDir}/cache-generator/build/libs/cache-generator-${project.version}.jar"
-        delete "${project.rootDir}/stdlib_modules.json"
+        delete "${project.rootDir}/module_list.json"
     }
 }
 
