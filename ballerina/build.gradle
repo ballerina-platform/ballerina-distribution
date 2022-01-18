@@ -1141,23 +1141,25 @@ task generateCache(dependsOn: ':cache-generator:build') {
                 def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + lib
                 String balaDir = artifactExtractedPath + "/bala"
 
-                String orgDir = new File("${balaDir}").listFiles()[0].toString()
-                String moduleDir = new File("${orgDir}").listFiles()[0].toString()
-                String versionDir = new File("${moduleDir}").listFiles()[0].toString()
-                String balaPath = new File("${versionDir}").listFiles()[0].toString()
-                String jbalPath = "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+                new File("${balaDir}").listFiles().each { orgDirFile ->
+                    String orgDir = orgDirFile.toString()
+                    String moduleDir = new File("${orgDir}").listFiles()[0].toString()
+                    String versionDir = new File("${moduleDir}").listFiles()[0].toString()
+                    String balaPath = new File("${versionDir}").listFiles()[0].toString()
+                    String jbalPath = "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
 
-                if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                    exec {
-                        workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
-                        commandLine 'cmd', '/c', "${distPath}/bin/bal.bat gencache ${balaPath} ${jbalPath}"
-                        ignoreExitValue true
-                    }
-                } else {
-                    exec {
-                        workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
-                        commandLine 'sh', '-c', "${distPath}/bin/bal gencache ${balaPath} ${jbalPath}"
-                        ignoreExitValue true
+                    if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+                        exec {
+                            workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+                            commandLine 'cmd', '/c', "${distPath}/bin/bal.bat gencache ${balaPath} ${jbalPath}"
+                            ignoreExitValue true
+                        }
+                    } else {
+                        exec {
+                            workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+                            commandLine 'sh', '-c', "${distPath}/bin/bal gencache ${balaPath} ${jbalPath}"
+                            ignoreExitValue true
+                        }
                     }
                 }
             }
