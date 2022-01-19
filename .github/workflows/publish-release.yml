@@ -65,8 +65,8 @@ jobs:
           packagePAT: ${{ secrets.BALLERINA_BOT_TOKEN }}
           devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
         run: |
-          ./gradlew build -Pversion=${VERSION} -x test -x :ballerina-testExamples
-          ./gradlew release -Prelease.useAutomaticVersion=true -x test -x :ballerina-testExamples
+          ./gradlew build -Pversion=${VERSION} -x test -x :ballerina:testExamples
+          ./gradlew release -Prelease.useAutomaticVersion=true -x test -x :ballerina:testExamples
       - name: Checkout docker repo
         uses: actions/checkout@v2
         with:
