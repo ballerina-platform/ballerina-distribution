@@ -64,9 +64,10 @@ public function main() returns error? {
         mysqlClient->query(`SELECT * FROM Customers`);
 
     io:println("Data in Customers table:");
-    check resultStream.forEach(function(record {} result) {
-        io:println(result.toString());
-    });
+    check from record {} result in resultStream
+        do {
+            io:println(result.toString());
+        };
 
     // Performs a cleanup after the example.
     check afterExample(mysqlClient);
