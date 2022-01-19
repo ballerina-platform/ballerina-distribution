@@ -301,7 +301,7 @@ jobs:
           echo "Created windows-msi successfully"
       - name: Generate Hashes
         run: |
-          openssl dgst -sha256 -out ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.sha256 w\target\msi\ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64-*.msi
+          openssl dgst -sha256 -out ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.sha256 w\target\msi\ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi
       - name: Upload Windows msi Hashes
         uses: actions/upload-release-asset@v1
         env:
