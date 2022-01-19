@@ -24,7 +24,7 @@ public class Ubuntu implements Executor {
 
     public Ubuntu(String version) {
         this.version = version;
-        this.installerName = "ballerina-linux-installer-x64-" + version + ".deb";
+        this.installerName = "ballerina-linux-x64-" + version + ".deb";
         this.packageName = "ballerina-" + version;
     }
 

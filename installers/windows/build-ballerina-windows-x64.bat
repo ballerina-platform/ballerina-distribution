@@ -44,7 +44,7 @@ IF "%BALLERINA_VERSION%"==""  (
 for /f %%x in ('wmic path win32_utctime get /format:list ^| findstr "="') do set %%x
 set UTC_TIME=%Year%-%Month%-%Day% %Hour%:%Minute%:%Second% UTC
 
-rmdir ballerina-windows-%BALLERINA_VERSION% /s /q >nul 2>&1
+rmdir ballerina-%BALLERINA_VERSION%-windows /s /q >nul 2>&1
 rmdir target /s /q >nul 2>&1
 
 for /f %%i in ('guid') do set UPGRADECODE=%%i
@@ -60,21 +60,21 @@ goto EOF
 
 
 :createballerinaWin64Installer
-set BALZIP=%DISTLOC%\ballerina-windows-%BALLERINA_VERSION%.zip
-set BALDIST=ballerina-windows-%BALLERINA_VERSION%
+set BALZIP=%DISTLOC%\ballerina-%BALLERINA_VERSION%-windows.zip
+set BALDIST=ballerina-%BALLERINA_VERSION%-windows
 set BALPARCH=x64
 set INSTALLERPARCH=amd64
-set MSI=ballerina-%BALPOS%-installer-%BALPARCH%-%BALLERINA_VERSION%.msi
+set MSI=ballerina-%BALLERINA_VERSION%-%BALPOS%-%BALPARCH%.msi
 set INSTALLERNAME="Ballerina %BALLERINA_VERSION%"
 call :createInstaller
 goto EOF
 
 :createballerinaWin586Installer
-set BALZIP=%DISTLOC%\ballerina-windows-%BALLERINA_VERSION%.zip
-set BALDIST=ballerina-windows-%BALLERINA_VERSION%
+set BALZIP=%DISTLOC%\ballerina-%BALLERINA_VERSION%-windows.zip
+set BALDIST=ballerina-%BALLERINA_VERSION%-windows
 set BALPARCH=i586
 set INSTALLERPARCH=386
-set MSI=ballerina-%BALPOS%-installer-%BALPARCH%-%BALLERINA_VERSION%.msi
+set MSI=ballerina-%BALLERINA_VERSION%-%BALPOS%-%BALPARCH%.msi
 set INSTALLERNAME="Ballerina %BALLERINA_VERSION%"
 call :createInstaller
 goto EOF
@@ -92,7 +92,7 @@ heat dir %BALDIST% -nologo -v -gg -g1 -srd -sfrag -sreg -cg AppFiles -template f
 candle -nologo -sw -dinstallerName=%INSTALLERNAME% -dbalVersion=%BALLERINA_VERSION% -dWixbalVersion=1.0.0 -dUpgradeCode=%UPGRADECODE% -dArch=%INSTALLERPARCH% -dSourceDir=%BALDIST% -out target\installer-resources\ -ext WixUtilExtension resources\installer.wxs target\installer-resources\AppFiles.wxs
 light -nologo -dcl:high -sw -ext WixUIExtension -ext WixUtilExtension -loc resources\en-us.wxl target\installer-resources\AppFiles.wixobj target\installer-resources\installer.wixobj -o target\msi\%MSI%
 
-rmdir ballerina-windows-%BALLERINA_VERSION% /s /q >nul 2>&1
+rmdir ballerina-%BALLERINA_VERSION%-windows /s /q >nul 2>&1
 
 echo %BALDIST% build completed at '%UTC_TIME%' for %BALPOS% %BALPARCH%
 

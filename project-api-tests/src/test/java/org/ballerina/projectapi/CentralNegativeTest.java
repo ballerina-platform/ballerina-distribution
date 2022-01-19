@@ -45,6 +45,7 @@ import static org.ballerina.projectapi.CentralTestUtils.getGenerateBalaLog;
 import static org.ballerina.projectapi.CentralTestUtils.getString;
 import static org.ballerina.projectapi.CentralTestUtils.randomPackageName;
 import static org.ballerina.projectapi.CentralTestUtils.updateFileToken;
+import static org.ballerina.projectapi.TestUtils.CODE_NAME;
 import static org.ballerina.projectapi.TestUtils.DISTRIBUTIONS_DIR;
 import static org.ballerina.projectapi.TestUtils.MAVEN_VERSION;
 import static org.ballerina.projectapi.TestUtils.OUTPUT_CONTAIN_ERRORS;
@@ -63,7 +64,7 @@ public class CentralNegativeTest {
     private Map<String, String> envVariables;
 
     private static final String ORG_NAME = "bctestorg";
-    private static final String DISTRIBUTION_FILE_NAME = "ballerina-" + MAVEN_VERSION;
+    private static final String DISTRIBUTION_FILE_NAME = "ballerina-" + MAVEN_VERSION + "-" + CODE_NAME;
     private static final String DEFAULT_PKG_NAME = "my_package";
     private static final String PROJECT_A = "projectA";
     private static final String COMMON_VERSION = "1.0.0";
