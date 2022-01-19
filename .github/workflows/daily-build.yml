@@ -176,7 +176,7 @@ jobs:
           push: false
           tags: ballerina/ballerina-devcontainer:nightly-test
           build-args: |
-            BALLERINA_DIST=ballerina-${{ steps.version.outputs.version }}-linux-x64.deb
+            BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.version }}-linux-x64.deb
       - name: Run Trivy vulnerability scanner for dev container docker image
         uses: aquasecurity/trivy-action@master
         with:
@@ -191,7 +191,7 @@ jobs:
           push: true
           tags: ballerina/ballerina-devcontainer:nightly
           build-args: |
-            BALLERINA_DIST=ballerina-${{ steps.version.outputs.version }}-linux-x64.deb
+            BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.version }}-linux-x64.deb
     outputs:
       project-version: ${{ steps.project-version.outputs.version }}
 
