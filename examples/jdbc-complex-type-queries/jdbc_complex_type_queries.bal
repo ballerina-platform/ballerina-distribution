@@ -45,9 +45,10 @@ public function main() returns error? {
 
     io:println("Binary types Result :");
     // Iterates the `binaryResultStream`.
-    check binaryResultStream.forEach(function(BinaryType result) {
-        io:println(result);
-    });
+    check from BinaryType result in binaryResultStream
+        do {
+            io:println(result);
+        };
 
     // Since the `rowType` is provided as an `ArrayType`, the `arrayResultStream` will
     // have `ArrayType` records.
@@ -69,9 +70,10 @@ public function main() returns error? {
 
     io:println("DateTime types Result :");
     // Iterates the `dateResultStream`.
-    check dateResultStream.forEach(function(DateTimeType result) {
-        io:println(result);
-    });
+    check from DateTimeType result in dateResultStream
+        do {
+            io:println(result);
+        };
 
     // Performs the cleanup after the example.
     check afterExample(jdbcClient);

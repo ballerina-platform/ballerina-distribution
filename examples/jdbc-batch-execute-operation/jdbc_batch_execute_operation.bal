@@ -57,9 +57,10 @@ public function main() returns error? {
         jdbcClient->query(`SELECT * FROM Customers`);
 
     io:println("Data in Customers table:");
-    check resultStream.forEach(function(record {} result) {
-        io:println(result.toString());
-    });
+    check from record{} resultRecord in resultStream
+        do {
+            io:println(resultRecord.toString());
+        };
 
     // Performs the cleanup after the example.
     check afterExample(jdbcClient);
