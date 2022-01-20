@@ -30,10 +30,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Objects;
 
-import static org.ballerinalang.distribution.utils.TestUtils.DISTRIBUTIONS_DIR;
-import static org.ballerinalang.distribution.utils.TestUtils.MAVEN_VERSION;
-import static org.ballerinalang.distribution.utils.TestUtils.SHORT_VERSION;
-import static org.ballerinalang.distribution.utils.TestUtils.TEST_DISTRIBUTION_PATH;
+import static org.ballerinalang.distribution.utils.TestUtils.*;
 
 /**
  * Check if necessary files exists to build in the platform specific distributions.
@@ -45,10 +42,10 @@ public class PlatformDistributionArtifactCheckTest {
     @DataProvider(name = "distribution-provider")
     public Object[][] distributionNameProvider() {
         return new Object[][]{
-                {"ballerina-" + MAVEN_VERSION},
-                {"ballerina-linux-" + MAVEN_VERSION},
-                {"ballerina-macos-" + MAVEN_VERSION},
-                {"ballerina-windows-" + MAVEN_VERSION}
+                {"ballerina-" + MAVEN_VERSION + "-" + CODE_NAME},
+                {"ballerina-" + MAVEN_VERSION + "-" + CODE_NAME + "-linux"},
+                {"ballerina-" + MAVEN_VERSION + "-" + CODE_NAME + "-macos"},
+                {"ballerina-" + MAVEN_VERSION + "-" + CODE_NAME + "-windows"}
         };
     }
 

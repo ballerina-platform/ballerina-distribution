@@ -22,7 +22,7 @@ public class Windows implements Executor {
 
     public Windows(String version) {
         this.version = version;
-        installerName = "ballerina-windows-installer-x64-" + version + ".msi";
+        installerName = "ballerina-windows-x64-" + version + ".msi";
     }
 
     @Override

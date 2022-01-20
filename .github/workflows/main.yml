@@ -42,7 +42,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Ballerina ZIP
-          path: ballerina/build/distributions/ballerina-swan-lake-*.zip
+          path: ballerina/build/distributions/ballerina-*-swan-lake.zip
       - name: Archive Ballerina Short Name ZIP
         uses: actions/upload-artifact@v2
         with:
@@ -52,14 +52,14 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Linux installer ZIP
-          path: ballerina/build/distributions/ballerina-linux-*.zip
+          path: ballerina/build/distributions/ballerina-*-linux.zip
       - name: Archive MacOS installer ZIP
         uses: actions/upload-artifact@v2
         with:
           name: MacOS installer ZIP
-          path: ballerina/build/distributions/ballerina-macos-*.zip
+          path: ballerina/build/distributions/ballerina-*-macos.zip
       - name: Archive Windows Installer ZIP
         uses: actions/upload-artifact@v2
         with:
           name: Windows Installer ZIP
-          path: ballerina/build/distributions/ballerina-windows-*.zip
+          path: ballerina/build/distributions/ballerina-*-windows.zip
