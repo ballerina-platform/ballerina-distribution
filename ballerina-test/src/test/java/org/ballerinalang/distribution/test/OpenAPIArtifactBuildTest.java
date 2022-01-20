@@ -38,16 +38,14 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static org.ballerinalang.distribution.utils.TestUtils.DISTRIBUTIONS_DIR;
-import static org.ballerinalang.distribution.utils.TestUtils.MAVEN_VERSION;
-import static org.ballerinalang.distribution.utils.TestUtils.RESOURCES_PATH;
+import static org.ballerinalang.distribution.utils.TestUtils.*;
 
 /**
  * OpenAPI Tests related to artifact generation.
  */
 public class OpenAPIArtifactBuildTest {
     public static final String WHITESPACE_PATTERN = "\\s+";
-    public static final String distributionFileName = "ballerina-" + MAVEN_VERSION;
+    public static final String distributionFileName = "ballerina-" + MAVEN_VERSION + "-" + CODE_NAME;
 
     @BeforeClass
     public void setupDistributions() throws IOException {
@@ -55,7 +53,7 @@ public class OpenAPIArtifactBuildTest {
         TestUtils.prepareDistribution(DISTRIBUTIONS_DIR.resolve(distributionFileName + ".zip"));
     }
 
-    @Test( description = "Check openapi to ballerina generator command")
+    @Test(description = "Check openapi to ballerina generator command")
     public void buildOpenAPIToBallerinaTest() throws IOException, InterruptedException {
         Path testResource = Paths.get("/openapi");
         List<String> buildArgs = new LinkedList<>();
@@ -185,6 +183,7 @@ public class OpenAPIArtifactBuildTest {
             }
         }
     }
+
     @AfterClass
     public void cleanUp() throws IOException {
         TestUtils.cleanDistribution();

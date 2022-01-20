@@ -35,9 +35,10 @@ public function main() returns error? {
     // If there is any error during the execution of the SQL query or
     // iteration of the result stream, the result stream will terminate and
     // return the error.
-    check resultStream.forEach(function(record {} result) {
-        io:println("Full Customer details: ", result);
-    });
+    check from record {} result in resultStream
+        do {
+            io:println("Full Customer details: ", result);
+        };
 
     // The result of the count operation is provided as a record stream.
     stream<record {}, error?> resultStream2 =
@@ -64,9 +65,10 @@ public function main() returns error? {
         mysqlClient->query(`SELECT * FROM Customers`);
 
     // Iterates the customer stream.
-    check customerStream.forEach(function(Customer customer) {
-        io:println("Full Customer details: ", customer);
-    });
+    check from Customer customer in customerStream
+        do {
+            io:println("Full Customer details: ", customer);
+        };
 
     // Performs the cleanup after the example.
     check afterExample(mysqlClient);
