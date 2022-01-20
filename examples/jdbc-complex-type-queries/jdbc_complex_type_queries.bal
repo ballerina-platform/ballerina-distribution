@@ -45,9 +45,10 @@ public function main() returns error? {
 
     io:println("Binary types Result :");
     // Iterates the `binaryResultStream`.
-    check binaryResultStream.forEach(function(BinaryType result) {
-        io:println(result);
-    });
+    check from BinaryType result in binaryResultStream
+        do {
+            io:println(result);
+        };
 
     // Since the `rowType` is provided as an `ArrayType`, the `arrayResultStream` will
     // have `ArrayType` records.
@@ -56,9 +57,10 @@ public function main() returns error? {
 
     io:println("Array types Result :");
     // Iterates the `arrayResultStream`.
-    check arrayResultStream.forEach(function(ArrayType result) {
-        io:println(result);
-    });
+    check from ArrayType result in arrayResultStream
+        do {
+            io:println(result);
+        };
 
     // Since the `rowType` is provided as a `DateTimeType`, the `dateResultStream`
     // will have `DateTimeType` records. The `Date`, `Time`, `DateTime`, and
@@ -69,9 +71,10 @@ public function main() returns error? {
 
     io:println("DateTime types Result :");
     // Iterates the `dateResultStream`.
-    check dateResultStream.forEach(function(DateTimeType result) {
-        io:println(result);
-    });
+    check from DateTimeType result in dateResultStream
+        do {
+            io:println(result);
+        };
 
     // Performs the cleanup after the example.
     check afterExample(jdbcClient);
@@ -84,11 +87,12 @@ function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
             INTEGER NOT NULL, blob_type BLOB(1024), clob_type CLOB(1024), 
             binary_type BINARY(27), PRIMARY KEY (row_id))`);
     _ = check jdbcClient->execute(`CREATE TABLE ARRAY_TYPES (row_id
-            INTEGER NOT NULL, int_array ARRAY, long_array ARRAY, 
-            float_array ARRAY, double_array ARRAY, boolean_array ARRAY, 
-            string_array ARRAY, PRIMARY KEY (row_id))`);
+            INTEGER NOT NULL, int_array INT ARRAY, long_array BIGINT ARRAY,
+            float_array FLOAT ARRAY, double_array DOUBLE ARRAY,
+            boolean_array BOOLEAN ARRAY, string_array VARCHAR ARRAY,
+            PRIMARY KEY (row_id))`);
     _ = check jdbcClient->execute(`CREATE TABLE DATE_TIME_TYPES(row_id
-            INTEGER NOT NULL, date_type DATE, time_type TIME, 
+            INTEGER NOT NULL, date_type DATE, time_type TIME,
             timestamp_type timestamp, datetime_type  datetime, 
             PRIMARY KEY (row_id))`);
 
@@ -100,9 +104,10 @@ function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
             X'77736F322062616C6C6572696E612062696E61727920746573742E')`);
     _ = check jdbcClient->execute(`INSERT INTO ARRAY_TYPES (row_id,
             int_array, long_array, float_array, double_array, boolean_array, 
-            string_array) VALUES (1, (1, 2, 3), (100000000, 200000000, 
-            300000000), (245.23, 5559.49, 8796.123), (245.23, 5559.49, 
-            8796.123), (TRUE, FALSE, TRUE), ('Hello', 'Ballerina'))`);
+            string_array) VALUES (1, ARRAY[1, 2, 3], ARRAY[100000000,
+            200000000, 300000000], ARRAY[245.23, 5559.49, 8796.123],
+            ARRAY[245.23, 5559.49, 8796.123], ARRAY[TRUE, FALSE, TRUE],
+            ARRAY['Hello', 'Ballerina'])`);
     _ = check jdbcClient->execute(`Insert into DATE_TIME_TYPES (row_id,
             date_type, time_type, timestamp_type, datetime_type) values (1, 
             '2017-05-23', '14:15:23', '2017-01-25 16:33:55', 

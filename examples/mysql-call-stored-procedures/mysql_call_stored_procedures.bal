@@ -52,9 +52,10 @@ public function main() returns error? {
     if result is stream<record {}, sql:Error?> {
         stream<Student, sql:Error?> studentStream =
                 <stream<Student, sql:Error?>>result;
-        check studentStream.forEach(function(Student student) {
-            io:println("Student details: ", student);
-        });
+        check from Student student in studentStream
+            do {
+                io:println("Student details: ", student);
+            };
     }
     check retCall3.close();
 

@@ -8,4 +8,4 @@ Binary types Result :
 Array types Result :
 {"row_id":1,"int_array":[1,2,3],"long_array":[100000000,200000000,300000000],"float_array":[245.23,5559.49,8796.123],"double_array":[245.23,5559.49,8796.123],"boolean_array":[true,false,true],"string_array":["Hello","Ballerina"]}
 DateTime types Result :
-{"row_id":1,"date_type":"2017-05-23","time_type":31523000,"timestamp_type":1485342235 0,"datetime_type":"2017-01-25 16:33:55.0"}
+{"row_id":1,"date_type":"2017-05-23","time_type":31523000,"timestamp_type":[1485342235,0E-9],"datetime_type":"2017-01-25 16:33:55.0"}

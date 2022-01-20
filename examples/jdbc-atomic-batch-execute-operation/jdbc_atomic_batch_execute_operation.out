@@ -6,11 +6,11 @@ bal run
 Error while executing batch command starting with: 'INSERT INTO Customers
                 (firstName, lastName, registrationID, creditLimit, country)
                 VALUES ( ? ,  ? ,
-                 ? ,  ? ,  ? )'.Unique index or primary key violation: "PUBLIC.CONSTRAINT_INDEX_6 ON PUBLIC.CUSTOMERS(REGISTRATIONID) VALUES 1"; SQL statement:
+                 ? ,  ? ,  ? )'.Unique index or primary key violation: "PUBLIC.CONSTRAINT_INDEX_6 ON PUBLIC.CUSTOMERS(REGISTRATIONID NULLS FIRST) VALUES ( /* 1 */ 1 )"; SQL statement:
 INSERT INTO Customers
                 (firstName, lastName, registrationID, creditLimit, country)
                 VALUES ( ? ,  ? ,
-                 ? ,  ? ,  ? ) [23505-199].
+                 ? ,  ? ,  ? ) [23505-206].
 [{"affectedRowCount":1,"lastInsertId":null},{"affectedRowCount":-3,"lastInsertId":null},{"affectedRowCount":1,"lastInsertId":null}]
 Rollback transaction.
 
