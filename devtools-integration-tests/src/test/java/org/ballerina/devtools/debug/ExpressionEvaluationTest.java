@@ -39,7 +39,7 @@ public class ExpressionEvaluationTest extends BaseTestCase {
     private StoppedEventArguments context;
 
     @BeforeClass
-    public void setup() {
+    public void setup() throws BallerinaTestException {
         prepareForEvaluation();
     }
 
