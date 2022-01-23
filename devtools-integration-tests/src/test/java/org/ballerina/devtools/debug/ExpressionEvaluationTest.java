@@ -24,6 +24,7 @@ import org.ballerinalang.debugger.test.utils.DebugTestRunner;
 import org.ballerinalang.debugger.test.utils.DebugUtils;
 import org.ballerinalang.test.context.BallerinaTestException;
 import org.eclipse.lsp4j.debug.StoppedEventArguments;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -57,9 +58,10 @@ public class ExpressionEvaluationTest extends BaseTestCase {
                 "\"documentation_url\":\"https://docs.github.com/rest\"}\"", "string");
     }
 
-    @AfterMethod(alwaysRun = true)
+    @AfterClass(alwaysRun = true)
     public void cleanUp() {
         debugTestRunner.terminateDebugSession();
+        this.context = null;
     }
 
     protected void prepareForEvaluation() throws BallerinaTestException {
