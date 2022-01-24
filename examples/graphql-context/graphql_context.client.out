@@ -11,5 +11,4 @@
  # Now, send a query with the `scope` header value set to `unknown`. This will return an error in the `profile` field.
  # The query used: { profile { name salary } }
  curl -X POST -H "Content-type: application/json" -H "scope: unknown" -d '{ "query": "{ profile { name salary } }" }' 'http://localhost:4000/graphql'
- {"errors":[{"message":"Permission denied", "locations":[{"line":1,
- "column":3}], "path":["profile"]}], "data":null}
+ {"errors":[{"message":"Permission denied", "locations":[{"line":1, "column":3}], "path":["profile"]}], "data":null}
