@@ -12,7 +12,7 @@ service /transactionConsumer on
 
     // Gets triggered when a message is received by the queue.
     remote function onMessage(rabbitmq:Message message,
-                                rabbitmq:Caller caller) {
+                        rabbitmq:Caller caller) returns error? {
 
         string|error messageContent = 'string:fromBytes(message.content);
         if messageContent is string {
@@ -28,7 +28,7 @@ service /transactionConsumer on
                 log:printError(
                             "Error occurred while acknowledging the message.");
             }
-            error? res = commit;
+            check commit;
         }
     }
 }
