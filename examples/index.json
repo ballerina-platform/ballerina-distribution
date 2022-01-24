@@ -2638,7 +2638,7 @@
                 "name": "Cache Invalidation",
                 "url": "cache-invalidation",
                 "verifyBuild": true,
-                "verifyOutput": false,
+                "verifyOutput": true,
                 "disableVerificationReason": "Intermittently failing with github api rate limiting",
                 "isLearnByExample": false
             }
@@ -2748,57 +2748,21 @@
                 "name": "Schedule Job recurrence by Frequency",
                 "url": "task-frequency-job-execution",
                 "verifyBuild": true,
-                "verifyOutput": false,
+                "verifyOutput": true,
                 "isLearnByExample": false
             },
             {
                 "name": "Schedule one time job",
                 "url": "task-one-time-job-execution",
                 "verifyBuild": true,
-                "verifyOutput": false,
+                "verifyOutput": true,
                 "isLearnByExample": false
             },
             {
                 "name": "Manage Scheduled Jobs",
                 "url": "manage-scheduled-jobs",
                 "verifyBuild": true,
-                "verifyOutput": false,
-                "isLearnByExample": false
-            }
-        ]
-    },
-    {
-        "title": "UUID",
-        "column": 3,
-        "category": "Common Libraries",
-        "samples": [
-            {
-                "name": "Generate UUID",
-                "url": "uuid-generation",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes varying output",
-                "isLearnByExample": false
-            },
-            {
-                "name": "UUID Operations",
-                "url": "uuid-operations",
-                "verifyBuild": true,
                 "verifyOutput": true,
-                "isLearnByExample": false
-            }
-        ]
-    },
-    {
-        "title": "XSLT",
-        "column": 3,
-        "category": "Common Libraries",
-        "samples": [
-            {
-                "name": "XSLT Transformation",
-                "url": "xslt-transformation",
-                "verifyBuild": true,
-                "verifyOutput": false,
                 "isLearnByExample": false
             }
         ]
