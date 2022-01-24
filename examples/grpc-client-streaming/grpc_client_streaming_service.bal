@@ -7,8 +7,9 @@ import ballerina/log;
     descMap: getDescriptorMapGrpcClientStreaming()
 }
 service "HelloWorld" on new grpc:Listener(9090) {
-    isolated remote function lotsOfGreetings(stream<string, grpc:Error?> clientStream)
-                                    returns string|error {
+    isolated remote function lotsOfGreetings(
+                            stream<string, error?> clientStream)
+                            returns wrappers:ContextString|error {
         log:printInfo("Client connected successfully.");
         // Reads and processes each message in the client stream.
         _ = check from string name in clientStream
