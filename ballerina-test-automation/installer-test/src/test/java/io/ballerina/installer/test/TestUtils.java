@@ -356,10 +356,5 @@ public class TestUtils {
                 "new 'sample project3' && cd 'sample project3' && " + cmdName + "add module1", false, toolVersion);
         executor.executeCommand("version && cd 'test space3' && " + cmdName + "build 'sample project3'",
                 false, toolVersion);
-
-        Path projectPath2 = userDir.resolve("test space2").resolve("sampleProject2");
-        Assert.assertTrue(Files.exists(projectPath2));
-        Assert.assertTrue(Files.isDirectory(projectPath2.resolve("modules").resolve("module1")));
-        Assert.assertTrue(Files.exists(projectPath2.resolve("target/bin/sampleProject2.jar")));
     }
 }
