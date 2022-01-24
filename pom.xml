@@ -107,7 +107,7 @@
         <repository>
             <id>wso2.stage</id>
             <name>WSO2 Stage Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1684/</url>
+            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1686/</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -117,7 +117,7 @@
         <repository>
             <id>wso2.docker.stage</id>
             <name>WSO2 Stage Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1313/</url>
+            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1314/</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -127,7 +127,7 @@
         <repository>
             <id>wso2.kubernetes.stage</id>
             <name>WSO2 Stage Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxkubernetes-1288/</url>
+            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxkubernetes-1289/</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -137,7 +137,7 @@
         <repository>
             <id>wso2.awslambda.stage</id>
             <name>WSO2 Stage Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1186/</url>
+            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1187/</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -147,7 +147,7 @@
         <repository>
             <id>wso2.azurefunctions.stage</id>
             <name>WSO2 Stage Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxazurefunctions-1041/</url>
+            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxazurefunctions-1042/</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -346,13 +346,13 @@
         </dependencies>
     </dependencyManagement>
     <properties>
-        <ballerina.version>1.2.24</ballerina.version>
+        <ballerina.version>1.2.25</ballerina.version>
         <ballerina.jre.artifacts.version>2.0.1</ballerina.jre.artifacts.version>
         <project.scm.id>ballerina-scm-server</project.scm.id>
-        <docker.version>1.2.24</docker.version>
-        <kubernetes.version>1.2.24</kubernetes.version>
-        <awslambda.version>1.2.24</awslambda.version>
-        <azurefunctions.version>1.2.24</azurefunctions.version>
+        <docker.version>1.2.25</docker.version>
+        <kubernetes.version>1.2.25</kubernetes.version>
+        <awslambda.version>1.2.25</awslambda.version>
+        <azurefunctions.version>1.2.25</azurefunctions.version>
         <picocli.version>4.0.1</picocli.version>
         <ballerina.command.version>1.3.1</ballerina.command.version>
         <testng.version>6.14.3</testng.version>
