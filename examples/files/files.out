@@ -1,6 +1,6 @@
 bal run files.bal
 The bar.txt file created successfully.
-Is the bar.txt file exist: true
+Does the bar.txt file exist: true
 Is the bar.txt file readable: true
 Is the bar.txt file writeable: true
 The bar.txt file copied successfully.
