@@ -1610,6 +1610,7 @@
                 "url": "websocket-text-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
@@ -1617,6 +1618,7 @@
                 "url": "websocket-binary-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
