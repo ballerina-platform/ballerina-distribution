@@ -26,7 +26,7 @@ listener rabbitmq:Listener securedEP = new(rabbitmq:DEFAULT_HOST, 5671,
 service rabbitmq:Service on securedEP {
     remote function onMessage(rabbitmq:Message message) {
         string|error messageContent = string:fromBytes(message.content);
-        if (messageContent is string) {
+        if messageContent is string {
             log:printInfo("Received message: " + messageContent);
         }
     }

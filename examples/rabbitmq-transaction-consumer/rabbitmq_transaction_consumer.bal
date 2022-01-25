@@ -24,7 +24,7 @@ service /transactionConsumer on
         // or will rollback otherwise.
         transaction {
             rabbitmq:Error? result = caller->basicAck();
-            if (result is error) {
+            if result is error {
                 log:printError(
                             "Error occurred while acknowledging the message.");
             }
