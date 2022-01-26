@@ -330,10 +330,9 @@ public class TestUtils {
     }
 
     public static void testDirectoryPath(Executor executor, String toolVersion) throws InterruptedException {
-
         String cmdName = Utils.getCommandName(toolVersion);
 
-        executor.executeCommand("version && mkdir 'test space1' && cd 'test space1' && " + cmdName +
+        executor.executeCommand("version && mkdir \"test space1\" && cd \"test space1\" && " + cmdName +
                 "new sampleProject1 && cd sampleProject1 && " + cmdName + "add module1 && " +
                 cmdName + "build", false, toolVersion);
 
@@ -343,23 +342,23 @@ public class TestUtils {
         Assert.assertTrue(Files.isDirectory(projectPath1.resolve("modules").resolve("module1")));
         Assert.assertTrue(Files.exists(projectPath1.resolve("target/bin/sampleProject1.jar")));
 
-        executor.executeCommand("version && mkdir 'test space2' && cd 'test space2' && " + cmdName +
+        executor.executeCommand("version && mkdir \"test space2\" && cd \"test space2\" && " + cmdName +
                 "new sampleProject2 && cd sampleProject2 && " + cmdName + "add module1", false, toolVersion);
-        executor.executeCommand("version && " + cmdName + "build 'test space2/sampleProject2'", false, toolVersion);
+        executor.executeCommand("version && " + cmdName + "build \"test space2/sampleProject2\"", false, toolVersion);
 
         Path projectPath2 = userDir.resolve("test space2").resolve("sampleProject2");
         Assert.assertTrue(Files.exists(projectPath2));
         Assert.assertTrue(Files.isDirectory(projectPath2.resolve("modules").resolve("module1")));
         Assert.assertTrue(Files.exists(projectPath2.resolve("target/bin/sampleProject2.jar")));
 
-        executor.executeCommand("version && mkdir 'test space3' && cd 'test space3' && " + cmdName +
-                "new 'sample project3' && cd 'sample project3' && " + cmdName + "add module1", false, toolVersion);
-        executor.executeCommand("version && cd 'test space3' && " + cmdName + "build 'sample project3'",
+        executor.executeCommand("version && mkdir \"test space3\" && cd \"test space3\" && " + cmdName +
+                "new \"sample project3\" && cd \"sample project3\" && " + cmdName + "add module1", false, toolVersion);
+        executor.executeCommand("version && cd \"test space3\" && " + cmdName + "build \"sample project3\"",
                 false, toolVersion);
 
-        Path projectPath2 = userDir.resolve("test space2").resolve("sampleProject2");
-        Assert.assertTrue(Files.exists(projectPath2));
-        Assert.assertTrue(Files.isDirectory(projectPath2.resolve("modules").resolve("module1")));
-        Assert.assertTrue(Files.exists(projectPath2.resolve("target/bin/sampleProject2.jar")));
+        Path projectPath3 = userDir.resolve("test space3").resolve("sample project3");
+        Assert.assertTrue(Files.exists(projectPath3));
+        Assert.assertTrue(Files.isDirectory(projectPath3.resolve("modules").resolve("module1")));
+        Assert.assertTrue(Files.exists(projectPath3.resolve("target/bin/sample_project3.jar")));
     }
 }
