@@ -10,14 +10,24 @@ type Employee record {|
 public function main() {
     table<Employee> key(id) employees = table [
         {id: 1, firstName: "John", lastName: "Smith", salary: 100},
-        {id: 2, firstName: "Fred", lastName: "Bloggs", salary: 200}
+        {id: 2, firstName: "Jane", lastName: "Smith", salary: 100},
+        {id: 4, firstName: "Fred", lastName: "Bloggs", salary: 200},
+        {id: 7, firstName: "Bobby", lastName: "Clark", salary: 200},
+        {id: 9, firstName: "Cassie", lastName: "Smith", salary: 200}
     ];
 
-    // `from` clause iterates `employees` `table`.
-    // The contextually-expected type of the `query expression` is an `int[]`.
+    // `from` clause iterates `employees` `table` and creates a `int[]`.
     int[] salaries = from var {salary} in employees
                      select salary;
 
 
     io:println(salaries);
+
+    // `from` clause iterates `employees` `table` and creates a `table`.
+    table<Employee> smiths = from Employee emp in employees
+                     where emp.lastName == "Smith" select emp;
+
+    foreach Employee emp in smiths {
+        io:println(emp.firstName + " " + emp.lastName);
+    }
 }
