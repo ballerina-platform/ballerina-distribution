@@ -11,7 +11,7 @@ function parse(string s) returns int|error {
         int p = cp - 0x30;
         if p < 0 || p > 9 {
             // If `p` is not a digit construct, it returns
-            // an `error` value with "not a digit" as the error message.
+            // an `error` value with `not a digit` as the error message.
             return error("not a digit");
 
         }

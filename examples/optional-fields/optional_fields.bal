@@ -14,7 +14,7 @@ Headers h = {
   to: "Jill"
 };
 
-// Use `?.` operator to access the optional field.
+// Use the `?.` operator to access the optional field.
 string? subject = h?.subject;
 
 public function main() {
