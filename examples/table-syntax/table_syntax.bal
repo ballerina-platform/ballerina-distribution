@@ -20,7 +20,7 @@ function increaseSalary(int n) {
 }
 
 public function main() {
-    // Retrieves `Employee` with `Fred`, which is the value of the key.
+    // Retrieves the `Employee` member with `"Fred"` as the value of the key.
     Employee? e = t["Fred"];
     io:println(e.toBalString());
 
