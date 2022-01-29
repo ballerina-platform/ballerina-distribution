@@ -16,9 +16,9 @@ public function main() returns error? {
     }
 }
 
-// `transactional` function can only be called from a `transactional` context
+// A `transactional` function can only be called from a `transactional` context
 transactional function exec(Update u) returns error? {
-    // `transactional` named workers starts a transaction branch
+    // A `transactional` named worker starts a transaction branch
     // in the current transaction.
     transactional worker A {
         bar();
