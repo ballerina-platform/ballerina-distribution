@@ -165,33 +165,6 @@ jobs:
             BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.sversion }}.zip
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
-      - name: Copy deb artifact
-        run: cp installers/linux-deb/target/ballerina-*-linux-x64.deb module-ballerina-docker/base/devcontainer/
-      - name: Build the dev container docker image
-        id: docker_build_devcontainer
-        uses: docker/build-push-action@v2
-        with:
-          context: module-ballerina-docker/base/devcontainer/
-          load: true
-          push: false
-          tags: ballerina/ballerina-devcontainer:nightly-test
-          build-args: |
-            BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.version }}-linux-x64.deb
-      - name: Run Trivy vulnerability scanner for dev container docker image
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: 'ballerina/ballerina-devcontainer:nightly-test'
-          format: 'table'
-          exit-code: '1'
-          timeout: "10m0s"
-      - name: Build and push dev container image
-        uses: docker/build-push-action@v2
-        with:
-          context: module-ballerina-docker/base/devcontainer/
-          push: true
-          tags: ballerina/ballerina-devcontainer:nightly
-          build-args: |
-            BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.version }}-linux-x64.deb
     outputs:
       project-version: ${{ steps.project-version.outputs.version }}
 
