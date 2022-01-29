@@ -61,7 +61,7 @@ public function main() {
     int|Error nonBlankCount = count(strippedStream);
 
     if (nonBlankCount is int) {
-        io:println("Input line count : " + SAMPLE_LINE_COUNT.toString());
-        io:println("Non blank line count : " + nonBlankCount.toString());
+        io:println("Input line count: ", SAMPLE_LINE_COUNT.toString());
+        io:println("Non blank line count: ", nonBlankCount.toString());
     }
 }
