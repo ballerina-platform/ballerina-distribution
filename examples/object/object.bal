@@ -13,7 +13,7 @@ class MyClass {
 }
 
 public function main() {
-    // Apply `new` operator to a class to get an object.
+    // Apply `new` operator to a `class` to get an `object`.
     MyClass x = new MyClass(1234);
 
     // Call method using `obj.foo(args)`.

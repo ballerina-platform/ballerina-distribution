@@ -1,6 +1,6 @@
 import ballerina/io;
 
-// Defines a class called `File`.
+// Defines a `class` called `File`.
 class File {
 
     string path;

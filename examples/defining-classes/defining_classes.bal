@@ -1,10 +1,10 @@
 import ballerina/io;
 
 public class Counter {
-    // `private` means accessible only by code within the class definition.
+    // `private` means accessible only by code within the `class` definition.
     private int n;
 
-    // `init` method initializes the object.
+    // `init` method initializes the `object`.
     public function init(int n = 0) {
         self.n = n;
     }
