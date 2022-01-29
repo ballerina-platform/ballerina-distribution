@@ -1,9 +1,7 @@
 int[] iv = [1, 2, 3];
 
 // Assigning `int[]` to `any[]` is allowed.
-//
 // The set of values allowed by `int` is a subset of set of values allowed by `any`
-//
 // The set of values allowed by `int[]` is a subset of set of values allowed by `any[]`
 any[] av = iv;
 
