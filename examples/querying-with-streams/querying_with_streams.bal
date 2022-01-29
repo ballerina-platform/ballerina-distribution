@@ -2,7 +2,7 @@ import ballerina/io;
 
 type Error error;
 
-type StringStream stream<string, Error?>;
+type LineStream stream<string, Error?>;
 
 type ValueRecord record {|
     string value;
@@ -31,16 +31,16 @@ class LineGenerator {
 }
 
 // This method strips the blank lines.
-function strip(StringStream lines) returns StringStream {
+function strip(LineStream lines) returns LineStream {
     // Creates a `stream` from the query expression.
-    StringStream res = stream from var line in lines
+    LineStream res = stream from var line in lines
              where line.trim().length() > 0
              select line;
 
     return res;
 }
 
-function count(StringStream lines) returns int|Error {
+function count(LineStream lines) returns int|Error {
     int nLines = 0;
     // Counts the number of lines by iterating the `stream`
     // in `query action`.
@@ -54,9 +54,9 @@ function count(StringStream lines) returns int|Error {
 
 public function main() {
     LineGenerator generator = new ("Everybody can dance");
-    StringStream inputLineStream = new (generator);
+    LineStream inputLineStream = new (generator);
 
-    StringStream strippedStream = strip(inputLineStream);
+    LineStream strippedStream = strip(inputLineStream);
 
     int|Error nonBlankCount = count(strippedStream);
 
