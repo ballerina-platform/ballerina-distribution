@@ -1,3 +1,7 @@
-bal run raw_templates.bal
+# Create a Ballerina project.
+# Copy the example to the project and add relevant database driver jar details to the `Ballerina.toml` file.
+# Execute the command below to build and run the project.
+bal run
+
 {"ORDERID":1,"CUSTOMERID":1,"NOOFITEMS":20}
 {"ORDERID":2,"CUSTOMERID":1,"NOOFITEMS":15}
