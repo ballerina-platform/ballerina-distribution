@@ -9,7 +9,7 @@ public function main() {
     json j = {x: 1.0, y: 2.0};
 
     // Use `cloneReadOnly` to create a read-only copy of the mutable value.
-    // Then you can successfully cast the resulting immutable value.
+    // Then, you can cast the resulting immutable value successfully.
     json k = j.cloneReadOnly();
     Coord c = <Coord> k;
 
