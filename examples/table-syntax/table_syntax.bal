@@ -5,7 +5,7 @@ type Employee record {
     int salary;
 };
 
-// Creates a `table` with members of `Employee` type, where each
+// Creates a `table` with members of the `Employee` type, where each
 // member is uniquely identified using their `name` field.
 table<Employee> key(name) t = table [
     { name: "John", salary: 100 },
