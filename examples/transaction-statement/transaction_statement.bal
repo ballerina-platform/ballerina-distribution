@@ -10,7 +10,7 @@ public function main() returns error? {
 
         // Commit of a transaction must be done explicitly using commit.
         // Commit must be lexically within a transaction statement and may
-        // return an error;
+        // return an `error`;
         check commit;
 
     }
