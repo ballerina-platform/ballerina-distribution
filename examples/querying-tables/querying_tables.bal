@@ -29,6 +29,6 @@ public function main() {
                      where emp.lastName == "Smith" select emp;
 
     foreach Employee emp in smiths {
-        io:println(emp.firstName + " " + emp.lastName);
+        io:println(emp.firstName, " ", emp.lastName);
     }
 }
