@@ -1,6 +1,6 @@
 // `isolated` is a complex feature, which would be a lot for an application developer to understand.
 // A typical Ballerina application consists of a single module that imports multiple library modules.
-// Within a single module, you can infer `isolated` qualifiers. An Object without mutable fields is
+// Within a single module, you can infer `isolated` qualifiers. An object without mutable fields is
 // inherently `isolated`. Application developer's responsibility is to use `lock` statement where
 // needed. e.g.,
 // <ul>
