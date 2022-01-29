@@ -8,7 +8,7 @@ type Coord record {
 public function main() {
     json j = {x: 1.0, y: 2.0};
 
-    // Use `cloneReadOnly()` to create a read-only copy of the mutable value.
+    // Use `cloneReadOnly` to create a read-only copy of the mutable value.
     // Then you can successfully cast the resulting immutable value.
     json k = j.cloneReadOnly();
     Coord c = <Coord> k;
