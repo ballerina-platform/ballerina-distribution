@@ -12,7 +12,7 @@ jobs:
         name: Integration Tests on Ubuntu
         runs-on: ubuntu-latest
         concurrency:
-            group: ${{ github.head_ref }}-integration-tests
+            group: ${{ github.ref }}-integration-tests
             cancel-in-progress: true
         steps:
             -   name: Checkout Repository
@@ -33,7 +33,7 @@ jobs:
         name: BBE Tests on Ubuntu
         runs-on: ubuntu-latest
         concurrency:
-            group: ${{ github.head_ref }}-bbe-tests
+            group: ${{ github.ref }}-bbe-tests
             cancel-in-progress: true
         steps:
             -   name: Checkout Repository
@@ -53,7 +53,7 @@ jobs:
         name: Windows Build
         runs-on: windows-latest
         concurrency:
-            group: ${{ github.head_ref }}-windows
+            group: ${{ github.ref }}-windows
             cancel-in-progress: true
         steps:
             -   name: Checkout Repository
