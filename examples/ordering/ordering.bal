@@ -29,6 +29,6 @@ public function main() {
                         select e;
 
     foreach Employee e in sorted {
-        io:println(e.firstName + " " + e.lastName);
+        io:println(e.firstName, " ", e.lastName);
     }
 }
