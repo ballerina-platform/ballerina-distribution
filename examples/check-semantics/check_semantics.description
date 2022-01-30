@@ -1,4 +1,4 @@
-// `check` semantics is not simply to return on an `error` value.
+// `check` semantics is not to simply return on an `error` value.
 // When `check` gets an `error` value, it fails.
 // The enclosing block decides how to handle the failure.
 // Most blocks pass the failure up to the enclosing block.
