@@ -4,8 +4,8 @@
 // inherently `isolated`. It is the application developer's responsibility to use `lock` statements where
 // needed. e.g.,
 // <ul>
-// <li>access `self` in a `service` object with mutable state</li>
-// <li>access mutable module-level variables</li>
+// <li>accessing `self` in a `service` object with mutable state</li>
+// <li>accessing mutable module-level variables</li>
 // </ul>
 // <br></br>
 // <p>Compiler can inform developer where missing locks are preventing a `service` object or method from
