@@ -17,7 +17,7 @@ public function main() {
     ];
 
     // The `from` clause iterates `employees` table.
-    // The query expression creates an integer `array` based on the contextually-expected type.
+    // Since the contextually-expected type for the query expression is `int[]` evaluation of the query expression will result in an integer array.
     int[] salaries = from var {salary} in employees
                      select salary;
 
