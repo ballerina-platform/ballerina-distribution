@@ -2,14 +2,14 @@ import ballerina/io;
 
 public function main() returns error? {
     do {
-        // If either `foo()` or `bar()` invocations returns an `error`,
+        // If either `foo()` or `bar()` invocations returns an error,
         // the error will be returned from the `main` function and execution
         // of the `main` function ends.
         check foo();
         check bar();
 
         if !isOK() {
-            // Fails explicitly with an `error`.
+            // Fails explicitly with an error.
             fail error("not OK");
 
         }
