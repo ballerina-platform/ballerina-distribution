@@ -1,6 +1,6 @@
 import ballerina/io;
 
-// Parses a `string` to convert to an `int` value.
+// Parses a `string` value to convert to an `int` value.
 // This function may return error values.
 // The return type is a union with `error`.
 function parse(string s) returns int|error {
@@ -21,13 +21,13 @@ function parse(string s) returns int|error {
 }
 
 public function main() {
-    // An `int` value is returned when the argument is a `string`,
+    // An `int` value is returned when the argument is a `string` value,
     // which can be parsed successfully as an integer.
     int|error x = parse("123");
 
     io:println(x);
 
-    // An `error` value is returned when the argument is a `string`,
+    // An `error` value is returned when the argument is a `string` value,
     // which has a character that is not a digit.
     int|error y = parse("1h");
 
