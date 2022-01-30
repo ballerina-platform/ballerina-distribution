@@ -1,6 +1,6 @@
 import ballerina/io;
 
-// Defines a record type named `Coord`.
+// Defines a `record` type named `Coord`.
 type Coord record {
     int x;
     int y;

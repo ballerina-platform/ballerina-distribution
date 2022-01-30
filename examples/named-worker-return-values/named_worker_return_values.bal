@@ -1,7 +1,7 @@
 import ballerina/io;
 
 function demo(string s) returns int|error {
-    // Named workers have a return type, which defaults to `nil`
+    // Named workers have a return type, which defaults to nil
     // if not specified.
     worker A returns int|error {
         // A return statement in a named worker terminates 
