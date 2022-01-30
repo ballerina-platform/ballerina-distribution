@@ -13,7 +13,7 @@ public function main() {
     floatSurprise();
     io:println(nanos);
 
-    // Literals, which belong to type `decimal` use the suffix `d`(`f` suffix is for `float`)
+    // Numeric literals can use the `d` suffix for them to be interpreted as `decimal` values(`f` suffix is for `float`)
     var d = 12345d;
     io:println(d is decimal);
 }
