@@ -184,6 +184,7 @@ jobs:
           format: 'table'
           exit-code: '1'
           timeout: "10m0s"
+          ignore-unfixed: true
       - name: Build and push dev container image
         uses: docker/build-push-action@v2
         with:
