@@ -182,7 +182,6 @@ jobs:
         with:
           image-ref: 'ballerina/ballerina-devcontainer:nightly-test'
           format: 'table'
-          exit-code: '1'
           timeout: "10m0s"
           ignore-unfixed: true
       - name: Build and push dev container image
