@@ -35,6 +35,7 @@ jobs:
           packageUser: ${{ github.actor }}
           packagePAT: ${{ secrets.GITHUB_TOKEN }}
           devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
+          TEST_MODE_ACTIVE: true
         run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue
       - name: Create linux-deb
         id: run_installers_deb
@@ -109,6 +110,8 @@ jobs:
       - name: Run Installer Tests
         working-directory: ./ballerina-test-automation/installer-test
         run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+        env:
+          TEST_MODE_ACTIVE: true
       - name: Notify failure
         if: ${{ failure() }}
         run: |
@@ -212,6 +215,7 @@ jobs:
           packageUser: ${{ github.actor }}
           packagePAT: ${{ secrets.GITHUB_TOKEN }}
           devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
+          TEST_MODE_ACTIVE: true
         run: ./gradlew.bat clean build --stacktrace --scan --console=plain --no-daemon -x test
 
   ubuntu-rpm-installer-test:
@@ -239,6 +243,8 @@ jobs:
         run: |
           bal -v
           ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+        env:
+          TEST_MODE_ACTIVE: true
 
   macos-installer-build:
 
@@ -276,6 +282,8 @@ jobs:
       - name: Run Installer Tests
         working-directory: ./ballerina-test-automation/installer-test
         run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+        env:
+          TEST_MODE_ACTIVE: true
 
   windows-installer-build:
 
@@ -324,6 +332,8 @@ jobs:
         run: |
           $env:Path += ";C:\Program Files\Ballerina\bin"
           .\..\gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+        env:
+          TEST_MODE_ACTIVE: true
 
   trigger-notifications:
 
