@@ -9,8 +9,8 @@ listener grpc:Listener securedEP = new(9090,
     }
 );
 
-// The service can be secured with JWT authentication and can be authorized
-// optionally. JWT authentication can be enabled by setting the
+// The service can be secured with JWT Auth and can be authorized
+// optionally. JWT Auth can be enabled by setting the
 // [`grpc:JwtValidatorConfig`](https://docs.central.ballerina.io/ballerina/grpc/latest/records/JwtValidatorConfig) configurations.
 // Authorization is based on scopes. A scope maps to one or more groups.
 // Authorization can be enabled by setting the `string|string[]` type

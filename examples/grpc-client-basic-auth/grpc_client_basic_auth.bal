@@ -1,6 +1,6 @@
 import ballerina/io;
 
-// Defines the gRPC client to call the Basic auth secured APIs.
+// Defines the gRPC client to call the Basic Auth secured APIs.
 // The client metadata is enriched with the `Authorization: Basic <token>`
 // header by passing the [`grpc:CredentialsConfig`](https://docs.central.ballerina.io/ballerina/grpc/latest/records/CredentialsConfig) for the `auth` configuration
 // of the client.
