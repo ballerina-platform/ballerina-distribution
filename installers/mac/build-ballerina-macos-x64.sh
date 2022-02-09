@@ -65,6 +65,7 @@ fi
 BALLERINA_DISTRIBUTION_LOCATION=${DIST_PATH}
 BALLERINA_PLATFORM=ballerina-${BALLERINA_VERSION}-macos
 BALLERINA_INSTALL_DIRECTORY=ballerina-${BALLERINA_VERSION}
+BALLERINA_DIST_VERSION="$(cut -d'-' -f1 <<<${BALLERINA_VERSION})"
 
 echo "Build started at" $(date +"%Y-%m-%d %H:%M:%S")
 
@@ -85,7 +86,7 @@ function createPackInstallationDirectory() {
     rm -rf target/darwin
     cp -r darwin target/darwin
 
-    sed -i -e 's/__BALLERINA_VERSION__/'${BALLERINA_VERSION}'/g' target/darwin/scripts/postinstall
+    sed -i -e 's/__BALLERINA_VERSION__/'${BALLERINA_DIST_VERSION}'/g' target/darwin/scripts/postinstall
     chmod -R 755 target/darwin/scripts/postinstall
 
     sed -i -e 's/__BALLERINA_VERSION__/'${BALLERINA_VERSION}'/g' target/darwin/Distribution
