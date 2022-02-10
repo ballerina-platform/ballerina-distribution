@@ -115,11 +115,11 @@ public class TestUtils {
         }
 
         //Test `ballerina dist use`
-        executor.executeCommand("dist use " + TestUtils.getSupportedVersion(toolVersion, version), true,
+        executor.executeCommand("dist use " + TestUtils.getSupportedVersion(latestToolVersion, version), true,
                 toolVersion);
 
         //Verify the the installation
-        TestUtils.testInstallation(executor, version, specVersion, toolVersion, VERSION_DISPLAY_TEXT);
+        TestUtils.testInstallation(executor, version, specVersion, latestToolVersion, VERSION_DISPLAY_TEXT);
 
         //Test `ballerina dist update`
         executor.executeCommand("dist use " + TestUtils.getSupportedVersion(toolVersion, previousVersion),
