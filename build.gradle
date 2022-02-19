@@ -46,7 +46,6 @@ ext {
 }
 
 allprojects {
-    apply plugin: 'maven'
     apply plugin: 'maven-publish'
 
     group = project.group
