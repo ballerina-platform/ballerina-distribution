@@ -168,6 +168,8 @@ task deleteTemporaryFiles(type: Delete) {
 }
 
 task copyOtherRepos(type: Copy) {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+
     def ballerinaDist = "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
     into ballerinaDist
 
