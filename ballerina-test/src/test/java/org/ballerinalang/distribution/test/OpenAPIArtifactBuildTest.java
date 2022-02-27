@@ -148,7 +148,6 @@ public class OpenAPIArtifactBuildTest {
             Stream<String> logLines = br.lines();
             String generatedLog = logLines.collect(Collectors.joining("\n"));
             logLines.close();
-
             generatedLog = (generatedLog.trim()).replaceAll(WHITESPACE_PATTERN, "");
             msg = (msg.trim()).replaceAll(WHITESPACE_PATTERN, "");
             if (generatedLog.contains(msg)) {
@@ -173,7 +172,6 @@ public class OpenAPIArtifactBuildTest {
             Stream<String> logLines = br.lines();
             String generatedLog = logLines.collect(Collectors.joining("\n"));
             logLines.close();
-
             generatedLog = (generatedLog.trim()).replaceAll(WHITESPACE_PATTERN, "");
             msg = (msg.trim()).replaceAll(WHITESPACE_PATTERN, "");
             if (generatedLog.contains(msg)) {
