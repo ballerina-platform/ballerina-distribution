@@ -76,9 +76,11 @@ public class GenCacheCmd implements BLauncherCmd{
             //TODO : Remove when regeneration is not required
         } catch (Error e) {
             //TODO : Ignore Error and continue generation as regeneration will be done
+            e.printStackTrace();
             System.out.println("Error occurred " + balaPath + " " + e);
         } catch (Exception e) {
             //TODO : Ignore Exception and continue generation as regeneration will be done
+            e.printStackTrace();
             System.out.println("Exception occurred " + balaPath + " " + e);
         }
     }
