@@ -1,4 +1,4 @@
-// NATS streaming library provides the functionality of historical
+// The `nats` streaming library provides the functionality of historical
 // message replay.
 // New subscriptions may specify a starting position in the stream of
 // messages stored for the channel of the subscribed subject.

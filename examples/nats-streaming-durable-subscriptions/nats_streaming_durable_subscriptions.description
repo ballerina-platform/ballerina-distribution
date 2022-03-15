@@ -1,4 +1,4 @@
-// NATS streaming library allows creating durable subscriptions.
+// The `nats` streaming library allows creating durable subscriptions.
 // Regular subscriptions remember
 // their position while the client is connected. If the client
 // disconnects, the position is lost. Durable subscriptions
