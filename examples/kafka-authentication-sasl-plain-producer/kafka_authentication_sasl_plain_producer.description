@@ -1,5 +1,5 @@
-// This is an example of a Kafka producer using the SASL/PLAIN authentication.
-// For this example to work properly, an active Kafka server must be present
+// This shows how the SASL/PLAIN authentication is done in `kafka:Producer`.
+// For this to work properly, an active Kafka server must be present
 // and it should be configured to use the SASL/PLAIN authentication mechanism.
 // <br/><br/>
 // For more information on the underlying module,
