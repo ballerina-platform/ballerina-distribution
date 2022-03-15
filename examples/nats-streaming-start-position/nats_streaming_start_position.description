@@ -1,5 +1,5 @@
-// This sample demonstrates leveraging the historical
-// message replay feature of Streaming NATS.
+// The `nats` streaming library provides the functionality of historical
+// message replay.
 // New subscriptions may specify a starting position in the stream of
 // messages stored for the channel of the subscribed subject.
 // Message delivery may begin at:

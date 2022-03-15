@@ -1,4 +1,4 @@
-// In this example, the messages are consumed from an
+// The messages are consumed from an
 // existing queue using the Ballerina RabbitMQ message listener.
 // The Ballerina RabbitMQ connection used here can be re-used to create
 // multiple channels.
