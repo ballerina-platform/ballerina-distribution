@@ -46,7 +46,14 @@ public function main() returns error? {
     // throw sql:NoRowsError.
     Customer customer = check mysqlClient->queryRow(
         `SELECT * FROM Customers where customerId = ${customerId}`);
-    io:println("\nCustomer details(customerId =1) : ", customer);
+    io:println("\nCustomer (customerId = 1) : ", customer);
+
+    // The result of the count operation is provided as an int variable.
+    // Since this query only returns a single column on top of single row,
+    // this can be provided as an int variable.
+    int totalCustomers = check mysqlClient->queryRow(
+                    `SELECT COUNT(*) AS total FROM Customers`);
+    io:println("\nTotal customers in the table : ", totalCustomers);
 
     // Performs the cleanup after the example.
     check afterExample(mysqlClient);
