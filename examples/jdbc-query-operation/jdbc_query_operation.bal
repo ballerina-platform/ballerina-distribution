@@ -6,7 +6,7 @@ import ballerina/sql;
 // 'getDataWithTypedQuery' function. In this example, all columns of the 
 // customer table will be loaded. Therefore, the `Customer` record will be 
 // created with all the columns. The column name of the result and the 
-// defined field name of the record will be matched regardless of letters' case.
+// defined field name of the record will be matched regardless of the letters' case.
 type Customer record {|
     int customerId;
     string lastName;
@@ -42,13 +42,13 @@ public function main() returns error? {
     int customerId = 1;
     // Select a row in the database table via the query row operation.
     // This will return utmost one record. If no record is found, it will
-    // throw sql:NoRowsError.
+    // throw an `sql:NoRowsError`.
     Customer customer = check jdbcClient->queryRow(
         `SELECT * FROM Customers where customerId = ${customerId}`);
     io:println("\nCustomer (customerId = 1) : ", customer);
 
     // The result of the count operation is provided as an int variable.
-    // Since this query only returns a single column on top of single row,
+    // As this query returns only a single column on top of a single row,
     // this can be provided as an int variable.
     int totalCustomers = check jdbcClient->queryRow(
                     `SELECT COUNT(*) AS total FROM Customers`);
