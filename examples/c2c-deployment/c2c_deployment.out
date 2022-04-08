@@ -41,8 +41,6 @@ Generating artifacts...
         Execute the below command to access service via NodePort:
         kubectl expose deployment wso2-hello-0--deployment --type=NodePort --name=wso2-hello-0--svc-local
 
-
-
 # First, let’s try executing the Docker image separately.
 
 # Verify if the Docker image is generated. (If you have used the `minikube docker-env`, skip this and go to the Kubernetes deployment directly.)
