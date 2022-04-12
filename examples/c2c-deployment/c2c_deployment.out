@@ -72,7 +72,7 @@ wso2-hello-0--deployment-7d4d56457b-7jlzx   1/1     Running   0          57s
 `kubectl expose deployment wso2-hello-0--deployment --type=NodePort --name=wso2-hello-0--svc-local`
 service/wso2-hello-0--svc-local exposed
 
-# Get the IP and port of the Kubernetes service.
+# Get the IP address and port of the Kubernetes service.
 `kubectl get svc`
 NAME                        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
 wso2-hello-0--svc-local   NodePort    10.111.61.112    <none>        9090:32437/TCP   4m17s
@@ -81,6 +81,6 @@ wso2-hello-0--svc-local   NodePort    10.111.61.112    <none>        9090:32437/
 `minikube ip`
 192.168.49.2
 
-# Access the deployed service via CURL.
+# Access the deployed service via cURL.
 `curl http://192.168.49.2:32437/helloWorld/sayHello`
 Hello, World from service helloWorld !
