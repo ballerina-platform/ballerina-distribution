@@ -6,7 +6,7 @@ import ballerina/sql;
 // 'getDataWithTypedQuery' function. In this example, all columns of the 
 // customer table will be loaded. Therefore, the `Customer` record will be 
 // created with all the columns. The column name of the result and the 
-// defined field name of the record will be matched case insensitively.
+// defined field name of the record will be matched regardless of the letters' case.
 type Customer record {|
     int customerId;
     string lastName;
@@ -21,7 +21,7 @@ public function main() returns error? {
     check beforeExample();
 
     // Initializes the MySQL client.
-    mysql:Client mysqlClient = check new (user = "root", 
+    mysql:Client mysqlClient = check new (user = "root",
             password = "Test@123", database = "MYSQL_BBE");
 
     // Select the rows in the database table via the query remote operation.
@@ -29,46 +29,31 @@ public function main() returns error? {
     // be either a record or an error. The name and type of the attributes 
     // within the record from the `resultStream` will be automatically 
     // identified based on the column name and type of the query result.
-    stream<record {}, error?> resultStream =
+    stream<Customer, error?> resultStream =
             mysqlClient->query(`SELECT * FROM Customers`);
 
     // If there is any error during the execution of the SQL query or
     // iteration of the result stream, the result stream will terminate and
     // return the error.
-    check from record {} result in resultStream
-        do {
-            io:println("Full Customer details: ", result);
-        };
-
-    // The result of the count operation is provided as a record stream.
-    stream<record {}, error?> resultStream2 =
-            mysqlClient->query(`SELECT COUNT(*) AS total FROM Customers`);
-
-    // Since the above count query will return only a single row,
-    // the `next()` operation is sufficient to retrieve the data.
-    record {|record {} value;|}|error? result = resultStream2.next();
-    // Checks the result and retrieves the value for the total.
-    if result is record {|record {} value;|} {
-        io:println("Total rows in customer table : ", result.value["total"]);
-    }
-
-    // In general cases, the stream will be closed automatically
-    // when the stream is fully consumed or any error is encountered.
-    // However, in case if the stream is not fully consumed, the stream
-    // should be closed specifically.
-    check resultStream2.close();
-
-    // If a `Customer` stream type is defined when calling the query method,
-    // The result is returned as a `Customer` record stream and the elements
-    // of the stream can be either a `Customer` record or an error.
-    stream<Customer, error?> customerStream =
-        mysqlClient->query(`SELECT * FROM Customers`);
-
-    // Iterates the customer stream.
-    check from Customer customer in customerStream
+    check from Customer customer in resultStream
         do {
             io:println("Full Customer details: ", customer);
         };
+
+    int customerId = 1;
+    // Select a row in the database table via the query row operation.
+    // This will return utmost one record. If no record is found, it will
+    // throw an `sql:NoRowsError`.
+    Customer customer = check mysqlClient->queryRow(
+        `SELECT * FROM Customers where customerId = ${customerId}`);
+    io:println("\nCustomer (customerId = 1) : ", customer);
+
+    // The result of the count operation is provided as an int variable.
+    // As this query returns only a single column on top of a single row,
+    // this can be provided as an int variable.
+    int totalCustomers = check mysqlClient->queryRow(
+                    `SELECT COUNT(*) AS total FROM Customers`);
+    io:println("\nTotal customers in the table : ", totalCustomers);
 
     // Performs the cleanup after the example.
     check afterExample(mysqlClient);
