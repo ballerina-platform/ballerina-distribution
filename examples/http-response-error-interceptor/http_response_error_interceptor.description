@@ -1,0 +1,8 @@
+// A `ResponseErrorInterceptor` is used to handle the errors that occurred in the response path i.e. 
+// when an error is returned from the target service or a `ResponseInterceptor` service, the 
+// interceptor pipeline execution jumps to the nearest `ResponseErrorInterceptor`. 
+// In addition to this, when there is an error in the request path and there is no `RequestErrorInterceptor`,
+// the interceptor pipeline execution jumps to the nearest `ResponseErrorInterceptor`.   
+// However, if there is no `ResponseErrorInterceptor` in the pipeline, then, 
+// the error response is returned to the client.
+// For more information, see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).

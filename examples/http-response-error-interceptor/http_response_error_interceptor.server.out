@@ -1,0 +1,11 @@
+# Run the service.
+bal run http_response_error_interceptor.bal
+
+Executing Target Resource
+Executing Response Interceptor 1
+error: Http header does not exist
+        at ballerina.http.2:externRequestGetHeader(http_request.bal:733)
+           ballerina.http.2.Request:getHeader(http_request.bal:147)
+           RequestInterceptor1:$default$**(http_request_error_interceptor.bal:18)
+Executing Response Error Interceptor
+Error occurred : Http header does not exist
