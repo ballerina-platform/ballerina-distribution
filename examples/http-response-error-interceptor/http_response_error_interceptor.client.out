@@ -1,19 +1,19 @@
 # Invoke the service.
 curl -v http://localhost:9090/greeting
-*   Trying ::1...
-* TCP_NODELAY set
+*   Trying ::1:9090...
 * Connected to localhost (::1) port 9090 (#0)
 > GET /greeting HTTP/1.1
 > Host: localhost:9090
-> User-Agent: curl/7.64.1
+> User-Agent: curl/7.77.0
 > Accept: */*
 > 
+* Mark bundle as not supporting multiuse
 < HTTP/1.1 200 OK
-< X-responseCheckHeader: ResponseErrorInterceptor
 < content-type: text/plain
+< X-responseCheckHeader: ResponseErrorInterceptor
 < content-length: 27
 < server: ballerina
-< date: Wed, 24 Nov 2021 10:47:04 +0530
+< date: Fri, 15 Apr 2022 12:37:10 +0530
 < 
 * Connection #0 to host localhost left intact
-Greetings from Interceptor!* Closing connection 0
+Greetings from Interceptor!
