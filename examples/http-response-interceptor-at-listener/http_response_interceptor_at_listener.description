@@ -1,0 +1,5 @@
+// The HTTP Listener supports intercepting responses in the response path. It is possible to
+// define a `ResponseInterceptor` service class with a remote function to execute 
+// custom logic and engage with an HTTP Listener. All the responses from the listener
+// will go though the response interceptors before dispatching to the client.
+// For more information, see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
