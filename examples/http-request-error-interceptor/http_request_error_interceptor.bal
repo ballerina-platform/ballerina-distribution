@@ -41,7 +41,7 @@ service class RequestErrorInterceptor {
     *http:RequestErrorInterceptor;
 
     // The resource function inside a `RequestErrorInterceptor` is only allowed to have the default method and path. The error occurred
-    // in the interceptor execution can be accessed by the mandatory argument : `error``.
+    // in the interceptor execution can be accessed by the mandatory argument : `error`.
     resource function 'default [string... path](error err, http:Request req, 
             http:RequestContext ctx) returns http:NextService|error? {
         io:println("Executing Request Error Interceptor");

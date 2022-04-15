@@ -11,9 +11,9 @@ curl -v http://localhost:9090/greeting
 < HTTP/1.1 200 OK
 < X-responseCheckHeader: ResponseErrorInterceptor
 < content-type: text/plain
-< content-length: 10
+< content-length: 27
 < server: ballerina
 < date: Wed, 24 Nov 2021 10:47:04 +0530
 < 
 * Connection #0 to host localhost left intact
-Greetings!* Closing connection 0
+Greetings from Interceptor!* Closing connection 0
