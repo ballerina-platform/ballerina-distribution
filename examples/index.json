@@ -2913,7 +2913,7 @@
             {
                 "name": "Azure Functions",
                 "url": "azure-functions-deployment",
-                "verifyBuild": true,
+                "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
                 "disablePlayground": true,
@@ -2922,7 +2922,7 @@
             {
                 "name": "AWS Lambda",
                 "url": "aws-lambda-deployment",
-                "verifyBuild": true,
+                "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
                 "disablePlayground": true,
