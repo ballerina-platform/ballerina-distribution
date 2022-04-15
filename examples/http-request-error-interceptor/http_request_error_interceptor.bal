@@ -35,15 +35,15 @@ service class RequestInterceptor2 {
 
 RequestInterceptor2 requestInterceptor2 = new;
 
-// A Request Error Interceptor service class implementation. It intercepts the request when an error occurrs in the interceptor execution,
+// A Request Error Interceptor service class implementation. It intercepts the request when an error occurrs in the request path,
 // and adds a header before it is dispatched to the target HTTP resource. Also, a Request Error Interceptor service class can have only one resource function.
 service class RequestErrorInterceptor {
     *http:RequestErrorInterceptor;
 
     // The resource function inside a `RequestErrorInterceptor` is only allowed to have the default method and path. The error occurred
-    // in the interceptor execution can be accessed by the `error` parameter.
-    resource function 'default [string... path](http:RequestContext ctx, 
-                http:Request req, error err) returns http:NextService|error? {
+    // in the interceptor execution can be accessed by the mandatory argument : `error``.
+    resource function 'default [string... path](error err, http:Request req, 
+            http:RequestContext ctx) returns http:NextService|error? {
         io:println("Executing Request Error Interceptor");
         io:println("Error occurred : " + err.message());
         // Sets a header to the request.
