@@ -1,0 +1,10 @@
+# To invoke the service with `X-checkHeader`. This will not return any error.
+curl -v http://localhost:9090/greeting -H "X-checkHeader: Client"
+
+# To invoke the service with `X-interceptorCheckHeader`. This will return an error
+# in the request path, and will be handled by the `RequestErrorInterceptor`.
+curl -v http://localhost:9090/greeting -H "X-interceptorCheckHeader: true"
+
+# To invoke the service without check headers. This will return an error from
+# target service, and will be handled by `ResponseErrorInterceptor`. 
+curl -v http://localhost:9090/greeting
