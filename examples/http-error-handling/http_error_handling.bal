@@ -10,8 +10,7 @@ final string request_check_header_value = "RequestErrorInterceptor";
 // Header value to be set to the response in the response error interceptor.
 final string response_check_header_value = "ResponseErrorInterceptor";
 
-// A `RequestInterceptor` service which tries to read an header from the request.
-service class RequestInterceptor1 {
+service class RequestInterceptor {
     *http:RequestInterceptor;
 
     resource function 'default [string... path](http:RequestContext ctx, 
@@ -23,7 +22,7 @@ service class RequestInterceptor1 {
     }
 }
 
-RequestInterceptor1 requestInterceptor1 = new;
+RequestInterceptor requestInterceptor = new;
 
 service class RequestErrorInterceptor {
     *http:RequestErrorInterceptor;
@@ -59,7 +58,7 @@ service class ResponseErrorInterceptor {
 ResponseErrorInterceptor responseErrorInterceptor = new;
 
 listener http:Listener interceptorListener = new http:Listener(9090, config = { 
-    interceptors: [requestInterceptor1, requestErrorInterceptor, 
+    interceptors: [requestInterceptor, requestErrorInterceptor, 
                    responseErrorInterceptor] 
 });
 
