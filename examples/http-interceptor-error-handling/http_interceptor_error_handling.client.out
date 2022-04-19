@@ -8,11 +8,12 @@ curl -v http://localhost:9090/greeting
 > Accept: */*
 > 
 * Mark bundle as not supporting multiuse
-< HTTP/1.1 500 Internal Server Error
+< HTTP/1.1 200 OK
+< checkedHeader: RequestErrorInterceptor
 < content-type: application/org+json
-< content-length: 77
+< content-length: 24
 < server: ballerina
-< date: Tue, 19 Apr 2022 12:34:19 +0530
+< date: Tue, 19 Apr 2022 12:37:21 +0530
 < 
 * Connection #0 to host localhost left intact
-{"message":"no matching resource found for path : /Greetings , method : GET"}
+{"message":"Greetings!"}

@@ -1425,8 +1425,24 @@
         "category": "Working over the network",
         "samples": [
             {
+                "name": "Interceptors",
+                "url": "http-interceptors",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Error Handling",
                 "url": "http-error-handling",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Interceptor Error Handling",
+                "url": "http-interceptor-error-handling",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,

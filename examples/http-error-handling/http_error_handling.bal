@@ -1,78 +1,55 @@
 import ballerina/http;
 
-// Header names checked by the interceptors.
-final string check_header = "X-checkHeader";
-final string interceptor_check_header = "X-interceptorCheckHeader";
-
-// Header value to be set to the request in the request error interceptor.
-final string request_check_header_value = "RequestErrorInterceptor";
-
-// Header value to be set to the response in the response error interceptor.
-final string response_check_header_value = "ResponseErrorInterceptor";
-
-service class RequestInterceptor {
-    *http:RequestInterceptor;
-
-    resource function 'default [string... path](http:RequestContext ctx, 
-                            http:Request req) returns http:NextService|error? {
-        // This will return a `HeaderNotFoundError` if you do not set this header. 
-        // Then, the execution will jump to the nearest `RequestErrorInterceptor`.
-        string checkHeader = check req.getHeader(check_header);
-        return ctx.next();
-    }
-}
-
-RequestInterceptor requestInterceptor = new;
-
-service class RequestErrorInterceptor {
-    *http:RequestErrorInterceptor;
-
-    resource function 'default [string... path](error err, http:Request req, 
-            http:RequestContext ctx) returns http:NextService|error? {
-        // If you set the `interceptor_check_header` to the request, then we
-        // set the following header to the request.
-        if req.hasHeader(interceptor_check_header) {
-            req.setHeader(check_header, request_check_header_value);
-        }
-        // Otherwise, the request will get dispatched to the target service
-        return ctx.next();
-    }
-}
-
-RequestErrorInterceptor requestErrorInterceptor = new;
-
+// A Response Error Interceptor service class implementation. It allows you
+// to intercept the errors and handle them accorrdingly. A Response Error 
+// Interceptor service can only have one remote function: `interceptResponseError`.
 service class ResponseErrorInterceptor {
     *http:ResponseErrorInterceptor;
 
-    remote function interceptResponseError(error err, http:RequestContext ctx) 
-            returns http:Response {
-        // Creates a new response.
-        http:Response res = new;
-        res.setTextPayload("Greetings from Interceptor!");
-        // Sets a header to the response.
-        res.setHeader(check_header, response_check_header_value);
-        return res;
+    // The error occurred in the request-response path can be accessed by the 
+    // mandatory argument : `error`. The remote function can return a response 
+    // which will overwrite the existing error response.
+    remote function interceptResponseError(error err) 
+            returns http:InternalServerError {
+        // In this case, all of the errors are sent as HTTP 500 Internal Server 
+        // Error with customized media-type and body. Also, you can sent different
+        // responses according to the error type.        
+        return {
+            mediaType: "application/org+json",
+            body: {
+                message : err.message()
+            }
+        };
     }
 }
 
+// Creates a new Response Error Interceptor.
 ResponseErrorInterceptor responseErrorInterceptor = new;
 
+// A `ResponseErrorInterceptor` can be configured either at listener level or at
+// service level. Listener level error interceptors can handle any error associated 
+// with the listener, whereas, service level error interceptors can only handle
+// errors occurred durring the service execution.
 listener http:Listener interceptorListener = new http:Listener(9090, config = { 
-    interceptors: [requestInterceptor, requestErrorInterceptor, 
-                   responseErrorInterceptor] 
+    // To handle all of the errors, the `ResponseErrorInterceptor` is added as a first
+    // interceptor as it has to be executed at last.
+    interceptors: [responseErrorInterceptor] 
 });
 
 service / on interceptorListener {
 
     // If the request does not consists this header, then this will return an error
     // and, the execution will jump to the nearest `ResponseErrorInterceptor`.
-    resource function get greeting(@http:Header{name: check_header} 
-            string header) returns http:Response {
-        // Creates a new response.
-        http:Response res = new;
-        res.setTextPayload("Greetings!");
-        // Sets a header to the response.
-        res.setHeader(check_header, header);
-        return res;
+    resource function get greeting(@http:Header string checkHeader) returns 
+            http:Ok {
+        return {
+            headers: {
+                "checkedHeader" : checkHeader
+            },
+            mediaType: "application/org+json",
+            body: {
+                message : "Greetings!"
+            }
+        };
     }
 }
