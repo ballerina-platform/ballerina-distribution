@@ -12,7 +12,7 @@ service class ResponseErrorInterceptor {
     remote function interceptResponseError(error err) 
             returns http:InternalServerError {
         // In this case, all of the errors are sent as HTTP 500 Internal Server 
-        // Error with customized media-type and body. Also, you can sent different
+        // Error with customized media-type and body. Moreover, you can sent different
         // responses according to the error type.        
         return {
             mediaType: "application/org+json",
@@ -26,7 +26,7 @@ service class ResponseErrorInterceptor {
 // Creates a new Response Error Interceptor.
 ResponseErrorInterceptor responseErrorInterceptor = new;
 
-// A `ResponseErrorInterceptor` can be configured either at listener level or at
+// A `ResponseErrorInterceptor` can be configured at listener level or at
 // service level. Listener level error interceptors can handle any error associated 
 // with the listener, whereas, service level error interceptors can only handle
 // errors occurred durring the service execution.
@@ -38,7 +38,7 @@ listener http:Listener interceptorListener = new http:Listener(9090, config = {
 
 service / on interceptorListener {
 
-    // If the request does not consists this header, then this will return an error
+    // If the request does not include `checkHeader`, then this will return an error
     // and, the execution will jump to the nearest `ResponseErrorInterceptor`.
     resource function get greeting(@http:Header string checkHeader) returns 
             http:Ok {

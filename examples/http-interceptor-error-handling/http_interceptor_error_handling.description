@@ -1,7 +1,7 @@
 // Errors occurred during the request-response pipeline can be intercepted and handled
-// at `ResponseErrorInterceptors`. In addition to this, a `RequestErrorInterceptor` 
-// can used to handle the errors that occurred in the request interceptor execution
+// by `ResponseErrorInterceptors`. In addition, a `RequestErrorInterceptor` 
+// can be used to handle the errors that occurred in the request interceptor execution
 // path. The `RequestErrorInterceptor` can sent a response message according to the 
-// error just like a `ResponseErrorInterceptor`. In addition, it can modify the 
+// error just like a `ResponseErrorInterceptor`. Moreover, it can modify the 
 // request and dipatch it to the target service.
 // For more information, see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
