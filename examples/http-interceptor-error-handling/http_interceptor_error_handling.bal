@@ -34,7 +34,7 @@ service class RequestErrorInterceptor {
             http:RequestContext ctx) returns http:NextService|error? {
         // In this case, a header is set to the request, then the modified request
         // is dispatched to the target service. Moreover, you can sent different 
-        // responses according to the error type.
+        // response according to the error type.
         req.setHeader(check_header, request_check_header_value);
         return ctx.next();
     }
