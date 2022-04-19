@@ -1,4 +1,0 @@
-// A `RequestErrorInterceptor` is used to handle the errors that occurred in the request path i.e. 
-// when an error is returned from a `RequestInterceptor` service, the interceptor pipeline execution jumps to the
-// nearest `RequestErrorInterceptor`.
-// For more information, see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).

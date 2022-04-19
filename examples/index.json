@@ -1425,54 +1425,6 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "Request interceptor at listener level",
-                "url": "http-request-interceptor-at-listener",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Request interceptor at service level",
-                "url": "http-request-interceptor-at-service",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Request error interceptor",
-                "url": "http-request-error-interceptor",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Response interceptor at listener level",
-                "url": "http-response-interceptor-at-listener",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Response interceptor at service level",
-                "url": "http-response-interceptor-at-service",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Response error interceptor",
-                "url": "http-response-error-interceptor",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
                 "name": "Error Handling",
                 "url": "http-error-handling",
                 "verifyBuild": true,
