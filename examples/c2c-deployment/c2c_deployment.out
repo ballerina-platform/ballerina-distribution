@@ -43,7 +43,7 @@ Generating artifacts...
 
 # First, let’s try executing the Docker image separately.
 
-# Verify if the Docker image is generated. (If you have used the `minikube docker-env`, skip this and go to the Kubernetes deployment directly.)
+# Verify if the Docker image is generated. (If you used the `minikube docker-env`, skip this and go to the Kubernetes deployment directly.)
 `docker images`
 
 REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE
