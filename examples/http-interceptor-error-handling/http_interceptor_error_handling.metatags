@@ -1,2 +1,2 @@
-description: This BBE demonstrates the HTTP Error Handling in Ballerina.
+description: This BBE demonstrates the HTTP Interceptor Error Handling in Ballerina.
 keywords: ballerina, ballerina by example, bbe, http, interceptor, error, request, filter
