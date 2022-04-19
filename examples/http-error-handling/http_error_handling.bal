@@ -16,9 +16,7 @@ service class ResponseErrorInterceptor {
         // responses according to the error type.        
         return {
             mediaType: "application/org+json",
-            body: {
-                message : err.message()
-            }
+            body: { message : err.message() }
         };
     }
 }
@@ -40,16 +38,14 @@ service / on interceptorListener {
 
     // If the request does not consists this header, then this will return an error
     // and, the execution will jump to the nearest `ResponseErrorInterceptor`.
-    resource function get greeting(@http:Header string checkHeader) returns 
-            http:Ok {
+    resource function get greeting(@http:Header string checkHeader) 
+            returns http:Ok {
         return {
             headers: {
                 "checkedHeader" : checkHeader
             },
             mediaType: "application/org+json",
-            body: {
-                message : "Greetings!"
-            }
+            body: { message : "Greetings!" }
         };
     }
 }
