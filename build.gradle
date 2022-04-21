@@ -28,8 +28,6 @@ description = 'Ballerina - Tools - Parent'
 ext {
     ballerinaLangVersion = project.ballerinaLangVersion
     shortVersion = project.version.split("-")[0]
-    awslambdaVersion = project.awslambdaVersion
-    azFunctionsVersion = project.azFunctionsVersion
     dockerVersion = project.dockerVersion
     dataMapperVersion = project.dataMapperVersion
     c2cVersion = project.c2cVersion
@@ -191,9 +189,6 @@ subprojects {
 
         /* Code to cloud extensions */
         ballerinaC2cLibs "io.ballerina:c2c-ballerina:${c2cVersion}"
-        ballerinaC2cLibs "org.ballerinax.azurefunctions:azurefunctions-extension-bala:${azFunctionsVersion}"
-        ballerinaC2cLibs "org.ballerinax.awslambda:awslambda-extension-bala:${awslambdaVersion}"
-
         ballerinaC2cTooling "io.ballerina:c2c-tooling:${c2cVersion}"
 
     }
