@@ -4,7 +4,7 @@ import ballerina/log;
 // Define the relevant SASL URL of the configured Kafka server.
 const string SASL_URL = "localhost:9093";
 
-kafka:ConsumerConfiguration consumerConfig = {
+kafka:ConsumerConfiguration consumerConfigs = {
     groupId: "test-group",
     topics: ["demo-security"],
     // Provide the relevant authentication configurations to authenticate the consumer by [`kafka:AuthenticationConfiguration`](https://docs.central.ballerina.io/ballerinax/kafka/latest/records/AuthenticationConfiguration).
