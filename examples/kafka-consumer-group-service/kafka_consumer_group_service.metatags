@@ -1,2 +1,0 @@
-description: BBE on using kafka consumer as a listener to listen to a given topic/topics.
-keywords: ballerina, ballerina by example, bbe, kafka, consumer, kafka consumer group

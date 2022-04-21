@@ -19,14 +19,17 @@ kafka:ConsumerConfiguration consumerConfig = {
     securityProtocol: kafka:PROTOCOL_SASL_PLAINTEXT
 };
 
-listener kafka:Listener kafkaListener = new(SASL_URL, consumerConfig);
+// Create a subtype of `kafka:AnydataConsumerRecord`
+public type StringConsumerRecord record {|
+    *kafka:AnydataConsumerRecord;
+    string value;
+|};
 
-service kafka:Service on kafkaListener {
-    remote function onConsumerRecord(kafka:Caller caller,
-                    kafka:ConsumerRecord[] records) returns error? {
-        foreach var consumerRecord in records {
-            string value = check string:fromBytes(consumerRecord.value);
-            log:printInfo(value);
-        }
+service on new kafka:Listener(SASL_URL, consumerConfigs) {
+    remote function onConsumerRecord(StringConsumerRecord[] records) returns error? {
+        check from StringConsumerRecord 'record in records
+            do {
+                log:printInfo("Received message: " + 'record.value);
+            };
     }
 }
