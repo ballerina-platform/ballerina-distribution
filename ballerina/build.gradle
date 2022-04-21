@@ -1112,7 +1112,7 @@ task testDevToolsIntegration() {
 task generateCache(dependsOn: ':cache-generator:build') {
     doFirst {
         download {
-            src "https://raw.githubusercontent.com/ballerina-platform/ballerina-release/${balstdlibBranch}/dependabot/resources/module_list.json"
+            src "https://raw.githubusercontent.com/ballerina-platform/ballerina-release/${balstdlibBranch}/dependabot/resources/extensions.json"
             dest "${project.rootDir}"
         }
 
@@ -1126,12 +1126,23 @@ task generateCache(dependsOn: ':cache-generator:build') {
         def distPath = "${project.rootDir}/ballerina/build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
 
         /* Standard Libraries */
-        def stdlibJson = file("${project.rootDir}/module_list.json")
+        def stdlibJson = file("${project.rootDir}/extensions.json")
         def parsedJson = new JsonSlurper().parseText(stdlibJson.text)
-        def sortedLibs = []
+        def maxLevel = 0
         parsedJson.standard_library.each { module ->
-            def libName = module.name.toString().split("-")[-1] + "-ballerina-zip"
-            sortedLibs.add(libName)
+            def moduleLevel = module.level
+            if (moduleLevel > maxLevel) {
+                maxLevel = moduleLevel
+            }
+        }
+        def sortedLibs = []
+        for (currentLevel in 1..maxLevel) {
+            parsedJson.standard_library.each { module ->
+                if (module.level == currentLevel) {
+                    def libName = module.name.toString().split("-")[-1] + "-ballerina-zip"
+                    sortedLibs.add(libName)
+                }
+            }
         }
 
         def configStdlibs = []
