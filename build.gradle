@@ -28,7 +28,6 @@ description = 'Ballerina - Tools - Parent'
 ext {
     ballerinaLangVersion = project.ballerinaLangVersion
     shortVersion = project.version.split("-")[0]
-    dockerVersion = project.dockerVersion
     dataMapperVersion = project.dataMapperVersion
     c2cVersion = project.c2cVersion
     ballerinaJreVersion = project.ballerinaJreVersion
@@ -118,8 +117,6 @@ subprojects {
         awsLambdaExamples
         azFunctionsBala
         azFunctionsExamples
-        dockerAnnotations
-        dockerExamples
         kubernetesAnnotations
         kubernetesExamples
         ballerinaStdLibs
