@@ -1299,7 +1299,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 refresh token grant type",
+                "name": "Client - OAuth2 Refresh token grant type",
                 "url": "http-client-oauth2-refresh-token-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1750,7 +1750,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 refresh token grant type",
+                "name": "Client - OAuth2 Refresh token grant type",
                 "url": "websocket-client-oauth2-refresh-token-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2015,7 +2015,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 refresh token grant type",
+                "name": "Client - OAuth2 Refresh token grant type",
                 "url": "grpc-client-oauth2-refresh-token-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
