@@ -1622,6 +1622,14 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Client data binding",
+                "url": "websocket-client-data-binding",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Retry",
                 "url": "websocket-retry-client",
                 "verifyBuild": true,
@@ -1635,6 +1643,14 @@
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Service cannot be stopped",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Service data binding",
+                "url": "websocket-service-data-binding",
+                "verifyBuild": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             }

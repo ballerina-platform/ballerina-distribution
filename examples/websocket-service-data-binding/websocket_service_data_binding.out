@@ -1,0 +1,4 @@
+# For testing, run the WebSocket client bal file given in the WebSocket client data binding Ballerina by example.
+bal run websocket_service_data_binding.bal
+
+time = 2022-04-22T10:55:48.827+05:30 level = INFO module = "" message = "Person name: John"

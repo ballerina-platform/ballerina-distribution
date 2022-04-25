@@ -1,0 +1,4 @@
+// Through service data binding, incoming text data can be accessed in the user's desired parameter type. The message type is inferred from the given argument of the `onTextMessage` remote function.
+// Subtypes of anydata will be the supported parameter types.
+// For more information on the underlying module,
+// see the [WebSocket module](https://lib.ballerina.io/ballerina/websocket/latest/).
