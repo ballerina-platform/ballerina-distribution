@@ -722,14 +722,14 @@ task testExamples() {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${distPath}/${bbe.url}"
-                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'build', '--experimental', "${additionalBuildParams}"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'build', "${additionalBuildParams}"
                 commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'test'
             }
         } else {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${distPath}/${bbe.url}"
-                commandLine 'sh', '-c', "${distPath}/bin/bal build --experimental ${additionalBuildParams}"
+                commandLine 'sh', '-c', "${distPath}/bin/bal build ${additionalBuildParams}"
                 commandLine 'sh', '-c', "${distPath}/bin/bal test"
             }
         }
@@ -846,7 +846,7 @@ task testExamples() {
                 if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                     exec {
                         workingDir "${directoryPath}"
-                        commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'run', '--experimental', "${balName}.bal ", ${additionalBuildParams}
+                        commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'run', "${balName}.bal ", ${additionalBuildParams}
                         ignoreExitValue true
                         standardOutput = os
                         errorOutput = errOut
@@ -854,7 +854,7 @@ task testExamples() {
                 } else {
                     exec {
                         workingDir "${directoryPath}"
-                        commandLine 'sh', '-c', "${distPath}/bin/bal run --experimental ${balName}.bal ${additionalBuildParams}"
+                        commandLine 'sh', '-c', "${distPath}/bin/bal run ${balName}.bal ${additionalBuildParams}"
                         ignoreExitValue true
                         standardOutput = os
                         errorOutput = errOut
@@ -994,7 +994,7 @@ task testStdlibs() {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${distPath}/${stdlibTest}"
-                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat build --experimental ${additionalBuildParams}"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat build ${additionalBuildParams}"
             }
         } else {
             exec {
@@ -1004,7 +1004,7 @@ task testStdlibs() {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${distPath}/${stdlibTest}"
-                commandLine 'sh', '-c', "${distPath}/bin/bal build --experimental ${additionalBuildParams}"
+                commandLine 'sh', '-c', "${distPath}/bin/bal build ${additionalBuildParams}"
             }
         }
         if (exitVal.getExitValue() == 1) {
@@ -1112,7 +1112,7 @@ task testDevToolsIntegration() {
 task generateCache(dependsOn: ':cache-generator:build') {
     doFirst {
         download {
-            src "https://raw.githubusercontent.com/ballerina-platform/ballerina-release/${balstdlibBranch}/dependabot/resources/module_list.json"
+            src "https://raw.githubusercontent.com/ballerina-platform/ballerina-release/${balstdlibBranch}/dependabot/resources/extensions.json"
             dest "${project.rootDir}"
         }
 
@@ -1126,12 +1126,23 @@ task generateCache(dependsOn: ':cache-generator:build') {
         def distPath = "${project.rootDir}/ballerina/build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
 
         /* Standard Libraries */
-        def stdlibJson = file("${project.rootDir}/module_list.json")
+        def stdlibJson = file("${project.rootDir}/extensions.json")
         def parsedJson = new JsonSlurper().parseText(stdlibJson.text)
-        def sortedLibs = []
+        def maxLevel = 0
         parsedJson.standard_library.each { module ->
-            def libName = module.name.toString().split("-")[-1] + "-ballerina-zip"
-            sortedLibs.add(libName)
+            def moduleLevel = module.level
+            if (moduleLevel > maxLevel) {
+                maxLevel = moduleLevel
+            }
+        }
+        def sortedLibs = []
+        for (currentLevel in 1..maxLevel) {
+            parsedJson.standard_library.each { module ->
+                if (module.level == currentLevel) {
+                    def libName = module.name.toString().split("-")[-1] + "-ballerina-zip"
+                    sortedLibs.add(libName)
+                }
+            }
         }
 
         def configStdlibs = []
