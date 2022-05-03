@@ -21,9 +21,9 @@ service class RequestInterceptor {
 
 RequestInterceptor requestInterceptor = new;
 
-// A Request Error Interceptor service class implementation. It allows you to 
-// intercept the error occurred in the request path and handle them accordingly.
-// A Request Error Interceptor service class can have only one resource function.
+// A `RequestErrorInterceptor` service class implementation. It allows you to 
+// intercept the error that occurred in the request path and handle it accordingly.
+// A `RequestErrorInterceptor` service class can have only one resource function.
 service class RequestErrorInterceptor {
     *http:RequestErrorInterceptor;
 
@@ -32,21 +32,21 @@ service class RequestErrorInterceptor {
     // execution can be accessed by the mandatory argument : `error`.
     resource function 'default [string... path](error err, http:Request req, 
             http:RequestContext ctx) returns http:NextService|error? {
-        // In this case, a header is set to the request, then the modified request
-        // is dispatched to the target service. Moreover, you can sent different 
-        // response according to the error type.
+        // In this case, a header is set to the request, and then, the modified request
+        // is dispatched to the target service. Moreover, you can send different 
+        // responses according to the error type.
         req.setHeader(check_header, request_check_header_value);
         return ctx.next();
     }
 }
 
-// Creates a new Request Error Interceptor.
+// Creates a new `RequestErrorInterceptor`.
 RequestErrorInterceptor requestErrorInterceptor = new;
 
 
 listener http:Listener interceptorListener = new http:Listener(9090, config = {
     // To handle all of the errors in the request path, the `RequestErrorInterceptor`
-    // is added as a last interceptor as it has to be executed at last. 
+    // is added as the last interceptor as it has to be executed last. 
     interceptors: [requestInterceptor, requestErrorInterceptor] 
 });
 
