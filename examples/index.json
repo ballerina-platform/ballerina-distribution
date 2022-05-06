@@ -1425,24 +1425,24 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "Request interceptor at listener level",
-                "url": "http-request-interceptor-at-listener",
+                "name": "Interceptors",
+                "url": "http-interceptors",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
-                "name": "Request interceptor at service level",
-                "url": "http-request-interceptor-at-service",
+                "name": "Error Handling",
+                "url": "http-error-handling",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
-                "name": "Request error interceptor",
-                "url": "http-request-error-interceptor",
+                "name": "Interceptor Error Handling",
+                "url": "http-interceptor-error-handling",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
