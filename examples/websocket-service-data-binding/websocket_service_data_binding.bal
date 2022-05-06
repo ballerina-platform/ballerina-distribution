@@ -15,12 +15,12 @@ service /basic on new websocket:Listener(9090) {
 service class WsService {
     *websocket:Service;
 
-    // Bind the incoming text data to `Person` record.
-    remote isolated function onTextMessage(websocket:Caller con, Person person)
+    // Bind the incoming data to `Person` record.
+    remote isolated function onMessage(websocket:Caller con, Person person)
 	                    returns websocket:Error? {
         log:printInfo("Person name: " + person.name);
 
         // Echo back the received `Person` record directly.
-        check con->writeTextMessage(person);
+        check con->writeMessage(person);
     }
 }

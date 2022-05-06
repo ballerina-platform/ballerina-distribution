@@ -1,6 +1,6 @@
-// Through client data binding, incoming text data can be accessed in the user's desired parameter type.
+// Through client data binding, incoming data can be accessed in the user's desired parameter type.
 // The message type is inferred from the contextually-expected type or from the targetType argument.
-// Also, the text data that needs to be sent can be given in the user's desired parameter type.
+// Also, the data that needs to be sent can be given in the user's desired parameter type.
 // Subtypes of `anydata` will be the supported parameter types.
 // For more information on the underlying module,
 // see the [WebSocket module](https://lib.ballerina.io/ballerina/websocket/latest/).

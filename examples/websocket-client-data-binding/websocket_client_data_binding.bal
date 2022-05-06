@@ -13,9 +13,9 @@ public function main() returns error? {
    Person personRecord = {name: "John", age: 25};
 
    // Write the created Person record to the server.
-   check wsClient->writeTextMessage(personRecord);
+   check wsClient->writeMessage(personRecord);
 
-   // Read the text message echoed from the server and bind it to the Person record.
-   Person person = check wsClient->readTextMessage();
+   // Read the message echoed from the server and bind it to the Person record.
+   Person person = check wsClient->readMessage();
    log:printInfo("Person name: " + person.name);
 }
