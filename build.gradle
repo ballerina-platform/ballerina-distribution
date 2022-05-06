@@ -181,6 +181,9 @@ subprojects {
         ballerinaStdLibs "io.ballerina.stdlib:sql-ballerina:${stdlibSqlVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:observe-ballerina:${observeVersion}"
 
+        /* Ballerina GraphQL */
+        ballerinaStdLibs "io.ballerina:graphql-tools:${graphqlVersion}"
+
         /* Ballerina OpenAPI */
         ballerinaOpenAPILibs "io.ballerina:module-ballerina-openapi:${openapiVersion}"
 
