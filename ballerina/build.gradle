@@ -1113,7 +1113,7 @@ task generateCache(dependsOn: ':cache-generator:build') {
     doFirst {
         download {
             src "https://raw.githubusercontent.com/ballerina-platform/ballerina-release/${balstdlibBranch}/dependabot/resources/extensions.json"
-            dest "${project.rootDir}"
+            dest "${project.rootDir}/ballerina/build/target/"
         }
 
         copy {
@@ -1126,7 +1126,7 @@ task generateCache(dependsOn: ':cache-generator:build') {
         def distPath = "${project.rootDir}/ballerina/build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
 
         /* Standard Libraries */
-        def stdlibJson = file("${project.rootDir}/extensions.json")
+        def stdlibJson = file("${project.rootDir}/ballerina/build/target/extensions.json")
         def parsedJson = new JsonSlurper().parseText(stdlibJson.text)
         def maxLevel = 0
         parsedJson.standard_library.each { module ->
