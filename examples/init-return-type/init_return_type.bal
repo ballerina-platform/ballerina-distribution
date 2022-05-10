@@ -1,6 +1,6 @@
 import ballerina/io;
 
-// Defines a class called `File`.
+// Defines a `class` called `File`.
 class File {
 
     string path;
@@ -10,6 +10,7 @@ class File {
     function init(string p, string? c) returns error? {
         self.path = p;
         self.contents = check c.ensureType(string);
+        return;
     }
 
 }
@@ -19,4 +20,5 @@ public function main() returns error? {
     File f = check new File("test.txt", "Hello World");
 
     io:println(f.contents);
+    return;
 }

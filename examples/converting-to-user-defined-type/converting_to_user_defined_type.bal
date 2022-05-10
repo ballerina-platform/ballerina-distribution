@@ -18,4 +18,5 @@ public function main() returns error? {
     Coord d = check j.cloneWithType();
 
     io:println(d.x);
+    return;
 }

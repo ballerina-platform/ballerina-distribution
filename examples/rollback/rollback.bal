@@ -8,15 +8,18 @@ public function main() returns error? {
 
     // Creates an array of `Update` records.
     Update[] updates =
-    [{updateIndex: 0, stockMnt: 2000},
-    {updateIndex: 1, stockMnt: -1000},
-    {updateIndex: 2, stockMnt: 1500},
-    {updateIndex: 3, stockMnt: -1000},
-    {updateIndex: 4, stockMnt: -2000}];
+    [
+        {updateIndex: 0, stockMnt: 2000},
+        {updateIndex: 1, stockMnt: -1000},
+        {updateIndex: 2, stockMnt: 1500},
+        {updateIndex: 3, stockMnt: -1000},
+        {updateIndex: 4, stockMnt: -2000}
+    ];
     // If an error is returned from the `transfer` function,
     // the error is returned from the `main` and it exits.
     check transfer(updates);
 
+    return;
 }
 
 function transfer(Update[] updates) returns error? {
@@ -29,10 +32,11 @@ function transfer(Update[] updates) returns error? {
             check doUpdate(u);
 
         }
-        // `commit` will not be called,because of an implicit rollback.
+        // `commit` will not be called because of an implicit rollback.
         check commit;
 
     }
+    return;
 }
 
 function doUpdate(Update u) returns error? {
@@ -41,4 +45,5 @@ function doUpdate(Update u) returns error? {
         return error("Not enough Stocks: ", stockIndex = u.updateIndex);
     }
 
+    return;
 }

@@ -16,11 +16,12 @@ public function main() {
     string[] s = [x, x];
     printLines(s);
 
-    // Infers `x` as the `MyClass` type.
+    // Infers `x`'s type as `MyClass`.
     var x = new MyClass();
+    MyClass _ = x;
 
     // Infers the class for `new` as `MyClass`.
-    MyClass y = new;
+    MyClass _ = new;
 
 }
 

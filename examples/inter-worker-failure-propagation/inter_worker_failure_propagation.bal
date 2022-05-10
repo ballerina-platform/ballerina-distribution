@@ -4,7 +4,7 @@ int counter = 0;
 
 function demo() returns int|error {
     worker A returns error? {
-        // Workers may need to call functions that can return an error.
+        // Workers may need to call functions that can return an `error`.
         // Pairing up of sends and receives guarantees that each send will be
         // received, and vice-versa, provided neither sending nor receiving worker 
         // has failed.
@@ -13,7 +13,6 @@ function demo() returns int|error {
             return res;
         }
         42 -> function;
-
     }
 
     // Send to or receive from failed worker will propagate the failure.

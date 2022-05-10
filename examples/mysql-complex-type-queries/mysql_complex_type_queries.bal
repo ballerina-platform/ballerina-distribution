@@ -41,9 +41,10 @@ public function main() returns error? {
 
     io:println("Binary types Result :");
     // Iterates the `binaryResultStream`.
-    error? e = binaryResultStream.forEach(function(BinaryType result) {
-        io:println(result);
-    });
+    check from BinaryType result in binaryResultStream
+        do {
+            io:println(result);
+        };
 
     // Since the `rowType` is provided as an `JsonType`, the `jsonResultStream` will
     // have `JsonType` records.
@@ -52,9 +53,10 @@ public function main() returns error? {
 
     io:println("Json type Result :");
     // Iterates the `jsonResultStream`.
-    error? e2 = jsonResultStream.forEach(function(JsonType result) {
-        io:println(result);
-    });
+    check from JsonType result in jsonResultStream
+        do {
+            io:println(result);
+        };
 
     // Since the `rowType` is provided as a `DateTimeType`, the `dateResultStream`
     // will have `DateTimeType` records. The `Date`, `Time`, `DateTime`, and
@@ -65,9 +67,10 @@ public function main() returns error? {
 
     io:println("DateTime types Result :");
     // Iterates the `dateResultStream`.
-    error? e3 = dateResultStream.forEach(function(DateTimeType result) {
-        io:println(result);
-    });
+    check from DateTimeType result in dateResultStream
+        do {
+            io:println(result);
+        };
 
     // Performs the cleanup after the example.
     check afterExample(mysqlClient);
@@ -78,31 +81,30 @@ function beforeExample() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
 
     // Creates a database.
-    sql:ExecutionResult result =
-        check mysqlClient->execute(`CREATE DATABASE MYSQL_BBE`);
+    _ = check mysqlClient->execute(`CREATE DATABASE MYSQL_BBE`);
     
     // Create complex data type tables in the database.
-    result = check mysqlClient->execute(`CREATE TABLE MYSQL_BBE.BINARY_TYPES
+    _ = check mysqlClient->execute(`CREATE TABLE MYSQL_BBE.BINARY_TYPES
             (row_id INTEGER NOT NULL, blob_type BLOB(1024),  
             binary_type BINARY(27), PRIMARY KEY (row_id))`);
-    result = check mysqlClient->execute(`CREATE TABLE MYSQL_BBE.JSON_TYPES
+    _ = check mysqlClient->execute(`CREATE TABLE MYSQL_BBE.JSON_TYPES
             (row_id INTEGER NOT NULL, json_doc JSON, json_array JSON,
             PRIMARY KEY (row_id))`);
-    result = check mysqlClient->execute(
+    _ = check mysqlClient->execute(
             `CREATE TABLE MYSQL_BBE.DATE_TIME_TYPES (row_id
             INTEGER NOT NULL, date_type DATE, time_type TIME, 
             timestamp_type timestamp, datetime_type  datetime, 
             PRIMARY KEY (row_id))`);
 
     // Adds the records to the newly-created tables.
-    result = check mysqlClient->execute(`INSERT INTO MYSQL_BBE.BINARY_TYPES
+    _ = check mysqlClient->execute(`INSERT INTO MYSQL_BBE.BINARY_TYPES
             (row_id, blob_type, binary_type) VALUES (1,
             X'77736F322062616C6C6572696E6120626C6F6220746573742E',  
             X'77736F322062616C6C6572696E612062696E61727920746573742E')`);
-    result = check mysqlClient->execute(`INSERT INTO MYSQL_BBE.JSON_TYPES
+    _ = check mysqlClient->execute(`INSERT INTO MYSQL_BBE.JSON_TYPES
             (row_id, json_doc, json_array) VALUES (1, '{"firstName" : "Jhon",
             "lastName" : "Bob", "age" : 18}', JSON_ARRAY(1, 2, 3))`);
-    result = check mysqlClient->execute(
+    _ = check mysqlClient->execute(
             `Insert into MYSQL_BBE.DATE_TIME_TYPES (row_id,
             date_type, time_type, timestamp_type, datetime_type) values (1, 
             '2017-05-23', '14:15:23', '2017-01-25 16:33:55', 
@@ -114,8 +116,8 @@ function beforeExample() returns sql:Error? {
 // Cleans up the database after running the example.
 function afterExample(mysql:Client mysqlClient) returns sql:Error? {
     // Cleans the database.
-    sql:ExecutionResult result =
-            check mysqlClient->execute(`DROP DATABASE MYSQL_BBE`);
+    _ = check mysqlClient->execute(`DROP DATABASE MYSQL_BBE`);
+    
     // Closes the MySQL client.
     check mysqlClient.close();
 }

@@ -49,10 +49,11 @@ task distributionTest {
         systemProperty "maven.version", "$version"
         systemProperty "examples.dir", "$buildDir/../../examples"
         systemProperty "line.check.extensions", ".java, .bal"
-        systemProperty "short.version", "$shortVersion"
-        systemProperty "version.display.text", "$versionDisplayText"
+        systemProperty "short.version", "$version".split("-")[0]
+        systemProperty "version.display.text", "$version".split("-")[0]
         systemProperty "spec.version", "$specVersion"
         systemProperty "tool.version", "$ballerinaCommandVersion"
+        systemProperty "code.name", "$project.codeName"
 
         useTestNG() {
             suites 'src/test/resources/testng.xml'

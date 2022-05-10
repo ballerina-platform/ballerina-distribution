@@ -6,7 +6,7 @@
 // Documenting return parameter of the function
 # + return - the sum of `x` and `y`
 public function add(int x, int y)
-                     returns int {
+                    returns int {
 
-  return x + y;
+    return x + y;
 }

@@ -3,7 +3,6 @@
 # Execute the command below to build and run the project.
 bal run
 
-[ballerina/http] started HTTP/WS listener 172.18.0.1:42983
 Error while executing batch command starting with: 'INSERT INTO Customers
                 (firstName, lastName, registrationID, creditLimit, country)
                 VALUES ( ? ,  ? ,

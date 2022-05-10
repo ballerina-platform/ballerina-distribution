@@ -9,8 +9,8 @@ listener graphql:Listener securedEP = new(9090,
     }
 );
 
-// The service can be secured with Basic auth and can be authorized  optionally.
-// Basic auth using the LDAP user store can be enabled by setting the
+// The service can be secured with Basic Auth and can be authorized  optionally.
+// Basic Auth using the LDAP user store can be enabled by setting the
 // `graphql:LdapUserStoreConfig` configurations.
 // Authorization is based on scopes. A scope maps to one or more groups.
 // Authorization can be enabled by setting the `string|string[]` type

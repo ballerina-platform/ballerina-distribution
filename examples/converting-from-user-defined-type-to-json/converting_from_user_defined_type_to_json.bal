@@ -20,7 +20,7 @@ public function main() {
     io:println(j);
 
     OpenCoord b = {x: 1.0, y: 2.0, "z": "city"};
-    // Use `toJson` to convert `anydata` to `json`.
+    // Use `toJson()` to convert `anydata` to `json`.
     // Usually happens automatically.
     json k = b.toJson();
 

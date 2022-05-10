@@ -45,10 +45,11 @@ import static org.ballerina.projectapi.CentralTestUtils.getGenerateBalaLog;
 import static org.ballerina.projectapi.CentralTestUtils.getString;
 import static org.ballerina.projectapi.CentralTestUtils.randomPackageName;
 import static org.ballerina.projectapi.CentralTestUtils.updateFileToken;
+import static org.ballerina.projectapi.TestUtils.CODE_NAME;
 import static org.ballerina.projectapi.TestUtils.DISTRIBUTIONS_DIR;
 import static org.ballerina.projectapi.TestUtils.MAVEN_VERSION;
 import static org.ballerina.projectapi.TestUtils.OUTPUT_CONTAIN_ERRORS;
-import static org.ballerina.projectapi.TestUtils.executeBuildCommand;
+import static org.ballerina.projectapi.TestUtils.executePackCommand;
 import static org.ballerina.projectapi.TestUtils.executePushCommand;
 import static org.ballerina.projectapi.TestUtils.executeSearchCommand;
 
@@ -62,8 +63,8 @@ public class CentralNegativeTest {
     private String packageAName;
     private Map<String, String> envVariables;
 
-    private static final String ORG_NAME = "bc2testorg";
-    private static final String DISTRIBUTION_FILE_NAME = "ballerina-" + MAVEN_VERSION;
+    private static final String ORG_NAME = "bctestorg";
+    private static final String DISTRIBUTION_FILE_NAME = "ballerina-" + MAVEN_VERSION + "-" + CODE_NAME;
     private static final String DEFAULT_PKG_NAME = "my_package";
     private static final String PROJECT_A = "projectA";
     private static final String COMMON_VERSION = "1.0.0";
@@ -96,18 +97,17 @@ public class CentralNegativeTest {
 
         isPkgAvailableInCentral(this.packageAName);
 
-        // Update Ballerina.toml files with new package names"my_package"
+        // Update Ballerina.toml files with new package name "my_package"
         updateFileToken(this.tempWorkspaceDirectory.resolve(PROJECT_A).resolve(BALLERINA_TOML), DEFAULT_PKG_NAME,
                         this.packageAName);
     }
 
-    @Test(description = "Build and push package with invalid access token")
+    @Test(description = "Build and push package with invalid access token", enabled = false)
     public void testPushPackageWithInvalidAccessToken() throws IOException, InterruptedException {
         Map<String, String> envVariablesWithInvalidAccessToken = addEnvVariablesWithInvalidAccessToken(
                 this.envVariables);
-        Process build = executeBuildCommand(DISTRIBUTION_FILE_NAME, this.tempWorkspaceDirectory.resolve(PROJECT_A),
-                                            new LinkedList<>(Collections.singletonList("-c")),
-                                            envVariablesWithInvalidAccessToken);
+        Process build = executePackCommand(DISTRIBUTION_FILE_NAME, this.tempWorkspaceDirectory.resolve(PROJECT_A),
+                                            new LinkedList<>(), envVariablesWithInvalidAccessToken);
         String buildErrors = getString(build.getErrorStream());
         if (!buildErrors.isEmpty()) {
             Assert.fail(OUTPUT_CONTAIN_ERRORS + buildErrors);
@@ -130,7 +130,7 @@ public class CentralNegativeTest {
             Assert.fail("push command output does not contain any error");
         }
 
-        String expectedError = "ballerina: unauthorized access token for organization: 'bc2testorg'. "
+        String expectedError = "ballerina: unauthorized access token for organization: 'bctestorg'. "
                 + "reason: unauthorized to perform this operation as access token is invalid. "
                 + "check access token set in 'Settings.toml' file.";
         Assert.assertEquals(pushErrors, expectedError);

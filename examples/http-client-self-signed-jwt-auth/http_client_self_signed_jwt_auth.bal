@@ -1,7 +1,7 @@
 import ballerina/http;
 import ballerina/io;
 
-// Defines the HTTP client to call the JWT auth secured APIs.
+// Defines the HTTP client to call the JWT Auth secured APIs.
 // The client is enriched with the `Authorization: Bearer <token>` header by
 // passing the [`http:JwtIssuerConfig`](https://docs.central.ballerina.io/ballerina/http/latest/records/JwtIssuerConfig) for the `auth` configuration of the
 // client. A self-signed JWT is issued before the request is sent.

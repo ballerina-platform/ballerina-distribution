@@ -7,8 +7,8 @@ type YErr distinct error;
 type Err XErr|YErr;
 
 // The name of the distinct type can be used with the error
-// constructor to create an error value of that type.
-// `err` holds an error value of type `XErr`.
+// constructor to create an `error` value of that type.
+// `err` holds an `error` value of type `XErr`.
 Err err = error XErr("Whoops!");
 
 function desc(Err err) returns string {

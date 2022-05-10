@@ -1,8 +1,6 @@
 # In the directory, which contains the `.bal` file, create a directory named `files`,
 # and add an XML file named `test.xml` in it.
 bal run response_with_multiparts.bal
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9092
 time = 2021-01-21 22:20:38,143 level = INFO  module = "" message = "Nested Parts Detected!" 
 time = 2021-01-21 22:20:38,185 level = INFO  module = "" message = "JSON data: {"name":"wso2"}" 
 time = 2021-01-21 22:20:38,324 level = INFO  module = "" message = "XML data: <ballerinalang>

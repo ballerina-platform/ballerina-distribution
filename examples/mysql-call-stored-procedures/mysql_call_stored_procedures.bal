@@ -52,9 +52,10 @@ public function main() returns error? {
     if result is stream<record {}, sql:Error?> {
         stream<Student, sql:Error?> studentStream =
                 <stream<Student, sql:Error?>>result;
-        sql:Error? e = studentStream.forEach(function(Student student) {
-            io:println("Student details: ", student);
-        });
+        check from Student student in studentStream
+            do {
+                io:println("Student details: ", student);
+            };
     }
     check retCall3.close();
 
@@ -67,23 +68,22 @@ function beforeExample() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
 
     // Creates a database.
-    sql:ExecutionResult result = 
-        check mysqlClient->execute(`CREATE DATABASE MYSQL_BBE`);
+    _ = check mysqlClient->execute(`CREATE DATABASE MYSQL_BBE`);
 
     // Creates a table in the database.
-    result = check mysqlClient->execute(`CREATE TABLE MYSQL_BBE.Student
+    _ = check mysqlClient->execute(`CREATE TABLE MYSQL_BBE.Student
             (id INT AUTO_INCREMENT, age INT, name VARCHAR(255),
             PRIMARY KEY (id))`);
 
     // Creates the necessary stored procedures using the execute command.
-    result = check mysqlClient->execute(`CREATE PROCEDURE
+    _ = check mysqlClient->execute(`CREATE PROCEDURE
         MYSQL_BBE.InsertStudent (IN pName VARCHAR(255), IN pAge INT)
         BEGIN INSERT INTO Student(age, name) VALUES (pAge, pName); END`);
-    result = check mysqlClient->execute(`CREATE PROCEDURE MYSQL_BBE.GetCount
+    _ = check mysqlClient->execute(`CREATE PROCEDURE MYSQL_BBE.GetCount
         (INOUT pID INT, OUT totalCount INT) BEGIN SELECT age INTO pID FROM
         Student WHERE id = pID; SELECT COUNT(*) INTO totalCount FROM Student;
         END`);
-    result = check mysqlClient->execute(`CREATE PROCEDURE
+    _ = check mysqlClient->execute(`CREATE PROCEDURE
         MYSQL_BBE.GetStudents() BEGIN SELECT * FROM Student; END`);
 
     check mysqlClient.close();
@@ -92,8 +92,7 @@ function beforeExample() returns sql:Error? {
 // Cleans up the database after running the example.
 function afterExample(mysql:Client mysqlClient) returns sql:Error? {
     // Cleans the database.
-    sql:ExecutionResult result = 
-            check mysqlClient->execute(`DROP DATABASE MYSQL_BBE`);
+    _ = check mysqlClient->execute(`DROP DATABASE MYSQL_BBE`);
 
     // Closes the MySQL client.
     check mysqlClient.close();

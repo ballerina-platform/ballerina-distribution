@@ -64,9 +64,10 @@ public function main() returns error? {
         mysqlClient->query(`SELECT * FROM Customers`);
 
     io:println("Data in Customers table:");
-    error? e = resultStream.forEach(function(record {} result) {
-        io:println(result.toString());
-    });
+    check from record {} result in resultStream
+        do {
+            io:println(result.toString());
+        };
 
     // Performs a cleanup after the example.
     check afterExample(mysqlClient);
@@ -77,18 +78,17 @@ function beforeExample() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
 
     // Creates a database.
-    sql:ExecutionResult result = 
-        check mysqlClient->execute(`CREATE DATABASE MYSQL_BBE`);
+    _ = check mysqlClient->execute(`CREATE DATABASE MYSQL_BBE`);
 
     // Creates a table in the database.
-    result = check mysqlClient->execute(`CREATE TABLE MYSQL_BBE.Customers
+    _ = check mysqlClient->execute(`CREATE TABLE MYSQL_BBE.Customers
             (customerId INTEGER NOT NULL AUTO_INCREMENT,
             firstName VARCHAR(300), lastName  VARCHAR(300), registrationID
             INTEGER UNIQUE, creditLimit DOUBLE, country  VARCHAR(300),
             PRIMARY KEY (customerId))`);
 
     // Adds records to the newly-created table.
-    result = check mysqlClient->execute(`INSERT INTO MYSQL_BBE.Customers
+    _ = check mysqlClient->execute(`INSERT INTO MYSQL_BBE.Customers
             (firstName, lastName, registrationID,creditLimit,country) VALUES
              ('Peter', 'Stuart', 1, 5000.75, 'USA')`);
 
@@ -98,8 +98,8 @@ function beforeExample() returns sql:Error? {
 // Cleans up the database after running the example.
 function afterExample(mysql:Client mysqlClient) returns sql:Error? {
     // Cleans the database.
-    sql:ExecutionResult result = 
-            check mysqlClient->execute(`DROP DATABASE MYSQL_BBE`);
+    _ = check mysqlClient->execute(`DROP DATABASE MYSQL_BBE`);
+    
     // Closes the MySQL client.
     check mysqlClient.close();
 }

@@ -1,4 +1,4 @@
-// A gRPC service/resource can be secured using JWT and by enforcing
+// A gRPC service/resource can be secured with JWT and by enforcing
 // authorization optionally. Then, it validates the JWT sent in the
 // `Authorization` metadata against the provided configurations.<br/>
 // Ballerina uses the concept of scopes for authorization. A resource declared

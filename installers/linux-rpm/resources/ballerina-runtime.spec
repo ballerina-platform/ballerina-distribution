@@ -12,7 +12,7 @@ URL:            https://ballerina.io/
 # Disable Automatic Dependencies
 AutoReqProv: no
 # Override RPM file name
-%define _rpmfilename %%{ARCH}/ballerina-runtime-linux-installer-x64-%{_ballerina_version}.rpm
+%define _rpmfilename %%{ARCH}/ballerina-%{_ballerina_version}-runtime-linux-x64.rpm
 # Disable Jar repacking
 %define __jar_repack %{nil}
 
@@ -20,7 +20,7 @@ AutoReqProv: no
 Ballerina allows you to code with a statically-typed, interaction-centric programming language where microservices, APIs, and streams are first-class constructs. You can use your preferred IDE and CI/CD tools. Discover, consume, and share packages that integrate endpoints with Ballerina Central. Build binaries, containers, and Kubernetes artifacts and deploy as chaos-ready services on cloud and serverless infrastructure. Integrate distributed endpoints with simple syntax for resiliency, circuit breakers, transactions, and events.
 
 %pre
-rm -f /usr/bin/ballerina > /dev/null 2>&1
+rm -f /usr/bin/bal > /dev/null 2>&1
 
 %prep
 rm -rf %{_topdir}/BUILD/*
@@ -38,7 +38,7 @@ chmod 0755 /etc/profile.d/wso2.sh
 
 %postun
 sed -i.bak '\:SED_BALLERINA_HOME:d' /etc/profile.d/wso2.sh
-if [ "$(readlink /usr/bin/ballerina)" = "%{_libdir}/ballerina/ballerina-runtime-%{_ballerina_version}/bin/ballerina" ]
+if [ "$(readlink /usr/bin/bal)" = "%{_libdir}/ballerina/ballerina-runtime-%{_ballerina_version}/bin/ballerina" ]
 then
   rm -f /usr/bin/ballerina
 fi
