@@ -5,14 +5,14 @@
 
 # The second part of the request is a `map` field that includes a `JSON-encoded` map of files that occurred in the operations.
 # The `key` is file field name and the `value` is an array of paths in which the files occurred in the `operations`.
-# `map`: { “0”: ["file"] }
+# `map`: { “0”: ["variables.file"] }
 
 # A file can be added to the next part of the request with a unique, arbitrary field name.
 # 0=@file1.png
 
  curl localhost:4000/fileUpload \
   -F operations='{ "query": "mutation($file: Upload!) { singleFileUpload(file: $file) }", "variables": { "file": null } }' \
-  -F map='{ "0": ["file"] }' \
+  -F map='{ "0": ["variables.file"] }' \
   -F 0=@file1.png
  {"data":{"singleFileUpload":"Successfully Uploaded"}}
 
@@ -23,7 +23,7 @@
 # Same as the single file upload, the `map` value is a JSON-encoded map of paths in which files occurred in the `operations`.
 # Since the `operations` has an array of `null` values, an array index is included in the path value.
 #  E.g., In `file.0`, `0` is the array index.
-# `map`: { "0": ["file.0"], "1": ["file.1"]}
+# `map`: { "0": ["variables.file.0"], "1": ["variables.file.1"]}
 
 # Files can be added to the next fields of the request with a unique, arbitrary field name.
 # 0=@file1.png
@@ -31,7 +31,7 @@
 
  curl localhost:4000/fileUpload \
   -F operations='{ "query": "mutation($file: [Upload!]!) { multipleFileUpload(files: $file) }", "variables": { "file": [null, null] } }' \
-  -F map='{ "0": ["file.0"], "1": ["file.1"]}' \
+  -F map='{ "0": ["variables.file.0"], "1": ["variables.file.1"]}' \
   -F 0=@file1.png \
   -F 1=@file2.png
   {"data":{"multipleFileUpload":["file1.png", "file2.png"]}}
