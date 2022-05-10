@@ -26,7 +26,8 @@ public type StringConsumerRecord record {|
 |};
 
 service on new kafka:Listener(SASL_URL, consumerConfigs) {
-    remote function onConsumerRecord(StringConsumerRecord[] records) returns error? {
+    remote function onConsumerRecord(StringConsumerRecord[] records)
+    returns error? {
         check from StringConsumerRecord 'record in records
             do {
                 log:printInfo("Received message: " + 'record.value);

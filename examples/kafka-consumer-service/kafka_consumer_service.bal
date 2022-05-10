@@ -31,7 +31,8 @@ service on new kafka:Listener(kafka:DEFAULT_URL, consumerConfigs) {
         check from OrderConsumerRecord orderRecord in records
             where orderRecord.value.isValid
             do {
-                log:printInfo("Received Valid Order: " + orderRecord.value.toString());
+                log:printInfo("Received Valid Order: " +
+                                    orderRecord.value.toString());
             };
 
         // Commits offsets of the returned records by marking them as consumed.
