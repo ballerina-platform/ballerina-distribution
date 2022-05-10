@@ -20,6 +20,9 @@ import ballerina/test;
 
 listener http:Listener restIntrospectionEP = new(9118);
 
+@openapi:ServiceInfo {
+  embed: true
+}
 service /hello on restIntrospectionEP {
     resource function get world() returns string {
         return "Hello, World!";
@@ -84,9 +87,6 @@ function testRestApiDoc() returns error? {
     test:assertEquals(receivedApiDoc, openApiDocumentation);
 }
 
-@openapi:ServiceInfo {
-  embed: false
-}
 service /disabled on restIntrospectionEP {
     resource function get world() returns string {
         return "Hello, World!";
@@ -97,5 +97,5 @@ service /disabled on restIntrospectionEP {
 function testUnavailableIntrospectionResource() returns error? {
     http:Response response = check restApiClient->options("/disabled");
     test:assertEquals(response.statusCode, 204);
-    test:assertFalse(response.hasHeader("Link"), "Could not find the Link header");
+    test:assertFalse(response.hasHeader("Link"), "Found link header in errorneous scenario");
 }
