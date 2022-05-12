@@ -216,7 +216,7 @@ public class TestUtils {
             for (File existsFile: listFiles) {
                 String fileName = existsFile.getName();
                 if (fileName.equals(generatedFileName) || fileName.equals(generatedFileName+"_service.bal") ||
-                        fileName.equals("client.bal") || fileName.equals("types.bal")) {
+                        fileName.equals("client.bal") || fileName.equals("types.bal") || fileName.equals("utils.bal")) {
                     existsFile.delete();
                 }
             }
