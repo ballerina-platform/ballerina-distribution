@@ -2,7 +2,8 @@ import ballerina/graphql;
 
 service /graphql on new graphql:Listener(4000) {
 
-    // This resource function returns an array of interface type `Character`.
+    // This resource function returns an array of the `Character` interface
+    // type.
     resource function get characters() returns Character[] {
         return [new Human("Luke Skywalker", 1), new Droid("R2D2", 1977)];
     }
@@ -28,11 +29,11 @@ public distinct service class Character {
 // A GraphQL object that implements an interface must be a distinct service
 // class in Ballerina. Type inclusion is used to mark it as an interface
 // implementation. The implementing classes must contain all the resource
-// functions in the interface class, and it can have additional resource
+// functions in the interface class and it can have additional resource
 // functions.
 public distinct service class Human {
 
-    // Marks this is an implementation of `Character` interface.
+    // Marks this is an implementation of the `Character` interface.
     *Character;
 
     final string name;

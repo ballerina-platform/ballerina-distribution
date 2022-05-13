@@ -1,4 +1,4 @@
-// A GraphQL schema can have interface types. Then the other object types can
+// A GraphQL schema can have interface types. Then, the other object types can
 // implement the interfaces. All the types that are implementing an interface
 // must consist of the common set of fields defined in the interface type.
 // <br/><br/>
