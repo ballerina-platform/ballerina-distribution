@@ -1,0 +1,12 @@
+# 100 continue
+
+Convenience functions are provided in the HTTP library for ease of use when handling 100-continue scenarios. 
+100-continue indicates that the server has received the request headers and the client can proceed with sending the request.<br/><br/>
+For more information on the underlying module, 
+see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
+
+::: code ./examples/http-100-continue/http_100_continue.bal :::
+
+::: out ./examples/http-100-continue/http_100_continue.client.out :::
+
+::: out ./examples/http-100-continue/http_100_continue.server.out :::
