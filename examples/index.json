@@ -1542,6 +1542,15 @@
                 "disableVerificationReason": "Needs prerequisite condition",
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "Interfaces",
+                "url": "graphql-interfaces",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
