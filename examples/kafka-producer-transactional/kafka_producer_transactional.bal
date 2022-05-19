@@ -13,12 +13,12 @@ kafka:ProducerConfiguration producerConfigs = {
     transactionalId: "test-transactional-id"
 };
 
-kafka:Producer kafkaProducer = check new (kafka:DEFAULT_URL, producerConfigs);
+kafka:Producer transactionalProducer = check new (kafka:DEFAULT_URL, producerConfigs);
 
 public function main() returns error? {
     transaction {
         // Sends the message inside the transaction block.
-        check kafkaProducer->send({
+        check transactionalProducer->send({
             topic: "test-kafka-topic",
             value: "Hello World Transaction Message"
         });
