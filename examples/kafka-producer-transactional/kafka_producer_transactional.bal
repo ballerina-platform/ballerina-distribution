@@ -16,13 +16,11 @@ kafka:ProducerConfiguration producerConfigs = {
 kafka:Producer kafkaProducer = check new (kafka:DEFAULT_URL, producerConfigs);
 
 public function main() returns error? {
-    string message = "Hello World Transaction Message";
     transaction {
         // Sends the message inside the transaction block.
         check kafkaProducer->send({
             topic: "test-kafka-topic",
-            value: message,
-            partition: 0
+            value: "Hello World Transaction Message"
         });
 
         check commit;

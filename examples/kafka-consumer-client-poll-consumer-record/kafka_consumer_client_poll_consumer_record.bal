@@ -22,11 +22,11 @@ public type OrderConsumerRecord record {|
     Order value;
 |};
 
-kafka:Consumer consumer = check new (kafka:DEFAULT_URL, consumerConfiguration);
+kafka:Consumer orderConsumer = check new (kafka:DEFAULT_URL, consumerConfiguration);
 
 public function main() returns error? {
     // Polls the consumer for order records.
-    OrderConsumerRecord[] records = check consumer->poll(1);
+    OrderConsumerRecord[] records = check orderConsumer->poll(1);
 
     check from OrderConsumerRecord orderRecord in records
         where orderRecord.value.isValid

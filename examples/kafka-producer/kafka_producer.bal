@@ -14,7 +14,7 @@ public type OrderProducerRecord record {|
     int key;
 |};
 
-kafka:Producer kafkaProducer = check new (kafka:DEFAULT_URL);
+kafka:Producer orderProducer = check new (kafka:DEFAULT_URL);
 
 public function main() returns error? {
     OrderProducerRecord producerRecord = {
@@ -28,8 +28,5 @@ public function main() returns error? {
         }
     };
     // Sends the message to the Kafka topic.
-    check kafkaProducer->send(producerRecord);
-
-    // Flushes the sent messages.
-    check kafkaProducer->'flush();
+    check orderProducer->send(producerRecord);
 }

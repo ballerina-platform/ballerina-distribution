@@ -16,13 +16,13 @@ public type Order record {|
     boolean isValid;
 |};
 
-kafka:Consumer consumer = check new (kafka:DEFAULT_URL, consumerConfiguration);
+kafka:Consumer orderConsumer = check new (kafka:DEFAULT_URL, consumerConfiguration);
 
 public function main() returns error? {
     // Polls the consumer for payload.
-    Order[] orderData = check consumer->pollPayload(1);
+    Order[] orders = check orderConsumer->pollPayload(1);
 
-    check from Order 'order in orderData
+    check from Order 'order in orders
         where 'order.isValid
         do {
             io:println('order.productName);
