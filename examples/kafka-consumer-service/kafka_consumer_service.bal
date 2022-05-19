@@ -23,7 +23,8 @@ public type OrderConsumerRecord record {|
 |};
 
 service on new kafka:Listener(kafka:DEFAULT_URL, consumerConfigs) {
-    remote function onConsumerRecord(OrderConsumerRecord[] records) returns error? {
+    remote function onConsumerRecord(OrderConsumerRecord[] records)
+                                                        returns error? {
         // The set of Kafka records received by the service are processed one by one.
         check from OrderConsumerRecord orderRecord in records
             where orderRecord.value.isValid

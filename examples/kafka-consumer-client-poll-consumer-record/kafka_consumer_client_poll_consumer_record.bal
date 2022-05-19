@@ -22,7 +22,8 @@ public type OrderConsumerRecord record {|
     Order value;
 |};
 
-kafka:Consumer orderConsumer = check new (kafka:DEFAULT_URL, consumerConfiguration);
+kafka:Consumer orderConsumer =
+                check new (kafka:DEFAULT_URL, consumerConfiguration);
 
 public function main() returns error? {
     // Polls the consumer for order records.

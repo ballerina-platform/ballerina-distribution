@@ -13,7 +13,8 @@ kafka:ProducerConfiguration producerConfigs = {
     transactionalId: "test-transactional-id"
 };
 
-kafka:Producer transactionalProducer = check new (kafka:DEFAULT_URL, producerConfigs);
+kafka:Producer transactionalProducer =
+                check new (kafka:DEFAULT_URL, producerConfigs);
 
 public function main() returns error? {
     transaction {
