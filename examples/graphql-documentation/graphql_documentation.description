@@ -3,4 +3,4 @@
 // In Ballerina, the Ballerina doc comments can be used to add documentation to
 // various schema members. <br/><br/>
 // For more information on the underlying package, see the
-// [`graphql` package](https://docs.central.ballerina.io/ballerina/graphql/latest/).
+// [GraphQL package](https://docs.central.ballerina.io/ballerina/graphql/latest/).

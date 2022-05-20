@@ -4,4 +4,4 @@
 // path. The `RequestErrorInterceptor` can send a response message according to the 
 // error just like a `ResponseErrorInterceptor`. Moreover, it can modify the 
 // request and dipatch it to the target service.
-  // For more information, see the [`http` module](https://docs.central.ballerina.io/ballerina/http/latest/).
+  // For more information, see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).

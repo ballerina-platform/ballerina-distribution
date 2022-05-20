@@ -3,4 +3,4 @@
 // resource function in the returned service object becomes a field in the
 // created `OBJECT` type.<br/><br/>
 // For more information on the underlying package, see the
-// [`graphql` package](https://docs.central.ballerina.io/ballerina/graphql/latest/).
+// [GraphQL package](https://docs.central.ballerina.io/ballerina/graphql/latest/).
