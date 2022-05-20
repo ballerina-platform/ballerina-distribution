@@ -7,4 +7,4 @@
 // inclusions are used to mark an object as an interface implementation.
 // <br/><br/>
 // For more information on the underlying package, see the
-// [`graphql` package](https://docs.central.ballerina.io/ballerina/graphql/latest/).
+// [GraphQL package](https://docs.central.ballerina.io/ballerina/graphql/latest/).
