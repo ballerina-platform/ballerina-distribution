@@ -6,38 +6,31 @@ kafka:ConsumerConfiguration consumerConfigs = {
     // Subscribes to the topic `test-kafka-topic`.
     topics: ["test-kafka-topic"],
 
-    pollingInterval: 1,
-    // Sets the `autoCommit` to `false` so that the records should be committed manually.
-    autoCommit: false
+    pollingInterval: 1
 };
 
-listener kafka:Listener kafkaListener =
-        new (kafka:DEFAULT_URL, consumerConfigs);
+public type Order record {|
+    int orderId;
+    string productName;
+    decimal price;
+    boolean isValid;
+|};
 
-service kafka:Service on kafkaListener {
-    remote function onConsumerRecord(kafka:Caller caller,
-                                kafka:ConsumerRecord[] records) returns error? {
+// Create a subtype of `kafka:AnydataConsumerRecord`
+public type OrderConsumerRecord record {|
+    *kafka:AnydataConsumerRecord;
+    Order value;
+|};
+
+service on new kafka:Listener(kafka:DEFAULT_URL, consumerConfigs) {
+    remote function onConsumerRecord(OrderConsumerRecord[] records)
+                                                        returns error? {
         // The set of Kafka records received by the service are processed one by one.
-        foreach var kafkaRecord in records {
-            check processKafkaRecord(kafkaRecord);
-        }
-
-        // Commits offsets of the returned records by marking them as consumed.
-        kafka:Error? commitResult = caller->commit();
-
-        if commitResult is error {
-            log:printError("Error occurred while committing the " +
-                "offsets for the consumer ", 'error = commitResult);
-        }
+        check from OrderConsumerRecord orderRecord in records
+            where orderRecord.value.isValid
+            do {
+                log:printInfo("Received Valid Order: " +
+                                    orderRecord.value.toString());
+            };
     }
-}
-
-function processKafkaRecord(kafka:ConsumerRecord kafkaRecord) returns error? {
-    // The value should be a `byte[]` since the byte[] deserializer is used
-    // for the value.
-    byte[] value = kafkaRecord.value;
-
-    // Converts the `byte[]` to a `string`.
-    string messageContent = check string:fromBytes(value);
-    log:printInfo("Received Message: " + messageContent);
 }

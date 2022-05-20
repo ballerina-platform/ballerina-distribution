@@ -17,14 +17,16 @@ kafka:ProducerConfiguration producerConfig = {
     securityProtocol: kafka:PROTOCOL_SASL_PLAINTEXT
 };
 
-kafka:Producer kafkaProducer = check new(SASL_URL, producerConfig);
+kafka:Producer messageProducer = check new (SASL_URL, producerConfig);
 
-public function main() returns error? {
-    string message = "Hello, World!";
-    check kafkaProducer->send({
+public function main() {
+    kafka:Error? result = messageProducer->send({
         topic: "demo-security",
-        value: message.toBytes()
+        value: "Hello, World!"
     });
-    check kafkaProducer->'flush();
-    io:println("Message published successfully.");
+    if result is kafka:Error {
+        io:println("Message publish unsuccessful : " + result.message());
+    } else {
+        io:println("Message published successfully.");
+    }
 }
