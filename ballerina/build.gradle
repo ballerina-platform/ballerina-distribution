@@ -1136,6 +1136,7 @@ task generateCache(dependsOn: ':cache-generator:build') {
             }
         }
         def sortedLibs = []
+        def dependencyMap = [:]
         for (currentLevel in 1..maxLevel) {
             parsedJson.standard_library.each { module ->
                 if (module.level == currentLevel) {
@@ -1149,6 +1150,18 @@ task generateCache(dependsOn: ':cache-generator:build') {
         configurations.ballerinaStdLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
             configStdlibs.add(artifact.name + "-zip")
         }
+
+        // collect pack version for each stdlib
+        sortedLibs.each { lib ->
+            if (configStdlibs.contains(lib)) {
+                println(lib)
+                def versionList = [file(file("${buildDir}/target/extracted-distributions/" + lib +
+                        "/bala").listFiles()[0].toString() + "/" + lib.split("-")[0]).listFiles()[0].toString().split("/")[-1]]
+                println(versionList)
+                dependencyMap["${lib}"] = versionList
+            }
+        }
+
         sortedLibs.each { lib ->
             if (configStdlibs.contains(lib)) {
                 def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + lib
@@ -1174,8 +1187,33 @@ task generateCache(dependsOn: ':cache-generator:build') {
                             ignoreExitValue true
                         }
                     }
+                    def dependencyGraphJson = file("${balaPath}/dependency-graph.json")
+                    def parsedDependencyJson = new JsonSlurper().parseText(dependencyGraphJson.text)
+                    parsedDependencyJson.modules.dependencies.each { dependency ->
+                        println(dependency.module_name.toString())
+                        println(dependency.version.toString())
+                        if ( dependency.module_name.size() > 0 ) {
+                            for ( i in 0..dependency.module_name.size()) {
+                                def moduleName = dependency.module_name[i].toString() + "-ballerina-zip"
+                                if ( sortedLibs.contains(moduleName) ) {
+                                    if ( !dependencyMap["${moduleName}"].contains(dependency.version[i].toString()))
+                                    dependencyMap["${moduleName}"].add(dependency.version[i].toString())
+                                }
+                            }
+                        }
+                    }
                 }
             }
+//            read the dependency-graph.json and collect all the dependencies with versions
+//            create a list with all the dependencies with their required versions. check of the versions have a different minor version
+//            If so, pull it from central and store in the extracted-distributions/module directory
+//            generate caches for those modules as well
+        }
+        println(dependencyMap)
+        exec {
+            workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+            commandLine 'sh', '-c', "${distPath}/bin/bal pull ballerina/os:1.2.1"
+            ignoreExitValue true
         }
 
         /* OpenApi Libraries */
