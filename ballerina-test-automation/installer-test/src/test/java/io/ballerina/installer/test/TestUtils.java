@@ -55,7 +55,7 @@ public class TestUtils {
                                           String versionDisplayText) {
         String toolText = TestUtils.isOldToolVersion(toolVersion) ? "Ballerina tool" : "Update Tool";
         if (jBallerinaVersion.contains(TestUtils.SWAN_LAKE_KEYWORD)) {
-            return "Ballerina " + versionDisplayText + " (Swan Lake)\nLanguage specification "
+            return "Ballerina " + versionDisplayText + " (Swan Lake Update 1)\nLanguage specification "
                     + specVersion + "\n" + toolText + " " + toolVersion + "\n";
         }
 
