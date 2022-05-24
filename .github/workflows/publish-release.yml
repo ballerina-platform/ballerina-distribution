@@ -103,6 +103,7 @@ jobs:
           format: 'table'
           exit-code: '1'
           timeout: "10m0s"
+          skip-dirs: 'ballerina/runtime/examples'
       - name: Create release
         id: create_release
         uses: actions/create-release@v1
