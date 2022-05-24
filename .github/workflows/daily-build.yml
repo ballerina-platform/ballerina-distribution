@@ -189,6 +189,7 @@ jobs:
           format: 'table'
           timeout: "10m0s"
           ignore-unfixed: true
+          skip-dirs: 'ballerina/runtime/examples'
       - name: Build and push dev container image
         uses: docker/build-push-action@v2
         with:
