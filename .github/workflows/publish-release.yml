@@ -101,7 +101,6 @@ jobs:
         with:
           image-ref: 'ballerina/ballerina:release-test'
           skip-dirs: 'ballerina/runtime/examples'
-          ignore-unfixed: true
           format: 'table'
           exit-code: '1'
           timeout: "10m0s"
