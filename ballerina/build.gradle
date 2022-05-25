@@ -1209,10 +1209,30 @@ task generateCache(dependsOn: ':cache-generator:build') {
 //            If so, pull it from central and store in the extracted-distributions/module directory
 //            generate caches for those modules as well
         }
-        println(dependencyMap)
+        dependencyMap.each { key, val ->
+            if (val.size > 1) {
+                if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+                    exec {
+                        workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+                        commandLine 'cmd', '/c', "${distPath}/bin/bal.bat pull ballerina/${key.split("-")[0]}:${val.sort().reverse()[1]}"
+                        ignoreExitValue true
+                    }
+                } else {
+                    exec {
+                        workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+                        commandLine 'sh', '-c', "${distPath}/bin/bal pull ballerina/${key.split("-")[0]}:${val.sort().reverse()[1]}"
+                        ignoreExitValue true
+                    }
+                }
+                // copy the bala to pack
+                // generate caches
+            }
+        }
+        def balaPathNew = "/Users/tharinduu/.ballerina/repositories/central.ballerina.io/bala/ballerina/os/1.2.0/java11"
+        def jbalPathNew = "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
         exec {
             workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
-            commandLine 'sh', '-c', "${distPath}/bin/bal pull ballerina/os:1.2.1"
+            commandLine 'sh', '-c', "${distPath}/bin/bal gencache ${balaPathNew} ${jbalPathNew}"
             ignoreExitValue true
         }
 
