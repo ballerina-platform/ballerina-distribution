@@ -158,7 +158,6 @@ jobs:
         with:
           image-ref: 'ballerina/ballerina:nightly-test'
           skip-dirs: 'ballerina/runtime/examples'
-          ignore-unfixed: true
           format: 'table'
           exit-code: '1'
           timeout: "10m0s"
@@ -189,7 +188,6 @@ jobs:
         with:
           image-ref: 'ballerina/ballerina-devcontainer:nightly-test'
           skip-dirs: 'ballerina/runtime/examples'
-          ignore-unfixed: true
           format: 'table'
           exit-code: '1'
           timeout: "10m0s"
