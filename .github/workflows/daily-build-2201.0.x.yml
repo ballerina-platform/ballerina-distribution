@@ -77,10 +77,10 @@ jobs:
         with:
           name: Linux Installer rpm
           path: installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-*-linux-x64.rpm
-      - name: Archive MacOS installer ZIP
+      - name: Archive MacOS Installer ZIP
         uses: actions/upload-artifact@v2
         with:
-          name: MacOS installer ZIP
+          name: MacOS Installer ZIP
           path: ballerina/build/distributions/ballerina-*-macos.zip
       - name: Archive Windows Installer ZIP
         uses: actions/upload-artifact@v2
@@ -267,7 +267,7 @@ jobs:
       - name: Download MacOS Intaller Zip
         uses: actions/download-artifact@v2
         with:
-          name: MacOS installer ZIP
+          name: MacOS Installer ZIP
       - name: Create macos-pkg
         id: run_installers_pkg
         run: |
