@@ -1614,15 +1614,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Handle binary messages with client",
-                "url": "websocket-binary-client",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Retry",
+                "name": "Client - Retry",
                 "url": "websocket-retry-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1630,7 +1622,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Listener functionalities",
+                "name": "Service",
                 "url": "websocket-basic-sample",
                 "verifyBuild": true,
                 "verifyOutput": false,

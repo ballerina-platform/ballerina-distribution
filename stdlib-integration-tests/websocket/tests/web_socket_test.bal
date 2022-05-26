@@ -28,7 +28,7 @@ service /onTextString on new websocket:Listener(21003) {
 service class WsService1 {
   *websocket:Service;
   remote isolated function onTextMessage(websocket:Caller caller, string data) {
-      checkpanic caller->writeTextMessage(data);
+      checkpanic caller->writeMessage(data);
   }
 }
 
@@ -36,7 +36,7 @@ service class WsService1 {
 @test:Config {}
 public function testWebsocketString() returns websocket:Error? {
     websocket:Client wsClient = check new ("ws://localhost:21003/onTextString");
-    checkpanic wsClient->writeTextMessage("Hi");
+    checkpanic wsClient->writeMessage("Hi");
     runtime:sleep(5);
     string data = check wsClient->readTextMessage();
     test:assertEquals(data, "Hi", msg = "Failed pushtext");

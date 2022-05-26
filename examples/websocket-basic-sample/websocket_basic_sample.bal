@@ -1,7 +1,7 @@
 import ballerina/io;
 import ballerina/websocket;
 
-service /basic/ws on new websocket:Listener(9090) {
+service /echo on new websocket:Listener(9090) {
    resource function get .()
                      returns websocket:Service|websocket:Error {
        // Accept the WebSocket upgrade by returning a `websocket:Service`.
@@ -11,11 +11,12 @@ service /basic/ws on new websocket:Listener(9090) {
 
 service class WsService {
     *websocket:Service;
-    // This `remote function` is triggered when a new text message is received
-    // from a client.
-    remote function onTextMessage(websocket:Caller caller,
+    // This `remote function` is triggered when a new message is received
+    // from a client. It accepts `anydata` as the function argumenet. The received data 
+    // will be converted to the data type stated as the function argument.
+    remote function onMessage(websocket:Caller caller,
                                  string text) returns websocket:Error? {
         io:println("\ntext message: " + text);
-        return caller->writeTextMessage("You said: " + text);
+        return caller->writeMessage("You said: " + text);
     }
 }
