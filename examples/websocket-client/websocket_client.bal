@@ -8,6 +8,7 @@ public function main() returns error? {
    // Write a message to the server using [writeMessage](https://lib.ballerina.io/ballerina/websocket/latest/clients/Client#writeMessage).
    // This function accepts `anydata`. If the given type is a `byte[]`, the message will be sent as binary frames and 
    // the rest of the data types will be sent as text frames.
+   // To see more information on data binding, refer the [spec](https://github.com/ballerina-platform/module-ballerina-websocket/blob/main/docs/proposals/data-binding-api.md)
    check echoClient->writeMessage("Hello World!");
 
    // Read a message echoed from the server using [readMessage](https://lib.ballerina.io/ballerina/websocket/latest/clients/Client#readMessage).
