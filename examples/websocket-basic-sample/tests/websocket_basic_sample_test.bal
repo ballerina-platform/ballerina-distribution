@@ -1,5 +1,4 @@
 import ballerina/test;
-import ballerina/log;
 import ballerina/websocket;
 
 string msg = "hey";
