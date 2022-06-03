@@ -1153,10 +1153,8 @@ task generateCache(dependsOn: ':cache-generator:build') {
 
         sortedLibs.each { lib ->
             if (configStdlibs.contains(lib)) {
-                println(lib)
                 def versionList = [file(file("${buildDir}/target/extracted-distributions/" + lib +
-                        "/bala").listFiles()[0].toString() + "/" + lib.split("-")[0]).listFiles()[0].toString().split("/")[-1]]
-                println(versionList)
+                        "/bala").listFiles()[0].toString() + "/" + lib.split("-")[0]).listFiles()[0].name]
                 dependencyMap["${lib}"] = versionList
             }
         }
@@ -1189,8 +1187,6 @@ task generateCache(dependsOn: ':cache-generator:build') {
                     def dependencyGraphJson = file("${balaPath}/dependency-graph.json")
                     def parsedDependencyJson = new JsonSlurper().parseText(dependencyGraphJson.text)
                     parsedDependencyJson.modules.dependencies.each { dependency ->
-                        println(dependency.module_name.toString())
-                        println(dependency.version.toString())
                         if ( dependency.module_name.size() > 0 ) {
                             for ( i in 0..dependency.module_name.size()) {
                                 def moduleName = dependency.module_name[i].toString() + "-ballerina-zip"
@@ -1207,23 +1203,11 @@ task generateCache(dependsOn: ':cache-generator:build') {
         // generate caches for minor versions of Standard Libraries
         dependencyMap.each { key, val ->
             if (val.size > 1 && key != "observe-ballerina-zip") {
+                println(val)
                 def minorVersion = val.sort().reverse()[1]
-                if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                    exec {
-                        workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
-                        commandLine 'cmd', '/c', "${distPath}/bin/bal.bat pull ballerina/${key.split("-")[0]}:${minorVersion}"
-                        ignoreExitValue true
-                    }
-                } else {
-                    exec {
-                        workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
-                        commandLine 'sh', '-c', "${distPath}/bin/bal pull ballerina/${key.split("-")[0]}:${minorVersion}"
-                        ignoreExitValue true
-                    }
-                }
-                copy {
-                    from "${System.properties['user.home']}/.ballerina/repositories/central.ballerina.io/bala/ballerina/${key.split("-")[0]}/${minorVersion}"
-                    into "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/repo/bala/ballerina/${key.split("-")[0]}/${minorVersion}"
+                download {
+                    src "https://central.ballerina.io/ballerina/${key.split("-")[0]}/${minorVersion}"
+                    dest "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/repo/bala/ballerina/${key.split("-")[0]}"
                 }
                 // generate caches
                 String balaPathMinor = new File("${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/repo/bala/ballerina/${key.split("-")[0]}/${minorVersion}").listFiles()[0].toString()
