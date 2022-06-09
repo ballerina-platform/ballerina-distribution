@@ -1,17 +1,18 @@
 import ballerina/io;
+import ballerina/log;
 import ballerinax/mysql;
 import ballerina/sql;
 
 public function main() returns error? {
     // Runs the prerequisite setup for the example.
-    check beforeExample();
+    check initialization();
 
-    // Initializes the MySQL client.
+    // Initializes the MySQL client. The `mysqlClient` can be reused to access database throughout the application execution.
     mysql:Client mysqlClient = check new (user = "root", 
-            password = "Test@123", database = "MYSQL_BBE");
+            password = "Test@123", database = "CUSTOMER");
 
     // Records with the duplicate `registrationID` entry. Here it is `registrationID` = 1.
-    var insertRecords = [
+    var customers = [
         {
             firstName: "Linda",
             lastName: "Jones",
@@ -37,58 +38,51 @@ public function main() returns error? {
 
     // Creates a batch parameterized query.
     sql:ParameterizedQuery[] insertQueries = 
-        from var data in insertRecords
+        from var customer in customers
         select `INSERT INTO Customers
                 (firstName, lastName, registrationID, creditLimit, country)
-                VALUES (${data.firstName}, ${data.lastName},
-                ${data.registrationID}, ${data.creditLimit}, ${data.country})`;
+                VALUES (${customer.firstName}, ${customer.lastName},
+                ${customer.registrationID}, ${customer.creditLimit}, ${customer.country})`;
 
     // The transaction block can be used to roll back if any error occurred.
     transaction {
-        var result = mysqlClient->batchExecute(insertQueries);
+        sql:ExecutionResult[]|sql:Error result = mysqlClient->batchExecute(insertQueries);
         if result is sql:BatchExecuteError {
             io:println(result.message());
             io:println(result.detail()?.executionResults);
-            io:println("Rollback transaction.\n");
+            io:println("Rollback transaction.");
             rollback;
         } else {
             error? err = commit;
             if err is error {
-                io:println("Error occurred while committing: ", err);
+                log:printError("Error occurred while committing", err);
             }
         }
     }
 
-    // Checks the data after the batch execution.
-    stream<record {}, error?> resultStream =
-        mysqlClient->query(`SELECT * FROM Customers`);
+    // Closes the MySQL client.
+    check mysqlClient.close();
 
-    io:println("Data in Customers table:");
-    check from record {} result in resultStream
-        do {
-            io:println(result.toString());
-        };
-
-    // Performs a cleanup after the example.
-    check afterExample(mysqlClient);
+    // Performs the cleanup after the example.
+    check cleanup();
 }
 
 // Initializes the database as a prerequisite to the example.
-function beforeExample() returns sql:Error? {
+function initialization() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
 
     // Creates a database.
-    _ = check mysqlClient->execute(`CREATE DATABASE MYSQL_BBE`);
+    _ = check mysqlClient->execute(`CREATE DATABASE CUSTOMER`);
 
     // Creates a table in the database.
-    _ = check mysqlClient->execute(`CREATE TABLE MYSQL_BBE.Customers
+    _ = check mysqlClient->execute(`CREATE TABLE CUSTOMER.Customers
             (customerId INTEGER NOT NULL AUTO_INCREMENT,
             firstName VARCHAR(300), lastName  VARCHAR(300), registrationID
             INTEGER UNIQUE, creditLimit DOUBLE, country  VARCHAR(300),
             PRIMARY KEY (customerId))`);
 
     // Adds records to the newly-created table.
-    _ = check mysqlClient->execute(`INSERT INTO MYSQL_BBE.Customers
+    _ = check mysqlClient->execute(`INSERT INTO CUSTOMER.Customers
             (firstName, lastName, registrationID,creditLimit,country) VALUES
              ('Peter', 'Stuart', 1, 5000.75, 'USA')`);
 
@@ -96,9 +90,11 @@ function beforeExample() returns sql:Error? {
 }
 
 // Cleans up the database after running the example.
-function afterExample(mysql:Client mysqlClient) returns sql:Error? {
+function cleanup() returns sql:Error? {
+    mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
+
     // Cleans the database.
-    _ = check mysqlClient->execute(`DROP DATABASE MYSQL_BBE`);
+    _ = check mysqlClient->execute(`DROP DATABASE CUSTOMER`);
     
     // Closes the MySQL client.
     check mysqlClient.close();

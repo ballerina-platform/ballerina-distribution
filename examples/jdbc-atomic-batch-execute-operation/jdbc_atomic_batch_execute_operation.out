@@ -13,6 +13,3 @@ INSERT INTO Customers
                  ? ,  ? ,  ? ) [23505-206].
 [{"affectedRowCount":1,"lastInsertId":null},{"affectedRowCount":-3,"lastInsertId":null},{"affectedRowCount":1,"lastInsertId":null}]
 Rollback transaction.
-
-Data in Customers table:
-{"CUSTOMERID":1,"FIRSTNAME":"Peter","LASTNAME":"Stuart","REGISTRATIONID":1,"CREDITLIMIT":5000.75,"COUNTRY":"USA"}
