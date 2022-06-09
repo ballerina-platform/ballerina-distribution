@@ -2425,6 +2425,15 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Query with advanced mapping",
+                "url": "mysql-query-column-mapping",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "DML and DDL operation",
                 "url": "mysql-execute-operation",
                 "verifyBuild": false,
@@ -2479,6 +2488,15 @@
             {
                 "name": "Query with one result",
                 "url": "jdbc-query-row-operation",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Query with advanced mapping",
+                "url": "jdbc-query-column-mapping",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
