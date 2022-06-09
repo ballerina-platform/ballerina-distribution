@@ -14,15 +14,15 @@ public function main() returns error? {
     check initialization();
 
     // Initializes the MySQL client. The `mysqlClient` can be reused to access database throughout the application execution.
-    mysql:Client mysqlClient = check new (user = "root", 
+    mysql:Client mysqlClient = check new (user = "root",
             password = "Test@123", database = "STUDENT");
 
     // Initializes the `INOUT` and `OUT` parameters for the procedure call.
     sql:InOutParameter id = new (1);
     sql:IntegerOutParameter totalCount = new;
-                        
+
     // The stored procedure is invoked.
-    sql:ProcedureCallResult result = 
+    sql:ProcedureCallResult result =
         check mysqlClient->call(`{CALL GetCount(${id}, ${totalCount})}`);
 
     // Process procedure call parameters.
@@ -31,7 +31,7 @@ public function main() returns error? {
 
     io:println(`Age of the student with id '1' : ${studentId}`);
     io:println(`Total student count: ${total}`);
-    
+
     // Closes the procedure call result to release resources.
     check result.close();
 

@@ -4,7 +4,7 @@ import ballerina/sql;
 
 public function main() returns error? {
     // Initializes the JDBC client. The `jdbcClient` can be reused to access database throughout the application execution.
-    jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc", 
+    jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
         "rootUser", "rootPass");
     // Runs the prerequisite setup for the example.
     check initialization(jdbcClient);
@@ -17,14 +17,14 @@ public function main() returns error? {
             registrationID: 1,
             creditLimit: 5000.75,
             country: "USA"
-        }, 
+        },
         {
             firstName: "Stephanie",
             lastName: "Mike",
             registrationID: 2,
             creditLimit: 8000.00,
             country: "USA"
-        }, 
+        },
         {
             firstName: "Bill",
             lastName: "John",
@@ -35,7 +35,7 @@ public function main() returns error? {
     ];
 
     // Creates a batch parameterized query.
-    sql:ParameterizedQuery[] insertQueries = 
+    sql:ParameterizedQuery[] insertQueries =
         from var data in customers
         select `INSERT INTO Customers
                 (firstName, lastName, registrationID, creditLimit, country)
@@ -43,7 +43,7 @@ public function main() returns error? {
                 ${data.registrationID}, ${data.creditLimit}, ${data.country})`;
 
     // Inserts the records with the auto-generated ID.
-    sql:ExecutionResult[] result = 
+    sql:ExecutionResult[] result =
                             check jdbcClient->batchExecute(insertQueries);
 
     int[] generatedIds = [];

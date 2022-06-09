@@ -4,11 +4,11 @@ import ballerina/sql;
 
 // Defines a record to load the query result.
 type Customer record {|
-    @sql:Column { name: "customer_id" }
+    @sql:Column {name: "customer_id"}
     int customerId;
-    @sql:Column { name: "last_name" }
+    @sql:Column {name: "last_name"}
     string lastName;
-    @sql:Column { name: "first_name" }
+    @sql:Column {name: "first_name"}
     string firstName;
 |};
 

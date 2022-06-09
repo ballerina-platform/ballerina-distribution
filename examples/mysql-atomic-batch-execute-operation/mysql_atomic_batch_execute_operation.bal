@@ -8,7 +8,7 @@ public function main() returns error? {
     check initialization();
 
     // Initializes the MySQL client. The `mysqlClient` can be reused to access database throughout the application execution.
-    mysql:Client mysqlClient = check new (user = "root", 
+    mysql:Client mysqlClient = check new (user = "root",
             password = "Test@123", database = "CUSTOMER");
 
     // Records with the duplicate `registrationID` entry. Here it is `registrationID` = 1.
@@ -19,14 +19,14 @@ public function main() returns error? {
             registrationID: 4,
             creditLimit: 10000.75,
             country: "USA"
-        }, 
+        },
         {
             firstName: "Peter",
             lastName: "Stuart",
             registrationID: 1,
             creditLimit: 5000.75,
             country: "USA"
-        }, 
+        },
         {
             firstName: "Camellia",
             lastName: "Potter",
@@ -37,7 +37,7 @@ public function main() returns error? {
     ];
 
     // Creates a batch parameterized query.
-    sql:ParameterizedQuery[] insertQueries = 
+    sql:ParameterizedQuery[] insertQueries =
         from var customer in customers
         select `INSERT INTO Customers
                 (firstName, lastName, registrationID, creditLimit, country)
@@ -95,7 +95,7 @@ function cleanup() returns sql:Error? {
 
     // Cleans the database.
     _ = check mysqlClient->execute(`DROP DATABASE CUSTOMER`);
-    
+
     // Closes the MySQL client.
     check mysqlClient.close();
 }

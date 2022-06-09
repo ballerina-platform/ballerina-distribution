@@ -7,7 +7,7 @@ public function main() returns error? {
     check initialization();
 
     // Initializes the MySQL client. The `mysqlClient` can be reused to access database throughout the application execution.
-    mysql:Client mysqlClient = check new (user = "root", 
+    mysql:Client mysqlClient = check new (user = "root",
             password = "Test@123", database = "CUSTOMER");
 
     float newCreditLimit = 15000.5;
@@ -59,7 +59,7 @@ function cleanup() returns sql:Error? {
 
     // Cleans the database.
     _ = check mysqlClient->execute(`DROP DATABASE CUSTOMER`);
-    
+
     // Closes the MySQL client.
     check mysqlClient.close();
 }

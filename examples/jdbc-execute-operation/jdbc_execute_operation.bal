@@ -4,7 +4,7 @@ import ballerina/sql;
 
 public function main() returns error? {
     // Initializes the JDBC client. The `jdbcClient` can be reused to access database throughout the application execution.
-    jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc", 
+    jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
         "rootUser", "rootPass");
     // Runs the prerequisite setup for the example.
     check initialization(jdbcClient);
@@ -17,7 +17,7 @@ public function main() returns error? {
 
     // Process returned metadata.
     io:println(`Updated Row count: ${result?.affectedRowCount}`);
-    
+
     // Performs the cleanup after the example.
     check cleanup(jdbcClient);
 

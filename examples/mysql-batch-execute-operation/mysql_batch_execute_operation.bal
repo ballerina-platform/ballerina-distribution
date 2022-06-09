@@ -7,24 +7,25 @@ public function main() returns error? {
     check initialization();
 
     // Initializes the MySQL client. The `mysqlClient` can be reused to access database throughout the application execution.
-    mysql:Client mysqlClient = check new (user = "root", 
+    mysql:Client mysqlClient = check new (user = "root",
             password = "Test@123", database = "CUSTOMER");
 
     // The records to be inserted.
     var customers = [
         {
-            firstName: "Peter", lastName: "Stuart",
+            firstName: "Peter",
+            lastName: "Stuart",
             registrationID: 1,
             creditLimit: 5000.75,
             country: "USA"
-        }, 
+        },
         {
             firstName: "Stephanie",
             lastName: "Mike",
             registrationID: 2,
             creditLimit: 8000.00,
             country: "USA"
-        }, 
+        },
         {
             firstName: "Bill",
             lastName: "John",
@@ -35,7 +36,7 @@ public function main() returns error? {
     ];
 
     // Creates a batch parameterized query.
-    sql:ParameterizedQuery[] insertQueries = 
+    sql:ParameterizedQuery[] insertQueries =
         from var customer in customers
         select `INSERT INTO Customers
                 (firstName, lastName, registrationID, creditLimit, country)
@@ -43,7 +44,7 @@ public function main() returns error? {
                 ${customer.registrationID}, ${customer.creditLimit}, ${customer.country})`;
 
     // Inserts the records with the auto-generated ID.
-    sql:ExecutionResult[] result = 
+    sql:ExecutionResult[] result =
                             check mysqlClient->batchExecute(insertQueries);
 
     int[] generatedIds = [];

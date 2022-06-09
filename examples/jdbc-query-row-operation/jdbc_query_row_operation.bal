@@ -29,7 +29,7 @@ public function main() returns error? {
 
     // Performs the cleanup after the example.
     check cleanup(jdbcClient);
- 
+
     // Closes the JDBC client.
     check jdbcClient.close();
 }

@@ -31,7 +31,7 @@ public function main() returns error? {
         do {
             io:println(`Customer details: ${customer}`);
         };
-    
+
     // Closes the stream to release resources.
     check resultStream.close();
 
@@ -40,7 +40,7 @@ public function main() returns error? {
 
     // Closes the JDBC client.
     check jdbcClient.close();
-    
+
 }
 
 // Initializes the database as a prerequisite to the example.
