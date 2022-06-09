@@ -2416,6 +2416,15 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Query with one result",
+                "url": "mysql-query-row-operation",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Query with complex types",
                 "url": "mysql-complex-type-queries",
                 "verifyBuild": false,
@@ -2470,6 +2479,15 @@
             {
                 "name": "Simple query",
                 "url": "jdbc-query-operation",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Query with one result",
+                "url": "jdbc-query-row-operation",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
