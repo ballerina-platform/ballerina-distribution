@@ -12,8 +12,9 @@ public function main() returns error? {
     float newCreditLimit = 15000.5;
 
     // Execute the query.
-    sql:ExecutionResult result = check jdbcClient->execute(`UPDATE Customers SET creditLimit = ${newCreditLimit} 
-            where customerId = 1`);
+    sql:ExecutionResult result = check jdbcClient->execute(
+                        `UPDATE Customers SET creditLimit = ${newCreditLimit}
+                        where customerId = 1`);
 
     // Process returned metadata.
     io:println(`Updated Row count: ${result?.affectedRowCount}`);

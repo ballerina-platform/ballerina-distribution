@@ -41,7 +41,8 @@ public function main() returns error? {
         select `INSERT INTO Customers
                 (firstName, lastName, registrationID, creditLimit, country)
                 VALUES (${customer.firstName}, ${customer.lastName},
-                ${customer.registrationID}, ${customer.creditLimit}, ${customer.country})`;
+                ${customer.registrationID}, ${customer.creditLimit}, 
+                ${customer.country})`;
 
     // Inserts the records with the auto-generated ID.
     sql:ExecutionResult[] result =

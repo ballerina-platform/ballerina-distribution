@@ -41,11 +41,13 @@ public function main() returns error? {
     select `INSERT INTO Customers
                 (firstName, lastName, registrationID, creditLimit, country)
                 VALUES (${customer.firstName}, ${customer.lastName},
-                ${customer.registrationID}, ${customer.creditLimit}, ${customer.country})`;
+                ${customer.registrationID}, ${customer.creditLimit}, 
+                ${customer.country})`;
 
     // The transaction block can be used to roll back if any error occurred.
     transaction {
-        sql:ExecutionResult[]|sql:Error result = jdbcClient->batchExecute(insertQueries);
+        sql:ExecutionResult[]|sql:Error result = 
+                                    jdbcClient->batchExecute(insertQueries);
         if result is sql:BatchExecuteError {
             io:println(result.message());
             io:println(result.detail()?.executionResults);
