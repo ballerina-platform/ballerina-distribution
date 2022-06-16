@@ -54,7 +54,7 @@ jobs:
         run: |
           openssl dgst -sha256 -out ballerina-${{ steps.project-version.outputs.version }}-linux-x64.deb.sha256 installers/linux-deb/target/ballerina-*-linux-x64.deb
           openssl dgst -sha256 -out ballerina-${{ steps.project-version.outputs.version }}-linux-x64.rpm.sha256 installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-*-linux-x64.rpm
-          openssl dgst -sha256 -out ballerina-${{ steps.project-version.outputs.version }}-swan-lake.zip.sha256 ballerina/build/distributions/ballerina-${{ steps.project-version.outputs.version }}-swan-lake.zip
+          openssl dgst -sha256 -out ballerina-${{ steps.project-version.outputs.version }}.zip.sha256 ballerina/build/distributions/ballerina-${{ steps.project-version.outputs.version }}.zip
           openssl dgst -sha256 -out ballerina-${{ steps.project-version.outputs.sversion }}.zip.sha256 ballerina/build/distributions/ballerina-${{ steps.project-version.outputs.sversion }}.zip
       - name: Archive Ballerina ZIP
         uses: actions/upload-artifact@v2
@@ -100,7 +100,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Ballerina Zip Hashes
-          path: ballerina-${{ steps.project-version.outputs.version }}-swan-lake.zip.sha256
+          path: ballerina-${{ steps.project-version.outputs.version }}.zip.sha256
       - name: Archive Ballerina Short Name Hashes
         uses: actions/upload-artifact@v2
         with:
