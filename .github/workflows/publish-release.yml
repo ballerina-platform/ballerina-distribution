@@ -130,7 +130,7 @@ jobs:
         run: |
           openssl dgst -sha256 -out ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.deb.sha256 installers/linux-deb/target/ballerina-*-linux-x64.deb
           openssl dgst -sha256 -out ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.rpm.sha256 installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-*-linux-x64.rpm
-          openssl dgst -sha256 -out ballerina-${{ steps.version-set.outputs.longVersion }}-swan-lake.zip.sha256 ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.version }}-swan-lake.zip
+          openssl dgst -sha256 -out ballerina-${{ steps.version-set.outputs.longVersion }}.zip.sha256 ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}.zip
           openssl dgst -sha256 -out ballerina-${{ steps.version-set.outputs.sversion }}.zip.sha256 ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.sversion }}.zip
       - name: Upload zip artifacts
         uses: actions/upload-release-asset@v1
@@ -210,8 +210,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-swan-lake.zip.sha256
-          asset_path: ballerina-${{ steps.version-set.outputs.longVersion }}-swan-lake.zip.sha256
+          asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}.zip.sha256
+          asset_path: ballerina-${{ steps.version-set.outputs.longVersion }}.zip.sha256
           asset_content_type: application/octet-stream
       - name: Upload ballerina Short Name zip Hashes
         uses: actions/upload-release-asset@v1
