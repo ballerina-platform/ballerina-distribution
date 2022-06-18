@@ -31,7 +31,7 @@ Follow the steps below to set up the prerequisites.
     set packagePAT=<YOUR_PERSONAL_ACCESS_TOKEN>
     ```
 
-## Buil the complete Ballerina distribution
+## Build the complete Ballerina distribution
 
 Follow the steps below to build the [`ballerina-distribution` repository](https://github.com/ballerina-platform/ballerina-distribution) to get full access to the complete Ballerina distribution.
 
