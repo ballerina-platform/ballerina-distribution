@@ -1,4 +1,4 @@
-# Building from Source
+# Build Ballerina from source
 
 ## Overview
 
@@ -7,7 +7,7 @@
 >**Info:** However, if you need just a plain Ballerina language build with only the basic language features and the JBallerina Java (Java Introp) API in it, you can [build only the Ballerina Runtime with the tools](#building-only-the-ballerina-runtime-with-the-tools)
 
 
-## Setting up the Prerequisites
+## Set up the prerequisites
 
 Follow the steps below to set up the prerequisites.
 
@@ -31,7 +31,7 @@ Follow the steps below to set up the prerequisites.
     set packagePAT=<YOUR_PERSONAL_ACCESS_TOKEN>
     ```
 
-## Building the Complete Ballerina Distribution
+## Buil the complete Ballerina distribution
 
 Follow the steps below to build the [`ballerina-distribution` repository](https://github.com/ballerina-platform/ballerina-distribution) to get full access to the complete Ballerina distribution.
 
@@ -80,7 +80,7 @@ Follow the steps below to build the [`ballerina-distribution` repository](https:
     set PATH=%PATH%;%BALLERINA_HOME%\bin;
     ```
 
-### Testing the Distribution Build
+### Test the distribution build
 
 Since this is a complete Ballerina distribution build, this will have all the Standard Library module dependencies included in it.
 
@@ -109,7 +109,7 @@ Therefore, follow the steps below to write a simple program using the Ballerina 
     Hello, World with IO!
     ```
 
-## Building Only the Ballerina Runtime with the Tools
+## Build only the Ballerina runtime with the tools
 
 Follow the steps below to build just the Ballerina runtime with the corresponding tools.
 
@@ -164,7 +164,7 @@ Follow the steps below to build just the Ballerina runtime with the correspondin
     set PATH=%PATH%;%BALLERINA_HOME%\bin;
     ```
 
-### Testing the Runtime Build
+### Test the runtime build
 
 Since this runtime build is just a plain Ballerina language build, you only have the basic language features and JBallerina Java (Java Introp) API in it.
 
