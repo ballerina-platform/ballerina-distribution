@@ -38,7 +38,7 @@ public function main() returns error? {
     // Creates a batch parameterized query.
     sql:ParameterizedQuery[] insertQueries =
         from var customer in customers
-    select `INSERT INTO Customers
+        select `INSERT INTO Customers
                 (firstName, lastName, registrationID, creditLimit, country)
                 VALUES (${customer.firstName}, ${customer.lastName},
                 ${customer.registrationID}, ${customer.creditLimit}, 
