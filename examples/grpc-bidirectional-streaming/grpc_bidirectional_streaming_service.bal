@@ -2,8 +2,7 @@
 import ballerina/grpc;
 
 @grpc:ServiceDescriptor {
-    descriptor: ROOT_DESCRIPTOR_GRPC_BIDIRECTIONAL_STREAMING,
-    descMap: getDescriptorMapGrpcBidirectionalStreaming()
+    descriptor: GRPC_BIDIRECTIONAL_STREAMING_DESC
 }
 service "Chat" on new grpc:Listener(9090) {
     // The generated code of the Ballerina gRPC command does not contain ChatStringCaller.
