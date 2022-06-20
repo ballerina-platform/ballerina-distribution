@@ -1,11 +1,11 @@
-# Query with complex types
+# Query using advanced mapping for column name
 
-This BBE demonstrates how to use the JDBC client with advanced mapping for query operations. Note that the relevant database driver JAR
-should be defined in the `Ballerina.toml` file as a dependency.
+This BBE demonstrates how to use the JDBC client for query operations with advanced mapping for column names.
+Note that the relevant database driver JAR should be defined in the `Ballerina.toml` file as a dependency.
 This sample is based on an H2 database and the H2 database driver JAR need to be added to `Ballerina.toml` file.
 For a sample configuration and more information on the underlying module, see the [JDBC module](https://docs.central.ballerina.io/ballerinax/java.jdbc/latest/) .<br><br>
 This sample is written using H2 2.0.6 and it is recommended to use H2 JAR with versions higher than 2.0.2.
 
 ::: code ./examples/jdbc-query-column-mapping/jdbc_query_column_mapping.bal :::
 
-::: out ./examples/jdbc-query-column-mapping/jdbcquery_column_mapping.out :::
+::: out ./examples/jdbc-query-column-mapping/jdbc_query_column_mapping.out :::

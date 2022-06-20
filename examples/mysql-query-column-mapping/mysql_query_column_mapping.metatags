@@ -1,2 +1,2 @@
-description: This BBE demonstrates how to use the MySQL client with advanced mapping for query operations.
+description: This BBE demonstrates how to use the MySQL client for query operations with advanced mapping for column names.
 keywords: ballerina, ballerina by example, bbe, mysql

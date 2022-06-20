@@ -1,7 +1,7 @@
-# Query with complex types
+# Query using advanced mapping for column name
 
-This BBE demonstrates how to use the MySQL client with advanced mapping for query operations. Note that the MySQL database
-driver JAR should be defined in the `Ballerina.toml` file as a dependency.
+This BBE demonstrates how to use the MySQL client for query operations with advanced mapping for column names. 
+Note that the MySQL database driver JAR should be defined in the `Ballerina.toml` file as a dependency.
 For a sample configuration and more information on the underlying module, see the [MySQL module](https://docs.central.ballerina.io/ballerinax/mysql/latest/).
 The MySQL connector uses database properties from MySQL version 8.0.13 onwards. Therefore, it is
 recommended to use a MySQL driver version greater than 8.0.13.<br><br>
