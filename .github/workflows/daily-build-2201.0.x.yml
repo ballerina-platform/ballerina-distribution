@@ -1,4 +1,4 @@
-name: Daily build
+name: Daily build (2201.0.x)
 
 on:
   workflow_dispatch:
