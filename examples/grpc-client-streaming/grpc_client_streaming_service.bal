@@ -3,8 +3,7 @@ import ballerina/grpc;
 import ballerina/log;
 
 @grpc:ServiceDescriptor {
-    descriptor: ROOT_DESCRIPTOR_GRPC_CLIENT_STREAMING,
-    descMap: getDescriptorMapGrpcClientStreaming()
+    descriptor: GRPC_CLIENT_STREAMING_DESC
 }
 service "HelloWorld" on new grpc:Listener(9090) {
     isolated remote function lotsOfGreetings(
