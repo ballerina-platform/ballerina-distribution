@@ -196,7 +196,7 @@ jobs:
         with:
           context: module-ballerina-docker/base/devcontainer/
           push: true
-          tags: ballerina/ballerina-devcontainer:nightly
+          tags: ballerina/ballerina-devcontainer:nightly-2201.1.x
           build-args: |
             BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.version }}-linux-x64.deb
     outputs:
