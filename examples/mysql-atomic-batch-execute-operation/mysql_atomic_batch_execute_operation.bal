@@ -5,7 +5,7 @@ import ballerina/sql;
 
 public function main() returns error? {
     // Runs the prerequisite setup for the example.
-    check initialization();
+    check initialize();
 
     // Initializes the MySQL client. The `mysqlClient` can be reused to access database throughout the application execution.
     mysql:Client mysqlClient = check new (user = "root",
@@ -70,7 +70,7 @@ public function main() returns error? {
 }
 
 // Initializes the database as a prerequisite to the example.
-function initialization() returns sql:Error? {
+function initialize() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
 
     // Creates a database.

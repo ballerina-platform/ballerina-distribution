@@ -17,7 +17,7 @@ public function main() returns error? {
     jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
         "rootUser", "rootPass");
     // Runs the prerequisite setup for the example.
-    check initialization(jdbcClient);
+    check initialize(jdbcClient);
 
     int customerId = 1;
     // Query table to return one result.
@@ -35,7 +35,7 @@ public function main() returns error? {
 }
 
 // Initializes the database as a prerequisite to the example.
-function initialization(jdbc:Client jdbcClient) returns sql:Error? {
+function initialize(jdbc:Client jdbcClient) returns sql:Error? {
     // Creates a table in the database.
     _ = check jdbcClient->execute(`CREATE TABLE Customers
             (customerId INTEGER NOT NULL AUTO_INCREMENT, firstName
