@@ -1,4 +1,3 @@
-import ballerina/io;
 import ballerina/log;
 import ballerinax/mysql;
 import ballerina/sql;
@@ -13,22 +12,20 @@ public function main() returns error? {
 
     // The transaction block can be used to roll back if any error occurred.
     transaction {
-        sql:ExecutionResult|sql:Error result1 = mysqlClient->execute(
-                    `INSERT INTO Customers (firstName, lastName, 
-                     registrationID, creditLimit, country) VALUES ('Linda', 
-                    'Jones', 4, 10000.75, 'USA')`);
-        io:println(`First query executed successfully. ${result1}`);
+        _ = check mysqlClient->execute(`INSERT INTO Customers (firstName, lastName,
+                     registrationID, creditLimit, country) VALUES ('Linda',
+                     'Jones', 4, 10000.75, 'USA')`);
+        log:printInfo("First query executed successfully.");
 
         // Insert Customer record which violates the unique
-        sql:ExecutionResult|sql:Error result2 = mysqlClient->execute(
+        sql:ExecutionResult|sql:Error result = mysqlClient->execute(
                 `INSERT INTO Customers (firstName, lastName, registrationID,
                  creditLimit, country) VALUES ('Peter', 'Stuart', 4, 5000.75,
                  'USA')`);
 
-        if result2 is sql:Error {
-            io:println(result2.message());
-            io:println("Second query failed.");
-            io:println("Rollback transaction.");
+        if result is sql:Error {
+            log:printError(result.message());
+            log:printInfo("Second query failed. Rollback transaction.");
             rollback;
         } else {
             error? err = commit;
