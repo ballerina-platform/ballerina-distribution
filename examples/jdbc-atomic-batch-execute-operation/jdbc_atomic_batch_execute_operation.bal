@@ -48,7 +48,7 @@ public function main() returns error? {
 
     // The transaction block can be used to roll back if any error occurred.
     transaction {
-        sql:ExecutionResult[]|sql:Error result = 
+        sql:ExecutionResult[]|sql:Error result =
                                     jdbcClient->batchExecute(insertQueries);
         if result is sql:BatchExecuteError {
             io:println(result.message());
@@ -86,7 +86,7 @@ function initialize() returns sql:Error? {
     _ = check jdbcClient->execute(`INSERT INTO Customers (firstName,
             lastName, registrationID,creditLimit,country) VALUES ('Peter',
             'Stuart', 1, 5000.75, 'USA')`);
-    
+
     check jdbcClient.close();
 }
 

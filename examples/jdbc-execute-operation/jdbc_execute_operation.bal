@@ -23,7 +23,7 @@ public function main() returns error? {
 
     // Closes the JDBC client.
     check jdbcClient.close();
-    
+
     // Performs the cleanup after the example.
     check cleanup();
 }
@@ -47,7 +47,7 @@ function initialize() returns sql:Error? {
     _ = check jdbcClient->execute(`INSERT INTO Customers (firstName,
             lastName, registrationID,creditLimit,country) VALUES
             ('Dan', 'Brown', 2, 10000, 'UK')`);
-    
+
     check jdbcClient.close();
 }
 
