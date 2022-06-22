@@ -3,4 +3,4 @@
 # Execute the command below to build and run the project.
 bal run
 
-Insert success, generated IDs are: [1,2,3]
+Customer (customerId = 1) : {"customerId":2,"firstName":"Dan","lastName":"Brown","registrationId":2,"creditLimit":10000.0,"country":"UK"}

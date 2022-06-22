@@ -20,21 +20,13 @@ public function main() returns error? {
     mysql:Client mysqlClient = check new (user = "root",
             password = "Test@123", database = "CUSTOMER");
 
-    float creditLimit = 5000;
+    int customerId = 1;
+    // Query table to return one result.
+    Customer customer =
+            check mysqlClient->queryRow(`SELECT * FROM Customers
+                                    WHERE customerId > ${customerId};`);
 
-    // Query table with a condition.
-    stream<Customer, error?> resultStream =
-            mysqlClient->query(`SELECT * FROM Customers
-                                WHERE creditLimit > ${creditLimit};`);
-
-    // Iterates the result stream.
-    check from Customer customer in resultStream
-        do {
-            io:println(`Customer Details: ${customer}`);
-        };
-
-    // Closes the stream to release the resources.
-    check resultStream.close();
+    io:println(`Customer (customerId = 1) : ${customer}`);
 
     // Closes the MySQL client.
     check mysqlClient.close();

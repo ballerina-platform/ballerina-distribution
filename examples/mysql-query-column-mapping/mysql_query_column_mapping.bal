@@ -4,12 +4,12 @@ import ballerina/sql;
 
 // Defines a record to load the query result.
 type Customer record {|
+    @sql:Column {name: "customer_id"}
     int customerId;
+    @sql:Column {name: "last_name"}
     string lastName;
+    @sql:Column {name: "first_name"}
     string firstName;
-    int registrationId;
-    float creditLimit;
-    string country;
 |};
 
 public function main() returns error? {
@@ -20,17 +20,14 @@ public function main() returns error? {
     mysql:Client mysqlClient = check new (user = "root",
             password = "Test@123", database = "CUSTOMER");
 
-    float creditLimit = 5000;
-
     // Query table with a condition.
     stream<Customer, error?> resultStream =
-            mysqlClient->query(`SELECT * FROM Customers
-                                WHERE creditLimit > ${creditLimit};`);
+            mysqlClient->query(`SELECT * FROM Customers;`);
 
     // Iterates the result stream.
     check from Customer customer in resultStream
         do {
-            io:println(`Customer Details: ${customer}`);
+            io:println(`Customer details: ${customer}`);
         };
 
     // Closes the stream to release the resources.
@@ -52,18 +49,15 @@ function initialize() returns sql:Error? {
 
     // Creates a table in the database.
     _ = check mysqlClient->execute(`CREATE TABLE CUSTOMER.Customers
-            (customerId INTEGER NOT NULL AUTO_INCREMENT, firstName
-            VARCHAR(300), lastName  VARCHAR(300), registrationID INTEGER,
-            creditLimit DOUBLE, country  VARCHAR(300),
-            PRIMARY KEY (customerId))`);
+            (customer_id INTEGER NOT NULL AUTO_INCREMENT, first_name
+            VARCHAR(300), last_name  VARCHAR(300),
+            PRIMARY KEY (customer_id))`);
 
     // Adds the records to the newly-created table.
     _ = check mysqlClient->execute(`INSERT INTO CUSTOMER.Customers
-            (firstName, lastName, registrationID,creditLimit,country) VALUES
-            ('Peter','Stuart', 1, 5000.75, 'USA')`);
+            (first_name, last_name) VALUES ('Peter','Stuart')`);
     _ = check mysqlClient->execute(`INSERT INTO CUSTOMER.Customers
-            (firstName, lastName, registrationID,creditLimit,country) VALUES
-            ('Dan', 'Brown', 2, 10000, 'UK')`);
+            (first_name, last_name) VALUES ('Dan', 'Brown')`);
 
     check mysqlClient.close();
 }
