@@ -13,11 +13,13 @@ type Customer record {|
 |};
 
 public function main() returns error? {
+
+    // Runs the prerequisite setup for the example.
+    check initialize();
+
     // Initializes the JDBC client. The `jdbcClient` can be reused to access the database throughout the application execution.
     jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
         "rootUser", "rootPass");
-    // Runs the prerequisite setup for the example.
-    check initialize(jdbcClient);
 
     // Query table with a condition.
     stream<Customer, error?> resultStream =
@@ -32,15 +34,18 @@ public function main() returns error? {
     // Closes the stream to release the resources.
     check resultStream.close();
 
-    // Performs the cleanup after the example.
-    check cleanup(jdbcClient);
-
     // Closes the JDBC client.
     check jdbcClient.close();
+
+    // Performs the cleanup after the example.
+    check cleanup();
 }
 
 // Initializes the database as a prerequisite to the example.
-function initialize(jdbc:Client jdbcClient) returns sql:Error? {
+function initialize() returns sql:Error? {
+    jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
+        "rootUser", "rootPass");
+
     // Creates a table in the database.
     _ = check jdbcClient->execute(`CREATE TABLE Customers
             (customer_id INTEGER NOT NULL AUTO_INCREMENT, first_name
@@ -52,10 +57,17 @@ function initialize(jdbc:Client jdbcClient) returns sql:Error? {
             (first_name, last_name) VALUES ('Peter','Stuart')`);
     _ = check jdbcClient->execute(`INSERT INTO Customers
             (first_name, last_name) VALUES ('Dan', 'Brown')`);
+
+    check jdbcClient.close();
 }
 
 // Cleans up the database after running the example.
-function cleanup(jdbc:Client jdbcClient) returns sql:Error? {
+function cleanup() returns sql:Error? {
+    jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
+        "rootUser", "rootPass");
+
     // Cleans the table.
     _ = check jdbcClient->execute(`DROP TABLE Customers`);
+
+    check jdbcClient.close();
 }

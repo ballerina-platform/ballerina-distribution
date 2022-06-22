@@ -13,11 +13,13 @@ type Customer record {|
 |};
 
 public function main() returns error? {
+
+    // Runs the prerequisite setup for the example.
+    check initialize();
+
     // Initializes the JDBC client. The `jdbcClient` can be reused to access the database throughout the application execution.
     jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
         "rootUser", "rootPass");
-    // Runs the prerequisite setup for the example.
-    check initialize(jdbcClient);
 
     int customerId = 1;
     // Query table to return one result.
@@ -27,15 +29,18 @@ public function main() returns error? {
 
     io:println(`Customer (customerId = 1) : ${customer}`);
 
-    // Performs the cleanup after the example.
-    check cleanup(jdbcClient);
-
     // Closes the JDBC client.
     check jdbcClient.close();
+
+    // Performs the cleanup after the example.
+    check cleanup();
 }
 
 // Initializes the database as a prerequisite to the example.
-function initialize(jdbc:Client jdbcClient) returns sql:Error? {
+function initialize() returns sql:Error? {
+    jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
+        "rootUser", "rootPass");
+
     // Creates a table in the database.
     _ = check jdbcClient->execute(`CREATE TABLE Customers
             (customerId INTEGER NOT NULL AUTO_INCREMENT, firstName
@@ -50,10 +55,17 @@ function initialize(jdbc:Client jdbcClient) returns sql:Error? {
     _ = check jdbcClient->execute(`INSERT INTO Customers
             (firstName, lastName, registrationID,creditLimit,country) VALUES
             ('Dan', 'Brown', 2, 10000, 'UK')`);
+    
+    check jdbcClient.close();
 }
 
 // Cleans up the database after running the example.
-function cleanup(jdbc:Client jdbcClient) returns sql:Error? {
+function cleanup() returns sql:Error? {
+    jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
+        "rootUser", "rootPass");
+
     // Cleans the database.
     _ = check jdbcClient->execute(`DROP TABLE Customers`);
+
+    check jdbcClient.close();
 }
