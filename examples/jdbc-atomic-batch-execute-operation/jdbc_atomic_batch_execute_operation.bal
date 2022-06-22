@@ -13,9 +13,9 @@ public function main() returns error? {
 
     // The transaction block can be used to roll back if any error occurred.
     transaction {
-        _ = check jdbcClient->execute(`INSERT INTO Customers (firstName, lastName,
-                             registrationID, creditLimit, country) VALUES ('Linda',
-                             'Jones', 4, 10000.75, 'USA')`);
+        _ = check jdbcClient->execute(`INSERT INTO Customers (firstName, 
+                    lastName, registrationID, creditLimit, country) VALUES 
+                    ('Linda', 'Jones', 4, 10000.75, 'USA')`);
         log:printInfo("First query executed successfully.");
 
         // Insert Customer record which violates the unique
