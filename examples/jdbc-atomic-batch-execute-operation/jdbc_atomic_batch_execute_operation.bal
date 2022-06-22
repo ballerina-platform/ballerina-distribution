@@ -12,47 +12,23 @@ public function main() returns error? {
     jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
         "rootUser", "rootPass");
 
-    // Records with the duplicate `registrationID` entry. Here, it is registrationID = 1.
-    var customers = [
-        {
-            firstName: "Linda",
-            lastName: "Jones",
-            registrationID: 2,
-            creditLimit: 10000.75,
-            country: "USA"
-        },
-        {
-            firstName: "Peter",
-            lastName: "Stuart",
-            registrationID: 1,
-            creditLimit: 5000.75,
-            country: "USA"
-        },
-        {
-            firstName: "Camellia",
-            lastName: "Potter",
-            registrationID: 4,
-            creditLimit: 2000.25,
-            country: "USA"
-        }
-    ];
-
-    // Creates a batch-parameterized query.
-    sql:ParameterizedQuery[] insertQueries =
-        from var customer in customers
-        select `INSERT INTO Customers
-                (firstName, lastName, registrationID, creditLimit, country)
-                VALUES (${customer.firstName}, ${customer.lastName},
-                ${customer.registrationID}, ${customer.creditLimit}, 
-                ${customer.country})`;
-
     // The transaction block can be used to roll back if any error occurred.
     transaction {
-        sql:ExecutionResult[]|sql:Error result =
-                                    jdbcClient->batchExecute(insertQueries);
-        if result is sql:BatchExecuteError {
-            io:println(result.message());
-            io:println(result.detail()?.executionResults);
+        sql:ExecutionResult|sql:Error result1 = jdbcClient->execute(
+                    `INSERT INTO Customers (firstName, lastName, 
+                     registrationID, creditLimit, country) VALUES ('Linda', 
+                    'Jones', 4, 10000.75, 'USA')`);
+        io:println(`First query executed successfully. ${result1}`);
+
+        // Insert Customer record which violates the unique
+        sql:ExecutionResult|sql:Error result2 = jdbcClient->execute(
+                `INSERT INTO Customers (firstName, lastName, registrationID,
+                 creditLimit, country) VALUES ('Peter', 'Stuart', 4, 5000.75,
+                 'USA')`);
+
+        if result2 is sql:Error {
+            io:println(result2.message());
+            io:println("Second query failed.");
             io:println("Rollback transaction.");
             rollback;
         } else {

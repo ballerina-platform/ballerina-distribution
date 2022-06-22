@@ -3,9 +3,9 @@
 # Execute the command below to build and run the project.
 bal run
 
-Error while executing batch command starting with: 'INSERT INTO Customers
-                (firstName, lastName, registrationID, creditLimit, country)
-                VALUES ( ? ,  ? ,
-                 ? ,  ? ,  ? )'.Duplicate entry '1' for key 'customers.registrationID'.
-[{"affectedRowCount":1,"lastInsertId":null},{"affectedRowCount":-3,"lastInsertId":null},{"affectedRowCount":1,"lastInsertId":null}]
+First query executed successfully. {"affectedRowCount":1,"lastInsertId":2}
+Error while executing SQL query: INSERT INTO Customers (firstName, lastName, registrationID,
+                 creditLimit, country) VALUES ('Peter', 'Stuart', 4, 5000.75,
+                 'USA'). Duplicate entry '4' for key 'customers.registrationID'.
+Second query failed.
 Rollback transaction.
