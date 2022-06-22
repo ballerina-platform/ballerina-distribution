@@ -13,7 +13,7 @@ public function main() returns error? {
     // Runs the prerequisite setup for the example.
     check initialize();
 
-    // Initializes the MySQL client. The `mysqlClient` can be reused to access database throughout the application execution.
+    // Initializes the MySQL client. The `mysqlClient` can be reused to access the database throughout the application execution.
     mysql:Client mysqlClient = check new (user = "root",
             password = "Test@123", database = "STUDENT");
 
@@ -25,14 +25,14 @@ public function main() returns error? {
     sql:ProcedureCallResult result =
         check mysqlClient->call(`{CALL GetCount(${id}, ${totalCount})}`);
 
-    // Process procedure call parameters.
+    // Process procedure-call parameters.
     int studentId = check id.get();
     int total = check totalCount.get();
 
     io:println(`Age of the student with id '1' : ${studentId}`);
     io:println(`Total student count: ${total}`);
 
-    // Closes the procedure call result to release resources.
+    // Closes the procedure call result to release the resources.
     check result.close();
 
     // Closes the MySQL client.
@@ -59,7 +59,7 @@ function initialize() returns sql:Error? {
         (INOUT pID INT, OUT totalCount INT) BEGIN SELECT age INTO pID FROM
         Student WHERE id = pID; SELECT COUNT(*) INTO totalCount FROM Student;
         END`);
-    // Insert necessary data
+    // Inserts necessary data.
     _ = check mysqlClient->execute(`INSERT INTO STUDENT.Student(name, age)
                                         VALUES ('George', 24)`);
 

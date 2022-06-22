@@ -13,7 +13,7 @@ type Customer record {|
 |};
 
 public function main() returns error? {
-    // Initializes the JDBC client. The `jdbcClient` can be reused to access database throughout the application execution.
+    // Initializes the JDBC client. The `jdbcClient` can be reused to access the database throughout the application execution.
     jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
         "rootUser", "rootPass");
     // Runs the prerequisite setup for the example.

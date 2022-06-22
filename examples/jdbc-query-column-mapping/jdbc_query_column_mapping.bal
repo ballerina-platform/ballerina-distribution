@@ -13,7 +13,7 @@ type Customer record {|
 |};
 
 public function main() returns error? {
-    // Initializes the JDBC client. The `jdbcClient` can be reused to access database throughout the application execution.
+    // Initializes the JDBC client. The `jdbcClient` can be reused to access the database throughout the application execution.
     jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
         "rootUser", "rootPass");
     // Runs the prerequisite setup for the example.
@@ -23,13 +23,13 @@ public function main() returns error? {
     stream<Customer, error?> resultStream =
             jdbcClient->query(`SELECT * FROM Customers;`);
 
-    // Iterate the result stream.
+    // Iterates the result stream.
     check from Customer customer in resultStream
         do {
             io:println(`Customer details: ${customer}`);
         };
 
-    // Closes the stream to release resources.
+    // Closes the stream to release the resources.
     check resultStream.close();
 
     // Performs the cleanup after the example.

@@ -6,7 +6,7 @@ public function main() returns error? {
     // Runs the prerequisite setup for the example.
     check initialize();
 
-    // Initializes the MySQL client. The `mysqlClient` can be reused to access database throughout the application execution.
+    // Initializes the MySQL client. The `mysqlClient` can be reused to access the database throughout the application execution.
     mysql:Client mysqlClient = check new (user = "root",
             password = "Test@123", database = "CUSTOMER");
 

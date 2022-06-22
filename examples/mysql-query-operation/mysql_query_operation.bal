@@ -16,7 +16,7 @@ public function main() returns error? {
     // Runs the prerequisite setup for the example.
     check initialize();
 
-    // Initializes the MySQL client. The `mysqlClient` can be reused to access database throughout the application execution.
+    // Initializes the MySQL client. The `mysqlClient` can be reused to access the database throughout the application execution.
     mysql:Client mysqlClient = check new (user = "root",
             password = "Test@123", database = "CUSTOMER");
 
@@ -27,13 +27,13 @@ public function main() returns error? {
             mysqlClient->query(`SELECT * FROM Customers
                                 WHERE creditLimit > ${creditLimit};`);
 
-    // Iterate the result stream.
+    // Iterates the result stream.
     check from Customer customer in resultStream
         do {
             io:println(`Customer Details: ${customer}`);
         };
 
-    // Closes the stream to release resources.
+    // Closes the stream to release the resources.
     check resultStream.close();
 
     // Closes the MySQL client.

@@ -7,11 +7,11 @@ public function main() returns error? {
     // Runs the prerequisite setup for the example.
     check initialize();
 
-    // Initializes the MySQL client. The `mysqlClient` can be reused to access database throughout the application execution.
+    // Initializes the MySQL client. The `mysqlClient` can be reused to access the database throughout the application execution.
     mysql:Client mysqlClient = check new (user = "root",
             password = "Test@123", database = "CUSTOMER");
 
-    // Records with the duplicate `registrationID` entry. Here it is `registrationID` = 1.
+    // Records with the duplicate `registrationID` entry. Here, it is `registrationID` = 1.
     var customers = [
         {
             firstName: "Linda",
@@ -36,7 +36,7 @@ public function main() returns error? {
         }
     ];
 
-    // Creates a batch parameterized query.
+    // Creates a batch-parameterized query.
     sql:ParameterizedQuery[] insertQueries =
         from var customer in customers
         select `INSERT INTO Customers

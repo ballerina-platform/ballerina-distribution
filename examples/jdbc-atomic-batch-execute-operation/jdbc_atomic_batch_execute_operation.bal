@@ -4,13 +4,13 @@ import ballerinax/java.jdbc;
 import ballerina/sql;
 
 public function main() returns error? {
-    // Initializes the JDBC client. The `jdbcClient` can be reused to access database throughout the application execution.
+    // Initializes the JDBC client. The `jdbcClient` can be reused to access the database throughout the application execution.
     jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
         "rootUser", "rootPass");
     // Runs the prerequisite setup for the example.
     check initialize(jdbcClient);
 
-    // Records with the duplicate `registrationID` entry. Here it is registrationID = 1.
+    // Records with the duplicate `registrationID` entry. Here, it is registrationID = 1.
     var customers = [
         {
             firstName: "Linda",
@@ -35,7 +35,7 @@ public function main() returns error? {
         }
     ];
 
-    // Creates a batch parameterized query.
+    // Creates a batch-parameterized query.
     sql:ParameterizedQuery[] insertQueries =
         from var customer in customers
         select `INSERT INTO Customers
