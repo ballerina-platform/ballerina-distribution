@@ -164,7 +164,7 @@ jobs:
         with:
           context: module-ballerina-docker/base/docker/
           push: true
-          tags: ballerina/ballerina/ballerina:nightly
+          tags: ballerina/ballerina:nightly
           build-args: |
             BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.sversion }}.zip
       - name: Image digest
