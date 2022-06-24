@@ -6,6 +6,6 @@ This allows you to ensure that the tests are being executed in the expected orde
 For more information, see [Testing Ballerina Code](https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/)
 and the [Test Module](https://docs.central.ballerina.io/ballerina/test/latest/).
 
-::: code ./examples/testerina-guarantee-test-execution-order/testerina_guarantee_test_execution_order.bal :::
+::: code testerina_guarantee_test_execution_order.bal :::
 
-::: out ./examples/testerina-guarantee-test-execution-order/testerina_guarantee_test_execution_order.out :::
+::: out testerina_guarantee_test_execution_order.out :::

@@ -6,6 +6,6 @@ end time, and maximum count.
 For more information on the underlying module, 
 see the [Task module](https://docs.central.ballerina.io/ballerina/task/latest/).
 
-::: code ./examples/task-frequency-job-execution/task_frequency_job_execution.bal :::
+::: code task_frequency_job_execution.bal :::
 
-::: out ./examples/task-frequency-job-execution/task_frequency_job_execution.out :::
+::: out task_frequency_job_execution.out :::

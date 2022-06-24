@@ -6,6 +6,6 @@ Code to Cloud builds the containers and required artifacts by deriving the requi
 If you want to override the default values taken by the compiler, you can use a `Cloud.toml` file. <br/><br/>
 For more information, see [Code to Cloud deployment](/learn/run-ballerina-programs-in-the-cloud/code-to-cloud-deployment/).
 
-::: code ./examples/c2c-deployment/c2c_deployment.bal :::
+::: code c2c_deployment.bal :::
 
-::: out ./examples/c2c-deployment/c2c_deployment.out :::
+::: out c2c_deployment.out :::

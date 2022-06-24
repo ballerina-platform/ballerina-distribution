@@ -13,6 +13,6 @@ from `r` cannot be reached from outside except through `r`. An expression is an
 the type of `f` is an `isolated` function.</li>
 </ul>
 
-::: code ./examples/combining-isolated-functions-and-lock/combining_isolated_functions_and_lock.bal :::
+::: code combining_isolated_functions_and_lock.bal :::
 
-::: out ./examples/combining-isolated-functions-and-lock/combining_isolated_functions_and_lock.out :::
+::: out combining_isolated_functions_and_lock.out :::

@@ -4,6 +4,6 @@ Fields of a `record` type can be marked as optional. These fields can be omitted
 Such fields can be accessed via optional field access (e.g., `p?.name`) or member access (e.g., `p["name"]`),
 which will both return `()` if the field is not present in the `record` value.
 
-::: code ./examples/optional-fields/optional_fields.bal :::
+::: code optional_fields.bal :::
 
-::: out ./examples/optional-fields/optional_fields.out :::
+::: out optional_fields.out :::

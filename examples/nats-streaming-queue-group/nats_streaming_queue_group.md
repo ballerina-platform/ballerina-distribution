@@ -9,10 +9,10 @@ each message is consumed by only one.<br/><br/>
 For more information on the underlying module, 
 see the [STAN module](https://docs.central.ballerina.io/ballerinax/stan/latest).
 
-::: code ./examples/nats-streaming-queue-group/publisher.bal :::
+::: code publisher.bal :::
 
-::: out ./examples/nats-streaming-queue-group/publisher.out :::
+::: out publisher.out :::
 
-::: code ./examples/nats-streaming-queue-group/queue-group.bal :::
+::: code queue-group.bal :::
 
-::: out ./examples/nats-streaming-queue-group/queue-group.out :::
+::: out queue-group.out :::

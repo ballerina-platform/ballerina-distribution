@@ -6,6 +6,6 @@ These annotations can be used to set up the prerequisites and post actions for a
 For more information, see [Testing Ballerina Code](https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/)
 and the [Test Module](https://docs.central.ballerina.io/ballerina/test/latest/).
 
-::: code ./examples/testerina-before-and-after-test/testerina_before_and_after_test.bal :::
+::: code testerina_before_and_after_test.bal :::
 
-::: out ./examples/testerina-before-and-after-test/testerina_before_and_after_test.out :::
+::: out testerina_before_and_after_test.out :::

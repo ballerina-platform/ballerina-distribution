@@ -8,6 +8,6 @@ configuration of the client.<br/><br/>
 For more information on the underlying module,
 see the [OAuth2 module](https://docs.central.ballerina.io/ballerina/oauth2/latest/).
 
-::: code ./examples/http-client-oauth2-jwt-bearer-grant-type/http_client_oauth2_jwt_bearer_grant_type.bal :::
+::: code http_client_oauth2_jwt_bearer_grant_type.bal :::
 
-::: out ./examples/http-client-oauth2-jwt-bearer-grant-type/http_client_oauth2_jwt_bearer_grant_type.out :::
+::: out http_client_oauth2_jwt_bearer_grant_type.out :::

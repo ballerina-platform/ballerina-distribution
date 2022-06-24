@@ -6,6 +6,6 @@ parts that can be captured.
 Useful for working directly with `json`.
 Match semantics are open (may have fields other than those specified in the pattern).
 
-::: code ./examples/match-statement-with-maps/match_statement_with_maps.bal :::
+::: code match_statement_with_maps.bal :::
 
-::: out ./examples/match-statement-with-maps/match_statement_with_maps.out :::
+::: out match_statement_with_maps.out :::

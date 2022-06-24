@@ -7,6 +7,6 @@ of each other's identity.<br/><br/>
 For more information on the underlying module, 
 see the [WebSocket module](https://docs.central.ballerina.io/ballerina/websocket/latest/).
 
-::: code ./examples/websocket-service-mutual-ssl/websocket_service_mutual_ssl.bal :::
+::: code websocket_service_mutual_ssl.bal :::
 
-::: out ./examples/websocket-service-mutual-ssl/websocket_service_mutual_ssl.server.out :::
+::: out websocket_service_mutual_ssl.server.out :::

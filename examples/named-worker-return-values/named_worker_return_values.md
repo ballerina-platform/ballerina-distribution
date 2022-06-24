@@ -7,6 +7,6 @@ Similarly, when `check` is used and the expression evaluates
 to an `error`, the `error` value is returned terminating the worker.
 Waiting on a named worker will give its return value.
 
-::: code ./examples/named-worker-return-values/named_worker_return_values.bal :::
+::: code named_worker_return_values.bal :::
 
-::: out ./examples/named-worker-return-values/named_worker_return_values.out :::
+::: out named_worker_return_values.out :::

@@ -5,6 +5,6 @@ Transaction statement can also contain a rollback statement.
 Every possible exit from a transaction block must be either `commit`, `rollback`, fail exit (e.g., from `check`), or panic exit.
 Rollback does not automatically restore Ballerina variables to values before the transaction.
 
-::: code ./examples/rollback/rollback.bal :::
+::: code rollback.bal :::
 
-::: out ./examples/rollback/rollback.out :::
+::: out rollback.out :::

@@ -4,6 +4,6 @@ The goal is to support namespaces without adding complexity if you don’t use t
 `ns:x` qualified name in XML is expanded into `{url}x` where `url` is the namespace name bound to `ns`. The XML namespace
 declarations are kept as attributes using the standard binding of [xmlns](http://www.w3.org/2000/xmlns/).
 
-::: code ./examples/xml-namespaces/xml_namespaces.bal :::
+::: code xml_namespaces.bal :::
 
-::: out ./examples/xml-namespaces/xml_namespaces.out :::
+::: out xml_namespaces.out :::

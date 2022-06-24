@@ -12,6 +12,6 @@ Processed in two phases.
 Phase 2 for `string...` converts `expressions` to `strings` and concatenates. `base16` and `base64`
 tags do not allow `expressions`.
 
-::: code ./examples/backtick-templates/backtick_templates.bal :::
+::: code backtick_templates.bal :::
 
-::: out ./examples/backtick-templates/backtick_templates.out :::
+::: out backtick_templates.out :::

@@ -13,10 +13,10 @@ the two sets.<br/><br/>
 For more information on the underlying module,
 see the [Auth module](https://docs.central.ballerina.io/ballerina/auth/latest/).
 
-::: code ./examples/grpc-service-basic-auth-ldap-user-store/grpc_service.proto :::
+::: code grpc_service.proto :::
 
-::: out ./examples/grpc-service-basic-auth-ldap-user-store/grpc_service.out :::
+::: out grpc_service.out :::
 
-::: code ./examples/grpc-service-basic-auth-ldap-user-store/grpc_service_basic_auth_ldap_user_store.bal :::
+::: code grpc_service_basic_auth_ldap_user_store.bal :::
 
-::: out ./examples/grpc-service-basic-auth-ldap-user-store/grpc_service_basic_auth_ldap_user_store.server.out :::
+::: out grpc_service_basic_auth_ldap_user_store.server.out :::

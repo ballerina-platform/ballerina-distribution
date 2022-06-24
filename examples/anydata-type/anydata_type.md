@@ -5,6 +5,6 @@ The type for plain data is `anydata`. It is a subtype of `any`. `==` and `!=` op
 immutable. Ballerina syntax uses `readonly` to mean immutable. Both `x.clone()` and `x.cloneReadOnly()` do
 not copy immutable parts of `x`. `const` structures are allowed. Equality and cloning handle cycles.
 
-::: code ./examples/anydata-type/anydata_type.bal :::
+::: code anydata_type.bal :::
 
-::: out ./examples/anydata-type/anydata_type.out :::
+::: out anydata_type.out :::

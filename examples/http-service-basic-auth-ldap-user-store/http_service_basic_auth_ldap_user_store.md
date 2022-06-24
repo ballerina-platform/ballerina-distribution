@@ -13,6 +13,6 @@ the two sets.<br/><br/>
 For more information on the underlying module,
 see the [Auth module](https://docs.central.ballerina.io/ballerina/auth/latest/).
 
-::: code ./examples/http-service-basic-auth-ldap-user-store/http_service_basic_auth_ldap_user_store.bal :::
+::: code http_service_basic_auth_ldap_user_store.bal :::
 
-::: out ./examples/http-service-basic-auth-ldap-user-store/http_service_basic_auth_ldap_user_store.server.out :::
+::: out http_service_basic_auth_ldap_user_store.server.out :::

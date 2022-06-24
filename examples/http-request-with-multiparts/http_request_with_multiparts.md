@@ -6,8 +6,8 @@ You can loop through this array and handle the received body parts according to 
 For more information on the underlying module, 
 see the [Mime module](https://docs.central.ballerina.io/ballerina/mime/latest/).
 
-::: code ./examples/http-request-with-multiparts/http_request_with_multiparts.bal :::
+::: code http_request_with_multiparts.bal :::
 
-::: out ./examples/http-request-with-multiparts/http_request_with_multiparts.client.out :::
+::: out http_request_with_multiparts.client.out :::
 
-::: out ./examples/http-request-with-multiparts/http_request_with_multiparts.server.out :::
+::: out http_request_with_multiparts.server.out :::

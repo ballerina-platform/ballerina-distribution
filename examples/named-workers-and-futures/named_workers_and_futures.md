@@ -6,6 +6,6 @@ A reference to a named worker can be implicitly converted into a `future`.
 the named worker as a `future`.
 Cancellation of futures only happens at yield points.
 
-::: code ./examples/named-workers-and-futures/named_workers_and_futures.bal :::
+::: code named_workers_and_futures.bal :::
 
-::: out ./examples/named-workers-and-futures/named_workers_and_futures.out :::
+::: out named_workers_and_futures.out :::

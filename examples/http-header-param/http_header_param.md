@@ -10,8 +10,8 @@ a resource method argument without using the annotation.<br/><br/>
 For more information on the underlying module,
 see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
 
-::: code ./examples/http-header-param/http_header_param.bal :::
+::: code http_header_param.bal :::
 
-::: out ./examples/http-header-param/http_header_param.client.out :::
+::: out http_header_param.client.out :::
 
-::: out ./examples/http-header-param/http_header_param.server.out :::
+::: out http_header_param.server.out :::

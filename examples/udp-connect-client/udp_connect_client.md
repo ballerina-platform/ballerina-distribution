@@ -8,6 +8,6 @@ This sample demonstrates how to send data to a connected server and print the ec
 For more information on the underlying module, 
 see the [UDP module](https://docs.central.ballerina.io/ballerina/udp/latest).
 
-::: code ./examples/udp-connect-client/udp_connect_client.bal :::
+::: code udp_connect_client.bal :::
 
-::: out ./examples/udp-connect-client/udp_connect_client.out :::
+::: out udp_connect_client.out :::

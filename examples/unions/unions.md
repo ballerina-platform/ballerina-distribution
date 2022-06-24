@@ -4,6 +4,6 @@
 Unions are untagged. The `is` operator tests whether a value belongs to a specific type. The `is` operator in
 the condition causes the declared type to be narrowed.
 
-::: code ./examples/unions/unions.bal :::
+::: code unions.bal :::
 
-::: out ./examples/unions/unions.out :::
+::: out unions.out :::

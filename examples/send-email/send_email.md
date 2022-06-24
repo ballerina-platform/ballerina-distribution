@@ -7,6 +7,6 @@ over SSL using the default ports.<br/><br/>
 For more information on the underlying module, 
 see the [Email module](https://docs.central.ballerina.io/ballerina/email/latest/).
 
-::: code ./examples/send-email/send_email.bal :::
+::: code send_email.bal :::
 
-::: out ./examples/send-email/send_email.out :::
+::: out send_email.out :::

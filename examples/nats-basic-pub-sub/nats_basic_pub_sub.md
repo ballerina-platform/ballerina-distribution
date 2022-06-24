@@ -6,12 +6,12 @@ For instructions on installing the NATS server,
 go to [NATS Server Installation](https://docs.nats.io/nats-server/installation).<br/><br/>
 This is a simple publish/subscribe messaging pattern example.
 For more information on the underlying module, 
-see the [`nats` module](https://docs.central.ballerina.io/ballerinax/nats/latest).
+see the [NATS module](https://docs.central.ballerina.io/ballerinax/nats/latest).
 
-::: code ./examples/nats-basic-pub-sub/publisher.bal :::
+::: code publisher.bal :::
 
-::: out ./examples/nats-basic-pub-sub/publisher.out :::
+::: out publisher.out :::
 
-::: code ./examples/nats-basic-pub-sub/subscriber.bal :::
+::: code subscriber.bal :::
 
-::: out ./examples/nats-basic-pub-sub/subscriber.out :::
+::: out subscriber.out :::

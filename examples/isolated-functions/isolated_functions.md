@@ -12,6 +12,6 @@ A function defined as `isolated`:
 <p>Constraints are enforced at compile-time. `isolated` is a part of the function type.
 Weaker concept than pure function.</p>
 
-::: code ./examples/isolated-functions/isolated_functions.bal :::
+::: code isolated_functions.bal :::
 
-::: out ./examples/isolated-functions/isolated_functions.out :::
+::: out isolated_functions.out :::

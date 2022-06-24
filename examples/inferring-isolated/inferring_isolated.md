@@ -13,6 +13,6 @@ needed. e.g.,
 <p>Compiler can inform developer where missing locks are preventing a `service` object or method from
 being `isolated`.</p>
 
-::: code ./examples/inferring-isolated/inferring_isolated.bal :::
+::: code inferring_isolated.bal :::
 
-::: out ./examples/inferring-isolated/inferring_isolated.out :::
+::: out inferring_isolated.out :::

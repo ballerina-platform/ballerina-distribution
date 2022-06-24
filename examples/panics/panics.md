@@ -7,6 +7,6 @@ Abnormal errors should typically result in immediate program termination.
 e.g., A programming bug or out of memory.
 A panic has an associated error value.
 
-::: code ./examples/panics/panics.bal :::
+::: code panics.bal :::
 
-::: out ./examples/panics/panics.out :::
+::: out panics.out :::

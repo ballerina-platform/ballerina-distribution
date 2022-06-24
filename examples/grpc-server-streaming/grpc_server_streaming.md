@@ -5,14 +5,14 @@ In a gRPC server streaming scenario, a client sends a request to the server and 
 For more information on the underlying module, 
 see the [GRPC module](https://docs.central.ballerina.io/ballerina/grpc/latest/).
 
-::: code ./examples/grpc-server-streaming/grpc_server_streaming.proto :::
+::: code grpc_server_streaming.proto :::
 
-::: out ./examples/grpc-server-streaming/grpc_server_streaming.out :::
+::: out grpc_server_streaming.out :::
 
-::: code ./examples/grpc-server-streaming/grpc_server_streaming_service.bal :::
+::: code grpc_server_streaming_service.bal :::
 
-::: out ./examples/grpc-server-streaming/grpc_server_streaming_service.out :::
+::: out grpc_server_streaming_service.out :::
 
-::: code ./examples/grpc-server-streaming/grpc_server_streaming_service_client.bal :::
+::: code grpc_server_streaming_service_client.bal :::
 
-::: out ./examples/grpc-server-streaming/grpc_server_streaming_service_client.out :::
+::: out grpc_server_streaming_service_client.out :::

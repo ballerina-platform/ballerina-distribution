@@ -8,6 +8,6 @@ This avoids the need for users to lock variables that are accessed from
 multiple named workers.
 An annotation can be used to make a strand run on a separate thread.
 
-::: code ./examples/strands/strands.bal :::
+::: code strands.bal :::
 
-::: out ./examples/strands/strands.out :::
+::: out strands.out :::

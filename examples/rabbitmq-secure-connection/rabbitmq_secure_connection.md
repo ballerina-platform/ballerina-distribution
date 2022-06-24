@@ -5,10 +5,10 @@ secured with TLS/SSL and Basic Auth.<br/><br/>
 For more information on the underlying module, 
 see the [RabbitMQ module](https://docs.central.ballerina.io/ballerinax/rabbitmq/latest).
 
-::: code ./examples/rabbitmq-secure-connection/consumer.bal :::
+::: code consumer.bal :::
 
-::: out ./examples/rabbitmq-secure-connection/consumer.out :::
+::: out consumer.out :::
 
-::: code ./examples/rabbitmq-secure-connection/producer.bal :::
+::: code producer.bal :::
 
-::: out ./examples/rabbitmq-secure-connection/producer.out :::
+::: out producer.out :::

@@ -6,6 +6,6 @@ expose an WSS connection.<br/><br/>
 For more information on the underlying module, 
 see the [WebSocket module](https://docs.central.ballerina.io/ballerina/websocket/latest/).
 
-::: code ./examples/websocket-service-ssl-tls/websocket_service_ssl_tls.bal :::
+::: code websocket_service_ssl_tls.bal :::
 
-::: out ./examples/websocket-service-ssl-tls/websocket_service_ssl_tls.server.out :::
+::: out websocket_service_ssl_tls.server.out :::

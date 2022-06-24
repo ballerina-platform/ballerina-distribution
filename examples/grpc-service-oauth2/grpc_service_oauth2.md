@@ -14,10 +14,10 @@ match between the two sets.<br/><br/>
 For more information on the underlying module,
 see the [OAuth2 module](https://docs.central.ballerina.io/ballerina/oauth2/latest/).
 
-::: code ./examples/grpc-service-oauth2/grpc_service.proto :::
+::: code grpc_service.proto :::
 
-::: out ./examples/grpc-service-oauth2/grpc_service.out :::
+::: out grpc_service.out :::
 
-::: code ./examples/grpc-service-oauth2/grpc_service_oauth2.bal :::
+::: code grpc_service_oauth2.bal :::
 
-::: out ./examples/grpc-service-oauth2/grpc_service_oauth2.server.out :::
+::: out grpc_service_oauth2.server.out :::

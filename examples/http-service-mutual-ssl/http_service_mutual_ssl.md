@@ -7,8 +7,8 @@ of each other's identity.<br/><br/>
 For more information on the underlying module, 
 see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
 
-::: code ./examples/http-service-mutual-ssl/http_service_mutual_ssl.bal :::
+::: code http_service_mutual_ssl.bal :::
 
-::: out ./examples/http-service-mutual-ssl/http_service_mutual_ssl.client.out :::
+::: out http_service_mutual_ssl.client.out :::
 
-::: out ./examples/http-service-mutual-ssl/http_service_mutual_ssl.server.out :::
+::: out http_service_mutual_ssl.server.out :::

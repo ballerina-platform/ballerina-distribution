@@ -11,6 +11,6 @@ Listeners are registered with the module as illustrated in the following example
 3) Modules have a lifecycle and they are initialized on program startup. Modules start up the registered listeners after the initialization and
 shut them down during the program shutdown.
 
-::: code ./examples/providing-services/providing_services.bal :::
+::: code providing_services.bal :::
 
-::: out ./examples/providing-services/providing_services.out :::
+::: out providing_services.out :::

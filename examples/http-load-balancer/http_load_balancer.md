@@ -5,8 +5,8 @@ set of target endpoints.<br/><br/>
 For more information on the underlying module, 
 see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
 
-::: code ./examples/http-load-balancer/http_load_balancer.bal :::
+::: code http_load_balancer.bal :::
 
-::: out ./examples/http-load-balancer/http_load_balancer.client.out :::
+::: out http_load_balancer.client.out :::
 
-::: out ./examples/http-load-balancer/http_load_balancer.server.out :::
+::: out http_load_balancer.server.out :::

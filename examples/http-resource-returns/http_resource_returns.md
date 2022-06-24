@@ -7,8 +7,8 @@ additionally. Otherwise, the default content type of the respective return value
 For more information on the underlying module, 
 see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
 
-::: code ./examples/http-resource-returns/http_resource_returns.bal :::
+::: code http_resource_returns.bal :::
 
-::: out ./examples/http-resource-returns/http_resource_returns.client.out :::
+::: out http_resource_returns.client.out :::
 
-::: out ./examples/http-resource-returns/http_resource_returns.server.out :::
+::: out http_resource_returns.server.out :::

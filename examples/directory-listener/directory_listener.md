@@ -5,6 +5,6 @@ It notifies when new files are created in the directory or when the existing fil
 For more information on the underlying module, 
 see the [File module](https://docs.central.ballerina.io/ballerina/file/latest/).
 
-::: code ./examples/directory-listener/directory_listener.bal :::
+::: code directory_listener.bal :::
 
-::: out ./examples/directory-listener/directory_listener.out :::
+::: out directory_listener.out :::

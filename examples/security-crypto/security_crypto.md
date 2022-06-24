@@ -6,6 +6,6 @@ verifying digitally signed data.<br/><br/>
 For more information on the underlying module, 
 see the [Crypto module](https://docs.central.ballerina.io/ballerina/crypto/latest/).
 
-::: code ./examples/security-crypto/security_crypto.bal :::
+::: code security_crypto.bal :::
 
-::: out ./examples/security-crypto/security_crypto.out :::
+::: out security_crypto.out :::

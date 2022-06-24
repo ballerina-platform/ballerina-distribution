@@ -5,6 +5,6 @@ Langlib functions can be called using convenient method-call syntax, but these t
 There exists a `ballerina/lang.T` module for each built-in type `T` and they are automatically imported
 using `T` prefix.
 
-::: code ./examples/langlib-functions/langlib_functions.bal :::
+::: code langlib_functions.bal :::
 
-::: out ./examples/langlib-functions/langlib_functions.out :::
+::: out langlib_functions.out :::

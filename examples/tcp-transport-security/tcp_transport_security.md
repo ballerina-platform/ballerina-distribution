@@ -8,10 +8,10 @@ requests to that listener.<br/><br/>
 For more information on the underlying module,
 see the [TCP module](https://docs.central.ballerina.io/ballerina/tcp/latest).
 
-::: code ./examples/tcp-transport-security/tcp_transport_security_client.bal :::
+::: code tcp_transport_security_client.bal :::
 
-::: out ./examples/tcp-transport-security/tcp_transport_security_client.out :::
+::: out tcp_transport_security_client.out :::
 
-::: code ./examples/tcp-transport-security/tcp_transport_security_service.bal :::
+::: code tcp_transport_security_service.bal :::
 
-::: out ./examples/tcp-transport-security/tcp_transport_security_service.out :::
+::: out tcp_transport_security_service.out :::

@@ -13,6 +13,6 @@ sets.<br/><br/>
 For more information on the underlying module, 
 see the [JWT module](https://docs.central.ballerina.io/ballerina/jwt/latest/).
 
-::: code ./examples/websocket-service-jwt-auth/websocket_service_jwt_auth.bal :::
+::: code websocket_service_jwt_auth.bal :::
 
-::: out ./examples/websocket-service-jwt-auth/websocket_service_jwt_auth.server.out :::
+::: out websocket_service_jwt_auth.server.out :::

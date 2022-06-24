@@ -4,6 +4,6 @@ The Ballerina `xslt` library contains an API to transform XML content to HTML us
 For more information on the underlying module,
 see the [XSLT module](https://docs.central.ballerina.io/ballerina/xslt/latest/).
 
-::: code ./examples/xslt-transformation/xslt_transformation.bal :::
+::: code xslt_transformation.bal :::
 
-::: out ./examples/xslt-transformation/xslt_transformation.out :::
+::: out xslt_transformation.out :::

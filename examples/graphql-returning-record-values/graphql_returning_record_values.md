@@ -7,8 +7,8 @@ For more information on the underlying package, see the
 This example shows a GraphQL endpoint, which has a field `profile` of type `Person`.
 A GraphQL client can query on this service to retrieve specific fields or subfields of the `Person` object.
 
-::: code ./examples/graphql-returning-record-values/graphql_returning_record_values.bal :::
+::: code graphql_returning_record_values.bal :::
 
-::: out ./examples/graphql-returning-record-values/graphql_returning_record_values.client.out :::
+::: out graphql_returning_record_values.client.out :::
 
-::: out ./examples/graphql-returning-record-values/graphql_returning_record_values.server.out :::
+::: out graphql_returning_record_values.server.out :::

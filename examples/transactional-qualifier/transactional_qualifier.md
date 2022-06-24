@@ -5,6 +5,6 @@ Ballerina guarantees that, whenever that region is executed, there will be a cur
 A function with a `transactional` qualifier can only be called from a transactional context; function  body will be a transactional context.
 `transactional` is also a boolean expression that tests at runtime whether there is a current transaction: used in a condition results in a transactional context.
 
-::: code ./examples/transactional-qualifier/transactional_qualifier.bal :::
+::: code transactional_qualifier.bal :::
 
-::: out ./examples/transactional-qualifier/transactional_qualifier.out :::
+::: out transactional_qualifier.out :::

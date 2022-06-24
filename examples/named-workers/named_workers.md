@@ -8,6 +8,6 @@ Code before any named workers is executed before named workers start.
 Variables declared before all named workers and function parameters are
 accessible in named workers.
 
-::: code ./examples/named-workers/named_workers.bal :::
+::: code named_workers.bal :::
 
-::: out ./examples/named-workers/named_workers.out :::
+::: out named_workers.out :::

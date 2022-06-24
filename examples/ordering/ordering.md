@@ -5,6 +5,6 @@ Ordering works consistently with `<`, `<=`, `>`, `>=` operators. Some comparison
 `field access`. A library module can enable Unicode-aware sorting by providing a
 `unicode:sortKey(str, locale)` function.
 
-::: code ./examples/ordering/ordering.bal :::
+::: code ordering.bal :::
 
-::: out ./examples/ordering/ordering.out :::
+::: out ordering.out :::
