@@ -15,6 +15,6 @@ password and optionally assigned scopes as an array.<br/><br/>
 For more information on the underlying module,
 see the [Auth module](https://docs.central.ballerina.io/ballerina/auth/latest/).
 
-::: code ./examples/graphql-service-basic-auth-file-user-store/graphql_service_basic_auth_file_user_store.bal :::
+::: code graphql_service_basic_auth_file_user_store.bal :::
 
-::: out ./examples/graphql-service-basic-auth-file-user-store/graphql_service_basic_auth_file_user_store.server.out :::
+::: out graphql_service_basic_auth_file_user_store.server.out :::

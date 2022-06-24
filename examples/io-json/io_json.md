@@ -4,6 +4,6 @@ The Ballerina `io` library contains APIs to read/write JSON objects from/to a fi
 For more information on the underlying module, 
 see the [IO module](https://docs.central.ballerina.io/ballerina/io/latest/).
 
-::: code ./examples/io-json/io_json.bal :::
+::: code io_json.bal :::
 
-::: out ./examples/io-json/io_json.out :::
+::: out io_json.out :::

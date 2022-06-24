@@ -6,6 +6,6 @@ missing. Use `m.get(k)` when you know that there is an entry for `k`. `m.keys()`
 to iterate over keys to get the keys as an `array` of strings. `==` and `!=` on maps is deep. Two maps
 are equal if they have the same set of keys and the values for each key are equal.
 
-::: code ./examples/maps/maps.bal :::
+::: code maps.bal :::
 
-::: out ./examples/maps/maps.out :::
+::: out maps.out :::

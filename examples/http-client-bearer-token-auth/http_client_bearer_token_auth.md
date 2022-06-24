@@ -6,6 +6,6 @@ The client is enriched with the `Authorization: Bearer <token>` header by
 passing the `http:BearerTokenConfig` for the `auth` configuration of the
 client.
 
-::: code ./examples/http-client-bearer-token-auth/http_client_bearer_token_auth.bal :::
+::: code http_client_bearer_token_auth.bal :::
 
-::: out ./examples/http-client-bearer-token-auth/http_client_bearer_token_auth.out :::
+::: out http_client_bearer_token_auth.out :::

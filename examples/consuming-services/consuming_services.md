@@ -5,6 +5,6 @@ They are a special kind of objects that contain `remote` methods in addition to 
 `remote` methods are used to interact with a remote service. 
 Applications typically do not need to write client classes, which are either provided by library modules or generated from some flavor of IDL.
 
-::: code ./examples/consuming-services/consuming_services.bal :::
+::: code consuming_services.bal :::
 
-::: out ./examples/consuming-services/consuming_services.out :::
+::: out consuming_services.out :::

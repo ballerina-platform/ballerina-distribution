@@ -7,6 +7,6 @@ the default ports.<br/><br/>
 For more information on the underlying module, 
 see the [Email module](https://docs.central.ballerina.io/ballerina/email/latest/).
 
-::: code ./examples/receive-email-using-listener/receive_email_using_listener.bal :::
+::: code receive_email_using_listener.bal :::
 
-::: out ./examples/receive-email-using-listener/receive_email_using_listener.out :::
+::: out receive_email_using_listener.out :::

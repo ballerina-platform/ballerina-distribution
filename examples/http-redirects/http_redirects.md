@@ -5,8 +5,8 @@ HTTP client connector, set `followRedirect` to `true`.<br/><br/>
 For more information on the underlying module, 
 see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
 
-::: code ./examples/http-redirects/http_redirects.bal :::
+::: code http_redirects.bal :::
 
-::: out ./examples/http-redirects/http_redirects.client.out :::
+::: out http_redirects.client.out :::
 
-::: out ./examples/http-redirects/http_redirects.server.out :::
+::: out http_redirects.server.out :::

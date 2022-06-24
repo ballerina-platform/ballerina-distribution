@@ -13,6 +13,6 @@ that accesses an `isolated` variable must maintain `isolated` root invariant:
 <p>The `isolated` functions are allowed to access `isolated` module-level variables,
 provided they follow the above rules.</p>
 
-::: code ./examples/isolated-variables/isolated_variables.bal :::
+::: code isolated_variables.bal :::
 
-::: out ./examples/isolated-variables/isolated_variables.out :::
+::: out isolated_variables.out :::

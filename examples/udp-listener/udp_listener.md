@@ -6,6 +6,6 @@ This sample demonstrates the UDP socket listener.<br/><br/>
 For more information on the underlying module, 
 see the [UDP module](https://docs.central.ballerina.io/ballerina/udp/latest).
 
-::: code ./examples/udp-listener/udp_listener.bal :::
+::: code udp_listener.bal :::
 
-::: out ./examples/udp-listener/udp_listener.out :::
+::: out udp_listener.out :::

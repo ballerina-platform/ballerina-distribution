@@ -6,10 +6,10 @@ running on the corresponding port used in the sample.<br/><br/>
 For more information on the underlying module, 
 see the [STAN module](https://docs.central.ballerina.io/ballerinax/stan/latest).
 
-::: code ./examples/nats-streaming-pub-sub/publisher.bal :::
+::: code publisher.bal :::
 
-::: out ./examples/nats-streaming-pub-sub/publisher.out :::
+::: out publisher.out :::
 
-::: code ./examples/nats-streaming-pub-sub/subscriber.bal :::
+::: code subscriber.bal :::
 
-::: out ./examples/nats-streaming-pub-sub/subscriber.out :::
+::: out subscriber.out :::

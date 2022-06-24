@@ -13,6 +13,6 @@ This sample is based on an H2 database and the H2 database driver JAR need to be
 For a sample configuration and more information on the underlying module, see the [JDBC module](https://docs.central.ballerina.io/ballerinax/java.jdbc/latest/) .<br><br>
 This sample is written using H2 2.1.210 and it is recommended to use H2 JAR with versions higher than 2.1.210.
 
-::: code ./examples/raw-templates/raw_templates.bal :::
+::: code raw_templates.bal :::
 
-::: out ./examples/raw-templates/raw_templates.out :::
+::: out raw_templates.out :::

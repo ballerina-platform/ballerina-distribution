@@ -6,6 +6,6 @@ records and objects for fields that are defined in the type descriptors, are als
 allowed on lax types. For such operations, some of the type checking is moved from compile time to runtime.
 `json` is defined to be a lax type along with any `map<T>` where `T` is a lax type.
 
-::: code ./examples/working-directly-with-json/working_directly_with_json.bal :::
+::: code working_directly_with_json.bal :::
 
-::: out ./examples/working-directly-with-json/working_directly_with_json.out :::
+::: out working_directly_with_json.out :::

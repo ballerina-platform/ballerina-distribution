@@ -8,6 +8,6 @@ Message sends and receives are paired up at compile-time.
 Each pair turns into a horizontal line in the sequence diagram.
 Easy to use and safe, but limited expressiveness.
 
-::: code ./examples/inter-worker-message-passing/inter_worker_message_passing.bal :::
+::: code inter_worker_message_passing.bal :::
 
-::: out ./examples/inter-worker-message-passing/inter_worker_message_passing.out :::
+::: out inter_worker_message_passing.out :::

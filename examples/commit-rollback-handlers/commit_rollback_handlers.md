@@ -7,6 +7,6 @@ This seems much worse in a distributed transaction when the transaction statemen
 Ballerina provides `commit`/`rollback` handlers, which are functions that get executed when the decision
 whether to commit is known.
 
-::: code ./examples/commit-rollback-handlers/commit_rollback_handlers.bal :::
+::: code commit_rollback_handlers.bal :::
 
-::: out ./examples/commit-rollback-handlers/commit_rollback_handlers.out :::
+::: out commit_rollback_handlers.out :::

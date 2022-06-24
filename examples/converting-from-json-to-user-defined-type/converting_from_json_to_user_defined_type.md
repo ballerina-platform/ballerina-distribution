@@ -6,6 +6,6 @@ Cast to `T` will work on mutable structure `s` only if the `inherent` type
 of `s` is a subtype of `T`.
 Casting immutable values will work but it does not do numeric conversions.
 
-::: code ./examples/converting-from-json-to-user-defined-type/converting_from_json_to_user_defined_type.bal :::
+::: code converting_from_json_to_user_defined_type.bal :::
 
-::: out ./examples/converting-from-json-to-user-defined-type/converting_from_json_to_user_defined_type.out :::
+::: out converting_from_json_to_user_defined_type.out :::

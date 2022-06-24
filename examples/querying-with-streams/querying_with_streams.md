@@ -6,6 +6,6 @@ result is a subtype of `error?`. Use `stream` keyword in front of `from` to crea
 lazily evaluated. The failure of `check` within the `query` will cause the `stream` to produce an
 `error` termination value.
 
-::: code ./examples/querying-with-streams/querying_with_streams.bal :::
+::: code querying_with_streams.bal :::
 
-::: out ./examples/querying-with-streams/querying_with_streams.out :::
+::: out querying_with_streams.out :::

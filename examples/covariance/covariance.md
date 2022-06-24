@@ -7,6 +7,6 @@ Covariance means that a write to a mutable structure may result in a
 runtime error.
 Arrays, maps, and records have an "inherent" type that constrains mutation.
 
-::: code ./examples/covariance/covariance.bal :::
+::: code covariance.bal :::
 
-::: out ./examples/covariance/covariance.out :::
+::: out covariance.out :::

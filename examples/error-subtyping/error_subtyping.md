@@ -9,6 +9,6 @@ distinguish distinct subtypes.
 Each occurrence of `distinct` has a unique identifier that is 
 used to tag instances of the type.
 
-::: code ./examples/error-subtyping/error_subtyping.bal :::
+::: code error_subtyping.bal :::
 
-::: out ./examples/error-subtyping/error_subtyping.out :::
+::: out error_subtyping.out :::

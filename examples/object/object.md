@@ -8,6 +8,6 @@ Apply the `new` operator with a `class` to get an object.
 Call method using `obj.foo(args)`.
 Access field using `obj.x`.
 
-::: code ./examples/object/object.bal :::
+::: code object.bal :::
 
-::: out ./examples/object/object.out :::
+::: out object.out :::

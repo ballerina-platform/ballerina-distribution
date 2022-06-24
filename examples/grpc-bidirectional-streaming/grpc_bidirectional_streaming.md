@@ -7,14 +7,14 @@ In such scenarios, the two streams operate independently. Therefore, clients and
 For more information on the underlying module, 
 see the [GRPC module](https://docs.central.ballerina.io/ballerina/grpc/latest/).
 
-::: code ./examples/grpc-bidirectional-streaming/grpc_bidirectional_streaming.proto :::
+::: code grpc_bidirectional_streaming.proto :::
 
-::: out ./examples/grpc-bidirectional-streaming/grpc_bidirectional_streaming.out :::
+::: out grpc_bidirectional_streaming.out :::
 
-::: code ./examples/grpc-bidirectional-streaming/grpc_bidirectional_streaming_service.bal :::
+::: code grpc_bidirectional_streaming_service.bal :::
 
-::: out ./examples/grpc-bidirectional-streaming/grpc_bidirectional_streaming_service.out :::
+::: out grpc_bidirectional_streaming_service.out :::
 
-::: code ./examples/grpc-bidirectional-streaming/grpc_bidirectional_streaming_service_client.bal :::
+::: code grpc_bidirectional_streaming_service_client.bal :::
 
-::: out ./examples/grpc-bidirectional-streaming/grpc_bidirectional_streaming_service_client.out :::
+::: out grpc_bidirectional_streaming_service_client.out :::

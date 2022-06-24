@@ -5,6 +5,6 @@ Unprefixed tags refer to standard platform-defined annotations and
 prefixed tags refer to annotations declared in modules.
 `@tag` can be followed by record constructor expression.
 
-::: code ./examples/annotations/annotations.bal :::
+::: code annotations.bal :::
 
-::: out ./examples/annotations/annotations.out :::
+::: out annotations.out :::

@@ -6,6 +6,6 @@ A module's listeners are registered during module initialization.
 If there are registered listeners, then the initialization phase is followed by the listening phase. <br/><br/>
 The listening phase starts by calling the `start` method on each registered listener. The listening phase is terminated by signal (e.g. `SIGINT`, `SIGTERM`).
 
-::: code ./examples/module-lifecycle/module_lifecycle.bal :::
+::: code module_lifecycle.bal :::
 
-::: out ./examples/module-lifecycle/module_lifecycle.out :::
+::: out module_lifecycle.out :::

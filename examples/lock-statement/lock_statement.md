@@ -5,6 +5,6 @@ separate threads. Semantics are like an atomic section. The execution of the out
 interleaved. Naive implementation uses single, global, recursive lock. Efficient implementation can do
 compile-time lock inference.
 
-::: code ./examples/lock-statement/lock_statement.bal :::
+::: code lock_statement.bal :::
 
-::: out ./examples/lock-statement/lock_statement.out :::
+::: out lock_statement.out :::

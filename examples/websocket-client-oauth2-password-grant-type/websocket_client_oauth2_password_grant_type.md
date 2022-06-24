@@ -8,6 +8,6 @@ the client.<br/><br/>
 For more information on the underlying module,
 see the [OAuth2 module](https://docs.central.ballerina.io/ballerina/oauth2/latest/).
 
-::: code ./examples/websocket-client-oauth2-password-grant-type/websocket_client_oauth2_password_grant_type.bal :::
+::: code websocket_client_oauth2_password_grant_type.bal :::
 
-::: out ./examples/websocket-client-oauth2-password-grant-type/websocket_client_oauth2_password_grant_type.out :::
+::: out websocket_client_oauth2_password_grant_type.out :::

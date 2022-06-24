@@ -8,6 +8,6 @@ An `error` value includes a `string` message.
 An `error` value includes the stack trace from the point at which the error is constructed (i.e., `error(msg)` is called). 
 Error values are immutable.
 
-::: code ./examples/error-reporting/error_reporting.bal :::
+::: code error_reporting.bal :::
 
-::: out ./examples/error-reporting/error_reporting.out :::
+::: out error_reporting.out :::

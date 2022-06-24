@@ -12,6 +12,6 @@ object is sending messages.
 Each remote method call on a client object is represented as a horizontal line
 between the lifeline of the worker making the call and the remote system.
 
-::: code ./examples/sequence-diagrams/sequence_diagrams.bal :::
+::: code sequence_diagrams.bal :::
 
-::: out ./examples/sequence-diagrams/sequence_diagrams.out :::
+::: out sequence_diagrams.out :::

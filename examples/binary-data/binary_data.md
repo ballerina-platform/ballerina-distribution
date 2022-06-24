@@ -6,6 +6,6 @@ what you are used to. A `byte` is an `int` in the range `0` to `0xFF`. `byte` is
 `int` type supports normal bitwise operators: `&` `|` `^` `~` `<<` `>>` `>>>`.
 Ballerina knows the obvious rules about when bitwise operations produce a `byte`.
 
-::: code ./examples/binary-data/binary_data.bal :::
+::: code binary_data.bal :::
 
-::: out ./examples/binary-data/binary_data.out :::
+::: out binary_data.out :::

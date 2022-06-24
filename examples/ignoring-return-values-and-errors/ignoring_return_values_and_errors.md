@@ -9,6 +9,6 @@ with the error.
 `checkpanic` is like `check`, but panics on error rather than 
 returning.
 
-::: code ./examples/ignoring-return-values-and-errors/ignoring_return_values_and_errors.bal :::
+::: code ignoring_return_values_and_errors.bal :::
 
-::: out ./examples/ignoring-return-values-and-errors/ignoring_return_values_and_errors.out :::
+::: out ignoring_return_values_and_errors.out :::

@@ -4,6 +4,6 @@ The `uuid` library provides functions related to UUID(Universal Unique Identifie
 For more information on the underlying module,
 see the [UUID module](https://docs.central.ballerina.io/ballerina/uuid/latest/).
 
-::: code ./examples/uuid-generation/uuid_generation.bal :::
+::: code uuid_generation.bal :::
 
-::: out ./examples/uuid-generation/uuid_generation.out :::
+::: out uuid_generation.out :::

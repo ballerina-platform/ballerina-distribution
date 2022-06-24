@@ -5,6 +5,6 @@ The Ballerina Cache API provides an in-memory cache implementation by default wi
 For more information on the underlying module,
 see the [Cache module](https://docs.central.ballerina.io/ballerina/cache/latest/).
 
-::: code ./examples/cache-basics/cache_basics.bal :::
+::: code cache_basics.bal :::
 
-::: out ./examples/cache-basics/cache_basics.out :::
+::: out cache_basics.out :::

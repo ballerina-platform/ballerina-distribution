@@ -6,6 +6,6 @@ The test execution will iterate the same test function over the provided dataset
 For more information, see [Testing Ballerina Code](https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/)
 and the [Test Module](https://docs.central.ballerina.io/ballerina/test/latest/).
 
-::: code ./examples/testerina-data-driven-tests/testerina_data_driven_tests.bal :::
+::: code testerina_data_driven_tests.bal :::
 
-::: out ./examples/testerina-data-driven-tests/testerina_data_driven_tests.out :::
+::: out testerina_data_driven_tests.out :::

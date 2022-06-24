@@ -8,8 +8,8 @@ to save the trace logs and specifying the hostname and port of a socket service 
 For more information on the underlying module,
 see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
 
-::: code ./examples/http-trace-logs/http_trace_logs.bal :::
+::: code http_trace_logs.bal :::
 
-::: out ./examples/http-trace-logs/http_trace_logs.client.out :::
+::: out http_trace_logs.client.out :::
 
-::: out ./examples/http-trace-logs/http_trace_logs.server.out :::
+::: out http_trace_logs.server.out :::

@@ -4,6 +4,6 @@ A `table` provides access to its members using a key that comes from the `read-o
 It is a key sequence, which is used to provide keyed access to its members. The key sequence is an ordered
 sequence of field names.
 
-::: code ./examples/multiple-key-fields/multiple_key_fields.bal :::
+::: code multiple_key_fields.bal :::
 
-::: out ./examples/multiple-key-fields/multiple_key_fields.out :::
+::: out multiple_key_fields.out :::

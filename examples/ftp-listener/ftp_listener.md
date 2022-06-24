@@ -7,6 +7,6 @@ configurations using the default port.<br/><br/>
 For more information on the underlying module, 
 see the [FTP module](https://docs.central.ballerina.io/ballerina/ftp/latest/).
 
-::: code ./examples/ftp-listener/ftp_listener.bal :::
+::: code ftp_listener.bal :::
 
-::: out ./examples/ftp-listener/ftp_listener.out :::
+::: out ftp_listener.out :::

@@ -7,6 +7,6 @@ It can represent `decimal` fractions exactly and it preserves precision.
 The `decimal` type does not include infinity, NaN, or negative zero.
 It supports floating-point precision to 34 decimal digits.
 
-::: code ./examples/decimal-type/decimal_type.bal :::
+::: code decimal_type.bal :::
 
-::: out ./examples/decimal-type/decimal_type.out :::
+::: out decimal_type.out :::

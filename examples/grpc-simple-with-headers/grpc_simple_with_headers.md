@@ -6,14 +6,14 @@ The headers can be passed using the context record that is generated for each Pr
 For more information on the underlying module, 
 see the [GRPC module](https://docs.central.ballerina.io/ballerina/grpc/latest/).
 
-::: code ./examples/grpc-simple-with-headers/grpc_simple_with_headers.proto :::
+::: code grpc_simple_with_headers.proto :::
 
-::: out ./examples/grpc-simple-with-headers/grpc_simple_with_headers.out :::
+::: out grpc_simple_with_headers.out :::
 
-::: code ./examples/grpc-simple-with-headers/grpc_simple_with_headers_service.bal :::
+::: code grpc_simple_with_headers_service.bal :::
 
-::: out ./examples/grpc-simple-with-headers/grpc_simple_with_headers_service.out :::
+::: out grpc_simple_with_headers_service.out :::
 
-::: code ./examples/grpc-simple-with-headers/grpc_simple_with_headers_service_client.bal :::
+::: code grpc_simple_with_headers_service_client.bal :::
 
-::: out ./examples/grpc-simple-with-headers/grpc_simple_with_headers_service_client.out :::
+::: out grpc_simple_with_headers_service_client.out :::
