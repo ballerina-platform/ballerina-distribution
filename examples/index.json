@@ -1895,6 +1895,15 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Bidirectional streaming RPC copy",
+                "url": "grpc-bidirectional-streaming-copy",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Proto to Ballerina",
                 "url": "proto-to-ballerina",
                 "verifyBuild": true,
