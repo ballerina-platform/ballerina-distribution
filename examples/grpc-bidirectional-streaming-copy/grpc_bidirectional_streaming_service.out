@@ -1,1 +1,5 @@
-
+# Compiling source
+#	user/service:0.1.0
+#
+# Generating executable
+#	service/target/bin/service.jar
