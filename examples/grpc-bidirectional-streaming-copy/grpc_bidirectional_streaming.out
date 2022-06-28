@@ -1,4 +1,3 @@
 $ bal grpc --input grpc_bidirectional_streaming.proto  --output stubs
 Successfully extracted the library files.
 Successfully generated the Ballerina file.
-  
