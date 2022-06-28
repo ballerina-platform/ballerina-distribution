@@ -10,7 +10,6 @@ function intFromBytes(byte[] bytes) returns int|error {
     // value of the `str` variable.
     string str = check string:fromBytes(bytes);
 
-
     return int:fromString(str);
 }
 

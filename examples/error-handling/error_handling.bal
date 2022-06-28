@@ -5,10 +5,8 @@ function intFromBytes(byte[] bytes) returns int|error {
 
     string|error ret = string:fromBytes(bytes);
 
-    // The `is` operator can be used to distinguish errors
-    // from other values.
+    // The `is` operator can be used to distinguish errors from other values.
     if ret is error {
-
         return ret;
     } else {
         return int:fromString(ret);
@@ -18,12 +16,12 @@ function intFromBytes(byte[] bytes) returns int|error {
 // The `main` function can return an `error` value.
 public function main() returns error? {
 
-    int|error res = intFromBytes([104, 101, 108, 108, 111]);    
+    int|error res = intFromBytes([104, 101, 108, 108, 111]);
+    
     if res is error {
         // The `check` expression is the shorthand for this pattern of
         // checking if a value is an `error` value and returning that value.
         return res;
-
     } else {
         io:println("result: ", res);
         return;
