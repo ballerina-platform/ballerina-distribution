@@ -20,7 +20,7 @@ Once you run the command, the `grpc_bidirectional_streaming_pb.bal` file gets ge
 
 >**Info:** For more information on how to use the Ballerina Protocol Buffers tool, see the <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">Proto to Ballerina</a> example.
 
-## Execute the service
+## Implement and run the service
 
 1. Create another Ballerina package (e.g., `grpc_chat_service`) by executing the command below.
 
