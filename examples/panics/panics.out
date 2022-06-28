@@ -1,4 +1,5 @@
 bal run panics.bal
+error("division by 0")
 error: division by 0
-        at panics:divide(panics.bal:8)
-           panics:main(panics.bal:15)
+        at test_case_2:divide(test_case_2.bal:8)
+           test_case_2:main(test_case_2.bal:23)
