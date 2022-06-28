@@ -1,3 +1,4 @@
+$ bal run grpc_chat_service
 Sam: Hi
 Ann: Hey
 John: Hello
