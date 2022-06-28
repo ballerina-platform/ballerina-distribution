@@ -3,10 +3,9 @@ import ballerina/io;
 function foo(json j) returns error? {
     match j {
         // Match statement can be used to match maps.
-        // Patterns on the left hand side in a match statement can have variable
-        // parts that can be captured.
-        // Match semantics are open (may have fields other than those 
-        // specified in the pattern).
+        // Patterns on the left hand side in a match statement can have variable parts that can be
+        // captured.
+        // Match semantics are open (may have fields other than those specified in the pattern).
         {command: "add", amount: var x} => {
             decimal n = check x.ensureType(decimal);
             add(n);
