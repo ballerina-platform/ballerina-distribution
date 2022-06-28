@@ -40,7 +40,7 @@ bal new grpc_chat_service
 
 ::: out grpc_bidirectional_streaming_service.out :::
 
-## Execute the client
+## Implement and run the client
 
 1. Create another Ballerina package (e.g., `grpc_chat_client`) by executing the command below.
 
