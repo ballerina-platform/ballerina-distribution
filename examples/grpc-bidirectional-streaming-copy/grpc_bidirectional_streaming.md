@@ -22,13 +22,9 @@ Once you run the command, the `grpc_bidirectional_streaming_pb.bal` file gets ge
 
 ## Implement and run the service
 
-1. Create a Ballerina package (e.g., `grpc_chat_service`) by executing the command below.
+1. Create a Ballerina package (e.g., `grpc_chat_service`) by executing the `bal new grpc_chat_service` command.
 
 >**Tip:** Delete the `main.bal` file created by default as it is not required for this example.
-
-```bash
-bal new grpc_chat_service
-```
 
 2. Copy the generated `grpc_bidirectional_streaming_pb.bal` file from the `stubs` directory to the  `grpc_chat_service` package.
 
@@ -42,13 +38,9 @@ bal new grpc_chat_service
 
 ## Implement and run the client
 
-1. Create another Ballerina package (e.g., `grpc_chat_client`) by executing the command below.
+1. Create another Ballerina package (e.g., `grpc_chat_client`) by executing the `bal new grpc_chat_client command`.
 
 >**Tip:** Delete the `main.bal` file created by default as it is not required for this example.
-
-```bash
-bal new grpc_chat_client
-```
 
 2. Copy the generated `grpc_bidirectional_streaming_pb.bal` file from the `stubs` directory to the  `grpc_chat_client` package.
 
@@ -56,7 +48,7 @@ bal new grpc_chat_client
 
     ::: code grpc_bidirectional_streaming_service_client.bal :::
 
-4. Execute the command below to run the client.
+4. In a new tab of the CLI, execute the command below to run the client.
 
     ::: out grpc_bidirectional_streaming_client.out :::
       
