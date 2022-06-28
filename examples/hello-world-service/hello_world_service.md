@@ -8,7 +8,7 @@ Execute the command below to run the above service.
 
 ::: out hello_world_service.server.out :::
 
-Execute th cURL command below to invoke the service.
+In a new CLI tab, execute th cURL command below to invoke the service.
 
 ::: out hello_world_service.client.out :::
      
