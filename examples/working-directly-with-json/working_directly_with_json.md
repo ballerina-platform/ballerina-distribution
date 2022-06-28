@@ -7,3 +7,4 @@ Ballerina defines certain types as lax types for which static typing rules are l
 Execute the command below to run the above service.
 
 ::: out working_directly_with_json.out :::
+   
