@@ -22,7 +22,7 @@ Once you run the command, the `grpc_bidirectional_streaming_pb.bal` file gets ge
 
 ## Implement and run the service
 
-1. Create another Ballerina package (e.g., `grpc_chat_service`) by executing the command below.
+1. Create a Ballerina package (e.g., `grpc_chat_service`) by executing the command below.
 
 >**Tip:** Delete the `main.bal` file created by default as it is not required for this example.
 
