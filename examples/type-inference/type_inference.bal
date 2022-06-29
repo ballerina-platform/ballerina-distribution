@@ -1,7 +1,6 @@
 import ballerina/io;
 
-//`var` says that the type of the variable is from the type of expression
-// used to initialize it.
+//`var` says that the type of the variable is from the type of expression used to initialize it.
 var x = "str";
 
 function printLines(string[] sv) {
