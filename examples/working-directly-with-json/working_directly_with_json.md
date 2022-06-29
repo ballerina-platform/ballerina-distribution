@@ -7,4 +7,3 @@ Ballerina defines certain types as lax types for which static typing rules are l
 Run the example as follows.
 
 ::: out working_directly_with_json.out :::
-   
