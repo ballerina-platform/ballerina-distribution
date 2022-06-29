@@ -2,6 +2,7 @@
 import ballerina/io;
 // Creates a gRPC client to interact with the remote server.
 ChatClient ep = check new("http://localhost:9090");
+
 public function main () returns error? {
     // Executes the RPC call and receives the customized streaming client.
     ChatStreamingClient streamingClient = check ep->chat();
