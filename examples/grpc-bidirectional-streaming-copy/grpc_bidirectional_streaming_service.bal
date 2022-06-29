@@ -1,5 +1,6 @@
 // This is the server implementation of the bidirectional streaming scenario.
 import ballerina/grpc;
+
 @grpc:ServiceDescriptor {
     descriptor: GRPC_BIDIRECTIONAL_STREAMING_DESC
 }
