@@ -27,19 +27,16 @@ public function main() returns error? {
         io:println(item);
     }
 
-    // `x[i]` gives i-th item (empty sequence if none).
+    // `x[i]` gives i-th item.
     io:println(x3[0]);
 
-    // `x.id` accesses required attribute named `id`:
-    // result is `error` if there is no such attribute
-    // or if `x` is not a singleton.
+    // `x.id` accesses required attribute named `id`.
     xml x5 = xml `<para id="greeting">Hello</para>`;
     string id = check x5.id;
 
     io:println(id);
 
-    // `x?.id` accesses optional attribute named `id`:
-    // result is `()` if there is no such attribute.
+    // `x?.id` accesses optional attribute named `id`.
     string? name = check x5?.name;
 
     io:println(name is ());

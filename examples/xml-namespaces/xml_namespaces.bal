@@ -1,3 +1,8 @@
-xml:Element e = xml`<p:e xmlns:p="http://example.com/"/>`;
-// `name` will be `{http://example.com}e`.
-string name = e.getName();
+import ballerina/io;
+
+xml:Element e = xml `<p:e xmlns:p="http://example.com/"/>`;
+
+public function main() {
+    string name = e.getName();
+    io:println(name);
+}
