@@ -4,11 +4,11 @@ Let's write a simple HTTP service in Ballerina. This example demonstrates the ne
 
 ::: code hello_world_service.bal :::
 
-Execute the command below to run the above service.
+Run the service as follows.
 
 ::: out hello_world_service.server.out :::
 
-In a new CLI tab, execute th cURL command below to invoke the service.
+Invoke the service by executing the following cURL command in a new terminal.
 
 ::: out hello_world_service.client.out :::
      
