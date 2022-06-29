@@ -4,7 +4,7 @@ Ballerina defines certain types as lax types for which static typing rules are l
 
 ::: code working_directly_with_json.bal :::
 
-In a new CLI tab, execute the command below to run the above service.
+Run the example as follows.
 
 ::: out working_directly_with_json.out :::
    
