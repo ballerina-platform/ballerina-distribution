@@ -51,4 +51,3 @@ Once you run the command, the `grpc_bidirectional_streaming_pb.bal` file gets ge
 4. In a new tab of the CLI, execute the command below to run the client.
 
     ::: out grpc_bidirectional_streaming_client.out :::
- 
