@@ -1,3 +1,2 @@
-# Invoke the service using the "cURL" command below.
-curl http://localhost:9090/greeting
+$ curl http://localhost:9090/greeting
 Hello, World!
