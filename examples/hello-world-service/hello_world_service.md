@@ -11,4 +11,3 @@ Run the service as follows.
 Invoke the service by executing the following cURL command in a new terminal.
 
 ::: out hello_world_service.client.out :::
-     
