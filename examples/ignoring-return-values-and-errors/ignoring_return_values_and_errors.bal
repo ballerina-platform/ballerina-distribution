@@ -1,13 +1,13 @@
 import ballerina/io;
 
 public function main() {
-    // Allowed only if the return value is ().
+    // Allowed only if the return value is `()`.
     doX();
 
-    // Allowed if the return value does not include an error.
+    // Allowed if the return value does not include an `error`.
     _ = getX();
 
-    // Use checkpanic if you don't want to handle an error.
+    // Use `checkpanic` if you don't want to handle an `error`.
     checkpanic tryX(true);
     checkpanic tryX(false);
 
