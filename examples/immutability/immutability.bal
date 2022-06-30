@@ -7,7 +7,7 @@ type Student record {|
 |};
 
 public function main() {
-    // Creates an immutable Student value using an intersection type with readonly.
+    // Creates an immutable `Student` value using an intersection type with `readonly`.
     Student & readonly student = {
         grade: 12,
         name: "John",

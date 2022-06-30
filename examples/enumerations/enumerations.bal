@@ -11,7 +11,7 @@ enum Color {
     BLUE
 }
 
-// An enum member can explicitly specify an associated expression.
+// An `enum` member can explicitly specify an associated expression.
 enum Language {
     ENG = "English",
     TL = "Tamil",

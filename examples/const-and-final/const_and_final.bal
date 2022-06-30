@@ -4,7 +4,7 @@ import ballerina/io;
 const MAX_VALUE = 1000;
 const URL = "https://ballerina.io";
 
-// The value for variable msg can only be assigned once.
+// The value for variable `msg` can only be assigned once.
 final string msg = loadMessage();
 
 public function main() {
