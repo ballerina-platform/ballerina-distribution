@@ -56,12 +56,12 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: MacOS Installer ZIP
-          path: ballerina/build/distributions/ballerina-macos-*.zip
+          path: ballerina/target/ballerina-macos-*.zip
       - name: Archive Windows Installer ZIP
         uses: actions/upload-artifact@v2
         with:
           name: Windows Installer ZIP
-          path: ballerina/build/distributions/ballerina-windows-*.zip
+          path: ballerina/target/ballerina-windows-*.zip
       - name: Archive Linux deb
         uses: actions/upload-artifact@v2
         with:
