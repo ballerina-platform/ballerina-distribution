@@ -44,7 +44,7 @@ IF "%BALLERINA_VERSION%"==""  (
 for /f %%x in ('wmic path win32_utctime get /format:list ^| findstr "="') do set %%x
 set UTC_TIME=%Year%-%Month%-%Day% %Hour%:%Minute%:%Second% UTC
 
-rmdir ballerina-%BALLERINA_VERSION%-windows /s /q >nul 2>&1
+rmdir ballerina-windows-%BALLERINA_VERSION% /s /q >nul 2>&1
 rmdir target /s /q >nul 2>&1
 
 for /f %%i in ('guid') do set UPGRADECODE=%%i
