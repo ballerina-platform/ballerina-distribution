@@ -38,4 +38,9 @@ jobs:
           packageUser: ${{ github.actor }}
           packagePAT: ${{ secrets.GITHUB_TOKEN }}
           TEST_MODE_ACTIVE: true
+      - name: Archive Ballerina ZIP
+        uses: actions/upload-artifact@v2
+        with:
+          name: Ballerina ZIP
+          path: ballerina/target/ballerina-1.2.*.zip
 
