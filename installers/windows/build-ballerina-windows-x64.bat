@@ -60,8 +60,8 @@ goto EOF
 
 
 :createballerinaWin64Installer
-set BALZIP=%DISTLOC%\ballerina-%BALLERINA_VERSION%-windows.zip
-set BALDIST=ballerina-%BALLERINA_VERSION%-windows
+set BALZIP=%DISTLOC%\ballerina-windows-%BALLERINA_VERSION%.zip
+set BALDIST=ballerina-windows-%BALLERINA_VERSION%
 set BALPARCH=x64
 set INSTALLERPARCH=amd64
 set MSI=ballerina-%BALLERINA_VERSION%-%BALPOS%-%BALPARCH%.msi
@@ -70,8 +70,8 @@ call :createInstaller
 goto EOF
 
 :createballerinaWin586Installer
-set BALZIP=%DISTLOC%\ballerina-%BALLERINA_VERSION%-windows.zip
-set BALDIST=ballerina-%BALLERINA_VERSION%-windows
+set BALZIP=%DISTLOC%\ballerina-windows-%BALLERINA_VERSION%.zip
+set BALDIST=ballerina-windows-%BALLERINA_VERSION%
 set BALPARCH=i586
 set INSTALLERPARCH=386
 set MSI=ballerina-%BALLERINA_VERSION%-%BALPOS%-%BALPARCH%.msi
