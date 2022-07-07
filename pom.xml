@@ -349,7 +349,7 @@
         <ballerina.version>1.2.30</ballerina.version>
         <ballerina.jre.artifacts.version>2.0.1</ballerina.jre.artifacts.version>
         <project.scm.id>ballerina-scm-server</project.scm.id>
-        <docker.version>1.2.30</docker.version>
+        <docker.version>1.2.31</docker.version>
         <kubernetes.version>1.2.30</kubernetes.version>
         <awslambda.version>1.2.30</awslambda.version>
         <azurefunctions.version>1.2.30</azurefunctions.version>
