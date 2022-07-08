@@ -2533,6 +2533,21 @@
         ]
     },
     {
+        "title": "SerDes",
+        "column": 3,
+        "category": "Working over the network",
+        "samples": [
+            {
+                "name": "Serialization and Deserialization",
+                "url": "serdes-simple",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
         "title": "IO",
         "column": 0,
         "category": "Common libraries",
