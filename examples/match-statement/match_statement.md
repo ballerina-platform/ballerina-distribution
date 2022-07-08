@@ -5,6 +5,6 @@
 simple literal (`nil`, `boolean`, `int`, `float`, `string`) identifier referring to a constant.
 Left hand side of `_` matches if the value is of type `any`. You can use `|` to match more than one value.
 
-::: code ./examples/match-statement/match_statement.bal :::
+::: code match_statement.bal :::
 
-::: out ./examples/match-statement/match_statement.out :::
+::: out match_statement.out :::

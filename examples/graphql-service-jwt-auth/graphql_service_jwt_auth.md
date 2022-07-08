@@ -13,6 +13,6 @@ sets.<br/><br/>
 For more information on the underlying module, 
 see the [JWT module](https://docs.central.ballerina.io/ballerina/jwt/latest/).
 
-::: code ./examples/graphql-service-jwt-auth/graphql_service_jwt_auth.bal :::
+::: code graphql_service_jwt_auth.bal :::
 
-::: out ./examples/graphql-service-jwt-auth/graphql_service_jwt_auth.server.out :::
+::: out graphql_service_jwt_auth.server.out :::

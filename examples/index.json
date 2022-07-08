@@ -2416,8 +2416,17 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Query with complex types",
-                "url": "mysql-complex-type-queries",
+                "name": "Query with one result",
+                "url": "mysql-query-row-operation",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Query with advanced mapping",
+                "url": "mysql-query-column-mapping",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
@@ -2477,8 +2486,17 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Query with complex types",
-                "url": "jdbc-complex-type-queries",
+                "name": "Query with one result",
+                "url": "jdbc-query-row-operation",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Query with advanced mapping",
+                "url": "jdbc-query-column-mapping",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",

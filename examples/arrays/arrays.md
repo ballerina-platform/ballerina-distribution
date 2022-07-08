@@ -4,6 +4,6 @@
 equal if they have the same members in the same order. Ordering is lexicographical based on the
 ordering of the members. Langlib `arr.length()` function gets the length; `arr.setLength(n)` sets the length.
 
-::: code ./examples/arrays/arrays.bal :::
+::: code arrays.bal :::
 
-::: out ./examples/arrays/arrays.out :::
+::: out arrays.out :::

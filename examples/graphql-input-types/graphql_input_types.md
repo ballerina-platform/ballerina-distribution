@@ -5,10 +5,10 @@ values in the generated GraphQL schema. Currently, the supported input types
 are: `string`, `int`, `boolean`, `float`, and `enum`. Any of these types can
 be an optional and/or defaultable types.<br/><br/>
 For more information on the underlying package, see the
-[`graphql` package](https://docs.central.ballerina.io/ballerina/graphql/latest/).
+[GraphQL package](https://docs.central.ballerina.io/ballerina/graphql/latest/).
 
-::: code ./examples/graphql-input-types/graphql_input_types.bal :::
+::: code graphql_input_types.bal :::
 
-::: out ./examples/graphql-input-types/graphql_input_types.client.out :::
+::: out graphql_input_types.client.out :::
 
-::: out ./examples/graphql-input-types/graphql_input_types.server.out :::
+::: out graphql_input_types.server.out :::

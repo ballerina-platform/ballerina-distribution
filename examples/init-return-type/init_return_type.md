@@ -5,6 +5,6 @@ then `new` returns the newly constructed `object`. If `init` returns an `error`,
 that `error`. If `init` does not specify a return type, then the return type defaults to `()` as usual,
 meaning that `new` will never return an `error`.
 
-::: code ./examples/init-return-type/init_return_type.bal :::
+::: code init_return_type.bal :::
 
-::: out ./examples/init-return-type/init_return_type.out :::
+::: out init_return_type.out :::

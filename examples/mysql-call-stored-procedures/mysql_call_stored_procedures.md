@@ -7,6 +7,6 @@ For a sample configuration and more information on the underlying module, see th
 The MySQL connector uses database properties from MySQL version 8.0.13 onwards. Therefore, it is
 recommended to use a MySQL driver version greater than 8.0.13.<br><br>
 
-::: code ./examples/mysql-call-stored-procedures/mysql_call_stored_procedures.bal :::
+::: code mysql_call_stored_procedures.bal :::
 
-::: out ./examples/mysql-call-stored-procedures/mysql_call_stored_procedures.out :::
+::: out mysql_call_stored_procedures.out :::

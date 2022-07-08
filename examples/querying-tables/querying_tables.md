@@ -3,6 +3,6 @@
 Tables can be nicely combined with `query expressions` unlike `maps`. Basic type of the output of
 `query expression` is determined by the contextually expected type and the input type.
 
-::: code ./examples/querying-tables/querying_tables.bal :::
+::: code querying_tables.bal :::
 
-::: out ./examples/querying-tables/querying_tables.out :::
+::: out querying_tables.out :::

@@ -14,6 +14,6 @@ match between the two sets.<br/><br/>
 For more information on the underlying module,
 see the [OAuth2 module](https://docs.central.ballerina.io/ballerina/oauth2/latest/).
 
-::: code ./examples/http-service-oauth2/http_service_oauth2.bal :::
+::: code http_service_oauth2.bal :::
 
-::: out ./examples/http-service-oauth2/http_service_oauth2.server.out :::
+::: out http_service_oauth2.server.out :::

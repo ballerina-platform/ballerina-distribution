@@ -10,6 +10,6 @@ With tables, XML or records open to `anydata`, use `toJson()` to convert
 APIs that generate JSON typically accept `anydata` and automatically 
 apply `toJson()`.
 
-::: code ./examples/converting-from-user-defined-type-to-json/converting_from_user_defined_type_to_json.bal :::
+::: code converting_from_user_defined_type_to_json.bal :::
 
-::: out ./examples/converting-from-user-defined-type-to-json/converting_from_user_defined_type_to_json.out :::
+::: out converting_from_user_defined_type_to_json.out :::

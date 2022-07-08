@@ -7,6 +7,6 @@ For a sample configuration and more information on the underlying module, see th
 The MySQL connector uses database properties from MySQL version 8.0.13 onwards. Therefore, it is
 recommended to use a MySQL driver version greater than 8.0.13.<br><br>
 
-::: code ./examples/mysql-query-operation/mysql_query_operation.bal :::
+::: code mysql_query_operation.bal :::
 
-::: out ./examples/mysql-query-operation/mysql_query_operation.out :::
+::: out mysql_query_operation.out :::

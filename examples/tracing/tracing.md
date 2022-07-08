@@ -7,8 +7,8 @@ The developers can trace their code blocks and measure the time incurred during 
 They can choose to hook their measurement with the default trace created or can create a completely new trace.<br/><br/>
 For more information about configs and observing applications, see [Observing Ballerina Code](https://ballerina.io/learn/observing-ballerina-code/).
 
-::: code ./examples/tracing/tracing.bal :::
+::: code tracing.bal :::
 
-::: out ./examples/tracing/tracing.client.out :::
+::: out tracing.client.out :::
 
-::: out ./examples/tracing/tracing.server.out :::
+::: out tracing.server.out :::

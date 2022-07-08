@@ -4,8 +4,8 @@
 For more information on the underlying module, 
 see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
 
-::: code ./examples/http-passthrough/http_passthrough.bal :::
+::: code http_passthrough.bal :::
 
-::: out ./examples/http-passthrough/http_passthrough.client.out :::
+::: out http_passthrough.client.out :::
 
-::: out ./examples/http-passthrough/http_passthrough.server.out :::
+::: out http_passthrough.server.out :::

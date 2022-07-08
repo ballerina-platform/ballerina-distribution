@@ -8,6 +8,6 @@ client.<br/><br/>
 For more information on the underlying module,
 see the [Auth module](https://docs.central.ballerina.io/ballerina/auth/latest/).
 
-::: code ./examples/websocket-client-basic-auth/websocket_client_basic_auth.bal :::
+::: code websocket_client_basic_auth.bal :::
 
-::: out ./examples/websocket-client-basic-auth/websocket_client_basic_auth.out :::
+::: out websocket_client_basic_auth.out :::

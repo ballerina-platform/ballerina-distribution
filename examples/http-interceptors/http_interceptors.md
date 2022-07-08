@@ -8,10 +8,10 @@ before dispatching the request to the actual resource in the target service. In 
 a `ResponseInterceptor` can be used to intercept the response. `ResponseInterceptors`
 have a remote method, which will be executed before dispatching the response to the client.
 A collection of these interceptors can be configured as a pipeline at the listener level or service level.
-For more information, see the [`http` module](https://docs.central.ballerina.io/ballerina/http/latest/).
+For more information, see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
 
-::: code ./examples/http-interceptors/http_interceptors.bal :::
+::: code http_interceptors.bal :::
 
-::: out ./examples/http-interceptors/http_interceptors.client.out :::
+::: out http_interceptors.client.out :::
 
-::: out ./examples/http-interceptors/http_interceptors.server.out :::
+::: out http_interceptors.server.out :::

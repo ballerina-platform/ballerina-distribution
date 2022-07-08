@@ -6,8 +6,8 @@ The Circuit Breaker is used to gracefully handle network related errors, which o
 For more information on the underlying module, 
 see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
 
-::: code ./examples/http-circuit-breaker/http_circuit_breaker.bal :::
+::: code http_circuit_breaker.bal :::
 
-::: out ./examples/http-circuit-breaker/http_circuit_breaker.client.out :::
+::: out http_circuit_breaker.client.out :::
 
-::: out ./examples/http-circuit-breaker/http_circuit_breaker.server.out :::
+::: out http_circuit_breaker.server.out :::

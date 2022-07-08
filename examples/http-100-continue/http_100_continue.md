@@ -5,8 +5,8 @@ Convenience functions are provided in the HTTP library for ease of use when hand
 For more information on the underlying module, 
 see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
 
-::: code ./examples/http-100-continue/http_100_continue.bal :::
+::: code http_100_continue.bal :::
 
-::: out ./examples/http-100-continue/http_100_continue.client.out :::
+::: out http_100_continue.client.out :::
 
-::: out ./examples/http-100-continue/http_100_continue.server.out :::
+::: out http_100_continue.server.out :::

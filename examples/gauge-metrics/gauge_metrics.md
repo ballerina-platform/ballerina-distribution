@@ -9,8 +9,8 @@ and also based on the statistics configurations provided to the Gauge, it can al
 min, mean, percentiles, etc.<br/><br/>
 For more information about configs and observing applications, see [Observing Ballerina Code](https://ballerina.io/learn/observing-ballerina-code/).
 
-::: code ./examples/gauge-metrics/gauge_metrics.bal :::
+::: code gauge_metrics.bal :::
 
-::: out ./examples/gauge-metrics/gauge_metrics.client.out :::
+::: out gauge_metrics.client.out :::
 
-::: out ./examples/gauge-metrics/gauge_metrics.server.out :::
+::: out gauge_metrics.server.out :::

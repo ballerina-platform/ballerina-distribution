@@ -9,6 +9,6 @@ Graph structure is not preserved.
 Variant `fromJsonWithType()` also does reverse of conversions done by
 `toJson`.
 
-::: code ./examples/converting-to-user-defined-type/converting_to_user_defined_type.bal :::
+::: code converting_to_user_defined_type.bal :::
 
-::: out ./examples/converting-to-user-defined-type/converting_to_user_defined_type.out :::
+::: out converting_to_user_defined_type.out :::

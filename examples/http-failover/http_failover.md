@@ -9,8 +9,8 @@ the third target and the client will get the immediate response for subsequent c
 For more information on the underlying module, 
 see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
 
-::: code ./examples/http-failover/http_failover.bal :::
+::: code http_failover.bal :::
 
-::: out ./examples/http-failover/http_failover.client.out :::
+::: out http_failover.client.out :::
 
-::: out ./examples/http-failover/http_failover.server.out :::
+::: out http_failover.server.out :::

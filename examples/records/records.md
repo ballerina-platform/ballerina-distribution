@@ -5,6 +5,6 @@ A `record` type has specific named fields. Fields can be accessed with `r.x`. Re
 with a type definition. The name of the type is not significant. A `record` is just a collection of fields.
 Record equality works the same as `map` equality.
 
-::: code ./examples/records/records.bal :::
+::: code records.bal :::
 
-::: out ./examples/records/records.out :::
+::: out records.out :::

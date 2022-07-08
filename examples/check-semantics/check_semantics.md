@@ -9,6 +9,6 @@ Function definition handles the failure by returning the error.
 `fail` statement is like `check`, but it always fails.
 Differs from exceptions in that control flow is explicit.
 
-::: code ./examples/check-semantics/check_semantics.bal :::
+::: code check_semantics.bal :::
 
-::: out ./examples/check-semantics/check_semantics.out :::
+::: out check_semantics.out :::

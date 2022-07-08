@@ -6,14 +6,14 @@ Once the client has finished writing the messages, it waits for the server to re
 For more information on the underlying module, 
 see the [GRPC module](https://docs.central.ballerina.io/ballerina/grpc/latest/).
 
-::: code ./examples/grpc-client-streaming/grpc_client_streaming.proto :::
+::: code grpc_client_streaming.proto :::
 
-::: out ./examples/grpc-client-streaming/grpc_client_streaming.out :::
+::: out grpc_client_streaming.out :::
 
-::: code ./examples/grpc-client-streaming/grpc_client_streaming_service.bal :::
+::: code grpc_client_streaming_service.bal :::
 
-::: out ./examples/grpc-client-streaming/grpc_client_streaming_service.out :::
+::: out grpc_client_streaming_service.out :::
 
-::: code ./examples/grpc-client-streaming/grpc_client_streaming_service_client.bal :::
+::: code grpc_client_streaming_service_client.bal :::
 
-::: out ./examples/grpc-client-streaming/grpc_client_streaming_service_client.out :::
+::: out grpc_client_streaming_service_client.out :::

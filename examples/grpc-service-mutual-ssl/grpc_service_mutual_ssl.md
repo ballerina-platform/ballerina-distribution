@@ -7,10 +7,10 @@ of each other's identity.<br/><br/>
 For more information on the underlying module, 
 see the [gRPC module](https://docs.central.ballerina.io/ballerina/grpc/latest/).
 
-::: code ./examples/grpc-service-mutual-ssl/grpc_service.proto :::
+::: code grpc_service.proto :::
 
-::: out ./examples/grpc-service-mutual-ssl/grpc_service.out :::
+::: out grpc_service.out :::
 
-::: code ./examples/grpc-service-mutual-ssl/grpc_service_mutual_ssl.bal :::
+::: code grpc_service_mutual_ssl.bal :::
 
-::: out ./examples/grpc-service-mutual-ssl/grpc_service_mutual_ssl.server.out :::
+::: out grpc_service_mutual_ssl.server.out :::

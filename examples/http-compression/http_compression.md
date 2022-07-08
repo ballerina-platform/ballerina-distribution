@@ -7,8 +7,8 @@ is disabled when the option is set to `COMPRESSION_NEVER` and always enabled whe
 In the same way `http:Client` can be configured as well. For more information on the underlying module, 
 see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
 
-::: code ./examples/http-compression/http_compression.bal :::
+::: code http_compression.bal :::
 
-::: out ./examples/http-compression/http_compression.client.out :::
+::: out http_compression.client.out :::
 
-::: out ./examples/http-compression/http_compression.server.out :::
+::: out http_compression.server.out :::

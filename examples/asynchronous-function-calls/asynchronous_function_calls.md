@@ -6,6 +6,6 @@ The result will be of type `future<T>` and `future` is a separate basic type.
 Waiting for the same `future` more than once gives an `error`.
 Use `f.cancel()` to terminate a `future`.
 
-::: code ./examples/asynchronous-function-calls/asynchronous_function_calls.bal :::
+::: code asynchronous_function_calls.bal :::
 
-::: out ./examples/asynchronous-function-calls/asynchronous_function_calls.out :::
+::: out asynchronous_function_calls.out :::

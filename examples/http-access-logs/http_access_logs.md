@@ -6,8 +6,8 @@ Also, the `path` field can be used to specify the file path to save the access l
 For more information on the underlying module,
 see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
 
-::: code ./examples/http-access-logs/http_access_logs.bal :::
+::: code http_access_logs.bal :::
 
-::: out ./examples/http-access-logs/http_access_logs.client.out :::
+::: out http_access_logs.client.out :::
 
-::: out ./examples/http-access-logs/http_access_logs.server.out :::
+::: out http_access_logs.server.out :::

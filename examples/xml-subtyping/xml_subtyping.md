@@ -11,6 +11,6 @@ For example, `x.elements()` returns element items in `x` as type
 `xml<xml:Element>` and `e.getName()` and `e.setName()` are defined when 
 `e` has type `xml:Element`.
 
-::: code ./examples/xml-subtyping/xml_subtyping.bal :::
+::: code xml_subtyping.bal :::
 
-::: out ./examples/xml-subtyping/xml_subtyping.out :::
+::: out xml_subtyping.out :::

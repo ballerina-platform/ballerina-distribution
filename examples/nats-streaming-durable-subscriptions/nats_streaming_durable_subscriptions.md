@@ -8,10 +8,10 @@ remember their position even if the client is disconnected.<br/><br/>
 For more information on the underlying module, 
 see the [STAN module](https://docs.central.ballerina.io/ballerinax/stan/latest).
 
-::: code ./examples/nats-streaming-durable-subscriptions/publisher.bal :::
+::: code publisher.bal :::
 
-::: out ./examples/nats-streaming-durable-subscriptions/publisher.out :::
+::: out publisher.out :::
 
-::: code ./examples/nats-streaming-durable-subscriptions/subscriber.bal :::
+::: code subscriber.bal :::
 
-::: out ./examples/nats-streaming-durable-subscriptions/subscriber.out :::
+::: out subscriber.out :::

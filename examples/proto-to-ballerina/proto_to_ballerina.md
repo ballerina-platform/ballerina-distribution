@@ -16,6 +16,6 @@ For more information on the underlying module,
 see the [GRPC module](https://docs.central.ballerina.io/ballerina/grpc/latest/) and 
 [How to generate Ballerina code for Protocol Buffer Definition](https://ballerina.io/learn/how-to-generate-code-for-protocol-buffers/).
 
-::: code ./examples/proto-to-ballerina/proto_to_ballerina.proto :::
+::: code proto_to_ballerina.proto :::
 
-::: out ./examples/proto-to-ballerina/proto_to_ballerina.out :::
+::: out proto_to_ballerina.out :::

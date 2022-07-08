@@ -6,6 +6,6 @@ received, and vice-versa, provided neither sending nor receiving worker
 has failed.
 Send to or receive from failed worker will propagate the failure.
 
-::: code ./examples/inter-worker-failure-propagation/inter_worker_failure_propagation.bal :::
+::: code inter_worker_failure_propagation.bal :::
 
-::: out ./examples/inter-worker-failure-propagation/inter_worker_failure_propagation.out :::
+::: out inter_worker_failure_propagation.out :::

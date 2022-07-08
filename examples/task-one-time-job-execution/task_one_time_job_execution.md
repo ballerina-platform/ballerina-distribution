@@ -5,6 +5,6 @@ The `task:Job` and time should be specified to schedule the job.
 For more information on the underlying module, 
 see the [Task module](https://docs.central.ballerina.io/ballerina/task/latest/).
 
-::: code ./examples/task-one-time-job-execution/task_one_time_job_execution.bal :::
+::: code task_one_time_job_execution.bal :::
 
-::: out ./examples/task-one-time-job-execution/task_one_time_job_execution.out :::
+::: out task_one_time_job_execution.out :::

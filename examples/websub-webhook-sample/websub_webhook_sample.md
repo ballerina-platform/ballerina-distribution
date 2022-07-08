@@ -8,6 +8,6 @@ In this example, a WebSub Subscriber service is used to implement a GitHub-based
 For more information on the underlying module, 
 see the [WebSub module](https://docs.central.ballerina.io/ballerina/websub/latest/).
 
-::: code ./examples/websub-webhook-sample/websub_webhook_sample.bal :::
+::: code websub_webhook_sample.bal :::
 
-::: out ./examples/websub-webhook-sample/websub_webhook_sample.out :::
+::: out websub_webhook_sample.out :::

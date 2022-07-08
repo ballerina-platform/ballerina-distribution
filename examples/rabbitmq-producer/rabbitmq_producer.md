@@ -5,6 +5,6 @@ to one queue using the same channel and to the other using two different channel
 For more information on the underlying module, 
 see the [RabbitMQ module](https://docs.central.ballerina.io/ballerinax/rabbitmq/latest).
 
-::: code ./examples/rabbitmq-producer/rabbitmq_producer.bal :::
+::: code rabbitmq_producer.bal :::
 
-::: out ./examples/rabbitmq-producer/rabbitmq_producer.out :::
+::: out rabbitmq_producer.out :::

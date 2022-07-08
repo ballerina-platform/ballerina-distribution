@@ -7,6 +7,6 @@ ports.<br/><br/>
 For more information on the underlying module, 
 see the [Email module](https://docs.central.ballerina.io/ballerina/email/latest/).
 
-::: code ./examples/receive-email-using-client/receive_email_using_client.bal :::
+::: code receive_email_using_client.bal :::
 
-::: out ./examples/receive-email-using-client/receive_email_using_client.out :::
+::: out receive_email_using_client.out :::
