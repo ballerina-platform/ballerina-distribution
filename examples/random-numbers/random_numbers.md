@@ -6,6 +6,6 @@ For more information on the underlying module, see the [Random module](https://d
 
 ::: code random_numbers.bal :::
 
-To run this sample use the `bal run` command.
+To run this sample, use the `bal run` command.
 
 ::: out random_numbers.out :::
