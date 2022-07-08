@@ -6,6 +6,6 @@ For more information on the underlying module, see the [Log module](https://docs
 
 ::: code logging_with_context.bal :::
 
-To run this sample use the `bal run` command.
+To run this sample, use the `bal run` command.
 
 ::: out logging_with_context.out :::

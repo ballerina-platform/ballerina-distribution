@@ -4,7 +4,7 @@ import ballerina/time;
 
 public function main() {
     // The Ballerina log API provides functions to log at four levels, which are `DEBUG`, `ERROR`, `INFO`, and `WARN`.
-    // You can pass key/value pairs where the values are function pointers. These functions can return values, which change dynamically.
+    // You can pass key/value pairs of which the values are function pointers. These functions can return values, which change dynamically.
     // The following log prints the current UTC time as a key/value pair.
     log:printInfo("info log",
                   current_time = isolated function() returns string {
