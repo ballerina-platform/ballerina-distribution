@@ -2541,7 +2541,7 @@
                 "name": "Serialization and Deserialization",
                 "url": "serdes-simple",
                 "verifyBuild": true,
-                "verifyOutput": false,
+                "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
