@@ -1,6 +1,6 @@
 # Schedule job recurrence by frequency
 
-The `task` library provides API to schedule Ballerina jobs periodically.
+The `task` library provides an API to schedule Ballerina jobs periodically.
 
 For more information on the underlying module, see the [Task module](https://docs.central.ballerina.io/ballerina/task/latest/).
 
