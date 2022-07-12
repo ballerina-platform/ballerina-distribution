@@ -19,14 +19,13 @@ public function main() returns error? {
 
     // Create a serialization object by passing the typedesc.
     // This creates an underlying protocol buffer schema for the typedesc.
-    serdes:Proto3Schema ser = check new (Student);
-    // Serialize the record value to bytes.
-    byte[] serializedValue = check ser.serialize(studentValue);
+    serdes:Proto3Schema serdes = check new (Student);
 
-    // Create a deserialization object by passing the typedesc.
-    // This creates an underlying protocol buffer schema for the typedesc.
-    serdes:Proto3Schema des = check new (Student);
-    Student deserializedValue = check des.deserialize(serializedValue);
+    // Serialize the record value to bytes.
+    byte[] serializedValue = check serdes.serialize(studentValue);
+
+    // Deserialize the record value to bytes. 
+    Student deserializedValue = check serdes.deserialize(serializedValue);
 
     // Print deserialized data.
     io:println(deserializedValue);
