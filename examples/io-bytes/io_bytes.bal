@@ -16,8 +16,8 @@ public function main() returns error? {
     // Here, the default size is overridden by the value 2KB.
     stream<io:Block, io:Error?> blockStream = check
     io:fileReadBlocksAsStream(imagePath, 2048);
-    // If the file reading was successful, then,
-    // the content will be written to the given destination file using the given stream.
+    // If the file reading was successful, then, the content will be written
+    // to the given destination file using the given stream.
     check io:fileWriteBlocksFromStream(imageCopyPath2, blockStream);
     io:println("Successfully copied the image as a stream.");
 }
