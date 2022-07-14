@@ -3,7 +3,7 @@ import ballerina/xmldata;
 
 public function main() returns error? {
     // Creates a JSON object.
-    json jsonObject = {"Store": {
+    json jsonValue = {"Store": {
             "@id": "AST",
             "name": "Anne",
             "address": {
@@ -14,6 +14,6 @@ public function main() returns error? {
         }};
     // Converts the JSON object to XML using a default `attributePrefix` (i.e., the `@` character)
     // and the default `arrayEntryTag` (i.e., `root`).
-    xml? xmlData = check xmldata:fromJson(jsonObject);
-    io:println(xmlData);
+    xml? xmlValue = check xmldata:fromJson(jsonValue);
+    io:println(xmlValue);
 }
