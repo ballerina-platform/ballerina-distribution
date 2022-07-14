@@ -1,0 +1,3 @@
+bal run xml_record_conversion.bal
+<ns:Invoice xmlns="http://sample.com" xmlns:ns="http://sdf.com" attr="attr-val" ns:attr="http://attr.com"><address>20, Palm grove, Colombo 3</address><items><itemCode>223345</itemCode><count>10</count></items><items><itemCode>223300</itemCode><count>7</count></items><items><itemCode xmlns="http://example.com" discount="22%">200777</itemCode><count>7</count></items></ns:Invoice>
+{"address":"20, Palm grove, Colombo 3","items":[{"itemCode":"223345","count":10},{"itemCode":"223300","count":7},{"itemCode":{"discount":"22%","#content":"200777"},"count":7}],"xmlns":"http://sample.com","attr":"attr-val","ns:attr":"http://attr.com"}
