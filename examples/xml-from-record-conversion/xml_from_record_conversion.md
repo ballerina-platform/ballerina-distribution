@@ -1,4 +1,4 @@
-# XML JSON conversion
+# XML from record conversion
 
 The `xmldata` library provides APIs to perform conversion from Ballerina record/map<anydata> to XML.
 
