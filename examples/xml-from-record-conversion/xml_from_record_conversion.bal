@@ -18,14 +18,8 @@ type Invoice record {
 @xmldata:Namespace {
     uri: "http://example.com"
 }
-@xmldata:Name {
-    value: "purchased_item"
-}
 type Item record {
     string itemCode;
-    @xmldata:Name {
-        value: "item_count"
-    }
     int count;
 };
 
@@ -34,12 +28,11 @@ public function main() returns error? {
     Invoice data = {
         id: 1,
         items: [
-                   {itemCode: "223345", count: 1},
-                   {itemCode: "223300", count: 7}
-               ],
+            {itemCode: "223345", count: 1},
+            {itemCode: "223300", count: 7}
+        ],
         attr: "attr-val",
-        'xmlns: "example2.com",
-        ns\:attr: "example1.com"
+        'xmlns: "example2.com"
     };
 
     // Converts a `record` representation to its XML representation.

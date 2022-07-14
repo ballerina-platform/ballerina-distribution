@@ -1,2 +1,2 @@
 bal run xml_from_record_conversion.bal
-<ns:Invoice xmlns="example2.com" xmlns:ns="http://sdf.com" attr="attr-val"><id>1</id><purchased_item xmlns="http://example.com"><itemCode>223345</itemCode><item_count>1</item_count></purchased_item><purchased_item xmlns="http://example.com"><itemCode>223300</itemCode><item_count>7</item_count></purchased_item></ns:Invoice>
+<ns:Invoice xmlns="example2.com" xmlns:ns="http://sdf.com" attr="attr-val"><id>1</id><items xmlns="http://example.com"><itemCode>223345</itemCode><count>1</count></items><items xmlns="http://example.com"><itemCode>223300</itemCode><count>7</count></items></ns:Invoice>
