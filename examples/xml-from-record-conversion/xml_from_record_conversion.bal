@@ -10,13 +10,13 @@ type Invoice record {
     int id;
     Item[] items;
     @xmldata:Attribute
-    string 'xmlns?;
+    string 'xmlns = "example.com";
     @xmldata:Attribute
     string attr?;
 };
 
 @xmldata:Namespace {
-    uri: "http://example.com"
+    uri: "http://example1.com"
 }
 type Item record {
     string itemCode;
@@ -31,8 +31,7 @@ public function main() returns error? {
             {itemCode: "223345", count: 1},
             {itemCode: "223300", count: 7}
         ],
-        attr: "attr-val",
-        'xmlns: "example2.com"
+        attr: "attr-val"
     };
 
     // Converts a `record` representation to its XML representation.
