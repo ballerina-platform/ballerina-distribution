@@ -12,7 +12,7 @@ public function main() returns error? {
                           <codes>4</codes>
                           <codes>8</codes>
                         </Store>`;
-    // Converts the XML to JSON object using a default `attributePrefix` (i.e., the `@` character)
+    // Converts the XML to JSON value using a default `attributePrefix` (i.e., the `@` character)
     // and the default `preserveNamespaces` (i.e., `true`).
     json jsonValue = check xmldata:toJson(xmlValue);
     io:println(jsonValue);
