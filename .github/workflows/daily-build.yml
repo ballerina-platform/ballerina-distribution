@@ -50,6 +50,11 @@ jobs:
         with:
           name: Ballerina ZIP
           path: ballerina/target/ballerina-${{ steps.project-version.outputs.version }}.zip
+      - name: Archive JBallerina ZIP
+        uses: actions/upload-artifact@v2
+        with:
+          name: JBallerina ZIP
+          path: ballerina/target/jballerina-${{ steps.project-version.outputs.version }}.zip
       - name: Archive MacOS Installer ZIP
         uses: actions/upload-artifact@v2
         with:
