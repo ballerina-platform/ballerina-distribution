@@ -2,7 +2,8 @@ import ballerina/io;
 import ballerina/xmldata;
 
 public function main() returns error? {
-    xml xmlData = xml `<Store id="AST">
+    // Creates a XML value.
+    xml xmlValue = xml `<Store id="AST">
                           <name>Anne</name>
                           <address>
                               <street>Main</street>
@@ -13,6 +14,6 @@ public function main() returns error? {
                         </Store>`;
     // Converts the XML to JSON object using a default `attributePrefix` (i.e., the `@` character)
     // and the default `preserveNamespaces` (i.e., `true`).
-    json jsonObject = check xmldata:toJson(xmlData);
-    io:println(jsonObject);
+    json jsonValue = check xmldata:toJson(xmlValue);
+    io:println(jsonValue);
 }
