@@ -2863,6 +2863,20 @@
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "XML to Ballerina record conversion",
+                "url": "xml-to-record-conversion",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Ballerina record to XML conversion",
+                "url": "xml-from-record-conversion",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": false
             }
         ]
     },
