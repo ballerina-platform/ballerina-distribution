@@ -12,7 +12,7 @@ Message delivery may begin at:
    (e.g., the last 30 seconds).
 4. A specific message sequence number<br/><br/>
 For more information on the underlying module, 
-see the [STAN module](https://docs.central.ballerina.io/ballerinax/stan/latest).
+see the [STAN module](https://lib.ballerina.io/ballerinax/stan/latest).
 
 ::: code publisher.bal :::
 
