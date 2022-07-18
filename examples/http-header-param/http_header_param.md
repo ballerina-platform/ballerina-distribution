@@ -8,7 +8,7 @@ type is optional, the request will be responded with a 400 Bad request in the ab
 However, more header manipulations can be done via the `http:Headers` header object, which also can be accessed as
 a resource method argument without using the annotation.<br/><br/>
 For more information on the underlying module,
-see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
+see the [HTTP module](https://lib.ballerina.io/ballerina/http/latest/).
 
 ::: code http_header_param.bal :::
 

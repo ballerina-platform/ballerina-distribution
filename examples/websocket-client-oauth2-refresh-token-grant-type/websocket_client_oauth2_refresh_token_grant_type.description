@@ -4,4 +4,4 @@
 // passing the `websocket:OAuth2RefreshTokenGrantConfig` to the `auth`
 // configuration of the client.<br/><br/>
 // For more information on the underlying module,
-// see the [OAuth2 module](https://docs.central.ballerina.io/ballerina/oauth2/latest/).
+// see the [OAuth2 module](https://lib.ballerina.io/ballerina/oauth2/latest/).

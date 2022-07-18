@@ -2,7 +2,7 @@
 
 The Ballerina File API contains functions to perform temp file and directory operations.<br/><br/>
 For more information on the underlying module, 
-see the [File module](https://docs.central.ballerina.io/ballerina/file/latest/).
+see the [File module](https://lib.ballerina.io/ballerina/file/latest/).
 
 ::: code temp_files_directories.bal :::
 

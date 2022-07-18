@@ -4,7 +4,7 @@ import ballerina/tcp;
 // An TCP client can be configured to communicate through SSL/TLS as well.
 // To secure a client using SSL/TLS, the client needs to be configured with
 // a certificate file of the listener.
-// The [`tcp:ClientSecureSocket`](https://docs.central.ballerina.io/ballerina/tcp/latest/records/ClientSecureSocket) record
+// The [`tcp:ClientSecureSocket`](https://lib.ballerina.io/ballerina/tcp/latest/records/ClientSecureSocket) record
 // provides the SSL-related configurations of the client.
 tcp:Client securedClientEP = check new("localhost", 3000,
     secureSocket = {
