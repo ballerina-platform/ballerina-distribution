@@ -12,11 +12,11 @@ type Invoice record {
     @xmldata:Attribute
     string 'xmlns?;
     @xmldata:Attribute
-    string attr?;
+    string status?;
 };
 
 @xmldata:Namespace {
-    uri: "http://example.com"
+    uri: "http://example2.com"
 }
 type Item record {
     string itemCode;
@@ -24,13 +24,13 @@ type Item record {
 };
 
 public function main() returns error? {
-    xml data = xml `<ns:Invoice xmlns="example2.com" xmlns:ns="http://sdf.com" attr="attr-val">
+    xml data = xml `<ns:Invoice xmlns="example.com" xmlns:ns="http://sdf.com" status="paid">
                         <id>1</id>
-                        <purchased_item xmlns="http://example.com">
+                        <purchased_item>
                             <itemCode>223345</itemCode>
                             <item_count>1</item_count>
                         </purchased_item>
-                        <purchased_item xmlns="http://example.com">
+                        <purchased_item>
                             <itemCode>223300</itemCode>
                             <item_count>7</item_count>
                         </purchased_item>

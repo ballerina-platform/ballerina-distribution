@@ -12,7 +12,7 @@ type Invoice record {
     @xmldata:Attribute
     string 'xmlns = "example.com";
     @xmldata:Attribute
-    string attr?;
+    string status?;
 };
 
 @xmldata:Namespace {
@@ -24,14 +24,14 @@ type Item record {
 };
 
 public function main() returns error? {
-    // Creates an `Invoice` records.
+    // Creates an `Invoice` record.
     Invoice data = {
         id: 1,
         items: [
             {itemCode: "223345", count: 1},
             {itemCode: "223300", count: 7}
         ],
-        attr: "attr-val"
+        status: "paid"
     };
 
     // Converts a `record` representation to its XML representation.
