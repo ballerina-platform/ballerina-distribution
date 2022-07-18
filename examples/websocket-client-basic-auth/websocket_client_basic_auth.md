@@ -6,7 +6,7 @@ The client is enriched with the `Authorization: Basic <token>` header by
 passing the `websocket:CredentialsConfig` for the `auth` configuration of the
 client.<br/><br/>
 For more information on the underlying module,
-see the [Auth module](https://docs.central.ballerina.io/ballerina/auth/latest/).
+see the [Auth module](https://lib.ballerina.io/ballerina/auth/latest/).
 
 ::: code websocket_client_basic_auth.bal :::
 

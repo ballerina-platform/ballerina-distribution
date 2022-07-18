@@ -12,7 +12,7 @@ In the authorization phase, the scopes of the service/resource are compared
 against the scope included in the introspection response for at least one
 match between the two sets.<br/><br/>
 For more information on the underlying module,
-see the [OAuth2 module](https://docs.central.ballerina.io/ballerina/oauth2/latest/).
+see the [OAuth2 module](https://lib.ballerina.io/ballerina/oauth2/latest/).
 
 ::: code grpc_service.proto :::
 

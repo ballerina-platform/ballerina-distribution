@@ -7,7 +7,7 @@ subject are published, one member of the group is chosen randomly
 to receive the message. Although queue groups have multiple subscribers,
 each message is consumed by only one.<br/><br/>
 For more information on the underlying module, 
-see the [STAN module](https://docs.central.ballerina.io/ballerinax/stan/latest).
+see the [STAN module](https://lib.ballerina.io/ballerinax/stan/latest).
 
 ::: code publisher.bal :::
 
