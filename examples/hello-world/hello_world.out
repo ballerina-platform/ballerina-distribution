@@ -1,2 +1,2 @@
-bal run hello_world.bal
+$ bal run hello_world.bal
 Hello, World!
