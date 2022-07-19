@@ -58,7 +58,7 @@
     <scm>
         <url>https://github.com/ballerina-platform/ballerina-distribution.git</url>
         <developerConnection>scm:git:https://github.com/ballerina-platform/ballerina-distribution.git</developerConnection>
-        <connection>scm:git:https://github.com/NipunaMadhushan/ballerina-distribution.git</connection>
+        <connection>scm:git:https://github.com/ballerina-platform/ballerina-distribution.git</connection>
         <tag>HEAD</tag>
     </scm>
 
