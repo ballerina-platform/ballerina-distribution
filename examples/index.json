@@ -536,7 +536,7 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Order",
+                "name": "Ordering",
                 "url": "ordering",
                 "verifyBuild": true,
                 "verifyOutput": true,
