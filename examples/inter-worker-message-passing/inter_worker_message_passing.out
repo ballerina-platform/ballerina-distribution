@@ -1,2 +1,2 @@
-bal run inter_worker_message_passing.bal
+$ bal run inter_worker_message_passing.bal
 3
