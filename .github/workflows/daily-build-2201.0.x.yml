@@ -9,6 +9,7 @@ jobs:
   ubuntu-build:
 
     runs-on: ubuntu-latest
+    if: github.repository_owner == 'ballerina-platform'
 
     steps:
       - name: Checkout Repository
