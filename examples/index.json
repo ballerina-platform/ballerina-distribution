@@ -6,7 +6,7 @@
         "samples": [
             {
                 "name": "Hello world main",
-                "url": "hello-world-main",
+                "url": "hello-world",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
@@ -211,7 +211,7 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Error reporting",
+                "name": "Errors",
                 "url": "error-reporting",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -550,8 +550,8 @@
                 "isLearnByExample": true
             },
             {
-                "name": "tables querying",
-                "url": "tables-querying",
+                "name": "Querying tables",
+                "url": "querying-tables",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
@@ -989,7 +989,7 @@
         "category": "Language concepts",
         "samples": [
             {
-                "name": "assertions",
+                "name": "Assertions",
                 "url": "testerina-assertions",
                 "verifyBuild": false,
                 "verifyOutput": false,
