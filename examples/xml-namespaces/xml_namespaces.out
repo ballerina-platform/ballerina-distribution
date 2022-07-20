@@ -1,2 +1,2 @@
-bal run xml_namespaces.bal
+$ bal run xml_namespaces.bal
 {http://example.com/}e
