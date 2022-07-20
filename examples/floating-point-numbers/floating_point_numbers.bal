@@ -6,7 +6,7 @@ public function main() {
     int n = 5;
 
     // Numeric literals can use `f` or `F` suffix for them to be interpreted as `float` values.
-    // (similarly, the `d` or `D` suffix can be used for `decimal`).
+    // (Similarly, the `d` or `D` suffix can be used for `decimal`).
     var f = 12345f;
     io:println(f is float);
 
