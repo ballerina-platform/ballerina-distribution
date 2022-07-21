@@ -3,8 +3,7 @@ import ballerina/io;
 const KEY = "xyzzy";
 
 function matchTest(any v) returns string {
-    // The value of the `v` variable is matched against the
-    // given value match patterns.
+    // The value of the `v` variable is matched against the given value match patterns.
     match v {
         17 => {
             return "number";
@@ -25,7 +24,6 @@ function matchTest(any v) returns string {
             return "any";
         }
     }
-
 }
 
 public function main() {
