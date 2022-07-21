@@ -578,7 +578,7 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Query with streams",
+                "name": "Querying with streams",
                 "url": "querying-with-streams",
                 "verifyBuild": true,
                 "verifyOutput": true,
