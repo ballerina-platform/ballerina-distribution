@@ -701,7 +701,7 @@
         "samples": [
             {
                 "name": "Consume services: client objects",
-                "url": "consuming-services-client-objects",
+                "url": "consuming-services",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Failing intermittently due to github rate limiting",
