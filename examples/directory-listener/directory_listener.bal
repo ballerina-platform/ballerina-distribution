@@ -1,10 +1,12 @@
 import ballerina/file;
 import ballerina/log;
 
-// The listener monitors any modifications done to a specific directory.
-// Before running this, change the value of the 'path' field to indicate the path of the
-// directory that you want to monitor. As the recursive property is set to false,
-// the listener does not monitor the child directories of the main directory that it listens to.
+// In this example, the listener monitors any modifications done to a specific directory.
+// Before running the example, change the value of the 'path' field
+// to indicate the path of the directory that you want the listener to monitor.
+// As the recursive property is set to false,
+// the listener does not monitor the child directories of the main directory
+// that it listens to.
 listener file:Listener inFolder = new ({
     path: "/home/ballerina/fs-server-connector/observed-dir",
     recursive: false
