@@ -4,6 +4,8 @@ import ballerina/regex;
 public function main() {
 
     // Checks whether the given string matches the provided regex.
+    // You need to provide the original `string` and the regex to
+    // this string, which is to be matched with.
     boolean isMatched = regex:matches("This Should Match", "Th.*ch");
     io:println("Is the given string matched with the original string: ",
                 isMatched);
