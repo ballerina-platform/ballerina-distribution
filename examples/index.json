@@ -2873,7 +2873,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "XML from JSON conversion",
+                "name": "JSON to XML conversion ",
                 "url": "xml-from-json-conversion",
                 "verifyBuild": true,
                 "verifyOutput": true,
