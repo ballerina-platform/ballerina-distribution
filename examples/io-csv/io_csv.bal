@@ -8,17 +8,17 @@ public function main() returns error? {
     ["3", "Ronald", "120000"], ["4", "Roy", "6000"],
     ["5", "Oliver", "1100000"]];
 
-    // Writes the given content string[][] to a CSV file in csvFilePath1.
+    // Writes the given content `string[][]` to a CSV file in csvFilePath1.
     check io:fileWriteCsv(csvFilePath1, csvContent);
-    // Reads the previously saved CSV file in csvFilePath1 as a string[][], 
-    // if the write operation was successful.
+    // If the write operation was successful, then, performs a read operation to read
+    // the CSV content as a string array of arrays.
     string[][] readCsv = check io:fileReadCsv(csvFilePath1);
     io:println(readCsv);
 
     // Writes the given content as a stream to a CSV file in csvFilePath2.
     check io:fileWriteCsvFromStream(csvFilePath2, csvContent.toStream());
-    // Reads the CSV file in csvFilePath2 as a stream,
-    // if the previous step of writing a CSV file from stream was successful.
+    // If the write operation was successful, then, perform a read operation to read
+    // the CSV content as a stream.
     stream<string[], io:Error?> csvStream = check
                                         io:fileReadCsvAsStream(csvFilePath2);
     // Iterates through the stream and prints the content.
