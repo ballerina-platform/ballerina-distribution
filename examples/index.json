@@ -2865,14 +2865,14 @@
                 "isLearnByExample": false
             },
             {
-                "name": "XML to Ballerina record conversion",
+                "name": "XML to record conversion",
                 "url": "xml-to-record-conversion",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": false
             },
             {
-                "name": "Ballerina record to XML conversion",
+                "name": "Record to XML conversion",
                 "url": "xml-from-record-conversion",
                 "verifyBuild": true,
                 "verifyOutput": true,
