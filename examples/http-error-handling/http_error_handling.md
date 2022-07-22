@@ -7,7 +7,7 @@ with an entity-body. With the introduction of error interceptors, you can interc
 these errors and handle them as you wish. These error interceptors can be placed 
 anywhere in the interceptor pipeline. When there is an error, the execution jumps
 to the closest error interceptor.
-For more information, see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
+For more information, see the [HTTP module](https://lib.ballerina.io/ballerina/http/latest/).
 
 ::: code http_error_handling.bal :::
 

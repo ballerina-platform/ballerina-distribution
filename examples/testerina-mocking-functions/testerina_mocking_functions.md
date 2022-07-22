@@ -5,7 +5,7 @@ This allows you to isolate your tests from the other modules and functions.<br/>
 Function mocks can be stubbed with return values or with another user-defined function,
 which has the same signature as the original function.<br/><br/>
 For more information, see [Testing Ballerina Code](https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/)
-and the [Test Module](https://docs.central.ballerina.io/ballerina/test/latest/).
+and the [Test Module](https://lib.ballerina.io/ballerina/test/latest/).
 
 ::: code testerina_mocking_functions_main.bal :::
 

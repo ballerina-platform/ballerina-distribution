@@ -10,7 +10,7 @@ Raw template is evaluated by evaluating each expression and creating an object c
 <p>Important use case: SQL parameters.</p>
 Note that the relevant database driver JAR should be defined in the `Ballerina.toml` file as a dependency.
 This sample is based on an H2 database and the H2 database driver JAR need to be added to `Ballerina.toml` file.
-For a sample configuration and more information on the underlying module, see the [JDBC module](https://docs.central.ballerina.io/ballerinax/java.jdbc/latest/) .<br><br>
+For a sample configuration and more information on the underlying module, see the [JDBC module](https://lib.ballerina.io/ballerinax/java.jdbc/latest/) .<br><br>
 This sample is written using H2 2.1.210 and it is recommended to use H2 JAR with versions higher than 2.1.210.
 
 ::: code raw_templates.bal :::

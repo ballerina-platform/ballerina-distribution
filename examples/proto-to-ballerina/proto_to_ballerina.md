@@ -13,7 +13,7 @@ This path must be a project directory.
 `--mode` The mode (client or server) to generate code samples.
 If no value is specified for this parameter, only the stub file will be generated.<br/><br/>
 For more information on the underlying module, 
-see the [GRPC module](https://docs.central.ballerina.io/ballerina/grpc/latest/) and 
+see the [GRPC module](https://lib.ballerina.io/ballerina/grpc/latest/) and 
 [How to generate Ballerina code for Protocol Buffer Definition](https://ballerina.io/learn/how-to-generate-code-for-protocol-buffers/).
 
 ::: code proto_to_ballerina.proto :::

@@ -5,7 +5,7 @@ process in which two parties (the client and server) authenticate each other by
 verifying the digital certificates. It ensures that both parties are assured
 of each other's identity.<br/><br/>
 For more information on the underlying module, 
-see the [gRPC module](https://docs.central.ballerina.io/ballerina/grpc/latest/).
+see the [gRPC module](https://lib.ballerina.io/ballerina/grpc/latest/).
 
 ::: code grpc_client.proto :::
 

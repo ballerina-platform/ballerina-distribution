@@ -5,7 +5,7 @@ The resource method can return `anydata` type, an `http:Response` object, `Statu
 When returning `anydata`, the `@http:Payload` annotation can be used to specify the `Content-type` of the response
 additionally. Otherwise, the default content type of the respective return value type will be added.
 For more information on the underlying module, 
-see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
+see the [HTTP module](https://lib.ballerina.io/ballerina/http/latest/).
 
 ::: code http_resource_returns.bal :::
 

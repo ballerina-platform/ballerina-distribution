@@ -6,7 +6,7 @@ connect to an SSL/TLS listener through a one-way SSL/TLS connection
 TCP listener to host a service and the TCP client sends 
 requests to that listener.<br/><br/>
 For more information on the underlying module,
-see the [TCP module](https://docs.central.ballerina.io/ballerina/tcp/latest).
+see the [TCP module](https://lib.ballerina.io/ballerina/tcp/latest).
 
 ::: code tcp_transport_security_client.bal :::
 

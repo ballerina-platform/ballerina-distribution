@@ -3,7 +3,7 @@
 The HTTP client supports redirection. To follow redirects when calling an external HTTP server using the Ballerina
 HTTP client connector, set `followRedirect` to `true`.<br/><br/>
 For more information on the underlying module, 
-see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
+see the [HTTP module](https://lib.ballerina.io/ballerina/http/latest/).
 
 ::: code http_redirects.bal :::
 

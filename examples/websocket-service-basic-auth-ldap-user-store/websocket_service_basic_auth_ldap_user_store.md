@@ -11,7 +11,7 @@ In the authorization phase, the scopes of the service are compared
 against the scope included in the user store for at least one match between
 the two sets.<br/><br/>
 For more information on the underlying module,
-see the [Auth module](https://docs.central.ballerina.io/ballerina/auth/latest/).
+see the [Auth module](https://lib.ballerina.io/ballerina/auth/latest/).
 
 ::: code websocket_service_basic_auth_ldap_user_store.bal :::
 
