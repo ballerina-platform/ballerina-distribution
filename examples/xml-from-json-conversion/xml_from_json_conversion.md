@@ -1,4 +1,4 @@
-# XML JSON conversion
+# JSON to XML conversion
 
 The `xmldata` library provides API to perform conversion from JSON to XML.
 
