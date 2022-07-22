@@ -5,7 +5,7 @@ using the SSL or STARTTLS protocols. This sample includes receiving
 emails with default configurations over SSL using the default
 ports.<br/><br/>
 For more information on the underlying module, 
-see the [Email module](https://docs.central.ballerina.io/ballerina/email/latest/).
+see the [Email module](https://lib.ballerina.io/ballerina/email/latest/).
 
 ::: code receive_email_using_client.bal :::
 

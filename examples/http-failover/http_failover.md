@@ -7,7 +7,7 @@ are configured to mimic failure backends.
 After the first invocation the client resumes the failover from the last successful target. In this case it is
 the third target and the client will get the immediate response for subsequent calls.<br/><br/>
 For more information on the underlying module, 
-see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
+see the [HTTP module](https://lib.ballerina.io/ballerina/http/latest/).
 
 ::: code http_failover.bal :::
 

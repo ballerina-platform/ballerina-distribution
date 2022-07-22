@@ -1527,6 +1527,14 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Subscriptions",
+                "url": "graphql-subscriptions",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Context",
                 "url": "graphql-context",
                 "verifyBuild": true,

@@ -11,7 +11,7 @@ In the authorization phase, the scopes of the service are compared
 against the scope included in the JWT for at least one match between the two
 sets.<br/><br/>
 For more information on the underlying module, 
-see the [JWT module](https://docs.central.ballerina.io/ballerina/jwt/latest/).
+see the [JWT module](https://lib.ballerina.io/ballerina/jwt/latest/).
 
 ::: code websocket_service_jwt_auth.bal :::
 

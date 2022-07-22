@@ -7,7 +7,7 @@ multiple channels.
 Multiple services consuming messages from the same queue or from
 different queues can be attached to the same Listener.<br/><br/>
 For more information on the underlying module, 
-see the [RabbitMQ module](https://docs.central.ballerina.io/ballerinax/rabbitmq/latest).
+see the [RabbitMQ module](https://lib.ballerina.io/ballerinax/rabbitmq/latest).
 
 ::: code rabbitmq_consumer.bal :::
 

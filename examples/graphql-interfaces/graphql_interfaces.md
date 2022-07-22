@@ -9,7 +9,7 @@ to define objects that are implementing the interfaces. The Ballerina type
 inclusions are used to mark an object as an interface implementation.
 <br/><br/>
 For more information on the underlying package, see the
-[GraphQL package](https://docs.central.ballerina.io/ballerina/graphql/latest/).
+[GraphQL package](https://lib.ballerina.io/ballerina/graphql/latest/).
 
 ::: code graphql_interfaces.bal :::
 

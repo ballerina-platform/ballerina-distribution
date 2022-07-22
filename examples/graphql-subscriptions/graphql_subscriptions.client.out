@@ -1,0 +1,6 @@
+# Send a query to the GraphQL endpoint using a cURL command.
+# The query used: subscription { names }
+curl 'http://localhost:4000/graphql' -H 'Accept-Encoding: gzip, deflate, br' -H 'Content-Type: application/json' -H 'Accept: application/json' -H 'Connection: keep-alive' -H 'DNT: 1' -H 'Origin: file://' --data-binary '{"query":"subscription { names }"}' --compressed
+{ "data": { "names": "Walter White" } }
+{ "data": { "names": "Jesse Pinkman" } }
+{ "data": { "names": "Skyler White" } }
