@@ -3,8 +3,7 @@ import ballerina/http;
 import ballerina/lang.value;
 
 @graphql:ServiceConfig {
-    // Initialization of the `graphqlContext` should be provided to the
-    // `contextInit` field.
+    // Initialization of the `graphqlContext` should be provided to the `contextInit` field.
     contextInit: isolated function (http:RequestContext requestContext,
                                     http:Request request)
                                     returns graphql:Context|error {
@@ -12,9 +11,9 @@ import ballerina/lang.value;
         // Initialize the `graphql:Context` object.
         graphql:Context context = new;
 
-        // Retrieve the header named `scope` and set it to the context with the
-        // `scope` key. If the header does not exist, this will return an
-        // `error`, and thereby, the request will not be processed.
+        // Retrieve the header named `scope` and set it to the context with the `scope` key. If the
+        // header does not exist, this will return an `error`, and thereby, the request will not be
+        // processed.
         context.set("scope", check request.getHeader("scope"));
 
         // Finally, the context object has to be returned.
@@ -30,7 +29,6 @@ service /graphql on new graphql:Listener(4000) {
     function init() {
         // Initialize the `person` value.
         self.person = new("Walter White", 51, 737000.00);
-
     }
 
     // Resource functions can be defined without a context parameter.
@@ -38,18 +36,16 @@ service /graphql on new graphql:Listener(4000) {
         return "Hello, world";
     }
 
-    // If the context is needed, it should be defined as the first paramter of
-    // the resolver function.
+    // If the context is needed, it should be defined as the first parameter of the resolver
+    // function.
     resource function get profile(graphql:Context context)
     returns Person|error {
 
-        // Retrieve the `scope` attribute from the context. This will return
-        // a `graphql:Error` if the `scope` is not
-        // found in the context.
+        // Retrieve the `scope` attribute from the context. This will return a `graphql:Error` if
+        // the `scope` is not found in the context.
         value:Cloneable|isolated object {} scope = check context.get("scope");
 
-        // The profile information will be returned for the scope of either
-        // `admin` or `user`.
+        // The profile information will be returned for the scope of either `admin` or `user`.
         if scope is string {
             if scope == "admin" || scope == "user" {
                 return self.person;
@@ -96,6 +92,5 @@ public service class Person {
 
         // Return an `error` if the required scope is not found.
         return error("Permission denied");
-
     }
 }

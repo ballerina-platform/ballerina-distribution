@@ -8,7 +8,6 @@ service /graphql on new graphql:Listener(4000) {
     function init() {
         // Initialize the `person` value.
         self.person = new("Walter White", 51);
-
     }
 
     // A resource function represents a field in the root `Query` operation.
@@ -17,17 +16,15 @@ service /graphql on new graphql:Listener(4000) {
         return self.person;
     }
 
-    // A remote function represents a field in the root `Mutation` operation.
-    // After updating the name, the `person` object will be returned.
+    // A remote function represents a field in the root `Mutation` operation. After updating the
+    // name, the `person` object will be returned.
     remote function updateName(string name) returns Person {
-
         self.person.setName(name);
         return self.person;
     }
 
     // Remote function to update the age.
     remote function updateAge(int age) returns Person {
-
         self.person.setAge(age);
         return self.person;
     }
