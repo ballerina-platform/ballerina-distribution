@@ -10,8 +10,7 @@ public function main() returns error? {
 
     // Writes the given content string[][] to a CSV file.
     check io:fileWriteCsv(csvFilePath1, csvContent);
-    // Reads the previously saved CSV file in csvFilePath1 as a string[][], 
-    // if the write operation was successful.
+    // Reads the CSV file(the previously saved file) as a string[][].
     string[][] readCsv = check io:fileReadCsv(csvFilePath1);
     io:println(readCsv);
 
