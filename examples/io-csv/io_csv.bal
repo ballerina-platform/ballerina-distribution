@@ -16,7 +16,7 @@ public function main() returns error? {
 
     // Writes the given content as a stream to a CSV file.
     check io:fileWriteCsvFromStream(csvFilePath2, csvContent.toStream());
-    // Reads the CSV file(the previously saved file) as a stream.
+    // Reads the previously-saved CSV file as a stream.
     stream<string[], io:Error?> csvStream = check
                                         io:fileReadCsvAsStream(csvFilePath2);
     // Iterates through the stream and prints the content.
