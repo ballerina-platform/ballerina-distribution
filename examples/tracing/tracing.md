@@ -13,7 +13,7 @@ Invoke the service using cURL and access Jaeger UI in `http://localhost:16686`.
 
 ::: out ./examples/tracing/tracing.client.out :::
 
-Jaeger is the default tracing tool used in Ballerina. To start the Jaeger execute the below command.
+Jaeger is the default tracing tool used in Ballerina. To start the Jaeger, execute the command below.
 
 To start the service, navigate to the directory that contains the
 `.bal` file and execute the `bal run` command below with the `--observability-included` build time flag and the `Config.toml` runtime configuration file.
