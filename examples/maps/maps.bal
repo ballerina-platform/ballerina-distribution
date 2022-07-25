@@ -15,7 +15,7 @@ public function main() {
     // Adds a new entry for `z`.
     m["z"] = 5;
 
-    // Using `m["x"]` wouldn't work here because type would be `int?`, not `int`.
+    // Using `m["x"]` wouldn't work here because the type would be `int?` and not `int`.
     m["z"] = m.get("x");
 
 }
