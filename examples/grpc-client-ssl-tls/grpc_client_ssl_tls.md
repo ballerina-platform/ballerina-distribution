@@ -5,7 +5,7 @@ secured with SSL/TLS.
 Provide the `grpc:ClientSecureSocket` configurations to the client to
 initiate an HTTPS connection over HTTP/2.<br/><br/>
 For more information on the underlying module,
-see the [gRPC module](https://docs.central.ballerina.io/ballerina/grpc/latest/).
+see the [gRPC module](https://lib.ballerina.io/ballerina/grpc/latest/).
 
 ::: code grpc_client.proto :::
 

@@ -8,14 +8,14 @@ type PersonAccount record {
 service /bank on new http:Listener(9090) {
 
     // The resource returns the json type values and the `Content-type` header is set according to the `mediaType`
-    // field of [@http:Payload](https://docs.central.ballerina.io/ballerina/http/latest/records/HttpPayload)
+    // field of [@http:Payload](https://lib.ballerina.io/ballerina/http/latest/records/HttpPayload)
     // annotation.
     resource function get branch() returns
             @http:Payload {mediaType:"application/json+id"} json {
         return { branch : ["Colombo, Srilanka"]};
     }
 
-    // The [StatusCodeResponse](https://docs.central.ballerina.io/ballerina/http/latest/types#StatusCodeResponse)
+    // The [StatusCodeResponse](https://lib.ballerina.io/ballerina/http/latest/types#StatusCodeResponse)
     // can be state as return type to send responses with specific HTTP status codes.
     resource function get [string 'type]()
             returns http:Ok|http:InternalServerError {
@@ -33,7 +33,7 @@ service /bank on new http:Listener(9090) {
     }
 
     // Inline response records are useful to return headers and body along with status code. In this instance the
-    // return type is a subtype of [http:Created](https://docs.central.ballerina.io/ballerina/http/latest/records/Created)
+    // return type is a subtype of [http:Created](https://lib.ballerina.io/ballerina/http/latest/records/Created)
     // record, hence 201 response will be sent.
     resource function put account(@http:Payload string name)
             returns record {|*http:Created; PersonAccount body;|} {

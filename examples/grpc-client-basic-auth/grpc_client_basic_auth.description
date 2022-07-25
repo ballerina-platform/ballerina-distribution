@@ -4,4 +4,4 @@
 // header by passing the `grpc:CredentialsConfig` for the `auth` configuration
 // of the client.<br/><br/>
 // For more information on the underlying module,
-// see the [Auth module](https://docs.central.ballerina.io/ballerina/auth/latest/).
+// see the [Auth module](https://lib.ballerina.io/ballerina/auth/latest/).

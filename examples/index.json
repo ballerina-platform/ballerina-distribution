@@ -1527,6 +1527,14 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Subscriptions",
+                "url": "graphql-subscriptions",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Context",
                 "url": "graphql-context",
                 "verifyBuild": true,
@@ -1643,7 +1651,7 @@
     {
         "title": "WebSocket security",
         "column": 1,
-        "category": "Working Over the Network",
+        "category": "Working over the network",
         "samples": [
             {
                 "name": "Service - SSL/TLS",
@@ -2858,8 +2866,15 @@
         "category": "Common libraries",
         "samples": [
             {
-                "name": "XML JSON conversion",
-                "url": "xml-json-conversion",
+                "name": "XML to JSON conversion",
+                "url": "xml-to-json-conversion",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "JSON to XML conversion ",
+                "url": "xml-from-json-conversion",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": false
