@@ -2,7 +2,7 @@ import ballerina/io;
 import ballerina/xmldata;
 
 public function main() returns error? {
-    // Creates a XML value.
+    // Creates an XML value.
     xml xmlValue = xml `<Store id="AST">
                           <name>Anne</name>
                           <address>
