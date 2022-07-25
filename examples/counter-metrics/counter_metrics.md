@@ -10,7 +10,7 @@ For more information about configs and observing applications, see [Observing Ba
 
 ::: code counter_metrics.bal :::
 
-Invoke the service three times using the cURL command below.
+Invoke the service using the cURL command below.
 
 ::: out ./examples/counter-metrics/counter_metrics.client.out :::
 
