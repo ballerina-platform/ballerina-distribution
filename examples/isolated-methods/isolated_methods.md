@@ -11,6 +11,6 @@ a `listener` makes calls to a `remote` or `resource` method,
 
 ::: code isolated_methods.bal :::
 
-Executing the above code, produces the below output.
+Executing the above code gives the output below.
 
 ::: out isolated_methods.out :::

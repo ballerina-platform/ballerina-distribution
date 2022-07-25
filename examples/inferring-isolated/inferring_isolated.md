@@ -15,6 +15,6 @@ being `isolated`.</p>
 
 ::: code inferring_isolated.bal :::
 
-Executing the above code, gives the below output.
+Executing the above code gives the output below.
 
 ::: out inferring_isolated.out :::

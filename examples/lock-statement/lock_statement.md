@@ -7,6 +7,6 @@ compile-time lock inference.
 
 ::: code lock_statement.bal :::
 
-By running the above code, the below output is produced
+Executing the above code gives the output below.
 
 ::: out lock_statement.out :::
