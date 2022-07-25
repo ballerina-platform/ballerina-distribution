@@ -19,13 +19,10 @@ public function main() {
     ];
 
     Employee[] sorted = from var e in employees
-                        // The `order by` clause sorts the output items based on the
-                        // given `order-key` and `order-direction`. The `order-key`
-                        // must be an `ordered` type. The `order-direction` is `ascending`
-                        // if not specified explicitly.
+                        // The `order by` clause sorts the output items based on the given `order-key` and `order-direction`.
+                        // The `order-key` must be an ordered type.
+                        // The `order-direction` is `ascending` if not specified explicitly.
                         order by e.firstName ascending, e.lastName descending
-
-
                         select e;
 
     foreach Employee e in sorted {
