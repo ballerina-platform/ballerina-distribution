@@ -13,7 +13,7 @@ the two sets.<br/>
 `Config.toml` has defined three users - alice, ldclakmal, and eve. Each user has a
 password and optionally assigned scopes as an array.<br/><br/>
 For more information on the underlying module,
-see the [Auth module](https://docs.central.ballerina.io/ballerina/auth/latest/).
+see the [Auth module](https://lib.ballerina.io/ballerina/auth/latest/).
 
 ::: code grpc_service.proto :::
 

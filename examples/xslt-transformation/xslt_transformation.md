@@ -6,6 +6,6 @@ For more information on the underlying module, see the [XSLT module](https://doc
 
 ::: code xslt_transformation.bal :::
 
-To run this sample use the `bal run` command.
+To run this sample, use the `bal run` command.
 
 ::: out xslt_transformation.out :::

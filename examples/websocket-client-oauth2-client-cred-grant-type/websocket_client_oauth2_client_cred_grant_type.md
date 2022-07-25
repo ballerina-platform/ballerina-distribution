@@ -6,7 +6,7 @@ The client is enriched with the `Authorization: Bearer <token>` header by
 passing the `websocket:OAuth2ClientCredentialsGrantConfig` for the `auth`
 configuration of the client.<br/><br/>
 For more information on the underlying module,
-see the [OAuth2 module](https://docs.central.ballerina.io/ballerina/oauth2/latest/).
+see the [OAuth2 module](https://lib.ballerina.io/ballerina/oauth2/latest/).
 
 ::: code websocket_client_oauth2_client_cred_grant_type.bal :::
 

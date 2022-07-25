@@ -3,7 +3,7 @@
 In this example, the underlying connections of the subscriber and the publisher are
 secured with TLS/SSL and Basic Auth.<br/><br/>
 For more information on the underlying module,
-see the [NATS module](https://docs.central.ballerina.io/ballerinax/nats/latest).
+see the [NATS module](https://lib.ballerina.io/ballerinax/nats/latest).
 
 ::: code publisher.bal :::
 
