@@ -9,7 +9,7 @@ For more information about configs and observing applications, see [Observing Ba
 
 ::: code tracing.bal :::
 
-Invoke the service using cURL and access Jaeger UI in `http://localhost:16686`.
+Invoke the service using cURL and access [Jaeger UI](`http://localhost:16686`).
 
 ::: out ./examples/tracing/tracing.client.out :::
 
