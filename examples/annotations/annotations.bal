@@ -30,5 +30,6 @@ public function main() {
     typedesc<any> t = typeof a;
     // Access annotation.
     AnnotRecord? ann = t.@annot;
+
     io:println(ann);
 }
