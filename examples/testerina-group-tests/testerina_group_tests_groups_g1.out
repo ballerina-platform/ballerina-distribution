@@ -1,0 +1,17 @@
+$ bal test --groups g1 testerina_group_tests.bal
+
+Compiling source
+    testerina_group_tests.bal
+
+Running tests
+
+    testerina_group_tests.bal
+I'm in test belonging to group g1!
+I'm in test belonging to groups g1 and g2!
+
+        [pass] testFunction1
+        [pass] testFunction2
+
+        2 passing
+        0 failing
+        0 skipped

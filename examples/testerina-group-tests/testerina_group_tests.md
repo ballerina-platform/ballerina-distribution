@@ -11,3 +11,15 @@ and the [Test Module](https://docs.central.ballerina.io/ballerina/test/latest/).
 ::: code testerina_group_tests.bal :::
 
 ::: out testerina_group_tests.out :::
+
+Run the tests belonging to the `g1` and `g2` groups
+
+::: out testerina_group_tests_groups_g1_g2.out :::
+
+Run the tests belonging to the `g1` group
+
+::: out testerina_group_tests_groups_g1.out :::
+
+Run all tests other than the tests belonging to the `g2` group
+
+::: out testerina_group_tests_disable_groups.out :::
