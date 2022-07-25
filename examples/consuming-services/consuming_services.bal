@@ -6,8 +6,7 @@ public function main() returns error? {
     http:Client httpClient = check new ("https://api.github.com");
 
     // The remote method calls use the `->` syntax. This enables the sequence diagram view.
-    http:Response resp =
-                    check httpClient->get("/orgs/ballerina-platform/repos");
+    http:Response resp = check httpClient->get("/orgs/ballerina-platform/repos");
 
     io:println(resp.statusCode);
 }
