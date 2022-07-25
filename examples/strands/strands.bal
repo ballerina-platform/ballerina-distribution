@@ -3,7 +3,7 @@ import ballerina/io;
 function userSpeakerService(string userName) {
     string messagePrefix = userName + " speaking : ";
     foreach int i in 0...9 {
-       io:println(messagePrefix + i.toBalString());
+       io:println(messagePrefix, i);
     }
 }
 
