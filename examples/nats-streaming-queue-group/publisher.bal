@@ -12,13 +12,11 @@ public function main() returns error? {
     while (message != ESCAPE) {
         message = io:readln("Message: ");
         if message != ESCAPE {
-
             // Produces a message to the specified subject.
             string result = check publisher->publishMessage({
                                     content: message.toBytes(),
                                     subject: "demo"});
-            io:println("GUID " + result +
-                            " received for the produced message.");
+            io:println("GUID " + result + " received for the produced message.");
         }
     }
 }
