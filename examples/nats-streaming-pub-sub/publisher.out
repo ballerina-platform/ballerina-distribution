@@ -1,2 +1,2 @@
-bal run publisher.bal
+$ bal run publisher.bal
 GUID m2jS6SLLefK325DWTkkwBh received for the produced message.

@@ -1,10 +1,11 @@
-# Publish/subscribe
+# Publish/Subscribe
 
 The `nats` streaming library provides the functionality of a basic publish/subscribe.
 In order to run this sample, a NATS Streaming server should be
-running on the corresponding port used in the sample.<br/><br/>
+running on the corresponding port used in the sample.
+
 For more information on the underlying module, 
-see the [STAN module](https://docs.central.ballerina.io/ballerinax/stan/latest).
+see the [STAN module](https://lib.ballerina.io/ballerinax/stan/latest).
 
 ::: code publisher.bal :::
 
