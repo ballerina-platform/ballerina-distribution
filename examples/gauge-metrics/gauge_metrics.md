@@ -11,6 +11,11 @@ For more information about configs and observing applications, see [Observing Ba
 
 ::: code gauge_metrics.bal :::
 
-::: out gauge_metrics.client.out :::
+Invoke the service using the cURL command below.
 
-::: out gauge_metrics.server.out :::
+::: out ./examples/gauge-metrics/gauge_metrics.client.out :::
+
+To start the service, navigate to the directory that contains the
+`.bal` file, and execute the `bal run` command below with the `--observability-included` build time flag and the `Config.toml` runtime configuration file.
+
+::: out ./examples/gauge-metrics/gauge_metrics.server.out :::
