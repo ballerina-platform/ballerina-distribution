@@ -15,4 +15,6 @@ provided they follow the above rules.</p>
 
 ::: code isolated_variables.bal :::
 
+Executing the above code gives the output below.
+
 ::: out isolated_variables.out :::
