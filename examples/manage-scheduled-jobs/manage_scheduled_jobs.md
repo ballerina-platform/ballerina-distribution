@@ -2,7 +2,7 @@
 
 The `task` library provides functions to manage the scheduled jobs such as pause, resume, unschedule, and etc.
 
-For more information on the underlying module, see the [`Task` module](https://lib.ballerina.io/ballerina/task/latest/).
+For more information on the underlying module, see the [`task` module](https://lib.ballerina.io/ballerina/task/latest/).
 
 ::: code manage_scheduled_jobs.bal :::
 

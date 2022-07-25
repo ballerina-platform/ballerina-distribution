@@ -2,7 +2,7 @@
 
 The `file` provides APIs to perform temp file and directory operations.
 
-For more information on the underlying module, see the [File module](https://lib.ballerina.io/ballerina/file/latest/).
+For more information on the underlying module, see the [`file` module](https://lib.ballerina.io/ballerina/file/latest/).
 
 ::: code temp_files_directories.bal :::
 
