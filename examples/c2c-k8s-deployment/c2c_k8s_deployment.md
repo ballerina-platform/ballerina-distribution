@@ -13,7 +13,7 @@ For all the supported key value properties, see [Code to Cloud Specification](ht
 Execute the `bal build` command to build the Ballerina package. Code to Cloud generates only one container per package.
 ::: out build_output.out :::
 
-Push the created docker image to docker hub.
+Push the created Docker image to Docker Hub.
 ::: out docker_push.out :::
 
 Create the deployment using the Kubernetes artifacts.
@@ -28,7 +28,7 @@ Expose via NodePort to test in the developer environment.
 Get the External IP and port of the Kubernetes service.
 ::: out kubectl_svc.out :::
 
-If the External IP of the `hello-svc-local` service is `<none>`, you need to follow cluster specific steps to obtain the external IP. If you are using Minikube, you can use the `minikube ip` command to obtain the IP.
+If the External IP of the `hello-svc-local` service is `<none>`, you need to follow cluster-specific steps to obtain the external IP. If you are using Minikube, you can use the `minikube ip` command to obtain the IP.
 ::: out minikube_ip.out :::
 
 Access the deployed service via CURL.

@@ -1,7 +1,7 @@
 $ az functionapp deployment source config-zip -g functions1777 -n functions1777 --src  <project_dir>/target/bin/azure-functions.zip
-Getting scm site credentials for zip deployment
-Starting zip deployment. This operation can take a while to complete ...
-Deployment endpoint responded with status code 202
+Getting the SCM site credentials for the ZIP file deployment.
+Starting the ZIP deployment. This operation can take a while to complete ...
+The deployment endpoint responded with the status code 202.
 {
 "active": true,
 "author": "N/A",

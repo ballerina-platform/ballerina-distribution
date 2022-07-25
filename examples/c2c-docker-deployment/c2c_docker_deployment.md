@@ -6,7 +6,7 @@ For more information, see [Code to Cloud Deployment](/learn/run-ballerina-progra
 ::: code c2c_docker_deployment.bal :::
 
 Before you build the package, you need to override some default values taken by the compiler. To do this, create a filed named `Cloud.toml` in the package directory, and add the content below to it.
-For all the supported key value properties, see [Code to Cloud Specification](https://github.com/ballerina-platform/ballerina-spec/blob/master/c2c/code-to-cloud-spec.md).
+For all the supported key value properties, see [Code to Cloud specification](https://github.com/ballerina-platform/ballerina-spec/blob/master/c2c/code-to-cloud-spec.md).
 
 ::: code Cloud.toml :::
 
