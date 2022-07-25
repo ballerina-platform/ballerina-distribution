@@ -2,7 +2,7 @@ import ballerina/io;
 
 function foo(json j) returns error? {
     match j {
-        // Match statement can be used to match maps.
+        // A `match` statement can be used to match maps.
         // Patterns on the left hand side in a match statement can have variable parts that can be
         // captured.
         // Match semantics are open (may have fields other than those specified in the pattern).

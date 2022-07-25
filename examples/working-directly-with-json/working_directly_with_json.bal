@@ -15,7 +15,7 @@ json j = {
 json v = check j.x.y;
 string s1 = check v.z;
 
-// `ensureType()` method can also be used to perform conversions.
+// The `ensureType()` method can also be used to perform conversions.
 string s2 = check value:ensureType(v.z, string);
 
 public function main() {
