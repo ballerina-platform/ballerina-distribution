@@ -1,1 +1,1 @@
-bal run providing_services.bal
+$ bal run providing_services.bal

@@ -1,2 +1,2 @@
-curl "localhost:8080/demo/greeting/hello?name=Ballerina"
+$ curl "localhost:8080/demo/greeting/hello?name=Ballerina"
 Hello, Ballerina
