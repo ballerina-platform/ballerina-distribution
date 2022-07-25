@@ -15,7 +15,7 @@ public function main() returns error? {
     string[][] readCsv = check io:fileReadCsv(csvFilePath1);
     io:println(readCsv);
 
-    // Writes the given content as a stream to a CSV file in csvFilePath2.
+    // Writes the given content as a stream to a CSV file in `csvFilePath2`.
     check io:fileWriteCsvFromStream(csvFilePath2, csvContent.toStream());
     // If the write operation was successful, then, perform a read operation to read
     // the CSV content as a stream.
