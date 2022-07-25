@@ -15,4 +15,6 @@ variable whose type is an `isolated` object.</p>
 
 ::: code isolated_objects.bal :::
 
+By running the code above, the below output is generated.
+
 ::: out isolated_objects.out :::

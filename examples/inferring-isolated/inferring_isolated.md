@@ -15,4 +15,6 @@ being `isolated`.</p>
 
 ::: code inferring_isolated.bal :::
 
+Executing the above code, gives the below output.
+
 ::: out inferring_isolated.out :::
