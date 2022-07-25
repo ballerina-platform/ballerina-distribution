@@ -1,11 +1,7 @@
 # Defining classes
 
-A module can contain `class` definitions.
-`init` method initializes the object.
-Arguments to `new` are passed as arguments to `init`.
-Methods use `self` to access their object.
-`private` means accessible only by code within the `class` definition.
+A module can contain `class` definitions. `init` method initializes the object and arguments to `new` are directed as arguments to `init`. Methods use `self` to access their object. The `private` qualifier used in members means accessible only by the code within the `class` definition.
 
-::: code ./examples/defining-classes/defining_classes.bal :::
+::: code defining_classes.bal :::
 
-::: out ./examples/defining-classes/defining_classes.out :::
+::: out defining_classes.out :::

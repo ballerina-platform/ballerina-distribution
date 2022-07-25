@@ -7,6 +7,6 @@ Ballerina syntax is compatible with `JSON` and allows `null` for `()` for JSON c
 `table` values are converted to `arrays`. `xml` values are converted to `strings`.`json` and `xml`
 types are not parallel.
 
-::: code ./examples/json-type/json_type.bal :::
+::: code json_type.bal :::
 
-::: out ./examples/json-type/json_type.out :::
+::: out json_type.out :::

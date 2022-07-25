@@ -10,8 +10,8 @@ service declaration.
 Annotations can be used to refine the mapping between 
 Ballerina-declared type and wire format.
 
-::: code ./examples/resource-method-typing/resource_method_typing.bal :::
+::: code resource_method_typing.bal :::
 
-::: out ./examples/resource-method-typing/resource_method_typing.client.out :::
+::: out resource_method_typing.client.out :::
 
-::: out ./examples/resource-method-typing/resource_method_typing.server.out :::
+::: out resource_method_typing.server.out :::

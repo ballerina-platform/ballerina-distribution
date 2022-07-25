@@ -6,6 +6,6 @@ type of a value is a subtype of `readonly`, then at runtime the value can never 
 by runtime checks on the mutating structures. With `readonly` field, both the field and its value
 are immutable.
 
-::: code ./examples/readonly-type/readonly_type.bal :::
+::: code readonly_type.bal :::
 
-::: out ./examples/readonly-type/readonly_type.out :::
+::: out readonly_type.out :::

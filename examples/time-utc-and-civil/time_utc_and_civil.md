@@ -5,6 +5,6 @@ vice versa.
 For more information on the underlying module,
 see the [Time module](https://docs.central.ballerina.io/ballerina/time/latest/).
 
-::: code ./examples/time-utc-and-civil/time_utc_and_civil.bal :::
+::: code time_utc_and_civil.bal :::
 
-::: out ./examples/time-utc-and-civil/time_utc_and_civil.out :::
+::: out time_utc_and_civil.out :::

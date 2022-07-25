@@ -6,6 +6,6 @@ initiate an HTTPS connection.<br/><br/>
 For more information on the underlying module,
 see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
 
-::: code ./examples/http-client-ssl-tls/http_client_ssl_tls.bal :::
+::: code http_client_ssl_tls.bal :::
 
-::: out ./examples/http-client-ssl-tls/http_client_ssl_tls.out :::
+::: out http_client_ssl_tls.out :::

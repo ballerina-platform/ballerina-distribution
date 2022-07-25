@@ -4,6 +4,6 @@ Key fields can be structured as long as they belong to any subtype of plain data
 must be immutable. The initializer of the `readonly` field will be constructed as immutable. In other cases,
 can use `cloneReadOnly()` to create an immutable value.
 
-::: code ./examples/structured-keys/structured_keys.bal :::
+::: code structured_keys.bal :::
 
-::: out ./examples/structured-keys/structured_keys.out :::
+::: out structured_keys.out :::

@@ -1,9 +1,7 @@
 # Function values
 
-Functions are values and work as closures.
-Function type is a separate basic type.
-Anonymous function and type syntax look like function definition without the name.
+Functions are values, which work as closures. The function type is a separate basic type. Anonymous functions and the type syntax look like a function definition without the name.
 
-::: code ./examples/function-values/function_values.bal :::
+::: code function_values.bal :::
 
-::: out ./examples/function-values/function_values.out :::
+::: out function_values.out :::

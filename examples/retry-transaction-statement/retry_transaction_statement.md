@@ -7,6 +7,6 @@ If that returns `true`, then it executes the block again.
 `retry` has an optional type parameter giving class of `RetryManager` to create, and optional arguments to new `DefaultRetryManager` tries `n` times.
 `retry` can be used without `transaction`.
 
-::: code ./examples/retry-transaction-statement/retry_transaction_statement.bal :::
+::: code retry_transaction_statement.bal :::
 
-::: out ./examples/retry-transaction-statement/retry_transaction_statement.out :::
+::: out retry_transaction_statement.out :::

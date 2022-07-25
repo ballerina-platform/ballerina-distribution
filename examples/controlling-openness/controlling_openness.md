@@ -3,6 +3,6 @@
 Use `record {| ... |}` to describe a `record` type that allows exclusively what is specified in the body.
 Use `T...` to allow other fields of type `T`. `map<T>` is same as `record {| T...; |}`.
 
-::: code ./examples/controlling-openness/controlling_openness.bal :::
+::: code controlling_openness.bal :::
 
-::: out ./examples/controlling-openness/controlling_openness.out :::
+::: out controlling_openness.out :::

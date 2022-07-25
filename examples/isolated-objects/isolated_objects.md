@@ -13,6 +13,6 @@ Mutable fields of an `isolated` object,
 <p>Isolated root concept treats `isolated` objects as opaque. Isolated functions can access a `final`
 variable whose type is an `isolated` object.</p>
 
-::: code ./examples/isolated-objects/isolated_objects.bal :::
+::: code isolated_objects.bal :::
 
-::: out ./examples/isolated-objects/isolated_objects.out :::
+::: out isolated_objects.out :::

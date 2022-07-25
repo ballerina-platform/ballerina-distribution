@@ -5,6 +5,6 @@ time from the epoch `1970-01-01T00:00:00`.
 For more information on the underlying module,
 see the [Time module](https://docs.central.ballerina.io/ballerina/time/latest/).
 
-::: code ./examples/time-utc/time_utc.bal :::
+::: code time_utc.bal :::
 
-::: out ./examples/time-utc/time_utc.out :::
+::: out time_utc.out :::

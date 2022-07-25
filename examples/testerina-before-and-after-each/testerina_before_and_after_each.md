@@ -6,6 +6,6 @@ This can be used for repeatedly initializing and tearing down test level aspects
 For more information, see [Testing Ballerina Code](https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/)
 and the [Test Module](https://docs.central.ballerina.io/ballerina/test/latest/).
 
-::: code ./examples/testerina-before-and-after-each/testerina_before_and_after_each.bal :::
+::: code testerina_before_and_after_each.bal :::
 
-::: out ./examples/testerina-before-and-after-each/testerina_before_and_after_each.out :::
+::: out testerina_before_and_after_each.out :::

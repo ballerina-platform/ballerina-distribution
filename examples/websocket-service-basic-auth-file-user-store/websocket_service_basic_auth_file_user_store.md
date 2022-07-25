@@ -15,6 +15,6 @@ password and optionally assigned scopes as an array.<br/><br/>
 For more information on the underlying module,
 see the [Auth module](https://docs.central.ballerina.io/ballerina/auth/latest/).
 
-::: code ./examples/websocket-service-basic-auth-file-user-store/websocket_service_basic_auth_file_user_store.bal :::
+::: code websocket_service_basic_auth_file_user_store.bal :::
 
-::: out ./examples/websocket-service-basic-auth-file-user-store/websocket_service_basic_auth_file_user_store.server.out :::
+::: out websocket_service_basic_auth_file_user_store.server.out :::

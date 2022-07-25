@@ -5,8 +5,8 @@ unless there are headers configured at the resource-level. Ballerina CORS suppor
 For more information on the underlying module, 
 see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
 
-::: code ./examples/http-cors/http_cors.bal :::
+::: code http_cors.bal :::
 
-::: out ./examples/http-cors/http_cors.client.out :::
+::: out http_cors.client.out :::
 
-::: out ./examples/http-cors/http_cors.server.out :::
+::: out http_cors.server.out :::

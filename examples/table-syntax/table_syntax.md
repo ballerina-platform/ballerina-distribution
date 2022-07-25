@@ -16,6 +16,6 @@ after the record is created. The `table` type gives the type of the row and the 
 The `table constructor expression` looks like an `array constructor`. The `foreach` statement will
 iterate over a table's rows in their order. Use `t[k]` to access a row using its key.</p>
 
-::: code ./examples/table-syntax/table_syntax.bal :::
+::: code table_syntax.bal :::
 
-::: out ./examples/table-syntax/table_syntax.out :::
+::: out table_syntax.out :::

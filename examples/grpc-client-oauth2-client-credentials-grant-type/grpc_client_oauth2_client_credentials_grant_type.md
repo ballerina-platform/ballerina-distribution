@@ -8,10 +8,10 @@ header by passing the `grpc:OAuth2ClientCredentialsGrantConfig` for the
 For more information on the underlying module,
 see the [OAuth2 module](https://docs.central.ballerina.io/ballerina/oauth2/latest/).
 
-::: code ./examples/grpc-client-oauth2-client-credentials-grant-type/grpc_client.proto :::
+::: code grpc_client.proto :::
 
-::: out ./examples/grpc-client-oauth2-client-credentials-grant-type/grpc_client.out :::
+::: out grpc_client.out :::
 
-::: code ./examples/grpc-client-oauth2-client-credentials-grant-type/grpc_client_oauth2_client_credentials_grant_type.bal :::
+::: code grpc_client_oauth2_client_credentials_grant_type.bal :::
 
-::: out ./examples/grpc-client-oauth2-client-credentials-grant-type/grpc_client_oauth2_client_credentials_grant_type.out :::
+::: out grpc_client_oauth2_client_credentials_grant_type.out :::

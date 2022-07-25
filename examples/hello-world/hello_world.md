@@ -2,6 +2,8 @@
 
 Let's write the `Hello World` program in Ballerina.
 
-::: code ./examples/hello-world/hello_world.bal :::
+::: code hello_world.bal :::
 
-::: out ./examples/hello-world/hello_world.out :::
+To run this sample, place the source code in a file named `hello_world.bal` and use the `bal run` command.
+
+::: out hello_world.out :::

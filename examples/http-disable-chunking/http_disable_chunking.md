@@ -6,8 +6,8 @@ the client options.<br/><br/>
 For more information on the underlying module, 
 see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
 
-::: code ./examples/http-disable-chunking/http_disable_chunking.bal :::
+::: code http_disable_chunking.bal :::
 
-::: out ./examples/http-disable-chunking/http_disable_chunking.client.out :::
+::: out http_disable_chunking.client.out :::
 
-::: out ./examples/http-disable-chunking/http_disable_chunking.server.out :::
+::: out http_disable_chunking.server.out :::

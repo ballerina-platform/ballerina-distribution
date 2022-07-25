@@ -14,10 +14,10 @@ Message delivery may begin at:
 For more information on the underlying module, 
 see the [STAN module](https://docs.central.ballerina.io/ballerinax/stan/latest).
 
-::: code ./examples/nats-streaming-start-position/publisher.bal :::
+::: code publisher.bal :::
 
-::: out ./examples/nats-streaming-start-position/publisher.out :::
+::: out publisher.out :::
 
-::: code ./examples/nats-streaming-start-position/subscriber.bal :::
+::: code subscriber.bal :::
 
-::: out ./examples/nats-streaming-start-position/subscriber.out :::
+::: out subscriber.out :::

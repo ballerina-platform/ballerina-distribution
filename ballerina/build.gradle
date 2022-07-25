@@ -1136,6 +1136,7 @@ task generateCache(dependsOn: ':cache-generator:build') {
             }
         }
         def sortedLibs = []
+        def dependencyMap = [:]
         for (currentLevel in 1..maxLevel) {
             parsedJson.standard_library.each { module ->
                 if (module.level == currentLevel) {
@@ -1149,6 +1150,15 @@ task generateCache(dependsOn: ':cache-generator:build') {
         configurations.ballerinaStdLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
             configStdlibs.add(artifact.name + "-zip")
         }
+
+        sortedLibs.each { lib ->
+            if (configStdlibs.contains(lib)) {
+                def versionList = [file(file("${buildDir}/target/extracted-distributions/" + lib +
+                        "/bala").listFiles()[0].toString() + "/" + lib.split("-")[0]).listFiles()[0].name]
+                dependencyMap["${lib}"] = versionList
+            }
+        }
+
         sortedLibs.each { lib ->
             if (configStdlibs.contains(lib)) {
                 def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + lib
@@ -1173,6 +1183,45 @@ task generateCache(dependsOn: ':cache-generator:build') {
                             commandLine 'sh', '-c', "${distPath}/bin/bal gencache ${balaPath} ${jbalPath}"
                             ignoreExitValue true
                         }
+                    }
+                    def dependencyGraphJson = file("${balaPath}/dependency-graph.json")
+                    def parsedDependencyJson = new JsonSlurper().parseText(dependencyGraphJson.text)
+                    parsedDependencyJson.modules.dependencies.each { dependency ->
+                        if ( dependency.module_name.size() > 0 ) {
+                            for ( i in 0..dependency.module_name.size()) {
+                                def moduleName = dependency.module_name[i].toString() + "-ballerina-zip"
+                                if ( sortedLibs.contains(moduleName) ) {
+                                    if ( !dependencyMap["${moduleName}"].contains(dependency.version[i].toString()))
+                                    dependencyMap["${moduleName}"].add(dependency.version[i].toString())
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // generate caches for minor versions of Standard Libraries
+        dependencyMap.each { key, val ->
+            if (val.size > 1 && key != "observe-ballerina-zip") {
+                println(val)
+                def minorVersion = val.sort().reverse()[1]
+                download {
+                    src "https://central.ballerina.io/ballerina/${key.split("-")[0]}/${minorVersion}"
+                    dest "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/repo/bala/ballerina/${key.split("-")[0]}"
+                }
+                // generate caches
+                String balaPathMinor = new File("${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/repo/bala/ballerina/${key.split("-")[0]}/${minorVersion}").listFiles()[0].toString()
+                if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+                    exec {
+                        workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+                        commandLine 'cmd', '/c', "${distPath}/bin/bal.bat gencache ${balaPathMinor} ${distPath}"
+                        ignoreExitValue true
+                    }
+                } else {
+                    exec {
+                        workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+                        commandLine 'sh', '-c', "${distPath}/bin/bal gencache ${balaPathMinor} ${distPath}"
+                        ignoreExitValue true
                     }
                 }
             }

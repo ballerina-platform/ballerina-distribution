@@ -7,10 +7,10 @@ initiate an HTTPS connection over HTTP/2.<br/><br/>
 For more information on the underlying module,
 see the [gRPC module](https://docs.central.ballerina.io/ballerina/grpc/latest/).
 
-::: code ./examples/grpc-client-ssl-tls/grpc_client.proto :::
+::: code grpc_client.proto :::
 
-::: out ./examples/grpc-client-ssl-tls/grpc_client.out :::
+::: out grpc_client.out :::
 
-::: code ./examples/grpc-client-ssl-tls/grpc_client_ssl_tls.bal :::
+::: code grpc_client_ssl_tls.bal :::
 
-::: out ./examples/grpc-client-ssl-tls/grpc_client_ssl_tls.out :::
+::: out grpc_client_ssl_tls.out :::

@@ -9,6 +9,6 @@ a `listener` makes calls to a `remote` or `resource` method,
 <li>it has no way to ensure the safety of the object itself (since the object may have fields)</li>
 </ul>
 
-::: code ./examples/isolated-methods/isolated_methods.bal :::
+::: code isolated_methods.bal :::
 
-::: out ./examples/isolated-methods/isolated_methods.out :::
+::: out isolated_methods.out :::

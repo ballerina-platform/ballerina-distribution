@@ -6,6 +6,6 @@ a Ballerina function with "@awslambda:Function", which should have
 the function signature `function (awslambda:Context, json|EventType) returns json|error`.<br/><br/>
 For more information, see the [AWS Lambda Deployment Guide](https://ballerina.io/learn/deployment/aws-lambda/).
 
-::: code ./examples/aws-lambda-deployment/aws_lambda_deployment.bal :::
+::: code aws_lambda_deployment.bal :::
 
-::: out ./examples/aws-lambda-deployment/aws_lambda_deployment.out :::
+::: out aws_lambda_deployment.out :::

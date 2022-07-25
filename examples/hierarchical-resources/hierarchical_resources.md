@@ -1,10 +1,13 @@
 # Hierarchical resources
 
-Resource name is relative path, which can have multiple path segments.
-Base path is absolute path. A listener can have multiple services each with different base paths.
+Resource name is a relative path, which can have multiple path segments. Base path is an absolute path. A listener can have multiple services each with different base paths.
 
-::: code ./examples/hierarchical-resources/hierarchical_resources.bal :::
+::: code hierarchical_resources.bal :::
 
-::: out ./examples/hierarchical-resources/hierarchical_resources.client.out :::
+Run the service using the `bal run` command.
 
-::: out ./examples/hierarchical-resources/hierarchical_resources.server.out :::
+::: out hierarchical_resources.server.out :::
+
+Run this cURL command to invoke the resource.
+
+::: out hierarchical_resources.client.out :::

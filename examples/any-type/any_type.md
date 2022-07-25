@@ -1,10 +1,9 @@
 # Any type
 
-`any` means any value except an `error` value.
-Equivalent to a union of all non-error basic types.
-Use `any|error` for absolutely any value.
-The `lang.value` lang library contains functions that apply to multiple basic types.
+`any` means any value except an `error` value, which is equivalent to a union of all non-error basic types. Use `any|error` for absolutely any value.
 
-::: code ./examples/any-type/any_type.bal :::
+The [`lang.value`](https://lib.ballerina.io/ballerina/lang.value/0.0.0) lang library contains functions that apply to multiple basic types.
 
-::: out ./examples/any-type/any_type.out :::
+::: code any_type.bal :::
+
+::: out any_type.out :::

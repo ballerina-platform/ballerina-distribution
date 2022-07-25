@@ -9,6 +9,6 @@ different queues can be attached to the same Listener.<br/><br/>
 For more information on the underlying module, 
 see the [RabbitMQ module](https://docs.central.ballerina.io/ballerinax/rabbitmq/latest).
 
-::: code ./examples/rabbitmq-consumer/rabbitmq_consumer.bal :::
+::: code rabbitmq_consumer.bal :::
 
-::: out ./examples/rabbitmq-consumer/rabbitmq_consumer.out :::
+::: out rabbitmq_consumer.out :::

@@ -5,6 +5,6 @@ a module. The `xmlns` declarations in the Ballerina module provide namespace con
 templates. The Qualified names in Ballerina modules are expanded into `strings` using the `xmlns`
 declarations in the module. The `xmlns` declarations are also allowed at block level.
 
-::: code ./examples/xmlns-declarations/xmlns_declarations.bal :::
+::: code xmlns_declarations.bal :::
 
-::: out ./examples/xmlns-declarations/xmlns_declarations.out :::
+::: out xmlns_declarations.out :::

@@ -8,6 +8,6 @@ all messages once consumed.<br/><br/>
 For more information on the underlying module, 
 see the [RabbitMQ module](https://docs.central.ballerina.io/ballerinax/rabbitmq/latest).
 
-::: code ./examples/rabbitmq-consumer-with-client-acknowledgement/rabbitmq_consumer_with_client_acknowledgement.bal :::
+::: code rabbitmq_consumer_with_client_acknowledgement.bal :::
 
-::: out ./examples/rabbitmq-consumer-with-client-acknowledgement/rabbitmq_consumer_with_client_acknowledgement.out :::
+::: out rabbitmq_consumer_with_client_acknowledgement.out :::

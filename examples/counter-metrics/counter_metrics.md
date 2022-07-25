@@ -8,9 +8,9 @@ supported by default in Ballerina, and it is a cumulative metric that represents
 counter whose value can only increase or be reset to zero.<br/><br/>
 For more information about configs and observing applications, see [Observing Ballerina Code](https://ballerina.io/learn/observing-ballerina-code/).
 
-::: code ./examples/counter-metrics/counter_metrics.bal :::
+::: code counter_metrics.bal :::
 
-// Invoke the service three times using the cURL command below.
+Invoke the service three times using the cURL command below.
 
 ::: out ./examples/counter-metrics/counter_metrics.client.out :::
 

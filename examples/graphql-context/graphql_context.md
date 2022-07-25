@@ -8,10 +8,10 @@ value or an `isolated` object. If the init function is not provided, an empty co
 The context can be accessed by defining it as the first parameter of any resolver (resource/remote) function.
 <br/><br/>
 For more information on the underlying package, see the
-[`graphql` package](https://docs.central.ballerina.io/ballerina/graphql/latest/).
+[GraphQL package](https://docs.central.ballerina.io/ballerina/graphql/latest/).
 
-::: code ./examples/graphql-context/graphql_context.bal :::
+::: code graphql_context.bal :::
 
-::: out ./examples/graphql-context/graphql_context.client.out :::
+::: out graphql_context.client.out :::
 
-::: out ./examples/graphql-context/graphql_context.server.out :::
+::: out graphql_context.server.out :::

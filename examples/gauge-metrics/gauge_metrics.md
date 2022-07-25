@@ -9,9 +9,9 @@ and also based on the statistics configurations provided to the Gauge, it can al
 min, mean, percentiles, etc.<br/><br/>
 For more information about configs and observing applications, see [Observing Ballerina Code](https://ballerina.io/learn/observing-ballerina-code/).
 
-::: code ./examples/gauge-metrics/gauge_metrics.bal :::
+::: code gauge_metrics.bal :::
 
-// Invoke the service three times using the cURL commands below.
+Invoke the service three times using the cURL commands below.
 
 ::: out ./examples/gauge-metrics/gauge_metrics.client.out :::
 

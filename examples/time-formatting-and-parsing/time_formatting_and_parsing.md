@@ -6,6 +6,6 @@ vice versa.<br/><br/>
 For more information on the underlying module,
 see the [Time module](https://docs.central.ballerina.io/ballerina/time/latest/).
 
-::: code ./examples/time-formatting-and-parsing/time_formatting_and_parsing.bal :::
+::: code time_formatting_and_parsing.bal :::
 
-::: out ./examples/time-formatting-and-parsing/time_formatting_and_parsing.out :::
+::: out time_formatting_and_parsing.out :::

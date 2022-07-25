@@ -6,6 +6,6 @@ expose an HTTPS connection.<br/><br/>
 For more information on the underlying module, 
 see the [GraphQL module](https://docs.central.ballerina.io/ballerina/graphql/latest/).
 
-::: code ./examples/graphql-service-ssl-tls/graphql_service_ssl_tls.bal :::
+::: code graphql_service_ssl_tls.bal :::
 
-::: out ./examples/graphql-service-ssl-tls/graphql_service_ssl_tls.server.out :::
+::: out graphql_service_ssl_tls.server.out :::

@@ -6,8 +6,8 @@ which is an HTTP verb as `post` and `get` to constrain your resource function in
 For more information on the underlying module, 
 see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
 
-::: code ./examples/http-absolute-path-and-path/http_absolute_path_and_path.bal :::
+::: code http_absolute_path_and_path.bal :::
 
-::: out ./examples/http-absolute-path-and-path/http_absolute_path_and_path.client.out :::
+::: out http_absolute_path_and_path.client.out :::
 
-::: out ./examples/http-absolute-path-and-path/http_absolute_path_and_path.server.out :::
+::: out http_absolute_path_and_path.server.out :::

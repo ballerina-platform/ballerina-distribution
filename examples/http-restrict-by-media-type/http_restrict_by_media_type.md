@@ -6,8 +6,8 @@ which is used with resources.<br/><br/>
 For more information on the underlying module,
 see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
 
-::: code ./examples/http-restrict-by-media-type/http_restrict_by_media_type.bal :::
+::: code http_restrict_by_media_type.bal :::
 
-::: out ./examples/http-restrict-by-media-type/http_restrict_by_media_type.client.out :::
+::: out http_restrict_by_media_type.client.out :::
 
-::: out ./examples/http-restrict-by-media-type/http_restrict_by_media_type.server.out :::
+::: out http_restrict_by_media_type.server.out :::

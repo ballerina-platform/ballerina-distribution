@@ -8,10 +8,10 @@ of the client. A self-signed JWT is issued before the request is sent.<br/><br/>
 For more information on the underlying module,
 see the [OAuth2 module](https://docs.central.ballerina.io/ballerina/oauth2/latest/).
 
-::: code ./examples/grpc-client-self-signed-jwt-auth/grpc_client.proto :::
+::: code grpc_client.proto :::
 
-::: out ./examples/grpc-client-self-signed-jwt-auth/grpc_client.out :::
+::: out grpc_client.out :::
 
-::: code ./examples/grpc-client-self-signed-jwt-auth/grpc_client_self_signed_jwt_auth.bal :::
+::: code grpc_client_self_signed_jwt_auth.bal :::
 
-::: out ./examples/grpc-client-self-signed-jwt-auth/grpc_client_self_signed_jwt_auth.out :::
+::: out grpc_client_self_signed_jwt_auth.out :::

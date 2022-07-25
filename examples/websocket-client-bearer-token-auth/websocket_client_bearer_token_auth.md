@@ -6,6 +6,6 @@ The client is enriched with the `Authorization: Bearer <token>` header by
 passing the `websocket:BearerTokenConfig` for the `auth` configuration of the
 client.
 
-::: code ./examples/websocket-client-bearer-token-auth/websocket_client_bearer_token_auth.bal :::
+::: code websocket_client_bearer_token_auth.bal :::
 
-::: out ./examples/websocket-client-bearer-token-auth/websocket_client_bearer_token_auth.out :::
+::: out websocket_client_bearer_token_auth.out :::
