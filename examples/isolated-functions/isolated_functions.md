@@ -14,4 +14,6 @@ Weaker concept than pure function.</p>
 
 ::: code isolated_functions.bal :::
 
+By executing the above code, it can be seen that the value of `v` is changed to 100 by calling `set` function.
+
 ::: out isolated_functions.out :::
