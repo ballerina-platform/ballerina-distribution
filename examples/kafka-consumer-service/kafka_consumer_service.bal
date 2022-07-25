@@ -16,21 +16,19 @@ public type Order record {|
     boolean isValid;
 |};
 
-// Create a subtype of `kafka:AnydataConsumerRecord`
+// Create a subtype of `kafka:AnydataConsumerRecord`.
 public type OrderConsumerRecord record {|
     *kafka:AnydataConsumerRecord;
     Order value;
 |};
 
 service on new kafka:Listener(kafka:DEFAULT_URL, consumerConfigs) {
-    remote function onConsumerRecord(OrderConsumerRecord[] records)
-                                                        returns error? {
+    remote function onConsumerRecord(OrderConsumerRecord[] records) returns error? {
         // The set of Kafka records received by the service are processed one by one.
         check from OrderConsumerRecord orderRecord in records
             where orderRecord.value.isValid
             do {
-                log:printInfo("Received Valid Order: " +
-                                    orderRecord.value.toString());
+                log:printInfo("Received Valid Order: " + orderRecord.value.toString());
             };
     }
 }
