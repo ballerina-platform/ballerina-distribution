@@ -11,7 +11,7 @@ For more information about configs and observing applications, see [Observing Ba
 
 ::: code gauge_metrics.bal :::
 
-Invoke the service three times using the cURL commands below.
+Invoke the service using the cURL command below.
 
 ::: out ./examples/gauge-metrics/gauge_metrics.client.out :::
 
