@@ -13,7 +13,7 @@ function divide(int m, int n) returns int {
 
 public function main() {
     
-    // Since `divide(1, 0)` panics, but due to the trap expression program will not terminate here.
+    // Even though `divide(1, 0)` panics, due to the trap expression, the program will not terminate here.
     int|error x = trap divide(1, 0);
 
     if x is error {
@@ -22,7 +22,7 @@ public function main() {
     
     int y = divide(1, 0);
 
-    // Since `divide(1, 0)` panics, the program will terminate and the following code will not be
+    // If `divide(1, 0)` panics, the program will terminate and the following code will not be
     // executed.
     io:println(y);
 

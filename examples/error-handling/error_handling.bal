@@ -20,7 +20,7 @@ public function main() returns error? {
     
     if res is error {
         // The `check` expression is the shorthand for this pattern of
-        // checking if a value is an `error` value and returning that value.
+        // checking if a value is an `error` value and it is returning that value.
         return res;
     } else {
         io:println("result: ", res);
