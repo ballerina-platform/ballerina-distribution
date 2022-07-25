@@ -8,4 +8,6 @@ are immutable.
 
 ::: code readonly_type.bal :::
 
+Executing the above code, gives the below output.
+
 ::: out readonly_type.out :::
