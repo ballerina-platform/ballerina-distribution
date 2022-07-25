@@ -27,7 +27,7 @@ type T1 record {
 public function main() {
     T1 a = {name: "John"};
     typedesc<any> t = typeof a;
-    // Access annotation
+    // Access annotation.
     AnnotRecord? ann = t.@annot;
 
     io:println(ann);
