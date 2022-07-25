@@ -2878,20 +2878,6 @@
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": false
-            },
-            {
-                "name": "XML to record conversion",
-                "url": "xml-to-record-conversion",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Record to XML conversion",
-                "url": "xml-from-record-conversion",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": false
             }
         ]
     },
