@@ -14,7 +14,7 @@ public function main() {
     ];
 
     // The query expression starts with `table`.
-    // The key specifier `key(id)` specifies the key sequence of the constructed table.
+    // The `key(id)` key specifier specifies the key sequence of the constructed table.
     // The result of the query expression is a table.
     var highPaidEmployees = table key(id) from var e in employees
                             where e.salary >= 1000

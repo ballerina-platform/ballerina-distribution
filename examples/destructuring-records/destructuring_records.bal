@@ -12,7 +12,7 @@ public function main() {
         {first: "Tom", last: "Riddle", yearOfBirth: 1926}
     ];
 
-    // A `Person` record is destructured here as a projection with `first` and `last` fields.
+    // A `Person` record is destructured here as a projection with the `first` and `last` fields.
     // `{first: f, last: l}` is the binding pattern.
     var names1 = from var {first: f, last: l} in persons
                 select {first: f, last: l};

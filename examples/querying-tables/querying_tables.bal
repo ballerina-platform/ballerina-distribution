@@ -18,13 +18,13 @@ public function main() {
 
     // The `from` clause iterates the `employees` table.
     // Since the contextually-expected type for the query expression is `int[]`,
-    // evaluation of the query expression will result in an integer array.
+    // the evaluation of the query expression will result in an integer array.
     int[] salaries = from var {salary} in employees
                      select salary;
 
     io:println(salaries);
 
-    // The `from` clause iterates `employees` table and creates a table.
+    // The `from` clause iterates the `employees` table and creates a table.
     // The query expression creates a table based on the contextually-expected type.
     table<Employee> smiths = from Employee emp in employees
                      where emp.lastName == "Smith" select emp;
