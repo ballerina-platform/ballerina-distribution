@@ -1,14 +1,10 @@
 import ballerina/io;
 
 // This is shorthand for,
-//
-// `const RED = "RED";`
-//
-// `const GREEN = "GREEN";`
-//
-// `const BLUE = "BLUE";`
-//
-// `type Color RED|GREEN|BLUE;`
+// const RED = "RED";
+// const GREEN = "GREEN";
+// const BLUE = "BLUE";
+// type Color RED|GREEN|BLUE;
 enum Color {
     RED,
     GREEN,
