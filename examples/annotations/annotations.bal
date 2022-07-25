@@ -1,6 +1,6 @@
 import ballerina/io;
 
-// The `@display` annotation applies to the `transform` function.
+// The `@display` annotation is applied to the `transform` function.
 @display {
     label: "Transform",
     iconPath: "transform.png"
