@@ -1,0 +1,124 @@
+name: Publish Release Artifacts
+
+on:
+  workflow_dispatch:
+    inputs:
+      ballerina_version:
+        description: 'Ballerina Version'
+        default: '2201.2.0'
+        required: true
+      short_version:
+        description: 'Short Version'
+        default: '2201.2.0'
+        required: true
+      display_version:
+        description: 'Display Version'
+        default: '2201.2.0 (Swan Lake Update 2)'
+        required: true
+      code_name:
+        description: 'Code Name'
+        default: 'swan-lake'
+        required: true
+      rc_suffix:
+        description: 'RC Suffix'
+        deprecationMessage: 'If this is a pre-release, the suffix to append to the version e.g., rc1'
+        default: ''
+        required: false
+
+jobs:
+  publish-artifacts:
+    name: Publish Release Artifacts
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'ballerina-platform'
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
+      - name: Set version env variable
+        run: |
+          RELEASE_VERSION=${{ github.event.inputs.ballerina_version }}
+          SHORT_VERSION=${{ github.event.inputs.short_version }}
+          CODE_NAME=${{ github.event.inputs.code_name }}
+          DISPLAY_VERSION=${{ github.event.inputs.display_version }}
+
+          TAGGED_VERSION=$RELEASE_VERSION
+          LONG_VERSION=$RELEASE_VERSION-$CODE_NAME
+          if [ -n "${{ github.event.inputs.rc_suffix }}" ]; then
+            TAGGED_VERSION=$RELEASE_VERSION-${{ github.event.inputs.rc_suffix }}
+          fi
+
+          echo VERSION=$RELEASE_VERSION >> $GITHUB_ENV
+          echo SHORT_VERSION=$SHORT_VERSION >> $GITHUB_ENV
+          echo GIT_TAG=$TAGGED_VERSION >> $GITHUB_ENV
+          echo LONG_VERSION=$LONG_VERSION >> $GITHUB_ENV
+          echo DISPLAY_VERSION=$DISPLAY_VERSION >> $GITHUB_ENV
+
+      - name: Download artifacts
+        run: |
+          baseUrl="https://github.com/ballerina-platform/ballerina-distribution/releases/download/v$GIT_TAG"
+          rm -rf $VERSION
+          mkdir $VERSION
+          cd $VERSION
+
+          wget "$baseUrl/ballerina-$LONG_VERSION.zip" &
+          wget "$baseUrl/ballerina-$VERSION.zip" &
+          wget "$baseUrl/ballerina-$LONG_VERSION-windows-x64.msi" &
+          wget "$baseUrl/ballerina-$LONG_VERSION-linux-x64.deb" &
+          wget "$baseUrl/ballerina-$LONG_VERSION-linux-x64.rpm" &
+          wget "$baseUrl/ballerina-$LONG_VERSION-macos-x64.pkg" &
+          wait
+
+          mkdir internal-installer-distributions
+          cd internal-installer-distributions
+          wget "$baseUrl/ballerina-$LONG_VERSION-windows.zip" &
+          wait
+
+          cd ../../
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+          packageUser: ${{ secrets.BALLERINA_BOT_USERNAME }}
+          packagePAT: ${{ secrets.BALLERINA_BOT_TOKEN }}
+          devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
+
+      - name: Generate metadata json
+        run: |
+          date=`date +%Y-%m-%d`
+          winInstSize=`ls -lh ballerina-$LONG_VERSION-windows-x64.msi | cut -d " " -f5 | sed 's/M/mb/g'`
+          linuxInstSize=`ls -lh ballerina-$LONG_VERSION-linux-x64.deb | cut -d " " -f5 | sed 's/M/mb/g'`
+          rpmInstSize=`ls -lh ballerina-$LONG_VERSION-linux-x64.rpm | cut -d " " -f5 | sed 's/M/mb/g'`
+          macInstSize=`ls -lh ballerina-$LONG_VERSION-macos-x64.pkg | cut -d " " -f5 | sed 's/M/mb/g'`
+          fileName=metadata.json
+          echo "{" >> $fileName
+          echo "	\"version\":\"$VERSION\"," >> $fileName
+          echo "	\"short-version\":\"$SHORT_VERSION\"," >> $fileName
+          echo "	\"display-version\":\"$DISPLAY_VERSION\"," >> $fileName
+          echo "	\"release-date\":\"$date\"," >> $fileName
+          echo "	\"windows-installer\":\"ballerina-$$LONG_VERSION-windows-x64.msi\"," >> $fileName
+          echo "	\"windows-installer-size\":\"$winInstSize\"," >> $fileName
+          echo "	\"linux-installer\":\"ballerina-$$LONG_VERSION-linux-x64.deb\"," >> $fileName
+          echo "	\"linux-installer-size\":\"$linuxInstSize\"," >> $fileName
+          echo "	\"macos-installer\":\"ballerina-$$LONG_VERSION-macos-x64.pkg\"," >> $fileName
+          echo "	\"macos-installer-size\":\"$macInstSize\"," >> $fileName
+          echo "	\"rpm-installer\":\"ballerina-$$LONG_VERSION-linux-x64.rpm\"," >> $fileName
+          echo "	\"rpm-installer-size\":\"$rpmInstSize\"," >> $fileName
+          echo "	\"other-artefacts\":[  " >> $fileName
+          echo "		\"ballerina-$LONG_VERSION.zip\"" >> $fileName
+          echo " 	]", >> $fileName
+          echo "	\"api-docs\":\"ballerina-api-docs-$VERSION.zip\"," >> $fileName
+          echo "	\"release-notes\":\"ballerina-release-notes-$VERSION.md\"" >> $fileName
+          echo "}" >> $fileName
+
+      - name: Archive metadata json
+        uses: actions/upload-artifact@v2
+        with:
+          name: Metadata JSON
+          path: metadata.json
+
+
