@@ -1,4 +1,4 @@
-bal run manage_scheduled_jobs.bal
+$ bal run manage_scheduled_jobs.bal
 1st Job, MyCounter: 1
 2nd Job, MyCounter: 1
 1st Job, MyCounter: 2
