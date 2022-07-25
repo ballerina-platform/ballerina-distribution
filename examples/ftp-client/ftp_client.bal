@@ -16,12 +16,9 @@ public function main() returns error? {
 
     // Reads a file from a FTP server for a given file path. In error cases, 
     // an error is returned.
-    stream<byte[] & readonly, io:Error?> fileStream
-        = check clientEp->get("/server/book.txt");
-    check fileStream.forEach(isolated 
-        function(byte[] & readonly fileContent) {
-            io:println("File content received: "
-                + checkpanic strings:fromBytes(fileContent));
+    stream<byte[] & readonly, io:Error?> fileStream = check clientEp->get("/server/book.txt");
+    check fileStream.forEach(isolated function(byte[] & readonly fileContent) {
+            io:println("File content received: " + checkpanic strings:fromBytes(fileContent));
         }
     );
 
@@ -34,5 +31,4 @@ public function main() returns error? {
 
     // Closes the file stream to finish the `get` and `put` operations.    
     check fileStream.close();
-
 }
