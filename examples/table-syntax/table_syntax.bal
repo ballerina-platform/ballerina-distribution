@@ -17,7 +17,6 @@ function increaseSalary(int n) {
     foreach Employee e in t {
         e.salary += n;
     }
-    
 }
 
 public function main() {
