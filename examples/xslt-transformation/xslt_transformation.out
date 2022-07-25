@@ -1,4 +1,4 @@
-$ bal run xslt_transformation.bal
+bal run xslt_transformation.bal
 Transformed XML: <html>
 <body>
 <h2>All time favourites</h2>

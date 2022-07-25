@@ -1,4 +1,4 @@
-$ bal run filepaths.bal
+bal run filepaths.bal
 On Unix:
 Absolute path of test.txt: /A/test.txt
 /A/B/C is absolute: true

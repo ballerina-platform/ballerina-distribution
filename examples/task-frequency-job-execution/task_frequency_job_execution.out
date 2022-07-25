@@ -1,4 +1,4 @@
-$ bal run task_frequency_job_execution.bal
+bal run task_frequency_job_execution.bal
 MyCounter: 1
 MyCounter: 2
 MyCounter: 3
