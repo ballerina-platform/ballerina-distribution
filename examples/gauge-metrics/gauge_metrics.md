@@ -16,6 +16,6 @@ Invoke the service three times using the cURL commands below.
 ::: out ./examples/gauge-metrics/gauge_metrics.client.out :::
 
 To start the service, navigate to the directory that contains the
-`.bal` file and execute the `bal run` command below with the `--observability-included` build time flag and the `Config.toml` runtime configuration file.
+`.bal` file, and execute the `bal run` command below with the `--observability-included` build time flag and the `Config.toml` runtime configuration file.
 
 ::: out ./examples/gauge-metrics/gauge_metrics.server.out :::
