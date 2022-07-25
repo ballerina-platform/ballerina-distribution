@@ -1,2 +1,2 @@
-$ bal run xml_json_conversion.bal
+bal run xml_json_conversion.bal
 <Store id="AST"><name>Anne</name><address><street>Main</street><city>94</city></address><codes>4</codes><codes>8</codes></Store>

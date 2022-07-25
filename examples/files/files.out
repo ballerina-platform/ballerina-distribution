@@ -1,4 +1,4 @@
-$ bal run files.bal
+bal run files.bal
 The bar.txt file created successfully.
 Does the bar.txt file exist: true
 Is the bar.txt file readable: true
