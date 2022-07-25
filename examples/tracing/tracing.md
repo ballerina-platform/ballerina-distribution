@@ -7,8 +7,15 @@ The developers can trace their code blocks and measure the time incurred during 
 They can choose to hook their measurement with the default trace created or can create a completely new trace.<br/><br/>
 For more information about configs and observing applications, see [Observing Ballerina Code](https://ballerina.io/learn/observing-ballerina-code/).
 
-::: code tracing.bal :::
+::: code ./examples/tracing/tracing.bal :::
 
-::: out tracing.client.out :::
+// Invoke the service using cURL and access Jaeger UI in `http://localhost:16686`.
 
-::: out tracing.server.out :::
+::: out ./examples/tracing/tracing.client.out :::
+
+Jaeger is the default tracing tool used in Ballerina. To start the Jaeger execute the below command.
+
+To start the service, navigate to the directory that contains the
+`.bal` file and execute the `bal run` command below with the `--observability-included` build time flag and the `Config.toml` runtime configuration file.
+
+::: out ./examples/tracing/tracing.server.out :::

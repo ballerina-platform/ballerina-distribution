@@ -8,8 +8,13 @@ supported by default in Ballerina, and it is a cumulative metric that represents
 counter whose value can only increase or be reset to zero.<br/><br/>
 For more information about configs and observing applications, see [Observing Ballerina Code](https://ballerina.io/learn/observing-ballerina-code/).
 
-::: code counter_metrics.bal :::
+::: code ./examples/counter-metrics/counter_metrics.bal :::
 
-::: out counter_metrics.client.out :::
+// Invoke the service three times using the cURL command below.
 
-::: out counter_metrics.server.out :::
+::: out ./examples/counter-metrics/counter_metrics.client.out :::
+
+To start the service, navigate to the directory that contains the
+`.bal` file and execute the `bal run` command below with the `--observability-included` build time flag and the `Config.toml` runtime configuration file.
+
+::: out ./examples/counter-metrics/counter_metrics.server.out :::
