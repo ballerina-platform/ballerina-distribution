@@ -37,8 +37,8 @@ http:Service helloService =  service object {
 };
 
 public function main() returns error? {
-    // Attach the service to the listener.
-    check httpListener.attach(helloService);
+    // Attach the service to the listener along with the resource path.
+    check httpListener.attach(helloService, "foo/bar");
     // Start the listener.
     check httpListener.'start();
     // Register the listener dynamically.
