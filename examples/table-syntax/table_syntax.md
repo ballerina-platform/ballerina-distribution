@@ -5,7 +5,7 @@ A `table` is plain data if and only if its rows are plain data. A `table` mainta
 
 Compared to maps,
 
-- Key is part of the value rather than being separate.
+- A key is part of the value rather than being separate.
 - The type of the key is not restricted to `string`.
 - The order of the members is preserved.
 
