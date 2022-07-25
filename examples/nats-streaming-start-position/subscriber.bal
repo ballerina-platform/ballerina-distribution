@@ -14,8 +14,7 @@ service stan:Service on lis {
         // Prints the incoming message in the console.
         string|error messageData = string:fromBytes(message.content);
         if messageData is string {
-            log:printInfo("Message Received to service receiveNewOnly: "
-                + messageData);
+            log:printInfo("Message Received to service receiveNewOnly: " + messageData);
         }
     }
 }
@@ -31,8 +30,7 @@ service stan:Service on lis {
         // Prints the incoming message in the console.
         string|error messageData = string:fromBytes(message.content);
         if messageData is string {
-            log:printInfo("Message Received to service receiveFromBegining: "
-                + messageData);
+            log:printInfo("Message Received to service receiveFromBegining: " + messageData);
         }
     }
 }
@@ -66,8 +64,7 @@ service stan:Service on lis {
         // Prints the incoming message in the console.
         string|error messageData = string:fromBytes(message.content);
         if messageData is string {
-            log:printInfo("Message Received to service receiveFromGivenIndex: "
-                + messageData);
+            log:printInfo("Message Received to service receiveFromGivenIndex: " + messageData);
         }
     }
 }
@@ -84,8 +81,7 @@ service stan:Service on lis {
         // Prints the incoming message in the console.
         string|error messageData = string:fromBytes(message.content);
         if messageData is string {
-            log:printInfo("Message Received to service receiveSinceTimeDelta: "
-                + messageData);
+            log:printInfo("Message Received to service receiveSinceTimeDelta: " + messageData);
         }
     }
 }
