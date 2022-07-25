@@ -9,8 +9,8 @@ public function main() returns error? {
     // Sends a request and returns the reply.
     nats:Message reply = check natsClient->requestMessage({
                              content: message.toBytes(),
-                             subject: "demo.bbe"});
-
+                             subject: "demo.bbe"
+                         });
     // Prints the reply message.
     string replyContent = check string:fromBytes(reply.content);
     io:println("Reply message: " + replyContent);
