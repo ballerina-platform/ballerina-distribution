@@ -5,7 +5,7 @@
 # Create a new `grpc_unary_blocking_client.bal` Ballerina file inside the `client` package and add the client implementation.
 
 # Execute the command below to build the 'client' package.
-bal build client
+$ bal build client
 
 # Run the client using the command below.
-bal run client/target/bin/client.jar
+$ bal run client/target/bin/client.jar
