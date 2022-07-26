@@ -7,9 +7,7 @@ import ballerinax/rabbitmq;
     autoAck: false
 }
 // Attaches the service to the listener.
-service /transactionConsumer on
-    new rabbitmq:Listener(rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT) {
-
+service on new rabbitmq:Listener(rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT) {
     // Gets triggered when a message is received by the queue.
     remote function onMessage(rabbitmq:Message message, rabbitmq:Caller caller) returns error? {
         string|error messageContent = 'string:fromBytes(message.content);

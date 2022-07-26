@@ -20,15 +20,14 @@ public function main() returns error? {
             }
         }
     };
-    ftp:Client clientEp = check new(config);
+    ftp:Client clientEp = check new (config);
 
     // Reads a file from a FTP server for a given file path. In error cases, 
     // an error is returned.
     stream<byte[] & readonly, io:Error?> fileStream = check clientEp->get("/server/book.txt");
     check fileStream.forEach(isolated function(byte[] & readonly fileContent) {
-            io:println("File content received: " + checkpanic strings:fromBytes(fileContent));
-        }
-    );
+        io:println("File content received: " + checkpanic strings:fromBytes(fileContent));
+    });
 
     // Add a new file to the given file location. In error cases, 
     // an error is returned. The local file is provided as a stream of

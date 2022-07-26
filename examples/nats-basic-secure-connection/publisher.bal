@@ -8,8 +8,8 @@ public function main() returns error? {
         // To secure the client connections using username/password authentication, provide the credentials
         // with the [`nats:Credentials`](https://lib.ballerina.io/ballerinax/nats/latest/records/Credentials) record.
         auth = {
-             username: "alice",
-             password: "alice@123"
+            username: "alice",
+            password: "alice@123"
         },
         // To secure the client connection using TLS/SSL, the client needs to be configured with
         // a certificate file of the server.

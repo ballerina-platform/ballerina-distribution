@@ -5,7 +5,7 @@ import ballerina/log;
 // configuration. The polling interval specifies the time duration between each
 // poll performed by the listener in seconds. The listener listens to the files
 // with the given file name pattern located in the specified path.
-listener ftp:Listener remoteServer = check new({
+listener ftp:Listener remoteServer = check new ({
     protocol: ftp:SFTP,
     host: "sftp.example.com",
     auth: {

@@ -23,5 +23,5 @@ public function main() returns error? {
 
     // Publishes the message using the `rabbitmqClient` and the routing key named `Secured`.
     string message = "Hello from Ballerina";
-    check rabbitmqClient->publishMessage({ content: message.toBytes(), routingKey: "Secured" });
+    check rabbitmqClient->publishMessage({content: message.toBytes(), routingKey: "Secured"});
 }

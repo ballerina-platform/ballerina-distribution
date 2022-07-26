@@ -1,7 +1,7 @@
 import ballerina/log;
 import ballerinax/rabbitmq;
 
-listener rabbitmq:Listener channelListener = new(rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
+listener rabbitmq:Listener channelListener = new (rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
 
 // The consumer service listens to the "MyQueue" queue.
 // The `ackMode` is by default rabbitmq:AUTO_ACK where messages are acknowledged
@@ -12,10 +12,8 @@ listener rabbitmq:Listener channelListener = new(rabbitmq:DEFAULT_HOST, rabbitmq
 // Attaches the service to the listener.
 service rabbitmq:Service on channelListener {
     remote function onMessage(rabbitmq:Message message, rabbitmq:Caller caller) returns error? {
-        string|error messageContent = string:fromBytes(message.content);
-        if messageContent is string {
-            log:printInfo("Received message: " + messageContent);
-        }
+        string messageContent = check string:fromBytes(message.content);
+        log:printInfo("Received message: " + messageContent);
         // Positively acknowledges a single message.
         check caller->basicAck();
     }

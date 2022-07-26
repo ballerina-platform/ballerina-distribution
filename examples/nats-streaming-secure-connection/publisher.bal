@@ -11,8 +11,8 @@ public function main() returns error? {
         // To secure the client connections using username/password authentication, provide the credentials
         // with the [`stan:Credentials`](https://lib.ballerina.io/ballerinax/stan/latest/records/Credentials) record.
         auth = {
-             username: "alice",
-             password: "alice@123"
+            username: "alice",
+            password: "alice@123"
         },
         // To secure the client connection using TLS/SSL, the client needs to be configured with
         // a certificate file of the server.
@@ -25,8 +25,9 @@ public function main() returns error? {
 
     // Produces a message to the specified subject.
     string result = check stanClient->publishMessage({
-                                    content: message.toBytes(),
-                                    subject: "demo"});
+        content: message.toBytes(),
+        subject: "demo"
+    });
     io:println("GUID " + result + " received for the produced message.");
     // Closes the client connection.
     check stanClient.close();

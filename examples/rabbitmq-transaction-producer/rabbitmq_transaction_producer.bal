@@ -9,7 +9,7 @@ public function main() returns error? {
     transaction {
         string message = "Hello from Ballerina";
         // Publishes the message using the routing key named "MyQueue".
-        check newClient->publishMessage({ content: message.toBytes(), routingKey: "MyQueue" });
+        check newClient->publishMessage({content: message.toBytes(), routingKey: "MyQueue"});
         check commit;
     }
 }

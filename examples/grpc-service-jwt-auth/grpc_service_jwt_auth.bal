@@ -1,6 +1,6 @@
 import ballerina/grpc;
 
-listener grpc:Listener securedEP = new(9090,
+listener grpc:Listener securedEP = new (9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",

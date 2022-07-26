@@ -7,7 +7,7 @@ import ballerina/log;
 }
 service "HelloWorld" on new grpc:Listener(9090) {
     isolated remote function lotsOfGreetings(stream<string, error?> clientStream)
-                            returns string|error {
+                        returns string|error {
         log:printInfo("Client connected successfully.");
         // Reads and processes each message in the client stream.
         _ = check from string name in clientStream

@@ -21,9 +21,7 @@ listener nats:Listener securedEP = new(nats:DEFAULT_URL,
 // Binds the consumer to listen to the messages published to the 'security.demo' subject.
 service "security.demo" on securedEP {
     remote function onMessage(nats:Message message) returns error? {
-        string|error messageContent = string:fromBytes(message.content);
-        if messageContent is string {
-            log:printInfo("Received message: " + messageContent);
-        }
+        string messageContent = check string:fromBytes(message.content);
+        log:printInfo("Received message: " + messageContent);
     }
 }
