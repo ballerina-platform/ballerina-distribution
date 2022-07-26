@@ -9,4 +9,7 @@ see the [FTP module](https://lib.ballerina.io/ballerina/ftp/latest).
 
 ::: code ftp_client.bal :::
 
+File content of the received file would get printed.
+The newly-added file will appear in the FTP server.
+
 ::: out ftp_client.out :::

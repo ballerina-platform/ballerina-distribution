@@ -16,4 +16,8 @@ see the [STAN module](https://lib.ballerina.io/ballerinax/stan/latest).
 
 ::: code queue-group.bal :::
 
+`queue-group.bal` contains three services belonging to the same queue group.
+When several messages are published, it can be noticed that 
+each message is received by only one queue group member.
+
 ::: out queue-group.out :::

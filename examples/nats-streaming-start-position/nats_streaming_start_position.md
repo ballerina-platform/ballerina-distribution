@@ -20,4 +20,18 @@ see the [STAN module](https://lib.ballerina.io/ballerinax/stan/latest).
 
 ::: code subscriber.bal :::
 
+When you start the subscriber after publishing several messages,
+You'll notice that,
+1. `receiveSinceTimeDelta` service receives the messages if
+    the messages were sent within a historical offset of 5 seconds
+    from the current server date/time.
+2. `receiveFromGivenIndex` service receives services messages
+    starting from the third message published.
+3. `receiveFromLastReceived` service receives messages starting
+    from the last published message.
+4. `receiveFromBeginning` service receives all messages ever
+    published.
+5. `receiveNewOnly` service receives only the messages, which are
+   published after the subscriber starts.
+
 ::: out subscriber.out :::

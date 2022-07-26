@@ -1,4 +1,4 @@
-# SASL authentication - consumer
+# SASL authentication - Consumer
 
 This shows how the SASL/PLAIN authentication is done in the `kafka:Consumer`.
 For this to work properly, an active Kafka server must be present, 
