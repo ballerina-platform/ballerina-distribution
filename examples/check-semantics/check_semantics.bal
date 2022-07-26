@@ -2,7 +2,7 @@ import ballerina/io;
 
 public function main() returns error? {
     do {
-        // If check gets an error from either `foo()` or `bar()` invocations, the error will caught at the `on fail`
+        // If  `check` gets an error from either `foo()` or `bar()` invocations, the error will be caught at the `on fail`
         check foo();
         check bar();
 

@@ -20,7 +20,7 @@ function doStage1() returns error? {
 }
 
 function doStage2() returns error? {
-    // Returns `error:Retriable` error for retrying.
+    // Returns an `error:Retriable` error for retrying.
     // To support custom errors, a custom implementation of the `RetryManager` is required.
     return error 'error:Retriable("Stage2 failed");
 }

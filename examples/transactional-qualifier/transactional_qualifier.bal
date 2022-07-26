@@ -25,7 +25,7 @@ transactional function doUpdate(Update u) returns error? {
 
 function foo(Update u) {
     if transactional {
-        // This is transactional context.
+        // This is in the transactional context.
         bar(u);
     }
 }

@@ -1,13 +1,13 @@
 import ballerina/io;
 
 public function main() returns error? {
-    // Transaction statement begins a new transaction and executes a block.
+    // The transaction statement begins a new transaction and executes a block.
     transaction {
         doStage1();
         doStage2();
 
         // Commit of a transaction must be done explicitly using commit.
-        // Commit must be lexically within a transaction statement and may return an error;
+        // A commit must be lexically within a transaction statement and may return an error;
         check commit;
 
     }
