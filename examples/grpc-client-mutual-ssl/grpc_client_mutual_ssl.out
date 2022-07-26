@@ -11,5 +11,5 @@
 
 # Run the client using the command below.
 # As a prerequisite, start a sample service secured with mutual SSL.
-bal run client/target/bin/client.jar
+$ bal run client/target/bin/client.jar
 Hello, World!
