@@ -7,7 +7,7 @@
 # Execute the command below to build the 'service' package.
 # You may need to change the certificate file path, private key file path, and
 # trusted certificate file path.
-`bal build service`
+$ bal build service
 
 # Run the service using the command below.
-bal run service/target/bin/service.jar
+$ bal run service/target/bin/service.jar
