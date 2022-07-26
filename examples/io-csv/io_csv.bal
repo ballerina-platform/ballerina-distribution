@@ -8,7 +8,7 @@ public function main() returns error? {
     ["3", "Ronald", "120000"], ["4", "Roy", "6000"],
     ["5", "Oliver", "1100000"]];
 
-    // Writes the given content string[][] to a CSV file.
+    // Writes the given content `string[][]` to a CSV file in csvFilePath1.
     check io:fileWriteCsv(csvFilePath1, csvContent);
     // Reads the previously-saved CSV file as a `string[][]`.
     string[][] readCsv = check io:fileReadCsv(csvFilePath1);

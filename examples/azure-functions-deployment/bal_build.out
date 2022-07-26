@@ -1,0 +1,12 @@
+$ bal build
+Compiling source
+        wso2/azure_functions_deployment:0.1.0
+
+Generating executable
+        @azure_functions:Function: hello, httpTriggerBlobInput, queuePopulationTimer
+
+        Execute the below command to deploy Ballerina Azure Functions:
+        az functionapp deployment source config-zip -g <resource_group> -n <function_app_name> --src <project-dir>/azure_functions_deployment/target/bin/azure-functions.zip
+
+
+        target/bin/azure_functions_deployment.jar
