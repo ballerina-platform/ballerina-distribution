@@ -3,8 +3,8 @@ import ballerinax/rabbitmq;
 public function main() returns error? {
     // Creates a ballerina RabbitMQ client with TLS/SSL and username/password authentication.
     rabbitmq:Client rabbitmqClient = check new(rabbitmq:DEFAULT_HOST, 5671,
-        // To secure the client connections using username/password authentication, provide the credentials
-        // with the [`rabbitmq:Credentials`](https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/Credentials) record.
+        // To secure the client connections using username/password authentication,
+        // provide the credentials with the [`rabbitmq:Credentials`](https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/Credentials) record.
         auth = {
              username: "alice",
              password: "alice@123"

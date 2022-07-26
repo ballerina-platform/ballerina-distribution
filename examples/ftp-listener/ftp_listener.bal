@@ -20,7 +20,8 @@ listener ftp:Listener remoteServer = check new ({
     fileNamePattern: "(.*).txt"
 });
 
-// One or many services can listen to the FTP listener for the periodically-polled file related events.
+// One or many services can listen to the FTP listener for the periodically-polled
+// file related events.
 service on remoteServer {
     // When a file event is successfully received, the `onFileChange` method is called.
     remote function onFileChange(ftp:WatchEvent & readonly event) {

@@ -18,7 +18,8 @@ public function main() returns error? {
     foreach ChatMessage msg in messages {
         check streamingClient->sendChatMessage(msg);
     }
-    // Once all the messages are sent, the client sends the message to notify the server about the completion.
+    // Once all the messages are sent, the client sends the message to notify the
+    // server about the completion.
     check streamingClient->complete();
     // Waits until all server messages are received.
     check wait f1;

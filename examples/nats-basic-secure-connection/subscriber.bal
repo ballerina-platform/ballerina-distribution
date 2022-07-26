@@ -3,8 +3,8 @@ import ballerinax/nats;
 
 // Initializes a NATS listener with TLS/SSL and username/password authentication.
 listener nats:Listener securedEP = new(nats:DEFAULT_URL,
-    // To secure the client connections using username/password authentication, provide the credentials
-    // with the [`nats:Credentials`](https://lib.ballerina.io/ballerinax/nats/latest/records/Credentials) record.
+    // To secure the client connections using username/password authentication,
+    // provide the credentials with the [`nats:Credentials`](https://lib.ballerina.io/ballerinax/nats/latest/records/Credentials) record.
     auth = {
          username: "alice",
          password: "alice@123"

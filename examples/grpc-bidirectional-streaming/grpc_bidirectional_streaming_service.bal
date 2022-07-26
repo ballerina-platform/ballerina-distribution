@@ -14,7 +14,8 @@ service "Chat" on new grpc:Listener(9090) {
             do {
                 checkpanic caller->sendString(string `${chatMsg.name}: ${chatMsg.message}`);
             };
-        // Once the client sends a notification to indicate the end of the stream, '()' is returned by the stream.
+        // Once the client sends a notification to indicate the end of the stream,
+        // '()' is returned by the stream.
         check caller->complete();
     }
 }

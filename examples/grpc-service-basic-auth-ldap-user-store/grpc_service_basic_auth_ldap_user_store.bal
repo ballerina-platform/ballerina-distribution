@@ -13,7 +13,8 @@ listener grpc:Listener securedEP = new(9090,
 // Basic Auth using the LDAP user store can be enabled by setting the
 // [`grpc:LdapUserStoreConfig`](https://lib.ballerina.io/ballerina/grpc/latest/records/LdapUserStoreConfig) configurations.
 // Authorization is based on scopes. A scope maps to one or more groups.
-// Authorization can be enabled by setting the `string|string[]` type configurations for `scopes` field.
+// Authorization can be enabled by setting the `string|string[]` type configurations
+// for `scopes` field.
 @grpc:ServiceConfig {
     auth: [
         {

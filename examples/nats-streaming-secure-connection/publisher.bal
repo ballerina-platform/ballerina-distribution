@@ -8,8 +8,8 @@ public function main() returns error? {
     // Initializes the NATS Streaming client with TLS/SSL and username/password authentication.
     stan:Client stanClient = check new(stan:DEFAULT_URL,
         clusterId = "my_secure_cluster",
-        // To secure the client connections using username/password authentication, provide the credentials
-        // with the [`stan:Credentials`](https://lib.ballerina.io/ballerinax/stan/latest/records/Credentials) record.
+        // To secure the client connections using username/password authentication,
+        // provide the credentials with the [`stan:Credentials`](https://lib.ballerina.io/ballerinax/stan/latest/records/Credentials) record.
         auth = {
             username: "alice",
             password: "alice@123"
