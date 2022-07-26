@@ -24,6 +24,6 @@ isolated function sendEmail('transaction:Info info) {
     io:println("Email sent.");
 }
 
-isolated function logError('transaction:Info info, error? cause, boolean willRetry) {
+isolated function logError(transaction:Info info, error? cause, boolean willRetry) {
     io:println("Logged database update failure");
 }
