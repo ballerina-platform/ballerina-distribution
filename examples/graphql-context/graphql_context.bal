@@ -4,8 +4,7 @@ import ballerina/lang.value;
 
 @graphql:ServiceConfig {
     // Initialization of the `graphqlContext` should be provided to the `contextInit` field.
-    contextInit: isolated function (http:RequestContext requestContext,
-                                    http:Request request)
+    contextInit: isolated function (http:RequestContext requestContext, http:Request request)
                                     returns graphql:Context|error {
 
         // Initialize the `graphql:Context` object.

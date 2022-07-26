@@ -6,8 +6,10 @@ verifying the digital certificates. It ensures that both parties are assured
 of each other's identity.
 
 For more information on the underlying module, 
-see the [GraphQL module](https://docs.central.ballerina.io/ballerina/graphql/latest/).
+see the [`graphql` module](https://docs.central.ballerina.io/ballerina/graphql/latest/).
 
 ::: code graphql_service_mutual_ssl.bal :::
+
+Run the service as follows.
 
 ::: out graphql_service_mutual_ssl.server.out :::

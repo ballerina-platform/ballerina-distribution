@@ -8,14 +8,18 @@ type.
 
 Each resource function with the `subscribe` accessor in the service will
 be added as a field of the `Subscription` type. The field name will be the
-resource function name, and the field type will be the constraint type of
+resource function name and the field type will be the constraint type of
 the stream returned from the resource function.
 
 For more information on the underlying package, see the
-[GraphQL package](https://docs.central.ballerina.io/ballerina/graphql/latest/).
+[`graphql` package](https://docs.central.ballerina.io/ballerina/graphql/latest/).
 
 ::: code graphql_subscriptions.bal :::
 
+Run the service by executing the following command.
+
 ::: out graphql_subscriptions.server.out :::
+
+Invoke the service as follows.
 
 ::: out graphql_subscriptions.client.out :::

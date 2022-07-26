@@ -15,8 +15,10 @@ against the scope included in the introspection response for at least one
 match between the two sets.
 
 For more information on the underlying module,
-see the [OAuth2 module](https://docs.central.ballerina.io/ballerina/oauth2/latest/).
+see the [`oauth2` module](https://docs.central.ballerina.io/ballerina/oauth2/latest/).
 
 ::: code graphql_service_oauth2.bal :::
+
+Run the service as follows.
 
 ::: out graphql_service_oauth2.server.out :::

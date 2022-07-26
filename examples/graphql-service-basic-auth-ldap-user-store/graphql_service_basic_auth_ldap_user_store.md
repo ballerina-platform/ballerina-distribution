@@ -14,8 +14,10 @@ against the scope included in the user store for at least one match between
 the two sets.
 
 For more information on the underlying module,
-see the [Auth module](https://docs.central.ballerina.io/ballerina/auth/latest/).
+see the [`auth` module](https://docs.central.ballerina.io/ballerina/auth/latest/).
 
 ::: code graphql_service_basic_auth_ldap_user_store.bal :::
+
+Run the service as follows.
 
 ::: out graphql_service_basic_auth_ldap_user_store.server.out :::

@@ -6,7 +6,7 @@ service /graphql on new graphql:Listener(4000) {
     private Person person;
 
     function init() {
-        // Initialize the `person` value.
+        // Initializes the `person` value.
         self.person = new("Walter White", 51);
     }
 

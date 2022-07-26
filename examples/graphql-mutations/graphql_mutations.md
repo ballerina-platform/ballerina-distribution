@@ -8,10 +8,14 @@ field of the `Mutation` type. The field name will be the remote function
 name and the field type will be the return type of the remote function.
 
 For more information on the underlying package, see the
-[GraphQL package](https://docs.central.ballerina.io/ballerina/graphql/latest/).
+[`graphql` package](https://docs.central.ballerina.io/ballerina/graphql/latest/).
 
 ::: code graphql_mutations.bal :::
 
+Run the service by executing the following command.
+
 ::: out graphql_mutations.server.out :::
+
+Invoke the service as follows.
 
 ::: out graphql_mutations.client.out :::

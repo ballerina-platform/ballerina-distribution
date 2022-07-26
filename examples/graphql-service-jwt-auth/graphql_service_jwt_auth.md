@@ -13,8 +13,10 @@ against the scope included in the JWT for at least one match between the two
 sets.
 
 For more information on the underlying module, 
-see the [JWT module](https://docs.central.ballerina.io/ballerina/jwt/latest/).
+see the [`jwt` module](https://docs.central.ballerina.io/ballerina/jwt/latest/).
 
 ::: code graphql_service_jwt_auth.bal :::
+
+Run the service as follows.
 
 ::: out graphql_service_jwt_auth.server.out :::

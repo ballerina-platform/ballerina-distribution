@@ -5,8 +5,10 @@ Provide the `graphql:ListenerSecureSocket` configurations to the server to
 expose an HTTPS connection.
 
 For more information on the underlying module, 
-see the [GraphQL module](https://docs.central.ballerina.io/ballerina/graphql/latest/).
+see the ['graphql' module](https://docs.central.ballerina.io/ballerina/graphql/latest/).
 
 ::: code graphql_service_ssl_tls.bal :::
+
+Run the service as follows.
 
 ::: out graphql_service_ssl_tls.server.out :::
