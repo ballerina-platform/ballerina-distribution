@@ -1,4 +1,4 @@
-bal run logging_configuration.bal
+$ bal run logging_configuration.bal
 time = 2021-05-25T11:06:54.998+05:30 level = ERROR module = "" message = "error log"
 time = 2021-05-25T11:06:55.009+05:30 level = INFO module = "" message = "info log"
 time = 2021-05-25T11:06:55.010+05:30 level = WARN module = "" message = "warn log"
