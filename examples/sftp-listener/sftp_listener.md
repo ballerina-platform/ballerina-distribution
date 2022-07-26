@@ -10,4 +10,7 @@ see the [FTP module](https://lib.ballerina.io/ballerina/ftp/latest).
 
 ::: code sftp_listener.bal :::
 
+Paths of the newly-added and newly-deleted files/directories during the
+latest polling will be printed for each of the polled events.
+
 ::: out sftp_listener.out :::
