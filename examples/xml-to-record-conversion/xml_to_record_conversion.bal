@@ -24,7 +24,8 @@ type Item record {
 };
 
 public function main() returns error? {
-    xml data = xml `<ns:Invoice xmlns="example.com" xmlns:ns="http://sdf.com" status="paid">
+    xml data = xml `<ns:Invoice xmlns="example.com"
+                        xmlns:ns="http://sdf.com" status="paid">
                         <id>1</id>
                         <purchased_item>
                             <itemCode>223345</itemCode>
