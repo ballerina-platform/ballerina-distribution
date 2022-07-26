@@ -5,7 +5,7 @@
 # Create a new `grpc_server_streaming.bal` Ballerina file inside the `service` package and add the service implementation.
 
 # Execute the command below to build the 'service' package.
-bal build service
+$ bal build service
 
 # Run the service using the command below.
-bal run service/target/bin/service.jar
+$ bal run service/target/bin/service.jar
