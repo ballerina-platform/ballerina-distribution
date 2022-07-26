@@ -46,5 +46,4 @@ public function main() {
     // the children of `e`.
     xml g = x/<book>[0];
     io:println(g);
-
 }
