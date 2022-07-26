@@ -10,5 +10,5 @@
 
 # Run the client using the command below.
 # As a prerequisite, start a sample service secured with Basic Auth.
-bal run client/target/bin/client.jar
+$ bal run client/target/bin/client.jar
 Hello, World!
