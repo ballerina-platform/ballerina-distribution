@@ -1838,13 +1838,21 @@
         ]
     },
     {
-        "title": "Listeners",
+        "title": "Listeners and StopHandlers",
         "column": 2,
         "category": "Work over the network",
         "samples": [
             {
                 "name": "Dynamic listener",
                 "url": "dynamic-listener",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "StopHandler",
+                "url": "stop-handler",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,

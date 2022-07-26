@@ -1,0 +1,2 @@
+description: Registering a function that will be called during graceful shutdown.
+keywords: ballerina, ballerina by example, stop handler, bbe, service

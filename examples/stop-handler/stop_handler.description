@@ -1,0 +1,1 @@
+// StopHandler registers a function that will be called during graceful shutdown.
