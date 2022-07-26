@@ -21,5 +21,4 @@ public function main () returns error? {
     // Receives the server response.
     string? response = check streamingClient->receiveString();
     io:println(response);
-
 }
