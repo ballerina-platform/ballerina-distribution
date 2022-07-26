@@ -1,16 +1,13 @@
 # XML operations
 
-`+` does concatenation.
-`==` does deep equals.
-`foreach` iterates over each item.
-`x[i]` gives i-th item (empty sequence if none).
-`x.id` accesses required attribute named `id`:
-result is error if there is no such attribute
-or if x is not a singleton.
-`x?.id` accesses optional attribute named `id`:
-result is () if there is no such attribute.
-Langlib lang.xml provides other operations.
-Mutate an element using `e.setChildren(x)`.
+- `+` does concatenation.
+- `==` does deep equals.
+- `foreach` iterates over each item.
+- `x[i]` gives i-th item (empty sequence if none).
+- `x.id` accesses required attribute named `id`. The result will be an error if there is no such attribute
+  or if x is not a singleton.
+- `x?.id` accesses optional attribute named `id`. The result will be `()` if there is no such attribute.
+- [XML language library](https://lib.ballerina.io/ballerina/lang.xml/0.0.0) provides many other ways to manipulate XML using `lang.xml` module. For an example, using the langlib function `e.setChildren(x)` an XML element can be mutated.
 
 ::: code xml_operations.bal :::
 
