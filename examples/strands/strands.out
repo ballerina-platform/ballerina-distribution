@@ -1,4 +1,26 @@
 bal run strands.bal
-In worker B
 In function worker
+In worker B
+Worker B end
 In worker A
+Worker A speaking : 0
+Worker A speaking : 1
+Worker B speaking : 0
+Worker A speaking : 2
+Worker A speaking : 3
+Worker A speaking : 4
+Worker B speaking : 1
+Worker A speaking : 5
+Worker B speaking : 2
+Worker B speaking : 3
+Worker A speaking : 6
+Worker B speaking : 4
+Worker A speaking : 7
+Worker B speaking : 5
+Worker A speaking : 8
+Worker B speaking : 6
+Worker A speaking : 9
+Worker B speaking : 7
+Worker A end
+Worker B speaking : 8
+Worker B speaking : 9
