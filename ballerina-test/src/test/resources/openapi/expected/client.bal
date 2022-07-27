@@ -32,6 +32,10 @@ public type ClientConfig record {|
     http:ResponseLimitConfigs responseLimits = {};
     # SSL/TLS-related options
     http:ClientSecureSocket? secureSocket = ();
+    # Proxy server related options
+    http:ProxyConfig? proxy = ();
+    # Enables the inbound payload validation functionality which provided by the constraint package. Enabled by default
+    boolean validation = true;
 |};
 
 # The Stripe REST API. Please see https://stripe.com/docs/api for more details.
