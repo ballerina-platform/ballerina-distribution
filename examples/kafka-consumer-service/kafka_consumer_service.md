@@ -4,7 +4,7 @@ Here, a Kafka consumer is used as a listener to a service with manual offset com
 For this to work properly, an active Kafka broker should be present.
 
 For more information on the underlying module, 
-see the [Kafka module](https://lib.ballerina.io/ballerinax/kafka/latest).
+see the [`kafka` module](https://lib.ballerina.io/ballerinax/kafka/latest).
 
 ::: code kafka_consumer_service.bal :::
 

@@ -5,14 +5,14 @@ In a gRPC client streaming scenario, the client writes a sequence of messages an
 Once the client has finished writing the messages, it waits for the server to read them and return a response.
 
 For more information on the underlying module, 
-see the [GRPC module](https://lib.ballerina.io/ballerina/grpc/latest/).
+see the [`grpc` module](https://lib.ballerina.io/ballerina/grpc/latest/).
 
 ::: code grpc_client_streaming.proto :::
 
 Create new Protocol Buffers definition file `grpc_client_streaming.proto` and add service definition.
 Run the command below in the Ballerina tools distribution for stub generation.
 
-Once you run the command, `grpc_client_streaming_pb.bal` file is generated inside stubs directory.
+Once you run the command, the `grpc_client_streaming_pb.bal` file is generated inside the stubs directory.
 
 For more information on how to use the Ballerina Protocol Buffers tool, see the <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">Proto To Ballerina</a> example.
 

@@ -10,7 +10,7 @@ header by passing the `grpc:BearerTokenConfig` for the `auth` configuration of t
 Create a new Protocol Buffers definition file named `grpc_client.proto` and add the service definition to it.
 Run the command below in the Ballerina tools distribution for stub generation.
 
-Once you run the command, `grpc_client_pb.bal` file is generated inside stubs directory.
+Once you run the command, the `grpc_client_pb.bal` file is generated inside the stubs directory.
 
 For more information on how to use the Ballerina Protocol Buffers tool, see the <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">Proto To Ballerina</a> example.
 

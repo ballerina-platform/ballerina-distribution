@@ -14,14 +14,14 @@ against the scope included in the user store for at least one match between
 the two sets.
 
 For more information on the underlying module,
-see the [Auth module](https://lib.ballerina.io/ballerina/auth/latest/).
+see the [`auth` module](https://lib.ballerina.io/ballerina/auth/latest/).
 
 ::: code grpc_service.proto :::
 
 Create a new Protocol Buffers definition file named `grpc_service.proto` and add the service definition to it.
 Run the command below in the Ballerina tools distribution for stub generation.
 
-Once you run the command, `grpc_service_pb.bal` file is generated inside stubs directory.
+Once you run the command, the `grpc_service_pb.bal` file is generated inside the stubs directory.
 
 For more information on how to use the Ballerina Protocol Buffers tool, see the <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">Proto To Ballerina</a> example.
 

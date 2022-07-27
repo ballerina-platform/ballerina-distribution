@@ -7,14 +7,14 @@ The client metadata is enriched with the `Authorization: Bearer <token>`
 header by passing the `grpc:OAuth2JwtBearerGrantConfig` to the `auth` configuration of the client.
 
 For more information on the underlying module,
-see the [OAuth2 module](https://lib.ballerina.io/ballerina/oauth2/latest/).
+see the [`oauth2` module](https://lib.ballerina.io/ballerina/oauth2/latest/).
 
 ::: code grpc_client.proto :::
 
 Create a new Protocol Buffers definition file named `grpc_client.proto` and add the service definition to it.
 Run the command below in the Ballerina tools distribution for stub generation.
 
-Once you run the command, `grpc_client_pb.bal` file is generated inside stubs directory.
+Once you run the command, the `grpc_client_pb.bal` file is generated inside the stubs directory.
 
 For more information on how to use the Ballerina Protocol Buffers tool, see the <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">Proto To Ballerina</a> example.
 

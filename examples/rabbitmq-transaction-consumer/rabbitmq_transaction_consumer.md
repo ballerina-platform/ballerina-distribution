@@ -7,7 +7,7 @@ the acknowledgement will commit or rollback in the case of any error.
 Messages will not be re-queued in the case of a rollback
 automatically unless negatively acknowledged by the user.
 For more information on the underlying module,
-see the [RabbitMQ module](https://lib.ballerina.io/ballerinax/rabbitmq/latest).
+see the [`rabbitmq` module](https://lib.ballerina.io/ballerinax/rabbitmq/latest).
 
 ::: code rabbitmq_transaction_consumer.bal :::
 

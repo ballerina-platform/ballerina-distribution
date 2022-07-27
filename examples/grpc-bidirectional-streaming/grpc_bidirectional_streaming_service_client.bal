@@ -7,7 +7,7 @@ ChatClient ep = check new ("http://localhost:9090");
 public function main() returns error? {
     // Executes the RPC call and receives the customized streaming client.
     ChatStreamingClient streamingClient = check ep->chat();
-    // Reads server responses in another strand.
+    // Reads the server responses in another strand.
     future<error?> f1 = start readResponse(streamingClient);
     // Sends multiple messages to the server.
     ChatMessage[] messages = [

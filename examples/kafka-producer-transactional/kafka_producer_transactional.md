@@ -5,7 +5,7 @@ messages to Kafka brokers atomically using the `kafka:Producer` client. For
 this to work properly, an active Kafka broker should be present.
 
 For more information on the underlying module, 
-see the [Kafka module](https://lib.ballerina.io/ballerinax/kafka/latest).
+see the [`kafka` module](https://lib.ballerina.io/ballerinax/kafka/latest).
 
 ::: code kafka_producer_transactional.bal :::
 

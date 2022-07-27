@@ -8,7 +8,7 @@ to receive the message. Although queue groups have multiple subscribers,
 each message is consumed by only one.
 
 For more information on the underlying module, 
-see the [STAN module](https://lib.ballerina.io/ballerinax/stan/latest).
+see the [`stan` module](https://lib.ballerina.io/ballerinax/stan/latest).
 
 ::: code publisher.bal :::
 

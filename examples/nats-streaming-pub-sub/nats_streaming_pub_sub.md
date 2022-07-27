@@ -5,7 +5,7 @@ In order to run this sample, a NATS Streaming server should be
 running on the corresponding port used in the sample.
 
 For more information on the underlying module, 
-see the [STAN module](https://lib.ballerina.io/ballerinax/stan/latest).
+see the [`stan` module](https://lib.ballerina.io/ballerinax/stan/latest).
 
 ::: code publisher.bal :::
 

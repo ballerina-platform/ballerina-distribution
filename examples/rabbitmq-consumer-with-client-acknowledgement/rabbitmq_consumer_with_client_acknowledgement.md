@@ -6,7 +6,7 @@ By default, the ackMode is rabbitmq:AUTO_ACK, which will automatically acknowled
 all messages once consumed.
 
 For more information on the underlying module, 
-see the [RabbitMQ module](https://lib.ballerina.io/ballerinax/rabbitmq/latest).
+see the [`rabbitmq` module](https://lib.ballerina.io/ballerinax/rabbitmq/latest).
 
 ::: code rabbitmq_consumer_with_client_acknowledgement.bal :::
 
