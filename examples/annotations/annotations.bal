@@ -13,7 +13,7 @@ type AnnotRecord record {|
     string value;
 |};
 
-// Declares an annotation tag on type.
+// Declares an annotation tag on the type.
 annotation AnnotRecord annot on type;
 
 // The `@annot` annotation applies to the `T1` record type.
