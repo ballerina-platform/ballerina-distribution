@@ -2,9 +2,9 @@
 import ballerina/io;
 
 // Creates a gRPC client to interact with the remote server.
-HelloWorldClient ep = check new("http://localhost:9090");
+HelloWorldClient ep = check new ("http://localhost:9090");
 
-public function main () returns error? {
+public function main() returns error? {
     // Executes the client-streaming RPC call and receives the streaming client.
     LotsOfGreetingsStreamingClient streamingClient = check
     ep->lotsOfGreetings();
@@ -21,5 +21,4 @@ public function main () returns error? {
     // Receives the server response.
     string? response = check streamingClient->receiveString();
     io:println(response);
-
 }
