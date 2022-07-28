@@ -93,6 +93,7 @@ public class BuildNewCommandTest {
 
     @Test(description = "Build package created from new command with service template")
     public void testCompilingNewCommandServiceTempProject() throws IOException {
+
         List<String> args = new LinkedList<>();
         args.add("service_sample");
         args.add("-t");
