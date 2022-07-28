@@ -20,7 +20,7 @@ public function main() returns error? {
         // Email author's address is added as follows. This field is mandatory.
         'from: "author@email.com",
         // Email sender service address is added as follows. This field is optional. `Sender` is 
-        // same as the `'from` when the email author himself sends the email.
+        // the same as the `from` when the email author himself sends the email.
         sender: "sender@email.com",
         // List of recipients when replying to the email is added as follows. This field is 
         // optional. These addresses are required when the emails are to be replied to some other 
@@ -28,7 +28,7 @@ public function main() returns error? {
         replyTo: ["replyTo1@email.com", "replyTo2@email.com"]
     };
 
-    // Sends the email message with the client. The `send` method can be used instead, if the 
+    // Sends the email message with the client. The `send` method can be used instead if the 
     // email is required to be sent with mandatory and optional parameters instead of 
     // configuring an `email:Message` record.
     check smtpClient->sendMessage(email);
