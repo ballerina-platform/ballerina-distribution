@@ -78,10 +78,6 @@ jobs:
           wget "$baseUrl/ballerina-$LONG_VERSION-linux-x64.deb"
           wget "$baseUrl/ballerina-$LONG_VERSION-linux-x64.rpm"
           wget "$baseUrl/ballerina-$LONG_VERSION-macos-x64.pkg"
-
-          mkdir internal-installer-distributions
-          cd internal-installer-distributions
-          wget "$baseUrl/ballerina-$LONG_VERSION-windows.zip"
         env:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
           packageUser: ${{ secrets.BALLERINA_BOT_USERNAME }}
@@ -124,47 +120,57 @@ jobs:
           name: Metadata JSON
           path: ${{ steps.set-version.outputs.version }}/metadata.json
 
+      - name: Process docker
+        id: process-docker
+        run: |
+          DOCKER_REPO='module-ballerina-docker'
+          CURRENT_DATE=`date +%Y-%m-%d`
+
+          echo "::set-output name=dockerRepo::$DOCKER_REPO"
+          echo "::set-output name=currentDate::$CURRENT_DATE"
+
       - name: Checkout docker repo
         uses: actions/checkout@v2
         with:
           repository: ballerina-platform/module-ballerina-docker
           path: module-ballerina-docker
 
-      - name: Copy zip artifact
-        run: cp $VERSION/ballerina-$SHORT_VERSION.zip module-ballerina-docker/base/docker/
-
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
 
       - name: Set up Docker Buildx
+        id: buildx
         uses: docker/setup-buildx-action@v1
 
       - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
-          username: ${{ secrets.DOCKER_HUB_USER }}
-          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push docker image
-        uses: docker/build-push-action@v2
-        with:
-          context: module-ballerina-docker/base/docker/
-          push: true
-          tags: ballerina/ballerina:$GIT_TAG
-          build-args: |
-            BALLERINA_DIST=ballerina-$SHORT_VERSION.zip
+        run: |
+          dockerRepo=${{ steps.process-docker.outputs.dockerRepo }}
+          currentDocker=${{ steps.process-docker.outputs.currentDocker }}
 
-      - name: Copy deb artifact
-        run: cp $VERSION/ballerina-$LONG_VERSION-linux-x64.deb module-ballerina-docker/base/devcontainer/
+          cp $VERSION/ballerina-$SHORT_VERSION.zip ${dockerRepo}/base/docker/
+          docker build --no-cache=true --squash --build-arg BALLERINA_DIST=ballerina-$SHORT_VERSION.zip -t ballerina/ballerina:$GIT_TAG  ${dockerRepo}/base/docker/
+          rm ${dockerRepo}/base/docker/ballerina-$SHORT_VERSION.zip
+          docker push ballerina/ballerina:$GIT_TAG
+          docker rmi ballerina/ballerina:$GIT_TAG
+          docker image prune -f
 
-      - name: Build and push dev container image
-        uses: docker/build-push-action@v2
-        with:
-          context: module-ballerina-docker/base/devcontainer/
-          push: true
-          tags: ballerina/ballerina-devcontainer:$GIT_TAG
-          build-args: |
-            BALLERINA_DIST=ballerina-$LONG_VERSION-linux-x64.deb
+      - name: Build and push dev container
+        run: |
+          dockerRepo=${{ steps.process-docker.outputs.dockerRepo }}
+          currentDocker=${{ steps.process-docker.outputs.currentDocker }}
+
+          cp $VERSION/ballerina-$LONG_VERSION-linux-x64.deb ${dockerRepo}/base/devcontainer/
+          docker build --no-cache=true --squash --build-arg BALLERINA_DIST=ballerina-$LONG_VERSION-linux-x64.deb -t ballerina/ballerina-devcontainer:$GIT_TAG ${dockerRepo}/base/devcontainer
+          rm ${dockerRepo}/base/docker/ballerina-$LONG_VERSION-linux-x64.deb
+          docker push ballerina/ballerina-devcontainer:$GIT_TAG
+          docker rmi ballerina/ballerina-devcontainer:$GIT_TAG
+          docker image prune -f
 
       - name: Publish Artifacts
         run: |
