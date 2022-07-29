@@ -9,8 +9,7 @@ service class ResponseErrorInterceptor {
     // The error occurred in the request-response path can be accessed by the 
     // mandatory argument : `error`. The remote function can return a response,
     // which will overwrite the existing error response.
-    remote function interceptResponseError(error err) 
-            returns http:InternalServerError {
+    remote function interceptResponseError(error err) returns http:InternalServerError {
         // In this case, all of the errors are sent as HTTP 500 internal server 
         // errors with a customized media type and body. Moreover, you can send different
         // responses according to the error type.        
@@ -38,8 +37,7 @@ service / on interceptorListener {
 
     // If the request does not include a `checkHeader`, then, this will return an error
     // and the execution will jump to the nearest `ResponseErrorInterceptor`.
-    resource function get greeting(@http:Header string checkHeader) 
-            returns http:Ok {
+    resource function get greeting(@http:Header string checkHeader) returns http:Ok {
         return {
             headers: {
                 "checkedHeader" : checkHeader
