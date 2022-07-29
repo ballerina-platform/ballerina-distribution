@@ -1,3 +1,2 @@
-bal run http_compression.bal
-ballerina: started HTTP/WS listener 0.0.0.0:9092
-ballerina: started HTTP/WS listener 0.0.0.0:9090
+$ bal run http_compression.bal
+
