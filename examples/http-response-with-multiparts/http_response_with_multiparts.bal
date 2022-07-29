@@ -20,18 +20,15 @@ service /multiparts on new http:Listener(9092) {
         // This file path is relative to where the Ballerina is running.
         //If your file is located outside, please give the
         //absolute file path instead.
-        childPart2.setFileAsEntityBody("./files/test.xml",
-            contentType = mime:TEXT_XML);
+        childPart2.setFileAsEntityBody("./files/test.xml", contentType = mime:TEXT_XML);
         // Creates an array to hold the child parts.
         mime:Entity[] childParts = [childPart1, childPart2];
         // [Sets the child parts to the parent part](https://docs.central.ballerina.io/ballerina/mime/latest/classes/Entity#setBodyParts).
-        parentPart.setBodyParts(childParts,
-            contentType = mime:MULTIPART_MIXED);
+        parentPart.setBodyParts(childParts, contentType = mime:MULTIPART_MIXED);
         // Creates an array to hold the parent part and set it to the response.
         mime:Entity[] immediatePartsToResponse = [parentPart];
         http:Response outResponse = new;
-        outResponse.setBodyParts(immediatePartsToResponse,
-            contentType = mime:MULTIPART_FORM_DATA);
+        outResponse.setBodyParts(immediatePartsToResponse, contentType = mime:MULTIPART_FORM_DATA);
         return outResponse;
     }
 }
@@ -40,10 +37,8 @@ service /multiparts on new http:Listener(9092) {
 service /multiparts on new http:Listener(9090) {
 
     // This resource accepts multipart responses.
-    resource function get decode_in_response()
-            returns string|http:InternalServerError {
-        http:Response|error returnResult = clientEP->get(
-                        "/multiparts/encode_out_response");
+    resource function get decode_in_response() returns string|http:InternalServerError {
+        http:Response|error returnResult = clientEP->get("/multiparts/encode_out_response");
         if (returnResult is http:Response) {
             // [Extracts the body parts](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response#getBodyParts)  from the response.
             var parentParts = returnResult.getBodyParts();
@@ -73,8 +68,7 @@ function handleNestedParts(mime:Entity parentPart) {
                 handleContent(childPart);
             }
         } else {
-            log:printError("Error retrieving child parts! " +
-                            childParts.message());
+            log:printError("Error retrieving child parts! " + childParts.message());
         }
     }
 }
@@ -112,17 +106,14 @@ function handleContent(mime:Entity bodyPart) {
         var payload = bodyPart.getByteStream();
         if (payload is stream<byte[], io:Error?>) {
             //Writes the incoming stream to a file using `io:fileWriteBlocksFromStream` API by providing the file location to which the content should be written to.
-            io:Error? result = io:fileWriteBlocksFromStream(
-                                    "./files/ReceivedFile.pdf", payload);
+            io:Error? result = io:fileWriteBlocksFromStream("./files/ReceivedFile.pdf", payload);
 
             if (result is error) {
-                log:printError("Error occurred while writing ",
-                                'error = result);
+                log:printError("Error occurred while writing ", 'error = result);
             }
             close(payload);
         } else {
-            log:printError("Error in parsing byte channel :",
-                            'error = payload);
+            log:printError("Error in parsing byte channel :", 'error = payload);
         }
     }
 }
@@ -141,7 +132,6 @@ function getBaseType(string contentType) returns string {
 function close(stream<byte[], io:Error?> byteStream) {
     var cr = byteStream.close();
     if (cr is error) {
-        log:printError("Error occurred while closing the stream: ",
-                       'error = cr);
+        log:printError("Error occurred while closing the stream: ", 'error = cr);
     }
 }
