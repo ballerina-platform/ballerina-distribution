@@ -15,10 +15,10 @@ service / on new http:Listener(9090) {
         // If `response` is a `string` (text/plain), it is sent back to the
         // client. If `response` is an `http:ClientError`, an internal
         // server error is returned to the client.
-        if (response is string) {
+        if response is string {
             return response;
         } else {
-            if (response is http:IdleTimeoutError) {
+            if response is http:IdleTimeoutError {
                 return { body: 
                 "Request timed out. Please try again in sometime."};
             } else {
