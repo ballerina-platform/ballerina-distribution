@@ -1,5 +1,5 @@
-# Run the cURL command below to send a CORS simple request. 
-curl -v "http://localhost:9092/crossOriginService/company" -H "Origin:http://www.bbc.com"
+# To send a CORS simple request.
+$ curl -v "http://localhost:9092/crossOriginService/company" -H "Origin:http://www.bbc.com"
 > GET /crossOriginService/company HTTP/1.1
 > Host: localhost:9092
 > User-Agent: curl/7.64.1
@@ -16,8 +16,8 @@ curl -v "http://localhost:9092/crossOriginService/company" -H "Origin:http://www
 * Connection #0 to host localhost left intact
 {"type":"middleware"}* Closing connection 0
 
-# Run the cURL command below to send a CORS preflight request. 
-curl -v "http://localhost:9092/crossOriginService/lang" -X OPTIONS -H "Origin:http://www.m3.com" -H "Access-Control-Request-Method:POST"
+# To send a CORS preflight request.
+$ curl -v "http://localhost:9092/crossOriginService/lang" -X OPTIONS -H "Origin:http://www.m3.com" -H "Access-Control-Request-Method:POST"
 > OPTIONS /crossOriginService/lang HTTP/1.1
 > Host: localhost:9092
 > User-Agent: curl/7.64.1
