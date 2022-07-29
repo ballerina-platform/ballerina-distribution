@@ -10,15 +10,13 @@ public function main() returns error? {
 
     // Writes the given content `string[][]` to a CSV file in csvFilePath1.
     check io:fileWriteCsv(csvFilePath1, csvContent);
-    // If the write operation was successful, then, performs a read operation to read
-    // the CSV content as a string array of arrays.
+    // Reads the previously-saved CSV file as a `string[][]`.
     string[][] readCsv = check io:fileReadCsv(csvFilePath1);
     io:println(readCsv);
 
-    // Writes the given content as a stream to a CSV file in `csvFilePath2`.
+    // Writes the given content as a stream to a CSV file.
     check io:fileWriteCsvFromStream(csvFilePath2, csvContent.toStream());
-    // If the write operation was successful, then, perform a read operation to read
-    // the CSV content as a stream.
+    // Reads the previously-saved CSV file as a stream.
     stream<string[], io:Error?> csvStream = check
                                         io:fileReadCsvAsStream(csvFilePath2);
     // Iterates through the stream and prints the content.
