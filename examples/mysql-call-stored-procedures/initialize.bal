@@ -18,7 +18,7 @@ function initialize() returns sql:Error? {
         (INOUT pID INT, OUT totalCount INT) BEGIN SELECT age INTO pID FROM
         Student WHERE id = pID; SELECT COUNT(*) INTO totalCount FROM Student;
         END`);
-    // Inserts necessary data.
+    // Inserts the necessary data.
     _ = check mysqlClient->execute(`INSERT INTO STUDENT.Student(name, age)
                                         VALUES ('George', 24)`);
 
