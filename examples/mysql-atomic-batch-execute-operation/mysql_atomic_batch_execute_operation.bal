@@ -15,7 +15,7 @@ public function main() returns error? {
                                         country) VALUES ('Linda', 'Jones', 4, 10000.75, 'USA')`);
         log:printInfo("First query executed successfully.");
 
-        // Insert Customer record which violates the unique
+        // Insert a `customer` record, which violates the unique
         sql:ExecutionResult|sql:Error result = mysqlClient->execute(
                 `INSERT INTO Customers (firstName, lastName, registrationID, creditLimit, country)
                                 VALUES ('Peter', 'Stuart', 4, 5000.75, 'USA')`);
