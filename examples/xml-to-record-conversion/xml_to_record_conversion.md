@@ -6,6 +6,6 @@ For more information on the underlying module, see the [`xmldata` module](https:
 
 ::: code xml_to_record_conversion.bal :::
 
-To run this sample use the `bal run` command.
+To run this sample, use the `bal run` command.
 
 ::: out xml_to_record_conversion.out :::
