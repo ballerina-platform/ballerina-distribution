@@ -10,10 +10,7 @@ service / on new http:Listener(9090) {
             if mediaType.toLowerAscii() == "text/plain" {
 
                 // Send a 100-continue response to the client.
-                error? result = caller->continue();
-                if (result is error) {
-                    log:printError("Error sending response", 'error = result);
-                }
+                check caller->continue();
 
             // Send a 417 response to ignore the payload since content type is mismatched
             // with the expected content type.
