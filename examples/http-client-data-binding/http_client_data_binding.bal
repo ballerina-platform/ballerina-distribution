@@ -21,8 +21,8 @@ service /call on new http:Listener(9090) {
         return person;
     }
 
-    // When the data binding is expected to happen and if the `post` remote function gets a 5XX response from the
-    // backend, the response will be returned as an [http:RemoteServerError](https://docs.central.ballerina.io/ballerina/http/latest/errors#RemoteServerError)
+    // When the data binding is expected to happen and if the `post` remote function gets 
+    // a 5XX response from the backend, the response will be returned as an [http:RemoteServerError](https://docs.central.ballerina.io/ballerina/http/latest/errors#RemoteServerError)
     // including the error payload, headers, and status code.
     resource function get '5xx() returns json {
         json|error res = backendClient->post("/backend/5XX", "want 500");
@@ -34,8 +34,8 @@ service /call on new http:Listener(9090) {
         }
     }
 
-    // When the data binding is expected to happen and if the client remote function gets a 4XX response from the
-    // backend, the response will be returned as an [http:ClientRequestError](https://docs.central.ballerina.io/ballerina/http/latest/errors#ClientRequestError)
+    // When the data binding is expected to happen and if the client remote function gets 
+    // a 4XX response from the backend, the response will be returned as an [http:ClientRequestError](https://docs.central.ballerina.io/ballerina/http/latest/errors#ClientRequestError)
     // including the error payload, headers, and status code.
     resource function get '4xx() returns json {
         json|error res = backendClient->post("/backend/err", "want 400");
