@@ -2,9 +2,8 @@ import ballerina/http;
 import ballerina/io;
 
 // Defines the HTTP client to call the OAuth2 secured APIs.
-// The client is enriched with the `Authorization: Bearer <token>` header by
-// passing the [`http:OAuth2JwtBearerGrantConfig`](https://docs.central.ballerina.io/ballerina/http/latest/records/OAuth2JwtBearerGrantConfig) for the `auth` configuration of the
-// client.
+// The request is enriched with the `Authorization: Bearer <token>` header by passing 
+// the [`http:OAuth2JwtBearerGrantConfig`](https://docs.central.ballerina.io/ballerina/http/latest/records/OAuth2JwtBearerGrantConfig) for the `auth` configuration of the client.
 http:Client securedEP = check new("https://localhost:9090",
     auth = {
         tokenUrl: "https://localhost:9445/oauth2/token",
