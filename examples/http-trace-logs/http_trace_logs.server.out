@@ -1,4 +1,4 @@
-bal run http_trace_logs.bal -- -Cballerina.http.traceLogConsole=true
+$ bal run http_trace_logs.bal -- -Cballerina.http.traceLogConsole=true
 ballerina: HTTP trace log enabled
 
 # In the logs, `http.downstream` refers to the HTTP traffic that flows between the client and Ballerina
