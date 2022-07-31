@@ -1,7 +1,7 @@
 import ballerina/io;
 import ballerina/serdes;
 
-// Define a type which is a subtype of anydata.
+// Define a type, which is a subtype of anydata.
 type Student record {
     int id;
     string name;
@@ -10,7 +10,7 @@ type Student record {
 
 public function main() returns error? {
 
-    // Assign the value to the variable
+    // Assign the value to the variable.
     Student studentValue = {
         id: 7894,
         name: "Liam",
