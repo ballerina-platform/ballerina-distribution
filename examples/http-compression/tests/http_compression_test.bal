@@ -7,5 +7,5 @@ function testFunc() returns error? {
     // Send a GET request to the specified endpoint.
     string response = check httpEndpoint->get("/alwaysCompress");
     // Assert the uncompressed response.
-    test:assertEquals(response, "Type : This is a string");
+    test:assertEquals(response, "Type : This is a string.");
 }
