@@ -16,7 +16,7 @@ service /'stream on new http:Listener(9090) {
         //Sends the request to the receiver service with the file content.
         string clientResponse = check clientEndpoint->post("/stream/receiver", request);
 
-        // forward the received payload to the caller
+        // forward the received payload to the caller.
         return clientResponse;
     }
 
@@ -24,7 +24,7 @@ service /'stream on new http:Listener(9090) {
         //[Retrieve the byte stream](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getByteStream).
         stream<byte[], io:Error?> streamer = check request.getByteStream();
 
-        //Writes the incoming stream to a file using `io:fileWriteBlocksFromStream` API by providing the file location to which the content should be written to.
+        //Writes the incoming stream to a file using the `io:fileWriteBlocksFromStream` API by providing the file location to which the content should be written.
         check io:fileWriteBlocksFromStream("./files/ReceivedFile.pdf", streamer);
         check streamer.close();
         return "File Received!";

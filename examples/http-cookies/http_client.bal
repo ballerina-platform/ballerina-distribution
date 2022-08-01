@@ -12,7 +12,7 @@ public function main() returns error? {
     // Create a new HTTP client by giving the URL and the client configuration.
     http:Client httpClient = check new("http://localhost:9095/cookieDemo", clientEPConfig);
 
-    // Send a username and a password as a JSON payload to the backend.
+    // Send a username and password as a JSON payload to the backend.
     json payload = {
         name: "John",
         password: "p@ssw0rd"

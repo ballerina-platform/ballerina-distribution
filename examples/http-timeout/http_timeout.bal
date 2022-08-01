@@ -12,8 +12,8 @@ service / on new http:Listener(9090) {
     resource function get timeout() returns string|http:InternalServerError {
         string|error response = backendClientEP->get("/hello");
 
-        // If `response` is a `string` (text/plain), it is sent back to the
-        // client. If `response` is an `http:ClientError`, an internal
+        // If the `response` is a `string` (text/plain), it is sent back to the
+        // client. Also, if the `response` is an `http:ClientError`, an internal
         // server error is returned to the client.
         if response is string {
             return response;

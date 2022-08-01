@@ -2,7 +2,7 @@
 
 Ballerina URL API supports encoding/decoding a URL or part of a URL.
 
-For more information on the underlying module, see the [URL module](https://docs.central.ballerina.io/ballerina/url/latest/).
+For more information on the underlying module, see the [`url` module](https://docs.central.ballerina.io/ballerina/url/latest/).
 
 ::: code url_encode_decode.bal :::
 

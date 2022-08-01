@@ -13,7 +13,7 @@ $ curl -v "http://localhost:9092/crossOriginService/company" -H "Origin:http://w
 < content-length: 21
 < server: ballerina
 <
-* Connection #0 to host localhost left intact
+* Connection #0 to host localhost left intact.
 {"type":"middleware"}* Closing connection 0
 
 # To send a CORS preflight request.

@@ -14,7 +14,7 @@ service /cookieDemo on serverEP {
         if password == "p@ssw0rd" {
 
             // [Create a new cookie](https://docs.central.ballerina.io/ballerina/http/latest/classes/Cookie)
-            // by setting `name` as the `username` and `value` as the logged-in user's name. Set the cookies
+            // by setting the `name` as the `username` and `value` as the name of the logged-in user. Set the cookies
             // path as `/` to apply it to all the resources in the service.
             http:Cookie cookie = new("username", name.toString(), path = "/");
 
@@ -51,7 +51,7 @@ service /cookieDemo on serverEP {
             return "Please login";
 
         }
-        // If the `username` cookie is not presented, send a login message.
+        // If the `username` cookie is not presented, send a login request message: `Please login`.
         return "Please login";
     }
 }

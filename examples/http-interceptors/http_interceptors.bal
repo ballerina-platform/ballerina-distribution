@@ -21,7 +21,7 @@ service class RequestInterceptor1 {
     *http:RequestInterceptor;
 
     // A default resource function, which will be executed for all the requests. 
-    // A `RequestContext` is used to share data between interceptors.
+    // A `RequestContext` is used to share data between the interceptors.
     resource function 'default [string... path](http:RequestContext ctx, http:Request req)
             returns http:NextService|error? {
         // Sets a header to the request inside the interceptor service.

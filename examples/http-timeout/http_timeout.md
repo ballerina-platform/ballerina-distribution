@@ -1,6 +1,6 @@
 # Timeout
 
-The Timeout is used to gracefully handle network timeouts, which occur when using the HTTP Client.
+The `Timeout` is used to gracefully handle network timeouts, which occur when using the HTTP Client.
 
 For more information on the underlying module, see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
 

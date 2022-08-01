@@ -7,10 +7,10 @@ service class ResponseErrorInterceptor {
     *http:ResponseErrorInterceptor;
 
     // The error occurred in the request-response path can be accessed by the 
-    // mandatory argument : `error`. The remote function can return a response,
+    // mandatory argument: `error`. The remote function can return a response,
     // which will overwrite the existing error response.
     remote function interceptResponseError(error err) returns http:InternalServerError {
-        // In this case, all of the errors are sent as HTTP 500 internal server 
+        // In this case, all of the errors are sent as `HTTP 500 internal server` 
         // errors with a customized media type and body. Moreover, you can send different
         // responses according to the error type.        
         return {

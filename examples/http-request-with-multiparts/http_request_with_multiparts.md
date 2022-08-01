@@ -1,6 +1,6 @@
 # Request With multiparts
 
-Ballerina supports encoding and decoding multipart content in http requests along with nested parts.
+Ballerina supports encoding and decoding multipart content in HTTP requests along with nested parts.
 When you request multiparts from the HTTP inbound request, you get an array of body parts (an array of entities).
 You can loop through this array and handle the received body parts according to your requirement.
 

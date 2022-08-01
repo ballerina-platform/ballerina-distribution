@@ -1,6 +1,6 @@
 # Matrix parameter
 
-Ballerina supports extracting `MatrixParam` values using `http:Request` support method.
+Ballerina supports extracting `MatrixParam` values using the `http:Request` support method.
 
 For more information on the underlying module, see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
 

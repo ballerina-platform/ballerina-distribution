@@ -4,8 +4,8 @@ import ballerina/test;
 @test:Config {}
 function testFunc() returns error? {
     http:Client httpEndpoint = check new("http://localhost:9090");
-    // Send a GET request to the specified endpoint
+    // Send a GET request to the specified endpoint.
     string response = check httpEndpoint->get("/alwaysCompress");
-    // Assert the uncompressed response
+    // Assert the uncompressed response.
     test:assertEquals(response, "Type : This is a string");
 }

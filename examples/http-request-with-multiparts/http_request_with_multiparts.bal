@@ -27,15 +27,15 @@ service /multiparts on new http:Listener(9090) {
 
     resource function get encode(http:Request req)
             returns http:Response|http:InternalServerError {
-        //Create a json body part.
+        //Create a `json` body part.
         mime:Entity jsonBodyPart = new;
         jsonBodyPart.setContentDisposition(getContentDispositionForFormData("json part"));
         jsonBodyPart.setJson({"name": "wso2"});
         //Create an `xml` body part as a file upload.
         mime:Entity xmlFilePart = new;
         xmlFilePart.setContentDisposition(getContentDispositionForFormData("xml file part"));
-        // This file path is relative to where the ballerina is running.
-        // If your file is located outside, please
+        // This file path is relative to where Ballerina is running.
+        // If your file is located outside,
         // give the absolute file path instead.
         xmlFilePart.setFileAsEntityBody("./files/test.xml", contentType = mime:APPLICATION_XML);
         // Create an array to hold all the body parts.
@@ -44,8 +44,8 @@ service /multiparts on new http:Listener(9090) {
         // [Set the body parts](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#setBodyParts) to the request.
         // Here the content-type is set as multipart form data.
         // This also works with any other multipart media type.
-        // eg:- `multipart/mixed`, `multipart/related` etc.
-        // You need to pass the content type that suit your requirement.
+        // E.g., `multipart/mixed`, `multipart/related` etc.
+        // You need to pass the content type that suits your requirement.
         request.setBodyParts(bodyParts, contentType = mime:MULTIPART_FORM_DATA);
         http:Response|error returnResponse = clientEP->post("/multiparts/decode", request);
         if returnResponse is http:Response {
@@ -79,7 +79,7 @@ function handleContent(mime:Entity bodyPart) {
                 log:printError(payload.message());
             }
         } else if mime:TEXT_PLAIN == baseType {
-            //[Extracts text data](https://docs.central.ballerina.io/ballerina/mime/latest/classes/Entity#getText) from the body part.
+            //[Extracts `text` data](https://docs.central.ballerina.io/ballerina/mime/latest/classes/Entity#getText) from the body part.
             var payload = bodyPart.getText();
             if payload is string {
                 log:printInfo(payload);

@@ -18,7 +18,7 @@ service /multiparts on new http:Listener(9092) {
         // Creates another child part with a file.
         mime:Entity childPart2 = new;
         // This file path is relative to where the Ballerina is running.
-        //If your file is located outside, please give the
+        //If your file is located outside, give the
         //absolute file path instead.
         childPart2.setFileAsEntityBody("./files/test.xml", contentType = mime:TEXT_XML);
         // Creates an array to hold the child parts.
@@ -105,7 +105,7 @@ function handleContent(mime:Entity bodyPart) {
         // [Extracts the byte stream](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response#getByteStream) from the body part and saves it as a file.
         var payload = bodyPart.getByteStream();
         if (payload is stream<byte[], io:Error?>) {
-            //Writes the incoming stream to a file using `io:fileWriteBlocksFromStream` API by providing the file location to which the content should be written to.
+            //Writes the incoming stream to a file using the `io:fileWriteBlocksFromStream` API by providing the file location to which the content should be written.
             io:Error? result = io:fileWriteBlocksFromStream("./files/ReceivedFile.pdf", payload);
 
             if (result is error) {

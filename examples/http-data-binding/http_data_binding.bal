@@ -9,7 +9,7 @@ type Student record {
 
 service /hello on new http:Listener(9090) {
 
-    // The `Student` parameter in [Payload annotation](https://docs.central.ballerina.io/ballerina/http/latest/records/Payload)
+    // The `Student` parameter in the [payload annotation](https://docs.central.ballerina.io/ballerina/http/latest/records/Payload)
     // represents the entity body of the inbound request.
     resource function post student(@http:Payload Student student) returns json {
         string name = student.Name;

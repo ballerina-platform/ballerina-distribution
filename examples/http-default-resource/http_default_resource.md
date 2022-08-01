@@ -1,6 +1,6 @@
 # Default resource
 
-Ballerina provides rest params in the resource path and the default resource method to help designing proxy services
+Ballerina provides rest params in the resource path and default resource method to help in designing proxy services
 and default resources. It can be used to handle unmatched requests.
 
 For more information on the underlying module, see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).

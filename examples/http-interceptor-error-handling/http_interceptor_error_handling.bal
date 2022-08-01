@@ -29,7 +29,7 @@ service class RequestErrorInterceptor {
 
     // The resource function inside a `RequestErrorInterceptor` is only allowed 
     // to have the default method and path. The error occurred in the interceptor
-    // execution can be accessed by the mandatory argument : `error`.
+    // execution can be accessed by the mandatory argument: `error`.
     resource function 'default [string... path](error err, http:Request req,
             http:RequestContext ctx) returns http:NextService|error? {
         // In this case, a header is set to the request, and then, the modified request

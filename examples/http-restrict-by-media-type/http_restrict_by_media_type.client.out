@@ -16,7 +16,7 @@ $ curl -v http://localhost:9092/infoService -H "Accept:application/xml" -H "Cont
 * Connection #0 to host localhost left intact
 <name>Ballerina</name>* Closing connection 0
 
-# To invoke the service using unsupported media type, execute the following cURL request. The content type of the
+# To invoke the service using an unsupported media type, execute the following cURL request. The content type of the
 # request is not listed under the `consumes` resource configuration.
 $ curl -v http://localhost:9092/infoService -H "Accept:application/xml" -H "Content-Type:text/plain" -d "Hello ballerina"
 > POST /infoService HTTP/1.1
@@ -37,7 +37,7 @@ $ curl -v http://localhost:9092/infoService -H "Accept:application/xml" -H "Cont
 * Closing connection 0
 
 # To invoke the service with a media type that is not acceptable, execute the following cURL request. The media type mentioned
-# in the Accept header is not listed under the `produces` resource configuration.
+# in the `Accept` header is not listed under the `produces` resource configuration.
 $ curl -v http://localhost:9092/infoService -H "Accept:text/html" -H "Content-Type:application/json" -d '{"name":"Ballerina"}'
 > POST /infoService HTTP/1.1
 > Host: localhost:9092

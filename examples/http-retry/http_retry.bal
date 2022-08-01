@@ -45,7 +45,7 @@ service / on new http:Listener(8080) {
 
     resource function get hello() returns string {
         self.counter += 1;
-        // Delay the response by 5 seconds to mimic network level delays.
+        // Delay the response by 5 seconds to mimic network-level delays.
         if self.counter % 4 != 0 {
             log:printInfo("Request received from the client to delayed service.");
             runtime:sleep(5);
