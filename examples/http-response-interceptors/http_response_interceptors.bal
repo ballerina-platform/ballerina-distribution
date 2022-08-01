@@ -14,8 +14,8 @@ service class ResponseInterceptor {
 
     // The `interceptResponse` remote function, which will be executed for all the
     // responses. A `RequestContext` is used to share data between interceptors.
-    remote function interceptResponse(http:RequestContext ctx, http:Response res)
-            returns http:NextService|error? {
+    remote function interceptResponse(http:RequestContext ctx, 
+                        http:Response res) returns http:NextService|error? {
         // Sets a header to the response inside the interceptor service.
         res.setHeader(interceptor_header, interceptor_header_value);
         // Returns the next interceptor in the pipeline or `nil` if there is no 
@@ -32,7 +32,7 @@ ResponseInterceptor responseInterceptor = new;
 // Engage interceptors at the listener level. Response interceptor services will be executed from
 // tail to head.
 listener http:Listener interceptorListener = new http:Listener(9090,
-    // This interceptor pipeline will be executed for all of the services attached to this listener
+    // This interceptor pipeline will be executed for all of the services attached to this listener.
     interceptors = [responseInterceptor]
 );
 
