@@ -5,7 +5,8 @@ import ballerina/log;
 // any `resource/remote` methods except the `execute()` remote method.
 readonly service class LogInterceptor {
 
-    // Infers the `graphql:Interceptors` service object from GraphQL package.
+    // Infers the `graphql:Interceptors` service object from the GraphQL
+    // package.
     *graphql:Interceptor;
 
     // Implement the `execute()` remote function provided by the
@@ -16,7 +17,7 @@ readonly service class LogInterceptor {
                                      graphql:Field 'field)
                                      returns anydata|error {
 
-        // Access the current execution field name using `graphql:Field`
+        // Access the current execution field name using the `graphql:Field`
         // object.
         string fieldName = 'field.getName();
 
@@ -29,7 +30,8 @@ readonly service class LogInterceptor {
         // the `actual resolver` function. The function returns an `anydata`
         // type value that includes the execution result of the next
         // interceptor or the actual resolver. To call the `context.resolve()`
-        // function, `graphql:Field` value should be provided as the argument.
+        // function, the `graphql:Field` value should be provided as the
+        // argument.
         var data = context.resolve('field);
 
         // This log statement executes after the resolver execution.
