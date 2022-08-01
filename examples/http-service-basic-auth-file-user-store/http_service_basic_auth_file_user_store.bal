@@ -13,7 +13,7 @@ listener http:Listener securedEP = new(9090,
 // Using Basic Auth with the file user store can be enabled by setting the
 // [`http:FileUserStoreConfig`](https://docs.central.ballerina.io/ballerina/http/latest/records/FileUserStoreConfig) configurations.
 // Authorization is based on scopes. A scope maps to one or more groups. Authorization can be 
-// enabled by setting the `string|string[]` type configurations for `scopes` field.
+// enabled by setting the `string|string[]` type configurations for the `scopes` field.
 @http:ServiceConfig {
     auth: [
         {
