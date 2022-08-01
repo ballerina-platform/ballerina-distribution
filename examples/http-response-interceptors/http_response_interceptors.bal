@@ -1,9 +1,6 @@
 import ballerina/http;
 
-// Header name to be set to the response in the response interceptor.
 final string interceptor_header = "responseHeader";
-
-// Header value to be set to the response in the response interceptor.
 final string interceptor_header_value = "ResponseInterceptor";
 
 // A `ResponseInterceptor` service class implementation. It intercepts the response 
@@ -26,24 +23,16 @@ service class ResponseInterceptor {
     }
 }
 
-// Creates a new `ResponseInterceptor`.
-ResponseInterceptor responseInterceptor = new;
-
 // Engage interceptors at the listener level. Response interceptor services will be executed from
 // tail to head.
 listener http:Listener interceptorListener = new http:Listener(9090,
     // This interceptor pipeline will be executed for all of the services attached to this listener.
-    interceptors = [responseInterceptor]
+    interceptors = [new ResponseInterceptor()]
 );
 
 service /user on interceptorListener {
 
-    resource function get greeting(http:Request req) returns http:Ok|error {
-        return {
-            mediaType: "application/org+json",
-            body: {
-                message: "Greetings!"
-            }
-        };
+    resource function get greeting(http:Request req) returns string {
+        return "Greetings!";
     }
 }

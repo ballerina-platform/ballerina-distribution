@@ -10,10 +10,10 @@ $ curl -v http://localhost:9090/user/greeting
 < HTTP/1.1 200 OK
 < requestHeader1: RequestInterceptor1
 < requestHeader2: RequestInterceptor2
-< content-type: application/org+json
-< content-length: 24
+< content-type: text/plain
+< content-length: 10
 < server: ballerina
-< date: Mon, 1 Aug 2022 13:11:39 +0530
+< date: Mon, 1 Aug 2022 16:06:46 +0530
 < 
 * Connection #0 to host localhost left intact
-{"message":"Greetings!"}
+Greetings!

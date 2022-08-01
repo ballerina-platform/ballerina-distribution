@@ -26,9 +26,6 @@ service class RequestInterceptor1 {
     }
 }
 
-// Creates a new `RequestInterceptor`.
-RequestInterceptor1 requestInterceptor1 = new;
-
 // An `Interceptor` service class with a specific path. This interceptor can only be 
 // engaged at the service level.
 service class RequestInterceptor2 {
@@ -43,9 +40,6 @@ service class RequestInterceptor2 {
     }
 }
 
-// Creates another new `RequestInterceptor`.
-RequestInterceptor2 requestInterceptor2 = new;
-
 // Interceptors can also be engaged at the listener level. In this case, the `RequestInterceptors`
 // can have only the default path.
 listener http:Listener interceptorListener = new http:Listener(9090);
@@ -55,7 +49,7 @@ listener http:Listener interceptorListener = new http:Listener(9090);
 @http:ServiceConfig {
     // The interceptor pipeline. The base path of the interceptor services is the same as
     // the target service. Hence, they will be executed only for this particular service.
-    interceptors: [requestInterceptor1, requestInterceptor2]
+    interceptors: [new RequestInterceptor1(), new RequestInterceptor2()]
 }
 service /user on interceptorListener {
 
@@ -65,10 +59,7 @@ service /user on interceptorListener {
                 "requestHeader1": check req.getHeader(interceptor_header1),
                 "requestHeader2": check req.getHeader(interceptor_header2)
             },
-            mediaType: "application/org+json",
-            body: {
-                message: "Greetings!"
-            }
+            body: "Greetings!"
         };
     }
 }
