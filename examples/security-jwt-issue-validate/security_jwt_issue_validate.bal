@@ -2,15 +2,16 @@ import ballerina/io;
 import ballerina/jwt;
 
 public function main() returns error? {
-    // Defines the JWT issuer configurations with the private key file configurations, which are used to self-sign the JWT.
+    // Defines the JWT issuer configurations with the private key file configurations, 
+    // which are used to self-sign the JWT.
     jwt:IssuerConfig issuerConfig = {
         username: "ballerina",
         issuer: "wso2",
         audience: "vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
         keyId: "NTAxZmMxNDMyZDg3MTU1ZGM0MzEzODJhZWI4NDNlZDU1OGFkNjFiMQ",
         expTime: 3600,
-        // Signature can be created using either the private key configurations or keystore configurations.
-        // [jwt:IssuerSignatureConfig](https://docs.central.ballerina.io/ballerina/jwt/latest/records/IssuerSignatureConfig)
+        // Signature can be created using either the private key configurations or 
+        // keystore configurations. Refer [`jwt:IssuerSignatureConfig`](https://docs.central.ballerina.io/ballerina/jwt/latest/records/IssuerSignatureConfig) for more information.
         signatureConfig: {
             config: {
                 keyFile: "../resource/path/to/private.key"
@@ -22,14 +23,15 @@ public function main() returns error? {
     string jwt = check jwt:issue(issuerConfig);
     io:println("Issued JWT: ", jwt);
 
-    // Defines the JWT validator configurations with the public certificate file configurations, which are used to
-    // validate the signature of JWT.
+    // Defines the JWT validator configurations with the public certificate file configurations, 
+    // which are used to validate the signature of JWT.
     jwt:ValidatorConfig validatorConfig = {
         issuer: "wso2",
         audience: "vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
         clockSkew: 60,
-        // Signature can be validated using the public certificate file, truststore configurations, or JWKS configurations.
-        // [jwt:ValidatorSignatureConfig](https://docs.central.ballerina.io/ballerina/jwt/latest/records/ValidatorSignatureConfig)
+        // Signature can be validated using the public certificate file, 
+        // truststore configurations, or JWKS configurations. 
+        // Refer [`jwt:ValidatorSignatureConfig`](https://docs.central.ballerina.io/ballerina/jwt/latest/records/ValidatorSignatureConfig) for more information.
         signatureConfig: {
             certFile: "../resource/path/to/public.crt"
         }
