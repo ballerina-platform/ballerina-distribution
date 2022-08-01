@@ -1,6 +1,9 @@
 import ballerina/http;
 
+// Header name to be set to the response in the response interceptor.
 final string interceptor_header = "responseHeader";
+
+// Header value to be set to the response in the response interceptor.
 final string interceptor_header_value = "ResponseInterceptor";
 
 // A `ResponseInterceptor` service class implementation. It intercepts the response 
