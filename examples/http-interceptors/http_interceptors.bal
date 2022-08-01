@@ -21,9 +21,9 @@ service class RequestInterceptor1 {
     *http:RequestInterceptor;
 
     // A default resource function, which will be executed for all the requests. 
-    // A `RequestContext` is used to share data between interceptors.
-    resource function 'default [string... path](http:RequestContext ctx, 
-                            http:Request req) returns http:NextService|error? {
+    // A `RequestContext` is used to share data between the interceptors.
+    resource function 'default [string... path](http:RequestContext ctx, http:Request req)
+            returns http:NextService|error? {
         // Sets a header to the request inside the interceptor service.
         req.setHeader(interceptor_header1, interceptor_header_value1);
         // Returns the next interceptor or the target service in the pipeline. 
@@ -42,8 +42,8 @@ service class RequestInterceptor2 {
 
     // This interceptor is executed only for GET requests with the relative path 
     // `greeting`. 
-    resource function get greeting(http:RequestContext ctx, 
-                            http:Request req) returns http:NextService|error? {
+    resource function get greeting(http:RequestContext ctx, http:Request req)
+            returns http:NextService|error? {
         req.setHeader(interceptor_header2, interceptor_header_value2);
         return ctx.next();
     }
@@ -60,8 +60,8 @@ service class ResponseInterceptor {
 
     // The `interceptResponse` remote function, which will be executed for all the
     // responses. A `RequestContext` is used to share data between interceptors.
-    remote function interceptResponse(http:RequestContext ctx, 
-            http:Response res) returns http:NextService|error? {
+    remote function interceptResponse(http:RequestContext ctx, http:Response res)
+            returns http:NextService|error? {
         // Sets a header to the response inside the interceptor service.
         res.setHeader(interceptor_header3, interceptor_header_value3);
         // Returns the next interceptor in the pipeline or `nil` if there is no 

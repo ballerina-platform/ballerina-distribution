@@ -8,6 +8,10 @@ see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
 
 ::: code http_disable_chunking.bal :::
 
-::: out http_disable_chunking.client.out :::
+Run the service as follows.
 
 ::: out http_disable_chunking.server.out :::
+
+Invoke the service by executing the following cURL command in a new terminal.
+
+::: out http_disable_chunking.client.out :::

@@ -12,7 +12,7 @@ service class RequestInterceptor {
 
     // This will return a `HeaderNotFoundError` if you do not set this header. 
     // Then, the execution will jump to the nearest `RequestErrorInterceptor`.
-    resource function 'default [string... path](http:RequestContext ctx, 
+    resource function 'default [string... path](http:RequestContext ctx,
             @http:Header string checkHeader) returns http:NextService|error? {
         io:println("Check Header Value : ", checkHeader);
         return ctx.next();
@@ -29,8 +29,8 @@ service class RequestErrorInterceptor {
 
     // The resource function inside a `RequestErrorInterceptor` is only allowed 
     // to have the default method and path. The error occurred in the interceptor
-    // execution can be accessed by the mandatory argument : `error`.
-    resource function 'default [string... path](error err, http:Request req, 
+    // execution can be accessed by the mandatory argument: `error`.
+    resource function 'default [string... path](error err, http:Request req,
             http:RequestContext ctx) returns http:NextService|error? {
         // In this case, a header is set to the request, and then, the modified request
         // is dispatched to the target service. Moreover, you can send different 
@@ -52,8 +52,7 @@ listener http:Listener interceptorListener = new http:Listener(9090, config = {
 
 service / on interceptorListener {
 
-    resource function get greeting(@http:Header string checkHeader) 
-            returns http:Ok {
+    resource function get greeting(@http:Header string checkHeader) returns http:Ok {
         return {
             headers: {
                 "checkedHeader": checkHeader
