@@ -8,8 +8,7 @@ $ curl -v http://localhost:9090/user/greeting
 > 
 * Mark bundle as not supporting multiuse
 < HTTP/1.1 200 OK
-< requestHeader1: RequestInterceptor1
-< requestHeader2: RequestInterceptor2
+< requestHeader: RequestInterceptor
 < content-type: text/plain
 < content-length: 10
 < server: ballerina
