@@ -41,7 +41,9 @@ service /user on interceptorListener {
 
     resource function get greeting(http:Request req) returns http:Ok|error {
         return {
-            headers: { "requestHeader": check req.getHeader(interceptor_header) },
+            headers: { 
+                "requestHeader": check req.getHeader(interceptor_header) 
+            },
             body: "Greetings!"
         };
     }
