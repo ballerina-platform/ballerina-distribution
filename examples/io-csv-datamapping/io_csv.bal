@@ -18,17 +18,16 @@ public function main() returns error? {
 
     // Writes the given content record[] to a CSV file.
     check io:fileWriteCsv(csvFilePath1, csvContent);
-    // If the write operation was successful, then, performs a read operation
-    // to read the CSV content as a array of records.
+    // Reads the previously-saved CSV file as a record[].
     Employee[] readCsv = check io:fileReadCsv(csvFilePath1);
     io:println(readCsv);
 
-    // Writes the content record stream to a CSV file.
+    // Writes the given content as a stream to a CSV file.
     check io:fileWriteCsvFromStream(csvFilePath2, readCsv.toStream());
-    // If the write operation was successful, then, perform a read operation to read the CSV content as a stream.
+    // Reads the previously-saved CSV file as a record stream.
     stream<Employee, io:Error?> csvStream = check
                                         io:fileReadCsvAsStream(csvFilePath2);
-    // Iterates through the stream and prints the content.
+    // Iterates through the stream and prints the records.
     check csvStream.forEach(function(Employee val) {
                               io:println(val);
                           });
