@@ -1,4 +1,4 @@
-# Request Interceptors
+# Request interceptors
 
 Interceptors are used to execute some common logic such as logging, header manipulation,
 state publishing, etc. for all the inbound requests and outbound responses. A 
