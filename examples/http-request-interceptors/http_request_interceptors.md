@@ -6,7 +6,7 @@ state publishing, etc. for all the inbound requests and outbound responses. A
 logic. `RequestInterceptors` have a resource method, which will be executed
 before dispatching the request to the actual resource in the target service.
 
-For more information, see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
+For more information, see the [`http` module](https://docs.central.ballerina.io/ballerina/http/latest/).
 
 ::: code http_request_interceptors.bal :::
 

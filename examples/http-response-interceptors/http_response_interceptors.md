@@ -5,7 +5,7 @@ In addition to `RequestInterceptors`, a `ResponseInterceptor` can be used to int
 to the client. A collection of these request and response interceptors can be configured as a pipeline
 at the listener level or service level. 
 
-For more information, see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
+For more information, see the [`http` module](https://docs.central.ballerina.io/ballerina/http/latest/).
 
 ::: code http_response_interceptors.bal :::
 
