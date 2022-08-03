@@ -809,7 +809,7 @@
                 "name": "Strands",
                 "url": "strands",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "isLearnByExample": true
             },
             {
@@ -1554,6 +1554,14 @@
             {
                 "name": "Documentation",
                 "url": "graphql-documentation",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Interceptors",
+                "url": "graphql-interceptors",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -2541,6 +2549,21 @@
         ]
     },
     {
+        "title": "SerDes",
+        "column": 3,
+        "category": "Working over the network",
+        "samples": [
+            {
+                "name": "Serialization and Deserialization",
+                "url": "serdes-simple",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
         "title": "IO",
         "column": 0,
         "category": "Common libraries",
@@ -2875,6 +2898,20 @@
             {
                 "name": "JSON to XML conversion ",
                 "url": "xml-from-json-conversion",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "XML to record conversion",
+                "url": "xml-to-record-conversion",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Record to XML conversion",
+                "url": "xml-from-record-conversion",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": false

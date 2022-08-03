@@ -83,7 +83,7 @@ public class OpenAPIArtifactBuildTest {
         TestUtils.deleteGeneratedFiles("petstore");
     }
 
-    @Test(description = "Check openapi to ballerina generator command for given tags", enabled = true)
+    @Test(description = "Check openapi to ballerina generator command for given tags")
     public void buildOpenAPIToBallerinaWithFilterTagsTest() throws IOException,
             InterruptedException {
         Path testResource = Paths.get("/openapi");
