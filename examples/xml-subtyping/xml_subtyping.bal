@@ -1,29 +1,34 @@
 import ballerina/io;
 
-// An `xml` value belongs to `xml:Element` if it consists of just an element
-// item. 
+// An `xml` value belongs to `xml:Element` if it consists of just an element item. 
 xml:Element element = xml `<p>Hello</p>`;
 
-// Similarly for `xml:Comment` and `xml:ProcessingInstruction`.
+// Similarly a value belongs to `xml:Comment` or `xml:ProcessingInstruction` if it 
+// consists of just a comment item or a processing instruction item.
 xml:Comment comment = xml `<!--This is a comment-->`;
 xml:ProcessingInstruction procInst = xml `<?target data?>`;
 
-public function main() {
-    // An `xml` value belongs to the `xml:Text` if it consists of a text item or is empty.
-    xml:Text _ = xml ``;
-    xml:Text _ = xml `Hello World`;
+// An `xml` value belongs to `xml:Text` if it consists of only a text item or is empty.
+xml:Text empty = xml ``;
+xml:Text text = xml `Hello World`;
 
+public function main() {
     string hello = "Hello";
     string world = "World";
+
+    // The return type of `stringToXml` is `xml:Text`, which indicates that it will
+    // return an XML text item.
     xml:Text c = stringToXml(hello + " " + world);
     io:println(c);
 
     xml:Element otherElement = xml `<q>World</q>`;
 
+    // Concatenating multiple items results in a sequence of items (`xml<T>`).
     xml d = element + otherElement;
+
     xml e = xml `<p>hello</p>World`;
-    // An `xml` value belongs to the type `xml<T>` if each of its members belong 
-    // to `T`.
+
+    // An `xml` value belongs to the type `xml<T>` if each of its members belong to `T`.
     io:println(element is xml<xml:Element>);
     io:println(d is xml<xml:Element>);
     io:println(e is xml<xml:Element>);
