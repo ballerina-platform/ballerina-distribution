@@ -7,12 +7,12 @@ Interceptors follow the `onion principle` when executing. Also, the inserting or
 For more information on the underlying package, see the
 [`graphql` package](https://lib.ballerina.io/ballerina/graphql/latest/).
 
-::: code graphql_input_types.bal :::
+::: code graphql_interceptors.bal :::
 
 Run the service by executing the following command.
 
-::: out graphql_input_types.server.out :::
+::: out graphql_interceptors.server.out :::
 
 Invoke the service as follows.
 
-::: out graphql_input_types.client.out :::
+::: out graphql_interceptors.client.out :::
