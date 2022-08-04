@@ -18,7 +18,7 @@ public function main() returns error? {
 
     // Writes the given content `record[]` to a CSV file.
     check io:fileWriteCsv(csvFilePath1, csvContent);
-    // Reads the previously-saved CSV file as a record[].
+    // Reads the previously-saved CSV file as a `record[]`.
     Employee[] readCsv = check io:fileReadCsv(csvFilePath1);
     io:println(readCsv);
 
