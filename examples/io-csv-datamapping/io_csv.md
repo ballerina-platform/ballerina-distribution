@@ -2,7 +2,7 @@
 
 The Ballerina `io` library contains APIs to read/write CSV content from/to a file and these APIs can be used to bind the CSV data with user-specified records<br/><br/>
 For more information on the underlying module, 
-see the [IO module](https://lib.ballerina.io/ballerina/io/latest/).
+see the [`io` module](https://lib.ballerina.io/ballerina/io/latest/).
 
 ::: code io_csv.bal :::
 
