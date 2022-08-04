@@ -16,7 +16,7 @@ public function main() returns error? {
     {id:3, name:"Ronald", salary:120000}, {id:4, name:"Roy", salary:6000},
     {id:5, name:"Oliver", salary:1100000}];
 
-    // Writes the given content record[] to a CSV file.
+    // Writes the given content `record[]` to a CSV file.
     check io:fileWriteCsv(csvFilePath1, csvContent);
     // Reads the previously-saved CSV file as a record[].
     Employee[] readCsv = check io:fileReadCsv(csvFilePath1);
