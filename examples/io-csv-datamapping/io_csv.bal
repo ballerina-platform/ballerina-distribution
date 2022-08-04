@@ -1,7 +1,7 @@
 import ballerina/io;
 
 
-// Define the record to bind the data with
+// Defines the record to bind the data.
 type Employee record{
     int id;
     string name;
