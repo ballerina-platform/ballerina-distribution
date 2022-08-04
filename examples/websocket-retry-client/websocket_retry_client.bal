@@ -1,5 +1,4 @@
 import ballerina/io;
-import ballerina/lang.runtime;
 import ballerina/websocket;
 
 public function main() returns error? {
@@ -9,13 +8,11 @@ public function main() returns error? {
         retryConfig: { maxCount: 20 }
     });
     // Read the message sent from the server upon upgrading to a WebSocket connection.
-    string text = check wsClient->readTextMessage();
+    string text = check wsClient->readMessage();
     io:println(text);
-    io:println("Sleeping for 5 seconds. Please shutdown the server now.");
-    runtime:sleep(5);
-    io:println("Please restart the server now.");
+    io:println("Please shutdown the server now." +
+                        "And restart at least within 15 seconds");
     // Client will retry 20 times(20 seconds in time) until the server gets started.
-    string retryMsg = check wsClient->readTextMessage();
+    string retryMsg = check wsClient->readMessage();
     io:println(retryMsg);
-    return;
 }

@@ -22,5 +22,4 @@ function testFunc() {
     } else {
         test:assertFail(msg = "Failed to call the endpoint:");
     }
-    return;
 }

@@ -3,7 +3,7 @@ import ballerina/io;
 
 // A gRPC client can be configured to initiate new connections that are
 // secured via mutual SSL.
-// The [`grpc:ClientSecureSocket`](https://docs.central.ballerina.io/ballerina/grpc/latest/records/ClientSecureSocket) record provides the SSL-related configurations.
+// The [`grpc:ClientSecureSocket`](https://lib.ballerina.io/ballerina/grpc/latest/records/ClientSecureSocket) record provides the SSL-related configurations.
 HelloWorldClient securedEP = check new("https://localhost:9090",
     secureSocket = {
         key: {
@@ -22,5 +22,4 @@ HelloWorldClient securedEP = check new("https://localhost:9090",
 public function main() returns error? {
     string result = check securedEP->hello();
     io:println(result);
-    return;
 }

@@ -5,7 +5,7 @@ public function main() returns error? {
     rabbitmq:Client rabbitmqClient = check new(rabbitmq:DEFAULT_HOST, 5671,
 
         // To secure the client connections using username/password authentication, provide the credentials
-        // with the [`rabbitmq:Credentials`](https://docs.central.ballerina.io/ballerinax/rabbitmq/latest/records/Credentials) record.
+        // with the [`rabbitmq:Credentials`](https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/Credentials) record.
         auth = {
              username: "alice",
              password: "alice@123"
@@ -13,7 +13,7 @@ public function main() returns error? {
 
         // To secure the client connection using TLS/SSL, the client needs to be configured with
         // a certificate file of the server.
-        // The [`rabbitmq:SecureSocket`](https://docs.central.ballerina.io/ballerinax/rabbitmq/latest/records/SecureSocket)
+        // The [`rabbitmq:SecureSocket`](https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/SecureSocket)
         // record provides the SSL-related configurations of the client.
         secureSocket = {
             cert: "../resource/path/to/public.crt"
@@ -27,5 +27,4 @@ public function main() returns error? {
     string message = "Hello from Ballerina";
     check rabbitmqClient->publishMessage({ content: message.toBytes(),
                                             routingKey: "Secured" });
-    return;
 }

@@ -1,2 +1,1 @@
 bal run resource_method_typing.bal
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090

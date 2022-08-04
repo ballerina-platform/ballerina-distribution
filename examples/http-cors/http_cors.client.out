@@ -25,7 +25,7 @@ curl -v "http://localhost:9092/crossOriginService/lang" -X OPTIONS -H "Origin:ht
 > Origin:http://www.m3.com
 > Access-Control-Request-Method:POST
 >
-< HTTP/1.1 200 OK
+< HTTP/1.1 204 No Content
 < access-control-allow-origin: http://www.m3.com
 < access-control-max-age: 84900
 < access-control-allow-methods: POST

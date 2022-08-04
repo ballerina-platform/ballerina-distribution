@@ -1,9 +1,9 @@
 import ballerina/http;
 import ballerina/io;
 
-// Defines the HTTP client to call the JWT auth secured APIs.
+// Defines the HTTP client to call the JWT Auth secured APIs.
 // The client is enriched with the `Authorization: Bearer <token>` header by
-// passing the [`http:JwtIssuerConfig`](https://docs.central.ballerina.io/ballerina/http/latest/records/JwtIssuerConfig) for the `auth` configuration of the
+// passing the [`http:JwtIssuerConfig`](https://lib.ballerina.io/ballerina/http/latest/records/JwtIssuerConfig) for the `auth` configuration of the
 // client. A self-signed JWT is issued before the request is sent.
 http:Client securedEP = check new("https://localhost:9090",
     auth = {
@@ -28,5 +28,4 @@ http:Client securedEP = check new("https://localhost:9090",
 public function main() returns error? {
     string response = check securedEP->get("/foo/bar");
     io:println(response);
-    return;
 }

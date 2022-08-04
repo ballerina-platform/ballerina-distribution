@@ -1,4 +1,2 @@
 bal run http_circuit_breaker.bal
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
-[ballerina/http] started HTTP/WS listener 0.0.0.0:8080
 

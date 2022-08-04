@@ -1,3 +1,2 @@
 # You may need to change the certificate file path and private key file path.
 bal run graphql_service_basic_auth_ldap_user_store.bal
-[ballerina/http] started HTTPS/WSS listener 0.0.0.0:9090

@@ -1,7 +1,7 @@
 import ballerina/io;
 
 public function main() {
-    // Creates a `map` constrained by the type `int`.
+    // Creates a `map` constrained by the `int` type.
     map<int> m = {
         "x": 1,
         "y": 2

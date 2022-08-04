@@ -20,8 +20,7 @@ public function main() returns error? {
     stream<string[], io:Error?> csvStream = check
                                         io:fileReadCsvAsStream(csvFilePath2);
     // Iterates through the stream and prints the content.
-    error? e = csvStream.forEach(function(string[] val) {
+    check csvStream.forEach(function(string[] val) {
                               io:println(val);
                           });
-    return;
 }

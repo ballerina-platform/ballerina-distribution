@@ -3,7 +3,7 @@ import ballerina/websocket;
 
 // Defines the WebSocket client to call the secured APIs.
 // The client is enriched with the `Authorization: Bearer <token>` header by
-// passing the [`websocket:BearerTokenConfig`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/BearerTokenConfig) for the `auth` configuration of the
+// passing the [`websocket:BearerTokenConfig`](https://lib.ballerina.io/ballerina/websocket/latest/records/BearerTokenConfig) for the `auth` configuration of the
 // client.
 websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
     auth = {
@@ -15,8 +15,7 @@ websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
 );
 
 public function main() returns error? {
-    check securedEP->writeTextMessage("Hello, World!");
-    string textMessage = check securedEP->readTextMessage();
+    check securedEP->writeMessage("Hello, World!");
+    string textMessage = check securedEP->readMessage();
     io:println(textMessage);
-    return;
 }

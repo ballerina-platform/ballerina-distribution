@@ -4,7 +4,7 @@ type Headers record {
    string 'from;
    string to;
 
-   // Records can have optional fields
+   // Records can have optional fields.
    string subject?;
 
 };
@@ -14,7 +14,7 @@ Headers h = {
   to: "Jill"
 };
 
-//Use ?. operator to access optional field
+// Use the `?.` operator to access the optional field.
 string? subject = h?.subject;
 
 public function main() {

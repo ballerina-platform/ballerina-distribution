@@ -82,5 +82,4 @@ function testFunc() returns error? {
     test:assertEquals(outputs[5], 
     "Civil record of the email string: {\"utcOffset\":{\"hours\":-8,\"minutes\":0},\"timeAbbrev\":\"America/Los_Angeles\",\"dayOfWeek\":3,\"year\":2021,\"month\":3,\"day\":10,\"hour\":19,\"minute\":51,\"second\":55}");
     test:assertEquals(outputs[6], "Email string of the civil record: Wed, 10 Mar 2021 19:51:55 -0800");
-    return;
 }

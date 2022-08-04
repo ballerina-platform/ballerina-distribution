@@ -20,5 +20,4 @@ public function main() returns error? {
     // the content will be written to the given destination file using the given stream.
     check io:fileWriteBlocksFromStream(imageCopyPath2, blockStream);
     io:println("Successfully copied the image as a stream.");
-    return;
 }

@@ -1,2 +1,0 @@
-bal run kafka_consumer_group_service.bal
-[ballerinax/kafka] Kafka listener started for topics: test-kafka-topic

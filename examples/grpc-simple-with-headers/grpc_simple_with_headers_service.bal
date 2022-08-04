@@ -4,8 +4,7 @@ import ballerina/log;
 import ballerina/protobuf.types.wrappers;
 
 @grpc:ServiceDescriptor {
-    descriptor: ROOT_DESCRIPTOR_GRPC_SIMPLE_WITH_HEADERS,
-    descMap: getDescriptorMapGrpcSimpleWithHeaders()
+    descriptor: GRPC_SIMPLE_WITH_HEADERS_DESC
 }
 service "HelloWorld" on new grpc:Listener(9090) {
 

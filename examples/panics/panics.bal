@@ -8,7 +8,7 @@ function divide(int m, int n) returns int {
         panic error("division by 0");
 
     }
-    return m/n;
+    return m / n;
 }
 
 public function main() {

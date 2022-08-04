@@ -10,7 +10,7 @@ public function main() returns error? {
         clusterId = "my_secure_cluster",
 
         // To secure the client connections using username/password authentication, provide the credentials
-        // with the [`stan:Credentials`](https://docs.central.ballerina.io/ballerinax/stan/latest/records/Credentials) record.
+        // with the [`stan:Credentials`](https://lib.ballerina.io/ballerinax/stan/latest/records/Credentials) record.
         auth = {
              username: "alice",
              password: "alice@123"
@@ -18,7 +18,7 @@ public function main() returns error? {
 
         // To secure the client connection using TLS/SSL, the client needs to be configured with
         // a certificate file of the server.
-        // The [`stan:SecureSocket`](https://docs.central.ballerina.io/ballerinax/stan/latest/records/SecureSocket)
+        // The [`stan:SecureSocket`](https://lib.ballerina.io/ballerinax/stan/latest/records/SecureSocket)
         // record provides the SSL-related configurations of the client.
         secureSocket = {
             cert: "../resource/path/to/public.crt"
@@ -32,5 +32,4 @@ public function main() returns error? {
     io:println("GUID " + result + " received for the produced message.");
     // Closes the client connection.
     check stanClient.close();
-    return;
 }

@@ -7,7 +7,7 @@ function hash() returns error? {
     string value = "Hello Ballerina!";
     byte[] input = value.toBytes();
 
-    // Hashing input value using the [MD5 hashing algorithm](https://docs.central.ballerina.io/ballerina/crypto/latest/functions#hashMd5), and printing the hash value using the Hex encoding.
+    // Hashing input value using the [MD5 hashing algorithm](https://lib.ballerina.io/ballerina/crypto/latest/functions#hashMd5), and printing the hash value using the Hex encoding.
     byte[] output = crypto:hashMd5(input);
     io:println("Hex encoded hash with MD5: " + output.toBase16());
 
@@ -29,7 +29,6 @@ function hash() returns error? {
 
     // The Hex-encoded CRC32B checksum generation for the input value.
     io:println("CRC32B for text: " + crypto:crc32b(input));
-    return;
 }
 
 function hmac() returns error? {
@@ -60,7 +59,6 @@ function hmac() returns error? {
     // HMAC generation for the input value using the SHA512 hashing algorithm, and printing the HMAC value using the Hex encoding.
     output = check crypto:hmacSha512(input, key);
     io:println("Hex encoded HMAC with SHA512: " + output.toBase16());
-    return;
 }
 
 function decodePrivateKey() returns crypto:PrivateKey|error {
@@ -71,7 +69,7 @@ function decodePrivateKey() returns crypto:PrivateKey|error {
 
     // Obtaining the reference to an RSA private key by an encrypted key file.
     string encryptedKeyFile = "../resource/path/to/encryptedPrivate.key";
-    privateKey = check crypto:decodeRsaPrivateKeyFromKeyFile(keyFile,
+    privateKey = check crypto:decodeRsaPrivateKeyFromKeyFile(encryptedKeyFile,
                                                          "ballerina");
 
     // Obtaining the reference to an RSA private key stored within a PKCS#12 or PFX format archive file.
@@ -146,7 +144,6 @@ function sign() returns error? {
 
     verified = check crypto:verifyRsaSha512Signature(input, output, publicKey);
     io:println("RSA-SHA512 signature verified: " + verified.toString());
-    return;
 }
 
 function encrypt() returns error? {
@@ -219,7 +216,6 @@ function encrypt() returns error? {
     output = check crypto:decryptAesEcb(output, aesKey, crypto:NONE);
     io:println("AES ECB no padding decrypted value: " +
         check string:fromBytes(output));
-    return;
 }
 
 public function main() returns error? {
@@ -227,5 +223,4 @@ public function main() returns error? {
     check hmac();
     check sign();
     check encrypt();
-    return;
 }

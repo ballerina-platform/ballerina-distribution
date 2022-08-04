@@ -2,7 +2,7 @@ import ballerina/io;
 
 // Defines the gRPC client to call the OAuth2 secured APIs.
 // The client metadata is enriched with the `Authorization: Bearer <token>`
-// header by passing the [`grpc:OAuth2JwtBearerGrantConfig`](https://docs.central.ballerina.io/ballerina/grpc/latest/records/OAuth2JwtBearerGrantConfig) for the `auth`
+// header by passing the [`grpc:OAuth2JwtBearerGrantConfig`](https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2JwtBearerGrantConfig) for the `auth`
 // configuration of the client.
 HelloWorldClient securedEP = check new("https://localhost:9090",
     auth = {
@@ -25,5 +25,4 @@ HelloWorldClient securedEP = check new("https://localhost:9090",
 public function main() returns error? {
     string result = check securedEP->hello();
     io:println(result);
-    return;
 }

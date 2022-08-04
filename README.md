@@ -54,7 +54,7 @@ Alternatively, you can install Ballerina from the source using the following ins
     set packageUser=<Your github username>
     set packagePAT=<Your personal access token>
     ```
-3. This repository contains central integration tests. You need to have dev access token of the bc2testorg organization to run these tests. Then you need to set following environment variables. 
+3. This repository contains central integration tests. You need to have dev access token of the bctestorg organization to run these tests. Then you need to set following environment variables. 
 
    Linux/Unix
     ```bash

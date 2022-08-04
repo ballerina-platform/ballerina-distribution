@@ -1,0 +1,2 @@
+# You may need to change the certificate file path and private key file path.
+bal run graphql_service_ssl_tls.bal

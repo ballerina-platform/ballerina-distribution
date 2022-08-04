@@ -1,2 +1,3 @@
 bal run table_syntax.bal
+()
 [{"name":"John","salary":200},{"name":"Jane","salary":300}]

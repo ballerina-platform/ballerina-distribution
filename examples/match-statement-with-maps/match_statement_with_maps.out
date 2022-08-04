@@ -1,4 +1,4 @@
 bal run match_statement_with_maps.bal
 Total: 100.0
 Total: 110.0
-error: invalid command {}
+error: invalid command

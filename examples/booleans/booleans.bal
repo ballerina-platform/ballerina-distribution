@@ -6,7 +6,7 @@ boolean flag = true;
 int n = flag ? 1 : 2;
 
 public function main() {
-    // Parentheses are options in conditions, but curly braces are required in `if/else` and other compound statements. 
+    // Parentheses are optional in conditions, but curly braces are required in `if/else` and other compound statements.
     if flag {
         io:println(1);
     } else {

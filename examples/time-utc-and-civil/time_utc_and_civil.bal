@@ -26,5 +26,4 @@ public function main() returns error? {
     };
     time:Utc utc2 = check time:utcFromCivil(civil2);
     io:println(`UTC value of the civil record: ${utc2.toString()}`);
-    return;
 }

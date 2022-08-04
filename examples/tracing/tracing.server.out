@@ -6,4 +6,3 @@ docker run -d -p 13133:13133 -p 16686:16686 -p 55680:55680 jaegertracing/opentel
 BAL_CONFIG_FILES=Config.toml bal run --observability-included tracing.bal
 
 ballerina: started publishing traces to Jaeger on localhost:55680
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9234

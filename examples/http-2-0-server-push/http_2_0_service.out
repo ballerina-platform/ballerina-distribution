@@ -1,2 +1,1 @@
 bal run http_2.0_service.bal
-[ballerina/http] started HTTP/WS listener 0.0.0.0:7090

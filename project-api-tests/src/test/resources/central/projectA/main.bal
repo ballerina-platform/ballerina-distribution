@@ -1,7 +1,7 @@
 import ballerina/lang.'int as ints;
 
 public function main() {
-    int sum = testSum();
+    _ = testSum();
 }
 
 public function testSum() returns int {

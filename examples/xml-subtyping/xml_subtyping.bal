@@ -10,8 +10,8 @@ xml:ProcessingInstruction procInst = xml `<?target data?>`;
 
 public function main() {
     // An `xml` value belongs to the `xml:Text` if it consists of a text item or is empty.
-    xml:Text a = xml ``;
-    xml:Text b = xml `Hello World`;
+    xml:Text _ = xml ``;
+    xml:Text _ = xml `Hello World`;
 
     string hello = "Hello";
     string world = "World";

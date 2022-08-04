@@ -4,7 +4,6 @@ console = true' > Config.toml
 
 bal run http_access_logs.bal
 ballerina: HTTP access log enabled
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9095
 0:0:0:0:0:0:0:1 - - [06/Oct/2021:18:54:32 +0530] "GET /hello HTTP/1.1" 200 10 "-" "curl/7.64.1"
 
 # Else, change the `Config.toml` file as follows to direct the log to the specified file.
@@ -13,4 +12,3 @@ path = "testAccessLog.txt"' > Config.toml
 
 bal run http_access_logs.bal
 ballerina: HTTP access log enabled
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9095

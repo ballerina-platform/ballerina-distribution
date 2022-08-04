@@ -14,6 +14,7 @@ service on new tcp:Listener(3000) {
 }
 
 service class EchoService {
+    *tcp:ConnectionService;
 
     // This remote method is invoked once the content is received from the client.
     remote function onBytes(tcp:Caller caller, readonly & byte[] data) 

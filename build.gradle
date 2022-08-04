@@ -27,10 +27,7 @@ description = 'Ballerina - Tools - Parent'
 
 ext {
     ballerinaLangVersion = project.ballerinaLangVersion
-    shortVersion = project.shortVersion
-    awslambdaVersion = project.awslambdaVersion
-    azFunctionsVersion = project.azFunctionsVersion
-    dockerVersion = project.dockerVersion
+    shortVersion = project.version.split("-")[0]
     dataMapperVersion = project.dataMapperVersion
     c2cVersion = project.c2cVersion
     ballerinaJreVersion = project.ballerinaJreVersion
@@ -46,7 +43,6 @@ ext {
 }
 
 allprojects {
-    apply plugin: 'maven'
     apply plugin: 'maven-publish'
 
     group = project.group
@@ -121,8 +117,6 @@ subprojects {
         awsLambdaExamples
         azFunctionsBala
         azFunctionsExamples
-        dockerAnnotations
-        dockerExamples
         kubernetesAnnotations
         kubernetesExamples
         ballerinaStdLibs
@@ -150,6 +144,7 @@ subprojects {
         }
 
         /* Standard libraries */
+        ballerinaStdLibs "io.ballerina.stdlib:constraint-ballerina:${stdlibConstraintVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:io-ballerina:${stdlibIoVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:jballerina.java.arrays-ballerina:${stdlibJavaArraysVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:random-ballerina:${stdlibRandomVersion}"
@@ -162,6 +157,7 @@ subprojects {
         ballerinaStdLibs "io.ballerina.stdlib:os-ballerina:${stdlibOsVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:task-ballerina:${stdlibTaskVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:xslt-ballerina:${stdlibXsltVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:serdes-ballerina:${stdlibSerdesVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:protobuf-ballerina:${stdlibProtobufVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:cache-ballerina:${stdlibCacheVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:file-ballerina:${stdlibFileVersion}"
@@ -179,20 +175,25 @@ subprojects {
         ballerinaStdLibs "io.ballerina.stdlib:grpc-ballerina:${stdlibGrpcVersion}"
 
         ballerinaStdLibs "org.ballerinalang:transaction-ballerina:${stdlibTransactionVersion}"
+        ballerinaStdLibs "io.ballerina:observe-ballerina:${observeInternalVersion}"
 
         ballerinaStdLibs "io.ballerina.stdlib:websocket-ballerina:${stdlibWebsocketVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:websub-ballerina:${stdlibWebsubVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:websubhub-ballerina:${stdlibWebsubhubVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:sql-ballerina:${stdlibSqlVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:observe-ballerina:${observeVersion}"
+
+        /* Ballerina GraphQL */
+        ballerinaStdLibs "io.ballerina:graphql-tools:${graphqlVersion}"
 
         /* Ballerina OpenAPI */
         ballerinaOpenAPILibs "io.ballerina:module-ballerina-openapi:${openapiVersion}"
 
+        /* Ballerina AsyncAPI */
+        ballerinaStdLibs "io.ballerina:module-ballerina-asyncapi:${asyncapiVersion}"
+
         /* Code to cloud extensions */
         ballerinaC2cLibs "io.ballerina:c2c-ballerina:${c2cVersion}"
-        ballerinaC2cLibs "org.ballerinax.azurefunctions:azurefunctions-extension-bala:${azFunctionsVersion}"
-        ballerinaC2cLibs "org.ballerinax.awslambda:awslambda-extension-bala:${awslambdaVersion}"
-
         ballerinaC2cTooling "io.ballerina:c2c-tooling:${c2cVersion}"
 
     }

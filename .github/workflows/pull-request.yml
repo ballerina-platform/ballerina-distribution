@@ -12,7 +12,7 @@ jobs:
         name: Integration Tests on Ubuntu
         runs-on: ubuntu-latest
         concurrency:
-            group: ${{ github.head_ref }}-integration-tests
+            group: ${{ github.ref }}-integration-tests
             cancel-in-progress: true
         steps:
             -   name: Checkout Repository
@@ -20,7 +20,7 @@ jobs:
             -   name: Set up JDK 11
                 uses: actions/setup-java@v2
                 with:
-                    distribution: 'adopt'
+                    distribution: 'temurin'
                     java-version: '11'
             -   name: Build Ballerina Distribution
                 env:
@@ -33,7 +33,7 @@ jobs:
         name: BBE Tests on Ubuntu
         runs-on: ubuntu-latest
         concurrency:
-            group: ${{ github.head_ref }}-bbe-tests
+            group: ${{ github.ref }}-bbe-tests
             cancel-in-progress: true
         steps:
             -   name: Checkout Repository
@@ -41,7 +41,7 @@ jobs:
             -   name: Set up JDK 11
                 uses: actions/setup-java@v2
                 with:
-                    distribution: 'adopt'
+                    distribution: 'temurin'
                     java-version: '11'
             -   name: Build Ballerina Distribution
                 env:
@@ -53,7 +53,7 @@ jobs:
         name: Windows Build
         runs-on: windows-latest
         concurrency:
-            group: ${{ github.head_ref }}-windows
+            group: ${{ github.ref }}-windows
             cancel-in-progress: true
         steps:
             -   name: Checkout Repository
@@ -61,11 +61,12 @@ jobs:
             -   name: Set up JDK 11
                 uses: actions/setup-java@v2
                 with:
-                    distribution: 'adopt'
+                    distribution: 'temurin'
                     java-version: '11'
             - name: Build Ballerina Distribution
               env:
                   packageUser: ${{ github.actor }}
                   packagePAT: ${{ secrets.GITHUB_TOKEN }}
+                  JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF8
                   devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
               run: ./gradlew.bat clean build --stacktrace --scan --console=plain --no-daemon --continue -x test

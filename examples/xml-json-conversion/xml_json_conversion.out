@@ -1,3 +1,0 @@
-bal run xml_json_conversion.bal
-<Store id="AST"><name>Anne</name><address><street>Main</street><city>94</city></address><codes><root>4</root><root>8</root></codes></Store>
-{"Store":{"name":"Anne","address":{"street":"Main","city":"94"},"codes":{"root":["4","8"]}},"@id":"AST"}

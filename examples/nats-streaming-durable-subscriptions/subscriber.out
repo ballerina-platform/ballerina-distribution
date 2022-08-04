@@ -1,5 +1,4 @@
 bal run subscriber.bal
-[ballerinax/nats] Client subscribed for subject demo
 time = 2021-05-20T13:03:23.344+05:30 level = INFO module = "" message = "Received message: Hello from Ballerina"
 
 # Stop the subscriber and publish some messages while it is stopped.
@@ -8,5 +7,4 @@ time = 2021-05-20T13:03:23.344+05:30 level = INFO module = "" message = "Receive
 # wasn't running should be received.
 
 bal run subscriber.bal
-[ballerinax/nats] Client subscribed for subject demo
 time = 2021-05-20T13:03:46.928+05:30 level = INFO module = "" message = "Received message: Hello from Ballerina"

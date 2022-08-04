@@ -44,6 +44,4 @@ public function main() returns error? {
     // Closes the file stream to finish the `get` and `put` operations.    
     check fileStream.close();
 
-    return;
-
 }

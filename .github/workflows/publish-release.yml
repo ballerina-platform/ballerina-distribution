@@ -22,14 +22,17 @@ jobs:
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
-          distribution: 'adopt'
+          distribution: 'temurin'
           java-version: '11'
       - name: Set version env variable
         id: version-set
         run: |
-          SHORT_VERSION=$((grep -w 'shortVersion' | cut -d= -f2) < gradle.properties)
-          RELEASE_VERSION=$((grep -w 'version' | cut -d= -f2) < gradle.properties | rev | cut --complement -d- -f1 | rev)
+          SHORT_VERSION=$((grep -w 'version' | cut -d= -f2 | cut -d- -f1) < gradle.properties)
+          DIST_VERSION=$((grep -w 'version' | cut -d= -f2) < gradle.properties | rev | cut --complement -d- -f1 | rev)
+          CODE_NAME=$((grep -w 'codeName' | cut -d= -f2) < gradle.properties)
+          RELEASE_VERSION=$DIST_VERSION
           TAGGED_VERSION=$RELEASE_VERSION
+          LONG_VERSION=$DIST_VERSION-$CODE_NAME
           if [ -n "${{ github.event.inputs.preReleaseSuffix }}" ]; then
             TAGGED_VERSION=$RELEASE_VERSION-${{ github.event.inputs.preReleaseSuffix }}
           fi
@@ -38,6 +41,7 @@ jobs:
           echo "::set-output name=version::$RELEASE_VERSION"
           echo "::set-output name=sversion::$SHORT_VERSION"
           echo "::set-output name=taggedVersion::$TAGGED_VERSION"
+          echo "::set-output name=longVersion::$LONG_VERSION"
       - name: Pre release depenency version update
         env:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
@@ -47,6 +51,14 @@ jobs:
           git config user.name ${{ secrets.BALLERINA_BOT_USERNAME }}
           git config user.email ${{ secrets.BALLERINA_BOT_EMAIL }}
           git checkout -b release-${GIT_TAG}
+      - name: Generate UUID
+        run: |
+          UUID=$(uuidgen)
+          perl -pi -e "s/^\s*installerVersion=.*/installerVersion=$UUID/" gradle.properties
+          git config user.name ${{ secrets.BALLERINA_BOT_USERNAME }}
+          git config user.email ${{ secrets.BALLERINA_BOT_EMAIL }}
+          git add gradle.properties
+          git commit -m "Update UUID for installer"
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Publish artifact
@@ -64,7 +76,7 @@ jobs:
           repository: ballerina-platform/module-ballerina-docker
           path: module-ballerina-docker
       - name: Copy zip artifact
-        run: cp ballerina/build/distributions/ballerina-sl*.zip module-ballerina-docker/base/docker/
+        run: cp ballerina/build/distributions/ballerina-22*.zip module-ballerina-docker/base/docker/
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
@@ -88,6 +100,7 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'ballerina/ballerina:release-test'
+          skip-dirs: 'ballerina/runtime/examples'
           format: 'table'
           exit-code: '1'
           timeout: "10m0s"
@@ -105,22 +118,28 @@ jobs:
         id: run_installers_deb
         run: |
           cd installers/linux-deb
-          ./build-ballerina-linux-deb-x64.sh -v ${{ steps.version-set.outputs.version }} -p ./../../ballerina/build/distributions
+          ./build-ballerina-linux-deb-x64.sh -v ${{ steps.version-set.outputs.longVersion }} -p ./../../ballerina/build/distributions
           echo "Created linux-deb successfully"
       - name: Create linux-rpm Installer
         id: run_installers_rpm
         run: |
           cd installers/linux-rpm
-          ./build-ballerina-linux-rpm-x64.sh -v ${{ steps.version-set.outputs.version }} -p ./../../ballerina/build/distributions
+          ./build-ballerina-linux-rpm-x64.sh -v ${{ steps.version-set.outputs.longVersion }} -p ./../../ballerina/build/distributions
           echo "Created linux-rpm successfully"
+      - name: Generate Hashes
+        run: |
+          openssl dgst -sha256 -out ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.deb.sha256 installers/linux-deb/target/ballerina-*-linux-x64.deb
+          openssl dgst -sha256 -out ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.rpm.sha256 installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-*-linux-x64.rpm
+          openssl dgst -sha256 -out ballerina-${{ steps.version-set.outputs.longVersion }}.zip.sha256 ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}.zip
+          openssl dgst -sha256 -out ballerina-${{ steps.version-set.outputs.sversion }}.zip.sha256 ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.sversion }}.zip
       - name: Upload zip artifacts
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_name: ballerina-${{ steps.version-set.outputs.version }}.zip
-          asset_path: ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.version }}.zip
+          asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}.zip
+          asset_path: ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}.zip
           asset_content_type: application/octet-stream
       - name: Upload zip without tool artifacts
         uses: actions/upload-release-asset@v1
@@ -137,8 +156,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_name: ballerina-linux-installer-x64-${{ steps.version-set.outputs.version }}.deb
-          asset_path: installers/linux-deb/target/ballerina-linux-installer-x64-${{ steps.version-set.outputs.version }}.deb
+          asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.deb
+          asset_path: installers/linux-deb/target/ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.deb
           asset_content_type: application/octet-stream
       - name: Upload Linux rpm Installer
         uses: actions/upload-release-asset@v1
@@ -146,8 +165,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_name: ballerina-linux-installer-x64-${{ steps.version-set.outputs.version }}.rpm
-          asset_path: installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-linux-installer-x64-${{ steps.version-set.outputs.version }}.rpm
+          asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.rpm
+          asset_path: installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.rpm
           asset_content_type: application/octet-stream
       - name: Upload MacOS zip artifacts
         uses: actions/upload-release-asset@v1
@@ -155,8 +174,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_name: ballerina-macos-${{ steps.version-set.outputs.version }}.zip
-          asset_path: ballerina/build/distributions/ballerina-macos-${{ steps.version-set.outputs.version }}.zip
+          asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-macos.zip
+          asset_path: ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}-macos.zip
           asset_content_type: application/octet-stream
       - name: Upload Windows zip artifacts
         uses: actions/upload-release-asset@v1
@@ -164,8 +183,44 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_name: ballerina-windows-${{ steps.version-set.outputs.version }}.zip
-          asset_path: ballerina/build/distributions/ballerina-windows-${{ steps.version-set.outputs.version }}.zip
+          asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-windows.zip
+          asset_path: ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}-windows.zip
+          asset_content_type: application/octet-stream
+      - name: Upload Linux deb Hashes
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.deb.sha256
+          asset_path: ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.deb.sha256
+          asset_content_type: application/octet-stream
+      - name: Upload Linux rpm Hashes
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.rpm.sha256
+          asset_path: ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.rpm.sha256
+          asset_content_type: application/octet-stream
+      - name: Upload Ballerina zip Hashes
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}.zip.sha256
+          asset_path: ballerina-${{ steps.version-set.outputs.longVersion }}.zip.sha256
+          asset_content_type: application/octet-stream
+      - name: Upload ballerina Short Name zip Hashes
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_name: ballerina-${{ steps.version-set.outputs.sversion }}.zip.sha256
+          asset_path: ballerina-${{ steps.version-set.outputs.sversion }}.zip.sha256
           asset_content_type: application/octet-stream
       - name: Post release PR
         env:
@@ -175,7 +230,7 @@ jobs:
           bin/hub pull-request -m "[Automated] Sync master after "$VERSION" release"
 
     outputs:
-      project-version: ${{ steps.version-set.outputs.version }}
+      project-version: ${{ steps.version-set.outputs.longVersion }}
       upload-asset-url: ${{ steps.create_release.outputs.upload_url }}
       release-version: ${{ steps.version-set.outputs.taggedVersion }}
 
@@ -189,21 +244,33 @@ jobs:
         uses: actions/checkout@v2
       - name: Download MacOS Intaller Zip
         run: |
-          wget https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-macos-${{ needs.publish-release.outputs.project-version }}.zip
+          wget https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-${{ needs.publish-release.outputs.project-version }}-macos.zip
       - name: Create macos-pkg Installer
         id: run_installers_pkg
         run: |
           cd installers/mac
           ./build-ballerina-macos-x64.sh -v ${{ needs.publish-release.outputs.project-version }} -p ./../../
           echo "Created macos-pkg successfully"
+      - name: Generate Hashes
+        run: |
+          openssl dgst -sha256 -out ballerina-${{ needs.publish-release.outputs.project-version }}-macos-x64.pkg.sha256 installers/mac/target/pkg/ballerina-${{ needs.publish-release.outputs.project-version }}-macos-x64.pkg
+      - name: Upload MacOS pkg Hashes
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          upload_url: ${{ needs.publish-release.outputs.upload-asset-url }}
+          asset_name: ballerina-${{ needs.publish-release.outputs.project-version }}-macos-x64.pkg.sha256
+          asset_path: ballerina-${{ needs.publish-release.outputs.project-version }}-macos-x64.pkg.sha256
+          asset_content_type: application/octet-stream
       - name: Upload MacOS pkg Installer
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ needs.publish-release.outputs.upload-asset-url }}
-          asset_name: ballerina-macos-installer-x64-${{ needs.publish-release.outputs.project-version }}.pkg
-          asset_path: installers/mac/target/pkg/ballerina-macos-installer-x64-${{ needs.publish-release.outputs.project-version }}.pkg
+          asset_name: ballerina-${{ needs.publish-release.outputs.project-version }}-macos-x64.pkg
+          asset_path: installers/mac/target/pkg/ballerina-${{ needs.publish-release.outputs.project-version }}-macos-x64.pkg
           asset_content_type: application/octet-stream
 
   windows-installer-build:
@@ -223,7 +290,7 @@ jobs:
         run: choco install wget --no-progress
       - name: Download Windows Intaller Zip
         run: |
-          wget https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-windows-${{ needs.publish-release.outputs.project-version }}.zip
+          wget https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-${{ needs.publish-release.outputs.project-version }}-windows.zip
       - name: Create windows-msi Installer
         id: run_installers_msi
         run: |
@@ -233,12 +300,32 @@ jobs:
           cd w
           .\build-ballerina-windows-x64.bat --version ${{ needs.publish-release.outputs.project-version }} --path .\..\
           echo "Created windows-msi successfully"
+      - name: Generate Hashes
+        run: |
+          openssl dgst -sha256 -out ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.sha256 w\target\msi\ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi
+      - name: Upload Windows msi Hashes
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          upload_url: ${{ needs.publish-release.outputs.upload-asset-url }}
+          asset_name: ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.sha256
+          asset_path: ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.sha256
+          asset_content_type: application/octet-stream
       - name: Upload Windows msi Installer
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ needs.publish-release.outputs.upload-asset-url }}
-          asset_name: ballerina-windows-installer-x64-${{ needs.publish-release.outputs.project-version }}.msi
-          asset_path: w\target\msi\ballerina-windows-installer-x64-${{ needs.publish-release.outputs.project-version }}.msi
+          asset_name: ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi
+          asset_path: w\target\msi\ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi
           asset_content_type: application/octet-stream
+      - name: Install Ballerina msi
+        run: msiexec /i w\target\msi\ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi /quiet /qr
+        shell: cmd
+      - name: Run Installer Tests
+        working-directory: .\ballerina-test-automation\installer-test
+        run: |
+          $env:Path += ";C:\Program Files\Ballerina\bin"
+          .\..\gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true

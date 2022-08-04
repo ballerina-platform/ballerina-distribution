@@ -21,4 +21,3 @@ scopes=["scope2", "scope3"]' > Config.toml
 
 # Run the service using the command below.
 bal run service/target/bin/service.jar
-[ballerina/grpc] started HTTPS/WSS listener 0.0.0.0:9090
