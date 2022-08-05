@@ -1,3 +1,5 @@
-# Send a query to the GraphQL endpoint using a cURL command.
-# The query used: subscription { names }
-curl 'http://localhost:4000/graphql' -H 'Content-Type: application/json' -H 'Connection: keep-alive' -d '{"query":"subscription { names }"}'
+# To retrieve data, any tool that supports GraphQL Subscriptions via WebSockets can be used.
+# The document: subscription { names }
+{ "data": { "names": "Walter White" } }
+{ "data": { "names": "Jesse Pinkman" } }
+{ "data": { "names": "Skyler White" } }
