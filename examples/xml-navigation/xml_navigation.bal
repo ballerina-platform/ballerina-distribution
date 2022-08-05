@@ -38,12 +38,12 @@ public function main() {
     xml e = x/<*>;
     io:println(e);
 
-    // `x/**/<name>`  - for every element `e` in `x`, retrieves every element named `name` in
+    // `x/**/<name>` - for every element `e` in `x`, retrieves every element named `name` in
     // the descendants of `e`.
     xml f = x/**/<name>;
     io:println(f);
 
-    // `x/<book>[0]`  - for every element `e` in `x`, retrieves the first element named `book` in
+    // `x/<book>[0]` - for every element `e` in `x`, retrieves the first element named `book` in
     // the children of `e`.
     xml g = x/<book>[0];
     io:println(g);
