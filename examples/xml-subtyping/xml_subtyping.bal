@@ -3,7 +3,7 @@ import ballerina/io;
 // An `xml` value belongs to `xml:Element` if it consists of just an element item. 
 xml:Element element = xml `<p>Hello</p>`;
 
-// Similarly a value belongs to `xml:Comment` or `xml:ProcessingInstruction` if it 
+// Similarly, a value belongs to `xml:Comment` or `xml:ProcessingInstruction` if it 
 // consists of just a comment item or a processing instruction item.
 xml:Comment comment = xml `<!--This is a comment-->`;
 xml:ProcessingInstruction procInst = xml `<?target data?>`;
@@ -24,11 +24,12 @@ public function main() {
     xml:Element otherElement = xml `<q>World</q>`;
 
     // Concatenating multiple items results in a sequence of items (`xml<T>`).
+    // The concatenation below will result in a sequence of XML elements (`xml<xml:Element>`).
     xml d = element + otherElement;
 
     xml e = xml `<p>hello</p>World`;
 
-    // An `xml` value belongs to the type `xml<T>` if each of its members belong to `T`.
+    // An `xml` value belongs to the `xml<T>` type if each of its members belongs to type `T`.
     io:println(element is xml<xml:Element>);
     io:println(d is xml<xml:Element>);
     io:println(e is xml<xml:Element>);

@@ -27,7 +27,7 @@ public function main() returns error? {
         io:println(item);
     }
 
-    // `x[i]` gives i-th item (empty sequence if none).
+    // `x[i]` gives the `i-th` item (empty sequence if none).
     io:println(x3[0]);
 
     // `x.id` accesses a required attribute named `id`: the result is `error` if there is no such 
@@ -36,7 +36,7 @@ public function main() returns error? {
     string id = check x5.id;
 
     // Since an attribute named `id` exists in the `xml` value on which required attribute access 
-    // is done the result of the access will be the value of the attribute (`"greeting"`).
+    // is done, the result of the access will be the value of the attribute (`"greeting"`).
     io:println(id);
 
     // `x?.id` accesses an optional attribute named `id`: the result is `()` if there is no such 
@@ -44,7 +44,7 @@ public function main() returns error? {
     string? name = check x5?.name;
 
     // Since an attribute named `name` does not exist in the `xml` value on which optional 
-    // attribute access is done the result of the access is nil. Therefore the following
+    // attribute access is done, the result of the access is nil. Therefore, the following
     // `is` check evaluates to `true`.
     io:println(name is ());
 
@@ -56,6 +56,6 @@ public function main() returns error? {
     io:println(x2);
 
     // Since the value assigned to `x3` used `x2` in the concatenation, the change will also 
-    // be reflected in it.
+    // be reflected in `x3`.
     io:println(x3);
 }

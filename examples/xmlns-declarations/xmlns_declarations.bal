@@ -15,7 +15,7 @@ public function main() {
     // The prefixes can also be used in XML navigation. 
     boolean b = x === x.<ex:doc>;
 
-    // Since both `eg` and `ex` bind to the same namespace URL the following evaluates to `true`.
+    // Since both `eg` and `ex` bind to the same namespace URL, the following evaluates to `true`.
     io:println(b);
 
     // An XML qualified name `ex:doc` evaluates to the string `{http://example.com}doc` where 
