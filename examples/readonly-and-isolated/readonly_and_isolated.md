@@ -5,6 +5,6 @@ immutability is deep. `isolated` for functions complements `readonly` for data.
 
 ::: code readonly_and_isolated.bal :::
 
-Executing the above code, gives the below output.
+Executing the above code gives the output below.
 
 ::: out readonly_and_isolated.out :::
