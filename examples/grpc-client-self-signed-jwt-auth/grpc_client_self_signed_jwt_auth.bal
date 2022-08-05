@@ -2,7 +2,7 @@ import ballerina/io;
 
 // Defines the gRPC client to call the JWT Auth secured APIs.
 // The client metadata is enriched with the `Authorization: Bearer <token>`
-// header by passing the [`grpc:JwtIssuerConfig`](https://docs.central.ballerina.io/ballerina/grpc/latest/records/JwtIssuerConfig) for the `auth` configuration
+// header by passing the [`grpc:JwtIssuerConfig`](https://lib.ballerina.io/ballerina/grpc/latest/records/JwtIssuerConfig) for the `auth` configuration
 // of the client. A self-signed JWT is issued before the request is sent.
 HelloWorldClient securedEP = check new("https://localhost:9090",
     auth = {

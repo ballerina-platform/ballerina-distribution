@@ -1,2 +1,2 @@
-bal run sequence_diagrams.bal
+$ bal run sequence_diagrams.bal
 Hello World

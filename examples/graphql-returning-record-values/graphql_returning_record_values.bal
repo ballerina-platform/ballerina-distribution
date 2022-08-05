@@ -2,9 +2,9 @@ import ballerina/graphql;
 
 service /graphql on new graphql:Listener(4000) {
 
-    // Ballerina GraphQL resolvers can return `record` values. The record will be mapped to an `OBJECT` type.
+    // Ballerina GraphQL resolvers can return `record` values. The record will be mapped to an
+    // `OBJECT` type.
     resource function get profile() returns Person {
-
         return {
             name: "Walter White",
             age: 51,
@@ -23,6 +23,7 @@ public type Person record {
     int age;
     Address address;
 };
+
 public type Address record {
     string number;
     string street;

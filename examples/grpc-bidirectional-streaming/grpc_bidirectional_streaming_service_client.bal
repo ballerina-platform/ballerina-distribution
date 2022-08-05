@@ -1,12 +1,13 @@
 // This is the client implementation of the bidirectional streaming scenario.
 import ballerina/io;
-// Creates a gRPC client to interact with the remote server.
-ChatClient ep = check new("http://localhost:9090");
 
-public function main () returns error? {
+// Creates a gRPC client to interact with the remote server.
+ChatClient ep = check new ("http://localhost:9090");
+
+public function main() returns error? {
     // Executes the RPC call and receives the customized streaming client.
     ChatStreamingClient streamingClient = check ep->chat();
-    // Reads server responses in another strand.
+    // Reads the server responses in another strand.
     future<error?> f1 = start readResponse(streamingClient);
     // Sends multiple messages to the server.
     ChatMessage[] messages = [
@@ -17,7 +18,8 @@ public function main () returns error? {
     foreach ChatMessage msg in messages {
         check streamingClient->sendChatMessage(msg);
     }
-    // Once all the messages are sent, the client sends the message to notify the server about the completion.
+    // Once all the messages are sent, the client sends the message to notify the
+    // server about the completion.
     check streamingClient->complete();
     // Waits until all server messages are received.
     check wait f1;

@@ -1,6 +1,2 @@
 $ curl http://localhost:9090/onlineStoreService/makeOrder
 Order Processed!
-$ curl http://localhost:9090/onlineStoreService/makeOrder
-Order Processed!
-$ curl http://localhost:9090/onlineStoreService/makeOrder
-Order Processed!

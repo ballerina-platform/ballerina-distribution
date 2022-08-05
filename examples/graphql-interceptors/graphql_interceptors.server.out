@@ -1,0 +1,5 @@
+$ bal run graphql_interceptors.bal
+# when executing the query, following statements are logged in the terminal.
+time = 2022-07-28T19:54:52.729+05:30 level = INFO module = ballerina/log message = "Field \"name\" execution started!"
+time = 2022-07-28T19:54:52.736+05:30 level = INFO module = ballerina/log message = "Executing the field \"name\""
+time = 2022-07-28T19:54:52.743+05:30 level = INFO module = ballerina/log message = "Field \"name\" execution completed!"

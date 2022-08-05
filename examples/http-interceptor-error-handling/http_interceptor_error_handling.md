@@ -5,11 +5,16 @@ by `ResponseErrorInterceptors`. In addition, a `RequestErrorInterceptor`
 can be used to handle the errors that occurred in the request interceptor execution
 path. The `RequestErrorInterceptor` can send a response message according to the 
 error just like a `ResponseErrorInterceptor`. Moreover, it can modify the 
-request and dipatch it to the target service.
-  For more information, see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
+request and dispatch it to the target service.
+  
+For more information, see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
 
 ::: code http_interceptor_error_handling.bal :::
 
-::: out http_interceptor_error_handling.client.out :::
+Run the service as follows.
 
 ::: out http_interceptor_error_handling.server.out :::
+
+Invoke the service by executing the following cURL command in a new terminal.
+
+::: out http_interceptor_error_handling.client.out :::

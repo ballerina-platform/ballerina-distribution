@@ -1,1 +1,1 @@
-bal run kafka_producer.bal
+$ bal run kafka_producer.bal

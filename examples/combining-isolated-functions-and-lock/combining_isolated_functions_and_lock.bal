@@ -15,7 +15,6 @@ isolated function setGlobal(int n) {
     lock {
         r.v = n;
     }
-
 }
 
 public function main() {
@@ -25,5 +24,4 @@ public function main() {
     lock {
        io:println(r);
     }
-
 }
