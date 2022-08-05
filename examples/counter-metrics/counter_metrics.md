@@ -12,9 +12,9 @@ For more information about configs and observing applications, see [Observing Ba
 
 Invoke the service using the cURL command below.
 
-::: out ./examples/counter-metrics/counter_metrics.client.out :::
+::: out counter_metrics.client.out :::
 
 To start the service, navigate to the directory that contains the
 `.bal` file, and execute the `bal run` command below with the `--observability-included` build time flag and the `Config.toml` runtime configuration file.
 
-::: out ./examples/counter-metrics/counter_metrics.server.out :::
+::: out counter_metrics.server.out :::
