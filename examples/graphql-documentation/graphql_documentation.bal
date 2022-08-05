@@ -18,7 +18,7 @@ service /graphql on new graphql:Listener(4000) {
 # Represents a person.
 # + name - The name of the person
 # + age - The age of the person
-type Person record {
+type Person record {|
     string name;
     int age;
-};
+|};
