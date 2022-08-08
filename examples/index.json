@@ -2599,6 +2599,13 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Read/write CSV with data mapping",
+                "url": "io-csv-datamapping",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Read/write JSON",
                 "url": "io-json",
                 "verifyBuild": true,
