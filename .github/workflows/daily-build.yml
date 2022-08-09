@@ -113,6 +113,11 @@ jobs:
         run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
         env:
           TEST_MODE_ACTIVE: true
+      - name: Run Update Tool Tests
+        working-directory: ./ballerina-test-automation/update-tool-test
+        run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+        env:
+          TEST_MODE_ACTIVE: true
       - name: Notify failure
         if: ${{ failure() }}
         run: |
@@ -287,6 +292,11 @@ jobs:
         run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
         env:
           TEST_MODE_ACTIVE: true
+      - name: Run Update Tool Tests
+        working-directory: ./ballerina-test-automation/update-tool-test
+        run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+        env:
+          TEST_MODE_ACTIVE: true
 
   windows-installer-build:
 
@@ -332,6 +342,13 @@ jobs:
         shell: cmd
       - name: Run Installer Tests
         working-directory: .\ballerina-test-automation\installer-test
+        run: |
+          $env:Path += ";C:\Program Files\Ballerina\bin"
+          .\..\gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+        env:
+          TEST_MODE_ACTIVE: true
+      - name: Run Update Tool Tests
+        working-directory: .\ballerina-test-automation\update-tool-test
         run: |
           $env:Path += ";C:\Program Files\Ballerina\bin"
           .\..\gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true

@@ -26,6 +26,7 @@ public class FetchDependencyTest {
     String version = System.getProperty("BALLERINA_VERSION");
     String specVersion = System.getProperty("SPEC_VERSION");
     String toolVersion = System.getProperty("TOOL_VERSION");
+    String latestToolVersion = System.getProperty("LATEST_TOOL_VERSION");
     String VERSION_DISPLAY_TEXT = System.getProperty("VERSION_DISPLAY_TEXT");
 
     @DataProvider(name = "getExecutors")
@@ -35,15 +36,19 @@ public class FetchDependencyTest {
         return result;
     }
 
-    @Test(dataProvider = "getExecutors")
+    @Test(dataProvider = "getExecutors", groups = { "fetch-dependency" }, dependsOnGroups = { "update-tool" })
     public void testFetchDependency(Executor executor) throws InterruptedException {
-        executor.transferArtifacts();
-        executor.install();
+        if (!System.getProperty("BALLERINA_INSTALLED").equals("true")) {
+            executor.transferArtifacts();
+            executor.install();
+        }
 
-        TestUtils.testInstallation(executor, version, specVersion, toolVersion, VERSION_DISPLAY_TEXT);
-        TestUtils.testDependencyFetch(executor, toolVersion);
+        TestUtils.testInstallation(executor, version, specVersion, latestToolVersion, VERSION_DISPLAY_TEXT);
+        TestUtils.testDependencyFetch(executor, toolVersion, latestToolVersion);
 
-        executor.uninstall();
-        executor.cleanArtifacts();
+        if (!System.getProperty("BALLERINA_INSTALLED").equals("true")) {
+            executor.uninstall();
+            executor.cleanArtifacts();
+        }
     }
 }
