@@ -18,7 +18,7 @@ public function main() {
 
     // Replaces the first substring that matches the given regular expression
     // with the provided `replacement` string.
-    new_string = regex:replaceFirst("ReplacethisthisTextThis", "this", " ");
+    new_string = regex:replace("ReplacethisthisTextThis", "this", " ");
     io:println("String after replacing first Match: ", new_string);
 
     // Retrieves an array of strings by splitting a string using the provided

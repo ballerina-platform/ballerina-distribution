@@ -17,7 +17,7 @@ public function main() returns error? {
     xml? xmlData = check xmldata:fromJson(jsonObject);
     io:println(xmlData);
 
-    if (xmlData is xml) {
+    if xmlData is xml {
         // Converts the XML to JSON object using a default `attributePrefix` (i.e., the `@` character)
         // and the default `preserveNamespaces` (i.e., `true`).
         jsonObject = check xmldata:toJson(xmlData);

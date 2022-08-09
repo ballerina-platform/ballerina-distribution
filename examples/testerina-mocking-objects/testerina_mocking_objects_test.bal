@@ -9,7 +9,7 @@ public client class MockHttpClient {
     remote isolated function get(@untainted string path,
     map<string|string[]>? headers = (),
     http:TargetType targetType = http:Response) returns
-    http:Response | http:PayloadType | http:ClientError {
+    http:Response | anydata | http:ClientError {
         http:Response response = new;
         response.statusCode = 500;
         return response;

@@ -8,7 +8,7 @@ service / on new http:Listener(9090) {
 
     resource function 'default http11Service(http:Request clientRequest)
             returns json|error {
-        // Forward the [clientRequest](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request) to the `http2` service.
+        // Forward the [clientRequest](https://lib.ballerina.io/ballerina/http/latest/classes/Request) to the `http2` service.
         json clientResponse = check
             http2serviceClientEP->forward("/http2service", clientRequest);
 

@@ -1,0 +1,2 @@
+# Run the service.
+bal run http_interceptors.bal

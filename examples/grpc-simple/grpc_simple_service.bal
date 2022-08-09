@@ -2,8 +2,7 @@
 import ballerina/grpc;
 
 @grpc:ServiceDescriptor {
-    descriptor: ROOT_DESCRIPTOR_GRPC_SIMPLE,
-    descMap: getDescriptorMapGrpcSimple()
+    descriptor: GRPC_SIMPLE_DESC
 }
 service "HelloWorld" on new grpc:Listener(9090) {
 

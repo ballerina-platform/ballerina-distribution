@@ -55,12 +55,11 @@ public class TestUtils {
                                           String versionDisplayText) {
         String toolText = TestUtils.isOldToolVersion(toolVersion) ? "Ballerina tool" : "Update Tool";
         if (jBallerinaVersion.contains(TestUtils.SWAN_LAKE_KEYWORD)) {
-            if (jBallerinaVersion.contains("preview") || jBallerinaVersion.contains("alpha") ||
-                    jBallerinaVersion.contains("beta")) {
-                return "Ballerina Swan Lake " + versionDisplayText + "\nLanguage specification "
-                        + specVersion + "\n" + toolText + " " + toolVersion + "\n";
-            }
-            return "Ballerina " + versionDisplayText + " (Swan Lake)\nLanguage specification "
+            String shortVersion = jBallerinaVersion.split("-")[jBallerinaVersion.split("-").length-1];
+            int minorVersion = Integer.parseInt(shortVersion.split("\\.")[1]);
+            String updateVersionText = minorVersion > 0 ? " Update " + minorVersion : "";
+
+            return "Ballerina " + versionDisplayText + " (Swan Lake" + updateVersionText + ")\nLanguage specification "
                     + specVersion + "\n" + toolText + " " + toolVersion + "\n";
         }
 

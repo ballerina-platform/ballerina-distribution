@@ -1,0 +1,5 @@
+# Send a query to the GraphQL endpoint using a cURL command.
+# The query used: { characters { name } }
+curl -X POST -H "Content-type: application/json" -d '{ "query": "{ characters { name } }" }'
+'http://localhost:4000/graphql'
+{"data":{"characters":[{"name":"Luke Skywalker"},{"name":"R2D2"}]}}

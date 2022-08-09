@@ -5,7 +5,7 @@ import ballerinax/kafka;
 const string SASL_URL = "localhost:9093";
 
 kafka:ProducerConfiguration producerConfig = {
-    // Provide the relevant authentication configurations to authenticate the producer by [`kafka:AuthenticationConfiguration`](https://docs.central.ballerina.io/ballerinax/kafka/latest/records/AuthenticationConfiguration).
+    // Provide the relevant authentication configurations to authenticate the producer by [`kafka:AuthenticationConfiguration`](https://lib.ballerina.io/ballerinax/kafka/latest/records/AuthenticationConfiguration).
     auth: {
         // Provide the authentication mechanism used by the Kafka server.
         mechanism: kafka:AUTH_SASL_PLAIN,
@@ -17,14 +17,16 @@ kafka:ProducerConfiguration producerConfig = {
     securityProtocol: kafka:PROTOCOL_SASL_PLAINTEXT
 };
 
-kafka:Producer kafkaProducer = check new(SASL_URL, producerConfig);
+kafka:Producer messageProducer = check new (SASL_URL, producerConfig);
 
-public function main() returns error? {
-    string message = "Hello, World!";
-    check kafkaProducer->send({
+public function main() {
+    kafka:Error? result = messageProducer->send({
         topic: "demo-security",
-        value: message.toBytes()
+        value: "Hello, World!"
     });
-    check kafkaProducer->'flush();
-    io:println("Message published successfully.");
+    if result is kafka:Error {
+        io:println("Message publish unsuccessful : " + result.message());
+    } else {
+        io:println("Message published successfully.");
+    }
 }

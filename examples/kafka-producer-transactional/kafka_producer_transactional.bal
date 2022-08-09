@@ -1,6 +1,7 @@
-import ballerina/io;
 import ballerinax/kafka;
 
+// Creates a producer config with optional parameters.
+// The `transactionalId` enables transactional message production.
 kafka:ProducerConfiguration producerConfigs = {
     clientId: "basic-producer",
     acks: "all",
@@ -12,33 +13,17 @@ kafka:ProducerConfiguration producerConfigs = {
     transactionalId: "test-transactional-id"
 };
 
-kafka:Producer kafkaProducer = check new (kafka:DEFAULT_URL, producerConfigs);
+kafka:Producer transactionalProducer =
+                check new (kafka:DEFAULT_URL, producerConfigs);
 
-public function main() {
-    string message = "Hello World Transaction Message";
-    byte[] serializedMessage = message.toBytes();
-    // Creates a producer config with optional parameters.
-    // The `transactionalId` enables transactional message production.
-    kafkaAdvancedTransactionalProduce(serializedMessage);
-}
-
-function kafkaAdvancedTransactionalProduce(byte[] message) {
+public function main() returns error? {
     transaction {
-        kafka:Error? sendResult = kafkaProducer->send({
+        // Sends the message inside the transaction block.
+        check transactionalProducer->send({
             topic: "test-kafka-topic",
-            value: message,
-            partition: 0
+            value: "Hello World Transaction Message"
         });
-        // Checks for an error and notifies if an error has occurred.
-        if sendResult is kafka:Error {
-            io:println("Error occurred when sending message ", sendResult);
-        }
 
-        var commitResult = commit;
-        if commitResult is () {
-            io:println("Transaction successful");
-        } else {
-            io:println("Transaction unsuccessful " + commitResult.message());
-        }
+        check commit;
     }
 }
