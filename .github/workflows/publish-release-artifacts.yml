@@ -3,23 +3,10 @@ name: Publish Release Artifacts
 on:
   workflow_dispatch:
     inputs:
-      ballerina_version:
-        description: 'Ballerina Version'
+      release_version:
+        description: 'Release Version e.g., 2201.1.1, 2201.1.1-rc1'
         default: '2201.1.1'
         required: true
-      display_version:
-        description: 'Display Version'
-        default: '2201.1.1 (Swan Lake Update 1)'
-        required: true
-      code_name:
-        description: 'Code Name'
-        default: 'swan-lake'
-        required: true
-      rc_suffix:
-        description: 'RC Suffix'
-        deprecationMessage: 'If this is a pre-release, the suffix to append to the version e.g., rc1'
-        default: ''
-        required: false
 
 jobs:
   publish-artifacts:
@@ -40,20 +27,19 @@ jobs:
       - name: Set version env variable
         id: set-version
         run: |
-          RELEASE_VERSION=${{ github.event.inputs.ballerina_version }}
-          CODE_NAME=${{ github.event.inputs.code_name }}
-          DISPLAY_VERSION="${{ github.event.inputs.display_version }}"
-
+          RELEASE_VERSION=${{ github.event.inputs.release_version }}
+          VERSION=$(cut -d- -f1 <<< $RELEASE_VERSION)
+          CODE_NAME="swan-lake"
           TAGGED_VERSION=$RELEASE_VERSION
-          LONG_VERSION=$RELEASE_VERSION-$CODE_NAME
-          if [ -n "${{ github.event.inputs.rc_suffix }}" ]; then
-            TAGGED_VERSION=$RELEASE_VERSION-${{ github.event.inputs.rc_suffix }}
-          fi
+          LONG_VERSION=$VERSION-$CODE_NAME
 
-          echo VERSION=$RELEASE_VERSION >> $GITHUB_ENV
-          echo GIT_TAG=$TAGGED_VERSION >> $GITHUB_ENV
+          UPDATE_NUMBER=$(cut -d'.' -f2 <<< $VERSION)
+          DISPLAY_VERSION="$VERSION (Swan Lake Update $UPDATE_NUMBER)"
+
+          echo VERSION=$VERSION >> $GITHUB_ENV
           echo LONG_VERSION=$LONG_VERSION >> $GITHUB_ENV
           echo DISPLAY_VERSION=$DISPLAY_VERSION >> $GITHUB_ENV
+          echo GIT_TAG=$TAGGED_VERSION >> $GITHUB_ENV
           echo "::set-output name=version::$RELEASE_VERSION"
           echo "::set-output name=taggedVersion::$TAGGED_VERSION"
 
