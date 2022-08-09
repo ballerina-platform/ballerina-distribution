@@ -33,7 +33,7 @@ public class InstallerTest {
         return result;
     }
 
-    @Test(dataProvider = "getExecutors")
+    @Test(dataProvider = "getExecutors", groups = { "installer" })
     public void testSmoke(Executor executor) {
         if (!System.getProperty("BALLERINA_INSTALLED").equals("true")) {
             executor.transferArtifacts();
