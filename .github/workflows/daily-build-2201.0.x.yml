@@ -125,7 +125,8 @@ jobs:
           --data "{
             \"event_type\": \"notify-build-failure\",
             \"client_payload\": {
-              \"repoName\": \"ballerina-distribution\"
+              \"repoName\": \"ballerina-distribution\",
+              \"branch\": \"2201.0.x\"
             }
           }"
       - name: Checkout docker repo

@@ -1083,7 +1083,7 @@
     {
         "title": "REST API",
         "column": 0,
-        "category": "Work over the network",
+        "category": "Network libraries",
         "samples": [
             {
                 "name": "Service path and resource path",
@@ -1162,7 +1162,7 @@
     {
         "title": "REST client",
         "column": 0,
-        "category": "Work over the network",
+        "category": "Network libraries",
         "samples": [
             {
                 "name": "Client",
@@ -1192,7 +1192,7 @@
     {
         "title": "REST API security",
         "column": 0,
-        "category": "Work over the network",
+        "category": "Network libraries",
         "samples": [
             {
                 "name": "Service - SSL/TLS",
@@ -1319,7 +1319,7 @@
     {
         "title": "REST API advanced",
         "column": 0,
-        "category": "Work over the network",
+        "category": "Network libraries",
         "samples": [
             {
                 "name": "Redirects",
@@ -1422,11 +1422,19 @@
     {
         "title": "REST API interceptors",
         "column": 1,
-        "category": "Work over the network",
+        "category": "Network libraries",
         "samples": [
             {
-                "name": "Interceptors",
-                "url": "http-interceptors",
+                "name": "Request Interceptors",
+                "url": "http-request-interceptors",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Response Interceptors",
+                "url": "http-response-interceptors",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -1453,7 +1461,7 @@
     {
         "title": "HTTP2",
         "column": 1,
-        "category": "Work over the network",
+        "category": "Network libraries",
         "samples": [
             {
                 "name": "HTTP 1.1 to 2.0 protocol switch",
@@ -1476,7 +1484,7 @@
     {
         "title": "GraphQL",
         "column": 1,
-        "category": "Work over the network",
+        "category": "Network libraries",
         "samples": [
             {
                 "name": "Hello world",
@@ -1558,13 +1566,21 @@
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "Interceptors",
+                "url": "graphql-interceptors",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
     {
         "title": "GraphQL security",
         "column": 1,
-        "category": "Work over the network",
+        "category": "Network libraries",
         "samples": [
             {
                 "name": "Service - SSL/TLS",
@@ -1619,7 +1635,7 @@
     {
         "title": "WebSockets",
         "column": 1,
-        "category": "Work over the network",
+        "category": "Network libraries",
         "samples": [
             {
                 "name": "Client",
@@ -1651,7 +1667,7 @@
     {
         "title": "WebSocket security",
         "column": 1,
-        "category": "Work over the network",
+        "category": "Network libraries",
         "samples": [
             {
                 "name": "Service - SSL/TLS",
@@ -1778,7 +1794,7 @@
     {
         "title": "WebSub",
         "column": 1,
-        "category": "Work over the network",
+        "category": "Network libraries",
         "samples": [
             {
                 "name": "WebSub subscriber service",
@@ -1793,7 +1809,7 @@
     {
         "title": "Resiliency",
         "column": 2,
-        "category": "Work over the network",
+        "category": "Network libraries",
         "samples": [
             {
                 "name": "Circuit breaker",
@@ -1840,7 +1856,7 @@
     {
         "title": "Listeners and StopHandlers",
         "column": 2,
-        "category": "Work over the network",
+        "category": "Network libraries",
         "samples": [
             {
                 "name": "Dynamic listener",
@@ -1863,7 +1879,7 @@
     {
         "title": "gRPC",
         "column": 2,
-        "category": "Work over the network",
+        "category": "Network libraries",
         "samples": [
             {
                 "name": "Simple RPC",
@@ -1924,7 +1940,7 @@
     {
         "title": "gRPC security",
         "column": 2,
-        "category": "Work over the network",
+        "category": "Network libraries",
         "samples": [
             {
                 "name": "Service - SSL/TLS",
@@ -2051,7 +2067,7 @@
     {
         "title": "NATS",
         "column": 2,
-        "category": "Work over the network",
+        "category": "Network libraries",
         "samples": [
             {
                 "name": "Publish/subscribe",
@@ -2085,7 +2101,7 @@
     {
         "title": "STAN",
         "column": 2,
-        "category": "Work over the network",
+        "category": "Network libraries",
         "samples": [
             {
                 "name": "Publish/subscribe",
@@ -2137,7 +2153,7 @@
     {
         "title": "Kafka",
         "column": 2,
-        "category": "Work over the network",
+        "category": "Network libraries",
         "samples": [
             {
                 "name": "Producer",
@@ -2207,7 +2223,7 @@
     {
         "title": "RabbitMQ",
         "column": 3,
-        "category": "Work over the network",
+        "category": "Network libraries",
         "samples": [
             {
                 "name": "Producer",
@@ -2268,7 +2284,7 @@
     {
         "title": "TCP",
         "column": 3,
-        "category": "Work over the network",
+        "category": "Network libraries",
         "samples": [
             {
                 "name": "Client",
@@ -2302,7 +2318,7 @@
     {
         "title": "UDP",
         "column": 3,
-        "category": "Work over the network",
+        "category": "Network libraries",
         "samples": [
             {
                 "name": "Connectionless client",
@@ -2336,7 +2352,7 @@
     {
         "title": "Email",
         "column": 3,
-        "category": "Work over the network",
+        "category": "Network libraries",
         "samples": [
             {
                 "name": "Send emails",
@@ -2370,7 +2386,7 @@
     {
         "title": "FTP",
         "column": 3,
-        "category": "Work over the network",
+        "category": "Network libraries",
         "samples": [
             {
                 "name": "Client",
@@ -2395,7 +2411,7 @@
     {
         "title": "SFTP",
         "column": 3,
-        "category": "Work over the network",
+        "category": "Network libraries",
         "samples": [
             {
                 "name": "Client",
@@ -2420,7 +2436,7 @@
     {
         "title": "MySQL",
         "column": 3,
-        "category": "Work over the network",
+        "category": "Network libraries",
         "samples": [
             {
                 "name": "Simple query",
@@ -2490,7 +2506,7 @@
     {
         "title": "JDBC",
         "column": 3,
-        "category": "Work over the network",
+        "category": "Network libraries",
         "samples": [
             {
                 "name": "Simple query",
@@ -2549,6 +2565,21 @@
         ]
     },
     {
+        "title": "SerDes",
+        "column": 3,
+        "category": "Working over the network",
+        "samples": [
+            {
+                "name": "Serialization and Deserialization",
+                "url": "serdes-simple",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
         "title": "IO",
         "column": 0,
         "category": "Common libraries",
@@ -2571,6 +2602,13 @@
             {
                 "name": "Read/write CSV",
                 "url": "io-csv",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Read/write CSV with data mapping",
+                "url": "io-csv-datamapping",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": false
@@ -2883,6 +2921,20 @@
             {
                 "name": "JSON to XML conversion ",
                 "url": "xml-from-json-conversion",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "XML to record conversion",
+                "url": "xml-to-record-conversion",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Record to XML conversion",
+                "url": "xml-from-record-conversion",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": false
