@@ -14,8 +14,8 @@ service class ResponseInterceptor {
 
     // The `interceptResponse` remote function will be executed for all the
     // responses. A `RequestContext` is used to share data between interceptors.
-    remote function interceptResponse(http:RequestContext ctx, 
-                        http:Response res) returns http:NextService|error? {
+    remote function interceptResponse(http:RequestContext ctx, http:Response res) 
+            returns http:NextService|error? {
         // Sets a header to the response inside the interceptor service.
         res.setHeader(interceptor_header, interceptor_header_value);
         // Returns the next interceptor in the pipeline or `nil` if there is no 
