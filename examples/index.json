@@ -1424,8 +1424,16 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Interceptors",
-        "url": "http-interceptors",
+        "name": "Request Interceptors",
+        "url": "http-request-interceptors",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Response Interceptors",
+        "url": "http-response-interceptors",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
