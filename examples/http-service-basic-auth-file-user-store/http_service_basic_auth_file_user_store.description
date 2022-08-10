@@ -1,5 +1,5 @@
-// An HTTP service/resource can be secured using Basic auth and optionally by
-// enforcing authorization. Then, it validates the Basic auth token sent in the
+// An HTTP service/resource can be secured with Basic Auth and optionally by
+// enforcing authorization. Then, it validates the Basic Auth token sent in the
 // `Authorization` header against the provided configurations. This reads data
 // from a file, which has a TOML format. This stores the usernames, passwords
 // for authentication, and scopes for authorization.<br/>
@@ -11,4 +11,4 @@
 // `Config.toml` has defined three users - alice, ldclakmal and eve. Each user has a
 // password and optionally assigned scopes as an array.<br/><br/>
 // For more information on the underlying module,
-// see the [Auth module](https://docs.central.ballerina.io/ballerina/auth/latest/).
+// see the [Auth module](https://lib.ballerina.io/ballerina/auth/latest/).

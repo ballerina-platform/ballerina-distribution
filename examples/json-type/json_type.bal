@@ -1,7 +1,7 @@
 import ballerina/io;
 import ballerina/lang.value;
 
-json j = { "x": 1, "y": 2 };
+json j = {"x": 1, "y": 2};
 
 // Returns the `string` that represents `j` in JSON format.
 string s = j.toJsonString();

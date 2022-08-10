@@ -2,7 +2,7 @@ import ballerina/http;
 import ballerina/lang.runtime;
 import ballerina/log;
 
-http:Listener httpListener = check new (9090);
+final http:Listener httpListener = check new (9090);
 
 http:Service helloService =  service object {
 

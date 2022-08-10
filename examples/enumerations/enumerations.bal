@@ -10,7 +10,9 @@ import ballerina/io;
 //
 // `type Color RED|GREEN|BLUE;`
 enum Color {
-    RED, GREEN, BLUE
+    RED,
+    GREEN,
+    BLUE
 }
 
 // An `enum` member can explicitly specify an associated expression.

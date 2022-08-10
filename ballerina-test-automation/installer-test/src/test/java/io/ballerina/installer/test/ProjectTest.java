@@ -49,4 +49,34 @@ public class ProjectTest {
             executor.cleanArtifacts();
         }
     }
+
+    @Test(dataProvider = "getExecutors")
+    public void testBBEs(Executor executor) throws InterruptedException {
+        if (!System.getProperty("BALLERINA_INSTALLED").equals("true")) {
+            executor.transferArtifacts();
+            executor.install();
+        }
+
+        TestUtils.testBBEs(executor, version, specVersion, toolVersion);
+
+        if (!System.getProperty("BALLERINA_INSTALLED").equals("true")) {
+            executor.uninstall();
+            executor.cleanArtifacts();
+        }
+    }
+
+    @Test(dataProvider = "getExecutors")
+    public void testDirectoryPath(Executor executor) throws InterruptedException {
+        if (!System.getProperty("BALLERINA_INSTALLED").equals("true")) {
+            executor.transferArtifacts();
+            executor.install();
+        }
+
+        TestUtils.testDirectoryPath(executor, toolVersion);
+
+        if (!System.getProperty("BALLERINA_INSTALLED").equals("true")) {
+            executor.uninstall();
+            executor.cleanArtifacts();
+        }
+    }
 }

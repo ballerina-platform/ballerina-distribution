@@ -13,13 +13,13 @@ listener rabbitmq:Listener channelListener =
 // Attaches the service to the listener.
 service rabbitmq:Service on channelListener {
     remote function onMessage(rabbitmq:Message message,
-                                                    rabbitmq:Caller caller) {
+                            rabbitmq:Caller caller) returns error? {
         string|error messageContent = string:fromBytes(message.content);
         if messageContent is string {
             log:printInfo("Received message: " + messageContent);
         }
 
         // Positively acknowledges a single message.
-        rabbitmq:Error? result = caller->basicAck();
+        check caller->basicAck();
     }
 }

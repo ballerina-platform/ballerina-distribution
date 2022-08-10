@@ -8,13 +8,13 @@ public function main() returns error? {
     // The `json` type allows `int|float|decimal`.
     json[] d = [a, b, c];
 
-    // `toJsonString` will convert `int|float|decimal` into JSON 
+    // `toJsonString()` will convert `int|float|decimal` into JSON
     // numeric syntax.
     string e = d.toJsonString();
 
     io:println(e);
 
-    // `fromJsonString` converts JSON numeric syntax into `int`, 
+    // `fromJsonString()` converts JSON numeric syntax into `int`,
     // if possible, and otherwise `decimal`.
     json f = check e.fromJsonString();
 
@@ -26,7 +26,7 @@ public function main() returns error? {
     io:println(typeof g[1]);
     io:println(typeof g[2]);
 
-    // `cloneWithType` or `ensureType` will convert from `int` or `decimal` into the user's
+    // `cloneWithType()` or `ensureType()` will convert from `int` or `decimal` into the user's
     // chosen numeric type.
     float h = check g[2].ensureType();
 

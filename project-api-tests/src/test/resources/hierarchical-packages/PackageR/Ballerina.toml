@@ -1,0 +1,13 @@
+[package]
+org = "pramodya"
+name = "PackageR"
+version = "0.1.0"
+
+[build-options]
+observabilityIncluded = false
+
+[[dependency]]
+org = "bctestorg"
+name = "PackageQ.test"
+version = "1.0.0"
+repository = "local"

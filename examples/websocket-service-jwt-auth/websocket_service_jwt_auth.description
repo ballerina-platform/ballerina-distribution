@@ -1,4 +1,4 @@
-// A WebSocket service can be secured using JWT and by enforcing
+// A WebSocket service can be secured with JWT and by enforcing
 // authorization optionally. Then, it validates the JWT sent in the
 // `Authorization` header against the provided configurations.<br/>
 // Ballerina uses the concept of scopes for authorization. A resource declared
@@ -9,4 +9,4 @@
 // against the scope included in the JWT for at least one match between the two
 // sets.<br/><br/>
 // For more information on the underlying module, 
-// see the [JWT module](https://docs.central.ballerina.io/ballerina/jwt/latest/).
+// see the [JWT module](https://lib.ballerina.io/ballerina/jwt/latest/).

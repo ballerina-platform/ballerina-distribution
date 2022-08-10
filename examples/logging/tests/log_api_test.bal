@@ -14,7 +14,8 @@ string printWarn = "";
 }
 test:MockFunction mock_printDebug = new();
 
-public function mockPrintDebug(string msg, error? err = (), *log:KeyValues keyValues) {
+public function mockPrintDebug(string msg, error? err = (),
+error:StackFrame[]? stackTrace = (), *log:KeyValues keyValues) {
     printDebug = msg;
 }
 
@@ -24,7 +25,8 @@ public function mockPrintDebug(string msg, error? err = (), *log:KeyValues keyVa
 }
 test:MockFunction mock_printError = new();
 
-public function mockPrintError(string msg, error? err = (), *log:KeyValues keyValues) {
+public function mockPrintError(string msg, error? err = (),
+error:StackFrame[]? stackTrace = (), *log:KeyValues keyValues) {
     printError = msg;
 }
 
@@ -34,7 +36,8 @@ public function mockPrintError(string msg, error? err = (), *log:KeyValues keyVa
 }
 test:MockFunction mock_printInfo = new();
 
-public function mockPrintInfo(string msg, error? err = (), *log:KeyValues keyValues) {
+public function mockPrintInfo(string msg, error? err = (),
+error:StackFrame[]? stackTrace = (), *log:KeyValues keyValues) {
     printInfo = msg;
 }
 
@@ -44,7 +47,8 @@ public function mockPrintInfo(string msg, error? err = (), *log:KeyValues keyVal
 }
 test:MockFunction mock_printWarn = new();
 
-public function mockPrintWarn(string msg, error? err = (), *log:KeyValues keyValues) {
+public function mockPrintWarn(string msg, error? err = (),
+error:StackFrame[]? stackTrace = (), *log:KeyValues keyValues) {
     printWarn = msg;
 }
 

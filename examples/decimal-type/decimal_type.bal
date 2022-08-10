@@ -11,4 +11,9 @@ function floatSurprise() {
 public function main() {
     floatSurprise();
     io:println(nanos);
+
+    // Numeric literals can use the `d` suffix for them to be interpreted as `decimal` values
+    // (similarly, the `f` suffix can be used for `float`).
+    var d = 12345d;
+    io:println(d is decimal);
 }

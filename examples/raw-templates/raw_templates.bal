@@ -8,9 +8,9 @@ jdbc:Client dbClient = check new (url = "jdbc:h2:file:./master/orderdb",
 public function main() returns error? {
     // Uses a raw template to create `Orders` table.
     _ = check dbClient->execute(`CREATE TABLE IF NOT EXISTS Orders
-                                 (orderId INTEGER NOT NULL IDENTITY,
-                                  customerId INTEGER, noOfItems INTEGER,
-                                  PRIMARY KEY (orderId))`);
+                                (orderId INTEGER NOT NULL,
+                                customerId INTEGER, noOfItems INTEGER,
+                                PRIMARY KEY (orderId))`);
     // Uses a raw template to insert values to `Orders` table.
     _ = check dbClient->execute(`INSERT INTO Orders (orderId, customerId,
                                 noOfItems) VALUES (1, 1, 20)`);

@@ -1,21 +1,35 @@
 import ballerina/io;
-// The `@display` annotation applies to the transform function.
+
+// The `@display` annotation is applied to the `transform` function.
 @display {
     label: "Transform",
     iconPath: "transform.png"
 }
 public function transform(string s) returns string {
-   return s.toUpperAscii();
+    return s.toUpperAscii();
 }
+
+type AnnotRecord record {|
+    string value;
+|};
+
+// Declares an annotation tag on the type.
+annotation AnnotRecord annot on type;
+
+// The `@annot` annotation applies to the `T1` record type.
+@annot {
+    value: "T1"
+}
+type T1 record {
+    string name;
+};
 
 public function main() {
-    // The `@strand` annotation applies to the `start` action.
-    future<int> fut = @strand { thread: "any" } start foo();
+    T1 a = {name: "John"};
 
-    int|error x = wait fut;
-    io:println(x);
-}
+    typedesc<any> t = typeof a;
+    // Access annotation.
+    AnnotRecord? ann = t.@annot;
 
-public function foo() returns int {
-    return 10;
+    io:println(ann);
 }

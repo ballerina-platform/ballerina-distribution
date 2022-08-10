@@ -1,6 +1,7 @@
 import ballerina/io;
 
 type Entry map<json>;
+
 type RoMap readonly & map<Entry>;
 
 final RoMap m = loadMap();
@@ -27,4 +28,3 @@ isolated function lookup(string s) returns readonly & Entry? {
 public function main() {
     io:println(lookup("france"));
 }
-

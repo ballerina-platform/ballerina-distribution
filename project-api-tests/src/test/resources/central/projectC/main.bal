@@ -1,5 +1,5 @@
-import bc2testorg/<PKG_A> as pkgA;
-import bc2testorg/<PKG_B> as pkgB;
+import bctestorg/<PKG_A> as pkgA;
+import bctestorg/<PKG_B> as pkgB;
 
 
 public function main() {

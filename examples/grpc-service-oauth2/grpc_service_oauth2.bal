@@ -9,9 +9,9 @@ listener grpc:Listener securedEP = new(9090,
     }
 );
 
-// The service can be secured with OAuth2 authentication and can be authorized
-// optionally. OAuth2 authentication can be enabled by setting the
-// [`grpc:OAuth2IntrospectionConfig`](https://docs.central.ballerina.io/ballerina/grpc/latest/records/OAuth2IntrospectionConfig) configurations.
+// The service can be secured with OAuth2 and by enforcing authorization
+// optionally. It can be enabled by setting the
+// [`grpc:OAuth2IntrospectionConfig`](https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2IntrospectionConfig) configurations.
 // Authorization is based on scopes. A scope maps to one or more groups.
 // Authorization can be enabled by setting the `string|string[]` type
 // configurations for `scopes` field.
@@ -34,8 +34,7 @@ listener grpc:Listener securedEP = new(9090,
     ]
 }
 @grpc:ServiceDescriptor {
-    descriptor: ROOT_DESCRIPTOR_GRPC_SERVICE,
-    descMap: getDescriptorMapGrpcService()
+    descriptor: GRPC_SERVICE_DESC
 }
 service "HelloWorld" on securedEP {
     remote function hello() returns string {

@@ -1,0 +1,5 @@
+# To retrieve data, any tool that supports GraphQL Subscriptions via WebSockets can be used.
+# The document: subscription { names }
+{ "data": { "names": "Walter White" } }
+{ "data": { "names": "Jesse Pinkman" } }
+{ "data": { "names": "Skyler White" } }

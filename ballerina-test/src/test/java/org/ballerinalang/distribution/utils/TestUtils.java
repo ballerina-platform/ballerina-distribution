@@ -49,6 +49,7 @@ public class TestUtils {
     public static final Path TARGET_DIR = Paths.get(System.getProperty("target.dir"));
     public static final Path MAVEN_VERSION = Paths.get(System.getProperty("maven.version"));
     public static final Path SHORT_VERSION = Paths.get(System.getProperty("short.version"));
+    public static final Path CODE_NAME = Paths.get(System.getProperty("code.name"));
     public static final Path DISTRIBUTIONS_DIR = Paths.get(System.getProperty("distributions.dir"));
     public static final Path TEST_DISTRIBUTION_PATH = TARGET_DIR.resolve("test-distribution");
     public static final Path EXAMPLES_DIR = Paths.get(System.getProperty("examples.dir"));
@@ -215,7 +216,7 @@ public class TestUtils {
             for (File existsFile: listFiles) {
                 String fileName = existsFile.getName();
                 if (fileName.equals(generatedFileName) || fileName.equals(generatedFileName+"_service.bal") ||
-                        fileName.equals("client.bal") || fileName.equals("types.bal")) {
+                        fileName.equals("client.bal") || fileName.equals("types.bal") || fileName.equals("utils.bal")) {
                     existsFile.delete();
                 }
             }
@@ -303,7 +304,7 @@ public class TestUtils {
                                           String versionDisplayText) {
         String toolText = TestUtils.isOldToolVersion(toolVersion) ? "Ballerina tool" : "Update Tool";
         if (jBallerinaVersion.contains(TestUtils.SWAN_LAKE_KEYWORD)) {
-            return "Ballerina Swan Lake " + versionDisplayText + "\n" + "Language specification " + specVersion +
+            return "Ballerina " + versionDisplayText + " (Swan Lake)\n" + "Language specification " + specVersion +
                     "\n" + toolText + " " + toolVersion + "\n";
         }
 

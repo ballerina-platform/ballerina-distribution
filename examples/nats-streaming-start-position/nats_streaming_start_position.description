@@ -1,5 +1,5 @@
-// This sample demonstrates leveraging the historical
-// message replay feature of Streaming NATS.
+// The `nats` streaming library provides the functionality of historical
+// message replay.
 // New subscriptions may specify a starting position in the stream of
 // messages stored for the channel of the subscribed subject.
 // Message delivery may begin at:
@@ -10,4 +10,4 @@
 //    (e.g., the last 30 seconds).
 // 4. A specific message sequence number<br/><br/>
 // For more information on the underlying module, 
-// see the [STAN module](https://docs.central.ballerina.io/ballerinax/stan/latest).
+// see the [STAN module](https://lib.ballerina.io/ballerinax/stan/latest).

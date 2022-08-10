@@ -38,10 +38,13 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Objects;
 
-import static org.ballerina.projectapi.CentralTestUtils.BALLERINA_DEV_CENTRAL;
-import static org.ballerina.projectapi.CentralTestUtils.BALLERINA_HOME_DIR;
+import static org.ballerina.projectapi.CentralTestUtils.ANY_PLATFORM;
 import static org.ballerina.projectapi.CentralTestUtils.BALLERINA_TOML;
+import static org.ballerina.projectapi.CentralTestUtils.COMMON_VERSION;
+import static org.ballerina.projectapi.CentralTestUtils.JAVA11_PLATFORM;
 import static org.ballerina.projectapi.CentralTestUtils.MAIN_BAL;
+import static org.ballerina.projectapi.CentralTestUtils.OUTPUT_NOT_CONTAINS_EXP_MSG;
+import static org.ballerina.projectapi.CentralTestUtils.TEST_PREFIX;
 import static org.ballerina.projectapi.CentralTestUtils.createSettingToml;
 import static org.ballerina.projectapi.CentralTestUtils.deleteFiles;
 import static org.ballerina.projectapi.CentralTestUtils.getBalaPath;
@@ -50,17 +53,16 @@ import static org.ballerina.projectapi.CentralTestUtils.getExecutableJarPath;
 import static org.ballerina.projectapi.CentralTestUtils.getGenerateBalaLog;
 import static org.ballerina.projectapi.CentralTestUtils.getPushedToCentralLog;
 import static org.ballerina.projectapi.CentralTestUtils.getString;
+import static org.ballerina.projectapi.CentralTestUtils.isPkgAvailableInCentral;
 import static org.ballerina.projectapi.CentralTestUtils.randomPackageName;
 import static org.ballerina.projectapi.CentralTestUtils.updateFileToken;
-import static org.ballerina.projectapi.TestUtils.DISTRIBUTIONS_DIR;
-import static org.ballerina.projectapi.TestUtils.MAVEN_VERSION;
+import static org.ballerina.projectapi.TestUtils.DISTRIBUTION_FILE_NAME;
 import static org.ballerina.projectapi.TestUtils.OUTPUT_CONTAIN_ERRORS;
 import static org.ballerina.projectapi.TestUtils.executeBuildCommand;
 import static org.ballerina.projectapi.TestUtils.executeCommand;
 import static org.ballerina.projectapi.TestUtils.executePackCommand;
 import static org.ballerina.projectapi.TestUtils.executePullCommand;
 import static org.ballerina.projectapi.TestUtils.executePushCommand;
-import static org.ballerina.projectapi.TestUtils.executeSearchCommand;
 
 /**
  * Tests related central packaging.
@@ -74,30 +76,23 @@ public class CentralTest {
     private String packageCName;
     private String packageDName;
     private String packageSnapshotName;
-    private String orgName = "bc2testorg";
+    private String orgName = "bctestorg";
     private Map<String, String> envVariables;
 
-    private static final String DISTRIBUTION_FILE_NAME = "ballerina-" + MAVEN_VERSION;
     private static final String DEFAULT_PKG_NAME = "my_package";
     private static final String PROJECT_A = "projectA";
     private static final String PROJECT_B = "projectB";
     private static final String PROJECT_C = "projectC";
     private static final String PROJECT_D = "projectD";
     private static final String PROJECT_SNAPSHOT = "projectSnapshot";
-    private static final String COMMON_VERSION = "1.0.0";
-    private static final String TEST_PREFIX = "test_";
-    private static final String ANY_PLATFORM = "any";
-    private static final String JAVA11_PLATFORM = "java11";
-    private static final String OUTPUT_NOT_CONTAINS_EXP_MSG = "build output does not contain expected message:";
 
     @BeforeClass()
     public void setUp() throws IOException, InterruptedException {
-        setupDistributions();
-
+        TestUtils.setupDistributions();
         tempHomeDirectory = Files.createTempDirectory("bal-test-integration-packaging-home-");
         tempWorkspaceDirectory = Files.createTempDirectory("bal-test-integration-packaging-workspace-");
         createSettingToml(tempHomeDirectory);
-        envVariables = addEnvVariables(getEnvVariables());
+        envVariables = TestUtils.addEnvVariables(getEnvVariables(), tempHomeDirectory);
 
         // Copy test resources to temp workspace directory
         try {
@@ -116,13 +111,13 @@ public class CentralTest {
             this.packageCName = TEST_PREFIX + randomString + "_" + PROJECT_C;
             this.packageDName = TEST_PREFIX + randomString + "_" + PROJECT_D;
             this.packageSnapshotName = TEST_PREFIX + randomString + "_" + PROJECT_SNAPSHOT;
-        } while (isPkgAvailableInCentral(this.packageAName)
-                || isPkgAvailableInCentral(this.packageBName)
-                || isPkgAvailableInCentral(this.packageCName)
-                || isPkgAvailableInCentral(this.packageDName)
-                || isPkgAvailableInCentral(this.packageSnapshotName));
+        } while (isPkgAvailableInCentral(this.packageAName, tempWorkspaceDirectory, envVariables)
+                || isPkgAvailableInCentral(this.packageBName, tempWorkspaceDirectory, envVariables)
+                || isPkgAvailableInCentral(this.packageCName, tempWorkspaceDirectory, envVariables)
+                || isPkgAvailableInCentral(this.packageDName, tempWorkspaceDirectory, envVariables)
+                || isPkgAvailableInCentral(this.packageSnapshotName, tempWorkspaceDirectory, envVariables));
 
-        isPkgAvailableInCentral(this.packageAName);
+        isPkgAvailableInCentral(this.packageAName, tempWorkspaceDirectory, envVariables);
 
         // Update Ballerina.toml files with new package names"my_package"
         updateFileToken(this.tempWorkspaceDirectory.resolve(PROJECT_A).resolve(BALLERINA_TOML), DEFAULT_PKG_NAME,
@@ -363,45 +358,6 @@ public class CentralTest {
     private void cleanup() throws IOException {
         deleteFiles(tempHomeDirectory);
         deleteFiles(tempWorkspaceDirectory);
-    }
-
-    /**
-     * Get environment variables and add ballerina_home as a env variable the tmp directory.
-     *
-     * @return env directory variable array
-     */
-    private Map<String, String> addEnvVariables(Map<String, String> envVariables) {
-        envVariables.put(BALLERINA_HOME_DIR, tempHomeDirectory.toString());
-        envVariables.put(BALLERINA_DEV_CENTRAL, "true");
-        return envVariables;
-    }
-
-    /**
-     * Clean and set up distributions.
-     */
-    private void setupDistributions() throws IOException {
-        TestUtils.cleanDistribution();
-        TestUtils.prepareDistribution(DISTRIBUTIONS_DIR.resolve(DISTRIBUTION_FILE_NAME + ".zip"));
-    }
-
-    /**
-     * Check package already available in central.
-     *
-     * @param pkg package
-     * @return is package available in central
-     */
-    private boolean isPkgAvailableInCentral(String pkg) throws IOException, InterruptedException {
-        Process search = executeSearchCommand(DISTRIBUTION_FILE_NAME,
-                                              this.tempWorkspaceDirectory,
-                                              new LinkedList<>(Collections.singletonList(pkg)),
-                                              this.envVariables);
-        String buildErrors = getString(search.getErrorStream());
-        if (!buildErrors.isEmpty()) {
-            Assert.fail(OUTPUT_CONTAIN_ERRORS + buildErrors);
-        }
-
-        String buildOutput = getString(search.getInputStream());
-        return !buildOutput.contains("no modules found");
     }
 
     /**

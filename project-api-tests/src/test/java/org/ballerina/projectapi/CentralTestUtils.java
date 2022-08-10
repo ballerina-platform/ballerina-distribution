@@ -27,12 +27,21 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static org.ballerina.projectapi.TestUtils.DISTRIBUTION_FILE_NAME;
+import static org.ballerina.projectapi.TestUtils.OUTPUT_CONTAIN_ERRORS;
+import static org.ballerina.projectapi.TestUtils.executePackCommand;
+import static org.ballerina.projectapi.TestUtils.executePushCommand;
+import static org.ballerina.projectapi.TestUtils.executeSearchCommand;
 
 /**
  * Utility class for central tests.
@@ -46,7 +55,14 @@ public class CentralTestUtils {
     static final String BALLERINA_DEV_CENTRAL = "BALLERINA_DEV_CENTRAL";
     static final String BALLERINA_CENTRAL_ACCESS_TOKEN = "BALLERINA_CENTRAL_ACCESS_TOKEN";
     static final String BALLERINA_TOML = "Ballerina.toml";
+    static final String DEPENDENCIES_TOML = "Dependencies.toml";
     static final String MAIN_BAL = "main.bal";
+    static final String COMMON_VERSION = "1.0.0";
+    static final String TEST_PREFIX = "test_";
+    static final String ANY_PLATFORM = "any";
+    static final String JAVA11_PLATFORM = "java11";
+    static final String BALLERINA_ARTIFACT_TYPE = "bala";
+    static final String OUTPUT_NOT_CONTAINS_EXP_MSG = "build output does not contain expected message:";
 
     /**
      * Generate random package name.
@@ -164,9 +180,21 @@ public class CentralTestUtils {
     }
 
     /**
+     * Get the log output when package is successfully pushed to Central.
+     *
+     * @param orgName Organization name
+     * @param pkgName Name of the package pushed to central
+     * @param version Package Version
+     * @return Expected log message
+     */
+    static String getPushedToCentralLog(String orgName, String pkgName, String version) {
+        return orgName + "/" + pkgName + ":" + version + " pushed to central successfully";
+    }
+
+    /**
      * Get pushed to central log.
      *
-     * @param orgName org name
+     * @param orgName Organization name
      * @param pkgName package name
      * @return pushed to central log
      */
@@ -196,7 +224,182 @@ public class CentralTestUtils {
      * @return bala path
      */
     static Path getBalaPath(Path projectPath, String org, String pkgName, String platform, String version) {
-        return projectPath.resolve("target").resolve("bala")
+        return projectPath.resolve("target").resolve(BALLERINA_ARTIFACT_TYPE)
                 .resolve(org + "-" + pkgName + "-" + platform + "-" + version + ".bala");
     }
+
+    /**
+     * Check if package already available on central.
+     *
+     * @param pkg package
+     * @param tempWorkspaceDirectory Path to workspace
+     * @param envVariables Environmental variables
+     * @return whether the package is available on central
+     * @throws IOException
+     * @throws InterruptedException
+     */
+    static boolean isPkgAvailableInCentral(String pkg, Path tempWorkspaceDirectory,
+                                           Map<String, String> envVariables) throws IOException, InterruptedException {
+        String buildOutput = searchPackageDetails(pkg, tempWorkspaceDirectory, envVariables);
+        return !buildOutput.contains("no modules found");
+    }
+
+    /**
+     * Returns true if the provided version is available on central.
+     *
+     * @param pkg package
+     * @param tempWorkspaceDirectory Path to workspace
+     * @param envVariables Environmental variables
+     * @param version version to check availability
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     */
+    static boolean isPkgVersionAvailableInCentral(String pkg, Path tempWorkspaceDirectory,
+                                                  Map<String, String> envVariables, String version)
+            throws IOException, InterruptedException {
+        String buildOutput = searchPackageDetails(pkg, tempWorkspaceDirectory, envVariables);
+        return (!buildOutput.contains("no modules found") && buildOutput.contains(version));
+    }
+
+    /**
+     * Search for the given package on Central.
+     *
+     * @param pkg package
+     * @param tempWorkspaceDirectory Path to workspace
+     * @param envVariables Environmental variables
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     */
+    private static String searchPackageDetails(String pkg, Path tempWorkspaceDirectory,
+                                           Map<String, String> envVariables) throws IOException, InterruptedException {
+        Process search = executeSearchCommand(DISTRIBUTION_FILE_NAME,
+                tempWorkspaceDirectory,
+                new LinkedList<>(Collections.singletonList(pkg)),
+                envVariables);
+        String buildErrors = getString(search.getErrorStream());
+        if (!buildErrors.isEmpty()) {
+            Assert.fail(OUTPUT_CONTAIN_ERRORS + buildErrors);
+        }
+        return getString(search.getInputStream());
+    }
+
+    /**
+     * Build bala for a package.
+     *
+     * @param tempWorkspaceDirectory Path to workspace
+     * @param envVariables Environmental variables
+     * @param packageName Package
+     * @param orgName Organization name
+     * @param version Package Version
+     * @param additionalArgs Additional arguments to pass wben building package.
+     * @throws IOException
+     * @throws InterruptedException
+     */
+    static void buildPackageBala(Path tempWorkspaceDirectory, Map<String, String> envVariables, String packageName,
+                             String orgName, String version, List<String> additionalArgs)
+            throws IOException, InterruptedException {
+        List<String> argsCollection = new ArrayList(additionalArgs);
+        Process build = executePackCommand(DISTRIBUTION_FILE_NAME,
+                tempWorkspaceDirectory.resolve(packageName),
+                new LinkedList<>(argsCollection), envVariables);
+        String buildErrors = getString(build.getErrorStream());
+        if (!buildErrors.isEmpty()) {
+            Assert.fail(OUTPUT_CONTAIN_ERRORS + buildErrors);
+        }
+        String buildOutput = getString(build.getInputStream());
+        if (!buildOutput.contains(getGenerateBalaLog(orgName,
+                packageName, ANY_PLATFORM, version))) {
+            Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + getGenerateBalaLog(orgName,
+                    packageName, ANY_PLATFORM, version));
+        }
+        Assert.assertTrue(
+                getBalaPath(tempWorkspaceDirectory.resolve(packageName), orgName, packageName, ANY_PLATFORM,
+                        version).toFile().exists());
+    }
+
+    /**
+     * Push a bala to remote repository.
+     *
+     * @param tempWorkspaceDirectory Path to workspace
+     * @param projectName Project name
+     * @param envVariables Environmental variables
+     * @param orgName Organization name
+     * @param packageName package
+     * @param version Package Version
+     * @throws IOException
+     * @throws InterruptedException
+     */
+    static void testPushPackage(Path tempWorkspaceDirectory, String projectName, Map<String, String> envVariables,
+                                String orgName, String packageName, String version)
+            throws IOException, InterruptedException {
+        Process build = executePushCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory.resolve(projectName),
+                new LinkedList<>(), envVariables);
+        String buildErrors = getString(build.getErrorStream());
+        if (!buildErrors.isEmpty()) {
+            Assert.fail(OUTPUT_CONTAIN_ERRORS + buildErrors);
+        }
+        String buildOutput = getString(build.getInputStream());
+        if (!buildOutput.contains(getPushedToCentralLog(orgName, packageName, version))) {
+            Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + getPushedToCentralLog(orgName, packageName));
+        }
+    }
+
+    /**
+     * Push a bala to `local` repository.
+     *
+     * @param tempWorkspaceDirectory Path to workspace
+     * @param projectName Project name
+     * @param envVariables Environmental variables
+     * @param orgName Organization name
+     * @param packageName package
+     * @param version Package Version
+     * @throws IOException
+     * @throws InterruptedException
+     */
+    static void testPushPackageToLocal(Path tempWorkspaceDirectory, String projectName,
+                                       Map<String, String> envVariables, String orgName,
+                                       String packageName, String version)
+            throws IOException, InterruptedException {
+        Process build = executePushCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory.resolve(projectName),
+                new LinkedList<>(Collections.singletonList("--repository=local")), envVariables);
+        // The success message is pushed to error stream for this local push.
+        String buildOutput = getString(build.getInputStream());
+        String expectedLog = "Successfully pushed target/bala/" + orgName + "-" + packageName + "-any-" + version +
+                ".bala to 'local' repository.";
+        if (!buildOutput.contains(expectedLog)) {
+            Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedLog);
+        }
+    }
+
+    /**
+     * Push a bala to central using bala path.
+     *
+     * @param tempWorkspaceDirectory Path to workspace
+     * @param projectName Project name
+     * @param envVariables Environmental variables
+     * @param orgName Organization name
+     * @param packageName package
+     * @param version Package Version
+     * @param balaPath Path to the bala file to be pushed
+     * @throws IOException
+     * @throws InterruptedException
+     */
+    public static void testPushPackageUsingBalaPath(Path tempWorkspaceDirectory, String projectName,
+                                       Map<String, String> envVariables, String orgName,
+                                       String packageName, String version, String balaPath)
+            throws IOException, InterruptedException {
+        Process build = executePushCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory.resolve(projectName),
+                new LinkedList<>(Collections.singletonList(balaPath)), envVariables);
+        String buildErrors = getString(build.getErrorStream());
+        if (!buildErrors.isEmpty()) {
+            Assert.fail(OUTPUT_CONTAIN_ERRORS + buildErrors);
+        }
+        String buildOutput = getString(build.getInputStream());
+        if (!buildOutput.contains(getPushedToCentralLog(orgName, packageName, version))) {
+            Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + getPushedToCentralLog(orgName, packageName));
+        }
+    }
+
 }

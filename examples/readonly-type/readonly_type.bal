@@ -11,7 +11,7 @@ type Row record {
 };
 
 table<Row> key(k) t = table [
-    { k: "John", value: 17 }
+    {k: "John", value: 17}
 ];
 
 public function main() {

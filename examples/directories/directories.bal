@@ -33,5 +33,4 @@ public function main() returns error? {
     // Removes the directory in the specified file path with all its children.
     check file:remove("test1", file:RECURSIVE);
     io:println("Directories removed successfully.");
-    return;
 }

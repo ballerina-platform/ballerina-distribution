@@ -21,11 +21,20 @@ import io.ballerina.test.MacOS;
 import io.ballerina.test.Ubuntu;
 import io.ballerina.test.Utils;
 import io.ballerina.test.Windows;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class TestUtils {
@@ -46,8 +55,12 @@ public class TestUtils {
                                           String versionDisplayText) {
         String toolText = TestUtils.isOldToolVersion(toolVersion) ? "Ballerina tool" : "Update Tool";
         if (jBallerinaVersion.contains(TestUtils.SWAN_LAKE_KEYWORD)) {
-            return "Ballerina Swan Lake " + versionDisplayText + System.lineSeparator() + "Language specification "
-                    + specVersion + System.lineSeparator() + toolText + " " + toolVersion + System.lineSeparator();
+            String shortVersion = jBallerinaVersion.split("-")[jBallerinaVersion.split("-").length-1];
+            int minorVersion = Integer.parseInt(shortVersion.split("\\.")[1]);
+            String updateVersionText = minorVersion > 0 ? " Update " + minorVersion : "";
+
+            return "Ballerina " + versionDisplayText + " (Swan Lake" + updateVersionText + ")\nLanguage specification "
+                    + specVersion + "\n" + toolText + " " + toolVersion + "\n";
         }
 
         String ballerinaReference = isSupportedRelease(jBallerinaVersion) ? "jBallerina" : "Ballerina";
@@ -258,16 +271,98 @@ public class TestUtils {
          */
     }
 
+    public static void testBBEs(Executor executor, String previousVersion, String previousSpecVersion,
+                                String toolVersion) throws InterruptedException {
+        Path userDir = Paths.get(System.getProperty("user.dir"));
+        Path bbeExamplesPath = userDir.resolve("../../examples");
+        Path bbeJsonFilePath = bbeExamplesPath.resolve("index.json");
+        String cmdName = Utils.getCommandName(toolVersion);
+
+        List<String> bbeTests = new ArrayList<>();
+
+        JSONParser jsonParser = new JSONParser();
+
+        try (FileReader reader = new FileReader(bbeJsonFilePath.toString()))
+        {
+            JSONArray bbeTestData = (JSONArray) jsonParser.parse(reader);
+
+            bbeTestData.forEach(testGroup -> {
+                JSONObject testGroupJsonObject = (JSONObject) testGroup;
+                JSONArray tests = (JSONArray) testGroupJsonObject.get("samples");
+
+                tests.forEach(test -> {
+                    JSONObject testJsonObject = (JSONObject) test;
+                    if (testJsonObject.get("verifyBuild").equals(true) &&
+                            testJsonObject.get("verifyOutput").equals(true)) {
+                        bbeTests.add((String) testJsonObject.get("url"));
+                    }
+                });
+            });
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        bbeTests.forEach(testName -> {
+            Path balFilePath = bbeExamplesPath.resolve(testName);
+
+            executor.executeCommand("version && cd " + balFilePath.toString() + " && " + cmdName + "init && " +
+                    cmdName + "build", false, toolVersion);
+
+            Assert.assertTrue(Files.exists(balFilePath));
+            Assert.assertTrue(Files.exists(balFilePath.resolve("target").resolve("bin").
+                    resolve(testName.replaceAll("-", "_") + ".jar")));
+        });
+    }
+
     private static String getSupportedVersion(String toolVersion, String version) {
         if (TestUtils.isOldToolVersion(toolVersion)) {
             return "jballerina-" + version;
         }
         if (version.contains(TestUtils.SWAN_LAKE_KEYWORD)) {
             if (version.contains("alpha") || version.contains("beta")) {
-                return "sl" + version.split("-")[2];
+                return "sl" + version.split("-")[0];
+            } else if (version.contains("preview")) {
+                return "slp" + version.replace("swan-lake-preview", "");
             }
-            return "slp" + version.replace("swan-lake-preview", "");
+            return version.split("-")[0];
         }
         return version;
+    }
+
+    public static void testDirectoryPath(Executor executor, String toolVersion) throws InterruptedException {
+        String cmdName = Utils.getCommandName(toolVersion);
+
+        executor.executeCommand("version && mkdir \"test space1\" && cd \"test space1\" && " + cmdName +
+                "new sampleProject1 && cd sampleProject1 && " + cmdName + "add module1 && " +
+                cmdName + "build", false, toolVersion);
+
+        Path userDir = Paths.get(System.getProperty("user.dir"));
+        Path projectPath1 = userDir.resolve("test space1").resolve("sampleProject1");
+        Assert.assertTrue(Files.exists(projectPath1));
+        Assert.assertTrue(Files.isDirectory(projectPath1.resolve("modules").resolve("module1")));
+        Assert.assertTrue(Files.exists(projectPath1.resolve("target/bin/sampleProject1.jar")));
+
+        executor.executeCommand("version && mkdir \"test space2\" && cd \"test space2\" && " + cmdName +
+                "new sampleProject2 && cd sampleProject2 && " + cmdName + "add module1", false, toolVersion);
+        executor.executeCommand("version && " + cmdName + "build \"test space2/sampleProject2\"", false, toolVersion);
+
+        Path projectPath2 = userDir.resolve("test space2").resolve("sampleProject2");
+        Assert.assertTrue(Files.exists(projectPath2));
+        Assert.assertTrue(Files.isDirectory(projectPath2.resolve("modules").resolve("module1")));
+        Assert.assertTrue(Files.exists(projectPath2.resolve("target/bin/sampleProject2.jar")));
+
+        executor.executeCommand("version && mkdir \"test space3\" && cd \"test space3\" && " + cmdName +
+                "new \"sample project3\" && cd \"sample project3\" && " + cmdName + "add module1", false, toolVersion);
+        executor.executeCommand("version && cd \"test space3\" && " + cmdName + "build \"sample project3\"",
+                false, toolVersion);
+
+        Path projectPath3 = userDir.resolve("test space3").resolve("sample project3");
+        Assert.assertTrue(Files.exists(projectPath3));
+        Assert.assertTrue(Files.isDirectory(projectPath3.resolve("modules").resolve("module1")));
+        Assert.assertTrue(Files.exists(projectPath3.resolve("target/bin/sample_project3.jar")));
     }
 }

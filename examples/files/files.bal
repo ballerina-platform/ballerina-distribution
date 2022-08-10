@@ -9,7 +9,7 @@ public function main() returns error? {
 
     // Checks whether the file exists on the provided path.
     boolean fileExists = check file:test("bar.txt", file:EXISTS);
-    io:println("Is the bar.txt file exist: ", fileExists.toString());
+    io:println("Does the bar.txt file exist: ", fileExists.toString());
 
     // Checks whether the file is readable or not.
     fileExists = check file:test("bar.txt", file:READABLE);
@@ -37,5 +37,4 @@ public function main() returns error? {
     check file:remove("bar1.txt");
     check file:remove("bar2.txt");
     io:println("Files removed successfully.");
-    return;
 }

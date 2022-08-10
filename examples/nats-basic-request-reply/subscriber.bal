@@ -12,7 +12,7 @@ service "demo.bbe" on subscription {
 
         // Logs the incoming message.
         string|error messageContent = string:fromBytes(message.content);
-        if (messageContent is string) {
+        if messageContent is string {
             log:printInfo("Received message: " + messageContent);
         }
 

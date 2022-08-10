@@ -10,7 +10,7 @@ function พิมพ์ชื่อ(string ชื่อ) {
 // Prefix reserved keywords with a single quote.
 string 'from = "contact@ballerina.io";
 
-// Prefix non-identifier character with a \.
+// Prefix non-identifier character with a \\.
 string first\ name = "Ballerina";
 
 public function main() {

@@ -27,8 +27,8 @@ function add(decimal amount) {
 }
 
 public function main() returns error? {
-    check foo({command: "add", amount: 100, status: "pending"}); 
-    check foo({command: "add", amount: 10});   
+    check foo({command: "add", amount: 100, status: "pending"});
+    check foo({command: "add", amount: 10});
     check foo({command: "subtract", amount: 100});
     return;
 }
