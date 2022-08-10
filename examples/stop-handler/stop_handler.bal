@@ -19,7 +19,9 @@ public function stopHandlerFunc() returns error? {
 
 service / on new http:Listener(9090) {
     
-    resource function post addToBasket(@http:Payload string fruit) returns string[] {
+    resource function post addToBasket(@http:Payload string fruit) 
+            returns string[] {
+
         // Add an element to the array.
         fruitBasket.push(fruit);
         io:println("after added a fruit item: " + fruitBasket.toString());
