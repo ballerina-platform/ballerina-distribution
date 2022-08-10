@@ -102,10 +102,7 @@ jobs:
         id: process-docker
         run: |
           DOCKER_REPO='module-ballerina-docker'
-          CURRENT_DATE=`date +%Y-%m-%d`
-
           echo "::set-output name=dockerRepo::$DOCKER_REPO"
-          echo "::set-output name=currentDate::$CURRENT_DATE"
 
       - name: Checkout docker repo
         uses: actions/checkout@v2
@@ -128,11 +125,9 @@ jobs:
 
       - name: Build and push docker image
         run: |
-          dockerRepo=${{ steps.process-docker.outputs.dockerRepo }}
-          currentDocker=${{ steps.process-docker.outputs.currentDocker }}
-
-          cp $VERSION/ballerina-$VERSION.zip ${dockerRepo}/base/docker/
-          docker build --no-cache=true --squash --build-arg BALLERINA_DIST=ballerina-$VERSION.zip -t ballerina/ballerina:$GIT_TAG  ${dockerRepo}/base/docker/
+          DOCKER_REPO=${{ steps.process-docker.outputs.dockerRepo }}
+          cp $VERSION/ballerina-$VERSION.zip $DOCKER_REPO/base/docker/
+          docker build --no-cache=true --squash --build-arg BALLERINA_DIST=ballerina-$VERSION.zip -t ballerina/ballerina:$GIT_TAG  $DOCKER_REPO/base/docker/
           rm ${dockerRepo}/base/docker/ballerina-$VERSION.zip
           docker push ballerina/ballerina:$GIT_TAG
           docker rmi ballerina/ballerina:$GIT_TAG
@@ -140,11 +135,9 @@ jobs:
 
       - name: Build and push dev container
         run: |
-          dockerRepo=${{ steps.process-docker.outputs.dockerRepo }}
-          currentDocker=${{ steps.process-docker.outputs.currentDocker }}
-
-          cp $VERSION/ballerina-$LONG_VERSION-linux-x64.deb ${dockerRepo}/base/devcontainer/
-          docker build --no-cache=true --squash --build-arg BALLERINA_DIST=ballerina-$LONG_VERSION-linux-x64.deb -t ballerina/ballerina-devcontainer:$GIT_TAG ${dockerRepo}/base/devcontainer
+          DOCKER_REPO=${{ steps.process-docker.outputs.dockerRepo }}
+          cp $VERSION/ballerina-$LONG_VERSION-linux-x64.deb $DOCKER_REPO/base/devcontainer/
+          docker build --no-cache=true --squash --build-arg BALLERINA_DIST=ballerina-$LONG_VERSION-linux-x64.deb -t ballerina/ballerina-devcontainer:$GIT_TAG $DOCKER_REPO/base/devcontainer
           rm ${dockerRepo}/base/docker/ballerina-$LONG_VERSION-linux-x64.deb
           docker push ballerina/ballerina-devcontainer:$GIT_TAG
           docker rmi ballerina/ballerina-devcontainer:$GIT_TAG
