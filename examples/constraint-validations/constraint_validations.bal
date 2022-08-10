@@ -1,13 +1,13 @@
 import ballerina/constraint;
 
-// Constraint on `int` type.
+// Constraint on the `int` type.
 @constraint:Int {
     minValue: 18
 }
 type Age int;
 
 type Student record {|
-    // Constraint on `string` typed record field.
+    // Constraint on the `string`-typed record field.
     @constraint:String {
         length: 7
     }
@@ -15,7 +15,7 @@ type Student record {|
     string name;
     // Constrainted type used as a record field.
     Age age;
-    // Constraint on `string[]` typed record field;
+    // Constraint on the `string[]`-typed record field.
     @constraint:Array {
         minLength: 1,
         maxLength: 10
@@ -30,12 +30,12 @@ public function main() returns error? {
         age: 25,
         subjects: ["Maths", "Science", "English"]
     };
-    // To validate the constraints on `Student` record, the `validate` function should be 
-    // called explicitly. If the validation is successful then this function returns the type 
-    // descriptor of the value which is validated.
+    // To validate the constraints on the `Student` record, the `validate` function should be 
+    // called explicitly. If the validation is successful, then, this function returns the type 
+    // descriptor of the value that is validated.
     student = check constraint:validate(student);
 
-    // Set the student's age to 17 which will violate the `minValue` constraint on `Age`.
+    // Set the student's age to 17, which will violate the `minValue` constraint on `Age`.
     student.age = 17;
 
     // When the validation fails, the `validate` function returns a `constraint:Error`.
