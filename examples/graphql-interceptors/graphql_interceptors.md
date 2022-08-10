@@ -4,8 +4,7 @@ The GraphQL `interceptors` can be used to execute custom logic before and after 
 
 Interceptors follow the `onion principle` when executing. Also, the inserting order of the interceptor instances into the array will be the execution order of the interceptors.
 
-For more information on the underlying package, see the
-[`graphql` package](https://lib.ballerina.io/ballerina/graphql/latest/).
+For more information on the underlying package, see the [`graphql` package](https://lib.ballerina.io/ballerina/graphql/latest/).
 
 ::: code graphql_interceptors.bal :::
 
