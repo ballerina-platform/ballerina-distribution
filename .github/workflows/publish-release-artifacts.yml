@@ -50,8 +50,6 @@ jobs:
           mkdir $VERSION
           cd $VERSION
 
-          echo "$baseUrl/ballerina-$LONG_VERSION.zip"
-
           wget "$baseUrl/ballerina-$LONG_VERSION.zip"
           wget "$baseUrl/ballerina-$VERSION.zip"
           wget "$baseUrl/ballerina-$LONG_VERSION-windows-x64.msi"
