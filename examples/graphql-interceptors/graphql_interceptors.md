@@ -13,8 +13,8 @@ the array will be the execution order of the Interceptors.
 For more information on the underlying package, see the
 [`graphql` package](https://lib.ballerina.io/ballerina/graphql/latest/).
 
-::: code graphql_input_types.bal :::
+::: code graphql_interceptors.bal :::
 
-::: out graphql_input_types.client.out :::
+::: out graphql_interceptors.client.out :::
 
-::: out graphql_input_types.server.out :::
+::: out graphql_interceptors.server.out :::
