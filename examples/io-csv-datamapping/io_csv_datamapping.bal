@@ -12,9 +12,13 @@ public function main() returns error? {
     // Initializes the CSV file path and content.
     string csvFilePath1 = "./files/csvFile1.csv";
     string csvFilePath2 = "./files/csvFile2.csv";
-    Employee[] csvContent = [{id:1, name:"James", salary:10000}, {id:2, name:"Nathan", salary:150000},
-    {id:3, name:"Ronald", salary:120000}, {id:4, name:"Roy", salary:6000},
-    {id:5, name:"Oliver", salary:1100000}];
+    Employee[] csvContent = [
+        {id: 1, name: "James", salary: 10000},
+        {id: 2, name: "Nathan", salary: 150000},
+        {id: 3, name: "Ronald", salary: 120000},
+        {id: 4, name: "Roy", salary: 6000},
+        {id: 5, name: "Oliver", salary: 1100000}
+    ];
 
     // Writes the given content `record[]` to a CSV file.
     check io:fileWriteCsv(csvFilePath1, csvContent);

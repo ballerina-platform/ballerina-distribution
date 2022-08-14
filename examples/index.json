@@ -2942,6 +2942,20 @@
         ]
     },
     {
+        "title": "Constraint",
+        "column": 3,
+        "category": "Common libraries",
+        "samples": [
+            {
+                "name": "Constraint validations",
+                "url": "constraint-validations",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
         "title": "Tracing",
         "column": 0,
         "category": "Observability",
