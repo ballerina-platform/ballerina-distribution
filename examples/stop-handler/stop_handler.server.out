@@ -4,7 +4,7 @@
 bal run stop_handler.bal
 
 # Send the interrupt signal SIGINT to terminate the current process.
-Ctrl-c
+Ctrl+c
 initial items in fruit basket: ["Apple","Orange"]
-after added a fruit item: ["Apple","Orange","Guava"]
-after removed all fruit items: []
+after adding a fruit item: ["Apple","Orange","Guava"]
+after removing all fruit items: []
