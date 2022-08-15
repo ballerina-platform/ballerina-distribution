@@ -1854,13 +1854,21 @@
         ]
     },
     {
-        "title": "Listeners",
+        "title": "Listeners and StopHandlers",
         "column": 2,
         "category": "Network libraries",
         "samples": [
             {
                 "name": "Dynamic listener",
                 "url": "dynamic-listener",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "StopHandler",
+                "url": "stop-handler",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
