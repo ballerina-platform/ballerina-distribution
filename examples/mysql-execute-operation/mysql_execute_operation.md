@@ -17,4 +17,4 @@ The following util files will initialize the test database before running the BB
 
 ::: code initialize.bal :::
 
-::: cleanup.bal
+::: code cleanup.bal
