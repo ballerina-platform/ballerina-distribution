@@ -1,0 +1,2 @@
+bal run computed_field_key.bal
+{"name":"John Doe","unique-identifier":"AQW123","_employeeId":"123EMP"}
