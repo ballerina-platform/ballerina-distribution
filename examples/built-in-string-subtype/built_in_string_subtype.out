@@ -1,0 +1,3 @@
+bal run built_in_string_subtype.bal
+x
+120
