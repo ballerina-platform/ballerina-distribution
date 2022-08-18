@@ -20,7 +20,7 @@ of the client. A self-signed JWT is issued before the request is sent.
 
 Once you run the command, the `grpc_client_pb.bal` file is generated inside the stubs directory.
 
->**Info:** For more information on how to use the Ballerina Protocol Buffers tool, see the <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">Proto To Ballerina</a> example.
+>**Info:** For more information on how to use the Ballerina Protocol Buffers tool, see the [Proto To Ballerina](https://ballerina.io/learn/by-example/proto-to-ballerina.html) example.
 
 ## Implement and run the client
 

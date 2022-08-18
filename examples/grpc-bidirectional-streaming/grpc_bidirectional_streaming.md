@@ -18,7 +18,7 @@ The gRPC server connector exposes the gRPC service over HTTP2. In a gRPC bidirec
 
 Once you run the command, the `grpc_bidirectional_streaming_pb.bal` file gets generated inside the `stubs` directory. 
 
->**Info:** For more information on how to use the Ballerina Protocol Buffers tool, see the <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">Proto to Ballerina</a> example.
+>**Info:** For more information on how to use the Ballerina Protocol Buffers tool, see the [Proto To Ballerina](https://ballerina.io/learn/by-example/proto-to-ballerina.html) example.
 
 ## Implement and run the service
 
