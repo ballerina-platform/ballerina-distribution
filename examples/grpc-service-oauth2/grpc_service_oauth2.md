@@ -28,7 +28,7 @@ match between the two sets.
 
 Once you run the command, the `grpc_service_pb.bal` file is generated inside the stubs directory.
 
->**Info:** For more information on how to use the Ballerina Protocol Buffers tool, see the <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">Proto To Ballerina</a> example.
+>**Info:** For more information on how to use the Ballerina Protocol Buffers tool, see the [Proto To Ballerina](https://ballerina.io/learn/by-example/proto-to-ballerina.html) example.
 
 ## Implement and run the service
 

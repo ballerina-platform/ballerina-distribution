@@ -8,8 +8,6 @@ The headers can be passed using the context record that is generated for each Pr
 
 ## Generate the service definition
 
-::: code grpc_simple_with_headers.proto :::
-
 1. Create a new Protocol Buffers definition file named `grpc_simple_with_headers.proto` and add the service definition.
 
    ::: code grpc_simple_with_headers.proto :::
@@ -20,7 +18,7 @@ The headers can be passed using the context record that is generated for each Pr
 
 Once you run the command, the `grpc_simple_with_headers_pb.bal` file is generated inside the `stubs` directory.
 
->**Info:** For more information on how to use the Ballerina Protocol Buffers tool, see the <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">Proto To Ballerina</a> example.
+>**Info:** For more information on how to use the Ballerina Protocol Buffers tool, see the [Proto To Ballerina](https://ballerina.io/learn/by-example/proto-to-ballerina.html) example.
 
 ## Implement and run the service
 
