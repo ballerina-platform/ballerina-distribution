@@ -1,0 +1,2 @@
+$ bal run dependent_types.bal
+12.5
