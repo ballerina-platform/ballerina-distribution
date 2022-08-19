@@ -19,6 +19,13 @@ type Time record {
 };
 
 public function main() {
-    Time time = {year: 2022, month: 8, day: 20, hour: 8, minute: 12, seconds: 3};
+    Time time = {
+        year: 2022,
+        month: 8,
+        day: 20,
+        hour: 8,
+        minute: 12,
+        seconds: 3
+    };
     io:println(time);
 }
