@@ -1,3 +1,5 @@
+import ballerina/io;
+
 // Defines the `Update` record type.
 type Update record {
     int updateIndex;
@@ -5,7 +7,6 @@ type Update record {
 };
 
 public function main() returns error? {
-
     // Creates an array of `Update` records.
     Update[] updates =
     [
@@ -15,11 +16,13 @@ public function main() returns error? {
         {updateIndex: 3, stockMnt: -1000},
         {updateIndex: 4, stockMnt: -2000}
     ];
-    // If an error is returned from the `transfer` function,
-    // the error is returned from the `main` and it exits.
-    check transfer(updates);
 
-    return;
+    io:println(transfer(updates));
+
+    // Creates an array of employee salaries.
+    int[] salaryList = [100, 200, 300, 100];
+
+    incrementSallary(salaryList);
 }
 
 function transfer(Update[] updates) returns error? {
@@ -34,7 +37,6 @@ function transfer(Update[] updates) returns error? {
         }
         // `commit` will not be called because of an implicit rollback.
         check commit;
-
     }
     return;
 }
@@ -46,4 +48,21 @@ function doUpdate(Update u) returns error? {
     }
 
     return;
+}
+
+function incrementSallary(int[] salaryList) returns error? {
+    transaction {
+        foreach int index in 0 ..< salaryList.length() {
+            salaryList[index] += 100;
+        }
+
+        // If the new total salary exceeds `1000`, then the rollback statement performs 
+        // rollback on the transaction.
+        if (salaryList.reduce(function(int total, int n) returns int => total + n, 0) > 1000) {
+            io:println("Salary limit exceeded");
+            rollback;
+        } else {
+            check commit;
+        }
+    }
 }
