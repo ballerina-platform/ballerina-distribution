@@ -3,7 +3,8 @@ import ballerina/io;
 type Id [int, string...];
 
 function process(Id id) {
-    // `id` is destructured with a binding pattern such that path contains all the rest values
+    // `id` is destructured with a binding pattern such that `path` contains all the rest members
+    // of the `id` tuple.
     var [n, ...path] = id;
     io:println(n);
     foreach string s in path {

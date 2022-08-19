@@ -1,14 +1,14 @@
 import ballerina/io;
 
 // You can define the return value expression using the => notation instead of using
-// curly braces to define the function body block.
+// curly braces to define the function body block, whenevere the function body is just
+// a return statement with an expression.
 function inc1(int x) returns int => x + 1;
 
+// inc2(int x) is the same as inc1(int x)
 function inc2(int x) returns int {
     return x + 1;
 }
-
-// inc1(int x) is the same as inc2(int x)
 
 var obj = object {
     private int x = 1;
@@ -17,8 +17,7 @@ var obj = object {
 };
 
 function hypot(float x) returns float =>
-    let float x2 = x * x in
-        float:sqrt(x2 + x2);
+    let float x2 = x * x in float:sqrt(x2 + x2);
 
 public function main() {
     int x = 2;
