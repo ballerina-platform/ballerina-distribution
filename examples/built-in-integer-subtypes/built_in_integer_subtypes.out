@@ -1,4 +1,4 @@
-bal run built_in_integer_subtypes.bal
+$ bal run built_in_integer_subtypes.bal
 72
 43543
 error: {ballerina}NumberConversionError {"message":"'int' value '4,294,967,296' cannot be converted to 'lang.int:Unsigned32'"}

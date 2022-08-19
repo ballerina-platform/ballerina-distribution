@@ -1,8 +1,7 @@
 import ballerina/io;
 
 public function main() {
-    // A variable of type `string:Char` to which only strings of  
-    // length 1 can be assigned.
+    // A variable of type `string:Char` to which only strings of length 1 can be assigned.
     string:Char ch = "x";
     io:println(ch);
     

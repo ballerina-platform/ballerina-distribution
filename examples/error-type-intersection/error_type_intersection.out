@@ -1,4 +1,4 @@
-bal run error_type_intersection.bal
+$ bal run error_type_intersection.bal
 true
 true
 false
