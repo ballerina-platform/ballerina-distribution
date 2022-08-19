@@ -1,0 +1,5 @@
+bal run spread_in_binding_patterns.bal
+
+1
+hello
+world

@@ -1,0 +1,2 @@
+description: This BBE demonstrates spread operator in binding patterns in a match statement.
+keywords: ballerina, ballerina by example, bbe, spread operator, binding pattern
