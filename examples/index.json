@@ -189,6 +189,27 @@
                 "isLearnByExample": true
             },
             {
+                "name": "Tuples",
+                "url": "tuples",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Destructure tuples",
+                "url": "destructure-tuples",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Rest type in tuples",
+                "url": "rest-type-in-tuples",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
                 "name": "Binary data",
                 "url": "binary-data",
                 "verifyBuild": true,
