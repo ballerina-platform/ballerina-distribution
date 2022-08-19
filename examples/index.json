@@ -239,6 +239,13 @@
                 "isLearnByExample": true
             },
             {
+                "name": "Typedesc type",
+                "url": "typedesc-type",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
                 "name": "Covariance",
                 "url": "covariance",
                 "verifyBuild": true,
@@ -363,8 +370,21 @@
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
+            },
+            {
+                "name": "Error detail",
+                "url": "error-detail",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Error cause",
+                "url": "error-cause",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
             }
-
         ]
     },
     {
