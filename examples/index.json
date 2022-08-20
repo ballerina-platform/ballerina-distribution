@@ -947,6 +947,13 @@
                 "isLearnByExample": true
             },
             {
+                "name": "Readonly Objects and Classes",
+                "url": "readonly-objects-and-classes",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
                 "name": "Combining Isolated Functions and Lock",
                 "url": "combining-isolated-functions-and-lock",
                 "verifyBuild": true,
