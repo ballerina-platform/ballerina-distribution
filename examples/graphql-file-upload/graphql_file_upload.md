@@ -6,7 +6,7 @@ resolver functions. The `graphql:Upload` type can represent the details of the f
 that can be used only with the remote functions. The value of `graphql:Upload` type is extracted from the HTTP
 multipart request, which will be received by the GraphQL endpoints. This example shows how to implement a GraphQL endpoint that
 can be used to upload files.
-<br/><br/>
+
 For more information on the underlying package, see the
 [GraphQL package](https://docs.central.ballerina.io/ballerina/graphql/latest/).
 

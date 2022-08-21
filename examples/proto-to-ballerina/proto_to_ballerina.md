@@ -11,7 +11,8 @@ If no value is specified for this parameter and proto definition doesn't contain
 the Ballerina client/service and the stub files are generated inside `temp` directory in the current location.
 This path must be a project directory.
 `--mode` The mode (client or server) to generate code samples.
-If no value is specified for this parameter, only the stub file will be generated.<br/><br/>
+If no value is specified for this parameter, only the stub file will be generated.
+
 For more information on the underlying module, 
 see the [GRPC module](https://docs.central.ballerina.io/ballerina/grpc/latest/) and 
 [How to generate Ballerina code for Protocol Buffer Definition](https://ballerina.io/learn/how-to-generate-code-for-protocol-buffers/).

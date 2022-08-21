@@ -1,6 +1,7 @@
 # Read/write JSON
 
-The Ballerina `io` library contains APIs to read/write JSON objects from/to a file.<br/><br/>
+The Ballerina `io` library contains APIs to read/write JSON objects from/to a file.
+
 For more information on the underlying module, 
 see the [IO module](https://docs.central.ballerina.io/ballerina/io/latest/).
 

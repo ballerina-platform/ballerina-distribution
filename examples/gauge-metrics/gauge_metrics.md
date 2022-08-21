@@ -6,7 +6,8 @@ Observability. To observe Ballerina code, the build time flag `--observability-i
 The developers can define and use metrics to measure their own logic. A gauge is one type of the metrics that is
 supported by default in Ballerina, and it represents a single numerical value that can arbitrarily go up and down,
 and also based on the statistics configurations provided to the Gauge, it can also report the statistics such as max,
-min, mean, percentiles, etc.<br/><br/>
+min, mean, percentiles, etc.
+
 For more information about configs and observing applications, see [Observing Ballerina Code](https://ballerina.io/learn/observing-ballerina-code/).
 
 ::: code gauge_metrics.bal :::

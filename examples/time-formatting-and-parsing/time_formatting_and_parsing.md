@@ -2,7 +2,8 @@
 
 The Ballerina `time` library contains APIs to convert UTC and
 local time to different string representations (RFC 5322 and RFC 3339)
-vice versa.<br/><br/>
+vice versa.
+
 For more information on the underlying module,
 see the [Time module](https://docs.central.ballerina.io/ballerina/time/latest/).
 

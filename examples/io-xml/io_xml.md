@@ -1,6 +1,7 @@
 # Read/write XML
 
-The Ballerina `io` library contains APIs to read/write XML content from/to a file.<br/><br/>
+The Ballerina `io` library contains APIs to read/write XML content from/to a file.
+
 For more information on the underlying module, 
 see the [IO module](https://docs.central.ballerina.io/ballerina/io/latest/).
 
