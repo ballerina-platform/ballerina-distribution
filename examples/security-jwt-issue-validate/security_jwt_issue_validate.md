@@ -1,10 +1,8 @@
 # JWT issue/validate
 
-This example demonstrates how to issue a self-signed JWT and
-validate a JWT.
+This example demonstrates how to issue a self-signed JWT and validate a JWT.
 
-For more information on the underlying module,
-see the [JWT module](https://docs.central.ballerina.io/ballerina/jwt/latest/).
+For more information on the underlying module, see the [JWT module](https://lib.ballerina.io/ballerina/jwt/latest/).
 
 ::: code security_jwt_issue_validate.bal :::
 
