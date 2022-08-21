@@ -1,6 +1,7 @@
 # Streaming
 
-Ballerina supports HTTP input and output streaming capability based on the Ballerina `stream` type.<br/><br/>
+Ballerina supports HTTP input and output streaming capability based on the Ballerina `stream` type.
+
 For more information on the underlying module, 
 see the [HTTP module](https://lib.ballerina.io/ballerina/http/latest/).
 

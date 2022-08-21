@@ -2,7 +2,8 @@
 
 You can use the WebSocket listener to connect to or interact with an WebSocket client.
 Provide the `websocket:ListenerSecureSocket` configurations to the server to
-expose an WSS connection.<br/><br/>
+expose an WSS connection.
+
 For more information on the underlying module, 
 see the [WebSocket module](https://lib.ballerina.io/ballerina/websocket/latest/).
 

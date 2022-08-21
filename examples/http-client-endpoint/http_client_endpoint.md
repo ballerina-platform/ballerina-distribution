@@ -1,6 +1,7 @@
 # Client
 
-The HTTP Client Connector can be used to connect to and interact with an HTTP server.<br/><br/>
+The HTTP Client Connector can be used to connect to and interact with an HTTP server.
+
 For more information on the underlying module, 
 see the [HTTP module](https://lib.ballerina.io/ballerina/http/latest/).
 

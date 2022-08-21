@@ -1,6 +1,7 @@
 # Read/write CSV
 
-The Ballerina `io` library contains APIs to read/write CSV content from/to a file.<br/><br/>
+The Ballerina `io` library contains APIs to read/write CSV content from/to a file.
+
 For more information on the underlying module, 
 see the [IO module](https://lib.ballerina.io/ballerina/io/latest/).
 

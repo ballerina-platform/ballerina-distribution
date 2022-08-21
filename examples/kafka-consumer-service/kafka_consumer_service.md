@@ -2,7 +2,8 @@
 
 Here, a Kafka consumer is used as a listener
 to a service with manual offset commits.
-For this to work properly, an active Kafka broker should be present.<br/><br/>
+For this to work properly, an active Kafka broker should be present.
+
 For more information on the underlying module, 
 see the [Kafka module](https://lib.ballerina.io/ballerinax/kafka/latest).
 

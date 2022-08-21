@@ -1,8 +1,10 @@
 # Client streaming RPC
 
 The gRPC Server Connector is used to expose gRPC services over HTTP/2.
+
 In a gRPC client streaming scenario, the client writes a sequence of messages and sends them to the server.
-Once the client has finished writing the messages, it waits for the server to read them and return a response.<br/><br/>
+Once the client has finished writing the messages, it waits for the server to read them and return a response.
+
 For more information on the underlying module, 
 see the [GRPC module](https://lib.ballerina.io/ballerina/grpc/latest/).
 

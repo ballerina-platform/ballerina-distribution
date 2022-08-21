@@ -6,7 +6,7 @@ should be provided using the `graphql:ServiceConfig` parameter named `contextIni
 other values. These values are stored as key-value pairs. The key is a `string` and the value can be any `readonly`
 value or an `isolated` object. If the init function is not provided, an empty context object will be created.
 The context can be accessed by defining it as the first parameter of any resolver (resource/remote) function.
-<br/><br/>
+
 For more information on the underlying package, see the
 [GraphQL package](https://lib.ballerina.io/ballerina/graphql/latest/).
 

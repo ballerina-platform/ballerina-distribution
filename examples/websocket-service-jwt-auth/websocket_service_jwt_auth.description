@@ -7,6 +7,6 @@
 // also can be configured as the `scopeKey`.<br/>
 // In the authorization phase, the scopes of the service are compared
 // against the scope included in the JWT for at least one match between the two
-// sets.<br/><br/>
+// sets.
 // For more information on the underlying module, 
 // see the [JWT module](https://lib.ballerina.io/ballerina/jwt/latest/).

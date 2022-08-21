@@ -1,6 +1,7 @@
 # URL encode/decode operations
 
-Ballerina URL API supports encoding/decoding a URL or part of a URL.<br/><br/>
+Ballerina URL API supports encoding/decoding a URL or part of a URL.
+
 For more information on the underlying module,
 see the [URL module](https://lib.ballerina.io/ballerina/url/latest/).
 

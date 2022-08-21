@@ -6,10 +6,10 @@ service class should have the implementation of the `execute(graphql:Context con
 remote method which is provided by the interceptor service object. The custom logic can be included in this remote
 method. The interceptors should be provided using the `graphql:ServiceConfig` parameter named `interceptors` which
 accepts an array of interceptor instances.
-<br/>
+
 Interceptors follow the `onion principle` when executing. Also, the inserting order of the interceptor instances into
 the array will be the execution order of the Interceptors.
-</br>
+
 For more information on the underlying package, see the
 [`graphql` package](https://lib.ballerina.io/ballerina/graphql/latest/).
 

@@ -2,7 +2,8 @@
 
 You can use the HTTPS client to connect or interact with an HTTPS listener.
 Provide the `http:ClientSecureSocket` configurations to the client to
-initiate an HTTPS connection.<br/><br/>
+initiate an HTTPS connection.
+
 For more information on the underlying module,
 see the [HTTP module](https://lib.ballerina.io/ballerina/http/latest/).
 

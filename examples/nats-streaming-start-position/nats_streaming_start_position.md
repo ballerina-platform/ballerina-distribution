@@ -10,7 +10,8 @@ Message delivery may begin at:
    prior to the start of the current subscription.
 3. A historical offset from the current server date/time
    (e.g., the last 30 seconds).
-4. A specific message sequence number<br/><br/>
+4. A specific message sequence number
+
 For more information on the underlying module, 
 see the [STAN module](https://lib.ballerina.io/ballerinax/stan/latest).
 

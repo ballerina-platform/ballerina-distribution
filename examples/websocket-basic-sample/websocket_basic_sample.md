@@ -1,6 +1,7 @@
 # Service
 
-This explains the basic functions of a WebSocket server.<br/><br/>
+This explains the basic functions of a WebSocket server.
+
 For more information on the underlying module, 
 see the [WebSocket module](https://lib.ballerina.io/ballerina/websocket/latest/).
 
