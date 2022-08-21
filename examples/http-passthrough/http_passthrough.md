@@ -1,9 +1,8 @@
 # Passthrough
 
-//The passthrough sample exhibits the process of an HTTP client connector. The 'Echo Service' is used as a sample backend.
+The passthrough sample exhibits the process of an HTTP client connector. The 'Echo Service' is used as a sample backend.
 
-For more information on the underlying module, 
-see the [HTTP module](https://lib.ballerina.io/ballerina/http/latest/).
+For more information on the underlying module,  see the [HTTP module](https://lib.ballerina.io/ballerina/http/latest/).
 
 ::: code http_passthrough.bal :::
 

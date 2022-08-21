@@ -1,11 +1,8 @@
 # Simple RPC with headers
 
-The gRPC Server Connector exposes the gRPC service over HTTP2.
-In a simple RPC call, a client sends a request to a remote service and waits for the response.
-The headers can be passed using the context record that is generated for each Protobuf message.
+The gRPC Server Connector exposes the gRPC service over HTTP2. In a simple RPC call, a client sends a request to a remote service and waits for the response. The headers can be passed using the context record that is generated for each Protobuf message.
 
-For more information on the underlying module, 
-see the [GRPC module](https://lib.ballerina.io/ballerina/grpc/latest/).
+For more information on the underlying module, see the [GRPC module](https://lib.ballerina.io/ballerina/grpc/latest/).
 
 ::: code grpc_simple_with_headers.proto :::
 
