@@ -1,3 +1,0 @@
-The `xmldata` library provides an API to the perform conversion from XML to `Ballerina record/map<anydata>`.
-// For more information on the underlying module,
-// see the [`xmldata` module](https://docs.central.ballerina.io/ballerina/xmldata/latest/).
