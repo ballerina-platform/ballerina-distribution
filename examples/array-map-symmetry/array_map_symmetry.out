@@ -1,0 +1,5 @@
+$ bal run array_map_symmetry.bal
+foo
+1
+[1,"John",true,false]
+{"id":1,"name":"John"}
