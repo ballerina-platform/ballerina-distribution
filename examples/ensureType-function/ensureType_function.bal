@@ -1,8 +1,9 @@
 import ballerina/io;
 
 function demo(anydata v) returns float|error {
-    // `v` is cast to the float.
-    // `ensureType()` performs numeric conversion just like casting operations.
+    // `v` is cast to the `float` type by calling `ensureType()`.
+    // `ensureType()` returns an error if the cast is not possible unlike the usual cast operation,
+    // which panics.
     return v.ensureType(float);
 }
 

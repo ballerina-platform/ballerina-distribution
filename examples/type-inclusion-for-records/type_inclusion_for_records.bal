@@ -16,6 +16,8 @@ type TimeOfDay record {
 type Time record {
     *Date;
     *TimeOfDay;
+    // Overrides `hour` field in `TimeOfDay`.
+    int:Unsigned8 hour;
 };
 
 public function main() {

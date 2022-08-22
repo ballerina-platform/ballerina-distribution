@@ -1,4 +1,3 @@
 $ bal run default_values_for_record_fields.bal
-{"str":"default string"}
-{"str":"default string"}
-{"str":"default string"}
+{"company":"WS02","name":"John","department":"IT"}
+{"duration":12,"company":"WS02","name":"Anne","department":"HR"}

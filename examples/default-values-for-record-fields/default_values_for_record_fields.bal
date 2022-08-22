@@ -1,22 +1,23 @@
 import ballerina/io;
 
-type X record {
-    string str = "default string";
-};
+type Employee record {|
+    string company = "WS02";
+    string name;
+    string department;
+|};
 
-type Y record {
-    *X;
-};
+type ContractEmployee record {|
+    *Employee;
+    int duration;
+|};
 
 public function main() returns error? {
-    X x1 = {};
-    io:println(x1);
+    // Calling the `value:cloneWithType()` function with `Employee` will make use of default values
+    // in `Employee`.
+    json j = {name: "John", department: "IT"};
+    io:println(check j.cloneWithType(Employee));
 
-    // Calling the `value:cloneWithType()` function with `X` will make use of default values in `X`.
-    json x2 = check x1.cloneWithType();
-    io:println(x2);
-
-    // `*X` copies the default values.
-    Y y1 = {};
-    io:println(y1);
+    // `*Employee` copies the default values.
+    ContractEmployee emp = {name: "Anne", department: "HR", duration: 12};
+    io:println(emp);
 }
