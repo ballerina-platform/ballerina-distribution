@@ -1,2 +1,2 @@
-description: This BBE demonstrates default values for function parameters in Ballerina.
-keywords: ballerina, ballerina by example, bbe, default value
+description: This BBE demonstrates how to provide and use the default value of function parameters in Ballerina.
+keywords: ballerina, ballerina by example, bbe, default value, functions
