@@ -6,6 +6,10 @@ The type of the listener determines required type of remote methods.
 
 ::: code service_declaration.bal :::
 
-::: out service_declaration.client.out :::
+Run the service using the `bal run` command.
 
 ::: out service_declaration.server.out :::
+
+Use the following Netcat (or nc) command to send packets to the service.
+
+::: out service_declaration.client.out :::

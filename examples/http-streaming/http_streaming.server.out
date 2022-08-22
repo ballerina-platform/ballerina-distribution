@@ -1,3 +1,1 @@
-# In the directory, which contains the `.bal` file, create a directory named `files`,
-# and add a PDF file named `BallerinaLang.pdf` in it.
-bal run http_streaming.bal
+$ bal run http_streaming.bal

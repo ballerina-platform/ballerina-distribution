@@ -11,4 +11,8 @@ For more information on the underlying module,  see the [STAN module](https://li
 
 ::: code queue-group.bal :::
 
+`queue-group.bal` contains three services belonging to the same queue group.
+
+When several messages are published, it can be noticed that each message is received by only one queue group member.
+
 ::: out queue-group.out :::

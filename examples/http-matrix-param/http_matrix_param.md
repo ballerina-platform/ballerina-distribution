@@ -6,6 +6,10 @@ For more information on the underlying module,  see the [HTTP module](https://li
 
 ::: code http_matrix_param.bal :::
 
-::: out http_matrix_param.client.out :::
+Run the service as follows.
 
 ::: out http_matrix_param.server.out :::
+
+Invoke the service by executing the following cURL command in a new terminal.
+
+::: out http_matrix_param.client.out :::

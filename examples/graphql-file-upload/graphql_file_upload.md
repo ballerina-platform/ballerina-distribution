@@ -6,6 +6,10 @@ For more information on the underlying package, see the [GraphQL package](https:
 
 ::: code graphql_file_upload.bal :::
 
-::: out graphql_file_upload.client.out :::
+Run the service by executing the following command.
 
 ::: out graphql_file_upload.server.out :::
+
+Invoke the service as follows.
+
+::: out graphql_file_upload.client.out :::

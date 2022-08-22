@@ -6,6 +6,10 @@ For more information on the underlying module, see the [HTTP module](https://lib
 
 ::: code http_path_param.bal :::
 
-::: out http_path_param.client.out :::
+Run the service as follows.
 
 ::: out http_path_param.server.out :::
+
+Invoke the service by executing the following cURL command in a new terminal.
+
+::: out http_path_param.client.out :::

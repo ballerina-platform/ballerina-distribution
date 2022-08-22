@@ -4,4 +4,6 @@
 
 ::: code readonly_and_isolated.bal :::
 
+Executing the above code gives the output below.
+
 ::: out readonly_and_isolated.out :::

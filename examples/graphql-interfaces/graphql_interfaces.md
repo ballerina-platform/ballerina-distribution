@@ -8,6 +8,10 @@ For more information on the underlying package, see the [GraphQL package](https:
 
 ::: code graphql_interfaces.bal :::
 
-::: out graphql_interfaces.client.out :::
+Run the service by executing the following command.
 
 ::: out graphql_interfaces.server.out :::
+
+Invoke the service as follows.
+
+::: out graphql_interfaces.client.out :::

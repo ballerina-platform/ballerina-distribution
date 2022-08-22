@@ -6,6 +6,10 @@ For more information on the underlying module,  see the [HTTP module](https://li
 
 ::: code http_default_resource.bal :::
 
-::: out http_default_resource.client.out :::
+Run the service as follows.
 
 ::: out http_default_resource.server.out :::
+
+Invoke the service by executing the following cURL command in a new terminal.
+
+::: out http_default_resource.client.out :::

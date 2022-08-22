@@ -6,4 +6,6 @@ For more information on the underlying module, see the [Time module](https://lib
 
 ::: code time_formatting_and_parsing.bal :::
 
+To run this sample, use the `bal run` command.
+
 ::: out time_formatting_and_parsing.out :::

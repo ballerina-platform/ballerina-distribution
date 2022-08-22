@@ -6,6 +6,11 @@ For more information on the underlying module, see the [HTTP module](https://lib
 
 ::: code http_access_logs.bal :::
 
-::: out http_access_logs.client.out :::
+Run the service as follows.
 
 ::: out http_access_logs.server.out :::
+
+Invoke the service by executing the following cURL command in a new terminal.
+
+::: out http_access_logs.client.out :::
+

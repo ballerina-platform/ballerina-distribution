@@ -6,4 +6,6 @@ For more information on the underlying module, see the [GraphQL module](https://
 
 ::: code graphql_service_ssl_tls.bal :::
 
+Run the service as follows.
+
 ::: out graphql_service_ssl_tls.server.out :::

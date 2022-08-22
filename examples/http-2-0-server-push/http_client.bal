@@ -13,11 +13,10 @@ public function main() {
     // [Submit a request](https://lib.ballerina.io/ballerina/http/latest/clients/Client#submit).
     var submissionResult = clientEP->submit("GET", "/http2Service", serviceReq);
 
-    if (submissionResult is http:HttpFuture) {
+    if submissionResult is http:HttpFuture {
         httpFuture = submissionResult;
     } else {
-        log:printError("Error occurred while submitting a request",
-            'error = submissionResult);
+        log:printError("Error occurred while submitting a request", 'error = submissionResult);
         return;
     }
 
@@ -26,12 +25,12 @@ public function main() {
     // [Check if promises exists](https://lib.ballerina.io/ballerina/http/latest/clients/Client#hasPromise).
     boolean hasPromise = clientEP->hasPromise(httpFuture);
 
-    while (hasPromise) {
+    while hasPromise {
         http:PushPromise pushPromise = new;
         // [Get the next promise](https://lib.ballerina.io/ballerina/http/latest/clients/Client#getNextPromise).
         var nextPromiseResult = clientEP->getNextPromise(httpFuture);
 
-        if (nextPromiseResult is http:PushPromise) {
+        if nextPromiseResult is http:PushPromise {
             pushPromise = nextPromiseResult;
         } else {
             log:printError("Error occurred while fetching a push promise",
@@ -40,7 +39,7 @@ public function main() {
         }
         log:printInfo("Received a promise for " + pushPromise.path);
 
-        if (pushPromise.path == "/resource2") {
+        if pushPromise.path == "/resource2" {
             // The client is not interested in receiving `/resource2`.
             // Therefore, [reject the promise](https://lib.ballerina.io/ballerina/http/latest/clients/Client#rejectPromise).
             clientEP->rejectPromise(pushPromise);
@@ -59,7 +58,7 @@ public function main() {
     // [Get the requested resource](https://lib.ballerina.io/ballerina/http/latest/clients/Client#getResponse).
     var result = clientEP->getResponse(httpFuture);
 
-    if (result is http:Response) {
+    if result is http:Response {
         response = result;
     } else {
         log:printError("Error occurred while fetching response",
@@ -68,11 +67,10 @@ public function main() {
     }
 
     var responsePayload = response.getJsonPayload();
-    if (responsePayload is json) {
+    if responsePayload is json {
         log:printInfo("Response : " + responsePayload.toJsonString());
     } else {
-        log:printError("Expected response payload not received",
-          'error = responsePayload);
+        log:printError("Expected response payload not received", 'error = responsePayload);
     }
 
     // Fetch required promise responses.
@@ -80,7 +78,7 @@ public function main() {
         http:PushPromise promise = <http:PushPromise>p;
         http:Response promisedResponse = new;
         var promisedResponseResult = clientEP->getPromisedResponse(promise);
-        if (promisedResponseResult is http:Response) {
+        if promisedResponseResult is http:Response {
             promisedResponse = promisedResponseResult;
         } else {
             log:printError("Error occurred while fetching promised response",
@@ -88,9 +86,8 @@ public function main() {
             return;
         }
         var promisedPayload = promisedResponse.getJsonPayload();
-        if (promisedPayload is json) {
-            log:printInfo("Promised resource : " +
-                           promisedPayload.toJsonString());
+        if promisedPayload is json {
+            log:printInfo("Promised resource : " + promisedPayload.toJsonString());
         } else {
             log:printError("Expected promised response payload not received",
                 'error = promisedPayload);

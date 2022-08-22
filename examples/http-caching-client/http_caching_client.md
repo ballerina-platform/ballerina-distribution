@@ -6,6 +6,10 @@ For more information on the underlying module, see the [HTTP module](https://lib
 
 ::: code http_caching_client.bal :::
 
-::: out http_caching_client.client.out :::
+Run the service by executing the following command.
 
 ::: out http_caching_client.server.out :::
+
+Invoke the service as follows.
+
+::: out http_caching_client.client.out :::

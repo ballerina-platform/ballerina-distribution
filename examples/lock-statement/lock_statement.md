@@ -4,4 +4,6 @@ The `lock` statement allows mutable state to be safely accessed from multiple st
 
 ::: code lock_statement.bal :::
 
+Executing the above code gives the output below.
+
 ::: out lock_statement.out :::

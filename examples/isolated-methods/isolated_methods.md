@@ -7,4 +7,6 @@ Object methods can be `isolated`. An `isolated` method is same as an `isolated` 
 
 ::: code isolated_methods.bal :::
 
+Executing the above code gives the output below.
+
 ::: out isolated_methods.out :::

@@ -13,4 +13,6 @@ For more information on the underlying module, see the [GRPC module](https://lib
 
 ::: code proto_to_ballerina.proto :::
 
+Execute the below commands to generate the corresponding files.
+
 ::: out proto_to_ballerina.out :::

@@ -10,4 +10,6 @@ For more information on the underlying module,  see the [JWT module](https://lib
 
 ::: code graphql_service_jwt_auth.bal :::
 
+Run the service as follows.
+
 ::: out graphql_service_jwt_auth.server.out :::

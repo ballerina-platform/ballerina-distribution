@@ -6,6 +6,11 @@ In the same way `http:Client` can be configured as well. For more information on
 
 ::: code http_compression.bal :::
 
-::: out http_compression.client.out :::
+Run the service as follows.
 
 ::: out http_compression.server.out :::
+
+Invoke the service by executing the following cURL command in a new terminal.
+Here, the `Accept-Encoding` header is not specified.
+
+::: out http_compression.client.out :::

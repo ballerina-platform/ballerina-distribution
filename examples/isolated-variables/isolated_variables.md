@@ -10,4 +10,6 @@ The `isolated` functions are allowed to access `isolated` module-level variables
 
 ::: code isolated_variables.bal :::
 
+Executing the above code gives the output below.
+
 ::: out isolated_variables.out :::

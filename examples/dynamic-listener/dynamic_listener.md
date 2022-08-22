@@ -4,6 +4,10 @@ Dynamic listeners allow registering/deregistering a module listener dynamically.
 
 ::: code dynamic_listener.bal :::
 
-::: out dynamic_listener.client.out :::
+Run the service as follows.
 
 ::: out dynamic_listener.server.out :::
+
+Invoke the service by executing the following cURL command in a new terminal.
+
+::: out dynamic_listener.client.out :::

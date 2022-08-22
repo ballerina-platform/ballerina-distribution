@@ -9,3 +9,9 @@ For a sample configuration and more information on the underlying module, see th
 ::: code mysql_call_stored_procedures.bal :::
 
 ::: out mysql_call_stored_procedures.out :::
+
+The following util files will initialize the test database before running the BBE and clean it up afterward.
+
+::: code initialize.bal :::
+
+::: code cleanup.bal :::

@@ -7,6 +7,11 @@ For more information on the underlying module, see the [HTTP module](https://lib
 
 ::: code http_100_continue.bal :::
 
-::: out http_100_continue.client.out :::
+Run the service as follows.
 
 ::: out http_100_continue.server.out :::
+
+Invoke the service by executing the following cURL commands in a new terminal.
+
+::: out http_100_continue.client.out :::
+

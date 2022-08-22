@@ -6,4 +6,6 @@ For more information on the underlying module, see the [FTP module](https://lib.
 
 ::: code sftp_client.bal :::
 
+File content of the received file would get printed. The newly-added file will appear in the SFTP server.
+
 ::: out sftp_client.out :::

@@ -12,4 +12,6 @@ Constraints are enforced at compile-time. `isolated` is a part of the function t
 
 ::: code isolated_functions.bal :::
 
+By executing the above code, it can be seen that the value of `v` is changed to 100 by calling `set` function.
+
 ::: out isolated_functions.out :::

@@ -6,6 +6,10 @@ For more information on the underlying package, see the [GraphQL package](https:
 
 ::: code graphql_input_types.bal :::
 
-::: out graphql_input_types.client.out :::
+Run the service by executing the following command.
 
 ::: out graphql_input_types.server.out :::
+
+Invoke the service as follows.
+
+::: out graphql_input_types.client.out :::

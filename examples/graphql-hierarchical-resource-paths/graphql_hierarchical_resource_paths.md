@@ -8,6 +8,10 @@ This example shows a GraphQL endpoint, which has a `profile` field of type `Pers
 
 ::: code graphql_hierarchical_resource_paths.bal :::
 
-::: out graphql_hierarchical_resource_paths.client.out :::
+Run the service by executing the following command.
 
 ::: out graphql_hierarchical_resource_paths.server.out :::
+
+Invoke the service as follows.
+
+::: out graphql_hierarchical_resource_paths.client.out :::

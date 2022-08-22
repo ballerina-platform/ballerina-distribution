@@ -6,6 +6,10 @@ For more information on the underlying package, see the [GraphQL package](https:
 
 ::: code graphql_mutations.bal :::
 
-::: out graphql_mutations.client.out :::
+Run the service by executing the following command.
 
 ::: out graphql_mutations.server.out :::
+
+Invoke the service as follows.
+
+::: out graphql_mutations.client.out :::

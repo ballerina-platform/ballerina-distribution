@@ -6,6 +6,10 @@ For more information on the underlying package, see the [GraphQL package](https:
 
 ::: code graphql_returning_service_objects.bal :::
 
-::: out graphql_returning_service_objects.client.out :::
+Run the service by executing the following command.
 
 ::: out graphql_returning_service_objects.server.out :::
+
+Invoke the service as follows.
+
+::: out graphql_returning_service_objects.client.out :::

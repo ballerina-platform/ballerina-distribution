@@ -9,3 +9,9 @@ For a sample configuration and more information on the underlying module, see th
 ::: code jdbc_batch_execute_operation.bal :::
 
 ::: out jdbc_batch_execute_operation.out :::
+
+The following util files will initialize the test database before running the BBE and clean it up afterward.
+
+::: code initialize.bal :::
+
+::: code cleanup.bal :::

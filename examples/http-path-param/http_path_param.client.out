@@ -1,6 +1,5 @@
-# Run the cURL command below to invoke the service.
-curl "http://localhost:9090/company/empId/23"
+$ curl "http://localhost:9090/company/empId/23"
 {"empId":23}
 
-curl "http://localhost:9090/company/empName/Adele/Ferguson"
+$ curl "http://localhost:9090/company/empName/Adele/Ferguson"
 {"firstName":"Adele", "lastName":"Ferguson"}

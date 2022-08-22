@@ -9,6 +9,10 @@ For more information on the underlying module, see the [HTTP module](https://lib
 
 ::: code http_client_data_binding.bal :::
 
-::: out http_client_data_binding.client.out :::
+Run the service by executing the following command.
 
 ::: out http_client_data_binding.server.out :::
+
+Invoke the service as follows.
+
+::: out http_client_data_binding.client.out :::

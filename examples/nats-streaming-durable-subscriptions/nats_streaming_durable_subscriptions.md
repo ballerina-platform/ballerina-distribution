@@ -10,4 +10,8 @@ For more information on the underlying module, see the [STAN module](https://lib
 
 ::: code subscriber.bal :::
 
+Stop the subscriber and publish some messages while it is stopped. Run the subscriber again.
+
+All messages which had been published while the subscriber wasn't running should be received.
+
 ::: out subscriber.out :::

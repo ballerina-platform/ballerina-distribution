@@ -13,4 +13,10 @@ For a sample configuration and more information on the underlying module, see th
 
 ::: code raw_templates.bal :::
 
+Add the relevant database driver JAR details to the `Ballerina.toml` file.
+
+::: code Ballerina.toml :::
+
+Build and run the project using the `bal run` command.
+
 ::: out raw_templates.out :::

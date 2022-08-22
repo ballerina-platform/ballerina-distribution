@@ -6,6 +6,10 @@ For more information on the underlying module, see the [HTTP module](https://lib
 
 ::: code http_service_ssl_tls.bal :::
 
-::: out http_service_ssl_tls.client.out :::
+Run the service by executing the following command.
 
 ::: out http_service_ssl_tls.server.out :::
+
+Invoke the service as follows.
+
+::: out http_service_ssl_tls.client.out :::

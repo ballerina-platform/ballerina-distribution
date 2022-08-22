@@ -6,6 +6,11 @@ For more information on the underlying module, see the [HTTP module](https://lib
 
 ::: code http_redirects.bal :::
 
-::: out http_redirects.client.out :::
+Run the service as follows.
 
 ::: out http_redirects.server.out :::
+
+Invoke the service by executing the following cURL command in a new terminal.
+
+::: out http_redirects.client.out :::
+

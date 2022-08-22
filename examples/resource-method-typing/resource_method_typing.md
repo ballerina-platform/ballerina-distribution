@@ -6,6 +6,10 @@ Can generate API description (e.g. OpenAPI) from Ballerina  service declaration.
 
 ::: code resource_method_typing.bal :::
 
-::: out resource_method_typing.client.out :::
+Run the service using the `bal run` command.
 
 ::: out resource_method_typing.server.out :::
+
+Run this cURL command to invoke the resource.
+
+::: out resource_method_typing.client.out :::

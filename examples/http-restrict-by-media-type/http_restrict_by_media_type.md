@@ -6,6 +6,10 @@ For more information on the underlying module, see the [HTTP module](https://lib
 
 ::: code http_restrict_by_media_type.bal :::
 
-::: out http_restrict_by_media_type.client.out :::
+Run the service as follows.
 
 ::: out http_restrict_by_media_type.server.out :::
+
+Invoke the service by executing the following cURL command in a new terminal.
+
+::: out http_restrict_by_media_type.client.out :::

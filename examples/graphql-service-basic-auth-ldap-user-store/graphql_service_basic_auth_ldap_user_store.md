@@ -10,4 +10,6 @@ For more information on the underlying module, see the [Auth module](https://lib
 
 ::: code graphql_service_basic_auth_ldap_user_store.bal :::
 
+Run the service as follows.
+
 ::: out graphql_service_basic_auth_ldap_user_store.server.out :::
