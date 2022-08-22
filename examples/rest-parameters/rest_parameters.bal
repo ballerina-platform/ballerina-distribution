@@ -6,6 +6,7 @@ function foo(int n, string... s) {
     io:println(s[1]);
     io:println(s[2]);
     io:println(s);
+    io:println(s is string[]);
 }
 
 public function main() {
