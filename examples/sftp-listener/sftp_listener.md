@@ -6,4 +6,6 @@ For more information on the underlying module,  see the [FTP module](https://lib
 
 ::: code sftp_listener.bal :::
 
+Paths of the newly-added and newly-deleted files/directories during the latest polling will be printed for each of the polled events.
+
 ::: out sftp_listener.out :::

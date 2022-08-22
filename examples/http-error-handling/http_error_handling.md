@@ -6,6 +6,10 @@ For more information, see the [HTTP module](https://lib.ballerina.io/ballerina/h
 
 ::: code http_error_handling.bal :::
 
-::: out http_error_handling.client.out :::
+Run the service as follows.
 
 ::: out http_error_handling.server.out :::
+
+Invoke the service by executing the following cURL command in a new terminal.
+
+::: out http_error_handling.client.out :::

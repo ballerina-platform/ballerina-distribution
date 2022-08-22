@@ -6,8 +6,14 @@ For more information on the underlying module, see the [HTTP module](https://lib
 
 ::: code cookie_server.bal :::
 
+Run the service as follows.
+
 ::: out cookie_server.out :::
 
+Invoke the service by executing the following main program.
+
 ::: code http_client.bal :::
+
+Run the main program as follows.
 
 ::: out http_client.out :::

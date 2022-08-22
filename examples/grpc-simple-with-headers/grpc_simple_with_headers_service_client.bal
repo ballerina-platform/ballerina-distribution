@@ -4,9 +4,9 @@ import ballerina/io;
 import ballerina/protobuf.types.wrappers;
 
 // Creates a gRPC client to interact with the remote server.
-HelloWorldClient ep = check new("http://localhost:9090");
+HelloWorldClient ep = check new ("http://localhost:9090");
 
-public function main () returns error? {
+public function main() returns error? {
     // Creates the request message with the header value.
     wrappers:ContextString requestMessage =
     {content: "WSO2", headers: {client_header_key: "0987654321"}};

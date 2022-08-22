@@ -10,7 +10,6 @@ listener nats:Listener securedEP = new(nats:DEFAULT_URL,
          username: "alice",
          password: "alice@123"
     },
-
     // To secure the client connection using TLS/SSL, the client needs to be configured with
     // a certificate file of the server.
     // The [`nats:SecureSocket`](https://lib.ballerina.io/ballerinax/nats/latest/records/SecureSocket)
@@ -20,14 +19,10 @@ listener nats:Listener securedEP = new(nats:DEFAULT_URL,
     }
 );
 
-// Binds the consumer to listen to the messages published
-// to the 'security.demo' subject.
+// Binds the consumer to listen to the messages published to the 'security.demo' subject.
 service "security.demo" on securedEP {
-
     remote function onMessage(nats:Message message) returns error? {
-        string|error messageContent = string:fromBytes(message.content);
-        if messageContent is string {
-            log:printInfo("Received message: " + messageContent);
-        }
+        string messageContent = check string:fromBytes(message.content);
+        log:printInfo("Received message: " + messageContent);
     }
 }

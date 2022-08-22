@@ -6,4 +6,6 @@ For more information on the underlying module, see the [IO module](https://lib.b
 
 ::: code io_xml.bal :::
 
+To run this sample, use the `bal run` command.
+
 ::: out io_xml.out :::

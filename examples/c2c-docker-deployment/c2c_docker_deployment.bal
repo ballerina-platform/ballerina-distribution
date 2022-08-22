@@ -5,6 +5,6 @@ listener http:Listener helloEP = new(9090);
 
 service http:Service /helloWorld on helloEP {
     resource function get sayHello() returns string {
-        return "Hello, World from service helloWorld ! \n";
+        return "Hello from Docker!";
     }
 }

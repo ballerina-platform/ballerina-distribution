@@ -8,4 +8,6 @@ For more information on the underlying module, see the [OAuth2 module](https://l
 
 ::: code http_client_oauth2_client_credentials_grant_type.bal :::
 
+Run the client program by executing the following command.
+
 ::: out http_client_oauth2_client_credentials_grant_type.out :::

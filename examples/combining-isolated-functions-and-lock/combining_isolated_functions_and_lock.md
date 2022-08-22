@@ -10,4 +10,6 @@ An expression is an `isolated` expression if it follows rules that guarantee tha
 
 ::: code combining_isolated_functions_and_lock.bal :::
 
+Executing the above code changes the value of `V` to 200 as shown below.
+
 ::: out combining_isolated_functions_and_lock.out :::

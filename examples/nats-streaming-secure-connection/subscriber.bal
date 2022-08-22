@@ -11,7 +11,6 @@ listener stan:Listener securedEP = new(stan:DEFAULT_URL,
          username: "alice",
          password: "alice@123"
     },
-
     // To secure the client connection using TLS/SSL, the client needs to be configured with
     // a certificate file of the server.
     // The [`stan:SecureSocket`](https://lib.ballerina.io/ballerinax/stan/latest/records/SecureSocket)
@@ -26,11 +25,9 @@ listener stan:Listener securedEP = new(stan:DEFAULT_URL,
     subject: "security.demo"
 }
 service stan:Service on securedEP {
-    remote function onMessage(stan:Message message) {
+    remote function onMessage(stan:Message message) returns error? {
         // Prints the incoming message in the console.
-        string|error messageData = string:fromBytes(message.content);
-        if messageData is string {
-            log:printInfo("Received message: " + messageData);
-        }
+        string messageData = check string:fromBytes(message.content);
+        log:printInfo("Received message: " + messageData);
     }
 }

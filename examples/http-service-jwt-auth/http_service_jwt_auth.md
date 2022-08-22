@@ -10,4 +10,6 @@ For more information on the underlying module, see the [JWT module](https://lib.
 
 ::: code http_service_jwt_auth.bal :::
 
+Run the service by executing the following command.
+
 ::: out http_service_jwt_auth.server.out :::

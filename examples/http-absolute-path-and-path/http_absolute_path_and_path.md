@@ -6,6 +6,10 @@ For more information on the underlying module, see the [HTTP module](https://lib
 
 ::: code http_absolute_path_and_path.bal :::
 
-::: out http_absolute_path_and_path.client.out :::
+Run the service as follows.
 
 ::: out http_absolute_path_and_path.server.out :::
+
+Invoke the service by executing the following cURL command in a new terminal.
+
+::: out http_absolute_path_and_path.client.out :::

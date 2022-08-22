@@ -6,4 +6,6 @@ For more information on the underlying module,  see the [Email module](https://l
 
 ::: code receive_email_using_client.bal :::
 
+Run the sample code by executing the following command.
+
 ::: out receive_email_using_client.out :::

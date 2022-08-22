@@ -12,4 +12,6 @@ Isolated root concept treats `isolated` objects as opaque. Isolated functions ca
 
 ::: code isolated_objects.bal :::
 
+Executing the above code gives the output below.
+
 ::: out isolated_objects.out :::

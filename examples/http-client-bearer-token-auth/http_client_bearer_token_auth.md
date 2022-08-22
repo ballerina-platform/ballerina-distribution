@@ -6,4 +6,6 @@ The client is enriched with the `Authorization: Bearer <token>` header by passin
 
 ::: code http_client_bearer_token_auth.bal :::
 
+Run the client program by executing the following command.
+
 ::: out http_client_bearer_token_auth.out :::

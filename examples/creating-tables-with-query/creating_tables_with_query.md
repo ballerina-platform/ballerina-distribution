@@ -1,6 +1,6 @@
 # Creating tables with query
 
-Query expressions can create tables. The key of the created `table` can be specified explicitly.
+Query expressions can create tables. The key of the created table can be specified explicitly.
 
 ::: code creating_tables_with_query.bal :::
 

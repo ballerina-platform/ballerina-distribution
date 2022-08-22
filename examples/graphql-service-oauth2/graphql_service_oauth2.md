@@ -10,4 +10,6 @@ For more information on the underlying module, see the [OAuth2 module](https://l
 
 ::: code graphql_service_oauth2.bal :::
 
+Run the service as follows.
+
 ::: out graphql_service_oauth2.server.out :::

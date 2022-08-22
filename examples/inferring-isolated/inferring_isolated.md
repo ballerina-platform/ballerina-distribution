@@ -9,4 +9,6 @@ Compiler can inform developer where missing locks are preventing a `service` obj
 
 ::: code inferring_isolated.bal :::
 
+Executing the above code gives the output below.
+
 ::: out inferring_isolated.out :::

@@ -7,6 +7,10 @@ Resources are motivated by HTTP, but are general enough also to work for GraphQL
 
 ::: code resource_methods.bal :::
 
-::: out resource_methods.client.out :::
+Run the service using the `bal run` command.
 
 ::: out resource_methods.server.out :::
+
+Run this cURL command to invoke the resource.
+
+::: out resource_methods.client.out :::

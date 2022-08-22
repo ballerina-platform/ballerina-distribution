@@ -6,4 +6,6 @@ For more information on the underlying module, see the [HTTP module](https://lib
 
 ::: code http_client_endpoint.bal :::
 
+Run the client program by executing the following command.
+
 ::: out http_client_endpoint.out :::

@@ -10,8 +10,7 @@ service /bank on new http:Listener(9090) {
     // The resource returns the json type values and the `Content-type` header is set according to the `mediaType`
     // field of [@http:Payload](https://lib.ballerina.io/ballerina/http/latest/records/HttpPayload)
     // annotation.
-    resource function get branch() returns
-            @http:Payload {mediaType:"application/json+id"} json {
+    resource function get branch() returns @http:Payload {mediaType:"application/json+id"} json {
         return { branch : ["Colombo, Srilanka"]};
     }
 
@@ -21,7 +20,7 @@ service /bank on new http:Listener(9090) {
             returns http:Ok|http:InternalServerError {
         if 'type == "open" {
 
-            // Creates response with 200 status code and set body as response payload.
+            // Create a response with the `200` status code and set the body as the response payload.
             http:Ok ok = {body: "Bank is open"};
             return ok;
         } else {

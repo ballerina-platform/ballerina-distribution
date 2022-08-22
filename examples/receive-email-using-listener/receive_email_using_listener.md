@@ -6,4 +6,6 @@ For more information on the underlying module, see the [Email module](https://li
 
 ::: code receive_email_using_listener.bal :::
 
+Run the email service by executing the following command.
+
 ::: out receive_email_using_listener.out :::

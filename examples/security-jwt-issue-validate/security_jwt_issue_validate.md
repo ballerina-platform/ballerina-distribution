@@ -6,4 +6,6 @@ For more information on the underlying module, see the [JWT module](https://lib.
 
 ::: code security_jwt_issue_validate.bal :::
 
+Run the program by executing following command.
+
 ::: out security_jwt_issue_validate.out :::

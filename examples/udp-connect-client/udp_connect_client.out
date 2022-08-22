@@ -1,4 +1,4 @@
-bal run udp_connect_client.bal
+$ bal run udp_connect_client.bal
 
 # This will print the output below upon a successful write.
 Data was sent to the remote host.

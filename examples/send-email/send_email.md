@@ -6,4 +6,6 @@ For more information on the underlying module, see the [Email module](https://li
 
 ::: code send_email.bal :::
 
+Run the SMTP client by executing the following command.
+
 ::: out send_email.out :::

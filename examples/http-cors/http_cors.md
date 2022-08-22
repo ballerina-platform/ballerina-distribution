@@ -6,6 +6,11 @@ For more information on the underlying module, see the [HTTP module](https://lib
 
 ::: code http_cors.bal :::
 
-::: out http_cors.client.out :::
+Run the service as follows.
 
 ::: out http_cors.server.out :::
+
+Invoke the service by executing the following cURL commands in a new terminal.
+
+::: out http_cors.client.out :::
+

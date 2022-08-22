@@ -8,6 +8,10 @@ This example shows a GraphQL endpoint, which has a field `profile` of type `Pers
 
 ::: code graphql_returning_record_values.bal :::
 
-::: out graphql_returning_record_values.client.out :::
+Run the service by executing the following command.
 
 ::: out graphql_returning_record_values.server.out :::
+
+Invoke the service as follows.
+
+::: out graphql_returning_record_values.client.out :::

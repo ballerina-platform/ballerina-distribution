@@ -6,6 +6,10 @@ For more information on the underlying module, see the [HTTP module](https://lib
 
 ::: code http_failover.bal :::
 
-::: out http_failover.client.out :::
+Run the service as follows.
 
 ::: out http_failover.server.out :::
+
+Invoke the service by executing the following cURL command in a new terminal.
+
+::: out http_failover.client.out :::

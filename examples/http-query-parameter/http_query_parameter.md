@@ -6,6 +6,10 @@ For more information on the underlying module, see the [HTTP module](https://lib
 
 ::: code http_query_parameter.bal :::
 
-::: out http_query_parameter.client.out :::
+Run the service as follows.
 
 ::: out http_query_parameter.server.out :::
+
+Invoke the service by executing the following cURL command in a new terminal.
+
+::: out http_query_parameter.client.out :::

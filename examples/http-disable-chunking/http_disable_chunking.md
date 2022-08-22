@@ -8,6 +8,10 @@ For more information on the underlying module, see the [HTTP module](https://lib
 
 ::: code http_disable_chunking.bal :::
 
-::: out http_disable_chunking.client.out :::
+Run the service as follows.
 
 ::: out http_disable_chunking.server.out :::
+
+Invoke the service by executing the following cURL command in a new terminal.
+
+::: out http_disable_chunking.client.out :::

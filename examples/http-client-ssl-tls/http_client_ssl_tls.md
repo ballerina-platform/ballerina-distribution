@@ -6,4 +6,6 @@ For more information on the underlying module, see the [HTTP module](https://lib
 
 ::: code http_client_ssl_tls.bal :::
 
+Run the secure client program by executing the following command.
+
 ::: out http_client_ssl_tls.out :::

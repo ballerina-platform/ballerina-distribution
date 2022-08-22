@@ -6,6 +6,10 @@ For more information on the underlying module, see the [HTTP module](https://lib
 
 ::: code http_resource_returns.bal :::
 
-::: out http_resource_returns.client.out :::
+Run the service as follows.
 
 ::: out http_resource_returns.server.out :::
+
+Invoke the service by executing the following cURL command in a new terminal.
+
+::: out http_resource_returns.client.out :::

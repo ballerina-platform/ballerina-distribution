@@ -8,10 +8,10 @@ Ballerina uses the concept of scopes for authorization. A resource declared in a
 
 For more information on the underlying module, see the [Auth module](https://lib.ballerina.io/ballerina/auth/latest/).
 
-::: code grpc_service.proto :::
+4. As a prerequisite, ensure that the `Config.toml` file is populated correctly with the user information.
 
-::: out grpc_service.out :::
+6. Execute the commands below to build and run the 'service' package.
 
-::: code grpc_service_basic_auth_file_user_store.bal :::
+   ::: out grpc_service_basic_auth_file_user_store.server.out :::
 
-::: out grpc_service_basic_auth_file_user_store.server.out :::
+You may need to change the certificate file path and private key file path.

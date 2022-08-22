@@ -6,8 +6,12 @@ For more information on the underlying module, see the [HTTP module](https://lib
 
 ::: code http_2_0_service.bal :::
 
+Run the service by executing the following command.
+
 ::: out http_2_0_service.out :::
 
 ::: code http_client.bal :::
+
+Run the client program by executing the following command.
 
 ::: out http_client.out :::

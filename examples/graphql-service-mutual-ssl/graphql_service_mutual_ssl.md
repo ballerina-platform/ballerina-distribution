@@ -7,4 +7,6 @@ For more information on the underlying module, see the [GraphQL module](https://
 
 ::: code graphql_service_mutual_ssl.bal :::
 
+Run the service as follows.
+
 ::: out graphql_service_mutual_ssl.server.out :::

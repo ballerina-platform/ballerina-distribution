@@ -12,22 +12,22 @@ kafka:ConsumerConfiguration consumerConfigs = {
         // Provide the authentication mechanism used by the Kafka server.
         mechanism: kafka:AUTH_SASL_PLAIN,
         // Username and password should be set here in order to authenticate the consumer.
-        // For information on how to secure values instead of directly using plain text values, see [Defining Configurable Variables](https://ballerina.io/learn/user-guide/configurability/defining-configurable-variables/#securing-sensitive-data-using-configurable-variables).
+        // For information on how to secure values instead of directly using plain text values, see
+        // [Defining Configurable Variables](https://ballerina.io/learn/by-example/configurable-variables.html).
         username: "alice",
         password: "alice@123"
     },
     securityProtocol: kafka:PROTOCOL_SASL_PLAINTEXT
 };
 
-// Create a subtype of `kafka:AnydataConsumerRecord`
+// Create a subtype of `kafka:AnydataConsumerRecord`.
 public type StringConsumerRecord record {|
     *kafka:AnydataConsumerRecord;
     string value;
 |};
 
 service on new kafka:Listener(SASL_URL, consumerConfigs) {
-    remote function onConsumerRecord(StringConsumerRecord[] records)
-    returns error? {
+    remote function onConsumerRecord(StringConsumerRecord[] records) returns error? {
         check from StringConsumerRecord 'record in records
             do {
                 log:printInfo("Received message: " + 'record.value);

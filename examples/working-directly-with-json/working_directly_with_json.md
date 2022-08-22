@@ -6,4 +6,6 @@ For such operations, some of the type  checking is moved from compile time to ru
 
 ::: code working_directly_with_json.bal :::
 
+Run the example as follows.
+
 ::: out working_directly_with_json.out :::

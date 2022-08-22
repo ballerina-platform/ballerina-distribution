@@ -6,10 +6,10 @@ The client metadata is enriched with the `Authorization: Bearer <token>` header 
 
 For more information on the underlying module, see the [OAuth2 module](https://lib.ballerina.io/ballerina/oauth2/latest/).
 
-::: code grpc_client.proto :::
+4. Run the client using the command below.
 
-::: out grpc_client.out :::
+   ::: out grpc_client_oauth2_refresh_token_grant_type.out :::
 
-::: code grpc_client_oauth2_refresh_token_grant_type.bal :::
+As a prerequisite, start a sample service secured with OAuth2.
 
-::: out grpc_client_oauth2_refresh_token_grant_type.out :::
+You may need to change the trusted certificate file path.

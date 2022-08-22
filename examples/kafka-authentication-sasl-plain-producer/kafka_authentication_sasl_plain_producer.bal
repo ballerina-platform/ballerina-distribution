@@ -10,7 +10,8 @@ kafka:ProducerConfiguration producerConfig = {
         // Provide the authentication mechanism used by the Kafka server.
         mechanism: kafka:AUTH_SASL_PLAIN,
         // Username and password should be set here in order to authenticate the producer.
-        // For information on how to secure values instead of directly using plain text values, see [Defining Configurable Variables](https://ballerina.io/learn/user-guide/configurability/defining-configurable-variables/#securing-sensitive-data-using-configurable-variables).
+        // For information on how to secure values instead of directly using plain text values,
+        // see [Defining Configurable Variables](https://ballerina.io/learn/by-example/configurable-variables.html).
         username: "alice",
         password: "alice@123"
     },

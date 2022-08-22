@@ -12,4 +12,6 @@ For more information on the underlying module, see the [Auth module](https://lib
 
 ::: code http_service_basic_auth_file_user_store.bal :::
 
+Run the service by executing the following command.
+
 ::: out http_service_basic_auth_file_user_store.server.out :::

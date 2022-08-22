@@ -8,4 +8,6 @@ For more information on the underlying module, see the [WebSub module](https://l
 
 ::: code websub_webhook_sample.bal :::
 
+Run the subscriber service by executing the following command.
+
 ::: out websub_webhook_sample.out :::

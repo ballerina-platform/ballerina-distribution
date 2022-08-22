@@ -4,4 +4,6 @@ The `readonly` type consists of values that are immutable. For structural type `
 
 ::: code readonly_type.bal :::
 
+Executing the above code gives the output below.
+
 ::: out readonly_type.out :::

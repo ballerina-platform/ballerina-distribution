@@ -22,7 +22,6 @@ listener graphql:Listener securedEP = new(9090,
         },
         // Configures the preferred ciphers.
         ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
-
     }
 );
 

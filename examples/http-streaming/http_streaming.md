@@ -6,6 +6,12 @@ For more information on the underlying module, see the [HTTP module](https://lib
 
 ::: code http_streaming.bal :::
 
-::: out http_streaming.client.out :::
+Run the service as follows.
 
 ::: out http_streaming.server.out :::
+
+Invoke the service by executing the following cURL command in a new terminal.
+In the directory, which contains the `.bal` file, create a directory named `files`,
+and add a PDF file named `BallerinaLang.pdf` in it.
+
+::: out http_streaming.client.out :::

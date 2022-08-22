@@ -6,6 +6,11 @@ For more information on the underlying module, see the [Mime module](https://lib
 
 ::: code http_response_with_multiparts.bal :::
 
-::: out http_response_with_multiparts.client.out :::
+Run the service as follows.
 
 ::: out http_response_with_multiparts.server.out :::
+
+Invoke the service by executing the following cURL command in a new terminal.
+In the directory, which contains the `.bal` file, create a directory named `files`, and add an XML file named `test.xml` in it.
+
+::: out http_response_with_multiparts.client.out :::

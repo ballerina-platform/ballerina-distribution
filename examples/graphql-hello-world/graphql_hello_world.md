@@ -8,6 +8,10 @@ This example shows a simple GraphQL endpoint that has a single field in the root
 
 ::: code graphql_hello_world.bal :::
 
-::: out graphql_hello_world.client.out :::
+Run the service by executing the following command.
 
 ::: out graphql_hello_world.server.out :::
+
+Invoke the service as follows.
+
+::: out graphql_hello_world.client.out :::

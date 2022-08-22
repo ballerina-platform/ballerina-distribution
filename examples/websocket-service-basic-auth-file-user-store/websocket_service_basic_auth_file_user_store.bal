@@ -31,8 +31,7 @@ service /foo on securedEP {
 
 service class WsService {
     *websocket:Service;
-    remote function onMessage(websocket:Caller caller,
-                             string text) returns websocket:Error? {
+    remote function onMessage(websocket:Caller caller, string text) returns websocket:Error? {
         check caller->writeMessage(text);
     }
 }

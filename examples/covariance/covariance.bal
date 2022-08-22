@@ -8,5 +8,4 @@ any[] av = iv;
 public function main() {
     // A runtime error or else `iv[0]` would have the wrong type.
     av[0] = "str";
-
 }

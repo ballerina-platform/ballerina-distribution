@@ -1,7 +1,6 @@
-# To invoke the `student` resource, execute the below HTTP request.
-curl http://localhost:9090/hello/student -d '{ "Name": "John", "Grade": 12, "Marks": {"English" : "85", "IT" : "100"}}' -H "Content-Type:application/json"
+$ curl http://localhost:9090/hello/student -d '{ "Name": "John", "Grade": 12, "Marks": {"English" : "85", "IT" : "100"}}' -H "Content-Type:application/json"
 {"Name":"John"}
 
 # To invoke the `store` resource, execute the below HTTP request.
-curl http://localhost:9090/hello/store -d "<h:Store id = \"AST\" xmlns:h=\"http://www.test.com\"><h:street>Main</h:street><h:city>94</h:city></h:Store>" -H "Content-Type:application/xml"
+$ curl http://localhost:9090/hello/store -d "<h:Store id = \"AST\" xmlns:h=\"http://www.test.com\"><h:street>Main</h:street><h:city>94</h:city></h:Store>" -H "Content-Type:application/xml"
 <h:city xmlns:h="http://www.test.com">94</h:city>

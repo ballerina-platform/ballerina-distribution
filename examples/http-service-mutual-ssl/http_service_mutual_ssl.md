@@ -7,6 +7,10 @@ For more information on the underlying module, see the [HTTP module](https://lib
 
 ::: code http_service_mutual_ssl.bal :::
 
-::: out http_service_mutual_ssl.client.out :::
+Run the service by executing the following command.
 
 ::: out http_service_mutual_ssl.server.out :::
+
+Invoke the service as follows.
+
+::: out http_service_mutual_ssl.client.out :::

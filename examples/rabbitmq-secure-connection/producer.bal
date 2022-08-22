@@ -10,7 +10,6 @@ public function main() returns error? {
              username: "alice",
              password: "alice@123"
         },
-
         // To secure the client connection using TLS/SSL, the client needs to be configured with
         // a certificate file of the server.
         // The [`rabbitmq:SecureSocket`](https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/SecureSocket)
@@ -25,6 +24,5 @@ public function main() returns error? {
 
     // Publishes the message using the `rabbitmqClient` and the routing key named `Secured`.
     string message = "Hello from Ballerina";
-    check rabbitmqClient->publishMessage({ content: message.toBytes(),
-                                            routingKey: "Secured" });
+    check rabbitmqClient->publishMessage({content: message.toBytes(), routingKey: "Secured"});
 }
