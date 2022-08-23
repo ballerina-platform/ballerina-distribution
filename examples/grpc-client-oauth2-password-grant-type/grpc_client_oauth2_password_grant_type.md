@@ -4,7 +4,23 @@ A client, which is secured with OAuth2 password grant type can be used to connec
 
 The client metadata is enriched with the `Authorization: Bearer <token>` header by passing the `grpc:OAuth2PasswordGrantConfig` to the `auth` configuration of the client.
 
-For more information on the underlying module, see the [OAuth2 module](https://lib.ballerina.io/ballerina/oauth2/latest/).
+>**Info:** For more information on the underlying module, see the [`oauth2` module](https://lib.ballerina.io/ballerina/oauth2/latest/).
+
+## Generate the service definition
+
+1. Create a new Protocol Buffers definition file named `grpc_client.proto` and add the service definition to it.
+
+    ::: code grpc_client.proto :::
+
+2. Run the command below in the Ballerina tools distribution for stub generation.
+
+    ::: out grpc_client.out :::
+
+Once you run the command, the `grpc_client_pb.bal` file is generated inside the stubs directory.
+
+>**Info:** For more information on how to use the Ballerina Protocol Buffers tool, see the [Proto To Ballerina](https://ballerina.io/learn/by-example/proto-to-ballerina.html) example.
+
+## Implement and run the client
 
 1. Create a Ballerina package.
    

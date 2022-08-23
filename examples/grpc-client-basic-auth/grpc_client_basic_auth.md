@@ -4,10 +4,6 @@ A client, which is secured with Basic Auth can be used to connect to a secured s
 
 The client metadata is enriched with the `Authorization: Basic <token>` header by passing the `grpc:CredentialsConfig` for the `auth` configuration of the client.
 
-For more information on the underlying module, see the [Auth module](https://lib.ballerina.io/ballerina/auth/latest/).
-
-The client metadata is enriched with the `Authorization: Basic <token>` header by passing the `grpc:CredentialsConfig` for the `auth` configuration of the client.
-
 >**Info:** For more information on the underlying module, see the [`auth` module](https://lib.ballerina.io/ballerina/auth/latest).
 
 ## Generate the service definition

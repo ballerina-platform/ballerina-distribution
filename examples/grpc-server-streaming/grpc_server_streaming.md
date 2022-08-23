@@ -2,8 +2,6 @@
 
 The gRPC Server Connector is used to expose gRPC services over HTTP/2. In a gRPC server streaming scenario, a client sends a request to the server and gets a stream to read the messages until all the messages are read.
 
-For more information on the underlying module, see the [GRPC module](https://lib.ballerina.io/ballerina/grpc/latest/).
-
 >**Info:** For more information on the underlying module, see the [`grpc` module](https://lib.ballerina.io/ballerina/grpc/latest/).
 
 ## Generate the service definition
