@@ -1,8 +1,6 @@
 # Client - SSL/TLS
 
-You can use the gRPC client to connect or interact with a gRPC listener secured with SSL/TLS.
-Provide the `grpc:ClientSecureSocket` configurations to the client to
-initiate an HTTPS connection over HTTP/2.
+You can use the gRPC client to connect or interact with a gRPC listener secured with SSL/TLS. Provide the `grpc:ClientSecureSocket` configurations to the client to initiate an HTTPS connection over HTTP/2.
 
 >**Info:** For more information on the underlying module, see the [`grpc` module](https://lib.ballerina.io/ballerina/grpc/latest/).
 

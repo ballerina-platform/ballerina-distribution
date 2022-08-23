@@ -2,8 +2,7 @@
 
 A client, which is secured with OAuth2 client credentials grant type can be used to connect to a secured service.
 
-The client metadata is enriched with the `Authorization: Bearer <token>` header by passing the `grpc:OAuth2ClientCredentialsGrantConfig` for the
-`auth` configuration of the client.
+The client metadata is enriched with the `Authorization: Bearer <token>` header by passing the `grpc:OAuth2ClientCredentialsGrantConfig` for the `auth` configuration of the client.
 
 >**Info:** For more information on the underlying module, see the [`oauth2` module](https://lib.ballerina.io/ballerina/oauth2/latest).
 

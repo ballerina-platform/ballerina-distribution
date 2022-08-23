@@ -2,8 +2,7 @@
 
 A client, which is secured with Bearer token auth can be used to connect to a secured service.
 
-The client metadata is enriched with the `Authorization: Bearer <token>`
-header by passing the `grpc:BearerTokenConfig` for the `auth` configuration of the client.
+The client metadata is enriched with the `Authorization: Bearer <token>` header by passing the `grpc:BearerTokenConfig` for the `auth` configuration of the client.
 
 ## Generate the service definition
 
