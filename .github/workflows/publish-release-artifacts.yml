@@ -40,7 +40,7 @@ jobs:
           echo LONG_VERSION=$LONG_VERSION >> $GITHUB_ENV
           echo DISPLAY_VERSION=$DISPLAY_VERSION >> $GITHUB_ENV
           echo GIT_TAG=$TAGGED_VERSION >> $GITHUB_ENV
-          echo "::set-output name=version::$RELEASE_VERSION"
+          echo "::set-output name=version::$VERSION"
           echo "::set-output name=taggedVersion::$TAGGED_VERSION"
 
       - name: Download artifacts
