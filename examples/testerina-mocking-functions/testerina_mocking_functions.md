@@ -4,7 +4,7 @@ Mock functions allow you to hide the real function implementation and engage you
 
 Function mocks can be stubbed with return values or with another user-defined function, which has the same signature as the original function.
 
-For more information, see [Testing Ballerina Code](https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/) and the [Test Module](https://lib.ballerina.io/ballerina/test/latest/).
+For more information, see [Testing Ballerina Code](https://ballerina.io/learn/test-ballerina-code/mocking/#mock-functions) and the [Test Module](https://lib.ballerina.io/ballerina/test/latest/).
 
 ::: code testerina_mocking_functions_main.bal :::
 

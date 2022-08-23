@@ -4,7 +4,7 @@ The Ballerina Test framework provides in-built support for data-driven tests. Yo
 
 The test execution will iterate the same test function over the provided dataset.
 
-For more information, see [Testing Ballerina Code](https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/) and the [Test Module](https://lib.ballerina.io/ballerina/test/latest/).
+For more information, see [Testing Ballerina Code](https://ballerina.io/learn/test-ballerina-code/define-data-driven-tests/) and the [Test Module](https://lib.ballerina.io/ballerina/test/latest/).
 
 ::: code testerina_data_driven_tests.bal :::
 
