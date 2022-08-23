@@ -1,8 +1,7 @@
 # Simple RPC
 
-The gRPC Server Connector exposes the gRPC service over HTTP2. In a simple RPC call, a client sends a request to a remote service and waits for the response.
-
-For more information on the underlying module,  see the [GRPC module](https://lib.ballerina.io/ballerina/grpc/latest/).
+The gRPC Server Connector exposes the gRPC service over HTTP2.
+In a simple RPC call, a client sends a request to a remote service and waits for the response.
 
 >**Info:** For more information on the underlying module, see the [`grpc` module](https://lib.ballerina.io/ballerina/grpc/latest/).
 
