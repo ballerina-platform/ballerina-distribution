@@ -9,7 +9,7 @@ and values of variables
 throughout all tests whereas stubbing is ideal when defining different behaviors for
 different test cases is required.
 
-For more information, see [Testing Ballerina Code](https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/) and the [Test Module](https://lib.ballerina.io/ballerina/test/latest/).
+For more information, see [Testing Ballerina Code](https://ballerina.io/learn/test-ballerina-code/mocking/#mock-objects) and the [Test Module](https://lib.ballerina.io/ballerina/test/latest/).
 
 ::: code testerina_mocking_objects_main.bal :::
 
