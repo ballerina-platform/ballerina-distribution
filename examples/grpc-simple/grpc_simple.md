@@ -28,7 +28,7 @@ Once you run the command, the `grpc_simple_pb.bal` file is generated inside the 
 
    ::: code grpc_simple_service.bal :::
 
-4. Execute the commands below to build and run the 'service' package.
+4. Execute the commands below to build and run the `service` package.
 
    ::: out grpc_simple_service.out :::
 
@@ -42,6 +42,6 @@ Once you run the command, the `grpc_simple_pb.bal` file is generated inside the 
 
    ::: code grpc_simple_service_client.bal :::
 
-4. Execute the commands below to build and run the 'client' package.
+4. Execute the commands below to build and run the `client` package.
 
    ::: out grpc_simple_service_client.out :::
