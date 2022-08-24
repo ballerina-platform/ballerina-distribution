@@ -36,7 +36,7 @@ Once you run the command, the `grpc_service_pb.bal` file is generated inside the
 
 4. As a prerequisite, ensure that the `Config.toml` file is populated correctly with the user information.
 
-6. Execute the commands below to build and run the 'service' package.
+6. Execute the commands below to build and run the `service` package.
 
    ::: out grpc_service_basic_auth_file_user_store.server.out :::
 

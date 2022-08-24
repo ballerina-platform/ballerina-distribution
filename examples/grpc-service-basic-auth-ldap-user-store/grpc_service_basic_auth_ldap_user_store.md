@@ -32,7 +32,7 @@ Once you run the command, the `grpc_service_pb.bal` file is generated inside the
 
    ::: code grpc_service_basic_auth_ldap_user_store.bal :::
 
-4. Execute the commands below to build and run the 'service' package.
+4. Execute the commands below to build and run the `service` package.
 
    ::: out grpc_service_basic_auth_ldap_user_store.server.out :::
 
