@@ -28,7 +28,7 @@ Once you run the command, the `grpc_server_streaming_pb.bal` file is generated i
 
    ::: code grpc_server_streaming_service.bal :::
 
-4. Execute the commands below to build and run the 'service' package.
+4. Execute the commands below to build and run the `service` package.
 
    ::: out grpc_server_streaming_service.out :::
 
@@ -42,6 +42,6 @@ Once you run the command, the `grpc_server_streaming_pb.bal` file is generated i
 
    ::: code grpc_server_streaming_service_client.bal :::
 
-4. Execute the commands below to build and run the 'client' package.
+4. Execute the commands below to build and run the `client` package.
 
    ::: out grpc_server_streaming_service_client.out :::

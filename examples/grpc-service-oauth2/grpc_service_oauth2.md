@@ -32,7 +32,7 @@ Once you run the command, the `grpc_service_pb.bal` file is generated inside the
 
    ::: code grpc_service_oauth2.bal :::
 
-4. Execute the commands below to build and run the 'service' package.
+4. Execute the commands below to build and run the `service` package.
 
    ::: out grpc_service_oauth2.server.out :::
 

@@ -30,7 +30,7 @@ Once you run the command, the `grpc_client_pb.bal` file is generated inside the 
 
    ::: code grpc_client_self_signed_jwt_auth.bal :::
 
-4. Execute the commands below to build and run the 'client' package.
+4. Execute the commands below to build and run the `client` package.
 
    ::: out grpc_client_self_signed_jwt_auth.out :::
 
