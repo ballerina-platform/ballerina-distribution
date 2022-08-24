@@ -10,4 +10,4 @@ password="password2"
 scopes=["scope2", "scope3"]' > Config.toml
 
 # You may need to change the certificate file path and private key file path.
-bal run websocket_service_basic_auth_file_user_store.bal
+$ bal run websocket_service_basic_auth_file_user_store.bal

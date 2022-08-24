@@ -56,7 +56,7 @@ service / on new http:Listener(9090) {
 service / on new http:Listener(8080) {
     private int counter = 1;
     resource function get hello() returns string|http:InternalServerError {
-        if (self.counter % 5 == 3) {
+        if self.counter % 5 == 3 {
             self.counter += 1;
             return {body:"Error occurred while processing the request."};
         } else {

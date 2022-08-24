@@ -1,0 +1,16 @@
+$ echo '{"MESSAGE":"HELLO"}' > input.json
+$ aws lambda invoke --function-name echo --payload fileb://input.json echo-response.txt
+{
+"ExecutedVersion": "$LATEST",
+"StatusCode": 200
+}
+$ cat echo-response.txt
+{"MESSAGE":"HELLO"}
+
+$ aws lambda invoke --function-name ctxinfo ctxinfo-response.txt
+{
+"ExecutedVersion": "$LATEST",
+"StatusCode": 200
+}
+$ cat ctxinfo-response.txt
+{"RequestID":"d55f7d06-f2ab-4b6e-8606-482607785a91", "DeadlineMS":1548069389978, "InvokedFunctionArn":"arn:aws:lambda:us-west-2:908363916138:function:ctxinfo", "TraceID":"Root=1-5c45aa03-f8aff4c9e24dc4fbf48f2990;Parent=17ad3b290def98fd;Sampled=0", "RemainingExecTime":9946}
