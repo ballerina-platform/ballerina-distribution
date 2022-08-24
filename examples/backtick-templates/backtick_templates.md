@@ -1,7 +1,6 @@
 # Backtick templates
 
-The backtick templates consist of a tag followed by characters surrounded by backticks. They can contain
-`expressions` in `${...}` to be interpolated. If no escapes are recognized: use an `expression` to escape.
+The backtick templates consist of a tag followed by characters surrounded by backticks. They can contain `expressions` in `${...}` to be interpolated. If no escapes are recognized: use an `expression` to escape.
 
 They can contain newlines and are processed in two phases.
 
