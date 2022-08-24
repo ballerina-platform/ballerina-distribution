@@ -1,4 +1,4 @@
-bal run http_client.bal
+$ bal run http_client.bal
 time = 2021-01-21 18:54:45,237 level = INFO  module = "" message = "Received a promise for /resource1"
 time = 2021-01-21 18:54:45,278 level = INFO  module = "" message = "Received a promise for /resource2"
 time = 2021-01-21 18:54:45,281 level = INFO  module = "" message = "Push promise for resource2 rejected"

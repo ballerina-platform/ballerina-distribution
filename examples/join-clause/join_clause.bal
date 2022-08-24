@@ -23,15 +23,12 @@ public function main() {
     ];
 
     string[] loginLog = from var login in logins
-                        // The `join` clause iterates any iterable value similarly to the
-                        // `from` clause.
+                        // The `join` clause iterates any iterable value similarly to the `from` clause.
                         join var user in users
-                        // The `on` condition is used to match the `login` with the `user`
-                        // based on the `userId`. The iteration is skipped when the
-                        // condition is not satisfied.
+                        // The `on` condition is used to match the `login` with the `user` based on the `userId`.
+                        // The iteration is skipped when the condition is not satisfied.
                         on login.userId equals user.id
-
-
                         select user.name + ":" + login.time;
+
     io:println(loginLog);
 }

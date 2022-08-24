@@ -1,4 +1,4 @@
-bal run xml_navigation.bal
+$ bal run xml_navigation.bal
 <items>
             <!--Contents-->
             <book>

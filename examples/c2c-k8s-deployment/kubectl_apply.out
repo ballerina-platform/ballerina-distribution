@@ -1,0 +1,4 @@
+$ kubectl apply -f /home/wso2/project/target/kubernetes/hello-0.1.0
+service/helloep-svc created
+deployment.apps/wso2-hello-0--deployment created
+horizontalpodautoscaler.autoscaling/wso2-hello-0--hpa created

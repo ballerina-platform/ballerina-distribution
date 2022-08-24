@@ -10,7 +10,6 @@ isolated class Counter {
         lock {
             // `n` can only be accessed using `self`.
             return self.n;
-
         }
     }
 
@@ -25,7 +24,6 @@ public function main() {
     // The object’s mutable state is accessible only via the
     // object itself making it an “isolated root”.
     Counter c = new;
-
     c.inc();
     int v = c.get();
     io:println(v);

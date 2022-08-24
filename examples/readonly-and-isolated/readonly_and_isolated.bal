@@ -22,7 +22,6 @@ function loadMap() returns RoMap {
 isolated function lookup(string s) returns readonly & Entry? {
     // Accesses `m` directly without locking.
     return m[s];
-
 }
 
 public function main() {

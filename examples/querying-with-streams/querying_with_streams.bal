@@ -32,7 +32,7 @@ class LineGenerator {
 
 // This method strips the blank lines.
 function strip(LineStream lines) returns LineStream {
-    // Creates a `stream` from the query expression.
+    // Creates a `stream` from a query expression.
     LineStream res = stream from var line in lines
              where line.trim().length() > 0
              select line;
@@ -42,8 +42,8 @@ function strip(LineStream lines) returns LineStream {
 
 function count(LineStream lines) returns int|Error {
     int nLines = 0;
-    // Counts the number of lines by iterating the `stream`
-    // in `query action`.
+
+    // Counts the number of lines by iterating the `stream` in a query action.
     var _ = check from var _ in lines
               do {
                   nLines += 1;

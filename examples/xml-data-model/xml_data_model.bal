@@ -18,8 +18,7 @@ public function main() {
     io:println(x4);
 
     // Multiple XML items can be combined to form a sequence of XML.
-    // The resulting sequence is another XML on its own.
+    // The resulting sequence is another `xml` value on its own.
     xml x5 = x1 + x2 + x3 + x4;
     io:println(x5);
-
 }

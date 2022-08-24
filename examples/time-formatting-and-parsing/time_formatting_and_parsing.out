@@ -1,4 +1,4 @@
-bal run time_formatting_and_parsing.bal
+$ bal run time_formatting_and_parsing.bal
 UTC value: [1196676930,0.12]
 UTC string representation: 2007-12-03T10:15:30.120Z
 Converted civil value: {"utcOffset":{"hours":5,"minutes":30},"timeAbbrev":"Asia/Colombo","dayOfWeek":1,"year":2021,"month":4,"day":12,"hour":23,"minute":20,"second":50.52}

@@ -16,6 +16,5 @@ function foo() returns () {
 
 // Leaving off return type is equivalent to `returns ()`.
 public function main() {
-
     io:println(v);
 }
