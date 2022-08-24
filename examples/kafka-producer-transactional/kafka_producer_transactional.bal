@@ -8,13 +8,11 @@ kafka:ProducerConfiguration producerConfigs = {
     retryCount: 3,
     // The `enableIdempotence` should set to `true` to make a producer transactional.
     enableIdempotence: true,
-
     // A `transactionalId` must be provided to make a producer transactional.
     transactionalId: "test-transactional-id"
 };
 
-kafka:Producer transactionalProducer =
-                check new (kafka:DEFAULT_URL, producerConfigs);
+kafka:Producer transactionalProducer = check new (kafka:DEFAULT_URL, producerConfigs);
 
 public function main() returns error? {
     transaction {
@@ -23,7 +21,6 @@ public function main() returns error? {
             topic: "test-kafka-topic",
             value: "Hello World Transaction Message"
         });
-
         check commit;
     }
 }

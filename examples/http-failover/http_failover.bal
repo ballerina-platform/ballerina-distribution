@@ -28,11 +28,11 @@ service / on new http:Listener(8080) {
 
         // Delay the response for 30 seconds to mimic network level delays.
         runtime:sleep(30);
-        return "echo Resource is invoked";
+        return "The echo resource is invoked";
     }
 
     // Define the sample resource to mock a healthy service.
     resource function 'default mock() returns string {
-        return "Mock Resource is Invoked.";
+        return "The mock resource is invoked.";
     }
 }

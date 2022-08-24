@@ -18,12 +18,10 @@ public function main() returns error? {
     check initialize();
 
     // Initializes the JDBC client. The `jdbcClient` can be reused to access the database throughout the application execution.
-    jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
-        "rootUser", "rootPass");
+    jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc", "rootUser", "rootPass");
 
     // Query table with a condition.
-    stream<Customer, error?> resultStream =
-            jdbcClient->query(`SELECT * FROM Customers;`);
+    stream<Customer, error?> resultStream = jdbcClient->query(`SELECT * FROM Customers;`);
 
     // Iterates the result stream.
     check from Customer customer in resultStream
@@ -39,35 +37,4 @@ public function main() returns error? {
 
     // Performs the cleanup after the example.
     check cleanup();
-}
-
-// Initializes the database as a prerequisite to the example.
-function initialize() returns sql:Error? {
-    jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
-        "rootUser", "rootPass");
-
-    // Creates a table in the database.
-    _ = check jdbcClient->execute(`CREATE TABLE Customers
-            (customer_id INTEGER NOT NULL AUTO_INCREMENT, first_name
-            VARCHAR(300), last_name  VARCHAR(300),
-            PRIMARY KEY (customer_id))`);
-
-    // Adds the records to the newly-created table.
-    _ = check jdbcClient->execute(`INSERT INTO Customers
-            (first_name, last_name) VALUES ('Peter','Stuart')`);
-    _ = check jdbcClient->execute(`INSERT INTO Customers
-            (first_name, last_name) VALUES ('Dan', 'Brown')`);
-
-    check jdbcClient.close();
-}
-
-// Cleans up the database after running the example.
-function cleanup() returns sql:Error? {
-    jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
-        "rootUser", "rootPass");
-
-    // Cleans the table.
-    _ = check jdbcClient->execute(`DROP TABLE Customers`);
-
-    check jdbcClient.close();
 }

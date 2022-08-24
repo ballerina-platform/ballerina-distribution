@@ -10,12 +10,12 @@ json j = {
     }
 };
 
-// Field access is allowed on the `json`-typed variable. However, the return
+// Field access is allowed on the `json` typed variable. However, the return
 // type would be a union of `json` and `error`.
 json v = check j.x.y;
 string s1 = check v.z;
 
-// `ensureType` method can also be used to perform conversions.
+// The `ensureType()` method can also be used to perform conversions.
 string s2 = check value:ensureType(v.z, string);
 
 public function main() {

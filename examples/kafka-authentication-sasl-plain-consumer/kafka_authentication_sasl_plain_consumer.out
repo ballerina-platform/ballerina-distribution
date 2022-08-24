@@ -1,1 +1,1 @@
-bal run kafka_authentication_sasl_plain_consumer.bal
+$ bal run kafka_authentication_sasl_plain_consumer.bal

@@ -1,2 +1,2 @@
-bal run functions.bal
+$ bal run functions.bal
 16

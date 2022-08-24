@@ -1,4 +1,3 @@
-To use the client, execute the cURL command below. 
-curl http://localhost:9092/chunkingSample
+$ curl http://localhost:9092/chunkingSample
 {"Outbound request content":"Length-20"}
 

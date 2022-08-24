@@ -1,5 +1,4 @@
-Run the cURL command below to invoke bank/branch resource.
-curl -v "http://localhost:9090/bank/branch"
+$ curl -v "http://localhost:9090/bank/branch"
 > GET /bank/branch HTTP/1.1
 > Host: localhost:9090
 > User-Agent: curl/7.64.1
@@ -14,8 +13,7 @@ curl -v "http://localhost:9090/bank/branch"
 * Connection #0 to host localhost left intact
 {"branch":["Colombo, Srilanka"]}* Closing connection 0
 
-Run the cURL command below to invoke second resource.
-curl -v "http://localhost:9090/bank/open"
+$ curl -v "http://localhost:9090/bank/open"
 > GET /bank/open HTTP/1.1
 > Host: localhost:9090
 > User-Agent: curl/7.64.1
@@ -30,8 +28,7 @@ curl -v "http://localhost:9090/bank/open"
 * Connection #0 to host localhost left intact
 Bank is open* Closing connection 0
 
-Run the cURL command below to invoke bank/account resource.
-curl -v "http://localhost:9090/bank/account" -d "bal" -X PUT
+$ curl -v "http://localhost:9090/bank/account" -d "bal" -X PUT
 > PUT /bank/account HTTP/1.1
 > Host: localhost:9090
 > User-Agent: curl/7.64.1

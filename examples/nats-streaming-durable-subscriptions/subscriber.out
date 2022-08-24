@@ -1,10 +1,5 @@
-bal run subscriber.bal
+$ bal run subscriber.bal
 time = 2021-05-20T13:03:23.344+05:30 level = INFO module = "" message = "Received message: Hello from Ballerina"
 
-# Stop the subscriber and publish some messages while it is stopped.
-# Run the subscriber again.
-# All messages which had been published while the subscriber
-# wasn't running should be received.
-
-bal run subscriber.bal
+$ bal run subscriber.bal
 time = 2021-05-20T13:03:46.928+05:30 level = INFO module = "" message = "Received message: Hello from Ballerina"

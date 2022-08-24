@@ -6,7 +6,6 @@ kafka:ConsumerConfiguration consumerConfiguration = {
     offsetReset: "earliest",
     // Subscribes to the topic `test-kafka-topic`.
     topics: ["test-kafka-topic"]
-
 };
 
 public type Order record {|
@@ -16,14 +15,13 @@ public type Order record {|
     boolean isValid;
 |};
 
-// Create a subtype of `kafka:AnydataConsumerRecord`
+// Create a subtype of `kafka:AnydataConsumerRecord`.
 public type OrderConsumerRecord record {|
     *kafka:AnydataConsumerRecord;
     Order value;
 |};
 
-kafka:Consumer orderConsumer =
-                check new (kafka:DEFAULT_URL, consumerConfiguration);
+kafka:Consumer orderConsumer = check new (kafka:DEFAULT_URL, consumerConfiguration);
 
 public function main() returns error? {
     // Polls the consumer for order records.

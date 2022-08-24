@@ -1,2 +1,2 @@
-bal run rabbitmq_consumer_with_client_acknowledgement.bal
+$ bal run rabbitmq_consumer_with_client_acknowledgement.bal
 time = 2021-05-20T14:53:56.067+05:30 level = INFO module = "" message = "Received message: Hello from Ballerina"
