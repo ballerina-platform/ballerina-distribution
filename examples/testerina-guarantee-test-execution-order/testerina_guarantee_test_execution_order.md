@@ -4,7 +4,7 @@ The `dependsOn` attribute can be used to define a list of functions that the tes
 
 This allows you to ensure that the tests are being executed in the expected order.
 
-For more information, see [Testing Ballerina Code](https://ballerina.io/learn/test-ballerina-code/test-a-simple-function/) and the [Test Module](https://lib.ballerina.io/ballerina/test/latest/).
+For more information, see [Testing Ballerina Code](https://ballerina.io/learn/test-ballerina-code/test-a-simple-function/) and the [`test` module](https://lib.ballerina.io/ballerina/test/latest/).
 
 ::: code testerina_guarantee_test_execution_order.bal :::
 

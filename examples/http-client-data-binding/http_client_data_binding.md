@@ -5,7 +5,7 @@ the return value type along with the error.
 
 When the user expects client data binding to happen, the HTTP error responses (4XX, 5XX) will be categorized as an `error` (`http:ClientRequestError`, `http:RemoteServerError`) of the client remote operation.
 
-For more information on the underlying module, see the [HTTP module](https://lib.ballerina.io/ballerina/http/latest/).
+For more information on the underlying module, see the [`http` module](https://lib.ballerina.io/ballerina/http/latest/).
 
 ::: code http_client_data_binding.bal :::
 
