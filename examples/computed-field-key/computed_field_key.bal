@@ -8,7 +8,7 @@ function getDetailMap(string uniqueId,
                       string idName, 
                       string id) returns map<string> {
     return {
-        // The value `"unique-identifier"` is subtituted from the constant as the key.
+        // The `"unique-identifier"` value is substituted from the constant as the key.
         [ID]: uniqueId,
         name: firstName + " " + lastName,
         // The key will be computed at runtime and will be the concatenation of `_` and

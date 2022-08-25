@@ -13,7 +13,7 @@ type FileErrorDetail record {
 type FileIOError IOError & error<FileErrorDetail>;
 
 public function main() {
-    // In order to create an error value that belongs to `FileIOError` the `filename`
+    // In order to create an error value that belongs to `FileIOError`, the `filename`
     // detail field must be provided.
     FileIOError fileIOError = error("file not found", filename = "test.txt");
 
@@ -27,7 +27,7 @@ public function main() {
     io:println(ioError is FileIOError);
 
     // Similarly, an error value belonging to `error<FileErrorDetail>` will not belong 
-    // to `FileIOError` if it doesn't also belong to `IOError`.
+    // to `FileIOError` if it doesn't belong to `IOError`.
     error<FileErrorDetail> fileError = error("cannot remove file", filename = "test.txt");
     io:println(fileError is FileIOError);
 }
