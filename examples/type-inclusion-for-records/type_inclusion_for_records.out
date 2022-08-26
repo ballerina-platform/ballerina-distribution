@@ -1,0 +1,2 @@
+$ bal run type_inclusion_for_records.bal
+{"hour":8,"year":2022,"month":8,"day":20,"minute":12,"seconds":3}

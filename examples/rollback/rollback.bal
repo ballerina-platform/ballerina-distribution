@@ -7,8 +7,7 @@ type Update record {
 public function main() returns error? {
 
     // Creates an array of `Update` records.
-    Update[] updates =
-    [
+    Update[] updates = [
         {updateIndex: 0, stockMnt: 2000},
         {updateIndex: 1, stockMnt: -1000},
         {updateIndex: 2, stockMnt: 1500},
@@ -30,11 +29,9 @@ function transfer(Update[] updates) returns error? {
             // If an error is returned, the `transfer` function returns with
             // that error and the transaction is rolled back.
             check doUpdate(u);
-
         }
         // `commit` will not be called because of an implicit rollback.
         check commit;
-
     }
     return;
 }

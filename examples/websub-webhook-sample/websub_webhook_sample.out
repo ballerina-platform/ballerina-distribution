@@ -1,4 +1,4 @@
-bal run websub_webhook_sample.bal
+$ bal run websub_webhook_sample.bal
 time = 2022-01-24T17:48:07.207+05:30 level = WARN module = ballerina/websub message = "HTTPS is recommended but using HTTP"
 PingEvent received for webhook [287075824]
 Event sender [77491511]

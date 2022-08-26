@@ -1,6 +1,4 @@
-# To invoke the alwaysCompress Service to get the String payload, use the following curl command.
-# Here the `Accept-Encoding` header is not specified.
-curl -v --output - http://localhost:9090/alwaysCompress
+$ curl -v --output - http://localhost:9090/alwaysCompress
 > GET /alwaysCompress/getString HTTP/1.1
 > Host: localhost:9090
 > User-Agent: curl/7.58.0

@@ -6,7 +6,6 @@ public function main() {
         // Use `-> W` to send a message to worker `W`.
         1 -> B;
         2 -> C;
-
     }
 
     worker B {
@@ -15,7 +14,6 @@ public function main() {
 
         // Use `function` to refer to the function's default worker.
         x1 -> function;
-
     }
 
     worker C {
@@ -25,6 +23,6 @@ public function main() {
 
     int y1 = <- B;
     int y2 = <- C;
-    
+
     io:println(y1 + y2);
 }

@@ -1,2 +1,2 @@
-bal run init_return_type.bal
+$ bal run init_return_type.bal
 Hello World

@@ -1,4 +1,4 @@
-bal run langlib_functions.bal
+$ bal run langlib_functions.bal
 b
 1
 1

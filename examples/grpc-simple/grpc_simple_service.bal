@@ -1,4 +1,3 @@
-// This is the server implementation of the simple RPC scenario.
 import ballerina/grpc;
 
 @grpc:ServiceDescriptor {
