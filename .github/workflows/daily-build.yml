@@ -9,16 +9,15 @@ jobs:
   ubuntu-build:
 
     runs-on: ubuntu-latest
+    if: github.repository_owner == 'ballerina-platform'
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-        with:
-          ref: 2201.0.x
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
-          distribution: 'adopt'
+          distribution: 'temurin'
           java-version: '11'
       - name: Get daily docker version
         id: version
@@ -77,10 +76,10 @@ jobs:
         with:
           name: Linux Installer rpm
           path: installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-*-linux-x64.rpm
-      - name: Archive MacOS installer ZIP
+      - name: Archive MacOS Installer ZIP
         uses: actions/upload-artifact@v2
         with:
-          name: MacOS installer ZIP
+          name: MacOS Installer ZIP
           path: ballerina/build/distributions/ballerina-*-macos.zip
       - name: Archive Windows Installer ZIP
         uses: actions/upload-artifact@v2
@@ -124,7 +123,8 @@ jobs:
           --data "{
             \"event_type\": \"notify-build-failure\",
             \"client_payload\": {
-              \"repoName\": \"ballerina-distribution\"
+              \"repoName\": \"ballerina-distribution\",
+              \"branch\": \"master\"
             }
           }"
       - name: Checkout docker repo
@@ -157,6 +157,7 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'ballerina/ballerina:nightly-test'
+          skip-dirs: 'ballerina/runtime/examples'
           format: 'table'
           exit-code: '1'
           timeout: "10m0s"
@@ -165,7 +166,7 @@ jobs:
         with:
           context: module-ballerina-docker/base/docker/
           push: true
-          tags: ballerina/ballerina:nightly-${{ steps.version.outputs.version }}, ballerina/ballerina:nightly
+          tags: ballerina/ballerina:nightly
           build-args: |
             BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.sversion }}.zip
       - name: Image digest
@@ -186,9 +187,10 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'ballerina/ballerina-devcontainer:nightly-test'
+          skip-dirs: 'ballerina/runtime/examples'
           format: 'table'
+          exit-code: '1'
           timeout: "10m0s"
-          ignore-unfixed: true
       - name: Build and push dev container image
         uses: docker/build-push-action@v2
         with:
@@ -207,12 +209,10 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-        with:
-          ref: 2201.0.x
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
-          distribution: 'adopt'
+          distribution: 'temurin'
           java-version: '11'
       - name: Build with Gradle
         env:
@@ -230,12 +230,10 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-        with:
-          ref: 2201.0.x
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
-          distribution: 'adopt'
+          distribution: 'temurin'
           java-version: '11'
       - name: Download Ballerina rpm Installer
         uses: actions/download-artifact@v2
@@ -260,12 +258,10 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-        with:
-          ref: 2201.0.x
       - name: Download MacOS Intaller Zip
         uses: actions/download-artifact@v2
         with:
-          name: MacOS installer ZIP
+          name: MacOS Installer ZIP
       - name: Create macos-pkg
         id: run_installers_pkg
         run: |
@@ -301,8 +297,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-        with:
-          ref: 2201.0.x
       - uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '2.1.x'
@@ -353,8 +347,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-        with:
-          ref: 2201.0.x
       - name: Invoke Connector Ballerina Version Bump
         run: |
           ballerinaVersion=$((grep -w 'ballerinaLangVersion' | cut -d= -f2) < gradle.properties)

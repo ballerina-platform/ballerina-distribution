@@ -3,8 +3,8 @@ import ballerina/websocket;
 
 // Defines the WebSocket client to call the OAuth2 secured APIs.
 // The client is enriched with the `Authorization: Bearer <token>` header by
-// passing the [`websocket:OAuth2JwtBearerGrantConfig`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/OAuth2JwtBearerGrantConfig) for the `auth` configuration of the
-// client.
+// passing the `websocket:OAuth2JwtBearerGrantConfig` for the `auth` configuration of the client.
+// For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/OAuth2JwtBearerGrantConfig.
 websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
     auth = {
         tokenUrl: "https://localhost:9445/oauth2/token",
@@ -24,7 +24,7 @@ websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
 );
 
 public function main() returns error? {
-    check securedEP->writeTextMessage("Hello, World!");
-    string textMessage = check securedEP->readTextMessage();
+    check securedEP->writeMessage("Hello, World!");
+    string textMessage = check securedEP->readMessage();
     io:println(textMessage);
 }

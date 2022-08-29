@@ -1,0 +1,6 @@
+# Create a Ballerina project.
+# Copy the example to the project and add the relevant database driver JAR details to the `Ballerina.toml` file.
+# Execute the command below to build and run the project.
+$ bal run
+
+Customer (customerId = 1) : {"customerId":2,"firstName":"Dan","lastName":"Brown","registrationId":2,"creditLimit":10000.0,"country":"UK"}

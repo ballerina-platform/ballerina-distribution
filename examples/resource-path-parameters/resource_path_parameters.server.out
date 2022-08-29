@@ -1,1 +1,1 @@
-bal run resource_path_parameters.bal
+$ bal run resource_path_parameters.bal

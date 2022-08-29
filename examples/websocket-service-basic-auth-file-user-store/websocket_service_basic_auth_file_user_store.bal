@@ -11,7 +11,8 @@ listener websocket:Listener securedEP = new(9090,
 
 // The service can be secured with Basic Auth and can be authorized optionally.
 // Using Basic Auth with the file user store can be enabled by setting the
-// [`websocket:FileUserStoreConfig`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/FileUserStoreConfig) configurations.
+// `websocket:FileUserStoreConfig` configurations.
+// For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/FileUserStoreConfig
 // Authorization is based on scopes. A scope maps to one or more groups.
 // Authorization can be enabled by setting the `string|string[]` type
 // configurations for `scopes` field.
@@ -24,15 +25,14 @@ listener websocket:Listener securedEP = new(9090,
     ]
 }
 service /foo on securedEP {
-    resource isolated function get bar() returns websocket:Service {
+    resource function get bar() returns websocket:Service {
         return new WsService();
    }
 }
 
 service class WsService {
     *websocket:Service;
-    remote isolated function onTextMessage(websocket:Caller caller,
-                             string text) returns websocket:Error? {
-        check caller->writeTextMessage(text);
+    remote function onMessage(websocket:Caller caller, string text) returns websocket:Error? {
+        check caller->writeMessage(text);
     }
 }

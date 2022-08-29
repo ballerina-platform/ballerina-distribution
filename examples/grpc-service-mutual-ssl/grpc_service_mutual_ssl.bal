@@ -2,7 +2,8 @@ import ballerina/grpc;
 
 // A gRPC listener can be configured to accept new connections that are
 // secured via mutual SSL.
-// The [`grpc:ListenerSecureSocket`](https://docs.central.ballerina.io/ballerina/grpc/latest/records/ListenerSecureSocket) record provides the SSL-related listener configurations.
+// The [`grpc:ListenerSecureSocket` record provides the SSL-related listener configurations.
+// For details, see https://lib.ballerina.io/ballerina/grpc/latest/records/ListenerSecureSocket.
 listener grpc:Listener securedEP = new(9090,
     secureSocket = {
         key: {
@@ -26,8 +27,7 @@ listener grpc:Listener securedEP = new(9090,
 );
 
 @grpc:ServiceDescriptor {
-    descriptor: ROOT_DESCRIPTOR_GRPC_SERVICE,
-    descMap: getDescriptorMapGrpcService()
+    descriptor: GRPC_SERVICE_DESC
 }
 service "HelloWorld" on securedEP {
     remote function hello() returns string {

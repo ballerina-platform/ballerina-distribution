@@ -1,2 +1,2 @@
-bal run module_lifecycle.bal
+$ bal run module_lifecycle.bal
 Hello world

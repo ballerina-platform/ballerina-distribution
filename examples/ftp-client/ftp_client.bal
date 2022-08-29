@@ -12,18 +12,14 @@ public function main() returns error? {
         port: 21,
         auth: {credentials: {username: "user1", password: "pass456"}}
     };
-    ftp:Client clientEp = check new(config);
+    ftp:Client clientEp = check new (config);
 
-    // Reads a file from a FTP server for a given file path. In error cases, 
+    // Reads a file from an FTP server for a given file path. In error cases,
     // an error is returned.
-    stream<byte[] & readonly, io:Error?> fileStream
-        = check clientEp->get("/server/book.txt");
-    check fileStream.forEach(isolated 
-        function(byte[] & readonly fileContent) {
-            io:println("File content received: "
-                + checkpanic strings:fromBytes(fileContent));
-        }
-    );
+    stream<byte[] & readonly, io:Error?> fileStream = check clientEp->get("/server/book.txt");
+    check fileStream.forEach(isolated function(byte[] & readonly fileContent) {
+        io:println("File content received: " + checkpanic strings:fromBytes(fileContent));
+    });
 
     // Add a new file to the given file location. In error cases, 
     // an error is returned. The local file is provided as a stream of
@@ -34,5 +30,4 @@ public function main() returns error? {
 
     // Closes the file stream to finish the `get` and `put` operations.    
     check fileStream.close();
-
 }

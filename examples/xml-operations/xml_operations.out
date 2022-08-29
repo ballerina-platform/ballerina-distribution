@@ -1,4 +1,4 @@
-bal run xml_operations.bal
+$ bal run xml_operations.bal
 <name>Sherlock Holmes</name><details>
                 <author>Sir Arthur Conan Doyle</author>
                 <language>English</language>
