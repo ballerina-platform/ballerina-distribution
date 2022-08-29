@@ -22,7 +22,13 @@ public function main() returns error? {
     // Creates an array of employee salaries.
     int[] salaryList = [100, 200, 300, 100];
 
-    incrementSallary(salaryList);
+    // This salary increment will rollback
+    check incrementSalary(salaryList);
+
+    int[] salaryList2 = [100, 200, 100, 100];
+
+    // This salary increment will be successful
+    check incrementSalary(salaryList2);
 }
 
 function transfer(Update[] updates) returns error? {
@@ -50,7 +56,7 @@ function doUpdate(Update u) returns error? {
     return;
 }
 
-function incrementSallary(int[] salaryList) returns error? {
+function incrementSalary(int[] salaryList) returns error? {
     transaction {
         foreach int index in 0 ..< salaryList.length() {
             salaryList[index] += 100;
@@ -62,6 +68,7 @@ function incrementSallary(int[] salaryList) returns error? {
             io:println("Salary limit exceeded");
             rollback;
         } else {
+            io:println("Salary increment successful");
             check commit;
         }
     }
