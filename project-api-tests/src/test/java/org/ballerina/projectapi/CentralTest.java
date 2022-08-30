@@ -18,6 +18,7 @@
 
 package org.ballerina.projectapi;
 
+import io.ballerina.projects.util.ProjectConstants;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -38,6 +39,8 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Objects;
 
+import static io.ballerina.projects.util.ProjectUtils.createAndGetHomeReposPath;
+import static io.ballerina.projects.util.ProjectUtils.deleteDirectory;
 import static org.ballerina.projectapi.CentralTestUtils.ANY_PLATFORM;
 import static org.ballerina.projectapi.CentralTestUtils.BALLERINA_TOML;
 import static org.ballerina.projectapi.CentralTestUtils.COMMON_VERSION;
@@ -75,6 +78,7 @@ public class CentralTest {
     private String packageBName;
     private String packageCName;
     private String packageDName;
+    private String packageEName;
     private String packageSnapshotName;
     private String orgName = "bctestorg";
     private Map<String, String> envVariables;
@@ -84,6 +88,7 @@ public class CentralTest {
     private static final String PROJECT_B = "projectB";
     private static final String PROJECT_C = "projectC";
     private static final String PROJECT_D = "projectD";
+    private static final String PROJECT_E = "projectE";
     private static final String PROJECT_SNAPSHOT = "projectSnapshot";
 
     @BeforeClass()
@@ -110,11 +115,13 @@ public class CentralTest {
             this.packageBName = TEST_PREFIX + randomString + "_" + PROJECT_B;
             this.packageCName = TEST_PREFIX + randomString + "_" + PROJECT_C;
             this.packageDName = TEST_PREFIX + randomString + "_" + PROJECT_D;
+            this.packageEName = TEST_PREFIX + randomString + "_" + PROJECT_E;
             this.packageSnapshotName = TEST_PREFIX + randomString + "_" + PROJECT_SNAPSHOT;
         } while (isPkgAvailableInCentral(this.packageAName, tempWorkspaceDirectory, envVariables)
                 || isPkgAvailableInCentral(this.packageBName, tempWorkspaceDirectory, envVariables)
                 || isPkgAvailableInCentral(this.packageCName, tempWorkspaceDirectory, envVariables)
                 || isPkgAvailableInCentral(this.packageDName, tempWorkspaceDirectory, envVariables)
+                || isPkgAvailableInCentral(this.packageEName, tempWorkspaceDirectory, envVariables)
                 || isPkgAvailableInCentral(this.packageSnapshotName, tempWorkspaceDirectory, envVariables));
 
         isPkgAvailableInCentral(this.packageAName, tempWorkspaceDirectory, envVariables);
@@ -128,6 +135,8 @@ public class CentralTest {
                         this.packageCName);
         updateFileToken(this.tempWorkspaceDirectory.resolve(PROJECT_D).resolve(BALLERINA_TOML), DEFAULT_PKG_NAME,
                         this.packageDName);
+        updateFileToken(this.tempWorkspaceDirectory.resolve(PROJECT_E).resolve(BALLERINA_TOML), DEFAULT_PKG_NAME,
+                this.packageEName);
         updateFileToken(this.tempWorkspaceDirectory.resolve(PROJECT_SNAPSHOT).resolve(BALLERINA_TOML), DEFAULT_PKG_NAME,
                         this.packageSnapshotName);
         // Update imports
@@ -137,6 +146,10 @@ public class CentralTest {
                         this.packageBName);
         updateFileToken(this.tempWorkspaceDirectory.resolve(PROJECT_D).resolve(MAIN_BAL), "<PKG_C>",
                         this.packageCName);
+        updateFileToken(this.tempWorkspaceDirectory.resolve(PROJECT_E).resolve(MAIN_BAL), "<PKG_A>",
+                this.packageAName);
+        updateFileToken(this.tempWorkspaceDirectory.resolve(PROJECT_E).resolve(MAIN_BAL), "<PKG_B>",
+                this.packageBName);
     }
 
     @Test(description = "Build package A with a native lib dependency")
@@ -285,6 +298,80 @@ public class CentralTest {
         String runErrors = getString(run.getInputStream());
         if (!runErrors.isEmpty()) {
             Assert.fail(OUTPUT_CONTAIN_ERRORS + runErrors);
+        }
+    }
+
+    @Test(description = "Pack package E", dependsOnMethods = {"testPushPackageA", "testPushPackageB"})
+    public void testPackPackageE() throws IOException, InterruptedException {
+        Process build = executePackCommand(DISTRIBUTION_FILE_NAME, this.tempWorkspaceDirectory.resolve(PROJECT_E),
+                new LinkedList<>(), this.envVariables);
+
+        String buildErrors = getString(build.getErrorStream());
+        if (!buildErrors.isEmpty()) {
+            Assert.fail(OUTPUT_CONTAIN_ERRORS + buildErrors);
+        }
+
+        String buildOutput = getString(build.getInputStream());
+        if (!buildOutput.contains(getGenerateBalaLog(orgName, this.packageEName, ANY_PLATFORM, COMMON_VERSION))) {
+            Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + getGenerateBalaLog(orgName, this.packageEName, ANY_PLATFORM,
+                    COMMON_VERSION));
+        }
+        Assert.assertTrue(
+                getBalaPath(this.tempWorkspaceDirectory.resolve(PROJECT_E), orgName, this.packageEName, ANY_PLATFORM,
+                        COMMON_VERSION).toFile().exists());
+    }
+
+    @Test(description = "Push package E to the central", dependsOnMethods = "testPackPackageE")
+    public void testPushPackageE() throws IOException, InterruptedException {
+        Process build = executePushCommand(DISTRIBUTION_FILE_NAME, this.tempWorkspaceDirectory.resolve(PROJECT_E),
+                new LinkedList<>(), this.envVariables);
+        String buildErrors = getString(build.getErrorStream());
+        if (!buildErrors.isEmpty()) {
+            Assert.fail(OUTPUT_CONTAIN_ERRORS + buildErrors);
+        }
+
+        String buildOutput = getString(build.getInputStream());
+        if (!buildOutput.contains(getPushedToCentralLog(orgName, this.packageEName))) {
+            Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + getPushedToCentralLog(orgName, this.packageEName));
+        }
+    }
+
+    @Test(description = "Pull package E from the central", dependsOnMethods = "testPushPackageE")
+    public void testPullPackageE() throws IOException, InterruptedException {
+        Path balaPath = createAndGetHomeReposPath().resolve(ProjectConstants.REPOSITORIES_DIR)
+                .resolve(ProjectConstants.CENTRAL_REPOSITORY_CACHE_NAME).resolve(ProjectConstants.BALA_DIR_NAME)
+                .resolve(orgName);
+        Path packageAPath = balaPath.resolve(packageAName);
+        Path packageBPath = balaPath.resolve(packageBName);
+
+        if (!deleteDirectory(packageAPath) || !deleteDirectory(packageBPath)) {
+            Assert.fail("Failed to clear packageA, packageB, packageE BALAs");
+        }
+
+        String pkgA = orgName + "/" + this.packageAName + ":1.0.0";
+        String pkgB = orgName + "/" + this.packageBName + ":1.0.0";
+        String pkgE = orgName + "/" + this.packageEName + ":1.0.0";
+
+        Process build = executePullCommand(DISTRIBUTION_FILE_NAME,
+                this.tempWorkspaceDirectory.resolve(PROJECT_E),
+                new LinkedList<>(Collections.singletonList(pkgE)),
+                this.envVariables);
+        String buildErrors = getString(build.getErrorStream());
+        if (!buildErrors.isEmpty()) {
+            Assert.fail(OUTPUT_CONTAIN_ERRORS + buildErrors);
+        }
+
+        String buildOutput = getString(build.getInputStream());
+        String expectedMsgA = pkgA + " pulled from central successfully";
+        String expectedMsgB = pkgB + " pulled from central successfully";
+        String expectedMsgE = pkgE + " pulled from central successfully";
+
+        if (!buildOutput.contains(expectedMsgE)) {
+            Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedMsgE);
+        } else if (!buildOutput.contains(expectedMsgA)) {
+            Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedMsgA);
+        } else if (!buildOutput.contains(expectedMsgB)) {
+            Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedMsgB);
         }
     }
 
