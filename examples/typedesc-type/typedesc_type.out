@@ -1,2 +1,2 @@
-bal run typedesc_type.bal
+$ bal run typedesc_type.bal
 true
