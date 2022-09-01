@@ -1,6 +1,6 @@
 # Never type
 
-`never` means that no value belongs to the type.
+The `never` type is the type to which no value belongs.
 
 ::: code never_type.bal :::
 
