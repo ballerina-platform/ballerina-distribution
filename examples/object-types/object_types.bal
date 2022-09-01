@@ -1,19 +1,18 @@
 import ballerina/io;
 
-// This is the definition of `Hashable` object type
+// `Hashable` object type with a method called `hash( )` that returns an integer.
 type Hashable object {
     function hash() returns int;
 };
 
 function h() returns any {
     var obj = object {
-        // This is the implementation of method `hash()` that defined in `Hashable` object type,
-        // like implementing an interface
+        // Implements the `hash()` method defined in `Hashable` object type.
         function hash() returns int {
             return 42;
         }
 
-        // It can have other methods
+        // The object can have other methods.
         function zero() returns int {
             return 0;
         }
@@ -22,6 +21,7 @@ function h() returns any {
 }
 
 public function main() {
-    // output is true
+    // The returned object matches the pattern of the `Hashable` object type,
+    // which contains a `hash()` method returning an integer.
     io:println(h() is Hashable);
 }

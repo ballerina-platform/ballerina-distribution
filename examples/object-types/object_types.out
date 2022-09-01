@@ -1,2 +1,2 @@
-bal run object_types.bal
+$ bal run object_types.bal
 true

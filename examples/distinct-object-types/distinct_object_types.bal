@@ -1,10 +1,11 @@
 import ballerina/io;
 
+// `Person` object type that contains a string field called `name`.
 type Person distinct object {
     public string name;
 };
 
-// Engineer` and `Manager` classes are structurally the same but introducing the `distinct` keyword
+// `Engineer` and `Manager` classes are structurally the same but introducing the `distinct` keyword
 // distinguishes them by considering them as nominal types.
 distinct class Engineer {
     *Person;
@@ -32,6 +33,4 @@ function desc(Employee employee) returns string {
 public function main() {
     Employee employee = new Engineer("James");
     io:println(desc(employee));
-
-    // `Engineer employee2 = new Manager("clark");` gives compilation error
 }
