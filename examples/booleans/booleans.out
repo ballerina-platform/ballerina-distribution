@@ -1,2 +1,2 @@
-bal run booleans.bal
+$ bal run booleans.bal
 1

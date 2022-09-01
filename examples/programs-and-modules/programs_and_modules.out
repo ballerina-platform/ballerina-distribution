@@ -1,2 +1,2 @@
-bal run programs_and_modules.bal
+$ bal run programs_and_modules.bal
 Hello, World!

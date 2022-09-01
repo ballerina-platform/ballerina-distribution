@@ -1,2 +1,2 @@
-bal run rabbitmq_transaction_consumer.bal
+$ bal run rabbitmq_transaction_consumer.bal
 time = 2021-01-18 15:15:36,514 level = INFO  module = "" message = "The message received: Hello from Ballerina"

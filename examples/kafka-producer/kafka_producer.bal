@@ -7,7 +7,7 @@ public type Order record {|
     boolean isValid;
 |};
 
-// Create a subtype of `kafka:AnydataProducerRecord`
+// Create a subtype of `kafka:AnydataProducerRecord`.
 public type OrderProducerRecord record {|
     *kafka:AnydataProducerRecord;
     Order value;

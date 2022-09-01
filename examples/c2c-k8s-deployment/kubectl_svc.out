@@ -1,0 +1,4 @@
+$ kubectl get svc
+NAME                        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+hello-svc               ClusterIP       10.97.140.84        <none>        9090/TCP         13m
+hello-svc-local         NodePort        10.108.87.21        <none>        9090:31360/TCP   2m18s

@@ -1,0 +1,2 @@
+$ kubectl expose deployment hello-deployment --type=NodePort --name=hello-svc-local
+service/hello-svc-local exposed
