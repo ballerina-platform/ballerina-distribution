@@ -1,7 +1,6 @@
 # Proto to Ballerina
 
-If you already have protocol buffer file for your service(s) you can use that to autogenerate Ballerina source code. Currently, Ballerina supports two types of code generation. `service` generation generates a mock version of the Ballerina service for an input proto definition.  `client` generation generates a Ballerina client endpoint for an
-input proto definition.
+If you already have protocol buffer file for your service(s) you can use that to autogenerate Ballerina source code. Currently, Ballerina supports two types of code generation. `service` generation generates a mock version of the Ballerina service for an input proto definition.  `client` generation generates a Ballerina client endpoint for an input proto definition.
 
 The Ballerina code generator supports the following parameters:
 
