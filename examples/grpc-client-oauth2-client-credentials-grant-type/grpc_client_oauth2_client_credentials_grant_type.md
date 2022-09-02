@@ -32,8 +32,6 @@ Once you run the command, the `grpc_client_pb.bal` file is generated inside the 
 
 4. Execute the commands below to build and run the `client` package.
 
+>**Info:** You may need to change the trusted certificate file path. As a prerequisite, start a sample service secured with OAuth2.
+
    ::: out grpc_client_oauth2_client_credentials_grant_type.out :::
-
-You may need to change the trusted certificate file path.
-
-As a prerequisite, start a sample service secured with OAuth2.
