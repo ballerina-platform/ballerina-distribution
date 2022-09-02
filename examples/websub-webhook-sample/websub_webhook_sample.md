@@ -4,7 +4,7 @@ Ballerina provides the capability to easily introduce subscriber services that a
 
 Ballerina WebSub Subscriber Services could thus be registered as WebHooks to receive event notifications. In this example, a WebSub Subscriber service is used to implement a GitHub-based WebHook service.
 
-For more information on the underlying module, see the [WebSub module](https://lib.ballerina.io/ballerina/websub/latest/).
+For more information on the underlying module, see the [`websub` module](https://lib.ballerina.io/ballerina/websub/latest/).
 
 ::: code websub_webhook_sample.bal :::
 

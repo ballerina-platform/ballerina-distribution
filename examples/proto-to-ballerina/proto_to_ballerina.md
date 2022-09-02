@@ -8,7 +8,7 @@ The Ballerina code generator supports the following parameters:
 - `--output` The file location in which the Ballerina client/service and the stub must be generated. This is an optional parameter. If no value is specified for this parameter and proto definition doesn't contain package value, the Ballerina client/service and the stub files are generated inside `temp` directory in the current location. This path must be a project directory.
 - `--mode` The mode (client or server) to generate code samples. If no value is specified for this parameter, only the stub file will be generated.
 
-For more information on the underlying module, see the [GRPC module](https://lib.ballerina.io/ballerina/grpc/latest/) and [How to generate Ballerina code for Protocol Buffer Definition](https://ballerina.io/learn/how-to-generate-code-for-protocol-buffers/).
+For more information on the underlying module, see the [`grpc` module](https://lib.ballerina.io/ballerina/grpc/latest/) and [How to generate Ballerina code for Protocol Buffer Definition](https://ballerina.io/learn/how-to-generate-code-for-protocol-buffers/).
 
 ::: code proto_to_ballerina.proto :::
 
