@@ -4,7 +4,7 @@ The NATS client is used either to produce a message to a subject or consume a me
 
 For instructions on installing the NATS server, go to [NATS Server Installation](https://docs.nats.io/nats-server/installation). This is a simple request/reply messaging pattern example.
 
-For more information on the underlying module, see the [NATS module](https://lib.ballerina.io/ballerinax/nats/latest).
+For more information on the underlying module, see the [`nats` module](https://lib.ballerina.io/ballerinax/nats/latest).
 
 ::: code publisher.bal :::
 
