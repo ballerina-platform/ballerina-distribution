@@ -889,6 +889,20 @@
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
+            },
+            {
+                "name": "Sync-send",
+                "url": "sync-send",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Async-send",
+                "url": "async-send",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
             }
         ]
     },
