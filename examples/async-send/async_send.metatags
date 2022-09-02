@@ -1,0 +1,2 @@
+description: This BBE demonstrates how async send action can be used for concurrency in Ballerina.
+keywords: ballerina, ballerina by example, bbe, async send, concurrency
