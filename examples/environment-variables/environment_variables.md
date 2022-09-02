@@ -2,7 +2,7 @@
 
 The `os` library provides functions to retrieve information about the OS and the current users of the OS.
 
-For more information on the underlying module, see the [OS module](https://lib.ballerina.io/ballerina/os/latest/).
+For more information on the underlying module, see the [`os` module](https://lib.ballerina.io/ballerina/os/latest/).
 
 ::: code environment_variables.bal :::
 

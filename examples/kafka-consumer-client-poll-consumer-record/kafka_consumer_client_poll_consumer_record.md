@@ -5,7 +5,7 @@ the value, which is the default deserializer in the `kafka:Consumer`.
 
 The received records are converted to the user defined type using data-binding. For this to work properly, an active Kafka broker should be present.
 
-For more information on the underlying module,  see the [Kafka module](https://lib.ballerina.io/ballerinax/kafka/latest).
+For more information on the underlying module,  see the [`kafka` module](https://lib.ballerina.io/ballerinax/kafka/latest).
 
 ::: code kafka_consumer_client_poll_consumer_record.bal :::
 
