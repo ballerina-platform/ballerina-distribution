@@ -1,30 +1,64 @@
 import ballerina/io;
 
-int x = 0;
-int y = 1;
-
 type IntPair [int, int];
 
-function assign(IntPair ip) {
-    // The variable `ip` of type `IntPair` is destructured and
-    // assigned to the two module-level variables `x` and `y`.
-    [x, y] = ip;
+function assignToListBindingPattern(IntPair ip) {
+    int p;
+    int q;
+    // The `ip` variable of the IntPair `type` is destructured and
+    // assigned to the two `p` and `q` variables.
+    [p, q] = ip;
 
-    io:println(x);
-    io:println(y);
+    io:println(p);
+    io:println(q);
 
-    swap();
+    // The swapping is done between `p` and `q` by doing
+    // tuple destructuring without using a temporary variable.
+    [p, q] = [q, p];
 
-    io:println(x);
-    io:println(y);
+    io:println(p);
+    io:println(q);
+
+    int r;
+    // Destructuring can be ignored using `_`.
+    [_, r] = ip;
+
+    io:println(r);
+
+    int a;
+    int b;
+    int d;
+    int e;
+    int[] rest;
+
+    // Destructure a list that includes a `rest` value.
+    [a, b, _, d, e, ...rest] = [...[1, 2], ...[3, 4], ...[5, 45, 345]];
+    io:println(a);
+    io:println(b);
+    io:println(d);
+    io:println(e);
+    io:println(rest);
 }
 
-function swap() {
-    // The swapping is done between `x` and `y` just by doing
-    // tuple destructuring without using a temporary variable
-    [x, y] = [y, x];
+type FullName record {
+    string firstName;
+    string middleName;
+    string lastName;
+};
+
+function assignToMappingBindingPattern(FullName fullName) {
+    string firstName;
+    string lastName;
+
+    // The `fullName` variable of  the `FullName` type is destructured and
+    // assigned to the two `firstName` and `lastName` variables.
+    {firstName, lastName} = fullName;
+
+    io:println(firstName);
+    io:println(lastName);
 }
 
 public function main() {
-    assign([x, y]);
+    assignToListBindingPattern([0, 1]);
+    assignToMappingBindingPattern({firstName: "Jane", middleName: "unknown", lastName: "Doe"});
 }
