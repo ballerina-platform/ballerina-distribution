@@ -40,7 +40,7 @@ Once you run the command, the `grpc_bidirectional_streaming_pb.bal` file gets ge
 
 1. Create another Ballerina package (e.g., `grpc_chat_client`) by executing the `bal new grpc_chat_client command`.
 
->**Tip:** Delete the `main.bal` file created by default as it is not required for this example.
+    >**Tip:** Delete the `main.bal` file created by default as it is not required for this example.
 
 2. Copy the generated `grpc_bidirectional_streaming_pb.bal` file from the `stubs` directory to the  `grpc_chat_client` package.
 
