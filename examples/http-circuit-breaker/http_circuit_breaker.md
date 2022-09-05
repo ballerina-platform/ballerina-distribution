@@ -7,7 +7,7 @@ The Circuit Breaker is used to gracefully handle network related errors, which o
 3. As a result subsequent requests fails immediately until the timeout period is reached
 4. Timeout is reached and the circuit breaker falls back to closed state
 
-For more information on the underlying module, see the [HTTP module](https://lib.ballerina.io/ballerina/http/latest/).
+For more information on the underlying module, see the [`http` module](https://lib.ballerina.io/ballerina/http/latest/).
 
 ::: code http_circuit_breaker.bal :::
 
