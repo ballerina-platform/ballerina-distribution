@@ -6,7 +6,7 @@ Ballerina uses the concept of scopes for authorization. A resource declared in a
 
 In the authorization phase, the scopes of the service/resource are compared against the scope included in the JWT for at least one match between the two sets.
 
-For more information on the underlying module, see the [JWT module](https://lib.ballerina.io/ballerina/jwt/latest/).
+For more information on the underlying module, see the [`jwt` module](https://lib.ballerina.io/ballerina/jwt/latest/).
 
 ::: code http_service_jwt_auth.bal :::
 

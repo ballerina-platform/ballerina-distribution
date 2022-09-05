@@ -2,7 +2,7 @@
 
 You can use the WSS client to connect or interact with an WSS listener. Provide the `websocket:ClientSecureSocket` configurations to the client to initiate an WSS connection.
 
-For more information on the underlying module, see the [WebSocket module](https://lib.ballerina.io/ballerina/websocket/latest/).
+For more information on the underlying module, see the [`websocket` module](https://lib.ballerina.io/ballerina/websocket/latest/).
 
 ::: code websocket_client_ssl_tls.bal :::
 
