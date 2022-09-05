@@ -37,9 +37,10 @@ class Circle {
 
 public function main() {
     Circle circle = new Circle(5);
-    Circle circleClone = circle.clone();
-    
-    io:println(circle === circleClone);
     io:println(circle.draw());
+
+    Circle circleClone = circle.clone();
     io:println(circleClone.draw());
+
+    io:println(circle === circleClone);
 }
