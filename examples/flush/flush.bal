@@ -8,8 +8,8 @@ public function main() {
         // This transmission will not happen.
         msg + 10 -> B;
         
-        // Flush all messages sent to worker 'B'. Worker 'A' will stop here until all messages
-        // are sent or for a failure in 'B'.
+        // Flush all messages sent to worker 'B'. 
+        // Worker 'A' will stop here until all messages are sent or until a failure occurs in 'B'.
         error? result = trap flush B;
         
         // This will return the `panic` error.
