@@ -15,18 +15,18 @@ public function main() returns error? {
         {updateIndex: 3, stockMnt: -1000},
         {updateIndex: 4, stockMnt: -2000}
     ];
-
+    // This transfer will be rolled back.
     io:println(transfer(updates));
 
     // Creates an array of employee salaries.
     int[] salaryList = [100, 200, 300, 100];
 
-    // This salary increment will rollback
+    // This salary increment will be rolled back.
     check incrementSalary(salaryList);
 
     int[] salaryList2 = [100, 200, 100, 100];
 
-    // This salary increment will be successful
+    // This salary increment will be successful.
     check incrementSalary(salaryList2);
 }
 
@@ -46,7 +46,7 @@ function transfer(Update[] updates) returns error? {
 }
 
 function doUpdate(Update u) returns error? {
-    // If the stock amount is less than -1500, an error is returned.
+    // If the stock amount is less than `-1500`, an error is returned.
     if (u.stockMnt < -1500) {
         return error("Not enough Stocks: ", stockIndex = u.updateIndex);
     }
