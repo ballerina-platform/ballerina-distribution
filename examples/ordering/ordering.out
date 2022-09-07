@@ -1,4 +1,4 @@
-bal run ordering.bal
+$ bal run ordering.bal
 Anne Perera
 Anne Frank
 Jermaine Perera

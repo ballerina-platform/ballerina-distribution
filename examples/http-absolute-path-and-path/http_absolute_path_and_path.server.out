@@ -1,1 +1,1 @@
-bal run absolute_path_and_path.bal
+$ bal run absolute_path_and_path.bal

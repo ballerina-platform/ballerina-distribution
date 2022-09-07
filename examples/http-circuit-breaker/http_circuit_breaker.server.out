@@ -1,2 +1,2 @@
-bal run http_circuit_breaker.bal
+$ bal run http_circuit_breaker.bal
 

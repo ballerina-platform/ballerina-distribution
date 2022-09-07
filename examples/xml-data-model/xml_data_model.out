@@ -1,4 +1,4 @@
-bal run xml.bal
+$ bal run xml.bal
 <book>The Lost World</book>
 Hello, world!
 <!--I am a comment-->

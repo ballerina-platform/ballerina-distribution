@@ -1,4 +1,4 @@
-bal run xml_subtyping.bal
+$ bal run xml_subtyping.bal
 Hello World
 true
 true
