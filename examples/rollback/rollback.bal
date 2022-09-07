@@ -48,7 +48,7 @@ function transfer(Update[] updates) returns error? {
 function doUpdate(Update u) returns error? {
     // If the stock amount is less than `-1500`, an error is returned.
     if (u.stockMnt < -1500) {
-        return error("Not enough Stocks: ", stockIndex = u.updateIndex);
+        return error("Not enough stocks: ", stockIndex = u.updateIndex);
     }
 
     return;
@@ -60,7 +60,7 @@ function incrementSalary(int[] salaryList) returns error? {
             salaryList[index] += 100;
         }
 
-        // If the new total salary exceeds `1000`, then the rollback statement performs 
+        // If the new total salary exceeds `1000`, then, the rollback statement performs 
         // rollback on the transaction.
         if (salaryList.reduce(function(int total, int n) returns int => total + n, 0) > 1000) {
             io:println("Salary limit exceeded");
