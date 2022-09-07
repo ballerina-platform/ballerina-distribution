@@ -1,1 +1,1 @@
-bal run http_data_binding.bal
+$ bal run http_data_binding.bal

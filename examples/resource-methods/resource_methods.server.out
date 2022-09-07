@@ -1,1 +1,1 @@
-bal run resource_methods.bal
+$ bal run resource_methods.bal

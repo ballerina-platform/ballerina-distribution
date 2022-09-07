@@ -2,15 +2,14 @@ import ballerina/graphql;
 
 service /graphql on new graphql:Listener(4000) {
 
-    // This resource function returns an array of the `Character` interface
-    // type.
+    // This resource function returns an array of the `Character` interface type.
     resource function get characters() returns Character[] {
         return [new Human("Luke Skywalker", 1), new Droid("R2D2", 1977)];
     }
 }
 
-// A GraphQL interface can be defined using a distinct service class.
-// Each resource function in the class maps to a field in the interface.
+// A GraphQL interface can be defined using a distinct service class. Each resource function in the
+// class maps to a field in the interface.
 public distinct service class Character {
 
     final string name;
@@ -19,17 +18,15 @@ public distinct service class Character {
         self.name = name;
     }
 
-    // Every class that implements this class must have this resource
-    // function.
+    // Every class that implements this class must have this resource function.
     resource function get name() returns string {
         return self.name;
     }
 }
 
-// A GraphQL object that implements an interface must be a distinct service
-// class in Ballerina. Type inclusion is used to mark it as an interface
-// implementation. The implementing classes must contain all the resource
-// functions in the interface class and it can have additional resource
+// A GraphQL object that implements an interface must be a distinct service class in Ballerina.
+// Type inclusion is used to mark it as an interface implementation. The implementing classes must
+// contain all the resource functions in the interface class and it can have additional resource
 // functions.
 public distinct service class Human {
 
@@ -44,8 +41,8 @@ public distinct service class Human {
         self.id = id;
     }
 
-    // This is a common field in the interface type. This resource function
-    // must be implemented here.
+    // This is a common field in the interface type. This resource function must be implemented
+    // here.
     resource function get name() returns string {
         return self.name;
     }

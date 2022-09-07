@@ -1,4 +1,4 @@
-bal run http_retry.bal.bal
+$ bal run http_retry.bal.bal
 time = 2021-01-21 19:00:21,374 level = INFO  module = "" message = "Request received from the client to delayed service."
 time = 2021-01-21 19:00:26,379 level = INFO  module = "" message = "Request received from the client to delayed service."
 time = 2021-01-21 19:00:34,402 level = INFO  module = "" message = "Request received from the client to delayed service."
