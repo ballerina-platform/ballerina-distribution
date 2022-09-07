@@ -139,13 +139,6 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Interface to external code",
-                "url": "interface-to-external-code",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
                 "name": "Included record parameters",
                 "url": "included-record-parameters",
                 "verifyBuild": true,
@@ -1019,6 +1012,20 @@
             {
                 "name": "Inferring isolated",
                 "url": "inferring-isolated",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            }
+        ]
+    },
+    {
+        "title": "Interface to external code",
+        "column": 3,
+        "category": "Language concepts",
+        "samples": [
+            {
+                "name": "Interface to external code",
+                "url": "interface-to-external-code",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true

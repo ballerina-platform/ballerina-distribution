@@ -1,13 +1,14 @@
 import ballerina/jballerina.java;
 
-// Returns the `out` field in `java.lang.System` class.
-// `java.lang.System.out` is of java.io.printString type.
+// Returns the `out` field in the `java.lang.System` class.
+// `java.lang.System#out` is of the `java.io.PrintStream` type.
 public function getStdOut() returns handle = @java:FieldGet {
     name: "out",
     'class: "java/lang/System"
 } external;
 
-// Invoke the `println` method in `java.lang.System.out` which accepts one string parameter.
+// Invoke the `println` method on `java.lang.System#out`, 
+// which accepts a `java.lang.String` parameter.
 public function printInternal(handle receiver, handle strValue) = @java:Method {
     name: "println",
     'class: "java/io/PrintStream",
@@ -16,5 +17,6 @@ public function printInternal(handle receiver, handle strValue) = @java:Method {
 
 public function main() {
     handle stdOut = getStdOut();
-    printInternal(stdOut, java:fromString("Hello World"));
+    handle str = java:fromString("Hello World");
+    printInternal(stdOut, str);
 }
