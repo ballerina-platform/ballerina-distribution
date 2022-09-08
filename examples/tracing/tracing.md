@@ -4,7 +4,7 @@ Ballerina supports Observability out of the box, and Tracing is one of the three
 
 The developers can trace their code blocks and measure the time incurred during the actual runtime execution. They can choose to hook their measurement with the default trace created or can create a completely new trace.
 
-For more information about configs and observing applications, see [Observing Ballerina Code](https://ballerina.io/learn/observing-ballerina-code/).
+For more information about configs and observing applications, see [Observe Ballerina programs](/learn/observe-ballerina-programs/).
 
 ::: code tracing.bal :::
 
