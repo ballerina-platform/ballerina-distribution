@@ -3,9 +3,11 @@ import ballerina/log;
 
 service / on new http:Listener(9090) {
 
-    resource function 'default hello(http:Caller caller, http:Request request) returns error? {
-        // [Check if the client expects a `100-continue` response](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#expects100Continue).
-        if request.expects100Continue() {
+    resource function 'default hello(http:Caller caller, http:Request request)
+            returns error? {
+        // Check if the client expects a 100-continue response.
+        // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#expects100Continue.
+        if (request.expects100Continue()) {
             string mediaType = request.getContentType();
             if mediaType.toLowerAscii() == "text/plain" {
 

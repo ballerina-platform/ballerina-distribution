@@ -6,7 +6,7 @@ Ballerina uses the concept of scopes for authorization. A resource declared in a
 
 In the authorization phase, the scopes of the service are compared against the scope included in the introspection response for at least one match between the two sets.
 
-For more information on the underlying module, see the [`oauth2` module](https://docs.central.ballerina.io/ballerina/oauth2/latest/).
+For more information on the underlying module, see the [`oauth2` module](https://lib.ballerina.io/ballerina/oauth2/latest/).
 
 ::: code graphql_service_oauth2.bal :::
 

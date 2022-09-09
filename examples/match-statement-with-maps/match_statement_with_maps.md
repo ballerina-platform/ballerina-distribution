@@ -1,6 +1,6 @@
 # Match statement with maps
 
-A `match` statement can be used to match maps. Patterns on the left-hand side in a match statement can have variable parts that can be captured. It is useful for working directly with `json`. Match semantics are open (may have fields other than those specified in the pattern).
+Match statement can be used to match maps. Patterns on the left hand side in a match statement can have variable parts that can be captured. Useful for working directly with `json`. Match semantics are open (may have fields other than those specified in the pattern).
 
 ::: code match_statement_with_maps.bal :::
 

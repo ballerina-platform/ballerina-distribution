@@ -30,8 +30,8 @@ Once you run the command, the `grpc_client_pb.bal` file is generated inside the 
 
    ::: code grpc_client_basic_auth.bal :::
 
-4. Execute the commands below to build and run the 'client' package. You may need to change the trusted certificate file path.
+4. Execute the commands below to build and run the `client` package. You may need to change the trusted certificate file path.
+
+>**Info:** As a prerequisite, start a sample service secured with Basic Auth.
 
    ::: out grpc_client_basic_auth.out :::
-
-As a prerequisite, start a sample service secured with Basic Auth.

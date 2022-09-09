@@ -944,6 +944,63 @@ task testExamples() {
     }
 }
 
+def buildStandardLibs = { distPath, stdlibTest, isStageTest, testMinorVersionDifference ->
+    def exitVal
+    def additionalBuildParams = ""
+
+    if (stdlibTest == "config") {
+        additionalBuildParams = "--user.name=ballerina-user"
+    }
+
+    if (stdlibTest == "websub-generic" || stdlibTest == "websub-advance") {
+        additionalBuildParams = "--test.hub.url=https://localhost:23191/websub/hub"
+    }
+
+    println "Testing standard library ${stdlibTest}"
+    if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+        if (!isStageTest) {
+            exec {
+                workingDir "${distPath}/${stdlibTest}"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal/bal.bat init test"
+            }
+        }
+        if (testMinorVersionDifference) {
+            exec {
+                workingDir "${distPath}/${stdlibTest}"
+                commandLine 'cmd', '/c', "rm Dependencies.toml"
+            }
+        }
+        exitVal = exec {
+            ignoreExitValue true
+            workingDir "${distPath}/${stdlibTest}"
+            commandLine 'cmd', '/c', "${distPath}/bin/bal.bat build ${additionalBuildParams}"
+        }
+    } else {
+        if (!isStageTest) {
+            exec {
+                workingDir "${distPath}/${stdlibTest}"
+                commandLine 'sh', '-c', "${distPath}/bin/bal init test"
+            }
+        }
+        if (testMinorVersionDifference) {
+            exec {
+                workingDir "${distPath}/${stdlibTest}"
+                commandLine 'sh', '-c', "rm Dependencies.toml"
+            }
+        }
+        exitVal = exec {
+            environment "BALLERINA_STAGE_CENTRAL", "$isStageTest"
+            ignoreExitValue true
+            workingDir "${distPath}/${stdlibTest}"
+            commandLine 'sh', '-c', "${distPath}/bin/bal build ${additionalBuildParams}"
+        }
+    }
+    if (exitVal.getExitValue() == 1) {
+        return true
+    }
+    return false
+}
+
 task testStdlibs() {
     def distPath = "${project.rootDir}/ballerina/build/target/extracted-distributions/ballerina-${version}-${codeName}"
     def stdlibTestsList = []
@@ -972,52 +1029,11 @@ task testStdlibs() {
         }
     }
 
-    ext.buildStandardLibs = { stdlibTest ->
-        def exitVal
-        def additionalBuildParams = ""
-
-        if (stdlibTest == "config") {
-            additionalBuildParams = "--user.name=ballerina-user"
-        }
-
-        if (stdlibTest == "websub-generic" || stdlibTest == "websub-advance") {
-            additionalBuildParams = "--test.hub.url=https://localhost:23191/websub/hub"
-        }
-
-        println "Testing standard library ${stdlibTest}"
-        if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-            //TODO: Need to verify with windows
-            exec {
-                workingDir "${distPath}/${stdlibTest}"
-                commandLine 'cmd', '/c', "${distPath}/bin/bal/bal.bat init test"
-            }
-            exitVal = exec {
-                ignoreExitValue true
-                workingDir "${distPath}/${stdlibTest}"
-                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat build ${additionalBuildParams}"
-            }
-        } else {
-            exec {
-                workingDir "${distPath}/${stdlibTest}"
-                commandLine 'sh', '-c', "${distPath}/bin/bal init test"
-            }
-            exitVal = exec {
-                ignoreExitValue true
-                workingDir "${distPath}/${stdlibTest}"
-                commandLine 'sh', '-c', "${distPath}/bin/bal build ${additionalBuildParams}"
-            }
-        }
-        if (exitVal.getExitValue() == 1) {
-            return true
-        }
-        return false
-    }
-
     doLast {
         def failedStdLibs = []
         stdlibTestsList.each { stdlibTest ->
             if (stdlibTest.enableTest) {
-                boolean stdLibTestFailFlag = buildStandardLibs(stdlibTest.path)
+                boolean stdLibTestFailFlag = buildStandardLibs(distPath, stdlibTest.path, false, false)
                 if (stdLibTestFailFlag) {
                     failedStdLibs.add(stdlibTest.path);
                 }
@@ -1033,6 +1049,46 @@ task testStdlibs() {
             throw new GradleException('There are test failures')
         }
 
+    }
+}
+
+// Task used to run automated testing before stdlib release. Not executed during normal build
+task testStdlibsWithStaging() {
+
+    def distPath = "${project.rootDir}/ballerina/build/target/extracted-distributions/ballerina-${version}-${codeName}"
+    def stdlibTestsList = []
+    def testMinorVersionDifference = project.hasProperty('testMinorVersionDifference') ? true : false
+
+    doFirst {
+        def indexJsonFile = new File("${distPath}/index.json")
+        def stdlibTests = new JsonSlurper().parseText(indexJsonFile.text)
+        stdlibTests.each { stdlibTest ->
+            def folder = new File("${distPath}/${stdlibTest.path}")
+            if (folder.exists()) {
+                stdlibTestsList.push(stdlibTest)
+            }
+        }
+    }
+
+    doLast {
+        def failedStdLibs = []
+        stdlibTestsList.each { stdlibTest ->
+            if (stdlibTest.enableTest) {
+                boolean stdLibTestFailFlag = buildStandardLibs(distPath, stdlibTest.path, true, testMinorVersionDifference)
+                if (stdLibTestFailFlag) {
+                    failedStdLibs.add(stdlibTest.path);
+                }
+            }
+        }
+
+        if (!failedStdLibs.isEmpty()) {
+            sleep(10 * 1000)
+            println "\n\tThe following Standard Library Tests Failed with Staging Central:\n"
+            failedStdLibs.each {
+                println "\t ${it}"
+            }
+            throw new GradleException('There are test failures')
+        }
     }
 }
 

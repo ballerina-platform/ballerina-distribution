@@ -1,11 +1,8 @@
 # Client - OAuth2 Refresh Token grant type
 
-A client, which is secured with an OAuth2 refresh token grant type can be
-used to connect to a secured service.
+A client, which is secured with an OAuth2 refresh token grant type can be used to connect to a secured service.
 
-The client metadata is enriched with the `Authorization: Bearer <token>`
-header by passing the `grpc:OAuth2RefreshTokenGrantConfig` to the `auth`
-configuration of the client.
+The client metadata is enriched with the `Authorization: Bearer <token>` header by passing the `grpc:OAuth2RefreshTokenGrantConfig` to the `auth` configuration of the client.
 
 >**Info:** For more information on the underlying module, see the [`oauth2` module](https://lib.ballerina.io/ballerina/oauth2/latest/).
 
@@ -35,8 +32,6 @@ Once you run the command, the `grpc_client_pb.bal` file is generated inside the 
 
 4. Run the client using the command below.
 
+>**Info:** As a prerequisite, start a sample service secured with OAuth2. You may need to change the trusted certificate file path.
+
    ::: out grpc_client_oauth2_refresh_token_grant_type.out :::
-
-As a prerequisite, start a sample service secured with OAuth2.
-
-You may need to change the trusted certificate file path.

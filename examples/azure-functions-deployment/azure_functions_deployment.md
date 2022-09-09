@@ -1,8 +1,8 @@
 # Azure Functions
 
-Azure Functions is an event-driven, serverless computing platform. Ballerina functions can be deployed in Azure Functions by annotating a Ballerina function with the Azure functions annotation. 
+Azure Functions is an event driven, serverless computing platform. Ballerina functions can be deployed in Azure Functions by annotating a Ballerina function with Azure functions annotation". You can view the code examples below.
 
-The `Trigger`, `Input`, and `Output` bindings parameter annotations were introduced as per the Azure functions programming model. For more information, see [Azure deployment](/learn/deployment/azure-functions/).
+For more information, see the [Azure deployment guide](https://ballerina.io/learn/deployment/azure-functions/).
 
 ::: code azure_functions_deployment.bal :::
 
@@ -18,5 +18,4 @@ Execute the Azure CLI command given by the compiler to publish the functions (re
 Invoke the `HTTP Trigger` functions.
 ::: out execute_function.out :::
 
-The `queuePopulationTimer` function is being triggered by the Azure Function App from a timer. You can check the 
-queue storage to see the output. For more information on the infrastructure, see [Azure Functions deployment](/learn/deployment/azure-functions/).
+The `queuePopulationTimer` function is being triggered by the Azure Function App from a timer. You can check the  queue storage to see the output. For more information on the infrastructure, see [Azure Functions deployment](/learn/deployment/azure-functions/).
