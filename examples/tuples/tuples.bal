@@ -1,7 +1,7 @@
 import ballerina/io;
 
-// This tuple type contains a list whose first member is the `string` type
-// and the second and third members are the `int` type.
+// This tuple type contains a list whose first member is of the `string` type
+// and the second and third members are of the `int` type.
 type Id [string, int, int];
 
 type FloatPairArray float[2];
