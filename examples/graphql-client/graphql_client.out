@@ -1,0 +1,4 @@
+$ bal run graphql_client.bal
+
+# This will print the output below upon successful retrieval of response.
+Walter White
