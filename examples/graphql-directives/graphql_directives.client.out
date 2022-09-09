@@ -1,0 +1,12 @@
+# Using @skip directive in query
+# The query used: { profile { name, address @skip(if: true) { city } } }
+
+curl -X POST -H "Content-type: application/json" -d '{ "query": "{ profile { name, address @skip(if: true) { city } } }" }' 'http://localhost:4000/graphql'
+{"data":{"profile":{"name":"Walter White"}}}
+
+
+# Using @include directive in query
+# The query used: { profile { name, address @include(if: true) { city } } }
+
+curl -X POST -H "Content-type: application/json" -d '{ "query": "{ profile { name, address @include(if: true) { city } } }" }' 'http://localhost:4000/graphql'
+{"data":{"profile":{"name":"Walter White", "address":{"city":"Albuquerque"}}}}
