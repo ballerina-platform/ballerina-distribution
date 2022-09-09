@@ -2,7 +2,7 @@
 
 The Ballerina `io` library contains APIs to read/write text content from/to a file.
 
-For more information on the underlying module, see the [`io` module](https://docs.central.ballerina.io/ballerina/io/latest/).
+For more information on the underlying module, see the [`io` module](https://lib.ballerina.io/ballerina/io/latest/).
 
 ::: code io_strings.bal :::
 

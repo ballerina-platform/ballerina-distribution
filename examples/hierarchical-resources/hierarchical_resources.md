@@ -1,6 +1,6 @@
 # Hierarchical resources
 
-Resource name is a relative path, which can have multiple path segments. Base path is an absolute path. A listener can have multiple services each with different base paths.
+Resource name is relative path, which can have multiple path segments. Base path is absolute path. A listener can have multiple services each with different base paths.
 
 ::: code hierarchical_resources.bal :::
 

@@ -1,8 +1,6 @@
 # Historical message replay
 
-The `nats` streaming library provides the functionality of historical message replay.
-
-New subscriptions may specify a starting position in the stream of messages stored for the channel of the subscribed subject.
+The `nats` streaming library provides the functionality of historical message replay. New subscriptions may specify a starting position in the stream of messages stored for the channel of the subscribed subject.
 
 Message delivery may begin at:
 1. The earliest message stored for this subject.

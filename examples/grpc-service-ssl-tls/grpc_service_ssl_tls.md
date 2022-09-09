@@ -1,8 +1,6 @@
 # Service - SSL/TLS
 
-You can use the gRPC listener to connect to or interact with a gRPC client secured with SSL/TLS.
-Provide the `grpc:ListenerSecureSocket` configurations to the server to
-expose an HTTPS connection over HTTP/2.
+You can use the gRPC listener to connect to or interact with a gRPC client secured with SSL/TLS. Provide the `grpc:ListenerSecureSocket` configurations to the server to expose an HTTPS connection over HTTP/2.
 
 >**Info:** For more information on the underlying module, see the [`grpc` module](https://lib.ballerina.io/ballerina/grpc/latest/).
 
@@ -32,6 +30,6 @@ Once you run the command, the `grpc_service_pb.bal` file is generated inside the
 
 4. Execute the commands below to build and run the `service` package.
 
-   ::: out grpc_service_ssl_tls.server.out :::
+>**Info:** You may need to change the certificate file path and private key file path.
 
-You may need to change the certificate file path and private key file path.
+   ::: out grpc_service_ssl_tls.server.out :::

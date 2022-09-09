@@ -1,7 +1,6 @@
 # Server streaming RPC
 
-The gRPC Server Connector is used to expose gRPC services over HTTP/2.
-In a gRPC server streaming scenario, a client sends a request to the server and gets a stream to read the messages until all the messages are read.
+The gRPC Server Connector is used to expose gRPC services over HTTP/2. In a gRPC server streaming scenario, a client sends a request to the server and gets a stream to read the messages until all the messages are read.
 
 >**Info:** For more information on the underlying module, see the [`grpc` module](https://lib.ballerina.io/ballerina/grpc/latest/).
 
@@ -29,7 +28,7 @@ Once you run the command, the `grpc_server_streaming_pb.bal` file is generated i
 
    ::: code grpc_server_streaming_service.bal :::
 
-4. Execute the commands below to build and run the 'service' package.
+4. Execute the commands below to build and run the `service` package.
 
    ::: out grpc_server_streaming_service.out :::
 
@@ -43,6 +42,6 @@ Once you run the command, the `grpc_server_streaming_pb.bal` file is generated i
 
    ::: code grpc_server_streaming_service_client.bal :::
 
-4. Execute the commands below to build and run the 'client' package.
+4. Execute the commands below to build and run the `client` package.
 
    ::: out grpc_server_streaming_service_client.out :::

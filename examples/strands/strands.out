@@ -1,4 +1,4 @@
-$ bal run strands.bal
+bal run strands.bal
 In function worker
 In worker B
 Worker B end

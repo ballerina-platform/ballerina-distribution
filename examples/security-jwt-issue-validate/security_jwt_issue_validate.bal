@@ -10,8 +10,8 @@ public function main() returns error? {
         audience: "vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
         keyId: "NTAxZmMxNDMyZDg3MTU1ZGM0MzEzODJhZWI4NDNlZDU1OGFkNjFiMQ",
         expTime: 3600,
-        // Signature can be created using either the private key configurations or 
-        // keystore configurations. Refer [`jwt:IssuerSignatureConfig`](https://docs.central.ballerina.io/ballerina/jwt/latest/records/IssuerSignatureConfig) for more information.
+        // Signature can be created using either the private key configurations or keystore configurations.
+        // For details, see https://lib.ballerina.io/ballerina/jwt/latest/records/IssuerSignatureConfig.
         signatureConfig: {
             config: {
                 keyFile: "../resource/path/to/private.key"
@@ -29,9 +29,8 @@ public function main() returns error? {
         issuer: "wso2",
         audience: "vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
         clockSkew: 60,
-        // Signature can be validated using the public certificate file, 
-        // truststore configurations, or JWKS configurations. 
-        // Refer [`jwt:ValidatorSignatureConfig`](https://docs.central.ballerina.io/ballerina/jwt/latest/records/ValidatorSignatureConfig) for more information.
+        // Signature can be validated using the public certificate file, truststore configurations, or JWKS configurations.
+        // For detials, see https://lib.ballerina.io/ballerina/jwt/latest/records/ValidatorSignatureConfig.
         signatureConfig: {
             certFile: "../resource/path/to/public.crt"
         }

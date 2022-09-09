@@ -9,6 +9,7 @@ jobs:
   ubuntu-build:
 
     runs-on: ubuntu-latest
+    if: github.repository_owner == 'ballerina-platform'
 
     steps:
       - name: Checkout Repository
@@ -122,7 +123,8 @@ jobs:
           --data "{
             \"event_type\": \"notify-build-failure\",
             \"client_payload\": {
-              \"repoName\": \"ballerina-distribution\"
+              \"repoName\": \"ballerina-distribution\",
+              \"branch\": \"master\"
             }
           }"
       - name: Checkout docker repo

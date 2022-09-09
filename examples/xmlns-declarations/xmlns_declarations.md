@@ -1,10 +1,8 @@
 # XMLNS declarations
 
-`xmlns` declarations are like import declarations but they bind the prefix to a namespace URL rather than a module. 
+The `xmlns` declarations are like import declarations, but bind the prefix to a namespace URL rather than a module. The `xmlns` declarations in the Ballerina module provide namespace context for parsing `xml` templates. 
 
-`xmlns` declarations in a Ballerina module provide namespace contexts for parsing `xml` templates. Qualified names in Ballerina modules are expanded into strings using the `xmlns` declarations in the module. 
-
-`xmlns` declarations are also allowed at block level.
+The Qualified names in Ballerina modules are expanded into `strings` using the `xmlns` declarations in the module. The `xmlns` declarations are also allowed at block level.
 
 ::: code xmlns_declarations.bal :::
 

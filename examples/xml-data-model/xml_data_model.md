@@ -1,24 +1,20 @@
 # XML data model
 
-An `xml` value is a sequence representing the parsed content of an XML element. It consists of the four items below:
+An `xml` value is a sequence representing the parsed content of an XML element. An `xml` value has four kinds of items.
 
-- Element
-- Processing Instruction
-- Comment
-- Text
+- The element, processing instruction, and comment singletons correspond directly to the items in the XML information set
+- The text item corresponds to one or more character information items
 
-The element, processing instruction, and comment singletons correspond directly to the items in the XML information set. The text item corresponds to one or more character information items.
+XML document is an `xml` sequence with only one `element` and no `text`. An `element` item is mutable and consists of:
 
-An XML document is an `xml` sequence with only one `element` and no `text`. An `element` item is mutable and consists of:
+- name: type `string`
+- attributes: type `map<string>`
+- children: type `xml`
 
-- `name`: type `string`
-- `attributes`: type `map<string>`
-- `children`: type `xml`
+A `text` item is immutable.
 
-An XML `text` item is immutable.
-
-- It has no identity: `==` is the same as `===`
-- Consecutive `text` items never occur in an `xml` value: they are always merged
+- it has no identity: `==` is the same as `===`
+- consecutive `text` items never occur in an `xml` value: they are always merged
 
 ::: code xml_data_model.bal :::
 

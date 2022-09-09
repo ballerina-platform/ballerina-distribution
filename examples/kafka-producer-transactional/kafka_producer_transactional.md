@@ -1,8 +1,6 @@
 # Transactional producer
 
-This shows how to do transactional message producing by sending messages to Kafka brokers atomically using the `kafka:Producer` client.
-
-For this to work properly, an active Kafka broker should be present.
+This shows how to do transactional message producing by sending messages to Kafka brokers atomically using the `kafka:Producer` client. For this to work properly, an active Kafka broker should be present.
 
 For more information on the underlying module, see the [`kafka` module](https://lib.ballerina.io/ballerinax/kafka/latest).
 

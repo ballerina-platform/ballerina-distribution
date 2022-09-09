@@ -1,9 +1,8 @@
 # Service - SSL/TLS
 
-You can use the HTTPS listener to connect to or interact with an HTTPS client.
-Provide the `http:ListenerSecureSocket` configurations to the server to expose an HTTPS connection.
+You can use the HTTPS listener to connect to or interact with an HTTPS client. Provide the `http:ListenerSecureSocket` configurations to the server to expose an HTTPS connection.
 
-For more information on the underlying module, see the [`http` module](https://docs.central.ballerina.io/ballerina/http/latest/).
+For more information on the underlying module, see the [`http` module](https://lib.ballerina.io/ballerina/http/latest/).
 
 ::: code http_service_ssl_tls.bal :::
 

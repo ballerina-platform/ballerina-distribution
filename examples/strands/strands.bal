@@ -9,7 +9,7 @@ function userSpeakerService(string userName) {
 
 public function main() {
     // By default, named workers are multitasked cooperatively, not preemptively.
-    // Each named worker has a `strand` (a logical thread of control) and 
+    // Each named worker has a `strand` (a logical thread of control) and
     // the execution switches between strands only at specific `yield` points.
     worker A {
         io:println("In worker A");

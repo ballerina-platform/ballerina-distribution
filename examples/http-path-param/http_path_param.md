@@ -1,9 +1,8 @@
 # Path parameter
 
-The `http` module provides first-class support for specifying `Path parameters` in the resource path along with the type.
-The supported types are string, int, float, boolean, and decimal (e.g., `path/[string foo]`).
+The `http` module provides first class support for specifying `Path parameters` in the resource path along with the type. The supported types are string, int, float, boolean, and decimal (e.g., path/[string foo]).
 
-For more information on the underlying module, see the [HTTP module](https://docs.central.ballerina.io/ballerina/http/latest/).
+For more information on the underlying module, see the [`http` module](https://lib.ballerina.io/ballerina/http/latest/).
 
 ::: code http_path_param.bal :::
 

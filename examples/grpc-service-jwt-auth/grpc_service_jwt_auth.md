@@ -1,10 +1,8 @@
 # Service - JWT Auth
 
-A gRPC service/resource can be secured with JWT and by enforcing authorization optionally. Then, it validates the JWT sent in the
-`Authorization` metadata against the provided configurations.
+A gRPC service/resource can be secured with JWT and by enforcing authorization optionally. Then, it validates the JWT sent in the `Authorization` metadata against the provided configurations.
 
-Ballerina uses the concept of scopes for authorization. A resource declared in a service can be bound to one/more scope(s). The scope can be included
-in the JWT using a custom claim attribute. That custom claim attribute also can be configured as the `scopeKey`.
+Ballerina uses the concept of scopes for authorization. A resource declared in a service can be bound to one/more scope(s). The scope can be included in the JWT using a custom claim attribute. That custom claim attribute also can be configured as the `scopeKey`.
 
 In the authorization phase, the scopes of the service/resource are compared against the scope included in the JWT for at least one match between the two sets.
 
@@ -34,8 +32,8 @@ Once you run the command, the `grpc_service_pb.bal` file is generated inside the
 
    ::: code grpc_service_jwt_auth.bal :::
 
-4. Execute the commands below to build and run the 'service' package.
+4. Execute the commands below to build and run the `service` package.
+
+>**Info:** You may need to change the certificate file path and private key file path.
 
    ::: out grpc_service_jwt_auth.server.out :::
-
-You may need to change the certificate file path and private key file path.

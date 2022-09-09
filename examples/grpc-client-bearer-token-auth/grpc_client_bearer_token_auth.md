@@ -2,8 +2,7 @@
 
 A client, which is secured with Bearer token auth can be used to connect to a secured service.
 
-The client metadata is enriched with the `Authorization: Bearer <token>`
-header by passing the `grpc:BearerTokenConfig` for the `auth` configuration of the client.
+The client metadata is enriched with the `Authorization: Bearer <token>` header by passing the `grpc:BearerTokenConfig` for the `auth` configuration of the client.
 
 ## Generate the service definition
 
@@ -29,10 +28,8 @@ Once you run the command, the `grpc_client_pb.bal` file is generated inside the 
 
    ::: code grpc_client_bearer_token_auth.bal :::
 
-4. Execute the commands below to build and run the 'client' package.
+4. Execute the commands below to build and run the `client` package.
+
+>**Info:** You may need to change the trusted certificate file path. As a prerequisite, start a secured sample service.
 
    ::: out grpc_client_bearer_token_auth.out :::
-
-You may need to change the trusted certificate file path.
-
-As a prerequisite, start a secured sample service.
