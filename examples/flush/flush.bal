@@ -6,7 +6,7 @@ public function main() {
         msg -> B;
 
         // This transmission will not happen.
-        msg + 10 -> B;
+        "Hello" -> B;
         
         // Flush all messages sent to worker 'B'. 
         // Worker 'A' will stop here until all messages are sent or until a failure occurs in 'B'.
@@ -14,24 +14,19 @@ public function main() {
         
         // This will return the `panic` error.
         io:println("Result from worker B : ", result ?: "nil");
-
-        msg -> B;
     }
 
     worker B {
-        int receivedMsg;
+        int value;
 
-        receivedMsg = <- A;
-        io:println(string `Received ${receivedMsg} from worker A`);
+        value = <- A;
+        io:println(string `Received integer ${value} from worker A`);
 
-        if receivedMsg == 10 {
+        if value == 10 {
             panic error("Error in worker B");
         }
 
-        receivedMsg = <- A;
-        io:println(string `Received ${receivedMsg} from worker A`);
-
-        receivedMsg = <- A;
-        io:println(string `Received ${receivedMsg} from worker A`);
+        string text = <- A;
+        io:println(string `Received string "${text}" from worker A`);
     }
 }
