@@ -8,7 +8,7 @@ In the authorization phase, the scopes of the service are compared against the s
 
 `Config.toml` has defined three users - alice, ldclakmal and eve. Each user has a password and optionally assigned scopes as an array.
 
-For more information on the underlying module, see the [Auth module](https://lib.ballerina.io/ballerina/auth/latest/).
+For more information on the underlying module, see the [`auth` module](https://lib.ballerina.io/ballerina/auth/latest/).
 
 ::: code graphql_service_basic_auth_file_user_store.bal :::
 

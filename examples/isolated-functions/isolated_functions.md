@@ -4,9 +4,9 @@ A call to an `isolated` function is concurrency-safe if it is called with argume
 
 A function defined as `isolated`:
 
-- has access to mutable state only through its parameters</li>
-- has unrestricted access to immutable state</li>
-- can only call functions that are `isolated`</li>
+- has access to mutable state only through its parameters
+- has unrestricted access to immutable state
+- can only call functions that are `isolated`
 
 Constraints are enforced at compile-time. `isolated` is a part of the function type. Weaker concept than pure function.
 

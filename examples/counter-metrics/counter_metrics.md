@@ -4,7 +4,7 @@ Ballerina supports Observability out of the box and Metrics is one of the three 
 
 You can define and use metrics to measure your own logic. A counter is one type of the metrics that is supported by default in Ballerina, and it is a cumulative metric that represents a single monotonically-increasing counter whose value can only increase or be reset to zero.
 
-For more information about configs and observing applications, see [Observing Ballerina Code](https://ballerina.io/learn/observing-ballerina-code/).
+For more information about configs and observing applications, see [Observe Ballerina programs](/learn/observe-ballerina-programs/).
 
 ::: code counter_metrics.bal :::
 

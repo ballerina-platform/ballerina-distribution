@@ -4,9 +4,9 @@ Combining `isolated` functions and `lock` allows `isolated` functions to use `lo
 
 An expression is an `isolated` expression if it follows rules that guarantee that its value will be an `isolated` root. E.g.,
 
-- an expression with a type that is a subtype of `readonly` is always `isolated`</li>
-- an expression `[E1, E2]` is isolated if `E1` and `E2` are `isolated`</li>
-- an expression `f(E1, E2)` is `isolated` if `E1` and `E1` are `isolated`, and the type of `f` is an `isolated` function.</li>
+- an expression with a type that is a subtype of `readonly` is always `isolated`
+- an expression `[E1, E2]` is isolated if `E1` and `E2` are `isolated`
+- an expression `f(E1, E2)` is `isolated` if `E1` and `E1` are `isolated`, and the type of `f` is an `isolated` function.
 
 ::: code combining_isolated_functions_and_lock.bal :::
 
