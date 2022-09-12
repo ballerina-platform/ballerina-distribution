@@ -2,8 +2,7 @@ import ballerina/io;
 
 public function main() {
     worker A {
-        int msg = 10;
-        msg -> B;
+        10 -> B;
 
         // This transmission will not happen.
         "Hello" -> B;
@@ -17,9 +16,7 @@ public function main() {
     }
 
     worker B {
-        int value;
-
-        value = <- A;
+        int value = <- A;
         io:println(string `Received integer ${value} from worker A`);
 
         if value == 10 {
