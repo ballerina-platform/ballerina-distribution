@@ -90,7 +90,7 @@ jaeger-thrift-0.31.0.jar                                                        
 jboss-logging-3.3.1.Final.jar                                                                       bundle         apache2             
 java-diff-utils-4.5.jar                                                                             bundle         apache2             
 atomikos-util-5.0.8.jar                                                                             jar            apache2             
-snakeyaml-1.26.jar                                                                                  bundle         apache2             
+snakeyaml-1.31.jar                                                                                  bundle         apache2
 bool-2201.1.0.jar                                                                                   jar            apache2             
 org.wso2.transport.http.netty-6.3.11.jar                                                            bundle         apache2             
 jackson-core-2.13.2.jar                                                                             bundle         apache2             
