@@ -1,11 +1,11 @@
 import ballerina/io;
 
-// You can define the return value expression using the => notation instead of using
-// curly braces to define the function body block, whenevere the function body is just
+// You can define the return value expression using the `=>` notation instead of using
+// curly braces to define the function body block when the function body is just
 // a return statement with an expression.
 function inc1(int x) returns int => x + 1;
 
-// inc2(int x) is the same as inc1(int x)
+// `inc2(int x)` is the same as` inc1(int x)`.
 function inc2(int x) returns int {
     return x + 1;
 }
