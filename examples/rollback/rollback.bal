@@ -62,8 +62,9 @@ function incrementSalary(int[] salaryList) returns error? {
 
         // If the new total salary exceeds `1000`, then, the rollback statement performs 
         // rollback on the transaction.
-        if (salaryList.reduce(function(int total, int n) returns int => total + n, 0) > 1000) {
-            io:println("Salary limit exceeded");
+        int salarySum = int:sum(...salaryList);
+        if (salarySum > 1000) {
+            io:println("Budget exceeded");
             rollback;
         } else {
             io:println("Salary increment successful");
