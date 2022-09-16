@@ -189,41 +189,6 @@
         "category": "Language concepts",
         "samples": [
             {
-                "name": "Arrays",
-                "url": "arrays",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Tuples",
-                "url": "tuples",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Destructure tuples",
-                "url": "destructure-tuples",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Rest type in tuples",
-                "url": "rest-type-in-tuples",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Binary data",
-                "url": "binary-data",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
                 "name": "Structural typing",
                 "url": "structural-typing",
                 "verifyBuild": true,
@@ -304,6 +269,48 @@
             {
                 "name": "Dependent types",
                 "url": "dependent-types",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            }
+        ]
+    },
+    {
+        "title": "Lists",
+        "column": 1,
+        "category": "Language concepts",
+        "samples": [
+            {
+                "name": "Arrays",
+                "url": "arrays",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Tuples",
+                "url": "tuples",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Destructure tuples",
+                "url": "destructure-tuples",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Rest type in tuples",
+                "url": "rest-type-in-tuples",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Binary data",
+                "url": "binary-data",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true

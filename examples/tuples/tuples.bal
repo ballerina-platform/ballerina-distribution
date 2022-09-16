@@ -7,7 +7,7 @@ type Id [string, int, int];
 type FloatPairArray float[2];
 
 // Ballerina allows defining the same list type of two floats as `FloatPairArray` using a tuple 
-// type by specifying the float type twice within the square brackets of the tuple declaration.
+// type by specifying the float type twice within the square brackets of the tuple definition.
 type FloatPairTuple [float, float];
 
 public function main () {
