@@ -10,6 +10,6 @@ function foo(int n, string... s) {
 }
 
 public function main() {
-    // Param `s` will be ["x", "y", "z"].
+    // The `s` parameter will be `["x", "y", "z"]`.
     foo(1, "x", "y", "z");
 }
