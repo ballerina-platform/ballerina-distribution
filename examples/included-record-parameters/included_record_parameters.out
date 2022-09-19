@@ -1,0 +1,5 @@
+$ bal run included_record_parameters.bal
+Input File:file.txt
+Options:{"verbose":true,"outputFile":null}
+Input File:file.txt
+Options:{"verbose":true,"outputFile":null}

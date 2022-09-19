@@ -2,7 +2,7 @@
 
 The `log` library contains the application log handling functions.
 
-For more information on the underlying module, see the [Log module](https://lib.ballerina.io/ballerina/log/latest/).
+For more information on the underlying module, see the [`log` module](https://lib.ballerina.io/ballerina/log/latest/).
 
 ::: code logging.bal :::
 

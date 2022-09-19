@@ -1,1 +1,1 @@
-bal run http_cors.bal
+$ bal run http_cors.bal

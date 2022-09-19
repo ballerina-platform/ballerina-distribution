@@ -1,4 +1,4 @@
-bal run match_statement.bal
+$ bal run match_statement.bal
 string
 number
 any

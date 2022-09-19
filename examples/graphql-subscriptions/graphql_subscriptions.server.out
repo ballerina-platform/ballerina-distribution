@@ -1,1 +1,1 @@
-bal run graphql_subscriptions.bal
+$ bal run graphql_subscriptions.bal

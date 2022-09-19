@@ -1,4 +1,3 @@
-# To invoke the Failover Service, use the cURL command below.
 # The first invocation will take a while but the subsequent invocations will be faster.
-curl http://localhost:9090/fo
+$ curl http://localhost:9090/fo
 Mock Resource is Invoked.

@@ -4,20 +4,16 @@ function demo() returns future<int> {
     worker A returns int {
         return 42;
     }
-    
-    // Futures and workers are the same thing.
+
     // A reference to a named worker can be implicitly converted into a `future`.
     return A;
-
 }
 
 type FuncInt function () returns int;
 
 function startInt(FuncInt f) returns future<int> {
-    // `start` is sugar for calling a function with a named worker and returning
-    // the named worker as a `future`.
+    // `start` is sugar for calling a function with a named worker and returning the named worker as a `future`.
     return start f();
-
 }
 
 public function main() returns error? {
