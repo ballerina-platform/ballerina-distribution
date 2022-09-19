@@ -1,5 +1,9 @@
 $ bal run array_map_symmetry.bal
 foo
 1
+Tuple [1, John, true]
+record {id: 1; name: John; checked: true}
+[1,"John"]
 [1,"John",true,false]
 {"id":1,"name":"John"}
+{"id":1,"name":"John","checked":true}
