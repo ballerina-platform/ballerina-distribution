@@ -17,7 +17,7 @@ public function main() {
     io:println(result);
 
     if (result is error) {
-        // The lang library function `error:cause()` can be used to extract the cause
+        // The `error:cause()` lang library function can be used to extract the cause
         // from an error.
         io:println(result.cause());
     }
