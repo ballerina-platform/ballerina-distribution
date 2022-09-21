@@ -1,3 +1,5 @@
+import ballerina/io;
+
 // Defines the `Update` record type.
 type Update record {
     int updateIndex;
@@ -5,7 +7,6 @@ type Update record {
 };
 
 public function main() returns error? {
-
     // Creates an array of `Update` records.
     Update[] updates = [
         {updateIndex: 0, stockMnt: 2000},
@@ -14,11 +15,19 @@ public function main() returns error? {
         {updateIndex: 3, stockMnt: -1000},
         {updateIndex: 4, stockMnt: -2000}
     ];
-    // If an error is returned from the `transfer` function,
-    // the error is returned from the `main` and it exits.
-    check transfer(updates);
+    // This transfer will be rolled back.
+    io:println(transfer(updates));
 
-    return;
+    // Creates an array of employee salaries.
+    int[] salaryList = [100, 200, 300, 100];
+
+    // This salary increment will be rolled back.
+    check incrementSalary(salaryList);
+
+    int[] salaryList2 = [100, 200, 100, 100];
+
+    // This salary increment will be successful.
+    check incrementSalary(salaryList2);
 }
 
 function transfer(Update[] updates) returns error? {
@@ -37,10 +46,29 @@ function transfer(Update[] updates) returns error? {
 }
 
 function doUpdate(Update u) returns error? {
-    // If the stock amount is less than -1500, an error is returned.
+    // If the stock amount is less than `-1500`, an error is returned.
     if (u.stockMnt < -1500) {
-        return error("Not enough Stocks: ", stockIndex = u.updateIndex);
+        return error("Not enough stocks: ", stockIndex = u.updateIndex);
     }
 
     return;
+}
+
+function incrementSalary(int[] salaryList) returns error? {
+    transaction {
+        foreach int index in 0 ..< salaryList.length() {
+            salaryList[index] += 100;
+        }
+
+        // If the new total salary exceeds `1000`, then, the rollback statement performs 
+        // rollback on the transaction.
+        int salarySum = int:sum(...salaryList);
+        if (salarySum > 1000) {
+            io:println("Budget exceeded");
+            rollback;
+        } else {
+            io:println("Salary increment successful");
+            check commit;
+        }
+    }
 }
