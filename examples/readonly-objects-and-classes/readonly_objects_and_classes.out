@@ -1,0 +1,3 @@
+$ bal run readonly_objects_and_classes.bal
+true
+true

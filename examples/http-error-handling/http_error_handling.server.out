@@ -1,2 +1,1 @@
-# Run the service.
-bal run http_error_handling.bal
+$ bal run http_error_handling.bal

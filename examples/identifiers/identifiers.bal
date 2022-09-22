@@ -4,7 +4,6 @@ import ballerina/io;
 function พิมพ์ชื่อ(string ชื่อ) {
     // Use \u{H} to specify character using Unicode code point in hex.
    io:println(ชื่\u{E2D});
-
 }
 
 // Prefix reserved keywords with a single quote.

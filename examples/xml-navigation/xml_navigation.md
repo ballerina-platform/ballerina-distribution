@@ -1,7 +1,6 @@
 # XML navigation 
 
-XML navigation expressions allow for convenient navigation of XML 
-element structure, in a similar way to XPath.
+XML navigation expressions allow for convenient navigation of XML element structure, in a similar way to XPath.
 
 ::: code xml_navigation.bal :::
 

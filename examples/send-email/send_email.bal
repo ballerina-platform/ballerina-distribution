@@ -1,12 +1,10 @@
 import ballerina/email;
 
 public function main() returns error? {
-    // Creates an SMTP client with the connection parameters, host, username,
-    // and password. The default port number `465` is used over SSL with these
-    // configurations. `SmtpConfig` can be configured and passed to this
-    // client if the port or security is to be customized.
-    email:SmtpClient smtpClient = check new ("smtp.email.com",
-        "sender@email.com" , "pass123");
+    // Creates an SMTP client with the connection parameters, host, username, and password. 
+    // The default port number `465` is used over SSL with these configurations. `SmtpConfig` can 
+    // be configured and passed to this client if the port or security is to be customized.
+    email:SmtpClient smtpClient = check new ("smtp.email.com", "sender@email.com" , "pass123");
 
     // Defines the email that is required to be sent.
     email:Message email = {
@@ -17,25 +15,21 @@ public function main() returns error? {
         bcc: ["receiver5@email.com"],
         // Subject of the email is added as follows. This field is mandatory.
         subject: "Sample Email",
-        // Body content (text) of the email is added as follows.
-        // This field is optional.
+        // Body content (text) of the email is added as follows. This field is optional.
         body: "This is a sample email.",
         // Email author's address is added as follows. This field is mandatory.
         'from: "author@email.com",
-        // Email sender service address is added as follows.
-        // This field is optional. `Sender` is same as the `'from` when the
-        // email author himself sends the email.
+        // Email sender service address is added as follows. This field is optional. `Sender` is 
+        // the same as the `from` when the email author himself sends the email.
         sender: "sender@email.com",
-        // List of recipients when replying to the email is added as follows.
-        // This field is optional. These addresses are required when the emails
-        // are to be replied to some other address(es) other than the sender or
-        // the author.
+        // List of recipients when replying to the email is added as follows. This field is 
+        // optional. These addresses are required when the emails are to be replied to some other 
+        // address(es) other than the sender or the author.
         replyTo: ["replyTo1@email.com", "replyTo2@email.com"]
     };
 
-    // Sends the email message with the client. The `send` method can be used
-    // instead, if the email is required to be sent with mandatory and optional
-    // parameters instead of configuring an `email:Message` record.
+    // Sends the email message with the client. The `send` method can be used instead if the 
+    // email is required to be sent with mandatory and optional parameters instead of 
+    // configuring an `email:Message` record.
     check smtpClient->sendMessage(email);
-
 }

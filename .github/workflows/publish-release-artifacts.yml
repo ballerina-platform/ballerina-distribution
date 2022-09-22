@@ -3,27 +3,10 @@ name: Publish Release Artifacts
 on:
   workflow_dispatch:
     inputs:
-      ballerina_version:
-        description: 'Ballerina Version'
-        default: '2201.2.0'
+      release_version:
+        description: 'Release Version e.g., 2201.1.1, 2201.1.1-rc1'
+        default: '2201.1.1'
         required: true
-      short_version:
-        description: 'Short Version'
-        default: '2201.2.0'
-        required: true
-      display_version:
-        description: 'Display Version'
-        default: '2201.2.0 (Swan Lake Update 2)'
-        required: true
-      code_name:
-        description: 'Code Name'
-        default: 'swan-lake'
-        required: true
-      rc_suffix:
-        description: 'RC Suffix'
-        deprecationMessage: 'If this is a pre-release, the suffix to append to the version e.g., rc1'
-        default: ''
-        required: false
 
 jobs:
   publish-artifacts:
@@ -42,23 +25,23 @@ jobs:
           java-version: '11'
 
       - name: Set version env variable
+        id: set-version
         run: |
-          RELEASE_VERSION=${{ github.event.inputs.ballerina_version }}
-          SHORT_VERSION=${{ github.event.inputs.short_version }}
-          CODE_NAME=${{ github.event.inputs.code_name }}
-          DISPLAY_VERSION=${{ github.event.inputs.display_version }}
-
+          RELEASE_VERSION=${{ github.event.inputs.release_version }}
+          VERSION=$(cut -d- -f1 <<< $RELEASE_VERSION)
+          CODE_NAME="swan-lake"
           TAGGED_VERSION=$RELEASE_VERSION
-          LONG_VERSION=$RELEASE_VERSION-$CODE_NAME
-          if [ -n "${{ github.event.inputs.rc_suffix }}" ]; then
-            TAGGED_VERSION=$RELEASE_VERSION-${{ github.event.inputs.rc_suffix }}
-          fi
+          LONG_VERSION=$VERSION-$CODE_NAME
 
-          echo VERSION=$RELEASE_VERSION >> $GITHUB_ENV
-          echo SHORT_VERSION=$SHORT_VERSION >> $GITHUB_ENV
-          echo GIT_TAG=$TAGGED_VERSION >> $GITHUB_ENV
+          UPDATE_NUMBER=$(cut -d'.' -f2 <<< $VERSION)
+          DISPLAY_VERSION="$VERSION (Swan Lake Update $UPDATE_NUMBER)"
+
+          echo VERSION=$VERSION >> $GITHUB_ENV
           echo LONG_VERSION=$LONG_VERSION >> $GITHUB_ENV
           echo DISPLAY_VERSION=$DISPLAY_VERSION >> $GITHUB_ENV
+          echo GIT_TAG=$TAGGED_VERSION >> $GITHUB_ENV
+          echo "::set-output name=version::$VERSION"
+          echo "::set-output name=taggedVersion::$TAGGED_VERSION"
 
       - name: Download artifacts
         run: |
@@ -67,20 +50,12 @@ jobs:
           mkdir $VERSION
           cd $VERSION
 
-          wget "$baseUrl/ballerina-$LONG_VERSION.zip" &
-          wget "$baseUrl/ballerina-$VERSION.zip" &
-          wget "$baseUrl/ballerina-$LONG_VERSION-windows-x64.msi" &
-          wget "$baseUrl/ballerina-$LONG_VERSION-linux-x64.deb" &
-          wget "$baseUrl/ballerina-$LONG_VERSION-linux-x64.rpm" &
-          wget "$baseUrl/ballerina-$LONG_VERSION-macos-x64.pkg" &
-          wait
-
-          mkdir internal-installer-distributions
-          cd internal-installer-distributions
-          wget "$baseUrl/ballerina-$LONG_VERSION-windows.zip" &
-          wait
-
-          cd ../../
+          wget "$baseUrl/ballerina-$LONG_VERSION.zip"
+          wget "$baseUrl/ballerina-$VERSION.zip"
+          wget "$baseUrl/ballerina-$LONG_VERSION-windows-x64.msi"
+          wget "$baseUrl/ballerina-$LONG_VERSION-linux-x64.deb"
+          wget "$baseUrl/ballerina-$LONG_VERSION-linux-x64.rpm"
+          wget "$baseUrl/ballerina-$LONG_VERSION-macos-x64.pkg"
         env:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
           packageUser: ${{ secrets.BALLERINA_BOT_USERNAME }}
@@ -88,25 +63,27 @@ jobs:
           devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
 
       - name: Generate metadata json
+        working-directory: ${{ steps.set-version.outputs.version }}
         run: |
           date=`date +%Y-%m-%d`
           winInstSize=`ls -lh ballerina-$LONG_VERSION-windows-x64.msi | cut -d " " -f5 | sed 's/M/mb/g'`
           linuxInstSize=`ls -lh ballerina-$LONG_VERSION-linux-x64.deb | cut -d " " -f5 | sed 's/M/mb/g'`
           rpmInstSize=`ls -lh ballerina-$LONG_VERSION-linux-x64.rpm | cut -d " " -f5 | sed 's/M/mb/g'`
           macInstSize=`ls -lh ballerina-$LONG_VERSION-macos-x64.pkg | cut -d " " -f5 | sed 's/M/mb/g'`
+
           fileName=metadata.json
           echo "{" >> $fileName
           echo "	\"version\":\"$VERSION\"," >> $fileName
-          echo "	\"short-version\":\"$SHORT_VERSION\"," >> $fileName
+          echo "	\"short-version\":\"$VERSION\"," >> $fileName
           echo "	\"display-version\":\"$DISPLAY_VERSION\"," >> $fileName
           echo "	\"release-date\":\"$date\"," >> $fileName
-          echo "	\"windows-installer\":\"ballerina-$$LONG_VERSION-windows-x64.msi\"," >> $fileName
+          echo "	\"windows-installer\":\"ballerina-$LONG_VERSION-windows-x64.msi\"," >> $fileName
           echo "	\"windows-installer-size\":\"$winInstSize\"," >> $fileName
-          echo "	\"linux-installer\":\"ballerina-$$LONG_VERSION-linux-x64.deb\"," >> $fileName
+          echo "	\"linux-installer\":\"ballerina-$LONG_VERSION-linux-x64.deb\"," >> $fileName
           echo "	\"linux-installer-size\":\"$linuxInstSize\"," >> $fileName
-          echo "	\"macos-installer\":\"ballerina-$$LONG_VERSION-macos-x64.pkg\"," >> $fileName
+          echo "	\"macos-installer\":\"ballerina-$LONG_VERSION-macos-x64.pkg\"," >> $fileName
           echo "	\"macos-installer-size\":\"$macInstSize\"," >> $fileName
-          echo "	\"rpm-installer\":\"ballerina-$$LONG_VERSION-linux-x64.rpm\"," >> $fileName
+          echo "	\"rpm-installer\":\"ballerina-$LONG_VERSION-linux-x64.rpm\"," >> $fileName
           echo "	\"rpm-installer-size\":\"$rpmInstSize\"," >> $fileName
           echo "	\"other-artefacts\":[  " >> $fileName
           echo "		\"ballerina-$LONG_VERSION.zip\"" >> $fileName
@@ -119,6 +96,56 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Metadata JSON
-          path: metadata.json
+          path: ${{ steps.set-version.outputs.version }}/metadata.json
 
+      - name: Process docker
+        id: process-docker
+        run: |
+          DOCKER_REPO='module-ballerina-docker'
+          echo "::set-output name=dockerRepo::$DOCKER_REPO"
 
+      - name: Checkout docker repo
+        uses: actions/checkout@v2
+        with:
+          repository: ballerina-platform/module-ballerina-docker
+          path: module-ballerina-docker
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USER }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+
+      - name: Build and push docker image
+        run: |
+          DOCKER_REPO=${{ steps.process-docker.outputs.dockerRepo }}
+          cp $VERSION/ballerina-$VERSION.zip $DOCKER_REPO/base/docker/
+          docker build --no-cache=true --squash --build-arg BALLERINA_DIST=ballerina-$VERSION.zip -t ballerina/ballerina:$GIT_TAG  $DOCKER_REPO/base/docker/
+          rm ${dockerRepo}/base/docker/ballerina-$VERSION.zip
+          docker push ballerina/ballerina:$GIT_TAG
+          docker rmi ballerina/ballerina:$GIT_TAG
+          docker image prune -f
+
+      - name: Build and push dev container
+        run: |
+          DOCKER_REPO=${{ steps.process-docker.outputs.dockerRepo }}
+          cp $VERSION/ballerina-$LONG_VERSION-linux-x64.deb $DOCKER_REPO/base/devcontainer/
+          docker build --no-cache=true --squash --build-arg BALLERINA_DIST=ballerina-$LONG_VERSION-linux-x64.deb -t ballerina/ballerina-devcontainer:$GIT_TAG $DOCKER_REPO/base/devcontainer
+          rm ${dockerRepo}/base/docker/ballerina-$LONG_VERSION-linux-x64.deb
+          docker push ballerina/ballerina-devcontainer:$GIT_TAG
+          docker rmi ballerina/ballerina-devcontainer:$GIT_TAG
+          docker image prune -f
+
+      - name: Publish Artifacts
+        run: |
+          aws s3 cp $VERSION s3://dist-dev.ballerina.io/downloads/$VERSION --recursive
+        env:
+          s3_acc_id: ${{ secrets.S3_ID }}
+          s3_acc_key: ${{ secrets.S3_KEY }}

@@ -1,0 +1,2 @@
+$ docker run -d -p 9090:9090 wso2inc/hello:v0.1.0
+c04194eb0b4d0d78cbc8ca55e0527d381d8ab4a1a68f8ea5dd3770a0845d5fbb
