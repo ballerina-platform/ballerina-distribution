@@ -6,7 +6,7 @@ Ballerina uses the concept of scopes for authorization. A resource declared in a
 
 In the authorization phase, the scopes of the service are compared against the scope included in the user store for at least one match between the two sets.
 
-For more information on the underlying module, see the [Auth module](https://lib.ballerina.io/ballerina/auth/latest/).
+For more information on the underlying module, see the [`auth` module](https://lib.ballerina.io/ballerina/auth/latest/).
 
 ::: code graphql_service_basic_auth_ldap_user_store.bal :::
 

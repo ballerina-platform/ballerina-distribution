@@ -6,7 +6,7 @@ Ballerina uses the concept of scopes for authorization. A resource declared in a
 
 In the authorization phase, the scopes of the service/resource are compared against the scope included in the user store for at least one match between the two sets.
 
-`Config.toml` has defined three users - alice, ldclakmal, and eve. Each user has a password and optionally assigned scopes as an array.
+The `Config.toml` file is used to store the usernames, passwords, and scopes. Each user can have a password and optionally assigned scopes as an array.
 
 >**Info:** For more information on the underlying module, see the [`auth` module](https://lib.ballerina.io/ballerina/auth/latest/).
 
@@ -38,6 +38,6 @@ Once you run the command, the `grpc_service_pb.bal` file is generated inside the
 
 6. Execute the commands below to build and run the `service` package.
 
-   ::: out grpc_service_basic_auth_file_user_store.server.out :::
+>**Info:** You may need to change the certificate file path and private key file path.
 
-You may need to change the certificate file path and private key file path.
+   ::: out grpc_service_basic_auth_file_user_store.server.out :::

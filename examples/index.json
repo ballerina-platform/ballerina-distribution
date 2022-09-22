@@ -146,6 +146,13 @@
                 "isLearnByExample": true
             },
             {
+                "name": "Rest parameters",
+                "url": "rest-parameters",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
                 "name": "Default values for function parameters",
                 "url": "default_values_for_function_parameters",
                 "verifyBuild": true,
