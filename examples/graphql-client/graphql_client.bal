@@ -32,7 +32,6 @@ public function main() returns error? {
     // tries to perform data binding for the user-defined data type. On failure to
     // retrieve a successful response or when the client fails to perform data
     // binding, a graphql:ClientError will be returned.
-
     ResponseWithErrors response = check graphqlClient->execute(document);
     io:println(response.data.profile.name);
 }
