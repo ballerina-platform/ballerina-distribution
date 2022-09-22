@@ -1,15 +1,15 @@
 import ballerina/io;
 
-// Timezone is a `readonly` object type.
+// The `Timezone` is a `readonly` object type.
 type TimeZone readonly & object {
    function getOffset(decimal utc) returns decimal;
 };
 
 readonly class FixedTimeZone {
-    // Include `readonly` object type named `TypeZone` using object type inclusion.
+    // Include the `readonly` object type named `TypeZone` using object type inclusion.
    *TimeZone;
 
-   // `final decimal` field named offset. Here, it is readonly because `decimal` basic type is 
+   // The `final decimal` field named offset is read-only because the `decimal` basic type is
    // inherently immutable. 
    final decimal offset;
 
