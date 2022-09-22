@@ -367,6 +367,20 @@
         ]
     },
     {
+        "title": "Array/Map symmetry",
+        "column": 1,
+        "category": "Language concepts",
+        "samples": [
+            {
+                "name": "Array/Map symmetry",
+                "url": "array-map-symmetry",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            }
+        ]
+    },
+    {
         "title": "Objects",
         "column": 1,
         "category": "Language concepts",
