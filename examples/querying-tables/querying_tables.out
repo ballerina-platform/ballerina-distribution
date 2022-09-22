@@ -1,2 +1,5 @@
-bal run querying_tables.bal
-[100,200]
+$ bal run querying_tables.bal
+[100,150,200,300,250]
+John Smith
+Jane Smith
+Cassie Smith

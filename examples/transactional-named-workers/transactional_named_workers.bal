@@ -14,17 +14,14 @@ public function main() returns error? {
         check exec(newUpdate);
         check commit;
     }
-    return;
 }
 
-// Transactional function can only be called from a transactional context
+// A `transactional` function can only be called from a `transactional` context
 transactional function exec(Update u) returns error? {
-    // Transactional named workers starts a transaction branch
-    // in the current transaction.
+    // A `transactional` named worker starts a transaction branch in the current transaction.
     transactional worker A {
         bar();
     }
-    return;
 }
 
 transactional function bar() {

@@ -2,8 +2,7 @@
 import ballerina/grpc;
 
 @grpc:ServiceDescriptor {
-    descriptor: ROOT_DESCRIPTOR_GRPC_BIDIRECTIONAL_STREAMING,
-    descMap: getDescriptorMapGrpcBidirectionalStreaming()
+    descriptor: GRPC_BIDIRECTIONAL_STREAMING_DESC
 }
 service "Chat" on new grpc:Listener(9090) {
     // The generated code of the Ballerina gRPC command does not contain ChatStringCaller.
@@ -13,10 +12,10 @@ service "Chat" on new grpc:Listener(9090) {
         // Reads and processes each message in the client stream.
         _ = check from ChatMessage chatMsg in clientStream
             do {
-                checkpanic caller->sendString(
-                    string `${chatMsg.name}: ${chatMsg.message}`);
+                checkpanic caller->sendString(string `${chatMsg.name}: ${chatMsg.message}`);
             };
-        // Once the client sends a notification to indicate the end of the stream, '()' is returned by the stream.
+        // Once the client sends a notification to indicate the end of the stream,
+        // '()' is returned by the stream.
         check caller->complete();
     }
 }

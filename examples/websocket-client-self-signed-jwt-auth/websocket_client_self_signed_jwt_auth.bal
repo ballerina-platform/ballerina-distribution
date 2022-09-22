@@ -1,10 +1,11 @@
 import ballerina/io;
 import ballerina/websocket;
 
-// Defines the WebSocket client to call the JWT auth secured APIs.
+// Defines the WebSocket client to call the JWT Auth secured APIs.
 // The client is enriched with the `Authorization: Bearer <token>` header by
-// passing the [`websocket:JwtIssuerConfig`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/JwtIssuerConfig) for the `auth` configuration of the
+// passing the `websocket:JwtIssuerConfig` for the `auth` configuration of the
 // client. A self-signed JWT is issued before the request is sent.
+// For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/JwtIssuerConfig.
 websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
     auth = {
         username: "ballerina",
@@ -26,7 +27,7 @@ websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
 );
 
 public function main() returns error? {
-    check securedEP->writeTextMessage("Hello, World!");
-    string textMessage = check securedEP->readTextMessage();
+    check securedEP->writeMessage("Hello, World!");
+    string textMessage = check securedEP->readMessage();
     io:println(textMessage);
 }

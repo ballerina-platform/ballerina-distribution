@@ -9,6 +9,7 @@ jobs:
   ubuntu-build:
 
     runs-on: ubuntu-latest
+    if: github.repository_owner == 'ballerina-platform'
 
     steps:
       - name: Checkout Repository
@@ -16,7 +17,7 @@ jobs:
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
-          distribution: 'adopt'
+          distribution: 'temurin'
           java-version: '11'
       - name: Get daily docker version
         id: version
@@ -35,6 +36,7 @@ jobs:
           packageUser: ${{ github.actor }}
           packagePAT: ${{ secrets.GITHUB_TOKEN }}
           devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
+          TEST_MODE_ACTIVE: true
         run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue
       - name: Create linux-deb
         id: run_installers_deb
@@ -74,10 +76,10 @@ jobs:
         with:
           name: Linux Installer rpm
           path: installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-*-linux-x64.rpm
-      - name: Archive MacOS installer ZIP
+      - name: Archive MacOS Installer ZIP
         uses: actions/upload-artifact@v2
         with:
-          name: MacOS installer ZIP
+          name: MacOS Installer ZIP
           path: ballerina/build/distributions/ballerina-*-macos.zip
       - name: Archive Windows Installer ZIP
         uses: actions/upload-artifact@v2
@@ -109,6 +111,8 @@ jobs:
       - name: Run Installer Tests
         working-directory: ./ballerina-test-automation/installer-test
         run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+        env:
+          TEST_MODE_ACTIVE: true
       - name: Notify failure
         if: ${{ failure() }}
         run: |
@@ -119,7 +123,8 @@ jobs:
           --data "{
             \"event_type\": \"notify-build-failure\",
             \"client_payload\": {
-              \"repoName\": \"ballerina-distribution\"
+              \"repoName\": \"ballerina-distribution\",
+              \"branch\": \"master\"
             }
           }"
       - name: Checkout docker repo
@@ -152,6 +157,7 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'ballerina/ballerina:nightly-test'
+          skip-dirs: 'ballerina/runtime/examples'
           format: 'table'
           exit-code: '1'
           timeout: "10m0s"
@@ -160,7 +166,7 @@ jobs:
         with:
           context: module-ballerina-docker/base/docker/
           push: true
-          tags: ballerina/ballerina:nightly-${{ steps.version.outputs.version }}, ballerina/ballerina:nightly
+          tags: ballerina/ballerina:nightly
           build-args: |
             BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.sversion }}.zip
       - name: Image digest
@@ -181,6 +187,7 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'ballerina/ballerina-devcontainer:nightly-test'
+          skip-dirs: 'ballerina/runtime/examples'
           format: 'table'
           exit-code: '1'
           timeout: "10m0s"
@@ -205,13 +212,14 @@ jobs:
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
-          distribution: 'adopt'
+          distribution: 'temurin'
           java-version: '11'
       - name: Build with Gradle
         env:
           packageUser: ${{ github.actor }}
           packagePAT: ${{ secrets.GITHUB_TOKEN }}
           devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
+          TEST_MODE_ACTIVE: true
         run: ./gradlew.bat clean build --stacktrace --scan --console=plain --no-daemon -x test
 
   ubuntu-rpm-installer-test:
@@ -225,7 +233,7 @@ jobs:
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
-          distribution: 'adopt'
+          distribution: 'temurin'
           java-version: '11'
       - name: Download Ballerina rpm Installer
         uses: actions/download-artifact@v2
@@ -239,6 +247,8 @@ jobs:
         run: |
           bal -v
           ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+        env:
+          TEST_MODE_ACTIVE: true
 
   macos-installer-build:
 
@@ -251,7 +261,7 @@ jobs:
       - name: Download MacOS Intaller Zip
         uses: actions/download-artifact@v2
         with:
-          name: MacOS installer ZIP
+          name: MacOS Installer ZIP
       - name: Create macos-pkg
         id: run_installers_pkg
         run: |
@@ -276,6 +286,8 @@ jobs:
       - name: Run Installer Tests
         working-directory: ./ballerina-test-automation/installer-test
         run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+        env:
+          TEST_MODE_ACTIVE: true
 
   windows-installer-build:
 
@@ -324,6 +336,8 @@ jobs:
         run: |
           $env:Path += ";C:\Program Files\Ballerina\bin"
           .\..\gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+        env:
+          TEST_MODE_ACTIVE: true
 
   trigger-notifications:
 

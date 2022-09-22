@@ -83,7 +83,7 @@ public class OpenAPIArtifactBuildTest {
         TestUtils.deleteGeneratedFiles("petstore");
     }
 
-    @Test(description = "Check openapi to ballerina generator command for given tags", enabled = true)
+    @Test(description = "Check openapi to ballerina generator command for given tags")
     public void buildOpenAPIToBallerinaWithFilterTagsTest() throws IOException,
             InterruptedException {
         Path testResource = Paths.get("/openapi");
@@ -117,6 +117,41 @@ public class OpenAPIArtifactBuildTest {
             }
             //Clean the generated files
             TestUtils.deleteGeneratedFiles("petstoretags");
+        }
+    }
+
+    @Test(description = "Check openapi to ballerina client generator command")
+    public void buildOpenAPIToBallerinaClientGenerationTests() throws IOException,
+            InterruptedException {
+        Path testResource = Paths.get("/openapi");
+        List<String> buildArgs = new LinkedList<>();
+        buildArgs.add("-i");
+        buildArgs.add("openapi_client.yaml");
+        buildArgs.add("--mode");
+        buildArgs.add("client");
+        boolean successful = TestUtils.executeOpenAPI(distributionFileName, TestUtils.getResource(testResource),
+                buildArgs);
+        Assert.assertTrue(successful);
+
+        if (Files.exists(RESOURCES_PATH.resolve("openapi/client.bal")) &&
+                Files.exists(RESOURCES_PATH.resolve("openapi/types.bal")) &&
+                Files.exists(RESOURCES_PATH.resolve("openapi/utils.bal"))) {
+            String generatedClient = getStringFromGivenBalFile(TestUtils.getResource(testResource).resolve("client.bal"));
+            String expectedClient = getStringFromGivenBalFile(RESOURCES_PATH.resolve("openapi/expected/client.bal"));
+
+            String generatedTypes = getStringFromGivenBalFile(TestUtils.getResource(testResource).resolve("types.bal"));
+            String expectedTypes = getStringFromGivenBalFile(RESOURCES_PATH.resolve("openapi/expected/types.bal"));
+
+            String generatedUtils = getStringFromGivenBalFile(TestUtils.getResource(testResource).resolve("utils.bal"));
+            String expectedUtils = getStringFromGivenBalFile(RESOURCES_PATH.resolve("openapi/expected/utils.bal"));
+
+            Assert.assertEquals(expectedClient, generatedClient);
+            Assert.assertEquals(expectedTypes, generatedTypes);
+            Assert.assertEquals(expectedUtils, generatedUtils);
+
+            TestUtils.deleteGeneratedFiles("client.bal");
+        } else {
+            Assert.fail("Client generation failed");
         }
     }
 
@@ -200,5 +235,13 @@ public class OpenAPIArtifactBuildTest {
                 Matcher.quoteReplacement(contractPath));
         expectedServiceLines.close();
         return expectedService;
+    }
+
+    private String getStringFromGivenBalFile(Path expectedServiceFile) throws IOException {
+        Stream<String> expectedServiceLines = Files.lines(expectedServiceFile);
+        String expectedServiceContent = expectedServiceLines.collect(Collectors.joining(System.lineSeparator()));
+        expectedServiceLines.close();
+        return expectedServiceContent.trim().replaceAll(
+                WHITESPACE_PATTERN, "").replaceAll(System.lineSeparator(), "");
     }
 }

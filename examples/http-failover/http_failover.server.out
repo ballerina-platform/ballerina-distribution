@@ -1,1 +1,1 @@
-bal run http_failover.bal
+$ bal run http_failover.bal

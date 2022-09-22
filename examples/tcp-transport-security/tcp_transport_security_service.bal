@@ -4,8 +4,9 @@ import ballerina/tcp;
 // An HTTP listener can be configured to communicate through SSL/TLS as well.
 // To secure a listener using SSL/TLS, the listener needs to be configured with
 // a certificate file and a private key file for the listener.
-// The [`tcp:ListenerSecureSocket`](https://docs.central.ballerina.io/ballerina/tcp/latest/records/ListenerSecureSocket) record
-// provides the SSL-related listener configurations of the listener.
+// The `tcp:ListenerSecureSocket` record provides the
+// SSL-related listener configurations of the listener.
+// For details, see https://lib.ballerina.io/ballerina/tcp/latest/records/ListenerSecureSocket.
 listener tcp:Listener securedListnerEP = check new(3000,
     secureSocket = {
         key: {
@@ -16,8 +17,7 @@ listener tcp:Listener securedListnerEP = check new(3000,
 );
 
 service "tcp" on securedListnerEP {
-    isolated remote function onConnect(tcp:Caller caller)
-                             returns tcp:ConnectionService {
+     remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService {
         io:println("Client connected on server port: ", caller.remotePort);
         return new EchoService();
     }

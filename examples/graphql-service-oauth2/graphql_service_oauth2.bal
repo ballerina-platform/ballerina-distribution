@@ -9,12 +9,10 @@ listener graphql:Listener securedEP = new(9090,
     }
 );
 
-// The service can be secured with OAuth2 authentication and can be authorized
-// optionally. OAuth2 authentication can be enabled by setting the
-// `graphql:OAuth2IntrospectionConfig` configurations.
-// Authorization is based on scopes. A scope maps to one or more groups.
-// Authorization can be enabled by setting the `string|string[]` type
-// configurations for `scopes` field.
+// The service can be secured with OAuth2 and by enforcing authorization optionally. It can be
+// enabled by setting the `graphql:OAuth2IntrospectionConfig` configurations. Authorization is
+// based on scopes. A scope maps to one or more groups. Authorization can be enabled by setting the
+// `string|string[]` type configurations for the `scopes` field.
 @graphql:ServiceConfig {
     auth: [
         {

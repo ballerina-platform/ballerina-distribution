@@ -1,12 +1,3 @@
-# Create a Ballerina package.
-# Copy the generated `grpc_secured_pb.bal` stub file to the package.
-# For example, if you create a package named `service`, copy the stub file to the `service` package.
+$ bal build service
 
-# Create a new `grpc_service_ssl_tls.bal` Ballerina file inside the `service` package and add the service implementation.
-
-# Execute the command below to build the 'service' package.
-# You may need to change the certificate file path and private key file path.
-`bal build service`
-
-# Run the service using the command below.
-bal run service/target/bin/service.jar
+$ bal run service/target/bin/service.jar

@@ -11,12 +11,10 @@ public function main() returns error? {
     // Argument is a `typedesc` value.
     // The static return type depends on the argument.
     Coord c = check j.cloneWithType(Coord);
-
     io:println(c.x);
 
     // Argument defaulted from the context.
     Coord d = check j.cloneWithType();
-
     io:println(d.x);
     return;
 }

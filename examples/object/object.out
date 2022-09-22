@@ -1,2 +1,2 @@
-bal run object.bal
+$ bal run object.bal
 1235

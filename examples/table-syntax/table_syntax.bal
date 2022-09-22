@@ -5,7 +5,7 @@ type Employee record {
     int salary;
 };
 
-// Creates a `table` with `Employee` type members, where each
+// Creates a `table` with members of the `Employee` type, where each
 // member is uniquely identified using their `name` field.
 table<Employee> key(name) t = table [
     { name: "John", salary: 100 },
@@ -17,11 +17,10 @@ function increaseSalary(int n) {
     foreach Employee e in t {
         e.salary += n;
     }
-
 }
 
 public function main() {
-    // Retrieves `Employee` with key value `Fred`.
+    // Retrieves the `Employee` member with `"Fred"` as the value of the key.
     Employee? e = t["Fred"];
     io:println(e.toBalString());
 

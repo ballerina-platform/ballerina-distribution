@@ -1,4 +1,4 @@
-bal run publisher.bal
+$ bal run publisher.bal
 Message: First Message
 GUID UBMEgrERHdxZRqUBP05PtD received for the produced message.
 Message: Second Message

@@ -1,2 +1,2 @@
-bal run subscriber.bal
+$ bal run subscriber.bal
 time = 2021-05-19T10:14:09.200+05:30 level = INFO module = "" message = "Received message: Hello from Ballerina"

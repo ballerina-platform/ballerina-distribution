@@ -1,7 +1,8 @@
 import ballerina/http;
 import ballerina/log;
 
-// HTTP client configurations associated with [enabling cookies](https://docs.central.ballerina.io/ballerina/http/latest/records/CookieConfig).
+// HTTP client configurations associated with enabling cookies.
+// For detauils, see https://lib.ballerina.io/ballerina/http/latest/records/CookieConfig.
 http:ClientConfiguration clientEPConfig = {
     cookieConfig: {
         enabled: true
@@ -10,24 +11,19 @@ http:ClientConfiguration clientEPConfig = {
 
 public function main() returns error? {
     // Create a new HTTP client by giving the URL and the client configuration.
-    http:Client httpClient = check new("http://localhost:9095/cookieDemo",
-                                  clientEPConfig);
+    http:Client httpClient = check new("http://localhost:9095/cookieDemo", clientEPConfig);
 
-    // Initialize an HTTP request.
-    http:Request request = new;
-
-    // Send a username and a password as a JSON payload to the backend.
-    json jsonPart = {
+    // Send a username and password as a JSON payload to the backend.
+    json payload = {
         name: "John",
         password: "p@ssw0rd"
     };
-    request.setJsonPayload(jsonPart);
 
     // Send an outbound request to the `login` backend resource.
-    http:Response|error loginResp = httpClient->post("/login", request);
+    http:Response loginResp = check httpClient->post("/login", payload);
 
-    if (loginResp is error) {
-        log:printError("Login failed", 'error = loginResp);
+    if loginResp.statusCode != 200 {
+        log:printError("Login failed");
     } else {
         // When the login is successful, make another request to the
         // `/welcome` resource of the backend service.

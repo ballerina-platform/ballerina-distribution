@@ -9,9 +9,9 @@ listener http:Listener securedEP = new(9090,
     }
 );
 
-// The service can be secured with OAuth2 authentication and can be authorized
-// optionally. OAuth2 authentication can be enabled by setting the
-// [`http:OAuth2IntrospectionConfig`](https://docs.central.ballerina.io/ballerina/http/latest/records/OAuth2IntrospectionConfig) configurations.
+// The service can be secured with OAuth2 and by enforcing authorization
+// optionally. It can be enabled by setting the `http:OAuth2IntrospectionConfig` configurations.
+// For details, see https://lib.ballerina.io/ballerina/http/latest/records/OAuth2IntrospectionConfig.
 // Authorization is based on scopes. A scope maps to one or more groups.
 // Authorization can be enabled by setting the `string|string[]` type
 // configurations for `scopes` field.

@@ -1,9 +1,6 @@
 # Create a Ballerina project.
-# Copy the example to the project and add relevant database driver jar details to the `Ballerina.toml` file.
+# Copy the example to the project and add the relevant database driver JAR details to the `Ballerina.toml` file.
 # Execute the command below to build and run the project.
-bal run
+$ bal run
 
-Rows affected: 1
-Generated Customer ID: 2
 Updated Row count: 1
-Deleted Row count: 1
