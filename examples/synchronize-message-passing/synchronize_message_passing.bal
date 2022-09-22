@@ -9,7 +9,7 @@ public function main() {
         error? res = msg ->> B;
         io:println(res ?: "Transmission to B is successful");
 
-        // This transmission will not happen. Instead, it returns an `error`.
+        // This transmission will not happen because the previous tranmission returns an error`.
         res = "Hello" ->> B;
         io:println(res ?: "Transmission to B is successful");
     }
