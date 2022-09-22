@@ -1,6 +1,6 @@
 import ballerina/io;
 
-// The `Hashable` object type with a method called `hash()`, which returns an integer.
+// `Hashable` object type with a method called `hash()`, which returns an integer.
 type Hashable object {
     function hash() returns int;
 };
