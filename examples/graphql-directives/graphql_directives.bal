@@ -15,19 +15,19 @@ public type Address record {
 
 // Marking enum value as deprecated
 public enum Gender {
-    MALE="Male",
-    FEMALE="Female",
+    MALE,
+    FEMALE,
     # # Deprecated
     # The `NON_BINARY` is deprecated use `OTHER` instead
     @deprecated
-    NON_BINARY="Non-binary",
-    OTHER="Other"
+    NON_BINARY,
+    OTHER
 }
 
 Person person = {
     name: "Walter White",
     age: 51,
-    gender: "Male",
+    gender: MALE,
     address: {
         number: "308",
         street: "Negra Arroyo Lane",
