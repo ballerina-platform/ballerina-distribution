@@ -16,6 +16,5 @@ public function main() {
     // The key sequence provides keyed access to members of the `table`.
     Employee? e = t["Fred", "Bloggs"];
 
-
     io:println(e);
 }

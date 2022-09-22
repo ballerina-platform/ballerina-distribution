@@ -53,10 +53,15 @@ public class DistributionArtifactCheckTest {
                 .resolve("ballerina")
                 .resolve("cloud");
 
-        Path bbePath = TEST_DISTRIBUTION_PATH
+        Path dockerBbePath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
                 .resolve("examples")
-                .resolve("c2c-deployment");
+                .resolve("c2c-docker-deployment");
+
+        Path k8sBbePath = TEST_DISTRIBUTION_PATH
+                .resolve(DIST_NAME)
+                .resolve("examples")
+                .resolve("c2c-k8s-deployment");
 
         Path docsPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
@@ -65,7 +70,8 @@ public class DistributionArtifactCheckTest {
                 .resolve("cloud");
 
         Assert.assertTrue(Files.exists(cachePath));
-        Assert.assertTrue(Files.exists(bbePath));
+        Assert.assertTrue(Files.exists(dockerBbePath));
+        Assert.assertTrue(Files.exists(k8sBbePath));
         Assert.assertTrue(Files.exists(docsPath));
     }
 

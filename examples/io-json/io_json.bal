@@ -15,7 +15,8 @@ public function main() returns error? {
 
     // Writes the given JSON to a file.
     check io:fileWriteJson(jsonFilePath, jsonContent);
-    // If the write operation was successful, then, performs a read operation to read the JSON content.
+    // If the write operation was successful, then,
+    // performs a read operation to read the JSON content.
     json readJson = check io:fileReadJson(jsonFilePath);
     io:println(readJson);
 }

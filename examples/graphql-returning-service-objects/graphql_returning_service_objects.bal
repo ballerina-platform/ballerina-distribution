@@ -2,11 +2,9 @@ import ballerina/graphql;
 
 service /graphql on new graphql:Listener(4000) {
 
-    // Resource functions can return service objects. The returning service
-    // object is mapped to an `OBJECT` type in GraphQL. Each resource
-    // function is mapped to a field in the `OBJECT`.
+    // Resource functions can return service objects. The returning service object is mapped to an
+    // `OBJECT` type in GraphQL. Each resource function is mapped to a field in the `OBJECT`.
     resource function get profile() returns Person {
-
         return new("Walter White", 51);
     }
 }

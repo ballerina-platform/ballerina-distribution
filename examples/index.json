@@ -137,6 +137,13 @@
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
+            },
+            {
+                "name": "Included record parameters",
+                "url": "included-record-parameters",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
             }
         ]
     },
@@ -253,8 +260,43 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Type inference ",
+                "name": "Type inference",
                 "url": "type-inference",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Built-in integer subtypes",
+                "url": "built-in-integer-subtypes",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Built-in string subtype",
+                "url": "built-in-string-subtype",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "ensureType function",
+                "url": "ensureType-function",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Dependent types",
+                "url": "dependent-types",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Binding patterns in assignment",
+                "url": "binding-patterns-in-assignment",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
@@ -276,6 +318,13 @@
             {
                 "name": "Records",
                 "url": "records",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Computed field key",
+                "url": "computed-field-key",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
@@ -304,6 +353,34 @@
             {
                 "name": "Control openness",
                 "url": "controlling-openness",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Type inclusion for records",
+                "url": "type-inclusion-for-records",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Default values for record fields",
+                "url": "default-values-for-record-fields",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            }
+        ]
+    },
+    {
+        "title": "Array/Map symmetry",
+        "column": 1,
+        "category": "Language concepts",
+        "samples": [
+            {
+                "name": "Array/Map symmetry",
+                "url": "array-map-symmetry",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
@@ -372,6 +449,13 @@
                 "isLearnByExample": true
             },
             {
+                "name": "Type intersection for error types",
+                "url": "error-type-intersection",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
                 "name": "Error detail",
                 "url": "error-detail",
                 "verifyBuild": true,
@@ -385,6 +469,7 @@
                 "verifyOutput": true,
                 "isLearnByExample": true
             }
+
         ]
     },
     {
@@ -2587,7 +2672,7 @@
     {
         "title": "SerDes",
         "column": 3,
-        "category": "Working over the network",
+        "category": "Network libraries",
         "samples": [
             {
                 "name": "Serialization and Deserialization",
@@ -3021,9 +3106,18 @@
         "column": 0,
         "category": "Deployment",
         "samples": [
+                       {
+                "name": "Docker",
+                "url": "c2c-docker-deployment",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
             {
                 "name": "Kubernetes",
-                "url": "c2c-deployment",
+                "url": "c2c-k8s-deployment",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
