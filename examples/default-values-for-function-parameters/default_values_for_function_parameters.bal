@@ -6,10 +6,10 @@ function subString(string str, int 'start = 0, int end = str.length())
 }
 
 public function main() {
-    // Call the `subString` function using default values of `start` and `end` parameters.
+    // Call the `subString` function using the default values of `start` and `end` parameters.
     io:println(subString("Ballerina Language"));
 
-    // Call the `subString` function by passing a value for the default parameter `start`.
+    // Call the `subString` function by passing a value for the `start` default parameter.
     io:println(subString("Ballerina Language", 10));
 
     // Call the `subString` function by passing values for `start` and `end` default parameters.
