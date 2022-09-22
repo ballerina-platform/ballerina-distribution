@@ -253,7 +253,7 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Type inference ",
+                "name": "Type inference",
                 "url": "type-inference",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -283,6 +283,13 @@
             {
                 "name": "Dependent types",
                 "url": "dependent-types",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Binding patterns in assignment",
+                "url": "binding-patterns-in-assignment",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
