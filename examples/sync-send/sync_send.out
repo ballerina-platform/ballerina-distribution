@@ -1,4 +1,4 @@
 $ bal run sync_send.bal
-Received 10 from worker A
+Received 10 from the A worker.
 Transmission to B is successful
-error("Error in worker B")
+error("Error in the B worker.")

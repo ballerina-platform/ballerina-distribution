@@ -4,10 +4,10 @@ public function main() {
     worker A {
         int num = 10;
 
-        // Sends integer value `10` to worker `B` asynchronously.
+        // Sends the `10` integer value to the `B` worker asynchronously.
         num -> B;
         
-        // Receives string `Hello` from worker `B`.
+        // Receives the `Hello` string from the `B` worker.
         string msg = <- B;
         io:println(string `Received string "${msg}" from worker B`);
     }
@@ -15,11 +15,11 @@ public function main() {
     worker B {
         int num;
 
-        // Receives integer value `10` from worker `A`.
+        // Receives the `10` integer value from the `A` worker.
         num = <- A;
         io:println(string `Received integer "${num}" from worker A`);
 
-        // Sends string `Hello` to worker `A` asynchronously.
+        // Sends the `Hello` string to the `A` worker asynchronously.
         string msg = "Hello";
         msg -> A;
     }

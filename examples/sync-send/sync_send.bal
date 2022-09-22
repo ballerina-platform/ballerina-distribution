@@ -4,26 +4,27 @@ public function main() {
     worker A {
         int msg = 10;
 
-        // Synchronous send to worker `B`. Worker 'A' will wait until 'B' receives the message.
+        // Send a message synchronously to the `B` worker.
+        // The 'A' worker will wait until 'B' receives the message.
         error? res = msg ->> B;
         io:println(res ?: "Transmission to B is successful");
 
-        // This transmission will not happen instead returns `error`.
-        res = msg + 10 ->> B;
+        // This transmission will not happen. Instead, it returns an `error`.
+        res = "Hello" ->> B;
         io:println(res ?: "Transmission to B is successful");
     }
 
     worker B returns error? {
-        int receivedMsg;
+        int value;
 
-        receivedMsg = <- A;
-        io:println(string `Received ${receivedMsg} from worker A`);
+        value = <- A;
+        io:println(string `Received ${value} from the A worker.`);
 
-        if receivedMsg == 10 {
-            return error("Error in worker B");
+        if value == 10 {
+            return error("Error in the B worker.");
         }
 
-        receivedMsg = <- A;
-        io:println(string `Received ${receivedMsg} from worker A`);
+        string text = <- A;
+        io:println(string `Received ${text} from the A worker.`);
     }
 }

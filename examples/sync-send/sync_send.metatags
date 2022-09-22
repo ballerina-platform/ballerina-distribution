@@ -1,2 +1,2 @@
-description: This BBE demonstrates how sync send action can be used for concurrency in Ballerina.
-keywords: ballerina, ballerina by example, bbe, sync send, concurrency
+description: This BBE demonstrates how the `sync send` action can be used for concurrency in Ballerina.
+keywords: ballerina, ballerina by example, bbe, sync send, concurrency, worker
