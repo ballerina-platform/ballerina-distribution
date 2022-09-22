@@ -246,6 +246,13 @@
                 "isLearnByExample": true
             },
             {
+                "name": "Typedesc type",
+                "url": "typedesc-type",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
                 "name": "Covariance",
                 "url": "covariance",
                 "verifyBuild": true,
@@ -253,7 +260,7 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Type inference ",
+                "name": "Type inference",
                 "url": "type-inference",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -283,6 +290,13 @@
             {
                 "name": "Dependent types",
                 "url": "dependent-types",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Binding patterns in assignment",
+                "url": "binding-patterns-in-assignment",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
@@ -360,6 +374,20 @@
         ]
     },
     {
+        "title": "Array/Map symmetry",
+        "column": 1,
+        "category": "Language concepts",
+        "samples": [
+            {
+                "name": "Array/Map symmetry",
+                "url": "array-map-symmetry",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            }
+        ]
+    },
+    {
         "title": "Objects",
         "column": 1,
         "category": "Language concepts",
@@ -423,6 +451,20 @@
             {
                 "name": "Type intersection for error types",
                 "url": "error-type-intersection",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Error detail",
+                "url": "error-detail",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Error cause",
+                "url": "error-cause",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
@@ -1639,6 +1681,14 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Client",
+                "url": "graphql-client",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Directives",
                 "url": "graphql-directives",
                 "verifyBuild": true,
@@ -2638,7 +2688,7 @@
     {
         "title": "SerDes",
         "column": 3,
-        "category": "Working over the network",
+        "category": "Network libraries",
         "samples": [
             {
                 "name": "Serialization and Deserialization",
@@ -3072,25 +3122,18 @@
         "column": 0,
         "category": "Deployment",
         "samples": [
-            {
-                "name": "Kubernetes",
-                "url": "c2c-k8s-deployment",
+                       {
+                "name": "Docker",
+                "url": "c2c-docker-deployment",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
                 "disablePlayground": true,
                 "isLearnByExample": false
-            }
-        ]
-    },
-        {
-        "title": "Code to Cloud",
-        "column": 0,
-        "category": "Deployment",
-        "samples": [
+            },
             {
-                "name": "Docker",
-                "url": "c2c-docker-deployment",
+                "name": "Kubernetes",
+                "url": "c2c-k8s-deployment",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
