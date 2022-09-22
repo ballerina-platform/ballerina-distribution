@@ -891,15 +891,15 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Sync-send",
-                "url": "sync-send",
+                "name": "Synchronize message passing",
+                "url": "synchronize-message-passing",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Async-send",
-                "url": "async-send",
+                "name": "Asynchronize message passing",
+                "url": "asynchronize-message-passing",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
