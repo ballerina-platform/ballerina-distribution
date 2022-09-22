@@ -26,6 +26,7 @@ public function main() returns error? {
     graphql:Client graphqlClient = check new ("http://localhost:4000/graphql");
 
     string document = "{ profile { name, age } }";
+
     // The `execute()` remote function of graphql:Client takes a GraphQL document 
     // as the required argument and sends a request to the specified backend URL
     // seeking a response. On the retrieval of a successful response, the client
