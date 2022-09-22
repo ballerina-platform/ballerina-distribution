@@ -1,11 +1,11 @@
 import ballerina/io;
 
-// `Person` object type that contains a string field called `name`.
+// The `Person` object type that contains a string field called `name`.
 type Person distinct object {
     public string name;
 };
 
-// `Engineer` and `Manager` classes are structurally the same but introducing the  
+// The `Engineer` and `Manager` classes are structurally the same but introducing the  
 // `distinct` keyword distinguishes them by considering them as nominal types.
 distinct class Engineer {
     *Person;
@@ -26,7 +26,7 @@ distinct class Manager {
 type Employee Engineer|Manager;
 
 function desc(Employee employee) returns string {
-    // `is` operator can be used to distinguish distinct subtypes.
+    // The `is` operator can be used to distinguish distinct subtypes.
     return employee is Engineer ? "Engineer" : "Manager";
 }
 
