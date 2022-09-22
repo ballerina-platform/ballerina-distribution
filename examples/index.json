@@ -1165,6 +1165,20 @@
         ]
     },
     {
+        "title": "Programming style",
+        "column": 0,
+        "category": "Language concepts",
+        "samples": [
+            {
+                "name": "Expression-oriented style",
+                "url": "expression-oriented-style",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            }
+        ]
+    },
+    {
         "title": "REST API",
         "column": 0,
         "category": "Network libraries",

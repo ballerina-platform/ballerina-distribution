@@ -1,6 +1,7 @@
 Ballerina supports statements for familiarity but also tries to enable an expression-oriented style to be more intuitive.
+For example instead of using an if statement ballerina allows, 
 
-Here are few things that you can do using expressions in Ballerina.
+`return x > 0 ? 1 : 0;`
 
 ::: code expression_oriented_style.bal :::
 

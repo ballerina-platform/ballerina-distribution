@@ -12,10 +12,11 @@ function inc2(int x) returns int {
 
 var obj = object {
     private int x = 1;
-
+    // Same also applies to methods
     function getX() returns int => self.x;
 };
 
+// This can also be used with query expressions
 function hypot(float x) returns float =>
     let float x2 = x * x in float:sqrt(x2 + x2);
 
