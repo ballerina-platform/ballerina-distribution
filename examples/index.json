@@ -1124,6 +1124,20 @@
         ]
     },
     {
+        "title": "Interface to external code",
+        "column": 3,
+        "category": "Language concepts",
+        "samples": [
+            {
+                "name": "Interface to external code",
+                "url": "interface-to-external-code",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            }
+        ]
+    },
+    {
         "title": "Testing",
         "column": 3,
         "category": "Language concepts",
