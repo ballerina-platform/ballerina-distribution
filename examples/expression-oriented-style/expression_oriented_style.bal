@@ -16,7 +16,7 @@ var obj = object {
     function getX() returns int => self.x;
 };
 
-// This can also be used with query expressions
+// Arrow function expression can also be used with query statements
 function hypot(float x) returns float =>
     let float x2 = x * x in float:sqrt(x2 + x2);
 
