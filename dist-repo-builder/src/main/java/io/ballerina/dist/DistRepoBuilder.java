@@ -63,9 +63,11 @@ public class DistRepoBuilder {
         // The following list will contain existing docs from ballerina-lang repo
         List<Path> existingDocs = getExistingDocs(jBalToolsPath.resolve("docs"));
         for (Path bala : balas) {
-            generateDocsFromBala(bala, jBalToolsPath, existingDocs);
-            // following function was put in to validate if bir and jar exists for packed balas
-            valid = valid & validateCache(bala, repo);
+            if (!bala.toString().contains("ballerinai")) {
+                generateDocsFromBala(bala, jBalToolsPath, existingDocs);
+                // following function was put in to validate if bir and jar exists for packed balas
+                valid = valid & validateCache(bala, repo);
+            }
         }
         if (!valid) {
             System.exit(1);
