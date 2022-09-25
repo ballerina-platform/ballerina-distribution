@@ -46,7 +46,7 @@ public class DistRepoBuilder {
     final static String jarGlob = "glob:**/*.jar";
     final static String docGlob = "glob:**/api-docs.json";
 
-    public static void main(String args[]) throws IOException {
+    public static void main(String args[]) throws Exception {
         System.out.println("Building Distribution Repo ...");
         if (args.length != 1) {
             System.out.println("Invalid Inputs");
@@ -96,7 +96,7 @@ public class DistRepoBuilder {
         return existingDocs;
     }
 
-    private static void generateDocsFromBala(Path balaPath, Path jBalToolsPath, List<Path> existingDocs) {
+    private static void generateDocsFromBala(Path balaPath, Path jBalToolsPath, List<Path> existingDocs) throws Exception {
         if (existingDocs.stream().noneMatch(path -> balaPath.toString().contains(path.toString()))) {
             try {
                 ProjectEnvironmentBuilder defaultBuilder = ProjectEnvironmentBuilder.getDefaultBuilder();
@@ -104,8 +104,8 @@ public class DistRepoBuilder {
                 BalaProject balaProject = BalaProject.loadProject(defaultBuilder, balaPath);
                 BallerinaDocGenerator.generateAPIDocs(balaProject, jBalToolsPath.toString() + "/docs", true);
             } catch (Exception e) {
-                System.out.println("Exception when generating docs from bala: " + balaPath.toString());
                 e.printStackTrace();
+                throw new Exception("Exception when generating docs from bala: " + balaPath.toString());
             }
         }
     }
