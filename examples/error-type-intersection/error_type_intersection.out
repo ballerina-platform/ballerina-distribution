@@ -1,0 +1,5 @@
+$ bal run error_type_intersection.bal
+true
+true
+false
+false

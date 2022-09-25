@@ -123,6 +123,10 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USER }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
+      - name: Enable experimental functions
+        run: |
+          echo $'{\n    "experimental": true\n}' | sudo tee /etc/docker/daemon.json
+
       - name: Build and push docker image
         run: |
           DOCKER_REPO=${{ steps.process-docker.outputs.dockerRepo }}
