@@ -27,8 +27,7 @@ function matchFn2(Pair pair) {
         // `x` or `y` keys. This can be represented using the `never` type as explained in the example for
         // the `never` type.
         var {x, y, ...rest} => {
-            io:print(x, ", ", y);
-            io:println(",", rest);
+            io:println(x, ", ", y, ", ", rest);
         }
     }
 }
@@ -44,9 +43,9 @@ function matchFn3(Rec r) {
 }
 
 public function main() {
-    Pair pair = {x : 1, y : 2, "u" : 3 , "v" : 4};
-    Rec r = {p : pair};
+    Pair pair = {x: 1, y: 2, "u": 3 , "v": 4};
     matchFn1(pair);
     matchFn2(pair);
+    Rec r = {p: pair};
     matchFn3(r);
 }
