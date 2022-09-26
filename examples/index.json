@@ -151,20 +151,6 @@
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
-            },
-            {
-                "name": "Default values for function parameters",
-                "url": "default_values_for_function_parameters",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Provide function arguments by name",
-                "url": "provide_function_arguments_by_name",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
             }
         ]
     },
@@ -210,20 +196,6 @@
         "category": "Language concepts",
         "samples": [
             {
-                "name": "Arrays",
-                "url": "arrays",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Binary data",
-                "url": "binary-data",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
                 "name": "Structural typing",
                 "url": "structural-typing",
                 "verifyBuild": true,
@@ -267,6 +239,13 @@
                 "isLearnByExample": true
             },
             {
+                "name": "Typedesc type",
+                "url": "typedesc-type",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
                 "name": "Covariance",
                 "url": "covariance",
                 "verifyBuild": true,
@@ -274,8 +253,22 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Type inference ",
+                "name": "Type inference",
                 "url": "type-inference",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Built-in integer subtypes",
+                "url": "built-in-integer-subtypes",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Built-in string subtype",
+                "url": "built-in-string-subtype",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
@@ -290,6 +283,62 @@
             {
                 "name": "Dependent types",
                 "url": "dependent-types",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Binding patterns in assignment",
+                "url": "binding-patterns-in-assignment",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Never type",
+                "url": "never-type",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            }
+        ]
+    },
+    {
+        "title": "Lists",
+        "column": 1,
+        "category": "Language concepts",
+        "samples": [
+            {
+                "name": "Arrays",
+                "url": "arrays",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Tuples",
+                "url": "tuples",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Destructure tuples",
+                "url": "destructure-tuples",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Rest type in tuples",
+                "url": "rest-type-in-tuples",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Binary data",
+                "url": "binary-data",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
@@ -311,6 +360,13 @@
             {
                 "name": "Records",
                 "url": "records",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Computed field key",
+                "url": "computed-field-key",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
@@ -360,6 +416,20 @@
         ]
     },
     {
+        "title": "Array/Map symmetry",
+        "column": 1,
+        "category": "Language concepts",
+        "samples": [
+            {
+                "name": "Array/Map symmetry",
+                "url": "array-map-symmetry",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            }
+        ]
+    },
+    {
         "title": "Objects",
         "column": 1,
         "category": "Language concepts",
@@ -381,6 +451,27 @@
             {
                 "name": "Init return type",
                 "url": "init-return-type",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Object types",
+                "url": "object-types",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Object type inclusion",
+                "url": "object-type-inclusion",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Distinct object types",
+                "url": "distinct-object-types",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
@@ -416,6 +507,27 @@
             {
                 "name": "Panics",
                 "url": "panics",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Type intersection for error types",
+                "url": "error-type-intersection",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Error detail",
+                "url": "error-detail",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Error cause",
+                "url": "error-cause",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
@@ -910,6 +1022,27 @@
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
+            },
+            {
+                "name": "Synchronize message passing",
+                "url": "synchronize-message-passing",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Asynchronize message passing",
+                "url": "asynchronize-message-passing",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Flush",
+                "url": "flush",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
             }
         ]
     },
@@ -1003,7 +1136,14 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Combining isolated functions and lock",
+                "name": "Readonly Objects and Classes",
+                "url": "readonly-objects-and-classes",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Combining Isolated Functions and Lock",
                 "url": "combining-isolated-functions-and-lock",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -1033,6 +1173,20 @@
             {
                 "name": "Inferring isolated",
                 "url": "inferring-isolated",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            }
+        ]
+    },
+    {
+        "title": "Interface to external code",
+        "column": 3,
+        "category": "Language concepts",
+        "samples": [
+            {
+                "name": "Interface to external code",
+                "url": "interface-to-external-code",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
@@ -1626,6 +1780,14 @@
             {
                 "name": "Interceptors",
                 "url": "graphql-interceptors",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Client",
+                "url": "graphql-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -2623,7 +2785,7 @@
     {
         "title": "SerDes",
         "column": 3,
-        "category": "Working over the network",
+        "category": "Network libraries",
         "samples": [
             {
                 "name": "Serialization and Deserialization",
@@ -3057,25 +3219,18 @@
         "column": 0,
         "category": "Deployment",
         "samples": [
-            {
-                "name": "Kubernetes",
-                "url": "c2c-k8s-deployment",
+                       {
+                "name": "Docker",
+                "url": "c2c-docker-deployment",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
                 "disablePlayground": true,
                 "isLearnByExample": false
-            }
-        ]
-    },
-        {
-        "title": "Code to Cloud",
-        "column": 0,
-        "category": "Deployment",
-        "samples": [
+            },
             {
-                "name": "Docker",
-                "url": "c2c-docker-deployment",
+                "name": "Kubernetes",
+                "url": "c2c-k8s-deployment",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
