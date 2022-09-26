@@ -45,6 +45,7 @@ public class DistRepoBuilder {
     final static String balaGlob = "glob:**/bala.json";
     final static String jarGlob = "glob:**/*.jar";
     final static String docGlob = "glob:**/api-docs.json";
+    final static String ORG_BALLERINA_I = "ballerinai";
 
     public static void main(String args[]) throws Exception {
         System.out.println("Building Distribution Repo ...");
@@ -63,11 +64,13 @@ public class DistRepoBuilder {
         // The following list will contain existing docs from ballerina-lang repo
         List<Path> existingDocs = getExistingDocs(jBalToolsPath.resolve("docs"));
         for (Path bala : balas) {
-            if (!bala.toString().contains("ballerinai")) {
-                generateDocsFromBala(bala, jBalToolsPath, existingDocs);
-                // following function was put in to validate if bir and jar exists for packed balas
-                valid = valid & validateCache(bala, repo);
+            // skipping ballerinai modules since API docs are not generated for those modules
+            if (bala.toString().contains(ORG_BALLERINA_I)) {
+                continue;
             }
+            generateDocsFromBala(bala, jBalToolsPath, existingDocs);
+            // following function was put in to validate if bir and jar exists for packed balas
+            valid = valid & validateCache(bala, repo);
         }
         if (!valid) {
             System.exit(1);
