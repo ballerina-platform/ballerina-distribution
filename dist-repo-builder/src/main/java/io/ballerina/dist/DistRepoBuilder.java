@@ -45,7 +45,7 @@ public class DistRepoBuilder {
     final static String balaGlob = "glob:**/bala.json";
     final static String jarGlob = "glob:**/*.jar";
     final static String docGlob = "glob:**/api-docs.json";
-    final static String MODULE_BALLERINAI_OBSERVE = "ballerinai/observe";
+    final static String MODULE_BALLERINAI_OBSERVE = "ballerinai" + System.lineSeparator() +"observe";
 
     public static void main(String args[]) throws Exception {
         System.out.println("Building Distribution Repo ...");
