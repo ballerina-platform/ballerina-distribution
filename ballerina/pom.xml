@@ -21,7 +21,7 @@
     <parent>
         <groupId>org.ballerinalang</groupId>
         <artifactId>ballerina-distribution</artifactId>
-        <version>1.2.32-SNAPSHOT</version>
+        <version>1.2.33-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -147,6 +147,39 @@
                         </goals>
                         <configuration>
                             <url>${update.tool.location}</url>
+                            <outputDirectory>${project.build.directory}/extracted-distributions</outputDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>download-custom-jre-linux</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>wget</goal>
+                        </goals>
+                        <configuration>
+                            <url>${jre.linux.location}</url>
+                            <outputDirectory>${project.build.directory}/extracted-distributions</outputDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>download-custom-jre-macos</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>wget</goal>
+                        </goals>
+                        <configuration>
+                            <url>${jre.macos.location}</url>
+                            <outputDirectory>${project.build.directory}/extracted-distributions</outputDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>download-custom-jre-windows</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>wget</goal>
+                        </goals>
+                        <configuration>
+                            <url>${jre.windows.location}</url>
                             <outputDirectory>${project.build.directory}/extracted-distributions</outputDirectory>
                         </configuration>
                     </execution>
@@ -288,9 +321,9 @@
                         <configuration>
                             <tasks>
                                 <unzip src="${project.build.directory}/extracted-distributions/ballerina-command-${ballerina.command.version}.zip" dest="${project.build.directory}/extracted-distributions/" />
-                                <unzip src="${jre.location}/jre-1.8-linux.zip" dest="${project.build.directory}/extracted-jre-linux" />
-                                <unzip src="${jre.location}/jre-1.8-macos.zip" dest="${project.build.directory}/extracted-jre-macos" />
-                                <unzip src="${jre.location}/jre-1.8-windows.zip" dest="${project.build.directory}/extracted-jre-windows" />
+                                <unzip src="${project.build.directory}/extracted-distributions/ballerina-jre-linux-${ballerina.jre.version}.zip" dest="${project.build.directory}/extracted-jre-linux" />
+                                <unzip src="${project.build.directory}/extracted-distributions/ballerina-jre-macos-${ballerina.jre.version}.zip" dest="${project.build.directory}/extracted-jre-macos" />
+                                <unzip src="${project.build.directory}/extracted-distributions/ballerina-jre-windows-${ballerina.jre.version}.zip" dest="${project.build.directory}/extracted-jre-windows" />
                             </tasks>
                         </configuration>
                         <goals>
@@ -328,7 +361,15 @@
         </resources>
     </build>
     <properties>
-        <jre.location>target/ballerina-jre-artifacts-zip/ballerina-jre-artifacts-${ballerina.jre.artifacts.version}</jre.location>
+        <jre.linux.location>
+            https://github.com/ballerina-platform/ballerina-custom-jre/releases/download/${ballerina.jre.version}/ballerina-jre-linux-${ballerina.jre.version}.zip
+        </jre.linux.location>
+        <jre.macos.location>
+            https://github.com/ballerina-platform/ballerina-custom-jre/releases/download/${ballerina.jre.version}/ballerina-jre-macos-${ballerina.jre.version}.zip
+        </jre.macos.location>
+        <jre.windows.location>
+            https://github.com/ballerina-platform/ballerina-custom-jre/releases/download/${ballerina.jre.version}/ballerina-jre-windows-${ballerina.jre.version}.zip
+        </jre.windows.location>
         <distribution.name>ballerina</distribution.name>
         <update.tool.location>
             https://github.com/ballerina-platform/ballerina-update-tool/releases/download/v${ballerina.command.version}/ballerina-command-${ballerina.command.version}.zip
