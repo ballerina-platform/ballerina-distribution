@@ -295,22 +295,8 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Binding patterns in match statement",
-                "url": "binding-patterns-in-match-statement",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
                 "name": "Dependent types",
                 "url": "dependent-types",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Binding patterns in assignment",
-                "url": "binding-patterns-in-assignment",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
@@ -493,6 +479,27 @@
             {
                 "name": "Distinct object types",
                 "url": "distinct-object-types",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            }
+        ]
+    },
+    {
+        "title": "Binding patterns",
+        "column": 1,
+        "category": "Language concepts",
+        "samples": [
+            {
+                "name": "Binding patterns in match statement",
+                "url": "binding-patterns-in-match-statement",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Binding patterns in assignment",
+                "url": "binding-patterns-in-assignment",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
