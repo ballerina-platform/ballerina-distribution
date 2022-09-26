@@ -64,7 +64,7 @@ public class DistRepoBuilder {
         // The following list will contain existing docs from ballerina-lang repo
         List<Path> existingDocs = getExistingDocs(jBalToolsPath.resolve("docs"));
         for (Path bala : balas) {
-            // skipping ballerinai modules since API docs are not generated for those modules
+            // skipping ballerinai-observe module since API docs are not generated for internal modules
             if (bala.toString().contains(MODULE_BALLERINAI_OBSERVE)) {
                 continue;
             }
