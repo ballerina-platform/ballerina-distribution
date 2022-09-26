@@ -45,7 +45,7 @@ public class DistRepoBuilder {
     final static String balaGlob = "glob:**/bala.json";
     final static String jarGlob = "glob:**/*.jar";
     final static String docGlob = "glob:**/api-docs.json";
-    final static String ORG_BALLERINA_I = "ballerinai";
+    final static String MODULE_BALLERINAI_OBSERVE = "ballerinai/observe";
 
     public static void main(String args[]) throws Exception {
         System.out.println("Building Distribution Repo ...");
@@ -65,7 +65,7 @@ public class DistRepoBuilder {
         List<Path> existingDocs = getExistingDocs(jBalToolsPath.resolve("docs"));
         for (Path bala : balas) {
             // skipping ballerinai modules since API docs are not generated for those modules
-            if (bala.toString().contains(ORG_BALLERINA_I)) {
+            if (bala.toString().contains(MODULE_BALLERINAI_OBSERVE)) {
                 continue;
             }
             generateDocsFromBala(bala, jBalToolsPath, existingDocs);
