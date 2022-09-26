@@ -13,12 +13,12 @@ public type Address record {
     string city;
 };
 
-// Marking enum value as deprecated
+// Marking enum value as deprecated.
 public enum Gender {
     MALE,
     FEMALE,
     # # Deprecated
-    # The `NON_BINARY` is deprecated use `OTHER` instead
+    # The `NON_BINARY` is deprecated. Use `OTHER` instead.
     @deprecated
     NON_BINARY,
     OTHER
@@ -36,9 +36,9 @@ Person person = {
 };
 
 service /graphql on new graphql:Listener(4000) {
-    // Marking a field as deprecated
+    // Marking a field as deprecated.
     # # Deprecated
-    # The `person` field is deprecated use `profile` instead
+    # The `person` field is deprecated. Use `profile` instead.
     @deprecated
     resource function get person() returns Person {
         return person;
