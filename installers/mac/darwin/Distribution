@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<installer-script minSpecVersion="1.000000">
+    <title>Ballerina</title>
+    <background mime-type="image/png" file="dialog.png"/>
+    <!--license file="LICENSE"/>
+    <welcome file="WELCOME" /-->
+    <options customize="never" allow-external-scripts="no"/>
+    <domains enable_localSystem="true" />
+    <installation-check script="installCheck();"/>
+    <script>
+function installCheck() {
+    if(!(system.compareVersions(system.version.ProductVersion, '10.6.0') >= 0)) {
+        my.result.title = 'Unable to install';
+        my.result.message = 'Ballerina requires Mac OS X 10.6 or later.';
+        my.result.type = 'Fatal';
+        return false;
+    }
+    if(system.files.fileExistsAtPath('/Library/Ballerina/bin/ballerina')) {
+        my.result.title = 'Previous Installation Detected';
+        my.result.message = 'A previous installation of Ballerina exists at /Library/Ballerina. This installer will remove the previous installation prior to installing. Please back up any data before proceeding.';
+        my.result.type = 'Warning';
+        return false;
+    }
+    return true;
+}
+    </script>
+    <choices-outline>
+        <line choice="ballerina"/>
+    </choices-outline>
+    <choice id="ballerina" title="Ballerina">
+        <pkg-ref id="ballerina.pkg"/>
+    </choice>
+    <pkg-ref id="ballerina.pkg" auth="Root">ballerina.pkg</pkg-ref>
+</installer-script>

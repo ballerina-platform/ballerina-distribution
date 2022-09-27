@@ -1,0 +1,3 @@
+<WixLocalization Culture="en-us" xmlns="http://schemas.microsoft.com/wix/2006/localization">
+  <String Id="InstallDirDlgDescription" Overridable="yes">Click Change to install Ballerina to a different folder.</String>
+</WixLocalization>

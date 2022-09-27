@@ -1,0 +1,10 @@
+Package: ballerina-__BALLERINA_VERSION__
+Version: 2-__BALLERINA_VERSION__
+Maintainer: Ballerina <admin@ballerinalang.org>
+Architecture: amd64
+Description: Ballerina
+ Ballerina is a general purpose, concurrent and strongly typed
+ programming language with both textual and graphical syntaxes, 
+ optimized for integration.
+Installed-Size: 331000
+

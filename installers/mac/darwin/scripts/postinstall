@@ -1,0 +1,12 @@
+#!/bin/bash
+BALLERINAROOT=/Library/Ballerina
+echo "Fixing permissions"
+cd $BALLERINAROOT
+find distributions/ballerina-__BALLERINA_VERSION__ -exec chmod ugo+r \{\} \;
+find bin -exec chmod ugo+rx \{\} \;
+find dependencies -type d -exec chmod ugo+rx \{\} \;
+find lib -exec chmod -R ugo+r \{\} \;
+chmod o-w .
+
+rm -f /Library/Ballerina/bin/ballerina
+rm -f /etc/paths.d/ballerina

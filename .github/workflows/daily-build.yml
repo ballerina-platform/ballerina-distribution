@@ -1,0 +1,162 @@
+name: Daily build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  ubuntu-build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '8'
+      - name: Get daily docker version
+        id: version
+        run: echo "::set-output name=version::$(date +'%Y-%m-%d')"
+      - name: Get project version
+        id: project-version
+        run: |
+          VERSION=$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
+          echo "::set-output name=version::$VERSION"
+      - name: Build with Maven
+        run: |
+          mvn --version
+          mvn -s settings.xml clean install -Dmaven.test.skip=true
+        env:
+          packageUser: ${{ github.actor }}
+          packagePAT: ${{ secrets.GITHUB_TOKEN }}
+          TEST_MODE_ACTIVE: true
+      - name: Create linux-deb
+        id: run_installers_deb
+        run: ./build-ballerina-linux-deb-x64.sh -v ${{ steps.project-version.outputs.version }} -p ./../../ballerina/target
+        working-directory: installers/linux-deb
+      - name: Create linux-rpm
+        id: run_installers_rpm
+        run: ./build-ballerina-linux-rpm-x64.sh -v ${{ steps.project-version.outputs.version }} -p ./../../ballerina/target
+        working-directory: installers/linux-rpm
+      - name: Generate Hashes
+        run: |
+          openssl dgst -sha256 -out ballerina-${{ steps.project-version.outputs.version }}-linux-x64.deb.sha256 installers/linux-deb/target/ballerina-*-linux-x64.deb
+          openssl dgst -sha256 -out ballerina-${{ steps.project-version.outputs.version }}-linux-x64.rpm.sha256 installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-*-linux-x64.rpm
+          openssl dgst -sha256 -out ballerina-${{ steps.project-version.outputs.version }}.zip.sha256 ballerina/target/ballerina-${{ steps.project-version.outputs.version }}.zip
+      - name: Archive Ballerina ZIP
+        uses: actions/upload-artifact@v2
+        with:
+          name: Ballerina ZIP
+          path: ballerina/target/ballerina-${{ steps.project-version.outputs.version }}.zip
+      - name: Archive JBallerina ZIP
+        uses: actions/upload-artifact@v2
+        with:
+          name: JBallerina ZIP
+          path: ballerina/target/jballerina-${{ steps.project-version.outputs.version }}.zip
+      - name: Archive MacOS Installer ZIP
+        uses: actions/upload-artifact@v2
+        with:
+          name: MacOS Installer ZIP
+          path: ballerina/target/ballerina-macos-*.zip
+      - name: Archive Windows Installer ZIP
+        uses: actions/upload-artifact@v2
+        with:
+          name: Windows Installer ZIP
+          path: ballerina/target/ballerina-windows-*.zip
+      - name: Archive Linux deb
+        uses: actions/upload-artifact@v2
+        with:
+          name: Linux Installer deb
+          path: installers/linux-deb/target/ballerina-*-linux-x64.deb
+      - name: Archive Linux rpm
+        uses: actions/upload-artifact@v2
+        with:
+          name: Linux Installer rpm
+          path: installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-*-linux-x64.rpm
+      - name: Archive Ballerina Zip Hashes
+        uses: actions/upload-artifact@v2
+        with:
+          name: Ballerina Zip Hashes
+          path: ballerina-${{ steps.project-version.outputs.version }}.zip.sha256
+      - name: Archive Linux deb Hashes
+        uses: actions/upload-artifact@v2
+        with:
+          name: Linux deb Hashes
+          path: ballerina-${{ steps.project-version.outputs.version }}-linux-x64.deb.sha256
+      - name: Archive Linux rpm Hashes
+        uses: actions/upload-artifact@v2
+        with:
+          name: Linux rpm Hashes
+          path: ballerina-${{ steps.project-version.outputs.version }}-linux-x64.rpm.sha256
+    outputs:
+      project-version: ${{ steps.project-version.outputs.version }}
+
+  macos-installer-build:
+
+    needs: ubuntu-build
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Download MacOS Intaller Zip
+        uses: actions/download-artifact@v2
+        with:
+          name: MacOS Installer ZIP
+      - name: Create macos-pkg
+        id: run_installers_pkg
+        run: ./build-ballerina-macos-x64.sh -v ${{ needs.ubuntu-build.outputs.project-version }} -p ./../../
+        working-directory: installers/mac
+      - name: Generate Hashes
+        run: |
+          openssl dgst -sha256 -out ballerina-${{ needs.ubuntu-build.outputs.project-version }}-macos-x64.pkg.sha256 installers/mac/target/pkg/ballerina-*-macos-x64.pkg
+      - name: Archive MacOS pkg
+        uses: actions/upload-artifact@v2
+        with:
+          name: MacOS Installer pkg
+          path: installers/mac/target/pkg/ballerina-*-macos-x64.pkg
+      - name: Archive MacOS pkg Hashes
+        uses: actions/upload-artifact@v2
+        with:
+          name: MacOS pkg Hashes
+          path: ballerina-${{ needs.ubuntu-build.outputs.project-version }}-macos-x64.pkg.sha256
+
+  windows-installer-build:
+
+    needs: ubuntu-build
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '2.1.x'
+      - name: Install GUID Generator
+        run: dotnet tool install -g dotnet-guid
+      - name: Download Windows Intaller Zip
+        uses: actions/download-artifact@v2
+        with:
+          name: Windows Installer ZIP
+      - name: Create windows-msi
+        run: |
+          $env:Path += ";C:\Program Files (x86)\WiX Toolset v3.11\bin"
+          move installers\windows .\
+          ren windows w
+          cd w
+          .\build-ballerina-windows-x64.bat --version ${{ needs.ubuntu-build.outputs.project-version }} --path .\..\
+      - name: Generate Hashes
+        run: |
+          openssl dgst -sha256 -out ballerina-${{ needs.ubuntu-build.outputs.project-version }}-windows-x64.msi.sha256 w\target\msi\ballerina-*-windows-x64.msi
+      - name: Archive Windows msi
+        uses: actions/upload-artifact@v2
+        with:
+          name: Windows Installer msi
+          path: w\target\msi\ballerina-*-windows-x64.msi
+      - name: Archive Windows msi Hashes
+        uses: actions/upload-artifact@v2
+        with:
+          name: Windows msi Hashes
+          path: ballerina-${{ needs.ubuntu-build.outputs.project-version }}-windows-x64.msi.sha256
