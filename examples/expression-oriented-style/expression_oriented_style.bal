@@ -5,7 +5,7 @@ import ballerina/io;
 // a return statement with an expression.
 function inc1(int x) returns int => x + 1;
 
-// `inc2` is effectively same as` inc1`.
+// `inc2` is effectively the same as` inc1`.
 function inc2(int x) returns int {
     return x + 1;
 }
@@ -16,8 +16,8 @@ var obj = object {
     function getX() returns int => self.x;
 };
 
-// Let expressions allows you to do more with an expression
-// Here 'let' allows to have a temporary variable to be used in the expression.
+// Let expressions allows you to do more with an expression.
+// Here, the let expression defines variables that can be used in the function call.
 function hypot(float x) returns float =>
     let float x2 = x * x in float:sqrt(x2 + x2);
 

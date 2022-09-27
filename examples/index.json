@@ -267,13 +267,6 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Spread in binding patterns",
-                "url": "spread-in-binding-patterns",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
                 "name": "Built-in integer subtypes",
                 "url": "built-in-integer-subtypes",
                 "verifyBuild": true,
@@ -500,6 +493,13 @@
             {
                 "name": "Binding patterns in assignment",
                 "url": "binding-patterns-in-assignment",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Spread in binding patterns",
+                "url": "spread-in-binding-patterns",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
