@@ -8,7 +8,7 @@ The Ballerina GraphQL supports the following GraphQL directives.
 
 The following example demonstrates the use of GraphQL directives.
 
-::: code directives.bal :::
+::: code graphql_directives.bal :::
 
 Run the service by executing the following command.
 
