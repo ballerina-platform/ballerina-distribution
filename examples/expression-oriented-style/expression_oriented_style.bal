@@ -17,7 +17,7 @@ var obj = object {
 };
 
 // Let expressions allows you to do more with an expression.
-// Here, the let expression defines variables that can be used in the function call.
+// Here, the let expression defines a variable that can be used in the function call.
 function hypot(float x) returns float =>
     let float x2 = x * x in float:sqrt(x2 + x2);
 

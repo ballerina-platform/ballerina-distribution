@@ -484,13 +484,6 @@
         "category": "Language concepts",
         "samples": [
             {
-                "name": "Binding patterns in match statement",
-                "url": "binding-patterns-in-match-statement",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
                 "name": "Binding patterns in assignment",
                 "url": "binding-patterns-in-assignment",
                 "verifyBuild": true,
@@ -500,6 +493,13 @@
             {
                 "name": "Spread in binding patterns",
                 "url": "spread-in-binding-patterns",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Binding patterns in match statement",
+                "url": "binding-patterns-in-match-statement",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
@@ -1319,7 +1319,7 @@
         ]
     },
     {
-        "title": "Programming style",
+        "title": "Expression-oriented style",
         "column": 0,
         "category": "Language concepts",
         "samples": [
