@@ -134,7 +134,7 @@ jobs:
           cp $VERSION/ballerina-$LONG_VERSION-linux-x64.deb $DOCKER_REPO/base/devcontainer/
 
           docker build --no-cache=true --squash --build-arg BALLERINA_DIST=ballerina-$LONG_VERSION-linux-x64.deb -t ballerina/ballerina-devcontainer:$GIT_TAG $DOCKER_REPO/base/devcontainer
-          rm $DOCKER_REPO/base/docker/ballerina-$LONG_VERSION-linux-x64.deb
+          rm $DOCKER_REPO/base/devcontainer/ballerina-$LONG_VERSION-linux-x64.deb
           docker push ballerina/ballerina-devcontainer:$GIT_TAG
           docker rmi ballerina/ballerina-devcontainer:$GIT_TAG
           docker image prune -f
