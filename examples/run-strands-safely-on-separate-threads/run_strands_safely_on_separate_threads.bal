@@ -11,14 +11,15 @@ function f2(int[] arr) returns int[] {
 }
 
 isolated function f3() {
-    // An isolated start action is allowed in an isolated function.
-    // Here, the strand created by the start action will run in a separate thread.
+    // An isolated `start` action is allowed in an isolated function.
+    // Here, the strand created by the `start` action will run on a separate thread.
     future<int[]> _ = start f1([4, 2, 8, 6]);
 }
 
 isolated function f4() {
     // A named worker is allowed in an isolated function.
-    // Here, the strand created by a named worker can run on a separate thread.
+    // Here, the strand created by a named worker can run on a separate thread
+    // if the body of the worker satisfies the requirements for an isolated function.
     worker A {
         int[] _ = f1(intArr);
     }
