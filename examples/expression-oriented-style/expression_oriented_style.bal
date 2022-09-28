@@ -1,7 +1,7 @@
 import ballerina/io;
 
 // You can define the body of a function using the `=>` notation followed by the return value expression
-// instead of using curly braces to define the function body block when the function body is just
+// instead of using curly braces to define the function body block, when the function body is just
 // a return statement with an expression.
 function inc1(int x) returns int => x + 1;
 
@@ -16,7 +16,7 @@ var obj = object {
     function getX() returns int => self.x;
 };
 
-// Let expressions allows you to do more with an expression.
+// Let expressions allow you to do more with an expression.
 // Here, the let expression defines a variable that can be used in the function call.
 function hypot(float x) returns float =>
     let float x2 = x * x in float:sqrt(x2 + x2);

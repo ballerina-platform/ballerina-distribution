@@ -11,8 +11,8 @@ type Rec record {
 
 function matchFn1(Pair pair) {
     match pair {
-        // The binding pattern below matches mappings that contain at least the fields `x` and `y`.
-        // The values of these fields can be accessed via the variables `x` and `y` within this block.
+        // The binding pattern below matches mappings that contain at least the `x` and `y` fields.
+        // The values of these fields can be accessed via the `x` and `y` variables within this block.
         var {x, y} => {
             io:println(x, ", ", y);
         }
@@ -22,7 +22,7 @@ function matchFn1(Pair pair) {
 function matchFn2(Pair pair) {
     match pair {
         // The binding pattern below also has a rest binding pattern to capture the additional fields
-        // that may be defined in `pair` since it is an open record.
+        // that may be specified in the open record value assigned to the `pair` variable.
         // Type of rest can be considered a map of `anydata`. However, it cannot contain the
         // `x` or `y` keys. This can be represented using the `never` type as explained in the example for
         // the `never` type.
@@ -34,8 +34,8 @@ function matchFn2(Pair pair) {
 
 function matchFn3(Rec r) {
     match r {
-        // Below pattern matches a mappings that have a field `p` where its value is another mapping
-        // that contains at least the fields `x` and `y`.
+        //  The pattern below matches a mapping that has a field with a key named `p` and a value that is another mapping
+        // that contains at least the `x` and `y` fields.
         var {p: {x, y}} => {
             io:println(x, ", ", y);
         }
