@@ -11,7 +11,7 @@ type Rec record {
 
 function matchFn1(Pair pair) {
     match pair {
-        // The binding pattern below matches mappings that contain at least the `x` and `y` fields.
+        // The binding pattern below matches mappings that contain at least the fields with keys named `x` and `y`.
         // The values of these fields can be accessed via the `x` and `y` variables within this block.
         var {x, y} => {
             io:println(x, ", ", y);
@@ -34,8 +34,8 @@ function matchFn2(Pair pair) {
 
 function matchFn3(Rec r) {
     match r {
-        //  The pattern below matches a mapping that has a field with a key named `p` and a value that is another mapping
-        // that contains at least the `x` and `y` fields.
+        //  The pattern below matches a mapping that has a field with a key named `p` and a value that is another
+        //  mapping that contains at least the fields with keys named `x` and `y`.
         var {p: {x, y}} => {
             io:println(x, ", ", y);
         }
