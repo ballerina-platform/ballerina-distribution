@@ -1256,32 +1256,6 @@ task generateCache(dependsOn: ':cache-generator:build') {
                 }
             }
         }
-        // generate caches for minor versions of Standard Libraries
-        dependencyMap.each { key, val ->
-            if (val.size > 1 && key != "observe-ballerina-zip") {
-                println(val)
-                def minorVersion = val.sort().reverse()[1]
-                download {
-                    src "https://central.ballerina.io/ballerina/${key.split("-")[0]}/${minorVersion}"
-                    dest "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/repo/bala/ballerina/${key.split("-")[0]}"
-                }
-                // generate caches
-                String balaPathMinor = new File("${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/repo/bala/ballerina/${key.split("-")[0]}/${minorVersion}").listFiles()[0].toString()
-                if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                    exec {
-                        workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
-                        commandLine 'cmd', '/c', "${distPath}/bin/bal.bat gencache ${balaPathMinor} ${distPath}"
-                        ignoreExitValue true
-                    }
-                } else {
-                    exec {
-                        workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
-                        commandLine 'sh', '-c', "${distPath}/bin/bal gencache ${balaPathMinor} ${distPath}"
-                        ignoreExitValue true
-                    }
-                }
-            }
-        }
 
         /* OpenApi Libraries */
         configurations.ballerinaOpenAPILibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
