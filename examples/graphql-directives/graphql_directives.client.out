@@ -1,17 +1,17 @@
 # Using @skip directive in query
 # The query used: { profile { name, address @skip(if: true) { city } } }
 
-curl -X POST -H "Content-type: application/json" -d '{ "query": "{ profile { name, address @skip(if: true) { city } } }" }' 'http://localhost:4000/graphql'
+$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ profile { name, address @skip(if: true) { city } } }" }' 'http://localhost:4000/graphql'
 {"data":{"profile":{"name":"Walter White"}}}
 
 
 # Using @include directive in query
 # The query used: { profile { name, address @include(if: true) { city } } }
 
-curl -X POST -H "Content-type: application/json" -d '{ "query": "{ profile { name, address @include(if: true) { city } } }" }' 'http://localhost:4000/graphql'
+$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ profile { name, address @include(if: true) { city } } }" }' 'http://localhost:4000/graphql'
 {"data":{"profile":{"name":"Walter White", "address":{"city":"Albuquerque"}}}}
 
 # Introspections to check deprecated enum values
 # The query used: { __type(name: "Gender") { name, enumValues { name, isDeprecated, deprecationReason } } }
-curl -X POST -H "Content-type: application/json" -d '{ "query": "{ __type(name: \"Gender\") { name, enumValues(includeDeprecated: true) { name, isDeprecated, deprecationReason } } }" }' 'http://localhost:4000/graphql'
+$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ __type(name: \"Gender\") { name, enumValues(includeDeprecated: true) { name, isDeprecated, deprecationReason } } }" }' 'http://localhost:4000/graphql'
 {"data":{"__type":{"name":"Gender", "enumValues":[{"name":"OTHER", "isDeprecated":false, "deprecationReason":null}, {"name":"NON_BINARY", "isDeprecated":true, "deprecationReason":"The `NON_BINARY` is deprecated use `OTHER` instead"}, {"name":"FEMALE", "isDeprecated":false, "deprecationReason":null}, {"name":"MALE", "isDeprecated":false, "deprecationReason":null}]}}}
