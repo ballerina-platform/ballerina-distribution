@@ -1,4 +1,4 @@
-bal run binding_patterns_in_assignment.bal
+$ bal run binding_patterns_in_assignment.bal
 
 0
 1

@@ -1,2 +1,2 @@
-bal run annotations.bal
+$ bal run annotations.bal
 {"value":"T1"}
