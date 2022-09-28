@@ -11,14 +11,14 @@ function f2(int[] arr) returns int[] {
 }
 
 isolated function f3() {
-    // An isolated start action is allowed in an isolated function
-    // Here, the strand created by the start action will run in a separate thread
+    // An isolated start action is allowed in an isolated function.
+    // Here, the strand created by the start action will run in a separate thread.
     future<int[]> _ = start f1([4, 2, 8, 6]);
 }
 
 isolated function f4() {
-    // named worker is allowed in an isolated function
-    // Here, the strand created by a named worker can run on a separate thread
+    // A named worker is allowed in an isolated function.
+    // Here, the strand created by a named worker can run on a separate thread.
     worker A {
         int[] _ = f1(intArr);
     }
@@ -35,10 +35,10 @@ function f6() {
 }
 
 public function main() {
-    // f3 is inferred to be isolated
+    // `f2` is inferred to be isolated.
     io:println(f2 is isolated function (int[]) returns int[]);
-    // f5 is inferred to be isolated
+    // `f5` is inferred to be isolated.
     io:println(f5 is isolated function ());
-    // f6 is inferred to be isolated
+    // `f6` is inferred to be isolated.
     io:println(f6 is isolated function ());
 }
