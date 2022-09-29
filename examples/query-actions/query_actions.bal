@@ -13,7 +13,7 @@ public function main() returns error? {
 
     io:println(numsTimes10);
 
-    // Print only the even numbers in `nums` array.
+    // Print only the even numbers in the `nums` array.
     // Other clauses such as `let` clause, `join` clause, `order by` clause, `where clause` and `limit` clause
     // except the `select` clause can also be used.
     check from var i in nums
