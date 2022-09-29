@@ -263,7 +263,7 @@ jobs:
       - name: Install Wget
         run: choco install wget --no-progress
       - name: Download Windows Intaller Zip
-        run: wget https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-${{ needs.publish-release.outputs.project-version }}-windows.zip
+        run: wget https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-windows-${{ needs.publish-release.outputs.project-version }}.zip
       - name: Create windows-msi Installer
         id: run_installers_msi
         run: |
