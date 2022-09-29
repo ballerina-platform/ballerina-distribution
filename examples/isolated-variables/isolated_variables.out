@@ -1,2 +1,2 @@
-bal run isolated_variables.bal
+$ bal run isolated_variables.bal
 20
