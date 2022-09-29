@@ -797,6 +797,20 @@
         ]
     },
     {
+        "title": "Query actions",
+        "column": 2,
+        "category": "Language concepts",
+        "samples": [
+            {
+                "name": "Query actions",
+                "url": "query-actions",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            }
+        ]
+    },
+    {
         "title": "Backtick templates",
         "column": 2,
         "category": "Language concepts",
