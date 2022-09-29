@@ -136,7 +136,7 @@ function createBallerinaPlatform() {
     extractPack "$BALLERINA_DISTRIBUTION_LOCATION/$BALLERINA_PLATFORM.zip" ${BALLERINA_PLATFORM}
     createPackInstallationDirectory true
     buildPackage
-    buildProduct ballerina-${BALLERINA_VERSION}-macos-x64.pkg
+    buildProduct ballerina-macos-installer-x64-${BALLERINA_VERSION}.pkg
 }
 
 deleteTargetDirectory
