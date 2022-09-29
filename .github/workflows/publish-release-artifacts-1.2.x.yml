@@ -47,10 +47,10 @@ jobs:
 
           wget "$baseUrl/ballerina-$VERSION.zip"
           wget "$baseUrl/jballerina-$VERSION.zip"
-          wget "$baseUrl/ballerina-windows-x64-$VERSION.msi"
-          wget "$baseUrl/ballerina-linux-x64-$VERSION.deb"
-          wget "$baseUrl/ballerina-linux-x64-$VERSION.rpm"
-          wget "$baseUrl/ballerina-macos-x64-$VERSION.pkg"
+          wget "$baseUrl/ballerina-windows-installer-x64-$VERSION.msi"
+          wget "$baseUrl/ballerina-linux-installer-x64-$VERSION.deb"
+          wget "$baseUrl/ballerina-linux-installer-x64-$VERSION.rpm"
+          wget "$baseUrl/ballerina-macos-installer-x64-$VERSION.pkg"
         env:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
           packageUser: ${{ secrets.BALLERINA_BOT_USERNAME }}
