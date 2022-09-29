@@ -13,7 +13,7 @@ public function main() returns error? {
 
     io:println(numsTimes10);
 
-    // Print only the even numbers in `nums` array.
+    // Print only the even numbers in the `nums` array.
     check from var i in nums
         where i % 2 == 0
         do {
