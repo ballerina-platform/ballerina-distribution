@@ -1774,6 +1774,14 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Interfaces",
+                "url": "graphql-interfaces",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Context",
                 "url": "graphql-context",
                 "verifyBuild": true,
