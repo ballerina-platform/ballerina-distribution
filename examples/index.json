@@ -46,6 +46,13 @@
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
+            },
+            {
+                "name": "Expression-oriented style",
+                "url": "expression-oriented-style",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
             }
         ]
     },
@@ -302,13 +309,6 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Binding patterns in assignment",
-                "url": "binding-patterns-in-assignment",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
                 "name": "Never type",
                 "url": "never-type",
                 "verifyBuild": true,
@@ -486,6 +486,34 @@
             {
                 "name": "Distinct object types",
                 "url": "distinct-object-types",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            }
+        ]
+    },
+    {
+        "title": "Binding patterns",
+        "column": 1,
+        "category": "Language concepts",
+        "samples": [
+            {
+                "name": "Binding patterns in assignment",
+                "url": "binding-patterns-in-assignment",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Spread in binding patterns",
+                "url": "spread-in-binding-patterns",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Binding patterns in match statement",
+                "url": "binding-patterns-in-match-statement",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
@@ -1308,6 +1336,20 @@
                 "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "Expression-oriented style",
+        "column": 0,
+        "category": "Language concepts",
+        "samples": [
+            {
+                "name": "Expression-oriented style",
+                "url": "expression-oriented-style",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
             }
         ]
     },
