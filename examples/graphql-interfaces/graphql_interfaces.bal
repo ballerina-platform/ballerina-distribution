@@ -1,6 +1,6 @@
 import ballerina/graphql;
 
-service on new graphql:Listener(4000) {
+service /graphql on new graphql:Listener(4000) {
 
     // Returning the `Animal` type from a GraphQL resolver will idenitify it as an interface
     resource function get animals() returns Animal[] {
@@ -42,6 +42,7 @@ public distinct service class Leopard {
         return "Growl";
     }
 
+    // Add an additional field `location` to the `Leopard` class
     resource function get location() returns string {
         return "Wilpaththu";
     }
@@ -55,7 +56,6 @@ public distinct service class Elephant {
         return "Elephas maximus maximus";
     }
 
-    // Implement the `call` field from the `Mammal` interface
     resource function get call() returns string {
         return "Trumpet";
     }
