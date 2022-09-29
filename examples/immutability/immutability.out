@@ -1,2 +1,2 @@
-bal run immutability.bal
+$ bal run immutability.bal
 true

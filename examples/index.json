@@ -154,14 +154,14 @@
             },
             {
                 "name": "Default values for function parameters",
-                "url": "default_values_for_function_parameters",
+                "url": "default-values-for-function-parameters",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
                 "name": "Provide function arguments by name",
-                "url": "provide_function_arguments_by_name",
+                "url": "provide-function-arguments-by-name",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
@@ -1190,6 +1190,13 @@
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
+            },
+            {
+                "name": "Run strands safely on separate threads",
+                "url": "run-strands-safely-on-separate-threads",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
             }
         ]
     },
@@ -1810,6 +1817,14 @@
             {
                 "name": "Client",
                 "url": "graphql-client",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Directives",
+                "url": "graphql-directives",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
