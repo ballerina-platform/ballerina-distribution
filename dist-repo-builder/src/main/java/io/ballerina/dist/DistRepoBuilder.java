@@ -46,6 +46,7 @@ public class DistRepoBuilder {
     final static String jarGlob = "glob:**/*.jar";
     final static String docGlob = "glob:**/api-docs.json";
     final static String MODULE_BALLERINAI_OBSERVE = "ballerinai" + File.separator +"observe";
+    final static String OS = System.getProperty("os.name");
 
     public static void main(String args[]) throws Exception {
         System.out.println("Building Distribution Repo ...");
@@ -64,6 +65,11 @@ public class DistRepoBuilder {
         // The following list will contain existing docs from ballerina-lang repo
         List<Path> existingDocs = getExistingDocs(jBalToolsPath.resolve("docs"));
         for (Path bala : balas) {
+            // skipping in windows since character length of path is greater than maximum in windows
+            if (OS.contains("Windows")) {
+                continue;
+            }
+
             // skipping ballerinai-observe module since API docs are not generated for internal modules
             if (bala.toString().contains(MODULE_BALLERINAI_OBSERVE)) {
                 continue;
