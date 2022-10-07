@@ -14,8 +14,6 @@ For more information on the underlying module, see the [`auth` module](https://l
 
 ::: code http_service_basic_auth_file_user_store.bal :::
 
- ensure that the `Config.toml` file is populated correctly with the user information. 
-
 As a prerequisite to running the service, populate the `Config.toml` file correctly with the user information by executing the command below.
 
 ```bash
