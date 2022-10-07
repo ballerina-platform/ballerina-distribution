@@ -12,6 +12,6 @@ For more information on the underlying module, see the [`auth` module](https://l
 
 Run the client program by executing the command below.
 
->**Tip:** As a prerequisite to running the client, start a sample echo WebSocket service secured with Basic Auth.
+>**Info:** As a prerequisite to running the client, start a sample echo WebSocket service secured with Basic Auth.
 
 ::: out websocket_client_basic_auth.out :::

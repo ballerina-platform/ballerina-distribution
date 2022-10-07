@@ -10,6 +10,6 @@ The client is enriched with the `Authorization: Bearer <token>` header by passin
 
 Run the client program by executing the command below.
 
->**Tip:** As a prerequisite to running the client, start a secured sample service.
+>**Info:** As a prerequisite to running the client, start a secured sample service.
 
 ::: out websocket_client_bearer_token_auth.out :::

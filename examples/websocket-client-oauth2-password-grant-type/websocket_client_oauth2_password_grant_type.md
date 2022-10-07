@@ -12,6 +12,6 @@ For more information on the underlying module, see the [`oauth2` module](https:/
 
 Run the client program by executing the command below.
 
->**Tip:** As a prerequisite to running the client, start a sample service secured with OAuth2.
+>**Info:** As a prerequisite to running the client, start a sample service secured with OAuth2.
 
 ::: out websocket_client_oauth2_password_grant_type.out :::

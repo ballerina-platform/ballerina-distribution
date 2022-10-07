@@ -10,6 +10,6 @@ For more information on the underlying module, see the [`http` module](https://l
 
 Run the secure client program by executing the command below.
 
->**Tip:** As a prerequisite to running the client, start a sample service secured with SSL. 
+>**Info:** As a prerequisite to running the client, start a sample service secured with SSL. 
 
 ::: out http_client_ssl_tls.out :::
