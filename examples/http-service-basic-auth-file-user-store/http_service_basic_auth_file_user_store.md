@@ -10,8 +10,25 @@ The `Config.toml` file is used to store the usernames, passwords, and scopes. Ea
 
 For more information on the underlying module, see the [`auth` module](https://lib.ballerina.io/ballerina/auth/latest/).
 
+>**Tip:** You may need to change the certificate file path and private key file path in the code below.
+
 ::: code http_service_basic_auth_file_user_store.bal :::
 
-Run the service by executing the following command.
+ ensure that the `Config.toml` file is populated correctly with the user information. 
+
+As a prerequisite to running the service, populate the `Config.toml` file correctly with the user information by executing the command below.
+
+```bash
+$ echo '[[ballerina.auth.users]]
+username="alice"
+password="password1"
+scopes=["scope1"]
+[[ballerina.auth.users]]
+username="bob"
+password="password2"
+scopes=["scope2", "scope3"]' > Config.toml
+```
+
+Run the service by executing the command below.
 
 ::: out http_service_basic_auth_file_user_store.server.out :::

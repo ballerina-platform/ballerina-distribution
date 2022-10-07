@@ -4,12 +4,14 @@ Ballerina supports mutual SSL, which is a certificate-based authentication proce
 
 For more information on the underlying module, see the [`http` module](https://lib.ballerina.io/ballerina/http/latest/).
 
+>**Tip:** You may need to change the certificate file path, private key file path, and trusted certificate file path in the code below.
+
 ::: code http_service_mutual_ssl.bal :::
 
-Run the service by executing the following command.
+Run the service by executing the command below.
 
 ::: out http_service_mutual_ssl.server.out :::
 
-Invoke the service as follows.
+Invoke the service by executing the cURL command below.
 
 ::: out http_service_mutual_ssl.client.out :::
