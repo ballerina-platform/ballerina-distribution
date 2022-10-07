@@ -14,18 +14,18 @@ For more information on the underlying module, see the [`auth` module](https://l
 
 ::: code http_service_basic_auth_file_user_store.bal :::
 
-As a prerequisite to running the service, populate the `Config.toml` file correctly with the user information by executing the command below.
+>**Info:** As a prerequisite to running the service, populate the `Config.toml` file correctly with the user information as shown below.
 
-```bash
-$ echo '[[ballerina.auth.users]]
-username="alice"
-password="password1"
-scopes=["scope1"]
-[[ballerina.auth.users]]
-username="bob"
-password="password2"
-scopes=["scope2", "scope3"]' > Config.toml
-```
+    ```toml
+    [[ballerina.auth.users]]
+    username="alice"
+    password="password1"
+    scopes=["scope1"]
+    [[ballerina.auth.users]]
+    username="bob"
+    password="password2"
+    scopes=["scope2", "scope3"]
+    ```
 
 Run the service by executing the command below.
 
