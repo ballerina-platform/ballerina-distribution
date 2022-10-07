@@ -33,3 +33,5 @@ Once you run the command, the `grpc_service_pb.bal` file is generated inside the
 4. Execute the commands below to build and run the `service` package.
 
    ::: out grpc_service_mutual_ssl.server.out :::
+
+>**Info:** You can invoke the above service via the [sample Mutual SSL client](/learn/by-example/grpc-client-mutual-ssl/).

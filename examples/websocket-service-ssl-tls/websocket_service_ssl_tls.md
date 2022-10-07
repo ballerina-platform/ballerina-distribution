@@ -11,3 +11,5 @@ For more information on the underlying module, see the [`websocket` module](http
 Run the service by executing the command below.
 
 ::: out websocket_service_ssl_tls.server.out :::
+
+>**Info:** You can invoke the above service via the [sample SSL/TLS client](/learn/by-example/websocket-client-ssl-tls/).

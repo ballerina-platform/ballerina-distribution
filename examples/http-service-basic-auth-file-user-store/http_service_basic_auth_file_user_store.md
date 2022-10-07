@@ -30,3 +30,5 @@ For more information on the underlying module, see the [`auth` module](https://l
 Run the service by executing the command below.
 
 ::: out http_service_basic_auth_file_user_store.server.out :::
+
+>**Info:** You can invoke the above service via the [Basic Auth file user store client](/learn/by-example/http-service-basic-auth-file-user-store/).

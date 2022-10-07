@@ -32,6 +32,6 @@ Once you run the command, the `grpc_client_pb.bal` file is generated inside the 
 
 4. Execute the commands below to build and run the `client` package.
 
-   >**Info:** As a prerequisite to running the client, start a sample service secured with mutual SSL.
+   >**Info:** As a prerequisite to running the client, start a [sample service secured with Mutual SSL](/learn/by-example/grpc-service-mutual-ssl/).
 
    ::: out grpc_client_mutual_ssl.out :::
