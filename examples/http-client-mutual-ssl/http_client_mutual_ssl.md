@@ -10,6 +10,6 @@ For more information on the underlying module, see the [`http` module](https://l
 
 Run the client program by executing the command below.
 
->**Tip:** As a prerequisite to running the client, start a [sample service secured with mutual SSL](-example/http-service-mutual-ssl/).
+>**Info:** As a prerequisite to running the client, start a [sample service secured with mutual SSL](-example/http-service-mutual-ssl/).
 
 ::: out http_client_mutual_ssl.out :::
