@@ -10,8 +10,6 @@ For more information on the underlying module, see the [`websocket` module](http
 
 Run the client program by executing the command below.
 
->**Info:** As a prerequisite to running the client, start a sample service secured with mutual SSL.
+>**Info:** As a prerequisite to running the client, start a [sample service secured with Mutual SSL](/learn/by-example/websocket-service-mutual-ssl/).
 
 ::: out websocket_client_mutual_ssl.out :::
-
->**Info:** As a prerequisite to running the client, start a [sample service secured with Mutual SSL](/learn/by-example/websocket-service-mutual-ssl/).
