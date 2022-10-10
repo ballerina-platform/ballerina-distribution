@@ -10,6 +10,6 @@ For more information on the underlying module, see the [`websocket` module](http
 
 Run the client program by executing the command below.
 
-::: out websocket_client_ssl_tls.out :::
-
 >**Info:** As a prerequisite to running the client, start a [sample service secured with SSL/TLS](/learn/by-example/websocket-service-ssl-tls/).
+
+::: out websocket_client_ssl_tls.out :::
