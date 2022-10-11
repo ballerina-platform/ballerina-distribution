@@ -1256,7 +1256,7 @@ task generateCache(dependsOn: ':cache-generator:build') {
                 }
             }
         }
-        
+
         /* OpenApi Libraries */
         configurations.ballerinaOpenAPILibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
             def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"

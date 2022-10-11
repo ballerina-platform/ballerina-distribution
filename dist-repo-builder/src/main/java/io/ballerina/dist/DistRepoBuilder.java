@@ -45,8 +45,10 @@ public class DistRepoBuilder {
     final static String balaGlob = "glob:**/bala.json";
     final static String jarGlob = "glob:**/*.jar";
     final static String docGlob = "glob:**/api-docs.json";
+    final static String MODULE_BALLERINAI_OBSERVE = "ballerinai" + File.separator +"observe";
+    final static String OS = System.getProperty("os.name");
 
-    public static void main(String args[]) throws IOException {
+    public static void main(String args[]) throws Exception {
         System.out.println("Building Distribution Repo ...");
         if (args.length != 1) {
             System.out.println("Invalid Inputs");
@@ -63,6 +65,15 @@ public class DistRepoBuilder {
         // The following list will contain existing docs from ballerina-lang repo
         List<Path> existingDocs = getExistingDocs(jBalToolsPath.resolve("docs"));
         for (Path bala : balas) {
+            // skipping in windows since character length of path is greater than maximum in windows
+            if (OS.contains("Windows")) {
+                continue;
+            }
+
+            // skipping ballerinai-observe module since API docs are not generated for internal modules
+            if (bala.toString().contains(MODULE_BALLERINAI_OBSERVE)) {
+                continue;
+            }
             generateDocsFromBala(bala, jBalToolsPath, existingDocs);
             // following function was put in to validate if bir and jar exists for packed balas
             valid = valid & validateCache(bala, repo);
@@ -96,7 +107,7 @@ public class DistRepoBuilder {
         return existingDocs;
     }
 
-    private static void generateDocsFromBala(Path balaPath, Path jBalToolsPath, List<Path> existingDocs) {
+    private static void generateDocsFromBala(Path balaPath, Path jBalToolsPath, List<Path> existingDocs) throws Exception {
         if (existingDocs.stream().noneMatch(path -> balaPath.toString().contains(path.toString()))) {
             try {
                 ProjectEnvironmentBuilder defaultBuilder = ProjectEnvironmentBuilder.getDefaultBuilder();
@@ -104,8 +115,8 @@ public class DistRepoBuilder {
                 BalaProject balaProject = BalaProject.loadProject(defaultBuilder, balaPath);
                 BallerinaDocGenerator.generateAPIDocs(balaProject, jBalToolsPath.toString() + "/docs", true);
             } catch (Exception e) {
-                System.out.println("Exception when generating docs from bala: " + balaPath.toString());
                 e.printStackTrace();
+                throw new Exception("Exception when generating docs from bala: " + balaPath.toString());
             }
         }
     }
