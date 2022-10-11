@@ -192,8 +192,8 @@ subprojects {
         /* Ballerina AsyncAPI */
         ballerinaStdLibs "io.ballerina:module-ballerina-asyncapi:${asyncapiVersion}"
 
-        /* Ballerina GraphQL */
-        ballerinaStdLibs "io.ballerina:persist-tools:${persistToolVersion}"
+        /* Ballerina Persist Tool */
+        ballerinaStdLibs " io.ballerina.stdlib:persist-tools-ballerina:${persistToolVersion}"
 
         /* Code to cloud extensions */
         ballerinaC2cLibs "io.ballerina:c2c-ballerina:${c2cVersion}"
