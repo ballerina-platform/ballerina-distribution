@@ -1,0 +1,4 @@
+$ bal run destructure_tuples.bal
+86412.0
+day: 1 seconds: 9.2
+day: 2 seconds: 7.1

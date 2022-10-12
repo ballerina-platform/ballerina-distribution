@@ -11,7 +11,7 @@ public function main() {
     // `v[i]` is an `lvalue`.
     v[3] = 4;
 
-    // `len` will be 3.
+    // `len` will be 4.
     int len = v.length();
     io:println(len);
 }
