@@ -193,7 +193,7 @@ subprojects {
         ballerinaStdLibs "io.ballerina:module-ballerina-asyncapi:${asyncapiVersion}"
 
         /* Ballerina Persist Tool */
-        ballerinaStdLibs " io.ballerina.stdlib:persist-tools-ballerina:${persistToolVersion}"
+        ballerinaStdLibs "io.ballerina:persist-tools:${persistToolVersion}"
 
         /* Code to cloud extensions */
         ballerinaC2cLibs "io.ballerina:c2c-ballerina:${c2cVersion}"
