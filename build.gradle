@@ -181,6 +181,7 @@ subprojects {
         ballerinaStdLibs "io.ballerina.stdlib:websub-ballerina:${stdlibWebsubVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:websubhub-ballerina:${stdlibWebsubhubVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:sql-ballerina:${stdlibSqlVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:persist-ballerina:${stdlibPersistVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:observe-ballerina:${observeVersion}"
 
         /* Ballerina GraphQL */
