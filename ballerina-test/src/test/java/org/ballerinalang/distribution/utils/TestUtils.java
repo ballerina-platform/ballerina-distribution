@@ -40,6 +40,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.sql.Timestamp;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Utility class for tests
@@ -56,7 +58,9 @@ public class TestUtils {
     public static final String EXTENSTIONS_TO_BE_FILTERED_FOR_LINE_CHECKS = System.getProperty("line.check.extensions");
     public static final Path RESOURCES_PATH = TARGET_DIR.resolve("resources/test");
     private static final String SWAN_LAKE_KEYWORD = "swan-lake";
+    public static final String WHITESPACE_PATTERN = "\\s+";
     private static String balFile = "bal";
+    public static final String DISTRIBUTION_FILE_NAME = "ballerina-" + MAVEN_VERSION + "-" + CODE_NAME;
 
     /**
      * Log the output of an input stream.
@@ -111,6 +115,24 @@ public class TestUtils {
             IOException, InterruptedException {
         args.add(0, "build");
         Process process = getProcessBuilderResults(distributionName, sourceDirectory, args);
+        return process.getErrorStream();
+    }
+
+    /**
+     * Execute ballerina build command with openAPI annotation.
+     *
+     * @param distributionName The name of the distribution.
+     * @param sourceDirectory  The directory where the sources files are location.
+     * @param args             The arguments to be passed to the build command.
+     * @return inputream with log outputs
+     * @throws IOException          Error executing build command.
+     * @throws InterruptedException Interrupted error executing build command.
+     */
+    public static InputStream executeGrpcCommand(String distributionName, Path sourceDirectory, List<String> args) throws
+            IOException, InterruptedException {
+        args.add(0, "grpc");
+        Process process = getProcessBuilderResults(distributionName, sourceDirectory, args);
+        process.waitFor();
         return process.getErrorStream();
     }
 
@@ -215,7 +237,7 @@ public class TestUtils {
                     Objects.requireNonNull(new File(String.valueOf(resourcesPath)).listFiles()));
             for (File existsFile: listFiles) {
                 String fileName = existsFile.getName();
-                if (fileName.equals(generatedFileName) || fileName.equals(generatedFileName+"_service.bal") ||
+                if (fileName.equals(generatedFileName) || fileName.equals(generatedFileName + "_service.bal") ||
                         fileName.equals("client.bal") || fileName.equals("types.bal") || fileName.equals("utils.bal")) {
                     existsFile.delete();
                 }
@@ -345,5 +367,13 @@ public class TestUtils {
      */
     public static String getContent(Path filePath) throws IOException {
         return Files.readString(filePath);
+    }
+
+    public static String getStringFromGivenBalFile(Path expectedServiceFile) throws IOException {
+        Stream<String> expectedServiceLines = Files.lines(expectedServiceFile);
+        String expectedServiceContent = expectedServiceLines.collect(Collectors.joining(System.lineSeparator()));
+        expectedServiceLines.close();
+        return expectedServiceContent.trim().replaceAll(
+                WHITESPACE_PATTERN, "").replaceAll(System.lineSeparator(), "");
     }
 }
