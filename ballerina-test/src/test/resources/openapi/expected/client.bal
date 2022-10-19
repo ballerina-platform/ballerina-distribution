@@ -36,6 +36,8 @@ public type ClientConfig record {|
     http:ProxyConfig? proxy = ();
     # Enables the inbound payload validation functionality which provided by the constraint package. Enabled by default
     boolean validation = true;
+    # Provides settings related to client socket configuration
+    http:ClientSocketConfig socketConfig = {};
 |};
 
 # The Stripe REST API. Please see https://stripe.com/docs/api for more details.
