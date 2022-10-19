@@ -181,6 +181,7 @@ subprojects {
         ballerinaStdLibs "io.ballerina.stdlib:websub-ballerina:${stdlibWebsubVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:websubhub-ballerina:${stdlibWebsubhubVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:sql-ballerina:${stdlibSqlVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:persist-ballerina:${stdlibPersistVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:observe-ballerina:${observeVersion}"
 
         /* Ballerina GraphQL */
@@ -192,9 +193,12 @@ subprojects {
         /* Ballerina AsyncAPI */
         ballerinaStdLibs "io.ballerina:module-ballerina-asyncapi:${asyncapiVersion}"
 
+        /* Ballerina Persist Tool */
+        ballerinaStdLibs "io.ballerina:persist-tools:${persistToolVersion}"
+
         /* Code to cloud extensions */
-        ballerinaC2cLibs "io.ballerina:c2c-ballerina:${c2cVersion}"
-        ballerinaC2cTooling "io.ballerina:c2c-tooling:${c2cVersion}"
+        ballerinaC2cLibs "io.ballerina:cloud-ballerina:${c2cVersion}"
+        ballerinaC2cTooling "io.ballerina:cloud-tooling:${c2cVersion}"
 
     }
 }
