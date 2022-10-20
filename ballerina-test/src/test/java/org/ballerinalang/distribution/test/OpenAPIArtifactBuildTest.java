@@ -127,6 +127,8 @@ public class OpenAPIArtifactBuildTest {
         buildArgs.add("openapi_client.yaml");
         buildArgs.add("--mode");
         buildArgs.add("client");
+        buildArgs.add("--client-methods");
+        buildArgs.add("remote");
         boolean successful = TestUtils.executeOpenAPI(DISTRIBUTION_FILE_NAME, TestUtils.getResource(testResource),
                 buildArgs);
         Assert.assertTrue(successful);
