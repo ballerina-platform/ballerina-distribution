@@ -119,12 +119,12 @@ public class TestUtils {
     }
 
     /**
-     * Execute ballerina build command with openAPI annotation.
+     * Execute bal grpc command with provided input
      *
      * @param distributionName The name of the distribution.
-     * @param sourceDirectory  The directory where the sources files are location.
+     * @param sourceDirectory  The directory where the sources files are located.
      * @param args             The arguments to be passed to the build command.
-     * @return inputream with log outputs
+     * @return error stream from the `grpc` command as an `InputStream`
      * @throws IOException          Error executing build command.
      * @throws InterruptedException Interrupted error executing build command.
      */
