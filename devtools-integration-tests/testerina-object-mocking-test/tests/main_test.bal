@@ -105,7 +105,6 @@ json postResponse1 = {
 };
 
 @test:Config {
-    enable : false,
     dependsOn : [test_findOrder]
 }
 function test_addOrder() {
