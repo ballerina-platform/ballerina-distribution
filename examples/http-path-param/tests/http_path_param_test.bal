@@ -3,10 +3,10 @@ import ballerina/test;
 
 @test:Config {}
 function testFunc() returns error? {
-    http:Client httpEndpoint = checkpanic new("http://localhost:9090");
-    json response = check httpEndpoint->get("/company/empId/23");
-    test:assertEquals(response, {empId:23});
+    http:Client httpEndpoint = check new("http://localhost:9090");
+    string payload = check httpEndpoint->get("/company/employee/23");
+    test:assertEquals(payload, "Employee is Mike Wheeler");
 
-    response = check httpEndpoint->get("/company/empName/Adele/Ferguson");
-    test:assertEquals(response, {firstName:"Adele", lastName:"Ferguson"});
+    payload = check httpEndpoint->get("/company/employee/25");
+    test:assertEquals(payload, "Invalid employee id");
 }
