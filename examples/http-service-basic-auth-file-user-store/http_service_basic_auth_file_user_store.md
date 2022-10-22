@@ -8,7 +8,8 @@ In the authorization phase, the scopes of the service/resource are compared agai
 
 The `Config.toml` file is used to store the usernames, passwords, and scopes. Each user can have a password and optionally assigned scopes as an array.
 
-For more information on the underlying module, see the [`auth` module](https://lib.ballerina.io/ballerina/auth/latest/).
+For more information on the underlying module, see the [`auth` module](https://lib.ballerina.io/ballerina/auth/latest/) 
+and [`http` specification](https://ballerina.io/spec/http/#9111-listener---basic-auth---file-user-store).
 
 >**Tip:** You may need to change the certificate file path and private key file path in the code below.
 
