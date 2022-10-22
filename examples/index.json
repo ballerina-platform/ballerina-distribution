@@ -1406,14 +1406,6 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Matrix parameter",
-                "url": "http-matrix-param",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
                 "name": "Header parameter",
                 "url": "http-header-param",
                 "verifyBuild": true,
@@ -1620,6 +1612,14 @@
             {
                 "name": "100 continue",
                 "url": "http-100-continue",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Matrix parameter",
+                "url": "http-matrix-param",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
