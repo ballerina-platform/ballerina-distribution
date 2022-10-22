@@ -3,7 +3,7 @@ import ballerina/http;
 service /product on new http:Listener(9090) {
 
     // The `a`, `b` method arguments are considered as query parameters.
-    resource function get count(int a, int b) returns json {
+    resource function get su(int a, int b) returns json {
         return { count : a + b};
     }
 
