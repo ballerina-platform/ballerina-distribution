@@ -4,7 +4,7 @@ $ bal run http_caching_client.bal -- -Cballerina.http.traceLogConsole=true
 
 # The caching proxy receives a request from a client.
 [2021-11-26 09:52:32,588] TRACE {http.tracelog.downstream} - [id: 0x6c720951, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50902] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
-GET /cache HTTP/1.1
+GET /greeting HTTP/1.1
 Host: localhost:9090
 User-Agent: curl/7.64.1
 Accept: */*
@@ -43,7 +43,7 @@ content-length: 27, 27B
 
 # Subsequent requests to the proxy within the next 15 seconds are served from the proxy's cache. As seen here, the backend service is not contacted.
 [2021-11-26 09:52:40,143] TRACE {http.tracelog.downstream} - [id: 0xc79f9038, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50915] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
-GET /cache HTTP/1.1
+GET /greeting HTTP/1.1
 Host: localhost:9090
 User-Agent: curl/7.64.1
 Accept: */*
@@ -63,7 +63,7 @@ content-length: 27, 27B
 
 # Another request is sent after remaining idle for a while.
 [2021-11-26 09:52:54,648] TRACE {http.tracelog.downstream} - [id: 0x083aeb7c, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50916] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
-GET /cache HTTP/1.1
+GET /greeting HTTP/1.1
 Host: localhost:9090
 User-Agent: curl/7.64.1
 Accept: */*
