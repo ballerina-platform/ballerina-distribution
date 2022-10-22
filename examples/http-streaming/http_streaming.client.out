@@ -1,2 +1,2 @@
-$ curl -X GET http://localhost:9090/stream/fileupload
+$ curl http://localhost:9090/stream/fileupload
 File Received!

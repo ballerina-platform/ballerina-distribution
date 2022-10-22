@@ -23,8 +23,7 @@ service /'stream on new http:Listener(9090) {
         return clientResponse;
     }
 
-    resource function post receiver(http:Caller caller,
-                                    http:Request request) returns error? {
+    resource function post receiver(http:Request request) returns string|error {
         // Retrieve the byte stream.
         // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#getByteStream.
         stream<byte[], io:Error?> streamer = check request.getByteStream();
