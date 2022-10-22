@@ -7,7 +7,8 @@ listener rabbitmq:Listener channelListener = new (rabbitmq:DEFAULT_HOST, rabbitm
 // The `ackMode` is by default rabbitmq:AUTO_ACK where messages are acknowledged
 // immediately after consuming.
 @rabbitmq:ServiceConfig {
-    queueName: "MyQueue"
+    queueName: "MyQueue",
+    autoAck: false
 }
 // Attaches the service to the listener.
 service rabbitmq:Service on channelListener {
