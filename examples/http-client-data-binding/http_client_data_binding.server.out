@@ -1,3 +1,1 @@
 $ bal run http_client_data_binding.bal
-time = 2021-01-21 19:29:10,007 level = INFO  module = "" message = "String payload: Hello ballerina!!!!"
-time = 2021-01-21 19:29:10,092 level = INFO  module = "" message = "Person name: Smith"

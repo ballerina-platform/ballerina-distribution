@@ -4,7 +4,8 @@ Through client data binding, the response payload can be accessed directly. The 
 
 When the user expects client data binding to happen, the HTTP error responses (`4XX`, `5XX`) will be categorized as an `error` (`http:ClientRequestError`, `http:RemoteServerError`) of the client remote operation.
 
-For more information on the underlying module, see the [`http` module](https://lib.ballerina.io/ballerina/http/latest/).
+For more information on the underlying module, see the [`http` module](https://lib.ballerina.io/ballerina/http/latest/) 
+and [specification](https://ballerina.io/spec/http/#243-client-action-return-types).
 
 ::: code http_client_data_binding.bal :::
 
