@@ -1,8 +1,2 @@
-$ curl "http://localhost:9090/product/count?a=315&b=585"
-{"count":900}
-
-$ curl "http://localhost:9090/product/name?id=432423"
-product_432423
-
-$ curl "http://localhost:9090/product/detail?colour=red&colour=green"
-{"product_colour":["red", "green"]}
+$ curl "http://localhost:9090/sum?a=3&b=5"
+8
