@@ -3,7 +3,7 @@ import ballerina/io;
 
 public function main() returns error? {
     // Creates a new client with the backend URL.
-    final http:Client clientEndpoint = check new ("http://postman-echo.com");
+    final http:Client clientEndpoint = check new ("postman-echo.com");
     
     // Sends a `GET` request to the specified endpoint.
     io:println("GET request:");
