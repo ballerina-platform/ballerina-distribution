@@ -1,7 +1,7 @@
-$ curl -v -d "TEST 100 CONTINUE" http://localhost:9090/hello -H 'Expect:100-continue' -H 'Content-Type: text/plain'
+$ curl -v -d "TEST 100 CONTINUE" http://localhost:9090/greeting -H 'Expect:100-continue' -H 'Content-Type: text/plain'
 *   Trying 127.0.0.1...
 * Connected to localhost (127.0.0.1) port 9090 (#0)
-> POST /hello HTTP/1.1
+> POST /greeting HTTP/1.1
 > Host: localhost:9090
 > User-Agent: curl/7.58.0
 > Accept: */*
@@ -24,9 +24,9 @@ Hello World!
 
 # Use the following client to invoke the service using an unsupported media type. The service is supposed to ignore
 # the payload if the content type does not match.
-$ curl -v -d '{"TEST":"100 CONTINUE"}' http://localhost:9090/hello -H 'Expect:100-continue' -H 'Content-Type: application/json'
+$ curl -v -d '{"TEST":"100 CONTINUE"}' http://localhost:9090/greeting -H 'Expect:100-continue' -H 'Content-Type: application/json'
 * Connected to localhost (127.0.0.1) port 9090 (#0)
-> POST /hello HTTP/1.1
+> POST /greeting HTTP/1.1
 > Host: localhost:9090
 > User-Agent: curl/7.58.0
 > Accept: */*
