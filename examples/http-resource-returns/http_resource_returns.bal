@@ -1,6 +1,6 @@
 import ballerina/http;
 
-type BankInfo record {
+public type BankInfo record {
     string name;
     string[] branches;
 };
