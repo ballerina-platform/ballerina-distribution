@@ -3,14 +3,12 @@ import ballerina/http;
 // Creates an HTTP client to interact with a remote endpoint.
 // The `followRedirects` record provides configurations associated with HTTP redirects.
 // For details, see https://lib.ballerina.io/ballerina/http/latest/records/FollowRedirects.
-http:Client clientEndpoint = check new ("http://localhost:9092", {
-        followRedirects: {enabled: true, maxCount: 5}
-    }
-);
+http:Client clientEndpoint = check new ("http://localhost:9092",
+        followRedirects = {enabled: true, maxCount: 5});
 
 service / on new http:Listener(9090) {
 
-    resource function get hello() returns string|error {
+    resource function get greeting() returns string|error {
         // Sends a `GET` request to the specified endpoint and Retrieved the text payload from the response.
         string returnResult = check clientEndpoint->get("/redirect1");
         return "Response received : " + returnResult;
