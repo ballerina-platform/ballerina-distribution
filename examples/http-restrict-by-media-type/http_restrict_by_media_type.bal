@@ -11,8 +11,7 @@ service / on new http:Listener(9090) {
         consumes: ["text/plain"],
         produces: ["application/xml"]
     }
-    resource function post transform(@http:Payload string msg)
-            returns xml|http:InternalServerError {
+    resource function post transform(@http:Payload string msg) returns xml|http:InternalServerError {
         if regex:matches(msg, "^[a-zA-Z]*$") {
             return xml `<name>${msg}</name>`;
         }

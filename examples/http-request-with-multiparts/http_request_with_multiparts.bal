@@ -7,27 +7,21 @@ http:Client clientEP = check new ("http://localhost:9090");
 //Binds the listener to the service.
 service /multiparts on new http:Listener(9090) {
 
-    resource function post decode(http:Request request)
-            returns http:Response|http:InternalServerError {
+    resource function post decoder(http:Request request)
+            returns http:Response|http:InternalServerError|error {
         http:Response response = new;
-        // Extracts bodyparts from the request.
+        // Extracts body parts from the request.
         // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#getBodyParts.
-        var bodyParts = request.getBodyParts();
-
-        if bodyParts is mime:Entity[] {
-            foreach var part in bodyParts {
-                handleContent(part);
-            }
-            response.setPayload(bodyParts);
-            return response;
-        } else {
-            log:printError(bodyParts.message());
-            return {body:"Error in decoding multiparts!"};
+        var bodyParts = check request.getBodyParts();
+        foreach var part in bodyParts {
+            handleContent(part);
         }
+        response.setPayload(bodyParts);
+        return response;
     }
 
-    resource function get encode(http:Request req)
-            returns http:Response|http:InternalServerError {
+    resource function get encoder(http:Request req) returns
+            http:Response|http:InternalServerError|error {
         //Create a `json` body part.
         mime:Entity jsonBodyPart = new;
         jsonBodyPart.setContentDisposition(getContentDispositionForFormData("json part"));
@@ -49,12 +43,8 @@ service /multiparts on new http:Listener(9090) {
         // E.g., `multipart/mixed`, `multipart/related` etc.
         // You need to pass the content type that suits your requirement.
         request.setBodyParts(bodyParts, contentType = mime:MULTIPART_FORM_DATA);
-        http:Response|error returnResponse = clientEP->post("/multiparts/decode", request);
-        if returnResponse is http:Response {
-            return returnResponse;
-        } else {
-            return {body:"Error occurred while sending multipart request!"};
-        }
+        http:Response returnResponse = check clientEP->post("/multiparts/decoder", request);
+        return returnResponse;
     }
 }
 
