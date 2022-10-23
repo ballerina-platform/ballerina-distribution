@@ -39,24 +39,16 @@ service /multiparts on new http:Listener(9092) {
 service /multiparts on new http:Listener(9090) {
 
     // This resource accepts multipart responses.
-    resource function get decoder() returns string|http:InternalServerError {
-        http:Response|error returnResult = clientEP->get("/multiparts/encoder");
-        if (returnResult is http:Response) {
-            // Extracts the body parts from the response.
-            // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Response#getBodyParts.
-            var parentParts = returnResult.getBodyParts();
-            if (parentParts is mime:Entity[]) {
-                //Loops through body parts.
-                foreach var parentPart in parentParts {
-                    handleNestedParts(parentPart);
-                }
-                return "Body Parts Received!";
-            } else {
-                return { body: "Invalid payload"};
-            }
-        } else {
-            return { body: "Connection error"};
+    resource function get decoder() returns string|http:InternalServerError|error {
+        http:Response returnResult = check clientEP->get("/multiparts/encoder");
+        // Extracts the body parts from the response.
+        // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Response#getBodyParts.
+        mime:Entity[] parentParts = check returnResult.getBodyParts();
+        //Loops through body parts.
+        foreach var parentPart in parentParts {
+            handleNestedParts(parentPart);
         }
+        return "Body Parts Received!";
     }
 }
 
