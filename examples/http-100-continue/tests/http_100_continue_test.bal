@@ -11,3 +11,4 @@ function testFunc() returns error? {
     string response = check httpEndpoint->post("/greeting", "Hello from client");
     test:assertEquals(response, response1);
 }
+

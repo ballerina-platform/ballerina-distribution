@@ -1,6 +1,5 @@
 import ballerina/http;
 import ballerina/lang.runtime;
-// import ballerina/log;
 
 final http:Listener httpListener = check new (9090);
 
