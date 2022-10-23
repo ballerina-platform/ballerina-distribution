@@ -46,7 +46,7 @@ http:Client cbrBackend = check new ("http://localhost:8080", {
 
 service / on new http:Listener(9090) {
     resource function get cb() returns string|error {
-        string payload = check cbrBackend->get("/hello");
+        string payload = check cbrBackend->get("/greeting");
         return payload;
     }
 }
@@ -55,7 +55,7 @@ service / on new http:Listener(9090) {
 // This should run separately from the above service.
 service / on new http:Listener(8080) {
     private int counter = 1;
-    resource function get hello() returns string|http:InternalServerError {
+    resource function get greeting() returns string|http:InternalServerError {
         if self.counter % 5 == 3 {
             self.counter += 1;
             return {body:"Error occurred while processing the request."};

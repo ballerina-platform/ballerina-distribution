@@ -2,7 +2,8 @@
 
 The HTTP retry client tries sending over the same request to the backend service when there is a network level failure.
 
-For more information on the underlying module, see the [`http` module](https://lib.ballerina.io/ballerina/http/latest/).
+For more information on the underlying module, see the [`http` module](https://lib.ballerina.io/ballerina/http/latest/) 
+and [specification](https://ballerina.io/spec/http/#2414-retry).
 
 ::: code http_retry.bal :::
 

@@ -10,7 +10,7 @@ final http:Client backendClientEP = check new ("http://localhost:8080", {
 service / on new http:Listener(9090) {
 
     resource function get timeout() returns string|http:InternalServerError {
-        string|error response = backendClientEP->get("/hello");
+        string|error response = backendClientEP->get("/greeting");
 
         // If the `response` is a `string` (text/plain), it is sent back to the
         // client. Also, if the `response` is an `http:ClientError`, an internal
@@ -32,7 +32,7 @@ service / on new http:Listener(9090) {
 // This sample service is used to mock connection timeouts.
 service / on new http:Listener(8080) {
 
-    resource function get hello() returns string {
+    resource function get greeting() returns string {
         // Delay the response by 15 seconds to mimic the network level delays.
         runtime:sleep(15);
         return "Hello World!!!";
