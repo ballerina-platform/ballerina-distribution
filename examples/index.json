@@ -187,6 +187,14 @@
                 "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": true
+            },
+            {
+                "name": "int:range function",
+                "url": "int-range",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "disablePlayground": true,
+                "isLearnByExample": true
             }
         ]
     },
