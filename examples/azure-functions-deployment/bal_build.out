@@ -1,3 +1,4 @@
+$ bal build
 Compiling source
         wso2/azure_functions_deployment:0.1.0
 
