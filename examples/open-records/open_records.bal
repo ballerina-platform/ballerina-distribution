@@ -11,7 +11,6 @@ type Employee record {
     int id;
 };
 
-// Adds an additional `id` field to `e`.
 Employee e = {
     name: "James", id: 10
 };
