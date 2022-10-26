@@ -788,7 +788,7 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Outer join clause",
+                "name": "Outer Join clause",
                 "url": "outer-join-clause",
                 "verifyBuild": true,
                 "verifyOutput": true,
