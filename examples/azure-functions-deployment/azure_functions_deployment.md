@@ -1,21 +1,31 @@
 # Azure Functions
 
-Azure Functions is an event driven, serverless computing platform. Ballerina functions can be deployed in Azure Functions by annotating a Ballerina function with Azure functions annotation". You can view the code examples below.
+Azure Functions is an event driven, serverless computing platform. Azure Functions can be written from Ballerina using the listeners and services provided by Azure Functions package. You can view the code examples below.
 
 For more information, see the [Azure deployment guide](https://ballerina.io/learn/deployment/azure-functions/).
 
 ::: code azure_functions_deployment.bal :::
 
 Create a Ballerina package and replace the content of the generated BAL file with the content above.
-::: out bal_new.out :::
-
+```bash
+$ bal new azure_functions_deployment
+```
 Build the Ballerina program to generate the Azure Functions artifacts.
+```bash
+$ bal build
+```
 ::: out bal_build.out :::
 
-Execute the Azure CLI command given by the compiler to publish the functions (replace with your respective Azure `<resource_group>` and `<function_app_name>`).
+Execute the Azure CLI command given by the compiler to publish the functions (replace the sample app name given in the command with your respective Azure `<function_app_name>`).
+```bash
+$ func azure functionapp publish bal-bbe --script-root target/azure_functions
+```
 ::: out az_deploy.out :::
 
 Invoke the `HTTP Trigger` functions.
+```bash
+$ curl https://bal-bbe.azurewebsites.net/hello\?name\=Jack
+```
 ::: out execute_function.out :::
 
-The `queuePopulationTimer` function is being triggered by the Azure Function App from a timer. You can check the  queue storage to see the output. For more information on the infrastructure, see [Azure Functions deployment](/learn/deployment/azure-functions/).
+The `timer` function is triggered by the Azure Functions app from a timer. You can check the queue storage to see the output. For more information on the infrastructure, see [Azure Functions deployment](/learn/deployment/azure-functions/).
