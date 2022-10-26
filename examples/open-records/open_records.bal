@@ -11,7 +11,6 @@ type Employee record {
     int id;
 };
 
-// Adds an additional `id` field to `e`.
 Employee e = {
     name: "James", id: 10
 };
@@ -19,6 +18,7 @@ Employee e = {
 // You can assign an `Employee` type value to a `Person`.
 Person p = e;
 
+// Create a `Person` value with an additional `country` field.
 Person p2 = {
     name: "John", "country": "UK"
 };
