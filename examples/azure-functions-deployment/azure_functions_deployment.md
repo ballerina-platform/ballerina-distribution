@@ -7,15 +7,25 @@ For more information, see the [Azure deployment guide](https://ballerina.io/lear
 ::: code azure_functions_deployment.bal :::
 
 Create a Ballerina package and replace the content of the generated BAL file with the content above.
-::: out bal_new.out :::
-
+```bash
+$ bal new azure_functions_deployment
+```
 Build the Ballerina program to generate the Azure Functions artifacts.
+```bash
+$ bal build
+```
 ::: out bal_build.out :::
 
 Execute the Azure CLI command given by the compiler to publish the functions (replace the sample app name given in the command with your respective Azure `<function_app_name>`).
+```bash
+$ func azure functionapp publish bal-bbe --script-root target/azure_functions
+```
 ::: out az_deploy.out :::
 
 Invoke the `HTTP Trigger` functions.
+```bash
+$ curl https://bal-bbe.azurewebsites.net/hello\?name\=Jack
+```
 ::: out execute_function.out :::
 
 The `timer` function is triggered by the Azure Functions app from a timer. You can check the queue storage to see the output. For more information on the infrastructure, see [Azure Functions deployment](/learn/deployment/azure-functions/).
