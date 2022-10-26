@@ -18,7 +18,7 @@ Employee e = {
 // You can assign an `Employee` type value to a `Person`.
 Person p = e;
 
-// Adds an additional `country` field to `p2`.
+// Create a `Person` value with an additional `country` field.
 Person p2 = {
     name: "John", "country": "UK"
 };
