@@ -14,7 +14,7 @@ function forEachWithRange(rangeStart, rangeEnd, step) {
     // When `step = 0`, the function panics.
     // `m ..< n` creates a value that when iterated over will give the integers starting from `m` that are `< n`.
     foreach int i in int:range(rangeStart, rangeEnd, step) {
-        loop[index] = i;
+        loop.push(i)
     }
 
     io:println(loop);
