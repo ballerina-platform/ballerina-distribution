@@ -18,4 +18,4 @@ Execute the Azure CLI command given by the compiler to publish the functions (re
 Invoke the `HTTP Trigger` functions.
 ::: out execute_function.out :::
 
-The `timer` function is being triggered by the Azure Function App from a timer. You can check the queue storage to see the output. For more information on the infrastructure, see [Azure Functions deployment](/learn/deployment/azure-functions/).
+The `timer` function is triggered by the Azure Functions app from a timer. You can check the queue storage to see the output. For more information on the infrastructure, see [Azure Functions deployment](/learn/deployment/azure-functions/).
