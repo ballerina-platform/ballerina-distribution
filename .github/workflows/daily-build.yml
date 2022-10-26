@@ -3,7 +3,7 @@ name: Daily build
 on:
   workflow_dispatch:
   schedule:
-    - cron:  '0 0 * * *'
+    - cron:  '30 18 * * *'    # 00:00 in LK time (GMT+5:30)
 
 jobs:
   ubuntu-build:
@@ -258,6 +258,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '11'
       - name: Download MacOS Intaller Zip
         uses: actions/download-artifact@v2
         with:
@@ -297,6 +302,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '11'
       - uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '2.1.x'
