@@ -7,7 +7,7 @@ service / on new af:HttpListener() {
     }
 }
 
-// This function gets executed every 10 seconds by the Azure function app. Once the function is executed, the timer 
+// This function gets executed every 10 seconds by the Azure Functions app. Once the function is executed, the timer 
 // details will be stored in the selected queue storage for every invocation.
 @af:TimerTrigger {schedule: "*/10 * * * * *"}
 listener af:TimerListener timerListener = new af:TimerListener();
