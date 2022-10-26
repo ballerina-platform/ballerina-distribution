@@ -12,7 +12,7 @@ Create a Ballerina package and replace the content of the generated BAL file wit
 Build the Ballerina program to generate the Azure Functions artifacts.
 ::: out bal_build.out :::
 
-Execute the Azure CLI command given by the compiler to publish the functions (replace with your respective Azure `<function_app_name>`).
+Execute the Azure CLI command given by the compiler to publish the functions (replace the sample app name given in the command with your respective Azure `<function_app_name>`).
 ::: out az_deploy.out :::
 
 Invoke the `HTTP Trigger` functions.
