@@ -1,5 +1,2 @@
-$ curl -d "Jack" https://functions1777.azurewebsites.net/api/hello
+$ curl https://bal-bbe.azurewebsites.net/hello\?name\=Jack
 Hello, Jack!
-
-$ curl "https://functions1777.azurewebsites.net/api/httpTriggerBlobInput?name=input.txt"
-Blob: input.txt Length: 6 Content: 65 66 67 68 69 10
