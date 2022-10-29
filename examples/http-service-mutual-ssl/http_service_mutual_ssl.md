@@ -16,4 +16,4 @@ Invoke the service by executing the cURL command below.
 
 ::: out http_service_mutual_ssl.client.out :::
 
->**Info:** You can invoke the above service via the [sample Mutual SSL/TLS client](/learn/by-example/http-client-mutual-ssl/).
+>**Info:** Alternatively, you can invoke the above service via the [sample Mutual SSL/TLS client](/learn/by-example/http-client-mutual-ssl/).
