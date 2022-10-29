@@ -12,6 +12,8 @@ For more information on the underlying module, see the [`jwt` module](https://li
 
 ::: code websocket_service_jwt_auth.bal :::
 
-Run the service by executing the command below.
+Run the service by executing the cURL command below.
+
+>**Info:** Alternatively, you can invoke the above service via the [self-signed JWT Auth client](/learn/by-example/websocket-client-self-signed-jwt-auth).
 
 ::: out websocket_service_jwt_auth.server.out :::
