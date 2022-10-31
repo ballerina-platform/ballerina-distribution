@@ -6,6 +6,6 @@ A `start` action is isolated if the function or method it calls has a type that 
 
 The strand created by a named worker can run on a separate thread from the default worker if the body of the worker satisfies the requirements for an isolated function.
 
-::: run_strands_safely_on_separate_threads.bal :::
+::: code run_strands_safely_on_separate_threads.bal :::
 
-::: run_strands_safely_on_separate_threads.out :::
+::: out run_strands_safely_on_separate_threads.out :::
