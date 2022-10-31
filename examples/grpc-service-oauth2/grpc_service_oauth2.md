@@ -37,3 +37,10 @@ Once you run the command, the `grpc_service_pb.bal` file is generated inside the
 4. Execute the commands below to build and run the `service` package.
 
    ::: out grpc_service_oauth2.server.out :::
+
+>**Info:** You can invoke the above service via the clients below.
+ - [gRPC OAuth2 Client Credentials grant type client](/learn/by-example/grpc-client-oauth2-client-credentials-grant-type)
+ - [gRPC OAuth2 Password grant type client](/learn/by-example/grpc-client-oauth2-password-grant-type)
+ - [gRPC OAuth2 Refresh Token grant type client](/learn/by-example/grpc-client-oauth2-refresh-token-grant-type)
+ - [gRPC OAuth2 JWT Bearer grant type client](/learn/by-example/grpc-client-oauth2-jwt-bearer-grant-type)
+ 

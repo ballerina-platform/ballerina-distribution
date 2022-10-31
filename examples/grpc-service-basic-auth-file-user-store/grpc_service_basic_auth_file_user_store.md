@@ -52,3 +52,5 @@ Once you run the command, the `grpc_service_pb.bal` file is generated inside the
 6. Execute the commands below to build and run the `service` package.
 
    ::: out grpc_service_basic_auth_file_user_store.server.out :::
+
+>**Info:** You can invoke the above service via the [gRPC Basic Auth client](/learn/by-example/grpc-client-basic-auth).
