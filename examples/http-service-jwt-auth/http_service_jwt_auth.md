@@ -14,6 +14,6 @@ For more information on the underlying module, see the [`jwt` module](https://li
 
 Run the service by executing the cURL command below.
 
->**Info:** Alternatively, you can invoke the above service via the [self-signed JWT Auth client](/learn/by-example/http-client-self-signed-jwt-auth).
-
 ::: out http_service_jwt_auth.server.out :::
+
+>**Info:** Alternatively, you can invoke the above service via the [self-signed JWT Auth client](/learn/by-example/http-client-self-signed-jwt-auth).

@@ -12,8 +12,8 @@ Run the service by executing the command below.
 
 ::: out http_service_ssl_tls.server.out :::
 
-Invoke the service by executing the cURL command below. 
-
->**Info:** Alternatively, you can invoke the above service via the [sample SSL/TLS client](/learn/by-example/http-client-ssl-tls/).
+Invoke the service by executing the cURL command below.
 
 ::: out http_service_ssl_tls.client.out :::
+
+>**Info:** Alternatively, you can invoke the above service via the [sample SSL/TLS client](/learn/by-example/http-client-ssl-tls/).

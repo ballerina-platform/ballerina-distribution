@@ -28,6 +28,6 @@ For more information on the underlying module, see the [`auth` module](https://l
     ```
 Run the service by executing the cURL command below.
 
->**Info:** Alternatively, you can invoke the above service via the [Basic Auth client](/learn/by-example/websocket-client-basic-auth).
-
 ::: out websocket_service_basic_auth_file_user_store.server.out :::
+
+>**Info:** Alternatively, you can invoke the above service via the [Basic Auth client](/learn/by-example/websocket-client-basic-auth).
