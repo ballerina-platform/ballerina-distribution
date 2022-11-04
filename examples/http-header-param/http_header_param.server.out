@@ -1,2 +1,1 @@
 $ bal run http_headers.bal
-time = 2021-06-25T11:56:13.746+05:30 level = INFO module = "" message = "Received header value 0987654321"
