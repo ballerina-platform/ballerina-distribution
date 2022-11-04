@@ -1,2 +1,2 @@
-$ curl http://localhost:9090/header -H "Accept:text/plain"
-text/plain
+$ curl http://localhost:9090/info/student -H "Trace-Id:0xf7c32f4c"
+0xf7c32f4c

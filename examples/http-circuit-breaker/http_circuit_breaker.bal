@@ -46,7 +46,7 @@ http:Client cbrBackend = check new ("http://localhost:8080", {
 
 service / on new http:Listener(9090) {
     resource function get cb() returns string|error {
-        string payload = check cbrBackend->/greeting.get();
+        string payload = check cbrBackend->/greeting;
         return payload;
     }
 }

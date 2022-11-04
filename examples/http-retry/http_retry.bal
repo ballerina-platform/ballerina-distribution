@@ -31,7 +31,7 @@ http:Client backendClientEP = check new ("http://localhost:8080", {
 
 service / on new http:Listener(9090) {
     resource function 'default 'retry() returns string|error {
-        string payload = check backendClientEP->/greeting.get();
+        string payload = check backendClientEP->/greeting;
         return payload;
     }
 }
