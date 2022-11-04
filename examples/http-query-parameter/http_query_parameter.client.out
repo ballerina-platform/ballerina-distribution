@@ -1,2 +1,2 @@
-$ curl "http://localhost:9090/sum?a=3&b=5"
-8
+$ curl "http://localhost:9090/info?page=3"
+Info on page 3
