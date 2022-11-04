@@ -17,7 +17,7 @@ service /'stream on new http:Listener(9090) {
             contentType = mime:APPLICATION_PDF);
 
         //Sends the request to the receiver service with the file content.
-        string clientResponse = check clientEndpoint->post("/stream/receiver", request);
+        string clientResponse = check clientEndpoint->/'stream/receiver.post(request);
 
         // forward the received payload to the caller.
         return clientResponse;

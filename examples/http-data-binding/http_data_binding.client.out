@@ -1,6 +1,3 @@
-$ curl http://localhost:9090/info/student -d '{ "Name": "John", "Grade": 12, "Marks": {"English" : "85", "IT" : "100"}}' -H "Content-Type:application/json"
-"John"
+$ curl http://localhost:9090/register/student -d '{ "name": "John", "grade": 12, "marks": {"English" : "85", "IT" : "100"}}' -H "Content-Type:application/json"
 
-# To invoke the `store` resource, execute the below HTTP request.
-$ curl http://localhost:9090/info/store -d "<h:Store id = \"AST\" xmlns:h=\"http://www.test.com\"><h:street>Main</h:street><h:city>94</h:city></h:Store>" -H "Content-Type:application/xml"
-<h:city xmlns:h="http://www.test.com">94</h:city>
+Student data of 'John' is updated%

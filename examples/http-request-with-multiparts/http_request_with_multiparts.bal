@@ -43,7 +43,7 @@ service /multiparts on new http:Listener(9090) {
         // E.g., `multipart/mixed`, `multipart/related` etc.
         // You need to pass the content type that suits your requirement.
         request.setBodyParts(bodyParts, contentType = mime:MULTIPART_FORM_DATA);
-        http:Response returnResponse = check clientEP->post("/multiparts/decoder", request);
+        http:Response returnResponse = check clientEP->/multiparts/decoder.post(request);
         return returnResponse;
     }
 }

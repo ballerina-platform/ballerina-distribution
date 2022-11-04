@@ -11,7 +11,7 @@ http:Service helloService =  service object {
     }
 
     // The resource function that will shutdown the server.
-    resource function get shutdown(http:Caller caller) returns error? {
+    resource function post shutdown(http:Caller caller) returns error? {
         // Send a response back to the caller.
         check caller->respond("Shutting down the server");
         // Stop the listener.

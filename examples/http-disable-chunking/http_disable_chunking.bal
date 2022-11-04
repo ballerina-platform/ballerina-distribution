@@ -15,7 +15,7 @@ final http:Client clientEndpoint = check new ("http://localhost:9090", httpVersi
 service / on new http:Listener(9092) {
     resource function get chunk() returns string|error {
         //Invoke endpoint along with a JSON payload.
-        string response = check clientEndpoint->post("/payload", {"name": "Ballerina"});
+        string response = check clientEndpoint->/payload.post({"name": "Ballerina"});
         return response;
     }
 }

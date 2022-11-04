@@ -10,7 +10,7 @@ service / on new http:Listener(9090) {
 
     resource function get greeting() returns string|error {
         // Sends a `GET` request to the specified endpoint and Retrieved the text payload from the response.
-        string returnResult = check clientEndpoint->get("/redirect1");
+        string returnResult = check clientEndpoint->/redirect1.get();
         return "Response received : " + returnResult;
     }
 }

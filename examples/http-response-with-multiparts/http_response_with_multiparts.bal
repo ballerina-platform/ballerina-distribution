@@ -40,7 +40,7 @@ service /multiparts on new http:Listener(9090) {
 
     // This resource accepts multipart responses.
     resource function get decoder() returns string|http:InternalServerError|error {
-        http:Response returnResult = check clientEP->get("/multiparts/encoder");
+        http:Response returnResult = check clientEP->/multiparts/encoder.get();
         // Extracts the body parts from the response.
         // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Response#getBodyParts.
         mime:Entity[] parentParts = check returnResult.getBodyParts();

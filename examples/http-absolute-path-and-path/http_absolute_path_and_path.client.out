@@ -1,2 +1,2 @@
-$ curl http://localhost:9090/register/student -d "Mike" -H "Content-Type: text/plain"
-Student data of 'Mike' is updated
+$ curl http://localhost:9090/info/student
+Student data
