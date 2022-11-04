@@ -7,8 +7,12 @@ The client is enriched with the `Authorization: Bearer <token>` header by passin
 For more information on the underlying module, see the [`auth` module](https://lib.ballerina.io/ballerina/auth/latest/)
 and [`http` specification](https://ballerina.io/spec/http/#9116-client---bearer-token-auth).
 
+>**Tip:** You may need to change the trusted certificate file path in the code below.
+
 ::: code http_client_bearer_token_auth.bal :::
 
-Run the client program by executing the following command.
+Run the client program by executing the command below.
+
+>**Info:** As a prerequisite to running the client, start a secured sample service.
 
 ::: out http_client_bearer_token_auth.out :::

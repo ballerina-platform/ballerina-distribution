@@ -9,8 +9,10 @@ In the authorization phase, the scopes of the service/resource are compared agai
 For more information on the underlying module, see the [`auth module](https://lib.ballerina.io/ballerina/auth/latest/) 
 and [`http` specification](https://ballerina.io/spec/http/#9112-listener---basic-auth---ldap-user-store).
 
+>**Tip:** You may need to change the certificate file path and private key file path in the code below.
+
 ::: code http_service_basic_auth_ldap_user_store.bal :::
 
-Run the service by executing the following command.
+Run the service by executing the command below.
 
 ::: out http_service_basic_auth_ldap_user_store.server.out :::
