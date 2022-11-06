@@ -1878,6 +1878,14 @@
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "IDL client declaration",
+                "url": "graphql-idl-client-declaration",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
