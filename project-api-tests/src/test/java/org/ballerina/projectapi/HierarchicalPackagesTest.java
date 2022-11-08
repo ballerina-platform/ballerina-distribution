@@ -20,6 +20,7 @@ package org.ballerina.projectapi;
 import org.apache.commons.io.FileUtils;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -49,6 +50,7 @@ import static org.ballerina.projectapi.CentralTestUtils.DEPENDENCIES_TOML;
 import static org.ballerina.projectapi.CentralTestUtils.buildPackageBala;
 import static org.ballerina.projectapi.CentralTestUtils.createSettingToml;
 import static org.ballerina.projectapi.CentralTestUtils.deleteFiles;
+import static org.ballerina.projectapi.CentralTestUtils.deleteTestPackagesFromCentral;
 import static org.ballerina.projectapi.CentralTestUtils.getEnvVariables;
 import static org.ballerina.projectapi.CentralTestUtils.getExecutableJarPath;
 import static org.ballerina.projectapi.CentralTestUtils.getString;
@@ -407,5 +409,11 @@ public class HierarchicalPackagesTest {
     private void cleanup() throws IOException {
         deleteFiles(tempHomeDirectory);
         deleteFiles(tempWorkspaceDirectory);
+    }
+
+    // TODO: enable after getting the correct GH token
+    @AfterSuite(enabled = false)
+    private void cleanupSuite() throws IOException {
+        deleteTestPackagesFromCentral(HierarchicalPackagesTest.class.getName());
     }
 }

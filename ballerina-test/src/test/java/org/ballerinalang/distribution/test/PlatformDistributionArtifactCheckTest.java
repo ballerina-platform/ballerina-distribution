@@ -107,7 +107,7 @@ public class PlatformDistributionArtifactCheckTest {
                 .resolve("lang-server")
                 .resolve("lib");
 
-        Assert.assertNotNull(TestUtils.findFileOrDirectory(c2cToolingLibPath, "c2c-tooling-"));
+        Assert.assertNotNull(TestUtils.findFileOrDirectory(c2cToolingLibPath, "cloud-tooling-"));
     }
 
     @AfterClass

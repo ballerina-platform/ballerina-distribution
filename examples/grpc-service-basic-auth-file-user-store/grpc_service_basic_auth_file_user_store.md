@@ -32,12 +32,23 @@ Once you run the command, the `grpc_service_pb.bal` file is generated inside the
 
 3. Create a new `grpc_service_basic_auth_file_user_store.bal` Ballerina file inside the `service` package and add the service implementation.
 
+    >**Tip:** You may need to change the certificate file path and private key file path in the code below.  
+
    ::: code grpc_service_basic_auth_file_user_store.bal :::
 
-4. As a prerequisite, ensure that the `Config.toml` file is populated correctly with the user information.
+4. As a prerequisite, execute the command below to populate the `Config.toml` file correctly with the user information.
+
+    ```bash
+    $ echo '[[ballerina.auth.users]]
+    username="alice"
+    password="password1"
+    scopes=["scope1"]
+    [[ballerina.auth.users]]
+    username="bob"
+    password="password2"
+    scopes=["scope2", "scope3"]' > Config.toml
+    ```
 
 6. Execute the commands below to build and run the `service` package.
-
->**Info:** You may need to change the certificate file path and private key file path.
 
    ::: out grpc_service_basic_auth_file_user_store.server.out :::
