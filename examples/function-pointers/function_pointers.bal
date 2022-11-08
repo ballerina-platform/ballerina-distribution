@@ -22,7 +22,7 @@ function operation(function (int, int) returns int func, int v1, int v2) returns
 }
 
 public function main() {
-    // The function names `add` and `multiply` serves as a function pointer argument in the
+    // The `add` and `multiply` function names serve as a function pointer argument in the
     // call to the `process` and `operation` functions.
     io:println("Add num1 & num2: ", process(add));
     io:println("Multiply num1 & num2: ", process(multiply));
