@@ -1,14 +1,10 @@
 import ballerina/io;
-client "./graphql.config.yaml" as foo;
+client "./graphql.config.yaml" as trevorblades;
 
-public function main() {
-    do {
-	    foo:client graphqlClient = check new (serviceUrl = "https://countries.trevorblades.com/");
+public function main() returns error? {
+    trevorblades:client graphqlClient = check new (serviceUrl = "https://countries.trevorblades.com/");
 
-        // Execute CountryByCode query
-        foo:CountryByCodeResponse response = check graphqlClient->countryByCode(code = "LK");
-        io:println(response.country?.name);
-    } on fail var e {
-    	io:print(e.detail());
-    }
+    // Execute the `CountryByCode` query.
+    trevorblades:CountryByCodeResponse response = check graphqlClient -> countryByCode(code = "LK");
+    io:println(response.country?.name);
 }
