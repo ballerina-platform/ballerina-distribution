@@ -1762,7 +1762,7 @@
         ]
     },
     {
-        "title": "GraphQL",
+        "title": "GraphQL service",
         "column": 1,
         "category": "Network libraries",
         "samples": [
@@ -1864,6 +1864,21 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Directives",
+                "url": "graphql-directives",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "GraphQL client",
+        "column": 1,
+        "category": "Network libraries",
+        "samples": [
+            {
                 "name": "Client",
                 "url": "graphql-client",
                 "verifyBuild": true,
@@ -1872,8 +1887,8 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Directives",
-                "url": "graphql-directives",
+                "name": "IDL client declaration",
+                "url": "graphql-idl-client-declaration",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -3285,11 +3300,11 @@
         ]
     },
     {
-            "title": "Metrics",
-            "column": 1,
-            "category": "Observability",
-            "samples": [
-                {
+        "title": "Metrics",
+        "column": 1,
+        "category": "Observability",
+        "samples": [
+            {
                 "name": "Gauge-based metrics",
                 "url": "gauge-metrics",
                 "verifyBuild": false,
@@ -3297,7 +3312,7 @@
                 "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
-                }
+            }
         ]
     },
     {
@@ -3305,7 +3320,7 @@
         "column": 0,
         "category": "Deployment",
         "samples": [
-                       {
+            {
                 "name": "Docker",
                 "url": "c2c-docker-deployment",
                 "verifyBuild": true,
