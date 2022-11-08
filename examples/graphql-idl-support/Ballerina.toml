@@ -1,0 +1,6 @@
+[package]
+name = "graphql_idl_support"
+version = "0.1.0"
+
+[build-options]
+observabilityIncluded = true
