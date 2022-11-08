@@ -57,7 +57,8 @@ public class BuildTimeTest {
         }
     }
 
-    @Test(description = "Build project twice to verify reduction in package resolution time due to caching.")
+    @Test(enabled = false,
+            description = "Build project twice to verify reduction in package resolution time due to caching.")
     public void testResolutionTimeReduction() throws IOException, InterruptedException {
         String projectName = "Project1";
         long expectedMinimumTimeDiff = 500;

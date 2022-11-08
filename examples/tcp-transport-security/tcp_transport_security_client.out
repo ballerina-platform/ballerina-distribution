@@ -1,3 +1,2 @@
-# You may need to change the trusted certificate file path.
 $ bal run tcp_transport_security_client.bal
 Received message: Hello, World!

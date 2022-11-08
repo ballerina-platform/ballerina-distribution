@@ -28,10 +28,12 @@ Once you run the command, the `grpc_client_pb.bal` file is generated inside the 
 
 3. Create a new `grpc_client_oauth2_refresh_token_grant_type.bal` Ballerina file inside the `client` package and add the client implementation.
 
+    >**Tip:** You may need to change the trusted certificate file path in the code below.
+
    ::: code grpc_client_oauth2_refresh_token_grant_type.bal :::
 
 4. Run the client using the command below.
 
->**Info:** As a prerequisite, start a sample service secured with OAuth2. You may need to change the trusted certificate file path.
+    >**Info:** As a prerequisite to running the client, start a sample service secured with OAuth2. 
 
    ::: out grpc_client_oauth2_refresh_token_grant_type.out :::

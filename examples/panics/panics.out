@@ -1,4 +1,4 @@
-bal run panics.bal
+$ bal run panics.bal
 error("division by 0")
 error: division by 0
         at panics:divide(panics.bal:8)
