@@ -1,4 +1,4 @@
-bal run identity.bal
+$ bal run identity.bal
 true
 false
 true
