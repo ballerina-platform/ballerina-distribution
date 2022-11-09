@@ -1762,7 +1762,7 @@
         ]
     },
     {
-        "title": "GraphQL",
+        "title": "GraphQL service",
         "column": 1,
         "category": "Network libraries",
         "samples": [
@@ -1864,6 +1864,21 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Directives",
+                "url": "graphql-directives",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "GraphQL client",
+        "column": 1,
+        "category": "Network libraries",
+        "samples": [
+            {
                 "name": "Client",
                 "url": "graphql-client",
                 "verifyBuild": true,
@@ -1872,8 +1887,8 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Directives",
-                "url": "graphql-directives",
+                "name": "IDL client declaration",
+                "url": "graphql-idl-client-declaration",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
