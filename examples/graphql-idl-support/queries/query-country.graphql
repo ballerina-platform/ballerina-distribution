@@ -1,4 +1,4 @@
-uery countryByCode($code: ID!) {
+query countryByCode($code: ID!) {
     country(code: $code) {
         name
     }
