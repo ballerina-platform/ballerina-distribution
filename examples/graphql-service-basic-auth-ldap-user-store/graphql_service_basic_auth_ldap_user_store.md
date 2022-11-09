@@ -15,3 +15,5 @@ For more information on the underlying module, see the [`auth` module](https://l
 Run the service by executing the command below.
 
 ::: out graphql_service_basic_auth_ldap_user_store.server.out :::
+
+>**Info:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client/).
