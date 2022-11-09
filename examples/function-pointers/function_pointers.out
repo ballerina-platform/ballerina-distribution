@@ -1,0 +1,5 @@
+$ bal run function_pointers.bal
+Add num1 & num2: 110
+Multiply num1 & num2: 1000
+Add 1 & 2: 3
+Multiply 3 & 4: 12
