@@ -32,6 +32,6 @@ Once you run the command, the `grpc_client_pb.bal` file is generated inside the 
 
 4. Execute the commands below to build and run the `client` package. You may need to change the trusted certificate file path.
 
->**Info:** As a prerequisite to running the client, start a sample service secured with Basic Auth.
+>**Info:** As a prerequisite to running the client, start the [Basic Auth file user store service](/learn/by-example/grpc-service-basic-auth-file-user-store/) or [Basic Auth LDAP user store service](/learn/by-example/grpc-service-basic-auth-ldap-user-store/).
 
    ::: out grpc_client_basic_auth.out :::

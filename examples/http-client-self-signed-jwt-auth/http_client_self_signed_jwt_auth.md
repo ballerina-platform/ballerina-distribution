@@ -12,6 +12,6 @@ For more information on the underlying module, see the [`oauth2` module](https:/
 
 Run the client program by executing the command below.
 
->**Info:** As a prerequisite to running the client, start a sample service secured with OAuth2.
+>**Info:** As a prerequisite to running the client, start the [JWT Auth service](/learn/by-example/http-service-jwt-auth/).
 
 ::: out http_client_self_signed_jwt_auth.out :::

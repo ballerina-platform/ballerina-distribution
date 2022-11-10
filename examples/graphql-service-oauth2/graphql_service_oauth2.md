@@ -15,3 +15,5 @@ For more information on the underlying module, see the [`oauth2` module](https:/
 Run the service by executing the command below.
 
 ::: out graphql_service_oauth2.server.out :::
+
+>**Info:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client/).

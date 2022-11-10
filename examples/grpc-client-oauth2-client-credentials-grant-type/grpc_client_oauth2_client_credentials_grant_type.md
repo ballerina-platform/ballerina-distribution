@@ -34,6 +34,6 @@ Once you run the command, the `grpc_client_pb.bal` file is generated inside the 
 
 4. Execute the commands below to build and run the `client` package.
 
-    >**Info:** As a prerequisite to running the client, start a sample service secured with OAuth2.
+    >**Info:** As a prerequisite to running the client, start the [OAuth2 service](/learn/by-example/grpc-service-oauth2/).
 
    ::: out grpc_client_oauth2_client_credentials_grant_type.out :::

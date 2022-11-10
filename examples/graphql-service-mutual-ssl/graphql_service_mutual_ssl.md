@@ -11,3 +11,5 @@ For more information on the underlying module, see the [`graphql` module](https:
 Run the service by executing the command below.
 
 ::: out graphql_service_mutual_ssl.server.out :::
+
+>**Info:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client/).
