@@ -1032,8 +1032,8 @@
             {
                 "name": "Sequence diagrams",
                 "url": "sequence-diagrams",
-                "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyBuild": false,
+                "verifyOutput": false,
                 "isLearnByExample": true
             },
             {
