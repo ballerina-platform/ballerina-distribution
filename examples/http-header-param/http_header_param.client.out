@@ -1,2 +1,2 @@
-$ curl http://localhost:9090/info/student -H "Trace-Id:0xf7c32f4c"
-0xf7c32f4c
+$ curl "http://localhost:9090/albums" -H "Accept:application/json"
+[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]

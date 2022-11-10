@@ -1,2 +1,5 @@
+$ curl http://localhost:9090/albums
+[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]
+
 $ curl http://localhost:9090/albums -H "Content-type:application/json" -d "{\"title\": \"Sarah Vaughan and Clifford Brown\", \"artist\": \"Sarah Vaughan\"}"
 {"title":"Sarah Vaughan and Clifford Brown", "artist":"Sarah Vaughan"}

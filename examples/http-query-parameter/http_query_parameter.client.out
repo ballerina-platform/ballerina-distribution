@@ -1,2 +1,2 @@
-$ curl "http://localhost:9090/info?page=3"
-Info on page 3
+$ curl "http://localhost:9090/albums?year=1958"
+[{"title":"Blue Train", "artist":"John Coltrane", "year":1958}]%

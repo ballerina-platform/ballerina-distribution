@@ -1,2 +1,2 @@
-$ curl "http://localhost:9090/person"
-{"name":"Smith", "age":15}
+$ curl "http://localhost:9090/artist"
+John Coltrane

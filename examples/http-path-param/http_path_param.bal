@@ -1,13 +1,25 @@
 import ballerina/http;
 
-map<string> data = { "23": "Mike Wheeler", "38" : "Dustin Henderson"};
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
 
-service /company on new http:Listener(9090) {
+table<Album> key(title) albums = table [
+    {title: "Blue Train", artist: "John Coltrane" },
+    {title: "Jeru", artist: "Gerry Mulligan"}
+];
 
-    // The path param is defined as a part of the resource path along with the type and it is extracted from the
-    // request URI.
-    resource function get employees/[string id]() returns string {
-        string? name = data[id];
-        return name is string ? string `Employee is ${name}` : "Invalid employee id";
+service / on new http:Listener(9090) {
+
+    // The path param is defined as a part of the resource path within brackets along with the type and it is
+    // extracted from the request URI.
+    resource function get albums/[string title]() returns Album|http:NotFound {
+        Album? album = albums[title];
+        if album is () {
+            return http:NOT_FOUND;
+        } else {
+            return album;
+        }
     }
 }
