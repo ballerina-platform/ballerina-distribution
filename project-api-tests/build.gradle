@@ -35,7 +35,6 @@ dependencies {
     testImplementation "org.ballerinalang:ballerina-test-utils:${ballerinaLangVersion}"
     testImplementation "org.eclipse.lsp4j:org.eclipse.lsp4j.debug:${lsp4jDebugVersion}"
     testImplementation "com.fasterxml.jackson.core:jackson-databind:2.12.3"
-    testImplementation "com.squareup.okhttp3:okhttp:3.14.0"
 
     jBallerinaDistribution project(path: ":ballerina", configuration: "jBallerinaDistribution")
     ballerinaDistribution project(path: ":ballerina", configuration: "ballerinaDistribution")

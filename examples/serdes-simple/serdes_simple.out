@@ -1,2 +1,2 @@
-$ bal run serdes_simple.bal
+bal run serdes_simple.bal
 {"id":7894,"name":"Liam","fees":24999.99}

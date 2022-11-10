@@ -30,10 +30,10 @@ Once you run the command, the `grpc_service_pb.bal` file is generated inside the
 
 3. Create a new `grpc_service_basic_auth_ldap_user_store.bal` Ballerina file inside the `service` package and add the service implementation.
 
-   >**Tip:** You may need to change the certificate file path and private key file path in the code below. 
-
    ::: code grpc_service_basic_auth_ldap_user_store.bal :::
 
 4. Execute the commands below to build and run the `service` package.
+
+>**Info:** You may need to change the certificate file path and private key file path.
 
    ::: out grpc_service_basic_auth_ldap_user_store.server.out :::

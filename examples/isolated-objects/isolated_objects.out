@@ -1,2 +1,2 @@
-$ bal run isolated_objects.bal
+bal run isolated_objects.bal
 1

@@ -37,12 +37,12 @@ public isolated client class Client {
     }
     # Retrieves a PaymentMethod object.
     #
-    # + payment_method - Payment Method
+    # + paymentMethod - Payment Method
     # + paymentMethodName - Payment Method
     # + xLimit - limit of the payment
     # + return - Successful response.
-    remote isolated function getPaymentMethodsPaymentMethod(string payment_method, string paymentMethodName, string xLimit) returns json|error {
-        string resourcePath = string `/v1/payment_methods/${getEncodedUri(payment_method)}`;
+    remote isolated function getPaymentMethodsPaymentMethod(string paymentMethod, string paymentMethodName, string xLimit) returns json|error {
+        string resourcePath = string `/v1/payment_methods/${getEncodedUri(paymentMethod)}`;
         map<anydata> queryParam = {"payment method name": paymentMethodName};
         resourcePath = resourcePath + check getPathForQueryParam(queryParam);
         map<any> headerValues = {"X-LIMIT": xLimit};
@@ -55,7 +55,7 @@ public isolated client class Client {
     # + customer - Customer ID
     # + payload - Customer Details
     # + return - Successful response.
-    remote isolated function postCustomers(string customer, Customer_customer_body payload) returns Customer|error {
+    remote isolated function postCustomers(string customer, CustomerCustomerBody payload) returns Customer|error {
         string resourcePath = string `/v1/customer/${getEncodedUri(customer)}`;
         http:Request request = new;
         map<Encoding> requestBodyEncoding = {"address": {style: DEEPOBJECT, explode: true}};

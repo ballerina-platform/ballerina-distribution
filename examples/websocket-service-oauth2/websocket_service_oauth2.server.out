@@ -1,1 +1,2 @@
+# You may need to change the certificate file path and private key file path.
 $ bal run websocket_service_oauth2.bal

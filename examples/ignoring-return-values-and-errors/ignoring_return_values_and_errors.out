@@ -1,4 +1,4 @@
-$ bal run ignoring_return_values_and_errors.bal
+bal run ignoring_return_values_and_errors.bal
 Do X
 Get X
 Try X

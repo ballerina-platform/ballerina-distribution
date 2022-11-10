@@ -1,4 +1,0 @@
-$ bal run query_actions.bal
-[10,20,30,40]
-2
-4

@@ -4,18 +4,10 @@ This demonstrates how the Ballerina TCP client can be configured to connect to a
 
 For more information on the underlying module, see the [`tcp` module](https://lib.ballerina.io/ballerina/tcp/latest).
 
->**Tip:** You may need to change the trusted certificate file path in the code below.
-
 ::: code tcp_transport_security_client.bal :::
-
-Run the client by executing the command below.
 
 ::: out tcp_transport_security_client.out :::
 
->**Tip:** You may need to change the certificate file path and private key file path in the code below.
-
 ::: code tcp_transport_security_service.bal :::
-
-Run the service by executing the command below.
 
 ::: out tcp_transport_security_service.out :::

@@ -1,1 +1,14 @@
+# As a prerequisite, ensure that the `Config.toml` file is populated correctly
+# with the user information. The following command can be used to populate
+# the `Config.toml` file.
+$ echo '[[ballerina.auth.users]]
+username="alice"
+password="password1"
+scopes=["scope1"]
+[[ballerina.auth.users]]
+username="bob"
+password="password2"
+scopes=["scope2", "scope3"]' > Config.toml
+
+# You may need to change the certificate file path and private key file path.
 $ bal run http_service_basic_auth_file_user_store.bal

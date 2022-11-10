@@ -1,4 +1,4 @@
 # Send a query to the GraphQL endpoint using a cURL command.
 # The query used: { name }
-$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ name }"}' 'http://localhost:4000/graphql'
+curl -X POST -H "Content-type: application/json" -d '{ "query": "{ name }"}' 'http://localhost:4000/graphql'
 {"data":{"name":"GraphQL Interceptors"}}

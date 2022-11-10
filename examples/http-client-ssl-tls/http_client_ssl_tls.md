@@ -4,12 +4,8 @@ You can use the HTTPS client to connect or interact with an HTTPS listener. Prov
 
 For more information on the underlying module, see the [`http` module](https://lib.ballerina.io/ballerina/http/latest/).
 
->**Tip:** You may need to change the trusted certificate file path in the code below.
-
 ::: code http_client_ssl_tls.bal :::
 
-Run the secure client program by executing the command below.
-
->**Info:** As a prerequisite to running the client, start a [sample service secured with SSL/TLS](earn/by-example/http-service-ssl-tls/). 
+Run the secure client program by executing the following command.
 
 ::: out http_client_ssl_tls.out :::

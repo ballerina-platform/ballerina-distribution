@@ -26,12 +26,10 @@ Once you run the command, the `grpc_service_pb.bal` file is generated inside the
 
 3. Create a new `grpc_service_ssl_tls.bal` Ballerina file inside the `service` package and add the service implementation.
 
-   >**Tip** You may need to change the certificate file path and private key file path in the code below.
-
    ::: code grpc_service_ssl_tls.bal :::
 
 4. Execute the commands below to build and run the `service` package.
 
-   ::: out grpc_service_ssl_tls.server.out :::
+>**Info:** You may need to change the certificate file path and private key file path.
 
->**Info:** You can invoke the above service via the [sample SSL/TLS client](/learn/by-example/grpc-client-ssl-tls/).
+   ::: out grpc_service_ssl_tls.server.out :::

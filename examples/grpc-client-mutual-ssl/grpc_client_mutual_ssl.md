@@ -26,12 +26,10 @@ Once you run the command, the `grpc_client_pb.bal` file is generated inside the 
 
 3. Create a new `grpc_client_mutual_ssl.bal` Ballerina file inside the `client` package and add the client implementation.
 
-   >**Tip:** You may need to change the certificate file path, private key file path, and trusted certificate file path  in the code below. 
-
    ::: code grpc_client_mutual_ssl.bal :::
 
 4. Execute the commands below to build and run the `client` package.
 
-   >**Info:** As a prerequisite to running the client, start a [sample service secured with Mutual SSL](/learn/by-example/grpc-service-mutual-ssl/).
+>**Info:** You may need to change the certificate file path, private key file path, and trusted certificate file path. As a prerequisite, start a sample service secured with mutual SSL.
 
    ::: out grpc_client_mutual_ssl.out :::

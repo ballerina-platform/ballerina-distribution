@@ -8,10 +8,6 @@ In the authorization phase, the scopes of the service are compared against the s
 
 For more information on the underlying module, see the [`oauth2` module](https://lib.ballerina.io/ballerina/oauth2/latest/).
 
->**Tip:** You may need to change the certificate file path and private key file path in the code below.
-
 ::: code websocket_service_oauth2.bal :::
-
-Run the service by executing the command below.
 
 ::: out websocket_service_oauth2.server.out :::

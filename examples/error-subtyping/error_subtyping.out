@@ -1,2 +1,2 @@
-$ bal run error_subtyping.bal
+bal run error_subtyping.bal
 X

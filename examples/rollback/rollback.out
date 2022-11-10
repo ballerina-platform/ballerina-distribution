@@ -1,4 +1,2 @@
 $ bal run rollback.bal
-error("Not enough stocks: ",stockIndex=4)
-Budget exceeded
-Salary increment successful
+error: Not enough Stocks:  {"stockIndex":4}

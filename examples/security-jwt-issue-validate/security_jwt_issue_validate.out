@@ -1,3 +1,5 @@
+# You may need to change the certificate file path, private key file path, and
+# trusted certificate file path.
 $ bal run security_jwt_issue_validate.bal
 Issued JWT: eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QiLCAia2lkIjoiTlRBeFptTXhORE15WkR
             nM01UVTFaR00wTXpFek9ESmhaV0k0TkRObFpEVTFPR0ZrTmpGaU1RIn0.eyJpc3MiOi

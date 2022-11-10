@@ -43,7 +43,7 @@ public class ExpressionEvaluationTest extends BaseTestCase {
         prepareForEvaluation();
     }
 
-    @Test(description = "Test Ballerina standard library related remote method call evaluations", enabled = false)
+    @Test(description = "Test Ballerina standard library related remote method call evaluations")
     public void testRemoteCallEvaluation() throws BallerinaTestException {
         debugTestRunner.assertExpression(context, "httpClient->get(\"/args/ballerina-platform/repos\");", "Not Found",
                 "error");

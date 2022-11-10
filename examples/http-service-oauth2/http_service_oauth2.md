@@ -8,10 +8,8 @@ In the authorization phase, the scopes of the service/resource are compared agai
 
 For more information on the underlying module, see the [`oauth2` module](https://lib.ballerina.io/ballerina/oauth2/latest/).
 
->**Tip:** You may need to change the certificate file path and private key file path in the code below.
-
 ::: code http_service_oauth2.bal :::
 
-Run the service by executing the command below.
+Run the service by executing the following command.
 
 ::: out http_service_oauth2.server.out :::

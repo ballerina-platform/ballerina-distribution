@@ -1,3 +1,5 @@
+# You may need to change the certificate file path, private key file path, and
+# trusted certificate file path.
 $ bal run security_crypto.bal
 Hex encoded hash with MD5: 0605402ee16d8e96511a58ff105bc24a
 Base64 encoded hash with SHA1: /8fwbGIevBvv2Nl3gEL9DtWas+Q=

@@ -6,12 +6,8 @@ The client is enriched with the `Authorization: Bearer <token>` header by passin
 
 For more information on the underlying module, see the [`oauth2` module](https://lib.ballerina.io/ballerina/oauth2/latest/).
 
->**Tip:** You may need to change the trusted certificate file path in the code below.
-
 ::: code http_client_oauth2_client_credentials_grant_type.bal :::
 
 Run the client program by executing the following command.
-
->**Info:** As a prerequisite to running the client, start a sample service secured with OAuth2.
 
 ::: out http_client_oauth2_client_credentials_grant_type.out :::

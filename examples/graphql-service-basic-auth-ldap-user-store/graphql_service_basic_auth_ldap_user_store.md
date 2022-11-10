@@ -8,10 +8,8 @@ In the authorization phase, the scopes of the service are compared against the s
 
 For more information on the underlying module, see the [`auth` module](https://lib.ballerina.io/ballerina/auth/latest/).
 
->**Tip:** You may need to change the certificate file path and private key file path in the code below.
-
 ::: code graphql_service_basic_auth_ldap_user_store.bal :::
 
-Run the service by executing the command below.
+Run the service as follows.
 
 ::: out graphql_service_basic_auth_ldap_user_store.server.out :::

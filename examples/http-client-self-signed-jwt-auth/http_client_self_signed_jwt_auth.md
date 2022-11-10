@@ -6,12 +6,8 @@ The client is enriched with the `Authorization: Bearer <token>` header by passin
 
 For more information on the underlying module, see the [`oauth2` module](https://lib.ballerina.io/ballerina/oauth2/latest/).
 
->**Tip:** You may need to change the trusted certificate file path and private key file path in the code below.
-
 ::: code http_client_self_signed_jwt_auth.bal :::
 
-Run the client program by executing the command below.
-
->**Info:** As a prerequisite to running the client, start a sample service secured with OAuth2.
+Run the client program by executing the following command.
 
 ::: out http_client_self_signed_jwt_auth.out :::

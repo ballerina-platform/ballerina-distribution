@@ -18,12 +18,6 @@
 
 package org.ballerina.projectapi;
 
-import okhttp3.Call;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 import org.testng.Assert;
 
 import java.io.BufferedReader;
@@ -43,7 +37,6 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static java.net.HttpURLConnection.HTTP_NO_CONTENT;
 import static org.ballerina.projectapi.TestUtils.DISTRIBUTION_FILE_NAME;
 import static org.ballerina.projectapi.TestUtils.OUTPUT_CONTAIN_ERRORS;
 import static org.ballerina.projectapi.TestUtils.executePackCommand;
@@ -108,15 +101,6 @@ public class CentralTestUtils {
     private static String getToken() {
         // staging and dev both has the same access token
         return System.getenv("devCentralToken");
-    }
-
-    /**
-     * Get token of ballerina-bot required to dispatch GitHub workflows.
-     *
-     * @return token required to dispatch GitHub workflows.
-     */
-    public static String getBallerinaBotToken() {
-        return System.getenv("ballerinaBotToken");
     }
 
     /**
@@ -418,50 +402,4 @@ public class CentralTestUtils {
         }
     }
 
-
-    /**
-     * Delete the packages pushed during project API tests.
-     *
-     * @param caller the test class calling this method
-     * @throws IOException if request could not be handled
-     */
-    public static void deleteTestPackagesFromCentral(String caller) throws IOException {
-        String ghOrg = "wso2-enterprise";
-        String ghRepo = "ballerina-registry";
-        String workflowId = "30610274";
-        String branch = "main";
-        boolean isWorkflowDispatched = dispatchGitWorkflow(ghOrg, ghRepo, workflowId, branch);
-        if (!isWorkflowDispatched) {
-            Assert.fail("Failed deleting test packages from central after " + caller + " tests");
-        }
-    }
-
-    /**
-     * Dispatch a given GitHub workflow.
-     *
-     * @param ghOrg GitHub organization
-     * @param ghRepo GitHub repository
-     * @param workflowId GitHub workflow ID
-     * @param branch branch name which the workflow runs against
-     * @return true if workflow API call is successful, else false
-     * @throws IOException if request could not be handled
-     */
-    public static boolean dispatchGitWorkflow(String ghOrg, String ghRepo, String workflowId, String branch)
-            throws IOException {
-        String url = "https://api.github.com/repos/" + ghOrg + "/" + ghRepo
-                + "/actions/workflows/" + workflowId + "/dispatches";
-        OkHttpClient client = new OkHttpClient();
-        String data = "{\"ref\": \"" + branch + "\"}";
-        MediaType jsonType = MediaType.parse("application/json; charset=utf-8");
-        RequestBody requestBody = RequestBody.create(jsonType, data);
-        Request resolutionReq = new Request.Builder()
-                .post(requestBody)
-                .url(url)
-                .addHeader("Authorization", "Bearer " + getBallerinaBotToken())
-                .build();
-        Call resolutionReqCall = client.newCall(resolutionReq);
-        try (Response response = resolutionReqCall.execute()) {
-            return response.code() == HTTP_NO_CONTENT;
-        }
-    }
 }

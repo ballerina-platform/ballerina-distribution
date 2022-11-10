@@ -1,9 +1,9 @@
-name: Daily build (2201.2.x)
+name: Daily build (2201.1.x)
 
 on:
   workflow_dispatch:
   schedule:
-    - cron:  '30 18 * * *'    # 00:00 in LK time (GMT+5:30)
+    - cron:  '0 0 * * *'
 
 jobs:
   ubuntu-build:
@@ -15,7 +15,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
-          ref: 2201.2.x
+          ref: 2201.1.x
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
@@ -38,7 +38,6 @@ jobs:
           packageUser: ${{ github.actor }}
           packagePAT: ${{ secrets.GITHUB_TOKEN }}
           devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
-          ballerinaBotToken: $ {{ secrets.BALLERINA_BOT_TOKEN }}
           TEST_MODE_ACTIVE: true
         run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue
       - name: Create linux-deb
@@ -127,7 +126,7 @@ jobs:
             \"event_type\": \"notify-build-failure\",
             \"client_payload\": {
               \"repoName\": \"ballerina-distribution\",
-              \"branch\": \"2201.2.x\"
+              \"branch\": \"2201.1.x\"
             }
           }"
       - name: Checkout docker repo
@@ -169,7 +168,7 @@ jobs:
         with:
           context: module-ballerina-docker/base/docker/
           push: true
-          tags: ballerina/ballerina:nightly-2201.2.x
+          tags: ballerina/ballerina:nightly-2201.1.x
           build-args: |
             BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.sversion }}.zip
       - name: Image digest
@@ -199,7 +198,7 @@ jobs:
         with:
           context: module-ballerina-docker/base/devcontainer/
           push: true
-          tags: ballerina/ballerina-devcontainer:nightly-2201.2.x
+          tags: ballerina/ballerina-devcontainer:nightly-2201.1.x
           build-args: |
             BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.version }}-linux-x64.deb
     outputs:
@@ -213,7 +212,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
-          ref: 2201.2.x
+          ref: 2201.1.x
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
@@ -224,7 +223,6 @@ jobs:
           packageUser: ${{ github.actor }}
           packagePAT: ${{ secrets.GITHUB_TOKEN }}
           devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
-          ballerinaBotToken: $ {{ secrets.BALLERINA_BOT_TOKEN }}
           TEST_MODE_ACTIVE: true
         run: ./gradlew.bat clean build --stacktrace --scan --console=plain --no-daemon -x test
 
@@ -237,7 +235,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
-          ref: 2201.2.x
+          ref: 2201.1.x
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
@@ -267,7 +265,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
-          ref: 2201.2.x
+          ref: 2201.1.x
       - name: Download MacOS Intaller Zip
         uses: actions/download-artifact@v2
         with:
@@ -308,7 +306,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
-          ref: 2201.2.x
+          ref: 2201.1.x
       - uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '2.1.x'
@@ -360,7 +358,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
-          ref: 2201.2.x
+          ref: 2201.1.x
       - name: Invoke Connector Ballerina Version Bump
         run: |
           ballerinaVersion=$((grep -w 'ballerinaLangVersion' | cut -d= -f2) < gradle.properties)

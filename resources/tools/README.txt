@@ -37,7 +37,7 @@ SUPPORT
 If you run in to any problems while using Ballerina, you can use the following mediums to raise your issues and get them
 resolved.
 
-- Discord server: https://discord.gg/ballerinalang
+- Slack channel: https://ballerina.io/community/slack
 - Stackoverflow: https://stackoverflow.com/questions/tagged/ballerina
 - Ballerina developer group: https://groups.google.com/forum/#!forum/ballerina-dev
 - Ballerina Github repository: https://github.com/ballerina-platform/ballerina-lang
