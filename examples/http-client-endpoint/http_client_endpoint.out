@@ -1,6 +1,6 @@
 $ bal run http_client_endpoint.bal
 GET request:
-{"args":{"test":"123"}, "headers":{"x-forwarded-proto":"http", "x-forwarded-port":"80", "host":"postman-echo.com", "x-amzn-trace-id":"Root=1-6365148b-6a0ea85d0f59461211c9432b", "upgrade":"h2c", "user-agent":"ballerina", "http2-settings":"AAEAABAAAAIAAAABAAN_____AAQAAP__AAUAAEAAAAYAACAA"}, "url":"http://postman-echo.com/get?test=123"}
+{"headers":{"x-forwarded-proto":"http", "x-forwarded-port":"80", "host":"postman-echo.com", "x-amzn-trace-id":"Root=1-636c8307-4c25c8ba79ddfbfd3616c333", "upgrade":"h2c", "user-agent":"ballerina", "http2-settings":"AAEAABAAAAIAAAABAAN_____AAQAAP__AAUAAEAAAAYAACAA"}}
 
 POST request:
-{"args":{}, "data":"POST: Hello World", "files":{}, "form":{}, "headers":{"x-forwarded-proto":"http", "x-forwarded-port":"80", "host":"postman-echo.com", "x-amzn-trace-id":"Root=1-6365148c-52cdbeab576fb15749ca405e", "content-length":"17", "content-type":"text/plain", "user-agent":"ballerina"}, "json":null, "url":"http://postman-echo.com/post"}
+{"args":{}, "data":"Hello World", "files":{}, "form":{}, "headers":{"x-forwarded-proto":"http", "x-forwarded-port":"80", "host":"postman-echo.com", "x-amzn-trace-id":"Root=1-636c8308-2a76d0d6421c130d5ba10674", "content-length":"11", "content-type":"text/plain", "user-agent":"ballerina"}, "json":null, "url":"http://postman-echo.com/post"}

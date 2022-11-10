@@ -1,2 +1,2 @@
-$ curl "http://localhost:9090/company/employee/23"
-Employee data
+$ curl "http://localhost:9090/company/employees/23"
+Employee is Mike Wheeler
