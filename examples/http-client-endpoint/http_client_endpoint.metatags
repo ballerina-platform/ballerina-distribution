@@ -1,2 +1,3 @@
 description: BBE on how to interact with an HTTP server using Ballerina HTTP Client Connector.
+HTTP client supports executing standard HTTP methods through resource methods.
 keywords: ballerina, ballerina by examples, bbe, http, client

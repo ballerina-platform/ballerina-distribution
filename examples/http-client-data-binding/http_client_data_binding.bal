@@ -5,12 +5,12 @@ public type Person record {|
     int age;
 |};
 
-http:Client backendClient = check new("http://localhost:9092");
+http:Client httpClient = check new("http://localhost:9092");
 
 service / on new http:Listener(9090) {
     resource function get person() returns Person|error {
         // Binding the payload to a `record`` type. The contextually expected type is inferred from the LHS variable type.
-        Person person = check backendClient->/backend/data;
+        Person person = check httpClient->/backend/data;
         return person;
     }
 }
