@@ -1366,6 +1366,14 @@
         "category": "Network libraries",
         "samples": [
             {
+                "name": "Basic REST API",
+                "url": "http-basic-rest-api",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Service path and resource path",
                 "url": "http-absolute-path-and-path",
                 "verifyBuild": true,
@@ -1376,14 +1384,6 @@
             {
                 "name": "Service data binding",
                 "url": "http-data-binding",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Default resource",
-                "url": "http-default-resource",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -1414,7 +1414,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Typed resource responses",
+                "name": "Returned response types",
                 "url": "http-resource-returns",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1422,8 +1422,16 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Restrict by media type",
-                "url": "http-restrict-by-media-type",
+                "name": "Status code response record",
+                "url": "http-status-code-record",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Default resource",
+                "url": "http-default-resource",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -1446,14 +1454,6 @@
             {
                 "name": "Client data binding",
                 "url": "http-client-data-binding",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Caching client",
-                "url": "http-caching-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -1620,6 +1620,22 @@
             {
                 "name": "Matrix parameter",
                 "url": "http-matrix-param",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Restrict by media type",
+                "url": "http-restrict-by-media-type",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Caching client",
+                "url": "http-caching-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,

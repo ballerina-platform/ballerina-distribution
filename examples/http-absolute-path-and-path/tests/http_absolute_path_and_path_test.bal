@@ -4,6 +4,6 @@ import ballerina/http;
 @test:Config {}
 function testFunc() returns error? {
     http:Client httpEndpoint = check new("http://localhost:9090");
-    string payload = check httpEndpoint->get("/info/student");
-    test:assertEquals(payload, "Student data");
+    Album[] payload = check httpEndpoint->get("/albums");
+    test:assertEquals(payload, [{title:"Blue Train",artist:"John Coltrane"},{title:"Jeru",artist:"Gerry Mulligan"}]);
 }

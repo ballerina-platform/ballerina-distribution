@@ -1,6 +1,6 @@
 $ bal run http_client_endpoint.bal
 GET request:
-{"headers":{"x-forwarded-proto":"http", "x-forwarded-port":"80", "host":"postman-echo.com", "x-amzn-trace-id":"Root=1-636c8307-4c25c8ba79ddfbfd3616c333", "upgrade":"h2c", "user-agent":"ballerina", "http2-settings":"AAEAABAAAAIAAAABAAN_____AAQAAP__AAUAAEAAAAYAACAA"}}
+[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]
 
 POST request:
-{"args":{}, "data":"Hello World", "files":{}, "form":{}, "headers":{"x-forwarded-proto":"http", "x-forwarded-port":"80", "host":"postman-echo.com", "x-amzn-trace-id":"Root=1-636c8308-2a76d0d6421c130d5ba10674", "content-length":"11", "content-type":"text/plain", "user-agent":"ballerina"}, "json":null, "url":"http://postman-echo.com/post"}
+{"title":"Sarah Vaughan and Clifford Brown", "artist":"Sarah Vaughan"}

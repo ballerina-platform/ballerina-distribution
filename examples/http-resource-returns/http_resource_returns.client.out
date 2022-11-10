@@ -1,17 +1,13 @@
-$ curl -v "http://localhost:9090/bank/info"
-*   Trying ::1...
-* TCP_NODELAY set
-* Connected to localhost (::1) port 9090 (#0)
-> GET /bank/info HTTP/1.1
+$ curl http://localhost:9090/albums -v
+> GET /albums HTTP/1.1
 > Host: localhost:9090
 > User-Agent: curl/7.64.1
 > Accept: */*
 >
 < HTTP/1.1 200 OK
-< content-type: application/ld+json
-< content-length: 56
+< content-type: application/json
+< content-length: 95
 < server: ballerina
-< date: Sat, 22 Oct 2022 17:10:45 +0530
+< date: Mon, 14 Nov 2022 15:08:04 +0530
 <
-* Connection #0 to host localhost left intact
-{"name":"ABC", "branches":["Colombo", "Kandy", "Galle"]}* Closing connection 0
+[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]

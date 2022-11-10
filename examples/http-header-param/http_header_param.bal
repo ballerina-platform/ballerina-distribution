@@ -1,8 +1,24 @@
 import ballerina/http;
+import ballerina/mime;
 
-service /info on new http:Listener(9090) {
-    // The `trace-id` argument with `@http:Header` annotation takes the value of the `Trace-Id` request header.
-    resource function get student(@http:Header string trace\-id) returns string {
-        return trace\-id;
+type Album readonly & record {|
+    string title;
+    string artist;
+
+|};
+
+table<Album> key(title) albums = table [
+    {title: "Blue Train", artist: "John Coltrane"},
+    {title: "Jeru", artist: "Gerry Mulligan"}
+];
+
+service / on new http:Listener(9090) {
+
+    // The `accept` argument with `@http:Header` annotation takes the value of the `Accept` request header.
+    resource function get albums(@http:Header string accept) returns Album[]|http:NotAcceptable {
+        if !string:equalsIgnoreCaseAscii(accept, mime:APPLICATION_JSON) {
+            return http:NOT_ACCEPTABLE;
+        }
+        return albums.toArray();
     }
 }

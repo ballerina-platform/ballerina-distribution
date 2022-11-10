@@ -7,5 +7,7 @@ function testFunc() returns error? {
     string|error response = httpEndpoint->get("/timeout");
     if (response is http:RemoteServerError) {
         test:assertEquals(<string> response.detail().body, "Request timed out. Please try again in sometime.");
+    } else {
+
     }
 }

@@ -1,18 +1,18 @@
 import ballerina/http;
 
-xmlns "http://www.test.com" as test;
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
 
-public type Student record {
-    string name;
-    int grade;
-};
+table<Album> key(title) albums = table [];
 
-service /register on new http:Listener(9090) {
+service / on new http:Listener(9090) {
 
-    // The `Student` parameter in the payload annotation.
-    // represents the entity body of the inbound request.
+    // The `album` parameter in the payload annotation represents the entity body of the inbound request.
     // For details, see https://lib.ballerina.io/ballerina/http/latest/records/Payload.
-    resource function post student(@http:Payload Student student) returns string {
-        return string `Student data of '${student.name}' is updated`;
+    resource function post albums(@http:Payload Album album) returns Album {
+        albums.add(album);
+        return album;
     }
 }
