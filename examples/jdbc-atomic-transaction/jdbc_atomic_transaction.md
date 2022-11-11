@@ -6,9 +6,9 @@ This BBE demonstrates how to use the JDBC client to execute a batch of DDL/DML o
 
 For a sample configuration and more information on the underlying module, see the [`jdbc` module](https://lib.ballerina.io/ballerinax/java.jdbc/latest/) 
 
-::: code jdbc_atomic_batch_execute_operation.bal :::
+::: code jdbc_atomic_transaction.bal :::
 
-::: out jdbc_atomic_batch_execute_operation.out :::
+::: out jdbc_atomic_transaction.out :::
 
 The following util files will initialize the test database before running the BBE and clean it up afterward.
 
