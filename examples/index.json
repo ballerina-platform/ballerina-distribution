@@ -2880,8 +2880,8 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Atomic batch execute",
-                "url": "jdbc-atomic-batch-execute-operation",
+                "name": "Atomic transaction",
+                "url": "jdbc-atomic-transaction",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
