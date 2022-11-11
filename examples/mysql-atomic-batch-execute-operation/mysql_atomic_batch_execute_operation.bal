@@ -1,6 +1,6 @@
 import ballerina/log;
 import ballerinax/mysql;
-import ballerina/sql;
+import ballerinax/mysql.driver as _;
 
 public function main() returns error? {
     // Runs the prerequisite setup for the example.
@@ -15,21 +15,14 @@ public function main() returns error? {
                                         country) VALUES ('Linda', 'Jones', 4, 10000.75, 'USA')`);
         log:printInfo("First query executed successfully.");
 
-        // Insert a `customer` record, which violates the unique
-        sql:ExecutionResult|sql:Error result = mysqlClient->execute(
-                `INSERT INTO Customers (firstName, lastName, registrationID, creditLimit, country)
-                                VALUES ('Peter', 'Stuart', 4, 5000.75, 'USA')`);
+        // Insert a `customer` record, which violates the unique index
+        _ = check mysqlClient->execute(`INSERT INTO Customers (firstName, lastName, registrationID, creditLimit,
+                                        country) VALUES ('Peter', 'Stuart', 4, 5000.75, 'USA')`);
 
-        if result is sql:Error {
-            log:printError(result.message());
-            log:printInfo("Second query failed. Rollback transaction.");
-            rollback;
-        } else {
-            error? err = commit;
-            if err is error {
-                log:printError("Error occurred while committing", err);
-            }
-        }
+        check commit;
+    } on fail error e {
+        log:printError(e.message());
+        log:printInfo("One of the queries failed. Rollback transaction.");
     }
 
     // Closes the MySQL client.
