@@ -3306,11 +3306,11 @@
         ]
     },
     {
-            "title": "Metrics",
-            "column": 1,
-            "category": "Observability",
-            "samples": [
-                {
+        "title": "Metrics",
+        "column": 1,
+        "category": "Observability",
+        "samples": [
+            {
                 "name": "Gauge-based metrics",
                 "url": "gauge-metrics",
                 "verifyBuild": false,
@@ -3318,7 +3318,7 @@
                 "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
-                }
+            }
         ]
     },
     {
@@ -3326,7 +3326,7 @@
         "column": 0,
         "category": "Deployment",
         "samples": [
-                       {
+            {
                 "name": "Docker",
                 "url": "c2c-docker-deployment",
                 "verifyBuild": true,
