@@ -10,6 +10,6 @@ For more information on the underlying module, see the [`auth` module](https://l
 
 Run the client program by executing the command below.
 
->**Info:** As a prerequisite to running the client, start a sample service secured with Basic Auth.
+>**Info:** As a prerequisite to running the client, start the [Basic Auth file user store service](/learn/by-example/http-service-basic-auth-file-user-store).
 
 ::: out http_client_basic_auth.out :::

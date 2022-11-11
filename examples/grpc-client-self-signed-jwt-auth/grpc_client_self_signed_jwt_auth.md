@@ -34,6 +34,6 @@ Once you run the command, the `grpc_client_pb.bal` file is generated inside the 
 
 4. Execute the commands below to build and run the `client` package.
 
-    >**Info:** As a prerequisite to running the client, start a sample service secured with OAuth2.
+    >**Info:** As a prerequisite to running the client, start the [JWT Auth service](/learn/by-example/grpc-service-jwt-auth/).
 
    ::: out grpc_client_self_signed_jwt_auth.out :::

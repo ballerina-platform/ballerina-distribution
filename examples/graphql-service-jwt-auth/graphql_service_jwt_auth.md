@@ -15,3 +15,5 @@ For more information on the underlying module,  see the [`jwt` module](https://l
 Run the service by executing the command below.
 
 ::: out graphql_service_jwt_auth.server.out :::
+
+>**Info:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client/).

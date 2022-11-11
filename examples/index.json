@@ -795,6 +795,13 @@
                 "isLearnByExample": true
             },
             {
+                "name": "Outer Join clause",
+                "url": "outer-join-clause",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
                 "name": "Stream type",
                 "url": "stream-type",
                 "verifyBuild": true,
@@ -1888,14 +1895,6 @@
             {
                 "name": "Client",
                 "url": "graphql-client",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "IDL client declaration",
-                "url": "graphql-idl-client-declaration",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -3307,11 +3306,11 @@
         ]
     },
     {
-            "title": "Metrics",
-            "column": 1,
-            "category": "Observability",
-            "samples": [
-                {
+        "title": "Metrics",
+        "column": 1,
+        "category": "Observability",
+        "samples": [
+            {
                 "name": "Gauge-based metrics",
                 "url": "gauge-metrics",
                 "verifyBuild": false,
@@ -3319,7 +3318,7 @@
                 "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
-                }
+            }
         ]
     },
     {
@@ -3327,7 +3326,7 @@
         "column": 0,
         "category": "Deployment",
         "samples": [
-                       {
+            {
                 "name": "Docker",
                 "url": "c2c-docker-deployment",
                 "verifyBuild": true,
