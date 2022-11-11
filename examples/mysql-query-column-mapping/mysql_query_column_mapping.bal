@@ -1,6 +1,7 @@
 import ballerina/io;
 import ballerinax/mysql;
 import ballerina/sql;
+import ballerinax/mysql.driver as _;
 
 // Defines a record to load the query result.
 type Customer record {|
