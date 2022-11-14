@@ -1,6 +1,7 @@
 import ballerina/io;
 import ballerinax/mysql;
 import ballerina/sql;
+import ballerinax/mysql.driver as _;
 
 public function main() returns error? {
     // Runs the prerequisite setup for the example.
