@@ -1,4 +1,4 @@
-# DML and DDL operation
+# DML and DDL operations
 
 This BBE demonstrates how to use the JDBC client with DDL and DML operations. Note that the relevant database driver JAR should be defined in the `Ballerina.toml` file as a dependency.
 
