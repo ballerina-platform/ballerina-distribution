@@ -3,7 +3,7 @@ import ballerinax/mysql;
 import ballerina/sql;
 import ballerinax/mysql.driver as _;
 
-// Defines a record to insert data.
+// Defines a record.
 type Customer record {|
     string firstName;
     string lastName;
