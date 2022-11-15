@@ -2,6 +2,7 @@ import ballerina/io;
 import ballerinax/java.jdbc;
 import ballerina/sql;
 
+// Defines a record.
 type Customer record {|
     string firstName;
     string lastName;
