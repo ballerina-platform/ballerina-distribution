@@ -27,10 +27,10 @@ public function main() returns error? {
 
     // Creates a batch-parameterized query.
     sql:ParameterizedQuery[] insertQueries =
-        from var data in customers
+        from Customer customer in customers
         select `INSERT INTO Customers (firstName, lastName, registrationID, creditLimit, country)
-                VALUES (${data.firstName}, ${data.lastName}, ${data.registrationID},
-                ${data.creditLimit}, ${data.country})`;
+                VALUES (${customer.firstName}, ${customer.lastName}, ${customer.registrationID},
+                ${customer.creditLimit}, ${customer.country})`;
 
     // Inserts the records with the auto-generated ID.
     sql:ExecutionResult[] result = check jdbcClient->batchExecute(insertQueries);
