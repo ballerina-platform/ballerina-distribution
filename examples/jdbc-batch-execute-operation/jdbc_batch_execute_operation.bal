@@ -2,6 +2,14 @@ import ballerina/io;
 import ballerinax/java.jdbc;
 import ballerina/sql;
 
+type Customer record {|
+    string firstName;
+    string lastName;
+    int registrationID;
+    float creditLimit;
+    string country;
+|};
+
 public function main() returns error? {
 
     // Runs the prerequisite setup for the example.
@@ -11,10 +19,10 @@ public function main() returns error? {
     jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc", "rootUser", "rootPass");
 
     // The records to be inserted.
-    var customers = [
-        { firstName: "Peter", lastName: "Stuart", registrationID: 1, creditLimit: 5000.75, country: "USA" },
-        { firstName: "Stephanie", lastName: "Mike", registrationID: 2, creditLimit: 8000.00, country: "USA" },
-        { firstName: "Bill", lastName: "John", registrationID: 3, creditLimit: 3000.25, country: "USA" }
+    Customer[] customers = [
+        {firstName: "Peter", lastName: "Stuart", registrationID: 1, creditLimit: 5000.75, country: "USA"},
+        {firstName: "Stephanie", lastName: "Mike", registrationID: 2, creditLimit: 8000.00, country: "USA"},
+        {firstName: "Bill", lastName: "John", registrationID: 3, creditLimit: 3000.25, country: "USA"}
     ];
 
     // Creates a batch-parameterized query.
@@ -28,7 +36,7 @@ public function main() returns error? {
     sql:ExecutionResult[] result = check jdbcClient->batchExecute(insertQueries);
 
     int[] generatedIds = [];
-    foreach var summary in result {
+    foreach sql:ExecutionResult summary in result {
         generatedIds.push(<int>summary.lastInsertId);
     }
     io:println(`Insert success, generated IDs are: ${generatedIds}`);
