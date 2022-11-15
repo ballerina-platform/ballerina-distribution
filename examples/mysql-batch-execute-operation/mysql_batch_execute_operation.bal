@@ -3,6 +3,15 @@ import ballerinax/mysql;
 import ballerina/sql;
 import ballerinax/mysql.driver as _;
 
+// Defines a record to insert data.
+type Customer record {|
+    string firstName;
+    string lastName;
+    int registrationID;
+    float creditLimit;
+    string country;
+|};
+
 public function main() returns error? {
     // Runs the prerequisite setup for the example.
     check initialize();
@@ -11,15 +20,15 @@ public function main() returns error? {
     mysql:Client mysqlClient = check new (user = "root", password = "Test@123", database = "CUSTOMER");
 
     // The records to be inserted.
-    var customers = [
-        { firstName: "Peter", lastName: "Stuart", registrationID: 1, creditLimit: 5000.75, country: "USA" },
-        { firstName: "Stephanie", lastName: "Mike", registrationID: 2, creditLimit: 8000.00, country: "USA" },
-        { firstName: "Bill", lastName: "John", registrationID: 3, creditLimit: 3000.25, country: "USA" }
+    Customer[] customers = [
+        {firstName: "Peter", lastName: "Stuart", registrationID: 1, creditLimit: 5000.75, country: "USA"},
+        {firstName: "Stephanie", lastName: "Mike", registrationID: 2, creditLimit: 8000.00, country: "USA"},
+        {firstName: "Bill", lastName: "John", registrationID: 3, creditLimit: 3000.25, country: "USA"}
     ];
 
     // Creates a batch-parameterized query.
     sql:ParameterizedQuery[] insertQueries =
-        from var customer in customers
+        from Customer customer in customers
         select `INSERT INTO Customers (firstName, lastName, registrationID, creditLimit, country)
                 VALUES (${customer.firstName}, ${customer.lastName}, ${customer.registrationID},
                 ${customer.creditLimit}, ${customer.country})`;
@@ -28,7 +37,7 @@ public function main() returns error? {
     sql:ExecutionResult[] result = check mysqlClient->batchExecute(insertQueries);
 
     int[] generatedIds = [];
-    foreach var summary in result {
+    foreach sql:ExecutionResult summary in result {
         generatedIds.push(<int>summary.lastInsertId);
     }
     io:println(`Insert success, generated IDs are: ${generatedIds}`);
