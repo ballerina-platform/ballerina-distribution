@@ -1797,14 +1797,6 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Hierarchical resource paths",
-                "url": "graphql-hierarchical-resource-paths",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
                 "name": "Return service objects",
                 "url": "graphql-returning-service-objects",
                 "verifyBuild": true,
@@ -1845,8 +1837,40 @@
                 "isLearnByExample": false
             },
             {
+                "name": "GraphiQL",
+                "url": "graphql-graphiql",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Documentation",
+                "url": "graphql-documentation",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Directives",
+                "url": "graphql-directives",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Context",
                 "url": "graphql-context",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Interceptors",
+                "url": "graphql-interceptors",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -1862,24 +1886,8 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Documentation",
-                "url": "graphql-documentation",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Interceptors",
-                "url": "graphql-interceptors",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Directives",
-                "url": "graphql-directives",
+                "name": "Hierarchical resource paths",
+                "url": "graphql-hierarchical-resource-paths",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
