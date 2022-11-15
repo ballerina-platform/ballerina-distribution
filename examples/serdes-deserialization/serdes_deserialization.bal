@@ -10,21 +10,14 @@ type Student record {
 
 public function main() returns error? {
 
-    // Assign the value to the variable.
-    Student studentValue = {
-        id: 7894,
-        name: "Liam",
-        fees: 24999.99
-    };
-
-    // Create a serialization object by passing the typedesc.
+    // Create a deserialization object by passing the typedesc.
     // This creates an underlying protocol buffer schema for the typedesc.
     serdes:Proto3Schema serdes = check new (Student);
 
-    // Serialize the record value to bytes.
-    byte[] serializedValue = check serdes.serialize(studentValue);
+    // Obtain the previously serialized byte array.
+    byte[] serializedValue = [10, 9, 8, 2, 16, 7, 26, 3, 38, 37, 159, 16, 172, 123, 26, 4, 76, 105, 97, 109];
 
-    // Deserialize the record value to bytes. 
+    // Deserialize the record value to Student type value. 
     Student deserializedValue = check serdes.deserialize(serializedValue);
 
     // Print deserialized data.

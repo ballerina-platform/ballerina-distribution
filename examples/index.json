@@ -2895,8 +2895,16 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Serialization and Deserialization",
-                "url": "serdes-simple",
+                "name": "Serialization",
+                "url": "serdes-serialization",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Deserialization",
+                "url": "serdes-deserialization",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "disablePlayground": false,
