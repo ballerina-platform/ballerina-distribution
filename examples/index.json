@@ -2791,7 +2791,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "DML and DDL operation",
+                "name": "DML and DDL operations",
                 "url": "mysql-execute-operation",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2800,7 +2800,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Batch execute",
+                "name": "Batch execution",
                 "url": "mysql-batch-execute-operation",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2809,7 +2809,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Atomic transaction",
+                "name": "Atomic transactions",
                 "url": "mysql-atomic-transaction",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2861,7 +2861,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "DML and DDL operation",
+                "name": "DML and DDL operations",
                 "url": "jdbc-execute-operation",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2870,7 +2870,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Batch execute",
+                "name": "Batch execution",
                 "url": "jdbc-batch-execute-operation",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2879,7 +2879,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Atomic transaction",
+                "name": "Atomic transactions",
                 "url": "jdbc-atomic-transaction",
                 "verifyBuild": false,
                 "verifyOutput": false,
