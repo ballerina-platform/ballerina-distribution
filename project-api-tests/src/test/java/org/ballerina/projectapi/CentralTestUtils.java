@@ -115,8 +115,8 @@ public class CentralTestUtils {
      *
      * @return token required to dispatch GitHub workflows.
      */
-    public static String getBallerinaBotToken() {
-        return System.getenv("ballerinaBotToken");
+    public static String getBallerinaBotWorkflow() {
+        return System.getenv("ballerinaBotWorkflow");
     }
 
     /**
@@ -457,7 +457,7 @@ public class CentralTestUtils {
         Request resolutionReq = new Request.Builder()
                 .post(requestBody)
                 .url(url)
-                .addHeader("Authorization", "Bearer " + getBallerinaBotToken())
+                .addHeader("Authorization", "Bearer " + getBallerinaBotWorkflow())
                 .build();
         Call resolutionReqCall = client.newCall(resolutionReq);
         try (Response response = resolutionReqCall.execute()) {
