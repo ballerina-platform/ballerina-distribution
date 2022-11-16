@@ -8,6 +8,7 @@ on:
             - ballerina-1.2.x
             - 2201.2.x
             - 2201.3.x
+            - gayal-cleansuite-fix
 
 jobs:
     ubuntu-integration-tests:
@@ -30,7 +31,7 @@ jobs:
                     packagePAT: ${{ secrets.GITHUB_TOKEN }}
                     devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
                     ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
-                run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue -x :ballerina:testExamples -x :project-api-tests:test
+                run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue -x :ballerina:testExamples
 
     ubuntu-bbe-tests:
         name: BBE Tests on Ubuntu
