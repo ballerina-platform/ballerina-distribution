@@ -2,7 +2,7 @@ import ballerina/graphql;
 
 service /graphql on new graphql:Listener(4000) {
 
-    // Returning the `Animal` type from a GraphQL resolver will idenitify it as an interface
+    // Returning the `Animal` type from a GraphQL resolver will identify it as an interface
     resource function get animals() returns Animal[] {
         return [new Leopard(), new Elephant()];
     }
