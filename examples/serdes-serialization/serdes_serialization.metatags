@@ -1,0 +1,2 @@
+description: This Ballerina sample demonstrates how to perform serialization using the serdes module.
+keywords: ballerina, ballerina by example, proto3, serialization, serdes
