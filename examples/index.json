@@ -1837,8 +1837,8 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Interfaces",
-                "url": "graphql-interfaces",
+                "name": "Interfaces implementing interfaces",
+                "url": "graphql-interfaces-implementing-interfaces",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
