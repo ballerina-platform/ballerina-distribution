@@ -8,8 +8,12 @@ In the authorization phase, the scopes of the service/resource are compared agai
 
 For more information on the underlying module, see the [`jwt` module](https://lib.ballerina.io/ballerina/jwt/latest/).
 
+>**Tip:** You may need to change the certificate file path and private key file path in the code below.
+
 ::: code http_service_jwt_auth.bal :::
 
-Run the service by executing the following command.
+Run the service by executing the cURL command below.
 
 ::: out http_service_jwt_auth.server.out :::
+
+>**Info:** Alternatively, you can invoke the above service via the [self-signed JWT Auth client](/learn/by-example/http-client-self-signed-jwt-auth).

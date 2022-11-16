@@ -1,6 +1,7 @@
 import ballerina/io;
 import ballerinax/mysql;
 import ballerina/sql;
+import ballerinax/mysql.driver as _;
 
 // The `Student` record to represent the database table.
 type Student record {

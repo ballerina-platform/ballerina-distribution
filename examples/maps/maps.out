@@ -1,2 +1,2 @@
-bal run maps.bal
+$ bal run maps.bal
 1

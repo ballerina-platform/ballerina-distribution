@@ -10,8 +10,25 @@ The `Config.toml` file is used to store the usernames, passwords, and scopes. Ea
 
 For more information on the underlying module, see the [`auth` module](https://lib.ballerina.io/ballerina/auth/latest/).
 
+>**Tip:** # You may need to change the certificate file path and private key file path in the code below.
+
 ::: code graphql_service_basic_auth_file_user_store.bal :::
 
-Run the service as follows.
+>**Info:** As a prerequisite to running the service, populate the `Config.toml` file correctly with the user information as shown below.
+
+    ```toml
+    [[ballerina.auth.users]]
+    username="alice"
+    password="password1"
+    scopes=["scope1"]
+    [[ballerina.auth.users]]
+    username="bob"
+    password="password2"
+    scopes=["scope2", "scope3"]
+    ```
+
+Run the service by executing the command below.
 
 ::: out graphql_service_basic_auth_file_user_store.server.out :::
+
+>**Info:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client/).

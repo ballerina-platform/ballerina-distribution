@@ -1,0 +1,6 @@
+bal run never_type.bal
+
+{"color":"blue"}
+error: whoops
+	at never_type:whoops(never_type.bal:25)
+	   never_type:main(never_type.bal:40)
