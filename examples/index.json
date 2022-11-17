@@ -1428,14 +1428,6 @@
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
-            },
-            {
-                "name": "Default resource",
-                "url": "http-default-resource",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
             }
         ]
     },
@@ -1462,7 +1454,7 @@
         ]
     },
     {
-        "title": "REST API security",
+        "title": "REST service security",
         "column": 0,
         "category": "Network libraries",
         "samples": [
@@ -1513,7 +1505,14 @@
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
-            },
+            }
+        ]
+    },
+    {
+        "title": "REST client security",
+        "column": 0,
+        "category": "Network libraries",
+        "samples": [
             {
                 "name": "Client - SSL/TLS",
                 "url": "http-client-ssl-tls",
@@ -1589,10 +1588,18 @@
         ]
     },
     {
-        "title": "REST API advanced",
+        "title": "HTTP advanced",
         "column": 0,
         "category": "Network libraries",
         "samples": [
+            {
+                "name": "Default resource",
+                "url": "http-default-resource",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
             {
                 "name": "Redirects",
                 "url": "http-redirects",
