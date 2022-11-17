@@ -1,6 +1,6 @@
 import ballerina/io;
 
-public function main() returns error? {
+public function main() {
     int[] nums = [1, 2, 3, 4];
     int[] numsTimes10 = [];
 
