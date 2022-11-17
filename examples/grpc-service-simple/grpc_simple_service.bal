@@ -5,7 +5,7 @@ import ballerina/grpc;
 }
 service "HelloWorld" on new grpc:Listener(9090) {
 
-    remote function hello(string request) returns string|error {
+    remote function hello(string request) returns string {
         // Reads the request message and sends a response.
         return "Hello " + request;
     }
