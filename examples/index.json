@@ -1446,9 +1446,8 @@
             {
                 "name": "Client data binding",
                 "url": "http-client-data-binding",
-                "verifyBuild": true,
+                "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true,
                 "isLearnByExample": false
             }
         ]
