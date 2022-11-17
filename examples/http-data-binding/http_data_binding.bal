@@ -1,25 +1,18 @@
 import ballerina/http;
 
-xmlns "http://www.test.com" as test;
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
 
-type Student record {
-    string Name;
-    int Grade;
-};
+table<Album> key(title) albums = table [];
 
-service /hello on new http:Listener(9090) {
+service / on new http:Listener(9090) {
 
-    // The `Student` parameter in the payload annotation.
-    // represents the entity body of the inbound request.
-    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/Payload.
-    resource function post student(@http:Payload Student student) returns json {
-        string name = student.Name;
-        return {Name: name};
-    }
-
-    //Binds the XML payload of the inbound request to the `store` variable.
-    resource function post store(@http:Payload xml store) returns xml {
-        xml city = store/<test: city>;
-        return city;
+    // The `album` parameter in the payload annotation represents the entity body of the inbound request.
+    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/HttpPayload.
+    resource function post albums(@http:Payload Album album) returns Album {
+        albums.add(album);
+        return album;
     }
 }

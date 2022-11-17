@@ -10,13 +10,12 @@ import ballerina/http;
 // the `cacheConfig`. Currently, there are only 2 policies:
 // `CACHE_CONTROL_AND_VALIDATORS` (the default policy) and `RFC_7234`.
 
-final http:Client cachingEP = checkpanic new ("http://localhost:8080", 
+final http:Client cachingEP = check new ("http://localhost:8080",
     cache = {enabled: true, isShared: true});
 
 service / on new http:Listener(9090) {
 
-    resource function get cache(http:Request req)
-            returns http:Response|error? {
+    resource function get greeting(http:Request req) returns http:Response|error {
         http:Response response = check cachingEP->forward("/hello", req);
         // If the request was successful, an HTTP response will be returned.
         return response;

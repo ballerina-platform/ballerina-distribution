@@ -17,7 +17,7 @@ final http:LoadBalanceClient lbBackendEP = check new ({
 
 service / on new http:Listener(9090) {
     resource function 'default lb() returns string|error {
-        string payload = check lbBackendEP->get("/");
+        string payload = check lbBackendEP->/;
         return payload;
     }
 }

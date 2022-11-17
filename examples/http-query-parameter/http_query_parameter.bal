@@ -1,23 +1,23 @@
 import ballerina/http;
 
-service /product on new http:Listener(9090) {
+type Album readonly & record {|
+    string title;
+    string artist;
+    int year;
+|};
 
-    // The `a`, `b` method arguments are considered as query parameters.
-    resource function get count(int a, int b) returns json {
-        return { count : a + b};
-    }
+table<Album> key(title) albums = table [
+    {title: "Blue Train", artist: "John Coltrane", year: 1958},
+    {title: "Jeru", artist: "Gerry Mulligan", year: 1962}
+];
 
-    // The query param type is nilable, which means the URI may contain the param.
-    // In the absence of the query param `id`, the type is nil.
-    resource function get name(string? id) returns string {
-        if id is string {
-            return "product_" + id;
-        }
-        return "product_0000";
-    }
+service / on new http:Listener(9090) {
 
-    // The multiple query param values also can be accommodate to an array.
-    resource function get detail(string[]? colour) returns json {
-        return { product_colour : colour};
+    // The `year` resource method argument is considered as the query parameter which is extracted from the
+    // request URI.
+    resource function get albums(int year) returns Album[] {
+        table<Album> selected = from Album album in albums
+                     where album.year == year select album;
+        return selected.toArray();
     }
 }

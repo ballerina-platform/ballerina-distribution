@@ -1,0 +1,15 @@
+$ curl http://localhost:9090/albums -H "Content-type:application/json" -d "{\"title\": \"Blue Train\", \"artist\": \"John Coltrane\"}" -v
+> POST /albums HTTP/1.1
+> Host: localhost:9090
+> User-Agent: curl/7.64.1
+> Accept: */*
+> Content-type:application/json
+> Content-Length: 50
+>
+< HTTP/1.1 409 Conflict
+< content-type: application/json
+< content-length: 36
+< server: ballerina
+< date: Thu, 17 Nov 2022 11:13:50 +0530
+<
+{"message":"album is already exist"}

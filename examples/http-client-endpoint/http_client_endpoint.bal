@@ -1,28 +1,24 @@
 import ballerina/http;
 import ballerina/io;
 
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
+
 public function main() returns error? {
-    // Creates a new client with the backend URL.
-    final http:Client clientEndpoint = check new ("http://postman-echo.com");
-    
-    // Sends a `GET` request to the specified endpoint.
-    io:println("GET request:");
-    json resp = check clientEndpoint->get("/get?test=123");
-    io:println(resp.toJsonString());
+    // Creates a new client with the Basic REST service URL.
+    final http:Client httpClient = check new ("localhost:9090");
 
-    // The `get()`, `head()`, and `options()` have the optional headers parameter to send out headers,
-    io:println("\nGET request with Headers:");
-    resp = check clientEndpoint->get("/get", {"Sample-Name": "http-client-connector"});
-    io:println(resp.toJsonString());
+    // Sends a `GET` request to the "/albums" resource.
+    // The verb is not mandatory as it is default to "GET".
+    Album[] albums = check httpClient->/albums;
+    io:println("GET request:" + albums.toJsonString());
 
-    // Sends a `POST` request to the specified endpoint.
-    io:println("\nPOST request:");
-    resp = check clientEndpoint->post("/post", "POST: Hello World");
-    io:println(resp.toJsonString());
+    // above call can be executed as follows using remote methods too.
+    albums = check httpClient->get("/albums");
 
-    // Uses the `execute()` remote function for custom HTTP verbs.
-    io:println("\nUse custom HTTP verbs:");
-    http:Response response = check clientEndpoint->execute("COPY", "/get", "CUSTOM: Hello World");
-
-    io:println("Status code: " + response.statusCode.toString());
+    // Sends a `POST` request to the "/albums" resource.
+    Album album  = check httpClient->/albums.post({title: "Sarah Vaughan and Clifford Brown", artist: "Sarah Vaughan"});
+    io:println("\nPOST request:" + album.toJsonString());
 }

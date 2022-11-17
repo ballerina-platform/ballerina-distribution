@@ -1,13 +1,24 @@
 import ballerina/http;
-import ballerina/log;
+import ballerina/mime;
+
+type Album readonly & record {|
+    string title;
+    string artist;
+
+|};
+
+table<Album> key(title) albums = table [
+    {title: "Blue Train", artist: "John Coltrane"},
+    {title: "Jeru", artist: "Gerry Mulligan"}
+];
 
 service / on new http:Listener(9090) {
-    // The `clientKey` method argument is considered as the value for the
-    // `X-Client-Key` HTTP header.
-    resource function get hello(@http:Header {name: "X-Client-Key"} string clientKey)
-            returns string {
 
-        log:printInfo("Received header value: " + clientKey);
-        return clientKey;
+    // The `accept` argument with `@http:Header` annotation takes the value of the `Accept` request header.
+    resource function get albums(@http:Header string accept) returns Album[]|http:NotAcceptable {
+        if !string:equalsIgnoreCaseAscii(accept, mime:APPLICATION_JSON) {
+            return http:NOT_ACCEPTABLE;
+        }
+        return albums.toArray();
     }
 }

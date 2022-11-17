@@ -1,4 +1,4 @@
-$ curl -v http://localhost:9090/cache
+$ curl -v http://localhost:9090/greeting
 > GET /cache HTTP/1.1
 > Host: localhost:9090
 > User-Agent: curl/7.64.1
@@ -15,7 +15,7 @@ $ curl -v http://localhost:9090/cache
 <
 {"message":"Hello, World!"}
 
-$ curl -v http://localhost:9090/cache
+$ curl -v http://localhost:9090/greeting
 > GET /cache HTTP/1.1
 > Host: localhost:9090
 > User-Agent: curl/7.64.1
@@ -33,7 +33,7 @@ $ curl -v http://localhost:9090/cache
 <
 {"message":"Hello, World!"}
 
-$ curl -v http://localhost:9090/cache
+$ curl -v http://localhost:9090/greeting
 > GET /cache HTTP/1.1
 > Host: localhost:9090
 > User-Agent: curl/7.64.1

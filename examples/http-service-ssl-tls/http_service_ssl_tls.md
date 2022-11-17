@@ -2,7 +2,8 @@
 
 You can use the HTTPS listener to connect to or interact with an HTTPS client. Provide the `http:ListenerSecureSocket` configurations to the server to expose an HTTPS connection.
 
-For more information on the underlying module, see the [`http` module](https://lib.ballerina.io/ballerina/http/latest/).
+For more information on the underlying module, see the [`http` module](https://lib.ballerina.io/ballerina/http/latest/) 
+and [`http` specification](https://ballerina.io/spec/http/#921-listener---ssltls).
 
 >**Tip:** You may need to change the certificate file path and private key file path in the code below.
 

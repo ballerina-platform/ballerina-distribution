@@ -1,22 +1,23 @@
-$ curl -X GET http://localhost:9092/multiparts/encode_out_response
---5afd3d91ee639af3
-content-type: multipart/mixed;boundary=de5520ef3bc703d7
+$ curl http://localhost:9092/multiparts/encoder
+--646e483fc8826c55
+content-type: multipart/mixed;boundary=e8a931f5e25d263e
 
---de5520ef3bc703d7
+--e8a931f5e25d263e
 content-type: application/json
 
 {"name":"wso2"}
---de5520ef3bc703d7
+--e8a931f5e25d263e
 content-type: text/xml
 
 <ballerinalang>
     <version>0.963</version>
     <test>test xml file to be used as a file part</test>
 </ballerinalang>
---de5520ef3bc703d7--
 
---5afd3d91ee639af3--
+--e8a931f5e25d263e--
+
+--646e483fc8826c55--
 
 #To decode the inbound response with multiparts.
-$ curl -X GET http://localhost:9090/multiparts/decode_in_response
+$ curl http://localhost:9090/multiparts/decoder
 Body Parts Received!
