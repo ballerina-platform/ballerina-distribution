@@ -2,7 +2,7 @@ import ballerina/graphql;
 
 service /graphql on new graphql:Listener(4000) {
 
-    // Returning the `Animal` type from a GraphQL resolver will idenitify it as an interface
+    // Returning the `Animal` type from a GraphQL resolver will identify it as an interface.
     resource function get animals() returns Animal[] {
         return [new Leopard(), new Elephant()];
     }
@@ -15,31 +15,15 @@ public type Animal distinct service object {
     resource function get name() returns string;
 };
 
-// Define another interface `Mammal`, that implements `Animal` interface
-public type Mammal distinct service object {
-
-    // This denotes that this interface implements the `Animal` interface
-    *Animal;
-
-    // Add an additional field to the `Mammal` interface
-    resource function get call() returns string;
-};
-
-// Define the `Leopard` class implementing the `Mammal` interface
+// Define the `Leopard` class implementing the `Animal` interface.
 public distinct service class Leopard {
 
-    // This denotes that this object implements the `Mammal` interface
-    *Mammal;
+    // This denotes that this object implements the `Animal` interface.
+    *Animal;
 
-    // Since this object implements the `Mammal` interface and the `Mammal` interface implements the
-    // `Animal` interface, this object must implement the fields from the `Animal` interface
+    // Since this object implements the `Animal` interface, this object must implement the fields of the `Animal` interface.
     resource function get name() returns string {
         return "Panthera pardus kotiya";
-    }
-
-    // Implement the `call` field from the `Mammal` interface
-    resource function get call() returns string {
-        return "Growl";
     }
 
     // Add an additional field `location` to the `Leopard` class
@@ -48,15 +32,11 @@ public distinct service class Leopard {
     }
 }
 
-// Another class implementing the `Mammal` class
+// Another class implementing the `Animal` interface.
 public distinct service class Elephant {
-    *Mammal;
+    *Animal;
 
     resource function get name() returns string {
         return "Elephas maximus maximus";
-    }
-
-    resource function get call() returns string {
-        return "Trumpet";
     }
 }

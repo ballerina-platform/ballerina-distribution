@@ -1,4 +1,4 @@
-# Batch execute
+# Batch execution
 
 This BBE demonstrates how to use the MySQL client to execute a batch of DDL/DML operations. 
 
