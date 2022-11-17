@@ -7,7 +7,7 @@ HelloWorldClient helloWorldEp = check new("http://localhost:9090");
 @test:Config
 function testClientStreamingService() returns error? {
     // Executes the client-streaming RPC call and receives the streaming client.
-    LotsOfGreetingsStreamingClient streamingClient = check ep->lotsOfGreetings();
+    LotsOfGreetingsStreamingClient streamingClient = check helloWorldEp->lotsOfGreetings();
     string[] requests = ["Hi Sam", "Hey Sam", "GM Sam"];
 
     // Sends multiple messages to the server.

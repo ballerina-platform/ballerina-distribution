@@ -2342,7 +2342,7 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Service - SSL/TLS",
+                "name": "SSL/TLS",
                 "url": "grpc-service-ssl-tls",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2350,7 +2350,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - Mutual SSL",
+                "name": "Mutual SSL",
                 "url": "grpc-service-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2358,7 +2358,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - Basic Auth file user store",
+                "name": "Basic Auth file user store",
                 "url": "grpc-service-basic-auth-file-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2366,7 +2366,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - Basic Auth LDAP user store",
+                "name": "Basic Auth LDAP user store",
                 "url": "grpc-service-basic-auth-ldap-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2374,7 +2374,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - JWT Auth",
+                "name": "JWT Auth",
                 "url": "grpc-service-jwt-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2382,7 +2382,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - OAuth2",
+                "name": "OAuth2",
                 "url": "grpc-service-oauth2",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2397,7 +2397,7 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Client - SSL/TLS",
+                "name": "SSL/TLS",
                 "url": "grpc-client-ssl-tls",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2405,7 +2405,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - Mutual SSL",
+                "name": "Mutual SSL",
                 "url": "grpc-client-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2413,7 +2413,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - Basic Auth",
+                "name": "Basic Auth",
                 "url": "grpc-client-basic-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2421,7 +2421,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - Bearer Token Auth",
+                "name": "Bearer Token Auth",
                 "url": "grpc-client-bearer-token-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2429,7 +2429,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - self signed JWT Auth",
+                "name": "Self signed JWT Auth",
                 "url": "grpc-client-self-signed-jwt-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2437,7 +2437,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 Client Credentials grant type",
+                "name": "OAuth2 Client Credentials grant type",
                 "url": "grpc-client-oauth2-client-credentials-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2445,7 +2445,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 Password grant type",
+                "name": "OAuth2 Password grant type",
                 "url": "grpc-client-oauth2-password-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2453,7 +2453,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 Refresh Token grant type",
+                "name": "OAuth2 Refresh Token grant type",
                 "url": "grpc-client-oauth2-refresh-token-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2461,7 +2461,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 JWT Bearer grant type",
+                "name": "OAuth2 JWT Bearer grant type",
                 "url": "grpc-client-oauth2-jwt-bearer-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
