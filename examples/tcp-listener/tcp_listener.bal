@@ -19,7 +19,7 @@ service class EchoService {
     remote function onBytes(tcp:Caller caller, readonly & byte[] data) returns tcp:Error? {
         io:println("Echo: ", string:fromBytes(data));
         // Echoes back the data to the client from which the data is received.
-        return caller->writeBytes(data);
+        check caller->writeBytes(data);
     }
 
     // This remote method is invoked in an erroneous situation,
