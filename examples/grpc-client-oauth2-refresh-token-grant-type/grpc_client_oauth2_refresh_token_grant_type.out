@@ -1,4 +1,2 @@
-$ bal build client
-
-$ bal run client/target/bin/client.jar
-Hello, World!
+$ bal run client
+Hello WSO2
