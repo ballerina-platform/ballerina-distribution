@@ -28,12 +28,18 @@ include 'dist-repo-builder'
 include 'build-time-tests'
 include 'cache-generator'
 include 'config:checkstyle'
+include ':test-automation'
+include ':installer-test'
+include ':update-tool-test'
 
 project(':ballerina').projectDir = "$rootDir/ballerina" as File
 project(':ballerina-distribution-test').projectDir = "$rootDir/ballerina-test" as File
 project(':dist-repo-builder').projectDir = "$rootDir/dist-repo-builder" as File
 project(':cache-generator').projectDir = "$rootDir/cache-generator" as File
 project(':config').projectDir = "$rootDir config" as File
+project(':test-automation').projectDir = "$rootDir/ballerina-test-automation/test-automation" as File
+project(':installer-test').projectDir = "$rootDir/ballerina-test-automation/installer-test" as File
+project(':update-tool-test').projectDir = "$rootDir/ballerina-test-automation/update-tool-test" as File
 
 gradleEnterprise {
     buildScan {

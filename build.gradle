@@ -42,6 +42,14 @@ ext {
     puppycrawlCheckstyleVersion = "8.18"
 }
 
+gradle.taskGraph.whenReady {
+    gradle.taskGraph.allTasks.each {
+        if(it.project.name == ':installer-test') {
+            it.onlyIf { false }
+        }
+    }
+}
+
 allprojects {
     apply plugin: 'maven-publish'
 

@@ -52,21 +52,22 @@ artifacts {
 }
 
 test {
-    useTestNG()
-    options.suites('src/test/resources/testng.xml')
-    systemProperty 'BALLERINA_VERSION', project.properties['swan-lake-latest-version']
-    systemProperty 'SPEC_VERSION', project.properties['swan-lake-latest-spec-version']
-    systemProperty 'VERSION_DISPLAY_TEXT', project.properties['swan-lake-latest-version-display-text']
-    systemProperty 'TOOL_VERSION', project.properties['swan-lake-latest-tool-version']
-    systemProperty 'LATEST_TOOL_VERSION', project.properties['latest-tool-version']
-    systemProperty 'LATEST_PATCH_VERSION', project.properties['1-x-channel-latest-version']
-    systemProperty 'LATEST_PATCH_SPEC_VERSION', project.properties['1-x-channel-latest-spec-version']
-    if (System.getProperty('ballerinaInstalled')) {
-        systemProperty 'BALLERINA_INSTALLED', System.getProperty('ballerinaInstalled')
-    } else {
-        systemProperty 'BALLERINA_INSTALLED', "false"
-    }
-    testLogging {
-        showStandardStreams = true
+    if (project.hasProperty("installerTestsEnabled")) {
+        useTestNG()
+        def ballerinaVersion = project.ballerinaLangVersion.tokenize("-")[0]
+        options.suites('src/test/resources/testng.xml')
+        systemProperty 'BALLERINA_VERSION', 'swan-lake-' + ballerinaVersion
+        systemProperty 'SPEC_VERSION', project.specVersion
+        systemProperty 'VERSION_DISPLAY_TEXT', ballerinaVersion
+        systemProperty 'LATEST_TOOL_VERSION', project.ballerinaCommandVersion
+
+        if (System.getProperty('ballerinaInstalled')) {
+            systemProperty 'BALLERINA_INSTALLED', System.getProperty('ballerinaInstalled')
+        } else {
+            systemProperty 'BALLERINA_INSTALLED', "false"
+        }
+        testLogging {
+            showStandardStreams = true
+        }
     }
 }
