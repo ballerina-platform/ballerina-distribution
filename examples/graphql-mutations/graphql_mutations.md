@@ -14,14 +14,7 @@ Run the service by executing the following command.
 
 First, send the following document to the GraphQL endpoint to test the service.
 
-```graphql
-{
-    profile {
-        name
-        isAdult
-    }
-}
-```
+::: code graphql_mutations.1.graphql :::
 
 To send the document, use the following cURL command in a separate terminal.
 
@@ -29,14 +22,7 @@ To send the document, use the following cURL command in a separate terminal.
 
 Now, send the following document to update the name.
 
-```graphql
-mutation {
-    updateName(name: "Mr. Lambert") {
-        name
-        age
-    }
-}
-```
+::: code graphql_mutations.2.graphql :::
 
 To send the document, use the following cURL command.
 
@@ -44,14 +30,7 @@ To send the document, use the following cURL command.
 
 Finally, send the following document to update the age.
 
-```graphql
-mutation {
-    updateAge(age: 52) {
-        name
-        age
-    }
-}
-```
+::: code graphql_mutations.3.graphql :::
 
 To send the document, use the following cURL command.
 

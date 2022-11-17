@@ -14,11 +14,7 @@ Run the service by executing the following command.
 
 Send the following document to the GraphQL endpoint to test the service.
 
-```graphql
-{
-    greeting
-}
-```
+::: code graphql_hello_world.graphql :::
 
 To send the document, use the following cURL command in a separate terminal.
 

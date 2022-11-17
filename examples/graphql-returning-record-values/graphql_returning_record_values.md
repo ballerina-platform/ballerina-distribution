@@ -14,16 +14,7 @@ Run the service by executing the following command.
 
 Send the following document to the GraphQL endpoint to test the service.
 
-```graphql
-{
-    profile {
-        name,
-        address {
-            city
-        }
-    }
-}
-```
+::: code graphql_returning_record_values.graphql :::
 
 To send the document, use the following cURL command in a separate terminal.
 

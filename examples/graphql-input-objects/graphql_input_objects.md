@@ -14,13 +14,7 @@ Run the service by executing the following command.
 
 Send the following document to the GraphQL endpoint to test the service.
 
-```graphql
-mutation {
-    addPost(newPost: { author: "Sam", content: "Hello" }) {
-        id
-    }
-}
-```
+::: code graphql_input_objects.graphql :::
 
 To send the document, use the following cURL command in a separate terminal.
 

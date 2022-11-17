@@ -1,0 +1,6 @@
+mutation {
+    updateName(name: "Mr. Lambert") {
+        name
+        age
+    }
+}

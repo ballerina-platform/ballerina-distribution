@@ -21,16 +21,7 @@ following cURL command to inspect the result.
 
 Send the following document containing the `@skip` directive to test it.
 
-```graphql
-{
-    profile {
-        name
-        address @skip(if: true) {
-            city
-        }
-    }
-}
-```
+::: code graphql_directives.1.graphql :::
 
 To send the document, use the following cURL command in a separate terminal.
 
@@ -38,16 +29,7 @@ To send the document, use the following cURL command in a separate terminal.
 
 Then, send the following document containing the `@include` directive.
 
-```graphql
-{
-    profile {
-        name
-        address @include(if: true) {
-            city
-        }
-    }
-}
-```
+::: code graphql_directives.2.graphql :::
 
 To send the document, use the following cURL command.
 
@@ -55,18 +37,7 @@ To send the document, use the following cURL command.
 
 Finally, send the following document with an introspection query to check the deprecated enum values.
 
-```graphql
-{
-    __type(name: "Gender") {
-        name
-        enumValues {
-            name
-            isDeprecated
-            deprecationReason
-        }
-    }
-}
-```
+::: code graphql_directives.3.graphql :::
 
 To send the document, use the following cURL command.
 

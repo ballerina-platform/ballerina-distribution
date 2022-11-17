@@ -14,30 +14,7 @@ Run the service by executing the following command.
 
 Send the following document with an introspection query to test how the documentation is added to the schema.
 
-```graphql
- {
-    __schema {
-        queryType {
-            fields {
-                name
-                description
-                type {
-                    name
-                    description
-                    fields {
-                        name
-                        description
-                    }
-                }
-                args {
-                    name
-                    description
-                }
-            }
-        }
-    }
-}
-```
+::: code graphql_documentation.graphql :::
 
 To send the document, use the following cURL command in a separate terminal.
 

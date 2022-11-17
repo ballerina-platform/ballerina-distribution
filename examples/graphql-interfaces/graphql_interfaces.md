@@ -14,16 +14,7 @@ Run the service by executing the following command.
 
 Send the following document to the GraphQL endpoint to test the service.
 
-```graphql
-{
-    animals {
-        name
-        ...on Leopard {
-            location
-        }
-    }
-}
-```
+::: code graphql_interfaces.graphql :::
 
 To send the document, use the following cURL command in a separate terminal.
 
