@@ -7,12 +7,10 @@ When the user expects client data binding to happen, the HTTP error responses (`
 For more information on the underlying module, see the [`http` module](https://lib.ballerina.io/ballerina/http/latest/) 
 and [specification](https://ballerina.io/spec/http/#243-client-action-return-types).
 
+Before executing following sample, run the service in `Basic REST API` example.
+
 ::: code http_client_data_binding.bal :::
 
-Run the service by executing the following command.
+Run the client program by executing the following command.
 
-::: out http_client_data_binding.server.out :::
-
-Invoke the service as follows.
-
-::: out http_client_data_binding.client.out :::
+::: out http_client_data_binding.out :::
