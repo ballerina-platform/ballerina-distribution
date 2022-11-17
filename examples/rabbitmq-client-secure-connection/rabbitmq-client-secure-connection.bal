@@ -1,26 +1,16 @@
 import ballerinax/rabbitmq;
 
 public function main() returns error? {
-    // Creates a ballerina RabbitMQ client with TLS/SSL and username/password authentication.
+    // Creates a ballerina RabbitMQ client with TLS/SSL.
     rabbitmq:Client rabbitmqClient = check new(rabbitmq:DEFAULT_HOST, 5671,
 
-        // To secure the client connections using username/password authentication, provide the credentials
-        // with the `rabbitmq:Credentials` record.
-        // For details, see https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/Credentials.
-        auth = {
-             username: "alice",
-             password: "alice@123"
-        },
         // To secure the client connection using TLS/SSL, the client needs to be configured with
         // a certificate file of the server.
-        // For details, see https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/SecureSocket.
-        // record provides the SSL-related configurations of the client.
         secureSocket = {
             cert: "../resource/path/to/public.crt"
         }
     );
 
-    // Declares the queue, Secured.
     check rabbitmqClient->queueDeclare("Secured");
 
     // Publishes the message using the `rabbitmqClient` and the routing key named `Secured`.
