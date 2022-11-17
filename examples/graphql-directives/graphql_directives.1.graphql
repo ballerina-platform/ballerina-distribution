@@ -1,0 +1,8 @@
+{
+    profile {
+        name
+        address @skip(if: true) {
+            city
+        }
+    }
+}

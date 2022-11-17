@@ -18,14 +18,7 @@ Run the service by executing the following command.
 
 Send the following document to the GraphQL endpoint to test the service.
 
-```graphql
-{
-    profile {
-        name
-        salary
-    }
-}
-```
+::: code graphql_context.graphql :::
 
 To send the document, use the following cURL command in a separate terminal. First, send the request with the `scope` header value set to `admin`.
 

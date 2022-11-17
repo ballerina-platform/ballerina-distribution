@@ -1,0 +1,11 @@
+{
+    animals {
+        name
+        ...on Mammal {
+            call
+            ...on Leopard {
+                location
+            }
+        }
+    }
+}

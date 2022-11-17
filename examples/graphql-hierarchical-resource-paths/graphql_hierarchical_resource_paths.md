@@ -14,16 +14,7 @@ Run the service by executing the following command.
 
 Send the following document to the GraphQL endpoint to test the service.
 
-```graphql
-{
-    profile {
-        quote
-        name {
-            first
-        }
-    }
-}
-```
+::: code graphql_hierarchical_resource_paths.graphql :::
 
 To send the document, use the following cURL command in a separate terminal.
 

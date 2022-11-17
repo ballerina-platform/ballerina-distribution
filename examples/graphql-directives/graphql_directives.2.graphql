@@ -1,0 +1,8 @@
+{
+    profile {
+        name
+        address @include(if: true) {
+            city
+        }
+    }
+}

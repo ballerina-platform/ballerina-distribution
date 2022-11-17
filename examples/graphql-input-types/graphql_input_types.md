@@ -16,11 +16,7 @@ Run the service by executing the following command.
 
 Send the following document to the GraphQL endpoint to test the service.
 
-```graphql
-{
-    greeting(name: "Walter")
-}
-```
+::: code graphql_input_types.graphql :::
 
 To send the document, use the following cURL command in a separate terminal.
 
