@@ -31,8 +31,8 @@ public distinct service class Leopard {
     // This denotes that this object implements the `Mammal` interface.
     *Mammal;
 
-    // Since this object implements the `Mammal` interface and the `Mammal` interface implements the
-    // `Animal` interface, this object must implement the fields from the `Animal` interface.
+    // Since this object implements the `Mammal` interface and the `Mammal` interface implements
+    // the `Animal` interface, this object must implement the fields from both interfaces.
     resource function get name() returns string {
         return "Panthera pardus kotiya";
     }
