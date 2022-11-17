@@ -313,7 +313,7 @@ jobs:
         with:
           dotnet-version: '2.1.x'
       - name: Install GUID Generator
-        run: dotnet tool install -g dotnet-guid
+        run: dotnet tool install -g dotnet-guid --version 0.5.2
       - name: Download Windows Intaller Zip
         uses: actions/download-artifact@v2
         with:
