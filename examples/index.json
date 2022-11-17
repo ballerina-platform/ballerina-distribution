@@ -2635,7 +2635,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Listener",
+                "name": "Service",
                 "url": "tcp-listener",
                 "verifyBuild": true,
                 "verifyOutput": false,
