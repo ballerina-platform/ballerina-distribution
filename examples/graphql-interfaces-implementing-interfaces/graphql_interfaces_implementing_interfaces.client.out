@@ -1,0 +1,4 @@
+# Send a query to the GraphQL endpoint using a cURL command.
+# The query used: { animals { name ...on Mammal { call ...on Leopard { location }}}}
+$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ animals { name ...on Mammal { call ...on Leopard { location }}}}" }' 'http://localhost:4000/graphql'
+{"data":{"animals":[{"name":"Panthera pardus kotiya", "call":"Growl", "location":"Wilpaththu"}, {"name":"Elephas maximus maximus", "call":"Trumpet"}]}}
