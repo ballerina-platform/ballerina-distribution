@@ -9,7 +9,7 @@ For more information on the underlying module, see the [`mysql` module](https://
 ::: out mysql_atomic_transaction.out :::
 
 The syntax for using XA transactions (distributed transactions across multiple resources) is the same. Additionally, `useXADatasource` option should be enabled in the client as follows,
-```
+```ballerina
 mysql:Client mysqlClient = check new (user = "root", password = "Test@123", database = "CUSTOMER",
                                       options = {useXADatasource: true});
 ```
