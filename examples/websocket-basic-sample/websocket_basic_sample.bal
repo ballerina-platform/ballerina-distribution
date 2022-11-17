@@ -16,6 +16,6 @@ service class WsService {
     // For more information on data binding, see https://github.com/ballerina-platform/module-ballerina-websocket/blob/main/docs/proposals/data-binding-api.md.
     remote function onMessage(websocket:Caller caller, string text) returns websocket:Error? {
         io:println("\ntext message: " + text);
-        return caller->writeMessage("You said: " + text);
+        check caller->writeMessage("You said: " + text);
     }
 }
