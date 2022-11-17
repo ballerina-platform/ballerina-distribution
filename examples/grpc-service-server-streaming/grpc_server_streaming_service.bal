@@ -5,7 +5,7 @@ import ballerina/grpc;
     value: GRPC_SERVER_STREAMING_DESC
 }
 service "HelloWorld" on new grpc:Listener(9090) {
-    remote function lotsOfReplies(string name) returns stream<string, error?>|error {
+    remote function lotsOfReplies(string name) returns stream<string, error?> {
         string[] greets = ["Hi", "Hey", "GM"];
         // Creates the array of responses by appending the received name.
         int i = 0;
