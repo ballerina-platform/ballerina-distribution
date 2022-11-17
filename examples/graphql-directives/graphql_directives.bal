@@ -1,5 +1,19 @@
 import ballerina/graphql;
 
+service /graphql on new graphql:Listener(4000) {
+    // Marking a field as deprecated.
+    # # Deprecated
+    # The `person` field is deprecated. Use `profile` instead.
+    @deprecated
+    resource function get person() returns Person {
+        return person;
+    }
+
+    resource function get profile() returns Person {
+        return person;
+    }
+}
+
 public type Person record {
     string name;
     int age;
@@ -34,17 +48,3 @@ Person person = {
         city: "Albuquerque"
     }
 };
-
-service /graphql on new graphql:Listener(4000) {
-    // Marking a field as deprecated.
-    # # Deprecated
-    # The `person` field is deprecated. Use `profile` instead.
-    @deprecated
-    resource function get person() returns Person {
-        return person;
-    }
-
-    resource function get profile() returns Person {
-        return person;
-    }
-}

@@ -10,9 +10,9 @@ import ballerina/lang.value;
         // Initialize the `graphql:Context` object.
         graphql:Context context = new;
 
-        // Retrieve the header named `scope` and set it to the context with the `scope` key. If the
-        // header does not exist, this will return an `error`, and thereby, the request will not be
-        // processed.
+        // Retrieve the header named `scope` from the `http:request` and set it to the context with
+        // the `scope` key. If the header does not exist, this will return an `error`, and thereby,
+        // the request will not be processed.
         context.set("scope", check request.getHeader("scope"));
 
         // Finally, the context object has to be returned.
@@ -37,8 +37,7 @@ service /graphql on new graphql:Listener(4000) {
 
     // If the context is needed, it should be defined as the first parameter of the resolver
     // function.
-    resource function get profile(graphql:Context context)
-    returns Person|error {
+    resource function get profile(graphql:Context context) returns Person|error {
 
         // Retrieve the `scope` attribute from the context. This will return a `graphql:Error` if
         // the `scope` is not found in the context.
@@ -89,7 +88,7 @@ public service class Person {
             }
         }
 
-        // Return an `error` if the required scope is not found.
+        // Return an `error` if the scope mismatched.
         return error("Permission denied");
     }
 }

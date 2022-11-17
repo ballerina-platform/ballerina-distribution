@@ -4,8 +4,8 @@ import ballerina/graphql;
 // field named `profile` and it is the first segment of the hierarchical path in this service. The
 // type of this field will also be `profile`. (For hierarchical paths, the field name and the type
 // name will be the same). The `profile` type has two fields: `quote` and `name`. The type of the
-// `quote` field is `String` and the type of the `name` field is `name`. The `name` type has two
-// fields:`first` and the `last`. Both of the fields are of type `String`.
+// `quote` field is `String!` and the type of the `name` field is `name!`. The `name` type has two
+// fields:`first` and the `last`. Both of the fields are of type `String!`.
 service /graphql on new graphql:Listener(4000) {
 
     // This resource represents the `quote` field under the `profile` object.
