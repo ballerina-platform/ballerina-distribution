@@ -1958,7 +1958,7 @@
         ]
     },
     {
-        "title": "WebSockets",
+        "title": "WebSocket client",
         "column": 1,
         "category": "Network libraries",
         "samples": [
@@ -1971,13 +1971,20 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - Retry",
+                "name": "Retry",
                 "url": "websocket-retry-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
-            },
+            }
+        ]
+    },
+    {
+        "title": "WebSocket service",
+        "column": 1,
+        "category": "Network libraries",
+        "samples": [
             {
                 "name": "Service",
                 "url": "websocket-basic-sample",
@@ -1990,12 +1997,12 @@
         ]
     },
     {
-        "title": "WebSocket security",
+        "title": "WebSocket service security",
         "column": 1,
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Service - SSL/TLS",
+                "name": "SSL/TLS",
                 "url": "websocket-service-ssl-tls",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2003,7 +2010,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - Mutual SSL",
+                "name": "Mutual SSL",
                 "url": "websocket-service-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2011,7 +2018,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - Basic Auth File user store",
+                "name": "Basic Auth File user store",
                 "url": "websocket-service-basic-auth-file-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2019,7 +2026,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - Basic Auth LDAP user store",
+                "name": "Basic Auth LDAP user store",
                 "url": "websocket-service-basic-auth-ldap-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2027,7 +2034,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - JWT Auth",
+                "name": "JWT Auth",
                 "url": "websocket-service-jwt-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2035,15 +2042,22 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - OAuth2",
+                "name": "OAuth2",
                 "url": "websocket-service-oauth2",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
-            },
+            }
+        ]
+    },
+    {
+        "title": "WebSocket client security",
+        "column": 1,
+        "category": "Network libraries",
+        "samples": [
             {
-                "name": "Client - SSL/TLS",
+                "name": "SSL/TLS",
                 "url": "websocket-client-ssl-tls",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2051,7 +2065,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - Mutual SSL",
+                "name": "Mutual SSL",
                 "url": "websocket-client-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2059,7 +2073,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - Basic Auth",
+                "name": "Basic Auth",
                 "url": "websocket-client-basic-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2067,7 +2081,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - Bearer Token Auth",
+                "name": "Bearer Token Auth",
                 "url": "websocket-client-bearer-token-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2075,7 +2089,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - self signed JWT Auth",
+                "name": "Self signed JWT Auth",
                 "url": "websocket-client-self-signed-jwt-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2083,7 +2097,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 Client Credentials grant type",
+                "name": "OAuth2 Client Credentials grant type",
                 "url": "websocket-client-oauth2-client-cred-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2091,7 +2105,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 Password grant type",
+                "name": "OAuth2 Password grant type",
                 "url": "websocket-client-oauth2-password-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2099,7 +2113,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 Refresh Token grant type",
+                "name": "OAuth2 Refresh Token grant type",
                 "url": "websocket-client-oauth2-refresh-token-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2107,7 +2121,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 JWT Bearer grant type",
+                "name": "OAuth2 JWT Bearer grant type",
                 "url": "websocket-client-oauth2-jwt-bearer-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
