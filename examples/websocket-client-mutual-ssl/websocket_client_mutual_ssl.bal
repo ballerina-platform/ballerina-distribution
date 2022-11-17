@@ -13,11 +13,11 @@ websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
             keyFile: "../resource/path/to/private.key"
         },
         cert: "../resource/path/to/public.crt",
+        // `protocol` and `ciphers` can be optionally configured.
         protocol: {
             name: http:TLS
         },
         ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
-
     }
 );
 

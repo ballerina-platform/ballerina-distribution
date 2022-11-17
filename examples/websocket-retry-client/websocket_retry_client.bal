@@ -3,7 +3,7 @@ import ballerina/websocket;
 
 public function main() returns error? {
     websocket:Client wsClient = check new("ws://localhost:9090/foo", {
-        // Set the maximum retry count to 20 so that it will try 20 times with an interval of
+        // Set the maximum retry count to 20 so that it will try 20 times with the default interval of
         // 1 second in between the retry attempts.
         retryConfig: { maxCount: 20 }
     });
