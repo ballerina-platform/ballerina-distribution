@@ -1,6 +1,8 @@
-# Input types
+# Input objects
 
-GraphQL resources can have record types as input parameters, which will be mapped to `INPUT_OBJECT`s in the generated GraphQL schema.
+GraphQL resources can have record types as input parameters, which will be mapped to `INPUT_OBJECT`s in the generated GraphQL schema. According to the GraphQL specification, an input type cannot be used as an output type. Therefore, using the same type as an input and an output will result is a compilation error.
+
+This example shows a GraphQL endpoint, which has a field `addPost` with an input of type `NewPost` in the root `Mutation` type.
 
 For more information on the underlying package, see the [GraphQL package](https://lib.ballerina.io/ballerina/graphql/latest/).
 
@@ -10,6 +12,16 @@ Run the service by executing the following command.
 
 ::: out graphql_input_objects.server.out :::
 
-Invoke the service as follows.
+Send the following document to the GraphQL endpoint to test the service.
+
+```graphql
+mutation {
+    addPost(newPost: { author: "Sam", content: "Hello" }) {
+        id
+    }
+}
+```
+
+To send the document, use the following cURL command in a separate terminal.
 
 ::: out graphql_input_objects.client.out :::

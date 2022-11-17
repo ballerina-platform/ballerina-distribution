@@ -22,12 +22,12 @@ type Person record {
 };
 
 public function main() returns error? {
-    // Creates a new client with the backend URL.   
+    // Creates a new client with the backend URL.
     graphql:Client graphqlClient = check new ("http://localhost:4000/graphql");
 
     string document = "{ profile { name, age } }";
 
-    // The `execute()` remote function of graphql:Client takes a GraphQL document 
+    // The `execute()` remote function of graphql:Client takes a GraphQL document
     // as the required argument and sends a request to the specified backend URL
     // seeking a response. On the retrieval of a successful response, the client
     // tries to perform data binding for the user-defined data type. On failure to

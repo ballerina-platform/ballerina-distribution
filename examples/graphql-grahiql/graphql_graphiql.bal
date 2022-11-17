@@ -4,7 +4,8 @@ import ballerina/graphql;
 @graphql:ServiceConfig {
     graphiql: {
         enabled: true,
-        path: "/graphiql"
+        // Path is optional, if not provided, it will be dafulted to `/graphiql`.
+        path: "/testing"
     }
 }
 service /graphql on new graphql:Listener(4000) {

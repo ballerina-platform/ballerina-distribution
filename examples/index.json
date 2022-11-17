@@ -1813,14 +1813,6 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Input objects",
-                "url": "graphql-input-objects",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
                 "name": "Mutations",
                 "url": "graphql-mutations",
                 "verifyBuild": true,
@@ -1831,6 +1823,14 @@
             {
                 "name": "Subscriptions",
                 "url": "graphql-subscriptions",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Input objects",
+                "url": "graphql-input-objects",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -1892,6 +1892,14 @@
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "Hierarchical resource paths",
+                "url": "graphql-hierarchical-resource-paths",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1911,7 +1919,7 @@
         ]
     },
     {
-        "title": "GraphQL security",
+        "title": "GraphQL service security",
         "column": 1,
         "category": "Network libraries",
         "samples": [

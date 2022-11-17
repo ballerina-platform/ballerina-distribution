@@ -18,17 +18,17 @@ service /graphql on new graphql:Listener(4000) {
 
     // Query resolver to retrive all the posts
     resource function get posts() returns Post[] {
-        return self.posts.cloneReadOnly();
+        return self.posts;
     }
 }
 
-// Define the `NewPost` record type to use as an input object
+// Define the `NewPost` record type to use as an input object.
 public type NewPost record {|
     string author;
     string content;
 |};
 
-// Define the `Post` record type to use as an output object
+// Define the `Post` record type to use as an output object.
 public type Post record {|
     *NewPost;
     int id;
