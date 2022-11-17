@@ -1,3 +1,0 @@
-$ bal build client
-
-$ bal run client/target/bin/client.jar

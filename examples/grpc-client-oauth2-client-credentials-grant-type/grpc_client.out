@@ -1,1 +1,0 @@
-$ bal grpc --input grpc_client.proto --output stubs

@@ -2202,22 +2202,13 @@
         ]
     },
     {
-        "title": "gRPC",
+        "title": "gRPC service",
         "column": 2,
         "category": "Network libraries",
         "samples": [
             {
                 "name": "Simple RPC",
-                "url": "grpc-simple",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disableVerificationReason": "Has different naming convention",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Simple RPC with headers",
-                "url": "grpc-simple-with-headers",
+                "url": "grpc-service-simple",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Has different naming convention",
@@ -2226,7 +2217,7 @@
             },
             {
                 "name": "Server streaming RPC",
-                "url": "grpc-server-streaming",
+                "url": "grpc-service-server-streaming",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Has different naming convention",
@@ -2235,7 +2226,7 @@
             },
             {
                 "name": "Client streaming RPC",
-                "url": "grpc-client-streaming",
+                "url": "grpc-service-client-streaming",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Has different naming convention",
@@ -2244,7 +2235,7 @@
             },
             {
                 "name": "Bidirectional streaming RPC",
-                "url": "grpc-bidirectional-streaming",
+                "url": "grpc-service-bidirectional-streaming",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Has different naming convention",
@@ -2252,8 +2243,8 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Proto to Ballerina",
-                "url": "proto-to-ballerina",
+                "name": "Send/Receive headers",
+                "url": "grpc-service-headers",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Has different naming convention",
@@ -2263,7 +2254,59 @@
         ]
     },
     {
-        "title": "gRPC security",
+        "title": "gRPC client",
+        "column": 2,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Simple RPC",
+                "url": "grpc-client-simple",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Server streaming RPC",
+                "url": "grpc-client-server-streaming",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Client streaming RPC",
+                "url": "grpc-client-client-streaming",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Bidirectional streaming RPC",
+                "url": "grpc-client-bidirectional-streaming",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Send/Receive headers",
+                "url": "grpc-client-headers",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "gRPC service security",
         "column": 2,
         "category": "Network libraries",
         "samples": [
@@ -2314,7 +2357,14 @@
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
-            },
+            }
+        ]
+    },
+    {
+        "title": "gRPC client security",
+        "column": 2,
+        "category": "Network libraries",
+        "samples": [
             {
                 "name": "Client - SSL/TLS",
                 "url": "grpc-client-ssl-tls",
