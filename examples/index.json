@@ -2737,7 +2737,7 @@
         "samples": [
             {
                 "name": "Receive email",
-                "url": "receive-email-using-listener",
+                "url": "receive-email-using-service",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
