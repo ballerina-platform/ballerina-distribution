@@ -1,4 +1,4 @@
-# WebSocket client - self signed JWT Auth
+# WebSocket client - Self signed JWT Auth
 
 A client, which is secured with self-signed JWT can be used to connect to a secured service.
 
