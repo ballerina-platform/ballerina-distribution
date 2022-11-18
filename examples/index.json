@@ -2582,7 +2582,7 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Consumer service",
+                "name": "Service",
                 "url": "kafka-service",
                 "verifyBuild": false,
                 "verifyOutput": false,
