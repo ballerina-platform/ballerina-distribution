@@ -1996,6 +1996,22 @@
         ]
     },
     {
+        "title": "WebSocket service",
+        "column": 1,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Service",
+                "url": "websocket-basic-sample",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Service cannot be stopped",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
         "title": "WebSocket client",
         "column": 1,
         "category": "Network libraries",
@@ -2013,22 +2029,6 @@
                 "url": "websocket-retry-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            }
-        ]
-    },
-    {
-        "title": "WebSocket service",
-        "column": 1,
-        "category": "Network libraries",
-        "samples": [
-            {
-                "name": "Service",
-                "url": "websocket-basic-sample",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disableVerificationReason": "Service cannot be stopped",
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
@@ -2714,20 +2714,20 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Client",
-                "url": "tcp-client",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disableVerificationReason": "Service not present",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
                 "name": "Service",
                 "url": "tcp-listener",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Service cannot be stopped",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Client",
+                "url": "tcp-client",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Service not present",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -2748,6 +2748,15 @@
         "category": "Network libraries",
         "samples": [
             {
+                "name": "Service",
+                "url": "udp-listener",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Service cannot be stopped",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Connectionless client",
                 "url": "udp-client",
                 "verifyBuild": true,
@@ -2762,15 +2771,6 @@
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Service cannot be reached",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Service",
-                "url": "udp-listener",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disableVerificationReason": "Service cannot be stopped",
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
