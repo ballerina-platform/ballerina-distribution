@@ -19,7 +19,7 @@ kafka:ProducerConfiguration producerConfig = {
     securityProtocol: kafka:PROTOCOL_SASL_PLAINTEXT
 };
 
-public function main() {
+public function main() returns kafka:Error? {
     kafka:Producer messageProducer = check new (SASL_URL, producerConfig);
     kafka:Error? result = messageProducer->send({
         topic: "demo-security",

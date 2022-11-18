@@ -18,7 +18,7 @@ kafka:ProducerConfiguration producerConfig = {
     securityProtocol: kafka:PROTOCOL_SSL
 };
 
-public function main() {
+public function main() returns kafka:Error? {
     kafka:Producer messageProducer = check new (SSL_URL, producerConfig);
     kafka:Error? result = messageProducer->send({
         topic: "demo-security",
