@@ -1,4 +1,4 @@
-# Service - SSL/TLS
+# GraphQL service - SSL/TLS
 
 You can use the GraphQL listener to connect to or interact with an HTTPS client. Provide the `graphql:ListenerSecureSocket` configurations to the server to expose an HTTPS connection.
 

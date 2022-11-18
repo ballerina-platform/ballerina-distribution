@@ -1810,7 +1810,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Return record values",
+                "name": "Record as output object",
                 "url": "graphql-returning-record-values",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1818,7 +1818,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Return service objects",
+                "name": "Service as output object",
                 "url": "graphql-returning-service-objects",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1945,7 +1945,7 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Service - SSL/TLS",
+                "name": "SSL/TLS",
                 "url": "graphql-service-ssl-tls",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1953,7 +1953,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - Mutual SSL",
+                "name": "Mutual SSL",
                 "url": "graphql-service-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1961,7 +1961,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - Basic Auth file user store",
+                "name": "Basic Auth file user store",
                 "url": "graphql-service-basic-auth-file-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1969,7 +1969,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - Basic Auth LDAP user store",
+                "name": "Basic Auth LDAP user store",
                 "url": "graphql-service-basic-auth-ldap-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1977,7 +1977,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - JWT Auth",
+                "name": "JWT Auth",
                 "url": "graphql-service-jwt-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1985,7 +1985,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - OAuth2",
+                "name": "Auth2",
                 "url": "graphql-service-oauth2",
                 "verifyBuild": true,
                 "verifyOutput": false,

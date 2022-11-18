@@ -1,13 +1,13 @@
 import ballerina/graphql;
 
 // Define the `NewPost` record type to use as an input object.
-public type NewPost record {|
+type NewPost record {|
     string author;
     string content;
 |};
 
 // Define the `Post` record type to use as an output object.
-public type Post record {|
+type Post record {|
     *NewPost;
     int id;
 |};
