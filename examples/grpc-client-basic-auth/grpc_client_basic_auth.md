@@ -1,4 +1,4 @@
-# Client - Basic Auth
+# Basic auth client
 
 A client, which is secured with Basic Auth can be used to connect to a secured service.
 

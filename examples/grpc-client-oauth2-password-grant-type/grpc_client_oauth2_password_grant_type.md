@@ -1,4 +1,4 @@
-# Client - OAuth2 Password grant type
+# OAuth2 client - Password grant type 
 
 A client, which is secured with OAuth2 password grant type can be used to connect to a secured service.
 
