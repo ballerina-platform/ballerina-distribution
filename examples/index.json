@@ -2874,7 +2874,7 @@
         ]
     },
     {
-        "title": "MySQL",
+        "title": "MySQL client",
         "column": 3,
         "category": "Network libraries",
         "samples": [
@@ -2944,7 +2944,7 @@
         ]
     },
     {
-        "title": "JDBC",
+        "title": "JDBC client",
         "column": 3,
         "category": "Network libraries",
         "samples": [
