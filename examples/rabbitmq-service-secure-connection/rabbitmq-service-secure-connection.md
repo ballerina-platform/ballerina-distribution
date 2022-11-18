@@ -1,4 +1,4 @@
-# Secured connection
+# RabbitMQ Service - SSL/TLS
 
 The underlying connection of the consumer service is secured with TLS/SSL.
 

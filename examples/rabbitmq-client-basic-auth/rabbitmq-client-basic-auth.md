@@ -1,4 +1,4 @@
-# Secured connection
+# RabbitMQ Client - Basic Authentication
 
 The underlying connection of the producer is secured with basic authentication.
 
