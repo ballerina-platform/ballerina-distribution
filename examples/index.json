@@ -2919,6 +2919,22 @@
         ]
     },
     {
+        "title": "Email service",
+        "column": 3,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Receive email",
+                "url": "receive-email-using-service",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
         "title": "Email client",
         "column": 3,
         "category": "Network libraries",
@@ -2935,22 +2951,6 @@
             {
                 "name": "Receive email",
                 "url": "receive-email-using-client",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disableVerificationReason": "Needs prerequisite condition",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            }
-        ]
-    },
-    {
-        "title": "Email service",
-        "column": 3,
-        "category": "Network libraries",
-        "samples": [
-            {
-                "name": "Receive email",
-                "url": "receive-email-using-service",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
