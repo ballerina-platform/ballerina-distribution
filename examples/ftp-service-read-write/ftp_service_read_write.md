@@ -4,8 +4,8 @@ The FTP service is used to receive file/directory changes that occur in a remote
 
 For more information on the underlying module, see the [`ftp` module](https://lib.ballerina.io/ballerina/ftp/latest/).
 
-::: code ftp_listener.bal :::
+::: code ftp_service_read_write.bal :::
 
-Paths of the newly-added and newly-deleted files/directories during the latest polling will be printed for each of the polled events.
+Each newly added file in the SFTP server will be appended with the content in the appending file.
 
-::: out ftp_listener.out :::
+::: out ftp_service_read_write.out :::
