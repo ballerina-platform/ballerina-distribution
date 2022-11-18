@@ -588,7 +588,6 @@
                 "verifyOutput": true,
                 "isLearnByExample": true
             }
-
         ]
     },
     {
@@ -2630,13 +2629,29 @@
         ]
     },
     {
-        "title": "Kafka",
+        "title": "Kafka service",
+        "column": 2,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Service",
+                "url": "kafka-service",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "Kafka client",
         "column": 2,
         "category": "Network libraries",
         "samples": [
             {
                 "name": "Producer",
-                "url": "kafka-producer",
+                "url": "kafka-client-producer",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
@@ -2644,8 +2659,8 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Consumer service",
-                "url": "kafka-consumer-service",
+                "name": "Consumer - Poll Payload",
+                "url": "kafka-client-consumer-poll-payload",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
@@ -2653,8 +2668,24 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Consumer client - Poll Payload",
-                "url": "kafka-consumer-client-poll-payload",
+                "name": "Consumer - Poll ConsumerRecord",
+                "url": "kafka-client-consumer-poll-consumer-record",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "Kafka secured service",
+        "column": 2,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "SASL Authentication",
+                "url": "kafka-service-sasl",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
@@ -2662,8 +2693,24 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Consumer client - Poll ConsumerRecord",
-                "url": "kafka-consumer-client-poll-consumer-record",
+                "name": "SSL",
+                "url": "kafka-service-ssl",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "Kafka secured client",
+        "column": 2,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Producer SASL Authentication",
+                "url": "kafka-client-producer-sasl",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
@@ -2671,8 +2718,8 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Transactional producer",
-                "url": "kafka-producer-transactional",
+                "name": "Consumer SASL Authentication",
+                "url": "kafka-client-consumer-sasl",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
@@ -2680,8 +2727,8 @@
                 "isLearnByExample": false
             },
             {
-                "name": "SASL authentication - consumer",
-                "url": "kafka-authentication-sasl-plain-consumer",
+                "name": "Producer SSL",
+                "url": "kafka-client-producer-ssl",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
@@ -2689,8 +2736,8 @@
                 "isLearnByExample": false
             },
             {
-                "name": "SASL authentication - producer",
-                "url": "kafka-authentication-sasl-plain-producer",
+                "name": "Consumer SSL",
+                "url": "kafka-client-consumer-ssl",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",

@@ -1,0 +1,2 @@
+$ bal run kafka_client_producer_sasl.bal
+Message published successfully.
