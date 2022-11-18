@@ -33,11 +33,11 @@ listener grpc:Listener securedEP = new (9090,
         }
     ]
 }
-@grpc:ServiceDescriptor {
-    descriptor: GRPC_SERVICE_DESC
+@grpc:Descriptor {
+    value: GRPC_SIMPLE_DESC
 }
 service "HelloWorld" on securedEP {
-    remote function hello() returns string {
-        return "Hello, World!";
+    remote function hello(string request) returns string {
+        return "Hello " + request;
     }
 }

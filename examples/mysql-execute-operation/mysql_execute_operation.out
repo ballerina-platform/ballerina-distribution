@@ -1,6 +1,3 @@
-# Create a Ballerina project.
-# Copy the example to the project.
-# Execute the command below to build and run the project.
 $ bal run
 
 Updated Row count: 1
