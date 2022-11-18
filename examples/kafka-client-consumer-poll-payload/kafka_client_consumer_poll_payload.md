@@ -4,6 +4,6 @@ This shows how to use a `kafka:Consumer` as a simple payload consumer for the in
 
 For more information on the underlying module, see the [`kafka` module](https://lib.ballerina.io/ballerinax/kafka/latest).
 
-::: code kafka_consumer_client_poll_payload.bal :::
+::: code kafka_client_consumer_poll_payload.bal :::
 
-::: out kafka_consumer_client_poll_payload.out :::
+::: out kafka_client_consumer_poll_payload.out :::
