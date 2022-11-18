@@ -29,13 +29,6 @@ public function main() returns error? {
         io:println("File content received: " + checkpanic strings:fromBytes(fileContent));
     });
 
-    // Add a new file to the given file location. In error cases, 
-    // an error is returned. The local file is provided as a stream of
-    // `io:Block` in which 1024 is the block size.
-    stream<io:Block, io:Error?> bStream
-        = check io:fileReadBlocksAsStream("/local/logFile.txt", 1024);
-    check clientEp->put("/server", bStream);
-
-    // Closes the file stream to finish the `get` and `put` operations.    
+    // Closes the file stream to finish the `get` operation.
     check fileStream.close();
 }
