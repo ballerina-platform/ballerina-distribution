@@ -1,13 +1,5 @@
 import ballerina/graphql;
 
-service /graphql on new graphql:Listener(4000) {
-
-    // Returning the `Animal` type from a GraphQL resolver will identify it as an interface.
-    resource function get animals() returns Animal[] {
-        return [new Leopard(), new Elephant()];
-    }
-}
-
 // Define the `Animal` interface using a `distinct` `service` object.
 public type Animal distinct service object {
 
@@ -58,5 +50,13 @@ public distinct service class Elephant {
 
     resource function get call() returns string {
         return "Trumpet";
+    }
+}
+
+service /graphql on new graphql:Listener(4000) {
+
+    // Returning the `Animal` type from a GraphQL resolver will identify it as an interface.
+    resource function get animals() returns Animal[] {
+        return [new Leopard(), new Elephant()];
     }
 }

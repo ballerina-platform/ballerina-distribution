@@ -18,4 +18,6 @@ Send the following document with an introspection query to test how the document
 
 To send the document, use the following cURL command in a separate terminal.
 
+>**Info:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client/).
+
 ::: out graphql_documentation.client.out :::

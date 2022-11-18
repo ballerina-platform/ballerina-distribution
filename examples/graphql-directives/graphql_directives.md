@@ -25,6 +25,8 @@ Send the following document containing the `@skip` directive to test it.
 
 To send the document, use the following cURL command in a separate terminal.
 
+>**Info:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client/).
+
 ::: out graphql_directives.1.client.out :::
 
 Then, send the following document containing the `@include` directive.
