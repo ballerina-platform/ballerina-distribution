@@ -1,4 +1,4 @@
-# Simple RPC service
+# gRPC service - Simple RPC
 
 The gRPC Server Connector exposes the gRPC service over HTTP2. In a simple RPC call, a client sends a request to a remote service and waits for the response.
 

@@ -1,4 +1,4 @@
-# OAuth2 client - Client credentials grant type 
+# gRPC client - OAuth2 client credentials grant type 
 
 A client, which is secured with OAuth2 client credentials grant type can be used to connect to a secured service.
 
