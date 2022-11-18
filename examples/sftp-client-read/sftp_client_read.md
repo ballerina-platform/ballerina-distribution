@@ -1,4 +1,4 @@
-# Read
+# Client Read
 
 The SFTP client is used to perform CRUD operation on remote files/directories using the SFTP protocol. This sample includes getting a file content with default configurations using the default port number.
 
