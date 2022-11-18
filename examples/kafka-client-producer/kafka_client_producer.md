@@ -1,4 +1,4 @@
-# Producer
+# Kafka producer
 
 This shows how to send messages to a Kafka topic using a `kafka:Producer` client. For this to work properly, an active Kafka broker should be present.
 

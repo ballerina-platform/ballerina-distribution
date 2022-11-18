@@ -1,4 +1,4 @@
-# Consumer service
+# Kafka service
 
 Here, a Kafka consumer is used as a listener to a service with automatic offset commits. For this to work properly, an active Kafka broker should be present.
 

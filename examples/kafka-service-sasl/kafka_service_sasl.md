@@ -1,4 +1,4 @@
-# Consumer service
+# Kafka service - SASL authentication
 
 This shows how the SASL/PLAIN authentication is used in the `kafka:Listener`. For this to work properly, an active Kafka broker should be present, and it should be configured to use the SASL/PLAIN authentication mechanism.
 

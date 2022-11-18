@@ -1,4 +1,4 @@
-# Consumer service - SSL
+# Kafka service - SSL
 
 This shows how the SSL encryption is done in the `kafka:Listener`. For this to work properly, an active Kafka broker should be present, and it should be configured to use SSL.
 
