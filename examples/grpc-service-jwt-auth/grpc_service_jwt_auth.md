@@ -1,4 +1,4 @@
-# JWT auth service
+# gRPC service - JWT auth
 
 A gRPC service/resource can be secured with JWT and by enforcing authorization optionally. Then, it validates the JWT sent in the `Authorization` metadata against the provided configurations.
 
