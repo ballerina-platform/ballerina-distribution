@@ -17,7 +17,7 @@ function initialize() returns sql:Error? {
     _ = check mysqlClient->execute(`CREATE PROCEDURE STUDENT.GetCount
         (INOUT pID INT, OUT totalCount INT) BEGIN SELECT age INTO pID FROM
         Student WHERE id = pID; SELECT COUNT(*) INTO totalCount FROM Student;
-        END`);
+        SELECT * FROM STUDENT; END`);
     // Inserts the necessary data.
     _ = check mysqlClient->execute(`INSERT INTO STUDENT.Student(name, age)
                                         VALUES ('George', 24)`);
