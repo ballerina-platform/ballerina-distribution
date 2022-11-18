@@ -4,8 +4,8 @@ The email listener is used to receive (with POP3 or IMAP4) emails using the SSL 
 
 For more information on the underlying module, see the [`email` module](https://lib.ballerina.io/ballerina/email/latest/).
 
-::: code receive-email-using-service.bal :::
+::: code receive_email_using_service.bal :::
 
 Run the email service by executing the following command.
 
-::: out receive-email-using-service.out :::
+::: out receive_email_using_service.out :::
