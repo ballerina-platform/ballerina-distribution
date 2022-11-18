@@ -2491,49 +2491,6 @@
         ]
     },
     {
-        "title": "NATS Client",
-        "column": 2,
-        "category": "Network libraries",
-        "samples": [
-            {
-                "name": "Publish",
-                "url": "nats-basic-pub",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Request",
-                "url": "nats-basic-request",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Basic Authentication",
-                "url": "nats-client-basic-auth",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "SSL/TLS",
-                "url": "nats-client-secure-connection",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            }
-        ]
-    },
-    {
         "title": "NATS Service",
         "column": 2,
         "category": "Network libraries",
@@ -2555,9 +2512,59 @@
                 "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "NATS Client",
+        "column": 2,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Publish",
+                "url": "nats-basic-pub",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
-                "name": "Basic Authentication",
+                "name": "Request",
+                "url": "nats-basic-request",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "NATS security",
+        "column": 2,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "NATS client - Basic authentication",
+                "url": "nats-client-basic-auth",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "NATS client - SSL/TLS",
+                "url": "nats-client-secure-connection",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "NATS Service - Basic authentication",
                 "url": "nats-service-basic-auth",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2566,7 +2573,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "SSL/TLS",
+                "name": "NATS Service - SSL/TLS",
                 "url": "nats-service-secure-connection",
                 "verifyBuild": false,
                 "verifyOutput": false,

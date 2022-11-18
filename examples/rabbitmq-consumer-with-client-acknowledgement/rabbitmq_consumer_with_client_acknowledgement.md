@@ -1,4 +1,4 @@
-# RabbitMQ Service with Acknowledgement
+# RabbitMQ Service - Consumer with Acknowledgement
 
 The messages are consumed from an existing queue using the Ballerina RabbitMQ message listener. The received messages are acknowledged manually.
 
