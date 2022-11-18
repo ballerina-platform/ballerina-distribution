@@ -1,7 +1,7 @@
 import ballerina/io;
 import ballerinax/kafka;
 
-// Define the relevant SASL URL of the configured Kafka server.
+// Define the relevant SSL URL of the configured Kafka server.
 const SSL_URL = "localhost:9094";
 
 kafka:ProducerConfiguration producerConfig = {
@@ -13,13 +13,13 @@ kafka:ProducerConfiguration producerConfig = {
             // Provide the relevant security protocol.
             name: kafka:SSL
         }
-    };
+    },
     // Provide the type of the security protocol to use in the broker connection.
     securityProtocol: kafka:PROTOCOL_SSL
 };
 
 public function main() {
-    kafka:Producer messageProducer = check new (SASL_URL, producerConfig);
+    kafka:Producer messageProducer = check new (SSL_URL, producerConfig);
     kafka:Error? result = messageProducer->send({
         topic: "demo-security",
         value: "Hello, World!"

@@ -2,7 +2,7 @@ import ballerinax/kafka;
 import ballerina/log;
 
 // Define the relevant SASL URL of the configured Kafka server.
-const string SASL_URL = "localhost:9093";
+const SASL_URL = "localhost:9093";
 
 kafka:ConsumerConfiguration consumerConfigs = {
     groupId: "group-id",

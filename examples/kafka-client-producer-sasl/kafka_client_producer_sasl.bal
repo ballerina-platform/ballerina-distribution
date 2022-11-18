@@ -2,7 +2,7 @@ import ballerina/io;
 import ballerinax/kafka;
 
 // Define the relevant SASL URL of the configured Kafka server.
-const string SASL_URL = "localhost:9093";
+const SASL_URL = "localhost:9093";
 
 kafka:ProducerConfiguration producerConfig = {
     // Provide the relevant authentication configurations to authenticate the producer by `kafka:AuthenticationConfiguration`.
