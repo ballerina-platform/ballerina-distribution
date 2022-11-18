@@ -1,4 +1,4 @@
-# Secured connection
+# RabbitMQ Client - Consumer
 
 The underlying connections of the consumer and the producer are secured with TLS/SSL and Basic Auth.
 

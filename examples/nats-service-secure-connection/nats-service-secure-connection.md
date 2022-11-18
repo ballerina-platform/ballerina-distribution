@@ -1,4 +1,4 @@
-# Secured connection
+# NATS Service - SSL/TLS
 
 In this example, the underlying connections of the subscriber and the publisher are secured with TLS/SSL and Basic Auth.
 

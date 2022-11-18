@@ -1,4 +1,4 @@
-# Secured connection
+# RabbitMQ Client - SSL/TLS
 
 The underlying connection of the producer is secured with TLS/SSL.
 

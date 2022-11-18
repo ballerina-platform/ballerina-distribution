@@ -1,4 +1,4 @@
-# Secured connection
+# NATS Client - Basic Authentication
 
 In this example, the underlying connections of the subscriber and the publisher are secured with Basic Auth.
 

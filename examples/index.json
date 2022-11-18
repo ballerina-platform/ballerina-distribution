@@ -2499,49 +2499,6 @@
         ]
     },
     {
-        "title": "NATS Client",
-        "column": 2,
-        "category": "Network libraries",
-        "samples": [
-            {
-                "name": "Publish",
-                "url": "nats-basic-pub",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Request",
-                "url": "nats-basic-request",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Basic Authentication",
-                "url": "nats-client-basic-auth",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "SSL/TLS",
-                "url": "nats-client-secure-connection",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            }
-        ]
-    },
-    {
         "title": "NATS Service",
         "column": 2,
         "category": "Network libraries",
@@ -2563,9 +2520,59 @@
                 "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "NATS Client",
+        "column": 2,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Publish",
+                "url": "nats-basic-pub",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
-                "name": "Basic Authentication",
+                "name": "Request",
+                "url": "nats-basic-request",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "NATS security",
+        "column": 2,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "NATS client - Basic authentication",
+                "url": "nats-client-basic-auth",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "NATS client - SSL/TLS",
+                "url": "nats-client-secure-connection",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "NATS Service - Basic authentication",
                 "url": "nats-service-basic-auth",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2574,76 +2581,8 @@
                 "isLearnByExample": false
             },
             {
-                "name": "SSL/TLS",
+                "name": "NATS Service - SSL/TLS",
                 "url": "nats-service-secure-connection",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            }
-        ]
-    },
-    {
-        "title": "STAN",
-        "column": 2,
-        "category": "Network libraries",
-        "samples": [
-            {
-                "name": "Publish/subscribe",
-                "url": "nats-streaming-pub-sub",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Queue groups",
-                "url": "nats-streaming-queue-group",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Durable subscriptions",
-                "url": "nats-streaming-durable-subscriptions",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Historical message replay",
-                "url": "nats-streaming-start-position",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Secured connection",
-                "url": "nats-streaming-secure-connection",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            }
-        ]
-    },
-    {
-        "title": "Kafka service",
-        "column": 2,
-        "category": "Network libraries",
-        "samples": [
-            {
-                "name": "Service",
-                "url": "kafka-service",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
@@ -2755,59 +2694,7 @@
         ]
     },
     {
-        "title": "RabbitMQ Client",
-        "column": 3,
-        "category": "Network libraries",
-        "samples": [
-            {
-                "name": "Producer",
-                "url": "rabbitmq-producer",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Consumer",
-                "url": "rabbitmq-sync-consumer",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Transactional producer",
-                "url": "rabbitmq-transaction-producer",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Basic authentication",
-                "url": "rabbitmq-client-basic-auth",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "SSL/TLS",
-                "url": "rabbitmq-client-secure-connection",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            }
-        ]
-    },
-    {
-        "title": "RabbitMQ Service",
+        "title": "RabbitMQ service",
         "column": 3,
         "category": "Network libraries",
         "samples": [
@@ -2837,9 +2724,68 @@
                 "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "RabbitMQ client",
+        "column": 3,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Producer",
+                "url": "rabbitmq-producer",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
-                "name": "Basic authentication",
+                "name": "Consumer",
+                "url": "rabbitmq-sync-consumer",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Transactional producer",
+                "url": "rabbitmq-transaction-producer",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "RabbitMQ security",
+        "column": 3,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Client - Basic authentication",
+                "url": "rabbitmq-client-basic-auth",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Client - SSL/TLS",
+                "url": "rabbitmq-client-secure-connection",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Service - Basic authentication",
                 "url": "rabbitmq-service-basic-auth",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2848,7 +2794,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "SSL/TLS",
+                "name": "Service - SSL/TLS",
                 "url": "rabbitmq-service-secure-connection",
                 "verifyBuild": false,
                 "verifyOutput": false,

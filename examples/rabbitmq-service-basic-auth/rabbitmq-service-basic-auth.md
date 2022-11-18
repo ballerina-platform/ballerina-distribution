@@ -1,4 +1,4 @@
-# Secured connection
+# RabbitMQ Service - Basic Authentication
 
 The underlying connections of the consumer service is secured with basic authentication.
 

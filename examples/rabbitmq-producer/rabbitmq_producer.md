@@ -1,4 +1,4 @@
-# Producer
+# RabbitMQ Client - Producer
 
 Producing in RabbitMQ means nothing more than sending. In this example, the producer is sending a single message to the queue MyQueue. 
 
