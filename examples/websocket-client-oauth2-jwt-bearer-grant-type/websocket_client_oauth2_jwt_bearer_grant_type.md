@@ -1,4 +1,4 @@
-# OAuth2 client - JWT Bearer grant type
+# WebSocket client - OAuth2 JWT Bearer grant type
 
 A client, which is secured with an OAuth2 JWT bearer grant type can be used to connect to a secured service.
 

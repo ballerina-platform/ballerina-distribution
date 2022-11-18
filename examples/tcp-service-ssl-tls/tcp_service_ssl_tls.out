@@ -1,3 +1,3 @@
-$ bal run tcp_transport_security_service.bal
+$ bal run tcp_service_ssl_tls.bal
 Client connected on server port: 5639
 Received message: Hello, World!

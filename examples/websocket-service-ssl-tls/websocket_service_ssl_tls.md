@@ -1,4 +1,4 @@
-# SSL/TLS service
+# WebSocket service - SSL/TLS
 
 You can use the WebSocket listener to connect to or interact with an WebSocket client. Provide the `websocket:ListenerSecureSocket` configurations to the server to expose an WSS connection.
 

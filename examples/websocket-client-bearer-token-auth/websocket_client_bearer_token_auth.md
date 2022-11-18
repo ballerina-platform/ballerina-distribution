@@ -1,4 +1,4 @@
-# Bearer Token Auth client
+# WebSocket client - Bearer Token Auth
 
 A client, which is secured with Bearer token auth can be used to connect to a secured service.
 
