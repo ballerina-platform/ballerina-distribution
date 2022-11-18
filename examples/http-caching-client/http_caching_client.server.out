@@ -1,5 +1,3 @@
-# The two services have to be run separately to observe the following output.
-# For clarity, only the relevant parts of the HTTP trace logs have been included here.
 $ bal run http_caching_client.bal -- -Cballerina.http.traceLogConsole=true
 
 # The caching proxy receives a request from a client.

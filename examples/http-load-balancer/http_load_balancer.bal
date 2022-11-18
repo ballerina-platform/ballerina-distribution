@@ -4,7 +4,7 @@ import ballerina/http;
 listener http:Listener backendEP = check new (8080);
 
 // Define the load balance client endpoint to call the backend services.
-final http:LoadBalanceClient lbBackendEP = check new ({
+http:LoadBalanceClient lbBackendEP = check new ({
         // Define the set of HTTP clients that need to be load balanced.
         targets: [
             {url: "http://localhost:8080/mock1"},

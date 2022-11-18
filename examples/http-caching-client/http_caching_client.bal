@@ -10,7 +10,7 @@ import ballerina/http;
 // the `cacheConfig`. Currently, there are only 2 policies:
 // `CACHE_CONTROL_AND_VALIDATORS` (the default policy) and `RFC_7234`.
 
-final http:Client cachingEP = check new ("http://localhost:8080",
+http:Client cachingEP = check new ("http://localhost:8080",
     cache = {enabled: true, isShared: true});
 
 service / on new http:Listener(9090) {

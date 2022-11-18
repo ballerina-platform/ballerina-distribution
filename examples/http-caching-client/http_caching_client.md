@@ -9,6 +9,9 @@ and [specification](https://ballerina.io/spec/http/#2412-caching).
 
 Run the service by executing the following command.
 
+(The two services have to be run separately to observe the following output.
+For clarity, only the relevant parts of the HTTP trace logs have been included here.)
+
 ::: out http_caching_client.server.out :::
 
 Invoke the service as follows.

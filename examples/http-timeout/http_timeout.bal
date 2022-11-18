@@ -1,7 +1,7 @@
 import ballerina/http;
 import ballerina/lang.runtime;
 
-final http:Client backendClientEP = check new ("http://localhost:8080", {
+http:Client backendClientEP = check new ("http://localhost:8080", {
     // Timeout configuration.
     timeout: 10
 });

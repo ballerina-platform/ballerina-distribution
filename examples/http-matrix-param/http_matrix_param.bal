@@ -1,6 +1,6 @@
 import ballerina/http;
 
-public type Params record {|
+type Params record {|
     string path;
     map<json> matrix;
 |};
