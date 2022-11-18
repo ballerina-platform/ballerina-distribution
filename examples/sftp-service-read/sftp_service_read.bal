@@ -21,7 +21,6 @@ listener ftp:Listener remoteServer = check new ({
     port: 22,
     path: "/home/in",
     pollingInterval: 2,
-    fileNamePattern: "(.*).txt"
 });
 
 // One or many services can listen to the SFTP listener for the
