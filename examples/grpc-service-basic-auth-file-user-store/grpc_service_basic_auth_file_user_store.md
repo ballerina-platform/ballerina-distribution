@@ -1,4 +1,4 @@
-# Basic auth service - File user store
+# gRPC service - Basic auth file user store
 
 A gRPC service/resource can be secured with Basic Auth and optionally by enforcing authorization. Then, it validates the Basic Auth token sent as the `Authorization` metadata against the provided configurations. This reads data from a file, which has a TOML format. This stores the usernames, passwords for authentication, and scopes for authorization.
 

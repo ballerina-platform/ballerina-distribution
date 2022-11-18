@@ -1,4 +1,4 @@
-# Bearer token auth client
+# gRPC client - Bearer token auth
 
 A client, which is secured with Bearer token auth can be used to connect to a secured service.
 

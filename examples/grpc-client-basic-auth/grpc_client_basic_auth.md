@@ -1,4 +1,4 @@
-# Basic auth client
+# gRPC client - Basic auth
 
 A client, which is secured with Basic Auth can be used to connect to a secured service.
 

@@ -1,4 +1,4 @@
-# OAuth2 service
+# gRPC service - OAuth2
 
 A gRPC service/resource can be secured with OAuth2 and by enforcing authorization optionally. Then, it validates the OAuth2 token sent in the `Authorization` metadata against the provided configurations. This calls the configured introspection endpoint to validate.
 

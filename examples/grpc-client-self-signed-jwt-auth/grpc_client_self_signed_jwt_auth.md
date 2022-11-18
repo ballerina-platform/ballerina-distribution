@@ -1,4 +1,4 @@
-# Self-signed JWT auth client
+# gRPC client - Self signed JWT auth
 
 A client, which is secured with self-signed JWT can be used to connect to a secured service.
 

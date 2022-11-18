@@ -1,4 +1,4 @@
-# Basic auth service - LDAP user store
+# gRPC service - Basic auth LDAP user store
 
 A gRPC service/resource can be secured with Basic Auth and by enforcing authorization optionally. Then, it validates the Basic Auth token sent in the `Authorization` metadata against the provided configurations. This reads data from the configured LDAP. This stores usernames, passwords for authentication, and scopes for authorization.
 
