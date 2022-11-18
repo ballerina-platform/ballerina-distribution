@@ -1,10 +1,10 @@
 // This is the client implementation of the client streaming scenario.
 import ballerina/io;
 
-// Creates a gRPC client to interact with the remote server.
-HelloWorldClient ep = check new ("http://localhost:9090");
-
 public function main() returns error? {
+    // Creates a gRPC client to interact with the remote server.
+    HelloWorldClient ep = check new ("http://localhost:9090");
+
     // Executes the client-streaming RPC call and receives the streaming client.
     LotsOfGreetingsStreamingClient streamingClient = check
     ep->lotsOfGreetings();
