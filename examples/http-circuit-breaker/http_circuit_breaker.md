@@ -1,21 +1,12 @@
 # Circuit breaker
 
-The Circuit Breaker is used to gracefully handle network related errors, which occur when using the HTTP Client. Behavior of this example is something similar to as follows.
+The circuit breaker is used to gracefully handle errors which could occur due to network and backend failures.
 
-1. First two requests works
-2. Third request fails and the circuit breaker trips
-3. As a result subsequent requests fails immediately until the timeout period is reached
-4. Timeout is reached and the circuit breaker falls back to closed state
-
-For more information on the underlying module, see the [`http` module](https://lib.ballerina.io/ballerina/http/latest/)
-and [specification](https://ballerina.io/spec/http/#2415-circuit-breaker).
+For more information on the underlying module, see the [`http` module](https://lib.ballerina.io/ballerina/http/latest/) and [specification](https://ballerina.io/spec/http/#2415-circuit-breaker).
 
 ::: code http_circuit_breaker.bal :::
 
-Run the service as follows.
+Run the program by executing the following command.
+Before executing following sample, run the backend service.
 
-::: out http_circuit_breaker.server.out :::
-
-Invoke the service by executing the following cURL command in a new terminal.
-
-::: out http_circuit_breaker.client.out :::
+::: out http_circuit_breaker.out :::
