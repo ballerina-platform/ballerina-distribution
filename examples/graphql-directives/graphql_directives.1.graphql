@@ -1,8 +1,6 @@
 {
     profile {
         name
-        address @skip(if: true) {
-            city
-        }
+        gender @skip(if: true)
     }
 }

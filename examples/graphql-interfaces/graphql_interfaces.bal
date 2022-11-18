@@ -1,14 +1,14 @@
 import ballerina/graphql;
 
 // Define the interface `Animal` using a `distinct` `service` object.
-public type Animal distinct service object {
+type Animal distinct service object {
 
     // Define the field `name` as a resource function definition.
     resource function get name() returns string;
 };
 
 // Define the `Leopard` class implementing the `Animal` interface.
-public distinct service class Leopard {
+distinct service class Leopard {
 
     // This denotes that this object implements the `Animal` interface.
     *Animal;
@@ -26,7 +26,7 @@ public distinct service class Leopard {
 }
 
 // Another class implementing the `Animal` interface.
-public distinct service class Elephant {
+distinct service class Elephant {
     *Animal;
 
     resource function get name() returns string {

@@ -1,37 +1,7 @@
 import ballerina/graphql;
 
-service /graphql on new graphql:Listener(4000) {
-
-    // Define a `Person` object in the service.
-    private Person person;
-
-    function init() {
-        // Initializes the `person` value.
-        self.person = new("Walter White", 51);
-    }
-
-    // A resource function represents a field in the root `Query` operation.
-    resource function get profile() returns Person {
-
-        return self.person;
-    }
-
-    // A remote function represents a field in the root `Mutation` operation. After updating the
-    // name, the `person` object will be returned.
-    remote function updateName(string name) returns Person {
-        self.person.setName(name);
-        return self.person;
-    }
-
-    // Remote function to update the age.
-    remote function updateAge(int age) returns Person {
-        self.person.setAge(age);
-        return self.person;
-    }
-}
-
 // Define a service class to use as an object in the GraphQL service.
-public service class Person {
+service class Person {
 
     private string name;
     private int age;
@@ -57,5 +27,35 @@ public service class Person {
     }
     function setAge(int age) {
         self.age = age;
+    }
+}
+
+service /graphql on new graphql:Listener(4000) {
+
+    // Define a `Person` object in the service.
+    private Person person;
+
+    function init() {
+        // Initializes the `person` value.
+        self.person = new ("Walter White", 51);
+    }
+
+    // A resource function represents a field in the root `Query` operation.
+    resource function get profile() returns Person {
+
+        return self.person;
+    }
+
+    // A remote function represents a field in the root `Mutation` operation. After updating the
+    // name, the `person` object will be returned.
+    remote function updateName(string name) returns Person {
+        self.person.setName(name);
+        return self.person;
+    }
+
+    // Remote function to update the age.
+    remote function updateAge(int age) returns Person {
+        self.person.setAge(age);
+        return self.person;
     }
 }

@@ -3,7 +3,7 @@ import ballerina/http;
 import ballerina/lang.value;
 
 // Define a service class to use as an object in the GraphQL service.
-public service class Person {
+service class Person {
 
     private final string name;
     private final int age;
