@@ -1,6 +1,6 @@
 # Producer
 
-The messages are sent to two different queues, to one queue using the same channel and to the other using two different channels.
+Producing in RabbitMQ means nothing more than sending. In this example, the producer is sending a single message to the queue MyQueue. 
 
 For more information on the underlying module, see the [`rabbitmq` module](https://lib.ballerina.io/ballerinax/rabbitmq/latest).
 

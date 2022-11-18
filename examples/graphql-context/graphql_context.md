@@ -1,6 +1,12 @@
 # Context
 
-The `graphql:Context` object can be used to pass meta information between the resolver functions. An init function should be provided using the `graphql:ServiceConfig` parameter named `contextInit`. Inside the init function, the `graphql:Context` can be initialized. Values from the `http:RequestContext` and `http:Request` can be added as well as other values. These values are stored as key-value pairs. The key is a `string` and the value can be any `readonly` value or an `isolated` object. If the init function is not provided, an empty context object will be created. The context can be accessed by defining it as the first parameter of any resolver (resource/remote) function.
+The `graphql:Context` object can be used to pass meta information between the resolver functions. A context object is created per request. An init function should be provided using the `graphql:ServiceConfig` parameter named `contextInit`.
+
+Inside the init function, the `graphql:Context` can be initialized. The corresponding `http:RequestContext` and `http:Request` can be accessed from the init function.
+
+You can add attributes to the context as key-value pairs. The key is a `string` and the value can be any `readonly` value or an `isolated` object. If the init function is not provided, an empty context object will be created. The context can be accessed by defining it as the first parameter of any resolver (resource/remote) function.
+
+This example shows how to initialize and access the context as well as how to set/get attributes in the context.
 
 For more information on the underlying package, see the [GraphQL package](https://lib.ballerina.io/ballerina/graphql/latest/).
 
@@ -10,6 +16,18 @@ Run the service by executing the following command.
 
 ::: out graphql_context.server.out :::
 
-Invoke the service as follows.
+Send the following document to the GraphQL endpoint to test the service.
 
-::: out graphql_context.client.out :::
+::: code graphql_context.graphql :::
+
+To send the document, use the following cURL command in a separate terminal. First, send the request with the `scope` header value set to `admin`.
+
+::: out graphql_context.1.client.out :::
+
+Now, send the same document with the `scope` header value set to `user`. This will return an error in the `salary` field.
+
+::: out graphql_context.2.client.out :::
+
+Then, send the same document with the `scope` header value set to `unknown`. This will return an error in the `profile` field.
+
+::: out graphql_context.3.client.out :::

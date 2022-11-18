@@ -1,0 +1,8 @@
+{
+    animals {
+        name
+        ...on Leopard {
+            location
+        }
+    }
+}

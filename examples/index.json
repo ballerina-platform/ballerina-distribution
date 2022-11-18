@@ -1460,9 +1460,8 @@
             {
                 "name": "Client data binding",
                 "url": "http-client-data-binding",
-                "verifyBuild": true,
+                "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true,
                 "isLearnByExample": false
             }
         ]
@@ -1820,14 +1819,6 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Hierarchical resource paths",
-                "url": "graphql-hierarchical-resource-paths",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
                 "name": "Return service objects",
                 "url": "graphql-returning-service-objects",
                 "verifyBuild": true,
@@ -1860,6 +1851,14 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Input objects",
+                "url": "graphql-input-objects",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Interfaces",
                 "url": "graphql-interfaces",
                 "verifyBuild": true,
@@ -1876,8 +1875,32 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Documentation",
+                "url": "graphql-documentation",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Directives",
+                "url": "graphql-directives",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Context",
                 "url": "graphql-context",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Interceptors",
+                "url": "graphql-interceptors",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -1893,24 +1916,8 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Documentation",
-                "url": "graphql-documentation",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Interceptors",
-                "url": "graphql-interceptors",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Directives",
-                "url": "graphql-directives",
+                "name": "Hierarchical resource paths",
+                "url": "graphql-hierarchical-resource-paths",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -1934,7 +1941,7 @@
         ]
     },
     {
-        "title": "GraphQL security",
+        "title": "GraphQL service security",
         "column": 1,
         "category": "Network libraries",
         "samples": [
@@ -1989,26 +1996,10 @@
         ]
     },
     {
-        "title": "WebSockets",
+        "title": "WebSocket service",
         "column": 1,
         "category": "Network libraries",
         "samples": [
-            {
-                "name": "Client",
-                "url": "websocket-client",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Client - Retry",
-                "url": "websocket-retry-client",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
             {
                 "name": "Service",
                 "url": "websocket-basic-sample",
@@ -2021,12 +2012,35 @@
         ]
     },
     {
-        "title": "WebSocket security",
+        "title": "WebSocket client",
         "column": 1,
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Service - SSL/TLS",
+                "name": "Client",
+                "url": "websocket-client",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Retry",
+                "url": "websocket-retry-client",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "WebSocket service security",
+        "column": 1,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "SSL/TLS",
                 "url": "websocket-service-ssl-tls",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2034,7 +2048,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - Mutual SSL",
+                "name": "Mutual SSL",
                 "url": "websocket-service-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2042,7 +2056,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - Basic Auth File user store",
+                "name": "Basic Auth File user store",
                 "url": "websocket-service-basic-auth-file-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2050,7 +2064,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - Basic Auth LDAP user store",
+                "name": "Basic Auth LDAP user store",
                 "url": "websocket-service-basic-auth-ldap-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2058,7 +2072,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - JWT Auth",
+                "name": "JWT Auth",
                 "url": "websocket-service-jwt-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2066,15 +2080,22 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - OAuth2",
+                "name": "OAuth2",
                 "url": "websocket-service-oauth2",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
-            },
+            }
+        ]
+    },
+    {
+        "title": "WebSocket client security",
+        "column": 1,
+        "category": "Network libraries",
+        "samples": [
             {
-                "name": "Client - SSL/TLS",
+                "name": "SSL/TLS",
                 "url": "websocket-client-ssl-tls",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2082,7 +2103,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - Mutual SSL",
+                "name": "Mutual SSL",
                 "url": "websocket-client-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2090,7 +2111,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - Basic Auth",
+                "name": "Basic Auth",
                 "url": "websocket-client-basic-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2098,7 +2119,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - Bearer Token Auth",
+                "name": "Bearer Token Auth",
                 "url": "websocket-client-bearer-token-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2106,7 +2127,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - self signed JWT Auth",
+                "name": "Self signed JWT Auth",
                 "url": "websocket-client-self-signed-jwt-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2114,7 +2135,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 Client Credentials grant type",
+                "name": "OAuth2 Client Credentials grant type",
                 "url": "websocket-client-oauth2-client-cred-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2122,7 +2143,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 Password grant type",
+                "name": "OAuth2 Password grant type",
                 "url": "websocket-client-oauth2-password-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2130,7 +2151,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 Refresh Token grant type",
+                "name": "OAuth2 Refresh Token grant type",
                 "url": "websocket-client-oauth2-refresh-token-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2138,7 +2159,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 JWT Bearer grant type",
+                "name": "OAuth2 JWT Bearer grant type",
                 "url": "websocket-client-oauth2-jwt-bearer-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2233,22 +2254,13 @@
         ]
     },
     {
-        "title": "gRPC",
+        "title": "gRPC service",
         "column": 2,
         "category": "Network libraries",
         "samples": [
             {
                 "name": "Simple RPC",
-                "url": "grpc-simple",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disableVerificationReason": "Has different naming convention",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Simple RPC with headers",
-                "url": "grpc-simple-with-headers",
+                "url": "grpc-service-simple",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Has different naming convention",
@@ -2257,7 +2269,7 @@
             },
             {
                 "name": "Server streaming RPC",
-                "url": "grpc-server-streaming",
+                "url": "grpc-service-server-streaming",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Has different naming convention",
@@ -2266,7 +2278,7 @@
             },
             {
                 "name": "Client streaming RPC",
-                "url": "grpc-client-streaming",
+                "url": "grpc-service-client-streaming",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Has different naming convention",
@@ -2275,7 +2287,7 @@
             },
             {
                 "name": "Bidirectional streaming RPC",
-                "url": "grpc-bidirectional-streaming",
+                "url": "grpc-service-bidirectional-streaming",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Has different naming convention",
@@ -2283,8 +2295,8 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Proto to Ballerina",
-                "url": "proto-to-ballerina",
+                "name": "Send/Receive headers",
+                "url": "grpc-service-headers",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Has different naming convention",
@@ -2294,12 +2306,64 @@
         ]
     },
     {
-        "title": "gRPC security",
+        "title": "gRPC client",
         "column": 2,
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Service - SSL/TLS",
+                "name": "Simple RPC",
+                "url": "grpc-client-simple",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Server streaming RPC",
+                "url": "grpc-client-server-streaming",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Client streaming RPC",
+                "url": "grpc-client-client-streaming",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Bidirectional streaming RPC",
+                "url": "grpc-client-bidirectional-streaming",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Send/Receive headers",
+                "url": "grpc-client-headers",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "gRPC service security",
+        "column": 2,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "SSL/TLS",
                 "url": "grpc-service-ssl-tls",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2307,7 +2371,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - Mutual SSL",
+                "name": "Mutual SSL",
                 "url": "grpc-service-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2315,7 +2379,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - Basic Auth file user store",
+                "name": "Basic Auth file user store",
                 "url": "grpc-service-basic-auth-file-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2323,7 +2387,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - Basic Auth LDAP user store",
+                "name": "Basic Auth LDAP user store",
                 "url": "grpc-service-basic-auth-ldap-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2331,7 +2395,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - JWT Auth",
+                "name": "JWT Auth",
                 "url": "grpc-service-jwt-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2339,15 +2403,22 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - OAuth2",
+                "name": "OAuth2",
                 "url": "grpc-service-oauth2",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
-            },
+            }
+        ]
+    },
+    {
+        "title": "gRPC client security",
+        "column": 2,
+        "category": "Network libraries",
+        "samples": [
             {
-                "name": "Client - SSL/TLS",
+                "name": "SSL/TLS",
                 "url": "grpc-client-ssl-tls",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2355,7 +2426,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - Mutual SSL",
+                "name": "Mutual SSL",
                 "url": "grpc-client-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2363,7 +2434,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - Basic Auth",
+                "name": "Basic Auth",
                 "url": "grpc-client-basic-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2371,7 +2442,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - Bearer Token Auth",
+                "name": "Bearer Token Auth",
                 "url": "grpc-client-bearer-token-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2379,7 +2450,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - self signed JWT Auth",
+                "name": "Self signed JWT Auth",
                 "url": "grpc-client-self-signed-jwt-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2387,7 +2458,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 Client Credentials grant type",
+                "name": "OAuth2 Client Credentials grant type",
                 "url": "grpc-client-oauth2-client-credentials-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2395,7 +2466,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 Password grant type",
+                "name": "OAuth2 Password grant type",
                 "url": "grpc-client-oauth2-password-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2403,7 +2474,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 Refresh Token grant type",
+                "name": "OAuth2 Refresh Token grant type",
                 "url": "grpc-client-oauth2-refresh-token-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2411,7 +2482,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 JWT Bearer grant type",
+                "name": "OAuth2 JWT Bearer grant type",
                 "url": "grpc-client-oauth2-jwt-bearer-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2421,13 +2492,13 @@
         ]
     },
     {
-        "title": "NATS",
+        "title": "NATS Client",
         "column": 2,
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Publish/subscribe",
-                "url": "nats-basic-pub-sub",
+                "name": "Publish",
+                "url": "nats-basic-pub",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
@@ -2435,8 +2506,8 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Request/reply",
-                "url": "nats-basic-request-reply",
+                "name": "Request",
+                "url": "nats-basic-request",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
@@ -2444,8 +2515,60 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Secured connection",
-                "url": "nats-basic-secure-connection",
+                "name": "Basic Authentication",
+                "url": "nats-client-basic-auth",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "SSL/TLS",
+                "url": "nats-client-secure-connection",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "NATS Service",
+        "column": 2,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Subscribe",
+                "url": "nats-basic-sub",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Reply",
+                "url": "nats-basic-reply",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Basic Authentication",
+                "url": "nats-service-basic-auth",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "SSL/TLS",
+                "url": "nats-service-secure-connection",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
@@ -2577,7 +2700,7 @@
         ]
     },
     {
-        "title": "RabbitMQ",
+        "title": "RabbitMQ Client",
         "column": 3,
         "category": "Network libraries",
         "samples": [
@@ -2592,16 +2715,7 @@
             },
             {
                 "name": "Consumer",
-                "url": "rabbitmq-consumer",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Client acknowledgements",
-                "url": "rabbitmq-consumer-with-client-acknowledgement",
+                "url": "rabbitmq-sync-consumer",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
@@ -2618,6 +2732,49 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Basic authentication",
+                "url": "rabbitmq-client-basic-auth",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "SSL/TLS",
+                "url": "rabbitmq-client-secure-connection",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "RabbitMQ Service",
+        "column": 3,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Consumer",
+                "url": "rabbitmq-consumer",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Acknowledgements",
+                "url": "rabbitmq-consumer-with-client-acknowledgement",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Transactional consumer",
                 "url": "rabbitmq-transaction-consumer",
                 "verifyBuild": false,
@@ -2627,8 +2784,17 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Secured connection",
-                "url": "rabbitmq-secure-connection",
+                "name": "Basic authentication",
+                "url": "rabbitmq-service-basic-auth",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "SSL/TLS",
+                "url": "rabbitmq-service-secure-connection",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
@@ -2643,20 +2809,20 @@
         "category": "Network libraries",
         "samples": [
             {
+                "name": "Service",
+                "url": "tcp-listener",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Service cannot be stopped",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Client",
                 "url": "tcp-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Service not present",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Listener",
-                "url": "tcp-listener",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disableVerificationReason": "Service cannot be stopped",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -2677,6 +2843,15 @@
         "category": "Network libraries",
         "samples": [
             {
+                "name": "Service",
+                "url": "udp-listener",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Service cannot be stopped",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Connectionless client",
                 "url": "udp-client",
                 "verifyBuild": true,
@@ -2691,15 +2866,6 @@
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Service cannot be reached",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Listener",
-                "url": "udp-listener",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disableVerificationReason": "Service cannot be stopped",
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
@@ -2747,13 +2913,13 @@
         ]
     },
     {
-        "title": "FTP",
+        "title": "FTP Service",
         "column": 3,
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Client",
-                "url": "ftp-client",
+                "name": "Read",
+                "url": "ftp-service-read",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
@@ -2761,8 +2927,8 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Listener",
-                "url": "ftp-listener",
+                "name": "Read/Write",
+                "url": "ftp-service-read-write",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
@@ -2772,13 +2938,13 @@
         ]
     },
     {
-        "title": "SFTP",
+        "title": "FTP Client",
         "column": 3,
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Client",
-                "url": "sftp-client",
+                "name": "Read",
+                "url": "ftp-client-read",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
@@ -2786,8 +2952,8 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Listener",
-                "url": "sftp-listener",
+                "name": "Write",
+                "url": "ftp-client-write",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
@@ -2797,7 +2963,57 @@
         ]
     },
     {
-        "title": "MySQL",
+        "title": "SFTP Service",
+        "column": 3,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Read",
+                "url": "sftp-service-read",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Read/Write",
+                "url": "sftp-service-read-write",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "SFTP Client",
+        "column": 3,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Read",
+                "url": "sftp-client-read",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Write",
+                "url": "sftp-client-write",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "MySQL client",
         "column": 3,
         "category": "Network libraries",
         "samples": [
@@ -2867,7 +3083,7 @@
         ]
     },
     {
-        "title": "JDBC",
+        "title": "JDBC client",
         "column": 3,
         "category": "Network libraries",
         "samples": [

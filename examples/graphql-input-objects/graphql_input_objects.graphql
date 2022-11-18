@@ -1,0 +1,5 @@
+mutation {
+    addPost(newPost: { author: "Sam", content: "Hello" }) {
+        id
+    }
+}

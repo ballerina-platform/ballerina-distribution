@@ -8,10 +8,10 @@ service /graphql on new graphql:Listener(4000) {
     }
 }
 
-// Define the interface `Animal` using a `distinct` `service` object
+// Define the interface `Animal` using a `distinct` `service` object.
 public type Animal distinct service object {
 
-    // Define the field `name` as a resource function definition
+    // Define the field `name` as a resource function definition.
     resource function get name() returns string;
 };
 
@@ -21,7 +21,8 @@ public distinct service class Leopard {
     // This denotes that this object implements the `Animal` interface.
     *Animal;
 
-    // Since this object implements the `Animal` interface, this object must implement the fields of the `Animal` interface.
+    // Since this object implements the `Animal` interface, this object must implement the fields of
+    // the `Animal` interface.
     resource function get name() returns string {
         return "Panthera pardus kotiya";
     }

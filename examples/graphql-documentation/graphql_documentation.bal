@@ -2,6 +2,7 @@ import ballerina/graphql;
 
 service /graphql on new graphql:Listener(4000) {
 
+    // Add doc comments to reflect them in the generated GraphQL schema.
     # Returns a person using the provided ID.
     # + id - The ID of the person
     # + return - The person with the requested ID
@@ -15,6 +16,7 @@ service /graphql on new graphql:Listener(4000) {
     }
 }
 
+// All the types that are used in the GraphQL service can have doc comments to add as documentation.
 # Represents a person.
 # + name - The name of the person
 # + age - The age of the person

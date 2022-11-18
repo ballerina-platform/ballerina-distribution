@@ -51,6 +51,7 @@ public service class Person {
         return self.age > 21;
     }
 
+    // General functions are not considered for the schema generation.
     function setName(string name) {
         self.name = name;
     }
