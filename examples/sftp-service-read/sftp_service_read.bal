@@ -20,7 +20,6 @@ listener ftp:Listener remoteServer = check new ({
     },
     port: 22,
     path: "/home/in",
-    pollingInterval: 2,
     fileNamePattern: "(.*).txt"
 });
 
