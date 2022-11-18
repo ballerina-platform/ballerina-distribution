@@ -1,4 +1,4 @@
-# Query with advanced mapping
+# JDBC client - Query with advanced mapping
 
 This BBE demonstrates how to use the JDBC  client for query operations with advanced mapping for column names.
 
