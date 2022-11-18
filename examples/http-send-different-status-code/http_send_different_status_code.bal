@@ -24,7 +24,7 @@ service / on new http:Listener(9090) {
     // For details, see https://lib.ballerina.io/ballerina/http/latest/types#StatusCodeResponse.
     resource function post albums(@http:Payload Album album) returns Album|AlbumConflict {
         if albums.hasKey(album.title) {
-            return {body: { message: "album is already exist" }};
+            return {body: { message: "album already exists" }};
         }
         albums.add(album);
         return album;

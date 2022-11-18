@@ -8,7 +8,7 @@ type Album readonly & record {|
 
 public function main() returns error? {
     // Creates a new client with the Basic REST service URL.
-    final http:Client httpClient = check new("http://localhost:9090");
+    http:Client httpClient = check new("http://localhost:9090");
 
     // Binding the payload to a `record` array type.
     // The contextually expected type is inferred from the LHS variable type.

@@ -8,7 +8,7 @@ type Album readonly & record {|
 
 public function main() returns error? {
     // Creates a new client with the Basic REST service URL.
-    final http:Client httpClient = check new ("localhost:9090");
+    http:Client httpClient = check new ("localhost:9090");
 
     // Sends a `GET` request to the "/albums" resource.
     // The verb is not mandatory as it is default to "GET".

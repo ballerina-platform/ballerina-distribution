@@ -18,8 +18,7 @@ service / on new http:Listener(9090) {
         Album? album = albums[title];
         if album is () {
             return http:NOT_FOUND;
-        } else {
-            return album;
         }
+        return album;
     }
 }
