@@ -1,5 +1,14 @@
 import ballerina/graphql;
 
+// All the types that are used in the GraphQL service can have doc comments to add as documentation.
+# Represents a person.
+# + name - The name of the person
+# + age - The age of the person
+type Person record {|
+    string name;
+    int age;
+|};
+
 service /graphql on new graphql:Listener(4000) {
 
     // Add doc comments to reflect them in the generated GraphQL schema.
@@ -15,12 +24,3 @@ service /graphql on new graphql:Listener(4000) {
         return;
     }
 }
-
-// All the types that are used in the GraphQL service can have doc comments to add as documentation.
-# Represents a person.
-# + name - The name of the person
-# + age - The age of the person
-type Person record {|
-    string name;
-    int age;
-|};

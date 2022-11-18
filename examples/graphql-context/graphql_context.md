@@ -22,6 +22,8 @@ Send the following document to the GraphQL endpoint to test the service.
 
 To send the document, use the following cURL command in a separate terminal. First, send the request with the `scope` header value set to `admin`.
 
+>**Info:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client/).
+
 ::: out graphql_context.1.client.out :::
 
 Now, send the same document with the `scope` header value set to `user`. This will return an error in the `salary` field.

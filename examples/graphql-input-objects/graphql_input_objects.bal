@@ -1,5 +1,17 @@
 import ballerina/graphql;
 
+// Define the `NewPost` record type to use as an input object.
+public type NewPost record {|
+    string author;
+    string content;
+|};
+
+// Define the `Post` record type to use as an output object.
+public type Post record {|
+    *NewPost;
+    int id;
+|};
+
 service /graphql on new graphql:Listener(4000) {
 
     // Define an in-memory array to store the Posts
@@ -21,15 +33,3 @@ service /graphql on new graphql:Listener(4000) {
         return self.posts;
     }
 }
-
-// Define the `NewPost` record type to use as an input object.
-public type NewPost record {|
-    string author;
-    string content;
-|};
-
-// Define the `Post` record type to use as an output object.
-public type Post record {|
-    *NewPost;
-    int id;
-|};

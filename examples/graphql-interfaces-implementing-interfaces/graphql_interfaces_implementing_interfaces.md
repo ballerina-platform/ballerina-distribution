@@ -18,4 +18,6 @@ Send the following document to the GraphQL endpoint to test the service.
 
 To send the document, use the following cURL command in a separate terminal.
 
+>**Info:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client/).
+
 ::: out graphql_interfaces_implementing_interfaces.client.out :::

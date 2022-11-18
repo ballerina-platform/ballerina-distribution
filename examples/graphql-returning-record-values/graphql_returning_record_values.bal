@@ -1,5 +1,17 @@
 import ballerina/graphql;
 
+// Define the custom record types for the returning data.
+public type Person record {|
+    string name;
+    int age;
+    Address address;
+|};
+public type Address record {|
+    string number;
+    string street;
+    string city;
+|};
+
 service /graphql on new graphql:Listener(4000) {
 
     // Ballerina GraphQL resolvers can return `record` values. The record will be mapped to an
@@ -16,15 +28,3 @@ service /graphql on new graphql:Listener(4000) {
         };
     }
 }
-
-// Define the custom record types for the returning data.
-public type Person record {|
-    string name;
-    int age;
-    Address address;
-|};
-public type Address record {|
-    string number;
-    string street;
-    string city;
-|};
