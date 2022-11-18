@@ -1,4 +1,4 @@
-# Client - OAuth2 Client Credentials grant type
+# OAuth2 Client Credentials grant type client
 
 A client, which is secured with OAuth2 client credentials grant typecan be used to connect to a secured service.
 

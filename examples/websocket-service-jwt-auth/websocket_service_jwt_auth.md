@@ -1,4 +1,4 @@
-# Service - JWT Auth
+# JWT Auth service
 
 A WebSocket service can be secured with JWT and by enforcingauthorization optionally. Then, it validates the JWT sent in the `Authorization` header against the provided configurations.
 

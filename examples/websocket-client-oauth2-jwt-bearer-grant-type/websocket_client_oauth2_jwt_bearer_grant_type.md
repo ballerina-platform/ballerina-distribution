@@ -1,4 +1,4 @@
-# Client - OAuth2 JWT Bearer grant type
+# OAuth2 JWT Bearer grant type client
 
 A client, which is secured with an OAuth2 JWT bearer grant type can be used to connect to a secured service.
 

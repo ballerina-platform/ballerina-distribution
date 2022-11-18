@@ -1,4 +1,4 @@
-# Service - Basic Auth File user store
+# Basic Auth File user store service
 
 A WebSocket service can be secured with Basic Auth and optionally by enforcing authorization. Then, it validates the Basic Auth token sent in the `Authorization` header against the provided configurations. This reads data from a file, which has a TOML format. This stores the usernames, passwords for authentication, and scopes for authorization.
 

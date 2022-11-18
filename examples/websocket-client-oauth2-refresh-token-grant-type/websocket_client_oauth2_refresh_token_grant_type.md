@@ -1,4 +1,4 @@
-# Client - OAuth2 Refresh Token grant type
+# OAuth2 Refresh Token grant type client
 
 A client, which is secured with an OAuth2 refresh token grant type can be used to connect to a secured service.
 
