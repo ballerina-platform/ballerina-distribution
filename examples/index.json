@@ -1958,6 +1958,22 @@
         ]
     },
     {
+        "title": "WebSocket service",
+        "column": 1,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Service",
+                "url": "websocket-basic-sample",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Service cannot be stopped",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
         "title": "WebSocket client",
         "column": 1,
         "category": "Network libraries",
@@ -1975,22 +1991,6 @@
                 "url": "websocket-retry-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            }
-        ]
-    },
-    {
-        "title": "WebSocket service",
-        "column": 1,
-        "category": "Network libraries",
-        "samples": [
-            {
-                "name": "Service",
-                "url": "websocket-basic-sample",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disableVerificationReason": "Service cannot be stopped",
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
