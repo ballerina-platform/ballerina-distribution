@@ -1,2 +1,0 @@
-$ bal run kafka_message_producer_transactional.bal
-Transaction successful
