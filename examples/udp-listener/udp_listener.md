@@ -1,4 +1,4 @@
-# Listener
+# UDP service
 
 The UDP Listener is used to expose a UDP service over the UDP protocol. The UDP `Client`/`ConnectClient` is used to send data to a remote UDP server. This sample demonstrates the UDP socket listener.
 

@@ -1,4 +1,4 @@
-# Client
+# TCP client
 
 The TCP Client is used to connect to a remote TCP server. This sample demonstrates how the TCP client interacts with the TCP server.
 
