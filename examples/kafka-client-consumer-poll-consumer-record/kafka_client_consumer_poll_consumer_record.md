@@ -6,6 +6,6 @@ The received records are converted to the user defined type using data-binding. 
 
 For more information on the underlying module,  see the [`kafka` module](https://lib.ballerina.io/ballerinax/kafka/latest).
 
-::: code kafka_consumer_client_poll_consumer_record.bal :::
+::: code kafka_client_consumer_poll_consumer_record.bal :::
 
-::: out kafka_consumer_client_poll_consumer_record.out :::
+::: out kafka_client_consumer_poll_consumer_record.out :::
