@@ -1,6 +1,5 @@
 import ballerina/ftp;
 import ballerina/io;
-import ballerina/lang.'string as strings;
 
 public function main() returns error? {
     // Creates the client with the connection parameters, host, username, and
