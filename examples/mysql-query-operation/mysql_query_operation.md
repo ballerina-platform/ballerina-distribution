@@ -1,4 +1,4 @@
-# Simple query
+# MySQL client - Simple query
 
 This BBE demonstrates how to use the MySQL client select query operations with the stream return type. 
 
