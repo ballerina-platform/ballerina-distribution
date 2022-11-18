@@ -1,0 +1,2 @@
+$ bal run tcp_transport_security_client.bal
+Received message: Hello, World!

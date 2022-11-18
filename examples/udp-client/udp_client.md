@@ -1,4 +1,4 @@
-# UDP Connectionless client
+# Connectionless client
 
 The UDP Client is used to send data to a specific remote host using the UDP protocol. This sample demonstrates how to send a datagram to a remote server and print the echoed response.
 

@@ -1,4 +1,4 @@
-# UDP Connection-oriented client
+# Connection-oriented client
 
 The ConnectClient is configured so that it only receives data from, and sends data to, the given remote peer address. Once connected, data may not be received from or sent to any other address. 
 
