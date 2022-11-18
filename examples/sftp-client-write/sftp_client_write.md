@@ -4,8 +4,8 @@ The SFTP client is used to perform CRUD operation on remote files/directories us
 
 For more information on the underlying module, see the [`ftp` module](https://lib.ballerina.io/ballerina/ftp/latest/).
 
-::: code sftp_client.bal :::
+::: code sftp_client_write.bal :::
 
 The newly-added file will appear in the SFTP server.
 
-::: out sftp_client.out :::
+::: out sftp_client_write.out :::
