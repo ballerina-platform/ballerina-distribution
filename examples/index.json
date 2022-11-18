@@ -2621,7 +2621,7 @@
         ]
     },
     {
-        "title": "TCP",
+        "title": "TCP service",
         "column": 3,
         "category": "Network libraries",
         "samples": [
@@ -2633,7 +2633,14 @@
                 "disableVerificationReason": "Service cannot be stopped",
                 "disablePlayground": true,
                 "isLearnByExample": false
-            },
+            }
+        ]
+    },
+    {
+        "title": "TCP client",
+        "column": 3,
+        "category": "Network libraries",
+        "samples": [
             {
                 "name": "Client",
                 "url": "tcp-client",
@@ -2642,20 +2649,41 @@
                 "disableVerificationReason": "Service not present",
                 "disablePlayground": true,
                 "isLearnByExample": false
-            },
+            }
+        ]
+    },
+    {
+        "title": "TCP service security",
+        "column": 1,
+        "category": "Network libraries",
+        "samples": [
             {
-                "name": "Transport security",
-                "url": "tcp-transport-security",
+                "name": "SSL/TLS",
+                "url": "tcp-service-ssl-tls",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
         ]
     },
     {
-        "title": "UDP",
+        "title": "TCP client security",
+        "column": 1,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "SSL/TLS",
+                "url": "tcp-client-ssl-tls",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "UDP service",
         "column": 3,
         "category": "Network libraries",
         "samples": [
@@ -2667,7 +2695,14 @@
                 "disableVerificationReason": "Service cannot be stopped",
                 "disablePlayground": true,
                 "isLearnByExample": false
-            },
+            }
+        ]
+    },
+    {
+        "title": "UDP client",
+        "column": 3,
+        "category": "Network libraries",
+        "samples": [
             {
                 "name": "Connectionless client",
                 "url": "udp-client",
