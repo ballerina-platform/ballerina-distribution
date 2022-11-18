@@ -1,2 +1,2 @@
-$ bal run subscriber.bal
+$ bal run nats-basic-sub.bal
 time = 2021-05-19T10:15:49.269+05:30 level = INFO module = "" message = "Received message: Hello from Ballerina"

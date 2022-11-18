@@ -2492,13 +2492,13 @@
         ]
     },
     {
-        "title": "NATS",
+        "title": "NATS Client",
         "column": 2,
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Publish/subscribe",
-                "url": "nats-basic-pub-sub",
+                "name": "Publish",
+                "url": "nats-basic-pub",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
@@ -2506,8 +2506,8 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Request/reply",
-                "url": "nats-basic-request-reply",
+                "name": "Request",
+                "url": "nats-basic-request",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
@@ -2515,8 +2515,60 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Secured connection",
-                "url": "nats-basic-secure-connection",
+                "name": "Basic Authentication",
+                "url": "nats-client-basic-auth",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "SSL/TLS",
+                "url": "nats-client-secure-connection",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "NATS Service",
+        "column": 2,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Subscribe",
+                "url": "nats-basic-sub",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Reply",
+                "url": "nats-basic-reply",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Basic Authentication",
+                "url": "nats-service-basic-auth",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "SSL/TLS",
+                "url": "nats-service-secure-connection",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
