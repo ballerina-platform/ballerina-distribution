@@ -4,10 +4,6 @@ In this example, the underlying connections of the subscriber and the publisher 
 
 For more information on the underlying module, see the [`nats` module](https://lib.ballerina.io/ballerinax/nats/latest).
 
-::: code publisher.bal :::
+::: code nats-service-secure-connection.bal :::
 
-::: out publisher.out :::
-
-::: code subscriber.bal :::
-
-::: out subscriber.out :::
+::: out nats-service-secure-connection.out :::
