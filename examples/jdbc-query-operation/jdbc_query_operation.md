@@ -1,4 +1,4 @@
-# Simple query
+# JDBC client - Simple query
 
 This BBE demonstrates how to use the JDBC client select query operations with the stream return type. Note that the relevant database driver JAR should be defined in the `Ballerina.toml` file as a dependency.
 

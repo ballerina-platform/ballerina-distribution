@@ -1,4 +1,4 @@
-# Query with one result
+# JDBC client - Query with one result
 
 This BBE demonstrates how to use the JDBC client select query row operations.
 
