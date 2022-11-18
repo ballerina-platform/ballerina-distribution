@@ -2648,7 +2648,7 @@
         ]
     },
     {
-        "title": "RabbitMQ",
+        "title": "RabbitMQ Client",
         "column": 3,
         "category": "Network libraries",
         "samples": [
@@ -2663,16 +2663,7 @@
             },
             {
                 "name": "Consumer",
-                "url": "rabbitmq-consumer",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Client acknowledgements",
-                "url": "rabbitmq-consumer-with-client-acknowledgement",
+                "url": "rabbitmq-sync-consumer",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
@@ -2689,6 +2680,49 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Basic authentication",
+                "url": "rabbitmq-client-basic-auth",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "SSL/TLS",
+                "url": "rabbitmq-client-secure-connection",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "RabbitMQ Service",
+        "column": 3,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Consumer",
+                "url": "rabbitmq-consumer",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Acknowledgements",
+                "url": "rabbitmq-consumer-with-client-acknowledgement",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Transactional consumer",
                 "url": "rabbitmq-transaction-consumer",
                 "verifyBuild": false,
@@ -2698,8 +2732,17 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Secured connection",
-                "url": "rabbitmq-secure-connection",
+                "name": "Basic authentication",
+                "url": "rabbitmq-service-basic-auth",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "SSL/TLS",
+                "url": "rabbitmq-service-secure-connection",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",

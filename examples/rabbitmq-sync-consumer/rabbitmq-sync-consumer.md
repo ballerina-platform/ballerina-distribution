@@ -4,10 +4,6 @@ The underlying connections of the consumer and the producer are secured with TLS
 
 For more information on the underlying module, see the [`rabbitmq` module](https://lib.ballerina.io/ballerinax/rabbitmq/latest).
 
-::: code consumer.bal :::
+::: code rabbitmq-sync-consumer.bal :::
 
-::: out consumer.out :::
-
-::: code producer.bal :::
-
-::: out producer.out :::
+::: out rabbitmq-sync-consumer.out :::
