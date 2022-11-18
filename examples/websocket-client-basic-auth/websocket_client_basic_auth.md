@@ -1,4 +1,4 @@
-# WebSocket client - Basic Auth
+# Basic Auth client
 
 A client, which is secured with Basic Auth can be used to connect to a secured service.
 

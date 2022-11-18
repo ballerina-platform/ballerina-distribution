@@ -1,4 +1,4 @@
-# TCP service
+# Listener
 
 The TCP Listener is used to expose a TCP service over the TCP protocol. This sample demonstrates how the TCP socket listener service interacts with the TCP client.
 

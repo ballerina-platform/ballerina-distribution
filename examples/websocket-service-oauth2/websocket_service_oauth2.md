@@ -1,4 +1,4 @@
-# WebSocket service - OAuth2
+# OAuth2 service
 
 A WebSocket service can be secured with OAuth2 and by enforcing authorization optionally. Then, it validates the OAuth2 token sent in the `Authorization` header against the provided configurations. This calls the configured introspection endpoint to validate.
 
