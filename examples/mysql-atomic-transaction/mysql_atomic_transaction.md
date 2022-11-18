@@ -6,6 +6,8 @@ For more information on the underlying module, see the [`mysql` module](https://
 
 ::: code mysql_atomic_transaction.bal :::
 
+Create a Ballerina project. Copy the example to the project. Execute the command below to build and run the project.
+
 ::: out mysql_atomic_transaction.out :::
 
 The syntax for using XA transactions (distributed transactions across multiple resources) is the same. Additionally, `useXADatasource` option should be enabled in the client as follows,

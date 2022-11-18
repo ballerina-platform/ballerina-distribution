@@ -4,9 +4,9 @@ This BBE demonstrates how to use the MySQL client select query row operations.
 
 For more information on the underlying module, see the [`mysql` module](https://lib.ballerina.io/ballerinax/mysql/latest/).
 
-
-
 ::: code mysql_query_row_operation.bal :::
+
+Create a Ballerina project. Copy the example to the project. Execute the command below to build and run the project.
 
 ::: out mysql_query_row_operation.out :::
 
