@@ -6,6 +6,8 @@ For more information on the underlying module, see the [`mysql` module](https://
 
 ::: code mysql_call_stored_procedures.bal :::
 
+Create a Ballerina project. Copy the example to the project. Execute the command below to build and run the project.
+
 ::: out mysql_call_stored_procedures.out :::
 
 The result set returned from the stored procedure can be accessed using `queryResult` variable in `sql:ProcedureCallResult`.

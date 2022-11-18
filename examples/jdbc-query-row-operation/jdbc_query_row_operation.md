@@ -8,6 +8,8 @@ For a sample configuration and more information on the underlying module, see th
 
 ::: code jdbc_query_row_operation.bal :::
 
+Create a Ballerina project. Copy the example to the project and add the relevant database driver JAR details to the `Ballerina.toml` file. Execute the command below to build and run the project.
+
 ::: out jdbc_query_row_operation.out :::
 
 The following util files will initialize the test database before running the BBE and clean it up afterward.
