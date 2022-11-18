@@ -4,6 +4,6 @@ This shows how the SASL/PLAIN authentication is done in the `kafka:Consumer`. Fo
 
 For more information on the underlying module, see the [`kafka` module](https://lib.ballerina.io/ballerinax/kafka/latest).
 
-::: code kafka_authentication_sasl_plain_consumer.bal :::
+::: code kafka_client_consumer_sasl.bal :::
 
-::: out kafka_authentication_sasl_plain_consumer.out :::
+::: out kafka_client_consumer_sasl.out :::

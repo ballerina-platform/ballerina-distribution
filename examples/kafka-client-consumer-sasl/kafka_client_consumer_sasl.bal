@@ -22,17 +22,11 @@ kafka:ConsumerConfiguration consumerConfigs = {
     securityProtocol: kafka:PROTOCOL_SASL_PLAINTEXT
 };
 
-// Create a subtype of `kafka:AnydataConsumerRecord`.
-public type StringConsumerRecord record {|
-    *kafka:AnydataConsumerRecord;
-    string value;
-|};
-
 service on new kafka:Listener(SASL_URL, consumerConfigs) {
-    remote function onConsumerRecord(StringConsumerRecord[] records) returns error? {
-        check from StringConsumerRecord 'record in records
+    remote function onConsumerRecord(string[] values) returns error? {
+        check from string value in values
             do {
-                log:printInfo("Received message: " + 'record.value);
+                log:printInfo("Received value: " + value);
             };
     }
 }
