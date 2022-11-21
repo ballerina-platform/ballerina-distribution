@@ -6,10 +6,10 @@ For more information on the underlying module, see the [`jwt` module](https://li
 
 >**Tip:** You may need to change the certificate file path and private key file path in the code below.
 
-::: code http_service_jwt_auth.bal :::
+::: code http_service_jwt_authentication.bal :::
 
 Run the service by executing the cURL command below.
 
-::: out http_service_jwt_auth.server.out :::
+::: out http_service_jwt_authentication.server.out :::
 
 >**Info:** Alternatively, you can invoke the above service via the [self-signed JWT Auth client](/learn/by-example/http-client-self-signed-jwt-authentication).

@@ -4,10 +4,10 @@ A client, which is secured with Bearer token auth can be used to connect to a se
 
 >**Tip:** You may need to change the trusted certificate file path in the code below.
 
-::: code http_client_bearer_token_auth.bal :::
+::: code http_client_bearer_token_authentication.bal :::
 
 Run the client program by executing the command below.
 
 >**Info:** As a prerequisite to running the client, start a secured sample service.
 
-::: out http_client_bearer_token_auth.out :::
+::: out http_client_bearer_token_authentication.out :::
