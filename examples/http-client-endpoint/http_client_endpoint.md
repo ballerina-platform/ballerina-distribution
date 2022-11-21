@@ -1,4 +1,4 @@
-# HTTP client
+# HTTP client - Send request/Receive response
 
 The HTTP Client Connector can be used to connect to and interact with an HTTP server.
 

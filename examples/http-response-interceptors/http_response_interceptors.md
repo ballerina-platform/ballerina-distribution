@@ -1,4 +1,4 @@
-# Response Interceptors
+# HTTP service - Response interceptors
 
 In addition to `RequestInterceptors`, a `ResponseInterceptor` can be used to intercept the response. `ResponseInterceptors` have a remote method, which will be executed before dispatching the response to the client. A collection of these request and response interceptors can be configured as a pipeline at the listener level or service level. 
 
