@@ -1,4 +1,4 @@
-# RabbitMQ client - Declare a queue
+# RabbitMQ client - Declare queue
 
 In this example, the RabbitMQ client is declaring a queue. Queues in RabbitMQ are ordered collections of messages. Messages are enqueued and dequeued in the FIFO manner.
 

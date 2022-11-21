@@ -1,4 +1,4 @@
-# RabbitMQ client - Produce a message
+# RabbitMQ client - Produce message
 
 In this example, the producer is sending a single message to the pre-declared queue, MyQueue. See `RabbitMQ client - Declare a queue` sample for more details on declaring the queue.
 
