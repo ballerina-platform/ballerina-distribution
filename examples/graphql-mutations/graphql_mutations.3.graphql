@@ -1,6 +1,0 @@
-mutation {
-    updateAge(age: 52) {
-        name
-        age
-    }
-}

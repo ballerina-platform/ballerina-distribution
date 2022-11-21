@@ -1,2 +1,0 @@
-$ curl -X POST -H "Content-type: application/json" -d '{ "query": "mutation { updateAge(age: 52) { name age } }" }' 'http://localhost:4000/graphql'
-{"data":{"updateAge":{"name":"Mr. Lambert", "age":52}}}

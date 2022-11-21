@@ -6,7 +6,7 @@ import ballerina/graphql;
 // The `graphql:ListenerSecureSocket` record provides the
 // SSL-related listener configurations of the listener.
 // For details, see https://lib.ballerina.io/ballerina/graphql/latest/records/ListenerSecureSocket.
-listener graphql:Listener securedEP = new(4000,
+listener graphql:Listener securedEP = new (4000,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",

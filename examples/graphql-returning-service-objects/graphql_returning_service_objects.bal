@@ -28,6 +28,6 @@ service /graphql on new graphql:Listener(4000) {
     // `Person`. Each resource function in the service type is mapped to a field in the `OBJECT`
     // type.
     resource function get profile() returns Person {
-        return new("Walter White", 51);
+        return new ("Walter White", 51);
     }
 }
