@@ -2638,8 +2638,8 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "SASL Authentication",
-                "url": "kafka-service-sasl",
+                "name": "SSL/TLS",
+                "url": "kafka-service-ssl",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
@@ -2647,8 +2647,8 @@
                 "isLearnByExample": false
             },
             {
-                "name": "SSL",
-                "url": "kafka-service-ssl",
+                "name": "SASL authentication",
+                "url": "kafka-service-sasl",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
@@ -2663,25 +2663,7 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Producer SASL Authentication",
-                "url": "kafka-client-producer-sasl",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Consumer SASL Authentication",
-                "url": "kafka-client-consumer-sasl",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Producer SSL",
+                "name": "Producer SSL/TLS",
                 "url": "kafka-client-producer-ssl",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2690,8 +2672,26 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Consumer SSL",
+                "name": "Consumer SSL/TLS",
                 "url": "kafka-client-consumer-ssl",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Producer SASL authentication",
+                "url": "kafka-client-producer-sasl",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Consumer SASL authentication",
+                "url": "kafka-client-consumer-sasl",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
