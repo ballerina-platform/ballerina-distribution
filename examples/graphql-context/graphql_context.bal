@@ -2,7 +2,7 @@ import ballerina/graphql;
 import ballerina/http;
 import ballerina/lang.value;
 
-// Define a service class to use as an object in the GraphQL service.
+// Define a record type to use as an object in the GraphQL service.
 type Person record {|
     string name;
     int age;
@@ -28,7 +28,7 @@ type Person record {|
 }
 service /graphql on new graphql:Listener(4000) {
 
-    // Define a `Person` object when the service is initialized.
+    // Define a `Person` field inside the service.
     private final Person person;
 
     function init() {
@@ -43,7 +43,7 @@ service /graphql on new graphql:Listener(4000) {
         // the `scope` is not found in the context.
         value:Cloneable|isolated object {} scope = check context.get("scope");
 
-        // The profile information will be returned for the scope of either `admin` or `user`.
+        // The profile information will be returned only if the scope is `admin`.
         if scope is string && scope == "admin" {
             return self.person;
         }
