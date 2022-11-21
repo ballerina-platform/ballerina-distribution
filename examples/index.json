@@ -2320,8 +2320,8 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Set deadline",
-                "url": "grpc-service-set-deadline",
+                "name": "Check deadline",
+                "url": "grpc-service-check-deadline",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Has different naming convention",

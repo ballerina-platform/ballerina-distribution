@@ -1,6 +1,6 @@
-# gRPC service - Set deadline
+# gRPC service - Check deadline
 
-Deadlines allow gRPC clients to specify how long they are willing to wait for an RPC to complete before the RPC is terminated with the error `DEADLINE_EXCEEDED`.
+Deadlines allow gRPC clients to specify how long they are willing to wait for an RPC to complete before the RPC is terminated with the error `DEADLINE_EXCEEDED`. The service checks whether the deadline has been exceeded and will respond accordingly.
 
 >**Info:** For more information on the underlying module, see the [`grpc` module](https://lib.ballerina.io/ballerina/grpc/latest/).
 
@@ -8,10 +8,10 @@ Deadlines allow gRPC clients to specify how long they are willing to wait for an
 
 After implementing the service, you can add the deadline check as follows.
 
-::: code grpc_service_set_deadline.bal :::
+::: code grpc_service_check_deadline.bal :::
 
 Execute the command below to run the service.
 
-::: out grpc_service_set_deadline.out :::
+::: out grpc_service_check_deadline.out :::
 
 >**Info:** You can invoke the above service via the [gRPC client - Set deadline](/learn/by-example/grpc-service-set-deadline/).
