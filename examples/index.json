@@ -2504,7 +2504,7 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Subscribe",
+                "name": "Consume messages",
                 "url": "nats-basic-sub",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2513,7 +2513,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Reply",
+                "name": "Send reply to request messages",
                 "url": "nats-basic-reply",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2529,7 +2529,7 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Publish",
+                "name": "Publish messages",
                 "url": "nats-basic-pub",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2538,7 +2538,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Request",
+                "name": "Send request messages",
                 "url": "nats-basic-request",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2722,7 +2722,7 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Consumer",
+                "name": "Consume messages",
                 "url": "rabbitmq-consumer",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2731,7 +2731,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Acknowledgements",
+                "name": "Consume messages with acknowledgements",
                 "url": "rabbitmq-consumer-with-client-acknowledgement",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2756,7 +2756,7 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Producer",
+                "name": "Produce messages",
                 "url": "rabbitmq-producer",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2765,7 +2765,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Consumer",
+                "name": "Consume messages",
                 "url": "rabbitmq-sync-consumer",
                 "verifyBuild": false,
                 "verifyOutput": false,
