@@ -1,4 +1,4 @@
-# Load balancer
+# HTTP client - Load balancer
 
 An HTTP load balancing endpoint is used when the request load needs to be load balanced across a given  set of target endpoints.
 
@@ -7,6 +7,7 @@ For more information on the underlying module,  see the [`http` module](https://
 ::: code http_load_balancer.bal :::
 
 Run the program by executing the following command.
-Before executing following sample, run the backend service.
+
+>**Info:** As a prerequisite to running the client, start a service.
 
 ::: out http_load_balancer.out :::

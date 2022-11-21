@@ -1,4 +1,4 @@
-# Circuit breaker
+# HTTP client - Circuit breaker
 
 The circuit breaker is used to gracefully handle errors which could occur due to network and backend failures.
 
@@ -7,6 +7,7 @@ For more information on the underlying module, see the [`http` module](https://l
 ::: code http_circuit_breaker.bal :::
 
 Run the program by executing the following command.
-Before executing following sample, run the backend service.
+
+>**Info:** As a prerequisite to running the client, start a service.
 
 ::: out http_circuit_breaker.out :::
