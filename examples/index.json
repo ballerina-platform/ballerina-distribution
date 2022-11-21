@@ -1969,7 +1969,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Basic Auth file user store",
+                "name": "Basic authentication file user store",
                 "url": "graphql-service-basic-auth-file-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1977,7 +1977,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Basic Auth LDAP user store",
+                "name": "Basic authentication LDAP user store",
                 "url": "graphql-service-basic-auth-ldap-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1985,7 +1985,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "JWT Auth",
+                "name": "JWT authentication",
                 "url": "graphql-service-jwt-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
