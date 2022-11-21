@@ -1,4 +1,4 @@
-# Service Read/Write
+# FTP service - Read/Write file
 
 The FTP service is used to receive file/directory changes that occur in a remote location using the FTP protocol. This sample includes receiving file/directory related change events from a listener and using the `append` api of the `ftp:Caller` to interact with the FTP server.
 
