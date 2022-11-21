@@ -1993,7 +1993,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Auth2",
+                "name": "OAuth2",
                 "url": "graphql-service-oauth2",
                 "verifyBuild": true,
                 "verifyOutput": false,
