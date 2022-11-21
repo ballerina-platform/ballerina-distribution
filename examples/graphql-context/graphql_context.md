@@ -1,4 +1,4 @@
-# Context
+# GraphQL service - Context
 
 The `graphql:Context` object can be used to pass meta information between the resolver functions. A context object is created per request. An init function should be provided using the `graphql:ServiceConfig` parameter named `contextInit`.
 

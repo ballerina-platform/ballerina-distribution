@@ -1,4 +1,4 @@
-# File upload
+# GraphQL service - File upload
 
 GraphQL package provides a way to upload files through the GraphQL endpoints with GraphQL mutations. To define an endpoint with the file upload capability, the `graphql:Upload` type can be used as the input parameter of resolver functions.
 

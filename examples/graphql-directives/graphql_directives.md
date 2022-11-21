@@ -1,4 +1,4 @@
-# Directives
+# GraphQL service - Directives
 
 The Ballerina GraphQL supports the following GraphQL directives.
 
