@@ -1,7 +1,7 @@
 import ballerina/io;
 import ballerina/websocket;
 
-// Defines the WebSocket client to call the Basic Auth secured APIs.
+// Defines the WebSocket client to call the Basic authentication secured APIs.
 // The client is enriched with the `Authorization: Basic <token>` header by
 // passing the `websocket:CredentialsConfig` for the `auth` configuration of the client.
 // For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/CredentialsConfig.

@@ -2055,7 +2055,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Basic Auth File user store",
+                "name": "Basic authentication - File user store",
                 "url": "websocket-service-basic-auth-file-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2063,7 +2063,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Basic Auth LDAP user store",
+                "name": "Basic authentication - LDAP user store",
                 "url": "websocket-service-basic-auth-ldap-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2071,7 +2071,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "JWT Auth",
+                "name": "JWT authentication",
                 "url": "websocket-service-jwt-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2110,7 +2110,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Basic Auth",
+                "name": "Basic authentication",
                 "url": "websocket-client-basic-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2118,7 +2118,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Bearer Token Auth",
+                "name": "Bearer token authentication",
                 "url": "websocket-client-bearer-token-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2126,7 +2126,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Self signed JWT Auth",
+                "name": "Self signed JWT authentication",
                 "url": "websocket-client-self-signed-jwt-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2134,7 +2134,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "OAuth2 Client Credentials grant type",
+                "name": "OAuth2 client credentials grant type",
                 "url": "websocket-client-oauth2-client-cred-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2150,7 +2150,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "OAuth2 Refresh Token grant type",
+                "name": "OAuth2 refresh token grant type",
                 "url": "websocket-client-oauth2-refresh-token-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2158,7 +2158,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "OAuth2 JWT Bearer grant type",
+                "name": "OAuth2 JWT bearer grant type",
                 "url": "websocket-client-oauth2-jwt-bearer-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
