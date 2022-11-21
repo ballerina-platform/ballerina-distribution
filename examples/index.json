@@ -2309,6 +2309,15 @@
                 "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "Server reflection",
+                "url": "grpc-server-reflection",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
