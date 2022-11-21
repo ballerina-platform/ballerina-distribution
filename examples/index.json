@@ -2000,7 +2000,7 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Send/receive messages",
+                "name": "Send/Receive messages",
                 "url": "websocket-basic-sample",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2016,7 +2016,7 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Send/receive messages",
+                "name": "Send/Receive messages",
                 "url": "websocket-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2856,7 +2856,7 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Send/receive bytes",
+                "name": "Send/Receive bytes",
                 "url": "tcp-listener",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2872,7 +2872,7 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Send/receive bytes",
+                "name": "Send/Receive bytes",
                 "url": "tcp-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2918,7 +2918,7 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Send/receive datagram",
+                "name": "Send/Receive datagram",
                 "url": "udp-listener",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2934,7 +2934,7 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Send/receive datagram",
+                "name": "Send/Receive datagram",
                 "url": "udp-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2943,7 +2943,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Send/receive datagram with connection",
+                "name": "Send/Receive datagram with connection",
                 "url": "udp-connect-client",
                 "verifyBuild": true,
                 "verifyOutput": false,

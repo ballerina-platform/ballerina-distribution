@@ -1,4 +1,4 @@
-# TCP service - Send/receive bytes
+# TCP service - Send/Receive bytes
 
 The TCP Listener is used to expose a TCP service over the TCP protocol. This sample demonstrates how the TCP socket listener service interacts with the TCP client.
 
