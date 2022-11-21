@@ -15,15 +15,7 @@ listener websocket:Listener securedEP = new(9090,
         mutualSsl: {
             verifyClient: http:REQUIRE,
             cert: "../resource/path/to/public.crt"
-        },
-        // Optional config which enables the preferred SSL protocol and its versions.
-        protocol: {
-            name: http:TLS,
-            versions: ["TLSv1.2", "TLSv1.1"]
-        },
-        // Optional config which configures the preferred ciphers.
-        ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
-
+        }
     }
 );
 

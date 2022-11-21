@@ -12,12 +12,7 @@ public function main() returns error? {
                 certFile: "../resource/path/to/public.crt",
                 keyFile: "../resource/path/to/private.key"
             },
-            cert: "../resource/path/to/public.crt",
-            protocol: {
-                name: grpc:TLS
-            },
-            ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
-
+            cert: "../resource/path/to/public.crt"
         }
     );
 
