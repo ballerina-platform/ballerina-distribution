@@ -1938,8 +1938,8 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Client",
-                "url": "graphql-client",
+                "name": "Query GraphQL endpoint",
+                "url": "graphql-client-query-endpoint",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,

@@ -1,2 +1,0 @@
-$ bal run graphql_client.bal
-{"name":"Walter White","age":51}
