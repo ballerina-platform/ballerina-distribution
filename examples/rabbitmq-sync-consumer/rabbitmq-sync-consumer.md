@@ -1,6 +1,6 @@
 # RabbitMQ client - Consumer
 
-The underlying connections of the consumer and the producer are secured with TLS/SSL and Basic Auth.
+In this example, the RabbitMQ client is used to consume a message from a pre-declared queue. 
 
 For more information on the underlying module, see the [`rabbitmq` module](https://lib.ballerina.io/ballerinax/rabbitmq/latest).
 
