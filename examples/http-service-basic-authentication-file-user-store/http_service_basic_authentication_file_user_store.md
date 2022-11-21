@@ -6,7 +6,7 @@ For more information on the underlying module, see the [`auth` module](https://l
 
 >**Tip:** You may need to change the certificate file path and private key file path in the code below.
 
-::: code http_service_basic_auth_file_user_store.bal :::
+::: code http_service_basic_authentication_file_user_store.bal :::
 
 >**Info:** As a prerequisite to running the service, populate the `Config.toml` file correctly with the user information as shown below.
 
@@ -23,6 +23,6 @@ For more information on the underlying module, see the [`auth` module](https://l
 
 Run the service by executing the command below.
 
-::: out http_service_basic_auth_file_user_store.server.out :::
+::: out http_service_basic_authentication_file_user_store.server.out :::
 
 >**Info:** Alternatively, you can invoke the above service via the [Basic Auth client](/learn/by-example/http-client-basic-authentication).

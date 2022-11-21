@@ -6,10 +6,10 @@ For more information on the underlying module, see the [`auth` module](https://l
 
 >**Tip:** You may need to change the trusted certificate file path in the code below.
 
-::: code http_client_basic_auth.bal :::
+::: code http_client_basic_authentication.bal :::
 
 Run the client program by executing the command below.
 
 >**Info:** As a prerequisite to running the client, start the [Basic authentication file user store service](/learn/by-example/http-service-basic-authentication-file-user-store).
 
-::: out http_client_basic_auth.out :::
+::: out http_client_basic_authentication.out :::
