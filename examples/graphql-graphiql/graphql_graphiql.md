@@ -14,4 +14,4 @@ Run the service by executing the following command.
 
 To access the GraphiQL client, open a browser and access `http://localhost:4000/graphiql`. Following is a sample screenshot of the GraphiQL client.
 
-![GraphiQL client](/learn/by-example/images/grapihql-client.png "GraphiQL Client")
+![GraphiQL client](/learn/by-example/images/graphiql-client.png "GraphiQL Client")
