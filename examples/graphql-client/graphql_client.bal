@@ -7,11 +7,6 @@ type ResponseWithErrors record {|
     Data data;
 |};
 
-type Response record {|
-    *graphql:GenericResponse;
-    Data data;
-|};
-
 type Data record {|
     Person profile;
 |};
