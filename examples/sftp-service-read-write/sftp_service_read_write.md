@@ -1,4 +1,4 @@
-# Service Read/Write
+# SFTP service - Read/Write file
 
 The SFTP service is used to receive file/directory changes that occur in a remote location using the SFTP protocol. This sample includes receiving file/directory related change events from a listener and using the `append` api of the `ftp:Caller` to interact with the SFTP server.
 

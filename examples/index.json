@@ -2275,7 +2275,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Server streaming RPC",
+                "name": "Server-side streaming RPC",
                 "url": "grpc-service-server-streaming",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2284,7 +2284,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client streaming RPC",
+                "name": "Client-side streaming RPC",
                 "url": "grpc-service-client-streaming",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2327,7 +2327,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Server streaming RPC",
+                "name": "Server-side streaming RPC",
                 "url": "grpc-client-server-streaming",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2336,7 +2336,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client streaming RPC",
+                "name": "Client-side streaming RPC",
                 "url": "grpc-client-client-streaming",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2592,6 +2592,22 @@
         ]
     },
     {
+        "title": "Kafka service",
+        "column": 2,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Service",
+                "url": "kafka-service",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
         "title": "Kafka client",
         "column": 2,
         "category": "Network libraries",
@@ -2626,7 +2642,7 @@
         ]
     },
     {
-        "title": "Kafka secured service",
+        "title": "Kafka service security",
         "column": 2,
         "category": "Network libraries",
         "samples": [
@@ -2651,7 +2667,7 @@
         ]
     },
     {
-        "title": "Kafka secured client",
+        "title": "Kafka client security",
         "column": 2,
         "category": "Network libraries",
         "samples": [
@@ -2954,7 +2970,7 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Read",
+                "name": "Read file",
                 "url": "ftp-service-read",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2963,7 +2979,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Read/Write",
+                "name": "Read/Write file",
                 "url": "ftp-service-read-write",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2979,7 +2995,7 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Read",
+                "name": "Read file",
                 "url": "ftp-client-read",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2988,7 +3004,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Write",
+                "name": "Write file",
                 "url": "ftp-client-write",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -3004,7 +3020,7 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Read",
+                "name": "Read file",
                 "url": "sftp-service-read",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -3013,7 +3029,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Read/Write",
+                "name": "Read/Write file",
                 "url": "sftp-service-read-write",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -3029,7 +3045,7 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Read",
+                "name": "Read file",
                 "url": "sftp-client-read",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -3038,7 +3054,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Write",
+                "name": "Write file",
                 "url": "sftp-client-write",
                 "verifyBuild": true,
                 "verifyOutput": false,

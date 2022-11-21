@@ -1,4 +1,4 @@
-# Client Read
+# FTP client - Read file
 
 The FTP client is used to perform CRUD operation on remote files/directories using the FTP protocol. This sample includes getting file content with default configurations using the default port number.
 
