@@ -2838,7 +2838,7 @@
     },
     {
         "title": "TCP service security",
-        "column": 1,
+        "column": 3,
         "category": "Network libraries",
         "samples": [
             {
@@ -2853,7 +2853,7 @@
     },
     {
         "title": "TCP client security",
-        "column": 1,
+        "column": 3,
         "category": "Network libraries",
         "samples": [
             {
