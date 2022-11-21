@@ -10,10 +10,4 @@ public function main() returns error? {
             cert: "../resource/path/to/public.crt"
         }
     );
-
-    check rabbitmqClient->queueDeclare("Secured");
-
-    // Publishes the message using the `rabbitmqClient` and the routing key named `Secured`.
-    string message = "Hello from Ballerina";
-    check rabbitmqClient->publishMessage({content: message, routingKey: "Secured"});
 }
