@@ -32,6 +32,6 @@ Once you run the command, the `grpc_simple_pb.bal` file gets generated inside th
 
 4. Execute the command below to run the client.
 
->**Info:** As a prerequisite to running the client, start the [simple RPC service](earn/by-example/grpc-service-simple/).
+>**Info:** As a prerequisite to running the client, start the [simple RPC service](/learn/by-example/grpc-service-simple/).
 
    ::: out grpc_simple_service_client.out :::

@@ -2318,6 +2318,15 @@
                 "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "Set deadline",
+                "url": "grpc-service-set-deadline",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -2365,6 +2374,15 @@
             {
                 "name": "Send/Receive headers",
                 "url": "grpc-client-headers",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Set deadline",
+                "url": "grpc-client-set-deadline",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Has different naming convention",
