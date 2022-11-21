@@ -2598,7 +2598,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "SASL Authentication",
+                "name": "SASL authentication",
                 "url": "kafka-service-sasl",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2632,7 +2632,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Producer SASL Authentication",
+                "name": "Producer SASL authentication",
                 "url": "kafka-client-producer-sasl",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2641,7 +2641,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Consumer SASL Authentication",
+                "name": "Consumer SASL authentication",
                 "url": "kafka-client-consumer-sasl",
                 "verifyBuild": false,
                 "verifyOutput": false,
