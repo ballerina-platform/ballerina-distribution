@@ -1,4 +1,4 @@
-# WebSocket service - Basic authentication - LDAP user store
+# WebSocket service - Basic authentication LDAP user store
 
 A WebSocket service can be secured with Basic authentication and by enforcing authorization optionally. Then, it validates the Basic authentication token sent in the `Authorization` header against the provided configurations. This reads data from the configured LDAP. This stores usernames, passwords for authentication, and scopes for authorization.
 

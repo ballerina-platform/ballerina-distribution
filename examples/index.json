@@ -2000,7 +2000,7 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Service",
+                "name": "Send/receive messages",
                 "url": "websocket-basic-sample",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2016,7 +2016,7 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Client",
+                "name": "Send/receive messages",
                 "url": "websocket-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2024,7 +2024,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Retry",
+                "name": "Retry on failure",
                 "url": "websocket-retry-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2055,7 +2055,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Basic authentication - File user store",
+                "name": "Basic authentication file user store",
                 "url": "websocket-service-basic-auth-file-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2063,7 +2063,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Basic authentication - LDAP user store",
+                "name": "Basic authentication LDAP user store",
                 "url": "websocket-service-basic-auth-ldap-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2856,7 +2856,7 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Service",
+                "name": "Send/receive bytes",
                 "url": "tcp-listener",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2872,7 +2872,7 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Client",
+                "name": "Send/receive bytes",
                 "url": "tcp-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2918,7 +2918,7 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Service",
+                "name": "Send/receive datagram",
                 "url": "udp-listener",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2934,7 +2934,7 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Connectionless client",
+                "name": "Send/receive datagram",
                 "url": "udp-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2943,7 +2943,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Connection-oriented client",
+                "name": "Send/receive datagram with connection",
                 "url": "udp-connect-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
