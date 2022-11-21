@@ -3,13 +3,9 @@ import ballerina/io;
 
 // User defined data types to perform client side data-binding. This includes separate fields for
 // GraphQL errors and data.
-type ResponseWithErrors record {|
+type ProfileResponse record {|
     *graphql:GenericResponseWithErrors;
-    Data data;
-|};
-
-type Data record {|
-    Person profile;
+    record {|Person profile;|} data;
 |};
 
 type Person record {|
@@ -28,6 +24,6 @@ public function main() returns error? {
     // retrieval of a successful response, the client tries to perform data binding for the
     // user-defined data type. On failure to retrieve a successful response or when the client fails
     // to perform data binding, a graphql:ClientError will be returned.
-    ResponseWithErrors response = check graphqlClient->execute(document);
+    ProfileResponse response = check graphqlClient->execute(document);
     io:println(response.data.profile);
 }
