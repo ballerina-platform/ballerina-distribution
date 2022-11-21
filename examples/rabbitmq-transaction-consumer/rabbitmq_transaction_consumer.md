@@ -1,4 +1,4 @@
-# RabbitMQ Service - Transactional Consumer
+# RabbitMQ service - Transactional consumer
 
 The messages are consumed from an existing queue using the Ballerina RabbitMQ message listener and Ballerina transactions. Upon successful execution of the transaction block, the acknowledgement will commit or rollback in the case of any error.
 

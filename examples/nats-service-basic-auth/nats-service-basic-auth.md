@@ -1,4 +1,4 @@
-# NATS Service - Basic Authentication
+# NATS service - Basic authentication
 
 In this example, the underlying connections of the subscriber is secured with Basic Auth.
 
