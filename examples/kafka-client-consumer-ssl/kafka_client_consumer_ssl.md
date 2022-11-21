@@ -1,4 +1,4 @@
-# Kafka consumer - SSL
+# Kafka consumer - SSL/TLS
 
 This shows how the SSL encryption is done in the `kafka:Consumer`. For this to work properly, an active Kafka server must be present, and it should be configured to use SSL.
 

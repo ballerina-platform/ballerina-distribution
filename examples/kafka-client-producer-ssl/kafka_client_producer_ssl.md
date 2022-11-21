@@ -1,4 +1,4 @@
-# Kafka producer - SSL
+# Kafka producer - SSL/TLS
 
 This shows how the SSL encryption is done in the `kafka:Producer`. For this to work properly, an active Kafka server must be present, and it should be configured to use the SSL.
 
