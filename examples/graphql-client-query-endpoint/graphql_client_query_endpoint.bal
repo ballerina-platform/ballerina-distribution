@@ -5,7 +5,7 @@ import ballerina/io;
 // GraphQL errors and data.
 type ProfileResponse record {|
     *graphql:GenericResponseWithErrors;
-    record {Person profile;} data;
+    record {|Person profile;|} data;
 |};
 
 type Person record {|
