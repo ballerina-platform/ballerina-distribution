@@ -15,14 +15,7 @@ listener graphql:Listener securedEP = new(4000,
         mutualSsl: {
             verifyClient: http:REQUIRE,
             cert: "../resource/path/to/public.crt"
-        },
-        // Enables the preferred SSL protocol and its versions.
-        protocol: {
-            name: http:TLS,
-            versions: ["TLSv1.2", "TLSv1.1"]
-        },
-        // Configures the preferred ciphers.
-        ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
+        }
     }
 );
 
