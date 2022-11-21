@@ -1,4 +1,4 @@
-# Hello world
+# GraphQL service - Hello world
 
 A GraphQL service in Ballerina represents a GraphQL schema. Each resource function of the `graphql:Service` with the `get` accessor represents a resolver function in the root `Query` type. The return type of each resource function will be the type of each field represented by the resource function.
 

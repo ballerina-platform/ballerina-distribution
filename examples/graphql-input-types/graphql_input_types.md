@@ -1,4 +1,4 @@
-# Input types
+# GraphQL service - Input types
 
 GraphQL resources can have input parameters, which will be mapped to input values in the generated GraphQL schema.
 

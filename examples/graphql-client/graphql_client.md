@@ -1,4 +1,4 @@
-# Client
+# GraphQL client
 
 The GraphQL Client can be used to connect and interact with a GraphQL server.
 

@@ -1,4 +1,4 @@
-# GraphQL output object - Service
+# GraphQL service - Service as output object
 
 A GraphQL resource function can return service objects. The returning service objects are mapped to an `OBJECT` type in the GraphQL schema. Each resource function in the returned service object becomes a field in the created `OBJECT` type.
 

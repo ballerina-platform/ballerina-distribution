@@ -1,4 +1,4 @@
-# Documentation
+# GraphQL service - Documentation
 
 A GraphQL schema can include documentation for the schema. These documentation can help you to understand the schema. In Ballerina, the Ballerina doc comments can be used to add documentation to various schema members.
 
