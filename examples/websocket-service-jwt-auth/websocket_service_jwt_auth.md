@@ -1,4 +1,4 @@
-# WebSocket service - JWT Auth
+# WebSocket service - JWT authentication
 
 A WebSocket service can be secured with JWT and by enforcingauthorization optionally. Then, it validates the JWT sent in the `Authorization` header against the provided configurations.
 
@@ -16,4 +16,4 @@ Run the service by executing the cURL command below.
 
 ::: out websocket_service_jwt_auth.server.out :::
 
->**Info:** Alternatively, you can invoke the above service via the [self-signed JWT Auth client](/learn/by-example/websocket-client-self-signed-jwt-auth).
+>**Info:** Alternatively, you can invoke the above service via the [self-signed JWT authentication client](/learn/by-example/websocket-client-self-signed-jwt-auth).

@@ -1,4 +1,4 @@
-# WebSocket client - Self signed JWT Auth
+# WebSocket client - Self signed JWT authentication
 
 A client, which is secured with self-signed JWT can be used to connect to a secured service.
 
@@ -12,6 +12,6 @@ For more information on the underlying module, see the [`oauth2` module](https:/
 
 Run the client program by executing the command below.
 
->**Info:** As a prerequisite to running the client, start the [JWT Auth service](/learn/by-example/websocket-service-jwt-auth/).
+>**Info:** As a prerequisite to running the client, start the [JWT authentication service](/learn/by-example/websocket-service-jwt-auth/).
 
 ::: out websocket_client_self_signed_jwt_auth.out :::
