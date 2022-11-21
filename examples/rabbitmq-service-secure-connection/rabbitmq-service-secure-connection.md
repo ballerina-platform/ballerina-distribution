@@ -1,4 +1,4 @@
-# RabbitMQ Service - SSL/TLS
+# RabbitMQ service - SSL/TLS
 
 The underlying connection of the consumer service is secured with TLS/SSL.
 
