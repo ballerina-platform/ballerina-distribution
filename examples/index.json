@@ -1487,24 +1487,24 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Basic Auth file user store",
-                "url": "http-service-basic-auth-file-user-store",
+                "name": "Basic authentication - File user store",
+                "url": "http-service-basic-authentication-file-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
-                "name": "Basic Auth LDAP user store",
-                "url": "http-service-basic-auth-ldap-user-store",
+                "name": "Basic authentication - LDAP user store",
+                "url": "http-service-basic-authentication-ldap-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
-                "name": "JWT Auth",
-                "url": "http-service-jwt-auth",
+                "name": "JWT authentication",
+                "url": "http-service-jwt-authentication",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -1542,31 +1542,31 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Basic Auth",
-                "url": "http-client-basic-auth",
+                "name": "Basic authentication",
+                "url": "http-client-basic-authentication",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
-                "name": "Bearer Token Auth",
-                "url": "http-client-bearer-token-auth",
+                "name": "Bearer token authentication",
+                "url": "http-client-bearer-token-authentication",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
-                "name": "Self signed JWT Auth",
-                "url": "http-client-self-signed-jwt-auth",
+                "name": "Self signed JWT authentication",
+                "url": "http-client-self-signed-jwt-authentication",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
-                "name": "OAuth2 Client Credentials grant type",
+                "name": "OAuth2 client credentials grant type",
                 "url": "http-client-oauth2-client-credentials-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1574,7 +1574,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "OAuth2 Password grant type",
+                "name": "OAuth2 password grant type",
                 "url": "http-client-oauth2-password-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1582,7 +1582,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "OAuth2 Refresh Token grant type",
+                "name": "OAuth2 refresh token grant type",
                 "url": "http-client-oauth2-refresh-token-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1590,7 +1590,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "OAuth2 JWT Bearer grant type",
+                "name": "OAuth2 JWT bearer grant type",
                 "url": "http-client-oauth2-jwt-bearer-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
