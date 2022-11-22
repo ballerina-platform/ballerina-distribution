@@ -32,7 +32,9 @@ jobs:
                     packagePAT: ${{ secrets.GITHUB_TOKEN }}
                     devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
                     ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
-                run: ./gradlew clean :project-api-tests:test --stacktrace --scan --console=plain --no-daemon --continue
+                run:
+                    echo $ballerinaBotWorkflow
+                    ./gradlew clean :project-api-tests:test --stacktrace --scan --console=plain --no-daemon --continue
 
 #    ubuntu-bbe-tests:
 #           name: BBE Tests on Ubuntu
