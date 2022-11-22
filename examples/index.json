@@ -1457,7 +1457,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Payload binding",
+                "name": "Payload data binding",
                 "url": "http-client-data-binding",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -1521,7 +1521,7 @@
         ]
     },
     {
-        "title": "REST client security",
+        "title": "HTTP client security",
         "column": 0,
         "category": "Network libraries",
         "samples": [
@@ -1600,7 +1600,7 @@
         ]
     },
     {
-        "title": "HTTP advanced",
+        "title": "HTTP service advanced",
         "column": 0,
         "category": "Network libraries",
         "samples": [
@@ -1614,7 +1614,7 @@
             },
             {
                 "name": "Redirects",
-                "url": "http-redirects",
+                "url": "http-service-redirects",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -1653,16 +1653,8 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Caching client",
-                "url": "http-caching-client",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Streaming",
-                "url": "http-streaming",
+                "name": "File upload",
+                "url": "http-service-file-upload",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -1702,7 +1694,15 @@
             },
             {
                 "name": "Chunking",
-                "url": "http-disable-chunking",
+                "url": "http-service-chunking",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Sending cache response",
+                "url": "http-service-cache-response",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -1717,17 +1717,56 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Request With multiparts",
-                "url": "http-request-with-multiparts",
-                "verifyBuild": false,
+                "name": "Passthrough",
+                "url": "http-passthrough",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "HTTP client advanced",
+        "column": 0,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Redirects",
+                "url": "http-client-redirects",
+                "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
-                "name": "Passthrough",
-                "url": "http-passthrough",
+                "name": "File upload",
+                "url": "http-client-file-upload",
                 "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Chunking",
+                "url": "http-client-chunking",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Caching client",
+                "url": "http-caching-client",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Request With multiparts",
+                "url": "http-request-with-multiparts",
+                "verifyBuild": false,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false

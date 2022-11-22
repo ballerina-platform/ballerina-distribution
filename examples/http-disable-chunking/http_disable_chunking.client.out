@@ -1,3 +1,0 @@
-$ curl http://localhost:9092/chunk
-Outbound request content length: 20
-

@@ -1,4 +1,4 @@
-# Matrix parameter
+# HTTP service - Matrix parameter
 
 Ballerina supports extracting `MatrixParam` values using `http:Request` support method.
 
