@@ -9,10 +9,8 @@ public type Order record {|
 |};
 
 kafka:ConsumerConfiguration consumerConfigs = {
-    groupId: "group-id",
-    // Subscribes to the topic `test-kafka-topic`.
-    topics: ["test-kafka-topic"],
-    pollingInterval: 1
+    groupId: "order-group-id",
+    topics: ["order-topic"]
 };
 
 service on new kafka:Listener(kafka:DEFAULT_URL, consumerConfigs) {

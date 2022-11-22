@@ -1,9 +1,6 @@
 import ballerina/io;
 import ballerinax/kafka;
 
-// Define the relevant SSL URL of the configured Kafka server.
-const SSL_URL = "localhost:9094";
-
 kafka:ProducerConfiguration producerConfig = {
     // Provide the relevant secure socket configurations by using `kafka:SecureSocket`.
     // For details, see https://lib.ballerina.io/ballerinax/kafka/latest/records/SecureSocket.
@@ -19,10 +16,10 @@ kafka:ProducerConfiguration producerConfig = {
 };
 
 public function main() returns kafka:Error? {
-    kafka:Producer messageProducer = check new (SSL_URL, producerConfig);
+    kafka:Producer messageProducer = check new ("localhost:9094", producerConfig);
     kafka:Error? result = messageProducer->send({
-        topic: "demo-security",
-        value: "Hello, World!"
+        topic: "log-topic",
+        value: "login failed for user 212341 at 1669113239"
     });
     if result is kafka:Error {
         io:println("Message publish unsuccessful : " + result.message());

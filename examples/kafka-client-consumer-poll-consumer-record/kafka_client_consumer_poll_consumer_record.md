@@ -4,7 +4,7 @@ This shows how to use a `kafka:Consumer` as a simple record consumer. The record
 
 The received records are converted to the user defined type using data-binding. For this to work properly, an active Kafka broker should be present.
 
-For more information on the underlying module,  see the [`kafka` module](https://lib.ballerina.io/ballerinax/kafka/latest).
+>**Info:** For more information on the underlying module,  see the [`kafka` module](https://lib.ballerina.io/ballerinax/kafka/latest).
 
 ::: code kafka_client_consumer_poll_consumer_record.bal :::
 
