@@ -1,6 +1,6 @@
-# NATS Client - SSL/TLS
+# NATS client - SSL/TLS
 
-In this example, the underlying connections of the subscriber and the publisher are secured with TLS/SSL.
+In this example, the underlying connection of the publisher is secured with TLS/SSL. 
 
 For more information on the underlying module, see the [`nats` module](https://lib.ballerina.io/ballerinax/nats/latest).
 

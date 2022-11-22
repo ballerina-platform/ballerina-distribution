@@ -1,4 +1,4 @@
-# HTTP client
+# HTTP client - Send request/Receive response
 
 The HTTP Client Connector can be used to connect to and interact with an HTTP server.
 
@@ -7,6 +7,7 @@ For more information on the underlying module, see the [`http` module](https://l
 ::: code http_client_endpoint.bal :::
 
 Run the client program by executing the following command.
-Before executing following sample, run the service in `Basic REST service` example.
+
+>**Info:** As a prerequisite to running the client, start a [Basic REST service](learn/by-example/http-basic-rest-service/).
 
 ::: out http_client_endpoint.out :::

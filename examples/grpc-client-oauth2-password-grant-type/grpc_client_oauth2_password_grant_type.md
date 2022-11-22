@@ -1,4 +1,4 @@
-# gRPC client - OAuth2 Password grant type 
+# gRPC client - OAuth2 password grant type 
 
 A client, which is secured with OAuth2 password grant type can be used to connect to a secured service.
 

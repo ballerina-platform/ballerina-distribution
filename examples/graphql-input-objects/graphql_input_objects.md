@@ -1,6 +1,8 @@
-# Input objects
+# GraphQL service - Input objects
 
-GraphQL resources can have record types as input parameters, which will be mapped to `INPUT_OBJECT`s in the generated GraphQL schema. According to the GraphQL specification, an input type cannot be used as an output type. Therefore, using the same type as an input and an output will result is a compilation error.
+GraphQL resolvers can have record types as input parameters, which will be mapped to an `INPUT_OBJECT`s in the generated GraphQL schema. The input parameters of the resolver function will be added as input arguments of the corresponding field in the generated GraphQL schema.
+
+According to the GraphQL specification, an input type cannot be used as an output type. Therefore, using the same type as an input and an output will result is a compilation error.
 
 This example shows a GraphQL endpoint, which has a field `addPost` with an input of type `NewPost` in the root `Mutation` type.
 

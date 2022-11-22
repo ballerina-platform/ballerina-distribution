@@ -1,7 +1,7 @@
 import ballerina/http;
 
 // HTTP version is set to 2.0.
-http:Client http2serviceClientEP = check new ("http://localhost:7090");
+http:Client http2serviceClientEP = check new ("localhost:7090");
 
 // Since the default HTTP version is 2.0, HTTP version is set to 1.1.
 service / on new http:Listener(9090, httpVersion = http:HTTP_1_1) {

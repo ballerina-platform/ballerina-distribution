@@ -12,7 +12,7 @@ public function main() returns error? {
     string msg = "Hello Ballerina echo";
     udp:Datagram datagram = {
         remoteHost: "localhost",
-        remotePort : 8080,
+        remotePort : 9090,
         data : msg.toBytes()
     };
 

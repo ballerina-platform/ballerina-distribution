@@ -1,6 +1,6 @@
-# gRPC client - Basic auth
+# gRPC client - Basic authentication
 
-A client, which is secured with Basic Auth can be used to connect to a secured service.
+A client, which is secured with Basic authentication can be used to connect to a secured service.
 
 The client metadata is enriched with the `Authorization: Basic <token>` header by passing the `grpc:CredentialsConfig` for the `auth` configuration of the client.
 

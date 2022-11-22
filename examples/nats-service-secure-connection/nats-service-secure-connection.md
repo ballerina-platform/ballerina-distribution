@@ -1,6 +1,6 @@
-# NATS Service - SSL/TLS
+# NATS service - SSL/TLS
 
-In this example, the underlying connections of the subscriber and the publisher are secured with TLS/SSL and Basic Auth.
+In this example, the underlying connection of the subscriber is secured with TLS/SSL. 
 
 For more information on the underlying module, see the [`nats` module](https://lib.ballerina.io/ballerinax/nats/latest).
 

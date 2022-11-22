@@ -42,7 +42,7 @@ readonly service class LogInterceptor {
     interceptors: [new LogInterceptor()]
 
 }
-service /graphql on new graphql:Listener(4000) {
+service /graphql on new graphql:Listener(9090) {
     isolated resource function get name() returns string {
         log:printInfo("Executing the field \"name\"");
         return "GraphQL Interceptors";

@@ -1,6 +1,6 @@
-# NATS Client - Basic Authentication
+# NATS client - Basic authentication
 
-In this example, the underlying connections of the subscriber and the publisher are secured with Basic Auth.
+In this example, the underlying connection of the publisher is secured with Basic Auth. 
 
 For more information on the underlying module, see the [`nats` module](https://lib.ballerina.io/ballerinax/nats/latest).
 

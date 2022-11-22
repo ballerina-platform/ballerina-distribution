@@ -3,7 +3,6 @@ import ballerina/http;
 type Album readonly & record {|
     string title;
     string artist;
-
 |};
 
 table<Album> key(title) albums = table [

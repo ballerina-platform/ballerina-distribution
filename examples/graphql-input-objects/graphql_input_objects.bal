@@ -12,15 +12,14 @@ type Post record {|
     int id;
 |};
 
-service /graphql on new graphql:Listener(4000) {
+service /graphql on new graphql:Listener(9090) {
 
     // Define an in-memory array to store the Posts
     private final Post[] posts = [];
 
-    // The input parameters of a resolver function become input arguments of the corresponding
-    // GraphQL field. In this GraphQL service, the `addPost` remote method has an input argument
-    // `newPost` of type `NewPost`. This `NewPost` record type will be mapped to an `INPUT_OBJECT`
-    // type in the generated GraphQL schema.
+    // This remote method (`addPost`) has an input argument `newPost` of type `NewPost`. This
+    // `NewPost` record type will be mapped to an `INPUT_OBJECT` type in the generated GraphQL
+    // schema.
     remote function addPost(NewPost newPost) returns Post {
         int id = self.posts.length();
         Post post = {id: id, ...newPost};

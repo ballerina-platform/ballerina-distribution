@@ -13,12 +13,7 @@ public function main() returns error? {
                 certFile: "../resource/path/to/public.crt",
                 keyFile: "../resource/path/to/private.key"
             },
-            cert: "../resource/path/to/public.crt",
-            // `protocol` and `ciphers` can be optionally configured.
-            protocol: {
-                name: http:TLS
-            },
-            ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
+            cert: "../resource/path/to/public.crt"
         }
     );
     check securedEP->writeMessage("Hello, World!");

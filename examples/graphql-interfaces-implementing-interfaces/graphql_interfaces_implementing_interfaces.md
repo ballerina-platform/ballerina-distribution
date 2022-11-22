@@ -1,4 +1,4 @@
-# Interfaces implementing interfaces
+# GraphQL service - Interfaces implementing interfaces
 
 A GraphQL schema can have interfaces that can be implemented using other interfaces.
 

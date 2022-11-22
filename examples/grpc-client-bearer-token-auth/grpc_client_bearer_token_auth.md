@@ -1,6 +1,6 @@
-# gRPC client - Bearer token auth
+# gRPC client - Bearer token authentication
 
-A client, which is secured with Bearer token auth can be used to connect to a secured service.
+A client, which is secured with Bearer token authentication can be used to connect to a secured service.
 
 The client metadata is enriched with the `Authorization: Bearer <token>` header by passing the `grpc:BearerTokenConfig` for the `auth` configuration of the client.
 

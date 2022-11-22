@@ -1,4 +1,4 @@
-# GraphQL service - JWT Auth
+# GraphQL service - JWT authentication
 
 A GraphQL service can be secured with JWT and by enforcing authorization optionally. Then, it validates the JWT sent in the `Authorization` header against the provided configurations.
 

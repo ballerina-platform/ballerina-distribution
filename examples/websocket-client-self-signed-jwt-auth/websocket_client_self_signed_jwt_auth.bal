@@ -2,7 +2,7 @@ import ballerina/io;
 import ballerina/websocket;
 
 public function main() returns error? {
-    // Defines the WebSocket client to call the JWT Auth secured APIs.
+    // Defines the WebSocket client to call the JWT authentication secured APIs.
     // The client is enriched with the `Authorization: Bearer <token>` header by
     // passing the `websocket:JwtIssuerConfig` for the `auth` configuration of the
     // client. A self-signed JWT is issued before the request is sent.

@@ -1,6 +1,6 @@
-# RabbitMQ Client - Producer
+# RabbitMQ client - Produce message
 
-Producing in RabbitMQ means nothing more than sending. In this example, the producer is sending a single message to the queue MyQueue. 
+In this example, the producer is sending a single message to the pre-declared queue, MyQueue. See `RabbitMQ client - Declare a queue` sample for more details on declaring the queue.
 
 For more information on the underlying module, see the [`rabbitmq` module](https://lib.ballerina.io/ballerinax/rabbitmq/latest).
 

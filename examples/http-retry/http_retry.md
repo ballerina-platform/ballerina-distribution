@@ -1,4 +1,4 @@
-# Retry
+# HTTP client - Retry
 
 The HTTP retry client tries sending over the same request to the backend service when there is a network level failure.
 
@@ -7,6 +7,7 @@ For more information on the underlying module, see the [`http` module](https://l
 ::: code http_retry.bal :::
 
 Run the program by executing the following command.
-Before executing following sample, run the backend service.
+
+>**Info:** As a prerequisite to running the client, start a service.
 
 ::: out http_retry.out :::

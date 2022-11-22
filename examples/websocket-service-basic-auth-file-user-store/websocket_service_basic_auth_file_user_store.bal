@@ -9,8 +9,8 @@ listener websocket:Listener securedEP = new(9090,
     }
 );
 
-// The service can be secured with Basic Auth and can be authorized optionally.
-// Using Basic Auth with the file user store can be enabled by setting the
+// The service can be secured with Basic authentication and can be authorized optionally.
+// Using Basic authentication with the file user store can be enabled by setting the
 // `websocket:FileUserStoreConfig` configurations.
 // For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/FileUserStoreConfig
 // Authorization is based on scopes. A scope maps to one or more groups.
