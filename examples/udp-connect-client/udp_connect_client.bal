@@ -10,7 +10,7 @@ public function main() returns error? {
     // and the timeout in seconds, which specifies the read timeout value.
     // E.g.: `udp:ConnectClient socketClient = new ("www.ballerina.com", 80,
     // localHost = "localhost", timeout = 5);`
-    udp:ConnectClient socketClient = check new("localhost", 8080);
+    udp:ConnectClient socketClient = check new("localhost", 9090);
 
     string msg = "Hello Ballerina echo";
 

@@ -3,7 +3,7 @@ import ballerina/log;
 import ballerina/tcp;
 
 // Bind the service to the port. 
-service on new tcp:Listener(3000) {
+service on new tcp:Listener(9090) {
 
     // This remote method is invoked when the new client connects to the server.
     remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService {
