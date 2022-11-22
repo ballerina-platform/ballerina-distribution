@@ -1,6 +1,6 @@
 import ballerina/graphql;
 
-service /graphql on new graphql:Listener(4000) {
+service /graphql on new graphql:Listener(9090) {
 
     // In the generated schema of this GraphQL service, the `greeting` field of the `Query` type has
     // an input value `name`, which is of the type `String!`.

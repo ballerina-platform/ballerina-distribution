@@ -6,7 +6,7 @@ type Person record {|
     int age;
 |};
 
-service /graphql on new graphql:Listener(4000) {
+service /graphql on new graphql:Listener(9090) {
 
     // Define a `Person` object in the service.
     private Person person;

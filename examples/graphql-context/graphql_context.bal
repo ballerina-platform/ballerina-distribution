@@ -26,7 +26,7 @@ type Person record {|
         return context;
     }
 }
-service /graphql on new graphql:Listener(4000) {
+service /graphql on new graphql:Listener(9090) {
 
     // Define a `Person` field inside the service.
     private final Person person;
