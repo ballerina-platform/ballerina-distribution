@@ -1,2 +1,2 @@
-$ bal run rabbitmq-sync-consumer.bal
+$ bal run rabbitmq_service_basic_auth.bal
 time = 2021-05-20T14:49:11.011+05:30 level = INFO module = "" message = "Received message: Hello from Ballerina"

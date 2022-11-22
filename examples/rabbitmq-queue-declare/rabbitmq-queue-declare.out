@@ -1,1 +1,0 @@
-$ bal run rabbitmq-queue-declare.bal
