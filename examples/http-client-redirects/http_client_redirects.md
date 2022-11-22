@@ -10,4 +10,4 @@ Run the client program by executing the following command.
 
 >**Info:** As a prerequisite to running the client, start a [Redirect service](learn/by-example/http-service-redirects/).
 
-::: out http_client_redirects.client.out :::
+::: out http_client_redirects.out :::
