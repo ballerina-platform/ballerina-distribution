@@ -1,12 +1,9 @@
 import ballerinax/kafka;
 import ballerina/log;
 
-// Define the relevant SASL URL of the configured Kafka server.
-const SSL_URL = "localhost:9094";
-
 kafka:ConsumerConfiguration consumerConfigs = {
-    groupId: "test-group",
-    topics: ["demo-security"],
+    groupId: "log-group-id",
+    topics: ["log-topic"],
     // Provide the relevant secure socket configurations by using `kafka:SecureSocket`.
     // For details, see https://lib.ballerina.io/ballerinax/kafka/latest/records/SecureSocket.
     secureSocket: {
@@ -20,11 +17,11 @@ kafka:ConsumerConfiguration consumerConfigs = {
     securityProtocol: kafka:PROTOCOL_SSL
 };
 
-service on new kafka:Listener(SSL_URL, consumerConfigs) {
-    remote function onConsumerRecord(string[] values) returns error? {
-        check from string value in values
+service on new kafka:Listener("localhost:9094", consumerConfigs) {
+    remote function onConsumerRecord(string[] logs) returns error? {
+        check from string log in logs
             do {
-                log:printInfo("Received value: " + value);
+                log:printInfo("Received log: " + log);
             };
     }
 }

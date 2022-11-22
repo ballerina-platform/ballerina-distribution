@@ -9,10 +9,8 @@ public type Order record {|
 |};
 
 kafka:ConsumerConfiguration consumerConfiguration = {
-    groupId: "group-id",
-    offsetReset: "earliest",
-    // Subscribes to the topic `test-kafka-topic`.
-    topics: ["test-kafka-topic"]
+    groupId: "order-group-id",
+    topics: ["order-topic"]
 };
 
 public function main() returns error? {

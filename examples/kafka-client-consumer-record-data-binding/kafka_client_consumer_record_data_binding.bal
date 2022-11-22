@@ -8,18 +8,16 @@ public type Order record {|
     boolean isValid;
 |};
 
-kafka:ConsumerConfiguration consumerConfiguration = {
-    groupId: "group-id",
-    offsetReset: "earliest",
-    // Subscribes to the topic `test-kafka-topic`.
-    topics: ["test-kafka-topic"]
-};
-
 // Create a subtype of `kafka:AnydataConsumerRecord`.
 public type OrderConsumerRecord record {|
     *kafka:AnydataConsumerRecord;
     Order value;
 |};
+
+kafka:ConsumerConfiguration consumerConfiguration = {
+    groupId: "order-group-id",
+    topics: ["order-topic"]
+};
 
 public function main() returns error? {
     kafka:Consumer orderConsumer = check new (kafka:DEFAULT_URL, consumerConfiguration);
