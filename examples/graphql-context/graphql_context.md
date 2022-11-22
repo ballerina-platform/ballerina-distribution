@@ -4,7 +4,9 @@ The `graphql:Context` object can be used to pass meta information between the re
 
 Inside the init function, the `graphql:Context` can be initialized. The corresponding `http:RequestContext` and `http:Request` can be accessed from the init function.
 
-You can add attributes to the context as key-value pairs. The key is a `string` and the value can be any `readonly` value or an `isolated` object. If the init function is not provided, an empty context object will be created. The context can be accessed by defining it as the first parameter of any resolver (resource/remote) function.
+You can add attributes to the context as key-value pairs. The key is a `string` and the value can be any `readonly` value or an `isolated` object. If the init function is not provided, an empty context object will be created.
+
+If the `graphql:Context` is defined as the first parameter of a resolver function, it will be accessible inside the resolver. Passing down the context is not necessary.
 
 This example shows how to initialize and access the context as well as how to set/get attributes in the context.
 
@@ -26,10 +28,6 @@ To send the document, use the following cURL command in a separate terminal. Fir
 
 ::: out graphql_context.1.client.out :::
 
-Now, send the same document with the `scope` header value set to `user`. This will return an error in the `salary` field.
+Now, send the same document with the `scope` header value set to `unknown`. This will return an error in the `profile` field.
 
 ::: out graphql_context.2.client.out :::
-
-Then, send the same document with the `scope` header value set to `unknown`. This will return an error in the `profile` field.
-
-::: out graphql_context.3.client.out :::

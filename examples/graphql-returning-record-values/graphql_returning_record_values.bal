@@ -6,6 +6,7 @@ public type Person record {|
     int age;
     Address address;
 |};
+
 public type Address record {|
     string number;
     string street;
