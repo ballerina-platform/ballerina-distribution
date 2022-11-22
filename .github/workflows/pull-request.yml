@@ -35,7 +35,7 @@ jobs:
                 run: ./gradlew clean :project-api-tests:test --stacktrace --scan --console=plain --no-daemon --continue
 
 #    ubuntu-bbe-tests:
-#        name: BBE Tests on Ubuntu
+#           name: BBE Tests on Ubuntu
 #        runs-on: ubuntu-latest
 #        concurrency:
 #            group: ${{ github.ref }}-bbe-tests
