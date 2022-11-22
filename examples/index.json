@@ -1709,7 +1709,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Response With multiparts",
+                "name": "Response with multiparts",
                 "url": "http-response-with-multiparts",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -1756,7 +1756,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Caching client",
+                "name": "Caching",
                 "url": "http-caching-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1764,7 +1764,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Request With multiparts",
+                "name": "Request with multiparts",
                 "url": "http-request-with-multiparts",
                 "verifyBuild": false,
                 "verifyOutput": false,

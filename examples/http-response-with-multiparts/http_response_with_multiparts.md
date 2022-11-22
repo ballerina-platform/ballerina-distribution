@@ -1,4 +1,4 @@
-# HTTP service - Response With multiparts
+# HTTP service - Response with multiparts
 
 Ballerina supports encoding and decoding multipart content in HTTP responses along with the nested parts. When you request multiparts from an HTTP inbound response, you get an array of the parts of the body (an array of entities). If the received parts contain nested parts, you can loop through the parent parts and get the child parts.
 

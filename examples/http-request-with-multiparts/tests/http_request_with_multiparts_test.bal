@@ -4,7 +4,7 @@ import ballerina/test;
 
 @test:Config {}
 function testFunc() returns error? {
-    http:Client httpEP = check new("http://localhost:9090");
+    http:Client httpEP = check new("localhost:9090");
     mime:Entity jsonBodyPart = new;
     jsonBodyPart.setJson({ "name": "ballerina" });
     mime:Entity[] bodyParts = [jsonBodyPart];

@@ -3,7 +3,7 @@ import ballerina/http;
 
 @test:Config {}
 function testFunc() returns error? {
-    http:Client httpClient = check new ("http://localhost:8080",
+    http:Client httpClient = check new ("localhost:8080",
         // Configuration options that control the behavior of the circuit
         // breaker.
         circuitBreaker = {

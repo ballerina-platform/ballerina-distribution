@@ -4,7 +4,7 @@ import ballerina/lang.runtime;
 
 @test:Config {}
 function testFunc() returns error? {
-    http:Client backendClientEP = check new ("http://localhost:8080", {
+    http:Client backendClientEP = check new ("localhost:8080", {
         timeout: 10
     });
     string|error response = backendClientEP->get("/greeting");

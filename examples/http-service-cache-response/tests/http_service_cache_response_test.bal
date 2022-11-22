@@ -3,7 +3,7 @@ import ballerina/http;
 
 @test:Config {}
 function testFunc() returns error? {
-    http:Client httpEndpoint = check new("http://localhost:9090");
+    http:Client httpEndpoint = check new("localhost:9090");
 
     http:Response response = check httpEndpoint->get("/greeting");
     test:assertEquals(response.getHeader("etag"), "ec4ac3d0");

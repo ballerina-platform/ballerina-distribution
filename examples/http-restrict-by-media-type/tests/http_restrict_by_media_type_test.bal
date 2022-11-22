@@ -3,7 +3,7 @@ import ballerina/test;
 
 @test:Config {}
 function testFunc() returns error? {
-    http:Client testClient = check new("http://localhost:9090");
+    http:Client testClient = check new("localhost:9090");
     xml payload = check testClient->post("/transform", "Ballerina");
     test:assertEquals(payload, xml `<name>Ballerina</name>`);
 

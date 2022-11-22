@@ -5,7 +5,7 @@ import ballerina/test;
 
 @test:Config {}
 function testFunc() returns error? {
-    http:Client  = check new ("http://localhost:8080",
+    http:Client  = check new ("localhost:8080",
         retryConfig = {
             interval: 3,
             count: 3,
