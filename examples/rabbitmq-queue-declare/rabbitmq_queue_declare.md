@@ -4,6 +4,6 @@ In this example, the RabbitMQ client is declaring a queue. Queues in RabbitMQ ar
 
 For more information on the underlying module, see the [`rabbitmq` module](https://lib.ballerina.io/ballerinax/rabbitmq/latest).
 
-::: code rabbitmq_producer.bal :::
+::: code rabbitmq_queue_declare.bal :::
 
-::: out rabbitmq_producer.out :::
+::: out rabbitmq_queue_declare.out :::
