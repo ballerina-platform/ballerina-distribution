@@ -13,7 +13,7 @@ public type Address record {|
     string city;
 |};
 
-service /graphql on new graphql:Listener(4000) {
+service /graphql on new graphql:Listener(9090) {
 
     // Ballerina GraphQL resolvers can return `record` values. The record will be mapped to an
     // `OBJECT` type in the generated GraphQL schema with the same name and fields.

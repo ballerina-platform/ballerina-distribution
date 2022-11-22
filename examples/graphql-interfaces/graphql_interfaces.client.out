@@ -1,2 +1,2 @@
-$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ animals { name  ...on Leopard { location }}}" }' 'http://localhost:4000/graphql'
+$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ animals { name  ...on Leopard { location }}}" }' 'http://localhost:9090/graphql'
 {"data":{"animals":[{"name":"Panthera pardus kotiya", "location":"Wilpaththu"}, {"name":"Elephas maximus maximus"}]}}
