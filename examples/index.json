@@ -2008,7 +2008,7 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Send/Receive messages",
+                "name": "Send/Receive message",
                 "url": "websocket-basic-sample",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2024,7 +2024,7 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Send/Receive messages",
+                "name": "Send/Receive message",
                 "url": "websocket-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
