@@ -31,7 +31,7 @@ jobs:
                     packageUser: ${{ github.actor }}
                     packagePAT: ${{ secrets.GITHUB_TOKEN }}
                     devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
-                    ballerinaBotWorkflow: "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"
+                    ballerinaBotWorkflow: "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"
                 run:
                     ./gradlew clean :project-api-tests:test --stacktrace --scan --console=plain --no-daemon --continue
 
