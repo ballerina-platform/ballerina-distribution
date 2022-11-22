@@ -10,7 +10,7 @@ public type Order record {|
 
 kafka:ConsumerConfiguration consumerConfigs = {
     groupId: "order-group-id",
-    topics: ["order-topic"]
+    topics: "order-topic"
 };
 
 service on new kafka:Listener(kafka:DEFAULT_URL, consumerConfigs) {

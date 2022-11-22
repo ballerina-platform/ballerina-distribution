@@ -3,7 +3,7 @@ import ballerina/log;
 
 kafka:ConsumerConfiguration consumerConfigs = {
     groupId: "log-group-id",
-    topics: ["log-topic"],
+    topics: "log-topic",
     // Provide the relevant secure socket configurations by using `kafka:SecureSocket`.
     // For details, see https://lib.ballerina.io/ballerinax/kafka/latest/records/SecureSocket.
     secureSocket: {

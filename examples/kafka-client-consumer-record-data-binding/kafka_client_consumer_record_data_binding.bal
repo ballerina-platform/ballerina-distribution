@@ -16,7 +16,7 @@ public type OrderConsumerRecord record {|
 
 kafka:ConsumerConfiguration consumerConfiguration = {
     groupId: "order-group-id",
-    topics: ["order-topic"]
+    topics: "order-topic"
 };
 
 public function main() returns error? {

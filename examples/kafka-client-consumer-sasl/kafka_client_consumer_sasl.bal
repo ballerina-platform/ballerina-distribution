@@ -3,7 +3,7 @@ import ballerina/log;
 
 kafka:ConsumerConfiguration consumerConfigs = {
     groupId: "log-group-id",
-    topics: ["log-topic"],
+    topics: "log-topic",
     // Provide the relevant authentication configurations to authenticate the consumer 
     // by the `kafka:AuthenticationConfiguration`.
     // For details, see https://lib.ballerina.io/ballerinax/kafka/latest/records/AuthenticationConfiguration.
