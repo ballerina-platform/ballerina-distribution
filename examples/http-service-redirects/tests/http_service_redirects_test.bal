@@ -4,7 +4,7 @@ import ballerina/http;
 @test:Config {}
 function testFunc() returns error? {
     // Invoking the main function
-    http:Client httpEndpoint = check new("http://localhost:9090",
+    http:Client httpEndpoint = check new("localhost:9090",
             followRedirects = { enabled: true, maxCount: 5 });
 
     string expected = "Response received : Hello World!";

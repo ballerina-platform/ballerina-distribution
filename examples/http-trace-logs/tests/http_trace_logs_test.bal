@@ -3,7 +3,7 @@ import ballerina/test;
 
 @test:Config {}
 function testFunc() returns error? {
-    http:Client httpEndpoint = check new("http://localhost:9090", {
+    http:Client httpEndpoint = check new("localhost:9090", {
         retryConfig: {
             interval: 3,
             count: 5

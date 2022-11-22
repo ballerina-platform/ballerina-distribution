@@ -2,8 +2,6 @@ import ballerina/http;
 import ballerina/log;
 import ballerina/mime;
 
-http:Client clientEP = check new ("http://localhost:9090");
-
 //Binds the listener to the service.
 service /multiparts on new http:Listener(9090) {
 
@@ -43,7 +41,8 @@ service /multiparts on new http:Listener(9090) {
         // E.g., `multipart/mixed`, `multipart/related` etc.
         // You need to pass the content type that suits your requirement.
         request.setBodyParts(bodyParts, contentType = mime:MULTIPART_FORM_DATA);
-        http:Response returnResponse = check clientEP->/multiparts/decoder.post(request);
+        http:Client httpClient = check new ("localhost:9090");
+        http:Response returnResponse = check httpClient->/multiparts/decoder.post(request);
         return returnResponse;
     }
 }
