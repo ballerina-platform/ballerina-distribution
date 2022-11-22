@@ -1,4 +1,4 @@
-# Passthrough
+# HTTP service - Passthrough
 
 The passthrough sample exhibits the process of an HTTP client connector. The 'Echo Service' is used as a sample backend.
 

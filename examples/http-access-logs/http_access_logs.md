@@ -1,4 +1,4 @@
-# Access logs
+# HTTP service - Access logs
 
 Ballerina supports HTTP access logs for HTTP services. The access log format used is the combined log format. To enable access logs, set `console=true` under the `ballerina.http.accessLogConfig` in the `Config.toml` file. Also, the `path` field can be used to specify the file path to save the access logs.
 

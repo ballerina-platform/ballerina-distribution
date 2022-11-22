@@ -6,12 +6,8 @@ For more information on the underlying module, see the [`http` module](https://l
 
 ::: code http_caching_client.bal :::
 
-Run the service by executing the following command.
+Run the client program by executing the following command.
 
-(The two services have to be run separately to observe the following output. For clarity, only the relevant parts of the HTTP trace logs have been included here.)
+>**Info:** As a prerequisite to running the client, start the [Sending cache response](learn/by-example/http-service-cache-response/) example.
 
-::: out http_caching_client.server.out :::
-
-Invoke the service as follows.
-
-::: out http_caching_client.client.out :::
+::: out http_caching_client.out :::

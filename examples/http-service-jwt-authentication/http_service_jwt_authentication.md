@@ -12,4 +12,4 @@ Run the service by executing the cURL command below.
 
 ::: out http_service_jwt_authentication.server.out :::
 
->**Info:** Alternatively, you can invoke the above service via the [self-signed JWT Auth client](/learn/by-example/http-client-self-signed-jwt-authentication).
+>**Info:** Alternatively, you can invoke the above service via the [self-signed JWT authentication client](/learn/by-example/http-client-self-signed-jwt-authentication).

@@ -1,4 +1,4 @@
-# REST service - Default resource
+# HTTP service - Default resource
 
 Ballerina provides rest params in the resource path and the default resource method to help designing proxy services and default resources. It can be used to handle unmatched requests.
 

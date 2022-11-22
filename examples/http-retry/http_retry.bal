@@ -2,7 +2,7 @@ import ballerina/http;
 import ballerina/io;
 
 public function main() returns error? {
-    http:Client httpClient = check new ("http://localhost:8080", 
+    http:Client httpClient = check new ("localhost:8080",
         // Retry configuration options.
         retryConfig = {
 

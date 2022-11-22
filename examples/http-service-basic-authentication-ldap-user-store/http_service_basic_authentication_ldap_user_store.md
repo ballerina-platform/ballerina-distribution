@@ -12,4 +12,4 @@ Run the service by executing the cURL command below.
 
 ::: out http_service_basic_authentication_ldap_user_store.server.out :::
 
->**Info:** Alternatively, you can invoke the above service via the [Basic Auth client](/learn/by-example/http-client-basic-authentication).
+>**Info:** Alternatively, you can invoke the above service via the [Basic authentication client](/learn/by-example/http-client-basic-authentication).
