@@ -22,7 +22,7 @@ Once you run the command, the `grpc_unary_pb.bal` file gets generated inside the
 
 3. Create a new `grpc_unary_client.bal` file inside the `client` package and add the client implementation below.
 
-   ::: code grpc_unary_client.bal :::
+   ::: code grpc_client_unary.bal :::
 
 4. Execute the command below to run the client.
 
