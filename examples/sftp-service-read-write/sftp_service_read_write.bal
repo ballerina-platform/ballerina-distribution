@@ -2,8 +2,7 @@ import ballerina/ftp;
 import ballerina/io;
 
 // Creates the listener with the connection parameters and the protocol-related
-// configuration. The polling interval specifies the time duration between each
-// poll performed by the listener in seconds. The listener listens to the files
+// configuration. The listener listens to the files
 // with the given file name pattern located in the specified path.
 listener ftp:Listener remoteServer = check new ({
     protocol: ftp:SFTP,

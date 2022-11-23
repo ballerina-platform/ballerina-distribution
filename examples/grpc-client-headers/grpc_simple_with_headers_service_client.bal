@@ -1,4 +1,3 @@
-// This is the client implementation of the simple RPC scenario.
 import ballerina/grpc;
 import ballerina/io;
 import ballerina/protobuf.types.wrappers;
