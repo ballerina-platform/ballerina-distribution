@@ -6,8 +6,6 @@ Ballerina uses the concept of scopes for authorization. A resource declared in a
 
 In the authorization phase, the scopes of the service are compared against the scope included in the user store for at least one match between the two sets.
 
->**Tip:** You may need to change the certificate file path and private key file path in the code below.
-
 ::: code graphql_service_basic_auth_ldap_user_store.bal :::
 
 Run the service by executing the command below.

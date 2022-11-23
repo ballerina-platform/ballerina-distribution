@@ -4,8 +4,6 @@ A GraphQL service can be secured with Basic authentication and optionally by enf
 
 Ballerina uses the concept of scopes for authorization. A resource declared in a service can be bound to one/more scope(s). In the authorization phase, the scopes of the service are compared against the scope included in the user store for at least one match between the two sets. The `Config.toml` file is used to store the usernames, passwords, and scopes. Each user can have a password and optionally assigned scopes as an array.
 
->**Tip:** # You may need to change the certificate file path and private key file path in the code below.
-
 ::: code graphql_service_basic_auth_file_user_store.bal :::
 
 >**Info:** As a prerequisite to running the service, populate the `Config.toml` file correctly with the user information as shown below.
