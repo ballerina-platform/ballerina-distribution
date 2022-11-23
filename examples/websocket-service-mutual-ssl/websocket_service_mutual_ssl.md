@@ -2,12 +2,13 @@
 
 Ballerina supports mutual SSL, which is a certificate-based authentication process in which two parties (the client and server) authenticate each other by verifying the digital certificates. It ensures that both parties are assured of each other's identity.
 
-For more information on the underlying module, see the [`websocket` module](https://lib.ballerina.io/ballerina/websocket/latest/).
-
->**Tip:** You may need to change the certificate file path, private key file path, and trusted certificate file path in the code below.
-
 ::: code websocket_service_mutual_ssl.bal :::
 
 Run the service by executing the command below.
 
 ::: out websocket_service_mutual_ssl.server.out :::
+
+## Related Links
+- [`websocket` - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
+- [`websocket` SSL/TLS - Specification](/spec/websocket/#5-securing-the-websocket-connections)
+

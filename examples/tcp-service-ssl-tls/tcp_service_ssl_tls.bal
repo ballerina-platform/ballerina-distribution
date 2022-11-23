@@ -6,7 +6,6 @@ import ballerina/tcp;
 // a certificate file and a private key file for the listener.
 // The `tcp:ListenerSecureSocket` record provides the
 // SSL-related listener configurations of the listener.
-// For details, see https://lib.ballerina.io/ballerina/tcp/latest/records/ListenerSecureSocket.
 listener tcp:Listener securedListnerEP = check new(3000,
     secureSocket = {
         key: {
