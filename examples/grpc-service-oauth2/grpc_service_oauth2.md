@@ -6,15 +6,14 @@ Ballerina uses the concept of scopes for authorization. A resource declared in a
 
 In the authorization phase, the scopes of the service/resource are compared against the scope included in the introspection response for at least one match between the two sets.
 
->**Info:** Setting up the service is the same as setting up the simple RPC service with additional configurations. You can refer to the [simple RPC service](/learn/by-example/grpc-service-simple/) to implement the service used below.
-
    ::: code grpc_service_oauth2.bal :::
 
 Execute the command below to run the service.
+Setting up the service is the same as setting up the unary RPC service with additional configurations. You can refer to the [unary RPC service](/learn/by-example/grpc-service-unary/) to implement the service used below.
 
    ::: out grpc_service_oauth2.server.out :::
 
->**Info:** You can invoke the above service via the clients below.
+>**Tip:** You can invoke the above service via the clients below.
  - [gRPC OAuth2 Client Credentials grant type client](/learn/by-example/grpc-client-oauth2-client-credentials-grant-type)
  - [gRPC OAuth2 Password grant type client](/learn/by-example/grpc-client-oauth2-password-grant-type)
  - [gRPC OAuth2 Refresh Token grant type client](/learn/by-example/grpc-client-oauth2-refresh-token-grant-type)

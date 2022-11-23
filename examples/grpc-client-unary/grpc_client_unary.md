@@ -16,9 +16,7 @@ Once you run the command, the `grpc_unary_pb.bal` file gets generated inside the
 
 ## Implement and run the client
 
-1. Create a Ballerina package (e.g., `client`).
-
->**Tip:** Delete the `main.bal` file created by default as it is not required for this example.
+1. Create a Ballerina package (e.g., `client`). Delete the `main.bal` file created by default as it is not required for this example.
 
 2. Copy the generated `grpc_unary_pb.bal` file from the `stubs` directory to the  `client` package.
 
@@ -28,7 +26,7 @@ Once you run the command, the `grpc_unary_pb.bal` file gets generated inside the
 
 4. Execute the command below to run the client.
 
->**Info:** As a prerequisite to running the client, start the [unary RPC service](/learn/by-example/grpc-service-unary/).
+>**Tip:** As a prerequisite to running the client, start the [unary RPC service](/learn/by-example/grpc-service-unary/).
 
    ::: out grpc_client_unary.out :::
 

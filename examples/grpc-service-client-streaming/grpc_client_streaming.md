@@ -28,10 +28,7 @@ Once you run the command, the `grpc_client_streaming_pb.bal` file gets generated
 
    ::: out grpc_client_streaming_service.out :::
 
->**Info:** You can invoke the above service via the [client streaming RPC client](/learn/by-example/grpc-client-client-streaming/).
-
-For more information on the `grpc` package, see the [Ballerina library (API) documentation](https://lib.ballerina.io/ballerina/grpc/latest/).
-For more information on how to use the Ballerina Protocol Buffers tool, see the [gRPC/Protocol Buffers](https://ballerina.io/learn/cli-documentation/grpc/) guide.
+>**Tip:** You can invoke the above service via the [client streaming RPC client](/learn/by-example/grpc-client-client-streaming/).
 
 ## Related links
 - [Client-side streaming - API documentation](https://lib.ballerina.io/ballerina/grpc/latest)

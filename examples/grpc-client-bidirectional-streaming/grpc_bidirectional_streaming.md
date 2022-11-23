@@ -26,7 +26,7 @@ Once you run the command, the `grpc_bidirectional_streaming_pb.bal` file gets ge
 
 4. Execute the command below to run the client.
 
->**Info:** As a prerequisite to running the client, start the [bidirectional streaming RPC service](learn/by-example/grpc-service-bidirectional-streaming/).
+>**Tip:** As a prerequisite to running the client, start the [bidirectional streaming RPC service](learn/by-example/grpc-service-bidirectional-streaming/).
 
     ::: out grpc_bidirectional_streaming_service_client.out :::
 

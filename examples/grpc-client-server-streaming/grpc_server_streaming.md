@@ -16,9 +16,7 @@ Once you run the command, the `grpc_server_streaming_pb.bal` file gets generated
 
 ## Implement and run the client
 
-1. Create a Ballerina package (e.g., `client`).
-
->**Tip:** Delete the `main.bal` file created by default as it is not required for this example.
+1. Create a Ballerina package (e.g., `client`). Delete the `main.bal` file created by default as it is not required for this example.
 
 2. Copy the generated `grpc_server_streaming_pb.bal` file from the `stubs` directory to the  `client` package.
 
@@ -28,7 +26,7 @@ Once you run the command, the `grpc_server_streaming_pb.bal` file gets generated
 
 4. Execute the command below to run the client.
 
->**Info:** As a prerequisite to running the client, start the [server streaming RPC service](learn/by-example/grpc-service-server-streaming/).
+>**Tip:** As a prerequisite to running the client, start the [server streaming RPC service](learn/by-example/grpc-service-server-streaming/).
 
    ::: out grpc_server_streaming_service_client.out :::
 

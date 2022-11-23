@@ -16,9 +16,7 @@ Once you run the command, the `grpc_unary_pb.bal` file gets generated inside the
 
 ## Implement and run the service
 
-1. Create a Ballerina package (e.g., `service`).
-
->**Tip:** Delete the `main.bal` file created by default as it is not required for this example.
+1. Create a Ballerina package (e.g., `service`). Delete the `main.bal` file created by default as it is not required for this example.
 
 2. Copy the generated `grpc_unary_pb.bal` stub file from the `stubs` directory to the  `service` package.
 
@@ -30,7 +28,7 @@ Once you run the command, the `grpc_unary_pb.bal` file gets generated inside the
 
    ::: out grpc_service_unary.out :::
 
->**Info:** You can invoke the above service via the [unary RPC client](/learn/by-example/grpc-client-unary/).
+>**Tip:** You can invoke the above service via the [unary RPC client](/learn/by-example/grpc-client-unary/).
 
 ## Related links
 - [Unary RPC - API documentation](https://lib.ballerina.io/ballerina/grpc/latest)

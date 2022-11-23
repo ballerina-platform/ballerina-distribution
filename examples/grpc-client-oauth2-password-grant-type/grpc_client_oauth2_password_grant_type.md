@@ -4,16 +4,14 @@ A client, which is secured with OAuth2 password grant type can be used to connec
 
 The client metadata is enriched with the `Authorization: Bearer <token>` header by passing the `grpc:OAuth2PasswordGrantConfig` to the `auth` configuration of the client.
 
->**Info:** Setting up the client is the same as setting up the simple RPC client with additional configurations. You can refer to the [simple RPC client](/learn/by-example/grpc-client-simple/) to implement the client used below.
-
    ::: code grpc_client_oauth2_password_grant_type.bal :::
 
 Execute the command below to run the client.
+Setting up the client is the same as setting up the unary RPC client with additional configurations. You can refer to the [unary RPC client](/learn/by-example/grpc-client-unary/) to implement the client used here.
 
->**Info:** As a prerequisite to running the client, start the [OAuth2 service](/learn/by-example/grpc-service-oauth2/).
+>**Tip:** As a prerequisite to running the client, start the [OAuth2 service](/learn/by-example/grpc-service-oauth2/).
    
    ::: out grpc_client_oauth2_password_grant_type.out :::
-
 
 ## Related links
 - [`grpc:OAuth2PasswordGrantConfig` - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2PasswordGrantConfig)

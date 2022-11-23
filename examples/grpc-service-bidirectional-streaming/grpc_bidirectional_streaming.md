@@ -16,9 +16,7 @@ Once you run the command, the `grpc_bidirectional_streaming_pb.bal` file gets ge
 
 ## Implement and run the service
 
-1. Create a Ballerina package (e.g., `service`).
-
->**Tip:** Delete the `main.bal` file created by default as it is not required for this example.
+1. Create a Ballerina package (e.g., `service`). Delete the `main.bal` file created by default as it is not required for this example.
 
 2. Copy the generated `grpc_bidirectional_streaming_pb.bal` file from the `stubs` directory to the  `service` package.
 
@@ -30,7 +28,7 @@ Once you run the command, the `grpc_bidirectional_streaming_pb.bal` file gets ge
 
     ::: out grpc_bidirectional_streaming_service.out :::
 
->**Info:** You can invoke the above service via the [bidirectional streaming RPC client](/learn/by-example/grpc-client-bidirectional-streaming/).
+>**Tip:** You can invoke the above service via the [bidirectional streaming RPC client](/learn/by-example/grpc-client-bidirectional-streaming/).
 
 ## Related links
 - [Bidirectional streaming - API documentation](https://lib.ballerina.io/ballerina/grpc/latest)

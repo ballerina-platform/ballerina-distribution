@@ -6,15 +6,14 @@ Ballerina uses the concept of scopes for authorization. A resource declared in a
 
 In the authorization phase, the scopes of the service/resource are compared against the scope included in the JWT for at least one match between the two sets.
 
->**Info:** Setting up the service is the same as setting up the simple RPC service with additional configurations. You can refer to the [simple RPC service](/learn/by-example/grpc-service-simple/) to implement the service used below.
-
    ::: code grpc_service_jwt_auth.bal :::
 
 Execute the command below to run the service.
+Setting up the service is the same as setting up the unary RPC service with additional configurations. You can refer to the [unary RPC service](/learn/by-example/grpc-service-unary/) to implement the service used below.
 
    ::: out grpc_service_jwt_auth.server.out :::
 
->**Info:** You can invoke the above service via the [gRPC self-signed JWT Auth client](/learn/by-example/grpc-client-self-signed-jwt-auth).
+>**Tip:** You can invoke the above service via the [gRPC self-signed JWT Auth client](/learn/by-example/grpc-client-self-signed-jwt-auth).
 
 ## Related links
 - [`grpc:JwtValidatorConfig` - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/JwtValidatorConfig)
