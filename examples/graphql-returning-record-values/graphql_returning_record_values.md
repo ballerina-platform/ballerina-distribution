@@ -23,5 +23,5 @@ To send the document, use the following cURL command in a separate terminal.
 ::: out graphql_returning_record_values.client.out :::
 
 ## Related Links
-- [`graphql` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest).
-- [`graphql` record type as object - Specification](/spec/graphql/#421-record-type-as-object).
+- [`graphql` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
+- [`graphql` record type as object - Specification](/spec/graphql/#421-record-type-as-object)

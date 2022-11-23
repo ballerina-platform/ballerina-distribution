@@ -21,5 +21,5 @@ To send the document, use the following cURL command.
 >**Info:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client/).
 
 ## Related Links
-- [`graphql` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest).
-- [`graphql` mutation type - Specification](/spec/graphql/#312-the-mutation-type).
+- [`graphql` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
+- [`graphql` mutation type - Specification](/spec/graphql/#312-the-mutation-type)

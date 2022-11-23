@@ -44,5 +44,5 @@ To send the document, use the following cURL command.
 ::: out graphql_directives.3.client.out :::
 
 ## Related Links
-- [`graphql` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest).
-- [`graphql` directives - Specification](/spec/graphql/#5-directives).
+- [`graphql` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
+- [`graphql` directives - Specification](/spec/graphql/#5-directives)

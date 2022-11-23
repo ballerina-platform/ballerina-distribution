@@ -9,6 +9,6 @@ Run the service by executing the command below.
 ::: out graphql_service_mutual_ssl.server.out :::
 
 ## Related Links
-- [`graphql` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest).
-- [`graphql` mutual SSL - Specification](/spec/graphql/#1122-mutual-ssl).
+- [`graphql` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
+- [`graphql` mutual SSL - Specification](/spec/graphql/#1122-mutual-ssl)
 
