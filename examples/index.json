@@ -3290,7 +3290,7 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Serialization and Deserialization",
+                "name": "Serialization/Deserialization",
                 "url": "serdes-simple",
                 "verifyBuild": true,
                 "verifyOutput": true,
