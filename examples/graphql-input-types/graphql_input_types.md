@@ -6,8 +6,6 @@ Inputs can be optional and/or defaultable types. If an input is optional, it wil
 
 This example shows a GraphQL endpoint, which has field `greeting` which has an input argument `name` of type `String!`.
 
-For more information on the underlying package, see the [GraphQL package](https://lib.ballerina.io/ballerina/graphql/latest/).
-
 ::: code graphql_input_types.bal :::
 
 Run the service by executing the following command.
@@ -23,3 +21,7 @@ To send the document, use the following cURL command in a separate terminal.
 >**Info:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client/).
 
 ::: out graphql_input_types.client.out :::
+
+## Related Links
+- [`graphql` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest).
+- [`graphql` input types - Specification](/spec/graphql/#4-types).

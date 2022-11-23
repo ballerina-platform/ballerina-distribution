@@ -4,8 +4,6 @@ A GraphQL schema can have interfaces. In Ballerina, interfaces are defined using
 
 This example shows how to define an interface `Animal` and then implement the `Leopard` and `Elephant` classes using that interface.
 
-For more information on the underlying package, see the [GraphQL package](https://lib.ballerina.io/ballerina/graphql/latest/).
-
 ::: code graphql_interfaces.bal :::
 
 Run the service by executing the following command.
@@ -21,3 +19,7 @@ To send the document, use the following cURL command in a separate terminal.
 >**Info:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client/).
 
 ::: out graphql_interfaces.client.out :::
+
+## Related Links
+- [`graphql` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest).
+- [`graphql` interfaces - Specification](/spec/graphql/#46-interfaces).

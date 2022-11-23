@@ -4,8 +4,6 @@ A remote function inside a GraphQL service represents a field in the root `Mutat
 
 This example shows a GraphQL endpoint, which has a field named `updateName` in the root `Mutation` type. The type of the field is of type `Person!`.
 
-For more information on the underlying package, see the [GraphQL package](https://lib.ballerina.io/ballerina/graphql/latest/).
-
 ::: code graphql_mutations.bal :::
 
 Run the service by executing the following command.
@@ -21,3 +19,7 @@ To send the document, use the following cURL command.
 ::: out graphql_mutations.client.out :::
 
 >**Info:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client/).
+
+## Related Links
+- [`graphql` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest).
+- [`graphql` mutation type - Specification](/spec/graphql/#312-the-mutation-type).
