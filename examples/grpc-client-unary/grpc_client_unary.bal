@@ -1,4 +1,3 @@
-// This is the client implementation of the simple RPC scenario.
 import ballerina/io;
 
 public function main() returns error? {

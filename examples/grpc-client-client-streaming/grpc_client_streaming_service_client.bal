@@ -1,4 +1,3 @@
-// This is the client implementation of the client streaming scenario.
 import ballerina/io;
 
 public function main() returns error? {

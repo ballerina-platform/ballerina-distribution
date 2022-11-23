@@ -5,7 +5,6 @@ public function main() returns error? {
     // The client metadata is enriched with the `Authorization: Bearer <token>`
     // header by passing the `grpc:JwtIssuerConfig`for the `auth` configuration
     // of the client. A self-signed JWT is issued before the request is sent.
-    // For details, see https://lib.ballerina.io/ballerina/grpc/latest/records/JwtIssuerConfig.
     HelloWorldClient securedEP = check new("https://localhost:9090",
         auth = {
             username: "ballerina",

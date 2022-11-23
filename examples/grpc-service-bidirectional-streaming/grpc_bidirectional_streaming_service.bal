@@ -1,4 +1,3 @@
-// This is the server implementation of the bidirectional streaming scenario.
 import ballerina/grpc;
 import ballerina/log;
 
