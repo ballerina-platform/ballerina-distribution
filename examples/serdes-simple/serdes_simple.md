@@ -7,5 +7,5 @@ The `serdes` module helps to serialize and deserialize subtypes of Ballerina `an
 ::: out serdes_simple.out :::
 
 ## Related Links
-- [`serdes` - API documentation](https://lib.ballerina.io/ballerina/serdes/latest).
-- [`serdes` - Specification](/spec/serdes).
+- [`serdes` - API documentation](https://lib.ballerina.io/ballerina/serdes/latest)
+- [`serdes` - Specification](/spec/serdes)
