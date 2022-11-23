@@ -4,8 +4,6 @@ A GraphQL service in Ballerina represents a GraphQL schema. Each resource functi
 
 This example shows a GraphQL endpoint that has a field named `greeting` in the root `Query` type which is of type `String!`.
 
-For more information on the underlying package, see the [GraphQL package](https://lib.ballerina.io/ballerina/graphql/latest/).
-
 ::: code graphql_hello_world.bal :::
 
 Run the service by executing the following command.
@@ -21,3 +19,5 @@ To send the document, use the following cURL command in a separate terminal.
 >**Info:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client/).
 
 ::: out graphql_hello_world.client.out :::
+
+For more information on the GraphQL package, see the [API docs](https://lib.ballerina.io/ballerina/graphql/latest/).
