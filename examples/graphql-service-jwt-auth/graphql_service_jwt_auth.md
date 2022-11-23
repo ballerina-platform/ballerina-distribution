@@ -15,4 +15,4 @@ Run the service by executing the command below.
 ## Related links
 - [`graphql` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
 - [`jwt` - API documentation](https://lib.ballerina.io/ballerina/jwt/latest/)
-- [`graphql` service type as object - Specification](/spec/graphql/#11113-jwt-authentication)
+- [`graphql` JWT authentication - Specification](/spec/graphql/#11113-jwt-authentication)
