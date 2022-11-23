@@ -4,8 +4,10 @@ The ConnectClient is configured so that it only receives data from, and sends da
 
 The client remains connected until it is explicitly disconnected or until it is closed. This sample demonstrates how to send data to a connected server and print the echoed response.
 
-For more information on the underlying module, see the [`udp` module](https://lib.ballerina.io/ballerina/udp/latest).
-
 ::: code udp_connect_client.bal :::
 
 ::: out udp_connect_client.out :::
+
+## Related links
+- [`udp:Client` - API documentation](https://lib.ballerina.io/ballerina/udp/latest/clients/Client)
+- [`udp:Client` - Specification](/spec/udp/#3-client)

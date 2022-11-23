@@ -5,7 +5,6 @@ import ballerina/websocket;
 // a certificate file and a private key file for the listener.
 // The `websocket:ListenerSecureSocket` record
 // provides the SSL-related listener configurations of the listener.
-// For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/ListenerSecureSocket.
 listener websocket:Listener securedEP = new(9090,
     secureSocket = {
         key: {

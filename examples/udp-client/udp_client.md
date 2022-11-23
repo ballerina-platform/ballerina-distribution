@@ -2,8 +2,10 @@
 
 The UDP Client is used to send data to a specific remote host using the UDP protocol. This sample demonstrates how to send a datagram to a remote server and print the echoed response.
 
-For more information on the underlying module, see the [`udp` module](https://lib.ballerina.io/ballerina/udp/latest).
-
 ::: code udp_client.bal :::
 
 ::: out udp_client.out :::
+
+## Related links
+- [`udp:Client` - API documentation](https://lib.ballerina.io/ballerina/udp/latest/clients/Client)
+- [`udp:Client` - Specification](/spec/udp/#3-client)
