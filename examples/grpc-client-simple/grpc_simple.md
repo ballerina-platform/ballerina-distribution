@@ -2,8 +2,6 @@
 
 The gRPC Server Connector exposes the gRPC service over HTTP2. In a simple RPC call, a client sends a request to a remote service and waits for the response.
 
->**Info:** For more information on the underlying module, see the [`grpc` module](https://lib.ballerina.io/ballerina/grpc/latest/).
-
 ## Generate the service definition
 
 1. Create a new Protocol Buffers definition file named `grpc_simple.proto` and add the service definition below.
@@ -15,8 +13,6 @@ The gRPC Server Connector exposes the gRPC service over HTTP2. In a simple RPC c
    ::: out grpc_simple.out :::
 
 Once you run the command, the `grpc_simple_pb.bal` file gets generated inside the `stubs` directory.
-
->**Info:** For more information on how to use the Ballerina Protocol Buffers tool, see the [gRPC/Protocol Buffers](https://ballerina.io/learn/cli-documentation/grpc/) guide.
 
 ## Implement and run the client
 
@@ -35,3 +31,11 @@ Once you run the command, the `grpc_simple_pb.bal` file gets generated inside th
 >**Info:** As a prerequisite to running the client, start the [simple RPC service](/learn/by-example/grpc-service-simple/).
 
    ::: out grpc_simple_service_client.out :::
+
+For more information on the `grpc` package, see the [Ballerina library (API) documentation](https://lib.ballerina.io/ballerina/grpc/latest/).
+For more information on how to use the Ballerina Protocol Buffers tool, see the [gRPC/Protocol Buffers](https://ballerina.io/learn/cli-documentation/grpc/) guide.
+
+## Related links
+- [Simple RPC - API documentation](https://lib.ballerina.io/ballerina/grpc/latest)
+- [Simple RPC - specification](/spec/grpc/#41-simple-rpc)
+- [Ballerina protocol buffers guide](/learn/cli-documentation/grpc/)

@@ -2,8 +2,6 @@
 
 The gRPC Server Connector is used to expose gRPC services over HTTP/2. In a gRPC server streaming scenario, a client sends a request to the server and gets a stream to read the messages until all the messages are read.
 
->**Info:** For more information on the underlying module, see the [`grpc` module](https://lib.ballerina.io/ballerina/grpc/latest/).
-
 ## Generate the service definition
 
 1. Create a new Protocol Buffers definition file `grpc_server_streaming.proto` and add service definition below.
@@ -15,8 +13,6 @@ The gRPC Server Connector is used to expose gRPC services over HTTP/2. In a gRPC
    ::: out grpc_server_streaming.out :::
 
 Once you run the command, the `grpc_server_streaming_pb.bal` file gets generated inside the stubs directory.
-
->**Info:** For more information on how to use the Ballerina Protocol Buffers tool, see the [gRPC/Protocol Buffers](https://ballerina.io/learn/cli-documentation/grpc/) guide.
 
 ## Implement and run the client
 
@@ -35,3 +31,8 @@ Once you run the command, the `grpc_server_streaming_pb.bal` file gets generated
 >**Info:** As a prerequisite to running the client, start the [server streaming RPC service](learn/by-example/grpc-service-server-streaming/).
 
    ::: out grpc_server_streaming_service_client.out :::
+
+## Related links
+- [Server-side streaming - API documentation](https://lib.ballerina.io/ballerina/grpc/latest)
+- [Server-side streaming - specification](/spec/grpc/#42-server-streaming-rpc)
+- [Ballerina protocol buffers guide](/learn/cli-documentation/grpc/)

@@ -8,11 +8,7 @@ In the authorization phase, the scopes of the service/resource are compared agai
 
 The `Config.toml` file is used to store the usernames, passwords, and scopes. Each user can have a password and optionally assigned scopes as an array.
 
->**Info:** For more information on the underlying module, see the [`auth` module](https://lib.ballerina.io/ballerina/auth/latest/).
-
 >**Info:** Setting up the service is the same as setting up the simple RPC service with additional configurations. You can refer to the [simple RPC service](/learn/by-example/grpc-service-simple/) to implement the service used below.
-
->**Tip:** You may need to change the certificate file path and private key file path in the code below.  
 
    ::: code grpc_service_basic_auth_file_user_store.bal :::
 
@@ -34,3 +30,8 @@ Execute the command below to run the service.
    ::: out grpc_service_basic_auth_file_user_store.server.out :::
 
 >**Info:** You can invoke the above service via the [gRPC Basic Auth client](/learn/by-example/grpc-client-basic-auth).
+
+## Related links
+- [`grpc:FileUserStoreConfig` - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/FileUserStoreConfig)
+- [Basic authentication file user store - specification](/spec/grpc/#5111-service---basic-auth---file-user-store)
+- [`auth` package - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)
