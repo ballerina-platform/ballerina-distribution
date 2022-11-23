@@ -18,6 +18,6 @@ The following util files will initialize the test database before running the BB
 
 ::: code cleanup.bal :::
 
-## Related Links
-- [`mysql:Client` - API documentation](https://lib.ballerina.io/ballerinax/mysql/latest/).
-- [`mysql:Client` - Specification](https://github.com/ballerina-platform/module-ballerinax-mysql/blob/master/docs/spec/spec.md#2-client).
+## Related links
+- [`mysql:Client` - API documentation](https://lib.ballerina.io/ballerinax/mysql/latest/)
+- [`mysql:Client` - Specification](https://github.com/ballerina-platform/module-ballerinax-mysql/blob/master/docs/spec/spec.md#2-client)
