@@ -1,4 +1,4 @@
-# Serialization and Deserialization
+# Serialization and deserialization
 
 The `serdes` module helps to serialize and deserialize subtypes of Ballerina `anydata`. This sample demonstrates how to serialize and deserialize a user defined record type.
 
