@@ -28,6 +28,6 @@ Now, send the same document with the `scope` header value set to `unknown`. This
 
 ::: out graphql_context.2.client.out :::
 
-## Related Links
+## Related links
 - [`graphql:Context` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/classes/Context)
 - [`graphql:Context` - Specification](/spec/graphql/#8-context)

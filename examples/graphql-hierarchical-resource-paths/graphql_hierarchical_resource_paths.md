@@ -20,6 +20,6 @@ To send the document, use the following cURL command in a separate terminal.
 
 ::: out graphql_hierarchical_resource_paths.client.out :::
 
-## Related Links
+## Related links
 - [`graphql` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
 - [`graphql` hierarchical resource paths - Specification](/spec/graphql/#333-hierarchical-resource-path)

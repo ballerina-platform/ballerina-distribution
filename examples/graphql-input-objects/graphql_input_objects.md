@@ -22,6 +22,6 @@ To send the document, use the following cURL command in a separate terminal.
 
 ::: out graphql_input_objects.client.out :::
 
-## Related Links
+## Related links
 - [`graphql` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
 - [`graphql` input objects - Specification](/spec/graphql/#45-input-objects)
