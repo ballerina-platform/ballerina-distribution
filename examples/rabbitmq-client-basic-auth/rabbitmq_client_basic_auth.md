@@ -2,8 +2,10 @@
 
 The underlying connection of the producer is secured with basic authentication.
 
-For more information on the underlying module, see the [`rabbitmq` module](https://lib.ballerina.io/ballerinax/rabbitmq/latest).
-
 ::: code rabbitmq_client_basic_auth.bal :::
 
 ::: out rabbitmq_client_basic_auth.out :::
+
+## Related links
+- [`rabbitmq:Credentials` - API documentation](https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/Credentials)
+- [`rabbitmq:Client` - Specification](https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#2-connection)
