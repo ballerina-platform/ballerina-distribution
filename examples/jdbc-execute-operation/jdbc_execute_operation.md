@@ -18,4 +18,4 @@ The following util files will initialize the test database before running the BB
 
 ## Related Links
 - [`jdbc:Client` - API documentation](https://lib.ballerina.io/ballerinax/java.jdbc/latest/).
-- [`jdbc:Client` - Specification](https://github.com/ballerina-platform/module-ballerinax-java.jdbc/blob/master/docs/spec/spec.md).
+- [`jdbc:Client` - Specification](https://github.com/ballerina-platform/module-ballerinax-java.jdbc/blob/master/docs/spec/spec.md#2-client).
