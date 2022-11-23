@@ -21,5 +21,5 @@ To send the document, use the following cURL command in a separate terminal.
 ::: out graphql_documentation.client.out :::
 
 ## Related Links
-- [`graphql` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest).
-- [`graphql` documentations - Specification](/spec/graphql/#5-directives).
+- [`graphql` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
+- [`graphql` documentations - Specification](/spec/graphql/#5-directives)

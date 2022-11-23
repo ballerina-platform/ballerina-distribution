@@ -24,6 +24,6 @@ Run the service by executing the command below.
 ::: out graphql_service_basic_auth_file_user_store.server.out :::
 
 ## Related Links
-- [`graphql` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest).
+- [`graphql` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
 - [`auth` - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)
-- [`graphql` basic authentication - file user store - Specification](/spec/graphql/#11111-basic-authentication---file-user-store).
+- [`graphql` basic authentication - file user store - Specification](/spec/graphql/#11111-basic-authentication---file-user-store)

@@ -13,6 +13,6 @@ Run the service by executing the command below.
 ::: out graphql_service_jwt_auth.server.out :::
 
 ## Related Links
-- [`graphql` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest).
+- [`graphql` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
 - [`jwt` - API documentation](https://lib.ballerina.io/ballerina/jwt/latest/)
-- [`graphql` service type as object - Specification](/spec/graphql/#11113-jwt-authentication).
+- [`graphql` service type as object - Specification](/spec/graphql/#11113-jwt-authentication)
