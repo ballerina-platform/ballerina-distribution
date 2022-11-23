@@ -7,3 +7,7 @@ This shows how the SSL encryption is done in the `kafka:Producer`. For this to w
 ::: code kafka_client_producer_ssl.bal :::
 
 ::: out kafka_client_producer_ssl.out :::
+
+## Related links
+- [`kafka:SecureSocket` - API documentation](https://lib.ballerina.io/ballerinax/kafka/3.4.0/records/SecureSocket)
+- [Secure client - specification](https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#322-secure-client)
