@@ -8,7 +8,6 @@ service / on new http:Listener(9090, httpVersion = http:HTTP_1_1) {
 
     resource function 'default http11service(http:Request clientRequest) returns string|error {
         // Forward the `clientRequest` to the `http2` service.
-        // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request.
         string clientResponse = check http2serviceClientEP->forward("/http2service", clientRequest);
 
         // Send the response back to the caller.

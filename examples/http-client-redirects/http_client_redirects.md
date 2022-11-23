@@ -11,3 +11,7 @@ Run the client program by executing the following command.
 >**Info:** As a prerequisite to running the client, start a [Redirect service](learn/by-example/http-service-redirects/).
 
 ::: out http_client_redirects.out :::
+
+## Related links
+- [`http` package API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`Redirect` - specification](https://ballerina.io/spec/http/#2413-redirect)

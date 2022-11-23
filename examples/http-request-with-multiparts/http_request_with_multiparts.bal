@@ -9,7 +9,6 @@ service /multiparts on new http:Listener(9090) {
             returns http:Response|http:InternalServerError|error {
         http:Response response = new;
         // Extracts body parts from the request.
-        // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#getBodyParts.
         var bodyParts = check request.getBodyParts();
         foreach var part in bodyParts {
             handleContent(part);
@@ -35,7 +34,6 @@ service /multiparts on new http:Listener(9090) {
         mime:Entity[] bodyParts = [jsonBodyPart, xmlFilePart];
         http:Request request = new;
         // Set the body parts to the request.
-        // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#setBodyParts.
         // Here the content-type is set as multipart form data.
         // This also works with any other multipart media type.
         // E.g., `multipart/mixed`, `multipart/related` etc.
@@ -50,13 +48,11 @@ service /multiparts on new http:Listener(9090) {
 // The content logic that handles the body parts vary based on your requirement.
 function handleContent(mime:Entity bodyPart) {
     // Get the media type from the body part retrieved from the request.
-    // For details, see https://lib.ballerina.io/ballerina/mime/latest/functions#getMediaType.
     var mediaType = mime:getMediaType(bodyPart.getContentType());
     if mediaType is mime:MediaType {
         string baseType = mediaType.getBaseType();
         if (mime:APPLICATION_XML == baseType || mime:TEXT_XML == baseType) {
             // Extracts `xml` data from the body part.
-            // For details, see https://lib.ballerina.io/ballerina/mime/latest/classes/Entity#getXml.
             var payload = bodyPart.getXml();
             if payload is xml {
                 log:printInfo(payload.toString());
@@ -65,7 +61,6 @@ function handleContent(mime:Entity bodyPart) {
             }
         } else if (mime:APPLICATION_JSON == baseType) {
             // Extracts `json` data from the body part.
-            // For details, see https://lib.ballerina.io/ballerina/mime/latest/classes/Entity#getJson.
             var payload = bodyPart.getJson();
             if payload is json {
                 log:printInfo(payload.toJsonString());
@@ -74,7 +69,6 @@ function handleContent(mime:Entity bodyPart) {
             }
         } else if (mime:TEXT_PLAIN == baseType) {
             // Extracts text data from the body part.
-            // For details, see https://lib.ballerina.io/ballerina/mime/latest/classes/Entity#getText.
             var payload = bodyPart.getText();
             if payload is string {
                 log:printInfo(payload);

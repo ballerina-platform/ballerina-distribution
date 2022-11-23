@@ -1,7 +1,6 @@
 import ballerina/http;
 
 // The service-level CORS config applies globally to each `resource`.
-// For details, see https://lib.ballerina.io/ballerina/http/latest/records/CorsConfig.
 @http:ServiceConfig {
     cors: {
         allowOrigins: ["http://www.m3.com", "http://www.hello.com"],
@@ -14,7 +13,6 @@ import ballerina/http;
 service /crossOriginService on new http:Listener(9092) {
 
     // The resource-level CORS config overrides the service-level CORS headers.
-    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/CorsConfig.
     @http:ResourceConfig {
         cors: {
             allowOrigins: ["http://www.bbc.com"],

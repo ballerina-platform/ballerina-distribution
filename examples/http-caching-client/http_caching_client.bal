@@ -11,7 +11,6 @@ public function main() returns error? {
     // header. The user can control this behaviour by setting the `policy` field of
     // the `cacheConfig`. Currently, there are only 2 policies:
     // `CACHE_CONTROL_AND_VALIDATORS` (the default policy) and `RFC_7234`.
-
     http:Client httpClient = check new ("localhost:9090",
         cache = {
             enabled: true,

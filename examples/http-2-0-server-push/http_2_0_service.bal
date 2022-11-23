@@ -8,7 +8,6 @@ service /http2service on http2ServiceEP {
     resource function 'default .(http:Caller caller) returns error? {
 
         // Send a push promise.
-        // For details, see https://lib.ballerina.io/ballerina/http/latest/clients/Caller#promise.
         http:PushPromise promise1 = new (path = "/resource1", method = "GET");
         check caller->promise(promise1);
 
@@ -34,7 +33,6 @@ service /http2service on http2ServiceEP {
         push1.setPayload(msg);
 
         // Push promised `resource1`.
-        // For details, see https://lib.ballerina.io/ballerina/http/latest/clients/Caller#pushPromisedResponse.
         check caller->pushPromisedResponse(promise1, push1);
 
         // Construct promised `resource2`.

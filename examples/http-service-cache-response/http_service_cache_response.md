@@ -2,8 +2,6 @@
 
 HTTP service can send cache response by population cache controls in the response.
 
-For more information on the underlying module, see the [`http` module](https://lib.ballerina.io/ballerina/http/latest/).
-
 ::: code http_service_cache_response.bal :::
 
 Run the service by executing the following command.
@@ -13,3 +11,6 @@ Run the service by executing the following command.
 ::: out http_service_cache_response.server.out :::
 
 Invoke the service via the [Caching client](/learn/by-example/http-caching-client).
+
+## Related links
+- [`http:ResponseCacheControl` - API documentation](https://lib.ballerina.io/ballerina/http/latest/classes/ResponseCacheControl)
