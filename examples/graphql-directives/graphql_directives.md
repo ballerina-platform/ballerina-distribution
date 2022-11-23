@@ -43,6 +43,6 @@ To send the document, use the following cURL command.
 
 ::: out graphql_directives.3.client.out :::
 
-## Related Links
+## Related links
 - [`graphql` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
 - [`graphql` directives - Specification](/spec/graphql/#5-directives)
