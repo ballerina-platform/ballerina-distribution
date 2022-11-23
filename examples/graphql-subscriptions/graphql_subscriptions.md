@@ -8,8 +8,6 @@ Each resource function with the `subscribe` accessor in the service will be adde
 
 This example shows a GraphQL endpoint, which has a field `names` in the root `Subscription` type.
 
-For more information on the underlying package, see the [`graphql` package](https://docs.central.ballerina.io/ballerina/graphql/latest/).
-
 ::: code graphql_subscriptions.bal :::
 
 Run the service by executing the following command.
@@ -25,3 +23,7 @@ Send the following document to the GraphQL endpoint to test the service using an
 It should return the following values.
 
 ::: out graphql_subscriptions.client.out :::
+
+## Related Links
+- [`graphql` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest).
+- [`graphql` subscription type - Specification](/spec/graphql/#313-the-subscription-type).

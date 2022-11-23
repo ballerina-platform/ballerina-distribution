@@ -2,13 +2,7 @@
 
 A GraphQL service can be secured with Basic authentication and optionally by enforcing authorization. Then, it validates the Basic authentication token sent in the `Authorization` header against the provided configurations. This reads data from a file, which has a TOML format. This stores the usernames, passwords for authentication, and scopes for authorization.
 
-Ballerina uses the concept of scopes for authorization. A resource declared in a service can be bound to one/more scope(s).
-
-In the authorization phase, the scopes of the service are compared against the scope included in the user store for at least one match between the two sets.
-
-The `Config.toml` file is used to store the usernames, passwords, and scopes. Each user can have a password and optionally assigned scopes as an array.
-
-For more information on the underlying module, see the [`auth` module](https://lib.ballerina.io/ballerina/auth/latest/).
+Ballerina uses the concept of scopes for authorization. A resource declared in a service can be bound to one/more scope(s). In the authorization phase, the scopes of the service are compared against the scope included in the user store for at least one match between the two sets. The `Config.toml` file is used to store the usernames, passwords, and scopes. Each user can have a password and optionally assigned scopes as an array.
 
 >**Tip:** # You may need to change the certificate file path and private key file path in the code below.
 
@@ -31,4 +25,7 @@ Run the service by executing the command below.
 
 ::: out graphql_service_basic_auth_file_user_store.server.out :::
 
->**Info:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client/).
+## Related Links
+- [`graphql` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest).
+- [`auth` - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)
+- [`graphql` basic authentication - file user store - Specification](/spec/graphql/#11111-basic-authentication---file-user-store).

@@ -20,4 +20,6 @@ To send the document, use the following cURL command in a separate terminal.
 
 ::: out graphql_hello_world.client.out :::
 
-For more information on the `graphql` package, see the [Ballerina library (API) documentation](https://lib.ballerina.io/ballerina/graphql/latest/).
+## Related Links
+- [`graphql` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest).
+- [`graphql` query type - Specification](/spec/graphql/#311-the-query-type).

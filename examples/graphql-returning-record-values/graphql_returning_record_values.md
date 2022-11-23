@@ -6,8 +6,6 @@ This example shows a GraphQL endpoint, which has a field `profile` of type `Pers
 
 >**Note:** Although both the record and service types can be used to represent an Object type, using a record type as an Object has limitations. For example, a field represented as a record field can not have an input argument, as opposed to a field represented using a resource method in a service class.
 
-For more information on the underlying package, see the [GraphQL package](https://lib.ballerina.io/ballerina/graphql/latest/).
-
 ::: code graphql_returning_record_values.bal :::
 
 Run the service by executing the following command.
@@ -23,3 +21,7 @@ To send the document, use the following cURL command in a separate terminal.
 >**Info:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client/).
 
 ::: out graphql_returning_record_values.client.out :::
+
+## Related Links
+- [`graphql` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest).
+- [`graphql` record type as object - Specification](/spec/graphql/#421-record-type-as-object).
