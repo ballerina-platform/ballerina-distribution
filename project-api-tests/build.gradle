@@ -27,6 +27,7 @@ configurations {
 }
 
 dependencies {
+    implementation 'junit:junit:4.13.1'
     testImplementation "org.testng:testng:${testngVersion}"
     testImplementation "net.lingala.zip4j:zip4j:${netLingalaZip4jVersion}"
     testImplementation "commons-io:commons-io:${commonsIoVersion}"

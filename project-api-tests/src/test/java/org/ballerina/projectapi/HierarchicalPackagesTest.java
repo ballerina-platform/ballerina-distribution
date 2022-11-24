@@ -18,6 +18,7 @@
 package org.ballerina.projectapi;
 
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.Test;
 
 import java.io.IOException;
 
@@ -38,6 +39,7 @@ public class HierarchicalPackagesTest {
 //    private final String modulesPath = "modules";
 
 //    @BeforeClass()
+//    public void setUp() throws IOException, InterruptedException {
 //        List<String> packageNames = Arrays.asList("PackageH.test", "PackageJ.test", "PackageL.test", "PackageT.test",
 //                "PackageH.test.mod", "PackageR.test");
 //        List<String> versions = Arrays.asList(COMMON_VERSION, COMMON_VERSION, COMMON_VERSION, "1.0.0-beta.1",
@@ -94,15 +96,14 @@ public class HierarchicalPackagesTest {
 //        }
 //    }
 
-//    @Test(description = "Verify build package behaviour for hierarchical package imports in two consecutive builds.",
-//    enabled = false)
-//    public void testConsecutiveBuilds() throws IOException, InterruptedException {
+    @Test(description = "Verify build package behaviour for hierarchical package imports in two consecutive builds.")
+    public void testConsecutiveBuilds() {
 //        String packageName = "PackageI";
 //        // First build
 //        buildPackage(packageName, new LinkedList<>());
 //        // Consecutive build with existing `Dependencies.toml` and `build` file
 //        buildPackage(packageName, new LinkedList<>());
-//    }
+    }
 //
 //    @Test(description = "Verify build package behaviour when there is an updated version for a hierarchical package" +
 //            " import in Remote Repo.")
