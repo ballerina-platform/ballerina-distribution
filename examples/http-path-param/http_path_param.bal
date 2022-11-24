@@ -6,7 +6,7 @@ type Album readonly & record {|
 |};
 
 table<Album> key(title) albums = table [
-    {title: "Blue Train", artist: "John Coltrane" },
+    {title: "Blue Train", artist: "John Coltrane"},
     {title: "Jeru", artist: "Gerry Mulligan"}
 ];
 
