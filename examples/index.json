@@ -189,11 +189,10 @@
                 "isLearnByExample": true
             },
             {
-                "name": "int:range function",
+                "name": "Range function",
                 "url": "int-range",
                 "verifyBuild": true,
                 "verifyOutput": true,
-                "disablePlayground": true,
                 "isLearnByExample": true
             }
         ]
