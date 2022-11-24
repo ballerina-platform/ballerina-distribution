@@ -19,14 +19,13 @@ Send the following document to the GraphQL endpoint to test the service.
 ::: code graphql_context.graphql :::
 
 To send the document, use the following cURL command in a separate terminal. First, send the request with the `scope` header value set to `admin`.
-
->**Info:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client/).
-
 ::: out graphql_context.1.client.out :::
 
 Now, send the same document with the `scope` header value set to `unknown`. This will return an error in the `profile` field.
 
 ::: out graphql_context.2.client.out :::
+
+>**Tip:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client/).
 
 ## Related links
 - [`graphql:Context` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/classes/Context)
