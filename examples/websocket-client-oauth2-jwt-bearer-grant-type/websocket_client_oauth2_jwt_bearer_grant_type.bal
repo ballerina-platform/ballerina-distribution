@@ -22,7 +22,7 @@ public function main() returns error? {
             cert: "../resource/path/to/public.crt"
         }
     );
-    check securedEP->writeMessage("Hello, World!");
-    string textMessage = check securedEP->readMessage();
-    io:println(textMessage);
+    check securedEP->writeMessage("Hello, John!");
+    string chatMessage = check securedEP->readMessage();
+    io:println(chatMessage);
 }

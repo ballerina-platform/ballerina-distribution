@@ -5,7 +5,7 @@ public function main() returns error? {
     // Defines the WebSocket client to call the OAuth2 secured APIs.
     // The client is enriched with the `Authorization: Bearer <token>` header by
     // passing the `websocket:OAuth2ClientCredentialsGrantConfig` for the `auth` configuration of the client.
-    websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
+    websocket:Client securedEP = check new("wss://localhost:9090/chat",
         auth = {
             tokenUrl: "https://localhost:9445/oauth2/token",
             clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
@@ -21,7 +21,7 @@ public function main() returns error? {
             cert: "../resource/path/to/public.crt"
         }
     );
-    check securedEP->writeMessage("Hello, World!");
-    string textMessage = check securedEP->readMessage();
-    io:println(textMessage);
+    check securedEP->writeMessage("Hello, John!");
+    string chatMessage = check securedEP->readMessage();
+    io:println(chatMessage);
 }
