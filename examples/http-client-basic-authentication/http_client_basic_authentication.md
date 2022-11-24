@@ -1,6 +1,6 @@
 # HTTP client - Basic authentication
 
-A client, which is secured with Basic Auth can be used to connect to a secured service. The client is enriched with the `Authorization: Basic <token>` header by passing the `http:CredentialsConfig` for the `auth` configuration of the client.
+A client, which is secured with basic authentication can be used to connect to a secured service. The client is enriched with the `Authorization: Basic <token>` header by passing the `http:CredentialsConfig` for the `auth` configuration of the client.
 
 ::: code http_client_basic_authentication.bal :::
 

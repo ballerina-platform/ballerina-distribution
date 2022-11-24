@@ -9,19 +9,24 @@ An HTTP service/resource can be secured with basic authentication and optionally
     ```toml
     [[ballerina.auth.users]]
     username="alice"
-    password="password1"
-    scopes=["scope1"]
+    password="alice@123"
+    scopes=["developer"]
+    
     [[ballerina.auth.users]]
-    username="bob"
-    password="password2"
-    scopes=["scope2", "scope3"]
+    username="ldclakmal"
+    password="ldclakmal@123"
+    scopes=["developer", "admin"]
+    
+    [[ballerina.auth.users]]
+    username="eve"
+    password="eve@123"
     ```
 
 Run the service by executing the command below.
 
 ::: out http_service_basic_authentication_file_user_store.server.out :::
 
->**Info:** Alternatively, you can invoke the above service via the [Basic authentication client](/learn/by-example/http-client-basic-authentication).
+>**Info:** You can invoke the above service via the [Basic authentication client](/learn/by-example/http-client-basic-authentication).
 
 ## Related links
 - [`http:FileUserStoreConfig` - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/FileUserStoreConfig)

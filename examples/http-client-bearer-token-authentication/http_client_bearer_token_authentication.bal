@@ -1,6 +1,11 @@
 import ballerina/http;
 import ballerina/io;
 
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
+
 public function main() returns error? {
     // Defines the HTTP client to call the secured APIs.
     // The client is enriched with the `Authorization: Bearer <token>` header by
@@ -13,6 +18,6 @@ public function main() returns error? {
             cert: "../resource/path/to/public.crt"
         }
     );
-    string response = check securedEP->/foo/bar;
-    io:println(response);
+    Album[] payload = check securedEP->/albums;
+    io:println(payload);
 }

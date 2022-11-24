@@ -4,11 +4,11 @@ An HTTP service/resource can be secured with JWT and by enforcing authorization 
 
 ::: code http_service_jwt_authentication.bal :::
 
-Run the service by executing the cURL command below.
+Run the service by executing the command below.
 
 ::: out http_service_jwt_authentication.server.out :::
 
->**Info:** Alternatively, you can invoke the above service via the [self-signed JWT authentication client](/learn/by-example/http-client-self-signed-jwt-authentication).
+>**Info:** You can invoke the above service via the [self-signed JWT authentication client](/learn/by-example/http-client-self-signed-jwt-authentication).
 
 ## Related links
 - [`http:JwtValidatorConfig` - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/JwtValidatorConfig)
