@@ -1451,7 +1451,7 @@
         "samples": [
             {
                 "name": "Send request/Receive response",
-                "url": "http-client-endpoint",
+                "url": "http-client-send-request-receive-response",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "isLearnByExample": false

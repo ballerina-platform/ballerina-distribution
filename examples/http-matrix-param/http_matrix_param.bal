@@ -12,7 +12,6 @@ service / on new http:Listener(9090) {
     resource function get params/[string foo](http:Request req) returns Params {
 
         // Gets the `MatrixParams`.
-        // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#getMatrixParams.
         map<any> pathMParams = req.getMatrixParams("/params");
         var a = <string>pathMParams["a"];
         var b = <string>pathMParams["b"];

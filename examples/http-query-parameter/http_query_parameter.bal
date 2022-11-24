@@ -13,8 +13,7 @@ table<Album> key(title) albums = table [
 
 service / on new http:Listener(9090) {
 
-    // The `year` resource method argument is considered as the query parameter which is extracted from the
-    // request URI.
+    // The `year` resource method argument is considered as the query parameter which is extracted from the request URI.
     resource function get albums(int year) returns Album[] {
         table<Album> selected = from Album album in albums
                      where album.year == year select album;

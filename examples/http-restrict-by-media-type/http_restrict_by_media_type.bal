@@ -6,7 +6,6 @@ service / on new http:Listener(9090) {
     // an array of strings. The resource can only consume/accept `text/plain` media type. Therefore,
     // the `Content-Type` header of the request must be `text/plain` types. The resource can produce
     // `application/xml` payloads. Therefore, you need to set the `Accept` header accordingly.
-    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/HttpResourceConfig.
     @http:ResourceConfig {
         consumes: ["text/plain"],
         produces: ["application/xml"]

@@ -4,7 +4,6 @@ import ballerina/http;
 // To secure a listener using HTTPS, the listener needs to be configured with
 // a certificate file and a private key file for the listener.
 // The `http:ListenerSecureSocket` record provides the SSL-related listener configurations of the listener.
-// For details, see https://lib.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket.
 listener http:Listener securedEP = new(9090,
     secureSocket = {
         key: {

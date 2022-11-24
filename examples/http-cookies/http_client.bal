@@ -2,7 +2,6 @@ import ballerina/http;
 import ballerina/log;
 
 // HTTP client configurations associated with enabling cookies.
-// For details, see https://lib.ballerina.io/ballerina/http/latest/records/CookieConfig.
 http:ClientConfiguration clientEPConfig = {
     cookieConfig: {
         enabled: true
@@ -25,11 +24,8 @@ public function main() returns error? {
     if loginResp.statusCode != 200 {
         log:printError("Login failed");
     } else {
-        // When the login is successful, make another request to the
-        // `/welcome` resource of the backend service.
-        // As cookies are enabled in the HTTP client, it automatically handles cookies
-        // received with the login response and sends the relevant cookies
-        // to the `welcome` service resource.
+        // When the login is successful, make another request to the `/welcome` resource of the backend service.
+        // As cookies are enabled in the HTTP client, it automatically handles cookies received with the login response and sends the relevant cookies to the `welcome` service resource.
         string welcomeResp = check httpClient->get("/welcome");
 
         // A welcome message with the sent username will get printed.
