@@ -4,6 +4,8 @@ The underlying connection of the consumer service is secured with TLS/SSL.
 
 ::: code rabbitmq_service_secure_connection.bal :::
 
+To run the sample, start an instance of the RabbitMQ server and execute the following command.
+
 ::: out rabbitmq_service_secure_connection.out :::
 
 ## Related links

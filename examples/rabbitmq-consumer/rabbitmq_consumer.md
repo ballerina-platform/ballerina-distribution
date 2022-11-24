@@ -4,6 +4,8 @@ The messages are consumed from an existing queue using the Ballerina RabbitMQ me
 
 ::: code rabbitmq_consumer.bal :::
 
+To run the sample, start an instance of the RabbitMQ server and execute the following command.
+
 ::: out rabbitmq_consumer.out :::
 
 ## Related links

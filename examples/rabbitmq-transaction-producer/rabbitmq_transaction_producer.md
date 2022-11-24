@@ -4,6 +4,8 @@ A message is sent to an existing queue using the Ballerina RabbitMQ channel and 
 
 ::: code rabbitmq_transaction_producer.bal :::
 
+To run the sample, start an instance of the RabbitMQ server and execute the following command.
+
 ::: out rabbitmq_transaction_producer.out :::
 
 ## Related links

@@ -4,6 +4,8 @@ The underlying connection of the producer is secured with basic authentication.
 
 ::: code rabbitmq_client_basic_auth.bal :::
 
+To run the sample, start an instance of the RabbitMQ server and execute the following command.
+
 ::: out rabbitmq_client_basic_auth.out :::
 
 ## Related links

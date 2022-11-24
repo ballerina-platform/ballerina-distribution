@@ -4,6 +4,8 @@ In this example, the RabbitMQ client is used to consume a message from a pre-dec
 
 ::: code rabbitmq_sync_consumer.bal :::
 
+To run the sample, start an instance of the RabbitMQ server and execute the following command.
+
 ::: out rabbitmq_sync_consumer.out :::
 
 ## Related links

@@ -4,6 +4,8 @@ The underlying connection of the consumer service is secured with basic authenti
 
 ::: code rabbitmq_service_basic_auth.bal :::
 
+To run the sample, start an instance of the RabbitMQ server and execute the following command.
+
 ::: out rabbitmq_service_basic_auth.out :::
 
 ## Related links

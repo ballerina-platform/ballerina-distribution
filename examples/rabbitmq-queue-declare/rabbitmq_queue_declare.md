@@ -4,6 +4,8 @@ In this example, the RabbitMQ client is declaring a queue. Queues in RabbitMQ ar
 
 ::: code rabbitmq_queue_declare.bal :::
 
+To run the sample, start an instance of the RabbitMQ server and execute the following command.
+
 ::: out rabbitmq_queue_declare.out :::
 
 ## Related links
