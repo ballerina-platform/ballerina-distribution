@@ -1,8 +1,10 @@
 # NATS service - Basic authentication
 
-In this example, the underlying connections of the subscriber is secured with Basic Auth.
+NATS client connections can be authenticated in many ways. One of them is using username and password credentials. In this example, the underlying connection of the listener is secured with basic authentication.
 
 ::: code nats-service-basic-auth.bal :::
+
+To run the sample, start an instance of the NATS server and execute the following command.
 
 ::: out nats-service-basic-auth.out :::
 
