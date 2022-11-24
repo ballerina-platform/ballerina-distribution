@@ -4,11 +4,11 @@ An HTTP service/resource can be secured with OAuth2 and by enforcing authorizati
 
 ::: code http_service_oauth2.bal :::
 
-Run the service by executing the cURL command below.
+Run the service by executing the command below.
 
 ::: out http_service_oauth2.server.out :::
 
->**Info:** Alternatively, you can invoke the above service via the [OAuth2 JWT Bearer grant type client](/learn/by-example/http-client-oauth2-jwt-bearer-grant-type).
+>**Info:** You can invoke the above service via the [OAuth2 JWT Bearer grant type client](/learn/by-example/http-client-oauth2-jwt-bearer-grant-type).
 
 ## Related links
 - [`http:OAuth2IntrospectionConfig` - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/OAuth2IntrospectionConfig)

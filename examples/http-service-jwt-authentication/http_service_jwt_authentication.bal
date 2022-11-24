@@ -1,5 +1,10 @@
 import ballerina/http;
 
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
+
 listener http:Listener securedEP = new(9090,
     secureSocket = {
         key: {
@@ -29,12 +34,15 @@ listener http:Listener securedEP = new(9090,
         }
     ]
 }
-service /foo on securedEP {
+service / on securedEP {
 
     // It is optional to override the authentication and authorization
     // configurations at the resource levels. Otherwise, the service auth
     // configurations will be applied automatically to the resources as well.
-    resource function get bar() returns string {
-        return "Hello, World!";
+    resource function get albums() returns Album[] {
+        return [
+            {title: "Blue Train", artist: "John Coltrane"},
+            {title: "Jeru", artist: "Gerry Mulligan"}
+        ];
     }
 }

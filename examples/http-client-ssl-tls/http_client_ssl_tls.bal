@@ -1,6 +1,11 @@
 import ballerina/http;
 import ballerina/io;
 
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
+
 public function main() returns error? {
     // An HTTP client can be configured to communicate through HTTPS as well.
     // To secure a client using HTTPS, the client needs to be configured with
@@ -11,6 +16,6 @@ public function main() returns error? {
             cert: "../resource/path/to/public.crt"
         }
     );
-    string response = check securedEP->/foo/bar;
-    io:println(response);
+    Album[] payload = check securedEP->/albums;
+    io:println(payload);
 }
