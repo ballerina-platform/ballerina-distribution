@@ -116,7 +116,6 @@ public class CentralTestUtils {
      * @return token required to dispatch GitHub workflows.
      */
     public static String getBallerinaBotWorkflow() {
-        System.out.println(System.getenv("ballerinaBotWorkflow"));
         return System.getenv("ballerinaBotWorkflow");
     }
 
