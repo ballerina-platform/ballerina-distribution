@@ -4,6 +4,8 @@ The WebSocket client can be used to connect to and interact with a WebSocket ser
 
 ::: code websocket_client.bal :::
 
+Run the client program by executing the command below.
+
 ::: out websocket_client.out :::
 
 ## Related links

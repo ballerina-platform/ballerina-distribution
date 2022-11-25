@@ -7,7 +7,7 @@ The TCP Client is used to connect to a remote TCP server. This sample demonstrat
 ## Prerequisites
 - Start the [tcp service](/learn/by-example/tcp-listener/).
 
-Run the client by executing the command below.
+Run the client program by executing the command below.
 
 ::: out tcp_client.out :::
 
