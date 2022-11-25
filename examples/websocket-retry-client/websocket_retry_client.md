@@ -5,8 +5,8 @@ If the WebSocket client lost the connection due to some transient failure, it au
 ::: code websocket_retry_client.bal :::
 
 ## Prerequisites
-- Start a sample WebSocket service, which sends a message to the client upon upgrading to a WebSocket connection. If you are using a Ballerina WebSocket server, you can send a message to the client in the `onOpen` resource.
-
+- Start the [WebSocket service](/learn/by-example/websocket-basic-sample/).
+- 
 Run the client program by executing the command below.
 
 ::: out websocket_retry_client.out :::
