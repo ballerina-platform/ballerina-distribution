@@ -9,7 +9,7 @@ This example shows how to send a GraphQL request and retrieve the response in a 
 Further, the execute method optionally takes a map of variables and an operationName in case the document contains any variables or contains more than one operation.
 
 ## Prerequisites
-- Execute the ballerina GraphQL server program given in [Record as output object](https://ballerina.io/learn/by-example/graphql-returning-record-values) example.
+- Run the GraphQL service given in the [Record as output object](https://ballerina.io/learn/by-example/graphql-returning-record-values) example.
 
 Run the client program by executing the following command.
 
