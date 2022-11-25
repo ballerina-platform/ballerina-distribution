@@ -10,7 +10,7 @@ public function main() returns error? {
     tcp:Client socketClient = check new ("localhost", 9090);
 
     // Send the desired content to the server.
-    check socketClient->writeBytes("Hello Ballerina Echo from client".toBytes());
+    check socketClient->writeBytes("Hello Ballerina".toBytes());
 
     // Read the response from the server.
     readonly & byte[] receivedData = check socketClient->readBytes();
