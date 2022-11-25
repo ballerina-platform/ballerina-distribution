@@ -13,4 +13,3 @@ Run the service by executing the command below.
 ## Related links
 - [`websocket` package - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
 - [`websocket` service - Specification](/spec/websocket/#3-service-types)
-- [`websocket` service data binding](https://github.com/ballerina-platform/module-ballerina-websocket/blob/main/docs/proposals/data-binding-api.md)

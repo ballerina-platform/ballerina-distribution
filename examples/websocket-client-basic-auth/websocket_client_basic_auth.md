@@ -5,7 +5,7 @@ A client, which is secured with Basic authentication can be used to connect to a
 ::: code websocket_client_basic_auth.bal :::
 
 ## Prerequisites
-- Start the [Basic authentication file user store service](/learn/by-example/websocket-service-basic-auth-file-user-store/).
+- Run the WebSocket service given in the [Basic authentication file user store](/learn/by-example/websocket-service-basic-auth-file-user-store/) example.
 
 Run the client program by executing the command below.
 
