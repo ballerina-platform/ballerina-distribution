@@ -1,6 +1,6 @@
 # NATS service - Send reply to request message
 
-NATS supports the Request-Reply pattern using its core message distribution model, publish and subscribe. A request is sent to a given subject and consumers listening to that subject can send responses to the reply subject. In this example, the NATS service is used to send replies to incoming request messages. 
+NATS supports the Request-Reply pattern using its core message distribution model, publish, and subscribe. A request is sent to a given subject and consumers listening to that subject can send responses to the reply subject. In this example, the NATS service is used to send replies to incoming request messages. 
 
 ::: code nats-basic-reply.bal :::
 
