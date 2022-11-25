@@ -12,5 +12,5 @@ Run the program by executing the following command.
 ::: out kafka_client_payload_data_binding.out :::
 
 ## Related links
-- [`kafka:pollPayload` - API documentation](https://lib.ballerina.io/ballerinax/kafka/3.4.0/clients/Consumer#pollPayload)
+- [`kafka:Consumer->pollPayload` function - API documentation](https://lib.ballerina.io/ballerinax/kafka/3.4.0/clients/Consumer#pollPayload)
 - [Consume messages - specification](https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#422-consume-messages)
