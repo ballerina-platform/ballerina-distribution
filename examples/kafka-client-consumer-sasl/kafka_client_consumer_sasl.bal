@@ -1,10 +1,17 @@
 import ballerinax/kafka;
 import ballerina/io;
 
+public type Order record {|
+    int orderId;
+    string productName;
+    decimal price;
+    boolean isValid;
+|};
+
 public function main() returns error? {
-    kafka:Consumer logConsumer = check new ("localhost:9093", {
-        groupId: "order-log-group-id",
-        topics: "order-log-topic",
+    kafka:Consumer orderConsumer = check new ("localhost:9093", {
+        groupId: "order-group-id",
+        topics: "order-topic",
         // Provide the relevant authentication configurations to authenticate the consumer
         // by the `kafka:AuthenticationConfiguration`.
         auth: {
@@ -18,10 +25,10 @@ public function main() returns error? {
     });
 
     // Polls the consumer for payload.
-    string[] logs = check logConsumer->pollPayload(1);
+    Order[] orders = check logConsumer->pollPayload(1);
 
-    check from string log in logs
+    check from Order 'order in orders
         do {
-            io:println(string `Received log: ${log}`);
+            io:println(string `Received valid order for ${'order.productName}`);
         };
 }
