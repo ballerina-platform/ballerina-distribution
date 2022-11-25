@@ -3,7 +3,7 @@ import ballerina/graphql;
 // Define the interface `Animal` using a `distinct` `service` object.
 type Animal distinct service object {
 
-    // Define the field `name` as a resource function definition.
+    // Define the field `name` as a resource method definition.
     resource function get name() returns string;
 };
 
