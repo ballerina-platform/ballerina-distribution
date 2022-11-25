@@ -1,4 +1,3 @@
-import ballerina/io;
 import ballerinax/kafka;
 
 public function main() returns kafka:Error? {

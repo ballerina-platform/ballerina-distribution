@@ -1,1 +1,2 @@
 $ bal run kafka_client_consumer_sasl.bal
+Received log: new order for item 2311 was placed on 1669113239

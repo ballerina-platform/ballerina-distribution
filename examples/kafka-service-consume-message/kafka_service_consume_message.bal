@@ -19,7 +19,7 @@ service on ep {
         check from Order 'order in orders
             where 'order.isValid
             do {
-                log:printInfo("Received Valid Order: " + 'order.toString());
+                log:printInfo(string `Received valid order for ${'order.productName}`);
             };
     }
 }

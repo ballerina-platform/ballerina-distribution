@@ -2,9 +2,9 @@ import ballerinax/kafka;
 import ballerina/log;
 
 listener kafka:Listener securedEp = check new ("localhost:9093", {
-    groupId: "log-group-id",
+    groupId: "order-log-group-id",
     // Subscribes to the topic `test-kafka-topic`.
-    topics: ["log-topic"],
+    topics: ["order-log-topic"],
     // Provide the relevant authentication configurations to authenticate the consumer
     // by the `kafka:AuthenticationConfiguration`.
     auth: {
