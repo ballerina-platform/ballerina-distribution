@@ -6,8 +6,13 @@ The received records are converted to the user defined type using data-binding. 
 
 ::: code kafka_client_consumer_record_data_binding.bal :::
 
+## Prerequisites
+- Execute [Kafka client - Produce message](/learn/by-example/kafka-client-produce-message) example to produce some messages to the topic. 
+
+Run the program by executing the following command.
+
 ::: out kafka_client_consumer_record_data_binding.out :::
 
 ## Related links
-- [`kafka:poll` - API documentation](https://lib.ballerina.io/ballerinax/kafka/3.4.0/clients/Consumer#poll)
+- [`kafka:Consumer->poll` function - API documentation](https://lib.ballerina.io/ballerinax/kafka/3.4.0/clients/Consumer#poll)
 - [Consume messages - specification](https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#422-consume-messages)

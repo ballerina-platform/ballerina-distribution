@@ -4,10 +4,13 @@ The FTP service is used to receive file/directory changes that occur in a remote
 
 ::: code ftp_service_read_write.bal :::
 
-Each newly added file in the SFTP server will be appended with the content in the appending file.
+## Prerequisites
+- Execute [FTP client - Write file](/learn/by-example/ftp-client-write) example to put a file in the FTP server.
+
+Run the program by executing the following command. Each newly added file in the SFTP server will be appended with the content in the appending file.
 
 ::: out ftp_service_read_write.out :::
 
 ## Related links
-- [`ftp:Caller` - API documentation](https://lib.ballerina.io/ballerina/ftp/latest/clients/Caller)
-- [`ftp:Caller` - specification](/spec/ftp/#52-functions)
+- [`ftp:Caller` client object  - API documentation](https://lib.ballerina.io/ballerina/ftp/latest/clients/Caller)
+- [`ftp:Caller` functions - specification](/spec/ftp/#52-functions)

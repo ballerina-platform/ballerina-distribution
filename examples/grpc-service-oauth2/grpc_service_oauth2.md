@@ -8,8 +8,9 @@ In the authorization phase, the scopes of the service/resource are compared agai
 
    ::: code grpc_service_oauth2.bal :::
 
-Execute the command below to run the service.
 Setting up the service is the same as setting up the unary RPC service with additional configurations. You can refer to the [unary RPC service](/learn/by-example/grpc-service-unary/) to implement the service used below.
+
+Execute the command below to run the service.
 
    ::: out grpc_service_oauth2.server.out :::
 
@@ -20,6 +21,6 @@ Setting up the service is the same as setting up the unary RPC service with addi
  - [gRPC OAuth2 JWT Bearer grant type client](/learn/by-example/grpc-client-oauth2-jwt-bearer-grant-type)
 
 ## Related links
-- [`grpc:OAuth2IntrospectionConfig` - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2IntrospectionConfig)
+- [`grpc:OAuth2IntrospectionConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2IntrospectionConfig)
 - [OAuth2 - specification](/spec/grpc/#5114-service---oauth2)
 - [`oauth2` package - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)
