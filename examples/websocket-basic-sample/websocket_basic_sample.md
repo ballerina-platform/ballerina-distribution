@@ -11,6 +11,6 @@ Run the service by executing the command below.
 >**Tip:** You can invoke the above service via the [WebSocket client](/learn/by-example/websocket-client/).
 
 ## Related links
-- [`websocket` service - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
+- [`websocket` package - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
 - [`websocket` service - Specification](/spec/websocket/#3-service-types)
 - [`websocket` service data binding](https://github.com/ballerina-platform/module-ballerina-websocket/blob/main/docs/proposals/data-binding-api.md)

@@ -1,4 +1,2 @@
 $ bal run websocket_retry_client.bal
 Hello World!
-Please shutdown the server now. And restart at least within 15 seconds
-Hello World!
