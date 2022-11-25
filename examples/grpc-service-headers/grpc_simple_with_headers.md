@@ -13,5 +13,5 @@ Execute the command below to run the service.
 >**Tip:** You can invoke the above service via the [simple RPC client with headers](/learn/by-example/grpc-client-headers/).
 
 ## Related links
-- [gRPC - API documentation](https://lib.ballerina.io/ballerina/grpc/latest)
-- [gRPC - specification](/spec/grpc/)
+- [`grpc` package - API documentation](https://lib.ballerina.io/ballerina/grpc/latest)
+- [`grpc` package - specification](/spec/grpc/)

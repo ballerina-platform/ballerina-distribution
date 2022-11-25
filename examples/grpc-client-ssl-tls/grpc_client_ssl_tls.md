@@ -14,5 +14,5 @@ Execute the command below to run the client.
    ::: out grpc_client_ssl_tls.out :::
 
 ## Related links
-- [`grpc:ClientSecureSocket` - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/ClientSecureSocket)
+- [`grpc:ClientSecureSocket` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/ClientSecureSocket)
 - [SSL/TLS - specification](/spec/grpc/#52-ssltls-and-mutual-ssl)

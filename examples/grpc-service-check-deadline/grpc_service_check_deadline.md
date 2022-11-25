@@ -15,5 +15,5 @@ Execute the command below to run the service.
 >**Tip:** You can invoke the above service via the [gRPC client - Set deadline](/learn/by-example/grpc-service-set-deadline/).
 
 ## Related links
-- [`grpc:isCancelled` - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/functions#isCancelled)
+- [`grpc:isCancelled` function - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/functions#isCancelled)
 - [Check deadline - specification](/spec/grpc/#61-grpc-deadline)

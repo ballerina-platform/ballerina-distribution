@@ -16,6 +16,6 @@ Execute the command below to run the client.
    ::: out grpc_client_oauth2_password_grant_type.out :::
 
 ## Related links
-- [`grpc:OAuth2PasswordGrantConfig` - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2PasswordGrantConfig)
+- [`grpc:OAuth2PasswordGrantConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2PasswordGrantConfig)
 - [OAuth2 authentication and authorization - specification](/spec/grpc/#5118-client---oauth2)
 - [`oauth2` package - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)

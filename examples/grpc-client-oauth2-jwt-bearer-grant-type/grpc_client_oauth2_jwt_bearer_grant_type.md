@@ -16,6 +16,6 @@ Execute the command below to run the client.
    ::: out grpc_client_oauth2_jwt_bearer_grant_type.out :::
 
 ## Related links
-- [`grpc:OAuth2JwtBearerGrantConfig` - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2JwtBearerGrantConfig)
+- [`grpc:OAuth2JwtBearerGrantConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2JwtBearerGrantConfig)
 - [OAuth2 authentication and authorization - specification](/spec/grpc/#5118-client---oauth2)
 - [`oauth2` package - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)

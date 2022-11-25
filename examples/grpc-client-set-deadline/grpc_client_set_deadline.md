@@ -16,5 +16,5 @@ Execute the command below to run the client. Output will depend on how the servi
 ::: out grpc_client_set_deadline.out :::
 
 ## Related links
-- [Set deadline - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/functions#setDeadline)
+- [`grpc:setDeadline` function - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/functions#setDeadline)
 - [Set deadline - specification](/spec/grpc/#61-grpc-deadline)
