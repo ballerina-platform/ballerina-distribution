@@ -4,9 +4,10 @@ A client, which is secured with self-signed JWT can be used to connect to a secu
 
 ::: code websocket_client_self_signed_jwt_auth.bal :::
 
-Run the client program by executing the command below.
+## Prerequisites
+- Start the [JWT authentication service](/learn/by-example/websocket-service-jwt-auth/).
 
->**Tip:** As a prerequisite to running the client, start the [JWT authentication service](/learn/by-example/websocket-service-jwt-auth/).
+Run the client program by executing the command below.
 
 ::: out websocket_client_self_signed_jwt_auth.out :::
 

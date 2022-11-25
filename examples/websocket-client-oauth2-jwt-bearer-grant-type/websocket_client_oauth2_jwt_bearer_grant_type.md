@@ -4,9 +4,10 @@ A client, which is secured with an OAuth2 JWT bearer grant type can be used to c
 
 ::: code websocket_client_oauth2_jwt_bearer_grant_type.bal :::
 
-Run the client program by executing the command below.
+## Prerequisites
+- Start the [OAuth2 service](/learn/by-example/websocket-service-oauth2/).
 
->**Tip:** As a prerequisite to running the client, start the [OAuth2 service](/learn/by-example/websocket-service-oauth2/).
+Run the client program by executing the command below.
 
 ::: out websocket_client_oauth2_jwt_bearer_grant_type.out :::
 

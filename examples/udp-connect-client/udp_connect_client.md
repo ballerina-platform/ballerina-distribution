@@ -6,8 +6,11 @@ The client remains connected until it is explicitly disconnected or until it is 
 
 ::: code udp_connect_client.bal :::
 
+## Prerequisites
+- Start the [udp service](/learn/by-example/udp-listener/).
+
 ::: out udp_connect_client.out :::
 
 ## Related links
-- [`udp:Client` - API documentation](https://lib.ballerina.io/ballerina/udp/latest/clients/Client)
+- [`udp:Client` client object - API documentation](https://lib.ballerina.io/ballerina/udp/latest/clients/Client)
 - [`udp:Client` - Specification](/spec/udp/#3-client)

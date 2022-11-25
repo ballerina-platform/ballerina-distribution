@@ -8,4 +8,4 @@ The UDP Listener is used to expose a UDP service over the UDP protocol. The UDP 
 
 ## Related links
 - [`udp` package - API documentation](https://lib.ballerina.io/ballerina/udp/latest)
-- [`udp` service  - Specification](/spec/udp/#4-service)
+- [`udp` service - Specification](/spec/udp/#4-service)

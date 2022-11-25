@@ -4,9 +4,10 @@ This demonstrates how the Ballerina TCP client can be configured to connect to a
 
 ::: code tcp_client_ssl_tls.bal :::
 
-Run the client by executing the command below.
+## Prerequisites
+- Start a [sample service secured with SSL/TLS](/learn/by-example/tcp-service-ssl-tls/).
 
->**Tip:** As a prerequisite to running the client, start a [sample service secured with SSL/TLS](/learn/by-example/tcp-service-ssl-tls/).
+Run the client by executing the command below.
 
 ::: out tcp_client_ssl_tls.out :::
 

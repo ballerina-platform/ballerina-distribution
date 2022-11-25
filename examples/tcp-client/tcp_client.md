@@ -4,12 +4,13 @@ The TCP Client is used to connect to a remote TCP server. This sample demonstrat
 
 ::: code tcp_client.bal :::
 
-Run the client by executing the command below.
+## Prerequisites
+- Start the [tcp service](/learn/by-example/tcp-listener/).
 
->**Tip:** As a prerequisite to running the client, start a [tcp service](/learn/by-example/tcp-listener/).
+Run the client by executing the command below.
 
 ::: out tcp_client.out :::
 
 ## Related links
-- [`tcp:Client` - API documentation](https://lib.ballerina.io/ballerina/tcp/latest/clients/Client)
+- [`tcp:Client` client object - API documentation](https://lib.ballerina.io/ballerina/tcp/latest/clients/Client)
 - [`tcp:Client` - Specification](/spec/tcp/#4-client)
