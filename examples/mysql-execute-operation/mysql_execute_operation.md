@@ -4,7 +4,11 @@ This BBE demonstrates how to use the MySQL client with the DDL and  DML operatio
 
 ::: code mysql_execute_operation.bal :::
 
-Create a Ballerina project. Copy the example to the project. Execute the command below to build and run the project.
+## Prerequisites
+
+- Create a Ballerina project.
+- Copy the example to the project along with util files.
+- Run the sample by executing the command below.
 
 ::: out mysql_execute_operation.out :::
 

@@ -4,7 +4,11 @@ This BBE demonstrates how to use the MySQL client to execute a batch of DDL/DML 
 
 ::: code mysql_batch_execute_operation.bal :::
 
-Create a Ballerina project. Copy the example to the project. Execute the command below to build and run the project.
+## Prerequisites
+
+- Create a Ballerina project.
+- Copy the example to the project along with util files.
+- Run the sample by executing the command below.
 
 ::: out mysql_batch_execute_operation.out :::
 
