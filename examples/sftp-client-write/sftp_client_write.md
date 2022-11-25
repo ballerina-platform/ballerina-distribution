@@ -9,5 +9,5 @@ Run the program by executing the following command. The newly-added file will ap
 ::: out sftp_client_write.out :::
 
 ## Related links
-- [Write file - API documentation](https://lib.ballerina.io/ballerina/ftp/latest/clients/Client#put)
+- [`ftp:Client->put` method  - API documentation](https://lib.ballerina.io/ballerina/ftp/latest/clients/Client#put)
 - [SFTP client - specification](/spec/ftp/#322-secure-client)

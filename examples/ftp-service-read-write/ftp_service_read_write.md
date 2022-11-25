@@ -12,5 +12,5 @@ Run the program by executing the following command. Each newly added file in the
 ::: out ftp_service_read_write.out :::
 
 ## Related links
-- [`ftp:Caller` - API documentation](https://lib.ballerina.io/ballerina/ftp/latest/clients/Caller)
-- [`ftp:Caller` - specification](/spec/ftp/#52-functions)
+- [`ftp:Caller` client object  - API documentation](https://lib.ballerina.io/ballerina/ftp/latest/clients/Caller)
+- [`ftp:Caller` functions - specification](/spec/ftp/#52-functions)

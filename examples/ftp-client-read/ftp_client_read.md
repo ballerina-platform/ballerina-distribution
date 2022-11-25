@@ -12,5 +12,5 @@ Run the program by executing the following command. The newly-added file will ap
 ::: out ftp_client_read.out :::
 
 ## Related links
-- [Read file - API documentation](https://lib.ballerina.io/ballerina/ftp/latest/clients/Client#get)
+- [`ftp:Client->get` method - API documentation](https://lib.ballerina.io/ballerina/ftp/latest/clients/Client#get)
 - [FTP client - specification](/spec/ftp/#321-insecure-client)

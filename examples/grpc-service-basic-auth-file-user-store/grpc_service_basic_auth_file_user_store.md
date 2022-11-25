@@ -32,6 +32,6 @@ Execute the command below to run the service.
 >**Tip:** You can invoke the above service via the [gRPC Basic Auth client](/learn/by-example/grpc-client-basic-auth).
 
 ## Related links
-- [`grpc:FileUserStoreConfig` - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/FileUserStoreConfig)
+- [`grpc:FileUserStoreConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/FileUserStoreConfig)
 - [Basic authentication file user store - specification](/spec/grpc/#5111-service---basic-auth---file-user-store)
 - [`auth` package - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)

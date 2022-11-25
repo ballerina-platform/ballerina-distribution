@@ -12,5 +12,5 @@ Run the program by executing the following command. Paths of the newly-added and
 ::: out ftp_service_read.out :::
 
 ## Related links
-- [`ftp:Listener` - API documentation](https://lib.ballerina.io/ballerina/ftp/latest/listeners/Listener)
+- [`ftp:Listener` client object  - API documentation](https://lib.ballerina.io/ballerina/ftp/latest/listeners/Listener)
 - [FTP listener - specification](/spec/ftp/#422-secure-listener)
