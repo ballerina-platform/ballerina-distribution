@@ -9,8 +9,9 @@ This BBE demonstrates how to use the JDBC client to execute a batch of DDL/DML o
 ## Prerequisites
 - Create a Ballerina project.
 - Copy the example to the project along with util files.
-- Add the relevant database driver JAR details to the `Ballerina.toml` file. For a sample configuration, see the [`jdbc` module](https://lib.ballerina.io/ballerinax/java.jdbc/latest/).
-- Run the sample by executing the command below.
+- Add the relevant database driver JAR details to the `Ballerina.toml` file. For a sample configuration, see the [`jdbc` module](https://lib.ballerina.io/ballerinax/java.jdbc/latest/). 
+
+Run the sample by executing the following command.
 
 ::: out jdbc_atomic_transaction.out :::
 

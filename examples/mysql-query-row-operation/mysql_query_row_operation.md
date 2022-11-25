@@ -7,7 +7,8 @@ This BBE demonstrates how to use the MySQL client select query row operations.
 ## Prerequisites
 - Create a Ballerina project.
 - Copy the example to the project along with util files.
-- Run the sample by executing the command below.
+
+Run the sample by executing the following command.
 
 ::: out mysql_query_row_operation.out :::
 

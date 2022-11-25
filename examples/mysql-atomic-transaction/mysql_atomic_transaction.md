@@ -8,7 +8,8 @@ This BBE demonstrates how to use the MySQL client to execute a batch of DDL/DML 
 - Create a Ballerina project.
 - Copy the example to the project along with util files.
 - Change the database configurations in the files.
-- Execute the command below.
+
+Run the sample by executing the following command.
 
 ::: out mysql_atomic_transaction.out :::
 
