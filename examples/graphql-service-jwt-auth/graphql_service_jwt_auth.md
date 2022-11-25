@@ -14,5 +14,6 @@ Run the service by executing the command below.
 
 ## Related links
 - [`graphql:ServiceConfig` annotation - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/annotations#ServiceConfig)
+- [`graphql:JwtValidatorConfigWithScopes` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/records/JwtValidatorConfigWithScopes)
 - [`jwt` package - API documentation](https://lib.ballerina.io/ballerina/jwt/latest/)
 - [`graphql` JWT authentication - Specification](/spec/graphql/#11113-jwt-authentication)

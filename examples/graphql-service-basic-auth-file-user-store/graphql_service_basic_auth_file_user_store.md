@@ -25,5 +25,6 @@ Run the service by executing the command below.
 
 ## Related links
 - [`graphql:ServiceConfig` annotation - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/annotations#ServiceConfig)
+- [`graphql:FileUserStoreConfigWithScopes` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/records/FileUserStoreConfigWithScopes)
 - [`auth` package - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)
 - [`graphql` basic authentication - file user store - Specification](/spec/graphql/#11111-basic-authentication---file-user-store)
