@@ -7,7 +7,8 @@ This BBE demonstrates how to use the MySQL client for query operations with adva
 ## Prerequisites
 - Create a Ballerina project.
 - Copy the example to the project along with util files.
-- Run the sample by executing the command below.
+
+Run the sample by executing the following command.
 
 ::: out mysql_query_column_mapping.out :::
 
