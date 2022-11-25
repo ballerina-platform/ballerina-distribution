@@ -1,6 +1,6 @@
 # REST service - Service path and resource name
 
-Ballerina supports writing RESTful services. Each resource function can be invoked via `service-path` and `resource-name`. The `resource accessor` confines the resource to the specified HTTP method.
+Ballerina supports writing RESTful services. Each resource method can be invoked via `service-path` and `resource-name`. The `resource accessor` confines the resource to the specified HTTP method.
 
 ::: code http_service_path_and_resource_name.bal :::
 

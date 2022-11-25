@@ -1,6 +1,6 @@
 # HTTP client - Send request/Receive response
 
-The HTTP client can be used to connect to and interact with an HTTP server. The client is instantiated with URL and uses resource function to make the network calls.
+The HTTP client can be used to connect to and interact with an HTTP server. The client is instantiated with URL and uses resource method to make the network calls.
 
 ::: code http_client_send_request_receive_response.bal :::
 
