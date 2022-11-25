@@ -11,4 +11,3 @@ Run the client program by executing the command below.
 ## Related links
 - [`websocket:Client` client object - API documentation](https://lib.ballerina.io/ballerina/websocket/latest/clients/Client)
 - [`websocket:Client` - Specification](/spec/websocket/#4-client)
-- [`websocket:Client` data binding - Specification](https://github.com/ballerina-platform/module-ballerina-websocket/blob/main/docs/proposals/data-binding-api.md)
