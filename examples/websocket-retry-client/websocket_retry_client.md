@@ -5,7 +5,7 @@ If the WebSocket client lost the connection due to some transient failure, it au
 ::: code websocket_retry_client.bal :::
 
 ## Prerequisites
-- Start the [WebSocket service](/learn/by-example/websocket-basic-sample/).
+- Run the WebSocket service given in the [Send/Receive message](/learn/by-example/websocket-basic-sample/) example.
 
 Run the client program by executing the command below.
 

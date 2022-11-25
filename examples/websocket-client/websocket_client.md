@@ -5,7 +5,7 @@ The WebSocket client can be used to connect to and interact with a WebSocket ser
 ::: code websocket_client.bal :::
 
 ## Prerequisites
-- Start the [WebSocket service](/learn/by-example/websocket-basic-sample/).
+- Run the WebSocket service given in the [Send/Receive message](/learn/by-example/websocket-basic-sample/) example.
 
 Run the client program by executing the command below.
 

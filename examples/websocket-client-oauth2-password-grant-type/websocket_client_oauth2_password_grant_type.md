@@ -5,7 +5,7 @@ A client, which is secured with OAuth2 password grant type can be used to connec
 ::: code websocket_client_oauth2_password_grant_type.bal :::
 
 ## Prerequisites
-- Start the [OAuth2 service](/learn/by-example/websocket-service-oauth2/).
+- Run the WebSocket service given in the [OAuth2](/learn/by-example/websocket-service-oauth2/) example.
 
 Run the client program by executing the command below.
 
