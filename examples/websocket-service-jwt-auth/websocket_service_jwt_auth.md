@@ -6,13 +6,13 @@ Ballerina uses the concept of scopes for authorization. A resource declared in a
 
 ::: code websocket_service_jwt_auth.bal :::
 
-Run the service by executing the cURL command below.
+Run the service by executing the command below.
 
 ::: out websocket_service_jwt_auth.server.out :::
 
 >**Tip:** Alternatively, you can invoke the above service via the [self-signed JWT authentication client](/learn/by-example/websocket-client-self-signed-jwt-auth).
 
 ## Related Links
-- [`websocket` - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
-- [`jwt` - API documentation](https://lib.ballerina.io/ballerina/jwt/latest/)
+- [`websocket` package - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
+- [`jwt` package - API documentation](https://lib.ballerina.io/ballerina/jwt/latest/)
 - [`websocket` authentication - Specification](/spec/websocket/#52-authentication-and-authorization)

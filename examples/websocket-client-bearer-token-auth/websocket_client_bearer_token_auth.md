@@ -9,5 +9,5 @@ Run the client program by executing the command below.
 ::: out websocket_client_bearer_token_auth.out :::
 
 ## Related Links
-- [`websocket` - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
+- [`websocket` package - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
 - [`websocket` authentication - Specification](/spec/websocket/#52-authentication-and-authorization)

@@ -4,12 +4,13 @@ You can use the WSS client to connect or interact with an WSS listener. Provide 
 
 ::: code websocket_client_ssl_tls.bal :::
 
-Run the client program by executing the command below.
+## Prerequisites
+- Start the [sample service secured with SSL/TLS](/learn/by-example/websocket-service-ssl-tls/).
 
->**Tip:** As a prerequisite to running the client, start a [sample service secured with SSL/TLS](/learn/by-example/websocket-service-ssl-tls/).
+Run the client program by executing the command below.
 
 ::: out websocket_client_ssl_tls.out :::
 
 ## Related Links
-- [`websocket` - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
+- [`websocket` package - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
 - [`websocket` SSL/TLS - Specification](/spec/websocket/#5-securing-the-websocket-connections)

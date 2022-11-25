@@ -4,6 +4,8 @@ This explains how the Ballerina WebSocket server interacts with a WebSocket clie
 
 ::: code websocket_basic_sample.bal :::
 
+Run the service by executing the command below.
+
 ::: out websocket_basic_sample.out :::
 
 >**Tip:** You can invoke the above service via the [WebSocket client](/learn/by-example/websocket-client/).
