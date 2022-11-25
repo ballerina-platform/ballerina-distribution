@@ -9,5 +9,5 @@ For more information on the underlying module, see the [`tcp` module](https://li
 ::: out tcp_listener.out :::
 
 ## Related links
-- [`tcp` - API documentation](https://lib.ballerina.io/ballerina/tcp/latest)
+- [`tcp` package - API documentation](https://lib.ballerina.io/ballerina/tcp/latest)
 - [`tcp` Service  - Specification](/spec/tcp/#3-service-types)

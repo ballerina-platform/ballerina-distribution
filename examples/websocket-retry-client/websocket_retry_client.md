@@ -9,4 +9,4 @@ If the WebSocket client lost the connection due to some transient failure, it au
 ::: out websocket_retry_client.out :::
 
 ## Related Links
-- [`websocket` - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
+- [`websocket` package - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)

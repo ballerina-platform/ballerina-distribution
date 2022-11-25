@@ -11,6 +11,6 @@ Run the client by executing the command below.
 ::: out tcp_client_ssl_tls.out :::
 
 ## Related links
-- [`tcp` - API documentation](https://lib.ballerina.io/ballerina/tcp/latest)
+- [`tcp` package - API documentation](https://lib.ballerina.io/ballerina/tcp/latest)
 - [`tcp` SSL/TLS - Specification](/spec/tcp/#512-configuring-tls-in-client-side)
 

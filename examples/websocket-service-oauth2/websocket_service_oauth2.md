@@ -13,6 +13,6 @@ Run the service by executing the cURL command below.
 >**Tip:** Alternatively, you can invoke the above service via the [OAuth2 JWT Bearer grant type client](/learn/by-example/websocket-client-oauth2-jwt-bearer-grant-type).
 
 ## Related Links
-- [`websocket` - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
-- [`oauth2` - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)
+- [`websocket` package - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
+- [`oauth2` package - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)
 - [`websocket` authentication - Specification](/spec/websocket/#52-authentication-and-authorization)

@@ -13,6 +13,6 @@ Run the service by executing the cURL command below.
 >**Tip:** Alternatively, you can invoke the above service via the [self-signed JWT authentication client](/learn/by-example/websocket-client-self-signed-jwt-auth).
 
 ## Related Links
-- [`websocket` - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
-- [`jwt` - API documentation](https://lib.ballerina.io/ballerina/jwt/latest/)
+- [`websocket` package - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
+- [`jwt` package - API documentation](https://lib.ballerina.io/ballerina/jwt/latest/)
 - [`websocket` authentication - Specification](/spec/websocket/#52-authentication-and-authorization)
