@@ -18,7 +18,7 @@ Ballerina uses the concept of scopes for authorization. A resource declared in a
     password="password2"
     scopes=["scope2", "scope3"]
     ```
-Run the service by executing the cURL command below.
+Run the service by executing the command below.
 
 ::: out websocket_service_basic_auth_file_user_store.server.out :::
 

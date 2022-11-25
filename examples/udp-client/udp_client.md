@@ -7,6 +7,8 @@ The UDP Client is used to send data to a specific remote host using the UDP prot
 ## Prerequisites
 - Start the [udp service](/learn/by-example/udp-listener/).
 
+Run the client program by executing the command below.
+
 ::: out udp_client.out :::
 
 ## Related links

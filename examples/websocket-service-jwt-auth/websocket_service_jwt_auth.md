@@ -6,7 +6,7 @@ Ballerina uses the concept of scopes for authorization. A resource declared in a
 
 ::: code websocket_service_jwt_auth.bal :::
 
-Run the service by executing the cURL command below.
+Run the service by executing the command below.
 
 ::: out websocket_service_jwt_auth.server.out :::
 

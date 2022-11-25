@@ -7,6 +7,8 @@ If the WebSocket client lost the connection due to some transient failure, it au
 
 ::: code websocket_retry_client.bal :::
 
+Run the client program by executing the command below.
+
 ::: out websocket_retry_client.out :::
 
 ## Related Links

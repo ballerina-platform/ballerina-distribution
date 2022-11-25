@@ -9,6 +9,8 @@ The client remains connected until it is explicitly disconnected or until it is 
 ## Prerequisites
 - Start the [udp service](/learn/by-example/udp-listener/).
 
+Run the client program by executing the command below.
+
 ::: out udp_connect_client.out :::
 
 ## Related links
