@@ -7,7 +7,6 @@ This BBE demonstrates how to use the JDBC client select query operations with th
 ::: code jdbc_query_operation.bal :::
 
 ## Prerequisites
-
 - Create a Ballerina project.
 - Copy the example to the project along with util files.
 - Add the relevant database driver JAR details to the `Ballerina.toml` file. For a sample configuration, see the [`jdbc` module](https://lib.ballerina.io/ballerinax/java.jdbc/latest/).

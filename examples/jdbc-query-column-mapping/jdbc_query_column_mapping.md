@@ -7,7 +7,6 @@ This BBE demonstrates how to use the JDBC  client for query operations with adva
 ::: code jdbc_query_column_mapping.bal :::
 
 ## Prerequisites
-
 - Create a Ballerina project.
 - Copy the example to the project along with util files.
 - Add the relevant database driver JAR details to the `Ballerina.toml` file. For a sample configuration, see the [`jdbc` module](https://lib.ballerina.io/ballerinax/java.jdbc/latest/).

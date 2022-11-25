@@ -5,7 +5,6 @@ This BBE demonstrates how to use the MySQL client to execute a batch of DDL/DML 
 ::: code mysql_atomic_transaction.bal :::
 
 ## Prerequisite
-
 - Create a Ballerina project.
 - Copy the example to the project along with util files.
 - Change the database configurations in the files.
