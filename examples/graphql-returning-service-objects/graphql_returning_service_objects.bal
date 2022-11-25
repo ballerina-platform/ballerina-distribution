@@ -10,7 +10,7 @@ service class Person {
         self.age = age;
     }
 
-    // Each resource function becomes a field of the `Person` type.
+    // Each resource method becomes a field of the `Person` type.
     resource function get name() returns string {
         return self.name;
     }
@@ -25,7 +25,7 @@ service class Person {
 service /graphql on new graphql:Listener(9090) {
 
     // This resolver returns a service type, which will be mapped to a GraphQL `OBJECT` type named
-    // `Person`. Each resource function in the service type is mapped to a field in the `OBJECT`
+    // `Person`. Each resource method in the service type is mapped to a field in the `OBJECT`
     // type.
     resource function get profile() returns Person {
         return new ("Walter White", 51);

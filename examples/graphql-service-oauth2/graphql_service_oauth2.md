@@ -13,6 +13,7 @@ Run the service by executing the command below.
 ::: out graphql_service_oauth2.server.out :::
 
 ## Related links
-- [`graphql` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
-- [`oauth2` - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)
+- [`graphql:ServiceConfig` annotation - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/annotations#ServiceConfig)
+- [`graphql:OAuth2IntrospectionConfigWithScopes` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/records/OAuth2IntrospectionConfigWithScopes)
+- [`oauth2` package - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)
 - [`graphql` OAuth2 - Specification](/spec/graphql/#11114-oauth2)

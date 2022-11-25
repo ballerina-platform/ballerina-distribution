@@ -9,5 +9,6 @@ Run the service by executing the command below.
 ::: out graphql_service_ssl_tls.server.out :::
 
 ## Related links
-- [`graphql` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
+- [`graphql:ListenerConfiguration` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/records/ListenerConfiguration)
+- [`graphql:ListenerSecureSocket` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/records/ListenerSecureSocket)
 - [`graphql` SSL/TLS - Specification](/spec/graphql/#1121-ssltls)
