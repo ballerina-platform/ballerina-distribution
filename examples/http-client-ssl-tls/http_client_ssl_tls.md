@@ -4,9 +4,10 @@ You can use the HTTPS client to connect or interact with an HTTPS listener. Prov
 
 ::: code http_client_ssl_tls.bal :::
 
-Run the secure client program by executing the command below.
+## Prerequisites
+- Start a [sample service secured with SSL/TLS](learn/by-example/http-service-ssl-tls/).
 
->**Info:** As a prerequisite to running the client, start a [sample service secured with SSL/TLS](learn/by-example/http-service-ssl-tls/). 
+Run the secure client program by executing the command below.
 
 ::: out http_client_ssl_tls.out :::
 

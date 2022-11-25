@@ -1,1 +1,2 @@
 $ bal run kafka_service_ssl.bal
+time = 2022-11-25T15:18:24.061+05:30 level = INFO module = "" message = "Received log: new order for item 2311 was placed on 1669113239"

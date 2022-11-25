@@ -9,5 +9,5 @@ Run the subscriber service by executing the following command.
 ::: out websub_webhook_sample.out :::
 
 ## Related links
-- [`websub` package API documentation](https://lib.ballerina.io/ballerina/websub/latest/)
-- [Subscriber service - specification](https://ballerina.io/spec/websub/#22-subscriber-service)
+- [`websub` package - API documentation](https://lib.ballerina.io/ballerina/websub/latest/)
+- [`Subscriber service` - specification](https://ballerina.io/spec/websub/#22-subscriber-service)

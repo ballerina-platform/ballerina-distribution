@@ -4,9 +4,10 @@ The HTTP client can be configured for chunking. By default, the HTTP client send
 
 ::: code http_client_chunking.bal :::
 
-Run the client program by executing the following command.
+## Prerequisites
+ - Start a service which checks for Content-Length header.
 
->**Info:** As a prerequisite to running the client, start a service which checks for Content-Length header.
+Run the client program by executing the following command.
 
 ::: out http_client_chunking.out :::
 

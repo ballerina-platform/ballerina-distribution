@@ -8,7 +8,7 @@ readonly service class LogInterceptor {
     // Includes the `graphql:Interceptors` service object from the GraphQL package.
     *graphql:Interceptor;
 
-    // Implement the `execute()` remote function provided by the `graphql:Interceptor` object.
+    // Implement the `execute()` remote method provided by the `graphql:Interceptor` object.
     // Within the function, the `graphql:Context` and the `graphql:Field` object can be accessed to
     // get the request and field related information.
     isolated remote function execute(graphql:Context context, graphql:Field 'field)

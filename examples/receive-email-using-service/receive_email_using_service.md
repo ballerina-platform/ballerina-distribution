@@ -11,5 +11,5 @@ Run the email service by executing the following command.
 ::: out receive_email_using_service.out :::
 
 ## Related links
-- [`email` package API documentation](https://lib.ballerina.io/ballerina/email/latest/)
+- [`email` package - API documentation](https://lib.ballerina.io/ballerina/email/latest/)
 - [`email` service - specification](https://ballerina.io/spec/email/#4-service)

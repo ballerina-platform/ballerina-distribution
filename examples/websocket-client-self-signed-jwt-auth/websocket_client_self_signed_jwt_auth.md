@@ -4,13 +4,14 @@ A client, which is secured with self-signed JWT can be used to connect to a secu
 
 ::: code websocket_client_self_signed_jwt_auth.bal :::
 
-Run the client program by executing the command below.
+## Prerequisites
+- Run the WebSocket service given in the [JWT authentication](/learn/by-example/websocket-service-jwt-auth/) example.
 
->**Tip:** As a prerequisite to running the client, start the [JWT authentication service](/learn/by-example/websocket-service-jwt-auth/).
+Run the client program by executing the command below.
 
 ::: out websocket_client_self_signed_jwt_auth.out :::
 
 ## Related Links
-- [`websocket` - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
-- [`oauth2` - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)
+- [`websocket` package - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
+- [`oauth2` package - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)
 - [`websocket` authentication - Specification](/spec/websocket/#52-authentication-and-authorization)

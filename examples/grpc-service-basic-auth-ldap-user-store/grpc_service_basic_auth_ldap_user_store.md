@@ -8,14 +8,15 @@ In the authorization phase, the scopes of the service/resource are compared agai
 
    ::: code grpc_service_basic_auth_ldap_user_store.bal :::
 
-Execute the command below to run the service.
 Setting up the service is the same as setting up the unary RPC service with additional configurations. You can refer to the [unary RPC service](/learn/by-example/grpc-service-unary/) to implement the service used below.
+
+Execute the command below to run the service.
 
    ::: out grpc_service_basic_auth_ldap_user_store.server.out :::
 
 >**Tip:** You can invoke the above service via the [gRPC Basic Auth client](/learn/by-example/grpc-client-basic-auth).
 
 ## Related links
-- [`grpc:LdapUserStoreConfig` - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/LdapUserStoreConfig)
+- [`grpc:LdapUserStoreConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/LdapUserStoreConfig)
 - [Basic authentication LDAP user store - specification](/spec/grpc/#5112-service---basic-auth---ldap-user-store)
 - [`auth` package - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)

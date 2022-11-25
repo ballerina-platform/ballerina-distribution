@@ -11,5 +11,5 @@ Run the client program by executing the following command.
 ::: out http_caching_client.out :::
 
 ## Related links
-- [`http` package API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
 - [`Caching` - specification](https://ballerina.io/spec/http/#2412-caching)

@@ -16,7 +16,7 @@ table<Album> key(title) albums = table [
 service /info on new http:Listener(9090) {
 
     // The `resource name` is `albums` and the `resource accessor` is `get`.
-    // The `.` represents the current resource that is `/`.
+    // The `.` represents the current resource that is `/info`.
     resource function get albums() returns Album[] {
         return albums.toArray();
     }

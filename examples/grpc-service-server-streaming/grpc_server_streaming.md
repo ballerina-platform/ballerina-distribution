@@ -31,6 +31,6 @@ Once you run the command, the `grpc_server_streaming_pb.bal` file gets generated
 >**Tip:** You can invoke the above service via the [server streaming RPC client](/learn/by-example/grpc-client-server-streaming/).
 
 ## Related links
-- [Server-side streaming - API documentation](https://lib.ballerina.io/ballerina/grpc/latest)
+- [`grpc` package - API documentation](https://lib.ballerina.io/ballerina/grpc/latest)
 - [Server-side streaming - specification](/spec/grpc/#42-server-streaming-rpc)
 - [Ballerina protocol buffers guide](/learn/cli-documentation/grpc/)

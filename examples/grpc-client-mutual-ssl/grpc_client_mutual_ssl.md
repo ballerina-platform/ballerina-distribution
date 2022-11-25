@@ -4,13 +4,15 @@ Ballerina supports mutual SSL, which is a certificate-based authentication proce
 
    ::: code grpc_client_mutual_ssl.bal :::
 
-Execute the command below to run the client.
 Setting up the client is the same as setting up the unary RPC client with additional configurations. You can refer to the [unary RPC client](/learn/by-example/grpc-client-unary/) to implement the client used here.
 
->**Tip:** As a prerequisite to running the client, start a [sample service secured with Mutual SSL](/learn/by-example/grpc-service-mutual-ssl/).
+## Prerequisites
+- Start a [sample service secured with Mutual SSL](/learn/by-example/grpc-service-mutual-ssl/).
+
+Execute the command below to run the client.
 
    ::: out grpc_client_mutual_ssl.out :::
 
 ## Related links
-- [`grpc:ClientSecureSocket` - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/ClientSecureSocket)
+- [`grpc:ClientSecureSocket` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/ClientSecureSocket)
 - [Mutual SSL - specification](/spec/grpc/#52-ssltls-and-mutual-ssl)

@@ -11,5 +11,5 @@ Run the service by executing the command below.
 >**Tip:** You can invoke the above service via the [sample SSL/TLS client](/learn/by-example/websocket-client-ssl-tls/).
 
 ## Related Links
-- [`websocket` - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
+- [`websocket` package - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
 - [`websocket` SSL/TLS - Specification](/spec/websocket/#5-securing-the-websocket-connections)

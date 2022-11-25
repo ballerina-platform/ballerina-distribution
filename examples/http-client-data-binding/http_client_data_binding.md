@@ -4,12 +4,13 @@ Through client payload data binding, the response payload can be accessed direct
 
 ::: code http_client_data_binding.bal :::
 
-Run the client program by executing the following command.
+## Prerequisites
+- Start a [Basic REST service](learn/by-example/http-basic-rest-service/).
 
->**Info:** As a prerequisite to running the client, start a [Basic REST service](learn/by-example/http-basic-rest-service/).
+Run the client program by executing the following command.
 
 ::: out http_client_data_binding.out :::
 
 ## Related links
-- [`http` package API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
 - [`Client return types` - specification](https://ballerina.io/spec/http/#243-client-action-return-types)

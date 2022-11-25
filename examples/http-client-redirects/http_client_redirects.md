@@ -6,12 +6,13 @@ For more information on the underlying module, see the [`http` module](https://l
 
 ::: code http_client_redirects.bal :::
 
-Run the client program by executing the following command.
+## Prerequisites
+- Start a [Redirect service](learn/by-example/http-service-redirects/).
 
->**Info:** As a prerequisite to running the client, start a [Redirect service](learn/by-example/http-service-redirects/).
+Run the client program by executing the following command.
 
 ::: out http_client_redirects.out :::
 
 ## Related links
-- [`http` package API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
 - [`Redirect` - specification](https://ballerina.io/spec/http/#2413-redirect)
