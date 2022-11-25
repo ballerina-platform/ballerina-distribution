@@ -6,6 +6,11 @@ The received records are converted to the user defined type using data-binding. 
 
 ::: code kafka_client_consumer_record_data_binding.bal :::
 
+## Prerequisites
+- Execute [Kafka client - Produce message](/learn/by-example/kafka-client-produce-message) example to produce some messages to the topic. 
+
+Run the program by executing the following command.
+
 ::: out kafka_client_consumer_record_data_binding.out :::
 
 ## Related links

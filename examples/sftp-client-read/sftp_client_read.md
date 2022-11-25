@@ -4,7 +4,10 @@ The SFTP client is used to perform CRUD operation on remote files/directories us
 
 ::: code sftp_client_read.bal :::
 
-File content of the received file would get printed.
+## Prerequisites
+- Execute [SFTP client - Write file](/learn/by-example/sftp-client-write) example to put a file in the FTP server.
+
+Run the program by executing the following command. The newly-added file will appear in the local directory.
 
 ::: out sftp_client_read.out :::
 

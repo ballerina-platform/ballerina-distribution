@@ -3,8 +3,8 @@ import ballerina/io;
 
 public function main() returns error? {
     kafka:Consumer logConsumer = check new ("localhost:9094", {
-        groupId: "log-group-id",
-        topics: ["log-topic"],
+        groupId: "order-log-group-id",
+        topics: ["order-log-topic"],
         // Provide the relevant secure socket configurations by using `kafka:SecureSocket`.
         secureSocket: {
             cert: "./resources/path/to/public.crt",

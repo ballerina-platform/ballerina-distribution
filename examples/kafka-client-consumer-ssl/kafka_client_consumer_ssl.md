@@ -4,6 +4,11 @@ This shows how the SSL encryption is done in the `kafka:Consumer`. For this to w
 
 ::: code kafka_client_consumer_ssl.bal :::
 
+## Prerequisites
+- Execute [Kafka client - Producer SSL/TLS](/learn/by-example/kafka-client-producer-ssl) example to produce some messages to the topic.
+
+Run the program by executing the following command.
+
 ::: out kafka_client_consumer_ssl.out :::
 
 ## Related links

@@ -14,13 +14,8 @@ public function main() returns kafka:Error? {
         // Provide the type of the security protocol to use in the broker connection.
         securityProtocol: kafka:PROTOCOL_SSL
     });
-    kafka:Error? result = messageProducer->send({
-        topic: "log-topic",
-        value: "login failed for user 212341 at 1669113239"
+    check messageProducer->send({
+        topic: "order-log-topic",
+        value: "new order for item 2311 was placed on 1669113239"
     });
-    if result is kafka:Error {
-        io:println("Message publish unsuccessful : " + result.message());
-    } else {
-        io:println("Message published successfully.");
-    }
 }

@@ -20,6 +20,6 @@ public function main() returns error? {
     check from Order 'order in orders
         where 'order.isValid
         do {
-            io:println('order.productName);
+            io:println(string`Received valid order for ${'order.productName}`);
         };
 }

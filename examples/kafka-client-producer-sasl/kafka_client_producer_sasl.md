@@ -4,6 +4,8 @@ This shows how the SASL/PLAIN authentication is done in the `kafka:Producer`. Fo
 
 ::: code kafka_client_producer_sasl.bal :::
 
+Run the program by executing the following command.
+
 ::: out kafka_client_producer_sasl.out :::
 
 ## Related links

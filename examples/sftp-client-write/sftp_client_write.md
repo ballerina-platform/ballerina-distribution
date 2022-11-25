@@ -4,7 +4,7 @@ The SFTP client is used to perform CRUD operation on remote files/directories us
 
 ::: code sftp_client_write.bal :::
 
-The newly-added file will appear in the SFTP server.
+Run the program by executing the following command. The newly-added file will appear in the SFTP server.
 
 ::: out sftp_client_write.out :::
 

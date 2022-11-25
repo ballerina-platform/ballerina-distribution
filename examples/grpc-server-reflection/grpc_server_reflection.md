@@ -6,8 +6,9 @@ After implementing the service, you can enable server reflection by providing th
    
    ::: code grpc_server_reflection.bal :::
 
-Execute the command below to run the service.
 Setting up the service is the same as setting up the unary RPC service with additional configurations. You can refer to the [unary RPC service](/learn/by-example/grpc-service-unary/) to implement the service used below.
+
+Execute the command below to run the service.
 
    ::: out grpc_server_reflection.out :::
 

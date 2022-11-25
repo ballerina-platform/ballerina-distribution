@@ -3,8 +3,8 @@ import ballerina/io;
 
 public function main() returns error? {
     kafka:Consumer logConsumer = check new ("localhost:9093", {
-        groupId: "log-group-id",
-        topics: "log-topic",
+        groupId: "order-log-group-id",
+        topics: "order-log-topic",
         // Provide the relevant authentication configurations to authenticate the consumer
         // by the `kafka:AuthenticationConfiguration`.
         auth: {

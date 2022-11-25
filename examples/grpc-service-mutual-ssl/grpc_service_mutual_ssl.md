@@ -4,8 +4,9 @@ Ballerina supports mutual SSL, which is a certificate-based authentication proce
 
    ::: code grpc_service_mutual_ssl.bal :::
 
-Execute the command below to run the service.
 Setting up the service is the same as setting up the unary RPC service with additional configurations. You can refer to the [unary RPC service](/learn/by-example/grpc-service-unary/) to implement the service used below.
+
+Execute the command below to run the service.
 
    ::: out grpc_service_mutual_ssl.server.out :::
 

@@ -22,10 +22,10 @@ public function main() returns error? {
 
     // Reads a file from a FTP server for a given file path. In error cases,
     // an error is returned.
-    stream<byte[] & readonly, io:Error?> fileStream = check clientEp->get("/server/book.txt");
+    stream<byte[] & readonly, io:Error?> fileStream = check clientEp->get("/server/logFile.txt");
 
     // Write the content to a file.
-    check io:fileWriteBlocksFromStream("./local/book.txt", fileStream);
+    check io:fileWriteBlocksFromStream("./local/newLogFile.txt", fileStream);
 
     // Closes the file stream to finish the `get` operation.
     check fileStream.close();

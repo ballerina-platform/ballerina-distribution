@@ -4,8 +4,9 @@ The gRPC module provides support for sending/receiving headers as a part of inbo
 
    ::: code grpc_simple_with_headers_service.bal :::
 
-Execute the command below to run the service.
 Setting up the service is the same as setting up the unary RPC service with input and output parameter change. You can refer to the [unary RPC service](/learn/by-example/grpc-service-unary/) to implement the service used below.
+
+Execute the command below to run the service.
 
    ::: out grpc_simple_with_headers_service.out :::
 

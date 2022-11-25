@@ -6,6 +6,8 @@ This shows how the SSL encryption is done in the `kafka:Producer`. For this to w
 
 ::: code kafka_client_producer_ssl.bal :::
 
+Run the program by executing the following command.
+
 ::: out kafka_client_producer_ssl.out :::
 
 ## Related links

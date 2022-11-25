@@ -4,6 +4,8 @@ This shows how to send messages to a Kafka topic using a `kafka:Producer` client
 
 ::: code kafka_client_produce_message.bal :::
 
+Run the program by executing the following command.
+
 ::: out kafka_client_produce_message.out :::
 
 ## Related links

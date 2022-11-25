@@ -12,10 +12,10 @@ public function main() returns error? {
 
     // Sends the message to the Kafka topic.
     check orderProducer->send({
-        topic: "test-kafka-topic",
+        topic: "order-topic",
         value: {
             orderId: 1,
-            productName: "ABC",
+            productName: "Sport shoe",
             price: 27.5,
             isValid: true
         }

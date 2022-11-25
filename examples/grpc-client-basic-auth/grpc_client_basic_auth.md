@@ -6,10 +6,12 @@ The client metadata is enriched with the `Authorization: Basic <token>` header b
 
    ::: code grpc_client_basic_auth.bal :::
 
-Execute the command below to run the client.
 Setting up the client is the same as setting up the unary RPC client with additional configurations. You can refer to the [unary RPC client](/learn/by-example/grpc-client-unary/) to implement the client used here.
 
->**Tip:** As a prerequisite to running the client, start the [Basic Auth file user store service](/learn/by-example/grpc-service-basic-auth-file-user-store/) or [Basic Auth LDAP user store service](/learn/by-example/grpc-service-basic-auth-ldap-user-store/).
+## Prerequisites
+- Start the [Basic Auth file user store service](/learn/by-example/grpc-service-basic-auth-file-user-store/) or [Basic Auth LDAP user store service](/learn/by-example/grpc-service-basic-auth-ldap-user-store/) service examples.
+
+Execute the command below to run the client.
 
    ::: out grpc_client_basic_auth.out :::
 

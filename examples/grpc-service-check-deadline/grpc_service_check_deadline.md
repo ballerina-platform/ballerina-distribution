@@ -6,8 +6,9 @@ After implementing the service, you can add the deadline check as follows.
 
 ::: code grpc_service_check_deadline.bal :::
 
-Execute the command below to run the service.
 Setting up the service is the same as setting up the unary RPC service with additional configurations. You can refer to the [unary RPC service](/learn/by-example/grpc-service-unary/) to implement the service used below.
+
+Execute the command below to run the service.
 
 ::: out grpc_service_check_deadline.out :::
 

@@ -14,6 +14,9 @@ The gRPC server connector exposes the gRPC service over HTTP2. In a gRPC bidirec
 
 Once you run the command, the `grpc_bidirectional_streaming_pb.bal` file gets generated inside the `stubs` directory.
 
+## Prerequisites
+- Start the [bidirectional streaming RPC service](learn/by-example/grpc-service-bidirectional-streaming/).
+
 ## Implement and run the client
 
 1. Create a Ballerina package (e.g., `client`). Delete the `main.bal` file created by default as it is not required for this example.
@@ -25,8 +28,6 @@ Once you run the command, the `grpc_bidirectional_streaming_pb.bal` file gets ge
     ::: code grpc_bidirectional_streaming_service_client.bal :::
 
 4. Execute the command below to run the client.
-
->**Tip:** As a prerequisite to running the client, start the [bidirectional streaming RPC service](learn/by-example/grpc-service-bidirectional-streaming/).
 
     ::: out grpc_bidirectional_streaming_service_client.out :::
 

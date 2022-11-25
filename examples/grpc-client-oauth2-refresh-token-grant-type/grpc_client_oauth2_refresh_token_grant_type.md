@@ -6,10 +6,12 @@ The client metadata is enriched with the `Authorization: Bearer <token>` header 
 
    ::: code grpc_client_oauth2_refresh_token_grant_type.bal :::
 
-Execute the command below to run the client.
 Setting up the client is the same as setting up the unary RPC client with additional configurations. You can refer to the [unary RPC client](/learn/by-example/grpc-client-unary/) to implement the client used here.
 
->**Tip:** As a prerequisite to running the client, start the [OAuth2 service](/learn/by-example/grpc-service-oauth2/).
+## Prerequisites
+- Start the [OAuth2 service](/learn/by-example/grpc-service-oauth2/).
+
+Execute the command below to run the client.
 
    ::: out grpc_client_oauth2_refresh_token_grant_type.out :::
 

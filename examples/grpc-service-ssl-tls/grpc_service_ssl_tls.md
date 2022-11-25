@@ -4,8 +4,9 @@ You can use the gRPC listener to connect to or interact with a gRPC client secur
 
    ::: code grpc_service_ssl_tls.bal :::
 
-Execute the command below to run the service.
 Setting up the service is the same as setting up the unary RPC service with additional configurations. You can refer to the [unary RPC service](/learn/by-example/grpc-service-unary/) to implement the service used below.
+
+Execute the command below to run the service.
 
    ::: out grpc_service_ssl_tls.server.out :::
 
