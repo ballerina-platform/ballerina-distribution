@@ -25,5 +25,5 @@ It should return the following values.
 ::: out graphql_subscriptions.client.out :::
 
 ## Related links
-- [`graphql` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
+- [`graphql` package - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
 - [`graphql` subscription type - Specification](/spec/graphql/#313-the-subscription-type)
