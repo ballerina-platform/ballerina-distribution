@@ -1,10 +1,10 @@
 import ballerinax/kafka;
 import ballerina/log;
 
-kafka:ConsumerConfiguration consumerConfigs = {
+listener kafka:Listener securedEp = check new ("localhost:9093", {
     groupId: "log-group-id",
     // Subscribes to the topic `test-kafka-topic`.
-    topics: "log-topic",
+    topics: ["log-topic"],
     // Provide the relevant authentication configurations to authenticate the consumer
     // by the `kafka:AuthenticationConfiguration`.
     auth: {
@@ -15,9 +15,9 @@ kafka:ConsumerConfiguration consumerConfigs = {
         password: "alice@123"
     },
     securityProtocol: kafka:PROTOCOL_SASL_PLAINTEXT
-};
+});
 
-service on new kafka:Listener("localhost:9093", consumerConfigs) {
+service on securedEp {
     remote function onConsumerRecord(string[] logs) returns error? {
         check from string log in logs
             do {

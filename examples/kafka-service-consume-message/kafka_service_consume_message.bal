@@ -8,12 +8,12 @@ public type Order record {|
     boolean isValid;
 |};
 
-kafka:ConsumerConfiguration consumerConfigs = {
+listener kafka:Listener ep = check new (kafka:DEFAULT_URL, {
     groupId: "order-group-id",
     topics: "order-topic"
-};
+});
 
-service on new kafka:Listener(kafka:DEFAULT_URL, consumerConfigs) {
+service on ep {
     remote function onConsumerRecord(Order[] orders) returns error? {
         // The set of orders received by the service are processed one by one.
         check from Order 'order in orders

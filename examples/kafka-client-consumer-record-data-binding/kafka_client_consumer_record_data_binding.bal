@@ -14,13 +14,11 @@ public type OrderConsumerRecord record {|
     Order value;
 |};
 
-kafka:ConsumerConfiguration consumerConfiguration = {
-    groupId: "order-group-id",
-    topics: "order-topic"
-};
-
 public function main() returns error? {
-    kafka:Consumer orderConsumer = check new (kafka:DEFAULT_URL, consumerConfiguration);
+    kafka:Consumer orderConsumer = check new (kafka:DEFAULT_URL, {
+        groupId: "order-group-id",
+        topics: ["order-topic"]
+    });
 
     // Polls the consumer for order records.
     OrderConsumerRecord[] records = check orderConsumer->poll(1);
