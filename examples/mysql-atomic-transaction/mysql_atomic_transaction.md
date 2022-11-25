@@ -8,7 +8,7 @@ Create a Ballerina project. Copy the example to the project. Execute the command
 
 ::: out mysql_atomic_transaction.out :::
 
-The syntax for using XA transactions (distributed transactions across multiple resources) is the same. Additionally, `useXADatasource` option should be enabled in the client as follows,
+The syntax for using XA transactions (distributed transactions across multiple resources) is the same. Additionally, `useXADatasource` option should be enabled in the client,
 
 ::: code mysql_atomic_xa_transaction.bal :::
 

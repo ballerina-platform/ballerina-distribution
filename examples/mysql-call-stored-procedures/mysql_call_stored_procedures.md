@@ -9,11 +9,10 @@ Create a Ballerina project. Copy the example to the project. Execute the command
 ::: out mysql_call_stored_procedures.out :::
 
 The result set returned from the stored procedure can be accessed using `queryResult` variable in `sql:ProcedureCallResult`.
-This can be processed as below,
 
 ::: code process_result_stream.bal :::
 
-Further the result set can be mapped directly to a Ballerina record as follows,
+Further the result set can be mapped directly to a Ballerina record,
 
 ::: code process_student_stream.bal :::
 
