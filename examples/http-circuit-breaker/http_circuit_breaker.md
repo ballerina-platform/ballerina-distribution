@@ -11,5 +11,5 @@ Run the program by executing the following command.
 ::: out http_circuit_breaker.out :::
 
 ## Related links
-- [`http` package API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`http` - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
 - [`Circuit breaker` - specification](https://ballerina.io/spec/http/#2415-circuit-breaker)

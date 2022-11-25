@@ -13,5 +13,5 @@ Invoke the service by executing the following cURL command in a new terminal.
 ::: out http_trace_logs.client.out :::
 
 ## Related links
-- [`http` package API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`http` - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
 - [`Trace log` - specification](https://ballerina.io/spec/http/#823-trace-log)
