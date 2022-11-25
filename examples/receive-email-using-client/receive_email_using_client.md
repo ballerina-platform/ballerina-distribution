@@ -9,5 +9,5 @@ Run the sample code by executing the following command.
 ::: out receive_email_using_client.out :::
 
 ## Related links
-- [`email` - API documentation](https://lib.ballerina.io/ballerina/email/latest/)
+- [`email` package - API documentation](https://lib.ballerina.io/ballerina/email/latest/)
 - [`email` client - specification](https://ballerina.io/spec/email/#3-client)

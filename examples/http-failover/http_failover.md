@@ -4,12 +4,13 @@ Ballerina users can configure multiple HTTP clients in a given failover group.  
 
 ::: code http_failover.bal :::
 
-Run the program by executing the following command.
+## Prerequisites
+- Start a service.
 
->**Info:** As a prerequisite to running the client, start a service.
+Run the program by executing the following command.
 
 ::: out http_failover.out :::
 
 ## Related links
-- [`http` - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
 - [`Failover` - specification](https://ballerina.io/spec/http/#2418-failover)

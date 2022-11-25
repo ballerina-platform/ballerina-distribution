@@ -4,11 +4,12 @@ The timeout is used to gracefully handle response delays which could occur due t
 
 ::: code http_timeout.bal :::
 
-Run the program by executing the following command.
+## Prerequisites
+- Start a service with a timeout more than 10 seconds.
 
->**Info:** As a prerequisite to running the client, start a service with a timeout more than 10 seconds.
+Run the program by executing the following command.
 
 ::: out http_timeout.out :::
 
 ## Related links
-- [`http` - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
