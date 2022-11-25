@@ -23,5 +23,5 @@ To send the document, use the following cURL command in a separate terminal.
 >**Tip:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client/).
 
 ## Related links
-- [`graphql` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
-- [`graphql` input types - Specification](/spec/graphql/#4-types)
+- [`graphql` package - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
+- [`graphql` input types - Specification](/spec/graphql/#45-input-types)

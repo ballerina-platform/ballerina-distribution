@@ -11,5 +11,5 @@ Run the program by executing the following command.
 ::: out http_load_balancer.out :::
 
 ## Related links
-- [`http` package API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`http` - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
 - [`Load balance` - specification](https://ballerina.io/spec/http/#2417-load-balance)

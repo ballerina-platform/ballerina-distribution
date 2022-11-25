@@ -5,7 +5,6 @@ import ballerina/graphql;
 // a certificate file and a private key file for the listener.
 // The `graphql:ListenerSecureSocket` record provides the
 // SSL-related listener configurations of the listener.
-// For details, see https://lib.ballerina.io/ballerina/graphql/latest/records/ListenerSecureSocket.
 listener graphql:Listener securedEP = new (9090,
     secureSocket = {
         key: {

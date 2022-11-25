@@ -4,10 +4,13 @@ The SFTP service is used to receive file/directory changes that occur in a remot
 
 ::: code sftp_service_read.bal :::
 
-Paths of the newly-added and newly-deleted files/directories during the latest polling will be printed for each of the polled events.
+## Prerequisites
+- Execute [SFTP client - Write file](/learn/by-example/sftp-client-write) example to put a file in the FTP server.
+
+Run the program by executing the following command. Paths of the newly-added and newly-deleted files/directories during the latest polling will be printed for each of the polled events.
 
 ::: out sftp_service_read.out :::
 
 ## Related links
-- [`ftp:Listener` - API documentation](https://lib.ballerina.io/ballerina/ftp/latest/listeners/Listener)
+- [`ftp:Listener` client object - API documentation](https://lib.ballerina.io/ballerina/ftp/latest/listeners/Listener)
 - [SFTP listener - specification](/spec/ftp/#422-secure-listener)

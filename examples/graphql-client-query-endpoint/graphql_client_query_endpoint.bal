@@ -19,7 +19,7 @@ public function main() returns error? {
 
     string document = "{ profile { name, age } }";
 
-    // The `execute()` remote function of the graphql:Client takes a GraphQL document as the
+    // The `execute()` remote method of the graphql:Client takes a GraphQL document as the
     // required argument and sends a request to the specified backend URL seeking a response. On the
     // retrieval of a successful response, the client tries to perform data binding for the
     // user-defined data type. On failure to retrieve a successful response or when the client fails
