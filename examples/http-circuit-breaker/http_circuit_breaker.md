@@ -4,9 +4,10 @@ The circuit breaker is used to gracefully handle errors which could occur due to
 
 ::: code http_circuit_breaker.bal :::
 
-Run the program by executing the following command.
+## Prerequisites
+ - Start a service.
 
->**Info:** As a prerequisite to running the client, start a service.
+ Run the program by executing the following command.
 
 ::: out http_circuit_breaker.out :::
 

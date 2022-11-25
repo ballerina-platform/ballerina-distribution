@@ -4,9 +4,10 @@ The HTTP client can be used to connect to and interact with an HTTP server. The 
 
 ::: code http_client_send_request_receive_response.bal :::
 
-Run the client program by executing the following command.
+## Prerequisites
+- Start a [Basic REST service](learn/by-example/http-basic-rest-service/).
 
->**Info:** As a prerequisite to running the client, start a [Basic REST service](learn/by-example/http-basic-rest-service/).
+Run the client program by executing the following command.
 
 ::: out http_client_send_request_receive_response.out :::
 

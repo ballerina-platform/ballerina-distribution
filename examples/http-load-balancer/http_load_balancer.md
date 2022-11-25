@@ -4,9 +4,10 @@ An HTTP load balancing endpoint is used when the request load needs to be load b
 
 ::: code http_load_balancer.bal :::
 
-Run the program by executing the following command.
+## Prerequisites
+- Start a service.
 
->**Info:** As a prerequisite to running the client, start a service.
+Run the program by executing the following command.
 
 ::: out http_load_balancer.out :::
 
