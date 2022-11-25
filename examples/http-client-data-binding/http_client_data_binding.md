@@ -11,5 +11,5 @@ Run the client program by executing the following command.
 ::: out http_client_data_binding.out :::
 
 ## Related links
-- [`http` - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
 - [`Client return types` - specification](https://ballerina.io/spec/http/#243-client-action-return-types)

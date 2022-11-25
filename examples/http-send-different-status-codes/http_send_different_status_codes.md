@@ -13,5 +13,5 @@ Invoke the service by executing the following cURL command in a new terminal.
 ::: out http_send_different_status_codes.client.out :::
 
 ## Related links
-- [`http` - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
 - [`Status code response` - specification](https://ballerina.io/spec/http/#2351-status-code-response)

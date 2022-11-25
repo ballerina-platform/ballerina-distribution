@@ -11,4 +11,4 @@ Run the program by executing the following command.
 ::: out http_timeout.out :::
 
 ## Related links
-- [`http` - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)

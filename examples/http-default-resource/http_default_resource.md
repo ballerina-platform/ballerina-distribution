@@ -13,5 +13,5 @@ Invoke the service by executing the following cURL command in a new terminal.
 ::: out http_default_resource.client.out :::
 
 ## Related links
-- [`http` - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
 - [`Default resource` - specification](https://ballerina.io/spec/http/#233-path-parameter)

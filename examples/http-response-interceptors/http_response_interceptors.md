@@ -13,5 +13,5 @@ Invoke the service by executing the following cURL command in a new terminal.
 ::: out http_response_interceptors.client.out :::
 
 ## Related links
-- [`http` - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
 - [`Response interceptor` - specification](https://ballerina.io/spec/http/#812-response-interceptor)
