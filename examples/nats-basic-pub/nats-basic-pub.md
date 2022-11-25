@@ -1,8 +1,10 @@
 # NATS client - Publish message
 
-In this example, the NATS client is used to produce a message to a subject. In order to execute this example, it is required that a NATS server is up and running on its default host, port, and cluster. For instructions on installing the NATS server, go to [NATS Server Installation](https://docs.nats.io/nats-server/installation).
+NATS implements a publish-subscribe message distribution model. A publisher sends a message to a subject and any active subscriber listening to that subject can consume the message. In this example, the NATS client is used to produce a message to a subject.
 
 ::: code nats-basic-pub.bal :::
+
+To run the sample, start an instance of the NATS server and execute the following command. 
 
 ::: out nats-basic-pub.out :::
 

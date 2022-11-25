@@ -4,6 +4,8 @@ In this example, the underlying connection of the subscriber is secured with TLS
 
 ::: code nats-service-secure-connection.bal :::
 
+To run the sample, start an instance of the NATS server and execute the following command.
+
 ::: out nats-service-secure-connection.out :::
 
 ## Related links

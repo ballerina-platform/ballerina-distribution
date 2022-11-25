@@ -1,11 +1,8 @@
 import ballerina/log;
 import ballerinax/nats;
 
-// Initializes the NATS listener.
-listener nats:Listener subscription = new (nats:DEFAULT_URL);
-
 // Binds the consumer to listen to the messages published to the 'demo.bbe' subject.
-service "demo.bbe" on subscription {
+service "demo.bbe" on new nats:Listener(nats:DEFAULT_URL) {
     remote function onRequest(string message) returns string|error {
         // Logs the incoming message.
         log:printInfo("Received message: " + message);
