@@ -15,4 +15,4 @@ Execute the command below to run the client.
 
 ## Related links
 - [`grpc:ClientSecureSocket` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/ClientSecureSocket)
-- [Mutual SSL - specification](/spec/grpc/#52-ssltls-and-mutual-ssl)
+- [Mutual SSL - Specification](/spec/grpc/#52-ssltls-and-mutual-ssl)

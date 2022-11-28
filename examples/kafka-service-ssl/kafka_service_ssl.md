@@ -1,10 +1,11 @@
 # Kafka service - SSL/TLS
 
-This shows how the SSL encryption is done in the `kafka:Listener`. For this to work properly, an active Kafka broker should be present, and it should be configured to use SSL.
+This shows how the SSL encryption is done in the `kafka:Listener`.
 
 ::: code kafka_service_ssl.bal :::
 
 ## Prerequisites
+- Start a [Kafka broker](https://kafka.apache.org/quickstart) instance configured to use [SSL/TLS](https://docs.confluent.io/3.0.0/kafka/ssl.html#configuring-kafka-brokers).
 - Execute [Kafka client - Producer SSL/TLS](/learn/by-example/kafka-client-producer-ssl) example to produce some messages to the topic.
 
 Run the program by executing the following command.
@@ -13,4 +14,4 @@ Run the program by executing the following command.
 
 ## Related links
 - [`kafka:SecureSocket` record - API documentation](https://lib.ballerina.io/ballerinax/kafka/3.4.0/records/SecureSocket)
-- [Secure listener - specification](https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#4312-secure-listener)
+- [Secure listener - Specification](https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#4312-secure-listener)

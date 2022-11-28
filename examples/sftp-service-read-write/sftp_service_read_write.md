@@ -13,4 +13,4 @@ Run the program by executing the following command. Each newly added file in the
 
 ## Related links
 - [`ftp:Caller` client object - API documentation](https://lib.ballerina.io/ballerina/ftp/latest/clients/Caller)
-- [`ftp:Caller` function - specification](/spec/ftp/#52-functions)
+- [`ftp:Caller` function - Specification](/spec/ftp/#52-functions)

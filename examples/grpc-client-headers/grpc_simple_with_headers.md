@@ -7,7 +7,7 @@ The gRPC module provides support for sending/receiving headers as a part of inbo
 Setting up the client is the same as setting up the unary RPC client with input and output parameter change. You can refer to the [unary RPC client](/learn/by-example/grpc-client-unary/) to implement the client used here.
 
 ## Prerequisites
-- Start the [simple RPC service with headers](learn/by-example/grpc-service-headers/).
+- Start the [simple RPC service with headers](/learn/by-example/grpc-service-headers/).
 
 Execute the command below to run the client.
 
@@ -15,4 +15,4 @@ Execute the command below to run the client.
 
 ## Related links
 - [`grpc` package - API documentation](https://lib.ballerina.io/ballerina/grpc/latest)
-- [`grpc` package - specification](/spec/grpc/)
+- [`grpc` package - Specification](/spec/grpc/)

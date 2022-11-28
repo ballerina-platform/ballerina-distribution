@@ -1,10 +1,11 @@
 # Kafka service - SASL authentication
 
-This shows how the SASL/PLAIN authentication is used in the `kafka:Listener`. For this to work properly, an active Kafka broker should be present, and it should be configured to use the SASL/PLAIN authentication mechanism.
+This shows how the SASL/PLAIN authentication is used in the `kafka:Listener`.
 
 ::: code kafka_service_sasl.bal :::
 
 ## Prerequisites
+- Start a [Kafka broker](https://kafka.apache.org/quickstart) instance configured to use the [SASL/PLAIN authentication mechanism](https://docs.confluent.io/platform/current/kafka/authentication_sasl/authentication_sasl_plain.html#sasl-plain-overview).
 - Execute [Kafka client - Producer SSL/TLS](/learn/by-example/kafka-client-producer-ssl) example to produce some messages to the topic.
 
 Run the program by executing the following command.
@@ -13,4 +14,4 @@ Run the program by executing the following command.
 
 ## Related links
 - [`kafka:AuthenticationConfiguration` record - API documentation](https://lib.ballerina.io/ballerinax/kafka/3.4.0/records/AuthenticationConfiguration)
-- [SASL authentication - specification](https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#4312-secure-listener)
+- [SASL authentication - Specification](https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#4312-secure-listener)

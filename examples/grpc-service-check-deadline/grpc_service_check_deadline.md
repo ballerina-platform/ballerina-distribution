@@ -16,4 +16,4 @@ Execute the command below to run the service.
 
 ## Related links
 - [`grpc:isCancelled` function - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/functions#isCancelled)
-- [Check deadline - specification](/spec/grpc/#61-grpc-deadline)
+- [Check deadline - Specification](/spec/grpc/#61-grpc-deadline)

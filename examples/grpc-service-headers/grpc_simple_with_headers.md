@@ -14,4 +14,4 @@ Execute the command below to run the service.
 
 ## Related links
 - [`grpc` package - API documentation](https://lib.ballerina.io/ballerina/grpc/latest)
-- [`grpc` package - specification](/spec/grpc/)
+- [`grpc` package - Specification](/spec/grpc/)

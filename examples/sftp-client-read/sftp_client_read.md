@@ -12,5 +12,5 @@ Run the program by executing the following command. The newly-added file will ap
 ::: out sftp_client_read.out :::
 
 ## Related links
-- [`ftp:Client->gett` method  - API documentation](https://lib.ballerina.io/ballerina/ftp/latest/clients/Client#get)
-- [SFTP client - specification](/spec/ftp/#322-secure-client)
+- [`ftp:Client->get` method  - API documentation](https://lib.ballerina.io/ballerina/ftp/latest/clients/Client#get)
+- [SFTP client - Specification](/spec/ftp/#322-secure-client)

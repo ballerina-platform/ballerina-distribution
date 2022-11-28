@@ -13,4 +13,4 @@ Run the program by executing the following command. Paths of the newly-added and
 
 ## Related links
 - [`ftp:Listener` client object  - API documentation](https://lib.ballerina.io/ballerina/ftp/latest/listeners/Listener)
-- [FTP listener - specification](/spec/ftp/#422-secure-listener)
+- [FTP listener - Specification](/spec/ftp/#422-secure-listener)

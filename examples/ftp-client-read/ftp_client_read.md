@@ -13,4 +13,4 @@ Run the program by executing the following command. The newly-added file will ap
 
 ## Related links
 - [`ftp:Client->get` method - API documentation](https://lib.ballerina.io/ballerina/ftp/latest/clients/Client#get)
-- [FTP client - specification](/spec/ftp/#321-insecure-client)
+- [FTP client - Specification](/spec/ftp/#321-insecure-client)
