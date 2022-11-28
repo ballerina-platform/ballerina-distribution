@@ -10,7 +10,7 @@ Run the service by executing the command below.
 
 ::: out websocket_service_oauth2.server.out :::
 
->**Tip:** Alternatively, you can invoke the above service via the [OAuth2 JWT Bearer grant type client](/learn/by-example/websocket-client-oauth2-jwt-bearer-grant-type).
+>**Tip:** You can invoke the above service via the [OAuth2 JWT Bearer grant type client](/learn/by-example/websocket-client-oauth2-jwt-bearer-grant-type).
 
 ## Related Links
 - [`websocket` package - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
