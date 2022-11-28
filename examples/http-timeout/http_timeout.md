@@ -5,7 +5,7 @@ The timeout is used to gracefully handle response delays which could occur due t
 ::: code http_timeout.bal :::
 
 ## Prerequisites
-- Start a service with a timeout more than 10 seconds.
+- Start the [Basic REST service](/learn/by-example/http-basic-rest-service/).
 
 Run the program by executing the following command.
 

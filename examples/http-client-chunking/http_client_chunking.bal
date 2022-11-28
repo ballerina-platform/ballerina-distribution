@@ -14,6 +14,6 @@ public function main() returns error? {
             chunking: http:CHUNKING_NEVER
         }
     );
-    string payload = check httpClient->/payload.post({"name": "Ballerina"});
+    string payload = check httpClient->/albums.post({title: "Sarah Vaughan and Clifford Brown", artist: "Sarah Vaughan"});
     io:println(payload);
 }

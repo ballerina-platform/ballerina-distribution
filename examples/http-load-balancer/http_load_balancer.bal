@@ -6,13 +6,13 @@ public function main() returns error? {
     http:LoadBalanceClient httpClient = check new ({
         // Define the set of HTTP clients that need to be load balanced.
         targets: [
-            {url: "http://localhost:8080/mock1"},
-            {url: "http://localhost:8080/mock2"},
-            {url: "http://localhost:8080/mock3"}
+            {url: "http://localhost:9090"},
+            {url: "http://localhost:9091"},
+            {url: "http://localhost:9092"}
         ],
 
         timeout: 5
     });
-    string payload = check httpClient->/greeting;
+    string payload = check httpClient->/albums;
     io:println(payload);
 }

@@ -10,9 +10,8 @@ public function main() returns error? {
         interval: 5,
         // Define a set of HTTP Clients that are targeted for failover.
         targets: [
-                {url: "http://nonexistentEP/mock1"},
-                {url: "http://localhost:8080/echo"},
-                {url: "http://localhost:8080/mock"}
+                {url: "http://nonexistentEP/albums"},
+                {url: "http://localhost:9090/albums"}
             ]
     });
     string payload = check httpClient->/greeting;
