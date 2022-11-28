@@ -5,7 +5,7 @@ The timeout is used to gracefully handle response delays which could occur due t
 ::: code http_timeout.bal :::
 
 ## Prerequisites
-- Start the [Basic REST service](/learn/by-example/http-basic-rest-service/).
+- Run the HTTP service given in the [Basic REST service](/learn/by-example/http-basic-rest-service/) example.
 
 Run the program by executing the following command.
 

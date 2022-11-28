@@ -5,7 +5,7 @@ The HTTP client can be configured for chunking. By default, the HTTP client send
 ::: code http_client_chunking.bal :::
 
 ## Prerequisites
-- Start the [Basic REST service](/learn/by-example/http-basic-rest-service/).
+- Run the HTTP service given in the [Basic REST service](/learn/by-example/http-basic-rest-service/) example.
 
 Run the client program by executing the following command.
 

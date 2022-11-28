@@ -5,7 +5,7 @@ Ballerina supports mutual SSL, which is a certificate-based authentication proce
 ::: code http_client_mutual_ssl.bal :::
 
 ## Prerequisites
-- Start a [sample service secured with mutual SSL](-example/http-service-mutual-ssl/).
+- Run the HTTP service given in the [Mutual SSL service](/learn/by-example/http-service-mutual-ssl/).
 
 Run the client program by executing the command below.
 

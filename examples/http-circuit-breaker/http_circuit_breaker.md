@@ -5,7 +5,7 @@ The circuit breaker is used to gracefully handle errors which could occur due to
 ::: code http_circuit_breaker.bal :::
 
 ## Prerequisites
-- Start the [Basic REST service](/learn/by-example/http-basic-rest-service/).
+- Run the HTTP service given in the [Basic REST service](/learn/by-example/http-basic-rest-service/) example.
 
  Run the program by executing the following command.
 

@@ -5,7 +5,7 @@ Through client payload data binding, the response payload can be accessed direct
 ::: code http_client_data_binding.bal :::
 
 ## Prerequisites
-- Start the [Basic REST service](/learn/by-example/http-basic-rest-service/).
+- Run the HTTP service given in the [Basic REST service](/learn/by-example/http-basic-rest-service/) example.
 
 Run the client program by executing the following command.
 

@@ -5,7 +5,7 @@ HTTP caching is enabled by default in HTTP client endpoints. Users can configure
 ::: code http_caching_client.bal :::
 
 ## Prerequisites
-- Start the [Sending cache response service](learn/by-example/http-service-cache-response/).
+- Run the HTTP service given in the [Sending cache response service](learn/by-example/http-service-cache-response/) example.
 
 Run the client program by executing the following command.
 
