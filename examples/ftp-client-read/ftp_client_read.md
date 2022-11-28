@@ -5,7 +5,7 @@ The FTP client is used to perform CRUD operation on remote files/directories usi
 ::: code ftp_client_read.bal :::
 
 ## Prerequisites
-- Execute [FTP client - Write file](/learn/by-example/ftp-client-write) example to put a file in the FTP server.
+- Run the FTP client given in the [FTP client - Write file](/learn/by-example/ftp-client-write) example to put a file in the FTP server.
 
 Run the program by executing the following command. The newly-added file will appear in the local directory.
 
@@ -13,4 +13,4 @@ Run the program by executing the following command. The newly-added file will ap
 
 ## Related links
 - [`ftp:Client->get` method - API documentation](https://lib.ballerina.io/ballerina/ftp/latest/clients/Client#get)
-- [FTP client - specification](/spec/ftp/#321-insecure-client)
+- [FTP client - Specification](/spec/ftp/#321-insecure-client)

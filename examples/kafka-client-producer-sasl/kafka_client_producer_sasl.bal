@@ -1,7 +1,14 @@
 import ballerinax/kafka;
 
+public type Order record {|
+    int orderId;
+    string productName;
+    decimal price;
+    boolean isValid;
+|};
+
 public function main() returns kafka:Error? {
-    kafka:Producer messageProducer = check new ("localhost:9093", {
+    kafka:Producer orderProducer = check new ("localhost:9093", {
         // Provide the relevant authentication configurations to authenticate the producer by
         // `kafka:AuthenticationConfiguration`.
         auth: {
@@ -13,8 +20,13 @@ public function main() returns kafka:Error? {
         },
         securityProtocol: kafka:PROTOCOL_SASL_PLAINTEXT
     });
-    check messageProducer->send({
-        topic: "order-log-topic",
-        value: "new order for item 2311 was placed on 1669113239"
+    check orderProducer->send({
+        topic: "order-topic",
+        value: {
+            orderId: 1,
+            productName: "Sport shoe",
+            price: 27.5,
+            isValid: true
+        }
     });
 }

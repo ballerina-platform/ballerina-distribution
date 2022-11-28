@@ -6,10 +6,10 @@ The client metadata is enriched with the `Authorization: Bearer <token>` header 
 
    ::: code grpc_client_self_signed_jwt_auth.bal :::
 
-Setting up the client is the same as setting up the unary RPC client with additional configurations. You can refer to the [unary RPC client](/learn/by-example/grpc-client-unary/) to implement the client used here.
+Setting up the client is the same as setting up the unary RPC client with additional configurations. You can refer to the [gRPC client - Unary RPC](/learn/by-example/grpc-client-unary/) to implement the client used here.
 
 ## Prerequisites
-- Start the [JWT Auth service](/learn/by-example/grpc-service-jwt-auth/).
+- Run the gRPC service given in the [gRPC service - JWT authentication](/learn/by-example/grpc-service-jwt-auth/) example.
 
 Execute the command below to run the client.
 
@@ -17,5 +17,5 @@ Execute the command below to run the client.
 
 ## Related links
 - [`grpc:JwtIssuerConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/JwtIssuerConfig)
-- [Self signed JWT authentication - specification](/spec/grpc/#5117-client---self-signed-jwt-auth)
+- [Self signed JWT authentication - Specification](/spec/grpc/#5117-client---self-signed-jwt-auth)
 - [`oauth2` package - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)

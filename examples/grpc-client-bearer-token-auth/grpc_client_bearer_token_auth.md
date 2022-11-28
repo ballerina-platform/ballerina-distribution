@@ -6,7 +6,7 @@ The client metadata is enriched with the `Authorization: Bearer <token>` header 
 
    ::: code grpc_client_bearer_token_auth.bal :::
 
-You can refer to the [unary RPC client](/learn/by-example/grpc-client-unary/) to implement the client used here.
+You can refer to the [gRPC client - Unary RPC](/learn/by-example/grpc-client-unary/) to implement the client used here.
 
 ## Prerequisites
 - Start a secured service.
@@ -17,5 +17,5 @@ Execute the command below to run the client.
 
 ## Related links
 - [`grpc:BearerTokenConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/BearerTokenConfig)
-- [Bearer token authentication - specification](/spec/grpc/#5116-client---bearer-token-auth)
+- [Bearer token authentication - Specification](/spec/grpc/#5116-client---bearer-token-auth)
 - [`auth` package - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)

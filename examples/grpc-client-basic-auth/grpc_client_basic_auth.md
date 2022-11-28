@@ -6,10 +6,10 @@ The client metadata is enriched with the `Authorization: Basic <token>` header b
 
    ::: code grpc_client_basic_auth.bal :::
 
-Setting up the client is the same as setting up the unary RPC client with additional configurations. You can refer to the [unary RPC client](/learn/by-example/grpc-client-unary/) to implement the client used here.
+Setting up the client is the same as setting up the unary RPC client with additional configurations. You can refer to the [gRPC client - Unary RPC](/learn/by-example/grpc-client-unary/) to implement the client used here.
 
 ## Prerequisites
-- Start the [Basic Auth file user store service](/learn/by-example/grpc-service-basic-auth-file-user-store/) or [Basic Auth LDAP user store service](/learn/by-example/grpc-service-basic-auth-ldap-user-store/) service examples.
+- Run the gRPC service given in the [gRPC service - Basic authentication file user store](/learn/by-example/grpc-service-basic-auth-file-user-store/) or [gRPC service - Basic authentication LDAP user store](/learn/by-example/grpc-service-basic-auth-ldap-user-store/) examples.
 
 Execute the command below to run the client.
 
@@ -17,5 +17,5 @@ Execute the command below to run the client.
 
 ## Related links
 - [`grpc:ClientAuthConfig` type - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/types#ClientAuthConfig)
-- [Basic authentication - specification](/spec/grpc/#5115-client---basic-auth)
+- [Basic authentication - Specification](/spec/grpc/#5115-client---basic-auth)
 - [`auth` package - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)

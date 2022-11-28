@@ -15,7 +15,7 @@ The gRPC Server Connector exposes the gRPC service over HTTP2. In a unary RPC ca
 Once you run the command, the `grpc_unary_pb.bal` file gets generated inside the `stubs` directory.
 
 ## Prerequisites
-- Start the [unary RPC service](/learn/by-example/grpc-service-unary/).
+- Run the gRPC service given in the [gRPC service - Unary RPC](/learn/by-example/grpc-service-unary/) example.
 
 ## Implement and run the client
 
@@ -33,5 +33,5 @@ Once you run the command, the `grpc_unary_pb.bal` file gets generated inside the
 
 ## Related links
 - [`grpc` package - API documentation](https://lib.ballerina.io/ballerina/grpc/latest)
-- [Unary RPC - specification](/spec/grpc/#41-simple-rpc)
+- [Unary RPC - Specification](/spec/grpc/#41-simple-rpc)
 - [Ballerina protocol buffers guide](/learn/cli-documentation/grpc/)
