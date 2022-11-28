@@ -11,7 +11,7 @@ Run the program by executing the following command. Each newly added file in the
 
 ::: out sftp_service_read_write.out :::
 
-> **TIP** Run the SFTP client given in the [SFTP client - Write file](/learn/by-example/sftp-client-write) example to put a file in the SFTP server.
+>**Tip:** Run the SFTP client given in the [SFTP client - Write file](/learn/by-example/sftp-client-write) example to put a file in the SFTP server.
 
 ## Related links
 - [`ftp:Caller` client object - API documentation](https://lib.ballerina.io/ballerina/ftp/latest/clients/Caller)

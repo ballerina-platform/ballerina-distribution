@@ -11,7 +11,7 @@ Run the program by executing the following command. Paths of the newly-added and
 
 ::: out sftp_service_read.out :::
 
-> **TIP** Run the SFTP client given in the [SFTP client - Write file](/learn/by-example/sftp-client-write) example to put a file in the SFTP server.
+>**Tip:** Run the SFTP client given in the [SFTP client - Write file](/learn/by-example/sftp-client-write) example to put a file in the SFTP server.
 
 ## Related links
 - [`ftp:Listener` client object - API documentation](https://lib.ballerina.io/ballerina/ftp/latest/listeners/Listener)
