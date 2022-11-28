@@ -4,10 +4,14 @@ NATS supports the Request-Reply pattern using its core message distribution mode
 
 ::: code nats-basic-request.bal :::
 
-To run the sample, start an instance of the NATS server and execute the following command.
+## Prerequisites
+- Start an instance of the [NATS server](https://docs.nats.io/nats-concepts/what-is-nats/walkthrough_setup).
+- Run the NATS service given in the [NATS service - Send reply to request message](/learn/by-example/nats-basic-reply/) example.
+
+Run the client program by executing the following command.
 
 ::: out nats-basic-request.out :::
 
 ## Related links
-- [`nats:Client` - API documentation](https://lib.ballerina.io/ballerinax/nats/latest/clients/Client)
-- [`nats:Client` - Specification](https://github.com/ballerina-platform/module-ballerinax-nats/blob/master/docs/spec/spec.md#3-publishing)
+- [`nats:Client` client object - API documentation](https://lib.ballerina.io/ballerinax/nats/latest/clients/Client)
+- [`nats` publishing - Specification](https://github.com/ballerina-platform/module-ballerinax-nats/blob/master/docs/spec/spec.md#3-publishing)

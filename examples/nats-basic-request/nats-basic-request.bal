@@ -1,19 +1,25 @@
 import ballerina/io;
 import ballerinax/nats;
 
+public type Order record {|
+    int orderId;
+    string productName;
+    decimal price;
+    boolean isValid;
+|};
+
 public function main() returns error? {
-    // Initializes a NATS client.
     nats:Client natsClient = check new (nats:DEFAULT_URL);
 
     // Sends a request and returns the reply.
     StringMessage reply = check natsClient->requestMessage({
-        content: "Hello from Ballerina",
-        subject: "demo.bbe"
-    });
-    // Prints the reply message.
-    io:println("Reply message: " + reply.content);
+        content: { orderId: 1,
+                   productName: "Sport shoe",
+                   price: 27.5,
+                   isValid: true
+                 }, subject: "orders.valid" });
 
-    // Closes the client connection.
+    io:println("Reply message: " + reply.content);
     check natsClient.close();
 }
 

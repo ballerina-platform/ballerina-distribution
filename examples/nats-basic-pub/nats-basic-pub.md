@@ -4,10 +4,14 @@ NATS implements a publish-subscribe message distribution model. A publisher send
 
 ::: code nats-basic-pub.bal :::
 
-To run the sample, start an instance of the NATS server and execute the following command. 
+## Prerequisites
+- Start an instance of the [NATS server](https://docs.nats.io/nats-concepts/what-is-nats/walkthrough_setup).
+- Run the NATS service given in the [NATS service - Consume message](/learn/by-example/nats-basic-sub/) example.
+
+Run the client program by executing the following command.
 
 ::: out nats-basic-pub.out :::
 
 ## Related links
-- [`nats:Client` - API documentation](https://lib.ballerina.io/ballerinax/nats/latest/clients/Client)
-- [`nats:Client` - Specification](https://github.com/ballerina-platform/module-ballerinax-nats/blob/master/docs/spec/spec.md#3-publishing)
+- [`nats:Client` client object - API documentation](https://lib.ballerina.io/ballerinax/nats/latest/clients/Client)
+- [`nats` publishing - Specification](https://github.com/ballerina-platform/module-ballerinax-nats/blob/master/docs/spec/spec.md#3-publishing)
