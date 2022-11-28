@@ -1,0 +1,2 @@
+$ bal run http_client_file_upload.bal
+File Received!

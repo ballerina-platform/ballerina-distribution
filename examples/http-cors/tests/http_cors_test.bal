@@ -3,7 +3,7 @@ import ballerina/http;
 
 @test:Config {}
 function testFunc() returns error? {
-    http:Client httpEndpoint = check new("http://localhost:9092");
+    http:Client httpEndpoint = check new("localhost:9092");
     string expected = "middleware";
 
     // Send a `GET` request to the specified endpoint.

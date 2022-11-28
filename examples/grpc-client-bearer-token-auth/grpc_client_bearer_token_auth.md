@@ -4,16 +4,18 @@ A client, which is secured with Bearer token authentication can be used to conne
 
 The client metadata is enriched with the `Authorization: Bearer <token>` header by passing the `grpc:BearerTokenConfig` for the `auth` configuration of the client.
 
->**Info:** For more information on the underlying module, see the [`auth` module](https://lib.ballerina.io/ballerina/auth/latest).
-
->**Info:** You can refer to the [simple RPC client](/learn/by-example/grpc-client-simple/) to implement the client used below.
-
->**Tip:** You may need to change the trusted certificate file path in the code below.
-
    ::: code grpc_client_bearer_token_auth.bal :::
+
+You can refer to the [gRPC client - Unary RPC](/learn/by-example/grpc-client-unary/) to implement the client used here.
+
+## Prerequisites
+- Start a secured service.
 
 Execute the command below to run the client.
 
->**Info:** As a prerequisite to running the client, start a secured sample service.
-
    ::: out grpc_client_bearer_token_auth.out :::
+
+## Related links
+- [`grpc:BearerTokenConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/BearerTokenConfig)
+- [Bearer token authentication - Specification](/spec/grpc/#5116-client---bearer-token-auth)
+- [`auth` package - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)

@@ -4,13 +4,14 @@ Ballerina supports mutual SSL, which is a certificate-based authentication proce
 
 ::: code websocket_client_mutual_ssl.bal :::
 
-Run the client program by executing the command below.
+## Prerequisites
+- Run the WebSocket service given in the [Mutual SSL](/learn/by-example/websocket-service-mutual-ssl/) example.
 
->**Tip:** As a prerequisite to running the client, start a [sample service secured with Mutual SSL](/learn/by-example/websocket-service-mutual-ssl/).
+Run the client program by executing the command below.
 
 ::: out websocket_client_mutual_ssl.out :::
 
 ## Related Links
-- [`websocket` - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
+- [`websocket` package - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
 - [`websocket` SSL/TLS - Specification](/spec/websocket/#5-securing-the-websocket-connections)
 

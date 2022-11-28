@@ -4,16 +4,18 @@ A client, which is secured with an OAuth2 refresh token grant type can be used t
 
 The client metadata is enriched with the `Authorization: Bearer <token>` header by passing the `grpc:OAuth2RefreshTokenGrantConfig` to the `auth` configuration of the client.
 
->**Info:** For more information on the underlying module, see the [`oauth2` module](https://lib.ballerina.io/ballerina/oauth2/latest/).
-
->**Info:** Setting up the client is the same as setting up the simple RPC client with additional configurations. You can refer to the [simple RPC client](/learn/by-example/grpc-client-simple/) to implement the client used below.
-
->**Tip:** You may need to change the trusted certificate file path in the code below.
-
    ::: code grpc_client_oauth2_refresh_token_grant_type.bal :::
+
+Setting up the client is the same as setting up the unary RPC client with additional configurations. You can refer to the [gRPC client - Unary RPC](/learn/by-example/grpc-client-unary/) to implement the client used here.
+
+## Prerequisites
+- Run the gRPC service given in the [gRPC service - OAuth2](/learn/by-example/grpc-service-oauth2/) example.
 
 Execute the command below to run the client.
 
->**Info:** As a prerequisite to running the client, start the [OAuth2 service](/learn/by-example/grpc-service-oauth2/).
-
    ::: out grpc_client_oauth2_refresh_token_grant_type.out :::
+
+## Related links
+- [`grpc:OAuth2RefreshTokenGrantConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2RefreshTokenGrantConfig)
+- [OAuth2 authentication and authorization - Specification](/spec/grpc/#5118-client---oauth2)
+- [`oauth2` package - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)

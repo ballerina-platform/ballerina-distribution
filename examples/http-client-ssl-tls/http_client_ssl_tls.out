@@ -1,2 +1,2 @@
 $ bal run http_client_ssl_tls.bal
-Hello, World!
+[{"title":"Blue Train","artist":"John Coltrane"},{"title":"Jeru","artist":"Gerry Mulligan"}]

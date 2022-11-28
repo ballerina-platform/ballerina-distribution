@@ -2,10 +2,9 @@ import ballerina/ftp;
 import ballerina/log;
 
 // Creates the listener with the connection parameters and the protocol-related
-// configuration. The polling interval specifies the time duration between each
-// poll performed by the listener in seconds. The listener listens to the files
+// configuration. The listener listens to the files
 // with the given file name pattern located in the specified path.
-listener ftp:Listener remoteServer = check new ({
+listener ftp:Listener fileListener = check new ({
     protocol: ftp:FTP,
     host: "ftp.example.com",
     auth: {
@@ -20,7 +19,7 @@ listener ftp:Listener remoteServer = check new ({
 
 // One or many services can listen to the FTP listener for the periodically-polled
 // file related events.
-service on remoteServer {
+service on fileListener {
     // When a file event is successfully received, the `onFileChange` method is called.
     remote function onFileChange(ftp:WatchEvent & readonly event) {
         // `addedFiles` contains the paths of the newly-added files/directories

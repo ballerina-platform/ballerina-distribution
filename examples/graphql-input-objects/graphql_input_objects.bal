@@ -12,7 +12,7 @@ type Post record {|
     int id;
 |};
 
-service /graphql on new graphql:Listener(4000) {
+service /graphql on new graphql:Listener(9090) {
 
     // Define an in-memory array to store the Posts
     private final Post[] posts = [];

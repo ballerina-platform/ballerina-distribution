@@ -1,9 +1,6 @@
-# Cookies
+# HTTP service - Cookies
 
 HTTP cookies can track, personalize, and manage the session in the service and client.
-
-For more information on the underlying module, see the [`http` module](https://lib.ballerina.io/ballerina/http/latest/) 
-and [specification](https://ballerina.io/spec/http/#2416-cookie).
 
 ::: code cookie_server.bal :::
 
@@ -18,3 +15,7 @@ Invoke the service by executing the following main program.
 Run the main program as follows.
 
 ::: out http_client.out :::
+
+## Related links
+- [`http:Cookie` - API documentation](https://lib.ballerina.io/ballerina/http/latest/classes/Cookie)
+- [`Cookie` - specification](https://ballerina.io/spec/http/#2416-cookie)

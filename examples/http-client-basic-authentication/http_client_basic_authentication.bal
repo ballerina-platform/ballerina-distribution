@@ -1,11 +1,15 @@
 import ballerina/http;
 import ballerina/io;
 
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
+
 public function main() returns error? {
     // Defines the HTTP client to call the Basic Auth secured APIs.
     // The client is enriched with the `Authorization: Basic <token>` header by
     // passing the `http:CredentialsConfig` for the `auth` configuration of the client.
-    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/CredentialsConfig.
     http:Client securedEP = check new("https://localhost:9090",
         auth = {
             username: "ldclakmal",
@@ -15,6 +19,6 @@ public function main() returns error? {
             cert: "../resource/path/to/public.crt"
         }
     );
-    string response = check securedEP->/foo/bar;
-    io:println(response);
+    Album[] payload = check securedEP->/albums;
+    io:println(payload);
 }

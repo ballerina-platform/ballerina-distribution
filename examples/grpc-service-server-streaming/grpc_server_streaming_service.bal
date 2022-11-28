@@ -1,4 +1,3 @@
-// This is the server implementation of the server streaming scenario.
 import ballerina/grpc;
 
 @grpc:Descriptor {

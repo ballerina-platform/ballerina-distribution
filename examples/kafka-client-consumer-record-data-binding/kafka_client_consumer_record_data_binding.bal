@@ -8,13 +8,6 @@ public type Order record {|
     boolean isValid;
 |};
 
-kafka:ConsumerConfiguration consumerConfiguration = {
-    groupId: "group-id",
-    offsetReset: "earliest",
-    // Subscribes to the topic `test-kafka-topic`.
-    topics: ["test-kafka-topic"]
-};
-
 // Create a subtype of `kafka:AnydataConsumerRecord`.
 public type OrderConsumerRecord record {|
     *kafka:AnydataConsumerRecord;
@@ -22,7 +15,10 @@ public type OrderConsumerRecord record {|
 |};
 
 public function main() returns error? {
-    kafka:Consumer orderConsumer = check new (kafka:DEFAULT_URL, consumerConfiguration);
+    kafka:Consumer orderConsumer = check new (kafka:DEFAULT_URL, {
+        groupId: "order-group-id",
+        topics: "order-topic"
+    });
 
     // Polls the consumer for order records.
     OrderConsumerRecord[] records = check orderConsumer->poll(1);
@@ -30,6 +26,6 @@ public function main() returns error? {
     check from OrderConsumerRecord orderRecord in records
         where orderRecord.value.isValid
         do {
-            io:println(orderRecord.value.productName);
+            io:println(string `Received valid order for ${orderRecord.value.productName}`);
         };
 }

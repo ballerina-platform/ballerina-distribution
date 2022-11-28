@@ -6,8 +6,6 @@ According to the GraphQL specification, an input type cannot be used as an outpu
 
 This example shows a GraphQL endpoint, which has a field `addPost` with an input of type `NewPost` in the root `Mutation` type.
 
-For more information on the underlying package, see the [GraphQL package](https://lib.ballerina.io/ballerina/graphql/latest/).
-
 ::: code graphql_input_objects.bal :::
 
 Run the service by executing the following command.
@@ -20,6 +18,10 @@ Send the following document to the GraphQL endpoint to test the service.
 
 To send the document, use the following cURL command in a separate terminal.
 
->**Info:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client/).
-
 ::: out graphql_input_objects.client.out :::
+
+>**Tip:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client/).
+
+## Related links
+- [`graphql` package - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
+- [`graphql` input objects - Specification](/spec/graphql/#452-input-objects)

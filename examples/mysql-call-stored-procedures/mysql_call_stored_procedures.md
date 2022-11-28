@@ -2,20 +2,21 @@
 
 This BBE demonstrates how to use the MySQL client to execute a stored procedure. 
 
-For more information on the underlying module, see the [`mysql` module](https://lib.ballerina.io/ballerinax/mysql/latest/).
-
 ::: code mysql_call_stored_procedures.bal :::
 
-Create a Ballerina project. Copy the example to the project. Execute the command below to build and run the project.
+## Prerequisites
+- Create a Ballerina project.
+- Copy the example to the project along with util files.
+
+Run the sample by executing the following command.
 
 ::: out mysql_call_stored_procedures.out :::
 
 The result set returned from the stored procedure can be accessed using `queryResult` variable in `sql:ProcedureCallResult`.
-This can be processed as below,
 
 ::: code process_result_stream.bal :::
 
-Further the result set can be mapped directly to a Ballerina record as follows,
+Further the result set can be mapped directly to a Ballerina record,
 
 ::: code process_student_stream.bal :::
 
@@ -30,3 +31,7 @@ The following util files will initialize the test database before running the BB
 ::: code initialize.bal :::
 
 ::: code cleanup.bal :::
+
+## Related links
+- [`mysql:Client` - API documentation](https://lib.ballerina.io/ballerinax/mysql/latest/)
+- [`mysql:Client` - Specification](https://github.com/ballerina-platform/module-ballerinax-mysql/blob/master/docs/spec/spec.md#2-client)

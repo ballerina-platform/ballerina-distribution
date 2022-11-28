@@ -3,7 +3,7 @@ import ballerina/test;
 
 @test:Config {}
 function testFunc() returns error? {
-    http:Client httpEndpoint = check new("http://localhost:9090");
+    http:Client httpEndpoint = check new("localhost:9090");
     Album payload = check httpEndpoint->get("/albums/Blue Train");
     test:assertEquals(payload, {title:"Blue Train", artist:"John Coltrane"});
 

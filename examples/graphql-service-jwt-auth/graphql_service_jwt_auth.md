@@ -6,14 +6,14 @@ Ballerina uses the concept of scopes for authorization. A resource declared in a
 
 In the authorization phase, the scopes of the service are compared against the scope included in the JWT for at least one match between the two sets.
 
-For more information on the underlying module,  see the [`jwt` module](https://lib.ballerina.io/ballerina/jwt/latest/).
-
->**Tip:** You may need to change the certificate file path and private key file path in the code below.
-
 ::: code graphql_service_jwt_auth.bal :::
 
 Run the service by executing the command below.
 
 ::: out graphql_service_jwt_auth.server.out :::
 
->**Info:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client/).
+## Related links
+- [`graphql:ServiceConfig` annotation - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/annotations#ServiceConfig)
+- [`graphql:JwtValidatorConfigWithScopes` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/records/JwtValidatorConfigWithScopes)
+- [`jwt` package - API documentation](https://lib.ballerina.io/ballerina/jwt/latest/)
+- [`graphql` JWT authentication - Specification](/spec/graphql/#11113-jwt-authentication)

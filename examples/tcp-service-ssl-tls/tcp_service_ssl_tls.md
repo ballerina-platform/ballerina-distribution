@@ -11,5 +11,5 @@ Run the service by executing the command below.
 >**Tip:** You can invoke the above service via the [TCP SSL/TLS client](/learn/by-example/tcp-client-ssl-tls/).
 
 ## Related links
-- [`tcp` - API documentation](https://lib.ballerina.io/ballerina/tcp/latest)
+- [`tcp` package - API documentation](https://lib.ballerina.io/ballerina/tcp/latest)
 - [`tcp` SSL/TLS - Specification](/spec/tcp/#511-configuring-tls-in-server-side)

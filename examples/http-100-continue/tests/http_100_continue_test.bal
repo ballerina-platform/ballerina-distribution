@@ -4,7 +4,7 @@ import ballerina/test;
 @test:Config {}
 function testFunc() returns error? {
     // Invoking the main function
-    http:Client httpEndpoint = check new("http://localhost:9090");
+    http:Client httpEndpoint = check new("localhost:9090");
     string response1 = "Hello World!\n";
 
     // Send a GET request to the specified endpoint

@@ -9,7 +9,7 @@ type Person record {|
     int age;
 |};
 
-service /graphql on new graphql:Listener(4000) {
+service /graphql on new graphql:Listener(9090) {
 
     // Add doc comments to reflect them in the generated GraphQL schema.
     # Returns a person using the provided ID.

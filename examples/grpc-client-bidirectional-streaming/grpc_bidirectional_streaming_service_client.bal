@@ -1,4 +1,3 @@
-// This is the client implementation of the bidirectional streaming scenario.
 import ballerina/io;
 
 public function main() returns error? {

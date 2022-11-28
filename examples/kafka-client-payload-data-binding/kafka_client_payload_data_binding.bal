@@ -8,15 +8,11 @@ public type Order record {|
     boolean isValid;
 |};
 
-kafka:ConsumerConfiguration consumerConfiguration = {
-    groupId: "group-id",
-    offsetReset: "earliest",
-    // Subscribes to the topic `test-kafka-topic`.
-    topics: ["test-kafka-topic"]
-};
-
 public function main() returns error? {
-    kafka:Consumer orderConsumer = check new (kafka:DEFAULT_URL, consumerConfiguration);
+    kafka:Consumer orderConsumer = check new (kafka:DEFAULT_URL, {
+        groupId: "order-group-id",
+        topics: "order-topic"
+    });
 
     // Polls the consumer for payload.
     Order[] orders = check orderConsumer->pollPayload(1);
@@ -24,6 +20,6 @@ public function main() returns error? {
     check from Order 'order in orders
         where 'order.isValid
         do {
-            io:println('order.productName);
+            io:println(string `Received valid order for ${'order.productName}`);
         };
 }

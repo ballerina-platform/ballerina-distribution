@@ -1,6 +1,6 @@
 // The Ballerina WebSub Subscriber service, which could be used as a WebHook Listener for GitHub.
-import ballerina/websub;
 import ballerina/io;
+import ballerina/websub;
 
 // Annotation-based configurations specifying the subscription parameters.
 @websub:SubscriberServiceConfig {

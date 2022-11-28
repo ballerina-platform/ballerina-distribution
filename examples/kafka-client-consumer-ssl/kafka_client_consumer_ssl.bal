@@ -1,30 +1,34 @@
 import ballerinax/kafka;
-import ballerina/log;
+import ballerina/io;
 
-// Define the relevant SASL URL of the configured Kafka server.
-const SSL_URL = "localhost:9094";
+public type Order record {|
+    int orderId;
+    string productName;
+    decimal price;
+    boolean isValid;
+|};
 
-kafka:ConsumerConfiguration consumerConfigs = {
-    groupId: "test-group",
-    topics: ["demo-security"],
-    // Provide the relevant secure socket configurations by using `kafka:SecureSocket`.
-    // For details, see https://lib.ballerina.io/ballerinax/kafka/latest/records/SecureSocket.
-    secureSocket: {
-        cert: "./resources/path/to/public.crt",
-        protocol: {
-            // Provide the relevant security protocol.
-            name: kafka:SSL
-        }
-    },
-    // Provide the type of the security protocol to use in the broker connection.
-    securityProtocol: kafka:PROTOCOL_SSL
-};
+public function main() returns error? {
+    kafka:Consumer orderConsumer = check new ("localhost:9094", {
+        groupId: "order-group-id",
+        topics: ["order-topic"],
+        // Provide the relevant secure socket configurations by using `kafka:SecureSocket`.
+        secureSocket: {
+            cert: "./resources/path/to/public.crt",
+            protocol: {
+                // Provide the relevant security protocol.
+                name: kafka:SSL
+            }
+        },
+        // Provide the type of the security protocol to use in the broker connection.
+        securityProtocol: kafka:PROTOCOL_SSL
+    });
 
-service on new kafka:Listener(SSL_URL, consumerConfigs) {
-    remote function onConsumerRecord(string[] values) returns error? {
-        check from string value in values
-            do {
-                log:printInfo("Received value: " + value);
-            };
-    }
+    // Polls the consumer for payload.
+    Order[] orders = check orderConsumer->pollPayload(1);
+
+    check from Order 'order in orders
+        do {
+            io:println(string `Received valid order for ${'order.productName}`);
+        };
 }

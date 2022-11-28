@@ -4,8 +4,6 @@ The resources in Ballerina GraphQL services can have hierarchical resource paths
 
 This example shows a GraphQL endpoint, which has a `profile` field of type `Person`. A GraphQL client can query this service to retrieve specific fields or subfields of the `Person` object.
 
-For more information on the underlying package, see the [GraphQL package](https://lib.ballerina.io/ballerina/graphql/latest/).
-
 ::: code graphql_hierarchical_resource_paths.bal :::
 
 Run the service by executing the following command.
@@ -18,6 +16,10 @@ Send the following document to the GraphQL endpoint to test the service.
 
 To send the document, use the following cURL command in a separate terminal.
 
->**Info:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client/).
-
 ::: out graphql_hierarchical_resource_paths.client.out :::
+
+>**Tip:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client/).
+
+## Related links
+- [`graphql` package - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
+- [`graphql` hierarchical resource paths - Specification](/spec/graphql/#333-hierarchical-resource-path)

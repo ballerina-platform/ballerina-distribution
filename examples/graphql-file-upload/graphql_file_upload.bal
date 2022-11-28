@@ -1,9 +1,9 @@
 import ballerina/graphql;
 import ballerina/io;
 
-service /fileUpload on new graphql:Listener(4000) {
+service /fileUpload on new graphql:Listener(9090) {
 
-    // Remote functions can use the `graphql:Upload` type as an input parameter type.
+    // Remote methods can use the `graphql:Upload` type as an input parameter type.
     remote function fileUpload(graphql:Upload file) returns string|error {
 
         // The uploaded file information can be accessed using the `graphql:Upload` type.

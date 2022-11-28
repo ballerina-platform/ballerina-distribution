@@ -1,1 +1,1 @@
-$ curl https://localhost:9090/foo/bar --cacert /path/to/server-public.crt
+$ curl https://localhost:9090/albums --cacert /path/to/server-public.crt

@@ -10,7 +10,6 @@ public function main() returns error? {
     email:Message email = {
         // "TO", "CC", and "BCC" addresses can be added as follows.
         // Only the "TO" address is mandatory out of these three.
-        // For details, see https://lib.ballerina.io/ballerina/email/latest/records/Message
         to: "receiver1@email.com",
         cc: "receiver2@email.com",
         bcc: "receiver3@email.com",

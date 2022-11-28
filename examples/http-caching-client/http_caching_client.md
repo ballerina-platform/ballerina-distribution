@@ -2,16 +2,15 @@
 
 HTTP caching is enabled by default in HTTP client endpoints. Users can configure caching using the `cache` field in the client configurations.
 
-For more information on the underlying module, see the [`http` module](https://lib.ballerina.io/ballerina/http/latest/) and [specification](https://ballerina.io/spec/http/#2412-caching).
-
 ::: code http_caching_client.bal :::
 
-Run the service by executing the following command.
+## Prerequisites
+- Start the [Sending cache response service](learn/by-example/http-service-cache-response/).
 
-(The two services have to be run separately to observe the following output. For clarity, only the relevant parts of the HTTP trace logs have been included here.)
+Run the client program by executing the following command.
 
-::: out http_caching_client.server.out :::
+::: out http_caching_client.out :::
 
-Invoke the service as follows.
-
-::: out http_caching_client.client.out :::
+## Related links
+- [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`Caching` - specification](https://ballerina.io/spec/http/#2412-caching)

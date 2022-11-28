@@ -2,7 +2,7 @@ import ballerina/http;
 import ballerina/io;
 
 public function main() returns error? {
-    http:Client httpClient = check new ("http://localhost:8080", 
+    http:Client httpClient = check new ("localhost:9090",
         // Retry configuration options.
         retryConfig = {
 
@@ -23,6 +23,6 @@ public function main() returns error? {
             // interval.
             maxWaitInterval: 20
         });
-    string payload = check httpClient->/greeting;
+    string payload = check httpClient->/albums;
     io:println(payload);
 }

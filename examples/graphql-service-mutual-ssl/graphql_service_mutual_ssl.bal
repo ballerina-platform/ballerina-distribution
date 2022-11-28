@@ -1,11 +1,15 @@
 import ballerina/graphql;
 import ballerina/http;
 
+type Person record {|
+    string name;
+    int age;
+|};
+
 // An GraphQL listener can be configured to accept new connections that are
 // secured via mutual SSL.
-// The `graphql:ListenerSecureSocket` record provides the SSL-related listener configurations. 
-// For details, see https://lib.ballerina.io/ballerina/graphql/latest/records/ListenerSecureSocket.
-listener graphql:Listener securedEP = new(4000,
+// The `graphql:ListenerSecureSocket` record provides the SSL-related listener configurations.
+listener graphql:Listener securedEP = new (9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -20,7 +24,10 @@ listener graphql:Listener securedEP = new(4000,
 );
 
 service /graphql on securedEP {
-    resource function get greeting() returns string {
-        return "Hello, World!";
+    resource function get profile() returns Person {
+        return {
+            name: "Walter White",
+            age: 50
+        };
     }
 }

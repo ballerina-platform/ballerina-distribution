@@ -6,7 +6,6 @@ public function main() returns error? {
     // a certificate file of the listener.
     // The `tcp:ClientSecureSocket` record provides the
     // SSL-related configurations of the client.
-    // For details, see https://lib.ballerina.io/ballerina/tcp/latest/records/ClientSecureSocket.
     tcp:Client securedClientEP = check new("localhost", 3000,
         secureSocket = {
             cert: "../resource/path/to/public.crt"

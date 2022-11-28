@@ -14,8 +14,7 @@ listener email:PopListener emailListener = check new ({
 // One or many services can listen to the email listener for the periodically-polled emails.
 service "emailObserver" on emailListener {
 
-    // When an email is successfully received, the `onMessage` method is
-    // called.
+    // When an email is successfully received, the `onMessage` method is called.
     remote function onMessage(email:Message emailMessage) {
         log:printInfo("POP Listener received an email", subject = emailMessage.subject,
             content = emailMessage?.body);
@@ -30,5 +29,4 @@ service "emailObserver" on emailListener {
     remote function onClose(email:Error? closeError) {
         log:printInfo("Closed the listener");
     }
-
 }

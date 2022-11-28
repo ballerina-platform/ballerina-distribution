@@ -1,12 +1,16 @@
 import ballerina/http;
 import ballerina/io;
 
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
+
 public function main() returns error? {
     // Defines the HTTP client to call the JWT Auth secured APIs.
     // The client is enriched with the `Authorization: Bearer <token>` header by
     // passing the `http:JwtIssuerConfig` for the `auth` configuration of the
     // client. A self-signed JWT is issued before the request is sent.
-    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/JwtIssuerConfig.
     http:Client securedEP = check new("https://localhost:9090",
         auth = {
             username: "ballerina",
@@ -26,6 +30,6 @@ public function main() returns error? {
             cert: "../resource/path/to/public.crt"
         }
     );
-    string response = check securedEP->/foo/bar;
-    io:println(response);
+    Album[] payload = check securedEP->/albums;
+    io:println(payload);
 }

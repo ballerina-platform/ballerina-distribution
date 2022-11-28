@@ -1,4 +1,0 @@
-$ bal run http_client_endpoint.bal
-GET request:[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]
-
-POST request:{"title":"Sarah Vaughan and Clifford Brown", "artist":"Sarah Vaughan"}

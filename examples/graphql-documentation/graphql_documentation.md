@@ -4,8 +4,6 @@ A GraphQL schema can include documentation for the schema. These documentation c
 
 This example shows how to add doc comments to the GraphQL service so that the generated schema will include them as the documentation.
 
-For more information on the underlying package, see the [GraphQL package](https://lib.ballerina.io/ballerina/graphql/latest/).
-
 ::: code graphql_documentation.bal :::
 
 Run the service by executing the following command.
@@ -18,6 +16,10 @@ Send the following document with an introspection query to test how the document
 
 To send the document, use the following cURL command in a separate terminal.
 
->**Info:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client/).
-
 ::: out graphql_documentation.client.out :::
+
+>**Tip:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client/).
+
+## Related links
+- [`graphql` package - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
+- [`graphql` documentations - Specification](/spec/graphql/#35-documentation)

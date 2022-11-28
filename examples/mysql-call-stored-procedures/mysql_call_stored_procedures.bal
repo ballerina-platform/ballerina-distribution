@@ -15,7 +15,8 @@ public function main() returns error? {
     check initialize();
 
     // Initializes the MySQL client. The `mysqlClient` can be reused to access the database throughout the application execution.
-    mysql:Client mysqlClient = check new (user = "root", password = "Test@123", database = "STUDENT");
+    mysql:Client mysqlClient = check new (host = "localhost", port = 3306, user = "root",
+                                          password = "Test@123", database = "STUDENT");
 
     // Initializes the `INOUT` and `OUT` parameters for the procedure call.
     sql:InOutParameter id = new (1);

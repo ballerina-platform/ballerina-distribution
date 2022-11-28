@@ -8,8 +8,6 @@ Interceptors follow the _onion principle_ when executing. Also, the inserting or
 
 This example shows how to define an interceptor to print a log before and after a resolver is executed.
 
-For more information on the underlying package, see the [`graphql` package](https://lib.ballerina.io/ballerina/graphql/latest/).
-
 ::: code graphql_interceptors.bal :::
 
 Run the service by executing the following command.
@@ -22,6 +20,10 @@ Send the following document to the GraphQL endpoint to test the service.
 
 To send the document, use the following cURL command in a separate terminal.
 
->**Info:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client/).
-
 ::: out graphql_interceptors.client.out :::
+
+>**Tip:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client/).
+
+## Related links
+- [`graphql:Interceptor` object - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/objectTypes/Interceptor)
+- [`graphql` interceptors - Specification](/spec/graphql/#10-interceptors)

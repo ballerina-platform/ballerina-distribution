@@ -1,8 +1,6 @@
-# Access logs
+# HTTP service - Access logs
 
 Ballerina supports HTTP access logs for HTTP services. The access log format used is the combined log format. To enable access logs, set `console=true` under the `ballerina.http.accessLogConfig` in the `Config.toml` file. Also, the `path` field can be used to specify the file path to save the access logs.
-
-For more information on the underlying module, see the [`http` module](https://lib.ballerina.io/ballerina/http/latest/).
 
 ::: code http_access_logs.bal :::
 
@@ -14,3 +12,6 @@ Invoke the service by executing the following cURL command in a new terminal.
 
 ::: out http_access_logs.client.out :::
 
+## Related links
+- [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`Access log` - specification](https://ballerina.io/spec/http/#824-access-log)

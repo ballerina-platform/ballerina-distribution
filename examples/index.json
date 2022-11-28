@@ -1387,8 +1387,8 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service path and resource path",
-                "url": "http-service-path-and-resource-path",
+                "name": "Service path and resource name",
+                "url": "http-service-path-and-resource-name",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -1451,13 +1451,13 @@
         "samples": [
             {
                 "name": "Send request/Receive response",
-                "url": "http-client-endpoint",
+                "url": "http-client-send-request-receive-response",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "isLearnByExample": false
             },
             {
-                "name": "Payload binding",
+                "name": "Payload data binding",
                 "url": "http-client-data-binding",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -1521,7 +1521,7 @@
         ]
     },
     {
-        "title": "REST client security",
+        "title": "HTTP client security",
         "column": 0,
         "category": "Network libraries",
         "samples": [
@@ -1600,7 +1600,54 @@
         ]
     },
     {
-        "title": "HTTP advanced",
+        "title": "HTTP client resiliency",
+        "column": 0,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Timeout",
+                "url": "http-timeout",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Retry",
+                "url": "http-retry",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Circuit breaker",
+                "url": "http-circuit-breaker",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Load balancer",
+                "url": "http-load-balancer",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Failover",
+                "url": "http-failover",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "HTTP service advanced",
         "column": 0,
         "category": "Network libraries",
         "samples": [
@@ -1614,7 +1661,7 @@
             },
             {
                 "name": "Redirects",
-                "url": "http-redirects",
+                "url": "http-service-redirects",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -1653,16 +1700,8 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Caching client",
-                "url": "http-caching-client",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Streaming",
-                "url": "http-streaming",
+                "name": "File upload",
+                "url": "http-service-file-upload",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -1702,23 +1741,23 @@
             },
             {
                 "name": "Chunking",
-                "url": "http-disable-chunking",
+                "url": "http-service-chunking",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
-                "name": "Response With multiparts",
-                "url": "http-response-with-multiparts",
-                "verifyBuild": false,
+                "name": "Sending cache response",
+                "url": "http-service-cache-response",
+                "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
-                "name": "Request With multiparts",
-                "url": "http-request-with-multiparts",
+                "name": "Response with multiparts",
+                "url": "http-response-with-multiparts",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -1735,12 +1774,59 @@
         ]
     },
     {
+        "title": "HTTP client advanced",
+        "column": 0,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Redirects",
+                "url": "http-client-redirects",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "File upload",
+                "url": "http-client-file-upload",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Chunking",
+                "url": "http-client-chunking",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Caching",
+                "url": "http-caching-client",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Request with multiparts",
+                "url": "http-request-with-multiparts",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
         "title": "HTTP service interceptors",
         "column": 1,
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Request Interceptors",
+                "name": "Request interceptors",
                 "url": "http-request-interceptors",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1748,7 +1834,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Response Interceptors",
+                "name": "Response interceptors",
                 "url": "http-response-interceptors",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1756,7 +1842,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Error Handling",
+                "name": "Error handling",
                 "url": "http-error-handling",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2191,53 +2277,6 @@
         ]
     },
     {
-        "title": "HTTP client resiliency",
-        "column": 2,
-        "category": "Network libraries",
-        "samples": [
-            {
-                "name": "Timeout",
-                "url": "http-timeout",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Retry",
-                "url": "http-retry",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Circuit breaker",
-                "url": "http-circuit-breaker",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Load balancer",
-                "url": "http-load-balancer",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Failover",
-                "url": "http-failover",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            }
-        ]
-    },
-    {
         "title": "Listeners and StopHandlers",
         "column": 2,
         "category": "Network libraries",
@@ -2266,8 +2305,8 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Simple RPC",
-                "url": "grpc-service-simple",
+                "name": "Unary RPC",
+                "url": "grpc-service-unary",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Has different naming convention",
@@ -2336,8 +2375,8 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Simple RPC",
-                "url": "grpc-client-simple",
+                "name": "Unary RPC",
+                "url": "grpc-client-unary",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Has different naming convention",
@@ -2631,8 +2670,8 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Service",
-                "url": "kafka-service",
+                "name": "Consume message",
+                "url": "kafka-service-consume-message",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
@@ -3251,7 +3290,7 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Serialization and Deserialization",
+                "name": "Serialization/Deserialization",
                 "url": "serdes-simple",
                 "verifyBuild": true,
                 "verifyOutput": true,

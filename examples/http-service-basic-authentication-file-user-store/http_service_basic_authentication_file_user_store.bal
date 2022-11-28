@@ -1,5 +1,10 @@
 import ballerina/http;
 
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
+
 listener http:Listener securedEP = new(9090,
     secureSocket = {
         key: {
@@ -12,7 +17,6 @@ listener http:Listener securedEP = new(9090,
 // The service can be secured with Basic Auth and can be authorized optionally.
 // Using Basic Auth with the file user store can be enabled by setting 
 // the `http:FileUserStoreConfig` configurations.
-// For details, see https://lib.ballerina.io/ballerina/http/latest/records/FileUserStoreConfig.
 // Authorization is based on scopes. A scope maps to one or more groups.
 // Authorization can be enabled by setting the `string|string[]` type
 // configurations for `scopes` field.
@@ -24,12 +28,15 @@ listener http:Listener securedEP = new(9090,
         }
     ]
 }
-service /foo on securedEP {
+service / on securedEP {
 
     // It is optional to override the authentication and authorization
     // configurations at the resource levels. Otherwise, the service auth
     // configurations will be applied automatically to the resources as well.
-    resource function get bar() returns string {
-        return "Hello, World!";
+    resource function get albums() returns Album[] {
+        return [
+            {title: "Blue Train", artist: "John Coltrane"},
+            {title: "Jeru", artist: "Gerry Mulligan"}
+        ];
     }
 }
