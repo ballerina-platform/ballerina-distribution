@@ -5,7 +5,7 @@ An HTTP load balancing endpoint is used when the request load needs to be load b
 ::: code http_load_balancer.bal :::
 
 ## Prerequisites
-- Start a service.
+- Start multiple [Basic REST services](/learn/by-example/http-basic-rest-service/) by changing the ports accordingly.
 
 Run the program by executing the following command.
 

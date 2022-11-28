@@ -5,7 +5,7 @@ The HTTP retry client tries sending over the same request to the backend service
 ::: code http_retry.bal :::
 
 ## Prerequisites
-- Start a service.
+- Start the [Basic REST service](/learn/by-example/http-basic-rest-service/).
 
 Run the program by executing the following command.
 
