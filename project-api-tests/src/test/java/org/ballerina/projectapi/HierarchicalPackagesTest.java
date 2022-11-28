@@ -17,7 +17,6 @@
  */
 package org.ballerina.projectapi;
 
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -97,7 +96,8 @@ public class HierarchicalPackagesTest {
 //    }
 
     @Test(description = "Verify build package behaviour for hierarchical package imports in two consecutive builds.")
-    public void testConsecutiveBuilds() {
+    public void testConsecutiveBuilds() throws IOException {
+        deleteTestPackagesFromCentral();
 //        String packageName = "PackageI";
 //        // First build
 //        buildPackage(packageName, new LinkedList<>());
@@ -359,8 +359,8 @@ public class HierarchicalPackagesTest {
 //        deleteFiles(tempWorkspaceDirectory);
 //    }
 
-    @AfterSuite
-    private void cleanupSuite() throws IOException {
-        deleteTestPackagesFromCentral();
-    }
+//    @AfterSuite
+//    private void cleanupSuite() throws IOException {
+//        deleteTestPackagesFromCentral();
+//    }
 }
