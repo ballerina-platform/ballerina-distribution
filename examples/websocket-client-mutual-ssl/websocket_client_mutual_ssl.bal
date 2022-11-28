@@ -5,7 +5,7 @@ public function main() returns error? {
     // A WebSocket client can be configured to initiate new connections that are
     // secured via mutual SSL.
     // The `websocket:ClientSecureSocket` record provides the SSL-related configurations.
-    websocket:Client securedEP = check new("wss://localhost:9090/chat",
+    websocket:Client chatClient = check new("wss://localhost:9090/chat",
         secureSocket = {
             key: {
                 certFile: "../resource/path/to/public.crt",
@@ -14,7 +14,7 @@ public function main() returns error? {
             cert: "../resource/path/to/public.crt"
         }
     );
-    check securedEP->writeMessage("Hello, John!");
-    string chatMessage = check securedEP->readMessage();
+    check chatClient->writeMessage("Hello, John!");
+    string chatMessage = check chatClient->readMessage();
     io:println(chatMessage);
 }

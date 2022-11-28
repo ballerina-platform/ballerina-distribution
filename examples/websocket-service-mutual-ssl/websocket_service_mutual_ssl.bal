@@ -4,7 +4,7 @@ import ballerina/websocket;
 // A WebSocket listener can be configured to accept new connections that are
 // secured via mutual SSL.
 // The `websocket:ListenerSecureSocket` record provides the SSL-related listener configurations.
-listener websocket:Listener securedEP = new(9090,
+listener websocket:Listener chatListener = new(9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -18,13 +18,13 @@ listener websocket:Listener securedEP = new(9090,
     }
 );
 
-service /chat on securedEP {
+service /chat on chatListener {
     resource function get .() returns websocket:Service {
-        return new WsService();
+        return new ChatService();
    }
 }
 
-service class WsService {
+service class ChatService {
     *websocket:Service;
     remote function onMessage(websocket:Caller caller, string chatMessage) returns websocket:Error? {
         check caller->writeMessage("Hello, How are you?");
