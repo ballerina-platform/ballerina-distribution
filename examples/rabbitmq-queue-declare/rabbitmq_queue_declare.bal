@@ -5,5 +5,5 @@ public function main() returns error? {
     rabbitmq:Client newClient = check new (rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
 
     // Declares the queue, MyQueue.
-    check newClient->queueDeclare("MyQueue");
+    check newClient->queueDeclare("OrderQueue");
 }

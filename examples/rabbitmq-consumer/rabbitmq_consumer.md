@@ -4,8 +4,15 @@ The messages are consumed from an existing queue using the Ballerina RabbitMQ me
 
 ::: code rabbitmq_consumer.bal :::
 
+## Prerequisites
+- Start an instance of the [RabbitMQ server](https://www.rabbitmq.com/download.html). 
+
+Run the service by executing the following command.
+
 ::: out rabbitmq_consumer.out :::
 
+>**Tip:** You can invoke the above service via the [RabbitMQ client](/learn/by-example/rabbitmq-producer/).
+
 ## Related links
-- [`rabbitmq` - API documentation](https://lib.ballerina.io/ballerinax/rabbitmq/latest)
-- [`rabbitmq:Listener` - Specification](https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#6-subscribing)
+- [`rabbitmq` package - API documentation](https://lib.ballerina.io/ballerinax/rabbitmq/latest)
+- [`rabbitmq` subscribing - Specification](https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#6-subscribing)
