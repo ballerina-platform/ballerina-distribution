@@ -1,12 +1,12 @@
 import ballerinax/kafka;
 import ballerina/log;
 
-public type Order record {|
+public type Order record {
     int orderId;
     string productName;
     decimal price;
     boolean isValid;
-|};
+};
 
 listener kafka:Listener orderListener = check new ("localhost:9093", {
     groupId: "order-group-id",
