@@ -7,7 +7,7 @@ For more information on the underlying module, see the [`http` module](https://l
 ::: code http_client_redirects.bal :::
 
 ## Prerequisites
-- Start a [Redirect service](learn/by-example/http-service-redirects/).
+- Start a [Redirect service](/learn/by-example/http-service-redirects/).
 
 Run the client program by executing the following command.
 
