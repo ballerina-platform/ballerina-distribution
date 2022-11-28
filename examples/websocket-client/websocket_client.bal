@@ -10,7 +10,7 @@ public function main() returns error? {
    // binary frames and the rest of the data types will be sent as text frames.
    check chatClient->writeMessage("Hello John!");
 
-   // Read a message echoed from the server using `readMessage`.
+   // Read a message sent from the server using `readMessage`.
    // The contextually-expected data type is inferred from the LHS variable type. The received data
    // will be converted to that particular data type.
    string message = check chatClient->readMessage();
