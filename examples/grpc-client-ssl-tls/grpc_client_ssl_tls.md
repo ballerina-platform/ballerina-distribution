@@ -4,10 +4,10 @@ You can use the gRPC client to connect or interact with a gRPC listener secured 
  
    ::: code grpc_client_ssl_tls.bal :::
 
-Setting up the client is the same as setting up the unary RPC client with additional configurations. You can refer to the [unary RPC client](/learn/by-example/grpc-client-unary/) to implement the client used here.
+Setting up the client is the same as setting up the unary RPC client with additional configurations. You can refer to the [gRPC client - Unary RPC](/learn/by-example/grpc-client-unary/) to implement the client used here.
 
 ## Prerequisites
-- Start the [sample service secured with SSL/TLS](/learn/by-example/grpc-service-ssl-tls/).
+- Run the gRPC service given in the [gRPC service - SSL/TLS](/learn/by-example/grpc-service-ssl-tls/) example.
 
 Execute the command below to run the client.
 

@@ -6,7 +6,7 @@ This shows how the SASL/PLAIN authentication is done in the `kafka:Consumer`.
 
 ## Prerequisites
 - Start a [Kafka broker](https://kafka.apache.org/quickstart) instance configured to use the [SASL/PLAIN authentication mechanism](https://docs.confluent.io/platform/current/kafka/authentication_sasl/authentication_sasl_plain.html#sasl-plain-overview).
-- Execute [Kafka client - Producer SASL authentication](/learn/by-example/kafka-client-producer-sasl) example to produce some messages to the topic.
+- Run the Kafka client given in the [Kafka client - Producer SASL authentication](/learn/by-example/kafka-client-producer-sasl) example to produce some messages to the topic.
 
 Run the program by executing the following command.
 

@@ -8,17 +8,17 @@ In the authorization phase, the scopes of the service/resource are compared agai
 
    ::: code grpc_service_oauth2.bal :::
 
-Setting up the service is the same as setting up the unary RPC service with additional configurations. You can refer to the [unary RPC service](/learn/by-example/grpc-service-unary/) to implement the service used below.
+Setting up the service is the same as setting up the unary RPC service with additional configurations. You can refer to the [gRPC service - Unary RPC](/learn/by-example/grpc-service-unary/) to implement the service used below.
 
 Execute the command below to run the service.
 
    ::: out grpc_service_oauth2.server.out :::
 
 >**Tip:** You can invoke the above service via the clients below.
- - [gRPC OAuth2 Client Credentials grant type client](/learn/by-example/grpc-client-oauth2-client-credentials-grant-type)
- - [gRPC OAuth2 Password grant type client](/learn/by-example/grpc-client-oauth2-password-grant-type)
- - [gRPC OAuth2 Refresh Token grant type client](/learn/by-example/grpc-client-oauth2-refresh-token-grant-type)
- - [gRPC OAuth2 JWT Bearer grant type client](/learn/by-example/grpc-client-oauth2-jwt-bearer-grant-type)
+ - [gRPC client - OAuth2 client credentials grant type](/learn/by-example/grpc-client-oauth2-client-credentials-grant-type)
+ - [gRPC client - OAuth2 password grant type](/learn/by-example/grpc-client-oauth2-password-grant-type)
+ - [gRPC client - OAuth2 refresh token grant type](/learn/by-example/grpc-client-oauth2-refresh-token-grant-type)
+ - [gRPC client - OAuth2 JWT bearer grant type](/learn/by-example/grpc-client-oauth2-jwt-bearer-grant-type)
 
 ## Related links
 - [`grpc:OAuth2IntrospectionConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2IntrospectionConfig)

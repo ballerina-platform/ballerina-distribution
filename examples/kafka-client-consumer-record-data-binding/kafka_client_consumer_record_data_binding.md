@@ -8,7 +8,7 @@ The received records are converted to the user defined type using data-binding.
 
 ## Prerequisites
 - Start a [Kafka broker](https://kafka.apache.org/quickstart) instance.
-- Execute [Kafka client - Produce message](/learn/by-example/kafka-client-produce-message) example to produce some messages to the topic. 
+- Run the Kafka client given in the [Kafka client - Produce message](/learn/by-example/kafka-client-produce-message) example to produce some messages to the topic. 
 
 Run the program by executing the following command.
 

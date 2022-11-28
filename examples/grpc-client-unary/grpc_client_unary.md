@@ -15,7 +15,7 @@ The gRPC Server Connector exposes the gRPC service over HTTP2. In a unary RPC ca
 Once you run the command, the `grpc_unary_pb.bal` file gets generated inside the `stubs` directory.
 
 ## Prerequisites
-- Start the [unary RPC service](/learn/by-example/grpc-service-unary/).
+- Run the gRPC service given in the [gRPC service - Unary RPC](/learn/by-example/grpc-service-unary/) example.
 
 ## Implement and run the client
 

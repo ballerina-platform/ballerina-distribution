@@ -6,10 +6,10 @@ The client metadata is enriched with the `Authorization: Bearer <token>` header 
 
    ::: code grpc_client_oauth2_jwt_bearer_grant_type.bal :::
 
-Setting up the client is the same as setting up the unary RPC client with additional configurations. You can refer to the [unary RPC client](/learn/by-example/grpc-client-unary/) to implement the client used here.
+Setting up the client is the same as setting up the unary RPC client with additional configurations. You can refer to the [gRPC client - Unary RPC](/learn/by-example/grpc-client-unary/) to implement the client used here.
 
 ## Prerequisites
-- Start the [OAuth2 service](/learn/by-example/grpc-service-oauth2/).
+- Run the gRPC service given in the [gRPC service - OAuth2](/learn/by-example/grpc-service-oauth2/) example.
 
 Execute the command below to run the client.
 

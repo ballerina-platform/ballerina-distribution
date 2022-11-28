@@ -15,7 +15,7 @@ The gRPC server connector exposes the gRPC service over HTTP2. In a gRPC bidirec
 Once you run the command, the `grpc_bidirectional_streaming_pb.bal` file gets generated inside the `stubs` directory.
 
 ## Prerequisites
-- Start the [bidirectional streaming RPC service](/learn/by-example/grpc-service-bidirectional-streaming/).
+- Run the gRPC service given in the [bidirectional streaming RPC service](/learn/by-example/grpc-service-bidirectional-streaming/) example.
 
 ## Implement and run the client
 

@@ -28,7 +28,7 @@ Once you run the command, the `grpc_unary_pb.bal` file gets generated inside the
 
    ::: out grpc_service_unary.out :::
 
->**Tip:** You can invoke the above service via the [unary RPC client](/learn/by-example/grpc-client-unary/).
+>**Tip:** You can invoke the above service via the [gRPC client - Unary RPC](/learn/by-example/grpc-client-unary/).
 
 ## Related links
 - [`grpc` package - API documentation](https://lib.ballerina.io/ballerina/grpc/latest)

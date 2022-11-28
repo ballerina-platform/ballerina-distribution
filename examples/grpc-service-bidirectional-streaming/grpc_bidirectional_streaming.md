@@ -28,7 +28,7 @@ Once you run the command, the `grpc_bidirectional_streaming_pb.bal` file gets ge
 
     ::: out grpc_bidirectional_streaming_service.out :::
 
->**Tip:** You can invoke the above service via the [bidirectional streaming RPC client](/learn/by-example/grpc-client-bidirectional-streaming/).
+>**Tip:** You can invoke the above service via the [gRPC client - Bidirectional streaming RPC](/learn/by-example/grpc-client-bidirectional-streaming/).
 
 ## Related links
 - [`grpc` package - API documentation](https://lib.ballerina.io/ballerina/grpc/latest)

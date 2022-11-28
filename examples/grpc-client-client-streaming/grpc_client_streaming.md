@@ -15,7 +15,7 @@ The gRPC Server Connector is used to expose gRPC services over HTTP/2. In a gRPC
 Once you run the command, the `grpc_client_streaming_pb.bal` file gets generated inside the stubs directory.
 
 ## Prerequisites
-- Start the [client streaming RPC service](/learn/by-example/grpc-service-client-streaming/).
+- Run the gRPC service given in the [client streaming RPC service](/learn/by-example/grpc-service-client-streaming/) example.
 
 ## Implement and run the client
 
