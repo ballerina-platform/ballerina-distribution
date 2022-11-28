@@ -4,9 +4,10 @@ A client, which is secured with OAuth2 password grant type can be used to connec
 
 ::: code http_client_oauth2_password_grant_type.bal :::
 
-Run the client program by executing the command below.
+## Prerequisites
+- Start the [OAuth2 service](/learn/by-example/http-service-oauth2/).
 
->**Info:** As a prerequisite to running the client, start the [OAuth2 service](/learn/by-example/http-service-oauth2/).
+Run the client program by executing the command below.
 
 ::: out http_client_oauth2_password_grant_type.out :::
 

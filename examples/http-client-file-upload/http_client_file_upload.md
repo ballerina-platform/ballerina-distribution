@@ -5,7 +5,7 @@ Ballerina supports HTTP input and output streaming capability based on the Balle
 ::: code http_client_file_upload.bal :::
 
 ## Prerequisites
-- Start a [Service file upload](learn/by-example/http-service-file-upload/).
+- Start a [Service file upload](/learn/by-example/http-service-file-upload/).
 
 Run the client program by executing the following command.
 

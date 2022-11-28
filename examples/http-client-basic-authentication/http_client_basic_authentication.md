@@ -4,9 +4,10 @@ A client, which is secured with basic authentication can be used to connect to a
 
 ::: code http_client_basic_authentication.bal :::
 
-Run the client program by executing the command below.
+## Prerequisites
+- Start the [Basic authentication file user store service](/learn/by-example/http-service-basic-authentication-file-user-store).
 
->**Info:** As a prerequisite to running the client, start the [Basic authentication file user store service](/learn/by-example/http-service-basic-authentication-file-user-store).
+Run the client program by executing the command below.
 
 ::: out http_client_basic_authentication.out :::
 

@@ -4,11 +4,10 @@ A client, which is secured with self-signed JWT can be used to connect to a secu
 
 ::: code http_client_self_signed_jwt_authentication.bal :::
 
+## Prerequisites
+- Start the [JWT Auth service](/learn/by-example/http-service-jwt-authentication/).
+
 Run the client program by executing the command below.
-
->**Info:** As a prerequisite to running the client, start the [JWT Auth service](/learn/by-example/http-service-jwt-authentication/).
-
-::: out http_client_self_signed_jwt_authentication.out :::
 
 ## Related links
 - [`http:JwtIssuerConfig` - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/JwtIssuerConfig)
