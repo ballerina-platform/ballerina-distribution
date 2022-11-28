@@ -4,6 +4,9 @@ An HTTP service/resource can be secured with basic authentication and by enforci
 
 ::: code http_service_basic_authentication_ldap_user_store.bal :::
 
+## Prerequisites
+- LDAP server should be up and running
+
 Run the service by executing the command below.
 
 ::: out http_service_basic_authentication_ldap_user_store.server.out :::
