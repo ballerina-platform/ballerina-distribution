@@ -5,7 +5,7 @@ A client, which is secured with OAuth2 client credentials grant type can be used
 ::: code http_client_oauth2_client_credentials_grant_type.bal :::
 
 ## Prerequisites
-- Start the [OAuth2 service](/learn/by-example/http-service-oauth2/).
+- Run the HTTP service given in the [OAuth2 service](/learn/by-example/http-service-oauth2/) example.
 
 Run the client program by executing the following command.
 

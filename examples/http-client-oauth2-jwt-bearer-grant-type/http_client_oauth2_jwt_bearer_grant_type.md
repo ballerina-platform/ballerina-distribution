@@ -5,7 +5,7 @@ A client, which is secured with an OAuth2 JWT bearer grant type can be used to c
 ::: code http_client_oauth2_jwt_bearer_grant_type.bal :::
 
 ## Prerequisites
-- Start the [OAuth2 service](/learn/by-example/http-service-oauth2/).
+- Run the HTTP service given in the [OAuth2 service](/learn/by-example/http-service-oauth2/) example.
 
 Run the client program by executing the command below.
 

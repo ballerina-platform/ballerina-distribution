@@ -5,7 +5,7 @@ A client, which is secured with Bearer token auth can be used to connect to a se
 ::: code http_client_bearer_token_authentication.bal :::
 
 ## Prerequisites
- - Start a secured sample service.
+ - Run a sample secured service.
 
 Run the client program by executing the command below.
 

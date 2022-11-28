@@ -5,7 +5,7 @@ A client, which is secured with self-signed JWT can be used to connect to a secu
 ::: code http_client_self_signed_jwt_authentication.bal :::
 
 ## Prerequisites
-- Start the [JWT Auth service](/learn/by-example/http-service-jwt-authentication/).
+- Run the HTTP service given in the [JWT Auth service](/learn/by-example/http-service-jwt-authentication/) example.
 
 Run the client program by executing the command below.
 
