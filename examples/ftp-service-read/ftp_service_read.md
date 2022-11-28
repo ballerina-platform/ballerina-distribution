@@ -11,7 +11,7 @@ Run the program by executing the following command. Paths of the newly-added and
 
 ::: out ftp_service_read.out :::
 
-> **TIP** Run the FTP client given in the [FTP client - Write file](/learn/by-example/ftp-client-write) example to put a file in the FTP server.
+>**Tip:** Run the FTP client given in the [FTP client - Write file](/learn/by-example/ftp-client-write) example to put a file in the FTP server.
 
 ## Related links
 - [`ftp:Listener` client object  - API documentation](https://lib.ballerina.io/ballerina/ftp/latest/listeners/Listener)
