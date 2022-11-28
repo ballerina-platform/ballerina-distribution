@@ -1,10 +1,18 @@
 import ballerina/log;
 import ballerinax/nats;
 
+public type Order record {|
+    int orderId;
+    string productName;
+    decimal price;
+    boolean isValid;
+|};
+
 // Binds the consumer to listen to the messages published to the 'demo.bbe' subject.
-service "demo.bbe" on new nats:Listener(nats:DEFAULT_URL) {
-    remote function onMessage(string message) returns error? {
-        // Logs the incoming message.
-        log:printInfo("Received message: " + message);
+service "orders.valid" on new nats:Listener(nats:DEFAULT_URL) {
+    remote function onMessage(Order 'order) returns error? {
+        if 'order.isValid {
+            log:printInfo(string `Received valid order for ${'order.productName}`);
+        }
     }
 }

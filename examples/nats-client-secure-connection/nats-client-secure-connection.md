@@ -5,10 +5,13 @@ In this example, the underlying connection of the publisher is secured with TLS/
 
 ::: code nats-client-secure-connection.bal :::
 
-To run the sample, start an instance of the NATS server and execute the following command.
+## Prerequisites
+- Start an instance of the [NATS server](https://docs.nats.io/nats-concepts/what-is-nats/walkthrough_setup).
+
+Run the client program by executing the following command.
 
 ::: out nats-client-secure-connection.out :::
 
 ## Related links
 - [`nats:SecureSocket` - API documentation](https://lib.ballerina.io/ballerinax/nats/latest/records/SecureSocket)
-- [`nats:Client` - Specification](https://github.com/ballerina-platform/module-ballerinax-nats/blob/master/docs/spec/spec.md#2-connection)
+- [`nats` connecting to server - Specification](https://github.com/ballerina-platform/module-ballerinax-nats/blob/master/docs/spec/spec.md#2-connection)
