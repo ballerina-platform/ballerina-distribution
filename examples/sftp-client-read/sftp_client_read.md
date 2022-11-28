@@ -5,7 +5,8 @@ The SFTP client is used to perform CRUD operation on remote files/directories us
 ::: code sftp_client_read.bal :::
 
 ## Prerequisites
-- Run the SFTP client given in the [SFTP client - Write file](/learn/by-example/sftp-client-write) example to put a file in the FTP server.
+- Start a [SFTP server](https://hub.docker.com/r/atmoz/sftp/) instance.
+- Run the SFTP client given in the [SFTP client - Write file](/learn/by-example/sftp-client-write) example to put a file in the SFTP server.
 
 Run the program by executing the following command. The newly-added file will appear in the local directory.
 

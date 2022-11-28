@@ -13,5 +13,5 @@ Run the program by executing the following command.
 ::: out kafka_service_consume_message.out :::
 
 ## Related links
-- [`kafka:Listener` client object - API documentation](https://lib.ballerina.io/ballerinax/kafka/3.4.0/clients/Listener)
+- [`kafka:Listener` client object - API documentation](https://lib.ballerina.io/ballerinax/kafka/latest/clients/Listener)
 - [Service usage - Specification](https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#432-usage)

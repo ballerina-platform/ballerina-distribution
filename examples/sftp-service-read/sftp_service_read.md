@@ -4,11 +4,14 @@ The SFTP service is used to receive file/directory changes that occur in a remot
 
 ::: code sftp_service_read.bal :::
 
+## Prerequisites
+- Start a [SFTP server](https://hub.docker.com/r/atmoz/sftp/) instance.
+
 Run the program by executing the following command. Paths of the newly-added and newly-deleted files/directories during the latest polling will be printed for each of the polled events.
 
 ::: out sftp_service_read.out :::
 
-> **TIP** Run the SFTP client given in the [SFTP client - Write file](/learn/by-example/sftp-client-write) example to put a file in the FTP server.
+> **TIP** Run the SFTP client given in the [SFTP client - Write file](/learn/by-example/sftp-client-write) example to put a file in the SFTP server.
 
 ## Related links
 - [`ftp:Listener` client object - API documentation](https://lib.ballerina.io/ballerina/ftp/latest/listeners/Listener)

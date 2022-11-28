@@ -1,12 +1,12 @@
 import ballerinax/kafka;
 import ballerina/io;
 
-public type Order record {|
+public type Order record {
     int orderId;
     string productName;
     decimal price;
     boolean isValid;
-|};
+};
 
 // Create a subtype of `kafka:AnydataConsumerRecord`.
 public type OrderConsumerRecord record {|

@@ -1,0 +1,4 @@
+$ bal run kafka_client_constraint_validation.bal
+time = 2022-11-28T13:56:56.502+05:30 level = INFO module = "" message = "Received valid order for Sport"
+time = 2022-11-28T14:19:43.346+05:30 level = ERROR module = "" message = "Payload validation failed" error = "Failed to validate payload. If needed, please seek past the record to continue consumption."
+time = 2022-11-28T13:56:56.502+05:30 level = INFO module = "" message = "Received valid order for Sport"

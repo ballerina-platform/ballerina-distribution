@@ -5,6 +5,7 @@ The FTP client is used to perform CRUD operation on remote files/directories usi
 ::: code ftp_client_read.bal :::
 
 ## Prerequisites
+- Start a [FTP server](https://hub.docker.com/r/stilliard/pure-ftpd/) instance.
 - Run the FTP client given in the [FTP client - Write file](/learn/by-example/ftp-client-write) example to put a file in the FTP server.
 
 Run the program by executing the following command. The newly-added file will appear in the local directory.
