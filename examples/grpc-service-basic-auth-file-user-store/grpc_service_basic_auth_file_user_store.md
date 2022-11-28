@@ -23,15 +23,15 @@ As a prerequisite, execute the command below to populate the `Config.toml` file 
     scopes=["scope2", "scope3"]' > Config.toml
     ```
 
-Setting up the service is the same as setting up the unary RPC service with additional configurations. You can refer to the [unary RPC service](/learn/by-example/grpc-service-unary/) to implement the service used below.
+Setting up the service is the same as setting up the unary RPC service with additional configurations. You can refer to the [gRPC service - Unary RPC](/learn/by-example/grpc-service-unary/) to implement the service used below.
 
 Execute the command below to run the service.
 
    ::: out grpc_service_basic_auth_file_user_store.server.out :::
 
->**Tip:** You can invoke the above service via the [gRPC Basic Auth client](/learn/by-example/grpc-client-basic-auth).
+>**Tip:** You can invoke the above service via the [gRPC client - Basic authentication](/learn/by-example/grpc-client-basic-auth).
 
 ## Related links
 - [`grpc:FileUserStoreConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/FileUserStoreConfig)
-- [Basic authentication file user store - specification](/spec/grpc/#5111-service---basic-auth---file-user-store)
+- [Basic authentication file user store - Specification](/spec/grpc/#5111-service---basic-auth---file-user-store)
 - [`auth` package - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)

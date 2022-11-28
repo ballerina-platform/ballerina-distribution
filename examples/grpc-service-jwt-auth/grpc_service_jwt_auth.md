@@ -8,15 +8,15 @@ In the authorization phase, the scopes of the service/resource are compared agai
 
    ::: code grpc_service_jwt_auth.bal :::
 
-Setting up the service is the same as setting up the unary RPC service with additional configurations. You can refer to the [unary RPC service](/learn/by-example/grpc-service-unary/) to implement the service used below.
+Setting up the service is the same as setting up the unary RPC service with additional configurations. You can refer to the [gRPC service - Unary RPC](/learn/by-example/grpc-service-unary/) to implement the service used below.
 
 Execute the command below to run the service.
 
    ::: out grpc_service_jwt_auth.server.out :::
 
->**Tip:** You can invoke the above service via the [gRPC self-signed JWT Auth client](/learn/by-example/grpc-client-self-signed-jwt-auth).
+>**Tip:** You can invoke the above service via the [gRPC client - Self signed JWT authentication](/learn/by-example/grpc-client-self-signed-jwt-auth).
 
 ## Related links
 - [`grpc:JwtValidatorConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/JwtValidatorConfig)
-- [JWT authentication - specification](/spec/grpc/#5113-service---jwt-auth)
+- [JWT authentication - Specification](/spec/grpc/#5113-service---jwt-auth)
 - [`jwt` package - API documentation](https://lib.ballerina.io/ballerina/jwt/latest/)

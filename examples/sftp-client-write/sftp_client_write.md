@@ -10,4 +10,4 @@ Run the program by executing the following command. The newly-added file will ap
 
 ## Related links
 - [`ftp:Client->put` method  - API documentation](https://lib.ballerina.io/ballerina/ftp/latest/clients/Client#put)
-- [SFTP client - specification](/spec/ftp/#322-secure-client)
+- [SFTP client - Specification](/spec/ftp/#322-secure-client)

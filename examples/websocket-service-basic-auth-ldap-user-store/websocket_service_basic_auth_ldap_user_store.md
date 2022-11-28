@@ -10,7 +10,7 @@ Run the service by executing the command below.
 
 ::: out websocket_service_basic_auth_ldap_user_store.server.out :::
 
->**Tip:** Alternatively, you can invoke the above service via the [Basic authentication client](/learn/by-example/websocket-client-basic-auth).
+>**Tip:** You can invoke the above service via the [Basic authentication client](/learn/by-example/websocket-client-basic-auth).
 
 ## Related Links
 - [`websocket` package - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)

@@ -6,14 +6,14 @@ After implementing the service, you can add the deadline check as follows.
 
 ::: code grpc_service_check_deadline.bal :::
 
-Setting up the service is the same as setting up the unary RPC service with additional configurations. You can refer to the [unary RPC service](/learn/by-example/grpc-service-unary/) to implement the service used below.
+Setting up the service is the same as setting up the unary RPC service with additional configurations. You can refer to the [gRPC service - Unary RPC](/learn/by-example/grpc-service-unary/) to implement the service used below.
 
 Execute the command below to run the service.
 
 ::: out grpc_service_check_deadline.out :::
 
->**Tip:** You can invoke the above service via the [gRPC client - Set deadline](/learn/by-example/grpc-service-set-deadline/).
+>**Tip:** You can invoke the above service via the [gRPC client - Set deadline](/learn/by-example/grpc-client-set-deadline/).
 
 ## Related links
 - [`grpc:isCancelled` function - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/functions#isCancelled)
-- [Check deadline - specification](/spec/grpc/#61-grpc-deadline)
+- [Check deadline - Specification](/spec/grpc/#61-grpc-deadline)

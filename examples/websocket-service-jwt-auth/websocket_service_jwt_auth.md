@@ -10,7 +10,7 @@ Run the service by executing the command below.
 
 ::: out websocket_service_jwt_auth.server.out :::
 
->**Tip:** Alternatively, you can invoke the above service via the [self-signed JWT authentication client](/learn/by-example/websocket-client-self-signed-jwt-auth).
+>**Tip:** You can invoke the above service via the [self-signed JWT authentication client](/learn/by-example/websocket-client-self-signed-jwt-auth).
 
 ## Related Links
 - [`websocket` package - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)

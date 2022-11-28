@@ -1,7 +1,14 @@
 import ballerinax/kafka;
 
+public type Order record {|
+    int orderId;
+    string productName;
+    decimal price;
+    boolean isValid;
+|};
+
 public function main() returns kafka:Error? {
-    kafka:Producer messageProducer = check new ("localhost:9094", {
+    kafka:Producer orderProducer = check new ("localhost:9094", {
         // Provide the relevant secure socket configurations by using `kafka:SecureSocket`.
         secureSocket: {
             cert: "./resources/path/to/public.crt",
@@ -13,8 +20,13 @@ public function main() returns kafka:Error? {
         // Provide the type of the security protocol to use in the broker connection.
         securityProtocol: kafka:PROTOCOL_SSL
     });
-    check messageProducer->send({
-        topic: "order-log-topic",
-        value: "new order for item 2311 was placed on 1669113239"
+    check orderProducer->send({
+        topic: "order-topic",
+        value: {
+            orderId: 1,
+            productName: "Sport shoe",
+            price: 27.5,
+            isValid: true
+        }
     });
 }

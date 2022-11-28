@@ -6,10 +6,10 @@ The client metadata is enriched with the `Authorization: Bearer <token>` header 
 
    ::: code grpc_client_oauth2_client_credentials_grant_type.bal :::
 
-Setting up the client is the same as setting up the unary RPC client with additional configurations. You can refer to the [unary RPC client](/learn/by-example/grpc-client-unary/) to implement the client used here.
+Setting up the client is the same as setting up the unary RPC client with additional configurations. You can refer to the [gRPC client - Unary RPC](/learn/by-example/grpc-client-unary/) to implement the client used here.
 
 ## Prerequisites
-- Start the [OAuth2 service](/learn/by-example/grpc-service-oauth2/).
+- Run the gRPC service given in the [gRPC service - OAuth2](/learn/by-example/grpc-service-oauth2/) example.
 
 Execute the command below to run the client.
 
@@ -17,5 +17,5 @@ Execute the command below to run the client.
 
 ## Related links
 - [`grpc:OAuth2ClientCredentialsGrantConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2ClientCredentialsGrantConfig)
-- [OAuth2 authentication and authorization - specification](/spec/grpc/#5118-client---oauth2)
+- [OAuth2 authentication and authorization - Specification](/spec/grpc/#5118-client---oauth2)
 - [`oauth2` package - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)

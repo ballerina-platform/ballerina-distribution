@@ -5,7 +5,7 @@ public function main() returns error? {
     // Creates the client with the connection parameters, host, username, and
     // password. An error is returned in a failure. The default port number
     // `22` for SSH is used with these configurations.
-    ftp:Client clientEp = check new ({
+    ftp:Client fileClient = check new ({
         protocol: ftp:SFTP,
         host: "sftp.example.com",
         port: 22,
@@ -25,5 +25,5 @@ public function main() returns error? {
     // `io:Block` in which 1024 is the block size.
     stream<io:Block, io:Error?> bStream
         = check io:fileReadBlocksAsStream("./local/logFile.txt", 1024);
-    check clientEp->put("/server/logFile.txt", bStream);
+    check fileClient->put("/server/logFile.txt", bStream);
 }

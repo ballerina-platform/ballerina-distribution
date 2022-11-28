@@ -1,10 +1,17 @@
 import ballerinax/kafka;
 import ballerina/log;
 
-listener kafka:Listener securedEp = check new ("localhost:9093", {
-    groupId: "order-log-group-id",
+public type Order record {|
+    int orderId;
+    string productName;
+    decimal price;
+    boolean isValid;
+|};
+
+listener kafka:Listener orderListener = check new ("localhost:9093", {
+    groupId: "order-group-id",
     // Subscribes to the topic `test-kafka-topic`.
-    topics: ["order-log-topic"],
+    topics: ["order-topic"],
     // Provide the relevant authentication configurations to authenticate the consumer
     // by the `kafka:AuthenticationConfiguration`.
     auth: {
@@ -17,11 +24,12 @@ listener kafka:Listener securedEp = check new ("localhost:9093", {
     securityProtocol: kafka:PROTOCOL_SASL_PLAINTEXT
 });
 
-service on securedEp {
-    remote function onConsumerRecord(string[] logs) returns error? {
-        check from string log in logs
+service on orderListener {
+    remote function onConsumerRecord(Order[] orders) returns error? {
+        check from Order 'order in orders
+            where 'order.isValid
             do {
-                log:printInfo(string `Received log: ${log}`);
+                log:printInfo(string `Received valid order for ${'order.productName}`);
             };
     }
 }
