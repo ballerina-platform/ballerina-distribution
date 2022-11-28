@@ -1,8 +1,8 @@
 {
-    animals {
+    profiles {
         name
-        ...on Leopard {
-            location
+        ... on Teacher {
+            subject
         }
     }
 }

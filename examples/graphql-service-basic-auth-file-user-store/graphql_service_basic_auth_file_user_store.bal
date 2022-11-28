@@ -1,6 +1,6 @@
 import ballerina/graphql;
 
-type Person record {|
+type Profile record {|
     string name;
     int age;
 |};
@@ -28,7 +28,7 @@ listener graphql:Listener securedEP = new (9090,
     ]
 }
 service /graphql on securedEP {
-    resource function get profile() returns Person {
+    resource function get profile() returns Profile {
         return {
             name: "Walter White",
             age: 50

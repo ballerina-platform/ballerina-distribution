@@ -2,7 +2,7 @@
 
 A GraphQL schema can have interfaces. In Ballerina, interfaces are defined using `distinct` `service` objects and the fields of the interfaces are defined as resource method definitions. Objects that are implementing the interfaces must implement the `resource` methods defined in the service objects. The Ballerina type inclusion is used to include the interface type to an object type.
 
-This example shows how to define an interface `Animal` and then implement the `Leopard` and `Elephant` classes using that interface.
+This example shows how to define an interface `Profile` and then implement the `Teacher` and `Student` classes using that interface.
 
 ::: code graphql_interfaces.bal :::
 

@@ -1,10 +1,10 @@
 {
-    animals {
+    profile {
         name
-        ...on Mammal {
-            call
-            ...on Leopard {
-                location
+        ... on Teacher {
+            school
+            ... on HighSchoolTeacher {
+                subject
             }
         }
     }

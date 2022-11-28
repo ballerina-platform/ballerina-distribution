@@ -16,7 +16,7 @@ Run the service by executing the following command.
 
 Send the following document to the GraphQL endpoint to test the service using any GraphQL client that supports subscriptions to test the service.
 
->**Info:** You can invoke the above service by enabling the [GraphiQL](/learn/by-example/graphql-graphiql/) client.
+>**Tip:** You can invoke the above service via the [GraphiQL client](/learn/by-example/graphql-graphiql/).
 
 ::: code graphql_subscriptions.graphql :::
 
