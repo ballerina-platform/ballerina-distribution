@@ -413,6 +413,6 @@ public class HierarchicalPackagesTest {
 
     @AfterSuite
     private void cleanupSuite() throws IOException {
-        deleteTestPackagesFromCentral(HierarchicalPackagesTest.class.getName());
+        deleteTestPackagesFromCentral();
     }
 }
