@@ -46,6 +46,7 @@ fi
 %clean
 rm -rf %{_topdir}/BUILD/*
 rm -rf %{buildroot}
+bal -v
 
 %files
 %{_libdir}/ballerina/%{_ballerina_name}-runtime-%{_ballerina_version}

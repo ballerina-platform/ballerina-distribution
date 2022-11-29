@@ -10,3 +10,4 @@ chmod o-w .
 
 rm -f /Library/Ballerina/bin/ballerina
 rm -f /etc/paths.d/ballerina
+bal -v
