@@ -8,9 +8,14 @@ In the authorization phase, the scopes of the service are compared against the s
 
 ::: code graphql_service_oauth2.bal :::
 
+## Prerequisites
+- Run a Ballerina STS server for OAuth2 introspection.
+
 Run the service by executing the command below.
 
 ::: out graphql_service_oauth2.server.out :::
+
+>**Tip:** You can invoke the above service via the [GraphQL client - OAuth2 password grant type](/learn/by-example/graphql-client-security-oauth2-password-grant-type/) example.
 
 ## Related links
 - [`graphql:ServiceConfig` annotation - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/annotations#ServiceConfig)

@@ -1,0 +1,2 @@
+$ bal run graphql_client_security_ssl_tls.bal
+{"name":"Walter White","age":51}

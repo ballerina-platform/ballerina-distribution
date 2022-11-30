@@ -8,20 +8,13 @@ Ballerina uses the concept of scopes for authorization. A resource declared in a
 
 >**Info:** As a prerequisite to running the service, populate the `Config.toml` file correctly with the user information as shown below.
 
-    ```toml
-    [[ballerina.auth.users]]
-    username="alice"
-    password="password1"
-    scopes=["scope1"]
-    [[ballerina.auth.users]]
-    username="bob"
-    password="password2"
-    scopes=["scope2", "scope3"]
-    ```
+::: code Config.toml :::
 
 Run the service by executing the command below.
 
 ::: out graphql_service_basic_auth_file_user_store.server.out :::
+
+>**Tip:** You can invoke the above service via the [GraphQL client - Basic authentication](/learn/by-example/graphql-client-security-basic-auth/) example.
 
 ## Related links
 - [`graphql:ServiceConfig` annotation - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/annotations#ServiceConfig)

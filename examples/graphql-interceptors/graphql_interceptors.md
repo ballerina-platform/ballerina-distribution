@@ -22,7 +22,7 @@ To send the document, use the following cURL command in a separate terminal.
 
 ::: out graphql_interceptors.client.out :::
 
->**Tip:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client/).
+>**Tip:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client-query-endpoint/).
 
 ## Related links
 - [`graphql:Interceptor` object - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/objectTypes/Interceptor)
