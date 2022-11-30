@@ -1,4 +1,4 @@
-# MySQL client - DML and DDL operations
+# Database Access - DML and DDL operations
 
 This BBE demonstrates how to use the MySQL client with the DDL and  DML operations. 
 

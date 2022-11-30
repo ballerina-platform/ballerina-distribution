@@ -3219,7 +3219,7 @@
         ]
     },
     {
-        "title": "MySQL client",
+        "title": "Database Access",
         "column": 3,
         "category": "Network libraries",
         "samples": [

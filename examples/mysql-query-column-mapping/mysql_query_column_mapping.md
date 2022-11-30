@@ -1,4 +1,4 @@
-# MySQL client - Query with advanced mapping
+# Database Access - Query with advanced mapping
 
 This BBE demonstrates how to use the MySQL client for query operations with advanced mapping for column names.
 

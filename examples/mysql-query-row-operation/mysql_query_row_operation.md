@@ -1,4 +1,4 @@
-# MySQL client - Query with one result
+# Database Access - Query with one result
 
 This BBE demonstrates how to use the MySQL client select query row operations. 
 

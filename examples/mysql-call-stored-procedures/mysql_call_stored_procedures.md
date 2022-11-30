@@ -1,4 +1,4 @@
-# MySQL client - Call stored procedures
+# Database Access - Call stored procedures
 
 This BBE demonstrates how to use the MySQL client to execute a stored procedure. 
 

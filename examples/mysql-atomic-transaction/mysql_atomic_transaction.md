@@ -1,4 +1,4 @@
-# MySQL client - Atomic transactions
+# Database Access - Atomic transactions
 
 This BBE demonstrates how to use the MySQL client to execute a batch of DDL/DML operations with the help of a `transaction` to achieve the atomic behaviour.
 
