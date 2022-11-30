@@ -1,6 +1,6 @@
 import ballerina/graphql;
 
-type Person record {
+type Profile record {
     string name;
     int age;
     Gender gender;
@@ -20,9 +20,9 @@ enum Gender {
 service /graphql on new graphql:Listener(9090) {
     // Marking a field as deprecated.
     # # Deprecated
-    # The `person` field is deprecated. Use `profile` instead.
+    # The `profile` field is deprecated. Use `profile` instead.
     @deprecated
-    resource function get person() returns Person {
+    resource function get profileeeeeee() returns Profile {
         return {
             name: "Walter White",
             age: 51,
@@ -30,7 +30,7 @@ service /graphql on new graphql:Listener(9090) {
         };
     }
 
-    resource function get profile() returns Person {
+    resource function get profile() returns Profile {
         return {
             name: "Walter White",
             age: 51,

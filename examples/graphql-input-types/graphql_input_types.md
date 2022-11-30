@@ -4,7 +4,7 @@ GraphQL resources can have input parameters, which will be mapped to input value
 
 Inputs can be optional and/or defaultable types. If an input is optional, it will be mapped to a nullable type in the GraphQL schema. If an input has a default value, it will be added as a default value in the GraphQL schema.
 
-This example shows a GraphQL endpoint, which has field `greeting` which has an input argument `name` of type `String!`.
+This example shows a GraphQL endpoint, which has field `greeting` in the root `Query` type, with an input argument `name` of type `String!`.
 
 ::: code graphql_input_types.bal :::
 

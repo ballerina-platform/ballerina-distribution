@@ -1,34 +1,34 @@
 import ballerina/graphql;
 
-// Define the `NewPost` record type to use as an input object.
-type NewPost record {|
-    string author;
-    string content;
+// Define the `NewProfile` record type to use as an input object.
+type NewProfile record {|
+    string name;
+    int age;
 |};
 
-// Define the `Post` record type to use as an output object.
-type Post record {|
-    *NewPost;
+// Define the `Profile` record type to use as an output object.
+type Profile record {|
+    *NewProfile;
     int id;
 |};
 
 service /graphql on new graphql:Listener(9090) {
 
-    // Define an in-memory array to store the Posts
-    private final Post[] posts = [];
+    // Define an in-memory array to store the Profiles.
+    private final Profile[] profiles = [];
 
-    // This remote method (`addPost`) has an input argument `newPost` of type `NewPost`. This
-    // `NewPost` record type will be mapped to an `INPUT_OBJECT` type in the generated GraphQL
-    // schema.
-    remote function addPost(NewPost newPost) returns Post {
-        int id = self.posts.length();
-        Post post = {id: id, ...newPost};
-        self.posts.push(post);
-        return post;
+    // This remote method (`addProfile`) has an input argument `newProfile` of type `NewProfile!`.
+    // This `NewProfile` record type will be mapped to an `INPUT_OBJECT` type in the generated
+    // GraphQL schema.
+    remote function addProfile(NewProfile newProfile) returns Profile {
+        int id = self.profiles.length();
+        Profile profile = {id: id, ...newProfile};
+        self.profiles.push(profile);
+        return profile;
     }
 
-    // Query resolver to retrive all the posts
-    resource function get posts() returns Post[] {
-        return self.posts;
+    // Query resolver to retrive all the profiles
+    resource function get profiles() returns Profile[] {
+        return self.profiles;
     }
 }
