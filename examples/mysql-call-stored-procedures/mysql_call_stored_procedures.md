@@ -2,6 +2,8 @@
 
 This BBE demonstrates how to use the MySQL client to execute a stored procedure. 
 
+>> Tip: Checkout [`ballerinax/mssql`](https://central.ballerina.io/ballerinax/mssql), [`ballerinax/postgresql`](https://central.ballerina.io/ballerinax/postgresql), [`ballerinax/oracledb`](https://central.ballerina.io/ballerinax/oracledb), [`ballerinax/java.jdbc`](https://central.ballerina.io/ballerinax/java.jdbc) database clients.
+
 ::: code mysql_call_stored_procedures.bal :::
 
 ## Prerequisites
