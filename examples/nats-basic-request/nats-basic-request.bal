@@ -18,11 +18,14 @@ public function main() returns error? {
 
     // Sends a request and returns the reply.
     StringMessage reply = check natsClient->requestMessage({
-                                    content: {orderId: 1,
-                                              productName: "Sport shoe",
-                                              price: 27.5,
-                                              isValid: true },
-                                    subject: "orders.valid"});
+                      content: {
+                          orderId: 1,
+                          productName: "Sport shoe",
+                          price: 27.5,
+                          isValid: true
+                      },
+                      subject: "orders.valid"
+          });
 
     io:println("Reply message: " + reply.content);
     check natsClient.close();
