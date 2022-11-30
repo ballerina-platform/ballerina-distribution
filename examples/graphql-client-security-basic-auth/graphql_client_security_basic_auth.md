@@ -2,6 +2,8 @@
 
 A GraphQL client, which is secured with basic authentication can be used to connect to a secured GraphQL service. The client is enriched with the `Authorization: Basic <token>` header by passing the `graphql:CredentialsConfig` for the `auth` configuration of the client.
 
+This example shows how to send a GraphQL request with Basic Authentication.
+
 ::: code graphql_client_security_basic_auth.bal :::
 
 ## Prerequisites

@@ -2,6 +2,8 @@
 
 A GraphQL client, which is secured with OAuth2 password grant type can be used to connect to a secured GraphQL service. The client is enriched with the `Authorization: Bearer <token>` header by passing the `graphql:OAuth2PasswordGrantConfig` to the `auth` configuration of the client.
 
+This example shows how to send a GraphQL request with OAuth2 Authentication.
+
 ::: code graphql_client_security_oauth2_password_grant_type.bal :::
 
 ## Prerequisites

@@ -2,6 +2,8 @@
 
 A GraphQL client, which is secured with self-signed JWT can be used to connect to a secured GraphQL service. The client is enriched with the `Authorization: Bearer <token>` header by passing the `graphql:JwtIssuerConfig` to the `auth` configuration of the client. A self-signed JWT is issued before the request is sent.
 
+This example shows how to send a GraphQL request with self-signed JWT Authentication.
+
 ::: code graphql_client_security_self_signed_jwt_authentication.bal :::
 
 ## Prerequisites

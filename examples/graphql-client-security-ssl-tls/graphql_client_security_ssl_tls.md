@@ -2,6 +2,8 @@
 
 A GraphQL client can securely communicate with a GraphQL service via HTTPS connection using SSL. Provide the `graphql:ClientSecureSocket` configurations to the client to initiate an HTTPS connection.
 
+This example shows how to send a GraphQL request securely using SSL/TLS.
+
 ::: code graphql_client_security_ssl_tls.bal :::
 
 ## Prerequisites
