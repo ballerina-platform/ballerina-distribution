@@ -23,11 +23,11 @@ public function main() returns error? {
     // Add a new file to the given file location. In error cases,
     // an error is returned. The local file is provided as a stream of
     // `io:Block` in which 1024 is the block size.
-    stream<io:Block, io:Error?> bStream
+    stream<io:Block, io:Error?> fileStream
         = check io:fileReadBlocksAsStream("./local/logFile.txt", 1024);
     do {
-        check fileClient->put("/server/logFile.txt", bStream);
+        check fileClient->put("/server/logFile.txt", fileStream);
     } on fail {
-        check bStream.close();
+        check fileStream.close();
     }
 }

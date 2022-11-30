@@ -24,11 +24,11 @@ service on fileListener {
     remote function onFileChange(ftp:WatchEvent & readonly event, ftp:Caller caller) returns error? {
         foreach ftp:FileInfo addedFile in event.addedFiles {
             // The `ftp:Caller` can be used to append another file to the added files in the server.
-            stream<io:Block, io:Error?> bStream = check io:fileReadBlocksAsStream("./local/appendFile.txt", 7);
+            stream<io:Block, io:Error?> fileStream = check io:fileReadBlocksAsStream("./local/appendFile.txt", 7);
             do {
-                check caller->append(addedFile.path, bStream);
+                check caller->append(addedFile.path, fileStream);
             } on fail {
-                check bStream.close();
+                check fileStream.close();
             }
         }
     }
