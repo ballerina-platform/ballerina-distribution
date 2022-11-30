@@ -16,5 +16,9 @@ public function main() returns error? {
     // `io:Block` in which 1024 is the block size.
     stream<io:Block, io:Error?> bStream
         = check io:fileReadBlocksAsStream("./local/logFile.txt", 1024);
-    check fileClient->put("/server/logFile.txt", bStream);
+    do {
+        check fileClient->put("/server/logFile.txt", bStream);
+    } on fail {
+        check bStream.close();
+    }
 }

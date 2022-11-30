@@ -25,7 +25,11 @@ service on fileListener {
         foreach ftp:FileInfo addedFile in event.addedFiles {
             // The `ftp:Caller` can be used to append another file to the added files in the server.
             stream<io:Block, io:Error?> bStream = check io:fileReadBlocksAsStream("./local/appendFile.txt", 7);
-            check caller->append(addedFile.path, bStream);
+            do {
+                check caller->append(addedFile.path, bStream);
+            } on fail {
+                check bStream.close();
+            }
         }
     }
 }
