@@ -5,8 +5,7 @@ This BBE demonstrates how to use the MySQL client to execute a stored procedure.
 ::: code mysql_call_stored_procedures.bal :::
 
 ## Prerequisites
-- Create a Ballerina project.
-- Copy the example to the project along with util files.
+- Set up the MySQL database - Run the [prerequisite.bal](https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/mysql-call-stored-procedures/prerequisites/prerequisite.bal) file by executing the command `bal run`.
 
 Run the sample by executing the following command.
 
@@ -25,12 +24,6 @@ If the procedure returns more than one result set, then those can be accessed by
 boolean isAvailable = getNextQueryResult();
 ```
 This will return whether next result set is available and update `queryResult` with the next result set.
-
-The following util files will initialize the test database before running the BBE and clean it up afterward.
-
-::: code initialize.bal :::
-
-::: code cleanup.bal :::
 
 ## Related links
 - [`mysql:Client` - API documentation](https://lib.ballerina.io/ballerinax/mysql/latest/)
