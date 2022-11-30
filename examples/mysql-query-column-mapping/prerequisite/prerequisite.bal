@@ -1,8 +1,9 @@
 import ballerina/sql;
 import ballerinax/mysql;
+import ballerinax/mysql.driver as _;
 
-// Initializes the database as a prerequisite to the example.
-function initialize() returns sql:Error? {
+// Initializes the database as a prerequisite to `Database Access - Query with advanced mapping` sample.
+public function main() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
 
     // Creates a database.
