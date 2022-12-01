@@ -1,6 +1,6 @@
 # WebSocket service - Payload constraint validation
 
-Through service payload constraint validation, the request payload can be validated according to the defined constraints. The constraint validation happens along with the data binding step in the resource signature parameter. If the validation fails, the `onError` remote function is dispatched with the validation error details.
+Through service payload constraint validation, the request payload can be validated according to the defined constraints. The constraint validation happens along with the data binding step in the remote function signature parameter. If the validation fails, the `onError` remote function is dispatched with the validation error details.
 
 ::: code websocket_service_payload_constraint_validation.bal :::
 
