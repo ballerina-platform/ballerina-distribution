@@ -14,5 +14,5 @@ Run the client program by executing the following command.
 ::: out graphql_client_security_mutual_ssl.out :::
 
 ## Related links
-- [`graphql:ClientSecureSocket` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/records/ClientSecureSocket)
+- [`graphql:ClientSecureSocket` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/records/ClientSecureSocket)
 - [`graphql` mutual SSL - Specification](/spec/graphql/#11322-mutual-ssl)
