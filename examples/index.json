@@ -2164,6 +2164,15 @@
                 "disableVerificationReason": "Service cannot be stopped",
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "Payload constraint validation",
+                "url": "websocket-service-payload-constraint-validation",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Service cannot be stopped",
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -2175,6 +2184,14 @@
             {
                 "name": "Send/Receive message",
                 "url": "websocket-client",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Payload constraint validation",
+                "url": "websocket-client-payload-constraint-validation",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
