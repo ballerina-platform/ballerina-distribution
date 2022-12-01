@@ -16,3 +16,4 @@ Run the client program by executing the command below.
 ## Related links
 - [`graphql:JwtIssuerConfig` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/records/JwtIssuerConfig)
 - [`jwt` package API documentation](https://lib.ballerina.io/ballerina/jwt/latest/)
+- [`graphql` Self-signed JWT authentication - Specification](/spec/graphql/#1123-self-signed-jwt-authentication)
