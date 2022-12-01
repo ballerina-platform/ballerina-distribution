@@ -3,8 +3,6 @@ import ballerinax/mysql;
 import ballerinax/mysql.driver as _;
 
 public function main() returns error? {
-    // Runs the prerequisite setup for the example.
-    check initialize();
 
     // Initializes the MySQL client. The `mysqlClient` can be reused to access the database throughout the application execution.
     mysql:Client mysqlClient = check new (host = "localhost", port = 3306, user = "root",
@@ -27,6 +25,4 @@ public function main() returns error? {
     // Closes the MySQL client.
     check mysqlClient.close();
 
-    // Performs the cleanup after the example.
-    check cleanup();
 }

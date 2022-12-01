@@ -3235,7 +3235,7 @@
         ]
     },
     {
-        "title": "MySQL client",
+        "title": "Database Access",
         "column": 3,
         "category": "Network libraries",
         "samples": [
@@ -3296,67 +3296,6 @@
             {
                 "name": "Call stored procedures",
                 "url": "mysql-call-stored-procedures",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            }
-        ]
-    },
-    {
-        "title": "JDBC client",
-        "column": 3,
-        "category": "Network libraries",
-        "samples": [
-            {
-                "name": "Simple query",
-                "url": "jdbc-query-operation",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Query with one result",
-                "url": "jdbc-query-row-operation",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Query with advanced mapping",
-                "url": "jdbc-query-column-mapping",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "DML and DDL operations",
-                "url": "jdbc-execute-operation",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Batch execution",
-                "url": "jdbc-batch-execute-operation",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Atomic transactions",
-                "url": "jdbc-atomic-transaction",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
