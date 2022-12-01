@@ -18,6 +18,8 @@
 
 package org.ballerina.projectapi;
 
+import io.ballerina.projects.util.ProjectConstants;
+import io.ballerina.projects.util.ProjectUtils;
 import okhttp3.Call;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -70,6 +72,9 @@ public class CentralTestUtils {
     static final String JAVA11_PLATFORM = "java11";
     static final String BALLERINA_ARTIFACT_TYPE = "bala";
     static final String OUTPUT_NOT_CONTAINS_EXP_MSG = "build output does not contain expected message:";
+    static final String CANNOT_RESOLVE_MODULE_MSG = "cannot resolve module '";
+    static final String DEPENDENCY_PULLING_ERR_MSG = "error: dependency pulling contains errors";
+    static final String PULLED_FROM_CENTRAL_MSG = " pulled from central successfully";
 
     /**
      * Generate random package name.
@@ -461,5 +466,13 @@ public class CentralTestUtils {
                         + response.body().string());
             }
         }
+    }
+
+    public static void deleteBalaOfPackage(String orgName, String packageName) {
+        Path balaPath = ProjectUtils.createAndGetHomeReposPath().resolve(ProjectConstants.REPOSITORIES_DIR)
+                .resolve(ProjectConstants.CENTRAL_REPOSITORY_CACHE_NAME).resolve(ProjectConstants.BALA_DIR_NAME)
+                .resolve(orgName);
+        Path packagePath = balaPath.resolve(packageName);
+        ProjectUtils.deleteDirectory(packagePath);
     }
 }
