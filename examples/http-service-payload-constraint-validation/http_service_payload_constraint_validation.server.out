@@ -1,0 +1,1 @@
+$ bal run http_service_payload_constraint_validation.bal

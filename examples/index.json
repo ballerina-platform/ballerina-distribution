@@ -1403,6 +1403,14 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Payload constraint validation",
+                "url": "http-service-payload-constraint-validation",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Path parameter",
                 "url": "http-path-param",
                 "verifyBuild": true,
@@ -1461,6 +1469,14 @@
                 "url": "http-client-data-binding",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Payload constraint validation",
+                "url": "http-client-payload-constraint-validation",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disablePlayground": true,
                 "isLearnByExample": false
             }
         ]
