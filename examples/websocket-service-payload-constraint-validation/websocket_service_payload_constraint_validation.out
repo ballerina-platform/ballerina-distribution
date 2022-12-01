@@ -1,0 +1,2 @@
+$ bal run websocket_client_payload_constraint_validation.bal
+Hello!, How are you?
