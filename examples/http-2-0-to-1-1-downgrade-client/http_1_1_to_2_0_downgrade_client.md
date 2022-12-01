@@ -2,7 +2,7 @@
 
 The HTTP client is configured to run over the HTTP/1.1 protocol. This client will only send requests over the HTTP/1.1 protocol.  
 
-::: code http_2_0_to_1_1_protocol_switch_client.bal :::
+::: code http_2_0_to_1_1_downgrade_client.bal :::
 
 Run the service by executing the following command.
 
