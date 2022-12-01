@@ -15,3 +15,4 @@ Run the client program by executing the following command.
 
 ## Related links
 - [`graphql:ClientSecureSocket` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/records/ClientSecureSocket)
+- [`graphql` mutual SSL - Specification](/spec/graphql/#11322-mutual-ssl)

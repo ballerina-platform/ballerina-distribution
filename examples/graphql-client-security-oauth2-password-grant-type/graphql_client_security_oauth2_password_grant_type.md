@@ -16,3 +16,4 @@ Run the client program by executing the command below.
 ## Related links
 - [`graphql:OAuth2PasswordGrantConfig` - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/records/OAuth2PasswordGrantConfig)
 - [`oauth2` package API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)
+- [`graphql` OAuth2 password grant type - Specification](/spec/graphql/#11242-password-grant-type)
