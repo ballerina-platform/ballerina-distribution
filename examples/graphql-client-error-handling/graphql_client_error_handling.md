@@ -12,5 +12,5 @@ Run the client program by executing the following command.
 ::: out graphql_client_error_handlingt.out :::
 
 ## Related links
-- [`graphql:ClientError` - API documentation](https://lib.ballerina.io/ballerina/graphql/1.4.4/errors#ClientError)
-- [Client error handling - Specification](/spec/graphql/#255-client-error-handling)
+- [`graphql:ClientError` error - API documentation](https://lib.ballerina.io/ballerina/graphql/1.4.4/errors#ClientError)
+- [`graphql:Client` error handling - Specification](/spec/graphql/#255-client-error-handling)

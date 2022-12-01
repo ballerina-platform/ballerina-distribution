@@ -3,10 +3,10 @@ import ballerina/io;
 
 type ProfileResponse record {|
     *graphql:GenericResponseWithErrors;
-    record {|Person profile;|} data;
+    record {|Profile profile;|} data;
 |};
 
-type Person record {|
+type Profile record {|
     string name;
     int age;
 |};
@@ -28,7 +28,7 @@ function handleErrors(graphql:ClientError clientError) {
         // This error represents a client-side data binding error. This error occurs due to the
         // assigned variable type and the value obtained from the wire having a mismatching 
         // shape.
-        io:println("PayloadBindingError: ", clientError.cause());
+        io:println("PayloadBindingError: ", clientError.message());
     } else if clientError is graphql:InvalidDocumentError {
         // This error represents GraphQL errors due to GraphQL server-side document 
         // validation. The GraphQL errors returned from the server-side can be obtained by 
@@ -39,6 +39,6 @@ function handleErrors(graphql:ClientError clientError) {
         // This error represents network-level errors. If the response from the server contains 
         // a body then, it can be obtained by calling the `detail()` method on `graphql:HttpError`.
         anydata body = clientError.detail().body;
-        io:println("HttpError: ", body, clientError.cause());
+        io:println("HttpError: ", body, clientError.message());
     }
 }
