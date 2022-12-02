@@ -1,4 +1,0 @@
-$ bal run
-
-Customer details: {"customerId":1,"firstName":"Peter","lastName":"Stuart"}
-Customer details: {"customerId":2,"firstName":"Dan","lastName":"Brown"}
