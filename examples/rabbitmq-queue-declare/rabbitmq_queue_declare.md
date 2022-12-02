@@ -13,4 +13,4 @@ Run the client program by executing the following command.
 
 ## Related links
 - [`rabbitmq:Client` client object - API documentation](https://lib.ballerina.io/ballerinax/rabbitmq/latest/clients/Client)
-- [`rabbitmq` exchanges and queues - Specification](https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#3-exchanges-and-queues)
+- [RabbitMQ exchanges and queues - Specification](https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#3-exchanges-and-queues)

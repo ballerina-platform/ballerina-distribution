@@ -15,4 +15,4 @@ Run the service by executing the following command.
 
 ## Related links
 - [`rabbitmq:Caller` client object - API documentation](https://lib.ballerina.io/ballerinax/rabbitmq/latest/clients/Caller)
-- [`rabbitmq` acknowledgements - Specification](https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#8-client-acknowledgements)
+- [RabbitMQ client acknowledgements - Specification](https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#8-client-acknowledgements)
