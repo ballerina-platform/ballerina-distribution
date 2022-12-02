@@ -22,5 +22,5 @@ Execute the command below to run the service.
 
 ## Related links
 - [`grpc:OAuth2IntrospectionConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2IntrospectionConfig)
-- [OAuth2 - Specification](/spec/grpc/#5114-service---oauth2)
+- [gRPC service OAuth2 - Specification](/spec/grpc/#5114-service---oauth2)
 - [`oauth2` package - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)

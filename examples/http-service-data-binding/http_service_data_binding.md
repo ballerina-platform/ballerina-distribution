@@ -14,4 +14,4 @@ Invoke the service by executing the following cURL command in a new terminal.
 
 ## Related links
 - [`http:Payload` annotation - API documentation](https://lib.ballerina.io/ballerina/http/latest/annotations#Payload)
-- [`Payload parameter` - specification](https://ballerina.io/spec/http/#2344-payload-parameter)
+- [HTTP service payload parameter - Specification](/spec/http/#2344-payload-parameter)

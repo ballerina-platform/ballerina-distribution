@@ -15,3 +15,4 @@ Here, the `Accept-Encoding` header is not specified.
 
 ## Related links
 - [`COMPRESSION_ALWAYS` - API documentation](https://lib.ballerina.io/ballerina/http/latest/constants#COMPRESSION_ALWAYS)
+- [HTTP service configuration - Specification](https://ballerina.io/spec/http/#241-client-types)

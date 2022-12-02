@@ -13,4 +13,4 @@ The circuit breaker is used to gracefully handle errors which could occur due to
 
 ## Related links
 - [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
-- [`Circuit breaker` - specification](https://ballerina.io/spec/http/#2415-circuit-breaker)
+- [HTTP client circuit breaker - Specification](/spec/http/#2415-circuit-breaker)

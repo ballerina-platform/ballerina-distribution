@@ -14,4 +14,4 @@ Invoke the service by executing the following cURL command in a new terminal.
 
 ## Related links
 - [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
-- [`Error handling` - specification](https://ballerina.io/spec/http/#82-error-handling)
+- [HTTP service error handling - Specification](/spec/http/#82-error-handling)

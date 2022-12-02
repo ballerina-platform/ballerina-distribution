@@ -17,4 +17,4 @@ Run the client program by executing the following command.
 ## Related links
 - [`promise()` - API documentation](https://lib.ballerina.io/ballerina/http/latest/clients/Caller#promise)
 - [`pushPromisedResponse()` - API documentation](https://lib.ballerina.io/ballerina/http/latest/clients/Caller#pushPromisedResponse)
-- [`Server push` - specification](https://ballerina.io/spec/http/#1011-push-promise-and-promise-response)
+- [HTTP service Server push - Specification](/spec/http/#1011-push-promise-and-promise-response)

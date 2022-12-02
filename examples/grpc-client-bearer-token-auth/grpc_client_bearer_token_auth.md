@@ -17,5 +17,5 @@ Execute the command below to run the client.
 
 ## Related links
 - [`grpc:BearerTokenConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/BearerTokenConfig)
-- [Bearer token authentication - Specification](/spec/grpc/#5116-client---bearer-token-auth)
+- [gRPC client bearer token authentication - Specification](/spec/grpc/#5116-client---bearer-token-auth)
 - [`auth` package - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)

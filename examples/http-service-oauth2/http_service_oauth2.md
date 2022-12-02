@@ -15,5 +15,5 @@ Run the service by executing the command below.
 
 ## Related links
 - [`http:OAuth2IntrospectionConfig` - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/OAuth2IntrospectionConfig)
-- [`oauth2` package API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)
-- [`Listener oauth2` - specification](https://ballerina.io/spec/http/#9114-listener---oauth2)
+- [`oauth2` package - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)
+- [HTTP service oauth2 - Specification](/spec/http/#9114-listener---oauth2)

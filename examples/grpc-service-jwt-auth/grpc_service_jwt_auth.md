@@ -18,5 +18,5 @@ Execute the command below to run the service.
 
 ## Related links
 - [`grpc:JwtValidatorConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/JwtValidatorConfig)
-- [JWT authentication - Specification](/spec/grpc/#5113-service---jwt-auth)
+- [gRPC service JWT authentication - Specification](/spec/grpc/#5113-service---jwt-auth)
 - [`jwt` package - API documentation](https://lib.ballerina.io/ballerina/jwt/latest/)

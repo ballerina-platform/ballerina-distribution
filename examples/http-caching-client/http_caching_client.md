@@ -13,4 +13,4 @@ Run the client program by executing the following command.
 
 ## Related links
 - [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
-- [`Caching` - specification](https://ballerina.io/spec/http/#2412-caching)
+- [HTTP client caching - Specification](/spec/http/#2412-caching)

@@ -12,3 +12,4 @@ Invoke the service via the [Client file upload](/learn/by-example/http-client-fi
 
 ## Related links
 - [`getByteStream()` - API documentation](https://lib.ballerina.io/ballerina/http/latest/classes/Request#getByteStream)
+- [`http` package - Specification](/spec/http/#41-service-configuration)

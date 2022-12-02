@@ -15,4 +15,4 @@ Run the program by executing the following command. Paths of the newly-added and
 
 ## Related links
 - [`ftp:Listener` client object - API documentation](https://lib.ballerina.io/ballerina/ftp/latest/listeners/Listener)
-- [SFTP listener - Specification](/spec/ftp/#422-secure-listener)
+- [SFTP service - Specification](/spec/ftp/#422-secure-listener)

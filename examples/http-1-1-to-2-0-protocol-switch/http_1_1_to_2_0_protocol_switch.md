@@ -14,4 +14,4 @@ Invoke the service as follows.
 
 ## Related links
 - [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
-- [`Protocol upgrade` - specification](https://ballerina.io/spec/http/#10-protocol-upgrade)
+- [HTTP service protocol upgrade - Specification](/spec/http/#10-protocol-upgrade)

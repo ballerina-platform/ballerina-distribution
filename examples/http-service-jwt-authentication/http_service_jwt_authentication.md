@@ -11,6 +11,6 @@ Run the service by executing the command below.
 >**Info:** You can invoke the above service via the [self-signed JWT authentication client](/learn/by-example/http-client-self-signed-jwt-authentication).
 
 ## Related links
-- [`http:JwtValidatorConfig` - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/JwtValidatorConfig)
-- [`jwt` package API documentation](https://lib.ballerina.io/ballerina/jwt/latest/)
-- [`Listener JWT authentication` - specification](https://ballerina.io/spec/http/#9113-listener---jwt-auth)
+- [`http:JwtValidatorConfig` record - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/JwtValidatorConfig)
+- [`jwt` package - API documentation](https://lib.ballerina.io/ballerina/jwt/latest/)
+- [HTTP service JWT authentication - Specification](/spec/http/#9113-listener---jwt-auth)
