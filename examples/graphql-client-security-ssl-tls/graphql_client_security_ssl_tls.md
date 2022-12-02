@@ -15,4 +15,4 @@ Run the client program by executing the following command.
 
 ## Related links
 - [`graphql:ClientSecureSocket` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/records/ClientSecureSocket)
-- [`graphql` SSL/TLS - Specification](/spec/graphql/#11321-ssltls)
+- [GraphQL client SSL/TLS - Specification](/spec/graphql/#11321-ssltls)

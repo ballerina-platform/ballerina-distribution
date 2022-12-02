@@ -22,4 +22,4 @@ To send the document, use the following cURL command.
 
 ## Related links
 - [`graphql` package - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
-- [`graphql` mutation type - Specification](/spec/graphql/#312-the-mutation-type)
+- [GraphQL `Mutation` type - Specification](/spec/graphql/#312-the-mutation-type)

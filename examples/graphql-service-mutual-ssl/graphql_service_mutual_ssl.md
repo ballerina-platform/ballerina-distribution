@@ -13,4 +13,4 @@ Run the service by executing the command below.
 ## Related links
 - [`graphql:ListenerConfiguration` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/records/ListenerConfiguration)
 - [`graphql:ListenerSecureSocket` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/records/ListenerSecureSocket)
-- [`graphql` mutual SSL - Specification](/spec/graphql/#11312-mutual-ssl)
+- [GraphQL service mutual SSL - Specification](/spec/graphql/#11312-mutual-ssl)
