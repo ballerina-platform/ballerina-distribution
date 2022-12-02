@@ -4,6 +4,9 @@ The email client is used to receive (with POP3 or IMAP4) emails using the SSL or
 
 ::: code receive_email_using_client.bal :::
 
+## Prerequisites
+- Email server should be up and running.
+
 Run the sample code by executing the following command.
 
 ::: out receive_email_using_client.out :::

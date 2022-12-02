@@ -4,9 +4,10 @@ The email service is used to receive (with POP3 or IMAP4) emails using the SSL o
 
 ::: code receive_email_using_service.bal :::
 
-Run the email service by executing the following command.
+## Prerequisites
+- Email server should be up and running.
 
->**Tip:** The subject and the content body of the listened emails will be printed for each of the polled emails.
+Run the email service by executing the following command.
 
 ::: out receive_email_using_service.out :::
 
