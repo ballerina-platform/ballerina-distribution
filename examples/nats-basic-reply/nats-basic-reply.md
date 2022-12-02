@@ -15,4 +15,4 @@ Run the service by executing the following command.
 
 ## Related links
 - [`nats` package - API documentation](https://lib.ballerina.io/ballerinax/nats/latest)
-- [`nats` subscribing - Specification](https://github.com/ballerina-platform/module-ballerinax-nats/blob/master/docs/spec/spec.md#4-subscribing)
+- [NATS subscribing - Specification](https://github.com/ballerina-platform/module-ballerinax-nats/blob/master/docs/spec/spec.md#4-subscribing)
