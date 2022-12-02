@@ -1849,6 +1849,14 @@
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "HTTP/2 prior knowledge",
+                "url": "http-2-prior-knowledge-client",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },

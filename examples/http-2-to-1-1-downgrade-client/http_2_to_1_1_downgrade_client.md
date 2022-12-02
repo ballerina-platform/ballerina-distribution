@@ -13,4 +13,4 @@ Run the client program by executing the following command.
 
 ## Related links
 - [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
-- [`http listener` - specification](https://ballerina.io/spec/http/#21-listener)
+- [`http client` - specification](https://ballerina.io/spec/http/#24-client)
