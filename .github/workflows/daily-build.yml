@@ -3,7 +3,7 @@ name: Daily build
 on:
   workflow_dispatch:
   schedule:
-    - cron:  '0 0 * * *'
+    - cron:  '30 18 * * *'    # 00:00 in LK time (GMT+5:30)
 
 jobs:
   ubuntu-build:
@@ -36,6 +36,7 @@ jobs:
           packageUser: ${{ github.actor }}
           packagePAT: ${{ secrets.GITHUB_TOKEN }}
           devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
+          ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
           TEST_MODE_ACTIVE: true
         run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue
       - name: Create linux-deb
@@ -219,6 +220,7 @@ jobs:
           packageUser: ${{ github.actor }}
           packagePAT: ${{ secrets.GITHUB_TOKEN }}
           devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
+          ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
           TEST_MODE_ACTIVE: true
         run: ./gradlew.bat clean build --stacktrace --scan --console=plain --no-daemon -x test
 
@@ -258,6 +260,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '11'
       - name: Download MacOS Intaller Zip
         uses: actions/download-artifact@v2
         with:
@@ -297,11 +304,16 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-      - uses: actions/setup-dotnet@v1
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
         with:
-          dotnet-version: '2.1.x'
+          distribution: 'temurin'
+          java-version: '11'
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '3.1.x'
       - name: Install GUID Generator
-        run: dotnet tool install -g dotnet-guid
+        run: dotnet tool install -g dotnet-guid --version 1.0.0
       - name: Download Windows Intaller Zip
         uses: actions/download-artifact@v2
         with:

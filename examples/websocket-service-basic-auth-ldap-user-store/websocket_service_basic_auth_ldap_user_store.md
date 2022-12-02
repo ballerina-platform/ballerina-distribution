@@ -6,6 +6,12 @@ Ballerina uses the concept of scopes for authorization. A resource declared in a
 
 For more information on the underlying module, see the [`auth` module](https://lib.ballerina.io/ballerina/auth/latest/).
 
+>**Tip:** You may need to change the certificate file path and private key file path in the code below.
+
 ::: code websocket_service_basic_auth_ldap_user_store.bal :::
 
+Run the service by executing the cURL command below.
+
 ::: out websocket_service_basic_auth_ldap_user_store.server.out :::
+
+>**Info:** Alternatively, you can invoke the above service via the [Basic Auth client](/learn/by-example/websocket-client-basic-auth).
