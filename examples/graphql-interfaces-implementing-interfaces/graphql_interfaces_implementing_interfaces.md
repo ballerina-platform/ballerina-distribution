@@ -22,4 +22,4 @@ To send the document, use the following cURL command in a separate terminal.
 
 ## Related links
 - [`graphql` package - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
-- [`graphql` interfaces - Specification](/spec/graphql/#461-interfaces-implementing-interfaces)
+- [GraphQL interfaces implementing interfaces - Specification](/spec/graphql/#461-interfaces-implementing-interfaces)
