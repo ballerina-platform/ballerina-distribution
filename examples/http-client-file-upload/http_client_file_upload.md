@@ -13,3 +13,4 @@ Run the client program by executing the following command.
 
 ## Related links
 - [`setFileAsPayload()` - API documentation](https://lib.ballerina.io/ballerina/http/latest/classes/Request#setFileAsPayload)
+- [`http` package - Specification](/spec/http/#2423-resource-methods)

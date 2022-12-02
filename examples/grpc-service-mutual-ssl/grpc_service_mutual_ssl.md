@@ -14,4 +14,4 @@ Execute the command below to run the service.
 
 ## Related links
 - [`grpc:ListenerSecureSocket` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/ListenerSecureSocket)
-- [Mutual SSL - Specification](/spec/grpc/#52-ssltls-and-mutual-ssl)
+- [gRPC service mutual SSL - Specification](/spec/grpc/#52-ssltls-and-mutual-ssl)

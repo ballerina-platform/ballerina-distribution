@@ -14,4 +14,4 @@ Invoke the service by executing the following cURL command in a new terminal.
 
 ## Related links
 - [`http:ResourceConfig` - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/HttpResourceConfig)
-- [`Resource configuration` - specification](https://ballerina.io/spec/http/#42-resource-configuration)
+- [HTTP service resource configuration - Specification](/spec/http/#42-resource-configuration)

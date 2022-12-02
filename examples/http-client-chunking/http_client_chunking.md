@@ -13,3 +13,4 @@ Run the client program by executing the following command.
 
 ## Related links
 - [`http1Settings` - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/ClientHttp1Settings)
+- [HTTP client - Specification](/http/#24-client)

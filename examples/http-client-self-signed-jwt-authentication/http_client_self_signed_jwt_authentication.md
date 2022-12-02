@@ -10,6 +10,6 @@ A client, which is secured with self-signed JWT can be used to connect to a secu
 Run the client program by executing the command below.
 
 ## Related links
-- [`http:JwtIssuerConfig` - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/JwtIssuerConfig)
-- [`jwt` package API documentation](https://lib.ballerina.io/ballerina/jwt/latest/)
-- [`Client self signed JWT authentication` - specification](https://ballerina.io/spec/http/#9127-client---self-signed-jwt)
+- [`http:JwtIssuerConfig` record - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/JwtIssuerConfig)
+- [`jwt` package - API documentation](https://lib.ballerina.io/ballerina/jwt/latest/)
+- [HTTP client self signed JWT authentication - Specification](/spec/http/#9127-client---self-signed-jwt)

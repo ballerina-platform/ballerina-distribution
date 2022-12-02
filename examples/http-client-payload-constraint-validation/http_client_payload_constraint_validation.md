@@ -13,5 +13,5 @@ Run the client program by executing the following command.
 
 ## Related links
 - [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
-- [`http` package - Specification](https://ballerina.io/spec/http/)
+- [`http` package - Specification](/spec/http/)
 - [`constraint` package - API documentation](https://lib.ballerina.io/ballerina/constraint/latest)

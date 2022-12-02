@@ -13,4 +13,5 @@ Invoke the service by executing the following cURL commands in a new terminal.
 ::: out http_cors.client.out :::
 
 ## Related links
-- [`http:CorsConfig` - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/CorsConfig)
+- [`http:CorsConfig` record - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/CorsConfig)
+- [HTTP service configuration - Specification](/spec/http/#41-service-configuration);

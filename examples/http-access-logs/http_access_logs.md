@@ -14,4 +14,4 @@ Invoke the service by executing the following cURL command in a new terminal.
 
 ## Related links
 - [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
-- [`Access log` - specification](https://ballerina.io/spec/http/#824-access-log)
+- [HTTP service access log - Specification](/spec/http/#824-access-log)

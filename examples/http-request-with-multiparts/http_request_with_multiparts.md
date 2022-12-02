@@ -15,4 +15,4 @@ In the directory, which contains the `.bal` file, create a directory named `file
 
 ## Related links
 - [`setBodyParts()` - API documentation](https://lib.ballerina.io/ballerina/http/latest/classes/Request#setBodyParts)
-- [`Supported-multipart-types` - specification](https://ballerina.io/spec/mime/#3-supported-multipart-types)
+- [HTTP client supported-multipart-types - Specification](/spec/mime/#3-supported-multipart-types)

@@ -14,4 +14,4 @@ Invoke the service by executing the following cURL command in a new terminal.
 
 ## Related links
 - [`forward()` - API documentation](https://lib.ballerina.io/ballerina/http/latest/clients/Client#forward)
-- [`forward method` - specification](https://ballerina.io/spec/http/#2424-forwardexecute-methods)
+- [HTTP service forward method - Specification](/spec/http/#2424-forwardexecute-methods)

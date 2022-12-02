@@ -30,5 +30,5 @@ Run the service by executing the command below.
 
 ## Related links
 - [`http:FileUserStoreConfig` - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/FileUserStoreConfig)
-- [`auth` package API documentation](https://lib.ballerina.io/ballerina/auth/latest/)
-- [`Listener basic authentication file user store` - specification](https://ballerina.io/spec/http/#9111-listener---basic-auth---file-user-store)
+- [`auth` package - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)
+- [HTTP service listener basic authentication file user store - Specification](/spec/http/#9111-listener---basic-auth---file-user-store)

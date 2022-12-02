@@ -32,5 +32,5 @@ Once you run the command, the `grpc_unary_pb.bal` file gets generated inside the
 
 ## Related links
 - [`grpc` package - API documentation](https://lib.ballerina.io/ballerina/grpc/latest)
-- [Unary RPC - Specification](/spec/grpc/#41-simple-rpc)
+- [gRPC service unary RPC - Specification](/spec/grpc/#41-simple-rpc)
 - [Ballerina protocol buffers guide](/learn/cli-documentation/grpc/)

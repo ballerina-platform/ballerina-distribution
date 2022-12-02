@@ -17,5 +17,5 @@ Execute the command below to run the client.
 
 ## Related links
 - [`grpc:OAuth2RefreshTokenGrantConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2RefreshTokenGrantConfig)
-- [OAuth2 authentication and authorization - Specification](/spec/grpc/#5118-client---oauth2)
+- [gRPC client OAuth2 authentication and authorization - Specification](/spec/grpc/#5118-client---oauth2)
 - [`oauth2` package - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)

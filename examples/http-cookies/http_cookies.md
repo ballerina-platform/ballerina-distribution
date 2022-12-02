@@ -18,4 +18,4 @@ Run the main program as follows.
 
 ## Related links
 - [`http:Cookie` - API documentation](https://lib.ballerina.io/ballerina/http/latest/classes/Cookie)
-- [`Cookie` - specification](https://ballerina.io/spec/http/#2416-cookie)
+- [HTTP service cookie - Specification](/spec/http/#2416-cookie)

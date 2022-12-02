@@ -13,4 +13,4 @@ Run the program by executing the following command.
 
 ## Related links
 - [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
-- [`Load balance` - specification](https://ballerina.io/spec/http/#2417-load-balance)
+- [HTTP service load balance - Specification](/spec/http/#2417-load-balance)
