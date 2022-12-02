@@ -9,7 +9,7 @@ The execute method of `graphql:Client` can fail and return a `graphql:ClientErro
 
 Run the client program by executing the following command.
 
-::: out graphql_client_error_handlingt.out :::
+::: out graphql_client_error_handling.out :::
 
 ## Related links
 - [`graphql:ClientError` error - API documentation](https://lib.ballerina.io/ballerina/graphql/1.4.4/errors#ClientError)
