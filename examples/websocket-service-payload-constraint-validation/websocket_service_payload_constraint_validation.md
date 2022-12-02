@@ -13,4 +13,4 @@ Run the service by executing the command below.
 ## Related links
 - [`websocket` package - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
 - [WebSocket service - Specification](/spec/websocket/#3-service-types)
-- [Constraint package - API documentation](https://lib.ballerina.io/ballerina/constraint/latest)
+- [`constraint` package - API documentation](https://lib.ballerina.io/ballerina/constraint/latest)
