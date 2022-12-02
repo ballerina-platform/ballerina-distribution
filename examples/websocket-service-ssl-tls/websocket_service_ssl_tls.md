@@ -12,4 +12,4 @@ Run the service by executing the command below.
 
 ## Related Links
 - [`websocket` package - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
-- [`websocket` SSL/TLS - Specification](/spec/websocket/#5-securing-the-websocket-connections)
+- [WebSocket SSL/TLS - Specification](/spec/websocket/#5-securing-the-websocket-connections)

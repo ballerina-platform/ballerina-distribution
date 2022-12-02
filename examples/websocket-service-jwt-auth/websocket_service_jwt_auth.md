@@ -15,4 +15,4 @@ Run the service by executing the command below.
 ## Related Links
 - [`websocket` package - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
 - [`jwt` package - API documentation](https://lib.ballerina.io/ballerina/jwt/latest/)
-- [`websocket` authentication - Specification](/spec/websocket/#52-authentication-and-authorization)
+- [WebSocket authentication - Specification](/spec/websocket/#52-authentication-and-authorization)

@@ -12,4 +12,4 @@ Run the service by executing the command below.
 
 ## Related links
 - [`udp` package - API documentation](https://lib.ballerina.io/ballerina/udp/latest)
-- [`udp` service - Specification](/spec/udp/#4-service)
+- [UDP service - Specification](/spec/udp/#4-service)

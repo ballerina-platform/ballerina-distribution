@@ -13,4 +13,4 @@ Run the client program by executing the command below.
 
 ## Related links
 - [`udp:Client` client object - API documentation](https://lib.ballerina.io/ballerina/udp/latest/clients/Client)
-- [`udp:Client` - Specification](/spec/udp/#3-client)
+- [UDP Client - Specification](/spec/udp/#3-client)
