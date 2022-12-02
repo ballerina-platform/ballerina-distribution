@@ -1786,6 +1786,14 @@
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "HTTP/2 to HTTP/1.1 downgrade",
+                "url": "http-2-to-1-1-downgrade-service",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1829,6 +1837,22 @@
             {
                 "name": "Request with multiparts",
                 "url": "http-request-with-multiparts",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "HTTP/2 to HTTP/1.1 downgrade",
+                "url": "http-2-to-1-1-downgrade-client",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "HTTP/2 prior knowledge",
+                "url": "http-2-prior-knowledge-client",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -1880,14 +1904,6 @@
         "column": 1,
         "category": "Network libraries",
         "samples": [
-            {
-                "name": "HTTP 1.1 to 2.0 protocol switch",
-                "url": "http-1-1-to-2-0-protocol-switch",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
             {
                 "name": "HTTP 2.0 server push",
                 "url": "http-2-0-server-push",
