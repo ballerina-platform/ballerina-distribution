@@ -12,4 +12,4 @@ Run the service by executing the command below.
 
 ## Related links
 - [`tcp` package - API documentation](https://lib.ballerina.io/ballerina/tcp/latest)
-- [`tcp` service  - Specification](/spec/tcp/#3-service-types)
+- [TCP service  - Specification](/spec/tcp/#3-service-types)

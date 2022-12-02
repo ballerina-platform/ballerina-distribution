@@ -13,5 +13,5 @@ Run the client program by executing the command below.
 
 ## Related links
 - [`websocket:Client` client object - API documentation](https://lib.ballerina.io/ballerina/websocket/latest/clients/Client)
-- [`websocket:Client` - Specification](/spec/websocket/#4-client)
-- [`constraint` package - API documentation](https://lib.ballerina.io/ballerina/constraint/latest)
+- [WebSocket Client - Specification](/spec/websocket/#4-client)
+- [Constraint package - API documentation](https://lib.ballerina.io/ballerina/constraint/latest)

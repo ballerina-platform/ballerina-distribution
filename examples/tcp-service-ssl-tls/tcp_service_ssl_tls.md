@@ -12,4 +12,4 @@ Run the service by executing the command below.
 
 ## Related links
 - [`tcp` package - API documentation](https://lib.ballerina.io/ballerina/tcp/latest)
-- [`tcp` SSL/TLS - Specification](/spec/tcp/#511-configuring-tls-in-server-side)
+- [TCP SSL/TLS - Specification](/spec/tcp/#511-configuring-tls-in-server-side)
