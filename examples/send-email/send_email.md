@@ -4,6 +4,9 @@ The email connector is used to send (with SMTP) emails using the SSL or STARTTLS
 
 ::: code send_email.bal :::
 
+## Prerequisites
+- SMTP server should be up and running.
+
 Run the SMTP client by executing the following command.
 
 ::: out send_email.out :::
