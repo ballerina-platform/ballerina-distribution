@@ -1,0 +1,2 @@
+$ bal run http_client_path_parameter.bal
+Received album: {"title":"Blue Train", "artist":"John Coltrane"}
