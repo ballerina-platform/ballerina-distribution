@@ -26,4 +26,4 @@ It should return the following values.
 
 ## Related links
 - [`graphql` package - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
-- [`graphql` subscription type - Specification](/spec/graphql/#313-the-subscription-type)
+- [GraphQL `Subscription` type - Specification](/spec/graphql/#313-the-subscription-type)
