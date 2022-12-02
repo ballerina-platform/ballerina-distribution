@@ -1,2 +1,2 @@
-$ bal run http_2_to_1_1_downgrade_client.bal
+$ bal run http_2_prior_knowledge_client.bal
 GET request:[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]
