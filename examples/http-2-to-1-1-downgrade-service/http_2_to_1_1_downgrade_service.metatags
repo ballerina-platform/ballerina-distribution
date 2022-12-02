@@ -1,2 +1,2 @@
 description: This BBE shows how the Ballerina HTTP service can be configured to accept only message over the HTTP/1.1 protocol.
-keywords: ballerina, ballerina by examples, bbe, http, http/1.1, http/2.0, http/2
+keywords: ballerina, ballerina by examples, bbe, http, http/1.1, http/2

@@ -1449,14 +1449,6 @@
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
-            },
-            {
-                "name": "HTTP/2.0 to HTTP/1.1 downgrade",
-                "url": "http-2-0-to-1-1-downgrade-service",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
             }
         ]
     },
@@ -1482,14 +1474,6 @@
             {
                 "name": "Payload constraint validation",
                 "url": "http-client-payload-constraint-validation",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "HTTP/2.0 to HTTP/1.1 downgrade",
-                "url": "http-2-0-to-1-1-downgrade-client",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -1802,6 +1786,14 @@
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "HTTP/2 to HTTP/1.1 downgrade",
+                "url": "http-2-to-1-1-downgrade-service",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1845,6 +1837,14 @@
             {
                 "name": "Request with multiparts",
                 "url": "http-request-with-multiparts",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "HTTP/2 to HTTP/1.1 downgrade",
+                "url": "http-2-to-1-1-downgrade-client",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disablePlayground": true,
