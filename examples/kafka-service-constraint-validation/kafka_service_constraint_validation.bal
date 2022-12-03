@@ -27,7 +27,7 @@ service on orderListener {
     // When an error occurs in the before the `onConsumerRecord` invoke,
     // `onError` function will get invoked.
     remote function onError(kafka:Error 'error, kafka:Caller caller) returns error? {
-        // Check whether the `error` is a `kafka:PayloadValidationError` and seek past the
+        // Check whether the `error` is a `kafka:PayloadValidationError` and seek pass the
         // erroneous record.
         if 'error is kafka:PayloadValidationError {
             log:printError("Payload validation failed", 'error);

@@ -1,2 +1,2 @@
 $ bal run http_client_payload_constraint_validation.bal
-Validation failed: payload validation failed: Validation failed for '$.title:maxLength' constraint(s).
+error: payload validation failed: Validation failed for '$.title:maxLength' constraint(s).

@@ -1,6 +1,6 @@
 # Kafka service - Constraint validation
 
-This example shows how the payload is validated related to the constraints added to the payload record. When a payload fails to validate, `seek` api of `kafka:Caller` can be used to seek past the erroneous record and read new records.
+This example shows how the payload is validated related to the constraints added to the payload record. When a payload is not valid, `seek` method of `kafka:Caller` can be used to seek pass the erroneous record and read the new records.
 
 ::: code kafka_service_constraint_validation.bal :::
 
