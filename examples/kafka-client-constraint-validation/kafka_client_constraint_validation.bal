@@ -1,6 +1,5 @@
 import ballerina/constraint;
 import ballerinax/kafka;
-import ballerina/lang.runtime;
 import ballerina/log;
 
 public type Order record {
@@ -18,26 +17,24 @@ public function main() returns error? {
         topics: "order-topic"
     });
     while true {
-        Order[]|kafka:Error response = orderConsumer->pollPayload(1);
-        if response is Order[] {
-            check from Order 'order in response
+        Order[]|kafka:Error orders = orderConsumer->pollPayload(15);
+        if orders is Order[] {
+            check from Order 'order in orders
                 do {
                     log:printInfo(string `Received valid order for ${'order.productName}`);
                 };
-        // Check whether the `error` is a `kafka:PayloadValidationError` and seek past the
+        // Check whether the `error` is a `kafka:PayloadValidationError` and seek pass the
         // erroneous record.
-        } else if response is kafka:PayloadValidationError {
-            log:printError("Payload validation failed", response);
+        } else if orders is kafka:PayloadValidationError {
+            log:printError("Payload validation failed", orders);
             // The `kafka:PartitionOffset` related to the erroneous record is provided inside
             // the `kafka:PayloadValidationError`.
             check orderConsumer->seek({
-                partition: response.detail().partition,
-                offset: response.detail().offset + 1
+                partition: orders.detail().partition,
+                offset: orders.detail().offset + 1
             });
         } else {
-            log:printError("An error occured", response);
-            break;
+            return orders;
         }
-        runtime:sleep(1);
     }
 }

@@ -1,6 +1,6 @@
 # HTTP client - Path parameter
 
-The `http` module provides first class support for specifying `Path parameters` in the resource invocation along with the type. The supported types are string, int, float, boolean, and decimal (e.g., path/[string foo]).
+The `http` module provides first class support for specifying `Path parameters` in the resource invocation along with the type. The supported types are `string`, `int`, `float`, `boolean`, and `decimal` (e.g., path/[string foo]).
 
 ::: code http_client_path_parameter.bal :::
 

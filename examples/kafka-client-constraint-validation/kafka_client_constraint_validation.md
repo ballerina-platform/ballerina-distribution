@@ -1,16 +1,17 @@
 # Kafka client - Constraint validation
 
-This example shows how the payload is validated related to the constraints added to the payload record. When a payload fails to validate, `seek` api of `kafka:Consumer` can be used to seek past the erroneous record and read new records.
+This example shows how the payload is validated related to the constraints added to the payload record. When a payload is not valid, `seek` method of `kafka:Consumer` can be used to seek pass the erroneous record and read the new records.
 
 ::: code kafka_client_constraint_validation.bal :::
 
 ## Prerequisites
 - Start a [Kafka broker](https://kafka.apache.org/quickstart) instance.
-- Run the Kafka client given in the [Kafka client - Produce message](/learn/by-example/kafka-client-produce-message) example with a valid product name (0 < length <= 30), then with an invalid product name and again with a valid product name.
 
 Run the program by executing the following command.
 
 ::: out kafka_client_constraint_validation.out :::
+
+>**Tip:** Run the Kafka client given in the [Kafka client - Produce message](/learn/by-example/kafka-client-produce-message) example with a valid product name (0 < length <= 30), then with an invalid product name and again with a valid product name.
 
 ## Related links
 - [`kafka:PayloadValidationError` error type - API documentation](https://lib.ballerina.io/ballerinax/kafka/3.4.0/errors#PayloadValidationError)

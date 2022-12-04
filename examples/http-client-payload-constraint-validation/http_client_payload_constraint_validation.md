@@ -1,6 +1,6 @@
 # HTTP client - Payload constraint validation
 
-Through client payload constraint validation, the response payload can be validated according to the defined constraints. The constraint validation happens along with the data binding step. If the validation fails, an `http:PayloadValidationError` will be returned with the validation details.
+Through client payload constraint validation, the response payload can be validated according to the defined constraints. The constraint validation happens along with the data binding step. If the validation fails, a `http:PayloadValidationError` will be returned with the validation details.
 
 ::: code http_client_payload_constraint_validation.bal :::
 
@@ -14,4 +14,4 @@ Run the client program by executing the following command.
 ## Related links
 - [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
 - [`http` package - Specification](/spec/http/)
-- [`constraint` package - API documentation](https://lib.ballerina.io/ballerina/constraint/latest)
+- [Constraint validation example](/by-example/constraint-validations/)

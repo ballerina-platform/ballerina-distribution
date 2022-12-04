@@ -1,14 +1,14 @@
 import ballerina/http;
 import ballerina/constraint;
 
-type Album record {|
+type Album record {
     @constraint:String {
         maxLength: 5,
         minLength: 1
     }
     string title;
     string artist;
-|};
+};
 
 service / on new http:Listener(9090) {
 

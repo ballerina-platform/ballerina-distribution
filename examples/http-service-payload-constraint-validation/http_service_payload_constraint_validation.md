@@ -15,4 +15,4 @@ Invoke the service by executing the following cURL command in a new terminal. He
 ## Related links
 - [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
 - [`http` package - Specification](/spec/http/)
-- [`constraint` package - API documentation](https://lib.ballerina.io/ballerina/constraint/latest)
+- [Constraint validation example](/by-example/constraint-validations/)
