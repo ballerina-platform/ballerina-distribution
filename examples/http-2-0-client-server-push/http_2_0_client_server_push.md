@@ -2,7 +2,7 @@
 
 HTTP/2 server push messages can be received using the Ballerina `http` client. HTTP/2 Server Push messages allow the server to send resources to the client before the client requests for it.
 
-::: code http_2_0_service.bal :::
+::: code http_2_0_client_server_push.bal :::
 
 ## Prerequisites
 - Run the HTTP service given in the [HTTP/2 server push](/learn/by-example/http-2-0-server-push/) example.
