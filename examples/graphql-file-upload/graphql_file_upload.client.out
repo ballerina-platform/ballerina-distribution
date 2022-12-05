@@ -1,5 +1,2 @@
-$ curl localhost:9090/fileUpload \
-  -F operations='{ "query": "mutation($file: Upload!) { singleFileUpload(file: $file) }", "variables": { "file": null } }' \
-  -F map='{ "0": ["variables.file"] }' \
-  -F 0=@file1.png
-{"data":{"singleFileUpload":"Successfully Uploaded"}}
+$ curl localhost:9090/fileUpload -F operations='{ "query": "mutation($file: Upload!) { fileUpload(file: $file) }", "variables": { "file": null } }' -F map='{ "0": ["variables.file"] }' -F 0=@file1.png
+{"data":{"fileUpload":"File file1.png successfully uploaded"}}
