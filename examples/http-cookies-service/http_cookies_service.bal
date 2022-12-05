@@ -29,7 +29,7 @@ service /cookieDemo on serverEP {
         return http:UNAUTHORIZED;
     }
 
-    resource function get welcome(http:Request req) returns string {
+    resource function get welcome(http:Request req) returns string|http:NotFound {
         // Retrieve cookies from the request.
         http:Cookie[] cookies = req.getCookies();
 
@@ -45,11 +45,8 @@ service /cookieDemo on serverEP {
                 return "Welcome back " + user;
 
             }
-            // If the user is `nil`, send a login message.
-            return "Please login";
 
         }
-        // If the `username` cookie is not presented, send a login request message: `Please login`.
-        return "Please login";
+        return http:NOT_FOUND;
     }
 }

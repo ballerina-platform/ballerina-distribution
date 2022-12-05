@@ -1,6 +1,6 @@
 # REST service - Send different status codes
 
-The resource method can return `StatusCodeResponse` record that contains response headers and payload. Ballerina provides built in records for each HTTP status codes. In addition to that, record constants are also available in any modification is not needed for the default values.
+The resource method can return `StatusCodeResponse` record. Ballerina provides built in records for each HTTP status codes. The `StatusCodeResponse` constants are available to send the a response without a body or headers.
 
 ::: code http_send_different_status_codes.bal :::
 

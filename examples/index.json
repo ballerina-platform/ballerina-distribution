@@ -1449,6 +1449,22 @@
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "Send different status codes with payload",
+                "url": "http-send-different-status-codes-with-payload",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Send cache response",
+                "url": "http-service-cache-response",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1498,6 +1514,14 @@
             {
                 "name": "Header parameter",
                 "url": "http-client-header-parameter",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Caching",
+                "url": "http-caching-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -1773,7 +1797,7 @@
             },
             {
                 "name": "Cookies",
-                "url": "http-cookies",
+                "url": "http-cookies-service",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -1782,14 +1806,6 @@
             {
                 "name": "Chunking",
                 "url": "http-service-chunking",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Sending cache response",
-                "url": "http-service-cache-response",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -1851,16 +1867,16 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Chunking",
-                "url": "http-client-chunking",
+                "name": "Cookies",
+                "url": "http-cookies-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
-                "name": "Caching",
-                "url": "http-caching-client",
+                "name": "Chunking",
+                "url": "http-client-chunking",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
