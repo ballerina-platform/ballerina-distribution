@@ -4,25 +4,25 @@ import ballerinax/mysql.driver as _;
 
 // Initializes the database as a prerequisite to `Database Access - Simple query` sample.
 public function main() returns sql:Error? {
-    mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
+    mysql:Client mysqlClient = check new (host = "localhost", port = 3306, user = "root",
+                                          password = "Test@123");
 
     // Creates a database.
-    _ = check mysqlClient->execute(`CREATE DATABASE CUSTOMER`);
+    _ = check mysqlClient->execute(`CREATE DATABASE MUSIC_STORE;`);
 
     // Creates a table in the database.
-    _ = check mysqlClient->execute(`CREATE TABLE CUSTOMER.Customers
-            (customerId INTEGER NOT NULL AUTO_INCREMENT, firstName
-            VARCHAR(300), lastName  VARCHAR(300), registrationID INTEGER,
-            creditLimit DOUBLE, country  VARCHAR(300),
-            PRIMARY KEY (customerId))`);
+    _ = check mysqlClient->execute(`CREATE TABLE MUSIC_STORE.albums (
+                                    	id VARCHAR(100) NOT NULL PRIMARY KEY,
+                                        title VARCHAR(100),
+                                        artist VARCHAR(100),
+                                        price REAL
+                                    );`);
 
     // Adds the records to the newly-created table.
-    _ = check mysqlClient->execute(`INSERT INTO CUSTOMER.Customers
-            (firstName, lastName, registrationID,creditLimit,country) VALUES
-            ('Peter','Stuart', 1, 5000.75, 'USA')`);
-    _ = check mysqlClient->execute(`INSERT INTO CUSTOMER.Customers
-            (firstName, lastName, registrationID,creditLimit,country) VALUES
-            ('Dan', 'Brown', 2, 10000, 'UK')`);
+    _ = check mysqlClient->execute(`INSERT INTO MUSIC_STORE.albums
+                                    VALUES("A-123", "Lemonade", "Beyonce", 18.98);`);
+    _ = check mysqlClient->execute(`INSERT INTO MUSIC_STORE.albums
+                                    VALUES("A-321", "Renaissance", "Beyonce", 24.98);`);
 
     check mysqlClient.close();
 }
