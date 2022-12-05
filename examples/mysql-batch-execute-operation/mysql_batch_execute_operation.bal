@@ -1,47 +1,34 @@
-import ballerina/io;
+import ballerina/http;
 import ballerinax/mysql;
-import ballerina/sql;
 import ballerinax/mysql.driver as _;
+import ballerina/sql;
 
-// Defines a record.
-type Customer record {|
-    string firstName;
-    string lastName;
-    int registrationID;
-    float creditLimit;
-    string country;
+// Defines a record to load the query result.
+type Album record {|
+    string id;
+    string title;
+    string artist;
+    float price;
 |};
 
-public function main() returns error? {
+service / on new http:Listener(8080) {
+    private final mysql:Client db;
 
-    // Initializes the MySQL client. The `mysqlClient` can be reused to access the database throughout the application execution.
-    mysql:Client mysqlClient = check new (host = "localhost", port = 3306, user = "root",
-                                          password = "Test@123", database = "CUSTOMER");
-
-    // The records to be inserted.
-    Customer[] customers = [
-        {firstName: "Peter", lastName: "Stuart", registrationID: 1, creditLimit: 5000.75, country: "USA"},
-        {firstName: "Stephanie", lastName: "Mike", registrationID: 2, creditLimit: 8000.00, country: "USA"},
-        {firstName: "Bill", lastName: "John", registrationID: 3, creditLimit: 3000.25, country: "USA"}
-    ];
-
-    // Creates a batch-parameterized query.
-    sql:ParameterizedQuery[] insertQueries =
-        from Customer customer in customers
-        select `INSERT INTO Customers (firstName, lastName, registrationID, creditLimit, country)
-                VALUES (${customer.firstName}, ${customer.lastName}, ${customer.registrationID},
-                ${customer.creditLimit}, ${customer.country})`;
-
-    // Inserts the records with the auto-generated ID.
-    sql:ExecutionResult[] result = check mysqlClient->batchExecute(insertQueries);
-
-    int[] generatedIds = [];
-    foreach sql:ExecutionResult summary in result {
-        generatedIds.push(<int>summary.lastInsertId);
+    function init() returns error? {
+        // Initiate the mysql client at the start of the service. This will be used
+        // throughout the lifetime of the service.
+        self.db = check new (host = "localhost", port = 3306, user = "root",
+                            password = "Test@123", database = "MUSIC_STORE");
     }
-    io:println(`Insert success, generated IDs are: ${generatedIds}`);
 
-    // Closes the MySQL client.
-    check mysqlClient.close();
+    resource function post albums(@http:Payload Album[] albums) returns http:Created|error {
+        // Create a batch parameterized query.
+        sql:ParameterizedQuery[] insertQueries = from Album album in albums
+            select `INSERT INTO albums (id, title, artist, price)
+                    VALUES (${album.id}, ${album.title}, ${album.artist}, ${album.price})`;
 
+        // Inserts records in a batch.
+        _ = check self.db->batchExecute(insertQueries);
+        return http:CREATED;
+    }
 }
