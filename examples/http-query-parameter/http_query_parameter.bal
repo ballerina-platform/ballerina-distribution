@@ -3,19 +3,19 @@ import ballerina/http;
 type Album readonly & record {|
     string title;
     string artist;
-    int year;
 |};
 
 table<Album> key(title) albums = table [
-    {title: "Blue Train", artist: "John Coltrane", year: 1958},
-    {title: "Jeru", artist: "Gerry Mulligan", year: 1962}
+    {title: "Blue Train", artist: "John Coltrane"},
+    {title: "Jeru", artist: "Gerry Mulligan"}
 ];
 
 service / on new http:Listener(9090) {
 
-    // The `year` resource method argument is considered as the query parameter which is extracted from the request URI.
-    resource function get albums(int year) returns Album[] {
+    // The `artist` resource method argument is considered as the query parameter which is extracted from the request URI.
+    resource function get albums(string artist) returns Album[] {
         return from Album album in albums
-               where album.year == year select album;
+               where album.artist == artist
+               select album;
     }
 }

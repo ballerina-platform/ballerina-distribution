@@ -14,6 +14,9 @@ public function main() returns error? {
             chunking: http:CHUNKING_NEVER
         }
     );
-    string payload = check albumClient->/albums.post({title: "Sarah Vaughan and Clifford Brown", artist: "Sarah Vaughan"});
+    string payload = check albumClient->/albums.post({
+        title: "Sarah Vaughan and Clifford Brown",
+        artist: "Sarah Vaughan"
+    });
     io:println(payload);
 }
