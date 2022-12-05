@@ -1797,7 +1797,7 @@
             },
             {
                 "name": "Cookies",
-                "url": "http-cookies",
+                "url": "http-cookies-service",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -1853,6 +1853,14 @@
             {
                 "name": "File upload",
                 "url": "http-client-file-upload",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Cookies",
+                "url": "http-cookies-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
