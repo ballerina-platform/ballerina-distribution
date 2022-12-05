@@ -1,4 +1,4 @@
-# GraphQL client - Error handling
+# GraphQL client - Handle error response
 
 The execute method of `graphql:Client` can fail and return a `graphql:ClientError`. This example demonstrates `graphql:Client` error handling and shows how to obtain GraphQL-specific errors returned by the graphql server.
 

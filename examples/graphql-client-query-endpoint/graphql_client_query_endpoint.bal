@@ -1,10 +1,8 @@
 import ballerina/graphql;
 import ballerina/io;
 
-// User defined data types to perform client side data-binding. This includes separate fields for
-// GraphQL errors and data.
+// User defined data types to perform client side data-binding.
 type ProfileResponse record {|
-    *graphql:GenericResponseWithErrors;
     record {|Profile profile;|} data;
 |};
 
