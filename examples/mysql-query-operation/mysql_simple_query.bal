@@ -15,7 +15,7 @@ service / on new http:Listener(8080) {
     private final mysql:Client db;
 
     function init() returns error? {
-        // Iniitate the mysql client at the start of the service. This will be used
+        // Initiate the mysql client at the start of the service. This will be used
         // throughout the lifetime of the service.
         self.db = check new (host = "localhost", port = 3306, user = "root",
                             password = "Test@123", database = "MUSIC_STORE");
