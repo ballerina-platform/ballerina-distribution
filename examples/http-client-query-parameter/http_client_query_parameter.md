@@ -11,6 +11,10 @@ Run the client program by executing the following command.
 
 ::: out http_client_query_parameter.out :::
 
+Furthermore, a `post` request with query parameter can be sent as shown below.
+
+::: code http_client_query_parameter_post.bal :::
+
 ## Related links
 - [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
 - [HTTP client resource methods - Specification](/spec/http/#2423-resource-methods)
