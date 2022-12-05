@@ -2,7 +2,7 @@ import ballerina/http;
 
 type Params record {|
     string path;
-    map<json> matrix;
+    json matrix;
 |};
 
 service / on new http:Listener(9090) {
@@ -15,14 +15,8 @@ service / on new http:Listener(9090) {
         map<any> pathMParams = req.getMatrixParams("/params");
         var a = <string>pathMParams["a"];
         var b = <string>pathMParams["b"];
-        string pathMatrixStr = string `a=${a}, b=${b}`;
+        json matrix = {a: a, b: b};
 
-        map<any> fooMParams = req.getMatrixParams("/params/" + foo);
-        var x = <string>fooMParams["x"];
-        var y = <string>fooMParams["y"];
-        string fooMatrixStr = string `x=${x}, y=${y}`;
-        map<json> matrixJson = {path: pathMatrixStr, foo: fooMatrixStr};
-
-        return { path: foo, matrix: matrixJson};
+        return {path: foo, matrix: matrix};
     }
 }

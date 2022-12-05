@@ -1,2 +1,2 @@
-$ curl "http://localhost:9090/params;a=4;b=5/value1;x=10;y=15"
-{"path":"value1", "matrix":{"path":"a=4, b=5", "foo":"x=10, y=15"}}
+$ curl "http://localhost:9090/params;a=4;b=5/value1"
+{"path":"value1", "matrix":{"a":"4", "b":"5"}}
