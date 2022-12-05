@@ -1,6 +1,6 @@
-# HTTP service - Sending cache response
+# REST service - Sending cache response
 
-HTTP service can send cache response by population cache controls in the response.
+HTTP service can send cache response by adding `http:Cache` annotation to the return type.
 
 ::: code http_service_cache_response.bal :::
 
@@ -13,5 +13,5 @@ Run the service by executing the following command.
 Invoke the service via the [Caching client](/learn/by-example/http-caching-client).
 
 ## Related links
-- [`http:ResponseCacheControl` - API documentation](https://lib.ballerina.io/ballerina/http/latest/classes/ResponseCacheControl)
+- [`http:HttpCacheConfig` record - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/HttpCacheConfig)
 - [`http` package - Specification](/spec/http/#53-matrix)
