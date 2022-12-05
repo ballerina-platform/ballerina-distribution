@@ -1,6 +1,6 @@
 # REST service - Send response
 
-The resource method can return `anydata` type, an `http:Response` object, `StatusCodeResponse` records along with `error?`. Instead of using an `http:Caller`, the response can be sent similarly by returning from the method. When returning `anydata`, the `@http:Payload` annotation can be used to specify the `Content-type` of the response additionally. Otherwise, the default content type of the respective return value type will be added.
+The resource method can return `anydata` type. In that case, the `Content-type` header of the response is automatically infered from the return type. Additionally, the `@http:Payload` annotation on the return type can be used to overwrite the `Content-type`. The resource function can also return `error`. In that case, a `500 Internal Server Error` will be returned with the error message in the body.
 
 ::: code http_send_response.bal :::
 
