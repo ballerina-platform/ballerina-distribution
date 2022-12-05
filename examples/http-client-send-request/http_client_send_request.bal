@@ -14,7 +14,7 @@ public function main() returns error? {
     // Set the album record as the payload of the http request.
     httpRequest.setPayload(album);
 
-    // Sends a `POST` request to the "/albums" resource.
+    // Send a `POST` request to the "/albums" resource.
     Album albums = check albumClient->/albums.post(httpRequest);
     io:println("POST request:" + albums.toJsonString());
 }
