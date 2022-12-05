@@ -2245,6 +2245,14 @@
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "Retry on failure",
+                "url": "websocket-retry-client",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -2406,12 +2414,12 @@
         ]
     },
     {
-        "title": "WebSub",
+        "title": "WebSub service",
         "column": 1,
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Websub service",
+                "name": "Consume github events",
                 "url": "websub-webhook-sample",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2730,6 +2738,15 @@
                 "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "Constraint validation",
+                "url": "nats-service-constraint-validation",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -2975,6 +2992,15 @@
                 "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "Constraint validation",
+                "url": "rabbitmq-service-constraint-validation",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -3013,6 +3039,15 @@
             {
                 "name": "Transactional producer",
                 "url": "rabbitmq-transaction-producer",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Constraint validation",
+                "url": "rabbitmq-client-constraint-validation",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",

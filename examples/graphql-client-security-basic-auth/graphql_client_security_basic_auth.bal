@@ -19,7 +19,7 @@ public function main() returns error? {
             username: "ldclakmal",
             password: "ldclakmal@123"
         },
-            secureSocket = {
+        secureSocket = {
             cert: "../resource/path/to/public.crt"
         }
     );
