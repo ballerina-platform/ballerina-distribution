@@ -1,0 +1,2 @@
+$ bal run http_client_send_request.bal
+POST request:{"title":"Sarah Vaughan and Clifford Brown", "artist":"Sarah Vaughan"}

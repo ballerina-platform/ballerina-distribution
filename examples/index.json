@@ -1835,6 +1835,14 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Request object",
+                "url": "http-client-send-request",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Request with multiparts",
                 "url": "http-request-with-multiparts",
                 "verifyBuild": false,
@@ -1854,6 +1862,14 @@
                 "name": "HTTP/2 prior knowledge",
                 "url": "http-2-prior-knowledge-client",
                 "verifyBuild": false,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "HTTP 2.0 server push",
+                "url": "http-2-0-server-push",
+                "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
