@@ -2,11 +2,11 @@
 
 HTTP cookies can track, personalize, and manage the session in the service and client.
 
-::: code http_cookie_service.bal :::
+::: code http_cookies_service.bal :::
 
 Run the service as follows.
 
-::: out http_cookie_service.out :::
+::: out http_cookies_service.out :::
 
 >**Info:** You can invoke the above service via the [Cookies client](/learn/by-example/http-cookies-client/)
 
