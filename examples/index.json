@@ -1820,7 +1820,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "HTTP 2.0 server push",
+                "name": "HTTP/2 server push",
                 "url": "http-2-0-server-push",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1891,7 +1891,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "HTTP 2.0 server push",
+                "name": "HTTP/2 server push",
                 "url": "http-2-0-client-server-push",
                 "verifyBuild": true,
                 "verifyOutput": false,
