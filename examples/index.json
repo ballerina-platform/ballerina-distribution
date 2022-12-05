@@ -1459,7 +1459,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Sending cache response",
+                "name": "Send cache response",
                 "url": "http-service-cache-response",
                 "verifyBuild": true,
                 "verifyOutput": false,

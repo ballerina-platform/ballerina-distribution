@@ -1,4 +1,4 @@
-# REST service - Sending cache response
+# REST service - Send cache response
 
 HTTP service can send cache response by adding `http:Cache` annotation to the return type.
 
