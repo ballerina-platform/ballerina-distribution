@@ -1,7 +1,7 @@
 import ballerina/http;
+import ballerina/sql;
 import ballerinax/mysql;
 import ballerinax/mysql.driver as _;
-import ballerina/sql;
 
 // Defines a record to load the query result.
 type Album record {|
@@ -21,14 +21,15 @@ service / on new http:Listener(8080) {
                             password = "Test@123", database = "MUSIC_STORE");
     }
 
-    resource function post albums(@http:Payload Album[] albums) returns http:Created|error {
-        // Create a batch parameterized query.
-        sql:ParameterizedQuery[] insertQueries = from Album album in albums
-            select `INSERT INTO albums (id, title, artist, price)
-                    VALUES (${album.id}, ${album.title}, ${album.artist}, ${album.price})`;
+    resource function get albums/[string id]() returns Album|http:NotFound|error {
+        // Execute simple query to fetch record with requested id.
+        Album|sql:Error result = self.db->queryRow(`SELECT * FROM albums WHERE id = ${id}`);
 
-        // Inserts records in a batch.
-        _ = check self.db->batchExecute(insertQueries);
-        return http:CREATED;
+        // Check if record is available or not
+        if result is sql:NoRowsError {
+            return http:NOT_FOUND;
+        } else {
+            return result;
+        }
     }
 }

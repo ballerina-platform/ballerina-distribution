@@ -1,37 +1,34 @@
-import ballerina/io;
-import ballerinax/mysql;
+import ballerina/http;
 import ballerina/sql;
+import ballerinax/mysql;
 import ballerinax/mysql.driver as _;
 
 // Defines a record to load the query result.
-type Customer record {|
-    @sql:Column {name: "customer_id"}
-    int customerId;
+type Artist record {|
+    @sql:Column {name: "artist_id"}
+    int artistId;
     @sql:Column {name: "last_name"}
     string lastName;
     @sql:Column {name: "first_name"}
     string firstName;
 |};
 
-public function main() returns error? {
+service / on new http:Listener(8080) {
+    private final mysql:Client db;
 
-    // Initializes the MySQL client. The `mysqlClient` can be reused to access the database throughout the application execution.
-    mysql:Client mysqlClient = check new (host = "localhost", port = 3306, user = "root",
-                                          password = "Test@123", database = "CUSTOMER");
+    function init() returns error? {
+        // Initiate the mysql client at the start of the service. This will be used
+        // throughout the lifetime of the service.
+        self.db = check new (host = "localhost", port = 3306, user = "root",
+                            password = "Test@123", database = "MUSIC_STORE");
+    }
 
-    // Query table with a condition.
-    stream<Customer, error?> resultStream = mysqlClient->query(`SELECT * FROM Customers;`);
+    resource function get artists() returns Artist[]|error {
+        // Execute simple query to retrieve all records from the `artist` table.
+        stream<Artist, sql:Error?> artistStream = self.db->query(`SELECT * FROM artists;`);
 
-    // Iterates the result stream.
-    check from Customer customer in resultStream
-        do {
-            io:println(`Customer details: ${customer}`);
-        };
-
-    // Closes the stream to release the resources.
-    check resultStream.close();
-
-    // Closes the MySQL client.
-    check mysqlClient.close();
-
+        // Process the stream and convert results to Artist[] or return error.
+        return check from Artist artist in artistStream
+            select artist;
+    }
 }

@@ -1,0 +1,1 @@
+$ curl http://localhost:8080/albums -d "[{\"id\": \"B-121\", \"title\": \"Anti\", \"artist\":\"Rihanna\", \"price\": 23.99}]" -H "Content-Type: application/json"
