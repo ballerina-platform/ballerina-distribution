@@ -2089,6 +2089,14 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Handle partial response",
+                "url": "graphql-client-handle-partial-response",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Handle error response",
                 "url": "graphql-client-error-handling",
                 "verifyBuild": true,
