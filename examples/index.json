@@ -2391,12 +2391,12 @@
         ]
     },
     {
-        "title": "WebSub",
+        "title": "WebSub service",
         "column": 1,
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Websub service",
+                "name": "Consume github events",
                 "url": "websub-webhook-sample",
                 "verifyBuild": true,
                 "verifyOutput": false,

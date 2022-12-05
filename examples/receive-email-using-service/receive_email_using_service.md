@@ -14,4 +14,4 @@ Run the email service by executing the following command.
 ## Related links
 - [`email:PopListener` listener object - API documentation](https://lib.ballerina.io/ballerina/email/latest/classes/PopListener)
 - [`email:PopListener` listener object - API documentation](https://lib.ballerina.io/ballerina/email/latest/classes/ImapListener)
-- [`email` service - specification](https://ballerina.io/spec/email/#4-service)
+- [`email` service - Specification](https://ballerina.io/spec/email/#4-service)
