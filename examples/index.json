@@ -2245,14 +2245,6 @@
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
-            },
-            {
-                "name": "Retry on failure",
-                "url": "websocket-retry-client",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
             }
         ]
     },
@@ -2383,6 +2375,29 @@
             {
                 "name": "OAuth2 JWT bearer grant type",
                 "url": "websocket-client-oauth2-jwt-bearer-grant-type",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "WebSocket client resiliency",
+        "column": 1,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Timeout",
+                "url": "websocket-timeout-client",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Retry",
+                "url": "websocket-retry-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
