@@ -1,0 +1,2 @@
+description: BBE on validating a payload according to the constraints defined in the payload record.
+keywords: ballerina, ballerina by example, bbe, nats, consumer, listener, service, constraint, validation
