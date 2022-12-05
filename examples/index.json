@@ -2715,6 +2715,15 @@
                 "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "Constraint validation",
+                "url": "nats-service-constraint-validation",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -2960,6 +2969,15 @@
                 "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "Constraint validation",
+                "url": "rabbitmq-service-constraint-validation",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -2998,6 +3016,15 @@
             {
                 "name": "Transactional producer",
                 "url": "rabbitmq-transaction-producer",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Constraint validation",
+                "url": "rabbitmq-client-constraint-validation",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
