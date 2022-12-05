@@ -2245,14 +2245,6 @@
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
-            },
-            {
-                "name": "Retry on failure",
-                "url": "websocket-retry-client",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
             }
         ]
     },
