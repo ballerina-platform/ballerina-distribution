@@ -18,6 +18,8 @@
 
 package org.ballerina.projectapi;
 
+import io.ballerina.projects.util.ProjectConstants;
+import io.ballerina.projects.util.ProjectUtils;
 import okhttp3.Call;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -70,6 +72,9 @@ public class CentralTestUtils {
     static final String JAVA11_PLATFORM = "java11";
     static final String BALLERINA_ARTIFACT_TYPE = "bala";
     static final String OUTPUT_NOT_CONTAINS_EXP_MSG = "build output does not contain expected message:";
+    static final String CANNOT_RESOLVE_MODULE_MSG = "cannot resolve module '";
+    static final String DEPENDENCY_PULLING_ERR_MSG = "error: dependency pulling contains errors";
+    static final String PULLED_FROM_CENTRAL_MSG = " pulled from central successfully";
 
     /**
      * Generate random package name.
@@ -115,8 +120,8 @@ public class CentralTestUtils {
      *
      * @return token required to dispatch GitHub workflows.
      */
-    public static String getBallerinaBotToken() {
-        return System.getenv("ballerinaBotToken");
+    public static String getBallerinaBotWorkflow() {
+        return System.getenv("ballerinaBotWorkflow");
     }
 
     /**
@@ -422,18 +427,14 @@ public class CentralTestUtils {
     /**
      * Delete the packages pushed during project API tests.
      *
-     * @param caller the test class calling this method
      * @throws IOException if request could not be handled
      */
-    public static void deleteTestPackagesFromCentral(String caller) throws IOException {
+    public static void deleteTestPackagesFromCentral() throws IOException {
         String ghOrg = "wso2-enterprise";
         String ghRepo = "ballerina-registry";
         String workflowId = "30610274";
         String branch = "main";
-        boolean isWorkflowDispatched = dispatchGitWorkflow(ghOrg, ghRepo, workflowId, branch);
-        if (!isWorkflowDispatched) {
-            Assert.fail("Failed deleting test packages from central after " + caller + " tests");
-        }
+        dispatchGitWorkflow(ghOrg, ghRepo, workflowId, branch);
     }
 
     /**
@@ -443,10 +444,9 @@ public class CentralTestUtils {
      * @param ghRepo GitHub repository
      * @param workflowId GitHub workflow ID
      * @param branch branch name which the workflow runs against
-     * @return true if workflow API call is successful, else false
      * @throws IOException if request could not be handled
      */
-    public static boolean dispatchGitWorkflow(String ghOrg, String ghRepo, String workflowId, String branch)
+    public static void dispatchGitWorkflow(String ghOrg, String ghRepo, String workflowId, String branch)
             throws IOException {
         String url = "https://api.github.com/repos/" + ghOrg + "/" + ghRepo
                 + "/actions/workflows/" + workflowId + "/dispatches";
@@ -457,11 +457,22 @@ public class CentralTestUtils {
         Request resolutionReq = new Request.Builder()
                 .post(requestBody)
                 .url(url)
-                .addHeader("Authorization", "Bearer " + getBallerinaBotToken())
+                .addHeader("Authorization", "Bearer " + getBallerinaBotWorkflow())
                 .build();
         Call resolutionReqCall = client.newCall(resolutionReq);
         try (Response response = resolutionReqCall.execute()) {
-            return response.code() == HTTP_NO_CONTENT;
+            if (response.code() != HTTP_NO_CONTENT) {
+                Assert.fail("Failed gh workflow dispatch " + url + " with code:" + response.code() + " and "
+                        + response.body().string());
+            }
         }
+    }
+
+    public static void deleteBalaOfPackage(String orgName, String packageName) {
+        Path balaPath = ProjectUtils.createAndGetHomeReposPath().resolve(ProjectConstants.REPOSITORIES_DIR)
+                .resolve(ProjectConstants.CENTRAL_REPOSITORY_CACHE_NAME).resolve(ProjectConstants.BALA_DIR_NAME)
+                .resolve(orgName);
+        Path packagePath = balaPath.resolve(packageName);
+        ProjectUtils.deleteDirectory(packagePath);
     }
 }
