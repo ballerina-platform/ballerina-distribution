@@ -1,2 +1,0 @@
-$ bal run kafka_authentication_sasl_plain_producer.bal
-Message published successfully.

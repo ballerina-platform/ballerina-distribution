@@ -1,0 +1,2 @@
+$ bal run nats-basic-request.bal
+Reply message: Hello Back!

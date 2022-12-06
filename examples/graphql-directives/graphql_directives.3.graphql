@@ -1,0 +1,10 @@
+{
+    __type(name: "Gender") {
+        name
+        enumValues {
+            name
+            isDeprecated
+            deprecationReason
+        }
+    }
+}

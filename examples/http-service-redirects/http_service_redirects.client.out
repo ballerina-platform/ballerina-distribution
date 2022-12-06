@@ -1,0 +1,31 @@
+$ curl -v http://localhost:9090/redirect -L
+> GET /redirect HTTP/1.1
+> Host: localhost:9090
+> User-Agent: curl/7.64.1
+> Accept: */*
+>
+< HTTP/1.1 307 Temporary Redirect
+< location: http://localhost:9092/greeting
+< content-length: 0
+< server: ballerina
+< date: Tue, 22 Nov 2022 11:15:46 +0530
+<
+* Connection #0 to host localhost left intact
+* Issue another request to this URL: 'http://localhost:9092/greeting'
+* Found bundle for host localhost: 0x7fef816187a0 [can pipeline]
+* Could pipeline, but not asked to!
+*   Trying ::1...
+* TCP_NODELAY set
+* Connected to localhost (::1) port 9092 (#1)
+> GET /greeting HTTP/1.1
+> Host: localhost:9092
+> User-Agent: curl/7.64.1
+> Accept: */*
+>
+< HTTP/1.1 200 OK
+< content-type: text/plain
+< content-length: 12
+< server: ballerina
+< date: Tue, 22 Nov 2022 11:15:46 +0530
+<
+Hello World!* Closing connection 0

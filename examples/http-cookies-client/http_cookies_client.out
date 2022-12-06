@@ -1,0 +1,3 @@
+$ bal run http_client.bal
+time = 2022-12-05T18:29:26.378+05:30 level = INFO module = "" message = "Login succeeded"
+time = 2022-12-05T18:29:26.441+05:30 level = INFO module = "" message = "Welcome back John"

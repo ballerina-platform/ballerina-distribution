@@ -1,62 +1,56 @@
 import ballerina/graphql;
 
-service /graphql on new graphql:Listener(4000) {
+// Define the interface `Profile` using a `distinct` `service` object.
+type Profile distinct service object {
 
-    // Returning the `Animal` type from a GraphQL resolver will idenitify it as an interface
-    resource function get animals() returns Animal[] {
-        return [new Leopard(), new Elephant()];
-    }
-}
-
-// Define the interface `Animal` using a `distinct` `service` object
-public type Animal distinct service object {
-
-    // Define the field `name` as a resource function definition
+    // Define the field `name` as a resource method definition.
     resource function get name() returns string;
 };
 
-// Define another interface `Mammal`, that implements `Animal` interface
-public type Mammal distinct service object {
+// Define the `Teacher` class implementing the `Profile` interface.
+distinct service class Teacher {
+    // This denotes that this object implements the `Profile` interface.
+    *Profile;
 
-    // This denotes that this interface implements the `Animal` interface
-    *Animal;
+    private final string name;
+    private final string subject;
 
-    // Add an additional field to the `Mammal` interface
-    resource function get call() returns string;
-};
+    function init(string name, string subject) {
+        self.name = name;
+        self.subject = subject;
+    }
 
-// Define the `Leopard` class implementing the `Mammal` interface
-public distinct service class Leopard {
-
-    // This denotes that this object implements the `Mammal` interface
-    *Mammal;
-
-    // Since this object implements the `Mammal` interface and the `Mammal` interface implements the
-    // `Animal` interface, this object must implement the fields from the `Animal` interface
+    // Since this object implements the `Profile` interface, this object must implement the fields
+    // of the `Profile` interface.
     resource function get name() returns string {
-        return "Panthera pardus kotiya";
+        return self.name;
     }
 
-    // Implement the `call` field from the `Mammal` interface
-    resource function get call() returns string {
-        return "Growl";
-    }
-
-    // Add an additional field `location` to the `Leopard` class
-    resource function get location() returns string {
-        return "Wilpaththu";
+    // Add an additional field `subject` to the `Teacher` class
+    resource function get subject() returns string {
+        return self.subject;
     }
 }
 
-// Another class implementing the `Mammal` class
-public distinct service class Elephant {
-    *Mammal;
+// Another class implementing the `Profile` interface.
+distinct service class Student {
+    *Profile;
 
-    resource function get name() returns string {
-        return "Elephas maximus maximus";
+    private final string name;
+
+    function init(string name) {
+        self.name = name;
     }
 
-    resource function get call() returns string {
-        return "Trumpet";
+    resource function get name() returns string {
+        return "Jesse Pinkman";
+    }
+}
+
+service /graphql on new graphql:Listener(9090) {
+
+    // Returning the `Profile[]` type from a GraphQL resolver will identify it as an interface.
+    resource function get profiles() returns Profile[] {
+        return [new Teacher("Walter White", "Chemistry"), new Student("Jesse Pinkman")];
     }
 }

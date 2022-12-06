@@ -1,6 +1,11 @@
 import ballerina/graphql;
 
-listener graphql:Listener securedEP = new(4000,
+type Profile record {|
+    string name;
+    int age;
+|};
+
+listener graphql:Listener securedEP = new (9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -32,7 +37,10 @@ listener graphql:Listener securedEP = new(4000,
     ]
 }
 service /graphql on securedEP {
-    resource function get greeting() returns string {
-        return "Hello, World!";
+    resource function get profile() returns Profile {
+        return {
+            name: "Walter White",
+            age: 50
+        };
     }
 }

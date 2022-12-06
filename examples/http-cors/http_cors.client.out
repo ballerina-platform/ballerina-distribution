@@ -7,14 +7,15 @@ $ curl -v "http://localhost:9092/crossOriginService/company" -H "Origin:http://w
 > Origin:http://www.bbc.com
 >
 < HTTP/1.1 200 OK
-< content-type: application/json
+< content-type: text/plain
 < access-control-allow-origin: http://www.bbc.com
 < access-control-allow-credentials: true
-< content-length: 21
+< content-length: 10
 < server: ballerina
+< date: Sat, 22 Oct 2022 20:51:49 +0530
 <
-* Connection #0 to host localhost left intact.
-{"type":"middleware"}* Closing connection 0
+* Connection #0 to host localhost left intact
+middleware* Closing connection 0
 
 # To send a CORS preflight request.
 $ curl -v "http://localhost:9092/crossOriginService/lang" -X OPTIONS -H "Origin:http://www.m3.com" -H "Access-Control-Request-Method:POST"
@@ -29,8 +30,8 @@ $ curl -v "http://localhost:9092/crossOriginService/lang" -X OPTIONS -H "Origin:
 < access-control-allow-origin: http://www.m3.com
 < access-control-max-age: 84900
 < access-control-allow-methods: POST
-< content-length: 0
 < server: ballerina
+< date: Sat, 22 Oct 2022 20:53:12 +0530
 <
 * Connection #0 to host localhost left intact
 * Closing connection 0
