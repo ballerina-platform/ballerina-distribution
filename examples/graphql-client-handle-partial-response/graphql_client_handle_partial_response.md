@@ -16,4 +16,4 @@ Run the client program by executing the following command.
 ## Related links
 - [`graphql:Client` client object - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/clients/Client)
 - [`graphql:GenericResponseWithErrors` record - API documentation](https://lib.ballerina.io/ballerina/graphql/1.4.4/records/GenericResponseWithErrors)
-- [GrapHQL client - Specification](/spec/graphql/#25-client)
+- [GraphQL client - Specification](/spec/graphql/#25-client)
