@@ -1,5 +1,5 @@
-// Port on which to run the service.
-configurable int port = 8080;
+// The host of the database server.
+configurable string dbHost = "localhost";
 
 //`configurable string password = ?;`
 //
