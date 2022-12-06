@@ -1520,7 +1520,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Caching",
+                "name": "Enable caching",
                 "url": "http-caching-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
