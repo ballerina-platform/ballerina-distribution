@@ -9,12 +9,17 @@ import ballerina/io;
 // the meta information on protocol extensions from the GraphQL server.
 type ProfileResponse record {|
     *graphql:GenericResponseWithErrors;
-    record {|Profile profile?;|} data;
+    record {|Profile profile;|} data;
 |};
 
+// If `Field Errors` are raised from the GraphQL server side for the `age` and `name` fields then
+// the server sets `null` values for these fields. If these fields are of `NON_NULL` type then the
+// errors are further propagated to their parent fields. The following record type defines the
+// shape of the response from a GraphQL service which allows the `name` and `age` fields to have a
+// `null` value.
 type Profile record {|
-    string name;
-    int age;
+    string? name;
+    int? age;
 |};
 
 public function main() returns error? {
