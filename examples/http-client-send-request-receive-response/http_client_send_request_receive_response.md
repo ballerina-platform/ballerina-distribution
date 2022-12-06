@@ -1,6 +1,6 @@
 # HTTP client - Send request/Receive response
 
-The HTTP client can be used to connect to and interact with an HTTP server. The client is instantiated with URL and uses resource method to make the network calls. The standard HTTP methods `get`, `post`, `put`, `patch`, `delete`, `head`, `options` are available as resource methods and can be invoked as same as invoking a remote method. To invoke an HTTP method, the relevant verb and the required arguments can be provided after the `->`. For `get` method, the verb is not explicitly needed since it will be defaulted.
+The HTTP client can be used to connect to and interact with an HTTP server. The client is instantiated with the URL and uses the resource method to make the network calls. The standard HTTP methods `get`, `post`, `put`, `patch`, `delete`, `head`, and `options` are available as resource methods and can be invoked as same as invoking a remote method. To invoke an HTTP method, the relevant verb and the required arguments can be provided after the `->`. For `get` method, the verb is not explicitly needed since it will be defaulted.
 
 ::: code http_client_send_request_receive_response.bal :::
 

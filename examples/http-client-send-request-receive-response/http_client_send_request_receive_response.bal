@@ -16,7 +16,7 @@ public function main() returns error? {
     io:println("GET request:" + albums.toJsonString());
 
     // Sends a `POST` request to the "/albums" resource.
-    Album album  = check albumClient->/albums.post({
+    Album album = check albumClient->/albums.post({
         title: "Sarah Vaughan and Clifford Brown",
         artist: "Sarah Vaughan"
     });
