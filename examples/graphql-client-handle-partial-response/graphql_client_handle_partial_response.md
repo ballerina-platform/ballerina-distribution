@@ -1,6 +1,6 @@
 # GraphQL client - Handle partial response
 
-A GraphQL service can return a partial response having both errors and data fields when there are `Field errors` raised at the service side during the execution of an operation.
+A GraphQL service can return a partial response having both errors and data fields when there are errors occurred during the execution of a field on the service side. If a field is allowed to have a null value in the GraphQL schema, then when defining the user-defined types on the client side, that field needs to be specified as a nullable field. Otherwise a `graphql:PayloadBindingError` may be returned when calling the client `execute()` method.
 
 This example shows how to retrieve the partial data and graphql `Field errors` in a user-defined type.
 
@@ -16,4 +16,5 @@ Run the client program by executing the following command.
 ## Related links
 - [`graphql:Client` client object - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/clients/Client)
 - [`graphql:GenericResponseWithErrors` record - API documentation](https://lib.ballerina.io/ballerina/graphql/1.4.4/records/GenericResponseWithErrors)
+- [`graphql:PayloadBindingError` error - API documentation](https://lib.ballerina.io/ballerina/graphql/1.5.0/errors#PayloadBindingError)
 - [GraphQL client - Specification](/spec/graphql/#25-client)
