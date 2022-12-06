@@ -1,2 +1,2 @@
-$ curl http://localhost:9090/hello
+$ curl http://localhost:9090/trace
 200 OK

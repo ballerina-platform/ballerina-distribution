@@ -1,20 +1,13 @@
 import ballerina/graphql;
 
-public type Person record {
+type Profile record {
     string name;
     int age;
     Gender gender;
-    Address address;
-};
-
-public type Address record {
-    string number;
-    string street;
-    string city;
 };
 
 // Marking enum value as deprecated.
-public enum Gender {
+enum Gender {
     MALE,
     FEMALE,
     # # Deprecated
@@ -24,27 +17,24 @@ public enum Gender {
     OTHER
 }
 
-Person person = {
-    name: "Walter White",
-    age: 51,
-    gender: MALE,
-    address: {
-        number: "308",
-        street: "Negra Arroyo Lane",
-        city: "Albuquerque"
-    }
-};
-
-service /graphql on new graphql:Listener(4000) {
+service /graphql on new graphql:Listener(9090) {
     // Marking a field as deprecated.
     # # Deprecated
-    # The `person` field is deprecated. Use `profile` instead.
+    # The `profile` field is deprecated. Use `profile` instead.
     @deprecated
-    resource function get person() returns Person {
-        return person;
+    resource function get profileeeeeee() returns Profile {
+        return {
+            name: "Walter White",
+            age: 51,
+            gender: MALE
+        };
     }
 
-    resource function get profile() returns Person {
-        return person;
+    resource function get profile() returns Profile {
+        return {
+            name: "Walter White",
+            age: 51,
+            gender: MALE
+        };
     }
 }

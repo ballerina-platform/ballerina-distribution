@@ -1,15 +1,24 @@
-# Simple query
+# Database Access - Simple query
 
 This BBE demonstrates how to use the MySQL client select query operations with the stream return type. 
 
-For more information on the underlying module, see the [`mysql` module](https://lib.ballerina.io/ballerinax/mysql/latest/).
+This BBE is written in the context of an album microservice.
 
-::: code mysql_query_operation.bal :::
+> **Tip**: Checkout [`ballerinax/mssql`](https://central.ballerina.io/ballerinax/mssql), [`ballerinax/postgresql`](https://central.ballerina.io/ballerinax/postgresql), [`ballerinax/oracledb`](https://central.ballerina.io/ballerinax/oracledb), [`ballerinax/java.jdbc`](https://central.ballerina.io/ballerinax/java.jdbc) for other supported database clients.
 
-::: out mysql_query_operation.out :::
+::: code mysql_simple_query.bal :::
 
-The following util files will initialize the test database before running the BBE and clean it up afterward.
+## Prerequisites
+- Set up the MySQL database - Run the [prerequisite.bal](https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/mysql-query-operation/prerequisites/prerequisite.bal) file by executing the command `bal run`.
 
-::: code initialize.bal :::
+Run the service.
 
-::: code cleanup.bal :::
+::: out mysql_simple_query.server.out :::
+
+Invoke the service by executing the following cURL command in a new terminal.
+
+::: out mysql_simple_query.client.out :::
+
+## Related links
+- [`mysql:Client` - API documentation](https://lib.ballerina.io/ballerinax/mysql/latest/)
+- [`mysql:Client` - Specification](https://github.com/ballerina-platform/module-ballerinax-mysql/blob/master/docs/spec/spec.md#2-client)

@@ -1,6 +1,0 @@
-# Create a Ballerina project.
-# Copy the example to the project.
-# Execute the command below to build and run the project.
-$ bal run
-
-Insert success, generated IDs are: [1,2,3]

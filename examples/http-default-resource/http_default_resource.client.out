@@ -1,2 +1,2 @@
-$ curl "http://localhost:9090/foo/bar" -X POST
-{"method":"POST", "path":["foo", "bar"]}
+$ curl "http://localhost:9090/foo/bar"
+method: GET, path: ["foo","bar"]

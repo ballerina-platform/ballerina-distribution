@@ -4,7 +4,6 @@ import ballerina/grpc;
 // To secure a listener using SSL/TLS, the listener needs to be configured
 // with a certificate file and a private key file for the listener.
 // The `grpc:ListenerSecureSocket` record provides the SSL-related listener configurations of the listener.
-// For details, see https://lib.ballerina.io/ballerina/grpc/latest/records/ListenerSecureSocket.
 listener grpc:Listener securedEP = new (9090,
     secureSocket = {
         key: {
@@ -14,11 +13,11 @@ listener grpc:Listener securedEP = new (9090,
     }
 );
 
-@grpc:ServiceDescriptor {
-    descriptor: GRPC_SERVICE_DESC
+@grpc:Descriptor {
+    value: GRPC_SIMPLE_DESC
 }
 service "HelloWorld" on securedEP {
-    remote function hello() returns string {
-        return "Hello, World!";
+    remote function hello(string request) returns string {
+        return "Hello " + request;
     }
 }

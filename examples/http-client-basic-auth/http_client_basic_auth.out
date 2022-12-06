@@ -1,2 +1,0 @@
-$ bal run http_client_basic_auth.bal
-Hello, World!

@@ -3,12 +3,9 @@ import ballerina/io;
 import ballerina/log;
 import ballerina/mime;
 
-// Creates an endpoint for the client.
-http:Client clientEP = check new ("http://localhost:9092");
-
 service /multiparts on new http:Listener(9092) {
 
-    resource function get encode_out_response() returns http:Response {
+    resource function get encoder() returns http:Response {
         // Creates an enclosing entity to hold the child parts.
         mime:Entity parentPart = new;
 
@@ -24,7 +21,6 @@ service /multiparts on new http:Listener(9092) {
         // Creates an array to hold the child parts.
         mime:Entity[] childParts = [childPart1, childPart2];
         // Sets the child parts to the parent part.
-        // For details, see https://lib.ballerina.io/ballerina/mime/latest/classes/Entity#setBodyParts.
         parentPart.setBodyParts(childParts,
             contentType = mime:MULTIPART_MIXED);
         // Creates an array to hold the parent part and set it to the response.
@@ -39,24 +35,16 @@ service /multiparts on new http:Listener(9092) {
 service /multiparts on new http:Listener(9090) {
 
     // This resource accepts multipart responses.
-    resource function get decode_in_response() returns string|http:InternalServerError {
-        http:Response|error returnResult = clientEP->get("/multiparts/encode_out_response");
-        if (returnResult is http:Response) {
-            // Extracts the body parts from the response.
-            // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Response#getBodyParts.
-            var parentParts = returnResult.getBodyParts();
-            if (parentParts is mime:Entity[]) {
-                //Loops through body parts.
-                foreach var parentPart in parentParts {
-                    handleNestedParts(parentPart);
-                }
-                return "Body Parts Received!";
-            } else {
-                return { body: "Invalid payload"};
-            }
-        } else {
-            return { body: "Connection error"};
+    resource function get decoder() returns string|http:InternalServerError|error {
+        http:Client httpClient = check new ("localhost:9092");
+        http:Response returnResult = check httpClient->/multiparts/encoder;
+        // Extracts the body parts from the response.
+        mime:Entity[] parentParts = check returnResult.getBodyParts();
+        //Loops through body parts.
+        foreach var parentPart in parentParts {
+            handleNestedParts(parentPart);
         }
+        return "Body Parts Received!";
     }
 }
 
@@ -82,7 +70,6 @@ function handleContent(mime:Entity bodyPart) {
     string baseType = getBaseType(bodyPart.getContentType());
     if (mime:APPLICATION_XML == baseType || mime:TEXT_XML == baseType) {
         // Extracts XML data from the body part.
-        // For details, see https://lib.ballerina.io/ballerina/mime/latest/classes/Entity#getXml.
         var payload = bodyPart.getXml();
         if (payload is xml) {
              log:printInfo("XML data: " + payload.toString());
@@ -91,7 +78,6 @@ function handleContent(mime:Entity bodyPart) {
         }
     } else if (mime:APPLICATION_JSON == baseType) {
         // Extracts JSON data from the body part.
-        // For details, see https://lib.ballerina.io/ballerina/mime/latest/classes/Entity#getJson.
         var payload = bodyPart.getJson();
         if (payload is json) {
             log:printInfo("JSON data: " + payload.toJsonString());
@@ -100,7 +86,6 @@ function handleContent(mime:Entity bodyPart) {
         }
     } else if (mime:TEXT_PLAIN == baseType) {
         // Extracts text data from the body part.
-        // For details, see https://lib.ballerina.io/ballerina/mime/latest/classes/Entity#getText.
         var payload = bodyPart.getText();
         if (payload is string) {
             log:printInfo("Text data: " + payload);
@@ -109,7 +94,6 @@ function handleContent(mime:Entity bodyPart) {
         }
     } else if (mime:APPLICATION_PDF == baseType) {
         // Extracts the byte stream from the body part and saves it as a file.
-        // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Response#getByteStream.
         var payload = bodyPart.getByteStream();
         if (payload is stream<byte[], io:Error?>) {
             //Writes the incoming stream to a file using the `io:fileWriteBlocksFromStream` API by providing the file location to which the content should be written.

@@ -1,15 +1,13 @@
-# Client - Bearer Token Auth
+# WebSocket client - Bearer token authentication
 
-A client, which is secured with Bearer token auth can be used to connect to a secured service.
-
-The client is enriched with the `Authorization: Bearer <token>` header by passing the `websocket:BearerTokenConfig` for the `auth` configuration of the client.
-
->**Tip:** You may need to change the trusted certificate file path in the code below.
+A client, which is secured with Bearer token authentication can be used to connect to a secured service. The client is enriched with the `Authorization: Bearer <token>` header by passing the `websocket:BearerTokenConfig` for the `auth` configuration of the client.
 
 ::: code websocket_client_bearer_token_auth.bal :::
 
 Run the client program by executing the command below.
 
->**Info:** As a prerequisite to running the client, start a secured sample service.
-
 ::: out websocket_client_bearer_token_auth.out :::
+
+## Related Links
+- [`websocket` package - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
+- [WebSocket authentication - Specification](/spec/websocket/#52-authentication-and-authorization)

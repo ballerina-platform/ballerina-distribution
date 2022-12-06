@@ -1,0 +1,11 @@
+{
+    profile {
+        name
+        ... on Teacher {
+            school
+            ... on HighSchoolTeacher {
+                subject
+            }
+        }
+    }
+}

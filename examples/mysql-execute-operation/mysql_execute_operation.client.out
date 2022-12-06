@@ -1,0 +1,2 @@
+curl http://localhost:8080/album -d "{\"id\": \"B-123\", \"title\": \"Loud\", \"artist\":\"Rihanna\", \"price\": 23.99}" -H "Content-Type: application/json"
+{"id":"B-123", "title":"Loud", "artist":"Rihanna", "price":23.99}

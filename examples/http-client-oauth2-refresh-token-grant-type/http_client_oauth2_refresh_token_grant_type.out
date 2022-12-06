@@ -1,2 +1,2 @@
 $ bal run http_client_oauth2_refresh_token_grant_type.bal
-Hello, World!
+[{"title":"Blue Train","artist":"John Coltrane"},{"title":"Jeru","artist":"Gerry Mulligan"}]

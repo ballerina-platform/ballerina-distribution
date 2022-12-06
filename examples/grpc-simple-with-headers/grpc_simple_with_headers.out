@@ -1,1 +1,0 @@
-$ bal grpc --input grpc_simple_with_headers.proto  --output stubs
