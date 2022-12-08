@@ -1,6 +1,6 @@
 # REST service - Payload constraint validation
 
-The request payload data binding also validates the payload against any constraints defined on the request payload type. If the validation fails, a 400 Bad Request response will be returned to the client with the validation error message and skip the resource method execution. Use this to directly validate the request payload with respect to the defined constraints.
+The request payload data binding also validates the payload against any constraints defined on the request payload type. If the validation fails, a 400 Bad Request response will be returned to the client with the validation error message and the resource method execution will be skipped. Use this to directly validate the request payload with respect to the defined constraints.
 
 ::: code http_service_payload_constraint_validation.bal :::
 
