@@ -49,6 +49,9 @@ service / on new http:Listener(8080) {
                 select 'order;
         }
 
+        // Cleans up resources.
+        check result.close();
+
         return {
             total: totalCount,
             orders: orders
