@@ -1,7 +1,7 @@
 import ballerina/http;
+import ballerina/sql;
 import ballerinax/mysql;
 import ballerinax/mysql.driver as _;
-import ballerina/sql;
 
 // The `Album` record to load records from `albums` table.
 type Album record {|
