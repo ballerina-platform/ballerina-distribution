@@ -1,6 +1,6 @@
 # Kafka service - SSL/TLS
 
-This shows how the SSL encryption is done in the `kafka:Listener`.
+This shows how the SSL encryption is done in the `kafka:Listener`. For this, provide `kafka:SecureSocket` with the relevant values and `kafka:SecurityProtocol` as `kafka:PROTOCOL_SSL` in the `kafka:ConsumerConfiguration`. Use this when the Kafka server is secured with SSL.
 
 ::: code kafka_service_ssl.bal :::
 

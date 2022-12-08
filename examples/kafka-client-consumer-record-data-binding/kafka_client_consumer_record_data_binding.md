@@ -1,8 +1,6 @@
 # Kafka client - Consumer record data binding
 
-This shows how to use a `kafka:Consumer` as a simple record consumer. The records from a subscribed topic can be retrieved using the `poll()` function. This consumer uses the builtin byte array deserializer for both the key and the value, which is the default deserializer in the `kafka:Consumer`.
-
-The received records are converted to the user defined type using data-binding.
+This example shows how to poll records from the Kafka broker and bind the record values to a user defined type. Define a required record type to data bind and create a subtype of `kafka:AnydataConsumerRecord` by providing the type of the `value` field as the created record type. The records from the subscribed topic can be retrieved using the `poll()` function. The received values will be bound to the target type internally. The consumer uses the builtin byte array deserializer for both the key and the value, which is the default deserializer in the `kafka:Consumer`. Use this API when you want the metadata like `kafka:PartitionOffset`, `timestamp` of the message as well.
 
 ::: code kafka_client_consumer_record_data_binding.bal :::
 

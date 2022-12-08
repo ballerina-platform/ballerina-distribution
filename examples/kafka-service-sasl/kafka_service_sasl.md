@@ -1,6 +1,6 @@
 # Kafka service - SASL authentication
 
-This shows how the SASL/PLAIN authentication is used in the `kafka:Listener`.
+This example shows how the SASL/PLAIN authentication is done in the `kafka:Listener`. To authenticate via SASL/PLAIN, the `kafka:AuthenticationConfiguration` must be provided along with `kafka:SecurityProtocol` as `kafka:PROTOCOL_SASL_PLAINTEXT` in the `kafka:ConsumerConfiguration`. Use this when the Kafka server is secured with SASL/PLAIN.
 
 ::: code kafka_service_sasl.bal :::
 

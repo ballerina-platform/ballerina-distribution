@@ -1,6 +1,6 @@
 # Kafka service - Consume message
 
-Here, a Kafka consumer is used as a listener to a service with automatic offset commits.
+This example shows how a `kafka:Listener` is used with a `kafka:Service` to listen to new messages in a topic. Create a `kafka:Listener` with default configurations and attach it to a `kafka:Service`. Provide the required payload type as the target type to the `onConsumerRecord` method to data bind internally. When new messages are received, the `onConsumerRecord` method will get invoked. Here, the offsets will be automatically committed. If you need to commit manually, disable `autoCommit` in `kafka:ConsumerConfiguration` and use the `commit()` API of `kafka:Caller`. To use `kafka:Caller`, add it as a second argument in the `onConsumerRecord` method. Use this when you need to listen to a Kafka topic and receive messages implicitly.
 
 ::: code kafka_service_consume_message.bal :::
 
