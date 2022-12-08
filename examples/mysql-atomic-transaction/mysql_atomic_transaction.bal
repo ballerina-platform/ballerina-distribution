@@ -2,7 +2,6 @@ import ballerina/http;
 import ballerinax/mysql;
 import ballerinax/mysql.driver as _;
 import ballerina/sql;
-import ballerina/io;
 
 // Defines a record to load the query result.
 type Order record {|
@@ -49,7 +48,6 @@ service / on new http:Listener(8080) {
                 if e.detail().errorCode == 3819 {
                     return error(string `Product ${salesOrder.productId} is out of stock.`);
                 }
-                io:println(e.detail().sqlState);
             }
             return e;
         }
