@@ -3,7 +3,7 @@ import ballerinax/mysql;
 import ballerinax/mysql.driver as _;
 import ballerina/sql;
 
-// Defines a record to load the query result.
+// The `Order` record to load records from `sales_order` table.
 type Order record {|
     string id;
     string orderDate;
@@ -34,7 +34,7 @@ service / on new http:Listener(8080) {
                                         SET quantity = quantity - ${salesOrder.quantity} 
                                         WHERE id = ${salesOrder.productId}`);
 
-            // If product not found rollback, or commit transaction.                            
+            // If the product is not found, rollback or commit transaction.
             if inventoryUpdate.affectedRowCount == 0 {
                 rollback;
                 return error(string `Product ${salesOrder.productId} not found.`);
