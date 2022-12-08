@@ -3,7 +3,7 @@ import ballerinax/mysql;
 import ballerinax/mysql.driver as _;
 import ballerina/sql;
 
-// The `Order` record to represent `sales_order` table.
+// The `Order` record to load records from `sales_order` table.
 type Order record {|
     string id;
     @sql:Column {name: "order_date"}
