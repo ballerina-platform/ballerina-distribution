@@ -2,9 +2,11 @@
 
 A GraphQL resource method can return service objects. The returning service objects are mapped to an `OBJECT` type in the GraphQL schema. Each resource method in the returned service object becomes a field in the created `OBJECT` type.
 
-This example shows a GraphQL endpoint, which has a field `profile` of type `Profile!` in the root `Query` type. A GraphQL client can query on this service to retrieve specific fields or subfields of the `Profile` object.
+Even though both the record and service types can be used to represent an `OBJECT` type, using a service type provides the flexibility of organizing complex logic and allows GraphQL fields to have input arguments.
 
->**Note:** Although both the record and service types can be used to represent an Object type, using a record type as an Object has limitations. For example, a field represented as a record field can not have an input argument, as opposed to a field represented using a resource method in a service class.
+This example shows a GraphQL endpoint, which has a field `profile` of type `Profile!` in the root `Query` type. A GraphQL client can query this service to retrieve specific fields or subfields of the `Profile` object.
+
+>**Note:** A record type can also be used to represent an `OBJECT` type when no fields in the `OBJECT` type do not have input arguments.
 
 ::: code graphql_returning_service_objects.bal :::
 
