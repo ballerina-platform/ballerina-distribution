@@ -4,7 +4,9 @@ An HTTP service/resource can be secured with basic authentication and optionally
 
 ::: code http_service_basic_authentication_file_user_store.bal :::
 
->**Info:** As a prerequisite to running the service, populate the `Config.toml` file correctly with the user information as shown below.
+## Prerequisites
+
+- Populate the `Config.toml` file correctly with the user information as shown below.
 
     ```toml
     [[ballerina.auth.users]]
@@ -26,7 +28,7 @@ Run the service by executing the command below.
 
 ::: out http_service_basic_authentication_file_user_store.server.out :::
 
->**Info:** You can invoke the above service via the [Basic authentication client](/learn/by-example/http-client-basic-authentication).
+>**Tip:** You can invoke the above service via the [Basic authentication client](/learn/by-example/http-client-basic-authentication).
 
 ## Related links
 - [`http:FileUserStoreConfig` - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/FileUserStoreConfig)
