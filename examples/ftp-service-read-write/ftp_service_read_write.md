@@ -1,6 +1,6 @@
 # FTP service - Read/Write file
 
-The FTP service is used to receive file/directory changes that occur in a remote location using the FTP protocol. This sample includes receiving file/directory related change events from a listener and using the `append` api of the `ftp:Caller` to interact with the FTP server.
+The `append` API of the `ftp:Caller` is used to append a file to the changed files in the FTP server. The `ftp:Caller` can be added as an argument to the `onFileChange` remote method, where it can be used to append a file to the newly added files. This can be used when CRUD operations are needed to be done depending on the changes in the remote server.
 
 ::: code ftp_service_read_write.bal :::
 

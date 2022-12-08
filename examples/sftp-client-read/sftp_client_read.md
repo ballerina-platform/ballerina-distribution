@@ -1,6 +1,6 @@
 # SFTP client - Read file
 
-The SFTP client is used to perform CRUD operation on remote files/directories using the SFTP protocol. This sample includes getting a file content with default configurations using the default port number.
+The SFTP client can be used to read files on remote servers using the SFTP protocol. An `ftp:Client` can be created by providing configurations related to SFTP protocol and the `get` API can be used to read the files. This returns the file content as a `byte[]` stream which can then be written to another file/output to console etc.
 
 ::: code sftp_client_read.bal :::
 

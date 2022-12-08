@@ -1,6 +1,6 @@
 # FTP service - Read file
 
-The FTP listener is used to receive file/directory changes that occur in a remote location using the FTP protocol. This sample includes receiving file/directory related change events from a listener with default configurations using the default port.
+The FTP listener can be used to receive file/directory changes that occur in a remote location using the FTP protocol. An `ftp:Listener` can be created with default configurations and can be attached to a `ftp:Service` which contains the remote method `onFileChange` which gets invoked when there are file/directory changes in the remote server. This can be used when the file changes are required implicitly.
 
 ::: code ftp_service_read.bal :::
 
