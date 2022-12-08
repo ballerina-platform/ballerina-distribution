@@ -7,7 +7,7 @@ This BBE demonstrates how to use the MySQL client to execute a stored procedure.
 ::: code mysql_call_stored_procedures.bal :::
 
 ## Prerequisites
-- Set up the MySQL database - Run the [prerequisite.bal](https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/mysql-call-stored-procedures/prerequisites/prerequisite.bal) file by executing the command `bal run`.
+- Refer [`mysql-prerequisite`](https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/mysql-prerequisite/README.md).
 
 Run the service.
 
