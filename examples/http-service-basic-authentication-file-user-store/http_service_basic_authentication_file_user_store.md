@@ -5,7 +5,6 @@ An HTTP service/resource can be secured with basic authentication and optionally
 ::: code http_service_basic_authentication_file_user_store.bal :::
 
 ## Prerequisites
-
 - Populate the `Config.toml` file correctly with the user information as shown below.
 
     ```toml
