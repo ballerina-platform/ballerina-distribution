@@ -879,9 +879,7 @@ task testExamples() {
             lines.each {
                 str = it.trim()
                 if (str != "Compiling source" && str != "${balName}.bal" && str != "Running executable" && str != ""
-                        && str != "Picked up JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF8" && !str.startsWith('HINT') &&
-                        // Skip logs for downloading the packages from the central
-                        !str.contains("ballerina/")) {
+                        && str != "Picked up JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF8" && !str.startsWith('HINT')) {
                     bbeOutput.add(str)
                 }
             }
