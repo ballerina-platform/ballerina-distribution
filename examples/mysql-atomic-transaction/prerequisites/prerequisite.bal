@@ -2,23 +2,36 @@ import ballerina/sql;
 import ballerinax/mysql;
 import ballerinax/mysql.driver as _;
 
-// Initializes the database as a prerequisite to `Database Access - Simple Query` sample.
+// Initializes the database as a prerequisite to `Database Access - Batch execution` sample.
 public function main() returns sql:Error? {
-    mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
+    mysql:Client mysqlClient = check new (host = "localhost", port = 3306, user = "root",
+                                          password = "Test@123");
 
     // Creates a database.
-    _ = check mysqlClient->execute(`CREATE DATABASE CUSTOMER`);
+    _ = check mysqlClient->execute(`CREATE DATABASE MUSIC_STORE;`);
 
     // Creates a table in the database.
-    _ = check mysqlClient->execute(`CREATE TABLE CUSTOMER.Customers
-            (customerId INTEGER NOT NULL AUTO_INCREMENT, firstName VARCHAR(300), lastName  VARCHAR(300),
-            registrationID INTEGER UNIQUE, creditLimit DOUBLE, country  VARCHAR(300),
-            PRIMARY KEY (customerId))`);
+    _ = check mysqlClient->execute(`CREATE TABLE MUSIC_STORE.inventory (
+                                      id varchar(100) NOT NULL PRIMARY KEY,
+                                      title varchar(100) DEFAULT NULL,
+                                      artist varchar(100) DEFAULT NULL,
+                                      price double DEFAULT NULL,
+                                      quantity int NOT NULL,
+                                      CHECK (quantity > 0)
+                                    );`);
 
-    // Adds records to the newly-created table.
-    _ = check mysqlClient->execute(`INSERT INTO CUSTOMER.Customers
-            (firstName, lastName, registrationID,creditLimit,country) VALUES
-             ('Peter', 'Stuart', 1, 5000.75, 'USA')`);
+    // Adds the records to the newly-created table.
+    _ = check mysqlClient->execute(`INSERT INTO MUSIC_STORE.inventory
+                                    VALUES ("A-123", "Lemonade", "Beyonce", 18.98, 10);`);
+    _ = check mysqlClient->execute(`INSERT INTO MUSIC_STORE.inventory
+                                    VALUES ("A-321", "Renaissance", "Beyonce", 24.98, 100);`);
 
+    // Creates a table in the database.
+    _ = check mysqlClient->execute(`CREATE TABLE MUSIC_STORE.sales_order(
+                                      id varchar(100) NOT NULL PRIMARY KEY,
+                                      order_date DATE NOT NULL,
+                                      product_id varchar(100) NOT NULL,
+                                      quantity int
+                                    );`);
     check mysqlClient.close();
 }

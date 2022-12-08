@@ -9,9 +9,13 @@ This BBE demonstrates how to use the MySQL client to execute a batch of DDL/DML 
 ## Prerequisite
 - Set up the MySQL database - Run the [prerequisite.bal](https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/mysql-atomic-transaction/prerequisites/prerequisite.bal) file by executing the command `bal run`.
 
-Run the sample by executing the following command.
+Run the service.
 
-::: out mysql_atomic_transaction.out :::
+::: out mysql_atomic_transaction.server.out :::
+
+Invoke the service by executing the following cURL command in a new terminal to post a new order.
+
+::: out mysql_atomic_transaction.client.out :::
 
 The syntax for using XA transactions (distributed transactions across multiple resources) is the same. Additionally, `useXADatasource` option should be enabled in the client,
 
