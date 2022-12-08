@@ -1,7 +1,7 @@
 import ballerina/http;
+import ballerina/sql;
 import ballerinax/mysql;
 import ballerinax/mysql.driver as _;
-import ballerina/sql;
 
 // The `Order` record to load records from `sales_order` table.
 type Order record {|
