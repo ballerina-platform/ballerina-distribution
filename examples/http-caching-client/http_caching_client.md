@@ -1,4 +1,4 @@
-# HTTP client - Caching
+# HTTP client - Enable Caching
 
 HTTP caching is enabled by default in HTTP client endpoints. Users can configure caching using the `cache` field in the client configurations.
 
