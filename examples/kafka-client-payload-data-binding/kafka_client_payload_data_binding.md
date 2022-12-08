@@ -1,6 +1,6 @@
 # Kafka client - Payload data binding
 
-This shows how to use a `kafka:Consumer` as a simple payload consumer for the instances where the metadata related to the message is not needed. This consumer uses the builtin byte array deserializer for the value and converts the value to the user defined type.
+This example shows how to poll messages from the Kafka broker and bind the messages to a user defined type. Define a required record type to data bind provide it as the target type for the `pollPayload()` API. The received values will be bound to the target type internally. The consumer uses the builtin byte array deserializer for both the key and the value, which is the default deserializer in the `kafka:Consumer`. Use this API when you only want the payload of the consumer record and does not require metadata like `kafka:PartitionOffset`, `timestamp`.
 
 ::: code kafka_client_payload_data_binding.bal :::
 
