@@ -33,5 +33,9 @@ public function main() returns sql:Error? {
                                       product_id varchar(100) NOT NULL,
                                       quantity int
                                     );`);
+    _ = check mysqlClient->execute(`INSERT INTO inventory VALUES
+                                    ("A-123", "Lemonade", "Beyonce", 18.98, 10);`);
+    _ = check mysqlClient->execute(`INSERT INTO inventory VALUES
+                                    ("A-321", "Renaissance", "Beyonce", 24.98, 100);`);
     check mysqlClient.close();
 }
