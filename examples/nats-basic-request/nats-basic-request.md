@@ -1,6 +1,6 @@
 # NATS client - Send request message
 
-NATS supports the Request-Reply pattern using its core message distribution model, publish, and subscribe. A request is sent to a given subject and consumers listening to that subject can send responses to the reply subject. In this example, the NATS client is used to send a request to a subject.
+NATS supports the Request-Reply pattern using its core message distribution model, publish, and subscribe. A request is sent to a given subject and consumers listening to that subject can send responses to the reply subject of the message consumed. A `nats:Client` can be created with the default URL or with custom configurations. The `requestMessage` function can be used to send request messages to the NATS server by providing a target subject, an optional reply subject, the message content and an optional duration for timeout. The messages sent are received by any active subscriber listening on that subject. After the request is sent, the application waits on the response with the given timeout.
 
 ::: code nats-basic-request.bal :::
 

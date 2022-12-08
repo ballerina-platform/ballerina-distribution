@@ -1,6 +1,6 @@
 # NATS service - Basic authentication
 
-NATS client connections can be authenticated in many ways. One of them is by using the username and password credentials. In this example, the underlying connection of the listener is secured with basic authentication.
+Authentication deals with allowing a NATS client to connect to the server. One of the ways to authenticate is by using the username and password credentials. You can authenticate one or more clients using username and passwords. This enables you to have greater control over the management and issuance of credential secrets. In this example, the underlying connection of the listener is secured with basic authentication. A secured `nats:Listener` can be created by using the default URL or custom configurations and providing the authentication details using the `nats:Credentials` record.
 
 ::: code nats-service-basic-auth.bal :::
 

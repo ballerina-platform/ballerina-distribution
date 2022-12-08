@@ -1,7 +1,6 @@
 # NATS client - SSL/TLS
 
-The NATS client connections can be secured by encrypting with TLS. In this example, the underlying connection of the listener is secured with basic authentication.
-In this example, the underlying connection of the publisher is secured with TLS/SSL. 
+The NATS server uses TLS semantics to encrypt client, route, and monitoring connections. TLS can be used to encrypt traffic between client/server and check the server’s identity. Additionally - in the most secure version of TLS with NATS, the server can be configured to verify the client's identity, thus authenticating it. In this example, the underlying connection of the publisher is secured with TLS/SSL. A secured `nats:Client` can be created by using the default URL or custom configurations and providing the TLS/SSL details using the `nats:SecureSocket` record.
 
 ::: code nats-client-secure-connection.bal :::
 

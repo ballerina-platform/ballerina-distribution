@@ -1,6 +1,6 @@
 # NATS service - Consume message
 
-NATS implements a publish-subscribe message distribution model. A publisher sends a message to a subject and any active subscriber listening to that subject can consume the message. In this example, the NATS service is used to consume messages from a subject. 
+NATS implements a publish-subscribe message distribution model for one-to-many communication. A publisher sends a message on a subject and any active subscriber listening on that subject receives the message. Subscribers can also register interest in wildcard subjects. A `nats:Listener` can be created with the default URL or with custom configurations. A `nats:Service` attached to the `nats:Listener` can be used to listen to a specific subject and consume incoming messages. The subject to listen to should be given as the service name or in the `subject` field of the `nats:ServiceConfig`
 
 ::: code nats-basic-sub.bal :::
 

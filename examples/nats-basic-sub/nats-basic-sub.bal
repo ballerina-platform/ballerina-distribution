@@ -8,7 +8,7 @@ public type Order record {
     boolean isValid;
 };
 
-// Binds the consumer to listen to the messages published to the 'demo.bbe' subject.
+// Binds the consumer to listen to the messages published to the 'orders.valid' subject.
 service "orders.valid" on new nats:Listener(nats:DEFAULT_URL) {
     remote function onMessage(Order 'order) returns error? {
         if 'order.isValid {
