@@ -1,6 +1,6 @@
 # TCP service - SSL/TLS 
 
-This demonstrates how the Ballerina TCP service can be configured to secure the connection over SSL/TLS.
+A TCP listener configured with SSL/TLS configurations connect or interact with a TCP client over an encrypted TLS connection. Provide the `secureSocket` configurations to secure the connection over SSL/TLS.
 
 ::: code tcp_service_ssl_tls.bal :::
 

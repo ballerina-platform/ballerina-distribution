@@ -1,6 +1,6 @@
 # TCP client - SSL/TLS 
 
-This demonstrates how the Ballerina TCP client can be configured to connect to an SSL/TLS listener through a one-way SSL/TLS connection (i.e., the server is verified by the client). 
+A TCP client configured with SSL/TLS configurations connect or interact with a TCP service over an encrypted TLS connection. Provide the `secureSocket` configurations to the client to initiate a secured TCP connection.
 
 ::: code tcp_client_ssl_tls.bal :::
 
