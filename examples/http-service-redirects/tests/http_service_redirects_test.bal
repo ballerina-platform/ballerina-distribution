@@ -7,9 +7,9 @@ function testFunc() returns error? {
     http:Client httpEndpoint = check new("localhost:9090",
             followRedirects = { enabled: true, maxCount: 5 });
 
-    string expected = "Response received : Hello World!";
+    string expected = "Hello World!";
 
     // Send a GET request to the specified endpoint
-    string response = check httpEndpoint->get("/greeting");
+    string response = check httpEndpoint->get("/redirect");
     test:assertEquals(response, expected);
 }
