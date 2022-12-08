@@ -1,6 +1,6 @@
 # FTP client - Write file
 
-The FTP client is used to perform CRUD operation on remote files/directories using the FTP protocol. This sample includes putting file content with default configurations using the default port number.
+The FTP client can be used to write files to a remote server using the FTP protocol. An `ftp:Client` can be created with default configurations and the `put` API can be used to put a file on the server.
 
 ::: code ftp_client_write.bal :::
 

@@ -1,6 +1,6 @@
 # SFTP client - Write file
 
-The SFTP client is used to perform CRUD operation on remote files/directories using the SFTP protocol. This sample includes putting file content with default configurations using the default port number.
+The SFTP client can be used to write files to a remote server using the SFTP protocol. An `ftp:Client` can be created by providing configurations related to SFTP protocol and the `put` API can be used to put a file on the server.
 
 ::: code sftp_client_write.bal :::
 

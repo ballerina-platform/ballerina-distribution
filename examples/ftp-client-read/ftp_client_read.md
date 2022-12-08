@@ -1,6 +1,6 @@
 # FTP client - Read file
 
-The FTP client can be used to read files on remote servers using the FTP protocol. An `ftp:Client` can be created with default configurations and the `get` API can be used to read the files. This returns the file content as a `byte[]` stream which can then be written to another file/output to console.
+The FTP client can be used to read files on remote servers using the FTP protocol. An `ftp:Client` can be created with default configurations and the `get` API can be used to read the files. This returns the file content as a `byte[]` stream which can then be written to another file/output to console etc.
 
 ::: code ftp_client_read.bal :::
 
