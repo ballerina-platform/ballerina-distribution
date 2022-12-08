@@ -1,10 +1,10 @@
 # REST service - Header parameter
 
-The inbound request headers can be accessed as a resource method argument using the `@http:Header` annotation. The header name is resolved by the variable name unless the header name is specified in the `name` field of the annotation. 
+The inbound request headers can be accessed as a resource method argument using the `@http:Header` annotation. The header name is resolved by the variable name unless the header name is specified in the `name` field of the annotation. 
 
-The header parameter can be optional and support the basic types such as `string`, `int`, `float`, `decimal`, and `boolean`, and the `array` types of these basic types. The `array` type returns all the values for a given header name, while the basic type returns only the first value. In addition to these types, a `record` type with the basic typed fields can be used to obtain the values of a set of headers specified by the record field names.
+The header parameter can be optional and support the basic types such as `string`, `int`, `float`, `decimal`, and `boolean`, and the `array` types of these basic types. These types can be used to obtain the value for a given header as a single value or an `array` of values. Furthermore, the values of a set of headers can be retrieved using a `record` type where the header names are specified as the record field names.
 
-Unless the type is optional, the request will be responded with a 400 Bad Request in the absence of the mentioned header. However, more header manipulations can be done via the `http:Headers` header object, which can also be accessed as a resource method argument without using the annotation.
+Unless the type is optional, the request will be responded with a 400 Bad Request in the absence of the mentioned header. In addition, more header manipulations can be done via the `http:Headers` header object, which can also be accessed as a resource method argument without using the annotation.
 
 ::: code http_header_param.bal :::
 
