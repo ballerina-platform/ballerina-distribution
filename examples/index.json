@@ -1922,16 +1922,16 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Request interceptors",
-                "url": "http-request-interceptors",
+                "name": "Request interceptor",
+                "url": "http-request-interceptor",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
-                "name": "Response interceptors",
-                "url": "http-response-interceptors",
+                "name": "Response interceptor",
+                "url": "http-response-interceptor",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
