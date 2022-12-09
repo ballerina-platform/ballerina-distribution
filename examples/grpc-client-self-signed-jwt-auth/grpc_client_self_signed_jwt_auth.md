@@ -18,4 +18,4 @@ Execute the command below to run the client.
 ## Related links
 - [`grpc:JwtIssuerConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/JwtIssuerConfig)
 - [gRPC client self signed JWT authentication - Specification](/spec/grpc/#5117-client---self-signed-jwt-auth)
-- [`oauth2` package - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)
+- [`oauth2` module - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)
