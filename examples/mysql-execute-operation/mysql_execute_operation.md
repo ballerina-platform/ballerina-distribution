@@ -1,8 +1,6 @@
 # Database Access - DML and DDL operations
 
-This BBE demonstrates how to use the MySQL client with the DDL and  DML operations. 
-
-This BBE is written in the context of an album microservice.
+The `mysql` client allows to execute a DDL/DML statement using the `execute` method. This method requires `sql:ParameterizedQuery` typed SQL DDL/DML statement as argument.
 
 > **Tip**: Checkout [`ballerinax/mssql`](https://central.ballerina.io/ballerinax/mssql), [`ballerinax/postgresql`](https://central.ballerina.io/ballerinax/postgresql), [`ballerinax/oracledb`](https://central.ballerina.io/ballerinax/oracledb), [`ballerinax/java.jdbc`](https://central.ballerina.io/ballerinax/java.jdbc) for other supported database clients.
 

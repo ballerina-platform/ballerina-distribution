@@ -1,8 +1,6 @@
 # Database Access - Query with advanced mapping
 
-This BBE demonstrates how to use the MySQL client for query operations with advanced mapping for column names.
-
-This BBE is written in the context of an artist microservice.
+The `mysql` client allows to query the database using the `query` method. You can use `sql:Column` annotation to map the table column name and ballerina record field. 
 
 > **Tip**: Checkout [`ballerinax/mssql`](https://central.ballerina.io/ballerinax/mssql), [`ballerinax/postgresql`](https://central.ballerina.io/ballerinax/postgresql), [`ballerinax/oracledb`](https://central.ballerina.io/ballerinax/oracledb), [`ballerinax/java.jdbc`](https://central.ballerina.io/ballerinax/java.jdbc) for other supported database clients.
 

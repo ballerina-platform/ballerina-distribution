@@ -1,6 +1,6 @@
 # Database Access - Call stored procedures
 
-This BBE demonstrates how to use the MySQL client to execute a stored procedure. 
+The `mysql` client allows to execute a stored procedure using the `call` method. This method requires `sql:ParameterizedQuery` typed SQL CALL statement as argument.
 
 > **Tip**: Checkout [`ballerinax/mssql`](https://central.ballerina.io/ballerinax/mssql), [`ballerinax/postgresql`](https://central.ballerina.io/ballerinax/postgresql), [`ballerinax/oracledb`](https://central.ballerina.io/ballerinax/oracledb), [`ballerinax/java.jdbc`](https://central.ballerina.io/ballerinax/java.jdbc) for other supported database clients.
 

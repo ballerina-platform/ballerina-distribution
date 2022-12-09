@@ -1,8 +1,6 @@
 # Database Access - Batch execution
 
-This BBE demonstrates how to use the MySQL client to execute a batch of DDL/DML operations. 
-
-This BBE is written in the context of an album microservice.
+The `mysql` client allows to execute a batch of DDL/DML statements using the `batchExecute` method. This method requires `sql:ParameterizedQuery[]` typed SQL statements as argument.
 
 > **Tip**: Checkout [`ballerinax/mssql`](https://central.ballerina.io/ballerinax/mssql), [`ballerinax/postgresql`](https://central.ballerina.io/ballerinax/postgresql), [`ballerinax/oracledb`](https://central.ballerina.io/ballerinax/oracledb), [`ballerinax/java.jdbc`](https://central.ballerina.io/ballerinax/java.jdbc) for other supported database clients.
 
