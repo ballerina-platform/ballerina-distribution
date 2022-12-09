@@ -1,7 +1,7 @@
 # HTTP client - Header parameter
 
 The `http:Client` supports sending outbound request headers along with the request payload.
-This can be achieved by passing the headers as a resource method argument. The headers should be provided as a `map` where the keys represent the header names and the entries represent the header values. The header values can be `string` or `string[]`.
+This headers can be passed as an argument in the client resource method call. The headers should be provided as a `map` where the keys represent the header names and the entries represent the header values. The header values can be `string` or `string[]`.
 Use these headers to provide information about the request context, so that the server can tailor the response.
 
 ::: code http_client_header_parameter.bal :::
