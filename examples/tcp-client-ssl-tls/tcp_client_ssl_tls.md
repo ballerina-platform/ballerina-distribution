@@ -1,6 +1,6 @@
 # TCP client - SSL/TLS 
 
-A TCP client configured with SSL/TLS configurations connect or interact with a TCP service over an encrypted TLS connection. Provide the `secureSocket` configurations to the client to initiate a secured TCP connection.
+A TCP client configured with SSL/TLS configurations connects or interacts with a TCP service over an encrypted TLS connection. Provide the `secureSocket` configurations to the client to initiate a secured TCP connection.
 
 ::: code tcp_client_ssl_tls.bal :::
 
