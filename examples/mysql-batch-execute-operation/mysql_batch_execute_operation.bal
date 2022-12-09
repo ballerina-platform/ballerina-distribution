@@ -1,9 +1,9 @@
 import ballerina/http;
+import ballerina/sql;
 import ballerinax/mysql;
 import ballerinax/mysql.driver as _;
-import ballerina/sql;
 
-// Defines a record to load the query result.
+// The `Album` record to load records from `albums` table.
 type Album record {|
     string id;
     string title;
@@ -27,7 +27,7 @@ service / on new http:Listener(8080) {
             select `INSERT INTO albums (id, title, artist, price)
                     VALUES (${album.id}, ${album.title}, ${album.artist}, ${album.price})`;
 
-        // Inserts records in a batch.
+        // Insert records in a batch.
         _ = check self.db->batchExecute(insertQueries);
         return http:CREATED;
     }

@@ -1,28 +1,55 @@
-import ballerina/log;
+import ballerina/http;
+import ballerina/sql;
 import ballerinax/mysql;
 import ballerinax/mysql.driver as _;
 
-public function main() returns error? {
+// The `Order` record to load records from `sales_order` table.
+type Order record {|
+    string id;
+    string orderDate;
+    string productId;
+    int quantity;
+|};
 
-    // Initializes the MySQL client. The `mysqlClient` can be reused to access the database throughout the application execution.
-    mysql:Client mysqlClient = check new (host = "localhost", port = 3306, user = "root",
-                                          password = "Test@123", database = "CUSTOMER");
+service / on new http:Listener(8080) {
+    private final mysql:Client db;
 
-    // The transaction block can be used to roll back if any error occurred.
-    transaction {
-        _ = check mysqlClient->execute(`INSERT INTO Customers (firstName, lastName, registrationID, creditLimit,
-                                        country) VALUES ('Linda', 'Jones', 4, 10000.75, 'USA')`);
-
-        _ = check mysqlClient->execute(`INSERT INTO Customers (firstName, lastName, registrationID, creditLimit,
-                                        country) VALUES ('Peter', 'Stuart', 4, 5000.75, 'USA')`);
-
-        check commit;
-    } on fail error e {
-        log:printError(e.message());
-        log:printInfo("One of the queries failed. Rollback transaction.");
+    function init() returns error? {
+        // Initiate the mysql client at the start of the service. This will be used
+        // throughout the lifetime of the service.
+        self.db = check new (host = "localhost", port = 3306, user = "root",
+                            password = "Test@123", database = "MUSIC_STORE");
     }
 
-    // Closes the MySQL client.
-    check mysqlClient.close();
+    resource function post 'order(@http:Payload Order salesOrder) returns http:Created|error {
+        transaction {
+            // Insert into `sales_order` table.
+            _ = check self.db->execute(`INSERT INTO MUSIC_STORE.sales_order VALUES 
+                                        (${salesOrder.id}, ${salesOrder.orderDate},
+                                         ${salesOrder.productId}, ${salesOrder.quantity});`);
 
+            // Update product quantity as per the order.
+            sql:ExecutionResult inventoryUpdate = check self.db->execute(
+                                        `UPDATE inventory 
+                                        SET quantity = quantity - ${salesOrder.quantity} 
+                                        WHERE id = ${salesOrder.productId}`);
+
+            // If the product is not found, rollback or commit transaction.
+            if inventoryUpdate.affectedRowCount == 0 {
+                rollback;
+                return error(string `Product ${salesOrder.productId} not found.`);
+            } else {
+                check commit;
+                return http:CREATED;
+            }
+        } on fail error e {
+            // In case of error, the transaction block is rolled back automatically.
+            if e is sql:DatabaseError {
+                if e.detail().errorCode == 3819 {
+                    return error(string `Product ${salesOrder.productId} is out of stock.`);
+                }
+            }
+            return e;
+        }
+    }
 }
