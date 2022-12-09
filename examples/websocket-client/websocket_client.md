@@ -1,6 +1,6 @@
 # WebSocket client - Send/Receive message
 
-The WebSocket client can be used to connect to and interact with a WebSocket server in a synchronous manner. This example demonstrates how to read and write messages using a Ballerina WebSocket client.
+The WebSocket client allows you to connect to and interact with a WebSocket server. Use this client to read/write messages from/to a WebSocket connection in a synchronous manner. 
 
 ::: code websocket_client.bal :::
 
