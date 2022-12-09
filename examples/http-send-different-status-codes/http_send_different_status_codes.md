@@ -2,7 +2,7 @@
 
 The subtypes of the `http:StatusCodeResponse` record represent different HTTP status code responses. Returning them from the resource function results in the relevant HTTP status code response.
 To send a non-entity body response, use the relevant constant value declared in the `http` module. These constant values can be directly returned from the resource method as long as the relevant return type is specified in the resource function signature.
-Use these when you want to send different status code responses with custom headers and payloads.
+Use these when you want to send different status code responses without body and headers.
 
 ::: code http_send_different_status_codes.bal :::
 
