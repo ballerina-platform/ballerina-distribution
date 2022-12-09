@@ -1,6 +1,6 @@
 # WebSocket service - Mutual SSL
 
-Ballerina supports mutual SSL, which is a certificate-based authentication process in which two parties (the client and server) authenticate each other by verifying the digital certificates. It ensures that both parties are assured of each other's identity.
+The WebSocket service allows you to expose a connection secured with Mutual SSL, which is a certificate-based authentication process in which two parties (the client and server) authenticate each other by verifying the digital certificates. It ensures that both parties are assured of each other's identity. This can be enabled by filling the `secureSocket` configurations in the listener as given in the example. Use this to secure the WebSocket connection over Mutual SSL.
 
 ::: code websocket_service_mutual_ssl.bal :::
 
