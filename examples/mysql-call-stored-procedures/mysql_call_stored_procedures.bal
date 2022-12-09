@@ -49,7 +49,7 @@ service / on new http:Listener(8080) {
                 select 'order;
         }
 
-        // Cleans up resources.
+        // Cleans up the resources.
         check result.close();
 
         return {
