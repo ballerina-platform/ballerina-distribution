@@ -1,6 +1,6 @@
 # WebSocket client - Send/Receive message
 
-The WebSocket client allows you to connect to and interact with a WebSocket server. Use this client to read/write messages from/to a WebSocket connection in a synchronous manner. 
+The WebSocket client allows you to connect to and interact with a WebSocket server. WebSocket client can be created passing the URL of the server. Use this client to read/write messages from/to a WebSocket connection in a synchronous manner. 
 
 ::: code websocket_client.bal :::
 
