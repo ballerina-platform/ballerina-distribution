@@ -14,7 +14,9 @@ Invoke the service by executing the following cURL command in a new terminal. He
 
 ::: out http_service_payload_constraint_validation.client.out :::
 
+>**Tip:** You can invoke the above service via the [Send request/Receive response client](/learn/by-example/http-client-send-request-receive-response/).
+
 ## Related links
-- [`http` module - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
-- [`http` module - Specification](/spec/http/)
+- [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`http` package - Specification](/spec/http/)
 - [Constraint validation example](/learn/by-example/constraint-validations/)
