@@ -1,6 +1,6 @@
 # UDP client - Send/Receive datagram
 
-The UDP Client is used to send data to a specific remote host using the UDP protocol. This sample demonstrates how to send a datagram to a remote server and print the echoed response.
+Ballerina UDP client can be used to interact with a service served over UDP protocol. It is used to connect and send data to a specific remote host. Use this client to establish low latency connections for time critical transmissions where data loss is acceptable.    
 
 ::: code udp_client.bal :::
 
