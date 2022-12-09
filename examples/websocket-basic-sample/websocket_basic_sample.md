@@ -1,6 +1,6 @@
 # WebSocket service - Send/Receive message
 
-The Ballerina WebSocket server can be used to interact with a WebSocket client. Apart from the `onMessage` remote function given in the example, there are few other remote functions to receive different types of WebSocket messages. The `onOpen` remote function is dispatched as soon as the WebSocket handshake is completed and the connection is established, `onPing` and `onPong` remote methods are dispatched upon receiving ping and pong messages respectively, `onIdleTimeout` remote method is dispatched when the idle timeout is reached, `onClose` is dispatched when a close frame with a statusCode and a reason is received and `onError` is dispatched when an error occurs in the WebSocket connection.
+The Ballerina WebSocket server can be used to handle WebSocket events and actions. Apart from the `onMessage` remote method given in the example, there are few other remote functions to receive different types of WebSocket messages. The `onOpen` remote function is dispatched as soon as the WebSocket handshake is completed and the connection is established, `onPing` and `onPong` remote methods are dispatched upon receiving ping and pong messages respectively, `onIdleTimeout` remote method is dispatched when the idle timeout is reached, `onClose` is dispatched when a close frame with a statusCode and a reason is received and `onError` is dispatched when an error occurs in the WebSocket connection. Use this service to establish two-way communication over the WebSocket protocol.
 
 ::: code websocket_basic_sample.bal :::
 
