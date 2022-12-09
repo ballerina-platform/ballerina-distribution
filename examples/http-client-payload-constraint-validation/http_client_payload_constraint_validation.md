@@ -1,6 +1,8 @@
 # HTTP client - Payload constraint validation
 
-The Ballerina [`constraint`](https://lib.ballerina.io/ballerina/constraint/latest/) module allows you to add constraints on a given data-type using different annotations. Use these constraint annotations on the response payload type if you want to add additional validations to the response. The `http:Client` uses the [`constraint`](https://lib.ballerina.io/ballerina/constraint/latest/) package to validate the payload against the given constraints. This validation happens soon after the successful data-binding of the response payload. If the validation fails, `http:PayloadValidationError` will be returned with the validation error message. Use this to validate the response payload as the application program receives it, which allows you to guard against unnecessary processing and malicious payloads.
+The Ballerina `constraint` package allows you to add additional constraints to the response payload. The `http:Client` uses the `constraint` package to validate the payload against the given constraints. This validation happens soon after the successful data-binding of the response payload. 
+The constraints can be added to a given data type using different annotations. If the validation fails, `http:PayloadValidationError` will be returned with the validation error message.
+Use this to validate the response payload as the application program receives it, which allows you to guard against unnecessary processing and malicious payloads.
 
 ::: code http_client_payload_constraint_validation.bal :::
 
