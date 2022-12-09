@@ -12,6 +12,8 @@ Invoke the service by executing the following cURL command in a new terminal.
 
 ::: out http_service_data_binding.client.out :::
 
+>**Tip:** You can invoke the above service via the [Send request/Receive response client](/learn/by-example/http-client-send-request-receive-response/).
+
 ## Related links
 - [`http:Payload` annotation - API documentation](https://lib.ballerina.io/ballerina/http/latest/annotations#Payload)
 - [HTTP service payload parameter - Specification](/spec/http/#2344-payload-parameter)
