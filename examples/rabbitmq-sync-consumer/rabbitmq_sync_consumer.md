@@ -1,6 +1,6 @@
 # RabbitMQ client - Consume message
 
-In this example, the RabbitMQ client is used to consume a message from a pre-declared queue. 
+In the messaging model of RabbitMQ, the producer sends messages, a queue is a buffer that stores messages and the consumer receives messages. In this example, the messages from the pre-declared queue OrderQueue are consumed using a Ballerina RabbitMQ client. A `rabbitmq:Client` can be created with the default host and port or with custom configurations. With the client, it is possible to fetch messages one by one using the functions `consumePayload` or `consumeMessage`. Messages are fetched in the FIFO order. It is possible to use automatic or manual acknowledgments, just like with consumer services.
 
 ::: code rabbitmq_sync_consumer.bal :::
 

@@ -1,6 +1,6 @@
 # RabbitMQ client - SSL/TLS
 
-The underlying connection of the producer is secured with TLS/SSL.
+The RabbitMQ broker can be configured to use SSL for secure traffic encryption and as a secure alternative to basic username/password for client authentication. In this example, the underlying connection of the client is secured with TLS/SSL. A secured `rabbitmq:Client` can be created by using the default host and port or custom configurations and providing the TLS/SSL details using the `rabbitmq:SecureSocket` record.
 
 ::: code rabbitmq_client_secure_connection.bal :::
 

@@ -4,7 +4,7 @@ import ballerina/log;
 
 public type Order record {
     int orderId;
-    // Add a constraint to only allow string values of length between 30 and 1.
+    // Add a constraint to only allow string values of length between 1 and 30.
     @constraint:String {maxLength: 30, minLength: 1}
     string productName;
     decimal price;
@@ -22,7 +22,7 @@ public function main() returns error? {
             log:printInfo(string `Received valid order for ${'order.productName}`);
         } 
     } else if 'order is rabbitmq:PayloadValidationError {
-            log:printError("Payload validation failed", 'order);
+        log:printError("Payload validation failed", 'order);
     } else {
         log:printError("Error occurred while consuming");    
     }

@@ -1,6 +1,6 @@
 # RabbitMQ client - Produce message
 
-In this example, the producer is sending a single message to the pre-declared queue, MyQueue. See `RabbitMQ client - Declare a queue` sample for more details on declaring the queue.
+In the messaging model of RabbitMQ, the producer sends messages, a queue is a buffer that stores messages and the consumer receives messages. In this example, the producer is sending a single message to the pre-declared queue, OrderQueue. See `RabbitMQ client - Declare a queue` sample for more details on declaring the queue. A `rabbitmq:Client` can be created with the default host and port or with custom configurations. The `publishMessage` function can be used to send messages to the RabbiTMQ server by providing the queue as the routing key and the message content. The messages sent are received by any active subscriber listening on that queue.
 
 ::: code rabbitmq_producer.bal :::
 
