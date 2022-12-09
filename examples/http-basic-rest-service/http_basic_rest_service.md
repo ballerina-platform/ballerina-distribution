@@ -1,6 +1,6 @@
 # REST service - Basic
 
-Ballerina supports writing RESTful with its first class service and resource concepts. The `accessor-name`, `service/resource name`, `data binding`, `path` and `query` parameter support helps to write meaningful APIs. The sample depicts the way of writing `GET` and `POST` resources.
+Ballerina language has first class support for service and resource concepts. The `accessor-name`, `service/resource name`, `data binding`, `path parameter`, and `query parameter` support in Ballerina HTTP package is useful when writing RESTful APIs. An `http:Service` with resource methods can be used to implement a REST API. 
 
 ::: code http_basic_rest_service.bal :::
 
