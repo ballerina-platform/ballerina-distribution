@@ -16,5 +16,5 @@ Run the program by executing the following command.
 ## Related links
 - [`kafka:PayloadValidationError` error type - API documentation](https://lib.ballerina.io/ballerinax/kafka/3.4.0/errors#PayloadValidationError)
 - [`kafka:Consumer->seek` function - API documentation](https://lib.ballerina.io/ballerinax/kafka/3.4.0/clients/Consumer#seek)
-- [`kafka` package - Specification](https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md)
-- [`constraint` package - API documentation](https://lib.ballerina.io/ballerina/constraint/latest)
+- [`kafka` module - Specification](https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md)
+- [`constraint` module - API documentation](https://lib.ballerina.io/ballerina/constraint/latest)
