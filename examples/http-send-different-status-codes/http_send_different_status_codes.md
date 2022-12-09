@@ -1,6 +1,8 @@
 # REST service - Send different status codes
 
-The resource method can return `StatusCodeResponse` record. Ballerina provides built in records for each HTTP status codes. The `StatusCodeResponse` constants are available to send the a response without a body or headers.
+The subtypes of the `http:StatusCodeResponse` record represent different HTTP status code responses. Returning them from the resource function results in the relevant HTTP status code response.
+To send a non-entity body response, use the relevant constant value declared in the `http` module. These constant values can be directly returned from the resource method as long as the relevant return type is specified in the resource function signature.
+Use these when you want to send different status code responses with custom headers and payloads.
 
 ::: code http_send_different_status_codes.bal :::
 
@@ -15,5 +17,5 @@ Invoke the service by executing the following cURL command in a new terminal.
 >**Tip:** You can invoke the above service via the [Send request/Receive response client](/learn/by-example/http-client-send-request-receive-response/).
 
 ## Related links
-- [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`http` module - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
 - [HTTP service status code response - Specification](/spec/http/#2351-status-code-response)
