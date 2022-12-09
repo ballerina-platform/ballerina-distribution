@@ -1,6 +1,6 @@
 # Kafka service - Constraint validation
 
-This example shows how to validate a payload by the constraints added to the related payload record. When the payload is received from the broker, it is validated internally and if validation fails, the `onError` remote method will be invoked with a `kafka:PayloadValidationError`. To seek past the erroneous record and read the new records, the `seek` API of `kafka:Caller` can be used. To stop payload validation, `validation` flag of `kafka:ConsumerConfiguration` can be set to `false`. This can be used when the payload needs to be implicitly validated upon receiving from the broker.
+This example shows how to validate a payload by the constraints added to the related payload record. When the payload is received from the broker, it is validated internally and if validation fails, the `onError` remote method will be invoked with a `kafka:PayloadValidationError`. To seek past the erroneous record and read the new records, the `seek` API of `kafka:Caller` can be used. To stop payload validation, the `validation` flag of `kafka:ConsumerConfiguration` can be set to `false`. This can be used when the payload needs to be implicitly validated upon receiving from the broker.
 
 ::: code kafka_service_constraint_validation.bal :::
 
