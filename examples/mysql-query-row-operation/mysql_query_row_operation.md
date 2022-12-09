@@ -9,7 +9,7 @@ This BBE is written in the context of an album microservice.
 ::: code mysql_query_row.bal :::
 
 ## Prerequisites
-- Set up the MySQL database - Run the [prerequisite.bal](https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/mysql-query-row-operation/prerequisites/prerequisite.bal) file by executing the command `bal run`.
+- Refer [`mysql-prerequisite`](https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/mysql-prerequisite/README.md).
 
 Run the service.
 

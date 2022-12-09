@@ -1,0 +1,1 @@
+$ bal run mysql_atomic_transaction.bal
