@@ -1,6 +1,6 @@
 # WebSocket service - SSL/TLS
 
-A WebSocket listener configured with SSL/TLS configurations connect or interact with a WebSocket client over an encrypted TLS connection. Provide the `secureSocket` configurations to expose an WSS connection.
+A WebSocket listener configured with SSL/TLS configurations connects or interacts with a WebSocket client over an encrypted TLS connection. Provide the `secureSocket` configurations to expose a WSS connection.
 
 ::: code websocket_service_ssl_tls.bal :::
 
