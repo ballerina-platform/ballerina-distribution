@@ -1,6 +1,6 @@
 # WebSocket client - Retry
 
-When the WebSocket client is configured with retry, it automatically tries to reconnect to the given backend. The client only retries when there is a connection error at the handshake phase or if an abnormal closure with the status code(1006) receives once the connection is upgraded to a WebSocket connection. The connection closures with mutual acknowledgments will not be retried. If the maximum reconnect attempt is reached it gives up on the connection. Use these retry configurations when the WebSocket client lost the connection due to some transient failure such as a momentary loss of network connectivity or temporary unavailability of a service.
+When the WebSocket client is configured with retry, it automatically tries to reconnect to the given backend. The client only retries when there is a connection error at the handshake phase or if an abnormal closure with the status code(1006) is received once the connection is upgraded to a WebSocket connection. The connection closures with mutual acknowledgments will not be retried. If the maximum reconnect attempt is reached, it stops the connection. Use these retry configurations when the WebSocket client lost the connection due to some transient failure such as a momentary loss of network connectivity or a temporary unavailability of a service.
 
 ::: code websocket_retry_client.bal :::
 
