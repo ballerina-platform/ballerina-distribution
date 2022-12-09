@@ -6,11 +6,9 @@ HTTP service can send cache response by adding `http:Cache` annotation to the re
 
 Run the service by executing the following command.
 
->**Tip:** You may enable the trace logs to observe the in and out traffic.
-
 ::: out http_service_cache_response.server.out :::
 
-Invoke the service via the [Caching client](/learn/by-example/http-caching-client).
+>**Tip:** You can invoke the above service via the [Caching client](/learn/by-example/http-caching-client). In addition to that [trace logs](/learn/by-example/http-trace-logs/) can be enabled to observe the in and out traffic.
 
 ## Related links
 - [`http:HttpCacheConfig` record - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/HttpCacheConfig)

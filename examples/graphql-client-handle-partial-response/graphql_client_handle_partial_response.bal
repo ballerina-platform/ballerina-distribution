@@ -9,12 +9,14 @@ import ballerina/io;
 // the meta information on protocol extensions from the GraphQL server.
 type ProfileResponse record {|
     *graphql:GenericResponseWithErrors;
-    record {|Profile profile?;|} data;
+    record {|Profile profile;|} data;
 |};
 
+// The following record type defines the shape of the response from a GraphQL service which allows
+// the `name` and `age` fields to have a `null` value.
 type Profile record {|
-    string name;
-    int age;
+    string? name;
+    int? age;
 |};
 
 public function main() returns error? {

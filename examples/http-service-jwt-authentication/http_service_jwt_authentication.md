@@ -8,7 +8,7 @@ Run the service by executing the command below.
 
 ::: out http_service_jwt_authentication.server.out :::
 
->**Info:** You can invoke the above service via the [self-signed JWT authentication client](/learn/by-example/http-client-self-signed-jwt-authentication).
+>**Tip:** You can invoke the above service via the [self-signed JWT authentication client](/learn/by-example/http-client-self-signed-jwt-authentication).
 
 ## Related links
 - [`http:JwtValidatorConfig` record - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/JwtValidatorConfig)
