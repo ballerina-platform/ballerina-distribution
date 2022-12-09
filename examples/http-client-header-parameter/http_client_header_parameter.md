@@ -18,5 +18,5 @@ Furthermore, a `post` request with header parameter can be sent as shown below.
 ::: code http_client_header_parameter_post.bal :::
 
 ## Related links
-- [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`http` module - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
 - [HTTP client resource methods - Specification](/spec/http/#2423-resource-methods)
