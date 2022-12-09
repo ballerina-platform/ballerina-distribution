@@ -1,8 +1,6 @@
 # UDP client - Send/Receive datagram with connection
 
-The ConnectClient is configured so that it only receives data from, and sends data to, the given remote peer address. Once connected, data may not be received from or sent to any other address. 
-
-The client remains connected until it is explicitly disconnected or until it is closed. This sample demonstrates how to send data to a connected server and print the echoed response.
+Ballerina UDP ConnectClient can be used to interact with a service served over UDP protocol. When using the ConnectClient, once connected, data may not be received from or sent to any other address. Use the Ballerina UDP ConnectClient to only receives data from, and sends data to, the given remote peer address. The client remains connected until it is explicitly disconnected or until it is closed.
 
 ::: code udp_connect_client.bal :::
 

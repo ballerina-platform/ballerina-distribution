@@ -1,6 +1,6 @@
 # UDP service - Send/Receive datagram
 
-The UDP Listener is used to expose a UDP service over the UDP protocol. The UDP `Client`/`ConnectClient` is used to send data to a remote UDP server. This sample demonstrates the UDP socket listener.
+The UDP Listener is used to expose a UDP service over the UDP protocol. Use this service to serve low latency connections for time critical transmissions where data loss is acceptable.
 
 ::: code udp_listener.bal :::
 
