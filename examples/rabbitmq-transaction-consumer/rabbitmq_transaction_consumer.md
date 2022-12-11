@@ -1,6 +1,6 @@
 # RabbitMQ service - Transactional consumer
 
-Transactions in RabbitMQ concern only messages. So, it works only when a message is published or acknowledged. In this example, the messages are consumed from an existing queue using the Ballerina RabbitMQ message listener and upon receiving the message, the acknowledgment is done with Ballerina transactions. Upon successful execution of the transaction block, the acknowledgment will commit or roll back in the case of any error. Messages will not be re-queued in the case of a rollback automatically unless negatively acknowledged by the user.
+The RabbitMQ service can become a transactional consumer by acknowledging messages within a Ballerina transaction block. A RabbitMQ listener can be created by passing the host and port of the RabbitMQ broker. A RabbitMQ service attached to the listener can be used to listen to a specific queue. The queue to listen to should be given as the service name or in the `queueName` field of the `rabbitmq:ServiceConfig`. The `rabbitmq:Caller` passed as an argument in the `onMessage` remote method is used to acknowledge the message inside a transaction block. Use it to consume messages with ensured acknowledgment to the RabbitMQ server.
 
 ::: code rabbitmq_transaction_consumer.bal :::
 

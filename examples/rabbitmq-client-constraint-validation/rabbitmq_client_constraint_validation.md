@@ -1,6 +1,6 @@
 # RabbitMQ client - Constraint validation
 
-This example shows how to validate a payload by the constraints added to the related message record. When a message with a constraint is received from the RabbitMQ server, it is validated internally. If the validation fails, `rabbitmq:PayloadValidationError` gets returned. Payload validation using constraints can be used when the message content needs to be implicitly validated upon receiving from the server.
+The RabbitMQ client supports validating a payload by the constraints added to the related message record. A RabbitMQ client can be created by passing the host and port of the RabbitMQ broker. To consume messages, use `consumePayload` or `consumeMessage` method which requires the queue name as the argument. When a message with a constraint is received from the RabbitMQ server, it is validated internally. If the validation fails, an error of type`rabbitmq:PayloadValidationError` gets returned. Payload validation using constraints can be used when the message content needs to be implicitly validated upon receiving from the server.
 
 ::: code rabbitmq_client_constraint_validation.bal :::
 

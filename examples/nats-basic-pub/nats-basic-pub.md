@@ -1,6 +1,6 @@
 # NATS client - Publish message
 
-NATS implements a publish-subscribe message distribution model for one-to-many communication. A `nats:Client` can be created with the default URL or with custom configurations. The `publishMessage` function can be used to send messages to the NATS server by providing a target subject, an optional reply subject and the message content. The messages sent are received by any active subscriber listening on that subject.
+The NATS client allows publishing messages to a given subject. A NATS client is created by passing the URL of the NATS broker. To publish messages, the `publishMessage` method is used which requires the message and subject as arguments. Use it when you want to publish messages that can be received by one or more subscribers.
 
 ::: code nats-basic-pub.bal :::
 

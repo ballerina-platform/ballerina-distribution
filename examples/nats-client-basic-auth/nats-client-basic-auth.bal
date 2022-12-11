@@ -11,5 +11,7 @@ public function main() returns error? {
             password: "alice@123"
         }
     );
+
+
     check natsClient.close();
 }

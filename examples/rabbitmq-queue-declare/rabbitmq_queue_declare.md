@@ -1,6 +1,6 @@
 # RabbitMQ client - Declare queue
 
-In RabbitMQ, exchanges are where messages are sent to. Exchanges take a message and route it into zero or more queues. The default exchange is a direct exchange with no name (empty string) pre-declared by the broker. Every queue that is created is automatically bound to it with the routing key which is the same as the queue name. In this example a queue named OrderQueue with default configurations is created. A `rabbitmq:Client` can be created with the default host and port or with custom configurations. A queue with a specific name and custom configurations can be declared by using the function `queueDeclare`.  To create a queue with a server-generated name and custom configurations, function `queueAutoGenerate` can be used.
+RabbitMQ queue is a buffer that stores messages. The queue takes messages from the publisher and sends them to the consumer. A RabbitMQ client is created with the host and port of the RabbitMQ broker. A queue with a specific name and custom configurations can be declared by using the `queueDeclare` method. To create a queue with a server-generated name, `queueAutoGenerate` method can be used. Use this to declare the queue before publishing messages.
 
 ::: code rabbitmq_queue_declare.bal :::
 

@@ -1,6 +1,6 @@
 # RabbitMQ client - Transactional producer
 
-Transactions in RabbitMQ concern only messages. So, it works only when a message is published or acknowledged. In this example, the messages are sent to an existing queue using the Ballerina RabbitMQ client. A `rabbitmq:Client` can be created with the default host and port or with custom configurations. To convert the client to a transactional publisher, the message publishing should take place inside a Ballerina transaction block. Upon successful execution of the transaction block, the client will commit or roll back in the case of any error.
+The RabbitMQ client can become a transactional producer by publishing messages within a Ballerina transaction block. Upon successful execution of the transaction block, the client will commit or roll back in the case of any error. A RabbitMQ client can be created by passing the host and port of the RabbitMQ broker. To publish messages, the `publishMessage` method is used which requires the message and queue name as arguments. Use it to publish messages with ensured delivery to the RabbitMQ server.
 
 ::: code rabbitmq_transaction_producer.bal :::
 

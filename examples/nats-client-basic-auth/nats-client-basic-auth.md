@@ -1,6 +1,6 @@
 # NATS client - Basic authentication
 
-Authentication deals with allowing a NATS client to connect to the server. One of the ways to authenticate is by using the username and password credentials. You can authenticate one or more clients using username and passwords. This enables you to have greater control over the management and issuance of credential secrets. In this example, the underlying connection of the publisher is secured with basic authentication. A secured `nats:Client` can be created by using the default URL or custom configurations and providing the authentication details using the `nats:Credentials` record.
+NATS authentication deals with allowing a NATS client to connect to the server. In this example, the underlying connection of the client is secured with Basic Authentication. A secured NATS client can be created by passing the URL of the NATS broker and providing the authentication details using the `nats:Credentials` record. Use it when you want to authenticate clients connections using username and password.
 
 ::: code nats-client-basic-auth.bal :::
 

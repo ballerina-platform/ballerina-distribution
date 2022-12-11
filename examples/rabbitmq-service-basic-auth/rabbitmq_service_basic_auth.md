@@ -1,6 +1,6 @@
 # RabbitMQ service - Basic authentication
 
-RabbitMQ connection to the server has an associated user which is authenticated. It also targets a virtual host for which the user must have a certain set of permissions. After an application connects to RabbitMQ and before it can perform operations, it must authenticate, that is, present and prove its identity. One of the primary ways of authenticating a client is by providing username/password credentials. In this example, the underlying connection of the listener is secured with basic authentication. A secured `rabbitmq:Listener` can be created by using the default host and port or custom configurations and providing the authentication details using the `rabbitmq:Credentials` record.
+RabbitMQ authentication deals with allowing a RabbitMQ client to connect to the server. After an application connects to RabbitMQ and before it can perform operations, it must authenticate, that is, present and prove its identity. In this example, the underlying connection of the listener is secured with Basic Authentication. A secured RabbitMQ listener is created by using the default host and port or custom configurations and providing the authentication details using the `rabbitmq:Credentials` record. Use it when you want to authenticate clients connections using username and password.
 
 ::: code rabbitmq_service_basic_auth.bal :::
 
