@@ -1,8 +1,6 @@
 # GraphQL service - Interfaces implementing interfaces
 
-A GraphQL schema can have interfaces that can be implemented using other interfaces. When defining an interface that implements another interface, the implementing interface must include all the fields specified by the implemented interface. In Ballerina, the type inclusion is used to achieve interfaces implementing interface functionality where (implemented interface) a `distinct` `service` object is included in (implementing interface) another `distinct` `service` object.
-
-The interfaces implementing interfaces functionality can be useful when you need to introduce more than one level of hierarchy to your type system.
+The Ballerina GraphQL service allows to define GraphQL interface types, that can implement other interfaces. A `distinct` `service` object must be used to define an interface. The Ballerina type-inclusion is used to define interfaces that implement other interfaces. This can be used in GraphQL schemas to define higher-order interfaces that share common functionalities in the application logic.
 
 This example shows how to define interfaces that implement other interfaces in Ballerina.
 
