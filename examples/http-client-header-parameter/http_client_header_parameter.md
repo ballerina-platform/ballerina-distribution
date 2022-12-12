@@ -5,7 +5,7 @@ The `http:Client` supports sending outbound request headers along with the reque
 ::: code http_client_header_parameter.bal :::
 
 ## Prerequisites
-- Run the HTTP service given in the [REST service - Header parameter](/learn/by-example/http-header-parameter/) example.
+- Run the HTTP service given in the [REST service - Header parameter](/learn/by-example/http-header-param/) example.
 
 Run the client program by executing the following command.
 
