@@ -1,6 +1,6 @@
 # Kafka service - SASL authentication
 
-The Kafka service receives messages from the Kafka server using the Kafka listener via SASL/PLAIN authentication. SASL/PLAIN authentication is done by providing the `kafka:AuthenticationConfiguration` along with `kafka:SecurityProtocol` as `kafka:PROTOCOL_SASL_PLAINTEXT` in the `kafka:ConsumerConfiguration`. Use this to connect to a Kafka server secured with SASL/PLAIN.
+The `kafka:Service` receives messages from the Kafka server using the `kafka:Listener` via SASL/PLAIN authentication. SASL/PLAIN authentication is done by providing the `kafka:AuthenticationConfiguration` along with `kafka:SecurityProtocol` as `kafka:PROTOCOL_SASL_PLAINTEXT` in the `kafka:ConsumerConfiguration`. Use this to connect to a Kafka server secured with SASL/PLAIN.
 
 ::: code kafka_service_sasl.bal :::
 
