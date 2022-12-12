@@ -3,7 +3,7 @@ import ballerina/sql;
 import ballerinax/mysql;
 import ballerinax/mysql.driver as _;
 
-// Defines a record to load the query result.
+// The `Album` record to load records from `albums` table.
 type Artist record {|
     @sql:Column {name: "artist_id"}
     int artistId;

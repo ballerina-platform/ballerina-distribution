@@ -1387,8 +1387,8 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service path and resource name",
-                "url": "http-service-path-and-resource-name",
+                "name": "Service and resource paths",
+                "url": "http-service-and-resource-paths",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
