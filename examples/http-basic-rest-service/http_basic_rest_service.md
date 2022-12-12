@@ -1,6 +1,6 @@
 # REST service - Basic
 
-Ballerina language has first class support for service and resource concepts. The `accessor-name`, `service/resource name`, `data binding`, `path parameter`, and `query parameter` support in the Ballerina `http` module is useful when writing RESTful APIs. An `http:Service` with resource methods can be used to implement a REST API. 
+Ballerina language has first class support for service and resource concepts. The `accessor-name`, `service/resource name`, `data binding`, `path parameter`, and `query parameter` support in the Ballerina `http` module is useful when writing RESTful APIs. Use an `http:Service` with resource methods to implement a REST API service. 
 
 ::: code http_basic_rest_service.bal :::
 
