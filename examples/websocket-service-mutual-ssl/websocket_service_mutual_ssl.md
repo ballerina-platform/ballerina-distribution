@@ -1,6 +1,6 @@
 # WebSocket service - Mutual SSL
 
-A `websocket:Listener` with enabled mutual SSL(mTLS) allows you to expose a connection secured with mutual SSL, which is a certificate-based authentication process in which two parties (the client and server) authenticate each other by verifying the digital certificates. It ensures that both parties are assured of each other's identity. A `websocket:Listener` secured with mTLS is created by providing the `secureSocket` configurations. Use this to secure the WebSocket connection over mutual SSL.
+A `websocket:Listener` with enabled mutual SSL(mTLS) allows you to expose a connection secured with mutual SSL, which is a certificate-based authentication process in which two parties (the client and server) authenticate each other by verifying the digital certificates. It ensures that both parties are assured of each other's identity. A `websocket:Listener` secured with mTLS is created by providing the `secureSocket` configurations which requires the word `require` as the `verifyClient`, server's public certificate as the `certFile`, server's private key as the `keyFile` and the client's certificate as the `cert`. Use this to secure the WebSocket connection over mutual SSL.
 
 ::: code websocket_service_mutual_ssl.bal :::
 
