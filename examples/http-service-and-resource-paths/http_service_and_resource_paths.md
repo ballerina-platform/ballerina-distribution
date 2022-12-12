@@ -1,6 +1,6 @@
 # REST service - Service and resource paths
 
-The `service-path` is defined in the service declaration and the `resource-path` is defined in the resource method definition. Each resource can be invoked by using the `service-path`, `resource-path`, and `resource-accessor`. In an HTTP resource, `resource-accessor` confines the resource to a specific HTTP method.
+The `service path` is defined in the service declaration and the `resource path` is defined in the resource method definition. Each resource can be invoked by using the `service path`, `resource path`, and `resource accessor`. In an HTTP resource, the `resource accessor` confines the resource to a specific HTTP method.
 
 ::: code http_service_and_resource_paths.bal :::
 
