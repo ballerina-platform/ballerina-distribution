@@ -1,6 +1,6 @@
 # gRPC client - Server-side streaming RPC
 
-The gRPC Server Connector is used to expose gRPC services over HTTP/2. In a gRPC server streaming scenario, a client sends a request to the server and gets a stream to read the messages until all the messages are read.
+The gRPC client communicates with a gRPC server over HTTP2. A gRPC client is created by providing the endpoint url of gRPC server. In the server streaming scenario, once connected, the client sends a request to the remote service and gets a message stream as the response which contains multiple messages. Use this to send a single request and get multiple responses back.
 
 ## Generate the service definition
 
