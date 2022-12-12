@@ -1,6 +1,6 @@
 # REST service - Basic
 
-Ballerina language has first class support for service and resource concepts. The `accessor-name`, `service/resource name`, `data binding`, `path parameter`, and `query parameter` support in Ballerina HTTP package is useful when writing RESTful APIs. An `http:Service` with resource methods can be used to implement a REST API. 
+Ballerina language has first class support for service and resource concepts. The `accessor-name`, `service/resource name`, `data binding`, `path parameter`, and `query parameter` support in the Ballerina `http` module is useful when writing RESTful APIs. An `http:Service` with resource methods can be used to implement a REST API. 
 
 ::: code http_basic_rest_service.bal :::
 
@@ -15,5 +15,5 @@ Invoke the service by executing the following cURL command in a new terminal.
 >**Tip:** You can invoke the above service via the [Send request/Receive response client](/learn/by-example/http-client-send-request-receive-response/).
 
 ## Related links
-- [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`http` module - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
 - [HTTP service resource - Specification](/spec/http/#23-resource)
