@@ -1,6 +1,6 @@
 # Kafka client - Producer SSL/TLS
 
-This shows how the SSL encryption is done in the `kafka:Producer`. For this, provide `kafka:SecureSocket` with the relevant values and `kafka:SecurityProtocol` as `kafka:PROTOCOL_SSL` in the `kafka:ProducerConfiguration`. Use this when the Kafka server is secured with SSL.
+The Kafka producer connects to a Kafka server via SSL, and then sends messages to the server. SSL can be enabled by providing the `kafka:SecureSocket` with the relevant values and `kafka:SecurityProtocol` as `kafka:PROTOCOL_SSL` in the `kafka:ProducerConfiguration`. Use this to connect to a Kafka server secured with SSL.
 
 >**Info:** For more information on the underlying module, see the [`kafka` module](https://lib.ballerina.io/ballerinax/kafka/latest).
 
