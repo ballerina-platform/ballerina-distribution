@@ -1,9 +1,6 @@
 # REST service - Header parameter
 
-The `http` resource method allows you to access the inbound request header value as a resource argument. The header value can be either accessed as a single value or, an array of values.
-The value of a given header can be accessed as a resource method argument with the `@http:Header` annotation. The header name is resolved by the variable name unless the header name is specified in the `name` field of the annotation. The header parameter can be optional and support the basic types such as `string`, `int`, `float`, `decimal`, and `boolean`, and the `array` types of these basic types. Unless the type is optional, a `400 Bad Request` response will be sent to the client in the absence of the mentioned header.
-Use this annotated argument in the resource method to obtain the header value/values of a given header. 
-Furthermore, the values of a set of headers can be retrieved using a `record` type annotated with `@http:Header`. Here, the header names are resolved by the record field names. In addition, more header manipulations can be done via the `http:Headers` header object, which can also be accessed as a resource method argument without using the annotation.
+The `@http:header` annotation allows reading header values from the request. The annotation can be used to annotate a given resource parameter. The name of the parameter must match the name of the header. If there is a mismatch, then the header name must be given in the annotation configuration. The resource parameter can be a simple type or array type (i.e., `string version` or `string[] versions`). If there are many headers to read, a record type can be used as the parameter. Unless the parameter is optional (i.e., `string? version`), a `400 Bad Request` response is sent to the client in the absence of the mapping header.
 
 ::: code http_header_param.bal :::
 
