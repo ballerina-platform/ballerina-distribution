@@ -1,6 +1,6 @@
 # TCP client - SSL/TLS 
 
-The TCP client secured with SSL/TLS connects to a given SSL/TLS-secured TCP server socket, and then sends and receives byte streams. A TCP client is created by giving the IP and port number. To enable SSL/TLS, provide the `secureSocket` configurations to the client. Once connected, `writeBytes` and `readBytes` synchronous methods are used to send and receive byte streams over an encrypted TLS connection. Use this to interact with TCP servers or implement high-level protocols based on TLS-encrypted secured TCP connection.
+The TCP client secured with SSL/TLS connects to a given SSL/TLS-secured TCP server socket, and then sends and receives byte streams. A TCP client secured with SSL/TLS is created by additionally giving `secureSocket` configurations. Once connected, `writeBytes` and `readBytes` synchronous methods are used to send and receive byte streams over an encrypted TLS connection. Use this to interact with TCP servers or implement high-level protocols based on TLS-encrypted secured TCP connection.
 
 ::: code tcp_client_ssl_tls.bal :::
 
