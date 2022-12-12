@@ -1,13 +1,13 @@
 # FTP service - Read/Write file
 
-The FTP service connects to a given FTP server via the SFTP listener and then sends and receives files as byte streams via the FTP caller. The FTP caller is available as a parameter in the `onFileChange` method which is created with the configurations provided to the FTP listener. Once the `onFileChange` is invoked, the `append` method of FTP caller can be used to append a file to the files existing in the FTP server. Use this to listen to file changes occurring in a remote file system and do CRUD operations with the remote server.
+The FTP service connects to a given FTP server via the FTP listener and then sends and receives files as byte streams via the FTP caller. The FTP caller is available as a parameter in the `onFileChange` method which is created with the configurations provided to the FTP listener. Once the `onFileChange` is invoked, the `append` method of FTP caller can be used to append a file to the files existing in the FTP server. Use this to listen to file changes occurring in a remote file system and do CRUD operations with the remote server.
 
 ::: code ftp_service_read_write.bal :::
 
 ## Prerequisites
 - Start a [FTP server](https://hub.docker.com/r/stilliard/pure-ftpd/) instance.
 
-Run the program by executing the following command. Each newly added file in the SFTP server will be appended with the content in the appending file.
+Run the program by executing the following command. Each newly added file in the FTP server will be appended with the content in the appending file.
 
 ::: out ftp_service_read_write.out :::
 
