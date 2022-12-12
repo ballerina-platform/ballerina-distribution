@@ -1,6 +1,6 @@
 # Kafka client - Producer SASL authentication
 
-This shows how the SASL/PLAIN authentication is done in the `kafka:Producer`. To authenticate via SASL/PLAIN, the `kafka:AuthenticationConfiguration` must be provided along with `kafka:SecurityProtocol` as `kafka:PROTOCOL_SASL_PLAINTEXT` in the `kafka:ProducerConfiguration`. Use this when the Kafka server is secured with SASL/PLAIN.
+The Kafka producer connects to a Kafka server via SASL/PLAIN authentication, and then sends messages to the server. SASL/PLAIN authentication is done by providing the `kafka:AuthenticationConfiguration` along with `kafka:SecurityProtocol` as `kafka:PROTOCOL_SASL_PLAINTEXT` in the `kafka:ProducerConfiguration`. Use this to connect to a Kafka server secured with SASL/PLAIN.
 
 ::: code kafka_client_producer_sasl.bal :::
 

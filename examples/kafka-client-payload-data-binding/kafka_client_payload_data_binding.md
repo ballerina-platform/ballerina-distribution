@@ -1,6 +1,6 @@
 # Kafka client - Payload data binding
 
-This example shows how to poll messages from the Kafka broker and bind the messages to a user-defined type. Define a required record type to data bind and provide it as the target type for the `pollPayload()` API. The received values will be bound to the target type internally. The consumer uses the built-in byte array deserializer for both the key and the value, which is the default deserializer in the `kafka:Consumer`. Use this API when you only want the payload of the consumer record and do not require metadata like `kafka:PartitionOffset` or `timestamp`.
+The Kafka consumer connects to a given Kafka server, and then receives payloads in a user defined type via data-binding. A Kafka consumer is created by giving the server endpoint, group id and the topic. Once connected, `pollPayload` method is used to receive payloads with the intended type from the Kafka server. The received payload will be bound to the target type internally. The consumer uses the built-in byte array deserializer for the value, which is the default deserializer in the `kafka:Consumer`. Use this to receive only the payload from a Kafka server without the metadata of the payload like `kafka:PartitionOffset` and `timestamp`.
 
 ::: code kafka_client_payload_data_binding.bal :::
 

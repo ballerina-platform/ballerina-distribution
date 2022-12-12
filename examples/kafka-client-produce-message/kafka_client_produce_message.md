@@ -1,6 +1,6 @@
 # Kafka client - Produce message
 
-This example shows how to send messages to a Kafka topic using the `kafka:Producer` client. Create the `kafka:Producer` with the default configurations and use the `send()` API by providing the relevant topic and the value as the parameters. You can provide `anydata` and subtypes of `anydata` as the values and these will be serialized using the built-in byte array serializer internally when sending to the server. Use this when you want to produce a value for a Kafka topic.
+The Kafka producer connects to a given Kafka server, and then sends messages to a specific topic in the server. A Kafka producer is created by giving the server endpoint url. Once connected, `send` method is used to send messages to the Kafka server by providing the relevant topic and the value as the parameters. `anydata` and subtypes of `anydata` can be provided as the values, and these will be serialized using the built-in byte array serializer internally when sending to the server. Use this to send messages to a topic in the Kafka server.
 
 ::: code kafka_client_produce_message.bal :::
 
