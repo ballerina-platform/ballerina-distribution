@@ -1,6 +1,6 @@
 # SFTP service - Read/Write file
 
-The FTP service connects to a given SFTP server via the SFTP listener and then sends and receives files as byte streams via the FTP caller. The FTP caller is available as a parameter in the `onFileChange` method which is created with the configurations provided to the SFTP listener. Once the `onFileChange` is invoked, the `append` method of FTP caller can be used to append a file to the files existing in the SFTP server. Use this to listen to file changes occurring in a remote file system and do CRUD operations with the remote server.
+The `ftp:Service` connects to a given SFTP server via the `ftp:Listener` and then sends and receives files as byte streams via the `ftp:Caller`. The `ftp:Caller` is available as a parameter in the `onFileChange` method which is created with the configurations provided to the `ftp:Listener`. Once the `onFileChange` is invoked, the `append` method of `ftp:Caller` can be used to append a file to the files existing in the SFTP server. Use this to listen to file changes occurring in a remote file system and do CRUD operations with the remote server.
 
 ::: code sftp_service_read_write.bal :::
 
