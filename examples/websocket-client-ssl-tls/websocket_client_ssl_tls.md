@@ -1,6 +1,6 @@
 # WebSocket client - SSL/TLS
 
-A WebSocket client configured with SSL/TLS configurations connects or interacts with a WebSocket service over an encrypted TLS connection(WSS). Provide the `secureSocket` configurations to the client to initiate a WSS connection.
+The WebSocket client secured with SSL/TLS connects to a given SSL/TLS-secured WebSocket server(WSS). To enable SSL/TLS, provide the `secureSocket` configurations to the client.  Use this to interact with TLS-encrypted WebSocket servers.
 
 ::: code websocket_client_ssl_tls.bal :::
 
