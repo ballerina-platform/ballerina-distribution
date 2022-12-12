@@ -1,6 +1,6 @@
 # gRPC service - Check deadline
 
-The gRPC service allows to check whether a deadline has been exceeded in a client connection. Deadlines allow gRPC clients to specify how long they are willing to wait for an RPC to complete. The deadline is checked in the service using the method `isCancelled` and a `grpc:DeadlineExceededError` is returned if it is exceeded. Use this to check the upper limit on how long a call can run for.
+The `grpc:Service` allows to check whether a deadline has been exceeded in a client connection. Deadlines allow gRPC clients to specify how long they are willing to wait for an RPC to complete. The deadline is checked in the service using the method `isCancelled` and a `grpc:DeadlineExceededError` is returned if it is exceeded. Use this to check the upper limit on how long a call can run for.
 
 ::: code grpc_service_check_deadline.bal :::
 

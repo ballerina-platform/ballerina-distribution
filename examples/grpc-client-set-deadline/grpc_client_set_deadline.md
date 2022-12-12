@@ -1,6 +1,6 @@
 # gRPC client - Set deadline
 
-The gRPC client allows setting deadlines to specify how long they are willing to wait for an RPC to complete before the RPC is terminated with an error. The deadline is set as a header using the method `setDeadline`. Use this to set an upper limit on how long a call can run for.
+The `grpc:Client` allows setting deadlines to specify how long they are willing to wait for an RPC to complete before the RPC is terminated with an error. The deadline is set as a header using the method `setDeadline`. Use this to set an upper limit on how long a call can run for.
 
 ::: code grpc_client_set_deadline.bal :::
 

@@ -1,6 +1,6 @@
 # gRPC service - Client-side streaming RPC
 
-The gRPC server communicates with a gRPC client over HTTP2. A gRPC listener is created by providing the port, and a gRPC service is attached to it. In the client streaming scenario, once a client is connected to the service, the client sends a message stream to the server. Once client completes the request, server sends the response to complete the call. Use this to receive multiple requests from a client and send a single response back.
+The gRPC server communicates with a gRPC client over HTTP2. A `grpc:Listener` is created by providing the port, and a `grpc:Service` is attached to it. In the client streaming scenario, once a client is connected to the service, the client sends a message stream to the server. Once client completes the request, server sends the response to complete the call. Use this to receive multiple requests from a client and send a single response back.
 
 ## Generate the service definition
 
