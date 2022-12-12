@@ -1,6 +1,6 @@
 # REST service - Send cache response
 
-The `http:Service` can cache a response associated with a request and reuse the cached response for subsequent requests. This can be achieved by adding the `http:Cache` annotation to the return type. By default, this annotation will add the `must-revalidate`, `public`, and `max-age=3600` directives to the `Cache-Control` header of the response, along with the `ETag` and `Last-Modified` headers. These default settings can be changed by adding the configurations to the annotation. Furthermore, the response is only cached when the return type is `anydata` or a subtype of `http:SuccessStatusCodeResponse`.
+The `http:Service` can cache a response associated with a request and reuse the cached response for subsequent requests. This can be achieved by adding the `http:Cache` annotation to the return type. By default, this annotation adds the `must-revalidate`, `public`, and `max-age=3600` directives to the `Cache-Control` header of the response, along with the `ETag` and `Last-Modified` headers. These default settings can be changed by adding the configurations to the annotation. Furthermore, the response is only cached when the return type is `anydata` or a subtype of `http:SuccessStatusCodeResponse`.
 
 ::: code http_service_cache_response.bal :::
 
