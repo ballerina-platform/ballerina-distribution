@@ -2,7 +2,7 @@
 
 A GraphQL service can return a partial response having both errors and data fields when there are errors occurred during the execution of a field on the service side. If a field is allowed to have a null value in the GraphQL schema, then when defining the user-defined types on the client side, that field needs to be specified as a nullable field. Otherwise a `graphql:PayloadBindingError` may be returned when calling the client `execute()` method.
 
-This example shows how to retrieve the partial data and graphql `Field errors` in a user-defined type.
+This example shows how to retrieve the partial data and graphql field errors in a user-defined type.
 
 ::: code graphql_client_handle_partial_response.bal :::
 

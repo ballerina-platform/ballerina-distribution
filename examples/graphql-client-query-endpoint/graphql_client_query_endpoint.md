@@ -1,12 +1,10 @@
 # GraphQL client - Query GraphQL endpoint
 
-The GraphQL Client can be used to connect and interact with a GraphQL server. It can be used to do `Query` and `Mutation` operations on a GraphQL service.
+The GraphQL client can be used to connect and interact with a GraphQL server.  A GraphQL client is created by passing the URL of a GraphQL service endpoint. To execute a GraphQL operation the `execute` method is used. This method requires the GraphQL `document` as a required argument and optionally takes a map of `variables` and an `operationName` as arguments in case the document contains any variables or contains more than one operation. Use the GraphQL client when you want to execute `Query` and `Mutation` operations on a GraphQL service.
 
 This example shows how to send a GraphQL request and retrieve the response in a user-defined type.
 
 ::: code graphql_client_query_endpoint.bal :::
-
-Further, the execute method optionally takes a map of variables and an operationName in case the document contains any variables or contains more than one operation.
 
 ## Prerequisites
 - Run the GraphQL service given in the [Record as output object](https://ballerina.io/learn/by-example/graphql-returning-record-values) example.
