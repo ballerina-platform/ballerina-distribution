@@ -1,6 +1,6 @@
 # HTTP client - Path parameter
 
-The `http` module provides first class support for specifying `Path parameters` in the resource invocation along with the type. The supported types are `string`, `int`, `float`, `boolean`, and `decimal` (e.g., path/[string foo]).
+The `http:Client` supports specifying `Path parameters` when invoking a backend resource. Declare the required `Path parameter` inside a square bracket along with the resource path (eg: `/albums/[album]`) and invoke the resource method. Use this when invoking a backend resource which requires `Path parameters`.
 
 ::: code http_client_path_parameter.bal :::
 
@@ -12,5 +12,5 @@ Run the client program by executing the following command.
 ::: out http_client_path_parameter.out :::
 
 ## Related links
-- [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`http` module - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
 - [HTTP client resource methods - Specification](/spec/http/#2423-resource-methods)
