@@ -1,6 +1,6 @@
 # SFTP client - Read file
 
-The SFTP client can be used to read files on remote servers using the SFTP protocol. An `ftp:Client` can be created by providing configurations related to SFTP protocol and the `get` API can be used to read the files. This returns the file content as a `byte[]` stream which can then be written to another file/output to console etc.
+The SFTP client connects to a given SFTP server, and then sends and receives files as byte streams. An SFTP client is created by giving the protocol, host-name and required credentials and the private key. Once connected, `get` method is used to read files as byte streams from the SFTP server. Use this to transfer files from a remote file system to a local file system.
 
 ::: code sftp_client_read.bal :::
 

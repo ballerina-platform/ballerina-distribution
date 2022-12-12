@@ -1,6 +1,6 @@
 # SFTP service - Read file
 
-The SFTP listener can be used to receive file/directory changes that occur in a remote location using the SFTP protocol. An `ftp:Listener` can be created by providing configurations related to SFTP protocol and can be attached to a `ftp:Service` which contains the remote method `onFileChange` which gets invoked when there are file/directory changes in the remote server. This can be used when the file changes are required implicitly.
+The FTP service connects to a given SFTP server via the SFTP listener and receives file changes (additions, deletions) occurring in the SFTP server. An SFTP listener is created by giving the protocol, host-name and required credentials and the private key and gets attached to the FTP service. Once connected, the `onFileChange` method is invoked with the remote file changes as a `ftp:WatchEvent`. Use this to listen to file changes occurring in a remote file system.
 
 ::: code sftp_service_read.bal :::
 

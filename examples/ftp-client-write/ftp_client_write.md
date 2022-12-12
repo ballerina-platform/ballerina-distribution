@@ -1,6 +1,6 @@
 # FTP client - Write file
 
-The FTP client can be used to write files to a remote server using the FTP protocol. An `ftp:Client` can be created with default configurations and the `put` API can be used to put a file on the server.
+The FTP client connects to a given FTP server, and then sends and receives files as byte streams. An FTP client is created by giving the host-name and required credentials. Once connected, `put` method is used to write files as byte streams to the FTP server. Use this to transfer files from a local file system to a remote file system.
 
 ::: code ftp_client_write.bal :::
 
