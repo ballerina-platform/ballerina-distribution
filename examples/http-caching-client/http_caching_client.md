@@ -1,6 +1,6 @@
 # HTTP client - Enable Caching
 
-HTTP caching is enabled by default in the `http:Client`. The cache configurations can be set by the `cache` field in the `http:ClientConfiguration`. The default behavior is to allow caching only when the `Cache-Control` header and either the `ETag` or `Last-Modified` headers are present. Use the `policy` field of the `http:CacheConfig` if you want to change this default behavior. The `http` module currently supports the following policies: `http:CACHE_CONTROL_AND_VALIDATORS`(the default policy) and `http:RFC_7234`.
+HTTP caching is enabled by default in the `http:Client`. The cache configurations can be set by the `cache` field in the `http:ClientConfiguration`. The default behavior is to allow caching only when the `Cache-Control` header and either the `ETag` or `Last-Modified` headers are present. Use the `policy` field of the `http:CacheConfig` if you want to change this default behavior. The `http` module currently supports the following policies: `http:CACHE_CONTROL_AND_VALIDATORS` (the default policy) and `http:RFC_7234`.
 
 ::: code http_caching_client.bal :::
 
