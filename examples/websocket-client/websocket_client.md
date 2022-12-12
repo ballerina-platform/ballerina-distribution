@@ -1,6 +1,6 @@
 # WebSocket client - Send/Receive message
 
-The WebSocket client allows you to connect to and interact with a WebSocket server. WebSocket client can be created by passing the URL of the server. Use this client to read/write messages from/to a WebSocket connection in a synchronous manner. 
+The WebSocket client connects to a given WebSocket server, and then sends and receives WebSocket frames. A WebSocket client is created by giving the URL of the server. Once connected, `writeMessage` and `readMessage` synchronous methods are used to send and receive messages. Since, they are synchronous methods often used in two different strands. Use this to interact with WebSocket servers or implement user applications based on WebSocket.
 
 ::: code websocket_client.bal :::
 

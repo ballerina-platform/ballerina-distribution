@@ -1,6 +1,6 @@
 # WebSocket client - Timeout
 
-Handshake timeout is the time (in seconds) that a connection waits to get the response of the WebSocket handshake. If the timeout exceeds, then, the connection is terminated with a `HandshakeTimedOut` error. If the configuration value `< 0`, then the value sets to the default value(300). Apart from the `handShakeTimeout`, the WebSocket client also has `readTimeout` and `writeTimeout` configurations to configure idle time to wait to receive a message and to write a message respectively. Use the handshake timeout to gracefully handle response delays that could occur due to network problems or problems in the back end.
+A WebSocket client configured with timeouts can gracefully handle timeouts that happen in the running applications. Handshake timeout is the time (in seconds) that a connection waits to get the response of the WebSocket handshake. If the timeout exceeds, then, the connection is terminated with a `HandshakeTimedOut` error. If the configuration value `< 0`, then the value sets to the default value(300). Apart from the `handShakeTimeout`, the WebSocket client also has `readTimeout` and `writeTimeout` configurations to configure idle time to wait to receive a message and to write a message respectively. To enable handshake timeout, provide the `handShakeTimeout` configuration to the client. Use the handshake timeout to gracefully handle response delays that could occur due to network problems or problems in the back end.
 
 ::: code websocket_timeout_client.bal :::
 
