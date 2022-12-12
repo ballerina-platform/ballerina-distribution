@@ -1,6 +1,6 @@
 # REST service - Path parameter
 
-The `path parameter` is a mandatory but variable part of a resource URL. `Path parameters` can be added to a resource method by specifying the parameter type and name in the resource path (eg: `albums/[string name]`). The `http` module supports `string`, `int`, `float`, `boolean`, and `decimal` types as path parameter types. Use it when designing REST API endpoints that require dynamic path segments.
+The `path parameter` is a mandatory but variable part of a resource URL. `path parameters` can be added to a resource method by specifying the parameter type and name in the resource path (eg: `albums/[string name]`). The `http` module supports `string`, `int`, `float`, `boolean`, and `decimal` types as path parameter types. Use it when designing REST API endpoints that require dynamic path segments.
 
 ::: code http_path_param.bal :::
 
