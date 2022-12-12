@@ -1,6 +1,6 @@
 # Kafka service - SSL/TLS
 
-The `kafka:Service` receives messages from the Kafka server using the `kafka:Listener` via SSL. SSL can be enabled by providing the `kafka:SecureSocket` with the relevant values and `kafka:SecurityProtocol` as `kafka:PROTOCOL_SSL` in the `kafka:ConsumerConfiguration`. Use this to connect to a Kafka server secured with SSL.
+The `kafka:Service` receives messages from the Kafka server using the `kafka:Listener` via SSL. SSL/TLS can be enabled by configuring the `secureSocket` which requires a certificate, and the protocol name. Further, the mode of security must be configured by setting `securityProtocol` to `kafka:PROTOCOL_SSL`. Use this to connect to a Kafka server secured with SSL.
 
 ::: code kafka_service_ssl.bal :::
 
