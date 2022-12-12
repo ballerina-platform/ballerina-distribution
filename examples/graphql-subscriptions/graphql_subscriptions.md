@@ -1,10 +1,8 @@
-# Subscriptions
+# GraphQL service - Subscriptions
 
-A GraphQL schema can have interfaces where an interface specifies a set of fields that multiple object types can include. In Ballerina, interfaces are defined using `distinct` `service` objects and the fields of the interfaces are defined as resource method definitions. Objects that are implementing the interfaces must implement the `resource` methods defined in the service objects. The Ballerina type inclusion is used to include the interface type to an object type.
+A resource method with the `subscribe` accessor inside a GraphQL service represents a field in the root `Subscription` type. Therefore, If a resource method with the `subscribe` accessor is present inside the Ballerina GraphQL service, the auto-generated schema will have a `Subscription` type. Each resource method with a `subscribe` accessor in the service will be added as a field of the `Subscription` type. The field name will be the resource method name and the field type will be the constraint type of the stream returned from the resource method. Not returning a `stream` type from a resource method having a `subscribe` accessor results in a compilation error. Use a subscription operation when you want to monitor small, incremental changes to large objects or to obtain low-latency, real-time updates.
 
-Interfaces are useful when you want to return an object or set of objects, but those might be of several different types. Fields defined in the interface are always queryable. Therefore, a client can query those fields without knowing an exact object type.
-
-This example shows how to define an interface `Profile` and then implement the `Teacher` and `Student` classes using that interface.
+This example shows a GraphQL endpoint, which has a field `names` in the root `Subscription` type.
 
 ::: code graphql_subscriptions.bal :::
 
