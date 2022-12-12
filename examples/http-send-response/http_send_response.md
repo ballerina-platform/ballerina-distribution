@@ -1,6 +1,6 @@
 # REST service - Send response
 
-Returning an `anydata` type from the resource method results in an HTTP response where the returned value will become the body. If the returned type is `nil`, then a `202 Accepted` response will be returned to the client without the body. Otherwise, the response will have the returned value as the body, and the `Content-type` header will be inferred from the return type. In addition, the response will be `201 Created` for `POST` resources and `200 Ok` for other resources. Furthermore, the `@http:Payload` annotation on the return type can be used to overwrite the `Content-type` header. Return `anydata` type from the resource method when you want to send the desired payload with the default status code and headers.
+Returning an `anydata` type from the resource method results in an HTTP response where the returned value becomes the body. If the returned type is `nil`, then a `202 Accepted` response is returned to the client without the body. Otherwise, the response contains the returned value as the payload, and the `Content-type` header is inferred from the return type. In addition, the response status code is `201 Created` for `POST` resources and `200 Ok` for other resources. Furthermore, the `@http:Payload` annotation on the return type can be used to override the `Content-type` header. Returning an `anydata` type from the resource method is useful when the desired payload with the default status code and headers needs to be sent as the response.
 
 ::: code http_send_response.bal :::
 
