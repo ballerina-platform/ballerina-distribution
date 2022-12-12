@@ -1,6 +1,6 @@
 # TCP service - SSL/TLS 
 
-A TCP listener configured with SSL/TLS configurations connects or interacts with a TCP client over an encrypted TLS connection. Provide the `secureSocket` configurations to secure the connection over SSL/TLS.
+A TCP listener configured with SSL/TLS configurations connects or interacts with a TCP client over an encrypted TLS connection. A TCP listener secured with TLS/SSL is created by providing the `secureSocket` configurations. Use this to interact with TCP clients or implement high-level protocols based on TLS-encrypted secured TCP connection.
 
 ::: code tcp_service_ssl_tls.bal :::
 
