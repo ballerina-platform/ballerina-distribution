@@ -1,6 +1,6 @@
 # WebSocket client - Mutual SSL
 
-The WebSocket client allows you to open up a connection secured with mutual SSL, which is a certificate-based authentication process in which two parties (the client and server) authenticate each other by verifying the digital certificates. It ensures that both parties are assured of each other's identity. A WebSocket client secured with mutual SSL is created by providing the `secureSocket` configurations. Use this to interact with mTLS-encrypted WebSocket servers.
+The `websocket:Client` allows you to open up a connection secured with mutual SSL, which is a certificate-based authentication process in which two parties (the client and server) authenticate each other by verifying the digital certificates. It ensures that both parties are assured of each other's identity. A WebSocket client secured with mutual SSL is created by providing the `secureSocket` configurations. Use this to interact with mTLS-encrypted WebSocket servers.
 
 ::: code websocket_client_mutual_ssl.bal :::
 
