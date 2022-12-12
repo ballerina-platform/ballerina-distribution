@@ -1,6 +1,6 @@
 # HTTP client - Path parameter
 
-The `http:Client` supports specifying `Path parameters` when invoking a backend resource. Declare the required `Path parameter` inside a square bracket along with the resource path (eg: `/albums/[album]`) and invoke the resource method. Use this when invoking a backend resource which requires `Path parameters`.
+The `http:Client` supports specifying `path parameters` when invoking a backend resource. Declare the required `path parameter` inside a square bracket along with the resource path (eg: `/albums/[album]`) and invoke the resource method. Use this when invoking backend resources with variable resource paths.
 
 ::: code http_client_path_parameter.bal :::
 
