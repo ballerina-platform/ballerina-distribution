@@ -1,6 +1,6 @@
 # REST service - Basic
 
-Ballerina language has first-class support for service and resource concepts. The `accessor name`, `service/resource name`, `data binding`, `path parameter`, and `query parameter` support in the Ballerina `http` module is useful when writing RESTful APIs. Use an `http:Service` with resource methods to implement a REST API service. 
+Ballerina language has first-class abstractions for service and resource concepts in the form of `service` and `resource functions`. A resource function consists of an accessor and path. A service can have a collection of resource functions. These abstractions allow mapping REST concepts such as operations, resource paths and resource representations cleanly into your program. `http:Service` can be used to write RESTful services. A service is defined with a base path, the path common to all resource paths. Each resource function is defined with the required operation such as `get`, `put`, `post`, etc and the path. Similar to regular functions resource functions have input parameters and return types which are mapped to HTTP request and response.
 
 ::: code http_basic_rest_service.bal :::
 
