@@ -1,6 +1,6 @@
 # gRPC service - Server reflection
 
-The `grpc:Listener` provides server reflection capability which allows dynamic clients, such as command-line tools for debugging, to discover the protocol used by a gRPC server at run time. Server reflection is enabled by providing the `reflectionEnabled` configuration to the `grpc:ListenerConfiguration`.
+The `grpc:Listener` provides the server reflection capability, which allows dynamic clients such as command-line tools for debugging to discover the protocol used by a gRPC server at run time. Server reflection is enabled by providing the `reflectionEnabled` configuration in the `grpc:ListenerConfiguration`.
 
    ::: code grpc_server_reflection.bal :::
 
