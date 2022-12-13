@@ -1,6 +1,6 @@
 # gRPC client - Unary RPC
 
-The `grpc:Client` communicates with a gRPC server over HTTP2. A `grpc:Client` is created by providing the endpoint url of gRPC server. In the unary scenario, once connected, the client sends a request to the remote service and waits for the response in the unary RPC call. Use this to send a single request and get a single response back. 
+A `grpc:Client` is created by providing the endpoint URL of gRPC server. In the unary scenario, once connected, the client sends a request to the remote service and waits for the response in the unary RPC call. Use this to send a single request and get a single response back. 
 
 ## Generate the service definition
 
