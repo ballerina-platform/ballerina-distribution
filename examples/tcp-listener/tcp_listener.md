@@ -1,6 +1,6 @@
 # TCP service - Send/Receive bytes
 
-The TCP service allows you to open up a TCP socket via a `tcp:Listener`. A `tcp:Listener` is created by giving the port number. Then a TCP service is attached to the listener that accepts and serves connections from TCP clients. The `onBytes` remote function is invoked once the content is received from the client. The `onError` and `onClose` remote functions get invoked in an erroneous situation and when the connection is closed respectively. Use a TCP service to establish connections and communicate over TCP protocol or implement high level protocols based on TCP. 
+The TCP service allows you to open up a TCP socket via a `tcp:Listener`. A `tcp:Listener` is created by giving the port number. Then a TCP service is attached to the listener that accepts and serves connections from TCP clients. The `onBytes` remote method is invoked once the content is received from the client. The `onError` and `onClose` remote methods get invoked in an erroneous situation and when the connection is closed respectively. Use a TCP service to establish connections and communicate over TCP protocol or implement high level protocols based on TCP. 
 
 ::: code tcp_listener.bal :::
 
