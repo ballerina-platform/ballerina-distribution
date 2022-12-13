@@ -1,0 +1,2 @@
+$ curl http://localhost:9090/orders
+[{"orderId":1, "productName":"Sport shoe", "price":27.5, "isValid":true}]
