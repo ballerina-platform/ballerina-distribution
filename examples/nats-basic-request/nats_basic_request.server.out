@@ -1,2 +1,2 @@
-$ bal run nats-basic-request.bal
-Reply message: Hello Back!
+$ bal run nats_basic_request.bal
+time = 2022-12-13T20:48:14.375+05:30 level = INFO module = "" message = "Reply message: Received valid order!"

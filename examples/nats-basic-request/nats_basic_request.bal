@@ -1,4 +1,5 @@
 import ballerina/http;
+import ballerina/log;
 import ballerinax/nats;
 
 type Order readonly & record {
@@ -26,6 +27,7 @@ service / on new http:Listener(9092) {
             subject: "orders.valid"
         });
 
+        log:printInfo("Reply message: " + reply.content);
         return http:ACCEPTED;
     }
 }
