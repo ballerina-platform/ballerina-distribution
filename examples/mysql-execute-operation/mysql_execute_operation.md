@@ -7,7 +7,7 @@ The `mysql` client allows executing a DDL/DML statement using the `execute` meth
 ::: code mysql_execute_operation.bal :::
 
 ## Prerequisites
-- Refer [`mysql-prerequisite`](https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-prerequisite).
+- For more information, see the [Database Access Ballerina By Example - Prerequisites](https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-prerequisite).
 
 Run the service.
 

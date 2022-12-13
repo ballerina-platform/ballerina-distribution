@@ -7,7 +7,7 @@ The `mysql` client allows tquerying the database using the `query` method. You c
 ::: code mysql_query_column_mapping.bal :::
 
 ## Prerequisites
-- Refer [`mysql-prerequisite`](https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-prerequisite).
+- For more information, see the [Database Access Ballerina By Example - Prerequisites](https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-prerequisite).
 
 Run the service.
 

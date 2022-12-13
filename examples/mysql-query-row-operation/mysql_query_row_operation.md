@@ -7,7 +7,7 @@ The `mysql` client allows querying the database for the utmost one result using 
 ::: code mysql_query_row.bal :::
 
 ## Prerequisites
-- Refer [`mysql-prerequisite`](https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-prerequisite).
+- For more information, see the [Database Access Ballerina By Example - Prerequisites](https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-prerequisite).
 
 Run the service.
 

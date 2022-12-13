@@ -7,7 +7,7 @@ The `mysql` client allows executeing a stored procedure using the `call` method.
 ::: code mysql_call_stored_procedures.bal :::
 
 ## Prerequisites
-- Refer [`mysql-prerequisite`](https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-prerequisite).
+- For more information, see the [Database Access Ballerina By Example - Prerequisites](https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-prerequisite).
 
 Run the service.
 
