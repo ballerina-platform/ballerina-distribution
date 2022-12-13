@@ -12,5 +12,5 @@ Run the service by executing the command below.
 
 ## Related links
 - [`http:JwtValidatorConfig` record - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/JwtValidatorConfig)
-- [`jwt` package - API documentation](https://lib.ballerina.io/ballerina/jwt/latest/)
+- [`jwt` module - API documentation](https://lib.ballerina.io/ballerina/jwt/latest/)
 - [HTTP service JWT authentication - Specification](/spec/http/#9113-listener---jwt-auth)
