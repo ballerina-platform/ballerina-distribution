@@ -12,6 +12,6 @@ Run the client program by executing the command below.
 ::: out websocket_client_mutual_ssl.out :::
 
 ## Related Links
-- [`websocket` package - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
+- [`websocket` module - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
 - [WebSocket SSL/TLS - Specification](/spec/websocket/#5-securing-the-websocket-connections)
 

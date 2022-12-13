@@ -11,5 +11,5 @@ Run the service by executing the command below.
 >**Tip:** You can invoke the above service via the [UDP client](/learn/by-example/udp-client/).
 
 ## Related links
-- [`udp` package - API documentation](https://lib.ballerina.io/ballerina/udp/latest)
+- [`udp` module - API documentation](https://lib.ballerina.io/ballerina/udp/latest)
 - [UDP service - Specification](/spec/udp/#4-service)
