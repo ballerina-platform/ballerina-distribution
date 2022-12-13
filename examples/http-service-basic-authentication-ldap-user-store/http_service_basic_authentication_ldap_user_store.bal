@@ -15,7 +15,7 @@ listener http:Listener securedEP = new(9090,
 );
 
 // Basic authentication with the LDAP user store can be enabled by setting 
-// the `http:FileUserStoreConfig` configuration.
+// the `http:LdapUserStoreConfig` configuration.
 // Authorization is based on scopes, which can be specified in the `scopes` field.
 @http:ServiceConfig {
     auth: [
