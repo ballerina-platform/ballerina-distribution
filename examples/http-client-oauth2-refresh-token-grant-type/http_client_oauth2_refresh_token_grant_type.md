@@ -1,6 +1,6 @@
 # HTTP client - OAuth2 refresh token grant type
 
-An `http:Client` can be secured with OAuth2 refresh token grant type authentication. This is achieved by enriching each request from the client with the `Authorization: Bearer <token>` header. The required configurations for the OAuth2 refresh token grant type can be specified in the `auth` field as the `http:OAuth2RefreshTokenGrantConfig` record. Use this to communicate with the service, which is secured with OAuth2 authentication.
+An `http:Client` can be secured with OAuth2 refresh token grant type authorization. This is achieved by enriching each request from the client with the `Authorization: Bearer <token>` header. The required configurations for the OAuth2 refresh token grant type can be specified in the `auth` field as the `http:OAuth2RefreshTokenGrantConfig` record. Use this to communicate with the service, which is secured with OAuth2 authorization.
 
 ::: code http_client_oauth2_refresh_token_grant_type.bal :::
 
