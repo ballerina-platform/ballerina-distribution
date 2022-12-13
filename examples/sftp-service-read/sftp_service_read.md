@@ -1,6 +1,6 @@
 # SFTP service - Read file
 
-The `ftp:Service` connects to a given SFTP server via the `ftp:Listener` and receives file changes (additions, deletions) occurring in the SFTP server. A `ftp:Listener` with SFTP protocol is created by giving the protocol, host-name and required credentials and the private key and gets attached to the `ftp:Service`. Once connected, the `onFileChange` method is invoked with the remote file changes as a `ftp:WatchEvent`. Use this to listen to file changes occurring in a remote file system.
+The `ftp:Service` connects to a given SFTP server via the `ftp:Listener`. A `ftp:Listener` with SFTP protocol is created by providing the protocol, host-name, required credentials and the private key. Once connected, the `onFileChange` remote method of the service starts receiving events as a `ftp:WatchEvent` every time a file is deleted or added to the server. Use this to listen to file changes occurring in a remote file system.
 
 ::: code sftp_service_read.bal :::
 
