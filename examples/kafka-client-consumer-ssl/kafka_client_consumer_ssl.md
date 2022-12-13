@@ -1,6 +1,6 @@
 # Kafka client - Consumer SSL/TLS
 
-The `kafka:Consumer` connects to a Kafka server via SSL/TLS, and then receives payloads from the server. SSL/TLS can be enabled by configuring the `secureSocket` which requires a certificate, and the protocol name. Further, the mode of security must be configured by setting `securityProtocol` to `kafka:PROTOCOL_SSL`. Use this to connect to a Kafka server secured with SSL/TLS.
+The `kafka:Consumer` connects to a Kafka server via SSL/TLS and then, receives payloads from the server. SSL/TLS can be enabled by configuring the `secureSocket`, which requires a certificate and the protocol name. Further, the mode of security must be configured by setting the `securityProtocol` to `kafka:PROTOCOL_SSL`. Use this to connect to a Kafka server secured with SSL/TLS.
 
 ::: code kafka_client_consumer_ssl.bal :::
 
