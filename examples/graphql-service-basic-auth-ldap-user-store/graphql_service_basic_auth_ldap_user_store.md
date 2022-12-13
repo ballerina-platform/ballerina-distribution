@@ -8,6 +8,9 @@ In the authorization phase, the scopes of the service are compared against the s
 
 ::: code graphql_service_basic_auth_ldap_user_store.bal :::
 
+## Prerequisites
+- LDAP server should be up and running
+
 Run the service by executing the command below.
 
 ::: out graphql_service_basic_auth_ldap_user_store.server.out :::
