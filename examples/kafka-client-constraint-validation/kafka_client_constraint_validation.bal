@@ -1,6 +1,6 @@
 import ballerina/constraint;
 import ballerinax/kafka;
-import ballerina/log;
+import ballerina/io;
 
 public type Order record {
     int orderId;
@@ -22,12 +22,12 @@ public function main() returns error? {
             check from Order 'order in orders
                 where 'order.isValid
                 do {
-                    log:printInfo(string `Received valid order for ${'order.productName}`);
+                    io:println(string `Received valid order for ${'order.productName}`);
                 };
-        // Check whether the `error` is a `kafka:PayloadValidationError` and seek pass the
-        // erroneous record.
+            // Check whether the `error` is a `kafka:PayloadValidationError` and seek pass the
+            // erroneous record.
         } else if orders is kafka:PayloadValidationError {
-            log:printError("Payload validation failed", orders);
+            io:println("Payload validation failed", orders);
             // The `kafka:PartitionOffset` related to the erroneous record is provided inside
             // the `kafka:PayloadValidationError`.
             check orderConsumer->seek({
@@ -35,6 +35,7 @@ public function main() returns error? {
                 offset: orders.detail().offset + 1
             });
         } else {
+            check orderConsumer->close();
             return orders;
         }
     }

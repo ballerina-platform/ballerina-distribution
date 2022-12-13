@@ -13,7 +13,7 @@ public type Order record {
 
 listener kafka:Listener orderListener = check new (kafka:DEFAULT_URL, {
     groupId: "order-group-id",
-    topics: ["order-topic"]
+    topics: "order-topic"
 });
 
 service on orderListener {
