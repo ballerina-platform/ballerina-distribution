@@ -9,7 +9,11 @@ NATS client connections can be authenticated in many ways. One of them is by usi
 
 Run the client program by executing the following command.
 
-::: out nats-client-basic-auth.out :::
+::: out nats_client_basic_auth.server.out :::
+
+Invoke the service by executing the following cURL command in a new terminal.
+
+::: out nats_client_basic_auth.client.out :::
 
 ## Related links
 - [`nats:Credentials` - API documentation](https://lib.ballerina.io/ballerinax/nats/latest/records/Credentials)
