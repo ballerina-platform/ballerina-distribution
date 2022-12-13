@@ -1,6 +1,6 @@
 # gRPC client - Send/Receive headers
 
-The `grpc:Client` allows sending headers and receiving headers from a gRPC server. gRPC - Protobuf CLI tool generates Context record for each protobuf message type which contains the protobuf message, and the header map. The header map supports `string`, `string[]` types. A Context record value is created with the required headers and sent using the context method of the client (`helloContext()`). The Context type of the required record is provided as the target type of the response to receive headers. `getHeader` and `getHeaders` methods are also available to manipulate the header values.
+The `grpc:Client` allows sending headers and receiving headers to/from a gRPC server. The gRPC - Protobuf CLI tool generates a `Context` record for each Protobuf message type, which contains the Protobuf message and the header map. The header map supports `string`and `string[]` types. A Context record value is created with the required headers and sent using the `context` method of the client (`helloContext()`). The `Contex type of the required record is provided as the target type of the response to receive headers. The `getHeader` and `getHeaders` methods are also available to manipulate the header values.
 
    ::: code grpc_simple_with_headers_service_client.bal :::
 
