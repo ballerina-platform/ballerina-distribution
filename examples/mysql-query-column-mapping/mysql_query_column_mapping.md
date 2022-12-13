@@ -1,6 +1,6 @@
 # Database Access - Query with advanced mapping
 
-The `mysql` client allows to query the database using the `query` method. You can use `sql:Column` annotation to map the table column name and ballerina record field. 
+The `mysql` client allows tquerying the database using the `query` method. You can use the `sql:Column` annotation to map the table column name and Ballerina record field. 
 
 > **Tip**: Checkout [`ballerinax/mssql`](https://central.ballerina.io/ballerinax/mssql), [`ballerinax/postgresql`](https://central.ballerina.io/ballerinax/postgresql), [`ballerinax/oracledb`](https://central.ballerina.io/ballerinax/oracledb), [`ballerinax/java.jdbc`](https://central.ballerina.io/ballerinax/java.jdbc) for other supported database clients.
 

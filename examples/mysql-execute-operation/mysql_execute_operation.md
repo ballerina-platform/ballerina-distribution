@@ -1,6 +1,6 @@
 # Database Access - DML and DDL operations
 
-The `mysql` client allows to execute a DDL/DML statement using the `execute` method. This method requires `sql:ParameterizedQuery` typed SQL DDL/DML statement as argument.
+The `mysql` client allows executing a DDL/DML statement using the `execute` method. This method requires a `sql:ParameterizedQuery`-typed SQL DDL/DML statement as the argument.
 
 > **Tip**: Checkout [`ballerinax/mssql`](https://central.ballerina.io/ballerinax/mssql), [`ballerinax/postgresql`](https://central.ballerina.io/ballerinax/postgresql), [`ballerinax/oracledb`](https://central.ballerina.io/ballerinax/oracledb), [`ballerinax/java.jdbc`](https://central.ballerina.io/ballerinax/java.jdbc) for other supported database clients.
 
