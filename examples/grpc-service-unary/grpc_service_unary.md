@@ -1,6 +1,6 @@
 # gRPC service - Unary RPC
 
-A `grpc:Listener` is created by providing the port, and a `grpc:Service` is attached to it. In the unary scenario, once a client is connected to the service and sends a request, the service sends a single message to the client. Use this to receive a single request from a client and send a single response back.
+A `grpc:Listener` is created by providing the port and a `grpc:Service` is attached to it. In the unary scenario, once a client is connected to the service and sends a request, the service sends a single message to the client. Use this to receive a single request from a client and send a single response back.
 
 ## Generate the service definition
 
