@@ -2033,6 +2033,14 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Union Types",
+                "url": "graphql-service-union-types",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "GraphiQL client",
                 "url": "graphql-graphiql",
                 "verifyBuild": true,
