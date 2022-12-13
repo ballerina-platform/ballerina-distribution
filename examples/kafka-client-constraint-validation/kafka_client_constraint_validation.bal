@@ -20,6 +20,7 @@ public function main() returns error? {
         Order[]|kafka:Error orders = orderConsumer->pollPayload(15);
         if orders is Order[] {
             check from Order 'order in orders
+                where 'order.isValid
                 do {
                     log:printInfo(string `Received valid order for ${'order.productName}`);
                 };

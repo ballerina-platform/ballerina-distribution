@@ -28,6 +28,7 @@ public function main() returns error? {
     Order[] orders = check orderConsumer->pollPayload(1);
 
     check from Order 'order in orders
+        where 'order.isValid
         do {
             io:println(string `Received valid order for ${'order.productName}`);
         };
