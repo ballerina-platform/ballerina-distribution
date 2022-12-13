@@ -10,7 +10,10 @@ public function main() returns error? {
         host: "sftp.example.com",
         port: 22,
         auth: {
-            credentials: {username: "user1", password: "pass456"},
+            credentials: {
+                username: "user1",
+                password: "pass456"
+            },
             // Private key file location and its password (if encrypted) is
             // given corresponding to the SSH key file used in the SFTP client.
             privateKey: {
@@ -24,13 +27,9 @@ public function main() returns error? {
     // an error is returned.
     stream<byte[] & readonly, io:Error?> fileStream = check fileClient->get("/server/logFile.txt");
 
-    do {
-        // Write the content to a file.
-        check io:fileWriteBlocksFromStream("./local/newLogFile.txt", fileStream);
+    // Write the content to a file.
+    check io:fileWriteBlocksFromStream("./local/newLogFile.txt", fileStream);
 
-        // Closes the file stream to finish the `get` operation.
-        check fileStream.close();
-    } on fail {
-        check fileStream.close();
-    }
+    // Closes the file stream to finish the `get` operation.
+    check fileStream.close();
 }
