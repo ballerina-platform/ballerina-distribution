@@ -1,6 +1,6 @@
 # HTTP client - OAuth2 client credentials grant type
 
-A client, which is secured with OAuth2 client credentials grant type can be used to connect to a secured service. The client is enriched with the `Authorization: Bearer <token>` header by passing the `http:OAuth2ClientCredentialsGrantConfig` for the `auth` configuration of the client.
+An `http:Client` can be secured with OAuth2 client credentials grant type authentication. This is achieved by enriching each request from the client with the `Authorization: Bearer <token>` header. The required configurations for the OAuth2 client credentials grant type can be specified in the `auth` field as the `http:OAuth2ClientCredentialsGrantConfig` record. Use this to communicate with the service, which is secured with OAuth2 authentication.
 
 ::: code http_client_oauth2_client_credentials_grant_type.bal :::
 
@@ -13,5 +13,5 @@ Run the client program by executing the following command.
 
 ## Related links
 - [`http:OAuth2ClientCredentialsGrantConfig` record - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/OAuth2ClientCredentialsGrantConfig)
-- [`oauth2` package - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)
+- [`oauth2` module - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)
 - [HTTP client OAuth2 client credentials grant type - Specification](/spec/http/#9119-client---grant-types-oauth2)
