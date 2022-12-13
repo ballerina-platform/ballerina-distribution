@@ -6,11 +6,16 @@ This shows how to use a `kafka:Consumer` as a simple payload consumer for the in
 
 ## Prerequisites
 - Start a [Kafka broker](https://kafka.apache.org/quickstart) instance.
-- Run the Kafka client given in the [Kafka client - Produce message](/learn/by-example/kafka-client-produce-message) example to produce some messages to the topic.
 
 Run the program by executing the following command.
 
 ::: out kafka_client_payload_data_binding.out :::
+
+Invoke the service by executing the following cURL command in a new terminal.
+
+::: out kafka_client_payload_data_binding.curl.out :::
+
+>**Tip:** Run the Kafka client given in the [Kafka client - Produce message](/learn/by-example/kafka-client-produce-message) example to produce some messages to the topic.
 
 ## Related links
 - [`kafka:Consumer->pollPayload` function - API documentation](https://lib.ballerina.io/ballerinax/kafka/latest/clients/Consumer#pollPayload)
