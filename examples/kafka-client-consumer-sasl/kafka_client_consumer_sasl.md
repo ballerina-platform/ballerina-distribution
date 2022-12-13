@@ -11,10 +11,6 @@ Run the program by executing the following command.
 
 ::: out kafka_client_consumer_sasl.out :::
 
-Invoke the service by executing the following cURL command in a new terminal.
-
-::: out kafka_client_consumer_sasl.curl.out :::
-
 >**Tip:** Run the Kafka client given in the [Kafka client - Producer SASL authentication](/learn/by-example/kafka-client-producer-sasl) example to produce some messages to the topic.
 
 ## Related links

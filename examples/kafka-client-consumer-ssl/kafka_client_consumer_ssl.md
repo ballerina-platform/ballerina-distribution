@@ -11,11 +11,7 @@ Run the program by executing the following command.
 
 ::: out kafka_client_consumer_ssl.out :::
 
-Invoke the service by executing the following cURL command in a new terminal.
-
-::: out kafka_client_consumer_ssl.curl.out :::
-
->**Tip:** Run the Kafka client given in the [Kafka client - Producer SSL/TLS](/learn/by-example/kafka-client-producer-ssl) example to produce some messages to the topic. 
+>**Tip:** Run the Kafka client given in the [Kafka client - Producer SSL/TLS](/learn/by-example/kafka-client-producer-ssl) example to produce some messages to the topic.
 
 ## Related links
 - [`kafka:SecureSocket` record - API documentation](https://lib.ballerina.io/ballerinax/kafka/latest/records/SecureSocket)
