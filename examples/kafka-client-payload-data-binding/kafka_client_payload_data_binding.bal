@@ -15,9 +15,9 @@ public function main() returns error? {
     });
 
     while true {
-        // Polls the consumer for payload.
-        Order[]|kafka:Error orders = orderConsumer->pollPayload(15);
-        if orders is Order[] {
+        do {
+            // Polls the consumer for payload.
+            Order[] orders = check orderConsumer->pollPayload(15);
             check from Order 'order in orders
                 where 'order.isValid
                 do {
@@ -25,17 +25,19 @@ public function main() returns error? {
                 };
             // Check whether the `error` is a `kafka:PayloadBindingError` and seek pass the
             // erroneous record.
-        } else if orders is kafka:PayloadBindingError {
-            io:println("Payload binding failed", orders);
-            // The `kafka:PartitionOffset` related to the erroneous record is provided inside
-            // the `kafka:PayloadBindingError`.
-            check orderConsumer->seek({
-                partition: orders.detail().partition,
-                offset: orders.detail().offset + 1
-            });
-        } else {
-            check orderConsumer->close();
-            return orders;
+        } on fail error orderError {
+            if orderError is kafka:PayloadBindingError {
+                io:println("Payload binding failed", orderError);
+                // The `kafka:PartitionOffset` related to the erroneous record is provided inside
+                // the `kafka:PayloadBindingError`.
+                check orderConsumer->seek({
+                    partition: orderError.detail().partition,
+                    offset: orderError.detail().offset + 1
+                });
+            } else {
+                check orderConsumer->close();
+                return orderError;
+            }
         }
     }
 }
