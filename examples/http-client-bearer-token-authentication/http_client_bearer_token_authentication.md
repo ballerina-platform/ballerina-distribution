@@ -13,5 +13,5 @@ Run the client program by executing the command below.
 
 ## Related links
 - [`http:BearerTokenConfig` - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/BearerTokenConfig)
-- [`auth` package API documentation](https://lib.ballerina.io/ballerina/auth/latest/)
+- [`auth` module - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)
 - [HTTP client bearer token authentication - Specification](/spec/http/#9116-client---bearer-token-auth)
