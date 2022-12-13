@@ -12,7 +12,7 @@ Invoke the service by executing the cURL command below.
 
 ::: out http_service_mutual_ssl.client.out :::
 
->**Info:** You can invoke the above service via the [Mutual SSL/TLS client](/learn/by-example/http-client-mutual-ssl/).
+>**Tip:** You can invoke the above service via the [Mutual SSL/TLS client](/learn/by-example/http-client-mutual-ssl/).
 
 ## Related links
 - [`http:ListenerSecureSocket` - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket)
