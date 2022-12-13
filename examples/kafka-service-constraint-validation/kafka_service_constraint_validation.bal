@@ -13,12 +13,13 @@ public type Order record {
 
 listener kafka:Listener orderListener = check new (kafka:DEFAULT_URL, {
     groupId: "order-group-id",
-    topics: ["order-topic"]
+    topics: "order-topic"
 });
 
 service on orderListener {
     remote function onConsumerRecord(Order[] orders) returns error? {
         check from Order 'order in orders
+            where 'order.isValid
             do {
                 log:printInfo(string `Received valid order for ${'order.productName}`);
             };
