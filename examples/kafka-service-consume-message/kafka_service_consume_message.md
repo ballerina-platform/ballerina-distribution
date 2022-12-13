@@ -6,12 +6,11 @@ Here, a Kafka consumer is used as a listener to a service with automatic offset 
 
 ## Prerequisites
 - Start a [Kafka broker](https://kafka.apache.org/quickstart) instance.
+- Run the Kafka client given in the [Kafka client - Produce message](/learn/by-example/kafka-client-produce-message) example to produce some messages to the topic.
 
 Run the program by executing the following command.
 
 ::: out kafka_service_consume_message.out :::
-
->**Tip:** Run the Kafka client given in the [Kafka client - Produce message](/learn/by-example/kafka-client-produce-message) example to produce some messages to the topic.
 
 ## Related links
 - [`kafka:Listener` client object - API documentation](https://lib.ballerina.io/ballerinax/kafka/latest/clients/Listener)
