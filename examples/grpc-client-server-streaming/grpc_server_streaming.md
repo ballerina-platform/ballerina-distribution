@@ -1,6 +1,6 @@
 # gRPC client - Server-side streaming RPC
 
-A `grpc:Client` is created by providing the endpoint URL of gRPC server. In the server streaming scenario, once connected, the client sends a request to the remote service and gets a message stream as the response which contains multiple messages. Use this to send a single request and get multiple responses back.
+A `grpc:Client` is created by providing the endpoint URL of a gRPC server. In the server streaming scenario, once connected, the client sends a request to the remote service and gets a message stream as the response, which contains multiple messages. Use this to send a single request and get multiple responses back.
 
 ## Generate the service definition
 
