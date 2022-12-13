@@ -1,5 +1,5 @@
 import ballerinax/kafka;
-import ballerina/io;
+import ballerina/http;
 
 public type Order readonly & record {
     int orderId;
@@ -14,18 +14,18 @@ public type OrderConsumerRecord record {|
     Order value;
 |};
 
-public function main() returns error? {
-    kafka:Consumer orderConsumer = check new (kafka:DEFAULT_URL, {
-        groupId: "order-group-id",
-        topics: "order-topic"
-    });
+final kafka:Consumer orderConsumer = check new (kafka:DEFAULT_URL, {
+    groupId: "order-group-id",
+    topics: "order-topic"
+});
 
-    // Polls the consumer for order records.
-    OrderConsumerRecord[] records = check orderConsumer->poll(1);
+service / on new http:Listener(9090) {
+    resource function get orders() returns Order[]|kafka:Error {
+        // Polls the consumer for order records.
+        OrderConsumerRecord[] records = check orderConsumer->poll(1);
 
-    check from OrderConsumerRecord orderRecord in records
-        where orderRecord.value.isValid
-        do {
-            io:println(string `Received valid order for ${orderRecord.value.productName}`);
-        };
+        return from OrderConsumerRecord orderRecord in records
+            where orderRecord.value.isValid
+            select orderRecord.value;
+    }
 }
