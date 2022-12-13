@@ -1,0 +1,1 @@
+$ bal run nats-client-basic-auth.bal
