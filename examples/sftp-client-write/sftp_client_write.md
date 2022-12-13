@@ -1,6 +1,6 @@
 # SFTP client - Write file
 
-The `ftp:Client` connects to a given SFTP server, and then sends and receives files as byte streams. A `ftp:Client` with SFTP protocol is created by giving the protocol, host-name and required credentials and the private key. Once connected, `put` method is used to write files as byte streams to the SFTP server. Use this to transfer files from a local file system to a remote file system.
+The `ftp:Client` connects to a given SFTP server, and then sends and receives files as byte streams. A `ftp:Client` with SFTP protocol is created by giving the protocol, host-name, required credentials and the private key. Once connected, `put` method is used to write files as byte streams to the SFTP server. Use this to transfer files from a local file system to a remote file system.
 
 ::: code sftp_client_write.bal :::
 
