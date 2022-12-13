@@ -11,6 +11,6 @@ Run the service by executing the command below.
 >**Tip:** You can invoke the above service via the [WebSocket client](/learn/by-example/websocket-client/).
 
 ## Related links
-- [`websocket` package - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
+- [`websocket` module - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
 - [WebSocket service - Specification](/spec/websocket/#3-service-types)
 - [Constraint BBE](/learn/by-example/constraint-validations/)

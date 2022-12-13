@@ -13,6 +13,6 @@ Run the service by executing the command below.
 >**Tip:** You can invoke the above service via the [OAuth2 JWT Bearer grant type client](/learn/by-example/websocket-client-oauth2-jwt-bearer-grant-type).
 
 ## Related Links
-- [`websocket` package - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
-- [`oauth2` package - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)
+- [`websocket` module - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
+- [`oauth2` module - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)
 - [WebSocket authentication - Specification](/spec/websocket/#52-authentication-and-authorization)

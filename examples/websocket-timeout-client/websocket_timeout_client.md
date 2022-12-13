@@ -12,4 +12,4 @@ Run the client program by executing the command below.
 ::: out websocket_timeout_client.out :::
 
 ## Related Links
-- [`websocket` package - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
+- [`websocket` module - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
