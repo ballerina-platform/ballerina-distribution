@@ -1,1 +1,1 @@
-$ bal run nats-client-basic-auth.bal
+$ bal run nats_client_basic_auth.bal
