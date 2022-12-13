@@ -1,6 +1,6 @@
 # HTTP client - OAuth2 JWT bearer grant type
 
-The `http:Client` can be secured with OAuth2 JWT bearer grant type authorization. This is achieved by enriching each request from the client with the `Authorization: Bearer <token>` header. The required configurations for the OAuth2 JWT bearer grant type can be specified in the `auth` field as the `http:OAuth2JwtBearerGrantConfig` record. Use this to communicate with the service, which is secured with OAuth2 authorization.
+The `http:Client` can be secured with OAuth2 JWT bearer grant type authorization. This is achieved by enriching each request from the client with the `Authorization: Bearer <token>` header. The required configurations for the OAuth2 JWT bearer grant type can be specified in the `auth` field as the `http:OAuth2JwtBearerGrantConfig` record. Use this grant type when the client wants to receive access tokens without transmitting sensitive information such as the client secret.
 
 ::: code http_client_oauth2_jwt_bearer_grant_type.bal :::
 
