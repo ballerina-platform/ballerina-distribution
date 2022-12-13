@@ -1,6 +1,6 @@
 # Kafka client - Payload data binding
 
-The `kafka:Consumer` connects to a given Kafka server, and then receives payloads in a user defined type via data-binding. A `kafka:Consumer` is created by giving the server endpoint, group id and the topic. Once connected, `pollPayload` method is used to receive payloads with the intended type from the Kafka server. The received payload will be bound to the target type internally. The consumer uses the built-in byte array deserializer for the value, which is the default deserializer in the `kafka:Consumer`. Use this to receive only the payload from a Kafka server without the metadata of the payload like `kafka:PartitionOffset` and `timestamp`.
+The `kafka:Consumer` connects to a given Kafka server, and then receives payloads in a user-defined type via data-binding. A `kafka:Consumer` is created by giving the server-endpoint, group-id, and topic. Once connected, `pollPayload` method is used to receive payloads with the intended type from the Kafka server. The received payload will be bound to the target type internally. The consumer uses the built-in byte array deserializer for the value, which is the default deserializer in the `kafka:Consumer`. Use this to receive only the payload from a Kafka server without the metadata of the payload like `kafka:PartitionOffset` and `timestamp`.
 
 ::: code kafka_client_payload_data_binding.bal :::
 
