@@ -1,1 +1,1 @@
-$ bal run rabbitmq-client-basic-auth.bal
+$ curl http://localhost:9092/orders -H "Content-type:application/json" -d "{\"orderId\": 1, \"productName\": \"Sport shoe\", \"price\": 27.5, \"isValid\": true}"
