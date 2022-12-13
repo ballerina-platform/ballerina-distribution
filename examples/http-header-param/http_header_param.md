@@ -1,6 +1,6 @@
 # REST service - Header parameter
 
-The `@http:header` annotation allows reading header values from the request. The annotation can be used to annotate a given resource parameter. The name of the parameter must match the name of the header. If there is a mismatch, then the header name must be given in the annotation configuration. The resource parameter can be a simple type or array type (i.e., `string version` or `string[] versions`). If there are many headers to read, a record type can be used as the parameter. Unless the parameter is optional (i.e., `string? version`), a `400 Bad Request` response is sent to the client in the absence of the mapping header.
+The `@http:header` annotation allows reading header values from the request. The annotation can be used to annotate a given resource parameter. The name of the parameter must match the name of the header. If there is a mismatch, then the header name must be given in the annotation configuration. The resource parameter can be a simple type or an array type (i.e., `string version` or `string[] versions`). If there are many headers to read, a record type can be used as the parameter. Unless the parameter is optional (i.e., `string? version`), a `400 Bad Request` response is sent to the client in the absence of the mapping header.
 
 ::: code http_header_param.bal :::
 
