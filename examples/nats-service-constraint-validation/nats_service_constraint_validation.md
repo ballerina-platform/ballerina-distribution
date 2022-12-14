@@ -1,6 +1,6 @@
 # NATS service - Constraint validation
 
-    The NATS service supports validating a payload by the constraints added to the related message record. When a message with a constraint is received from the NATS server, it is validated internally. If the validation fails, the `onError` remote method is invoked with a `nats:PayloadValidationError`. Payload validation using constraints can be used when the message content needs to be implicitly validated upon receiving from the server.
+The NATS service supports validating a payload by the constraints added to the related message record. When a message with a constraint is received from the NATS server, it is validated internally. If the validation fails, the `onError` remote method is invoked with a `nats:PayloadValidationError`. Payload validation using constraints can be used when the message content needs to be implicitly validated upon receiving from the server.
 
 ::: code nats_service_constraint_validation.bal :::
 
