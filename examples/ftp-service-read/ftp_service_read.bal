@@ -5,7 +5,6 @@ import ballerina/log;
 // configuration. The listener listens to the files
 // with the given file name pattern located in the specified path.
 listener ftp:Listener fileListener = check new ({
-    protocol: ftp:FTP,
     host: "ftp.example.com",
     auth: {
         credentials: {

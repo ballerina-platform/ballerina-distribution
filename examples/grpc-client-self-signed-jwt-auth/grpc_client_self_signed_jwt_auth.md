@@ -11,11 +11,11 @@ Setting up the client is the same as setting up the unary RPC client with additi
 ## Prerequisites
 - Run the gRPC service given in the [gRPC service - JWT authentication](/learn/by-example/grpc-service-jwt-auth/) example.
 
-Execute the command below to run the client.
+Run the client by executing the command below.
 
    ::: out grpc_client_self_signed_jwt_auth.out :::
 
 ## Related links
 - [`grpc:JwtIssuerConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/JwtIssuerConfig)
 - [gRPC client self signed JWT authentication - Specification](/spec/grpc/#5117-client---self-signed-jwt-auth)
-- [`oauth2` package - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)
+- [`oauth2` module - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)

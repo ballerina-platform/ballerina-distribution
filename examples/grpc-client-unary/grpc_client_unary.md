@@ -27,11 +27,11 @@ Once you run the command, the `grpc_unary_pb.bal` file gets generated inside the
 
    ::: code grpc_client_unary.bal :::
 
-4. Execute the command below to run the client.
+4. Run the client by executing the command below.
 
    ::: out grpc_client_unary.out :::
 
 ## Related links
-- [`grpc` package - API documentation](https://lib.ballerina.io/ballerina/grpc/latest)
+- [`grpc` module - API documentation](https://lib.ballerina.io/ballerina/grpc/latest)
 - [gRPC client unary RPC - Specification](/spec/grpc/#41-simple-rpc)
 - [Ballerina protocol buffers guide](/learn/cli-documentation/grpc/)

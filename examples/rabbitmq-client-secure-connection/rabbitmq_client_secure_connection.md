@@ -9,7 +9,11 @@ The RabbitMQ broker can be configured to use SSL/TLS for secure traffic encrypti
 
 Run the client program by executing the following command.
 
-::: out rabbitmq_client_secure_connection.out :::
+::: out rabbitmq_client_secure_connection.server.out :::
+
+Invoke the service by executing the following cURL command in a new terminal.
+
+::: out rabbitmq_client_secure_connection.client.out :::
 
 ## Related links
 - [`rabbitmq:SecureSocket` - API documentation](https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/SecureSocket)

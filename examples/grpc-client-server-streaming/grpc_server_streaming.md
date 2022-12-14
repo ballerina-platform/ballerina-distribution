@@ -27,11 +27,11 @@ Once you run the command, the `grpc_server_streaming_pb.bal` file gets generated
 
    ::: code grpc_server_streaming_service_client.bal :::
 
-4. Execute the command below to run the client.
+4. Run the client by executing the command below.
 
    ::: out grpc_server_streaming_service_client.out :::
 
 ## Related links
-- [`grpc` package - API documentation](https://lib.ballerina.io/ballerina/grpc/latest)
+- [`grpc` module - API documentation](https://lib.ballerina.io/ballerina/grpc/latest)
 - [gRPC client server-side streaming - Specification](/spec/grpc/#42-server-streaming-rpc)
 - [Ballerina protocol buffers guide](/learn/cli-documentation/grpc/)

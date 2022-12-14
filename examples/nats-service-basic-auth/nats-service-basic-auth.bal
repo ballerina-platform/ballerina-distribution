@@ -10,7 +10,6 @@ public type Order record {
 
 // Initializes a NATS listener with TLS/SSL and username/password authentication.
 listener nats:Listener securedEP = new(nats:DEFAULT_URL,
-
     // To secure the client connections using username/password authentication, provide the credentials
     // with the `nats:Credentials` record.
     auth = {

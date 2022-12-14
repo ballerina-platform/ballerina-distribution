@@ -11,7 +11,11 @@ RabbitMQ allows sending messages to a given pre-declared queue. A RabbitMQ clien
 
 Run the client program by executing the following command.
 
-::: out rabbitmq_producer.out :::
+::: out rabbitmq_producer.server.out :::
+
+Invoke the service by executing the following cURL command in a new terminal.
+
+::: out rabbitmq_producer.client.out :::
 
 ## Related links
 - [`rabbitmq:Client` client object - API documentation](https://lib.ballerina.io/ballerinax/rabbitmq/latest/clients/Client)

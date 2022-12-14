@@ -8,7 +8,7 @@ Run the service as follows.
 
 ::: out http_cookies_service.out :::
 
->**Info:** You can invoke the above service via the [Cookies client](/learn/by-example/http-cookies-client/)
+>**Tip:** You can invoke the above service via the [Cookies client](/learn/by-example/http-cookies-client/).
 
 ## Related links
 - [`http:Cookie` - API documentation](https://lib.ballerina.io/ballerina/http/latest/classes/Cookie)

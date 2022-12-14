@@ -1,6 +1,6 @@
 # HTTP client - Query parameter
 
-The `http` module provides first class support for specifying URL query parameters as resource method argument. The supported types are `string`, `int`, `float`, `boolean`, `decimal`, and the `array` types of the aforementioned types. The query param type can be `nil` as well.
+The `http:Client` supports specifying query parameters as resource method arguments. Each query parameter can be stated as a key-value pair. When the request is sent, the key-value pairs are appended to the request path (e.g., `?foo=bar`). The supported types are `string`, `int`, `float`, `boolean`, `decimal`, and `array` types of the aforementioned types. Use this when invoking endpoints that expect query parameters.
 
 ::: code http_client_query_parameter.bal :::
 
@@ -11,10 +11,10 @@ Run the client program by executing the following command.
 
 ::: out http_client_query_parameter.out :::
 
-Furthermore, a `post` request with query parameter can be sent as shown below.
+Furthermore, a `post` request with a query parameter can be sent as shown below.
 
 ::: code http_client_query_parameter_post.bal :::
 
 ## Related links
-- [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`http` module - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
 - [HTTP client resource methods - Specification](/spec/http/#2423-resource-methods)
