@@ -1,6 +1,6 @@
 # GraphQL service - Union Types
 
-A GraphQL schema can have union types, that can include two or more `OBJECT` types. In Ballerina, `distinct` `service` objects can be used to define members of a union type. Then a Ballerina union type can be used to define the GraphQL union type. Use a union type to represent a type that consists of a set of possible `OBJECT` types, but provide no guarantee for common fields.
+The Ballerina GraphQL package allows defining union types as defined in the GraphQL specification. However, the Ballerina union type that represent a GraphQL union type can only consist of `distinct` `service` classes. This is because the Ballerina type system is structurally-typed, whereas the GraphQL type system is nominally-typed. The `distinct` types are the only types in Ballerina which have the similar behavior to nominal-types. Use union types when an API requires a type that consists more than one type.
 
 ::: code graphql_service_union_types.bal :::
 
