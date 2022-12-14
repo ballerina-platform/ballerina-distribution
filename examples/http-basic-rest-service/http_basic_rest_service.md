@@ -8,9 +8,13 @@ Run the service as follows.
 
 ::: out http_basic_rest_service.server.out :::
 
-Invoke the service by executing the following cURL command in a new terminal.
+Invoke the HTTP GET resource by executing the following cURL command in a new terminal.
 
-::: out http_basic_rest_service.client.out :::
+::: out http_basic_rest_service.1.client.out :::
+
+Invoke the HTTP POST resource by executing the following cURL command in a new terminal.
+
+::: out http_basic_rest_service.2.client.out :::
 
 >**Tip:** You can invoke the above service via the [Send request/Receive response client](/learn/by-example/http-client-send-request-receive-response/).
 
