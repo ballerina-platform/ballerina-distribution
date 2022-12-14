@@ -1,6 +1,6 @@
 # HTTP service - SSL/TLS
 
-The `http:Listener` can be configured to communicate through HTTPS by providing a certificate file and a private key file. These configurations can be provided through the `securedSocket` field of the `http:ListenerConfiguration`. This field accepts an `http:ListenerSecureSocket` record, which provides the SSL-related configurations. Use this to secure the communication and data transfer between the server and the client.
+The `http:Listener` can be configured to communicate through HTTPS by providing a certificate file and a private key file. The certificate and the key can be provided through the `secureSocket` field of the listener configuration. Use this to secure the communication and data transfer between the server and the client.
 
 ::: code http_service_ssl_tls.bal :::
 

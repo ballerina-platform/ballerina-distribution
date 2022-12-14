@@ -1,6 +1,6 @@
 # HTTP client - SSL/TLS
 
-The `http:Client` can be configured to communicate through HTTPS by providing a certificate file. This configuration can be provided through the `securedSocket` field of the `http:ClientConfiguration`. This field accepts an `http:ClientSecureSocket` record, which provides the SSL-related configurations. Use this to secure the communication and data transfer between the client and the server.
+The `http:Client` can be configured to communicate through HTTPS by providing a certificate file. The certificate can be provided through the `secureSocket` field of the client configuration. Use this to secure the communication between the client and the server.
 
 ::: code http_client_ssl_tls.bal :::
 

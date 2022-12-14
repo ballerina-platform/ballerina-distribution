@@ -1,6 +1,6 @@
 # HTTP client - Basic authentication
 
-The `http:Client` can be secured with basic authentication by enriching each request from the client with the `Authorization: Basic <token>` header. The username and password for basic authentication can be specified in the `auth` field of the `http:ClientConfiguration`. Use this to communicate with the service, which is secured with basic authentication.
+The `http:Client` can be secured with basic authentication by enriching each request from the client with the `Authorization: Basic <token>` header. The username and password for basic authentication can be specified in the `auth` field of the client configuration. Use this to communicate with the service, which is secured with basic authentication.
 
 ::: code http_client_basic_authentication.bal :::
 
