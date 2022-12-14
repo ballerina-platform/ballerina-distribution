@@ -1,8 +1,16 @@
 import ballerina/http;
 
-// A `ResponseErrorInterceptor` service class implementation. It allows you
-// to intercept the errors and handle them accordingly. A `ResponseErrorInterceptor`
-// service can only have one remote function: `interceptResponseError`.
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
+
+table<Album> key(title) albums = table [
+    {title: "Blue Train", artist: "John Coltrane"},
+    {title: "Sarah Vaughan and Clifford Brown", artist: "Sarah Vaughan"}
+];
+
+// A `ResponseErrorInterceptor` service class implementation.
 service class ResponseErrorInterceptor {
     *http:ResponseErrorInterceptor;
 
@@ -35,15 +43,13 @@ listener http:Listener interceptorListener = new http:Listener(9090, config = {
 
 service / on interceptorListener {
 
-    // If the request does not include a `checkHeader`, then, this will return an error
-    // and the execution will jump to the nearest `ResponseErrorInterceptor`.
-    resource function get greeting(@http:Header string checkHeader) returns http:Ok {
-        return {
-            headers: {
-                "checkedHeader" : checkHeader
-            },
-            mediaType: "application/org+json",
-            body: { message : "Greetings!" }
-        };
+    resource function post albums(@http:Payload Album album) returns Album|error {
+        // Returns an error when the album is already present. This error can be intercepted in
+        // the nearest `ResponseErrorInterceptor`.
+        if albums.hasKey(album.title) {
+            return error("album is already present.");
+        }
+        albums.add(album);
+        return album;
     }
 }
