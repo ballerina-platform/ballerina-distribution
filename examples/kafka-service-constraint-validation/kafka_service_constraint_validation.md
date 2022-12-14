@@ -11,7 +11,7 @@ Run the program by executing the following command.
 
 ::: out kafka_service_constraint_validation.out :::
 
->**Tip:** Run the Kafka client given in the [Kafka client - Produce message](/learn/by-example/kafka-client-produce-message) example with a valid product name (0 < length <= 30), then with an invalid product name and again with a valid product name.
+>**Tip:** Run the Kafka client given in the [Kafka producer - Produce message](/learn/by-example/kafka-producer-produce-message) example with a valid product name (0 < length <= 30), then with an invalid product name and again with a valid product name.
 
 ## Related links
 - [`kafka:PayloadValidationError` error type - API documentation](https://lib.ballerina.io/ballerinax/kafka/latest/errors#PayloadValidationError)

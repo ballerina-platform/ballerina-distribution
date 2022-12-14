@@ -11,7 +11,7 @@ Run the program by executing the following command.
 
 ::: out kafka_service_sasl.out :::
 
->**Tip:** Run the Kafka client given in the [Kafka client - Producer SSL/TLS](/learn/by-example/kafka-client-producer-ssl) example to produce some messages to the topic.
+>**Tip:** Run the Kafka client given in the [Kafka producer - SASL authentication](/learn/by-example/kafka-producer-sasl) example to produce some messages to the topic.
 
 ## Related links
 - [`kafka:AuthenticationConfiguration` record - API documentation](https://lib.ballerina.io/ballerinax/kafka/latest/records/AuthenticationConfiguration)
