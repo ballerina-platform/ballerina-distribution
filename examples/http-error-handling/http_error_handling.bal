@@ -18,8 +18,8 @@ service class ResponseErrorInterceptor {
     // mandatory argument: `error`. The remote function can return a response,
     // which will overwrite the existing error response.
     remote function interceptResponseError(error err) returns http:InternalServerError {
-        // In this case, all of the errors are sent as `HTTP 500 internal server` 
-        // errors with a customized media type and body. Moreover, you can send different
+        // In this case, all of the errors are sent as `500 InternalServerError` 
+        // responses with a customized media type and body. Moreover, you can send different
         // responses according to the error type.        
         return {
             mediaType: "application/org+json",
