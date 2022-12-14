@@ -4,7 +4,7 @@ import ballerinax/rabbitmq;
 
 public type Order record {
     int orderId;
-    // Add a constraint to only allow string values of length between 1 and 30.
+    // Add a constraint to allow only string values of length between 1 and 30.
     @constraint:String {maxLength: 30, minLength: 1}
     string productName;
     decimal price;
@@ -19,7 +19,7 @@ service "OrderQueue" on new rabbitmq:Listener(rabbitmq:DEFAULT_HOST, rabbitmq:DE
         }
     }
 
-    // When an error occurs `onError` gets invoked.
+    // When an error occurs, `onError` gets invoked.
     remote function onError(rabbitmq:AnydataMessage message, rabbitmq:Error err) {
         if err is rabbitmq:PayloadValidationError {
             log:printError("Payload validation failed", err);

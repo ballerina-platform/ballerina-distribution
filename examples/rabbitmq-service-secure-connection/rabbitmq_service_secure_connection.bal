@@ -17,7 +17,7 @@ listener rabbitmq:Listener securedEP = new(rabbitmq:DEFAULT_HOST, 5671,
     }
 );
 
-// The consumer service listens to the "OrderQueue" queue.
+// The consumer service listens to the `OrderQueue` queue.
 service "OrderQueue" on securedEP {
     remote function onMessage(Order 'order) returns error? {
         if 'order.isValid {

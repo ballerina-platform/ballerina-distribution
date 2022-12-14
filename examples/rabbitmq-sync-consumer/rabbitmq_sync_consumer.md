@@ -1,6 +1,6 @@
 # RabbitMQ client - Consume message
 
-The RabbitMQ client allows fetching individual messages one by one from the server. A RabbitMQ client is created by passing the host and port of the RabbitMQ broker. To pull messages, use `consumePayload` or `consumeMessage` method which requires the queue name as the argument. Messages are fetched in the FIFO order. It is possible to use automatic or manual acknowledgments, similar to consumer services. Use  it to pull messages one by one from a queue in RabbitMQ server.
+The RabbitMQ client allows fetching individual messages one by one from the server. A RabbitMQ client is created by passing the host and port of the RabbitMQ broker. To pull messages, use the `consumePayload` or `consumeMessage` method, which requires the queue name as the argument. Messages are fetched in the FIFO order. It is possible to use automatic or manual acknowledgments similar to consumer services. Use it to pull messages one by one from a queue in the RabbitMQ server.
 
 ::: code rabbitmq_sync_consumer.bal :::
 
