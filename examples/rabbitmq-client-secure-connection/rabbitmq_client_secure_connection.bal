@@ -18,7 +18,7 @@ public function main() returns error? {
         }
     );
 
-    // Publishes the message using newClient and the routing key named OrderQueue.
+    // Publishes the message using a `newClient` and the routing key named `OrderQueue`.
     check rabbitmqClient->publishMessage({
         content: {
             orderId: 1,

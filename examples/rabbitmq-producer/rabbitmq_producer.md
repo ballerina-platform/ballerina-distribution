@@ -1,6 +1,6 @@
 # RabbitMQ client - Produce message
 
-RabbitMQ allows sending messages to a given pre-declared queue. A RabbitMQ client is created by passing the host and port of the RabbitMQ broker. See `RabbitMQ client - Declare a queue` sample in the prerequisites section for more details on declaring the queue. To publish messages, the `publishMessage` method is used which requires the queue name as the routing key and the message content. Use it when you want to publish messages that can be received by one or more consumers.
+RabbitMQ allows sending messages to a given pre-declared queue. A RabbitMQ client is created by passing the host and port of the RabbitMQ broker. For more details on declaring the queue, see the `RabbitMQ client - Declare a queue` sample. The `publishMessage` method, which requires the queue name as the routing key and the message content is used to publish messages. Use it when you want to publish messages that can be received by one or more consumers.
 
 ::: code rabbitmq_producer.bal :::
 
