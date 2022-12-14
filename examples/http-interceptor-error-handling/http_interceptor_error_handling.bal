@@ -33,8 +33,7 @@ service class RequestErrorInterceptor {
     // The resource function inside a `RequestErrorInterceptor` is only allowed 
     // to have the default method and path. The error occurred in the interceptor
     // execution can be accessed by the mandatory argument: `error`.
-    resource function 'default [string... path](error err, http:Request req,
-            http:RequestContext ctx) returns http:BadRequest {
+    resource function 'default [string... path](error err) returns http:BadRequest {
         // In this case, all of the errors are sent as `400 BadRequest` responses with a customized
         // media type and body. You can also send different status code responses according to
         // the error type. Furthermore, you can also call `ctx.next()` if you want to continue the 
