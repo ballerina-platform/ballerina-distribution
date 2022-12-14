@@ -1,6 +1,6 @@
 # NATS service - Basic authentication
 
-NATS authentication deals with allowing a NATS client to connect to the server. In this example, the underlying connection of the listener is secured with Basic Authentication. A secured NATS listener can be created by passing the URL of the NATS broker and providing the authentication details using the `nats:Credentials` record. Use it to authenticate client connections using a username and password.
+The NATS authentication allows securing the client communication with the server. In this example, the underlying connection of the listener is secured with Basic Authentication. A secured NATS listener can be created by passing the URL of the NATS broker and providing the authentication details using the `nats:Credentials` record. Use it to authenticate client connections using a username and password.
 
 ::: code nats-service-basic-auth.bal :::
 
