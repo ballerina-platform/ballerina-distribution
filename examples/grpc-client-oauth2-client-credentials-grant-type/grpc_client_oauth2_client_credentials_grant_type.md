@@ -1,8 +1,6 @@
 # gRPC client - OAuth2 client credentials grant type 
 
-A client, which is secured with OAuth2 client credentials grant type can be used to connect to a secured service.
-
-The client metadata is enriched with the `Authorization: Bearer <token>` header by passing the `grpc:OAuth2ClientCredentialsGrantConfig` for the `auth` configuration of the client.
+The `grpc:Client` can be secured with OAuth2 client credentials grant type authorization by enriching client metadata with the `Authorization: Bearer <token>` header. The required configurations for this grant type can be specified in the `auth` field of the client configuration.
 
    ::: code grpc_client_oauth2_client_credentials_grant_type.bal :::
 

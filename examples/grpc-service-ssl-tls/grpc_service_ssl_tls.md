@@ -1,12 +1,12 @@
 # gRPC service - SSL/TLS
 
-You can use the gRPC listener to connect to or interact with a gRPC client secured with SSL/TLS. Provide the `grpc:ListenerSecureSocket` configurations to the server to expose an HTTPS connection over HTTP/2.
+The `grpc:Listener` can be configured to communicate with a gRPC client secured with SSL/TLS by providing a certificate file and a private key file. The certificate and the key can be provided through the `secureSocket` field of the listener configuration. Use this to secure the communication and data transfer between the server and the client.
 
    ::: code grpc_service_ssl_tls.bal :::
 
 Setting up the service is the same as setting up the unary RPC service with additional configurations. You can refer to the [gRPC service - Unary RPC](/learn/by-example/grpc-service-unary/) to implement the service used below.
 
-Execute the command below to run the service.
+Run the service by executing the command below.
 
    ::: out grpc_service_ssl_tls.server.out :::
 

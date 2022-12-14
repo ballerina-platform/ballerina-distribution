@@ -1,8 +1,6 @@
 # gRPC client - OAuth2 refresh token grant type 
 
-A client, which is secured with an OAuth2 refresh token grant type can be used to connect to a secured service.
-
-The client metadata is enriched with the `Authorization: Bearer <token>` header by passing the `grpc:OAuth2RefreshTokenGrantConfig` to the `auth` configuration of the client.
+The `grpc:Client` can be secured with OAuth2 refresh token grant type authorization by enriching the client metadata with the `Authorization: Bearer <token>` header. The required configurations for this grant type can be specified in the `auth` field of the client configuration. Use this to automatically retrieve an access token when it is expired.
 
    ::: code grpc_client_oauth2_refresh_token_grant_type.bal :::
 

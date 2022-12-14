@@ -1,8 +1,6 @@
 # gRPC client - OAuth2 JWT bearer grant type 
 
-A client, which is secured with an OAuth2 JWT bearer grant type can be used to connect to a secured service.
-
-The client metadata is enriched with the `Authorization: Bearer <token>` header by passing the `grpc:OAuth2JwtBearerGrantConfig` to the `auth` configuration of the client.
+The `grpc:Client` can be secured with OAuth2 JWT bearer grant type authorization by enriching the client metadata with the `Authorization: Bearer <token>` header. The required configurations for this grant type can be specified in the `auth` field of the client configuration.
 
    ::: code grpc_client_oauth2_jwt_bearer_grant_type.bal :::
 

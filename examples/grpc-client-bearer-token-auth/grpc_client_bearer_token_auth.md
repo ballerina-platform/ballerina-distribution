@@ -1,15 +1,13 @@
 # gRPC client - Bearer token authentication
 
-A client, which is secured with Bearer token authentication can be used to connect to a secured service.
-
-The client metadata is enriched with the `Authorization: Bearer <token>` header by passing the `grpc:BearerTokenConfig` for the `auth` configuration of the client.
+The `grpc:Client` can be secured with bearer token authentication by enriching each request from the client with the `Authorization: Bearer <token>` metadata. The bearer token can be specified in the `auth` field of the client configuration. Use this to communicate with the service, which is secured with bearer token authentication.
 
    ::: code grpc_client_bearer_token_auth.bal :::
 
 You can refer to the [gRPC client - Unary RPC](/learn/by-example/grpc-client-unary/) to implement the client used here.
 
 ## Prerequisites
-- Start a secured service.
+- Run a sample secured service with bearer token authentication.
 
 Run the client by executing the command below.
 
