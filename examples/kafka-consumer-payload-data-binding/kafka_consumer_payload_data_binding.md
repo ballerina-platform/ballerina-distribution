@@ -11,7 +11,7 @@ Run the program by executing the following command.
 
 ::: out kafka_consumer_payload_data_binding.out :::
 
->**Tip:** Run the Kafka client given in the [Kafka client - Produce message](/learn/by-example/kafka-client-produce-message) example to produce some messages to the topic.
+>**Tip:** Run the Kafka client given in the [Kafka producer - Produce message](/learn/by-example/kafka-producer-produce-message) example to produce some messages to the topic.
 
 ## Related links
 - [`kafka:Consumer->pollPayload` function - API documentation](https://lib.ballerina.io/ballerinax/kafka/latest/clients/Consumer#pollPayload)
