@@ -9,7 +9,7 @@ $ curl -v http://localhost:9090/albums
 * Mark bundle as not supporting multiuse
 < HTTP/1.1 200 OK
 < content-type: application/json
-< responseHeader: ResponseInterceptor
+< x-api-version: v2
 < content-length: 95
 < server: ballerina
 < date: Wed, 14 Dec 2022 11:51:35 +0530

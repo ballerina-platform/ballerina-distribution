@@ -17,10 +17,10 @@ service class ResponseErrorInterceptor {
     // The error occurred in the request-response path can be accessed by the 
     // mandatory argument: `error`. The remote function can return a response,
     // which will overwrite the existing error response.
-    remote function interceptResponseError(error err) returns http:InternalServerError {
-        // In this case, all of the errors are sent as `500 InternalServerError` 
-        // responses with a customized media type and body. Moreover, you can send different
-        // responses according to the error type.        
+    remote function interceptResponseError(error err) returns http:BadRequest {
+        // In this case, all of the errors are sent as `400 BadRequest` responses with a customized
+        // media type and body. Moreover, you can send different status code responses according to
+        // the error type.        
         return {
             mediaType: "application/org+json",
             body: { message : err.message() }
@@ -43,13 +43,13 @@ listener http:Listener interceptorListener = new http:Listener(9090, config = {
 
 service / on interceptorListener {
 
-    resource function post albums(@http:Payload Album album) returns Album|error {
-        // Returns an error when the album is already present. This error can be intercepted in
-        // the nearest `ResponseErrorInterceptor`.
-        if albums.hasKey(album.title) {
-            return error("album is already present.");
+    // If the request does not have a `x-api-version`header, then an error will be returned
+    // and the execution will jump to the nearest `ResponseErrorInterceptor`.
+    resource function get albums(@http:Header string x\-api\-version) 
+            returns Album[]|http:NotImplemented {
+        if x\-api\-version != "v1" {
+            return http:NOT_IMPLEMENTED;
         }
-        albums.add(album);
-        return album;
+        return albums.toArray();
     }
 }

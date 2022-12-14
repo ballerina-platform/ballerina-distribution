@@ -6,15 +6,9 @@ type Album readonly & record {|
 |};
 
 table<Album> key(title) albums = table [
-        {title: "Blue Train", artist: "John Coltrane"},
-        {title: "Jeru", artist: "Gerry Mulligan"}
-    ];
-
-// Header name to be set to the request in the request interceptor.
-final string interceptor_header = "requestHeader";
-
-// Header value to be set to the request in the request interceptor.
-final string interceptor_header_value = "RequestInterceptor";
+    {title: "Blue Train", artist: "John Coltrane"},
+    {title: "Jeru", artist: "Gerry Mulligan"}
+];
 
 // A `Requestinterceptorservice` class implementation. It intercepts the request
 // and adds a header before it is dispatched to the target service.
@@ -26,9 +20,12 @@ service class RequestInterceptor {
     // An accessor and a path can also be specified. In that case, the interceptor will be
     // executed only for the requests, which match the accessor and path.
     resource function 'default [string... path](http:RequestContext ctx,
-            http:Request req) returns http:NextService|error? {
-        // Sets a header to the request inside the interceptor service.
-        req.setHeader(interceptor_header, interceptor_header_value);
+         @http:Header string x\-api\-version) returns http:NotImplemented|http:NextService|error? {
+        // Checks the API version header.
+        if x\-api\-version != "v1" {
+            // Returns `501 NotImplemented` response if the version is not supported.
+            return http:NOT_IMPLEMENTED;
+        }
         // Returns the next interceptor or the target service in the pipeline. 
         // An error is returned when the call fails.
         return ctx.next();
@@ -48,13 +45,7 @@ listener http:Listener interceptorListener = new http:Listener(9090);
 }
 service / on interceptorListener {
 
-    resource function get albums(http:Request req) returns http:Ok|error {
-        return {
-            headers: {
-                // Reads the request header added by the interceptor.
-                "requestHeader": check req.getHeader(interceptor_header)
-            },
-            body: albums.toArray()
-        };
+    resource function get albums(http:Request req) returns Album[] {
+        return albums.toArray();
     }
 }

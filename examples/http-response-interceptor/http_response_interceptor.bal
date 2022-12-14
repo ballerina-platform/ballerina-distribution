@@ -10,12 +10,6 @@ table<Album> key(title) albums = table [
     {title: "Jeru", artist: "Gerry Mulligan"}
 ];
 
-// Header name to be set to the response in the response interceptor.
-final string interceptor_header = "responseHeader";
-
-// Header value to be set to the response in the response interceptor.
-final string interceptor_header_value = "ResponseInterceptor";
-
 // A `ResponseInterceptor` service class implementation. It intercepts the response 
 // and adds a header before it is dispatched to the client.
 service class ResponseInterceptor {
@@ -23,10 +17,10 @@ service class ResponseInterceptor {
 
     // The `interceptResponse` remote function will be executed for all the
     // responses. A `RequestContext` is used to share data between interceptors.
-    remote function interceptResponse(http:RequestContext ctx, 
-                        http:Response res) returns http:NextService|error? {
+    remote function interceptResponse(http:RequestContext ctx,
+            http:Response res) returns http:NextService|error? {
         // Sets a header to the response inside the interceptor service.
-        res.setHeader(interceptor_header, interceptor_header_value);
+        res.setHeader("x-api-version", "v2");
         // Returns the next interceptor in the pipeline or `nil` if there is no 
         // more interceptors to be returned. In case a `nil` value is returned, then,
         // the modified response will be returned to the client. In addtion to these
