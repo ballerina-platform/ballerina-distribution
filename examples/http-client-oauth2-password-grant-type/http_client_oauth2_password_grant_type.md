@@ -1,6 +1,6 @@
 # HTTP client - OAuth2 password grant type
 
-The `http:Client` can be secured with OAuth2 password grant type authorization. This is achieved by enriching each request from the client with the `Authorization: Bearer <token>` header. The required configurations for the OAuth2 password grant type can be specified in the `auth` field as the `http:OAuth2PasswordGrantConfig` record. Use this grant type when you need to exchange the user's credentials for an access token.
+The `http:Client` can be secured with OAuth2 password grant type authorization by enriching each request from the client with the `Authorization: Bearer <token>` header. The required configurations for this grant type can be specified in the `auth` field of the client configuration. Use this grant type when you need to exchange the user's credentials for an access token.
 
 ::: code http_client_oauth2_password_grant_type.bal :::
 
