@@ -26,7 +26,7 @@ distinct service class Teacher {
         return self.name;
     }
 
-    // Add an additional field `subject` to the `Teacher` class
+    // Add an additional field `subject` to the `Teacher` class.
     resource function get subject() returns string {
         return self.subject;
     }
