@@ -2,7 +2,6 @@ import ballerina/log;
 import ballerinax/rabbitmq;
 
 listener rabbitmq:Listener securedEP = new(rabbitmq:DEFAULT_HOST, 5671,
-
     // To secure the listener connections using username/password authentication, provide the credentials
     // with the `rabbitmq:Credentials` record.
     auth = {

@@ -10,7 +10,11 @@ In this example, the underlying connection of the publisher is secured with TLS/
 
 Run the client program by executing the following command.
 
-::: out nats-client-secure-connection.out :::
+::: out nats_client_secure_connection.server.out :::
+
+Invoke the service by executing the following cURL command in a new terminal.
+
+::: out nats_client_secure_connection.client.out :::
 
 ## Related links
 - [`nats:SecureSocket` - API documentation](https://lib.ballerina.io/ballerinax/nats/latest/records/SecureSocket)

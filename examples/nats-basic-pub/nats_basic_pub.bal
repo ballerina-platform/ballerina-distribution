@@ -1,5 +1,5 @@
 import ballerina/http;
-import ballerinax/rabbitmq;
+import ballerinax/nats;
 
 type Order readonly & record {
     int orderId;
@@ -8,15 +8,15 @@ type Order readonly & record {
     boolean isValid;
 };
 
-// Initializes a ballerina RabbitMQ client.
-final rabbitmq:Client orderClient = check new (rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
+// Initializes a NATS client.
+final nats:Client orderClient = check new (nats:DEFAULT_URL);
 
 service / on new http:Listener(9092) {
     resource function post orders(@http:Payload Order newOrder) returns http:Accepted|error {
-        // Publishes the message using newClient and the routing key named OrderQueue.
+        // Produces a message to the specified subject.
         check orderClient->publishMessage({
             content: newOrder,
-            routingKey: "OrderQueue"
+            subject: "orders.valid"
         });
 
         return http:ACCEPTED;

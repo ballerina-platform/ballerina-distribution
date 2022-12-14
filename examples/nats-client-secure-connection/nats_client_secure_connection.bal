@@ -1,5 +1,5 @@
 import ballerina/http;
-import ballerinax/rabbitmq;
+import ballerinax/nats;
 
 type Order readonly & record {
     int orderId;
@@ -8,8 +8,8 @@ type Order readonly & record {
     boolean isValid;
 };
 
-// Creates a ballerina RabbitMQ client with TLS/SSL.
-final rabbitmq:Client orderClient = check new(rabbitmq:DEFAULT_HOST, 5671,
+// Initializes a NATS client with TLS/SSL.
+final nats:Client orderClient = check new(nats:DEFAULT_URL,
     // To secure the client connection using TLS/SSL, the client needs to be configured with
     // a certificate file of the server.
     secureSocket = {
@@ -19,10 +19,10 @@ final rabbitmq:Client orderClient = check new(rabbitmq:DEFAULT_HOST, 5671,
 
 service / on new http:Listener(9092) {
     resource function post orders(@http:Payload Order newOrder) returns http:Accepted|error {
-        // Publishes the message using newClient and the routing key named OrderQueue.
+        // Produces a message to the specified subject.
         check orderClient->publishMessage({
             content: newOrder,
-            routingKey: "OrderQueue"
+            subject: "orders.valid"
         });
 
         return http:ACCEPTED;
