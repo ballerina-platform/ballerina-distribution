@@ -1,6 +1,6 @@
 # HTTP client - OAuth2 refresh token grant type
 
-The `http:Client` can be secured with OAuth2 refresh token grant type authorization by enriching each request from the client with the `Authorization: Bearer <token>` header. The required configurations for this grant type can be specified in the `auth` field of the client configuration. Use this grant type when the client needs to exchange a refresh token for an access token if the access token has expired. This allows the client to have a valid access token without further interaction with the user.
+The `http:Client` can be secured with OAuth2 refresh token grant type authorization by enriching each request from the client with the `Authorization: Bearer <token>` header. The required configurations for this grant type can be specified in the `auth` field of the client configuration. Use this to automatically retrieve an access token when it is expired.
 
 ::: code http_client_oauth2_refresh_token_grant_type.bal :::
 

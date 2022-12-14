@@ -1,6 +1,6 @@
 # HTTP client - OAuth2 client credentials grant type
 
-The `http:Client` can be secured with OAuth2 client credentials grant type authorization by enriching each request from the client with the `Authorization: Bearer <token>` header. The required configurations for this grant type can be specified in the `auth` field of the client configuration. Use this grant type when the client needs to access resources or services on behalf of itself rather than the user.
+The `http:Client` can be secured with OAuth2 client credentials grant type authorization by enriching each request from the client with the `Authorization: Bearer <token>` header. The required configurations for this grant type can be specified in the `auth` field of the client configuration.
 
 ::: code http_client_oauth2_client_credentials_grant_type.bal :::
 
