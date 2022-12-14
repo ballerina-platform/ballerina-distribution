@@ -11,7 +11,7 @@ Setting up the client is the same as setting up the unary RPC client with additi
 ## Prerequisites
 - Run the gRPC service given in the [gRPC service - OAuth2](/learn/by-example/grpc-service-oauth2/) example.
 
-Execute the command below to run the client.
+Run the client by executing the command below.
 
    ::: out grpc_client_oauth2_refresh_token_grant_type.out :::
 

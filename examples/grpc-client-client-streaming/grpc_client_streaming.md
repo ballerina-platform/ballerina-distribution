@@ -27,7 +27,7 @@ Once you run the command, the `grpc_client_streaming_pb.bal` file gets generated
 
    ::: code grpc_client_streaming_service_client.bal :::
 
-4. Execute the command below to run the client.
+4. Run the client by executing the command below.
 
    ::: out grpc_client_streaming_service_client.out :::
 

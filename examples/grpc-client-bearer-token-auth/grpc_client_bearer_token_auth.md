@@ -11,7 +11,7 @@ You can refer to the [gRPC client - Unary RPC](/learn/by-example/grpc-client-una
 ## Prerequisites
 - Start a secured service.
 
-Execute the command below to run the client.
+Run the client by executing the command below.
 
    ::: out grpc_client_bearer_token_auth.out :::
 
