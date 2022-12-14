@@ -18,7 +18,6 @@ public type StringMessage record {|
 final nats:Client orderClient = check new (nats:DEFAULT_URL);
 
 service / on new http:Listener(9092) {
-
     resource function post orders(@http:Payload Order newOrder) returns http:Accepted|error {
     
         // Sends a request and returns the reply.

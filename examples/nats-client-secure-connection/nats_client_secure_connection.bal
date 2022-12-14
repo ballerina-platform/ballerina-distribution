@@ -10,7 +10,6 @@ type Order readonly & record {
 
 // Initializes a NATS client with TLS/SSL.
 final nats:Client orderClient = check new(nats:DEFAULT_URL,
-
     // To secure the client connection using TLS/SSL, the client needs to be configured with
     // a certificate file of the server.
     secureSocket = {
@@ -19,7 +18,6 @@ final nats:Client orderClient = check new(nats:DEFAULT_URL,
 );
 
 service / on new http:Listener(9092) {
-
     resource function post orders(@http:Payload Order newOrder) returns http:Accepted|error {
         // Produces a message to the specified subject.
         check orderClient->publishMessage({
