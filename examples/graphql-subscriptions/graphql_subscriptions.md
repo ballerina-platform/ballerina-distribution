@@ -1,10 +1,6 @@
-# Subscriptions
+# GraphQL service - Subscriptions
 
-A resource method with the `subscribe` accessor inside a GraphQL service represents a field in the root `Subscription` type. Therefore, if a resource method with the `subscribe` accessor is present inside the Ballerina GraphQL service, the auto-generated schema will have a `Subscription` type.
-
-A resource method with `subscribe` accessor must return a `stream` type. Not returning a `stream` type will result in a compilation error.
-
-Each resource method with the `subscribe` accessor in the service will be added as a field of the `Subscription` type. The field name will be the resource method name and the field type will be the constraint type of the stream returned from the resource method.
+A resource method with the `subscribe` accessor inside a GraphQL service represents a field in the root `Subscription` type. Therefore, If a resource method with the `subscribe` accessor is present inside the Ballerina GraphQL service, the auto-generated schema will have a `Subscription` type. Each resource method with a `subscribe` accessor in the service will be added as a field of the `Subscription` type. The field name will be the resource method name and the field type will be the constraint type of the stream returned from the resource method. Not returning a `stream` type from a resource method having a `subscribe` accessor results in a compilation error. Use a subscription operation to monitor small, incremental changes to large objects or to obtain low-latency, real-time updates.
 
 This example shows a GraphQL endpoint, which has a field `names` in the root `Subscription` type.
 
