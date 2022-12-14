@@ -23,9 +23,9 @@ public function main() returns error? {
                 do {
                     io:println(string `Received valid order for ${'order.productName}`);
                 };
+        } on fail error orderError {
             // Check whether the `error` is a `kafka:PayloadBindingError` and seek pass the
             // erroneous record.
-        } on fail error orderError {
             if orderError is kafka:PayloadBindingError {
                 io:println("Payload binding failed", orderError);
                 // The `kafka:PartitionOffset` related to the erroneous record is provided inside
