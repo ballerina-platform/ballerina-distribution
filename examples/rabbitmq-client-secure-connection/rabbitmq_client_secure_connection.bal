@@ -8,7 +8,7 @@ public type Order record {|
 |};
 
 public function main() returns error? {
-    // Creates a ballerina RabbitMQ client with TLS/SSL.
+    // Creates a Ballerina RabbitMQ client with TLS/SSL.
     rabbitmq:Client rabbitmqClient = check new(rabbitmq:DEFAULT_HOST, 5671,
 
         // To secure the client connection using TLS/SSL, the client needs to be configured with

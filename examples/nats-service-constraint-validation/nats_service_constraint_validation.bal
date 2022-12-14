@@ -4,7 +4,7 @@ import ballerinax/nats;
 
 public type Order record {
     int orderId;
-    // Add a constraint to only allow string values of length between 1 and 30.
+    // Add a constraint to allow only string values of length between 1 and 30.
     @constraint:String {maxLength: 30, minLength: 1}
     string productName;
     decimal price;
@@ -19,7 +19,7 @@ service "orders.valid" on new nats:Listener(nats:DEFAULT_URL) {
         }
     }
 
-    // When an error occurs `onError` gets invoked.
+    // When an error occurs, `onError` gets invoked.
     remote function onError(nats:AnydataMessage message, nats:Error err) {
         if err is nats:PayloadValidationError {
             log:printError("Payload validation failed", err);

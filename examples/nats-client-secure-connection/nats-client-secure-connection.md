@@ -1,6 +1,6 @@
 # NATS client - SSL/TLS
 
-The NATS server uses TLS semantics to encrypt client, route, and monitoring connections. TLS can be used to encrypt traffic between client/server and check the server’s identity. In this example, the underlying connection of the client is secured with TLS/SSL. A secured NATS client is created by passing the URL of the NATS broker and providing the TLS/SSL details using the `nats:SecureSocket` record. Use it to connect to a NATS server which has SSL/TLS enabled.
+The NATS server uses TLS semantics to encrypt the client, route, and monitor the connections. TLS can be used to encrypt traffic between the client/server and check the server’s identity. In this example, the underlying connection of the client is secured with TLS/SSL. A secured NATS client is created by passing the URL of the NATS broker and providing the TLS/SSL details using the `nats:SecureSocket` record. Use it to connect to a NATS server, which has SSL/TLS enabled.
 
 ::: code nats-client-secure-connection.bal :::
 
