@@ -1,18 +1,17 @@
-$ curl -v http://localhost:9090/user/greeting
+$ curl -v http://localhost:9090/albums
 *   Trying 127.0.0.1:9090...
 * Connected to localhost (127.0.0.1) port 9090 (#0)
-> GET /user/greeting HTTP/1.1
+> GET /albums HTTP/1.1
 > Host: localhost:9090
 > User-Agent: curl/7.79.1
 > Accept: */*
 > 
 * Mark bundle as not supporting multiuse
 < HTTP/1.1 200 OK
-< content-type: text/plain
+< content-type: application/json
 < responseHeader: ResponseInterceptor
-< content-length: 10
+< content-length: 95
 < server: ballerina
-< date: Mon, 1 Aug 2022 16:10:29 +0530
+< date: Wed, 14 Dec 2022 11:51:35 +0530
 < 
-* Connection #0 to host localhost left intact
-Greetings!
+[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]

@@ -1,5 +1,15 @@
 import ballerina/http;
 
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
+
+table<Album> key(title) albums = table [
+    {title: "Blue Train", artist: "John Coltrane"},
+    {title: "Jeru", artist: "Gerry Mulligan"}
+];
+
 // Header name to be set to the response in the response interceptor.
 final string interceptor_header = "responseHeader";
 
@@ -7,8 +17,7 @@ final string interceptor_header = "responseHeader";
 final string interceptor_header_value = "ResponseInterceptor";
 
 // A `ResponseInterceptor` service class implementation. It intercepts the response 
-// and adds a header before it is dispatched to the client. A `ResponseInterceptor`
-// service class can have only one remote function: `interceptResponse`.
+// and adds a header before it is dispatched to the client.
 service class ResponseInterceptor {
     *http:ResponseInterceptor;
 
@@ -33,9 +42,9 @@ listener http:Listener interceptorListener = new http:Listener(9090,
     interceptors = [new ResponseInterceptor()]
 );
 
-service /user on interceptorListener {
+service / on interceptorListener {
 
-    resource function get greeting(http:Request req) returns string {
-        return "Greetings!";
+    resource function get albums() returns Album[] {
+        return albums.toArray();
     }
 }
