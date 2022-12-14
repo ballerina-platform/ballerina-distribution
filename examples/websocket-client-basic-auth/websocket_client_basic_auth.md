@@ -1,6 +1,6 @@
 # WebSocket client - Basic authentication
 
-The `websocket:Client` secured with Basic authentication allows you to connect to a WebSocket server secured with Basic authentication. Provide the `CredentialsConfig` for the `auth` configuration of the client to enrich the initial HTTP request with the `Authorization: Basic <token>` header.
+The `websocket:Client` secured with Basic authentication allows you to connect to a WebSocket server secured with Basic authentication. Provide the username and password for basic authentication for the `auth` configuration of the client to enrich the initial HTTP request with the `Authorization: Basic <token>` header.
 
 ::: code websocket_client_basic_auth.bal :::
 

@@ -1,6 +1,6 @@
 # WebSocket client - OAuth2 JWT bearer grant type
 
-The `websocket:Client` secured with OAuth2 JWT bearer grant type allows you to connect to a secured WebSocket server. Provide the `OAuth2JwtBearerGrantConfig` for the `auth` configuration of the client to enrich the initial HTTP request with the `Authorization: Bearer <token>` header. Use this grant type when the client wants to receive access tokens without transmitting sensitive information such as the client secret.
+The `websocket:Client` secured with OAuth2 JWT bearer grant type allows you to connect to a secured WebSocket server. Provide the required configurations for this grant type in the `auth` configuration of the client to enrich the initial HTTP request with the `Authorization: Bearer <token>` header. Use this grant type when the client wants to receive access tokens without transmitting sensitive information such as the client secret.
 
 ::: code websocket_client_oauth2_jwt_bearer_grant_type.bal :::
 
