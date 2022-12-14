@@ -5,13 +5,13 @@ An HTTP service/resource can be secured with OAuth2 and by enforcing authorizati
 ::: code http_service_oauth2.bal :::
 
 ## Prerequisites
-- STS endpoint should be up and running
+- STS endpoint should be up and running.
 
 Run the service by executing the command below.
 
 ::: out http_service_oauth2.server.out :::
 
->**Tip:** You can invoke the above service via the [OAuth2 JWT Bearer grant type client](/learn/by-example/http-client-oauth2-jwt-bearer-grant-type).
+>**Tip:** You can invoke the above service via the [OAuth2 JWT Bearer grant type client](/learn/by-example/http-client-oauth2-jwt-bearer-grant-type) example.
 
 ## Related links
 - [`http:OAuth2IntrospectionConfig` - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/OAuth2IntrospectionConfig)

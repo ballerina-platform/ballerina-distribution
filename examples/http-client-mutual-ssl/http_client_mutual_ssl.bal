@@ -7,7 +7,7 @@ type Album readonly & record {|
 |};
 
 public function main() returns error? {
-    // An HTTP client can be configured to initiate new connections that are secured via mutual SSL.
+    // The HTTP client can be configured to initiate new connections that are secured via mutual SSL.
     http:Client albumClient = check new("localhost:9090",
         secureSocket = {
             key: {

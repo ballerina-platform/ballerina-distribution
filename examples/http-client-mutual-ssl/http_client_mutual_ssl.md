@@ -5,7 +5,7 @@ The `http:Client` allows you to open up a connection secured with mutual SSL (mT
 ::: code http_client_mutual_ssl.bal :::
 
 ## Prerequisites
-- Run the HTTP service given in the [Mutual SSL service](/learn/by-example/http-service-mutual-ssl/).
+- Run the HTTP service given in the [Mutual SSL service](/learn/by-example/http-service-mutual-ssl/) example.
 
 Run the client program by executing the command below.
 

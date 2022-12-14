@@ -14,11 +14,10 @@ listener http:Listener securedEP = new(9090,
     }
 );
 
-// The service can be secured with OAuth2 and by enforcing authorization
-// optionally. It can be enabled by setting the `http:OAuth2IntrospectionConfig` configurations.
+// The service can be secured with OAuth2 and by enforcing authorization optionally.
+// It can be enabled by setting the `http:OAuth2IntrospectionConfig` configurations.
 // Authorization is based on scopes. A scope maps to one or more groups.
-// Authorization can be enabled by setting the `string|string[]` type
-// configurations for `scopes` field.
+// Authorization can be enabled by setting the `string|string[]` type configurations for `scopes` field.
 @http:ServiceConfig {
     auth: [
         {
@@ -39,9 +38,8 @@ listener http:Listener securedEP = new(9090,
 }
 service / on securedEP {
 
-    // It is optional to override the authentication and authorization
-    // configurations at the resource levels. Otherwise, the service auth
-    // configurations will be applied automatically to the resources as well.
+    // It is optional to override the authentication and authorization configurations at the resource levels.
+    // Otherwise, the service auth configurations is applied automatically to the resources as well.
     resource function get albums() returns Album[] {
         return [
             {title: "Blue Train", artist: "John Coltrane"},
