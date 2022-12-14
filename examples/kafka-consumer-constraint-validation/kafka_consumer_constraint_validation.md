@@ -1,15 +1,15 @@
-# Kafka client - Constraint validation
+# Kafka consumer - Constraint validation
 
 The `kafka:Consumer` connects to a given Kafka server, and then validates the received payloads by the defined constraints. The constraints are added as annotations to the payload record and when the payload is received from the broker, it is validated internally and if validation fails, a `kafka:PayloadValidationError` is returned. The `seek` method of the `kafka:Consumer` is used to seek past the erroneous record and read the new records. The `validation` flag of the`kafka:ConsumerConfiguration` can be set to `false` to stop validating the payloads. Use this to validate the messages received from a Kafka server implicitly.
 
-::: code kafka_client_constraint_validation.bal :::
+::: code kafka_consumer_constraint_validation.bal :::
 
 ## Prerequisites
 - Start a [Kafka broker](https://kafka.apache.org/quickstart) instance.
 
 Run the program by executing the following command.
 
-::: out kafka_client_constraint_validation.out :::
+::: out kafka_consumer_constraint_validation.out :::
 
 >**Tip:** Run the Kafka client given in the [Kafka client - Produce message](/learn/by-example/kafka-client-produce-message) example with a valid product name (0 < length <= 30), then with an invalid product name and again with a valid product name.
 
