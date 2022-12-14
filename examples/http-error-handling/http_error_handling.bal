@@ -43,7 +43,7 @@ listener http:Listener interceptorListener = new http:Listener(9090, config = {
 
 service / on interceptorListener {
 
-    // If the request does not have a `x-api-version`header, then an error will be returned
+    // If the request does not have a `x-api-version` header, then an error will be returned
     // and the execution will jump to the nearest `ResponseErrorInterceptor`.
     resource function get albums(@http:Header string x\-api\-version) 
             returns Album[]|http:NotImplemented {
