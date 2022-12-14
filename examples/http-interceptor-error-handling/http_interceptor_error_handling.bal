@@ -13,6 +13,8 @@ table<Album> key(title) albums = table [
 service class RequestInterceptor {
     *http:RequestInterceptor;
 
+    // This will return a `HeaderNotFoundError` if you do not set the `x-api-version` header. 
+    // Then, the execution will jump to the nearest `RequestErrorInterceptor`.
     resource function 'default [string... path](@http:Header string x\-api\-version, 
             http:RequestContext ctx) returns http:NotImplemented|http:NextService|error? {
         if x\-api\-version != "v1" {
