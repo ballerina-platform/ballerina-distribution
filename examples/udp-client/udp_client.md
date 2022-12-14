@@ -1,6 +1,6 @@
 # UDP client - Send/Receive datagram
 
-The UDP Client is used to send data to a specific remote host using the UDP protocol. This sample demonstrates how to send a datagram to a remote server and print the echoed response.
+The `udp:Client` sends and receives datagrams. A `udp:Client` is created by optionally giving the address that the socket needs to bind and the timeout in seconds, which specifies the read timeout value. Once connected, `sendDatagram` and `receiveDatagram` synchronous methods are used to send and receive datagrams. Since they are synchronous methods often used in two different strands. Use this to interact with UDP servers or implement low latency connections for time-critical transmissions where data loss is acceptable. 
 
 ::: code udp_client.bal :::
 

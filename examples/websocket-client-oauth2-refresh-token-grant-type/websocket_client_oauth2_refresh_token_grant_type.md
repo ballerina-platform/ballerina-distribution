@@ -12,6 +12,6 @@ Run the client program by executing the command below.
 ::: out websocket_client_oauth2_refresh_token_grant_type.out :::
 
 ## Related Links
-- [`websocket` package - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
-- [`oauth2` package - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)
+- [`websocket` module - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
+- [`oauth2` module - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)
 - [WebSocket authentication - Specification](/spec/websocket/#52-authentication-and-authorization)
