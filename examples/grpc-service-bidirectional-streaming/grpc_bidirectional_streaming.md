@@ -24,7 +24,7 @@ Once you run the command, the `grpc_bidirectional_streaming_pb.bal` file gets ge
 
     ::: code grpc_bidirectional_streaming_service.bal :::
 
-4. Execute the command below to run the service.
+4. Run the service by executing the command below.
 
     ::: out grpc_bidirectional_streaming_service.out :::
 

@@ -27,7 +27,7 @@ Once you run the command, the `grpc_unary_pb.bal` file gets generated inside the
 
    ::: code grpc_client_unary.bal :::
 
-4. Execute the command below to run the client.
+4. Run the client by executing the command below.
 
    ::: out grpc_client_unary.out :::
 

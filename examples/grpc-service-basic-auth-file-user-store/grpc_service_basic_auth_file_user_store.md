@@ -25,7 +25,7 @@ As a prerequisite, execute the command below to populate the `Config.toml` file 
 
 Setting up the service is the same as setting up the unary RPC service with additional configurations. You can refer to the [gRPC service - Unary RPC](/learn/by-example/grpc-service-unary/) to implement the service used below.
 
-Execute the command below to run the service.
+Run the service by executing the command below.
 
    ::: out grpc_service_basic_auth_file_user_store.server.out :::
 

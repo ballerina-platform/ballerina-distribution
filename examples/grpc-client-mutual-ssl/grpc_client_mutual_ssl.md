@@ -9,7 +9,7 @@ Setting up the client is the same as setting up the unary RPC client with additi
 ## Prerequisites
 - Run the gRPC service given in the [gRPC service - Mutual SSL](/learn/by-example/grpc-service-mutual-ssl/) example.
 
-Execute the command below to run the client.
+Run the client by executing the command below.
 
    ::: out grpc_client_mutual_ssl.out :::
 
