@@ -11,11 +11,11 @@ Setting up the client is the same as setting up the unary RPC client with additi
 ## Prerequisites
 - Run the gRPC service given in the [gRPC service - OAuth2](/learn/by-example/grpc-service-oauth2/) example.
 
-Execute the command below to run the client.
+Run the client by executing the command below.
 
    ::: out grpc_client_oauth2_refresh_token_grant_type.out :::
 
 ## Related links
 - [`grpc:OAuth2RefreshTokenGrantConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2RefreshTokenGrantConfig)
 - [gRPC client OAuth2 authentication and authorization - Specification](/spec/grpc/#5118-client---oauth2)
-- [`oauth2` package - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)
+- [`oauth2` module - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)

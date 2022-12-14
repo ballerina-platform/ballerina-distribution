@@ -9,7 +9,7 @@ Setting up the client is the same as setting up the unary RPC client with additi
 ## Prerequisites
 - Run the gRPC service given in the [gRPC service - SSL/TLS](/learn/by-example/grpc-service-ssl-tls/) example.
 
-Execute the command below to run the client.
+Run the client by executing the command below.
 
    ::: out grpc_client_ssl_tls.out :::
 

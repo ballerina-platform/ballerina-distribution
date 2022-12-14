@@ -1,14 +1,17 @@
 import ballerinax/kafka;
+import ballerina/io;
 
-public type Order readonly & record {|
+public type Order readonly & record {
     int orderId;
     string productName;
     decimal price;
     boolean isValid;
-|};
+};
 
-public function main() returns kafka:Error? {
-    kafka:Producer orderProducer = check new ("localhost:9094", {
+public function main() returns error? {
+    kafka:Consumer orderConsumer = check new ("localhost:9094", {
+        groupId: "order-group-id",
+        topics: ["order-topic"],
         // Provide the relevant secure socket configurations by using `kafka:SecureSocket`.
         secureSocket: {
             cert: "./resources/path/to/public.crt",
@@ -20,13 +23,13 @@ public function main() returns kafka:Error? {
         // Provide the type of the security protocol to use in the broker connection.
         securityProtocol: kafka:PROTOCOL_SSL
     });
-    check orderProducer->send({
-        topic: "order-topic",
-        value: {
-            orderId: 1,
-            productName: "Sport shoe",
-            price: 27.5,
-            isValid: true
-        }
-    });
+
+    // Polls the consumer for payload.
+    Order[] orders = check orderConsumer->pollPayload(1);
+
+    check from Order 'order in orders
+        where 'order.isValid
+        do {
+            io:println(string `Received valid order for ${'order.productName}`);
+        };
 }

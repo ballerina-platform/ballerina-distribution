@@ -11,11 +11,11 @@ You can refer to the [gRPC client - Unary RPC](/learn/by-example/grpc-client-una
 ## Prerequisites
 - Start a secured service.
 
-Execute the command below to run the client.
+Run the client by executing the command below.
 
    ::: out grpc_client_bearer_token_auth.out :::
 
 ## Related links
 - [`grpc:BearerTokenConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/BearerTokenConfig)
 - [gRPC client bearer token authentication - Specification](/spec/grpc/#5116-client---bearer-token-auth)
-- [`auth` package - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)
+- [`auth` module - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)
