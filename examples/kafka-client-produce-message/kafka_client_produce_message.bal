@@ -1,23 +1,21 @@
 import ballerinax/kafka;
+import ballerina/http;
 
-public type Order readonly & record {|
+public type Order readonly & record {
     int orderId;
     string productName;
     decimal price;
     boolean isValid;
-|};
+};
 
-public function main() returns error? {
-    kafka:Producer orderProducer = check new (kafka:DEFAULT_URL);
+final kafka:Producer orderProducer = check new (kafka:DEFAULT_URL);
 
-    // Sends the message to the Kafka topic.
-    check orderProducer->send({
-        topic: "order-topic",
-        value: {
-            orderId: 1,
-            productName: "Sport shoe",
-            price: 27.5,
-            isValid: true
-        }
-    });
+service / on new http:Listener(9090) {
+    resource function post orders(@http:Payload Order newOrder) returns http:Accepted|kafka:Error {
+        check orderProducer->send({
+            topic: "order-topic",
+            value: newOrder
+        });
+        return http:ACCEPTED;
+    }
 }

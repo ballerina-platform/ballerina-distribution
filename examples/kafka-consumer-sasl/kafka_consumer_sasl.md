@@ -6,11 +6,12 @@ The `kafka:Consumer` connects to a Kafka server via SASL/PLAIN authentication an
 
 ## Prerequisites
 - Start a [Kafka broker](https://kafka.apache.org/quickstart) instance configured to use the [SASL/PLAIN authentication mechanism](https://docs.confluent.io/platform/current/kafka/authentication_sasl/authentication_sasl_plain.html#sasl-plain-overview).
-- Run the Kafka client given in the [Kafka client - Producer SASL authentication](/learn/by-example/kafka-client-producer-sasl) example to produce some messages to the topic.
 
 Run the program by executing the following command.
 
 ::: out kafka_consumer_sasl.out :::
+
+>**Tip:** Run the Kafka client given in the [Kafka client - Producer SASL authentication](/learn/by-example/kafka-client-producer-sasl) example to produce some messages to the topic.
 
 ## Related links
 - [`kafka:AuthenticationConfiguration` record - API documentation](https://lib.ballerina.io/ballerinax/kafka/latest/records/AuthenticationConfiguration)

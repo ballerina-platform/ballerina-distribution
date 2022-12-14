@@ -4,8 +4,9 @@ string albumId = check albumClient->/album.post({
         title: "Blue Train",
         artist: "John Coltrane"
     },
-    headers = {
-        "Accept": mime:APPLICATION_JSON
+    // Headers can be specified as a `map<string|string[]>`
+    {
+        Accept: mime:APPLICATION_JSON
     }
 );
 io:println("Added album with id: " + albumId);
