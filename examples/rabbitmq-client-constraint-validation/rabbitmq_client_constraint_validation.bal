@@ -4,7 +4,7 @@ import ballerina/log;
 
 public type Order record {
     int orderId;
-    // Add a constraint to only allow string values of length between 1 and 30.
+    // Add a constraint to allow only string values of length between 1 and 30.
     @constraint:String {maxLength: 30, minLength: 1}
     string productName;
     decimal price;

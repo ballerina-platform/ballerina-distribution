@@ -1,6 +1,6 @@
 # RabbitMQ service - SSL/TLS
 
-The RabbitMQ broker can be configured to use SSL/TLS for secure traffic encryption. In this example, the underlying connection of the listener is secured with TLS/SSL. A secured RabbitMQ listener is created by passing the host and port of the broker and providing the TLS/SSL details using the `rabbitmq:SecureSocket` record. Use it to connect to a RabbitMQ server which has SSL/TLS enabled.
+The RabbitMQ broker can be configured to use SSL/TLS for secure traffic encryption. In this example, the underlying connection of the listener is secured with TLS/SSL. A secured RabbitMQ listener is created by passing the host and port of the broker and providing the TLS/SSL details using the `rabbitmq:SecureSocket` record. Use it to connect to a RabbitMQ server, which has SSL/TLS enabled.
 
 ::: code rabbitmq_service_secure_connection.bal :::
 

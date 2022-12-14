@@ -9,7 +9,7 @@ public type Order record {
 };
 
 listener rabbitmq:Listener securedEP = new(rabbitmq:DEFAULT_HOST, 5671,
-    // To secure the listener connections using username/password authentication, provide the credentials
+    // Provide the credentials to secure the listener connections using username/password authentication.
     // with the `rabbitmq:Credentials` record.
     auth = {
         username: "alice",
@@ -17,7 +17,7 @@ listener rabbitmq:Listener securedEP = new(rabbitmq:DEFAULT_HOST, 5671,
     }
 );
 
-// The consumer service listens to the "OrderQueue" queue.
+// The consumer service listens to the `OrderQueue` queue.
 service "OrderQueue" on securedEP {
     remote function onMessage(Order 'order) returns error? {
         if 'order.isValid {
