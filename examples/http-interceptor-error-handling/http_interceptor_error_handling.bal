@@ -13,8 +13,8 @@ table<Album> key(title) albums = table [
 service class RequestInterceptor {
     *http:RequestInterceptor;
 
-    resource function 'default [string... path](http:RequestContext ctx,
-         @http:Header string x\-api\-version) returns http:NotImplemented|http:NextService|error? {
+    resource function 'default [string... path](@http:Header string x\-api\-version, 
+            http:RequestContext ctx) returns http:NotImplemented|http:NextService|error? {
         if x\-api\-version != "v1" {
             return http:NOT_IMPLEMENTED;
         }
