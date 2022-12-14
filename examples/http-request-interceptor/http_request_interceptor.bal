@@ -1,14 +1,23 @@
 import ballerina/http;
 
-// Header names to be set to the request in the request interceptor.
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
+
+table<Album> key(title) albums = table [
+        {title: "Blue Train", artist: "John Coltrane"},
+        {title: "Jeru", artist: "Gerry Mulligan"}
+    ];
+
+// Header name to be set to the request in the request interceptor.
 final string interceptor_header = "requestHeader";
 
-// Header values to be set to the request in the request interceptor.
+// Header value to be set to the request in the request interceptor.
 final string interceptor_header_value = "RequestInterceptor";
 
 // A `Requestinterceptorservice` class implementation. It intercepts the request
-// and adds a header before it is dispatched to the target service. A `RequestInterceptorService`
-// class can have only one resource function. 
+// and adds a header before it is dispatched to the target service.
 service class RequestInterceptor {
     *http:RequestInterceptor;
 
@@ -16,8 +25,8 @@ service class RequestInterceptor {
     // A `RequestContext` is used to share data between the interceptors.
     // An accessor and a path can also be specified. In that case, the interceptor will be
     // executed only for the requests, which match the accessor and path.
-    resource function 'default [string... path](http:RequestContext ctx, 
-                        http:Request req) returns http:NextService|error? {
+    resource function 'default [string... path](http:RequestContext ctx,
+            http:Request req) returns http:NextService|error? {
         // Sets a header to the request inside the interceptor service.
         req.setHeader(interceptor_header, interceptor_header_value);
         // Returns the next interceptor or the target service in the pipeline. 
@@ -37,14 +46,15 @@ listener http:Listener interceptorListener = new http:Listener(9090);
     // the target service. Hence, they will be executed only for this particular service.
     interceptors: [new RequestInterceptor()]
 }
-service /user on interceptorListener {
+service / on interceptorListener {
 
-    resource function get greeting(http:Request req) returns http:Ok|error {
+    resource function get albums(http:Request req) returns http:Ok|error {
         return {
-            headers: { 
-                "requestHeader": check req.getHeader(interceptor_header) 
+            headers: {
+                // Reads the request header added by the interceptor.
+                "requestHeader": check req.getHeader(interceptor_header)
             },
-            body: "Greetings!"
+            body: albums.toArray()
         };
     }
 }
