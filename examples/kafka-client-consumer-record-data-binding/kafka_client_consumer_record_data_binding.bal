@@ -20,12 +20,30 @@ public function main() returns error? {
         topics: "order-topic"
     });
 
-    // Polls the consumer for order records.
-    OrderConsumerRecord[] records = check orderConsumer->poll(1);
-
-    check from OrderConsumerRecord orderRecord in records
-        where orderRecord.value.isValid
+    while true {
         do {
-            io:println(string `Received valid order for ${orderRecord.value.productName}`);
-        };
+            // Polls the consumer for order records.
+            OrderConsumerRecord[] records = check orderConsumer->poll(15);
+            check from OrderConsumerRecord orderRecord in records
+                where orderRecord.value.isValid
+                do {
+                    io:println(string `Received valid order for ${orderRecord.value.productName}`);
+                };
+        } on fail error orderError {
+            // Check whether the `error` is a `kafka:PayloadBindingError` and seek pass the
+            // erroneous record.
+            if orderError is kafka:PayloadBindingError {
+                io:println("Payload binding failed", orderError);
+                // The `kafka:PartitionOffset` related to the erroneous record is provided inside
+                // the `kafka:PayloadBindingError`.
+                check orderConsumer->seek({
+                    partition: orderError.detail().partition,
+                    offset: orderError.detail().offset + 1
+                });
+            } else {
+                check orderConsumer->close();
+                return orderError;
+            }
+        }
+    }
 }

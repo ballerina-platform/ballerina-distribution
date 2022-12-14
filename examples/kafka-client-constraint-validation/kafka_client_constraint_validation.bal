@@ -1,6 +1,6 @@
 import ballerina/constraint;
 import ballerinax/kafka;
-import ballerina/log;
+import ballerina/io;
 
 public type Order record {
     int orderId;
@@ -16,26 +16,30 @@ public function main() returns error? {
         groupId: "order-group-id",
         topics: "order-topic"
     });
+
     while true {
-        Order[]|kafka:Error orders = orderConsumer->pollPayload(15);
-        if orders is Order[] {
+        do {
+            Order[] orders = check orderConsumer->pollPayload(15);
             check from Order 'order in orders
                 where 'order.isValid
                 do {
-                    log:printInfo(string `Received valid order for ${'order.productName}`);
+                    io:println(string `Received valid order for ${'order.productName}`);
                 };
-        // Check whether the `error` is a `kafka:PayloadValidationError` and seek pass the
-        // erroneous record.
-        } else if orders is kafka:PayloadValidationError {
-            log:printError("Payload validation failed", orders);
-            // The `kafka:PartitionOffset` related to the erroneous record is provided inside
-            // the `kafka:PayloadValidationError`.
-            check orderConsumer->seek({
-                partition: orders.detail().partition,
-                offset: orders.detail().offset + 1
-            });
-        } else {
-            return orders;
+        } on fail error orderError {
+            // Check whether the `error` is a `kafka:PayloadValidationError` and seek pass the
+            // erroneous record.
+            if orderError is kafka:PayloadValidationError {
+                io:println("Payload validation failed", orderError);
+                // The `kafka:PartitionOffset` related to the erroneous record is provided inside
+                // the `kafka:PayloadValidationError`.
+                check orderConsumer->seek({
+                    partition: orderError.detail().partition,
+                    offset: orderError.detail().offset + 1
+                });
+            } else {
+                check orderConsumer->close();
+                return orderError;
+            }
         }
     }
 }

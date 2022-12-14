@@ -1,6 +1,6 @@
 # SFTP service - Read file
 
-The SFTP service is used to receive file/directory changes that occur in a remote location using the SFTP protocol. This sample includes receiving file/directory related change events from a listener with default configurations using the default port.
+The `ftp:Service` connects to a given SFTP server via the `ftp:Listener`. A `ftp:Listener` with SFTP protocol is created by providing the protocol, host-name, required credentials, and the private key. Once connected, the `onFileChange` remote method of the service starts receiving events as a `ftp:WatchEvent` every time a file is deleted or added to the server. Use this to listen to file changes occurring in a remote file system.
 
 ::: code sftp_service_read.bal :::
 

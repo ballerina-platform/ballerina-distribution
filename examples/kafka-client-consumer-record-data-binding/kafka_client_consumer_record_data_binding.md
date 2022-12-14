@@ -1,8 +1,6 @@
 # Kafka client - Consumer record data binding
 
-This shows how to use a `kafka:Consumer` as a simple record consumer. The records from a subscribed topic can be retrieved using the `poll()` function. This consumer uses the builtin byte array deserializer for both the key and the value, which is the default deserializer in the `kafka:Consumer`.
-
-The received records are converted to the user defined type using data-binding.
+The consumer record data-binding allows you to directly bind Kafka messages to subtypes of `kafka:AnydataConsumerRecord`. It does this by using the built-in bytes deserializer for both the key and the value. To use this, directly assign the `poll` method’s return value to the declared variable, which is a subtype of `kafka:AnydataConsumerRecord[]`. A subtype of `kafka:AnydataConsumerRecord` can be created by specifying a user defined type for the value field. If the record does not match with the defined type, a `kafka:PayloadBindingError` is returned. The `seek` method of the `kafka:Consumer` can be used to seek past the erroneous record and read the new records. Use this to receive messages from a Kafka server with the metadata of the messages like `kafka:PartitionOffset` and `timestamp`. It is important to note that this only works when `kafka:Producer` also uses the built-in bytes serializer for Ballerina.
 
 ::: code kafka_client_consumer_record_data_binding.bal :::
 

@@ -1,13 +1,13 @@
 # FTP service - Read/Write file
 
-The FTP service is used to receive file/directory changes that occur in a remote location using the FTP protocol. This sample includes receiving file/directory related change events from a listener and using the `append` api of the `ftp:Caller` to interact with the FTP server.
+The `ftp:Service` connects to a given FTP server via the `ftp:Listener`. Once connected, the service starts receiving events every time a file is deleted or added to the server. To take action for these events `ftp:Caller` is used. The `ftp:Caller` can be specified as a parameter of `onFileChange` remote method. The `ftp:Caller` allows interacting with the server via `get`, `append`, `delete`, etc remote methods. Use this to listen to file changes occurring in a remote file system and take action for those changes.
 
 ::: code ftp_service_read_write.bal :::
 
 ## Prerequisites
 - Start a [FTP server](https://hub.docker.com/r/stilliard/pure-ftpd/) instance.
 
-Run the program by executing the following command. Each newly added file in the SFTP server will be appended with the content in the appending file.
+Run the program by executing the following command. Each newly added file in the FTP server will be appended with the content in the appending file.
 
 ::: out ftp_service_read_write.out :::
 

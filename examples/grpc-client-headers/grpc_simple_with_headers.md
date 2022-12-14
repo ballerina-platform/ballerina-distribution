@@ -14,5 +14,5 @@ Execute the command below to run the client.
    ::: out grpc_simple_with_headers_service_client.out :::
 
 ## Related links
-- [`grpc` package - API documentation](https://lib.ballerina.io/ballerina/grpc/latest)
-- [`grpc` package - Specification](/spec/grpc/)
+- [`grpc` module - API documentation](https://lib.ballerina.io/ballerina/grpc/latest)
+- [`grpc` module - Specification](/spec/grpc/)

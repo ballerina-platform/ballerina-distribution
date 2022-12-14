@@ -1,6 +1,6 @@
 # Kafka client - Payload data binding
 
-This shows how to use a `kafka:Consumer` as a simple payload consumer for the instances where the metadata related to the message is not needed. This consumer uses the builtin byte array deserializer for the value and converts the value to the user defined type.
+The payload data-binding allows you to directly bind Kafka messages to subtypes of `anydata`. It does this by using the built-in bytes deserializer for both the key and the value. To use this, directly assign the `pollPayload` method’s return value to the declared variable, which is a subtype of `anydata[]`. If the payload does not match with the defined type, a `kafka:PayloadBindingError` is returned. The `seek` method of the `kafka:Consumer` can be used to seek past the erroneous record and read the new records. Use this to receive messages from a Kafka server without the metadata of the messages like `kafka:PartitionOffset` and `timestamp`. It is important to note that this only works when `kafka:Producer` also uses the built-in bytes serializer for Ballerina.
 
 ::: code kafka_client_payload_data_binding.bal :::
 

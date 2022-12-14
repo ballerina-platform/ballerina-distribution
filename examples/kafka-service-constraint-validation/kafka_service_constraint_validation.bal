@@ -13,7 +13,7 @@ public type Order record {
 
 listener kafka:Listener orderListener = check new (kafka:DEFAULT_URL, {
     groupId: "order-group-id",
-    topics: ["order-topic"]
+    topics: "order-topic"
 });
 
 service on orderListener {
@@ -25,7 +25,7 @@ service on orderListener {
             };
     }
 
-    // When an error occurs in the before the `onConsumerRecord` invoke,
+    // When an error occurs before the `onConsumerRecord` gets invoked,
     // `onError` function will get invoked.
     remote function onError(kafka:Error 'error, kafka:Caller caller) returns error? {
         // Check whether the `error` is a `kafka:PayloadValidationError` and seek pass the
