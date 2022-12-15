@@ -19,10 +19,11 @@ service class RequestInterceptor {
     // A `RequestContext` is used to share data between the interceptors.
     // An accessor and a path can also be specified. In that case, the interceptor will be
     // executed only for the requests, which match the accessor and path.
-    resource function 'default [string... path](@http:Header string x\-api\-version, 
-            http:RequestContext ctx) returns http:NotImplemented|http:NextService|error? {
+    resource function 'default [string... path](http:RequestContext ctx,
+            @http:Header {name: "x-api-version"} string xApiVersion)
+            returns http:NotImplemented|http:NextService|error? {
         // Checks the API version header.
-        if x\-api\-version != "v1" {
+        if xApiVersion != "v1" {
             // Returns a `501 NotImplemented` response if the version is not supported.
             return http:NOT_IMPLEMENTED;
         }

@@ -15,9 +15,10 @@ service class RequestInterceptor {
 
     // This will return a `HeaderNotFoundError` if you do not set the `x-api-version` header. 
     // Then, the execution will jump to the nearest `RequestErrorInterceptor`.
-    resource function 'default [string... path](@http:Header string x\-api\-version, 
-            http:RequestContext ctx) returns http:NotImplemented|http:NextService|error? {
-        if x\-api\-version != "v1" {
+    resource function 'default [string... path](http:RequestContext ctx,
+            @http:Header {name: "x-api-version"} string xApiVersion)
+            returns http:NotImplemented|http:NextService|error? {
+        if xApiVersion != "v1" {
             return http:NOT_IMPLEMENTED;
         }
         return ctx.next();

@@ -45,9 +45,9 @@ service / on interceptorListener {
 
     // If the request does not have an`x-api-version` header, then an error will be returned
     // and the execution will jump to the nearest `ResponseErrorInterceptor`.
-    resource function get albums(@http:Header string x\-api\-version) 
+    resource function get albums(@http:Header {name:"x-api-version"} string xApiVersion) 
             returns Album[]|http:NotImplemented {
-        if x\-api\-version != "v1" {
+        if xApiVersion != "v1" {
             return http:NOT_IMPLEMENTED;
         }
         return albums.toArray();
