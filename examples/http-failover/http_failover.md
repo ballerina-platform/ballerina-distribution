@@ -1,6 +1,6 @@
 # HTTP client - Failover
 
-A failover client is used to preserve the continuity of the requests flow even if the endpoint fails. The endpoints are defined in `targets` field of the failover client configuration. If one of the endpoints fails, the client automatically fails over to another endpoint.
+A failover client is used to preserve the continuity of the requests flow even if the endpoint fails. The endpoints are defined in the `targets` field of the failover client configuration. If one of the endpoints fails, the client automatically fails over to another endpoint.
 
 ::: code http_failover.bal :::
 
