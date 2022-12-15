@@ -1,6 +1,6 @@
 # HTTP client - Load balancer
 
-A load-balancing client is used when the request load needs to be load balanced across a given set of target endpoints. These endpoints are defined in `targets` field of the load-balancing client configuration.
+A load-balancing client is used when the request load needs to be load balanced across a given set of target endpoints. These endpoints are defined in the `targets` field of the load-balancing client configuration.
 
 ::: code http_load_balancer.bal :::
 

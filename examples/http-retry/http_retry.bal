@@ -7,13 +7,13 @@ public function main() returns error? {
             // The initial retry interval in seconds.
             interval: 3,
 
-            // The number of retry attempts before giving up.
+            // The number of retry attempts before stopping.
             count: 3,
 
             // The multiplier of the retry interval exponentially increases the retry interval.
             backOffFactor: 2.0,
 
-            // The upper limit of the retry interval is in seconds. If the `interval` into `backOffFactor`
+            // The upper limit of the retry interval is in seconds. If the `interval` into the `backOffFactor`
             // value exceeded `maxWaitInterval` interval value, `maxWaitInterval` is considered as the retry interval.
             maxWaitInterval: 20
         }
