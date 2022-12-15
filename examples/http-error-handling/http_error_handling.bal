@@ -18,7 +18,7 @@ service class ResponseErrorInterceptor {
     // mandatory argument: `error`. The remote function can return a response,
     // which will overwrite the existing error response.
     remote function interceptResponseError(error err) returns http:BadRequest {
-        // In this case, all of the errors are sent as `400 BadRequest` responses with a customized
+        // In this case, all the errors are sent as `400 BadRequest` responses with a customized
         // media type and body. Moreover, you can send different status code responses according to
         // the error type.        
         return {
@@ -43,7 +43,7 @@ listener http:Listener interceptorListener = new http:Listener(9090, config = {
 
 service / on interceptorListener {
 
-    // If the request does not have a `x-api-version` header, then an error will be returned
+    // If the request does not have an`x-api-version` header, then an error will be returned
     // and the execution will jump to the nearest `ResponseErrorInterceptor`.
     resource function get albums(@http:Header string x\-api\-version) 
             returns Album[]|http:NotImplemented {

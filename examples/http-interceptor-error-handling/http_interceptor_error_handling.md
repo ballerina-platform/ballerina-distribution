@@ -1,6 +1,6 @@
 # HTTP service - Interceptor error handling
 
-Errors that occurred in the request-response flow can be intercepted and handled by `ResponseErrorInterceptors`. In addition, the `http:RequestErrorInterceptor` can be used to handle errors that occurred while executing `RequestInterceptors`. This error interceptor can send a response according to the error, just like a `ResponseErrorInterceptor`. Moreover, it can modify the request and dispatch it to the target service. Use `RequestErrorInterceptors` along with `RequestInterceptors` to validate the request beforehand and handle any errors during this validation.
+Errors that occurred in the request-response flow can be intercepted and handled by the `ResponseErrorInterceptors`. In addition, the `http:RequestErrorInterceptor` can be used to handle errors that occurred while executing the `RequestInterceptors`. This error interceptor can send a response according to the error similar to a `ResponseErrorInterceptor`. Moreover, it can modify the request and dispatch it to the target service. Use `RequestErrorInterceptors` along with `RequestInterceptors` to validate the request beforehand and handle any errors during this validation.
 
 ::: code http_interceptor_error_handling.bal :::
 
