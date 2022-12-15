@@ -1,6 +1,6 @@
 # WebSocket service - Basic authentication LDAP user store
 
-The `websocket:Service` can be secured with basic authentication and optionally, by enforcing authorization. This can be achieved by validating the basic authentication token sent in the initial HTTP upgrade request `Authorization` header with the LDAP server. This server stores the usernames and passwords for the authentication and the scopes for the authorization. An `websocket:Service` can configure the scopes it needs for authorization in the `auth` field of the `@websocket:ServiceConfig` annotation.
+The `websocket:Service` can be secured with basic authentication and optionally, by enforcing authorization. This can be achieved by validating the basic authentication token sent in the initial HTTP upgrade request `Authorization` header with the LDAP server. This server stores the usernames and passwords for the authentication and the scopes for the authorization. Confogure the scopes required by the `websocket:Service`  for authorization in the `auth` field of the `@websocket:ServiceConfig` annotation.
 
 A `401 Unauthorized` response is sent to the client when the authentication fails, and a `403 Forbidden` response is sent to the client when the authorization fails. Use this to authenticate and authorize requests based on LDAP user stores. 
 
