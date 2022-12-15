@@ -1,6 +1,6 @@
 # GraphQL client - Handle partial response
 
-The Ballerina GraphQL client can handle cases where a GraphQL service responds with partial data along with errors. To retrieve the partial data, define the fields as nilable types in the expected response type where applicable. Use this approach when the response with partial data is considered to be valid or the partial data needs to be retrieved.
+The `graphql:Client` can handle cases where a GraphQL service responds with partial data along with errors. To retrieve the partial data, define the fields as nilable types in the expected response type where applicable. Use this approach when the response with partial data is considered to be valid or the partial data needs to be retrieved.
 
 >**Hint:** When defining field types as nilable, check the corresponding GraphQL schema to check the nilable fields.
 
