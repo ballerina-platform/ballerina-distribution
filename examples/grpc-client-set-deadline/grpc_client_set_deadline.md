@@ -4,7 +4,7 @@ The `grpc:Client` allows setting deadlines to specify how long they are willing 
 
 ::: code grpc_client_set_deadline.bal :::
 
-Setting up the client is the same as setting up the unary RPC client with additional configurations. You can refer to the [gRPC client - Unary RPC](/learn/by-example/grpc-client-unary/) to implement the client used here.
+Setting up the client is the same as setting up the unary RPC client with additional configurations. You can refer to the [gRPC client - Simple RPC](/learn/by-example/grpc-client-simple/) to implement the client used here.
 
 ## Prerequisites
 - Run the gRPC service given in the [gRPC service - Check deadline](/learn/by-example/grpc-service-check-deadline/) example.

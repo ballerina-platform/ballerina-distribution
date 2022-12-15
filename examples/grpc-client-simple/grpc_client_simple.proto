@@ -1,4 +1,3 @@
-// This is the service definition of the simple scenario.
 syntax = "proto3";
 
 import "google/protobuf/wrappers.proto";

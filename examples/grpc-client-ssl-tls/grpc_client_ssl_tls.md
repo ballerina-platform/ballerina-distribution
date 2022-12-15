@@ -4,7 +4,7 @@ The `grpc:Client` can be configured to communicate through HTTPS by providing a 
 
    ::: code grpc_client_ssl_tls.bal :::
 
-Setting up the client is the same as setting up the unary RPC client with additional configurations. You can refer to the [gRPC client - Unary RPC](/learn/by-example/grpc-client-unary/) to implement the client used here.
+Setting up the client is the same as setting up the unary RPC client with additional configurations. You can refer to the [gRPC client - Simple RPC](/learn/by-example/grpc-client-simple/) to implement the client used here.
 
 ## Prerequisites
 - Run the gRPC service given in the [gRPC service - SSL/TLS](/learn/by-example/grpc-service-ssl-tls/) example.

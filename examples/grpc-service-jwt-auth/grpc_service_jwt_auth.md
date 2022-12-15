@@ -4,7 +4,7 @@ A `grpc:Service` can be secured with JWT and by enforcing authorization optional
 
    ::: code grpc_service_jwt_auth.bal :::
 
-Setting up the service is the same as setting up the unary RPC service with additional configurations. You can refer to the [gRPC service - Unary RPC](/learn/by-example/grpc-service-unary/) to implement the service used below.
+Setting up the service is the same as setting up the unary RPC service with additional configurations. You can refer to the [gRPC service - Simple RPC](/learn/by-example/grpc-service-simple/) to implement the service used below.
 
 Run the service by executing the command below.
 

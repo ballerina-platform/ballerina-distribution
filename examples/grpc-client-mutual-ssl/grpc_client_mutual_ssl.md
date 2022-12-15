@@ -4,7 +4,7 @@ The `grpc:Client` allows opening up a connection secured with mutual SSL (mTLS),
 
    ::: code grpc_client_mutual_ssl.bal :::
 
-Setting up the client is the same as setting up the unary RPC client with additional configurations. You can refer to the [gRPC client - Unary RPC](/learn/by-example/grpc-client-unary/) to implement the client used here.
+Setting up the client is the same as setting up the unary RPC client with additional configurations. You can refer to the [gRPC client - Simple RPC](/learn/by-example/grpc-client-simple/) to implement the client used here.
 
 ## Prerequisites
 - Run the gRPC service given in the [gRPC service - Mutual SSL](/learn/by-example/grpc-service-mutual-ssl/) example.
