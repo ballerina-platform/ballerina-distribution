@@ -5,3 +5,7 @@ Ballerina allows specifying default values for function parameters. You can use 
 ::: code default_values_for_function_parameters.bal :::
 
 ::: out default_values_for_function_parameters.out :::
+
+## Related links
+- [Rest Parameters](/learn/by-example/rest-parameters/)
+- [Provide function arguments by name](/learn/by-example/provide-function-arguments-by-name/)

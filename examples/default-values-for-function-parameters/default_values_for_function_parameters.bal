@@ -1,7 +1,7 @@
 import ballerina/io;
 
-function subString(string str, int 'start = 0, int end = str.length())
-                                returns string {
+// Use the value of the preceding parameter `str` to initialize the parameter `end`.
+function subString(string str, int 'start = 0, int end = str.length()) returns string {
     return str.substring('start, end);
 }
 
