@@ -10,10 +10,10 @@ public function main() returns error? {
         interval: 5,
         // Define a set of HTTP Clients that are targeted for failover.
         targets: [
-                {url: "http://nonexistentEP/albums"},
-                {url: "http://localhost:9090/albums"}
-            ]
+            {url: "http://nonexistentEP"},
+            {url: "http://localhost:9090"}
+        ]
     });
-    string payload = check httpClient->/greeting;
+    string payload = check httpClient->/albums;
     io:println(payload);
 }

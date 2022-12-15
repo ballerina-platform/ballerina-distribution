@@ -1,2 +1,2 @@
-$ curl http://localhost:9095/accesslog
-Successful
+$ curl http://localhost:9090/albums
+[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]
