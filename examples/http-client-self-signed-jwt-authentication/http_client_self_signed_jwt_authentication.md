@@ -1,6 +1,6 @@
 # HTTP client - Self signed JWT authentication
 
-A client, which is secured with self-signed JWT can be used to connect to a secured service. The client is enriched with the `Authorization: Bearer <token>` header by passing the `http:JwtIssuerConfig` to the `auth` configuration of the client. A self-signed JWT is issued before the request is sent.
+The `http:Client` can connect to a service that is secured with self-signed JWT by adding the `Authorization: Bearer <token>` header by passing the `http:JwtIssuerConfig` to the `auth` configuration of the client. A self-signed JWT is issued before the request is sent.
 
 ::: code http_client_self_signed_jwt_authentication.bal :::
 
