@@ -1,6 +1,6 @@
 # GraphQL client - SSL/TLS
 
-The `graphql:Client` can be configured to communicate through HTTPS by providing a certificate file. The certificate can be provided through the `secureSocket` field of the client configuration. Use this to secure the communication between the client and the server.
+The `graphql:Client` can be configured to communicate through HTTPS by providing a certificate file. The certificate can be provided through the `secureSocket` field of the `graphql:ClientConfiguration`. Use this to secure the communication between the client and the server.
 
 ::: code graphql_client_security_ssl_tls.bal :::
 
