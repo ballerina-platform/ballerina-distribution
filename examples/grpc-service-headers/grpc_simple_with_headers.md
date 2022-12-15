@@ -4,7 +4,7 @@ The `grpc:Service` allows receiving headers and sending headers from/to a gRPC s
 
    ::: code grpc_simple_with_headers_service.bal :::
 
-Setting up the service is the same as setting up the unary RPC service with input and output parameter change. You can refer to the [gRPC service - Unary RPC](/learn/by-example/grpc-service-unary/) to implement the service used below.
+Setting up the service is the same as setting up the unary RPC service with input and output parameter change. You can refer to the [gRPC service - Simple RPC](/learn/by-example/grpc-service-simple/) to implement the service used below.
 
 Run the service by executing the command below.
 
