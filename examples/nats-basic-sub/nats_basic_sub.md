@@ -1,8 +1,8 @@
 # NATS service - Consume message
 
-NATS implements a publish-subscribe message distribution model. A publisher sends a message to a subject and any active subscriber listening to that subject can consume the message. In this example, the NATS service is used to consume messages from a subject. 
+NATS implements a publish-subscribe message distribution model. A publisher sends a message to a subject and any active subscriber listening to that subject can consume the message. In this example, the NATS service is used to consume messages from a subject.
 
-::: code nats-basic-sub.bal :::
+::: code nats_basic_sub.bal :::
 
 To run the sample, start an instance of the NATS server and execute the following command.
 
@@ -11,7 +11,7 @@ To run the sample, start an instance of the NATS server and execute the followin
 
 Run the service by executing the following command.
 
-::: out nats-basic-sub.out :::
+::: out nats_basic_sub.out :::
 
 >**Tip:** You can invoke the above service via the [NATS client](/learn/by-example/nats-basic-pub/).
 
