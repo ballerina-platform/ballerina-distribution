@@ -1,2 +1,2 @@
-description: This BBE demonstrates function values, type, and syntax for writing function values. 
-keywords:  ballerina, ballerina by example, bbe, functions, lambda, 
+description: This BBE demonstrates creating a variable with function type, creating a function. 
+keywords:  ballerina, ballerina by example, bbe, functions, function type, function defintion, function value
