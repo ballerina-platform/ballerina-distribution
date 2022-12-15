@@ -7,7 +7,7 @@ public function main() returns error? {
     // to `true` as the cache will be a public cache in this particular scenario.
     //
     // The default caching policy is to cache a response only if it contains a
-    // `cache-control` header and either an `etag` header, or a `last-modified`
+    // `cache-control` header and either an `etag` header or a `last-modified`
     // header. The user can control this behaviour by setting the `policy` field of
     // the `cacheConfig`. Currently, there are only 2 policies:
     // `CACHE_CONTROL_AND_VALIDATORS` (the default policy) and `RFC_7234`.
