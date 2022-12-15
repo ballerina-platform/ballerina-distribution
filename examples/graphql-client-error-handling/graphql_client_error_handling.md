@@ -1,6 +1,6 @@
 # GraphQL client - Handle error response
 
-The Ballerina GraphQL module allows handling different errors occurred when executing the `execute` method of the `graphql:Client`. It returns a `graphql:ClientError` error which has different subtypes that can be handled differently based on the use case. Use the subtypes of the `graphql:ClientError` to handle different types of errors based on the use case.
+The `graphql:Client` allows handling different errors occurred when executing the `execute` method. It returns a `graphql:ClientError` error which has different subtypes that can be handled differently based on the use case. Use the subtypes of the `graphql:ClientError` to handle different types of errors based on the use case.
 
 ::: code graphql_client_error_handling.bal :::
 
