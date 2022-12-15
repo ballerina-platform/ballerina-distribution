@@ -4,7 +4,7 @@ import ballerina/io;
 public function main() returns error? {
     // Caching can be enabled by setting `enabled:true` in the `cache` config of the client.
     // In this example, the `isShared` field of the `cacheConfig` is set
-    // to `true`, as the cache will be a public cache in this particular scenario.
+    // to `true` as the cache will be a public cache in this particular scenario.
     //
     // The default caching policy is to cache a response only if it contains a
     // `cache-control` header and either an `etag` header, or a `last-modified`
