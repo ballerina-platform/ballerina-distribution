@@ -1790,7 +1790,7 @@
             {
                 "name": "Access logs",
                 "url": "http-access-logs",
-                "verifyBuild": true,
+                "verifyBuild": false,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false

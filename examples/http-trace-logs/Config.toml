@@ -1,8 +1,8 @@
 [ballerina.http.traceLogAdvancedConfig]
 # Enable printing trace logs in console
 console = true              # Default is false
-# # Specify the file path to save the trace logs  
-# path = "testTraceLog.txt"   # Optional
-# # Specify the hostname and port of a socket service to publish the trace logs
-# host = "localhost"          # Optional
-# port = 8080                 # Optional
+# Specify the file path to save the trace logs  
+path = "testTraceLog.txt"   # Optional
+# Specify the hostname and port of a socket service to publish the trace logs
+host = "localhost"          # Optional
+port = 8080                 # Optional

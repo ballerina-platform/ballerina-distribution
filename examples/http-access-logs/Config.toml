@@ -1,0 +1,5 @@
+[ballerina.http.accessLogConfig]
+# Enable printing access logs in console
+console = true              # Default is false
+# Specify the file path to save the access logs  
+path = "testAccessLog.txt"  # Optional
