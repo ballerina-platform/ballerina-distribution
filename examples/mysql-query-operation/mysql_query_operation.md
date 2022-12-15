@@ -7,7 +7,7 @@ The `mysql:Client` allows querying the database with the use of `query` method. 
 ::: code mysql_simple_query.bal :::
 
 ## Prerequisites
-- For more information, see the [Database Access Ballerina By Example - Prerequisites](https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-prerequisite).
+- To set up the database, see the [Database Access Ballerina By Example - Prerequisites](https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-prerequisite).
 
 Run the service.
 

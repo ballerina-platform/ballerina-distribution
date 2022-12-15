@@ -7,7 +7,7 @@ The `mysql:Client` allows executing a batch of DDL/DML statements with the use o
 ::: code mysql_batch_execute_operation.bal :::
 
 ## Prerequisites
-- For more information, see the [Database Access Ballerina By Example - Prerequisites](https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-prerequisite).
+- To set up the database, see the [Database Access Ballerina By Example - Prerequisites](https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-prerequisite).
 
 Run the service.
 

@@ -7,7 +7,7 @@ The `mysql:Client` supports atomic units of work with multiple SQL statements. T
 ::: code mysql_atomic_transaction.bal :::
 
 ## Prerequisite
-- For more information, see the [Database Access Ballerina By Example - Prerequisites](https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-prerequisite).
+- To set up the database, see the [Database Access Ballerina By Example - Prerequisites](https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-prerequisite).
 
 Run the service.
 
