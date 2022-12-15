@@ -1,8 +1,8 @@
 # NATS client - Basic authentication
 
-NATS client connections can be authenticated in many ways. One of them is by using the username and password credentials. In this example, the underlying connection of the publisher is secured with basic authentication. 
+NATS client connections can be authenticated in many ways. One of them is by using the username and password credentials. In this example, the underlying connection of the publisher is secured with basic authentication.
 
-::: code nats-client-basic-auth.bal :::
+::: code nats_client_basic_auth.bal :::
 
 ## Prerequisites
 - Start an instance of the [NATS server](https://docs.nats.io/nats-concepts/what-is-nats/walkthrough_setup).
