@@ -3,7 +3,7 @@
 The NATS client connections can be secured by encrypting with TLS. In this example, the underlying connection of the listener is secured with basic authentication.
 In this example, the underlying connection of the publisher is secured with TLS/SSL. 
 
-::: code nats-client-secure-connection.bal :::
+::: code nats_client_secure_connection.bal :::
 
 ## Prerequisites
 - Start an instance of the [NATS server](https://docs.nats.io/nats-concepts/what-is-nats/walkthrough_setup).
