@@ -1782,7 +1782,7 @@
             {
                 "name": "Trace logs",
                 "url": "http-trace-logs",
-                "verifyBuild": true,
+                "verifyBuild": false,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
