@@ -1,6 +1,6 @@
 # GraphQL service - Basic authentication LDAP user store
 
-The `graphql:Service` can be secured with basic authentication and additionally, scopes can be added to enforce authorization. This can be achieved by validating the basic authentication token sent in the `Authorization` header with the LDAP server. This server stores the usernames and passwords for the authentication and the scopes for the authorization. A `graphql:Service` can configure the scopes it needs for authorization in the `auth` field of the `@graphql:ServiceConfig` annotation.
+The `graphql:Service` can be secured with basic authentication and additionally, scopes can be added to enforce authorization. It validates the basic authentication token sent in the `Authorization` header with the LDAP server. This server stores the usernames and passwords for the authentication and the scopes for the authorization. To engage authentication, set the LDAP server configurations to the `ldapUserStoreConfig` field. To engage authorization, set scopes to the `scopes` field. Both configurations must be given as part of the `@graphql:ServiceConfig` annotation.
 
 ::: code graphql_service_basic_auth_ldap_user_store.bal :::
 

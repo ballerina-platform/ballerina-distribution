@@ -1,6 +1,6 @@
 # GraphQL service - Basic authentication file user store
 
-The `graphql:Service` can be secured with basic authentication and additionally, scopes can be added to enforce authorization. This can be achieved by validating the basic authentication token sent in the `Authorization` header against the provided configurations in the `Config.toml` file. This file stores the usernames and passwords for the authentication and the scopes for the authorization. A `graphql:Service` can configure the scopes it needs for authorization in the `auth` field of the `@graphql:ServiceConfig` annotation. A `graphql:Error` response is sent to the client when the authentication or authorization fails.
+The `graphql:Service` can be secured with basic authentication and additionally, scopes can be added to enforce authorization. It validates the basic authentication token sent in the `Authorization` header against the provided configurations in the `Config.toml` file. The file stores the usernames and passwords for the authentication and the scopes for the authorization. To engage authentication set the default values to `fileUserStoreConfig` field and add the `Config.toml` file next to the service file. To engage authorization set scopes to `scopes` field. Both configurations must be given as part of `@graphql:ServiceConfig` annotation.
 
 ::: code graphql_service_basic_auth_file_user_store.bal :::
 
