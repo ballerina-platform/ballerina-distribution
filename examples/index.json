@@ -2481,8 +2481,8 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Unary RPC",
-                "url": "grpc-service-unary",
+                "name": "Simple RPC",
+                "url": "grpc-service-simple",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Has different naming convention",
@@ -2551,8 +2551,8 @@
         "category": "Network libraries",
         "samples": [
             {
-                "name": "Unary RPC",
-                "url": "grpc-client-unary",
+                "name": "Simple RPC",
+                "url": "grpc-client-simple",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Has different naming convention",

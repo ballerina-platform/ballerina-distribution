@@ -1,7 +1,7 @@
 import ballerina/grpc;
 
 @grpc:Descriptor {
-    value: GRPC_SERVICE_UNARY_DESC
+    value: GRPC_SIMPLE_SERVICE_DESC
 }
 service "HelloWorld" on new grpc:Listener(9090) {
 
