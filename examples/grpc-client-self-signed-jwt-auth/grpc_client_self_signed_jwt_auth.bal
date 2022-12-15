@@ -1,7 +1,7 @@
 import ballerina/io;
 
 public function main() returns error? {
-    // Defines the gRPC client to call the JWT secured APIs.
+    // Defines the gRPC client to call the JWT-secured APIs.
     HelloWorldClient securedEP = check new("https://localhost:9090",
         auth = {
             username: "ballerina",
