@@ -12,6 +12,6 @@ Run the client program by executing the command below.
 ::: out websocket_client_basic_auth.out :::
 
 ## Related Links
-- [`websocket` package - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
-- [`auth` package - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)
+- [`websocket` module - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
+- [`auth` module - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)
 - [WebSocket authentication - Specification](/spec/websocket/#52-authentication-and-authorization)

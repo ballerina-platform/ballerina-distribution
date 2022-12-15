@@ -13,6 +13,6 @@ Run the service by executing the command below.
 >**Tip:** You can invoke the above service via the [Basic authentication client](/learn/by-example/websocket-client-basic-auth).
 
 ## Related Links
-- [`websocket` package - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
-- [`auth` package - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)
+- [`websocket` module - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
+- [`auth` module - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)
 - [WebSocket authentication - Specification](/spec/websocket/#52-authentication-and-authorization)

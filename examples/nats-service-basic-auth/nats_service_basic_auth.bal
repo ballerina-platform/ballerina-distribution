@@ -3,11 +3,11 @@ import ballerinax/nats;
 
 // Initializes a NATS listener with TLS/SSL and username/password authentication.
 listener nats:Listener securedEP = new(nats:DEFAULT_URL,
-
-    // To secure the client connection using TLS/SSL, the client needs to be configured with
-    // a certificate file of the server.
-    secureSocket = {
-        cert: "../resource/path/to/public.crt"
+    // To secure the client connections using username/password authentication, provide the credentials
+    // with the `nats:Credentials` record.
+    auth = {
+         username: "alice",
+         password: "alice@123"
     }
 );
 
