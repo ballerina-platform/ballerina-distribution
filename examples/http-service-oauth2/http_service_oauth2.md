@@ -5,7 +5,7 @@ An HTTP service/resource can be secured with OAuth2 and by enforcing authorizati
 ::: code http_service_oauth2.bal :::
 
 ## Prerequisites
-- STS endpoint should be up and running.
+- An STS endpoint should be up and running.
 
 Run the service by executing the command below.
 
