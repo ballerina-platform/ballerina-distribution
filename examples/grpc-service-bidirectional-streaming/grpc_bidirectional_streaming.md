@@ -1,6 +1,6 @@
 # gRPC service - Bidirectional streaming RPC
 
-The gRPC server connector exposes the gRPC service over HTTP2. In a gRPC bidirectional streaming scenario, the gRPC service and the client operate when each other sends a sequence of messages using a read-write stream. In such scenarios, the two streams operate independently. Therefore, clients and servers can read and write in any order.
+A `grpc:Listener` is created by providing the port and a `grpc:Service` is attached to it. In the bidirectional streaming scenario, once a client is connected to the service, the client and the service send message streams to each other. In this scenario, the two streams operate independently, and therefore, the clients and servers can read and write in any order. Use this to receive multiple request messages from a client and send multiple response messages back.
 
 ## Generate the service definition
 

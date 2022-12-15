@@ -1,6 +1,6 @@
 # gRPC service - Unary RPC
 
-The gRPC Server Connector exposes the gRPC service over HTTP2. In a unary RPC call, a client sends a request to a remote service and waits for the response.
+A `grpc:Listener` is created by providing the port and a `grpc:Service` is attached to it. In the unary scenario, once a client is connected to the service and sends a request message, the service sends a single response message to the client. Use this to receive a single request message from a client and send a single response message back.
 
 ## Generate the service definition
 

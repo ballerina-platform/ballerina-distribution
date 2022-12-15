@@ -1,6 +1,6 @@
 # gRPC service - Client-side streaming RPC
 
-The gRPC Server Connector is used to expose gRPC services over HTTP/2. In a gRPC client streaming scenario, the client writes a sequence of messages and sends them to the server. Once the client has finished writing the messages, it waits for the server to read them and return a response.
+A `grpc:Listener` is created by providing the port and a `grpc:Service` is attached to it. In the client streaming scenario, once a client is connected to the service, the client sends a message stream to the server. Once the client completes the request message, the server sends the response message to complete the call. Use this to receive multiple request messages from a client and send a single response message back.
 
 ## Generate the service definition
 
