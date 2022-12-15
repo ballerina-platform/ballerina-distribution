@@ -1,6 +1,6 @@
 # REST service - Send different status codes with payload
 
-In addition to returning `StatusCodeResponse` constants, the resource method can return `StatusCodeResponse` record that contains response headers and payload. Defining a custom record type, including the `StatusCodeResponse` can produce a better representation of the response in the OpenAPI specification. In addition to that, using typed records provides compiler validations and better tooling support.
+In addition to returning `StatusCodeResponse` constants, the resource method can return a `StatusCodeResponse` record that contains the response headers and payload. Defining a custom record type including the `StatusCodeResponse` can produce a better representation of the response in the OpenAPI specification. In addition to that, using typed records provides compiler validations and better tooling support.
 
 ::: code http_send_different_status_codes_with_payload.bal :::
 
