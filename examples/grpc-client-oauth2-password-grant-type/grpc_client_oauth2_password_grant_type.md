@@ -1,6 +1,6 @@
 # gRPC client - OAuth2 password grant type 
 
-The `grpc:Client` can be secured with OAuth2 password grant type authorization by enriching the client metadata with the `Authorization: Bearer <token>` header. The required configurations for this grant type can be specified in the `auth` field of the client configuration. Use this grant type when you need to exchange the user's credentials for an access token.
+The `grpc:Client` can connect to a service that is secured with the OAuth2 password grant type by enriching the client metadata with the `Authorization: Bearer <token>` header. The required configurations for this grant type can be specified in the `auth` field of the client configuration. Use this grant type when you need to exchange the user's credentials for an access token.
 
    ::: code grpc_client_oauth2_password_grant_type.bal :::
 

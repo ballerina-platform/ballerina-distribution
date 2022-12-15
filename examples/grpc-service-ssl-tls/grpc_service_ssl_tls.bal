@@ -1,6 +1,5 @@
 import ballerina/grpc;
 
-// The `grpc:ListenerSecureSocket` record provides the SSL-related listener configurations of the listener.
 listener grpc:Listener securedEP = new (9090,
     secureSocket = {
         key: {

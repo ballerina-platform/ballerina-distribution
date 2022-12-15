@@ -1,7 +1,7 @@
 import ballerina/io;
 
 public function main() returns error? {
-    // Defines the gRPC client to call the servers secured with basic authentication.
+    // Defines the gRPC client to call the APIs secured with basic authentication.
     HelloWorldClient securedEP = check new("https://localhost:9090",
         auth = {
             username: "ldclakmal",
