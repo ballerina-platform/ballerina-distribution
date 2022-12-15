@@ -1,6 +1,6 @@
 # Database Access - Batch execution
 
-The `mysql` client allows executing a batch of DDL/DML statements using the `batchExecute` method. This method requires `sql:ParameterizedQuery[]`-typed SQL statements as arguments.
+The `mysql:Client` allows executing a batch of DDL/DML statements with the use of `batchExecute` method. This method requires `sql:ParameterizedQuery[]`-typed SQL statements as arguments.
 
 > **Tip**: Checkout [`ballerinax/mssql`](https://central.ballerina.io/ballerinax/mssql), [`ballerinax/postgresql`](https://central.ballerina.io/ballerinax/postgresql), [`ballerinax/oracledb`](https://central.ballerina.io/ballerinax/oracledb), [`ballerinax/java.jdbc`](https://central.ballerina.io/ballerinax/java.jdbc) for other supported database clients.
 

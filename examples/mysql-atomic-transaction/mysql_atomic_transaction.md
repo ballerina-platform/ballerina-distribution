@@ -1,6 +1,6 @@
 # Database Access - Atomic transactions
 
-The `mysql` client supports atomic units of work with multiple SQL statements. You can use the Ballerina `transaction` package with the `mysql` client to achieve atomic database transactions. The database makes all changes permanent when the transaction is committed or undo all changes when the transaction is rolled back.
+The `mysql:Client` supports atomic units of work with multiple SQL statements. To achieve atomic database transactions use the Ballerina `transaction` package with the `mysql:Client`. The database makes all changes permanent when the transaction is committed or undoes all changes when the transaction is rolled back.
 
 > **Tip**: Checkout [`ballerinax/mssql`](https://central.ballerina.io/ballerinax/mssql), [`ballerinax/postgresql`](https://central.ballerina.io/ballerinax/postgresql), [`ballerinax/oracledb`](https://central.ballerina.io/ballerinax/oracledb), [`ballerinax/java.jdbc`](https://central.ballerina.io/ballerinax/java.jdbc) for other supported database clients.
 

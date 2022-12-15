@@ -1,6 +1,6 @@
 # Database Access - Query with one result
 
-The `mysql` client allows querying the database for the utmost one result using the `queryRow` method. This method requires a `sql:ParameterizedQuery`-typed SQL statement as the argument.
+The `mysql:Client` allows querying the database for utmost one result with the use of `queryRow` method. This method requires a `sql:ParameterizedQuery`-typed SQL statement as the argument.
 
 > **Tip**: Checkout [`ballerinax/mssql`](https://central.ballerina.io/ballerinax/mssql), [`ballerinax/postgresql`](https://central.ballerina.io/ballerinax/postgresql), [`ballerinax/oracledb`](https://central.ballerina.io/ballerinax/oracledb), [`ballerinax/java.jdbc`](https://central.ballerina.io/ballerinax/java.jdbc) for other supported database clients.
 
