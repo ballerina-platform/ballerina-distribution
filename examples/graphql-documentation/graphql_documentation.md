@@ -1,8 +1,6 @@
 # GraphQL service - Documentation
 
-A GraphQL schema can include documentation for the schema. These documentation can help you to understand the schema. In Ballerina, the Ballerina doc comments can be used to add documentation to various schema members.
-
-This example shows how to add doc comments to the GraphQL service so that the generated schema will include them as the documentation.
+The Ballerina GraphQL module allows add documentation to the `graphql:Service` and its subsequent types. To add documentation, use the Ballerina doc comments for the `graphql:Service`, `resource`/`remote` methods, types, and `enum`s. Add the documentation to include the descriptions to the generated GraphQL schema.
 
 ::: code graphql_documentation.bal :::
 
@@ -21,5 +19,5 @@ To send the document, use the following cURL command in a separate terminal.
 >**Tip:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client-query-endpoint/).
 
 ## Related links
-- [`graphql` package - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
+- [`graphql` module - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
 - [GraphQL documentation - Specification](/spec/graphql/#35-documentation)

@@ -1,10 +1,6 @@
 # GraphQL service - Input objects
 
-GraphQL resolvers can have record types as input parameters, which will be mapped to an `INPUT_OBJECT` in the generated GraphQL schema. The input parameters of the resolver function will be added as input arguments of the corresponding field in the generated GraphQL schema.
-
-According to the GraphQL specification, an input type cannot be used as an output type. Therefore, using the same type as an input and an output will result is a compilation error.
-
-This example shows a GraphQL endpoint, which has a field `addProfile` with an input of type `NewProfile!` in the root `Mutation` type.
+The Ballerina GraphQL module allows defining GraphQL input objects in a `graphql:Service` using Ballerina records. To define a GraphQL input object, define a record type in Ballerina and use it as an input type in a `resource` or a `remote` method inside a `graphql:Service`. Use GraphQL input objects to define non-primitive, structured input arguments in a GraphQL API.
 
 ::: code graphql_input_objects.bal :::
 
@@ -23,5 +19,5 @@ To send the document, use the following cURL command in a separate terminal.
 >**Tip:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client-query-endpoint/).
 
 ## Related links
-- [`graphql` package - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
+- [`graphql` module - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
 - [GraphQL input objects - Specification](/spec/graphql/#452-input-objects)

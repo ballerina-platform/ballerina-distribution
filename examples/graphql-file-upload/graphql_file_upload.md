@@ -1,10 +1,6 @@
 # GraphQL service - File upload
 
-GraphQL package provides a way to upload files through the GraphQL endpoints with GraphQL mutations. To define an endpoint with the file upload capability, the `graphql:Upload` type can be used as the input parameter of resolver functions.
-
-The in-built `graphql:Upload` type can represent the details of the file that needs to be uploaded and that can be used only with the mutation operations, i.e. remote methods. The value of `graphql:Upload` type is extracted from the HTTP multipart request, which will be received by the GraphQL endpoints.
-
-This example shows how to implement a GraphQL endpoint that can be used to upload files.
+The Ballerina GraphQL module allows uploading files to a GraphQL schema. To enable file uploading in a GraphQL service, add the `graphql:Upload` record as an input parameter of a `remote` method inside a `graphql:Service`. The `graphql:Upload` record includes the details of the file that is being uploaded. The GraphQL file upload follows the **Graphql Multipart Request Spec** (see the link in the related links section) to upload the files. Use this to create a GraphQL API where users can upload files.
 
 ::: code graphql_file_upload.bal :::
 
@@ -28,4 +24,5 @@ This will create a directory `uploads` where the service is running, and then sa
 
 ## Related links
 - [`graphql:Upload` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/records/Upload)
+- [GraphQL multipart request specification](https://github.com/jaydenseric/graphql-multipart-request-spec)
 - [GraphQL file upload - Specification](/spec/graphql/#6-file-upload)
