@@ -1,6 +1,6 @@
 # NATS client - SSL/TLS
 
-The NATS server uses TLS to encrypt the communication between the client and the server. TLS can be used to encrypt traffic between the client/server and check the server’s identity. In this example, the underlying connection of the client is secured with TLS/SSL. A secured NATS client is created by passing the URL of the NATS broker and providing the TLS/SSL details using the `nats:SecureSocket` record. Use it to connect to a NATS server, which has SSL/TLS enabled.
+The `nats:Client` can be configured to communicate through HTTPS by providing a certificate file. The certificate can be provided through the `secureSocket` field of the connection configuration. Use this to secure the communication between the client and the server.
 
 ::: code nats_client_secure_connection.bal :::
 
