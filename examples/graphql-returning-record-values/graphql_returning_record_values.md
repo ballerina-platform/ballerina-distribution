@@ -20,5 +20,5 @@ To send the document, use the following cURL command in a separate terminal.
 >**Tip:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client-query-endpoint/).
 
 ## Related links
-- [`graphql` package - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
+- [`graphql` module - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
 - [GraphQL record type as object - Specification](/spec/graphql/#421-record-type-as-object)
