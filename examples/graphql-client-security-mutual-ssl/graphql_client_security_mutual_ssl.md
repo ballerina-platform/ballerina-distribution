@@ -1,8 +1,6 @@
 # GraphQL client - Mutual SSL
 
-Ballerina supports mutual SSL, which is a certificate-based authentication process in which two parties (the client and server) authenticate each other by verifying the digital certificates. It ensures that both parties are assured of each other's identity.
-
-This example shows how to send a GraphQL request securely using mutual SSL.
+The `graphql:Client` allows opening up a connection secured with mutual SSL (mTLS), which is a certificate-based authentication process in which two parties (the client and server) authenticate each other by verifying the digital certificates. It ensures that both parties are assured of each other's identity. The `graphql:Client` secured with mutual SSL is created by providing the `secureSocket` configurations, which require the client's public certificate as the `certFile`, the client's private key as the `keyFile`, and the server's certificate as the `cert`. Use this to interact with mTLS-encrypted HTTP servers.
 
 ::: code graphql_client_security_mutual_ssl.bal :::
 

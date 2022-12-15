@@ -13,8 +13,7 @@ type Profile record {|
 |};
 
 public function main() returns error? {
-    // Create a GraphQL client with secure socket configurations. To secure a client using
-    // HTTPS, the client needs to be configured with a certificate file of the listener.
+    // Defines the GraphQL client with secure socket configurations.
     graphql:Client graphqlClient = check new("localhost:9090/graphql",
         secureSocket = {
             cert: "../resource/path/to/public.crt"

@@ -1,6 +1,6 @@
 # GraphQL service - SSL/TLS
 
-You can use the GraphQL listener to connect to or interact with an HTTPS client. Provide the `graphql:ListenerSecureSocket` configurations to the server to expose an HTTPS connection.
+The `graphql:Listener` can be configured to communicate through HTTPS by providing a certificate file and a private key file. The certificate and the key can be provided through the `secureSocket` field of the listener configuration. Use this to secure the communication and data transfer between the server and the client.
 
 ::: code graphql_service_ssl_tls.bal :::
 
