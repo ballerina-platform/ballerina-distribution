@@ -1,8 +1,8 @@
 # GraphQL client - Handle partial response
 
-A GraphQL service can return a partial response having both errors and data fields when there are errors occurred during the execution of a field on the service side. If a field is allowed to have a null value in the GraphQL schema, then when defining the user-defined types on the client side, that field needs to be specified as a nullable field. Otherwise a `graphql:PayloadBindingError` may be returned when calling the client `execute()` method.
+The Ballerina GraphQL client can handle cases where a GraphQL service responds with partial data along with errors. To retrieve the partial data, define the fields as nilable types in the expected response type where applicable. Use this approach when the response with partial data is considered to be valid or the partial data needs to be retrieved.
 
-This example shows how to retrieve the partial data and graphql field errors in a user-defined type.
+>**Hint:** When defining field types as nilable, check the corresponding GraphQL schema to check the nilable fields.
 
 ::: code graphql_client_handle_partial_response.bal :::
 
