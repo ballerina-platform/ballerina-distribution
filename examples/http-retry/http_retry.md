@@ -1,6 +1,6 @@
 # HTTP client - Retry
 
-The HTTP retry client tries sending over the same request to the backend service when there is a network level failure. The retry is configured in the `retryConfig` field of the client configuration.
+The HTTP retry client tries sending over the same request to the backend service when there is a network-level failure. The retry is configured in the `retryConfig` field of the client configuration.
 
 ::: code http_retry.bal :::
 
