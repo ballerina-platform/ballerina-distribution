@@ -1,6 +1,6 @@
 # REST service - Query parameter
 
-The `http` module provides first class support for reading URL query parameters as resource method argument. The supported types are `string`, `int`, `float`, `boolean`, `decimal`, and the `array types` of the aforementioned types. The query param type can be nilable (e.g., (`string? bar`)). The request also provide certain method to retrieve query param at their convenience.
+The query parameter in the resource argument represents the query segment of the request URL. The argument name should be the key of the query, and its value is mapped during the runtime by extracting it from the URL. The query parameter does not need any additional annotation. The supported types are `string`, `int`, `float`, `boolean`, `decimal`, and `array` types of the aforementioned types. The query parameter type can be nilable (e.g., (`string? bar`)) and defaultable (e.g., (`string bar = "hello"`)). When a request contains query segments, retrieving them as resource arguments is much simpler and well-recommended. Alternatively, the `http:Request` also provides related methods to retrieve query parameters.
 
 ::: code http_query_parameter.bal :::
 
@@ -15,5 +15,5 @@ Invoke the service by executing the following cURL command in a new terminal.
 >**Tip:** You can invoke the above service via the client given in the [HTTP client - Query parameter](/learn/by-example/http-client-query-parameter/) example.
 
 ## Related links
-- [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`http` module - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
 - [HTTP service query parameter - Specification](/spec/http/#2343-query-parameter)
