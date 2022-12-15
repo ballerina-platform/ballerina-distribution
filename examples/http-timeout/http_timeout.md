@@ -1,6 +1,6 @@
 # HTTP client - Timeout
 
-The timeout is used to gracefully handle response delays that could occur due to network problems or the back-end. The client timeout is configured in the `timeout` field of the client configuration in seconds.
+The `timeout`filed is used to gracefully handle response delays that could occur due to network problems or the back-end. The client timeout is configured in the `timeout` field of the client configuration in seconds.
 
 ::: code http_timeout.bal :::
 
