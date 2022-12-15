@@ -14,7 +14,7 @@ public function main() returns error? {
             backOffFactor: 2.0,
 
             // The upper limit of the retry interval is in seconds. If the `interval` into the `backOffFactor`
-            // value exceeded `maxWaitInterval` interval value, `maxWaitInterval` is considered as the retry interval.
+            // value exceeded the `maxWaitInterval` interval value, `maxWaitInterval` is considered as the retry interval.
             maxWaitInterval: 20
         }
     );
