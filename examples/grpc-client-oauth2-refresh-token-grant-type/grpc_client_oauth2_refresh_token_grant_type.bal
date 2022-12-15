@@ -1,7 +1,7 @@
 import ballerina/io;
 
 public function main() returns error? {
-    // Defines the gRPC client to call the OAuth2 secured APIs.
+    // Defines the gRPC client to call the OAuth2-secured APIs.
     HelloWorldClient securedEP = check new("https://localhost:9090",
         auth = {
             refreshUrl: "https://localhost:9445/oauth2/token",
