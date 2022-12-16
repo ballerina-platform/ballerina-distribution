@@ -1,6 +1,6 @@
 # RabbitMQ service - Consumer with acknowledgement
 
-In this example, a RabbitMQ service is consuming messages from the pre-declared queue (i.e., `OrderQueue`). A `rabbitmq:Listener` can be created with the default host and port or with custom configurations. A `rabbitmq:Service` attached to the `rabbitmq:Listener` can be used to listen to a specific subject and consume incoming messages. The queue to listen to should be given as the service name or in the `queueName` field of the `rabbitmq:ServiceConfig`. The received messages are acknowledged manually. By default, the `autoAck ` mode is enabled, which will automatically acknowledge all messages once consumed. To enable manual acknowlegments, set the `autoAck` mode in `rabbitmq:ServiceConfig` to `false`. The `rabbitmq:Caller` can be used to acknowledge the message positively or negatively using the `basicAck` and `basicNack` functions.
+The `rabbitmq:Caller` allows manual acknowledgments for the consumed messages. A `rabbitmq:Listener` is created by passing the host and port of the RabbiMQ broker. A `rabbitmq:Service` attached to the `rabbitmq:Listener` can be used to listen to a specific subject and consume incoming messages. To enable manual acknowledgments, set the `autoAck` mode in `rabbitmq:ServiceConfig` to `false`. The `rabbitmq:Caller` can be used to acknowledge the message positively or negatively using the `basicAck` and `basicNack` functions. Use it to manually acknowledge the consumed messages.
 
 ::: code rabbitmq_consumer_with_client_acknowledgement.bal :::
 

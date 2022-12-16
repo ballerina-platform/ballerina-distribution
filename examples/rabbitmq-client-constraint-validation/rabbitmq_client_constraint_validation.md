@@ -1,6 +1,6 @@
 # RabbitMQ client - Constraint validation
 
-The Ballerina constraint module allows you to add additional constraints to the message content. The constraints can be added to a given data type using different annotations. When a message with a constraint is received from the RabbitMQ server, it is validated internally. This validation happens soon after the successful data-binding of the message content before returning the message record. If the validation fails, the `nats:PayloadValidationError` error is returned. Use this to validate the message content as the application receives it, which allows you to guard against unnecessary message content processing and malicious content.
+The Ballerina constraint module allows you to add additional constraints to the message content. The constraints can be added to a given data type using different annotations. When a message with a constraint is received from the RabbitMQ server, it is validated internally. This validation happens soon after the successful data-binding of the message content before returning the message record. If the validation fails, the `rabbitmq:PayloadValidationError` error is returned. Use this to validate the message content as the application receives it, which allows you to guard against unnecessary message content processing and malicious content.
 
 ::: code rabbitmq_client_constraint_validation.bal :::
 
