@@ -3,10 +3,10 @@ import ballerina/io;
 
 // The `ProfileResponse` is a sub-type of `graphql:GenericResponseWithErrors`.
 // The `graphql:GenericResponseWithErrors` record represents the generic shape of the GraphQL
-// response. The `graphql:GenericResponseWithErrors` record contains `data`, `errors`
-// and `extension`s fields where `data` represents the requested data from the GraphQL server,
-// `errors` represents the `Field Errors` raised during the execution and `extensions` represents
-// the meta information on protocol extensions from the GraphQL server.
+// response. The `graphql:GenericResponseWithErrors` record contains `data`, `errors`,
+// and `extensions` fields of which `data` represents the requested data from the GraphQL server,
+// `errors` represents the field errors raised during the execution, and `extensions` represents
+// the meta information on the protocol extensions from the GraphQL server.
 type ProfileResponse record {|
     *graphql:GenericResponseWithErrors;
     record {|Profile profile;|} data;
@@ -30,7 +30,7 @@ public function main() returns error? {
     io:println(response.data);
 
     if response.errors !is () {
-        // Access the `Field errors` from the response.
+        // Access the field errors from the response.
         io:println(response.errors);
     }
 }

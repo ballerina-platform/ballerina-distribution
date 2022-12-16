@@ -1,12 +1,10 @@
 # gRPC service - Server reflection
 
-Server reflection is a gRPC feature that allows dynamic clients, such as command-line tools for debugging, to discover the protocol used by a gRPC server at run time.
+The `grpc:Listener` provides the server reflection capability, which allows dynamic clients such as command-line tools for debugging to discover the protocol used by a gRPC server at run time. Server reflection is enabled by providing the `reflectionEnabled` configuration in the `grpc:ListenerConfiguration`.
 
-After implementing the service, you can enable server reflection by providing the `reflectionEnabled` configuration to the `grpc:ListenerConfiguration`.
-   
    ::: code grpc_server_reflection.bal :::
 
-Setting up the service is the same as setting up the unary RPC service with additional configurations. You can refer to the [gRPC service - Unary RPC](/learn/by-example/grpc-service-unary/) to implement the service used below.
+Setting up the service is the same as setting up the unary RPC service with additional configurations. You can refer to the [gRPC service - Simple RPC](/learn/by-example/grpc-service-simple/) to implement the service used below.
 
 Run the service by executing the command below.
 

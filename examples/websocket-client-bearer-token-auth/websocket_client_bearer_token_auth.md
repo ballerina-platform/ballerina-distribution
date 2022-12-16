@@ -1,6 +1,6 @@
 # WebSocket client - Bearer token authentication
 
-A client, which is secured with Bearer token authentication can be used to connect to a secured service. The client is enriched with the `Authorization: Bearer <token>` header by passing the `websocket:BearerTokenConfig` for the `auth` configuration of the client.
+The `websocket:Client` can connect to a service that is secured with bearer token authentication by adding the `Authorization: Bearer <token>` header to the initial HTTP request. The bearer token can be specified in the `auth` field of the client configuration.
 
 ::: code websocket_client_bearer_token_auth.bal :::
 

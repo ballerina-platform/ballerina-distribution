@@ -1,6 +1,6 @@
 # HTTP client - SSL/TLS
 
-You can use the HTTPS client to connect or interact with an HTTPS listener. Provide the `http:ClientSecureSocket` configurations to the client to initiate an HTTPS connection.
+The `http:Client` can be configured to communicate through HTTPS by providing a certificate file. The certificate can be provided through the `secureSocket` field of the client configuration. Use this to secure the communication between the client and the server.
 
 ::: code http_client_ssl_tls.bal :::
 
