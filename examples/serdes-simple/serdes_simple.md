@@ -8,6 +8,6 @@ Run the program by executing the following command.
 
 ::: out serdes_simple.out :::
 
-## Related Links
+## Related links
 - [`serdes` - API documentation](https://lib.ballerina.io/ballerina/serdes/latest)
 - [`serdes` - Specification](/spec/serdes)
