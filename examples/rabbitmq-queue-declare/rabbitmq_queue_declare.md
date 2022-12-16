@@ -1,6 +1,6 @@
 # RabbitMQ client - Declare queue
 
-In this example, the RabbitMQ client is declaring a queue. Queues in RabbitMQ are ordered collections of messages. Messages are enqueued and dequeued in the FIFO manner.
+A RabbitMQ queue is a buffer that stores messages. The queue takes messages from the publisher and sends them to the consumer. A RabbitMQ client is created with the host and port of the RabbitMQ broker. A queue with a specific name and custom configurations can be declared by using the `queueDeclare` method. To create a queue with a server-generated name, the `queueAutoGenerate` method can be used. Use this to declare the queue before publishing messages.
 
 ::: code rabbitmq_queue_declare.bal :::
 

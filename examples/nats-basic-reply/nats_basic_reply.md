@@ -1,6 +1,6 @@
 # NATS service - Send reply to request message
 
-NATS supports the Request-Reply pattern using its core message distribution model, publish, and subscribe. A request is sent to a given subject and consumers listening to that subject can send responses to the reply subject. In this example, the NATS service is used to send replies to incoming request messages.
+The NATS service allows listening to a given subject for incoming messages and sending responses. A NATS listener is created by passing the URL of the NATS broker. A `nats:Service` attached to the listener can be used to send replies to incoming request messages using the `onRequest` remote method. The subject to listen to should be given as the service name or in the `subject` field of the `nats:ServiceConfig`. Use it to send reply messages to the request messages consumed by the subscriber.
 
 ::: code nats_basic_reply.bal :::
 
