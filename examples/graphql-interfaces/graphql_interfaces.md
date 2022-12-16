@@ -1,6 +1,6 @@
 # GraphQL service - Interfaces
 
-The Ballerina GraphQL module allows defining GraphQL interface types. An interface specifies a set of fields that multiple object types can include. In Ballerina, interfaces are defined using `distinct` `service` objects, and the fields of the interfaces are defined as resource method definitions. Objects that are implementing the interfaces must implement the `resource` methods defined in the `service` objects. The Ballerina type inclusion includes the interface type to an object type. Use an interface to return a type that consists of a set of possible types with common fields.
+The Ballerina GraphQL module allows defining GraphQL interface types. An interface specifies a set of fields that multiple object types can include. In Ballerina, interfaces are defined using `distinct` `service` objects and the fields of the interfaces are defined as resource method definitions. Objects that are implementing the interfaces must implement the `resource` methods defined in the `service` objects. The Ballerina type inclusion includes the interface type to an object type. Use an interface to return a type that consists of a set of possible types with common fields.
 
 ::: code graphql_interfaces.bal :::
 
