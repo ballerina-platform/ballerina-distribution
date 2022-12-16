@@ -1,6 +1,6 @@
 # REST service - Send response
 
-The resource method can return `anydata` type. In that case, the `Content-type` header of the response is automatically infered from the return type. Additionally, the `@http:Payload` annotation on the return type can be used to overwrite the `Content-type`. The resource function can also return `error`. In that case, a `500 Internal Server Error` will be returned with the error message in the body.
+The resource method can return the `anydata` type. In that case, the `Content-type` header of the response is inferred automatically from the return type. Additionally, the `@http:Payload` annotation on the return type can be used to overwrite the `Content-type`. The resource function can also return an `error`. In that case, a `500 Internal Server` error will be returned with the error message in the body.
 
 ::: code http_send_response.bal :::
 
