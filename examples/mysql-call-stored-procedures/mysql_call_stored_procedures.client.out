@@ -1,2 +1,0 @@
-$ curl http://localhost:8080/orders/2022-12-09
-{"total":2, "orders":[{"id":"S-123", "orderDate":"2022-12-09", "productId":"A-123", "quantity":2}, {"id":"S-321", "orderDate":"2022-12-09", "productId":"A-321", "quantity":1}]}

@@ -1,60 +1,39 @@
-import ballerina/http;
-import ballerina/sql;
+import ballerina/io;
 import ballerinax/mysql;
+import ballerina/sql;
 import ballerinax/mysql.driver as _;
 
-// The `Order` record to load records from `sales_order` table.
-type Order record {|
-    string id;
-    @sql:Column {name: "order_date"}
-    string orderDate;
-    @sql:Column {name: "product_id"}
-    string productId;
-    int quantity;
-|};
+// The `Student` record to represent the database table.
+type Student record {
+    int id;
+    int age;
+    string name;
+};
 
-type Orders record {|
-    int total;
-    Order[] orders;
-|};
+public function main() returns error? {
 
-service / on new http:Listener(8080) {
-    private final mysql:Client db;
+    // Initializes the MySQL client. The `mysqlClient` can be reused to access the database throughout the application execution.
+    mysql:Client mysqlClient = check new (host = "localhost", port = 3306, user = "root",
+                                          password = "Test@123", database = "STUDENT");
 
-    function init() returns error? {
-        // Initiate the mysql client at the start of the service. This will be used
-        // throughout the lifetime of the service.
-        self.db = check new (host = "localhost", port = 3306, user = "root",
-                            password = "Test@123", database = "MUSIC_STORE");
-    }
+    // Initializes the `INOUT` and `OUT` parameters for the procedure call.
+    sql:InOutParameter id = new (1);
+    sql:IntegerOutParameter totalCount = new;
 
-    resource function get orders/[string orderDate]() returns Orders|error {
-        // Initializes the `INOUT` and `OUT` parameters for the procedure call.
-        sql:DateValue filterDate = new (orderDate);
-        sql:IntegerOutParameter total = new ();
+    // The stored procedure is invoked.
+    sql:ProcedureCallResult result = check mysqlClient->call(`{CALL GetCount(${id}, ${totalCount})}`);
 
-        // Call the `get_sales_order` stored procedure.
-        sql:ProcedureCallResult result =
-            check self.db->call(`{CALL get_sales_order(${filterDate}, ${total})}`, [Order]);
+    // Process procedure-call parameters.
+    int studentId = check id.get();
+    int total = check totalCount.get();
 
-        // Process procedure-call parameters.
-        int totalCount = check total.get();
+    io:println(`Age of the student with id '1' : ${studentId}`);
+    io:println(`Total student count: ${total}`);
 
-        Order[] orders = [];
-        // Process procedure-call query results.
-        stream<record {}, error?>? resultStream = result.queryResult;
-        if resultStream !is () {
-            stream<Order, error?> orderStream = <stream<Order, error?>>resultStream;
-            orders = check from Order 'order in orderStream
-                select 'order;
-        }
+    // Closes the procedure call result to release the resources.
+    check result.close();
 
-        // Cleans up the resources.
-        check result.close();
+    // Closes the MySQL client.
+    check mysqlClient.close();
 
-        return {
-            total: totalCount,
-            orders: orders
-        };
-    }
 }
