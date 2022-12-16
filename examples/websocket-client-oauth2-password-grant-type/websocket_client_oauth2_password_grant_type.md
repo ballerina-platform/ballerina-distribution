@@ -1,6 +1,6 @@
 # WebSocket client - OAuth2 password grant type
 
-A client, which is secured with OAuth2 password grant type can be used to connect to a secured service. The client is enriched with the `Authorization: Bearer <token>` header by passing the `websocket:OAuth2PasswordGrantConfig` to the `auth` configuration of the client.
+The `websocket:Client` can connect to a service that is secured with the OAuth2 password grant type by adding the `Authorization: Bearer <token>` header to the initial HTTP request. The required configurations for this grant type can be specified in the `auth` field of the client configuration. Use this grant type when you need to exchange the user's credentials for an access token.
 
 ::: code websocket_client_oauth2_password_grant_type.bal :::
 
