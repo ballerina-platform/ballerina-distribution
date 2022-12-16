@@ -7,15 +7,19 @@ This BBE demonstrates how to use the MySQL client to execute a stored procedure.
 ::: code mysql_call_stored_procedures.bal :::
 
 ## Prerequisites
-- Refer [`mysql-prerequisite`](https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/mysql-prerequisite/README.md).
+- Set up the MySQL database - Run the [prerequisite.bal](https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/mysql-call-stored-procedures/prerequisites/prerequisite.bal) file by executing the command `bal run`.
 
-Run the service.
+Run the sample by executing the following command.
 
-::: out mysql_call_stored_procedures.server.out :::
+::: out mysql_call_stored_procedures.out :::
 
-Invoke the service by executing the following cURL command in a new terminal to post a new order.
+The result set returned from the stored procedure can be accessed using `queryResult` variable in `sql:ProcedureCallResult`.
 
-::: out mysql_call_stored_procedures.client.out :::
+::: code process_result_stream.bal :::
+
+Further the result set can be mapped directly to a Ballerina record,
+
+::: code process_student_stream.bal :::
 
 If the procedure returns more than one result set, then those can be accessed by using,
 ```ballerina
