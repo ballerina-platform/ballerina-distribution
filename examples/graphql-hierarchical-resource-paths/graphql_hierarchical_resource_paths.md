@@ -1,6 +1,6 @@
 # GraphQL service - Hierarchical resource paths
 
-The Ballerina GraphQL module allows using hierarchical resource paths in the GraphQL resources. When hierarchical resource paths are used, a GraphQL output object type is created for each intermediate path segment with the same name. Every sub-path under a path segment is added as a field of the created type. Hierarchical paths can be used when there is no need to define the GraphQL output object types explicitly.
+The Ballerina `graphql` module allows using hierarchical resource paths in the GraphQL resources. When hierarchical resource paths are used, a GraphQL output object type is created for each intermediate path segment with the same name. Every sub-path under a path segment is added as a field of the created type. Hierarchical paths can be used when there is no need to define the GraphQL output object types explicitly.
 
 ::: code graphql_hierarchical_resource_paths.bal :::
 
