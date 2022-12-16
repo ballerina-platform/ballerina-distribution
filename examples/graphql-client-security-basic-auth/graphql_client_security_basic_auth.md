@@ -1,6 +1,6 @@
 # GraphQL client - Basic authentication
 
-The `graphql:Client` can connect to a service that is secured with basic authentication by adding the `Authorization: Basic <token>` header to each request. The username and password for basic authentication can be specified in the `auth` field of the client configuration. Use this to communicate with the service, which is secured with basic authentication.
+The `graphql:Client` can connect to a service that is secured with basic authentication by adding the `Authorization: Basic <token>` header to each request. The username and password for basic authentication can be specified in the `auth` field of the `graphql:ClientConfiguration`. Use this to communicate with the service, which is secured with basic authentication.
 
 ::: code graphql_client_security_basic_auth.bal :::
 

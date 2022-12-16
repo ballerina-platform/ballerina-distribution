@@ -1,7 +1,7 @@
 import ballerina/graphql;
 import ballerina/io;
 
-// User defined data types to retrive data from the service.
+// User-defined data types to retrive data from the service.
 type ProfileResponse record {|
     *graphql:GenericResponseWithErrors;
     record {|Profile profile;|} data;
@@ -13,7 +13,7 @@ type Profile record {|
 |};
 
 public function main() returns error? {
-    // Create a GraphQL client with secure socket configurations
+    // The GraphQL client can be configured to initiate new connections that are secured via mutual SSL.
     graphql:Client graphqlClient = check new("localhost:9090/graphql",
         secureSocket = {
             key: {
@@ -24,7 +24,7 @@ public function main() returns error? {
         }
     );
 
-    // Define the GraphQL document to be sent to the GraphQL service.
+    // Defines the GraphQL document to be sent to the GraphQL service.
     string document = "{ profile { name, age } }";
 
     // Execute the document and retrieve the response from the GraphQL service.

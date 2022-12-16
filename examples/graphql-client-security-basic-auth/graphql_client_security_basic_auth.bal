@@ -1,7 +1,7 @@
 import ballerina/graphql;
 import ballerina/io;
 
-// User defined data types to retrieve data from the service.
+// User-defined data types to retrieve data from the service.
 type ProfileResponse record {|
     *graphql:GenericResponseWithErrors;
     record {|Profile profile;|} data;
@@ -24,7 +24,7 @@ public function main() returns error? {
         }
     );
 
-    // Define the GraphQL document to be sent to the GraphQL service.
+    // Defines the GraphQL document to be sent to the GraphQL service.
     string document = "{ profile { name, age } }";
 
     // Execute the document and retrieve the response from the GraphQL service.

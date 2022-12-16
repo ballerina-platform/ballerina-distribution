@@ -1,7 +1,7 @@
 import ballerina/graphql;
 import ballerina/io;
 
-// User defined data types to retrive data from the service.
+// User-defined data types to retrive data from the service.
 type ProfileResponse record {|
     *graphql:GenericResponseWithErrors;
     record {|Profile profile;|} data;
@@ -13,7 +13,7 @@ type Profile record {|
 |};
 
 public function main() returns error? {
-    // Defines the GraphQL client to call the OAuth2 secured APIs.
+    // Defines the GraphQL client to call the OAuth2-secured APIs.
     graphql:Client graphqlClient = check new("localhost:9090/graphql",
         auth = {
             tokenUrl: "https://localhost:9445/oauth2/token",
@@ -42,7 +42,7 @@ public function main() returns error? {
         }
     );
 
-    // Define the GraphQL document to be sent to the GraphQL service.
+    // Defines the GraphQL document to be sent to the GraphQL service.
     string document = "{ profile { name, age } }";
 
     // Execute the document and retrieve the response from the GraphQL service.
