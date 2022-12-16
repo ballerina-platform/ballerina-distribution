@@ -1,6 +1,6 @@
 # NATS service - Consume message
 
-The NATS service listens to the given subject for incoming messages. When a publisher sends a message on a subject, any active service listening on that subject receives the message. A NATS listener  is created by passing the URL of the NATS broker. A `nats:Service` attached to the `nats:Listener` can be used to listen to a specific subject and consume incoming messages. The subject to listen to should be given as the service name or in the `subject` field of the `nats:ServiceConfig`. Use it to listen to messages sent to a particular subject.
+The `nats:Service` listens to the given subject for incoming messages. When a publisher sends a message on a subject, any active service listening on that subject receives the message. A `nats:Listener`  is created by passing the URL of the NATS broker. A `nats:Service` attached to the `nats:Listener` can be used to listen to a specific subject and consume incoming messages. The subject to listen to should be given as the service name or in the `subject` field of the `nats:ServiceConfig`. Use it to listen to messages sent to a particular subject.
 
 ::: code nats_basic_sub.bal :::
 

@@ -1,6 +1,6 @@
 # RabbitMQ client - Transactional producer
 
-The RabbitMQ client can become a transactional producer by publishing messages within a Ballerina transaction block. Upon successful execution of the transaction block, the client will commit or roll back in the case of any error. A RabbitMQ client can be created by passing the host and port of the RabbitMQ broker. To publish messages, the `publishMessage` method, which requires the message and queue name as arguments is used. Use it to publish messages to the RabbitMQ server with ensured delivery.
+The `rabbitmq:Client` can become a transactional producer by publishing messages within a Ballerina transaction block. Upon successful execution of the transaction block, the client will commit or roll back in the case of any error. A `rabbitmq:Client` can be created by passing the host and port of the RabbitMQ broker. To publish messages, the `publishMessage` method, which requires the message and queue name as arguments is used. Use it to publish messages to the RabbitMQ server with ensured delivery.
 
 ::: code rabbitmq_transaction_producer.bal :::
 
