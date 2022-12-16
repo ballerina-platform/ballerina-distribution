@@ -1,6 +1,6 @@
 # GraphQL service - Documentation
 
-The Ballerina GraphQL module allows add documentation to the `graphql:Service` and its subsequent types. To add documentation, use the Ballerina doc comments for the `graphql:Service`, `resource`/`remote` methods, types, and `enum`s. Add the documentation to include the descriptions to the generated GraphQL schema.
+The Ballerina `graphql` module allows adding documentation to the `graphql:Service` and its subsequent types. To add documentation, use the Ballerina doc comments for the `graphql:Service`, `resource`/`remote` methods, types, and `enum`s. Add the documentation to include the descriptions to the generated GraphQL schema.
 
 ::: code graphql_documentation.bal :::
 

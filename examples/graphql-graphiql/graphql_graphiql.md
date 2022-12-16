@@ -1,6 +1,6 @@
 # GraphQL service - GraphiQL client
 
-The Ballerina GraphQL includes a built-in GraphiQL client. To enable the GraphiQL client, use the `graphiql` field in the `graphql:ServiceConfig` annotation on a `graphql:Service`. The GraphiQL client can be used to test the GraphQL APIs using the GraphiQL IDE.
+The Ballerina `graphql` module includes a built-in GraphiQL client. To enable the GraphiQL client, use the `graphiql` field in the `graphql:ServiceConfig` annotation on a `graphql:Service`. The GraphiQL client can be used to test the GraphQL APIs using the GraphiQL IDE.
 
 This example shows how to enable the GraphiQL client for a Ballerina GraphQL service.
 

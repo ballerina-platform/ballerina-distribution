@@ -1,8 +1,8 @@
 # GraphQL service - Directives
 
-The Ballerina GraphQL module allows using the following set of pre-defined directives.
+The Ballerina `graphql` module allows using the following set of pre-defined directives.
 
-- `@depricated` - The `@deprecated` annotation can be used as the `deprecated` directive on the `resource` or `remote` methods, and `enum` values. Use this to mark a field or an enum value deprecated.
+- `@depricated` - The `@deprecated` annotation can be used as the `deprecated` directive on the `resource` or `remote` methods and `enum` values. Use this to mark a field or an enum value as deprecated.
 - `@skip(if: Boolean!)` - The `@skip` directive can be used on fields or fragments in GraphQL documents. Use this to skip a field execution based on the given condition.
 - `@include(if: Boolean!)` - The `@include` directive can be used on fields or fragments in GraphQL documents. Use this to include a field execution based on the given condition.
 

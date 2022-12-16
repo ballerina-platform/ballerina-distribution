@@ -2,8 +2,6 @@
 
 A `graphql:Service` in Ballerina represents a GraphQL schema. Each resource method of the `graphql:Service` with the `get` accessor represents a resolver function in the root `Query` type. The return type of the `resource` method will be the type of field represented by that resource method.
 
-This example shows a GraphQL endpoint that has a field named `greeting` in the root `Query` type which is of type `String!`.
-
 ::: code graphql_hello_world.bal :::
 
 Run the service by executing the following command.
