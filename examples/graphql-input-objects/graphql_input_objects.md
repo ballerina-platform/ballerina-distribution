@@ -1,6 +1,6 @@
 # GraphQL service - Input objects
 
-The Ballerina GraphQL module allows defining GraphQL input objects in a `graphql:Service` using Ballerina records. To define a GraphQL input object, define a record type in Ballerina and use it as an input type in a `resource` or a `remote` method inside a `graphql:Service`. Use GraphQL input objects to define non-primitive, structured input arguments in a GraphQL API.
+The Ballerina `graphql` module allows defining GraphQL input objects in a `graphql:Service` using Ballerina records. To define a GraphQL input object, define a record type in Ballerina and use it as an input type in a `resource` or a `remote` method inside a `graphql:Service`. Use GraphQL input objects to define non-primitive, structured input arguments in a GraphQL API.
 
 ::: code graphql_input_objects.bal :::
 

@@ -1,6 +1,6 @@
 # GraphQL service - File upload
 
-The Ballerina GraphQL module allows uploading files to a GraphQL schema. To enable file uploading in a GraphQL service, add the `graphql:Upload` record as an input parameter of a `remote` method inside a `graphql:Service`. The `graphql:Upload` record includes the details of the file that is being uploaded. The GraphQL file upload follows the _Graphql Multipart Request Spec_ to upload the files. Use this to create a GraphQL API where users can upload files.
+The Ballerina `graphql` module allows uploading files to a GraphQL schema. To enable file uploading in a GraphQL service, add the `graphql:Upload` record as an input parameter of a `remote` method inside a `graphql:Service`. The `graphql:Upload` record includes the details of the file that is being uploaded. The GraphQL file upload follows the _Graphql Multipart Request Spec_ to upload the files. Use this to create a GraphQL API where users can upload files.
 
 ::: code graphql_file_upload.bal :::
 

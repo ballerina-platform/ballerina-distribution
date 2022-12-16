@@ -1,6 +1,6 @@
 # GraphQL service - Input types
 
-The Ballerina GraphQL module allows defining input parameters for the GraphQL fields. To define input parameters, add the desired input parameters in the `resource` and `remote` methods in a `graphql:Service` and the subsequent service types.
+The Ballerina `graphql` module allows defining input parameters for the GraphQL fields. To define input parameters, add the desired input parameters in the `resource` and `remote` methods in a `graphql:Service` and the subsequent service types.
 
 ::: code graphql_input_types.bal :::
 
