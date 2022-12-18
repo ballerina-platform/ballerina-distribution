@@ -1,8 +1,8 @@
 # gRPC service - Basic authentication LDAP user store
 
-The `grpc:Service` can be secured with basic authentication and additionally, scopes can be added to enforce authorization. This can be achieved by validating the basic authentication token sent in the `Authorization` metadata with the LDAP server. This server stores the usernames and passwords for the authentication and the scopes for the authorization.
+The `grpc:Service` can be secured with basic authentication and additionally, scopes can be added to enforce authorization. It validates the basic authentication token sent in the `Authorization` metadata with the LDAP server. This server stores the usernames and passwords for the authentication and the scopes for the authorization. To engage authentication, set the LDAP-related configurations to the `ldapUserStoreConfig` field. To engage authorization, set the scopes to the `scopes` field. Both configurations must be given as part of the service configuration.
 
-To enable authentication, set the LDAP-related configurations to the `ldapUserStoreConfig` field. To enable authorization, set the scopes to the `scopes` field. Both configurations must be given as part of the service configuration. A `grpc:UnauthenticatedError` is sent to the client when the authentication fails, and a `grpc:PermissionDeniedError` is sent to the client when the authorization fails. Use this to authenticate and authorize requests based on LDAP user stores.
+A `grpc:UnauthenticatedError` is sent to the client when the authentication fails, and a `grpc:PermissionDeniedError` is sent to the client when the authorization fails. Use this to authenticate and authorize requests based on LDAP user stores.
 
    ::: code grpc_service_basic_auth_ldap_user_store.bal :::
 

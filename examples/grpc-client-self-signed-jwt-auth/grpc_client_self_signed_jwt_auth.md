@@ -1,6 +1,6 @@
 # gRPC client - Self signed JWT authentication
 
-The `grpc:Client` can connect to a service secured with self-signed JWT by enriching the client metadata with the `Authorization: Bearer <token>` header. The required configurations for this can be specified in the `auth` field of the client configuration. A self-signed JWT is issued before the request is sent.
+The `grpc:Client` can connect to a service that is secured with self-signed JWT by enriching the client metadata with the `Authorization: Bearer <token>` header by passing the `grpc:JwtIssuerConfig` to the auth configuration of the client. A self-signed JWT is issued before the request is sent.
 
    ::: code grpc_client_self_signed_jwt_auth.bal :::
 

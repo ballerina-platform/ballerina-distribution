@@ -1,6 +1,8 @@
 # gRPC service - Basic authentication file user store
 
-The `grpc:Service` can be secured with basic authentication and additionally, scopes can be added to enforce authorization. This can be achieved by validating the basic authentication token sent in the `Authorization` metadata against the configurations provided in the `Config.toml` file. This file stores the usernames and passwords for the authentication and the scopes for the authorization. To enable authentication, set the default values for the `fileUserStoreConfig` field and add the `Config.toml` file next to the service file. To enable authorization, set the scopes to the `scopes` field. Both configurations must be given as part of the service configuration. A `grpc:UnauthenticatedError` is sent to the client when the authentication fails, and a `grpc:PermissionDeniedError` is sent to the client when the authorization fails. Use this to authenticate and authorize requests based on user stores.
+The `grpc:Service` can be secured with basic authentication and additionally, scopes can be added to enforce authorization. It validates the basic authentication token sent in the `Authorization` metadata against the provided configurations provided in the `Config.toml` file. The file stores the usernames and passwords for the authentication and the scopes for the authorization. To engage authentication, set the default values for the `fileUserStoreConfig` field and add the `Config.toml` file next to the service file. To engage authorization, set the scopes to the `scopes` field. Both configurations must be given as part of the service configuration.
+
+A `grpc:UnauthenticatedError` is sent to the client when the authentication fails, and a `grpc:PermissionDeniedError` is sent to the client when the authorization fails. Use this to authenticate and authorize requests based on user stores.
 
    ::: code grpc_service_basic_auth_file_user_store.bal :::
 
