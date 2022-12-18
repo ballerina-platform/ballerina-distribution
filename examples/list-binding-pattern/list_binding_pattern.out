@@ -1,0 +1,4 @@
+$ bal run list_binding_pattern.bal
+1234
+John
+Doe
