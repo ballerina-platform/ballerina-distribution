@@ -695,6 +695,55 @@
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
+            },
+            {
+                "name": "Binding patterns",
+                "url": "binding-patterns",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Typed binding pattern",
+                "url": "typed-binding-pattern",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Wildcard binding pattern",
+                "url": "wildcard-binding-pattern",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "List binding patterns",
+                "url": "list-binding-pattern",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Rest binding pattern in list binding pattern",
+                "url": "rest-binding-pattern-in-list-binding-pattern",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "List binding pattern in match statement",
+                "url": "list-binding-pattern-in-match-statement",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Mapping binding pattern in match statement",
+                "url": "mapping-binding-pattern-in-match-statement",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
             }
         ]
     },
