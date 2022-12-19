@@ -27,7 +27,6 @@ type Profile record {|
     }
 }
 service /graphql on new graphql:Listener(9090) {
-
     // Define a `Profile` field inside the service.
     private final Profile profile;
 
