@@ -11,13 +11,13 @@ Run the service by executing the following command.
 
 Send the following document to the GraphQL endpoint to test the service using any GraphQL client that supports subscriptions to test the service.
 
->**Tip:** You can invoke the above service via the [GraphiQL client](/learn/by-example/graphql-graphiql/).
-
 ::: code graphql_subscriptions.graphql :::
 
 It should return the following values.
 
 ::: out graphql_subscriptions.client.out :::
+
+>**Tip:** You can invoke the above service via the [GraphiQL client](/learn/by-example/graphql-graphiql/).
 
 ## Related links
 - [`graphql` module - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
