@@ -9,6 +9,8 @@ The `http:Client` can connect to a service that is secured with self-signed JWT 
 
 Run the client program by executing the command below.
 
+::: out http_client_self_signed_jwt_authentication.out :::
+
 ## Related links
 - [`http:JwtIssuerConfig` record - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/JwtIssuerConfig)
 - [`jwt` module - API documentation](https://lib.ballerina.io/ballerina/jwt/latest/)
