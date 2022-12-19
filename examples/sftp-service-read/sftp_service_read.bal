@@ -25,6 +25,7 @@ listener ftp:Listener fileListener = check new ({
 // One or many services can listen to the SFTP listener for the
 // periodically-polled file related events.
 service on fileListener {
+
     // When a file event is successfully received, the `onFileChange` method is called.
     remote function onFileChange(ftp:WatchEvent event) {
         // `addedFiles` contains the paths of the newly-added files/directories

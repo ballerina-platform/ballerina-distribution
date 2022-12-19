@@ -1,4 +1,5 @@
 import ballerina/ftp;
+import ballerina/io;
 import ballerina/log;
 
 // Creates the listener with the connection parameters and the protocol-related
@@ -19,12 +20,18 @@ listener ftp:Listener fileListener = check new ({
 // One or many services can listen to the FTP listener for the periodically-polled
 // file related events.
 service on fileListener {
+
     // When a file event is successfully received, the `onFileChange` method is called.
-    remote function onFileChange(ftp:WatchEvent & readonly event) {
+    remote function onFileChange(ftp:WatchEvent & readonly event, ftp:Caller caller) returns error? {
         // `addedFiles` contains the paths of the newly-added files/directories
         // after the last polling was called.
         foreach ftp:FileInfo addedFile in event.addedFiles {
-            log:printInfo("Added file path: " + addedFile.path);
+            // Reads a file from an FTP server for a given file path.
+            stream<byte[] & readonly, io:Error?> fileStream = check caller->get(addedFile.path);
+
+            // Write the content to a file.
+            check io:fileWriteBlocksFromStream("./local/newLogFile.txt", fileStream);
+            check fileStream.close();
         }
 
         // `deletedFiles` contains the paths of the deleted files/directories
