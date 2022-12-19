@@ -1,4 +1,4 @@
-# SFTP client - Read file
+# SFTP client - Receive file
 
 The `ftp:Client` connects to a given SFTP server, and then sends and receives files as byte streams. An `ftp:Client` with SFTP protocol is created by giving the protocol, host-name and required credentials and the private key. Once connected, `get` method is used to read files as byte streams from the SFTP server. Use this to transfer files from a remote file system to a local file system.
 

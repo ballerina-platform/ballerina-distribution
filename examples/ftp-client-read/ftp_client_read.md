@@ -1,4 +1,4 @@
-# FTP client - Read file
+# FTP client - Receive file
 
 The `ftp:Client` connects to a given FTP server, and then sends and receives files as byte streams. An `ftp:Client` is created by giving the host-name and required credentials. Once connected, `get` method is used to read files as byte streams from the FTP server. Use this to transfer files from a remote file system to a local file system.
 

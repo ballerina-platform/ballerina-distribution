@@ -1,4 +1,4 @@
-# FTP client - Write file
+# FTP client - Send file
 
 The `ftp:Client` connects to a given FTP server, and then sends and receives files as byte streams. An `ftp:Client` is created by giving the host-name and required credentials. Once connected, `put` method is used to write files as byte streams to the FTP server. Use this to transfer files from a local file system to a remote file system.
 
