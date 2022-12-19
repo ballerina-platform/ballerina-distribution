@@ -1,8 +1,6 @@
 # GraphQL service - Record as output object
 
-The Ballerina `graphql` module allows returning `record` types from the `resource` or `remote` methods of the `graphql:Service`. These `record` types are mapped to GraphQL output object types in the GraphQL schema in which the type name and the field names are mapped one-to-one from Ballerina to GraphQL. 
-Use a `record` type to represent a GraphQL output object type only when all fields of that object type do not have any input arguments or the field resolution does not require any complex logic execution. The `record` type is preferred over the `service` object type in this case as it makes the code more concise.
-
+The Ballerina `graphql` module allows returning `record` types from the `resource` or `remote` methods of the `graphql:Service`. These `record` types are mapped to GraphQL output object types in the GraphQL schema in which the type name and the field names are mapped one-to-one from Ballerina to GraphQL. Use a `record` type to represent a GraphQL output object type only when all fields of that object type do not have any input arguments or the field resolution does not require any complex logic execution. The `record` type is preferred over the `service` object type in this case as it makes the code more concise.
 
 ::: code graphql_returning_record_values.bal :::
 
