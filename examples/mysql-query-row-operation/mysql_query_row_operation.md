@@ -1,15 +1,13 @@
 # Database Access - Query with one result
 
-This BBE demonstrates how to use the MySQL client select query row operations. 
-
-This BBE is written in the context of an album microservice.
+The `mysql:Client` allows querying the database for utmost one result with the use of `queryRow` method. This method requires a `sql:ParameterizedQuery`-typed SQL statement as the argument.
 
 > **Tip**: Checkout [`ballerinax/mssql`](https://central.ballerina.io/ballerinax/mssql), [`ballerinax/postgresql`](https://central.ballerina.io/ballerinax/postgresql), [`ballerinax/oracledb`](https://central.ballerina.io/ballerinax/oracledb), [`ballerinax/java.jdbc`](https://central.ballerina.io/ballerinax/java.jdbc) for other supported database clients.
 
 ::: code mysql_query_row.bal :::
 
 ## Prerequisites
-- Refer [`mysql-prerequisite`](https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/mysql-prerequisite/README.md).
+- To set up the database, see the [Database Access Ballerina By Example - Prerequisites](https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-prerequisite).
 
 Run the service.
 

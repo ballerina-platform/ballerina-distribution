@@ -1,6 +1,6 @@
 import ballerina/graphql;
 
-// Define a record type to use as an object in the GraphQL service.
+// Define a `record` type to use as an object in the GraphQL service.
 type Profile readonly & record {|
     int id;
     string name;
@@ -14,13 +14,14 @@ table<Profile> key(id) profiles = table [
     ];
 
 service /graphql on new graphql:Listener(9090) {
+    
     // A resource method represents a field in the root `Query` operation.
     resource function get profile(int id) returns Profile {
         return profiles.get(id);
     }
 
-    // A remote method represents a field in the root `Mutation` operation. This remote method will
-    // update the name for the given profile ID, and returns the updated `Profile` value. If the ID
+    // A `remote` method represents a field in the root `Mutation` operation. This `remote` method will
+    // update the name for the given profile ID and returns the updated `Profile` value. If the ID
     // is not found, this will return an error.
     remote function updateName(int id, string name) returns Profile|error {
         if profiles.hasKey(id) {

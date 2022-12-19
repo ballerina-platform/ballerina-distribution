@@ -18,6 +18,7 @@ enum Gender {
 }
 
 service /graphql on new graphql:Listener(9090) {
+    
     // Marking a field as deprecated.
     # # Deprecated
     # The `profile` field is deprecated. Use `profile` instead.

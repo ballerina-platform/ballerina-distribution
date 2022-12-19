@@ -4,7 +4,7 @@ The `grpc:Client` allows sending headers and receiving headers to/from a gRPC se
 
    ::: code grpc_simple_with_headers_service_client.bal :::
 
-Setting up the client is the same as setting up the unary RPC client with input and output parameter change. You can refer to the [gRPC client - Simple RPC](/learn/by-example/grpc-client-simple/) to implement the client used here.
+Setting up the client is the same as setting up the simple RPC client with input and output parameter change. For information on implementing the client, see [gRPC client - Simple RPC](/learn/by-example/grpc-client-simple/).
 
 ## Prerequisites
 - Run the gRPC service given in the [gRPC service - Send/Receive headers](/learn/by-example/grpc-service-headers/) example.

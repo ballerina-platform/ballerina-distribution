@@ -1,8 +1,8 @@
 # GraphQL service - Basic authentication file user store
 
-A GraphQL service can be secured with Basic authentication and optionally by enforcing authorization. Then, it validates the Basic authentication token sent in the `Authorization` header against the provided configurations. This reads data from a file, which has a TOML format. This stores the usernames, passwords for authentication, and scopes for authorization.
+The `graphql:Service` can be secured with basic authentication and additionally, scopes can be added to enforce authorization. It validates the basic authentication token sent in the `Authorization` header against the provided configurations in the `Config.toml` file. The file stores the usernames and passwords for the authentication and the scopes for the authorization. To engage authentication set the default values to the `fileUserStoreConfig` field and add the `Config.toml` file next to the service file. To enable authorization, set the scopes to the `scopes` field. Both configurations must be given as part of the `@graphql:ServiceConfig` annotation.
 
-Ballerina uses the concept of scopes for authorization. A resource declared in a service can be bound to one/more scope(s). In the authorization phase, the scopes of the service are compared against the scope included in the user store for at least one match between the two sets. The `Config.toml` file is used to store the usernames, passwords, and scopes. Each user can have a password and optionally assigned scopes as an array.
+A `graphql:Error` response is sent to the client when the authentication or authorization fails. Use this to authenticate and authorize requests based on user stores.
 
 ::: code graphql_service_basic_auth_file_user_store.bal :::
 
@@ -19,5 +19,5 @@ Run the service by executing the command below.
 ## Related links
 - [`graphql:ServiceConfig` annotation - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/annotations#ServiceConfig)
 - [`graphql:FileUserStoreConfigWithScopes` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/records/FileUserStoreConfigWithScopes)
-- [`auth` package - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)
+- [`auth` module - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)
 - [GraphQL service basic authentication - file user store - Specification](/spec/graphql/#11111-basic-authentication---file-user-store)

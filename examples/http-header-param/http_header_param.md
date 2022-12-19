@@ -15,5 +15,5 @@ Invoke the service by executing the following cURL command in a new terminal.
 >**Tip:** You can invoke the above service via the client given in the [HTTP client - Header parameter](/learn/by-example/http-client-header-parameter/) example.
 
 ## Related links
-- [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`http` module - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
 - [HTTP service header parameter - Specification](/spec/http/#2345-header-parameter)

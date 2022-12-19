@@ -1,8 +1,11 @@
 # HTTP service - Redirects
 
-The HTTP service provides redirection through `redirect()` method of `http:Caller`. The response contains the specified status code and the `Location` header.
+The `http:Request` is redirected by sending a redirect response with the `Location` header by the `http:Service`. This is done by invoking the `redirect` method of `http:Caller` which results in the response containing the specified status code and the `Location` header.
 
 ::: code http_service_redirects.bal :::
+
+## Prerequisites
+- Run the HTTP service given in the [REST service - Path parameter](/learn/by-example/http-path-param/) example.
 
 Run the service as follows.
 
