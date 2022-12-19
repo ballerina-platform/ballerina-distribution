@@ -7,7 +7,7 @@ The `ftp:Service` connects to a given SFTP server via the `ftp:Listener`. A `ftp
 ## Prerequisites
 - Start a [SFTP server](https://hub.docker.com/r/atmoz/sftp/) instance.
 
-Run the program by executing the following command. Paths of the newly-added and newly-deleted files/directories during the latest polling will be printed for each of the polled events.
+Run the program by executing the following command. Each newly added file in the SFTP server will be saved in the local file system.
 
 ::: out sftp_service_receive_file.out :::
 

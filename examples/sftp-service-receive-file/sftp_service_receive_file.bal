@@ -35,7 +35,7 @@ service on fileListener {
             stream<byte[] & readonly, io:Error?> fileStream = check caller->get(addedFile.path);
 
             // Write the content to a file.
-            check io:fileWriteBlocksFromStream("./local/newLogFile.txt", fileStream);
+            check io:fileWriteBlocksFromStream(string `./local/${addedFile.name}`, fileStream);
             check fileStream.close();
         }
     }
