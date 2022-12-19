@@ -14,6 +14,7 @@ table<Profile> key(id) profiles = table [
     ];
 
 service /graphql on new graphql:Listener(9090) {
+    
     // A resource method represents a field in the root `Query` operation.
     resource function get profile(int id) returns Profile {
         return profiles.get(id);
