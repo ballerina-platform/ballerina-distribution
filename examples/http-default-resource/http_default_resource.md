@@ -1,6 +1,6 @@
 # HTTP service - Default resource
 
-The default resource slightly varies from the usual resource function as it uses `rest parameters` as the `resource path` and the `default` identifier as the `resource accessor`. The `rest parameters` allow any of the URL paths to be matched, and it supports `string`, `int`, `float`, `boolean`, and `decimal` as types. The `default` identifier also allows any HTTP methods to be dispatched to the resource function. Use it when designing REST API to handle proxy services or as a default location to get dispatched if none of the other resources are matched.
+The default resource slightly varies from the usual resource function as it uses `rest parameters` as the `resource path` and the `default` identifier as the `resource accessor`. The `rest parameters` allow any of the URL paths to be matched, and it supports `string`, `int`, `float`, `boolean`, and `decimal` as types. The `default` identifier also allows any HTTP methods to be dispatched to the resource function. Use it when designing a REST API to handle proxy services or as a default location to get dispatched if none of the other resources are matched.
 
 ::: code http_default_resource.bal :::
 

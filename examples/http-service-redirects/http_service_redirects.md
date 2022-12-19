@@ -1,6 +1,6 @@
 # HTTP service - Redirects
 
-The `http:Request` is redirected by sending a redirect response with the `Location` header by the `http:Service`. It is done by invoking the `redirect` method of `http:Caller` which results in the response containing the specified status code and the `Location` header.
+The `http:Request` is redirected by sending a redirect response with the `Location` header by the `http:Service`. This is done by invoking the `redirect` method of `http:Caller` which results in the response containing the specified status code and the `Location` header.
 
 ::: code http_service_redirects.bal :::
 
