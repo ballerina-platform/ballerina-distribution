@@ -19,7 +19,7 @@ function matchCommand(string[] commands) {
         // matches with the constant `remove` and the remaining value are matched with
         // the rest binding pattern `...files`.
         [remove, ...var files] => {
-            io:println("Remove files: ", ...files);
+            io:println("Remove files: ", files);
         }
         [var command, var file] => {
             io:println(command, ": ", file);
