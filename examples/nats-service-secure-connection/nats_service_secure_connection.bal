@@ -19,6 +19,7 @@ listener nats:Listener securedEP = new(nats:DEFAULT_URL,
 
 // Binds the consumer to listen to the messages published to the 'orders.valid' subject.
 service "orders.valid" on securedEP {
+
     remote function onMessage(Order 'order) returns error? {
         if 'order.isValid {
             log:printInfo(string `Received valid order for ${'order.productName}`);
