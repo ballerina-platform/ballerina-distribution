@@ -1,6 +1,6 @@
 # WebSub service - Consume github events
 
-GitHub webhooks provide the capability to receive notifications based on the events in a GitHub repository. The Ballerina `websub` module can define websub-compliant webhooks which are used to receive notifications from any websub-compliant `hub` implementation. Specify the GitHub pubsubhub API URL and the relevant event URL as the `target` parameter in `@websub:SubscriberServiceConfig` annotation. Start the `websub:SubscriberService` to receive event notifications.
+GitHub webhooks provide the capability to receive notifications based on the events in a GitHub repository. The Ballerina `websub` module can be used to define websub-compliant webhooks which are used to receive notifications from any websub-compliant `hub` implementation. Specify the GitHub pubsubhub API URL and the relevant event URL as the `target` parameter in `@websub:SubscriberServiceConfig` annotation. Start the `websub:SubscriberService` to receive event notifications.
 
 ::: code websub_webhook_sample.bal :::
 
