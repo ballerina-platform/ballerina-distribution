@@ -1,6 +1,6 @@
 # Email service - Receive email
 
-The email service is used to receive (with POP3 or IMAP4) emails using the SSL or STARTTLS protocols. This sample includes receiving emails service attached to a POP3 listener with default configurations over SSL using the default ports. To use IMAP4 the user can use `IMAP listener`.
+The `email:Service` allows reading data from an email server. An email server supports either POP3 or IMAP4 as mail access protocols. Hence an `email:Service` can be attached to either an `email:PopListener` or an `email:ImapListener` to retrieve data from the server. 
 
 ::: code receive_email_using_service.bal :::
 
@@ -13,5 +13,5 @@ Run the email service by executing the following command.
 
 ## Related links
 - [`email:PopListener` listener object - API documentation](https://lib.ballerina.io/ballerina/email/latest/classes/PopListener)
-- [`email:PopListener` listener object - API documentation](https://lib.ballerina.io/ballerina/email/latest/classes/ImapListener)
-- [`email` service - Specification](https://ballerina.io/spec/email/#4-service)
+- [`email:ImapListener` listener object - API documentation](https://lib.ballerina.io/ballerina/email/latest/classes/ImapListener)
+- [Email service - Specification](https://ballerina.io/spec/email/#4-service)
