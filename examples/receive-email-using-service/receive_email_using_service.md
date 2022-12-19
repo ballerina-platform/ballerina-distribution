@@ -1,6 +1,6 @@
 # Email service - Receive email
 
-The `email:Service` allows reading data from an email server. An email server supports either POP3 or IMAP4 as mail access protocols. Hence an `email:Service` can be attached to either an `email:PopListener` or an `email:ImapListener` to retrieve data from the server. 
+An email server supports either POP3 or IMAP as mail access protocol. The `email:Service` allows reading data from an email server that supports either protocol. Configure either an `email:PopListener` or an `email:ImapListener` and attach the `email:Service` to retrieve data from the server. 
 
 ::: code receive_email_using_service.bal :::
 
