@@ -5,7 +5,7 @@ The `http:Client` can connect to a service that is secured with bearer token aut
 ::: code http_client_bearer_token_authentication.bal :::
 
 ## Prerequisites
- - Run a sample secured service with bearer token authentication.
+- Run a sample secured service with bearer token authentication.
 
 Run the client program by executing the command below.
 
