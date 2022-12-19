@@ -1,6 +1,6 @@
 import ballerina/graphql;
 
-// Define a service class to use as an object in the GraphQL service.
+// Defines a service class to use as an object in the GraphQL service.
 service class Profile {
     private final string name;
     private final int age;

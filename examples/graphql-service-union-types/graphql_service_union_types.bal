@@ -1,11 +1,10 @@
 import ballerina/graphql;
 
-// Define the `SearchResult` union type that includes the `Profile` and the `Address` types.
+// Defines the `SearchResult` union type that includes the `Profile` and the `Address` types.
 type SearchResult Profile|Address;
 
-// Define the `Profile` class to represent the `Profile` object.
+// Defines the `Profile` class to represent the `Profile` object.
 distinct service class Profile {
-
     private final string name;
     private final int age;
 
@@ -14,7 +13,7 @@ distinct service class Profile {
         self.age = age;
     }
 
-    // Define the fields of the `Profile` object.
+    // Defines the fields of the `Profile` object.
     resource function get name() returns string {
         return self.name;
     }
@@ -24,9 +23,8 @@ distinct service class Profile {
     }
 }
 
-// Define the `Address` class to represent the `Address` object.
+// Defines the `Address` class to represent the `Address` object.
 distinct service class Address {
-
     private final int number;
     private final string street;
     private final string city;
