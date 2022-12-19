@@ -9,7 +9,6 @@ type Student record {
 };
 
 public function main() returns error? {
-
     // Assign the value to the variable.
     Student studentValue = {
         id: 7894,
