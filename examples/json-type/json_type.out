@@ -1,3 +1,7 @@
 $ bal run json_type.bal
-{"x":1, "y":2}
-{"x":1,"y":2}
+{"x":null,"y":"str","z":[1,2]}
+[{"x":null,"y":"str","z":[1,2]},{"x":21}]
+{"id":2,"name":"Georgy"}
+Georgy
+2
+{"id":2,"name":"Georgy"}
