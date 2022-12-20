@@ -19,6 +19,7 @@ listener ftp:Listener fileListener = check new ({
 // One or many services can listen to the FTP listener for the periodically-polled
 // file related events.
 service on fileListener {
+
     // When a file event is successfully received, the `onFileChange` method is called.
     remote function onFileChange(ftp:WatchEvent & readonly event, ftp:Caller caller) returns error? {
         foreach ftp:FileInfo addedFile in event.addedFiles {

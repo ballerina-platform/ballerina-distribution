@@ -25,14 +25,17 @@ listener ftp:Listener fileListener = check new ({
 // One or many services can listen to the SFTP listener for the
 // periodically-polled file related events.
 service on fileListener {
+
     // When a file event is successfully received, the `onFileChange` method is called.
-    remote function onFileChange(ftp:WatchEvent event, ftp:Caller caller) returns error? {
+    remote function onFileChange(ftp:WatchEvent & readonly event, ftp:Caller caller) returns error? {
         // `addedFiles` contains the paths of the newly-added files/directories
         // after the last polling was called.
         foreach ftp:FileInfo addedFile in event.addedFiles {
-            // The `ftp:Caller` can be used to append another file to the added files in the server.
-            stream<io:Block, io:Error?> fileStream = check io:fileReadBlocksAsStream("./local/appendFile.txt", 7);
-            check caller->append(addedFile.path, fileStream);
+            // Get the newly added file from the SFTP server as a `byte[]` stream.
+            stream<byte[] & readonly, io:Error?> fileStream = check caller->get(addedFile.path);
+
+            // Write the content to a file.
+            check io:fileWriteBlocksFromStream(string `./local/${addedFile.name}`, fileStream);
             check fileStream.close();
         }
     }
