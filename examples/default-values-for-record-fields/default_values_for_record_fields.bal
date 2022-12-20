@@ -1,23 +1,29 @@
 import ballerina/io;
 
-type Employee record {|
-    string company = "WS02";
+type Student record {|
     string name;
-    string department;
+    int age;
+    // Specifies a default value for `code`.
+    string code = "Admitted";
 |};
 
-type ContractEmployee record {|
-    *Employee;
-    int duration;
+type PartTimeStudent record {|
+    *Student;
+    int studyHours;
 |};
 
 public function main() returns error? {
-    // Calling the `value:cloneWithType()` function with `Employee` will make use of default values
-    // in `Employee`.
-    json j = {name: "John", department: "IT"};
-    io:println(check j.cloneWithType(Employee));
+    // Creates a `Student` record without explicitly specifying a value for the `code` field.
+    Student s1 = {name: "Anne", age: 23};
+    io:println(s1);
 
-    // `*Employee` copies the default values.
-    ContractEmployee emp = {name: "Anne", department: "HR", duration: 12};
-    io:println(emp);
+    json j = {name: "Anne", age: 23};
+    // Calling the `value:cloneWithType()` function with `Student` will make use of default values
+    // in `Student`.
+    Student s2 = check j.cloneWithType(Student);
+    io:println(s2);
+
+    // `*Student` copies the default values.
+    PartTimeStudent s3 = {name: "Anne", age: 23, studyHours: 6};
+    io:println(s3);
 }
