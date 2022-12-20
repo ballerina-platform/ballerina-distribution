@@ -1,2 +1,2 @@
 $ bal run graphql_client_error_handling.bal
-InvalidDocumentError: [{"message":"String cannot represent non String value: 1","locations":[{"line":1,"column":29}]}]
+InvalidDocumentError: [{"message":"String cannot represent non String value: 1","locations":[{"line":1,"column":29}]},{"message":"Field "updateName" argument "id" of type "Int!" is required, but it was not provided.","locations":[{"line":1,"column":12}]}]

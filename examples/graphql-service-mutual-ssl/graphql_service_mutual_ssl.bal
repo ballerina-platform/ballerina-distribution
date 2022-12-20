@@ -6,10 +6,8 @@ type Profile record {|
     int age;
 |};
 
-// An GraphQL listener can be configured to accept new connections that are
-// secured via mutual SSL.
-// The `graphql:ListenerSecureSocket` record provides the SSL-related listener configurations.
-listener graphql:Listener securedEP = new (9090,
+// A GraphQL listener can be configured to accept new connections that are secured via mutual SSL.
+listener graphql:Listener securedEP = new(9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -24,6 +22,7 @@ listener graphql:Listener securedEP = new (9090,
 );
 
 service /graphql on securedEP {
+    
     resource function get profile() returns Profile {
         return {
             name: "Walter White",

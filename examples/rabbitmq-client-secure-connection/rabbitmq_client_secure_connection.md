@@ -1,6 +1,6 @@
 # RabbitMQ client - SSL/TLS
 
-The underlying connection of the producer is secured with TLS/SSL.
+The `rabbitmq:Client` can be configured to connect to the server via SSL/TLS by providing a certificate file. The certificate can be provided through the `secureSocket` field of the `rabbitmq:ConnectionConfiguration`. Use this to secure the communication between the client and the server.
 
 ::: code rabbitmq_client_secure_connection.bal :::
 
@@ -9,7 +9,11 @@ The underlying connection of the producer is secured with TLS/SSL.
 
 Run the client program by executing the following command.
 
-::: out rabbitmq_client_secure_connection.out :::
+::: out rabbitmq_client_secure_connection.server.out :::
+
+Invoke the service by executing the following cURL command in a new terminal.
+
+::: out rabbitmq_client_secure_connection.client.out :::
 
 ## Related links
 - [`rabbitmq:SecureSocket` - API documentation](https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/SecureSocket)

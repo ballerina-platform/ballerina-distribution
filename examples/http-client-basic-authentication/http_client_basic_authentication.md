@@ -1,6 +1,6 @@
 # HTTP client - Basic authentication
 
-A client, which is secured with basic authentication can be used to connect to a secured service. The client is enriched with the `Authorization: Basic <token>` header by passing the `http:CredentialsConfig` for the `auth` configuration of the client.
+The `http:Client` can connect to a service that is secured with basic authentication by adding the `Authorization: Basic <token>` header to each request. The username and password for basic authentication can be specified in the `auth` field of the client configuration.
 
 ::: code http_client_basic_authentication.bal :::
 
@@ -13,5 +13,5 @@ Run the client program by executing the command below.
 
 ## Related links
 - [`http:CredentialsConfig` - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/CredentialsConfig)
-- [`auth` package - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)
+- [`auth` module - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)
 - [HTTP client basic authentication - Specification](/spec/http/#9115-client---basic-auth)

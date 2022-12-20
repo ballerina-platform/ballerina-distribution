@@ -1,6 +1,6 @@
 import ballerina/graphql;
 
-// Define a service class to use as an object in the GraphQL service.
+// Defines a service class to use as an object in the GraphQL service.
 service class Profile {
     private final string name;
     private final int age;
@@ -24,10 +24,10 @@ service class Profile {
 
 service /graphql on new graphql:Listener(9090) {
 
-    // This resolver returns a service type, which will be mapped to a GraphQL `OBJECT` type named
-    // `Profile`. Each resource method in the service type is mapped to a field in the `OBJECT`
-    // type.
+    // This resolver returns a service type, which will be mapped to a GraphQL output object type
+    // named `Profile`. Each resource method in the service type is mapped to a field in the GraphQL
+    // output object type.
     resource function get profile() returns Profile {
-        return new ("Walter White", 51);
+        return new("Walter White", 51);
     }
 }

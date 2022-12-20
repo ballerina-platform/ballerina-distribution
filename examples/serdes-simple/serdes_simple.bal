@@ -9,7 +9,6 @@ type Student record {
 };
 
 public function main() returns error? {
-
     // Assign the value to the variable.
     Student studentValue = {
         id: 7894,
@@ -19,7 +18,7 @@ public function main() returns error? {
 
     // Create a serialization object by passing the typedesc.
     // This creates an underlying protocol buffer schema for the typedesc.
-    serdes:Proto3Schema serdes = check new (Student);
+    serdes:Proto3Schema serdes = check new(Student);
 
     // Serialize the record value to bytes.
     byte[] serializedValue = check serdes.serialize(studentValue);

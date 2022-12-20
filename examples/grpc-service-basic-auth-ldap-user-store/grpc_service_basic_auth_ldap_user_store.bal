@@ -1,6 +1,6 @@
 import ballerina/grpc;
 
-listener grpc:Listener securedEP = new(9090,
+listener grpc:Listener securedEP = new (9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -9,12 +9,9 @@ listener grpc:Listener securedEP = new(9090,
     }
 );
 
-// The service can be secured with Basic Auth and can be authorized optionally.
-// Basic Auth using the LDAP user store can be enabled by setting the
-// `grpc:LdapUserStoreConfig` configurations.
-// Authorization is based on scopes. A scope maps to one or more groups.
-// Authorization can be enabled by setting the `string|string[]` type configurations
-// for `scopes` field.
+// Basic authentication with the LDAP user store can be enabled by setting
+// the `grpc:LdapUserStoreConfig` configuration.
+// Authorization is based on scopes, which can be specified in the `scopes` field.
 @grpc:ServiceConfig {
     auth: [
         {
@@ -47,6 +44,7 @@ listener grpc:Listener securedEP = new(9090,
     value: GRPC_SIMPLE_DESC
 }
 service "HelloWorld" on securedEP {
+
     remote function hello(string request) returns string {
         return "Hello " + request;
     }

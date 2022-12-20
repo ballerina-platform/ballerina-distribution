@@ -1,6 +1,5 @@
 import ballerina/http;
 
-// The `absolute resource path` can be omitted. Then, it defaults to `/`.
 service on new http:Listener(9090) {
 
     // The `default` accessor can be used to match with all methods including the standard HTTP methods
