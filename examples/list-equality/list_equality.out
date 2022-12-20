@@ -1,0 +1,7 @@
+$ bal run list_equality.bal
+true
+true
+true
+true
+true
+true

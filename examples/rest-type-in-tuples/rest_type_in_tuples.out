@@ -1,3 +1,6 @@
 $ bal run rest_type_in_tuples.bal
-["John","Michal","Carl"]
-0026
+["John",55,43,65,65]
+["Amy"]
+[]
+[23,53]
+[23,53,43]
