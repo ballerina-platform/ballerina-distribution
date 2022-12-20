@@ -11,7 +11,7 @@ public type Order record {
     boolean isValid;
 };
 
-listener kafka:Listener orderListener = check new (kafka:DEFAULT_URL, {
+listener kafka:Listener orderListener = new (kafka:DEFAULT_URL, {
     groupId: "order-group-id",
     topics: "order-topic"
 });
