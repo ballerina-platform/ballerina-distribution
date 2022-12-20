@@ -15,7 +15,7 @@ Run the service by executing the command below.
 
 ::: out http_service_basic_authentication_file_user_store.server.out :::
 
->**Tip:** You can invoke the above service via the [Basic authentication client](/learn/by-example/http-client-basic-authentication).
+>**Tip:** You can invoke the above service via the [Basic authentication client](/learn/by-example/http-client-basic-authentication) example.
 
 ## Related links
 - [`http:FileUserStoreConfig` record - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/FileUserStoreConfig)

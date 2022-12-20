@@ -12,7 +12,7 @@ Invoke the service by executing the cURL command below.
 
 ::: out http_service_ssl_tls.client.out :::
 
->**Tip:** You can invoke the above service via the [SSL/TLS client](/learn/by-example/http-client-ssl-tls/).
+>**Tip:** You can invoke the above service via the [SSL/TLS client](/learn/by-example/http-client-ssl-tls/) example.
 
 ## Related links
 - [`http:ListenerSecureSocket` record - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket)
