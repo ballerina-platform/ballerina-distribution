@@ -1,12 +1,12 @@
 import ballerina/websocket;
 
-listener websocket:Listener chatListener = new(9090,
+listener websocket:Listener chatListener = new (9090,
     secureSocket = {
-        key: {
-            certFile: "../resource/path/to/public.crt",
-            keyFile: "../resource/path/to/private.key"
-        }
+    key: {
+        certFile: "../resource/path/to/public.crt",
+        keyFile: "../resource/path/to/private.key"
     }
+}
 );
 
 // The service can be secured with Basic authentication and can be authorized optionally.
@@ -46,7 +46,7 @@ listener websocket:Listener chatListener = new(9090,
 service /chat on chatListener {
     resource function get .() returns websocket:Service {
         return new ChatService();
-   }
+    }
 }
 
 service class ChatService {
