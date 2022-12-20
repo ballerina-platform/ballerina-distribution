@@ -1,3 +1,6 @@
 $ bal run converting_to_user_defined_type.bal
 1.0
 1.0
+{"book":"<book> The Treasure Island </book>","price":200.0}
+{"book":`<book> The Treasure Island </book>`,"price":200.0}
+{ballerina/lang.value}ConversionError

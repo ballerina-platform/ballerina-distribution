@@ -1,18 +1,21 @@
 import ballerina/http;
 
 type Args record {|
-    decimal x;
-    decimal y;
+   decimal x;
+   decimal y;
 |};
 
-listener http:Listener h = new (9090);
+type Response record {|
+    decimal result;
+|};
 
-service /calc on h {
-    // Resource method arguments can use user-defined types.
-    // Annotations can be used to refine the mapping between the Ballerina-declared
-    // type and wire format.
-    resource function post add(@http:Payload Args args) 
-            returns decimal {
-        return args.x + args.y;
-    }
+listener http:Listener ln = new (9090);
+
+service /calc on ln {
+   // Resource method arguments can use user-defined types.
+   // Annotations can be used to refine the mapping between the Ballerina-declared
+   // type and wire format.
+   resource function post add(@http:Payload Args args) returns Response {
+      return {result: args.x + args.y};
+   }
 }
