@@ -28,6 +28,6 @@ service /graphql on new graphql:Listener(9090) {
     // named `Profile`. Each resource method in the service type is mapped to a field in the GraphQL
     // output object type.
     resource function get profile() returns Profile {
-        return new("Walter White", 51);
+        return new ("Walter White", 51);
     }
 }
