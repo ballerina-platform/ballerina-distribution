@@ -4,19 +4,16 @@ The `http:Request` is redirected by sending a redirect response with the `Locati
 
 ::: code http_service_redirects.bal :::
 
-## Prerequisites
-- Run the HTTP service given in the [REST service - Path parameter](/learn/by-example/http-path-param/) example.
-
 Run the service as follows.
 
 ::: out http_service_redirects.server.out :::
 
 Invoke the service by executing the following cURL command in a new terminal.
 
->**Tip:** You may invoke the service via [Redirect client](../http-client-redirects/).
+>**Tip:** You may invoke the service via [Redirect client](../http-client-redirects/) example.
 
 ::: out http_service_redirects.client.out :::
 
 ## Related links
-- [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`http` module - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
 - [HTTP service caller - specification](/spec/http/#2341-httpcaller)

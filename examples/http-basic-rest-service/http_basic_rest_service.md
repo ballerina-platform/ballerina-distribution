@@ -16,7 +16,7 @@ Invoke the HTTP POST resource by executing the following cURL command in a new t
 
 ::: out http_basic_rest_service.client.2.out :::
 
->**Tip:** You can invoke the above service via the [Send request/Receive response client](/learn/by-example/http-client-send-request-receive-response/).
+>**Tip:** You can invoke the above service via the [Send request/Receive response client](/learn/by-example/http-client-send-request-receive-response/) example.
 
 ## Related links
 - [`http` module - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
