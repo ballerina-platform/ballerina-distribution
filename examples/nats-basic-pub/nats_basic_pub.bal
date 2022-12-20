@@ -8,13 +8,18 @@ type Order readonly & record {
     boolean isValid;
 };
 
-// Initializes a NATS client.
-final nats:Client orderClient = check new (nats:DEFAULT_URL);
-
 service / on new http:Listener(9092) {
+    private final nats:Client orderClient;
+
+    function init() returns error? {
+        // Initiate the NATS client at the start of the service. This will be used
+        // throughout the lifetime of the service.
+        self.orderClient = check new (nats:DEFAULT_URL);
+    }
+
     resource function post orders(@http:Payload Order newOrder) returns http:Accepted|error {
         // Produces a message to the specified subject.
-        check orderClient->publishMessage({
+        check self.orderClient->publishMessage({
             content: newOrder,
             subject: "orders.valid"
         });

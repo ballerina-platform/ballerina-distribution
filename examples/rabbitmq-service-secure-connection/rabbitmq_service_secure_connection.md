@@ -1,6 +1,6 @@
 # RabbitMQ service - SSL/TLS
 
-The `rabbitmq:Listener` can be configured to communicate through HTTPS by providing a certificate file. The certificate can be provided through the `secureSocket` field of the connection configuration. Use this to secure the communication between the client and the server.
+The `rabbitmq:Listener` can be configured to connect to the server via SSL/TLS by providing a certificate file. The certificate can be provided through the `secureSocket` field of the connection configuration. Use this to secure the communication between the client and the server.
 
 ::: code rabbitmq_service_secure_connection.bal :::
 
