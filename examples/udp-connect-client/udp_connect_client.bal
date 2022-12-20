@@ -3,7 +3,6 @@ import ballerina/io;
 import ballerina/udp;
 
 public function main() returns error? {
-
     // Creates a new connection-oriented UDP client by providing the
     // `remoteHost` and the `remotePort`.
     // Optionally, you can provide the interface that the socket needs to bind

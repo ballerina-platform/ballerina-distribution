@@ -2,7 +2,6 @@ import ballerina/io;
 import ballerina/udp;
 
 public function main() returns error? {
-
     // Creates a new connectionless UDP client.
     // Optionally, you can provide the address that the socket needs to bind
     // and the timeout in seconds, which specifies the read timeout value.
