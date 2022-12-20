@@ -2,11 +2,11 @@ import ballerina/websocket;
 
 listener websocket:Listener chatListener = new (9090,
     secureSocket = {
-    key: {
-        certFile: "../resource/path/to/public.crt",
-        keyFile: "../resource/path/to/private.key"
+        key: {
+            certFile: "../resource/path/to/public.crt",
+            keyFile: "../resource/path/to/private.key"
+        }
     }
-}
 );
 
 // The service can be secured with OAuth2 and by enforcing authorization
