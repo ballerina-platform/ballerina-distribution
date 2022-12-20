@@ -344,6 +344,13 @@
                 "isLearnByExample": true
             },
             {
+                "name": "Nested arrays",
+                "url": "nested-arrays",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
                 "name": "Tuples",
                 "url": "tuples",
                 "verifyBuild": true,
@@ -351,15 +358,29 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Destructure tuples",
-                "url": "destructure-tuples",
+                "name": "Rest type in tuples",
+                "url": "rest-type-in-tuples",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Rest type in tuples",
-                "url": "rest-type-in-tuples",
+                "name": "Filler values of a list",
+                "url": "filler-values-of-a-list",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "List subtyping",
+                "url": "list-subtyping",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "List equality",
+                "url": "list-equality",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
