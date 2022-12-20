@@ -14,7 +14,7 @@ type Profile record {|
 
 public function main() returns error? {
     // Defines the GraphQL client to call the APIs secured with basic authentication.
-    graphql:Client graphqlClient = check new("localhost:9090/graphql",
+    graphql:Client graphqlClient = check new ("localhost:9090/graphql",
         auth = {
             username: "ldclakmal",
             password: "ldclakmal@123"
