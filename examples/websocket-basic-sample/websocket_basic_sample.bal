@@ -3,10 +3,10 @@ import ballerina/websocket;
 
 service /chat on new websocket:Listener(9090) {
 
-   resource function get .() returns websocket:Service {
-       // Accept the WebSocket upgrade by returning a `websocket:Service`.
-       return new ChatService();
-   }
+    resource function get .() returns websocket:Service|websocket:Error {
+        // Accept the WebSocket upgrade by returning a `websocket:Service`.
+        return new ChatService();
+    }
 }
 
 service class ChatService {
