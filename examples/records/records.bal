@@ -1,27 +1,50 @@
 import ballerina/io;
 
-// Defines a `record` type named `Coord`.
-type Coord record {
-    int x;
-    string y;
+// Defines a `closed record` type named `Student`. It only allows fields that are specified.
+type Student record {|
+    string name;
+    int age;
+|};
+
+// Defines an `open record` type named `Person`. It allows fields other than those specified.
+type Person record {
+    string name;
+    int age;
 };
 
 public function main() {
-    // Creates a `record`, specifying values for its fields.
-    record { int x; string y; } r = {
-        x: 1,
-        y: "2"
+    // Creates an `open record` by specifying values for its fields.
+    record {string name; int age;} stu = {
+        name: "Harry",
+        age: 12
     };
 
-    // Creates a `Coord` record.
-    Coord c = {
-        x: 1,
-        y: "2"
+    // Accesses the `name` field in `stu`.
+    string name = stu.name;
+    io:println(name);
+
+    // Creates a record using the type definition `Student`.
+    Student student = {
+        name: "Harry",
+        age: 12
     };
 
-    string a = r.y;
-    io:println(a);
+    // Accesses the `age` field in `student`.
+    int age = student.age;
+    io:println(age);
 
-    int b = c.x;
-    io:println(b);
+    // Creates a record using the type definition `Person` with an additional `country` field.
+    Person person = {
+        name: "Harry",
+        age: 12,
+        "country": "UK"
+    };
+
+    // The two records `stu` & `student` are equal since they have the same set of fields 
+    // and values.
+    io:println(stu == student);
+
+    // Record equality returns `false` on the following two records since `person` has 
+    // an additional field called `country`.
+    io:println(stu == person);
 }
