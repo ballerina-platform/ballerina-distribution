@@ -14,11 +14,9 @@ listener http:Listener securedEP = new(9090,
     }
 );
 
-// The service can be secured with Basic Auth and can be authorized  optionally.
-// Basic Auth using the LDAP user store can be enabled by setting the `http:LdapUserStoreConfig` configurations.
-// Authorization is based on scopes. A scope maps to one or more groups.
-// Authorization can be enabled by setting the `string|string[]` type
-// configurations for `scopes` field.
+// Basic authentication with the LDAP user store can be enabled by setting 
+// the `http:LdapUserStoreConfig` configuration.
+// Authorization is based on scopes, which can be specified in the `scopes` field.
 @http:ServiceConfig {
     auth: [
         {
@@ -49,9 +47,9 @@ listener http:Listener securedEP = new(9090,
 }
 service / on securedEP {
 
-    // It is optional to override the authentication and authorization
-    // configurations at the resource levels. Otherwise, the service auth
-    // configurations will be applied automatically to the resources as well.
+    // The authentication and authorization configurations can be overwritten at 
+    // the resource level. Otherwise, the service-level configurations will be 
+    // applied automatically to the resource.
     resource function get albums() returns Album[] {
         return [
             {title: "Blue Train", artist: "John Coltrane"},

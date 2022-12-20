@@ -13,7 +13,7 @@ type Profile record {|
 
 public function main() returns error? {
     do {
-        graphql:Client graphqlClient = check new ("localhost:9090/graphql");
+        graphql:Client graphqlClient = check new("localhost:9090/graphql");
         // This is a malformed GraphQL document.
         string document = "mutation { updateName(name: 1) { name, age } }";
         ProfileResponse response = check graphqlClient->execute(document);
@@ -32,12 +32,12 @@ function handleErrors(graphql:ClientError clientError) {
     } else if clientError is graphql:InvalidDocumentError {
         // This error represents GraphQL errors due to GraphQL server-side document 
         // validation. The GraphQL errors returned from the server-side can be obtained by 
-        // calling the `detail()` method on `graphql:InvalidDocumentError`.
+        // calling the `detail` method on the `graphql:InvalidDocumentError`.
         graphql:ErrorDetail[]? errorDetails = clientError.detail().errors;
         io:println("InvalidDocumentError: ", errorDetails);
     } else if clientError is graphql:HttpError {
         // This error represents network-level errors. If the response from the server contains 
-        // a body then, it can be obtained by calling the `detail()` method on `graphql:HttpError`.
+        // a body then, it can be obtained by calling the `detail` method on the `graphql:HttpError`.
         anydata body = clientError.detail().body;
         io:println("HttpError: ", body, clientError.message());
     }

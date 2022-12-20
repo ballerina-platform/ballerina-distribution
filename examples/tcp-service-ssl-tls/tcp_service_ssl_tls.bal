@@ -16,6 +16,7 @@ listener tcp:Listener securedEP = new(9090,
 );
 
 service "tcp" on securedEP {
+
      remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService {
         io:println("Client connected on server port: ", caller.remotePort);
         return new EchoService();
