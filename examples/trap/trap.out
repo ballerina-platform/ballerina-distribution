@@ -1,0 +1,3 @@
+$ bal run check_expression.bal
+error("division by 0")
+error("panic")

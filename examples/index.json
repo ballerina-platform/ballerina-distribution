@@ -568,6 +568,13 @@
                 "isLearnByExample": true
             },
             {
+                "name": "Trap",
+                "url": "trap",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
                 "name": "Type intersection for error types",
                 "url": "error-type-intersection",
                 "verifyBuild": true,

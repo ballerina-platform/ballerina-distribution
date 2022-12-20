@@ -1,18 +1,23 @@
 import ballerina/io;
 
-// Convert `bytes` to a `string` value and then to an `int` value.
-function intFromBytes(byte[] bytes) returns int|error {
-
-    // Use `check` with an expression that may return `error`.
-    // If `string:fromBytes(bytes)` returns an `error` value, `check`
-    // makes the function return the `error` value here.
-    // If not, the returned `string` value is used as the value of the `str` variable.
-    string str = check string:fromBytes(bytes);
-
-    return int:fromString(str);
+function checkId(int id) returns error? {
+   if id <= 0 {
+       return error("id must be larger than 0");
+   }
 }
 
-public function main() {
-    int|error res = intFromBytes([104, 101, 108, 108, 111]);
-    io:println(res);
+function getNextId(int id) returns int|error {
+   // Check statement can be used when the type of an expression is `error?`
+   // This will return if the result is `error`
+   check checkId(id);
+
+   return id + 1;
+}
+
+public function main() returns error? {
+   // If `getNextId()` returns an `error` value, `check`
+   // makes the function return the `error` value here.
+   int nextId = check getNextId(-1);
+
+   io:println("next ID: ", nextId);
 }
