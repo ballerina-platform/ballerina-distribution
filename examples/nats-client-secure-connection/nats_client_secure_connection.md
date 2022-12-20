@@ -1,6 +1,6 @@
 # NATS client - SSL/TLS
 
-The `nats:Client` can be configured to connect to the server via SSL/TLS by providing a certificate file. The certificate can be provided through the `secureSocket` field of the connection configuration. Use this to secure the communication between the client and the server.
+The `nats:Client` can be configured to connect to the server via SSL/TLS by providing a certificate file. The certificate can be provided through the `secureSocket` field of the `nats:ConnectionConfiguration`. Use this to secure the communication between the client and the server.
 
 ::: code nats_client_secure_connection.bal :::
 
