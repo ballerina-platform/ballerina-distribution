@@ -1,6 +1,6 @@
 # Email client - Send email
 
-The `email:SmtpClient` connects to a given SMTP server, and then sends emails to the server. An `email:SmtpClient` is created by providing host-name and required credentials.  Once connected, `sendMessage` or `send` methods are used to send emails to the server. An `email:Message` record, which contains the required information about the email can be passed to the `sendMessage` method. If additional information is not required, the `send` method can be used only with mandatory parameters such as `to`, `from`, `subject`, and `body`. 
+The `email:SmtpClient` connects to a given SMTP server to send emails. An `email:SmtpClient` is created by providing the hostname and required credentials.  Once connected, the `sendMessage` or the `send` methods are used to send emails. An `email:Message` record, which contains the required information about the email can be passed to the `sendMessage` method. If additional information is not required, the `send` method can be used only with mandatory parameters such as `to`, `from`, `subject`, and `body`.
 
 ::: code send_email.bal :::
 
