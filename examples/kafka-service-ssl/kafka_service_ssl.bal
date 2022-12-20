@@ -8,7 +8,7 @@ public type Order readonly & record {
     boolean isValid;
 };
 
-listener kafka:Listener orderListener = check new ("localhost:9094", {
+listener kafka:Listener orderListener = new ("localhost:9094", {
     groupId: "order-group-id",
     topics: "order-topic",
     // Provide the relevant secure socket configurations by using `kafka:SecureSocket`.

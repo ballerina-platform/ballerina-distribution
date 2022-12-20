@@ -4,7 +4,7 @@ import ballerina/io;
 // Creates the listener with the connection parameters and the protocol-related
 // configuration. The listener listens to the files
 // with the given file name pattern located in the specified path.
-listener ftp:Listener fileListener = check new ({
+listener ftp:Listener fileListener = new ({
     protocol: ftp:SFTP,
     host: "sftp.example.com",
     auth: {
