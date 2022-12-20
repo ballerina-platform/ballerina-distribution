@@ -1,11 +1,13 @@
 # Email client - Receive email
 
-An email server supports either POP3 or IMAP as mail access protocol. The Ballerina `email` module provides support for POP3 and IMAP mail access clients to read data from an email server. Configure either an `email:PopClient` or an `email:ImapClient` and invoke `receiveMessage` client function to retrieve data from the server. 
+The `email:PopClient` can receive emails from an email server via POP3 protocol. An `email:PopClient` is created by providing the hostname, username, and password. Once connected, `receiveMessage` method is used to receive emails from the server. It is a blocking method with a default timeout. 
+
+>**Note:** The Ballerina `email` module also provides an `email:ImapClient` which can be used likewise. The only difference is that the `email:ImapClient` uses IMAP protocol for communication. 
 
 ::: code receive_email_using_client.bal :::
 
 ## Prerequisites
-- Email server should be up and running.
+- The email server should be up and running.
 
 Run the sample code by executing the following command.
 
