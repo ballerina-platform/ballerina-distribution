@@ -1,3 +1,5 @@
 $ bal run records.bal
-2
-1
+Harry
+12
+true
+false
