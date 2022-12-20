@@ -3295,7 +3295,7 @@
         "samples": [
             {
                 "name": "Receive file",
-                "url": "ftp-service-read",
+                "url": "ftp-service-receive-file",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
@@ -3304,7 +3304,7 @@
             },
             {
                 "name": "Send file",
-                "url": "ftp-service-read-write",
+                "url": "ftp-service-send-file",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
@@ -3320,7 +3320,7 @@
         "samples": [
             {
                 "name": "Receive file",
-                "url": "ftp-client-read",
+                "url": "ftp-client-receive-file",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
@@ -3329,7 +3329,7 @@
             },
             {
                 "name": "Send file",
-                "url": "ftp-client-write",
+                "url": "ftp-client-send-file",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
@@ -3345,7 +3345,7 @@
         "samples": [
             {
                 "name": "Receive file",
-                "url": "sftp-service-read",
+                "url": "sftp-service-receive-file",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
@@ -3354,7 +3354,7 @@
             },
             {
                 "name": "Send file",
-                "url": "sftp-service-read-write",
+                "url": "sftp-service-send-file",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
@@ -3370,7 +3370,7 @@
         "samples": [
             {
                 "name": "Receive file",
-                "url": "sftp-client-read",
+                "url": "sftp-client-receive-file",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
@@ -3379,7 +3379,7 @@
             },
             {
                 "name": "Send file",
-                "url": "sftp-client-write",
+                "url": "sftp-client-send-file",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
