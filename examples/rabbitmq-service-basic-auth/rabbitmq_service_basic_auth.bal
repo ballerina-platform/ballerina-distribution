@@ -8,7 +8,7 @@ public type Order record {
     boolean isValid;
 };
 
-listener rabbitmq:Listener securedEP = new(rabbitmq:DEFAULT_HOST, 5671,
+listener rabbitmq:Listener orderListener = new (rabbitmq:DEFAULT_HOST, 5671,
     // Provide the credentials to secure the listener connections using username/password authentication.
     // with the `rabbitmq:Credentials` record.
     auth = {
@@ -18,7 +18,7 @@ listener rabbitmq:Listener securedEP = new(rabbitmq:DEFAULT_HOST, 5671,
 );
 
 // The consumer service listens to the `OrderQueue` queue.
-service "OrderQueue" on securedEP {
+service "OrderQueue" on orderListener {
 
     remote function onMessage(Order 'order) returns error? {
         if 'order.isValid {
