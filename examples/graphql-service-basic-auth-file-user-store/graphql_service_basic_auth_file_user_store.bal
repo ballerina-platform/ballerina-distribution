@@ -5,7 +5,7 @@ type Profile record {|
     int age;
 |};
 
-listener graphql:Listener securedEP = new (9090,
+listener graphql:Listener securedEP = new(9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",

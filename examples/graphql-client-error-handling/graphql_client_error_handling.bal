@@ -13,7 +13,7 @@ type Profile record {|
 
 public function main() returns error? {
     do {
-        graphql:Client graphqlClient = check new ("localhost:9090/graphql");
+        graphql:Client graphqlClient = check new("localhost:9090/graphql");
         // This is a malformed GraphQL document.
         string document = "mutation { updateName(name: 1) { name, age } }";
         ProfileResponse response = check graphqlClient->execute(document);
