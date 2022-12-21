@@ -1,26 +1,26 @@
 import ballerina/io;
 
-class MyClass {
-    int n;
+class Engineer {
+    string name;
 
-    function init(int n) {
-        self.n = n;
+    function init(string name) {
+        self.name = name;
     }
 
-    function func() {
-        self.n += 1;
+    function getName() returns string {
+        return self.name;
     }
 }
 
 public function main() {
     // Apply the `new` operator with a `class` to get an `object` value.
-    MyClass x = new MyClass(1234);
+    Engineer engineer = new Engineer("Walter White");
 
-    // Call method using `obj.foo(args)`.
-    x.func();
+    // Call the `getName` method using `obj.method(args)` syntax.
+    string engineerName = engineer.getName();
+    io:println(engineerName);
 
-    // Access field using `obj.x`.
-    int n = x.n;
-
-    io:println(n);
+    // Accessing the field `name` using `obj.field` syntax.
+    engineerName = engineer.name;
+    io:println(engineerName);
 }
