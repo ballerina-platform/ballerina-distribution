@@ -1724,6 +1724,14 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Default error handling",
+                "url": "http-default-error-handling",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Redirects",
                 "url": "http-service-redirects",
                 "verifyBuild": true,
