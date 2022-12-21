@@ -14,7 +14,7 @@ public function main() {
    	];
    	io:println(t1);
 	
-   	// A table can be declared without a key
+   	// A table can be declared without a key.
    	table<Employee> t2 = table [
    	    { name: "John", salary: 100 },
    	    { name: "Jane", salary: 200 }
