@@ -19,6 +19,8 @@ service class ChatService {
 
     remote function onMessage(websocket:Caller caller, string chatMessage) returns error? {
         io:println(chatMessage);
+        // If an error occurs, error is returned from the `onMessage`. It is printed on the
+        // server terminal along with the stack trace
         check caller->writeMessage("Hello!, How are you?");
     }
 }
