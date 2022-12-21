@@ -12,7 +12,7 @@ type ProfileResponse record {|
     record {|Profile profile;|} data;
 |};
 
-// The following record type defines the shape of the response from a GraphQL service which allows
+// The following record type defines the shape of the response from a GraphQL service, which allows
 // the `age` field to have a `null` value.
 type Profile record {|
     string name;
