@@ -12,8 +12,8 @@ public function main() returns error? {
                 log:printInfo("Received an email", subject = email.subject, body = email?.body);
             }
         }
-    } on fail var e {
-        log:printError(e.message(), stackTrace = e.stackTrace());
+    } on fail var err {
+        log:printError(err.message(), stackTrace = err.stackTrace());
         check imapClient->close();
     }
 }
