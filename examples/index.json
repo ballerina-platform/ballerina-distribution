@@ -307,6 +307,13 @@
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
+            },            
+            {
+                "name": "Stream type",
+                "url": "stream-type",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Never type",
@@ -796,13 +803,6 @@
             {
                 "name": "Outer Join clause",
                 "url": "outer-join-clause",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Stream type",
-                "url": "stream-type",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true

@@ -1,2 +1,4 @@
-description: This BBE demonstrates stream type in Ballerina.
-keywords: ballerina, ballerina by example, bbe, stream type, streams
+description: This BBE demonstrates stream type in Ballerina, create a stream of values, load values lazily,
+             save resources by loading values when needed
+keywords: ballerina, ballerina by example, bbe, stream type, streams, lazy, value, next
+
