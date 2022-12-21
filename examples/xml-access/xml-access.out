@@ -1,0 +1,4 @@
+$ bal run xml.bal
+<name>Sherlock Holmes</name>
+greeting
+true
