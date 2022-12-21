@@ -1,2 +1,3 @@
-description: This BBE demonstrates query actions in Ballerina.
-keywords: ballerina, ballerina by example, bbe, query, query action, iterable
+description: This BBE demonstrates query actions in Ballerina, execute set of code segments iteratively
+             foreach statement, use query expression to execute set of code segments iteratively.
+keywords: ballerina, ballerina by example, bbe, query, query action, iterable, foreach, action, do, check

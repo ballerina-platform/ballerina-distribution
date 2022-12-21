@@ -1,12 +1,12 @@
 # Query actions
 
-The clauses in a query action are executed in the same way as the clauses in a query expression.
+Query action allows us to use the functionalities of query expression to iteratively execute a code block like foreach statement. Query action starts with the from clause and ends with the do clause. It can contain all the intermediate clauses in query expression.
 
-Query action starts with the `from` clause and ends with the `do` clause.
-In the same way, the query is built in query expressions, query actions also can have intermediate clauses of  `let`, `join`, `order by`, `where`, and `limit`.
-
-If a clause in the query action completes early with an error `e`, the result of the query action is `e`. Otherwise, the result of the query action is `nil`.
+The clauses in a query action are executed in the same way as the clauses in a query expression. If a clause completes early with an error `e`, the result of the query action is `e`. Otherwise, the result is `null`.
 
 ::: code query_actions.bal :::
 
 ::: out query_actions.out :::
+
+## Related links
+- [Manipulating an array `(lang.array)` - Language library](https://lib.ballerina.io/ballerina/lang.array)
