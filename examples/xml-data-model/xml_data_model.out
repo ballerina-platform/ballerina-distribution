@@ -1,6 +1,22 @@
 $ bal run xml.bal
 <book>The Lost World</book>
-Hello, world!
-<!--I am a comment-->
 <?target data?>
-<book>The Lost World</book>Hello, world!<!--I am a comment--><?target data?>
+<!--I am a comment-->
+Hello, world!
+Hello World
+<name>Sherlock Holmes</name>
+greeting
+
+<items>
+            <!--Contents-->
+            <book>
+                <name>A Study in Scarlet</name>
+                <author><name>Arthur Conan Doyle</name></author>
+            </book>
+            <planner>Daily Planner<kind>day</kind><pages>365</pages></planner>
+            <book>
+                <name>The Sign of Four</name>
+                <author><name>Arthur Conan Doyle</name></author>
+            </book>
+            <pen><kind>marker</kind><color>blue</color></pen>
+        </items>
