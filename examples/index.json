@@ -752,8 +752,8 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Destructure records",
-                "url": "destructuring-records",
+                "name": "Sort iterable objects",
+                "url": "sort-iterable-objects",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
@@ -766,15 +766,15 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Ordering",
-                "url": "ordering",
+                "name": "Limit clause",
+                "url": "limit-clause",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Limit clause",
-                "url": "limit-clause",
+                "name": "Joining iterable objects",
+                "url": "joining-iterable-objects",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
@@ -788,21 +788,49 @@
             },
             {
                 "name": "Create tables with query",
-                "url": "creating-tables-with-query",
+                "url": "create-tables-with-query",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Join clause",
-                "url": "join-clause",
+                "name": "Create maps with query",
+                "url": "create-maps-with-query",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Outer Join clause",
-                "url": "outer-join-clause",
+                "name": "Create streams with query",
+                "url": "create-streams-with-query",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "On conflict clause",
+                "url": "on-conflict-clause",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Iterating over xml with query",
+                "url": "iterating-over-xml-with-query",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Nested query expressions",
+                "url": "nested-query-expressions",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Destructure records using queries",
+                "url": "destructure-records-using-queries",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
