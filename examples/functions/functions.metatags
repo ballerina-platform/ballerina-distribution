@@ -1,2 +1,2 @@
-description: This BBE demonstrate creating functions in Ballerina.
-keywords:  ballerina, ballerina by example, bbe, functions, function defintion, parameters
+description: This BBE demonstrate creating functions, function with defaultable parameters and passing named argument to the function in Ballerina.
+keywords: ballerina, ballerina by example, bbe, functions, function defintion, parameters, default parameters, returns
