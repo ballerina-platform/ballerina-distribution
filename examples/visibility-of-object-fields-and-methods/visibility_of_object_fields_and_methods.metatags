@@ -1,0 +1,2 @@
+description: This BBE demonstrates access modifier in class definition, modifying visibility of object field and methods, invoking methods and fields and defining class in Ballerina.
+keywords: ballerina, ballerina by example, bbe, class, object, access modifier, visibility
