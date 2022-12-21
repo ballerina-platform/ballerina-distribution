@@ -4,44 +4,45 @@ type Cloneable object {
     function clone() returns Cloneable;
 };
 
-type Shape object {
-    // The `Cloneable` object type is included as a part of the interface of 
-    // the `Shape` object type.
+type Person object {
+    // The `Cloneable` object type is included as a part of the interface of
+    // the `Person` object type.
     *Cloneable;
 
-    // `draw()` is a part of `Shape`'s own type. 
+    string name;
+
+    // `getName()` is a part of `Person`'s own type.
     // The `clone()` function is also included from the `Cloneable` type.
-    function draw() returns string;
+    function getName() returns string;
 };
 
-class Circle {
-    // The `Circle` class includes the `Shape` object type.
+class Engineer {
+    // The `Engineer` class includes the `Person` object type.
     // Therefore, it has to implement both the `clone()` and `draw()` methods.
-    *Shape;
+    *Person;
 
-    int radius;
-
-    function init(int radius) {
-        self.radius = radius;
+    function init(string name) {
+        // `name` field is included from `Person` type.
+        self.name = name;
     }
 
-    // Returning `Circle` is valid as the `Circle` type becomes a subtype of the `Cloneable` type
+    // Returning `Engineer` is valid as the `Engineer` type becomes a subtype of the `Cloneable` type
     // once it includes the `Cloneable` object type.
-    function clone() returns Circle {
-        return new(self.radius);
+    function clone() returns Engineer {
+        return new (self.name);
     }
 
-    function draw() returns string {
-        return string `circle:${self.radius}`;
+    function getName() returns string {
+        return self.name;
     }
 }
 
 public function main() {
-    Circle circle = new Circle(5);
-    io:println(circle.draw());
+    Engineer engineer = new Engineer("Walter White");
+    io:println(engineer.getName());
 
-    Circle circleClone = circle.clone();
-    io:println(circleClone.draw());
+    Engineer engineerClone = engineer.clone();
+    io:println(engineerClone.getName());
 
-    io:println(circle === circleClone);
+    io:println(engineer === engineerClone);
 }
