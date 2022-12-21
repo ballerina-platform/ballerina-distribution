@@ -1,0 +1,4 @@
+$ bal run websocket_service_error_handling.bal
+error: error occurred
+        at ChatService:onMessage(websocket_service_error_handling.bal:22)
+
