@@ -1,6 +1,6 @@
 # GraphQL service - Error handling
 
-The Ballerina `graphql` module allows returning `error`s from the `resource` and `remote` methods used as GraphQL object fields. If a field returns an error, it will be added in the GraphQL response under the `errors` field while the field value is set to `null`. In this case, if the GraphQL field type is `NON_NULL`, the `null` value is propagated to the upper levels until a `null` value is allowed as the field value. This might cause the whole `data` field to be `null` in some cases. Alternatively, the field type can include nil, so the field value can be `null`. In that case, the `null` value is not propagated to the upper levels in the response.
+The Ballerina `graphql` module allows returning `error`s from the `resource` and `remote` methods used as GraphQL object fields. If a field returns an error, it will be added in the GraphQL response under the `errors` field while the field value is set to `null`. In this case, if the GraphQL field type is `NON_NULL`, the `null` value is propagated to the upper levels until a `null` value is allowed as the field value. This might cause the whole `data` field to be `null` in some cases. Alternatively, the field type can include `nil`, so the field value can be `null`. In that case, the `null` value is not propagated to the upper levels in the response.
 
 ::: code graphql_service_error_handling.bal :::
 
