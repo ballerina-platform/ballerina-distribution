@@ -1,28 +1,32 @@
 import ballerina/io;
 
-public class Counter {
-    // `private` means accessible only by code within the `class` definition.
-    private int n;
+class Engineer {
+    // `final` field must be assigned exactly once.
+    final string name;
+
+    int age;
 
     // `init` method initializes the object.
-    public function init(int n = 0) {
-        self.n = n;
+    function init(string name, int age) {
+        // `init` method can initialize the final field.
+        self.name = name;
+        self.age = age;
     }
 
-    public function get() returns int {
-        // Methods use `self` to access their object.
-        return self.n;
-
+    function getName() returns string {
+        // Methods use `self` to access their fields.
+        return self.name;
     }
 
-    public function inc() {
-        self.n += 1;
+    function getAge() returns int {
+        return self.age;
     }
 }
 
 public function main() {
     // Arguments to `new` are passed as arguments to `init`.
-    Counter counter = new (12);
+    Engineer engineer = new Engineer("Walter White", 52);
 
-    io:println(counter.get());
+    io:println(engineer.getName());
+    io:println(engineer.getAge());
 }
