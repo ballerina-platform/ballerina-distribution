@@ -6,7 +6,7 @@ type Employee record {|
 |};
  
 public function main() {
-   	// Creates a `table` with members of the `Employee` type, where each
+   	// Creates a `table` with members of the `Employee` type in which each
    	// member is uniquely identified using their `name` field.
    	table<Employee> key(name) t1 = table [
    	    { name: "John", salary: 100 },
