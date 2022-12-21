@@ -1724,8 +1724,8 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Error handling",
-                "url": "http-resource-error-handling",
+                "name": "Default error handling",
+                "url": "http-default-error-handling",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
