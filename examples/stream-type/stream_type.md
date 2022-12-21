@@ -9,4 +9,5 @@ The stream type is a separate basic type, but like an object. It can be initiali
 ::: out stream_type.out :::
 
 ## Related links
-- [Manipulating an array `(lang.array)` - Language library](https://lib.ballerina.io/ballerina/lang.array)
+- [Create streams with query expression - Ballerina by example](https://ballerina.io/learn/by-example/create-streams-with-query)
+- [Querying with streams - Ballerina by example](https://ballerina.io/learn/by-example/querying-with-streams)
