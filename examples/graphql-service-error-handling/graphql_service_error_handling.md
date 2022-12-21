@@ -26,7 +26,7 @@ To send the document, execute the following cURL command in a separate terminal.
 
 ::: out graphql_service_error_handling.2.client.out :::
 
-Check the response to see the `data` field is set to null due to propagating the `null` value because the `name` field and the `profile` field are of `NON_NULL` type.
+Check the response to see how the `data` field is set to null due to propagating the `null` value because the `name` field and the `profile` field are of `NON_NULL` type.
 
 >**Tip:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client-query-endpoint/).
 
