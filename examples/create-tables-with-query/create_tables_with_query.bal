@@ -9,9 +9,9 @@ type Employee record {|
 
 public function main() {
     table<Employee> key(id) employees = table [
-        {id: 1, firstName: "John", lastName: "Smith", salary: 100},
-        {id: 2, firstName: "Fred", lastName: "Bloggs", salary: 2000}
-    ];
+            {id: 1, firstName: "John", lastName: "Smith", salary: 100},
+            {id: 2, firstName: "Fred", lastName: "Bloggs", salary: 2000}
+        ];
 
     // The query expression starts with `table`.
     // The `key(id)` key specifier specifies the key sequence of the constructed table.

@@ -1,3 +1,4 @@
-$ bal run destructuring_records.bal
+$ bal run destructuring_records_with_query.bal
 [{"first":"Melina","last":"Kodel"},{"first":"Tom","last":"Riddle"}]
 [{"first":"Melina","last":"Kodel"},{"first":"Tom","last":"Riddle"}]
+[{"last":"Kodel","yearOfBirth":1994},{"last":"Riddle","yearOfBirth":1926}]

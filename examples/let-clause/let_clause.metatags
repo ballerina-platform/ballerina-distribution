@@ -1,2 +1,3 @@
-description: This BBE demonstrates let clause in Ballerina.
-keywords: ballerina, ballerina by example, bbe, let clause, query, query expression
+description: This BBE demonstrates let clause in Ballerina, let clause,
+             define temporary variables inside a query expression, define support variables inside a query expression
+keywords: ballerina, ballerina by example, bbe, let clause, query, query expression, where, condition

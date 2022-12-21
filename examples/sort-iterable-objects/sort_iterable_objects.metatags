@@ -1,0 +1,5 @@
+description: This BBE demonstrates ordering in Ballerina, sort an iterable objects, sort a table, sort a list,
+             sort a result, sort a collection.
+keywords: ballerina, ballerina by example, bbe, order by clause, query, query expression, order, sort, ascending,
+          descending, collection
+

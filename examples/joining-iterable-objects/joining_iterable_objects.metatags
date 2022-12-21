@@ -1,0 +1,5 @@
+description: This BBE demonstrates join clause in Ballerina, join two tables, join two lists, join two maps,
+             query join, inner join, outer join, left outer join.
+keywords: ballerina, ballerina by example, bbe, join clause, query, query expression, join clause, inner join,
+          left outer join, table
+

@@ -1,0 +1,4 @@
+description: using binding patterns in query expression, record destructure in query expression,
+             access values in a query iteration.
+keywords: ballerina, ballerina by example, bbe, query, var, binding pattern, from, access
+

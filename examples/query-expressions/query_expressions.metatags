@@ -1,2 +1,6 @@
-description: This BBE demonstrates query expressions in Ballerina.
-keywords: ballerina, ballerina by example, bbe, query, query expression, iterable
+description: This BBE demonstrates query expressions in Ballerina, Create list value from query expression, 
+             Create string value from query expression, Iterating a list, Iterating an array,
+             Iterating a sequence value, Filter an iterable value, Filter a list, Where clause.
+keywords: ballerina, ballerina by example, bbe, query, iterate, from, select, language integrated queries, where,
+          condition
+

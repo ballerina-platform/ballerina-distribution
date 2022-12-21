@@ -1,2 +1,3 @@
-description: This BBE demonstrates querying with streams in Ballerina.
-keywords: ballerina, ballerina by example, bbe, streams, query, query expression
+description: This BBE demonstrates querying with streams in Ballerina, iterate a stream object,
+             call the next method of a stream, using a stream object, handling the termination value of a stream.
+keywords: ballerina, ballerina by example, bbe, stream, lazy, value, next, query, check

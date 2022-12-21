@@ -13,7 +13,6 @@ public function main() {
         {firstName: "Rocky", lastName: "Irving", salary: 6000.00},
         {firstName: "Anne", lastName: "Perera", salary: 3000.00},
         {firstName: "Jermaine", lastName: "Perera", salary: 4000.00},
-        {firstName: "Miya", lastName: "Bauer", salary: 9000.00},
         {firstName: "Rocky", lastName: "Puckett", salary: 6000.00},
         {firstName: "Jermaine", lastName: "Kent", salary: 4000.00}
     ];

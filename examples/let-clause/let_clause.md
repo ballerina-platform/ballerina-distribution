@@ -1,7 +1,10 @@
 # Let clause
 
-Query expressions can have `let` clauses. They can be anywhere between `from` and `select` clauses. Multiple `where` clauses are also allowed. The semantics are similar to `XQuery FLWOR`.
+Let clauses can be used to define temporary variables inside a query expression . It can occur multiple times anywhere between from and select clause. The semantics are similar to XQuery FLWOR.
 
 ::: code let_clause.bal :::
 
 ::: out let_clause.out :::
+
+## Related links
+- [Manipulating an array `(lang.array)` - Language library](https://lib.ballerina.io/ballerina/lang.array)
