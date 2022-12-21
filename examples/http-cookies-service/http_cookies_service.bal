@@ -15,7 +15,7 @@ service /cookieDemo on serverEP {
 
             // Create a new cookie by setting `name` as the `username` and `value` as the logged-in user's name.
             // Set the cookies path as `/` to apply it to all the resources in the service.
-            http:Cookie cookie = new("username", name.toString(), path = "/");
+            http:Cookie cookie = new ("username", name.toString(), path = "/");
             http:Response response = new;
 
             // Add the created cookie to the response.
