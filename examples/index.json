@@ -2041,6 +2041,14 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Error handling",
+                "url": "graphql-service-error-handling",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "GraphiQL client",
                 "url": "graphql-graphiql",
                 "verifyBuild": true,
