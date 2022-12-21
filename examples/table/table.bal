@@ -20,7 +20,7 @@ public function main() {
    	io:println(employees);
 	
    	// Since the key is not available, `add` method appends the new entry
-   	// If the key is available operation results in panic
+   	// If the key is available, the operation results in a panic.
    	employees.add({name: "Sam", salary: 150});
    	io:println(employees);
 	
