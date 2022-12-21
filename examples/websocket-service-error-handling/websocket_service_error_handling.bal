@@ -1,5 +1,5 @@
-import ballerina/io;
 import ballerina/http;
+import ballerina/io;
 import ballerina/websocket;
 
 service /chat on new websocket:Listener(9090) {
