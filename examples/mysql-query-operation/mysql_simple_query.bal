@@ -26,7 +26,7 @@ service / on new http:Listener(8080) {
         stream<Album, sql:Error?> albumStream = self.db->query(`SELECT * FROM albums`);
 
         // Process the stream and convert results to Album[] or return error.
-        return check from Album album in albumStream
+        return from Album album in albumStream
             select album;
     }
 }
