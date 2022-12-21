@@ -1,4 +1,4 @@
-# Creating tables with query
+# Nested query expressions
 
 Intermediate clauses of a query expression can contain another query expression and there is no limit for the amount of such nested query expressions. This is similar to nested foreach statements. Nested query expressions are useful to create complex query expressions. Execution will be happened according to the respective clauses.
 

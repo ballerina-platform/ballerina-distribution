@@ -1,3 +1,2 @@
 description: Handle duplicate keys when constructing a map, handle duplicate keys when constructing a table.
 keywords: ballerina, ballerina by example, bbe, duplicate, key, map, table, query
-

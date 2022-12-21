@@ -1,4 +1,4 @@
-# Creating tables with query
+# On conflict clause
 
 When constructing a map or table with a key sequence using query expression,  there can be conflicting keys. on conflict clause can be specified after the select clause to handle these cases.
 

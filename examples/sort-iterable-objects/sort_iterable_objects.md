@@ -1,4 +1,4 @@
-# Ordering
+# Sort iterable objects
 
 `order by` clause in query expression can be used to sort elements in a collection. Ordering works consistently with `<`, `<=`, `>`, `>=` operators. Some comparisons involving `()` and float `NaN` are considered unordered. So if these unordered types are encountered in the query, they will be returned as the last elements of the ordered collection.
 

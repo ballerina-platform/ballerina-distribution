@@ -1,4 +1,4 @@
-# Join clause
+# Joining iterable objects
 
 A join clause performs an inner or left outer equijoin. The result is similar to using nested from clause and where clause.
 

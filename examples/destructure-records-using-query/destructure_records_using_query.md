@@ -1,4 +1,4 @@
-# Destructuring records
+# Destructure records using queries
 
 Destructuring records is particularly useful with query expressions but works anywhere you can have `var`. `var` is followed by a binding pattern. You can also explicitly specify the type before the binding pattern without using var.
 

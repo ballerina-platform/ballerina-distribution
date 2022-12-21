@@ -1,4 +1,4 @@
-# Querying tables
+# Create maps with query
 
 Query expressions can be used to create a map from an iterable value. Query expression should be preceded by the `map` keyword in this case.
 

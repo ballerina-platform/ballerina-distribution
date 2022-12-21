@@ -1,4 +1,4 @@
-# Creating tables with query
+# Iterating over XML with query
 
 Xml value can be iterated by using query expression. Query expression will iterate for each sequence item.
 
