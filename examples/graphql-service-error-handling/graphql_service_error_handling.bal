@@ -29,7 +29,7 @@ service class Profile {
     // can be `null`. Hence, when an error returned from this method,
     resource function get age() returns int|error? {
         if self.id == 1 {
-            // return a mock error
+            // Returns a mock error.
             return error("Error occurred while retrieving age");
         }
         return self.age;
