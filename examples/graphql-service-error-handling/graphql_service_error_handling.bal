@@ -26,7 +26,7 @@ service class Profile {
 
     // This resource method has `nil` as a possible return type, which means the corresponding
     // GraphQL field type is nullable. Therefore, if this field returns an error, the field value
-    // can be `null`. Hence, when an error returned from this method,
+    // can be `null`.
     resource function get age() returns int|error? {
         if self.id == 1 {
             // Returns a mock error.
