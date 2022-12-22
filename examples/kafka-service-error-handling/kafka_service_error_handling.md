@@ -1,6 +1,6 @@
 # Kafka service - Error handling
 
-The `kafka:Service` has an `onError` method that is called when an internal error occurs before the `onConsumerRecord` method is called. These errors could include payload binding errors or constraint validation errors. The `onError` method allows the user to handle the error as needed. If an error is returned from the `onConsumerRecord` method, it is logged to the console, and the next polling cycle continues.
+The `kafka:Service` has an `onError` method which is invoked when `kafka:Listener` triggers errors before the `onConsumerRecord` method is invoked. These errors could include payload binding errors or constraint validation errors. The `onError` method allows the user to handle these errors as needed. If there is no `onError` method in the `kafka:Service`, these are logged to the console with the stack-trace. In addition, `kafka:Service` allows returning errors from the `onConsumerRecord` method. These errors are also logged to the console and the next polling cycle will continue.
 
 ::: code kafka_service_error_handling.bal :::
 
