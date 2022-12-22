@@ -26,7 +26,7 @@ public function main() returns error? {
 	string name = check j.name;
 	io:println(name);
  
-	// Convert `json` into a user-defined type
+	// Convert the `json` into a user-defined type.
 	Student student = check j.cloneWithType();
 	io:println(student.id);
  
