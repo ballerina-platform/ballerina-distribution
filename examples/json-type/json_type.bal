@@ -22,7 +22,7 @@ public function main() returns error? {
 	json j = check rawData.fromJsonString();
 	io:println(j);
  
-	// Access fields of `j` using field access
+	// Access the fields of `j` using field access.
 	string name = check j.name;
 	io:println(name);
  
