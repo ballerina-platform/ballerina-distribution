@@ -4,7 +4,7 @@ type FullName record {
     string firstName;
     string lastName;
 
-    // The fields `title` and `middleName` are optional.
+    // The `title` and `middleName` fields are optional.
     string title?;
     string middleName?;
 };
@@ -24,12 +24,12 @@ public function main() {
     string? middleName = name["middleName"];
     io:println("Middle name: ", middleName);
 
-    // Remove the optional field `title` by assigning `()`.
+    // Remove the optional `title` field by assigning `()`.
     name.title = ();
     io:println(name.hasKey("title"));
 
-    // When destructuring the record `name`, if the field `title` is absent
-    // then its value becomes nil.
+    // When destructuring the record `name`, if the `title` field is absent,
+    // then, its value becomes nil.
     var {title, firstName: _, lastName: _} = name;
     io:println(title is ());
 }
