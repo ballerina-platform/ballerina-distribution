@@ -2262,6 +2262,15 @@
                 "disableVerificationReason": "Service cannot be stopped",
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "Error handling",
+                "url": "websocket-service-error-handling",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Service cannot be stopped",
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
