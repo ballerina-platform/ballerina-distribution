@@ -9,7 +9,7 @@ type Employee record {
 };
 
 public function main() {
-   // key field, `name` is of `record` type.
+   //In the key field, the `name` is of the `record` type.
    table<Employee> key(name) t = table [
        {name: {first: "John", last: "Smith"}, salary: 100},
        {name: {first: "Fred", last: "Bloggs"}, salary: 200}
@@ -19,7 +19,7 @@ public function main() {
    io:println(e);
 
    record {|string first; string last;|} n = {first: "Sam", last: "Smith"};
-   // make the key immutable using `cloneReadOnly()`
+   // Make the key immutable using `cloneReadOnly()`.
    t.add({name: n.cloneReadOnly(), salary: 23});
    io:println(t);
 }
