@@ -19,7 +19,7 @@ public function main() {
    	employees.put({name: "John", salary: 320});
    	io:println(employees);
 	
-   	// Since the key is not available, `add` method appends the new entry
+   	// As the key is not available, the `add` method appends the new entry.
    	// If the key is available, the operation results in a panic.
    	employees.add({name: "Sam", salary: 150});
    	io:println(employees);
