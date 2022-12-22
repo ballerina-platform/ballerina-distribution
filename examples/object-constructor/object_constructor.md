@@ -1,8 +1,6 @@
 # Object constructor
 
-In Ballerina, there are two ways to construct an object value with named methods and fields: using an object constructor or using the `new` expression with a `class` definition.
-
-The object constructor does not have `init` method.
+In Ballerina, there are two ways to construct an object value with named methods and fields: using an object constructor or using the `new` expression with a `class` definition. The init method in an object constructor cannot have parameters.
 
 ::: code object_constructor.bal :::
 
