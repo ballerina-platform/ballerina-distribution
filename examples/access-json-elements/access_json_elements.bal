@@ -20,7 +20,7 @@ public function main() returns error? {
     json firstUserName = check users[0].user.name;
     
     // This is converted to `check value:ensureType(firstUserName.firstName, string)`.
-    // Since the expected type is correct the conversion is successful.
+    // As the expected type is correct, the conversion is successful.
     string firstName = check firstUserName.firstName;
     io:println("Value of first name: " + firstName);
     
