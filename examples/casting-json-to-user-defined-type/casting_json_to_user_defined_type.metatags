@@ -1,2 +1,2 @@
-description: This BBE demonstrates casting JSON to a user-defined type
+description: This BBE demonstrates casting JSON to a user-defined type.
 keywords: ballerina, ballerina by example, bbe, conversion, json, record, cast, access, manipulate
