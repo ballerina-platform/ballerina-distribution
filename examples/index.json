@@ -3761,7 +3761,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Manage scheduled jobs",
+                "name": "Manage sheduled jobs",
                 "url": "manage-scheduled-jobs",
                 "verifyBuild": true,
                 "verifyOutput": true,
