@@ -1724,7 +1724,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Default error handling",
+                "name": "Error handling",
                 "url": "http-default-error-handling",
                 "verifyBuild": true,
                 "verifyOutput": false,
