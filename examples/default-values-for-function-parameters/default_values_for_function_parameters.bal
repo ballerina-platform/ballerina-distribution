@@ -1,6 +1,6 @@
 import ballerina/io;
 
-// Use the value of the preceding parameter `str` to initialize the parameter `end`.
+// Use the value of the preceding `str` parameter to initialize the `end` parameter.
 function subString(string str, int 'start = 0, int end = str.length()) returns string {
     return str.substring('start, end);
 }

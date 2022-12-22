@@ -1,10 +1,10 @@
 import ballerina/io;
 
 // This function definition has two parameters of type `int`.
-// `returns` clause specifies type of return value.
+// The `returns` clause specifies the type of the return value.
 function add(int x, int y) returns int {
     int sum = x + y;
-    // `return` statement returns a value.
+    // The `return` statement returns a value.
     return sum;
 }
 
@@ -19,15 +19,15 @@ function print(anydata data) {
 }
 
 public function main() {
-    // Invoke the function `add` by passing arguments.
+    // Invoke the function `add` by passing the arguments.
     int sum = add(5, 11);
-    // A function with no return type does not need variable assignment.
+    // A function with no return type does not need a variable assignment.
     print(sum);
 
-    // Invoke the function `sub` with default arguments.
+    // Invoke the `sub` function with the default arguments.
     print(calculateWeight(5));
 
-    // Invoke the function `add` with named arguments.
+    // Invoke the `add` function with the named arguments.
     print(add(x = 5, y = 6));
 
     // The return value of the function can be ignored by assigning it to `_`.

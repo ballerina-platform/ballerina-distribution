@@ -7,13 +7,13 @@ function add(int v1, int v2) returns int {
 int num1 = 10;
 int num2 = 100;
 
-// Here, the function pointer with default values for function pointer parameters is used 
+// In this example, the function pointer with default values for function pointer parameters is used 
 // as a parameter. 
 function executeWithDefaultValues(function (int a = num1, int b = num2) returns int func) returns int {
     return func();
 }
 
-// Here, the function pointer without default values for function pointer parameters is used 
+//  In this example, the function pointer without default values for the function pointer parameters is used 
 // as a parameter. 
 function execute(function (int, int) returns int func, int v1, int v2) returns int {
     return func(v1, v2);

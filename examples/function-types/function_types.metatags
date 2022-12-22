@@ -1,2 +1,2 @@
-description: This BBE demonstrates defining function types, creating function defintion and assigning function value to the function variable in Ballerina.
+description: This BBE demonstrates defining function types, creating the function definition, and assigning the function value to the function variable in Ballerina.
 keywords:  ballerina, ballerina by example, bbe, functions, function types, function defintion, default parameters

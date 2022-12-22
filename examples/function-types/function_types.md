@@ -1,7 +1,7 @@
 # Function types
-In Ballerina, function type is a separate basic type. The syntax for a function type looks like a function definition without a function name. 
+In Ballerina, the function type is a separate basic type. The syntax for a function type looks like a function definition without a function name. 
 
-When assigning a function value to a variable of function type, the function signatures must be equal. However, parameters may have default values in either the function value or the function type, or both. If a default value is provided in both the function value and function type, the default value in the function type will be used when the function is invoked.
+When assigning a function value to a variable of the function type, the function signatures must be equal. However, parameters may have default values in either the function value or the function type or both. If a default value is provided in both the function value and function type, the default value in the function type will be used when the function is invoked.
 
 ::: code function_types.bal :::
 
