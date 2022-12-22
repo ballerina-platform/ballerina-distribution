@@ -470,8 +470,29 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Define classes",
+                "name": "Defining classes",
                 "url": "defining-classes",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Object constructor",
+                "url": "object-constructor",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Object value from class definition",
+                "url": "object-value-from-class-definition",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Visibility of object fields and methods",
+                "url": "visibility-of-object-fields-and-methods",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
@@ -500,6 +521,13 @@
             {
                 "name": "Distinct object types",
                 "url": "distinct-object-types",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Object closure",
+                "url": "object-closure",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
