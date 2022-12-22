@@ -1,0 +1,2 @@
+$ bal run object_closure.bal
+["Ana","Alice","Bob","Walter"]
