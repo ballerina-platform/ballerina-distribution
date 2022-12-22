@@ -2,7 +2,7 @@
 
 Ballerina has three numeric types; but JSON has one. The `json` type allows `int|float|decimal`. `toJsonString()` will convert `int|float|decimal` into JSON numeric syntax. `fromJsonString()` converts JSON numeric syntax into `int`, if possible, and otherwise `decimal`.
 
-`cloneWithType()` or `ensureType()` will convert from `int` or `decimal` into the user's chosen numeric type. Net result is that you can use json to exchange full range of all three Ballerina numeric types. `-0` is an edge case: it’s represented as a `float`.
+`cloneWithType()` or `ensureType()` will convert from `int` or `decimal` into the user's chosen numeric type. The net result is that you can use JSON to exchange the full range of all three Ballerina numeric types. `-0` is an edge case: it is represented as a `float`.
 
 ## Related links
 - [Converting from JSON to user-defined type](https://ballerina.io/learn/by-example/converting-from-json-to-user-defined-type/)

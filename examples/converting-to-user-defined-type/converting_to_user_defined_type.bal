@@ -15,7 +15,7 @@ public function main() returns error? {
 
    // Argument is a `typedesc` value.
    // The static return type depends on the argument.
-   // Even if x and y are `int` in j they will automatically convert to float
+   // Even if `x` and `y` are `int` in `j`, they will automatically convert to float.
    Coord c = check j.cloneWithType(Coord);
    io:println(c.x);
 
@@ -28,11 +28,11 @@ public function main() returns error? {
    json bookJson = book.toJson();
    io:println(bookJson);
 
-   // fromJsonWithType() can be used to reverse conversions done by toJson().
+   // `fromJsonWithType()` can be used to reverse the conversions done by `toJson()`.
    book = check bookJson.fromJsonWithType();
    io:println(book);
 
-   // Below will result in an error, because the type of the field `book` in `bookJson` is `string`.
+   // The below will result in an error because the type of the `book` field in `bookJson` is `string`.
    Book|error result = bookJson.cloneWithType();
    if result is error {
       io:println(result.message());

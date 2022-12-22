@@ -1,8 +1,8 @@
 # Converting JSON with langlib functions 
 
-The `cloneWithType()` langlib function can be used to convert a value to a user-defined type. Result recursively uses specified type as inherent type of new value. Automatically performs numeric conversions as necessary.
+The `cloneWithType()` langlib function can be used to convert a value to a user-defined type. The result recursively uses the specified type as the inherent type of the new value. This automatically performs the numeric conversions as necessary.
 
-Every part of the value is cloned including immutable structural values. Also `fromJsonWithType()` langlib function can be used for the same purpose, and it also does the reverse of conversions done by `toJson`.
+Every part of the value is cloned including the immutable structural values. Also, the `fromJsonWithType()` langlib function can be used for the same purpose and it also does the reverse of the conversions done by `toJson`.
 
 ## Related links
 - [JSON type](https://ballerina.io/learn/by-example/json-type/)
