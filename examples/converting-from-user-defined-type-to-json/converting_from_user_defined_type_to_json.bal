@@ -6,7 +6,7 @@ type ClosedCoord record {|
     [float, float] cords;
 |};
  
-// Open type, can have additional `anydata` fields.
+// Open type can have additional `anydata` fields.
 type OpenCoord record {
     string name;
     [float, float] cords;
