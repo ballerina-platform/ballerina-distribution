@@ -34,6 +34,20 @@
                 "isLearnByExample": true
             },
             {
+                "name": "Main function",
+                "url": "main-function",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Init function",
+                "url": "init-function",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
                 "name": "Variables and types",
                 "url": "variables-and-types",
                 "verifyBuild": true,
