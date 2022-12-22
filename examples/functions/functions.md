@@ -17,4 +17,4 @@ Function parameters are final variables and cannot be modified within the functi
 - [Function values](/learn/by-example/function-values/)
 - [Function types](/learn/by-example/function-types/)
 - [Anonymous function](/learn/by-example/anonymous-function/)
-- [Function closures](/learn/by-example/function-closures/)
+- [Function closure](/learn/by-example/function-closure/)
