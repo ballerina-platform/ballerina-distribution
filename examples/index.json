@@ -2896,6 +2896,15 @@
                 "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "Error handling",
+                "url": "kafka-service-error-handling",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
