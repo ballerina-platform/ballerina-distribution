@@ -38,7 +38,7 @@ class Engineer {
 }
 
 public function main() {
-    Engineer engineer = new Engineer("Walter White");
+    Engineer engineer = new Engineer("Alice");
     io:println(engineer.getName());
 
     Engineer engineerClone = engineer.clone();

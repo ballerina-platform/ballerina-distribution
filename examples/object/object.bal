@@ -14,7 +14,7 @@ class Engineer {
 
 public function main() {
     // Apply the `new` operator with a `class` to get an `object` value.
-    Engineer engineer = new Engineer("Walter White");
+    Engineer engineer = new Engineer("Alice");
 
     // Call the `getName` method using `obj.method(args)` syntax.
     string engineerName = engineer.getName();

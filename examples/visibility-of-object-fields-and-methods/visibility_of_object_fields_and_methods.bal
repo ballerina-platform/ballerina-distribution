@@ -35,7 +35,7 @@ class Engineer {
 
 public function main() {
     // Arguments to `new` are passed as arguments to `init`.
-    Engineer engineer = new Engineer("Walter White");
+    Engineer engineer = new Engineer("Alice");
     engineer.setSalary(1000);
 
     io:println(engineer.name);

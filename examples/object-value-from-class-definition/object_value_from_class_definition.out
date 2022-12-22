@@ -1,7 +1,7 @@
 $ bal run object_value_from_class_definition.bal
 Null
-Walter White
-Jesse Pinkman
+Alice
+Bob
 Null
-Walter White
-Jesse Pinkman
+Alice
+Bob

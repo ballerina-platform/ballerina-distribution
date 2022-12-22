@@ -25,7 +25,7 @@ class Engineer {
 
 public function main() {
     // Arguments to `new` are passed as arguments to `init`.
-    Engineer engineer = new Engineer("Walter White", 52);
+    Engineer engineer = new Engineer("Alice", 52);
 
     io:println(engineer.getName());
     io:println(engineer.getAge());

@@ -20,11 +20,11 @@ public function main() {
     io:println(engineer1.getName());
 
     // Object initialized using given argument to new expression.
-    Engineer engineer2 = new Engineer("Walter White");
+    Engineer engineer2 = new Engineer("Alice");
     io:println(engineer2.getName());
 
     // Object initialized using given argument to new expression.
-    Engineer engineer3 = new Engineer(name = "Jesse Pinkman");
+    Engineer engineer3 = new Engineer(name = "Bob");
     io:println(engineer3.getName());
 
     // Implicit new expression.
@@ -34,10 +34,10 @@ public function main() {
     io:println(engineer4.getName());
 
     // Object initialized using given argument to new expression.
-    Engineer engineer5 = new ("Walter White");
+    Engineer engineer5 = new ("Alice");
     io:println(engineer5.getName());
 
     // Object initialized using a given named argument to the new expression.
-    Engineer engineer6 = new (name = "Jesse Pinkman");
+    Engineer engineer6 = new (name = "Bob");
     io:println(engineer6.getName());
 }
