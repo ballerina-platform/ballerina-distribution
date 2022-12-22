@@ -30,7 +30,7 @@ public function main() returns error? {
 	Student student = check j.cloneWithType();
 	io:println(student.id);
  
-	// Convert user defined type to a `json`
+	// Convert the user-defined type to a `json`.
 	j = student;
 	io:println(j);
 }
