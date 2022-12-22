@@ -14,7 +14,7 @@ type OpenCoord record {
  
 public function main() {
     ClosedCoord a = {name: "Colombo", cords: [6.95, 79.84]};
-    // Conversion happens automatically because `a` is a subtype on anydata.
+    // The conversion happens automatically because `a` is a subtype on anydata.
     json j = a;
     io:println(j);
     
