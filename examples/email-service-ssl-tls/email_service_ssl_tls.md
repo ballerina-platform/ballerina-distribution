@@ -15,5 +15,3 @@ Run the service by executing the command below.
 
 ## Related links
 - [`email:SecureSocket` - API documentation](https://lib.ballerina.io/ballerina/email/latest/records/SecureSocket)
-- [`tcp` module - API documentation](https://lib.ballerina.io/ballerina/tcp/latest)
-- [TCP SSL/TLS - Specification](/spec/tcp/#511-configuring-tls-in-server-side)
