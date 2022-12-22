@@ -10,9 +10,9 @@ Casting immutable values will work. However, it does not do numeric conversions.
 ::: out casting_json_to_user_defined_type.out :::
 
 ## Related links
-- [JSON type](https://ballerina.io/learn/by-example/json-type/)
-- [Open records](https://ballerina.io/learn/by-example/open-records/)
-- [Control openness](https://ballerina.io/learn/by-example/controlling-openness/)
-- [Anydata type](https://ballerina.io/learn/by-example/anydata-type/)
-- [Converting JSON with langlib functions](https://ballerina.io/learn/by-example/converting-json-with-langlib-functions/)
-- [Check expression](https://ballerina.io/learn/by-example/check-expression/)
+- [JSON type](/learn/by-example/json-type/)
+- [Open records](/learn/by-example/open-records/)
+- [Control openness](/learn/by-example/controlling-openness/)
+- [Anydata type](/learn/by-example/anydata-type/)
+- [Converting JSON with langlib functions](/learn/by-example/converting-json-with-langlib-functions/)
+- [Check expression](/learn/by-example/check-expression/)

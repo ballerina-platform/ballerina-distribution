@@ -1,0 +1,2 @@
+description: This BBE demonstrates casting JSON to a user-defined type using `cloneWithType` and `fromJsonWithType`
+keywords: ballerina, ballerina by example, bbe, json, record, cast, access, manipulate

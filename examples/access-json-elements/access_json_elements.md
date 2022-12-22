@@ -6,13 +6,13 @@ The best way of accessing JSON elements is to convert the `json` value to a user
 
 `check Expr` is treated as `check val:ensureType(Expr, s)` when the `Expr` is a subtype of JSON and the expected type is a subtype of `()|boolean|int|float|decimal|string`. `s` is a typedesc value representing the expected type.
 
-::: code working_directly_with_json.bal :::
+::: code access_json_elements.bal :::
 
 Run the example as follows.
 
-::: out working_directly_with_json.out :::
+::: out access_json_elements.out :::
 
 ## Related links
-- [JSON type](https://ballerina.io/learn/by-example/json-type)
-- [Check expression](https://ballerina.io/learn/by-example/check-expression)
-- [ensureType function](https://ballerina.io/learn/by-example/ensureType-function)
+- [JSON type](/learn/by-example/json-type)
+- [Check expression](/learn/by-example/check-expression)
+- [ensureType function](/learn/by-example/ensureType-function)

@@ -18,7 +18,7 @@ public function main() returns error? {
     io:println(arr);
  
 	string rawData = "{\"id\": 2, \"name\": \"Georgy\"}";
-	// Get `json` value from string
+	// Get the `json` value from the string.
 	json j = check rawData.fromJsonString();
 	io:println(j);
  

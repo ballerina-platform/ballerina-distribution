@@ -9,6 +9,6 @@ In many cases, the conversion happens automatically when the user-defined type i
 ::: out converting_from_user_defined_type_to_json.out :::
 
 ## Related links
-- [JSON type](https://ballerina.io/learn/by-example/json-type/)
-- [Open records](https://ballerina.io/learn/by-example/open-records/)
-- [Control openess](https://ballerina.io/learn/by-example/controlling-openness)
+- [JSON type](/learn/by-example/json-type/)
+- [Open records](/learn/by-example/open-records/)
+- [Control openess](/learn/by-example/controlling-openness)
