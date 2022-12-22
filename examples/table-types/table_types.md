@@ -4,7 +4,7 @@ A `table` is a collection of records in which each record represents a row of th
 Compared to maps,
 - the key is part of the value rather than being separate.
 - the type of the key is not restricted to string.
-- The order of the members is preserved.
+- the order of the members is preserved.
 
 ::: code table_types.bal :::
 
