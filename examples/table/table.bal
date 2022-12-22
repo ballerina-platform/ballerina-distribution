@@ -15,7 +15,7 @@ public function main() {
    	];
 	
    	// Since the key is already available, the `put` method updates the entry with the new `salary`.
-   	// If the key is not available `put` will function same as `add`
+   	// If the key is not available, `put` will function the same as `add`.
    	employees.put({name: "John", salary: 320});
    	io:println(employees);
 	
