@@ -1,2 +1,2 @@
-description: BBE on error handling in WebSocket service.
+description: This BBE demonstrates error handling in WebSocket services.
 keywords: ballerina, ballerina by example, bbe, websocket, service, error handling
