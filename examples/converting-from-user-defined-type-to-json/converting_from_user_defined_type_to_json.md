@@ -1,6 +1,6 @@
 # Converting from user-defined type to JSON
 
-Conversion from `json` value to JSON format is straightforward. Converting from an application-specific, user-defined subtype of `anydata` to `json` is also possible.
+Conversion of a `json` value to JSON format is straightforward. Converting from an application-specific, user-defined subtype of `anydata` to `json` is also possible.
 
 In many cases, conversion happens automatically. when user-defined type is a subtype of JSON as well as of `anydata`. With tables, XML or records open to `anydata`, use `toJson()` to convert `anydata` to `json`. APIs that generate JSON typically accept `anydata` and automatically apply `toJson()`.
 
