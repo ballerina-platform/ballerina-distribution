@@ -23,7 +23,7 @@ public function main() {
     string name = stu.name;
     io:println(name);
 
-    // Creates a record using the type definition `Student`.
+    // Creates a record using the `Student` type definition.
     Student student = {
         name: "Harry",
         age: 12
@@ -33,18 +33,18 @@ public function main() {
     int age = student.age;
     io:println(age);
 
-    // Creates a record using the type definition `Person` with an additional `country` field.
+    // Creates a record using the `Person` type definition with an additional `country` field.
     Person person = {
         name: "Harry",
         age: 12,
         "country": "UK"
     };
 
-    // The two records `stu` & `student` are equal since they have the same set of fields 
+    // The two `stu` & `student` records are equal since they have the same set of fields 
     // and values.
     io:println(stu == student);
 
-    // Record equality returns `false` on the following two records since `person` has 
+    // Record equality returns `false` on the following two records as `person` has 
     // an additional field called `country`.
     io:println(stu == person);
 }

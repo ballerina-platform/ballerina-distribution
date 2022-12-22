@@ -7,7 +7,7 @@ function getStudentDetails(string studentId,
         string org,
         string orgName) returns map<string> {
     return {
-        // The `"unique-identifier"` value is substituted from the constant `ID` as the key.
+        // The `unique-identifier` value is substituted from the constant `ID` as the key.
         [ID] : studentId,
         "name": name,
         // The key computed at runtime will be the concatenation of `_` and

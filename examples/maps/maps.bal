@@ -14,11 +14,11 @@ public function main() {
     // Adds a new entry for `Anne`.
     age["Anne"] = 19;
 
-    // Since there exists an entry for `Tom`, it can be accessed using `map:get()` method. 
+    // As there exists an entry for `Tom`, it can be accessed using the `map:get()` method. 
     // Using `age["Tom"]` wouldn't work here because its type would be `int?` and  not `int`.
     age["Anne"] = age.get("Jack");
 
-    // `map:hasKey()` method checks whether the map `age` has a member with `Jack` as the key.
+    // The `map:hasKey()` method checks whether the map `age` has a member with `Jack` as the key.
     if age.hasKey("Jack") {
         // The member with the key `Jack` can be removed using `map:remove()`.
         _ = age.remove("Jack");
