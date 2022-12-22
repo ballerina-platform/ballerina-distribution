@@ -5,9 +5,9 @@ Resource method arguments can use user-defined types. The listener will use intr
 The API description (e.g. OpenAPI) can be generated from the Ballerina service declaration. Annotations can be used to refine the mapping between the Ballerina-declared type and wire format.
 
 ## Related links
-- [Converting from JSON to user-defined type](https://ballerina.io/learn/by-example/converting-from-json-to-user-defined-type/)
-- [JSON type](https://ballerina.io/learn/by-example/json-type/)
-- [Service data binding](https://ballerina.io/learn/by-example/http-data-binding/)
+- [Converting from JSON to user-defined type](/learn/by-example/converting-from-json-to-user-defined-type/)
+- [JSON type](/learn/by-example/json-type/)
+- [Service data binding](/learn/by-example/http-data-binding/)
 - [http module](https://lib.ballerina.io/ballerina/http)
 
 ::: code resource_method_typing.bal :::
