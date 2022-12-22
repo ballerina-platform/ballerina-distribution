@@ -1,5 +1,6 @@
 $ bal run nested_arrays.bal
 [["carrot","apple"],["avocado","egg"],["fish","banana"]]
 [["carrot","apple"],["avocado","egg","fish","banana"]]
+[["carrot","apple"],["avocado","egg","fish","banana"]]
 avocado
 [["carrot","apple"],["apple","egg","fish","banana"]]
