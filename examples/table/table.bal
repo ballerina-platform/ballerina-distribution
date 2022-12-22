@@ -1,7 +1,7 @@
 import ballerina/io;
  
 type Employee record {|
-   	// key must be readonly
+   	// The key must be read-only.
    	readonly string name;
    	int salary;
 |};
