@@ -6,7 +6,7 @@ type Student record {|
 |};
  
 public function main() returns error? {
-    // Since json is a union: ()|boolean|int|float|decimal|string|json[]|map<json>,
+    // As JSON is a union: `()|boolean|int|float|decimal|string|json[]|map<json>`,
     // the following cases are allowed.
     json n = null;
     json i = 21;
