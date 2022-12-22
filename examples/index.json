@@ -3322,6 +3322,22 @@
         ]
     },
     {
+        "title": "Email client security",
+        "column": 3,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "SSL/TLS",
+                "url": "email-client-ssl-tls",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
         "title": "FTP Service",
         "column": 3,
         "category": "Network libraries",
