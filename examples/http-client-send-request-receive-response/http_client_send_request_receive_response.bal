@@ -1,10 +1,10 @@
 import ballerina/http;
 import ballerina/io;
 
-type Album readonly & record {|
+type Album readonly & record {
     string title;
     string artist;
-|};
+};
 
 public function main() returns error? {
     // Creates a new client with the Basic REST service URL.
