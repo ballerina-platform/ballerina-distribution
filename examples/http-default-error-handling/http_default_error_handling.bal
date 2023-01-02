@@ -1,9 +1,9 @@
 import ballerina/http;
 
-type Album readonly & record {|
+type Album readonly & record {
     string title;
     string artist;
-|};
+};
 
 service / on new http:Listener(9090) {
 
