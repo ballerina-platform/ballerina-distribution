@@ -190,6 +190,9 @@ subprojects {
         /* Ballerina GraphQL */
         ballerinaStdLibs "io.ballerina:graphql-tools:${graphqlVersion}"
 
+        /* Ballerina Protoc Tool */
+        ballerinaStdLibs "io.ballerina:protoc-tools:${protocToolVersion}"
+
         /* Ballerina OpenAPI */
         ballerinaOpenAPILibs "io.ballerina:module-ballerina-openapi:${openapiVersion}"
 
