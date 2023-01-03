@@ -15,7 +15,7 @@ function checkId(int id) returns InvalidIDError? {
 }
  
 function getNextId(int id) returns int|InvalidError {
-    // Check can also be used with custom errors
+    // Check can also be used with custom errors.
     check checkId(id);
     return id + 1;
 }
