@@ -7,7 +7,7 @@ The `graphql:Client` allows handling cases where a GraphQL service responds with
 ::: code graphql_client_handle_partial_response.bal :::
 
 ## Prerequisites
-- Run the GraphQL service given in the [Record as output object](https://ballerina.io/learn/by-example/graphql-returning-record-values) example.
+- Run the GraphQL service given in the [Error handling](https://ballerina.io/learn/by-example/graphql-service-error-handling) example.
 
 Run the client program by executing the following command.
 

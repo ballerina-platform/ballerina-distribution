@@ -1,0 +1,2 @@
+$ bal run kafka_service.bal
+time = 2022-12-22T00:15:38.188+05:30 level = ERROR module = "" message = "An error occured: " error = "Data binding failed: {ballerina/lang.value}ConversionError"

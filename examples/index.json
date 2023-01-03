@@ -1459,6 +1459,14 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Error handling",
+                "url": "http-default-error-handling",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Send cache response",
                 "url": "http-service-cache-response",
                 "verifyBuild": true,
@@ -1718,14 +1726,6 @@
             {
                 "name": "Default resource",
                 "url": "http-default-resource",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Default error handling",
-                "url": "http-default-error-handling",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -2043,6 +2043,14 @@
             {
                 "name": "Union Types",
                 "url": "graphql-service-union-types",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Error handling",
+                "url": "graphql-service-error-handling",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -2883,6 +2891,15 @@
             {
                 "name": "Constraint validation",
                 "url": "kafka-service-constraint-validation",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Error handling",
+                "url": "kafka-service-error-handling",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
