@@ -16,8 +16,8 @@ public function main() {
     io:println(incrementByTwo(1));
 
     // The type of the `x` and `y` parameters are explicitly defined in the function signature.
-    var sub = function(int x, int y) returns int {
+    var subtract = function(int x, int y) returns int {
         return x - y;
     };
-    io:println(sub(2, 1));
+    io:println(subtract(2, 1));
 }

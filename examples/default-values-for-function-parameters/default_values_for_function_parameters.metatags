@@ -1,2 +1,2 @@
 description: This BBE demonstrates defining default parameter values in a function using the preceding parameter value as the default parameter value in Ballerina.
-keywords: ballerina, ballerina by example, bbe, default parameter, default value, functions, substring
+keywords: ballerina, ballerina by example, bbe, default parameter, default value, functions
