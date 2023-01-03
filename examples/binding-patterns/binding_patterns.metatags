@@ -1,2 +1,2 @@
-description: This BBE introduces extracting information from structured values, destructuring information using binding patterns
+description: This BBE introduces extracting information from structured values and destructuring information using binding patterns
 keywords:  ballerina, ballerina by example, bbe, binding pattern, destructuring

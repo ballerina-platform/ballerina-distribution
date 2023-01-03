@@ -6,8 +6,8 @@ public function main() {
     int age;
 
     // The following example uses a list binding pattern to destructure the  
-    // returned list and assign to the two variables, `name` and `age`.
-    // However other binding patterns can also be used as such.
+    // returned list and assign it to the two variables, `name` and `age`.
+    // However, other binding patterns can also be used similarly.
     [name, age] = getDetails();
 
     io:println(name);

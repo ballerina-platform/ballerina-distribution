@@ -12,8 +12,8 @@ type Day record {
 
 function matchTime1(Time pair) {
     match pair {
-        // The binding pattern below matches mappings that contain at least the fields with 
-        // keys `hours` and `seconds`. The values of these fields can be accessed via the 
+        // The binding pattern below matches the mappings that contain at least the fields with 
+        // the `hours` and `seconds` keys. The values of these fields can be accessed via the 
         // `hours` and `seconds` variables within this block.
         var {hours, minutes} => {
             io:println(hours, ", ", minutes);
@@ -35,8 +35,9 @@ function matchTime2(Time time) {
 
 function matchTime3(Day r) {
     match r {
-        // The pattern below matches a mapping that has a field with key `t` and a value that 
-        // is another mapping that contains at least the fields with keys `hours` and `minutes`.
+        // The pattern below matches a mapping that has a field with the `t`key
+        // and a value, which is another mapping that contains at least the fields 
+        // with the `hours` and `minutes` keys.
         var {t: {hours, minutes}} => {
             io:println(hours, ", ", minutes);
         }

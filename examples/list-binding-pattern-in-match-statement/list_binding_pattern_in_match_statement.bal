@@ -8,16 +8,16 @@ const string all = "*";
 function matchCommand(string[] commands) {
     match commands {
         // The list binding pattern below matches lists that contain two list items
-        // where the first list item matches with the constant `show`.
+        // in which the first list item matches with the `show` constant.
         [show, _] => {
-            io:println("List all files");
+            io:println("List all files.");
         }
         [remove, all] => {
-            io:println("Remove all files");
+            io:println("Remove all files.");
         }
-        // The list binding pattern below matches lists where the first list item
-        // matches with the constant `remove` and the remaining value are matched with
-        // the rest binding pattern `...files`.
+        // The list binding pattern below matches lists in which the first list item
+        // matches with the `remove` constant and the remaining values are matched with
+        // the `...files` rest binding pattern.
         [remove, ...var files] => {
             io:println("Remove files: ", files);
         }

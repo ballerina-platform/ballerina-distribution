@@ -3,7 +3,7 @@ import ballerina/io;
 
 public function main() {
 
-    // This will create 3 variables `id`, `firstname` and `lastname` with the following types.
+    // This will create 3 variables named `id`, `firstname`, and `lastname` with the following types.
     [int, [string, string]] [id, [firstname, lastname]] = getDetails();
 
     io:println(id);
