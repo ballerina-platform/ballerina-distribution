@@ -1,6 +1,6 @@
 # Tuples
 
-The tuple type is another structured type which creates a list of values like arrays. The main difference between arrays and tuples is that an array has only one type applicable to every member of its list. In contrast, in a tuple type, you can individually specify the types for each member. Tuples are most suitable for describing lists with multiple types. Tuples can be used to return multiple values from a function.
+The tuple type is another structured type which creates a list of values like arrays. The main difference between the arrays and the tuples is that an array has only one type applicable to every member of its list. In contrast, in a tuple type, you can individually specify the types for each member. Tuples are most suitable for describing lists with multiple types. Tuples can be used to return multiple values from a function.
 
 Tuple type can be declared as a comma separated list of types inside a square bracket `[ ]`.
 

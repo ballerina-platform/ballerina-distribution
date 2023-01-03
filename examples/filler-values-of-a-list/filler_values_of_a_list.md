@@ -1,6 +1,6 @@
 # Filler values of a list
 
-Lists can be initialized with the help of filler values. These are the default values that a list member will be initialized with if the user does not provide a value in the list constructor. This gives you the flexibility to assign the actual values later for lists.
+Lists can be initialized with the help of filler values. These are the default values that a list member will be initialized with if you do not provide a value in the list constructor. This gives you the flexibility to assign the actual values later for lists.
 
 ::: code updating_a_list.bal :::
 

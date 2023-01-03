@@ -1,6 +1,6 @@
 # Filler values of a list
 
-We can use == and != on lists to check deep equality of lists: two lists are deep equal if they have the same members in the same order. === and !== check for the exact equality which matches the references of the lists.
+We can use `==` and `!=` on lists to check deep equality of two lists: two lists are deep equal if they have the same members in the same order. `===` and `!==` check for the exact equality which matches the references of the lists.
 
 ::: code updating_a_list.bal :::
 

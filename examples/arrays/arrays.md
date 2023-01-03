@@ -1,8 +1,8 @@
 # Arrays
 
-An array can be used to hold set of values of a same type `T`. Array type can be defined as `T[n]` where, `T` is the element type and `n` is the length of the array. `n` must be an integer literal or constant reference of type int. Optionally we can create a variable length array by defining an array without `n` as `T[]`.
+An array can be used to hold a set of values of the same type `T`. The array type can be defined as `T[n]` in which `T` is the element type and `n` is the length of the array. `n` must be an integer literal or constant reference of type int. Optionally, you can create a variable-length array by defining an array without `n` as `T[]`.
 
-The length of the array can be inferred from the context by defining array as `T[*]`. Length of the array should be known in compile time.
+The length of the array can be inferred from the context by defining the array as `T[*]`. The length of the array should be known in compile time.
 
 ::: code arrays.bal :::
 
