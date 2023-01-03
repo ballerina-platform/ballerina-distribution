@@ -12,7 +12,7 @@ table<Album> key(title) albums = table [
 
 service / on new http:Listener(9090) {
 
-    // The resource returns the `Album` typed array value
+    // The resource returns the `Album` typed array value.
     resource function get albums() returns Album[] {
         return albums.toArray();
     }

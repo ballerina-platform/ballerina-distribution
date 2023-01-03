@@ -3,7 +3,7 @@ import ballerina/sql;
 import ballerinax/mysql;
 import ballerinax/mysql.driver as _;
 
-// Defines a record to load the query result.
+// The `Album` record to load records from `albums` table.
 type Artist record {|
     @sql:Column {name: "artist_id"}
     int artistId;
@@ -19,8 +19,7 @@ service / on new http:Listener(8080) {
     function init() returns error? {
         // Initiate the mysql client at the start of the service. This will be used
         // throughout the lifetime of the service.
-        self.db = check new (host = "localhost", port = 3306, user = "root",
-                            password = "Test@123", database = "MUSIC_STORE");
+        self.db = check new ("localhost", "root", "Test@123", "MUSIC_STORE", 3306);
     }
 
     resource function get artists() returns Artist[]|error {
@@ -28,7 +27,7 @@ service / on new http:Listener(8080) {
         stream<Artist, sql:Error?> artistStream = self.db->query(`SELECT * FROM artists;`);
 
         // Process the stream and convert results to Artist[] or return error.
-        return check from Artist artist in artistStream
+        return from Artist artist in artistStream
             select artist;
     }
 }

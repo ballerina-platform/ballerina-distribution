@@ -1,12 +1,8 @@
-# Subscriptions
+# GraphQL service - Subscriptions
 
-A resource method with the `subscribe` accessor inside a GraphQL service represents a field in the root `Subscription` type. Therefore, if a resource method with the `subscribe` accessor is present inside the Ballerina GraphQL service, the auto-generated schema will have a `Subscription` type.
+The Ballerina `graphql` module allows defining GraphQL `Subscription` operations. A resource method with the `subscribe` accessor inside a GraphQL service represents a field in the root `Subscription` type. Therefore, If a resource method with the `subscribe` accessor is present inside the Ballerina GraphQL service, the auto-generated schema will have a `Subscription` type. Each resource method with a `subscribe` accessor in the service is added as a field of the `Subscription` type. The field name will be the resource method name and the field type will be the constraint type of the `stream` returned from the resource method. Not returning a `stream` type from a resource method having a `subscribe` accessor results in a compilation error. Use a subscription operation to monitor small, incremental changes to large objects or to obtain low-latency, real-time updates.
 
-A resource method with `subscribe` accessor must return a `stream` type. Not returning a `stream` type will result in a compilation error.
-
-Each resource method with the `subscribe` accessor in the service will be added as a field of the `Subscription` type. The field name will be the resource method name and the field type will be the constraint type of the stream returned from the resource method.
-
-This example shows a GraphQL endpoint, which has a field `names` in the root `Subscription` type.
+>**Note:** GraphQL subscriptions are read-only operations that are used to continuously fetch data from a GraphQL server. They are usually executed against information such as `PersonStatus`, `CurrentLocation`, `TotalDonations`, etc. Ballerina uses `resource` methods to handle such cases. Therefore, these `resource` methods are usually named using nouns with `subscription` accessor.
 
 ::: code graphql_subscriptions.bal :::
 
@@ -16,14 +12,14 @@ Run the service by executing the following command.
 
 Send the following document to the GraphQL endpoint to test the service using any GraphQL client that supports subscriptions to test the service.
 
->**Tip:** You can invoke the above service via the [GraphiQL client](/learn/by-example/graphql-graphiql/).
-
 ::: code graphql_subscriptions.graphql :::
 
 It should return the following values.
 
 ::: out graphql_subscriptions.client.out :::
 
+>**Tip:** You can invoke the above service via the [GraphiQL client](/learn/by-example/graphql-graphiql/).
+
 ## Related links
-- [`graphql` package - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
+- [`graphql` module - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
 - [GraphQL `Subscription` type - Specification](/spec/graphql/#313-the-subscription-type)

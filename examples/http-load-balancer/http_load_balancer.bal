@@ -10,7 +10,6 @@ public function main() returns error? {
             {url: "http://localhost:9091"},
             {url: "http://localhost:9092"}
         ],
-
         timeout: 5
     });
     string payload = check httpClient->/albums;

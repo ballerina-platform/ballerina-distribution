@@ -9,11 +9,6 @@ listener grpc:Listener securedEP = new (9090,
     }
 );
 
-// The service can be secured with OAuth2 and by enforcing authorization
-// optionally. It can be enabled by setting the `grpc:OAuth2IntrospectionConfig` configurations.
-// Authorization is based on scopes. A scope maps to one or more groups.
-// Authorization can be enabled by setting the `string|string[]` type
-// configurations for `scopes` field.
 @grpc:ServiceConfig {
     auth: [
         {
@@ -36,6 +31,7 @@ listener grpc:Listener securedEP = new (9090,
     value: GRPC_SIMPLE_DESC
 }
 service "HelloWorld" on securedEP {
+
     remote function hello(string request) returns string {
         return "Hello " + request;
     }

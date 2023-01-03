@@ -1,6 +1,7 @@
 import ballerina/http;
 
 service / on new http:Listener(9090) {
+
     resource function get redirect(http:Caller caller) returns error? {
         http:Response res = new;
         // Sends a redirect response with a location header.
@@ -10,6 +11,7 @@ service / on new http:Listener(9090) {
 }
 
 service / on new http:Listener(9092) {
+
     resource function get greeting() returns string {
         return "Hello World!";
     }

@@ -12,6 +12,7 @@ public type StringMessage record {|
     autoAck: false
 }
 service on new rabbitmq:Listener(rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT) {
+
     remote function onMessage(StringMessage message, rabbitmq:Caller caller) returns error? {
         // Acknowledges a single message positively.
         transaction {
