@@ -9,6 +9,10 @@ public function main() {
     io:println(a === b);
     // Output will be `true` as the references are the same.
     io:println(a === a);
+    // This will assign the reference `a` to `c`.
+    int[] c = a;
+    // Output will be `true` as the references are the same.
+    io:println(a === c);
 
     string[3][2] orderItems = [["carrot", "apple"], ["avacado", "egg"], ["fish", "banana"]];
     string[3][2] orderItems2 = [["carrot", "apple"], ["avacado", "egg"], ["fish", "banana"]];
