@@ -8,7 +8,7 @@ E.g., A programming bug or an out-of-memory error. Panic has an associated error
 
 ::: out panics.out :::
 
-## Related Links
+## Related links
 - [Errors](https://ballerina.io/learn/by-example/error-reporting/)
 - [Error handling](https://ballerina.io/learn/by-example/error-handling/)
 - [Trap](https://ballerina.io/learn/by-example/trap/)

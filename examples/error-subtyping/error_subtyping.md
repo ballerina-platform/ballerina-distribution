@@ -8,7 +8,7 @@ Even if the structure of the types is similar, they function as distinct types. 
 
 ::: out error_subtyping.out :::
 
-## Related Links
+## Related links
 - [Errors](https://ballerina.io/learn/by-example/error-reporting/)
 - [Error handling](https://ballerina.io/learn/by-example/error-handling/)
 - [Check](https://ballerina.io/learn/by-example/check/)
