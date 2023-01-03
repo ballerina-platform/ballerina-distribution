@@ -1,6 +1,6 @@
 # Querying with streams
 
-Query expression can be used to iteratively call the `next()` method of a stream. Binding pattern in query expression will bind the value of the result from the `next()` operation on the stream. If stream terminates with error, result of query expression is an error.
+Query expression can be used to iteratively call the `next()` method of a stream. Binding pattern in query expression will bind the value of the result from the `next()` operation on the stream. If stream terminates with error, result of the query expression is an error.
 
 ::: code querying_with_streams.bal :::
 

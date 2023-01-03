@@ -18,8 +18,8 @@ public function main() returns error? {
     // Creates a `stream` passing an `EvenNumberGenerator` object to the `stream` constructor.
     stream<int, error?> evenNumberStream = new (evenGen);
 
-    // Iterates `evenNumberStream` until it returns `()`
-    // If stream terminates with error, result of query expression is an error.
+    // Iterates the `evenNumberStream` until it returns `()`.
+    // If stream terminates with error, result of the query expression is an error.
     int[] evenNumbers = check from var number in evenNumberStream
                         select number;
 

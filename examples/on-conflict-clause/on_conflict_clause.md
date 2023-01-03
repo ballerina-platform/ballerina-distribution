@@ -1,6 +1,6 @@
 # On conflict clause
 
-When constructing a map or table with a key sequence using query expression,  there can be conflicting keys. on conflict clause can be specified after the select clause to handle these cases.
+When constructing a map or a table with a key sequence using the query expression,  there can be conflicting keys. on conflict clause can be specified after the select clause to handle these cases.
 
 Syntax to write on conflict clause is `on conflict expression`. Type of the expression should be `error?`. If the result of evaluating the expression is an error, then the error will be the result. Otherwise, the old value is replaced by the new value.
 

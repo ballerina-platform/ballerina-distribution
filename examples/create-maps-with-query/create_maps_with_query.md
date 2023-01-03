@@ -2,7 +2,7 @@
 
 Query expressions can be used to create a map from an iterable value. Query expression should be preceded by the `map` keyword in this case.
 
-The type of the value in the select clause must belong to the tuple type `[string, T]`, where `map<T>` is the type of the constructed value.
+The type of the value in the select clause must belong to the tuple type `[string, T]`, where the type of the constructed value is `map<T>`.
 
 ::: code querying_tables.bal :::
 

@@ -38,7 +38,7 @@ public function main() {
                              outer join var user in users
                              // The `on` condition is used to match the `login` with the `user` based on the `userId`.
                              // The iteration is skipped when the condition is not satisfied.
-                             // If there is no matching pair for all members in `users` then `user` will be () 
+                             // If there is no matching pair for all members in `users` then `user` will be `()`
                              // and skip the join-on-condition.
                              on login.userId equals user is () ? () : user.id
                              select string `${user is () ? "New user" : user.name} : ${login.time}`;
