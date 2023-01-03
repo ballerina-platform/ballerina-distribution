@@ -1,0 +1,2 @@
+description: This BBE demonstrates creating listener object, starting service from service class definition, attaching listener to a service object in Ballerina. 
+keywords: ballerina, ballerina by example, bbe, service class, listener, runtime, object type inclusion
