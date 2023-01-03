@@ -1,6 +1,6 @@
 # RabbitMQ service - Consume message
 
-The messages are consumed from an existing queue using the Ballerina RabbitMQ message listener. Multiple services consuming messages from the same queue or from different queues can be attached to the same Listener.
+The `rabbitmq:Service` listens to the given queue for incoming messages. When a publisher sends a message on a queue, any active service listening on that queue receives the message. A `rabbitmq:Listener` is created by passing the host and port of the RabbiMQ broker. A `rabbitmq:Service` attached to the listener is used to listen to a specific queue and consume incoming messages. The queue to listen to should be given as the service name or in the `queueName` field of the `rabbitmq:ServiceConfig`. Use it to listen to messages sent to a particular queue.
 
 ::: code rabbitmq_consumer.bal :::
 

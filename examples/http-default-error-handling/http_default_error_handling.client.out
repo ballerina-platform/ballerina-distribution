@@ -1,0 +1,17 @@
+$ curl -v localhost:9090/artist
+*   Trying ::1...
+* TCP_NODELAY set
+* Connected to localhost (::1) port 9090 (#0)
+> GET /artist HTTP/1.1
+> Host: localhost:9090
+> User-Agent: curl/7.64.1
+> Accept: */*
+> 
+< HTTP/1.1 500 Internal Server Error
+< content-type: text/plain
+< content-length: 35
+< server: ballerina
+< date: Wed, 21 Dec 2022 13:30:30 +0530
+< 
+* Connection #0 to host localhost left intact
+Something wrong with the connection

@@ -1,8 +1,6 @@
 # GraphQL service - Context
 
-The `graphql:Context` object can be used to pass meta information between the resolver functions. A context object is created per request. An init function should be provided using the `graphql:ServiceConfig` parameter named `contextInit`. Inside this function, the `graphql:Context` can be initialized. The corresponding `http:RequestContext` and `http:Request` can be accessed from the init function.
-
-You can add attributes to the `graphql:Context` as key-value pairs. The key is a `string` and the value can be any `readonly` value or an `isolated` object. If the init function is not provided, an empty context object will be created.
+The Ballerina `graphql` module allows defining and using a `graphql:Context` object. The `contextInit` field in the `graphql:ServiceConfig` annotation can be used to pass the context initialization function. If it is not provided, a default, empty `context` object will be created per request. When the `graphql:Context` is needed to be accessed, define it as the first parameter of the `resource`/`remote` method. Use the `graphql:Context` to pass meta information between the `resource`/`remote` methods used as GraphQL object fields.
 
 >**Note:** If the `graphql:Context` is defined as the first parameter of a resolver function, it will be accessible inside the resolver. Passing down the context is not necessary.
 

@@ -1,8 +1,6 @@
 # UDP client - Send/Receive datagram with connection
 
-The ConnectClient is configured so that it only receives data from, and sends data to, the given remote peer address. Once connected, data may not be received from or sent to any other address. 
-
-The client remains connected until it is explicitly disconnected or until it is closed. This sample demonstrates how to send data to a connected server and print the echoed response.
+The `udp:ConnectClient` connects to a UDP socket, and then sends and receives datagrams. When connected, data may not be received from or sent to any other address. A `udp:ConnectClient` is created by giving the `remoteHost` and `remotePort`. Once connected, `writeBytes` and `readBytes` synchronous methods are used to send and receive byte streams. Since they are synchronous methods often used in two different strands. The client remains connected until it is explicitly disconnected or until it is closed. Use this to interact with UDP servers or implement low latency connections for time-critical transmissions where data loss is acceptable.
 
 ::: code udp_connect_client.bal :::
 

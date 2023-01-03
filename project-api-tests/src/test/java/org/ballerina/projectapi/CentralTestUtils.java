@@ -120,8 +120,8 @@ public class CentralTestUtils {
      *
      * @return token required to dispatch GitHub workflows.
      */
-    public static String getBallerinaBotWorkflow() {
-        return System.getenv("ballerinaBotWorkflow");
+    public static String getBallerinaBotToken() {
+        return System.getenv("ballerinaBotToken");
     }
 
     /**
@@ -427,14 +427,18 @@ public class CentralTestUtils {
     /**
      * Delete the packages pushed during project API tests.
      *
+     * @param caller the test class calling this method
      * @throws IOException if request could not be handled
      */
-    public static void deleteTestPackagesFromCentral() throws IOException {
+    public static void deleteTestPackagesFromCentral(String caller) throws IOException {
         String ghOrg = "wso2-enterprise";
         String ghRepo = "ballerina-registry";
         String workflowId = "30610274";
         String branch = "main";
-        dispatchGitWorkflow(ghOrg, ghRepo, workflowId, branch);
+        boolean isWorkflowDispatched = dispatchGitWorkflow(ghOrg, ghRepo, workflowId, branch);
+        if (!isWorkflowDispatched) {
+            Assert.fail("Failed deleting test packages from central after " + caller + " tests");
+        }
     }
 
     /**
@@ -444,9 +448,10 @@ public class CentralTestUtils {
      * @param ghRepo GitHub repository
      * @param workflowId GitHub workflow ID
      * @param branch branch name which the workflow runs against
+     * @return true if workflow API call is successful, else false
      * @throws IOException if request could not be handled
      */
-    public static void dispatchGitWorkflow(String ghOrg, String ghRepo, String workflowId, String branch)
+    public static boolean dispatchGitWorkflow(String ghOrg, String ghRepo, String workflowId, String branch)
             throws IOException {
         String url = "https://api.github.com/repos/" + ghOrg + "/" + ghRepo
                 + "/actions/workflows/" + workflowId + "/dispatches";
@@ -457,14 +462,11 @@ public class CentralTestUtils {
         Request resolutionReq = new Request.Builder()
                 .post(requestBody)
                 .url(url)
-                .addHeader("Authorization", "Bearer " + getBallerinaBotWorkflow())
+                .addHeader("Authorization", "Bearer " + getBallerinaBotToken())
                 .build();
         Call resolutionReqCall = client.newCall(resolutionReq);
         try (Response response = resolutionReqCall.execute()) {
-            if (response.code() != HTTP_NO_CONTENT) {
-                Assert.fail("Failed gh workflow dispatch " + url + " with code:" + response.code() + " and "
-                        + response.body().string());
-            }
+            return response.code() == HTTP_NO_CONTENT;
         }
     }
 
