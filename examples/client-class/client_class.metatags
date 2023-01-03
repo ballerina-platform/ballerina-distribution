@@ -1,0 +1,2 @@
+description: This BBE demonstrates creating client object from client class definition, sending get and post requests to a http client.
+keywords: ballerina, ballerina by example, bbe, class, client, http, remote, resource
