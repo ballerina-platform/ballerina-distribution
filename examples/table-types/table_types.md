@@ -11,6 +11,6 @@ Compared to maps,
 ::: out table_types.out :::
 
 ## Related links
-- [Table](https://ballerina.io/learn/by-example/table/)
-- [Structured keys](https://ballerina.io/learn/by-example/multiple-key-fields/)
-- [Multiple key fields](https://ballerina.io/learn/by-example/multiple-key-fields/)
+- [Table](/learn/by-example/table/)
+- [Structured keys](/learn/by-example/multiple-key-fields/)
+- [Multiple key fields](/learn/by-example/multiple-key-fields/)

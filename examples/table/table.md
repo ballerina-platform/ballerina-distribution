@@ -7,7 +7,7 @@ The table constructor expression looks like an array constructor. The `add` and 
 ::: out table.out :::
 
 ## Related links
-- [Maps](https://ballerina.io/learn/by-example/maps/)
-- [Structured keys](https://ballerina.io/learn/by-example/multiple-key-fields/)
-- [Multiple key fields](https://ballerina.io/learn/by-example/multiple-key-fields/)
-- [Control openness](https://ballerina.io/learn/by-example/controlling-openness/)
+- [Maps](/learn/by-example/maps/)
+- [Structured keys](/learn/by-example/multiple-key-fields/)
+- [Multiple key fields](/learn/by-example/multiple-key-fields/)
+- [Control openness](/learn/by-example/controlling-openness/)
