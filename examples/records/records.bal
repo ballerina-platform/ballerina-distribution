@@ -19,19 +19,11 @@ public function main() {
         age: 12
     };
 
-    // Accesses the `name` field in `stu`.
-    string name = stu.name;
-    io:println(name);
-
     // Creates a record using the `Student` type definition.
     Student student = {
         name: "Harry",
         age: 12
     };
-
-    // Accesses the `age` field in `student`.
-    int age = student.age;
-    io:println(age);
 
     // Creates a record using the `Person` type definition with an additional `country` field.
     Person person = {
@@ -39,6 +31,10 @@ public function main() {
         age: 12,
         "country": "UK"
     };
+
+    // Accesses the `name` field in `stu`.
+    string name = stu.name;
+    io:println(name);
 
     // The two `stu` & `student` records are equal since they have the same set of fields 
     // and values.
