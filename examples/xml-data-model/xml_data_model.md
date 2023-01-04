@@ -19,3 +19,6 @@ A `text` item is immutable.
 ::: code xml_data_model.bal :::
 
 ::: out xml_data_model.out :::
+
+## Related links
+- [XML operations](/learn/by-example/xml-operations/)
