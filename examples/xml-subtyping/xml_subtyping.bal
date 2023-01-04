@@ -18,7 +18,6 @@ public function main() {
     xml:Text text = xml `Hello World`;
     io:println(text);
 
-
     string hello = "Hello";
     string world = "World";
 
@@ -35,7 +34,6 @@ public function main() {
     xml xmlHelloWorld = xml `<p>hello</p>World`;
 
     // An `xml` value belongs to the `xml<T>` type if each of its members belongs to type `T`.
-    io:println(firstElement is xml<xml:Element>);
     io:println(resultElement is xml<xml:Element>);
     io:println(xmlHelloWorld is xml<xml:Element>);
 
