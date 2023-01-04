@@ -12,5 +12,6 @@ It is possible to access elements in xml
 
 ::: out xml_access.out :::
 
+## Related links
 - [XML data model](/learn/by-example/xml-data-model/)
 - [XML operations](/learn/by-example/xml-operations/)
