@@ -1,8 +1,8 @@
 # Records
 
-A `record` type `r` is a collection of specific named fields where each field has a type for its value. A field `f` can be accessed with `r.f`. Records are mutable and can be constructed using a syntax similar to a map. 
+A `record` type is a collection of specific named fields where each field has a type for its value. A field `f` of a record value `r` can be accessed with `r.f`. Records are mutable and can be constructed using a syntax similar to a map.
 
-Typically, a `record` type is combined with a type definition. A `closed record` type only allows fields that are specified whereas, an `open record` type allows additional fields other than those specified. Record equality works the same as map equality; two records are equal if they have the same set of fields and the values for each field are equal.
+A `closed record` type only allows fields that are specified whereas, an `open record` type allows additional fields other than those specified. Typically, a `record` type is written using a type definition.
 
 ::: code records.bal :::
 
