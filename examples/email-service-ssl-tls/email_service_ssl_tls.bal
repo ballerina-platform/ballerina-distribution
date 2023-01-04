@@ -5,7 +5,7 @@ listener email:ImapListener emailListener = new ({
     host: "imap.email.com",
     username: "reader@email.com",
     password: "pass456",
-    security: email:START_TLS_ALWAYS,
+    security: email:SSL,
     secureSocket: {
         cert: "../resource/path/to/public.crt"
     }

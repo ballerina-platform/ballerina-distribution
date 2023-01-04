@@ -6,7 +6,7 @@ public function main() returns error? {
         "imap.email.com", 
         "reader@email.com", 
         "pass456",
-        security = email:START_TLS_ALWAYS,
+        security = email:SSL,
         secureSocket = {
             cert: "../resource/path/to/public.crt"
         }
