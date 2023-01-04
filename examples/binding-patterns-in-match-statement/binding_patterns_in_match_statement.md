@@ -6,3 +6,8 @@ You can use the rest binding pattern (`...r`) in a binding pattern of a `match` 
 ::: code binding_patterns_in_match_statement.bal :::
 
 ::: out binding_patterns_in_match_statement.out :::
+
+## Related links
+- [Match statement](/learn/by-example/match-statement/)
+- [If statement](/learn/by-example/if-statement/)
+- [Typed binding pattern](/learn/by-example/typed-binding-pattern)

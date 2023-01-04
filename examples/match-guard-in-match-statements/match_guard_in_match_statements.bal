@@ -6,20 +6,19 @@ function matchValue(any val, boolean isObstructed, float powerPercentage) return
     // The value of the `val` variable is matched against the given value match patterns.
     match val {
         // Match guard `if (!isObstructed)` is used
-        1 if (!isObstructed) => {
+        1 if !isObstructed => {
             // This block will execute if `!isObstructed` is true
             return "Move forward";
         }
-        // use `|` to match more than one value
+        // use | to match more than one value
         2|3 => {
             return "Turn";
         }
         // Match guard `if (25.0 < powerPercentage)` is used
-        4 if (25.0 < powerPercentage) => {
+        4 if 25.0 < powerPercentage => {
             // This block will execute if statement `(25.0 < powerPercentage)`` is true
             return  "Increase speed";
         }
-
         "STOP" => {
             return "STOP";
         }
@@ -31,7 +30,6 @@ function matchValue(any val, boolean isObstructed, float powerPercentage) return
             return "Invalid instruction";
         }
     }
-
 }
 
 public function main() {

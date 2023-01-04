@@ -111,8 +111,22 @@
                 "isLearnByExample": true
             },
             {
+                "name": "If statement",
+                "url": "if-statement",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
                 "name": "Match statement",
                 "url": "match-statement",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Match guard in match statement",
+                "url": "match-guard-in-match-statement",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
