@@ -18,7 +18,7 @@ public function main() returns error? {
     io:println(s1);
 
     json j = {name: "Anne", age: 23};
-    // Calling the `value:cloneWithType()` function with `Student` will make use of default values
+    // Calling the `value:cloneWithType()` function with `Student` will make use of the default values
     // in `Student`.
     Student s2 = check j.cloneWithType(Student);
     io:println(s2);

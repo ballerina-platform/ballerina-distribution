@@ -10,11 +10,11 @@ type Student record {|
     string code;
 |};
 
-// `PartTimeStudent` record has all the fields of `Person` and `Student`.
+// The `PartTimeStudent` record has all the fields of `Person` and `Student`.
 type PartTimeStudent record {|
     *Person;
     *Student;
-    // Overrides `code` field in `Student`.
+    // Overrides the `code` field in `Student`.
     string:Char code;
 |};
 

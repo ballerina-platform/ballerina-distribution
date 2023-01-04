@@ -10,7 +10,7 @@ type PartTimeStudent record {|
     string name;
     int age;
     // Rest descriptor allows additional fields with `anydata` values
-    // in `PartTimeStudent` type.
+    // in the `PartTimeStudent` type.
     anydata...;
 |};
 
