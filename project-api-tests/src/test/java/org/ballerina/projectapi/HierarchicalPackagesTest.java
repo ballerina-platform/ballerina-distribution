@@ -411,9 +411,8 @@ public class HierarchicalPackagesTest {
         deleteFiles(tempWorkspaceDirectory);
     }
 
-    // TODO: enable after getting the correct GH token
-    @AfterSuite(enabled = false)
+    @AfterSuite
     private void cleanupSuite() throws IOException {
-        deleteTestPackagesFromCentral(HierarchicalPackagesTest.class.getName());
+        deleteTestPackagesFromCentral();
     }
 }

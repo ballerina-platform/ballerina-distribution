@@ -67,7 +67,7 @@ jobs:
           packageUser: ${{ secrets.BALLERINA_BOT_USERNAME }}
           packagePAT: ${{ secrets.BALLERINA_BOT_TOKEN }}
           devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
-          ballerinaBotToken: $ {{ secrets.BALLERINA_BOT_TOKEN }}
+          ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
         run: |
           ./gradlew build -Pversion=${VERSION}
           ./gradlew release -Prelease.useAutomaticVersion=true -x test
