@@ -1,6 +1,6 @@
 import ballerina/websocket;
 
-listener websocket:Listener chatListener = new(9090,
+listener websocket:Listener chatListener = new (9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -27,13 +27,13 @@ service /chat on chatListener {
 
     resource function get .() returns websocket:Service {
         return new ChatService();
-   }
+    }
 }
 
 service class ChatService {
     *websocket:Service;
 
-    remote function onMessage(websocket:Caller caller, string chatMessage) returns websocket:Error? {
+    remote function onMessage(websocket:Caller caller, string chatMessage) returns error? {
         check caller->writeMessage("Hello, How are you?");
     }
 }

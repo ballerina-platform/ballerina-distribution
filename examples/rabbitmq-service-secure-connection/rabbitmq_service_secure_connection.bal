@@ -8,7 +8,7 @@ public type Order record {
     boolean isValid;
 };
 
-listener rabbitmq:Listener orderListener = new(rabbitmq:DEFAULT_HOST, 5671,
+listener rabbitmq:Listener orderListener = new (rabbitmq:DEFAULT_HOST, 5671,
     // To secure the client connection using TLS/SSL, the client needs to be configured with
     // a certificate file of the server.
     secureSocket = {
