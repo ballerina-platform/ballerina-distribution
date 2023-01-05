@@ -1,2 +1,2 @@
 $ bal run init_function.bal
-error: James: The value should be less than 3, but it set to 5
+error: Value should less than 3

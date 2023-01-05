@@ -1,3 +1,5 @@
+import ballerina/io;
+
 // Uninitialized integer variable `value`.
 int value;
 
@@ -11,6 +13,12 @@ function init() returns error? {
     name = "James";
     
     if value > 3 {
-        return error(string `${name}: The value should be less than 3, but it set to ${value}`);
+        // The initialization will fail with this error message.
+        return error("Value should less than 3");
     }
+}
+
+public function main() {
+    // This will not be executed because the init function returns an error.
+    io:println(name);
 }
