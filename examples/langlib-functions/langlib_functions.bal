@@ -26,9 +26,9 @@ public function main() returns error? {
 
     // value.clone() returns a clone of a value.
     int[] clonedEvenNumbers = [2, 4, 6 ,8, 10, 12].clone();
-    // following statement is `true`.
+    // Following statement is `true`.
     io:println(evenNumbers == clonedEvenNumbers);
-    //following statement is `false`.
+    // Following statement is `false`.
     io:println(evenNumbers === clonedEvenNumbers);
 
     // value.cloneReadOnly() returns a clone of a value that is read-only.
@@ -37,6 +37,6 @@ public function main() returns error? {
 
     // value.cloneWithType() constructs a value with a specified type by cloning another value.
     float clonedVal = check val.cloneWithType(float);
-    // following statement is `true`.
+    // Following statement is `true`.
     io:println(clonedVal);
 }
