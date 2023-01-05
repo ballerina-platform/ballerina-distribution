@@ -6,15 +6,15 @@ type Student record {|
     int age;
 |};
 
-// Defines an `open record` type named `Person`. It allows fields other than those specified.
-type Person record {
+// Defines an `open record` type named `Employee`. It allows fields other than those specified.
+type Employee record {
     string name;
     int age;
 };
 
 public function main() {
     // Creates an `open record` by specifying values for its fields.
-    record {string name; int age;} stu = {
+    record {string name; int age;} person = {
         name: "Harry",
         age: 12
     };
@@ -25,22 +25,22 @@ public function main() {
         age: 12
     };
 
-    // Creates a record using the `Person` type definition with an additional `country` field.
-    Person person = {
+    // Creates a record using the `Employee` type definition with an additional `country` field.
+    Employee employee = {
         name: "Harry",
         age: 12,
         "country": "UK"
     };
 
-    // Accesses the `name` field in `stu`.
-    string name = stu.name;
+    // Accesses the `name` field in `employee`.
+    string name = employee.name;
     io:println(name);
 
-    // The two `stu` & `student` records are equal since they have the same set of fields 
+    // The two `person` & `student` records are equal since they have the same set of fields 
     // and values.
-    io:println(stu == student);
+    io:println(person == student);
 
-    // Record equality returns `false` on the following two records as `person` has 
+    // Record equality returns `false` on the following two records as `employee` has 
     // an additional field called `country`.
-    io:println(stu == person);
+    io:println(person == employee);
 }
