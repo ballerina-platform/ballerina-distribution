@@ -1,6 +1,6 @@
 # Client class
 
-The `client` keyword is used with class definition to define client class. Ballerina supports defining client objects to allow a program to interact with remote network services. They are a special kind of objects that contain `remote` and `resource` methods in addition to regular methods. It is a compile-time error to have `remote` or `resource` methods in the regular class definition.
+The `client` keyword is used with class definition to define a client class. Ballerina supports defining client objects to allow a program to interact with remote network services. They are a special kind of object that contain `remote` and `resource` methods in addition to regular methods.
 
 Similarly class objects can be constructed using object constructor as well.
 
