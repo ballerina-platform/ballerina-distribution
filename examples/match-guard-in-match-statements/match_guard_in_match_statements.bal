@@ -10,13 +10,13 @@ function matchValue(any val, boolean isObstructed, float powerPercentage) return
             // This block will execute if `!isObstructed` is true.
             return "Move forward";
         }
-        // use | to match more than one value
+        // Use `|` to match more than one value
         2|3 => {
             return "Turn";
         }
         // Match guard `if 25.0 < powerPercentage` is used.
         4 if 25.0 < powerPercentage => {
-            // This block will execute if statement `(25.0 < powerPercentage)`` is true.
+            // This block will execute if `25.0 < powerPercentage` is true.
             return  "Increase speed";
         }
         "STOP" => {
@@ -25,7 +25,7 @@ function matchValue(any val, boolean isObstructed, float powerPercentage) return
         switchStatus => {
             return "Switch ON";
         }
-        // Use _ to match type any.
+        // Use `_` to match type `any`.
         _ => {
             return "Invalid instruction";
         }

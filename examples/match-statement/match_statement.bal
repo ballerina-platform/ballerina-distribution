@@ -8,7 +8,7 @@ function matchValue(any val) returns string {
         1 => {
             return "Move forward";
         }
-        // use | to match more than one value
+        // Use `|` to match more than one value.
         2|3 => {
             return "Turn";
         }
@@ -18,7 +18,7 @@ function matchValue(any val) returns string {
         switchStatus => {
             return "Switch ON";
         }
-        // use _ to match type any
+        // Use `_` to match type `any`.
         _ => {
             return "Invalid instruction";
         }
