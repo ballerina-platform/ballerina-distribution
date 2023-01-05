@@ -5,3 +5,8 @@
 ::: continue_statement.bal :::
 
 ::: continue_statement.out :::
+
+## Related links
+- [Break statement](/learn/by-example/break-statement/)
+- [While statement](/learn/by-example/while-statement/)
+- [Foreach statement](/learn/by-example/foreach-statement/)
