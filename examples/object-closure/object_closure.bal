@@ -15,5 +15,6 @@ public function main() {
     };
 
     engineer.setName("Walter");
+    io:println(engineer.name);
     io:println(names);
 }
