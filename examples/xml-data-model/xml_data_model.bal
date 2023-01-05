@@ -17,13 +17,13 @@ public function main() returns error? {
     xml x4 = xml `Hello, world!`;
     io:println(x4);
 
-    // xml:createText can be used to convert a string to xmlText
+    // xml:createText can be used to convert a string to xmlText.
     string hello = "Hello";
     string world = "World";
     xml:Text xmlString = xml:createText(hello + " " + world);
     io:println(xmlString);
 
-    // creating a xml value
+    // creating an xml value.
     xml xmlValue = xml `<name>Sherlock Holmes</name><details>
                     <author>Sir Arthur Conan Doyle</author>
                     <language>English</language>

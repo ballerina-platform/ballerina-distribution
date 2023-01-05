@@ -11,7 +11,7 @@ public function main() {
         io:println(item);
     }
 
-    // forEach() function available in the lang.xml iterates over each item
+    // forEach() function available in the lang.xml iterates over each item.
     x1.forEach((e) => io:println(e));
 
 }

@@ -21,7 +21,7 @@ public function main() {
     string hello = "Hello";
     string world = "World";
 
-    // xml:createText can be used to convert a string to xmlText
+    // xml:createText can be used to convert a string to xmlText.
     xml:Text xmlString = xml:createText(hello + " " + world);
     io:println(xmlString);
 

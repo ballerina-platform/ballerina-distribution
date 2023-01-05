@@ -8,7 +8,7 @@ public function main() returns error? {
                 <language>English</language>
             </details>`;
 
-    //  for concatenation '+' or x1.concat(x2) can be used.
+    //  For concatenation '+' or x1.concat(x2) can be used.
     xml x3 = x1 + x2;
     io:println(x3);
 
