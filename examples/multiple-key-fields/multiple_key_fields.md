@@ -5,6 +5,7 @@ A `table` provides access to its members using a key that comes from the `readon
 ## Related links
 - [Table Syntax](/learn/by-example/table-syntax/)
 - [Structured keys](/learn/by-example/multiple-key-fields/)
+- [Maps](/learn/by-example/maps/)
 
 ::: code multiple_key_fields.bal :::
 
