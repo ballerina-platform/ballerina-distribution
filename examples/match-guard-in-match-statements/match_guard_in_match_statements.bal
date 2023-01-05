@@ -5,18 +5,18 @@ const switchStatus = "ON";
 function matchValue(any val, boolean isObstructed, float powerPercentage) returns string {
     // The value of the `val` variable is matched against the given value match patterns.
     match val {
-        // Match guard `if (!isObstructed)` is used
+        // Match guard `if !isObstructed` is used.
         1 if !isObstructed => {
-            // This block will execute if `!isObstructed` is true
+            // This block will execute if `!isObstructed` is true.
             return "Move forward";
         }
         // use | to match more than one value
         2|3 => {
             return "Turn";
         }
-        // Match guard `if (25.0 < powerPercentage)` is used
+        // Match guard `if 25.0 < powerPercentage` is used.
         4 if 25.0 < powerPercentage => {
-            // This block will execute if statement `(25.0 < powerPercentage)`` is true
+            // This block will execute if statement `(25.0 < powerPercentage)`` is true.
             return  "Increase speed";
         }
         "STOP" => {
@@ -25,7 +25,7 @@ function matchValue(any val, boolean isObstructed, float powerPercentage) return
         switchStatus => {
             return "Switch ON";
         }
-        // use _ to match type any
+        // Use _ to match type any.
         _ => {
             return "Invalid instruction";
         }
