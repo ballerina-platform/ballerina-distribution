@@ -8,7 +8,8 @@ function isEven(int n) returns boolean {
 public function main() {
    // The `isEven` function is referred as a value.
    function (int n) returns boolean f = isEven;
-  
+
+   // The function values can be executed like regular function calls.
    io:println(f(5));
    io:println(f(6));
 }

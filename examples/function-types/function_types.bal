@@ -26,6 +26,6 @@ public function main() {
         return n % 2 == 0;
     };
 
-    // Invoke the function with 6 as the default value for the parameter `num`.
+    // Invoke the function with `6` as the default value for the parameter `num`.
     io:println(evenFunc3());
 }
