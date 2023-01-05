@@ -1,7 +1,6 @@
 # Break Statement
 
-`Break` statements can be used to terminate the execution within a nearest enclosing
-`while` and `foreach` statement.
+A `break` statement can be used to terminate the execution within the nearest enclosing `while` or `foreach` statement.
 
 ::: code break_statement.bal :::
 

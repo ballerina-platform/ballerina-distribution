@@ -6,7 +6,7 @@ public function main() {
     int i = 0;
     while true {
         io:println(names[i]);
-        // loop breaks when condition satisfied
+        // Loop breaks when condition satisfied.
         if names[i] == "Tom" {
             break;
         }
@@ -15,7 +15,7 @@ public function main() {
     }
 
     foreach string name in names {
-        // loop breaks when condition satisfied
+        // Loop breaks when condition satisfied.
         if name == "Ann" {
             break;
         }

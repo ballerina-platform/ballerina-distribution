@@ -9,6 +9,6 @@ The syntax contains a variable, keyword `in` followed by an expression and a blo
 ::: out foreach_statement.out :::
 
 ## Related links
+- [Break statement](/learn/by-example/break-statement/)
 - [Continue statement](/learn/by-example/continue-statement/)
 - [While statement](/learn/by-example/while-statement/)
-- [Break statement](/learn/by-example/break-statement/)
