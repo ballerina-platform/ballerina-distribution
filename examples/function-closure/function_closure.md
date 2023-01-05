@@ -1,8 +1,6 @@
 # Function closure
 
-The object constructor and function can work as a closure, which captures its surrounding environment and can access variables outside of its own scope. This means that a closure can access variables that are defined in its parent scopes.
-
-It is a compile-time error to have parameter names similar to the outer-scope variable names.
+The object constructor and function can work as a closure, that can access variables outside of its own scope. It is a compile-time error to have parameter names similar to the outer-scope variable names.
 
 ::: code function_closure.bal :::
 
