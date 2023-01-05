@@ -1,6 +1,9 @@
 # Create tables with query
 
-Query expressions can be used to create tables from an iterable value. The `table` keyword should be specified as the query construct type before the query expression. The key of the created table can be specified explicitly.
+Query expressions can be used to create tables from an iterable value. One way of doing this is specifying
+`table` keyword as the query construct type before the query expression. The key of the created table can 
+be specified explicitly. Second way is to provide a contextually expected type. 
+The `select` clause must emit values belonging to `map<any|error>`.
 
 ::: code creating_tables_with_query.bal :::
 

@@ -1,4 +1,4 @@
-$ bal run creating_streams_with_query.bal
+$ bal run create_streams_with_query.bal
 request to get student name API
 John
 request to get student name API

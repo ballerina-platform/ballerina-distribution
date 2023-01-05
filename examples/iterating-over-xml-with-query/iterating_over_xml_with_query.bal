@@ -21,7 +21,8 @@ public function main() {
                        </category>
                    </categories>`;
 
-    // Iterates through the `categories` XML sequence, constructs the `Book` records, and collects them into a table.
+    // Iterates through the `categories` XML sequence, constructs the `Book` records,
+    // and collects them into a table.
     table<Book> books = from var category in categories/<category>
                         select {
                             id: (category/<id>).toString(),

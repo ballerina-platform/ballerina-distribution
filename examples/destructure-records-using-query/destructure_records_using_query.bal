@@ -13,7 +13,7 @@ public function main() {
     ];
 
     // A `Person` record is destructured here as a projection with the `first` and the `last` fields.
-    // `{first, last}` is the mapping binding pattern. it is same as the `{first:first, last:last}`.
+    // `{first, last}` is the mapping binding pattern. It is the same as `{first:first, last:last}`.
     var names = from var {first, last} in persons
                 select {first, last};
     io:println(names);
