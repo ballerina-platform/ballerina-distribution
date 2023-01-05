@@ -2,9 +2,9 @@
 
 Lists can be initialized with the help of filler values. These are the default values that a list member will be initialized with if you do not provide a value in the list constructor. This gives you the flexibility to assign the actual values later for lists.
 
-::: code updating_a_list.bal :::
+::: code filler_values_of_a_list.bal :::
 
-::: out updating_a_list.out :::
+::: out filler_values_of_a_list.out :::
 
 ## Filler values table
 
