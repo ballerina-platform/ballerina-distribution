@@ -14,7 +14,7 @@ public function main() returns error? {
 
     int val = 123;
     // lang.value module provides functions that work on values of more than one basic type.
-    // val.toString() performs a direct conversion of a val to a string
+    // val.toString() performs a direct conversion of a val to a string.
     io:println("value is " + val.toString());
 
     // val.ensureType() safely casts a value to a type and
