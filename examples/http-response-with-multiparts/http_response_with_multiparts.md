@@ -1,6 +1,6 @@
 # HTTP service - Response with multiparts
 
-The multipart payload is one or more different sets of data combined in a single body. HTTP service supports multipart content setting and retrieval in the `http:Response` along with the nested parts through support functions. An array of `mime:Entity` is returned when retrieving parts through the `getBodyParts` method of the `http:Response`. If the received parts contain nested parts, you can loop through the parent parts and get the child parts. When sending out multipart content, `setBodyParts` is used to set the array of `mime:Entity`. This is useful to handle different content typed messages as a single payload and large payloads.
+The multipart payload is one or more different sets of data combined in a single body. HTTP service supports multipart content setting and retrieving in the `http:Response` along with the nested parts through support functions. An array of `mime:Entity` is returned when retrieving parts through `getBodyParts` method of the `http:Response`. If the received parts contain nested parts, you can loop through the parent parts and get the child parts. When sending out multipart content, `setBodyParts` is used to set the array of `mime:Entity`. This is useful to handle different content-typed messages as a single payload and large payloads.
 
 ::: code http_response_with_multiparts.bal :::
 
