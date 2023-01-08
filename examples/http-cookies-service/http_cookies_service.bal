@@ -43,9 +43,7 @@ service /cookieDemo on serverEP {
             if user is string {
                 // Respond with the username added to the welcome message.
                 return "Welcome back " + user;
-
             }
-
         }
         return http:NOT_FOUND;
     }

@@ -1,6 +1,7 @@
 # HTTP service - Matrix parameter
 
 The matrix parameter enhances the hierarchical structure of HTTP URIs. The `http:Request` has the `getMatrixParams` method to extract the matrix parameter map from the given path segment.
+
 ::: code http_matrix_param.bal :::
 
 Run the service as follows.
