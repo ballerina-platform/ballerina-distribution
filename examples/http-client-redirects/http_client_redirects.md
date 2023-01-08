@@ -12,5 +12,5 @@ Run the client program by executing the following command.
 ::: out http_client_redirects.out :::
 
 ## Related links
-- [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`http` module - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
 - [HTTP client redirect - Specification](/spec/http/#2413-redirect)

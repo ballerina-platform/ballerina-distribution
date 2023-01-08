@@ -1,6 +1,6 @@
 # HTTP service - Cookies
 
-HTTP cookie can track, personalize, and manage the session in the service. The cookies contained in the request can be accessed from the `getCookies` method of the `http:Request`. Setting cookies back in the response is done by the `addCookie` method of the `http:Response`. This is useful for services to maintain the state.
+HTTP cookies can track, personalize, and manage the session in the service. The cookies can be accessed from the `getCookies` method of the `http:Request`. Setting cookies back in the response is done by the `addCookie` method of the `http:Response`. This is useful for services to maintain the state.
 
 ::: code http_cookies_service.bal :::
 

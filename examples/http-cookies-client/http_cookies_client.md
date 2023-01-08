@@ -1,6 +1,6 @@
 # HTTP client - Cookies
 
-HTTP cookies can be enabled in the client using `http:ClientConfiguration`.
+HTTP cookies can track, personalize, and manage the session between the `http:Client` and service. Cookie client behavior is enabled using the `http:ClientConfiguration`. If the cookie-enabled client receives a response with a cookie, the subsequent requests are sent along with the same cookie. Therefore the same session id is passed back to the service to retrieve the previous state. This is useful to maintain stateful interaction.
 
 ::: code http_cookies_client.bal :::
 
