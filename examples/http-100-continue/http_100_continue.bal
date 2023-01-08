@@ -9,16 +9,13 @@ service / on new http:Listener(9090) {
         if request.expects100Continue() {
             string mediaType = request.getContentType();
             if mediaType.toLowerAscii() == "text/plain" {
-
                 // Send a `100-continue` response to the client.
                 check caller->continue();
-
-            // Send a `417` response to ignore the payload as the content type is mismatched
-            // with the expected content type.
             } else {
+                // Send a `417` response to ignore the payload as the content type is mismatched
+                // with the expected content type.
                 http:ExpectationFailed resp = {body: "Unprocessable Entity"};
-                check caller->respond(resp);
-                return;
+                return caller->respond(resp);
             }
         }
 

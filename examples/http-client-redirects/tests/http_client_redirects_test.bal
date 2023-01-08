@@ -3,8 +3,8 @@ import ballerina/http;
 
 @test:Config {}
 function testFunc() returns error? {
-    http:Client httpEndpoint = check new("localhost:9090",
-            followRedirects = { enabled: true, maxCount: 5 });
+    http:Client httpEndpoint = check new ("localhost:9090",
+    followRedirects = {enabled: true, maxCount: 5});
 
     // Send a GET request to the specified endpoint
     string response = check httpEndpoint->get("/redirect");

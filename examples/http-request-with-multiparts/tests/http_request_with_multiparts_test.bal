@@ -4,9 +4,9 @@ import ballerina/test;
 
 @test:Config {}
 function testFunc() returns error? {
-    http:Client httpEP = check new("localhost:9090");
+    http:Client httpEP = check new ("localhost:9090");
     mime:Entity jsonBodyPart = new;
-    jsonBodyPart.setJson({ "name": "ballerina" });
+    jsonBodyPart.setJson({"name": "ballerina"});
     mime:Entity[] bodyParts = [jsonBodyPart];
     http:Request request = new;
     request.setBodyParts(bodyParts, contentType = mime:MULTIPART_FORM_DATA);
@@ -14,7 +14,6 @@ function testFunc() returns error? {
     mime:Entity[] result = check response1.getBodyParts();
     json jsonValue = check result[0].getJson();
     test:assertEquals(jsonValue.toJsonString(), "{\"name\":\"ballerina\"}");
-
 
     http:Response response2 = check httpEP->get("/multiparts/encoder");
     result = check response2.getBodyParts();

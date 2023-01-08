@@ -1,6 +1,6 @@
 # HTTP service - Redirects
 
-The `http:Request` is redirected by sending a redirect response with the `Location` header by the `http:Service`. This is done by invoking the `redirect` method of `http:Caller` which results in the response containing the specified status code and the `Location` header.
+The `http:Client` supports redirection. If the `http:Response` contains a `redirect` status code with `Location` header, the client internally calls the respective endpoint and returns the successful response. To enable redirection, set `followRedirect` to `true` in the client config.
 
 ::: code http_service_redirects.bal :::
 

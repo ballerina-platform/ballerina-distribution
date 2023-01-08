@@ -1,0 +1,8 @@
+$ curl -F "part1={\"name\":\"ballerina\"};type=application/json" http://localhost:9090/multiparts/decoder -H "Content-Type: multipart/mixed" -H 'Expect:'
+--f710b4a02896b88a
+content-disposition: attachment;name="part1"
+content-type: application/json
+content-id: 0
+
+{"name":"ballerina"}
+--f710b4a02896b88a--

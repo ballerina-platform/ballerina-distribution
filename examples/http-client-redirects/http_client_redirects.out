@@ -1,3 +1,2 @@
 $ bal run http_client_redirects.bal
-
 Response received: Hello World!
