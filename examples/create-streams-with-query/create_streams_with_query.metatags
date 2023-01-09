@@ -1,3 +1,4 @@
-description: Create a stream of values, load values lazily, save resources by loading values when needed,
-             stream construct type, handling the termination value of a stream
+description: This BBE demonstrates creating a stream of values, loading values lazily,
+             saving resources by loading values when needed, the stream construct type, and
+             handling the termination value of a stream.
 keywords: ballerina, ballerina by example, bbe, stream, lazy, value, next, while

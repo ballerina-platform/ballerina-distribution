@@ -19,7 +19,7 @@ public function main() returns error? {
     stream<int, error?> evenNumberStream = new (evenGen);
 
     // Iterates the `evenNumberStream` until it returns `()`.
-    // If stream terminates with error, result of the query expression is an error.
+    // If the stream terminates with an error, the result of the query expression will be the error.
     int[] evenNumbers = check from var number in evenNumberStream
                         select number;
 

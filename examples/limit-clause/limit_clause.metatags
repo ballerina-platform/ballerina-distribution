@@ -1,3 +1,3 @@
-description: This BBE demonstrates limit clause in Ballerina, select top n elements in a collection
-             limit the results to given number, select set of elements in a collection
+description: This BBE demonstrates the `limit` clause in Ballerina, selecting the top `n` elements in a collection,
+             limiting the results to a given number, and selecting a set of elements in a collection.
 keywords: ballerina, ballerina by example, bbe, limit clause, query, query expression, limit, collection, filter

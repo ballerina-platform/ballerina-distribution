@@ -1,6 +1,6 @@
 # Iterating over XML with query
 
-An XML value can be iterated by using the query expression. Query expression will iterate for each sequence item.
+An `XML` value can be iterated by using a query expression. A query expression will iterate over each sequence item.
 
 ::: code iterating_over_xml_with_query.bal :::
 

@@ -1,6 +1,7 @@
 # Destructure records using queries
 
-Destructuring records is particularly useful with the query expressions but works anywhere you can have `var`. `var` is followed by a binding pattern. You can also explicitly specify the type before the binding pattern without using `var`.
+Destructuring records is particularly useful with the query expressions. But works anywhere you can have `var`. 
+`var` is followed by a binding pattern. You can also specify the type explicitly before the binding pattern without using `var`.
 
 `{x}` is short for `{x: x}` in both binding patterns and record constructors.
 

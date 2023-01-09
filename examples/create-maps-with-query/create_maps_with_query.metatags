@@ -1,2 +1,3 @@
-description: Create a map, filter a map, create sub map from a map, create a map from a table
+description: This BBE demonstrates creating a map, filtering a map, creating a sub-map from a map, 
+             and creating a map from a table.
 keywords: ballerina, ballerina by example, bbe, map, table, query, var

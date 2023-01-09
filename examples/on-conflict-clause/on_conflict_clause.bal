@@ -15,21 +15,21 @@ public function main() {
             {id: 1, name: "John", score: 200}
         ];
 
-    // Result of the following will be an error since the key `John` is duplicated.
+    // The result of the following will be an error since the key `John` is duplicated.
     map<int>|error studentScores = map from var {name, score} in students
                                    select [name, score]
                                    on conflict onConflictError;
 
     io:println(studentScores);
 
-    // Value `100` of the key `John` will be replaced by the second occurrence value `200`.
+    // The value `100` of the key `John` will be replaced by the second occurrence value `200`.
     map<int> lastRoundScore = map from var student in students
                               select [student.name, student.score]
                               on conflict ();
 
     io:println(lastRoundScore);
 
-    // Result of the following will be an error since the key `1` is duplicated.
+    // The result of the following will be an error since the key `1` is duplicated.
     table<Student> key(id)|error studentScoresTable = table key(id) from var student in students
                                                       select student
                                                       on conflict onConflictError;

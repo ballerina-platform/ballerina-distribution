@@ -16,8 +16,8 @@ public function main() returns error? {
             {id: 9, firstName: "Cassie", lastName: "Smith", score: 250}
         ];
 
-    // The type of the value in the `select` clause must belong to the tuple type
-    // `[string, T]`, where the type of the constructed value is `map<T>`. 
+    // The type of the value in the `select` clause must belong to the
+    // `[string, T]` tuple type, where the type of the constructed value is `map<T>`. 
     map<int> studentScores = map from var student in students
                         select [student.firstName, student.score];
     io:println(studentScores);

@@ -22,7 +22,7 @@ public function main() {
         {userId: 3987, time: "12:05:00"}
     ];
 
-    // Inner equijoin
+    // Inner equijoin.
     string[] joinResult = from var login in logins
                           // The `join` clause iterates any iterable value similarly to the
                           // `from` clause.
@@ -35,12 +35,12 @@ public function main() {
 
     io:println(joinResult);
 
-    // Outer equijoin
+    // Outer equijoin.
     string[] outerEquijoin = from var login in logins
                              outer join var user in users
-                             // If there is no matching pair for all members in `users`
-                             // then `user` will be `()`
-                             // and skip the join-on-condition.
+                             // If there is no matching pair for all members in the `users`,
+                             // then, the `user` will be `()`,
+                             // and the join-on-condition will be skipped.
                              on login.userId equals user is () ? () : user.id
                              select string `${user is () ? "New user" : user.name} : ${login.time}`;
 

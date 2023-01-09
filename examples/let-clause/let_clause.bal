@@ -22,7 +22,7 @@ public function main() {
 
     io:println(names);
 
-    // `let` clause supports multiple variable declarations separated by `,`.
+    // The `let` clause supports multiple variable declarations separated by `,`.
     names = from var student in students
                    let int sum = (student.mathematics + student.english), int avg = sum / 2
                    where sum > 0

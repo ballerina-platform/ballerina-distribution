@@ -1,3 +1,3 @@
-description: This BBE demonstrates creating tables with query in Ballerina, create a table
-             filter a table, create sub table from a table
+description: This BBE demonstrates creating tables with a query in Ballerina, creating a table,
+             filtering a table, and creating a sub table from a table.
 keywords: ballerina, ballerina by example, bbe, creating table, query expression, query, where, key, var

@@ -12,13 +12,13 @@ public function main() {
         {first: "Tom", last: "Riddle", "yearOfBirth": 1926}
     ];
 
-    // A `Person` record is destructured here as a projection with the `first` and the `last` fields.
+    // A `Person` record is destructured here as a projection with the `first` and `last` fields.
     // `{first, last}` is the mapping binding pattern. It is the same as `{first:first, last:last}`.
     var names = from var {first, last} in persons
                 select {first, last};
     io:println(names);
 
-    // Explicitly specify the type before the binding pattern instead of `var`.
+    // Specify the type explicitly before the binding pattern instead of `var`.
     names = from Person {first, last} in persons
                  select {first, last};
     io:println(names);

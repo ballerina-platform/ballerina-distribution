@@ -1,5 +1,5 @@
-description: This BBE demonstrates querying tables in Ballerina, filter tables
-             order tables rows, sort a table, iterate a table, table operations, query a table,
-             create an array from table.
+description: This BBE demonstrates querying tables in Ballerina, filtering tables,
+             ordering tables rows, sorting a table, iterating a table, performing table operations, querying a table,
+             and creating an array from a table.
 keywords: ballerina, ballerina by example, bbe, querying tables, table, query, query expression,
           filter, order, sort, iterate, array, where
