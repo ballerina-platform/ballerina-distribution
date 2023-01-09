@@ -1,14 +1,14 @@
 import ballerina/http;
 import ballerina/io;
 
-type Album readonly & record {|
+type Album readonly & record {
     string title;
     string artist;
-|};
+};
 
 public function main() returns error? {
     // Defines the HTTP client to call the OAuth2 secured APIs.
-    http:Client albumClient = check new("localhost:9090",
+    http:Client albumClient = check new ("localhost:9090",
         auth = {
             refreshUrl: "https://localhost:9445/oauth2/token",
             refreshToken: "24f19603-8565-4b5f-a036-88a945e1f272",

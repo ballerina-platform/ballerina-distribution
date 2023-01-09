@@ -1,11 +1,8 @@
 # HTTP service - Redirects
 
-The `http:Request` is redirected by sending a redirect response with the `Location` header by the `http:Service`. This is done by invoking the `redirect` method of `http:Caller` which results in the response containing the specified status code and the `Location` header.
+The `http:Client` supports redirection. If the `http:Response` contains a `redirect` status code with `Location` header, the client internally calls the respective endpoint and returns the successful response. To enable redirection, set `followRedirect` to `true` in the client config.
 
 ::: code http_service_redirects.bal :::
-
-## Prerequisites
-- Run the HTTP service given in the [REST service - Path parameter](/learn/by-example/http-path-param/) example.
 
 Run the service as follows.
 
@@ -13,10 +10,10 @@ Run the service as follows.
 
 Invoke the service by executing the following cURL command in a new terminal.
 
->**Tip:** You may invoke the service via [Redirect client](../http-client-redirects/).
+>**Tip:** You may invoke the service via [Redirect client](../http-client-redirects/) example.
 
 ::: out http_service_redirects.client.out :::
 
 ## Related links
-- [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`http` module - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
 - [HTTP service caller - specification](/spec/http/#2341-httpcaller)

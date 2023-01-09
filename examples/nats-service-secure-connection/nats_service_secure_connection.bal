@@ -9,7 +9,7 @@ public type Order record {
 };
 
 // Initializes a NATS listener with TLS/SSL and username/password authentication.
-listener nats:Listener orderListener = new(nats:DEFAULT_URL,
+listener nats:Listener orderListener = new (nats:DEFAULT_URL,
     // To secure the client connection using TLS/SSL, the client needs to be configured with
     // a certificate file of the server.
     secureSocket = {

@@ -1459,6 +1459,14 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Error handling",
+                "url": "http-default-error-handling",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Send cache response",
                 "url": "http-service-cache-response",
                 "verifyBuild": true,
@@ -2035,6 +2043,14 @@
             {
                 "name": "Union Types",
                 "url": "graphql-service-union-types",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Error handling",
+                "url": "graphql-service-error-handling",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -2880,6 +2896,15 @@
                 "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "Error handling",
+                "url": "kafka-service-error-handling",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -3298,6 +3323,38 @@
         ]
     },
     {
+        "title": "Email service security",
+        "column": 3,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "SSL/TLS",
+                "url": "email-service-ssl-tls",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "Email client security",
+        "column": 3,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "SSL/TLS",
+                "url": "email-client-ssl-tls",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
         "title": "FTP Service",
         "column": 3,
         "category": "Network libraries",
@@ -3513,7 +3570,7 @@
                 "name": "Read/write CSV with data mapping",
                 "url": "io-csv-datamapping",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "isLearnByExample": false
             },
             {

@@ -36,7 +36,7 @@ service class RequestInterceptor {
 
 // Interceptors can also be engaged at the listener level. In this case, the `RequestInterceptors`
 // can have only the default path.
-listener http:Listener interceptorListener = new http:Listener(9090);
+listener http:Listener interceptorListener = new (9090);
 
 // Engage interceptors at the service level. Request interceptor services will be executed from
 // head to tail.

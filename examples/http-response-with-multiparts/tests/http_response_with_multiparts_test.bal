@@ -4,8 +4,8 @@ import ballerina/test;
 
 @test:Config {}
 function testFunc() returns error? {
-    http:Client httpEP1 = check new("localhost:9090");
-    http:Client httpEP2 = check new("localhost:9092");
+    http:Client httpEP1 = check new ("localhost:9090");
+    http:Client httpEP2 = check new ("localhost:9092");
 
     string response1 = check httpEP1->get("/multiparts/decoder");
     test:assertEquals(response1, "Body Parts Received!");

@@ -14,7 +14,7 @@ service / on new http:Listener(9092) {
     function init() returns error? {
         // Initiate the NATS client at the start of the service. This will be used
         // throughout the lifetime of the service.
-        self.orderClient = check new(nats:DEFAULT_URL,
+        self.orderClient = check new (nats:DEFAULT_URL,
             // To secure the client connection using TLS/SSL, the client needs to be configured with
             // a certificate file of the server.
             secureSocket = {

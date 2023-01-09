@@ -5,7 +5,7 @@ type Album readonly & record {|
     string artist;
 |};
 
-listener http:Listener securedEP = new(9090,
+listener http:Listener securedEP = new (9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",

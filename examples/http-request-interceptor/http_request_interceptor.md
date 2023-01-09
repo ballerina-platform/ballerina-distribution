@@ -12,7 +12,7 @@ Invoke the service by executing the following cURL command in a new terminal.
 
 ::: out http_request_interceptor.client.out :::
 
->**Tip:** You can invoke the above service via the [Send request/Receive response client](/learn/by-example/http-client-send-request-receive-response/) by adding the required header to the request.
+>**Tip:** You can invoke the above service via the [Send request/Receive response client](/learn/by-example/http-client-send-request-receive-response/) example by adding the required header to the request.
 
 ## Related links
 - [`http` module - API documentation](https://lib.ballerina.io/ballerina/http/latest/)

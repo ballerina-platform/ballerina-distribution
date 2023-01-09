@@ -12,20 +12,20 @@ type ProfileResponse record {|
     record {|Profile profile;|} data;
 |};
 
-// The following record type defines the shape of the response from a GraphQL service which allows
-// the `name` and `age` fields to have a `null` value.
+// The following record type defines the shape of the response from a GraphQL service, which allows
+// the `age` field to have a `null` value.
 type Profile record {|
-    string? name;
+    string name;
     int? age;
 |};
 
 public function main() returns error? {
     // Creates a new client with the backend URL.
-    graphql:Client graphqlClient = check new("localhost:9090/graphql");
+    graphql:Client graphqlClient = check new ("localhost:9090/graphql");
 
-    string document = "{ profile { name, age } }";
+    string document = "{ profile(id: 1) { name, age } }";
     ProfileResponse response = check graphqlClient->execute(document);
-    
+
     // Access the data from the response.
     io:println(response.data);
 
