@@ -1,4 +1,4 @@
-# Rest Binding Pattern in Error Binding Pattern
+# Rest binding pattern in error binding pattern
 
 You can use the rest binding pattern (`...r`) to bind the detail mappings that are not explicitly bound in the error binding pattern. The type of the rest binding will be a `map` holding the fields that have not been matched.
 

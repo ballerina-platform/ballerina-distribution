@@ -1,2 +1,2 @@
-description: This BBE demonstrates rest binding pattern, rest binding pattern in mapping binding, rest binding pattern in record typed binding, record destructuring with binding patterns and json destructuring.
+description: This BBE demonstrates the rest binding pattern, rest binding pattern in mapping binding, rest binding pattern in record typed binding, record destructuring with binding patterns, and JSON destructuring.
 keywords: ballerina, ballerina by example, bbe, binding pattern, rest binding, mapping binding pattern, mapping binding, record typed binding, record binding, record destructuring, json destructuring

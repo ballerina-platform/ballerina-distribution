@@ -1,2 +1,2 @@
-description: This BBE demonstrates the single use of typed binding patterns, single use of typed binding with on fail clause, and use of capture binding with on fail clause
+description: This BBE demonstrates the single use of typed binding patterns, single use of typed binding with the `on fail` clause, and use of capture binding with the `on fail` clause.
 keywords: ballerina, ballerina by example, bbe, binding pattern, typed binding, single use, on fail

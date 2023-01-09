@@ -9,7 +9,7 @@ type SampleError error<SampleErrorData>;
 
 public function main() {
     // The detail mapping can be destructured using a rest parameter.
-    // `details` is of type `map<string|boolean>` having `code` and `reason` fields.
+    // `details` is of type `map<string|boolean>` having the `code` and `reason` fields.
     var error(message, ...details) = getSampleError();
     io:println("Message: ", message);
 

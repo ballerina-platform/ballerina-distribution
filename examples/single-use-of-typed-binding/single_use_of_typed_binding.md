@@ -1,4 +1,4 @@
-# Single Use of Typed Binding Patterns
+# Single use of typed binding patterns
 
 The single use of typed binding patterns is usually followed by an `=` operator.
 
@@ -7,7 +7,7 @@ The single use of typed binding patterns is usually followed by an `=` operator.
 ::: out single_use_of_typed_binding.out :::
 
 ## Related links
-- [Binding Pattern](/learn/by-example/binding-pattern/)
-- [Typed Binding Pattern](/learn/by-example/typed-binding-pattern/)
-- [Single Use with On Fail Clause](/learn/by-example/single-use-with-on-fail-clause/)
-- [Iterative Use of Typed Binding Patterns](/learn/by-example/iterative-use-of-typed-binding/)
+- [Binding pattern](/learn/by-example/binding-pattern/)
+- [Typed binding pattern](/learn/by-example/typed-binding-pattern/)
+- [Single use with on fail clause](/learn/by-example/single-use-with-on-fail-clause/)
+- [Iterative use of typed binding patterns](/learn/by-example/iterative-use-of-typed-binding/)

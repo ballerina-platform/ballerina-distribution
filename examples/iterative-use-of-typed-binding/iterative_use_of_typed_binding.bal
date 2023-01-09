@@ -12,7 +12,7 @@ public function main() {
     [string, int][] personInfoList = getPersonInfo();
     Person[] personList = getPersonList();
 
-    // The values in the `personInfoList` is bound to `[name, age]` list binding for each iteration.
+    // The values in the `personInfoList` is bound to the `[name, age]` list binding for each iteration.
     foreach [string, int] [name, age] in personInfoList {
         names += " " + name;
         sum += age;
@@ -20,7 +20,7 @@ public function main() {
     io:println("Average age of", names, ": ", sum / 3);
 
     // The mapping binding pattern used in the `from` clause binds the record fields with the
-    // specified variable names for every value in `personList`.
+    // specified variable names for every value in the `personList`.
     var personInfo = from var {id: personId, fname: firstName, lname: lastName} in personList
         select {
             id: personId,

@@ -21,8 +21,8 @@ public function main() {
     string fname;
     record {|string lname; anydata...;|} otherInfo;
 
-    // The values of the fields in the destructed record is assigned to variable references.
-    // The value of the `fname` field is assigned to `fname` variable.
+    // The values of the fields in the destructed record are assigned to the variable references.
+    // The value of the `fname` field is assigned to the `fname` variable.
     // The remaining field values that have not been matched are assigned to `...otherInfo`.
     {fname, ...otherInfo} = getPerson();
     io:println(fname);

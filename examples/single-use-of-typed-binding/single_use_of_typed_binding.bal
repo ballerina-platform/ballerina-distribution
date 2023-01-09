@@ -7,7 +7,7 @@ type Person record {
 };
 
 public function main() {
-    // A typed list binding followed by `=` where the values of the list members are bound to
+    // A typed list binding followed by `=` in which the values of the list members are bound to
     // `name` and `age` variables in the binding.
     [string, int] [name, age] = getPersonInfo();
     io:println(name, " ", age);
@@ -17,8 +17,8 @@ public function main() {
     io:println(personName, " ", personAge);
 
     // Other binding patterns can also be used as such.
-    // Here, a typed mapping binding is followed by `=` where the values of the record fields
-    // are bound to `id`, `fname` and `lname` variables in the binding.
+    // Here, a typed mapping binding is followed by `=` in which the values of the record fields
+    // are bound to the `id`, `fname`, and `lname` variables of the binding.
     Person {id, fname, lname} = getPerson();
     io:println(id, " ", fname, " ", lname);
 }
