@@ -1,2 +1,2 @@
-description: This BBE demonstrates foreach statement in Ballerina.
+description: This BBE demonstrates the use of the `foreach` statement in Ballerina.
 keywords: ballerina, ballerina by example, bbe, foreach, loops, iterate, iterable, collections

@@ -1,2 +1,2 @@
-description: This BBE demonstrates use of continue in Ballerina.
+description: This BBE demonstrates the use of the `continue` statement in Ballerina.
 keywords: ballerina, ballerina by example, bbe, foreach, loops, iterate, iterable, break, skip loop, while, repeat

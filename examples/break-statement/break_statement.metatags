@@ -1,2 +1,2 @@
-description: This BBE demonstrates use of break in Ballerina.
+description: This BBE demonstrates the use of the `break` statement in Ballerina.
 keywords: ballerina, ballerina by example, bbe, foreach, loops, iterate, iterable, break, terminate loop, while, repeat
