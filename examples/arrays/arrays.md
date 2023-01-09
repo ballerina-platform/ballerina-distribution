@@ -10,8 +10,8 @@ The length of the array can be inferred from the context by defining the array a
 
 ## Related links
 - [Manipulating an array `(lang.array)` - Language library](https://lib.ballerina.io/ballerina/lang.array)
-- [Tuples - Ballerina by example](https://ballerina.io/learn/by-example/tuples)
-- [Nested arrays - Ballerina by example](https://ballerina.io/learn/by-example/nested-arrays)
-- [Filler values of a list - Ballerina by example](https://ballerina.io/learn/by-example/filler-values-of-a-list)
-- [List sub typing - Ballerina by example](https://ballerina.io/learn/by-example/list-subtyping)
-- [List equality - Ballerina by example](https://ballerina.io/learn/by-example/list-equality)
+- [Tuples - Ballerina by example](/learn/by-example/tuples)
+- [Nested arrays - Ballerina by example](/learn/by-example/nested-arrays)
+- [Filler values of a list - Ballerina by example](/learn/by-example/filler-values-of-a-list)
+- [List sub typing - Ballerina by example](/learn/by-example/list-subtyping)
+- [List equality - Ballerina by example](/learn/by-example/list-equality)

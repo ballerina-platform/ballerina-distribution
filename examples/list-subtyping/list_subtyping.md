@@ -7,6 +7,6 @@ An array with a length is a subtype of an array of same member type descriptor w
 ::: out list_subtyping.out :::
 
 ## Related links
-- [Tuples - Ballerina by example](https://ballerina.io/learn/by-example/tuples)
-- [Arrays - Ballerina by example](https://ballerina.io/learn/by-example/arrays)
-- [List equality - Ballerina by example](https://ballerina.io/learn/by-example/list-equality)
+- [Tuples - Ballerina by example](/learn/by-example/tuples)
+- [Arrays - Ballerina by example](/learn/by-example/arrays)
+- [List equality - Ballerina by example](/learn/by-example/list-equality)

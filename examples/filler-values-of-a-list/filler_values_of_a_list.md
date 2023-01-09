@@ -134,6 +134,6 @@ and the filler value for B also belongs to the union</td>
 </table>
 
 ## Related links
-- [Tuples - Ballerina by example](https://ballerina.io/learn/by-example/tuples)
-- [Arrays - Ballerina by example](https://ballerina.io/learn/by-example/arrays)
-- [Nested arrays - Ballerina by example](https://ballerina.io/learn/by-example/nested-arrays)
+- [Tuples - Ballerina by example](/learn/by-example/tuples)
+- [Arrays - Ballerina by example](/learn/by-example/arrays)
+- [Nested arrays - Ballerina by example](/learn/by-example/nested-arrays)
