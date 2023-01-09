@@ -11,7 +11,7 @@ type Person object {
 
     string name;
 
-    // `getName()` is a part of `Person`'s own type.
+    // `getName()` is a part of the `Person`'s own type.
     // The `clone()` function is also included from the `Cloneable` type.
     function getName() returns string;
 };
@@ -22,7 +22,7 @@ class Engineer {
     *Person;
 
     function init(string name) {
-        // `name` field is included from `Person` type.
+        // The `name` field is included from the `Person` type.
         self.name = name;
     }
 

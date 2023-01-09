@@ -28,7 +28,7 @@ public service class Service {
 }
 
 public function main() returns error? {
-    // Create a http service.
+    // Create an HTTP service.
     http:Service albumService = new Service();
     // Attach the service to the listener along with the resource path.
     check httpListener.attach(albumService);

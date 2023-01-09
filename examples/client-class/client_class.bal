@@ -7,7 +7,7 @@ public type Album readonly & record {|
 |};
 
 public client class Client {
-    // http client to access the http services.
+    // The HTTP client to access the HTTP services.
     private final http:Client httpClient;
 
     function init(string url) returns error? {
@@ -28,12 +28,12 @@ public function main() returns error? {
     Client albumClient = check new ("localhost:9090");
 
     // `->` is used to access the resource/remote functions in the client class.
-    // Sends a `GET` request to the "/albums" resource.
+    // Sends a `GET` request to the `/albums` resource.
     Album[] albums = check albumClient->/["albums"];
     io:println(albums);
 
     Album newAlbum = {"title": "Sarah Vaughan and Clifford Brown", "artist": "Sarah Vaughan"};
 
-    // Sends a `POST` request to the "/albums" resource.
+    // Sends a `POST` request to the `/albums` resource.
     check albumClient->/["albums"].post(newAlbum);
 }
