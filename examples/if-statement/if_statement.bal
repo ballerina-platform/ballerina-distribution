@@ -2,7 +2,7 @@ import ballerina/io;
 
 function getGrades(int score) returns string {
     // Parentheses are optional in conditions.
-    // Howevr, curly braces are required in `if/else` statements.
+    // However, curly braces are required in `if/else` statements.
     if 0 < score && score < 55 {
         return "F";
     } else if 55 <= score && score < 65 {
@@ -12,7 +12,7 @@ function getGrades(int score) returns string {
     } else if 75 <= score && score <= 100 {
         return "A";
     } else {
-        return "invalid grade";
+        return "Invalid grade";
     }
 }
 
@@ -27,7 +27,7 @@ public function main() {
     if newScore is int {
         io:println(getGrades(newScore));
     } else {
-        io:println("score is not an integer");
+        io:println("Score is not an integer");
     }
 
 }
