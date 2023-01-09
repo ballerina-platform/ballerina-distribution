@@ -8,7 +8,7 @@ type Person record {
 
 public function main() {
     // A typed list binding followed by `=` in which the values of the list members are bound to
-    // `name` and `age` variables in the binding.
+    // the `name` and `age` variables in the binding.
     [string, int] [name, age] = getPersonInfo();
     io:println(name, " ", age);
 

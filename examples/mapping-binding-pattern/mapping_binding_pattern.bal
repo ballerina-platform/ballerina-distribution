@@ -23,7 +23,7 @@ public function main() {
     string surname;
 
     // This destructures and assigns the values of the fields in the destructed record
-    // to variable references.
+    // to the variable references.
     // The values of the `fname` and `lname` fields are assigned to the `givenName` and
     // `surname` variables.
     {fname: givenName, lname: surname} = getPerson();

@@ -16,7 +16,7 @@ public function main() {
     map<int|string> detailsMap = details;
     io:println("Details: ", detailsMap);
 
-    // Here, the rest parameter `...filteredDetails` only contains the detail fields
+    // Here, the `...filteredDetails` rest parameter contains only the detail fields
     // that are not matched.
     var error(_, code = code, ...filteredDetails) = getSampleError();
     io:println("Code: ", code);
