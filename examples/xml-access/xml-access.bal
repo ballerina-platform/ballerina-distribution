@@ -7,10 +7,10 @@ public function main() returns error? {
                 </details>`;
 
 
-    // `x[i]` or x.get(i) gives the `i-th` item.
+    // `x[i]` or x.get(i) gives the `i`-th item.
     io:println(x1[0]);
 
-    // `x.id` accesses a required attribute named `id`: the result is `error` if there is no such
+    // `x.id` accesses a required attribute named `id`: the result is an `error` if there is no such
     // attribute or if `x` is not a singleton.
     xml x2 = xml `<para id="greeting">Hello</para>`;
     string id = check x2.id;
@@ -20,7 +20,7 @@ public function main() returns error? {
     // attribute.
     string? name = check x2?.name;
 
-    // The following nil check returns true since attribute `name` does not exist in the x2.
+    // The following nil check returns true since the attribute `name` does not exist in the `x2`.
     io:println(name is ());
 
 }

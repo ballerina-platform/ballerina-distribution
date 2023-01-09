@@ -1,10 +1,10 @@
 import ballerina/io;
 
 public function main() {
-    // An `xml` value belongs to `xml:Element` if it consists of just an element item.
+    // An `xml` value belongs to an `xml:Element` if it consists of just an element item.
     xml:Element firstElement = xml `<p>Hello</p>`;
 
-    // Similarly, a value belongs to `xml:Comment` or `xml:ProcessingInstruction` if it
+    // Similarly, a value belongs to the `xml:Comment` or `xml:ProcessingInstruction` if it
     // consists of just a comment item or a processing instruction item.
     xml:Comment comment = xml `<!--This is a comment-->`;
     io:println(comment);
@@ -12,7 +12,7 @@ public function main() {
     xml:ProcessingInstruction procInst = xml `<?target data?>`;
     io:println(procInst);
 
-    // An `xml` value belongs to `xml:Text` if it consists of only a text item or is empty.
+    // An `xml` value belongs to the `xml:Text` if it consists of only a text item or is empty.
     xml:Text empty = xml ``;
     io:println(empty);
     xml:Text text = xml `Hello World`;
@@ -21,7 +21,7 @@ public function main() {
     string hello = "Hello";
     string world = "World";
 
-    // xml:createText can be used to convert a string to xmlText.
+    // `xml:createText` can be used to convert a string to `xmlText`.
     xml:Text xmlString = xml:createText(hello + " " + world);
     io:println(xmlString);
 
@@ -42,7 +42,7 @@ public function main() {
     io:println(resultElement);
 }
 
-// Functions in lang.xml use subtyping to provide safe and convenient typing.
+// Functions in `lang.xml` use subtyping to provide safe and convenient typing.
 // For example, `x.elements()` returns element items in `x` as type
 // `xml<xml:Element>` and `e.getName()` and `e.setName()` are defined when
 // `e` has type `xml:Element`.

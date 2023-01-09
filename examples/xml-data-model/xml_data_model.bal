@@ -23,14 +23,14 @@ public function main() returns error? {
     xml:Text xmlString = xml:createText(hello + " " + world);
     io:println(xmlString);
 
-    // creating an xml value.
+    // Creates an XML value.
     xml xmlValue = xml `<name>Sherlock Holmes</name><details>
                     <author>Sir Arthur Conan Doyle</author>
                     <language>English</language>
                 </details>`;
 
 
-    // `x[i]` or x.get(i) gives the `i-th` item.
+    // `x[i]` or x.get(i) gives the `i`-th item.
     io:println(xmlValue[0]);
 
     // `x.id` accesses a required attribute named `id`: the result is `error` if there is no such

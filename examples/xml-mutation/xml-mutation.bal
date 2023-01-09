@@ -6,7 +6,7 @@ public function main() returns error? {
                             <language>English</language>
                         </details>`;
 
-    // Sets the children of an xml element.
+    // Sets the children of an XML element.
     // This panics if it would result in the element structure becoming cyclic.
     x1.setChildren(xml `<language>French</language>`);
     io:println(x1);

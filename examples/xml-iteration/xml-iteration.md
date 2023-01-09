@@ -1,6 +1,6 @@
 # XML iteration
 
-`foreach` statement and `.forEach()` function available in `lang.xml` iterates xml over each item.
+The `foreach` statement and `.forEach()` function available in the `lang.xml` library iterate the XML over each item.
 
 ::: code xml_iteration.bal :::
 
