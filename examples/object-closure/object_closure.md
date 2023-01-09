@@ -1,6 +1,6 @@
 # Object closure
 
-The object constructor and function can work as a closure, that can access variables outside of its own scope.
+The object constructor and function can work as a closure, which can access variables outside of its own scope.
 
 ::: code object_closure.bal :::
 

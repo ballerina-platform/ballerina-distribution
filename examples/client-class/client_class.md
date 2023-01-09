@@ -2,7 +2,7 @@
 
 The `client` keyword is used with class definition to define a client class. Ballerina supports defining client objects to allow a program to interact with remote network services. They are a special kind of object that contain `remote` and `resource` methods in addition to regular methods.
 
-Similarly class objects can be constructed using object constructor as well.
+Similarly, class objects can be constructed using an object constructor as well.
 
 ## Prerequisites
 - Run the HTTP service given in the [Basic REST service](/learn/by-example/http-basic-rest-service/) example.

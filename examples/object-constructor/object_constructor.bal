@@ -1,11 +1,11 @@
 import ballerina/io;
 
 public function main() {
-    // Create an object value using object constructor.
+    // Create an object value using the object constructor.
     var engineer = object {
         string name;
 
-        // `init` function in the object constructor can not have parameters.
+        // The `init` function in the object constructor can not have parameters.
         function init() {
             self.name = "";
         }

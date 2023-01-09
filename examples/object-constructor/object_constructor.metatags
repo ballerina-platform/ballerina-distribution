@@ -1,2 +1,2 @@
-description: This BBE demonstrates constructing object and inferring object type in Ballerina.
+description: This BBE demonstrates constructing an object and inferring the object type in Ballerina.
 keywords:  ballerina, ballerina by example, bbe, object, object constructor, var

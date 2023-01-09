@@ -6,9 +6,9 @@ class Engineer {
 
     int age;
 
-    // `init` method initializes the object.
+    // The `init` method initializes the object.
     function init(string name, int age) {
-        // The `init` method can initialize the final field.
+        // The `init` method can initialize the `final` field.
         self.name = name;
         self.age = age;
     }

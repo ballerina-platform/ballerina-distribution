@@ -1,2 +1,2 @@
-description: This BBE demonstrates defining a class, creating an object from class definition, invoking object methods and accessing object fields in Ballerina.
+description: This BBE demonstrates defining a class, creating an object from the class definition, invoking object methods, and accessing object fields in Ballerina.
 keywords:  ballerina, ballerina by example, bbe, object, class, new
