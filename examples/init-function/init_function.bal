@@ -7,7 +7,7 @@ int value;
 final string name;
 
 function init() returns error? {
-    // Initialize the variable `value` to 5.
+    // Initialize the `value` variable to 5.
     value = 5;
     // Initialize the final variable greeting to `James`.
     name = "James";
