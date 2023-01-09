@@ -1,7 +1,13 @@
 $ bal run break_statement.bal
-Bob
-Jo
-Ann
-Tom
-Bob
-Jo
+0
+1
+2
+3
+4
+5
+0
+1
+2
+3
+4
+5

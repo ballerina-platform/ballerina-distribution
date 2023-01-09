@@ -1,7 +1,11 @@
 $ bal run continue_statement.bal
-Bob
-Jo
-Tom
-Bob
-Jo
-Tom
+0
+1
+3
+4
+5
+0
+1
+3
+4
+5

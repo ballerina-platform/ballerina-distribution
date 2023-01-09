@@ -1,27 +1,24 @@
 import ballerina/io;
 
 public function main() {
-
-    // Loop through a list.
-    string[] names = ["Bob", "Jo", "Ann", "Tom"];
-    int i = 0;
-    while i < names.length() {
-        if names[i] == "Ann" {
-            i += 1;
-            // A ‘continue’ statement can be used to skip the current iteration.
+    foreach int i in 0...5 {
+        if (i == 2) {
+            // A `continue` statement can be used to skip the current iteration.
             continue;
         }
 
-        io:println(names[i]);
-        i += 1;
+        io:println(i);
     }
 
-    // Loop through a list.
-    foreach string name in names {
-        if name == "Ann" {
+    int i = 0;
+    while i <= 5 {
+        if i == 2 {
+            i = i + 1;
+            // A `continue` statement can be used to skip the current iteration.
             continue;
         }
 
-        io:println(name);
+        io:println(i);
+        i = i + 1;
     }
 }
