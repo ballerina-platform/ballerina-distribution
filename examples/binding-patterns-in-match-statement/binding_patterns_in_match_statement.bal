@@ -11,7 +11,7 @@ type PositionRecord record {
 
 function matchFn1(Position position) {
     match position {
-        // The binding pattern below matches mappings that contain at least the fields with keys `x` and `y`.
+        // The binding pattern below matches mappings that contain at least the fields with the `x` and `y` keys.
         // The values of these fields can be accessed via the `x` and `y` variables within this block.
         var {x, y} => {
             io:println(x, ", ", y);
@@ -35,7 +35,7 @@ function matchFn2(Position position) {
 function matchFn3(PositionRecord r) {
     match r {
         // The pattern below matches a mapping that has a field with key `p` and a value that is another
-        // mapping that contains at least the fields with keys `x` and `y`.
+        // mapping that contains at least the fields with `x` and `y` keys.
         var {p: {x, y}} => {
             io:println(x, ", ", y);
         }

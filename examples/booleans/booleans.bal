@@ -7,6 +7,6 @@ public function main() {
     int x1 = 3;
     int x2 = 2;
 
-    // Following example will output `false`.
+    // The example below will output `false`.
     io:println(x1 < x2);
 }
