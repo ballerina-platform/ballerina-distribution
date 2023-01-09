@@ -1,7 +1,6 @@
 # The `let` clause
 
-The `let` clause can be used to define temporary variables inside a query expression. It can occur multiple times 
-anywhere between the `from` and `select` clauses. The semantics are similar to XQuery FLWOR.
+The `let` clause can be used to define temporary variables inside a query expression. It can occur multiple times anywhere between the `from` and `select` clauses. The semantics are similar to XQuery FLWOR.
 
 ::: code let_clause.bal :::
 

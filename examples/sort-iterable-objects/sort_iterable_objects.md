@@ -1,12 +1,8 @@
 # Sort iterable objects
 
-The `order by` clause in the query expression can be used to sort the elements in a collection. Ordering works 
-consistently with the `<`, `<=`, `>`, `>=` operators. Some comparisons involving `()` and float `NaN` are considered 
-unordered. Therefore, if these unordered types are encountered in the query, they will be returned as the last elements 
-of the ordered collection.
+The `order by` clause in the query expression can be used to sort the elements in a collection. Ordering works consistently with the `<`, `<=`, `>`, `>=` operators. Some comparisons involving `()` and float `NaN` are considered unordered. Therefore, if these unordered types are encountered in the query, they will be returned as the last elements of the ordered collection.
 
-The syntax to write an `order by` clause is `order by expression orderDirection`. The order direction can be 
-`ascending` or `descending`.
+The syntax to write an `order by` clause is `order by expression orderDirection`. The order direction can be `ascending` or `descending`.
 
 ::: code sort_iterable_objects.bal :::
 

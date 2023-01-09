@@ -1,7 +1,6 @@
 # Query expressions
 
-A query expression is similar to the `SQL` query syntax where you can construct a list, a mapping, a table, a stream,
-or a sequence by iterating over an iterable value.
+A query expression is similar to the `SQL` query syntax where you can construct a list, a mapping, a table, a stream, or a sequence by iterating over an iterable value.
 
 A query expression consists of a sequence of clauses starting with a `from` clause and ending with a `select` clause.
 
