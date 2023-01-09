@@ -33,8 +33,8 @@ function matchTime2(Time time) {
     }
 }
 
-function matchTime3(Day r) {
-    match r {
+function matchTime3(Day day) {
+    match day {
         // The pattern below matches a mapping that has a field with the `t`key
         // and a value, which is another mapping that contains at least the fields 
         // with the `hours` and `minutes` keys.
