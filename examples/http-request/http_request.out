@@ -1,0 +1,2 @@
+$ bal run http_request.bal
+First artist name: John Coltrane

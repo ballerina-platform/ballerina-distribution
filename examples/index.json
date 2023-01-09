@@ -1820,6 +1820,14 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Sending headers",
+                "url": "http-send-header",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Response with multiparts",
                 "url": "http-response-with-multiparts",
                 "verifyBuild": false,
@@ -1885,6 +1893,14 @@
             {
                 "name": "Chunking",
                 "url": "http-client-chunking",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Sending headers",
+                "url": "http-client-custom-header",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
