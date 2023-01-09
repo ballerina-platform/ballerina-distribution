@@ -1,2 +1,2 @@
-description: This BBE demonstrates converting JSON to a user-defined type using `cloneWithType`.
+description: This BBE demonstrates how to convert json to user defined type, do numeric conversion on json elements, convert json to record, accessing JSON data, manipulating JSON data.
 keywords: ballerina, ballerina by example, bbe, conversion, json, record, cast
