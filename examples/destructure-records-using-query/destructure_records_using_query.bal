@@ -19,9 +19,9 @@ public function main() {
     io:println(names);
 
     // Explicitly specify the type before the binding pattern instead of `var`.
-    var names2 = from Person {first, last} in persons
+    names = from Person {first, last} in persons
                  select {first, last};
-    io:println(names2);
+    io:println(names);
 
     // This maps all the remaining fields of the `Person` record other than the field `first`
     // using the rest binding pattern.

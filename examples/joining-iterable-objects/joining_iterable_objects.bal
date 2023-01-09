@@ -24,9 +24,11 @@ public function main() {
 
     // Inner equijoin
     string[] joinResult = from var login in logins
-                          // The `join` clause iterates any iterable value similarly to the `from` clause.
+                          // The `join` clause iterates any iterable value similarly to the
+                          // `from` clause.
                           join var user in users
-                          // The `on` condition is used to match the `login` with the `user` based on the `userId`.
+                          // The `on` condition is used to match the `login` with the
+                          // `user` based on the `userId`.
                           // The iteration is skipped when the condition is not satisfied.
                           on login.userId equals user.id
                           select string `${user.name} : ${login.time}`;
@@ -36,9 +38,8 @@ public function main() {
     // Outer equijoin
     string[] outerEquijoin = from var login in logins
                              outer join var user in users
-                             // The `on` condition is used to match the `login` with the `user` based on the `userId`.
-                             // The iteration is skipped when the condition is not satisfied.
-                             // If there is no matching pair for all members in `users` then `user` will be `()`
+                             // If there is no matching pair for all members in `users`
+                             // then `user` will be `()`
                              // and skip the join-on-condition.
                              on login.userId equals user is () ? () : user.id
                              select string `${user is () ? "New user" : user.name} : ${login.time}`;

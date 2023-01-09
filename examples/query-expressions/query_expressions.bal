@@ -9,7 +9,7 @@ public function main() {
                         select i * 10;
     io:println(numsTimes10);
  
-    // Where clause can be used to filter iterable values.
+    // The `where` clause can be used to filter iterable values.
     // It can occur multiple times anywhere between the from and the select clause.
     // This will pass the frame to the select clause only if `i % 2 == 0` is true.
     int[] evenNums = from int i in nums

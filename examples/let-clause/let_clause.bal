@@ -1,33 +1,32 @@
 import ballerina/io;
 
-type Person record {|
+type Student record {|
     string first;
     string last;
-    int maths;
+    int mathematics;
     int english;
 |};
 
 public function main() {
-    Person[] persons = [
-        {first: "Melina", last: "Kodel", maths: 79, english: 83},
-        {first: "Tom", last: "Riddle", maths: 69, english: 45}
+    Student[] students = [
+        {first: "Melina", last: "Kodel", mathematics: 79, english: 83},
+        {first: "Tom", last: "Riddle", mathematics: 69, english: 45}
     ];
 
-    int[] names = from var person in persons
+    int[] names = from var student in students
                   // The `let` clause binds the variables.
-                  let int sum = (person.maths + person.english)
+                  let int sum = (student.mathematics + student.english)
                   where sum > 0
                   let int avg = sum / 2
                   select avg;
 
     io:println(names);
 
-
     // `let` clause supports multiple variable declarations separated by `,`.
-    int[] names2 = from var person in persons
-                   let int sum = (person.maths + person.english), int avg = sum / 2
+    names = from var student in students
+                   let int sum = (student.mathematics + student.english), int avg = sum / 2
                    where sum > 0
                    select avg;
 
-    io:println(names2);
+    io:println(names);
 }

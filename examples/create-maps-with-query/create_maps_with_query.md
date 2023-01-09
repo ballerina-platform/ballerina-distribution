@@ -4,18 +4,18 @@ Query expressions can be used to create a map from an iterable value. Query expr
 
 The type of the value in the select clause must belong to the tuple type `[string, T]`, where the type of the constructed value is `map<T>`.
 
-::: code querying_tables.bal :::
+::: code create_maps_with_query.bal :::
 
-::: out querying_tables.out :::
+::: out create_maps_with_query.out :::
 
 ## Related links
-- [Query expressions - Ballerina by example](https://ballerina.io/learn/by-example/query-expressions)
-- [Sort iterable objects using query - Ballerina by example](https://ballerina.io/learn/by-example/sort-iterable-objects)
-- [Let clause in query expression - Ballerina by example](https://ballerina.io/learn/by-example/let-clause)
-- [Limit clause in query expression - Ballerina by example](https://ballerina.io/learn/by-example/limit-clause)
-- [Joining iterable objects using query - Ballerina by example](https://ballerina.io/learn/by-example/joining-iterable-objects)
-- [Querying tables - Ballerina by example](https://ballerina.io/learn/by-example/querying-tables)
-- [Create tables with query expression - Ballerina by example](https://ballerina.io/learn/by-example/create-tables-with-query)
-- [Create streams with query expression - Ballerina by example](https://ballerina.io/learn/by-example/create-streams-with-query)
-- [On conflict clause in query expression - Ballerina by example](https://ballerina.io/learn/by-example/on-conflict-clause)
-- [Nested query expressions - Ballerina by example](https://ballerina.io/learn/by-example/nested-query-expressions)
+- [Query expressions - Ballerina by example](/learn/by-example/query-expressions)
+- [Sort iterable objects using query - Ballerina by example](/learn/by-example/sort-iterable-objects)
+- [Let clause in query expression - Ballerina by example](/learn/by-example/let-clause)
+- [Limit clause in query expression - Ballerina by example](/learn/by-example/limit-clause)
+- [Joining iterable objects using query - Ballerina by example](/learn/by-example/joining-iterable-objects)
+- [Querying tables - Ballerina by example](/learn/by-example/querying-tables)
+- [Create tables with query expression - Ballerina by example](/learn/by-example/create-tables-with-query)
+- [Create streams with query expression - Ballerina by example](/learn/by-example/create-streams-with-query)
+- [On conflict clause in query expression - Ballerina by example](/learn/by-example/on-conflict-clause)
+- [Nested query expressions - Ballerina by example](/learn/by-example/nested-query-expressions)
