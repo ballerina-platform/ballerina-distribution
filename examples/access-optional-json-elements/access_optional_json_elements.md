@@ -1,4 +1,4 @@
-# Acessing optional JSON elements
+# Accessing optional JSON elements
 
 If there is no prior knowledge of the availability of a particular field, optional field access (`?.`) can be used on the `json` value. If the particular field is not available, it will return `nil`.
 
