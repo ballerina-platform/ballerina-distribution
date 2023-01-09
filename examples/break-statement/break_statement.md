@@ -1,4 +1,4 @@
-# Break Statement
+# Break statement
 
 A `break` statement can be used to terminate the execution within the nearest enclosing `while` or `foreach` statement.
 

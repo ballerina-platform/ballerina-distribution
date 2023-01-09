@@ -17,9 +17,9 @@ public function main() {
 
     io:println("Average :", sum/grades.length());
 
-    // Binding patterns can be used with `foreach` statement.
+    // Binding patterns can be used with the `foreach` statement.
     [string, int][] resultList = [["Bob", 65], ["Jo", 70], ["Ann", 75], ["Tom", 60]];
-    // Binding pattern [string, int] [name, grade] used with the `foreach` statement.
+    // Binding patterns (e.g., `[string, int]` and `[name, grade]`) are used with the `foreach` statement.
     foreach [string, int] [name, grade] in resultList {
         io:println("Name:", name, " ", "Grade:", grade);
     }
