@@ -2,7 +2,7 @@ import ballerina/io;
 
 public function main() {
     foreach int i in 0...9 {
-        // Loop breaks when condition satisfied.
+        // Loop breaks when the condition is satisfied.
         if (i > 5) {
             break;
         }
@@ -12,7 +12,7 @@ public function main() {
 
     int i = 0;
     while true {
-        // Loop breaks when condition satisfied.
+        // Loop breaks when the condition is satisfied.
         if i > 5 {
             break;
         }
