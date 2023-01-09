@@ -17,7 +17,7 @@ public function main() returns error? {
     xml x4 = xml `Hello, world!`;
     io:println(x4);
 
-    // xml:createText can be used to convert a string to xmlText.
+    // `xml:createText` can be used to convert a string to `xmlText`.
     string hello = "Hello";
     string world = "World";
     xml:Text xmlString = xml:createText(hello + " " + world);
@@ -30,16 +30,16 @@ public function main() returns error? {
                 </details>`;
 
 
-    // `x[i]` or x.get(i) gives the `i`-th item.
+    // `x[i]` or `x.get(i)`` gives the `i`-th item.
     io:println(xmlValue[0]);
 
-    // `x.id` accesses a required attribute named `id`: the result is `error` if there is no such
+    // `x.id` accesses a required attribute named `id`. The result is an `error` if there is no such
     // attribute or if `x` is not a singleton.
     xml xmlHello = xml `<para id="greeting">Hello</para>`;
     string id = check xmlHello.id;
     io:println(id);
 
-    // `x?.id` accesses an optional attribute named `id`: the result is `()` if there is no such
+    // `x?.id` accesses an optional attribute named `id`. The result is `()` if there is no such
     // attribute.
     string? name = check xmlHello?.name;
     io:println(name);
