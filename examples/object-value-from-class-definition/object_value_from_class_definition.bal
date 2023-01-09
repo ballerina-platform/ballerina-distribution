@@ -18,11 +18,12 @@ public function main() {
     Engineer engineer1 = new Engineer();
     io:println(engineer1.getName());
 
-    // Object is initialized using the given argument to new expression.
+    // Object is initialized by passing an argument to the class descriptor with the new expression.
     Engineer engineer2 = new Engineer("Alice");
     io:println(engineer2.getName());
 
-    // Object is initialized using the given argument to new expression.
+    // Object is initialized by passing a named argument to 
+    // the class descriptor with the new expression.
     Engineer engineer3 = new Engineer(name = "Bob");
     io:println(engineer3.getName());
 
@@ -31,11 +32,11 @@ public function main() {
     Engineer engineer4 = new;
     io:println(engineer4.getName());
 
-    // Object is initialized using the given argument to new expression.
+    // Object is initialized by passing an argument to the new expression.
     Engineer engineer5 = new ("Alice");
     io:println(engineer5.getName());
 
-    // Object is initialized using a the given named argument to the new expression.
+    // Object is initialized by passing a named argument to the new expression.
     Engineer engineer6 = new (name = "Bob");
     io:println(engineer6.getName());
 }
