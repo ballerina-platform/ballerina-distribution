@@ -1,4 +1,3 @@
-
 import ballerina/io;
 
 const string show = "show";

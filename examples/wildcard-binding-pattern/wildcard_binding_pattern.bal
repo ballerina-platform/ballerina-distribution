@@ -1,4 +1,3 @@
-
 public function main() {
     // Since the basic type of the value returned by `getInt()` is `int`
     // which belongs to `any` type, this will not cause an assignment.
