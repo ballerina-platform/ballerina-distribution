@@ -12,8 +12,8 @@ Invoke the service by executing the following cURL command in a new terminal.
 
 ::: out http_2_to_1_1_downgrade_service.client.out :::
 
->**Tip:** You can invoke the above service via the [Send request/Receive response client](/learn/by-example/http-client-send-request-receive-response/).
+>**Tip:** You can invoke the above service via the [Send request/Receive response client](/learn/by-example/http-client-send-request-receive-response/) example.
 
 ## Related links
-- [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`http` module - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
 - [HTTP resource - Specification](https://ballerina.io/spec/http/#23-resource)

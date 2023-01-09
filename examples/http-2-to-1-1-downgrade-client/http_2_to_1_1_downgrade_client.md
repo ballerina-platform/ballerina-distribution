@@ -12,5 +12,5 @@ Run the client program by executing the following command.
 ::: out http_2_to_1_1_downgrade_client.out :::
 
 ## Related links
-- [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`http` module - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
 - [http client - Specification](https://ballerina.io/spec/http/#24-client)
