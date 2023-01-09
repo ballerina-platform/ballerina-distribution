@@ -1,0 +1,3 @@
+$ bal run function_closure.bal
+["Ana","Alice","Bob","James"]
+["Ana","Alice","Bob","James"]

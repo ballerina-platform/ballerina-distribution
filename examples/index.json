@@ -146,13 +146,6 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Function values",
-                "url": "function-values",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
                 "name": "Included record parameters",
                 "url": "included-record-parameters",
                 "verifyBuild": true,
@@ -183,6 +176,34 @@
             {
                 "name": "Function pointers",
                 "url": "function-pointers",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Function values",
+                "url": "function-values",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Function types",
+                "url": "function-types",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Anonymous function",
+                "url": "anonymous-function",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Function closure",
+                "url": "function-closure",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
