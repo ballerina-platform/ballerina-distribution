@@ -34,7 +34,7 @@ function matchFn2(Position position) {
 
 function matchFn3(PositionRecord r) {
     match r {
-        // The pattern below matches a mapping that has a field with key `p` and a value that is another
+        // The pattern below matches a mapping that has a field with the `p` key and a value that is another
         // mapping that contains at least the fields with `x` and `y` keys.
         var {p: {x, y}} => {
             io:println(x, ", ", y);
