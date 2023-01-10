@@ -1736,7 +1736,6 @@
                 "url": "http-request",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": false,
                 "isLearnByExample": false
             },
             {
@@ -1744,7 +1743,6 @@
                 "url": "http-response",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": false,
                 "isLearnByExample": false
             },
             {
@@ -1752,7 +1750,6 @@
                 "url": "http-caller",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": false,
                 "isLearnByExample": false
             },
             {
@@ -1848,7 +1845,6 @@
                 "url": "http-send-header",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": true,
                 "isLearnByExample": false
             },
             {

@@ -12,7 +12,7 @@ table<Album> key(title) albums = table [
 
 service / on new http:Listener(9090) {
 
-    // Caller is defined as signature parameter.
+    // Caller is defined in the signature parameter.
     resource function get albums(http:Caller caller) returns error? {
         http:Response response = new;
         response.setPayload(albums.toArray());

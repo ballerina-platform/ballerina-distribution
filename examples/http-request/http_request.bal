@@ -1,22 +1,22 @@
 import ballerina/http;
-import ballerina/io;
 
-type Album readonly & record {
+type Album readonly & record {|
     string title;
     string artist;
-};
+|};
 
-public function main() returns error? {
-    http:Client albumClient = check new ("localhost:9090");
+table<Album> key(title) albums = table [
+    {title: "Blue Train", artist: "John Coltrane"},
+    {title: "Jeru", artist: "Gerry Mulligan"}
+];
 
-    // Create a request and populate headers/payload.
-    http:Request request = new;
-    request.setHeader("x-music-genre", "Jazz");
-    request.setJsonPayload({
-        title: "Sarah Vaughan and Clifford Brown",
-        artist: "Sarah Vaughan"
-    });
+service / on new http:Listener(9090) {
 
-    Album album = check albumClient->/albums.post(request);
-    io:println("Created album:" + album.toJsonString());
+    // Request is defined in the signature parameter.
+    resource function post albums(http:Request request) returns Album|error {
+        json payload = check request.getJsonPayload();
+        Album album = check payload.cloneWithType();
+        albums.add(album);
+        return album;
+    }
 }
