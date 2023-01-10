@@ -1,8 +1,8 @@
 import ballerina/io;
 
 type Coord record {
-   float x;
-   float y;
+    float x;
+    float y;
 };
 
 type Book record {
