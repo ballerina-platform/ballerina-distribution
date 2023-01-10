@@ -1,6 +1,6 @@
 # HTTP request
 
-The `http:Request` represents the incoming/outgoing message over the network. In HTTP service, the `http:Request` can be defined as a resource function argument to capture the incoming message. During the runtime, the `http:Listener` populates properties, headers and payload to the `http:Request` object to be consumed within the resource scope. When the `http:Request` is used with the `http:Client`, the object should be created and populated by the user which represents the outgoing message. The support functions associated with `http:Request` such as getXXXPayload(), getCookies(), getHeader(),.. etc. help developers to explore more of the transport message. This is useful to handle advanced scenarios such as cookie, multipart, and 100-continue where the `http:Request` is mandatory.
+The request represents the incoming message to a service and the outgoing message from a client. A request is used to invoke an endpoint. Ballerina represents it via the `http:Request` object. You can define the request as a resource function argument. During the runtime, the `http:Listener` populates properties, headers and payload to the `http:Request`. When calling backend endpoint, a user-defined `http:Request` can be used. The support functions associated such as getXXXPayload(), getCookies(), getHeader(),.. etc. help developers to explore more of the transport message. To handle advanced scenarios such as cookie, multipart, and 100-continue, the `http:Request` is useful.
 
 ::: code http_request.bal :::
 

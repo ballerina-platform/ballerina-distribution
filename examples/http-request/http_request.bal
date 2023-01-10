@@ -9,12 +9,13 @@ type Album readonly & record {
 public function main() returns error? {
     http:Client albumClient = check new ("localhost:9090");
 
+    // Create a request and populate headers/payload.
     http:Request request = new;
+    request.setHeader("x-music-genre", "Jazz");
     request.setJsonPayload({
         title: "Sarah Vaughan and Clifford Brown",
         artist: "Sarah Vaughan"
     });
-    request.setHeader("x-music-genre", "Jazz");
 
     Album album = check albumClient->/albums.post(request);
     io:println("Created album:" + album.toJsonString());
