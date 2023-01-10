@@ -21,7 +21,7 @@ public function main() {
    	];
    	io:println(t2);
 	
-   	// A table can also be declared with a type parameter as key type
+   	// A table can also be declared with a type parameter as the key type.
    	table<Employee> key<string> t3 = table key(name) [
    	    { name: "John", salary: 100 },
    	    { name: "Jane", salary: 200 }
