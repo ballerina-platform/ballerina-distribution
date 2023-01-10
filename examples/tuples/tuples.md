@@ -9,8 +9,8 @@ Tuple type can be declared as a comma separated list of types inside a square br
 ::: out tuples.out :::
 
 ## Related links
-- [Arrays - Ballerina by example](https://ballerina.io/learn/by-example/arrays)
+- [Arrays - Ballerina by example](/learn/by-example/arrays)
 - [Manipulating an array `(lang.array)` - Language library](https://lib.ballerina.io/ballerina/lang.array)
-- [Filler values of a list - Ballerina by example](https://ballerina.io/learn/by-example/filler-values-of-a-list)
-- [List sub typing - Ballerina by example](https://ballerina.io/learn/by-example/list-subtyping)
-- [List equality - Ballerina by example](https://ballerina.io/learn/by-example/list-equality)
+- [Filler values of a list - Ballerina by example](/learn/by-example/filler-values-of-a-list)
+- [List sub typing - Ballerina by example](/learn/by-example/list-subtyping)
+- [List equality - Ballerina by example](/learn/by-example/list-equality)
