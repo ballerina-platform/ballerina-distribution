@@ -9,5 +9,5 @@ The stream type is a separate basic type, However like an object, it can be init
 ::: out stream_type.out :::
 
 ## Related links
-- [Create streams with query expression - Ballerina by example](/learn/by-example/create-streams-with-query)
-- [Querying with streams - Ballerina by example](/learn/by-example/querying-with-streams)
+- [Create streams with query expression](/learn/by-example/create-streams-with-query)
+- [Querying with streams](/learn/by-example/querying-with-streams)

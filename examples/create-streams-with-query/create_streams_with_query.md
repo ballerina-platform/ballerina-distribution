@@ -9,13 +9,13 @@ When constructing a stream from a query expression, clauses in the query express
 ::: out create_streams_with_query.out :::
 
 ## Related links
-- [Query expressions - Ballerina by example](/learn/by-example/query-expressions)
-- [Sort iterable objects using query - Ballerina by example](/learn/by-example/sort-iterable-objects)
-- [Let clause in query expression - Ballerina by example](/learn/by-example/let-clause)
-- [Limit clause in query expression - Ballerina by example](/learn/by-example/limit-clause)
-- [Joining iterable objects using query - Ballerina by example](/learn/by-example/joining-iterable-objects)
-- [Querying tables - Ballerina by example](/learn/by-example/querying-tables)
-- [Create maps with query expression - Ballerina by example](/learn/by-example/create-maps-with-query)
-- [Create tables with query expression - Ballerina by example](/learn/by-example/create-tables-with-query)
-- [On conflict clause in query expression - Ballerina by example](/learn/by-example/on-conflict-clause)
-- [Nested query expressions - Ballerina by example](/learn/by-example/nested-query-expressions)
+- [Query expressions](/learn/by-example/query-expressions)
+- [Sort iterable objects using query](/learn/by-example/sort-iterable-objects)
+- [Let clause in query expression](/learn/by-example/let-clause)
+- [Limit clause in query expression](/learn/by-example/limit-clause)
+- [Joining iterable objects using query](/learn/by-example/joining-iterable-objects)
+- [Querying tables](/learn/by-example/querying-tables)
+- [Create maps with query expression](/learn/by-example/create-maps-with-query)
+- [Create tables with query expression](/learn/by-example/create-tables-with-query)
+- [On conflict clause in query expression](/learn/by-example/on-conflict-clause)
+- [Nested query expressions](/learn/by-example/nested-query-expressions)

@@ -9,4 +9,4 @@ The clauses in a query action are executed in the same way as the clauses in a q
 ::: out query_actions.out :::
 
 ## Related links
-- [Query expressions - Ballerina by example](/learn/by-example/query-expressions)
+- [Query expressions](/learn/by-example/query-expressions)
