@@ -29,8 +29,7 @@ public function main() returns error? {
                     <language>English</language>
                 </details>`;
 
-
-    // `x[i]` or `x.get(i)`` gives the `i`-th item.
+    // `x[i]` or `x.get(i)` gives the `i`-th item.
     io:println(xmlValue[0]);
 
     // `x.id` accesses a required attribute named `id`. The result is an `error` if there is no such
