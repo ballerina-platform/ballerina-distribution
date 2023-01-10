@@ -1,2 +1,2 @@
-description: This BBE demonstrates xml data model in Ballerina.
+description: This BBE demonstrates how to define XML element, XML processing instruction, XML comment, XML text, convert string to XML, create XML value, get the items, access the XML attributes and retrieve elements in Ballerina.
 keywords: ballerina, ballerina by example, bbe, xml data model, xml
