@@ -1,6 +1,6 @@
 # HTTP service - Compression
 
-The HTTP service can be configured to change the compression behaviour. By default, the server compresses the response entity body with the scheme(gzip, deflate) that is specified in the Accept-Encoding request header. When the particular header is not present or the header value is "identity", the server does not perform any compression. Compression is disabled when the option is set to `COMPRESSION_NEVER` and always enabled when the option is set to `COMPRESSION_ALWAYS`. In the same way `http:Client` can be configured as well. 
+The `http:Service` can be configured to change the compression behaviour of the `http:Response` payload. By default, the server compresses the response entity body with the scheme(gzip, deflate) that is specified in the `Accept-Encoding` request header. When the particular header is not present, or the header value is `identity`, the server does not perform any compression. Compression is disabled when the option is set to `COMPRESSION_NEVER` and always enabled when the option is set to `COMPRESSION_ALWAYS`. In the same way `http:Client` can be configured as well.
 
 ::: code http_compression.bal :::
 

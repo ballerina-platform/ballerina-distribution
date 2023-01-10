@@ -14,10 +14,10 @@ listener graphql:Listener securedEP = new (9090,
     }
 );
 
-// The service can be secured with OAuth2 and by enforcing authorization optionally. It can be
-// enabled by setting the `graphql:OAuth2IntrospectionConfig` configurations. Authorization is
-// based on scopes. A scope maps to one or more groups. Authorization can be enabled by setting the
-// `string|string[]` type configurations for the `scopes` field.
+// The service can be secured with OAuth2 and by enforcing authorization optionally.
+// It can be enabled by setting the `graphql:OAuth2IntrospectionConfig` configurations.
+// Authorization is based on scopes. A scope maps to one or more groups. Authorization can be
+// enabled by setting the `string|string[]` type configurations for the `scopes` field.
 @graphql:ServiceConfig {
     auth: [
         {
@@ -37,6 +37,7 @@ listener graphql:Listener securedEP = new (9090,
     ]
 }
 service /graphql on securedEP {
+    
     resource function get profile() returns Profile {
         return {
             name: "Walter White",

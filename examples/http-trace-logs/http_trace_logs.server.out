@@ -4,48 +4,57 @@ ballerina: HTTP trace log enabled
 # In the logs, `http.downstream` refers to the HTTP traffic that flows between the client and Ballerina.
 # while `http.upstream` refers to the HTTP traffic that flows between Ballerina and the backend.
 
-[2022-10-23 00:06:18,501] TRACE {http.tracelog.downstream} - [id: 0x0f56628d] REGISTERED
-[2022-10-23 00:06:18,527] TRACE {http.tracelog.downstream} - [id: 0x0f56628d, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:63834] ACTIVE
-[2022-10-23 00:06:18,547] TRACE {http.tracelog.downstream} - [id: 0x0f56628d, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:63834] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
-GET /trace HTTP/1.1
-Host: localhost:9090
-User-Agent: curl/7.64.1
+[2022-12-15 11:18:03,126] TRACE {http.tracelog.downstream} - [id: 0x67ba903e] REGISTERED  
+[2022-12-15 11:18:03,157] TRACE {http.tracelog.downstream} - [id: 0x67ba903e, correlatedSource: n/a, host:/127.0.0.1:9095 - remote:/127.0.0.1:61634] ACTIVE  
+[2022-12-15 11:18:03,187] TRACE {http.tracelog.downstream} - [id: 0x67ba903e, correlatedSource: n/a, host:/127.0.0.1:9095 - remote:/127.0.0.1:61634] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+GET /info/albums HTTP/1.1
+Host: localhost:9095
+User-Agent: curl/7.79.1
+Accept: */*  
+[2022-12-15 11:18:03,253] TRACE {http.tracelog.downstream} - [id: 0x67ba903e, correlatedSource: n/a, host:/127.0.0.1:9095 - remote:/127.0.0.1:61634] INBOUND: EmptyLastHttpContent, 0B  
+[2022-12-15 11:18:03,255] TRACE {http.tracelog.downstream} - [id: 0x67ba903e, correlatedSource: n/a, host:/127.0.0.1:9095 - remote:/127.0.0.1:61634] READ COMPLETE  
+[2022-12-15 11:18:03,394] TRACE {http.tracelog.upstream} - [id: 0x40eb51fd] REGISTERED  
+[2022-12-15 11:18:03,394] TRACE {http.tracelog.upstream} - [id: 0x40eb51fd] CONNECT: localhost/127.0.0.1:9090, null  
+[2022-12-15 11:18:03,399] TRACE {http.tracelog.upstream} - [id: 0x40eb51fd, correlatedSource: 0x67ba903e, host:/127.0.0.1:61635 - remote:localhost/127.0.0.1:9090] ACTIVE  
+[2022-12-15 11:18:03,402] TRACE {http.tracelog.upstream} - [id: 0x40eb51fd, correlatedSource: 0x67ba903e, host:/127.0.0.1:61635 - remote:localhost/127.0.0.1:9090] OUTBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+GET /albums HTTP/1.1
+User-Agent: curl/7.79.1
 Accept: */*
-[2022-10-23 00:06:18,595] TRACE {http.tracelog.downstream} - [id: 0x0f56628d, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:63834] INBOUND: EmptyLastHttpContent, 0B
-[2022-10-23 00:06:18,597] TRACE {http.tracelog.downstream} - [id: 0x0f56628d, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:63834] READ COMPLETE
-[2022-10-23 00:06:18,742] TRACE {http.tracelog.upstream} - [id: 0xc000e604] REGISTERED
-[2022-10-23 00:06:18,742] TRACE {http.tracelog.upstream} - [id: 0xc000e604] CONNECT: httpstat.us/20.40.202.3:80, null
-[2022-10-23 00:06:18,994] TRACE {http.tracelog.upstream} - [id: 0xc000e604, correlatedSource: 0x0f56628d, host:/192.168.1.21:63835 - remote:httpstat.us/20.40.202.3:80] ACTIVE
-[2022-10-23 00:06:18,998] TRACE {http.tracelog.upstream} - [id: 0xc000e604, correlatedSource: 0x0f56628d, host:/192.168.1.21:63835 - remote:httpstat.us/20.40.202.3:80] OUTBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
-GET /200 HTTP/1.1
-User-Agent: curl/7.64.1
-Accept: */*
-host: httpstat.us
+host: localhost:9090
 connection: keep-alive
 upgrade: h2c
 HTTP2-Settings: AAEAABAAAAIAAAABAAN_____AAQAAP__AAUAAEAAAAYAACAA
-connection: HTTP2-Settings,upgrade
-[2022-10-23 00:06:19,003] TRACE {http.tracelog.upstream} - [id: 0xc000e604, correlatedSource: 0x0f56628d, host:/192.168.1.21:63835 - remote:httpstat.us/20.40.202.3:80] OUTBOUND: EmptyLastHttpContent, 0B
-[2022-10-23 00:06:19,004] TRACE {http.tracelog.upstream} - [id: 0xc000e604, correlatedSource: 0x0f56628d, host:/192.168.1.21:63835 - remote:httpstat.us/20.40.202.3:80] FLUSH
-[2022-10-23 00:06:19,330] TRACE {http.tracelog.upstream} - [id: 0xc000e604, correlatedSource: 0x0f56628d, host:/192.168.1.21:63835 - remote:httpstat.us/20.40.202.3:80] INBOUND: DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+connection: HTTP2-Settings,upgrade  
+[2022-12-15 11:18:03,408] TRACE {http.tracelog.upstream} - [id: 0x40eb51fd, correlatedSource: 0x67ba903e, host:/127.0.0.1:61635 - remote:localhost/127.0.0.1:9090] OUTBOUND: EmptyLastHttpContent, 0B  
+[2022-12-15 11:18:03,408] TRACE {http.tracelog.upstream} - [id: 0x40eb51fd, correlatedSource: 0x67ba903e, host:/127.0.0.1:61635 - remote:localhost/127.0.0.1:9090] FLUSH  
+[2022-12-15 11:18:03,414] TRACE {http.tracelog.upstream} - [id: 0x40eb51fd, correlatedSource: 0x67ba903e, host:/127.0.0.1:61635 - remote:localhost/127.0.0.1:9090] INBOUND: DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 101 Switching Protocols
+connection: upgrade
+upgrade: h2c  
+[2022-12-15 11:18:03,417] TRACE {http.tracelog.upstream} - [id: 0x40eb51fd, correlatedSource: 0x67ba903e, host:/127.0.0.1:61635 - remote:localhost/127.0.0.1:9090] INBOUND: EmptyLastHttpContent, 0B  
+[2022-12-15 11:18:03,419] TRACE {http.tracelog.upstream} - [id: 0x40eb51fd, correlatedSource: 0x67ba903e, host:/127.0.0.1:61635 - remote:localhost/127.0.0.1:9090] OUTBOUND: 24B
+PRI * HTTP/2.0
+
+SM
+
+  
+[2022-12-15 11:18:03,421] TRACE {http.tracelog.upstream} - [id: 0x40eb51fd, L:/127.0.0.1:61635 - R:localhost/127.0.0.1:9090] OUTBOUND SETTINGS: ack=false settings={MAX_HEADER_LIST_SIZE=8192}  
+[2022-12-15 11:18:03,422] TRACE {http.tracelog.upstream} - [id: 0x40eb51fd, correlatedSource: 0x67ba903e, host:/127.0.0.1:61635 - remote:localhost/127.0.0.1:9090] OUTBOUND: 15B
+   
+[2022-12-15 11:18:03,430] TRACE {http.tracelog.upstream} - [id: 0x40eb51fd, L:/127.0.0.1:61635 - R:localhost/127.0.0.1:9090] INBOUND SETTINGS: ack=false settings={MAX_HEADER_LIST_SIZE=8192}  
+[2022-12-15 11:18:03,431] TRACE {http.tracelog.upstream} - [id: 0x40eb51fd, L:/127.0.0.1:61635 - R:localhost/127.0.0.1:9090] OUTBOUND SETTINGS: ack=true  
+[2022-12-15 11:18:03,437] TRACE {http.tracelog.upstream} - [id: 0x40eb51fd, L:/127.0.0.1:61635 - R:localhost/127.0.0.1:9090] INBOUND HEADERS: streamId=1 headers=DefaultHttp2Headers[:status: 200, content-type: application/json, server: ballerina, date: Thu, 15 Dec 2022 11:18:03 +0530] padding=0 endStream=false  
+[2022-12-15 11:18:03,450] TRACE {http.tracelog.upstream} - [id: 0x40eb51fd, L:/127.0.0.1:61635 - R:localhost/127.0.0.1:9090] INBOUND DATA: streamId=1 padding=0 endStream=true length=95 data=95B
+[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]  
+[2022-12-15 11:18:03,452] TRACE {http.tracelog.upstream} - [id: 0x40eb51fd, L:/127.0.0.1:61635 - R:localhost/127.0.0.1:9090] INBOUND SETTINGS: ack=true  
+[2022-12-15 11:18:03,516] TRACE {http.tracelog.downstream} - [id: 0x67ba903e, correlatedSource: n/a, host:/127.0.0.1:9095 - remote:/127.0.0.1:61634] OUTBOUND: DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 95, cap: 95, components=1))
 HTTP/1.1 200 OK
-Content-Type: text/plain
-Date: Sat, 22 Oct 2022 18:36:18 GMT
-Server: Kestrel
-Set-Cookie: ARRAffinity=bc45149c0fc23967cdceb8859c6de398da9b0c4a4d96e0fa4231363f21476d65;Path=/;HttpOnly;Domain=httpstat.us
-Request-Context: appId=cid-v1:1e93d241-20e4-4513-bbd7-f452a16a5d69
-content-length: 6
-[2022-10-23 00:06:19,339] TRACE {http.tracelog.upstream} - [id: 0xc000e604, correlatedSource: 0x0f56628d, host:/192.168.1.21:63835 - remote:httpstat.us/20.40.202.3:80] INBOUND: DefaultLastHttpContent(data: PooledSlicedByteBuf(ridx: 0, widx: 6, cap: 6/6, unwrapped: PooledUnsafeDirectByteBuf(ridx: 317, widx: 317, cap: 2048)), decoderResult: success), 6B
-200 OK
-[2022-10-23 00:06:19,340] TRACE {http.tracelog.upstream} - [id: 0xc000e604, correlatedSource: 0x0f56628d, host:/192.168.1.21:63835 - remote:httpstat.us/20.40.202.3:80] READ COMPLETE
-[2022-10-23 00:06:19,377] TRACE {http.tracelog.downstream} - [id: 0x0f56628d, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:63834] OUTBOUND: DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 6, cap: 6, components=1))
-HTTP/1.1 200 OK
-content-type: text/plain
-content-length: 6
+content-type: application/json
+content-length: 95
 server: ballerina
-date: Sun, 23 Oct 2022 00:06:19 +0530, 6B
-200 OK
-[2022-10-23 00:06:19,382] TRACE {http.tracelog.downstream} - [id: 0x0f56628d, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:63834] FLUSH
-[2022-10-23 00:06:19,385] TRACE {http.tracelog.downstream} - [id: 0x0f56628d, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:63834] READ COMPLETE
-[2022-10-23 00:06:19,386] TRACE {http.tracelog.downstream} - [id: 0x0f56628d, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:63834] INACTIVE
-[2022-10-23 00:06:19,388] TRACE {http.tracelog.downstream} - [id: 0x0f56628d, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:63834] UNREGISTERED
+date: Thu, 15 Dec 2022 11:18:03 +0530, 95B
+[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]  
+[2022-12-15 11:18:03,517] TRACE {http.tracelog.downstream} - [id: 0x67ba903e, correlatedSource: n/a, host:/127.0.0.1:9095 - remote:/127.0.0.1:61634] FLUSH  
+[2022-12-15 11:18:03,519] TRACE {http.tracelog.downstream} - [id: 0x67ba903e, correlatedSource: n/a, host:/127.0.0.1:9095 - remote:/127.0.0.1:61634] READ COMPLETE  
+[2022-12-15 11:18:03,521] TRACE {http.tracelog.downstream} - [id: 0x67ba903e, correlatedSource: n/a, host:/127.0.0.1:9095 - remote:/127.0.0.1:61634] INACTIVE  
+[2022-12-15 11:18:03,523] TRACE {http.tracelog.downstream} - [id: 0x67ba903e, correlatedSource: n/a, host:/127.0.0.1:9095 - remote:/127.0.0.1:61634] UNREGISTERED 

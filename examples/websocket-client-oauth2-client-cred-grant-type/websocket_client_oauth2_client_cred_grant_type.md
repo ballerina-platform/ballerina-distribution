@@ -1,6 +1,6 @@
 # WebSocket client - OAuth2 client credentials grant type
 
-A client, which is secured with OAuth2 client credentials grant typecan be used to connect to a secured service. The client is enriched with the `Authorization: Bearer <token>` header by passing the `websocket:OAuth2ClientCredentialsGrantConfig` for the `auth` configuration of the client.
+The `websocket:Client` can connect to a service that is secured with the OAuth2 client credentials grant type by adding the `Authorization: Bearer <token>` header to the initial HTTP request. The required configurations for this grant type can be specified in the `auth` field of the client configuration.
 
 ::: code websocket_client_oauth2_client_cred_grant_type.bal :::
 
@@ -12,6 +12,6 @@ Run the client program by executing the command below.
 ::: out websocket_client_oauth2_client_cred_grant_type.out :::
 
 ## Related Links
-- [`websocket` package - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
-- [`oauth2` package - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)
+- [`websocket` module - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
+- [`oauth2` module - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)
 - [WebSocket authentication - Specification](/spec/websocket/#52-authentication-and-authorization)
