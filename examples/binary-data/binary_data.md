@@ -7,7 +7,7 @@ Binary data is represented by arrays of byte values. It is a special syntax for 
 ::: out binary_data.out :::
 
 ## Related links
-- [Arrays - Ballerina by example](/learn/by-example/arrays)
-- [Integers - Ballerina by example](/learn/by-example/integers)
+- [Arrays](/learn/by-example/arrays)
+- [Integers](/learn/by-example/integers)
 
 [comment]: # (Add byte type BBE link)

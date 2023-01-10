@@ -7,9 +7,9 @@ Ballerina supports nested arrays where the element type is also an array type `T
 ::: out nested_arrays.out :::
 
 ## Related links
-- [Arrays - Ballerina by example](/learn/by-example/arrays)
+- [Arrays](/learn/by-example/arrays)
 - [Manipulating an array `(lang.array)` - Language library](https://lib.ballerina.io/ballerina/lang.array)
-- [Tuples - Ballerina by example](/learn/by-example/tuples)
-- [Filler values of a list - Ballerina by example](/learn/by-example/filler-values-of-a-list)
-- [List sub typing - Ballerina by example](/learn/by-example/list-subtyping)
-- [List equality - Ballerina by example](/learn/by-example/list-equality)
+- [Tuples](/learn/by-example/tuples)
+- [Filler values of a list](/learn/by-example/filler-values-of-a-list)
+- [List sub typing](/learn/by-example/list-subtyping)
+- [List equality](/learn/by-example/list-equality)
