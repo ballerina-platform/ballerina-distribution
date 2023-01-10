@@ -1,3 +1,8 @@
 $ bal run open_records.bal
-{"name":"James","id":10}
-{"name":"John","country":"UK"}
+{"name":"John","age":25,"country":"UK"}
+25
+UK
+6
+{"name":"Anne","age":23,"studyHours":6,"credits":120.5}
+{"name":"Anne","age":23,"studyHours":6,"credits":120.5}
+{"name":"Anne","age":23,"studyHours":6,"credits":120.5}
