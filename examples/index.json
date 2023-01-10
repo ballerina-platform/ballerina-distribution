@@ -130,6 +130,13 @@
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
+            },
+            {
+                "name": "Binding patterns in match statement",
+                "url": "binding-patterns-in-match-statement",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
             }
         ]
     },
@@ -535,13 +542,6 @@
             {
                 "name": "Spread in binding patterns",
                 "url": "spread-in-binding-patterns",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Binding patterns in match statement",
-                "url": "binding-patterns-in-match-statement",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
