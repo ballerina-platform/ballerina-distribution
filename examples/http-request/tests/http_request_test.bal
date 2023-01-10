@@ -9,13 +9,21 @@ table<Album> key(title) albums = table [
 @test:Config {}
 function testFunc() returns error? {
     http:Client albumClient = check new ("localhost:9090");
-    http:Response response = check albumClient->/albums({"x-music-genre": "Jazz"});
-    test:assertEquals(response.getHeader("x-music-genre"), "Jazz");
+    http:Request request = new;
+    request.setJsonPayload({
+        title: "Sarah Vaughan and Clifford Brown",
+        artist: "Sarah Vaughan"
+    });
+    request.setHeader("x-music-genre", "Jazz");
+
+    Album album = check albumClient->/albums.post(request);
+    test:assertEquals(album, {"title":"Sarah Vaughan and Clifford Brown", "artist":"Sarah Vaughan"});
 }
 
-service / on new http:Listener(9090) {
 
-    resource function get albums(@http:Header string x\-music\-genre) returns record {|*http:Ok; Album[] body;|} {
-        return {body: albums.toArray(), headers: {"x-music-genre": x\-music\-genre}};
+service / on new http:Listener(9090) {
+    resource function post albums(@http:Payload Album album) returns Album {
+        albums.add(album);
+        return album;
     }
 }

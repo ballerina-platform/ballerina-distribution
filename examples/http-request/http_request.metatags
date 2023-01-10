@@ -1,2 +1,2 @@
-description: BBE on sending custom HTTP header via client in ballerina.
-keywords: ballerina, ballerina by example, bbe, http client, header, request
+description: BBE on HTTP request and its usage with client in ballerina.
+keywords: ballerina, ballerina by example, bbe, http client, request

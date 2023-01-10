@@ -1,2 +1,2 @@
 $ bal run http_request.bal
-First artist name: John Coltrane
+Created album:{"title":"Sarah Vaughan and Clifford Brown", "artist":"Sarah Vaughan"}

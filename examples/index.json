@@ -1732,6 +1732,30 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Request",
+                "url": "http-request",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Response",
+                "url": "http-response",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Caller",
+                "url": "http-caller",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Redirects",
                 "url": "http-service-redirects",
                 "verifyBuild": true,
@@ -1893,14 +1917,6 @@
             {
                 "name": "Chunking",
                 "url": "http-client-chunking",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Sending headers",
-                "url": "http-client-custom-header",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
