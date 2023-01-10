@@ -1,16 +1,19 @@
-# HTTP request
+# HTTP response
 
-The headers are used to send additional details along with the payload. When sending customized headers via the `http:Client`, define the header map in the resource invocation. The `header` argument accepts `map<string|string[]>` as the header value type.
+The response represents the outgoing message from a service and the incoming message to a client. A response is used to respond to the caller who initiated the call. Ballerina represents it via the `http:Response` object. Once it is created, headers, payloads, and status code properties should be populated. The `http:Response` can be either returned from the resource or responded to using the `respond` method of `http:Caller`. Also the `http:Response` is one of the return values of the `http:Client` remote/resource invocations. Instead of client data binding, the user can consume the `http:Response` object to explore headers and payload. The support functions associated such as setXXXPayload(), AddCookie(), setHeader(),.. etc. help developers to explore more of the transport message. To handle advanced scenarios such as a cookie, multipart, and redirect, the `http:Response` is useful.
 
-::: code http_client_custom_header.bal :::
+::: code http_response.bal :::
 
-## Prerequisites
-- Run the HTTP service given in the [Basic REST service](/learn/by-example/http-basic-rest-service/) example.
+Run the service as follows.
 
-Run the client program by executing the following command.
+::: out http_response.server.out :::
 
-::: out http_client_custom_header.out :::
+Invoke the service by executing the following cURL command in a new terminal.
+
+::: out http_response.client.out :::
+
+>**Tip:** You can invoke the above service via the [Send request/Receive response client](/learn/by-example/http-client-send-request-receive-response/) example.
 
 ## Related links
 - [`http` module - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
-- [HTTP client resource methods - Specification](/spec/http/#2423-resource-methods)
+- [HTTP response - Specification](/spec/http/#6-request-and-response)
