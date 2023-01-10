@@ -7,9 +7,9 @@ A Tuple type descriptor can optionally contain a tuple rest descriptor. It can b
 ::: out rest_type_in_tuples.out :::
 
 ## Related links
-- [Tuples - Ballerina by example](/learn/by-example/tuples)
-- [Arrays - Ballerina by example](/learn/by-example/arrays)
-- [Manipulating an array `(lang.array)` - Language library](https://lib.ballerina.io/ballerina/lang.array)
-- [Filler values of a list - Ballerina by example](/learn/by-example/filler-values-of-a-list)
-- [List sub typing - Ballerina by example](/learn/by-example/list-subtyping)
-- [List equality - Ballerina by example](/learn/by-example/list-equality)
+- [Tuples](/learn/by-example/tuples)
+- [Arrays](/learn/by-example/arrays)
+- [Manipulating an array `(lang.array)`](https://lib.ballerina.io/ballerina/lang.array)
+- [Filler values of a list](/learn/by-example/filler-values-of-a-list)
+- [List sub typing](/learn/by-example/list-subtyping)
+- [List equality](/learn/by-example/list-equality)

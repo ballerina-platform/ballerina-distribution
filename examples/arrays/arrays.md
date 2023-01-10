@@ -9,9 +9,9 @@ The length of the array can be inferred from the context by defining the array a
 ::: out arrays.out :::
 
 ## Related links
-- [Manipulating an array `(lang.array)` - Language library](https://lib.ballerina.io/ballerina/lang.array)
-- [Tuples - Ballerina by example](/learn/by-example/tuples)
-- [Nested arrays - Ballerina by example](/learn/by-example/nested-arrays)
-- [Filler values of a list - Ballerina by example](/learn/by-example/filler-values-of-a-list)
-- [List sub typing - Ballerina by example](/learn/by-example/list-subtyping)
-- [List equality - Ballerina by example](/learn/by-example/list-equality)
+- [Manipulating an array `(lang.array)`](https://lib.ballerina.io/ballerina/lang.array)
+- [Tuples](/learn/by-example/tuples)
+- [Nested arrays](/learn/by-example/nested-arrays)
+- [Filler values of a list](/learn/by-example/filler-values-of-a-list)
+- [List sub typing](/learn/by-example/list-subtyping)
+- [List equality](/learn/by-example/list-equality)
