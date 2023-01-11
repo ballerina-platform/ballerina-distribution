@@ -17,8 +17,8 @@ type NetworkError error<NetworkErrorDetail>;
 
 const ERROR = "Generic Error";
 
-function errorMatch(error v) {
-    match v {
+function errorMatch(error e) {
+    match e {
         // This error binding pattern matches a `DatabaseError` type error value and
         // binds its `code` detail mapping to the `code` variable.
         var error DatabaseError(code = code) => {
