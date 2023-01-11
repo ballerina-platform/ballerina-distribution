@@ -1013,6 +1013,20 @@
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
+            },
+            {
+                "name": "Configuring via TOML files",
+                "url": "configuring-via-toml",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Configuring via CLI arguments",
+                "url": "configuring-via-cli",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
             }
         ]
     },
