@@ -1,8 +1,8 @@
 import ballerina/http;
 
 type Args record {|
-   decimal x;
-   decimal y;
+    decimal x;
+    decimal y;
 |};
 
 type Response record {|
