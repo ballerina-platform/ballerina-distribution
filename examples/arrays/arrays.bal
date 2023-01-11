@@ -49,5 +49,6 @@ public function main() {
     foreach string name in names {
         fullNames.push(string `${name} Johnson`);
     }
+
     io:println(fullNames);
 }
