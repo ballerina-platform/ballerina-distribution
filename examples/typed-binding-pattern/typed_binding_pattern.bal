@@ -2,6 +2,7 @@ import ballerina/io;
 
 public function main() returns error? {
 
+    // The type of variable `name` will be `string` and `age` will be `int`.
     [string, int] [name, age] = getDetails();
     io:println(name);
     io:println(age);
