@@ -229,6 +229,22 @@
                 "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": true
+            },
+            {
+                "name": "Break statement",
+                "url": "break-statement",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "disablePlayground": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Continue statement",
+                "url": "continue-statement",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "disablePlayground": true,
+                "isLearnByExample": true
             }
         ]
     },
