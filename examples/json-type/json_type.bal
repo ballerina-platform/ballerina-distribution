@@ -17,20 +17,20 @@ public function main() returns error? {
     json[] arr = [m, {"x": i}];
     io:println(arr);
  
-	string rawData = "{\"id\": 2, \"name\": \"Georgy\"}";
-	// Get the `json` value from the string.
-	json j = check rawData.fromJsonString();
-	io:println(j);
+    string rawData = "{\"id\": 2, \"name\": \"Georgy\"}";
+    // Get the `json` value from the string.
+    json j = check rawData.fromJsonString();
+    io:println(j);
  
-	// Access the fields of `j` using field access.
-	string name = check j.name;
-	io:println(name);
+    // Access the fields of `j` using field access.
+    string name = check j.name;
+    io:println(name);
  
-	// Convert the `json` into a user-defined type.
-	Student student = check j.cloneWithType();
-	io:println(student.id);
+    // Convert the `json` into a user-defined type.
+    Student student = check j.cloneWithType();
+    io:println(student.id);
  
-	// Convert the user-defined type to a `json`.
-	j = student;
-	io:println(j);
+    // Convert the user-defined type to a `json`.
+    j = student;
+    io:println(j);
 }
