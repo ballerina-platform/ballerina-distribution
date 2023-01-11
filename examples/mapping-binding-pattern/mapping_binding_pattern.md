@@ -7,6 +7,6 @@ A mapping binding pattern matches a mapping value with its fields. A `record` ty
 ::: out mapping_binding_pattern.out :::
 
 ## Related links
-- [Binding pattern](/learn/by-example/binding-pattern/)
+- [Binding pattern](/learn/by-example/binding-patterns/)
 - [Typed binding pattern](/learn/by-example/typed-binding-pattern/)
 - [Rest binding pattern in mapping binding pattern](/learn/by-example/rest-binding-pattern-in-mapping-binding-pattern/)

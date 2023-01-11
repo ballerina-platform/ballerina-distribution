@@ -7,6 +7,6 @@ You can use the rest binding pattern (`...r`) to bind the fields that are not ex
 ::: out rest_binding_pattern_in_mapping_binding_pattern.out :::
 
 ## Related links
-- [Binding pattern](/learn/by-example/binding-pattern/)
+- [Binding pattern](/learn/by-example/binding-patterns/)
 - [Typed binding pattern](/learn/by-example/typed-binding-pattern/)
 - [Mapping binding pattern](/learn/by-example/mapping-binding-pattern/)

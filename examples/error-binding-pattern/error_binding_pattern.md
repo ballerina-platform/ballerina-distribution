@@ -7,6 +7,6 @@ An error binding pattern matches the different elements of an error value such a
 ::: out error_binding_pattern.out :::
 
 ## Related links
-- [Binding pattern](/learn/by-example/binding-pattern/)
+- [Binding pattern](/learn/by-example/binding-patterns/)
 - [Typed binding pattern](/learn/by-example/typed-binding-pattern/)
 - [Rest binding pattern in error binding pattern](/learn/by-example/rest-binding-pattern-in-error-binding-pattern/)
