@@ -1,0 +1,2 @@
+description: This BBE demonstrates how to convert JSON to a user-defined type, do the numeric conversion on JSON elements, convert JSON to record, access JSON data, and manipulate JSON data in Ballerina.
+keywords: ballerina, ballerina by example, bbe, json, record, cast, access, manipulate

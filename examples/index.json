@@ -735,7 +735,7 @@
         "title": "JSON",
         "column": 1,
         "category": "Language concepts",
-        "samples": [
+        "samples": [            
             {
                 "name": "JSON type",
                 "url": "json-type",
@@ -744,12 +744,12 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Work directly with JSON",
-                "url": "working-directly-with-json",
+                "name": "Access JSON elements",
+                "url": "access-json-elements",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
-            },
+            },            
             {
                 "name": "Match statement with maps",
                 "url": "match-statement-with-maps",
@@ -765,19 +765,26 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Convert from JSON to user-defined type",
-                "url": "converting-from-json-to-user-defined-type",
+                "name": "Converting from table and XML to JSON",
+                "url": "converting-from-table-and-xml-to-json",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
-            },
+            },            
             {
-                "name": "Convert to user-defined type",
-                "url": "converting-to-user-defined-type",
+                "name": "Converting JSON with langlib functions",
+                "url": "converting-json-with-langlib-functions",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
-            },
+            },            
+            {
+                "name": "Casting JSON to user-defined type",
+                "url": "casting-json-to-user-defined-type",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },            
             {
                 "name": "Resource method typing",
                 "url": "resource-method-typing",
