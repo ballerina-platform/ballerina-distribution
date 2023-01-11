@@ -4,6 +4,7 @@ public function main() {
     // Declare an array of length 3, where the members are arrays of length 2.
     string[3][2] orderItems = [["carrot", "apple"], ["avocado", "egg"], ["fish", "banana"]];
     io:println(orderItems);
+
     // Declare an array of length 2, where the element type is an array of variable length.
     string[2][] orderItems2 = [["carrot", "apple"], ["avocado", "egg", "fish", "banana"]];
     io:println(orderItems2);

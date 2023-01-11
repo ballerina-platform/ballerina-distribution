@@ -1,4 +1,4 @@
-# Filler values of a list
+# List equality
 
 You can use `==` and `!=` on lists to check the deep equality of two lists: two lists are deep equal if they have the same members in the same order. Deep equality only works for `anydata` lists. `===` and `!==` check for the exact equality, which matches the references of the lists.
 
