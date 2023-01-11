@@ -1,2 +1,3 @@
 $ bal run booleans.bal
-1
+true
+false
