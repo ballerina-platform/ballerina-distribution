@@ -568,22 +568,57 @@
         "category": "Language concepts",
         "samples": [
             {
-                "name": "Binding patterns in assignment",
-                "url": "binding-patterns-in-assignment",
+                "name": "Mapping binding pattern",
+                "url": "mapping-binding-pattern",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Spread in binding patterns",
-                "url": "spread-in-binding-patterns",
+                "name": "Rest binding pattern in mapping binding pattern",
+                "url": "rest-binding-pattern-in-mapping-binding-pattern",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Binding patterns in match statement",
-                "url": "binding-patterns-in-match-statement",
+                "name": "Error binding pattern",
+                "url": "error-binding-pattern",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Rest binding pattern in error binding pattern",
+                "url": "rest-binding-pattern-in-error-binding-pattern",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Single use of typed binding patterns",
+                "url": "single-use-of-typed-binding",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Single use of typed binding patterns with on fail clause",
+                "url": "single-use-with-on-fail-clause",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Iterative use of typed binding patterns",
+                "url": "iterative-use-of-typed-binding",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Error binding pattern in match statement",
+                "url": "error-binding-pattern-in-match-statement",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
