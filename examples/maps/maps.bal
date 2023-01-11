@@ -2,20 +2,31 @@ import ballerina/io;
 
 public function main() {
     // Creates a `map` constrained by the `int` type.
-    map<int> m = {
-        "x": 1,
-        "y": 2
+    map<int> ages = {
+        "Tom": 23,
+        "Jack": 34
     };
 
-    // Gets the entry for `x`.
-    int? v = m["x"];
-
+    // Gets the entry for `Tom`.
+    int? v = ages["Tom"];
     io:println(v);
 
-    // Adds a new entry for `z`.
-    m["z"] = 5;
+    // As there exists an entry for `Tom`, it can be accessed using the `map:get()` method. 
+    // Using `ages["Tom"]` wouldn't work here because its type would be `int?` and  not `int`.
+    int age = ages.get("Tom");
+    io:println(age);
 
-    // Using `m["x"]` wouldn't work here because the type would be `int?` and not `int`.
-    m["z"] = m.get("x");
+    // Adds a new entry for `Anne`.
+    ages["Anne"] = 19;
 
+    // The `map:hasKey()` method checks whether the map `age` has a member with `Jack` as the key.
+    if ages.hasKey("Jack") {
+        // The member with the key `Jack` can be removed using `map:remove()`.
+        _ = ages.remove("Jack");
+    }
+
+    // `map:keys()` returns the keys as an array of strings.
+    foreach string name in ages.keys() {
+        io:println(name, " : ", ages[name]);
+    }
 }
