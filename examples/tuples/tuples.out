@@ -1,3 +1,7 @@
 $ bal run tuples.bal
-id 1
-0
+["Mike",24,false]
+[1,2,3]
+24
+["Mike",25,false]
+3
+[30,true]

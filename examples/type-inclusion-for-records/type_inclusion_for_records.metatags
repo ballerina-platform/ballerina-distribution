@@ -1,2 +1,2 @@
-description: This BBE demonstrates type inclusion for records in Ballerina.
-keywords: ballerina, ballerina by example, bbe, record, type inclusion
+description: This BBE demonstrates type inclusion for records, record type inclusion, and including fields of a record.
+keywords: ballerina, ballerina by example, bbe, record, record type, record field, inclusion, record inclusion

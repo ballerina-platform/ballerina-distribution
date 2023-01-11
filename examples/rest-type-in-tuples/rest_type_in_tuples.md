@@ -1,7 +1,15 @@
 # Rest type in tuples
 
-Similar to how maps can be described as record types, arrays can also be defined as tuple types using `...`. The `rest` type in tuples can be described as `[T...]`, which is a tuple containing zero or more members of type `T`. Tuples are not open by default. A tuple type descriptor may or may not contain a rest descriptor but if present, it should be the last member type descriptor in the tuple.
+A Tuple type descriptor can optionally contain a tuple rest descriptor. It can be described as `[R...]`. This implies that the tuple can contain zero or more members after the `n`th member where the type of those members are `R`. Rest type descriptor should be the last member type descriptor in the tuple. Tuples are not open by default.
 
 ::: code rest_type_in_tuples.bal :::
 
 ::: out rest_type_in_tuples.out :::
+
+## Related links
+- [Tuples](/learn/by-example/tuples)
+- [Arrays](/learn/by-example/arrays)
+- [Manipulating an array `(lang.array)`](https://lib.ballerina.io/ballerina/lang.array)
+- [Filler values of a list](/learn/by-example/filler-values-of-a-list)
+- [List sub typing](/learn/by-example/list-subtyping)
+- [List equality](/learn/by-example/list-equality)

@@ -1,4 +1,9 @@
 $ bal run langlib_functions.bal
-b
 1
 1
+value is 123
+123.0
+true
+false
+[2,4,6,8,10,12]
+123.0

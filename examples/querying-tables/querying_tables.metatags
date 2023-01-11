@@ -1,2 +1,2 @@
-description: This BBE demonstrates querying tables in Ballerina.
-keywords: ballerina, ballerina by example, bbe, querying tables, table, query, query expression
+description: This BBE demonstrates querying tables in Ballerina, filtering tables, ordering tables rows, sorting a table, iterating a table, performing table operations, querying a table, and creating an array from a table.
+keywords: ballerina, ballerina by example, bbe, querying tables, table, query, query expression, filter, order, sort, iterate, array, where
