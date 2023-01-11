@@ -1,6 +1,6 @@
 # HTTP service - Sending header
 
-The headers are used to send additional details along with the payload. When sending customized headers from the HTTP service, the easiest way is to define them in the `http:StatusCodeResponse` record. The `header` field accepts `map<string|int|boolean|string[]|int[]|boolean[]>` as the header value type.
+The headers are used to send additional details along with the payload. To send custom headers, it is best to create a subtype of the relevant `http:StatusCodeResponse` record by specifying the required header. Creating a subtype helps accurately generate the OpenAPI specification which then can be used to generate the relevant clients. The type of the header can be one of `string`, `int`, `boolean`, `string[]`, `int[]` or `boolean[]`.
 
 ::: code http_send_header.bal :::
 

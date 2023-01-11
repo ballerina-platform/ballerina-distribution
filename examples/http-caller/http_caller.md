@@ -1,6 +1,6 @@
 # HTTP caller
 
-The caller represents the endpoint that initiated the call toward a service. It contains remote/local addresses and uses to send out responses primarily. In addition to that, advanced scenarios such as redirect, continue are handled using the `http:Caller`. When the caller is defined, the resource function return type limits only to `error?`. If you need to execute some logic even after responding, the `http:Caller` respond method is useful compared to value returns as the flow continues.
+The `http:Caller` represents the endpoint that initiated the call toward a service. It is used to send responses back to the caller. In addition, it also contains meta information such as remote/local addresses. When the `http:Caller` is defined, the resource function return type is constrained to `error?`. `http:Caller` is useful to handle scenarios such as sending status code `100 Continue` or doing some work after sending the response to the caller. In most cases, `http:Caller` is not required as returning from the resource function sends the response back to the caller.
 
 ::: code http_caller.bal :::
 

@@ -12,10 +12,15 @@ table<Album> key(title) albums = table [
 
 service / on new http:Listener(9090) {
 
-    resource function get albums() returns http:Response {
-        // Create a response and populate headers/payload.
+    // The request is defined in the signature parameter.
+    resource function post albums(http:Request request) returns http:Response|error {
+        json payload = check request.getJsonPayload();
+        Album album = check payload.cloneWithType();
+        albums.add(album);
+
+        // Create a response and populate the headers/payload.
         http:Response response = new;
-        response.setPayload(albums.toArray());
+        response.setPayload(album);
         response.setHeader("x-music-genre", "Jazz");
         return response;
     }

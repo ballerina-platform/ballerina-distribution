@@ -10,9 +10,22 @@ table<Album> key(title) albums = table [
     {title: "Jeru", artist: "Gerry Mulligan"}
 ];
 
+type AlbumOk record {|
+    *http:Ok;
+    record {|
+        string x\-music\-genre;
+    |} headers;
+    Album[] body;
+|};
+
 service / on new http:Listener(9090) {
 
-    resource function get albums() returns record {|*http:Ok; Album[] body;|} {
-        return {body: albums.toArray(), headers:{"x-music-genre":"Jazz"}};
+    resource function get albums() returns AlbumOk {
+        return {
+            headers: {
+                x\-music\-genre: "Jazz"
+            },
+            body: albums.toArray()
+        };
     }
 }

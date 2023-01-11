@@ -1,2 +1,2 @@
-description: BBE on HTTP caller and its usage with http service in ballerina.
+description: This BBE demonstrates the HTTP caller and its usage with an HTTP service in Ballerina.
 keywords: ballerina, ballerina by example, bbe, http caller, service

@@ -1732,15 +1732,8 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Request",
-                "url": "http-request",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Response",
-                "url": "http-response",
+                "name": "Request/Response",
+                "url": "http-request-response",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "isLearnByExample": false
