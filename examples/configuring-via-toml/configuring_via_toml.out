@@ -1,4 +1,4 @@
-$ bal run configuring-via-toml.bal
+$ bal run configuring_via_toml.bal
 maximum payload (in MB): 3.21
 accepted content types: ["application/xml","application/json","text/plain"]
 HTTP version: 1.0

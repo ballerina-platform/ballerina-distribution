@@ -8,6 +8,6 @@ An environment variable with the name `BAL_CONFIG_DATA` can be used to provide t
 
 For more information, see [Configure via TOML syntax](/learn/configure-ballerina-programs/provide-values-to-configurable-variables/provide-via-toml-syntax/).
 
-::: code configuring-via-toml.bal :::
+::: code configuring_via_toml.bal :::
 
-::: out configuring-via-toml.out :::
+::: out configuring_via_toml.out :::

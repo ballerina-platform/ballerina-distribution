@@ -7,6 +7,6 @@ The syntax `-Ckey=value` can be used to provide values through the command line 
 
 For more information, see [Configure via command line arguments](/learn/configure-ballerina-programs/provide-values-to-configurable-variables/#provide-via-command-line-arguments/).
 
-::: code configuring-via-cli.bal :::
+::: code configuring_via_cli.bal :::
 
-::: out configuring-via-cli.out :::
+::: out configuring_via_cli.out :::

@@ -1,4 +1,0 @@
-$ bal run configuring-via-cli.bal -- -CmaxPayload=2.5 -ClocalId=ID-1 -ChttpVersion=2.0
-maximum payload (in MB): 2.5
-local ID: ID-1
-HTTP version: 2.0
