@@ -7,6 +7,6 @@ You can use the rest binding pattern (`...r`) to bind the detail mappings that a
 ::: out rest_binding_pattern_in_error_binding_pattern.out :::
 
 ## Related links
-- [Binding Pattern](/learn/by-example/binding-pattern/)
+- [Binding Patterns](/learn/by-example/binding-patterns/)
 - [Typed Binding Pattern](/learn/by-example/typed-binding-pattern/)
 - [Error Binding Pattern](/learn/by-example/error-binding-pattern/)
