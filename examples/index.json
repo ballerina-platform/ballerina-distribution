@@ -943,8 +943,8 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Destructure records using queries",
-                "url": "destructure-records-using-queries",
+                "name": "Destructure records using query",
+                "url": "destructure-records-using-query",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
