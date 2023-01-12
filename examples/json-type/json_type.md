@@ -10,7 +10,7 @@ The `json` type can be explained as a union of the simple basic types, `string`,
 
 ## Related links
 - [Access JSON elements](/learn/by-example/access-json-elements/)
-- [Converting from JSON to user-defined type with langlib functions](/learn/by-example/converting-from-json-to-user-defined-type-with-langlib-functions/)
+- [Converting from JSON to user defined type with langlib functions](/learn/by-example/converting-from-json-to-user-defined-type-with-langlib-functions/)
 - [Converting from user-defined type to JSON](/learn/by-example/converting-from-user-defined-type-to-json/)
 - [fromJsonString](https://lib.ballerina.io/ballerina/lang.value/0.0.0/functions#fromJsonString)
 - [cloneWithType](https://lib.ballerina.io/ballerina/lang.value/0.0.0/functions#cloneWithType)
