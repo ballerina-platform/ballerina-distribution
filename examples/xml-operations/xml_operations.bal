@@ -1,6 +1,6 @@
 import ballerina/io;
 
-public function main() returns error? {
+public function main() {
     xml x1 = xml `<name>Sherlock Holmes</name>`;
     xml:Element x2 = 
         xml `<details>
@@ -12,10 +12,11 @@ public function main() returns error? {
     xml x3 = x1 + x2;
     io:println(x3);
 
-    xml x4 = xml `<name>Sherlock Holmes</name><details>
+    xml x4 = xml `<name>Sherlock Holmes</name>
+                    <details>
                         <author>Sir Arthur Conan Doyle</author>
                         <language>English</language>
-                  </details>`;
+                    </details>`;
 
     // `==` does a deep equality check.
     boolean eq = x3 == x4;

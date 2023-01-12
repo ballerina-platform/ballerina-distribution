@@ -1,10 +1,11 @@
 import ballerina/io;
 
 public function main() {
-    xml x1 = xml `<name>Sherlock Holmes</name><details>
-                        <author>Sir Arthur Conan Doyle</author>
-                        <language>English</language>
-                  </details>`;
+    xml x1 = xml `<name>Sherlock Holmes</name>
+                    <details>
+                      <author>Sir Arthur Conan Doyle</author>
+                      <language>English</language>
+                    </details>`;
 
     // `foreach` iterates over each item.
     foreach var item in x1 {

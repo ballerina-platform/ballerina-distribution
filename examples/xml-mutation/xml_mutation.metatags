@@ -1,2 +1,2 @@
-description: This BBE demonstrates XML mutations.
+description: This BBE demonstrates how to update XML values.
 keywords: ballerina, ballerina by example, bbe, xml, set children, change xml name

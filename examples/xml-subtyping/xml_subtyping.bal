@@ -30,11 +30,11 @@ public function main() {
     // Concatenating multiple items results in a sequence of items (`xml<T>`).
     // The concatenation below will result in a sequence of XML elements (`xml<xml:Element>`).
     xml resultElement = firstElement + secondElement;
+    io:println(resultElement is xml<xml:Element>);
 
     xml xmlHelloWorld = xml `<p>hello</p>World`;
 
     // An `xml` value belongs to the `xml<T>` type if each of its members belongs to type `T`.
-    io:println(resultElement is xml<xml:Element>);
     io:println(xmlHelloWorld is xml<xml:Element>);
 
     io:println(resultElement);

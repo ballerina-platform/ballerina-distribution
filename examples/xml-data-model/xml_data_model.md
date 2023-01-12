@@ -9,7 +9,7 @@ An XML document is an `xml` sequence with only one `element` and no `text`. An `
 
 - `name`: type `string`
 - `attributes`: type `map<string>`
-- children: type `xml`
+- `children`: type `xml`
 
 A `text` item is immutable.
 

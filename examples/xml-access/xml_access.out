@@ -1,4 +1,4 @@
-$ bal run xml.bal
+$ bal run xml_access.bal
 <name>Sherlock Holmes</name>
 greeting
 true
