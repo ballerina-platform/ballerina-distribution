@@ -1,6 +1,5 @@
 $ bal run list_binding_pattern_in_match_statement.bal
-List all files.
-Remove all files.
-Remove files: ["a.bal","b.bal"]
-move: a.bal
+Show
+Remove *
+Copy a.bal into b.bal
 Unrecognized command.
