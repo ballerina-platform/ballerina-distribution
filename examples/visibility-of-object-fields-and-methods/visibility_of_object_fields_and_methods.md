@@ -14,5 +14,5 @@ Attempting to access a private field or method from outside the class definition
 
 ## Related links
 - [Objects](/learn/by-example/objects/)
-- [Defining classes](/learn/by-example/defining_classes/)
-- [Object value from class definition](/learn/by-example/object_value_from_class_definition/)
+- [Defining classes](/learn/by-example/defining-classes/)
+- [Object value from class definition](/learn/by-example/object-value-from-class-definition/)

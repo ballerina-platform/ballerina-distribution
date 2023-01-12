@@ -7,5 +7,5 @@ In Ballerina, there are two ways to construct an object value with named methods
 ::: out object_constructor.out :::
 
 ## Related links
-- [Object values from class definition](/learn/by-example/object-values-from-class-definition/)
+- [Object value from class definition](/learn/by-example/object-value-from-class-definition/)
 - [Object types](/learn/by-example/object-types/)
