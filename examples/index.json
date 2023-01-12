@@ -816,7 +816,7 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Converting from JSON to user-defined type with langlib functions",
+                "name": "Converting from JSON to user defined type with langlib functions",
                 "url": "converting-from-json-to-user-defined-type-with-langlib-functions",
                 "verifyBuild": true,
                 "verifyOutput": true,
