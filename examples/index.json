@@ -881,8 +881,15 @@
         "category": "Language concepts",
         "samples": [
             {
-                "name": "Table syntax",
-                "url": "table-syntax",
+                "name": "Table",
+                "url": "table",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Table types",
+                "url": "table-types",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true

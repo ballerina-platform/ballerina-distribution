@@ -1,0 +1,5 @@
+$ bal run table.bal
+[{"name":"John","salary":320},{"name":"Jane","salary":200}]
+[{"name":"John","salary":320},{"name":"Jane","salary":200},{"name":"Sam","salary":150}]
+true
+[{"name":"Jane","salary":302},{"name":"Sam","salary":252}]
