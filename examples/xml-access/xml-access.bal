@@ -1,10 +1,11 @@
 import ballerina/io;
 
 public function main() returns error? {
-    xml x1 = xml `<name>Sherlock Holmes</name><details>
+    xml x1 = xml `<name>Sherlock Holmes</name>
+                  <details>
                     <author>Sir Arthur Conan Doyle</author>
                     <language>English</language>
-                </details>`;
+                  </details>`;
 
     // `x[i]` or `x.get(i)` gives the `i`-th item.
     io:println(x1[0]);
