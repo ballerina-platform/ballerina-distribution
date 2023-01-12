@@ -1012,6 +1012,7 @@
                 "url": "configurable-variables",
                 "verifyBuild": true,
                 "verifyOutput": true,
+                "disablePlayground": true,
                 "isLearnByExample": true
             },
             {
@@ -1019,13 +1020,16 @@
                 "url": "configuring-via-toml",
                 "verifyBuild": true,
                 "verifyOutput": true,
+                "disablePlayground": true,
                 "isLearnByExample": true
             },
             {
                 "name": "Configuring via CLI arguments",
                 "url": "configuring-via-cli",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes varying output",
+                "disablePlayground": true,
                 "isLearnByExample": true
             }
         ]
