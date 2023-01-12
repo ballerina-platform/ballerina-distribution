@@ -9,4 +9,4 @@ In Ballerina, a function is also a value implying that it can be stored in varia
 ## Related links
 - [Functions](/learn/by-example/functions/)
 - [Function pointers](/learn/by-example/function-pointers/)
-- [Function values](/learn/by-example/function-types/)
+- [Function types](/learn/by-example/function-types/)

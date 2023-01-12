@@ -24,7 +24,7 @@ public function main() {
     // A function with no return type does not need a variable assignment.
     print(sum);
 
-    // Invoke the `sub` function with the default arguments.
+    // Invoke the `calculateWeight` function with the default arguments.
     print(calculateWeight(5));
 
     // Invoke the `add` function with the named arguments.
