@@ -1721,6 +1721,20 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Request/Response",
+                "url": "http-request-response",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Caller",
+                "url": "http-caller",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Redirects",
                 "url": "http-service-redirects",
                 "verifyBuild": true,
@@ -1796,6 +1810,13 @@
             {
                 "name": "Chunking",
                 "url": "http-service-chunking",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Sending headers",
+                "url": "http-send-header",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "isLearnByExample": false
