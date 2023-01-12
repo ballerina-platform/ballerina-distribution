@@ -24,10 +24,11 @@ public function main() returns error? {
     io:println(xmlString);
 
     // Creates an XML value.
-    xml xmlValue = xml `<name>Sherlock Holmes</name><details>
-                    <author>Sir Arthur Conan Doyle</author>
-                    <language>English</language>
-                </details>`;
+    xml xmlValue = xml `<name>Sherlock Holmes</name>
+                        <details>
+                          <author>Sir Arthur Conan Doyle</author>
+                          <language>English</language>
+                        </details>`;
 
     // `x[i]` or `x.get(i)` gives the `i`-th item.
     io:println(xmlValue[0]);

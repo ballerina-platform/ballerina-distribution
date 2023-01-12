@@ -8,7 +8,7 @@ An `xml` value is a sequence representing the parsed content of an XML element. 
 An XML document is an `xml` sequence with only one `element` and no `text`. An `element` item is mutable and consists of:
 
 - `name`: type `string`
-- `attributes`: `map<string>` type 
+- `attributes`: type `map<string>`
 - children: type `xml`
 
 A `text` item is immutable.

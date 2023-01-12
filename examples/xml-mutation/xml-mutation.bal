@@ -1,6 +1,6 @@
 import ballerina/io;
 
-public function main() returns error? {
+public function main() {
     xml:Element x1 = xml `<details>
                             <author>Sir Arthur Conan Doyle</author>
                             <language>English</language>
@@ -14,5 +14,4 @@ public function main() returns error? {
     // Changes the name of an XML element.
     x1.setName("updatedDetails");
     io:println(x1);
-
 }
