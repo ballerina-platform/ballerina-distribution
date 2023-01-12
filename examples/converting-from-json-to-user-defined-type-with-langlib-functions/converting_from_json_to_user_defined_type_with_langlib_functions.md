@@ -4,9 +4,9 @@ The `cloneWithType()` langlib function can be used to convert a value to a user-
 
 Every part of the value is cloned including immutable structural values. Also `fromJsonWithType()` langlib function can be used for the same purpose and it also does the reverse of conversions done by toJson.
 
-::: code converting_json_with_langlib_functions.bal :::
+::: code converting_from_json_to_user_defined_type_with_langlib_functions.bal :::
 
-::: out converting_json_with_langlib_functions.out :::
+::: out converting_from_json_to_user_defined_type_with_langlib_functions.out :::
 
 ## Related links
 - [JSON type](/learn/by-example/json-type/)
