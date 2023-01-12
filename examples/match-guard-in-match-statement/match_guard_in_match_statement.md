@@ -4,9 +4,9 @@ A match-guard is an expression that is used in a `match` clause to determine whe
 
 A function call is only allowed with an expression in a match-guard when there is no possibility that it can mutate the value being matched.
 
-::: code match_guard_in_match_statements.bal :::
+::: code match_guard_in_match_statement.bal :::
 
-::: out match_guard_in_match_statements.out :::
+::: out match_guard_in_match_statement.out :::
 
 ## Related links
 - [If statement](/learn/by-example/if-statement/)
