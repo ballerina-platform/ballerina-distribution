@@ -12,5 +12,5 @@ Compared to maps,
 
 ## Related links
 - [Table](/learn/by-example/table/)
-- [Structured keys](/learn/by-example/multiple-key-fields/)
+- [Structured keys](/learn/by-example/structured-keys/)
 - [Multiple key fields](/learn/by-example/multiple-key-fields/)
