@@ -10,4 +10,4 @@ List binding patterns can be used in a match statement to bind parts of successf
 - [List binding pattern](/learn/by-example/list-binding-pattern/)
 - [Rest binding pattern in list binding pattern](/learn/by-example/rest-binding-pattern-in-list-binding-pattern/)
 - [Binding patterns](/learn/by-example/binding-patterns/)
-- [Match statement](/learn/by-example/match statement/)
+- [Match statement](/learn/by-example/match-statement/)

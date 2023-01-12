@@ -8,5 +8,5 @@ A typed binding pattern is a combination of a type and a binding pattern. It is 
 
 ## Related links
 - [Binding patterns](/learn/by-example/binding-patterns/)
-- [Single Use of Binding Patterns](/learn/by-example/single-use-of-binding-patterns/)
-- [Iterative Use of Binding Patterns](/learn/by-example/iterative-use-of-binding-patterns/)
+- [Single use of typed binding patterns](/learn/by-example/single-use-of-typed-binding/)
+- [Iterative use of typed binding patterns](/learn/by-example/iterative-use-of-typed-binding/)
