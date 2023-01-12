@@ -1,4 +1,4 @@
-# Match guard in `match` statements
+# Match guard in `match` statement
 
 A match-guard is an expression that is used in a `match` clause to determine whether the clause should be executed. A `match` clause will only be executed if its match-guard evaluates to true.
 
