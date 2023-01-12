@@ -38,6 +38,7 @@
                 "url": "main-function",
                 "verifyBuild": true,
                 "verifyOutput": true,
+                "disablePlayground": true,
                 "isLearnByExample": true
             },
             {
