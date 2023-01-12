@@ -8,6 +8,6 @@ The table constructor expression looks like an array constructor. The `add` and 
 
 ## Related links
 - [Maps](/learn/by-example/maps/)
-- [Structured keys](/learn/by-example/multiple-key-fields/)
+- [Structured keys](/learn/by-example/structured-keys/)
 - [Multiple key fields](/learn/by-example/multiple-key-fields/)
 - [Control openness](/learn/by-example/controlling-openness/)
