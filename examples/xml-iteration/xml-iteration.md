@@ -10,3 +10,4 @@ The `foreach` statement and `.forEach()` function available in the `lang.xml` li
 - [XML data model](/learn/by-example/xml-data-model/)
 - [XML operations](/learn/by-example/xml-operations/)
 - [Foreach statement](/learn/by-example/foreach-statement/)
+- [`lang.xml` - Module documentation](https://lib.ballerina.io/ballerina/lang.xml/latest/)

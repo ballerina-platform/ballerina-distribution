@@ -22,3 +22,4 @@ A `text` item is immutable.
 
 ## Related links
 - [XML operations](/learn/by-example/xml-operations/)
+- [`lang.xml` - Module documentation](https://lib.ballerina.io/ballerina/lang.xml/latest/)

@@ -9,3 +9,4 @@ It is possible to mutate XML elements using functions available in the `lang.xml
 ## Related links
 - [XML data model](/learn/by-example/xml-data-model/)
 - [XML operations](/learn/by-example/xml-operations/)
+- [`lang.xml` - Module documentation](https://lib.ballerina.io/ballerina/lang.xml/latest/)
