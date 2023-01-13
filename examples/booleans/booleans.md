@@ -8,4 +8,4 @@ The `boolean` type has two values: `true`, `false`. The `!` operator works on bo
 
 ## Related links
 - [If statement](/learn/by-example/if-statement/)
-- [Match guard in match statements](/learn/by-example/match-guard-in-match-statements/)
+- [Match guard in match statement](/learn/by-example/match-guard-in-match-statement/)
