@@ -688,8 +688,8 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Convert to user-defined type",
-                "url": "converting-to-user-defined-type",
+                "name": "Convert JSON with langlib functions",
+                "url": "converting-json-with-langlib",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
