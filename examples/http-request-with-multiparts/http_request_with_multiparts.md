@@ -17,7 +17,7 @@ Invoke the service by executing the following cURL command in a new terminal.
 
 Execute the following cURL command to encode the parts of the body and send a multipart request via the Ballerina service.
 
-::: out http_response_with_multiparts.2.client.out :::
+::: out http_request_with_multiparts.2.client.out :::
 
 ## Related links
 - [`setBodyParts()` - API documentation](https://lib.ballerina.io/ballerina/http/latest/classes/Request#setBodyParts)
