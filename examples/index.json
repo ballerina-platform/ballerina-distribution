@@ -98,8 +98,8 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Booleans and conditionals",
-                "url": "booleans",
+                "name": "Boolean",
+                "url": "boolean",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
