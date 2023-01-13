@@ -632,6 +632,22 @@
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
+            },
+            {
+                "name": "Client class",
+                "url": "client-class",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Start service from service class definition",
+                "url": "start-service-from-service-class-definition",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
