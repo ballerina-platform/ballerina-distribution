@@ -1721,14 +1721,14 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Request/Response",
+                "name": "Request/Response object",
                 "url": "http-request-response",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "isLearnByExample": false
             },
             {
-                "name": "Caller",
+                "name": "Caller object",
                 "url": "http-caller",
                 "verifyBuild": true,
                 "verifyOutput": false,
