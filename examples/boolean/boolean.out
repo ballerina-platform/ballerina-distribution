@@ -1,0 +1,3 @@
+$ bal run boolean.bal
+true
+false
