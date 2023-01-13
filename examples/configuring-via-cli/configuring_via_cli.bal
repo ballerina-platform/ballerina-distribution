@@ -6,7 +6,7 @@ enum HttpVersion {
    HTTP_2_0 = "2.0"
 }
 
-// `configurable` variables of `float`, `union`, and `enum` types are initialized.
+// The configurable variables of `float`, `union`, and `enum` types are initialized.
 configurable float maxPayload = 1.0;
 configurable string|int localId = ?;
 configurable HttpVersion httpVersion = HTTP_1_0;

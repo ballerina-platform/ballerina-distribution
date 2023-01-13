@@ -1,4 +1,4 @@
-# Configuring via TOML files
+# Configure via TOML files
 
 The values of the configurable variables can be configured through the configuration files in the TOML(v0.4) format.
 

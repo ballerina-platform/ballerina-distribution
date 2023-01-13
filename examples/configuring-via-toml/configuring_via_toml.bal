@@ -13,7 +13,7 @@ enum HttpVersion {
    HTTP_2_0 = "2.0"
 }
 
-// `configurable` variables of `float`, `string[]`, enum, `record`, and `table` types are initialized.
+// The configurable variables of `float`, `string[]`, enum, `record`, and `table` types are initialized.
 configurable float maxPayload = 1.0;
 configurable string[] acceptTypes = ["text/plain"];
 configurable HttpVersion httpVersion = HTTP_1_0;
