@@ -1,2 +1,2 @@
-description: This BBE demonstrates how to define a record, access record fields, record type definition, and record equality.
-keywords: ballerina, ballerina by example, bbe, records, record field, open record, closed record
+description: This BBE demonstrates records in Ballerina.
+keywords: ballerina, ballerina by example, bbe, records
