@@ -14,5 +14,5 @@ Casting immutable values will work. However, it does not do numeric conversions.
 - [Open records](/learn/by-example/open-records/)
 - [Control openness](/learn/by-example/controlling-openness/)
 - [Anydata type](/learn/by-example/anydata-type/)
-- [Converting JSON with langlib functions](/learn/by-example/converting-json-with-langlib-functions/)
+- [Converting from JSON to user defined type with langlib functions](/learn/by-example/converting-from-json-to-user-defined-type-with-langlib-functions/)
 - [Check expression](/learn/by-example/check-expression/)

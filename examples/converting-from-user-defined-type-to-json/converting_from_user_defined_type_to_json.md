@@ -11,4 +11,4 @@ In many cases, the conversion happens automatically when the user-defined type i
 ## Related links
 - [JSON type](/learn/by-example/json-type/)
 - [Open records](/learn/by-example/open-records/)
-- [Control openess](/learn/by-example/controlling-openness)
+- [Controlling openess](/learn/by-example/controlling-openness)
