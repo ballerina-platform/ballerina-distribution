@@ -10,4 +10,3 @@ A record that contains optional fields can be destructured. If the optional fiel
 
 ## Related links
 - [Records](/learn/by-example/records/)
-- [Field access](/learn/by-example/field-access/)
