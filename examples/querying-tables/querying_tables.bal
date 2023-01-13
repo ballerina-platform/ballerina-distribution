@@ -20,16 +20,15 @@ public function main() {
     // the evaluation of the query expression will result in an integer array.
     int[] salaries = from var emp in employees
                      select emp.salary;
-
     io:println(salaries);
 
     // The query expression creates a table based on the contextually-expected type.
-    table<Employee> smiths = from Employee emp in employees
+    table<Employee> highPaidEmployees = from Employee emp in employees
                              where emp.salary > 180
                              order by emp.firstName
                              select emp;
 
-    foreach Employee emp in smiths {
+    foreach Employee emp in highPaidEmployees {
         io:println(emp.firstName, " ", emp.lastName);
     }
 }
