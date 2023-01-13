@@ -7,3 +7,6 @@ Left hand side of `_` matches if the value is of type `any`. You can use `|` to 
 ::: code match_statement.bal :::
 
 ::: out match_statement.out :::
+
+## Related links
+- [If statement](/learn/by-example/if-statement/)

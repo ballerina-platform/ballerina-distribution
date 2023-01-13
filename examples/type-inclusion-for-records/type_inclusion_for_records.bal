@@ -1,33 +1,29 @@
 import ballerina/io;
 
-type Date record {
-    int year;
-    int month;
-    int day;
-};
+type Person record {|
+    string name;
+    int age;
+|};
 
-type TimeOfDay record {
-    int hour;
-    int minute;
-    decimal seconds;
-};
+type Student record {|
+    int studentId;
+    string code;
+|};
 
-// `Time` record has all the fields of `Date` and `TimeOfDay`.
-type Time record {
-    *Date;
-    *TimeOfDay;
-    // Overrides `hour` field in `TimeOfDay`.
-    int:Unsigned8 hour;
-};
+// The `PartTimeStudent` record has all the fields of `Person` and `Student`.
+type PartTimeStudent record {|
+    *Person;
+    *Student;
+    // Overrides the `code` field in `Student`.
+    string:Char code;
+|};
 
 public function main() {
-    Time time = {
-        year: 2022,
-        month: 8,
-        day: 20,
-        hour: 8,
-        minute: 12,
-        seconds: 3
+    PartTimeStudent student = {
+        name: "Anne",
+        age: 23,
+        studentId: 1001,
+        code: "A"
     };
-    io:println(time);
+    io:println(student);
 }

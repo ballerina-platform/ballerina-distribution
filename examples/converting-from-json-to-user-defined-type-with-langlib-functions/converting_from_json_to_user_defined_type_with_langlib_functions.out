@@ -1,6 +1,8 @@
-$ bal run converting_to_user_defined_type.bal
+$ bal run converting_from_json_to_user_defined_type_with_langlib_functions.bal
+
 1.0
 1.0
 {"book":"<book> The Treasure Island </book>","price":200.0}
 {"book":`<book> The Treasure Island </book>`,"price":200.0}
-{ballerina/lang.value}ConversionError
+error("{ballerina/lang.value}ConversionError",message="'map<json>' value cannot be converted to 'Book': 
+		field 'book' in record 'Book' should be of type 'xml<(lang.xml:Element|lang.xml:Comment|lang.xml:ProcessingInstruction|lang.xml:Text)>', found '"<book> The Treasure...'")

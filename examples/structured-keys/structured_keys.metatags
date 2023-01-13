@@ -1,2 +1,2 @@
-description: This BBE demonstrates structured keys in tables in Ballerina.
-keywords: ballerina, ballerina by example, bbe, structured keys, keys
+description: This BBE demonstrates how to set a record as key in table, create record key table, make immutable clone.
+keywords: ballerina, ballerina by example, bbe, structured keys, keys, table, map

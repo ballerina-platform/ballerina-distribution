@@ -1,0 +1,3 @@
+$ bal run access_json_elements.bal
+Value of first name: John
+Value of first name: John
