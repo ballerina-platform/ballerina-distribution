@@ -4,7 +4,7 @@ If there is no prior knowledge of the availability of a particular field, option
 
 ## Related links
 - [JSON type](/learn/by-example/json-type/)
-- [Check](/learn/by-example/check-expression/)
+- [Check expression](/learn/by-example/check-expression/)
 - [Optional fields](/learn/by-example/optional-fields/)
 
 ::: code working_directly_with_json.bal :::

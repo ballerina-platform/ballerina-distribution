@@ -7,9 +7,9 @@ Every part of the value is cloned including the immutable structural values. Als
 ## Related links
 - [JSON type](/learn/by-example/json-type/)
 - [Open records](/learn/by-example/open-records/)
-- [Control openness](/learn/distinctive-language-features/data/#control-openness)
-- [Converting from JSON to user defined type](/learn/by-example/converting-from-json-to-user-defined-type/)
-- [Check](/learn/by-example/check-expression/)
+- [Control openness](/learn/by-example/controlling-openness/)
+- [Casting JSON to user-defined type](/learn/by-example/casting-json-to-user-defined-type/)
+- [Check expression](/learn/by-example/check-expression/)
 
 ::: code converting_to_user_defined_type.bal :::
 
