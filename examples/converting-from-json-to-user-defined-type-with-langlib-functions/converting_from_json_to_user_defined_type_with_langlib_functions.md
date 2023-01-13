@@ -11,6 +11,6 @@ Every part of the value is cloned including immutable structural values. Also `f
 ## Related links
 - [JSON type](/learn/by-example/json-type/)
 - [Open records](/learn/by-example/open-records/)
-- [Control openess](/learn/by-example/controlling-openness)
+- [Controlling openess](/learn/by-example/controlling-openness)
 - [Check](/learn/by-example/check)
 - [Casting JSON to user-defined type](/learn/by-example/casting-json-to-user-defined-type)
