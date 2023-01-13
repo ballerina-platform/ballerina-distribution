@@ -6,6 +6,3 @@ This is particularly useful when you want to define and use constants for key va
 ::: code computed_field_key.bal :::
 
 ::: out computed_field_key.out :::
-
-## Related links
-- [Maps](/learn/by-example/maps/)
