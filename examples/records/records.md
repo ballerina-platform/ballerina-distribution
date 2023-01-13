@@ -10,6 +10,6 @@ A `closed record` type only allows fields that are specified whereas, an `open r
 
 ## Related links
 - [Open records](/learn/by-example/open-records/)
-- [Control openness](/learn/by-example/control-openness/)
-- [Default values for record fielts](/learn/by-example/default-values-for-record-fields/)
+- [Controlling openness](/learn/by-example/controlling-openness/)
+- [Default values for record fields](/learn/by-example/default-values-for-record-fields/)
 - [Maps](/learn/by-example/maps/)
