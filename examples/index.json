@@ -96,6 +96,13 @@
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
+            },
+            {
+                "name": "Booleans and conditionals",
+                "url": "booleans",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
             }
         ]
     },
@@ -118,13 +125,6 @@
         "column": 0,
         "category": "Language concepts",
         "samples": [
-            {
-                "name": "Booleans and conditionals",
-                "url": "booleans",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
             {
                 "name": "If statement",
                 "url": "if-statement",
