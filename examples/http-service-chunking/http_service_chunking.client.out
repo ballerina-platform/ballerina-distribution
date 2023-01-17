@@ -1,13 +1,13 @@
-$ curl -v localhost:9090/greeting
-> GET /greeting HTTP/1.1
+$ curl -v localhost:9090/albums
+> GET /albums HTTP/1.1
 > Host: localhost:9090
 > User-Agent: curl/7.64.1
 > Accept: */*
 > 
 < HTTP/1.1 200 OK
-< content-type: text/plain
+< content-type: application/json
 < transfer-encoding: chunked
 < server: ballerina
-< date: Tue, 22 Nov 2022 14:34:29 +0530
+< date: Wed, 4 Jan 2023 21:14:48 +0530
 < 
-Hello world!
+[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]

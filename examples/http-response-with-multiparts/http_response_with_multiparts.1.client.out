@@ -17,7 +17,3 @@ content-type: text/xml
 --e8a931f5e25d263e--
 
 --646e483fc8826c55--
-
-#To decode the inbound response with multiparts.
-$ curl http://localhost:9090/multiparts/decoder
-Body Parts Received!

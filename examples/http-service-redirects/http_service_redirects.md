@@ -1,8 +1,11 @@
 # HTTP service - Redirects
 
-The `http:Request` is redirected by sending a redirect response with the `Location` header by the `http:Service`. This is done by invoking the `redirect` method of `http:Caller` which results in the response containing the specified status code and the `Location` header.
+Redirection is important to direct requests to the correct endpoints if the called one is not existing or moved. The HTTP specification provides standard status codes to notify such situation to the caller. The HTTP service responds with `redirect` status code response along with the `location` header of the new endpoint. This can be done using the `http:StatusCodeResponse` records.
 
 ::: code http_service_redirects.bal :::
+
+## Prerequisites
+- Run the HTTP service given in the [Basic REST service](/learn/by-example/http-basic-rest-service/) example.
 
 Run the service as follows.
 

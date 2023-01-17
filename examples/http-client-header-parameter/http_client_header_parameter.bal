@@ -10,8 +10,6 @@ type Album readonly & record {
 public function main() returns error? {
     http:Client albumClient = check new ("localhost:9090");
 
-    // Sends a `GET` request to the "/albums" resource.
-    // The query parameter can be provided as parameters in the `get` method invocation.
     Album[] albums = check albumClient->/albums({
         Accept: mime:APPLICATION_JSON
     });
