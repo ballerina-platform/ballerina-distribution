@@ -1,4 +1,4 @@
-# HTTP caller
+# HTTP caller object
 
 The `http:Caller` represents the endpoint that initiated the call toward a service. It is used to send responses back to the caller. In addition, it also contains meta information such as remote/local addresses. When the `http:Caller` is defined, the resource function return type is constrained to `error?`. `http:Caller` is useful to handle scenarios such as sending status code `100 Continue` or doing some work after sending the response to the caller. In most cases, `http:Caller` is not required as returning from the resource function sends the response back to the caller.
 
