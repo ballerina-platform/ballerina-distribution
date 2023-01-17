@@ -1,5 +1,3 @@
-# In the directory, which contains the `.bal` file, create a directory named `file`,
-# and add an XML file named `test.xml` in it.
 $ bal run request_with_multiparts.bal
 time = 2021-01-21 22:00:17,167 level = INFO  module = "" message = "{"name":"ballerina"}"
 time = 2021-01-21 22:01:18,466 level = INFO  module = "" message = "{"name":"wso2"}"
@@ -7,4 +5,3 @@ time = 2021-01-21 22:01:18,682 level = INFO  module = "" message = "<ballerinala
     <version>0.963</version>
     <test>test xml file to be used as a file part</test>
 </ballerinalang>"
-^C[ballerina/http] stopped HTTP/WS listener 0.0.0.0:9090

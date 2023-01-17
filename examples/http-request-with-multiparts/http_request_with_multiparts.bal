@@ -2,23 +2,21 @@ import ballerina/http;
 import ballerina/log;
 import ballerina/mime;
 
-//Binds the listener to the service.
 service /multiparts on new http:Listener(9090) {
 
     resource function post decoder(http:Request request)
             returns http:Response|http:InternalServerError|error {
-        http:Response response = new;
-        // Extracts body parts from the request.
         var bodyParts = check request.getBodyParts();
         foreach var part in bodyParts {
             handleContent(part);
         }
+        http:Response response = new;
         response.setPayload(bodyParts);
         return response;
     }
 
-    resource function get encoder(http:Request req) returns
-            http:Response|http:InternalServerError|error {
+    resource function get encoder(http:Request req)
+            returns http:Response|http:InternalServerError|error {
         //Create a `json` body part.
         mime:Entity jsonBodyPart = new;
         jsonBodyPart.setContentDisposition(getContentDispositionForFormData("json part"));
@@ -45,30 +43,26 @@ service /multiparts on new http:Listener(9090) {
     }
 }
 
-// The content logic that handles the body parts vary based on your requirement.
 function handleContent(mime:Entity bodyPart) {
     // Get the media type from the body part retrieved from the request.
     var mediaType = mime:getMediaType(bodyPart.getContentType());
     if mediaType is mime:MediaType {
         string baseType = mediaType.getBaseType();
-        if (mime:APPLICATION_XML == baseType || mime:TEXT_XML == baseType) {
-            // Extracts `xml` data from the body part.
+        if mime:APPLICATION_XML == baseType || mime:TEXT_XML == baseType {
             var payload = bodyPart.getXml();
             if payload is xml {
                 log:printInfo(payload.toString());
             } else {
                 log:printError(payload.message());
             }
-        } else if (mime:APPLICATION_JSON == baseType) {
-            // Extracts `json` data from the body part.
+        } else if mime:APPLICATION_JSON == baseType {
             var payload = bodyPart.getJson();
             if payload is json {
                 log:printInfo(payload.toJsonString());
             } else {
                 log:printError(payload.message());
             }
-        } else if (mime:TEXT_PLAIN == baseType) {
-            // Extracts text data from the body part.
+        } else if mime:TEXT_PLAIN == baseType {
             var payload = bodyPart.getText();
             if payload is string {
                 log:printInfo(payload);
