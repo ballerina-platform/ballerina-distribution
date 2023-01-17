@@ -68,7 +68,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Ballerina Short Name ZIP
-          path: ballerina/build/distributions/ballerina-22*.zip
+          path: ballerina/build/distributions/ballerina-${{ steps.project-version.outputs.sversion }}.zip
       - name: Archive Linux deb
         uses: actions/upload-artifact@v2
         with:
