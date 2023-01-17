@@ -1,4 +1,4 @@
-# HTTP request/response object
+# HTTP service - Request/Response object
 
 `http:Request` and `http:Response` objects are Ballerina abstractions for HTTP request and HTTP response respectively. They are considered low-level abstractions which are used to implement high-level abstractions such as data-binding, header mapping, query parameter mapping, etc. They can be used both on the client side and the service side. They are useful when implementing advanced scenarios such as gateways, proxy services, handling multipart requests, etc. In most cases, the `http:Request` and the `http:Response` objects are not needed as higher-level abstractions can do the same thing.
 
