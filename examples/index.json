@@ -1144,6 +1144,27 @@
                 "isLearnByExample": true
             },
             {
+                "name": "XML iteration",
+                "url": "xml-iteration",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "XML access",
+                "url": "xml-access",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "XML mutation",
+                "url": "xml-mutation",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
                 "name": "XML subtyping",
                 "url": "xml-subtyping",
                 "verifyBuild": true,
