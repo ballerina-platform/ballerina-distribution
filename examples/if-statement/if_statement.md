@@ -7,4 +7,4 @@
 ::: out if_statement.out :::
 
 ## Related links
-- [Boolean](/learn/by-example/booleans/)
+- [Boolean](/learn/by-example/boolean/)
