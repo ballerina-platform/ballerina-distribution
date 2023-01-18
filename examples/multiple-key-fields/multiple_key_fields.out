@@ -1,2 +1,3 @@
 $ bal run multiple_key_fields.bal
-{"firstName":"Fred","lastName":"Bloggs","salary":200}
+{"firstName":"John","lastName":"Bloggs","salary":200}
+{"firstName":"John","lastName":"Smith","salary":100}

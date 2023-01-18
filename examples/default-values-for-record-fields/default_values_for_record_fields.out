@@ -1,3 +1,4 @@
 $ bal run default_values_for_record_fields.bal
-{"company":"WS02","name":"John","department":"IT"}
-{"duration":12,"company":"WS02","name":"Anne","department":"HR"}
+{"name":"Anne","age":23,"code":"Admitted"}
+{"name":"Anne","age":23,"code":"Admitted"}
+{"studyHours":6,"name":"Anne","age":23,"code":"Admitted"}

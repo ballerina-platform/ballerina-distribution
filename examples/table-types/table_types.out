@@ -1,0 +1,4 @@
+$ bal run table_types.bal
+[{"name":"John","salary":100},{"name":"Jane","salary":200}]
+[{"name":"John","salary":100},{"name":"Jane","salary":200}]
+[{"name":"John","salary":100},{"name":"Jane","salary":200}]

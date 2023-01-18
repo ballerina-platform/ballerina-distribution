@@ -11,3 +11,8 @@ For example, `x.elements()` returns element items in `x` as type  `xml<xml:Eleme
 ::: code xml_subtyping.bal :::
 
 ::: out xml_subtyping.out :::
+
+## Related links
+- [XML data model](/learn/by-example/xml-data-model/)
+- [XML operations](/learn/by-example/xml-operations/)
+- [`lang.xml` - Module documentation](https://lib.ballerina.io/ballerina/lang.xml/latest/)

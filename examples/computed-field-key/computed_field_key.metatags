@@ -1,2 +1,2 @@
-description: This BBE demonstrates computed field keys in mapping constructors in Ballerina.
-keywords: ballerina, ballerina by example, bbe, computed key, mapping constructor, map, record
+description: This BBE demonstrates the use of computed field keys in mapping constructors, computed values as keys, and constants for key values in Ballerina.
+keywords: ballerina, ballerina by example, bbe, computed key, mapping constructor, map, record, computed field key, computed name field

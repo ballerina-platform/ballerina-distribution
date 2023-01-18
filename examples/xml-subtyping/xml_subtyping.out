@@ -1,6 +1,9 @@
 $ bal run xml_subtyping.bal
+<!--This is a comment-->
+<?target data?>
+
 Hello World
-true
+Hello World
 true
 false
 <p>Hello</p><q>World</q>
