@@ -1,2 +1,2 @@
-$ bal run working_directly_with_json.bal
+$ bal run access_optional_json_elements.bal
 First name: John
