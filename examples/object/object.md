@@ -14,4 +14,4 @@ A `class` is used to define an object type and provides a way to construct an ob
 - [Object value from class definition](/learn/by-example/object-value-from-class-definition/)
 - [Visibility of object fields and methods](/learn/by-example/visibility-of-object-fields-and-methods/)
 - [Object types](/learn/by-example/object-types/)
-- [Object values](/learn/by-example/object-values/)
+- [Object closure](/learn/by-example/object-closure/)

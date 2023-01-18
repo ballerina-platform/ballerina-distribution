@@ -13,6 +13,6 @@ Attempting to access a private field or method from outside the class definition
 ::: out visibility_of_object_fields_and_methods.out :::
 
 ## Related links
-- [Objects](/learn/by-example/objects/)
+- [Object](/learn/by-example/object/)
 - [Defining classes](/learn/by-example/defining-classes/)
 - [Object value from class definition](/learn/by-example/object-value-from-class-definition/)

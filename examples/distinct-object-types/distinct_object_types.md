@@ -9,7 +9,7 @@ Conceptually, a distinct type including another distinct type results in multipl
 ::: out distinct_object_types.out :::
 
 ## Related links
-- [Object values](/learn/by-example/object-values/)
+- [Object types](/learn/by-example/object-types/)
 - [Error subtyping](/learn/by-example/error-subtyping/)
 - [Defining classes](/learn/by-example/defining-classes/)
 - [Flexibly typed](https://ballerina.io/why-ballerina/flexibly-typed/)

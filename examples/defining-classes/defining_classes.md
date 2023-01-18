@@ -11,4 +11,4 @@ The `self` variable is bound to the object and can be used to access the fields 
 ## Related links
 - [Object](/learn/by-example/object/)
 - [Init return type](/learn/by-example/init-return-type/)
-- [Object values](/learn/by-example/object-values/)
+- [Object value from class definition](/learn/by-example/object-value-from-class-definition/)
