@@ -7,12 +7,10 @@ public function main() returns error? {
     // Optionally, you can provide the interface that the socket needs to bind 
     // and the timeout in seconds, which specifies the read timeout value.
     // tcp:Client client = check new ("localhost", 3000, localHost = "localhost", timeout = 5);
-    tcp:Client socketClient = check new ("localhost", 3000);
+    tcp:Client socketClient = check new ("localhost", 9090);
 
     // Send the desired content to the server.
-    string msg = "Hello Ballerina Echo from client";
-    byte[] msgByteArray = msg.toBytes();
-    check socketClient->writeBytes(msgByteArray);
+    check socketClient->writeBytes("Hello Ballerina".toBytes());
 
     // Read the response from the server.
     readonly & byte[] receivedData = check socketClient->readBytes();

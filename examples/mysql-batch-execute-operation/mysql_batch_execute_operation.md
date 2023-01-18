@@ -1,17 +1,24 @@
-# Batch execute
+# Database Access - Batch execution
 
 This BBE demonstrates how to use the MySQL client to execute a batch of DDL/DML operations. 
 
->**Note:** The MySQL database driver JAR should be defined in the `Ballerina.toml` file as a dependency. The MySQL connector uses database properties from MySQL version 8.0.13 onwards. Therefore, it is recommended to use a MySQL driver version greater than 8.0.13.
+This BBE is written in the context of an album microservice.
 
-For a sample configuration and more information on the underlying module, see the [`mysql` module](https://lib.ballerina.io/ballerinax/mysql/latest/).
+> **Tip**: Checkout [`ballerinax/mssql`](https://central.ballerina.io/ballerinax/mssql), [`ballerinax/postgresql`](https://central.ballerina.io/ballerinax/postgresql), [`ballerinax/oracledb`](https://central.ballerina.io/ballerinax/oracledb), [`ballerinax/java.jdbc`](https://central.ballerina.io/ballerinax/java.jdbc) for other supported database clients.
 
 ::: code mysql_batch_execute_operation.bal :::
 
-::: out mysql_batch_execute_operation.out :::
+## Prerequisites
+- Refer [`mysql-prerequisite`](https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/mysql-prerequisite/README.md).
 
-The following util files will initialize the test database before running the BBE and clean it up afterward.
+Run the service.
 
-::: code initialize.bal :::
+::: out mysql_batch_execute_operation.server.out :::
 
-::: code cleanup.bal :::
+Invoke the service by executing the following cURL command in a new terminal to insert new record.
+
+::: out mysql_batch_execute_operation.client.out :::
+
+## Related links
+- [`mysql:Client` - API documentation](https://lib.ballerina.io/ballerinax/mysql/latest/)
+- [`mysql:Client` - Specification](https://github.com/ballerina-platform/module-ballerinax-mysql/blob/master/docs/spec/spec.md#2-client)

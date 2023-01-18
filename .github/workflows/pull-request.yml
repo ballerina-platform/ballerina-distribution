@@ -7,6 +7,7 @@ on:
             - ballerina-1.1.x
             - ballerina-1.2.x
             - 2201.2.x
+            - 2201.3.x
 
 jobs:
     ubuntu-integration-tests:
@@ -28,6 +29,7 @@ jobs:
                     packageUser: ${{ github.actor }}
                     packagePAT: ${{ secrets.GITHUB_TOKEN }}
                     devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
+                    ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
                 run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue -x :ballerina:testExamples -x :project-api-tests:test
 
     ubuntu-bbe-tests:
@@ -49,6 +51,7 @@ jobs:
                     packageUser: ${{ github.actor }}
                     packagePAT: ${{ secrets.GITHUB_TOKEN }}
                     devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
+                    ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
                 run: ./gradlew clean :ballerina:testExamples --stacktrace --scan --console=plain --no-daemon --continue -x :project-api-tests:test
     windows-build-without-tests:
         name: Windows Build
@@ -70,4 +73,5 @@ jobs:
                   packagePAT: ${{ secrets.GITHUB_TOKEN }}
                   JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF8
                   devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
+                  ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
               run: ./gradlew.bat clean build --stacktrace --scan --console=plain --no-daemon --continue -x test

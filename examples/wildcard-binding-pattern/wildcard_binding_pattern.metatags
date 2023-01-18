@@ -1,0 +1,2 @@
+description: This BBE introduces unused variables, ignoring the return value of a function and matching a value belonging to type any
+keywords:  ballerina, ballerina by example, bbe, binding pattern, wildcard binding pattern

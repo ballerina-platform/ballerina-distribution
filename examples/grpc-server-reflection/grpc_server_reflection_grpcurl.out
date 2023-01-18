@@ -1,0 +1,9 @@
+$ ./grpcurl -use-reflection -plaintext localhost:9090 describe
+HelloWorld is a service:
+service HelloWorld {
+  rpc hello ( .google.protobuf.StringValue ) returns ( .google.protobuf.StringValue );
+}
+grpc.reflection.v1alpha.ServerReflection is a service:
+service ServerReflection {
+  rpc ServerReflectionInfo ( stream .grpc.reflection.v1alpha.ServerReflectionRequest ) returns ( stream .grpc.reflection.v1alpha.ServerReflectionResponse );
+}

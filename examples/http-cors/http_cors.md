@@ -1,8 +1,6 @@
-# CORS
+# HTTP service - CORS (Cross-Origin Resource Sharing)
 
 The CORS headers can be applied in both the service-level and the resource-level. Service-level CORS headers apply to all the resources unless there are headers configured at the resource-level. Ballerina CORS supports both simple and pre-flight requests.
-
-For more information on the underlying module, see the [`http` module](https://lib.ballerina.io/ballerina/http/latest/).
 
 ::: code http_cors.bal :::
 
@@ -14,3 +12,6 @@ Invoke the service by executing the following cURL commands in a new terminal.
 
 ::: out http_cors.client.out :::
 
+## Related links
+- [`http:CorsConfig` record - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/CorsConfig)
+- [HTTP service configuration - Specification](/spec/http/#41-service-configuration);

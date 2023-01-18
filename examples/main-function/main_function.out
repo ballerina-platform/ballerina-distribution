@@ -1,0 +1,3 @@
+$ bal run main_function.bal -- 5
+5
+error: Input should less than 3

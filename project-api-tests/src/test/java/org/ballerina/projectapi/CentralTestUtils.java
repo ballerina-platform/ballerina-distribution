@@ -18,6 +18,14 @@
 
 package org.ballerina.projectapi;
 
+import io.ballerina.projects.util.ProjectConstants;
+import io.ballerina.projects.util.ProjectUtils;
+import okhttp3.Call;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 import org.testng.Assert;
 
 import java.io.BufferedReader;
@@ -37,6 +45,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static java.net.HttpURLConnection.HTTP_NO_CONTENT;
 import static org.ballerina.projectapi.TestUtils.DISTRIBUTION_FILE_NAME;
 import static org.ballerina.projectapi.TestUtils.OUTPUT_CONTAIN_ERRORS;
 import static org.ballerina.projectapi.TestUtils.executePackCommand;
@@ -63,6 +72,9 @@ public class CentralTestUtils {
     static final String JAVA11_PLATFORM = "java11";
     static final String BALLERINA_ARTIFACT_TYPE = "bala";
     static final String OUTPUT_NOT_CONTAINS_EXP_MSG = "build output does not contain expected message:";
+    static final String CANNOT_RESOLVE_MODULE_MSG = "cannot resolve module '";
+    static final String DEPENDENCY_PULLING_ERR_MSG = "error: dependency pulling contains errors";
+    static final String PULLED_FROM_CENTRAL_MSG = " pulled from central successfully";
 
     /**
      * Generate random package name.
@@ -101,6 +113,15 @@ public class CentralTestUtils {
     private static String getToken() {
         // staging and dev both has the same access token
         return System.getenv("devCentralToken");
+    }
+
+    /**
+     * Get token of ballerina-bot required to dispatch GitHub workflows.
+     *
+     * @return token required to dispatch GitHub workflows.
+     */
+    public static String getBallerinaBotWorkflow() {
+        return System.getenv("ballerinaBotWorkflow");
     }
 
     /**
@@ -402,4 +423,56 @@ public class CentralTestUtils {
         }
     }
 
+
+    /**
+     * Delete the packages pushed during project API tests.
+     *
+     * @throws IOException if request could not be handled
+     */
+    public static void deleteTestPackagesFromCentral() throws IOException {
+        String ghOrg = "wso2-enterprise";
+        String ghRepo = "ballerina-registry";
+        String workflowId = "30610274";
+        String branch = "main";
+        dispatchGitWorkflow(ghOrg, ghRepo, workflowId, branch);
+    }
+
+    /**
+     * Dispatch a given GitHub workflow.
+     *
+     * @param ghOrg GitHub organization
+     * @param ghRepo GitHub repository
+     * @param workflowId GitHub workflow ID
+     * @param branch branch name which the workflow runs against
+     * @throws IOException if request could not be handled
+     */
+    public static void dispatchGitWorkflow(String ghOrg, String ghRepo, String workflowId, String branch)
+            throws IOException {
+        String url = "https://api.github.com/repos/" + ghOrg + "/" + ghRepo
+                + "/actions/workflows/" + workflowId + "/dispatches";
+        OkHttpClient client = new OkHttpClient();
+        String data = "{\"ref\": \"" + branch + "\"}";
+        MediaType jsonType = MediaType.parse("application/json; charset=utf-8");
+        RequestBody requestBody = RequestBody.create(jsonType, data);
+        Request resolutionReq = new Request.Builder()
+                .post(requestBody)
+                .url(url)
+                .addHeader("Authorization", "Bearer " + getBallerinaBotWorkflow())
+                .build();
+        Call resolutionReqCall = client.newCall(resolutionReq);
+        try (Response response = resolutionReqCall.execute()) {
+            if (response.code() != HTTP_NO_CONTENT) {
+                Assert.fail("Failed gh workflow dispatch " + url + " with code:" + response.code() + " and "
+                        + response.body().string());
+            }
+        }
+    }
+
+    public static void deleteBalaOfPackage(String orgName, String packageName) {
+        Path balaPath = ProjectUtils.createAndGetHomeReposPath().resolve(ProjectConstants.REPOSITORIES_DIR)
+                .resolve(ProjectConstants.CENTRAL_REPOSITORY_CACHE_NAME).resolve(ProjectConstants.BALA_DIR_NAME)
+                .resolve(orgName);
+        Path packagePath = balaPath.resolve(packageName);
+        ProjectUtils.deleteDirectory(packagePath);
+    }
 }

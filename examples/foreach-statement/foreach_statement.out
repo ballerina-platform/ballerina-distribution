@@ -1,2 +1,10 @@
 $ bal run foreach_statement.bal
-v1:61.5 v2:61.5
+Bob
+Jo
+Ann
+Tom
+Average :67
+Name:Bob Grade:65
+Name:Jo Grade:70
+Name:Ann Grade:75
+Name:Tom Grade:60

@@ -1,27 +1,24 @@
 import ballerina/log;
 import ballerinax/rabbitmq;
 
+public type StringMessage record {|
+    *rabbitmq:AnydataMessage;
+    string content;
+|};
+
 // The consumer service listens to the "MyQueue" queue.
 @rabbitmq:ServiceConfig {
-    queueName: "MyQueue",
+    queueName: "OrderQueue",
     autoAck: false
 }
-// Attaches the service to the listener.
 service on new rabbitmq:Listener(rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT) {
-    // Gets triggered when a message is received by the queue.
-    remote function onMessage(rabbitmq:Message message, rabbitmq:Caller caller) returns error? {
-        string|error messageContent = 'string:fromBytes(message.content);
-        if messageContent is string {
-            log:printInfo("The message received: " + messageContent);
-        }
+    remote function onMessage(StringMessage message, rabbitmq:Caller caller) returns error? {
         // Acknowledges a single message positively.
-        // The acknowledgement gets committed upon successful execution of the transaction,
-        // or will rollback otherwise.
         transaction {
-            rabbitmq:Error? result = caller->basicAck();
-            if result is error {
-                log:printError("Error occurred while acknowledging the message.");
-            }
+            log:printInfo("Received message: " + message.content);
+
+            // Positively acknowledges a single message.
+            check caller->basicAck();
             check commit;
         }
     }

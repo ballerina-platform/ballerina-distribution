@@ -1,0 +1,2 @@
+$ bal run graphql_client_handle_partial_response.bal
+{"name":"Walter White","age":51}

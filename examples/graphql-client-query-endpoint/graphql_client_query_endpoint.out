@@ -1,0 +1,2 @@
+$ bal run graphql_client_query_endpoint.bal
+{"name":"Walter White","age":51}

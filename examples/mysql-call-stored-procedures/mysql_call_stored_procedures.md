@@ -1,17 +1,28 @@
-# Call stored procedures
+# Database Access - Call stored procedures
 
 This BBE demonstrates how to use the MySQL client to execute a stored procedure. 
 
->**Note:** The MySQL database driver JAR should be defined in the `Ballerina.toml` file as a dependency. The MySQL connector uses database properties from MySQL version 8.0.13 onwards. Therefore, it is recommended to use a MySQL driver version greater than 8.0.13.
-
-For a sample configuration and more information on the underlying module, see the [`mysql` module](https://lib.ballerina.io/ballerinax/mysql/latest/).
+> **Tip**: Checkout [`ballerinax/mssql`](https://central.ballerina.io/ballerinax/mssql), [`ballerinax/postgresql`](https://central.ballerina.io/ballerinax/postgresql), [`ballerinax/oracledb`](https://central.ballerina.io/ballerinax/oracledb), [`ballerinax/java.jdbc`](https://central.ballerina.io/ballerinax/java.jdbc) for other supported database clients.
 
 ::: code mysql_call_stored_procedures.bal :::
 
-::: out mysql_call_stored_procedures.out :::
+## Prerequisites
+- Refer [`mysql-prerequisite`](https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/mysql-prerequisite/README.md).
 
-The following util files will initialize the test database before running the BBE and clean it up afterward.
+Run the service.
 
-::: code initialize.bal :::
+::: out mysql_call_stored_procedures.server.out :::
 
-::: code cleanup.bal :::
+Invoke the service by executing the following cURL command in a new terminal to post a new order.
+
+::: out mysql_call_stored_procedures.client.out :::
+
+If the procedure returns more than one result set, then those can be accessed by using,
+```ballerina
+boolean isAvailable = getNextQueryResult();
+```
+This will return whether next result set is available and update `queryResult` with the next result set.
+
+## Related links
+- [`mysql:Client` - API documentation](https://lib.ballerina.io/ballerinax/mysql/latest/)
+- [`mysql:Client` - Specification](https://github.com/ballerina-platform/module-ballerinax-mysql/blob/master/docs/spec/spec.md#2-client)

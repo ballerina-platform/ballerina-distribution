@@ -1,3 +1,12 @@
 $ bal run arrays.bal
-1
+[1,2,3]
+["cat","dog","mouse"]
+[1,2,3,4]
+["red","green","blue"]
+red
+["pink","green","blue"]
+["Mike","Amy","Korina","Peter"]
 4
+Amy
+3
+["Mike Johnson","Korina Johnson","Peter Johnson"]
