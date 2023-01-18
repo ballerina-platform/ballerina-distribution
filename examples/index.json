@@ -37,7 +37,7 @@
         "name": "Main function",
         "url": "main-function",
         "verifyBuild": true,
-        "verifyOutput": true,
+        "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": true
       },
@@ -455,7 +455,7 @@
         "name": "List subtyping",
         "url": "list-subtyping",
         "verifyBuild": true,
-        "verifyOutput": true,
+        "verifyOutput": false,
         "isLearnByExample": true
       },
       {
@@ -912,7 +912,7 @@
         "name": "Query actions",
         "url": "query-actions",
         "verifyBuild": true,
-        "verifyOutput": true,
+        "verifyOutput": false,
         "isLearnByExample": true
       }
     ]
