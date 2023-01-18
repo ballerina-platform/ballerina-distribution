@@ -11,20 +11,22 @@ public type Order record {
     boolean isValid;
 };
 
-listener kafka:Listener orderListener = check new (kafka:DEFAULT_URL, {
+listener kafka:Listener orderListener = new (kafka:DEFAULT_URL, {
     groupId: "order-group-id",
-    topics: ["order-topic"]
+    topics: "order-topic"
 });
 
 service on orderListener {
+
     remote function onConsumerRecord(Order[] orders) returns error? {
         check from Order 'order in orders
+            where 'order.isValid
             do {
                 log:printInfo(string `Received valid order for ${'order.productName}`);
             };
     }
 
-    // When an error occurs in the before the `onConsumerRecord` invoke,
+    // When an error occurs before the `onConsumerRecord` gets invoked,
     // `onError` function will get invoked.
     remote function onError(kafka:Error 'error, kafka:Caller caller) returns error? {
         // Check whether the `error` is a `kafka:PayloadValidationError` and seek pass the

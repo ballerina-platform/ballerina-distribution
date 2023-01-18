@@ -3,21 +3,21 @@ $ curl -v -d "TEST 100 CONTINUE" http://localhost:9090/greeting -H 'Expect:100-c
 * Connected to localhost (127.0.0.1) port 9090 (#0)
 > POST /greeting HTTP/1.1
 > Host: localhost:9090
-> User-Agent: curl/7.58.0
+> User-Agent: curl/7.64.1
 > Accept: */*
 > Expect:100-continue
-> Content-Length: 17
 > Content-Type: text/plain
+> Content-Length: 17
 >
 < HTTP/1.1 100 Continue
 < server: ballerina
-< date: Tue, 22 Sep 2020 09:16:18 +0530
+< date: Tue, 20 Dec 2022 17:01:05 +0530
 * We are completely uploaded and fine
-< HTTP/1.1 200 OK
+< HTTP/1.1 201 Created
 < content-type: text/plain
 < content-length: 13
 < server: ballerina
-< date: Tue, 22 Sep 2020 09:16:18 +0530
+< date: Tue, 20 Dec 2022 17:01:05 +0530
 <
 Hello World!
 * Connection #0 to host localhost left intact
@@ -25,20 +25,20 @@ Hello World!
 # Use the following client to invoke the service using an unsupported media type. The service is supposed to ignore
 # the payload if the content type does not match.
 $ curl -v -d '{"TEST":"100 CONTINUE"}' http://localhost:9090/greeting -H 'Expect:100-continue' -H 'Content-Type: application/json'
-* Connected to localhost (127.0.0.1) port 9090 (#0)
+* Connected to localhost (::1) port 9090 (#0)
 > POST /greeting HTTP/1.1
 > Host: localhost:9090
-> User-Agent: curl/7.58.0
+> User-Agent: curl/7.64.1
 > Accept: */*
 > Expect:100-continue
 > Content-Type: application/json
-> Content-Length: 25
+> Content-Length: 23
 >
 < HTTP/1.1 417 Expectation Failed
 < content-type: text/plain
 < content-length: 20
 < server: ballerina
-< date: Tue, 22 Sep 2020 09:19:53 +0530
+< date: Tue, 20 Dec 2022 17:01:59 +0530
 * HTTP error before end of send, stop sending
 <
 * Closing connection 0

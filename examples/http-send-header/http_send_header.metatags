@@ -1,0 +1,2 @@
+description: This BBE demonstrates sending a custom HTTP header from a service in Ballerina.
+keywords: ballerina, ballerina by example, bbe, http service, header, response

@@ -17,11 +17,11 @@ public function main() returns error? {
 
     // Request the server for the album. If the constraint validation fails,
     // an `http:PayloadValidationError` will be returned.
-    Album album = check albumClient->post("/albums", {
+    Album album = check albumClient->/albums.post({
         // Here, an album which exceeds the constraints are sent to a server
         // which returns the same record again to the client.
         title: "Blue Train",
         artist: "John Coltrane"
     });
-    io:println("Received albums: " + album.toJsonString());
+    io:println("Received album: " + album.toJsonString());
 }

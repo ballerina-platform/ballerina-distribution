@@ -1,10 +1,10 @@
 import ballerina/http;
 import ballerina/io;
 
-type Album readonly & record {|
+type Album readonly & record {
     string title;
     string artist;
-|};
+};
 
 public function main() returns error? {
     // Creates a new client with the Basic REST service URL.
@@ -16,7 +16,7 @@ public function main() returns error? {
     io:println("GET request:" + albums.toJsonString());
 
     // Sends a `POST` request to the "/albums" resource.
-    Album album  = check albumClient->/albums.post({
+    Album album = check albumClient->/albums.post({
         title: "Sarah Vaughan and Clifford Brown",
         artist: "Sarah Vaughan"
     });

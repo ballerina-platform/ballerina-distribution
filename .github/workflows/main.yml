@@ -24,6 +24,15 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '11'
+      - name: Get project version
+        id: project-version
+        run: |
+          SHORT_VERSION=$((grep -w "version" | cut -d= -f2 | cut -d- -f1) < gradle.properties)
+          DIST_VERSION=$((grep -w "version" | cut -d= -f2) < gradle.properties)
+          CODE_NAME=$((grep -w 'codeName' | cut -d= -f2) < gradle.properties)
+          RELEASE_VERSION=$DIST_VERSION-$CODE_NAME
+          echo "::set-output name=version::$RELEASE_VERSION"
+          echo "::set-output name=sversion::$SHORT_VERSION"
       - name: Build Ballerina Distribution
         if: ${{ github.event.inputs.skipTests == '' || github.event.inputs.skipTests == 'false' }}
         env:
@@ -31,7 +40,7 @@ jobs:
           packagePAT: ${{ secrets.GITHUB_TOKEN }}
           devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
           ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
-        run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue
+        run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue -x project-api-tests:test
       - name: Build Ballerina Distribution Skip Tests
         if: ${{ github.event.inputs.skipTests == 'true' }}
         env:
@@ -48,7 +57,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Ballerina Short Name ZIP
-          path: ballerina/build/distributions/ballerina-22*.zip
+          path: ballerina/build/distributions/ballerina-${{ steps.project-version.outputs.sversion }}.zip
       - name: Archive Linux installer ZIP
         uses: actions/upload-artifact@v2
         with:

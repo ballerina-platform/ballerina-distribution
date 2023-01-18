@@ -1,6 +1,6 @@
 # WebSocket service - SSL/TLS
 
-You can use the WebSocket listener to connect to or interact with an WebSocket client. Provide the `websocket:ListenerSecureSocket` configurations to the server to expose an WSS connection.
+The `websocket:Listener` configured with SSL/TLS allows you to expose a connection secured with one-way SSL/TLS. A `websocket:Listener` secured with TLS/SSL is created by providing the `secureSocket` configurations which require the server's public certificate as the `certFile` and the server's private key as the `keyFile`. Use this to expose a WSS connection.
 
 ::: code websocket_service_ssl_tls.bal :::
 
@@ -11,5 +11,5 @@ Run the service by executing the command below.
 >**Tip:** You can invoke the above service via the [SSL/TLS client](/learn/by-example/websocket-client-ssl-tls/).
 
 ## Related Links
-- [`websocket` package - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
+- [`websocket` module - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
 - [WebSocket SSL/TLS - Specification](/spec/websocket/#5-securing-the-websocket-connections)

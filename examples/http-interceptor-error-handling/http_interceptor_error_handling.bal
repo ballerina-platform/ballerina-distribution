@@ -1,28 +1,36 @@
 import ballerina/http;
-import ballerina/io;
 
-// Header name checked by the request interceptor.
-final string check_header = "checkHeader";
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
 
-// Header value to be set to the request in the request error interceptor.
-final string request_check_header_value = "RequestErrorInterceptor";
+table<Album> key(title) albums = table [
+    {title: "Blue Train", artist: "John Coltrane"},
+    {title: "Sarah Vaughan and Clifford Brown", artist: "Sarah Vaughan"}
+];
 
 service class RequestInterceptor {
     *http:RequestInterceptor;
 
-    // This will return a `HeaderNotFoundError` if you do not set this header. 
+    // This will return a `HeaderNotFoundError` if you do not set the `x-api-version` header. 
     // Then, the execution will jump to the nearest `RequestErrorInterceptor`.
-    resource function 'default [string... path](http:RequestContext ctx,
-            @http:Header string checkHeader) returns http:NextService|error? {
-        io:println("Check Header Value : ", checkHeader);
+    resource function 'default [string... path](
+            http:RequestContext ctx,
+            @http:Header {name: "x-api-version"} string xApiVersion)
+        returns http:NotImplemented|http:NextService|error? {
+        // Checks the API version header.    
+        if xApiVersion != "v1" {
+            return http:NOT_IMPLEMENTED;
+        }
         return ctx.next();
     }
 }
 
 RequestInterceptor requestInterceptor = new;
 
-// A `RequestErrorInterceptor` service class implementation. It allows you to 
-// intercept the error that occurred in the request path and handle it accordingly.
+// A `RequestErrorInterceptor` service class implementation. It allows intercepting
+// the error that occurred in the request path and handle it accordingly.
 // A `RequestErrorInterceptor` service class can have only one resource function.
 service class RequestErrorInterceptor {
     *http:RequestErrorInterceptor;
@@ -30,37 +38,30 @@ service class RequestErrorInterceptor {
     // The resource function inside a `RequestErrorInterceptor` is only allowed 
     // to have the default method and path. The error occurred in the interceptor
     // execution can be accessed by the mandatory argument: `error`.
-    resource function 'default [string... path](error err, http:Request req,
-            http:RequestContext ctx) returns http:NextService|error? {
-        // In this case, a header is set to the request, and then, the modified request
-        // is dispatched to the target service. Moreover, you can send different 
-        // responses according to the error type.
-        req.setHeader(check_header, request_check_header_value);
-        return ctx.next();
+    resource function 'default [string... path](error err) returns http:BadRequest {
+        // In this case, all of the errors are sent as `400 BadRequest` responses with a customized
+        // media type and body. You can also send different status code responses according to
+        // the error type. Furthermore, you can also call `ctx.next()` if you want to continue the 
+        // request flow after fixing the error.
+        return {
+            mediaType: "application/org+json",
+            body: {message: err.message()}
+        };
     }
 }
 
 // Creates a new `RequestErrorInterceptor`.
 RequestErrorInterceptor requestErrorInterceptor = new;
 
-
-listener http:Listener interceptorListener = new http:Listener(9090, config = {
+listener http:Listener interceptorListener = new (9090,
     // To handle all of the errors in the request path, the `RequestErrorInterceptor`
-    // is added as the last interceptor as it has to be executed last. 
-    interceptors: [requestInterceptor, requestErrorInterceptor] 
-});
+    // is added as the last interceptor as it has to be executed last.
+    interceptors = [requestInterceptor, requestErrorInterceptor]
+);
 
 service / on interceptorListener {
 
-    resource function get greeting(@http:Header string checkHeader) returns http:Ok {
-        return {
-            headers: {
-                "checkedHeader": checkHeader
-            },
-            mediaType: "application/org+json",
-            body: {
-                message: "Greetings!"
-            }
-        };
+    resource function get albums() returns Album[] {
+        return albums.toArray();
     }
 }

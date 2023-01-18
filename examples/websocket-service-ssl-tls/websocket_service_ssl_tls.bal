@@ -5,7 +5,7 @@ import ballerina/websocket;
 // a certificate file and a private key file for the listener.
 // The `websocket:ListenerSecureSocket` record
 // provides the SSL-related listener configurations of the listener.
-listener websocket:Listener chatListener = new(9090,
+listener websocket:Listener chatListener = new (9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -15,14 +15,16 @@ listener websocket:Listener chatListener = new(9090,
 );
 
 service /chat on chatListener {
+
     resource function get .() returns websocket:Service {
         return new ChatService();
-   }
+    }
 }
 
 service class ChatService {
     *websocket:Service;
-    remote function onMessage(websocket:Caller caller, string chatMessage) returns websocket:Error? {
+
+    remote function onMessage(websocket:Caller caller, string chatMessage) returns error? {
         check caller->writeMessage("Hello, How are you?");
     }
 }

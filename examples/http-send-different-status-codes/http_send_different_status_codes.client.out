@@ -12,4 +12,3 @@ $ curl http://localhost:9090/albums -H "Content-type:application/json" -d "{\"ti
 < server: ballerina
 < date: Mon, 5 Dec 2022 16:23:51 +0530
 < 
-{"message":"album already exists"}

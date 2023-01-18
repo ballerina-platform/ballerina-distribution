@@ -1,8 +1,7 @@
 import ballerina/grpc;
 
-// A gRPC listener can be configured to accept new connections that are secured via mutual SSL.
-// The `grpc:ListenerSecureSocket` record provides the SSL-related listener configurations.
-listener grpc:Listener securedEP = new(9090,
+// The gRPC listener can be configured to accept new connections that are secured via mutual SSL.
+listener grpc:Listener securedEP = new (9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -20,6 +19,7 @@ listener grpc:Listener securedEP = new(9090,
     value: GRPC_SIMPLE_DESC
 }
 service "HelloWorld" on securedEP {
+
     remote function hello(string request) returns string {
         return "Hello " + request;
     }
