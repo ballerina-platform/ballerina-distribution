@@ -9,7 +9,7 @@ The example below demonstrates how to start the service from its class definitio
 
 Run the service as follows.
 
-::: out start_service_from_service_class_definition.service.out :::
+::: out start_service_from_service_class_definition.server.out :::
 
 Invoke the service by executing the following cURL command in a new terminal.
 
