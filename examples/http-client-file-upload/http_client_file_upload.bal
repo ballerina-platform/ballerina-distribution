@@ -8,7 +8,6 @@ public function main() returns error? {
     http:Request request = new;
 
     // Sets the file as the request payload.
-    // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#setFileAsPayload.
     request.setFileAsPayload("./files/BallerinaLang.pdf", contentType = mime:APPLICATION_PDF);
 
     //Sends the request to the receiver service with the file content.

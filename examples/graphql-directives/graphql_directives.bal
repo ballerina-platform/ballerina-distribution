@@ -6,7 +6,7 @@ type Profile record {
     Gender gender;
 };
 
-// Marking enum value as deprecated.
+// Marks enum value as deprecated.
 enum Gender {
     MALE,
     FEMALE,
@@ -18,7 +18,8 @@ enum Gender {
 }
 
 service /graphql on new graphql:Listener(9090) {
-    // Marking a field as deprecated.
+
+    // Marks a field as deprecated.
     # # Deprecated
     # The `profile` field is deprecated. Use `profile` instead.
     @deprecated

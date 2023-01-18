@@ -1,17 +1,17 @@
 import ballerina/http;
 import ballerina/io;
 
-type Album readonly & record {|
+type Album readonly & record {
     string title;
     string artist;
-|};
+};
 
 public function main() returns error? {
     // Defines the HTTP client to call the JWT Auth secured APIs.
     // The client is enriched with the `Authorization: Bearer <token>` header by
     // passing the `http:JwtIssuerConfig` for the `auth` configuration of the
     // client. A self-signed JWT is issued before the request is sent.
-    http:Client albumClient = check new("localhost:9090",
+    http:Client albumClient = check new ("localhost:9090",
         auth = {
             username: "ballerina",
             issuer: "wso2",

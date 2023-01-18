@@ -1,7 +1,7 @@
 import ballerina/graphql;
 import ballerina/io;
 
-// User defined data types to retrive data from the service.
+// User-defined data types to retrive data from the service.
 type ProfileResponse record {|
     *graphql:GenericResponseWithErrors;
     record {|Profile profile;|} data;
@@ -14,8 +14,8 @@ type Profile record {|
 
 
 public function main() returns error? {
-    // Create a GraphQL client with JWT authentication configurations.
-    graphql:Client graphqlClient = check new("localhost:9090/graphql",
+    // Defines the GraphQL client to call the JWT Auth secured APIs.
+    graphql:Client graphqlClient = check new ("localhost:9090/graphql",
         auth = {
             username: "ballerina",
             issuer: "wso2",
@@ -35,7 +35,7 @@ public function main() returns error? {
         }
     );
 
-    // Define the GraphQL document to be sent to the GraphQL service.
+    // Defines the GraphQL document to be sent to the GraphQL service.
     string document = "{ profile { name, age } }";
 
     // Execute the document and retrieve the response from the GraphQL service.

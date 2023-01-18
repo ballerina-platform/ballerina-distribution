@@ -1189,124 +1189,36 @@
       ]
     },
     {
-      "title": "Configurability",
-      "column": 2,
-      "category": "Language concepts",
-      "samples": [
-        {
-          "name": "Configurable variables",
-          "url": "configurable-variables",
-          "verifyBuild": true,
-          "verifyOutput": true,
-          "isLearnByExample": true
-        }
-      ]
-    },
-    {
-      "title": "Error handling",
-      "column": 3,
-      "category": "Language concepts",
-      "samples": [
-        {
-          "name": "Error handling",
-          "url": "error-handling",
-          "verifyBuild": true,
-          "verifyOutput": true,
-          "isLearnByExample": true
-        },
-        {
-          "name": "Check expression",
-          "url": "check-expression",
-          "verifyBuild": true,
-          "verifyOutput": true,
-          "isLearnByExample": true
-        },
-        {
-          "name": "Error subtyping",
-          "url": "error-subtyping",
-          "verifyBuild": true,
-          "verifyOutput": true,
-          "isLearnByExample": true
-        },
-        {
-          "name": "Panics",
-          "url": "panics",
-          "verifyBuild": true,
-          "verifyOutput": true,
-          "isLearnByExample": true
-        },
-        {
-          "name": "Type intersection for error types",
-          "url": "error-type-intersection",
-          "verifyBuild": true,
-          "verifyOutput": true,
-          "isLearnByExample": true
-        },
-        {
-          "name": "Error detail",
-          "url": "error-detail",
-          "verifyBuild": true,
-          "verifyOutput": true,
-          "isLearnByExample": true
-        },
-        {
-          "name": "Error cause",
-          "url": "error-cause",
-          "verifyBuild": true,
-          "verifyOutput": true,
-          "isLearnByExample": true
-        }
-      ]
-    },
-    {
-      "title": "Ignore return values and errors",
-      "column": 3,
-      "category": "Language concepts",
-      "samples": [
-        {
-          "name": "Ignore return values and errors",
-          "url": "ignoring-return-values-and-errors",
-          "verifyBuild": true,
-          "verifyOutput": true,
-          "isLearnByExample": true
-        }
-      ]
-    },
-    {
-      "title": "Mutability and identity",
-      "column": 3,
-      "category": "Language concepts",
-      "samples": [
-        {
-          "name": "Identity",
-          "url": "identity",
-          "verifyBuild": true,
-          "verifyOutput": true,
-          "isLearnByExample": true
-        },
-        {
-          "name": "Const and final ",
-          "url": "const-and-final",
-          "verifyBuild": true,
-          "verifyOutput": true,
-          "isLearnByExample": true
-        },
-        {
-          "name": "Enumerations",
-          "url": "enumerations",
-          "verifyBuild": true,
-          "verifyOutput": true,
-          "isLearnByExample": true
-        },
-        {
-          "name": "Immutability",
-          "url": "immutability",
-          "verifyBuild": true,
-          "verifyOutput": true,
-          "disablePlayground": true,
-          "isLearnByExample": true
-        }
-      ]
+        "title": "Configurability",
+        "column": 2,
+        "category": "Language concepts",
+        "samples": [
+            {
+                "name": "Configurable variables",
+                "url": "configurable-variables",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "disablePlayground": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Configuring via TOML files",
+                "url": "configuring-via-toml",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "disablePlayground": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Configuring via CLI arguments",
+                "url": "configuring-via-cli",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes varying output",
+                "disablePlayground": true,
+                "isLearnByExample": true
+            }
+        ]
     },
     {
       "title": "Concurrency",
@@ -1666,160 +1578,158 @@
       ]
     },
     {
-      "title": "REST service",
-      "column": 0,
-      "category": "Network libraries",
-      "samples": [
-        {
-          "name": "Basic REST service",
-          "url": "http-basic-rest-service",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Service path and resource name",
-          "url": "http-service-path-and-resource-name",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Payload data binding",
-          "url": "http-service-data-binding",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Payload constraint validation",
-          "url": "http-service-payload-constraint-validation",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Path parameter",
-          "url": "http-path-param",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Query parameter",
-          "url": "http-query-parameter",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Header parameter",
-          "url": "http-header-param",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Send response",
-          "url": "http-send-response",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Send different status codes",
-          "url": "http-send-different-status-codes",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Send different status codes with payload",
-          "url": "http-send-different-status-codes-with-payload",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Send cache response",
-          "url": "http-service-cache-response",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        }
-      ]
+        "title": "REST service",
+        "column": 0,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Basic REST service",
+                "url": "http-basic-rest-service",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Service and resource paths",
+                "url": "http-service-and-resource-paths",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Payload data binding",
+                "url": "http-service-data-binding",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Payload constraint validation",
+                "url": "http-service-payload-constraint-validation",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Path parameter",
+                "url": "http-path-param",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Query parameter",
+                "url": "http-query-parameter",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Header parameter",
+                "url": "http-header-param",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Send response",
+                "url": "http-send-response",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Send different status codes",
+                "url": "http-send-different-status-codes",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Send different status codes with payload",
+                "url": "http-send-different-status-codes-with-payload",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Error handling",
+                "url": "http-default-error-handling",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Send cache response",
+                "url": "http-service-cache-response",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            }
+        ]
     },
     {
-      "title": "HTTP client",
-      "column": 0,
-      "category": "Network libraries",
-      "samples": [
-        {
-          "name": "Send request/Receive response",
-          "url": "http-client-send-request-receive-response",
-          "verifyBuild": false,
-          "verifyOutput": false,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Payload data binding",
-          "url": "http-client-data-binding",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Payload constraint validation",
-          "url": "http-client-payload-constraint-validation",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Path parameter",
-          "url": "http-client-path-parameter",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Query parameter",
-          "url": "http-client-query-parameter",
-          "verifyBuild": false,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Header parameter",
-          "url": "http-client-header-parameter",
-          "verifyBuild": false,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Caching",
-          "url": "http-caching-client",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        }
-      ]
+        "title": "HTTP client",
+        "column": 0,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Send request/Receive response",
+                "url": "http-client-send-request-receive-response",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Payload data binding",
+                "url": "http-client-data-binding",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Payload constraint validation",
+                "url": "http-client-payload-constraint-validation",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Path parameter",
+                "url": "http-client-path-parameter",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Query parameter",
+                "url": "http-client-query-parameter",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Header parameter",
+                "url": "http-client-header-parameter",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Enable caching",
+                "url": "http-caching-client",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            }
+        ]
     },
     {
       "title": "REST service security",
@@ -1877,511 +1787,535 @@
       ]
     },
     {
-      "title": "HTTP client security",
-      "column": 0,
-      "category": "Network libraries",
-      "samples": [
-        {
-          "name": "SSL/TLS",
-          "url": "http-client-ssl-tls",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Mutual SSL",
-          "url": "http-client-mutual-ssl",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Basic authentication",
-          "url": "http-client-basic-authentication",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Bearer token authentication",
-          "url": "http-client-bearer-token-authentication",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Self signed JWT authentication",
-          "url": "http-client-self-signed-jwt-authentication",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "OAuth2 client credentials grant type",
-          "url": "http-client-oauth2-client-credentials-grant-type",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "OAuth2 password grant type",
-          "url": "http-client-oauth2-password-grant-type",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "OAuth2 refresh token grant type",
-          "url": "http-client-oauth2-refresh-token-grant-type",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "OAuth2 JWT bearer grant type",
-          "url": "http-client-oauth2-jwt-bearer-grant-type",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        }
-      ]
+        "title": "HTTP client security",
+        "column": 0,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "SSL/TLS",
+                "url": "http-client-ssl-tls",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Mutual SSL",
+                "url": "http-client-mutual-ssl",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Basic authentication",
+                "url": "http-client-basic-authentication",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Bearer token authentication",
+                "url": "http-client-bearer-token-authentication",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Self signed JWT authentication",
+                "url": "http-client-self-signed-jwt-authentication",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "OAuth2 client credentials grant type",
+                "url": "http-client-oauth2-client-credentials-grant-type",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "OAuth2 password grant type",
+                "url": "http-client-oauth2-password-grant-type",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "OAuth2 refresh token grant type",
+                "url": "http-client-oauth2-refresh-token-grant-type",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "OAuth2 JWT bearer grant type",
+                "url": "http-client-oauth2-jwt-bearer-grant-type",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            }
+        ]
     },
     {
-      "title": "HTTP client resiliency",
-      "column": 0,
-      "category": "Network libraries",
-      "samples": [
-        {
-          "name": "Timeout",
-          "url": "http-timeout",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Retry",
-          "url": "http-retry",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Circuit breaker",
-          "url": "http-circuit-breaker",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Load balancer",
-          "url": "http-load-balancer",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Failover",
-          "url": "http-failover",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        }
-      ]
+        "title": "HTTP client resiliency",
+        "column": 0,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Timeout",
+                "url": "http-timeout",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Retry",
+                "url": "http-retry",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Circuit breaker",
+                "url": "http-circuit-breaker",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Load balancer",
+                "url": "http-load-balancer",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Failover",
+                "url": "http-failover",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            }
+        ]
     },
     {
-      "title": "HTTP service advanced",
-      "column": 0,
-      "category": "Network libraries",
-      "samples": [
-        {
-          "name": "Default resource",
-          "url": "http-default-resource",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Redirects",
-          "url": "http-service-redirects",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "CORS",
-          "url": "http-cors",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "100 continue",
-          "url": "http-100-continue",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Matrix parameter",
-          "url": "http-matrix-param",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Restrict by media type",
-          "url": "http-restrict-by-media-type",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "File upload",
-          "url": "http-service-file-upload",
-          "verifyBuild": false,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Compression",
-          "url": "http-compression",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Trace logs",
-          "url": "http-trace-logs",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Access logs",
-          "url": "http-access-logs",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Cookies",
-          "url": "http-cookies-service",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Chunking",
-          "url": "http-service-chunking",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Response with multiparts",
-          "url": "http-response-with-multiparts",
-          "verifyBuild": false,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Passthrough",
-          "url": "http-passthrough",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "HTTP/2 to HTTP/1.1 downgrade",
-          "url": "http-2-to-1-1-downgrade-service",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "HTTP/2 server push",
-          "url": "http-2-0-server-push",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        }
-      ]
+        "title": "HTTP service advanced",
+        "column": 0,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Default resource",
+                "url": "http-default-resource",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Request/Response object",
+                "url": "http-request-response",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Caller object",
+                "url": "http-caller",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Redirects",
+                "url": "http-service-redirects",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "CORS",
+                "url": "http-cors",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "100 continue",
+                "url": "http-100-continue",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Matrix parameter",
+                "url": "http-matrix-param",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Restrict by media type",
+                "url": "http-restrict-by-media-type",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "File upload",
+                "url": "http-service-file-upload",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Compression",
+                "url": "http-compression",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Trace logs",
+                "url": "http-trace-logs",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Access logs",
+                "url": "http-access-logs",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Cookies",
+                "url": "http-cookies-service",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Chunking",
+                "url": "http-service-chunking",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Sending headers",
+                "url": "http-send-header",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Response with multiparts",
+                "url": "http-response-with-multiparts",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Passthrough",
+                "url": "http-passthrough",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "HTTP/2 to HTTP/1.1 downgrade",
+                "url": "http-2-to-1-1-downgrade-service",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "HTTP/2 server push",
+                "url": "http-2-0-server-push",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            }
+        ]
     },
     {
-      "title": "HTTP client advanced",
-      "column": 0,
-      "category": "Network libraries",
-      "samples": [
-        {
-          "name": "Redirects",
-          "url": "http-client-redirects",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "File upload",
-          "url": "http-client-file-upload",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Cookies",
-          "url": "http-cookies-client",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Chunking",
-          "url": "http-client-chunking",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Request with multiparts",
-          "url": "http-request-with-multiparts",
-          "verifyBuild": false,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "HTTP/2 to HTTP/1.1 downgrade",
-          "url": "http-2-to-1-1-downgrade-client",
-          "verifyBuild": false,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "HTTP/2 prior knowledge",
-          "url": "http-2-prior-knowledge-client",
-          "verifyBuild": false,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "HTTP/2 server push",
-          "url": "http-2-0-client-server-push",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        }
-      ]
+        "title": "HTTP client advanced",
+        "column": 0,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Redirects",
+                "url": "http-client-redirects",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "File upload",
+                "url": "http-client-file-upload",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Cookies",
+                "url": "http-cookies-client",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Chunking",
+                "url": "http-client-chunking",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Request with multiparts",
+                "url": "http-request-with-multiparts",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "HTTP/2 to HTTP/1.1 downgrade",
+                "url": "http-2-to-1-1-downgrade-client",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "HTTP/2 prior knowledge",
+                "url": "http-2-prior-knowledge-client",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "HTTP/2 server push",
+                "url": "http-2-0-client-server-push",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": false,
+                "isLearnByExample": false
+            }
+        ]
     },
     {
-      "title": "HTTP service interceptors",
-      "column": 1,
-      "category": "Network libraries",
-      "samples": [
-        {
-          "name": "Request interceptors",
-          "url": "http-request-interceptors",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Response interceptors",
-          "url": "http-response-interceptors",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Error handling",
-          "url": "http-error-handling",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Interceptor error handling",
-          "url": "http-interceptor-error-handling",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        }
-      ]
+        "title": "HTTP service interceptors",
+        "column": 1,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Request interceptor",
+                "url": "http-request-interceptor",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Response interceptor",
+                "url": "http-response-interceptor",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Error handling",
+                "url": "http-error-handling",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Interceptor error handling",
+                "url": "http-interceptor-error-handling",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            }
+        ]
     },
     {
-      "title": "GraphQL service",
-      "column": 1,
-      "category": "Network libraries",
-      "samples": [
-        {
-          "name": "Hello world",
-          "url": "graphql-hello-world",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Record as output object",
-          "url": "graphql-returning-record-values",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Service as output object",
-          "url": "graphql-returning-service-objects",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Input types",
-          "url": "graphql-input-types",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Mutations",
-          "url": "graphql-mutations",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Subscriptions",
-          "url": "graphql-subscriptions",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Input objects",
-          "url": "graphql-input-objects",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Interfaces",
-          "url": "graphql-interfaces",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Interfaces implementing interfaces",
-          "url": "graphql-interfaces-implementing-interfaces",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "GraphiQL client",
-          "url": "graphql-graphiql",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Documentation",
-          "url": "graphql-documentation",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Directives",
-          "url": "graphql-directives",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Context",
-          "url": "graphql-context",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Interceptors",
-          "url": "graphql-interceptors",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "File upload",
-          "url": "graphql-file-upload",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disableVerificationReason": "Needs prerequisite condition",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Hierarchical resource paths",
-          "url": "graphql-hierarchical-resource-paths",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        }
-      ]
+        "title": "GraphQL service",
+        "column": 1,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Hello world",
+                "url": "graphql-hello-world",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Service as output object",
+                "url": "graphql-returning-service-objects",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Record as output object",
+                "url": "graphql-returning-record-values",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Input types",
+                "url": "graphql-input-types",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Mutations",
+                "url": "graphql-mutations",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Subscriptions",
+                "url": "graphql-subscriptions",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Input objects",
+                "url": "graphql-input-objects",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Interfaces",
+                "url": "graphql-interfaces",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Interfaces implementing interfaces",
+                "url": "graphql-interfaces-implementing-interfaces",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Union Types",
+                "url": "graphql-service-union-types",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Error handling",
+                "url": "graphql-service-error-handling",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "GraphiQL client",
+                "url": "graphql-graphiql",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Documentation",
+                "url": "graphql-documentation",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Directives",
+                "url": "graphql-directives",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Context",
+                "url": "graphql-context",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Interceptors",
+                "url": "graphql-interceptors",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "File upload",
+                "url": "graphql-file-upload",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Hierarchical resource paths",
+                "url": "graphql-hierarchical-resource-paths",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
     },
     {
       "title": "GraphQL client",
@@ -2517,29 +2451,38 @@
       ]
     },
     {
-      "title": "WebSocket service",
-      "column": 1,
-      "category": "Network libraries",
-      "samples": [
-        {
-          "name": "Send/Receive message",
-          "url": "websocket-basic-sample",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disableVerificationReason": "Service cannot be stopped",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Payload constraint validation",
-          "url": "websocket-service-payload-constraint-validation",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disableVerificationReason": "Service cannot be stopped",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        }
-      ]
+        "title": "WebSocket service",
+        "column": 1,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Send/Receive message",
+                "url": "websocket-basic-sample",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Service cannot be stopped",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Payload constraint validation",
+                "url": "websocket-service-payload-constraint-validation",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Service cannot be stopped",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Error handling",
+                "url": "websocket-service-error-handling",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Service cannot be stopped",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
     },
     {
       "title": "WebSocket client",
@@ -2760,135 +2703,135 @@
       ]
     },
     {
-      "title": "gRPC service",
-      "column": 2,
-      "category": "Network libraries",
-      "samples": [
-        {
-          "name": "Unary RPC",
-          "url": "grpc-service-unary",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disableVerificationReason": "Has different naming convention",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Server-side streaming RPC",
-          "url": "grpc-service-server-streaming",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disableVerificationReason": "Has different naming convention",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Client-side streaming RPC",
-          "url": "grpc-service-client-streaming",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disableVerificationReason": "Has different naming convention",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Bidirectional streaming RPC",
-          "url": "grpc-service-bidirectional-streaming",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disableVerificationReason": "Has different naming convention",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Send/Receive headers",
-          "url": "grpc-service-headers",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disableVerificationReason": "Has different naming convention",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Server reflection",
-          "url": "grpc-server-reflection",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disableVerificationReason": "Has different naming convention",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Check deadline",
-          "url": "grpc-service-check-deadline",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disableVerificationReason": "Has different naming convention",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        }
-      ]
+        "title": "gRPC service",
+        "column": 2,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Simple RPC",
+                "url": "grpc-service-simple",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Server-side streaming RPC",
+                "url": "grpc-service-server-streaming",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Client-side streaming RPC",
+                "url": "grpc-service-client-streaming",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Bidirectional streaming RPC",
+                "url": "grpc-service-bidirectional-streaming",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Send/Receive headers",
+                "url": "grpc-service-headers",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Server reflection",
+                "url": "grpc-server-reflection",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Check deadline",
+                "url": "grpc-service-check-deadline",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
     },
     {
-      "title": "gRPC client",
-      "column": 2,
-      "category": "Network libraries",
-      "samples": [
-        {
-          "name": "Unary RPC",
-          "url": "grpc-client-unary",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disableVerificationReason": "Has different naming convention",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Server-side streaming RPC",
-          "url": "grpc-client-server-streaming",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disableVerificationReason": "Has different naming convention",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Client-side streaming RPC",
-          "url": "grpc-client-client-streaming",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disableVerificationReason": "Has different naming convention",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Bidirectional streaming RPC",
-          "url": "grpc-client-bidirectional-streaming",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disableVerificationReason": "Has different naming convention",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Send/Receive headers",
-          "url": "grpc-client-headers",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disableVerificationReason": "Has different naming convention",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Set deadline",
-          "url": "grpc-client-set-deadline",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disableVerificationReason": "Has different naming convention",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        }
-      ]
+        "title": "gRPC client",
+        "column": 2,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Simple RPC",
+                "url": "grpc-client-simple",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Server-side streaming RPC",
+                "url": "grpc-client-server-streaming",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Client-side streaming RPC",
+                "url": "grpc-client-client-streaming",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Bidirectional streaming RPC",
+                "url": "grpc-client-bidirectional-streaming",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Send/Receive headers",
+                "url": "grpc-client-headers",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Set deadline",
+                "url": "grpc-client-set-deadline",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
     },
     {
       "title": "gRPC service security",
@@ -3134,72 +3077,88 @@
       ]
     },
     {
-      "title": "Kafka service",
-      "column": 2,
-      "category": "Network libraries",
-      "samples": [
-        {
-          "name": "Consume message",
-          "url": "kafka-service-consume-message",
-          "verifyBuild": false,
-          "verifyOutput": false,
-          "disableVerificationReason": "Includes ballerinax components",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Constraint validation",
-          "url": "kafka-service-constraint-validation",
-          "verifyBuild": false,
-          "verifyOutput": false,
-          "disableVerificationReason": "Includes ballerinax components",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        }
-      ]
+        "title": "Kafka service",
+        "column": 2,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Consume message",
+                "url": "kafka-service-consume-message",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Constraint validation",
+                "url": "kafka-service-constraint-validation",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Error handling",
+                "url": "kafka-service-error-handling",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
     },
     {
-      "title": "Kafka client",
-      "column": 2,
-      "category": "Network libraries",
-      "samples": [
-        {
-          "name": "Produce message",
-          "url": "kafka-client-produce-message",
-          "verifyBuild": false,
-          "verifyOutput": false,
-          "disableVerificationReason": "Includes ballerinax components",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Payload data binding",
-          "url": "kafka-client-payload-data-binding",
-          "verifyBuild": false,
-          "verifyOutput": false,
-          "disableVerificationReason": "Includes ballerinax components",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Consumer record data binding",
-          "url": "kafka-client-consumer-record-data-binding",
-          "verifyBuild": false,
-          "verifyOutput": false,
-          "disableVerificationReason": "Includes ballerinax components",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Constraint validation",
-          "url": "kafka-client-constraint-validation",
-          "verifyBuild": false,
-          "verifyOutput": false,
-          "disableVerificationReason": "Includes ballerinax components",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        }
-      ]
+        "title": "Kafka producer",
+        "column": 2,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Produce message",
+                "url": "kafka-producer-produce-message",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "Kafka consumer",
+        "column": 2,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Payload data binding",
+                "url": "kafka-consumer-payload-data-binding",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Consumer record data binding",
+                "url": "kafka-consumer-consumer-record-data-binding",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Constraint validation",
+                "url": "kafka-consumer-constraint-validation",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
     },
     {
       "title": "Kafka service security",
@@ -3227,47 +3186,54 @@
       ]
     },
     {
-      "title": "Kafka client security",
-      "column": 2,
-      "category": "Network libraries",
-      "samples": [
-        {
-          "name": "Producer SSL/TLS",
-          "url": "kafka-client-producer-ssl",
-          "verifyBuild": false,
-          "verifyOutput": false,
-          "disableVerificationReason": "Includes ballerinax components",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Consumer SSL/TLS",
-          "url": "kafka-client-consumer-ssl",
-          "verifyBuild": false,
-          "verifyOutput": false,
-          "disableVerificationReason": "Includes ballerinax components",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Producer SASL authentication",
-          "url": "kafka-client-producer-sasl",
-          "verifyBuild": false,
-          "verifyOutput": false,
-          "disableVerificationReason": "Includes ballerinax components",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Consumer SASL authentication",
-          "url": "kafka-client-consumer-sasl",
-          "verifyBuild": false,
-          "verifyOutput": false,
-          "disableVerificationReason": "Includes ballerinax components",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        }
-      ]
+        "title": "Kafka producer security",
+        "column": 2,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "SSL/TLS",
+                "url": "kafka-producer-ssl",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "SASL authentication",
+                "url": "kafka-producer-sasl",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "Kafka consumer security",
+        "column": 2,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "SSL/TLS",
+                "url": "kafka-consumer-ssl",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "SASL authentication",
+                "url": "kafka-consumer-sasl",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
     },
     {
       "title": "RabbitMQ service",
@@ -3559,104 +3525,136 @@
       ]
     },
     {
-      "title": "FTP Service",
-      "column": 3,
-      "category": "Network libraries",
-      "samples": [
-        {
-          "name": "Read file",
-          "url": "ftp-service-read",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disableVerificationReason": "Needs prerequisite condition",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Read/Write file",
-          "url": "ftp-service-read-write",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disableVerificationReason": "Needs prerequisite condition",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        }
-      ]
+        "title": "Email service security",
+        "column": 3,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "SSL/TLS",
+                "url": "email-service-ssl-tls",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
     },
     {
-      "title": "FTP Client",
-      "column": 3,
-      "category": "Network libraries",
-      "samples": [
-        {
-          "name": "Read file",
-          "url": "ftp-client-read",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disableVerificationReason": "Needs prerequisite condition",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Write file",
-          "url": "ftp-client-write",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disableVerificationReason": "Needs prerequisite condition",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        }
-      ]
+        "title": "Email client security",
+        "column": 3,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "SSL/TLS",
+                "url": "email-client-ssl-tls",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
     },
     {
-      "title": "SFTP Service",
-      "column": 3,
-      "category": "Network libraries",
-      "samples": [
-        {
-          "name": "Read file",
-          "url": "sftp-service-read",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disableVerificationReason": "Needs prerequisite condition",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Read/Write file",
-          "url": "sftp-service-read-write",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disableVerificationReason": "Needs prerequisite condition",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        }
-      ]
+        "title": "FTP Service",
+        "column": 3,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Receive file",
+                "url": "ftp-service-receive-file",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Send file",
+                "url": "ftp-service-send-file",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
     },
     {
-      "title": "SFTP Client",
-      "column": 3,
-      "category": "Network libraries",
-      "samples": [
-        {
-          "name": "Read file",
-          "url": "sftp-client-read",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disableVerificationReason": "Needs prerequisite condition",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Write file",
-          "url": "sftp-client-write",
-          "verifyBuild": true,
-          "verifyOutput": false,
-          "disableVerificationReason": "Needs prerequisite condition",
-          "disablePlayground": true,
-          "isLearnByExample": false
-        }
-      ]
+        "title": "FTP Client",
+        "column": 3,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Receive file",
+                "url": "ftp-client-receive-file",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Send file",
+                "url": "ftp-client-send-file",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "SFTP Service",
+        "column": 3,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Receive file",
+                "url": "sftp-service-receive-file",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Send file",
+                "url": "sftp-service-send-file",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "SFTP Client",
+        "column": 3,
+        "category": "Network libraries",
+        "samples": [
+            {
+                "name": "Receive file",
+                "url": "sftp-client-receive-file",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Send file",
+                "url": "sftp-client-send-file",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
     },
     {
       "title": "Database Access",
@@ -3744,54 +3742,54 @@
       ]
     },
     {
-      "title": "IO",
-      "column": 0,
-      "category": "Common libraries",
-      "samples": [
-        {
-          "name": "Read/write bytes",
-          "url": "io-bytes",
-          "verifyBuild": true,
-          "verifyOutput": true,
-          "disablePlayground": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Read/write strings",
-          "url": "io-strings",
-          "verifyBuild": true,
-          "verifyOutput": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Read/write CSV",
-          "url": "io-csv",
-          "verifyBuild": true,
-          "verifyOutput": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Read/write CSV with data mapping",
-          "url": "io-csv-datamapping",
-          "verifyBuild": true,
-          "verifyOutput": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Read/write JSON",
-          "url": "io-json",
-          "verifyBuild": true,
-          "verifyOutput": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Read/write XML",
-          "url": "io-xml",
-          "verifyBuild": true,
-          "verifyOutput": true,
-          "isLearnByExample": false
-        }
-      ]
+        "title": "IO",
+        "column": 0,
+        "category": "Common libraries",
+        "samples": [
+            {
+                "name": "Read/write bytes",
+                "url": "io-bytes",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Read/write strings",
+                "url": "io-strings",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Read/write CSV",
+                "url": "io-csv",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Read/write CSV with data mapping",
+                "url": "io-csv-datamapping",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Read/write JSON",
+                "url": "io-json",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Read/write XML",
+                "url": "io-xml",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": false
+            }
+        ]
     },
     {
       "title": "Security",
@@ -3978,32 +3976,32 @@
       ]
     },
     {
-      "title": "Task",
-      "column": 2,
-      "category": "Common libraries",
-      "samples": [
-        {
-          "name": "Schedule job recurrence by frequency",
-          "url": "task-frequency-job-execution",
-          "verifyBuild": true,
-          "verifyOutput": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Schedule one time job",
-          "url": "task-one-time-job-execution",
-          "verifyBuild": true,
-          "verifyOutput": true,
-          "isLearnByExample": false
-        },
-        {
-          "name": "Manage sheduled jobs",
-          "url": "manage-scheduled-jobs",
-          "verifyBuild": true,
-          "verifyOutput": true,
-          "isLearnByExample": false
-        }
-      ]
+        "title": "Task",
+        "column": 2,
+        "category": "Common libraries",
+        "samples": [
+            {
+                "name": "Schedule job recurrence by frequency",
+                "url": "task-frequency-job-execution",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Schedule one time job",
+                "url": "task-one-time-job-execution",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Manage scheduled jobs",
+                "url": "manage-scheduled-jobs",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": false
+            }
+        ]
     },
     {
       "title": "UUID",
@@ -4211,4 +4209,3 @@
       ]
     }
   ]
-  

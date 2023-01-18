@@ -1,2 +1,2 @@
-$ bal run http_client_self_signed_jwt_auth.bal
+$ bal run http_client_self_signed_jwt_authentication.bal
 [{"title":"Blue Train","artist":"John Coltrane"},{"title":"Jeru","artist":"Gerry Mulligan"}]

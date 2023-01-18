@@ -1,6 +1,6 @@
 # Kafka service - Constraint validation
 
-This example shows how the payload is validated related to the constraints added to the payload record. When a payload is not valid, `seek` method of `kafka:Caller` can be used to seek pass the erroneous record and read the new records.
+The `kafka:Service` connects to a given Kafka server via the `kafka:Listener`, and then validates the received payloads by the defined constraints. The constraints are added as annotations to the payload record and when the payload is received from the broker, it is validated internally and if validation fails, the `onError` remote method will be invoked with a `kafka:PayloadValidationError`. The `seek` method of the `kafka:Caller` is used to seek past the erroneous record and read the new records. The `validation` flag of the`kafka:ConsumerConfiguration` can be set to `false` to stop validating the payloads. Use this to validate the messages received from a Kafka server implicitly.
 
 ::: code kafka_service_constraint_validation.bal :::
 
@@ -11,10 +11,10 @@ Run the program by executing the following command.
 
 ::: out kafka_service_constraint_validation.out :::
 
->**Tip:** Run the Kafka client given in the [Kafka client - Produce message](/learn/by-example/kafka-client-produce-message) example with a valid product name (0 < length <= 30), then with an invalid product name and again with a valid product name.
+>**Tip:** Run the Kafka client given in the [Kafka producer - Produce message](/learn/by-example/kafka-producer-produce-message) example with a valid product name (0 < length <= 30), then with an invalid product name and again with a valid product name.
 
 ## Related links
 - [`kafka:PayloadValidationError` error type - API documentation](https://lib.ballerina.io/ballerinax/kafka/latest/errors#PayloadValidationError)
 - [`kafka:Caller->seek` function - API documentation](https://lib.ballerina.io/ballerinax/kafka/latest/clients/Caller#seek)
-- [`kafka` package - Specification](https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md)
-- [`constraint` package - API documentation](https://lib.ballerina.io/ballerina/constraint/latest)
+- [`kafka` module - Specification](https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md)
+- [`constraint` module - API documentation](https://lib.ballerina.io/ballerina/constraint/latest)

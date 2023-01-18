@@ -17,5 +17,5 @@ public function main() returns error? {
     io:println("Received: ", string:fromBytes(receivedData));
 
     // Close the connection between the server and the client.
-    return socketClient->close();
+    check socketClient->close();
 }
