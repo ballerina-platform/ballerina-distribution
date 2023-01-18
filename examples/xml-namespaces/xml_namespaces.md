@@ -7,3 +7,6 @@ The XML namespace declarations are kept as attributes using the standard binding
 ::: code xml_namespaces.bal :::
 
 ::: out xml_namespaces.out :::
+
+## Related links
+- [XML data model](/learn/by-example/xml-data-model/)

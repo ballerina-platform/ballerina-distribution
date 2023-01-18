@@ -1,33 +1,35 @@
 import ballerina/io;
 
-const KEY = "xyzzy";
+const switchStatus = "ON";
 
-function matchTest(any v) returns string {
-    // The value of the `v` variable is matched against the given value match patterns.
-    match v {
-        17 => {
-            return "number";
+function matchValue(any val) returns string {
+    // The value of the `val` variable is matched against the given value match patterns.
+    match val {
+        1 => {
+            return "Move forward";
         }
-        true => {
-            return "boolean";
+        // Use `|` to match more than one value.
+        2|3 => {
+            return "Turn";
         }
-        "str" => {
-            return "string";
+        "STOP" => {
+            return "STOP";
         }
-        KEY => {
-            return "constant";
+        switchStatus => {
+            return "Switch ON";
         }
-        0|1 => {
-            return "or";
-        }
+        // Use `_` to match type `any`.
         _ => {
-            return "any";
+            return "Invalid instruction";
         }
     }
+
 }
 
 public function main() {
-    io:println(matchTest("str"));
-    io:println(matchTest(17));
-    io:println(matchTest(20.5));
+    io:println(matchValue(1));
+    io:println(matchValue(2));
+    io:println(matchValue("STOP"));
+    io:println(matchValue(switchStatus));
+    io:println(matchValue("default"));
 }

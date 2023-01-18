@@ -1,67 +1,27 @@
 import ballerina/io;
 
-type Error error;
-
-type LineStream stream<string, Error?>;
-
-type ValueRecord record {|
-    string value;
-|};
-
-const SAMPLE_LINE_COUNT = 5;
-
-class LineGenerator {
-    int i = -1;
-    string inputString;
-
-    public function init(string str) {
-        self.inputString = str;
-    }
-
-    public isolated function next() returns ValueRecord|Error? {
-        self.i += 1;
-        if (self.i < SAMPLE_LINE_COUNT) {
-            if (self.i % 2 == 0) {
-                return {value: self.inputString};
-            }
-            return {value: ""};
+class EvenNumberGenerator {
+    int i = 0;
+    public isolated function next() returns record {|int value;|}|error? {
+        self.i += 2;
+        if self.i > 10 {
+            return ();
         }
-        return;
+
+        return {value: self.i};
     }
 }
 
-// This method strips the blank lines.
-function strip(LineStream lines) returns LineStream {
-    // Creates a `stream` from a query expression.
-    LineStream res = stream from var line in lines
-             where line.trim().length() > 0
-             select line;
+public function main() returns error? {
+    EvenNumberGenerator evenGen = new ();
 
-    return res;
-}
+    // Creates a `stream` passing an `EvenNumberGenerator` object to the `stream` constructor.
+    stream<int, error?> evenNumberStream = new (evenGen);
 
-function count(LineStream lines) returns int|Error {
-    int nLines = 0;
+    // Iterates the `evenNumberStream` until it returns `()`.
+    // If the stream terminates with an error, the result of the query expression will be the error.
+    int[] evenNumbers = check from var number in evenNumberStream
+                        select number;
 
-    // Counts the number of lines by iterating the `stream` in a query action.
-    var _ = check from var _ in lines
-              do {
-                  nLines += 1;
-              };
-
-    return nLines;
-}
-
-public function main() {
-    LineGenerator generator = new ("Everybody can dance");
-    LineStream inputLineStream = new (generator);
-
-    LineStream strippedStream = strip(inputLineStream);
-
-    int|Error nonBlankCount = count(strippedStream);
-
-    if (nonBlankCount is int) {
-        io:println("Input line count: ", SAMPLE_LINE_COUNT.toString());
-        io:println("Non blank line count: ", nonBlankCount.toString());
-    }
+    io:println(evenNumbers);
 }
