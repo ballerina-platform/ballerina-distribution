@@ -8,5 +8,5 @@ XML templates can be combined with queries. It is possible to have a template co
 
 ## Related links
 - [XML data model](/learn/by-example/xml-data-model/)
-- [Query expressions](/learn/by-example/query-exoressions/)
+- [Query expressions](/learn/by-example/query-expressions/)
 - [Iterating over xml with query](/learn/by-example/iterating-over-xml-with-query/)
