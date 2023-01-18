@@ -17,9 +17,9 @@ public function main() returns error? {
     }
 
     // Optional access can be used again on fields accessed with optional access
-    string? lastName = check user?.name?.firstName;
+    string? firstName = check user?.name?.firstName;
 
-    if lastName is string {
-      io:println("Last name: " + lastName);
+    if firstName is string {
+      io:println("First name: " + firstName);
     }
 }

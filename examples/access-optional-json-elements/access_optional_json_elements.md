@@ -7,8 +7,8 @@ If there is no prior knowledge of the availability of a particular field, option
 - [Check expression](/learn/by-example/check-expression/)
 - [Optional fields](/learn/by-example/optional-fields/)
 
-::: code working_directly_with_json.bal :::
+::: code access_optional_json_elements.bal :::
 
 Run the example as follows.
 
-::: out working_directly_with_json.out :::
+::: out access_optional_json_elements.out :::
