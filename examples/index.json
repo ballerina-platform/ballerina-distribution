@@ -889,6 +889,13 @@
                 "isLearnByExample": true
             },
             {
+                "name": "Accessing optional JSON elements",
+                "url": "access-optional-json-elements",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
                 "name": "Match statement with maps",
                 "url": "match-statement-with-maps",
                 "verifyBuild": true,

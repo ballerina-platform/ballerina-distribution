@@ -1,15 +1,15 @@
 import ballerina/io;
- 
+
 type Coord record {
     float x;
     float y;
 };
- 
+
 type Book record {
     xml book;
     float price;
 };
- 
+
 public function main() returns error? {
     json j = {x: 1, y: 2};
     
@@ -36,4 +36,3 @@ public function main() returns error? {
     Book|error result = bookJson.cloneWithType();
     io:println(result);
 }
-

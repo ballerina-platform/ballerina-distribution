@@ -18,7 +18,7 @@ public function main() returns error? {
     json f = check e.fromJsonString();
     io:println(f);
 
-    json[] g = <json[]> f;
+    json[] g = <json[]>f;
     io:println(typeof g[0]);
     io:println(typeof g[1]);
     io:println(typeof g[2]);
@@ -31,5 +31,4 @@ public function main() returns error? {
     // `-0` is an edge case: represented as `float`.
     string i = "-0";
     io:println(typeof check i.fromJsonString());
-    return;
 }
