@@ -1,24 +1,66 @@
 import ballerina/io;
 
-public function main() {
+public function main() returns error? {
     // An XML element. There can be only one root element.
     xml x1 = xml `<book>The Lost World</book>`;
     io:println(x1);
 
-    // An XML text.
-    xml x2 = xml `Hello, world!`;
+    // An XML processing instruction.
+    xml x2 = xml `<?target data?>`;
     io:println(x2);
 
     // An XML comment.
     xml x3 = xml `<!--I am a comment-->`;
     io:println(x3);
 
-    // An XML processing instructions.
-    xml x4 = xml `<?target data?>`;
+    // An XML text.
+    xml x4 = xml `Hello, world!`;
     io:println(x4);
 
-    // Multiple XML items can be combined to form a sequence of XML.
-    // The resulting sequence is another `xml` value on its own.
-    xml x5 = x1 + x2 + x3 + x4;
-    io:println(x5);
+    // `xml:createText` can be used to convert a string to `xmlText`.
+    string hello = "Hello";
+    string world = "World";
+    xml:Text xmlString = xml:createText(hello + " " + world);
+    io:println(xmlString);
+
+    // Creates an XML value.
+    xml xmlValue = xml `<name>Sherlock Holmes</name>
+                        <details>
+                          <author>Sir Arthur Conan Doyle</author>
+                          <language>English</language>
+                        </details>`;
+
+    // `x[i]` or `x.get(i)` gives the `i`-th item.
+    io:println(xmlValue[0]);
+
+    // `x.id` accesses a required attribute named `id`. The result is an `error` if there is no such
+    // attribute or if `x` is not a singleton.
+    xml xmlHello = xml `<para id="greeting">Hello</para>`;
+    string id = check xmlHello.id;
+    io:println(id);
+
+    // `x?.id` accesses an optional attribute named `id`. The result is `()` if there is no such
+    // attribute.
+    string? name = check xmlHello?.name;
+    io:println(name);
+
+    xml xmlItems = xml
+        `<items>
+            <!--Contents-->
+            <book>
+                <name>A Study in Scarlet</name>
+                <author><name>Arthur Conan Doyle</name></author>
+            </book>
+            <planner>Daily Planner<kind>day</kind><pages>365</pages></planner>
+            <book>
+                <name>The Sign of Four</name>
+                <author><name>Arthur Conan Doyle</name></author>
+            </book>
+            <pen><kind>marker</kind><color>blue</color></pen>
+        </items>`;
+
+    // `x.<items>` - retrieves every element in `x` named `items`.
+    xml items = xmlItems.<items>;
+    io:println(items);
+
 }
