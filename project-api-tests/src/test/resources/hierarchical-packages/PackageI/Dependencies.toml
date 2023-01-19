@@ -17,13 +17,13 @@ modules = [
 
 [[package]]
 org = "bctestorg"
-name = "packageI"
+name = "PackageI"
 version = "0.1.0"
 dependencies = [
 	{org = "bctestorg", name = "PackageH.test"}
 ]
 modules = [
-	{org = "bctestorg", packageName = "packageI", moduleName = "packageI"}
+	{org = "bctestorg", packageName = "PackageI", moduleName = "PackageI"}
 ]
 
 
