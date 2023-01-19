@@ -17,5 +17,5 @@ Run this cURL command to invoke the resource.
 ## Related links
 - [Casting JSON to user-defined type](/learn/by-example/casting-json-to-user-defined-type/)
 - [JSON type](/learn/by-example/json-type/)
-- [Service data binding](/learn/by-example/http-data-binding/)
+- [Service data binding](/learn/by-example/http-service-data-binding/)
 - [http module](https://lib.ballerina.io/ballerina/http)

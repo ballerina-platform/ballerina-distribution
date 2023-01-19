@@ -7,6 +7,6 @@ A `table` provides access to its members using a key that comes from the `readon
 ::: out multiple_key_fields.out :::
 
 ## Related links
-- [Table Syntax](/learn/by-example/table-syntax/)
+- [Table](/learn/by-example/table/)
 - [Structured keys](/learn/by-example/multiple-key-fields/)
 - [Maps](/learn/by-example/maps/)
