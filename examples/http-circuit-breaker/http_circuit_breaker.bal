@@ -7,7 +7,7 @@ type Album readonly & record {
 };
 
 public function main() returns error? {
-    http:Client httpClient = check new ("localhost:9090",
+    http:Client albumClient = check new ("localhost:9090",
         circuitBreaker = {
             // The failure calculation window measures how long the circuit breaker keeps the
             // statistics for the operations.
@@ -37,6 +37,6 @@ public function main() returns error? {
 
         }
     );
-    Album[] payload = check httpClient->/albums;
+    Album[] payload = check albumClient->/albums;
     io:println(payload);
 }

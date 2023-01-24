@@ -8,7 +8,7 @@ type Album readonly & record {
 
 public function main() returns error? {
     // Define the load balance client endpoint to call the backend services.
-    http:LoadBalanceClient httpClient = check new ({
+    http:LoadBalanceClient albumClient = check new ({
         // Define the set of HTTP clients that need to be load balanced.
         targets: [
             {url: "http://localhost:9090"},
@@ -17,6 +17,6 @@ public function main() returns error? {
         ],
         timeout: 5
     });
-    Album[] payload = check httpClient->/albums;
+    Album[] payload = check albumClient->/albums;
     io:println(payload);
 }

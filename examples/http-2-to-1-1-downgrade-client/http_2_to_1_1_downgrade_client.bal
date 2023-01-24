@@ -8,7 +8,7 @@ type Album readonly & record {
 
 public function main() returns error? {
     // Since the default HTTP version is 2.0, HTTP version is set to 1.1.
-    http:Client httpClient = check new ("localhost:9090", httpVersion = http:HTTP_1_1);
-    Album[] albums = check httpClient->/albums;
+    http:Client albumClient = check new ("localhost:9090", httpVersion = http:HTTP_1_1);
+    Album[] albums = check albumClient->/albums;
     io:println("GET request:" + albums.toJsonString());
 }
