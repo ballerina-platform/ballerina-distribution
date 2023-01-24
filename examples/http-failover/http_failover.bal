@@ -8,7 +8,7 @@ type Album readonly & record {
 
 public function main() returns error? {
     // Define the failover client endpoint to call the backend services.
-    http:FailoverClient httpClient = check new ({
+    http:FailoverClient albumClient = check new ({
 
         timeout: 5,
         failoverCodes: [501, 502, 503],
@@ -19,6 +19,6 @@ public function main() returns error? {
             {url: "http://localhost:9090"}
         ]
     });
-    Album[] payload = check httpClient->/albums;
+    Album[] payload = check albumClient->/albums;
     io:println(payload);
 }
