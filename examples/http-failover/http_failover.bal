@@ -1,6 +1,11 @@
 import ballerina/http;
 import ballerina/io;
 
+type Album readonly & record {
+    string title;
+    string artist;
+};
+
 public function main() returns error? {
     // Define the failover client endpoint to call the backend services.
     http:FailoverClient httpClient = check new ({
@@ -14,6 +19,6 @@ public function main() returns error? {
             {url: "http://localhost:9090"}
         ]
     });
-    string payload = check httpClient->/albums;
+    Album[] payload = check httpClient->/albums;
     io:println(payload);
 }

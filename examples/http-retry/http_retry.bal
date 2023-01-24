@@ -1,6 +1,11 @@
 import ballerina/http;
 import ballerina/io;
 
+type Album readonly & record {
+    string title;
+    string artist;
+};
+
 public function main() returns error? {
     http:Client httpClient = check new ("localhost:9090",
         retryConfig = {
@@ -18,6 +23,6 @@ public function main() returns error? {
             maxWaitInterval: 20
         }
     );
-    string payload = check httpClient->/albums;
+    Album[] payload = check httpClient->/albums;
     io:println(payload);
 }
