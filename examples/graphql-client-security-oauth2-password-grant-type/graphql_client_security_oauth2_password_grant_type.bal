@@ -21,7 +21,7 @@ public function main() returns error? {
             password: "admin",
             clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
             clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
-            scopes: ["admin"],
+            scopes: "admin",
             refreshConfig: "INFER_REFRESH_CONFIG",
             clientConfig: {
                 secureSocket: {
