@@ -8,12 +8,12 @@ type Album readonly & record {|
 
 public function main() returns error? {
     // The `followRedirects` record provides configurations associated with HTTP redirects.
-    http:Client httpClient = check new ("localhost:9092",
+    http:Client albumClient = check new ("localhost:9092",
         followRedirects = {
             enabled: true,
             maxCount: 5
         }
     );
-    Album[] payload = check httpClient->/redirect;
+    Album[] payload = check albumClient->/redirect;
     io:println(string `Response received: ${payload.toJsonString()}`);
 }

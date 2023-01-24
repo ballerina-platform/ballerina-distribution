@@ -1,8 +1,13 @@
 import ballerina/http;
 import ballerina/io;
 
+type Album readonly & record {
+    string title;
+    string artist;
+};
+
 public function main() returns error? {
-    http:Client httpClient = check new ("localhost:9090",
+    http:Client albumClient = check new ("localhost:9090",
         circuitBreaker = {
             // The failure calculation window measures how long the circuit breaker keeps the
             // statistics for the operations.
@@ -32,6 +37,6 @@ public function main() returns error? {
 
         }
     );
-    string payload = check httpClient->/albums;
+    Album[] payload = check albumClient->/albums;
     io:println(payload);
 }
