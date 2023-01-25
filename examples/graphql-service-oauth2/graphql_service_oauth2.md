@@ -17,4 +17,4 @@ Run the service by executing the command below.
 - [`graphql:ServiceConfig` annotation - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/annotations#ServiceConfig)
 - [`graphql:OAuth2IntrospectionConfigWithScopes` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/records/OAuth2IntrospectionConfigWithScopes)
 - [`oauth2` module - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)
-- [GraphQL service OAuth2 - Specification](/spec/graphql/#11114-oauth2)
+- [GraphQL service OAuth2 - Specification](/spec/graphql/#12114-oauth2)
