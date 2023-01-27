@@ -48,8 +48,8 @@ import static org.ballerina.projectapi.CentralTestUtils.BALLERINA_HOME_DIR;
 import static org.ballerina.projectapi.CentralTestUtils.BALLERINA_TOML;
 import static org.ballerina.projectapi.CentralTestUtils.COMMON_VERSION;
 import static org.ballerina.projectapi.CentralTestUtils.DEPENDENCIES_TOML;
-import static org.ballerina.projectapi.CentralTestUtils.SLASH_SEPARATOR;
-import static org.ballerina.projectapi.CentralTestUtils.UNDERSCORE_SEPARATOR;
+import static org.ballerina.projectapi.CentralTestUtils.PACKAGE_NAME_SEPARATOR;
+import static org.ballerina.projectapi.CentralTestUtils.PACKAGE_PATH_SEPARATOR;
 import static org.ballerina.projectapi.CentralTestUtils.buildPackageBala;
 import static org.ballerina.projectapi.CentralTestUtils.createSettingToml;
 import static org.ballerina.projectapi.CentralTestUtils.deleteFiles;
@@ -107,7 +107,7 @@ public class HierarchicalPackagesTest {
                     filter((b) -> b.startsWith("Package")).toArray()[0].toString());
         }
         for (String packageName : uniquePackageNames) {
-            String randomPackageName = packageName + UNDERSCORE_SEPARATOR + randomPackageSuffix;
+            String randomPackageName = packageName + PACKAGE_NAME_SEPARATOR + randomPackageSuffix;
             replaceRandomPackageName(randomPackageName, packageName);
         }
 
@@ -135,7 +135,7 @@ public class HierarchicalPackagesTest {
         }
         // Push package to local
         String localPackageName = getNewDirectoryName("PackageQ.test", randomPackageSuffix);
-        if (!CentralTestUtils.isPkgAvailableInCentral(orgName + SLASH_SEPARATOR + localPackageName,
+        if (!CentralTestUtils.isPkgAvailableInCentral(orgName + PACKAGE_PATH_SEPARATOR + localPackageName,
                 tempWorkspaceDirectory, envVariables)) {
             // Build the bala for package
             buildPackageBala(tempWorkspaceDirectory, envVariables, localPackageName, orgName, COMMON_VERSION,
@@ -146,8 +146,8 @@ public class HierarchicalPackagesTest {
     }
 
     private void pushToCentral(String packageName, String version) throws IOException, InterruptedException {
-        if (!CentralTestUtils.isPkgAvailableInCentral(orgName + SLASH_SEPARATOR + packageName, tempWorkspaceDirectory,
-                envVariables)) {
+        if (!CentralTestUtils.isPkgAvailableInCentral(orgName + PACKAGE_PATH_SEPARATOR + packageName,
+                tempWorkspaceDirectory, envVariables)) {
             // Build the bala for package
             buildPackageBala(tempWorkspaceDirectory, envVariables, packageName, orgName, version,
                     Collections.emptyList());
@@ -159,7 +159,7 @@ public class HierarchicalPackagesTest {
 
     private void pushUpdatedVersion(List<String> previousVersions, int i, String packageName) throws IOException,
             InterruptedException {
-        if (!CentralTestUtils.isPkgVersionAvailableInCentral(orgName + SLASH_SEPARATOR + packageName,
+        if (!CentralTestUtils.isPkgVersionAvailableInCentral(orgName + PACKAGE_PATH_SEPARATOR + packageName,
                 tempWorkspaceDirectory, envVariables, updatedVersion)) {
             // Update version details in Ballerina.toml
             updateBallerinaToml(packageName, previousVersions.get(i), updatedVersion, "", "");
@@ -207,7 +207,7 @@ public class HierarchicalPackagesTest {
     public void testUpdatedPackage() throws IOException, InterruptedException {
         // Check if specific package version is available in central. If not build and push updated version.
         String importedPackageName = getNewDirectoryName("PackageL.test", randomPackageSuffix);
-        if (!CentralTestUtils.isPkgVersionAvailableInCentral(orgName + SLASH_SEPARATOR + importedPackageName,
+        if (!CentralTestUtils.isPkgVersionAvailableInCentral(orgName + PACKAGE_PATH_SEPARATOR + importedPackageName,
                 tempWorkspaceDirectory, envVariables, updatedVersion)) {
             // Add a module to the package
             addNewModule(importedPackageName, "doc.api", "mod.api");
@@ -279,9 +279,9 @@ public class HierarchicalPackagesTest {
     public void testUpdateTransitiveDependency() throws IOException, InterruptedException {
         String transitivePackagePrefix =  getNewDirectoryName("Transitive.PackageH.test", randomPackageSuffix);
         String randomSuffix = CentralTestUtils.randomPackageName(5);
-        String transitivePackageName = transitivePackagePrefix + UNDERSCORE_SEPARATOR + randomSuffix;
+        String transitivePackageName = transitivePackagePrefix + PACKAGE_NAME_SEPARATOR + randomSuffix;
         String importedPackagePrefix = getNewDirectoryName("PackageO.test", randomPackageSuffix);
-        String importedPackageName = importedPackagePrefix + UNDERSCORE_SEPARATOR + randomSuffix;
+        String importedPackageName = importedPackagePrefix + PACKAGE_NAME_SEPARATOR + randomSuffix;
 
         String packageName = getNewDirectoryName("PackageP", randomPackageSuffix);
         pushPreRequisites(transitivePackagePrefix, transitivePackageName, importedPackagePrefix,

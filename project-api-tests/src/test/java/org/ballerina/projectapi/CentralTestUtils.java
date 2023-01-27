@@ -69,8 +69,8 @@ public class CentralTestUtils {
     static final String BALLERINA_ARTIFACT_TYPE = "bala";
     static final String OUTPUT_NOT_CONTAINS_EXP_MSG = "build output does not contain expected message:";
     static final String PULLED_FROM_CENTRAL_MSG = " pulled from central successfully";
-    static final String UNDERSCORE_SEPARATOR = "_";
-    static final String SLASH_SEPARATOR = "/";
+    static final String PACKAGE_NAME_SEPARATOR = "_";
+    static final String PACKAGE_PATH_SEPARATOR = "/";
 
     /**
      * Generate random package name.
@@ -459,6 +459,6 @@ public class CentralTestUtils {
     public static String getNewDirectoryName(String currentPackageName, String randomSuffix) {
         String packageNameSplit = Arrays.stream(currentPackageName.split("\\.")).
                 filter((b) -> b.startsWith("Package")).toArray()[0].toString();
-        return currentPackageName.replace(packageNameSplit, packageNameSplit + UNDERSCORE_SEPARATOR + randomSuffix);
+        return currentPackageName.replace(packageNameSplit, packageNameSplit + PACKAGE_NAME_SEPARATOR + randomSuffix);
     }
 }
