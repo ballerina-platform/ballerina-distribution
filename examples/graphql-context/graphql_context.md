@@ -2,7 +2,7 @@
 
 The Ballerina `graphql` module allows defining and using a `graphql:Context` object. The `contextInit` field in the `graphql:ServiceConfig` annotation can be used to pass the context initialization function. If it is not provided, a default, empty `context` object will be created per request. When the `graphql:Context` is needed to be accessed, define it as a parameter of the `resource`/`remote` method. Use the `graphql:Context` to pass meta information between the `resource`/`remote` methods used as GraphQL object fields.
 
->**Hint:** When needed, the `graphql:Context` is defined before the parameters of a function as a convention.
+>**Hint:** The `graphql:Context` is defined before the other parameters of a function as a convention.
 
 >**Note:** If the `graphql:Context` is defined as a parameter of a resolver function, it will be accessible inside the resolver. Passing it down is not necessary.
 

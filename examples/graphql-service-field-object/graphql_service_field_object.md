@@ -2,7 +2,7 @@
 
 The Ballerina `graphql` module exposes information on a GraphQL field in a document using the `graphql:Field` object. When the `graphql:field` is needed to be accessed, define it as a parameter of the `resource`/`remote` method that represents a GraphQL field. Use the `graphql:Field` object in scenarios where the information about the fields such as subfield names and field type are needed for optimizing the business logic such as query optimizations.
 
->**Hint:** When needed, the `graphql:Field` is defined before the other parameters of a function as a convention.
+>**Hint:** The `graphql:Field` is defined before the other parameters of a function as a convention.
 
 >**Note:** If the `graphql:Field` is defined as a parameter of a resolver function, it will be accessible inside the resolver. Passing it down is not necessary.
 
