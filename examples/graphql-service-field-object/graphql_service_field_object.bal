@@ -1,9 +1,8 @@
 import ballerina/graphql;
 import ballerina/log;
 
-// Define record types to use as an object in the GraphQL service.
-// Note that the `address` field is optional. This way, the `address` field can be removed from the
-// result if it is not needed.
+// Define the record types to use as an object in the GraphQL service.
+// The `address` field is optional and can be removed from the result if it is not needed.
 type Profile readonly & record {|
     string name;
     int age;
@@ -34,9 +33,9 @@ service /graphql on new graphql:Listener(9090) {
 
     // If the field is needed, it should be defined as the first parameter of the resolver function.
     resource function get profile(graphql:Field 'field) returns Profile[]|error {
-        // Check whether the `address` field is included in the subfiuelds.
+        // Check whether the `address` field is included in the subfields.
         if 'field.getSubfieldNames().indexOf("address") !is int {
-            // Add log message to check the behavior.
+            // Add a log message to check the behavior.
             log:printInfo("Address field is not queried");
             // If the `address` field is not needed, remove the `address` field from the query.
             return from Profile profile in profileTable
@@ -45,7 +44,7 @@ service /graphql on new graphql:Listener(9090) {
                     age: profile.age
                 };
         }
-        // Add log message to check the behavior.
+        // Add a log message to check the behavior.
         log:printInfo("Querying all the fields");
         return from Profile profile in profileTable
             select {

@@ -14,7 +14,7 @@ Then, send the following document to update the name.
 
 ::: code graphql_mutations.graphql :::
 
-To send the document, use the following cURL command.
+To send the document, execute the following cURL command.
 
 ::: out graphql_mutations.client.out :::
 

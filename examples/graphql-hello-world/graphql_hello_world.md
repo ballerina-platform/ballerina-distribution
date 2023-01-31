@@ -14,7 +14,7 @@ Send the following document to the GraphQL endpoint to test the service.
 
 ::: code graphql_hello_world.graphql :::
 
-To send the document, use the following cURL command in a separate terminal.
+To send the document, execute the following cURL command in a separate terminal.
 
 ::: out graphql_hello_world.client.out :::
 

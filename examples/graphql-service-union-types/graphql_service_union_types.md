@@ -12,7 +12,7 @@ Send the following document to the GraphQL endpoint to test the service.
 
 ::: code graphql_service_union_types.graphql :::
 
-To send the document, use the following cURL command in a separate terminal.
+To send the document, execute the following cURL command in a separate terminal.
 
 ::: out graphql_service_union_types.client.out :::
 
