@@ -18,7 +18,7 @@ Send the following document containing the `@skip` directive to test it.
 
 ::: code graphql_directives.1.graphql :::
 
-To send the document, use the following cURL command in a separate terminal.
+To send the document, execute the following cURL command in a separate terminal.
 
 ::: out graphql_directives.1.client.out :::
 
@@ -26,7 +26,7 @@ Then, send the following document containing the `@include` directive.
 
 ::: code graphql_directives.2.graphql :::
 
-To send the document, use the following cURL command.
+To send the document, execute the following cURL command.
 
 ::: out graphql_directives.2.client.out :::
 
@@ -34,7 +34,7 @@ Finally, send the following document with an introspection query to check the de
 
 ::: code graphql_directives.3.graphql :::
 
-To send the document, use the following cURL command.
+To send the document, execute the following cURL command.
 
 ::: out graphql_directives.3.client.out :::
 

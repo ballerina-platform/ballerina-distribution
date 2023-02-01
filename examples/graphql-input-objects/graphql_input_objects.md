@@ -12,7 +12,7 @@ Send the following document to the GraphQL endpoint to test the service.
 
 ::: code graphql_input_objects.graphql :::
 
-To send the document, use the following cURL command in a separate terminal.
+To send the document, execute the following cURL command in a separate terminal.
 
 ::: out graphql_input_objects.client.out :::
 

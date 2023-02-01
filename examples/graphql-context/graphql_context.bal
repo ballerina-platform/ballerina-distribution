@@ -35,8 +35,7 @@ service /graphql on new graphql:Listener(9090) {
         self.profile = {name: "Walter White", age: 51, salary: 737000.00};
     }
 
-    // If the context is needed, it should be defined as the first parameter of the resolver
-    // function.
+    // If the context is needed, it should be defined as a parameter of the resolver function.
     resource function get profile(graphql:Context context) returns Profile|error {
         // Retrieves the `scope` attribute from the context. This will return a `graphql:Error` if
         // the `scope` is not found in the context.

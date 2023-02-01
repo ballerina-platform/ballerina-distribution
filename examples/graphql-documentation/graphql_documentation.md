@@ -12,7 +12,7 @@ Send the following document with an introspection query to test how the document
 
 ::: code graphql_documentation.graphql :::
 
-To send the document, use the following cURL command in a separate terminal.
+To send the document, execute the following cURL command in a separate terminal.
 
 ::: out graphql_documentation.client.out :::
 
