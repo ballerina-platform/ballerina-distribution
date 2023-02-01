@@ -82,6 +82,6 @@ public type Customer_address record {|
 
 public type Customer record {|
     # The customer's address.
-    Customer_address? address?;
+    Customer_address? address = ();
     string name?;
 |};
