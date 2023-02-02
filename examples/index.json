@@ -1552,7 +1552,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Inferring isolated",
+        "name": "Isolated inferring",
         "url": "inferring-isolated",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -1632,7 +1632,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Data driven tests",
+        "name": "Data-driven tests",
         "url": "testerina-data-driven-tests",
         "verifyBuild": false,
         "verifyOutput": false,

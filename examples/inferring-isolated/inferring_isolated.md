@@ -1,4 +1,4 @@
-# Inferring isolated
+# Isolated inferring
 
 `isolated` is a complex feature, which would be a lot for an application developer to understand. A typical Ballerina application consists of a single module that imports multiple library modules. Within a single module, the compiler infers `isolated` qualifiers. An object without mutable fields is inherently `isolated`. It is the application developer's responsibility to use `lock` statements where needed. E.g.,
 

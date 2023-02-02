@@ -1,4 +1,4 @@
-# Data driven tests
+# Data-driven tests
 
 The Ballerina Test framework provides in-built support for data-driven tests. You can specify a function that returns a set of data values as a data-provider to a test function.
 
