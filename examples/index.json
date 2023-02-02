@@ -843,21 +843,21 @@
         "isLearnByExample": true
       },
       {
-        "name": "Create tables with query",
+        "name": "Create tables with a query",
         "url": "create-tables-with-query",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Create maps with query",
+        "name": "Create maps with a query",
         "url": "create-maps-with-query",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Create streams with query",
+        "name": "Create streams with a query",
         "url": "create-streams-with-query",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -871,7 +871,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Iterating over XML with query",
+        "name": "Iterating over XML with a query",
         "url": "iterating-over-xml-with-query",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -885,8 +885,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Destructure records using query",
-        "url": "destructure-records-using-query",
+        "name": "Destructure records using aquery",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -934,7 +933,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Accessing optional JSON elements",
+        "name": "Access optional JSON elements",
         "url": "access-optional-json-elements",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -955,21 +954,21 @@
         "isLearnByExample": true
       },
       {
-        "name": "Converting from table and XML to JSON",
+        "name": "Convert from table and XML to JSON",
         "url": "converting-from-table-and-xml-to-json",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Converting from JSON to user-defined type with langlib functions",
+        "name": "Convert from JSON to user-defined type with langlib functions",
         "url": "converting-from-json-to-user-defined-type-with-langlib-functions",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Casting JSON to user-defined type",
+        "name": "Cast JSON to user-defined type",
         "url": "casting-json-to-user-defined-type",
         "verifyBuild": true,
         "verifyOutput": true,
