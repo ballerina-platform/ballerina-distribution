@@ -1,6 +1,6 @@
 # HTTP client - Redirects
 
-The HTTP client supports redirection. To follow redirects when calling an external HTTP server using the Ballerina HTTP client connector, set `followRedirect` to `true`.
+The `http:Client` supports redirection. If the `http:Response` contains a `redirect` status code with `Location` header, the client internally calls the respective endpoint and returns the successful response. To enable redirection, set `followRedirect` to `true` in the client config.
 
 ::: code http_client_redirects.bal :::
 
@@ -12,5 +12,5 @@ Run the client program by executing the following command.
 ::: out http_client_redirects.out :::
 
 ## Related links
-- [`http` package - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`http` module - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
 - [HTTP client redirect - Specification](/spec/http/#2413-redirect)

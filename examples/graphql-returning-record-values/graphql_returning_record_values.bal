@@ -15,8 +15,8 @@ public type Address record {|
 
 service /graphql on new graphql:Listener(9090) {
 
-    // Ballerina GraphQL resolvers can return `record` values. The record will be mapped to an
-    // `OBJECT` type in the generated GraphQL schema with the same name and fields.
+    // Ballerina GraphQL resolvers can return `record` values. The record will be mapped to a
+    // GraphQL output object type in the generated GraphQL schema with the same name and fields.
     resource function get profile() returns Profile {
         return {
             name: "Walter White",

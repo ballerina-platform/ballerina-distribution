@@ -1,0 +1,6 @@
+$ bal run rest_binding_pattern_in_error_binding_pattern.bal
+Message: Transaction Failure
+Details: {"code":20,"reason":"deadlock condition"}
+Code: 20
+Filtered Details: {"reason":"deadlock condition"}
+All Details: {"code":20,"reason":"deadlock condition"}

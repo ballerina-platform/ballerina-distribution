@@ -7,3 +7,7 @@ The Qualified names in Ballerina modules are expanded into `strings` using the `
 ::: code xmlns_declarations.bal :::
 
 ::: out xmlns_declarations.out :::
+
+## Related links
+- [XML data model](/learn/by-example/xml-data-model/)
+- [XML namespaces](/learn/by-example/xml-namespaces/)

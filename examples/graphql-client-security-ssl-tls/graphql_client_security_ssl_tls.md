@@ -1,8 +1,6 @@
 # GraphQL client - SSL/TLS
 
-A GraphQL client can securely communicate with a GraphQL service via HTTPS connection using SSL. Provide the `graphql:ClientSecureSocket` configurations to the client to initiate an HTTPS connection.
-
-This example shows how to send a GraphQL request securely using SSL/TLS.
+The `graphql:Client` can be configured to communicate through HTTPS by providing a certificate file. The certificate can be provided through the `secureSocket` field of the `graphql:ClientConfiguration`. Use this to secure the communication between the client and the server.
 
 ::: code graphql_client_security_ssl_tls.bal :::
 
@@ -15,4 +13,4 @@ Run the client program by executing the following command.
 
 ## Related links
 - [`graphql:ClientSecureSocket` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/records/ClientSecureSocket)
-- [GraphQL client SSL/TLS - Specification](/spec/graphql/#11321-ssltls)
+- [GraphQL client SSL/TLS - Specification](/spec/graphql/#12321-ssltls)

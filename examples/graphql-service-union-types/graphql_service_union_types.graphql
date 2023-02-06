@@ -1,0 +1,12 @@
+{
+    search(keyword: "Walter") {
+        ... on Profile {
+            name
+            age
+        }
+        ... on Address {
+            number
+            city
+        }
+    }
+}

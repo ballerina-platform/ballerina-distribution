@@ -1,8 +1,6 @@
 # GraphQL client - OAuth2 password grant type
 
-A GraphQL client, which is secured with OAuth2 password grant type can be used to connect to a secured GraphQL service. The client is enriched with the `Authorization: Bearer <token>` header by passing the `graphql:OAuth2PasswordGrantConfig` to the `auth` configuration of the client.
-
-This example shows how to send a GraphQL request with OAuth2 Authentication.
+The `graphQL:Client` can connect to a service that is secured with the OAuth2 password grant type by adding the `Authorization: Bearer <token>` header to each request. The required configurations for this grant type can be specified in the `auth` field of the `graphql:ClientConfiguration`. Use this grant type when you need to exchange the user's credentials for an access token.
 
 ::: code graphql_client_security_oauth2_password_grant_type.bal :::
 
@@ -15,5 +13,5 @@ Run the client program by executing the command below.
 
 ## Related links
 - [`graphql:OAuth2PasswordGrantConfig` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/records/OAuth2PasswordGrantConfig)
-- [`oauth2` package API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)
-- [GraphQL client OAuth2 password grant type - Specification](/spec/graphql/#11242-password-grant-type)
+- [`oauth2` module - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)
+- [GraphQL client OAuth2 password grant type - Specification](/spec/graphql/#12242-password-grant-type)

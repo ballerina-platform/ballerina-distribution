@@ -1,3 +1,2 @@
 $ bal run querying_with_streams.bal
-Input line count: 5
-Non blank line count: 3
+[2,4,6,8,10]

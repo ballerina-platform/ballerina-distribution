@@ -1,3 +1,2 @@
 $ bal run http_client_redirects.bal
-
-Response received: Hello World!
+Response received: [{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]

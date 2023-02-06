@@ -5,3 +5,7 @@ Match statement can be used to match maps. Patterns on the left hand side in a m
 ::: code match_statement_with_maps.bal :::
 
 ::: out match_statement_with_maps.out :::
+
+## Related links
+- [JSON type](/learn/by-example/json-type/)
+- [Match statement](/learn/by-example/match-statement/)

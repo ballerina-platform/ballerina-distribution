@@ -1,0 +1,7 @@
+$ bal run object_value_from_class_definition.bal
+Null
+Alice
+Bob
+Null
+Alice
+Bob

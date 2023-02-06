@@ -1,11 +1,15 @@
 import ballerina/http;
 import ballerina/io;
 
+type Album readonly & record {
+    string title;
+    string artist;
+};
+
 public function main() returns error? {
     http:Client albumClient = check new ("localhost:9090", {
-        // Timeout configuration.
         timeout: 10
     });
-    string payload = check albumClient->/albums;
+    Album[] payload = check albumClient->/albums;
     io:println(payload);
 }

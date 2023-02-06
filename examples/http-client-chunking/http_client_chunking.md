@@ -1,6 +1,6 @@
 # HTTP client - Chunking
 
-The HTTP client can be configured for chunking. By default, the HTTP client sends messages with the `content-length` header. If the message size is larger than the buffer size (8K), messages are chunked. Chunking can be disabled using the client options.
+The HTTP client can be configured for chunking. By default, the HTTP client sends messages with the `content-length` header. If the message size is larger than the buffer size (8K), messages are chunked. Chunking can be disabled using the client configuration. The chunking behavior can be configured as `CHUNKING_AUTO`, `CHUNKING_ALWAYS`, or `CHUNKING_NEVER` only available HTTP/1.1 protocol. When the config is set to `CHUNKING_ALWAYS`, chunking happens irrespective of the response payload size.
 
 ::: code http_client_chunking.bal :::
 
