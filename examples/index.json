@@ -829,14 +829,14 @@
         "isLearnByExample": true
       },
       {
-        "name": "Joining iterable objects",
+        "name": "Join iterable objects",
         "url": "joining-iterable-objects",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Querying tables",
+        "name": "Query tables",
         "url": "querying-tables",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -871,7 +871,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Iterating over XML with a query",
+        "name": "Iterate over XML with a query",
         "url": "iterating-over-xml-with-query",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -891,7 +891,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Querying with streams",
+        "name": "Querying streams",
         "url": "querying-with-streams",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -1552,7 +1552,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Isolated inferring",
+        "name": "Inferring isolated",
         "url": "inferring-isolated",
         "verifyBuild": true,
         "verifyOutput": true,
