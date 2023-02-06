@@ -25,22 +25,4 @@ service on orderListener {
                 log:printInfo(string `Received valid order for ${'order.productName}`);
             };
     }
-
-    // When an error occurs before the `onConsumerRecord` gets invoked,
-    // `onError` function will get invoked.
-    remote function onError(kafka:Error 'error, kafka:Caller caller) returns error? {
-        // Check whether the `error` is a `kafka:PayloadValidationError` and seek pass the
-        // erroneous record.
-        if 'error is kafka:PayloadValidationError {
-            log:printError("Payload validation failed", 'error);
-            // The `kafka:PartitionOffset` related to the erroneous record is provided inside
-            // the `kafka:PayloadValidationError`.
-            check caller->seek({
-                partition: 'error.detail().partition,
-                offset: 'error.detail().offset + 1
-            });
-        } else {
-            log:printError("An error occured", 'error);
-        }
-    }
 }
