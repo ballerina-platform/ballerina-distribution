@@ -3482,7 +3482,7 @@
                 "name": "Read/write CSV with data mapping",
                 "url": "io-csv-datamapping",
                 "verifyBuild": true,
-                "verifyOutput": false,
+                "verifyOutput": true,
                 "isLearnByExample": false
             },
             {
