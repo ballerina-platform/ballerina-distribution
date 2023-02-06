@@ -1,13 +1,10 @@
 # Distributed tracing
 
-Ballerina supports Observability out of the box, and Tracing is one of the three important aspects of
-Observability. To observe Ballerina code, the build time flag `--observability-included` should be given along with the
-`Config.toml` file when starting the service. The `Config.toml` file contains the required runtime configurations related to observability.
+Ballerina supports Observability out of the box, and Tracing is one of the three important aspects of observability. To observe Ballerina code, the `--observability-included` build time flag should be given along with the `Config.toml` file when starting the service. The `Config.toml` file contains the required runtime configurations related to observability.
 
-The developers can trace their code blocks and measure the time incurred during the actual runtime execution.
-They can choose to hook their measurement with the default trace created or can create a completely new trace.
+You can trace the code blocks and measure the time incurred during the actual runtime execution. Also, you can choose to hook the measurement with the default trace created or can create a completely new trace.
 
-For more information about configs and observing applications, see [Observe Ballerina programs](/learn/observe-ballerina-programs/).
+>**Info:** For more information about configs and observing applications, see [Observe Ballerina programs](/learn/observe-ballerina-programs/).
 
 ::: code tracing.bal :::
 
