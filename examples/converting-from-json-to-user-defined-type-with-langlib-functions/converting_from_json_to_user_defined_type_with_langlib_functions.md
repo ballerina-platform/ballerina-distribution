@@ -1,4 +1,4 @@
-# Converting from JSON to user defined type with langlib functions
+# Convert from JSON to user-defined type with langlib functions
 
 The `cloneWithType()` langlib function can be used to convert a value to a user-defined type. Result recursively uses specified type as inherent type of new value. Automatically performs numeric conversions as necessary.
 
