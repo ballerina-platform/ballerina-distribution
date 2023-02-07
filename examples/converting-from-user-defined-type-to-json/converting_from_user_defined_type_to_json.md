@@ -1,4 +1,4 @@
-# Converting from user-defined type to JSON
+# Convert from user-defined type to JSON
 
 Conversion of a `json` value to JSON format is straightforward. Converting from an application-specific, user-defined subtype of `anydata` to `json` is also possible.
 

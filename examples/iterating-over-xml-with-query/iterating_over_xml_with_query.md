@@ -1,4 +1,4 @@
-# Iterating over XML with query
+# Iterate over XML with query
 
 An `XML` value can be iterated by using a query expression. A query expression will iterate over each sequence item.
 
