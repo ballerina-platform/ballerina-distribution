@@ -885,7 +885,8 @@
         "isLearnByExample": true
       },
       {
-        "name": "Destructure records using aquery",
+        "name": "Destructure records using a query",
+        "url": "destructure-records-using-query",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
