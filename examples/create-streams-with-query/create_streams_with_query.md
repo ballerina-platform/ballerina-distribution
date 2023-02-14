@@ -1,4 +1,4 @@
-# Create streams with a query
+# Create stream with query
 
 A query expression can be used to create streams. The query expression should be preceded by the `stream` keyword in this case. If the expected stream type is `stream<T>`, then, the `select` clause must return values belonging to `T`.
 
