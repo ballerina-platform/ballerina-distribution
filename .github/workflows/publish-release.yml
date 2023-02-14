@@ -259,7 +259,7 @@ jobs:
         with:
           dotnet-version: '2.1.x'
       - name: Install GUID Generator
-        run: dotnet tool install -g dotnet-guid
+        run: dotnet tool install -g dotnet-guid --version 0.5.2
       - name: Install Wget
         run: choco install wget --no-progress
       - name: Download Windows Intaller Zip
