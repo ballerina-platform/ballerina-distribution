@@ -1,4 +1,4 @@
-# The `on conflict` clause
+# `on conflict` clause
 
 When constructing a map or a table with a key sequence using a query expression, there can be conflicting keys. The `on conflict` clause can be specified after the `select` clause to handle these cases.
 

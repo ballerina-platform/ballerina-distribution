@@ -1,4 +1,4 @@
-# Limit clause
+# `limit` clause
 
 The `limit` clause limits the number of results from the earlier clauses.
 

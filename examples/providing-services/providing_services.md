@@ -1,4 +1,4 @@
-# Providing services
+# Provide services
 
 Providing services involves the interaction of three main things. 
 
