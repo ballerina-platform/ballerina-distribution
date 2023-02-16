@@ -1,4 +1,4 @@
-# Joining iterable objects
+# Join iterable objects
 
 A `join` clause performs an inner or left outer equijoin. The result is similar to using the nested `from` clauses and `where` clause.
 

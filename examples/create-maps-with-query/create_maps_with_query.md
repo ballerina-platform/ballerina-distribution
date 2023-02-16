@@ -1,4 +1,4 @@
-# Create maps with query
+# Create maps with query expressions
 
 A query expressions can be used to create a map from an iterable value. A query expression should be preceded by the `map` keyword in this case.
 
