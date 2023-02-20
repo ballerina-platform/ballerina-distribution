@@ -3,7 +3,7 @@ name: Daily build (2201.4.x)
 on:
   workflow_dispatch:
   schedule:
-    - cron:  '0 2 * * *'    # 00:00 in LK time (GMT+5:30)
+    - cron:  '0 2 * * *'    # 07:30 in LK time (GMT+5:30)
 
 jobs:
   ubuntu-build:
