@@ -1,0 +1,2 @@
+$ bal run access_optional_json_elements.bal
+First name: John

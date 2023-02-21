@@ -1,10 +1,12 @@
 import ballerina/http;
 
-// An HTTP listener can be configured to accept new connections that are
-// secured via mutual SSL.
-// The `http:ListenerSecureSocket` record provides the SSL-related listener configurations.
-// For details, see https://lib.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket.
-listener http:Listener securedEP = new(9090,
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
+
+// An HTTP listener can be configured to accept new connections that are secured via mutual SSL.
+listener http:Listener securedEP = new (9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -14,20 +16,16 @@ listener http:Listener securedEP = new(9090,
         mutualSsl: {
             verifyClient: http:REQUIRE,
             cert: "../resource/path/to/public.crt"
-        },
-        // Enables the preferred SSL protocol and its versions.
-        protocol: {
-            name: http:TLS,
-            versions: ["TLSv1.2", "TLSv1.1"]
-        },
-        // Configures the preferred ciphers.
-        ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
-
+        }
     }
 );
 
-service /foo on securedEP {
-    resource function get bar() returns string {
-        return "Hello, World!";
+service / on securedEP {
+
+    resource function get albums() returns Album[] {
+        return [
+            {title: "Blue Train", artist: "John Coltrane"},
+            {title: "Jeru", artist: "Gerry Mulligan"}
+        ];
     }
 }

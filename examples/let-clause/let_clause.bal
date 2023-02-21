@@ -1,26 +1,32 @@
 import ballerina/io;
 
-type Person record {
- string first;
- string last;
- int yearOfBirth;
-};
+type Student record {|
+    string first;
+    string last;
+    int mathematics;
+    int english;
+|};
 
 public function main() {
-    Person[] persons = [
-        {first: "Melina", last: "Kodel", yearOfBirth: 1994},
-        {first: "Tom", last: "Riddle", yearOfBirth: 1926}
+    Student[] students = [
+        {first: "Melina", last: "Kodel", mathematics: 79, english: 83},
+        {first: "Tom", last: "Riddle", mathematics: 69, english: 45}
     ];
 
-    string[] names = from var {first, last} in persons
-                     // The `let` clause binds the variables.
-                     let int len1 = first.length()
-                     // The `where` clause provides a way to perform conditional execution.
-                     where len1 > 0
-                     let int len2 = last.length()
-                     where len2 > 0
-                     let string name = first + " " + last
-                     select name;
-                     
+    int[] names = from var student in students
+                  // The `let` clause binds the variables.
+                  let int sum = (student.mathematics + student.english)
+                  where sum > 0
+                  let int avg = sum / 2
+                  select avg;
+
+    io:println(names);
+
+    // The `let` clause supports multiple variable declarations separated by `,`.
+    names = from var student in students
+                   let int sum = (student.mathematics + student.english), int avg = sum / 2
+                   where sum > 0
+                   select avg;
+
     io:println(names);
 }

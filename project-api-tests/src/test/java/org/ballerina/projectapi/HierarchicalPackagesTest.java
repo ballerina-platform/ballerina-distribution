@@ -20,7 +20,6 @@ package org.ballerina.projectapi;
 import org.apache.commons.io.FileUtils;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -35,10 +34,12 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -47,12 +48,14 @@ import static org.ballerina.projectapi.CentralTestUtils.BALLERINA_HOME_DIR;
 import static org.ballerina.projectapi.CentralTestUtils.BALLERINA_TOML;
 import static org.ballerina.projectapi.CentralTestUtils.COMMON_VERSION;
 import static org.ballerina.projectapi.CentralTestUtils.DEPENDENCIES_TOML;
+import static org.ballerina.projectapi.CentralTestUtils.PACKAGE_NAME_SEPARATOR;
+import static org.ballerina.projectapi.CentralTestUtils.PACKAGE_PATH_SEPARATOR;
 import static org.ballerina.projectapi.CentralTestUtils.buildPackageBala;
 import static org.ballerina.projectapi.CentralTestUtils.createSettingToml;
 import static org.ballerina.projectapi.CentralTestUtils.deleteFiles;
-import static org.ballerina.projectapi.CentralTestUtils.deleteTestPackagesFromCentral;
 import static org.ballerina.projectapi.CentralTestUtils.getEnvVariables;
 import static org.ballerina.projectapi.CentralTestUtils.getExecutableJarPath;
+import static org.ballerina.projectapi.CentralTestUtils.getNewDirectoryName;
 import static org.ballerina.projectapi.CentralTestUtils.getString;
 import static org.ballerina.projectapi.CentralTestUtils.testPushPackage;
 import static org.ballerina.projectapi.CentralTestUtils.testPushPackageToLocal;
@@ -68,6 +71,7 @@ public class HierarchicalPackagesTest {
     private Path tempHomeDirectory;
     private Path tempWorkspaceDirectory;
     private Map<String, String> envVariables;
+    private String randomPackageSuffix;
     private String orgName = "bctestorg";
     private String projectPath = "hierarchical-packages";
     private String updatedVersion = "1.0.1";
@@ -91,8 +95,27 @@ public class HierarchicalPackagesTest {
         } catch (URISyntaxException e) {
             Assert.fail("error loading resources");
         }
-        List<String> packageNames = Arrays.asList("PackageH.test", "PackageJ.test", "PackageL.test", "PackageT.test",
+
+        randomPackageSuffix = CentralTestUtils.randomPackageName(6);
+        Set<String> uniquePackageNames = new HashSet<>();
+
+        for (String packageName : tempWorkspaceDirectory.toFile().list()) {
+            File newPackageDirName = new File(tempWorkspaceDirectory.resolve(
+                    getNewDirectoryName(packageName, randomPackageSuffix)).toUri());
+            tempWorkspaceDirectory.resolve(packageName).toFile().renameTo(newPackageDirName);
+            uniquePackageNames.add(Arrays.stream(packageName.split("\\.")).
+                    filter((b) -> b.startsWith("Package")).toArray()[0].toString());
+        }
+        for (String packageName : uniquePackageNames) {
+            String randomPackageName = packageName + PACKAGE_NAME_SEPARATOR + randomPackageSuffix;
+            replaceRandomPackageName(randomPackageName, packageName);
+        }
+
+        List<String> oldPackageNames = Arrays.asList("PackageH.test", "PackageJ.test", "PackageL.test", "PackageT.test",
                 "PackageH.test.mod", "PackageR.test");
+        List<String> packageNames = oldPackageNames.stream()
+                .map(pkg -> getNewDirectoryName(pkg, randomPackageSuffix))
+                .collect(Collectors.toList());
         List<String> versions = Arrays.asList(COMMON_VERSION, COMMON_VERSION, COMMON_VERSION, "1.0.0-beta.1",
                 updatedVersion, COMMON_VERSION);
         for (int i = 0; i < packageNames.size(); i++) {
@@ -101,15 +124,18 @@ public class HierarchicalPackagesTest {
             pushToCentral(packageName, version);
         }
         // Build and push updated Versions to Central
-        packageNames = Arrays.asList("PackageJ.test", "PackageT.test");
+        oldPackageNames = Arrays.asList("PackageJ.test", "PackageT.test");
+        packageNames = oldPackageNames.stream()
+                .map(pkg -> getNewDirectoryName(pkg, randomPackageSuffix))
+                .collect(Collectors.toList());
         List<String> previousVersions = Arrays.asList(COMMON_VERSION, "1.0.0-beta.1");
         for (int i = 0; i < packageNames.size(); i++) {
             String packageName = packageNames.get(i);
             pushUpdatedVersion(previousVersions, i, packageName);
         }
         // Push package to local
-        String localPackageName = "PackageQ.test";
-        if (!CentralTestUtils.isPkgAvailableInCentral(orgName + "/" + localPackageName,
+        String localPackageName = getNewDirectoryName("PackageQ.test", randomPackageSuffix);
+        if (!CentralTestUtils.isPkgAvailableInCentral(orgName + PACKAGE_PATH_SEPARATOR + localPackageName,
                 tempWorkspaceDirectory, envVariables)) {
             // Build the bala for package
             buildPackageBala(tempWorkspaceDirectory, envVariables, localPackageName, orgName, COMMON_VERSION,
@@ -120,8 +146,8 @@ public class HierarchicalPackagesTest {
     }
 
     private void pushToCentral(String packageName, String version) throws IOException, InterruptedException {
-        if (!CentralTestUtils.isPkgAvailableInCentral(orgName + "/" + packageName, tempWorkspaceDirectory,
-                envVariables)) {
+        if (!CentralTestUtils.isPkgAvailableInCentral(orgName + PACKAGE_PATH_SEPARATOR + packageName,
+                tempWorkspaceDirectory, envVariables)) {
             // Build the bala for package
             buildPackageBala(tempWorkspaceDirectory, envVariables, packageName, orgName, version,
                     Collections.emptyList());
@@ -133,9 +159,8 @@ public class HierarchicalPackagesTest {
 
     private void pushUpdatedVersion(List<String> previousVersions, int i, String packageName) throws IOException,
             InterruptedException {
-        if (!CentralTestUtils.isPkgVersionAvailableInCentral(orgName + "/" + packageName, tempWorkspaceDirectory,
-                envVariables,
-                updatedVersion)) {
+        if (!CentralTestUtils.isPkgVersionAvailableInCentral(orgName + PACKAGE_PATH_SEPARATOR + packageName,
+                tempWorkspaceDirectory, envVariables, updatedVersion)) {
             // Update version details in Ballerina.toml
             updateBallerinaToml(packageName, previousVersions.get(i), updatedVersion, "", "");
             // Build the bala for package
@@ -147,10 +172,17 @@ public class HierarchicalPackagesTest {
         }
     }
 
+    private void replaceRandomPackageName(String randomPackageName, String packageName) throws IOException {
+        List<Path> balFiles = CentralTestUtils.getFileListByExtension(tempWorkspaceDirectory, "bal");
+        List<Path> tomlFiles = CentralTestUtils.getFileListByExtension(tempWorkspaceDirectory, "toml");
+        CentralTestUtils.replacePackageName(balFiles, packageName, randomPackageName);
+        CentralTestUtils.replacePackageName(tomlFiles, packageName, randomPackageName);
+    }
+
     @Test(description = "Verify build package behaviour for hierarchical package imports in two consecutive builds.",
     enabled = false)
     public void testConsecutiveBuilds() throws IOException, InterruptedException {
-        String packageName = "PackageI";
+        String packageName = getNewDirectoryName("PackageI.test", randomPackageSuffix);
         // First build
         buildPackage(packageName, new LinkedList<>());
         // Consecutive build with existing `Dependencies.toml` and `build` file
@@ -160,26 +192,22 @@ public class HierarchicalPackagesTest {
     @Test(description = "Verify build package behaviour when there is an updated version for a hierarchical package" +
             " import in Remote Repo.")
     public void testUpdatedVersionInRemote() throws IOException, InterruptedException {
-        String importedPackageName = "PackageJ.test";
-        String packageName = "PackageK";
+        String importedPackageName = getNewDirectoryName("PackageJ.test", randomPackageSuffix);
+        String packageName = getNewDirectoryName("PackageK", randomPackageSuffix);
         // Check whether version in Dependencies.toml is the initial version
-        verifyUpdatedDependencies(packageName, "org = \"" + orgName + "\"\n" +
-                "name = \"" + importedPackageName + "\"\n" +
-                "version = \"" + COMMON_VERSION + "\"");
+        verifyUpdatedDependencies(packageName, getDependencyUpdate(orgName, importedPackageName, COMMON_VERSION));
         // Build package when there is an updated version in Remote Repo
         buildPackage(packageName, new LinkedList<>());
         // Check if version has been updated in Dependencies.toml
-        verifyUpdatedDependencies(packageName, "org = \"" + orgName + "\"\n" +
-                "name = \"" + importedPackageName + "\"\n" +
-                "version = \"" + updatedVersion + "\"");
+        verifyUpdatedDependencies(packageName, getDependencyUpdate(orgName, importedPackageName, updatedVersion));
     }
 
     @Test(description = "When a new module is added and published to remote repo and project is updated to use " +
             "the new module, check if it pulls the latest even when sticky true")
     public void testUpdatedPackage() throws IOException, InterruptedException {
         // Check if specific package version is available in central. If not build and push updated version.
-        String importedPackageName = "PackageL.test";
-        if (!CentralTestUtils.isPkgVersionAvailableInCentral(orgName + "/" + importedPackageName,
+        String importedPackageName = getNewDirectoryName("PackageL.test", randomPackageSuffix);
+        if (!CentralTestUtils.isPkgVersionAvailableInCentral(orgName + PACKAGE_PATH_SEPARATOR + importedPackageName,
                 tempWorkspaceDirectory, envVariables, updatedVersion)) {
             // Add a module to the package
             addNewModule(importedPackageName, "doc.api", "mod.api");
@@ -194,37 +222,31 @@ public class HierarchicalPackagesTest {
             testPushPackage(tempWorkspaceDirectory, importedPackageName, envVariables, orgName, importedPackageName,
                     updatedVersion);
         }
-        String packageName = "PackageM";
+        String packageName = getNewDirectoryName("PackageM", randomPackageSuffix);
         // Check whether version in Dependencies.toml is the initial version
-        verifyUpdatedDependencies(packageName, "org = \"" + orgName + "\"\n" +
-                "name = \"" + importedPackageName + "\"\n" +
-                "version = \"" + COMMON_VERSION + "\"");
+        verifyUpdatedDependencies(packageName, getDependencyUpdate(orgName, importedPackageName, COMMON_VERSION));
         // Import newly added module
         updateImports(packageName, "import " + orgName + "/" + importedPackageName + ".doc.api as _;",
                 "main.bal");
         // Build updated package with sticky
         buildPackage(packageName, new LinkedList<>(Collections.singletonList("--sticky")));
         // Check if version has been updated in Dependencies.toml
-        verifyUpdatedDependencies(packageName, "org = \"" + orgName + "\"\n" +
-                "name = \"" + importedPackageName + "\"\n" +
-                "version = \"" + updatedVersion + "\"");
+        verifyUpdatedDependencies(packageName, getDependencyUpdate(orgName, importedPackageName, updatedVersion));
     }
 
     @Test(description = "Verify whether the correct packages are picked when there are two possible packages" +
             " for an import")
     public void testTwoPossiblePackages() throws IOException, InterruptedException {
         // Check if specific package version is available in central. If not build and push updated version.
-        String importedPackageName = "PackageH.test.mod";
+        String importedPackageName = getNewDirectoryName("PackageH.test.mod", randomPackageSuffix);
         // PackageN has already locked `orgName/PackageH.test:1.0.0`
-        String packageName = "PackageN";
+        String packageName = getNewDirectoryName("PackageN", randomPackageSuffix);
         // Import newly added module in new package `orgName/PackageH.test.mod:1.0.1`
-        updateImports(packageName, "import " + orgName + "/PackageH.test.mod.api.doc as _;", "main.bal");
+        updateImports(packageName, "import " + orgName + "/" + importedPackageName + ".api.doc as _;", "main.bal");
         // Build updated package with sticky
         buildPackage(packageName, new LinkedList<>(Collections.singletonList("--sticky")));
         // Check if version has been updated in Dependencies.toml
-        verifyUpdatedDependencies(packageName, "org = \"" + orgName + "\"\n" +
-                "name = \"" + importedPackageName + "\"\n" +
-                "version = \"" + updatedVersion + "\"");
+        verifyUpdatedDependencies(packageName, getDependencyUpdate(orgName, importedPackageName, updatedVersion));
         // Build package when there is an updated version in Remote Repo
         buildPackage(packageName, new LinkedList<>());
     }
@@ -232,7 +254,7 @@ public class HierarchicalPackagesTest {
     @Test(description = "Verify build package behaviour if hierarchical package needs to be pulled from local " +
             "repository.")
     public void testPackageFromLocal() throws IOException, InterruptedException {
-        String packageName = "PackageR";
+        String packageName = getNewDirectoryName("PackageR", randomPackageSuffix);
         // Create symbolic link for this package in local repository
         Path target = Paths.get(envVariables.get(BALLERINA_HOME_DIR)).resolve("repositories").
                 resolve("local").resolve(BALLERINA_ARTIFACT_TYPE).resolve(orgName);
@@ -255,13 +277,13 @@ public class HierarchicalPackagesTest {
     @Test(description = "Verify build package behaviour when there is an updated version for a transitive " +
             "hierarchical package dependency in Remote Repo.")
     public void testUpdateTransitiveDependency() throws IOException, InterruptedException {
-        String transitivePackagePrefix =  "Transitive.PackageH.test";
+        String transitivePackagePrefix =  getNewDirectoryName("Transitive.PackageH.test", randomPackageSuffix);
         String randomSuffix = CentralTestUtils.randomPackageName(5);
-        String transitivePackageName = transitivePackagePrefix + "_" + randomSuffix;
-        String importedPackagePrefix = "PackageO.test";
-        String importedPackageName = "PackageO.test" + "_" + randomSuffix;
+        String transitivePackageName = transitivePackagePrefix + PACKAGE_NAME_SEPARATOR + randomSuffix;
+        String importedPackagePrefix = getNewDirectoryName("PackageO.test", randomPackageSuffix);
+        String importedPackageName = importedPackagePrefix + PACKAGE_NAME_SEPARATOR + randomSuffix;
 
-        String packageName = "PackageP";
+        String packageName = getNewDirectoryName("PackageP", randomPackageSuffix);
         pushPreRequisites(transitivePackagePrefix, transitivePackageName, importedPackagePrefix,
                 importedPackageName, packageName);
 
@@ -273,18 +295,14 @@ public class HierarchicalPackagesTest {
         // Build the package that uses `importedPackageName` package with sticky true
         buildPackage(packageName, new LinkedList<>(Collections.singletonList("--sticky")));
         // Check the old package version in Dependencies.toml
-        verifyUpdatedDependencies(packageName, "org = \"" + orgName + "\"\n" +
-                "name = \"" + transitivePackageName + "\"\n" +
-                "version = \"" + COMMON_VERSION + "\"");
+        verifyUpdatedDependencies(packageName, getDependencyUpdate(orgName, transitivePackageName, COMMON_VERSION));
 
         // Rebuild after clearing target
         Path targetDir = tempWorkspaceDirectory.resolve(packageName).resolve("target");
         FileUtils.deleteDirectory(targetDir.toFile());
         buildPackage(packageName, new LinkedList<>());
         // Check if version has been updated in Dependencies.toml
-        verifyUpdatedDependencies(packageName, "org = \"" + orgName + "\"\n" +
-                "name = \"" + transitivePackageName + "\"\n" +
-                "version = \"" + updatedVersion + "\"");
+        verifyUpdatedDependencies(packageName, getDependencyUpdate(orgName, transitivePackageName, updatedVersion));
     }
 
     private void pushPreRequisites(String transitivePackagePrefix, String transitivePackageName,
@@ -318,35 +336,29 @@ public class HierarchicalPackagesTest {
     @Test(description = "Verify build package behaviour when there is direct dependency added for another package " +
             "with similar hierarchical name structure as a transitive dependency.")
     public void testTwoPossibleTransitiveDependencies() throws IOException, InterruptedException {
-        String transitivePackageName = "PackageH.test";
-        String directPackageName = "PackageH.test.mod";
-        String packageName = "PackageS";
+        String transitivePackageName = getNewDirectoryName("PackageH.test", randomPackageSuffix);
+        String directPackageName = getNewDirectoryName("PackageH.test.mod", randomPackageSuffix);
+        String packageName = getNewDirectoryName("PackageS", randomPackageSuffix);
         // Build package with transitive dependency to "PackageH.test"
         // PackageS <— PackageR.test <— PackageH.test
         buildPackage(packageName, new LinkedList<>(Collections.emptyList()));
-        verifyUpdatedDependencies(packageName, "org = \"" + orgName + "\"\n" +
-                "name = \"" + transitivePackageName + "\"\n" +
-                "version = \"" + COMMON_VERSION + "\"");
+        verifyUpdatedDependencies(packageName, getDependencyUpdate(orgName, transitivePackageName, COMMON_VERSION));
 
         // Add direct dependency for "PackageH.test.mod" and build
-        updateImports(packageName, "import " + orgName + "/PackageH.test.mod.api.doc as _;", "main.bal");
+        updateImports(packageName, "import " + orgName + "/" + directPackageName + ".api.doc as _;", "main.bal");
         buildPackage(packageName, new LinkedList<>(Collections.emptyList()));
-        verifyUpdatedDependencies(packageName, "org = \"" + orgName + "\"\n" +
-                "name = \"" + directPackageName + "\"\n" +
-                "version = \"" + updatedVersion + "\"");
+        verifyUpdatedDependencies(packageName, getDependencyUpdate(orgName, directPackageName, updatedVersion));
     }
 
     // TODO: This test is disabled due to a bug in Central API. Need to re-enable once issue is fixed.
     @Test(description = "Verify build package behaviour when there is an updated version for a pre-release version " +
             "of a hierarchical package import in Remote Repo.", enabled = false)
     public void testUpdateToPreReleaseVersionInRemote() throws IOException, InterruptedException {
-        String importedPackageName = "PackageT.test";
-        String packageName = "PackageU";
+        String importedPackageName = getNewDirectoryName("PackageT.test", randomPackageSuffix);
+        String packageName = getNewDirectoryName("PackageU", randomPackageSuffix);
         buildPackage(packageName, new LinkedList<>());
         // Check if version has been updated in Dependencies.toml
-        verifyUpdatedDependencies(packageName, "org = \"" + orgName + "\"\n" +
-                "name = \"" + importedPackageName + "\"\n" +
-                "version = \"" + updatedVersion + "\"");
+        verifyUpdatedDependencies(packageName, getDependencyUpdate(orgName, importedPackageName, updatedVersion));
     }
 
     private void buildPackage(String packageName, LinkedList args) throws IOException, InterruptedException {
@@ -405,14 +417,14 @@ public class HierarchicalPackagesTest {
         lines.close();
     }
 
+    private String getDependencyUpdate(String orgName, String packageName, String updatedVersion) {
+        return "org = \"" + orgName + "\"\n" + "name = \"" + packageName + "\"\n" +
+                "version = \"" + updatedVersion + "\"";
+    }
+
     @AfterClass
     private void cleanup() throws IOException {
         deleteFiles(tempHomeDirectory);
         deleteFiles(tempWorkspaceDirectory);
-    }
-
-    @AfterSuite
-    private void cleanupSuite() throws IOException {
-        deleteTestPackagesFromCentral(HierarchicalPackagesTest.class.getName());
     }
 }

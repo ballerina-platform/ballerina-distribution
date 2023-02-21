@@ -1,39 +1,19 @@
-# Client - OAuth2 JWT Bearer grant type
+# gRPC client - OAuth2 JWT bearer grant type 
 
-A client, which is secured with an OAuth2 JWT bearer grant type can be used to connect to a secured service.
-
-The client metadata is enriched with the `Authorization: Bearer <token>` header by passing the `grpc:OAuth2JwtBearerGrantConfig` to the `auth` configuration of the client.
-
->**Info:** For more information on the underlying module, see the [`oauth2` module](https://lib.ballerina.io/ballerina/oauth2/latest/).
-
-## Generate the service definition
-
-1. Create a new Protocol Buffers definition file named `grpc_client.proto` and add the service definition to it.
-
-    ::: code grpc_client.proto :::
-
-2. Run the command below in the Ballerina tools distribution for stub generation.
-
-    ::: out grpc_client.out :::
-
-Once you run the command, the `grpc_client_pb.bal` file is generated inside the stubs directory.
-
->**Info:** For more information on how to use the Ballerina Protocol Buffers tool, see the [Proto To Ballerina](https://ballerina.io/learn/by-example/proto-to-ballerina.html) example.
-
-## Implement and run the client
-
-1. Create a Ballerina package.
-   
-2. Copy the generated `grpc_secured_pb.bal` stub file to the package. For example, if you create a package named `client`, copy the stub file to the `client` package.
-
-3. Create a new `grpc_client_oauth2_jwt_bearer_grant_type.bal` Ballerina file inside the `client` package and add the client implementation.
-
-    >**Tip:** You may need to change the trusted certificate file path in the code below. 
+The `grpc:Client` can connect to a service that is secured with the OAuth2 JWT bearer grant type by enriching the client metadata with the `Authorization: Bearer <token>` header. The required configurations for this grant type can be specified in the `auth` field of the client configuration.
 
    ::: code grpc_client_oauth2_jwt_bearer_grant_type.bal :::
 
-4. Execute the commands below to build and run the `client` package.
+Setting up the client is the same as setting up the simple RPC client with additional configurations. For information on implementing the client, see [gRPC client - Simple RPC](/learn/by-example/grpc-client-simple/).
 
-    >**Info:** As a prerequisite to running the client, start the [OAuth2 service](/learn/by-example/grpc-service-oauth2/).
-   
+## Prerequisites
+- Run the gRPC service given in the [gRPC service - OAuth2](/learn/by-example/grpc-service-oauth2/) example.
+
+Run the client by executing the command below.
+
    ::: out grpc_client_oauth2_jwt_bearer_grant_type.out :::
+
+## Related links
+- [`grpc:OAuth2JwtBearerGrantConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2JwtBearerGrantConfig)
+- [gRPC client OAuth2 authentication and authorization - Specification](/spec/grpc/#5118-client---oauth2)
+- [`oauth2` module - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)

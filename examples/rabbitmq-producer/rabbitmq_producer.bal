@@ -1,14 +1,29 @@
+import ballerina/http;
 import ballerinax/rabbitmq;
 
-public function main() returns error? {
-    // Creates a ballerina RabbitMQ client.
-    rabbitmq:Client newClient = check new (rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
+type Order readonly & record {
+    int orderId;
+    string productName;
+    decimal price;
+    boolean isValid;
+};
 
-    // Declares the queue, MyQueue.
-    check newClient->queueDeclare("MyQueue");
+service / on new http:Listener(9092) {
+    private final rabbitmq:Client orderClient;
 
-    // Publishing messages to an exchange using a routing key.
-    // Publishes the message using newClient and the routing key named MyQueue.
-    string message = "Hello from Ballerina";
-    check newClient->publishMessage({content: message.toBytes(), routingKey: "MyQueue"});
+    function init() returns error? {
+        // Initiate the RabbitMQ client at the start of the service. This will be used
+        // throughout the lifetime of the service.
+        self.orderClient = check new (rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
+    }
+
+    resource function post orders(@http:Payload Order newOrder) returns http:Accepted|error {
+        // Publishes the message using newClient and the routing key named OrderQueue.
+        check self.orderClient->publishMessage({
+            content: newOrder,
+            routingKey: "OrderQueue"
+        });
+
+        return http:ACCEPTED;
+    }
 }

@@ -1,27 +1,27 @@
-import ballerina/io;
+import ballerina/http;
 import ballerinax/mysql;
-import ballerina/sql;
 import ballerinax/mysql.driver as _;
 
-public function main() returns error? {
-    // Runs the prerequisite setup for the example.
-    check initialize();
+type Album record {|
+    string id;
+    string title;
+    string artist;
+    float price;
+|};
 
-    // Initializes the MySQL client. The `mysqlClient` can be reused to access the database throughout the application execution.
-    mysql:Client mysqlClient = check new (user = "root", password = "Test@123", database = "CUSTOMER");
+service / on new http:Listener(8080) {
+    private final mysql:Client db;
 
-    float newCreditLimit = 15000.5;
+    function init() returns error? {
+        // Initiate the mysql client at the start of the service. This will be used
+        // throughout the lifetime of the service.
+        self.db = check new ("localhost", "root", "Test@123", "MUSIC_STORE", 3306);
+    }
 
-    // Execute the query.
-    sql:ExecutionResult result = check mysqlClient->execute(`UPDATE Customers
-                                        SET creditLimit = ${newCreditLimit} WHERE customerId = 1`);
-
-    // Process returned metadata.
-    io:println(`Updated Row count: ${result?.affectedRowCount}`);
-
-    // Closes the MySQL client.
-    check mysqlClient.close();
-
-    // Performs the cleanup after the example.
-    check cleanup();
+    resource function post album(@http:Payload Album album) returns Album|error {
+        _ = check self.db->execute(`
+            INSERT INTO Albums (id, title, artist, price)
+            VALUES (${album.id}, ${album.title}, ${album.artist}, ${album.price});`);
+        return album;
+    }
 }

@@ -1,10 +1,6 @@
-# Service - SSL/TLS
+# HTTP service - SSL/TLS
 
-You can use the HTTPS listener to connect to or interact with an HTTPS client. Provide the `http:ListenerSecureSocket` configurations to the server to expose an HTTPS connection.
-
-For more information on the underlying module, see the [`http` module](https://lib.ballerina.io/ballerina/http/latest/).
-
->**Tip:** You may need to change the certificate file path and private key file path in the code below.
+The `http:Listener` can be configured to communicate through HTTPS by providing a certificate file and a private key file. The certificate and the key can be provided through the `secureSocket` field of the listener configuration. Use this to secure the communication and data transfer between the server and the client.
 
 ::: code http_service_ssl_tls.bal :::
 
@@ -16,4 +12,8 @@ Invoke the service by executing the cURL command below.
 
 ::: out http_service_ssl_tls.client.out :::
 
->**Info:** Alternatively, you can invoke the above service via the [sample SSL/TLS client](/learn/by-example/http-client-ssl-tls/).
+>**Tip:** You can invoke the above service via the [SSL/TLS client](/learn/by-example/http-client-ssl-tls/) example.
+
+## Related links
+- [`http:ListenerSecureSocket` record - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket)
+- [HTTP service SSL/TLS - Specification](/spec/http/#921-listener---ssltls)

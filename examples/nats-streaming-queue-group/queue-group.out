@@ -1,4 +1,0 @@
-$ bal run queue-group.bal
-Message Received to first queue group member: First Message
-Message Received to third queue group member: Second Message
-Message Received to second queue group member: Third Message

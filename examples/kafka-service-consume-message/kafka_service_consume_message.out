@@ -1,0 +1,2 @@
+$ bal run kafka_service.bal
+time = 2022-11-25T14:55:59.366+05:30 level = INFO module = "" message = "Received valid order for Sport shoe"

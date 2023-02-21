@@ -1,10 +1,15 @@
 import ballerina/http;
 
-service / on new http:Listener(9090) {
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
 
-    resource function get hello(http:Request req) returns http:Response|error {
-        http:Client clientEP = check new ("http://httpstat.us");
-        http:Response resp = check clientEP->forward("/200", req);
-        return resp;
+service /info on new http:Listener(9095) {
+
+    resource function get albums(http:Request req) returns Album[]|error {
+        http:Client albumEP = check new ("localhost:9090");
+        Album[] albums = check albumEP->forward("/albums", req);
+        return albums;
     }
 }

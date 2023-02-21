@@ -1,0 +1,2 @@
+$ curl http://localhost:8080/albums/A-123
+{"id":"A-123", "title":"Lemonade", "artist":"Beyonce", "price":18.98}

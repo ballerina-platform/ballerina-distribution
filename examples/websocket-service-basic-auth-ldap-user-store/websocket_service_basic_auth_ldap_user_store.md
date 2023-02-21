@@ -1,17 +1,21 @@
-# Service - Basic Auth LDAP user store
+# WebSocket service - Basic authentication LDAP user store
 
-A WebSocket service can be secured with Basic Auth and by enforcing authorization optionally. Then, it validates the Basic Auth token sent in the `Authorization` header against the provided configurations. This reads data from the configured LDAP. This stores usernames, passwords for authentication, and scopes for authorization.
+The `websocket:Service` can be secured with basic authentication and additionally, scopes can be added to enforce authorization. It validates the basic authentication token sent in the `Authorization` header with the LDAP server. This server stores the usernames and passwords for the authentication and the scopes for the authorization. To engage authentication, set the LDAP related configurations to the `ldapUserStoreConfig` field. To engage authorization, set scopes to the `scopes` field. Both configurations must be given as part of the service configuration.
 
-Ballerina uses the concept of scopes for authorization. A resource declared in a service can be bound to one/more scope(s). In the authorization phase, the scopes of the service are compared against the scope included in the user store for at least one match between the two sets.
-
-For more information on the underlying module, see the [`auth` module](https://lib.ballerina.io/ballerina/auth/latest/).
-
->**Tip:** You may need to change the certificate file path and private key file path in the code below.
+A `401 Unauthorized` response is sent to the client when the authentication fails, and a `403 Forbidden` response is sent to the client when the authorization fails. Use this to authenticate and authorize requests based on LDAP user stores. 
 
 ::: code websocket_service_basic_auth_ldap_user_store.bal :::
 
-Run the service by executing the cURL command below.
+## Prerequisites
+- Run the LDAP server.
+
+Run the service by executing the command below.
 
 ::: out websocket_service_basic_auth_ldap_user_store.server.out :::
 
->**Info:** Alternatively, you can invoke the above service via the [Basic Auth client](/learn/by-example/websocket-client-basic-auth).
+>**Tip:** You can invoke the above service via the [Basic authentication client](/learn/by-example/websocket-client-basic-auth).
+
+## Related Links
+- [`websocket` module - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
+- [`auth` module - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)
+- [WebSocket authentication - Specification](/spec/websocket/#52-authentication-and-authorization)

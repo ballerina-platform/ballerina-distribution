@@ -1,2 +1,2 @@
-$ curl https://localhost:9090/foo/bar --cert /path/to/client-public.crt
-    --key /path/to/client-private.key --cacert /path/to/server-public.crt
+$ curl https://localhost:9090/albums --cert /path/to/client-public.crt --key /path/to/client-private.key --cacert /path/to/server-public.crt
+[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]

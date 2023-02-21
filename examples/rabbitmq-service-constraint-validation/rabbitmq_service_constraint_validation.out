@@ -1,0 +1,4 @@
+$ bal run rabbitmq_service_constraint_validation.bal
+time = 2022-12-05T08:08:36.426+05:30 level = INFO module = "" message = "Received valid order for Sport shoe"
+time = 2022-12-05T08:08:57.313+05:30 level = ERROR module = "" message = "Payload validation failed" error = "Validation failed for \'$.productName:maxLength\' constraint(s)."
+time = 2022-12-05T08:09:19.634+05:30 level = INFO module = "" message = "Received valid order for Sport shoe"

@@ -1,32 +1,56 @@
 import ballerina/io;
 
-// `Person` type allows additional fields with `anydata` values.
-type Person record {
+// `Student` type allows additional fields with `anydata` values.
+type Student record {
     string name;
+    int age;
 };
 
-// `Employee` type allows additional fields with `anydata` values.
-type Employee record {
+type PartTimeStudent record {|
     string name;
-    int id;
-};
-
-// Adds an additional `id` field to `e`.
-Employee e = {
-    name: "James", id: 10
-};
-
-// You can assign an `Employee` type value to a `Person`.
-Person p = e;
-
-Person p2 = {
-    name: "John", "country": "UK"
-};
-
-// You can assign a `Person` type value to a `map`.
-map<anydata> m = p2;
+    int age;
+    // Rest descriptor allows additional fields with `anydata` values
+    // in the `PartTimeStudent` type.
+    anydata...;
+|};
 
 public function main() {
-    io:println(p);
-    io:println(m);
+    // Adds an additional `country` field to `s1`.
+    Student s1 = {
+        name: "John",
+        age: 25,
+        "country": "UK"
+    };
+    io:println(s1);
+
+    // Accesses the `age` field in `s1`.
+    int age = s1.age;
+    io:println(age);
+
+    // Accesses the `country` field in `s1`.
+    anydata country = s1["country"];
+    io:println(country);
+
+    // Adds an additional `studyHours` field to `s2`.
+    PartTimeStudent s2 = {
+        name: "Anne",
+        age: 23,
+        "studyHours": 6
+    };
+
+    // Accesses the `studyHours` field in `s2`.
+    anydata studyHours = s2["studyHours"];
+    io:println(studyHours);
+
+    // Adds an additional `credits` field to `s2`.
+    s2["credits"] = 120.5;
+    io:println(s2);
+
+    // You can assign a `PartTimeStudent` type value to a `Student`.
+    Student s3 = s2;
+    io:println(s3);
+
+    // You can assign a `Person` type value to a `map`.
+    map<anydata> s4 = s3;
+    io:println(s4);
 }

@@ -1,9 +1,16 @@
-# Client
+# WebSocket client - Send/Receive message
 
-The WebSocket client can be used to connect to and interact with a WebSocket server in a synchronous manner. This example demonstrates how to read and write messages using a Ballerina WebSocket client.
-
-For more information on the underlying module, see the [`websocket` module](https://lib.ballerina.io/ballerina/websocket/latest/).
+The `websocket:Client` connects to a given WebSocket server, and then sends and receives WebSocket frames. A `websocket:Client` is created by giving the URL of the server. Once connected, `writeMessage` and `readMessage` synchronous methods are used to send and receive messages. Since they are synchronous methods often used in two different strands. Use this to interact with WebSocket servers or implement user applications based on WebSocket.
 
 ::: code websocket_client.bal :::
 
+## Prerequisites
+- Run the WebSocket service given in the [Send/Receive message](/learn/by-example/websocket-basic-sample/) example.
+
+Run the client program by executing the command below.
+
 ::: out websocket_client.out :::
+
+## Related links
+- [`websocket:Client` client object - API documentation](https://lib.ballerina.io/ballerina/websocket/latest/clients/Client)
+- [WebSocket Client - Specification](/spec/websocket/#4-client)

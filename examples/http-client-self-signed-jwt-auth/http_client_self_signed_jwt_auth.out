@@ -1,2 +1,0 @@
-$ bal run http_client_self_signed_jwt_auth.bal
-Hello, World!

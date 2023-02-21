@@ -1,3 +1,1 @@
-$ bal build service
-
-$ bal run service/target/bin/service.jar
+$ bal run service

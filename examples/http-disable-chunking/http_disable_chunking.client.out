@@ -1,3 +1,0 @@
-$ curl http://localhost:9092/chunkingSample
-{"Outbound request content":"Length-20"}
-

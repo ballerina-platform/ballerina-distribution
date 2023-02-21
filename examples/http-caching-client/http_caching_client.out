@@ -1,0 +1,2 @@
+$ bal run http_caching_client.bal
+Received album: {"title":"Jeru", "artist":"Gerry Mulligan"}

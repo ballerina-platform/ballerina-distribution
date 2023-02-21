@@ -1,0 +1,15 @@
+$ bal run xml_iteration.bal
+<name>Sherlock Holmes</name>
+
+
+<details>
+                      <author>Sir Arthur Conan Doyle</author>
+                      <language>English</language>
+                    </details>
+<name>Sherlock Holmes</name>
+
+
+<details>
+                      <author>Sir Arthur Conan Doyle</author>
+                      <language>English</language>
+                    </details>

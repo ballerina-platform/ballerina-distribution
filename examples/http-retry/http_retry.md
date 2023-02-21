@@ -1,16 +1,16 @@
-# Retry
+# HTTP client - Retry
 
-The HTTP retry client tries sending over the same request to the backend service when there is a network level failure.
-
-For more information on the underlying module, see the [`http` module](https://lib.ballerina.io/ballerina/http/latest/).
+The HTTP retry client tries sending over the same request to the backend service when there is a network-level failure. The retry is configured in the `retryConfig` field of the client configuration.
 
 ::: code http_retry.bal :::
 
-Run the service as follows.
+## Prerequisites
+- Run the HTTP service given in the [Basic REST service](/learn/by-example/http-basic-rest-service/) example.
 
-::: out http_retry.server.out :::
+Run the program by executing the following command.
 
-Invoke the service by executing the following cURL command in a new terminal.
-If the request that was sent to the `retry` resource fails due to an error, the client tries sending the request again.
+::: out http_retry.out :::
 
-::: out http_retry.client.out :::
+## Related links
+- [`http` module - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [HTTP client retry - Specification](/spec/http/#2414-retry)

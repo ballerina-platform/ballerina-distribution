@@ -1,2 +1,3 @@
 $ bal run structured_keys.bal
 {"name":{"first":"Fred","last":"Bloggs"},"salary":200}
+[{"name":{"first":"John","last":"Smith"},"salary":100},{"name":{"first":"Fred","last":"Bloggs"},"salary":200},{"name":{"first":"Sam","last":"Smith"},"salary":23}]

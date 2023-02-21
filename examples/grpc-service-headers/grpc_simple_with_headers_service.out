@@ -1,0 +1,2 @@
+$ bal run service
+time = 2022-11-17T11:55:59.543+05:30 level = INFO module = foo/test message = "Server received header value: 0987654321"

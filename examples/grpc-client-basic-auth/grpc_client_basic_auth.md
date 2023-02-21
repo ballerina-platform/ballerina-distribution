@@ -1,37 +1,19 @@
-# Client - Basic Auth
+# gRPC client - Basic authentication
 
-A client, which is secured with Basic Auth can be used to connect to a secured service.
-
-The client metadata is enriched with the `Authorization: Basic <token>` header by passing the `grpc:CredentialsConfig` for the `auth` configuration of the client.
-
->**Info:** For more information on the underlying module, see the [`auth` module](https://lib.ballerina.io/ballerina/auth/latest).
-
-## Generate the service definition
-
-1. Create a new Protocol Buffers definition file named `grpc_client.proto` and add the service definition to it.
-
-    ::: code grpc_client.proto :::
-
-2. Run the command below in the Ballerina tools distribution for stub generation.
-
-    ::: out grpc_client.out :::
-
-Once you run the command, the `grpc_client_pb.bal` file is generated inside the stubs directory.
-
->**Info:** For more information on how to use the Ballerina Protocol Buffers tool, see the [Proto To Ballerina](https://ballerina.io/learn/by-example/proto-to-ballerina.html) example.
-
-## Implement and run the client
-
-1. Create a Ballerina package.
-   
-2. Copy the generated `grpc_secured_pb.bal` stub file to the package. For example, if you create a package named `client`, copy the stub file to the `client` package.
-   
-3. Create a new `grpc_client_basic_auth.bal` Ballerina file inside the `client` package and add the client implementation.
+The `grpc:Client` can connect to a service that is secured with basic authentication by enriching the client metadata with the `Authorization: Basic <token>` header. The username and password for basic authentication can be specified in the `auth` field of the client configuration.
 
    ::: code grpc_client_basic_auth.bal :::
 
-4. Execute the commands below to build and run the `client` package. You may need to change the trusted certificate file path.
+Setting up the client is the same as setting up the simple RPC client with additional configurations. For information on implementing the client, see [gRPC client - Simple RPC](/learn/by-example/grpc-client-simple/).
 
->**Info:** As a prerequisite to running the client, start the [Basic Auth file user store service](/learn/by-example/grpc-service-basic-auth-file-user-store/) or [Basic Auth LDAP user store service](/learn/by-example/grpc-service-basic-auth-ldap-user-store/).
+## Prerequisites
+- Run the gRPC service given in the [gRPC service - Basic authentication file user store](/learn/by-example/grpc-service-basic-auth-file-user-store/) or [gRPC service - Basic authentication LDAP user store](/learn/by-example/grpc-service-basic-auth-ldap-user-store/) examples.
+
+Run the client by executing the command below.
 
    ::: out grpc_client_basic_auth.out :::
+
+## Related links
+- [`grpc:ClientAuthConfig` type - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/types#ClientAuthConfig)
+- [gRPC client basic authentication - Specification](/spec/grpc/#5115-client---basic-auth)
+- [`auth` module - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)

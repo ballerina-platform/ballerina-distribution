@@ -40,7 +40,7 @@ jobs:
           devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
           ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
           TEST_MODE_ACTIVE: true
-        run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue
+        run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue -x project-api-tests:test
       - name: Create linux-deb
         id: run_installers_deb
         run: |
@@ -68,7 +68,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Ballerina Short Name ZIP
-          path: ballerina/build/distributions/ballerina-22*.zip
+          path: ballerina/build/distributions/ballerina-${{ steps.project-version.outputs.sversion }}.zip
       - name: Archive Linux deb
         uses: actions/upload-artifact@v2
         with:
@@ -205,9 +205,34 @@ jobs:
     outputs:
       project-version: ${{ steps.project-version.outputs.version }}
 
+  project-api-tests:
+
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'ballerina-platform'
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          ref: 2201.2.x
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+      - name: Build with Gradle
+        env:
+          packageUser: ${{ github.actor }}
+          packagePAT: ${{ secrets.GITHUB_TOKEN }}
+          devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
+          ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
+          TEST_MODE_ACTIVE: true
+        run: ./gradlew :project-api-tests:test --stacktrace --scan --console=plain --no-daemon --continue
+
   windows-build:
 
     runs-on: windows-latest
+    if: github.repository_owner == 'ballerina-platform'
 
     steps:
       - name: Checkout Repository
@@ -313,7 +338,7 @@ jobs:
         with:
           dotnet-version: '2.1.x'
       - name: Install GUID Generator
-        run: dotnet tool install -g dotnet-guid
+        run: dotnet tool install -g dotnet-guid --version 0.5.2
       - name: Download Windows Intaller Zip
         uses: actions/download-artifact@v2
         with:

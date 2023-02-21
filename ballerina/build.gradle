@@ -216,6 +216,17 @@ task copyOtherRepos(type: Copy) {
             into "lib/tools/lang-server/lib/"
         }
     }
+
+    /* Architecture Model Generator Artifacts */
+    configurations.devTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+        def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
+        from("${artifactExtractedPath}/architecture-model-generator/libs") {
+            into "bre/lib/"
+        }
+        from("${artifactExtractedPath}/architecture-model-generator/ls-libs") {
+            into "lib/tools/lang-server/lib/"
+        }
+    }
 }
 
 task buildDistRepo(type: JavaExec) {
@@ -225,12 +236,12 @@ task buildDistRepo(type: JavaExec) {
 }
 
 task copyDevToolsCoverageReport(type: Copy) {
-    from "$project.buildDir/target/extracted-distributions/ballerina-dev-tools-zip/testerina-report-tools-${devToolsVersion}.zip"
+    from "$project.buildDir/target/extracted-distributions/ballerina-dev-tools-zip/tests/testerina-report-tools-${devToolsVersion}.zip"
     into "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/lib/tools/coverage"
     rename("testerina-report-tools-${devToolsVersion}.zip", "report.zip")
 }
 task copyDevToolsDocUi(type: Copy) {
-    from zipTree("$project.buildDir/target/extracted-distributions/ballerina-dev-tools-zip/docerina-ui-${devToolsVersion}.zip")
+    from zipTree("$project.buildDir/target/extracted-distributions/ballerina-dev-tools-zip/docs/docerina-ui-${devToolsVersion}.zip")
     into "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/lib/tools/doc-ui"
 }
 
@@ -384,7 +395,7 @@ task packageDistLinux(type: Zip) {
     archiveFileName = "${parentDir}.zip"
     entryCompression = ZipEntryCompression.DEFLATED
 
-    into("${parentDir}/dependencies/jdk-11.0.8+10-jre") {
+    into("${parentDir}/dependencies/jdk-11.0.15+10-jre") {
         from "build/target/extracted-jre-linux"
         fileMode = 0755
     }
@@ -471,7 +482,7 @@ task packageDistMac(type: Zip) {
     archiveFileName = "${parentDir}.zip"
     entryCompression = ZipEntryCompression.DEFLATED
 
-    into("${parentDir}/dependencies/jdk-11.0.8+10-jre") {
+    into("${parentDir}/dependencies/jdk-11.0.15+10-jre") {
         from "build/target/extracted-jre-macos"
         fileMode = 0755
     }
@@ -554,7 +565,7 @@ task packageDistWindows(type: Zip) {
     archiveFileName = "${parentDir}.zip"
     entryCompression = ZipEntryCompression.DEFLATED
 
-    into("${parentDir}/dependencies/jdk-11.0.8+10-jre") {
+    into("${parentDir}/dependencies/jdk-11.0.15+10-jre") {
         from "build/target/extracted-jre-windows"
         fileMode = 0755
     }
@@ -690,7 +701,7 @@ task testExamples() {
             tomlFile.append("\npath = \"$distPath/lib/mysql-connector-java-8.0.21.jar\"\n")
         }
 
-        if (bbe.startsWith('grpc') || (bbe == 'proto-to-ballerina')) {
+        if (bbe.startsWith('grpc')) {
             new File("${distPath}/${bbe}").eachFileRecurse(FILES) {
                 if(it.name.endsWith('.proto')) {
                     def grpcCommand =  "grpc --input ${it.name} --output ."

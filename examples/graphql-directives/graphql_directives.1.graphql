@@ -1,0 +1,6 @@
+{
+    profile {
+        name
+        gender @skip(if: true)
+    }
+}

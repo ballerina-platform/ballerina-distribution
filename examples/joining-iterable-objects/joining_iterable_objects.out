@@ -1,0 +1,3 @@
+$ bal run joining_iterable_objects.bal
+["Anne : 20:10:23","Keith : 10:30:02"]
+["Anne : 20:10:23","Keith : 10:30:02","New user : 12:05:00"]

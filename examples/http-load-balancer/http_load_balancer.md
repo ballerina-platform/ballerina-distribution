@@ -1,15 +1,16 @@
-# Load balancer
+# HTTP client - Load balancer
 
-An HTTP load balancing endpoint is used when the request load needs to be load balanced across a given  set of target endpoints.
-
-For more information on the underlying module,  see the [`http` module](https://lib.ballerina.io/ballerina/http/latest/).
+A load-balancing client is used when the request load needs to be load balanced across a given set of target endpoints. These endpoints are defined in the `targets` field of the load-balancing client configuration.
 
 ::: code http_load_balancer.bal :::
 
-Run the service as follows.
+## Prerequisites
+- Run multiple instances of the HTTP service given in [Basic REST services](/learn/by-example/http-basic-rest-service/) example by changing the ports accordingly.
 
-::: out http_load_balancer.server.out :::
+Run the program by executing the following command.
 
-Invoke the service by executing the following cURL command in a new terminal.
+::: out http_load_balancer.out :::
 
-::: out http_load_balancer.client.out :::
+## Related links
+- [`http` module - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [HTTP service load balance - Specification](/spec/http/#2417-load-balance)

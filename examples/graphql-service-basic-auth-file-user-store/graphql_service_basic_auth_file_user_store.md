@@ -1,34 +1,23 @@
-# Service - Basic Auth file user store
+# GraphQL service - Basic authentication file user store
 
-A GraphQL service can be secured with Basic Auth and optionally by enforcing authorization. Then, it validates the Basic Auth token sent in the `Authorization` header against the provided configurations. This reads data from a file, which has a TOML format. This stores the usernames, passwords for authentication, and scopes for authorization.
+The `graphql:Service` can be secured with basic authentication and additionally, scopes can be added to enforce authorization. It validates the basic authentication token sent in the `Authorization` header against the provided configurations in the `Config.toml` file. The file stores the usernames and passwords for the authentication and the scopes for the authorization. To engage authentication set the default values to the `fileUserStoreConfig` field and add the `Config.toml` file next to the service file. To enable authorization, set the scopes to the `scopes` field. Both configurations must be given as part of the `@graphql:ServiceConfig` annotation.
 
-Ballerina uses the concept of scopes for authorization. A resource declared in a service can be bound to one/more scope(s).
-
-In the authorization phase, the scopes of the service are compared against the scope included in the user store for at least one match between the two sets.
-
-The `Config.toml` file is used to store the usernames, passwords, and scopes. Each user can have a password and optionally assigned scopes as an array.
-
-For more information on the underlying module, see the [`auth` module](https://lib.ballerina.io/ballerina/auth/latest/).
-
->**Tip:** # You may need to change the certificate file path and private key file path in the code below.
+A `graphql:Error` response is sent to the client when the authentication or authorization fails. Use this to authenticate and authorize requests based on user stores.
 
 ::: code graphql_service_basic_auth_file_user_store.bal :::
 
 >**Info:** As a prerequisite to running the service, populate the `Config.toml` file correctly with the user information as shown below.
 
-    ```toml
-    [[ballerina.auth.users]]
-    username="alice"
-    password="password1"
-    scopes=["scope1"]
-    [[ballerina.auth.users]]
-    username="bob"
-    password="password2"
-    scopes=["scope2", "scope3"]
-    ```
+::: code Config.toml :::
 
 Run the service by executing the command below.
 
 ::: out graphql_service_basic_auth_file_user_store.server.out :::
 
->**Info:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client/).
+>**Tip:** You can invoke the above service via the [GraphQL client - Basic authentication](/learn/by-example/graphql-client-security-basic-auth/) example.
+
+## Related links
+- [`graphql:ServiceConfig` annotation - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/annotations#ServiceConfig)
+- [`graphql:FileUserStoreConfigWithScopes` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/records/FileUserStoreConfigWithScopes)
+- [`auth` module - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)
+- [GraphQL service basic authentication - file user store - Specification](/spec/graphql/#12111-basic-authentication---file-user-store)

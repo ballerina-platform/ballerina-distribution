@@ -1,8 +1,6 @@
-# Input types
+# GraphQL service - Input types
 
-GraphQL resources can have input parameters, which will be mapped to input values in the generated GraphQL schema. Currently, the supported input types are: `string`, `int`, `boolean`, `float`, and `enum`. Any of these types can be an optional and/or defaultable types.
-
-For more information on the underlying package, see the [GraphQL package](https://lib.ballerina.io/ballerina/graphql/latest/).
+The Ballerina `graphql` module allows defining input parameters for the GraphQL fields. To define input parameters, add the desired input parameters in the `resource` and `remote` methods in a `graphql:Service` and the subsequent service types.
 
 ::: code graphql_input_types.bal :::
 
@@ -10,6 +8,16 @@ Run the service by executing the following command.
 
 ::: out graphql_input_types.server.out :::
 
-Invoke the service as follows.
+Send the following document to the GraphQL endpoint to test the service.
+
+::: code graphql_input_types.graphql :::
+
+To send the document, execute the following cURL command in a separate terminal.
 
 ::: out graphql_input_types.client.out :::
+
+>**Tip:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client-query-endpoint/).
+
+## Related links
+- [`graphql` module - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
+- [GraphQL input types - Specification](/spec/graphql/#45-input-types)

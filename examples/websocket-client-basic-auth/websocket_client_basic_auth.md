@@ -1,17 +1,17 @@
-# Client - Basic Auth
+# WebSocket client - Basic authentication
 
-A client, which is secured with Basic Auth can be used to connect to a secured service.
-
-The client is enriched with the `Authorization: Basic <token>` header by passing the `websocket:CredentialsConfig` for the `auth` configuration of the client.
-
-For more information on the underlying module, see the [`auth` module](https://lib.ballerina.io/ballerina/auth/latest/).
-
->**Tip:** You may need to change the trusted certificate file path in the code below.
+The `websocket:Client` can connect to a service that is secured with basic authentication by adding the `Authorization: Basic <token>` header to the initial HTTP request. The username and password for basic authentication can be specified in the `auth` field of the client configuration. 
 
 ::: code websocket_client_basic_auth.bal :::
 
+## Prerequisites
+- Run the WebSocket service given in the [Basic authentication file user store](/learn/by-example/websocket-service-basic-auth-file-user-store/) example.
+
 Run the client program by executing the command below.
 
->**Info:** As a prerequisite to running the client, start the [Basic Auth file user store service](/learn/by-example/websocket-service-basic-auth-file-user-store/).
-
 ::: out websocket_client_basic_auth.out :::
+
+## Related Links
+- [`websocket` module - API documentation](https://lib.ballerina.io/ballerina/websocket/latest)
+- [`auth` module - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)
+- [WebSocket authentication - Specification](/spec/websocket/#52-authentication-and-authorization)

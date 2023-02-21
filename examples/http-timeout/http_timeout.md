@@ -1,15 +1,16 @@
-# Timeout
+# HTTP client - Timeout
 
-The Timeout is used to gracefully handle network timeouts, which occur when using the HTTP Client.
-
-For more information on the underlying module, see the [`http` module](https://lib.ballerina.io/ballerina/http/latest/).
+The `timeout` field is used to gracefully handle response delays that could occur due to network problems or the back-end. The client timeout is configured in the `timeout` field of the client configuration in seconds.
 
 ::: code http_timeout.bal :::
 
-Run the service as follows.
+## Prerequisites
+- Run the HTTP service given in the [Basic REST service](/learn/by-example/http-basic-rest-service/) example.
 
-::: out http_timeout.server.out :::
+Run the program by executing the following command.
 
-Invoke the service by executing the following cURL command in a new terminal.
+::: out http_timeout.out :::
 
-::: out http_timeout.client.out :::
+## Related links
+- [`http` module - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
+- [`http` module - Specification](spec/http/)

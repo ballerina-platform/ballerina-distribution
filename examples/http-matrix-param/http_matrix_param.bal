@@ -1,30 +1,30 @@
 import ballerina/http;
 
-service /sample on new http:Listener(9090) {
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
 
-    // The path param is defined as a part of the resource path along with the type and it is extracted from the
-    // request URI.
-    resource function get path/[string foo](http:Request req) returns json {
+table<Album> key(title) albums = table [
+    {title: "Blue-Train", artist: "John-Coltrane"},
+    {title: "Jeru", artist: "Gerry-Mulligan"}
+];
 
-        // Gets the `MatrixParams`.
-        // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#getMatrixParams.
-        map<any> pathMParams = req.getMatrixParams("/sample/path");
-        var a = <string>pathMParams["a"];
-        var b = <string>pathMParams["b"];
-        string pathMatrixStr = string `a=${a}, b=${b}`;
+service / on new http:Listener(9090) {
 
-        map<any> fooMParams = req.getMatrixParams("/sample/path/" + foo);
-        var x = <string>fooMParams["x"];
-        var y = <string>fooMParams["y"];
-        string fooMatrixStr = string `x=${x}, y=${y}`;
-        json matrixJson = {"path": pathMatrixStr, "foo": fooMatrixStr};
+    resource function get albums/[string title](http:Request req) returns Album|http:NotFound|http:BadRequest {
+        Album? album = albums[title];
+        if album is () {
+            return http:NOT_FOUND;
+        }
 
-        // Create a JSON payload with the extracted values.
-        json responseJson = {
-            "pathParam": foo,
-            "matrix": matrixJson
-        };
-        // Send a response with the JSON payload to the client.
-        return responseJson;
+        // Gets the `MatrixParams` of the path `/albums`.
+        map<any> pathMParams = req.getMatrixParams("/albums");
+        string artist = <string>pathMParams["artist"];
+
+        if album.artist != artist {
+            return http:BAD_REQUEST;
+        }
+        return album;
     }
 }
