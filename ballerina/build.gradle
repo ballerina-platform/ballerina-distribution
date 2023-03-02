@@ -404,7 +404,7 @@ task packageDistLinux(type: Zip) {
     archiveFileName = "${parentDir}.zip"
     entryCompression = ZipEntryCompression.DEFLATED
 
-    into("${parentDir}/dependencies/jdk-11.0.15+10-jre") {
+    into("${parentDir}/dependencies/${dependencyJREVersion}") {
         from "build/target/extracted-jre-linux"
         fileMode = 0755
     }
@@ -491,7 +491,7 @@ task packageDistMac(type: Zip) {
     archiveFileName = "${parentDir}.zip"
     entryCompression = ZipEntryCompression.DEFLATED
 
-    into("${parentDir}/dependencies/jdk-11.0.15+10-jre") {
+    into("${parentDir}/dependencies/${dependencyJREVersion}") {
         from "build/target/extracted-jre-macos"
         fileMode = 0755
     }
@@ -574,7 +574,7 @@ task packageDistMacArm(type: Zip) {
     archiveFileName = "${parentDir}.zip"
     entryCompression = ZipEntryCompression.DEFLATED
 
-    into("${parentDir}/dependencies/jdk-11.0.15+10-jre") {
+    into("${parentDir}/dependencies/${dependencyJREVersion}") {
         from "build/target/extracted-jre-macos-arm"
         fileMode = 0755
     }
@@ -657,7 +657,7 @@ task packageDistWindows(type: Zip) {
     archiveFileName = "${parentDir}.zip"
     entryCompression = ZipEntryCompression.DEFLATED
 
-    into("${parentDir}/dependencies/jdk-11.0.15+10-jre") {
+    into("${parentDir}/dependencies/${dependencyJREVersion}") {
         from "build/target/extracted-jre-windows"
         fileMode = 0755
     }
