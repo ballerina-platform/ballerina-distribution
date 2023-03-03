@@ -7,6 +7,6 @@ Use `record {| ... |}` to describe a record type that allows exclusively what is
 ::: out controlling_openness.out :::
 
 ## Related links
-- [Records](/learn/by-example#)
+- [Records](/learn/by-example/records/)
 - [Open Records](/learn/by-example/open-records/)
 - [Maps](/learn/by-example/maps/)
