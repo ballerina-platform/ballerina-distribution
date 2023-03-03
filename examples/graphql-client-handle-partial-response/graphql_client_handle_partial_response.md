@@ -14,7 +14,7 @@ Run the client program by executing the following command.
 ::: out graphql_client_handle_partial_response.out :::
 
 ## Related links
-- [`graphql:Client` client object - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/clients/Client)
-- [`graphql:GenericResponseWithErrors` record - API documentation](https://lib.ballerina.io/ballerina/graphql/1.4.4/records/GenericResponseWithErrors)
-- [`graphql:PayloadBindingError` error - API documentation](https://lib.ballerina.io/ballerina/graphql/1.5.0/errors#PayloadBindingError)
+- [`graphql:Client` client object - API documentation](https://lib.ballerina.io/ballerina/graphql/latest#Client)
+- [`graphql:GenericResponseWithErrors` record - API documentation](https://lib.ballerina.io/ballerina/graphql/1.4.4#GenericResponseWithErrors)
+- [`graphql:PayloadBindingError` error - API documentation](https://lib.ballerina.io/ballerina/graphql/1.5.0#PayloadBindingError)
 - [GraphQL client - Specification](/spec/graphql/#25-client)

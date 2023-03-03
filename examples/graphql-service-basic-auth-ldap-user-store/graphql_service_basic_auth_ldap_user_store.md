@@ -16,7 +16,7 @@ Run the service by executing the command below.
 >**Tip:** You can invoke the above service via the [GraphQL client - Basic authentication](/learn/by-example/graphql-client-security-basic-auth/) example.
 
 ## Related links
-- [`graphql:ServiceConfig` annotation - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/annotations#ServiceConfig)
-- [`graphql:LdapUserStoreConfigWithScopes` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/records/LdapUserStoreConfigWithScopes)
+- [`graphql:ServiceConfig` annotation - API documentation](https://lib.ballerina.io/ballerina/graphql/latest#ServiceConfig)
+- [`graphql:LdapUserStoreConfigWithScopes` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest#LdapUserStoreConfigWithScopes)
 - [`auth` module - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)
 - [GraphQL service basic authentication - LDAP user store - Specification](/spec/graphql/#12112-basic-authentication---ldap-user-store)

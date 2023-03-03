@@ -12,5 +12,5 @@ Run the client program by executing the following command.
 ::: out http_client_file_upload.out :::
 
 ## Related links
-- [`setFileAsPayload()` - API documentation](https://lib.ballerina.io/ballerina/http/latest/classes/Request#setFileAsPayload)
+- [`setFileAsPayload()` - API documentation](https://lib.ballerina.io/ballerina/http/latest#Request#setFileAsPayload)
 - [`http` module - Specification](/spec/http/#2423-resource-methods)

@@ -18,6 +18,6 @@ Run the service by executing the command below.
 >**Tip:** You can invoke the above service via the [gRPC client - Basic authentication](/learn/by-example/grpc-client-basic-auth).
 
 ## Related links
-- [`grpc:LdapUserStoreConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/LdapUserStoreConfig)
+- [`grpc:LdapUserStoreConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest#LdapUserStoreConfig)
 - [gRPC service basic authentication LDAP user store - Specification](/spec/grpc/#5112-service---basic-auth---ldap-user-store)
 - [`auth` module - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)

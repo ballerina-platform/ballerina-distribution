@@ -12,5 +12,5 @@ Run the client program by executing the command below.
 ::: out websocket_client.out :::
 
 ## Related links
-- [`websocket:Client` client object - API documentation](https://lib.ballerina.io/ballerina/websocket/latest/clients/Client)
+- [`websocket:Client` client object - API documentation](https://lib.ballerina.io/ballerina/websocket/latest#Client)
 - [WebSocket Client - Specification](/spec/websocket/#4-client)

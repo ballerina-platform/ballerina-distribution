@@ -7,6 +7,6 @@ A record type that uses either the `{` and `}` delimiters or the `{|` and `|}` d
 ::: out open_records.out :::
 
 ## Related links
-- [Records](/learn/by-example/records/)
+- [Records](/learn/by-example#)
 - [Controlling openness](/learn/by-example/controlling-openness/)
 - [Maps](/learn/by-example/maps/)

@@ -7,6 +7,6 @@ Type inclusion enables you to create a record by combining fields of other recor
 ::: out type_inclusion_for_records.out :::
 
 ## Related links
-- [Records](/learn/by-example/records/)
+- [Records](/learn/by-example#)
 - [Open Records](/learn/by-example/open-records/)
 - [Default values for record fields](/learn/by-example/default-values-for-record-fields/)

@@ -18,6 +18,6 @@ Run the service by executing the command below.
 >**Tip:** You can invoke the above service via the [Basic authentication client](/learn/by-example/http-client-basic-authentication) example.
 
 ## Related links
-- [`http:FileUserStoreConfig` record - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/FileUserStoreConfig)
+- [`http:FileUserStoreConfig` record - API documentation](https://lib.ballerina.io/ballerina/http/latest#FileUserStoreConfig)
 - [`auth` module - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)
 - [HTTP service listener basic authentication file user store - Specification](/spec/http/#9111-listener---basic-auth---file-user-store)

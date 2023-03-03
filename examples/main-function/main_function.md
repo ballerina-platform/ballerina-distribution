@@ -9,4 +9,4 @@ The `main` function can accept the command-line arguments and returns `error` or
 ::: out main_function.out :::
 
 ## Related links
-- [Functions](/learn/by-example/functions/)
+- [Functions](/learn/by-example#)

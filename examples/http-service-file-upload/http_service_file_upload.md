@@ -11,5 +11,5 @@ Run the service as follows.
 >**Tip:** You can invoke the service via the [Client file upload](/learn/by-example/http-client-file-upload) example.
 
 ## Related links
-- [`getByteStream()` - API documentation](https://lib.ballerina.io/ballerina/http/latest/classes/Request#getByteStream)
+- [`getByteStream()` - API documentation](https://lib.ballerina.io/ballerina/http/latest#Request#getByteStream)
 - [`http` module - Specification](/spec/http/#41-service-configuration)

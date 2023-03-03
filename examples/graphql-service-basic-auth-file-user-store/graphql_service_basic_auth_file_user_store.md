@@ -17,7 +17,7 @@ Run the service by executing the command below.
 >**Tip:** You can invoke the above service via the [GraphQL client - Basic authentication](/learn/by-example/graphql-client-security-basic-auth/) example.
 
 ## Related links
-- [`graphql:ServiceConfig` annotation - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/annotations#ServiceConfig)
-- [`graphql:FileUserStoreConfigWithScopes` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/records/FileUserStoreConfigWithScopes)
+- [`graphql:ServiceConfig` annotation - API documentation](https://lib.ballerina.io/ballerina/graphql/latest#ServiceConfig)
+- [`graphql:FileUserStoreConfigWithScopes` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest#FileUserStoreConfigWithScopes)
 - [`auth` module - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)
 - [GraphQL service basic authentication - file user store - Specification](/spec/graphql/#12111-basic-authentication---file-user-store)

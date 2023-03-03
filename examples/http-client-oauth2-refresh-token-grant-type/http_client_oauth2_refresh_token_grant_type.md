@@ -12,6 +12,6 @@ Run the client program by executing the command below.
 ::: out http_client_oauth2_refresh_token_grant_type.out :::
 
 ## Related links
-- [`http:OAuth2RefreshTokenGrantConfig` - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/OAuth2RefreshTokenGrantConfig)
+- [`http:OAuth2RefreshTokenGrantConfig` - API documentation](https://lib.ballerina.io/ballerina/http/latest#OAuth2RefreshTokenGrantConfig)
 - [`oauth2` module - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)
 - [HTTP client grant types - Specification](/spec/http/#9129-client---grant-types-oauth2)

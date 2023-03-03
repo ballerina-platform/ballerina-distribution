@@ -11,5 +11,5 @@ Run the service by executing the following command.
 >**Tip:** You can invoke the above service via the [Caching client](/learn/by-example/http-caching-client) example. In addition to that the [trace logs](/learn/by-example/http-trace-logs/) can be enabled to observe the in and out traffic.
 
 ## Related links
-- [`http:HttpCacheConfig` record - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/HttpCacheConfig)
+- [`http:HttpCacheConfig` record - API documentation](https://lib.ballerina.io/ballerina/http/latest#HttpCacheConfig)
 - [`http:Cache` annotation - Specification](/spec/http/#46-cache-annotation)

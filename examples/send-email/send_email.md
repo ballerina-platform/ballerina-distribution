@@ -12,6 +12,6 @@ Run the SMTP client by executing the following command.
 ::: out send_email.out :::
 
 ## Related links
-- [`email:SmtpClient` client object - API documentation](https://lib.ballerina.io/ballerina/email/latest/clients/SmtpClient)
-- [`email:Message` record - API documentation](https://lib.ballerina.io/ballerina/email/latest/records/Message)
+- [`email:SmtpClient` client object - API documentation](https://lib.ballerina.io/ballerina/email/latest#SmtpClient)
+- [`email:Message` record - API documentation](https://lib.ballerina.io/ballerina/email/latest#Message)
 - [SMTP client - Specification](https://ballerina.io/spec/email/#31-smtp-client)

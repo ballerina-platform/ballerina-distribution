@@ -12,5 +12,5 @@ Run the client program by executing the following command.
 ::: out graphql_client_security_ssl_tls.out :::
 
 ## Related links
-- [`graphql:ClientSecureSocket` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/records/ClientSecureSocket)
+- [`graphql:ClientSecureSocket` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest#ClientSecureSocket)
 - [GraphQL client SSL/TLS - Specification](/spec/graphql/#12321-ssltls)
