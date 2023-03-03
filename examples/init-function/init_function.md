@@ -9,4 +9,4 @@ The `init` function must not be declared as public. Its return type must be a su
 ::: out init_function.out :::
 
 ## Related links
-- [Functions](/learn/by-example#)
+- [Functions](/learn/by-example/functions/)
