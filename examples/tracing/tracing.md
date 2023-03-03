@@ -8,7 +8,7 @@ You can trace the code blocks and measure the time incurred during the actual ru
 
 ::: code tracing.bal :::
 
-Invoke the service using cURL and access [Jaeger UI](`http://localhost:16686`).
+Invoke the service using cURL and access [Jaeger UI](http://localhost:16686).
 
 ::: out tracing.client.out :::
 

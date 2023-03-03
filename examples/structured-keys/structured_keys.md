@@ -7,6 +7,6 @@ Key fields can be structured types as long as they belong to any subtype of plai
 ::: out structured_keys.out :::
 
 ## Related links
-- [Table syntax](/learn/by-example/table-syntax/)
+- [Table syntax](/learn/by-example/table/)
 - [Multiple key fields](/learn/by-example/multiple-key-fields/)
 - [Records](/learn/by-example/records/)
