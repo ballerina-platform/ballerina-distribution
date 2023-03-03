@@ -14,5 +14,5 @@ Here, the `Accept-Encoding` header is not specified.
 ::: out http_compression.client.out :::
 
 ## Related links
-- [`COMPRESSION_ALWAYS` - API documentation](https://lib.ballerina.io/ballerina/http/latest/constants#COMPRESSION_ALWAYS)
+- [`COMPRESSION_ALWAYS` - API documentation](https://lib.ballerina.io/ballerina/http/latest#COMPRESSION_ALWAYS)
 - [HTTP service configuration - Specification](https://ballerina.io/spec/http/#241-client-types)

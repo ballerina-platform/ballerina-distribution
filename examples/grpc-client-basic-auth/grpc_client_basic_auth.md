@@ -14,6 +14,6 @@ Run the client by executing the command below.
    ::: out grpc_client_basic_auth.out :::
 
 ## Related links
-- [`grpc:ClientAuthConfig` type - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/types#ClientAuthConfig)
+- [`grpc:ClientAuthConfig` type - API documentation](https://lib.ballerina.io/ballerina/grpc/latest#ClientAuthConfig)
 - [gRPC client basic authentication - Specification](/spec/grpc/#5115-client---basic-auth)
 - [`auth` module - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)

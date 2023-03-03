@@ -14,7 +14,7 @@ Run the service by executing the command below.
 >**Tip:** You can invoke the above service via the [GraphQL client - OAuth2 password grant type](/learn/by-example/graphql-client-security-oauth2-password-grant-type/) example.
 
 ## Related links
-- [`graphql:ServiceConfig` annotation - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/annotations#ServiceConfig)
+- [`graphql:ServiceConfig` annotation - API documentation](https://lib.ballerina.io/ballerina/graphql/latest#ServiceConfig)
 - [`graphql:OAuth2IntrospectionConfigWithScopes` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest#OAuth2IntrospectionConfigWithScopes)
 - [`oauth2` module - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)
 - [GraphQL service OAuth2 - Specification](/spec/graphql/#12114-oauth2)

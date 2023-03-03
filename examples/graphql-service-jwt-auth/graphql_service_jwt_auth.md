@@ -11,7 +11,7 @@ Run the service by executing the command below.
 >**Tip:** You can invoke the above service via the [GraphQL client - Self-signed JWT authentication](/learn/by-example/graphql-client-security-self-signed-jwt-authentication/) example.
 
 ## Related links
-- [`graphql:ServiceConfig` annotation - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/annotations#ServiceConfig)
+- [`graphql:ServiceConfig` annotation - API documentation](https://lib.ballerina.io/ballerina/graphql/latest#ServiceConfig)
 - [`graphql:JwtValidatorConfigWithScopes` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest#JwtValidatorConfigWithScopes)
 - [`jwt` module - API documentation](https://lib.ballerina.io/ballerina/jwt/latest/)
 - [GraphQL service JWT authentication - Specification](/spec/graphql/#12113-jwt-authentication)
