@@ -12,6 +12,6 @@ Run the client program by executing the command below.
 ::: out http_client_basic_authentication.out :::
 
 ## Related links
-- [`http:CredentialsConfig` - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/CredentialsConfig)
+- [`http:CredentialsConfig` - API documentation](https://lib.ballerina.io/ballerina/http/latest#CredentialsConfig)
 - [`auth` module - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)
 - [HTTP client basic authentication - Specification](/spec/http/#9115-client---basic-auth)

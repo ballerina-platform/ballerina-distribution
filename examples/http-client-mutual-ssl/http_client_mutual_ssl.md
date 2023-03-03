@@ -12,5 +12,5 @@ Run the client program by executing the command below.
 ::: out http_client_mutual_ssl.out :::
 
 ## Related links
-- [`http:ClientSecureSocket` record - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/ClientSecureSocket)
+- [`http:ClientSecureSocket` record - API documentation](https://lib.ballerina.io/ballerina/http/latest#ClientSecureSocket)
 - [HTTP client mutual SSL - Specification](/spec/http/#924-client---mutual-ssl)

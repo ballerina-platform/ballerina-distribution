@@ -17,6 +17,6 @@ Run the service by executing the command below.
 
 ## Related links
 - [`graphql:ServiceConfig` annotation - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/annotations#ServiceConfig)
-- [`graphql:LdapUserStoreConfigWithScopes` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/records/LdapUserStoreConfigWithScopes)
+- [`graphql:LdapUserStoreConfigWithScopes` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest#LdapUserStoreConfigWithScopes)
 - [`auth` module - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)
 - [GraphQL service basic authentication - LDAP user store - Specification](/spec/graphql/#12112-basic-authentication---ldap-user-store)

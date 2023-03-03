@@ -9,4 +9,4 @@ A record that contains optional fields can be destructured. If the optional fiel
 ::: out optional_fields.out :::
 
 ## Related links
-- [Records](/learn/by-example/records/)
+- [Records](/learn/by-example#)

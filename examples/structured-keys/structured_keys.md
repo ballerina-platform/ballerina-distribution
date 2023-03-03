@@ -9,4 +9,4 @@ Key fields can be structured types as long as they belong to any subtype of plai
 ## Related links
 - [Table syntax](/learn/by-example/table-syntax/)
 - [Multiple key fields](/learn/by-example/multiple-key-fields/)
-- [Records](/learn/by-example/records/)
+- [Records](/learn/by-example#)

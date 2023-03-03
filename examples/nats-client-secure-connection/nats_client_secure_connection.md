@@ -16,5 +16,5 @@ Invoke the service by executing the following cURL command in a new terminal.
 ::: out nats_client_secure_connection.client.out :::
 
 ## Related links
-- [`nats:SecureSocket` - API documentation](https://lib.ballerina.io/ballerinax/nats/latest/records/SecureSocket)
+- [`nats:SecureSocket` - API documentation](https://lib.ballerina.io/ballerinax/nats/latest#SecureSocket)
 - [NATS connection- Specification](https://github.com/ballerina-platform/module-ballerinax-nats/blob/master/docs/spec/spec.md#2-connection)

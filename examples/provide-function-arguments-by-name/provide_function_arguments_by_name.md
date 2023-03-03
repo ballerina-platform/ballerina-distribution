@@ -7,5 +7,5 @@ Ballerina allows you to call functions with named arguments, which do not have t
 ::: out provide_function_arguments_by_name.out :::
 
 ## Related links
-- [Functions](/learn/by-example/functions/)
+- [Functions](/learn/by-example#)
 - [Included record parameters](/learn/by-example/included-record-parameters/)

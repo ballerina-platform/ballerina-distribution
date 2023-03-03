@@ -20,6 +20,6 @@ Run the service by executing the command below.
 >**Tip:** You can invoke the above service via the [gRPC client - Basic authentication](/learn/by-example/grpc-client-basic-auth).
 
 ## Related links
-- [`grpc:FileUserStoreConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/FileUserStoreConfig)
+- [`grpc:FileUserStoreConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest#FileUserStoreConfig)
 - [gRPC service basic authentication file user store - Specification](/spec/grpc/#5111-service---basic-auth---file-user-store)
 - [`auth` module - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)

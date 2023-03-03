@@ -13,6 +13,6 @@ Run the service by executing the command below.
 >**Tip:** You can invoke the above service via the [gRPC client - Self signed JWT authentication](/learn/by-example/grpc-client-self-signed-jwt-auth).
 
 ## Related links
-- [`grpc:JwtValidatorConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/JwtValidatorConfig)
+- [`grpc:JwtValidatorConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest#JwtValidatorConfig)
 - [gRPC service JWT authentication - Specification](/spec/grpc/#5113-service---jwt-auth)
 - [`jwt` package - API documentation](https://lib.ballerina.io/ballerina/jwt/latest/)

@@ -12,6 +12,6 @@ Run the client program by executing the following command.
 ::: out graphql_client_security_basic_auth.out :::
 
 ## Related links
-- [`graphql:CredentialsConfig` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/records/CredentialsConfig)
+- [`graphql:CredentialsConfig` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest#CredentialsConfig)
 - [`auth` module - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)
 - [GraphQL client basic authentication - Specification](/spec/graphql/#1221-basic-authentication)

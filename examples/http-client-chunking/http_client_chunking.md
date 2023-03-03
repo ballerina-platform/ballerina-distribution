@@ -12,5 +12,5 @@ Run the client program by executing the following command.
 ::: out http_client_chunking.out :::
 
 ## Related links
-- [`http1Settings` - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/ClientHttp1Settings)
+- [`http1Settings` - API documentation](https://lib.ballerina.io/ballerina/http/latest#ClientHttp1Settings)
 - [HTTP client - Specification](/http/#24-client)

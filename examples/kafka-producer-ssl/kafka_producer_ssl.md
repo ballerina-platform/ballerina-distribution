@@ -18,5 +18,5 @@ Invoke the service by executing the following cURL command in a new terminal.
 ::: out kafka_producer_ssl.curl.out :::
 
 ## Related links
-- [`kafka:SecureSocket` record - API documentation](https://lib.ballerina.io/ballerinax/kafka/latest/records/SecureSocket)
+- [`kafka:SecureSocket` record - API documentation](https://lib.ballerina.io/ballerinax/kafka/latest#SecureSocket)
 - [Kafka secure client - Specification](https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#322-secure-client)
