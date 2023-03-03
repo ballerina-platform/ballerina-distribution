@@ -12,5 +12,5 @@ Run the program by executing the following command. The newly-added file will ap
 ::: out sftp_client_send_file.out :::
 
 ## Related links
-- [`ftp:Client->put` method  - API documentation](https://lib.ballerina.io/ballerina/ftp/latest/clients/Client#put)
+- [`ftp:Client->put` method  - API documentation](https://lib.ballerina.io/ballerina/ftp/latest#Client#put)
 - [SFTP client - Specification](/spec/ftp/#322-secure-client)

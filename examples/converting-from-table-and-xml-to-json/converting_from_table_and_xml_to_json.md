@@ -8,4 +8,4 @@
 
 ## Related links
 - [JSON type](/learn/by-example/json-type)
-- [toJson](https://lib.ballerina.io/ballerina/lang.value/0.0.0/functions#toJson)
+- [toJson](https://lib.ballerina.io/ballerina/lang.value/0.0.0#toJson)

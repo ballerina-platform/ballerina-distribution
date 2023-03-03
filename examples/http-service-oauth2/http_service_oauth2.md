@@ -14,6 +14,6 @@ Run the service by executing the command below.
 >**Tip:** You can invoke the above service via the [OAuth2 JWT Bearer grant type client](/learn/by-example/http-client-oauth2-jwt-bearer-grant-type) example.
 
 ## Related links
-- [`http:OAuth2IntrospectionConfig` - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/OAuth2IntrospectionConfig)
+- [`http:OAuth2IntrospectionConfig` - API documentation](https://lib.ballerina.io/ballerina/http/latest#OAuth2IntrospectionConfig)
 - [`oauth2` module - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)
 - [HTTP service oauth2 - Specification](/spec/http/#9114-listener---oauth2)

@@ -14,7 +14,7 @@ Run the sample code by executing the following command.
 ::: out receive_email_using_client.out :::
 
 ## Related links
-- [`email:ImapClient` client object - API documentation](https://lib.ballerina.io/ballerina/email/latest/clients/ImapClient)
-- [`email:PopClient` client object - API documentation](https://lib.ballerina.io/ballerina/email/latest/clients/PopClient)
+- [`email:ImapClient` client object - API documentation](https://lib.ballerina.io/ballerina/email/latest#ImapClient)
+- [`email:PopClient` client object - API documentation](https://lib.ballerina.io/ballerina/email/latest#PopClient)
 - [IMAP client - Specification](https://ballerina.io/spec/email/#33-imap-client)
 - [POP3 client - Specification](https://ballerina.io/spec/email/#32-pop3-client)

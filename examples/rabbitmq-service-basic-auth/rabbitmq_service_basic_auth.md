@@ -14,5 +14,5 @@ Run the service by executing the following command.
 >**Tip:** You can invoke the above service via the [RabbitMQ client - Basic authentication](/learn/by-example/rabbitmq-client-basic-auth/).
 
 ## Related links
-- [`rabbitmq:Credentials` - API documentation](https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/Credentials)
+- [`rabbitmq:Credentials` - API documentation](https://lib.ballerina.io/ballerinax/rabbitmq/latest#Credentials)
 - [RabbitMQ connection - Specification](https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#2-connection)

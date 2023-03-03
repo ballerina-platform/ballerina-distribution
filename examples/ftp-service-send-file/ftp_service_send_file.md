@@ -14,5 +14,5 @@ Run the program by executing the following command. Each newly added file in the
 >**Tip:** Run the FTP client given in the [FTP client - Send file](/learn/by-example/ftp-client-send-file) example to put a file in the FTP server.
 
 ## Related links
-- [`ftp:Caller` client object  - API documentation](https://lib.ballerina.io/ballerina/ftp/latest/clients/Caller)
+- [`ftp:Caller` client object  - API documentation](https://lib.ballerina.io/ballerina/ftp/latest#Caller)
 - [`ftp:Caller` functions - Specification](/spec/ftp/#52-functions)

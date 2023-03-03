@@ -13,5 +13,5 @@ Invoke the service by executing the following cURL command in a new terminal.
 ::: out http_restrict_by_media_type.client.out :::
 
 ## Related links
-- [`http:ResourceConfig` - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/HttpResourceConfig)
+- [`http:ResourceConfig` - API documentation](https://lib.ballerina.io/ballerina/http/latest#HttpResourceConfig)
 - [HTTP service resource configuration - Specification](/spec/http/#42-resource-configuration)

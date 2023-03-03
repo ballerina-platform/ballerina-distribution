@@ -14,7 +14,7 @@ Run the program by executing the following command.
 >**Tip:** Run the Kafka client given in the [Kafka producer - Produce message](/learn/by-example/kafka-producer-produce-message) example with a valid product name (0 < length <= 30), then with an invalid product name and again with a valid product name.
 
 ## Related links
-- [`kafka:PayloadValidationError` error type - API documentation](https://lib.ballerina.io/ballerinax/kafka/3.4.0/errors#PayloadValidationError)
-- [`kafka:Consumer->seek` function - API documentation](https://lib.ballerina.io/ballerinax/kafka/3.4.0/clients/Consumer#seek)
+- [`kafka:PayloadValidationError` error type - API documentation](https://lib.ballerina.io/ballerinax/kafka/3.4.0#PayloadValidationError)
+- [`kafka:Consumer->seek` function - API documentation](https://lib.ballerina.io/ballerinax/kafka/3.4.0#Consumer#seek)
 - [`kafka` module - Specification](https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md)
 - [`constraint` module - API documentation](https://lib.ballerina.io/ballerina/constraint/latest)

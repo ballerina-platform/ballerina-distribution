@@ -12,6 +12,6 @@ Run the client program by executing the following command.
 ::: out http_client_oauth2_client_credentials_grant_type.out :::
 
 ## Related links
-- [`http:OAuth2ClientCredentialsGrantConfig` record - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/OAuth2ClientCredentialsGrantConfig)
+- [`http:OAuth2ClientCredentialsGrantConfig` record - API documentation](https://lib.ballerina.io/ballerina/http/latest#OAuth2ClientCredentialsGrantConfig)
 - [`oauth2` module - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)
 - [HTTP client OAuth2 client credentials grant type - Specification](/spec/http/#9119-client---grant-types-oauth2)

@@ -16,5 +16,5 @@ Invoke the service by executing the following cURL command in a new terminal.
 ::: out nats_client_basic_auth.client.out :::
 
 ## Related links
-- [`nats:Credentials` - API documentation](https://lib.ballerina.io/ballerinax/nats/latest/records/Credentials)
+- [`nats:Credentials` - API documentation](https://lib.ballerina.io/ballerinax/nats/latest#Credentials)
 - [NATS connection - Specification](https://github.com/ballerina-platform/module-ballerinax-nats/blob/master/docs/spec/spec.md#2-connection)

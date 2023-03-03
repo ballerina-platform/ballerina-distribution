@@ -14,5 +14,5 @@ Run the program by executing the following command.
 >**Tip:** Run the Kafka client given in the [Kafka producer - SSL/TLS](/learn/by-example/kafka-producer-ssl) example to produce some messages to the topic.
 
 ## Related links
-- [`kafka:SecureSocket` record - API documentation](https://lib.ballerina.io/ballerinax/kafka/latest/records/SecureSocket)
+- [`kafka:SecureSocket` record - API documentation](https://lib.ballerina.io/ballerinax/kafka/latest#SecureSocket)
 - [Kafka secure client - Specification](https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#4212-secure-client)

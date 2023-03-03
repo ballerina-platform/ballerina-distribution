@@ -7,5 +7,5 @@ The `map<T>` type is a mapping from strings to `T`. The map syntax is similar to
 ::: out maps.out :::
 
 ## Related links
-- [Records](/learn/by-example/records/)
+- [Records](/learn/by-example#)
 - [Foreach statement](/learn/by-example/foreach-statement/)

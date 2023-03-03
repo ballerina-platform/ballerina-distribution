@@ -11,6 +11,6 @@ Run the service by executing the command below.
 >**Tip:** You can invoke the above service via the [GraphQL client - Mutual SSL](/learn/by-example/graphql-client-security-mutual-ssl/) example.
 
 ## Related links
-- [`graphql:ListenerConfiguration` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/records/ListenerConfiguration)
-- [`graphql:ListenerSecureSocket` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/records/ListenerSecureSocket)
+- [`graphql:ListenerConfiguration` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest#ListenerConfiguration)
+- [`graphql:ListenerSecureSocket` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest#ListenerSecureSocket)
 - [GraphQL service mutual SSL - Specification](/spec/graphql/#12312-mutual-ssl)

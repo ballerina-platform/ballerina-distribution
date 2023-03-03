@@ -7,6 +7,6 @@ Ballerina allows default values for record fields as part of the record's type d
 ::: out default_values_for_record_fields.out :::
 
 ## Related links
-- [Records](/learn/by-example/records/)
+- [Records](/learn/by-example#)
 - [Type inclusion for records](/learn/by-example/type-inclusion-for-records/)
 - [Maps](/learn/by-example/maps/)

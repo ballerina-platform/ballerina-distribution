@@ -12,5 +12,5 @@ Run the secure client program by executing the command below.
 ::: out http_client_ssl_tls.out :::
 
 ## Related links
-- [`http:ClientSecureSocket` record - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/ClientSecureSocket)
+- [`http:ClientSecureSocket` record - API documentation](https://lib.ballerina.io/ballerina/http/latest#ClientSecureSocket)
 - [HTTP client SSL/TLS - Specification](/spec/http/#923-client---ssltls)

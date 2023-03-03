@@ -12,7 +12,7 @@ Run the client program by executing the following command.
 ::: out http_2_0_client_server_push.out :::
 
 ## Related links
-- [`hasPromise()` - API documentation](https://lib.ballerina.io/ballerina/http/latest/clients/Client#hasPromise)
-- [`getNextPromise()` - API documentation](https://lib.ballerina.io/ballerina/http/latest/clients/Client#getNextPromise)
-- [`rejectPromise()` - API documentation](https://lib.ballerina.io/ballerina/http/latest/clients/Client#rejectPromise)
+- [`hasPromise()` - API documentation](https://lib.ballerina.io/ballerina/http/latest#Client#hasPromise)
+- [`getNextPromise()` - API documentation](https://lib.ballerina.io/ballerina/http/latest#Client#getNextPromise)
+- [`rejectPromise()` - API documentation](https://lib.ballerina.io/ballerina/http/latest#Client#rejectPromise)
 - [Push promise and promise response - Specification](/spec/http/#1011-push-promise-and-promise-response)
