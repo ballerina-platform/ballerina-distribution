@@ -16,5 +16,5 @@ Invoke the service by executing the following cURL command in a new terminal.
 ::: out kafka_producer_produce_message.curl.out :::
 
 ## Related links
-- [`kafka:Producer->send` function - API documentation](https://lib.ballerina.io/ballerinax/kafka/latest/clients/Producer#send)
+- [`kafka:Producer->send` function - API documentation](https://lib.ballerina.io/ballerinax/kafka/latest#Producer#send)
 - [`kafka:Producer` functions - Specification](https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#33-functions)

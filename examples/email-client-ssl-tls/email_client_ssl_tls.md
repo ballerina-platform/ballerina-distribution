@@ -14,5 +14,5 @@ Run the sample code by executing the following command.
 ::: out email_client_ssl_tls.out :::
 
 ## Related links
-- [`email:SecureSocket` - API documentation](https://lib.ballerina.io/ballerina/email/latest/records/SecureSocket)
-- [`email:Security` enum - API documentation](https://lib.ballerina.io/ballerina/email/latest/enums/Security)
+- [`email:SecureSocket` - API documentation](https://lib.ballerina.io/ballerina/email/latest#SecureSocket)
+- [`email:Security` enum - API documentation](https://lib.ballerina.io/ballerina/email/latest#Security)

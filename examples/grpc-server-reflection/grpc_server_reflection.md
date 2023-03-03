@@ -15,5 +15,5 @@ After running the service, you can use a tool like [`gRPCurl`](https://github.co
    ::: out grpc_server_reflection_grpcurl.out :::
 
 ## Related links
-- [`grpc:ListenerConfiguration` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/ListenerConfiguration)
+- [`grpc:ListenerConfiguration` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest#ListenerConfiguration)
 - [gRPC service server reflection - Specification](/spec/grpc/#7-grpc-server-reflection)

@@ -23,6 +23,6 @@ Following is a complete cURL request to send a multipart request to upload files
 This will create a directory `uploads` where the service is running, and then saves the `file1.png` inside it.
 
 ## Related links
-- [`graphql:Upload` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/records/Upload)
+- [`graphql:Upload` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest#Upload)
 - [GraphQL multipart request specification](https://github.com/jaydenseric/graphql-multipart-request-spec)
 - [GraphQL file upload - Specification](/spec/graphql/#6-file-upload)

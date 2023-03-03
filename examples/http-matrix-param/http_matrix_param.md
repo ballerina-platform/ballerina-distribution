@@ -13,5 +13,5 @@ Invoke the service by executing the following cURL command in a new terminal.
 ::: out http_matrix_param.client.out :::
 
 ## Related links
-- [`getMatrixParams()` - API documentation](https://lib.ballerina.io/ballerina/http/latest/classes/Request#getMatrixParams)
+- [`getMatrixParams()` - API documentation](https://lib.ballerina.io/ballerina/http/latest#Request#getMatrixParams)
 - [HTTP service matrix parameter - Specification](https://ballerina.io/spec/http/#53-matrix)

@@ -11,5 +11,5 @@ Run the service as follows.
 >**Tip:** You can invoke the above service via the [Cookies client](/learn/by-example/http-cookies-client/) example.
 
 ## Related links
-- [`http:Cookie` - API documentation](https://lib.ballerina.io/ballerina/http/latest/classes/Cookie)
+- [`http:Cookie` - API documentation](https://lib.ballerina.io/ballerina/http/latest#Cookie)
 - [HTTP service cookie - Specification](/spec/http/#2416-cookie)

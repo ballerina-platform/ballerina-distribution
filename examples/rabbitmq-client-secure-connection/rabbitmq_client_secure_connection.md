@@ -16,5 +16,5 @@ Invoke the service by executing the following cURL command in a new terminal.
 ::: out rabbitmq_client_secure_connection.client.out :::
 
 ## Related links
-- [`rabbitmq:SecureSocket` - API documentation](https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/SecureSocket)
+- [`rabbitmq:SecureSocket` - API documentation](https://lib.ballerina.io/ballerinax/rabbitmq/latest#SecureSocket)
 - [RabbitMQ connection - Specification](https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#2-connection)

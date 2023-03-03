@@ -20,5 +20,5 @@ Execute the following cURL command to encode the parts of the body and send a mu
 ::: out http_request_with_multiparts.2.client.out :::
 
 ## Related links
-- [`setBodyParts()` - API documentation](https://lib.ballerina.io/ballerina/http/latest/classes/Request#setBodyParts)
+- [`setBodyParts()` - API documentation](https://lib.ballerina.io/ballerina/http/latest#Request#setBodyParts)
 - [HTTP client supported-multipart-types - Specification](/spec/mime/#3-supported-multipart-types)

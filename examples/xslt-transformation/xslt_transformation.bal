@@ -7,7 +7,7 @@ public function main() returns error? {
     // Gets an `XSL` style sheet represented in an XML value.
     xml xsl = getXsl();
     // Transforms the `XML` content to another format.
-    // For details, see https://lib.ballerina.io/ballerina/xslt/latest/functions#transform.
+    // For details, see https://lib.ballerina.io/ballerina/xslt/latest#transform.
     xml target = check xslt:transform(sourceXml, xsl);
     
     io:println("Transformed XML: ", target);
