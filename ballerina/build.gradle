@@ -961,11 +961,12 @@ def buildStandardLibs = { distPath, stdlibTest, isStageTest, testMinorVersionDif
         if (!isStageTest) {
             exec {
                 workingDir "${distPath}/${stdlibTest}"
-                commandLine 'cmd', '/c', "${distPath}/bin/bal/bal.bat clean"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal/bal.bat init test"
             }
+        } else {
             exec {
                 workingDir "${distPath}/${stdlibTest}"
-                commandLine 'cmd', '/c', "${distPath}/bin/bal/bal.bat init test"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal/bal.bat clean"
             }
         }
         if (testMinorVersionDifference) {
@@ -983,11 +984,12 @@ def buildStandardLibs = { distPath, stdlibTest, isStageTest, testMinorVersionDif
         if (!isStageTest) {
             exec {
                 workingDir "${distPath}/${stdlibTest}"
-                commandLine 'sh', '-c', "${distPath}/bin/bal clean"
+                commandLine 'sh', '-c', "${distPath}/bin/bal init test"
             }
+        } else {
             exec {
                 workingDir "${distPath}/${stdlibTest}"
-                commandLine 'sh', '-c', "${distPath}/bin/bal init test"
+                commandLine 'sh', '-c', "${distPath}/bin/bal clean"
             }
         }
         if (testMinorVersionDifference) {
