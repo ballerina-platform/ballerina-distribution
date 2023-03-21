@@ -1,0 +1,3 @@
+$ bal run int_range.bal
+[0,2,4]
+[5,3,1]
