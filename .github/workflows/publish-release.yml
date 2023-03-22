@@ -293,8 +293,8 @@ jobs:
       - name: Create macos-arm-pkg Installer
         id: run_installers_arm_pkg
         run: |
-          cd installers/mac-arm
-          ./build-ballerina-macos-arm-x64.sh -v ${{ needs.publish-release.outputs.project-version }} -p ./../../
+          cd installers/mac
+          ./build-ballerina-macos-x64.sh -v ${{ needs.publish-release.outputs.project-version }} -p ./../../ -a arm
           echo "Created macos-arm-pkg successfully"
       - name: Generate Hashes
         run: |
