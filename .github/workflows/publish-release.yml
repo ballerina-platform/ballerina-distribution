@@ -288,8 +288,8 @@ jobs:
           asset_path: installers/mac/target/pkg/ballerina-${{ needs.publish-release.outputs.project-version }}-macos-x64.pkg
           asset_content_type: application/octet-stream
       - name: Download MacOS-ARM Intaller Zip
-          run: |
-            wget https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm.zip
+        run: |
+          wget https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm.zip
       - name: Create macos-arm-pkg Installer
         id: run_installers_arm_pkg
         run: |
