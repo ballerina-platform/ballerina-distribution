@@ -12,5 +12,5 @@ Run the client program by executing the following command.
 ::: out rabbitmq_queue_declare.out :::
 
 ## Related links
-- [`rabbitmq:Client` client object - API documentation](https://lib.ballerina.io/ballerinax/rabbitmq/latest/clients/Client)
+- [`rabbitmq:Client` client object - API documentation](https://lib.ballerina.io/ballerinax/rabbitmq/latest#Client)
 - [RabbitMQ exchanges and queues - Specification](https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#3-exchanges-and-queues)

@@ -15,5 +15,5 @@ Invoke the service by executing the cURL command below.
 >**Tip:** You can invoke the above service via the [SSL/TLS client](/learn/by-example/http-client-ssl-tls/) example.
 
 ## Related links
-- [`http:ListenerSecureSocket` record - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket)
+- [`http:ListenerSecureSocket` record - API documentation](https://lib.ballerina.io/ballerina/http/latest#ListenerSecureSocket)
 - [HTTP service SSL/TLS - Specification](/spec/http/#921-listener---ssltls)

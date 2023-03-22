@@ -236,6 +236,17 @@ task copyOtherRepos(type: Copy) {
             into "lib/tools/lang-server/lib/"
         }
     }
+
+    /* GraphQL Model Generator Artifacts */
+    configurations.devTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+        def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
+        from("${artifactExtractedPath}/graphql-model-generator/libs") {
+            into "bre/lib/"
+        }
+        from("${artifactExtractedPath}/graphql-model-generator/ls-libs") {
+            into "lib/tools/lang-server/lib/"
+        }
+    }
 }
 
 task buildDistRepo(type: JavaExec) {
@@ -1067,6 +1078,11 @@ def buildStandardLibs = { distPath, stdlibTest, isStageTest, testMinorVersionDif
                 workingDir "${distPath}/${stdlibTest}"
                 commandLine 'cmd', '/c', "${distPath}/bin/bal/bal.bat init test"
             }
+        } else {
+            exec {
+                workingDir "${distPath}/${stdlibTest}"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal/bal.bat clean"
+            }
         }
         if (testMinorVersionDifference) {
             exec {
@@ -1084,6 +1100,11 @@ def buildStandardLibs = { distPath, stdlibTest, isStageTest, testMinorVersionDif
             exec {
                 workingDir "${distPath}/${stdlibTest}"
                 commandLine 'sh', '-c', "${distPath}/bin/bal init test"
+            }
+        } else {
+            exec {
+                workingDir "${distPath}/${stdlibTest}"
+                commandLine 'sh', '-c', "${distPath}/bin/bal clean"
             }
         }
         if (testMinorVersionDifference) {

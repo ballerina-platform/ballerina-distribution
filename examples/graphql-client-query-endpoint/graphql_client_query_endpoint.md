@@ -12,5 +12,5 @@ Run the client program by executing the following command.
 ::: out graphql_client_query_endpoint.out :::
 
 ## Related links
-- [`graphql:Client` client object - API documentation](https://lib.ballerina.io/ballerina/graphql/latest/clients/Client)
+- [`graphql:Client` client object - API documentation](https://lib.ballerina.io/ballerina/graphql/latest#Client)
 - [GraphQL client - Specification](/spec/graphql/#25-client)

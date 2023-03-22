@@ -14,5 +14,5 @@ Run the client program by executing the following command.
 >**Tip:** You can enable the [trace logs](/learn/by-example/http-trace-logs/) for both service and client to observe the in and out traffic.
 
 ## Related links
-- [`http:CacheConfig` record - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/CacheConfig)
+- [`http:CacheConfig` record - API documentation](https://lib.ballerina.io/ballerina/http/latest#CacheConfig)
 - [HTTP client caching - Specification](/spec/http/#2412-caching)

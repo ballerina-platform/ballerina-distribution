@@ -16,5 +16,5 @@ Invoke the service by executing the following cURL command in a new terminal.
 ::: out rabbitmq_client_basic_auth.client.out :::
 
 ## Related links
-- [`rabbitmq:Credentials` - API documentation](https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/Credentials)
+- [`rabbitmq:Credentials` - API documentation](https://lib.ballerina.io/ballerinax/rabbitmq/latest#Credentials)
 - [RabbitMQ connection - Specification](https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#2-connection)

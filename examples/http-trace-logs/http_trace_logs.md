@@ -20,5 +20,5 @@ Additionally, the following configurations can be added to the `Config.toml` fil
 ::: code Config.toml :::
 
 ## Related links
-- [`http:TraceLogAdvancedConfiguration` record](https://lib.ballerina.io/ballerina/http/latest/records/TraceLogAdvancedConfiguration)
+- [`http:TraceLogAdvancedConfiguration` record](https://lib.ballerina.io/ballerina/http/latest#TraceLogAdvancedConfiguration)
 - [HTTP service trace log - Specification](/spec/http/#823-trace-log)

@@ -15,5 +15,5 @@ Invoke the service by executing the following cURL command in a new terminal.
 >**Tip:** You can invoke the above service via the [Send request/Receive response client](/learn/by-example/http-client-send-request-receive-response/) example.
 
 ## Related links
-- [`http:StatusCodeResponse` type - API documentation](https://lib.ballerina.io/ballerina/http/latest/types#StatusCodeResponse)
+- [`http:StatusCodeResponse` type - API documentation](https://lib.ballerina.io/ballerina/http/latest#StatusCodeResponse)
 - [HTTP service status code response - Specification](/spec/http/#2351-status-code-response)

@@ -14,5 +14,5 @@ Run the client program by executing the following command.
 >**Tip:** You can try out the above consumer via the [RabbitMQ client](/learn/by-example/rabbitmq-producer/).
 
 ## Related links
-- [`rabbitmq:Client` client object - API documentation](https://lib.ballerina.io/ballerinax/rabbitmq/latest/clients/Client)
+- [`rabbitmq:Client` client object - API documentation](https://lib.ballerina.io/ballerinax/rabbitmq/latest#Client)
 - [RabbitMQ pull API - Specification](https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#7-retrieving-individual-messages)

@@ -16,6 +16,6 @@ Run the service by executing the command below.
 >**Tip:** You can invoke the above service via the [Basic authentication client](/learn/by-example/http-client-basic-authentication) example.
 
 ## Related links
-- [`http:LdapUserStoreConfig` - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/LdapUserStoreConfig)
+- [`http:LdapUserStoreConfig` - API documentation](https://lib.ballerina.io/ballerina/http/latest#LdapUserStoreConfig)
 - [`auth` module - API documentation](https://lib.ballerina.io/ballerina/auth/latest/)
 - [HTTP service listener basic authentication LDAP user store - Specification](/spec/http/#9112-listener---basic-auth---ldap-user-store)

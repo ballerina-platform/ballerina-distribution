@@ -12,5 +12,5 @@ Run the client program by executing the following command.
 ::: out http_cookies_client.out :::
 
 ## Related links
-- [`http:Cookie` - API documentation](https://lib.ballerina.io/ballerina/http/latest/classes/Cookie)
+- [`http:Cookie` - API documentation](https://lib.ballerina.io/ballerina/http/latest#Cookie)
 - [HTTP service cookie - Specification](/spec/http/#2416-cookie)

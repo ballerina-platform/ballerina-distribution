@@ -19,6 +19,6 @@ Run the service by executing the command below.
  - [gRPC client - OAuth2 JWT bearer grant type](/learn/by-example/grpc-client-oauth2-jwt-bearer-grant-type)
 
 ## Related links
-- [`grpc:OAuth2IntrospectionConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2IntrospectionConfig)
+- [`grpc:OAuth2IntrospectionConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest#OAuth2IntrospectionConfig)
 - [gRPC service OAuth2 - Specification](/spec/grpc/#5114-service---oauth2)
 - [`oauth2` module - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)

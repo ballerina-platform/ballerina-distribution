@@ -12,6 +12,6 @@ Run the client program by executing the command below.
 ::: out http_client_self_signed_jwt_authentication.out :::
 
 ## Related links
-- [`http:JwtIssuerConfig` record - API documentation](https://lib.ballerina.io/ballerina/http/latest/records/JwtIssuerConfig)
+- [`http:JwtIssuerConfig` record - API documentation](https://lib.ballerina.io/ballerina/http/latest#JwtIssuerConfig)
 - [`jwt` module - API documentation](https://lib.ballerina.io/ballerina/jwt/latest/)
 - [HTTP client self signed JWT authentication - Specification](/spec/http/#9127-client---self-signed-jwt)
