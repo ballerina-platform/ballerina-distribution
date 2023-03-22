@@ -179,13 +179,13 @@ jobs:
           asset_path: ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}-macos.zip
           asset_content_type: application/octet-stream
       - name: Upload MacOS-ARM zip artifacts
-          uses: actions/upload-release-asset@v1
-          env:
-            GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
-          with:
-            upload_url: ${{ steps.create_release.outputs.upload_url }}
-            asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-macos-arm.zip
-            asset_path: ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}-macos-arm.zip
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-macos-arm.zip
+          asset_path: ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}-macos-arm.zip
             asset_content_type: application/octet-stream
       - name: Upload Windows zip artifacts
         uses: actions/upload-release-asset@v1
