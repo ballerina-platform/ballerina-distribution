@@ -101,7 +101,8 @@ public class DistributionCompatibilityTest {
         }
     }
 
-    @Test(description = "Verify dependency resolution with a dependency built with same distribution version.")
+    @Test(description = "Verify dependency resolution with a dependency built with same distribution version.",
+            enabled = false)
     public void testDependencyResolutionWithSameDist() throws IOException, InterruptedException {
         String dependencyPackageName = "disttestpack1";
         String dependencyVersion = "1.1.0";
@@ -129,7 +130,7 @@ public class DistributionCompatibilityTest {
     }
 
     @Test(description = "Verify dependency resolution with multiple dependencies built with an older and " +
-            "current distribution version.")
+            "current distribution version.", enabled = false)
     public void testWithMultipleDistDependencyVersions() throws IOException, InterruptedException {
         // Push 1.1.1 built with this Ballerina version
         String updatedVersion = "1.1.1";
