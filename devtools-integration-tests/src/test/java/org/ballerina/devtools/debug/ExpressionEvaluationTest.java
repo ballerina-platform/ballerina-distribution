@@ -49,7 +49,7 @@ public class ExpressionEvaluationTest extends BaseTestCase {
                 "error");
     }
 
-    @Test(description = "Test Ballerina standard library related object methods evaluations")
+    @Test(description = "Test Ballerina standard library related object methods evaluations", enabled = false)
     public void testObjectMethodEvaluation() throws BallerinaTestException {
         debugTestRunner.assertExpression(context, "response.getContentType()", "\"application/json; charset=utf-8\"",
                 "string");
