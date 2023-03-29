@@ -13,4 +13,4 @@ Run the program by executing the following command.
 
 ## Related links
 - [`http` module - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
-- [`http` module - Specification](spec/http/)
+- [`http` module - Specification](https://ballerina.io/spec/http/)

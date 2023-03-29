@@ -14,6 +14,6 @@ Run the client program by executing the following command.
 >**Tip:** You can invoke the above service via the [RabbitMQ client](/learn/by-example/rabbitmq-producer/) example with a valid product name (0 < length <= 30), then with an invalid product name and again with a valid product name.
 
 ## Related links
-- [`rabbitmq:PayloadValidationError` error type - API documentation](https://lib.ballerina.io/ballerinax/rabbitmq/latest/errors#PayloadValidationError)
+- [`rabbitmq:PayloadValidationError` error type - API documentation](https://lib.ballerina.io/ballerinax/rabbitmq/latest#PayloadValidationError)
 - [`rabbitmq` package - API documentation](https://lib.ballerina.io/ballerinax/rabbitmq/latest)
 - [`constraint` package - API documentation](https://lib.ballerina.io/ballerina/constraint/latest)

@@ -6,7 +6,7 @@ The file location can be specified through an environment variable with the name
 
 An environment variable with the name `BAL_CONFIG_DATA` can be used to provide the configuration file content instead of a separate file.
 
-For more information, see [Configure via TOML syntax](/learn/configure-ballerina-programs/provide-values-to-configurable-variables/provide-via-toml-syntax/).
+For more information, see [Configure via TOML syntax](/learn/configure-ballerina-programs/provide-values-to-configurable-variables/#provide-via-toml-syntax/).
 
 ::: code configuring_via_toml.bal :::
 

@@ -20,5 +20,5 @@ To decode the inbound response with multiparts, execute the following cURL comma
 ::: out http_response_with_multiparts.2.client.out :::
 
 ## Related links
-- [`setBodyParts()` - API documentation](https://lib.ballerina.io/ballerina/mime/latest/classes/Entity#setBodyParts)
+- [`setBodyParts()` - API documentation](https://lib.ballerina.io/ballerina/mime/latest#Entity#setBodyParts)
 - [HTTP service supported-multipart-types - Specification](/spec/mime/#3-supported-multipart-types)

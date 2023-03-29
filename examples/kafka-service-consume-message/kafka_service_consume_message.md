@@ -14,5 +14,5 @@ Run the program by executing the following command.
 >**Tip:** Run the Kafka client given in the [Kafka producer - Produce message](/learn/by-example/kafka-producer-produce-message) example to produce some messages to the topic.
 
 ## Related links
-- [`kafka:Listener` client object - API documentation](https://lib.ballerina.io/ballerinax/kafka/latest/clients/Listener)
+- [`kafka:Listener` client object - API documentation](https://lib.ballerina.io/ballerinax/kafka/latest#Listener)
 - [Kafka service - Specification](https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#432-usage)

@@ -17,5 +17,5 @@ Invoke the service by executing the following cURL command in a new terminal.
 ::: out nats_basic_request.client.out :::
 
 ## Related links
-- [`nats:Client` client object - API documentation](https://lib.ballerina.io/ballerinax/nats/latest/clients/Client)
+- [`nats:Client` client object - API documentation](https://lib.ballerina.io/ballerinax/nats/latest#Client)
 - [NATS publishing - Specification](https://github.com/ballerina-platform/module-ballerinax-nats/blob/master/docs/spec/spec.md#3-publishing)

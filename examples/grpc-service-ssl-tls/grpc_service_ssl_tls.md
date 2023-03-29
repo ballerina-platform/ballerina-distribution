@@ -13,5 +13,5 @@ Run the service by executing the command below.
 >**Tip:** You can invoke the above service via the [gRPC client - SSL/TLS](/learn/by-example/grpc-client-ssl-tls/).
 
 ## Related links
-- [`grpc:ListenerSecureSocket` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/ListenerSecureSocket)
+- [`grpc:ListenerSecureSocket` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest#ListenerSecureSocket)
 - [gRPC service SSL/TLS - Specification](/spec/grpc/#52-ssltls-and-mutual-ssl)

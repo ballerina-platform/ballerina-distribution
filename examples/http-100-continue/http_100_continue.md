@@ -13,4 +13,4 @@ Invoke the service by executing the following cURL commands in a new terminal.
 ::: out http_100_continue.client.out :::
 
 ## Related links
-- [`expects100Continue()` - API documentation](https://lib.ballerina.io/ballerina/http/latest/classes/Request#expects100Continue)
+- [`expects100Continue()` - API documentation](https://lib.ballerina.io/ballerina/http/latest#Request#expects100Continue)

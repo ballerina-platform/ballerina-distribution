@@ -14,5 +14,5 @@ Run the service by executing the following command.
 >**Tip:** You can invoke the above service via the [RabbitMQ client](/learn/by-example/rabbitmq-producer/).
 
 ## Related links
-- [`rabbitmq:Caller` client object - API documentation](https://lib.ballerina.io/ballerinax/rabbitmq/latest/clients/Caller)
+- [`rabbitmq:Caller` client object - API documentation](https://lib.ballerina.io/ballerinax/rabbitmq/latest#Caller)
 - [RabbitMQ client acknowledgements - Specification](https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#8-client-acknowledgements)

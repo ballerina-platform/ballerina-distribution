@@ -14,5 +14,5 @@ Run the service by executing the command below.
 ::: out email_service_ssl_tls.out :::
 
 ## Related links
-- [`email:SecureSocket` - API documentation](https://lib.ballerina.io/ballerina/email/latest/records/SecureSocket)
-- [`email:Security` enum - API documentation](https://lib.ballerina.io/ballerina/email/latest/enums/Security)
+- [`email:SecureSocket` - API documentation](https://lib.ballerina.io/ballerina/email/latest#SecureSocket)
+- [`email:Security` enum - API documentation](https://lib.ballerina.io/ballerina/email/latest#Security)

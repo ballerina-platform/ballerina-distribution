@@ -14,6 +14,6 @@ Run the service by executing the following command.
 >**Tip:** You can invoke the above service via the [NATS client](/learn/by-example/nats-basic-pub/) example with a valid product name (0 < length <= 30), then with an invalid product name and again with a valid product name.
 
 ## Related links
-- [`nats:PayloadValidationError` error type - API documentation](https://lib.ballerina.io/ballerinax/nats/latest/errors#PayloadValidationError)
+- [`nats:PayloadValidationError` error type - API documentation](https://lib.ballerina.io/ballerinax/nats/latest#PayloadValidationError)
 - [`nats` package - Specification](https://github.com/ballerina-platform/module-ballerinax-nats/blob/master/docs/spec/spec.md)
 - [`constraint` package - API documentation](https://lib.ballerina.io/ballerina/constraint/latest)

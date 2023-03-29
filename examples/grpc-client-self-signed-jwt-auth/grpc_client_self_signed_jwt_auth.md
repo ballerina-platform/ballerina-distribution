@@ -14,6 +14,6 @@ Run the client by executing the command below.
    ::: out grpc_client_self_signed_jwt_auth.out :::
 
 ## Related links
-- [`grpc:JwtIssuerConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest/records/JwtIssuerConfig)
+- [`grpc:JwtIssuerConfig` record - API documentation](https://lib.ballerina.io/ballerina/grpc/latest#JwtIssuerConfig)
 - [gRPC client self signed JWT authentication - Specification](/spec/grpc/#5117-client---self-signed-jwt-auth)
 - [`oauth2` module - API documentation](https://lib.ballerina.io/ballerina/oauth2/latest/)

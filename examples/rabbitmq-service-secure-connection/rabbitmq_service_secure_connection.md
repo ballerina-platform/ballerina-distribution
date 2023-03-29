@@ -14,5 +14,5 @@ Run the service by executing the following command.
 >**Tip:** You can invoke the above service via the [RabbitMQ client - SSL/TLS](/learn/by-example/rabbitmq-client-secure-connection/).
 
 ## Related links
-- [`rabbitmq:SecureSocket` - API documentation](https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/SecureSocket)
+- [`rabbitmq:SecureSocket` - API documentation](https://lib.ballerina.io/ballerinax/rabbitmq/latest#SecureSocket)
 - [RabbitMQ connection - Specification](https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#2-connection)
