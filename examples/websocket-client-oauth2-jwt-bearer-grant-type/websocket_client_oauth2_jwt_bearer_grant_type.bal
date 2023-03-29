@@ -7,7 +7,7 @@ public function main() returns error? {
     // passing the `websocket:OAuth2JwtBearerGrantConfig` for the `auth` configuration of the client.
     websocket:Client chatClient = check new ("wss://localhost:9090/foo/bar",
         auth = {
-            tokenUrl: "https://localhost:9445/oauth2/token",
+            tokenUrl: "https://localhost:9445/chat",
             assertion: "eyJhbGciOiJFUzI1NiIsImtpZCI6Ij[...omitted for brevity...]",
             clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
             clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
