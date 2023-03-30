@@ -3,7 +3,7 @@ import ballerina/io;
 
 public function main() returns error? {
 
-    string data = "bob@example.net,alice@example.com,charlie@example.org,david@example.xyz,emma@example.io";
+    string data = "bob@example.net,alice@example.com,charlie@example.org,david@example.xyz,invalid#@example.n%t";
 
     // Split the comma-separated email list.
     string[] emails = re `,`.split(data);
