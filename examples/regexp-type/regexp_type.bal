@@ -27,7 +27,7 @@ public function main() returns error? {
     io:println("Pattern `\\p{Ll}` matches `a`: ", "a".matches(pattern3));
 
     // The `\P` escape sequence is used to get the negation of the pattern.
-    // This pattern will match every non-puncutation character.
+    // Matches every non-puncutation character.
     string:RegExp pattern4 = re `\P{P}`;
     io:println("Pattern `\\p{P}` matches `0`: ", "0".matches(pattern4));
 
