@@ -56,6 +56,9 @@ jobs:
           wget "$baseUrl/ballerina-$LONG_VERSION-linux-x64.deb"
           wget "$baseUrl/ballerina-$LONG_VERSION-linux-x64.rpm"
           wget "$baseUrl/ballerina-$LONG_VERSION-macos-x64.pkg"
+          if [ $UPDATE_NUMBER -ge 5 ]; then
+            wget "$baseUrl/ballerina-$LONG_VERSION-macos-arm-x64.pkg"
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
           packageUser: ${{ secrets.BALLERINA_BOT_USERNAME }}
@@ -84,6 +87,11 @@ jobs:
           echo "	\"linux-installer-size\":\"$linuxInstSize\"," >> $fileName
           echo "	\"macos-installer\":\"ballerina-$LONG_VERSION-macos-x64.pkg\"," >> $fileName
           echo "	\"macos-installer-size\":\"$macInstSize\"," >> $fileName
+          if [ $UPDATE_NUMBER -ge 5 ]; then
+            macArmInstSize=`ls -lh ballerina-$LONG_VERSION-macos-arm-x64.pkg | cut -d " " -f5 | sed 's/M/mb/g'`
+            echo "	\"macos-arm-installer\":\"ballerina-$LONG_VERSION-macos-arm-x64.pkg\"," >> $fileName
+            echo "	\"macos-arm-installer-size\":\"$macArmInstSize\"," >> $fileName
+          fi
           echo "	\"rpm-installer\":\"ballerina-$LONG_VERSION-linux-x64.rpm\"," >> $fileName
           echo "	\"rpm-installer-size\":\"$rpmInstSize\"," >> $fileName
           echo "	\"other-artefacts\":[  " >> $fileName
