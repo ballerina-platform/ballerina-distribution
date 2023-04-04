@@ -34,6 +34,7 @@ configurations {
     ballerinaDistribution
     ballerinaLinuxDistribution
     ballerinaMacDistribution
+    ballerinaMacArmDistribution
     ballerinaWindowsDistribution
     repoBuilder
 }
@@ -47,15 +48,17 @@ def jBallerinaDistributionZip = file("$project.buildDir/distributions/ballerina-
 def ballerinaDistributionZip = file("$project.buildDir/distributions/ballerina-${ballerinaLangVersion}.zip")
 def ballerinaLinuxDistributionZip = file("$project.buildDir/distributions/ballerina-linux-${ballerinaLangVersion}.zip")
 def ballerinaMacDistributionZip = file("$project.buildDir/distributions/ballerina-macos-${ballerinaLangVersion}.zip")
+def ballerinaMacArmDistributionZip = file("$project.buildDir/distributions/ballerina-macos-arm-${ballerinaLangVersion}.zip")
 def ballerinaWindowsDistributionZip = file("$project.buildDir/distributions/ballerina-windows-${ballerinaLangVersion}.zip")
 
 task unpackBallerinaJre(type: Download) {
     group = "unpack_dependencies"
     def jreBaseURL = "https://github.com/ballerina-platform/ballerina-custom-jre/releases/download/${ballerinaJreVersion}"
     src([
-            "${jreBaseURL}/ballerina-jre-linux-${ballerinaJreVersion}.zip",
-            "${jreBaseURL}/ballerina-jre-macos-${ballerinaJreVersion}.zip",
-            "${jreBaseURL}/ballerina-jre-windows-${ballerinaJreVersion}.zip"
+            "${jreBaseURL}/ballerina-jre-linux-64-${ballerinaJreVersion}.zip",
+            "${jreBaseURL}/ballerina-jre-macos-64-${ballerinaJreVersion}.zip",
+            "${jreBaseURL}/ballerina-jre-macos-arm-64-${ballerinaJreVersion}.zip",
+            "${jreBaseURL}/ballerina-jre-windows-64-${ballerinaJreVersion}.zip"
     ])
     onlyIfModified true
     dest "${jreLocation}"
@@ -147,19 +150,25 @@ task unpackBalCommand(type: Copy) {
 
 task extractJreForLinux(type: Copy) {
     group = "extract_jre"
-    from zipTree { "${jreLocation}/ballerina-jre-linux-${ballerinaJreVersion}.zip" }
+    from zipTree { "${jreLocation}/ballerina-jre-linux-64-${ballerinaJreVersion}.zip" }
     into("${buildDir}/target/extracted-jre-linux")
 }
 
 task extractJreForMac(type: Copy) {
     group = "extract_jre"
-    from zipTree { "${jreLocation}/ballerina-jre-macos-${ballerinaJreVersion}.zip" }
+    from zipTree { "${jreLocation}/ballerina-jre-macos-64-${ballerinaJreVersion}.zip" }
     into("${buildDir}/target/extracted-jre-macos")
+}
+
+task extractJreForMacArm(type: Copy) {
+    group = "extract_jre"
+    from zipTree { "${jreLocation}/ballerina-jre-macos-arm-64-${ballerinaJreVersion}.zip" }
+    into("${buildDir}/target/extracted-jre-macos-arm")
 }
 
 task extractJreForWindows(type: Copy) {
     group = "extract_jre"
-    from zipTree { "${jreLocation}/ballerina-jre-windows-${ballerinaJreVersion}.zip" }
+    from zipTree { "${jreLocation}/ballerina-jre-windows-64-${ballerinaJreVersion}.zip" }
     into("${buildDir}/target/extracted-jre-windows")
 }
 
@@ -406,7 +415,7 @@ task packageDistLinux(type: Zip) {
     archiveFileName = "${parentDir}.zip"
     entryCompression = ZipEntryCompression.DEFLATED
 
-    into("${parentDir}/dependencies/jdk-11.0.15+10-jre") {
+    into("${parentDir}/dependencies/${dependencyJREVersion}") {
         from "build/target/extracted-jre-linux"
         fileMode = 0755
     }
@@ -493,7 +502,7 @@ task packageDistMac(type: Zip) {
     archiveFileName = "${parentDir}.zip"
     entryCompression = ZipEntryCompression.DEFLATED
 
-    into("${parentDir}/dependencies/jdk-11.0.15+10-jre") {
+    into("${parentDir}/dependencies/${dependencyJREVersion}") {
         from "build/target/extracted-jre-macos"
         fileMode = 0755
     }
@@ -568,6 +577,89 @@ task packageDistMac(type: Zip) {
     outputs.file ballerinaMacDistributionZip
 }
 
+task packageDistMacArm(type: Zip) {
+    group = "package_distribution"
+    description = 'Ballerina MacOS-ARM Distribution Assembly'
+    baseName = "${distributionName}-${version}"
+    ext { parentDir = "${baseName}-${codeName}-macos-arm" }
+    archiveFileName = "${parentDir}.zip"
+    entryCompression = ZipEntryCompression.DEFLATED
+
+    into("${parentDir}/dependencies/${dependencyJREVersion}") {
+        from "build/target/extracted-jre-macos-arm"
+        fileMode = 0755
+    }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/examples/") {
+        from "${project.rootDir}/examples/"
+        fileMode = 0755
+    }
+
+    // Code2Cloud Extension Examples
+    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
+        from "build/target/extracted-distributions/c2c-examples-zip"
+        exclude "index.js"
+    }
+
+    /* Tools artifacts */
+    into("${parentDir}/distributions/ballerina-${shortVersion}") {
+        from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+        exclude "distributions/ballerina-version"
+        exclude "distributions/installer-version"
+        exclude "/bin/bal.bat"
+        exclude "/bin/version.txt"
+        exclude "/LICENSE"
+    }
+
+    /* Files */
+    into("${parentDir}/distributions/ballerina-${shortVersion}") {
+        from "LICENSE"
+    }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/bin") {
+        from "lib/version.txt"
+        fileMode = 0644
+        filter(ReplaceTokens, tokens: [version: version])
+    }
+    into("${parentDir}/distributions") {
+        from "../resources/tools/distributions/ballerina-version"
+        fileMode = 0644
+        filter(ReplaceTokens, tokens: [version: shortVersion])
+    }
+    into("${parentDir}/distributions") {
+        from "../resources/tools/distributions/installer-version"
+        fileMode = 0644
+        filter(ReplaceTokens, tokens: [uuid: installerVersion])
+    }
+    into("${parentDir}/bin") {
+        from "build/target/ballerina-command-${ballerinaCommandVersion}/bin/bal"
+        fileMode = 775
+        filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
+    }
+    into("${parentDir}/lib") {
+        from "build/target/ballerina-command-${ballerinaCommandVersion}" +
+                "/lib/ballerina-command-${ballerinaCommandVersion}.jar"
+        fileMode = 0775
+    }
+    into("${parentDir}/scripts") {
+        from "build/target/ballerina-command-${ballerinaCommandVersion}/scripts/bal_completion.bash"
+        fileMode = 775
+    }
+    into("${parentDir}/scripts") {
+        from "build/target/ballerina-command-${ballerinaCommandVersion}/scripts/_bal"
+        fileMode = 775
+    }
+
+    /* Dependencies */
+    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
+        from configurations.exten
+    }
+
+    doLast {
+        println 'Ballerina MacOS-ARM Distribution Packaged'
+    }
+
+    outputs.file ballerinaMacArmDistributionZip
+}
+
 task packageDistWindows(type: Zip) {
     group = "package_distribution"
     description = 'Ballerina Windows Distribution Assembly'
@@ -576,7 +668,7 @@ task packageDistWindows(type: Zip) {
     archiveFileName = "${parentDir}.zip"
     entryCompression = ZipEntryCompression.DEFLATED
 
-    into("${parentDir}/dependencies/jdk-11.0.15+10-jre") {
+    into("${parentDir}/dependencies/${dependencyJREVersion}") {
         from "build/target/extracted-jre-windows"
         fileMode = 0755
     }
@@ -652,6 +744,7 @@ artifacts {
     ballerinaDistribution file: ballerinaDistributionZip, builtBy: packageDistZip
     ballerinaLinuxDistribution file: ballerinaLinuxDistributionZip, builtBy: packageDistLinux
     ballerinaMacDistribution file: ballerinaMacDistributionZip, builtBy: packageDistMac
+    ballerinaMacArmDistribution file: ballerinaMacArmDistributionZip, builtBy: packageDistMacArm
     ballerinaWindowsDistribution file: ballerinaWindowsDistributionZip, builtBy: packageDistWindows
 }
 
@@ -1365,7 +1458,8 @@ generateCache.dependsOn copyDevToolsDocUi
 /* Extract JRE */
 extractJreForLinux.dependsOn unpackBalCommand
 extractJreForMac.dependsOn extractJreForLinux
-extractJreForWindows.dependsOn extractJreForMac
+extractJreForMacArm.dependsOn extractJreForMac
+extractJreForWindows.dependsOn extractJreForMacArm
 
 copyOtherRepos.dependsOn extractJreForWindows
 copyDevToolsCoverageReport.dependsOn copyOtherRepos
@@ -1382,7 +1476,8 @@ packageDist.dependsOn generateCache
 packageDistZip.dependsOn packageDist
 packageDistLinux.dependsOn packageDistZip
 packageDistMac.dependsOn packageDistLinux
-packageDistWindows.dependsOn packageDistMac
+packageDistMacArm.dependsOn packageDistMac
+packageDistWindows.dependsOn packageDistMacArm
 unzipDistForTests.dependsOn packageDistZip
 unpackStdLibs.dependsOn unpackBallerinaJre
 unpackStdLibs.dependsOn unpackJballerinaTools
