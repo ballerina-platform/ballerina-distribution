@@ -298,7 +298,7 @@ jobs:
           echo "Created macos-arm-pkg successfully"
       - name: Generate Hashes
         run: |
-          openssl dgst -sha256 -out ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg.sha256 installers/mac-arm/target/pkg/ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg
+          openssl dgst -sha256 -out ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg.sha256 installers/mac/target/pkg/ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg
       - name: Upload MacOS-ARM pkg Hashes
         uses: actions/upload-release-asset@v1
         env:
@@ -315,7 +315,7 @@ jobs:
         with:
           upload_url: ${{ needs.publish-release.outputs.upload-asset-url }}
           asset_name: ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg
-          asset_path: installers/mac-arm/target/pkg/ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg
+          asset_path: installers/mac/target/pkg/ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg
           asset_content_type: application/octet-stream
 
   windows-installer-build:
