@@ -1,6 +1,6 @@
 # REST service - Payload data binding
 
-HTTP service payload data binding allows accessing the request payload using a resource signature parameter. The resource parameter type should be of `anydata` subtype. By default parameters with type `map `, `array`, `tuple`, `table`, `record` and `xml` are mapped to the payload. For other types, the `@http:Payload` annotation is required and If the signature includes more than one of the aforementioned types, the `@http:Payload` should be used to resolve the ambiguity. This behaviour is limited to `POST`, `PUT`, `PATCH`, `DELETE`, and `DEFAULT` accessors.  If the data binding process fails, the client receives a 400 Bad Request response. This feature allows direct access to the request payload from the resource.
+HTTP service payload data binding allows accessing the request payload using a resource signature parameter. The resource parameter type should be a sub type of `anydata`. By default, parameters with the `map `, `array`, `tuple`, `table`, `record` and `xml` types are mapped to the payload. For other types, the `@http:Payload` annotation is required and If the signature includes more than one of the aforementioned types, the `@http:Payload` should be used to resolve the ambiguity. This behaviour is limited to the `POST`, `PUT`, `PATCH`, `DELETE`, and `DEFAULT` accessors.  If the data binding process fails, the client receives a `400 Bad Request` response. This feature allows direct access to the request payload from the resource.
 
 ::: code http_service_data_binding.bal :::
 
