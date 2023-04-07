@@ -18,4 +18,4 @@ To access the GraphiQL client, open a browser and access `http://localhost:9090/
 - [`graphql:ServiceConfig` annotation - API documentation](https://lib.ballerina.io/ballerina/graphql/latest#ServiceConfig)
 - [`graphql:GraphiQL` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest#Graphiql)
 - [GraphQL GraphiQL client - Configuration](/spec/graphql/#1015-graphiql-configurations)
-- [GraphQL GraphiQL client - Specification](/spec/graphql/#131-graphiql-client)
+- [GraphQL GraphiQL client - Specification](/spec/graphql/#141-graphiql-client)
