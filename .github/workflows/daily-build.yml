@@ -82,6 +82,11 @@ jobs:
         with:
           name: MacOS Installer ZIP
           path: ballerina/build/distributions/ballerina-*-macos.zip
+      - name: Archive MacOS-ARM Installer ZIP
+        uses: actions/upload-artifact@v2
+        with:
+          name: MacOS-ARM Installer ZIP
+          path: ballerina/build/distributions/ballerina-*-macos-arm.zip
       - name: Archive Windows Installer ZIP
         uses: actions/upload-artifact@v2
         with:
@@ -312,6 +317,50 @@ jobs:
           path: installers/mac/target/pkg/ballerina-*-macos-x64.pkg
       - name: Install Ballerina PKG
         run: sudo installer -pkg installers/mac/target/pkg/ballerina-*-macos-x64.pkg -target /
+      - name: Run Installer Tests
+        working-directory: ./ballerina-test-automation/installer-test
+        run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+        env:
+          TEST_MODE_ACTIVE: true
+
+  macos-arm-installer-build:
+
+    needs: ubuntu-build
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+      - name: Download MacOS-ARM Intaller Zip
+        uses: actions/download-artifact@v2
+        with:
+          name: MacOS-ARM Installer ZIP
+      - name: Create macos-arm-pkg
+        id: run_installers_arm_pkg
+        run: |
+          cd installers/mac
+          ./build-ballerina-macos-x64.sh -v ${{ needs.ubuntu-build.outputs.project-version }} -p ./../../ -a arm
+          echo "Created macos-arm-pkg successfully"
+      - name: Generate Hashes
+        run: |
+          openssl dgst -sha256 -out ballerina-${{ needs.ubuntu-build.outputs.project-version }}-macos-arm-x64.pkg.sha256 installers/mac-arm/target/pkg/ballerina-*-macos-arm-x64.pkg
+      - name: Archive MacOS-ARM pkg Hashes
+        uses: actions/upload-artifact@v2
+        with:
+          name: MacOS-ARM pkg Hashes
+          path: ballerina-${{ needs.ubuntu-build.outputs.project-version }}-macos-arm-x64.pkg.sha256
+      - name: Archive MacOS-ARM pkg
+        uses: actions/upload-artifact@v2
+        with:
+          name: MacOS Installer ARM pkg
+          path: installers/mac-arm/target/pkg/ballerina-*-macos-arm-x64.pkg
+      - name: Install Ballerina ARM PKG
+        run: sudo installer -pkg installers/mac/target/pkg/ballerina-*-macos-arm-x64.pkg -target /
       - name: Run Installer Tests
         working-directory: ./ballerina-test-automation/installer-test
         run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true

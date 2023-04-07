@@ -178,6 +178,15 @@ jobs:
           asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-macos.zip
           asset_path: ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}-macos.zip
           asset_content_type: application/octet-stream
+      - name: Upload MacOS-ARM zip artifacts
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-macos-arm.zip
+          asset_path: ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}-macos-arm.zip
+          asset_content_type: application/octet-stream
       - name: Upload Windows zip artifacts
         uses: actions/upload-release-asset@v1
         env:
@@ -277,6 +286,36 @@ jobs:
           upload_url: ${{ needs.publish-release.outputs.upload-asset-url }}
           asset_name: ballerina-${{ needs.publish-release.outputs.project-version }}-macos-x64.pkg
           asset_path: installers/mac/target/pkg/ballerina-${{ needs.publish-release.outputs.project-version }}-macos-x64.pkg
+          asset_content_type: application/octet-stream
+      - name: Download MacOS-ARM Intaller Zip
+        run: |
+          wget https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm.zip
+      - name: Create macos-arm-pkg Installer
+        id: run_installers_arm_pkg
+        run: |
+          cd installers/mac
+          ./build-ballerina-macos-x64.sh -v ${{ needs.publish-release.outputs.project-version }} -p ./../../ -a arm
+          echo "Created macos-arm-pkg successfully"
+      - name: Generate Hashes
+        run: |
+          openssl dgst -sha256 -out ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg.sha256 installers/mac/target/pkg/ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg
+      - name: Upload MacOS-ARM pkg Hashes
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          upload_url: ${{ needs.publish-release.outputs.upload-asset-url }}
+          asset_name: ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg.sha256
+          asset_path: ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg.sha256
+          asset_content_type: application/octet-stream
+      - name: Upload MacOS-ARM pkg Installer
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          upload_url: ${{ needs.publish-release.outputs.upload-asset-url }}
+          asset_name: ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg
+          asset_path: installers/mac/target/pkg/ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg
           asset_content_type: application/octet-stream
 
   windows-installer-build:
