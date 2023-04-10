@@ -2437,8 +2437,16 @@
         "isLearnByExample": false
       },
       {
-        "name": "Field Interceptors",
+        "name": "Field interceptors",
         "url": "graphql-field-interceptors",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Interceptor configurations",
+        "url": "graphql-interceptor-configurations",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
