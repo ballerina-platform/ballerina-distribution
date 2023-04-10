@@ -2437,6 +2437,14 @@
         "isLearnByExample": false
       },
       {
+        "name": "Interceptor configurations",
+        "url": "graphql-interceptor-configurations",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
         "name": "File upload",
         "url": "graphql-file-upload",
         "verifyBuild": true,
