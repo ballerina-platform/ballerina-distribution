@@ -1,6 +1,6 @@
-# GraphQL service - Field Interceptors
+# GraphQL service - Field interceptors
 
-The GraphQL resolver functions allow adding interceptors for GraphQL requests to execute custom logic. An interceptor can be defined using a `readonly` class that includes the `graphql:Interceptor` type. The interceptor class must implement the `execute` remote method, which is defined in the `graphql:Interceptor` service object type. It can be passed as a single interceptor or an array of interceptors using the `interceptors` field in the `graphql:ResourceConfig` annotation. The provided interceptors will be executed using the _onion principle_. Use the field interceptors to execute custom logic before and after executing a `resource` or a `remote` method that needs to be separated from the business logic.
+The GraphQL resolver functions allow adding interceptors for GraphQL requests to execute custom logic. An interceptor can be defined using a `readonly` class that includes the `graphql:Interceptor` type. The interceptor class must implement the `execute` remote method, which is defined in the `graphql:Interceptor` service object type. It can be passed as a single interceptor or an array of interceptors using the `interceptors` field in the `graphql:ResourceConfig` annotation. The provided interceptors will be executed using the `_onion principle_`. Use the field interceptors to execute custom logic before and after executing a `resource` or a `remote` method that needs to be separated from the business logic.
 
 >**Note:** A resolver can have zero or more interceptors.
 
