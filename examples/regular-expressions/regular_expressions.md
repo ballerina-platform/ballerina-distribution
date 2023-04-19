@@ -4,7 +4,7 @@ The `regex` library provides functionalities for searching, splitting, and repla
 
 For more information on the underlying module, see the [`regex` module](https://lib.ballerina.io/ballerina/regex/latest/).
 
-**Deprecation Notice:** This library is deprecated and will no longer be maintained or updated. Instead, it is recommended to use the [`ballerina/lang.regexp`](https://lib.ballerina.io/ballerina/lang.regexp/latest) library for continued support and updates. For more information, see the new [RegExp type example](https://ballerina.io/by-example/regexp-type), [RegExp operations example](https://ballerina.io/by-example/regexp-operations), and [Regular expressions feature guide](https://ballerina.io/learn/distinctive-language-features/advanced-general-purpose-language-features/#regular-expressions).
+>**Deprecation Notice:** This library is deprecated and will no longer be maintained or updated. Instead, it is recommended to use the [`ballerina/lang.regexp`](https://lib.ballerina.io/ballerina/lang.regexp/latest) library for continued support and updates. For more information, see the new [RegExp type example](/learn/by-example/regexp-type), [RegExp operations example](/learn/by-example/regexp-operations), and [Regular expressions feature guide](/learn/distinctive-language-features/advanced-general-purpose-language-features/#regular-expressions).
 
 ::: code regular_expressions.bal :::
 
