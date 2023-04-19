@@ -8,8 +8,6 @@ readonly service class LogInterceptor {
     *graphql:Interceptor;
 
     // Implement the `execute()` remote method provided by the `graphql:Interceptor` object.
-    // Within the function, the `graphql:Context` and the `graphql:Field` object can be accessed to
-    // get the request and field-related information.
     isolated remote function execute(graphql:Context context, graphql:Field 'field)
     returns anydata|error {
         // Access the current execution field name using the `graphql:Field` object.
@@ -18,11 +16,7 @@ readonly service class LogInterceptor {
         // This log statement executes before the resolver execution.
         log:printInfo(string `Field "${fieldName}" execution started!`);
 
-        // The `context.resolve()` function can be used to invoke the next interceptor. If all the
-        // interceptors were executed, and it invokes the actual resolver function. The function
-        // returns an `anydata` type value that includes the execution result of the next
-        // interceptor or the actual resolver. To call the `context.resolve()` function, the
-        // `graphql:Field` value should be provided as the argument.
+        // The `context.resolve()` function can be used to invoke the next interceptor.
         var data = context.resolve('field);
 
         // This log statement executes after the resolver execution.
