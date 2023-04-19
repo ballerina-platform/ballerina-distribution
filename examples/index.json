@@ -2429,8 +2429,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Interceptors",
-        "url": "graphql-interceptors",
+        "name": "Service interceptors",
+        "url": "graphql-service-interceptors",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
