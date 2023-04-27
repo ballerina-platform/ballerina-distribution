@@ -77,7 +77,7 @@ public class BuildTimeTest {
         long firstBuildTime = getPackageBuildTime(projectWithoutTest);
         OUT.println("Package build time for the first attempt without tests: " + firstBuildTime);
         long secondBuildTime = getPackageBuildTime(projectWithTest);
-        OUT.println("Package build time for the consecutive attempt with ttest: " + secondBuildTime);
+        OUT.println("Package build time for the consecutive attempt with tests: " + secondBuildTime);
         // Assert whether the resolution time has reduced more than the expected minimum time difference
         Assert.assertTrue(firstBuildTime * 2 > secondBuildTime);
     }
