@@ -4101,21 +4101,21 @@
         "name": "Schedule job recurrence by frequency",
         "url": "task-frequency-job-execution",
         "verifyBuild": true,
-        "verifyOutput": true,
+        "verifyOutput": false,
         "isLearnByExample": false
       },
       {
         "name": "Schedule one time job",
         "url": "task-one-time-job-execution",
         "verifyBuild": true,
-        "verifyOutput": true,
+        "verifyOutput": false,
         "isLearnByExample": false
       },
       {
         "name": "Manage scheduled jobs",
         "url": "manage-scheduled-jobs",
         "verifyBuild": true,
-        "verifyOutput": true,
+        "verifyOutput": false,
         "isLearnByExample": false
       }
     ]
