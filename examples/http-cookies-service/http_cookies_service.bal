@@ -4,7 +4,7 @@ listener http:Listener serverEP = new (9095);
 
 service /cookieDemo on serverEP {
 
-    resource function post login(@http:Payload json details) returns http:Response|http:Unauthorized|error {
+    resource function post login(map<json> details) returns http:Response|http:Unauthorized|error {
 
         // Retrieve the username and password.
         json name = check details.name;

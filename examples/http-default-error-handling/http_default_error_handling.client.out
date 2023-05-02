@@ -7,7 +7,7 @@ $ curl -v localhost:9090/artist
 > User-Agent: curl/7.64.1
 > Accept: */*
 > 
-< HTTP/1.1 500 Internal Server Error
+< HTTP/1.1 502 Bad Gateway
 < content-type: text/plain
 < content-length: 35
 < server: ballerina
