@@ -4,7 +4,7 @@ AWS Lambda is an event driven, serverless computing platform. Ballerina function
 
 For more information, see the [AWS Lambda Deployment Guide](/learn/run-in-the-cloud/function-as-a-service/aws-lambda/).
 
-::: code aws_lambda_deployment.bal :::
+::: code aws-lambda-context-execution.bal :::
 
 Create a ballerina package and replace the content of the generated ballerina file with the content above.
 ::: out bal_new.out :::
