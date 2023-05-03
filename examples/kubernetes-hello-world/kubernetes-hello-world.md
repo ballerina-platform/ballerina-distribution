@@ -1,9 +1,9 @@
 # Kubernetes
 
 Ballerina supports generating Kubernetes artifacts from code without any additional configuration. This simplifies the experience of developing and deploying Ballerina code in the cloud. Code to Cloud builds the containers and required artifacts by deriving the required values from the code. If you want to override the default values taken by the compiler, you can use a `Cloud.toml` file.
-For more information, see [Code to Cloud Deployment](/learn/run-in-the-cloud/code-to-cloud/code-to-cloud-deployment/).
+For more information, see [Code to Cloud deployment](/learn/run-in-the-cloud/code-to-cloud-deployment/).
 
-::: code c2c_k8s_deployment.bal :::
+::: code kubernetes-hello-world.bal :::
 
 Before you build the package, you need to override some default values taken by the compiler. To do this, create a filed named `Cloud.toml` in the package directory, and add the content below to it.
 For all the supported key value properties, see [Code to Cloud Specification](https://github.com/ballerina-platform/ballerina-spec/blob/master/c2c/code-to-cloud-spec.md).
