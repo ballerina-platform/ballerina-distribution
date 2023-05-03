@@ -1,1 +1,1 @@
-$ bal new aws_lambda_deployment
+$ bal new aws-lambda-context-execution
