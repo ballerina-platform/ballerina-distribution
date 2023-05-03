@@ -4,19 +4,19 @@ The `graphql:Service` allows adding interceptors for GraphQL requests to execute
 
 >**Note:** A service can have zero or more interceptors.
 
-::: code graphql_interceptors.bal :::
+::: code graphql_service_interceptors.bal :::
 
 Run the service by executing the following command.
 
-::: out graphql_interceptors.server.out :::
+::: out graphql_service_interceptors.server.out :::
 
 Send the following document to the GraphQL endpoint to test the service.
 
-::: code graphql_interceptors.graphql :::
+::: code graphql_service_interceptors.graphql :::
 
 To send the document, execute the following cURL command in a separate terminal.
 
-::: out graphql_interceptors.client.out :::
+::: out graphql_service_interceptors.client.out :::
 
 >**Tip:** You can invoke the above service via the [GraphQL client](/learn/by-example/graphql-client-query-endpoint/).
 
