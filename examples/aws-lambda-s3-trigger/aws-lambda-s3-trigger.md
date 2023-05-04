@@ -16,7 +16,7 @@ Execute the command below to create a new Ballerina package.
 
 Replace the content of the generated Ballerina file with the content below.
 
-::: code aws-lambda-hello-world.bal :::
+::: code aws-lambda-s3-trigger.bal :::
 
 ## Build the Ballerina program 
 
