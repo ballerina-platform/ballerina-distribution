@@ -1,6 +1,6 @@
 $ bal build --cloud="azure_functions"
 Compiling source
-        wso2/azure_functions_deployment:0.1.0
+        wso2/azure-functions-hello-world:0.1.0
 
 Generating executable
         @azure_functions:Function: timer, get-hello
