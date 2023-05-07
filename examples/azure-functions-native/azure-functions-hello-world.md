@@ -1,10 +1,10 @@
-# Azure Functions - Hello world
+# Azure Functions native
 
 Azure Functions is an event driven, serverless computing platform. Azure Functions can be written from Ballerina using the listeners and services provided by Azure Functions package. You can view the code examples below.
 
 For more information, see the [Azure deployment guide](/learn/run-in-the-cloud/function-as-a-service/azure-functions/).
 
-::: code azure-functions-hello-world.bal :::
+::: code azure-functions-native.bal :::
 
 Create a Ballerina package and replace the content of the generated BAL file with the content above.
 ::: out bal_new.out :::
