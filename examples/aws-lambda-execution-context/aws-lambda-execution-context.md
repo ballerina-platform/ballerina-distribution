@@ -16,7 +16,7 @@ Execute the command below to create a new Ballerina package.
 
 Replace the content of the generated Ballerina file with the content below.
 
-::: code aws-lambda-context-execution.bal :::
+::: code aws-lambda-execution-context.bal :::
 
 ## Build the Ballerina program 
 
