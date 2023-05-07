@@ -1,4 +1,4 @@
-# Azure Functions- Hello world
+# Azure Functions - Hello world
 
 Azure Functions is an event driven, serverless computing platform. Azure Functions can be written from Ballerina using the listeners and services provided by Azure Functions package. You can view the code examples below.
 
