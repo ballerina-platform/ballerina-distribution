@@ -1,4 +1,4 @@
-# Context execution
+# AWS Lambda execution context
 
 The example below demonstrates how context information of an AWS function are executed.
 
