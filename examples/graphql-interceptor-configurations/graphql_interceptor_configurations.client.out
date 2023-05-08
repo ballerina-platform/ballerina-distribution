@@ -1,2 +1,0 @@
-$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ name { first last } }"}' 'http://localhost:9090/graphql'
-{"data":{"name": { "first":"GraphQL", "last":"Interceptors"}}

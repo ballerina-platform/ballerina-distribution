@@ -1,3 +1,0 @@
-$ bal run graphql_interceptor_configurations.bal
-# when executing the query, following statements are logged in the terminal.
-time = 2023-04-10T12:11:01.263+05:30 level = INFO module = "" message = "execution time of the \"name\" field: 0.022773s"
