@@ -28,15 +28,15 @@ Execute the command below to generate the AWS Lambda artifacts.
 
 Execute the AWS CLI commands to create and publish the functions by setting your respective AWS `$LAMBDA_ROLE_ARN`, `$REGION_ID`, and `$FUNCTION_NAME` values. 
 
-    >**Tip:** For instructions on getting the value for the`$LAMBDA_ROLE_ARN`, see [AWS Lambda deployment](/learn/run-in-the-cloud/function-as-a-service/aws-lambda/).
+>**Tip:** For instructions on getting the value for the`$LAMBDA_ROLE_ARN`, see [AWS Lambda deployment](/learn/run-in-the-cloud/function-as-a-service/aws-lambda/).
 
 ::: out aws_deploy.out :::
 
 ## Invoke the function
 
 To invoke this function, create a DynamoDB table.
-1. Go to <a href="https://console.aws.amazon.com/iamv2/home#/roles" target="_blank">**roles**</a>, and add `AWSLambdaDynamoDBExecutionRole` to the created role in the prerequisites.
-2. Go to the <a href="https://us-west-1.console.aws.amazon.com/dynamodbv2" target="_blank">DynamoDB</a>.
+1. Go to <a href="https://console.aws.amazon.com/iamv2/home#/roles">**roles**</a>, and add `AWSLambdaDynamoDBExecutionRole` to the created role in the prerequisites.
+2. Go to the <a href="https://us-west-1.console.aws.amazon.com/dynamodbv2">DynamoDB</a>.
 3. Click **Create Table**, enter the table name, partition key, and create the table (If you already have a table created, you can skip this step).
 4. Click on the DynamoDB table, and then click the **Exports and streams** tab.
 5. Click **enable DynamoDB stream details**, and select the key attributes only for the event type.
