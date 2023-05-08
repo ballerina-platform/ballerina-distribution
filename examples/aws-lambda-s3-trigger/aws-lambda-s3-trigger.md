@@ -35,7 +35,7 @@ Execute the AWS CLI commands to create and publish the functions by setting your
 ## Invoke the function
 
 To invoke this function, create an S3 bucket in AWS.
-1. Go to [AWS S3](https://s3.console.aws.amazon.com/s3/){:target="_blank"} portal and create a bucket.
+1. Go to [AWS S3](https://s3.console.aws.amazon.com/s3/) portal and create a bucket.
 2. Click on the created bucket, go to the **Properties** tab, and click on the **Create event notification** under the **Event notifications** section.
 3. Enable `All object create events` under event types. Select the Lambda function as the destination, and choose the `notifyS3` Lambda function from the dropdown.
 
