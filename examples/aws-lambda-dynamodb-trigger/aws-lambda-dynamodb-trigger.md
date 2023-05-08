@@ -35,8 +35,8 @@ Execute the AWS CLI commands to create and publish the functions by setting your
 ## Invoke the function
 
 To invoke this function, create a DynamoDB table.
-1. Go to <a href="https://console.aws.amazon.com/iamv2/home#/roles">**roles**</a>, and add `AWSLambdaDynamoDBExecutionRole` to the created role in the prerequisites.
-2. Go to the <a href="https://us-west-1.console.aws.amazon.com/dynamodbv2">DynamoDB</a>.
+1. Go to [**roles**](https://console.aws.amazon.com/iamv2/home#/roles){:target="_blank"}, and add `AWSLambdaDynamoDBExecutionRole` to the created role in the prerequisites.
+2. Go to the [DynamoDB](https://us-west-1.console.aws.amazon.com/dynamodbv2){:target="_blank"}.
 3. Click **Create Table**, enter the table name, partition key, and create the table (If you already have a table created, you can skip this step).
 4. Click on the DynamoDB table, and then click the **Exports and streams** tab.
 5. Click **enable DynamoDB stream details**, and select the key attributes only for the event type.
