@@ -4,7 +4,7 @@ Azure Functions is an event driven, serverless computing platform. Azure Functio
 
 For more information, see the [Azure deployment guide](/learn/run-in-the-cloud/function-as-a-service/azure-functions/).
 
-::: code azure-functions-http-trigger.bal :::
+::: code azure-functions-timer-trigger.bal :::
 
 Create a Ballerina package and replace the content of the generated BAL file with the content above.
 ::: out bal_new.out :::
