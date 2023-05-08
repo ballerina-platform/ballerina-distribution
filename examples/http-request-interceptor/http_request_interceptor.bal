@@ -45,7 +45,7 @@ service http:InterceptableService / on interceptorListener {
 
     // Creates the interceptor pipeline. Request interceptor services will be executed from head to tail.
     public function createInterceptors() returns RequestInterceptor {
-        return [new RequestInterceptor()];
+        return new RequestInterceptor();
     }
     resource function get albums() returns Album[] {
         return albums.toArray();
