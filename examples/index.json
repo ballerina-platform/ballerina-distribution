@@ -2436,24 +2436,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service interceptors",
-        "url": "graphql-service-interceptors",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Field interceptors",
-        "url": "graphql-field-interceptors",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Interceptor configurations",
-        "url": "graphql-interceptor-configurations",
+        "name": "Interceptors",
+        "url": "graphql-interceptors",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
