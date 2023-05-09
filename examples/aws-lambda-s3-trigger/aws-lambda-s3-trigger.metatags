@@ -1,0 +1,2 @@
+description: This example creates a function, which will be executed for each object creation in AWS S3.
+keywords:  ballerina, ballerina by example, bbe, aws lambda, s3, trigger

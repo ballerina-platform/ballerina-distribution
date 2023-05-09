@@ -1,0 +1,2 @@
+description: This example demonstrates how a function can be scheduled to execute periodically by the Azure Functions app.
+keywords:  ballerina, ballerina by example, bbe, aws lambda, timer, trigger

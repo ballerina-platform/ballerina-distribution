@@ -1,6 +1,6 @@
 # AWS Lambda S3 trigger
 
-This sample creates a function, which will be executed for each object creation in AWS S3.
+This example creates a function, which will be executed for each object creation in AWS S3.
 
 For more information, see the [AWS Lambda learn guide](https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/aws-lambda/).
 

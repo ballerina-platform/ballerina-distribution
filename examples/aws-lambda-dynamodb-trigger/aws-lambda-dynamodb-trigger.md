@@ -1,6 +1,6 @@
 # AWS Lambda DynamoDB trigger
 
-This sample creates a function, which will be executed for each entry added to a database in the DynamoDB.
+This example creates a function, which will be executed for each entry added to a database in the DynamoDB.
 
 For more information, see the [AWS Lambda learn guide](https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/aws-lambda/).
 

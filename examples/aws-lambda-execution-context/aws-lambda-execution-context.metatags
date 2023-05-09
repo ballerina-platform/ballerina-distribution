@@ -1,0 +1,2 @@
+description: The example below demonstrates how the execution context information of an AWS function can be retrieved.
+keywords:  ballerina, ballerina by example, aws lambda, execution context
