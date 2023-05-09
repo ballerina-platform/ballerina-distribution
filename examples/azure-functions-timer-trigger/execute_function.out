@@ -1,2 +1,0 @@
-$ curl https://bal-bbe.azurewebsites.net/hello\?name\=Jack
-Hello, Jack!

@@ -2,7 +2,7 @@ import ballerinax/azure_functions as af;
 
 // This function gets triggered by an HTTP call with the name query parameter and returns a processed HTTP output to the caller.
 service / on new af:HttpListener() {
-    resource function azure-functions-http-trigger(string name) returns string {
+    resource function azure-functions-timer-trigger(string name) returns string {
         return "Hello, " + name + "!";
     }
 }

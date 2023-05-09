@@ -1,21 +1,37 @@
 # Azure Functions timer trigger
 
-Azure Functions is an event driven, serverless computing platform. Azure Functions can be written from Ballerina using the listeners and services provided by Azure Functions package. You can view the code examples below.
+This example demonstrates how a function can be scheduled to execute periodically by the Azure Functions app. Once the function is executed, the timer details will be stored in the selected queue storage for every invocation.
 
-For more information, see the [Azure deployment guide](/learn/run-in-the-cloud/function-as-a-service/azure-functions/).
+For more information, see the [Azure deployment guide](https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/azure-functions/).
+
+## Set up the prerequisites
+
+For instructions, see [Set up the prerequisites](https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/azure-functions/#set-up-the-prerequisites).
+
+## Write the function
+
+Follow the steps below to write the function.
+
+1. Execute the command below to create a new Ballerina package.
+
+::: out bal_new.out :::
+
+2. Replace the content of the generated Ballerina file with the content below.
 
 ::: code azure-functions-timer-trigger.bal :::
 
-Create a Ballerina package and replace the content of the generated BAL file with the content above.
-::: out bal_new.out :::
+## Build the function
 
-Build the Ballerina program to generate the Azure Functions artifacts.
+Execute the command below to generate the Azure Functions artifacts.
+
 ::: out bal_build.out :::
 
-Execute the Azure CLI command given by the compiler to publish the functions (replace the sample app name given in the command with your respective Azure `<function_app_name>`).
-::: out az_deploy.out :::
+## Deploy the function
 
-Invoke the `HTTP Trigger` functions.
-::: out execute_function.out :::
+Execute the Azure CLI command given by the compiler to create and publish the functions by replacing the sample app name given in the command with your respective Azure `<function_app_name>`.
 
-The `timer` function is triggered by the Azure Functions app from a timer. You can check the queue storage to see the output. For more information on the infrastructure, see [Azure Functions deployment](/learn/run-in-the-cloud/function-as-a-service/azure-functions/).
+>**Tip:** For instructions on getting the values, see [Set up the prerequisites](https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/azure-functions/#set-up-the-prerequisites).
+
+## Invoke the function
+
+The `timer` function is triggered by the Azure Functions app from a timer. You can check the queue storage to see the output. 
