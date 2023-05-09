@@ -42,6 +42,6 @@ To invoke this function, create a DynamoDB table.
 5. Click **enable DynamoDB stream details**, and select the key attributes only for the event type.
 6. Once it's enabled, click **Create a trigger**, select the `notifyDynamoDB` from the dropdown, and create a trigger.
 
-Now, add an entry to the DynamoDB table to invoke the Lambda function. For this, go to <a href="https://us-west-1.console.aws.amazon.com/dynamodbv2" target="_blank">**Items**</a> in the DynamoDB, select the table, and click **Create item**. Once the item is entered into the table, go to the Lambda function, and check the logs via CloudWatch to see the object identifier in the logs.
+Now, add an entry to the DynamoDB table to invoke the Lambda function. For this, go to [**Items**](https://us-west-1.console.aws.amazon.com/dynamodbv2) in the DynamoDB, select the table, and click **Create item**. Once the item is entered into the table, go to the Lambda function, and check the logs via CloudWatch to see the object identifier in the logs.
 
 ::: out invoke_functions.out :::

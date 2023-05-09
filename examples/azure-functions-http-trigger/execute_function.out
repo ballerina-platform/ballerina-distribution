@@ -1,2 +1,5 @@
-$ curl https://bal-bbe.azurewebsites.net/hello\?name\=Jack
-Hello, Jack!
+$ curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"name":"Jack","age":21}' \
+  "https://<function_app_name>.azurewebsites.net/queue"
+Jack Added to the Queue!

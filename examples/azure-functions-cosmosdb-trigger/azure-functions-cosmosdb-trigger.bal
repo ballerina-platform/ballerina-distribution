@@ -1,19 +1,18 @@
+import ballerina/log;
 import ballerinax/azure_functions as af;
 
-// This function gets triggered by an HTTP call with the name query parameter and returns a processed HTTP output to the caller.
-service / on new af:HttpListener() {
-    resource function azure-functions-cosmosdb-trigger(string name) returns string {
-        return "Hello, " + name + "!";
-    }
-}
+public type DBEntry record {
+    string id;
+    string name;
+};
 
-// This function gets executed every 10 seconds by the Azure Functions app. Once the function is executed, the timer 
-// details will be stored in the selected queue storage for every invocation.
-@af:TimerTrigger {schedule: "*/10 * * * * *"}
-listener af:TimerListener timerListener = new af:TimerListener();
+@af:CosmosDBTrigger {connectionStringSetting: "CosmosDBConnection", databaseName: "db1", collectionName: "c1"}
+listener af:CosmosDBListener cosmosEp = new ();
 
-service "timer" on timerListener {
-    remote function onTrigger(af:TimerMetadata metadata) returns @af:QueueOutput {queueName: "queue3"} string|error {
-        return "Message Status, " + metadata.IsPastDue.toString();
+service "cosmos" on cosmosEp {
+    remote function onUpdate(DBEntry[] entries) returns @af:QueueOutput {queueName: "people"} string {
+        string name = entries[0].name;
+        log:printInfo(entries.toJsonString());
+        return "Hello, " + name;
     }
 }
