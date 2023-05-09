@@ -1,8 +1,0 @@
-$ echo '{"MESSAGE":"HELLO"}' > input.json
-$ aws lambda invoke --function-name notifys3 --payload fileb://input.json echo-response.txt
-{
-"ExecutedVersion": "$LATEST",
-"StatusCode": 200
-}
-$ cat echo-response.txt
-{"MESSAGE":"HELLO"}
