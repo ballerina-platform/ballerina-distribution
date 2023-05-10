@@ -31,15 +31,18 @@ service class ResponseErrorInterceptor {
 // Creates a new `ResponseErrorInterceptor`.
 ResponseErrorInterceptor responseErrorInterceptor = new;
 
+// Creates the interceptors pipeline.
+http:CreateInterceptorsFunction interceptorsFunction = isolated function () returns ResponseErrorInterceptor {
+    // To handle all of the errors, the `ResponseErrorInterceptor` is added as the first
+    // interceptor as it has to be executed last.
+    return new ResponseErrorInterceptor();
+}
+
 // A `ResponseErrorInterceptor` can be configured at the listener level or
 // service level. Listener-level error interceptors can handle any error associated
 // with the listener, whereas, service-level error interceptors can only handle
 // errors occurred during the service execution.
-listener http:Listener interceptorListener = new (9090,
-    // To handle all of the errors, the `ResponseErrorInterceptor` is added as a first
-    // interceptor as it has to be executed last.
-    interceptors = [responseErrorInterceptor]
-);
+listener http:Listener interceptorListener = new (9090, interceptors = interceptorsFunction);
 
 service / on interceptorListener {
 

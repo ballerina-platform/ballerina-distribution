@@ -53,11 +53,14 @@ service class RequestErrorInterceptor {
 // Creates a new `RequestErrorInterceptor`.
 RequestErrorInterceptor requestErrorInterceptor = new;
 
-listener http:Listener interceptorListener = new (9090,
+// Creates the interceptors pipeline.
+http:CreateInterceptorsFunction interceptorsFunction = isolated function () returns [RequestInterceptor, RequestErrorInterceptor] {
     // To handle all of the errors in the request path, the `RequestErrorInterceptor`
     // is added as the last interceptor as it has to be executed last.
-    interceptors = [requestInterceptor, requestErrorInterceptor]
-);
+    return [new RequestInterceptor(), new RequestErrorInterceptor()];
+}
+
+listener http:Listener interceptorListener = new (9090, interceptors = interceptorsFunction);
 
 service / on interceptorListener {
 

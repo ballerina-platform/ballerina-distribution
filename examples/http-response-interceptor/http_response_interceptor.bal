@@ -29,12 +29,15 @@ service class ResponseInterceptor {
     }
 }
 
-// Engage interceptors at the listener level. Response interceptor services will be executed from
-// tail to head.
-listener http:Listener interceptorListener = new (9090,
-    // This interceptor pipeline will be executed for all of the services attached to this listener.
-    interceptors = [new ResponseInterceptor()]
-);
+// Creates the interceptors pipeline. This function can return a single interceptor or an array of
+// interceptors as the interceptor pipeline. If the interceptor pipeline is an array, then the
+// response interceptor services will be executed from tail to head.
+http:CreateInterceptorsFunction interceptorsFunction = isolated function () returns ResponseInterceptor {
+    return new ResponseInterceptor();
+}
+
+// Engage interceptors at the listener level by providing the `http:CreateInterceptorsFunction`.
+listener http:Listener interceptorListener = new (9090, interceptors = interceptorsFunction);
 
 service / on interceptorListener {
 
