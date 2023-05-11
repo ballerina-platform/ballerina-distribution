@@ -36,7 +36,7 @@ http:CreateInterceptorsFunction interceptorsFunction = isolated function () retu
     return new ResponseInterceptor();
 }
 
-// Engage interceptors at the listener level by providing the `http:CreateInterceptorsFunction`.
+// Engage interceptors at the listener level by providing a function implementation of the `http:CreateInterceptorsFunction`.
 listener http:Listener interceptorListener = new (9090, interceptors = interceptorsFunction);
 
 service / on interceptorListener {

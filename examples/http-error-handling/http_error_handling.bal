@@ -31,7 +31,7 @@ service class ResponseErrorInterceptor {
 // Creates a new `ResponseErrorInterceptor`.
 ResponseErrorInterceptor responseErrorInterceptor = new;
 
-// Creates the interceptors pipeline.
+// Implements a `http:CreateInterceptorsFunction` to create the interceptors pipeline.
 http:CreateInterceptorsFunction interceptorsFunction = isolated function () returns ResponseErrorInterceptor {
     // To handle all of the errors, the `ResponseErrorInterceptor` is added as the first
     // interceptor as it has to be executed last.
