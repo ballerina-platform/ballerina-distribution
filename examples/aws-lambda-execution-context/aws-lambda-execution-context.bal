@@ -1,5 +1,4 @@
 import ballerinax/awslambda;
-import ballerina/io;
 
 // The `awslambda:Context` object contains request execution context information.
 @awslambda:Function

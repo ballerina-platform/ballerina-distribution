@@ -1,12 +1,5 @@
 import ballerinax/azure_functions as af;
 
-// This function gets triggered by an HTTP call with the name query parameter and returns a processed HTTP output to the caller.
-service / on new af:HttpListener() {
-    resource function azure-functions-timer-trigger(string name) returns string {
-        return "Hello, " + name + "!";
-    }
-}
-
 // This function gets executed every 10 seconds by the Azure Functions app. Once the function is executed, the timer 
 // details will be stored in the selected queue storage for every invocation.
 @af:TimerTrigger {schedule: "*/10 * * * * *"}

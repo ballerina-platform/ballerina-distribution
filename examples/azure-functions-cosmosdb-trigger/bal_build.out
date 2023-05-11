@@ -3,7 +3,7 @@ Compiling source
         wso2/azure-functions-cosmosdb-trigger:0.1.0
 
 Generating executable
-        @azure_functions:Function: timer, get-hello
+        @azure_functions:Function: cosmos
 
         Execute the command below to deploy the function locally.
         func start --script-root target/azure_functions --java
