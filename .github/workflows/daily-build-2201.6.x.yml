@@ -27,12 +27,14 @@ jobs:
       - name: Get project version
         id: project-version
         run: |
-          SHORT_VERSION=$((grep -w "version" | cut -d= -f2 | cut -d- -f1) < gradle.properties)
-          DIST_VERSION=$((grep -w "version" | cut -d= -f2) < gradle.properties)
+          SHORT_VERSION=$((grep -w "version" | cut -d= -f2 | cut -d- -f1 | xargs) < gradle.properties)
+          DIST_VERSION=$((grep -w "version" | cut -d= -f2 | xargs) < gradle.properties)
+          LANG_VERSION=$((grep -w "ballerinaLangVersion" | cut -d= -f2 | cut -d- -f1 | xargs) < gradle.properties)
           CODE_NAME=$((grep -w 'codeName' | cut -d= -f2) < gradle.properties)
           RELEASE_VERSION=$DIST_VERSION-$CODE_NAME
           echo "::set-output name=version::$RELEASE_VERSION"
           echo "::set-output name=sversion::$SHORT_VERSION"
+          echo "::set-output name=langversion::$LANG_VERSION"
       - name: Build with Gradle
         env:
           packageUser: ${{ github.actor }}
@@ -111,25 +113,17 @@ jobs:
           path: ballerina-${{ steps.project-version.outputs.sversion }}.zip.sha256
       - name: Install Ballerina DEB
         run: sudo dpkg -i installers/linux-deb/target/ballerina-*-linux-x64.deb
+      - name: Update Installer Test Configs
+        run: |
+          DISPLAY_TEXT=${{ steps.project-version.outputs.langversion }}
+          SWAN_LAKE_LATEST_VERSION="swan-lake-"+$DISPLAY_TEXT
+          perl -pi -e "s/^\s*swan-lake-latest-version-display-text=.*/swan-lake-latest-version-display-text=$DISPLAY_TEXT/" ballerina-test-automation/gradle.properties
+          perl -pi -e "s/^\s*swan-lake-latest-version=.*/swan-lake-latest-version=$SWAN_LAKE_LATEST_VERSION/" ballerina-test-automation/gradle.properties
       - name: Run Installer Tests
         working-directory: ./ballerina-test-automation/installer-test
         run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
         env:
           TEST_MODE_ACTIVE: true
-      - name: Notify failure
-        if: ${{ failure() }}
-        run: |
-          curl -X POST \
-          'https://api.github.com/repos/ballerina-platform/ballerina-release/dispatches' \
-          -H 'Accept: application/vnd.github.v3+json' \
-          -H 'Authorization: Bearer ${{ secrets.BALLERINA_BOT_TOKEN }}' \
-          --data "{
-            \"event_type\": \"notify-build-failure\",
-            \"client_payload\": {
-              \"repoName\": \"ballerina-distribution\",
-              \"branch\": \"2201.6.x\"
-            }
-          }"
       - name: Checkout docker repo
         uses: actions/checkout@v2
         with:
@@ -202,8 +196,23 @@ jobs:
           tags: ballerina/ballerina-devcontainer:nightly-2201.6.x
           build-args: |
             BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.version }}-linux-x64.deb
+      - name: Notify failure
+        if: ${{ failure() }}
+        run: |
+          curl -X POST \
+          'https://api.github.com/repos/ballerina-platform/ballerina-release/dispatches' \
+          -H 'Accept: application/vnd.github.v3+json' \
+          -H 'Authorization: Bearer ${{ secrets.BALLERINA_BOT_TOKEN }}' \
+          --data "{
+            \"event_type\": \"notify-build-failure\",
+            \"client_payload\": {
+              \"repoName\": \"ballerina-distribution\",
+              \"branch\": \"master\"
+            }
+          }"
     outputs:
       project-version: ${{ steps.project-version.outputs.version }}
+      lang-version: ${{ steps.project-version.outputs.langversion }}
 
   project-api-tests:
 
@@ -275,11 +284,15 @@ jobs:
       - name: Install Ballerina RPM
         run: |
           rpm -ivh ballerina-*-linux-x64.rpm
+      - name: Update Installer Test Configs
+        run: |
+          DISPLAY_TEXT=${{ needs.ubuntu-build.outputs.lang-version }}
+          SWAN_LAKE_LATEST_VERSION="swan-lake-"+$DISPLAY_TEXT
+          perl -pi -e "s/^\s*swan-lake-latest-version-display-text=.*/swan-lake-latest-version-display-text=$DISPLAY_TEXT/" ballerina-test-automation/gradle.properties
+          perl -pi -e "s/^\s*swan-lake-latest-version=.*/swan-lake-latest-version=$SWAN_LAKE_LATEST_VERSION/" ballerina-test-automation/gradle.properties
       - name: Run Installer Tests
         working-directory: ./ballerina-test-automation/installer-test
-        run: |
-          bal -v
-          ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+        run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
         env:
           TEST_MODE_ACTIVE: true
 
@@ -318,6 +331,62 @@ jobs:
           path: installers/mac/target/pkg/ballerina-*-macos-x64.pkg
       - name: Install Ballerina PKG
         run: sudo installer -pkg installers/mac/target/pkg/ballerina-*-macos-x64.pkg -target /
+      - name: Update Installer Test Configs
+        run: |
+          DISPLAY_TEXT=${{ needs.ubuntu-build.outputs.lang-version }}
+          SWAN_LAKE_LATEST_VERSION="swan-lake-"+$DISPLAY_TEXT
+          perl -pi -e "s/^\s*swan-lake-latest-version-display-text=.*/swan-lake-latest-version-display-text=$DISPLAY_TEXT/" ballerina-test-automation/gradle.properties
+          perl -pi -e "s/^\s*swan-lake-latest-version=.*/swan-lake-latest-version=$SWAN_LAKE_LATEST_VERSION/" ballerina-test-automation/gradle.properties
+      - name: Run Installer Tests
+        working-directory: ./ballerina-test-automation/installer-test
+        run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+        env:
+          TEST_MODE_ACTIVE: true
+
+  macos-arm-installer-build:
+
+    needs: ubuntu-build
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+      - name: Download MacOS-ARM Intaller Zip
+        uses: actions/download-artifact@v2
+        with:
+          name: MacOS-ARM Installer ZIP
+      - name: Create macos-arm-pkg
+        id: run_installers_arm_pkg
+        run: |
+          cd installers/mac
+          ./build-ballerina-macos-x64.sh -v ${{ needs.ubuntu-build.outputs.project-version }} -p ./../../ -a arm
+          echo "Created macos-arm-pkg successfully"
+      - name: Generate Hashes
+        run: |
+          openssl dgst -sha256 -out ballerina-${{ needs.ubuntu-build.outputs.project-version }}-macos-arm-x64.pkg.sha256 installers/mac-arm/target/pkg/ballerina-*-macos-arm-x64.pkg
+      - name: Archive MacOS-ARM pkg Hashes
+        uses: actions/upload-artifact@v2
+        with:
+          name: MacOS-ARM pkg Hashes
+          path: ballerina-${{ needs.ubuntu-build.outputs.project-version }}-macos-arm-x64.pkg.sha256
+      - name: Archive MacOS-ARM pkg
+        uses: actions/upload-artifact@v2
+        with:
+          name: MacOS Installer ARM pkg
+          path: installers/mac-arm/target/pkg/ballerina-*-macos-arm-x64.pkg
+      - name: Install Ballerina ARM PKG
+        run: sudo installer -pkg installers/mac/target/pkg/ballerina-*-macos-arm-x64.pkg -target /
+      - name: Update Installer Test Configs
+        run: |
+          DISPLAY_TEXT=${{ needs.ubuntu-build.outputs.lang-version }}
+          SWAN_LAKE_LATEST_VERSION="swan-lake-"+$DISPLAY_TEXT
+          perl -pi -e "s/^\s*swan-lake-latest-version-display-text=.*/swan-lake-latest-version-display-text=$DISPLAY_TEXT/" ballerina-test-automation/gradle.properties
+          perl -pi -e "s/^\s*swan-lake-latest-version=.*/swan-lake-latest-version=$SWAN_LAKE_LATEST_VERSION/" ballerina-test-automation/gradle.properties
       - name: Run Installer Tests
         working-directory: ./ballerina-test-automation/installer-test
         run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
@@ -367,6 +436,13 @@ jobs:
           path: w\target\msi\ballerina-*-windows-x64.msi
       - name: Install Ballerina msi
         run: msiexec /i w\target\msi\ballerina-${{ needs.ubuntu-build.outputs.project-version }}-windows-x64.msi /quiet /qr
+        shell: cmd
+      - name: Update Installer Test Configs
+        run: |
+          DISPLAY_TEXT=${{ needs.ubuntu-build.outputs.lang-version }}
+          SWAN_LAKE_LATEST_VERSION=swan-lake-%DISPLAY_TEXT%
+          perl -pi -e "s/^\s*swan-lake-latest-version-display-text=.*/swan-lake-latest-version-display-text=%DISPLAY_TEXT%/" ballerina-distribution/ballerina-test-automation/gradle.properties
+          perl -pi -e "s/^\s*swan-lake-latest-version=.*/swan-lake-latest-version=%SWAN_LAKE_LATEST_VERSION%/" ballerina-distribution/ballerina-test-automation/gradle.properties
         shell: cmd
       - name: Run Installer Tests
         working-directory: .\ballerina-test-automation\installer-test
