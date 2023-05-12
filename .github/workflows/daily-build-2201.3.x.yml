@@ -124,20 +124,6 @@ jobs:
         run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
         env:
           TEST_MODE_ACTIVE: true
-      - name: Notify failure
-        if: ${{ failure() }}
-        run: |
-          curl -X POST \
-          'https://api.github.com/repos/ballerina-platform/ballerina-release/dispatches' \
-          -H 'Accept: application/vnd.github.v3+json' \
-          -H 'Authorization: Bearer ${{ secrets.BALLERINA_BOT_TOKEN }}' \
-          --data "{
-            \"event_type\": \"notify-build-failure\",
-            \"client_payload\": {
-              \"repoName\": \"ballerina-distribution\",
-              \"branch\": \"2201.3.x\"
-            }
-          }"
       - name: Checkout docker repo
         uses: actions/checkout@v2
         with:
@@ -210,6 +196,20 @@ jobs:
           tags: ballerina/ballerina-devcontainer:nightly-2201.3.x
           build-args: |
             BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.version }}-linux-x64.deb
+      - name: Notify failure
+        if: ${{ failure() }}
+        run: |
+          curl -X POST \
+          'https://api.github.com/repos/ballerina-platform/ballerina-release/dispatches' \
+          -H 'Accept: application/vnd.github.v3+json' \
+          -H 'Authorization: Bearer ${{ secrets.BALLERINA_BOT_TOKEN }}' \
+          --data "{
+            \"event_type\": \"notify-build-failure\",
+            \"client_payload\": {
+              \"repoName\": \"ballerina-distribution\",
+              \"branch\": \"master\"
+            }
+          }"
     outputs:
       project-version: ${{ steps.project-version.outputs.version }}
       lang-version: ${{ steps.project-version.outputs.langversion }}
