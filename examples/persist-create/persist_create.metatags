@@ -1,0 +1,2 @@
+description: This BBE demonstrates the usage of get/get by key resource method in generated persistence client to retrieve selected fields of an entity from the datastore.
+keywords: ballerina, ballerina by example, bbe, persistence, datastore, get by key, get, select, entity

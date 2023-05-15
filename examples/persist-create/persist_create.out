@@ -1,0 +1,8 @@
+$ bal run
+
+Compiling source
+        foo/rainier:0.1.0
+
+Running executable
+
+Inserted employee id: ["394c694f-82ae-4fe9-9947-85948625fea1","639082b7-4be7-4a64-8db2-1e3d1b3313f8"]
