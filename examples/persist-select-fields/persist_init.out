@@ -1,0 +1,9 @@
+$ bal persist init --module store
+
+Initialized persistence in your Ballerina project.
+
+Your Persist schema is at persist/model.bal.
+You can now update it with entity definitions.
+
+Next steps:
+Run bal persist generate to generate the Ballerina Client, Types, and Scripts. You can then start querying your database.

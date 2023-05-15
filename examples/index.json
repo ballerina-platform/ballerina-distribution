@@ -4264,6 +4264,92 @@
     ]
   },
   {
+    "title": "Reading data",
+    "column": 0,
+    "category": "Persistence",
+    "samples": [
+      {
+        "name": "Get all",
+        "url": "persist-get-all",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs code generation",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Get by key",
+        "url": "persist-get-by-key",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs code generation",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Select fields",
+        "url": "persist-select-fields",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs code generation",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Filtering and Sorting",
+        "url": "persist-filtering",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs code generation",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Relation Queries",
+        "url": "persist-relation-queries",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs code generation",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Writing data",
+    "column": 1,
+    "category": "Persistence",
+    "samples": [
+      {
+        "name": "Create/Create Many",
+        "url": "persist-create",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs code generation",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Update",
+        "url": "persist-update",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs code generation",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Delete",
+        "url": "persist-delete",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs code generation",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "Tracing",
     "column": 0,
     "category": "Observability",

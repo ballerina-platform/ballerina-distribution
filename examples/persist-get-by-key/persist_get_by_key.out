@@ -1,0 +1,8 @@
+$ bal run
+
+Compiling source
+        foo/rainier:0.1.0
+
+Running executable
+
+{"id":"16c6553a-373c-4b29-b1c8-c282f444248c","firstName":"John","lastName":"Doe","birthDate":{"year":1987,"month":07,"day":23},"gender":"Male","hireDate":{"year":2020,"month":10,"day":10}}

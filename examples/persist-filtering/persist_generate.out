@@ -1,0 +1,4 @@
+$ bal persist generate
+
+Generated Ballerina Client, Types, and Scripts to ./generated/store directory.
+You can now start using Ballerina Client in your code.

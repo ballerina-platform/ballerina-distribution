@@ -1,0 +1,2 @@
+description: This BBE demonstrates the usage of get resource method in generated persistence client.
+keywords: ballerina, ballerina by example, bbe, persistence, datastore, get, entity

@@ -1,0 +1,10 @@
+$ bal run
+
+Compiling source
+        foo/rainier:0.1.0
+
+Running executable
+
+{"id":"394c694f-82ae-4fe9-9947-85948625fea1","firstName":"John","lastName":"Doe","birthDate":{"year":1987,"month":7,"day":23},"gender":"Male","age":33,"hireDate":{"year":2020,"month":10,"day":10}}
+{"id":"639082b7-4be7-4a64-8db2-1e3d1b3313f8","firstName":"Jane","lastName":"Doe","birthDate":{"year":1989,"month":7,"day":11},"gender":"Female","age":31,"hireDate":{"year":2020,"month":10,"day":10}}
+{"id":"581d1bc2-0390-452a-a564-4219e66af395","firstName":"Sam","lastName":"Curran","birthDate":{"year":1993,"month":7,"day":23},"gender":"Male","age":27,"hireDate":{"year":2020,"month":10,"day":10}}
