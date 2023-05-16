@@ -128,12 +128,16 @@ public class TestUtils {
      * @throws IOException          Error executing build command.
      * @throws InterruptedException Interrupted error executing build command.
      */
-    public static InputStream executeGrpcCommand(String distributionName, Path sourceDirectory, List<String> args) throws
+    public static InputStream executeGrpcCommand(String distributionName, Path sourceDirectory, List<String> args,
+                                                 boolean getError) throws
             IOException, InterruptedException {
         args.add(0, "grpc");
         Process process = getProcessBuilderResults(distributionName, sourceDirectory, args);
         process.waitFor();
-        return process.getErrorStream();
+        if (getError) {
+            return process.getErrorStream();
+        }
+        return process.getInputStream();
     }
 
     /**
