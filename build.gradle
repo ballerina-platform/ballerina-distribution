@@ -181,6 +181,8 @@ subprojects {
         ballerinaStdLibs "io.ballerina.stdlib:websubhub-ballerina:${stdlibWebsubhubVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:sql-ballerina:${stdlibSqlVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:persist-ballerina:${stdlibPersistVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:yaml-ballerina:${stdlibYamlVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:toml-ballerina:${stdlibTomlVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:observe-ballerina:${observeVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:math.vector-ballerina:${stdlibMathVectorVersion}"
 
