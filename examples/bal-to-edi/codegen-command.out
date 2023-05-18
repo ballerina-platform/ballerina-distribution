@@ -1,1 +1,0 @@
-$ bal edi codegen resources/simple_order_schema.json modules/sorder/sorder.bal

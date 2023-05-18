@@ -1,0 +1,13 @@
+└── edi_to_record
+    ├── Ballerina.toml
+    ├── Dependencies.toml
+    ├── main.bal
+    ├── modules
+    │   └── sorder
+    │       ├── Module.md
+    │       ├── resources
+    │       ├── sorder.bal
+    │       └── tests
+    │           └── lib_test.bal
+    └── resources
+        └── simple_order_schema.json

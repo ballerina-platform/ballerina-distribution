@@ -4059,6 +4059,29 @@
     ]
   },
   {
+    "title": "EDI",
+    "column": 1,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "EDI to record conversion",
+        "url": "edi-to-bal",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes generated code",
+        "isLearnByExample": false
+      },
+      {
+        "name": "Record to EDI conversion",
+        "url": "bal-to-edi",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes generated code",
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "File",
     "column": 2,
     "category": "Common libraries",
