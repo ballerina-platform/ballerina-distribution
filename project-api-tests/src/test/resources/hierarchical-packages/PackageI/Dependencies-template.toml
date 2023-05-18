@@ -5,6 +5,7 @@
 
 [ballerina]
 dependencies-toml-version = "2"
+distribution-version = "**INSERT_DISTRIBUTION_VERSION_HERE**"
 
 [[package]]
 org = "bctestorg"
@@ -17,13 +18,13 @@ modules = [
 
 [[package]]
 org = "bctestorg"
-name = "PackageR.test"
-version = "1.0.0"
+name = "PackageI"
+version = "0.1.0"
 dependencies = [
 	{org = "bctestorg", name = "PackageH.test"}
 ]
 modules = [
-	{org = "bctestorg", packageName = "PackageR.test", moduleName = "PackageR.test"}
+	{org = "bctestorg", packageName = "PackageI", moduleName = "PackageI"}
 ]
 
 

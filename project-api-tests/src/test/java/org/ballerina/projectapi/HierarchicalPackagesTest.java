@@ -23,9 +23,15 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
@@ -96,6 +102,19 @@ public class HierarchicalPackagesTest {
         } catch (URISyntaxException e) {
             Assert.fail("error loading resources");
         }
+
+        // Update the distribution-version in Dependencies.toml
+        Files.list(tempWorkspaceDirectory).forEach(path -> {
+            File dependenciesTomlTemplate = path.resolve("Dependencies-template.toml").toFile();
+            if (dependenciesTomlTemplate.exists()) {
+                try {
+                    replaceDependenciesTomlVersion(path);
+                } catch (IOException e) {
+                    Assert.fail("error updating Dependencies.toml for " + path.getFileName()
+                            + " with error: " + e.getMessage());
+                }
+            }
+        });
 
         randomPackageSuffix = CentralTestUtils.randomPackageName(6);
         Set<String> uniquePackageNames = new HashSet<>();
@@ -416,6 +435,24 @@ public class HierarchicalPackagesTest {
     private String getDependencyUpdate(String orgName, String packageName, String updatedVersion) {
         return "org = \"" + orgName + "\"\n" + "name = \"" + packageName + "\"\n" +
                 "version = \"" + updatedVersion + "\"";
+    }
+
+    private void replaceDependenciesTomlVersion(Path projectPath) throws IOException {
+        String currentDistrVersion = System.getProperty("short.version");
+        Path dependenciesTomlTemplatePath = projectPath.resolve("Dependencies-template.toml");
+        Path dependenciesTomlPath = projectPath.resolve("Dependencies.toml");
+
+        try (FileInputStream input = new FileInputStream(dependenciesTomlTemplatePath.toString());
+             FileOutputStream output = new FileOutputStream(dependenciesTomlPath.toString());
+             BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(output))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                line = line.replace("**INSERT_DISTRIBUTION_VERSION_HERE**", currentDistrVersion);
+                writer.write(line);
+                writer.newLine();
+            }
+        }
     }
 
     @AfterClass

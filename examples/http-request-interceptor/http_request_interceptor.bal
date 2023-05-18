@@ -47,7 +47,7 @@ listener http:Listener interceptorListener = new (9090);
 }
 service / on interceptorListener {
 
-    resource function get albums(http:Request req) returns Album[] {
+    resource function get albums() returns Album[] {
         return albums.toArray();
     }
 }
