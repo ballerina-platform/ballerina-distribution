@@ -134,10 +134,7 @@ public class TestUtils {
         args.add(0, "grpc");
         Process process = getProcessBuilderResults(distributionName, sourceDirectory, args);
         process.waitFor();
-        if (getError) {
-            return process.getErrorStream();
-        }
-        return process.getInputStream();
+        return getError ? process.getErrorStream() : process.getInputStream();
     }
 
     /**
