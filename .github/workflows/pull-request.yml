@@ -6,7 +6,9 @@ on:
             - master
             - ballerina-1.1.x
             - ballerina-1.2.x
-            - 2201.[0-9]+.x
+            - 2201.2.x
+            - 2201.3.x
+            - 2201.4.x
 
 jobs:
     ubuntu-integration-tests:

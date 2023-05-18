@@ -1,8 +1,0 @@
-$ bal run regexp_type.bal
-Pattern `HELLO*` matches `HELLO`: true
-Pattern `a+` matches `aaa`: true
-Pattern `abc|${"xyz"}` matches `xyz`: true
-Pattern `\p{Ll}` matches `a`: true
-Pattern `\p{P}` matches `0`: true
-Pattern `\p{sc=Latin}` matches `aεЛ`: a
-Pattern `(?i:BalleRINA)` matches `Ballerina`: true

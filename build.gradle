@@ -183,7 +183,6 @@ subprojects {
         ballerinaStdLibs "io.ballerina.stdlib:sql-ballerina:${stdlibSqlVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:persist-ballerina:${stdlibPersistVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:observe-ballerina:${observeVersion}"
-        ballerinaStdLibs "io.ballerina.stdlib:math.vector-ballerina:${stdlibMathVectorVersion}"
 
         /* Ballerina Persist Tool */
         ballerinaStdLibs "io.ballerina:persist-tools:${persistToolVersion}"

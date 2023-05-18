@@ -17,7 +17,7 @@ service / on new http:Listener(9090, httpVersion = http:HTTP_1_1) {
         return albums.toArray();
     }
 
-    resource function post albums(Album album) returns Album {
+    resource function post albums(@http:Payload Album album) returns Album {
         albums.add(album);
         return album;
     }

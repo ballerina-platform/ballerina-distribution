@@ -9,11 +9,11 @@ type Age int;
 type Student record {|
     // Constraint on the `string`-typed record field.
     @constraint:String {
-        pattern: re`[0-9]{6}[A-Z|a-z]`
+        length: 7
     }
     string id;
     string name;
-    // Constrained type used as a record field.
+    // Constrainted type used as a record field.
     Age age;
     // Constraint on the `string[]`-typed record field.
     @constraint:Array {
