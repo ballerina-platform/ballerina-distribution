@@ -761,27 +761,6 @@
     ]
   },
   {
-    "title": "Regular Expressions",
-    "column": 1,
-    "category": "Language concepts",
-    "samples": [
-      {
-        "name": "RegExp type",
-        "url": "regexp-type",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "RegExp operations",
-        "url": "regexp-operations",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      }
-    ]
-  },
-  {
     "title": "Tables",
     "column": 2,
     "category": "Language concepts",
@@ -2429,24 +2408,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service interceptors",
-        "url": "graphql-service-interceptors",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Field interceptors",
-        "url": "graphql-field-interceptors",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Interceptor configurations",
-        "url": "graphql-interceptor-configurations",
+        "name": "Interceptors",
+        "url": "graphql-interceptors",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,

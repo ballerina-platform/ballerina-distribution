@@ -12,9 +12,9 @@ table<Album> key(title) albums = table [
 
 service / on new http:Listener(9090) {
 
-    // The resource returns the `409 Conflict` status code as the error response status code using 
-    // the `StatusCodeResponse` constants. This constant does not have a body or headers.
-    resource function post albums(Album album) returns Album|http:Conflict {
+    // The resource returns `409 Conflict` status code as the error response status code using 
+    // `StatusCodeResponse` constants. This constant does not have a body or headers.
+    resource function post albums(@http:Payload Album album) returns Album|http:Conflict {
         if albums.hasKey(album.title) {
             return http:CONFLICT;
         }

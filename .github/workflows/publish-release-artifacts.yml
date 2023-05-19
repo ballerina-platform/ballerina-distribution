@@ -42,12 +42,10 @@ jobs:
           echo GIT_TAG=$TAGGED_VERSION >> $GITHUB_ENV
           echo "::set-output name=version::$VERSION"
           echo "::set-output name=taggedVersion::$TAGGED_VERSION"
-          echo "::set-output name=updateNumber::$UPDATE_NUMBER"
 
       - name: Download artifacts
         run: |
           baseUrl="https://github.com/ballerina-platform/ballerina-distribution/releases/download/v$GIT_TAG"
-          updateNumber=${{ steps.set-version.outputs.updateNumber }}
           rm -rf $VERSION
           mkdir $VERSION
           cd $VERSION
@@ -58,9 +56,6 @@ jobs:
           wget "$baseUrl/ballerina-$LONG_VERSION-linux-x64.deb"
           wget "$baseUrl/ballerina-$LONG_VERSION-linux-x64.rpm"
           wget "$baseUrl/ballerina-$LONG_VERSION-macos-x64.pkg"
-          if [ "$updateNumber" -ge 5 ]; then
-            wget "$baseUrl/ballerina-$LONG_VERSION-macos-arm-x64.pkg"
-          fi
         env:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
           packageUser: ${{ secrets.BALLERINA_BOT_USERNAME }}
@@ -71,7 +66,6 @@ jobs:
       - name: Generate metadata json
         working-directory: ${{ steps.set-version.outputs.version }}
         run: |
-          updateNumber=${{ steps.set-version.outputs.updateNumber }}
           date=`date +%Y-%m-%d`
           winInstSize=`ls -lh ballerina-$LONG_VERSION-windows-x64.msi | cut -d " " -f5 | sed 's/M/mb/g'`
           linuxInstSize=`ls -lh ballerina-$LONG_VERSION-linux-x64.deb | cut -d " " -f5 | sed 's/M/mb/g'`
@@ -90,11 +84,6 @@ jobs:
           echo "	\"linux-installer-size\":\"$linuxInstSize\"," >> $fileName
           echo "	\"macos-installer\":\"ballerina-$LONG_VERSION-macos-x64.pkg\"," >> $fileName
           echo "	\"macos-installer-size\":\"$macInstSize\"," >> $fileName
-          if [ "$updateNumber" -ge 5 ]; then
-            macArmInstSize=`ls -lh ballerina-$LONG_VERSION-macos-arm-x64.pkg | cut -d " " -f5 | sed 's/M/mb/g'`
-            echo "	\"macos-arm-installer\":\"ballerina-$LONG_VERSION-macos-arm-x64.pkg\"," >> $fileName
-            echo "	\"macos-arm-installer-size\":\"$macArmInstSize\"," >> $fileName
-          fi
           echo "	\"rpm-installer\":\"ballerina-$LONG_VERSION-linux-x64.rpm\"," >> $fileName
           echo "	\"rpm-installer-size\":\"$rpmInstSize\"," >> $fileName
           echo "	\"other-artefacts\":[  " >> $fileName
