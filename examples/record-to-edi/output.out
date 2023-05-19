@@ -1,4 +1,4 @@
-$ bal run record-to-edi
+$ bal run
 HDR*ORDER_200*HMart*17-05-2023~
 ITM*A680*15~
 ITM*A530*2~

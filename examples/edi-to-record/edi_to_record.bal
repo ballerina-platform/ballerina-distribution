@@ -1,5 +1,5 @@
 import ballerina/io;
-import edi_to_bal.sorder;
+import edi_to_record.sorder;
 
 public function main() returns error? {
     string ediText = check io:fileReadString("resources/order.edi");

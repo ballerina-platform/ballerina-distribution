@@ -1,5 +1,5 @@
 import ballerina/io;
-import edi_to_bal.sorder;
+import record_to_edi.sorder;
 
 public function main() returns error? {
     sorder:SimpleOrder simpleOrder = 

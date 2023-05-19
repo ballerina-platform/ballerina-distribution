@@ -20,7 +20,7 @@ Run the below command from the project root directory to generate the Ballerina 
 
 Write a Ballerina program by using generated methods and records to convert Ballerina records to EDI.
 
-::: code record-to-edi.bal :::
+::: code record_to_edi.bal :::
 
 Run the program using the command below:
 
