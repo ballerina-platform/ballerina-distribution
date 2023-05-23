@@ -42,8 +42,8 @@ jobs:
         working-directory: installers/linux-rpm
       - name: Generate Hashes
         run: |
-          openssl dgst -sha256 -out ballerina-${{ steps.project-version.outputs.version }}-linux-x64.deb.sha256 installers/linux-deb/target/ballerina-*-linux-x64.deb
-          openssl dgst -sha256 -out ballerina-${{ steps.project-version.outputs.version }}-linux-x64.rpm.sha256 installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-*-linux-x64.rpm
+          openssl dgst -sha256 -out ballerina-${{ steps.project-version.outputs.version }}-linux-x64.deb.sha256 installers/linux-deb/target/ballerina-linux-x64-*.deb
+          openssl dgst -sha256 -out ballerina-${{ steps.project-version.outputs.version }}-linux-x64.rpm.sha256 installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-linux-x64-*.rpm
           openssl dgst -sha256 -out ballerina-${{ steps.project-version.outputs.version }}.zip.sha256 ballerina/target/ballerina-${{ steps.project-version.outputs.version }}.zip
       - name: Archive Ballerina ZIP
         uses: actions/upload-artifact@v2
@@ -111,7 +111,7 @@ jobs:
         working-directory: installers/mac
       - name: Generate Hashes
         run: |
-          openssl dgst -sha256 -out ballerina-${{ needs.ubuntu-build.outputs.project-version }}-macos-x64.pkg.sha256 installers/mac/target/pkg/ballerina-*-macos-x64.pkg
+          openssl dgst -sha256 -out ballerina-${{ needs.ubuntu-build.outputs.project-version }}-macos-x64.pkg.sha256 installers/mac/target/pkg/ballerina-macos-x64-*.pkg
       - name: Archive MacOS pkg
         uses: actions/upload-artifact@v2
         with:
