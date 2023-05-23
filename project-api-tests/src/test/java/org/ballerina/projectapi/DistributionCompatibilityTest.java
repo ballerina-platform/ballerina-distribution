@@ -23,8 +23,14 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UncheckedIOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
@@ -36,14 +42,19 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
+import java.util.zip.ZipOutputStream;
 
 import static org.ballerina.projectapi.CentralTestUtils.DEPENDENCIES_TOML;
+import static org.ballerina.projectapi.CentralTestUtils.PACKAGE_NAME_SEPARATOR;
 import static org.ballerina.projectapi.CentralTestUtils.buildPackageBala;
 import static org.ballerina.projectapi.CentralTestUtils.createSettingToml;
 import static org.ballerina.projectapi.CentralTestUtils.deleteFiles;
 import static org.ballerina.projectapi.CentralTestUtils.getEnvVariables;
 import static org.ballerina.projectapi.CentralTestUtils.getExecutableJarPath;
 import static org.ballerina.projectapi.CentralTestUtils.getString;
+import static org.ballerina.projectapi.CentralTestUtils.replaceRandomPackageName;
 import static org.ballerina.projectapi.CentralTestUtils.testPushPackage;
 import static org.ballerina.projectapi.TestUtils.DISTRIBUTION_FILE_NAME;
 import static org.ballerina.projectapi.TestUtils.OUTPUT_CONTAIN_ERRORS;
@@ -59,6 +70,8 @@ public class DistributionCompatibilityTest {
     private Map<String, String> envVariables;
     private String orgName = "bctestorg";
     private String projectPath = "distribution-tests";
+    private String randomPackageSuffix;
+    private static final int BUFFER_SIZE = 4096;
 
     @BeforeClass()
     public void setUp() throws IOException, InterruptedException {
@@ -78,8 +91,17 @@ public class DistributionCompatibilityTest {
             Assert.fail("error loading resources");
         }
         String dependencyVersion = "1.1.0";
+
+        randomPackageSuffix = CentralTestUtils.randomPackageName(6);
+        String multiPackageName = "disttestmultiples";
+        String updatedMultiPackageName = multiPackageName + PACKAGE_NAME_SEPARATOR + randomPackageSuffix;
+        // Update directory to match the package name
+        replaceContainingDir(multiPackageName, updatedMultiPackageName);
+        modifyBala(multiPackageName, updatedMultiPackageName);
+        replaceRandomPackageName(tempWorkspaceDirectory, updatedMultiPackageName, multiPackageName);
+
         // Push dependency built with beta6, 9999.0.0 and a 1.1.0 version of multiple dependencies
-        List<String> dependencyPackages = Arrays.asList("disttestpackbeta6", "forwardpack1", "disttestmultiples");
+        List<String> dependencyPackages = Arrays.asList("disttestpackbeta6", "forwardpack1", updatedMultiPackageName);
         for (String dependencyPackageName : dependencyPackages) {
             if (!CentralTestUtils.isPkgAvailableInCentral(orgName + "/" + dependencyPackageName,
                     tempWorkspaceDirectory, envVariables)) {
@@ -89,22 +111,34 @@ public class DistributionCompatibilityTest {
                                 dependencyPackageName + "-any-" + dependencyVersion + ".bala").toString());
             }
         }
+
         // Delete the bala file for multiple dependencies
-        FileUtils.forceDelete(FileUtils.getFile(String.valueOf(tempWorkspaceDirectory.resolve("disttestmultiples").
-                resolve(orgName + "-" + "disttestmultiples-any-" + dependencyVersion + ".bala"))));
+        FileUtils.forceDelete(FileUtils.getFile(String.valueOf(tempWorkspaceDirectory.resolve(updatedMultiPackageName).
+                resolve(orgName + "-" + updatedMultiPackageName + "-any-" + dependencyVersion + ".bala"))));
 
         // Dependency built with this ballerina version
         String dependencyPackage = "disttestpack1";
-        if (!CentralTestUtils.isPkgAvailableInCentral(orgName + "/" + dependencyPackage,
+        String updatedDependencyPackage = dependencyPackage + PACKAGE_NAME_SEPARATOR + randomPackageSuffix;
+        replaceRandomPackageName(tempWorkspaceDirectory, updatedDependencyPackage, dependencyPackage);
+        replaceContainingDir(dependencyPackage, updatedDependencyPackage);
+        if (!CentralTestUtils.isPkgAvailableInCentral(orgName + "/" + updatedDependencyPackage,
                 tempWorkspaceDirectory, envVariables)) {
-            pushToCentral(dependencyPackage, dependencyVersion);
+            pushToCentral(updatedDependencyPackage, dependencyVersion);
+        }
+    }
+
+    private void replaceContainingDir(String packageName, String updatedPackageName) {
+        File multiplesDir = new File(tempWorkspaceDirectory.toFile(), packageName);
+        File updatedMultiplesDir = new File(tempWorkspaceDirectory.toFile(), updatedPackageName);
+        if (multiplesDir.exists()) {
+            multiplesDir.renameTo(updatedMultiplesDir);
         }
     }
 
     @Test(description = "Verify dependency resolution with a dependency built with same distribution version.",
             enabled = false)
     public void testDependencyResolutionWithSameDist() throws IOException, InterruptedException {
-        String dependencyPackageName = "disttestpack1";
+        String dependencyPackageName = "disttestpack1" + PACKAGE_NAME_SEPARATOR + randomPackageSuffix;
         String dependencyVersion = "1.1.0";
         String packageName = "disttestpack2";
         buildPackage(packageName, new LinkedList<>());
@@ -134,7 +168,7 @@ public class DistributionCompatibilityTest {
     public void testWithMultipleDistDependencyVersions() throws IOException, InterruptedException {
         // Push 1.1.1 built with this Ballerina version
         String updatedVersion = "1.1.1";
-        String dependencyPackage = "disttestmultiples";
+        String dependencyPackage = "disttestmultiples" + PACKAGE_NAME_SEPARATOR + randomPackageSuffix;
 
         if (!CentralTestUtils.isPkgVersionAvailableInCentral(orgName + "/" + dependencyPackage,
                 tempWorkspaceDirectory, envVariables, updatedVersion)) {
@@ -199,9 +233,129 @@ public class DistributionCompatibilityTest {
         }
     }
 
+    private void modifyBala(String packageName, String updatedPackageName) throws IOException {
+        // Open the zip file
+        String dependencyVersion = "1.1.0";
+        Path sourcePath = this.tempWorkspaceDirectory.resolve(updatedPackageName).resolve(orgName + "-" +
+                packageName + "-any-" + dependencyVersion + ".bala");
+        File zipFile = new File(sourcePath.toString());
+        ZipFile zip = new ZipFile(zipFile);
+
+        // Create a new zip file with the updated contents
+        Path packageDir = this.tempWorkspaceDirectory.resolve(updatedPackageName);
+        if (!packageDir.toFile().exists()) {
+            Files.createDirectories(packageDir);
+        }
+        Path destinationPath = this.tempWorkspaceDirectory.resolve(updatedPackageName).resolve(orgName + "-" +
+                updatedPackageName + "-any-" + dependencyVersion + ".bala");
+
+        // Create a temporary directory for the new contents
+        File tempDir = Files.createTempDirectory("zipFileModification").toFile();
+
+        // Extract the zip file to the temporary directory
+        zip.stream()
+                .forEach(entry -> {
+                    try {
+                        String entryName = entry.getName();
+                        File entryFile = new File(tempDir, entryName);
+                        if (entry.isDirectory()) {
+                            entryFile.mkdirs();
+                        } else {
+                            entryFile.getParentFile().mkdirs();
+                            FileOutputStream outputStream = new FileOutputStream(entryFile);
+                            InputStream inputStream = zip.getInputStream(entry);
+                            byte[] buffer = new byte[BUFFER_SIZE];
+                            int bytesRead;
+                            while ((bytesRead = inputStream.read(buffer)) > 0) {
+                                outputStream.write(buffer, 0, bytesRead);
+                            }
+                            outputStream.close();
+                            inputStream.close();
+                        }
+                    } catch (IOException e) {
+                        throw new UncheckedIOException(e);
+                    }
+                });
+
+        // Rename the disttestmultiples module directory to disttestmultiples_<randomSuffix>
+        File disttestmultiplesDir = new File(tempDir, "modules/" + packageName);
+        if (disttestmultiplesDir.exists()) {
+            File disttestmultiplesXyztheDir = new File(tempDir, "modules/" + updatedPackageName);
+            disttestmultiplesDir.renameTo(disttestmultiplesXyztheDir);
+        }
+        Path packageJsonFile = Paths.get(tempDir.toString(), "package.json");
+        if (packageJsonFile.toFile().exists()) {
+            String content = new String(Files.readAllBytes(packageJsonFile));
+            content = content.replace(packageName, updatedPackageName);
+            Files.write(packageJsonFile, content.getBytes());
+        }
+        Path dependenciesJsonFile = Paths.get(tempDir.toString(), "dependency-graph.json");
+        if (dependenciesJsonFile.toFile().exists()) {
+            String content = new String(Files.readAllBytes(dependenciesJsonFile));
+            content = content.replace(packageName, updatedPackageName);
+            Files.write(dependenciesJsonFile, content.getBytes());
+        }
+        createBala(List.of(tempDir.listFiles()), destinationPath.toString());
+
+        // Clean up
+        zip.close();
+        FileUtils.deleteDirectory(tempDir);
+    }
+
+    private void createBala(List<File> listFiles, String destZipFile) throws FileNotFoundException,
+            IOException {
+        ZipOutputStream out = new ZipOutputStream(new FileOutputStream(destZipFile));
+        for (File file : listFiles) {
+            if (file.isDirectory()) {
+                zipDirectory(file, file.getName(), out);
+            } else {
+                zipFile(file, out);
+            }
+        }
+        out.flush();
+        out.close();
+    }
+
+    private void zipFile(File file, ZipOutputStream out)
+            throws IOException {
+        out.putNextEntry(new ZipEntry(file.getName()));
+        BufferedInputStream inputStream = new BufferedInputStream(new FileInputStream(
+                file));
+        long bytesRead = 0;
+        byte[] bytesIn = new byte[BUFFER_SIZE];
+        int read = 0;
+        while ((read = inputStream.read(bytesIn)) != -1) {
+            out.write(bytesIn, 0, read);
+            bytesRead += read;
+        }
+        out.closeEntry();
+    }
+
+    private void zipDirectory(File folder, String parentFolder,
+                              ZipOutputStream out) throws IOException {
+        for (File file : folder.listFiles()) {
+            if (file.isDirectory()) {
+                zipDirectory(file, parentFolder + "/" + file.getName(), out);
+                continue;
+            }
+            out.putNextEntry(new ZipEntry(parentFolder + "/" + file.getName()));
+            BufferedInputStream bis = new BufferedInputStream(
+                    new FileInputStream(file));
+            long bytesRead = 0;
+            byte[] bytes = new byte[BUFFER_SIZE];
+            int read = 0;
+            while ((read = bis.read(bytes)) != -1) {
+                out.write(bytes, 0, read);
+                bytesRead += read;
+            }
+            out.closeEntry();
+        }
+    }
+
     @AfterClass
     private void cleanup() throws IOException {
         deleteFiles(tempHomeDirectory);
         deleteFiles(tempWorkspaceDirectory);
     }
+
 }

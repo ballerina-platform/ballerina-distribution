@@ -57,6 +57,7 @@ import static org.ballerina.projectapi.CentralTestUtils.getEnvVariables;
 import static org.ballerina.projectapi.CentralTestUtils.getExecutableJarPath;
 import static org.ballerina.projectapi.CentralTestUtils.getNewDirectoryName;
 import static org.ballerina.projectapi.CentralTestUtils.getString;
+import static org.ballerina.projectapi.CentralTestUtils.replaceRandomPackageName;
 import static org.ballerina.projectapi.CentralTestUtils.testPushPackage;
 import static org.ballerina.projectapi.CentralTestUtils.testPushPackageToLocal;
 import static org.ballerina.projectapi.TestUtils.DISTRIBUTION_FILE_NAME;
@@ -108,7 +109,7 @@ public class HierarchicalPackagesTest {
         }
         for (String packageName : uniquePackageNames) {
             String randomPackageName = packageName + PACKAGE_NAME_SEPARATOR + randomPackageSuffix;
-            replaceRandomPackageName(randomPackageName, packageName);
+            replaceRandomPackageName(tempWorkspaceDirectory, randomPackageName, packageName);
         }
 
         List<String> oldPackageNames = Arrays.asList("PackageH.test", "PackageJ.test", "PackageL.test", "PackageT.test",
@@ -172,12 +173,7 @@ public class HierarchicalPackagesTest {
         }
     }
 
-    private void replaceRandomPackageName(String randomPackageName, String packageName) throws IOException {
-        List<Path> balFiles = CentralTestUtils.getFileListByExtension(tempWorkspaceDirectory, "bal");
-        List<Path> tomlFiles = CentralTestUtils.getFileListByExtension(tempWorkspaceDirectory, "toml");
-        CentralTestUtils.replacePackageName(balFiles, packageName, randomPackageName);
-        CentralTestUtils.replacePackageName(tomlFiles, packageName, randomPackageName);
-    }
+
 
     @Test(description = "Verify build package behaviour for hierarchical package imports in two consecutive builds.",
     enabled = false)
