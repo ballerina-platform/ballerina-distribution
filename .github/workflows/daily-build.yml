@@ -160,3 +160,37 @@ jobs:
         with:
           name: Windows msi Hashes
           path: ballerina-${{ needs.ubuntu-build.outputs.project-version }}-windows-x64.msi.sha256
+      - name: Checkout docker repo
+        uses: actions/checkout@v2
+        with:
+          repository: ballerina-platform/module-ballerina-docker
+          path: module-ballerina-docker
+      - name: Copy zip artifact
+        run: cp ballerina/target/ballerina-${{ steps.project-version.outputs.version }}.zip module-ballerina-docker/base/docker/
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USER }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+      - name: Build the docker image
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          context: module-ballerina-docker/base/docker/
+          load: true
+          push: false
+          tags: ballerina/ballerina:release-test
+          build-args: |
+            BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.version }}.zip
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'ballerina/ballerina:release-test'
+          skip-dirs: 'ballerina/runtime/examples'
+          format: 'table'
+          exit-code: '1'
+          timeout: "10m0s"
