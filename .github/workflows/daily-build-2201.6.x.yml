@@ -207,7 +207,7 @@ jobs:
             \"event_type\": \"notify-build-failure\",
             \"client_payload\": {
               \"repoName\": \"ballerina-distribution\",
-              \"branch\": \"master\"
+              \"branch\": \"2201.6.x\"
             }
           }"
     outputs:
@@ -293,8 +293,8 @@ jobs:
         run: |
           DISPLAY_TEXT=${{ needs.ubuntu-build.outputs.lang-version }}
           SWAN_LAKE_LATEST_VERSION="swan-lake-"+$DISPLAY_TEXT
-          perl -pi -e "s/^\s*swan-lake-latest-version-display-text=.*/swan-lake-latest-version-display-text=$DISPLAY_TEXT/" ballerina-test-automation/gradle.properties
-          perl -pi -e "s/^\s*swan-lake-latest-version=.*/swan-lake-latest-version=$SWAN_LAKE_LATEST_VERSION/" ballerina-test-automation/gradle.properties
+          sed -i -e "s/swan-lake-latest-version-display-text=.*/swan-lake-latest-version-display-text=$DISPLAY_TEXT/" ballerina-test-automation/gradle.properties
+          sed -i -e "s/swan-lake-latest-version=.*/swan-lake-latest-version=$SWAN_LAKE_LATEST_VERSION/" ballerina-test-automation/gradle.properties
       - name: Run Installer Tests
         working-directory: ./ballerina-test-automation/installer-test
         run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
@@ -446,8 +446,8 @@ jobs:
         run: |
           set DISPLAY_TEXT=${{ needs.ubuntu-build.outputs.lang-version }}
           set SWAN_LAKE_LATEST_VERSION=swan-lake-%DISPLAY_TEXT%
-          perl -pi -e "s/^\s*swan-lake-latest-version-display-text=.*/swan-lake-latest-version-display-text=%DISPLAY_TEXT%/" ballerina-distribution/ballerina-test-automation/gradle.properties
-          perl -pi -e "s/^\s*swan-lake-latest-version=.*/swan-lake-latest-version=%SWAN_LAKE_LATEST_VERSION%/" ballerina-distribution/ballerina-test-automation/gradle.properties
+          perl -pi -e "s/^\s*swan-lake-latest-version-display-text=.*/swan-lake-latest-version-display-text=%DISPLAY_TEXT%/" ballerina-test-automation/gradle.properties
+          perl -pi -e "s/^\s*swan-lake-latest-version=.*/swan-lake-latest-version=%SWAN_LAKE_LATEST_VERSION%/" ballerina-test-automation/gradle.properties
         shell: cmd
       - name: Run Installer Tests
         working-directory: .\ballerina-test-automation\installer-test
