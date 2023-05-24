@@ -207,7 +207,7 @@ jobs:
             \"event_type\": \"notify-build-failure\",
             \"client_payload\": {
               \"repoName\": \"ballerina-distribution\",
-              \"branch\": \"master\"
+              \"branch\": \"2201.6.x\"
             }
           }"
     outputs:
