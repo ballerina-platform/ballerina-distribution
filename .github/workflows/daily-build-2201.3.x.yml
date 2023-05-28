@@ -337,8 +337,8 @@ jobs:
         run: sudo installer -pkg installers/mac/target/pkg/ballerina-*-macos-x64.pkg -target /
       - name: Update Installer Test Configs
         run: |
-          set DISPLAY_TEXT=${{ needs.ubuntu-build.outputs.lang-version }}
-          set SWAN_LAKE_LATEST_VERSION="swan-lake-"+$DISPLAY_TEXT
+          DISPLAY_TEXT=${{ needs.ubuntu-build.outputs.lang-version }}
+          SWAN_LAKE_LATEST_VERSION="swan-lake-"+$DISPLAY_TEXT
           perl -pi -e "s/^\s*swan-lake-latest-version-display-text=.*/swan-lake-latest-version-display-text=$DISPLAY_TEXT/" ballerina-test-automation/gradle.properties
           perl -pi -e "s/^\s*swan-lake-latest-version=.*/swan-lake-latest-version=$SWAN_LAKE_LATEST_VERSION/" ballerina-test-automation/gradle.properties
       - name: Run Installer Tests
@@ -393,8 +393,8 @@ jobs:
         shell: cmd
       - name: Update Installer Test Configs
         run: |
-          DISPLAY_TEXT=${{ needs.ubuntu-build.outputs.lang-version }}
-          SWAN_LAKE_LATEST_VERSION=swan-lake-%DISPLAY_TEXT%
+          set DISPLAY_TEXT=${{ needs.ubuntu-build.outputs.lang-version }}
+          set SWAN_LAKE_LATEST_VERSION=swan-lake-%DISPLAY_TEXT%
           perl -pi -e "s/^\s*swan-lake-latest-version-display-text=.*/swan-lake-latest-version-display-text=%DISPLAY_TEXT%/" ballerina-test-automation/gradle.properties
           perl -pi -e "s/^\s*swan-lake-latest-version=.*/swan-lake-latest-version=%SWAN_LAKE_LATEST_VERSION%/" ballerina-test-automation/gradle.properties
         shell: cmd
