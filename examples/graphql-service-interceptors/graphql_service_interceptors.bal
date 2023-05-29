@@ -1,7 +1,7 @@
 import ballerina/graphql;
 import ballerina/log;
 
-// Defines an interceptor `LogInterceptor` using a service class. It cannot have any
+// Defines an interceptor named `LogInterceptor` using a service class. It cannot have any
 // `resource`/`remote` methods except the `execute()` remote method. Other methods are allowed.
 readonly service class LogInterceptor {
     // Includes the `graphql:Interceptor` service object from the GraphQL package.

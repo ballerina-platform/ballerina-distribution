@@ -221,7 +221,6 @@ netty-tcnative-boringssl-static-2.0.54.Final-osx-aarch_64.jar                   
 netty-tcnative-boringssl-static-2.0.54.Final.jar                                                    bundle         apache2
 auth-native-2.6.0.jar                                                                               jar            apache2
 protobuf-java-util-3.21.7.jar                                                                       bundle         bsd3
-serdes-native-0.2.0.jar                                                                             jar            apache2
 protobuf-java-3.21.7.jar                                                                            bundle         bsd3
 io-native-1.4.0.jar                                                                                 jar            apache2
 oauth2-native-2.6.0.jar                                                                             jar            apache2
@@ -290,7 +289,6 @@ ballerina-grpc.types.struct-1.6.0.jar                                           
 ballerina-grpc.types.wrappers-1.6.0.jar                                                             jar            apache2
 ballerina-auth-2.6.0.jar                                                                            jar            apache2
 ballerina-lang.__internal-0.0.0.jar                                                                 jar            apache2
-ballerina-serdes-0.2.0.jar                                                                          jar            apache2
 ballerina-jballerina.java-0.0.0.jar                                                                 jar            apache2
 ballerina-lang.string-0.0.0.jar                                                                     jar            apache2
 ballerina-io-1.4.0.jar                                                                              jar            apache2

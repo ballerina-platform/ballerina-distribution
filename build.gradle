@@ -157,7 +157,6 @@ subprojects {
         ballerinaStdLibs "io.ballerina.stdlib:os-ballerina:${stdlibOsVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:task-ballerina:${stdlibTaskVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:xslt-ballerina:${stdlibXsltVersion}"
-        ballerinaStdLibs "io.ballerina.stdlib:serdes-ballerina:${stdlibSerdesVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:protobuf-ballerina:${stdlibProtobufVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:cache-ballerina:${stdlibCacheVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:file-ballerina:${stdlibFileVersion}"
