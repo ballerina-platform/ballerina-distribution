@@ -41,6 +41,8 @@ import static org.ballerinalang.distribution.utils.TestUtils.getStringFromGivenB
 
 public class GrpcToolingTest {
 
+    private String helpCommandOutput = "NAMEballerina-grpc-GenerateBallerinasourcesforthegivenProtocolBufferdefinitionSYNOPSISbalgrpc--input<proto-file-path>[--output<path>][--modemode][--proto-path<path>]DESCRIPTIONGeneratetheBallerinagRPCclient/servicesourcesforagivengRPCprotocolbuffer(Protobuf)definition.OPTIONS--input<path>Pathtoa'.proto'fileoradirectorycontainingmultiple'.proto'files.--output<path>LocationofthegeneratedBallerinasourcefiles.Iftheoutputpathisnotspecified,theoutputwillbewrittentoadirectorycorrespondingtothepackageintheprotocolbufferdefinition.Ifapackageisnotspecified,theoutputwillbewrittentoa'temp'directoryinthecurrentlocation.--modemodeSetthe'client'or'service'modetogeneratesamplecode.Ifnotspecified,onlythestubfileisgenerated.--proto-path<path>Pathtoadirectoryinwhichtolookfor'.proto'fileswhenresolvingimportdirectives.EXAMPLESGeneratetheBallerinagRPCstubfile(forthegiven'.proto'file)ina'stub'directory.$balgrpc--inputchat.proto--outputstubGeneratetheBallerinagRPCstubfileandclientsamplecode(forthegiven'.proto'file)ina'client'directory.$balgrpc--inputchat.proto--outputclient--modeclientGeneratetheBallerinagRPCstubfileandservicesamplecode(forthegiven'.proto'file)ina'service'directory.$balgrpc--inputchat.proto--outputservice--modeservice";
+
     @BeforeClass
     public void setupDistributions() throws IOException {
         TestUtils.cleanDistribution();
@@ -52,9 +54,9 @@ public class GrpcToolingTest {
         Path testResource = Paths.get("/grpc");
         List<String> buildArgs = new LinkedList<>();
         InputStream result = TestUtils.executeGrpcCommand(DISTRIBUTION_FILE_NAME, TestUtils.getResource(testResource),
-                buildArgs);
+                buildArgs, true);
         String expectedMsg = "ballerina:missingrequiredoption'--input=<protoPath>'Run'balhelp'forusage.";
-        Assert.assertEquals(readOutputFromErrorStreamAsString(result), expectedMsg);
+        Assert.assertEquals(readOutputFromStreamAsString(result), expectedMsg);
     }
 
     @Test
@@ -63,9 +65,9 @@ public class GrpcToolingTest {
         List<String> buildArgs = new LinkedList<>();
         buildArgs.add("--input");
         InputStream result = TestUtils.executeGrpcCommand(DISTRIBUTION_FILE_NAME, TestUtils.getResource(testResource),
-                buildArgs);
+                buildArgs, true);
         String expectedMsg = "ballerina:flag'--input'(<protoPath>)needsanargumentRun'balhelp'forusage.";
-        Assert.assertEquals(readOutputFromErrorStreamAsString(result), expectedMsg);
+        Assert.assertEquals(readOutputFromStreamAsString(result), expectedMsg);
     }
 
     @Test
@@ -77,8 +79,8 @@ public class GrpcToolingTest {
         buildArgs.add("--output");
         buildArgs.add(TestUtils.getResource(testResource).toString());
         InputStream result = TestUtils.executeGrpcCommand(DISTRIBUTION_FILE_NAME, TestUtils.getResource(testResource),
-                buildArgs);
-        Assert.assertEquals(readOutputFromErrorStreamAsString(result), "");
+                buildArgs, true);
+        Assert.assertEquals(readOutputFromStreamAsString(result), "");
         String generatedTypes = getStringFromGivenBalFile(TestUtils.getResource(testResource)
                 .resolve("route_guide_pb.bal"));
         String expectedTypes = getStringFromGivenBalFile(RESOURCES_PATH
@@ -86,7 +88,27 @@ public class GrpcToolingTest {
         Assert.assertEquals(generatedTypes, expectedTypes);
     }
 
-    private String readOutputFromErrorStreamAsString(InputStream result) throws IOException {
+    @Test
+    public void grpcHelpCommandTest() throws IOException, InterruptedException {
+        Path testResource = Paths.get("/grpc");
+        List<String> buildArgs = new LinkedList<>();
+        buildArgs.add("--help");
+        InputStream result = TestUtils.executeGrpcCommand(DISTRIBUTION_FILE_NAME, TestUtils.getResource(testResource),
+                buildArgs, false);
+        Assert.assertEquals(readOutputFromStreamAsString(result), helpCommandOutput);
+    }
+
+    @Test
+    public void grpcHCommandTest() throws IOException, InterruptedException {
+        Path testResource = Paths.get("/grpc");
+        List<String> buildArgs = new LinkedList<>();
+        buildArgs.add("-h");
+        InputStream result = TestUtils.executeGrpcCommand(DISTRIBUTION_FILE_NAME, TestUtils.getResource(testResource),
+                buildArgs, false);
+        Assert.assertEquals(readOutputFromStreamAsString(result), helpCommandOutput);
+    }
+
+    private String readOutputFromStreamAsString(InputStream result) throws IOException {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(result))) {
             Stream<String> logLines = br.lines();
             String generatedLog = logLines.collect(Collectors.joining("\n"));
