@@ -1,6 +1,6 @@
 # Persist read - Filtering and sorting
 
-The Ballerina persistence feature provide support to manage data persistence in a Ballerina package. It starts with defining the application's data model. Once model is defined, the client API is generated with resources based on the model. The generated
+The bal persist feature provide support to manage data persistence in a Ballerina package. It starts with defining the application's data model. Once model is defined, the client API is generated with resources based on the model. The generated
 API can be used to query and manipulate the persistent data in the application.
 The generated client API provides `get` resource function to retrieve all records from the data store. As the `get` resource function returns a stream of records, we can use query expressions to do additional filter. For more information, see [Query Expressions](/learn/by-example/query-expressions/).
 
