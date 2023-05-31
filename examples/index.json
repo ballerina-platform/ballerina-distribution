@@ -4296,7 +4296,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Filtering and Sorting",
+        "name": "Filtering and sorting",
         "url": "persist-filtering",
         "verifyBuild": false,
         "verifyOutput": false,
@@ -4305,7 +4305,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Relation Queries",
+        "name": "Relation queries",
         "url": "persist-relation-queries",
         "verifyBuild": false,
         "verifyOutput": false,
@@ -4321,7 +4321,7 @@
     "category": "Persistence",
     "samples": [
       {
-        "name": "Create/Create Many",
+        "name": "Create/Create many",
         "url": "persist-create",
         "verifyBuild": false,
         "verifyOutput": false,

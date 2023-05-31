@@ -40,5 +40,5 @@ public function main() returns error? {
     };
 
     string[] employeeIds = check sClient->/employees.post([employee1, employee2]);
-    io:println(string `Inserted employee id: ${employeeIds.toString()}`);
+    io:println(string `Inserted employee ids: ${employeeIds.toString()}`);
 }
