@@ -4,7 +4,7 @@ The Ballerina persistence feature provide support to manage data persistence in 
 API can be used to query and manipulate the persistent data in the application.
 The generated client API provides support to select subset of fields of the entity when retrieving the records/record from `get` resource function from the data store.
 
-> **Note:** This example uses the Ballerina tables as the data store. You can MySQL and Google Sheets as the data store as well. For more information, see [Supported Data Stores](/learn/by-example/persist-supported-data-stores/).
+> **Note:** This example uses the Ballerina tables as the data store. You can MySQL and Google Sheets as the data store as well. For more information, see [Supported Data Stores](/learn/supported-data-stores/).
 
 #### Initialize the project
 Execute the command below to initialize persistence in the project.
