@@ -1,6 +1,6 @@
 import ballerina/io;
-import rainier.store;
 import ballerina/persist;
+import rainier.store;
 
 store:Client sClient = check new ();
 
