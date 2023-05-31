@@ -1,4 +1,4 @@
-# Persist read - Select fields
+# Persist read - Select relation fields
 
 The Ballerina persistence feature provide support to manage data persistence in a Ballerina package. It starts with defining the application's data model. Once model is defined, the client API is generated with resources based on the model. The generated
 API can be used to query and manipulate the persistent data in the application.
