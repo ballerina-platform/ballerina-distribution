@@ -1,6 +1,6 @@
 # Persist read - Get record by key
 
-The Ballerina persistence feature provide support to manage data persistence in a Ballerina package. It starts with defining the application's data model. Once model is defined, the client API is generated with resources based on the model. The generated
+The bal persist feature provide support to manage data persistence in a Ballerina package. It starts with defining the application's data model. Once model is defined, the client API is generated with resources based on the model. The generated
 API can be used to query and manipulate the persistent data in the application.
 The generated client API provides `get by key` resource function to retrieve the record by the key from the data store.
 
