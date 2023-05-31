@@ -1,13 +1,13 @@
 # Persist read - Select fields
 
-The Ballerina persistence feature provides support to manage data persistence in a Ballerina package. It starts with defining the application's data model. Once the model is defined, the client API is generated with resources based on the model. The generated
+The bal persist feature provides support to manage data persistence in a Ballerina package. It starts with defining the application's data model. Once the model is defined, the client API is generated with resources based on the model. The generated
 API can be used to query and manipulate the persistent data in the application.
-The generated client API provides support to select a subset of fields of the entity when retrieving the records/record from the `get` resource function from the data store.
+The generated client API provides support to select a subset of fields of the entity when retrieving the records/record from the `get` resource method from the data store.
 
 > **Note:** This example uses Ballerina tables as the data store. You can use MySQL and Google Sheets as the data store as well. For more information, see [Supported Data Stores](/learn/supported-data-stores/).
 
 #### Initialize the project
-Execute the command below to initialize persistence in the project.
+Execute the command below to initialize `bal persist` in the project.
 
 ::: out persist_init.out :::
 
@@ -24,7 +24,7 @@ Execute the command below to generate the Ballerina client API.
 
 #### Use the generated client API
 
-Using the generated client API, you can retrieve the record with selected fields from the datastore with both `get` and `get by key` resource functions.
+Using the generated client API, you can retrieve the record with selected fields from the datastore with both `get` and `get by key` resource methods.
 
 ::: code persist_select_fields.bal :::
 

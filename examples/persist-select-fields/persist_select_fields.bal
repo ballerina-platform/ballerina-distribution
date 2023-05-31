@@ -2,6 +2,13 @@ import ballerina/io;
 import rainier.store;
 import ballerina/persist;
 
+// A record with subset of fields
+type EmployeeName record {|
+    string id;
+    string firstName;
+    string lastName;
+|};
+
 store:Client sClient = check new ();
 
 public function main() returns error? {
@@ -17,10 +24,3 @@ public function main() returns error? {
     EmployeeName employee = check sClient->/employees/[empId];
     io:println(employee);
 }
-
-// A record with subset of fields
-type EmployeeName record {|
-    string id;
-    string firstName;
-    string lastName;
-|};
