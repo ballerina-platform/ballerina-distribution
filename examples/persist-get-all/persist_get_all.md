@@ -24,7 +24,7 @@ Execute the command below to generate the Ballerina client API.
 
 #### Use the generated client API
 
-Using the generated client API, we can retrieve all records from the datastore. The `get` resource method returns a stream of records. We can iterate through the stream and print the records.
+Using the generated client API, we can retrieve all records from the data store. The `get` resource method returns a stream of records. We can iterate through the stream and print the records.
 
 ::: code persist_get_all.bal :::
 
