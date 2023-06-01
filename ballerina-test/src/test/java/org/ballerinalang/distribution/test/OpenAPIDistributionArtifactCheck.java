@@ -52,7 +52,7 @@ public class OpenAPIDistributionArtifactCheck {
                 .resolve("cache")
                 .resolve("ballerina")
                 .resolve("openapi")
-                .resolve("1.5.0")
+                .resolve("1.6.0")
                 .resolve("bir");
 
         Path jarPath = TEST_DISTRIBUTION_PATH
@@ -61,7 +61,7 @@ public class OpenAPIDistributionArtifactCheck {
                 .resolve("cache")
                 .resolve("ballerina")
                 .resolve("openapi")
-                .resolve("1.5.0")
+                .resolve("1.6.0")
                 .resolve("java11");
 
         Path balaPath = TEST_DISTRIBUTION_PATH
@@ -70,7 +70,7 @@ public class OpenAPIDistributionArtifactCheck {
                 .resolve("bala")
                 .resolve("ballerina")
                 .resolve("openapi")
-                .resolve("1.5.0")
+                .resolve("1.6.0")
                 .resolve("java11")
                 .resolve("platform")
                 .resolve("java11");
@@ -95,7 +95,7 @@ public class OpenAPIDistributionArtifactCheck {
 
         Assert.assertTrue(Files.exists(birPath));
         Assert.assertTrue(Files.exists(balaPath));
-        Assert.assertTrue(Files.exists(jarPath.resolve("ballerina-openapi-1.5.0.jar")));
+        Assert.assertTrue(Files.exists(jarPath.resolve("ballerina-openapi-1.6.0.jar")));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "openapi-cli-"));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "openapi-validator-"));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "openapi-bal-service-"));

@@ -461,4 +461,12 @@ public class CentralTestUtils {
                 filter((b) -> b.startsWith("Package")).toArray()[0].toString();
         return currentPackageName.replace(packageNameSplit, packageNameSplit + PACKAGE_NAME_SEPARATOR + randomSuffix);
     }
+
+    public static void replaceRandomPackageName(Path tempWorkspaceDirectory, String randomPackageName,
+                                                String packageName) throws IOException {
+        List<Path> balFiles = CentralTestUtils.getFileListByExtension(tempWorkspaceDirectory, "bal");
+        List<Path> tomlFiles = CentralTestUtils.getFileListByExtension(tempWorkspaceDirectory, "toml");
+        CentralTestUtils.replacePackageName(balFiles, packageName, randomPackageName);
+        CentralTestUtils.replacePackageName(tomlFiles, packageName, randomPackageName);
+    }
 }

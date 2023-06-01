@@ -9,6 +9,6 @@ service /v1 on ep0 {
     # + return - returns can be any of following types
     # Pets (An paged array of pets)
     # http:Response (unexpected error)
-    resource function get pets(int? 'limit) returns Pets|http:Response {
+    resource function get pets(int:Signed32? 'limit) returns Pets|http:Response {
     }
 }
