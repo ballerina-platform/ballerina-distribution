@@ -4065,7 +4065,7 @@
     "samples": [
       {
         "name": "EDI to record conversion",
-        "url": "edi-to-bal",
+        "url": "edi-to-record",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes generated code",
@@ -4073,7 +4073,7 @@
       },
       {
         "name": "Record to EDI conversion",
-        "url": "bal-to-edi",
+        "url": "record-to-edi",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes generated code",
