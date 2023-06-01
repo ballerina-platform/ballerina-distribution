@@ -1,4 +1,4 @@
-$ bal run edi-to-bal
+$ bal run
 Order Id: ORDER_1201
 Item: A-250, Quantity: 12
 Item: A-45, Quantity: 100
