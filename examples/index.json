@@ -4078,15 +4078,6 @@
         "verifyOutput": false,
         "disableVerificationReason": "Includes generated code",
         "isLearnByExample": false
-      },
-      {
-        "name": "Configure logging",
-        "url": "logging-configuration",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes varying output",
-        "disablePlayground": true,
-        "isLearnByExample": false
       }
     ]
   },
