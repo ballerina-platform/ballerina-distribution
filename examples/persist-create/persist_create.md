@@ -24,7 +24,7 @@ Execute the command below to generate the Ballerina client API.
 
 #### Use the generated client API
 
-Using the generated client API, you can persist record/records to the datastore with the `post` resource method.
+Using the generated client API, you can persist record/records to the data store with the `post` resource method.
 
 ::: code persist_create.bal :::
 

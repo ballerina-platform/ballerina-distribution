@@ -24,7 +24,7 @@ Execute the command below to generate the Ballerina client API.
 
 #### Use the generated client API
 
-Using the generated client API, you can delete records from the datastore with the `delete` resource method.
+Using the generated client API, you can delete records from the data store with the `delete` resource method.
 
 ::: code persist_delete.bal :::
 

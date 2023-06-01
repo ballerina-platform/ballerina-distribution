@@ -24,7 +24,7 @@ Execute the command below to generate the Ballerina client API.
 
 #### Use the generated client API
 
-Using the generated client API, you can update the record in the datastore with the `put` resource method.
+Using the generated client API, you can update the record in the data store with the `put` resource method.
 
 ::: code persist_update.bal :::
 

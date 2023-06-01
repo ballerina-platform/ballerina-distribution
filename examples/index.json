@@ -4264,9 +4264,9 @@
     ]
   },
   {
-    "title": "Reading data",
+    "title": "Query data",
     "column": 0,
-    "category": "Persistence",
+    "category": "Bal persist",
     "samples": [
       {
         "name": "Get all",
@@ -4296,7 +4296,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Filtering and sorting",
+        "name": "Filter and sort",
         "url": "persist-filtering",
         "verifyBuild": false,
         "verifyOutput": false,
@@ -4316,9 +4316,9 @@
     ]
   },
   {
-    "title": "Writing data",
+    "title": "Write data",
     "column": 1,
-    "category": "Persistence",
+    "category": "Bal persist",
     "samples": [
       {
         "name": "Create/Create many",

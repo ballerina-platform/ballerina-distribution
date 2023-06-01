@@ -24,7 +24,7 @@ Execute the command below to generate the Ballerina client API.
 
 #### Use the generated client API
 
-Using the generated client API, you can retrieve the record with selected fields from the datastore with both `get` and `get by key` resource methods.
+Using the generated client API, you can retrieve the record with selected fields from the data store with both `get` and `get by key` resource methods.
 
 ::: code persist_select_fields.bal :::
 

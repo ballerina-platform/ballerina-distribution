@@ -1,2 +1,2 @@
 description: This BBE demonstrates the usage of put resource method in generated persistence client to update the record in the data store.
-keywords: ballerina, ballerina by example, bbe, persistence, datastore, put, select, entity
+keywords: ballerina, ballerina by example, bbe, persistence, data store, put, select, entity
