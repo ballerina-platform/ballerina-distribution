@@ -1,0 +1,12 @@
+$ bal run
+
+Compiling source
+        foo/rainier:0.1.0
+
+Running executable
+
+{"id":"1c09e131-364b-45f0-9f04-5e6a05bf8feb","firstName":"John","lastName":"Smith","workspace":{"id":"2c4696cf-a9a5-4b2e-be50-ccd3404394be","workspaceType":"Hot Desk"}}
+{"id":"4a5ae2c5-4df8-44b8-8da1-27585068071e","firstName":"Jane","lastName":"Doe","workspace":{"id":"b17f8735-f1b2-45fa-945a-2d9f5479af72","workspaceType":"Cubicle"}}
+{"id":"c53b2b5a-6763-43cf-ae61-de2fd5802eda","firstName":"John","lastName":"Doe","workspace":{"id":"3590c557-df63-4f90-bb60-23283655329b","workspaceType":"Cubicle"}}
+{"no":"D004","deptName":"Marketing","employees":[{"id":"4a5ae2c5-4df8-44b8-8da1-27585068071e","firstName":"Jane","lastName":"Doe"},{"id":"c53b2b5a-6763-43cf-ae61-de2fd5802eda","firstName":"John","lastName":"Doe"}]}
+{"no":"D005","deptName":"Sales","employees":[{"id":"1c09e131-364b-45f0-9f04-5e6a05bf8feb","firstName":"John","lastName":"Smith"}]}
