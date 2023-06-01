@@ -24,7 +24,7 @@ Execute the command below to generate the Ballerina client API.
 
 #### Use the generated client API
 
-Using the generated client API, you can retrieve the record by key from the datastore. The `get by key` resource method returns a record or error if no records are found for the given key.
+Using the generated client API, you can retrieve the record by key from the data store. The `get by key` resource method returns a record or error if no records are found for the given key.
 
 ::: code persist_get_by_key.bal :::
 
