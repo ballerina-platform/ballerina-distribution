@@ -13,7 +13,7 @@ Execute the command below to initialize persistence in the project.
 
 #### Model the data
 
-Add `Employee`, `Department`, `Workspace` and `Building` entities with relations in between in the `model.bal` file inside the `persist` directory.
+Add `Employee`, `Department`, `Workspace`, and `Building` entities with relations in between in the `model.bal` file inside the `persist` directory.
 
 ::: code persist_model.bal :::
 
