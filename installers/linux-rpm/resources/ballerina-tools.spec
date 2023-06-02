@@ -63,6 +63,7 @@ fi
 %clean
 rm -rf %{_topdir}/BUILD/*
 rm -rf %{buildroot}
+bal -v
 
 %files
 %{_libdir}/ballerina/
