@@ -17,3 +17,5 @@ elif [ "$(basename -- "$SHELL")" = "zsh" ]; then
     \cp /usr/lib/ballerina/scripts/_bal ~/.ballerina/completion/
     chmod 766 ~/.ballerina/completion/_bal
 fi
+
+bal -v
