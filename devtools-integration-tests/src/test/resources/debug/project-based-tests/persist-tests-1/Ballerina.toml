@@ -1,0 +1,20 @@
+[package]
+org = "nino"
+name = "persist_tests_1"
+version = "0.1.0"
+
+[build-options]
+observabilityIncluded = true
+
+[[platform.java11.repository]]
+id="wso2-nexus-snapshot"
+url = "https://maven.wso2.org/nexus/content/repositories/snapshots/"
+
+[persist]
+datastore = "inmemory"
+module = "persist_test"
+
+[[platform.java11.dependency]]
+groupId = "io.ballerina.stdlib"
+artifactId = "persist.inmemory-native"
+version = "1.0.0"
