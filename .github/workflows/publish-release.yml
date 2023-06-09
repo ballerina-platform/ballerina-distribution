@@ -48,30 +48,30 @@ jobs:
           echo "::set-output name=longVersion::$LONG_VERSION"
       - name: Pre release depenency version update
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         run: |
           echo "Version: ${VERSION}"
           echo "Tagged Version: ${GIT_TAG}"
-          git config user.name ${{ github.actor }}
-          git config user.email ${{ secrets.USER_EMAIL }}
+          git config user.name ${{ secrets.BALLERINA_BOT_USERNAME }}
+          git config user.email ${{ secrets.BALLERINA_BOT_EMAIL }}
           git checkout -b release-${GIT_TAG}
       - name: Generate UUID
         run: |
           UUID=$(uuidgen)
           perl -pi -e "s/^\s*installerVersion=.*/installerVersion=$UUID/" gradle.properties
-          git config user.name ${{ github.actor }}
-          git config user.email ${{ secrets.USER_EMAIL }}
+          git config user.name ${{ secrets.BALLERINA_BOT_USERNAME }}
+          git config user.email ${{ secrets.BALLERINA_BOT_EMAIL }}
           git add gradle.properties
           git commit -m "Update UUID for installer"
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Publish artifact
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          packageUser: ${{ github.actor }}
-          packagePAT: ${{ secrets.GITHUB_TOKEN }}
-#           devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
-#           ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+          packageUser: ${{ secrets.BALLERINA_BOT_USERNAME }}
+          packagePAT: ${{ secrets.BALLERINA_BOT_TOKEN }}
+          devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
+          ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
         run: |
           ./gradlew build -Pversion=${VERSION} -x centralTests -x test
           ./gradlew release -Prelease.useAutomaticVersion=true -x test
@@ -82,40 +82,40 @@ jobs:
           path: module-ballerina-docker
       - name: Copy zip artifact
         run: cp ballerina/build/distributions/ballerina-22*.zip module-ballerina-docker/base/docker/
-#       - name: Set up QEMU
-#         uses: docker/setup-qemu-action@v1
-#       - name: Set up Docker Buildx
-#         uses: docker/setup-buildx-action@v1
-#       - name: Login to DockerHub
-#         uses: docker/login-action@v1
-#         with:
-#           username: ${{ secrets.DOCKER_HUB_USER }}
-#           password: ${{ secrets.DOCKER_HUB_TOKEN }}
-#       - name: Build the docker image
-#         id: docker_build
-#         uses: docker/build-push-action@v2
-#         with:
-#           context: module-ballerina-docker/base/docker/
-#           load: true
-#           push: false
-#           tags: ballerina/ballerina:release-test
-#           build-args: |
-#             BALLERINA_DIST=ballerina-${{ steps.version-set.outputs.sversion }}.zip
-#       - name: Run Trivy vulnerability scanner
-#         uses: aquasecurity/trivy-action@master
-#         with:
-#           image-ref: 'ballerina/ballerina:release-test'
-#           skip-dirs: 'ballerina/runtime/examples'
-#           format: 'table'
-#           exit-code: '1'
-#           timeout: "10m0s"
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USER }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+      - name: Build the docker image
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          context: module-ballerina-docker/base/docker/
+          load: true
+          push: false
+          tags: ballerina/ballerina:release-test
+          build-args: |
+            BALLERINA_DIST=ballerina-${{ steps.version-set.outputs.sversion }}.zip
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'ballerina/ballerina:release-test'
+          skip-dirs: 'ballerina/runtime/examples'
+          format: 'table'
+          exit-code: '1'
+          timeout: "10m0s"
       - name: cosign-installer
         uses: sigstore/cosign-installer@v3.0.3
       - name: Create release
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           tag_name: "v${{ steps.version-set.outputs.taggedVersion }}"
           release_name: ${{ steps.version-set.outputs.taggedVersion }}
@@ -180,7 +180,7 @@ jobs:
       - name: Upload zip artifacts
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}.zip
@@ -189,7 +189,7 @@ jobs:
       - name: Upload zip artifact's Certificate 
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}.pem
@@ -198,7 +198,7 @@ jobs:
       - name: Upload zip artifact's Signature 
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}.sig
@@ -207,7 +207,7 @@ jobs:
       - name: Upload zip without tool artifacts
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: ballerina-${{ steps.version-set.outputs.sversion }}.zip
@@ -216,7 +216,7 @@ jobs:
       - name: Upload zip without tool artifact's Certificate 
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: ballerina-${{ steps.version-set.outputs.sversion }}.pem
@@ -225,7 +225,7 @@ jobs:
       - name: Upload zip without tool artifact's Signature 
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: ballerina-${{ steps.version-set.outputs.sversion }}.sig
@@ -234,7 +234,7 @@ jobs:
       - name: Upload Linux deb Installer
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.deb
@@ -243,7 +243,7 @@ jobs:
       - name: Upload Linux deb Installer's Certificate 
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.deb.pem
@@ -252,7 +252,7 @@ jobs:
       - name: Upload Linux deb Installer's Signature 
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.deb.sig
@@ -261,7 +261,7 @@ jobs:
       - name: Upload Linux rpm Installer
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.rpm
@@ -270,7 +270,7 @@ jobs:
       - name: Upload Linux rpm Installer's Certificate 
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.rpm.pem
@@ -279,7 +279,7 @@ jobs:
       - name: Upload Linux rpm Installer's Signature 
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.rpm.sig
@@ -288,7 +288,7 @@ jobs:
       - name: Upload MacOS zip artifacts
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-macos.zip
@@ -297,7 +297,7 @@ jobs:
       - name: Upload MacOS zip artifact's Certificate 
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-macos.pem
@@ -306,7 +306,7 @@ jobs:
       - name: Upload MacOS zip artifact's Signature 
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-macos.sig
@@ -315,7 +315,7 @@ jobs:
       - name: Upload MacOS-ARM zip artifacts
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-macos-arm.zip
@@ -324,7 +324,7 @@ jobs:
       - name: Upload MacOS-ARM zip artifact's Certificate 
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-macos-arm.pem
@@ -333,7 +333,7 @@ jobs:
       - name: Upload MacOS-ARM zip artifact's Signature 
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-macos-arm.sig
@@ -342,7 +342,7 @@ jobs:
       - name: Upload Windows zip artifacts
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-windows.zip
@@ -351,7 +351,7 @@ jobs:
       - name: Upload Windows zip artifact's Certificate 
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-windows.pem
@@ -360,7 +360,7 @@ jobs:
       - name: Upload Windows zip artifact's Signature 
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-windows.sig
@@ -369,7 +369,7 @@ jobs:
       - name: Upload Linux deb Hashes
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.deb.sha256
@@ -378,7 +378,7 @@ jobs:
       - name: Upload Linux rpm Hashes
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.rpm.sha256
@@ -387,7 +387,7 @@ jobs:
       - name: Upload Ballerina zip Hashes
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}.zip.sha256
@@ -396,18 +396,18 @@ jobs:
       - name: Upload ballerina Short Name zip Hashes
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: ballerina-${{ steps.version-set.outputs.sversion }}.zip.sha256
           asset_path: ballerina-${{ steps.version-set.outputs.sversion }}.zip.sha256
           asset_content_type: application/octet-stream
-#       - name: Post release PR
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#         run: |
-#           curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
-#           bin/hub pull-request -m "[Automated] Sync master after "$VERSION" release"
+      - name: Post release PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        run: |
+          curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
+          bin/hub pull-request -m "[Automated] Sync master after "$VERSION" release"
 
     outputs:
       project-version: ${{ steps.version-set.outputs.longVersion }}
@@ -454,7 +454,7 @@ jobs:
       - name: Upload MacOS pkg Hashes
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ needs.publish-release.outputs.upload-asset-url }}
           asset_name: ballerina-${{ needs.publish-release.outputs.project-version }}-macos-x64.pkg.sha256
@@ -463,7 +463,7 @@ jobs:
       - name: Upload MacOS pkg Installer
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ needs.publish-release.outputs.upload-asset-url }}
           asset_name: ballerina-${{ needs.publish-release.outputs.project-version }}-macos-x64.pkg
@@ -472,7 +472,7 @@ jobs:
       - name: Upload MacOS installer's Certificate 
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ needs.publish-release.outputs.upload-asset-url }}
           asset_name: ballerina-${{ needs.publish-release.outputs.project-version }}-macos-x64.pkg.pem
@@ -481,7 +481,7 @@ jobs:
       - name: Upload MacOS installer's Signature 
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ needs.publish-release.outputs.upload-asset-url }}
           asset_name: ballerina-${{ needs.publish-release.outputs.project-version }}-macos-x64.pkg.sig
@@ -512,7 +512,7 @@ jobs:
       - name: Upload MacOS-ARM pkg Hashes
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ needs.publish-release.outputs.upload-asset-url }}
           asset_name: ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg.sha256
@@ -521,7 +521,7 @@ jobs:
       - name: Upload MacOS-ARM pkg Installer
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ needs.publish-release.outputs.upload-asset-url }}
           asset_name: ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg
@@ -530,7 +530,7 @@ jobs:
       - name: Upload MacOS-ARM installer's Certificate 
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ needs.publish-release.outputs.upload-asset-url }}
           asset_name: ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg.pem
@@ -539,7 +539,7 @@ jobs:
       - name: Upload MacOS-ARM installer's Signature 
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ needs.publish-release.outputs.upload-asset-url }}
           asset_name: ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg.sig
@@ -596,7 +596,7 @@ jobs:
       - name: Upload Windows msi Hashes
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ needs.publish-release.outputs.upload-asset-url }}
           asset_name: ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.sha256
@@ -605,7 +605,7 @@ jobs:
       - name: Upload Windows msi Installer
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ needs.publish-release.outputs.upload-asset-url }}
           asset_name: ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi
@@ -614,7 +614,7 @@ jobs:
       - name: Upload Windows installer's Certificate 
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ needs.publish-release.outputs.upload-asset-url }}
           asset_name: ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.pem
@@ -623,7 +623,7 @@ jobs:
       - name: Upload Windows installer's Signature 
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           upload_url: ${{ needs.publish-release.outputs.upload-asset-url }}
           asset_name: ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.sig
@@ -632,8 +632,8 @@ jobs:
       - name: Install Ballerina msi
         run: msiexec /i w\target\msi\ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi /quiet /qr
         shell: cmd
-#       - name: Run Installer Tests
-#         working-directory: .\ballerina-test-automation\installer-test
-#         run: |
-#           $env:Path += ";C:\Program Files\Ballerina\bin"
-#           .\..\gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+      - name: Run Installer Tests
+        working-directory: .\ballerina-test-automation\installer-test
+        run: |
+          $env:Path += ";C:\Program Files\Ballerina\bin"
+          .\..\gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
