@@ -138,13 +138,9 @@ jobs:
           ./build-ballerina-linux-deb-x64.sh -v ${{ steps.version-set.outputs.longVersion }} -p ./../../ballerina/build/distributions
           echo "Created linux-deb successfully"
       - name: Sign the linux-deb installer
-        env:
-          COSIGN_EXPERIMENTAL: "true"
         run: |
           cosign sign-blob installers/linux-deb/target/ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.deb --output-certificate ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.deb.pem --output-signature ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.deb.sig --yes
       - name: Verify the linux-deb installer
-        env:
-          COSIGN_EXPERIMENTAL: "true"
         run: |
           cosign verify-blob installers/linux-deb/target/ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.deb --certificate ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.deb.pem --signature ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.deb.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@refs/heads/master --certificate-oidc-issuer=https://token.actions.githubusercontent.com
       - name: Create linux-rpm Installer
@@ -154,13 +150,9 @@ jobs:
           ./build-ballerina-linux-rpm-x64.sh -v ${{ steps.version-set.outputs.longVersion }} -p ./../../ballerina/build/distributions
           echo "Created linux-rpm successfully"
       - name: Sign the linux-rpm installer
-        env:
-          COSIGN_EXPERIMENTAL: "true"
         run: |
           cosign sign-blob installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.rpm --output-certificate ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.rpm.pem --output-signature ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.rpm.sig --yes
       - name: Verify the linux-rpm installer
-        env:
-          COSIGN_EXPERIMENTAL: "true"
         run: |
           cosign verify-blob installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.rpm --certificate ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.rpm.pem --signature ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.rpm.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@refs/heads/master --certificate-oidc-issuer=https://token.actions.githubusercontent.com
       - name: Generate Hashes
@@ -170,8 +162,6 @@ jobs:
           openssl dgst -sha256 -out ballerina-${{ steps.version-set.outputs.longVersion }}.zip.sha256 ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}.zip
           openssl dgst -sha256 -out ballerina-${{ steps.version-set.outputs.sversion }}.zip.sha256 ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.sversion }}.zip
       - name: Sign the zip artifacts
-        env:
-          COSIGN_EXPERIMENTAL: "true"
         run: |
           cosign sign-blob ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}.zip --output-certificate ballerina-${{ steps.version-set.outputs.longVersion }}.pem --output-signature ballerina-${{ steps.version-set.outputs.longVersion }}.sig --yes
           cosign sign-blob ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.sversion }}.zip --output-certificate ballerina-${{ steps.version-set.outputs.sversion }}.pem --output-signature ballerina-${{ steps.version-set.outputs.sversion }}.sig --yes
@@ -179,8 +169,6 @@ jobs:
           cosign sign-blob ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}-macos-arm.zip --output-certificate ballerina-${{ steps.version-set.outputs.longVersion }}-macos-arm.pem --output-signature ballerina-${{ steps.version-set.outputs.longVersion }}-macos-arm.sig --yes
           cosign sign-blob ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}-windows.zip --output-certificate ballerina-${{ steps.version-set.outputs.longVersion }}-windows.pem --output-signature ballerina-${{ steps.version-set.outputs.longVersion }}-windows.sig --yes
       - name: Verify the zip artifacts
-        env:
-          COSIGN_EXPERIMENTAL: "true"
         run: |
           cosign verify-blob ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}.zip --certificate ballerina-${{ steps.version-set.outputs.longVersion }}.pem --signature ballerina-${{ steps.version-set.outputs.longVersion }}.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@refs/heads/master --certificate-oidc-issuer=https://token.actions.githubusercontent.com
           cosign verify-blob ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.sversion }}.zip --certificate ballerina-${{ steps.version-set.outputs.sversion }}.pem --signature ballerina-${{ steps.version-set.outputs.sversion }}.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@refs/heads/master --certificate-oidc-issuer=https://token.actions.githubusercontent.com
@@ -449,13 +437,9 @@ jobs:
           ./build-ballerina-macos-x64.sh -v ${{ needs.publish-release.outputs.project-version }} -p ./../../
           echo "Created macos-pkg successfully"
       - name: Sign the MacOS installer
-        env:
-          COSIGN_EXPERIMENTAL: "true"
         run: |
           cosign sign-blob installers/mac/target/pkg/ballerina-${{ needs.publish-release.outputs.project-version }}-macos-x64.pkg --output-certificate ballerina-${{ needs.publish-release.outputs.project-version }}-macos-x64.pkg.pem --output-signature ballerina-${{ needs.publish-release.outputs.project-version }}-macos-x64.pkg.sig --yes
       - name: Verify the MacOS installer
-        env:
-          COSIGN_EXPERIMENTAL: "true"
         run: |
           cosign verify-blob installers/mac/target/pkg/ballerina-${{ needs.publish-release.outputs.project-version }}-macos-x64.pkg --certificate ballerina-${{ needs.publish-release.outputs.project-version }}-macos-x64.pkg.pem --signature ballerina-${{ needs.publish-release.outputs.project-version }}-macos-x64.pkg.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@refs/heads/master --certificate-oidc-issuer=https://token.actions.githubusercontent.com
       - name: Generate Hashes
@@ -507,13 +491,9 @@ jobs:
           ./build-ballerina-macos-x64.sh -v ${{ needs.publish-release.outputs.project-version }} -p ./../../ -a arm
           echo "Created macos-arm-pkg successfully"
       - name: Sign the MacOS-ARM installer
-        env:
-          COSIGN_EXPERIMENTAL: "true"
         run: |
           cosign sign-blob installers/mac/target/pkg/ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg --output-certificate ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg.pem --output-signature ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg.sig --yes
       - name: Verify the MacOS-ARM installer
-        env:
-          COSIGN_EXPERIMENTAL: "true"
         run: |
           cosign verify-blob installers/mac/target/pkg/ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg --certificate ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg.pem --signature ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@refs/heads/master --certificate-oidc-issuer=https://token.actions.githubusercontent.com
       - name: Generate Hashes
@@ -591,13 +571,9 @@ jobs:
           .\build-ballerina-windows-x64.bat --version ${{ needs.publish-release.outputs.project-version }} --path .\..\
           echo "Created windows-msi successfully"
       - name: Sign the Windows installer
-        env:
-          COSIGN_EXPERIMENTAL: "true"
         run: |
           cosign sign-blob w\target\msi\ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi --output-certificate ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.pem --output-signature ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.sig --yes
       - name: Verify the Windows installer
-        env:
-          COSIGN_EXPERIMENTAL: "true"
         run: |
           cosign verify-blob w\target\msi\ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi --certificate ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.pem --signature ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@refs/heads/master --certificate-oidc-issuer=https://token.actions.githubusercontent.com
       - name: Generate Hashes
