@@ -111,6 +111,15 @@ jobs:
           timeout: "10m0s"
       - name: cosign-installer
         uses: sigstore/cosign-installer@v3.0.3
+      - name: Read release notes from file
+        id: release_notes
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.BALLERINA_BOT_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const releaseNotes = fs.readFileSync('docs/release_notes.md', 'utf8');
+            core.setOutput('notes', releaseNotes);
       - name: Create release
         id: create_release
         uses: actions/create-release@v1
@@ -119,6 +128,7 @@ jobs:
         with:
           tag_name: "v${{ steps.version-set.outputs.taggedVersion }}"
           release_name: ${{ steps.version-set.outputs.taggedVersion }}
+          body: ${{ steps.release_notes.outputs.notes }}
           draft: false
           prerelease: ${{ github.event.inputs.isPreRelease }}
       - name: Create linux-deb Installer
@@ -136,7 +146,7 @@ jobs:
         env:
           COSIGN_EXPERIMENTAL: "true"
         run: |
-          cosign verify-blob installers/linux-deb/target/ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.deb --certificate ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.deb.pem --signature ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.deb.sig --certificate-identity=https://github.com/${{ github.actor }}/ballerina-distribution/.github/workflows/publish-release.yml@refs/heads/integrate-cosign --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+          cosign verify-blob installers/linux-deb/target/ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.deb --certificate ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.deb.pem --signature ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.deb.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@refs/heads/master --certificate-oidc-issuer=https://token.actions.githubusercontent.com
       - name: Create linux-rpm Installer
         id: run_installers_rpm
         run: |
@@ -152,7 +162,7 @@ jobs:
         env:
           COSIGN_EXPERIMENTAL: "true"
         run: |
-          cosign verify-blob installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.rpm --certificate ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.rpm.pem --signature ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.rpm.sig --certificate-identity=https://github.com/${{ github.actor }}/ballerina-distribution/.github/workflows/publish-release.yml@refs/heads/integrate-cosign --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+          cosign verify-blob installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.rpm --certificate ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.rpm.pem --signature ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.rpm.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@refs/heads/master --certificate-oidc-issuer=https://token.actions.githubusercontent.com
       - name: Generate Hashes
         run: |
           openssl dgst -sha256 -out ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.deb.sha256 installers/linux-deb/target/ballerina-*-linux-x64.deb
@@ -172,11 +182,11 @@ jobs:
         env:
           COSIGN_EXPERIMENTAL: "true"
         run: |
-          cosign verify-blob ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}.zip --certificate ballerina-${{ steps.version-set.outputs.longVersion }}.pem --signature ballerina-${{ steps.version-set.outputs.longVersion }}.sig --certificate-identity=https://github.com/${{ github.actor }}/ballerina-distribution/.github/workflows/publish-release.yml@refs/heads/integrate-cosign --certificate-oidc-issuer=https://token.actions.githubusercontent.com
-          cosign verify-blob ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.sversion }}.zip --certificate ballerina-${{ steps.version-set.outputs.sversion }}.pem --signature ballerina-${{ steps.version-set.outputs.sversion }}.sig --certificate-identity=https://github.com/${{ github.actor }}/ballerina-distribution/.github/workflows/publish-release.yml@refs/heads/integrate-cosign --certificate-oidc-issuer=https://token.actions.githubusercontent.com
-          cosign verify-blob ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}-macos.zip --certificate ballerina-${{ steps.version-set.outputs.longVersion }}-macos.pem --signature ballerina-${{ steps.version-set.outputs.longVersion }}-macos.sig --certificate-identity=https://github.com/${{ github.actor }}/ballerina-distribution/.github/workflows/publish-release.yml@refs/heads/integrate-cosign --certificate-oidc-issuer=https://token.actions.githubusercontent.com
-          cosign verify-blob ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}-macos-arm.zip --certificate ballerina-${{ steps.version-set.outputs.longVersion }}-macos-arm.pem --signature ballerina-${{ steps.version-set.outputs.longVersion }}-macos-arm.sig --certificate-identity=https://github.com/${{ github.actor }}/ballerina-distribution/.github/workflows/publish-release.yml@refs/heads/integrate-cosign --certificate-oidc-issuer=https://token.actions.githubusercontent.com
-          cosign verify-blob ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}-windows.zip --certificate ballerina-${{ steps.version-set.outputs.longVersion }}-windows.pem --signature ballerina-${{ steps.version-set.outputs.longVersion }}-windows.sig --certificate-identity=https://github.com/${{ github.actor }}/ballerina-distribution/.github/workflows/publish-release.yml@refs/heads/integrate-cosign --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+          cosign verify-blob ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}.zip --certificate ballerina-${{ steps.version-set.outputs.longVersion }}.pem --signature ballerina-${{ steps.version-set.outputs.longVersion }}.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@refs/heads/master --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+          cosign verify-blob ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.sversion }}.zip --certificate ballerina-${{ steps.version-set.outputs.sversion }}.pem --signature ballerina-${{ steps.version-set.outputs.sversion }}.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@refs/heads/master --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+          cosign verify-blob ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}-macos.zip --certificate ballerina-${{ steps.version-set.outputs.longVersion }}-macos.pem --signature ballerina-${{ steps.version-set.outputs.longVersion }}-macos.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@refs/heads/master --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+          cosign verify-blob ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}-macos-arm.zip --certificate ballerina-${{ steps.version-set.outputs.longVersion }}-macos-arm.pem --signature ballerina-${{ steps.version-set.outputs.longVersion }}-macos-arm.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@refs/heads/master --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+          cosign verify-blob ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}-windows.zip --certificate ballerina-${{ steps.version-set.outputs.longVersion }}-windows.pem --signature ballerina-${{ steps.version-set.outputs.longVersion }}-windows.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@refs/heads/master --certificate-oidc-issuer=https://token.actions.githubusercontent.com
       - name: Upload zip artifacts
         uses: actions/upload-release-asset@v1
         env:
@@ -429,7 +439,7 @@ jobs:
           java-version: '11'
       - name: Download MacOS Intaller Zip
         run: |
-          wget https://github.com/${{ github.actor }}/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-${{ needs.publish-release.outputs.project-version }}-macos.zip
+          wget https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-${{ needs.publish-release.outputs.project-version }}-macos.zip
       - name: cosign-installer
         uses: sigstore/cosign-installer@v3.0.3
       - name: Create macos-pkg Installer
@@ -447,7 +457,7 @@ jobs:
         env:
           COSIGN_EXPERIMENTAL: "true"
         run: |
-          cosign verify-blob installers/mac/target/pkg/ballerina-${{ needs.publish-release.outputs.project-version }}-macos-x64.pkg --certificate ballerina-${{ needs.publish-release.outputs.project-version }}-macos-x64.pkg.pem --signature ballerina-${{ needs.publish-release.outputs.project-version }}-macos-x64.pkg.sig --certificate-identity=https://github.com/${{ github.actor }}/ballerina-distribution/.github/workflows/publish-release.yml@refs/heads/integrate-cosign --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+          cosign verify-blob installers/mac/target/pkg/ballerina-${{ needs.publish-release.outputs.project-version }}-macos-x64.pkg --certificate ballerina-${{ needs.publish-release.outputs.project-version }}-macos-x64.pkg.pem --signature ballerina-${{ needs.publish-release.outputs.project-version }}-macos-x64.pkg.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@refs/heads/master --certificate-oidc-issuer=https://token.actions.githubusercontent.com
       - name: Generate Hashes
         run: |
           openssl dgst -sha256 -out ballerina-${{ needs.publish-release.outputs.project-version }}-macos-x64.pkg.sha256 installers/mac/target/pkg/ballerina-${{ needs.publish-release.outputs.project-version }}-macos-x64.pkg
@@ -489,7 +499,7 @@ jobs:
           asset_content_type: application/octet-stream
       - name: Download MacOS-ARM Intaller Zip
         run: |
-          wget https://github.com/${{ github.actor }}/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm.zip
+          wget https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm.zip
       - name: Create macos-arm-pkg Installer
         id: run_installers_arm_pkg
         run: |
@@ -505,7 +515,7 @@ jobs:
         env:
           COSIGN_EXPERIMENTAL: "true"
         run: |
-          cosign verify-blob installers/mac/target/pkg/ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg --certificate ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg.pem --signature ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg.sig --certificate-identity=https://github.com/${{ github.actor }}/ballerina-distribution/.github/workflows/publish-release.yml@refs/heads/integrate-cosign --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+          cosign verify-blob installers/mac/target/pkg/ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg --certificate ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg.pem --signature ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@refs/heads/master --certificate-oidc-issuer=https://token.actions.githubusercontent.com
       - name: Generate Hashes
         run: |
           openssl dgst -sha256 -out ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg.sha256 installers/mac/target/pkg/ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg
@@ -568,7 +578,7 @@ jobs:
         run: choco install wget --no-progress
       - name: Download Windows Intaller Zip
         run: |
-          wget https://github.com/${{ github.actor }}/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-${{ needs.publish-release.outputs.project-version }}-windows.zip
+          wget https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-${{ needs.publish-release.outputs.project-version }}-windows.zip
       - name: cosign-installer
         uses: sigstore/cosign-installer@v3.0.3
       - name: Create windows-msi Installer
@@ -589,7 +599,7 @@ jobs:
         env:
           COSIGN_EXPERIMENTAL: "true"
         run: |
-          cosign verify-blob w\target\msi\ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi --certificate ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.pem --signature ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.sig --certificate-identity=https://github.com/${{ github.actor }}/ballerina-distribution/.github/workflows/publish-release.yml@refs/heads/integrate-cosign --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+          cosign verify-blob w\target\msi\ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi --certificate ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.pem --signature ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@refs/heads/master --certificate-oidc-issuer=https://token.actions.githubusercontent.com
       - name: Generate Hashes
         run: |
           openssl dgst -sha256 -out ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.sha256 w\target\msi\ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi
