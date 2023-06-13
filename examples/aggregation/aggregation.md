@@ -1,8 +1,8 @@
 # Aggregation
 
-The `group by` clause in the query expression can be used to group the elements in a collection. Grouping happens based on the grouping keys provided in `group by` clause. Non grouping keys becomes aggregated variables that can be used as a list or an argument to a rest parameter of a langlib function.
+The `group by` clause in the query expression can group the elements in a collection. Grouping happens based on the grouping keys provided in `group by` clause. For each group, grouping keys are unique. All other variables other than grouping keys are called non-grouping keys. For each group, non-grouping keys become sequence variables. Those variables can be used as a list or an argument to a rest parameter of a langlib function.
 
-The `collect` clause is used to collect the collection into one group. All the variables becoes aggregated variables and those variables can be used as a list or an argument to a rest parameter of a langlib function same as in `group by`.
+The `collect` clause collects the collection into one group. All the variables become aggregated variables and those variables can be used as a list or an argument to a rest parameter of a langlib function same as in `group by`.
 
 ::: code aggregation.bal :::
 
