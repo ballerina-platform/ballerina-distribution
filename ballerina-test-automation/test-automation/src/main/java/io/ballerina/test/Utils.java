@@ -39,7 +39,7 @@ public class Utils {
             System.getenv("BALLERINA_STAGING_UPDATE"));
     public static final PrintStream OUT = System.out;
 
-    public static final String DISTRIBUTION_LOCATION = "http://dist-dev.ballerina.io/downloads/";
+    public static final String DISTRIBUTION_LOCATION = "https://dist-dev.ballerina.io/downloads/";
 
     public static void downloadFile(String version, String installerName) {
         OUT.println("Downloading " + installerName);
