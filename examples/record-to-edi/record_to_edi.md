@@ -12,6 +12,10 @@ Create a new folder named `resources` in the root of the project and copy the sc
 
 ::: out package_structure.out :::
 
+Get the EDI tool from the Ballerina central using the below command:
+
+::: out tool_pull_command.out :::
+
 Run the below command from the project root directory to generate the Ballerina parser for the above schema.
 
 ::: out codegen_command.out :::
