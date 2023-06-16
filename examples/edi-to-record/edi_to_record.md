@@ -16,7 +16,7 @@ Create a new Ballerina project named `edi_to_record` and create a module named `
 
 Create a new folder named `resources` in the root of the project and copy the schema file into it. At this point, directory structure of the project would look like below:
 
-::: package_stricture.out :::
+::: out package_structure.out :::
 
 Run the below command from the project root directory to generate the Ballerina parser for the above schema.
 
