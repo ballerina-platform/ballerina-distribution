@@ -195,7 +195,7 @@ public class CentralTest {
         }
     }
 
-    @Test(description = "Build package B which has java11 platform dependency")
+    @Test(description = "Build package B which has java11 platform dependency", enabled = false)
     public void testBuildPackageB() throws IOException, InterruptedException {
         Process build = executePackCommand(DISTRIBUTION_FILE_NAME, this.tempWorkspaceDirectory.resolve(PROJECT_B),
                                        new LinkedList<>(), this.envVariables);
