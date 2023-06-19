@@ -3,6 +3,9 @@ org = "bctestorg"
 name = "my_package"
 version = "1.0.0"
 
+[platform.java11]
+graalvmCompatible=true
+
 [[platform.java11.dependency]]
 groupId = "org.slf4j"
 artifactId = "slf4j-api"
