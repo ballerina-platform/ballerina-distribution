@@ -5,7 +5,7 @@ The `nats:JetStreamClient` allows you to publish messages to a specific subject.
 ::: code nats_jetstream_pub.bal :::
 
 ## Prerequisites
-- Start an instance of the [NATS JetStream erver](https://docs.nats.io/running-a-nats-service/configuration/resource_management).
+- Start an instance of the [NATS JetStream server](https://docs.nats.io/running-a-nats-service/configuration/resource_management).
 - Run the NATS JetStream service given in the [NATS JetStream service - Consume message](/learn/by-example/nats-jetstream-sub/) example.
 
 Run the client program by executing the following command.
