@@ -125,7 +125,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         run: |
           gh repo view ballerina-platform/ballerina-dev-website --json url --jq '.clone_url'
-          gh api repos/ballerina-platform/ballerina-dev-website/contents/downloads/verification-notes/verification_notes_template.md -H 'Accept: application/vnd.github.v3.raw' > release_notes.md
+          gh api repos/ballerina-platform/ballerina-dev-website/contents/downloads/verification-notes/release-artfiacts-verification.md -H 'Accept: application/vnd.github.v3.raw' > release_notes.md
       - name: Update Markdown file
         run: |
           npm install
