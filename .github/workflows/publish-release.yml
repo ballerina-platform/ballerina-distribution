@@ -111,6 +111,27 @@ jobs:
           timeout: "10m0s"
       - name: cosign-installer
         uses: sigstore/cosign-installer@v3.0.3
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: Install GitHub CLI
+        run: |
+          npm install -g github-cli
+          gh --version
+      - name: Get Markdown file
+        id: file-url
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        run: |
+          gh repo view ballerina-platform/ballerina-dev-website --json url --jq '.clone_url'
+          gh api repos/ballerina-platform/ballerina-dev-website/contents/downloads/verification-notes/verification_notes_template.md -H 'Accept: application/vnd.github.v3.raw' > release_notes.md
+      - name: Update Markdown file
+        run: |
+          npm install
+          node docs/update-version-notes/update_version.js
+        env:
+          NEW_VERSION: ${{ steps.version-set.outputs.taggedVersion }}
       - name: Read release notes from file
         id: release_notes
         uses: actions/github-script@v4
@@ -118,7 +139,7 @@ jobs:
           github-token: ${{ secrets.BALLERINA_BOT_TOKEN }}
           script: |
             const fs = require('fs');
-            const releaseNotes = fs.readFileSync('docs/release_notes.md', 'utf8');
+            const releaseNotes = fs.readFileSync('release_notes.md', 'utf8');
             core.setOutput('notes', releaseNotes);
       - name: Create release
         id: create_release
