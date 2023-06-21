@@ -1,0 +1,2 @@
+$ bal run nats_jetstream_sub.bal
+time = 2023-06-20T20:17:28.026+05:30 level = INFO module = "" message = "Received valid order for Sport shoe"
