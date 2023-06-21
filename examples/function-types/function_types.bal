@@ -14,7 +14,7 @@ public function main() {
     io:println(evenFunc1(5));
     io:println(evenFunc1(6));
 
-    // Type of the `evenFunc1` variable is the `function(int num = 5) returns boolean` function type.
+    // Type of the `evenFunc2` variable is the `function (int num = 5) returns boolean` function type.
     function (int num = 5) returns boolean evenFunc2 = isEven;
 
     // Invoke the function with the default value defined in the function type.
