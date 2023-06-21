@@ -1,6 +1,6 @@
 # NATS JetStream client - Publish message
 
-The `nats:JetStreamClient` allows you to publish messages to a specific subject. To create a `nats:JetStreamClient`, you need to provide a valid instance of the `nats:Client`. Before publishing messages, you should call the addStream function to configure the stream. This function requires a `nats:JetStreamConfiguration` object with the values `name`, `subjects`, and `storageType`. To publish messages, you can use the `publishMessage` method, which takes the message content and subject as arguments. This method allows you to send messages that can be received by one or more subscribers.
+The `nats:JetStreamClient` allows you to publish messages to a specific subject. To create a `nats:JetStreamClient`, you need to provide a valid instance of the `nats:Client`. Before publishing messages, you should call the `addStream` function to configure the stream. This function requires a `nats:JetStreamConfiguration` object with the `name`, `subjects`, and `storageType` values. To publish messages, you can use the `publishMessage` method, which takes the message content and subject as arguments. This method allows you to send messages that can be received by one or more subscribers.
 
 ::: code nats_jetstream_pub.bal :::
 
