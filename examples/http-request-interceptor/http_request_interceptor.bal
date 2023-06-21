@@ -34,12 +34,12 @@ service class RequestInterceptor {
     }
 }
 
-// Engage interceptors at the service level using `http:InterceptableService`. The interceptors
+// Engage interceptors at the service level using an `http:InterceptableService`. The interceptors
 // will inherit the basepath of the service.
 service http:InterceptableService / on new http:Listener(9090) {
 
     // Creates the interceptor pipeline. The function can return a single interceptor or an array of
-    // interceptors as the interceptor pipeline. If the interceptor pipeline is an array, then the
+    // interceptors as the interceptor pipeline. If the interceptor pipeline is an array, then, the
     // request interceptor services will be executed from head to tail.
     public function createInterceptors() returns RequestInterceptor {
         return new RequestInterceptor();

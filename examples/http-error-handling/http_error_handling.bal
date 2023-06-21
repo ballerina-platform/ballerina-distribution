@@ -28,12 +28,12 @@ service class ResponseErrorInterceptor {
     }
 }
 
-// Engage interceptors at the service level using `http:InterceptableService`. The base path of the
+// Engage interceptors at the service level using an `http:InterceptableService`. The base path of the
 // interceptor services is the same as the target service. Hence, they will be executed only for
 // this particular service.
 service http:InterceptableService / on new http:Listener(9090) {
 
-    // Service level error interceptors can handle errors occurred during the service execution.
+    // Service-level error interceptors can handle errors occurred during the service execution.
     public function createInterceptors() returns ResponseErrorInterceptor {
         // To handle all of the errors, the `ResponseErrorInterceptor` is added as a first
         // interceptor as it has to be executed last.
