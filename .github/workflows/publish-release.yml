@@ -73,7 +73,7 @@ jobs:
           devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
           ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
         run: |
-          ./gradlew build -Pversion=${VERSION} 
+          ./gradlew build -Pversion=${VERSION}
           ./gradlew release -Prelease.useAutomaticVersion=true -x test
       - name: Checkout docker repo
         uses: actions/checkout@v2
@@ -128,10 +128,7 @@ jobs:
           gh api repos/ballerina-platform/ballerina-dev-website/contents/downloads/verification-notes/release-artfiacts-verification.md -H 'Accept: application/vnd.github.v3.raw' > release_notes.md
       - name: Update Markdown file
         run: |
-          npm install
-          node docs/update-version-notes/update_version.js
-        env:
-          NEW_VERSION: ${{ steps.version-set.outputs.taggedVersion }}
+          sed -i 's/{{ version }}/${{ steps.version-set.outputs.taggedVersion }}/g' release_notes.md
       - name: Read release notes from file
         id: release_notes
         uses: actions/github-script@v4
