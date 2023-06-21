@@ -16,7 +16,7 @@ service / on new http:Listener(9092) {
         // Initiate a NATS client passing the URL of the NATS broker.
         nats:Client natsClient = check new (nats:DEFAULT_URL);
 
-        // Initiate the NATS JetStreamClient at the start of the service. This will be used
+        // Initiate the NATS `JetStreamClient` at the start of the service. This will be used
         // throughout the lifetime of the service.
         self.orderClient = check new (natsClient);
         nats:StreamConfiguration config = {
@@ -28,7 +28,7 @@ service / on new http:Listener(9092) {
     }
 
     resource function post orders(Order newOrder) returns http:Accepted|error {
-        // Produces a message to the specified subject.
+        // Produce a message to the specified subject.
         check self.orderClient->publishMessage({
             subject: self.SUBJECT_NAME,
             content: newOrder.toString().toBytes()

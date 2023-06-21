@@ -11,7 +11,7 @@ type Order readonly & record {
 // Initiate a NATS client passing the URL of the NATS broker.
 nats:Client natsClient = check new (nats:DEFAULT_URL);
 
-// Initializes a NATS JetStream listener.
+// Initialize a NATS JetStream listener.
 listener nats:JetStreamListener subscription = new (natsClient);
 const string SUBJECT_NAME = "orders";
 
@@ -19,7 +19,7 @@ const string SUBJECT_NAME = "orders";
     subject: SUBJECT_NAME,
     autoAck: false
 }
-// Binds the consumer to listen to the messages published to the 'orders' subject.
+// Bind the consumer to listen to the messages published to the 'orders' subject.
 service nats:JetStreamService on subscription {
     remote function onMessage(nats:JetStreamMessage message) returns error? {
         string stringContent = check string:fromBytes(message.content);
