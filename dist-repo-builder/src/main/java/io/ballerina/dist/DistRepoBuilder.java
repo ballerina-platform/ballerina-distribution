@@ -74,6 +74,12 @@ public class DistRepoBuilder {
             if (bala.toString().contains(MODULE_BALLERINAI_OBSERVE)) {
                 continue;
             }
+
+            // skipping ballerina-graphql module since API docs are not generated for internal modules
+            if (bala.toString().contains("graphql")) {
+                continue;
+            }
+
             generateDocsFromBala(bala, jBalToolsPath, existingDocs);
             // following function was put in to validate if bir and jar exists for packed balas
             valid = valid & validateCache(bala, repo);
