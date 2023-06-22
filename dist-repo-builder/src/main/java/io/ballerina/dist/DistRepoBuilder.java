@@ -75,7 +75,7 @@ public class DistRepoBuilder {
                 continue;
             }
 
-            // skipping ballerina-graphql module since API docs are not generated for internal modules
+            // skipping ballerina-graphql module temporary
             if (bala.toString().contains("graphql")) {
                 continue;
             }
