@@ -68,3 +68,4 @@ jobs:
           gh release upload v${{ github.event.inputs.versionName }} ./ballerina-${{ github.event.inputs.versionName }}-swan-lake-macos-arm-x64.pkg.sig --clobber
           gh release upload v${{ github.event.inputs.versionName }} ./ballerina-${{ github.event.inputs.versionName }}-swan-lake-windows-x64.msi.pem --clobber
           gh release upload v${{ github.event.inputs.versionName }} ./ballerina-${{ github.event.inputs.versionName }}-swan-lake-windows-x64.msi.sig --clobber
+          
