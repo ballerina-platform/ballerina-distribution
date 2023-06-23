@@ -70,3 +70,4 @@ task centralTests {
 }
 
 test.dependsOn centralTests
+checkstyleTest.dependsOn(':config:checkstyle:downloadMultipleFiles')
