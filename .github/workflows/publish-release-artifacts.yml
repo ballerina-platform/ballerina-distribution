@@ -151,7 +151,7 @@ jobs:
 
       - name: Verify Docker Image
         run: |
-          cosign verify ballerina/ballerina:$GIT_TAG --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release-artifacts.yml@refs/heads/master --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+          cosign verify ballerina/ballerina:$GIT_TAG --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release-artifacts.yml@${{ github.ref }} --certificate-oidc-issuer=https://token.actions.githubusercontent.com
           docker rmi ballerina/ballerina:$GIT_TAG
           docker image prune -f
 

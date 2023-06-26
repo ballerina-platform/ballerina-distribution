@@ -119,6 +119,14 @@ jobs:
           docker build --no-cache=true --squash --build-arg BALLERINA_DIST=ballerina-$VERSION.zip -t ballerina/ballerina:$VERSION  $DOCKER_REPO/base/docker/
           rm $DOCKER_REPO/base/docker/ballerina-$VERSION.zip
           docker push ballerina/ballerina:$VERSION
+
+      - name: Sign Docker Image
+        run: |
+          cosign sign ballerina/ballerina:$VERSION --yes
+
+      - name: Verify Docker Image
+        run: |
+          cosign verify ballerina/ballerina:$VERSION --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release-artifacts.yml@${{ github.ref }} --certificate-oidc-issuer=https://token.actions.githubusercontent.com
           docker rmi ballerina/ballerina:$VERSION
           docker image prune -f
 
