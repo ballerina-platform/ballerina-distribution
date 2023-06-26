@@ -37,7 +37,7 @@ jobs:
           cosign sign-blob ballerina-${{ github.event.inputs.versionName }}-swan-lake-macos-x64.pkg --output-certificate ballerina-${{ github.event.inputs.versionName }}-swan-lake-macos-x64.pkg.pem --output-signature ballerina-${{ github.event.inputs.versionName }}-swan-lake-macos-x64.pkg.sig --yes
       - name: Verify the MacOS Installer
         run: |
-          cosign verify-blob ballerina-${{ github.event.inputs.versionName }}-swan-lake-macos-x64.pkg --certificate ballerina-${{ github.event.inputs.versionName }}-swan-lake-macos-x64.pkg.pem --signature ballerina-${{ github.event.inputs.versionName }}-swan-lake-macos-x64.pkg.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/sign-installers.yml@refs/heads/master --certificate-oidc-issuer=https://token.actions.githubusercontent.com 
+          cosign verify-blob ballerina-${{ github.event.inputs.versionName }}-swan-lake-macos-x64.pkg --certificate ballerina-${{ github.event.inputs.versionName }}-swan-lake-macos-x64.pkg.pem --signature ballerina-${{ github.event.inputs.versionName }}-swan-lake-macos-x64.pkg.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/sign-installers.yml@refs/heads/2201.7.x --certificate-oidc-issuer=https://token.actions.githubusercontent.com 
       - name: Retrieve MacOS-ARM Installer
         run:
           |
@@ -47,7 +47,7 @@ jobs:
           cosign sign-blob ballerina-${{ github.event.inputs.versionName }}-swan-lake-macos-arm-x64.pkg --output-certificate ballerina-${{ github.event.inputs.versionName }}-swan-lake-macos-arm-x64.pkg.pem --output-signature ballerina-${{ github.event.inputs.versionName }}-swan-lake-macos-arm-x64.pkg.sig --yes
       - name: Verify the MacOS-ARM Installer
         run: |
-          cosign verify-blob ballerina-${{ github.event.inputs.versionName }}-swan-lake-macos-arm-x64.pkg --certificate ballerina-${{ github.event.inputs.versionName }}-swan-lake-macos-arm-x64.pkg.pem --signature ballerina-${{ github.event.inputs.versionName }}-swan-lake-macos-arm-x64.pkg.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/sign-installers.yml@refs/heads/master --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+          cosign verify-blob ballerina-${{ github.event.inputs.versionName }}-swan-lake-macos-arm-x64.pkg --certificate ballerina-${{ github.event.inputs.versionName }}-swan-lake-macos-arm-x64.pkg.pem --signature ballerina-${{ github.event.inputs.versionName }}-swan-lake-macos-arm-x64.pkg.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/sign-installers.yml@refs/heads/2201.7.x --certificate-oidc-issuer=https://token.actions.githubusercontent.com
       - name: Retrieve Windows Installer
         run:
           |
@@ -57,7 +57,7 @@ jobs:
           cosign sign-blob ballerina-${{ github.event.inputs.versionName }}-swan-lake-windows-x64.msi --output-certificate ballerina-${{ github.event.inputs.versionName }}-swan-lake-windows-x64.msi.pem --output-signature ballerina-${{ github.event.inputs.versionName }}-swan-lake-windows-x64.msi.sig --yes
       - name: Verify the Windows Installer
         run: |
-          cosign verify-blob ballerina-${{ github.event.inputs.versionName }}-swan-lake-windows-x64.msi --certificate ballerina-${{ github.event.inputs.versionName }}-swan-lake-windows-x64.msi.pem --signature ballerina-${{ github.event.inputs.versionName }}-swan-lake-windows-x64.msi.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/sign-installers.yml@refs/heads/master --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+          cosign verify-blob ballerina-${{ github.event.inputs.versionName }}-swan-lake-windows-x64.msi --certificate ballerina-${{ github.event.inputs.versionName }}-swan-lake-windows-x64.msi.pem --signature ballerina-${{ github.event.inputs.versionName }}-swan-lake-windows-x64.msi.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/sign-installers.yml@refs/heads/2201.7.x --certificate-oidc-issuer=https://token.actions.githubusercontent.com
       - name: Upload Installers' Verification Files
         env:
           GH_TOKEN : ${{ secrets.BALLERINA_BOT_TOKEN }}
