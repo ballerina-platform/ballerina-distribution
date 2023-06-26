@@ -8,6 +8,10 @@ on:
         default: '2201.1.1'
         required: true
 
+permissions:
+  id-token: write 
+  contents: write
+
 jobs:
   publish-artifacts:
     name: Publish Release Artifacts
@@ -17,6 +21,9 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+
+      - name: cosign-installer
+        uses: sigstore/cosign-installer@v3.0.3
 
       - name: Set up JDK 11
         uses: actions/setup-java@v2
@@ -137,6 +144,14 @@ jobs:
           docker build --no-cache=true --squash --build-arg BALLERINA_DIST=ballerina-$VERSION.zip -t ballerina/ballerina:$GIT_TAG  $DOCKER_REPO/base/docker/
           rm $DOCKER_REPO/base/docker/ballerina-$VERSION.zip
           docker push ballerina/ballerina:$GIT_TAG
+      
+      - name: Sign Docker Image
+        run: |
+          cosign sign ballerina/ballerina:$GIT_TAG --yes
+
+      - name: Verify Docker Image
+        run: |
+          cosign verify ballerina/ballerina:$GIT_TAG --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release-artifacts.yml@refs/heads/master --certificate-oidc-issuer=https://token.actions.githubusercontent.com
           docker rmi ballerina/ballerina:$GIT_TAG
           docker image prune -f
 
