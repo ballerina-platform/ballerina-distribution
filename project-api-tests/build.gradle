@@ -15,8 +15,8 @@
   ~ */
 
 apply from: "$rootDir/gradle/javaProject.gradle"
-
-description = 'Ballerina - Central Tests'
+ 
+ description = 'Ballerina - Central Tests'
 
 configurations {
     jBallerinaDistribution
@@ -48,7 +48,6 @@ task centralTests {
     dependsOn configurations.jBallerinaDistribution
     dependsOn configurations.ballerinaDistribution
     dependsOn configurations.ballerinaLinuxDistribution
-    dependsOn configurations.ballerinaLinuxDistribution
     dependsOn configurations.ballerinaWindowsDistribution
     test {
         systemProperty "distributions.dir", "$buildDir/../../ballerina/build/distributions"
@@ -69,4 +68,41 @@ task centralTests {
     }
 }
 
-test.dependsOn centralTests
+
+ task checkURL {
+     doLast {
+         try {
+             URL url = new URL("${devIdpUrl}")
+             HttpURLConnection connection = (HttpURLConnection) url.openConnection()
+             connection.setRequestMethod("GET")
+             connection.connect()
+
+             int code = connection.getResponseCode()
+             if (code == 200) {
+                 logger.lifecycle("Connection to ${devIdpUrl} is successful. Running tests...")
+                 ext.isURLAvailable = true
+             } else {
+                 logger.lifecycle("Connection to ${devIdpUrl} is not successful. Skipping tests...")
+                 logger.lifecycle("-----------------------------------------")
+                 logger.lifecycle(" WARNING: Skipping the project api tests")
+                 logger.lifecycle("-----------------------------------------")
+                 ext.isURLAvailable = false
+             }
+         } catch(Exception ex) {
+             logger.lifecycle("Connection to ${devIdpUrl} is not successful. Exception while connecting to " +
+                     "${devIdpUrl}. Skipping tests...")
+             logger.lifecycle("-----------------------------------------")
+             logger.lifecycle(" WARNING: Skipping the project api tests")
+             logger.lifecycle("-----------------------------------------")
+             ext.isURLAvailable = false
+         }
+     }
+ }
+
+ test {
+     dependsOn checkURL
+     onlyIf {
+         checkURL.isURLAvailable
+     }
+     dependsOn centralTests
+ }
