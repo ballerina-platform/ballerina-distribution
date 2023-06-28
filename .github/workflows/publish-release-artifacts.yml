@@ -9,6 +9,7 @@ on:
         required: true
 env:
   REGISTRY: ghcr.io
+  ORGNAME: ballerina-platform 
   IMAGE_NAME: ballerina
 
 jobs:
@@ -141,7 +142,6 @@ jobs:
           rm $DOCKER_REPO/base/docker/ballerina-$VERSION.zip
           docker push ballerina/ballerina:$GIT_TAG
           
-
       - name: Build and push dev container
         run: |
           DOCKER_REPO=${{ steps.process-docker.outputs.dockerRepo }}
@@ -171,22 +171,22 @@ jobs:
         uses: docker/login-action@v2
         with:
           registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          username: ${{ env.ORGNAME }}
+          password: ${{ secrets.BALLERINA_BOT_TOKEN }}
 
       - name: Push image to Github Container Registry
         run: |
-          docker tag ballerina/ballerina:$GIT_TAG ${{ env.REGISTRY }}/ballerina-platform/${{ env.IMAGE_NAME }}:$GIT_TAG
-          docker push ${{ env.REGISTRY }}/ballerina-platform/${{ env.IMAGE_NAME }}:$GIT_TAG
+          docker tag ballerina/ballerina:$GIT_TAG ${{ env.REGISTRY }}/${{ env.ORGNAME }}/${{ env.IMAGE_NAME }}:$GIT_TAG
+          docker push ${{ env.REGISTRY }}/${{ env.ORGNAME }}/${{ env.IMAGE_NAME }}:$GIT_TAG
       
       - name: Verify key generation
         run: notation key list 
      
       - name: Sign the published Docker image
         run: | 
-          notation sign --key ${{ secrets.AZURE_KEY_NAME }} ${{ env.REGISTRY }}/ballerina-platform/${{ env.IMAGE_NAME }}:$GIT_TAG
+          notation sign --key ${{ secrets.AZURE_KEY_NAME }} ${{ env.REGISTRY }}/${{ env.ORGNAME }}/${{ env.IMAGE_NAME }}:$GIT_TAG
           docker rmi ballerina/ballerina:$GIT_TAG
-          docker rmi ${{ env.REGISTRY }}/ballerina-platform/${{ env.IMAGE_NAME }}:$GIT_TAG
+          docker rmi ${{ env.REGISTRY }}/${{ env.ORGNAME }}/${{ env.IMAGE_NAME }}:$GIT_TAG
           docker image prune -f
 
       - name: Publish Artifacts
