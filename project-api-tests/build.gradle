@@ -15,8 +15,8 @@
   ~ */
 
 apply from: "$rootDir/gradle/javaProject.gradle"
- 
- description = 'Ballerina - Central Tests'
+
+description = 'Ballerina - Central Tests'
 
 configurations {
     jBallerinaDistribution
