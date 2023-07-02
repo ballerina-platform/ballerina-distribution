@@ -284,9 +284,9 @@ task combineDocs(type: Exec) {
 task packageDist(type: Zip) {
     group = "package_distribution"
     description = 'Ballerina Tools Distribution Assembly'
-    baseName = "${distributionName}"
-    ext { parentDir = "${baseName}-${shortVersion}" }
-    archiveFileName = "${baseName}-${shortVersion}.zip"
+    archiveBaseName = "${distributionName}"
+    ext { parentDir = "${archiveBaseName}-${shortVersion}" }
+    archiveFileName = "${archiveBaseName}-${shortVersion}.zip"
     entryCompression = ZipEntryCompression.DEFLATED
 
     into("${parentDir}") {
@@ -327,8 +327,8 @@ task packageDist(type: Zip) {
 task packageDistZip(type: Zip) {
     group = "package_distribution"
     description = 'Ballerina Distribution Assembly'
-    baseName = "${distributionName}-${version}"
-    ext { parentDir = "${baseName}-${codeName}" }
+    archiveBaseName = "${distributionName}-${version}"
+    ext { parentDir = "${archiveBaseName}-${codeName}" }
     archiveFileName = "${distributionName}-${version}-${codeName}.zip"
     entryCompression = ZipEntryCompression.DEFLATED
 
@@ -410,8 +410,8 @@ task packageDistZip(type: Zip) {
 task packageDistLinux(type: Zip) {
     group = "package_distribution"
     description = 'Ballerina Linux Distribution Assembly'
-    baseName = "${distributionName}-${version}"
-    ext { parentDir = "${baseName}-${codeName}-linux" }
+    archiveBaseName = "${distributionName}-${version}"
+    ext { parentDir = "${archiveBaseName}-${codeName}-linux" }
     archiveFileName = "${parentDir}.zip"
     entryCompression = ZipEntryCompression.DEFLATED
 
@@ -497,8 +497,8 @@ task packageDistLinux(type: Zip) {
 task packageDistMac(type: Zip) {
     group = "package_distribution"
     description = 'Ballerina MacOS Distribution Assembly'
-    baseName = "${distributionName}-${version}"
-    ext { parentDir = "${baseName}-${codeName}-macos" }
+    archiveBaseName = "${distributionName}-${version}"
+    ext { parentDir = "${archiveBaseName}-${codeName}-macos" }
     archiveFileName = "${parentDir}.zip"
     entryCompression = ZipEntryCompression.DEFLATED
 
@@ -580,8 +580,8 @@ task packageDistMac(type: Zip) {
 task packageDistMacArm(type: Zip) {
     group = "package_distribution"
     description = 'Ballerina MacOS-ARM Distribution Assembly'
-    baseName = "${distributionName}-${version}"
-    ext { parentDir = "${baseName}-${codeName}-macos-arm" }
+    archiveBaseName = "${distributionName}-${version}"
+    ext { parentDir = "${archiveBaseName}-${codeName}-macos-arm" }
     archiveFileName = "${parentDir}.zip"
     entryCompression = ZipEntryCompression.DEFLATED
 
@@ -663,8 +663,8 @@ task packageDistMacArm(type: Zip) {
 task packageDistWindows(type: Zip) {
     group = "package_distribution"
     description = 'Ballerina Windows Distribution Assembly'
-    baseName = "${distributionName}-${version}"
-    ext { parentDir = "${baseName}-${codeName}-windows" }
+    archiveBaseName = "${distributionName}-${version}"
+    ext { parentDir = "${archiveBaseName}-${codeName}-windows" }
     archiveFileName = "${parentDir}.zip"
     entryCompression = ZipEntryCompression.DEFLATED
 
@@ -801,7 +801,7 @@ task testExamples() {
 
         if (bbe.startsWith('mysql')) {
             def tomlFile = new File("${distPath}/${bbe}/Ballerina.toml")
-            tomlFile.append("\n\n[[platform.java11.dependency]]")
+            tomlFile.append("\n\n[[platform.java17.dependency]]")
             tomlFile.append("\npath = \"$distPath/lib/mysql-connector-java-8.0.21.jar\"\n")
         }
 
