@@ -17,10 +17,10 @@
 plugins {
     id 'base'
     id 'maven-publish'
-    id 'net.researchgate.release' version '2.6.0'
-    id 'de.undercouch.download' version '4.1.1'
-    id "com.github.johnrengelman.shadow" version "5.2.0"
-    id "com.github.spotbugs" version "4.0.5"
+    id 'net.researchgate.release' version '2.8.0'
+    id 'de.undercouch.download' version '5.4.0'
+    id "com.github.johnrengelman.shadow" version "8.1.0"
+    id "com.github.spotbugs" version "5.0.14"
 }
 
 description = 'Ballerina - Tools - Parent'
@@ -34,12 +34,12 @@ ext {
     ballerinaCommandVersion = project.ballerinaCommandVersion
 
     picocliVersion = "4.0.1"
-    testngVersion = "6.14.3"
+    testngVersion = "7.6.1"
     netLingalaZip4jVersion = "2.8.0"
     commonsIoVersion = "2.6"
     commonsLang3Version = "3.9"
     lsp4jDebugVersion = "0.7.1"
-    puppycrawlCheckstyleVersion = "8.18"
+    puppycrawlCheckstyleVersion = "10.12.1"
 }
 
 allprojects {
@@ -71,8 +71,8 @@ allprojects {
 
 subprojects {
     apply plugin: 'java'
-    sourceCompatibility = 11
-    targetCompatibility = 11
+    sourceCompatibility = 17
+    targetCompatibility = 17
     tasks.withType(JavaCompile) {
         options.encoding = 'UTF-8'
     }

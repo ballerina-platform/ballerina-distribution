@@ -72,7 +72,7 @@ public class GenCacheCmd implements BLauncherCmd{
             defaultBuilder.addCompilationCacheFactory(new FileSystemCache.FileSystemCacheFactory(repo.resolve("cache")));
             Project balaProject = BalaProject.loadProject(defaultBuilder, modulePath);
             PackageCompilation packageCompilation = balaProject.currentPackage().getCompilation();
-            JBallerinaBackend.from(packageCompilation, JvmTarget.JAVA_11);
+            JBallerinaBackend.from(packageCompilation, JvmTarget.JAVA_17);
             //TODO : Remove when regeneration is not required
         } catch (Error e) {
             //TODO : Ignore Error and continue generation as regeneration will be done
