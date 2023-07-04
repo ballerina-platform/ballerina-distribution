@@ -2475,6 +2475,14 @@
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
+      },
+      {
+        "name": "Input constraint validation",
+        "url": "graphql-input-constraint-validation",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
       }
     ]
   },
