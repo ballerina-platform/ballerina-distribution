@@ -3152,8 +3152,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Constraint validation",
-        "url": "nats-service-constraint-validation",
+        "name": "Constraint validations",
+        "url": "nats-service-constraint-validations",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -3162,7 +3162,7 @@
       },
       {
         "name": "Consume JetStream message",
-        "url": "nats-jestream-sub",
+        "url": "nats-jetstream-sub",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
