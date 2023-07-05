@@ -1,6 +1,6 @@
 # GraphQL service - Input constraint validation
 
-GraphQL input constraint validation allows you to define and enforce constraints on input arguments. These constraints ensure that the provided input values meet certain criteria before they are processed. The input constraints can be configured using the `@constraint` annotation provided by the ballerina constraint package. The constraint validation can be enabled or disabled using the `validation` field in the `graphql:ServiceConfig`. By default, the validation field is set to `true`.
+GraphQL input constraint validation allows you to define and enforce constraints on input arguments. These constraints ensure that the provided input values meet certain criteria before they are processed. The input constraints can be configured using the `@constraint` annotation provided by the Ballerina constraint package. The constraint validation can be enabled or disabled using the `validation` field in the `graphql:ServiceConfig`. By default, the validation field is set to `true`.
 
 ::: code graphql_input_constraint_validation.bal :::
 
