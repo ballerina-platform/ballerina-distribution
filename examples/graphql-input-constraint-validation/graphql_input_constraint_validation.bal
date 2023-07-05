@@ -19,10 +19,6 @@ public type Profile record {|
     float height;
 |};
 
-@graphql:ServiceConfig {
-    // This is enabled by default. Use this config to disable constraint validation
-    validation: true
-}
 service /graphql on new graphql:Listener(9090) {
 
     resource function get name(Profile profile) returns string {
