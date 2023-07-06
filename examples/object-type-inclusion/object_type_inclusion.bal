@@ -18,7 +18,7 @@ type Person object {
 
 class Engineer {
     // The `Engineer` class includes the `Person` object type.
-    // Therefore, it has to implement both the `clone()` and `draw()` methods.
+    // Therefore, it has to implement both the `clone()` and `getName()` methods.
     *Person;
 
     function init(string name) {
