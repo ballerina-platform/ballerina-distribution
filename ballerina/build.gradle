@@ -1292,7 +1292,7 @@ task testDevToolsIntegration() {
 
 task generateCache(dependsOn: ':cache-generator:build') {
     doFirst {
-        download {
+        download.run {
             src "https://raw.githubusercontent.com/ballerina-platform/ballerina-release/${balstdlibBranch}/dependabot/resources/extensions.json"
             dest "${project.rootDir}/ballerina/build/target/"
         }
