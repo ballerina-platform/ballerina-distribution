@@ -1,6 +1,6 @@
 # AWS Lambda - Hello world
 
-This example demonstrates how to expose a simple echo function in AWS Lambda.
+This example demonstrates how to write a simple echo function in AWS Lambda.
 
 For more information, see the [AWS Lambda learn guide](https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/aws-lambda/).
 
