@@ -2,6 +2,12 @@
 
 This example demonstrates how to write a simple echo function in Azure Functions.
 
+In Ballerina, triggers are represented by listeners. When the `af:HttpListener` gets attached to the service, it implies that the function is an HTTP Trigger. The resource method behaves exactly the same as a service written from `ballerina/http`. It supports `http:Payload` and `http:Header` annotations for parameters. Input binding annotations can be used to annotate parameters to make use of external services in Azure. If no annotations are specified for a parameter, it is identified as a query parameter.
+
+Output bindings are defined in the return type definition. For services with the `HttpListener` attachment, `HttpOutput` is the default output binding. You can override the default behavior by specifying them explicitly in the return type. 
+
+In the code sample shown above, it has an empty service path and resource path named `hello`. The accessor is `get`. It expects a request with a query parameter for the field name. The required artifact generation and data binding will be handled by the `ballerinax/azure_functions` package automatically.
+
 For more information, see the [Azure deployment guide](https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/azure-functions/).
 
 ## Set up the prerequisites
@@ -17,8 +23,6 @@ Follow the steps below to write the function.
 ::: out bal_new.out :::
 
 2. Replace the content of the generated Ballerina file with the content below.
-
->**Info:** In the code sample shown above, it has an empty service path and resource path named `hello`. The accessor is `get`. It expects a request with a query parameter for the field `name`. The required artifact generation and data binding will be handled by the `ballerinax/azure_functions` package automatically.
 
 ::: code azure-functions-hello-world.bal :::
 
