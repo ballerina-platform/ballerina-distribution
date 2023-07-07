@@ -13,4 +13,4 @@ Run the service by executing the command below.
 ## Related links
 - [`graphql:ListenerConfiguration` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest#ListenerConfiguration)
 - [`graphql:ListenerSecureSocket` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest#ListenerSecureSocket)
-- [GraphQL service SSL/TLS - Specification](/spec/graphql/#12311-ssltls)
+- [GraphQL service SSL/TLS - Specification](/spec/graphql/#8311-ssltls)
