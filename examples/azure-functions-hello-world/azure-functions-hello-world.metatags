@@ -1,2 +1,2 @@
-description: This example demonstrates how to expose a simple echo function in Azure Functions.
+description: This example demonstrates how to write a hello world function with http trigger and output in Azure Functions.
 keywords:  ballerina, ballerina by example, azure functions, function as a service, serverless
