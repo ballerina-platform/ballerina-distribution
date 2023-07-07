@@ -1,2 +1,2 @@
 description: This example demonstrates how to expose a simple echo function in Azure Functions.
-keywords:  ballerina, ballerina by example, bbe, aws lambda
+keywords:  ballerina, ballerina by example, azure functions, function as a service, serverless
