@@ -4370,8 +4370,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "HTTP trigger",
-        "url": "azure-functions-http-trigger",
+        "name": "HTTP trigger with queue",
+        "url": "azure-functions-http-trigger-with-queue",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
