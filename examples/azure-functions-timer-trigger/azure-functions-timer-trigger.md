@@ -30,8 +30,6 @@ Execute the command below to generate the Azure Functions artifacts.
 
 Execute the Azure CLI command given by the compiler to create and publish the functions by replacing the sample app name given in the command with your respective Azure `<function_app_name>`.
 
->**Tip:** For instructions on getting the values, see [Set up the prerequisites](https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/azure-functions/#set-up-the-prerequisites).
-
 ## Invoke the function
 
 The `timer` function is triggered by the Azure Functions app from a timer. You can check the queue storage to see the output. 

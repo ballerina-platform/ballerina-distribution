@@ -8,5 +8,3 @@ Syncing triggers...
 Functions in bal-bbe:
     get-hello - [httpTrigger]
         Invoke url: https://bal-bbe.azurewebsites.net/hello
-
-    timer - [timerTrigger]
