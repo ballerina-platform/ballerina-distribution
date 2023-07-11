@@ -1,6 +1,6 @@
 # `StopHandler`
 
-A `StopHandler` is a function called during graceful shutdown, registered at runtime with a module.
+A `StopHandler` is a function that is registered at runtime with a module and invoked during graceful shutdown.
 This example demonstrates how to register a `StopHandler` that will be executed at the end of the program.
 
 ::: code stop_handler.bal :::
