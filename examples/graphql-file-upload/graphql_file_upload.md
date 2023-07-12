@@ -25,4 +25,4 @@ This will create a directory `uploads` where the service is running, and then sa
 ## Related links
 - [`graphql:Upload` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest#Upload)
 - [GraphQL multipart request specification](https://github.com/jaydenseric/graphql-multipart-request-spec)
-- [GraphQL file upload - Specification](/spec/graphql/#104-file-upload)
+- [GraphQL file upload - Specification](/spec/graphql/#6-file-upload)

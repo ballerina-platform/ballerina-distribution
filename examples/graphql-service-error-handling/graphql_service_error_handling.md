@@ -32,4 +32,4 @@ Check the response to see how the `data` field is set to null due to propagating
 
 ## Related links
 - [`graphql` module - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
-- [GraphQL error handling - Specification](/spec/graphql/#62-service-error-handling)
+- [GraphQL error handling - Specification](/spec/graphql/#72-service-error-handling)
