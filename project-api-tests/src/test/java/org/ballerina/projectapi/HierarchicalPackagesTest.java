@@ -23,9 +23,15 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
@@ -57,6 +63,7 @@ import static org.ballerina.projectapi.CentralTestUtils.getEnvVariables;
 import static org.ballerina.projectapi.CentralTestUtils.getExecutableJarPath;
 import static org.ballerina.projectapi.CentralTestUtils.getNewDirectoryName;
 import static org.ballerina.projectapi.CentralTestUtils.getString;
+import static org.ballerina.projectapi.CentralTestUtils.replaceRandomPackageName;
 import static org.ballerina.projectapi.CentralTestUtils.testPushPackage;
 import static org.ballerina.projectapi.CentralTestUtils.testPushPackageToLocal;
 import static org.ballerina.projectapi.TestUtils.DISTRIBUTION_FILE_NAME;
@@ -96,6 +103,19 @@ public class HierarchicalPackagesTest {
             Assert.fail("error loading resources");
         }
 
+        // Update the distribution-version in Dependencies.toml
+        Files.list(tempWorkspaceDirectory).forEach(path -> {
+            File dependenciesTomlTemplate = path.resolve("Dependencies-template.toml").toFile();
+            if (dependenciesTomlTemplate.exists()) {
+                try {
+                    replaceDependenciesTomlVersion(path);
+                } catch (IOException e) {
+                    Assert.fail("error updating Dependencies.toml for " + path.getFileName()
+                            + " with error: " + e.getMessage());
+                }
+            }
+        });
+
         randomPackageSuffix = CentralTestUtils.randomPackageName(6);
         Set<String> uniquePackageNames = new HashSet<>();
 
@@ -108,7 +128,7 @@ public class HierarchicalPackagesTest {
         }
         for (String packageName : uniquePackageNames) {
             String randomPackageName = packageName + PACKAGE_NAME_SEPARATOR + randomPackageSuffix;
-            replaceRandomPackageName(randomPackageName, packageName);
+            replaceRandomPackageName(tempWorkspaceDirectory, randomPackageName, packageName);
         }
 
         List<String> oldPackageNames = Arrays.asList("PackageH.test", "PackageJ.test", "PackageL.test", "PackageT.test",
@@ -172,12 +192,7 @@ public class HierarchicalPackagesTest {
         }
     }
 
-    private void replaceRandomPackageName(String randomPackageName, String packageName) throws IOException {
-        List<Path> balFiles = CentralTestUtils.getFileListByExtension(tempWorkspaceDirectory, "bal");
-        List<Path> tomlFiles = CentralTestUtils.getFileListByExtension(tempWorkspaceDirectory, "toml");
-        CentralTestUtils.replacePackageName(balFiles, packageName, randomPackageName);
-        CentralTestUtils.replacePackageName(tomlFiles, packageName, randomPackageName);
-    }
+
 
     @Test(description = "Verify build package behaviour for hierarchical package imports in two consecutive builds.",
     enabled = false)
@@ -420,6 +435,24 @@ public class HierarchicalPackagesTest {
     private String getDependencyUpdate(String orgName, String packageName, String updatedVersion) {
         return "org = \"" + orgName + "\"\n" + "name = \"" + packageName + "\"\n" +
                 "version = \"" + updatedVersion + "\"";
+    }
+
+    private void replaceDependenciesTomlVersion(Path projectPath) throws IOException {
+        String currentDistrVersion = System.getProperty("short.version");
+        Path dependenciesTomlTemplatePath = projectPath.resolve("Dependencies-template.toml");
+        Path dependenciesTomlPath = projectPath.resolve("Dependencies.toml");
+
+        try (FileInputStream input = new FileInputStream(dependenciesTomlTemplatePath.toString());
+             FileOutputStream output = new FileOutputStream(dependenciesTomlPath.toString());
+             BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(output))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                line = line.replace("**INSERT_DISTRIBUTION_VERSION_HERE**", currentDistrVersion);
+                writer.write(line);
+                writer.newLine();
+            }
+        }
     }
 
     @AfterClass

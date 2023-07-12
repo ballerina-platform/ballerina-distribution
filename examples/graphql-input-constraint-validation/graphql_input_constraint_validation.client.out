@@ -1,0 +1,2 @@
+curl -X POST -H "Content-type: application/json" -d '{ "query": "query{ name(profile:{name:\"Harry Potter\", age: -4, height:6})}" }' 'http://localhost:9090/graphql'
+{"errors":[{"message":"Input validation failed in the field \"name\": Validation failed for '$.age:minValue','$.height:maxValue','$.name:maxLength' constraint(s).", "locations":[{"line":1, "column":8}], "path":["name"]}], "data":null}

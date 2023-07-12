@@ -1,4 +1,4 @@
-# RegExp 
+# RegExp type
 
 `RegExp` is a built-in type in Ballerina that represents a regular expression. Regular expressions are commonly used for tasks such as validating input, searching and replacing text, and parsing data.
 

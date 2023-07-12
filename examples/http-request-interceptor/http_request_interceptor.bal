@@ -34,20 +34,18 @@ service class RequestInterceptor {
     }
 }
 
-// Interceptors can also be engaged at the listener level. In this case, the `RequestInterceptors`
-// can have only the default path.
-listener http:Listener interceptorListener = new (9090);
+// Engage interceptors at the service level using an `http:InterceptableService`. The interceptors
+// will inherit the basepath of the service.
+service http:InterceptableService / on new http:Listener(9090) {
 
-// Engage interceptors at the service level. Request interceptor services will be executed from
-// head to tail.
-@http:ServiceConfig {
-    // The interceptor pipeline. The base path of the interceptor services is the same as
-    // the target service. Hence, they will be executed only for this particular service.
-    interceptors: [new RequestInterceptor()]
-}
-service / on interceptorListener {
+    // Creates the interceptor pipeline. The function can return a single interceptor or an array of
+    // interceptors as the interceptor pipeline. If the interceptor pipeline is an array, then, the
+    // request interceptor services will be executed from head to tail.
+    public function createInterceptors() returns RequestInterceptor {
+        return new RequestInterceptor();
+    }
 
-    resource function get albums(http:Request req) returns Album[] {
+    resource function get albums() returns Album[] {
         return albums.toArray();
     }
 }

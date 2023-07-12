@@ -27,8 +27,6 @@ service class RequestInterceptor {
     }
 }
 
-RequestInterceptor requestInterceptor = new;
-
 // A `RequestErrorInterceptor` service class implementation. It allows intercepting
 // the error that occurred in the request path and handle it accordingly.
 // A `RequestErrorInterceptor` service class can have only one resource function.
@@ -50,16 +48,13 @@ service class RequestErrorInterceptor {
     }
 }
 
-// Creates a new `RequestErrorInterceptor`.
-RequestErrorInterceptor requestErrorInterceptor = new;
+service http:InterceptableService / on new http:Listener(9090) {
 
-listener http:Listener interceptorListener = new (9090,
-    // To handle all of the errors in the request path, the `RequestErrorInterceptor`
-    // is added as the last interceptor as it has to be executed last.
-    interceptors = [requestInterceptor, requestErrorInterceptor]
-);
-
-service / on interceptorListener {
+    public function createInterceptors() returns [RequestInterceptor, RequestErrorInterceptor] {
+        // To handle all of the errors in the request path, the `RequestErrorInterceptor`
+        // is added as the last interceptor as it has to be executed last.
+        return [new RequestInterceptor(), new RequestErrorInterceptor()];
+    }
 
     resource function get albums() returns Album[] {
         return albums.toArray();

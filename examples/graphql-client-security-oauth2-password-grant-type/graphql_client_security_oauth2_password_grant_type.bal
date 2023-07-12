@@ -1,4 +1,5 @@
 import ballerina/graphql;
+import ballerina/oauth2;
 import ballerina/io;
 
 // User-defined data types to retrive data from the service.
@@ -21,16 +22,8 @@ public function main() returns error? {
             password: "admin",
             clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
             clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
-            scopes: ["admin"],
-            refreshConfig: {
-                refreshUrl: "https://localhost:9445/oauth2/token",
-                scopes: ["hello"],
-                clientConfig: {
-                    secureSocket: {
-                        cert: "../resource/path/to/public.crt"
-                    }
-                }
-            },
+            scopes: "admin",
+            refreshConfig: oauth2:INFER_REFRESH_CONFIG,
             clientConfig: {
                 secureSocket: {
                     cert: "../resource/path/to/public.crt"
