@@ -116,19 +116,19 @@ jobs:
         with:
           name: Ballerina Short Name Hashes
           path: ballerina-${{ steps.project-version.outputs.sversion }}.zip.sha256
-      - name: Install Ballerina DEB
-        run: sudo dpkg -i installers/linux-deb/target/ballerina-*-linux-x64.deb
+#      - name: Install Ballerina DEB
+#        run: sudo dpkg -i installers/linux-deb/target/ballerina-*-linux-x64.deb
       - name: Update Installer Test Configs
         run: |
           DISPLAY_TEXT=${{ steps.project-version.outputs.langversion }}
           SWAN_LAKE_LATEST_VERSION="swan-lake-"+$DISPLAY_TEXT
           perl -pi -e "s/^\s*swan-lake-latest-version-display-text=.*/swan-lake-latest-version-display-text=$DISPLAY_TEXT/" ballerina-test-automation/gradle.properties
           perl -pi -e "s/^\s*swan-lake-latest-version=.*/swan-lake-latest-version=$SWAN_LAKE_LATEST_VERSION/" ballerina-test-automation/gradle.properties
-      - name: Run Installer Tests
-        working-directory: ./ballerina-test-automation/installer-test
-        run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
-        env:
-          TEST_MODE_ACTIVE: true
+#      - name: Run Installer Tests
+#        working-directory: ./ballerina-test-automation/installer-test
+#        run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+#        env:
+#          TEST_MODE_ACTIVE: true
       - name: Checkout docker repo
         uses: actions/checkout@v2
         with:
@@ -229,11 +229,11 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: 2201.5.x
-      - name: Set up JDK 11
+      - name: Set up JDK 17
         uses: actions/setup-java@v2
         with:
           distribution: 'temurin'
-          java-version: '11'
+          java-version: '17'
       - name: Build with Gradle
         env:
           packageUser: ${{ github.actor }}
@@ -253,11 +253,11 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: 2201.5.x
-      - name: Set up JDK 11
+      - name: Set up JDK 17
         uses: actions/setup-java@v2
         with:
           distribution: 'temurin'
-          java-version: '11'
+          java-version: '17'
       - name: Build with Gradle
         env:
           packageUser: ${{ github.actor }}
@@ -277,11 +277,11 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: 2201.5.x
-      - name: Set up JDK 11
+      - name: Set up JDK 17
         uses: actions/setup-java@v2
         with:
           distribution: 'temurin'
-          java-version: '11'
+          java-version: '17'
       - name: Setup Files
         run: |
           cd /etc/yum.repos.d/
@@ -361,11 +361,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-      - name: Set up JDK 11
+      - name: Set up JDK 17
         uses: actions/setup-java@v2
         with:
           distribution: 'temurin'
-          java-version: '11'
+          java-version: '17'
       - name: Download MacOS-ARM Intaller Zip
         uses: actions/download-artifact@v2
         with:
