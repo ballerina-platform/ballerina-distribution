@@ -41,4 +41,4 @@ This will print a log message in the server terminal similar to the following lo
 ## Related links
 
 - [`graphql:Field` object - API documentation](https://lib.ballerina.io/ballerina/graphql/latest#Field)
-- [GraphQL field - Specification](/spec/graphql/#102-field-object)
+- [GraphQL field - Specification](/spec/graphql/#9-field-object)

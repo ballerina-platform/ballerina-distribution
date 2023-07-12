@@ -13,4 +13,4 @@ Run the client program by executing the following command.
 
 ## Related links
 - [`graphql:ClientError` error - API documentation](https://lib.ballerina.io/ballerina/graphql/latest#ClientError)
-- [GraphQL client error handling - Specification](/spec/graphql/#63-client-error-handling)
+- [GraphQL client error handling - Specification](/spec/graphql/#255-client-error-handling)
