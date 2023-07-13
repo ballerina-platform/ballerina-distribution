@@ -4447,11 +4447,6 @@
     ]
   },
   {
-    "title": "Code to Cloud",
-    "column": 0,
-    "category": "Deployment",
-    "samples": [
-        {
     "title": "Docker",
     "column": 0,
     "category": "Deployment",
