@@ -4478,14 +4478,14 @@
       }
     ]
   },
-  {
-    "title": "Function as a Service",
-    "column": 1,
+   {
+    "title": "AWS Lambda",
+    "column": 2,
     "category": "Deployment",
     "samples": [
       {
-        "name": "Azure Functions",
-        "url": "azure-functions-deployment",
+        "name": "Hello world",
+        "url": "aws-lambda-hello-world",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -4493,8 +4493,26 @@
         "isLearnByExample": false
       },
       {
-        "name": "AWS Lambda",
-        "url": "aws-lambda-deployment",
+        "name": "Execution context",
+        "url": "aws-lambda-execution-context",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "S3 trigger",
+        "url": "aws-lambda-s3-trigger",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "DynamoDB trigger",
+        "url": "aws-lambda-dynamodb-trigger",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -4502,5 +4520,5 @@
         "isLearnByExample": false
       }
     ]
-  }
+  },
 ]
