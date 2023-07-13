@@ -1,1 +1,1 @@
-$ bal new azure-functions-http-trigger
+$ bal new azure-functions-timer-trigger
