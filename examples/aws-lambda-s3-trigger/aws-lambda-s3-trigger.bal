@@ -1,8 +1,8 @@
 import ballerina/io;
-import ballerinax/awslambda;
+import ballerinax/aws.lambda;
 
-@awslambda:Function
-public function s3Trigger(awslambda:Context ctx,
-        awslambda:S3Event event) {
+@lambda:Function
+public function s3Trigger(lambda:Context ctx,
+        lambda:S3Event event) {
     io:println(event.Records[0].s3.'object.key);
 }
