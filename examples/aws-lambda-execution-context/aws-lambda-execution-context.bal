@@ -1,7 +1,7 @@
 import ballerinax/aws.lambda;
 
 // The `lambda:Context` object contains request execution context information.
-@awslambda:Function
+@lambda:Function
 public function ctxinfo(lambda:Context ctx, json input) returns json|error {
     return {
         RequestID: ctx.getRequestId(),
