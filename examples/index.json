@@ -4521,4 +4521,47 @@
       }
     ]
   },
+    {
+    "title": "Azure Functions",
+    "column": 3,
+    "category": "Deployment",
+    "samples": [
+      {
+        "name": "Hello world",
+        "url": "azure-functions-hello-world",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Timer trigger",
+        "url": "azure-functions-timer-trigger",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "HTTP trigger with queue",
+        "url": "azure-functions-http-trigger-with-queue",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Cosmos DB trigger",
+        "url": "azure-functions-cosmosdb-trigger",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  }
 ]
