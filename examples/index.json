@@ -4320,6 +4320,124 @@
     ]
   },
   {
+    "title": "Docker",
+    "column": 0,
+    "category": "Deployment",
+    "samples": [
+      {
+        "name": "Hello world",
+        "url": "docker-hello-world",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Kubernetes",
+    "column": 1,
+    "category": "Deployment",
+    "samples": [
+      {
+        "name": "Hello world",
+        "url": "kubernetes-hello-world",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+   {
+    "title": "AWS Lambda",
+    "column": 2,
+    "category": "Deployment",
+    "samples": [
+      {
+        "name": "Hello world",
+        "url": "aws-lambda-hello-world",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Execution context",
+        "url": "aws-lambda-execution-context",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "S3 trigger",
+        "url": "aws-lambda-s3-trigger",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "DynamoDB trigger",
+        "url": "aws-lambda-dynamodb-trigger",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+    {
+    "title": "Azure Functions",
+    "column": 3,
+    "category": "Deployment",
+    "samples": [
+      {
+        "name": "Hello world",
+        "url": "azure-functions-hello-world",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Timer trigger",
+        "url": "azure-functions-timer-trigger",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "HTTP trigger with queue",
+        "url": "azure-functions-http-trigger-with-queue",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Cosmos DB trigger",
+        "url": "azure-functions-cosmosdb-trigger",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+   {
     "title": "Query data",
     "column": 0,
     "category": "Bal persist",
@@ -4441,124 +4559,6 @@
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      }
-    ]
-  },
-  {
-    "title": "Docker",
-    "column": 0,
-    "category": "Deployment",
-    "samples": [
-      {
-        "name": "Hello world",
-        "url": "docker-hello-world",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      }
-    ]
-  },
-  {
-    "title": "Kubernetes",
-    "column": 1,
-    "category": "Deployment",
-    "samples": [
-      {
-        "name": "Hello world",
-        "url": "kubernetes-hello-world",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      }
-    ]
-  },
-   {
-    "title": "AWS Lambda",
-    "column": 2,
-    "category": "Deployment",
-    "samples": [
-      {
-        "name": "Hello world",
-        "url": "aws-lambda-hello-world",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Execution context",
-        "url": "aws-lambda-execution-context",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "S3 trigger",
-        "url": "aws-lambda-s3-trigger",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "DynamoDB trigger",
-        "url": "aws-lambda-dynamodb-trigger",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      }
-    ]
-  },
-    {
-    "title": "Azure Functions",
-    "column": 3,
-    "category": "Deployment",
-    "samples": [
-      {
-        "name": "Hello world",
-        "url": "azure-functions-hello-world",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Timer trigger",
-        "url": "azure-functions-timer-trigger",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "HTTP trigger with queue",
-        "url": "azure-functions-http-trigger-with-queue",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Cosmos DB trigger",
-        "url": "azure-functions-cosmosdb-trigger",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
         "disablePlayground": true,
         "isLearnByExample": false
       }
