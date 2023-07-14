@@ -11,7 +11,7 @@ For more information, see the [Azure Functions deployment guide](https://balleri
 2. From the list, click on the storage account entry that corresponds with your function app.
 3. Click **Queues*** in the sidebar, and click **+ Queue**.
 4. Enter a name in the **Add queue** pop-up, and click **Add**.
-   >**Note:** For the **Queue name**, enter the same value as the value of the `queueName` property in the `QueueOutput` annotation in the [Ballerina source below](https://ballerina.io/learn/by-example/azure-functions-trigger/#write-the-function)
+   >**Note:** For the **Queue name**, enter the same value of the `queueName` property in the `QueueOutput` annotation in the [Ballerina source below](https://ballerina.io/learn/by-example/azure-functions-trigger/#write-the-function)
 
 ## Write the function
 
