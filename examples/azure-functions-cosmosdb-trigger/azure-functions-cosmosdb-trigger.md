@@ -10,7 +10,7 @@ Follow the steps below to create a Cosmos DB and a queue to make use of those se
 
 1. Set up the [general prerequisites](https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/azure-functions/#set-up-the-prerequisites).
 2. Create the queue in the [HTTP trigger](/learn/by-example/azure-functions/http-trigger/) example to resue it in this one.
-3. Create an [Azure Cosmos DB account](https://portal.azure.com/#create/Microsoft.DocumentDB) and select **Cosmos DB Core**.
+3. Create an [Azure Cosmos DB account](https://portal.azure.com/#create/Microsoft.DocumentDB) and select **Azure Cosmos DB for Table**.
 4. Once the database is created, go to the **Data Explorer**, and select **Create Container**.
 5. Enter `db1` as the Database ID, `c1` as the collection ID, and click **Ok**.
 >**Note:** If you want to change these values, change them in the code as well.
