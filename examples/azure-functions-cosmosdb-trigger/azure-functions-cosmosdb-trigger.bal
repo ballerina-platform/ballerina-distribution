@@ -1,16 +1,16 @@
 import ballerina/io;
-import ballerinax/azure.functions as af;
+import ballerinax/azure.functions;
 
 public type DBEntry record {
     string id;
     string name;
 };
 
-@af:CosmosDBTrigger {connectionStringSetting: "CosmosDBConnection", databaseName: "db1", collectionName: "c1"}
-listener af:CosmosDBListener cosmosEp = new ();
+@functions:CosmosDBTrigger {connectionStringSetting: "CosmosDBConnection", databaseName: "db1", collectionName: "c1"}
+listener functions:CosmosDBListener cosmosEp = new ();
 
 service "cosmos" on cosmosEp {
-    remote function onUpdate(DBEntry[] entries) returns @af:QueueOutput {queueName: "people"} string {
+    remote function onUpdate(DBEntry[] entries) returns @functions:QueueOutput {queueName: "people"} string {
         string name = entries[0].name;
         io:println(entries.toJsonString());
         return "Hello, " + name;
