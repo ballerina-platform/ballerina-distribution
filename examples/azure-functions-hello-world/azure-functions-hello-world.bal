@@ -1,4 +1,4 @@
-import ballerinax/azure_functions as af;
+import ballerinax/azure.functions as af;
 
 // This function gets triggered by an HTTP call with the name query parameter and 
 // returns a processed HTTP output to the caller.
