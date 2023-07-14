@@ -34,8 +34,8 @@ Execute the Azure CLI command given by the compiler to create and publish the fu
 
 The `timer` function is triggered by the Azure Functions app from a timer. Follow the steps below to verify the output in the queue storage of the function app.
 
-1. In the AWS Portal, click **Storage accounts**.
-2. From the list, click on the resource group entry that corresponds with your function app.
-3. Click ***Queue***, and click on the **queue3** queue.
+1. In the AWS Portal, click **Storage accounts** to view the created queue.
+2. From the list, click on the storage account entry that corresponds with your function app.
+3. Click ***Queues***, and click on the **queue3** queue.
 4. You view the output below getting logged every 10 seconds.
    `Hello from timer: <CURRENT_TIME>`
