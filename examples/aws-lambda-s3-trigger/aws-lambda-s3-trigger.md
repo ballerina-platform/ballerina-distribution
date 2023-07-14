@@ -44,6 +44,6 @@ Follow the instructions below to create an S3 bucket in AWS for invoking this fu
 5. Select the created bucket under the **Buckets** list, click **Upload**, and upload an object to the S3 bucket.
 6. Under the **Functions** list of the AWS Management Console, click the AWS Lambda function, and click the **Monitor** tab.
 7. If you get a **Missing permissions** notice at the top, click the **Open the IAM Console** in it.
-8. In the IAM Console, click the corresponding role in the list, click **Edit**, and add the **AWSLambdaBasicExecutionRole** to the role.
+8. In the IAM Console, click the corresponding role in the list, click **Add permissions**, and add the **AWSLambdaBasicExecutionRole** to the role.
 9. In the **Monitor** tab of the AWS Management Console, click **View CloudWatch logs** to check the logs via CloudWatch.
 10. Under **Log streams** in CloudWatch, click on the topmost stream in the list and verify the object name in the logs.
