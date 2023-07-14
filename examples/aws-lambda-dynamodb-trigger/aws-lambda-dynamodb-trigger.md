@@ -39,9 +39,10 @@ Follow the instructions below to create a DynamoDB table for invoking this funct
 1. In the IAM Console, click the corresponding role in the list, and click **Add permissions**.
 2. Select **attach policies** from the drop-down menu, and add the **AWSLambdaDynamoDBExecutionRole** to the role.
 3. Go to [DynamoDB](https://us-west-1.console.aws.amazon.com/dynamodbv2), and from the drop-down menu at the RHS of the screen, select the **AWS region** in which you created the user and role.
-4. Click **Create Table**, enter the table name and partition key, and create the table (if you already have a table created, you can skip this step).
+4. Click **Create Table**, enter a table name and a partition key, and create the table (if you already have a table created, you can skip this step).
 5. Click on the DynamoDB table you created, and then click the **Exports and streams** tab.
-6. Click **enable DynamoDB stream details**, and select the key attributes only for the event type.
-7. Once it is enabled, click **Create a trigger**, select the `dynamoDBTrigger` from the dropdown, and create a trigger.
-8. Go to [**Items**](https://us-west-1.console.aws.amazon.com/dynamodbv2) in the DynamoDB, select the table, and click **Create item** to add an entry to the DynamoDB table to invoke the Lambda function.
-9. Go to the AWS Lambda function and check the logs via CloudWatch to see the object identifier in the logs.
+6. Click **Turn on** under **DynamoDB stream details**, select **Key attributes only** for the event type, and click **Turn on stream**.
+8. Under the **Trigger** section, click **Create trigger**, select the `dynamoDBTrigger` from the dropdown, and click **Create trigger**.
+9. Click **Explore table items**, and click **Create items** under the **Items returned** section.
+10. Enter a value under the **Attributes** section to add an entry to the DynamoDB table to invoke the Lambda function, and click **Create item**.
+11. Go to the AWS Lambda function and check the logs via CloudWatch to see the object identifier in the logs.
