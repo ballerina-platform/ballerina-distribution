@@ -1,5 +1,5 @@
 import ballerina/io;
-import ballerinax/azure_functions as af;
+import ballerinax/azure.functions as af;
 
 public type DBEntry record {
     string id;
