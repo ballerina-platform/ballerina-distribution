@@ -1,13 +1,13 @@
 import ballerina/http;
-import ballerinax/azure.functions as af;
+import ballerinax/azure.functions;
 
 public type Person record {
     string name;
     int age;
 };
 
-service / on new af:HttpListener() {
-    resource function post queue(@http:Payload Person person) returns [@af:HttpOutput http:Created, @af:QueueOutput {queueName: "people"} string] {
+service / on new functions:HttpListener() {
+    resource function post queue(@http:Payload Person person) returns [@functions:HttpOutput http:Created, @functions:QueueOutput {queueName: "people"} string] {
         http:Created httpRes = {
             body: person.name + " Added to the Queue!"
         };
