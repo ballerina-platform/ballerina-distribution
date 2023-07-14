@@ -10,7 +10,7 @@ public type DBEntry record {
 listener af:CosmosDBListener cosmosEp = new ();
 
 service "cosmos" on cosmosEp {
-    remote function onUpdate(DBEntry[] entries) returns @af:QueueOutput {queueName: "cosmos-queue"} string {
+    remote function onUpdate(DBEntry[] entries) returns @af:QueueOutput {queueName: "people"} string {
         string name = entries[0].name;
         io:println(entries.toJsonString());
         return "Hello, " + name;
