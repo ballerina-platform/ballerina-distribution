@@ -40,6 +40,6 @@ Execute the Azure CLI command given by the compiler to create and publish the fu
 
 ## Invoke the function
 
-Execute the commands below to invoke the function.
+Execute the command below to invoke the function by replacing `bal-bbe` with your respective Azure `<function_app_name>`.
 
 ::: out execute_function.out :::
