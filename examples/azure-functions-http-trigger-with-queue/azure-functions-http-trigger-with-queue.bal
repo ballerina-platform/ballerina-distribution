@@ -1,5 +1,5 @@
 import ballerina/http;
-import ballerinax/azure_functions as af;
+import ballerinax/azure.functions as af;
 
 public type Person record {
     string name;
