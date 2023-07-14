@@ -40,4 +40,4 @@ Execute the commands below to invoke the function.
 
 ::: out execute_function.out :::
 
->**Tip:** Refresh the queue page in the portal and view the added entry.
+>**Tip:** Refresh the page of the `people` queue in the Azure portal and view the entry added with the message text: `Jack is 21 years old.`
