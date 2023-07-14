@@ -40,7 +40,9 @@ Follow the instructions below to create an S3 bucket in AWS for invoking this fu
    >**Note:** Make sure to select the same **AWS region** in which you created the AWS user and role when creating the S3 bucket.
 3. Click on the created bucket, go to the **Properties** tab, and click **Create event notification** under the **Event notifications** section.
 4. Enable **All object create events** under event types. 
-5. Select the AWS Lambda function as the destination.
-6. Select the `s3Trigger` Lambda function from the dropdown.
-7. Click **Upload** to upload an object to the S3 bucket.
-8. Go to the AWS Lambda function and check the logs via CloudWatch to see the object name in the logs.
+5. Under the **Destination** section, select the AWS Lambda function (i.e., `s3Trigger` in this example) from the dropdown.
+6. Select the created bucket under the **Buckets** list, and click **Upload**.
+7. Upload an object to the S3 bucket.
+8. Under the **Functions** list of the AWS Management Console, click the AWS Lambda function.
+9. Click the **Monitor** tab, and click **View CloudWatch logs** to check the logs via CloudWatch.
+10. Under **Log streams** in CloudWatch, click on the top-most stream in the list and verify the object name in the logs.
