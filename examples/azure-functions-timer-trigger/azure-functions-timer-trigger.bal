@@ -7,7 +7,7 @@ import ballerina/time;
 listener af:TimerListener timerListener = new af:TimerListener();
 
 service "timer" on timerListener {
-    remote function onTrigger(af:TimerMetadata metadata) returns @af:QueueOutput {queueName: "timerqueue"} string|error {
+    remote function onTrigger(af:TimerMetadata metadata) returns @af:QueueOutput {queueName: "timer-queue"} string|error {
         time:Utc utc = time:utcNow();
         return "Hello from timer " + time:utcToEmailString(utc);
     }
