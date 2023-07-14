@@ -26,7 +26,7 @@ Example application settings are as follows.
 - Name - `CosmosDBConnection`
 - Value - `AccountEndpoint=https://db-cosmos.documents.azure.com:443/;AccountKey=12345asda;`
 
-Now, as all the infrastructure required are up and running and configured, start building and deploying the Azure function.
+Now, as all the infrastructure required is up and running and configured, start building and deploying the Azure function.
 
 ## Write the function
 
