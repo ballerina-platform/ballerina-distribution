@@ -34,7 +34,7 @@ Execute the command below to generate the Azure Functions artifacts.
 
 ## Deploy the function
 
-Execute the Azure CLI command given by the compiler to create and publish the functions by replacing the sample app name given in the command with your respective Azure `<function_app_name>`.
+Execute the Azure CLI command given by the compiler to create and publish the functions by replacing `<function_app_name>` with your respective function app name.
 
 ::: out az_deploy.out :::
 
