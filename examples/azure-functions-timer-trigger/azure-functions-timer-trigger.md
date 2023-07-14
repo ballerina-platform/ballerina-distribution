@@ -38,3 +38,4 @@ The `timer` function is triggered by the Azure Functions app from a timer. Follo
 2. From the list, click on the resource group entry that corresponds with your function app.
 3. Click ***Queue***, and click on the **queue3** queue.
 4. You view the output below getting logged every 10 seconds.
+   `Hello from timer, <CURRENT_TIME>`
