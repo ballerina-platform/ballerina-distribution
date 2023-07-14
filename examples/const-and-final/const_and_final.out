@@ -1,4 +1,6 @@
 $ bal run const_and_final
 1000
 https://ballerina.io
+{"httpCode":200,"message":"OK"}
+[200,202,400]
 Hello World
