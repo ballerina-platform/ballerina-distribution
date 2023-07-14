@@ -36,11 +36,12 @@ Execute the AWS CLI command given by the compiler to create and publish the func
 
 Follow the instructions below to create a DynamoDB table for invoking this function.
 
-1. Navigate to [**roles**](https://console.aws.amazon.com/iamv2/home#/roles), and add `AWSLambdaDynamoDBExecutionRole` to the role you created in [Set up the prerequisites](https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/aws-lambda/#set-up-the-prerequisites).
-2. Go to [DynamoDB](https://us-west-1.console.aws.amazon.com/dynamodbv2).
-3. Click **Create Table**, enter the table name and partition key, and create the table (if you already have a table created, you can skip this step).
-4. Click on the DynamoDB table you created, and then click the **Exports and streams** tab.
-5. Click **enable DynamoDB stream details**, and select the key attributes only for the event type.
-6. Once it is enabled, click **Create a trigger**, select the `dynamoDBTrigger` from the dropdown, and create a trigger.
-7. Go to [**Items**](https://us-west-1.console.aws.amazon.com/dynamodbv2) in the DynamoDB, select the table, and click **Create item** to add an entry to the DynamoDB table to invoke the Lambda function.
-8. Go to the AWS Lambda function and check the logs via CloudWatch to see the object identifier in the logs.
+1. In the IAM Console, click the corresponding role in the list, and click **Add permissions**.
+2. Select **attach policies** from the drop-down menu, and add the **AWSLambdaDynamoDBExecutionRole** to the role.
+3. Go to [DynamoDB](https://us-west-1.console.aws.amazon.com/dynamodbv2).
+4. Click **Create Table**, enter the table name and partition key, and create the table (if you already have a table created, you can skip this step).
+5. Click on the DynamoDB table you created, and then click the **Exports and streams** tab.
+6. Click **enable DynamoDB stream details**, and select the key attributes only for the event type.
+7. Once it is enabled, click **Create a trigger**, select the `dynamoDBTrigger` from the dropdown, and create a trigger.
+8. Go to [**Items**](https://us-west-1.console.aws.amazon.com/dynamodbv2) in the DynamoDB, select the table, and click **Create item** to add an entry to the DynamoDB table to invoke the Lambda function.
+9. Go to the AWS Lambda function and check the logs via CloudWatch to see the object identifier in the logs.
