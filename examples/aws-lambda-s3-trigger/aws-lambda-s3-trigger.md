@@ -42,6 +42,8 @@ Follow the instructions below to create an S3 bucket in AWS for invoking this fu
 3. Enable **All object create events** under event types. 
 4. Under the **Destination** section, select the AWS Lambda function (i.e., `s3Trigger` in this example) from the dropdown.
 5. Select the created bucket under the **Buckets** list, click **Upload**, and upload an object to the S3 bucket.
-6. Under the **Functions** list of the AWS Management Console, click the AWS Lambda function.
-7. Click the **Monitor** tab, and click **View CloudWatch logs** to check the logs via CloudWatch.
-8. Under **Log streams** in CloudWatch, click on the top-most stream in the list and verify the object name in the logs.
+6. Under the **Functions** list of the AWS Management Console, click the AWS Lambda function, and click the **Monitor** tab.
+7. If you get a **Missing permissions** notice at the top, click the **Open the IAM Console** in it.
+8. In the IAM Console, click the corresponding role in the list, click **Edit**, and add the **AWSLambdaBasicExecutionRole** to the role.
+9. In the **Monitor** tab of the AWS Management Console, click **View CloudWatch logs** to check the logs via CloudWatch.
+10. Under **Log streams** in CloudWatch, click on the topmost stream in the list and verify the object name in the logs.
