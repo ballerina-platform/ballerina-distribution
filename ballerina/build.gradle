@@ -58,7 +58,7 @@ task unpackBallerinaJre(type: Download) {
             "${jreBaseURL}/ballerina-jre-linux-64-${ballerinaJreVersion}.zip",
             "${jreBaseURL}/ballerina-jre-macos-64-${ballerinaJreVersion}.zip",
             "${jreBaseURL}/ballerina-jre-macos-arm-64-${ballerinaJreVersion}.zip",
-            "${jreBaseURL}/ballerina-jre-windows-64-${ballerinaJreVersion}.zip"
+            "${jreBaseURL}/ballerina-jre-win-64-${ballerinaJreVersion}.zip"
     ])
     onlyIfModified true
     dest "${jreLocation}"
