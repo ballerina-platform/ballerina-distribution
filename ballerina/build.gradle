@@ -168,7 +168,7 @@ task extractJreForMacArm(type: Copy) {
 
 task extractJreForWindows(type: Copy) {
     group = "extract_jre"
-    from zipTree { "${jreLocation}/ballerina-jre-windows-64-${ballerinaJreVersion}.zip" }
+    from zipTree { "${jreLocation}/ballerina-jre-win-64-${ballerinaJreVersion}.zip" }
     into("${buildDir}/target/extracted-jre-windows")
 }
 
