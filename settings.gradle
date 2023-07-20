@@ -41,4 +41,5 @@ gradleEnterprise {
         termsOfServiceAgree = 'yes'
     }
 }
+include 'language-server-simulator'
 
