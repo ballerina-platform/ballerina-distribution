@@ -135,9 +135,11 @@ public class DistRepoBuilder {
             valid = false;
         }
         // Check if module jar exists
-        Path jar = repo.resolve("cache").resolve(orgName).resolve(moduleName).resolve(version).resolve("java17")
+        Path jar11 = repo.resolve("cache").resolve(orgName).resolve(moduleName).resolve(version).resolve("java11")
                 .resolve(getJarName(orgName, moduleName, version));
-        if (!Files.exists(jar)) {
+        Path jar17 = repo.resolve("cache").resolve(orgName).resolve(moduleName).resolve(version).resolve("java17")
+                .resolve(getJarName(orgName, moduleName, version));
+        if (!(Files.exists(jar11) | Files.exists(jar17))) {
             System.out.println("Jar missing for package :" + orgName + "/" + moduleName);
             valid = false;
         }
