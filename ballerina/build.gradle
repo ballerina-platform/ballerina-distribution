@@ -58,7 +58,7 @@ task unpackBallerinaJre(type: Download) {
             "${jreBaseURL}/ballerina-jre-linux-64-${ballerinaJreVersion}.zip",
             "${jreBaseURL}/ballerina-jre-macos-64-${ballerinaJreVersion}.zip",
             "${jreBaseURL}/ballerina-jre-macos-arm-64-${ballerinaJreVersion}.zip",
-            "${jreBaseURL}/ballerina-jre-windows-64-${ballerinaJreVersion}.zip"
+            "${jreBaseURL}/ballerina-jre-win-64-${ballerinaJreVersion}.zip"
     ])
     onlyIfModified true
     dest "${jreLocation}"
@@ -168,7 +168,7 @@ task extractJreForMacArm(type: Copy) {
 
 task extractJreForWindows(type: Copy) {
     group = "extract_jre"
-    from zipTree { "${jreLocation}/ballerina-jre-windows-64-${ballerinaJreVersion}.zip" }
+    from zipTree { "${jreLocation}/ballerina-jre-win-64-${ballerinaJreVersion}.zip" }
     into("${buildDir}/target/extracted-jre-windows")
 }
 
@@ -415,7 +415,7 @@ task packageDistLinux(type: Zip) {
     archiveFileName = "${parentDir}.zip"
     entryCompression = ZipEntryCompression.DEFLATED
 
-    into("${parentDir}/dependencies/${dependencyJREVersion}") {
+    into("${parentDir}/dependencies") {
         from "build/target/extracted-jre-linux"
         fileMode = 0755
     }
@@ -502,7 +502,7 @@ task packageDistMac(type: Zip) {
     archiveFileName = "${parentDir}.zip"
     entryCompression = ZipEntryCompression.DEFLATED
 
-    into("${parentDir}/dependencies/${dependencyJREVersion}") {
+    into("${parentDir}/dependencies") {
         from "build/target/extracted-jre-macos"
         fileMode = 0755
     }
@@ -585,7 +585,7 @@ task packageDistMacArm(type: Zip) {
     archiveFileName = "${parentDir}.zip"
     entryCompression = ZipEntryCompression.DEFLATED
 
-    into("${parentDir}/dependencies/${dependencyJREVersion}") {
+    into("${parentDir}/dependencies") {
         from "build/target/extracted-jre-macos-arm"
         fileMode = 0755
     }
@@ -668,7 +668,7 @@ task packageDistWindows(type: Zip) {
     archiveFileName = "${parentDir}.zip"
     entryCompression = ZipEntryCompression.DEFLATED
 
-    into("${parentDir}/dependencies/${dependencyJREVersion}") {
+    into("${parentDir}/dependencies") {
         from "build/target/extracted-jre-windows"
         fileMode = 0755
     }
