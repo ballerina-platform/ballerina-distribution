@@ -1,0 +1,13 @@
+name: Fossa Scan
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '30 18 * * *'    # 00:00 in LK time (GMT+5:30)
+jobs:
+  fossa-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: fossas/fossa-action@main
+        with:
+          api-key: ${{secrets.FOSSA_APIKEY}}
