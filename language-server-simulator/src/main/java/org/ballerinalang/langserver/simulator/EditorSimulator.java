@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021, WSO2 Inc. (http://wso2.com) All Rights Reserved.
+ * Copyright (c) 2023, WSO2 LLC. (http://wso2.com) All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.SecureRandom;
 import java.time.Instant;
 import java.util.Arrays;
 import java.util.List;
@@ -39,7 +40,7 @@ import java.util.stream.Stream;
  * The main class to simulate the behavior of language server. Similarly to how vscode client use LSP to send different
  * updates, this sends similar messages via JSON RPC to the language server.
  *
- * @since 2.0.0
+ * @since 2201.8.0
  */
 public class EditorSimulator {
 
@@ -48,7 +49,7 @@ public class EditorSimulator {
     private static final String PROP_DURATION = "ls.simulation.duration";
     public static final String PROP_SOURCE_DIR = "ls.simulation.src";
 
-    private static final Random random = new Random();
+    private static final SecureRandom random = new SecureRandom();
 
     public static void main(String[] args) throws IOException {
         try {
@@ -140,6 +141,7 @@ public class EditorSimulator {
                 try {
                     Thread.sleep(60 * 1000L);
                 } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
                     logger.warn("Interrupted editing", e);
                     break;
                 }
@@ -149,6 +151,7 @@ public class EditorSimulator {
                 int sleepSecs = 1 + random.nextInt(5);
                 Thread.sleep(sleepSecs * 1000L);
             } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
                 logger.warn("Interrupted simulation", e);
                 break;
             }
@@ -170,7 +173,6 @@ public class EditorSimulator {
                 .collect(Collectors.toList());
 
         // Get random generator
-        Generators.Type type = types.get(random.nextInt(types.size()));
-        return type;
+        return types.get(random.nextInt(types.size()));
     }
 }

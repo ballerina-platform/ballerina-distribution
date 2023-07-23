@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021, WSO2 Inc. (http://wso2.com) All Rights Reserved.
+ * Copyright (c) 2023, WSO2 LLC. (http://wso2.com) All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,8 +18,7 @@ package org.ballerinalang.langserver.simulator.generators;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.EnumMap;
 import java.util.ServiceLoader;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -28,14 +27,14 @@ import java.util.stream.Stream;
 /**
  * Factory to access {@link CodeSnippetGenerator}s.
  *
- * @since 2.0.0
+ * @since 2201.8.0
  */
 public class Generators {
 
     private static final Logger logger = LoggerFactory.getLogger(Generators.class);
     private static final String PROP_SKIPPED_GENERATORS = "ls.simulation.skipGenerators";
     private static final Generators instance = new Generators();
-    private final Map<Type, CodeSnippetGenerator> generators;
+    private final EnumMap<Generators.Type, CodeSnippetGenerator> GENERATORS;
 
     private Generators() {
         // Get skipped generators
@@ -47,11 +46,11 @@ public class Generators {
         logger.info("Skipping generators of type: " + skippedGenerators);
 
         // Load generators
-        generators = new HashMap<>();
+        GENERATORS = new EnumMap<>(Generators.Type.class);
         ServiceLoader.load(CodeSnippetGenerator.class)
                 .forEach(generator -> {
                     if (!skippedGenerators.contains(generator.type())) {
-                        generators.put(generator.type(), generator);
+                        GENERATORS.put(generator.type(), generator);
                     }
                 });
     }
@@ -63,15 +62,15 @@ public class Generators {
      * @return Generated code snippet.
      */
     public static String generate(Type type) {
-        if (getInstance().generators.containsKey(type)) {
-            return instance.generators.get(type).generate();
+        if (getInstance().GENERATORS.containsKey(type)) {
+            return instance.GENERATORS.get(type).generate();
         }
 
         return "";
     }
 
     public static <T> T getGenerator(Type type) {
-        return (T) instance.generators.get(type);
+        return (T) instance.GENERATORS.get(type);
     }
 
     public static Generators getInstance() {

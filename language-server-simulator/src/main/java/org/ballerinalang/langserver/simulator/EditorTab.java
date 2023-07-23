@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021, WSO2 Inc. (http://wso2.com) All Rights Reserved.
+ * Copyright (c) 2023, WSO2 LLC. (http://wso2.com) All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,16 +39,16 @@ import java.io.PrintWriter;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.security.SecureRandom;
 import java.util.Collections;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 
 /**
  * Represents a tab in the {@link Editor}. Simulates the behavior of cursor and current text in the document.
  *
- * @since 2.0.0
+ * @since 2201.8.0
  */
 public class EditorTab {
 
@@ -61,7 +61,7 @@ public class EditorTab {
     private TextDocument textDocument;
     private Position cursor;
 
-    private final Random random = new Random();
+    private final SecureRandom random = new SecureRandom();
     private final PrintWriter writer = new PrintWriter(System.out, true, Charset.defaultCharset());
 
     public EditorTab(Path filePath, Endpoint endpoint, BallerinaLanguageServer languageServer) {
@@ -103,7 +103,6 @@ public class EditorTab {
                 logger.error("Caught error in didChange", t);
             }
             cursor(newLinePos.line(), newLinePos.offset());
-            // logger.info("Added char: {} and cursor advanced to: {}", typedChar, newLinePos);
 
             if (i % 10 == 0) {
                 float completionPercentage = ((float) i / (float) content.length()) * 100;
@@ -123,6 +122,7 @@ public class EditorTab {
             try {
                 Thread.sleep(100 + random.nextInt(300));
             } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
                 logger.error("Interrupted", e);
                 break;
             }
@@ -134,8 +134,9 @@ public class EditorTab {
         while (isDocumentNotInSync()) {
             logger.info("Document out of sync. Waiting 30 seconds and syncing...");
             try {
-                Thread.sleep(30 * 1000);
+                Thread.sleep(30 * (long) 1000);
             } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
                 break;
             }
             TestUtil.didChangeDocument(this.endpoint, this.filePath, textDocument.toString());
@@ -165,8 +166,9 @@ public class EditorTab {
         String completionResponse = TestUtil.getCompletionResponse(filePath.toString(), cursor, endpoint, "");
         JsonObject json = JsonParser.parseString(completionResponse).getAsJsonObject();
         boolean hasError = false;
-        if (json.has("result") && json.get("result").isJsonObject()) {
-            JsonObject result = json.getAsJsonObject("result");
+        String resultProp = "result";
+        if (json.has(resultProp) && json.get(resultProp).isJsonObject()) {
+            JsonObject result = json.getAsJsonObject(resultProp);
             if (!result.has("left") || !result.get("left").isJsonArray()) {
                 hasError = true;
             }

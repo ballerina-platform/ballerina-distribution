@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022, WSO2 Inc. (http://wso2.com) All Rights Reserved.
+ * Copyright (c) 2023, WSO2 LLC. (http://wso2.com) All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,11 +24,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Import statement snippet generator.
  *
- * @since 2201.1.1
+ * @since 2201.8.0
  */
 @JavaSPIService("org.ballerinalang.langserver.org.ballerinalang.langserver.simulator.generators.CodeSnippetGenerator")
 public class ImportStatementGenerator extends CodeSnippetGenerator {
@@ -45,9 +46,8 @@ public class ImportStatementGenerator extends CodeSnippetGenerator {
         Path path = Paths.get(projectPath);
         Path modulesPath = path.resolve("modules");
         if (Files.exists(modulesPath)) {
-            try {
-                List<String> imports = Files.list(modulesPath)
-                        .filter(Files::isDirectory)
+            try (Stream<Path> paths = Files.list(modulesPath)) {
+                List<String> imports = paths.filter(Files::isDirectory)
                         .map(p -> "import " + PACKAGE_NAME + "." + p.getFileName() + ";")
                         .collect(Collectors.toList());
                 if (!imports.isEmpty()) {

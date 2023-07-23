@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021, WSO2 Inc. (http://wso2.com) All Rights Reserved.
+ * Copyright (c) 2023, WSO2 LLC. (http://wso2.com) All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ import java.util.stream.IntStream;
 /**
  * Class code snippet generator.
  *
- * @since 2.0.0
+ * @since 2201.8.0
  */
 @JavaSPIService("org.ballerinalang.langserver.org.ballerinalang.langserver.simulator.generators.CodeSnippetGenerator")
 public class ClassGenerator extends CodeSnippetGenerator {

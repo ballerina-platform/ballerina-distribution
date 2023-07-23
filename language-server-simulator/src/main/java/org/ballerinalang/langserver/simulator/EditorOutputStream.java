@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021, WSO2 Inc. (http://wso2.com) All Rights Reserved.
+ * Copyright (c) 2023, WSO2 LLC. (http://wso2.com) All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@ import java.nio.charset.Charset;
 /**
  * A custom output stream to consume messages sent from LS to the LS client side.
  *
- * @since 2.0.0
+ * @since 2201.8.0
  */
 class EditorOutputStream extends ByteArrayOutputStream {
 
