@@ -120,7 +120,7 @@ public class EditorTab {
             }
 
             try {
-                Thread.sleep(100 + random.nextInt(300));
+                Thread.sleep(100 + (long) random.nextInt(300));
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
                 logger.error("Interrupted", e);

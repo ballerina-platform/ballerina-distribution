@@ -1,6 +1,10 @@
+description = 'Ballerina Language Server Simulator'
+
 apply from: "$rootDir/gradle/javaProject.gradle"
 
 configurations {
+    ballerinaDistribution
+    jBallerinaDistribution
     dependency {
         transitive true
     }
@@ -10,6 +14,7 @@ ext {
     distributionDir = "distribution"
     nbalSourceDir = "nBallerinaSrc"
     fhirSourceDir = "fhirSrc"
+    shortVersion = "${version}".split("-")[0]
 }
 
 dependencies {
@@ -28,10 +33,14 @@ dependencies {
     }
     implementation "org.slf4j:slf4j-jdk14:${slf4jJdk14Version}"
     implementation "com.google.code.gson:gson:${gsonVersion}"
+
+    jBallerinaDistribution project(path: ":ballerina", configuration: "jBallerinaDistribution")
+    ballerinaDistribution project(path: ":ballerina", configuration: "ballerinaDistribution")
 }
 
-
 task unpackBallerinaDistribution(type: Copy) {
+    dependsOn configurations.jBallerinaDistribution
+    dependsOn configurations.ballerinaDistribution
     def sourceDir = "${buildDir}/${distributionDir}"
     from zipTree { "${rootDir}/ballerina/build/distributions/ballerina-${version}-swan-lake.zip" }
     new File("${sourceDir}").mkdirs()
@@ -39,12 +48,9 @@ task unpackBallerinaDistribution(type: Copy) {
 }
 
 task copyPackages() {
-    def fileDir = "${buildDir}/${distributionDir}" +
-            "/ballerina-${version}-swan-lake/distributions/ballerina-version"
-    File filePath = new File("${fileDir}");
-    def balVersion  = filePath.readLines().get(0)
+    dependsOn unpackBallerinaDistribution
     def sourceDir = "${buildDir}/${distributionDir}" +
-            "/ballerina-${version}-swan-lake/distributions/${balVersion}/repo"
+            "/ballerina-${version}-swan-lake/distributions/ballerina-${shortVersion}/repo"
     copy {
         from "${sourceDir}"
         into "${buildDir}/repo"
@@ -83,7 +89,6 @@ task unpackBalFHIRTestProject(type: Copy) {
 }
 
 task runLSSimulatorOnnBallerina(type: JavaExec) {
-    dependsOn unpackBallerinaDistribution
     dependsOn copyPackages
     dependsOn unpackBalTestProject
 
@@ -106,7 +111,6 @@ task runLSSimulatorOnnBallerina(type: JavaExec) {
 }
 
 task runLSSimulatorOnFHIR(type: JavaExec) {
-    dependsOn unpackBallerinaDistribution
     dependsOn copyPackages
     dependsOn unpackBalFHIRTestProject
 
