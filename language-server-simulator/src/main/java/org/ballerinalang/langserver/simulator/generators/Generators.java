@@ -88,7 +88,6 @@ public class Generators {
         STATEMENT(false),
         MATCH_STATEMENT(false),
         VARIABLE_DECLARATION_STATEMENT(true),
-
         IMPORT_STATEMENT(true);
 
         private final boolean topLevelNode;

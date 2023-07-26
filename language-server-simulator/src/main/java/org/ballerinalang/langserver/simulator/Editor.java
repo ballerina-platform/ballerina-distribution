@@ -16,10 +16,10 @@
 package org.ballerinalang.langserver.simulator;
 
 import org.ballerinalang.langserver.BallerinaLanguageServer;
+import org.ballerinalang.langserver.commons.command.CommandArgument;
 import org.ballerinalang.langserver.util.TestUtil;
+import org.eclipse.lsp4j.ExecuteCommandParams;
 import org.eclipse.lsp4j.jsonrpc.Endpoint;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -27,19 +27,19 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Represents the editor used by the end user. An  editor consists of a set of open tabs.
+ * Represents the editor used by the end user, which editor consists of a set of open tabs.
  *
  * @since 2201.8.0
  */
 public class Editor {
-
-    private static final Logger logger = LoggerFactory.getLogger(Editor.class);
 
     private final BallerinaLanguageServer languageServer;
     private final Endpoint endpoint;
 
     private final List<EditorTab> tabs = new ArrayList<>();
     private EditorTab activeTab;
+
+    private boolean isPulled = false;
 
     private Editor(BallerinaLanguageServer languageServer, Endpoint endpoint) {
         this.languageServer = languageServer;
@@ -56,13 +56,22 @@ public class Editor {
 
         EditorOutputStream outputStream = new EditorOutputStream();
         Endpoint endpoint = TestUtil.initializeLanguageSever(languageServer, outputStream);
-
         Editor editor = new Editor(languageServer, endpoint);
         outputStream.setEditor(editor);
         return editor;
     }
 
     public EditorTab openFile(Path filePath) {
+        //Pull missing modules from central
+        if (!isPulled) {
+            CommandArgument uriArg = CommandArgument.from("doc.uri", filePath);
+            List<Object> args = new ArrayList<>();
+            args.add(uriArg);
+            ExecuteCommandParams params = new ExecuteCommandParams("PULL_MODULE", args);
+            TestUtil.getExecuteCommandResponse(params, endpoint);
+            isPulled = true;
+        }
+
         EditorTab editorTab = tabs.stream()
                 .filter(tab -> tab.filePath().equals(filePath))
                 .findFirst()
