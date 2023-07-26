@@ -9,5 +9,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: fossas/fossa-action@main
+        env:
+          packageUser: ${{ secrets.BALLERINA_BOT_USERNAME }}
+          packagePAT: ${{ secrets.BALLERINA_BOT_TOKEN }}       
         with:
           api-key: ${{secrets.FOSSA_APIKEY}}
