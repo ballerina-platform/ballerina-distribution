@@ -2,7 +2,7 @@ name: Language Server Simulator on nBallerina
 
 on:
   schedule:
-    - cron:  '0 */12 * * *'
+    - cron: '0 */12 * * *'
   workflow_dispatch:
 
 jobs:
@@ -13,8 +13,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        branch: ["master"]
-        skipGenerators: [""]
+        branch: [ "master", "2201.8.x", "2201.7.x" ]
+        skipGenerators: [ "" ]
 
     steps:
       - name: Checkout Repository
@@ -76,6 +76,7 @@ jobs:
           --data "{
             \"event_type\": \"notify-simulator-failure\",
             \"client_payload\": {
-              \"branch\": \"master\"
+              \"branch\": \"${{ matrix.branch }}\"
             }
           }"
+          
