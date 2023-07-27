@@ -1,0 +1,8 @@
+org.ballerinalang.langserver.simulator.generators.VarDeclarationStatementGenerator
+org.ballerinalang.langserver.simulator.generators.TypeDefinitionGenerator
+org.ballerinalang.langserver.simulator.generators.StatementGenerator
+org.ballerinalang.langserver.simulator.generators.ImportStatementGenerator
+org.ballerinalang.langserver.simulator.generators.ServiceGenerator
+org.ballerinalang.langserver.simulator.generators.ClassGenerator
+org.ballerinalang.langserver.simulator.generators.MatchStatementGenerator
+org.ballerinalang.langserver.simulator.generators.FunctionGenerator
