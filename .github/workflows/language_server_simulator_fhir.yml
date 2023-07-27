@@ -14,7 +14,7 @@ jobs:
       fail-fast: false
       matrix:
         branch: [ "master", "2201.8.x", "2201.7.x" ]
-        skipGenerators: [ "" ]
+        skipGenerators: [ "", "IMPORT_STATEMENT" ]
 
     steps:
       - name: Checkout Repository
