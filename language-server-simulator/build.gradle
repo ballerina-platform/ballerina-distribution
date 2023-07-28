@@ -9,6 +9,11 @@ ext {
     shortVersion = "${version}".split("-")[0]
 }
 
+configurations {
+    jBallerinaDistribution
+    ballerinaDistribution
+}
+
 dependencies {
     implementation "org.slf4j:slf4j-api:${project.slf4jApiVersion}"
     implementation group: 'org.ballerinalang', name: 'ballerina-lang', version: "${ballerinaLangVersion}"
@@ -25,9 +30,14 @@ dependencies {
     }
     implementation "org.slf4j:slf4j-jdk14:${slf4jJdk14Version}"
     implementation "com.google.code.gson:gson:${gsonVersion}"
+
+    jBallerinaDistribution project(path: ":ballerina", configuration: "jBallerinaDistribution")
+    ballerinaDistribution project(path: ":ballerina", configuration: "ballerinaDistribution")
 }
 
 task unpackBallerinaDistribution(type: Copy) {
+    dependsOn configurations.jBallerinaDistribution
+    dependsOn configurations.ballerinaDistribution
     def sourceDir = "${buildDir}/${distributionDir}"
     from zipTree { "${rootDir}/ballerina/build/distributions/ballerina-${version}-swan-lake.zip" }
     new File("${sourceDir}").mkdirs()
@@ -50,7 +60,6 @@ task downloadBalTestProject(type: Download) {
     onlyIfModified true
     dest new File("${buildDir}/nballeirna-src.zip")
 }
-
 
 task downloadBalFHIRTestProject(type: Download) {
     // Download nBallerina latest tag
