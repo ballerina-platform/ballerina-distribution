@@ -34,8 +34,8 @@ jobs:
       - name: Build with Gradle
         timeout-minutes: 180
         env:
-          packageUser: ${{ secrets.PACKAGE_USER}}
-          packagePAT: ${{ secrets.PACKAGE_PAT}}
+          packageUser: ${{ github.actor }}
+          packagePAT: ${{ secrets.GITHUB_TOKEN }}
         run: |
           export DISPLAY=':99.0'
           /usr/bin/Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
