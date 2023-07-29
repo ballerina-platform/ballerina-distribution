@@ -18,7 +18,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '17.0.7'
       - name: Get daily docker version
         id: version
         run: echo "::set-output name=version::$(date +'%Y-%m-%d')"
@@ -229,7 +229,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '17.0.7'
       - name: Build with Gradle
         env:
           packageUser: ${{ github.actor }}
@@ -250,7 +250,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '17.0.7'
       - name: Build with Gradle
         env:
           packageUser: ${{ github.actor }}
@@ -272,7 +272,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '17.0.7'
       - name: Setup Files
         run: |
           cd /etc/yum.repos.d/
@@ -309,7 +309,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '17.0.7'
       - name: Download MacOS Intaller Zip
         uses: actions/download-artifact@v2
         with:
@@ -359,7 +359,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '17.0.7'
       - name: Download MacOS-ARM Intaller Zip
         uses: actions/download-artifact@v2
         with:
@@ -396,7 +396,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '17.0.7'
       - uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '2.1.x'

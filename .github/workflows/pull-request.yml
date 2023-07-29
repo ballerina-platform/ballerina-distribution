@@ -22,7 +22,7 @@ jobs:
                 uses: actions/setup-java@v3
                 with:
                     distribution: 'temurin'
-                    java-version: '17'
+                    java-version: '17.0.7'
             -   name: Build Ballerina Distribution
                 env:
                     packageUser: ${{ github.actor }}
@@ -44,7 +44,7 @@ jobs:
                 uses: actions/setup-java@v3
                 with:
                     distribution: 'temurin'
-                    java-version: '17'
+                    java-version: '17.0.7'
             -   name: Build Ballerina Distribution
                 env:
                     packageUser: ${{ github.actor }}
@@ -65,7 +65,7 @@ jobs:
                 uses: actions/setup-java@v3
                 with:
                     distribution: 'temurin'
-                    java-version: '17'
+                    java-version: '17.0.7'
             - name: Build Ballerina Distribution
               env:
                   packageUser: ${{ github.actor }}
