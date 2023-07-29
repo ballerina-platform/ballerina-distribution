@@ -41,7 +41,7 @@ import java.util.Objects;
 import static org.ballerina.projectapi.CentralTestUtils.ANY_PLATFORM;
 import static org.ballerina.projectapi.CentralTestUtils.BALLERINA_TOML;
 import static org.ballerina.projectapi.CentralTestUtils.COMMON_VERSION;
-import static org.ballerina.projectapi.CentralTestUtils.JAVA17_PLATFORM;
+import static org.ballerina.projectapi.CentralTestUtils.JAVA_PLATFORM;
 import static org.ballerina.projectapi.CentralTestUtils.MAIN_BAL;
 import static org.ballerina.projectapi.CentralTestUtils.OUTPUT_NOT_CONTAINS_EXP_MSG;
 import static org.ballerina.projectapi.CentralTestUtils.PULLED_FROM_CENTRAL_MSG;
@@ -206,12 +206,12 @@ public class CentralTest {
         }
 
         String buildOutput = getString(build.getInputStream());
-        if (!buildOutput.contains(getGenerateBalaLog(orgName, this.packageBName, JAVA17_PLATFORM, COMMON_VERSION))) {
-            Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + getGenerateBalaLog(orgName, this.packageBName, JAVA17_PLATFORM,
+        if (!buildOutput.contains(getGenerateBalaLog(orgName, this.packageBName, JAVA_PLATFORM, COMMON_VERSION))) {
+            Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + getGenerateBalaLog(orgName, this.packageBName, JAVA_PLATFORM,
                                                                          COMMON_VERSION));
         }
         Assert.assertTrue(
-                getBalaPath(this.tempWorkspaceDirectory.resolve(PROJECT_B), orgName, this.packageBName, JAVA17_PLATFORM,
+                getBalaPath(this.tempWorkspaceDirectory.resolve(PROJECT_B), orgName, this.packageBName, JAVA_PLATFORM,
                             COMMON_VERSION).toFile().exists());
     }
 
