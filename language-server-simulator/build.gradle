@@ -1,0 +1,139 @@
+description = 'Ballerina Language Server Simulator'
+
+apply from: "$rootDir/gradle/javaProject.gradle"
+
+ext {
+    distributionDir = "distribution"
+    nbalSourceDir = "nBallerinaSrc"
+    fhirSourceDir = "fhirSrc"
+    shortVersion = "${version}".split("-")[0]
+}
+
+configurations {
+    jBallerinaDistribution
+    ballerinaDistribution
+}
+
+dependencies {
+    implementation "org.slf4j:slf4j-api:${project.slf4jApiVersion}"
+    implementation group: 'org.ballerinalang', name: 'ballerina-lang', version: "${ballerinaLangVersion}"
+    implementation group: 'org.ballerinalang', name: 'ballerina-parser', version: "${ballerinaLangVersion}"
+    implementation group: 'org.ballerinalang', name: 'language-server-core', version: "${ballerinaLangVersion}"
+    implementation group: 'org.ballerinalang', name: 'ballerina-tools-api', version: "${ballerinaLangVersion}"
+    implementation group: 'org.ballerinalang', name: 'language-server-commons', version: "${ballerinaLangVersion}"
+    implementation group: 'org.ballerinalang', name: 'ballerina-test-utils', version: "${ballerinaLangVersion}"
+    implementation(group: 'org.eclipse.lsp4j', name:'org.eclipse.lsp4j', version:"${eclipseLsp4jVersion}") {
+        exclude group: 'com.google.guava', module: 'guava'
+    }
+    implementation (group: 'org.eclipse.lsp4j', name:'org.eclipse.lsp4j.jsonrpc', version:"${eclipseLsp4jJsonrpcVersion}"){
+        exclude group: 'com.google.guava', module: 'guava'
+    }
+    implementation "org.slf4j:slf4j-jdk14:${slf4jJdk14Version}"
+    implementation "com.google.code.gson:gson:${gsonVersion}"
+
+    jBallerinaDistribution project(path: ":ballerina", configuration: "jBallerinaDistribution")
+    ballerinaDistribution project(path: ":ballerina", configuration: "ballerinaDistribution")
+}
+
+task unpackBallerinaDistribution(type: Copy) {
+    dependsOn configurations.jBallerinaDistribution
+    dependsOn configurations.ballerinaDistribution
+    def sourceDir = "${buildDir}/${distributionDir}"
+    from zipTree { "${rootDir}/ballerina/build/distributions/ballerina-${version}-swan-lake.zip" }
+    new File("${sourceDir}").mkdirs()
+    into new File("${sourceDir}")
+}
+
+task copyPackages() {
+    dependsOn unpackBallerinaDistribution
+    def sourceDir = "${buildDir}/${distributionDir}" +
+            "/ballerina-${version}-swan-lake/distributions/ballerina-${shortVersion}/repo"
+    copy {
+        from "${sourceDir}"
+        into "${buildDir}/repo"
+    }
+}
+
+task downloadBalTestProject(type: Download) {
+    // Download nBallerina latest tag
+    src "https://github.com/ballerina-platform/nballerina/archive/refs/heads/main.zip"
+    onlyIfModified true
+    dest new File("${buildDir}/nballeirna-src.zip")
+}
+
+task downloadBalFHIRTestProject(type: Download) {
+    // Download nBallerina latest tag
+    src "https://github.com/ballerina-platform/module-ballerinax-health.fhir.r4/archive/refs/tags/uscore-v1.0.5.zip"
+    onlyIfModified true
+    dest new File("${buildDir}/fhir-src.zip")
+}
+
+task unpackBalTestProject(type: Copy) {
+    dependsOn downloadBalTestProject
+    def sourceDir = "${buildDir}/${nbalSourceDir}"
+    from zipTree { "${buildDir}/nballeirna-src.zip" }
+    new File("${sourceDir}").mkdirs()
+    into new File("${sourceDir}")
+}
+
+task unpackBalFHIRTestProject(type: Copy) {
+    dependsOn downloadBalFHIRTestProject
+    def sourceDir = "${buildDir}/${fhirSourceDir}"
+    from zipTree { "${buildDir}/fhir-src.zip" }
+    new File("${sourceDir}").mkdirs()
+    into new File("${sourceDir}")
+}
+
+task runLSSimulatorOnnBallerina(type: JavaExec) {
+    dependsOn copyPackages
+    dependsOn unpackBalTestProject
+
+    def extractedBalSrcDir = "${buildDir}/${nbalSourceDir}/nballerina-main/compiler"
+    systemProperty "ls.simulation.src", "${extractedBalSrcDir}"
+
+    systemProperty "ballerina.home", "$buildDir/"
+    systemProperty "ballerina.version", "${ballerinaLangVersion}"
+    systemProperty "ls.simulation.duration", "60"
+    systemProperty "ls.simulation.skipGenerators", System.getProperty("ls.simulation.skipGenerators")
+    systemProperty "LANG_REPO_BUILD", "false"
+
+    jvmArgs = ['-XX:+HeapDumpOnOutOfMemoryError', "-XX:HeapDumpPath=$rootDir/dump.hprof"]
+
+    maxHeapSize "1536m"
+    group = "Execution"
+    description = "Run the main class with JavaExecTask"
+    classpath = sourceSets.main.runtimeClasspath
+    main = "org.ballerinalang.langserver.simulator.EditorSimulator"
+}
+
+task runLSSimulatorOnFHIR(type: JavaExec) {
+    dependsOn copyPackages
+    dependsOn unpackBalFHIRTestProject
+
+    def extractedBalSrcDir = "${buildDir}/${fhirSourceDir}/module-ballerinax-health.fhir.r4-uscore-v1.0.5/base"
+    systemProperty "ls.simulation.src", "${extractedBalSrcDir}"
+
+    systemProperty "ballerina.home", "$buildDir/"
+    systemProperty "ballerina.version", "${ballerinaLangVersion}"
+    systemProperty "ls.simulation.duration", "60"
+    systemProperty "ls.simulation.skipGenerators", System.getProperty("ls.simulation.skipGenerators")
+    systemProperty "LANG_REPO_BUILD", "false"
+
+    jvmArgs = ['-XX:+HeapDumpOnOutOfMemoryError', "-XX:HeapDumpPath=$rootDir/dump.hprof"]
+
+    maxHeapSize "1536m"
+    group = "Execution"
+    description = "Run the main class with JavaExecTask"
+    classpath = sourceSets.main.runtimeClasspath
+    main = "org.ballerinalang.langserver.simulator.EditorSimulator"
+}
+
+tasks.compileJava {
+    doFirst {
+        options.encoding = 'UTF-8'
+        options.compilerArgs = [
+                '--module-path', classpath.asPath,
+        ]
+        classpath = files()
+    }
+}
