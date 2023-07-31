@@ -4242,20 +4242,6 @@
     ]
   },
   {
-    "title": "Regex",
-    "column": 3,
-    "category": "Common libraries",
-    "samples": [
-      {
-        "name": "Regular expressions",
-        "url": "regular-expressions",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": false
-      }
-    ]
-  },
-  {
     "title": "OS",
     "column": 3,
     "category": "Common libraries",
