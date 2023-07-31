@@ -76,6 +76,7 @@ jobs:
           --data "{
             \"event_type\": \"notify-simulator-failure\",
             \"client_payload\": {
-              \"branch\": \"${{ matrix.branch }}\"
+              \"branch\": \"${{ matrix.branch }}\",
+              \"runId\":\"${{github.run_id}}\"
             }
           }"
