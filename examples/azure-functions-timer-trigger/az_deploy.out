@@ -1,12 +1,9 @@
 $ func azure functionapp publish bal-bbe --script-root target/azure_functions
 Getting site publishing info...
 Creating archive for current directory...
-Uploading 28.67 MB [##############################################################################]
+Uploading 32.7 MB [###############################################################################]
 Upload completed successfully.
 Deployment completed successfully.
 Syncing triggers...
 Functions in bal-bbe:
-    get-hello - [httpTrigger]
-        Invoke url: https://bal-bbe.azurewebsites.net/hello
-
     timer - [timerTrigger]

@@ -1,1 +1,2 @@
 $ bal new azure_functions_timer_trigger
+Created new package 'azure_functions_timer_trigger' at /Users/wso2/azure_functions_timer_trigger.
