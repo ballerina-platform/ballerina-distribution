@@ -1,6 +1,6 @@
 $ bal build --cloud="azure_functions"
 Compiling source
-        wso2/azure-functions-http-trigger:0.1.0
+        wso2/azure_functions_http_trigger:0.1.0
 
 Generating executable
         @azure_functions:Function: timer

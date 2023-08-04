@@ -1,6 +1,6 @@
 $ bal build
 Compiling source
-        wso2/aws-lambda-hello-world:0.1.0
+        wso2/aws_lambda_hello_world:0.1.0
 
 Generating executable
         @awslambda:Function: echo
