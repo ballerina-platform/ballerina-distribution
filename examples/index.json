@@ -2494,6 +2494,29 @@
     ]
   },
   {
+    "title": "  GraphQL service advanced",
+    "column": 1,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Dataloader",
+        "url": "graphql-dataloader",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Custom prefetch methods",
+        "url": "custom-prefetch-methods",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "GraphQL client",
     "column": 1,
     "category": "Network libraries",

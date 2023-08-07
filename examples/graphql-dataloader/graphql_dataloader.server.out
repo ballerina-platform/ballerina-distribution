@@ -1,0 +1,3 @@
+$ bal run graphql_dataloader.bal
+# Below line will get printed after executing the query operation
+time = 2023-08-08T13:58:40.479+05:30 level = INFO module = "" message = "executing bookLoaderFunction" keys = [1,2,3,4,5]
