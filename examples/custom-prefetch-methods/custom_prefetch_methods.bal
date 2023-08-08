@@ -20,22 +20,16 @@ type AuthorRow record {|
 
 final readonly & table<AuthorRow> key(id) authorTable = table [
     {id: 1, name: "J.K. Rowling"},
-    {id: 2, name: "Stephen King"},
-    {id: 3, name: "Agatha Christie"},
-    {id: 4, name: "Haruki Murakami"},
-    {id: 5, name: "Jane Austen"}
+    {id: 2, name: "Stephen King"}
 ];
 
 final readonly & table<BookRow> key(id) bookTable = table [
     {id: 1, title: "Harry Potter and the Sorcerer's Stone", author: 1},
     {id: 2, title: "The Shining", author: 2},
-    {id: 3, title: "Murder on the Orient Express", author: 3},
-    {id: 4, title: "Norwegian Wood", author: 4},
-    {id: 5, title: "Pride and Prejudice", author: 5},
-    {id: 6, title: "Harry Potter and the Chamber of Secrets", author: 1},
-    {id: 7, title: "It", author: 2},
-    {id: 8, title: "And Then There Were None", author: 3},
-    {id: 9, title: "Kafka on the Shore", author: 4}
+    {id: 3, title: "Harry Potter and the Chamber of Secrets", author: 1},
+    {id: 4, title: "It", author: 2},
+    {id: 5, title: "Harry Potter and the Prisoner of Azkaban", author: 1},
+    {id: 6, title: "The Stand", author: 2}
 ];
 
 isolated function bookLoaderFunction(readonly & anydata[] ids) returns BookRow[][]|error {
