@@ -1,4 +1,4 @@
-# Azure Functions timer trigger
+# Azure Functions - Timer trigger
 
 This example demonstrates how a function can be scheduled to execute periodically by the Azure Functions app. Once the function is executed, the timer details will be stored in the selected queue storage for every invocation.
 

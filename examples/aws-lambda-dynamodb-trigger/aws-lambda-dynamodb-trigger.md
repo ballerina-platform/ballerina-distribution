@@ -1,4 +1,4 @@
-# AWS Lambda DynamoDB trigger
+# AWS Lambda - DynamoDB trigger
 
 This example creates a function, which will be executed for each entry added to a database in the [DynamoDB](https://aws.amazon.com/dynamodb/).
 

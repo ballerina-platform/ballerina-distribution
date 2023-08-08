@@ -1,4 +1,4 @@
-# Azure Functions- HTTP trigger with queue
+# Azure Functions - HTTP trigger with queue
 
 This example demonstrates using an HTTP trigger to invoke an Azure function with multiple output bindings to return the HTTP response and queue output binding to write an entry to a queue.
 

@@ -1,4 +1,4 @@
-# Azure Functions Cosmos DB trigger
+# Azure Functions - Cosmos DB trigger
 
 This example demonstrates using a Cosmos DB trigger to invoke an AWS Lambda function and a queue output binding to write an entry to a queue.
 
