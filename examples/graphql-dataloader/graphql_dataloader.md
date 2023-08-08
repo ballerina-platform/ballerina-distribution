@@ -20,7 +20,7 @@ To send the document, execute the following cURL command in a separate terminal.
 - [`garaphql.dataloader` module - API documentation](https://lib.ballerina.io/ballerina/graphql.dataloader/latest)
 - [The `BatchLoadFunction` - Specification](/spec/graphql/#106211-the-batchloadfunction)
 - [DataLoader API - Specification](/spec/graphql/#1061-dataloader-api)
-- [The DefaultDataLoade - Specification](/spec/graphql/#1062-the-defaultdataloader)
+- [The DefaultDataLoader - Specification](/spec/graphql/#1062-the-defaultdataloader)
 - [Engaging DataLoaders - Specification](/spec/graphql/#1063-engaging-dataloaders)
 - [The `prefetch` Method - Specification](/spec/graphql/#10633-define-the-corresponding-prefetch-method)
 - [Utilizing Multiple DataLoaders in a GraphQL Service](/spec/graphql/#example-utilizing-multiple-dataloaders-in-a-graphql-service)
