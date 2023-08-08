@@ -1,10 +1,8 @@
-# Navigate to the directory that contains the
-# 'stop_handler.bal' file, and run the 'bal run' command below.
-
 $ bal run stop_handler.bal
-
-# Send the interrupt signal SIGINT to terminate the current process.
-Ctrl+c
 initial items in fruit basket: ["Apple","Orange"]
+
+# Invoke the service using cURL command as mentioned below in a new terminal.
 after adding a fruit item: ["Apple","Orange","Guava"]
+
+# Send the interrupt signal SIGINT (Ctrl+C) to terminate the current process.
 after removing all fruit items: []

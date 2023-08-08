@@ -66,14 +66,14 @@ dependencies {
     checkstyle "com.puppycrawl.tools:checkstyle:${puppycrawlCheckstyleVersion}"
 }
 
-sourceCompatibility = JavaVersion.VERSION_11
+sourceCompatibility = JavaVersion.VERSION_17
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
 jacoco {
-    toolVersion = "0.8.6"
+    toolVersion = "0.8.10"
 }
 
 test {
@@ -94,7 +94,7 @@ test {
 }
 
 checkstyle {
-    toolVersion '7.8.2'
+    toolVersion '10.12.1'
     configFile rootProject.file("config/checkstyle/build/checkstyle.xml")
     configProperties = ["suppressionFile": rootProject.file("config/checkstyle/build/suppressions.xml")]
     checkstyleTest.enabled = true
@@ -122,9 +122,9 @@ spotbugsTest {
 
 jacocoTestReport {
     reports {
-        xml.enabled true
+        xml.required = true
     }
 }
 
 checkstyleMain.dependsOn(":config:checkstyle:downloadMultipleFiles")
-
+checkstyleTest.dependsOn(":config:checkstyle:downloadMultipleFiles")

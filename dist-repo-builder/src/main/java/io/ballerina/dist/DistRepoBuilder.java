@@ -135,7 +135,7 @@ public class DistRepoBuilder {
             valid = false;
         }
         // Check if module jar exists
-        Path jar = repo.resolve("cache").resolve(orgName).resolve(moduleName).resolve(version).resolve("java11")
+        Path jar = repo.resolve("cache").resolve(orgName).resolve(moduleName).resolve(version).resolve("java17")
                 .resolve(getJarName(orgName, moduleName, version));
         if (!Files.exists(jar)) {
             System.out.println("Jar missing for package :" + orgName + "/" + moduleName);

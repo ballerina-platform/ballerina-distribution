@@ -21,6 +21,7 @@ import io.ballerina.cli.BLauncherCmd;
 import io.ballerina.projects.*;
 import io.ballerina.projects.bala.BalaProject;
 import io.ballerina.projects.repos.FileSystemCache;
+import io.ballerina.tools.diagnostics.Diagnostic;
 import picocli.CommandLine;
 
 import java.io.PrintStream;
@@ -36,9 +37,9 @@ import java.util.List;
 public class GenCacheCmd implements BLauncherCmd{
     private static final String CMD_NAME = "gencache";
     private PrintStream outStream;
+    private PrintStream errStream;
     private boolean exitWhenFinish;
     private static final String BALLERINA_HOME_KEY = "ballerina.home";
-
     private String balaPath;
     private String workingDir;
 
@@ -46,7 +47,8 @@ public class GenCacheCmd implements BLauncherCmd{
      private List<String> argList;
 
     public GenCacheCmd() {
-        this.outStream = System.err;
+        this.outStream = System.out;
+        this.errStream = System.err;
         this.exitWhenFinish = true;
     }
 
@@ -56,14 +58,14 @@ public class GenCacheCmd implements BLauncherCmd{
         workingDir = argList.get(1);
 
         if ( balaPath == null || workingDir == null ) {
-            outStream.println("missing input options");
+            errStream.println("missing input options");
             exitError(this.exitWhenFinish);
             return;
         }
 
         try {
-            System.out.println(workingDir);
-            System.out.println(balaPath);
+            outStream.println(workingDir);
+            outStream.println(balaPath);
             Path jBalToolsPath = Paths.get( workingDir);
             Path repo = jBalToolsPath.resolve( "repo");
             Path modulePath = Paths.get(balaPath);
@@ -72,14 +74,25 @@ public class GenCacheCmd implements BLauncherCmd{
             defaultBuilder.addCompilationCacheFactory(new FileSystemCache.FileSystemCacheFactory(repo.resolve("cache")));
             Project balaProject = BalaProject.loadProject(defaultBuilder, modulePath);
             PackageCompilation packageCompilation = balaProject.currentPackage().getCompilation();
-            JBallerinaBackend.from(packageCompilation, JvmTarget.JAVA_11);
+            DiagnosticResult diagnosticResult = packageCompilation.diagnosticResult();
+            for (Diagnostic diagnostic : diagnosticResult.diagnostics()) {
+                outStream.println(diagnostic.toString());
+            }
+            if (diagnosticResult.hasErrors()) {
+                return;
+            }
+            JBallerinaBackend jBallerinaBackend = JBallerinaBackend.from(packageCompilation, JvmTarget.JAVA_17);
+            diagnosticResult = jBallerinaBackend.diagnosticResult();
+            for (Diagnostic diagnostic : diagnosticResult.diagnostics()) {
+                outStream.println(diagnostic.toString());
+            }
             //TODO : Remove when regeneration is not required
         } catch (Error e) {
             //TODO : Ignore Error and continue generation as regeneration will be done
-            System.out.println("Error occurred " + balaPath + " " + e);
+            outStream.println("Error occurred " + balaPath + " " + e);
         } catch (Exception e) {
             //TODO : Ignore Exception and continue generation as regeneration will be done
-            System.out.println("Exception occurred " + balaPath + " " + e);
+            outStream.println("Exception occurred " + balaPath + " " + e);
         }
     }
 
