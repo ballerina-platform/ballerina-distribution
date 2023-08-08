@@ -5,7 +5,7 @@ For more information, see [Code to Cloud Deployment](/learn/run-in-the-cloud/cod
 
 ::: code docker-hello-world.bal :::
 
-Before you build the package, you need to override some default values taken by the compiler. To do this, create a filed named `Cloud.toml` in the package directory, and add the content below to it.
+Before you build the package, you need to override some default values taken by the compiler. To do this, create a file named `Cloud.toml` in the package directory, and add the content below to it.
 For all the supported key value properties, see [Code to Cloud specification](https://github.com/ballerina-platform/ballerina-spec/blob/master/c2c/code-to-cloud-spec.md).
 
 ::: code Cloud.toml :::
