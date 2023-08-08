@@ -9,7 +9,7 @@ const URL = "https://ballerina.io";
 const HTTP_OK = {httpCode: 200, message: "OK"};
 const ERROR_CODES = [200, 202, 400];
 
-// The value for variable `msg` can only be assigned once.
+// The value for the `msg` variable can only be assigned once.
 final string msg = loadMessage();
 
 public function main() {
