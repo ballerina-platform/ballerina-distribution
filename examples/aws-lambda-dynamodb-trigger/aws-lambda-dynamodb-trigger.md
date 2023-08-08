@@ -38,7 +38,7 @@ Follow the instructions below to create a DynamoDB table for invoking this funct
 
 1. In the IAM Console, click the corresponding role in the list, and click **Add permissions**.
 2. Select **attach policies** from the drop-down menu, and add the **AWSLambdaDynamoDBExecutionRole** to the role.
-3. Go to [DynamoDB](https://us-west-1.console.aws.amazon.com/dynamodbv2), and from the drop-down menu at the RHS of the screen, select the **AWS region** in which you created the user and role.
+3. Go to [DynamoDB](https://console.aws.amazon.com/dynamodbv2), and from the drop-down menu at the top RHS of the screen, select the **AWS region** in which you created the user and role.
 4. Click **Create Table**, enter a table name and a partition key, and create the table (if you already have a table created, you can skip this step).
 5. Click on the DynamoDB table you created, and then click the **Exports and streams** tab.
 6. Click **Turn on** under **DynamoDB stream details**, select **Key attributes only** for the event type, and click **Turn on stream**.
