@@ -59,4 +59,3 @@ Once the function is deployed, add an item to the collection.
 3. Go to the queue page and observe the added new entry.
 
 >**Info:** Additionally, for debugging purposes, view the logs under the **Logs stream** in the function app.
-
