@@ -1,4 +1,4 @@
-# Azure Functions- HTTP trigger with queue
+# Azure Functions - HTTP trigger with queue
 
 This example demonstrates using an HTTP trigger to invoke an Azure function with multiple output bindings to return the HTTP response and queue output binding to write an entry to a queue.
 
@@ -33,7 +33,8 @@ Execute the command below to generate the Azure Functions artifacts.
 
 ## Deploy the function
 
-Execute the Azure CLI command given by the compiler to create and publish the functions by replacing `bal-bbe` with your respective function app name.
+Execute the Azure CLI command given by the compiler to create and publish the functions by replacing `<function_app_name>` with your respective function app name.
+
 ## Invoke the function
 
 Execute the command below by replacing `<function_app_name>` with your respective function app name to invoke the function.

@@ -1,4 +1,4 @@
-# Docker 
+# Docker - Hello world
 
 Ballerina supports generating Docker artifacts from code without any additional configuration. This simplifies the experience of developing and deploying Ballerina code in the cloud. Code to Cloud builds the containers and required artifacts by deriving the required values from the code. If you want to override the default values taken by the compiler, you can use a `Cloud.toml` file.
 For more information, see [Code to Cloud Deployment](/learn/run-in-the-cloud/code-to-cloud-deployment/).

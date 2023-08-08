@@ -32,7 +32,7 @@ Alternatively, you can install Ballerina from the source using the following ins
 
 #### Prerequisites
 
-* JDK11 ([Adopt OpenJDK11](https://adoptopenjdk.net/) or any other OpenJDK distribution)
+* JDK17 ([Adopt OpenJDK17](https://adoptopenjdk.net/) or any other OpenJDK distribution)
 
 #### Building the source
 
