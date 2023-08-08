@@ -31,5 +31,5 @@ Get the External IP and port of the Kubernetes service.
 If the External IP of the `hello-svc-local` service is `<none>`, you need to follow cluster-specific steps to obtain the external IP. If you are using Minikube, you can use the `minikube ip` command to obtain the IP.
 ::: out minikube_ip.out :::
 
-Access the deployed service via CURL.
+Access the deployed service via cURL.
 ::: out execute_curl.out :::
