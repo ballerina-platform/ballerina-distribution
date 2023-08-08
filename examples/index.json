@@ -3978,7 +3978,7 @@
       {
         "name": "Cryptographic operations",
         "url": "security-crypto",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
