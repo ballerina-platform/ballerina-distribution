@@ -73,7 +73,7 @@ public isolated distinct service class Author {
 
     // Annotate the resource function to use a prefetch function having a custom name.
     // This configuration instructs the GraphQL engine to call the `prefetchBooks` function
-    // before calling the resource function `books`.
+    // before calling the `books` resource function.
     @graphql:ResourceConfig {
         prefetchMethodName: "prefetchBooks"
     }

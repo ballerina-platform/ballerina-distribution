@@ -33,10 +33,10 @@ final readonly & table<BookRow> key(id) bookTable = table [
     {id: 6, title: "The Stand", author: 2}
 ];
 
-// Implement the batch load function for the data loader. 
+// Implement the `batch load` function for the data loader. 
 // This function handles fetching data in batches. The primary keys of the data to be loaded
-// will be provided as the `ids` parameter to the batch load function. The expected output
-// of this function is an array of results, where each element in the result array corresponds
+// will be provided as the values of the `ids` parameter to the batch load function. The expected output
+// of this function is an array of results in which each element in the result array corresponds
 // to a primary key from the `ids` array.
 isolated function bookLoaderFunction(readonly & anydata[] ids) returns BookRow[][]|error {
     final readonly & int[] keys = check ids.ensureType();
