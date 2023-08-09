@@ -75,10 +75,7 @@ public isolated distinct service class Author {
         return self.author.name;
     }
 
-    // Define a prefetch function that will be called before the curresponding 
-    // field resolver function. In this case, the prefetch function will be called before 
-    // the `books` field resolver function. By default the prefetch function name is 
-    // prefix `pre` followed by the field name (.i.e. preBooks)
+    // Define a prefetch function.
     isolated function preBooks(graphql:Context ctx) {
         // Obtain the dataloader from the context using the unique name.
         // Providing an invalid name here will lead to a panic.

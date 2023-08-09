@@ -1,6 +1,6 @@
 # GraphQL service - Dataloader
 
-The Ballerina GraphQL module provides the capability to batch and cache data fetching from data sources using the `garaphql.dataloader` submodule. To leverage this functionality in a GraphQL service, users must register dataloaders through the `graphql:Context` object and implement the corresponding prefetch method logic and resolver logic. By using `garaphql.dataloader`, users can efficiently avoid frequent data fetching, effectively addressing the GraphQL N+1 problem.
+The Ballerina GraphQL module provides the capability to batch and cache data fetching from data sources using the `graphql.dataloader` submodule. To leverage this functionality in a GraphQL service, users must register data loaders through the `graphql:Context` object and implement the corresponding prefetch method logic and resolver method logic. A prefetch method, in the context of Ballerina GraphQL, is a method that is invoked before the actual resolver method. By default, the prefetch method name follows the convention of the prefix `pre`, followed by the resolver method name. The use of `graphql.dataloader` helps users avoid excessive data fetching, effectively addressing the GraphQL N+1 problem.
 
 ::: code graphql_dataloader.bal :::
 
