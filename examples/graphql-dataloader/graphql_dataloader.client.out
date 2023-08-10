@@ -1,0 +1,2 @@
+$ curl 'http://localhost:9090/graphql' -H 'Content-Type: application/json' -d '{"query": "{ authors { name books { title } } }"}'
+{"data":{"authors":[{"name":"J.K. Rowling", "books":[{"title":"Harry Potter and the Sorcerer's Stone"}, {"title":"Harry Potter and the Chamber of Secrets"}, {"title":"Harry Potter and the Prisoner of Azkaban"}]}, {"name":"Stephen King", "books":[{"title":"The Shining"}, {"title":"It"}, {"title":"The Stand"}]}]}}

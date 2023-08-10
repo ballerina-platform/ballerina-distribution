@@ -21,7 +21,6 @@ dependencies {
     implementation group: 'org.ballerinalang', name: 'language-server-core', version: "${ballerinaLangVersion}"
     implementation group: 'org.ballerinalang', name: 'ballerina-tools-api', version: "${ballerinaLangVersion}"
     implementation group: 'org.ballerinalang', name: 'language-server-commons', version: "${ballerinaLangVersion}"
-    implementation group: 'org.ballerinalang', name: 'ballerina-test-utils', version: "${ballerinaLangVersion}"
     implementation(group: 'org.eclipse.lsp4j', name:'org.eclipse.lsp4j', version:"${eclipseLsp4jVersion}") {
         exclude group: 'com.google.guava', module: 'guava'
     }

@@ -58,7 +58,7 @@ task unpackBallerinaJre(type: Download) {
             "${jreBaseURL}/ballerina-jre-linux-64-${ballerinaJreVersion}.zip",
             "${jreBaseURL}/ballerina-jre-macos-64-${ballerinaJreVersion}.zip",
             "${jreBaseURL}/ballerina-jre-macos-arm-64-${ballerinaJreVersion}.zip",
-            "${jreBaseURL}/ballerina-jre-windows-64-${ballerinaJreVersion}.zip"
+            "${jreBaseURL}/ballerina-jre-win-64-${ballerinaJreVersion}.zip"
     ])
     onlyIfModified true
     dest "${jreLocation}"
@@ -168,7 +168,7 @@ task extractJreForMacArm(type: Copy) {
 
 task extractJreForWindows(type: Copy) {
     group = "extract_jre"
-    from zipTree { "${jreLocation}/ballerina-jre-windows-64-${ballerinaJreVersion}.zip" }
+    from zipTree { "${jreLocation}/ballerina-jre-win-64-${ballerinaJreVersion}.zip" }
     into("${buildDir}/target/extracted-jre-windows")
 }
 
@@ -284,8 +284,10 @@ task combineDocs(type: Exec) {
 task packageDist(type: Zip) {
     group = "package_distribution"
     description = 'Ballerina Tools Distribution Assembly'
-    baseName = "${distributionName}"
-    ext { parentDir = "${baseName}-${shortVersion}" }
+    ext {
+        baseName = "${distributionName}"
+        parentDir = "${baseName}-${shortVersion}"
+    }
     archiveFileName = "${baseName}-${shortVersion}.zip"
     entryCompression = ZipEntryCompression.DEFLATED
 
@@ -327,8 +329,10 @@ task packageDist(type: Zip) {
 task packageDistZip(type: Zip) {
     group = "package_distribution"
     description = 'Ballerina Distribution Assembly'
-    baseName = "${distributionName}-${version}"
-    ext { parentDir = "${baseName}-${codeName}" }
+    ext {
+        baseName = "${distributionName}-${version}"
+        parentDir = "${baseName}-${codeName}"
+    }
     archiveFileName = "${distributionName}-${version}-${codeName}.zip"
     entryCompression = ZipEntryCompression.DEFLATED
 
@@ -410,8 +414,10 @@ task packageDistZip(type: Zip) {
 task packageDistLinux(type: Zip) {
     group = "package_distribution"
     description = 'Ballerina Linux Distribution Assembly'
-    baseName = "${distributionName}-${version}"
-    ext { parentDir = "${baseName}-${codeName}-linux" }
+    ext {
+        baseName = "${distributionName}-${version}"
+        parentDir = "${baseName}-${codeName}-linux"
+    }
     archiveFileName = "${parentDir}.zip"
     entryCompression = ZipEntryCompression.DEFLATED
 
@@ -497,8 +503,10 @@ task packageDistLinux(type: Zip) {
 task packageDistMac(type: Zip) {
     group = "package_distribution"
     description = 'Ballerina MacOS Distribution Assembly'
-    baseName = "${distributionName}-${version}"
-    ext { parentDir = "${baseName}-${codeName}-macos" }
+    ext {
+        baseName = "${distributionName}-${version}"
+        parentDir = "${baseName}-${codeName}-macos"
+    }
     archiveFileName = "${parentDir}.zip"
     entryCompression = ZipEntryCompression.DEFLATED
 
@@ -580,8 +588,10 @@ task packageDistMac(type: Zip) {
 task packageDistMacArm(type: Zip) {
     group = "package_distribution"
     description = 'Ballerina MacOS-ARM Distribution Assembly'
-    baseName = "${distributionName}-${version}"
-    ext { parentDir = "${baseName}-${codeName}-macos-arm" }
+    ext {
+        baseName = "${distributionName}-${version}"
+        parentDir = "${baseName}-${codeName}-macos-arm"
+    }
     archiveFileName = "${parentDir}.zip"
     entryCompression = ZipEntryCompression.DEFLATED
 
@@ -663,8 +673,10 @@ task packageDistMacArm(type: Zip) {
 task packageDistWindows(type: Zip) {
     group = "package_distribution"
     description = 'Ballerina Windows Distribution Assembly'
-    baseName = "${distributionName}-${version}"
-    ext { parentDir = "${baseName}-${codeName}-windows" }
+    ext {
+        baseName = "${distributionName}-${version}"
+        parentDir = "${baseName}-${codeName}-windows"
+    }
     archiveFileName = "${parentDir}.zip"
     entryCompression = ZipEntryCompression.DEFLATED
 
@@ -1292,7 +1304,7 @@ task testDevToolsIntegration() {
 
 task generateCache(dependsOn: ':cache-generator:build') {
     doFirst {
-        download {
+        download.run {
             src "https://raw.githubusercontent.com/ballerina-platform/ballerina-release/${balstdlibBranch}/dependabot/resources/extensions.json"
             dest "${project.rootDir}/ballerina/build/target/"
         }
@@ -1373,7 +1385,7 @@ task generateCache(dependsOn: ':cache-generator:build') {
                                 def moduleName = dependency.module_name[i].toString() + "-ballerina-zip"
                                 if ( sortedLibs.contains(moduleName) ) {
                                     if ( !dependencyMap["${moduleName}"].contains(dependency.version[i].toString()))
-                                    dependencyMap["${moduleName}"].add(dependency.version[i].toString())
+                                        dependencyMap["${moduleName}"].add(dependency.version[i].toString())
                                 }
                             }
                         }
@@ -1475,6 +1487,7 @@ packageDist.dependsOn combineDocs
 packageDist.dependsOn generateCache
 packageDistZip.dependsOn packageDist
 packageDistLinux.dependsOn packageDistZip
+packageDistLinux.dependsOn unzipDistForTests
 packageDistMac.dependsOn packageDistLinux
 packageDistMacArm.dependsOn packageDistMac
 packageDistWindows.dependsOn packageDistMacArm
