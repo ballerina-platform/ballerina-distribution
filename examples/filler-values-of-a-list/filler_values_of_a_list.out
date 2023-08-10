@@ -1,0 +1,5 @@
+$ bal run filler_values_of_a_list.bal
+[0,0,0]
+[false]
+["John","Mike",""]
+[["carrot","apple"],["avocado","egg"],["",""]]

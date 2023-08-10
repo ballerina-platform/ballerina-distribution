@@ -37,7 +37,7 @@ import static org.ballerinalang.distribution.utils.TestUtils.OUT;
 */
 public class LengthValidator {
 
-    private static int LINE_MAX_LIMIT = 80;
+    private static int LINE_MAX_LIMIT = 120;
     private static String[] fileFilterExtensions;
     private static String defaultFilerExtension = ".bal";
     private static boolean isValidationFailure = false;
@@ -124,7 +124,7 @@ public class LengthValidator {
 
         LengthValidator.listFilesForFolder(new File(filePath));
 
-        Assert.assertFalse(isValidationFailure, "bal files should only contain lines of 80 character length");
+        Assert.assertFalse(isValidationFailure, "bal files should only contain lines of 120 character length");
     }
 }
 

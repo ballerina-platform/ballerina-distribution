@@ -1,0 +1,4 @@
+$ bal run service
+time = 2022-11-17T17:10:14.503+05:30 level = INFO module = foo/test message = "Greet received: Hi Sam"
+time = 2022-11-17T17:10:14.512+05:30 level = INFO module = foo/test message = "Greet received: Hey Sam"
+time = 2022-11-17T17:10:14.513+05:30 level = INFO module = foo/test message = "Greet received: GM Sam"

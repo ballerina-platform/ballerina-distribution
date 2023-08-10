@@ -1,16 +1,6 @@
-bal run xml_operations.bal
+$ bal run xml_operations.bal
 <name>Sherlock Holmes</name><details>
                 <author>Sir Arthur Conan Doyle</author>
                 <language>English</language>
             </details>
 false
-<name>Sherlock Holmes</name>
-<details>
-                        <author>Sir Arthur Conan Doyle</author>
-                        <language>English</language>
-                  </details>
-<name>Sherlock Holmes</name>
-greeting
-true
-<details><language>French</language></details>
-<name>Sherlock Holmes</name><details><language>French</language></details>

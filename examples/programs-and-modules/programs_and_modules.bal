@@ -8,5 +8,4 @@ import ballerina/io;
 public function main() {
     // Here `io:println` means function `println` is in the module bound to prefix `io`.
     io:println("Hello, World!");
-
 }

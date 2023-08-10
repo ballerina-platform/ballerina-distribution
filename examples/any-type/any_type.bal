@@ -1,6 +1,6 @@
 import ballerina/io;
 
-// A variable of type `any` can hold any value except an error.
+// A variable of type `any` can hold any value except an `error` value.
 any x = 1;
 
 public function main() {
@@ -9,8 +9,8 @@ public function main() {
     
     io:println(n);
 
-    // Langlib lang.value module contains functions that apply to multiple basic types.
-    // Can convert to string.
+    // The `lang.value` lang library contains functions that apply to multiple basic types.
+    // `x.toString()` converts `x` to a `string`.
     string s = x.toString();
 
     io:println(s == "1");

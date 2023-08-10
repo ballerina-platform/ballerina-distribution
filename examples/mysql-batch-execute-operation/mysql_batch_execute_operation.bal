@@ -1,93 +1,33 @@
-import ballerina/io;
-import ballerinax/mysql;
+import ballerina/http;
 import ballerina/sql;
+import ballerinax/mysql;
+import ballerinax/mysql.driver as _;
 
-public function main() returns error? {
-    // Runs the prerequisite setup for the example.
-    check beforeExample();
+// The `Album` record to load records from `albums` table.
+type Album record {|
+    string id;
+    string title;
+    string artist;
+    float price;
+|};
 
-    // Initializes the MySQL client.
-    mysql:Client mysqlClient = check new (user = "root", 
-            password = "Test@123", database = "MYSQL_BBE");
+service / on new http:Listener(8080) {
+    private final mysql:Client db;
 
-    // The records to be inserted.
-    var insertRecords = [
-        {
-            firstName: "Peter",
-            lastName: "Stuart",
-            registrationID: 1,
-            creditLimit: 5000.75,
-            country: "USA"
-        }, 
-        {
-            firstName: "Stephanie",
-            lastName: "Mike",
-            registrationID: 2,
-            creditLimit: 8000.00,
-            country: "USA"
-        }, 
-        {
-            firstName: "Bill",
-            lastName: "John",
-            registrationID: 3,
-            creditLimit: 3000.25,
-            country: "USA"
-        }
-    ];
-
-    // Creates a batch parameterized query.
-    sql:ParameterizedQuery[] insertQueries = 
-        from var data in insertRecords
-        select `INSERT INTO Customers
-                (firstName, lastName, registrationID, creditLimit, country)
-                VALUES (${data.firstName}, ${data.lastName},
-                ${data.registrationID}, ${data.creditLimit}, ${data.country})`;
-
-    // Inserts the records with the auto-generated ID.
-    sql:ExecutionResult[] result = 
-                            check mysqlClient->batchExecute(insertQueries);
-
-    int[] generatedIds = [];
-    foreach var summary in result {
-        generatedIds.push(<int>summary.lastInsertId);
+    function init() returns error? {
+        // Initiate the mysql client at the start of the service. This will be used
+        // throughout the lifetime of the service.
+        self.db = check new ("localhost", "root", "Test@123", "MUSIC_STORE", 3306);
     }
-    io:println("\nInsert success, generated IDs are: ", generatedIds, "\n");
 
-    // Checks the data after the batch execution.
-    stream<record {}, error?> resultStream =
-        mysqlClient->query(`SELECT * FROM Customers`);
+    resource function post albums(Album[] albums) returns http:Created|error {
+        // Create a batch parameterized query.
+        sql:ParameterizedQuery[] insertQueries = from Album album in albums
+            select `INSERT INTO albums (id, title, artist, price)
+                    VALUES (${album.id}, ${album.title}, ${album.artist}, ${album.price})`;
 
-    io:println("Data in Customers table:");
-    check resultStream.forEach(function(record {} result) {
-        io:println(result.toString());
-    });
-
-    // Performs the cleanup after the example.
-    check afterExample(mysqlClient);
-}
-
-// Initializes the database as a prerequisite to the example.
-function beforeExample() returns sql:Error? {
-    mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
-
-    // Creates a database.
-    _ = check mysqlClient->execute(`CREATE DATABASE MYSQL_BBE`);
-
-    // Creates a table in the database.
-    _ = check mysqlClient->execute(`CREATE TABLE MYSQL_BBE.Customers
-            (customerId INTEGER NOT NULL AUTO_INCREMENT,
-            firstName VARCHAR(300), lastName  VARCHAR(300),
-            registrationID INTEGER, creditLimit DOUBLE,
-            country  VARCHAR(300), PRIMARY KEY (customerId))`);
-
-    check mysqlClient.close();
-}
-
-// Cleans up the database after running the example.
-function afterExample(mysql:Client mysqlClient) returns sql:Error? {
-    // Cleans the database.
-    _ = check mysqlClient->execute(`DROP DATABASE MYSQL_BBE`);
-
-    // Closes the MySQL client.
-    check mysqlClient.close();
+        // Insert records in a batch.
+        _ = check self.db->batchExecute(insertQueries);
+        return http:CREATED;
+    }
 }

@@ -3,7 +3,10 @@ org = "bctestorg"
 name = "my_package"
 version = "1.0.0"
 
-[[platform.java11.dependency]]
+[platform.java17]
+graalvmCompatible=true
+
+[[platform.java17.dependency]]
 groupId = "org.slf4j"
 artifactId = "slf4j-api"
 version = "1.7.30"

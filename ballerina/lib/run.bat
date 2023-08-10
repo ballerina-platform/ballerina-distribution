@@ -4,7 +4,7 @@ REM Change directory to provided path
 cd %1
 
 REM  run ballerina file as background process
-START "" /b %2 run --experimental %3
+START "" /b %2 run %3
 
 REM wait till server starts
 ping -n 10 127.0.0.0 > nul

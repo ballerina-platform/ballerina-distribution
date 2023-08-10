@@ -1,5 +1,5 @@
-import ballerina/url;
 import ballerina/io;
+import ballerina/url;
 
 public function main() returns error? {
     string value1 = "data=value";

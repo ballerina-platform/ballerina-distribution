@@ -1,0 +1,2 @@
+$ curl http://localhost:8080/order -d "{\"id\":\"S-123\", \"orderDate\":\"2022-12-08\", \"productId\":\"A-123\", \"quantity\":11}" -H "Content-Type: application/json"
+Product  A-123  is out of stock.

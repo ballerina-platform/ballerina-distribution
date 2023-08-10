@@ -1,0 +1,11 @@
+$ bal run continue_statement.bal
+0
+1
+3
+4
+5
+0
+1
+3
+4
+5

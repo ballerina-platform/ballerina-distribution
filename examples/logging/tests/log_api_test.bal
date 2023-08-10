@@ -15,7 +15,7 @@ string printWarn = "";
 test:MockFunction mock_printDebug = new();
 
 public function mockPrintDebug(string msg, error? err = (),
-error:StackFrame[]? stackTrace = (), *KeyValues keyValues) {
+error:StackFrame[]? stackTrace = (), *log:KeyValues keyValues) {
     printDebug = msg;
 }
 
@@ -26,7 +26,7 @@ error:StackFrame[]? stackTrace = (), *KeyValues keyValues) {
 test:MockFunction mock_printError = new();
 
 public function mockPrintError(string msg, error? err = (),
-error:StackFrame[]? stackTrace = (), *KeyValues keyValues) {
+error:StackFrame[]? stackTrace = (), *log:KeyValues keyValues) {
     printError = msg;
 }
 
@@ -37,7 +37,7 @@ error:StackFrame[]? stackTrace = (), *KeyValues keyValues) {
 test:MockFunction mock_printInfo = new();
 
 public function mockPrintInfo(string msg, error? err = (),
-error:StackFrame[]? stackTrace = (), *KeyValues keyValues) {
+error:StackFrame[]? stackTrace = (), *log:KeyValues keyValues) {
     printInfo = msg;
 }
 
@@ -48,7 +48,7 @@ error:StackFrame[]? stackTrace = (), *KeyValues keyValues) {
 test:MockFunction mock_printWarn = new();
 
 public function mockPrintWarn(string msg, error? err = (),
-error:StackFrame[]? stackTrace = (), *KeyValues keyValues) {
+error:StackFrame[]? stackTrace = (), *log:KeyValues keyValues) {
     printWarn = msg;
 }
 

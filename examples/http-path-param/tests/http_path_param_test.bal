@@ -3,10 +3,14 @@ import ballerina/test;
 
 @test:Config {}
 function testFunc() returns error? {
-    http:Client httpEndpoint = checkpanic new("http://localhost:9090");
-    json response = check httpEndpoint->get("/company/empId/23");
-    test:assertEquals(response, {empId:23});
+    http:Client httpEndpoint = check new("localhost:9090");
+    Album payload = check httpEndpoint->get("/albums/Blue Train");
+    test:assertEquals(payload, {title:"Blue Train", artist:"John Coltrane"});
 
-    response = check httpEndpoint->get("/company/empName/Adele/Ferguson");
-    test:assertEquals(response, {firstName:"Adele", lastName:"Ferguson"});
+    Album|error response = httpEndpoint->get("/albums/abba");
+    if response is http:ClientRequestError {
+        test:assertEquals(response.detail().statusCode, 404);
+    } else {
+        test:assertFail("Unexpected status code");
+    }
 }

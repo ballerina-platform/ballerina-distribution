@@ -10,7 +10,6 @@ isolated function push(int n) {
     lock {
         stack.push(n);
     }
-
 }
 
 isolated function pop() returns int {

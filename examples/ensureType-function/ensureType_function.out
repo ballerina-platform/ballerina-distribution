@@ -1,0 +1,3 @@
+$ bal run ensureType_function.bal
+12.5
+error("{ballerina}TypeCastError",message="incompatible types: 'string' cannot be cast to 'float'")

@@ -1,13 +1,10 @@
 import ballerina/graphql;
 
-service /graphql on new graphql:Listener(4000) {
+service /graphql on new graphql:Listener(9090) {
 
-    // The input parameters in a resource function becomes input values of the
-    // corresponding GraphQL field. In this GraphQL schema, the 
-    // `greeting` field of `Query` type  has a `name`  input value, which accepts
-    // `string` values.
+    // In the generated schema of this GraphQL service, the `greeting` field of the `Query` type has
+    // an input value `name`, which is of the type `String!`.
     resource function get greeting(string name) returns string {
-
-        return string`Hello, ${name}`;
+        return string `Hello, ${name}`;
     }
 }

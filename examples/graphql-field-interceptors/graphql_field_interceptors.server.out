@@ -1,0 +1,5 @@
+$ bal run graphql_field_interceptors.bal
+# when executing the query, following statements are logged in the terminal.
+time = 2023-04-04T10:26:10.795+05:30 level = INFO module = "" message = "Field \"name\" execution started!"
+time = 2023-04-04T10:26:10.813+05:30 level = INFO module = "" message = "Executing the field \"name\""
+time = 2023-04-04T10:26:10.824+05:30 level = INFO module = "" message = "Field \"name\" execution completed!"

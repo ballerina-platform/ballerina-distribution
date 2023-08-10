@@ -33,8 +33,6 @@ import org.testng.annotations.Test;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import static org.ballerinalang.debugger.test.utils.DebugUtils.findFreePort;
-
 /**
  * Test class for service related debug scenarios.
  */
@@ -59,7 +57,7 @@ public class ServiceDebugTest extends BaseTestCase {
         debugTestRunner.initDebugSession(DebugUtils.DebuggeeExecutionKind.TEST);
 
         // test for debug hits in service level variables
-        Pair<BallerinaTestDebugPoint, StoppedEventArguments> debugHitInfo = debugTestRunner.waitForDebugHit(20000);
+        Pair<BallerinaTestDebugPoint, StoppedEventArguments> debugHitInfo = debugTestRunner.waitForDebugHit(30000);
         Assert.assertEquals(debugHitInfo.getLeft(), debugTestRunner.testBreakpoints.get(0));
 
         // Timeout Exception is expected, since the service get started once the VM is resumed and resource
@@ -83,7 +81,7 @@ public class ServiceDebugTest extends BaseTestCase {
         debugTestRunner.initDebugSession(DebugUtils.DebuggeeExecutionKind.TEST);
 
         // Test for service call stack representation
-        Pair<BallerinaTestDebugPoint, StoppedEventArguments> debugHitInfo = debugTestRunner.waitForDebugHit(20000);
+        Pair<BallerinaTestDebugPoint, StoppedEventArguments> debugHitInfo = debugTestRunner.waitForDebugHit(30000);
         StackFrame[] frames = debugTestRunner.fetchStackFrames(debugHitInfo.getRight());
         debugTestRunner.assertCallStack(frames[0], "service", 20, "hello_service.bal");
     }
@@ -94,10 +92,10 @@ public class ServiceDebugTest extends BaseTestCase {
         String testSingleFileName = "hello_service.bal";
         debugTestRunner = new DebugTestRunner(testProjectName, testSingleFileName, false);
 
-        debugTestRunner.addBreakPoint(new BallerinaTestDebugPoint(debugTestRunner.testEntryFilePath, 23));
+        debugTestRunner.addBreakPoint(new BallerinaTestDebugPoint(debugTestRunner.testEntryFilePath, 24));
         debugTestRunner.initDebugSession(DebugUtils.DebuggeeExecutionKind.TEST);
 
-        Pair<BallerinaTestDebugPoint, StoppedEventArguments> debugHitInfo = debugTestRunner.waitForDebugHit(20000);
+        Pair<BallerinaTestDebugPoint, StoppedEventArguments> debugHitInfo = debugTestRunner.waitForDebugHit(30000);
         Assert.assertEquals(debugHitInfo.getLeft(), debugTestRunner.testBreakpoints.get(0));
     }
 

@@ -1,2 +1,2 @@
-bal run stream_type.bal
+$ bal run stream_type.bal
 Retrieved even number: 2

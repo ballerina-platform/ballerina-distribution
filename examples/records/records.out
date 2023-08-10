@@ -1,3 +1,4 @@
-bal run records.bal
-2
-1
+$ bal run records.bal
+Harry
+true
+false

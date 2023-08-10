@@ -1,29 +1,37 @@
 import ballerina/io;
 
-type Coord record {|
-    float x;
-    float y;
+type Student record {|
+    string name;
+    string country;
 |};
 
-Coord x = { x: 1.0, y: 2.0 };
-
-// `x` is a `map` with `float` values.
-map<float> m1 = x;
-
-type Headers record {|
-    string 'from;
-    string to;
+type PartTimeStudent record {|
+    string name;
+    string country;
+    // Rest descriptor of type `string` allows additional fields with `string` values.
     string...;
 |};
 
-Headers h = {
-    'from: "Jane", to: "John"
-};
-
-// `h` is a `map` with `string` values.
-map<string> m2 = h;
-
 public function main() {
-    io:println(m1);
-    io:println(m2);
+    // `s1` can only have fields exclusively specified in `Student`.
+    Student s1 = {name: "Anne", country: "UK"};
+
+    // `s1` is a `map` with `string` values.
+    map<string> s2 = s1;
+    io:println(s2);
+
+    // `s3` has an additional `faculty` field.
+    PartTimeStudent s3 = {
+        name: "Anne",
+        country: "UK",
+        "faculty": "Science"
+    };
+
+    // Accesses the `faculty` field in `s3`.
+    string? faculty = s3["faculty"];
+    io:println(faculty);
+
+    // `s3` is a `map` with `string` values.
+    map<string> s4 = s3;
+    io:println(s4);
 }

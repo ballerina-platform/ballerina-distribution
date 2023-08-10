@@ -1,2 +1,2 @@
-description: This BBE demonstrates resource method typing in Ballerina
-keywords: ballerina, ballerina by example, bbe, resource, service, data binding
+description: This BBE demonstrates how to accept JSON in rest API, return JSON in rest API, payload binding, data binding, access payload.
+keywords: ballerina, ballerina by example, bbe, resource, service, data binding, json, record, http

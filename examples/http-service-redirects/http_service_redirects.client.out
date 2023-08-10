@@ -1,0 +1,32 @@
+$ curl -v localhost:9092/redirect -L
+> GET /redirect HTTP/1.1
+> Host: localhost:9092
+> User-Agent: curl/7.64.1
+> Accept: */*
+>
+< HTTP/1.1 307 Temporary Redirect
+< Location: http://localhost:9090/albums
+< content-length: 0
+< server: ballerina
+< date: Wed, 11 Jan 2023 10:45:36 +0530
+<
+* Connection #0 to host localhost left intact
+* Issue another request to this URL: 'http://localhost:9090/albums'
+* Found bundle for host localhost: 0x7feb7341b9c0 [can pipeline]
+* Could pipeline, but not asked to!
+*   Trying ::1...
+* TCP_NODELAY set
+* Connected to localhost (::1) port 9090 (#1)
+> GET /albums HTTP/1.1
+> Host: localhost:9090
+> User-Agent: curl/7.64.1
+> Accept: */*
+>
+< HTTP/1.1 200 OK
+< content-type: application/json
+< content-length: 95
+< server: ballerina
+< date: Wed, 11 Jan 2023 10:45:36 +0530
+<
+* Connection #1 to host localhost left intact
+[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]

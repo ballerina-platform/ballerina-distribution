@@ -1,0 +1,3 @@
+$ bal run iterative_use_of_typed_binding.bal
+Average age of John Anne Mike: 25
+[{"id":1001,"name":"Anne Frank"},{"id":1002,"name":"John Hardy"}]

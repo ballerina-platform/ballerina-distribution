@@ -1,0 +1,7 @@
+$ bal run create_streams_with_query.bal
+request to get student name API
+John
+request to get student name API
+Mike
+request to get student name API
+Mia

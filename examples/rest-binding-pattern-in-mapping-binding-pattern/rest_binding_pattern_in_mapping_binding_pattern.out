@@ -1,0 +1,5 @@
+$ bal rest_binding_pattern_in_mapping_binding_pattern.bal
+Anne
+{"lname":"Frank","age":24,"country":"UK"}
+Anne
+{"lname":"Frank","id":1001,"age":24,"country":"UK"}

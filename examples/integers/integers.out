@@ -1,2 +1,2 @@
-bal run integers.bal
+$ bal run integers.bal
 65536

@@ -1,0 +1,2 @@
+description: This BBE introduces the use of mapping binding pattern in match statement, matching mapping values in match statement
+keywords:  ballerina, ballerina by example, bbe, binding pattern, mapping binding pattern, match statement

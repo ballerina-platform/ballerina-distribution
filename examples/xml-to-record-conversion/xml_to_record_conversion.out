@@ -1,0 +1,2 @@
+$ bal run xml_to_record_conversion.bal
+{"id":1,"purchased_item":[{"itemCode":"223345","item_count":1},{"itemCode":"223300","item_count":7}],"xmlns":"example.com","status":"paid"}

@@ -16,12 +16,11 @@ function multiFetch(string urlA, string urlB) returns Result {
 
     // The `wait` action can be used to wait for multiple named workers.
     return wait {a: WA, b: WB};
-
 }
 
 public function main() returns error? {
-    Result res =  multiFetch("https://postman-echo.com/get?lang=ballerina",
-                             "https://postman-echo.com/get?greeting=hello");
+    Result res = multiFetch("https://postman-echo.com/get?lang=ballerina",
+                            "https://postman-echo.com/get?greeting=hello");
     io:println(res);
     return;
 }

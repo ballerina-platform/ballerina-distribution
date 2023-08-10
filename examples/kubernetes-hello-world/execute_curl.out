@@ -1,0 +1,2 @@
+$ curl http://192.168.49.2:31360/helloWorld/sayHello
+Hello from Kubernetes!

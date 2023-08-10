@@ -1,0 +1,5 @@
+$ bal run list_sub_typing.bal
+[0,0,0]
+[false]
+["John","Mike",""]
+[["carrot","apple"],["avocado","egg"],["",""]]

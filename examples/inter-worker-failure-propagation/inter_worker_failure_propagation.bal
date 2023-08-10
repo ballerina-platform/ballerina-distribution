@@ -4,16 +4,14 @@ int counter = 0;
 
 function demo() returns int|error {
     worker A returns error? {
-        // Workers may need to call functions that can return an error.
-        // Pairing up of sends and receives guarantees that each send will be
-        // received, and vice-versa, provided neither sending nor receiving worker 
-        // has failed.
+        // Workers may need to call functions that can return an `error`. 
+        // Pairing up of sends and receives guarantees that each send will be received and vice-versa
+        // provided that the worker has failed on both sending and receiving.
         error? res = foo();
         if res is error {
             return res;
         }
         42 -> function;
-        return;
     }
 
     // Send to or receive from failed worker will propagate the failure.
@@ -28,7 +26,6 @@ function foo() returns error? {
     }
 
     counter += 1;
-    return;
 }
 
 public function main() returns error? {
@@ -37,6 +34,4 @@ public function main() returns error? {
 
     int b = check demo();
     io:println(b);
-
-    return;
 }

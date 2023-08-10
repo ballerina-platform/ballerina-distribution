@@ -1,2 +1,2 @@
-bal run consuming_services.bal
+$ bal run consuming_services.bal
 200

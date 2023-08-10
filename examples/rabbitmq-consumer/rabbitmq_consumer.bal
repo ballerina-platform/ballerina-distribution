@@ -1,21 +1,19 @@
 import ballerina/log;
 import ballerinax/rabbitmq;
 
-listener rabbitmq:Listener channelListener =
-        new(rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
+public type Order record {
+    int orderId;
+    string productName;
+    decimal price;
+    boolean isValid;
+};
 
-// The consumer service listens to the "MyQueue" queue.
-// The `ackMode` is by default rabbitmq:AUTO_ACK where messages are acknowledged
-// immediately after consuming.
-@rabbitmq:ServiceConfig {
-    queueName: "MyQueue"
-}
-// Attaches the service to the listener.
-service rabbitmq:Service on channelListener {
-    remote function onMessage(rabbitmq:Message message) {
-        string|error messageContent = string:fromBytes(message.content);
-        if messageContent is string {
-            log:printInfo("Received message: " + messageContent);
+// The consumer service listens to the "OrderQueue" queue.
+service "OrderQueue" on new rabbitmq:Listener(rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT) {
+
+    remote function onMessage(Order 'order) returns error? {
+        if 'order.isValid {
+            log:printInfo(string `Received valid order for ${'order.productName}`);
         }
     }
 }

@@ -1,7 +1,6 @@
 import ballerina/http;
 
-// Service-level [CORS config](https://docs.central.ballerina.io/ballerina/http/latest/records/CorsConfig) applies
-// globally to each `resource`.
+// The service-level CORS config applies globally to each `resource`.
 @http:ServiceConfig {
     cors: {
         allowOrigins: ["http://www.m3.com", "http://www.hello.com"],
@@ -13,8 +12,7 @@ import ballerina/http;
 }
 service /crossOriginService on new http:Listener(9092) {
 
-    // Resource-level [CORS config](https://docs.central.ballerina.io/ballerina/http/latest/records/CorsConfig)
-    // overrides the service-level CORS headers.
+    // The resource-level CORS config overrides the service-level CORS headers.
     @http:ResourceConfig {
         cors: {
             allowOrigins: ["http://www.bbc.com"],
@@ -22,13 +20,13 @@ service /crossOriginService on new http:Listener(9092) {
             allowHeaders: ["X-Content-Type-Options", "X-PINGOTHER"]
         }
     }
-    resource function get company() returns json {
-        return {"type": "middleware"};
+    resource function get company() returns string {
+        return "middleware";
     }
 
     // Since there are no resource-level CORS configs defined here, the global
     // service-level CORS configs will be applied to this resource.
-    resource function post lang() returns json {
-        return {"lang": "Ballerina"};
+    resource function post lang(@http:Payload string lang) returns string {
+        return lang;
     }
 }

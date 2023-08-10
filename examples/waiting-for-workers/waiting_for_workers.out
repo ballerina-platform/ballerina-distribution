@@ -1,4 +1,4 @@
-bal run waiting_for_workers.bal
+$ bal run waiting_for_workers.bal
 Initializing
 In function worker
 In worker A

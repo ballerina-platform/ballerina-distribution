@@ -1,4 +1,4 @@
-bal run named_worker_return_values.bal
+$ bal run named_worker_return_values.bal
 In function worker
 52
 In function worker

@@ -1,0 +1,30 @@
+$ curl -v http://localhost:9090/multiparts/encoder
+> GET /multiparts/encoder HTTP/1.1
+> Host: localhost:9090
+> User-Agent: curl/7.64.1
+> Accept: */*
+>
+< HTTP/1.1 200 OK
+< content-type: multipart/form-data; boundary=bd7547c98465dae2
+< date: Wed, 23 Sep 2020 10:20:17 +0530
+< server: ballerina
+< content-length: 398
+<
+--bd7547c98465dae2
+content-disposition: form-data;name="json part"
+content-type: application/json
+content-id: 0
+
+{"name":"wso2"}
+--bd7547c98465dae2
+content-disposition: form-data;name="xml file part"
+content-type: application/xml
+content-id: 1
+
+<ballerinalang>
+    <version>0.963</version>
+    <test>test xml file to be used as a file part</test>
+</ballerinalang>
+--bd7547c98465dae2--
+* Connection #0 to host localhost left intact
+* Closing connection 0

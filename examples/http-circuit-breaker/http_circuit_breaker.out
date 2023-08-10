@@ -1,0 +1,2 @@
+$ bal run http_circuit_breaker.bal
+

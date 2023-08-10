@@ -17,13 +17,15 @@ public function main() returns error? {
 
     // Writes the given array of lines to a file.
     check io:fileWriteLines(textFilePath2, lines);
-    // If the write operation was successful, then, performs a read operation to read the lines as an array.
+    // If the write operation was successful, then,
+    // performs a read operation to read the lines as an array.
     string[] readLines = check io:fileReadLines(textFilePath2);
     io:println(readLines);
 
     // Writes the given stream of lines to a file.
     check io:fileWriteLinesFromStream(textFilePath3, lines.toStream());
-    // If the write operation was successful, then, performs a read operation to read the lines as a stream.
+    // If the write operation was successful, then,
+    // performs a read operation to read the lines as a stream.
     stream<string, io:Error?> lineStream = check
                                     io:fileReadLinesAsStream(textFilePath3);
     // Iterates through the stream and prints the content.

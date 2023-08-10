@@ -1,0 +1,4 @@
+$ bal run aggregation.bal
+[["A","A","B"],["B"]]
+[{"itemName":"A","quantity":3},{"itemName":"B","quantity":6}]
+196.2

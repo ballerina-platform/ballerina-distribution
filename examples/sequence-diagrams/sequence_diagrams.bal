@@ -2,12 +2,10 @@ import ballerina/http;
 import ballerina/io;
 
 // A function can be viewed as a sequence diagram.
-// The diagram has a lifeline (vertical line) for each worker (both named 
-// worker and function's default worker).
+// The diagram has a lifeline (vertical line) for each worker (both named worker and function's default worker).
 public function main() returns error? {
     // The diagram also has a lifeline for each client object parameter or variable in 
-    // the initialization section, representing the remote system to which the client  
-    // object is sending messages.
+    // the initialization section, representing the remote system to which the client object is sending messages.
     http:Client cl = check new ("https://www.mocky.io");
 
     // Each remote method call on a client object is represented as a horizontal line

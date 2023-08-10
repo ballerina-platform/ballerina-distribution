@@ -1,0 +1,7 @@
+$ bal run error_binding_pattern.bal
+Cause: error("Database Error")
+Info: 20
+Fatal: deadlock condition
+Message: Transaction Failure
+Cause: error("Database Error")
+Code: 20

@@ -1,2 +1,2 @@
-bal run http_expect_header.bal
+$ bal run http_expect_header.bal
 time = 2021-01-21 20:31:28,347 level = INFO  module = "" message = "TEST 100 CONTINUE"

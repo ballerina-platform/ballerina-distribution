@@ -1,2 +1,2 @@
-bal run type_definitions.bal
+$ bal run type_definitions.bal
 {"x":"foo"}

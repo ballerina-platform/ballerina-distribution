@@ -16,7 +16,6 @@ isolated function set(R r) returns R {
     // is `final` and the type is a subtype of `readonly` or
     // `isolated object {}`.
     r.v = N;
-
     return r;
 }
 
@@ -24,7 +23,6 @@ R r = {v: 0};
 
 // This is not an `isolated` function.
 function setGlobal(int n) {
-
     r.v = n;
 }
 

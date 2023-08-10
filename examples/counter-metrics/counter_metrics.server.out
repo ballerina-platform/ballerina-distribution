@@ -1,7 +1,4 @@
-# To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `bal run` command below with the `--observability-included` build time flag and the `Config.toml` runtime configuration file.
-BAL_CONFIG_FILES=Config.toml bal run --observability-included counter_metrics.bal
-
+$ BAL_CONFIG_FILES=Config.toml bal run --observability-included counter_metrics.bal
 ballerina: started Prometheus HTTP listener 0.0.0.0:9797
 ------------------------------------------
 Global Counter = 1

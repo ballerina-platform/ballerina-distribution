@@ -31,10 +31,12 @@ dependencies {
     testImplementation "net.lingala.zip4j:zip4j:${netLingalaZip4jVersion}"
     testImplementation "commons-io:commons-io:${commonsIoVersion}"
     testImplementation "org.apache.commons:commons-lang3:${commonsLang3Version}"
+    testImplementation "org.ballerinalang:ballerina-lang:${ballerinaLangVersion}"
     testImplementation "org.ballerinalang:jballerina-debugger-integration-test:${ballerinaLangVersion}"
     testImplementation "org.ballerinalang:ballerina-test-utils:${ballerinaLangVersion}"
     testImplementation "org.eclipse.lsp4j:org.eclipse.lsp4j.debug:${lsp4jDebugVersion}"
     testImplementation "com.fasterxml.jackson.core:jackson-databind:2.12.3"
+    testImplementation "com.squareup.okhttp3:okhttp:3.14.0"
 
     jBallerinaDistribution project(path: ":ballerina", configuration: "jBallerinaDistribution")
     ballerinaDistribution project(path: ":ballerina", configuration: "ballerinaDistribution")
@@ -46,7 +48,6 @@ dependencies {
 task centralTests {
     dependsOn configurations.jBallerinaDistribution
     dependsOn configurations.ballerinaDistribution
-    dependsOn configurations.ballerinaLinuxDistribution
     dependsOn configurations.ballerinaLinuxDistribution
     dependsOn configurations.ballerinaWindowsDistribution
     test {
@@ -68,4 +69,41 @@ task centralTests {
     }
 }
 
-test.dependsOn centralTests
+
+ task checkURL {
+     doLast {
+         try {
+             URL url = new URL("${devIdpUrl}")
+             HttpURLConnection connection = (HttpURLConnection) url.openConnection()
+             connection.setRequestMethod("GET")
+             connection.connect()
+
+             int code = connection.getResponseCode()
+             if (code == 200) {
+                 logger.lifecycle("Connection to ${devIdpUrl} is successful. Running tests...")
+                 ext.isURLAvailable = true
+             } else {
+                 logger.lifecycle("Connection to ${devIdpUrl} is not successful. Skipping tests...")
+                 logger.lifecycle("-----------------------------------------")
+                 logger.lifecycle(" WARNING: Skipping the project api tests")
+                 logger.lifecycle("-----------------------------------------")
+                 ext.isURLAvailable = false
+             }
+         } catch(Exception ex) {
+             logger.lifecycle("Connection to ${devIdpUrl} is not successful. Exception while connecting to " +
+                     "${devIdpUrl}. Skipping tests...")
+             logger.lifecycle("-----------------------------------------")
+             logger.lifecycle(" WARNING: Skipping the project api tests")
+             logger.lifecycle("-----------------------------------------")
+             ext.isURLAvailable = false
+         }
+     }
+ }
+
+ test {
+     dependsOn checkURL
+     onlyIf {
+         checkURL.isURLAvailable
+     }
+     dependsOn centralTests
+ }

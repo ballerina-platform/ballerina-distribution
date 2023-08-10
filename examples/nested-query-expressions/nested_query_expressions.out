@@ -1,0 +1,2 @@
+$ bal run nested_query_expressions.bal
+["Alex vs Ranjan","Alex vs Bob","John vs Ranjan","John vs Bob"]

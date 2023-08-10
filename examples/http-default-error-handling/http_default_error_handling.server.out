@@ -1,0 +1,4 @@
+$ bal run http_default_error_handling.bal
+
+error: Something wrong with the connection
+cause: Connection refused: localhost/127.0.0.1:9091

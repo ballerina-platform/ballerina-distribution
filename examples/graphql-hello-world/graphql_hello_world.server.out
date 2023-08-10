@@ -1,1 +1,1 @@
-bal run graphql_hello_world.bal
+$ bal run graphql_hello_world.bal

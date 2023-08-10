@@ -2,7 +2,7 @@ name: Generate Ballerina By Examples
 on:
     push:
         branches:
-            - 'master'
+            - '2201.0.x'
         paths:
             - 'examples/**'
 jobs:

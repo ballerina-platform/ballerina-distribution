@@ -1,0 +1,2 @@
+$ bal run http_client_header_parameter.bal
+Received albums: [{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]

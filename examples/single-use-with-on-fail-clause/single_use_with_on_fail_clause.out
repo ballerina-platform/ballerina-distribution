@@ -1,0 +1,2 @@
+$ bal run single_use_with_on_fail_clause.bal
+{ballerina/lang.int}NumberParsingError

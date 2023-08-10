@@ -1,2 +1,2 @@
-bal run isolated_methods.bal
+$ bal run isolated_methods.bal
 2

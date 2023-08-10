@@ -1,0 +1,2 @@
+$ bal run xml_json_conversion.bal
+{"Store":{"name":"Anne","address":{"street":"Main","city":"94"},"codes":["4","8"],"@id":"AST"}}

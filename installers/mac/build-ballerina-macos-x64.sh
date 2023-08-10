@@ -8,6 +8,10 @@ function printUsage() {
     echo "        version of the ballerina distribution"
     echo "    -p (--path)"
     echo "        path of the ballerina distributions"
+    echo "    -a (--arch)"
+    echo "        architecture of the ballerina distribution"
+    echo "        If not specified : x86"
+    echo "        arm : aarch64/arm64"
     echo "    -d (--dist)"
     echo "        ballerina distribution type either of the followings"
     echo "        If not specified both distributions will be built"
@@ -31,6 +35,11 @@ case ${key} in
     ;;
     -p|--path)
     DIST_PATH="$2"
+    shift # past argument
+    shift # past value
+    ;;
+    -a|--arch)
+    ARCH="$2"
     shift # past argument
     shift # past value
     ;;
@@ -62,9 +71,22 @@ if [ -z "$DISTRIBUTION" ]; then
     BUILD_ALL_DISTRIBUTIONS=true
 fi
 
+if [ -z "$ARCH" ]; then
+    BALLERINA_PLATFORM=ballerina-${BALLERINA_VERSION}-macos
+else
+    if [ "$ARCH" = "arm" ]; then
+        BALLERINA_PLATFORM=ballerina-${BALLERINA_VERSION}-macos-arm
+    else
+        echo "Please enter a valid architecture for the ballerina pack"
+        printUsage
+        exit 1
+    fi
+fi
+
+
 BALLERINA_DISTRIBUTION_LOCATION=${DIST_PATH}
-BALLERINA_PLATFORM=ballerina-${BALLERINA_VERSION}-macos
 BALLERINA_INSTALL_DIRECTORY=ballerina-${BALLERINA_VERSION}
+BALLERINA_DIST_VERSION="$(cut -d'-' -f1 <<<${BALLERINA_VERSION})"
 
 echo "Build started at" $(date +"%Y-%m-%d %H:%M:%S")
 
@@ -85,7 +107,7 @@ function createPackInstallationDirectory() {
     rm -rf target/darwin
     cp -r darwin target/darwin
 
-    sed -i -e 's/__BALLERINA_VERSION__/'${BALLERINA_VERSION}'/g' target/darwin/scripts/postinstall
+    sed -i -e 's/__BALLERINA_VERSION__/'${BALLERINA_DIST_VERSION}'/g' target/darwin/scripts/postinstall
     chmod -R 755 target/darwin/scripts/postinstall
 
     sed -i -e 's/__BALLERINA_VERSION__/'${BALLERINA_VERSION}'/g' target/darwin/Distribution
@@ -135,7 +157,7 @@ function createBallerinaPlatform() {
     extractPack "$BALLERINA_DISTRIBUTION_LOCATION/$BALLERINA_PLATFORM.zip" ${BALLERINA_PLATFORM}
     createPackInstallationDirectory true
     buildPackage
-    buildProduct ballerina-${BALLERINA_VERSION}-macos-x64.pkg
+    buildProduct ${BALLERINA_PLATFORM}-x64.pkg
 }
 
 deleteTargetDirectory

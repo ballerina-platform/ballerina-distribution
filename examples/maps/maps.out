@@ -1,2 +1,5 @@
-bal run maps.bal
-1
+$ bal run maps.bal
+23
+23
+Tom : 23
+Anne : 19

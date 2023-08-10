@@ -1,6 +1,5 @@
-// Port on which to run the service.
-configurable int port = 8080;
+// The host of the database server. The default value is `localhost`.
+configurable string dbHost = "localhost";
 
-//`configurable string password = ?;`
-//
 // This specifies that the password must be supplied in a configuration file.
+configurable string password = ?;

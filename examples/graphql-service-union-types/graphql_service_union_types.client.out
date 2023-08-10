@@ -1,0 +1,2 @@
+$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ search(keyword: \"Walter\") { ... on Profile { name age } ... on Address { number city } } }" }' 'http://localhost:9090/graphql'
+{"data":{"search":[{"name":"Walter White", "age":50}, {"number":308, "city":"Albuquerque"}]}}

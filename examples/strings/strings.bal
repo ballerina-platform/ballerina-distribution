@@ -7,10 +7,8 @@ public function main() {
 
     // String concatenation uses `+` operator.
     string greeting = "Hello" + grin;
-
     io:println(greeting);
 
     // `greeting[1]` accesses character at index 1 (zero-based).
     io:println(greeting[1]);
-
 }

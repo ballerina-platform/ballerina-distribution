@@ -1,2 +1,2 @@
-bal run alternate_wait.bal
+$ bal run alternate_wait.bal
 {"lang":"ballerina"}

@@ -17,7 +17,7 @@ kill_service() {
 cd ${1}
 
 # run ballerina file as background process
-my_array=($(${2} run --experimental ${3} ${6})) &
+my_array=($(${2} run ${3} ${6})) &
 
 sleep 10
 

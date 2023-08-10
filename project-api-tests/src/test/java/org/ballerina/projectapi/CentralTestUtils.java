@@ -18,9 +18,13 @@
 
 package org.ballerina.projectapi;
 
+import io.ballerina.projects.util.ProjectConstants;
+import io.ballerina.projects.util.ProjectUtils;
 import org.testng.Assert;
 
 import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -28,6 +32,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -60,9 +65,12 @@ public class CentralTestUtils {
     static final String COMMON_VERSION = "1.0.0";
     static final String TEST_PREFIX = "test_";
     static final String ANY_PLATFORM = "any";
-    static final String JAVA11_PLATFORM = "java11";
+    static final String JAVA_PLATFORM = "java17";
     static final String BALLERINA_ARTIFACT_TYPE = "bala";
     static final String OUTPUT_NOT_CONTAINS_EXP_MSG = "build output does not contain expected message:";
+    static final String PULLED_FROM_CENTRAL_MSG = " pulled from central successfully";
+    static final String PACKAGE_NAME_SEPARATOR = "_";
+    static final String PACKAGE_PATH_SEPARATOR = "/";
 
     /**
      * Generate random package name.
@@ -101,6 +109,15 @@ public class CentralTestUtils {
     private static String getToken() {
         // staging and dev both has the same access token
         return System.getenv("devCentralToken");
+    }
+
+    /**
+     * Get token of ballerina-bot required to dispatch GitHub workflows.
+     *
+     * @return token required to dispatch GitHub workflows.
+     */
+    public static String getBallerinaBotWorkflow() {
+        return System.getenv("ballerinaBotWorkflow");
     }
 
     /**
@@ -371,5 +388,85 @@ public class CentralTestUtils {
         if (!buildOutput.contains(expectedLog)) {
             Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedLog);
         }
+    }
+
+    /**
+     * Push a bala to central using bala path.
+     *
+     * @param tempWorkspaceDirectory Path to workspace
+     * @param projectName Project name
+     * @param envVariables Environmental variables
+     * @param orgName Organization name
+     * @param packageName package
+     * @param version Package Version
+     * @param balaPath Path to the bala file to be pushed
+     * @throws IOException
+     * @throws InterruptedException
+     */
+    public static void testPushPackageUsingBalaPath(Path tempWorkspaceDirectory, String projectName,
+                                       Map<String, String> envVariables, String orgName,
+                                       String packageName, String version, String balaPath)
+            throws IOException, InterruptedException {
+        Process build = executePushCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory.resolve(projectName),
+                new LinkedList<>(Collections.singletonList(balaPath)), envVariables);
+        String buildErrors = getString(build.getErrorStream());
+        if (!buildErrors.isEmpty()) {
+            Assert.fail(OUTPUT_CONTAIN_ERRORS + buildErrors);
+        }
+        String buildOutput = getString(build.getInputStream());
+        if (!buildOutput.contains(getPushedToCentralLog(orgName, packageName, version))) {
+            Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + getPushedToCentralLog(orgName, packageName));
+        }
+    }
+
+    public static void deleteBalaOfPackage(String orgName, String packageName) {
+        Path balaPath = ProjectUtils.createAndGetHomeReposPath().resolve(ProjectConstants.REPOSITORIES_DIR)
+                .resolve(ProjectConstants.CENTRAL_REPOSITORY_CACHE_NAME).resolve(ProjectConstants.BALA_DIR_NAME)
+                .resolve(orgName);
+        Path packagePath = balaPath.resolve(packageName);
+        ProjectUtils.deleteDirectory(packagePath);
+    }
+
+    public static List<Path> getFileListByExtension(Path filesDirectory, String extension) throws IOException {
+        try (Stream<Path> packagesPathWalk = Files.walk(filesDirectory)) {
+            return packagesPathWalk
+                    .filter(Files::isRegularFile)
+                    .filter(p -> p.toString().endsWith(extension))
+                    .collect(Collectors.toList());
+        }
+    }
+
+    public static void replacePackageName(List<Path> filesToChange, String packageName,
+                                          String randomPackageName) throws IOException {
+        for (Path fileToChange : filesToChange) {
+            String oldContent = "";
+            BufferedReader reader = new BufferedReader(new FileReader(fileToChange.toFile()));
+            String line = reader.readLine();
+            while (line != null) {
+                oldContent = oldContent + line + System.lineSeparator();
+                line = reader.readLine();
+            }
+            if (oldContent.contains(packageName)) {
+                String newContent = oldContent.replaceAll(packageName, randomPackageName);
+                FileWriter writer = new FileWriter(fileToChange.toFile());
+                writer.write(newContent);
+                writer.close();
+            }
+            reader.close();
+        }
+    }
+
+    public static String getNewDirectoryName(String currentPackageName, String randomSuffix) {
+        String packageNameSplit = Arrays.stream(currentPackageName.split("\\.")).
+                filter((b) -> b.startsWith("Package")).toArray()[0].toString();
+        return currentPackageName.replace(packageNameSplit, packageNameSplit + PACKAGE_NAME_SEPARATOR + randomSuffix);
+    }
+
+    public static void replaceRandomPackageName(Path tempWorkspaceDirectory, String randomPackageName,
+                                                String packageName) throws IOException {
+        List<Path> balFiles = CentralTestUtils.getFileListByExtension(tempWorkspaceDirectory, "bal");
+        List<Path> tomlFiles = CentralTestUtils.getFileListByExtension(tempWorkspaceDirectory, "toml");
+        CentralTestUtils.replacePackageName(balFiles, packageName, randomPackageName);
+        CentralTestUtils.replacePackageName(tomlFiles, packageName, randomPackageName);
     }
 }

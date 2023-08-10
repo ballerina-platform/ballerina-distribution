@@ -1,0 +1,3 @@
+$ kubectl get pods
+NAME                                          READY   STATUS    RESTARTS   AGE
+wso2-hello-0--deployment-7d4d56457b-7jlzx       1/1     Running   0          57s

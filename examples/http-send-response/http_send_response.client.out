@@ -1,0 +1,13 @@
+$ curl http://localhost:9090/albums -v
+> GET /albums HTTP/1.1
+> Host: localhost:9090
+> User-Agent: curl/7.64.1
+> Accept: */*
+>
+< HTTP/1.1 200 OK
+< content-type: application/json
+< content-length: 95
+< server: ballerina
+< date: Mon, 14 Nov 2022 15:08:04 +0530
+<
+[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]

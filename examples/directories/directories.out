@@ -1,4 +1,4 @@
-bal run directories.bal
+$ bal run directories.bal
 The foo/bar directory created successfully.
 Is foo directory exist: true
 The foo/bar directory copied successfully.

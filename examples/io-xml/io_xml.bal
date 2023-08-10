@@ -7,7 +7,8 @@ public function main() returns error? {
 
     // Writes the given XML to a file.
     check io:fileWriteXml(xmlFilePath, xmlContent);
-    // If the write operation was successful, then, performs a read operation to read the XML content.
+    // If the write operation was successful, then,
+    // performs a read operation to read the XML content.
     xml readXml = check io:fileReadXml(xmlFilePath);
     io:println(readXml);
 }

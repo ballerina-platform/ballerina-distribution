@@ -1,0 +1,4 @@
+maxPayload = 3.21
+acceptTypes = ["application/xml", "application/json", "text/plain"]
+admin = {username = "admin", password = "password"}
+users = [{username = "John", password = "abc123"}, {username = "Bob", password = "cde456"}]

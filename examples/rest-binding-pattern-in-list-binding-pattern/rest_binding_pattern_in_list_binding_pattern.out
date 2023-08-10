@@ -1,0 +1,4 @@
+$ bal run rest_binding_pattern_in_list_binding_pattern.bal
+1.2
+2.3
+[3.4,4.5]

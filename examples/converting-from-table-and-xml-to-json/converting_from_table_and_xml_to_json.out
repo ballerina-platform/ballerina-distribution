@@ -1,0 +1,5 @@
+$ bal run converting_from_table_and_xml_to_json.bal 
+true
+[{"id":1,"name":"John"},{"id":2,"name":"Sam"}]
+true
+<book>The Lost World</book>

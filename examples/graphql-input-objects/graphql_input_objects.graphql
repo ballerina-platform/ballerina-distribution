@@ -1,0 +1,5 @@
+mutation {
+    addProfile(newProfile: { name: "Walter White", age: 50 }) {
+        id
+    }
+}

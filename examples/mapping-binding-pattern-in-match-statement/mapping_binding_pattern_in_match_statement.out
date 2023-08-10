@@ -1,0 +1,4 @@
+$ bal run mapping_binding_pattern_in_match_statement.bal
+3, 20
+3, 20, {"seconds":40,"milli-seconds":500}
+3, 20

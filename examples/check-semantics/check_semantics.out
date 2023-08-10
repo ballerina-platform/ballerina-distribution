@@ -1,4 +1,4 @@
-bal run check_semantics.bal
+$ bal run check_semantics.bal
 OK
 OK
 error("not OK")

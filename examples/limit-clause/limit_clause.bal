@@ -18,8 +18,6 @@ public function main() {
                       order by e.salary descending
                       // The `limit` clause limits the number of output items to 3.
                       limit 3
-
-
                       select e;
 
     foreach var emp in top3 {

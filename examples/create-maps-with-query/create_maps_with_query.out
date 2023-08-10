@@ -1,0 +1,2 @@
+$ bal run create_maps_with_query.bal
+{"John":100,"Jane":150,"Fred":200,"Bobby":300,"Cassie":250}

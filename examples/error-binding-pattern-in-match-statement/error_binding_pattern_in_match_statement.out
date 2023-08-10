@@ -1,0 +1,4 @@
+$ bal run error_binding_pattern_in_match_statement.bal
+Matched Generic Error with message:Generic Error and code:20
+Matched DatabaseError with code:2
+Matched NetworkError with message:Bad Request, type:http error, phase:application and elapsedTime:338

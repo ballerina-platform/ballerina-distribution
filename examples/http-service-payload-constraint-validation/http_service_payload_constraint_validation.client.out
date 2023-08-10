@@ -1,0 +1,19 @@
+$ curl -v http://localhost:9090/albums -H "Content-type:application/json" -d "{\"title\": \"Sarah Vaughan and Clifford Brown\", \"artist\": \"Sarah Vaughan\"}"
+*   Trying 127.0.0.1:9090...
+* Connected to localhost (127.0.0.1) port 9090 (#0)
+> POST /albums HTTP/1.1
+> Host: localhost:9090
+> User-Agent: curl/7.79.1
+> Accept: */*
+> Content-type:application/json
+> Content-Length: 72
+> 
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 400 Bad Request
+< content-type: text/plain
+< content-length: 83
+< server: ballerina
+< date: Thu, 8 Dec 2022 11:13:19 +0530
+< 
+* Connection #0 to host localhost left intact
+payload validation failed: Validation failed for '$.title:maxLength' constraint(s).

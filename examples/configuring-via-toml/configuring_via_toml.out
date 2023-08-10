@@ -1,0 +1,6 @@
+$ bal run configuring_via_toml.bal
+maximum payload (in MB): 3.21
+accepted content types: ["application/xml","application/json","text/plain"]
+HTTP version: 1.0
+admin details: {"username":"admin","password":"password"}
+users: [{"username":"John","password":"abc123"},{"username":"Bob","password":"cde456"}]

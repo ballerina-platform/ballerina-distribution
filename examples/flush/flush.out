@@ -1,0 +1,3 @@
+$ bal run flush.bal
+Received integer 10 from worker A
+Result from worker B : error("Error in worker B")

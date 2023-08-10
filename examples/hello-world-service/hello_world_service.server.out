@@ -1,1 +1,1 @@
-bal run hello_world_service.bal
+$ bal run hello_world_service.bal

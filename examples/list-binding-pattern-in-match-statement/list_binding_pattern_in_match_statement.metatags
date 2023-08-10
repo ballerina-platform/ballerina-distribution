@@ -1,0 +1,2 @@
+description: This BBE introduces the use of a list binding pattern to match the list items in a match statement.
+keywords:  ballerina, ballerina by example, bbe, binding pattern, list binding pattern, match statement, list binding pattern in match statement

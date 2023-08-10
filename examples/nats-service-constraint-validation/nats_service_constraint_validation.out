@@ -1,0 +1,4 @@
+$ bal run nats_service_constraint_validation.bal
+time = 2022-12-05T08:44:43.093+05:30 level = INFO module = "" message = "Received valid order for Sport shoe"
+time = 2022-12-05T08:45:03.136+05:30 level = ERROR module = "" message = "Payload validation failed" error = "Validation failed for \'$.productName:maxLength\' constraint(s)."
+time = 2022-12-05T08:45:19.702+05:30 level = INFO module = "" message = "Received valid order for Sport shoe"

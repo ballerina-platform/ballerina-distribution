@@ -1,0 +1,19 @@
+$ bal build --cloud="k8s"
+
+Compiling source
+        wso2/hello:0.1.0
+
+Generating executable
+
+Generating artifacts...
+
+        @kubernetes:Service                      - complete 1/1
+        @kubernetes:Deployment                   - complete 1/1
+        @kubernetes:HPA                          - complete 1/1
+        @kubernetes:Docker                       - complete 2/2 
+
+        Execute the below command to deploy the Kubernetes artifacts: 
+        kubectl apply -f /home/anjana/bbe-make/k8s/target/kubernetes/hello
+
+        Execute the below command to access service via NodePort: 
+        kubectl expose deployment hello-deployment --type=NodePort --name=hello-svc-local

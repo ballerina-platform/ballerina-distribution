@@ -1,0 +1,2 @@
+$ bal run http_client_basic_auth.bal
+[{"title":"Blue Train","artist":"John Coltrane"},{"title":"Jeru","artist":"Gerry Mulligan"}]

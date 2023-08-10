@@ -1,3 +1,2 @@
-# Invoke the service.
-curl http://localhost:9090/hello
-200 OK
+$ curl http://localhost:9095/info/albums
+[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]

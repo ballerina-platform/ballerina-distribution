@@ -1,0 +1,134 @@
+openapi: 3.0.0
+info:
+  contact:
+    email: dev-platform@stripe.com
+    name: Stripe Dev Platform Team
+    url: https://stripe.com
+  description: The Stripe REST API. Please see https://stripe.com/docs/api for more
+    details.
+  termsOfService: https://stripe.com/us/terms/
+  title: Stripe API
+  version: '2020-08-27'
+  x-stripeSpecFilename: spec3
+
+paths:
+  "/v1/payment_methods/{payment_method}":
+    get:
+      description: "Retrieves a PaymentMethod object."
+      operationId: GetPaymentMethodsPaymentMethod
+      tags:
+        - "Payment_Methods"
+      security:
+        - basicAuth: []
+      parameters:
+        - in: path
+          name: payment_method
+          description: Payment Method
+          required: true
+          schema:
+            maxLength: 5000
+            type: string
+          style: simple
+        - in: query
+          name: payment method name
+          description: Payment Method
+          required: true
+          schema:
+            maxLength: 5000
+            type: string
+          style: deepObject
+        - in: header
+          name: X-LIMIT
+          description: limit of the payment
+          required: true
+          schema:
+            maxLength: 5000
+            type: string
+          style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: Successful response.
+  "/v1/customer/{customer}":
+    post:
+      description: "Creates a new customer object."
+      operationId: PostCustomers
+      tags:
+        - "Customers"
+      parameters:
+        - in: path
+          name: customer
+          description: Customer ID
+          schema:
+            type: string
+          required: true
+      security:
+        - basicAuth: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            encoding:
+              address:
+                style: deepObject
+                explode: true
+            schema:
+              properties:
+                address:
+                  $ref: "#/components/schemas/customer_address"
+                balance:
+                  description: An integer amount in %s that represents the customer's
+                    current balance, which affect the customer's future invoices.
+                    A negative amount represents a credit that decreases the amount
+                    due on an invoice; a positive amount increases the amount due
+                    on an invoice.
+                  type: integer
+        description: Customer Details
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/customer"
+          description: Successful response.
+components:
+  schemas:
+    customer_address:
+      properties:
+        city:
+          maxLength: 5000
+          type: string
+        country:
+          maxLength: 5000
+          type: string
+        line1:
+          maxLength: 5000
+          type: string
+        line2:
+          maxLength: 5000
+          type: string
+        postal_code:
+          maxLength: 5000
+          type: string
+        state:
+          maxLength: 5000
+          type: string
+      title: optional_fields_address
+      type: object
+    customer:
+      properties:
+        address:
+          anyOf:
+            - "$ref": "#/components/schemas/customer_address"
+          description: The customer's address.
+          nullable: true
+        name:
+          type: string
+      type: object
+  securitySchemes:
+    basicAuth:
+      description: 'Basic HTTP authentication. Allowed headers-- Authorization: Basic
+        <api_key> | Authorization: Basic <base64 hash of `api_key:`>'
+      scheme: basic
+      type: http

@@ -1,0 +1,2 @@
+$ curl -X POST -H "Content-type: application/json" -d '{ "query": "mutation { addProfile(newProfile: { name: \"Walter White\", age: 50 }) { id } }" }' 'http://localhost:9090/graphql'
+{"data":{"addProfile":{"id":0}}}

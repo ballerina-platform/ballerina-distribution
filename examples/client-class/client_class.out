@@ -1,0 +1,4 @@
+$ bal run client_class.bal
+[{"title":"Blue Train","artist":"John Coltrane"},{"title":"Jeru","artist":"Gerry Mulligan"}]
+
+POST request: {"title":"Sarah Vaughan and Clifford Brown","artist":"Sarah Vaughan"}

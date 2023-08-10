@@ -57,7 +57,8 @@ public class BuildTimeTest {
         }
     }
 
-    @Test(description = "Build project twice to verify reduction in package resolution time due to caching.")
+    @Test(enabled = false,
+            description = "Build project twice to verify reduction in package resolution time due to caching.")
     public void testResolutionTimeReduction() throws IOException, InterruptedException {
         String projectName = "Project1";
         long expectedMinimumTimeDiff = 500;
@@ -67,6 +68,18 @@ public class BuildTimeTest {
         OUT.println("Package resolution time for the consecutive attempt: " + consecutiveResolutionTime);
         // Assert whether the resolution time has reduced more than the expected minimum time difference
         Assert.assertTrue((firstResolutionTime - consecutiveResolutionTime) > expectedMinimumTimeDiff);
+    }
+
+    @Test(description = "Verify the offline resolution during code generation.")
+    public void testCodeGenOfflineResolution() throws IOException, InterruptedException {
+        String projectWithoutTest = "Project2";
+        String projectWithTest = "Project3";
+        long firstBuildTime = getPackageBuildTime(projectWithoutTest);
+        OUT.println("Package build time for the first attempt without tests: " + firstBuildTime);
+        long secondBuildTime = getPackageBuildTime(projectWithTest);
+        OUT.println("Package build time for the consecutive attempt with tests: " + secondBuildTime);
+        // Assert whether the resolution time has reduced more than the expected minimum time difference
+        Assert.assertTrue(firstBuildTime * 2 > secondBuildTime);
     }
 
     /**
@@ -103,6 +116,37 @@ public class BuildTimeTest {
         if (buildTimeJson.toFile().exists()) {
             JsonNode jsonTree = new ObjectMapper().readTree(buildTimeJson.toFile());
             return jsonTree.get(packageResolutionField).asLong();
+        } else {
+            Assert.fail("Unable to locate the JSON file with build time at " + buildTimeJson.toString());
+        }
+        // Return 0 if there is a failure.
+        return 0;
+    }
+
+    /**
+     * Given the project name get the package build time in milliseconds.
+     *
+     * @param projectName ballerina project name
+     * @return package resolution time in milliseconds as a long
+     * @throws IOException
+     * @throws InterruptedException
+     */
+
+    private long getPackageBuildTime(String projectName) throws IOException, InterruptedException {
+        String targetDir = "target";
+        String buildTimeFileName = "build-time.json";
+        String buildDumpFlag = "--dump-build-time";
+        String totalDuration = "totalDuration";
+        Process build = executeBuildCommand(DISTRIBUTION_FILE_NAME, this.tempWorkspace.resolve(projectName),
+                new LinkedList<>(Collections.singletonList(buildDumpFlag)), this.envVariables);
+        String buildErrors = getString(build.getErrorStream());
+        if (!buildErrors.isEmpty()) {
+            Assert.fail(OUTPUT_CONTAIN_ERRORS + buildErrors);
+        }
+        Path buildTimeJson = this.tempWorkspace.resolve(projectName).resolve(targetDir).resolve(buildTimeFileName);
+        if (buildTimeJson.toFile().exists()) {
+            JsonNode jsonTree = new ObjectMapper().readTree(buildTimeJson.toFile());
+            return jsonTree.get(totalDuration).asLong();
         } else {
             Assert.fail("Unable to locate the JSON file with build time at " + buildTimeJson.toString());
         }

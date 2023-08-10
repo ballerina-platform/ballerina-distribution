@@ -1,0 +1,2 @@
+$ bal run kafka_client_consumer_sasl.bal
+Received valid order for Sport shoe

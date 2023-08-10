@@ -1,98 +1,59 @@
-import ballerina/io;
-import ballerinax/mysql;
+import ballerina/http;
 import ballerina/sql;
+import ballerinax/mysql;
+import ballerinax/mysql.driver as _;
 
-// The `Student` record to represent the database table.
-type Student record {
-    int id;
-    int age;
-    string name;
-};
+// The `Order` record to load records from `sales_order` table.
+type Order record {|
+    string id;
+    @sql:Column {name: "order_date"}
+    string orderDate;
+    @sql:Column {name: "product_id"}
+    string productId;
+    int quantity;
+|};
 
-public function main() returns error? {
-    // Runs the prerequisite setup for the example.
-    check beforeExample();
+type Orders record {|
+    int total;
+    Order[] orders;
+|};
 
-    // Initializes the MySQL client.
-    mysql:Client mysqlClient = check new (user = "root", 
-            password = "Test@123", database = "MYSQL_BBE");
+service / on new http:Listener(8080) {
+    private final mysql:Client db;
 
-    // Creates a parameterized query to invoke the procedure.
-    string name = "George";
-    int age = 24;
-    sql:ParameterizedCallQuery sqlQuery = 
-                                `CALL InsertStudent(${name}, ${age})`;
-
-    // Invokes the stored procedure `InsertStudent` with the `IN` parameters.
-    sql:ProcedureCallResult retCall = check mysqlClient->call(sqlQuery);
-    io:println("Call stored procedure `InsertStudent`." + 
-        "\nAffected Row count: ", retCall.executionResult?.affectedRowCount);
-    check retCall.close();
-
-    // Initializes the `INOUT` and `OUT` parameters.
-    sql:InOutParameter id = new (1);
-    sql:IntegerOutParameter totalCount = new;
-    sql:ParameterizedCallQuery sqlQuery2 = 
-                        `{CALL GetCount(${id}, ${totalCount})}`;
-
-    // The stored procedure with the `OUT` and `INOUT` parameters is invoked.
-    sql:ProcedureCallResult retCall2 = check mysqlClient->call(sqlQuery2);
-    io:println("Call stored procedure `GetCount`.");
-    io:println("Age of the student with id '1' : ", id.get(int));
-    io:println("Total student count: ", totalCount.get(int));
-    check retCall2.close();
-
-    // Invokes the stored procedure, which returns the data.
-    sql:ProcedureCallResult retCall3 = 
-            check mysqlClient->call(`{CALL GetStudents()}`, [Student]);
-    io:println("Call stored procedure `GetStudents`.");
-
-    // Processes the returned result stream.
-    stream<record {}, sql:Error?>? result = retCall3.queryResult;
-    if result is stream<record {}, sql:Error?> {
-        stream<Student, sql:Error?> studentStream =
-                <stream<Student, sql:Error?>>result;
-        check studentStream.forEach(function(Student student) {
-            io:println("Student details: ", student);
-        });
+    function init() returns error? {
+        // Initiate the mysql client at the start of the service. This will be used
+        // throughout the lifetime of the service.
+        self.db = check new ("localhost", "root", "Test@123", "MUSIC_STORE", 3306);
     }
-    check retCall3.close();
 
-    // Performs the cleanup after the example.
-    check afterExample(mysqlClient);
-}
+    resource function get orders/[string orderDate]() returns Orders|error {
+        // Initializes the `INOUT` and `OUT` parameters for the procedure call.
+        sql:DateValue filterDate = new (orderDate);
+        sql:IntegerOutParameter total = new ();
 
-// Initializes the database as a prerequisite to the example.
-function beforeExample() returns sql:Error? {
-    mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
+        // Call the `get_sales_order` stored procedure.
+        sql:ProcedureCallResult result =
+            check self.db->call(`{CALL get_sales_order(${filterDate}, ${total})}`, [Order]);
 
-    // Creates a database.
-    _ = check mysqlClient->execute(`CREATE DATABASE MYSQL_BBE`);
+        // Process procedure-call parameters.
+        int totalCount = check total.get();
 
-    // Creates a table in the database.
-    _ = check mysqlClient->execute(`CREATE TABLE MYSQL_BBE.Student
-            (id INT AUTO_INCREMENT, age INT, name VARCHAR(255),
-            PRIMARY KEY (id))`);
+        Order[] orders = [];
+        // Process procedure-call query results.
+        stream<record {}, error?>? resultStream = result.queryResult;
+        if resultStream !is () {
+            stream<Order, error?> orderStream = <stream<Order, error?>>resultStream;
+            orders = check from Order 'order in orderStream
+                select 'order;
+        }
 
-    // Creates the necessary stored procedures using the execute command.
-    _ = check mysqlClient->execute(`CREATE PROCEDURE
-        MYSQL_BBE.InsertStudent (IN pName VARCHAR(255), IN pAge INT)
-        BEGIN INSERT INTO Student(age, name) VALUES (pAge, pName); END`);
-    _ = check mysqlClient->execute(`CREATE PROCEDURE MYSQL_BBE.GetCount
-        (INOUT pID INT, OUT totalCount INT) BEGIN SELECT age INTO pID FROM
-        Student WHERE id = pID; SELECT COUNT(*) INTO totalCount FROM Student;
-        END`);
-    _ = check mysqlClient->execute(`CREATE PROCEDURE
-        MYSQL_BBE.GetStudents() BEGIN SELECT * FROM Student; END`);
+        // Cleans up the resources.
+        check result.close();
 
-    check mysqlClient.close();
-}
-
-// Cleans up the database after running the example.
-function afterExample(mysql:Client mysqlClient) returns sql:Error? {
-    // Cleans the database.
-    _ = check mysqlClient->execute(`DROP DATABASE MYSQL_BBE`);
-
-    // Closes the MySQL client.
-    check mysqlClient.close();
+        return {
+            total: totalCount,
+            orders: orders
+        };
+    }
 }

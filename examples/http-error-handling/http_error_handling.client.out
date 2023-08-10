@@ -1,0 +1,16 @@
+$ curl -v http://localhost:9090/albums
+*   Trying 127.0.0.1:9090...
+* Connected to localhost (127.0.0.1) port 9090 (#0)
+> GET /albums HTTP/1.1
+> Host: localhost:9090
+> User-Agent: curl/7.79.1
+> Accept: */*
+> 
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 400 Bad Request
+< content-type: application/org+json
+< content-length: 55
+< server: ballerina
+< date: Wed, 14 Dec 2022 15:33:27 +0530
+< 
+{"message":"no header value found for 'x-api-version'"}

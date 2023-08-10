@@ -1,29 +1,28 @@
 import ballerina/io;
 
 public function main() {
-    float v1 = sum([10.5, 20.5, 30.5]);
-    float v2 = sum2([10.5, 20.5, 30.5]);
-    io:println("v1:", v1, " v2:", v2);
-}
 
-function sum(float[] v) returns float {
-    float r = 0.0;
-    // `foreach` statement can be used to iterate an `array`.
-    // Each iteration returns an element in the `array`.
-    foreach float x in v {
-        r += x;
+    string[] names = ["Bob", "Jo", "Ann", "Tom"];
+    // Loop through a list.
+    foreach string name in names {
+        io:println(name);
     }
 
-    return r;
-}
-
-function sum2(float[] v) returns float {
-    float r = 0.0;
-    // `m ..< n` creates a value that when iterated over will give the
-    // integers starting from `m` that are `< n`.
-    foreach int i in 0 ..< v.length() {
-        r += v[i];
+    // Iterate a structure.
+    map<int> grades = { Bob : 65, Jo : 70, Ann : 75, Tom : 60};
+    int sum = 0;
+    foreach int grade in grades {
+      sum += grade;
     }
 
-    return r;
+    io:println("Average :", sum/grades.length());
+
+    // Binding patterns can be used with the `foreach` statement.
+    // Values in `resultList` are assigned to `name`, `grade` variables in the binding pattern.
+    [string, int][] resultList = [["Bob", 65], ["Jo", 70], ["Ann", 75], ["Tom", 60]];
+    // Binding patterns (e.g., `[string, int]` and `[name, grade]`) are used with the `foreach` statement.
+    foreach [string, int] [name, grade] in resultList {
+        io:println("Name:", name, " ", "Grade:", grade);
+    }
+
 }

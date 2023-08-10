@@ -1,0 +1,2 @@
+description: This BBE demonstrates passing comand-line arguments to the main function, returning errors from the main function, and constructing custom errors in Ballerina.
+keywords: ballerina, ballerina by example, bbe, main function, error, comand-line arguments

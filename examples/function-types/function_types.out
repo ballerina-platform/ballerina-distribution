@@ -1,0 +1,6 @@
+$ bal run function_types.bal
+false
+true
+false
+true
+true
