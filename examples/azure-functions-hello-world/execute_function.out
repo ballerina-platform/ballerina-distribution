@@ -1,2 +1,2 @@
-$ curl https://bal-bbe.azurewebsites.net/hello\?name\=Jack
+$ curl https://<function_app_name>.azurewebsites.net/hello\?name\=Jack
 Hello, Jack!

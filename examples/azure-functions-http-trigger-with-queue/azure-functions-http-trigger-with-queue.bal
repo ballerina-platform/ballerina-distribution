@@ -7,10 +7,12 @@ public type Person record {
 };
 
 service / on new functions:HttpListener() {
-    resource function post queue(@http:Payload Person person) returns [@functions:HttpOutput http:Created, @functions:QueueOutput {queueName: "people"} string] {
+    resource function post queue(@http:Payload Person person) returns
+    [@functions:HttpOutput http:Created, @functions:QueueOutput {queueName: "people"}
+    string] {
         http:Created httpRes = {
             body: person.name + " Added to the Queue!"
         };
-        return [httpRes, person.name + " is " + person.age.toString() + " years old."];
+        return [httpRes, string `${person.name} is ${person.age.toString()} years old.`];
     }
 }

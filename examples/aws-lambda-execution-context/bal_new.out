@@ -1,1 +1,2 @@
-$ bal new aws-lambda-execution-context
+$ bal new aws_lambda_execution_context
+Created new package 'aws_lambda_execution_context' at /Users/wso2/aws_lambda_execution_context.

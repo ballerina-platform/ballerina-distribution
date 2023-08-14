@@ -1,6 +1,6 @@
 $ bal build
 Compiling source
-        wso2/aws-lambda-execution-context:0.1.0
+        wso2/aws_lambda_execution_context:0.1.0
 
 Generating executable
         @awslambda:Function: ctxinfo
