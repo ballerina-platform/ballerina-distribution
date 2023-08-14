@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Azure Functions - Timer trigger
+=======
+# Azure Functions timer trigger
+>>>>>>> 2a84a2d3c676c4a3b03d236f287fef9e855a81ae
 
 This example demonstrates how a function can be scheduled to execute periodically by the Azure Functions app. Once the function is executed, the timer details will be stored in the selected queue storage for every invocation.
 
@@ -28,7 +32,11 @@ Execute the command below to generate the Azure Functions artifacts.
 
 ## Deploy the function
 
+<<<<<<< HEAD
 Execute the Azure CLI command given by the compiler to create and publish the functions by replacing `<function_app_name>` with your respective function app name.
+=======
+Execute the Azure CLI command given by the compiler to create and publish the functions by replacing `bal-bbe` with your respective function app name to invoke the function.
+>>>>>>> 2a84a2d3c676c4a3b03d236f287fef9e855a81ae
 
 ## Invoke the function
 

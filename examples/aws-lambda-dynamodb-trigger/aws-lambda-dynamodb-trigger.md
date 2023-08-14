@@ -20,7 +20,11 @@ Follow the steps below to write the function.
 
 ::: code aws-lambda-dynamodb-trigger.bal :::
 
+<<<<<<< HEAD
 ## Build the function 
+=======
+## Build the function
+>>>>>>> 2a84a2d3c676c4a3b03d236f287fef9e855a81ae
 
 Execute the command below to generate the AWS Lambda artifacts.
 
@@ -42,9 +46,16 @@ Follow the instructions below to create a DynamoDB table for invoking this funct
 4. Click **Create Table**, enter a table name and a partition key, and create the table (if you already have a table created, you can skip this step).
 5. Click on the DynamoDB table you created, and then click the **Exports and streams** tab.
 6. Click **Turn on** under **DynamoDB stream details**, select **Key attributes only** for the event type, and click **Turn on stream**.
+<<<<<<< HEAD
 8. Under the **Trigger** section, click **Create trigger**, select the `dynamoDBTrigger` from the drop-down, and click **Create trigger**.
 9. Click **Explore table items**, and click **Create items** under the **Items returned** section.
 10. Enter a value under the **Attributes** section to add an entry to the DynamoDB table to invoke the Lambda function, and click **Create item**.
 11. Click the **Monitor** tab of the Lambda function in the AWS Management Console, and click **View CloudWatch logs** to check the logs via CloudWatch.
+=======
+7. Under the **Trigger** section, click **Create trigger**, select the `dynamoDBTrigger` from the drop-down, and click **Create trigger**.
+8. Click **Explore table items**, and click **Create items** under the **Items returned** section.
+9. Enter a value under the **Attributes** section to add an entry to the DynamoDB table to invoke the Lambda function, and click **Create item**.
+10. Click the **Monitor** tab of the Lambda function in the AWS Management Console, and click **View CloudWatch logs** to check the logs via CloudWatch.
+>>>>>>> 2a84a2d3c676c4a3b03d236f287fef9e855a81ae
 11. Under **Log streams** in CloudWatch, click on the topmost stream in the list and verify the object name in the logs.
 12. Go to the AWS Lambda function and check the logs via CloudWatch to see the object identifier in the logs.

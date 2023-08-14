@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # AWS Lambda - Execution context
+=======
+# AWS Lambda execution context
+>>>>>>> 2a84a2d3c676c4a3b03d236f287fef9e855a81ae
 
 The example below demonstrates how the execution context information of an AWS function can be retrieved.
 

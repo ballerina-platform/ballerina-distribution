@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 $ bal new azure_functions_http_trigger_with_queue
 Created new package 'azure_functions_http_trigger_with_queue' at /Users/wso2/azure_functions_http_trigger_with_queue.
+=======
+$ bal new azure-functions-http-trigger-with-queue
+>>>>>>> 2a84a2d3c676c4a3b03d236f287fef9e855a81ae

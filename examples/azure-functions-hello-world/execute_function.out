@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 $ curl https://<function_app_name>.azurewebsites.net/hello\?name\=Jack
+=======
+$ curl https://bal-bbe.azurewebsites.net/hello\?name\=Jack
+>>>>>>> 2a84a2d3c676c4a3b03d236f287fef9e855a81ae
 Hello, Jack!

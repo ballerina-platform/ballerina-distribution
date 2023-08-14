@@ -20,6 +20,6 @@ To send the document, execute the following cURL command in a separate terminal.
 
 ## Related links
 - [Constraint annotation - API documentation](https://lib.ballerina.io/ballerina/constraint/latest#Annotations)
-- [GraphQL constraint config - Specification](/spec/graphql/#1018-constraint-configurations)
+- [GraphQL constraint config - Specification](/spec/graphql/#718-constraint-configurations)
 - [`constraint` module - API documentation](https://lib.ballerina.io/ballerina/constraint/latest)
 - [`graphql` module - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
