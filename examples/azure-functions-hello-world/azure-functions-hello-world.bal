@@ -4,6 +4,6 @@ import ballerinax/azure.functions;
 // returns a processed HTTP output to the caller.
 service / on new functions:HttpListener() {
     resource function get hello(string name) returns string {
-        return "Hello, " + name + "!";
+        return string `Hello,  ${name}!`;
     }
 }

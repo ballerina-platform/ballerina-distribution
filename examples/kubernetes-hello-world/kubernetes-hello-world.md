@@ -1,4 +1,4 @@
-# Kubernetes
+# Kubernetes - Hello world
 
 Ballerina supports generating Kubernetes artifacts from code without any additional configuration. This simplifies the experience of developing and deploying Ballerina code in the cloud. Code to Cloud builds the containers and required artifacts by deriving the required values from the code. If you want to override the default values taken by the compiler, you can use a `Cloud.toml` file.
 For more information, see [Code to Cloud deployment](/learn/run-in-the-cloud/code-to-cloud-deployment/).
@@ -31,5 +31,5 @@ Get the External IP and port of the Kubernetes service.
 If the External IP of the `hello-svc-local` service is `<none>`, you need to follow cluster-specific steps to obtain the external IP. If you are using Minikube, you can use the `minikube ip` command to obtain the IP.
 ::: out minikube_ip.out :::
 
-Access the deployed service via CURL.
+Access the deployed service via cURL.
 ::: out execute_curl.out :::

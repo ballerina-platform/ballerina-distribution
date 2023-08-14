@@ -1,6 +1,6 @@
 $ bal build
 Compiling source
-        wso2/aws-lambda-s3-trigger:0.1.0
+        wso2/aws_lambda_s3_trigger:0.1.0
 
 Generating executable
         @awslambda:Function: s3Trigger

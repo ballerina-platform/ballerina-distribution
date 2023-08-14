@@ -34,12 +34,12 @@ Execute the command below to generate the Azure Functions artifacts.
 
 ## Deploy the function
 
-Execute the Azure CLI command given by the compiler to create and publish the functions by replacing `bal-bbe` with your respective function app name.
+Execute the Azure CLI command given by the compiler to create and publish the functions by replacing `<function_app_name>` with your respective function app name.
 
 ::: out az_deploy.out :::
 
 ## Invoke the function
 
-Execute the command below to invoke the function by replacing `bal-bbe` with your respective Azure `<function_app_name>`.
+Execute the command below to invoke the function by replacing `<function_app_name>` with your respective function app name.
 
 ::: out execute_function.out :::
