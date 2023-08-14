@@ -46,5 +46,5 @@ Follow the instructions below to create a DynamoDB table for invoking this funct
 9. Click **Explore table items**, and click **Create items** under the **Items returned** section.
 10. Enter a value under the **Attributes** section to add an entry to the DynamoDB table to invoke the Lambda function, and click **Create item**.
 11. Click the **Monitor** tab of the Lambda function in the AWS Management Console, and click **View CloudWatch logs** to check the logs via CloudWatch.
-12. Under **Log streams** in CloudWatch, click on the topmost stream in the list and verify the object name in the logs.
-13. Go to the AWS Lambda function and check the logs via CloudWatch to see the object identifier in the logs.
+11. Under **Log streams** in CloudWatch, click on the topmost stream in the list and verify the object name in the logs.
+12. Go to the AWS Lambda function and check the logs via CloudWatch to see the object identifier in the logs.
