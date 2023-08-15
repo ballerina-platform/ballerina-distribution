@@ -16,7 +16,6 @@
 
 import ballerina/http;
 import ballerina/test;
-import ballerina/io;
 
 listener http:Listener oauth2Listener = new(25003, {
     secureSocket: {
@@ -94,14 +93,9 @@ service /oauth2 on authorizationServer {
         string|http:ClientError payload = request.getTextPayload();
         if (payload is string) {
             string[] parts = re `&`.split(payload);
-            io:println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-            io:println(payload);
-            io:println(parts.toBalString());
             foreach string part in parts {
                 if (part.indexOf("token=") is int) {
-                    io:println("part: " + part);
                     string token = re `=`.split(part)[1];
-                    io:println("Token: " + token);
                     if (token == ACCESS_TOKEN) {
                         json response = { "active": true, "exp": 3600, "scp": "read write" };
                         return response;
