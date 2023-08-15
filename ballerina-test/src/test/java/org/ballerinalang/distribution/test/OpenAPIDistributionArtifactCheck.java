@@ -62,7 +62,7 @@ public class OpenAPIDistributionArtifactCheck {
                 .resolve("ballerina")
                 .resolve("openapi")
                 .resolve("1.7.0")
-                .resolve("java11");
+                .resolve("java17");
 
         Path balaPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)

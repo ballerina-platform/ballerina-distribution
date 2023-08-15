@@ -1,4 +1,4 @@
-# AWS Lambda execution context
+# AWS Lambda - Execution context
 
 The example below demonstrates how the execution context information of an AWS function can be retrieved.
 

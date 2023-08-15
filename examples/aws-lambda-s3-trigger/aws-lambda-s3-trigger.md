@@ -1,4 +1,4 @@
-# AWS Lambda S3 trigger
+# AWS Lambda - S3 trigger
 
 This example creates a function, which will be executed for each object creation in AWS S3.
 
