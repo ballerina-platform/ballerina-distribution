@@ -64,6 +64,7 @@ public class MavenCustomRepoTest {
     @BeforeClass()
     public void setUp() throws IOException {
         TestUtils.setupDistributions();
+        System.out.println("Username is ++" + System.getenv("packageUser"));
         actualHomeDirectory = Paths.get(System.getProperty("user.home")).resolve(".ballerina");
         actualHomeDirectoryClone = Files.createTempDirectory("bal-test-integration-packaging-home-")
                 .resolve(".ballerina");

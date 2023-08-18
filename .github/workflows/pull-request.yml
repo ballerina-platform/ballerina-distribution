@@ -30,7 +30,7 @@ jobs:
                     devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
                     githubAccessToken: ${{ secrets.GITHUB_TOKEN }}
                     ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
-                run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue -x :ballerina:testExamples -x :project-api-tests:test
+                run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue :project-api-tests:test --tests "org.ballerina.projectapi.MavenCustomRepoTest"
 
     ubuntu-bbe-tests:
         name: BBE Tests on Ubuntu
