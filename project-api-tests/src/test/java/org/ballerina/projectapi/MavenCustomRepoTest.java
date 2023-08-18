@@ -22,6 +22,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.io.PrintStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.FileVisitResult;
@@ -64,7 +65,8 @@ public class MavenCustomRepoTest {
     @BeforeClass()
     public void setUp() throws IOException {
         TestUtils.setupDistributions();
-        System.out.println("Username is ++" + System.getenv("packageUser"));
+        PrintStream out = System.out;
+        out.println("Username is ++" + System.getenv("packageUser"));
         actualHomeDirectory = Paths.get(System.getProperty("user.home")).resolve(".ballerina");
         actualHomeDirectoryClone = Files.createTempDirectory("bal-test-integration-packaging-home-")
                 .resolve(".ballerina");
