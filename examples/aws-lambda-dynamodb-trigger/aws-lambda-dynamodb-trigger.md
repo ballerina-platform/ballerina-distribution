@@ -2,11 +2,11 @@
 
 This example creates a function, which will be executed for each entry added to a database in the [DynamoDB](https://aws.amazon.com/dynamodb/).
 
-For more information, see the [AWS Lambda learn guide](https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/aws-lambda/).
+For more information, see the [AWS Lambda learn guide](https://ballerina.io/learn/run-in-the-cloud/aws-lambda/).
 
 ## Set up the prerequisites
 
-For instructions, see [Set up the prerequisites](https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/aws-lambda/#set-up-the-prerequisites).
+For instructions, see [Set up the prerequisites](https://ballerina.io/learn/run-in-the-cloud/aws-lambda/#set-up-the-prerequisites).
 
 ## Write the function
 

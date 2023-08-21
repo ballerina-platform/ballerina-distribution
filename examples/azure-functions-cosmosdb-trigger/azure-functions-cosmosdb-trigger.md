@@ -2,13 +2,13 @@
 
 This example demonstrates using a Cosmos DB trigger to invoke an Azure function and a queue output binding to write an entry to a queue.
 
-For more information, see the [Azure Functions deployment guide](https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/azure-functions/).
+For more information, see the [Azure Functions deployment guide](https://ballerina.io/learn/run-in-the-cloud/azure-functions/).
 
 ## Set up the prerequisites
 
 Follow the steps below to create a Cosmos DB and a queue to make use of those services later in this example.
 
-1. Set up the [general prerequisites](https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/azure-functions/#set-up-the-prerequisites).
+1. Set up the [general prerequisites](https://ballerina.io/learn/run-in-the-cloud/azure-functions/#set-up-the-prerequisites).
 2. Create the queue in the [HTTP trigger](/learn/by-example/azure-functions/http-trigger/) example to resue it in this one.
 3. In the [**Azure Cosmos DB** service of the Azure Portal](https://portal.azure.com/#create/Microsoft.DocumentDB), click **Create**, and select **Azure Cosmos DB for NoSQL**.
 4. Enter an account name and a resource group name, and click **Review + Create**, and then, click **Create**.

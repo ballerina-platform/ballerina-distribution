@@ -34,4 +34,4 @@ Once you run the command, the `grpc_bidirectional_streaming_pb.bal` file gets ge
 ## Related links
 - [`grpc` module - API documentation](https://lib.ballerina.io/ballerina/grpc/latest)
 - [gRPC client bidirectional streaming - Specification](/spec/grpc/#44-bidirectional-streaming-rpc)
-- [Ballerina protocol buffers guide](/learn/cli-documentation/grpc/)
+- [Ballerina protocol buffers guide](/learn/bal-command/grpc/)
