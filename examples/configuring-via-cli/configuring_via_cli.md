@@ -5,7 +5,7 @@ The values of the configurable variables can be configured through the command-l
 The command-line-based configuration is only supported for configurable variables of types `int`, `byte`, `float`, `boolean`, `string`, `decimal`, `enum`, and `xml`.
 The `-Ckey=value` syntax can be used to provide values through the command-line parameters.
 
-For more information, see [Configure via command-line arguments](/learn/configure-ballerina-programs/provide-values-to-configurable-variables/#provide-via-command-line-arguments/).
+For more information, see [Configure via command-line arguments](/learn/provide-values-to-configurable-variables/#provide-via-command-line-arguments/).
 
 ::: code configuring_via_cli.bal :::
 
