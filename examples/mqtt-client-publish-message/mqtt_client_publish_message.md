@@ -6,6 +6,7 @@ The `mqtt:Client` connects to a given MQTT server, and then publishes messages t
 
 ## Prerequisites
 - Start a [MQTT broker](https://mqtt.org/software/) instance.
+- Run the MQTT service given in the [MQTT service - Subscribe to messages](/learn/by-example/mqtt-service-subscribe-message) example.
 
 Run the program by executing the following command.
 
@@ -17,4 +18,4 @@ Invoke the service by executing the following cURL command in a new terminal.
 
 ## Related links
 - [`mqtt:Client->publish` function - API documentation](https://lib.ballerina.io/ballerina/mqtt/latest#Client-publish)
-- [`mqtt:Client` functions - Specification](https://github.com/ballerina-platform/module-ballerina-mqtt/blob/master/docs/spec/spec.md#33-functions)
+- [`mqtt:Client` functions - Specification](https://github.com/ballerina-platform/module-ballerina-mqtt/blob/main/docs/spec/spec.md#33-functions)

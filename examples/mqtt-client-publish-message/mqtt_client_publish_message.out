@@ -1,1 +1,1 @@
-$ bal run kafka_client_producer.bal
+$ bal run mqtt_publisher.bal
