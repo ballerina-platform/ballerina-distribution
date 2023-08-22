@@ -1,0 +1,2 @@
+description: BBE on creating a MQTT service to subscribe to messages from an MQTT server using Ballerina.
+keywords: ballerina, ballerina by example, bbe, mqtt, subscriber, listener, service
