@@ -3598,6 +3598,88 @@
     ]
   },
   {
+    "title": "MQTT service",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Subscribe to messages",
+        "url": "mqtt-service-subscribe-message",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires an MQTT server",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "MQTT client",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Publish message",
+        "url": "mqtt-client-publish-message",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires an MQTT server",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "MQTT service security",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "SSL/TLS",
+        "url": "mqtt-service-ssl",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires an MQTT server",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Basic authentication",
+        "url": "mqtt-service-basic-authentication",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires an MQTT server",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "MQTT client security",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "SSL/TLS",
+        "url": "mqtt-client-ssl",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires an MQTT server",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Basic authentication",
+        "url": "mqtt-client-basic-authentication",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires an MQTT server",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "TCP service",
     "column": 3,
     "category": "Network libraries",
