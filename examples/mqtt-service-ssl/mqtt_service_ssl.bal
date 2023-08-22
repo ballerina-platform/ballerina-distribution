@@ -22,6 +22,7 @@ listener mqtt:Listener temperatureSubscriber = new ("ssl://localhost:8883", uuid
 service on temperatureSubscriber {
     remote function onMessage(mqtt:Message message) returns error? {
         TemperatureDetails details = check value:fromJsonStringWithType(check string:fromBytes(message.payload));
-        log:printInfo(string `Received temperature details from device: ${details.deviceId} at ${time:utcToString(details.timestamp)} with temperature: ${details.temperature}`);
+        log:printInfo(string `Received temperature details from device: ${details.deviceId} at
+            ${time:utcToString(details.timestamp)} with temperature: ${details.temperature}`);
     }
 }
