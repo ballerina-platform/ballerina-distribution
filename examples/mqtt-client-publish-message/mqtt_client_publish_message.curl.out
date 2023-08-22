@@ -1,0 +1,1 @@
+curl http://localhost:9090/temperature -H "Content-type:application/json" -d "{\"deviceId\": \"device-id-1\", \"timestamp\": [1692679864,0.822397000], \"temperature\": 27.5}"
