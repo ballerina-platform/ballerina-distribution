@@ -45,10 +45,10 @@ public class MavenCustomRepoTestUtils {
      * @throws IOException i/o exception when writing to file
      */
     static void createSettingToml(Path dirPath) throws IOException {
-        String content = "[[repository.github]]\n " +
+        String content = "[[repository.maven]]\n " +
                 "id = \"github1\"\n " +
                 "url = \"https://maven.pkg.github.com/ballerina-platform/ballerina-release\"\n " +
-                "userId = \"ballerina-platform\"\n " +
+                "username = \"ballerina-platform\"\n " +
                 "accesstoken = \"" + getGithubToken() + "\"\n";
         Files.write(dirPath.resolve("Settings.toml"), content.getBytes(), StandardOpenOption.CREATE,
                     StandardOpenOption.TRUNCATE_EXISTING);
