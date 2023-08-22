@@ -61,6 +61,8 @@ public class MavenCustomRepoTest {
     private Path tempWorkspaceDirectory;
     private Path actualHomeDirectoryClone;
     private Map<String, String> envVariables;
+
+
     @BeforeClass()
     public void setUp() throws IOException {
         TestUtils.setupDistributions();
