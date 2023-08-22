@@ -1,4 +1,4 @@
-# MQTT service - Subscribe message
+# MQTT service - Subscribe to messages
 
 The `mqtt:Service` connects to a given MQTT server via the `mqtt:Listener`, and allows to receive messages from different topics. Once subscribed to a topic, when new messages are received, the `onMessage` method gets invoked. If there are errors when invoking the method, the `onError` remote method will be invoked with the relevant `error`. If the method is not implemented, the error will be logged to the console. Use this to receive messages from a set of topics in a MQTT server.
 
