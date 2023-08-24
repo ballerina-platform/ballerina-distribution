@@ -18,4 +18,4 @@ Invoke the service by executing the following cURL command in a new terminal.
 
 ## Related links
 - [`mqtt:ClientConfiguration` record - API documentation](https://lib.ballerina.io/ballerina/mqtt/latest#ClientConfiguration)
-- [MQTT client basic authentication - Specification](https://github.com/ballerina-platform/module-ballerina-mqtt/blob/main/docs/spec/spec.md#322-secure-client)
+- [MQTT client basic authentication - Specification](/spec/mqtt/#322-secure-client)

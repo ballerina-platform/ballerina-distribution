@@ -15,4 +15,4 @@ Run the program by executing the following command.
 
 ## Related links
 - [`mqtt:ListenerConfiguration` record - API documentation](https://lib.ballerina.io/ballerina/mqtt/latest#ListenerConfiguration)
-- [MQTT service basic authentication - Specification](https://github.com/ballerina-platform/module-ballerina-mqtt/blob/main/docs/spec/spec.md#422-secure-listener)
+- [MQTT service basic authentication - Specification](/spec/mqtt/#422-secure-listener)

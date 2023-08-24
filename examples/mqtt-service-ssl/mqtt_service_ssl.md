@@ -15,4 +15,4 @@ Run the program by executing the following command.
 
 ## Related links
 - [`mqtt:SecureSocket` record - API documentation](https://lib.ballerina.io/ballerina/mqtt/latest#SecureSocket)
-- [MQTT secure service - Specification](https://github.com/ballerina-platform/module-ballerina-mqtt/blob/main/docs/spec/spec.md#422-secure-listener)
+- [MQTT secure service - Specification](/spec/mqtt/#422-secure-listener)

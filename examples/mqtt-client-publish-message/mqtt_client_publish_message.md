@@ -18,4 +18,4 @@ Invoke the service by executing the following cURL command in a new terminal.
 
 ## Related links
 - [`mqtt:Client->publish` function - API documentation](https://lib.ballerina.io/ballerina/mqtt/latest#Client-publish)
-- [`mqtt:Client` functions - Specification](https://github.com/ballerina-platform/module-ballerina-mqtt/blob/main/docs/spec/spec.md#33-functions)
+- [`mqtt:Client` functions - Specification](/spec/mqtt/#33-functions)

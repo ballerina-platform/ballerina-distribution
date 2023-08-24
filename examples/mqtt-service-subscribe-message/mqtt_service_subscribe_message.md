@@ -15,4 +15,4 @@ Run the program by executing the following command.
 
 ## Related links
 - [`mqtt:Listener` client object - API documentation](https://lib.ballerina.io/ballerina/mqtt/latest#Listener)
-- [MQTT service - Specification](https://github.com/ballerina-platform/module-ballerina-mqtt/blob/main/docs/spec/spec.md#43-usage)
+- [MQTT service - Specification](/spec/mqtt/#43-usage)

@@ -20,4 +20,4 @@ Invoke the service by executing the following cURL command in a new terminal.
 
 ## Related links
 - [`mqtt:SecureSocket` record - API documentation](https://lib.ballerina.io/ballerina/mqtt/latest#SecureSocket)
-- [MQTT secure client - Specification](https://github.com/ballerina-platform/module-ballerina-mqtt/blob/main/docs/spec/spec.md#322-secure-client)
+- [MQTT secure client - Specification](/spec/mqtt/#322-secure-client)
