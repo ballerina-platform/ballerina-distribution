@@ -1,6 +1,6 @@
 # MQTT client - Basic authentication
 
-The `mqtt:Client` connects to a MQTT server via basic authentication and then, sends messages to the server. Basic authentication can be enabled by configuring the `username`, `password` in the `connectionConfig` of the `mqtt:ClientConfiguration`. Use this to connect to a MQTT server secured with basic authentication. Use this to connect to a MQTT server secured with basic authentication.
+The `mqtt:Client` connects to an MQTT server via basic authentication and then, sends messages to the server. Basic authentication can be enabled by configuring the `username`, `password` in the `connectionConfig` of the `mqtt:ClientConfiguration`. Use this to connect to an MQTT server secured with basic authentication.
 
 ::: code mqtt_client_basic_authentication.bal :::
 

@@ -4,7 +4,7 @@ import ballerina/mqtt;
 import ballerina/time;
 import ballerina/uuid;
 
-public type TemperatureDetails readonly & record {
+type TemperatureDetails readonly & record {
     string deviceId;
     time:Utc timestamp;
     decimal temperature;

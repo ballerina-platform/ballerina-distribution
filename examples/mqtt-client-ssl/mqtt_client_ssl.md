@@ -1,6 +1,6 @@
 # MQTT client - SSL/TLS
 
-The `mqtt:Client` connects to a MQTT server via SSL/TLS and then, sends messages to the server. SSL/TLS can be enabled by configuring the `secureSocket`, which requires a certificate or a truststore. Further, mTLS can be enabled by providing a certificate and private key of the client or a keystore. Use this to connect to a MQTT server secured with SSL.
+The `mqtt:Client` connects to an MQTT server via SSL/TLS and then, sends messages to the server. SSL/TLS can be enabled by configuring the `secureSocket`, which requires a certificate or a truststore. Further, mTLS can be enabled by providing a certificate and private key of the client or a keystore. Use this to connect to an MQTT server secured with SSL.
 
 >**Info:** For more information on the underlying module, see the [`mqtt` module](https://lib.ballerina.io/ballerina/mqtt/latest).
 

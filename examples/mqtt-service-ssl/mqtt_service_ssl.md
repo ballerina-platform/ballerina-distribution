@@ -1,6 +1,6 @@
 # MQTT service - SSL/TLS
 
-The `mqtt:Service` receives messages from the MQTT server using the `mqtt:Listener` via SSL/TLS. SSL/TLS can be enabled by configuring the `secureSocket`, which requires a certificate or a truststore. Further, mTLS can be enabled by providing a certificate and private key of the service or a keystore. Use this to connect to a MQTT server secured with SSL.
+The `mqtt:Service` receives messages from the MQTT server using the `mqtt:Listener` via SSL/TLS. SSL/TLS can be enabled by configuring the `secureSocket`, which requires a certificate or a truststore. Further, mTLS can be enabled by providing a certificate and private key of the service or a keystore. Use this to connect to an MQTT server secured with SSL.
 
 ::: code mqtt_service_ssl.bal :::
 
