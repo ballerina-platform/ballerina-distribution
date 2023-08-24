@@ -33,4 +33,4 @@ Once you run the command, the `grpc_server_streaming_pb.bal` file gets generated
 ## Related links
 - [`grpc` module - API documentation](https://lib.ballerina.io/ballerina/grpc/latest)
 - [gRPC service server-side streaming - Specification](/spec/grpc/#42-server-streaming-rpc)
-- [Ballerina protocol buffers guide](/learn/bal-command/grpc/)
+- [gRPC tool](/learn/grpc-tool/)

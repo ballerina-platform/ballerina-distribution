@@ -2,11 +2,11 @@
 
 The example below demonstrates how the execution context information of an AWS function can be retrieved.
 
-For more information, see the [AWS Lambda learn guide](https://ballerina.io/learn/run-in-the-cloud/aws-lambda/).
+For more information, see the [AWS Lambda learn guide](https://ballerina.io/learn/aws-lambda/).
 
 ## Set up the prerequisites
 
-For instructions, see [Set up the prerequisites](https://ballerina.io/learn/run-in-the-cloud/aws-lambda/#set-up-the-prerequisites).
+For instructions, see [Set up the prerequisites](https://ballerina.io/learn/aws-lambda/#set-up-the-prerequisites).
 
 ## Write the function
 

@@ -34,4 +34,4 @@ Once you run the command, the `grpc_simple_pb.bal` file gets generated inside th
 ## Related links
 - [`grpc` module - API documentation](https://lib.ballerina.io/ballerina/grpc/latest)
 - [gRPC client simple RPC - Specification](/spec/grpc/#41-simple-rpc)
-- [Ballerina protocol buffers guide](/learn/bal-command/grpc/)
+- [gRPC tool](/learn/grpc-tool/)
