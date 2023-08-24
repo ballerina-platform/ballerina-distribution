@@ -2,11 +2,11 @@
 
 This example demonstrates how a function can be scheduled to execute periodically by the Azure Functions app. Once the function is executed, the timer details will be stored in the selected queue storage for every invocation.
 
-For more information, see the [Azure deployment guide](https://ballerina.io/learn/run-in-the-cloud/azure-functions/).
+For more information, see the [Azure deployment guide](https://ballerina.io/learn/azure-functions/).
 
 ## Set up the prerequisites
 
-For instructions, see [Set up the prerequisites](https://ballerina.io/learn/run-in-the-cloud/azure-functions/#set-up-the-prerequisites).
+For instructions, see [Set up the prerequisites](https://ballerina.io/learn/azure-functions/#set-up-the-prerequisites).
 
 ## Write the function
 

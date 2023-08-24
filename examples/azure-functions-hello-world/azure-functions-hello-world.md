@@ -8,11 +8,11 @@ Output bindings are defined in the return type definition. For services with the
 
 In the code sample shown above, it has an empty service path and resource path named `hello`. The accessor is `get`. It expects a request with a query parameter for the field name. The required artifact generation and data binding will be handled by the `ballerinax/azure_functions` package automatically.
 
-For more information, see the [Azure deployment guide](https://ballerina.io/learn/run-in-the-cloud/azure-functions/).
+For more information, see the [Azure deployment guide](https://ballerina.io/learn/azure-functions/).
 
 ## Set up the prerequisites
 
-For instructions, see [Set up the prerequisites](https://ballerina.io/learn/run-in-the-cloud/azure-functions/#set-up-the-prerequisites).
+For instructions, see [Set up the prerequisites](https://ballerina.io/learn/azure-functions/#set-up-the-prerequisites).
 
 ## Write the function
 
