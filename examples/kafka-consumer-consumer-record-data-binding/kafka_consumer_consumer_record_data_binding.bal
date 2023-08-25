@@ -1,7 +1,7 @@
 import ballerinax/kafka;
 import ballerina/io;
 
-public type Order readonly & record {
+type Order readonly & record {
     int orderId;
     string productName;
     decimal price;
@@ -9,7 +9,7 @@ public type Order readonly & record {
 };
 
 // Create a subtype of `kafka:AnydataConsumerRecord`.
-public type OrderConsumerRecord record {|
+type OrderConsumerRecord record {|
     *kafka:AnydataConsumerRecord;
     Order value;
 |};
@@ -23,7 +23,7 @@ public function main() returns error? {
     while true {
         // Polls the consumer for order records.
         OrderConsumerRecord[] records = check orderConsumer->poll(15);
-        check from OrderConsumerRecord orderRecord in records
+        from OrderConsumerRecord orderRecord in records
             where orderRecord.value.isValid
             do {
                 io:println(string `Received valid order for ${orderRecord.value.productName}`);
