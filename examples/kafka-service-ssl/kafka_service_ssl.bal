@@ -25,7 +25,7 @@ listener kafka:Listener orderListener = new ("localhost:9094", {
 
 service on orderListener {
 
-    remote function onConsumerRecord(Order[] orders) returns error? {
+    remote function onConsumerRecord(Order[] orders) {
         from Order 'order in orders
             where 'order.isValid
             do {
