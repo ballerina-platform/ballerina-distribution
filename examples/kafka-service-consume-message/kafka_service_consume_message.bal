@@ -1,7 +1,7 @@
 import ballerinax/kafka;
 import ballerina/log;
 
-public type Order readonly & record {
+type Order readonly & record {
     int orderId;
     string productName;
     decimal price;
@@ -15,9 +15,9 @@ listener kafka:Listener orderListener = new (kafka:DEFAULT_URL, {
 
 service on orderListener {
 
-    remote function onConsumerRecord(Order[] orders) returns error? {
+    remote function onConsumerRecord(Order[] orders) {
         // The set of orders received by the service are processed one by one.
-        check from Order 'order in orders
+        from Order 'order in orders
             where 'order.isValid
             do {
                 log:printInfo(string `Received valid order for ${'order.productName}`);
