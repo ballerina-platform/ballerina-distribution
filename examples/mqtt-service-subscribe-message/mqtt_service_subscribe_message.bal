@@ -2,7 +2,6 @@ import ballerina/lang.value;
 import ballerina/log;
 import ballerina/mqtt;
 import ballerina/time;
-import ballerina/uuid;
 
 type TemperatureDetails readonly & record {
     string deviceId;
@@ -10,7 +9,7 @@ type TemperatureDetails readonly & record {
     decimal temperature;
 };
 
-service on new mqtt:Listener(mqtt:DEFAULT_URL, uuid:createType1AsString(), "mqtt/topic") {
+service on new mqtt:Listener(mqtt:DEFAULT_URL, "temperature-sub-client", "mqtt/topic") {
     remote function onMessage(mqtt:Message message) returns error? {
         TemperatureDetails details = check value:fromJsonStringWithType(check string:fromBytes(message.payload));
         log:printInfo(string `Received temperature details from device: ${details.deviceId} at

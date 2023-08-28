@@ -1,7 +1,6 @@
 import ballerina/http;
 import ballerina/mqtt;
 import ballerina/time;
-import ballerina/uuid;
 
 type TemperatureDetails readonly & record {
     string deviceId;
@@ -13,7 +12,7 @@ service / on new http:Listener(9090) {
     private final mqtt:Client temperaturePublisher;
 
     function init() returns error? {
-        self.temperaturePublisher = check new ("ssl://localhost:8883", uuid:createType1AsString(), {
+        self.temperaturePublisher = check new ("ssl://localhost:8883", "temperature-pub-client", {
             connectionConfig: {
                 secureSocket: {
                     cert: "./resources/path/to/public.crt"

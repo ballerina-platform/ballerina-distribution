@@ -2,7 +2,6 @@ import ballerina/lang.value;
 import ballerina/log;
 import ballerina/mqtt;
 import ballerina/time;
-import ballerina/uuid;
 
 type TemperatureDetails readonly & record {
     string deviceId;
@@ -10,7 +9,7 @@ type TemperatureDetails readonly & record {
     decimal temperature;
 };
 
-listener mqtt:Listener temperatureSubscriber = new ("ssl://localhost:8883", uuid:createType1AsString(), "mqtt/topic", {
+listener mqtt:Listener temperatureSubscriber = new ("ssl://localhost:8883", "temperature-sub-client", "mqtt/topic", {
     connectionConfig: {
         // Provide the relevant secure socket configurations by using `mqtt:SecureSocket`.
         secureSocket: {
