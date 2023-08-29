@@ -1,0 +1,1 @@
+$ curl http://localhost:9090/orders -H "Content-type:application/json" -d "{\"orderId\": 1, \"productName\": \"Sport shoe\", \"price\": 27.5, \"isValid\": true}"
