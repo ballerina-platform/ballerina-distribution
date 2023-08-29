@@ -229,11 +229,11 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: 2201.8.x
-      - name: Set up JDK 11
-        uses: actions/setup-java@v2
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '11'
+          java-version: '17.0.7'
       - name: Build with Gradle
         env:
           packageUser: ${{ github.actor }}
@@ -253,11 +253,11 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: 2201.8.x
-      - name: Set up JDK 11
-        uses: actions/setup-java@v2
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '11'
+          java-version: '17.0.7'
       - name: Build with Gradle
         env:
           packageUser: ${{ github.actor }}
@@ -277,11 +277,11 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: 2201.8.x
-      - name: Set up JDK 11
-        uses: actions/setup-java@v2
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '11'
+          java-version: '17.0.7'
       - name: Setup Files
         run: |
           cd /etc/yum.repos.d/
@@ -361,11 +361,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-      - name: Set up JDK 11
-        uses: actions/setup-java@v2
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '11'
+          java-version: '17.0.7'
       - name: Download MacOS-ARM Intaller Zip
         uses: actions/download-artifact@v2
         with:
