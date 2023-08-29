@@ -13,7 +13,7 @@ public function main() returns error? {
         name: "order-queue"
     });
     jms:Message? message = check consumer->receive(5000);
-    if message is jms:Message {
+    if message is jms:MapMessage {
         io:println("Received message from the JMS provider", message);
     }
 }

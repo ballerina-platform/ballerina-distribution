@@ -11,6 +11,8 @@ Run the program by executing the following command.
 
 ::: out jms_service_consume_message.out :::
 
+>**Tip:** Run the JMS message producer given in the [JMS message producer - Produce message](/learn/by-example/jms-producer-produce-message-send) example to produce some messages to the queue.
+
 ## Related links
 - [`jms:MessageConsumer->receive` function - API documentation](https://lib.ballerina.io/ballerinax/java.jms/latest#MessageConsumer-receive)
 - [`jms:MessageConsumer->receiveNoWait` function - API documentation](https://lib.ballerina.io/ballerinax/java.jms/latest#MessageConsumer-receiveNoWait)
