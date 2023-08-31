@@ -1,6 +1,6 @@
 # MQTT service - Basic authentication
 
-The `mqtt:Service` receives messages from the MQTT server using the `mqtt:Listener` via basic authentication. Basic authentication can be enabled by configuring the `username`, `password` in the `connectionConfig` of the `mqtt:ListenerConfiguration`. Use this to connect to an MQTT server secured with basic authentication.
+The `mqtt:Service` receives messages from the MQTT server using the `mqtt:Listener` via basic authentication. Basic authentication can be enabled by configuring the `username` and `password` in the `connectionConfig` of the `mqtt:ListenerConfiguration`. Use this to connect to an MQTT server secured with basic authentication.
 
 ::: code mqtt_service_basic_authentication.bal :::
 

@@ -5,7 +5,7 @@ The `mqtt:Service` receives messages from the MQTT server using the `mqtt:Listen
 ::: code mqtt_service_ssl.bal :::
 
 ## Prerequisites
-- Start a [MQTT broker](https://mqtt.org/software/) instance configured to use SSL/TLS.
+- Start an [MQTT broker](https://mqtt.org/software/) instance, which is configured to use SSL/TLS.
 
 Run the program by executing the following command.
 

@@ -7,7 +7,7 @@ The `mqtt:Client` connects to an MQTT server via SSL/TLS and then, sends message
 ::: code mqtt_client_ssl.bal :::
 
 ## Prerequisites
-- Start a [MQTT broker](https://mqtt.org/software/) instance configured to use SSL/TLS.
+- Start an [MQTT broker](https://mqtt.org/software/) instance, which is configured to use SSL/TLS.
 - Run the MQTT service given in the [MQTT service - SSL/TLS](/learn/by-example/mqtt-service-ssl) example.
 
 Run the program by executing the following command.
