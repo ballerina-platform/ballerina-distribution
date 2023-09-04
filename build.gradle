@@ -17,10 +17,10 @@
 plugins {
     id 'base'
     id 'maven-publish'
-    id 'net.researchgate.release' version '2.6.0'
-    id 'de.undercouch.download' version '4.1.1'
-    id "com.github.johnrengelman.shadow" version "5.2.0"
-    id "com.github.spotbugs" version "4.0.5"
+    id 'net.researchgate.release' version '2.8.0'
+    id 'de.undercouch.download' version '5.4.0'
+    id "com.github.johnrengelman.shadow" version "8.1.1"
+    id "com.github.spotbugs" version "5.0.14"
 }
 
 description = 'Ballerina - Tools - Parent'
@@ -34,12 +34,12 @@ ext {
     ballerinaCommandVersion = project.ballerinaCommandVersion
 
     picocliVersion = "4.0.1"
-    testngVersion = "6.14.3"
+    testngVersion = "7.6.1"
     netLingalaZip4jVersion = "2.8.0"
     commonsIoVersion = "2.6"
     commonsLang3Version = "3.9"
     lsp4jDebugVersion = "0.7.1"
-    puppycrawlCheckstyleVersion = "8.18"
+    puppycrawlCheckstyleVersion = "10.12.1"
 }
 
 allprojects {
@@ -71,8 +71,8 @@ allprojects {
 
 subprojects {
     apply plugin: 'java'
-    sourceCompatibility = 11
-    targetCompatibility = 11
+    sourceCompatibility = 17
+    targetCompatibility = 17
     tasks.withType(JavaCompile) {
         options.encoding = 'UTF-8'
     }
@@ -148,7 +148,6 @@ subprojects {
         ballerinaStdLibs "io.ballerina.stdlib:io-ballerina:${stdlibIoVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:jballerina.java.arrays-ballerina:${stdlibJavaArraysVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:random-ballerina:${stdlibRandomVersion}"
-        ballerinaStdLibs "io.ballerina.stdlib:regex-ballerina:${stdlibRegexVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:time-ballerina:${stdlibTimeVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:url-ballerina:${stdlibUrlVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:xmldata-ballerina:${stdlibXmldataVersion}"
@@ -162,6 +161,7 @@ subprojects {
         ballerinaStdLibs "io.ballerina.stdlib:file-ballerina:${stdlibFileVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:ftp-ballerina:${stdlibFtpVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:mime-ballerina:${stdlibMimeVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:mqtt-ballerina:${stdlibMqttVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:tcp-ballerina:${stdlibTcpVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:udp-ballerina:${stdlibUdpVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:uuid-ballerina:${stdlibUuidVersion}"
@@ -183,8 +183,10 @@ subprojects {
         ballerinaStdLibs "io.ballerina.stdlib:persist-ballerina:${stdlibPersistVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:yaml-ballerina:${stdlibYamlVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:toml-ballerina:${stdlibTomlVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:soap-ballerina:${stdlibSoapVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:observe-ballerina:${observeVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:math.vector-ballerina:${stdlibMathVectorVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:edi-ballerina:${stdlibEdiVersion}"
 
         /* Ballerina Persist Tool */
         ballerinaStdLibs "io.ballerina:persist-tools:${persistToolVersion}"

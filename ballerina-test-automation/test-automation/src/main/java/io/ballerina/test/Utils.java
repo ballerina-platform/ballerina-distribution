@@ -39,23 +39,7 @@ public class Utils {
             System.getenv("BALLERINA_STAGING_UPDATE"));
     public static final PrintStream OUT = System.out;
 
-    private static TrustManager[] trustAllCerts = new TrustManager[]{
-            new X509TrustManager() {
-                public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-                    return null;
-                }
-
-                public void checkClientTrusted(java.security.cert.X509Certificate[] certs, String authType) {
-                    //No need to implement.
-                }
-
-                public void checkServerTrusted(java.security.cert.X509Certificate[] certs, String authType) {
-                    //No need to implement.
-                }
-            }
-    };
-
-    public static final String DISTRIBUTION_LOCATION = "http://dist-dev.ballerina.io/downloads/";
+    public static final String DISTRIBUTION_LOCATION = "https://dist-dev.ballerina.io/downloads/";
 
     public static void downloadFile(String version, String installerName) {
         OUT.println("Downloading " + installerName);
@@ -63,10 +47,6 @@ public class Utils {
             String destination = getUserHome();
             File output = new File(destination + File.separator + installerName);
             if (!output.exists()) {
-                SSLContext sc = SSLContext.getInstance("SSL");
-                sc.init(null, trustAllCerts, new java.security.SecureRandom());
-                HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
-
                 HttpURLConnection conn = (HttpURLConnection) new URL(
                         DISTRIBUTION_LOCATION + version + "/" + installerName).openConnection();
                 conn.setRequestProperty("content-type", "binary/data");

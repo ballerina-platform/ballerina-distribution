@@ -932,6 +932,13 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "Aggregation",
+        "url": "aggregation",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },
@@ -2460,6 +2467,14 @@
         "isLearnByExample": false
       },
       {
+        "name": "Input constraint validation",
+        "url": "graphql-input-constraint-validation",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
         "name": "File upload",
         "url": "graphql-file-upload",
         "verifyBuild": true,
@@ -2471,6 +2486,29 @@
       {
         "name": "Hierarchical resource paths",
         "url": "graphql-hierarchical-resource-paths",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "  GraphQL service advanced",
+    "column": 1,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Dataloader",
+        "url": "graphql-dataloader",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Custom prefetch methods",
+        "url": "custom-prefetch-methods",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -3152,8 +3190,17 @@
         "isLearnByExample": false
       },
       {
-        "name": "Constraint validation",
+        "name": "Constraint validations",
         "url": "nats-service-constraint-validation",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Consume JetStream message",
+        "url": "nats-jetstream-sub",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -3179,6 +3226,15 @@
       {
         "name": "Send request message",
         "url": "nats-basic-request",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Publish message",
+        "url": "nats-jetstream-pub",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -3945,7 +4001,7 @@
       {
         "name": "Cryptographic operations",
         "url": "security-crypto",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
@@ -4054,6 +4110,29 @@
         "verifyOutput": false,
         "disableVerificationReason": "Includes varying output",
         "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "EDI",
+    "column": 1,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "EDI to record conversion",
+        "url": "edi-to-record",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes generated code",
+        "isLearnByExample": false
+      },
+      {
+        "name": "Record to EDI conversion",
+        "url": "record-to-edi",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes generated code",
         "isLearnByExample": false
       }
     ]
@@ -4181,20 +4260,6 @@
         "url": "xslt-transformation",
         "verifyBuild": true,
         "verifyOutput": false,
-        "isLearnByExample": false
-      }
-    ]
-  },
-  {
-    "title": "Regex",
-    "column": 3,
-    "category": "Common libraries",
-    "samples": [
-      {
-        "name": "Regular expressions",
-        "url": "regular-expressions",
-        "verifyBuild": true,
-        "verifyOutput": true,
         "isLearnByExample": false
       }
     ]
@@ -4385,56 +4450,6 @@
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      }
-    ]
-  },
-  {
-    "title": "Code to Cloud",
-    "column": 0,
-    "category": "Deployment",
-    "samples": [
-      {
-        "name": "Docker",
-        "url": "c2c-docker-deployment",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Kubernetes",
-        "url": "c2c-k8s-deployment",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      }
-    ]
-  },
-  {
-    "title": "Function as a Service",
-    "column": 1,
-    "category": "Deployment",
-    "samples": [
-      {
-        "name": "Azure Functions",
-        "url": "azure-functions-deployment",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "AWS Lambda",
-        "url": "aws-lambda-deployment",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
         "disablePlayground": true,
         "isLearnByExample": false
       }
