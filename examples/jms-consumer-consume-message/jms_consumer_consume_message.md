@@ -2,14 +2,14 @@
 
 The `jms:MessageConsumer` allows fetching individual messages one by one from a given JMS provider. A `jms:MessageConsumer` can be initialized by using a `jms:Session` object. To pull messages from the JMS provider use `receive` or `receiveNoWait` methods. It is possible to use automatic or manual acknowledgments similar to consumer service. Use it to pull messages one by one from a JMS destination in the JMS provider.
 
-::: code jms_service_consume_message.bal :::
+::: code jms_consumer_consume_message.bal :::
 
 ## Prerequisites
 - Start a [ActiveMQ broker](https://activemq.apache.org/getting-started) instance.
 
 Run the program by executing the following command.
 
-::: out jms_service_consume_message.out :::
+::: out jms_consumer_consume_message.out :::
 
 >**Tip:** Run the JMS message producer given in the [JMS message producer - Produce message](/learn/by-example/jms-producer-produce-message-send) example to produce some messages to the queue.
 
