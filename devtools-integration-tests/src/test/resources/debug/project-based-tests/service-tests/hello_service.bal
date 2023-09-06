@@ -17,7 +17,11 @@
 import ballerina/http;
 
 service / on new http:Listener(9191) {
-    final int x = 5;
+    final int x;
+
+    function init() {
+        self.x = 5;
+    }
 
     resource function get sayHello() returns string {
         return "Hello, World!";
