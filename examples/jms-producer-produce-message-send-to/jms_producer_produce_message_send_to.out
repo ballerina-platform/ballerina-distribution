@@ -1,1 +1,0 @@
-$ bal run jms_producer_produce_message_send_to.bal
