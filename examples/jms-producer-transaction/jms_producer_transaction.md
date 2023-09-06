@@ -1,4 +1,4 @@
-# JMS message producer - Transactional producer
+# JMS message producer - Transactions
 
 The `jms:MessageProducer` can become a transactional producer by `'commit'` and `'rollback` functionality of `jms:Session`. Upon successful execution of the transaction block, the `jms:Session` can commit or roll back in the case of any error. Use this to send messages atomically to a JMS provider.
 
