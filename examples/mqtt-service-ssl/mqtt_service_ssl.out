@@ -1,0 +1,2 @@
+$ bal run mqtt_service_ssl.bal
+time=2023-08-16T16:48:03.259+05:30 level=INFO module="" message="Received temperature details from device: device-id-1 at 2023-08-16T11:18:03.212400160Z with temperature: 27.5"
