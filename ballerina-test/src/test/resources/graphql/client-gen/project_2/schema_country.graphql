@@ -1,0 +1,101 @@
+schema {
+    query: Query
+}
+
+"Directs the executor to include this field or fragment only when the `if` argument is true"
+directive @include(
+    "Included when true."
+    if: Boolean!
+) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Directs the executor to skip this field or fragment when the `if`'argument is true."
+directive @skip(
+    "Skipped when true."
+    if: Boolean!
+) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+directive @cacheControl(maxAge: Int, scope: CacheControlScope) on OBJECT | FIELD_DEFINITION | INTERFACE
+
+"Marks the field, argument, input field or enum value as deprecated"
+directive @deprecated(
+    "The reason for the deprecation"
+    reason: String = "No longer supported"
+) on FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM_VALUE | INPUT_FIELD_DEFINITION
+
+"Exposes a URL that specifies the behaviour of this scalar."
+directive @specifiedBy(
+    "The URL that specifies the behaviour of this scalar."
+    url: String!
+) on SCALAR
+
+type Continent {
+    code: ID!
+    countries: [Country!]!
+    name: String!
+}
+
+type Country {
+    capital: String
+    code: ID!
+    continent: Continent!
+    currency: String
+    emoji: String!
+    emojiU: String!
+    languages: [Language!]!
+    name: String!
+    native: String!
+    phone: String!
+    states: [State!]!
+}
+
+type Language {
+    code: ID!
+    name: String
+    native: String
+    rtl: Boolean!
+}
+
+type Query {
+    continent(code: ID!): Continent
+    continents(filter: ContinentFilterInput): [Continent!]!
+    countries(filter: CountryFilterInput): [Country!]!
+    country(code: ID!): Country
+    language(code: ID!): Language
+    languages(filter: LanguageFilterInput): [Language!]!
+}
+
+type State {
+    code: String
+    country: Country!
+    name: String!
+}
+
+enum CacheControlScope {
+    PRIVATE
+    PUBLIC
+}
+
+"The `Upload` scalar type represents a file upload."
+scalar Upload
+
+input ContinentFilterInput {
+    code: StringQueryOperatorInput
+}
+
+input CountryFilterInput {
+    code: StringQueryOperatorInput
+    continent: StringQueryOperatorInput
+    currency: StringQueryOperatorInput
+}
+
+input LanguageFilterInput {
+    code: StringQueryOperatorInput
+}
+
+input StringQueryOperatorInput {
+    eq: String
+    in: [String!]
+    ne: String
+    nin: [String!]
+    regex: String
+}

@@ -62,7 +62,7 @@ public class OpenAPIArtifactBuildTest {
         Assert.assertTrue(successful);
         Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("petstore_service.bal")));
         Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("client.bal")));
-        TestUtils.deleteGeneratedFiles("petstore");
+        TestUtils.deleteGeneratedFiles("petstore", OPENAPI_CMD);
     }
 
     @Test(description = "Check openapi to ballerina generator command with service file only.")
@@ -78,7 +78,7 @@ public class OpenAPIArtifactBuildTest {
                 buildArgs);
         Assert.assertTrue(successful);
         Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("petstore_service.bal")));
-        TestUtils.deleteGeneratedFiles("petstore");
+        TestUtils.deleteGeneratedFiles("petstore", OPENAPI_CMD);
     }
 
     @Test(description = "Check openapi to ballerina generator command for given tags")
@@ -114,7 +114,7 @@ public class OpenAPIArtifactBuildTest {
                 Assert.fail("Expected content and actual generated content is mismatched for: petstoreTags.yaml");
             }
             //Clean the generated files
-            TestUtils.deleteGeneratedFiles("petstoretags");
+            TestUtils.deleteGeneratedFiles("petstoretags", OPENAPI_CMD);
         }
     }
 
@@ -149,7 +149,7 @@ public class OpenAPIArtifactBuildTest {
             Assert.assertEquals(expectedTypes, generatedTypes);
             Assert.assertEquals(expectedUtils, generatedUtils);
 
-            TestUtils.deleteGeneratedFiles("client.bal");
+            TestUtils.deleteGeneratedFiles("client.bal", OPENAPI_CMD);
         } else {
             Assert.fail("Client generation failed");
         }
@@ -165,7 +165,7 @@ public class OpenAPIArtifactBuildTest {
                 buildArgs);
         Assert.assertTrue(successful);
         Assert.assertTrue(Files.exists(TestUtils.getResource(testResource).resolve("hello_openapi.yaml")));
-        TestUtils.deleteGeneratedFiles("hello_openapi.yaml");
+        TestUtils.deleteGeneratedFiles("hello_openapi.yaml", OPENAPI_CMD);
     }
 
     //OpenAPI integration tests

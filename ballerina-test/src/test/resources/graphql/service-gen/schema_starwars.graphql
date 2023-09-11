@@ -1,0 +1,112 @@
+type Query {
+    "Fetch the hero of the Star Wars"
+    hero(episode: Episode): Character!
+    "Returns reviews of the Star Wars"
+    reviews(episode: Episode!): [Review]!
+    "Returns characters by id, or null if character is not found"
+    characters(idList: [String!]!): [Character]!
+    "Returns a droid by id, or null if droid is not found"
+    droid(id: String! = ""): Droid
+    "Returns a human by id, or null if human is not found"
+    human(id: String!): Human
+    "Returns a starship by id, or null if starship is not found"
+    starship(id: String!): Starship
+    "Returns search results by text, or null if search item is not found"
+    search(text: String!): [SearchResult!]
+}
+
+"A mechanical character from the Star Wars universe"
+interface Character {
+    "The unique identifier of the character"
+    id: String!
+    "The name of the character"
+    name: String!
+    "This character's friends, or an empty list if they have none"
+    friends: [Character!]!
+    "The episodes this character appears in"
+    appearsIn: [Episode!]!
+}
+
+"A humanoid creature from the Star Wars universe"
+type Human implements Character {
+    "The unique identifier of the human"
+    id: String!
+    "The name of the human"
+    name: String!
+    "The home planet of the human, or null if unknown"
+    homePlanet: String
+    "Height in meters, or null if unknown"
+    height: Float
+    "Mass in kilograms, or null if unknown"
+    mass: Int
+    "This human's friends, or an empty list if they have none"
+    friends: [Character!]!
+    "The episodes this human appears in"
+    appearsIn: [Episode!]!
+    "A list of starships this person has piloted, or an empty list if none"
+    starships: [Starship!]!
+}
+
+enum Episode {
+    JEDI
+    EMPIRE
+    NEWHOPE
+}
+
+"A ship from the Star Wars universe"
+type Starship {
+    "The unique identifier of the starship"
+    id: String!
+    "The name of the starship"
+    name: String!
+    "The length of the starship, or null if unknown"
+    length: Float
+    "Cordinates of the starship, or null if unknown"
+    cordinates: [[Float!]!]
+}
+
+"An autonomous mechanical character in the Star Wars universe"
+type Droid implements Character {
+    "The unique identifier of the droid"
+    id: String!
+    "The name of the droid"
+    name: String!
+    "This droid's friends, or an empty list if they have none"
+    friends: [Character!]!
+    "The episodes this droid appears in"
+    appearsIn: [Episode!]!
+    "This droid's primary function"
+    primaryFunction: String
+}
+
+type Review {
+    episode: Episode!
+    stars: Int!
+    commentary: String
+}
+
+"auto-generated union type from Ballerina"
+union SearchResult = Human|Droid|Starship
+
+type Mutation {
+    "Add new reviews and return the review values"
+    createReview(
+        "Episode name"
+        episode: Episode!
+        "Review of the episode"
+        reviewInput: ReviewInput!
+    ): Review!
+}
+
+input ReviewInput {
+    stars: Int!
+    commentary: String
+}
+
+type Subscription {
+    "Subscribe to review updates"
+    reviewAdded(
+        "Episode name"
+        episode: Episode!
+    ): Review!
+}
