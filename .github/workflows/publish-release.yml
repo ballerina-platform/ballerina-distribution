@@ -649,4 +649,3 @@ jobs:
         run: |
           $env:Path += ";C:\Program Files\Ballerina\bin"
           .\..\gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
-          
