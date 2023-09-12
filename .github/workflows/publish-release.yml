@@ -73,7 +73,7 @@ jobs:
           devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
           ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
         run: |
-          ./gradlew build -Pversion=${VERSION} -x test
+          ./gradlew build -Pversion=${VERSION}
           ./gradlew release -Prelease.useAutomaticVersion=true -x test
       - name: Checkout docker repo
         uses: actions/checkout@v3
@@ -426,6 +426,12 @@ jobs:
           asset_name: ballerina-${{ steps.version-set.outputs.sversion }}.zip.sha256
           asset_path: ballerina-${{ steps.version-set.outputs.sversion }}.zip.sha256
           asset_content_type: application/octet-stream
+      - name: Post release PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        run: |
+          curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
+          bin/hub pull-request -m "[Automated] Sync master after "$VERSION" release"
 
     outputs:
       project-version: ${{ steps.version-set.outputs.longVersion }}
@@ -638,3 +644,9 @@ jobs:
       - name: Install Ballerina msi
         run: msiexec /i w\target\msi\ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi /quiet /qr
         shell: cmd
+      - name: Run Installer Tests
+        working-directory: .\ballerina-test-automation\installer-test
+        run: |
+          $env:Path += ";C:\Program Files\Ballerina\bin"
+          .\..\gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+          
