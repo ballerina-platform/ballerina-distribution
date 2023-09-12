@@ -52,8 +52,8 @@ public class ServiceDebugTest extends BaseTestCase {
         String fileName = "hello_service.bal";
         Path filePath = debugTestRunner.testProjectPath.resolve(fileName);
 
-        debugTestRunner.addBreakPoint(new BallerinaTestDebugPoint(filePath, 20));
-        debugTestRunner.addBreakPoint(new BallerinaTestDebugPoint(filePath, 24));
+        debugTestRunner.addBreakPoint(new BallerinaTestDebugPoint(filePath, 23));
+        debugTestRunner.addBreakPoint(new BallerinaTestDebugPoint(filePath, 28));
         debugTestRunner.initDebugSession(DebugUtils.DebuggeeExecutionKind.TEST);
 
         // test for debug hits in service level variables
@@ -77,13 +77,13 @@ public class ServiceDebugTest extends BaseTestCase {
         String fileName = "hello_service.bal";
         Path filePath = debugTestRunner.testProjectPath.resolve(fileName);
 
-        debugTestRunner.addBreakPoint(new BallerinaTestDebugPoint(filePath, 20));
+        debugTestRunner.addBreakPoint(new BallerinaTestDebugPoint(filePath, 23));
         debugTestRunner.initDebugSession(DebugUtils.DebuggeeExecutionKind.TEST);
 
         // Test for service call stack representation
         Pair<BallerinaTestDebugPoint, StoppedEventArguments> debugHitInfo = debugTestRunner.waitForDebugHit(30000);
         StackFrame[] frames = debugTestRunner.fetchStackFrames(debugHitInfo.getRight());
-        debugTestRunner.assertCallStack(frames[0], "service", 20, "hello_service.bal");
+        debugTestRunner.assertCallStack(frames[0], "init", 23, "hello_service.bal");
     }
 
     @Test(description = "Test for single bal file debug engage")

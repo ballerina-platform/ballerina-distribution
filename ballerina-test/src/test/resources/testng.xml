@@ -26,6 +26,7 @@
             <class name="org.ballerinalang.distribution.test.OpenAPIArtifactBuildTest"/>
             <class name="org.ballerinalang.distribution.test.GrpcToolingTest"/>
 <!--            <class name="org.ballerinalang.distribution.test.BallerinaCommandTest"/>-->
+            <class name="org.ballerinalang.distribution.test.GraphqlToolTest"/>
         </classes>
     </test>
 </suite>
