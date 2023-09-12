@@ -1,6 +1,6 @@
-import ballerinax/activemq.driver as _;
 import ballerinax/java.jms;
 import ballerina/log;
+import ballerinax/activemq.driver as _;
 
 service on new jms:Listener(
     connectionConfig = {

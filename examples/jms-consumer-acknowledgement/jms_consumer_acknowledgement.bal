@@ -1,6 +1,6 @@
-import ballerinax/activemq.driver as _;
 import ballerina/io;
 import ballerinax/java.jms;
+import ballerinax/activemq.driver as _;
 
 public function main() returns error? {
     jms:Connection connection = check new (

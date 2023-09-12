@@ -1,6 +1,6 @@
-import ballerinax/activemq.driver as _;
 import ballerina/http;
 import ballerinax/java.jms;
+import ballerinax/activemq.driver as _;
 
 service / on new http:Listener(9090) {
     private final jms:MessageProducer orderProducer;
