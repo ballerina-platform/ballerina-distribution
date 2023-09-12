@@ -1,5 +1,6 @@
-import ballerinax/activemq.driver as _;
 import ballerina/io;
+
+import ballerinax/activemq.driver as _;
 import ballerinax/java.jms;
 
 public function main() returns error? {
