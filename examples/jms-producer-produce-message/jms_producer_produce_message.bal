@@ -13,8 +13,8 @@ service / on new http:Listener(9090) {
         jms:Session session = check connection->createSession();
         self.orderProducer = check session.createProducer({ 
             'type: jms:QUEUE, 
-            name: "order-queue" }
-        );
+            name: "order-queue" 
+        });
     }
 
     resource function post orders(map<anydata> payoad) returns http:Accepted|error {
