@@ -1,6 +1,5 @@
-import ballerina/http;
-
 import ballerinax/activemq.driver as _;
+import ballerina/http;
 import ballerinax/java.jms;
 
 service / on new http:Listener(9090) {
