@@ -3680,6 +3680,72 @@
     ]
   },
   {
+    "title": "JMS service",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Consume message",
+        "url": "jms-service-consume-message",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "JMS message producer",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Produce message",
+        "url": "jms-producer-produce-message",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Transactions",
+        "url": "jms-producer-transaction",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "JMS message consumer",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Consume message",
+        "url": "jms-consumer-consume-message",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Manual acknowledgment",
+        "url": "jms-consumer-acknowledgement",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "TCP service",
     "column": 3,
     "category": "Network libraries",
