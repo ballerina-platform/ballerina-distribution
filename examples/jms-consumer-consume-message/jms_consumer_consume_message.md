@@ -5,7 +5,7 @@ The `jms:MessageConsumer` allows fetching individual messages one by one from a 
 ::: code jms_consumer_consume_message.bal :::
 
 ## Prerequisites
-- Start a [ActiveMQ broker](https://activemq.apache.org/getting-started) instance.
+Start a [ActiveMQ broker](https://activemq.apache.org/getting-started) instance.
 
 Run the program by executing the following command.
 

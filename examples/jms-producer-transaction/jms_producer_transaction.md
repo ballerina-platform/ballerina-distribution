@@ -5,7 +5,7 @@ The `jms:MessageProducer` can become a transactional producer via the `'commit'`
 ::: code jms_producer_transaction.bal :::
 
 ## Prerequisites
-- Start a [ActiveMQ broker](https://activemq.apache.org/getting-started) instance.
+Start a [ActiveMQ broker](https://activemq.apache.org/getting-started) instance.
 
 Run the program by executing the following command.
 

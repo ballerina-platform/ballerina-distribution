@@ -5,7 +5,7 @@ The `jms:Service` connects to a given JMS provider via the `jms:Listener`, and a
 ::: code jms_service_consume_message.bal :::
 
 ## Prerequisites
-- Start a [ActiveMQ broker](https://activemq.apache.org/getting-started) instance.
+Start a [ActiveMQ broker](https://activemq.apache.org/getting-started) instance.
 
 Run the program by executing the following command.
 

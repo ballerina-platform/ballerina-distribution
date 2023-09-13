@@ -5,7 +5,7 @@ The `jms:MessageConsumer` allows manual acknowledgment for received messages. A 
 ::: code jms_consumer_acknowledgement.bal :::
 
 ## Prerequisites
-- Start a [ActiveMQ broker](https://activemq.apache.org/getting-started) instance.
+Start a [ActiveMQ broker](https://activemq.apache.org/getting-started) instance.
 
 Run the program by executing the following command.
 
