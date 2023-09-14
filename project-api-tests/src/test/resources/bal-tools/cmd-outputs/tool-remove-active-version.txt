@@ -1,0 +1,1 @@
+ballerina: cannot remove active tool 'disttest:1.1.0'.

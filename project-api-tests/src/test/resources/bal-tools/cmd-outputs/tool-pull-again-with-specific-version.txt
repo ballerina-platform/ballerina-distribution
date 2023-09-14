@@ -1,0 +1,2 @@
+tool 'disttest:1.0.0' is already available locally.
+tool 'disttest:1.0.0' is already active.
