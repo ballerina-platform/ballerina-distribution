@@ -449,7 +449,7 @@ public class BalToolTest {
     }
 
     // TODO: Enable after new release of dist tool
-    @BeforeGroups(value = "update", enabled = false)
+    @BeforeGroups(value = "update")
     public void setupUpdateTests() throws IOException, InterruptedException {
         // remove all versions of the tool
         Process cmdExec = executeToolCommand(DISTRIBUTION_FILE_NAME, this.tempWorkspaceDirectory,
@@ -462,7 +462,7 @@ public class BalToolTest {
                 new ArrayList<>(Arrays.asList("pull", toolIdAndVersion)), this.envVariables);
     }
 
-    @Test(description = "Update a non-existing tool", groups = {"update"}, enabled = false)
+    @Test(description = "Update a non-existing tool", groups = {"update"})
     public void testUpdateNonExistingTool() throws IOException, InterruptedException {
         Process cmdExec = executeToolCommand(DISTRIBUTION_FILE_NAME, this.tempWorkspaceDirectory,
                 new ArrayList<>(Arrays.asList("update", nonExistingTool)), this.envVariables);
@@ -475,13 +475,13 @@ public class BalToolTest {
         // check for tool availability in bal-tools.toml
         BalToolsToml balToolsToml = BalToolsToml.from(balToolsTomlPath);
         Optional<BalToolsManifest.Tool> toolOpt = BalToolsManifestBuilder.from(balToolsToml).build()
-                .getActiveTool(toolId);
+                .getActiveTool(nonExistingTool);
         if (toolOpt.isPresent()) {
-            Assert.fail("Tool " + toolId + " should not be available in bal-tools.toml");
+            Assert.fail("Tool " + nonExistingTool + " should not be available in bal-tools.toml");
         }
     }
 
-    @Test(description = "Update a tool with new patch and minor versions", groups = {"update"}, enabled = false)
+    @Test(description = "Update a tool with new patch and minor versions", groups = {"update"})
     public void testUpdateToolWithNewPatchAndMinor() throws IOException, InterruptedException {
         // check for tool availability in bal-tools.toml
         BalToolsToml balToolsToml = BalToolsToml.from(balToolsTomlPath);
@@ -524,7 +524,7 @@ public class BalToolTest {
     }
 
     @Test(description = "Update a tool with no new versions",
-            dependsOnMethods = {"testUpdateToolWithNewPatchAndMinor"}, groups = {"update"}, enabled = false)
+            dependsOnMethods = {"testUpdateToolWithNewPatchAndMinor"}, groups = {"update"})
     public void testUpdateToolWithNoNewVersions() throws IOException, InterruptedException {
         // check for tool availability in bal-tools.toml
         BalToolsToml balToolsToml = BalToolsToml.from(balToolsTomlPath);
@@ -767,7 +767,6 @@ public class BalToolTest {
         if (!cmdErrors.isEmpty()) {
             Assert.fail(OUTPUT_CONTAIN_ERRORS + cmdErrors);
         }
-        System.out.println((cmdExec.getInputStream()));
 
         // Validate the command output
         String cmdOutput = getString(cmdExec.getInputStream());
@@ -775,7 +774,6 @@ public class BalToolTest {
         if (!cmdOutput.contains(expectedOutput)) {
             Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedOutput + "\nactual output:" + cmdOutput);
         }
-        System.out.println((cmdExec.getInputStream()));
     }
 
     @Test(description = "Execute disstest tool", groups = {"execute_tool"})
@@ -799,7 +797,7 @@ public class BalToolTest {
         try {
             return Files.readString(Path.of(Objects.requireNonNull(
                     BalToolTest.class.getClassLoader().getResource(
-                            Path.of("bal-tools/cmd-outputs/").resolve(outputFileName).toString())).toURI()));
+                            Path.of("bal-tool/cmd-outputs/").resolve(outputFileName).toString())).toURI()));
         } catch (IOException | URISyntaxException e) {
             throw new RuntimeException("Error reading resource file");
         }
