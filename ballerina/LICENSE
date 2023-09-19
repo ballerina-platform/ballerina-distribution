@@ -81,7 +81,6 @@ asm-tree-9.5.jar                                                                
 semver-checker-cli-2201.8.0.jar                                                                     jar            apache2
 org.wso2.transport.http.netty-6.3.11.jar                                                            bundle         apache2
 jackson-core-2.13.2.jar                                                                             bundle         apache2
-datamapper-extension-2.2.1.jar                                                                      jar            apache2
 jaeger-core-0.31.0.jar                                                                              jar            apache2
 stax2-api-4.2.1.jar                                                                                 bundle         bsd
 geronimo-stax-api_1.0_spec-1.0.1.jar                                                                bundle         apache2
@@ -296,7 +295,6 @@ ballerina-lang.string-0.0.0.jar                                                 
 ballerina-io-1.6.0.jar                                                                              jar            apache2
 ballerina-oauth2-2.10.0.jar                                                                         jar            apache2
 ballerina-lang.future-0.0.0.jar                                                                     jar            apache2
-ballerina-soap-0.2.0.jar                                                                            jar            apache2
 ballerina-lang.value-0.0.0.jar                                                                      jar            apache2
 ballerina-openapi-1.8.0.jar                                                                         jar            apache2
 ballerina-url-2.4.0.jar                                                                             jar            apache2
