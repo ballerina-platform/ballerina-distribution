@@ -2,11 +2,11 @@
 
 This example creates a function, which will be executed for each object creation in AWS S3.
 
-For more information, see the [AWS Lambda learn guide](https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/aws-lambda/).
+For more information, see the [AWS Lambda learn guide](https://ballerina.io/learn/aws-lambda/).
 
 ## Set up the prerequisites
 
-For instructions, see [Set up the prerequisites](https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/aws-lambda/#set-up-the-prerequisites).
+For instructions, see [Set up the prerequisites](https://ballerina.io/learn/aws-lambda/#set-up-the-prerequisites).
 
 ## Write the function
 
@@ -37,9 +37,9 @@ Execute the AWS CLI command given by the compiler to create and publish the func
 Follow the instructions below to create an S3 bucket in AWS for invoking this function.
 
 1. Go to the [AWS S3](https://s3.console.aws.amazon.com/s3/) portal and create a bucket.
-   > **Note:** Make sure to select the same **AWS region** in which you created the AWS user and role when creating the S3 bucket.
+   >**Note:** Make sure to select the same **AWS region** in which you created the AWS user and role when creating the S3 bucket.
 2. Click on the created bucket, go to the **Properties** tab, and click **Create event notification** under the **Event notifications** section.
-3. Enable **All object create events** under event types.
+3. Enable **All object create events** under event types. 
 4. Under the **Destination** section, select the AWS Lambda function (i.e., `s3Trigger` in this example) from the dropdown.
 5. Select the created bucket under the **Buckets** list, click **Upload**, and upload an object to the S3 bucket.
 6. Under the **Functions** list of the AWS Management Console, click the AWS Lambda function, and click the **Monitor** tab.

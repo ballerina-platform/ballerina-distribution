@@ -1,12 +1,12 @@
-# Azure Functions timer trigger
+# Azure Functions - Timer trigger
 
 This example demonstrates how a function can be scheduled to execute periodically by the Azure Functions app. Once the function is executed, the timer details will be stored in the selected queue storage for every invocation.
 
-For more information, see the [Azure deployment guide](https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/azure-functions/).
+For more information, see the [Azure deployment guide](https://ballerina.io/learn/azure-functions/).
 
 ## Set up the prerequisites
 
-For instructions, see [Set up the prerequisites](https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/azure-functions/#set-up-the-prerequisites).
+For instructions, see [Set up the prerequisites](https://ballerina.io/learn/azure-functions/#set-up-the-prerequisites).
 
 ## Write the function
 
@@ -28,7 +28,7 @@ Execute the command below to generate the Azure Functions artifacts.
 
 ## Deploy the function
 
-Execute the Azure CLI command given by the compiler to create and publish the functions by replacing `bal-bbe` with your respective function app name to invoke the function.
+Execute the Azure CLI command given by the compiler to create and publish the functions by replacing `<function_app_name>` with your respective function app name.
 
 ## Invoke the function
 

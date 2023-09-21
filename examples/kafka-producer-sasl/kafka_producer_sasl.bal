@@ -1,7 +1,7 @@
 import ballerina/http;
 import ballerinax/kafka;
 
-public type Order readonly & record {
+type Order readonly & record {
     int orderId;
     string productName;
     decimal price;

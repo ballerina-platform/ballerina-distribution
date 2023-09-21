@@ -8,11 +8,11 @@ Output bindings are defined in the return type definition. For services with the
 
 In the code sample shown above, it has an empty service path and resource path named `hello`. The accessor is `get`. It expects a request with a query parameter for the field name. The required artifact generation and data binding will be handled by the `ballerinax/azure_functions` package automatically.
 
-For more information, see the [Azure deployment guide](https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/azure-functions/).
+For more information, see the [Azure deployment guide](https://ballerina.io/learn/azure-functions/).
 
 ## Set up the prerequisites
 
-For instructions, see [Set up the prerequisites](https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/azure-functions/#set-up-the-prerequisites).
+For instructions, see [Set up the prerequisites](https://ballerina.io/learn/azure-functions/#set-up-the-prerequisites).
 
 ## Write the function
 
@@ -34,12 +34,12 @@ Execute the command below to generate the Azure Functions artifacts.
 
 ## Deploy the function
 
-Execute the Azure CLI command given by the compiler to create and publish the functions by replacing `bal-bbe` with your respective function app name.
+Execute the Azure CLI command given by the compiler to create and publish the functions by replacing `<function_app_name>` with your respective function app name.
 
 ::: out az_deploy.out :::
 
 ## Invoke the function
 
-Execute the command below to invoke the function by replacing `bal-bbe` with your respective Azure `<function_app_name>`.
+Execute the command below to invoke the function by replacing `<function_app_name>` with your respective function app name.
 
 ::: out execute_function.out :::
