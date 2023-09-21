@@ -4530,25 +4530,25 @@
         "disableVerificationReason": "Needs prerequisite condition",
         "disablePlayground": true,
         "isLearnByExample": false
-      },
-      {
-        "name": "S3 trigger",
-        "url": "aws-lambda-s3-trigger",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "DynamoDB trigger",
-        "url": "aws-lambda-dynamodb-trigger",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false
       }
+      // {
+      //   "name": "S3 trigger",
+      //   "url": "aws-lambda-s3-trigger",
+      //   "verifyBuild": false,
+      //   "verifyOutput": false,
+      //   "disableVerificationReason": "Needs prerequisite condition",
+      //   "disablePlayground": true,
+      //   "isLearnByExample": false
+      // },
+      // {
+      //   "name": "DynamoDB trigger",
+      //   "url": "aws-lambda-dynamodb-trigger",
+      //   "verifyBuild": false,
+      //   "verifyOutput": false,
+      //   "disableVerificationReason": "Needs prerequisite condition",
+      //   "disablePlayground": true,
+      //   "isLearnByExample": false
+      // }
     ]
   },
     {
