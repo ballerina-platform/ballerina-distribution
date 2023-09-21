@@ -28,7 +28,6 @@ import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -77,15 +76,6 @@ public class BalToolTest {
         balToolsTomlPath = tempHomeDirectory.resolve(".config").resolve("bal-tools.toml");
         centralCachePath = tempHomeDirectory.resolve(Path.of(REPOSITORIES_DIR, CENTRAL_REPOSITORY_CACHE_NAME,
                 BALA_DIR_NAME));
-
-        // Copy test resources to temp workspace directory
-        try {
-            URI testResourcesURI = Objects.requireNonNull(getClass().getClassLoader().getResource("central")).toURI();
-            Path testResourcePath = Path.of(testResourcesURI);
-            Files.walkFileTree(testResourcePath, new CentralTest.Copy(testResourcePath, this.tempWorkspaceDirectory));
-        } catch (URISyntaxException e) {
-            Assert.fail("error loading resources");
-        }
 
         if (!isToolAvailableInCentral(toolId, tempWorkspaceDirectory, envVariables)) {
             Assert.fail("Tool " + toolId + " is not available in central");
@@ -448,7 +438,6 @@ public class BalToolTest {
         }
     }
 
-    // TODO: Enable after new release of dist tool
     @BeforeGroups(value = "update")
     public void setupUpdateTests() throws IOException, InterruptedException {
         // remove all versions of the tool
