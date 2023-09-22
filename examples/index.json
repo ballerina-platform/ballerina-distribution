@@ -2427,15 +2427,6 @@
         "isLearnByExample": false
       },
       {
-        "name": "File upload",
-        "url": "graphql-file-upload",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
         "name": "Hierarchical resource paths",
         "url": "graphql-hierarchical-resource-paths",
         "verifyBuild": true,
@@ -2495,6 +2486,15 @@
         "url": "graphql-input-constraint-validation",
         "verifyBuild": true,
         "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "File upload",
+        "url": "graphql-file-upload",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
         "disablePlayground": true,
         "isLearnByExample": false
       },
