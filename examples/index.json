@@ -2427,6 +2427,30 @@
         "isLearnByExample": false
       },
       {
+        "name": "File upload",
+        "url": "graphql-file-upload",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Hierarchical resource paths",
+        "url": "graphql-hierarchical-resource-paths",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "  GraphQL service advanced",
+    "column": 1,
+    "category": "Network libraries",
+    "samples": [
+      {
         "name": "Context object",
         "url": "graphql-context",
         "verifyBuild": true,
@@ -2474,30 +2498,6 @@
         "disablePlayground": true,
         "isLearnByExample": false
       },
-      {
-        "name": "File upload",
-        "url": "graphql-file-upload",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Hierarchical resource paths",
-        "url": "graphql-hierarchical-resource-paths",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      }
-    ]
-  },
-  {
-    "title": "  GraphQL service advanced",
-    "column": 1,
-    "category": "Network libraries",
-    "samples": [
       {
         "name": "Dataloader",
         "url": "graphql-dataloader",
