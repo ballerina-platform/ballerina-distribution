@@ -119,28 +119,28 @@ jobs:
         run: |
           npm install -g github-cli
           gh --version
-      - name: Get Markdown file
-        id: file-url
-        env:
-          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
-        run: |
-          gh repo view ballerina-platform/ballerina-dev-website -b release-2201.7.0 --json url --jq '.clone_url'
-          gh api repos/ballerina-platform/ballerina-dev-website/contents/downloads/verify-ballerina-artifacts.md?ref=release-2201.7.0 -H 'Accept: application/vnd.github.v3.raw' > release_notes.md
-      - name: Update Markdown file
-        run: |
-          branchName=$(echo ${{ github.ref }} | cut -d'/' -f3)
-          if ${{ github.event.inputs.isPreRelease }} == 'true'; then
-            echo "" > release_notes.md;
-          else sed -i 's/{{ version }}/${{ steps.version-set.outputs.taggedVersion }}/g' release_notes.md; sed -i 's/{{ branch }}/$branchName/g' release_notes.md; fi
-      - name: Read release notes from file
-        id: release_notes
-        uses: actions/github-script@v4
-        with:
-          github-token: ${{ secrets.BALLERINA_BOT_TOKEN }}
-          script: |
-            const fs = require('fs');
-            const releaseNotes = fs.readFileSync('release_notes.md', 'utf8');
-            core.setOutput('notes', releaseNotes);
+      # - name: Get Markdown file
+      #   id: file-url
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+      #   run: |
+      #     gh repo view ballerina-platform/ballerina-dev-website -b release-2201.7.0 --json url --jq '.clone_url'
+      #     gh api repos/ballerina-platform/ballerina-dev-website/contents/downloads/verify-ballerina-artifacts.md?ref=release-2201.7.0 -H 'Accept: application/vnd.github.v3.raw' > release_notes.md
+      # - name: Update Markdown file
+      #   run: |
+      #     branchName=$(echo ${{ github.ref }} | cut -d'/' -f3)
+      #     if ${{ github.event.inputs.isPreRelease }} == 'true'; then
+      #       echo "" > release_notes.md;
+      #     else sed -i 's/{{ version }}/${{ steps.version-set.outputs.taggedVersion }}/g' release_notes.md; sed -i 's/{{ branch }}/$branchName/g' release_notes.md; fi
+      # - name: Read release notes from file
+      #   id: release_notes
+      #   uses: actions/github-script@v4
+      #   with:
+      #     github-token: ${{ secrets.BALLERINA_BOT_TOKEN }}
+      #     script: |
+      #       const fs = require('fs');
+      #       const releaseNotes = fs.readFileSync('release_notes.md', 'utf8');
+      #       core.setOutput('notes', releaseNotes);
       - name: Create release
         id: create_release
         uses: actions/create-release@v1
@@ -149,7 +149,7 @@ jobs:
         with:
           tag_name: "v${{ steps.version-set.outputs.taggedVersion }}"
           release_name: ${{ steps.version-set.outputs.taggedVersion }}
-          body: ${{ steps.release_notes.outputs.notes }}
+          # body: ${{ steps.release_notes.outputs.notes }}
           draft: false
           prerelease: ${{ github.event.inputs.isPreRelease }}
       - name: Create linux-deb Installer
