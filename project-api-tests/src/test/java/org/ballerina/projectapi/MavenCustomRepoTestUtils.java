@@ -41,7 +41,7 @@ public class MavenCustomRepoTestUtils {
 
     /**
      * Create Settings.toml inside the home repository.
-     *
+     * @param dirPath  folder path to the settings toml
      * @throws IOException i/o exception when writing to file
      */
     static void createSettingToml(Path dirPath) throws IOException {

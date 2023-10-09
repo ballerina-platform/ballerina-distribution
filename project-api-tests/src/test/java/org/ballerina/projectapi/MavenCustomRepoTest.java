@@ -53,7 +53,7 @@ import static org.ballerina.projectapi.TestUtils.executePushCommand;
  */
 public class MavenCustomRepoTest {
 
-    private static final String org = "luheerathan";
+    private static final String org = "bctestorg";
     private static final String packagename = "pact";
     private static final String version = "0.2.0";
     private static final String GITHUB_REPO_ID = "github1";
@@ -61,7 +61,6 @@ public class MavenCustomRepoTest {
     private Path tempWorkspaceDirectory;
     private Path actualHomeDirectoryClone;
     private Map<String, String> envVariables;
-
 
     @BeforeClass()
     public void setUp() throws IOException {
@@ -124,7 +123,6 @@ public class MavenCustomRepoTest {
                 .resolve(GITHUB_REPO_ID).resolve("bala").resolve(org).resolve(packagename).resolve(version);
         Assert.assertTrue(Files.exists(packagePath.resolve("any")));
         deleteFiles(this.actualHomeDirectory.resolve("repositories").resolve(GITHUB_REPO_ID), false);
-
     }
 
     @Test(description = "Build a package offline using a module from Github packages",
@@ -136,7 +134,7 @@ public class MavenCustomRepoTest {
                         .resolve("test-resolution"),
                 args, this.envVariables);
         String buildErrors = getString(build.getErrorStream());
-        Assert.assertTrue(buildErrors.contains("cannot resolve module 'luheerathan/pact as _'"));
+        Assert.assertTrue(buildErrors.contains("cannot resolve module '" + org + "/pact as _'"));
     }
 
     @Test(description = "Build a package Online using a module from Github packages",
@@ -155,7 +153,6 @@ public class MavenCustomRepoTest {
         String buildOutput = getString(build.getInputStream());
         Assert.assertTrue(buildOutput.contains("Generating executable\n\ttarget/bin/test.jar"));
     }
-
 
     @AfterClass
     private void cleanup() throws IOException {
