@@ -1,4 +1,4 @@
-import luheerathan/pact as _;
+import bctestorg/pact as _;
 import ballerina/io;
 
 public function main() {
