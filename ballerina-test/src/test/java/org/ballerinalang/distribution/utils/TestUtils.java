@@ -61,6 +61,8 @@ public class TestUtils {
     public static final String WHITESPACE_PATTERN = "\\s+";
     private static String balFile = "bal";
     public static final String DISTRIBUTION_FILE_NAME = "ballerina-" + MAVEN_VERSION + "-" + CODE_NAME;
+    public static final String OPENAPI_CMD = "openapi";
+    public static final String GRAPHQL_CMD = "graphql";
 
     /**
      * Log the output of an input stream.
@@ -149,7 +151,27 @@ public class TestUtils {
      */
     public static boolean executeOpenAPI(String distributionName, Path sourceDirectory, List<String> args) throws
             IOException, InterruptedException {
-        args.add(0, "openapi");
+        args.add(0, OPENAPI_CMD);
+        Process process = getProcessBuilderResults(distributionName, sourceDirectory, args);
+        int exitCode = process.waitFor();
+        logOutput(process.getInputStream());
+        logOutput(process.getErrorStream());
+        return exitCode == 0;
+    }
+
+    /**
+     * Execute ballerina graphql command.
+     *
+     * @param distributionName The name of the distribution.
+     * @param sourceDirectory  The directory where the sources files are location.
+     * @param args             The arguments to be passed to the build command.
+     * @return True if build is successful, else false.
+     * @throws IOException          Error executing build command.
+     * @throws InterruptedException Interrupted error executing build command.
+     */
+    public static boolean executeGraphql(String distributionName, Path sourceDirectory, List<String> args) throws
+            IOException, InterruptedException {
+        args.add(0, GRAPHQL_CMD);
         Process process = getProcessBuilderResults(distributionName, sourceDirectory, args);
         int exitCode = process.waitFor();
         logOutput(process.getInputStream());
@@ -227,19 +249,20 @@ public class TestUtils {
     }
 
     /**
-     * Delete openapi generated files.
+     * Delete openapi and graphql generated files.
      *
      * @param generatedFileName file name that need to delete.
      */
-    public static void deleteGeneratedFiles(String generatedFileName) throws IOException {
-        Path resourcesPath = RESOURCES_PATH.resolve("openapi");
+    public static void deleteGeneratedFiles(String generatedFileName, String command) throws IOException {
+        Path resourcesPath = RESOURCES_PATH.resolve(command);
         if (Files.exists(resourcesPath)) {
             List<File> listFiles = Arrays.asList(
                     Objects.requireNonNull(new File(String.valueOf(resourcesPath)).listFiles()));
             for (File existsFile: listFiles) {
                 String fileName = existsFile.getName();
                 if (fileName.equals(generatedFileName) || fileName.equals(generatedFileName + "_service.bal") ||
-                        fileName.equals("client.bal") || fileName.equals("types.bal") || fileName.equals("utils.bal")) {
+                        fileName.equals("client.bal") || fileName.equals("types.bal") || fileName.equals("utils.bal") ||
+                        fileName.equals("config_types.bal")) {
                     existsFile.delete();
                 }
             }

@@ -1,0 +1,4 @@
+[package]
+org = "ballerina_sdl_file_generator_test"
+name = "project_1"
+version = "0.1.0"

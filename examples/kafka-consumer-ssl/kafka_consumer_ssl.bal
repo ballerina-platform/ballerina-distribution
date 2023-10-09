@@ -1,7 +1,7 @@
 import ballerinax/kafka;
 import ballerina/io;
 
-public type Order readonly & record {
+type Order readonly & record {
     int orderId;
     string productName;
     decimal price;
@@ -27,7 +27,7 @@ public function main() returns error? {
     // Polls the consumer for payload.
     Order[] orders = check orderConsumer->pollPayload(1);
 
-    check from Order 'order in orders
+    from Order 'order in orders
         where 'order.isValid
         do {
             io:println(string `Received valid order for ${'order.productName}`);

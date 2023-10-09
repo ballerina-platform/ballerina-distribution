@@ -1,0 +1,13 @@
+type Query {
+    "Fetch all the books from database"
+    books: [Book]
+    "Fetch a book by its id"
+    book(
+        id: Int!
+    ): Book
+}
+
+type Book {
+    id: Int!
+    title: String!
+}
