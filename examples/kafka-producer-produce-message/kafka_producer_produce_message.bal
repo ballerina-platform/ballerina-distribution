@@ -1,7 +1,7 @@
 import ballerinax/kafka;
 import ballerina/http;
 
-public type Order readonly & record {
+type Order readonly & record {
     int orderId;
     string productName;
     decimal price;
@@ -15,7 +15,7 @@ service / on new http:Listener(9090) {
         self.orderProducer = check new (kafka:DEFAULT_URL);
     }
 
-    resource function post orders(@http:Payload anydata newOrder) returns http:Accepted|error {
+    resource function post orders(Order newOrder) returns http:Accepted|error {
         check self.orderProducer->send({
             topic: "order-topic",
             value: newOrder

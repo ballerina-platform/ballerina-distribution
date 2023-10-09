@@ -2427,6 +2427,21 @@
         "isLearnByExample": false
       },
       {
+        "name": "Hierarchical resource paths",
+        "url": "graphql-hierarchical-resource-paths",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "  GraphQL service advanced",
+    "column": 1,
+    "category": "Network libraries",
+    "samples": [
+      {
         "name": "Context object",
         "url": "graphql-context",
         "verifyBuild": true,
@@ -2483,21 +2498,6 @@
         "disablePlayground": true,
         "isLearnByExample": false
       },
-      {
-        "name": "Hierarchical resource paths",
-        "url": "graphql-hierarchical-resource-paths",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      }
-    ]
-  },
-  {
-    "title": "  GraphQL service advanced",
-    "column": 1,
-    "category": "Network libraries",
-    "samples": [
       {
         "name": "Dataloader",
         "url": "graphql-dataloader",
@@ -3589,6 +3589,154 @@
       {
         "name": "Basic authentication",
         "url": "rabbitmq-client-basic-auth",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "MQTT service",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Subscribe to messages",
+        "url": "mqtt-service-subscribe-message",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires an MQTT server",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "MQTT client",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Publish message",
+        "url": "mqtt-client-publish-message",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires an MQTT server",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "MQTT service security",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "SSL/TLS",
+        "url": "mqtt-service-ssl",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires an MQTT server",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Basic authentication",
+        "url": "mqtt-service-basic-authentication",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires an MQTT server",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "MQTT client security",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "SSL/TLS",
+        "url": "mqtt-client-ssl",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires an MQTT server",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Basic authentication",
+        "url": "mqtt-client-basic-authentication",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires an MQTT server",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "JMS service",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Consume message",
+        "url": "jms-service-consume-message",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "JMS message producer",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Produce message",
+        "url": "jms-producer-produce-message",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Transactions",
+        "url": "jms-producer-transaction",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "JMS message consumer",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Consume message",
+        "url": "jms-consumer-consume-message",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Manual acknowledgment",
+        "url": "jms-consumer-acknowledgement",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",

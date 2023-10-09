@@ -1,0 +1,2 @@
+description: How to send messages to a MQTT topic using a `mqtt:Client`.
+keywords: ballerina, ballerina by example, bbe, mqtt, publisher, iot
