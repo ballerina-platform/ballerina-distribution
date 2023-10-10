@@ -5,3 +5,5 @@ CVE-2023-34462
 CVE-2023-2976
 CVE-2023-3635
 CVE-2023-39017
+# netty vulnerability (remove when patch is added)
+CVE-2023-4586
