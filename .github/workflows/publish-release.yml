@@ -102,14 +102,14 @@ jobs:
           tags: ballerina/ballerina:release-test
           build-args: |
             BALLERINA_DIST=ballerina-${{ steps.version-set.outputs.sversion }}.zip
-      # - name: Run Trivy vulnerability scanner
-      #   uses: aquasecurity/trivy-action@master
-      #   with:
-      #     image-ref: 'ballerina/ballerina:release-test'
-      #     skip-dirs: 'ballerina/runtime/examples'
-      #     format: 'table'
-      #     exit-code: '1'
-      #     timeout: "10m0s"
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'ballerina/ballerina:release-test'
+          skip-dirs: 'ballerina/runtime/examples'
+          format: 'table'
+          exit-code: '1'
+          timeout: "10m0s"
       - name: cosign-installer
         uses: sigstore/cosign-installer@v3.0.3
       - name: Set up Node.js
