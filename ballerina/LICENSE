@@ -155,7 +155,7 @@ graphql-schema-file-generator-0.6.0.jar                                         
 okio-2.2.2.jar                                                                                      jar            apache2             
 function-2201.6.2.jar                                                      jar            apache2             
 syntax-api-calls-gen-2201.6.2.jar                                          jar            apache2             
-openapi-core-1.6.2-20230831-194800-fdf8c9d.jar                                                      jar            apache2             
+openapi-core-1.6.2.jar                                                      jar            apache2             
 okhttp-3.14.0.jar                                                                                   jar            apache2             
 org.wso2.securevault-1.0.0-wso2v2.jar                                                               bundle         apache2             
 org.eclipse.lsp4j.jsonrpc-0.12.0.jar                                                                bundle         epl2                
@@ -179,7 +179,7 @@ org.eclipse.lsp4j-0.15.0.jar                                                    
 bal-shell-service-2201.6.2.jar                                             jar            apache2             
 cloud-tooling-2.7.0.jar                                                                             jar            apache2             
 trigger-service-2201.6.2.jar                                               jar            apache2             
-openapi-ls-extension-1.6.2-20230831-194800-fdf8c9d.jar                                              jar            apache2             
+openapi-ls-extension-1.6.2.jar                                              jar            apache2             
 json-to-record-converter-2201.6.2.jar                                      jar            apache2             
 transaction-native-1.6.0.jar                                                                        jar            apache2             
 observe-internal-native-1.0.6.jar                                                                   jar            apache2             
