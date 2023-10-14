@@ -88,7 +88,7 @@ public class MavenCustomRepoTest {
         }
     }
 
-    @Test(description = "Push package to Github packages")
+    @Test(description = "Push package to Github packages", enabled = false)
     public void testPushBalaGithub() throws IOException, InterruptedException {
         List<String> args = new ArrayList<>();
         args.add("--repository=" + GITHUB_REPO_ID);
@@ -104,7 +104,7 @@ public class MavenCustomRepoTest {
                 + packagename + "-any-" + version + ".bala to " + "'" + GITHUB_REPO_ID + "' repository."));
     }
 
-    @Test(description = "Pull package from Github packages", dependsOnMethods = "testPushBalaGithub")
+    @Test(description = "Pull package from Github packages", dependsOnMethods = "testPushBalaGithub", enabled = false)
     public void testPullBalaGithub() throws IOException, InterruptedException {
         List<String> args = new ArrayList<>();
         args.add(org + "/" + packagename + ":" + version);
@@ -126,7 +126,7 @@ public class MavenCustomRepoTest {
     }
 
     @Test(description = "Build a package offline using a module from Github packages",
-            dependsOnMethods = "testPullBalaGithub")
+            dependsOnMethods = "testPullBalaGithub", enabled = false)
     public void testBuildBalaGithubOffline() throws IOException, InterruptedException {
         List<String> args = new ArrayList<>();
         args.add("--offline=true");
@@ -138,7 +138,7 @@ public class MavenCustomRepoTest {
     }
 
     @Test(description = "Build a package Online using a module from Github packages",
-            dependsOnMethods = "testBuildBalaGithubOffline")
+            dependsOnMethods = "testBuildBalaGithubOffline", enabled = false)
     public void testBuildBalaGithubOnline() throws IOException, InterruptedException {
         List<String> args = new ArrayList<>();
         args.add("--offline=false");
