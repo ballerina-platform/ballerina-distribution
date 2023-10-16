@@ -47,6 +47,7 @@ import static org.ballerina.projectapi.TestUtils.OUTPUT_CONTAIN_ERRORS;
 import static org.ballerina.projectapi.TestUtils.executeBuildCommand;
 import static org.ballerina.projectapi.TestUtils.executePullCommand;
 import static org.ballerina.projectapi.TestUtils.executePushCommand;
+import static org.ballerina.projectapi.TestUtils.executePackCommand;
 
 /**
  * Tests related to Maven repositories.
@@ -54,6 +55,7 @@ import static org.ballerina.projectapi.TestUtils.executePushCommand;
 public class MavenCustomRepoTest {
 
     private static final String org = "bctestorg";
+    private static final String platform = "any";
     private static final String packagename = "pact";
     private static final String version = "0.2.0";
     private static final String GITHUB_REPO_ID = "github1";
@@ -91,15 +93,26 @@ public class MavenCustomRepoTest {
     @Test(description = "Push package to Github packages")
     public void testPushBalaGithub() throws IOException, InterruptedException {
         List<String> args = new ArrayList<>();
-        args.add("--repository=" + GITHUB_REPO_ID);
-        Process build = executePushCommand(DISTRIBUTION_FILE_NAME, this.tempWorkspaceDirectory.resolve(packagename),
+        Process build = executePackCommand(DISTRIBUTION_FILE_NAME, this.tempWorkspaceDirectory.resolve(packagename),
                 args, this.envVariables);
         String buildErrors = getString(build.getErrorStream());
         if (!buildErrors.isEmpty()) {
             Assert.fail(OUTPUT_CONTAIN_ERRORS + buildErrors);
         }
-
         String buildOutput = getString(build.getInputStream());
+        Assert.assertTrue(buildOutput.contains("Creating bala\n" + "\ttarget/bala/" + org + "-"
+                + packagename + "-" + platform + "-" + version + ".bala"));
+
+        args = new ArrayList<>();
+        args.add("--repository=" + GITHUB_REPO_ID);
+        build = executePushCommand(DISTRIBUTION_FILE_NAME, this.tempWorkspaceDirectory.resolve(packagename),
+                args, this.envVariables);
+        buildErrors = getString(build.getErrorStream());
+        if (!buildErrors.isEmpty()) {
+            Assert.fail(OUTPUT_CONTAIN_ERRORS + buildErrors);
+        }
+
+        buildOutput = getString(build.getInputStream());
         Assert.assertTrue(buildOutput.contains("Successfully pushed target/bala/" + org + "-"
                 + packagename + "-any-" + version + ".bala to " + "'" + GITHUB_REPO_ID + "' repository."));
     }
