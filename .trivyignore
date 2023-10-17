@@ -9,3 +9,4 @@ CVE-2023-39017
 CVE-2023-4586
 # json vulnerability (remove when patch is added)
 CVE-2023-5072
+GHSA-xpw8-rcwv-8f8p
