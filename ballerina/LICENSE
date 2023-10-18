@@ -83,7 +83,7 @@ semver-checker-core-2201.7.3.jar                                                
 commons-compress-1.21.jar                                                                           bundle         apache2             
 shell-cli-2201.7.3.jar                                                                              jar            apache2             
 error-2201.7.3.jar                                                                                  jar            apache2             
-graphql-cli-0.7.1.jar                                                                               jar            mit                 
+graphql-cli-0.7.2.jar                                                                               jar            mit
 netty-codec-4.1.100.Final.jar                                                                       bundle         apache2
 jaeger-thrift-0.31.0.jar                                                                            jar            apache2             
 stream-2201.7.3.jar                                                                                 jar            apache2             
@@ -154,7 +154,7 @@ kotlin-stdlib-1.6.0.jar                                                         
 netty-transport-4.1.100.Final.jar                                                                   bundle         apache2
 okio-2.2.2.jar                                                                                      jar            apache2             
 function-2201.7.3.jar                                                                               jar            apache2             
-graphql-schema-file-generator-0.7.1.jar                                                             jar            apache2             
+graphql-schema-file-generator-0.7.2.jar                                                             jar            apache2
 syntax-api-calls-gen-2201.7.3.jar                                                                   jar            apache2             
 okhttp-3.14.0.jar                                                                                   jar            apache2             
 org.wso2.securevault-1.0.0-wso2v2.jar                                                               bundle         apache2             
