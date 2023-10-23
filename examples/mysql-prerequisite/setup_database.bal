@@ -62,10 +62,12 @@ public function main() returns sql:Error? {
                                     );`);
 
     // Adds the records to the `sales_order` table.
-    _ = check mysqlClient->execute(`INSERT INTO inventory VALUES
-                                    ("A-123", "Lemonade", "Beyonce", 18.98, 10);`);
-    _ = check mysqlClient->execute(`INSERT INTO inventory VALUES
-                                    ("A-321", "Renaissance", "Beyonce", 24.98, 100);`);
+    _ = check mysqlClient->execute(`INSERT INTO MUSIC_STORE.sales_order VALUES
+                                    ("S-123", "2022-12-09", "A-123", 2);`);
+    _ = check mysqlClient->execute(`INSERT INTO MUSIC_STORE.sales_order VALUES
+                                    ("S-321", "2022-12-09", "A-321", 1);`);
+    _ = check mysqlClient->execute(`INSERT INTO MUSIC_STORE.sales_order VALUES
+                                    ("S-456", "2022-12-10", "A-321", 3);`);
 
     check mysqlClient.close();
 }
