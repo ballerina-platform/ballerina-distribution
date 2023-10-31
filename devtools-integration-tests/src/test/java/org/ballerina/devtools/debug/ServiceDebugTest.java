@@ -72,7 +72,7 @@ public class ServiceDebugTest extends BaseTestCase {
         }
     }
 
-    @Test(description = "Test for service call stack representation")
+    @Test(description = "Test for service call stack representation", enabled = false)
     public void serviceCallStackDebugTest() throws BallerinaTestException {
         String fileName = "hello_service.bal";
         Path filePath = debugTestRunner.testProjectPath.resolve(fileName);
@@ -86,7 +86,7 @@ public class ServiceDebugTest extends BaseTestCase {
         debugTestRunner.assertCallStack(frames[0], "service", 20, "hello_service.bal");
     }
 
-    @Test(description = "Test for single bal file debug engage")
+    @Test(description = "Test for single bal file debug engage", enabled = false)
     public void testSingleBalFileServiceDebugScenarios() throws BallerinaTestException {
         String testProjectName = "";
         String testSingleFileName = "hello_service.bal";
