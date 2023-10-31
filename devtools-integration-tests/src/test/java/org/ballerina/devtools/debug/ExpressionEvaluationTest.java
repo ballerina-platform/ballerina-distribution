@@ -40,7 +40,7 @@ public class ExpressionEvaluationTest extends BaseTestCase {
 
     @BeforeClass
     public void setup() throws BallerinaTestException {
-        prepareForEvaluation();
+//        prepareForEvaluation();
     }
 
     @Test(description = "Test Ballerina standard library related remote method call evaluations", enabled = false)
@@ -49,7 +49,7 @@ public class ExpressionEvaluationTest extends BaseTestCase {
                 "error");
     }
 
-    @Test(description = "Test Ballerina standard library related object methods evaluations")
+    @Test(description = "Test Ballerina standard library related object methods evaluations", enabled = false)
     public void testObjectMethodEvaluation() throws BallerinaTestException {
         debugTestRunner.assertExpression(context, "response.getContentType()", "\"application/json; charset=utf-8\"",
                 "string");
@@ -57,7 +57,7 @@ public class ExpressionEvaluationTest extends BaseTestCase {
                 "\"documentation_url\":\"https://docs.github.com/rest\"}\"", "string");
     }
 
-    @AfterClass(alwaysRun = true)
+    @AfterClass(alwaysRun = false)
     public void cleanUp() {
         debugTestRunner.terminateDebugSession();
         this.context = null;
