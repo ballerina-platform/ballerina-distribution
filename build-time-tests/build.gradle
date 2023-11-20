@@ -27,8 +27,8 @@ configurations {
 
 dependencies {
     ballerinaDistribution project(path: ":ballerina", configuration: "ballerinaDistribution")
-    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-csv:2.12.3'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.3'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-csv:2.15.3'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.3'
 }
 
 task copySamples {
