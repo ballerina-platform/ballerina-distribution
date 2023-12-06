@@ -22,12 +22,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
-      - name: Set up JDK 11
-        uses: actions/setup-java@v2
+        uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '11'
+          java-version: '17.0.7'
       - name: Set version env variable
         id: version-set
         run: |
@@ -72,13 +72,14 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
           packageUser: ${{ secrets.BALLERINA_BOT_USERNAME }}
           packagePAT: ${{ secrets.BALLERINA_BOT_TOKEN }}
-          devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
+          devCentralToken: ${{ secrets.BALLERINA_CENTRAL_DEV_ACCESS_TOKEN }}
+          githubAccessToken: ${{ secrets.GITHUB_TOKEN }}
           ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
         run: |
           ./gradlew build -Pversion=${VERSION}
           ./gradlew release -Prelease.useAutomaticVersion=true -x test
       - name: Checkout docker repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: ballerina-platform/module-ballerina-docker
           path: module-ballerina-docker
@@ -121,28 +122,33 @@ jobs:
         run: |
           npm install -g github-cli
           gh --version
-      # - name: Get Markdown file
-      #   id: file-url
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
-      #   run: |
-      #     gh repo view ballerina-platform/ballerina-dev-website -b release-2201.7.0 --json url --jq '.clone_url'
-      #     gh api repos/ballerina-platform/ballerina-dev-website/contents/downloads/verify-ballerina-artifacts.md?ref=release-2201.7.0 -H 'Accept: application/vnd.github.v3.raw' > release_notes.md
-      # - name: Update Markdown file
-      #   run: |
-      #     branchName=$(echo ${{ github.ref }} | cut -d'/' -f3)
-      #     if ${{ github.event.inputs.isPreRelease }} == 'true'; then
-      #       echo "" > release_notes.md;
-      #     else sed -i 's/{{ version }}/${{ steps.version-set.outputs.taggedVersion }}/g' release_notes.md; sed -i 's/{{ branch }}/$branchName/g' release_notes.md; fi
-      # - name: Read release notes from file
-      #   id: release_notes
-      #   uses: actions/github-script@v4
-      #   with:
-      #     github-token: ${{ secrets.BALLERINA_BOT_TOKEN }}
-      #     script: |
-      #       const fs = require('fs');
-      #       const releaseNotes = fs.readFileSync('release_notes.md', 'utf8');
-      #       core.setOutput('notes', releaseNotes);
+      - name: Get Markdown file
+        id: file-url
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh repo view ballerina-platform/ballerina-dev-website --json url --jq '.clone_url'
+          gh api repos/ballerina-platform/ballerina-dev-website/contents/downloads/verify-ballerina-artifacts.md -H 'Accept: application/vnd.github.v3.raw' > release_notes.md
+          sed -i '1,10d' release_notes.md
+      - name: Retrieve Branch
+        id: retrieve-branch
+        run: |
+          branchName=$(echo ${{ github.ref }} | cut -d'/' -f3)
+          echo "::set-output name=branchName::$branchName"
+      - name: Update Markdown file
+        run: |
+          if ${{ github.event.inputs.isPreRelease }} == 'true'; then
+            echo "" > release_notes.md;
+          else sed -i 's/{{ version }}/${{ steps.version-set.outputs.taggedVersion }}/g' release_notes.md; sed -i 's/{{ branch }}/${{ steps.retrieve-branch.outputs.branchName }}/g' release_notes.md; fi
+      - name: Read release notes from file
+        id: release_notes
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.BALLERINA_BOT_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const releaseNotes = fs.readFileSync('release_notes.md', 'utf8');
+            core.setOutput('notes', releaseNotes);
       - name: Create release
         id: create_release
         uses: actions/create-release@v1
@@ -151,7 +157,7 @@ jobs:
         with:
           tag_name: "v${{ steps.version-set.outputs.taggedVersion }}"
           release_name: ${{ steps.version-set.outputs.taggedVersion }}
-          # body: ${{ steps.release_notes.outputs.notes }}
+          body: ${{ steps.release_notes.outputs.notes }}
           draft: false
           prerelease: ${{ github.event.inputs.isPreRelease }}
       - name: Create linux-deb Installer
@@ -457,11 +463,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-      - name: Set up JDK 11
+      - name: Set up JDK 17
         uses: actions/setup-java@v2
         with:
           distribution: 'temurin'
-          java-version: '11'
+          java-version: '17.0.7'
       - name: Download MacOS Intaller Zip
         run: |
           wget https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-${{ needs.publish-release.outputs.project-version }}-macos.zip
@@ -594,11 +600,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-      - name: Set up JDK 11
+      - name: Set up JDK 17
         uses: actions/setup-java@v2
         with:
           distribution: 'temurin'
-          java-version: '11'
+          java-version: '17.0.7'
       - uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '2.1.x'
