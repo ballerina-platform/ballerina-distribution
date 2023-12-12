@@ -1,0 +1,13 @@
+[package]
+org = "bctestorg"
+name = "test"
+version = "0.1.0"
+
+[build-options]
+observabilityIncluded = true
+
+ [[dependency]]
+ org = "bctestorg"
+ name = "pact"
+ version = "0.2.0"
+ repository="github1"
