@@ -32,7 +32,10 @@ jobs:
           githubAccessToken: ${{ secrets.GITHUB_TOKEN }}
           ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
           TEST_MODE_ACTIVE: true
-        run:  ballerina-lang/./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue publishToMavenLocal
+        run:  |
+          cd ballerina-lang
+          ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue publishToMavenLocal
+          cd ..
       - name: Checkout Dev Tools Repository
         uses: actions/checkout@v3
         with:
@@ -47,12 +50,14 @@ jobs:
           githubAccessToken: ${{ secrets.GITHUB_TOKEN }}
           ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
           TEST_MODE_ACTIVE: true
-        run:  ballerina-dev-tools/./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue publishToMavenLocal
+        run:  |
+          cd ballerina-dev-tools
+          ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue publishToMavenLocal
+          cd ..
       - name: Checkout Distribution Repository
         uses: actions/checkout@v3
         with:
           ref: worker_change
-          path: ballerina-distribution
       - name: Get daily docker version
         id: version
         run: echo "::set-output name=version::$(date +'%Y-%m-%d')"
