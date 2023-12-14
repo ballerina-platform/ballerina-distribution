@@ -62,6 +62,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: worker_change
+          repository: ballerina-platform/ballerina-distribution
           path: ballerina-distribution
       - name: Get daily docker version
         id: version
