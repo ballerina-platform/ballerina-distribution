@@ -17,6 +17,10 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17.0.7'
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.22.1'
       - name: Checkout Lang Repository
         uses: actions/checkout@v3
         with:
@@ -80,7 +84,7 @@ jobs:
           githubAccessToken: ${{ secrets.GITHUB_TOKEN }}
           ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
           TEST_MODE_ACTIVE: true
-        run: ./gradlew clean build --stacktrace --scan -x test  --console=plain --no-daemon --continue -x project-api-tests:test
+        run: ./gradlew clean build --stacktrace --scan -x test --console=plain --no-daemon --continue -x project-api-tests:test
       - name: Create linux-deb
         id: run_installers_deb
         run: |
