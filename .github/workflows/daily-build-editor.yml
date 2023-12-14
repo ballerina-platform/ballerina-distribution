@@ -62,12 +62,14 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: worker_change
+          path: ballerina-distribution
       - name: Get daily docker version
         id: version
         run: echo "::set-output name=version::$(date +'%Y-%m-%d')"
       - name: Get project version
         id: project-version
         run: |
+          cd ballerina-distribution
           SHORT_VERSION=$((grep -w "version" | cut -d= -f2 | cut -d- -f1 | xargs) < gradle.properties)
           DIST_VERSION=$((grep -w "version" | cut -d= -f2 | xargs) < gradle.properties)
           LANG_VERSION=$((grep -w "ballerinaLangVersion" | cut -d= -f2 | cut -d- -f1 | xargs) < gradle.properties)
@@ -84,17 +86,19 @@ jobs:
           githubAccessToken: ${{ secrets.GITHUB_TOKEN }}
           ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
           TEST_MODE_ACTIVE: true
-        run: ./gradlew clean build --stacktrace --scan -x test --console=plain --no-daemon --continue -x project-api-tests:test
+        run: |
+            cd ballerina-distribution
+            ./gradlew clean build --stacktrace --scan -x test --console=plain --no-daemon --continue -x project-api-tests:test
       - name: Create linux-deb
         id: run_installers_deb
         run: |
-          cd installers/linux-deb
+          cd ballerina-distribution/installers/linux-deb
           ./build-ballerina-linux-deb-x64.sh -v ${{ steps.project-version.outputs.version }} -p ./../../ballerina/build/distributions
           echo "Created linux-deb successfully"
       - name: Create linux-rpm
         id: run_installers_rpm
         run: |
-          cd installers/linux-rpm
+          cd ballerina-distribution/installers/linux-rpm
           ./build-ballerina-linux-rpm-x64.sh -v ${{ steps.project-version.outputs.version }} -p ./../../ballerina/build/distributions
           echo "Created linux-rpm successfully"
       - name: Generate Hashes
@@ -107,56 +111,34 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Ballerina ZIP
-          path: ballerina/build/distributions/ballerina-*-swan-lake.zip
+          path: ballerina-distribution/ballerina/build/distributions/ballerina-*-swan-lake.zip
       - name: Archive Ballerina Short Name ZIP
         uses: actions/upload-artifact@v2
         with:
           name: Ballerina Short Name ZIP
-          path: ballerina/build/distributions/ballerina-${{ steps.project-version.outputs.sversion }}.zip
+          path: ballerina-distribution/ballerina/build/distributions/ballerina-${{ steps.project-version.outputs.sversion }}.zip
       - name: Archive Linux deb
         uses: actions/upload-artifact@v2
         with:
           name: Linux Installer deb
-          path: installers/linux-deb/target/ballerina-*-linux-x64.deb
+          path: ballerina-distribution/installers/linux-deb/target/ballerina-*-linux-x64.deb
       - name: Archive Linux rpm
         uses: actions/upload-artifact@v2
         with:
           name: Linux Installer rpm
-          path: installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-*-linux-x64.rpm
+          path: ballerina-distribution/installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-*-linux-x64.rpm
       - name: Archive MacOS Installer ZIP
         uses: actions/upload-artifact@v2
         with:
           name: MacOS Installer ZIP
-          path: ballerina/build/distributions/ballerina-*-macos.zip
+          path: ballerina-distribution/ballerina/build/distributions/ballerina-*-macos.zip
       - name: Archive MacOS-ARM Installer ZIP
         uses: actions/upload-artifact@v2
         with:
           name: MacOS-ARM Installer ZIP
-          path: ballerina/build/distributions/ballerina-*-macos-arm.zip
+          path: ballerina-distribution/ballerina/build/distributions/ballerina-*-macos-arm.zip
       - name: Archive Windows Installer ZIP
         uses: actions/upload-artifact@v2
         with:
           name: Windows Installer ZIP
-          path: ballerina/build/distributions/ballerina-*-windows.zip
-      - name: Archive Linux deb Hashes
-        uses: actions/upload-artifact@v2
-        with:
-          name: Linux deb Hashes
-          path: ballerina-${{ steps.project-version.outputs.version }}-linux-x64.deb.sha256
-      - name: Archive Linux rpm Hashes
-        uses: actions/upload-artifact@v2
-        with:
-          name: Linux rpm Hashes
-          path: ballerina-${{ steps.project-version.outputs.version }}-linux-x64.rpm.sha256
-      - name: Archive Ballerina Zip Hashes
-        uses: actions/upload-artifact@v2
-        with:
-          name: Ballerina Zip Hashes
-          path: ballerina-${{ steps.project-version.outputs.version }}.zip.sha256
-      - name: Archive Ballerina Short Name Hashes
-        uses: actions/upload-artifact@v2
-        with:
-          name: Ballerina Short Name Hashes
-          path: ballerina-${{ steps.project-version.outputs.sversion }}.zip.sha256
-      - name: Install Ballerina DEB
-        run: sudo dpkg -i installers/linux-deb/target/ballerina-*-linux-x64.deb
+          path: ballerina-distribution/ballerina/build/distributions/ballerina-*-windows.zip
