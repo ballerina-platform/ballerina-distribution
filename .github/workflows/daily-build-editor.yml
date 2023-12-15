@@ -2,14 +2,14 @@ name: Daily build editor
 
 on:
   workflow_dispatch:
-  # schedule:
-  #   - cron:  '0 2 * * *'    # 07:30 in LK time (GMT+5:30)
+  schedule:
+    - cron:  '0 2 * * *'    # 07:30 in LK time (GMT+5:30)
 
 jobs:
   ubuntu-build:
 
     runs-on: ubuntu-latest
-    # if: github.repository_owner == 'ballerina-platform'
+    if: github.repository_owner == 'ballerina-platform'
 
     steps:
       - name: Set up JDK 17
