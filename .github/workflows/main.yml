@@ -29,7 +29,7 @@ jobs:
         env:
           packageUser: ${{ github.actor }}
           packagePAT: ${{ secrets.GITHUB_TOKEN }}
-          devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
+          devCentralToken: ${{ secrets.BALLERINA_CENTRAL_DEV_ACCESS_TOKEN }}
           ballerinaBotToken: $ {{ secrets.BALLERINA_BOT_TOKEN }}
         run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue
       - name: Build Ballerina Distribution Skip Tests
@@ -37,7 +37,7 @@ jobs:
         env:
           packageUser: ${{ github.actor }}
           packagePAT: ${{ secrets.GITHUB_TOKEN }}
-          devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
+          devCentralToken: ${{ secrets.BALLERINA_CENTRAL_DEV_ACCESS_TOKEN }}
         run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue -x test
       - name: Archive Ballerina ZIP
         uses: actions/upload-artifact@v2
