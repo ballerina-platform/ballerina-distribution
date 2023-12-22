@@ -47,7 +47,7 @@ jobs:
           echo "::set-output name=sversion::$SHORT_VERSION"
           echo "::set-output name=taggedVersion::$TAGGED_VERSION"
           echo "::set-output name=longVersion::$LONG_VERSION"
-          echo "::set-output name=langversion::$LANG_VERSION"
+          echo "::set-output name=langVersion::$LANG_VERSION"
       - name: Pre release depenency version update
         env:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
@@ -427,7 +427,7 @@ jobs:
         run: sudo dpkg -i installers/linux-deb/target/ballerina-*-linux-x64.deb
       - name: Update Installer Test Configs
         run: |
-          DISPLAY_TEXT=${{ steps.project-version.outputs.langversion }}
+          DISPLAY_TEXT=${{ steps.version-set.outputs.langVersion }}
           SWAN_LAKE_LATEST_VERSION="swan-lake-"+$DISPLAY_TEXT
           perl -pi -e "s/^\s*swan-lake-latest-version-display-text=.*/swan-lake-latest-version-display-text=$DISPLAY_TEXT/" ballerina-test-automation/gradle.properties
           perl -pi -e "s/^\s*swan-lake-latest-version=.*/swan-lake-latest-version=$SWAN_LAKE_LATEST_VERSION/" ballerina-test-automation/gradle.properties
@@ -447,7 +447,7 @@ jobs:
       project-version: ${{ steps.version-set.outputs.longVersion }}
       upload-asset-url: ${{ steps.create_release.outputs.upload_url }}
       release-version: ${{ steps.version-set.outputs.taggedVersion }}
-      lang-version: ${{ steps.version-set.outputs.langversion }}
+      lang-version: ${{ steps.version-set.outputs.langVersion }}
 
   macos-installer-build:
     name: MacOS Installer Build
