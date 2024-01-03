@@ -1,2 +1,2 @@
-description: BBE on how constraint validation can be done in the service.
+description: This Ballerina example is on how constraint validation can be done to the payload in the service.
 keywords: ballerina, ballerina by example, bbe, http, constraint, validation

@@ -1,2 +1,2 @@
-description: BBE on how to secure HTTP service with JWT Auth in Ballerina.
+description: This Ballerina example is on how to secure HTTP service with JWT Authentication in Ballerina.
 keywords: ballerina, ballerina by example, bbe, http, auth, jwt auth
