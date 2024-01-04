@@ -1,2 +1,2 @@
-description: This Ballerina example is on how to extract the query parameters in an HTTP resource function.
+description: This example is on how to extract the query parameters in an HTTP resource function.
 keywords: ballerina, ballerina by example, bbe, http service, query parameter
