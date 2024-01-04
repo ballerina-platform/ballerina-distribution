@@ -1,2 +1,2 @@
-description: BBE on producing and consuming a message from a subject in the NATS basic server using Ballerina.
+description: This example is on sending a reply message to a request received to a NATS subject.
 keywords: ballerina, ballerina by example, bbe, nats, basic, server, request, reply

@@ -1,2 +1,2 @@
-description: BBE on consuming messages from a RabbitMQ queue in an asynchronous manner using Ballerina.
+description: This example on consuming messages from a RabbitMQ queue in an asynchronous manner.
 keywords: ballerina, ballerina by example, rabbitmq, consumer, bbe, service, asynchronous
