@@ -1,2 +1,2 @@
-description: This example is on producing a message to a subject in the NATS basic server.
+description: This example demonstrates producing a message to a subject in the NATS basic server.
 keywords: ballerina, ballerina by example, bbe, nats, basic, server, publish, subscribe

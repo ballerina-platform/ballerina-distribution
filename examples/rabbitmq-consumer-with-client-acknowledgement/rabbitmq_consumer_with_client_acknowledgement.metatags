@@ -1,2 +1,2 @@
-description: This example is on manually acknowledging the messages consumed from a RabbitMQ queue.
+description: This example demonstrates manually acknowledging the messages consumed from a RabbitMQ queue.
 keywords: ballerina, ballerina by example, rabbitmq, consumer, bbe, acknowledgment

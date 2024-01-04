@@ -1,2 +1,2 @@
-description: This example is on consuming messages from a subject in the NATS JetStream server.
+description: This example demonstrates consuming messages from a subject in a NATS JetStream server.
 keywords: ballerina, ballerina by example, bbe, nats, jetstream, server, publish, subscribe

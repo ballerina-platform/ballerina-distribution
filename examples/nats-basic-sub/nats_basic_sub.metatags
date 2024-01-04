@@ -1,2 +1,2 @@
-description: This example is on consuming messages from a NATS subject in the NATS basic server.
+description: This example demonstrates consuming messages from a NATS subject in a basic NATS server.
 keywords: ballerina, ballerina by example, bbe, nats, basic, server, publish, subscribe

@@ -1,2 +1,2 @@
-description: This example on consuming messages using a secured connection with basic authentication.
+description: This example demonstrates consuming messages using a secured connection with basic authentication.
 keywords: ballerina, ballerina by example, rabbitmq, ssl, tls, authentication, credentials
