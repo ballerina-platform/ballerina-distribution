@@ -1,2 +1,2 @@
-description: BBE on how to use a `kafka:Consumer` as a payload consumer.
+description: This examples shows how to use a `kafka:Consumer` as a payload consumer.
 keywords: ballerina, ballerina by example, bbe, kafka, consumer, client
