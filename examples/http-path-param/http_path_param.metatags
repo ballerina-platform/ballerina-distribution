@@ -1,2 +1,2 @@
-description: This Ballerina example is on how to extract the path parameters in a Ballerina resource function.
+description: This example is on how to extract the path parameters in a Ballerina resource function.
 keywords: ballerina, ballerina by example, bbe, http, path param

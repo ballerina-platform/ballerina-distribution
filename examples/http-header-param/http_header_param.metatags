@@ -1,2 +1,2 @@
-description: This Ballerina example is on how to use `@http:Header` annotation to retrieve HTTP headers.
+description: This example is on how to use the `@http:Header` annotation to retrieve HTTP headers.
 keywords: ballerina, ballerina by example, bbe, http, http-headers

@@ -1,2 +1,2 @@
-description: This Ballerina example demonstrates how to manually handle HTTP errors in Ballerina.
+description: This example demonstrates how to handle HTTP errors manually in Ballerina.
 keywords: ballerina, ballerina by example, bbe, http, interceptor, error
