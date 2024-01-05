@@ -1,2 +1,2 @@
-description: This example demonstrates producing a message to a NATS subject using a secured connection.
+description: This example demonstrates producing a message to a NATS subject using a connection with basic authentication.
 keywords: ballerina, ballerina by example, bbe, nats, basic, ssl, tls, authentication
