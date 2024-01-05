@@ -1,2 +1,2 @@
-description: BBE on transactionally acknowledging messages consumed from a RabbitMQ queue using Ballerina.
+description: This example demonstrates transactionally acknowledging messages consumed from a RabbitMQ queue.
 keywords: ballerina, ballerina by example, rabbitmq, bbe, consumer, transaction

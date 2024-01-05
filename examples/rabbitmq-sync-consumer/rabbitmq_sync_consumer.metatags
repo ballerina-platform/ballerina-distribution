@@ -1,2 +1,2 @@
-description: BBE on consuming messages using a secured connection.
+description: This example demonstrates consuming messages from a RabbitMQ queue synchronously.
 keywords: ballerina, ballerina by example, rabbitmq, pull, consumer, client, bbe
