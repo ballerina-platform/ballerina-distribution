@@ -106,6 +106,7 @@ jobs:
           echo "Created linux-rpm successfully"
       - name: Archive Ballerina ZIP
         uses: actions/upload-artifact@v2
+        id: artifact-upload
         with:
           name: Ballerina ZIP
           path: ballerina-distribution/ballerina/build/distributions/ballerina-*-swan-lake.zip
@@ -139,3 +140,51 @@ jobs:
         with:
           name: Windows Installer ZIP
           path: ballerina-distribution/ballerina/build/distributions/ballerina-*-windows.zip
+      - name: Send release notification
+        shell: bash
+        run: |
+          body=$(cat << EOF
+          {
+          "cards": [
+              { 
+              "header": {
+                  "title": "Daily Build",
+              },
+              "sections": [
+                  {
+                  "widgets": [
+                      {
+                      "keyValue": {
+                          "topLabel": "Ballerina Distribution",
+                          "content": "v2201.9.0",
+                          "onClick": {
+                          "openLink": {
+                              "url": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                          }
+                          },
+                          "iconUrl": "https://lh6.googleusercontent.com/proxy/R9Rx8vYNd-_HZn58ckf5PNX7RMlC6P-B75fB7UQ_GFH5R0UwtfJ1gVNARBvH1us8LBuK4NVFsvMGnwZkm-H2_9ACwH_j0lQmExR1SRMNGlFcbrm_1O7foFpqqOiVzA",
+                          "button": {
+                          "textButton": {
+                              "text": "Download ZIP",
+                              "onClick": {
+                              "openLink": {
+                                  "url": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts/${{ steps.artifact-upload.outputs.artifact-id }}"
+                              }
+                              }
+                          }
+                          }
+                      }
+                      }
+                  ]
+                  }
+              ]
+              }
+          ]
+          }
+          EOF
+          )
+          curl \
+          -X POST \
+          -H 'Content-Type: application/json' \
+          "https://chat.googleapis.com/v1/spaces/AAAApvQDm3o/messages?key=${{ secrets.EDITOR_CHAT_BOT_KEY }}&token=${{ secrets.EDITOR_CHAT_BOT_TOKEN }}" \
+          -d "$body"
