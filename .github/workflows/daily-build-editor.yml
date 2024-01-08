@@ -103,7 +103,7 @@ jobs:
           ./build-ballerina-linux-rpm-x64.sh -v ${{ steps.project-version.outputs.version }} -p ./../../ballerina/build/distributions
           echo "Created linux-rpm successfully"
       - name: Archive Ballerina ZIP
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         id: artifact-upload
         with:
           name: Ballerina ZIP
