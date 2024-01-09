@@ -29,6 +29,7 @@ dependencies {
     testImplementation "net.lingala.zip4j:zip4j:${netLingalaZip4jVersion}"
     testImplementation "commons-io:commons-io:${commonsIoVersion}"
     testImplementation "org.apache.commons:commons-lang3:${commonsLang3Version}"
+//    testImplementation "org.msgpack:msgpack-core:${msgpackCoreVersion}"
 
     jBallerinaDistribution project(path: ":ballerina", configuration: "jBallerinaDistribution")
     ballerinaDistribution project(path: ":ballerina", configuration: "ballerinaDistribution")
