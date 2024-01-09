@@ -1,2 +1,2 @@
-description: A GraphQL service endpoint written in Ballerina
-keywords: ballerina, ballerina by example, bbe, graphql, graphql union type
+description: This example demonstrates defining union types as defined in the GraphQL specification.
+keywords: ballerina, ballerina by example, bbe, graphql, service, union type

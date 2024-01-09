@@ -1,2 +1,2 @@
-description: A GraphQL service endpoint written in Ballerina.
-keywords: ballerina, ballerina by example, bbe, graphql, graphql field
+description: This example demonstrates exposing information about a GraphQL field in a document.
+keywords: ballerina, ballerina by example, bbe, graphql, field
