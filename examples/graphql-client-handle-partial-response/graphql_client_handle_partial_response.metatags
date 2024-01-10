@@ -1,2 +1,2 @@
-description: This example demonstrates handling partial data returned along with errors.
+description: This example demonstrates handling partial data returned along with errors, by a GraphQL client.
 keywords: ballerina, ballerina by example, bbe, graphql, client, query, partial response

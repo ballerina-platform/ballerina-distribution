@@ -1,2 +1,2 @@
-description: This example demonstrates exposing information about a GraphQL field in a document.
+description: This example demonstrates accessing information of a GraphQL field in a document.
 keywords: ballerina, ballerina by example, bbe, graphql, field

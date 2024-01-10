@@ -1,2 +1,2 @@
-description: This example demonstrates defining union types as defined in the GraphQL specification.
+description: This example demonstrates defining union types in a Ballerina GraphQL service.
 keywords: ballerina, ballerina by example, bbe, graphql, service, union type
