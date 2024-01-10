@@ -1,2 +1,2 @@
-description: This example demonstrates handling errors that are returned by a GraphQL service.
+description: This example demonstrates handling errors in a Ballerina GraphQL service.
 keywords: ballerina, ballerina by example, bbe, graphql, service, error handling
