@@ -1,2 +1,2 @@
-description: This example demonstrates adding interceptors for GraphQL requests to execute custom logic.
+description: This example demonstrates using interceptors on GraphQL services to execute custom logic.
 keywords: ballerina, ballerina by example, bbe, graphql, service, interceptors

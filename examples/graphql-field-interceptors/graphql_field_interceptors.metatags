@@ -1,2 +1,2 @@
-description: This example demonstrates executing custom logic by adding interceptors via GraphQL resolver functions.
+description: This example demonstrates using interceptors on GraphQL remote and resource methods to execute custom logic.
 keywords: ballerina, ballerina by example, bbe, graphql, service, interceptors, resolver functions
