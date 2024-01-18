@@ -119,7 +119,7 @@ jobs:
       - name: Process docker
         id: process-docker
         run: |
-          git clone --single-branch --branch master https://github.com/ballerina-platform/module-ballerina-docker
+          git clone --single-branch --branch java11 https://github.com/ballerina-platform/module-ballerina-docker
           DOCKER_REPO='module-ballerina-docker'
           echo "::set-output name=dockerRepo::$DOCKER_REPO"
 
