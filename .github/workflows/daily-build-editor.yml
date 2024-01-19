@@ -56,7 +56,6 @@ jobs:
           TEST_MODE_ACTIVE: true
         run:  |
           cd ballerina-dev-tools
-          sed -i 's/ballerinaLangVersion=[0-9]\+\(\.[0-9]\+\)\{2\}-[0-9]\+-[0-9a-f]\+/ballerinaLangVersion=SNAPSHOT/' gradle.properties
           ./gradlew clean build --stacktrace --scan -x test  --console=plain --no-daemon --continue publishToMavenLocal
           cd ..
       - name: Checkout Distribution Repository
