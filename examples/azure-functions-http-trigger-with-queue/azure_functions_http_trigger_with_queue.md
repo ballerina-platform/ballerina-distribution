@@ -23,7 +23,7 @@ Follow the steps below to write the function.
 
 2. Replace the content of the generated Ballerina file with the content below.
 
-::: code azure-functions-http-trigger-with-queue.bal :::
+::: code azure_functions_http_trigger_with_queue.bal :::
 
 ## Build the function
 

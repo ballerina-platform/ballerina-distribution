@@ -24,7 +24,7 @@ Follow the steps below to write the function.
 
 2. Replace the content of the generated Ballerina file with the content below.
 
-::: code azure-functions-hello-world.bal :::
+::: code azure_functions_hello_world.bal :::
 
 ## Build the function
 
