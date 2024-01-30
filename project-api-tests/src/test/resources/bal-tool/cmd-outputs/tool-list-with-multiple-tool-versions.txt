@@ -1,4 +1,4 @@
-|TOOL ID               |VERSION         |
-|----------------------|----------------|
-|disttest              |  1.1.0         |
-|disttest              |* 1.0.0         |
+|TOOL ID               |VERSION         |REPO       |
+|----------------------|----------------|-----------|
+|disttest              |  1.1.0         |central    |
+|disttest              |* 1.0.0         |central    |

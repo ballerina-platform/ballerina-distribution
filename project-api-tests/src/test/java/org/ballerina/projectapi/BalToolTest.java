@@ -22,6 +22,7 @@ import io.ballerina.projects.BalToolsManifest;
 import io.ballerina.projects.BalToolsToml;
 import io.ballerina.projects.internal.BalToolsManifestBuilder;
 import io.ballerina.projects.util.ProjectUtils;
+import org.apache.commons.lang3.tuple.Pair;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeGroups;
@@ -63,6 +64,12 @@ public class BalToolTest {
     private static final String nonExistingVersion = "1.0.3";
     private static final String incompatibleDistVersion = "1.0.4";
     private static final String packageName = "disttest";
+    private static final String PULL = "pull";
+    private static final String REMOVE = "remove";
+    private static final String UPDATE = "update";
+    private static final String USE = "use";
+    private static final String LIST = "list";
+    private static final String SEARCH = "search";
     private Map<ToolSubCommand, ToolEnvironment> toolEnvironments;
 
     @BeforeClass()
@@ -93,10 +100,10 @@ public class BalToolTest {
         }
     }
 
-    @Test(description = "Pull tool without specifying a version", groups = {"pull"})
+    @Test(description = "Pull a tool without specifying a version", groups = {"pull"})
     public void testPullToolWithoutVersion() throws IOException, InterruptedException {
         Process cmdExec = executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("pull", toolId)), toolEnvironments.get(ToolSubCommand.PULL).envVariables);
+                new ArrayList<>(Arrays.asList(PULL, toolId)), toolEnvironments.get(ToolSubCommand.PULL).envVariables);
         String cmdErrors = getString(cmdExec.getErrorStream());
         if (!cmdErrors.isEmpty()) {
             Assert.fail(OUTPUT_CONTAIN_ERRORS + cmdErrors);
@@ -109,7 +116,7 @@ public class BalToolTest {
             Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedOutput + "\nactual output:" + cmdOutput);
         }
 
-        // check for tool availability in local env
+        // Check for tool availability in bal-tools.toml
         BalToolsToml balToolsToml = BalToolsToml.from(toolEnvironments.get(ToolSubCommand.PULL).balToolsTomlPath);
         Optional<BalToolsManifest.Tool> toolOpt = BalToolsManifestBuilder.from(balToolsToml).build()
                 .getActiveTool(toolId);
@@ -122,18 +129,25 @@ public class BalToolTest {
         Assert.assertEquals(tool.org(), orgName);
         Assert.assertEquals(tool.name(), packageName);
 
+        // Check for tool availability in local cache
         Path toolVersionCachePath = toolEnvironments.get(ToolSubCommand.PULL).centralCachePath
                 .resolve(Path.of(tool.org(), tool.name(), tool.version()));
         if (!Files.exists(toolVersionCachePath)) {
             Assert.fail("Tool " + toolId + ":" + latestVersion + " is not available in local cache");
         }
+
+        // Execute the tool
+        Pair<String, String> outputs = executeHelpFlagOfTool(
+                toolId, toolEnvironments.get(ToolSubCommand.PULL).envVariables);
+        Assert.assertEquals("", outputs.getLeft());
+        Assert.assertEquals(outputs.getRight(), readExpectedCmdOutsAsString("tool-execute-specific-help-1.1.0.txt"));
     }
 
-    @Test(description = "Pull tool again without specifying a version",
+    @Test(description = "Pull a tool again without specifying a version",
             dependsOnMethods = "testPullToolWithoutVersion", groups = {"pull"})
     public void testPullToolAgainWithoutVersion() throws IOException, InterruptedException {
         Process cmdExec = executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("pull", toolId)), toolEnvironments.get(ToolSubCommand.PULL).envVariables);
+                new ArrayList<>(Arrays.asList(PULL, toolId)), toolEnvironments.get(ToolSubCommand.PULL).envVariables);
         String cmdErrors = getString(cmdExec.getErrorStream());
         if (!cmdErrors.isEmpty()) {
             Assert.fail(OUTPUT_CONTAIN_ERRORS + cmdErrors);
@@ -146,7 +160,7 @@ public class BalToolTest {
             Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedOutput + "\nactual output:" + cmdOutput);
         }
 
-        // check for tool availability in local env
+        // Check for tool availability in bal-tools.toml
         BalToolsToml balToolsToml = BalToolsToml.from(toolEnvironments.get(ToolSubCommand.PULL).balToolsTomlPath);
         Optional<BalToolsManifest.Tool> toolOpt = BalToolsManifestBuilder.from(balToolsToml).build()
                 .getActiveTool(toolId);
@@ -159,19 +173,26 @@ public class BalToolTest {
         Assert.assertEquals(tool.org(), orgName);
         Assert.assertEquals(tool.name(), packageName);
 
+        // Check for tool availability in local cache
         Path toolVersionCachePath = toolEnvironments.get(ToolSubCommand.PULL).centralCachePath
                 .resolve(Path.of(tool.org(), tool.name(), tool.version()));
         if (!Files.exists(toolVersionCachePath)) {
             Assert.fail("Tool " + toolId + ":" + latestVersion + " is not available in local cache");
         }
+
+        // Execute the tool
+        Pair<String, String> outputs = executeHelpFlagOfTool(
+                toolId, toolEnvironments.get(ToolSubCommand.PULL).envVariables);
+        Assert.assertEquals("", outputs.getLeft());
+        Assert.assertEquals(outputs.getRight(), readExpectedCmdOutsAsString("tool-execute-specific-help-1.1.0.txt"));
     }
 
-    @Test(description = "Pull tool with a specific version",
+    @Test(description = "Pull a tool with a specific version",
             dependsOnMethods = {"testPullToolAgainWithoutVersion"}, groups = {"pull"})
     public void testPullToolWithASpecificVersion() throws IOException, InterruptedException {
         String toolIdAndVersion = toolId + ":" + specificVersion;
         Process cmdExec = executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("pull", toolIdAndVersion)),
+                new ArrayList<>(Arrays.asList(PULL, toolIdAndVersion)),
                 toolEnvironments.get(ToolSubCommand.PULL).envVariables);
         String cmdErrors = getString(cmdExec.getErrorStream());
         if (!cmdErrors.isEmpty()) {
@@ -185,7 +206,7 @@ public class BalToolTest {
             Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedOutput + "\nactual output:" + cmdOutput);
         }
 
-        // check for tool availability in local env
+        // Check for tool availability in bal-tools.toml
         BalToolsToml balToolsToml = BalToolsToml.from(toolEnvironments.get(ToolSubCommand.PULL).balToolsTomlPath);
         Optional<BalToolsManifest.Tool> toolOpt = BalToolsManifestBuilder.from(balToolsToml).build()
                 .getActiveTool(toolId);
@@ -198,19 +219,26 @@ public class BalToolTest {
         Assert.assertEquals(tool.org(), orgName);
         Assert.assertEquals(tool.name(), packageName);
 
+        // Check for tool availability in local cache
         Path toolVersionCachePath = toolEnvironments.get(ToolSubCommand.PULL).centralCachePath
                 .resolve(Path.of(tool.org(), tool.name(), tool.version()));
         if (!Files.exists(toolVersionCachePath)) {
             Assert.fail("Tool " + toolId + ":" + specificVersion + " is not available in local cache");
         }
+
+        // Execute the tool
+        Pair<String, String> outputs = executeHelpFlagOfTool(
+                toolId, toolEnvironments.get(ToolSubCommand.PULL).envVariables);
+        Assert.assertEquals("", outputs.getLeft());
+        Assert.assertEquals(outputs.getRight(), readExpectedCmdOutsAsString("tool-execute-specific-help-1.0.0.txt"));
     }
 
-    @Test(description = "Pull tool again with a specific version",
+    @Test(description = "Pull a tool again with a specific version",
             dependsOnMethods = "testPullToolWithASpecificVersion", groups = {"pull"})
     public void testPullToolAgainWithASpecificVersion() throws IOException, InterruptedException {
         String toolIdAndVersion = toolId + ":" + specificVersion;
         Process cmdExec = executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("pull", toolIdAndVersion)),
+                new ArrayList<>(Arrays.asList(PULL, toolIdAndVersion)),
                 toolEnvironments.get(ToolSubCommand.PULL).envVariables);
         String cmdErrors = getString(cmdExec.getErrorStream());
         if (!cmdErrors.isEmpty()) {
@@ -224,7 +252,7 @@ public class BalToolTest {
             Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedOutput + "\nactual output:" + cmdOutput);
         }
 
-        // check for tool availability in local env
+        // Check for tool availability in bal-tools.toml
         BalToolsToml balToolsToml = BalToolsToml.from(toolEnvironments.get(ToolSubCommand.PULL).balToolsTomlPath);
         Optional<BalToolsManifest.Tool> toolOpt = BalToolsManifestBuilder.from(balToolsToml).build()
                 .getActiveTool(toolId);
@@ -237,18 +265,26 @@ public class BalToolTest {
         Assert.assertEquals(tool.org(), orgName);
         Assert.assertEquals(tool.name(), packageName);
 
+        // Check for tool availability in local cache
         Path toolVersionCachePath = toolEnvironments.get(ToolSubCommand.PULL).centralCachePath
                 .resolve(Path.of(tool.org(), tool.name(), tool.version()));
         if (!Files.exists(toolVersionCachePath)) {
             Assert.fail("Tool " + toolId + ":" + specificVersion + " is not available in local cache");
         }
+
+        // Execute the tool
+        Pair<String, String> outputs = executeHelpFlagOfTool(
+                toolId, toolEnvironments.get(ToolSubCommand.PULL).envVariables);
+        Assert.assertEquals("", outputs.getLeft());
+        Assert.assertEquals(outputs.getRight(), readExpectedCmdOutsAsString("tool-execute-specific-help-1.0.0.txt"));
     }
 
-    @Test(description = "Pull tool with a non existing version", groups = {"pull"})
+    @Test(description = "Pull a tool with a non existing version",
+            dependsOnMethods = "testPullToolWithASpecificVersion", groups = {"pull"})
     public void testPullToolWithANonExistingVersion() throws IOException, InterruptedException {
         String toolIdAndVersion = toolId + ":" + nonExistingVersion;
         Process cmdExec = executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("pull", toolIdAndVersion)),
+                new ArrayList<>(Arrays.asList(PULL, toolIdAndVersion)),
                 toolEnvironments.get(ToolSubCommand.PULL).envVariables);
         String cmdErrors = getString(cmdExec.getErrorStream());
         String expectedOutput = readExpectedCmdOutsAsString("tool-pull-with-non-existing-version.txt");
@@ -256,137 +292,182 @@ public class BalToolTest {
             Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedOutput + "\nactual output:" + cmdErrors);
         }
 
-        // check for tool availability in local env
+        // Check for tool availability in bal-tools.toml
         BalToolsToml balToolsToml = BalToolsToml.from(toolEnvironments.get(ToolSubCommand.PULL).balToolsTomlPath);
         Optional<BalToolsManifest.Tool> toolOpt = BalToolsManifestBuilder.from(balToolsToml).build()
-                .getTool(toolId, nonExistingVersion);
+                .getTool(toolId, nonExistingVersion, null);
         if (toolOpt.isPresent()) {
             Assert.fail("Tool " + toolIdAndVersion + " should not be in bal-tools.toml");
         }
 
+        // Check for tool availability in local cache
         Path toolVersionCachePath = toolEnvironments.get(ToolSubCommand.PULL).centralCachePath
                 .resolve(Path.of(orgName, toolId, nonExistingVersion));
         if (Files.exists(toolVersionCachePath)) {
             Assert.fail("Tool " + toolId + ":" + nonExistingVersion + "  should not be available in local cache");
         }
+
+        // Execute the tool
+        Pair<String, String> outputs = executeHelpFlagOfTool(
+                toolId, toolEnvironments.get(ToolSubCommand.PULL).envVariables);
+        Assert.assertEquals("", outputs.getLeft());
+        Assert.assertEquals(outputs.getRight(), readExpectedCmdOutsAsString("tool-execute-specific-help-1.0.0.txt"));
     }
 
-    @Test(description = "Pull a tool version with incompatible distribution", groups = {"pull"})
+    @Test(description = "Pull a tool version with incompatible distribution",
+            dependsOnMethods = "testPullToolWithASpecificVersion", groups = {"pull"})
     public void testPullAToolVersionWithIncompatibleDistribution() throws IOException, InterruptedException {
         String toolIdAndVersion = toolId + ":" + incompatibleDistVersion;
         Process cmdExec = executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("pull", toolIdAndVersion)),
+                new ArrayList<>(Arrays.asList(PULL, toolIdAndVersion)),
                 toolEnvironments.get(ToolSubCommand.PULL).envVariables);
         String cmdErrors = getString(cmdExec.getErrorStream());
         String expectedOutput = readExpectedCmdOutsAsString("tool-pull-with-incompatible-dist.txt");
         if (!cmdErrors.contains(expectedOutput)) {
             Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedOutput + "\nactual output:" + cmdErrors);
         }
+
+        // Execute the tool
+        Pair<String, String> outputs = executeHelpFlagOfTool(
+                toolId, toolEnvironments.get(ToolSubCommand.PULL).envVariables);
+        Assert.assertEquals("", outputs.getLeft());
+        Assert.assertEquals(outputs.getRight(), readExpectedCmdOutsAsString("tool-execute-specific-help-1.0.0.txt"));
     }
 
-    @BeforeGroups(value = "remove", dependsOnGroups = {"pull"})
+    @BeforeGroups(value = "remove")
     public void setupRemoveTests() throws IOException, InterruptedException {
-        // Pull the latest tool version
-        executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("pull", toolId)),
-                toolEnvironments.get(ToolSubCommand.REMOVE).envVariables);
-
-        // Pull tool version with specific tool version
+        // Pull a specific version of a tool
         String specificToolVersion = toolId + ":" + specificVersion;
         executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("pull", specificToolVersion)),
+                new ArrayList<>(Arrays.asList(PULL, specificToolVersion)),
+                toolEnvironments.get(ToolSubCommand.REMOVE).envVariables);
+
+        // Pull the latest tool version
+        executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
+                new ArrayList<>(Arrays.asList(PULL, toolId)),
                 toolEnvironments.get(ToolSubCommand.REMOVE).envVariables);
 
         // Pull tool version with incompatible distribution
         String incompToolVersion = toolId + ":" + incompatibleDistVersion;
         executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("pull", incompToolVersion)),
+                new ArrayList<>(Arrays.asList(PULL, incompToolVersion)),
                 toolEnvironments.get(ToolSubCommand.REMOVE).envVariables);
 
-        // add the dist incompatible version to the toml file
+        // Add the dist incompatible version to the toml file
         BalToolsToml balToolsToml = BalToolsToml.from(toolEnvironments.get(ToolSubCommand.REMOVE).balToolsTomlPath);
         BalToolsManifest balToolsManifest = BalToolsManifestBuilder.from(balToolsToml).build();
-        balToolsManifest.addTool(toolId, orgName, packageName, incompatibleDistVersion, false);
+        balToolsManifest.addTool(toolId, orgName, packageName, incompatibleDistVersion, false, null);
         balToolsToml.modify(balToolsManifest);
     }
 
     @Test(description = "Remove a non existing tool", groups = {"remove"})
     public void testRemoveANonExistingTool() throws IOException, InterruptedException {
         Process cmdExec = executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("remove", nonExistingTool)),
+                new ArrayList<>(Arrays.asList(REMOVE, nonExistingTool)),
                 toolEnvironments.get(ToolSubCommand.REMOVE).envVariables);
 
+        // Validate the command output
         String cmdErrors = getString(cmdExec.getErrorStream());
         String expectedOutput = readExpectedCmdOutsAsString("tool-remove-non-existing-tool.txt");
         if (!cmdErrors.contains(expectedOutput)) {
             Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedOutput + "\nactual output:" + cmdErrors);
         }
+
+        // Execute the tool
+        Pair<String, String> outputs = executeHelpFlagOfTool(
+                nonExistingTool, toolEnvironments.get(ToolSubCommand.REMOVE).envVariables);
+        Assert.assertEquals(
+                outputs.getLeft(), readExpectedCmdOutsAsString("tool-execute-unknown-cmd-non-existing.txt"));
+        Assert.assertEquals("", outputs.getRight());
     }
 
     @Test(description = "Remove a non existing version of a tool", groups = {"remove"})
     public void testRemoveANonExistingVersionOfATool() throws IOException, InterruptedException {
         String toolIdAndVersion = toolId + ":" + nonExistingVersion;
         Process cmdExec = executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("remove", toolIdAndVersion)),
+                new ArrayList<>(Arrays.asList(REMOVE, toolIdAndVersion)),
                 toolEnvironments.get(ToolSubCommand.REMOVE).envVariables);
 
+        // Validate the command output
         String cmdErrors = getString(cmdExec.getErrorStream());
         String expectedOutput = readExpectedCmdOutsAsString("tool-remove-non-existing-version.txt");
         if (!cmdErrors.contains(expectedOutput)) {
             Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedOutput + "\nactual output:" + cmdErrors);
         }
+
+        // Execute the tool
+        Pair<String, String> outputs = executeHelpFlagOfTool(
+                toolId, toolEnvironments.get(ToolSubCommand.REMOVE).envVariables);
+        Assert.assertEquals("", outputs.getLeft());
+        Assert.assertEquals(outputs.getRight(), readExpectedCmdOutsAsString("tool-execute-specific-help-1.1.0.txt"));
     }
 
     @Test(description = "Remove a tool version with incompatible distribution", groups = {"remove"})
     public void testRemoveToolVersionWithIncompatibleDistribution() throws IOException, InterruptedException {
         String toolIdAndVersion = toolId + ":" + incompatibleDistVersion;
         Process cmdExec = executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("remove", toolIdAndVersion)),
+                new ArrayList<>(Arrays.asList(REMOVE, toolIdAndVersion)),
                 toolEnvironments.get(ToolSubCommand.REMOVE).envVariables);
         String cmdErrors = getString(cmdExec.getErrorStream());
         String expectedOutput = readExpectedCmdOutsAsString("tool-remove-with-incompatible-dist.txt");
         if (!cmdErrors.contains(expectedOutput)) {
             Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedOutput + "\nactual output:" + cmdErrors);
         }
+
+        // Execute the tool
+        Pair<String, String> outputs = executeHelpFlagOfTool(
+                toolId, toolEnvironments.get(ToolSubCommand.REMOVE).envVariables);
+        Assert.assertEquals("", outputs.getLeft());
+        Assert.assertEquals(outputs.getRight(), readExpectedCmdOutsAsString("tool-execute-specific-help-1.1.0.txt"));
     }
 
     @Test(description = "Remove a tool version with incompatible distribution", groups = {"remove"})
     public void testRemoveToolActiveVersion() throws IOException, InterruptedException {
-        // make the latest version active
+        // Make the latest version active
         BalToolsToml balToolsToml = BalToolsToml.from(toolEnvironments.get(ToolSubCommand.REMOVE).balToolsTomlPath);
         BalToolsManifest balToolsManifest = BalToolsManifestBuilder.from(balToolsToml).build();
-        balToolsManifest.setActiveToolVersion(toolId, latestVersion);
+        balToolsManifest.setActiveToolVersion(toolId, latestVersion, null);
         balToolsToml.modify(balToolsManifest);
 
+        // Remove the active version
         String toolIdAndVersion = toolId + ":" + latestVersion;
         Process cmdExec = executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("remove", toolIdAndVersion)),
+                new ArrayList<>(Arrays.asList(REMOVE, toolIdAndVersion)),
                 toolEnvironments.get(ToolSubCommand.REMOVE).envVariables);
         String cmdErrors = getString(cmdExec.getErrorStream());
         String expectedOutput = readExpectedCmdOutsAsString("tool-remove-active-version.txt");
         if (!cmdErrors.contains(expectedOutput)) {
             Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedOutput + "\nactual output:" + cmdErrors);
         }
+
+        // Execute the tool
+        Pair<String, String> outputs = executeHelpFlagOfTool(
+                toolId, toolEnvironments.get(ToolSubCommand.REMOVE).envVariables);
+        Assert.assertEquals("", outputs.getLeft());
+        Assert.assertEquals(outputs.getRight(), readExpectedCmdOutsAsString("tool-execute-specific-help-1.1.0.txt"));
     }
 
-    @Test(description = "Remove a specific tool version", groups = {"remove"})
+    @Test(description = "Remove a specific tool version",
+            dependsOnMethods = {"testRemoveANonExistingVersionOfATool",
+                    "testRemoveToolVersionWithIncompatibleDistribution", "testRemoveToolActiveVersion"},
+            groups = {"remove"})
     public void testRemoveASpecificToolVersion() throws IOException, InterruptedException {
-        // make the latest version active
+        // Make the latest version active
         BalToolsToml balToolsToml = BalToolsToml.from(toolEnvironments.get(ToolSubCommand.REMOVE).balToolsTomlPath);
         BalToolsManifest balToolsManifest = BalToolsManifestBuilder.from(balToolsToml).build();
-        balToolsManifest.setActiveToolVersion(toolId, latestVersion);
+        balToolsManifest.setActiveToolVersion(toolId, latestVersion, null);
         balToolsToml.modify(balToolsManifest);
 
         String toolIdAndVersion = toolId + ":" + specificVersion;
 
-        // check for tool availability in local env
-        Optional<BalToolsManifest.Tool> toolOpt = balToolsManifest.getTool(toolId, specificVersion);
+        // Check for tool availability in bal-tools.toml
+        Optional<BalToolsManifest.Tool> toolOpt = balToolsManifest.getTool(toolId, specificVersion, null);
         if (toolOpt.isEmpty()) {
             Assert.fail("Tool '" + toolIdAndVersion + "' is not available to be removed");
         }
 
         Process cmdExec = executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("remove", toolIdAndVersion)),
+                new ArrayList<>(Arrays.asList(REMOVE, toolIdAndVersion)),
                 toolEnvironments.get(ToolSubCommand.REMOVE).envVariables);
         String cmdErrors = getString(cmdExec.getErrorStream());
         if (!cmdErrors.isEmpty()) {
@@ -400,25 +481,31 @@ public class BalToolTest {
             Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedOutput + "\nactual output:" + cmdOutput);
         }
 
-        // check for tool availability in local env
+        // Check for tool availability in bal-tools.toml
         balToolsToml = BalToolsToml.from(toolEnvironments.get(ToolSubCommand.REMOVE).balToolsTomlPath);
-        toolOpt = BalToolsManifestBuilder.from(balToolsToml).build().getTool(toolId, specificVersion);
+        toolOpt = BalToolsManifestBuilder.from(balToolsToml).build().getTool(toolId, specificVersion, null);
         if (toolOpt.isPresent()) {
             Assert.fail("Tool '" + toolIdAndVersion + "' is available in bal-tools.toml");
         }
 
+        // Check for tool availability in local cache
         Path toolVersionCachePath = toolEnvironments.get(ToolSubCommand.REMOVE).centralCachePath
                 .resolve(Path.of(orgName, packageName, specificVersion));
         if (Files.exists(toolVersionCachePath)) {
             Assert.fail("Tool '" + toolIdAndVersion + "' is available in local cache");
         }
+
+        // Execute the tool
+        Pair<String, String> outputs = executeHelpFlagOfTool(
+                toolId, toolEnvironments.get(ToolSubCommand.REMOVE).envVariables);
+        Assert.assertEquals("", outputs.getLeft());
+        Assert.assertEquals(outputs.getRight(), readExpectedCmdOutsAsString("tool-execute-specific-help-1.1.0.txt"));
     }
 
-    @Test(description = "Remove all tool versions",
-            dependsOnMethods = {"testRemoveASpecificToolVersion", "testRemoveToolVersionWithIncompatibleDistribution"},
+    @Test(description = "Remove all tool versions", dependsOnMethods = {"testRemoveASpecificToolVersion"},
             groups = {"remove"})
     public void testRemoveAllToolVersions() throws IOException, InterruptedException {
-        // check for tool availability in local env
+        // Check for tool availability in bal-tools.toml
         BalToolsToml balToolsToml = BalToolsToml.from(toolEnvironments.get(ToolSubCommand.REMOVE).balToolsTomlPath);
         Optional<BalToolsManifest.Tool> toolOpt = BalToolsManifestBuilder.from(balToolsToml).build()
                 .getActiveTool(toolId);
@@ -426,8 +513,9 @@ public class BalToolTest {
             Assert.fail("Tool '" + toolId + "' is not available to be removed");
         }
 
+        // Remove all versions of the tool
         Process cmdExec = executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("remove", toolId)),
+                new ArrayList<>(Arrays.asList(REMOVE, toolId)),
                 toolEnvironments.get(ToolSubCommand.REMOVE).envVariables);
         String cmdErrors = getString(cmdExec.getErrorStream());
         if (!cmdErrors.isEmpty()) {
@@ -441,39 +529,46 @@ public class BalToolTest {
             Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedOutput + "\nactual output:" + cmdOutput);
         }
 
-        // check for tool availability in local env
+        // Check for tool availability in bal-tools.toml
         balToolsToml = BalToolsToml.from(toolEnvironments.get(ToolSubCommand.REMOVE).balToolsTomlPath);
         toolOpt = BalToolsManifestBuilder.from(balToolsToml).build().getActiveTool(toolId);
         if (toolOpt.isPresent()) {
             Assert.fail("Tool " + toolId + " is available in bal-tools.toml");
         }
 
+        // Check for tool availability in local cache
         Path toolVersionCachePath = toolEnvironments.get(ToolSubCommand.REMOVE).centralCachePath
                 .resolve(Path.of(orgName, packageName));
         if (Files.exists(toolVersionCachePath)) {
             Assert.fail("Tool '" + toolId + "' is available in local cache");
         }
+
+        // Execute the tool
+        Pair<String, String> outputs = executeHelpFlagOfTool(
+                toolId, toolEnvironments.get(ToolSubCommand.REMOVE).envVariables);
+        Assert.assertEquals(outputs.getLeft(), readExpectedCmdOutsAsString("tool-execute-unknown-cmd.txt"));
+        Assert.assertEquals("", outputs.getRight());
     }
 
-    @BeforeGroups(value = "update", dependsOnGroups = {"remove"})
+    @BeforeGroups(value = "update")
     public void setupUpdateTests() throws IOException, InterruptedException {
-        // remove all versions of the tool
+        // Remove all versions of the tool
         Process cmdExec = executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("remove", toolId)),
+                new ArrayList<>(Arrays.asList(REMOVE, toolId)),
                 toolEnvironments.get(ToolSubCommand.UPDATE).envVariables);
         getString(cmdExec.getErrorStream());
 
-        // pull an older version of the tool
+        // Pull an older version of the tool
         String toolIdAndVersion = toolId + ":" + specificVersion;
         executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("pull", toolIdAndVersion)),
+                new ArrayList<>(Arrays.asList(PULL, toolIdAndVersion)),
                 toolEnvironments.get(ToolSubCommand.UPDATE).envVariables);
     }
 
     @Test(description = "Update a non-existing tool", groups = {"update"})
     public void testUpdateNonExistingTool() throws IOException, InterruptedException {
         Process cmdExec = executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("update", nonExistingTool)),
+                new ArrayList<>(Arrays.asList(UPDATE, nonExistingTool)),
                 toolEnvironments.get(ToolSubCommand.UPDATE).envVariables);
         String cmdErrors = getString(cmdExec.getErrorStream());
         String expectedOutput = readExpectedCmdOutsAsString("tool-update-non-existing.txt");
@@ -481,18 +576,25 @@ public class BalToolTest {
             Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedOutput + "\nactual output:" + cmdErrors);
         }
 
-        // check for tool availability in bal-tools.toml
+        // Check for tool availability in bal-tools.toml
         BalToolsToml balToolsToml = BalToolsToml.from(toolEnvironments.get(ToolSubCommand.UPDATE).balToolsTomlPath);
         Optional<BalToolsManifest.Tool> toolOpt = BalToolsManifestBuilder.from(balToolsToml).build()
                 .getActiveTool(nonExistingTool);
         if (toolOpt.isPresent()) {
             Assert.fail("Tool " + nonExistingTool + " should not be available in bal-tools.toml");
         }
+
+        // Execute the tool
+        Pair<String, String> outputs = executeHelpFlagOfTool(
+                nonExistingTool, toolEnvironments.get(ToolSubCommand.UPDATE).envVariables);
+        Assert.assertEquals(
+                outputs.getLeft(), readExpectedCmdOutsAsString("tool-execute-unknown-cmd-non-existing.txt"));
+        Assert.assertEquals("", outputs.getRight());
     }
 
     @Test(description = "Update a tool with new patch and minor versions", groups = {"update"})
     public void testUpdateToolWithNewPatchAndMinor() throws IOException, InterruptedException {
-        // check for tool availability in bal-tools.toml
+        // Check for tool availability in bal-tools.toml
         BalToolsToml balToolsToml = BalToolsToml.from(toolEnvironments.get(ToolSubCommand.UPDATE).balToolsTomlPath);
         Optional<BalToolsManifest.Tool> toolOpt = BalToolsManifestBuilder.from(balToolsToml).build()
                 .getActiveTool(toolId);
@@ -502,8 +604,9 @@ public class BalToolTest {
                     "' should be the current version in bal-tools.toml before update command");
         }
 
+        // Update the tool
         Process cmdExec = executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("update", toolId)),
+                new ArrayList<>(Arrays.asList(UPDATE, toolId)),
                 toolEnvironments.get(ToolSubCommand.UPDATE).envVariables);
         String cmdErrors = getString(cmdExec.getErrorStream());
 
@@ -518,7 +621,7 @@ public class BalToolTest {
             Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedOutput + "\nactual output:" + cmdOutput);
         }
 
-        // check for tool availability in bal-tools.toml
+        // Check for tool availability in bal-tools.toml
         balToolsToml = BalToolsToml.from(toolEnvironments.get(ToolSubCommand.UPDATE).balToolsTomlPath);
         toolOpt = BalToolsManifestBuilder.from(balToolsToml).build().getActiveTool(toolId);
         toolIdAndVersion = toolId + ":" + latestVersion;
@@ -526,18 +629,24 @@ public class BalToolTest {
             Assert.fail("Tool '" + toolIdAndVersion + "' is not available in bal-tools.toml");
         }
 
-        // check for tool availability in local env
+        // Check for tool availability in local cache
         Path toolVersionCachePath = toolEnvironments.get(ToolSubCommand.UPDATE).centralCachePath
                 .resolve(Path.of(orgName, packageName, latestVersion));
         if (!Files.exists(toolVersionCachePath)) {
             Assert.fail("Tool '" + toolIdAndVersion + "' is not available in local cache");
         }
+
+        // Execute the tool
+        Pair<String, String> outputs = executeHelpFlagOfTool(
+                toolId, toolEnvironments.get(ToolSubCommand.UPDATE).envVariables);
+        Assert.assertEquals("", outputs.getLeft());
+        Assert.assertEquals(outputs.getRight(), readExpectedCmdOutsAsString("tool-execute-specific-help-1.1.0.txt"));
     }
 
     @Test(description = "Update a tool with no new versions",
             dependsOnMethods = {"testUpdateToolWithNewPatchAndMinor"}, groups = {"update"})
     public void testUpdateToolWithNoNewVersions() throws IOException, InterruptedException {
-        // check for tool availability in bal-tools.toml
+        // Check for tool availability in bal-tools.toml
         BalToolsToml balToolsToml = BalToolsToml.from(toolEnvironments.get(ToolSubCommand.UPDATE).balToolsTomlPath);
         Optional<BalToolsManifest.Tool> toolOpt = BalToolsManifestBuilder.from(balToolsToml).build()
                 .getActiveTool(toolId);
@@ -546,8 +655,9 @@ public class BalToolTest {
             Assert.fail("Tool '" + toolIdAndVersion + "' should be the current version in bal-tools.toml");
         }
 
+        // Update the tool
         Process cmdExec = executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("update", toolId)),
+                new ArrayList<>(Arrays.asList(UPDATE, toolId)),
                 toolEnvironments.get(ToolSubCommand.UPDATE).envVariables);
         String cmdErrors = getString(cmdExec.getErrorStream());
 
@@ -562,37 +672,43 @@ public class BalToolTest {
             Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedOutput + "\nactual output:" + cmdOutput);
         }
 
-        // check for tool availability in bal-tools.toml
+        // Check for tool availability in bal-tools.toml
         balToolsToml = BalToolsToml.from(toolEnvironments.get(ToolSubCommand.UPDATE).balToolsTomlPath);
         toolOpt = BalToolsManifestBuilder.from(balToolsToml).build().getActiveTool(toolId);
         toolIdAndVersion = toolId + ":" + latestVersion;
         if (toolOpt.isEmpty()) {
             Assert.fail("Tool '" + toolIdAndVersion + "' is not available in bal-tools.toml");
         }
+
+        // Execute the tool
+        Pair<String, String> outputs = executeHelpFlagOfTool(
+                toolId, toolEnvironments.get(ToolSubCommand.UPDATE).envVariables);
+        Assert.assertEquals("", outputs.getLeft());
+        Assert.assertEquals(outputs.getRight(), readExpectedCmdOutsAsString("tool-execute-specific-help-1.1.0.txt"));
     }
 
-    @BeforeGroups(value = "use", dependsOnGroups = {"update"})
+    @BeforeGroups(value = "use")
     public void setupUseTests() throws IOException, InterruptedException {
         // Pull the latest tool version
         executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("pull", toolId)), toolEnvironments.get(ToolSubCommand.USE).envVariables);
+                new ArrayList<>(Arrays.asList(PULL, toolId)), toolEnvironments.get(ToolSubCommand.USE).envVariables);
 
-        // Pull tool version with specific tool version
+        // Pull a specific version of a tool
         String specificToolVersion = toolId + ":" + specificVersion;
         executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("pull", specificToolVersion)),
+                new ArrayList<>(Arrays.asList(PULL, specificToolVersion)),
                 toolEnvironments.get(ToolSubCommand.USE).envVariables);
 
         // Pull tool version with incompatible distribution
         String incompToolVersion = toolId + ":" + incompatibleDistVersion;
         executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("pull", incompToolVersion)),
+                new ArrayList<>(Arrays.asList(PULL, incompToolVersion)),
                 toolEnvironments.get(ToolSubCommand.USE).envVariables);
 
-        // add the dist incompatible version to the toml file
+        // Add the dist incompatible version to the toml file
         BalToolsToml balToolsToml = BalToolsToml.from(toolEnvironments.get(ToolSubCommand.USE).balToolsTomlPath);
         BalToolsManifest balToolsManifest = BalToolsManifestBuilder.from(balToolsToml).build();
-        balToolsManifest.addTool(toolId, orgName, packageName, incompatibleDistVersion, false);
+        balToolsManifest.addTool(toolId, orgName, packageName, incompatibleDistVersion, false, null);
         balToolsToml.modify(balToolsManifest);
     }
 
@@ -600,7 +716,7 @@ public class BalToolTest {
     public void testUseNewToolVersion() throws IOException, InterruptedException {
         String toolIdAndVersion = toolId + ":" + latestVersion;
         Process cmdExec = executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("use", toolIdAndVersion)),
+                new ArrayList<>(Arrays.asList(USE, toolIdAndVersion)),
                 toolEnvironments.get(ToolSubCommand.USE).envVariables);
         String cmdErrors = getString(cmdExec.getErrorStream());
         if (!cmdErrors.isEmpty()) {
@@ -613,13 +729,19 @@ public class BalToolTest {
         if (!cmdOutput.contains(expectedOutput)) {
             Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedOutput + "\nactual output:" + cmdOutput);
         }
+
+        // Execute the tool
+        Pair<String, String> outputs = executeHelpFlagOfTool(
+                toolId, toolEnvironments.get(ToolSubCommand.USE).envVariables);
+        Assert.assertEquals("", outputs.getLeft());
+        Assert.assertEquals(outputs.getRight(), readExpectedCmdOutsAsString("tool-execute-specific-help-1.1.0.txt"));
     }
 
     @Test(description = "Use a newer tool version", dependsOnMethods = {"testUseNewToolVersion"}, groups = {"use"})
     public void testUseOldToolVersion() throws IOException, InterruptedException {
         String toolIdAndVersion = toolId + ":" + specificVersion;
         Process cmdExec = executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("use", toolIdAndVersion)),
+                new ArrayList<>(Arrays.asList(USE, toolIdAndVersion)),
                 toolEnvironments.get(ToolSubCommand.USE).envVariables);
         String cmdErrors = getString(cmdExec.getErrorStream());
         if (!cmdErrors.isEmpty()) {
@@ -632,6 +754,12 @@ public class BalToolTest {
         if (!cmdOutput.contains(expectedOutput)) {
             Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedOutput + "\nactual output:" + cmdOutput);
         }
+
+        // Execute the tool
+        Pair<String, String> outputs = executeHelpFlagOfTool(
+                toolId, toolEnvironments.get(ToolSubCommand.USE).envVariables);
+        Assert.assertEquals("", outputs.getLeft());
+        Assert.assertEquals(outputs.getRight(), readExpectedCmdOutsAsString("tool-execute-specific-help-1.0.0.txt"));
     }
 
     @Test(description = "Use the currently active tool version",
@@ -639,10 +767,9 @@ public class BalToolTest {
     public void testUseCurrentlyActiveToolVersion() throws IOException, InterruptedException {
         String toolIdAndVersion = toolId + ":" + specificVersion;
         Process cmdExec = executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("use", toolIdAndVersion)),
+                new ArrayList<>(Arrays.asList(USE, toolIdAndVersion)),
                 toolEnvironments.get(ToolSubCommand.USE).envVariables);
         String cmdErrors = getString(cmdExec.getErrorStream());
-
         if (!cmdErrors.isEmpty()) {
             Assert.fail(OUTPUT_CONTAIN_ERRORS + cmdErrors);
         }
@@ -653,46 +780,64 @@ public class BalToolTest {
         if (!cmdOutput.contains(expectedOutput)) {
             Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedOutput + "\nactual output:" + cmdOutput);
         }
+
+        // Execute the tool
+        Pair<String, String> outputs = executeHelpFlagOfTool(
+                toolId, toolEnvironments.get(ToolSubCommand.USE).envVariables);
+        Assert.assertEquals("", outputs.getLeft());
+        Assert.assertEquals(outputs.getRight(), readExpectedCmdOutsAsString("tool-execute-specific-help-1.0.0.txt"));
     }
 
-    @Test(description = "Use a non existent tool version", groups = {"use"})
+    @Test(description = "Use a non existent tool version", dependsOnMethods = {"testUseCurrentlyActiveToolVersion"},
+            groups = {"use"})
     public void testUseNonExistentToolVersion() throws IOException, InterruptedException {
         String toolIdAndVersion = toolId + ":" + nonExistingVersion;
         Process cmdExec = executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("use", toolIdAndVersion)),
+                new ArrayList<>(Arrays.asList(USE, toolIdAndVersion)),
                 toolEnvironments.get(ToolSubCommand.USE).envVariables);
         String cmdErrors = getString(cmdExec.getErrorStream());
-
         String expectedOutput = readExpectedCmdOutsAsString("tool-use-non-existent-version.txt");
         if (!cmdErrors.contains(expectedOutput)) {
             Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedOutput + "\nactual output:" + cmdErrors);
         }
+
+        // Execute the tool
+        Pair<String, String> outputs = executeHelpFlagOfTool(
+                toolId, toolEnvironments.get(ToolSubCommand.USE).envVariables);
+        Assert.assertEquals("", outputs.getLeft());
+        Assert.assertEquals(outputs.getRight(), readExpectedCmdOutsAsString("tool-execute-specific-help-1.0.0.txt"));
     }
 
-    @Test(description = "Use a tool version built with incompatible distribution", groups = {"use"})
+    @Test(description = "Use a tool version built with incompatible distribution",
+            dependsOnMethods = "testUseNonExistentToolVersion", groups = {"use"})
     public void testUseToolVersionWithIncompatibleDistribution() throws IOException, InterruptedException {
         String toolIdAndVersion = toolId + ":" + incompatibleDistVersion;
         Process cmdExec = executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("use", toolIdAndVersion)),
+                new ArrayList<>(Arrays.asList(USE, toolIdAndVersion)),
                 toolEnvironments.get(ToolSubCommand.USE).envVariables);
         String cmdErrors = getString(cmdExec.getErrorStream());
-
         String expectedOutput = readExpectedCmdOutsAsString("tool-use-with-incompatible-dist.txt");
         if (!cmdErrors.contains(expectedOutput)) {
             Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedOutput + "\nactual output:" + cmdErrors);
         }
+
+        // Execute the tool
+        Pair<String, String> outputs = executeHelpFlagOfTool(
+                toolId, toolEnvironments.get(ToolSubCommand.USE).envVariables);
+        Assert.assertEquals("", outputs.getLeft());
+        Assert.assertEquals(outputs.getRight(), readExpectedCmdOutsAsString("tool-execute-specific-help-1.0.0.txt"));
     }
 
     @Test(description = "List all tools when there are no tools", groups = {"list"})
     public void testListToolsWhenNoToolsInstalled() throws IOException, InterruptedException {
-        // remove the tool entirely
+        // Remove the tool entirely
         executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("remove", toolId)),
+                new ArrayList<>(Arrays.asList(REMOVE, toolId)),
                 toolEnvironments.get(ToolSubCommand.LIST).envVariables);
 
-        // list all tools
+        // List all tools
         Process cmdExec = executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(List.of("list")), toolEnvironments.get(ToolSubCommand.LIST).envVariables);
+                new ArrayList<>(List.of(LIST)), toolEnvironments.get(ToolSubCommand.LIST).envVariables);
         String cmdErrors = getString(cmdExec.getErrorStream());
         if (!cmdErrors.isEmpty()) {
             Assert.fail(OUTPUT_CONTAIN_ERRORS + cmdErrors);
@@ -710,17 +855,17 @@ public class BalToolTest {
     public void testListToolsWithMultipleToolVersions() throws IOException, InterruptedException {
         // Pull the latest tool version
         executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("pull", toolId)), toolEnvironments.get(ToolSubCommand.LIST).envVariables);
+                new ArrayList<>(Arrays.asList(PULL, toolId)), toolEnvironments.get(ToolSubCommand.LIST).envVariables);
 
-        // Pull tool version with specific tool version
+        // Pull a specific version of a tool
         String specificToolVersion = toolId + ":" + specificVersion;
         executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("pull", specificToolVersion)),
+                new ArrayList<>(Arrays.asList(PULL, specificToolVersion)),
                 toolEnvironments.get(ToolSubCommand.LIST).envVariables);
 
-        // list all tools
+        // List all tools
         Process cmdExec = executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(List.of("list")), toolEnvironments.get(ToolSubCommand.LIST).envVariables);
+                new ArrayList<>(List.of(LIST)), toolEnvironments.get(ToolSubCommand.LIST).envVariables);
         String cmdErrors = getString(cmdExec.getErrorStream());
         if (!cmdErrors.isEmpty()) {
             Assert.fail(OUTPUT_CONTAIN_ERRORS + cmdErrors);
@@ -737,7 +882,7 @@ public class BalToolTest {
     @Test(description = "Search a tool with tool id", groups = {"list"})
     public void testSearchAToolWithId() throws IOException, InterruptedException {
         Process cmdExec = executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("search", toolId)),
+                new ArrayList<>(Arrays.asList(SEARCH, toolId)),
                 toolEnvironments.get(ToolSubCommand.SEARCH).envVariables);
         String cmdErrors = getString(cmdExec.getErrorStream());
         if (!cmdErrors.isEmpty()) {
@@ -752,17 +897,17 @@ public class BalToolTest {
         }
     }
 
-    @BeforeGroups(value = "execute_tool", dependsOnGroups = {"use"})
+    @BeforeGroups(value = "execute_tool")
     public void setupExecuteToolTests() throws IOException, InterruptedException {
-        // Pull tool version with specific tool version
+        // Pull a specific version of a tool
         String specificToolVersion = toolId + ":" + specificVersion;
         executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("pull", specificToolVersion)),
+                new ArrayList<>(Arrays.asList(PULL, specificToolVersion)),
                 toolEnvironments.get(ToolSubCommand.EXECUTE).envVariables);
 
         // Pull the latest tool version
         executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
-                new ArrayList<>(Arrays.asList("pull", toolId)),
+                new ArrayList<>(Arrays.asList(PULL, toolId)),
                 toolEnvironments.get(ToolSubCommand.EXECUTE).envVariables);
     }
 
@@ -794,7 +939,7 @@ public class BalToolTest {
 
         // Validate the command output
         String cmdOutput = getString(cmdExec.getInputStream());
-        String expectedOutput = readExpectedCmdOutsAsString("tool-execute-specific-help.txt");
+        String expectedOutput = readExpectedCmdOutsAsString("tool-execute-specific-help-1.1.0.txt");
         if (!cmdOutput.contains(expectedOutput)) {
             Assert.fail(OUTPUT_NOT_CONTAINS_EXP_MSG + expectedOutput + "\nactual output:" + cmdOutput);
         }
@@ -837,6 +982,15 @@ public class BalToolTest {
                     }
                 }).collect(Collectors.toMap(
                 toolEnvironment -> toolEnvironment.subCommand, toolEnvironment -> toolEnvironment));
+    }
+
+    private Pair<String, String> executeHelpFlagOfTool(String toolId, Map<String, String> envVariables)
+            throws IOException, InterruptedException {
+        Process cmdExec = executeCommand(toolId, DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
+                new ArrayList<>(List.of("--help")), envVariables);
+        String cmdErrors = getString(cmdExec.getErrorStream());
+        String cmdOutput = getString(cmdExec.getInputStream());
+        return Pair.of(cmdErrors, cmdOutput);
     }
 
     private ToolEnvironment getToolEnvironment(ToolSubCommand subCommand) throws IOException {
