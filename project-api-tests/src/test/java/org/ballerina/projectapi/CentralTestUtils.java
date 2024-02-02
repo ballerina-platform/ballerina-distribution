@@ -47,6 +47,7 @@ import static org.ballerina.projectapi.TestUtils.OUTPUT_CONTAIN_ERRORS;
 import static org.ballerina.projectapi.TestUtils.executePackCommand;
 import static org.ballerina.projectapi.TestUtils.executePushCommand;
 import static org.ballerina.projectapi.TestUtils.executeSearchCommand;
+import static org.ballerina.projectapi.TestUtils.executeToolCommand;
 
 /**
  * Utility class for central tests.
@@ -262,6 +263,22 @@ public class CentralTestUtils {
     }
 
     /**
+     * Check if a tool is already available on central.
+     *
+     * @param toolId tool id
+     * @param tempWorkspaceDirectory Path to workspace
+     * @param envVariables Environmental variables
+     * @return whether the package is available on central
+     * @throws IOException
+     * @throws InterruptedException
+     */
+    static boolean isToolAvailableInCentral(String toolId, Path tempWorkspaceDirectory,
+                                           Map<String, String> envVariables) throws IOException, InterruptedException {
+        String buildOutput = searchToolDetails(toolId, tempWorkspaceDirectory, envVariables);
+        return !buildOutput.contains("no tools found");
+    }
+
+    /**
      * Returns true if the provided version is available on central.
      *
      * @param pkg package
@@ -294,6 +311,30 @@ public class CentralTestUtils {
         Process search = executeSearchCommand(DISTRIBUTION_FILE_NAME,
                 tempWorkspaceDirectory,
                 new LinkedList<>(Collections.singletonList(pkg)),
+                envVariables);
+        String buildErrors = getString(search.getErrorStream());
+        if (!buildErrors.isEmpty()) {
+            Assert.fail(OUTPUT_CONTAIN_ERRORS + buildErrors);
+        }
+        return getString(search.getInputStream());
+    }
+
+    /**
+     * Search for the given package on Central.
+     *
+     * @param toolId tool id
+     * @param tempWorkspaceDirectory Path to workspace
+     * @param envVariables Environmental variables
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     */
+    private static String searchToolDetails(String toolId, Path tempWorkspaceDirectory,
+                                            Map<String, String> envVariables)
+            throws IOException, InterruptedException {
+        Process search = executeToolCommand(DISTRIBUTION_FILE_NAME,
+                tempWorkspaceDirectory,
+                new ArrayList<>(Arrays.asList("search", toolId)),
                 envVariables);
         String buildErrors = getString(search.getErrorStream());
         if (!buildErrors.isEmpty()) {

@@ -1,0 +1,1 @@
+dist test command 1.1.0 is executing with args arg1

@@ -108,6 +108,16 @@ public class TestUtils {
         return executeCommand("search", distributionName, sourceDirectory, args, envProperties);
     }
 
+    public static Process executeToolCommand(String distributionName, Path sourceDirectory,
+            List<String> args, Map<String, String> envProperties) throws IOException, InterruptedException {
+        return executeCommand("tool", distributionName, sourceDirectory, args, envProperties);
+    }
+
+    public static Process executeHelpCommand(String distributionName, Path sourceDirectory,
+             List<String> args, Map<String, String> envProperties) throws IOException, InterruptedException {
+        return executeCommand("help", distributionName, sourceDirectory, args, envProperties);
+    }
+
     /**
      * Clean and setup the distribution.
      *
