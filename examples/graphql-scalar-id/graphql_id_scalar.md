@@ -1,6 +1,6 @@
 # GraphQL service - ID Scalar Type
 
-The Ballerina `graphql` module supports `ID` scalar type. The GraphQL `ID` type is used to represent unique identifiers in a GraphQL schema. It is a built-in scalar type that can be used to define input parameters for GraphQL fields. The `@graphql:ID` annotation can be applied to specific fields, indicating that they correspond to the GraphQL `ID` scalar type. When the `@graphql:ID` annotation is used, the generated schema will show the field type as `ID`, regardless of the actual type of the field.
+The Ballerina `graphql` module provides support for the `ID` scalar type in GraphQL. The `ID` type is used to represent unique identifiers within a GraphQL schema. It is a built-in scalar type that can be utilized to define input parameters for GraphQL fields. By applying the `@graphql:ID` annotation to specific fields, it indicates that they correspond to the GraphQL `ID` scalar type. Consequently, the generated schema will display the field type as `ID`, regardless of the actual type of the field.
 
 ::: code graphql_id_scalar.bal :::
 
