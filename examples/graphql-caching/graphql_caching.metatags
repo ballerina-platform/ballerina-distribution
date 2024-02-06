@@ -1,0 +1,2 @@
+description: This example demonstrates the caching of a resource function within a GraphQL service.
+keywords: ballerina, ballerina by example, bbe, graphql, cache
