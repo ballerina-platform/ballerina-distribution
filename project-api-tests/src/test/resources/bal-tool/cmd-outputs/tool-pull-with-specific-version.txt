@@ -1,0 +1,2 @@
+tool 'disttest:1.0.0' pulled successfully.
+tool 'disttest:1.0.0' successfully set as the active version.
