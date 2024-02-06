@@ -2513,6 +2513,30 @@
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
+      },
+      {
+        "name": "Field Level Caching",
+        "url": "graphql-caching",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Operational Level Caching",
+        "url": "graphql-caching-global",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Cache Invalidation",
+        "url": "graphql-cache-invalidation",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
       }
     ]
   },
