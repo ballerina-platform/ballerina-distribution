@@ -1,0 +1,6 @@
+{
+    user(userId: "1") { 
+        id
+        name
+    }
+}
