@@ -1,6 +1,6 @@
-# GraphQL service - Caching
+# GraphQL service - Cache Invalidation
 
-The Ballerina `graphql` module allows enabling GraphQL caching. To enable the GraphiQL caching, use the `cacheConfig` field in the `graphql:ResourceConfig` annotation on a resource path in a `graphql:Service`. Also, by using the `cacheConfig` field in the `graphql:ServiceConfig` annotation on a service can enable GraphQL caching for all the operations in the `graphql:Service`.
+The Ballerina `graphql` module provides functionality for cache invalidation. The `evictCache(resourcePath: string)` and `invalidateAll()` APIs in the `graphql:Context` can be used to invalidate caches in a `graphql:Service`. To invalidate a specific cache in a `resource` function, the `evictCache(resourcePath: string)` API requires the developer to specify the name of the resource. On the other hand, the `invalidateAll()` API invalidates all caches within the service.
 
 ::: code graphql_cache_invalidation.bal :::
 
