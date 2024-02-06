@@ -1,0 +1,1 @@
+$ curl -X POST -H "Content-type: application/json" -d '{ "query": "mutation updateName { updateName(name: \"John\") }" }' 'http://localhost:9090/graphql_cache'
