@@ -22,8 +22,8 @@ service /graphql_cache on new graphql:Listener(9090) {
     // A `remote` method represents a field in the root `Mutation` operation. This `remote` method
     // is used to update the name and returns the value.
     isolated remote function updateName(graphql:Context context, string name) returns string|error {
-        // evictCache(resourcePath: string) is used to invalidate the cache for the given resource path.
-        check context.evictCache("name");
+        // invalidate(resourcePath: string) is used to invalidate the cache for the given resource path.
+        check context.invalidate("name");
         self.name = name;
         return self.name;
     }
