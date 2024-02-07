@@ -11,7 +11,7 @@ import ballerina/graphql;
         maxSize: 120
     }
 }
-service /graphql_cache on new graphql:Listener(9090) {
+service /graphql on new graphql:Listener(9090) {
     private string name = "Walter White";
 
     isolated resource function get name() returns string {

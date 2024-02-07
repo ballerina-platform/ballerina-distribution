@@ -1,6 +1,6 @@
 import ballerina/graphql;
 
-service /graphql_cache on new graphql:Listener(9090) {
+service /graphql on new graphql:Listener(9090) {
     private string name = "Walter White";
 
     // A `resource` method represents a field in the root `Query` operation.
