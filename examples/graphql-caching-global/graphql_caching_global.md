@@ -20,4 +20,4 @@ To send the document, execute the following cURL command.
 
 ## Related links
 - [`graphql` module - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
-- [GraphQL Caching - Specification](/spec/graphql/#??????)
+- [GraphQL Caching - Specification](/spec/graphql/#107-caching)
