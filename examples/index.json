@@ -2371,6 +2371,14 @@
         "isLearnByExample": false
       },
       {
+        "name": "ID Scalar Type",
+        "url": "graphql-id-scalar",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
         "name": "Interfaces",
         "url": "graphql-interfaces",
         "verifyBuild": true,
@@ -2429,14 +2437,6 @@
       {
         "name": "Hierarchical resource paths",
         "url": "graphql-hierarchical-resource-paths",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "ID Scalar Type",
-        "url": "graphql-id-scalar",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -2523,15 +2523,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Field Level Caching",
-        "url": "graphql-caching",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Operational Level Caching",
+        "name": "Operational-level caching",
         "url": "graphql-caching-global",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2539,7 +2531,15 @@
         "isLearnByExample": false
       },
       {
-        "name": "Cache Invalidation",
+        "name": "Field-level caching",
+        "url": "graphql-caching",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Cache invalidation",
         "url": "graphql-cache-invalidation",
         "verifyBuild": true,
         "verifyOutput": false,

@@ -1,2 +1,2 @@
-description: This example demonstrates the caching of a GraphQL service in operational level.
+description: This example demonstrates the caching of a GraphQL service at the operational level.
 keywords: ballerina, ballerina by example, bbe, graphql, cache

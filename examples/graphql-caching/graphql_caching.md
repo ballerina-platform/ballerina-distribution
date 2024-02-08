@@ -1,6 +1,6 @@
-# GraphQL service - Field Level Caching
+# GraphQL service - Field-level caching
 
-The Ballerina `graphql` module provides the capability to enable GraphQL caching, which can be applied at either the field or operational level. To enable caching at the field level, the `cacheConfig` field in the `graphql:ResourceConfig` annotation can be used on a resource path within a `graphql:Service`. By setting this configuration, caching is enabled for the specified resource path, and it can override cache configurations at the operation level.
+The Ballerina `graphql` module provides the capability to enable GraphQL caching, which can be applied at either the field or operational level. To enable caching at the field level, the `cacheConfig` field in the `graphql:ResourceConfig` annotation can be used on a resource method within a `graphql:Service`. By setting this configuration, caching is enabled for the specified GraphQL field, and it can override cache configurations set at the operation-level.
 
 ::: code graphql_caching.bal :::
 

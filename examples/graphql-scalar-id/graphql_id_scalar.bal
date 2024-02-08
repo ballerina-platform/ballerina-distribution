@@ -1,19 +1,21 @@
 import ballerina/graphql;
 
-service /graphql on new graphql:Listener(9090) {
-    private User[] users = [
-        {id: 1, name: "Walter White", age: 57},
-        {id: 2, name: "Jesse Pinkman", age: 28}
-    ];
-
-    isolated resource function get user(@graphql:ID int userId) returns User {
-        return self.users.filter(user => user.id == userId)[0];
-    }
-}
-
-public type User record {|
-    @graphql:ID
-    int id;
+// Defines a `record` type to use as an object in the GraphQL service.
+public type User readonly & record {|
+    @graphql:ID int id;
     string name;
     int age;
 |};
+
+// Defines an in-memory table to store the profiles.
+table<User> key(id) users = table [
+    {id: 1, name: "Walter White", age: 50},
+    {id: 2, name: "Jesse Pinkman", age: 25}
+];
+
+service /graphql on new graphql:Listener(9090) {
+
+    resource function get user(@graphql:ID int id) returns User {
+        return users.get(id);
+    }
+}

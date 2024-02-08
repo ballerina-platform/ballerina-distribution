@@ -1,2 +1,2 @@
-$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ user(userId: \"1\"){ id name } }" }' 'http://localhost:9090/graphql'
+$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ user(id: 1){ id name } }" }' 'http://localhost:9090/graphql'
 {"data":{"user":{"id":1, "name":"Walter White"}}}

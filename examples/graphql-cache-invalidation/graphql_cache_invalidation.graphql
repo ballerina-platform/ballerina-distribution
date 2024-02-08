@@ -3,5 +3,5 @@ query getName {
 }
 
 mutation updateName {
-    updateName(name: "John")
+    updateName(id: 1, name: "John")
 }
