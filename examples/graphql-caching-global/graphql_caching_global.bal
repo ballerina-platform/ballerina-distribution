@@ -15,9 +15,7 @@ table<User> key(id) users = table [
 
 // The `cacheConfig` in the `graphql:ServiceConfig` annotation is used to 
 // configure the cache for the GraphQL service.
-// The `enabled` field enables/disables the cache for the field.
-// The `maxAge` field sets the maximum age of the cache in seconds. (default: 60)
-// The `maxSize` field indicates the maximum capacity of the cache table by entries. (default: 120)
+// (default: {enabled: true, maxAge: 60, maxSize: 120})
 @graphql:ServiceConfig {
     cacheConfig: {}
 }
@@ -27,9 +25,15 @@ service /graphql on new graphql:Listener(9090) {
         return users.get(id).name;
     }
 
+    // The `enabled` field enables/disables the cache for the field. (default: true)
+    // The `maxAge` field sets the maximum age of the cache in seconds. (default: 60)
+    // The `maxSize` field indicates the maximum capacity of the cache table by entries. 
+    // (default: 120)
     @graphql:ResourceConfig {
         cacheConfig: {
-            enabled: false
+            enabled: false,
+            maxAge: 600,
+            maxSize: 100
         }
     }
     resource function get age(int id) returns int {
