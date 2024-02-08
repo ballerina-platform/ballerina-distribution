@@ -21,7 +21,7 @@ service /graphql on new graphql:Listener(9090) {
 
     // Marks a field as deprecated.
     # # Deprecated
-    # The `profile` field is deprecated. Use `profile` instead.
+    # The `profileeeeeee` field is deprecated. Use `profile` instead.
     @deprecated
     resource function get profileeeeeee() returns Profile {
         return {
