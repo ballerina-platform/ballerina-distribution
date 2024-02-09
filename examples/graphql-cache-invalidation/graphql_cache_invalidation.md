@@ -1,6 +1,6 @@
 # GraphQL service - Cache invalidation
 
-The Ballerina `graphql` module provides functionality for cache invalidation. The `invalidate()` and `invalidateAll()` APIs in the `graphql:Context` can be used to invalidate caches in a `graphql:Service`. To invalidate a specific cache in a `resource` method, the `invalidate()` API requires to specify the name of the resource method. On the other hand, the `invalidateAll()` API invalidates all caches within the service. Additionally, the `invalidate()` API supports the cache invalidation of specific subfields, as exemplified by the syntax `invalidate("field.sub-field")`. Conversely, the `invalidateAll()` API invalidates all caches within the `graphql:Service`.
+The Ballerina `graphql` module provides functionality for cache invalidation. The `invalidate()` and `invalidateAll()` APIs in the `graphql:Context` can be used to invalidate caches in a `graphql:Service`. The `invalidate()` API supports the cache invalidation of a specific field by providing the full path of the field separated by a full stop(`.`). For example, `invalidate("field.subfield.anotherSubfield")`. Conversely, the `invalidateAll()` API invalidates all caches within the `graphql:Service`.
 
 ::: code graphql_cache_invalidation.bal :::
 
