@@ -35,8 +35,7 @@ service /graphql on new graphql:Listener(9090) {
         return error("User not found");
     }
 
-    // A `remote` method represents a field in the root `Mutation` operation. This `remote` method
-    // is used to update the name and returns the value.
+    // Updates the name of a user.
     remote function updateName(graphql:Context context, int id, string name) returns string|error {
         // `invalidate()` is used to invalidate the cache for the given field.
         check context.invalidate("name");
@@ -45,20 +44,7 @@ service /graphql on new graphql:Listener(9090) {
         return user.name;
     }
 
-    // A `remote` method represents a field in the root `Mutation` operation. This `remote` method
-    // is used to update the age and returns the `User` record.
-    remote function updateAge(graphql:Context context, int id, int age) returns User|error {
-        // `invalidate()` is used to invalidate the cache for the given field.
-        // By specifying the sub field path, only the cache for that particular
-        // sub field will be invalidated.
-        check context.invalidate("user.name");
-        User user = {id: id, name: users.remove(id).name, age: age};
-        users.add(user);
-        return user;
-    }
-
-    // A `remote` method represents a field in the root `Mutation` operation. This `remote` method
-    // is used to delete a user.
+    // Deletes a user.
     remote function deleteUser(graphql:Context context, int id) returns User|error {
         // `invalidateAll()` is used to invalidate all the caches in the service.
         check context.invalidateAll();
