@@ -25,16 +25,6 @@ service /graphql on new graphql:Listener(9090) {
         return error("User not found");
     }
 
-    @graphql:ResourceConfig {
-        cacheConfig: {}
-    }
-    resource function get user(int id) returns User|error {
-        if users.hasKey(id) {
-            return users.get(id);
-        }
-        return error("User not found");
-    }
-
     // Updates the name of a user.
     remote function updateName(graphql:Context context, int id, string name) returns string|error {
         // `invalidate()` is used to invalidate the cache for the given field.
