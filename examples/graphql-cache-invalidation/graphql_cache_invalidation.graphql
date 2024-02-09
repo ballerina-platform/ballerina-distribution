@@ -1,7 +1,0 @@
-query getName {
-    name
-}
-
-mutation updateName {
-    updateName(id: 1, name: "John")
-}

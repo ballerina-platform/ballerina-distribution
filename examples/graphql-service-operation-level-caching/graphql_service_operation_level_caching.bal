@@ -25,7 +25,7 @@ service /graphql on new graphql:Listener(9090) {
         if users.hasKey(id) {
             return users.get(id).name;
         }
-        return error("User not found");
+        return error(string `User with the ${id} not found`);
     }
 
     // The `enabled` field enables/disables the cache for the field. (default: true)
@@ -38,7 +38,7 @@ service /graphql on new graphql:Listener(9090) {
         if users.hasKey(id) {
             return users.get(id);
         }
-        return error("User not found");
+        return error(string `User with the ${id} not found`);
     }
 
     // The `maxAge` field sets the maximum age of the cache in seconds. (default: 60)
@@ -51,9 +51,9 @@ service /graphql on new graphql:Listener(9090) {
         }
     }
     resource function get age(int id) returns int|error {
-        if !users.hasKey(id) {
-            return error("User not found");
+        if users.hasKey(id) {
+            return users.get(id).age;
         }
-        return users.get(id).age;
+        return error(string `User with the ${id} not found`);
     }
 }

@@ -1,0 +1,7 @@
+mutation updateName {
+    updateName(id: 1, name: "Heisenberg" age: 52) {
+        id
+        name
+        age
+    }
+}

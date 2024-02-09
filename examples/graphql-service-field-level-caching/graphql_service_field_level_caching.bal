@@ -25,6 +25,6 @@ service /graphql on new graphql:Listener(9090) {
         if users.hasKey(id) {
             return users.get(id).name;
         }
-        return error("User not found");
+        return error(string `User with the ${id} not found`);
     }
 }

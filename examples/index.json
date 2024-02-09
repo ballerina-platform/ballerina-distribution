@@ -2372,7 +2372,7 @@
       },
       {
         "name": "ID scalar Type",
-        "url": "graphql-id-scalar",
+        "url": "graphql-id-scalar-type",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -2524,7 +2524,7 @@
       },
       {
         "name": "Operation-level caching",
-        "url": "graphql-caching-global",
+        "url": "graphql-service-operation-level-caching",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -2532,7 +2532,7 @@
       },
       {
         "name": "Field-level caching",
-        "url": "graphql-caching",
+        "url": "graphql-service-field-level-caching",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -2540,7 +2540,7 @@
       },
       {
         "name": "Cache invalidation",
-        "url": "graphql-cache-invalidation",
+        "url": "graphql-service-cache-invalidation",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,

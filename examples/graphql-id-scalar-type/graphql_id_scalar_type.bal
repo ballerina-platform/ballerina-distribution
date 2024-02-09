@@ -15,7 +15,11 @@ table<User> key(id) users = table [
 
 service /graphql on new graphql:Listener(9090) {
 
-    resource function get user(@graphql:ID int id) returns User {
-        return users.get(id);
+    // Returns the user for the given `id`.
+    resource function get user(@graphql:ID int id) returns User|error {
+        if users.hasKey(id) {
+            return users.get(id);
+        }
+        return error(string `User with the ${id} not found`);
     }
 }
