@@ -13,7 +13,7 @@ table<User> key(id) users = table [
     {id: 2, name: "Jesse Pinkman", age: 25}
 ];
 
-service /graphql on new graphql:Listener(9091) {
+service /graphql on new graphql:Listener(9090) {
 
     @graphql:ResourceConfig {
         cacheConfig: {}

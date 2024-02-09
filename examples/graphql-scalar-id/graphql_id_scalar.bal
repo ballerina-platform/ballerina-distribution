@@ -7,7 +7,7 @@ public type User readonly & record {|
     int age;
 |};
 
-// Defines an in-memory table to store the profiles.
+// Defines an in-memory table to store the users.
 table<User> key(id) users = table [
     {id: 1, name: "Walter White", age: 50},
     {id: 2, name: "Jesse Pinkman", age: 25}
