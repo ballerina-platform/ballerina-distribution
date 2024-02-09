@@ -22,22 +22,10 @@ service /graphql on new graphql:Listener(9090) {
     @graphql:ResourceConfig {
         cacheConfig: {}
     }
-    resource function get name(int id) returns string {
-        return users.get(id).name;
-    }
-
-    // The `enabled` field enables/disables the cache for the field. (default: true)
-    // The `maxAge` field sets the maximum age of the cache in seconds. (default: 60)
-    // The `maxSize` field indicates the maximum capacity of the cache table by entries.
-    // (default: 120)
-    @graphql:ResourceConfig {
-        cacheConfig: {
-            enabled: false,
-            maxAge: 600,
-            maxSize: 100
+    resource function get name(int id) returns string|error {
+        if users.hasKey(id) {
+            return users.get(id).name;
         }
-    }
-    resource function get age(int id) returns int {
-        return users.get(id).age;
+        return error("User not found");
     }
 }

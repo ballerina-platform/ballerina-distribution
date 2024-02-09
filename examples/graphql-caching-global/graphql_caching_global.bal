@@ -21,22 +21,39 @@ table<User> key(id) users = table [
 }
 service /graphql on new graphql:Listener(9090) {
 
-    resource function get name(int id) returns string {
-        return users.get(id).name;
+    resource function get name(int id) returns string|error {
+        if users.hasKey(id) {
+            return users.get(id).name;
+        }
+        return error("User not found");
     }
 
     // The `enabled` field enables/disables the cache for the field. (default: true)
+    @graphql:ResourceConfig {
+        cacheConfig: {
+            enabled: false
+        }
+    }
+    resource function get user(int id) returns User|error {
+        if users.hasKey(id) {
+            return users.get(id);
+        }
+        return error("User not found");
+    }
+
     // The `maxAge` field sets the maximum age of the cache in seconds. (default: 60)
     // The `maxSize` field indicates the maximum capacity of the cache table by entries. 
     // (default: 120)
     @graphql:ResourceConfig {
         cacheConfig: {
-            enabled: false,
             maxAge: 600,
             maxSize: 100
         }
     }
-    resource function get age(int id) returns int {
+    resource function get age(int id) returns int|error {
+        if !users.hasKey(id) {
+            return error("User not found");
+        }
         return users.get(id).age;
     }
 }

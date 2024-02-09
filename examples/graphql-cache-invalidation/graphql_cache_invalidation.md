@@ -1,6 +1,6 @@
 # GraphQL service - Cache invalidation
 
-The Ballerina `graphql` module provides functionality for cache invalidation. The `invalidate()` and `invalidateAll()` APIs in the `graphql:Context` can be used to invalidate caches in a `graphql:Service`. To invalidate a specific cache in a `resource` function, the `invalidate()` API requires to specify the name of the resource. On the other hand, the `invalidateAll()` API invalidates all caches within the service.
+The Ballerina `graphql` module provides functionality for cache invalidation. The `invalidate()` and `invalidateAll()` APIs in the `graphql:Context` can be used to invalidate caches in a `graphql:Service`. To invalidate a specific cache in a `resource` method, the `invalidate()` API requires to specify the name of the resource method. On the other hand, the `invalidateAll()` API invalidates all caches within the service.
 
 ::: code graphql_cache_invalidation.bal :::
 
@@ -20,4 +20,4 @@ To send the document, execute the following cURL command.
 
 ## Related links
 - [`graphql` module - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
-- [GraphQL Caching - Specification](/spec/graphql/#107-caching)
+- [GraphQL Caching - Specification](/spec/graphql/#1071-server-side-caching)

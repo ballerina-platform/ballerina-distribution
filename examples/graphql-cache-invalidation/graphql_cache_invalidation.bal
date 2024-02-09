@@ -13,37 +13,32 @@ table<User> key(id) users = table [
     {id: 2, name: "Jesse Pinkman", age: 25}
 ];
 
-service /graphql on new graphql:Listener(9090) {
+service /graphql on new graphql:Listener(9091) {
 
-    // The `cacheConfig` in the `graphql:ResourceConfig` annotation is used to 
-    // configure the cache for a specific field in the GraphQL service.
-    // (default: {enabled: true, maxAge: 60, maxSize: 120})
     @graphql:ResourceConfig {
         cacheConfig: {}
     }
-    resource function get name(int id) returns string {
-        return users.get(id).name;
+    resource function get name(int id) returns string|error {
+        if users.hasKey(id) {
+            return users.get(id).name;
+        }
+        return error("User not found");
     }
 
-    // The `enabled` field enables/disables the cache for the field. (default: true)
-    // The `maxAge` field sets the maximum age of the cache in seconds. (default: 60)
-    // The `maxSize` field indicates the maximum capacity of the cache table 
-    // by entries. (default: 120)
     @graphql:ResourceConfig {
-        cacheConfig: {
-            enabled: false,
-            maxAge: 600,
-            maxSize: 100
-        }
+        cacheConfig: {}
     }
-    resource function get age(int id) returns int {
-        return users.get(id).age;
+    resource function get user(int id) returns User|error {
+        if users.hasKey(id) {
+            return users.get(id);
+        }
+        return error("User not found");
     }
 
     // A `remote` method represents a field in the root `Mutation` operation. This `remote` method
     // is used to update the name and returns the value.
     remote function updateName(graphql:Context context, int id, string name) returns string|error {
-        // invalidate() is used to invalidate the cache for the given resource path.
+        // `invalidate()` is used to invalidate the cache for the given field.
         check context.invalidate("name");
         User user = {id: id, name: name, age: users.remove(id).age};
         users.add(user);
@@ -51,12 +46,23 @@ service /graphql on new graphql:Listener(9090) {
     }
 
     // A `remote` method represents a field in the root `Mutation` operation. This `remote` method
-    // is used to update the name and returns the value.
-    remote function updateData(graphql:Context context, int id, string name) returns string|error {
-        // invalidateAll() is used to invalidate all the caches in the service.
-        check context.invalidateAll();
-        User user = {id: id, name: name, age: users.remove(id).age};
+    // is used to update the age and returns the `User` record.
+    remote function updateAge(graphql:Context context, int id, int age) returns User|error {
+        // `invalidate()` is used to invalidate the cache for the given field.
+        // By specifying the sub field path, only the cache for that particular
+        // sub field will be invalidated.
+        check context.invalidate("user.name");
+        User user = {id: id, name: users.remove(id).name, age: age};
         users.add(user);
-        return user.name;
+        return user;
+    }
+
+    // A `remote` method represents a field in the root `Mutation` operation. This `remote` method
+    // is used to delete a user.
+    remote function deleteUser(graphql:Context context, int id) returns User|error {
+        // `invalidateAll()` is used to invalidate all the caches in the service.
+        check context.invalidateAll();
+        User user = users.remove(id);
+        return user;
     }
 }

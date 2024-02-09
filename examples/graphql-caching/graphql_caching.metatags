@@ -1,2 +1,2 @@
 description: This example demonstrates the field-level caching functionality within a GraphQL service.
-keywords: ballerina, ballerina by example, bbe, graphql, cache
+keywords: ballerina, ballerina by example, bbe, graphql, server-side caching
