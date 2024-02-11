@@ -1,5 +1,5 @@
-mutation updateName {
-    updateName(id: 1, name: "Heisenberg" age: 52) {
+mutation updateUser {
+    updateUser(id: 1, name: "Heisenberg" age: 52) {
         id
         name
         age

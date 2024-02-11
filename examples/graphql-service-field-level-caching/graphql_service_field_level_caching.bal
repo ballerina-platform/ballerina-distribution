@@ -15,7 +15,7 @@ table<User> key(id) users = table [
 
 service /graphql on new graphql:Listener(9090) {
 
-    // The `cacheConfig` in the `graphql:ResourceConfig` annotation is used to 
+    // The `cacheConfig` in the `graphql:ResourceConfig` annotation is used to
     // configure the cache for a specific field in the GraphQL service.
     // (default: {enabled: true, maxAge: 60, maxSize: 120})
     @graphql:ResourceConfig {
