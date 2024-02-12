@@ -8,7 +8,7 @@ Run the service by executing the following command.
 
 ::: out graphql_service_field_level_caching.server.out :::
 
-Then, send the following document to update the name.
+Send the following document to the GraphQL endpoint to test the service.
 
 ::: code graphql_service_field_level_caching.graphql :::
 
@@ -20,4 +20,4 @@ To send the document, execute the following cURL command.
 
 ## Related links
 - [`graphql` module - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
-- [GraphQL Field-level Caching - Specification](/spec/graphql/#10712-field-level-caching)
+- [GraphQL Field-level caching - Specification](/spec/graphql/#10712-field-level-caching)

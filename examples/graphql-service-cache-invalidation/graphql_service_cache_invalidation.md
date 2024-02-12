@@ -8,7 +8,7 @@ Run the service by executing the following command.
 
 ::: out graphql_service_cache_invalidation.server.out :::
 
-Then, send the following document to update the name.
+Then, send the following document to update the user.
 
 ::: code graphql_service_cache_invalidation.graphql :::
 
@@ -20,4 +20,4 @@ To send the document, execute the following cURL command.
 
 ## Related links
 - [`graphql` module - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
-- [GraphQL Cache Eviction - Specification](/spec/graphql/#10713-cache-eviction)
+- [GraphQL Cache invalidation - Specification](/spec/graphql/#10713-cache-invalidation)

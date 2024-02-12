@@ -20,4 +20,4 @@ To send the document, execute the following cURL command in a separate terminal.
 
 ## Related links
 - [`graphql` module - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
-- [GraphQL input types - Specification](/spec/graphql/#415-id)
+- [GraphQL ID scalar type - Specification](/spec/graphql/#415-id)
