@@ -1,4 +1,4 @@
-$ bal run list_sub_typing.bal
+$ bal run list_subtyping.bal
 true
 true
 true
