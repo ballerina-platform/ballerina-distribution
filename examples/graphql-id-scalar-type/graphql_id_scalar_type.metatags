@@ -1,2 +1,2 @@
-description: This example demonstrates using GraphQL ID scalar type as unique identifiers.
+description: This example demonstrates using the GraphQL ID scalar type as a unique identifier.
 keywords: ballerina, ballerina by example, bbe, graphql, scalar, id
