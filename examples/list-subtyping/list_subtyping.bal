@@ -2,6 +2,8 @@ import ballerina/io;
 
 public function main() {
     int[3] numbers = [144, 232, 322];
+    // `numbers` will be a subtype of `int[]`
+    // since `T[n]` is a sub type of `T[]`
     io:println(numbers is int[]);
 
     byte[3] numbers2 = [1, 2, 3];
@@ -23,4 +25,3 @@ public function main() {
     // `int[3]` is a sub type of `[int, anydata...]`
     io:println(numbers is [int, anydata...]);
 }
-
