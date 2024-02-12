@@ -46,11 +46,11 @@ public function main() {
     s2["credits"] = 120.5;
     io:println(s2);
 
-    // You can assign a `PartTimeStudent` type value to a `Student`.
+    // You can assign a `PartTimeStudent`-typed value to a `Student`-typed variable.
     Student s3 = s2;
     io:println(s3);
 
-    // You can assign a `Student` type value to a `map`.
+    // You can assign a `Student`-typed value to a `map<anydata>`-typed variable.
     map<anydata> s4 = s3;
     io:println(s4);
 }
