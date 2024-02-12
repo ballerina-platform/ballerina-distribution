@@ -46,11 +46,11 @@ public function main() {
     s2["credits"] = 120.5;
     io:println(s2);
 
-    // You can assign a `PartTimeStudent`-typed value to a `Student`-typed variable.
+    // A variable of type `PartTimeStudent` can be used where a `Student` value is expected.
     Student s3 = s2;
     io:println(s3);
 
-    // You can assign a `Student`-typed value to a `map<anydata>`-typed variable.
+    // A variable of type `Student` can be used where a `map<anydata>` value is expected.
     map<anydata> s4 = s3;
     io:println(s4);
 }
