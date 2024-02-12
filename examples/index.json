@@ -459,7 +459,7 @@
         "name": "List subtyping",
         "url": "list-subtyping",
         "verifyBuild": true,
-        "verifyOutput": false,
+        "verifyOutput": true,
         "isLearnByExample": true
       },
       {
