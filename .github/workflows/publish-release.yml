@@ -170,6 +170,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: ballerina-platform/module-ballerina-docker
+          ref: ballerina-1.2.x
           path: module-ballerina-docker
       - name: Copy zip artifact
         run: cp ballerina/target/ballerina-${{ steps.version-set.outputs.version }}.zip module-ballerina-docker/base/docker/
