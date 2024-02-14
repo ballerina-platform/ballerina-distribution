@@ -1,2 +1,2 @@
-description: BBE on creating a Kafka service to receive messages in an asynchronous manner using Ballerina.
+description: This example demonstrates creating a Kafka service to receive messages in an asynchronous manner.
 keywords: ballerina, ballerina by example, bbe, kafka, consumer, listener, service, asynchronous

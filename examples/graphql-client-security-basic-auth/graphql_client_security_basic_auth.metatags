@@ -1,2 +1,2 @@
-description: A GraphQL client written in Ballerina
-keywords: ballerina, ballerina by example, bbe, graphql, client, basic auth, security
+description: This example demonstrates securing a GraphQL client with basic authentication.
+keywords: ballerina, ballerina by example, bbe, graphql, client, security, basic auth, security

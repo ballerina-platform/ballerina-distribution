@@ -18,7 +18,7 @@ Follow the steps below to write the function.
 
 2. Replace the content of the generated Ballerina file with the content below.
 
-::: code aws-lambda-s3-trigger.bal :::
+::: code aws_lambda_s3_trigger.bal :::
 
 ## Build the function
 

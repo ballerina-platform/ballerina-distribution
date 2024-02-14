@@ -18,7 +18,7 @@ Follow the steps below to write the function.
 
 2. Replace the content of the generated Ballerina file with the content below.
 
-::: code azure-functions-timer-trigger.bal :::
+::: code azure_functions_timer_trigger.bal :::
 
 ## Build the function
 
