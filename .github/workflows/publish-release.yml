@@ -610,11 +610,10 @@ jobs:
           dotnet-version: '2.1.x'
       - name: Install GUID Generator
         run: dotnet tool install -g dotnet-guid --version 0.5.2
-      - name: Install Wget
-        run: choco install wget --no-progress
-      - name: Download Windows Intaller Zip
+      - name: Download Windows Installer Zip
         run: |
-          wget https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-${{ needs.publish-release.outputs.project-version }}-windows.zip
+          echo default login ${{ secrets.BALLERINA_BOT_USERNAME }} password ${{ secrets.BALLERINA_BOT_TOKEN }} >> _netrc
+          curl --netrc-file _netrc -L -o ballerina-${{ needs.publish-release.outputs.project-version }}-windows.zip https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-${{ needs.publish-release.outputs.project-version }}-windows.zip
       - name: cosign-installer
         uses: sigstore/cosign-installer@v3.0.3
       - name: Create windows-msi Installer
