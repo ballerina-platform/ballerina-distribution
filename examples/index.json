@@ -2371,7 +2371,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "ID scalar Type",
+        "name": "ID scalar type",
         "url": "graphql-id-scalar-type",
         "verifyBuild": true,
         "verifyOutput": false,
