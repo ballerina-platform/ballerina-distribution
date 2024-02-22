@@ -137,8 +137,8 @@ jobs:
           echo "::set-output name=branchName::$branchName"
       - name: Update Markdown file
         run: |
-          if ${{ github.event.inputs.isPreRelease }} == 'true'; then
-            echo "" > release_notes.md;
+          if ${{ github.event.inputs.isPreRelease }} == 'true'; then 
+            echo "" > release_notes.md; 
           else sed -i 's/{{ version }}/${{ steps.version-set.outputs.taggedVersion }}/g' release_notes.md; sed -i 's/{{ branch }}/${{ steps.retrieve-branch.outputs.branchName }}/g' release_notes.md; fi
       - name: Read release notes from file
         id: release_notes
@@ -524,6 +524,19 @@ jobs:
           asset_name: ballerina-${{ needs.publish-release.outputs.project-version }}-macos-x64.pkg.sig
           asset_path: ./ballerina-${{ needs.publish-release.outputs.project-version }}-macos-x64.pkg.sig
           asset_content_type: application/octet-stream
+      - name: Install Ballerina PKG
+        run: sudo installer -pkg installers/mac/target/pkg/ballerina-*-macos-x64.pkg -target /
+      - name: Update Installer Test Configs
+        run: |
+          DISPLAY_TEXT=${{ needs.ubuntu-build.outputs.lang-version }}
+          SWAN_LAKE_LATEST_VERSION="swan-lake-"+$DISPLAY_TEXT
+          perl -pi -e "s/^\s*swan-lake-latest-version-display-text=.*/swan-lake-latest-version-display-text=$DISPLAY_TEXT/" ballerina-test-automation/gradle.properties
+          perl -pi -e "s/^\s*swan-lake-latest-version=.*/swan-lake-latest-version=$SWAN_LAKE_LATEST_VERSION/" ballerina-test-automation/gradle.properties
+      - name: Run Installer Tests
+        working-directory: ./ballerina-test-automation/installer-test
+        run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+        env:
+          TEST_MODE_ACTIVE: true
       - name: Download MacOS-ARM Intaller Zip
         run: |
           wget https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm.zip
@@ -578,19 +591,6 @@ jobs:
           asset_name: ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg.sig
           asset_path: ./ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm-x64.pkg.sig
           asset_content_type: application/octet-stream
-      - name: Install Ballerina PKG
-        run: sudo installer -pkg installers/mac/target/pkg/ballerina-*-macos-x64.pkg -target /
-      - name: Update Installer Test Configs
-        run: |
-          DISPLAY_TEXT=${{ needs.ubuntu-build.outputs.lang-version }}
-          SWAN_LAKE_LATEST_VERSION="swan-lake-"+$DISPLAY_TEXT
-          perl -pi -e "s/^\s*swan-lake-latest-version-display-text=.*/swan-lake-latest-version-display-text=$DISPLAY_TEXT/" ballerina-test-automation/gradle.properties
-          perl -pi -e "s/^\s*swan-lake-latest-version=.*/swan-lake-latest-version=$SWAN_LAKE_LATEST_VERSION/" ballerina-test-automation/gradle.properties
-      - name: Run Installer Tests
-        working-directory: ./ballerina-test-automation/installer-test
-        run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
-        env:
-          TEST_MODE_ACTIVE: true
 
   windows-installer-build:
     name: Windows Installer Build
@@ -610,11 +610,10 @@ jobs:
           dotnet-version: '2.1.x'
       - name: Install GUID Generator
         run: dotnet tool install -g dotnet-guid --version 0.5.2
-      - name: Install Wget
-        run: choco install wget --no-progress
-      - name: Download Windows Intaller Zip
+      - name: Download Windows Installer Zip
         run: |
-          wget https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-${{ needs.publish-release.outputs.project-version }}-windows.zip
+          echo default login ${{ secrets.BALLERINA_BOT_USERNAME }} password ${{ secrets.BALLERINA_BOT_TOKEN }} >> _netrc
+          curl --netrc-file _netrc -L -o ballerina-${{ needs.publish-release.outputs.project-version }}-windows.zip https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-${{ needs.publish-release.outputs.project-version }}-windows.zip
       - name: cosign-installer
         uses: sigstore/cosign-installer@v3.0.3
       - name: Create windows-msi Installer
@@ -680,6 +679,7 @@ jobs:
           set SWAN_LAKE_LATEST_VERSION=swan-lake-%DISPLAY_TEXT%
           perl -pi -e "s/^\s*swan-lake-latest-version-display-text=.*/swan-lake-latest-version-display-text=%DISPLAY_TEXT%/" ballerina-test-automation/gradle.properties
           perl -pi -e "s/^\s*swan-lake-latest-version=.*/swan-lake-latest-version=%SWAN_LAKE_LATEST_VERSION%/" ballerina-test-automation/gradle.properties
+        shell: cmd
       - name: Run Installer Tests
         working-directory: .\ballerina-test-automation\installer-test
         run: |
