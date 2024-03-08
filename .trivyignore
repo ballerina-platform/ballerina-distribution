@@ -9,3 +9,5 @@ CVE-2023-4586
 CVE-2020-8908
 CVE-2024-25710
 CVE-2024-26308
+# apache-mime4j-core dependency vulerability (remove once the fixed version for Axiom API is delivered)
+CVE-2024-21742
