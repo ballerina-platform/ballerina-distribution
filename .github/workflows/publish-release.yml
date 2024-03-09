@@ -528,7 +528,7 @@ jobs:
         run: sudo installer -pkg installers/mac/target/pkg/ballerina-*-macos-x64.pkg -target /
       - name: Update Installer Test Configs
         run: |
-          DISPLAY_TEXT=${{ needs.ubuntu-build.outputs.lang-version }}
+          DISPLAY_TEXT=${{ needs.publish-release.outputs.lang-version }}
           SWAN_LAKE_LATEST_VERSION="swan-lake-"+$DISPLAY_TEXT
           perl -pi -e "s/^\s*swan-lake-latest-version-display-text=.*/swan-lake-latest-version-display-text=$DISPLAY_TEXT/" ballerina-test-automation/gradle.properties
           perl -pi -e "s/^\s*swan-lake-latest-version=.*/swan-lake-latest-version=$SWAN_LAKE_LATEST_VERSION/" ballerina-test-automation/gradle.properties
@@ -610,21 +610,22 @@ jobs:
           dotnet-version: '2.1.x'
       - name: Install GUID Generator
         run: dotnet tool install -g dotnet-guid --version 0.5.2
+      - name: Set up Wix toolkit
+        run: echo "${WIX}bin" >> $GITHUB_PATH
+        shell: bash
+      - name: Set cosign-installer
+        uses: sigstore/cosign-installer@v3.0.3
       - name: Download Windows Installer Zip
         run: |
           echo default login ${{ secrets.BALLERINA_BOT_USERNAME }} password ${{ secrets.BALLERINA_BOT_TOKEN }} >> _netrc
           curl --netrc-file _netrc -L -o ballerina-${{ needs.publish-release.outputs.project-version }}-windows.zip https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-${{ needs.publish-release.outputs.project-version }}-windows.zip
-      - name: cosign-installer
-        uses: sigstore/cosign-installer@v3.0.3
       - name: Create windows-msi Installer
         id: run_installers_msi
         run: |
-          $env:Path += ";C:\Program Files (x86)\WiX Toolset v3.11\bin"
           move installers\windows .\
           ren windows w
           cd w
           .\build-ballerina-windows-x64.bat --version ${{ needs.publish-release.outputs.project-version }} --path .\..\
-          echo "Created windows-msi successfully"
       - name: Sign the Windows installer
         run: |
           cosign sign-blob w\target\msi\ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi --output-certificate ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.pem --output-signature ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.sig --yes
