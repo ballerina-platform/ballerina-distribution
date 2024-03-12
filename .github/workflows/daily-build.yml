@@ -405,6 +405,9 @@ jobs:
           dotnet-version: '2.1.x'
       - name: Install GUID Generator
         run: dotnet tool install -g dotnet-guid --version 0.5.2
+      - name: Set up Wix toolkit
+        run: echo "${WIX}bin" >> $GITHUB_PATH
+        shell: bash
       - name: Download Windows Intaller Zip
         uses: actions/download-artifact@v2
         with:
@@ -412,12 +415,10 @@ jobs:
       - name: Create windows-msi
         id: run_installers_msi
         run: |
-          $env:Path += ";C:\Program Files (x86)\WiX Toolset v3.11\bin"
           move installers\windows .\
           ren windows w
           cd w
           .\build-ballerina-windows-x64.bat --version ${{ needs.ubuntu-build.outputs.project-version }} --path .\..\
-          echo "Created windows-msi successfully"
       - name: Generate Hashes
         run: |
           openssl dgst -sha256 -out ballerina-${{ needs.ubuntu-build.outputs.project-version }}-windows-x64.msi.sha256 w\target\msi\ballerina-*-windows-x64.msi
