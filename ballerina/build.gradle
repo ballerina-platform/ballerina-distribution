@@ -1082,7 +1082,7 @@ task testExamples() {
     }
 }
 
-def buildStandardLibs = { distPath, stdlibTest, isStageTest, testMinorVersionDifference ->
+def buildAndTestStandardLibs = { distPath, stdlibTest, isStageTest, testMinorVersionDifference ->
     def exitVal
     def additionalBuildParams = ""
 
@@ -1116,7 +1116,7 @@ def buildStandardLibs = { distPath, stdlibTest, isStageTest, testMinorVersionDif
         exitVal = exec {
             ignoreExitValue true
             workingDir "${distPath}/${stdlibTest}"
-            commandLine 'cmd', '/c', "${distPath}/bin/bal.bat build ${additionalBuildParams}"
+            commandLine 'cmd', '/c', "${distPath}/bin/bal.bat test ${additionalBuildParams}"
         }
     } else {
         if (!isStageTest) {
@@ -1140,7 +1140,7 @@ def buildStandardLibs = { distPath, stdlibTest, isStageTest, testMinorVersionDif
             environment "BALLERINA_STAGE_CENTRAL", "$isStageTest"
             ignoreExitValue true
             workingDir "${distPath}/${stdlibTest}"
-            commandLine 'sh', '-c', "${distPath}/bin/bal build ${additionalBuildParams}"
+            commandLine 'sh', '-c', "${distPath}/bin/bal test ${additionalBuildParams}"
         }
     }
     if (exitVal.getExitValue() == 1) {
@@ -1181,7 +1181,7 @@ task testStdlibs() {
         def failedStdLibs = []
         stdlibTestsList.each { stdlibTest ->
             if (stdlibTest.enableTest) {
-                boolean stdLibTestFailFlag = buildStandardLibs(distPath, stdlibTest.path, false, false)
+                boolean stdLibTestFailFlag = buildAndTestStandardLibs(distPath, stdlibTest.path, false, false)
                 if (stdLibTestFailFlag) {
                     failedStdLibs.add(stdlibTest.path);
                 }
@@ -1222,7 +1222,7 @@ task testStdlibsWithStaging() {
         def failedStdLibs = []
         stdlibTestsList.each { stdlibTest ->
             if (stdlibTest.enableTest) {
-                boolean stdLibTestFailFlag = buildStandardLibs(distPath, stdlibTest.path, true, testMinorVersionDifference)
+                boolean stdLibTestFailFlag = buildAndTestStandardLibs(distPath, stdlibTest.path, true, testMinorVersionDifference)
                 if (stdLibTestFailFlag) {
                     failedStdLibs.add(stdlibTest.path);
                 }
