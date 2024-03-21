@@ -1099,12 +1099,12 @@ def buildAndTestStandardLibs = { distPath, stdlibTest, isStageTest, testMinorVer
         if (!isStageTest) {
             exec {
                 workingDir "${distPath}/${stdlibTest}"
-                commandLine 'cmd', '/c', "${distPath}/bin/bal/bal.bat init test"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat init test"
             }
         } else {
             exec {
                 workingDir "${distPath}/${stdlibTest}"
-                commandLine 'cmd', '/c', "${distPath}/bin/bal/bal.bat clean"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat clean"
             }
         }
         if (testMinorVersionDifference) {
