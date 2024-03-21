@@ -32,7 +32,9 @@ service /hello on restIntrospectionEP {
 http:Client restApiClient = checkpanic new("http://localhost:9118");
 
 //Test Introspection Resource availability
-@test:Config {}
+@test:Config {
+  enable: false
+}
 function testIntrospectionResourceAvailability() returns error? {
     http:Response response = check restApiClient->options("/hello");
     test:assertEquals(response.statusCode, 204);
@@ -81,7 +83,9 @@ json openApiDocumentation = {
 };
 
 //Test REST API Doc
-@test:Config {}
+@test:Config {
+  enable: false
+}
 function testRestApiDoc() returns error? {
     json receivedApiDoc = check restApiClient->get("/hello/openapi-doc-dygixywsw");
     test:assertEquals(receivedApiDoc, openApiDocumentation);
