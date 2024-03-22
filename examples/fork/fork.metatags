@@ -1,0 +1,2 @@
+description: This BBE demonstrates how the `fork` statement can be used for concurrency.
+keywords: ballerina, ballerina by example, bbe, fork, concurrency, named workers
