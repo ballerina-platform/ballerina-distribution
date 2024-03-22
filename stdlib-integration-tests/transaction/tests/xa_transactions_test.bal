@@ -52,16 +52,18 @@ function testXATransactions() returns error? {
         str += " -> transaction ended.";
     }
 
-    test:assertEquals("transaction started -> transaction committed -> transaction ended.", str);
+    test:assertEquals(str, "transaction started -> transaction committed -> transaction ended.");
 
-    // Verify that the data was inserted successfully on both databases
+    // Verify that the data was inserted successfully to both databases
     sql:ExecutionResult employeeResult = check dbClient1->queryRow(`SELECT * FROM EMPLOYEE WHERE ID = 1`);
     sql:ExecutionResult salaryResult = check dbClient2->queryRow(`SELECT * FROM SALARY WHERE ID = 1`);
+    json employeeResultJson = employeeResult.toJson();
+    json salaryResultJson = salaryResult.toJson();
 
-    test:assertEquals(1, (check employeeResult.toJson().ID));
-    test:assertEquals("John", (check employeeResult.toJson().NAME));
-    test:assertEquals(1, (check salaryResult.toJson().ID));
-    test:assertEquals(20000.0, (check salaryResult.toJson().VALUE));
+    test:assertEquals(employeeResultJson.ID, 1);
+    test:assertEquals(employeeResultJson.NAME, "John");
+    test:assertEquals(salaryResultJson.ID, 1);
+    test:assertEquals(salaryResultJson.VALUE, 20000.00);
 
     checkpanic dbClient1.close();
     checkpanic dbClient2.close();
