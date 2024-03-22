@@ -136,13 +136,15 @@ jobs:
           dotnet-version: '2.1.x'
       - name: Install GUID Generator
         run: dotnet tool install -g dotnet-guid
-      - name: Download Windows Intaller Zip
+      - name: Set up Wix toolkit
+        run: echo "${WIX}bin" >> $GITHUB_PATH
+        shell: bash
+      - name: Download Windows Installer Zip
         uses: actions/download-artifact@v2
         with:
           name: Windows Installer ZIP
       - name: Create windows-msi
         run: |
-          $env:Path += ";C:\Program Files (x86)\WiX Toolset v3.11\bin"
           move installers\windows .\
           ren windows w
           cd w
