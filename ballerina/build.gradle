@@ -1101,6 +1101,13 @@ def buildAndTestStandardLibs = { distPath, stdlibTest, isStageTest, testMinorVer
                 workingDir "${distPath}/${stdlibTest}"
                 commandLine 'cmd', '/c', "${distPath}/bin/bal.bat init test"
             }
+            if (stdlibTest == 'transaction') {
+                def tomlFile = new File("${distPath}/${stdlibTest}/Ballerina.toml")
+                tomlFile.append("\n\n[[platform.java17.dependency]]")
+                tomlFile.append("\nartifactId = \"h2\"")
+                tomlFile.append("\nversion = \"2.2.224\"")
+                tomlFile.append("\ngroupId = \"com.h2database\"")
+            }
         } else {
             exec {
                 workingDir "${distPath}/${stdlibTest}"
@@ -1123,6 +1130,13 @@ def buildAndTestStandardLibs = { distPath, stdlibTest, isStageTest, testMinorVer
             exec {
                 workingDir "${distPath}/${stdlibTest}"
                 commandLine 'sh', '-c', "${distPath}/bin/bal init test"
+            }
+            if (stdlibTest == 'transaction') {
+                def tomlFile = new File("${distPath}/${stdlibTest}/Ballerina.toml")
+                tomlFile.append("\n\n[[platform.java17.dependency]]")
+                tomlFile.append("\nartifactId = \"h2\"")
+                tomlFile.append("\nversion = \"2.2.224\"")
+                tomlFile.append("\ngroupId = \"com.h2database\"")
             }
         } else {
             exec {
