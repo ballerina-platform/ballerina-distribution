@@ -80,6 +80,17 @@ task unpackDevTools(type: Copy) {
     }
 }
 
+task downloadDocUi {
+    def response = new JsonSlurper().parseText(new URL(docUiApi).text)
+    def zipFileUrl = response.fileURL
+    def zipInputStream = new URL(zipFileUrl).openStream()
+    def outputFile = new File("${buildDir}/target/extracted-distributions/doc-ui-zip/ballerina-doc-ui.zip")
+    outputFile.parentFile.mkdirs()
+    outputFile.withOutputStream { outputStream ->
+        outputStream << zipInputStream
+    }
+}
+
 task unpackAwsLambdaBala(type: Copy) {
     group = "unpack_dependencies"
     configurations.awsLambdaBala.resolvedConfiguration.resolvedArtifacts.each { artifact ->
@@ -271,8 +282,9 @@ task copyDevToolsCoverageReport(type: Copy) {
     into "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/lib/tools/coverage"
     rename("testerina-report-tools-${devToolsVersion}.zip", "report.zip")
 }
+
 task copyDevToolsDocUi(type: Copy) {
-    from zipTree("$project.buildDir/target/extracted-distributions/ballerina-dev-tools-zip/docs/docerina-ui-${devToolsVersion}.zip")
+    from zipTree("$project.buildDir/target/extracted-distributions/doc-ui-zip/ballerina-doc-ui.zip")
     into "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/lib/tools/doc-ui"
 }
 
@@ -1467,7 +1479,8 @@ task generateCache(dependsOn: ':cache-generator:build') {
 /* Unpack Dependencies */
 unpackJballerinaTools.dependsOn unpackBallerinaJre
 unpackDevTools.dependsOn unpackJballerinaTools
-unpackStdLibs.dependsOn unpackDevTools
+downloadDocUi.dependsOn unpackDevTools
+unpackStdLibs.dependsOn downloadDocUi
 unpackOpenAPILibs.dependsOn unpackStdLibs
 unpackC2cLibs.dependsOn unpackOpenAPILibs
 unpackC2cTooling.dependsOn unpackC2cLibs
