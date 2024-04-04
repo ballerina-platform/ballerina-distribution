@@ -4523,6 +4523,20 @@
     ]
   },
   {
+    "title": "Json data library",
+    "column": 3,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "Jsonpath expressions",
+        "url": "jsonpath-expressions",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
     "title": "Constraint",
     "column": 3,
     "category": "Common libraries",
