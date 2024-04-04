@@ -1,18 +1,28 @@
 import ballerina/io;
+import ballerina/lang.runtime;
 
 public function main() {
-    fork {
-        worker A {
-            5 -> B;
-            string value =<- B;
-            io:println(string `Received string '${value}' from worker B`);
-        }
+    execute(true);
+    runtime:sleep(1);
+    execute(false);
+}
 
-        worker B {
-            int value =<- A;
-            io:println(string `Received integer '${value}' from worker A`);
+function execute(boolean isForked) {
+    if isForked {
+        fork {
+            worker A {
+                5 -> B;
+                string value = <- B;
+                io:println(string `Received string '${value}' from worker B`);
+            }
 
-            "a" -> A;
+            worker B {
+                int value = <- A;
+                io:println(string `Received int '${value}' from worker A`);
+                "a" -> A;
+            }
         }
+    } else {
+        io:println("Not forked");
     }
 }
