@@ -85,9 +85,11 @@ task downloadDocUi {
     def zipFileUrl = response.fileURL
     def zipInputStream = new URL(zipFileUrl).openStream()
     def outputFile = new File("${buildDir}/target/extracted-distributions/doc-ui-zip/ballerina-doc-ui.zip")
-    outputFile.parentFile.mkdirs()
-    outputFile.withOutputStream { outputStream ->
-        outputStream << zipInputStream
+    doLast {
+        outputFile.parentFile.mkdirs()
+        outputFile.withOutputStream { outputStream ->
+            outputStream << zipInputStream
+        }
     }
 }
 
@@ -1479,8 +1481,7 @@ task generateCache(dependsOn: ':cache-generator:build') {
 /* Unpack Dependencies */
 unpackJballerinaTools.dependsOn unpackBallerinaJre
 unpackDevTools.dependsOn unpackJballerinaTools
-downloadDocUi.dependsOn unpackDevTools
-unpackStdLibs.dependsOn downloadDocUi
+unpackStdLibs.dependsOn unpackDevTools
 unpackOpenAPILibs.dependsOn unpackStdLibs
 unpackC2cLibs.dependsOn unpackOpenAPILibs
 unpackC2cTooling.dependsOn unpackC2cLibs
@@ -1500,6 +1501,7 @@ extractJreForWindows.dependsOn extractJreForMacArm
 copyOtherRepos.dependsOn extractJreForWindows
 copyDevToolsCoverageReport.dependsOn copyOtherRepos
 copyDevToolsDocUi.dependsOn copyDevToolsCoverageReport
+copyDevToolsDocUi.dependsOn downloadDocUi
 buildDistRepo.dependsOn copyDevToolsDocUi
 buildDistRepo.dependsOn generateCache
 filterApiDocs.dependsOn buildDistRepo
