@@ -1031,6 +1031,13 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "JSON to record",
+        "url": "json-to-record",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },
