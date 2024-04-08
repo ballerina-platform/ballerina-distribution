@@ -33,33 +33,30 @@ public function main() returns error? {
     Book book3 = check xmldata:parseBytes(xmlByteArr);
     io:println(book3);
 
-    // Construct stream of byte blocks.
-    stream<byte[], error?> byteBlockStream = new(new XmlByteBlock());
+    stream<byte[], error?> byteBlockStream = new(new ByteBlockGenerator(xmlStr));
     // Convert the XML byte block stream to a record type.
     Book book4 = check xmldata:parseStream(byteBlockStream);
     io:println(book4);
 }
 
-// Defines a class called `XmlByteBlock`, which implements the `next()` method.
+// Defines a class called `ByteBlockGenerator`, which implements the `next()` method.
 // This will be invoked when the `next()` method of the stream gets invoked.
-class XmlByteBlock {
-    byte[] byteArr = string `<book>
-        <id>10024</id>
-        <title>Clean Code</title>
-        <author>Robert C. Martin</author>
-    </book>`.toBytes();
-    int i = 0;
+class ByteBlockGenerator {
+    private int index = 0;
+    private final byte[] byteArr;
+    private final int arraySize;
+
+    public function init(string data) {
+        self.byteArr = data.toBytes();
+        self.arraySize = self.byteArr.length();
+    }
 
     public isolated function next() returns record {|byte[] value;|}|error? {
-        if self.i >= self.byteArr.length() {
+        if self.index >= self.arraySize {
             return;
         }
-        int startIndex = self.i;
-        int endIndex = startIndex + 3;
-        self.i = endIndex;
-        if endIndex >= self.byteArr.length() {
-            endIndex = self.byteArr.length() - 1;
-        }
-        return {value: self.byteArr.slice(startIndex, self.i)};
+        int startIndex = self.index;
+        self.index = startIndex + 4 > self.arraySize ? self.arraySize : startIndex + 3;
+        return {value: self.byteArr.slice(startIndex, self.index)};
     }
 }
