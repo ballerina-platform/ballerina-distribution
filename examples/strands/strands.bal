@@ -26,7 +26,7 @@ public function main() {
         io:println("Worker B end");
     }
 
-    // Waiting on a named workers until they complete.
+    // Waiting on named workers until they complete.
     wait A;
     wait B;
 }
