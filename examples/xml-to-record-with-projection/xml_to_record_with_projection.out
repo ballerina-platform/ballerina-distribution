@@ -1,0 +1,3 @@
+$ bal run xml_to_record_with_projection.bal
+{"name":"Clean Code","author":"Robert C. Martin"}
+{"name":"Clean Code","author":"Robert C. Martin"}
