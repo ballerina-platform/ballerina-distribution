@@ -4523,12 +4523,12 @@
     ]
   },
   {
-    "title": "Json data library",
+    "title": "JSON data library",
     "column": 3,
     "category": "Common libraries",
     "samples": [
       {
-        "name": "Jsonpath expressions",
+        "name": "JSONPath expressions",
         "url": "jsonpath-expressions",
         "verifyBuild": true,
         "verifyOutput": true,
