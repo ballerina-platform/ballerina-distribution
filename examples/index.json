@@ -1455,6 +1455,13 @@
         "isLearnByExample": true
       },
       {
+        "name": "Alternate receive",
+        "url": "alternate-receive",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
         "name": "Multiple wait",
         "url": "multiple-wait",
         "verifyBuild": true,
