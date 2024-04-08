@@ -1,0 +1,2 @@
+description: This BBE demonstrates the conversion from XML source in the form of a string, byte[], byte block stream, and Ballerina value to a record in Ballerina.
+keywords: ballerina, ballerina by example, BBE, xml, record, stream, byte array
