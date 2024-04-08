@@ -1,7 +1,7 @@
 import ballerina/io;
 import ballerina/data.jsondata;
 
-// Define a closed record type to capture the required fields form the JSON content
+// Define a closed record type to capture the required fields from the JSON content.
 type Book record {|
     string name;
     string author;
@@ -15,7 +15,7 @@ public function main() returns error? {
         "publisher": "Prentice Hall"
     };
 
-    // Based on the expected type, it selectively convert the JSON content to the record type.
+    // Based on the expected type, it selectively converts the JSON content to the record type.
     Book book = check jsondata:parseAsType(jsonContent);
     io:println(book);
 
@@ -28,7 +28,7 @@ public function main() returns error? {
         }
     `;
     
-    // Based on the expected type, it selectively convert the JSON string to the record type.
+    // Based on the expected type, it selectively converts the JSON string to the record type.
     Book book2 = check jsondata:parseString(jsonStr);
     io:println(book2);
 }
