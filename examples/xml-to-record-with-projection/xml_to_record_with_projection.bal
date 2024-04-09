@@ -7,26 +7,26 @@ type Book record {|
     string author;
 |};
 
-public function main() returns error? {
-    xml xmlData = xml `
-        <book>
-            <name>Clean Code</name>
-            <author>Robert C. Martin</author>
-            <year>2008</year>
-            <publisher>Prentice Hall</publisher>
-        </book>`;
+xml xmlData = xml `
+<book>
+    <name>Clean Code</name>
+    <author>Robert C. Martin</author>
+    <year>2008</year>
+    <publisher>Prentice Hall</publisher>
+</book>`;
 
+string xmlStr = string `
+<book>
+    <name>Clean Code</name>
+    <author>Robert C. Martin</author>
+    <year>2008</year>
+    <publisher>Prentice Hall</publisher>
+</book>`;
+
+public function main() returns error? {
     // Based on the expected type, it selectively converts the XML data to the record type.
     Book book = check xmldata:parseAsType(xmlData);
     io:println(book);
-
-    string xmlStr = string `
-        <book>
-            <name>Clean Code</name>
-            <author>Robert C. Martin</author>
-            <year>2008</year>
-            <publisher>Prentice Hall</publisher>
-        </book>`;
 
     // Based on the expected type, it selectively converts the XML string to the record type.
     Book book2 = check xmldata:parseString(xmlStr);

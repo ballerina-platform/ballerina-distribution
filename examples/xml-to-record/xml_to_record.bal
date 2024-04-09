@@ -7,22 +7,24 @@ type Book record {
     string author;
 };
 
-public function main() returns error? {
-    xml xmlData = xml `<book>
-        <id>10024</id>
-        <title>Clean Code</title>
-        <author>Robert C. Martin</author>
-    </book>`;
+xml xmlData = xml `
+<book>
+    <id>10024</id>
+    <title>Clean Code</title>
+    <author>Robert C. Martin</author>
+</book>`;
 
+string xmlStr = string `
+<book>
+    <id>10024</id>
+    <title>Clean Code</title>
+    <author>Robert C. Martin</author>
+</book>`;
+
+public function main() returns error? {
     // Convert the XML value to a record type.
     Book book1 = check xmldata:parseAsType(xmlData);
     io:println(book1);
-
-    string xmlStr = string `<book>
-        <id>10024</id>
-        <title>Clean Code</title>
-        <author>Robert C. Martin</author>
-    </book>`;
 
     // Convert the XML string to a record type.
     Book book2 = check xmldata:parseString(xmlStr);
@@ -33,7 +35,7 @@ public function main() returns error? {
     Book book3 = check xmldata:parseBytes(xmlByteArr);
     io:println(book3);
 
-    stream<byte[], error?> byteBlockStream = new(new ByteBlockGenerator(xmlStr));
+    stream<byte[], error?> byteBlockStream = new (new ByteBlockGenerator(xmlStr));
     // Convert the XML byte block stream to a record type.
     Book book4 = check xmldata:parseStream(byteBlockStream);
     io:println(book4);

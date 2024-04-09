@@ -1,2 +1,2 @@
-description: This BBE demonstrates the selective conversion of elements and attributes from XML source in the form of a string, byte[], byte block stream, and Ballerina value to a record in Ballerina.
-keywords: ballerina, ballerina by example, BBE, xml, record, projection 
+description: This BBE demonstrates how to selectively convert fields from a XML source, which can be provided as a string, byte array, byte block stream, or xml, into a Ballerina record.
+keywords: ballerina, ballerina by example, BBE, xml, record, data projection 
