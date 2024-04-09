@@ -1469,13 +1469,6 @@
         "isLearnByExample": true
       },
       {
-        "name": "Named worker with on fail",
-        "url": "named-worker-with-on-fail",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
         "name": "Inter-worker message passing",
         "url": "inter-worker-message-passing",
         "verifyBuild": true,
@@ -1485,6 +1478,13 @@
       {
         "name": "Inter-worker failure propagation",
         "url": "inter-worker-failure-propagation",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Named worker with on fail clause",
+        "url": "named-worker-with-on-fail-clause",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
