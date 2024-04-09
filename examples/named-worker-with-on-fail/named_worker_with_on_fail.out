@@ -1,2 +1,0 @@
-$ bal run named_worker_with_on_fail.bal
--1
