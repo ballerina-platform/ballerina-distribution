@@ -7,24 +7,23 @@ type Book record {
     int year;
 };
 
-public function main() returns error? {
-    json jsonContent = {
-        "name": "Clean Code",
-        "author": "Robert C. Martin",     
-        "year": 2008
-    };
+json jsonContent = {
+    "name": "Clean Code",
+    "author": "Robert C. Martin",
+    "year": 2008
+};
 
+string jsonStr = string `
+{
+    "name": "Clean Code",
+    "author": "Robert C. Martin",
+    "year": 2008
+}`;
+
+public function main() returns error? {
     // Convert the JSON value to a record type.
     Book book1 = check jsondata:parseAsType(jsonContent);
     io:println(book1);
-
-    string jsonStr = string `
-        {
-            "name": "Clean Code",
-            "author": "Robert C. Martin",
-            "year": 2008
-        }
-    `;
 
     // Convert the JSON string to a record type.
     Book book2 = check jsondata:parseString(jsonStr);
@@ -35,7 +34,7 @@ public function main() returns error? {
     Book book3 = check jsondata:parseBytes(jsonByteArr);
     io:println(book3);
 
-    stream<byte[], error?> byteBlockStream = new(new ByteBlockGenerator(jsonStr));
+    stream<byte[], error?> byteBlockStream = new (new ByteBlockGenerator(jsonStr));
     // Convert the JSON byte block stream to a record type.
     Book book4 = check jsondata:parseStream(byteBlockStream);
     io:println(book4);
