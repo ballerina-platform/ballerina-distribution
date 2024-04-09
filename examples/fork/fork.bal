@@ -1,17 +1,11 @@
 import ballerina/io;
-import ballerina/lang.runtime;
 
-public function main() {
-    execute(true);
-    runtime:sleep(1);
-    execute(false);
-}
-
-function execute(boolean isForked) {
-    if isForked {
+public function main(int? userInput) {
+    if userInput is int {
+        int num = userInput;
         fork {
             worker A {
-                5 -> B;
+                num -> B;
                 string value = <- B;
                 io:println(string `Received string '${value}' from worker B`);
             }
