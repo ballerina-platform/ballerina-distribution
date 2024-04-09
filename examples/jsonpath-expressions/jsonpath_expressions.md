@@ -1,6 +1,9 @@
 # JSONPath expressions
 
-JSONPath expressions provide a straightforward method for navigating the structure of JSON data.
+Ballerina supports JSONPath expressions against JSON data through 
+`ballerina/data.jsondata` module to provide a straightforward method 
+for navigating the structure of JSON data.
+Alternatively, Ballerina supports type based access to JSON data by language itself
 
 ::: code jsonpath_expressions.bal :::
 
