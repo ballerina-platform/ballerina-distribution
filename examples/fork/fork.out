@@ -1,4 +1,3 @@
-$ bal run fork.bal
-Received integer '5' from worker A
+$ bal run fork.bal -- 5
+Received int '5' from worker A
 Received string 'a' from worker B
-Not forked
