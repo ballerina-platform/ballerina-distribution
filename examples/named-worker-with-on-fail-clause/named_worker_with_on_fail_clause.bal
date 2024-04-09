@@ -17,7 +17,7 @@ public function main() {
         int index = check getIndex(values, value);
         index -> w2;
     } on fail {
-        // Handle the error thrown in the worker body
+        // Handle the error thrown in the worker body.
         -1 -> w2;
     }
 
