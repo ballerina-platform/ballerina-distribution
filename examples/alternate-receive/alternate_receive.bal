@@ -21,7 +21,7 @@ public function main() {
     worker w4 returns error? {
         int value = 10;
         if value == 10 {
-            return error("Error in worker 1");
+            return error("Error in worker 4");
         }
         value -> w6;
     }
@@ -32,16 +32,16 @@ public function main() {
     }
 
     worker w6 returns int|error? {
-        // Alternate receive action waits until a message that is not an error is received 
-        // when error is not an expected static type. Since `w4` returns an error it 
-        // waits further and sets the value that is received from `w5`.
+        // Alternate receive action waits until a message that is not an error is received. 
+        // Since `w4` returns an error, it waits further and 
+        // sets the value that is received from `w5`.
         int a = check <- w4 | w5;
         return a;
     }
 
-    int valueW3 = wait w3;
-    io:println(valueW3);
+    int w3Result = wait w3;
+    io:println(w3Result);
 
-    int|error? valueW6 = wait w6;
-    io:println(valueW6);
+    int|error? w6Result = wait w6;
+    io:println(w6Result);
 }
