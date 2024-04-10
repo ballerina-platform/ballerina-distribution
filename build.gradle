@@ -194,16 +194,16 @@ subprojects {
         ballerinaStdLibs "io.ballerina:persist-tools:${persistToolVersion}"
 
         /* Ballerina GraphQL */
-        ballerinaStdLibs "io.ballerina:graphql-tools:${graphqlVersion}"
+        ballerinaStdLibs "io.ballerina:graphql-tools:${graphqlToolVersion}"
 
         /* Ballerina Protoc Tool */
         ballerinaStdLibs "io.ballerina:protoc-tools:${protocToolVersion}"
 
         /* Ballerina OpenAPI */
-        ballerinaOpenAPILibs "io.ballerina:module-ballerina-openapi:${openapiVersion}"
+        ballerinaOpenAPILibs "io.ballerina:module-ballerina-openapi:${openapiToolVersion}"
 
         /* Ballerina AsyncAPI */
-        ballerinaStdLibs "io.ballerina:module-ballerina-asyncapi:${asyncapiVersion}"
+        ballerinaStdLibs "io.ballerina:module-ballerina-asyncapi:${asyncapiToolVersion}"
 
         /* Code to cloud extensions */
         ballerinaC2cLibs "io.ballerina:cloud-ballerina:${c2cVersion}"
