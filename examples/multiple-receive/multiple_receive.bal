@@ -2,8 +2,8 @@ import ballerina/io;
 import ballerina/lang.runtime;
 
 type Result record {
-    int w1;
-    int w2;
+    int a;
+    int b;
 };
 
 public function main() {
@@ -18,11 +18,10 @@ public function main() {
 
     worker w3 returns Result {
         // The worker waits until both values are received.
-        Result result = <- {w1, w2};
+        Result result = <- {a: w1, b: w2};
         return result;
     }
 
     Result result = wait w3;
-    io:println(result.w1);
-    io:println(result.w2);
+    io:println(result);
 }
