@@ -26,7 +26,9 @@ public function main() {
         io:println("Worker B end");
     }
 
-    // Waiting on named workers until they complete.
+    // Explicitly waiting on named workers until they complete.
+    // This guarantees that the Ballerina program will not terminate till 
+    // the workers have completed their execution.
     wait A;
     wait B;
 }
