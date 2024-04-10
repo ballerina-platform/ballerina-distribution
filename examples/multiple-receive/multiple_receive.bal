@@ -12,7 +12,7 @@ public function main() {
     }
 
     worker w3 returns map<int> {
-        // worker waits until both values are received.
+        // The worker waits until both values are received.
         map<int> result = <- {w1, w2};
         return result;
     }
