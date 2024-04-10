@@ -11,9 +11,10 @@ public function main() {
     }
 
     worker w2 returns int|error:NoMessage {
-        // The corresponding send action here is conditionally executed. 
-        // Thus, there is a possibility that it may not get executed.
-        // Therefore, the `error:NoMessage` type is included to handle such cases.
+        // The send action corresponding to this receive action is conditionally executed.
+        // Thus, there is a possibility that the send action may not get executed.
+        // Therefore, the static type of the receive includes the `error:NoMessage` type
+        // indicating the absence of a message in such cases.
         int|error:NoMessage a = <- w1;
         return a;
     }
@@ -27,7 +28,7 @@ public function main() {
     }
 
     worker w4 returns int|error:NoMessage {
-        // The send action is used in two instances within worker `w3`.
+        // Two different conditional send actions exists within the worker `w3`.
         // Therefore, an alternate receive action can be used to receive them.
         int|error:NoMessage d = <- w3 | w3;
         return d;
