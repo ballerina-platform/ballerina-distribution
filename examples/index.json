@@ -1427,13 +1427,6 @@
         "isLearnByExample": true
       },
       {
-        "name": "Conditional send",
-        "url": "conditional-send",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
         "name": "Named workers and futures",
         "url": "named-workers-and-futures",
         "verifyBuild": true,
@@ -1471,6 +1464,13 @@
       {
         "name": "Flush",
         "url": "flush",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Conditional send",
+        "url": "conditional-send",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
