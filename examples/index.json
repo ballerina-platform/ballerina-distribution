@@ -1462,13 +1462,6 @@
         "isLearnByExample": true
       },
       {
-        "name": "Multiple receive",
-        "url": "multiple-receive",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
         "name": "Named workers and futures",
         "url": "named-workers-and-futures",
         "verifyBuild": true,
