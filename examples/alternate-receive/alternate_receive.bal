@@ -33,8 +33,7 @@ public function main() {
 
     worker w6 returns int|error? {
         // Alternate receive action waits until a message that is not an error is received. 
-        // Since `w4` returns an error, it waits further and 
-        // sets the value that is received from `w5`.
+        // Since `w4` returns an error, it waits further and sets the value that is received from `w5`.
         int a = check <- w4 | w5;
         return a;
     }
