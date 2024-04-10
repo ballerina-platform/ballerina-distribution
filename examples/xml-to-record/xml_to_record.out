@@ -1,0 +1,5 @@
+$ bal run xml_to_record.bal
+{"id":10024,"title":"Clean Code","author":"Robert C. Martin"}
+{"id":10024,"title":"Clean Code","author":"Robert C. Martin"}
+{"id":10024,"title":"Clean Code","author":"Robert C. Martin"}
+{"id":10024,"title":"Clean Code","author":"Robert C. Martin"}
