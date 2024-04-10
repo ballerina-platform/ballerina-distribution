@@ -1,6 +1,11 @@
 import ballerina/io;
 import ballerina/lang.runtime;
 
+type Result record {
+    int w1;
+    int w2;
+};
+
 public function main() {
     worker w1 {
         2 -> w3;
@@ -11,13 +16,13 @@ public function main() {
         3 -> w3;
     }
 
-    worker w3 returns map<int> {
+    worker w3 returns Result {
         // The worker waits until both values are received.
-        map<int> result = <- {w1, w2};
+        Result result = <- {w1, w2};
         return result;
     }
 
-    map<int> results = wait w3;
-    io:println(results["w1"]);
-    io:println(results["w2"]);
+    Result result = wait w3;
+    io:println(result.w1);
+    io:println(result.w2);
 }
