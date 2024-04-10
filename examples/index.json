@@ -1441,6 +1441,13 @@
         "isLearnByExample": true
       },
       {
+        "name": "Conditional send",
+        "url": "conditional-send",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
         "name": "Inter-worker failure propagation",
         "url": "inter-worker-failure-propagation",
         "verifyBuild": true,
@@ -1464,13 +1471,6 @@
       {
         "name": "Flush",
         "url": "flush",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Conditional send",
-        "url": "conditional-send",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
