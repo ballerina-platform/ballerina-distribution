@@ -1,2 +1,2 @@
-description: This BBE demonstrates the alternate receive action
+description: This BBE demonstrates the use of the alternate receive action in inter-worker communication
 keywords: ballerina, ballerina by example, bbe, worker, alternate receive
