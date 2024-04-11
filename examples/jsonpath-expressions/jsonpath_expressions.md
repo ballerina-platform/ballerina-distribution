@@ -1,7 +1,6 @@
 # JSONPath expressions
 
-Ballerina supports JSONPath expressions against JSON data through 
-`ballerina/data.jsondata` module to provide a straightforward method 
+Ballerina supports JSONPath expressions against JSON data through [`ballerina/data.jsondata` module](https://lib.ballerina.io/ballerina/data.jsondata/latest/) module to provide a straightforward method 
 for navigating the structure of JSON data.
 Alternatively, Ballerina supports type based access to JSON data by language itself.
 
