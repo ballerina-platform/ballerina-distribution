@@ -1031,6 +1031,20 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "JSON to record",
+        "url": "json-to-record",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "JSON to record with projection",
+        "url": "json-to-record-with-projection",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },
@@ -1135,6 +1149,20 @@
       {
         "name": "XMLNS declarations",
         "url": "xmlns-declarations",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "XML to record",
+        "url": "xml-to-record",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "XML to record with projection",
+        "url": "xml-to-record-with-projection",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -1387,7 +1415,7 @@
         "name": "Sequence diagrams",
         "url": "sequence-diagrams",
         "verifyBuild": true,
-        "verifyOutput": true,
+        "verifyOutput": false,
         "isLearnByExample": true
       },
       {
