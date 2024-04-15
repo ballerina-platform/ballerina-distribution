@@ -4159,6 +4159,21 @@
     ]
   },
   {
+    "title": "Avro",
+    "column": 0,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "Data serialization/deserialization",
+        "url": "avro-serdes",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "IO",
     "column": 0,
     "category": "Common libraries",
