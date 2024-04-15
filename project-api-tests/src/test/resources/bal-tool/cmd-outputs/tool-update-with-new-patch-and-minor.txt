@@ -1,3 +1,2 @@
-bctestorg/disttest:1.1.0 pulled from central successfully
 tool 'disttest:1.1.0' pulled successfully.
 tool 'disttest:1.1.0' successfully set as the active version.
