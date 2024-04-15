@@ -1,0 +1,4 @@
+$ bal run jsonpath_expressions.bal
+["The Great Gatsby","To Kill a Mockingbird","1984"]
+[1925,1949]
+262.5
