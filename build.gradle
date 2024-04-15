@@ -168,7 +168,7 @@ subprojects {
         ballerinaStdLibs "io.ballerina.stdlib:udp-ballerina:${stdlibUdpVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:uuid-ballerina:${stdlibUuidVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:auth-ballerina:${stdlibAuthVersion}"
-        ballerinaStdLibs "io.ballerina.stdlib:avro-ballerina:${stdlibAvroVersion}"
+        ballerinaStdLibs "io.ballerina.lib:avro-ballerina:${stdlibAvroVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:email-ballerina:${stdlibEmailVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:jwt-ballerina:${stdlibJwtVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:oauth2-ballerina:${stdlibOAuth2Version}"
