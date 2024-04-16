@@ -1,4 +1,4 @@
-# Avro - Data serialization/deserialization
+# Avro - Serialization/Deserialization
 
 The `avro` module allows serializing and deserializing the subtypes of Ballerina `anydata`. Initially, an `avro:Schema` instance must be created by providing a `string` value representing an Avro schema. The `toAvro()` and `fromAvro()` methods of the `avro` module serialize and deserialize data respectively, using the generated Avro schema.
 
