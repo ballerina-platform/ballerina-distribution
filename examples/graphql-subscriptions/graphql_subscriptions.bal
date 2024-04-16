@@ -14,15 +14,15 @@ service /graphql on new graphql:Listener(9090) {
     // `Subscription` operation. It must always return a stream. Since the stream is of type
     // `string`, the resulting field in the generated GraphQL schema will be of type `String!`.
     resource function subscribe names() returns stream<string, error?> {
-        // Create a NameGenerator class object
+        // Create a `NameGenerator` object.
         NameGenerator nameGenerator = new (self.names);
-        // Create a stream using the NameGenerator class object
+        // Create a stream using the `NameGenerator` object.
         stream<string, error?> names = new (nameGenerator);
         return names;
     }
 }
 
-// Defines a StreamGenerator class that can be used to create a stream of strings. This will pick a random name from
+// Defines a stream implementor that can be used to create a stream of strings. This will pick a random name from
 // the list of names and return it with a delay to demonstrate a stream of values.
 class NameGenerator {
     private final string[] names;
@@ -31,7 +31,7 @@ class NameGenerator {
         self.names = names;
     }
 
-    // Function that picks a random name from the list and returns it.
+    // The `next` method picks a random name from the list and returns it.
     public isolated function next() returns record {|string value;|}|error? {
         // Sleep for 1 second to simulate a delay.
         runtime:sleep(1);

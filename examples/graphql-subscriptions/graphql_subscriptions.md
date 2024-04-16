@@ -14,9 +14,9 @@ Send the following document to the GraphQL endpoint to test the service using a 
 
 ::: code graphql_subscriptions.graphql :::
 
-It should return similar to the following response.
+It should result in a response similar to the following.
 
->**Note:** The response will be updated in real-time and the response can be different due to the random name generation.
+>**Note:** The response will get updated in real-time and can be different due to the random name generation.
 
 ::: out graphql_subscriptions.client.out :::
 
