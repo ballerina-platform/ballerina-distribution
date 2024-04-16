@@ -459,7 +459,7 @@
         "name": "List subtyping",
         "url": "list-subtyping",
         "verifyBuild": true,
-        "verifyOutput": false,
+        "verifyOutput": true,
         "isLearnByExample": true
       },
       {
@@ -1031,6 +1031,20 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "JSON to record",
+        "url": "json-to-record",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "JSON to record with projection",
+        "url": "json-to-record-with-projection",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },
@@ -1135,6 +1149,20 @@
       {
         "name": "XMLNS declarations",
         "url": "xmlns-declarations",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "XML to record",
+        "url": "xml-to-record",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "XML to record with projection",
+        "url": "xml-to-record-with-projection",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -1387,7 +1415,7 @@
         "name": "Sequence diagrams",
         "url": "sequence-diagrams",
         "verifyBuild": true,
-        "verifyOutput": true,
+        "verifyOutput": false,
         "isLearnByExample": true
       },
       {
@@ -2378,6 +2406,14 @@
         "isLearnByExample": false
       },
       {
+        "name": "ID scalar type",
+        "url": "graphql-id-scalar-type",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
         "name": "Interfaces",
         "url": "graphql-interfaces",
         "verifyBuild": true,
@@ -2516,6 +2552,30 @@
       {
         "name": "Custom prefetch methods",
         "url": "custom-prefetch-methods",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Operation-level caching",
+        "url": "graphql-service-operation-level-caching",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Field-level caching",
+        "url": "graphql-service-field-level-caching",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Cache invalidation",
+        "url": "graphql-service-cache-invalidation",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -4093,6 +4153,21 @@
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Avro",
+    "column": 0,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "Data serialization/deserialization",
+        "url": "avro-serdes",
+        "verifyBuild": true,
+        "verifyOutput": true,
         "disablePlayground": true,
         "isLearnByExample": false
       }

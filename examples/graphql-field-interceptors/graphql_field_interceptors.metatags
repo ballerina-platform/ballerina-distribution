@@ -1,2 +1,2 @@
-description: A GraphQL service endpoint written in Ballerina
-keywords: ballerina, ballerina by example, bbe, graphql, graphql service
+description: This example demonstrates using interceptors on GraphQL remote and resource methods to execute custom logic.
+keywords: ballerina, ballerina by example, bbe, graphql, service, interceptors, resolver functions

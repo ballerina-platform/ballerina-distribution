@@ -1,2 +1,2 @@
-description: A GraphQL service endpoint written in Ballerina.
+description: This example demonstrates defining and enforcing constraints on the input arguments of a GraphQL service. 
 keywords: ballerina, ballerina by example, bbe, graphql, graphql input constraint validation, graphql constraint validation

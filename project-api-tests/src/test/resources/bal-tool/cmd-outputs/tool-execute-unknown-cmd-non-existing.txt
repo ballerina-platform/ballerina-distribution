@@ -1,0 +1,2 @@
+ballerina: unknown command 'disttest2'
+Run 'bal help' for usage.

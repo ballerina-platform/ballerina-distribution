@@ -1,2 +1,2 @@
-description: A GraphQL service endpoint written in Ballerina
+description: This example demonstrates defining input parameters for the fields of a GraphQL service.
 keywords: ballerina, ballerina by example, bbe, graphql, input types

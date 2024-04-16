@@ -1,2 +1,2 @@
-description: A GraphQL service endpoint written in Ballerina
-keywords: ballerina, ballerina by example, bbe, graphql, subscription
+description: This example demonstrates defining a GraphQL subscription operation.
+keywords: ballerina, ballerina by example, bbe, graphql, service, subscription

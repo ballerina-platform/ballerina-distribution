@@ -161,7 +161,7 @@ Follow the steps below to build just the Ballerina runtime with the correspondin
     set BALLERINA_HOME="<YOUR_LOCATION>\jballerina-tools-<VERSION>";
 
     # Include the binaries to the system `PATH`.
-    set PATH=%PATH%;%BALLERINA_HOME%\bin;
+    set PATH=%PATH%:%BALLERINA_HOME%\bin;
     ```
 
 ### Test the runtime build

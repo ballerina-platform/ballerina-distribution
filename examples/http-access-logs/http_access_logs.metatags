@@ -1,2 +1,2 @@
-description: This BBE demonstrates the access logs for HTTP services in Ballerina.
+description: This example demonstrates the access logs for HTTP services in Ballerina.
 keywords: ballerina, ballerina by example, bbe, http, access log, service

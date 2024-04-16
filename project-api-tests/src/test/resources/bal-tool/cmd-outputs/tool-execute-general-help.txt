@@ -1,0 +1,2 @@
+   Tool Commands:
+        disttest        The tool implementation for ballerina distribution tool tests

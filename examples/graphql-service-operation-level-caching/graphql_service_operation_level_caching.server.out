@@ -1,0 +1,1 @@
+$ bal run graphql_service_operation_level_caching.bal

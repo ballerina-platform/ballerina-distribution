@@ -1,0 +1,8 @@
+Sample tool used for testing the bal tools in ballerina distribution tests.
+bal disttest <arg1>
+
+--args--
+    <arg1>
+        The argument to be printed.
+
+version: 1.0.0

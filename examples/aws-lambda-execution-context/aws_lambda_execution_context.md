@@ -1,6 +1,6 @@
-# AWS Lambda - Hello world
+# AWS Lambda - Execution context
 
-This example demonstrates how to write a simple echo function in AWS Lambda.
+The example below demonstrates how the execution context information of an AWS function can be retrieved.
 
 For more information, see the [AWS Lambda learn guide](https://ballerina.io/learn/aws-lambda/).
 
@@ -18,7 +18,7 @@ Follow the steps below to write the function.
 
 2. Replace the content of the generated Ballerina file with the content below.
 
-::: code aws-lambda-hello-world.bal :::
+::: code aws_lambda_execution_context.bal :::
 
 ## Build the function
 
@@ -28,7 +28,7 @@ Execute the command below to generate the AWS Lambda artifacts.
 
 ## Deploy the function
 
-Execute the AWS CLI command given by the compiler to create and publish the functions by replacing the respective AWS `$LAMBDA_ROLE_ARN`, `$REGION_ID`, and `$FUNCTION_NAME` values given in the command with your values.
+Execute the AWS CLI command given by the compiler to create and publish the functions by replacing the respective AWS `$LAMBDA_ROLE_ARN`, `$REGION_ID`, and `$FUNCTION_NAME` values given in the command with your values. 
 
 ::: out aws_deploy.out :::
 

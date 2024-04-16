@@ -80,6 +80,19 @@ task unpackDevTools(type: Copy) {
     }
 }
 
+task downloadDocUi {
+    def response = new JsonSlurper().parseText(new URL(docUiApi).text)
+    def zipFileUrl = response.fileURL
+    def zipInputStream = new URL(zipFileUrl).openStream()
+    def outputFile = new File("${buildDir}/target/extracted-distributions/doc-ui-zip/ballerina-doc-ui.zip")
+    doLast {
+        outputFile.parentFile.mkdirs()
+        outputFile.withOutputStream { outputStream ->
+            outputStream << zipInputStream
+        }
+    }
+}
+
 task unpackAwsLambdaBala(type: Copy) {
     group = "unpack_dependencies"
     configurations.awsLambdaBala.resolvedConfiguration.resolvedArtifacts.each { artifact ->
@@ -247,6 +260,17 @@ task copyOtherRepos(type: Copy) {
             into "lib/tools/lang-server/lib/"
         }
     }
+
+    /* Flow Model Generator Artifacts */
+    configurations.devTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+        def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
+        from("${artifactExtractedPath}/flow-model-generator/libs") {
+            into "bre/lib/"
+        }
+        from("${artifactExtractedPath}/flow-model-generator/ls-libs") {
+            into "lib/tools/lang-server/lib/"
+        }
+    }
 }
 
 task buildDistRepo(type: JavaExec) {
@@ -260,8 +284,9 @@ task copyDevToolsCoverageReport(type: Copy) {
     into "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/lib/tools/coverage"
     rename("testerina-report-tools-${devToolsVersion}.zip", "report.zip")
 }
+
 task copyDevToolsDocUi(type: Copy) {
-    from zipTree("$project.buildDir/target/extracted-distributions/ballerina-dev-tools-zip/docs/docerina-ui-${devToolsVersion}.zip")
+    from zipTree("$project.buildDir/target/extracted-distributions/doc-ui-zip/ballerina-doc-ui.zip")
     into "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/lib/tools/doc-ui"
 }
 
@@ -1071,7 +1096,16 @@ task testExamples() {
     }
 }
 
-def buildStandardLibs = { distPath, stdlibTest, isStageTest, testMinorVersionDifference ->
+def addH2Dependency = { filePath ->
+    // Add the H2 database dependency to Ballerina.toml file
+    def tomlFile = new File(filePath)
+    tomlFile.append("\n\n[[platform.java17.dependency]]")
+    tomlFile.append("\nartifactId = \"h2\"")
+    tomlFile.append("\nversion = \"2.2.224\"")
+    tomlFile.append("\ngroupId = \"com.h2database\"")
+}
+
+def buildAndTestStandardLibs = { distPath, stdlibTest, isStageTest, testMinorVersionDifference ->
     def exitVal
     def additionalBuildParams = ""
 
@@ -1088,12 +1122,15 @@ def buildStandardLibs = { distPath, stdlibTest, isStageTest, testMinorVersionDif
         if (!isStageTest) {
             exec {
                 workingDir "${distPath}/${stdlibTest}"
-                commandLine 'cmd', '/c', "${distPath}/bin/bal/bal.bat init test"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat init test"
+            }
+            if (stdlibTest == 'transaction') {
+                addH2Dependency("${distPath}/${stdlibTest}/Ballerina.toml")
             }
         } else {
             exec {
                 workingDir "${distPath}/${stdlibTest}"
-                commandLine 'cmd', '/c', "${distPath}/bin/bal/bal.bat clean"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat clean"
             }
         }
         if (testMinorVersionDifference) {
@@ -1105,13 +1142,16 @@ def buildStandardLibs = { distPath, stdlibTest, isStageTest, testMinorVersionDif
         exitVal = exec {
             ignoreExitValue true
             workingDir "${distPath}/${stdlibTest}"
-            commandLine 'cmd', '/c', "${distPath}/bin/bal.bat build ${additionalBuildParams}"
+            commandLine 'cmd', '/c', "${distPath}/bin/bal.bat test ${additionalBuildParams}"
         }
     } else {
         if (!isStageTest) {
             exec {
                 workingDir "${distPath}/${stdlibTest}"
                 commandLine 'sh', '-c', "${distPath}/bin/bal init test"
+            }
+            if (stdlibTest == 'transaction') {
+                addH2Dependency("${distPath}/${stdlibTest}/Ballerina.toml")
             }
         } else {
             exec {
@@ -1129,7 +1169,7 @@ def buildStandardLibs = { distPath, stdlibTest, isStageTest, testMinorVersionDif
             environment "BALLERINA_STAGE_CENTRAL", "$isStageTest"
             ignoreExitValue true
             workingDir "${distPath}/${stdlibTest}"
-            commandLine 'sh', '-c', "${distPath}/bin/bal build ${additionalBuildParams}"
+            commandLine 'sh', '-c', "${distPath}/bin/bal test ${additionalBuildParams}"
         }
     }
     if (exitVal.getExitValue() == 1) {
@@ -1170,7 +1210,7 @@ task testStdlibs() {
         def failedStdLibs = []
         stdlibTestsList.each { stdlibTest ->
             if (stdlibTest.enableTest) {
-                boolean stdLibTestFailFlag = buildStandardLibs(distPath, stdlibTest.path, false, false)
+                boolean stdLibTestFailFlag = buildAndTestStandardLibs(distPath, stdlibTest.path, false, false)
                 if (stdLibTestFailFlag) {
                     failedStdLibs.add(stdlibTest.path);
                 }
@@ -1211,7 +1251,7 @@ task testStdlibsWithStaging() {
         def failedStdLibs = []
         stdlibTestsList.each { stdlibTest ->
             if (stdlibTest.enableTest) {
-                boolean stdLibTestFailFlag = buildStandardLibs(distPath, stdlibTest.path, true, testMinorVersionDifference)
+                boolean stdLibTestFailFlag = buildAndTestStandardLibs(distPath, stdlibTest.path, true, testMinorVersionDifference)
                 if (stdLibTestFailFlag) {
                     failedStdLibs.add(stdlibTest.path);
                 }
@@ -1476,6 +1516,7 @@ extractJreForWindows.dependsOn extractJreForMacArm
 copyOtherRepos.dependsOn extractJreForWindows
 copyDevToolsCoverageReport.dependsOn copyOtherRepos
 copyDevToolsDocUi.dependsOn copyDevToolsCoverageReport
+copyDevToolsDocUi.dependsOn downloadDocUi
 buildDistRepo.dependsOn copyDevToolsDocUi
 buildDistRepo.dependsOn generateCache
 filterApiDocs.dependsOn buildDistRepo
