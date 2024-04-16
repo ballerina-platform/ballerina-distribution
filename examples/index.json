@@ -4157,7 +4157,7 @@
     "category": "Common libraries",
     "samples": [
       {
-        "name": "Data serialization/deserialization",
+        "name": "Serialization/Deserialization",
         "url": "avro-serdes",
         "verifyBuild": true,
         "verifyOutput": true,
